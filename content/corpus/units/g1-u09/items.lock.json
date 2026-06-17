@@ -1,0 +1,167 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g1-u09",
+  "items": {
+    "99431341e0d5": "g1u09.gi.question-words.gf.001",
+    "46375c42dc90": "g1u09.gi.question-words.gf.002",
+    "0d2cf86735fc": "g1u09.gi.question-words.gf.003",
+    "78ee60368572": "g1u09.gi.question-words.gf.004",
+    "5307996f96ef": "g1u09.gi.question-words.mc.001",
+    "f624f37f4b9d": "g1u09.gi.question-words.mc.002",
+    "9648b0115b80": "g1u09.gi.question-words.mc.003",
+    "0e52054250b2": "g1u09.gi.question-words.cp.001",
+    "07f950cf4289": "g1u09.gi.question-words.cp.002",
+    "7391235a891d": "g1u09.gi.question-words.ec.001",
+    "e9bf2273fb0c": "g1u09.gi.question-words.ec.002",
+    "49c1fbd20620": "g1u09.gi.question-words.ec.003",
+    "51473eb52d5b": "g1u09.gi.question-words.tf.001",
+    "28b285f701bb": "g1u09.gi.question-words.qf.001",
+    "fda81dd3a681": "g1u09.gi.question-words.qf.002",
+    "80513342a071": "g1u09.gi.question-words.tr.001",
+    "ae12a2b97c79": "g1u09.gi.question-words.tr.002",
+    "2801851e5693": "g1u09.gi.question-words.sb.001",
+    "c5111d67b4e0": "g1u09.gi.question-words.sb.002",
+    "dc30b96f6ec6": "g1u09.gi.question-words.mt.001",
+    "3ea14d7cc55e": "g1u09.gi.question-words.mp.001",
+    "4d6e4a4eea8c": "g1u09.gi.question-words.gs.001",
+    "d0edcbe9a8cd": "g1u09.gi.question-words.ag.001",
+    "7ff1288efaf7": "g1u09.gi.object-pronouns.gf.001",
+    "6e357dd7448a": "g1u09.gi.object-pronouns.gf.003",
+    "33c790d62564": "g1u09.gi.object-pronouns.gf.004",
+    "7120594d5e59": "g1u09.gi.object-pronouns.gf.005",
+    "ad9a980254fb": "g1u09.gi.object-pronouns.gf.006",
+    "9b2003c503ba": "g1u09.gi.object-pronouns.mc.001",
+    "b2f417b8e1ff": "g1u09.gi.object-pronouns.mc.002",
+    "58be50893b43": "g1u09.gi.object-pronouns.mc.003",
+    "50abf531b3e0": "g1u09.gi.object-pronouns.ec.001",
+    "f14ee35cb0af": "g1u09.gi.object-pronouns.ec.002",
+    "423c1c6400d1": "g1u09.gi.object-pronouns.ec.003",
+    "8913bfe028b5": "g1u09.gi.object-pronouns.tf.001",
+    "fb776465b6a5": "g1u09.gi.object-pronouns.tf.002",
+    "a0fb88ed881a": "g1u09.gi.object-pronouns.tf.003",
+    "2089128f6ab8": "g1u09.gi.object-pronouns.sb.001",
+    "523a8585207e": "g1u09.gi.object-pronouns.sb.002",
+    "a1b9347986b3": "g1u09.gi.object-pronouns.mt.002",
+    "20cd75cda850": "g1u09.gi.object-pronouns.cp.001",
+    "d16dc7e27101": "g1u09.gi.object-pronouns.cp.002",
+    "7abe7cbd4415": "g1u09.gi.object-pronouns.tr.001",
+    "1783b6998a2a": "g1u09.gi.object-pronouns.tr.002",
+    "557e26c41503": "g1u09.gi.possessive-s.gf.001",
+    "2b11298652d5": "g1u09.gi.possessive-s.gf.002",
+    "7f65a3fd8d2a": "g1u09.gi.possessive-s.gf.003",
+    "16cfd8877bd9": "g1u09.gi.possessive-s.gf.004",
+    "414f1e36477a": "g1u09.gi.possessive-s.gf.005",
+    "fbb48142576e": "g1u09.gi.possessive-s.mc.001",
+    "4ffc3036075d": "g1u09.gi.possessive-s.mc.002",
+    "973f251f2b75": "g1u09.gi.possessive-s.ec.001",
+    "f32c80acc681": "g1u09.gi.possessive-s.ec.003",
+    "197569e7031d": "g1u09.gi.possessive-s.tf.001",
+    "248018495cc5": "g1u09.gi.possessive-s.tf.002",
+    "d61dbb7fd9ac": "g1u09.gi.possessive-s.sb.001",
+    "45b70c8e5153": "g1u09.gi.possessive-s.sb.002",
+    "f3296c0ae107": "g1u09.gi.possessive-s.tr.002",
+    "e301dfaa05f2": "g1u09.gi.possessive-s.mt.001",
+    "707cdd953583": "g1u09.gi.possessive-s.mp.001",
+    "ae422905fc9a": "g1u09.gi.possessive-s.cp.001",
+    "04591bd6dfbe": "g1u09.gi.possessive-s.gf.006",
+    "75232f52013c": "g1u09.gi.possessive-s.gf.007",
+    "eb91c6e5646c": "g1u09.gi.possessive-s.tf.003",
+    "b2536c6ea5e8": "g1u09.gi.irregular-plurals-3.gf.001",
+    "45e1789b3f92": "g1u09.gi.irregular-plurals-3.gf.002",
+    "1912630797fe": "g1u09.gi.irregular-plurals-3.gf.003",
+    "510edfba629d": "g1u09.gi.irregular-plurals-3.mc.001",
+    "75a5a1bb536a": "g1u09.gi.irregular-plurals-3.mc.002",
+    "a0cf3a428d3b": "g1u09.gi.irregular-plurals-3.ec.001",
+    "8e1ed120eea6": "g1u09.gi.irregular-plurals-3.ec.002",
+    "5be15c6df3ef": "g1u09.gi.irregular-plurals-3.tf.001",
+    "11155bd99af0": "g1u09.gi.irregular-plurals-3.tf.002",
+    "7baa1337f135": "g1u09.gi.irregular-plurals-3.cp.001",
+    "df21c2fea966": "g1u09.gi.irregular-plurals-3.tr.001",
+    "63fe3f741547": "g1u09.gi.irregular-plurals-3.sb.001",
+    "36da19663b4f": "g1u09.gi.question-words.tf.003",
+    "318e5902487d": "g1u09.gi.object-pronouns.gf.007",
+    "4c5d011c3f7d": "g1u09.gi.object-pronouns.gs.002",
+    "26c506d63ab9": "g1u09.gi.possessive-s.ec.004",
+    "6fa4e3e38922": "g1u09.gi.possessive-s.tr.003",
+    "3bd15f52117b": "g1u09.gi.possessive-s.gs.002",
+    "6c78540a0e45": "g1u09.gi.object-pronouns.mt.003",
+    "1224e16fe977": "g1u09.gi.object-pronouns.ag.003",
+    "683610b4dc71": "g1u09.gi.object-pronouns.ag.004",
+    "bbb25c0a71ee": "g1u09.gi.possessive-s.mc.004",
+    "74cb4801cd1d": "g1u09.gi.possessive-s.ag.004",
+    "fbc459449a13": "g1u09.gi.possessive-s.ag.005",
+    "e069c5b4876b": "g1u09.gi.irregular-plurals-3.ag.002"
+  },
+  "tombstones": [
+    {
+      "id": "g1u09.gi.question-words.tf.002",
+      "key": "c8243aef09fa",
+      "removedWith": "a0e836857390"
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.gf.002",
+      "key": "1b023a8fa225",
+      "removedWith": "a0e836857390"
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.gs.001",
+      "key": "e590c182bda6",
+      "removedWith": "a0e836857390"
+    },
+    {
+      "id": "g1u09.gi.possessive-s.ec.002",
+      "key": "ca0345f7ac1f",
+      "removedWith": "a0e836857390"
+    },
+    {
+      "id": "g1u09.gi.possessive-s.tr.001",
+      "key": "530ea19d7dd4",
+      "removedWith": "a0e836857390"
+    },
+    {
+      "id": "g1u09.gi.possessive-s.gs.001",
+      "key": "8a85cdcde2e2",
+      "removedWith": "a0e836857390"
+    },
+    {
+      "id": "g1u09.gi.possessive-s.ag.002",
+      "key": "367588d07bb7",
+      "removedWith": "a0e836857390"
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.mt.001",
+      "key": "63a4d620d55b",
+      "removedWith": "678647c63713"
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.ag.001",
+      "key": "ee87e351dff4",
+      "removedWith": "678647c63713"
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.ag.002",
+      "key": "8a8b1ef49cdf",
+      "removedWith": "678647c63713"
+    },
+    {
+      "id": "g1u09.gi.possessive-s.mc.003",
+      "key": "9ae1d75a0fda",
+      "removedWith": "678647c63713"
+    },
+    {
+      "id": "g1u09.gi.possessive-s.ag.001",
+      "key": "44b9911f7b35",
+      "removedWith": "678647c63713"
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.ag.001",
+      "key": "7a5e967ff4e9",
+      "removedWith": "678647c63713"
+    },
+    {
+      "id": "g1u09.gi.possessive-s.ag.003",
+      "key": "828a1b594194",
+      "removedWith": "678647c63713"
+    }
+  ]
+}

@@ -1,0 +1,602 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u10",
+  "round": 1,
+  "itemsHash": "5c0bbc31ed04",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g1u10.w.20-twenty",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.20-twenty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.30-thirty",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.30-thirty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.40-forty",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.40-forty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.50-fifty",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.50-fifty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.60-sixty",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.60-sixty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.80-eighty",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.80-eighty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.anything-else",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.anything-else",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.be-careful",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.be-careful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.can-i-help-you",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.can-i-help-you",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.changing-room",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.changing-room",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.computer-game",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.computer-game",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.congratulations",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.congratulations",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.customer",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.customer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.drawer",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.drawer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.everything",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.everything",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.expensive",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.expensive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.headphones",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.headphones",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.how-much-is-are",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.how-much-is-are",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.i-d-like",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.i-d-like",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.just-a-minute",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.just-a-minute",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.key-ring",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.key-ring",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.magazine",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.magazine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.mobile-phone",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.mobile-phone",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.no-problem",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.no-problem",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.no-wonder",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.no-wonder",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.over-there",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.over-there",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.price",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.price",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.rule",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.rule",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.scooter",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.scooter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.suddenly",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.suddenly",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.that-s-better",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.that-s-better",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.those",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.those",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.tin",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.tin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.to-fall-asleep",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.to-fall-asleep",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.to-walk-away",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.to-walk-away",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.town",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.town",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u10.w.what-can-i-do-for-you",
+      "kind": "new-gloss",
+      "itemId": "g1u10.w.what-can-i-do-for-you",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.100-one-hundred",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.100-one-hundred",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.1000-one-thousand",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.1000-one-thousand",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.20-twenty",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.20-twenty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.30-thirty",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.30-thirty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.40-forty",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.40-forty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.50-fifty",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.50-fifty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.60-sixty",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.60-sixty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.70-seventy",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.70-seventy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.80-eighty",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.80-eighty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.90-ninety",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.90-ninety",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.anything-else",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.anything-else",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.be-careful",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.be-careful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.can-i-help-you",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.can-i-help-you",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.changing-room",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.changing-room",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.computer-game",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.computer-game",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.congratulations",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.congratulations",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.customer",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.customer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.drawer",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.drawer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.everything",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.everything",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.expensive",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.expensive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.goodbye",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.goodbye",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.headphones",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.headphones",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.how-much-is-are",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.how-much-is-are",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.i-d-like",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.i-d-like",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.just-a-minute",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.just-a-minute",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.key-ring",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.key-ring",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.magazine",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.magazine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.mobile-phone",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.mobile-phone",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.no-problem",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.no-problem",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.no-wonder",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.no-wonder",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.over-there",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.over-there",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.price",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.price",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.rule",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.rule",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.scooter",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.scooter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.suddenly",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.suddenly",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.sweets",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.sweets",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.that-s-better",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.that-s-better",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.these",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.these",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.those",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.those",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.tin",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.tin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.to-fall-asleep",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.to-fall-asleep",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.to-walk-away",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.to-walk-away",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.town",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.town",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.w.what-can-i-do-for-you",
+      "kind": "translation-audit",
+      "itemId": "g1u10.w.what-can-i-do-for-you",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.gi.this-that-these-those.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u10.gi.this-that-these-those.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u10.gi.this-that-these-those.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u10.gi.this-that-these-those.tr.002",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 107 rows. Verify lenses: answers CLEAN, register CLEAN, translation 1 fix (price enToDe \"Rechnungsbetrag\" dropped → \"Preis\"), level-gloss 2 fixes (customer.d \"comes\" gloss added; everything.d reworded off the phrasal \"left out\" → \"with nothing forgotten\" + forgotten=vergessen gloss). This is a shop unit at the FLOOR grade, so it carries heavy but necessary glossing — ~33 everyday words untaught at g1 (something/get/see/every/take/help/comes/try/picks/sits/asleep/fall/far/bag) glossed with context-correct German, all confirmed by the level-gloss lens (e.g. try=anprobieren, picks=nimmt, get=holen vs bekommen by sense). Judgment calls / audited grants: \"costs\" (deliberate wrong-verb error form for How-much-IS/ARE), \"jeans\" (the textbook's own plural-noun example for How-much-ARE), \"game\" (anagram component of bank phrase \"computer game\"). 8 grammar prompts that the agents wrote as English instructions (\"Which question is right?\", \"Which sentence is correct?\", \"Match each…\", \"One thing or many?\") were reworded to German + lang:de; the one English near/far sort prompt was lens-cleared as plain content (no jargon). Number defs reworded off their own digit-tokens (100 = \"ten times ten\"). Translations faithful & du-form (shop dialogue kept du per DomiGo policy). 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 107,
+    "fullRows": 107,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

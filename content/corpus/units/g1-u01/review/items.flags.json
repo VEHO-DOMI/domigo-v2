@@ -1,0 +1,49 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u01",
+  "round": 2,
+  "itemsHash": "5a43fad1d4fa",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "changed-since-review:g1u01.w.let-s",
+      "kind": "changed-since-review",
+      "itemId": "g1u01.w.let-s",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "changed-since-review:g1u01.w.sound-system",
+      "kind": "changed-since-review",
+      "itemId": "g1u01.w.sound-system",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "changed-since-review:g1u01.w.to-enjoy",
+      "kind": "changed-since-review",
+      "itemId": "g1u01.w.to-enjoy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "changed-since-review:g1u01.w.to-listen",
+      "kind": "changed-since-review",
+      "itemId": "g1u01.w.to-listen",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "song/band glosses removed — these words are now taught via the core allowlist (g3-u01 harvesting-gap fix), so glossing them tripped V-6 gloss-unneeded. Only the gloss arrays changed (carriers/answers/translations untouched); re-verified carry-forward round 2, validate-green."
+  },
+  "metrics": {
+    "itemsReviewed": 239,
+    "fullRows": 4,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

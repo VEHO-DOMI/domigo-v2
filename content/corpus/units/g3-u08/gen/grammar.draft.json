@@ -1,0 +1,1881 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g3-u08",
+  "briefBank": "7622da26418c",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setz die richtige Form ein: I ___ (go) to the museum yesterday.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "went",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„yesterday\" sagt dir genau wann – also Past simple.",
+      "hintEn": null,
+      "explainDe": "„Yesterday\" nennt einen bestimmten Zeitpunkt in der Vergangenheit. Dann nimmst du das Past simple: I went to the museum yesterday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-gf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setz die richtige Form ein: Tesla ___ (invent) the electric motor.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "invented",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine fertige Tat in der Vergangenheit – Past simple, regelmäßiges Verb auf -ed.",
+      "hintEn": null,
+      "explainDe": "Tesla hat das früher getan und es ist abgeschlossen, darum Past simple: invented.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 8.txt#tesla-text",
+      "note": "Carrier from Tesla reading: 'He invented the electric motor.'",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setz die richtige Form ein: Have you ever ___ (be) to Italy?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "been",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach „Have you ever …\" kommt die 3. Verbform (das Partizip).",
+      "hintEn": null,
+      "explainDe": "Bei einer Frage nach Erfahrung mit „ever\" nimmst du das Present perfect: Have you ever been to Italy?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-gf-021",
+      "sbRef": "g3/wb/More 3 WB Unit 8.txt#ex-6",
+      "note": "WB ex. 6 dialogue line: 'Have you ever been to Italy?'",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setz die richtige Form ein: My family ___ (move) to Vienna in 2015.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "moved",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„in 2015\" ist ein bestimmtes Jahr – also Past simple.",
+      "hintEn": null,
+      "explainDe": "Eine Jahreszahl wie „in 2015\" zeigt einen genauen Zeitpunkt. Darum Past simple: moved.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-gf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setz die richtige Form ein: Sadie ___ (just / win) another prize. Everyone is happy!",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has just won",
+          "tier": "full"
+        },
+        {
+          "text": "'s just won",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„just\" + es ist jetzt wichtig → Present perfect: has + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Mit „just\" und Bezug zur Gegenwart nimmst du das Present perfect: has just won. „won\" ist die 3. Form von win.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-gf-003",
+      "sbRef": "g3/sb/More 3 SB Unit 8.txt#sadie-text",
+      "note": "Echoes 'Sadie's invention has won two more prizes.'",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setz die richtige Form ein: I ___ (not / try) sushi yet. Is it good?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "haven't tried",
+          "tier": "full"
+        },
+        {
+          "text": "have not tried",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„yet\" gehört zum Present perfect – verneint mit haven't + 3. Form.",
+      "hintEn": null,
+      "explainDe": "„Yet\" ist ein Signalwort fürs Present perfect: I haven't tried sushi yet. Nicht „didn't try\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-gf-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setz die richtige Form ein: He ___ (break) his wrist two weeks ago.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "broke",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„… ago\" sagt genau wann – Past simple. break ist unregelmäßig.",
+      "hintEn": null,
+      "explainDe": "„Two weeks ago\" nennt einen bestimmten Zeitpunkt, also Past simple: broke (unregelmäßig, nicht „breaked\").",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-gf-024",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setz die richtige Form ein: We ___ (visit) Rome and Naples last year.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "visited",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„last year\" ist vorbei – Past simple.",
+      "hintEn": null,
+      "explainDe": "„Last year\" ist ein abgeschlossener Zeitpunkt, darum Past simple: visited.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 8.txt#ex-6",
+      "note": "WB ex. 6: 'We visited Rome and Naples.'",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Setz die richtige Form ein: I ___ (never / eat) Kaiserschmarren. Is it nice?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have never eaten",
+          "tier": "full"
+        },
+        {
+          "text": "'ve never eaten",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„never\" als Erfahrung → Present perfect: have + 3. Form von eat.",
+      "hintEn": null,
+      "explainDe": "Mit „never\" sprichst du über deine Erfahrung im Leben, ohne genauen Zeitpunkt. Darum Present perfect: have never eaten.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-gf-025",
+      "sbRef": null,
+      "note": "Kaiserschmarren is a proper noun (Austrian dish).",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Setz die zwei richtigen Formen ein: ___ you ___ (be) to London? — Yes, I went there in June.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Have | been",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage geht um Erfahrung („je\") → Present perfect, auch wenn die Antwort einen Zeitpunkt nennt.",
+      "hintEn": null,
+      "explainDe": "Die Frage „Have you been to London?\" fragt nur, OB du dort warst (Present perfect). Erst die Antwort nennt mit „in June\" einen Zeitpunkt im Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 8.txt#grammar-1",
+      "note": "Two blanks pipe-split in order: Have | been.",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Setz die zwei richtigen Formen ein: My sister ___ (get) married last Sunday. She ___ (meet) her husband three years ago.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "got | met",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Sätze nennen einen Zeitpunkt („last Sunday\", „three years ago\") – beide Past simple.",
+      "hintEn": null,
+      "explainDe": "„Last Sunday\" und „three years ago\" sind bestimmte Zeitpunkte. Beide Verben stehen im Past simple: got und met.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 8.txt#ex-5",
+      "note": "WB ex. 5 items 1+2; two blanks pipe-split: got | met.",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Setz die richtige Form ein: We ___ (not / see) that film yet.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "haven't seen",
+          "tier": "full"
+        },
+        {
+          "text": "have not seen",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„yet\" → Present perfect, verneint mit haven't + 3. Form von see.",
+      "hintEn": null,
+      "explainDe": "„Yet\" verlangt das Present perfect: We haven't seen that film yet. Die 3. Form von see ist seen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-gf-023",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I saw that film last week.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I have seen that film last week.",
+        "Did you ever saw that film?",
+        "I have saw that film last week."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„last week\" sagt genau wann – such die einfache Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Mit „last week\" nimmst du das Past simple: I saw that film last week. Mit einem Zeitpunkt darf kein Present perfect stehen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I have seen that film last week.",
+          "Did you ever saw that film?",
+          "I have saw that film last week.",
+          "I did saw that film last week.",
+          "I have seen that film last week ago."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-mc-001",
+      "sbRef": null,
+      "note": "Distractors: present-perfect-with-last-week, past-simple-with-ever, wrong participle form.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has already finished her homework.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She already finished her homework yesterday.",
+        "She has already finish her homework.",
+        "She has already finished her homework two days ago."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„already\" ohne Zeitpunkt → Present perfect mit has + 3. Form.",
+      "hintEn": null,
+      "explainDe": "„Already\" ist ein Signalwort fürs Present perfect: She has already finished her homework. Ohne „yesterday\" oder „ago\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She already finished her homework yesterday.",
+          "She has already finish her homework.",
+          "She has already finished her homework two days ago.",
+          "She has already did her homework.",
+          "She already has finish her homework."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-mc-002",
+      "sbRef": null,
+      "note": "Distractors: wrong tense with yesterday, wrong participle (finish), present-perfect-with-ago.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Frage ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you ever ridden a horse?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Did you ever ride a horse?",
+        "Have you ever rode a horse?",
+        "Have you ridden a horse yesterday?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage nach Erfahrung mit „ever\" → Present perfect, 3. Form von ride.",
+      "hintEn": null,
+      "explainDe": "Erfahrungsfragen mit „ever\" stehen im Present perfect: Have you ever ridden a horse? Die 3. Form von ride ist ridden.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Did you ever ride a horse?",
+          "Have you ever rode a horse?",
+          "Have you ridden a horse yesterday?",
+          "Did you ever ridden a horse?",
+          "Have you ever ride a horse?"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-mc-021",
+      "sbRef": null,
+      "note": "Distractors: past-simple-with-ever, wrong participle (rode), present-perfect-with-yesterday.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have never been to Spain.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I never went to Spain last year.",
+        "I have never been to Spain in 2020.",
+        "I have never gone to Spain yesterday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„never\" als Lebenserfahrung → Present perfect, ohne Zeitpunkt.",
+      "hintEn": null,
+      "explainDe": "Mit „never\" über deine Erfahrung sprichst du im Present perfect: I have never been to Spain. Kein Jahr, kein „yesterday\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I never went to Spain last year.",
+          "I have never been to Spain in 2020.",
+          "I have never gone to Spain yesterday.",
+          "I have never went to Spain.",
+          "I didn't never go to Spain."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-mc-003",
+      "sbRef": null,
+      "note": "Distractors mix never with definite-time markers and a wrong participle.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welche Form passt? Edison ___ all his money in DC.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "invested",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "has invested",
+        "have invested",
+        "has invest"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine abgeschlossene Tat aus der Geschichte → Past simple.",
+      "hintEn": null,
+      "explainDe": "Edison hat das damals getan, es ist abgeschlossen: Past simple invested. „Has invested\" wäre Present perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "has invested",
+          "have invested",
+          "has invest",
+          "did invested",
+          "have invest"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 8.txt#tesla-text",
+      "note": "Carrier from Tesla text: 'Edison invested all his money in DC.' Distractors: present perfect (wrong tense in a finished-past narrative), wrong agreement, wrong participle.",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Deine Freundin fragt nach deinem Wochenende. Du warst gestern im Kino.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I went to the cinema yesterday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I have gone to the cinema yesterday.",
+        "Have you ever gone to the cinema yesterday?",
+        "I have went to the cinema yesterday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„yesterday\" nennt den Zeitpunkt – such den Past-simple-Satz.",
+      "hintEn": null,
+      "explainDe": "Mit „yesterday\" gehört der Past simple: I went to the cinema yesterday. Present perfect passt nicht zu einem genauen Tag.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I have gone to the cinema yesterday.",
+          "Have you ever gone to the cinema yesterday?",
+          "I have went to the cinema yesterday.",
+          "I have been to the cinema yesterday.",
+          "I did went to the cinema yesterday."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-cp-001",
+      "sbRef": null,
+      "note": "Distractors: present-perfect-with-yesterday, past-with-ever (here perfect-question form), wrong participle.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du willst wissen, ob deine Freundin jemals in ihrem Leben ein Pferd geritten ist.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you ever ridden a horse?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Did you ever ride a horse?",
+        "Have you ridden a horse yesterday?",
+        "Have you ever rode a horse?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„jemals im Leben\" → Erfahrungsfrage im Present perfect.",
+      "hintEn": null,
+      "explainDe": "Wenn du nach einer Erfahrung „jemals\" fragst, nimmst du das Present perfect: Have you ever ridden a horse?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Did you ever ride a horse?",
+          "Have you ridden a horse yesterday?",
+          "Have you ever rode a horse?",
+          "Do you ever ride a horse?",
+          "Did you ever ridden a horse?"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-cp-020",
+      "sbRef": null,
+      "note": "Distractors: past-simple-with-ever, present-perfect-with-yesterday, wrong participle (rode).",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du hast deinen Schlüssel verloren und kannst ihn jetzt nicht finden. Du erzählst es deiner Mutter.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have lost my keys. I can't find them.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I lost my keys yesterday. I can't find them.",
+        "I have lost my keys two days ago.",
+        "I have lose my keys. I can't find them."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist JETZT wichtig (du findest sie nicht) und kein Zeitpunkt → Present perfect.",
+      "hintEn": null,
+      "explainDe": "Der Verlust wirkt bis jetzt (du kannst sie nicht finden) und du nennst keinen Zeitpunkt: Present perfect I have lost my keys.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I lost my keys yesterday. I can't find them.",
+          "I have lost my keys two days ago.",
+          "I have lose my keys. I can't find them.",
+          "I have lost my keys yesterday.",
+          "I did lost my keys. I can't find them."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-mc-022",
+      "sbRef": null,
+      "note": "Distractors: past-simple where present-relevance is needed, present-perfect-with-ago, wrong participle (lose).",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du erzählst von Tesla. Er hat 1884 mit nur 4 Cent in der Tasche New York erreicht.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tesla arrived in New York in 1884.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Tesla has arrived in New York in 1884.",
+        "Tesla has ever arrived in New York.",
+        "Tesla has arrive in New York in 1884."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„in 1884\" ist ein genaues Jahr – Past simple.",
+      "hintEn": null,
+      "explainDe": "Mit der Jahreszahl „in 1884\" nimmst du das Past simple: Tesla arrived in New York in 1884. Present perfect passt nicht zu einem genauen Jahr.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Tesla has arrived in New York in 1884.",
+          "Tesla has ever arrived in New York.",
+          "Tesla has arrive in New York in 1884.",
+          "Tesla have arrived in New York in 1884.",
+          "Tesla did arrived in New York in 1884."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 8.txt#tesla-text",
+      "note": "From Tesla reading. Distractors: present-perfect-with-year, present-perfect-with-ever (no relevance context), wrong participle.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde den Fehler und schreib den Satz richtig: I have been to the zoo yesterday.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was at the zoo yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "I went to the zoo yesterday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„yesterday\" und Present perfect passen nicht zusammen – wechsle in den Past simple.",
+      "hintEn": null,
+      "explainDe": "Mit „yesterday\" darf kein Present perfect stehen. Richtig ist der Past simple: I was at the zoo yesterday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-ec-001",
+      "sbRef": null,
+      "note": "Error type: present-perfect-with-definite-time.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde den Fehler und schreib den Satz richtig: I have seen that film last week.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I saw that film last week.",
+          "tier": "full"
+        },
+        {
+          "text": "saw",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„last week\" verlangt den Past simple.",
+      "hintEn": null,
+      "explainDe": "„Last week\" ist ein Zeitpunkt in der Vergangenheit, darum Past simple: I saw that film last week.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-ec-020",
+      "sbRef": null,
+      "note": "Error type: present-perfect-with-definite-time. Also accepts the corrected verb alone as partial.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde den Fehler und schreib den Satz richtig: Did you ever visit Rome?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you ever been to Rome?",
+          "tier": "full"
+        },
+        {
+          "text": "Have you ever visited Rome?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erfahrungsfrage mit „ever\" → Present perfect, nicht „Did … ever\".",
+      "hintEn": null,
+      "explainDe": "Erfahrungsfragen mit „ever\" stehen im Present perfect: Have you ever been to Rome? Nicht „Did you ever …\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-ec-002",
+      "sbRef": null,
+      "note": "Error type: past-simple-with-ever in an experience question.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde den Fehler und schreib den Satz richtig: Sadie has won first place in 2019.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sadie won first place in 2019.",
+          "tier": "full"
+        },
+        {
+          "text": "won",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„in 2019\" ist ein genaues Jahr – Past simple.",
+      "hintEn": null,
+      "explainDe": "Mit der Jahreszahl „in 2019\" darf kein Present perfect stehen. Richtig: Sadie won first place in 2019.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-ec-022",
+      "sbRef": "g3/sb/More 3 SB Unit 8.txt#sadie-text",
+      "note": "Error type: present-perfect-with-definite-year. Sadie context from SB reading.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde den Fehler und schreib den Satz richtig: She already finished the book two days ago.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She finished the book two days ago.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„two days ago\" nennt den Zeitpunkt – nur Past simple, ohne „already\".",
+      "hintEn": null,
+      "explainDe": "„Two days ago\" verlangt den Past simple: She finished the book two days ago. „Already\" gehört zum Present perfect und passt hier nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-ec-003",
+      "sbRef": null,
+      "note": "Error type: already (present-perfect signal) clashing with 'ago' (past-simple signal).",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde den Fehler und schreib den Satz richtig: I have never tried Indian food last year.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have never tried Indian food.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„never\" als Erfahrung verträgt keinen Zeitpunkt wie „last year\".",
+      "hintEn": null,
+      "explainDe": "Mit „never\" über Erfahrung darf kein Zeitpunkt stehen. Streich „last year\": I have never tried Indian food.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Error type: present-perfect (never) + a definite-time marker that must be dropped.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib den Satz neu und tausche „just\" gegen „yesterday\": She has just finished her project. (yesterday)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She finished her project yesterday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mit „yesterday\" wird aus dem Present perfect ein Past simple.",
+      "hintEn": null,
+      "explainDe": "„Just\" gehört zum Present perfect, „yesterday\" zum Past simple. Mit dem neuen Zeitpunkt: She finished her project yesterday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Signal-word swap forces a tense switch.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreib den Satz neu mit „never\": I tried snowboarding last winter. (never)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have never tried snowboarding.",
+          "tier": "full"
+        },
+        {
+          "text": "I've never tried snowboarding.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„never\" als Erfahrung → Present perfect; der Zeitpunkt fällt weg.",
+      "hintEn": null,
+      "explainDe": "Mit „never\" sprichst du über Erfahrung ohne Zeitpunkt. Aus dem Past simple wird das Present perfect: I have never tried snowboarding.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Trigger 'never' drops the time marker and switches the tense.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreib den Satz neu mit „in 2010\": Tesla has designed many machines. (in 2010)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tesla designed many machines in 2010.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein genaues Jahr → Past simple.",
+      "hintEn": null,
+      "explainDe": "„In 2010\" ist ein bestimmter Zeitpunkt, darum Past simple: Tesla designed many machines in 2010.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Date trigger forces present perfect → past simple.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bilde eine Erfahrungsfrage aus den Bausteinen: you / ever / enter / a competition",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you ever entered a competition?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„ever\" → Present perfect: Have you ever + 3. Form?",
+      "hintEn": null,
+      "explainDe": "Erfahrungsfragen mit „ever\" beginnst du mit „Have you ever\" + 3. Form: Have you ever entered a competition?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 8.txt#ex-14",
+      "note": "SB ex. 14 dialogue: 'Have you ever entered a competition?'",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bilde die Frage nach dem Zeitpunkt aus den Bausteinen: when / you / win / the prize",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When did you win the prize?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„When …?\" fragt nach dem Zeitpunkt → Past simple mit did.",
+      "hintEn": null,
+      "explainDe": "Eine Frage mit „When …?\" will den Zeitpunkt wissen, darum Past simple: When did you win the prize? Nicht „When have you won …?\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 8.txt#grammar-1",
+      "note": "Contrast item: 'when' forces past simple even though prizes feel 'present-relevant'.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bring die Bausteine in die richtige Reihenfolge: never / I / been / have / to / Spain",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have never been to Spain.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: I + have + never + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Im Present perfect steht das Signalwort „never\" zwischen have und der 3. Form: I have never been to Spain.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was",
+          "did",
+          "to",
+          "in"
+        ],
+        "chipBudget": 6,
+        "minOptions": null
+      },
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-sb-001",
+      "sbRef": null,
+      "note": "Six answer chips; chipBudget covers the answer tokens (no distractor chips, kept ≤12).",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bring die Bausteine in die richtige Reihenfolge: already / the / I / finished / have / project",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have already finished the project.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: I + have + already + 3. Form + Objekt.",
+      "hintEn": null,
+      "explainDe": "„Already\" steht im Present perfect zwischen have und der 3. Form: I have already finished the project.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "did",
+          "yet",
+          "the",
+          "have"
+        ],
+        "chipBudget": 6,
+        "minOptions": null
+      },
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-sb-021",
+      "sbRef": null,
+      "note": "Six answer chips; chipBudget = answer-token count.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bring die Bausteine in die richtige Reihenfolge: ago / Edison / two / lights / made / years",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Edison made lights two years ago.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„… ago\" steht am Ende und verlangt den Past simple.",
+      "hintEn": null,
+      "explainDe": "„Two years ago\" nennt den Zeitpunkt am Satzende und verlangt Past simple: Edison made lights two years ago.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "has",
+          "have",
+          "in",
+          "ever"
+        ],
+        "chipBudget": 6,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Past-simple counterpart to the perfect sb items; chipBudget = answer-token count.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich habe diesen Film schon gesehen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have already seen this film.",
+          "tier": "full"
+        },
+        {
+          "text": "I've already seen this film.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„schon\" ohne Zeitpunkt → Present perfect mit „already\".",
+      "hintEn": null,
+      "explainDe": "„schon\" ist hier „already\" und steht im Present perfect: I have already seen this film.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Warst du schon einmal in England?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you ever been to England?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„schon einmal\" = „ever\" → Present perfect.",
+      "hintEn": null,
+      "explainDe": "„schon einmal\" fragt nach Erfahrung und wird mit „ever\" im Present perfect ausgedrückt: Have you ever been to England?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-tr-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Wir sind letzten Sommer nach Italien gefahren.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We went to Italy last summer.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„letzten Sommer\" ist vorbei → Past simple.",
+      "hintEn": null,
+      "explainDe": "„letzten Sommer\" nennt einen Zeitpunkt in der Vergangenheit, darum Past simple: We went to Italy last summer.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-tr-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Ich habe gerade mein Zimmer aufgeräumt.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have just tidied my room.",
+          "tier": "full"
+        },
+        {
+          "text": "I've just tidied my room.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„gerade\" = „just\" → Present perfect.",
+      "hintEn": null,
+      "explainDe": "„gerade\" wird mit „just\" im Present perfect ausgedrückt: I have just tidied my room.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-tr-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Sortiere die Signalwörter danach, zu welcher Zeit sie gehören.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "When? (one moment in the past)",
+          "members": [
+            "yesterday",
+            "last week",
+            "two days ago",
+            "in 2010"
+          ]
+        },
+        {
+          "label": "Experience (no exact time)",
+          "members": [
+            "ever",
+            "never",
+            "just",
+            "already"
+          ]
+        }
+      ],
+      "hintDe": "Sagt das Wort genau WANN etwas war, oder nur DASS es passiert ist?",
+      "hintEn": null,
+      "explainDe": "Signalwörter mit Zeitpunkt (yesterday, last week, ago, in 2010) gehören zum Past simple. Signalwörter wie ever, never, just, already gehören zum Present perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u8-past-simple-vs-present-perfect-mt-020",
+      "sbRef": "g3/sb/More 3 SB Unit 8.txt#grammar-1",
+      "note": "Signal words straight from the SB grammar box.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere die Sätze: gestern (mit Zeitangabe) oder schon mal (Erfahrung)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "When? (one moment in the past)",
+          "members": [
+            "I went to the cinema yesterday.",
+            "Tesla invented the electric motor.",
+            "We visited Rome last year."
+          ]
+        },
+        {
+          "label": "Experience (no exact time)",
+          "members": [
+            "I have never been to Spain.",
+            "She has just finished her homework.",
+            "Have you ever ridden a horse?"
+          ]
+        }
+      ],
+      "hintDe": "Achte auf die Signalwörter im Satz: Zeitpunkt → links, Erfahrung → rechts.",
+      "hintEn": null,
+      "explainDe": "Sätze mit yesterday, last year oder einem genauen Ereignis stehen im Past simple. Sätze mit never, just oder ever stehen im Present perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Full-sentence sort building on the signal-word sort.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Antwort passt zu welcher Frage?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Have you ever been to Spain?",
+          "right": "Yes, we went to Madrid last year."
+        },
+        {
+          "left": "Has June finished her homework?",
+          "right": "Yes, she finished ten minutes ago."
+        },
+        {
+          "left": "Has the film started yet?",
+          "right": "Yes, it started about fifteen minutes ago."
+        },
+        {
+          "left": "Has he written you an email?",
+          "right": "No, but he phoned me."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Lies die Frage und such die Antwort, die dieselbe Sache meint.",
+      "hintEn": null,
+      "explainDe": "Die Frage steht im Present perfect (Erfahrung), die Antwort nennt mit „last year\" oder „ten minutes ago\" oft den genauen Zeitpunkt im Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 8.txt#ex-4",
+      "note": "Question↔answer pairs adapted from WB ex. 4 (English↔English).",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "matching",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satzanfang passt zu welchem Ende?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I have never",
+          "right": "eaten sushi."
+        },
+        {
+          "left": "Tesla invented",
+          "right": "the electric motor in 1888."
+        },
+        {
+          "left": "Sadie has just",
+          "right": "won her first prize."
+        },
+        {
+          "left": "We watched a film",
+          "right": "last night."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Pass auf: have/has → 3. Form; ein Zeitpunkt → Past simple.",
+      "hintEn": null,
+      "explainDe": "Nach have/has folgt die 3. Form (eaten, won). Ein Zeitpunkt wie „in 1888\" oder „last night\" verlangt den Past simple (invented, watched).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Sentence-half matching, English↔English, unique right sides.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "matching-pairs",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "be",
+          "right": "been"
+        },
+        {
+          "left": "go",
+          "right": "gone"
+        },
+        {
+          "left": "see",
+          "right": "seen"
+        },
+        {
+          "left": "do",
+          "right": "done"
+        },
+        {
+          "left": "eat",
+          "right": "eaten"
+        },
+        {
+          "left": "win",
+          "right": "won"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Die 3. Form brauchst du nach have/has im Present perfect.",
+      "hintEn": null,
+      "explainDe": "Diese 3. Formen (been, gone, seen, done, eaten, won) brauchst du fürs Present perfect, z. B. „I have eaten\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Base form ↔ past participle, English↔English, unique right sides. Supports the participle gate.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "go",
+          "right": "went"
+        },
+        {
+          "left": "see",
+          "right": "saw"
+        },
+        {
+          "left": "break",
+          "right": "broke"
+        },
+        {
+          "left": "win",
+          "right": "won"
+        },
+        {
+          "left": "make",
+          "right": "made"
+        },
+        {
+          "left": "have",
+          "right": "had"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Das ist die einfache Vergangenheit (Past simple), z. B. nach „yesterday\".",
+      "hintEn": null,
+      "explainDe": "Diese Past-simple-Formen (went, saw, broke, won, made, had) brauchst du mit Signalwörtern wie „yesterday\" oder „last week\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Base form ↔ past simple, English↔English, unique right sides.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setz die richtige Form ein: She ___ (win) first place last year.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "won",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„last year\" → Past simple, unregelmäßige Form von win.",
+      "hintEn": null,
+      "explainDe": "„Last year\" ist ein Zeitpunkt in der Vergangenheit, also Past simple: won (unregelmäßig).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 8.txt#grammar-1",
+      "note": "Contrasts the SB box's 'won / has won' circle task.",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setz die richtige Form ein: She ___ (already / write) three books.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has already written",
+          "tier": "full"
+        },
+        {
+          "text": "'s already written",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„already\" ohne Zeitpunkt → Present perfect: has + 3. Form von write.",
+      "hintEn": null,
+      "explainDe": "„Already\" ist ein Signalwort fürs Present perfect: has already written. Die 3. Form von write ist written.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have just made a new invention!",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I just made a new invention two days ago.",
+        "I have just make a new invention!",
+        "Did you just made a new invention?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„just\" für etwas Frisches → Present perfect mit have + 3. Form.",
+      "hintEn": null,
+      "explainDe": "„Just\" für etwas gerade Geschehenes verlangt das Present perfect: I have just made a new invention. Die 3. Form von make ist made.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I just made a new invention two days ago.",
+          "I have just make a new invention!",
+          "Did you just made a new invention?",
+          "I have just maked a new invention!",
+          "I has just made a new invention!"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 8.txt#ex-11",
+      "note": "Echoes WB ex. 11 'I've just invented a new machine.' Distractors: just-with-ago (wrong tense), wrong participle, did + past form question error.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Deine Lehrerin fragt nach deinen Erfahrungen. Du willst sagen, dass du noch nie in einem Flugzeug warst.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have never been on a plane.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I never was on a plane last year.",
+        "I have never been on a plane yesterday.",
+        "I have never be on a plane."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "„noch nie\" als Erfahrung → Present perfect, ohne Zeitpunkt.",
+      "hintEn": null,
+      "explainDe": "„noch nie\" ist „never\" als Erfahrung im Present perfect: I have never been on a plane. Kein Zeitpunkt dazu.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I never was on a plane last year.",
+          "I have never been on a plane yesterday.",
+          "I have never be on a plane.",
+          "I have never gone on a plane yesterday.",
+          "I didn't never be on a plane."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Distractors: past-simple-with-never+time, present-perfect-with-yesterday, wrong base form after never.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u08.s.past-simple-vs-present-perfect",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach aus der Aussage eine Erfahrungsfrage mit „ever\": You have visited London. (ever / question)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you ever been to London?",
+          "tier": "full"
+        },
+        {
+          "text": "Have you ever visited London?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erfahrungsfrage: Have you ever + 3. Form?",
+      "hintEn": null,
+      "explainDe": "Aus der Aussage wird eine Erfahrungsfrage im Present perfect: Have you ever been to London?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 8.txt#ex-14",
+      "note": "Statement → ever-question transformation.",
+      "blanks": 0
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g3-u06",
+  "items": {
+    "76af23443821": "g3u06.gi.relative-clauses.gf.001",
+    "8261515b710d": "g3u06.gi.relative-clauses.gf.002",
+    "555c2a20b63b": "g3u06.gi.relative-clauses.gf.003",
+    "af2d66d1328f": "g3u06.gi.relative-clauses.gf.004",
+    "a1898691b9fd": "g3u06.gi.relative-clauses.gf.005",
+    "6a8cc290d913": "g3u06.gi.relative-clauses.gf.006",
+    "49be0fe4ea1f": "g3u06.gi.relative-clauses.gf.007",
+    "1530e156fcf9": "g3u06.gi.relative-clauses.gf.008",
+    "f81ccaa9653e": "g3u06.gi.relative-clauses.gf.009",
+    "fb39abacd6ad": "g3u06.gi.relative-clauses.gf.010",
+    "151ba1ee1fa9": "g3u06.gi.relative-clauses.gf.011",
+    "145080b73bd3": "g3u06.gi.relative-clauses.gf.012",
+    "456f6ea5d9ff": "g3u06.gi.relative-clauses.mc.001",
+    "40670602552c": "g3u06.gi.relative-clauses.mc.002",
+    "6f59f064b223": "g3u06.gi.relative-clauses.mc.003",
+    "29b61e7b653b": "g3u06.gi.relative-clauses.mc.004",
+    "1ad46e8489f0": "g3u06.gi.relative-clauses.mc.005",
+    "5604718e9312": "g3u06.gi.relative-clauses.cp.001",
+    "c11361e515eb": "g3u06.gi.relative-clauses.cp.002",
+    "0928d989f517": "g3u06.gi.relative-clauses.cp.003",
+    "89ae7f267b81": "g3u06.gi.relative-clauses.ec.001",
+    "74a68850ac70": "g3u06.gi.relative-clauses.ec.002",
+    "fcb708c41db5": "g3u06.gi.relative-clauses.ec.003",
+    "4a3a7d92ff9b": "g3u06.gi.relative-clauses.ec.004",
+    "c5e8ac678966": "g3u06.gi.relative-clauses.ec.005",
+    "cf3d47de3a69": "g3u06.gi.relative-clauses.tr.001",
+    "f9f02045d1a3": "g3u06.gi.relative-clauses.tr.002",
+    "0cd475da1a9b": "g3u06.gi.relative-clauses.tr.003",
+    "8a819eb9ef42": "g3u06.gi.relative-clauses.tr.004",
+    "9ca9b767925e": "g3u06.gi.relative-clauses.sb.002",
+    "9d89c838e4b2": "g3u06.gi.relative-clauses.sb.003",
+    "40a6da567225": "g3u06.gi.relative-clauses.qf.001",
+    "e1361059e62d": "g3u06.gi.relative-clauses.ff.001",
+    "fac2ba2f6741": "g3u06.gi.relative-clauses.gs.001",
+    "7296deb43f02": "g3u06.gi.relative-clauses.mt.001",
+    "100d1141f4a5": "g3u06.gi.relative-clauses.mp.001",
+    "f8a623890da9": "g3u06.gi.relative-clauses.gf.013",
+    "c139c25c0957": "g3u06.gi.relative-clauses.gf.014",
+    "cab2465462db": "g3u06.gi.relative-clauses.gf.015",
+    "237deef1df57": "g3u06.gi.relative-clauses.ec.006",
+    "6a627ed0e393": "g3u06.gi.relative-clauses.ec.007",
+    "4bbc886c3150": "g3u06.gi.relative-clauses.mc.006",
+    "1ce69065e914": "g3u06.gi.relative-clauses.mc.007",
+    "047145ebc703": "g3u06.gi.relative-clauses.gf.016",
+    "65fedc86c738": "g3u06.gi.relative-clauses.tr.005",
+    "44705b60916d": "g3u06.gi.relative-clauses.qf.002",
+    "77708fd53079": "g3u06.gi.relative-clauses.tf.006",
+    "4869daa85d0c": "g3u06.gi.relative-clauses.tf.007",
+    "b45f64163e67": "g3u06.gi.relative-clauses.tf.008",
+    "9a0bb2aab0e7": "g3u06.gi.relative-clauses.tf.009",
+    "8742031f9be3": "g3u06.gi.relative-clauses.sb.004",
+    "d706f637e303": "g3u06.gi.relative-clauses.gs.003",
+    "5bec1ba83529": "g3u06.gi.relative-clauses.ag.003",
+    "f86eb0cbc597": "g3u06.gi.relative-clauses.ag.004",
+    "f871c3342cc7": "g3u06.gi.relative-clauses.tf.010"
+  },
+  "tombstones": [
+    {
+      "id": "g3u06.gi.relative-clauses.mp.002",
+      "key": "f22fd5858159",
+      "removedWith": "f9ffe1f1ead0"
+    },
+    {
+      "id": "g3u06.gi.relative-clauses.tf.001",
+      "key": "feec315c140e",
+      "removedWith": "24d0f1cecc11"
+    },
+    {
+      "id": "g3u06.gi.relative-clauses.tf.002",
+      "key": "fc3f6826d367",
+      "removedWith": "24d0f1cecc11"
+    },
+    {
+      "id": "g3u06.gi.relative-clauses.tf.003",
+      "key": "3f9dd0e00265",
+      "removedWith": "24d0f1cecc11"
+    },
+    {
+      "id": "g3u06.gi.relative-clauses.tf.004",
+      "key": "cb4376e967db",
+      "removedWith": "24d0f1cecc11"
+    },
+    {
+      "id": "g3u06.gi.relative-clauses.sb.001",
+      "key": "2641e64cbc59",
+      "removedWith": "24d0f1cecc11"
+    },
+    {
+      "id": "g3u06.gi.relative-clauses.gs.002",
+      "key": "2e131358f1fe",
+      "removedWith": "24d0f1cecc11"
+    },
+    {
+      "id": "g3u06.gi.relative-clauses.ag.001",
+      "key": "e4bc7eb34e40",
+      "removedWith": "24d0f1cecc11"
+    },
+    {
+      "id": "g3u06.gi.relative-clauses.ag.002",
+      "key": "7efe54183d94",
+      "removedWith": "24d0f1cecc11"
+    },
+    {
+      "id": "g3u06.gi.relative-clauses.tf.005",
+      "key": "612498627945",
+      "removedWith": "24d0f1cecc11"
+    }
+  ]
+}

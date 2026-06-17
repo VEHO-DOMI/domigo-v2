@@ -1,0 +1,2012 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g4-u05",
+  "briefBank": "d475a7bb945f",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g4u05.w.artificial",
+      "w": "artificial",
+      "g": "künstlich",
+      "d": "not natural; people make it",
+      "s": "This drink has nothing ___ in it; it is all natural.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "artificial",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "artificial",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "artificial",
+            "tier": "full"
+          },
+          {
+            "text": "man-made",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "künstlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fresh",
+        "healthy",
+        "nutritious"
+      ],
+      "hintDe": "Das Gegenteil von 'natürlich' – von Menschen gemacht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fresh",
+          "healthy",
+          "nutritious",
+          "tasty",
+          "filling"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.fattening",
+      "w": "fattening",
+      "g": "dick machend",
+      "d": "makes you become heavier and fatter",
+      "s": "Chocolate cake is very tasty but also very ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "fattening",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fattening",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fattening",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dick machend",
+            "tier": "full"
+          },
+          {
+            "text": "macht dick",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "filling",
+        "harmful",
+        "nutritious"
+      ],
+      "hintDe": "Davon nimmt man zu – es macht dick.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "filling",
+          "harmful",
+          "nutritious",
+          "healthy",
+          "fresh"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.filling",
+      "w": "filling",
+      "g": "sättigend",
+      "d": "makes you feel that you have had a lot of food",
+      "s": "Junk food is ___ but it is not very healthy.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "filling",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "filling",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "filling",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sättigend",
+            "tier": "full"
+          },
+          {
+            "text": "macht satt",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fattening",
+        "harmful",
+        "tasty"
+      ],
+      "hintDe": "Davon wird man satt – der Bauch ist voll.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fattening",
+          "harmful",
+          "tasty",
+          "fresh",
+          "nutritious"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.revolting",
+      "w": "revolting",
+      "g": "ekelhaft",
+      "d": "has a very bad taste or smell",
+      "s": "This old fish smells ___ and I feel sick.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "revolting",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "revolting",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "revolting",
+            "tier": "full"
+          },
+          {
+            "text": "disgusting",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ekelhaft",
+            "tier": "full"
+          },
+          {
+            "text": "widerlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tasty",
+        "fresh",
+        "healthy"
+      ],
+      "hintDe": "So eklig, dass dir fast schlecht wird.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "tasty",
+          "fresh",
+          "healthy",
+          "nutritious",
+          "filling"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.harmful",
+      "w": "harmful",
+      "g": "schädlich",
+      "d": "is bad for you and not good in any way",
+      "s": "Too much sugar is very ___ to your health.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "harmful",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "harmful",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "harmful",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schädlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "healthy",
+        "nutritious",
+        "fresh"
+      ],
+      "hintDe": "Es schadet dir – es ist schlecht für dich.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "healthy",
+          "nutritious",
+          "fresh",
+          "tasty",
+          "filling"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.healthy",
+      "w": "healthy",
+      "g": "gesund",
+      "d": "good for you and keeps you well",
+      "s": "Fresh vegetables are very ___ and good for you.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "healthy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "healthy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "healthy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gesund",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "harmful",
+        "fattening",
+        "artificial"
+      ],
+      "hintDe": "Gut für dich – davon bleibst du gesund.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "harmful",
+          "fattening",
+          "artificial",
+          "revolting",
+          "filling"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.nutritious",
+      "w": "nutritious",
+      "g": "nahrhaft",
+      "d": "has a lot of healthy things your body needs to grow",
+      "s": "Fresh vegetables are very ___ and good for you.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "nutritious",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nutritious",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nutritious",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nahrhaft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        },
+        {
+          "word": "body",
+          "de": "Körper",
+          "scope": "d"
+        },
+        {
+          "word": "grow",
+          "de": "wachsen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "fattening",
+        "harmful",
+        "artificial"
+      ],
+      "hintDe": "Voll mit guten Sachen, die dein Körper braucht.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "fattening",
+          "harmful",
+          "artificial",
+          "revolting",
+          "filling"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.fresh",
+      "w": "fresh",
+      "g": "frisch",
+      "d": "new; not from a tin",
+      "s": "The market sells ___ bread every morning.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fresh",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fresh",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fresh",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "frisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "artificial",
+        "revolting",
+        "fattening"
+      ],
+      "hintDe": "Ganz neu gemacht – nicht aus der Dose.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "artificial",
+          "revolting",
+          "fattening",
+          "harmful",
+          "filling"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.tasty",
+      "w": "tasty",
+      "g": "lecker",
+      "d": "has a very nice taste",
+      "s": "The soup was so ___ that I wanted more.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "tasty",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tasty",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tasty",
+            "tier": "full"
+          },
+          {
+            "text": "delicious",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lecker",
+            "tier": "full"
+          },
+          {
+            "text": "schmackhaft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "revolting",
+        "harmful",
+        "artificial"
+      ],
+      "hintDe": "Schmeckt richtig gut.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "revolting",
+          "harmful",
+          "artificial",
+          "fattening",
+          "filling"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.vegetarian",
+      "w": "vegetarian",
+      "g": "Vegetarier/in",
+      "d": "a person who does not eat meat or fish",
+      "s": "My sister never eats meat because she is a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "vegetarian",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "vegetarian",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "vegetarian",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vegetarier",
+            "tier": "full"
+          },
+          {
+            "text": "Vegetarierin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "person",
+          "de": "Mensch",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "diet",
+        "habits",
+        "nutrition"
+      ],
+      "hintDe": "Diese Person isst kein Fleisch.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "diet",
+          "habits",
+          "nutrition",
+          "hunger",
+          "health"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.afford",
+      "w": "afford",
+      "g": "sich leisten können",
+      "d": "to have the money to pay for what you want",
+      "s": "I want those new trainers but I can't ___ them.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "afford",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "afford",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "afford",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich leisten",
+            "tier": "full"
+          },
+          {
+            "text": "sich leisten können",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "waste",
+        "feed",
+        "contain"
+      ],
+      "hintDe": "Genug Geld haben, um etwas zu kaufen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "waste",
+          "feed",
+          "contain",
+          "gain",
+          "accept"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.feed",
+      "w": "feed",
+      "g": "ernähren",
+      "d": "to give food to people or an animal",
+      "s": "They have a big family to ___ every day.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "feed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "feed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "feed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ernähren",
+            "tier": "full"
+          },
+          {
+            "text": "füttern",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "afford",
+        "waste",
+        "contain"
+      ],
+      "hintDe": "Jemandem zu essen geben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "afford",
+          "waste",
+          "contain",
+          "gain",
+          "trust"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.hunger",
+      "w": "hunger",
+      "g": "Hunger",
+      "d": "the feeling of needing food",
+      "s": "Many people in the world die of ___ every day.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hunger",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hunger",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hunger",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hunger",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "health",
+        "diet",
+        "intake"
+      ],
+      "hintDe": "Das Gefühl, wenn du etwas essen musst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "health",
+          "diet",
+          "intake",
+          "nutrition",
+          "habits"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.intake",
+      "w": "intake",
+      "g": "Aufnahme",
+      "d": "how much food you take in every day",
+      "s": "People in America have an ___ of more sugar than people in Africa.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "intake",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "intake",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "intake",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Aufnahme",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hunger",
+        "diet",
+        "nutrition"
+      ],
+      "hintDe": "Wie viel du täglich isst und trinkst.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "hunger",
+          "diet",
+          "nutrition",
+          "health",
+          "habits"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.waste",
+      "w": "waste",
+      "g": "verschwenden",
+      "d": "to use too much of a thing in a bad way",
+      "s": "We must stop ___ food and help the hungry.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wasting",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "waste",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "waste",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verschwenden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "feed",
+        "afford",
+        "contain"
+      ],
+      "hintDe": "Zu viel von etwas benutzen und wegwerfen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "feed",
+          "afford",
+          "contain",
+          "gain",
+          "accept"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.contain",
+      "w": "contain",
+      "g": "enthalten",
+      "d": "to have a thing inside it",
+      "s": "These sweets ___ a lot of sugar so don't eat too many.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "contain",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "contain",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "contain",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "enthalten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "feed",
+        "waste",
+        "afford"
+      ],
+      "hintDe": "Etwas in sich haben – drin sein.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "feed",
+          "waste",
+          "afford",
+          "gain",
+          "trust"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.cookery",
+      "w": "cookery",
+      "g": "Kochkunst",
+      "d": "the art of cooking food",
+      "s": "You can cook nice food with a good ___ book.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cookery",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cookery",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cookery",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kochkunst",
+            "tier": "full"
+          },
+          {
+            "text": "Kochen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "diet",
+        "nutrition",
+        "health"
+      ],
+      "hintDe": "Das Kochen – die Kunst, Essen zu machen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "diet",
+          "nutrition",
+          "health",
+          "habits",
+          "intake"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.diet",
+      "w": "diet",
+      "g": "Ernährung",
+      "d": "the food you usually eat",
+      "s": "To stay fit you need a healthy ___ with lots of vegetables.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "diet",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "diet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "diet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ernährung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "nutrition",
+        "intake",
+        "hunger"
+      ],
+      "hintDe": "Das, was du normalerweise isst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "nutrition",
+          "intake",
+          "hunger",
+          "health",
+          "cookery"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.even-though",
+      "w": "even though",
+      "g": "obwohl",
+      "d": "used when what happens is surprising",
+      "s": "I had to eat the spinach ___ I did not like it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "even though",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "even though",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "even though",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "obwohl",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "afterwards",
+        "regularly",
+        "diet"
+      ],
+      "hintDe": "Du sagst es, wenn etwas Überraschendes folgt – z. B. 'obwohl'.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "afterwards",
+          "regularly",
+          "diet",
+          "health",
+          "habits"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.health",
+      "w": "health",
+      "g": "Gesundheit",
+      "d": "how well or ill you are",
+      "s": "Good ___ is the best thing in your life.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "health",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "health",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "health",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gesundheit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hunger",
+        "diet",
+        "intake"
+      ],
+      "hintDe": "Wie gesund du bist.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "hunger",
+          "diet",
+          "intake",
+          "nutrition",
+          "habits"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.nutrition",
+      "w": "nutrition",
+      "g": "Ernährung",
+      "d": "eating the right food to stay well",
+      "s": "Good ___ is eating the right food every day.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "nutrition",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nutrition",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nutrition",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ernährung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "health",
+        "hunger",
+        "intake"
+      ],
+      "hintDe": "Sich richtig und gesund ernähren.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "health",
+          "hunger",
+          "intake",
+          "diet",
+          "cookery"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.overweight",
+      "w": "overweight",
+      "g": "übergewichtig",
+      "d": "heavier than is good for your health",
+      "s": "If you eat too much too often, you will become ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "overweight",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "overweight",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "overweight",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "übergewichtig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "thin",
+        "healthy",
+        "fresh"
+      ],
+      "hintDe": "Zu schwer – mehr als gesund ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "thin",
+          "healthy",
+          "fresh",
+          "nutritious",
+          "tasty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.regularly",
+      "w": "regularly",
+      "g": "regelmäßig",
+      "d": "again and again, every day or every week",
+      "s": "He plays football ___ every week.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "regularly",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "regularly",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "regularly",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "regelmäßig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "afterwards",
+        "even though",
+        "health"
+      ],
+      "hintDe": "Immer wieder – zum Beispiel jeden Tag.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "afterwards",
+          "even though",
+          "health",
+          "diet",
+          "habits"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.dislike",
+      "w": "dislike",
+      "g": "nicht mögen",
+      "d": "to not like food or people",
+      "s": "I like tomatoes, but I ___ spinach.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "dislike",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dislike",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dislike",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nicht mögen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "trust",
+        "afford"
+      ],
+      "hintDe": "Etwas nicht gern haben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "trust",
+          "afford",
+          "feed",
+          "gain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.habits",
+      "w": "habits",
+      "g": "Gewohnheiten",
+      "d": "things you do often, again and again",
+      "s": "Eating fresh food every day is one of her good ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "habits",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "habits",
+          "tier": "full"
+        },
+        {
+          "text": "habit",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "habits",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gewohnheiten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "diet",
+        "health",
+        "nutrition"
+      ],
+      "hintDe": "Dinge, die du immer wieder machst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "diet",
+          "health",
+          "nutrition",
+          "hunger",
+          "intake"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.accept",
+      "w": "accept",
+      "g": "hinnehmen",
+      "d": "to take a thing and agree it is true",
+      "s": "I have to ___ that I cannot have everything I want.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "accept",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "accept",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "accept",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hinnehmen",
+            "tier": "full"
+          },
+          {
+            "text": "akzeptieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "trust",
+        "dislike",
+        "feed"
+      ],
+      "hintDe": "Etwas so annehmen, wie es ist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "trust",
+          "dislike",
+          "feed",
+          "waste",
+          "gain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.afterwards",
+      "w": "afterwards",
+      "g": "nachher",
+      "d": "at a time after that",
+      "s": "First we had dinner, and ___ we watched a film.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "afterwards",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "afterwards",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "afterwards",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nachher",
+            "tier": "full"
+          },
+          {
+            "text": "danach",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "regularly",
+        "even though",
+        "diet"
+      ],
+      "hintDe": "Danach – zu einer späteren Zeit.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "regularly",
+          "even though",
+          "diet",
+          "health",
+          "nutrition"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.eating-disorder",
+      "w": "eating disorder",
+      "g": "Essstörung",
+      "d": "a serious illness where somebody has a very unhealthy relationship with food",
+      "s": "An ___ is a very serious illness.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "eating disorder",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "eating disorder",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "eating disorder",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Essstörung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "diet",
+        "habits",
+        "nutrition"
+      ],
+      "hintDe": "Eine ernste Krankheit rund ums Essen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "diet",
+          "habits",
+          "nutrition",
+          "health",
+          "hunger"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.gain",
+      "w": "gain",
+      "g": "zunehmen",
+      "d": "to become heavier and put on more fat",
+      "s": "People who eat too much fast food often ___ a lot of fat.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "gain",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "gain",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "gain",
+            "tier": "full"
+          },
+          {
+            "text": "put on",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zunehmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "feed",
+        "waste",
+        "contain"
+      ],
+      "hintDe": "Schwerer werden – an Gewicht zulegen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "feed",
+          "waste",
+          "contain",
+          "afford",
+          "accept"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.gym",
+      "w": "gym",
+      "g": "Turnhalle",
+      "d": "a room at school where you do exercise",
+      "s": "PE usually takes place in the school ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "gym",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "gym",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "gym",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Turnhalle",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "diet",
+        "health",
+        "habits"
+      ],
+      "hintDe": "Der Raum in der Schule für Sport.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "diet",
+          "health",
+          "habits",
+          "hunger",
+          "nutrition"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.thin",
+      "w": "thin",
+      "g": "dünn",
+      "d": "not fat; with very little fat on you",
+      "s": "You look very ___ and you need to eat more.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "thin",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thin",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thin",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dünn",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "overweight",
+        "healthy",
+        "fresh"
+      ],
+      "hintDe": "Sehr schlank – nicht dick.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "overweight",
+          "healthy",
+          "fresh",
+          "tasty",
+          "filling"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.throw-up",
+      "w": "throw up",
+      "g": "erbrechen",
+      "d": "to bring food back up out of your mouth",
+      "s": "After the bad food, she was sick and had to ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "throw up",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "throw up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "throw up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "sich übergeben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "feed",
+        "gain",
+        "trust"
+      ],
+      "hintDe": "Das Essen wieder hochbringen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "feed",
+          "gain",
+          "trust",
+          "waste",
+          "accept"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.ashamed",
+      "w": "(be) ashamed",
+      "g": "sich schämen",
+      "d": "to feel bad and sorry about what you did",
+      "s": "You don't have to be ___ if you eat too much.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ashamed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ashamed",
+          "tier": "full"
+        },
+        {
+          "text": "be ashamed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ashamed",
+            "tier": "full"
+          },
+          {
+            "text": "be ashamed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich schämen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "healthy",
+        "thin",
+        "overweight"
+      ],
+      "hintDe": "Sich schlecht fühlen wegen etwas, das du getan hast.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "healthy",
+          "thin",
+          "overweight",
+          "fresh",
+          "tasty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u05.w.trust",
+      "w": "trust",
+      "g": "vertrauen",
+      "d": "to feel sure that people are honest and good",
+      "s": "I ___ my best friend with all my secrets.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "trust",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "trust",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "trust",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vertrauen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "dislike",
+        "feed"
+      ],
+      "hintDe": "Sich auf jemanden verlassen können.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "dislike",
+          "feed",
+          "waste",
+          "gain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

@@ -1,0 +1,2995 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g4-u02",
+  "briefBank": "68861df2eca4",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setze die Handlung ein, die noch FRÜHER passiert war (had + die 3. Form):\n\nNobody was in the building. All the employees ___ (leave).",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + die 3. Form von leave heißt left. had ist für alle Personen gleich.",
+      "hintEn": null,
+      "explainDe": "Die Angestellten waren schon gegangen, BEVOR die Polizei kam – das frühere Ereignis steht im Past perfect: had + 3. Form (left).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-001",
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Fülle die Lücke mit had + der 3. Form:\n\nWhen we arrived at the cinema, the film ___ (start).",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had started",
+          "tier": "full"
+        },
+        {
+          "text": "had already started",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Film begann FRÜHER als euer Ankommen – also had + 3. Form (started).",
+      "hintEn": null,
+      "explainDe": "Zwei Ereignisse in der Vergangenheit: Das frühere (der Film begann) steht im Past perfect (had started), das spätere (wir kamen an) im Past simple (arrived).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verneinte Form – setze had + not + die 3. Form ein:\n\nShe was tired because she ___ (not / sleep) well the night before.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hadn't slept",
+          "tier": "full"
+        },
+        {
+          "text": "had not slept",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung: hadn't + 3. Form. Von sleep ist die 3. Form slept.",
+      "hintEn": null,
+      "explainDe": "Der Grund (sie hatte nicht gut geschlafen) liegt VOR dem Müdesein, deshalb Past perfect: hadn't slept.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nBy the time we got to the station, the train ___ (leave).",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had left",
+          "tier": "full"
+        },
+        {
+          "text": "had already left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Zug fuhr FRÜHER ab, bevor ihr ankamt – had + 3. Form (left).",
+      "hintEn": null,
+      "explainDe": "'By the time …' zeigt: Das eine war schon vorbei, bevor das andere geschah. Das Frühere kommt ins Past perfect (had left).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + never + die 3. Form ein:\n\nI ___ never ___ (see) snow before I visited Austria.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | seen",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + never + 3. Form. Die 3. Form von see ist seen.",
+      "hintEn": null,
+      "explainDe": "Bis zu deinem Besuch (Past simple: visited) hattest du noch NIE Schnee gesehen – had never seen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nAfter she ___ (finish) her homework, she went out to play.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had finished",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach 'after' steht oft das Frühere: had + 3. Form (finished).",
+      "hintEn": null,
+      "explainDe": "Erst war die Hausübung fertig (had finished), DANN ging sie raus (went). Das Frühere steht im Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Frühere Handlung mit had + der 3. Form, spätere im 2. Form:\n\nHe realised he ___ (leave) his keys at home, so he ___ (go) back.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had left | went",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst das Frühere (had + 3. Form: left), dann das Spätere (Past simple: went).",
+      "hintEn": null,
+      "explainDe": "Das Liegenlassen war zuerst (had left), das Zurückgehen kam danach (went). Nur die frühere Handlung bekommt das Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nWhen we got to the restaurant, our friends ___ already ___ (order).",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | ordered",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + already + 3. Form. Von order ist die 3. Form ordered.",
+      "hintEn": null,
+      "explainDe": "Die Freunde hatten schon bestellt, BEVOR ihr ankamt – had already ordered.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-007",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nThe thief couldn't get into the office because Mr Morris ___ (lock) the door.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had locked",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Grund liegt früher: had + 3. Form (locked).",
+      "hintEn": null,
+      "explainDe": "Mr Morris hatte die Tür abgesperrt (had locked), BEVOR der Dieb kam – darum kam der Dieb nicht rein.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#reading-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nThe police were sure it was one of the suspects, because all the other employees ___ (leave) the building.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had left",
+          "tier": "full"
+        },
+        {
+          "text": "had already left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form. Die 3. Form von leave ist left.",
+      "hintEn": null,
+      "explainDe": "Das Weggehen der anderen war FRÜHER als das Ermitteln der Polizei – had left.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#scene-2",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nThe detective knew the criminal ___ (escape) through the window, because the glass ___ (be) broken.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had escaped | was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Entkommen war früher: had + 3. Form (escaped). Der Zustand des Glases steht im Past simple (was).",
+      "hintEn": null,
+      "explainDe": "Der Verbrecher war schon entkommen (had escaped), bevor der Detektiv das herausfand. Den Zustand 'das Glas war kaputt' beschreibt das Past simple (was).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#locked-room",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nWhen we arrived, the train ___ already ___ (leave).",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + already + 3. Form (left).",
+      "hintEn": null,
+      "explainDe": "Der Zug war schon weg, BEVOR ihr ankamt – had already left.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-mc-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bilde eine Frage mit had:\n\n___ she ___ (finish) the report before the office closed?",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Had | finished",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage: Had + Subjekt + 3. Form? Hier: Had she finished …?",
+      "hintEn": null,
+      "explainDe": "In der Frage rückt had nach vorne: Had she finished …? Die 3. Form (finished) bleibt gleich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-012",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Frühere Handlung mit had + der 3. Form, spätere im 2. Form:\n\nThe lights went out because the family ___ (not / pay) the electricity bill.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hadn't paid",
+          "tier": "full"
+        },
+        {
+          "text": "had not paid",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinte frühere Handlung: hadn't + 3. Form (paid).",
+      "hintEn": null,
+      "explainDe": "Das Nicht-Bezahlen war FRÜHER als das Ausgehen des Lichts – hadn't paid.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex6-4",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nDad was angry because the dog ___ (eat) the chicken.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had eaten",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form. Die 3. Form von eat ist eaten.",
+      "hintEn": null,
+      "explainDe": "Der Hund hatte das Hühnchen FRÜHER gefressen – das war der Grund, warum Papa danach böse war (had eaten).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex6-6",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nHe knew he ___ (see) her face before.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had seen",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form. Die 3. Form von see ist seen.",
+      "hintEn": null,
+      "explainDe": "Das Sehen war FRÜHER (had seen), bevor er es bemerkte (knew).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex6-2",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nThe party was a big surprise because no one ___ (tell) her about it.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had told",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form. Die 3. Form von tell ist told.",
+      "hintEn": null,
+      "explainDe": "Niemand hatte es ihr vorher gesagt (had told) – darum war sie überrascht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex6-8",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nWhen the inspector came home, he saw that the thieves ___ (take) everything.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had taken",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form. Die 3. Form von take ist taken.",
+      "hintEn": null,
+      "explainDe": "Die Diebe hatten schon alles mitgenommen (had taken), BEVOR er heimkam und es sah (saw).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex10",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welche Form passt? Es geht um die Handlung, die noch FRÜHER war:\n\nThe detective came to the office. The thief ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had already left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "already left",
+        "has already left",
+        "was already leaving"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für die frühere Vergangenheit brauchst du had + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Der Dieb war schon weg, bevor der Detektiv kam: had already left. 'has' wäre Gegenwart, 'was leaving' beschreibt nur den Verlauf.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had already left",
+          "already left",
+          "has already left",
+          "was already leaving"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u2-past-perfect-mc-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Detective Brown befragt einen Zeugen über letzte Nacht. Welcher Satz zeigt richtig, was ZUERST passiert ist?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When I got home, my sister had already eaten dinner.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "When I got home, my sister already ate dinner.",
+        "When I had got home, my sister already ate dinner.",
+        "When I got home, my sister has already eaten dinner."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nur die FRÜHERE Handlung (das Essen) bekommt had + 3. Form, die spätere (heimkommen) bleibt Past simple.",
+      "hintEn": null,
+      "explainDe": "Richtig: 'got home' (Past simple, später) + 'had eaten' (Past perfect, früher). 'has eaten' ist Gegenwart; 'had got home' setzt die falsche Handlung ins Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "When I got home, my sister had already eaten dinner.",
+          "When I got home, my sister already ate dinner.",
+          "When I had got home, my sister already ate dinner.",
+          "When I got home, my sister has already eaten dinner."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u2-past-perfect-mc-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "In welchem Satz ist die 3. Form FALSCH gebildet?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I had went to the office before it closed.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She had written the report before the meeting.",
+        "They had eaten breakfast before leaving.",
+        "We had taken the wrong train."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach had braucht man die 3. Form, nicht die 2. (Past-simple-)Form.",
+      "hintEn": null,
+      "explainDe": "Falsch ist 'had went' – nach had muss die 3. Form stehen: had gone. written, eaten und taken sind richtige 3. Formen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I had went to the office before it closed.",
+          "She had written the report before the meeting.",
+          "They had eaten breakfast before leaving.",
+          "We had taken the wrong train."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u2-past-perfect-mc-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welche Reihenfolge stimmt? Wähle die richtige Mischung aus 2. Form und had + 3. Form:\n\nBefore I ___ to bed, I ___ my teeth.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "went | had brushed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "had gone | brushed",
+        "went | brushed",
+        "had gone | had brushed"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Was war zuerst? Das Zähneputzen – das bekommt had + 3. Form. Das Insbettgehen kam danach (Past simple).",
+      "hintEn": null,
+      "explainDe": "Zähneputzen war zuerst (had brushed), Insbettgehen danach (went). Nur die frühere Handlung steht im Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "went | had brushed",
+          "had gone | brushed",
+          "went | brushed",
+          "had gone | had brushed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u2-past-perfect-mc-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz macht am deutlichsten klar, dass Tom seine Schlüssel ZUERST verloren hat und DANN verärgert war?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom was upset because he had lost his keys.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Tom was upset because he lost his keys.",
+        "Tom was upset because he has lost his keys.",
+        "Tom had been upset because he lost his keys."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Grund (das Verlieren) liegt FRÜHER als das Aufgeregtsein – had + 3. Form.",
+      "hintEn": null,
+      "explainDe": "'was upset' (Past simple) + 'had lost' (Past perfect für den früheren Grund). 'has lost' ist Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Tom was upset because he had lost his keys.",
+          "Tom was upset because he lost his keys.",
+          "Tom was upset because he has lost his keys.",
+          "Tom had been upset because he lost his keys."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u2-past-perfect-mc-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Ein Satz hat eine FALSCHE 3. Form. Welcher?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She had drinked all the orange juice before breakfast.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They had spoken to the teacher before the lesson.",
+        "He had driven to the airport before the lesson.",
+        "I had chosen my clothes the night before."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welche 3. Form gibt es so nicht? drink hat eine unregelmäßige 3. Form.",
+      "hintEn": null,
+      "explainDe": "Falsch ist 'had drinked' – die 3. Form von drink ist drunk: had drunk. spoken, driven und chosen sind richtig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She had drinked all the orange juice before breakfast.",
+          "They had spoken to the teacher before the lesson.",
+          "He had driven to the airport before the lesson.",
+          "I had chosen my clothes the night before."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u2-past-perfect-mc-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wähle die richtige Form für die frühere Handlung:\n\nAfter the rain ___, the children went outside.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had stopped",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "stopped",
+        "has stopped",
+        "was stopping"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Was war zuerst? Der Regen hörte auf – had + 3. Form (stopped).",
+      "hintEn": null,
+      "explainDe": "Der Regen hörte FRÜHER auf (had stopped), DANN gingen die Kinder raus (went). 'has stopped' wäre Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had stopped",
+          "stopped",
+          "has stopped",
+          "was stopping"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u2-past-perfect-mc-007",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche 3. Form von steal ist richtig?\n\nThe police were sure the thief ___ the money.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had stolen",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "had stole",
+        "had stealed",
+        "has stolen"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die 3. Form von steal ist stolen – had + stolen.",
+      "hintEn": null,
+      "explainDe": "Richtig ist 'had stolen'. 'had stole' nimmt die 2. Form, 'had stealed' gibt es nicht, 'has stolen' ist Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had stolen",
+          "had stole",
+          "had stealed",
+          "has stolen"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#word-file",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welche Form passt für die frühere Handlung?\n\nThe room was empty. Everyone ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had gone",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "had go",
+        "had went",
+        "has gone"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form von go ist had gone.",
+      "hintEn": null,
+      "explainDe": "Richtig ist 'had gone'. 'had go' nimmt die Grundform, 'had went' die 2. Form, 'has gone' ist Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had gone",
+          "had go",
+          "had went",
+          "has gone"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler:\n\nWhen she arrived, everyone already left the party.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When she arrived, everyone had already left the party.",
+          "tier": "full"
+        },
+        {
+          "text": "had already left",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die frühere Handlung (weggehen) braucht had + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Alle waren schon weg, BEVOR sie ankam – also had already left statt nur 'already left'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-ec-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Genau EIN Wort ist falsch. Verbessere es (had + 3. Form):\n\nHe had went to the shop before it closed.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He had gone to the shop before it closed.",
+          "tier": "full"
+        },
+        {
+          "text": "gone",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach had steht die 3. Form, nicht die 2. (went → gone).",
+      "hintEn": null,
+      "explainDe": "Nach had muss die 3. Form stehen: had gone, nicht 'had went'.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-ec-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Genau EIN Wort ist falsch. Verbessere es (had + 3. Form):\n\nThe thief had steal the money before the police arrived.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The thief had stolen the money before the police arrived.",
+          "tier": "full"
+        },
+        {
+          "text": "stolen",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach had braucht man die 3. Form von steal: stolen.",
+      "hintEn": null,
+      "explainDe": "'had steal' ist falsch – nach had kommt die 3. Form: had stolen.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#word-file",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Eine Handlung steht in der falschen Zeit. Nur das Frühere darf had + 3. Form sein:\n\nI had eaten breakfast and then I had walked to school.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I had eaten breakfast and then I walked to school.",
+          "tier": "full"
+        },
+        {
+          "text": "I had eaten breakfast and then I went to school.",
+          "tier": "full"
+        },
+        {
+          "text": "walked",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nur die frühere Handlung (frühstücken) bleibt im Past perfect. Die spätere (zur Schule gehen) wird Past simple.",
+      "hintEn": null,
+      "explainDe": "Man nutzt das Past perfect NICHT für beide Handlungen. Das Spätere (walked) steht im Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-ec-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ein Wort ist in der falschen Zeit. Verbessere es:\n\nAfter she has finished the test, she left the classroom.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After she had finished the test, she left the classroom.",
+          "tier": "full"
+        },
+        {
+          "text": "had",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für die frühere Vergangenheit brauchst du had, nicht has.",
+      "hintEn": null,
+      "explainDe": "'has finished' ist Gegenwart. Hier geht es um die Vergangenheit: had finished.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [
+        {
+          "word": "test",
+          "de": "Test",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-ec-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Genau EIN Wort ist falsch. Verbessere es (had + 3. Form):\n\nShe had wrote a long letter to her friend.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She had written a long letter to her friend.",
+          "tier": "full"
+        },
+        {
+          "text": "written",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die 3. Form von write ist written – nicht 'wrote'.",
+      "hintEn": null,
+      "explainDe": "Nach had braucht man die 3. Form: had written, nicht 'had wrote'.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-ec-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Die falsche Handlung steht mit had + der 3. Form. Dreh es um, damit die Reihenfolge stimmt:\n\nWhen the concert had started, we arrived at the hall.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When we arrived at the hall, the concert had already started.",
+          "tier": "full"
+        },
+        {
+          "text": "The concert had already started when we arrived at the hall.",
+          "tier": "full"
+        },
+        {
+          "text": "When we arrived at the hall, the concert had started.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Konzert begann FRÜHER – das gehört ins Past perfect. Euer Ankommen war später (Past simple).",
+      "hintEn": null,
+      "explainDe": "Das frühere Ereignis (Konzert begann) braucht das Past perfect (had started), das spätere (ankommen) das Past simple (arrived).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-ec-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Die frühere Handlung fehlt mit had + der 3. Form. Verbessere den Satz:\n\nWhen I arrived, everyone left.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When I arrived, everyone had left.",
+          "tier": "full"
+        },
+        {
+          "text": "had left",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die anderen waren schon weg, BEVOR du kamst – had + 3. Form (left).",
+      "hintEn": null,
+      "explainDe": "Damit die Reihenfolge klar ist, muss das Frühere ins Past perfect: had left.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Genau EIN Wort ist falsch. Verbessere es (had + 3. Form):\n\nThe burglars had took everything from the room.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The burglars had taken everything from the room.",
+          "tier": "full"
+        },
+        {
+          "text": "taken",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die 3. Form von take ist taken – nicht 'took'.",
+      "hintEn": null,
+      "explainDe": "Nach had muss die 3. Form stehen: had taken, nicht 'had took'.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex10",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Erzähl es dem Detektiv. Setze die Verben richtig ein (had + 3. Form bzw. 2. Form):\n\n'When I ___ (arrive) at the station, the train ___ already ___ (leave).'",
+        "lang": "de",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "arrived | had | left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ankommen = Past simple (arrived). Der Zug fuhr früher ab = had already left.",
+      "hintEn": null,
+      "explainDe": "Das Ankommen ist das spätere Ereignis (arrived), das Abfahren das frühere (had already left).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-tf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 3
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Beschreibe Emmas Abend. Setze die Verben ein (had + 3. Form bzw. 2. Form):\n\n'After she ___ (finish) her homework, she ___ (go) out to meet her friends.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had finished | went",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst fertig (had finished), dann raus (went).",
+      "hintEn": null,
+      "explainDe": "Das Frühere (fertig werden) steht im Past perfect (had finished), das Spätere (rausgehen) im Past simple (went).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-tf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Zwei Dinge sind gestern passiert. Zuerst: deine Schwester kaufte ein. Danach: du kamst heim. Verbinde sie mit 'when':\n\n'When I ___ (come) home, my sister ___ already ___ (do) the shopping.'",
+        "lang": "de",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "came | had | done",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Heimkommen = Past simple (came). Einkaufen war früher = had already done.",
+      "hintEn": null,
+      "explainDe": "Das frühere Ereignis (einkaufen) braucht das Past perfect (had already done), das spätere (heimkommen) das Past simple (came).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-tf-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 3
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du schreibst eine Geschichte. Zuerst: es hörte auf zu regnen. Danach: die Kinder gingen raus. Verbinde mit 'as soon as':\n\n'As soon as it ___ (stop) raining, the children ___ (go) outside.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had stopped | went",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst hörte der Regen auf (had stopped), dann gingen die Kinder raus (went).",
+      "hintEn": null,
+      "explainDe": "Das Frühere (Regen hört auf) steht im Past perfect (had stopped), das Spätere (rausgehen) im Past simple (went).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-tf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Forme den Satz um, sodass die frühere Handlung mit had + der 3. Form steht. Beginne mit 'Because':\n\nThe dog was hungry. It did not eat all day.\n→ 'The dog was hungry because it ___ (not / eat) all day.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hadn't eaten",
+          "tier": "full"
+        },
+        {
+          "text": "had not eaten",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinte frühere Handlung: hadn't + 3. Form (eaten).",
+      "hintEn": null,
+      "explainDe": "Der Grund (nichts gefressen) liegt VOR dem Hungrigsein, deshalb Past perfect: hadn't eaten.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex7-7",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische:\n\nAls wir ankamen, hatte der Film schon angefangen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When we arrived, the film had already started.",
+          "tier": "full"
+        },
+        {
+          "text": "When we arrived, the film had already begun.",
+          "tier": "full"
+        },
+        {
+          "text": "The film had already started when we arrived.",
+          "tier": "full"
+        },
+        {
+          "text": "When we arrived, the film had started.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "ankommen = arrive (Past simple). 'hatte schon angefangen' = had already started.",
+      "hintEn": null,
+      "explainDe": "Das frühere Ereignis (Film begann) steht im Past perfect (had already started), das spätere (ankommen) im Past simple (arrived).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische:\n\nEr war müde, weil er nicht gut geschlafen hatte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He was tired because he hadn't slept well.",
+          "tier": "full"
+        },
+        {
+          "text": "He was tired because he had not slept well.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "müde sein = was tired (Past simple). 'hatte nicht geschlafen' = hadn't slept.",
+      "hintEn": null,
+      "explainDe": "Der Grund (nicht geschlafen) liegt VOR dem Müdesein – darum hadn't slept im Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-tr-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Übersetze ins Englische:\n\nNachdem er seine Hausaufgaben gemacht hatte, ging er in den Park.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After he had done his homework, he went to the park.",
+          "tier": "full"
+        },
+        {
+          "text": "After he had finished his homework, he went to the park.",
+          "tier": "full"
+        },
+        {
+          "text": "He went to the park after he had done his homework.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'hatte gemacht' = had done (frühere Handlung). 'ging' = went (Past simple).",
+      "hintEn": null,
+      "explainDe": "Das Frühere (Hausübung machen) steht im Past perfect (had done), das Spätere (in den Park gehen) im Past simple (went).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-tr-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Übersetze ins Englische:\n\nDie Polizei wusste, dass der Dieb durch das Fenster entkommen war.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The police knew that the thief had escaped through the window.",
+          "tier": "full"
+        },
+        {
+          "text": "The police knew the thief had escaped through the window.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'war entkommen' = had escaped (frühere Handlung). 'wusste' = knew (Past simple).",
+      "hintEn": null,
+      "explainDe": "Das Entkommen war FRÜHER (had escaped) als das Wissen der Polizei (knew). Darum Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#locked-room",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische:\n\nDie Diebe hatten alles gestohlen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The thieves had stolen everything.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'hatten gestohlen' = had + 3. Form von steal (stolen).",
+      "hintEn": null,
+      "explainDe": "had stolen – die 3. Form von steal ist stolen. had ist für alle Personen gleich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#word-file",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge:\n\nhad / the / already / she / book / read / before / the / film / she / watched",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She had already read the book before she watched the film.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit dem Subjekt: She had already read … Das Frühere kommt zuerst.",
+      "hintEn": null,
+      "explainDe": "Das Frühere (das Buch lesen) steht im Past perfect (had read), das Spätere (Film schauen) im Past simple (watched).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had",
+          "was",
+          "were",
+          "has"
+        ],
+        "chipBudget": 11,
+        "minOptions": null
+      },
+      "seedV1": "m4-u2-past-perfect-sb-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge:\n\nthe / train / had / when / left / we / arrived / at / the / station / already",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The train had already left when we arrived at the station.",
+          "tier": "full"
+        },
+        {
+          "text": "When we arrived at the station, the train had already left.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Frühere (Zug fuhr ab) kommt ins Past perfect: had already left.",
+      "hintEn": null,
+      "explainDe": "Der Zug war schon weg (had already left), BEVOR ihr ankamt (arrived).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had",
+          "was",
+          "were",
+          "has"
+        ],
+        "chipBudget": 11,
+        "minOptions": null
+      },
+      "seedV1": "m4-u2-past-perfect-sb-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge:\n\nthe / thief / had / before / escaped / the / police / arrived",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The thief had escaped before the police arrived.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Frühere (entkommen) kommt ins Past perfect: had escaped.",
+      "hintEn": null,
+      "explainDe": "Der Dieb war schon entkommen (had escaped), BEVOR die Polizei kam (arrived).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had",
+          "was",
+          "were",
+          "has"
+        ],
+        "chipBudget": 8,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#locked-room",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sarah kam um 19:30 ins Kino. Der Film begann um 19:15. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When Sarah arrived, the film had already started.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "When Sarah arrived, the film already started.",
+        "When Sarah arrived, the film has already started.",
+        "When Sarah arrived, the film was already starting."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Film begann FRÜHER – had + 3. Form (started).",
+      "hintEn": null,
+      "explainDe": "Der Film hatte schon begonnen (had already started), BEVOR Sarah ankam (arrived). 'has' wäre Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "When Sarah arrived, the film had already started.",
+          "When Sarah arrived, the film already started.",
+          "When Sarah arrived, the film has already started.",
+          "When Sarah arrived, the film was already starting."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u2-past-perfect-cp-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Der Inspektor kommt ins Büro. Das Fenster ist kaputt und das Geld ist weg. Welcher Satz erklärt die Situation am besten?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Someone had broken the window and stolen the money.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Someone has broken the window and stolen the money.",
+        "Someone broke the window and had stolen the money.",
+        "Someone had broke the window and had stole the money."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Handlungen passierten FRÜHER, bevor der Inspektor kam – had + 3. Form (broken, stolen).",
+      "hintEn": null,
+      "explainDe": "Vor dem Eintreffen war schon alles passiert: had broken … and stolen. 'has' ist Gegenwart, und nach had braucht man die 3. Form (broken, stolen), nicht broke/stole.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Someone had broken the window and stolen the money.",
+          "Someone has broken the window and stolen the money.",
+          "Someone broke the window and had stolen the money.",
+          "Someone had broke the window and had stole the money."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u2-past-perfect-cp-002",
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#reading-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verbinde jeden Satzanfang mit dem passenden Ende.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "By the time the inspector arrived,",
+          "right": "the thief had already escaped."
+        },
+        {
+          "left": "Mr Morris wasn't worried because",
+          "right": "he had locked the door of his office."
+        },
+        {
+          "left": "She was happy because",
+          "right": "she had passed all her exams."
+        },
+        {
+          "left": "The dog was hungry because",
+          "right": "nobody had given it any food."
+        },
+        {
+          "left": "He couldn't pay because",
+          "right": "he had forgotten his wallet at home."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte darauf, welcher Grund (had + 3. Form) zu welchem Anfang passt.",
+      "hintEn": null,
+      "explainDe": "Jeder Satz beschreibt erst eine Folge in der Vergangenheit und dann den früheren Grund im Past perfect (had + 3. Form).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-mt-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verbinde jeden Anfang mit dem passenden Ende.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "We were tired",
+          "right": "because we hadn't slept for hours."
+        },
+        {
+          "left": "I couldn't buy the book",
+          "right": "because I had spent all my money on sweets."
+        },
+        {
+          "left": "We missed the train",
+          "right": "because we had taken too long to get ready."
+        },
+        {
+          "left": "Mum took us to a restaurant",
+          "right": "because she had got a new job."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Welcher frühere Grund (had + 3. Form) passt zu welcher Folge?",
+      "hintEn": null,
+      "explainDe": "Jeder Grund steht im Past perfect (had + 3. Form), weil er FRÜHER passiert ist als die Folge im Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex8",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "matching-pairs",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Finde zu jeder einfachen Form die richtige 3. Form.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "steal",
+          "right": "stolen"
+        },
+        {
+          "left": "take",
+          "right": "taken"
+        },
+        {
+          "left": "write",
+          "right": "written"
+        },
+        {
+          "left": "drink",
+          "right": "drunk"
+        },
+        {
+          "left": "see",
+          "right": "seen"
+        },
+        {
+          "left": "go",
+          "right": "gone"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Für das Past perfect brauchst du immer die 3. Form (had + 3. Form).",
+      "hintEn": null,
+      "explainDe": "Das sind die unregelmäßigen 3. Formen, die du nach had verwendest: stolen, taken, written, drunk, seen, gone.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex5",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Sätze benutzen had + die 3. Form richtig, welche nicht?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "She had taken the keys.",
+            "The thief had escaped.",
+            "They had eaten dinner."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "She had took the keys.",
+            "The thief had escape.",
+            "They had ate dinner."
+          ]
+        }
+      ],
+      "hintDe": "Nach had steht die 3. Form (taken, escaped, eaten) – nicht die Grundform oder die 2. Form.",
+      "hintEn": null,
+      "explainDe": "Richtig: had + 3. Form (taken, escaped, eaten). Falsch: had took (2. Form), had escape (Grundform), had ate (2. Form).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "In welchen Sätzen steht die FRÜHERE Handlung richtig mit had + der 3. Form, in welchen ist die Zeit falsch gewählt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "When we arrived, the film had started.",
+            "He was sad because he had lost his keys.",
+            "After she had locked the door, she left."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "When we had arrived, the film started.",
+            "He was sad because he has lost his keys.",
+            "After she had locked the door, she had left."
+          ]
+        }
+      ],
+      "pairs": [],
+      "hintDe": "Nur die frühere Handlung darf had + 3. Form sein; die spätere bleibt Past simple. 'has' ist Gegenwart.",
+      "hintEn": null,
+      "explainDe": "Richtig: das Frühere im Past perfect, das Spätere im Past simple. Falsch ist es, wenn die spätere Handlung das Past perfect bekommt, beide es bekommen, oder 'has' (Gegenwart) benutzt wird.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bilde eine Frage mit had + der 3. Form aus den Stichwörtern:\n\nthe suspect / leave / before the police arrived ?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Had the suspect left before the police arrived?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage: Had + Subjekt + 3. Form …? Die 3. Form von leave ist left.",
+      "hintEn": null,
+      "explainDe": "In der Frage steht had vorne: Had the suspect left …? Die 3. Form (left) bleibt gleich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#scene-2",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bilde eine Frage mit had + der 3. Form aus den Stichwörtern:\n\nthe employees / lock / the office / before they went home ?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Had the employees locked the office before they went home?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Had + Subjekt + 3. Form …? Die 3. Form von lock ist locked.",
+      "hintEn": null,
+      "explainDe": "Frage im Past perfect: Had the employees locked …? had rückt nach vorne, locked bleibt die 3. Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nThe match ___ already ___ (begin) when we came home.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | begun",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + already + 3. Form. Die 3. Form von begin ist begun.",
+      "hintEn": null,
+      "explainDe": "Das Spiel hatte schon begonnen (had begun), BEVOR ihr den Fernseher anmachtet (turned on).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-009",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nShe couldn't pay because she ___ (forget) her wallet at home.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had forgotten",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form. Die 3. Form von forget ist forgotten.",
+      "hintEn": null,
+      "explainDe": "Sie hatte die Geldbörse vorher vergessen (had forgotten) – deshalb konnte sie danach nicht zahlen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-008",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "2. Form oder had + 3. Form? Setze beide Verben richtig ein:\n\nI ___ (be) starving because I ___ (not / eat) since breakfast.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was | hadn't eaten",
+          "tier": "full"
+        },
+        {
+          "text": "was | had not eaten",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'war' = was (Past simple). Der frühere Grund: hadn't + 3. Form (eaten).",
+      "hintEn": null,
+      "explainDe": "Das Hungrigsein (was) ist der spätere Zustand, das Nicht-Essen (hadn't eaten) der frühere Grund.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex7-5",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "2. Form oder had + 3. Form? Setze beide Verben ein:\n\nWe ___ (leave) early because we ___ (not / see) the film before.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "left | hadn't seen",
+          "tier": "full"
+        },
+        {
+          "text": "left | had not seen",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Weggehen = Past simple (left). Der frühere Grund: hadn't + 3. Form (seen).",
+      "hintEn": null,
+      "explainDe": "Das Weggehen (left) ist die spätere Handlung, das Nicht-gesehen-Haben (hadn't seen) der frühere Grund.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex7-2",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "2. Form oder had + 3. Form? Setze beide Verben ein:\n\nI ___ (not / recognise) her because she ___ (have) a haircut.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "didn't recognise | had had",
+          "tier": "full"
+        },
+        {
+          "text": "did not recognise | had had",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nicht erkennen = Past simple (didn't recognise). Der frühere Grund: had + 3. Form von have, also had had.",
+      "hintEn": null,
+      "explainDe": "Das Nicht-Erkennen (didn't recognise) ist später, der neue Haarschnitt (had had a haircut) der frühere Grund.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "recognise",
+          "de": "erkennen",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex7-8",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nI was really nervous because I ___ never ___ (fly) in a plane before.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | flown",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + never + 3. Form. Die 3. Form von fly ist flown.",
+      "hintEn": null,
+      "explainDe": "Bis dahin warst du noch NIE geflogen (had never flown) – das war früher als das Nervössein.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-gf-010",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wähle die richtige Form. Der Grund liegt FRÜHER als die Folge:\n\nThe witness was nervous because she ___ a crime.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had seen",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "had saw",
+        "has seen",
+        "had see"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form von see ist had seen.",
+      "hintEn": null,
+      "explainDe": "Richtig ist 'had seen'. 'had saw' nimmt die 2. Form, 'had see' die Grundform, 'has seen' ist Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had seen",
+          "had saw",
+          "has seen",
+          "had see"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#word-file",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Eine Handlung steht in der falschen Zeit. Nur das Frühere darf had + 3. Form sein:\n\nThe police arrived quickly, but the criminal had escaped and had run away.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The police arrived quickly, but the criminal had escaped and run away.",
+          "tier": "full"
+        },
+        {
+          "text": "The police arrived quickly, but the criminal escaped and ran away.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Handlungen nacheinander brauchen nicht beide das Past perfect. Lass eine im Past simple oder verbinde sie ohne zweites 'had'.",
+      "hintEn": null,
+      "explainDe": "Man muss 'had' nicht für jede Handlung wiederholen. Entweder ein had für die Reihe (had escaped and run away) oder beide im Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nMr Davis had my phone because I ___ (leave) it in his classroom.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form. Die 3. Form von leave ist left.",
+      "hintEn": null,
+      "explainDe": "Das Liegenlassen (had left) war früher als das Behalten durch Mr Davis (had – hier Past simple von have).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex7-4",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach aus den zwei Sätzen einen. Die frühere Handlung kommt mit had + die 3. Form (had + 3. Form):\n\nFirst: The witness saw the thief. Then: she called the police.\n→ 'After the witness ___ (see) the thief, she ___ (call) the police.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had seen | called",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst sehen (had seen), dann anrufen (called).",
+      "hintEn": null,
+      "explainDe": "Das Frühere (sehen) steht im Past perfect (had seen), das Spätere (anrufen) im Past simple (called).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#word-file",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische:\n\nDer Zeuge war nervös, weil er ein Verbrechen gesehen hatte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The witness was nervous because he had seen a crime.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'hatte gesehen' = had + 3. Form von see (seen). nervös sein = was nervous.",
+      "hintEn": null,
+      "explainDe": "Das Sehen war FRÜHER (had seen) als das Nervössein (was nervous) – darum Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#word-file",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du erzählst, was beim Konzert war: Um 20:00 kamt ihr an, das Konzert begann um 19:45. Welcher Satz stimmt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When we arrived, the concert had already begun.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "When we arrived, the concert already begun.",
+        "When we had arrived, the concert already began.",
+        "When we arrived, the concert has already begun."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Konzert begann früher – had + 3. Form (begun). Euer Ankommen bleibt Past simple.",
+      "hintEn": null,
+      "explainDe": "Richtig: arrived (Past simple, später) + had already begun (Past perfect, früher). 'has' ist Gegenwart, und 'already begun' ohne had ist unvollständig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "When we arrived, the concert had already begun.",
+          "When we arrived, the concert already begun.",
+          "When we had arrived, the concert already began.",
+          "When we arrived, the concert has already begun."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "2. Form oder had + 3. Form? Setze beide Verben ein:\n\nWhen I ___ (come) home, I ___ (see) that the burglars had taken everything.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "came | saw",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Heimkommen und sehen passieren beide zur selben (späteren) Zeit = Past simple (came, saw). Nur das Wegnehmen war früher (had taken).",
+      "hintEn": null,
+      "explainDe": "came und saw stehen im Past simple (das spätere Geschehen). Das Frühere (had taken) ist schon vorgegeben.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex10",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welche Form passt für die frühere Handlung?\n\nThe inspector was happy because he ___ the report.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had read",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "has read",
+        "had reads",
+        "was read"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form von read ist had read (gleiche Schreibweise, anders ausgesprochen).",
+      "hintEn": null,
+      "explainDe": "Richtig ist 'had read'. 'has read' ist Gegenwart, 'had reads' und 'was read' sind keine richtigen Formen hier.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had read",
+          "has read",
+          "had reads",
+          "was read"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#suspects",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Genau EIN Wort ist falsch. Verbessere es (had + 3. Form):\n\nNobody had drank the water before the test.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Nobody had drunk the water before the test.",
+          "tier": "full"
+        },
+        {
+          "text": "drunk",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die 3. Form von drink ist drunk – nicht 'drank'.",
+      "hintEn": null,
+      "explainDe": "Nach had braucht man die 3. Form: had drunk, nicht 'had drank' (das ist die 2. Form).",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [
+        {
+          "word": "test",
+          "de": "Test",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nThe room was a mess. Someone ___ (break) the window during the night.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had broken",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form. Die 3. Form von break ist broken.",
+      "hintEn": null,
+      "explainDe": "Jemand hatte in der Nacht das Fenster eingeschlagen (had broken) – früher als der Moment, in dem man die Unordnung sah.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#reading-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Setze die Verben richtig ein (had + 3. Form bzw. 2. Form):\n\nBy the time we ___ (get) to the airport, the plane ___ already ___ (take off).",
+        "lang": "de",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "got | had | taken off",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ankommen = Past simple (got). Das Flugzeug startete früher = had already taken off.",
+      "hintEn": null,
+      "explainDe": "Das Abheben war FRÜHER (had already taken off) als euer Ankommen (got). 'take off' wird zu had taken off.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u2-past-perfect-tf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 3
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge:\n\nby / the / time / the / police / came / the / thief / had / gone",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "By the time the police came, the thief had gone.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit 'By the time …'. Das Frühere (weggehen) kommt ins Past perfect: had gone.",
+      "hintEn": null,
+      "explainDe": "Der Dieb war schon weg (had gone), BEVOR die Polizei kam (came).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had",
+          "was",
+          "were",
+          "has"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#locked-room",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nThe detective was sure that the criminal ___ (hide) the weapon somewhere.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had hidden",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form. Die 3. Form von hide ist hidden.",
+      "hintEn": null,
+      "explainDe": "Der Verbrecher hatte die Waffe vorher versteckt (had hidden) – das war früher als der Verdacht des Detektivs.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#scene-10",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Nur EIN Satz benutzt had + die 3. Form richtig für die frühere Handlung. Welcher?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The victim had locked the door before he died.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The victim locked the door before he had died.",
+        "The victim had lock the door before he died.",
+        "The victim has locked the door before he died."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Was war zuerst? Das Absperren – das bekommt had + 3. Form. Das Sterben war danach (Past simple).",
+      "hintEn": null,
+      "explainDe": "Richtig: 'had locked' (früher) + 'died' (später). Im ersten Falschsatz bekommt die spätere Handlung das Past perfect, im zweiten fehlt die 3. Form (lock statt locked), im dritten ist 'has' Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The victim had locked the door before he died.",
+          "The victim locked the door before he had died.",
+          "The victim had lock the door before he died.",
+          "The victim has locked the door before he died."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#locked-room",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "2. Form oder had + 3. Form? Setze beide Verben ein:\n\nThey ___ (be) upset with Emma because she ___ (forget) the meeting.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "were | had forgotten",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'waren' = were (Past simple). Der frühere Grund: had + 3. Form (forgotten).",
+      "hintEn": null,
+      "explainDe": "Das Verärgertsein (were) ist der spätere Zustand, das Vergessen (had forgotten) der frühere Grund.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 2.txt#ex7-3",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Die frühere Handlung fehlt mit had + der 3. Form. Verbessere den Satz:\n\nBy the time we got there, the shop closed.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "By the time we got there, the shop had closed.",
+          "tier": "full"
+        },
+        {
+          "text": "had closed",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Laden schloss FRÜHER – had + 3. Form (closed).",
+      "hintEn": null,
+      "explainDe": "'By the time …' braucht das Past perfect für das frühere Ereignis: had closed.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nThe inspector was happy because he ___ (solve) the crime.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had solved",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form von solve ist had solved.",
+      "hintEn": null,
+      "explainDe": "Das Lösen des Falls (had solved) war früher als die Freude darüber (was happy).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#scene-9",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u02.s.past-perfect",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze had + die 3. Form ein:\n\nThe two women were found dead. Nobody ___ (take) any money.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had taken",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form. Die 3. Form von take ist taken.",
+      "hintEn": null,
+      "explainDe": "Es war vorher kein Geld genommen worden (had taken) – das ist ein wichtiger Hinweis im Rätsel.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 2.txt#locked-room",
+      "note": null,
+      "blanks": 1
+    }
+  ]
+}

@@ -1,0 +1,1370 @@
+{
+  "schema": "grammar@1",
+  "grade": 3,
+  "unit": 14,
+  "slug": "g3-u14",
+  "items": [
+    {
+      "id": "g3u14.gi.going-to-evidence.cp.001",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "It rains every day in November.",
+            "It will rain tomorrow, I think.",
+            "It rained this morning.",
+            "It's going to rain."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 14.txt#ex14",
+        "seedV1": "m3-u14-going-to-evidence-cp-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du siehst dunkle Wolken am Himmel. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It's going to rain.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It rains every day in November.",
+        "It will rain tomorrow, I think.",
+        "It rained this morning."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du hast den Beweis (die Wolken) jetzt vor dir. Nimm den Satz mit going to.",
+      "hintEn": null,
+      "explainDe": "Mit sichtbarem Beweis sagst du It's going to rain. Die anderen sind Gewohnheit, Meinung über morgen oder Vergangenheit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.cp.002",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "context-picker",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I'm going to get it.",
+            "I get it.",
+            "I'm getting it tomorrow.",
+            "I'll get it!"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "will for spontaneous decision"
+      },
+      "prompt": {
+        "text": "Im Restaurant ruft jemand zu dir: 'Can someone get the phone?' Du springst spontan auf, ohne es vorher geplant zu haben. Was sagst du?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'll get it!",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I'm going to get it.",
+        "I get it.",
+        "I'm getting it tomorrow."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Spontane Entscheidung im Moment des Sprechens: Dann nimmst du will (hier kurz I'll).",
+      "hintEn": null,
+      "explainDe": "Eine spontane Entscheidung, die du genau jetzt triffst, sagst du mit will: I'll get it. going to wäre ein Plan, den du schon vorher hattest.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.ec.001",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-ec-020",
+        "narrative": null,
+        "note": "missing-be error class"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: Look at those clouds! It going to rain.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Look at those clouds! It's going to rain.",
+          "tier": "full"
+        },
+        {
+          "text": "Look at those clouds! It is going to rain.",
+          "tier": "full"
+        },
+        {
+          "text": "It's going to rain",
+          "tier": "partial"
+        },
+        {
+          "text": "It is going to rain",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor going to fehlt eine Form von be. Was gehört zu it?",
+      "hintEn": null,
+      "explainDe": "Ohne be ist es kein richtiger Satz. It braucht is: It's going to rain.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.ec.002",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-ec-021",
+        "narrative": null,
+        "note": "wrong-form-after-going-to error class"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: The baby is crying. She is going to wants her mum.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The baby is crying. She is going to want her mum.",
+          "tier": "full"
+        },
+        {
+          "text": "She is going to want her mum.",
+          "tier": "partial"
+        },
+        {
+          "text": "is going to want",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach going to kommt immer die Grundform. wants ist nicht die Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach going to steht die Grundform, also want (nicht wants): She is going to want her mum.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.ec.003",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-ec-022",
+        "narrative": null,
+        "note": "agreement error class (was team-loses in v1; cat/chase in bank)"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: Look at the dog! It are going to chase the cat.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Look at the dog! It is going to chase the cat.",
+          "tier": "full"
+        },
+        {
+          "text": "It is going to chase the cat.",
+          "tier": "partial"
+        },
+        {
+          "text": "is going to chase",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "cat",
+          "de": "Katze",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "It ist Einzahl. Welche Form von be passt - are oder is?",
+      "hintEn": null,
+      "explainDe": "It geht mit is, nicht mit are: It is going to chase the cat. Den Beweis (der Hund) siehst du gerade.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.gf.001",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 14.txt#ex14",
+        "seedV1": "m3-u14-going-to-evidence-gf-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du siehst dunkle Wolken am Himmel und sagst voraus, was gleich passiert: 'Look at those dark clouds! It ___ (rain).'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is going to rain",
+          "tier": "full"
+        },
+        {
+          "text": "'s going to rain",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du siehst den Beweis (die Wolken) genau jetzt. Nimm is + going to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Weil du den Beweis (die Wolken) gerade siehst, nimmst du going to: It is going to rain (oder kurz It's going to rain).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.gf.002",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 14.txt#ex14",
+        "seedV1": null,
+        "narrative": null,
+        "note": "carrier verbatim from SB grammar box"
+      },
+      "prompt": {
+        "text": "Das Auto ist außer Kontrolle. Du siehst es kommen und sagst: 'The car is out of control - it ___ (crash)!'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is going to crash",
+          "tier": "full"
+        },
+        {
+          "text": "'s going to crash",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du siehst gerade, wie es passiert. is + going to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Der Beweis ist direkt vor dir (das Auto außer Kontrolle), darum going to: It is going to crash.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.gf.003",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-tf-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein kleiner Bruder lehnt sich auf seinem Sessel weit zurück. Du warnst deine Eltern: 'Watch out! He ___ (fall) down!'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is going to fall",
+          "tier": "full"
+        },
+        {
+          "text": "'s going to fall",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eine Person (he) und der Beweis ist jetzt sichtbar. is + going to + Grundform.",
+      "hintEn": null,
+      "explainDe": "He braucht is. Weil du es gerade siehst, going to: He is going to fall down.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.gf.004",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-tf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Deine Freundin trägt einen riesigen Stapel Teller, und er wackelt. Du machst eine Vorhersage: 'Careful! You ___ (drop) those plates!'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are going to drop",
+          "tier": "full"
+        },
+        {
+          "text": "'re going to drop",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "You braucht are. Der Beweis (es wackelt) ist jetzt da. are + going to + Grundform.",
+      "hintEn": null,
+      "explainDe": "You geht mit are. Weil du den Beweis siehst, going to: You are going to drop those plates.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.gf.006",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-gf-025",
+        "narrative": null,
+        "note": "two-blank: negative + positive"
+      },
+      "prompt": {
+        "text": "Schau auf die Uhr und den Stau! Fülle beide Lücken: 'Look at the traffic! We ___ (not / be) there on time. We ___ (be) late again.' (Schreib die Form mit going to.)",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "aren't going to be | are going to be",
+          "tier": "full"
+        },
+        {
+          "text": "are not going to be | are going to be",
+          "tier": "full"
+        },
+        {
+          "text": "'re not going to be | 're going to be",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "We braucht are. Verneinung: aren't going to be. Aussage: are going to be.",
+      "hintEn": null,
+      "explainDe": "We geht mit are. Die Verneinung ist aren't going to be, die Aussage are going to be. Du siehst den Beweis (den Stau).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.gf.007",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 14.txt#email1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "plans use of going-to, carrier from SB email"
+      },
+      "prompt": {
+        "text": "Oliver schreibt aus Botswana über seinen Plan für morgen: 'I ___ (dig) for diamonds tomorrow.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "am going to dig",
+          "tier": "full"
+        },
+        {
+          "text": "'m going to dig",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "I braucht am. Hier ist es ein Plan für morgen. am + going to + Grundform.",
+      "hintEn": null,
+      "explainDe": "I geht mit am. going to passt auch für Pläne, die du schon vorher hattest: I am going to dig for diamonds tomorrow.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.gf.008",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-gf-022",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Das Mädchen sieht sehr müde aus, ihre Augen schließen sich. Du sagst voraus: 'She ___ (fall) asleep in class.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is going to fall",
+          "tier": "full"
+        },
+        {
+          "text": "'s going to fall",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "She braucht is. Du siehst den Beweis (müde, Augen zu). is + going to + Grundform.",
+      "hintEn": null,
+      "explainDe": "She geht mit is. Der Beweis ist sichtbar, darum going to: She is going to fall asleep.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.gs.001",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "group-sort",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "going-to vs will sort, 3 members each"
+      },
+      "prompt": {
+        "text": "Sortiere: Siehst du einen Beweis JETZT (going to) oder ist es nur eine Meinung über später (will)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "going to",
+          "members": [
+            "Look at those clouds - it's going to rain.",
+            "The car is out of control - it's going to crash.",
+            "Watch out, he's going to fall down!"
+          ]
+        },
+        {
+          "label": "will",
+          "members": [
+            "I think it will be sunny tomorrow.",
+            "Maybe our team will play well this year.",
+            "I'm sure you will like it."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Going to: du siehst den Beweis gerade jetzt. Will: nur deine Meinung oder Vermutung über später.",
+      "hintEn": null,
+      "explainDe": "Mit sichtbarem Beweis nimmst du going to (Wolken, außer Kontrolle, fällt gleich). Ohne Beweis, als Meinung oder Vermutung über später, nimmst du will (I think, Maybe, I'm sure).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.gs.002",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "form-correctness sort, 3 members each"
+      },
+      "prompt": {
+        "text": "Sortiere die Sätze: richtig (✓) oder falsch (✗) gebaut?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "It's going to rain.",
+            "They are going to drop the plates.",
+            "He is going to fall down."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "It going to rain.",
+            "They is going to drop the plates.",
+            "He is going to falls down."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Prüfe jeden Satz: passt die be-Form zum Subjekt, fehlt kein be, und steht nach going to die Grundform?",
+      "hintEn": null,
+      "explainDe": "Richtig: passende be-Form + going to + Grundform. Falsch sind fehlendes be (It going to), falsche Übereinstimmung (They is) und falsche Form (falls statt fall).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.mc.001",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "It storms.",
+            "It stormed.",
+            "It will storm, I think.",
+            "It's going to storm."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-mc-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Der Himmel wird ganz dunkel. Welche Vorhersage passt, wenn du den Beweis vor dir siehst?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It's going to storm.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It storms.",
+        "It stormed.",
+        "It will storm, I think."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du siehst den Beweis (dunkler Himmel) gerade jetzt. Welcher Satz nimmt going to?",
+      "hintEn": null,
+      "explainDe": "Mit sichtbarem Beweis nimmst du going to: It's going to storm. It storms/stormed sind Gegenwart/Vergangenheit, und will passt eher zu einer Vermutung ohne Beweis.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.mc.002",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I'm going to be a doctor when I grow up.",
+            "We're going to visit Grandma next weekend.",
+            "She's going to have a party on Saturday.",
+            "Look! The dog is jumping at the table. It's going to drop the food!"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-mc-022",
+        "narrative": null,
+        "note": "evidence vs plan discrimination"
+      },
+      "prompt": {
+        "text": "Welcher Satz benutzt going to richtig für eine Vorhersage, die du gerade vor dir siehst?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Look! The dog is jumping at the table. It's going to drop the food!",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I'm going to be a doctor when I grow up.",
+        "We're going to visit Grandma next weekend.",
+        "She's going to have a party on Saturday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Suche den Satz, in dem du den Beweis JETZT siehst - nicht einen Plan für später.",
+      "hintEn": null,
+      "explainDe": "Nur beim Hund siehst du den Beweis gerade jetzt (er springt). Die anderen drei sind Pläne für später, auch wenn sie going to benutzen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.mc.003",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Look, it's going to rain right now!",
+            "It's going to rain, look at those clouds.",
+            "The clouds are dark, it's going to rain.",
+            "I think it will rain tomorrow."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-mc-021",
+        "narrative": null,
+        "note": "will for opinion without evidence"
+      },
+      "prompt": {
+        "text": "Du hast gerade keinen Beweis - es ist nur deine Meinung über morgen. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I think it will rain tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Look, it's going to rain right now!",
+        "It's going to rain, look at those clouds.",
+        "The clouds are dark, it's going to rain."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kein Beweis, nur deine Meinung ('I think') über morgen. Dann nimmst du will.",
+      "hintEn": null,
+      "explainDe": "Ohne Beweis, nur als Meinung, nimmst du will: I think it will rain tomorrow. Die anderen Sätze zeigen alle einen Beweis jetzt, da passt going to.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.mc.004",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "is going to fall",
+            "are going to falls",
+            "going to fall",
+            "are going to fall"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "agreement + form drill"
+      },
+      "prompt": {
+        "text": "Welche Form gehört in die Lücke? 'Watch out! The plates ___ off the table!'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are going to fall",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "is going to fall",
+        "are going to falls",
+        "going to fall"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "The plates ist Mehrzahl, also are. Danach going to + Grundform.",
+      "hintEn": null,
+      "explainDe": "The plates (Mehrzahl) braucht are going to fall. is passt nur zur Einzahl, falls ist falsch nach going to, und ohne be ('going to fall') fehlt das Verb.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.mt.001",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-mt-020",
+        "narrative": null,
+        "note": "unique right-sides; evidence->prediction"
+      },
+      "prompt": {
+        "text": "Verbinde jeden Beweis mit der passenden Vorhersage.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "The sky is full of dark clouds.",
+          "right": "It's going to rain."
+        },
+        {
+          "left": "The dog is running at the parrot.",
+          "right": "It's going to chase it."
+        },
+        {
+          "left": "He's eaten lots of cake.",
+          "right": "He's going to be sick."
+        },
+        {
+          "left": "Her eyes are closing.",
+          "right": "She's going to fall asleep."
+        },
+        {
+          "left": "The car is out of control.",
+          "right": "It's going to crash."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Lies den Beweis links und such die Vorhersage rechts, die dazu passt.",
+      "hintEn": null,
+      "explainDe": "Jeder Beweis führt zu genau einer Vorhersage mit going to: dunkle Wolken -> rain, Hund rennt -> chase, viel Kuchen -> be sick, Augen zu -> fall asleep, außer Kontrolle -> crash.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.qf.001",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-qf-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Deine Freundin trägt einen riesigen Stapel Teller. Stell eine besorgte Frage mit den Wörtern: you / going to / those / drop / are",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you going to drop those?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage mit going to: be-Form zuerst. Are you going to ...?",
+      "hintEn": null,
+      "explainDe": "Bei der Frage steht are zuerst: Are you going to drop those? You geht mit are.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.qf.002",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 14.txt#ex5",
+        "seedV1": null,
+        "narrative": null,
+        "note": "wh-question, plans use, carrier from WB"
+      },
+      "prompt": {
+        "text": "Oliver hat einen Plan. Frag ihn danach mit den Wörtern: are / going to / what / do / you / in Botswana",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What are you going to do in Botswana?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage mit Fragewort: What + are + you + going to + Grundform?",
+      "hintEn": null,
+      "explainDe": "Mit Fragewort: What are you going to do in Botswana? Nach what kommt are you going to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.sb.001",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "are",
+            "will",
+            "going",
+            "rains"
+          ],
+          "chipBudget": 9,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-sb-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "is / to / it / rain / going",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It is going to rain.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Subjekt zuerst: It, dann is going to, dann die Grundform rain.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: It is going to rain. Erst das Subjekt, dann is going to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.sb.002",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "is",
+            "will",
+            "won't",
+            "drops"
+          ],
+          "chipBudget": 11,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-sb-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "going / they / to / aren't / drop / the / plates",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They aren't going to drop the plates.",
+          "tier": "full"
+        },
+        {
+          "text": "They're not going to drop the plates.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Subjekt They, dann die Verneinung aren't going to, dann drop + Objekt.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: They aren't going to drop the plates. Die Verneinung aren't steht direkt nach dem Subjekt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.tf.003",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 14.txt#email3",
+        "seedV1": null,
+        "narrative": null,
+        "note": "statement -> question, carrier from SB"
+      },
+      "prompt": {
+        "text": "Mach aus dieser Aussage eine Frage mit going to: 'Your parents are going to call the police.' (Frage)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are your parents going to call the police?",
+          "tier": "full"
+        },
+        {
+          "text": "Are they going to call the police?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Für die Frage stellst du die be-Form nach vorne: Are your parents going to ...?",
+      "hintEn": null,
+      "explainDe": "Bei going to-Fragen kommt die be-Form an den Anfang: Are your parents going to call the police?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.tf.004",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "negation transformation"
+      },
+      "prompt": {
+        "text": "Schreib den Satz mit going to so um, dass er das Gegenteil sagt (mit not): 'We're going to be on time.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We aren't going to be on time.",
+          "tier": "full"
+        },
+        {
+          "text": "We're not going to be on time.",
+          "tier": "full"
+        },
+        {
+          "text": "We are not going to be on time.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Verneinung kommt zur be-Form: are -> aren't (oder 're not).",
+      "hintEn": null,
+      "explainDe": "Verneint wird die be-Form: We aren't going to be on time (oder We're not going to be on time).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.tf.005",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib den Satz mit going to um. Der Beweis ist sichtbar. 'The cup is at the end of the table.' (Vorhersage mit fall down)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It's going to fall down.",
+          "tier": "full"
+        },
+        {
+          "text": "It is going to fall down.",
+          "tier": "full"
+        },
+        {
+          "text": "The cup is going to fall down.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mach aus dem Satz eine Vorhersage: is + going to + fall down.",
+      "hintEn": null,
+      "explainDe": "Weil du den Beweis siehst, sagst du It's going to fall down. is + going to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.tr.002",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u14-going-to-evidence-tr-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Übersetze ins Englische (du siehst es gerade passieren): 'Pass auf! Die Tasse wird hinunterfallen!'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Watch out! The cup is going to fall down!",
+          "tier": "full"
+        },
+        {
+          "text": "Look out! The cup is going to fall down!",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "The cup ist Einzahl: is going to fall down. Du siehst es gerade.",
+      "hintEn": null,
+      "explainDe": "The cup geht mit is. Weil du es gerade siehst, going to: The cup is going to fall down.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u14.gi.going-to-evidence.tr.003",
+      "structureId": "g3u14.s.going-to-evidence",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 14.txt#ex14",
+        "seedV1": "m3-u14-going-to-evidence-tr-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Übersetze ins Englische (du siehst den Beweis): 'Schau dir die Wolken an! Es wird regnen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Look at the clouds! It's going to rain.",
+          "tier": "full"
+        },
+        {
+          "text": "Look at the clouds! It is going to rain.",
+          "tier": "full"
+        },
+        {
+          "text": "Look at those clouds! It's going to rain.",
+          "tier": "full"
+        },
+        {
+          "text": "Look at those clouds! It is going to rain.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du siehst den Beweis (die Wolken), darum going to: It's going to rain.",
+      "hintEn": null,
+      "explainDe": "Weil der Beweis sichtbar ist, nimmst du going to: Look at the clouds! It's going to rain.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

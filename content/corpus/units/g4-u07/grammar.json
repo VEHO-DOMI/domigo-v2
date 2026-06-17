@@ -1,0 +1,5424 @@
+{
+  "schema": "grammar@1",
+  "grade": 4,
+  "unit": 7,
+  "slug": "g4-u07",
+  "items": [
+    {
+      "id": "g4u07.gi.present-simple-future.ag.002",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "anagram",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ordne die Buchstaben. So heißt es, wenn ein Geschäft nach festen Zeiten aufmacht: The shop ___ at 9. (snepo)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "opens",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "3. Person Einzahl von 'to open' (aufmachen): open + s.",
+      "hintEn": null,
+      "explainDe": "Feste Öffnungszeiten stehen im Present simple: the shop opens. 3. Person mit -s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.ag.003",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ordne die Buchstaben. So heißt es, wenn ein Zug nach Fahrplan abfährt: The train ___ at six. (leevas)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "leaves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "3. Person Einzahl von 'to leave' (abfahren): leav + es.",
+      "hintEn": null,
+      "explainDe": "Der Fahrplan steht im Present simple: the train leaves. In der 3. Person mit -s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.cp.001",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "context-picker",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The show is beginning at 8:30.",
+            "The show will begin at 8:30.",
+            "The show is going to begin at 8:30.",
+            "The show is beginning at 8:30 tonight."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-cp-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du schaust auf den Programmplan vom Kino. Die Vorstellung um 8:30 ist fix eingetragen. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The show begins at 8:30.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The show is beginning at 8:30.",
+        "The show will begin at 8:30.",
+        "The show is going to begin at 8:30."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Etwas steht fix im Programm: Present simple.",
+      "hintEn": null,
+      "explainDe": "Weil die Zeit fix im Programm steht, sagst du The show begins at 8:30. Die anderen Formen passen nicht zu einem festen Programm.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.cp.002",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "context-picker",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The train will arrive at 15:45.",
+            "The train is arriving at 15:45.",
+            "The train is going to arrive at 15:45.",
+            "The train arrived at 15:45."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-cp-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du stehst am Bahnhof und schaust auf die Anzeigetafel. Der nächste Zug ist für 15:45 eingetragen. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The train arrives at 15:45.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The train will arrive at 15:45.",
+        "The train is arriving at 15:45.",
+        "The train is going to arrive at 15:45."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eine Anzeigetafel zeigt einen festen Fahrplan: Present simple.",
+      "hintEn": null,
+      "explainDe": "Die Ankunft steht fix auf der Tafel, darum The train arrives at 15:45. will/going to/-ing wären hier falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.cp.003",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "context-picker",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I visit my aunt this weekend.",
+            "My aunt visits me this weekend at 8.",
+            "I visits my aunt this weekend.",
+            "I will visiting my aunt this weekend."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du erzählst von deinen eigenen Plänen fürs Wochenende — das ist KEIN Fahrplan, sondern deine eigene Absicht. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I am going to visit my aunt this weekend.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I visit my aunt this weekend.",
+        "My aunt visits me this weekend at 8.",
+        "I visits my aunt this weekend."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eigene Absicht, kein Fahrplan: going to, nicht Present simple.",
+      "hintEn": null,
+      "explainDe": "Ein Besuch bei der Tante ist deine eigene Absicht, kein fix vereinbarter Fahrplan. Darum I am going to visit, nicht I visit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.cp.004",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "context-picker",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The flight to London will take off at 6:30.",
+            "The flight to London is taking off at 6:30.",
+            "The flight to London is going to take off at 6:30.",
+            "The flight to London is taking off at 6:30 tomorrow."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du liest die Abflugtafel am Flughafen. Der Flug nach London ist fix für 6:30 eingetragen. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The flight to London takes off at 6:30.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The flight to London will take off at 6:30.",
+        "The flight to London is taking off at 6:30.",
+        "The flight to London is going to take off at 6:30."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Abflugtafel zeigt einen festen Flugplan: Present simple.",
+      "hintEn": null,
+      "explainDe": "Der Abflug steht fix auf der Tafel, darum takes off. will/going to/-ing wären hier falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.ec.001",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "error-correction",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler (es ist ein Fahrplan). The train will arrive at platform 3 at 10:15.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The train arrives at platform 3 at 10:15.",
+          "tier": "full"
+        },
+        {
+          "text": "arrives",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Fahrplan steht fest, also kein will, sondern Present simple.",
+      "hintEn": null,
+      "explainDe": "Die Ankunft steht im Fahrplan, darum arrives statt will arrive: The train arrives at platform 3 at 10:15.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.ec.002",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-ec-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler (Kinoprogramm). The concert is beginning at 8 p.m. tonight.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The concert begins at 8 p.m. tonight.",
+          "tier": "full"
+        },
+        {
+          "text": "begins",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Etwas steht fix im Programm: Present simple, nicht die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Die Anfangszeit steht fix im Programm, darum begins statt is beginning: The concert begins at 8 p.m. tonight.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.ec.003",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-ec-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler (Stundenplan). The lesson begin at 8 o'clock every morning.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The lesson begins at 8 o'clock every morning.",
+          "tier": "full"
+        },
+        {
+          "text": "begins",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "3. Person Einzahl braucht ein -s: the lesson begins.",
+      "hintEn": null,
+      "explainDe": "In der 3. Person Einzahl fehlt das -s: nicht begin, sondern begins. Der Stundenplan steht fest, also Present simple.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.ec.004",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler (eigener Plan, kein Fahrplan). I play football with my friends tomorrow afternoon.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I am going to play football with my friends tomorrow afternoon.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm going to play football with my friends tomorrow afternoon.",
+          "tier": "full"
+        },
+        {
+          "text": "I am playing football with my friends tomorrow afternoon.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "football",
+          "de": "Fußball",
+          "scope": null
+        }
+      ],
+      "hintDe": "Fußballspielen mit Freunden ist dein eigener Plan, kein Fahrplan: nimm going to.",
+      "hintEn": null,
+      "explainDe": "Das Present simple gilt nur für Fahrpläne. Ein eigener Plan braucht going to: I'm going to play football tomorrow.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.ec.005",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler (Stundenplan). School is going to begin at 8 o'clock every day.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "School begins at 8 o'clock every day.",
+          "tier": "full"
+        },
+        {
+          "text": "begins",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein fester Stundenplan steht im Present simple, nicht mit going to.",
+      "hintEn": null,
+      "explainDe": "Der Schulbeginn ist ein fixer Stundenplan, kein eigener Plan: School begins at 8, nicht is going to begin.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.ec.006",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler (Flugplan). The plane will land in Perth at 2:30 p.m.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The plane lands in Perth at 2:30 p.m.",
+          "tier": "full"
+        },
+        {
+          "text": "lands",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Flug nach Plan: Present simple, nicht will.",
+      "hintEn": null,
+      "explainDe": "Die Landezeit steht im Flugplan, darum lands statt will land: The plane lands in Perth at 2:30 p.m.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.ec.007",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler (Öffnungszeiten). The market is opening at 8 o'clock every morning.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The market opens at 8 o'clock every morning.",
+          "tier": "full"
+        },
+        {
+          "text": "opens",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Feste Öffnungszeit: Present simple, nicht die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Der Markt öffnet nach festem Plan, darum opens statt is opening: The market opens at 8 o'clock every morning.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.001",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (fester Fahrplan). The train ___ (leave) at 6:30 tomorrow.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "leaves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Fahrplan steht fest, also Present simple, 3. Person Einzahl mit -s.",
+      "hintEn": null,
+      "explainDe": "Bei fix vereinbarten Fahrplänen nimmst du das Present simple: the train leaves. Kein will und kein -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.002",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (fester Zeitplan). The concert ___ (begin) at 8 p.m. tonight.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "begins",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eine Vorstellung mit fester Uhrzeit: Present simple, 3. Person Einzahl.",
+      "hintEn": null,
+      "explainDe": "Ein Konzert hat eine fix vereinbarte Anfangszeit, darum begins. Vergiss das -s in der 3. Person nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.003",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-gf-007",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (Öffnungszeiten). The shop ___ (open) at 9 a.m. tomorrow.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "opens",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Öffnungszeiten sind fix, also Present simple mit -s.",
+      "hintEn": null,
+      "explainDe": "Geschäfte haben feste Öffnungszeiten, deshalb opens. Kein will open.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.004",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 7.txt#grammar-1",
+        "seedV1": "m4-u7-present-simple-future-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (Flugplan). Our plane to Alice Springs ___ (leave) at 8.30 tomorrow morning.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "leaves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Flug mit fester Abflugzeit: Present simple, 3. Person Einzahl.",
+      "hintEn": null,
+      "explainDe": "Genau wie im Reiseblog: Our plane leaves at 8.30. Flugpläne stehen fest, darum Present simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.005",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-gf-010",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (Fahrplan). The last train ___ (leave) at 11:45 p.m. Don't miss it!",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "leaves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der letzte Zug fährt nach Fahrplan, also Present simple mit -s.",
+      "hintEn": null,
+      "explainDe": "Auch der letzte Zug hat eine fixe Abfahrtszeit: leaves. Kein is leaving.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.006",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-gf-008",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (Öffnungszeiten). The library ___ (close) at 5 p.m. on Saturdays.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "closes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Feste Schließzeit: Present simple, 3. Person Einzahl.",
+      "hintEn": null,
+      "explainDe": "Die Bibliothek schließt nach festem Plan, darum closes. Achte auf das -es nach -se.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.007",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-gf-012",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz beide Formen ein (Prüfungsplan). Our exams ___ (begin) on the 15th of June and ___ (end) on the 22nd.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "begin | end",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Plural-Subjekt (exams), also Present simple ohne -s.",
+      "hintEn": null,
+      "explainDe": "Der Prüfungsplan ist fix vereinbart, darum Present simple. Weil exams Mehrzahl ist, kein -s: begin … end.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.008",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-gf-009",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (Fahrplan, Frage). What time ___ the concert ___ (begin) tonight?",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "does | begin",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage im Present simple: does + Subjekt + Grundform (ohne -s).",
+      "hintEn": null,
+      "explainDe": "In der Frage steht das -s im Hilfsverb does, der Hauptverb bleibt Grundform: does the concert begin?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.009",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (eigene Absicht, kein Fahrplan). I ___ (visit) my grandma tomorrow. It's my own plan.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "am going to visit",
+          "tier": "full"
+        },
+        {
+          "text": "am visiting",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eigener Plan, kein Fahrplan: nimm going to, nicht das Present simple.",
+      "hintEn": null,
+      "explainDe": "Ein Besuch bei der Oma ist deine eigene Absicht, kein fixer Fahrplan. Darum I'm going to visit, nicht I visit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.010",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die verneinte Form ein (Öffnungszeiten). The museum ___ (not / open) on Mondays.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't open",
+          "tier": "full"
+        },
+        {
+          "text": "does not open",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinung im Present simple: doesn't + Grundform.",
+      "hintEn": null,
+      "explainDe": "Auch die Verneinung von Öffnungszeiten ist Present simple: doesn't open. Das -s steckt in doesn't.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.011",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-mc-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (Flugplan). The flight to London ___ (take off) at 6:30 a.m.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "takes off",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Flug nach Plan: Present simple, 3. Person mit -s.",
+      "hintEn": null,
+      "explainDe": "Der Abflug steht im Flugplan fest, darum takes off. Das -s kommt an take, nicht an off.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.012",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (Reiseplan). In the early afternoon we ___ (fly) to Sydney.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "fly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Plural-Subjekt (we) und ein fixer Reiseplan: Present simple ohne -s.",
+      "hintEn": null,
+      "explainDe": "Genau wie im Blog: in the early afternoon we fly to Sydney. Bei we kein -s, weil der Reiseplan fix vereinbart ist.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.013",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (Fahrplan). The ferry ___ (arrive) at midday.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "arrives",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Feste Ankunftszeit: Present simple mit -s.",
+      "hintEn": null,
+      "explainDe": "Die Ankunft der Fähre steht im Fahrplan, darum arrives. Kein will arrive.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.014",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (Programm). The exhibition ___ (open) on Friday.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "opens",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein festes Programm: Present simple mit -s.",
+      "hintEn": null,
+      "explainDe": "Die Ausstellung hat einen fixen Eröffnungstag, darum opens. Present simple, kein going to.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gf.015",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form ein (Frage, Fahrplan). What time ___ the ferry ___ (leave) for the island?",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "does | leave",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage im Present simple: does + Subjekt + Grundform (ohne -s).",
+      "hintEn": null,
+      "explainDe": "In der Frage steht das -s in does, der Hauptverb bleibt Grundform: does the ferry leave?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gs.007",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere: Welche Sätze passen zu einem festen Fahrplan (richtig) und welche nicht (falsch)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "leaves / opens",
+          "members": [
+            "The train leaves at 6:30 tomorrow.",
+            "The museum opens at 9 a.m. on Sunday.",
+            "The plane lands at 2:30 p.m."
+          ]
+        },
+        {
+          "label": "will / going to",
+          "members": [
+            "The train will leave at 6:30 tomorrow.",
+            "The museum is opening at 9 a.m. on Sunday.",
+            "The plane is going to land at 2:30 p.m."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Fahrpläne stehen im Present simple. Sätze mit will, is …-ing oder going to gehören in die falsche Gruppe.",
+      "hintEn": null,
+      "explainDe": "Für feste Fahrpläne ist nur das Present simple richtig (leaves, opens, lands). will/-ing/going to passen hier nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.gs.008",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere: fester Fahrplan/Programm oder eigener Plan/Vorhersage?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "leaves / opens",
+          "members": [
+            "The train leaves at 6:30.",
+            "The shop opens at 9 a.m.",
+            "The exhibition opens on Friday."
+          ]
+        },
+        {
+          "label": "will / going to",
+          "members": [
+            "I am going to study medicine.",
+            "I think it will rain tomorrow.",
+            "She is visiting her aunt tomorrow."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Fahrpläne und Programme stehen im Present simple. Eigene Pläne und Vorhersagen nehmen going to, will oder die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Present simple ist nur für fix vereinbarte Fahrpläne/Programme. Eigene Absichten (going to), Vorhersagen (will) und Arrangements (is visiting) gehören in die andere Gruppe.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.mc.001",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "will leave",
+            "is leaving",
+            "is going to leave",
+            "leave",
+            "leaving"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-mc-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wähl die richtige Form (fester Fahrplan). The train to Salzburg ___ at 7:15.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "leaves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "will leave",
+        "is leaving",
+        "is going to leave"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Fahrplan steht fest: Present simple mit -s.",
+      "hintEn": null,
+      "explainDe": "Bei einem Zugfahrplan nimmst du leaves, nicht will leave oder is leaving.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.mc.002",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I close the door when I leave.",
+            "The shop will close at 9 p.m. today.",
+            "I go to the cinema tomorrow with my friends.",
+            "The shop is closing at 9 p.m. today."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz beschreibt richtig einen festen Fahrplan?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The shop closes at 9 p.m. today.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I close the door when I leave.",
+        "The shop will close at 9 p.m. today.",
+        "I go to the cinema tomorrow with my friends."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Such den Satz, in dem etwas fix nach Plan geschieht und im Present simple steht.",
+      "hintEn": null,
+      "explainDe": "Für die feste Schließzeit gilt The shop closes at 9 p.m. today. will close ist hier falsch, und der Kino-Satz ist ein eigener Plan (going to).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.mc.003",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "will close",
+            "is closing",
+            "close",
+            "closed"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-mc-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wähl die richtige Form (Öffnungszeiten). The library ___ at 5 p.m. on Saturdays.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "closes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "will close",
+        "is closing",
+        "close"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Feste Schließzeit, 3. Person Einzahl: Present simple mit -s.",
+      "hintEn": null,
+      "explainDe": "Die Bibliothek schließt nach festem Plan: closes. close ohne -s ist in der 3. Person falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.mc.004",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The concert will begin at 7 p.m. — I want to.",
+            "The concert is beginning at 7 p.m. — I think so.",
+            "The concert is going to begin at 7 p.m. — it's what I hope.",
+            "The concert will begin at 7 p.m. — maybe."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-mc-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein Freund sagt: 'The concert is going to begin at 7 p.m.' Du schaust auf das gedruckte Programm. Was sagst du ihm?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The concert begins at 7 p.m. — it's on the programme.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The concert will begin at 7 p.m. — I want to.",
+        "The concert is beginning at 7 p.m. — I think so.",
+        "The concert is going to begin at 7 p.m. — it's what I hope."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wenn etwas im Programm fix steht, nimmst du das Present simple.",
+      "hintEn": null,
+      "explainDe": "Weil die Zeit im Programm fix vereinbart ist, sagst du The concert begins at 7. will/going to wären eigene Entscheidungen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.mc.005",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I am going to study medicine.",
+            "The exhibition opens on Friday.",
+            "It will probably rain tomorrow.",
+            "I am visiting my aunt this weekend."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-mc-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "In welchem Satz ist die Form FALSCH (es ist ein fester Fahrplan)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The plane will leave at 14:30 tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I am going to study medicine.",
+        "The exhibition opens on Friday.",
+        "It will probably rain tomorrow."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Such den Fahrplan-Satz, der NICHT im Present simple steht.",
+      "hintEn": null,
+      "explainDe": "Ein Flug nach Plan müsste leaves heißen, will leave ist hier falsch. Die anderen drei sind je richtig (eigener Plan, Programm, Vorhersage).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.mc.006",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I am visiting my grandma tomorrow.",
+            "I think it will rain tomorrow.",
+            "She is going to study medicine.",
+            "Look at those clouds! It is going to rain."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-mc-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "In welchem Satz steht ein fester Flugplan richtig (etwas ist fix geplant)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The flight to London takes off at 6:30 a.m.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I am visiting my grandma tomorrow.",
+        "I think it will rain tomorrow.",
+        "She is going to study medicine."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nur ein Satz beschreibt einen festen Flugplan im Present simple.",
+      "hintEn": null,
+      "explainDe": "Der Abflug steht im Flugplan: takes off. Die anderen sind Plan, Vorhersage oder Absicht — kein Fahrplan.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.mc.007",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "will land",
+            "is landing",
+            "land",
+            "landed"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wähl die richtige Form (Fahrplan). The plane ___ in Perth at 2:30 p.m.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "lands",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "will land",
+        "is landing",
+        "land"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Flug nach Plan: Present simple, 3. Person mit -s.",
+      "hintEn": null,
+      "explainDe": "Die Landezeit steht im Flugplan, darum lands. land ohne -s ist in der 3. Person falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.mt.001",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "matching",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde jeden Satzanfang mit dem passenden Ende.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "The train",
+          "right": "leaves at 6:30 tomorrow."
+        },
+        {
+          "left": "The museum",
+          "right": "opens at 9 a.m. on Sunday."
+        },
+        {
+          "left": "The concert",
+          "right": "begins at 8 p.m. tonight."
+        },
+        {
+          "left": "The plane",
+          "right": "lands in Perth at 2:30 p.m."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Welches Verb passt zu welchem Subjekt? Achte auf den Sinn.",
+      "hintEn": null,
+      "explainDe": "Jedes Subjekt bekommt eine passende Fahrplan-Aussage im Present simple (leaves, opens, begins, lands).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.mt.002",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "matching",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-mt-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde die Frage mit der passenden Antwort.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "What time does the train leave?",
+          "right": "It leaves at 6:30."
+        },
+        {
+          "left": "When does the museum open?",
+          "right": "It opens on Sunday."
+        },
+        {
+          "left": "What time does the shop close?",
+          "right": "It closes at 5 p.m."
+        },
+        {
+          "left": "When does the concert begin?",
+          "right": "It begins tonight."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Lies die Fragewörter (what time / when) und finde die passende Antwort.",
+      "hintEn": null,
+      "explainDe": "Jede Frage im Present simple bekommt eine kurze Antwort mit dem gleichen Verb (leaves, opens, closes, begins).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.qf.001",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "question-formation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde die Frage. Du willst die feste Öffnungszeit am Sonntag wissen. Chips: the / museum / open / on Sunday",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When does the museum open on Sunday?",
+          "tier": "full"
+        },
+        {
+          "text": "What time does the museum open on Sunday?",
+          "tier": "full"
+        },
+        {
+          "text": "Does the museum open on Sunday?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage mit does: (When/What time) does the museum open …?",
+      "hintEn": null,
+      "explainDe": "Nach festen Öffnungszeiten fragst du im Present simple: When does the museum open on Sunday? Hauptverb bleibt Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.qf.002",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "question-formation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-tf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde die Frage nach der festen Abfahrtszeit. Chips: what time / the train / leave / tomorrow",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What time does the train leave tomorrow?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "What time + does + Subjekt + Grundform?",
+      "hintEn": null,
+      "explainDe": "Die Frage nach einem Fahrplan steht im Present simple: What time does the train leave tomorrow? Das -s steckt in does.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.sb.001",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "sentence-building",
+      "rev": 3,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "will",
+            "is",
+            "leaving",
+            "at"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge. at / the / 7:30 / train / leaves",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The train leaves at 7:30.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Subjekt + Verb (leaves) + Zeitangabe.",
+      "hintEn": null,
+      "explainDe": "Der Fahrplan steht im Present simple: The train leaves at 7:30.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.sb.002",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "sentence-building",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "will",
+            "beginning",
+            "is",
+            "begin"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-sb-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge. at / begins / the / concert / 3 p.m.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The concert begins at 3 p.m.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Subjekt + Verb (begins) + Zeitangabe.",
+      "hintEn": null,
+      "explainDe": "Die feste Anfangszeit steht im Present simple: The concert begins at 3 p.m.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.sb.003",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "sentence-building",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "do",
+            "opens",
+            "will",
+            "is"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-sb-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge. does / time / the / what / museum / open / ?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What time does the museum open?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "What time + does + Subjekt + Grundform?",
+      "hintEn": null,
+      "explainDe": "Die Frage nach festen Öffnungszeiten: What time does the museum open? Das -s steckt in does.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.sb.004",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "sentence-building",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "will",
+            "is",
+            "leaving",
+            "leave"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge. tomorrow / leaves / our / plane / 8.30 / at",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Our plane leaves at 8.30 tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Subjekt + Verb (leaves) + Zeitangabe.",
+      "hintEn": null,
+      "explainDe": "Wie im Blog: Our plane leaves at 8.30 tomorrow. Fester Flugplan, also Present simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tf.001",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-tf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib so um, dass es ein fester Fahrplan ist. The ferry will leave at 3:30 p.m. → The ferry ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "The ferry leaves at 3:30 p.m.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mach aus will leave die Present-simple-Form mit -s.",
+      "hintEn": null,
+      "explainDe": "Ein Fährfahrplan steht fest, darum leaves statt will leave: The ferry leaves at 3:30 p.m.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tf.002",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib so um, dass es feste Öffnungszeiten sind. The market will open at 8 o'clock tomorrow. → The market ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "The market opens at 8 o'clock tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Feste Öffnungszeit: opens statt will open.",
+      "hintEn": null,
+      "explainDe": "Öffnungszeiten sind fix, darum opens. Vergiss das -s in der 3. Person nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tf.003",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-tf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde die Frage nach der festen Schließzeit. Du willst wissen, wann das Museum schließt. → What time ___?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "What time does the museum close?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage mit does: What time does + Subjekt + Grundform?",
+      "hintEn": null,
+      "explainDe": "Die Frage nach festen Schließzeiten steht im Present simple: What time does the museum close? Das -s steckt in does.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tf.004",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib mit der passenden Form um (eigener Plan, kein Fahrplan!). The concert begins at 7. → I / go / to the concert",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I am going to go to the concert.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm going to go to the concert.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Dass DU hingehst, ist dein eigener Plan: going to, nicht Present simple.",
+      "hintEn": null,
+      "explainDe": "Die Anfangszeit ist ein Fahrplan (begins), aber dein Besuch ist deine eigene Absicht: I am going to go.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tf.005",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du bist am Flughafen und liest die Anzeige. Sag deinem Freund Bescheid: 'Our plane ___ (leave) at 6:15 tomorrow morning.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "leaves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Anzeige ist ein fester Flugplan: leaves mit -s.",
+      "hintEn": null,
+      "explainDe": "Der Abflug steht fix auf der Anzeige, darum Our plane leaves at 6:15. Kein will und kein -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tf.006",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde die Frage nach der festen Ankunftszeit. Du willst wissen, wann der Zug morgen ankommt. → What time ___?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "What time does the train arrive tomorrow?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "What time + does + Subjekt + Grundform?",
+      "hintEn": null,
+      "explainDe": "Die Frage nach der festen Ankunftszeit steht im Present simple: What time does the train arrive tomorrow?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tr.001",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Der Zug fährt um 9 Uhr ab.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The train leaves at 9 o'clock.",
+          "tier": "full"
+        },
+        {
+          "text": "The train leaves at 9.",
+          "tier": "full"
+        },
+        {
+          "text": "The train leaves at 9 a.m.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fahrplan = Present simple: The train leaves …",
+      "hintEn": null,
+      "explainDe": "Ein fester Fahrplan steht im Present simple: The train leaves at 9 o'clock. Kein will leave.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tr.002",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wann beginnt die Vorstellung?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When does the show begin?",
+          "tier": "full"
+        },
+        {
+          "text": "What time does the show begin?",
+          "tier": "full"
+        },
+        {
+          "text": "When does the concert begin?",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage mit does + Grundform: When does the show begin?",
+      "hintEn": null,
+      "explainDe": "Nach festen Anfangszeiten fragst du im Present simple: When does the show begin? Das -s steckt in does.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tr.003",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-tr-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Das Flugzeug landet um 14:30 Uhr.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The plane lands at 2:30 p.m.",
+          "tier": "full"
+        },
+        {
+          "text": "The plane lands at 14:30.",
+          "tier": "full"
+        },
+        {
+          "text": "The plane arrives at 2:30 p.m.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Flugplan = Present simple: The plane lands …",
+      "hintEn": null,
+      "explainDe": "Die Landezeit steht im Flugplan fest, darum The plane lands at 2:30 p.m. Present simple, nicht will land.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tr.004",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-present-simple-future-tr-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wann macht das Museum morgen auf?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When does the museum open tomorrow?",
+          "tier": "full"
+        },
+        {
+          "text": "What time does the museum open tomorrow?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage mit does: When does the museum open tomorrow?",
+      "hintEn": null,
+      "explainDe": "Öffnungszeiten sind fix, darum fragst du im Present simple: When does the museum open tomorrow?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tr.005",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Diesen Sonntag gibt es ein Konzert.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There's a concert this Sunday.",
+          "tier": "full"
+        },
+        {
+          "text": "There is a concert this Sunday.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Für fix vereinbarte Ereignisse kannst du there is/are nehmen.",
+      "hintEn": null,
+      "explainDe": "Wie im Blog (There's a beach party this Sunday): für feste zukünftige Ereignisse passt there is/are.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tr.006",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wir haben morgen einen Flug.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have got a flight tomorrow.",
+          "tier": "full"
+        },
+        {
+          "text": "We have a flight tomorrow.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Für fix vereinbarte Pläne kannst du have got nehmen.",
+      "hintEn": null,
+      "explainDe": "Wie im Blog (We've got another plane trip tomorrow): have got passt für feste zukünftige Pläne.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.present-simple-future.tr.007",
+      "structureId": "g4u07.s.present-simple-future",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Das Geschäft schließt heute um 9 Uhr abends.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The shop closes at 9 p.m. today.",
+          "tier": "full"
+        },
+        {
+          "text": "The shop closes at 9 o'clock today.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Feste Schließzeit = Present simple: The shop closes …",
+      "hintEn": null,
+      "explainDe": "Die Schließzeit ist fix, darum The shop closes at 9 p.m. today. Present simple, kein will close.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.ag.002",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Person passt nach 'want'?  My parents want ___ to come home. Sortiere die Buchstaben: h e t m",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "them",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es geht um mehrere Personen (sie) in der Objektform – vier Buchstaben.",
+      "hintEn": null,
+      "explainDe": "Nach want steht die Objektform them: My parents want them to come home.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.cp.001",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I want that he stop the noise.",
+            "I want him stop the noise.",
+            "I want he to stop the noise.",
+            "I want me him to stop the noise."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein kleiner Cousin macht zu viel Lärm. Du sagst deiner Mutter, was du möchtest. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want him to stop the noise.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I want that he stop the noise.",
+        "I want him stop the noise.",
+        "I want he to stop the noise."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "want + Person (Objektform) + to + Tätigkeit.",
+      "hintEn": null,
+      "explainDe": "Richtig ist I want him to stop the noise. Kein 'want that', das to darf nicht fehlen, und nach want steht him (nicht he).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.cp.002",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He doesn't want that I am late.",
+            "He doesn't want me be late.",
+            "He doesn't want I to be late.",
+            "He doesn't wants me to be late."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-mc-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein Freund will nicht, dass du heute zu spät kommst. Welcher Satz gibt das richtig wieder?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He doesn't want me to be late.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He doesn't want that I am late.",
+        "He doesn't want me be late.",
+        "He doesn't want I to be late."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "late",
+          "de": "spät / zu spät",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "want + Person (me) + to + Tätigkeit, auch in der verneinten Form mit doesn't.",
+      "hintEn": null,
+      "explainDe": "Richtig ist He doesn't want me to be late. Kein 'want that', das to muss stehen, und nach want kommt me (nicht I).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.cp.003",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Do you want that I help you?",
+            "Do you want me help you?",
+            "Do you want I to help you?",
+            "Do you want me and help you?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du möchtest deinem Freund beim Tragen helfen und fragst ihn. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you want me to help you?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Do you want that I help you?",
+        "Do you want me help you?",
+        "Do you want I to help you?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "want + Person (me) + to + Tätigkeit, hier als Frage mit Do.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Do you want me to help you? Kein 'want that', to darf nicht fehlen, und nach want steht me.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.cp.004",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I want that my sister helps me.",
+            "I want my sister help me.",
+            "I want my sister helping me.",
+            "I want my sister to helps me."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du möchtest, dass deine Schwester dir hilft. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want my sister to help me.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I want that my sister helps me.",
+        "I want my sister help me.",
+        "I want my sister helping me."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Person + to + Tätigkeit.",
+      "hintEn": null,
+      "explainDe": "Richtig ist I want my sister to help me. Kein 'want that', das to muss da sein, keine -ing-Form.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.ec.001",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I want that you help me with this homework.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want you to help me with this homework.",
+          "tier": "full"
+        },
+        {
+          "text": "I want you to help me with this homework",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'want that' gibt es nicht – ersetze es durch Person + to.",
+      "hintEn": null,
+      "explainDe": "Statt 'want that you help' sagt man want you to help: I want you to help me. Person + to + Grundform.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.ec.002",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-ec-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "My mum wants that I come home before nine.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My mum wants me to come home before nine.",
+          "tier": "full"
+        },
+        {
+          "text": "My mum wants me to come home before nine",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ersetze 'wants that I' durch wants me to.",
+      "hintEn": null,
+      "explainDe": "Englisch hat kein 'want that'. Richtig: My mum wants me to come home – wants + Person + to + Grundform.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.ec.003",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I want you help me carry the bags.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want you to help me carry the bags.",
+          "tier": "full"
+        },
+        {
+          "text": "I want you to help me carry the bags",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "bags",
+          "de": "Taschen",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Es fehlt das kleine Wort vor help.",
+      "hintEn": null,
+      "explainDe": "Nach want + Person muss to stehen: I want you to help. Ohne to ist der Satz falsch.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.ec.004",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-ec-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The doctor wants he to take the medicine every day.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The doctor wants him to take the medicine every day.",
+          "tier": "full"
+        },
+        {
+          "text": "The doctor wants him to take the medicine every day",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach want steht die Person in der Objektform: he → ?",
+      "hintEn": null,
+      "explainDe": "Nach want brauchst du him, nicht he: The doctor wants him to take the medicine.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.ec.005",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-ec-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "My mum wants to tidy my room every Saturday.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My mum wants me to tidy my room every Saturday.",
+          "tier": "full"
+        },
+        {
+          "text": "My mum wants me to tidy my room every Saturday",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es fehlt die Person: WER soll das Zimmer aufräumen?",
+      "hintEn": null,
+      "explainDe": "Hier fehlt die Person nach want. Gemeint ist My mum wants me to tidy my room – want + Person + to + Grundform.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.ec.006",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The teacher asked us to not talk during the lesson.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The teacher asked us not to talk during the lesson.",
+          "tier": "full"
+        },
+        {
+          "text": "The teacher asked us not to talk during the lesson",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Verneinung lautet not to – nicht 'to not'.",
+      "hintEn": null,
+      "explainDe": "Richtig ist asked us not to talk: not steht VOR to, nicht zwischen to und der Tätigkeit.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.ec.007",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She asked we to wait for her after school.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked us to wait for her after school.",
+          "tier": "full"
+        },
+        {
+          "text": "She asked us to wait for her after school",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach ask steht die Person in der Objektform: we → ?",
+      "hintEn": null,
+      "explainDe": "Nach ask brauchst du die Objektform us, nicht we: She asked us to wait for her.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.ec.008",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "We want that you come with us.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We want you to come with us.",
+          "tier": "full"
+        },
+        {
+          "text": "We want you to come with us",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ersetze 'want that you' durch want you to.",
+      "hintEn": null,
+      "explainDe": "Englisch hat kein 'want that'. Richtig: We want you to come with us. Person + to + Grundform.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.001",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I want you ___ help me with my homework.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor der Tätigkeit (help) steht im Englischen immer ein kleines Wort.",
+      "hintEn": null,
+      "explainDe": "Nach want + Person folgt to + Grundform: I want you to help me. Im Deutschen sagst du 'Ich will, dass du mir hilfst'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.002",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She asked ___ to sit down and wait. (he)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "him",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach ask kommt die Person als Objektform: aus 'he' wird hier welche Form?",
+      "hintEn": null,
+      "explainDe": "Nach dem Wort für die Person nimmst du die Objektform: he → him. She asked him to sit down.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.003",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-007",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "My parents ___ me to come home before nine. (want)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "want",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wer soll was tun? Setze die Grundform von 'want' ein.",
+      "hintEn": null,
+      "explainDe": "Das Muster ist want + Person + to + Tätigkeit: My parents want me to come home. Nicht 'want that'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.004",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "My parents want me ___ (come) home before nine.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to come",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Hinter der Person steht to + Grundform – nicht nur die Grundform allein.",
+      "hintEn": null,
+      "explainDe": "Du brauchst to + come: My parents want me to come home. Weder 'come' allein noch 'coming' noch 'that I come'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.005",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-008",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The teacher wants us ___ (work) quietly.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to work",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "quietly",
+          "de": "leise",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Was soll die Klasse tun? Vor 'work' fehlt noch das kleine Wort: to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach wants + us folgt to work: The teacher wants us to work. Vergiss das to nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.006",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-009",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She doesn't want ___ to go without her. (they)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "them",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Person nach want steht in der Objektform: they → ?",
+      "hintEn": null,
+      "explainDe": "Du brauchst die Objektform them: She doesn't want them to go. Nicht 'they' oder 'their'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.007",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Do you want ___ (I / carry) your homework for you?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "me to carry",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst die Person in der Objektform, dann to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Aus 'I' wird die Objektform me, danach to carry: Do you want me to carry …? Nicht 'I to carry' oder 'me carry'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.008",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The teacher asked us ___ (not / talk) during the lesson.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "not to talk",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wenn jemand etwas NICHT tun soll, steht not vor dem to.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung ist not to + Grundform: asked us not to talk. Nicht 'to not talk' oder 'don't talk'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.009",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-010",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I wanted my sister ___ me with my homework, but she was busy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to help",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Hinter der Person (my sister) steht to + Grundform von help.",
+      "hintEn": null,
+      "explainDe": "Du brauchst to help: I wanted my sister to help me. Nicht 'help' allein, nicht 'that she helps'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.010",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-011",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Our coach doesn't want ___ to eat junk food before the match. (we)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "us",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "we → Objektform nach want?",
+      "hintEn": null,
+      "explainDe": "Nach want steht die Objektform us: doesn't want us to eat. Nicht 'we' oder 'our'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.011",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-012",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Do you want ___ (I / pick) you up from the station, or do you take the train?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "me to pick",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "pick",
+          "de": "abholen (pick up)",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Erst die Person (me), dann to + Grundform. pick up heißt abholen.",
+      "hintEn": null,
+      "explainDe": "Aus 'I' wird me, danach to pick: Do you want me to pick you up? Nicht 'that I pick'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.012",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-gf-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "My mum wants ___ (we / stay) in tonight, and she asks ___ (we / do) our homework first.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "us to stay|us to do",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Male: Person (us) + to + Tätigkeit.",
+      "hintEn": null,
+      "explainDe": "want us to stay und asks us to do: Beide Verben brauchen die Objektform us + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.013",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "We want you ___ come with us to the outback.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor der Tätigkeit (come) fehlt das kleine Wort.",
+      "hintEn": null,
+      "explainDe": "Nach want + Person folgt immer to: We want you to come. Im Deutschen: 'Wir wollen, dass du mitkommst'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.014",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I expect you ___ (be) on time tomorrow morning.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to be",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "expect funktioniert wie want: Person + to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Auch expect nimmt to + Grundform: I expect you to be on time. Nicht 'you be' oder 'that you are'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.015",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He asked me ___ (wait) for him at the station.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to wait",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "to + Grundform von wait.",
+      "hintEn": null,
+      "explainDe": "He asked me to wait for him. ask + Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.016",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Does your dad ___ you to study medicine? (want)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "want",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach Does steht die Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach Does steht die Grundform want: Does your dad want you to study medicine?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.017",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "My dad asked me ___ (not / use) my phone at dinner.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "not to use",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "phone",
+          "de": "Handy",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Verneinung: not to + Grundform.",
+      "hintEn": null,
+      "explainDe": "My dad asked me not to use my phone. not steht vor to.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gf.018",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She wants you ___ (call) her back after school.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to call",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "to + Grundform von call.",
+      "hintEn": null,
+      "explainDe": "She wants you to call her back. want + Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gs.003",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Sätze sind richtig (✓) und welche falsch (✗)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "I want you to help me.",
+            "She asked him to wait.",
+            "My mum wants me to come home."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "I want that you help me.",
+            "She asked him wait.",
+            "My mum wants me come home."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Richtig ist immer Person + to + Tätigkeit. Falsch ist 'want that' oder ein fehlendes to.",
+      "hintEn": null,
+      "explainDe": "Richtig: want/ask + Person + to + Grundform. Falsch sind 'I want that …' und Sätze ohne to (asked him wait).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.gs.004",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere: Wer soll etwas TUN (✓) und wer soll etwas NICHT tun (✗)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "to do",
+          "members": [
+            "I want you to wait here.",
+            "She asked me to come early.",
+            "We want them to help us."
+          ]
+        },
+        {
+          "label": "not to do",
+          "members": [
+            "I want you not to wait.",
+            "She asked me not to come.",
+            "We want them not to go."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Steht 'not' vor dem to, soll die Person etwas NICHT tun.",
+      "hintEn": null,
+      "explainDe": "want/ask you to wait = soll warten. want/ask you not to wait = soll NICHT warten. not steht vor to.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.mc.001",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Mum wants that I tidy up my room.",
+            "Mum wants I to tidy up my room.",
+            "Mum wants me tidy up my room.",
+            "Mum wants me tidying up my room."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-mc-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mum wants me to tidy up my room.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Mum wants that I tidy up my room.",
+        "Mum wants I to tidy up my room.",
+        "Mum wants me tidy up my room."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Suche das Muster: want + Person (Objektform) + to + Tätigkeit.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Mum wants me to tidy up my room. 'want that', 'want I' und 'want me tidy' (ohne to) sind alle falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.mc.002",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The coach asked that they run faster.",
+            "The coach asked them run faster.",
+            "The coach asked to them to run faster.",
+            "The coach asked they to run faster."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The coach asked them to run faster.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The coach asked that they run faster.",
+        "The coach asked them run faster.",
+        "The coach asked to them to run faster."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ask + Person (Objektform) + to + Tätigkeit, ohne zusätzliches 'to' davor.",
+      "hintEn": null,
+      "explainDe": "Richtig ist The coach asked them to run faster. 'asked that', 'asked them run' (ohne to) und 'asked to them' sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.mc.003",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She asked him to not be late.",
+            "She asked him don't be late.",
+            "She asked that he not be late.",
+            "She asked him no to be late."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-mc-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz drückt richtig aus, dass jemand etwas NICHT tun soll?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked him not to be late.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She asked him to not be late.",
+        "She asked him don't be late.",
+        "She asked that he not be late."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "late",
+          "de": "spät / zu spät",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Bei der Verneinung steht not direkt vor dem to.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She asked him not to be late. not steht vor to, nicht dahinter ('to not'), und 'don't' passt hier nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.mc.004",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I want her to come to dinner.",
+            "I asked her to come to dinner.",
+            "I expect her to come to dinner.",
+            "I'd like her to come to dinner."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-mc-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist NICHT richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want that she comes to dinner.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I want her to come to dinner.",
+        "I asked her to come to dinner.",
+        "I expect her to come to dinner."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achtung: 'want that …' gibt es im Englischen nicht.",
+      "hintEn": null,
+      "explainDe": "Falsch ist I want that she comes. Englisch sagt I want her to come – mit Person + to, nie mit 'that'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.mc.005",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Does your dad want that you study medicine?",
+            "Does your dad wants you to study medicine?",
+            "Does your dad want you study medicine?",
+            "Do your dad want you to study medicine?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-mc-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Frage ist richtig gebildet?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does your dad want you to study medicine?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Does your dad want that you study medicine?",
+        "Does your dad wants you to study medicine?",
+        "Does your dad want you study medicine?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach Does steht die Grundform want, danach Person + to + Tätigkeit.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Does your dad want you to study medicine? Nach Does kommt want (nicht wants), kein 'that', und to vor study.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.mc.006",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "that",
+            "for",
+            "—",
+            "of"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Was passt in die Lücke?  She wants me ___ wash the dishes.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "that",
+        "for",
+        "—"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor der Tätigkeit (wash) steht ein kleines Wort.",
+      "hintEn": null,
+      "explainDe": "Nach wants + Person folgt to: She wants me to wash the dishes.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.mc.007",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I",
+            "my",
+            "that I",
+            "mine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Was passt in die Lücke?  My parents want ___ to come home early.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "me",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I",
+        "my",
+        "that I"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Person nach want steht in der Objektform: I → ?",
+      "hintEn": null,
+      "explainDe": "Nach want steht die Objektform me: My parents want me to come home. Nicht 'I', 'my' oder 'that I'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.mt.001",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "matching",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Anfang passt zu welchem Ende? (wer soll was tun)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I want you",
+          "right": "to help me move the desk."
+        },
+        {
+          "left": "She asked him",
+          "right": "to wait outside."
+        },
+        {
+          "left": "They asked us",
+          "right": "to come with them."
+        },
+        {
+          "left": "He wants her",
+          "right": "to call him back."
+        },
+        {
+          "left": "We want them",
+          "right": "to win the match."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jeder Anfang braucht ein Ende, das mit to + Tätigkeit beginnt.",
+      "hintEn": null,
+      "explainDe": "Jeder Satz folgt dem Muster Person + want/ask + Person + to + Tätigkeit, z. B. I want you to help me move the desk.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.mt.002",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-mt-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Anfang passt zu welchem Ende?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "My mum wants me",
+          "right": "to tidy my room."
+        },
+        {
+          "left": "The doctor asked her",
+          "right": "to drink more."
+        },
+        {
+          "left": "Do you want her",
+          "right": "to call you back?"
+        },
+        {
+          "left": "Dad wanted them",
+          "right": "to come home early."
+        },
+        {
+          "left": "I expect you",
+          "right": "to be on time."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte darauf, was zu wem passt – jedes Ende beginnt mit to.",
+      "hintEn": null,
+      "explainDe": "Alle folgen dem Muster Person + want/ask/expect + Person + to + Tätigkeit, z. B. My mum wants me to tidy my room.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.qf.001",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-qf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein Freund braucht vielleicht Hilfe. Bilde die Frage, die mit 'Do you want …' beginnt.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you want me to help you?",
+          "tier": "full"
+        },
+        {
+          "text": "Do you want me to help you",
+          "tier": "full"
+        },
+        {
+          "text": "Do you want me to help?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Do you want + Person (me) + to + Tätigkeit?",
+      "hintEn": null,
+      "explainDe": "Do you want me to help you? Frageform von want + Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.qf.002",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-qf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Die Eltern deiner Freundin wollen, dass sie etwas Bestimmtes wird. Frag danach. Wörter: What / parents / want / do?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What do her parents want her to do?",
+          "tier": "full"
+        },
+        {
+          "text": "What do her parents want her to do",
+          "tier": "full"
+        },
+        {
+          "text": "What do your parents want you to do?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "What do … want … to do? – die Person nach want nicht vergessen.",
+      "hintEn": null,
+      "explainDe": "What do her parents want her to do? Auch in der Frage gilt want + Person + to + Tätigkeit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.sb.001",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "that",
+            "cleans",
+            "cleaning",
+            "for"
+          ],
+          "chipBudget": 12,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "wants / me / to / mum / clean / my / room / my",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My mum wants me to clean my room.",
+          "tier": "full"
+        },
+        {
+          "text": "My mum wants me to clean my room",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit My mum, dann wants, dann me to clean …",
+      "hintEn": null,
+      "explainDe": "My mum wants me to clean my room. Reihenfolge: Person + want + Person + to + Tätigkeit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.sb.002",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "that",
+            "running",
+            "runs",
+            "we"
+          ],
+          "chipBudget": 12,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-sb-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "wants / the coach / to / run / us / faster",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The coach wants us to run faster.",
+          "tier": "full"
+        },
+        {
+          "text": "The coach wants us to run faster",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "The coach wants us … – dann to + Tätigkeit.",
+      "hintEn": null,
+      "explainDe": "The coach wants us to run faster. Person + want + Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.sb.003",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "her",
+            "going",
+            "that",
+            "for"
+          ],
+          "chipBudget": 12,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-sb-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "doesn't / her / to / want / go / she / alone / him",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She doesn't want him to go alone.",
+          "tier": "full"
+        },
+        {
+          "text": "She doesn't want him to go alone",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achtung, ein Wort zu viel: She / doesn't / want / him / to / go / alone.",
+      "hintEn": null,
+      "explainDe": "She doesn't want him to go alone. Nach want steht him (nicht her) + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tf.001",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein kleiner Cousin ist laut. Sag deiner Mutter, was du möchtest: 'I want him ___ (stop) the noise!'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to stop",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "to + Grundform von stop.",
+      "hintEn": null,
+      "explainDe": "Du brauchst to stop: I want him to stop the noise. Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tf.002",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Die Lehrerin gab eine Anweisung. Erzähle deinem Freund: 'She asked us ___ (not / use) our phones in class.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "not to use",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinung: not to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist not to use: She asked us not to use our phones. not vor to.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tf.003",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-tf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib den Satz mit 'want' um. Mein Vater sagt zu meiner Schwester: 'Please wash the dishes.' → My dad wants ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "my sister to wash the dishes",
+          "tier": "full"
+        },
+        {
+          "text": "her to wash the dishes",
+          "tier": "full"
+        },
+        {
+          "text": "My dad wants my sister to wash the dishes.",
+          "tier": "full"
+        },
+        {
+          "text": "My dad wants her to wash the dishes.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wer soll was tun? Person + to + Tätigkeit.",
+      "hintEn": null,
+      "explainDe": "My dad wants my sister to wash the dishes (oder her to wash the dishes). Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tf.004",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-tf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib den Satz mit 'not want' um. Das Schild sagt: 'Don't use your phones in class.' → The school doesn't want ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "you to use your phones in class",
+          "tier": "full"
+        },
+        {
+          "text": "us to use our phones in class",
+          "tier": "full"
+        },
+        {
+          "text": "The school doesn't want you to use your phones in class.",
+          "tier": "full"
+        },
+        {
+          "text": "The school doesn't want us to use our phones in class.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "doesn't want + Person + to + Tätigkeit.",
+      "hintEn": null,
+      "explainDe": "The school doesn't want you to use your phones. Auch hier: Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tf.005",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib um mit 'ask'. Meine Mutter sagt zu mir: 'Please post this letter.' → My mum asked ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "me to post this letter",
+          "tier": "full"
+        },
+        {
+          "text": "me to post the letter",
+          "tier": "full"
+        },
+        {
+          "text": "My mum asked me to post this letter.",
+          "tier": "full"
+        },
+        {
+          "text": "My mum asked me to post the letter.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ask + Person (me) + to + Tätigkeit.",
+      "hintEn": null,
+      "explainDe": "My mum asked me to post this letter. Person + to + Grundform – genau wie bei want.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tf.006",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus der Bitte einen Satz mit 'ask'. Die Lehrerin sagt zu uns: 'Please open your books.' → The teacher asks us ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to open our books",
+          "tier": "full"
+        },
+        {
+          "text": "The teacher asks us to open our books.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ask + Person + to + Tätigkeit.",
+      "hintEn": null,
+      "explainDe": "The teacher asks us to open our books. ask folgt demselben Muster wie want: Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tr.001",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ich will, dass du mir zuhörst.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want you to listen to me.",
+          "tier": "full"
+        },
+        {
+          "text": "I want you to listen to me",
+          "tier": "full"
+        },
+        {
+          "text": "I'd like you to listen to me.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'Ich will, dass du …' wird im Englischen zu I want you to …",
+      "hintEn": null,
+      "explainDe": "Englisch sagt nicht 'I want that you listen', sondern I want you to listen to me. Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tr.002",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-tr-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Meine Eltern wollen, dass ich mehr lese.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My parents want me to read more.",
+          "tier": "full"
+        },
+        {
+          "text": "My parents want me to read more",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'wollen, dass ich …' → want me to …",
+      "hintEn": null,
+      "explainDe": "My parents want me to read more. Kein 'want that I read', sondern want + me + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tr.003",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Er bat mich, ihm bei den Hausaufgaben zu helfen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked me to help him with his homework.",
+          "tier": "full"
+        },
+        {
+          "text": "He asked me to help him with his homework",
+          "tier": "full"
+        },
+        {
+          "text": "He asked me to help him with the homework.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'Er bat mich, … zu …' → He asked me to …",
+      "hintEn": null,
+      "explainDe": "He asked me to help him with his homework. ask + Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tr.004",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u7-want-someone-to-tr-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Willst du, dass ich dir bei den Hausaufgaben helfe?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you want me to help you with your homework?",
+          "tier": "full"
+        },
+        {
+          "text": "Do you want me to help you with your homework",
+          "tier": "full"
+        },
+        {
+          "text": "Do you want me to help you with the homework?",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'Willst du, dass ich …?' → Do you want me to …?",
+      "hintEn": null,
+      "explainDe": "Do you want me to help you …? Frageform von want + Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tr.005",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Die Lehrerin will, dass wir ruhig arbeiten.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The teacher wants us to work quietly.",
+          "tier": "full"
+        },
+        {
+          "text": "The teacher wants us to work quietly",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "quietly",
+          "de": "leise / ruhig",
+          "scope": null
+        }
+      ],
+      "hintDe": "'will, dass wir …' → wants us to …",
+      "hintEn": null,
+      "explainDe": "The teacher wants us to work quietly. want + Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u07.gi.want-someone-to.tr.006",
+      "structureId": "g4u07.s.want-someone-to",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Unser Trainer will, dass wir härter trainieren.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Our coach wants us to train harder.",
+          "tier": "full"
+        },
+        {
+          "text": "Our coach wants us to train harder",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "harder",
+          "de": "härter",
+          "scope": null
+        }
+      ],
+      "hintDe": "'will, dass wir …' → wants us to …",
+      "hintEn": null,
+      "explainDe": "Our coach wants us to train harder. want + Person + to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

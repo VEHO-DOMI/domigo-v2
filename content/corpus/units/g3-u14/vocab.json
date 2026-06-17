@@ -1,0 +1,2937 @@
+{
+  "schema": "vocab@1",
+  "grade": 3,
+  "unit": 14,
+  "slug": "g3-u14",
+  "items": [
+    {
+      "id": "g3u14.w.at-once",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "otherwise",
+            "by the way",
+            "round a bend",
+            "impolite",
+            "stuffed"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "at once",
+      "g": "sofort",
+      "d": "now, this very second",
+      "s": "If you find him, tell me ___!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "at once",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "at once",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "at once",
+            "tier": "full"
+          },
+          {
+            "text": "immediately",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sofort",
+            "tier": "full"
+          },
+          {
+            "text": "auf der Stelle",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "otherwise",
+        "by the way",
+        "round a bend"
+      ],
+      "hintDe": "Jetzt gleich, in dieser Sekunde."
+    },
+    {
+      "id": "g3u14.w.balcony",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "engine",
+            "branch",
+            "bush",
+            "front seat",
+            "wetland"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "balcony",
+      "g": "Balkon",
+      "d": "a small place outside a window where you can stand up",
+      "s": "We had a hotel room with a ___ and we watched the sea from there.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "balcony",
+          "tier": "full"
+        },
+        {
+          "text": "balconies",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "balcony",
+          "tier": "full"
+        },
+        {
+          "text": "balconies",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "balcony",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Balkon",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "engine",
+        "branch",
+        "bush"
+      ],
+      "hintDe": "So ein kleiner Platz draußen vor dem Fenster, oft weiter oben."
+    },
+    {
+      "id": "g3u14.w.branch",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bush",
+            "bug",
+            "engine",
+            "wetland",
+            "balcony"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "branch",
+      "g": "Ast",
+      "d": "a piece of a tree that the leaves are on",
+      "s": "The lion was high up on a thick ___ in the old tree.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "branch",
+          "tier": "full"
+        },
+        {
+          "text": "branches",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "branch",
+          "tier": "full"
+        },
+        {
+          "text": "branches",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "branch",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ast",
+            "tier": "full"
+          },
+          {
+            "text": "Zweig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bush",
+        "bug",
+        "engine"
+      ],
+      "hintDe": "Ein Teil eines Baumes, an dem die Blätter wachsen."
+    },
+    {
+      "id": "g3u14.w.bug",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "branch",
+            "bush",
+            "crash",
+            "engine",
+            "cut"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "bug",
+      "g": "Insekt",
+      "d": "a very small animal like a fly that lives in a garden",
+      "s": "There was a tiny ___ with black spots on the window in the garden.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bug",
+          "tier": "full"
+        },
+        {
+          "text": "bugs",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bug",
+          "tier": "full"
+        },
+        {
+          "text": "bugs",
+          "tier": "full"
+        },
+        {
+          "text": "insect",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bug",
+            "tier": "full"
+          },
+          {
+            "text": "insect",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Insekt",
+            "tier": "full"
+          },
+          {
+            "text": "Käfer",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "branch",
+        "bush",
+        "crash"
+      ],
+      "hintDe": "So ein kleines Tier mit vielen Beinen, zum Beispiel eine Fliege."
+    },
+    {
+      "id": "g3u14.w.bush",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "branch",
+            "bug",
+            "wetland",
+            "engine",
+            "balcony"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "bush",
+      "g": "Busch",
+      "d": "a short, thick green thing in a garden with many small branches",
+      "s": "The wild dog was hiding behind the big green ___ in the garden.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bush",
+          "tier": "full"
+        },
+        {
+          "text": "bushes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bush",
+          "tier": "full"
+        },
+        {
+          "text": "bushes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bush",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Busch",
+            "tier": "full"
+          },
+          {
+            "text": "Strauch",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "branch",
+        "bug",
+        "wetland"
+      ],
+      "hintDe": "Eine kleine, dichte grüne Pflanze im Garten mit vielen kleinen Ästen."
+    },
+    {
+      "id": "g3u14.w.by-the-way",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "at once",
+            "otherwise",
+            "round a bend",
+            "impolite",
+            "stuffed"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "by the way",
+      "g": "übrigens",
+      "d": "you can use this to add a new thing while you are talking",
+      "s": "___, did I tell you that we have homework tomorrow?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "By the way",
+          "tier": "full"
+        },
+        {
+          "text": "by the way",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "by the way",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "by the way",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "übrigens",
+            "tier": "full"
+          },
+          {
+            "text": "apropos",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "at once",
+        "otherwise",
+        "round a bend"
+      ],
+      "hintDe": "Das sagst du, wenn dir mitten im Gespräch noch etwas Neues einfällt."
+    },
+    {
+      "id": "g3u14.w.crash",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cut",
+            "sunburn",
+            "crime",
+            "bug",
+            "engine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "crash",
+      "g": "Unfall",
+      "d": "an accident when a car drives into a thing very fast",
+      "s": "There was a bad car ___ on the road and the police closed it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "crash",
+          "tier": "full"
+        },
+        {
+          "text": "crashes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crash",
+          "tier": "full"
+        },
+        {
+          "text": "crashes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crash",
+            "tier": "full"
+          },
+          {
+            "text": "accident",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Unfall",
+            "tier": "full"
+          },
+          {
+            "text": "Zusammenstoß",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cut",
+        "sunburn",
+        "crime"
+      ],
+      "hintDe": "Ein Unfall, bei dem ein Auto sehr schnell gegen etwas fährt."
+    },
+    {
+      "id": "g3u14.w.crime",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "crash",
+            "cut",
+            "sunburn",
+            "bug",
+            "wetland"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "crime",
+      "g": "Verbrechen",
+      "d": "a very bad thing that the police can punish you for",
+      "s": "Stealing money from a shop is a ___ and the police can punish you for it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "crime",
+          "tier": "full"
+        },
+        {
+          "text": "crimes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crime",
+          "tier": "full"
+        },
+        {
+          "text": "crimes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crime",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "Straftat",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "crash",
+        "cut",
+        "sunburn"
+      ],
+      "hintDe": "Etwas sehr Schlimmes, wofür dich die Polizei bestrafen kann."
+    },
+    {
+      "id": "g3u14.w.cut",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sunburn",
+            "crash",
+            "crime",
+            "bug",
+            "engine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cut",
+      "g": "Schnitt(-wunde)",
+      "d": "a small hurt place on your skin from a knife",
+      "s": "The man had a small ___ on his finger from the knife.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cut",
+          "tier": "full"
+        },
+        {
+          "text": "cuts",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cut",
+          "tier": "full"
+        },
+        {
+          "text": "cuts",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cut",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schnittwunde",
+            "tier": "full"
+          },
+          {
+            "text": "Schnitt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sunburn",
+        "crash",
+        "crime"
+      ],
+      "hintDe": "Eine kleine Wunde auf der Haut, zum Beispiel von einem Messer."
+    },
+    {
+      "id": "g3u14.w.engine",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "front seat",
+            "branch",
+            "bush",
+            "balcony",
+            "crash"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "engine",
+      "g": "Motor",
+      "d": "the machine in a car that makes it move",
+      "s": "We could not drive because the car ___ did not work.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "engine",
+          "tier": "full"
+        },
+        {
+          "text": "engines",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "engine",
+          "tier": "full"
+        },
+        {
+          "text": "engines",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "engine",
+            "tier": "full"
+          },
+          {
+            "text": "motor",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Motor",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "front seat",
+        "branch",
+        "bush"
+      ],
+      "hintDe": "Der Teil im Auto, der es fahren lässt."
+    },
+    {
+      "id": "g3u14.w.front-seat",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "engine",
+            "balcony",
+            "branch",
+            "bush",
+            "official language"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "front seat",
+      "g": "Vordersitz",
+      "d": "the place in a car next to the driver",
+      "s": "I always travel in the ___ next to the driver.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "front seat",
+          "tier": "full"
+        },
+        {
+          "text": "front seats",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "front seat",
+          "tier": "full"
+        },
+        {
+          "text": "front seats",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "front seat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vordersitz",
+            "tier": "full"
+          },
+          {
+            "text": "Beifahrersitz",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "engine",
+        "balcony",
+        "branch"
+      ],
+      "hintDe": "Der Platz im Auto direkt neben dem Fahrer."
+    },
+    {
+      "id": "g3u14.w.impolite",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "shocked",
+            "stuffed",
+            "otherwise",
+            "at once"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "impolite",
+      "g": "unhöflich",
+      "d": "not at all nice to people, the way rude people are",
+      "s": "It is very ___ to interrupt people while they are speaking.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "impolite",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "impolite",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "impolite",
+            "tier": "full"
+          },
+          {
+            "text": "rude",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unhöflich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "shocked",
+        "stuffed",
+        "otherwise"
+      ],
+      "hintDe": "Überhaupt nicht nett zu anderen, so wie freche Leute eben sind."
+    },
+    {
+      "id": "g3u14.w.official-language",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "wild animal",
+            "park ranger",
+            "front seat",
+            "crime",
+            "wetland"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "official language",
+      "g": "Amtssprache",
+      "d": "the way of speaking and writing that a country uses for its government",
+      "s": "English is the ___ of Botswana, and most people use it every day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "official language",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "official language",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "official language",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Amtssprache",
+            "tier": "full"
+          },
+          {
+            "text": "offizielle Sprache",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "wild animal",
+        "park ranger",
+        "front seat"
+      ],
+      "hintDe": "Die Sprache, die ein Land bei seiner Regierung verwendet."
+    },
+    {
+      "id": "g3u14.w.otherwise",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "at once",
+            "by the way",
+            "round a bend",
+            "stuffed",
+            "impolite"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "otherwise",
+      "g": "andernfalls",
+      "d": "if you do not, or if that does not happen",
+      "s": "You must leave now, ___ you will miss the last train home.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "otherwise",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "otherwise",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "otherwise",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "andernfalls",
+            "tier": "full"
+          },
+          {
+            "text": "sonst",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "at once",
+        "by the way",
+        "round a bend"
+      ],
+      "hintDe": "Wenn du es nicht tust, dann passiert etwas Schlechtes."
+    },
+    {
+      "id": "g3u14.w.park-ranger",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "wild animal",
+            "official language",
+            "front seat",
+            "wildlife",
+            "wetland"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "park ranger",
+      "g": "Parkwächter/Parkwächterin",
+      "d": "a man or woman whose job is to look after the wild animals and the trees",
+      "s": "The ___ at the national park looks after the wild animals and the trees.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "park ranger",
+          "tier": "full"
+        },
+        {
+          "text": "park rangers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "park ranger",
+          "tier": "full"
+        },
+        {
+          "text": "park rangers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "park ranger",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Parkwächter",
+            "tier": "full"
+          },
+          {
+            "text": "Parkwächterin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "wild animal",
+        "official language",
+        "front seat"
+      ],
+      "hintDe": "Ein Mann oder eine Frau, die auf einen Nationalpark aufpasst."
+    },
+    {
+      "id": "g3u14.w.round-a-bend",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "at once",
+            "otherwise",
+            "by the way",
+            "front seat",
+            "engine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "round a bend",
+      "g": "um eine Ecke",
+      "d": "when a car has to drive to the right to stay on the road",
+      "s": "Our car came ___, and after that we could drive home.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "round a bend",
+          "tier": "full"
+        },
+        {
+          "text": "around a bend",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "round a bend",
+          "tier": "full"
+        },
+        {
+          "text": "around a bend",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "round a bend",
+            "tier": "full"
+          },
+          {
+            "text": "around a bend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "um eine Ecke",
+            "tier": "full"
+          },
+          {
+            "text": "um eine Kurve",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "at once",
+        "otherwise",
+        "by the way"
+      ],
+      "hintDe": "Wenn die Straße eine Kurve macht und du um sie herumfährst."
+    },
+    {
+      "id": "g3u14.w.shocked",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "stuffed",
+            "impolite",
+            "otherwise",
+            "at once"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "shocked",
+      "g": "schockiert",
+      "d": "very surprised and upset about a bad thing",
+      "s": "Everyone was really ___ about the bad accident on the road.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "shocked",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shocked",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shocked",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schockiert",
+            "tier": "full"
+          },
+          {
+            "text": "erschüttert",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "stuffed",
+        "impolite",
+        "otherwise"
+      ],
+      "hintDe": "Sehr überrascht und mitgenommen wegen etwas Schlimmem."
+    },
+    {
+      "id": "g3u14.w.stuffed",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "shocked",
+            "impolite",
+            "otherwise",
+            "at once"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "stuffed",
+      "g": "ausgestopft",
+      "d": "with material inside to keep its shape, like a dead animal in a museum",
+      "s": "There was a ___ brown wolf with glass eyes in the museum — it looked alive but was dead.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stuffed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stuffed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stuffed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ausgestopft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "shocked",
+        "impolite",
+        "otherwise"
+      ],
+      "hintDe": "Mit Material gefüllt, damit die Form bleibt, wie ein totes Tier im Museum."
+    },
+    {
+      "id": "g3u14.w.sunburn",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cut",
+            "crash",
+            "crime",
+            "bug",
+            "engine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sunburn",
+      "g": "Sonnenbrand",
+      "d": "red, painful skin from too much sun",
+      "s": "I was in the sun for too long and now I have a bad red ___ on my shoulders.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sunburn",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sunburn",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sunburn",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sonnenbrand",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cut",
+        "crash",
+        "crime"
+      ],
+      "hintDe": "Rote, schmerzende Haut von zu viel Sonne."
+    },
+    {
+      "id": "g3u14.w.to-book-a-holiday",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to plan a trip",
+            "to hire a car",
+            "to make a hotel reservation",
+            "to buy a dictionary",
+            "to find information about the best beaches"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to book a holiday",
+      "g": "einen Urlaub buchen",
+      "d": "to pay for a trip away before you travel, so your place is saved",
+      "s": "My parents are going to ___ to Italy, and we will stay in a nice hotel for a week.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "book a holiday",
+          "tier": "full"
+        },
+        {
+          "text": "booked a holiday",
+          "tier": "partial"
+        },
+        {
+          "text": "to book a holiday",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "book a holiday",
+          "tier": "full"
+        },
+        {
+          "text": "to book a holiday",
+          "tier": "full"
+        },
+        {
+          "text": "booked a holiday",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to book a holiday",
+            "tier": "full"
+          },
+          {
+            "text": "book a holiday",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einen Urlaub buchen",
+            "tier": "full"
+          },
+          {
+            "text": "Ferien buchen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to plan a trip",
+        "to hire a car",
+        "to make a hotel reservation"
+      ],
+      "hintDe": "Du bezahlst den Urlaub schon vorher, dann gehört er dir."
+    },
+    {
+      "id": "g3u14.w.to-buy-a-dictionary",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to book a holiday",
+            "to hire a car",
+            "to plan a trip",
+            "to make a hotel reservation",
+            "to look at a map of the area"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to buy a dictionary",
+      "g": "ein Wörterbuch kaufen",
+      "d": "a book to help you understand a language that is new to you",
+      "s": "She wants to ___ so she can understand more French on holiday.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "buy a dictionary",
+          "tier": "full"
+        },
+        {
+          "text": "bought a dictionary",
+          "tier": "partial"
+        },
+        {
+          "text": "to buy a dictionary",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "buy a dictionary",
+          "tier": "full"
+        },
+        {
+          "text": "to buy a dictionary",
+          "tier": "full"
+        },
+        {
+          "text": "bought a dictionary",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to buy a dictionary",
+            "tier": "full"
+          },
+          {
+            "text": "buy a dictionary",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ein Wörterbuch kaufen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to book a holiday",
+        "to hire a car",
+        "to plan a trip"
+      ],
+      "hintDe": "Du kaufst ein Buch, das dir mit einer neuen Sprache hilft."
+    },
+    {
+      "id": "g3u14.w.to-check-the-area-out-online",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to look at a map of the area",
+            "to find out what to do there",
+            "to hire a car",
+            "to book a holiday",
+            "to find information about the best beaches"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to check the area out online",
+      "g": "die Gegend online erkunden",
+      "d": "to read about a place on a screen before you travel there",
+      "s": "Let's ___ to find the streets and good places before we travel.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "check the area out online",
+          "tier": "full"
+        },
+        {
+          "text": "checked the area out online",
+          "tier": "partial"
+        },
+        {
+          "text": "to check the area out online",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "check the area out online",
+          "tier": "full"
+        },
+        {
+          "text": "to check the area out online",
+          "tier": "full"
+        },
+        {
+          "text": "checked the area out online",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to check the area out online",
+            "tier": "full"
+          },
+          {
+            "text": "check the area out online",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "die Gegend online erkunden",
+            "tier": "full"
+          },
+          {
+            "text": "sich die Gegend im Internet ansehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to look at a map of the area",
+        "to find out what to do there",
+        "to hire a car"
+      ],
+      "hintDe": "Du schaust dir die Gegend vorher am Bildschirm an."
+    },
+    {
+      "id": "g3u14.w.to-dig",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to prefer",
+            "to whisper",
+            "to turn over",
+            "to drive off"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to dig",
+      "g": "graben",
+      "d": "to make a hole in the ground",
+      "s": "My dog loves to ___ big holes in the garden ground with his paws.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "dig",
+          "tier": "full"
+        },
+        {
+          "text": "to dig",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dig",
+          "tier": "full"
+        },
+        {
+          "text": "to dig",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to dig",
+            "tier": "full"
+          },
+          {
+            "text": "dig",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "graben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to prefer",
+        "to whisper",
+        "to turn over"
+      ],
+      "hintDe": "Du machst ein Loch in den Boden."
+    },
+    {
+      "id": "g3u14.w.to-drive-off",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to turn over",
+            "to dig",
+            "to whisper",
+            "to prefer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to drive off",
+      "g": "wegfahren",
+      "d": "to leave a place very fast in a car",
+      "s": "Suddenly the black car ___ very fast and we could not stop it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "drove off",
+          "tier": "full"
+        },
+        {
+          "text": "drives off",
+          "tier": "partial"
+        },
+        {
+          "text": "drive off",
+          "tier": "partial"
+        },
+        {
+          "text": "to drive off",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drive off",
+          "tier": "full"
+        },
+        {
+          "text": "to drive off",
+          "tier": "full"
+        },
+        {
+          "text": "drove off",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to drive off",
+            "tier": "full"
+          },
+          {
+            "text": "drive off",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wegfahren",
+            "tier": "full"
+          },
+          {
+            "text": "losfahren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to turn over",
+        "to dig",
+        "to whisper"
+      ],
+      "hintDe": "Mit dem Auto schnell von einem Ort wegfahren."
+    },
+    {
+      "id": "g3u14.w.to-find-information-about-the-best-beaches",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to find out about good restaurants",
+            "to find out what to do there",
+            "to hire a car",
+            "to book a holiday",
+            "to look at a map of the area"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to find information about the best beaches",
+      "g": "Informationen über die besten Strände finden",
+      "d": "to look up which places near the sea are the nicest for swimming",
+      "s": "We are going to ___ for our summer holiday near the sea.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "find information about the best beaches",
+          "tier": "full"
+        },
+        {
+          "text": "to find information about the best beaches",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "find information about the best beaches",
+          "tier": "full"
+        },
+        {
+          "text": "to find information about the best beaches",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to find information about the best beaches",
+            "tier": "full"
+          },
+          {
+            "text": "find information about the best beaches",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Informationen über die besten Strände finden",
+            "tier": "full"
+          },
+          {
+            "text": "die schönsten Strände herausfinden",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to find out about good restaurants",
+        "to find out what to do there",
+        "to hire a car"
+      ],
+      "hintDe": "Du findest heraus, welche Strände am Meer am schönsten sind."
+    },
+    {
+      "id": "g3u14.w.to-find-out-about-good-restaurants",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to find information about the best beaches",
+            "to find out what to do there",
+            "to book a holiday",
+            "to hire a car",
+            "to look at a map of the area"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to find out about good restaurants",
+      "g": "gute Restaurants herausfinden",
+      "d": "to look up which places to eat are nice before you go there",
+      "s": "Let's ___ near our hotel so we know where to eat dinner.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "find out about good restaurants",
+          "tier": "full"
+        },
+        {
+          "text": "to find out about good restaurants",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "find out about good restaurants",
+          "tier": "full"
+        },
+        {
+          "text": "to find out about good restaurants",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to find out about good restaurants",
+            "tier": "full"
+          },
+          {
+            "text": "find out about good restaurants",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gute Restaurants herausfinden",
+            "tier": "full"
+          },
+          {
+            "text": "gute Lokale ausfindig machen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to find information about the best beaches",
+        "to find out what to do there",
+        "to book a holiday"
+      ],
+      "hintDe": "Du findest vorher heraus, wo man gut essen kann."
+    },
+    {
+      "id": "g3u14.w.to-find-out-what-to-do-there",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to find out about good restaurants",
+            "to look at a map of the area",
+            "to hire a car",
+            "to find information about the best beaches",
+            "to book a holiday"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to find out what to do there",
+      "g": "herausfinden",
+      "d": "to look up the fun things a place has before you go",
+      "s": "Before we travel, let's ___ — museums, parks, beaches, and more.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "find out what to do there",
+          "tier": "full"
+        },
+        {
+          "text": "to find out what to do there",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "find out what to do there",
+          "tier": "full"
+        },
+        {
+          "text": "to find out what to do there",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to find out what to do there",
+            "tier": "full"
+          },
+          {
+            "text": "find out what to do there",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "herausfinden, was man dort machen kann",
+            "tier": "full"
+          },
+          {
+            "text": "herausfinden",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to find out about good restaurants",
+        "to look at a map of the area",
+        "to hire a car"
+      ],
+      "hintDe": "Du findest heraus, was man an dem Ort alles machen kann."
+    },
+    {
+      "id": "g3u14.w.to-hire-a-car",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to book a holiday",
+            "to plan a trip",
+            "to make a hotel reservation",
+            "to buy a dictionary",
+            "to find out about good restaurants"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to hire a car",
+      "g": "ein Auto mieten",
+      "d": "to pay money so you can use it for a short time, then give it back",
+      "s": "At the airport we are going to ___ so we can drive to the beach on our own.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "hire a car",
+          "tier": "full"
+        },
+        {
+          "text": "hired a car",
+          "tier": "partial"
+        },
+        {
+          "text": "to hire a car",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hire a car",
+          "tier": "full"
+        },
+        {
+          "text": "to hire a car",
+          "tier": "full"
+        },
+        {
+          "text": "hired a car",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to hire a car",
+            "tier": "full"
+          },
+          {
+            "text": "hire a car",
+            "tier": "full"
+          },
+          {
+            "text": "to rent a car",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ein Auto mieten",
+            "tier": "full"
+          },
+          {
+            "text": "sich ein Auto leihen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to book a holiday",
+        "to plan a trip",
+        "to make a hotel reservation"
+      ],
+      "hintDe": "Du zahlst Geld, um ein Auto für kurze Zeit zu benutzen."
+    },
+    {
+      "id": "g3u14.w.to-look-at-a-map-of-the-area",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to check the area out online",
+            "to find out what to do there",
+            "to hire a car",
+            "to book a holiday",
+            "to find out about good restaurants"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to look at a map of the area",
+      "g": "sich eine Karte der Gegend ansehen",
+      "d": "to study a plan of the streets so you can find your way in a place",
+      "s": "Let's ___ so we do not get lost in the old town.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "look at a map of the area",
+          "tier": "full"
+        },
+        {
+          "text": "looked at a map of the area",
+          "tier": "partial"
+        },
+        {
+          "text": "to look at a map of the area",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "look at a map of the area",
+          "tier": "full"
+        },
+        {
+          "text": "to look at a map of the area",
+          "tier": "full"
+        },
+        {
+          "text": "looked at a map of the area",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to look at a map of the area",
+            "tier": "full"
+          },
+          {
+            "text": "look at a map of the area",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich eine Karte der Gegend ansehen",
+            "tier": "full"
+          },
+          {
+            "text": "auf eine Karte der Umgebung schauen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to check the area out online",
+        "to find out what to do there",
+        "to hire a car"
+      ],
+      "hintDe": "Du schaust auf eine Karte, damit du dich nicht verläufst."
+    },
+    {
+      "id": "g3u14.w.to-make-a-hotel-reservation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to book a holiday",
+            "to hire a car",
+            "to plan a trip",
+            "to buy a dictionary",
+            "to look at a map of the area"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to make a hotel reservation",
+      "g": "eine Hotelreservierung vornehmen",
+      "d": "to ask for a room where you will stay before you travel there",
+      "s": "We need to ___ so we have a room when we travel to the hotel at night.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "make a hotel reservation",
+          "tier": "full"
+        },
+        {
+          "text": "made a hotel reservation",
+          "tier": "partial"
+        },
+        {
+          "text": "to make a hotel reservation",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make a hotel reservation",
+          "tier": "full"
+        },
+        {
+          "text": "to make a hotel reservation",
+          "tier": "full"
+        },
+        {
+          "text": "made a hotel reservation",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to make a hotel reservation",
+            "tier": "full"
+          },
+          {
+            "text": "make a hotel reservation",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Hotelreservierung vornehmen",
+            "tier": "full"
+          },
+          {
+            "text": "ein Hotelzimmer reservieren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to book a holiday",
+        "to hire a car",
+        "to plan a trip"
+      ],
+      "hintDe": "Du sicherst dir vorher ein Zimmer, damit es bei der Ankunft frei ist."
+    },
+    {
+      "id": "g3u14.w.to-plan-a-trip",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to book a holiday",
+            "to hire a car",
+            "to look at a map of the area",
+            "to buy a dictionary",
+            "to find out what to do there"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to plan a trip",
+      "g": "eine Reise planen",
+      "d": "to think about where to go and what to do on a journey",
+      "s": "Before our holiday, we want to ___ so we know where to travel and what to do.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "plan a trip",
+          "tier": "full"
+        },
+        {
+          "text": "to plan a trip",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "plan a trip",
+          "tier": "full"
+        },
+        {
+          "text": "to plan a trip",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to plan a trip",
+            "tier": "full"
+          },
+          {
+            "text": "plan a trip",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Reise planen",
+            "tier": "full"
+          },
+          {
+            "text": "einen Ausflug planen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to book a holiday",
+        "to hire a car",
+        "to look at a map of the area"
+      ],
+      "hintDe": "Du überlegst dir vorher, wohin die Reise geht und was du machst."
+    },
+    {
+      "id": "g3u14.w.to-prefer",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to dig",
+            "to whisper",
+            "to drive off",
+            "to turn over"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to prefer",
+      "g": "bevorzugen",
+      "d": "to want one thing more than you want a second thing",
+      "s": "My mum ___ tea to milk because she likes tea more.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "prefers",
+          "tier": "full"
+        },
+        {
+          "text": "prefer",
+          "tier": "partial"
+        },
+        {
+          "text": "preferred",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "prefer",
+          "tier": "full"
+        },
+        {
+          "text": "to prefer",
+          "tier": "full"
+        },
+        {
+          "text": "prefers",
+          "tier": "full"
+        },
+        {
+          "text": "preferred",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to prefer",
+            "tier": "full"
+          },
+          {
+            "text": "prefer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bevorzugen",
+            "tier": "full"
+          },
+          {
+            "text": "lieber mögen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to dig",
+        "to whisper",
+        "to drive off"
+      ],
+      "hintDe": "Du magst die eine Sache lieber als die andere."
+    },
+    {
+      "id": "g3u14.w.to-turn-over",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to drive off",
+            "to dig",
+            "to whisper",
+            "to prefer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to turn over",
+      "g": "(sich) überschlagen",
+      "d": "when a car lands with its roof down on the ground",
+      "s": "The car ___ on the road and landed on its roof.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "turned over",
+          "tier": "full"
+        },
+        {
+          "text": "turns over",
+          "tier": "partial"
+        },
+        {
+          "text": "turn over",
+          "tier": "partial"
+        },
+        {
+          "text": "to turn over",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "turn over",
+          "tier": "full"
+        },
+        {
+          "text": "to turn over",
+          "tier": "full"
+        },
+        {
+          "text": "turned over",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to turn over",
+            "tier": "full"
+          },
+          {
+            "text": "turn over",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich überschlagen",
+            "tier": "full"
+          },
+          {
+            "text": "umkippen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to drive off",
+        "to dig",
+        "to whisper"
+      ],
+      "hintDe": "Sich so überschlagen, dass das Dach unten am Boden ist."
+    },
+    {
+      "id": "g3u14.w.to-whisper",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to dig",
+            "to drive off",
+            "to turn over",
+            "to prefer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to whisper",
+      "g": "flüstern",
+      "d": "to use a very small voice so just one man or woman can understand you",
+      "s": "He ___ the secret in my ear so nobody could know it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "whispered",
+          "tier": "full"
+        },
+        {
+          "text": "whispers",
+          "tier": "partial"
+        },
+        {
+          "text": "whisper",
+          "tier": "partial"
+        },
+        {
+          "text": "to whisper",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "whisper",
+          "tier": "full"
+        },
+        {
+          "text": "to whisper",
+          "tier": "full"
+        },
+        {
+          "text": "whispered",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to whisper",
+            "tier": "full"
+          },
+          {
+            "text": "whisper",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "flüstern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to dig",
+        "to drive off",
+        "to turn over"
+      ],
+      "hintDe": "Ganz leise mit einer kleinen Stimme reden, damit nur einer dich versteht."
+    },
+    {
+      "id": "g3u14.w.wetland",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bush",
+            "branch",
+            "balcony",
+            "wild animal",
+            "wildlife"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "wetland",
+      "g": "Sumpfgebiet",
+      "d": "a big area of land that is always very wet",
+      "s": "Many wild animals live in the ___ near the river, where the ground is always wet.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "wetland",
+          "tier": "full"
+        },
+        {
+          "text": "wetlands",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wetland",
+          "tier": "full"
+        },
+        {
+          "text": "wetlands",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wetland",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sumpfgebiet",
+            "tier": "full"
+          },
+          {
+            "text": "Feuchtgebiet",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bush",
+        "branch",
+        "balcony"
+      ],
+      "hintDe": "Ein großes Stück Land, das immer sehr nass ist."
+    },
+    {
+      "id": "g3u14.w.wild-animal",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "official language",
+            "park ranger",
+            "front seat",
+            "wetland",
+            "wildlife"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "wild animal",
+      "g": "Wildtier",
+      "d": "a lion or a wolf that lives free and that people do not keep at home",
+      "s": "You must never touch a ___ like a wolf because it can hurt you.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "wild animal",
+          "tier": "full"
+        },
+        {
+          "text": "wild animals",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wild animal",
+          "tier": "full"
+        },
+        {
+          "text": "wild animals",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wild animal",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wildtier",
+            "tier": "full"
+          },
+          {
+            "text": "wildes Tier",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "official language",
+        "park ranger",
+        "front seat"
+      ],
+      "hintDe": "Ein Tier, das frei in der Wildnis lebt und niemandem gehört."
+    },
+    {
+      "id": "g3u14.w.wildlife",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "wetland",
+            "wild animal",
+            "official language",
+            "park ranger",
+            "crime"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "wildlife",
+      "g": "wilde Tierwelt",
+      "d": "wild animals that live free in their home in the wild",
+      "s": "This national park is famous for its ___ — lions, elephants, and many wild animals.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "wildlife",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wildlife",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wildlife",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wilde Tierwelt",
+            "tier": "full"
+          },
+          {
+            "text": "Tierwelt",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "wetland",
+        "wild animal",
+        "official language"
+      ],
+      "hintDe": "Wilde Tiere, die frei in ihrer natürlichen Heimat leben."
+    }
+  ]
+}

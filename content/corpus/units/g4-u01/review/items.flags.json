@@ -1,0 +1,315 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u01",
+  "round": 1,
+  "itemsHash": "f7dea74c414b",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g4u01.gi.past-continuous-revision.gf.012",
+      "kind": "new-gloss",
+      "itemId": "g4u01.gi.past-continuous-revision.gf.012",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u01.gi.past-continuous-revision.gf.018",
+      "kind": "new-gloss",
+      "itemId": "g4u01.gi.past-continuous-revision.gf.018",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.admire",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.admire",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.be-aware-of-sth",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.be-aware-of-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.be-terrified",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.be-terrified",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.catholic",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.catholic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.cattle",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.cattle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.cheer",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.cheer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.crop",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.crop",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.famine",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.famine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.fluent",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.fluent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.foreigner",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.foreigner",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.found",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.found",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.free-state",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.free-state",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.fungus",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.fungus",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.government",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.government",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.grain",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.grain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.guess",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.guess",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.hiking",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.hiking",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.i-d-rather",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.i-d-rather",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.improve",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.improve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.incident",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.incident",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.independent",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.independent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.intention",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.intention",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.interfere",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.interfere",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.landlord",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.landlord",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.leading",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.leading",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.majority",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.majority",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.member",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.member",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.nonsense",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.nonsense",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.primary-school",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.primary-school",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.proper",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.proper",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.put-down",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.put-down",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.shake-hands",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.shake-hands",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.starve",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.starve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.tax",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.tax",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.thunder",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.thunder",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.w.unconscious",
+      "kind": "translation-audit",
+      "itemId": "g4u01.w.unconscious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.gi.past-continuous-revision.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u01.gi.past-continuous-revision.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u01.gi.past-continuous-revision.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u01.gi.past-continuous-revision.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u01.w.catholic#ff1e35",
+      "kind": "validator-warn",
+      "itemId": "g4u01.w.catholic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u01.w.interfere#1226d9",
+      "kind": "validator-warn",
+      "itemId": "g4u01.w.interfere",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Past continuous revision (was/were + -ing; interrupted action with when + past simple; simultaneous with while; was/were agreement; error classes incl. stative-verb trap). 36 vocab + 55 grammar, full v1 parity (floor 40 → 55 items / 9 formats — largest grammar set so far). 4 verify lenses clean after fixes: cp.003 reframed to past (was present-framed, which made the present-continuous distractor defensibly correct); mt.001 pairs pronoun-tied for uniqueness (two While-clauses were swappable); ec.005/ec.010 set strict (single-char spelling fixes); sb.001/sb.002 + tr.001 reversed-order / 'learning' answer variants added; granted fungi/something/walking/learning/wind/ing (harvesting-gap words + -ing forms inside lang:de-prompt carriers that validate's field-scoping misses — the level-gloss lens correctly caught 'wind'); relabeled richtig/falsch group-sort → ✓/✗; pipe-joined mc.006's 2-blank combinations; raised sb.003 chip budget to 12; reworded 'Zustands-Verb'→'want und like beschreiben einen Zustand' ('Verb' banned in prompts). The 2 gloss audits (blow/send, prompt-scoped) are correct; 38 translation audits accurate both directions. 2 defensible enToDe warns (Catholic / interfere slash-variants trip the homograph heuristic; German is correct). Validate green."
+  },
+  "metrics": {
+    "itemsReviewed": 91,
+    "fullRows": 91,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

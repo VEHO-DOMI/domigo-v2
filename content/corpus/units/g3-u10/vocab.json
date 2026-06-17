@@ -1,0 +1,4378 @@
+{
+  "schema": "vocab@1",
+  "grade": 3,
+  "unit": 10,
+  "slug": "g3-u10",
+  "items": [
+    {
+      "id": "g3u10.w.ability",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "quality",
+            "majority",
+            "argument",
+            "compromise"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "ability",
+      "g": "Fähigkeit",
+      "d": "a thing that you can do well.",
+      "s": "She has the natural ___ to make everybody in the room feel happy.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ability",
+          "tier": "full"
+        },
+        {
+          "text": "abilities",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ability",
+          "tier": "full"
+        },
+        {
+          "text": "an ability",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ability",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fähigkeit",
+            "tier": "full"
+          },
+          {
+            "text": "Können",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "quality",
+        "majority",
+        "argument"
+      ],
+      "hintDe": "Etwas, das du gut kannst."
+    },
+    {
+      "id": "g3u10.w.argument",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "compromise",
+            "majority",
+            "debate",
+            "concern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.86 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "argument",
+      "g": "Argument",
+      "d": "a reason that you give for or about a thing when you do not agree.",
+      "s": "Which side of the ___ do you agree with?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "argument",
+          "tier": "full"
+        },
+        {
+          "text": "arguments",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "argument",
+          "tier": "full"
+        },
+        {
+          "text": "an argument",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "argument",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Argument",
+            "tier": "full"
+          },
+          {
+            "text": "Streit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "side",
+          "de": "Seite",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "compromise",
+        "majority",
+        "debate"
+      ],
+      "hintDe": "Ein Grund, den du für oder gegen etwas nennst."
+    },
+    {
+      "id": "g3u10.w.businessman",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "headteacher",
+            "suffragette",
+            "organisation",
+            "majority"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.90 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "businessman (pl businessmen)",
+      "g": "Geschäftsmann",
+      "d": "a man who runs a big shop or who is in business to make money.",
+      "s": "A rich ___ wanted to help the school with a lot of money.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "businessman",
+          "tier": "full"
+        },
+        {
+          "text": "businessmen",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "businessman",
+          "tier": "full"
+        },
+        {
+          "text": "a businessman",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "businessman",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geschäftsmann",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "business",
+          "de": "Geschäft",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "headteacher",
+        "suffragette",
+        "organisation"
+      ],
+      "hintDe": "Ein Mann, der ein Geschäft führt oder in der Wirtschaft arbeitet."
+    },
+    {
+      "id": "g3u10.w.city-council",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "town hall",
+            "organisation",
+            "majority",
+            "debate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "city council",
+      "g": "Stadtrat",
+      "d": "the group of people who make the rules and the plans for a town.",
+      "s": "We could write to the ___ about the new park.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "city council",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "city council",
+          "tier": "full"
+        },
+        {
+          "text": "the city council",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "city council",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stadtrat",
+            "tier": "full"
+          },
+          {
+            "text": "Gemeinderat",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "town hall",
+        "organisation",
+        "majority"
+      ],
+      "hintDe": "Die Gruppe, die für eine Stadt die Regeln macht."
+    },
+    {
+      "id": "g3u10.w.cloth-bag",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "wrapping",
+            "cottage",
+            "town hall",
+            "organisation"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.86 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cloth bag",
+      "g": "Stofftasche",
+      "d": "a strong thing of cotton that you take shopping again and again.",
+      "s": "I always take a basket or a ___ when I go shopping.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cloth bag",
+          "tier": "full"
+        },
+        {
+          "text": "cloth bags",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cloth bag",
+          "tier": "full"
+        },
+        {
+          "text": "a cloth bag",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cloth bag",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stofftasche",
+            "tier": "full"
+          },
+          {
+            "text": "Stoffbeutel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "wrapping",
+        "cottage",
+        "town hall"
+      ],
+      "hintDe": "Eine Tasche aus Stoff, die du immer wieder benutzt."
+    },
+    {
+      "id": "g3u10.w.compromise",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "argument",
+            "majority",
+            "debate",
+            "concern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "compromise",
+      "g": "Kompromiss",
+      "d": "a deal where two groups give up a little so that everybody is a little happy.",
+      "s": "Both groups give up a little and find a fair ___ in the end.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "compromise",
+          "tier": "full"
+        },
+        {
+          "text": "compromises",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "compromise",
+          "tier": "full"
+        },
+        {
+          "text": "a compromise",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "compromise",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kompromiss",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "deal",
+          "de": "Vereinbarung",
+          "scope": "d"
+        },
+        {
+          "word": "fair",
+          "de": "fair",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "argument",
+        "majority",
+        "debate"
+      ],
+      "hintDe": "Eine Einigung, bei der beide Seiten ein bisschen nachgeben."
+    },
+    {
+      "id": "g3u10.w.concern",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "debate",
+            "argument",
+            "majority",
+            "compromise"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.91 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "concern",
+      "g": "Anliegen",
+      "d": "a thing that worries you or that is important to you.",
+      "s": "The safety of all the pupils is our biggest ___ at our school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "concern",
+          "tier": "full"
+        },
+        {
+          "text": "concerns",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "concern",
+          "tier": "full"
+        },
+        {
+          "text": "a concern",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "concern",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Anliegen",
+            "tier": "full"
+          },
+          {
+            "text": "Sorge",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "worries",
+          "de": "Sorgen macht",
+          "scope": "d"
+        },
+        {
+          "word": "important",
+          "de": "wichtig",
+          "scope": "d"
+        },
+        {
+          "word": "safety",
+          "de": "Sicherheit",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "debate",
+        "argument",
+        "majority"
+      ],
+      "hintDe": "Etwas, das dir Sorgen macht oder das dir wichtig ist."
+    },
+    {
+      "id": "g3u10.w.cottage",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cloth bag",
+            "town hall",
+            "wrapping",
+            "organisation"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.84 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cottage",
+      "g": "kleines Landhaus",
+      "d": "a small old home in the country, often with a garden.",
+      "s": "Our summer holiday was in a small ___ near the lake.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cottage",
+          "tier": "full"
+        },
+        {
+          "text": "cottages",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cottage",
+          "tier": "full"
+        },
+        {
+          "text": "a cottage",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cottage",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kleines Landhaus",
+            "tier": "full"
+          },
+          {
+            "text": "Ferienhaus",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cloth bag",
+        "town hall",
+        "wrapping"
+      ],
+      "hintDe": "Ein kleines Häuschen auf dem Land."
+    },
+    {
+      "id": "g3u10.w.debate",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "argument",
+            "concern",
+            "compromise",
+            "majority"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.91 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "debate",
+      "g": "Debatte",
+      "d": "a long talk where two groups give their reasons.",
+      "s": "Our class had a long ___ about homework and free time.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "debate",
+          "tier": "full"
+        },
+        {
+          "text": "debates",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "debate",
+          "tier": "full"
+        },
+        {
+          "text": "a debate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "debate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Debatte",
+            "tier": "full"
+          },
+          {
+            "text": "Diskussion",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "argument",
+        "concern",
+        "compromise"
+      ],
+      "hintDe": "Ein langes Gespräch, in dem zwei Gruppen ihre Gründe nennen."
+    },
+    {
+      "id": "g3u10.w.don-t-buy-a-new-bag-bring-your-own",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Don't drop litter.",
+            "Don't drive short distances.",
+            "Don't leave bottles or cans on the beach.",
+            "to buy locally produced food"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.86 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Don't buy a new bag. Bring your own.",
+      "g": "Kauf keine neue Tasche. Bring deine eigene mit.",
+      "d": "Use the one you have at home when you go shopping; pay nothing for a plastic one.",
+      "s": "___ A cloth bag from home is good for the world, plastic is not.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Don't buy a new bag. Bring your own",
+          "tier": "full"
+        },
+        {
+          "text": "Don't buy a new bag. Bring your own.",
+          "tier": "full"
+        },
+        {
+          "text": "Don't buy a new bag",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Don't buy a new bag. Bring your own",
+          "tier": "full"
+        },
+        {
+          "text": "Don't buy a new bag. Bring your own.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Don't buy a new bag. Bring your own",
+            "tier": "full"
+          },
+          {
+            "text": "Don't buy a new bag. Bring your own.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kauf keine neue Tasche. Bring deine eigene mit.",
+            "tier": "full"
+          },
+          {
+            "text": "Kauf keine neue Tüte. Bring deine eigene.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Don't drop litter.",
+        "Don't drive short distances.",
+        "Don't leave bottles or cans on the beach."
+      ],
+      "hintDe": "Sag jemandem, dass er die eigene Stofftasche mitbringen statt eine neue kaufen soll."
+    },
+    {
+      "id": "g3u10.w.don-t-drive-short-distances",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Don't drop litter.",
+            "Don't leave bottles or cans on the beach.",
+            "Don't buy a new bag. Bring your own.",
+            "to save water and energy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.86 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Don't drive short distances.",
+      "g": "Fahr keine kurzen Strecken.",
+      "d": "Use your feet for places that are near, not the car.",
+      "s": "___ Go to the shops near your home and keep the streets clean.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Don't drive short distances",
+          "tier": "full"
+        },
+        {
+          "text": "Don't drive short distances.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Don't drive short distances",
+          "tier": "full"
+        },
+        {
+          "text": "Don't drive short distances.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Don't drive short distances",
+            "tier": "full"
+          },
+          {
+            "text": "Don't drive short distances.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fahr keine kurzen Strecken.",
+            "tier": "full"
+          },
+          {
+            "text": "Fahr kurze Strecken nicht mit dem Auto.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Don't drop litter.",
+        "Don't leave bottles or cans on the beach.",
+        "Don't buy a new bag. Bring your own."
+      ],
+      "hintDe": "Sag jemandem, dass er für kurze Wege nicht das Auto nehmen soll."
+    },
+    {
+      "id": "g3u10.w.don-t-drop-litter",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Don't drive short distances.",
+            "Don't leave bottles or cans on the beach.",
+            "Don't buy a new bag. Bring your own.",
+            "to recycle paper, glass, plastic and cans"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.86 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Don't drop litter.",
+      "g": "Wirf keinen Müll weg.",
+      "d": "Put your rubbish in a box and not on the ground.",
+      "s": "___ There are boxes for your old cans all over the park.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Don't drop litter",
+          "tier": "full"
+        },
+        {
+          "text": "Don't drop litter.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Don't drop litter",
+          "tier": "full"
+        },
+        {
+          "text": "Don't drop litter.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Don't drop litter",
+            "tier": "full"
+          },
+          {
+            "text": "Don't drop litter.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wirf keinen Müll weg.",
+            "tier": "full"
+          },
+          {
+            "text": "Lass keinen Abfall fallen.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "litter",
+          "de": "Müll",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Don't drive short distances.",
+        "Don't leave bottles or cans on the beach.",
+        "Don't buy a new bag. Bring your own."
+      ],
+      "hintDe": "Sag jemandem, dass er den Abfall nicht auf den Boden werfen soll."
+    },
+    {
+      "id": "g3u10.w.don-t-leave-bottles-or-cans-on-the-beach",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Don't drop litter.",
+            "Don't drive short distances.",
+            "Don't buy a new bag. Bring your own.",
+            "to recycle paper, glass, plastic and cans"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.86 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Don't leave bottles or cans on the beach.",
+      "g": "Lass keine Flaschen oder Dosen am Strand liegen.",
+      "d": "Always take your rubbish home with you when you go from the sand and the sea.",
+      "s": "___ Take all your rubbish home so the sand stays clean for everybody.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Don't leave bottles or cans on the beach",
+          "tier": "full"
+        },
+        {
+          "text": "Don't leave bottles or cans on the beach.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Don't leave bottles or cans on the beach",
+          "tier": "full"
+        },
+        {
+          "text": "Don't leave bottles or cans on the beach.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Don't leave bottles or cans on the beach",
+            "tier": "full"
+          },
+          {
+            "text": "Don't leave bottles or cans on the beach.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lass keine Flaschen oder Dosen am Strand liegen.",
+            "tier": "full"
+          },
+          {
+            "text": "Lass keine Flaschen oder Dosen am Strand zurück.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Don't drop litter.",
+        "Don't drive short distances.",
+        "Don't buy a new bag. Bring your own."
+      ],
+      "hintDe": "Sag jemandem, dass er seinen Abfall vom Strand wieder mitnehmen soll."
+    },
+    {
+      "id": "g3u10.w.education",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ability",
+            "quality",
+            "suffrage",
+            "majority"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.89 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "education",
+      "g": "(Aus-)Bildung",
+      "d": "the learning that you do at school or at college.",
+      "s": "You have the right to a good quality ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "education",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "education",
+          "tier": "full"
+        },
+        {
+          "text": "an education",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "education",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bildung",
+            "tier": "full"
+          },
+          {
+            "text": "Ausbildung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "learning",
+          "de": "Lernen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ability",
+        "quality",
+        "suffrage"
+      ],
+      "hintDe": "Das Lernen in der Schule oder an der Uni."
+    },
+    {
+      "id": "g3u10.w.good-point",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "in general",
+            "town hall",
+            "way out",
+            "hardly ever"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Good point.",
+      "g": "Da ist was dran.",
+      "d": "a short way to agree that somebody is right.",
+      "s": "We could ask the parents too. — ___ That is really clever!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Good point",
+          "tier": "full"
+        },
+        {
+          "text": "Good point.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Good point",
+          "tier": "full"
+        },
+        {
+          "text": "Good point.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Good point",
+            "tier": "full"
+          },
+          {
+            "text": "Good point.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Da ist was dran.",
+            "tier": "full"
+          },
+          {
+            "text": "Gutes Argument.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "in general",
+        "town hall",
+        "way out"
+      ],
+      "hintDe": "So sagst du, dass jemand gerade etwas Gutes gesagt hat."
+    },
+    {
+      "id": "g3u10.w.hardly-ever",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "in general",
+            "nowadays",
+            "Good point.",
+            "way out"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.86 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "hardly ever",
+      "g": "fast nie",
+      "d": "not often at all, just once in a very long time.",
+      "s": "I ___ eat fast food, perhaps once a year on my birthday.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hardly ever",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hardly ever",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hardly ever",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fast nie",
+            "tier": "full"
+          },
+          {
+            "text": "kaum jemals",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "in general",
+        "nowadays",
+        "Good point."
+      ],
+      "hintDe": "Ganz selten, fast nie."
+    },
+    {
+      "id": "g3u10.w.headteacher",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "suffragette",
+            "organisation",
+            "majority",
+            "debate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.91 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "headteacher",
+      "g": "Schulleiter/Schulleiterin",
+      "d": "the person who is the head of a whole school.",
+      "s": "The ___ meets all the new pupils on the first day of school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "headteacher",
+          "tier": "full"
+        },
+        {
+          "text": "headteachers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "headteacher",
+          "tier": "full"
+        },
+        {
+          "text": "a headteacher",
+          "tier": "full"
+        },
+        {
+          "text": "head teacher",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "headteacher",
+            "tier": "full"
+          },
+          {
+            "text": "head teacher",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schulleiter",
+            "tier": "full"
+          },
+          {
+            "text": "Schulleiterin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "suffragette",
+        "organisation",
+        "majority"
+      ],
+      "hintDe": "Die Person, die eine ganze Schule leitet."
+    },
+    {
+      "id": "g3u10.w.in-general",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "nowadays",
+            "hardly ever",
+            "Good point.",
+            "way out"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "in general",
+      "g": "im Allgemeinen",
+      "d": "most of the time, when you look at the whole thing.",
+      "s": "___, I like most of my school subjects, but I do not enjoy maths much.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "In general",
+          "tier": "full"
+        },
+        {
+          "text": "in general",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "in general",
+          "tier": "full"
+        },
+        {
+          "text": "In general",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "in general",
+            "tier": "full"
+          },
+          {
+            "text": "generally",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "im Allgemeinen",
+            "tier": "full"
+          },
+          {
+            "text": "im Großen und Ganzen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "nowadays",
+        "hardly ever",
+        "Good point."
+      ],
+      "hintDe": "Im Großen und Ganzen, meistens."
+    },
+    {
+      "id": "g3u10.w.law",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "debate",
+            "majority",
+            "argument",
+            "concern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.89 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "law",
+      "g": "Gesetz",
+      "d": "a rule from the government that everybody in a country must keep.",
+      "s": "There is a ___ in Austria that all children from 6 to 15 must go to school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "law",
+          "tier": "full"
+        },
+        {
+          "text": "laws",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "law",
+          "tier": "full"
+        },
+        {
+          "text": "a law",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "law",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gesetz",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "debate",
+        "majority",
+        "argument"
+      ],
+      "hintDe": "Eine Regel vom Staat, an die sich alle halten müssen."
+    },
+    {
+      "id": "g3u10.w.lazy",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "non-violent",
+            "wrapping",
+            "cottage",
+            "town hall"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "lazy",
+      "g": "faul",
+      "d": "not wanting to work or move at all.",
+      "s": "Don't be so ___! Get up from the sofa and help me in the kitchen.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "lazy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lazy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lazy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "faul",
+            "tier": "full"
+          },
+          {
+            "text": "träge",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "non-violent",
+        "wrapping",
+        "cottage"
+      ],
+      "hintDe": "Jemand, der nichts tun und sich nicht bewegen will."
+    },
+    {
+      "id": "g3u10.w.majority",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ability",
+            "quality",
+            "compromise",
+            "argument"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "majority",
+      "g": "Mehrheit",
+      "d": "more than half of a group of people.",
+      "s": "The ___ of the class voted for Salzburg, and just three pupils wanted Vienna.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "majority",
+          "tier": "full"
+        },
+        {
+          "text": "majorities",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "majority",
+          "tier": "full"
+        },
+        {
+          "text": "the majority",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "majority",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mehrheit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "half",
+          "de": "Hälfte",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ability",
+        "quality",
+        "compromise"
+      ],
+      "hintDe": "Mehr als die Hälfte einer Gruppe."
+    },
+    {
+      "id": "g3u10.w.non-violent",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "lazy",
+            "wrapping",
+            "cottage",
+            "town hall"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.89 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "non-violent",
+      "g": "gewaltlos",
+      "d": "without hurting people and without fighting.",
+      "s": "They wanted a ___ way to protest and did not fight at all.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "non-violent",
+          "tier": "full"
+        },
+        {
+          "text": "nonviolent",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "non-violent",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "non-violent",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gewaltlos",
+            "tier": "full"
+          },
+          {
+            "text": "friedlich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "lazy",
+        "wrapping",
+        "cottage"
+      ],
+      "hintDe": "Ohne Gewalt und ohne jemanden zu verletzen."
+    },
+    {
+      "id": "g3u10.w.nowadays",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "in general",
+            "hardly ever",
+            "Good point.",
+            "way out"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.89 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "nowadays",
+      "g": "heutzutage",
+      "d": "these days, at the time we live in now.",
+      "s": "___, most people have a mobile phone, also young children.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Nowadays",
+          "tier": "full"
+        },
+        {
+          "text": "nowadays",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nowadays",
+          "tier": "full"
+        },
+        {
+          "text": "Nowadays",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nowadays",
+            "tier": "full"
+          },
+          {
+            "text": "these days",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "heutzutage",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "in general",
+        "hardly ever",
+        "Good point."
+      ],
+      "hintDe": "In der heutigen Zeit."
+    },
+    {
+      "id": "g3u10.w.organisation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "city council",
+            "debate",
+            "headteacher",
+            "majority"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.91 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "organisation",
+      "g": "Organisation",
+      "d": "a big group of people who work for one reason.",
+      "s": "This big ___ does so much for children all over the world.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "organisation",
+          "tier": "full"
+        },
+        {
+          "text": "organisations",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "organisation",
+          "tier": "full"
+        },
+        {
+          "text": "an organisation",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "organisation",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Organisation",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "city council",
+        "debate",
+        "headteacher"
+      ],
+      "hintDe": "Eine Gruppe von Leuten, die für das gleiche Ziel arbeitet."
+    },
+    {
+      "id": "g3u10.w.quality",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ability",
+            "majority",
+            "education",
+            "argument"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "quality",
+      "g": "Qualität",
+      "d": "how good or how bad a thing is.",
+      "s": "These leather shoes are very good ___ and will last for years.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "quality",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "quality",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "quality",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Qualität",
+            "tier": "full"
+          },
+          {
+            "text": "Güte",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ability",
+        "majority",
+        "education"
+      ],
+      "hintDe": "Wie gut oder schlecht etwas ist."
+    },
+    {
+      "id": "g3u10.w.right",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "law",
+            "debate",
+            "quality",
+            "argument"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "right(s)",
+      "g": "Recht(e)",
+      "d": "a thing that everybody must be free to have, like school, food and safety.",
+      "s": "Every child in the world has the ___ to go to school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "right",
+          "tier": "full"
+        },
+        {
+          "text": "rights",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "right",
+          "tier": "full"
+        },
+        {
+          "text": "rights",
+          "tier": "full"
+        },
+        {
+          "text": "a right",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "right",
+            "tier": "full"
+          },
+          {
+            "text": "rights",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Recht",
+            "tier": "full"
+          },
+          {
+            "text": "Rechte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "safety",
+          "de": "Sicherheit",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "law",
+        "debate",
+        "quality"
+      ],
+      "hintDe": "Etwas, das jeder Mensch haben darf, zum Beispiel Schule und Essen."
+    },
+    {
+      "id": "g3u10.w.suffrage",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "education",
+            "law",
+            "ability",
+            "concern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.88 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "suffrage",
+      "g": "Wahlrecht",
+      "d": "the right of people to vote and choose a leader.",
+      "s": "Women in Austria did not have ___, the right to vote, before 1918.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "suffrage",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "suffrage",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "suffrage",
+            "tier": "full"
+          },
+          {
+            "text": "right to vote",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wahlrecht",
+            "tier": "full"
+          },
+          {
+            "text": "Stimmrecht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "choose",
+          "de": "wählen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "education",
+        "law",
+        "ability"
+      ],
+      "hintDe": "Das Recht, bei einer Wahl zu wählen."
+    },
+    {
+      "id": "g3u10.w.suffragette",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "headteacher",
+            "organisation",
+            "majority",
+            "debate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.88 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "suffragette",
+      "g": "Frauenrechtlerin",
+      "d": "a woman from long ago who fought for the right of women to vote.",
+      "s": "The brave ___ marched in London for the right to vote.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "suffragette",
+          "tier": "full"
+        },
+        {
+          "text": "suffragettes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "suffragette",
+          "tier": "full"
+        },
+        {
+          "text": "a suffragette",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "suffragette",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Frauenrechtlerin",
+            "tier": "full"
+          },
+          {
+            "text": "Suffragette",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "fought",
+          "de": "kämpfte",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "headteacher",
+        "organisation",
+        "majority"
+      ],
+      "hintDe": "Eine Frau, die für das Wahlrecht der Frauen gekämpft hat."
+    },
+    {
+      "id": "g3u10.w.to-arrest",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to refuse",
+            "to protest",
+            "to treat",
+            "to vote"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.89 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to arrest",
+      "g": "Festnahme",
+      "d": "to take somebody away because the police think they broke a rule of the country.",
+      "s": "The police came to ___ the man for stealing the car.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "arrest",
+          "tier": "full"
+        },
+        {
+          "text": "arrested",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to arrest",
+          "tier": "full"
+        },
+        {
+          "text": "arrest",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to arrest",
+            "tier": "full"
+          },
+          {
+            "text": "arrest",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verhaften",
+            "tier": "full"
+          },
+          {
+            "text": "festnehmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "broke",
+          "de": "brach",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to refuse",
+        "to protest",
+        "to treat"
+      ],
+      "hintDe": "Die Polizei nimmt jemanden mit, weil er etwas Verbotenes getan hat."
+    },
+    {
+      "id": "g3u10.w.to-attend",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to vote",
+            "to protest",
+            "to involve",
+            "to refuse"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.88 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to attend",
+      "g": "besuchen (Universität, Veranstaltung)",
+      "d": "to go to a place like a school, a college or a meeting.",
+      "s": "However, girls were still not allowed to ___ university.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "attend",
+          "tier": "full"
+        },
+        {
+          "text": "attended",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to attend",
+          "tier": "full"
+        },
+        {
+          "text": "attend",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to attend",
+            "tier": "full"
+          },
+          {
+            "text": "attend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "besuchen",
+            "tier": "full"
+          },
+          {
+            "text": "teilnehmen an",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "allowed",
+          "de": "erlaubt",
+          "scope": "s"
+        },
+        {
+          "word": "university",
+          "de": "Universität",
+          "scope": "s"
+        },
+        {
+          "word": "however",
+          "de": "jedoch",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to vote",
+        "to protest",
+        "to involve"
+      ],
+      "hintDe": "Du gehst zu einer Schule, Uni oder Veranstaltung hin."
+    },
+    {
+      "id": "g3u10.w.to-be-able-to-do",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to take action",
+            "to stand up for",
+            "to speak out",
+            "to refuse"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to be able to do",
+      "g": "fähig sein",
+      "d": "to have the skill or the chance to do a thing.",
+      "s": "I hope I will ___ help many people one day.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "be able to",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to be able to do",
+          "tier": "full"
+        },
+        {
+          "text": "be able to do",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to be able to do",
+            "tier": "full"
+          },
+          {
+            "text": "be able to do",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fähig sein, etwas zu tun",
+            "tier": "full"
+          },
+          {
+            "text": "in der Lage sein, etwas zu tun",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "skill",
+          "de": "Können",
+          "scope": "d"
+        },
+        {
+          "word": "chance",
+          "de": "Möglichkeit",
+          "scope": "d"
+        },
+        {
+          "word": "able",
+          "de": "fähig",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to take action",
+        "to stand up for",
+        "to speak out"
+      ],
+      "hintDe": "Du kannst etwas schaffen, weil du die Möglichkeit oder das Können dafür hast."
+    },
+    {
+      "id": "g3u10.w.to-be-equal",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to attend",
+            "to vote",
+            "to treat",
+            "to protest"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.89 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to be equal",
+      "g": "gleichberechtigt sein",
+      "d": "to have the same rights and be treated the same way.",
+      "s": "In the past men had more rights, but now women and men must be ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "equal",
+          "tier": "full"
+        },
+        {
+          "text": "be equal",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to be equal",
+          "tier": "full"
+        },
+        {
+          "text": "be equal",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to be equal",
+            "tier": "full"
+          },
+          {
+            "text": "be equal",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gleichberechtigt sein",
+            "tier": "full"
+          },
+          {
+            "text": "gleich sein",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "same",
+          "de": "gleich",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to attend",
+        "to vote",
+        "to treat"
+      ],
+      "hintDe": "Alle haben die gleichen Rechte und werden gleich behandelt."
+    },
+    {
+      "id": "g3u10.w.to-buy-locally-produced-food",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to save water and energy",
+            "to recycle paper, glass, plastic and cans",
+            "to sign a petition",
+            "to hand out leaflets"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.86 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to buy locally produced food",
+      "g": "lokal produzierte Lebensmittel kaufen",
+      "d": "to pay for what you eat from a shop near your home.",
+      "s": "My mum likes to ___ from the farmers' market near our home.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "buy locally produced food",
+          "tier": "full"
+        },
+        {
+          "text": "bought locally produced food",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to buy locally produced food",
+          "tier": "full"
+        },
+        {
+          "text": "buy locally produced food",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to buy locally produced food",
+            "tier": "full"
+          },
+          {
+            "text": "buy locally produced food",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lokal produzierte Lebensmittel kaufen",
+            "tier": "full"
+          },
+          {
+            "text": "regionale Lebensmittel kaufen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to save water and energy",
+        "to recycle paper, glass, plastic and cans",
+        "to sign a petition"
+      ],
+      "hintDe": "Du kaufst Essen, das in der Nähe angebaut wurde."
+    },
+    {
+      "id": "g3u10.w.to-close-down",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to involve",
+            "to protest",
+            "to attend",
+            "to refuse"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.89 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to close down",
+      "g": "schließen",
+      "d": "to shut a shop or a business forever so it never opens again.",
+      "s": "The old cinema in our town had to ___ last year because not many people came.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "close down",
+          "tier": "full"
+        },
+        {
+          "text": "closed down",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to close down",
+          "tier": "full"
+        },
+        {
+          "text": "close down",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to close down",
+            "tier": "full"
+          },
+          {
+            "text": "close down",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schließen",
+            "tier": "full"
+          },
+          {
+            "text": "dichtmachen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shut",
+          "de": "schließen",
+          "scope": "d"
+        },
+        {
+          "word": "business",
+          "de": "Geschäft",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to involve",
+        "to protest",
+        "to attend"
+      ],
+      "hintDe": "Ein Geschäft macht für immer zu."
+    },
+    {
+      "id": "g3u10.w.to-exist",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to attend",
+            "to vote",
+            "to treat",
+            "to protest"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to exist",
+      "g": "existieren",
+      "d": "to be there in the world and not just be a story.",
+      "s": "Do you think aliens really ___ out there in space?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "exist",
+          "tier": "full"
+        },
+        {
+          "text": "exists",
+          "tier": "partial"
+        },
+        {
+          "text": "existed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to exist",
+          "tier": "full"
+        },
+        {
+          "text": "exist",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to exist",
+            "tier": "full"
+          },
+          {
+            "text": "exist",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "existieren",
+            "tier": "full"
+          },
+          {
+            "text": "vorhanden sein",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to attend",
+        "to vote",
+        "to treat"
+      ],
+      "hintDe": "Es ist wirklich da und keine reine Erfindung."
+    },
+    {
+      "id": "g3u10.w.to-go-on-a-protest-march",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to send out emails",
+            "to sign a petition",
+            "to organise a meeting",
+            "to hand out leaflets"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to go on a protest march",
+      "g": "auf einen Protestmarsch gehen",
+      "d": "a big group of people on the street who all show they do not agree.",
+      "s": "The whole town will ___ this Friday to show they do not want the new houses.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "go on a protest march",
+          "tier": "full"
+        },
+        {
+          "text": "went on a protest march",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to go on a protest march",
+          "tier": "full"
+        },
+        {
+          "text": "go on a protest march",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to go on a protest march",
+            "tier": "full"
+          },
+          {
+            "text": "go on a protest march",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auf einen Protestmarsch gehen",
+            "tier": "full"
+          },
+          {
+            "text": "an einem Protestmarsch teilnehmen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to send out emails",
+        "to sign a petition",
+        "to organise a meeting"
+      ],
+      "hintDe": "Viele Leute gehen zusammen durch die Straßen, um zu protestieren."
+    },
+    {
+      "id": "g3u10.w.to-hand-out-leaflets",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to sign a petition",
+            "to organise a meeting",
+            "to send out emails",
+            "to go on a protest march"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to hand out leaflets",
+      "g": "Flugblätter verteilen",
+      "d": "to give printed sheets with information to people in the street.",
+      "s": "On Friday we will ___ in front of the shop to tell people about our march.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hand out leaflets",
+          "tier": "full"
+        },
+        {
+          "text": "handed out leaflets",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to hand out leaflets",
+          "tier": "full"
+        },
+        {
+          "text": "hand out leaflets",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to hand out leaflets",
+            "tier": "full"
+          },
+          {
+            "text": "hand out leaflets",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flugblätter verteilen",
+            "tier": "full"
+          },
+          {
+            "text": "Flyer verteilen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "leaflets",
+          "de": "Flugblätter",
+          "scope": "d"
+        },
+        {
+          "word": "printed",
+          "de": "bedruckt",
+          "scope": "d"
+        },
+        {
+          "word": "sheets",
+          "de": "Blätter",
+          "scope": "d"
+        },
+        {
+          "word": "information",
+          "de": "Informationen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to sign a petition",
+        "to organise a meeting",
+        "to send out emails"
+      ],
+      "hintDe": "Du gibst vielen Leuten kleine Blätter mit Infos in die Hand."
+    },
+    {
+      "id": "g3u10.w.to-involve",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to attend",
+            "to vote",
+            "to protest",
+            "to refuse"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.91 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to involve",
+      "g": "einbeziehen",
+      "d": "to make somebody a part of a plan or a decision.",
+      "s": "We want to ___ children, teachers and parents in the decision.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "involve",
+          "tier": "full"
+        },
+        {
+          "text": "involved",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to involve",
+          "tier": "full"
+        },
+        {
+          "text": "involve",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to involve",
+            "tier": "full"
+          },
+          {
+            "text": "involve",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einbeziehen",
+            "tier": "full"
+          },
+          {
+            "text": "beteiligen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        },
+        {
+          "word": "plan",
+          "de": "Plan",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to attend",
+        "to vote",
+        "to protest"
+      ],
+      "hintDe": "Du machst jemanden zu einem Teil einer Entscheidung."
+    },
+    {
+      "id": "g3u10.w.to-organise-a-meeting",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to hand out leaflets",
+            "to sign a petition",
+            "to send out emails",
+            "to go on a protest march"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to organise a meeting",
+      "g": "ein Treffen organisieren",
+      "d": "to find a time and a place so that people can come and talk.",
+      "s": "Let's ___ this Friday so we can talk about the school play.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "organise a meeting",
+          "tier": "full"
+        },
+        {
+          "text": "organised a meeting",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to organise a meeting",
+          "tier": "full"
+        },
+        {
+          "text": "organise a meeting",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to organise a meeting",
+            "tier": "full"
+          },
+          {
+            "text": "organise a meeting",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ein Treffen organisieren",
+            "tier": "full"
+          },
+          {
+            "text": "eine Versammlung organisieren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to hand out leaflets",
+        "to sign a petition",
+        "to send out emails"
+      ],
+      "hintDe": "Du planst ein Treffen, damit Leute zusammenkommen können."
+    },
+    {
+      "id": "g3u10.w.to-protest",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to vote",
+            "to attend",
+            "to involve",
+            "to refuse"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to protest",
+      "g": "protestieren",
+      "d": "to show in a strong way that you do not agree with a plan.",
+      "s": "The pupils want to ___ about the new rules for mobile phones.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "protest",
+          "tier": "full"
+        },
+        {
+          "text": "protested",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to protest",
+          "tier": "full"
+        },
+        {
+          "text": "protest",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to protest",
+            "tier": "full"
+          },
+          {
+            "text": "protest",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "protestieren",
+            "tier": "full"
+          },
+          {
+            "text": "sich wehren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "plan",
+          "de": "Plan",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to vote",
+        "to attend",
+        "to involve"
+      ],
+      "hintDe": "Du zeigst laut, dass du gegen etwas bist."
+    },
+    {
+      "id": "g3u10.w.to-recycle-paper-glass-plastic-and-cans",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to save water and energy",
+            "to buy locally produced food",
+            "to hand out leaflets",
+            "to sign a petition"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.86 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to recycle paper, glass, plastic and cans",
+      "g": "Papier",
+      "d": "to put used bottles, old tins and rubbish into the right boxes to use one more time.",
+      "s": "At our school we ___ and put it all in the right boxes.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "recycle paper, glass, plastic and cans",
+          "tier": "full"
+        },
+        {
+          "text": "recycle",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to recycle paper, glass, plastic and cans",
+          "tier": "full"
+        },
+        {
+          "text": "recycle paper, glass, plastic and cans",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to recycle paper, glass, plastic and cans",
+            "tier": "full"
+          },
+          {
+            "text": "recycle paper, glass, plastic and cans",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Papier, Glas, Plastik und Dosen recyceln",
+            "tier": "full"
+          },
+          {
+            "text": "Papier, Glas, Plastik und Dosen wiederverwerten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to save water and energy",
+        "to buy locally produced food",
+        "to hand out leaflets"
+      ],
+      "hintDe": "Altes Papier, Glas und Dosen kommen in die richtige Tonne und werden wiederverwertet."
+    },
+    {
+      "id": "g3u10.w.to-refuse",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to attend",
+            "to vote",
+            "to involve",
+            "to protest"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.89 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to refuse",
+      "g": "(ver-)weigern",
+      "d": "to tell somebody no when they want you to do a thing.",
+      "s": "In the story, she ___ to give up her seat on the bus.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "refuses",
+          "tier": "full"
+        },
+        {
+          "text": "refused",
+          "tier": "full"
+        },
+        {
+          "text": "refuse",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to refuse",
+          "tier": "full"
+        },
+        {
+          "text": "refuse",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to refuse",
+            "tier": "full"
+          },
+          {
+            "text": "refuse",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich weigern",
+            "tier": "full"
+          },
+          {
+            "text": "verweigern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bus",
+          "de": "Bus",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to attend",
+        "to vote",
+        "to involve"
+      ],
+      "hintDe": "Du sagst klar Nein zu etwas, das jemand von dir will."
+    },
+    {
+      "id": "g3u10.w.to-save-water-and-energy",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to recycle paper, glass, plastic and cans",
+            "to buy locally produced food",
+            "to organise a meeting",
+            "to send out emails"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.86 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to save water and energy",
+      "g": "Wasser und Energie sparen",
+      "d": "to use less power and less of what runs from the tap.",
+      "s": "We can all ___ and waste less at home.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "save water and energy",
+          "tier": "full"
+        },
+        {
+          "text": "saved water and energy",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to save water and energy",
+          "tier": "full"
+        },
+        {
+          "text": "save water and energy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to save water and energy",
+            "tier": "full"
+          },
+          {
+            "text": "save water and energy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wasser und Energie sparen",
+            "tier": "full"
+          },
+          {
+            "text": "Wasser und Strom sparen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tap",
+          "de": "Wasserhahn",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to recycle paper, glass, plastic and cans",
+        "to buy locally produced food",
+        "to organise a meeting"
+      ],
+      "hintDe": "Du brauchst weniger Strom und weniger Wasser und verschwendest nichts."
+    },
+    {
+      "id": "g3u10.w.to-send-out-emails",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to hand out leaflets",
+            "to go on a protest march",
+            "to sign a petition",
+            "to organise a meeting"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to send out emails",
+      "g": "E-Mails versenden",
+      "d": "to write one message and put it on the computer for many people at once.",
+      "s": "First we will ___ to all the parents about the new building plans.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "send out emails",
+          "tier": "full"
+        },
+        {
+          "text": "sent out emails",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to send out emails",
+          "tier": "full"
+        },
+        {
+          "text": "send out emails",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to send out emails",
+            "tier": "full"
+          },
+          {
+            "text": "send out emails",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "E-Mails versenden",
+            "tier": "full"
+          },
+          {
+            "text": "E-Mails verschicken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "message",
+          "de": "Nachricht",
+          "scope": "d"
+        },
+        {
+          "word": "emails",
+          "de": "E-Mails",
+          "scope": "d"
+        },
+        {
+          "word": "computer",
+          "de": "Computer",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to hand out leaflets",
+        "to go on a protest march",
+        "to sign a petition"
+      ],
+      "hintDe": "Du schickst die gleiche Nachricht am Computer an viele Leute."
+    },
+    {
+      "id": "g3u10.w.to-sign-a-petition",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to hand out leaflets",
+            "to go on a protest march",
+            "to organise a meeting",
+            "to send out emails"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / WB p.83",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to sign a petition",
+      "g": "eine Petition unterschreiben",
+      "d": "to write your own name on a list to show that you want a change.",
+      "s": "More than 500 people came to ___ so the old park would not be closed down.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sign a petition",
+          "tier": "full"
+        },
+        {
+          "text": "signed a petition",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to sign a petition",
+          "tier": "full"
+        },
+        {
+          "text": "sign a petition",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to sign a petition",
+            "tier": "full"
+          },
+          {
+            "text": "sign a petition",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Petition unterschreiben",
+            "tier": "full"
+          },
+          {
+            "text": "eine Unterschriftenliste unterschreiben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "petition",
+          "de": "Petition",
+          "scope": "d"
+        },
+        {
+          "word": "name",
+          "de": "Name",
+          "scope": "d"
+        },
+        {
+          "word": "list",
+          "de": "Liste",
+          "scope": "d"
+        },
+        {
+          "word": "change",
+          "de": "Veränderung",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to hand out leaflets",
+        "to go on a protest march",
+        "to organise a meeting"
+      ],
+      "hintDe": "Du schreibst deinen Namen auf eine Liste, um eine Sache zu unterstützen."
+    },
+    {
+      "id": "g3u10.w.to-speak-out",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to stand up for",
+            "to take action",
+            "to protest",
+            "to refuse"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.89 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to speak out",
+      "g": "seine Meinung sagen",
+      "d": "to tell people in public what you think when a thing is not right.",
+      "s": "Malala likes to ___ for the right of girls to go to school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "speak out",
+          "tier": "full"
+        },
+        {
+          "text": "spoke out",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to speak out",
+          "tier": "full"
+        },
+        {
+          "text": "speak out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to speak out",
+            "tier": "full"
+          },
+          {
+            "text": "speak out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "seine Meinung sagen",
+            "tier": "full"
+          },
+          {
+            "text": "sich aussprechen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to stand up for",
+        "to take action",
+        "to protest"
+      ],
+      "hintDe": "Du sagst offen und öffentlich deine Meinung."
+    },
+    {
+      "id": "g3u10.w.to-stand-up-for",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to take action",
+            "to speak out",
+            "to involve",
+            "to protest"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.90 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to stand up for",
+      "g": "für etw. eintreten",
+      "d": "to speak or do a thing to help what you think is right.",
+      "s": "You have to ___ your rights when life is not fair.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stand up for",
+          "tier": "full"
+        },
+        {
+          "text": "stood up for",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to stand up for",
+          "tier": "full"
+        },
+        {
+          "text": "stand up for",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to stand up for",
+            "tier": "full"
+          },
+          {
+            "text": "stand up for",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "für etwas eintreten",
+            "tier": "full"
+          },
+          {
+            "text": "sich für etwas einsetzen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "fair",
+          "de": "gerecht",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to take action",
+        "to speak out",
+        "to involve"
+      ],
+      "hintDe": "Du setzt dich für etwas ein, das du für richtig hältst."
+    },
+    {
+      "id": "g3u10.w.to-take-action",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to stand up for",
+            "to speak out",
+            "to protest",
+            "to refuse"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to take action",
+      "g": "etw. unternehmen",
+      "d": "to do a thing about a problem and not just talk about it.",
+      "s": "If you really want to help, you must ___ and not just talk.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "take action",
+          "tier": "full"
+        },
+        {
+          "text": "took action",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to take action",
+          "tier": "full"
+        },
+        {
+          "text": "take action",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to take action",
+            "tier": "full"
+          },
+          {
+            "text": "take action",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etwas unternehmen",
+            "tier": "full"
+          },
+          {
+            "text": "aktiv werden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "problem",
+          "de": "Problem",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to stand up for",
+        "to speak out",
+        "to protest"
+      ],
+      "hintDe": "Du tust wirklich etwas gegen ein Problem, statt nur zu reden."
+    },
+    {
+      "id": "g3u10.w.to-treat",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to vote",
+            "to attend",
+            "to refuse",
+            "to involve"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.89 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to treat",
+      "g": "behandeln",
+      "d": "to behave towards somebody in a good or a bad way.",
+      "s": "We must ___ everybody well and in a fair way.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "treat",
+          "tier": "full"
+        },
+        {
+          "text": "treated",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to treat",
+          "tier": "full"
+        },
+        {
+          "text": "treat",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to treat",
+            "tier": "full"
+          },
+          {
+            "text": "treat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "behandeln",
+            "tier": "full"
+          },
+          {
+            "text": "umgehen mit",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "fair",
+          "de": "gerecht",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to vote",
+        "to attend",
+        "to refuse"
+      ],
+      "hintDe": "Du gehst mit jemandem gut oder schlecht um."
+    },
+    {
+      "id": "g3u10.w.to-vote",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to attend",
+            "to treat",
+            "to refuse",
+            "to involve"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.88 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to vote",
+      "g": "wählen",
+      "d": "to choose somebody or a party in an election.",
+      "s": "In the early 20th century, women wanted the right to ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "vote",
+          "tier": "full"
+        },
+        {
+          "text": "voted",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to vote",
+          "tier": "full"
+        },
+        {
+          "text": "vote",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to vote",
+            "tier": "full"
+          },
+          {
+            "text": "vote",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wählen",
+            "tier": "full"
+          },
+          {
+            "text": "abstimmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "choose",
+          "de": "wählen",
+          "scope": "d"
+        },
+        {
+          "word": "election",
+          "de": "Wahl",
+          "scope": "d"
+        },
+        {
+          "word": "party",
+          "de": "Partei",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to attend",
+        "to treat",
+        "to refuse"
+      ],
+      "hintDe": "Du wählst bei einer Wahl eine Person oder eine Partei."
+    },
+    {
+      "id": "g3u10.w.town-hall",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "city council",
+            "cottage",
+            "organisation",
+            "cloth bag"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "town hall",
+      "g": "Rathaus",
+      "d": "the big building where the people who run a city have their offices.",
+      "s": "There will be a public meeting in the ___ this week.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "town hall",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "town hall",
+          "tier": "full"
+        },
+        {
+          "text": "a town hall",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "town hall",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rathaus",
+            "tier": "full"
+          },
+          {
+            "text": "Gemeindeamt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "city council",
+        "cottage",
+        "organisation"
+      ],
+      "hintDe": "Das Gebäude, in dem die Stadtverwaltung sitzt."
+    },
+    {
+      "id": "g3u10.w.way-out",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "compromise",
+            "argument",
+            "debate",
+            "concern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.85 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "way out",
+      "g": "Ausweg",
+      "d": "a good plan that leads you out of a difficult problem.",
+      "s": "The politicians want to find a ___ for everybody.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "way out",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "way out",
+          "tier": "full"
+        },
+        {
+          "text": "a way out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "way out",
+            "tier": "full"
+          },
+          {
+            "text": "escape",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ausweg",
+            "tier": "full"
+          },
+          {
+            "text": "Lösung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "problem",
+          "de": "Problem",
+          "scope": "d"
+        },
+        {
+          "word": "plan",
+          "de": "Plan",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "compromise",
+        "argument",
+        "debate"
+      ],
+      "hintDe": "Ein Weg aus einer schwierigen Lage heraus."
+    },
+    {
+      "id": "g3u10.w.wrapping",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cloth bag",
+            "cottage",
+            "compromise",
+            "concern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 10 p.86 / More Words p.89",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "wrapping",
+      "g": "Verpackung",
+      "d": "the plastic or coloured cover on a thing from the shop.",
+      "s": "Please put the ___ from the present into the right box.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "wrapping",
+          "tier": "full"
+        },
+        {
+          "text": "wrappings",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wrapping",
+          "tier": "full"
+        },
+        {
+          "text": "the wrapping",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wrapping",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verpackung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "coloured",
+          "de": "bunt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "cloth bag",
+        "cottage",
+        "compromise"
+      ],
+      "hintDe": "Das Papier oder Plastik um ein Produkt herum."
+    }
+  ]
+}

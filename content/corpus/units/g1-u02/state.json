@@ -50,6 +50,69 @@
       "contentHash": "8964a98699d24edafa76bb136656807c292cf515f5073d371b7b9439ab326327",
       "note": "round 1: 10 verdict(s), 1 edit(s), 0 drop(s), 0 add(s)",
       "at": "2026-06-11T16:04:44.592Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "1b9bbbad15e331ec3de2682e73cfcbd6a739052a0ee5ea6353c8fa1a210c01c0",
+      "note": "gen ingest: 52 vocab + 191 grammar item(s); draft f5a2427d614c",
+      "at": "2026-06-14T05:03:53.075Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "2f440ed8a2a7e7a232bb0bc969649e4c174e143f7068c2f67569ec9c4492cff9",
+      "note": "gen ingest: 52 vocab + 186 grammar item(s); draft b0d66c2ef97d",
+      "at": "2026-06-14T05:06:50.146Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "067ed2d982182c4b3eb60c13cc2b27b3bcbc159a966b94700005857c15c80fc5",
+      "note": "gen ingest: 52 vocab + 186 grammar item(s); draft 091c4c569201",
+      "at": "2026-06-14T05:08:37.543Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "e52c8bc1b780ca66acdd95bc6cfa5f59535e265ab6f4a4a717930c5cd1881ced",
+      "note": "gen ingest: 52 vocab + 186 grammar item(s); draft 126bfb97ed23",
+      "at": "2026-06-14T05:16:22.596Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "70212a6b757375e02b01a7b1946bee8a50e5922523518a0515df69a2d9fa2b3d",
+      "note": "gen ingest: 52 vocab + 186 grammar item(s); draft 767dba021d1a",
+      "at": "2026-06-14T05:16:41.487Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "70212a6b757375e02b01a7b1946bee8a50e5922523518a0515df69a2d9fa2b3d",
+      "note": "verify round 1: 0 fix, 0 warn",
+      "at": "2026-06-14T05:17:34.671Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "70212a6b757375e02b01a7b1946bee8a50e5922523518a0515df69a2d9fa2b3d",
+      "note": "V-1..V-22 green (5 warn)",
+      "at": "2026-06-14T05:17:51.124Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "70212a6b757375e02b01a7b1946bee8a50e5922523518a0515df69a2d9fa2b3d",
+      "note": "round 1 doc: 120 open flag(s), 238 row(s) rendered (FULL)",
+      "at": "2026-06-14T05:17:51.167Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "70212a6b757375e02b01a7b1946bee8a50e5922523518a0515df69a2d9fa2b3d",
+      "note": "round 1: 120 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
+      "at": "2026-06-14T05:18:50.216Z"
     }
   ]
 }

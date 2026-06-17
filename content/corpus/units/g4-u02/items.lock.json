@@ -1,0 +1,235 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g4-u02",
+  "items": {
+    "8178804a2bea": "g4u02.gi.past-perfect.gf.001",
+    "bd4d12c73e01": "g4u02.gi.past-perfect.gf.002",
+    "e7d23857fabd": "g4u02.gi.past-perfect.gf.003",
+    "d8680d6bdfa5": "g4u02.gi.past-perfect.gf.004",
+    "2495b2977bc2": "g4u02.gi.past-perfect.gf.005",
+    "77022592be22": "g4u02.gi.past-perfect.gf.006",
+    "8a3d8718e95f": "g4u02.gi.past-perfect.gf.008",
+    "bf131d6d0df4": "g4u02.gi.past-perfect.gf.009",
+    "bc4406f1b99e": "g4u02.gi.past-perfect.gf.010",
+    "6bdfdb8f11bc": "g4u02.gi.past-perfect.gf.011",
+    "20e78f88fd9a": "g4u02.gi.past-perfect.gf.012",
+    "c5398c53d30c": "g4u02.gi.past-perfect.gf.013",
+    "f7b4cb8347c7": "g4u02.gi.past-perfect.gf.015",
+    "67bf35cb37b4": "g4u02.gi.past-perfect.gf.016",
+    "78970569b178": "g4u02.gi.past-perfect.gf.017",
+    "38e7cf23fdf2": "g4u02.gi.past-perfect.gf.018",
+    "485f064d340b": "g4u02.gi.past-perfect.mc.001",
+    "8a59aed87060": "g4u02.gi.past-perfect.mc.002",
+    "7d0ffd4f8721": "g4u02.gi.past-perfect.mc.003",
+    "1aeb0206812a": "g4u02.gi.past-perfect.mc.006",
+    "bd30c68d1ad4": "g4u02.gi.past-perfect.mc.007",
+    "cc1d03a79510": "g4u02.gi.past-perfect.mc.008",
+    "2d55de4ee8e6": "g4u02.gi.past-perfect.mc.009",
+    "16589dbc8448": "g4u02.gi.past-perfect.ec.001",
+    "4c449007321f": "g4u02.gi.past-perfect.ec.002",
+    "9a6b69f8caa6": "g4u02.gi.past-perfect.ec.003",
+    "13dde4ec5531": "g4u02.gi.past-perfect.ec.005",
+    "d28b3cf2a198": "g4u02.gi.past-perfect.ec.006",
+    "dfdae133183e": "g4u02.gi.past-perfect.ec.009",
+    "d5bff03a2b8a": "g4u02.gi.past-perfect.tf.003",
+    "59708fcbf284": "g4u02.gi.past-perfect.tf.004",
+    "025ccea4be30": "g4u02.gi.past-perfect.tr.001",
+    "16f23c0ab97f": "g4u02.gi.past-perfect.tr.002",
+    "16b2d86c3f1a": "g4u02.gi.past-perfect.tr.003",
+    "3a09b4bdfbd2": "g4u02.gi.past-perfect.tr.004",
+    "0127c9a4fa26": "g4u02.gi.past-perfect.tr.005",
+    "e42c628708b7": "g4u02.gi.past-perfect.sb.001",
+    "4273a3c30bdc": "g4u02.gi.past-perfect.sb.002",
+    "bf2f7efa2ede": "g4u02.gi.past-perfect.sb.003",
+    "0c6ef385edf5": "g4u02.gi.past-perfect.cp.001",
+    "4326b1068585": "g4u02.gi.past-perfect.cp.002",
+    "30e6137c9bd7": "g4u02.gi.past-perfect.mt.001",
+    "02e9b7e24a41": "g4u02.gi.past-perfect.mt.002",
+    "edfec8286e2e": "g4u02.gi.past-perfect.gf.019",
+    "e9f523527b65": "g4u02.gi.past-perfect.gf.020",
+    "a5e68c4ef920": "g4u02.gi.past-perfect.gf.024",
+    "962e7b1ed684": "g4u02.gi.past-perfect.mc.010",
+    "32fce18333d1": "g4u02.gi.past-perfect.ec.010",
+    "75973dc86d7d": "g4u02.gi.past-perfect.gf.025",
+    "28c3dfef7955": "g4u02.gi.past-perfect.tr.006",
+    "05efd4f4224d": "g4u02.gi.past-perfect.mc.011",
+    "0cd9eb921859": "g4u02.gi.past-perfect.ec.011",
+    "2e9e09a792f4": "g4u02.gi.past-perfect.gf.027",
+    "2aa2686fad79": "g4u02.gi.past-perfect.sb.004",
+    "09ba56d5c663": "g4u02.gi.past-perfect.gf.028",
+    "67c387258c37": "g4u02.gi.past-perfect.gf.030",
+    "d2e4f07883ea": "g4u02.gi.past-perfect.gf.031",
+    "ada484c02f59": "g4u02.gi.past-perfect.mp.002",
+    "60f847258b48": "g4u02.gi.past-perfect.gs.003",
+    "cd16c1ec2f2f": "g4u02.gi.past-perfect.mc.014",
+    "29cb5bef1ca7": "g4u02.gi.past-perfect.tf.008",
+    "8eee8d899226": "g4u02.gi.past-perfect.tf.009",
+    "d09f1ee64654": "g4u02.gi.past-perfect.gf.034",
+    "eca3eae55032": "g4u02.gi.past-perfect.gf.035",
+    "c0426291f2f6": "g4u02.gi.past-perfect.gf.036",
+    "4abe2a0df0d4": "g4u02.gi.past-perfect.cp.004",
+    "4bca476eaafd": "g4u02.gi.past-perfect.gf.037",
+    "9f8f1d4c3593": "g4u02.gi.past-perfect.tf.010",
+    "508f218aeb7e": "g4u02.gi.past-perfect.gf.038",
+    "15071afb9c0a": "g4u02.gi.past-perfect.gf.039",
+    "d4e59b68ef74": "g4u02.gi.past-perfect.gf.040",
+    "811390fd5d94": "g4u02.gi.past-perfect.mc.015",
+    "645b105fb107": "g4u02.gi.past-perfect.ec.013",
+    "0863a772ce72": "g4u02.gi.past-perfect.ec.014",
+    "6f0172f2c1ac": "g4u02.gi.past-perfect.ec.015",
+    "59f0cc08101b": "g4u02.gi.past-perfect.tf.011",
+    "4d3b0de92496": "g4u02.gi.past-perfect.gs.005",
+    "1c0b7e6a2c0f": "g4u02.gi.past-perfect.qf.003",
+    "17cef8ec6bfc": "g4u02.gi.past-perfect.qf.004",
+    "64da38ee9c74": "g4u02.gi.past-perfect.tf.012",
+    "bbff2ccefc15": "g4u02.gi.past-perfect.mc.016",
+    "700bed86db9e": "g4u02.gi.past-perfect.ec.016"
+  },
+  "tombstones": [
+    {
+      "id": "g4u02.gi.past-perfect.mc.004",
+      "key": "7539a53a4d4b",
+      "removedWith": "9fd67c410da0"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.mp.001",
+      "key": "e3ad3ce22e45",
+      "removedWith": "9fd67c410da0"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gs.001",
+      "key": "1efb89db62e1",
+      "removedWith": "9fd67c410da0"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gs.002",
+      "key": "ff5d9399bded",
+      "removedWith": "9fd67c410da0"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gf.007",
+      "key": "cb54bfbe2b01",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gf.014",
+      "key": "e0470a2b2fd9",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.tf.001",
+      "key": "6b2209adfee0",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.tf.002",
+      "key": "f26336f575df",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gf.021",
+      "key": "48827f7326f5",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gf.022",
+      "key": "346bf1fba7ea",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gf.023",
+      "key": "e39060e401c8",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.cp.003",
+      "key": "51c56775db0c",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gf.026",
+      "key": "102343c95c56",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.tf.007",
+      "key": "f8f5cd77d06a",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gf.029",
+      "key": "689519f4d1e5",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.mc.013",
+      "key": "3b88a0d3bcdd",
+      "removedWith": "daf45fec957a"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.mc.005",
+      "key": "c44aa75fb081",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.ec.004",
+      "key": "992bb4a608c2",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.ec.007",
+      "key": "bb19ddef99aa",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.ec.008",
+      "key": "fc99fc7b7cb4",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.tf.005",
+      "key": "871ebc5e076d",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.qf.001",
+      "key": "0172e1cfe86d",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.qf.002",
+      "key": "6eb9c1e47fbe",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.tf.006",
+      "key": "fbf64880766d",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.mc.012",
+      "key": "b693bcd040ee",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.ec.012",
+      "key": "92146cc0823f",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gs.004",
+      "key": "2210aa1d8d1b",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gf.032",
+      "key": "0a994d8ec59f",
+      "removedWith": "0682e0605cad"
+    },
+    {
+      "id": "g4u02.gi.past-perfect.gf.033",
+      "key": "2e462e1c704e",
+      "removedWith": "0682e0605cad"
+    }
+  ]
+}

@@ -1,0 +1,1042 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g3-u12",
+  "briefBank": "6732fa924d08",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Many homes ___ (destroy) in the flood.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were destroyed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um damals (im Hochwasser) und um mehrere Häuser: welche Form von be und welche 3. Form?",
+      "hintEn": null,
+      "explainDe": "Vergangenheit und Plural (homes): du nimmst were + Mittelwort der Vergangenheit, also were destroyed.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-gf-022",
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#disasters",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Eight people ___ (injure) in the avalanche.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were injured",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mehrere Personen, und es ist schon passiert: was oder were?",
+      "hintEn": null,
+      "explainDe": "Plural-Subjekt (eight people) in der Vergangenheit nimmt were + Leideform: were injured.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 12.txt#ex9",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The ski lift ___ (damage) by the avalanche.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was damaged",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Lift (Singular), und es ist passiert. Vergiss die Form von be nicht.",
+      "hintEn": null,
+      "explainDe": "Singular in der Vergangenheit: was + 3. Form, also was damaged.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 12.txt#ex9",
+      "note": "by granted; bank entry 'damage'/'avalanche'",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Hundreds of people ___ (rescue) and ___ (evacuate) by air.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "were rescued | were evacuated",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Lücken: Plural in der Vergangenheit, also dieselbe Form von be plus 3. Form.",
+      "hintEn": null,
+      "explainDe": "Hundreds of people ist Plural und es ist vorbei: zweimal were + die 3. Form (Mittelwort).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-gf-024",
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#australia",
+      "note": "rescued + by granted",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The smoke detector ___ (check) every week, and the batteries ___ (change) every year.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "is checked | are changed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beides passiert regelmäßig (Gegenwart). Achte darauf: detector ist Einzahl, batteries ist Mehrzahl.",
+      "hintEn": null,
+      "explainDe": "Gegenwartspassiv: Singular nimmt is (is checked), Plural nimmt are (are changed).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#fire-safety",
+      "note": "checked granted; batteries is in g3-u09 'change them' context — verify; smoke detector in bank",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Today the village ___ (hit) by a mudslide, and the road ___ (block).",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "is hit | is blocked",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beides passiert jetzt (Gegenwart) und beide Subjekte sind Einzahl.",
+      "hintEn": null,
+      "explainDe": "Gegenwartspassiv mit Singular: is + 3. Form. So heißt es is hit und is blocked.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 12.txt#ex7",
+      "note": "hit, blocked, by granted; mudslide in bank",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "In the forest fire last summer, 40 homes ___ (destroy). Now new houses ___ (build) there every year.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "were destroyed | are built",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst die Vergangenheit (letztes Jahr), dann etwas, das jetzt jedes Jahr passiert. Plural-Subjekte!",
+      "hintEn": null,
+      "explainDe": "Zuerst Vergangenheit: were destroyed. Dann jedes Jahr (Gegenwart): are built. Beide Subjekte sind Plural.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-gf-025",
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#disasters",
+      "note": "built granted; forest fire + homes in bank",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Coffee ___ (grow) in Brazil, but these cars ___ (make) in Germany.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "is grown | are made",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beides ist allgemein wahr (Gegenwart). Coffee ist Einzahl, cars ist Mehrzahl.",
+      "hintEn": null,
+      "explainDe": "Gegenwartspassiv: Singular is grown, Plural are made. Die Form von be richtet sich nach dem Subjekt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-gf-021",
+      "sbRef": null,
+      "note": "grown, made granted; coffee, cars, Germany granted",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "In welchem Satz steht be + die 3. Form?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The town was hit by a flood.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "A flood hit the town.",
+        "The flood was very dangerous.",
+        "People left the town quickly."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Im Passiv steht das Subjekt + eine Form von be + die 3. Form. Wer es tut, kommt oft mit by.",
+      "hintEn": null,
+      "explainDe": "The town was hit by a flood hat be (was) + 3. Form (hit) — das ist Passiv. Die anderen Sätze sind aktiv.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "A flood hit the town.",
+          "The flood was very dangerous.",
+          "People left the town quickly.",
+          "The town had a big flood."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u12-passive-voice-mc-020",
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#disasters",
+      "note": "hit, by granted; flood in bank",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig — was/were + die 3. Form?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The houses were destroyed by the earthquake.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The houses was destroyed by the earthquake.",
+        "The houses were destroy by the earthquake.",
+        "The houses destroyed by the earthquake."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Plural-Subjekt, Vergangenheit: welche Form von be? Und steht danach die 3. Form?",
+      "hintEn": null,
+      "explainDe": "Houses ist Plural, also were; dann die 3. Form destroyed. Die anderen haben falsche Übereinstimmung, eine Grundform statt 3. Form oder gar kein be.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The houses was destroyed by the earthquake.",
+          "The houses were destroy by the earthquake.",
+          "The houses destroyed by the earthquake.",
+          "The houses is destroyed by the earthquake."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u12-passive-voice-mc-021",
+      "sbRef": "g3/wb/More 3 WB Unit 12.txt#ex7",
+      "note": "by granted; earthquake in bank; distractors cover all three error classes",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Form passt? 'Smoke from the fires ___ in many countries.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was seen",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "were seen",
+        "was see",
+        "is seen"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Smoke ist Einzahl und es geht um damals (von den Bränden). Welche Form von be und welche 3. Form?",
+      "hintEn": null,
+      "explainDe": "Smoke ist Singular, Vergangenheit: was + 3. Form (seen). were passt nicht zum Singular, was see hat die Grundform, is seen ist Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "were seen",
+          "was see",
+          "is seen",
+          "are seen"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u12-passive-voice-mc-022",
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#australia",
+      "note": "smoke, seen granted",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz mit be + der 3. Form ist richtig für einen Faktentext über Vulkane?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Huge rocks are thrown into the sky.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Huge rocks is thrown into the sky.",
+        "Huge rocks are throw into the sky.",
+        "Huge rocks thrown into the sky."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Rocks ist Plural und es ist allgemein gültig (Gegenwart). Achte auf be + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Rocks ist Plural, Gegenwart: are + 3. Form (thrown). Die Ablenker haben falsche Übereinstimmung, die Grundform oder kein be.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Huge rocks is thrown into the sky.",
+          "Huge rocks are throw into the sky.",
+          "Huge rocks thrown into the sky.",
+          "Huge rocks was thrown into the sky."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#volcanoes",
+      "note": "thrown, huge granted",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: The city destroyed by an earthquake.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The city was destroyed by an earthquake.",
+          "tier": "full"
+        },
+        {
+          "text": "was destroyed",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Im Passiv fehlt hier eine Form von be vor der 3. Form.",
+      "hintEn": null,
+      "explainDe": "Ohne be ist es kein Satz. Du brauchst was destroyed: The city was destroyed by an earthquake.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#disasters",
+      "note": "missing-be error class; by, destroyed granted",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: The shelter was build in one day.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The shelter was built in one day.",
+          "tier": "full"
+        },
+        {
+          "text": "was built",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach was darf nicht die Grundform stehen, sondern die 3. Form.",
+      "hintEn": null,
+      "explainDe": "build ist die Grundform; im Passiv brauchst du die 3. Form built: The shelter was built in one day.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-gf-022",
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#castaway",
+      "note": "be+base error class; built granted; shelter in bank; strict single-token fix",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: The buildings was damaged by the flood.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The buildings were damaged by the flood.",
+          "tier": "full"
+        },
+        {
+          "text": "were damaged",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "buildings ist Mehrzahl. Passt was dazu?",
+      "hintEn": null,
+      "explainDe": "buildings ist Plural, also brauchst du were statt was: The buildings were damaged by the flood.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 12.txt#ex7",
+      "note": "wrong-agreement error class; by, damaged granted; strict",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: Haiti was hit from a terrible earthquake.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Haiti was hit by a terrible earthquake.",
+          "tier": "full"
+        },
+        {
+          "text": "by",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wer oder was die Handlung macht, kommt im Passiv mit by, nicht mit from.",
+      "hintEn": null,
+      "explainDe": "Den Handelnden nennst du mit by: Haiti was hit by a terrible earthquake. from ist hier falsch.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#haiti",
+      "note": "from-instead-of-by error class; hit, by, terrible granted; strict single-token fix",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: These songs is listened to by millions of people.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "These songs are listened to by millions of people.",
+          "tier": "full"
+        },
+        {
+          "text": "are listened",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "songs ist Mehrzahl und es ist allgemein wahr (Gegenwart). Welche Form von be?",
+      "hintEn": null,
+      "explainDe": "songs ist Plural, Gegenwart: are statt is. So heißt es These songs are listened to by millions of people.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-ec-022",
+      "sbRef": null,
+      "note": "wrong-agreement; listened granted; by, millions granted; strict",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib den Satz mit be + der 3. Form um: 'They clean the escape route every morning.' → The escape route ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is cleaned every morning",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Objekt (the escape route) wird zum Subjekt. Es ist Einzahl und passiert jeden Morgen.",
+      "hintEn": null,
+      "explainDe": "Gegenwartspassiv mit Singular: is + 3. Form, also is cleaned every morning.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-tf-020",
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#fire-safety",
+      "note": "cleaned granted; escape route in bank",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib den Satz mit be + der 3. Form um: 'A hurricane destroyed the village.' → The village ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was destroyed by a hurricane",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Objekt wird Subjekt; der Handelnde (a hurricane) kommt mit by. Es ist Vergangenheit, Einzahl.",
+      "hintEn": null,
+      "explainDe": "Vergangenheitspassiv mit Singular: was destroyed, und der Verursacher mit by a hurricane.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-tf-021",
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#disasters",
+      "note": "destroyed, by granted; hurricane in bank",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreib beide Sätze mit be + der 3. Form um: 'People speak English in many countries. They built the school in 1965.' → English ___. The school ___.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "is spoken in many countries | was built in 1965",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst Gegenwart (allgemein), dann Vergangenheit (1965). Beide Subjekte sind Einzahl.",
+      "hintEn": null,
+      "explainDe": "Gegenwart: is spoken. Vergangenheit: was built. Bei Singular nimmst du is bzw. was + 3. Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-tf-003",
+      "sbRef": null,
+      "note": "spoken, built granted",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bilde eine Ja/Nein-Frage zu diesem Satz: 'The town was evacuated.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Was the town evacuated?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für die Frage stellst du die Form von be nach vorne.",
+      "hintEn": null,
+      "explainDe": "Die Frage bildest du, indem was an den Anfang rückt: Was the town evacuated?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#australia",
+      "note": "evacuated granted",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bilde eine Wann-Frage zu diesem Satz: 'The school was built in 1965.' (frage nach dem Jahr)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When was the school built?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit When, dann die Form von be, dann das Subjekt und die 3. Form.",
+      "hintEn": null,
+      "explainDe": "When + was + Subjekt + 3. Form: When was the school built?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "built granted",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "the / village / was / by / a / mudslide / hit",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The village was hit by a mudslide.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt zuerst, dann was + 3. Form, dann der Verursacher mit by.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge im Passiv: Subjekt + was + 3. Form + by + Verursacher. So heißt es The village was hit by a mudslide.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "is",
+          "were",
+          "from",
+          "was"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u12-passive-voice-sb-020",
+      "sbRef": "g3/wb/More 3 WB Unit 12.txt#ex1",
+      "note": "hit, by granted; mudslide in bank",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "were / all / the / shops / closed / day / for / the",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "All the shops were closed for the day.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "shops ist Mehrzahl, Vergangenheit: welche Form von be steht vor der 3. Form?",
+      "hintEn": null,
+      "explainDe": "Plural in der Vergangenheit: were closed. So lautet der Satz All the shops were closed for the day.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was",
+          "is",
+          "by",
+          "were"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u12-passive-voice-sb-021",
+      "sbRef": "g3/wb/More 3 WB Unit 12.txt#ex7",
+      "note": "closed granted",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Hunderte Menschen wurden gerettet.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Hundreds of people were rescued.",
+          "tier": "full"
+        },
+        {
+          "text": "Hundreds of people were saved.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mehrere Menschen, Vergangenheit: were + 3. Form.",
+      "hintEn": null,
+      "explainDe": "wurden gerettet ist Passiv in der Vergangenheit: were + die 3. Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-tr-020",
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#australia",
+      "note": "rescued, saved granted",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Die Stadt wurde durch ein Erdbeben zerstört.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The city was destroyed by an earthquake.",
+          "tier": "full"
+        },
+        {
+          "text": "The town was destroyed by an earthquake.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vergangenheit, Einzahl, und der Verursacher (ein Erdbeben) kommt mit by.",
+      "hintEn": null,
+      "explainDe": "wurde zerstört = was destroyed; durch ein Erdbeben = by an earthquake.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-tr-021",
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#disasters",
+      "note": "destroyed, by granted; earthquake in bank",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du liest einen Faktentext über deine Stadt. Welcher Satz passt zum Stil eines Faktentexts?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The bridge was built in 1820.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The bridge is build in 1820.",
+        "The bridge were built in 1820.",
+        "The bridge built in 1820."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Faktentext nennt selten, wer es getan hat: Passiv in der Vergangenheit, Einzahl.",
+      "hintEn": null,
+      "explainDe": "Richtig ist was built (Singular, Vergangenheit). Die Ablenker haben die Grundform, die falsche Übereinstimmung oder kein be.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The bridge is build in 1820.",
+          "The bridge were built in 1820.",
+          "The bridge built in 1820.",
+          "The bridge was build in 1820."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u12-passive-voice-cp-020",
+      "sbRef": null,
+      "note": "built granted; bridge in g3-u06 bank",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "matching",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Verbinde jeden Satz mit dem passenden Satz mit be + der 3. Form.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "An earthquake destroyed the city.",
+          "right": "The city was destroyed by an earthquake."
+        },
+        {
+          "left": "A flood hit the town.",
+          "right": "The town was hit by a flood."
+        },
+        {
+          "left": "People speak English here.",
+          "right": "English is spoken here."
+        },
+        {
+          "left": "They evacuate the village every year.",
+          "right": "The village is evacuated every year."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Im Passivsatz wird das Objekt zum Subjekt, und der Handelnde kommt (wenn überhaupt) mit by.",
+      "hintEn": null,
+      "explainDe": "Vergangenheit bleibt Vergangenheit (was), Gegenwart bleibt Gegenwart (is). Das Objekt des Aktivsatzes steht im Passivsatz vorne.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u12-passive-voice-mt-020",
+      "sbRef": "g3/sb/More 3 SB Unit 12.txt#disasters",
+      "note": "destroyed, hit, spoken, evacuated, by granted; unique right-sides",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u12.s.passive-voice",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere die Sätze: richtig (✓) oder falsch (✗) gebaut?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "The homes were destroyed by the flood.",
+            "English is spoken in many countries.",
+            "The town was hit by a hurricane."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "The homes was destroyed by the flood.",
+            "English is speak in many countries.",
+            "The town hit by a hurricane."
+          ]
+        }
+      ],
+      "hintDe": "Prüfe bei jedem Satz: passt die Form von be zum Subjekt, steht danach die 3. Form, und fehlt nichts?",
+      "hintEn": null,
+      "explainDe": "Richtig sind Sätze mit passender be-Form + 3. Form. Falsch sind falsche Übereinstimmung (was statt were), die Grundform (speak statt spoken) oder ein fehlendes be.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 12.txt#ex5",
+      "note": "destroyed, spoken, hit, by granted; each group 3 members",
+      "blanks": 0
+    }
+  ]
+}

@@ -1,0 +1,511 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g3-u09",
+  "round": 1,
+  "itemsHash": "154d2fd32a41",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g3u09.w.it-depends",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.it-depends",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.journalist",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.journalist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.strict",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.strict",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-be-allowed-to-do-sth",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-be-allowed-to-do-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-buy-your-own-clothes",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-buy-your-own-clothes",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-come-home-after-ten",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-come-home-after-ten",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-dye-your-hair",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-dye-your-hair",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-get-a-nose-stud",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-get-a-nose-stud",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-get-a-tattoo",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-get-a-tattoo",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-go-to-the-disco",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-go-to-the-disco",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-invite-sb-over",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-invite-sb-over",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-play-video-games-all-day",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-play-video-games-all-day",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-pray",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-pray",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-ride-your-bike-without-a-helmet",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-ride-your-bike-without-a-helmet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-scroll-through-your-phone",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-scroll-through-your-phone",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-turn-your-music-up-loud",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-turn-your-music-up-loud",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-watch-tv-after-10-o-clock",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-watch-tv-after-10-o-clock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.to-wear-earrings",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.to-wear-earrings",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.w.unbelievable",
+      "kind": "new-gloss",
+      "itemId": "g3u09.w.unbelievable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.gi.be-allowed-to.gf.008",
+      "kind": "new-gloss",
+      "itemId": "g3u09.gi.be-allowed-to.gf.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.gi.be-allowed-to.mc.001",
+      "kind": "new-gloss",
+      "itemId": "g3u09.gi.be-allowed-to.mc.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u09.gi.be-allowed-to.mc.003",
+      "kind": "new-gloss",
+      "itemId": "g3u09.gi.be-allowed-to.mc.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.community",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.community",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.conservative",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.conservative",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.for-a-change",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.for-a-change",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.it-depends",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.it-depends",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.it-s-a-pity",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.it-s-a-pity",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.journalist",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.journalist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.litter-picking",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.litter-picking",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.modern-technology",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.modern-technology",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.never-mind",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.never-mind",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.plenty",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.plenty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.rude",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.rude",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.strict",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.strict",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-adopt",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-adopt",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-be-allowed-to-do-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-be-allowed-to-do-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-buy-your-own-clothes",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-buy-your-own-clothes",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-come-home-after-ten",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-come-home-after-ten",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-dye-your-hair",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-dye-your-hair",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-eat-too-many-sweets",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-eat-too-many-sweets",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-freeze",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-freeze",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-get-a-nose-stud",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-get-a-nose-stud",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-get-a-tattoo",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-get-a-tattoo",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-go-roller-skating-without-pads",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-go-roller-skating-without-pads",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-go-to-the-disco",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-go-to-the-disco",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-hang-out-in-shopping-centres",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-hang-out-in-shopping-centres",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-have-a-party-at-home",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-have-a-party-at-home",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-invite-sb-over",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-invite-sb-over",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-lend",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-lend",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-play-video-games-all-day",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-play-video-games-all-day",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-pray",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-pray",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-punish",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-punish",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-remind-sb",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-remind-sb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-ride-your-bike-without-a-helmet",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-ride-your-bike-without-a-helmet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-scroll-through-your-phone",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-scroll-through-your-phone",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-sort-out",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-sort-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-stay-up",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-stay-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-turn-your-music-up-loud",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-turn-your-music-up-loud",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-watch-tv-after-10-o-clock",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-watch-tv-after-10-o-clock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.to-wear-earrings",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.to-wear-earrings",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.w.unbelievable",
+      "kind": "translation-audit",
+      "itemId": "g3u09.w.unbelievable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.gi.be-allowed-to.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u09.gi.be-allowed-to.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.gi.be-allowed-to.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u09.gi.be-allowed-to.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.gi.be-allowed-to.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u09.gi.be-allowed-to.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.gi.be-allowed-to.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g3u09.gi.be-allowed-to.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.gi.let.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u09.gi.let.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.gi.let.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u09.gi.let.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.gi.let.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u09.gi.let.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u09.gi.let.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g3u09.gi.let.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g3u09.gi.let.cp.002#2bd4cd",
+      "kind": "validator-warn",
+      "itemId": "g3u09.gi.let.cp.002",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 132 rows, 2 structures (be (not) allowed to + base; let + person + base, no \"to\"). Answers lens verified BOTH CLEAN: be-allowed-to has correct be-agreement + base verb after \"allowed to\" (no -ing/past); let has NO \"to\" after let+person + correct don't/doesn't negatives; all distractors (missing-be, let+to, lets-not, -ing) genuinely wrong. Translation CLEAN (dürfen→be allowed to, lassen→let; \"it depends\"→\"Es kommt darauf an\"). Fixed: register 1 (\"be-Form\" in mc.005 prompt → \"Form von be\"); level-gloss added pedagogical glosses for granted A2 words (face/hours/corridor/dictionary/test/charge/tours). ~115 audited grants (permission base verbs + theme nouns + decoys). Reworded 8 long phrasal-verb def-leaks off their headword tokens (to-dye-your-hair etc.); dropped 2 too-short anagrams (is/to); relabeled group-sorts to ✓/✗; fixed sb chip budgets + an it-depends lang-evidence quirk. 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 132,
+    "fullRows": 132,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

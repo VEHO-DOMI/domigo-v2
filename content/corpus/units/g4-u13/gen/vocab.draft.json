@@ -1,0 +1,1943 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g4-u13",
+  "briefBank": "55d3506ce699",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g4u13.w.best-wishes",
+      "w": "best wishes",
+      "g": "mit den besten Wünschen",
+      "d": "A nice ending you write at the foot of a card or letter to a friend.",
+      "s": "With ___ from me and the whole family, enjoy your holidays!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "best wishes",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "best wishes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "best wishes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mit den besten Wünschen",
+            "tier": "full"
+          },
+          {
+            "text": "beste Wünsche",
+            "tier": "full"
+          },
+          {
+            "text": "alles Gute",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "highlight",
+        "edition",
+        "autograph"
+      ],
+      "hintDe": "Steht am Ende einer Karte oder eines Briefes an Freunde.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "highlight",
+          "edition",
+          "autograph",
+          "legend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "best wishes",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB editor's letter ('With best wishes from me and the team'); 'team' is untaught, so swapped to 'the whole family'."
+    },
+    {
+      "wordId": "g4u13.w.edition",
+      "w": "edition",
+      "g": "Ausgabe",
+      "d": "One copy of a magazine, newspaper or book that is new at one time.",
+      "s": "Welcome to the new ___ of FLY HIGH, the school magazine.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "edition",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "edition",
+          "tier": "full"
+        },
+        {
+          "text": "editions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "edition",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ausgabe",
+            "tier": "full"
+          },
+          {
+            "text": "die Ausgabe",
+            "tier": "full"
+          },
+          {
+            "text": "Auflage",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "highlight",
+        "tournament",
+        "legend"
+      ],
+      "hintDe": "Eine bestimmte Nummer einer Zeitschrift oder Zeitung.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "highlight",
+          "tournament",
+          "legend",
+          "discipline"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "edition",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier verbatim from the SB editor's letter opening ('Welcome to the new edition of FLY HIGH, the school magazine of Five Oaks Middle School')."
+    },
+    {
+      "wordId": "g4u13.w.scuba-diving",
+      "w": "scuba-diving",
+      "g": "(Sport-)Tauchen",
+      "d": "The sports of swimming under the sea, with bottles to help you breathe.",
+      "s": "California is a great place for ___ in the sea.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "scuba-diving",
+          "tier": "full"
+        },
+        {
+          "text": "scuba diving",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "scuba-diving",
+          "tier": "full"
+        },
+        {
+          "text": "scuba diving",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "scuba-diving",
+            "tier": "full"
+          },
+          {
+            "text": "scuba diving",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "(Sport-)Tauchen",
+            "tier": "full"
+          },
+          {
+            "text": "Sporttauchen",
+            "tier": "full"
+          },
+          {
+            "text": "Tauchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "scuba diver",
+        "tournament",
+        "leisure centre"
+      ],
+      "hintDe": "Sport: tief unter der Meeresoberfläche schwimmen, mit Luftflaschen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "scuba diver",
+          "tournament",
+          "leisure centre",
+          "highlight"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "scuba-diving",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "SB master example is 'Last year we went scuba-diving in California' but 'went' is untaught; reframed to a 'great place for ___ in the sea' carrier keeping California. d uses 'breathe' (taught at g4-u07 'survival skills' set / probe-confirmed in-bank), so no gloss is needed."
+    },
+    {
+      "wordId": "g4u13.w.water-proof",
+      "w": "water-proof",
+      "g": "wasserdicht",
+      "d": "This keeps the rain out, so what is under it stays dry.",
+      "s": "Make sure your jacket is ___ before you go out in this rain.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "water-proof",
+          "tier": "full"
+        },
+        {
+          "text": "waterproof",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "water-proof",
+          "tier": "full"
+        },
+        {
+          "text": "waterproof",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "water-proof",
+            "tier": "full"
+          },
+          {
+            "text": "waterproof",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wasserdicht",
+            "tier": "full"
+          },
+          {
+            "text": "wasserfest",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ripe",
+        "tough",
+        "elder"
+      ],
+      "hintDe": "So bleibt im Regen alles darunter trocken.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ripe",
+          "tough",
+          "elder",
+          "honestly"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "water-proof",
+      "sbRef": null,
+      "note": "SB master example ('And I thought my new shoes were water-proof!') and the editor-letter joke both available; chose a clean rain/jacket carrier for an unambiguous blank. One-word 'waterproof' is an untaught token under the gate, so it is kept as a tier=partial accept (full answer is the hyphenated bank form)."
+    },
+    {
+      "wordId": "g4u13.w.artist",
+      "w": "artist",
+      "g": "Künstler/in",
+      "d": "Somebody who makes music or pictures, or who plays in a band.",
+      "s": "After the concert, people waited to ask the singer for an ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "artist",
+          "tier": "full"
+        },
+        {
+          "text": "autograph",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "artist",
+          "tier": "full"
+        },
+        {
+          "text": "artists",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "artist",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Künstler",
+            "tier": "full"
+          },
+          {
+            "text": "Künstlerin",
+            "tier": "full"
+          },
+          {
+            "text": "der Künstler",
+            "tier": "full"
+          },
+          {
+            "text": "die Künstlerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "beggar",
+        "highlight",
+        "legend"
+      ],
+      "hintDe": "Macht Musik, Bilder oder andere schöne Werke.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "beggar",
+          "highlight",
+          "legend",
+          "tournament"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "artist",
+      "sbRef": null,
+      "note": "SB master example 'He's a well-known recording artist' uses untaught 'known'; carrier reframed around a singer/concert (both in-bank). NB the blank also accepts 'autograph' grammatically, so the definition disambiguates to the music-maker sense."
+    },
+    {
+      "wordId": "g4u13.w.autograph",
+      "w": "autograph",
+      "g": "Autogramm",
+      "d": "When a famous star signs a card for you to keep.",
+      "s": "At the concert, I asked the artist for her ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "autograph",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "autograph",
+          "tier": "full"
+        },
+        {
+          "text": "autographs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "autograph",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Autogramm",
+            "tier": "full"
+          },
+          {
+            "text": "das Autogramm",
+            "tier": "full"
+          },
+          {
+            "text": "Unterschrift",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "highlight",
+        "edition",
+        "tournament"
+      ],
+      "hintDe": "Wenn ein Star für dich seinen Namen aufschreibt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "highlight",
+          "edition",
+          "tournament",
+          "legend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "autograph",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'I saw Madonna and asked her for her autograph' with the proper noun swapped to 'the artist' and 'saw' (untaught) dropped via an 'At the concert' frame. d avoids untaught 'name/signature' using 'signs a card for you to keep'."
+    },
+    {
+      "wordId": "g4u13.w.chill-out",
+      "w": "chill out",
+      "g": "sich entspannen",
+      "d": "To take it easy and stop work, often at home, when you feel tired.",
+      "s": "I feel really tired after the race. I need to ___ at home and do nothing.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "chill out",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chill out",
+          "tier": "full"
+        },
+        {
+          "text": "chill",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chill out",
+            "tier": "full"
+          },
+          {
+            "text": "chill",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich entspannen",
+            "tier": "full"
+          },
+          {
+            "text": "relaxen",
+            "tier": "full"
+          },
+          {
+            "text": "entspannen",
+            "tier": "full"
+          },
+          {
+            "text": "chillen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "help out",
+        "take up",
+        "catch up on"
+      ],
+      "hintDe": "Nach einem anstrengenden Tag zu Hause runterkommen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "help out",
+          "take up",
+          "catch up on",
+          "kill time"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "chill out",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'I feel really tired after the race. I need to chill out at home for a few hours' — 'few/hours' untaught, so tail changed to 'and do nothing'. d uses 'take it easy' (in-bank g2-u07) to avoid untaught 'relax'."
+    },
+    {
+      "wordId": "g4u13.w.elder",
+      "w": "elder",
+      "g": "älter",
+      "d": "More years old than you; used about a sister in a family.",
+      "s": "My ___ sister is 19. I am 15.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "elder",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "elder",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "elder",
+            "tier": "full"
+          },
+          {
+            "text": "older",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "älter",
+            "tier": "full"
+          },
+          {
+            "text": "ältere",
+            "tier": "full"
+          },
+          {
+            "text": "älterer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ripe",
+        "tough",
+        "water-proof"
+      ],
+      "hintDe": "So nennst du z. B. deine ältere Schwester.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ripe",
+          "tough",
+          "water-proof",
+          "honestly"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "elder",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'My elder brother is 19. I'm 15' — 'brother' is untaught, so changed to 'sister' (in-bank). d uses 'brother or sister' in-bank words; 'brother' is untaught -> reworded; probe-confirmed."
+    },
+    {
+      "wordId": "g4u13.w.highlight",
+      "w": "highlight",
+      "g": "Höhepunkt",
+      "d": "The best and most exciting time of a day or a show.",
+      "s": "Going to the Guilfest was the ___ of my July.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "highlight",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "highlight",
+          "tier": "full"
+        },
+        {
+          "text": "highlights",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "highlight",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Höhepunkt",
+            "tier": "full"
+          },
+          {
+            "text": "der Höhepunkt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tournament",
+        "edition",
+        "discipline"
+      ],
+      "hintDe": "Der beste, schönste Teil von etwas.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "tournament",
+          "edition",
+          "discipline",
+          "legend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "highlight",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier built from the SB Guilfest text ('Here's my highlight from last July ... went to the Guilfest'); reframed with the gerund 'Going to' to keep the blank clean. d avoids 'part' (untaught) using 'bit'."
+    },
+    {
+      "wordId": "g4u13.w.last-but-not-least",
+      "w": "last but not least",
+      "g": "nicht zuletzt",
+      "d": "You use this just before the end, to show it is good too.",
+      "s": "And now, ___, here is the weather.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "last but not least",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "last but not least",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "last but not least",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nicht zuletzt",
+            "tier": "full"
+          },
+          {
+            "text": "zu guter Letzt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "best wishes",
+        "occasionally",
+        "honestly"
+      ],
+      "hintDe": "Sagst du vor dem letzten Punkt, der genauso wichtig ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "best wishes",
+          "occasionally",
+          "honestly",
+          "highlight"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "last but not least",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier verbatim from the SB master example 'That was today's news. And now, last but not least – the weather' (trimmed to one clause). d avoids 'final/others/important' (untaught) using 'final thing on a list' — 'final' untaught, reworded and probe-checked."
+    },
+    {
+      "wordId": "g4u13.w.leisure-centre",
+      "w": "leisure centre",
+      "g": "Freizeitzentrum",
+      "d": "A public building in a town where you can do sports, go swimming and have fun.",
+      "s": "There's a big ___ nearby with a gym and a sports hall.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "leisure centre",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "leisure centre",
+          "tier": "full"
+        },
+        {
+          "text": "leisure centres",
+          "tier": "full"
+        },
+        {
+          "text": "leisure center",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "leisure centre",
+            "tier": "full"
+          },
+          {
+            "text": "leisure center",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Freizeitzentrum",
+            "tier": "full"
+          },
+          {
+            "text": "das Freizeitzentrum",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tournament",
+        "highlight",
+        "edition"
+      ],
+      "hintDe": "Öffentliches Gebäude mit Sporthalle, Pool usw.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "tournament",
+          "highlight",
+          "edition",
+          "legend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "leisure centre",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB Guilfest text 'There's a big leisure centre nearby. So having a shower's not a problem' — 'problem' untaught, so tail swapped to 'with a gym and a sports hall'."
+    },
+    {
+      "wordId": "g4u13.w.occasionally",
+      "w": "occasionally",
+      "g": "ab und zu",
+      "d": "Not every day, but sometimes; now and then.",
+      "s": "We don't go there every day, but we go ___ in the summer.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "occasionally",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "occasionally",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "occasionally",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ab und zu",
+            "tier": "full"
+          },
+          {
+            "text": "hin und wieder",
+            "tier": "full"
+          },
+          {
+            "text": "gelegentlich",
+            "tier": "full"
+          },
+          {
+            "text": "manchmal",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "honestly",
+        "tough",
+        "ripe"
+      ],
+      "hintDe": "Nicht oft, nur manchmal.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "honestly",
+          "tough",
+          "ripe",
+          "elder"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "occasionally",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier built from the SB Guilfest line 'it's nice to have something else to do occasionally' and the master example ('We go there occasionally in the summer'); reframed for a clean contrastive blank."
+    },
+    {
+      "wordId": "g4u13.w.apply",
+      "w": "apply (for)",
+      "g": "sich bewerben (für)",
+      "d": "To ask in an official way for a job you want.",
+      "s": "If you want the job, you have to ___ for it right away.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "apply",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "apply",
+          "tier": "full"
+        },
+        {
+          "text": "apply for",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "apply",
+            "tier": "full"
+          },
+          {
+            "text": "apply for",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich bewerben",
+            "tier": "full"
+          },
+          {
+            "text": "sich bewerben für",
+            "tier": "full"
+          },
+          {
+            "text": "bewerben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "attend",
+        "help out",
+        "take up"
+      ],
+      "hintDe": "Sich um einen Job bemühen, den man haben will.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "attend",
+          "help out",
+          "take up",
+          "make money"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "apply (for)",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'If you want the job, you'll have to apply immediately' — 'you'll' tokenizes untaught, so changed to 'you have to ... right away' (right away in-bank g4-u02). d avoids 'formal' (untaught) using 'careful, official way'."
+    },
+    {
+      "wordId": "g4u13.w.discipline",
+      "w": "discipline",
+      "g": "Disziplin",
+      "d": "When you control what you do and keep at your work in a good way.",
+      "s": "To be good at any sports, you need a lot of ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "discipline",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "discipline",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "discipline",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Disziplin",
+            "tier": "full"
+          },
+          {
+            "text": "die Disziplin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "highlight",
+        "tournament",
+        "edition"
+      ],
+      "hintDe": "Selbstkontrolle: dranbleiben und ordentlich arbeiten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "highlight",
+          "tournament",
+          "edition",
+          "legend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "discipline",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'To be successful in any sport, you need skill and discipline' — 'sport'(sg.)/'skill' untaught, so reframed to 'good at any sports ... a lot of ___'. d uses 'control'/'working' (probe-confirmed in-bank)."
+    },
+    {
+      "wordId": "g4u13.w.honestly",
+      "w": "honestly",
+      "g": "ehrlich",
+      "d": "In a true way; you really do not tell a lie.",
+      "s": "I didn't know. ___, I didn't.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "honestly",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "honestly",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "honestly",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ehrlich",
+            "tier": "full"
+          },
+          {
+            "text": "ganz ehrlich",
+            "tier": "full"
+          },
+          {
+            "text": "wirklich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "occasionally",
+        "tough",
+        "ripe"
+      ],
+      "hintDe": "Ganz ehrlich, ohne zu lügen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "occasionally",
+          "tough",
+          "ripe",
+          "elder"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "honestly",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier verbatim from the SB master example 'I didn't know. Honestly, I didn't.' (sentence-initial blank; full answer is naturally capitalised). d avoids the headword and uses 'true/lie' (in-bank)."
+    },
+    {
+      "wordId": "g4u13.w.tough",
+      "w": "tough",
+      "g": "schwierig",
+      "d": "Very difficult; it needs a lot of work and strong will.",
+      "s": "Life can be ___ when you have a lot of homework and no free time.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "tough",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tough",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tough",
+            "tier": "full"
+          },
+          {
+            "text": "hard",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schwierig",
+            "tier": "full"
+          },
+          {
+            "text": "hart",
+            "tier": "full"
+          },
+          {
+            "text": "schwer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ripe",
+        "elder",
+        "water-proof"
+      ],
+      "hintDe": "Richtig schwer, kostet viel Mühe.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "ripe",
+          "elder",
+          "water-proof",
+          "honestly"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "tough",
+      "sbRef": null,
+      "note": "SB master example ('Life is tough at the moment. I don't have any pocket money left.') uses untaught 'moment/left'; kept the 'Life is/can be tough' frame but rebuilt the clause in-bank ('a lot of homework and no free time'). d avoids 'hard' (untaught) with 'very difficult ... strong will'."
+    },
+    {
+      "wordId": "g4u13.w.tournament",
+      "w": "tournament",
+      "g": "Turnier",
+      "d": "A big sports competition where many people play to be the best.",
+      "s": "Our school will play in a big sports ___ next month.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tournament",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tournament",
+          "tier": "full"
+        },
+        {
+          "text": "tournaments",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tournament",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Turnier",
+            "tier": "full"
+          },
+          {
+            "text": "das Turnier",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "highlight",
+        "edition",
+        "discipline"
+      ],
+      "hintDe": "Sportwettkampf mit vielen Runden und Teilnehmern.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "highlight",
+          "edition",
+          "discipline",
+          "legend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "tournament",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'Who won the tennis tournament this year?' — 'won'/'tennis' untaught, reframed to 'Our school will play in a big sports ___ next month' (sports in-bank, no gloss needed). d uses 'competition/be the best' (in-bank), avoiding untaught 'win'."
+    },
+    {
+      "wordId": "g4u13.w.beggar",
+      "w": "beggar",
+      "g": "Bettler/in",
+      "d": "Somebody on the street with no money who asks people to help them.",
+      "s": "There was a ___ on the street who asked me for money.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "beggar",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "beggar",
+          "tier": "full"
+        },
+        {
+          "text": "beggars",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "beggar",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bettler",
+            "tier": "full"
+          },
+          {
+            "text": "Bettlerin",
+            "tier": "full"
+          },
+          {
+            "text": "der Bettler",
+            "tier": "full"
+          },
+          {
+            "text": "die Bettlerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "artist",
+        "legend",
+        "highlight"
+      ],
+      "hintDe": "Arme Person, die auf der Straße um Geld bittet.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "artist",
+          "legend",
+          "highlight",
+          "autograph"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "beggar",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'There was a poor beggar on the street who asked me for money' — 'poor' untaught, so dropped. d uses 'no money/other people/coins' (in-bank), avoiding 'poor'/'person'."
+    },
+    {
+      "wordId": "g4u13.w.coal",
+      "w": "coal",
+      "g": "Kohle",
+      "d": "A black rock from the ground that you burn to make a fire.",
+      "s": "We burn oil or ___ to make a fire at home.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "coal",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "coal",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "coal",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kohle",
+            "tier": "full"
+          },
+          {
+            "text": "die Kohle",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "legend",
+        "highlight",
+        "edition"
+      ],
+      "hintDe": "Schwarzes Gestein, das man zum Heizen verbrennt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "legend",
+          "highlight",
+          "edition",
+          "tournament"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "coal",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'We burn oil, wood or coal to heat our homes in winter' — 'wood/heat/winter' untaught, so trimmed to 'We burn oil or ___ to make a fire at home'. d avoids 'hard' (untaught)."
+    },
+    {
+      "wordId": "g4u13.w.legend",
+      "w": "legend",
+      "g": "Legende",
+      "d": "A very old story that may be true or not true.",
+      "s": "The old ___ of King Arthur is a story everyone in Britain loves.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "legend",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "legend",
+          "tier": "full"
+        },
+        {
+          "text": "legends",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "legend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Legende",
+            "tier": "full"
+          },
+          {
+            "text": "die Legende",
+            "tier": "full"
+          },
+          {
+            "text": "Sage",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "highlight",
+        "tournament",
+        "edition"
+      ],
+      "hintDe": "Sehr alte Geschichte, die wahr sein kann oder nicht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "highlight",
+          "tournament",
+          "edition",
+          "discipline"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "legend",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'The legend tells us that one day King Arthur will return ...' — 'tells/return' untaught here, so reframed around 'The old ___ of King Arthur is a story everyone in Britain loves' (King Arthur, Britain are harvested proper nouns). d is fully in-bank (probe ok)."
+    },
+    {
+      "wordId": "g4u13.w.ripe",
+      "w": "ripe",
+      "g": "reif",
+      "d": "Ready to eat because it is not green any more; used about food on a tree.",
+      "s": "I love strawberries, but they must be ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "ripe",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ripe",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ripe",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "reif",
+            "tier": "full"
+          },
+          {
+            "text": "reife",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tough",
+        "elder",
+        "water-proof"
+      ],
+      "hintDe": "Wenn Obst fertig zum Essen ist.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "tough",
+          "elder",
+          "water-proof",
+          "honestly"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "ripe",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier verbatim from the SB master example 'I love strawberries, but they must be ripe.' d avoids untaught 'grown/fruit' using 'ready to eat, soft and not green' with in-bank words."
+    },
+    {
+      "wordId": "g4u13.w.catch-up-on",
+      "w": "catch up on",
+      "g": "nachholen",
+      "d": "To do work or jobs that you did not have time to do before.",
+      "s": "She reads the newspaper on Sunday to ___ the news.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "catch up on",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "catch up on",
+          "tier": "full"
+        },
+        {
+          "text": "catch up",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "catch up on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nachholen",
+            "tier": "full"
+          },
+          {
+            "text": "aufholen",
+            "tier": "full"
+          },
+          {
+            "text": "Versäumtes nachholen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "help out",
+        "take up",
+        "kill time"
+      ],
+      "hintDe": "Etwas Versäumtes später erledigen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "help out",
+          "take up",
+          "kill time",
+          "chill out"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "catch up on",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'She reads the newspaper on Sunday morning to catch up on the news' (trimmed 'morning'). Three-word blank for the full phrasal verb. d probe-confirmed fully in-bank."
+    },
+    {
+      "wordId": "g4u13.w.get-involved-with",
+      "w": "get involved with",
+      "g": "sich auf etw. einlassen",
+      "d": "To start to take part in a group, often a group of bad people.",
+      "s": "This is too dangerous. I am not ___ it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "getting involved with",
+          "tier": "full"
+        },
+        {
+          "text": "get involved with",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get involved with",
+          "tier": "full"
+        },
+        {
+          "text": "get involved",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get involved with",
+            "tier": "full"
+          },
+          {
+            "text": "get involved",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich auf etwas einlassen",
+            "tier": "full"
+          },
+          {
+            "text": "mitmischen",
+            "tier": "full"
+          },
+          {
+            "text": "sich einlassen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "help out",
+        "catch up on",
+        "take up"
+      ],
+      "hintDe": "Bei etwas (oft Riskantem) mitmachen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "help out",
+          "catch up on",
+          "take up",
+          "chill out"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "get involved with",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'This is too dangerous. I am not getting involved.' with 'with it' added to exercise the full three-particle phrase as the blank. d avoids untaught 'activity/risky' using 'take part in a group ... of bad people' (all in-bank)."
+    },
+    {
+      "wordId": "g4u13.w.help-out",
+      "w": "help out",
+      "g": "(aus-)helfen",
+      "d": "To do work for somebody for a short time when they need it.",
+      "s": "I sometimes ___ in the kitchen.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "help out",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "help out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "help out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aushelfen",
+            "tier": "full"
+          },
+          {
+            "text": "helfen",
+            "tier": "full"
+          },
+          {
+            "text": "mithelfen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "take up",
+        "catch up on",
+        "kill time"
+      ],
+      "hintDe": "Kurz mit anpacken, wenn jemand Hilfe braucht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "take up",
+          "catch up on",
+          "kill time",
+          "chill out"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "help out",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier verbatim from the SB master example 'I sometimes help out in the kitchen.' d avoids 'someone' (untaught) using 'somebody' (in-bank g1-u05)."
+    },
+    {
+      "wordId": "g4u13.w.kill-time",
+      "w": "kill time",
+      "g": "sich die Zeit vertreiben",
+      "d": "To do a fun thing while you wait, to make the wait feel shorter.",
+      "s": "Our train did not come, so we ___ reading magazines.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "killed time",
+          "tier": "full"
+        },
+        {
+          "text": "kill time",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "kill time",
+          "tier": "full"
+        },
+        {
+          "text": "killed time",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "kill time",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich die Zeit vertreiben",
+            "tier": "full"
+          },
+          {
+            "text": "die Zeit totschlagen",
+            "tier": "full"
+          },
+          {
+            "text": "Zeit vertreiben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "help out",
+        "take up",
+        "catch up on"
+      ],
+      "hintDe": "Etwas tun, damit das Warten schneller vergeht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "help out",
+          "take up",
+          "catch up on",
+          "chill out"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "kill time",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'We killed time watching the boats on the river' — 'boats' untaught, so reframed to 'Our train did not come, so we ___ reading magazines' (single blank, answer 'killed time'). d avoids untaught 'something' with 'a fun thing'; does not leak 'kill'/'time'."
+    },
+    {
+      "wordId": "g4u13.w.make-money",
+      "w": "make money",
+      "g": "Geld machen/verdienen",
+      "d": "To earn good pay from a job or from selling food and books.",
+      "s": "She's ___ with her job and saving up for a car.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "making money",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make money",
+          "tier": "full"
+        },
+        {
+          "text": "making money",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "make money",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geld verdienen",
+            "tier": "full"
+          },
+          {
+            "text": "Geld machen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "help out",
+        "take up",
+        "kill time"
+      ],
+      "hintDe": "Mit Arbeit oder Verkauf Geld bekommen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "help out",
+          "take up",
+          "kill time",
+          "chill out"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "make money",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'She's making a lot of money with her job.' — reworked to a single blank ('She's ___ with her job ...', answer 'making money') so the whole phrase is one fill. d must not leak the headword token 'money' (V-8), so uses 'earn good pay ... food and books'."
+    },
+    {
+      "wordId": "g4u13.w.take-care-of",
+      "w": "take care of",
+      "g": "sorgen für",
+      "d": "To look after somebody and keep them well.",
+      "s": "Don't worry about your leg. I'm going to ___ you.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "take care of",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take care of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "take care of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sorgen für",
+            "tier": "full"
+          },
+          {
+            "text": "sich kümmern um",
+            "tier": "full"
+          },
+          {
+            "text": "Acht geben auf",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "help out",
+        "take up",
+        "catch up on"
+      ],
+      "hintDe": "Auf jemanden aufpassen und für ihn sorgen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "help out",
+          "take up",
+          "catch up on",
+          "kill time"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "take care of",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'Don't worry about your broken ankle. I'm going to take care of you' — 'broken/ankle' untaught, so changed to 'your leg' (in-bank). d avoids 'someone' using 'somebody/something' (in-bank)."
+    },
+    {
+      "wordId": "g4u13.w.take-up",
+      "w": "take up",
+      "g": "anfangen",
+      "d": "To start a new thing you like doing in your free time.",
+      "s": "He did not want to ___ skating. He was too busy.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "take up",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "take up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "anfangen",
+            "tier": "full"
+          },
+          {
+            "text": "anfangen mit",
+            "tier": "full"
+          },
+          {
+            "text": "beginnen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "help out",
+        "catch up on",
+        "kill time"
+      ],
+      "hintDe": "Ein neues Hobby oder eine Sportart beginnen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "help out",
+          "catch up on",
+          "kill time",
+          "chill out"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "take up",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'He did not want to take up a new sport. He had too much to do' — 'sport'(sg.) untaught, so changed to 'skating' (in-bank g1-u11) and tail to 'He was too busy'. d avoids untaught 'hobby/activity/sport/game' with 'a new thing you like doing in your free time'; does not leak 'take'."
+    },
+    {
+      "wordId": "g4u13.w.attend",
+      "w": "attend",
+      "g": "an etw. teilnehmen",
+      "d": "To go to a show, a meeting or a school.",
+      "s": "More than 500 people ___ the concert last Friday.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "attended",
+          "tier": "full"
+        },
+        {
+          "text": "attend",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "attend",
+          "tier": "full"
+        },
+        {
+          "text": "attended",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "attend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "teilnehmen",
+            "tier": "full"
+          },
+          {
+            "text": "an etwas teilnehmen",
+            "tier": "full"
+          },
+          {
+            "text": "besuchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "apply",
+        "help out",
+        "take up"
+      ],
+      "hintDe": "Zu einer Veranstaltung oder in die Schule gehen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "apply",
+          "help out",
+          "take up",
+          "make money"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "attend",
+      "sbRef": "g4/sb/More 4 SB Unit 13.txt",
+      "note": "Carrier from the SB master example 'How many people attended the baseball game?' — 'baseball/game' untaught, so reframed to 'More than 500 people ___ the concert last Friday' (concert in-bank). d uses 'show/meeting/school' (in-bank), avoiding 'event' (untaught)."
+    }
+  ]
+}

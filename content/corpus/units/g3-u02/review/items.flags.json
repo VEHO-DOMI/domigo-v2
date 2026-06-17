@@ -1,0 +1,392 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g3-u02",
+  "round": 1,
+  "itemsHash": "64ae9f12e91f",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g3u02.w.married",
+      "kind": "new-gloss",
+      "itemId": "g3u02.w.married",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u02.w.north-pole",
+      "kind": "new-gloss",
+      "itemId": "g3u02.w.north-pole",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u02.w.note",
+      "kind": "new-gloss",
+      "itemId": "g3u02.w.note",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u02.w.similar",
+      "kind": "new-gloss",
+      "itemId": "g3u02.w.similar",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u02.w.to-try-on-sunglasses",
+      "kind": "new-gloss",
+      "itemId": "g3u02.w.to-try-on-sunglasses",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u02.w.to-wave",
+      "kind": "new-gloss",
+      "itemId": "g3u02.w.to-wave",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.author",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.author",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.awful",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.awful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.careless",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.careless",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.coincidence",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.coincidence",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.date-of-birth",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.date-of-birth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.entrance",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.entrance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.handbag",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.handbag",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.hang-on-a-minute",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.hang-on-a-minute",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.hold-on",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.hold-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.i-beg-your-pardon",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.i-beg-your-pardon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.laugh",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.laugh",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.married",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.married",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.member",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.member",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.north-pole",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.north-pole",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.note",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.note",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.passenger",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.passenger",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.per-cent",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.per-cent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.queue",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.queue",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.similar",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.similar",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.south-pole",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.south-pole",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.speech",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.speech",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.stage",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.stage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.thief",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.thief",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-achieve",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-achieve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-buy-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-buy-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-drink-eat-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-drink-eat-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-hand-sth-in",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-hand-sth-in",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-leave-sb-alone",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-leave-sb-alone",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-listen-to-music",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-listen-to-music",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-look-at-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-look-at-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-look-forward-to-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-look-forward-to-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-pay-the-bill",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-pay-the-bill",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-queue",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-queue",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-return",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-return",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-sink",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-sink",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-steal",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-steal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-survive",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-survive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-talk-on-the-mobile",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-talk-on-the-mobile",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-try-on-sunglasses",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-try-on-sunglasses",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-try-out",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-try-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.to-wave",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.to-wave",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.w.what-a",
+      "kind": "translation-audit",
+      "itemId": "g3u02.w.what-a",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.gi.past-continuous.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u02.gi.past-continuous.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.gi.past-continuous.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u02.gi.past-continuous.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.gi.past-continuous.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u02.gi.past-continuous.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.gi.past-continuous.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g3u02.gi.past-continuous.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u02.gi.past-continuous.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g3u02.gi.past-continuous.tr.005",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 93 rows (structure: past continuous, was/were + -ing — including the interrupted long-action/short-action pattern with when/while). Verify: translation CLEAN, register CLEAN, level-gloss clean (the 2 warns were a false positive — \"arm\" IS untaught per the gate, gloss kept — and awful's \"grey\" reworded to \"dark\"). Answers: the 51-item past-continuous grammar set was lens-verified CLEAN (be-form agreement, -ing spelling incl. doubling/drop-e, the interrupted pattern with the short action correctly in past SIMPLE); fixed 3 VOCAB-MC distractor issues the lens caught — Hold on!/Hang on a minute. are synonyms (each was the other's distractor → replaced), and North Pole's carrier had no \"north\" cue so \"South Pole\" was defensible (→ replaced with a clearly-wrong place). 55 audited grants (the -ing forms, interrupting past-simple verbs, and harvesting-gap carriers phone/iceberg/hunter/bus/shop/alarm). Group-sorts relabeled off German (was/were; was crossing/hit; ✓/✗). to-leave-sb-alone enToDe got an \"…in Ruhe und Frieden lassen\" variant to satisfy the language detector (lang-evidence quirk on \"in\"). 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 93,
+    "fullRows": 93,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

@@ -1,0 +1,2913 @@
+{
+  "schema": "grammar@1",
+  "grade": 1,
+  "unit": 10,
+  "slug": "g1-u10",
+  "items": [
+    {
+      "id": "g1u10.gi.how-much.ag.001",
+      "structureId": "g1u10.s.how-much",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Das Wort fehlt: How ___ is the scooter? (wie viel?)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "much",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "How ... is ...? – wie viel?",
+      "hintEn": null,
+      "explainDe": "Nach dem Preis fragst du mit How much ...?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.ag.002",
+      "structureId": "g1u10.s.how-much",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Das Wort fehlt: How much is the computer ___? (das Computerspiel)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "game",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "computer ... – das Computerspiel.",
+      "hintEn": null,
+      "explainDe": "Das fehlende Wort ist game: How much is the computer game?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.cp.001",
+      "structureId": "g1u10.s.how-much",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "How much are this scooter?",
+            "How much is these scooter?",
+            "How much costs this scooter?",
+            "How much is this scooter?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Distractor 'costs' is out-of-bank error form."
+      },
+      "prompt": {
+        "text": "Du stehst im Geschäft und zeigst auf einen Roller. Frag, wie viel er kostet.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much is this scooter?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "How much are this scooter?",
+        "How much is these scooter?",
+        "How much costs this scooter?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Roller ist ein Ding in der Einzahl – und du zeigst direkt darauf.",
+      "hintEn": null,
+      "explainDe": "Ein Ding in der Nähe und in der Einzahl: How much is this scooter?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.cp.002",
+      "structureId": "g1u10.s.how-much",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "How much is these headphones?",
+            "How much are this headphones?",
+            "How much costs these headphones?",
+            "How much are these headphones?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Distractor 'costs' is out-of-bank error form."
+      },
+      "prompt": {
+        "text": "Du zeigst auf Kopfhörer im Regal. Frag, wie viel sie kosten.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much are these headphones?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "How much is these headphones?",
+        "How much are this headphones?",
+        "How much costs these headphones?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kopfhörer sind Mehrzahl – und these zeigt auch auf mehrere Dinge.",
+      "hintEn": null,
+      "explainDe": "Mehrere Dinge in der Nähe: How much are these headphones?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.ec.001",
+      "structureId": "g1u10.s.how-much",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-how-much-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much is the headphones?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much are the headphones?",
+          "tier": "full"
+        },
+        {
+          "text": "are",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kopfhörer sind Mehrzahl – welches Wort passt dann?",
+      "hintEn": null,
+      "explainDe": "Bei Mehrzahl heißt es are, nicht is: How much are the headphones?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.ec.002",
+      "structureId": "g1u10.s.how-much",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-how-much-ec-001",
+        "narrative": null,
+        "note": "Prompt contains the out-of-bank error word 'costs' as the mistake to fix."
+      },
+      "prompt": {
+        "text": "How much costs it?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much is it?",
+          "tier": "full"
+        },
+        {
+          "text": "is",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach dem Preis fragst du mit is oder are, nicht mit costs.",
+      "hintEn": null,
+      "explainDe": "Im Englischen fragst du How much is ...? – nicht mit costs. Also: How much is it?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.ec.003",
+      "structureId": "g1u10.s.how-much",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much are this magazine?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much is this magazine?",
+          "tier": "full"
+        },
+        {
+          "text": "is",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eine Zeitschrift ist ein einziges Ding (Einzahl).",
+      "hintEn": null,
+      "explainDe": "This magazine ist Einzahl, deshalb is: How much is this magazine?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gf.001",
+      "structureId": "g1u10.s.how-much",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": "m1-u10-how-much-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ the scooter?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Roller, also nur ein einziges Ding (Einzahl).",
+      "hintEn": null,
+      "explainDe": "Bei einem Ding in der Einzahl heißt es How much is ...? Also: How much is the scooter?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gf.002",
+      "structureId": "g1u10.s.how-much",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": "m1-u10-how-much-gf-008",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ the headphones?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kopfhörer sind in der Mehrzahl.",
+      "hintEn": null,
+      "explainDe": "Bei mehreren Dingen (Mehrzahl) heißt es How much are ...? Also: How much are the headphones?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gf.003",
+      "structureId": "g1u10.s.how-much",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#dialogue-2",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ the key ring?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Schlüsselanhänger, also nur ein Ding (Einzahl).",
+      "hintEn": null,
+      "explainDe": "Ein Ding in der Einzahl bekommt is: How much is the key ring?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gf.004",
+      "structureId": "g1u10.s.how-much",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ these sweets?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sweets stehen immer in der Mehrzahl, und these zeigt auch auf mehrere Dinge.",
+      "hintEn": null,
+      "explainDe": "Sweets sind Mehrzahl, deshalb are: How much are these sweets?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gf.005",
+      "structureId": "g1u10.s.how-much",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-how-much-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ this computer game?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Computerspiel ist ein einziges Ding, und this zeigt auf ein Ding.",
+      "hintEn": null,
+      "explainDe": "This computer game ist Einzahl, deshalb is: How much is this computer game?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gf.006",
+      "structureId": "g1u10.s.how-much",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": "m1-u10-how-much-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ those jeans?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achtung: jeans sind im Englischen immer Mehrzahl!",
+      "hintEn": null,
+      "explainDe": "Jeans sind immer Mehrzahl, deshalb are: How much are those jeans?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gf.007",
+      "structureId": "g1u10.s.how-much",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ the magazine?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eine Zeitschrift, also ein einziges Ding (Einzahl).",
+      "hintEn": null,
+      "explainDe": "Ein Ding in der Einzahl bekommt is: How much is the magazine?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gf.008",
+      "structureId": "g1u10.s.how-much",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-how-much-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ ___ is the mobile phone?",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "How | much",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du fragst nach dem Preis von einem Handy.",
+      "hintEn": null,
+      "explainDe": "Nach dem Preis fragst du mit How much ...? Also: How much is the mobile phone?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gf.009",
+      "structureId": "g1u10.s.how-much",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How ___ ___ the headphones?",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "much | are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frag nach dem Preis von Kopfhörern – die sind in der Mehrzahl.",
+      "hintEn": null,
+      "explainDe": "How much fragt nach dem Preis, und Kopfhörer sind Mehrzahl: How much are the headphones?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gf.010",
+      "structureId": "g1u10.s.how-much",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ the tin?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eine Dose, also ein einziges Ding (Einzahl).",
+      "hintEn": null,
+      "explainDe": "Ein Ding in der Einzahl bekommt is: How much is the tin?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gf.011",
+      "structureId": "g1u10.s.how-much",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#sketch",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ those headphones over there?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kopfhörer sind Mehrzahl, und those zeigt auf mehrere Dinge weiter weg.",
+      "hintEn": null,
+      "explainDe": "Mehrere Dinge weiter weg: How much are those headphones over there?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.gs.001",
+      "structureId": "g1u10.s.how-much",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": "m1-u10-how-much-gs-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Womit fragst du nach dem Preis – mit \"is\" oder mit \"are\"?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "How much is ...?",
+          "members": [
+            "the scooter",
+            "this magazine",
+            "the key ring",
+            "the computer game"
+          ]
+        },
+        {
+          "label": "How much are ...?",
+          "members": [
+            "the headphones",
+            "these sweets",
+            "the jeans",
+            "those trainers"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Ein Ding (Einzahl) bekommt is, mehrere Dinge (Mehrzahl) bekommen are. Achtung: jeans sind Mehrzahl!",
+      "hintEn": null,
+      "explainDe": "Einzahl mit is, Mehrzahl mit are. Sweets und jeans sind immer Mehrzahl.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.mc.001",
+      "structureId": "g1u10.s.how-much",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "are",
+            "do",
+            "does",
+            "is",
+            "can",
+            "has"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ the mobile phone?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "are",
+        "do",
+        "does"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Handy ist ein Ding in der Einzahl.",
+      "hintEn": null,
+      "explainDe": "Bei einem Ding in der Einzahl nimmst du is: How much is the mobile phone?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.mc.002",
+      "structureId": "g1u10.s.how-much",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "is",
+            "does",
+            "do",
+            "are",
+            "can",
+            "has"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ the sweets?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "is",
+        "does",
+        "do"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sweets stehen im Englischen immer in der Mehrzahl.",
+      "hintEn": null,
+      "explainDe": "Sweets sind Mehrzahl, deshalb are: How much are the sweets?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.mc.005",
+      "structureId": "g1u10.s.how-much",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "is",
+            "do",
+            "does",
+            "are",
+            "can",
+            "has"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much ___ the jeans?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "is",
+        "do",
+        "does"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Denk daran: jeans sind im Englischen immer Mehrzahl.",
+      "hintEn": null,
+      "explainDe": "Jeans sind immer Mehrzahl, deshalb are: How much are the jeans?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.mc.006",
+      "structureId": "g1u10.s.how-much",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "How much is the headphones?",
+            "How much costs the headphones?",
+            "How many are the headphones?",
+            "How much are the headphones?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-how-much-mc-001",
+        "narrative": null,
+        "note": "Distractors use deliberate wrong forms: 'is'+plural, and 'costs' (out-of-bank verb) as the classic error."
+      },
+      "prompt": {
+        "text": "Welche Frage ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much are the headphones?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "How much is the headphones?",
+        "How much costs the headphones?",
+        "How many are the headphones?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kopfhörer sind Mehrzahl – welche Frage passt dazu?",
+      "hintEn": null,
+      "explainDe": "Kopfhörer sind Mehrzahl, also How much are ...? Richtig ist: How much are the headphones?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.mc.007",
+      "structureId": "g1u10.s.how-much",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "How much are the scooter?",
+            "How much costs the scooter?",
+            "How much is the scooters?",
+            "How much is the scooter?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Distractor 'costs' is out-of-bank, used as the deliberate error form."
+      },
+      "prompt": {
+        "text": "Welche Frage ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much is the scooter?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "How much are the scooter?",
+        "How much costs the scooter?",
+        "How much is the scooters?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Roller ist nur ein Ding (Einzahl).",
+      "hintEn": null,
+      "explainDe": "Ein Roller ist Einzahl, also How much is ...? Richtig ist: How much is the scooter?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.mp.001",
+      "structureId": "g1u10.s.how-much",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Right sides made unique by appending ', please' to the second is/are pair so no two right sides are identical."
+      },
+      "prompt": {
+        "text": "Welches kleine Wort passt zu welchem Ding?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "How much ___ the scooter?",
+          "right": "is"
+        },
+        {
+          "left": "How much ___ the jeans?",
+          "right": "are"
+        },
+        {
+          "left": "How much ___ this computer game?",
+          "right": "is, please"
+        },
+        {
+          "left": "How much ___ these headphones?",
+          "right": "are, please"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Einzahl bekommt is, Mehrzahl bekommt are. Denk an die jeans!",
+      "hintEn": null,
+      "explainDe": "Ein Ding nimmt is, mehrere Dinge nehmen are. Jeans sind Mehrzahl.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.mt.001",
+      "structureId": "g1u10.s.how-much",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#dialogue-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Frage passt zu welcher Antwort?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "How much is the scooter?",
+          "right": "It's €80."
+        },
+        {
+          "left": "How much are the headphones?",
+          "right": "They're €30."
+        },
+        {
+          "left": "How much is the magazine?",
+          "right": "It's €3."
+        },
+        {
+          "left": "How much are these sweets?",
+          "right": "They're €2."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Ding (is) wird mit It's beantwortet, mehrere Dinge (are) mit They're.",
+      "hintEn": null,
+      "explainDe": "Zu is passt die Antwort It's, zu are passt They're.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.qf.001",
+      "structureId": "g1u10.s.how-much",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": "m1-u10-how-much-qf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du möchtest wissen, was der Roller kostet. Stell die Frage.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much is the scooter?",
+          "tier": "full"
+        },
+        {
+          "text": "How much is this scooter?",
+          "tier": "full"
+        },
+        {
+          "text": "How much is that scooter?",
+          "tier": "full"
+        },
+        {
+          "text": "How much is it?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Roller ist ein Ding in der Einzahl – beginne mit How much ...",
+      "hintEn": null,
+      "explainDe": "Nach dem Preis von einem Ding fragst du: How much is the scooter?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.qf.002",
+      "structureId": "g1u10.s.how-much",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-how-much-qf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du möchtest wissen, was die Kopfhörer kosten. Stell die Frage.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much are the headphones?",
+          "tier": "full"
+        },
+        {
+          "text": "How much are these headphones?",
+          "tier": "full"
+        },
+        {
+          "text": "How much are those headphones?",
+          "tier": "full"
+        },
+        {
+          "text": "How much are they?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kopfhörer sind Mehrzahl – beginne mit How much ...",
+      "hintEn": null,
+      "explainDe": "Nach dem Preis von mehreren Dingen fragst du: How much are the headphones?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.sb.001",
+      "structureId": "g1u10.s.how-much",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "are",
+            "is",
+            "the",
+            "much"
+          ],
+          "chipBudget": 6,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How / much / is / the / scooter",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much is the scooter?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "are"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Roller ist Einzahl – welches kleine Wort passt, is oder are?",
+      "hintEn": null,
+      "explainDe": "Ein Ding in der Einzahl: How much is the scooter?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.sb.002",
+      "structureId": "g1u10.s.how-much",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "is",
+            "are",
+            "these",
+            "much"
+          ],
+          "chipBudget": 6,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How / much / are / these / sweets",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much are these sweets?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "is"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sweets sind Mehrzahl, und these zeigt auf mehrere Dinge – welches kleine Wort passt?",
+      "hintEn": null,
+      "explainDe": "Mehrere Dinge in der Nähe: How much are these sweets?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.tf.001",
+      "structureId": "g1u10.s.how-much",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-how-much-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much is the key ring? (→ key rings)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much are the key rings?",
+          "tier": "full"
+        },
+        {
+          "text": "are",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jetzt sind es mehrere Schlüsselanhänger (Mehrzahl) – das Wort vor dem Ding ändert sich mit.",
+      "hintEn": null,
+      "explainDe": "Aus einem wird mehrere, deshalb wird is zu are: How much are the key rings?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.how-much.tf.002",
+      "structureId": "g1u10.s.how-much",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much are the magazines? (→ magazine)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much is the magazine?",
+          "tier": "full"
+        },
+        {
+          "text": "is",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jetzt ist es nur noch eine Zeitschrift (Einzahl) – das Wort vor dem Ding ändert sich mit.",
+      "hintEn": null,
+      "explainDe": "Aus mehreren wird eins, deshalb wird are zu is: How much is the magazine?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.ag.001",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "anagram",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Viele Dinge, ganz nah bei dir (hier). Wie heißt das Wort? (Buchstaben: e h e s t)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "these",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es beginnt mit \"th\" und passt zu vielen Dingen, die nah sind.",
+      "hintEn": null,
+      "explainDe": "these nimmst du für viele Dinge, die nah bei dir sind.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.ag.002",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "anagram",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Viele Dinge, weiter weg (over there). Wie heißt das Wort? (Buchstaben: o h e s t)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "those",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es beginnt mit \"th\" und passt zu vielen Dingen, die weit weg sind.",
+      "hintEn": null,
+      "explainDe": "those nimmst du für viele Dinge, die weit weg sind (over there).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.cp.001",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "These key ring is nice.",
+            "Those key ring is nice.",
+            "These key rings is nice.",
+            "That key ring is nice."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du hältst einen Schlüsselanhänger in der Hand. Was sagst du?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This key ring is nice.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "These key ring is nice.",
+        "Those key ring is nice.",
+        "These key rings is nice."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du hast genau einen in der Hand, also ganz nah und nur eins.",
+      "hintEn": null,
+      "explainDe": "Ein Ding, ganz nah bei dir: this. These und those gehen nur mit vielen Dingen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.cp.002",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "context-picker",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "That shoes over there are big.",
+            "This shoes over there are big.",
+            "These shoes over there are big.",
+            "Those shoes over there are big."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#dialogue-10",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du zeigst auf Schuhe weit weg im Schaufenster (over there). Was sagst du?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Those shoes over there are big.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "That shoes over there are big.",
+        "This shoes over there are big.",
+        "These shoes over there are big."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es sind viele Schuhe und sie sind weit weg (over there).",
+      "hintEn": null,
+      "explainDe": "Viele Dinge und weit weg: those. This und that gehen nur mit einem Ding, these ist für nah.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.ec.001",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This shoes here are nice.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "These shoes here are nice.",
+          "tier": "full"
+        },
+        {
+          "text": "These",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"Shoes\" sind viele. Welches Wort brauchst du dann?",
+      "hintEn": null,
+      "explainDe": "\"Shoes\" sind viele, darum these statt this. This geht nur mit einem Ding.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.ec.002",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "That headphones over there are expensive.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Those headphones over there are expensive.",
+          "tier": "full"
+        },
+        {
+          "text": "Those",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"Headphones\" sind viele und weit weg (over there). Welches Wort brauchst du?",
+      "hintEn": null,
+      "explainDe": "\"Headphones\" sind viele, darum those statt that. That geht nur mit einem Ding.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.ec.003",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "These computer game here is nice.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This computer game here is nice.",
+          "tier": "full"
+        },
+        {
+          "text": "This",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"Computer game\" ist nur eins und hier bei dir. Welches Wort brauchst du?",
+      "hintEn": null,
+      "explainDe": "\"Computer game\" ist nur eins, darum this statt these. These geht nur mit vielen Dingen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.ec.004",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Those magazine over there is nice.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That magazine over there is nice.",
+          "tier": "full"
+        },
+        {
+          "text": "That",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"Magazine\" ist nur eins und weit weg (over there). Welches Wort brauchst du?",
+      "hintEn": null,
+      "explainDe": "\"Magazine\" ist nur eins, darum that statt those. Those geht nur mit vielen Dingen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gf.001",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ magazine here is nice.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "This",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Ding, ganz nah bei dir (hier). Nimm das kurze Wort für eins.",
+      "hintEn": null,
+      "explainDe": "„this“ nimmst du für etwas Nahes (das magazine hier), „that“ für etwas weiter weg (der scooter dort drüben).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gf.002",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": "m1-u10-demonstratives-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ sweets here are nice.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "These",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Viele Dinge, ganz nah bei dir (hier). Nimm das Wort für viele.",
+      "hintEn": null,
+      "explainDe": "\"Sweets\" sind viele und sie sind hier bei dir, darum nimmst du these.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gf.003",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": "m1-u10-demonstratives-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Look at ___ scooter over there!",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Ding, aber weiter weg (over there). Nimm das Wort für eins, weit weg.",
+      "hintEn": null,
+      "explainDe": "\"Scooter\" ist nur eins und es ist weit weg (over there), darum nimmst du that.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gf.004",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": "m1-u10-demonstratives-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ headphones over there are expensive.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Those",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Viele Dinge und weiter weg (over there). Nimm das Wort für viele, weit weg.",
+      "hintEn": null,
+      "explainDe": "\"Headphones\" sind viele und sie sind weit weg (over there), darum nimmst du those.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gf.005",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-gf-008",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Can I have ___ key ring here, please?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "this",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Ding, ganz nah (hier). Nimm das kurze Wort für eins.",
+      "hintEn": null,
+      "explainDe": "\"Key ring\" ist nur eins und es ist hier bei dir, darum nimmst du this.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gf.006",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#dialogue-10",
+        "seedV1": "m1-u10-demonstratives-gf-007",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ trainers over there are big.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Those",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Viele Dinge, weiter weg (over there). Nimm das Wort für viele, weit weg.",
+      "hintEn": null,
+      "explainDe": "\"Trainers\" sind viele und sie sind weit weg (over there), darum nimmst du those.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gf.008",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I'd like ___ sweets here and ___ headphones over there.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "these | those",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das erste sind viele und hier bei dir, das zweite sind viele und weit weg (over there).",
+      "hintEn": null,
+      "explainDe": "\"Sweets\" sind viele und hier (these), \"headphones\" sind viele und weit weg (those).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gf.009",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": "m1-u10-demonstratives-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ magazine here is nice. ___ scooter over there is expensive.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "This | That",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das erste Ding ist hier bei dir, das zweite ist weit weg (over there). Beides ist nur eins.",
+      "hintEn": null,
+      "explainDe": "\"T-shirt\" ist hier und nur eins (this), \"sweater\" ist weit weg und nur eins (that).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gs.002",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-gs-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Near you (here), or far away (over there)?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "near you (here)",
+          "members": [
+            "this magazine",
+            "these sweets",
+            "this key ring",
+            "these shoes"
+          ]
+        },
+        {
+          "label": "far away (over there)",
+          "members": [
+            "that scooter",
+            "those headphones",
+            "that mobile phone",
+            "those trainers"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "this und these sind nah bei dir (here). that und those sind weiter weg (over there).",
+      "hintEn": null,
+      "explainDe": "this/these zeigen auf etwas Nahes, that/those zeigen auf etwas Weitentferntes (over there).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gs.003",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-gs-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Eins oder viele?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "one",
+          "members": [
+            "this magazine",
+            "that scooter",
+            "this key ring",
+            "that mobile phone"
+          ]
+        },
+        {
+          "label": "many",
+          "members": [
+            "these sweets",
+            "those headphones",
+            "these shoes",
+            "those trainers"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Schau auf das Nomen: ist es eins (this/that) oder viele (these/those)?",
+      "hintEn": null,
+      "explainDe": "this und that stehen bei einem Ding, these und those stehen bei vielen Dingen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.mc.001",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "This",
+            "That",
+            "Those",
+            "These"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ shoes here are nice.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "These",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "This",
+        "That",
+        "Those"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Viele Dinge und hier bei dir. Welches Wort passt?",
+      "hintEn": null,
+      "explainDe": "\"Shoes\" sind viele und hier, darum nimmst du these. This und that sind für nur ein Ding, those ist für weit weg.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.mc.002",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "this",
+            "these",
+            "those",
+            "that"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 10- In a shop.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How much is ___ mobile phone over there?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "this",
+        "these",
+        "those"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Ding und weit weg (over there). Welches Wort passt?",
+      "hintEn": null,
+      "explainDe": "\"Mobile phone\" ist nur eins und weit weg, darum nimmst du that. These und those sind für viele, this ist für nah.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.mc.005",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "This sweets here are nice.",
+            "That sweets here are nice.",
+            "Those sweets here are nice.",
+            "These sweets here are nice."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "These sweets here are nice.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "This sweets here are nice.",
+        "That sweets here are nice.",
+        "Those sweets here are nice."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Viele Dinge und hier bei dir. Wo passt das Wort für viele zum Nomen für viele und zu \"here\"?",
+      "hintEn": null,
+      "explainDe": "\"Sweets\" sind viele und hier, darum these. This und that gehen nur mit einem Ding, those ist für weit weg.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.mc.006",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "That headphones over there are expensive.",
+            "This headphones over there are expensive.",
+            "These headphones over there are expensive.",
+            "Those headphones over there are expensive."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Those headphones over there are expensive.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "That headphones over there are expensive.",
+        "This headphones over there are expensive.",
+        "These headphones over there are expensive."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Viele Dinge und weit weg (over there). Welcher Satz passt?",
+      "hintEn": null,
+      "explainDe": "\"Headphones\" sind viele und weit weg, darum nimmst du those. This/that sind für ein Ding, these ist für nah.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.mt.003",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde jedes Ding mit dem passenden Wort.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "one magazine, here",
+          "right": "this magazine"
+        },
+        {
+          "left": "many sweets, here",
+          "right": "these sweets"
+        },
+        {
+          "left": "one scooter, over there",
+          "right": "that scooter"
+        },
+        {
+          "left": "many headphones, over there",
+          "right": "those headphones"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte auf zwei Dinge: eins oder viele, und nah (here) oder weit weg (over there).",
+      "hintEn": null,
+      "explainDe": "this = eins/nah, these = viele/nah, that = eins/weit weg, those = viele/weit weg.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.mt.004",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde jeden „here“-Satz mit dem gleichen Satz mit „over there“.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "This scooter is nice.",
+          "right": "That scooter over there is nice."
+        },
+        {
+          "left": "These shoes are big.",
+          "right": "Those shoes over there are big."
+        },
+        {
+          "left": "This magazine is nice.",
+          "right": "That magazine over there is nice."
+        },
+        {
+          "left": "These sweets are nice.",
+          "right": "Those sweets over there are nice."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus \"hier\" (this/these) wird \"weit weg\" (that/those). Eins bleibt eins, viele bleiben viele.",
+      "hintEn": null,
+      "explainDe": "this wird zu that und these wird zu those, wenn das Ding weiter weg ist (over there).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.sb.001",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "this",
+            "that",
+            "those",
+            "here"
+          ],
+          "chipBudget": 8,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "these / shoes / nice / are",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "These shoes are nice.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fang mit dem Wort für viele Dinge an. Dann das Nomen, dann are und nice.",
+      "hintEn": null,
+      "explainDe": "\"These shoes\" gehören zusammen (viele Dinge, nah), dann \"are nice\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.sb.002",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "this",
+            "that",
+            "these",
+            "here"
+          ],
+          "chipBudget": 9,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "those / over there / are / headphones / expensive",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Those headphones over there are expensive.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fang mit dem Wort für viele Dinge an. \"Over there\" zeigt, dass es weit weg ist.",
+      "hintEn": null,
+      "explainDe": "\"Those headphones\" gehören zusammen (viele Dinge, weit weg), dann \"over there are expensive\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.tf.001",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This scooter is nice. (over there) → ___ scooter over there is nice.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "That",
+          "tier": "full"
+        },
+        {
+          "text": "That scooter over there is nice.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus \"hier\" wird \"weit weg\" (over there). Es bleibt nur ein Ding.",
+      "hintEn": null,
+      "explainDe": "Ein Ding, das jetzt weit weg ist (over there): that statt this.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.tf.002",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This book is nice. (many) → ___ books are nice.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "These",
+          "tier": "full"
+        },
+        {
+          "text": "These books are nice.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus einem Ding werden viele. \"Hier\" bleibt gleich.",
+      "hintEn": null,
+      "explainDe": "Aus this (eins) wird these, weil es jetzt viele Dinge sind.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.tf.003",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "That dog over there is big. (many) → ___ dogs over there are big.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Those",
+          "tier": "full"
+        },
+        {
+          "text": "Those dogs over there are big.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus einem Ding werden viele. \"Weit weg\" (over there) bleibt gleich.",
+      "hintEn": null,
+      "explainDe": "Aus that (eins) wird those, weil es jetzt viele Dinge sind, die weit weg sind.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.tr.001",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sag auf Englisch: Diese Süßigkeiten hier sind toll. (toll = nice)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "These sweets here are nice.",
+          "tier": "full"
+        },
+        {
+          "text": "These sweets are nice.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Viele Dinge und nah bei dir: das passende Wort plus \"sweets\".",
+      "hintEn": null,
+      "explainDe": "\"Süßigkeiten\" sind viele und hier, darum these sweets.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.tr.002",
+      "structureId": "g1u10.s.this-that-these-those",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u10-demonstratives-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sag auf Englisch: Jene Kopfhörer dort drüben sind teuer.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Those headphones over there are expensive.",
+          "tier": "full"
+        },
+        {
+          "text": "Those headphones are expensive.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Viele Dinge und weit weg: das passende Wort plus \"headphones\". \"dort drüben\" = over there.",
+      "hintEn": null,
+      "explainDe": "\"Kopfhörer\" sind viele und weit weg, darum those headphones over there.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

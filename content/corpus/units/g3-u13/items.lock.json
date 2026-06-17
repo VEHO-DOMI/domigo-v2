@@ -1,0 +1,45 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g3-u13",
+  "items": {
+    "1a39a8118980": "g3u13.gi.second-conditional.gf.001",
+    "48217b142003": "g3u13.gi.second-conditional.gf.002",
+    "399a1418ddd2": "g3u13.gi.second-conditional.gf.003",
+    "1cd401e1ba70": "g3u13.gi.second-conditional.gf.004",
+    "4ea618417b4c": "g3u13.gi.second-conditional.gf.005",
+    "a54bdeb7d569": "g3u13.gi.second-conditional.gf.006",
+    "0d908b1048ad": "g3u13.gi.second-conditional.gf.007",
+    "fde31e8adb0a": "g3u13.gi.second-conditional.gf.008",
+    "371b66853a28": "g3u13.gi.second-conditional.mc.001",
+    "260e23fe2a54": "g3u13.gi.second-conditional.mc.002",
+    "1633be043a62": "g3u13.gi.second-conditional.mc.003",
+    "66ae0df2b933": "g3u13.gi.second-conditional.ec.001",
+    "cee9a8f851a7": "g3u13.gi.second-conditional.ec.002",
+    "f4837d68b099": "g3u13.gi.second-conditional.ec.003",
+    "990de9a337c1": "g3u13.gi.second-conditional.ec.004",
+    "c4e7a4489279": "g3u13.gi.second-conditional.tf.001",
+    "1e5178c84dee": "g3u13.gi.second-conditional.tf.002",
+    "43cff8b2eab2": "g3u13.gi.second-conditional.tr.001",
+    "4a3fae807425": "g3u13.gi.second-conditional.tr.002",
+    "1e6ebb66c039": "g3u13.gi.second-conditional.tr.003",
+    "dbd97788ad30": "g3u13.gi.second-conditional.sb.001",
+    "d0d96150b089": "g3u13.gi.second-conditional.sb.002",
+    "5d9947eb62c4": "g3u13.gi.second-conditional.mt.001",
+    "862712418a8a": "g3u13.gi.second-conditional.cp.001",
+    "fc35627f4c12": "g3u13.gi.second-conditional.cp.002",
+    "11e3ec165560": "g3u13.gi.second-conditional.qf.001",
+    "7abba85ee1bc": "g3u13.gi.second-conditional.gf.009",
+    "10557e3cce18": "g3u13.gi.second-conditional.tf.003",
+    "50f0d6903082": "g3u13.gi.second-conditional.mc.004",
+    "5a882fc4b5b0": "g3u13.gi.second-conditional.ec.005",
+    "d5e05bad33b4": "g3u13.gi.second-conditional.gf.010",
+    "2f7dcb4aeaaf": "g3u13.gi.second-conditional.gs.002"
+  },
+  "tombstones": [
+    {
+      "id": "g3u13.gi.second-conditional.gs.001",
+      "key": "b0533db333e9",
+      "removedWith": "efbe98f35ccb"
+    }
+  ]
+}

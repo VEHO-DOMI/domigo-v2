@@ -64,6 +64,69 @@
       "contentHash": "d52a2c70136328c2771a1c74196df355400a99aaa480165514aff16a463cd3ae",
       "note": "round 1: 0 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
       "at": "2026-06-11T16:12:34.385Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "bd6872a618a5251ef6ddf61aab587539dc5dd85a3de43a9c05ec9029f1c61828",
+      "note": "gen ingest: 34 vocab + 32 grammar item(s); draft 76657f8687ad",
+      "at": "2026-06-16T12:18:32.981Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "85fab34a18e21b40e5a5c1e6980f2d68a5ed214c11a4d665318a62ca44283559",
+      "note": "gen ingest: 34 vocab + 32 grammar item(s); draft 0d545d0cabd4",
+      "at": "2026-06-16T12:20:14.465Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "b46839b7b0137ce4ae9a9810e042a9955017234bb5f0b242228e5eed43be9318",
+      "note": "gen ingest: 34 vocab + 32 grammar item(s); draft efbe98f35ccb",
+      "at": "2026-06-16T12:20:59.864Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "be20912f3bcfa9055e09d750e7cf989398acea6c6b1af34a8ccfb5629bf847f7",
+      "note": "gen ingest: 34 vocab + 32 grammar item(s); draft d8d2d8763c94",
+      "at": "2026-06-16T12:22:21.980Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "aba8b8f9dad4706271f413670a117ebc9096d1073265f36770984996c4f97f4c",
+      "note": "gen ingest: 34 vocab + 32 grammar item(s); draft c23d9b1873b3",
+      "at": "2026-06-16T12:30:00.717Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "aba8b8f9dad4706271f413670a117ebc9096d1073265f36770984996c4f97f4c",
+      "note": "verify round 1: 0 fix, 0 warn",
+      "at": "2026-06-16T12:30:31.557Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "aba8b8f9dad4706271f413670a117ebc9096d1073265f36770984996c4f97f4c",
+      "note": "V-1..V-22 green (0 warn)",
+      "at": "2026-06-16T12:30:47.085Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "aba8b8f9dad4706271f413670a117ebc9096d1073265f36770984996c4f97f4c",
+      "note": "round 1 doc: 38 open flag(s), 66 row(s) rendered (FULL)",
+      "at": "2026-06-16T12:30:47.179Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "aba8b8f9dad4706271f413670a117ebc9096d1073265f36770984996c4f97f4c",
+      "note": "round 1: 38 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
+      "at": "2026-06-16T12:31:40.319Z"
     }
   ]
 }

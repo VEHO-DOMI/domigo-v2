@@ -1,0 +1,2075 @@
+{
+  "schema": "grammar@1",
+  "grade": 1,
+  "unit": 4,
+  "slug": "g1-u04",
+  "items": [
+    {
+      "id": "g1u04.gi.to-be-negative.ag.001",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#reading-3 (In this scene Harry isn't happy. He's sad!)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "anagram, single token 'sad' (3 letters), in-bank, probes clean. No negative form in the answer."
+      },
+      "prompt": {
+        "text": "Richard ist nicht glücklich, er ist … (das Gegenteil von happy)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "sad",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Drei Buchstaben: das Gegenteil von happy.",
+      "hintEn": null,
+      "explainDe": "Das Gegenteil von happy ist sad (= traurig). Richard isn't happy, he's sad.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.cp.001",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He aren't happy.",
+            "He not is happy.",
+            "He doesn't happy.",
+            "He is happy not."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#reading-3 (Miss Baker isn't happy.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "German prompt -> lang=de. Correct sentence probes clean; each distractor wrong in the negative (aren't with he / word order / doesn't). Negative forms used for granting: isn't, aren't, doesn't."
+      },
+      "prompt": {
+        "text": "Du sprichst über Mike. Er ist nicht glücklich. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He isn't happy.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He aren't happy.",
+        "He not is happy.",
+        "He doesn't happy."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei he: isn't, und not nach be.",
+      "hintEn": null,
+      "explainDe": "Richtig ist He isn't happy. Bei he nimmst du isn't, und bei be brauchst du kein doesn't.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.cp.002",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "We isn't tired.",
+            "We aren't tired not.",
+            "We don't tired.",
+            "We not are tired."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#choices-6 (We aren't.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "German prompt -> lang=de. Correct sentence probes clean; distractors wrong in the negative (isn't with we / double not / don't). Negative forms used for granting: aren't, isn't, don't."
+      },
+      "prompt": {
+        "text": "Du sprichst über dich und deinen Freund. Ihr seid nicht müde. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We aren't tired.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We isn't tired.",
+        "We aren't tired not.",
+        "We don't tired."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei we: aren't.",
+      "hintEn": null,
+      "explainDe": "Richtig ist We aren't tired. Bei we nimmst du aren't und kein don't; not steht schon in aren't.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.ec.001",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Corrected sentence probes clean. Negative forms used for granting: isn't (answer), aren't (in the wrong prompt sentence)."
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: She aren't sad.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She isn't sad.",
+          "tier": "full"
+        },
+        {
+          "text": "isn't",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei she muss aren't zu isn't werden.",
+      "hintEn": null,
+      "explainDe": "Bei she/he/it ist die Verneinung isn't, nicht aren't. Also: She isn't sad.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.ec.002",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Corrected sentence probes clean. Negative forms used for granting: aren't (answer), isn't (in the wrong prompt sentence)."
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: They isn't hungry.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They aren't hungry.",
+          "tier": "full"
+        },
+        {
+          "text": "aren't",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei they muss isn't zu aren't werden.",
+      "hintEn": null,
+      "explainDe": "Bei they (Mehrzahl) ist die Verneinung aren't, nicht isn't. Also: They aren't hungry.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.ec.003",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1 (I'm not (am not) happy.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Targets the 'no amn't' rule. Corrected forms probe clean. Negative forms used for granting: I'm not, am not (answers); amn't is the deliberate error in the prompt."
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I amn't cold.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'm not cold.",
+          "tier": "full"
+        },
+        {
+          "text": "I am not cold.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm not",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es gibt kein amn't – sag I'm not.",
+      "hintEn": null,
+      "explainDe": "amn't gibt es nicht. Bei I heißt die Verneinung I'm not (= I am not). Also: I'm not cold.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gf.007",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1 (I'm not (am not) happy.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Affirmative second sentence probes clean. Negative forms used for granting: am not, I'm not ('m not)."
+      },
+      "prompt": {
+        "text": "I ___ happy. I'm sad. (–)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "am not",
+          "tier": "full"
+        },
+        {
+          "text": "I'm not happy.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei I: I'm not (= I am not). Es gibt kein amn't.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von be bei I ist am not (Kurzform I'm not). Ein einzelnes amn't gibt es nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gf.008",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#reading-4 (Richard isn't cold now. He's hot.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from the Richard story. Negative forms used for granting: isn't, is not."
+      },
+      "prompt": {
+        "text": "He ___ cold. He's hot. (–)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "isn't",
+          "tier": "full"
+        },
+        {
+          "text": "is not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei he: isn't (= is not).",
+      "hintEn": null,
+      "explainDe": "Die Verneinung bei he/she/it ist isn't (= is not). aren't passt nur zu you/we/they.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gf.009",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1 (They aren't (are not) angry.)",
+        "seedV1": "m1-u4-adjectives-be-gf-003",
+        "narrative": null,
+        "note": "Affirmative second sentence probes clean. Negative forms used for granting: aren't, are not."
+      },
+      "prompt": {
+        "text": "They ___ angry. They're happy. (–)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "aren't",
+          "tier": "full"
+        },
+        {
+          "text": "are not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei they: aren't (= are not).",
+      "hintEn": null,
+      "explainDe": "Bei you/we/they ist die Verneinung aren't (= are not). isn't brauchst du nur bei he/she/it.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gf.010",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#reading-4 (Richard isn't happy. He's hungry.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from the Richard story (lunchtime scene). Negative forms used for granting: isn't, is not."
+      },
+      "prompt": {
+        "text": "Richard ___ happy. He's hungry. (–)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "isn't",
+          "tier": "full"
+        },
+        {
+          "text": "is not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Richard ist he: isn't.",
+      "hintEn": null,
+      "explainDe": "Richard ist he, also isn't happy (= is not happy).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gf.011",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1 (We aren't (are not) hungry.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Affirmative second sentence probes clean. Negative forms used for granting: aren't, are not."
+      },
+      "prompt": {
+        "text": "We ___ hungry. We're hot. (–)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "aren't",
+          "tier": "full"
+        },
+        {
+          "text": "are not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei we: aren't.",
+      "hintEn": null,
+      "explainDe": "Bei we ist die Verneinung aren't (= are not), genau wie bei you und they.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gf.012",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#reading-3 (In this scene Harry isn't happy. He's scared.)",
+        "seedV1": "m1-u4-adjectives-be-gf-006",
+        "narrative": null,
+        "note": "Two blanks pipe-split, minimal-pair contrast isn't vs aren't. Negative forms used for granting: isn't, is not, aren't, are not."
+      },
+      "prompt": {
+        "text": "Mike ___ happy. He's scared. The girls ___ scared. They're excited. (–)",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "isn't | aren't",
+          "tier": "full"
+        },
+        {
+          "text": "is not | are not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mike ist he (isn't), the girls ist they (aren't).",
+      "hintEn": null,
+      "explainDe": "Bei he (Mike) nimmst du isn't, bei they (the girls) aren't. Achte auf die Einzahl und Mehrzahl.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gs.002",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "group-sort, 2 groups each 3 members; labels and members in-bank, members probe clean. Negative forms used for granting: isn't, aren't (group labels)."
+      },
+      "prompt": {
+        "text": "isn't oder aren't? Sortiere die Wörter.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "isn't",
+          "members": [
+            "he",
+            "she",
+            "it"
+          ]
+        },
+        {
+          "label": "aren't",
+          "members": [
+            "you",
+            "we",
+            "they"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "isn't nur bei he/she/it, aren't bei you/we/they.",
+      "hintEn": null,
+      "explainDe": "he/she/it bekommen isn't. you/we/they bekommen aren't. (I bekommt 'm not.)",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.mc.001",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "aren't",
+            "am not",
+            "don't",
+            "wasn't"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Distractors are word-distinct (not apostrophe-only): aren't / am not / don't / wasn't. Negative forms used for granting: isn't, aren't, am not, don't, wasn't (pool)."
+      },
+      "prompt": {
+        "text": "She ___ sad. She's happy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "isn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "aren't",
+        "am not",
+        "don't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "She ist Einzahl: isn't.",
+      "hintEn": null,
+      "explainDe": "Bei she heißt die Verneinung isn't. aren't passt zu Mehrzahl, am not nur zu I, und don't braucht man bei be nie.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.mc.002",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "isn't",
+            "am not",
+            "doesn't",
+            "wasn't"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "dog/dogs in-bank (g1-u02); distractors word-distinct (isn't / am not / doesn't / wasn't). Negative forms used for granting: aren't, isn't, am not, doesn't, wasn't (pool)."
+      },
+      "prompt": {
+        "text": "The dogs ___ hungry. They're bored.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "aren't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "isn't",
+        "am not",
+        "doesn't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "The dogs ist Mehrzahl: aren't.",
+      "hintEn": null,
+      "explainDe": "Bei einer Mehrzahl (the dogs = they) nimmst du aren't. isn't passt nur zur Einzahl.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.mc.003",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "isn't",
+            "aren't",
+            "doesn't",
+            "wasn't"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1 (I'm not (am not) happy.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Answer 'am not' is word-distinct from all distractors (isn't / aren't / doesn't). Negative forms used for granting: am not, isn't, aren't, doesn't, wasn't (pool)."
+      },
+      "prompt": {
+        "text": "I ___ nervous. I'm excited.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "am not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "isn't",
+        "aren't",
+        "doesn't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei I: am not (= I'm not).",
+      "hintEn": null,
+      "explainDe": "Bei I heißt die Verneinung am not (Kurzform I'm not). isn't und aren't passen nicht zu I.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.mc.004",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "We isn't hungry.",
+            "We not are hungry.",
+            "We don't hungry.",
+            "We aren't hungry not."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1 (We aren't (are not) hungry.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "German prompt -> lang=de. Whole-sentence options, each distractor wrong in the negative (isn't with we / word order / don't). Negative forms used for granting: aren't, isn't, don't."
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We aren't hungry.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We isn't hungry.",
+        "We not are hungry.",
+        "We don't hungry."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei we: aren't, und not steht nach be.",
+      "hintEn": null,
+      "explainDe": "Richtig ist We aren't hungry. Bei we nimmst du aren't, nicht isn't, und not kommt nach are (nicht davor).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.mp.001",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "matching-pairs En<->En, unique sides, 4 pairs. Left affirmative sides and right negative sides probe clean. Negative forms used for granting: 'm not (I'm not), isn't, aren't."
+      },
+      "prompt": {
+        "text": "Welche Sätze passen zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I am happy.",
+          "right": "I'm not happy."
+        },
+        {
+          "left": "He is cold.",
+          "right": "He isn't cold."
+        },
+        {
+          "left": "We are hungry.",
+          "right": "We aren't hungry."
+        },
+        {
+          "left": "They are angry.",
+          "right": "They aren't angry."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mach aus jedem Satz die Verneinung.",
+      "hintEn": null,
+      "explainDe": "am → 'm not, is → isn't, are → aren't. So wird aus dem Satz die Verneinung.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.mt.001",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1 (No, he isn't. / No, I'm not. / No, they aren't.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "matching En<->En, unique right-sides, 4 pairs. Question and short-answer sides probe clean. Negative forms used for granting: isn't, 'm not (I'm not), aren't."
+      },
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Is he cold?",
+          "right": "No, he isn't."
+        },
+        {
+          "left": "Are you hungry?",
+          "right": "No, I'm not."
+        },
+        {
+          "left": "Are they happy?",
+          "right": "No, they aren't."
+        },
+        {
+          "left": "Is she sad?",
+          "right": "No, she isn't sad. She's happy."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Kurzantwort wiederholt das Subjekt: he → he, you → I, they → they.",
+      "hintEn": null,
+      "explainDe": "In der verneinten Kurzantwort steht das Subjekt + isn't/aren't/'m not: Is he …? → No, he isn't.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.sb.001",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "aren't",
+            "they",
+            "hot",
+            "she",
+            "happy"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#reading-4 (Richard isn't cold now.)",
+        "seedV1": "m1-u4-adjectives-be-sb-001",
+        "narrative": null,
+        "note": "sentence-building. distractorPool chips (aren't/they/hot/she/happy) all in-bank and probe clean. Negative forms used for granting: isn't, aren't (pool)."
+      },
+      "prompt": {
+        "text": "isn't / He / cold / .",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He isn't cold.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: Subjekt + isn't + Adjektiv.",
+      "hintEn": null,
+      "explainDe": "Die Wörter ergeben He isn't cold. Das Adjektiv steht nach isn't.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.sb.002",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "isn't",
+            "he",
+            "tired",
+            "they",
+            "cold"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1 (We aren't (are not) hungry.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "sentence-building. distractorPool chips (isn't/he/tired/they/cold) all in-bank and probe clean. Negative forms used for granting: aren't, isn't (pool)."
+      },
+      "prompt": {
+        "text": "aren't / We / hungry / .",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We aren't hungry.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: We + aren't + Adjektiv.",
+      "hintEn": null,
+      "explainDe": "Die Wörter ergeben We aren't hungry. Bei we nimmst du aren't, das Adjektiv steht danach.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.tf.001",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#reading-4 (Richard isn't cold now.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Source 'He is cold' probes clean; target is negative. Negative forms used for granting: isn't, is not."
+      },
+      "prompt": {
+        "text": "He is cold. → He ___ cold. (–)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "isn't",
+          "tier": "full"
+        },
+        {
+          "text": "is not",
+          "tier": "full"
+        },
+        {
+          "text": "He isn't cold.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus is wird in der Verneinung isn't.",
+      "hintEn": null,
+      "explainDe": "Aus He is cold wird verneint He isn't cold (= is not cold).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.tf.002",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": "m1-u4-adjectives-be-tf-001",
+        "narrative": null,
+        "note": "Source 'They are bored' probes clean; target is negative. Negative forms used for granting: aren't, are not."
+      },
+      "prompt": {
+        "text": "They are bored. → They ___ bored. (–)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "aren't",
+          "tier": "full"
+        },
+        {
+          "text": "are not",
+          "tier": "full"
+        },
+        {
+          "text": "They aren't bored.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus are wird in der Verneinung aren't.",
+      "hintEn": null,
+      "explainDe": "Aus They are bored wird verneint They aren't bored (= are not bored).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.tf.003",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1 (I'm not (am not) happy.)",
+        "seedV1": "m1-u4-adjectives-be-tf-001",
+        "narrative": null,
+        "note": "Source 'I am hungry' probes clean; target is negative. Negative forms used for granting: 'm not, am not."
+      },
+      "prompt": {
+        "text": "I am hungry. → I ___ hungry. (–)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "am not",
+          "tier": "full"
+        },
+        {
+          "text": "I'm not hungry.",
+          "tier": "full"
+        },
+        {
+          "text": "I am not hungry.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus I am wird I'm not (es gibt kein amn't).",
+      "hintEn": null,
+      "explainDe": "Aus I am hungry wird verneint I'm not hungry (= I am not hungry). amn't gibt es nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.tr.001",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": "m1-u4-adjectives-be-tr-001",
+        "narrative": null,
+        "note": "translation deToEn. English answers probe clean. Negative forms used for granting: 'm not (I'm not), am not."
+      },
+      "prompt": {
+        "text": "Ich bin nicht müde.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'm not tired.",
+          "tier": "full"
+        },
+        {
+          "text": "I am not tired.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "nicht müde = not tired. Bei I: I'm not.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung bei I ist I'm not (= I am not). müde = tired.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.tr.002",
+      "structureId": "g1u04.s.to-be-negative",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1 (They aren't (are not) angry.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "translation deToEn. English answers probe clean. Negative forms used for granting: aren't, are not."
+      },
+      "prompt": {
+        "text": "Sie sind nicht wütend. Sie sind glücklich.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They aren't angry. They're happy.",
+          "tier": "full"
+        },
+        {
+          "text": "They are not angry. They are happy.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sie (Mehrzahl) = they: They aren't … wütend = angry.",
+      "hintEn": null,
+      "explainDe": "Bei they ist die Verneinung aren't (= are not). wütend = angry, glücklich = happy.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.ag.001",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single-token answer 'happy' (5 letters, >=3). German cue lang='de'. Adjective slot in the question 'Is she happy?'. 'happy' is in-bank (g1-u04)."
+      },
+      "prompt": {
+        "text": "Is she …? Wie geht es ihr, wenn sie lacht? (Gefühl)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "happy",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Gefühl steht nach is in der Frage 'Is she …?'.",
+      "hintEn": null,
+      "explainDe": "Nach der be-Form in der Frage steht das Gefühl: Is she happy?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.cp.001",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Do you happy?",
+            "You are happy?",
+            "Are happy you?",
+            "Is you happy?",
+            "Are you happy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form token granted: 'Are' (inverted). German prompt -> lang='de'. Each distractor flawed only in the question structure (added do / no inversion / wrong word order); all words in-bank."
+      },
+      "prompt": {
+        "text": "Du willst deine Freundin fragen, ob sie glücklich ist. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you happy?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Do you happy?",
+        "You are happy?",
+        "Are happy you?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die be-Form muss vor you stehen, und ein do brauchst du nicht.",
+      "hintEn": null,
+      "explainDe": "Bei be bildest du die Frage durch Umstellen: Are you happy? Du brauchst kein do, und are muss vor you stehen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.cp.003",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Is he happy? — No, he aren't.",
+            "Is he happy? — No, he not.",
+            "Are he happy? — No, he isn't.",
+            "Is he happy? — No, he isn't",
+            "Do he happy? — No, he isn't."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question + short-answer tokens granted: 'Is' (inverted), 'No, he isn't' (negative short answer). Distractors flawed in agreement (aren't with he), missing be (he not), or wrong question form (Are he). Name Tom in proper-noun list. Carrier from SB box 'Is he happy? No, he isn't.'"
+      },
+      "prompt": {
+        "text": "Tom ist nicht glücklich, er ist traurig. Du fragst und gibst die richtige Antwort. Welche Zeile ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is he happy? — No, he isn't.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Is he happy? — No, he aren't.",
+        "Is he happy? — No, he not.",
+        "Are he happy? — No, he isn't."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zu he gehört is — in der Frage und in der kurzen Antwort.",
+      "hintEn": null,
+      "explainDe": "Zu he gehört is: Is he happy? Die verneinte kurze Antwort ist No, he isn't. (nicht aren't und nicht 'he not').",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.ec.001",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form token granted: 'Are' (inverted). One error (extra 'do' before be). Models the SB common error 'Do you are happy?' -> 'Are you happy?' All words in-bank."
+      },
+      "prompt": {
+        "text": "Do you are happy?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you happy?",
+          "tier": "full"
+        },
+        {
+          "text": "Are you happy",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei be brauchst du kein do.",
+      "hintEn": null,
+      "explainDe": "In einer Frage mit be stellst du nur are nach vorne. Ein do gehört nicht dazu: Are you happy?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.ec.002",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question + short-answer tokens granted: 'Are' (inverted), 'Yes, I am' (full-form short answer). Models SB common error 'Yes, I'm.' -> 'Yes, I am.' All words in-bank."
+      },
+      "prompt": {
+        "text": "Are you hungry? — Yes, I'm.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you hungry? — Yes, I am.",
+          "tier": "full"
+        },
+        {
+          "text": "Yes, I am.",
+          "tier": "partial"
+        },
+        {
+          "text": "Yes, I am",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In der kurzen Ja-Antwort darfst du keine Kurzform benutzen.",
+      "hintEn": null,
+      "explainDe": "Die kurze Antwort heißt Yes, I am. Die Kurzform 'I'm' ist hier falsch — am muss ausgeschrieben sein.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.gf.001",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form token granted: 'Are' (inverted to be, sentence-initial). Carrier from SB grammar box 'Are you happy?'."
+      },
+      "prompt": {
+        "text": "___ you happy?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei you steht in der Frage are ganz vorne.",
+      "hintEn": null,
+      "explainDe": "In einer Frage mit be kommt die be-Form nach vorne: Are you happy? Zu you gehört are.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.gf.002",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form token granted: 'Is' (inverted to be, sentence-initial). Carrier modelled on SB box 'Is he happy?'."
+      },
+      "prompt": {
+        "text": "___ he cold?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Is",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei he steht in der Frage is ganz vorne.",
+      "hintEn": null,
+      "explainDe": "Zu he gehört is. In der Frage steht is vor dem Subjekt: Is he cold?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.gf.003",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question + short-answer tokens granted: 'Is' (inverted), 'Yes, she is' (affirmative short answer, full form, no contraction). Carrier from SB box 'Is she happy? Yes, she is.'"
+      },
+      "prompt": {
+        "text": "___ she sad? — Yes, she ___.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Is | is",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage mit is vorne; in der kurzen Antwort steht is ohne Kurzform.",
+      "hintEn": null,
+      "explainDe": "Die Frage beginnt mit Is. In der kurzen Antwort wiederholst du die be-Form: Yes, she is. (nicht 'Yes, she's').",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.gs.001",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form tokens granted: 'Is' and 'Are' (inverted, sentence-initial). 2 groups, 3 members each. Members are English questions. answers=[]."
+      },
+      "prompt": {
+        "text": "Sortiere die Fragen nach ihrem ersten Wort.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "Is …?",
+          "members": [
+            "Is he cold?",
+            "Is she happy?",
+            "Is it hot?"
+          ]
+        },
+        {
+          "label": "Are …?",
+          "members": [
+            "Are you sad?",
+            "Are they tired?",
+            "Are we hungry?"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Zu he/she/it gehört is, zu you/we/they gehört are.",
+      "hintEn": null,
+      "explainDe": "Fragen mit he/she/it beginnen mit Is, Fragen mit you/we/they beginnen mit Are.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.mc.001",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Is",
+            "Am",
+            "Do",
+            "Does",
+            "Be"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form token granted: 'Are' (inverted). Distractors are full words (no apostrophe-only choices). 'Do'/'Does'/'Be' are wrong by structure, all in core allowlist."
+      },
+      "prompt": {
+        "text": "___ they hungry?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Is",
+        "Am",
+        "Do"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zu they gehört eine bestimmte be-Form vorne in der Frage.",
+      "hintEn": null,
+      "explainDe": "Zu they gehört are: Are they hungry? Is passt nur zu he/she/it, am nur zu I, und do brauchst du bei be nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.mc.002",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Yes, I'm.",
+            "Yes, you are.",
+            "Yes, he is.",
+            "Yes, they are.",
+            "No, I'm not."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Short-answer tokens granted: 'Yes, I am' (affirmative, full form). Distractors are whole sentences (not apostrophe-only); 'Yes, I'm.' is the classic wrong contraction; all words in-bank. Carrier from SB box 'Are you happy? Yes, I am.'"
+      },
+      "prompt": {
+        "text": "Are you cold? — ___",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Yes, I am.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Yes, I'm.",
+        "Yes, you are.",
+        "Yes, he is."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die kurze Antwort passt zu I und steht ohne Kurzform.",
+      "hintEn": null,
+      "explainDe": "Auf 'Are you …?' antwortest du mit I: Yes, I am. Die Kurzform 'I'm' geht in der kurzen Ja-Antwort nicht, und you/he passen vom Sinn nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.mt.002",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question + short-answer tokens granted: 'Are'/'Is' (inverted), 'Yes, I am'/'Yes, they are' (affirmative), 'No, he isn't'/'No, she isn't' (negative). Question<->short-answer, English<->English. 4 unique right-sides. answers=[]."
+      },
+      "prompt": {
+        "text": "Frage und passende Antwort verbinden.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Are you happy?",
+          "right": "Yes, I am."
+        },
+        {
+          "left": "Is he sad?",
+          "right": "No, he isn't."
+        },
+        {
+          "left": "Are they cold?",
+          "right": "Yes, they are."
+        },
+        {
+          "left": "Is she tired?",
+          "right": "No, she isn't."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte darauf, welche be-Form zum Subjekt passt und ob die Antwort Ja oder Nein ist.",
+      "hintEn": null,
+      "explainDe": "Jede Frage hat genau eine passende Kurzantwort: zu you -> I am, zu he/she -> he/she is(n't), zu they -> they are.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.qf.001",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form token granted: 'Is' (inverted, sentence-initial). Chips joined with ' / '. All words in-bank."
+      },
+      "prompt": {
+        "text": "she / is / nervous",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is she nervous?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit is.",
+      "hintEn": null,
+      "explainDe": "Aus den Wörtern baust du eine Frage: Is she nervous? Die be-Form is steht vorne.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.qf.002",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form token granted: 'Is' (inverted before noun subject). Chips joined with ' / '. All words in-bank."
+      },
+      "prompt": {
+        "text": "the dog / hungry / is",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is the dog hungry?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit is, dann kommt das Subjekt.",
+      "hintEn": null,
+      "explainDe": "Auch bei einem Nomen als Subjekt steht is vorne: Is the dog hungry?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.sb.001",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "is",
+            "am",
+            "do",
+            "happy"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form token granted: 'Are' (inverted, sentence-initial). Distractor chips (is/am/do/happy) all in-bank and gate-clean. Answer tokens + chips <= 12."
+      },
+      "prompt": {
+        "text": "are / they / excited / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are they excited?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit are, dann they.",
+      "hintEn": null,
+      "explainDe": "Setze die Wörter zur Frage zusammen: Are they excited? Zu they gehört are, und are steht vorne.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.tf.001",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form token granted: 'Is' (inverted from statement). German trigger in parentheses (no English grammar jargon). All words in-bank."
+      },
+      "prompt": {
+        "text": "He is sad. → ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is he sad?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Stelle is und he um.",
+      "hintEn": null,
+      "explainDe": "Für die Frage tauschst du Subjekt und be: He is sad. wird zu Is he sad?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.tf.002",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form token granted: 'Are' (inverted from statement). German trigger in parentheses. All words in-bank."
+      },
+      "prompt": {
+        "text": "They are scared. → ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are they scared?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Stelle are und they um.",
+      "hintEn": null,
+      "explainDe": "Subjekt und be tauschen: They are scared. wird zu Are they scared?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.tr.001",
+      "structureId": "g1u04.s.to-be-questions",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 4- Emotions.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question-form token granted: 'Are' (inverted). direction=deToEn, German prompt lang='de'. English answer all in-bank."
+      },
+      "prompt": {
+        "text": "Bist du müde?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you tired?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne die Frage mit are.",
+      "hintEn": null,
+      "explainDe": "Im Englischen stellst du are nach vorne: Are you tired?",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

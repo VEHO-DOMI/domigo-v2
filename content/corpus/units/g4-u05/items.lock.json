@@ -1,0 +1,90 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g4-u05",
+  "items": {
+    "1e6a9748208c": "g4u05.gi.past-perfect-connectors.gf.001",
+    "6ea99654d8a4": "g4u05.gi.past-perfect-connectors.gf.002",
+    "943a5668692c": "g4u05.gi.past-perfect-connectors.gf.003",
+    "5d855ffc6eae": "g4u05.gi.past-perfect-connectors.gf.004",
+    "8f49ba79d2dd": "g4u05.gi.past-perfect-connectors.gf.005",
+    "55e242b1317d": "g4u05.gi.past-perfect-connectors.gf.006",
+    "557cf23dc3a7": "g4u05.gi.past-perfect-connectors.gf.007",
+    "75bd1e21e6a0": "g4u05.gi.past-perfect-connectors.gf.008",
+    "51d34293284e": "g4u05.gi.past-perfect-connectors.gf.009",
+    "bc740871b3c1": "g4u05.gi.past-perfect-connectors.gf.010",
+    "34f04f113892": "g4u05.gi.past-perfect-connectors.gf.011",
+    "a86c0db190e4": "g4u05.gi.past-perfect-connectors.gf.012",
+    "1c7b89b5e369": "g4u05.gi.past-perfect-connectors.gf.013",
+    "7b3679628832": "g4u05.gi.past-perfect-connectors.gf.014",
+    "87d865da0e04": "g4u05.gi.past-perfect-connectors.gf.015",
+    "de0b39c03feb": "g4u05.gi.past-perfect-connectors.mc.001",
+    "1129ba51818b": "g4u05.gi.past-perfect-connectors.mc.002",
+    "8c33249a8055": "g4u05.gi.past-perfect-connectors.mc.003",
+    "b3148876561a": "g4u05.gi.past-perfect-connectors.mc.004",
+    "62fa4fd6ec8d": "g4u05.gi.past-perfect-connectors.mc.005",
+    "ff622cb43915": "g4u05.gi.past-perfect-connectors.mc.006",
+    "0639c62b0594": "g4u05.gi.past-perfect-connectors.mc.007",
+    "6fcb478438ea": "g4u05.gi.past-perfect-connectors.mc.008",
+    "4294e1022d09": "g4u05.gi.past-perfect-connectors.mc.009",
+    "edbb6206bc76": "g4u05.gi.past-perfect-connectors.mc.010",
+    "e013f7ab63ee": "g4u05.gi.past-perfect-connectors.ec.001",
+    "2788804b2311": "g4u05.gi.past-perfect-connectors.ec.002",
+    "d3759b7e6c5a": "g4u05.gi.past-perfect-connectors.ec.003",
+    "7cb31475534a": "g4u05.gi.past-perfect-connectors.ec.004",
+    "e2a4066c7229": "g4u05.gi.past-perfect-connectors.ec.005",
+    "bb34e1aea42d": "g4u05.gi.past-perfect-connectors.ec.006",
+    "c24a894ad909": "g4u05.gi.past-perfect-connectors.ec.007",
+    "7a40605b814c": "g4u05.gi.past-perfect-connectors.ec.008",
+    "cde7f8b72b6d": "g4u05.gi.past-perfect-connectors.ec.009",
+    "b7096199ef1c": "g4u05.gi.past-perfect-connectors.tf.001",
+    "7ab1382f8e6d": "g4u05.gi.past-perfect-connectors.tf.002",
+    "5450389cac96": "g4u05.gi.past-perfect-connectors.tf.003",
+    "40f4391fef5a": "g4u05.gi.past-perfect-connectors.tf.004",
+    "6e42ecf22eba": "g4u05.gi.past-perfect-connectors.tr.001",
+    "d379e69050e2": "g4u05.gi.past-perfect-connectors.tr.002",
+    "261c379b0e5a": "g4u05.gi.past-perfect-connectors.tr.003",
+    "8df3583365ef": "g4u05.gi.past-perfect-connectors.tr.004",
+    "ac310618322e": "g4u05.gi.past-perfect-connectors.cp.001",
+    "7709f6eb55fe": "g4u05.gi.past-perfect-connectors.sb.001",
+    "afa64dcd2def": "g4u05.gi.past-perfect-connectors.sb.002",
+    "9db6679fd2e4": "g4u05.gi.past-perfect-connectors.mt.001",
+    "35e9322d5bfa": "g4u05.gi.past-perfect-connectors.gs.001",
+    "4f309ab336f4": "g4u05.gi.past-perfect-connectors.qf.001",
+    "1965c7f16b0c": "g4u05.gi.past-perfect-connectors.gf.017",
+    "ff88e1e571e9": "g4u05.gi.past-perfect-connectors.gf.018",
+    "34ac3959cb9f": "g4u05.gi.past-perfect-connectors.gf.019",
+    "c593d4c0fa9a": "g4u05.gi.past-perfect-connectors.gf.020",
+    "560fc81f20a0": "g4u05.gi.past-perfect-connectors.gf.021",
+    "07dc1aa5cb06": "g4u05.gi.past-perfect-connectors.mt.003",
+    "577f82bd6340": "g4u05.gi.past-perfect-connectors.gs.003",
+    "6aa4a798f2d3": "g4u05.gi.past-perfect-connectors.mc.012",
+    "ec7754e9b9a1": "g4u05.gi.past-perfect-connectors.cp.003"
+  },
+  "tombstones": [
+    {
+      "id": "g4u05.gi.past-perfect-connectors.gf.016",
+      "key": "b13d8c1a5caa",
+      "removedWith": "8a024e7a5773"
+    },
+    {
+      "id": "g4u05.gi.past-perfect-connectors.mt.002",
+      "key": "3e9989fbbace",
+      "removedWith": "8a024e7a5773"
+    },
+    {
+      "id": "g4u05.gi.past-perfect-connectors.gs.002",
+      "key": "6444f05f0b04",
+      "removedWith": "8a024e7a5773"
+    },
+    {
+      "id": "g4u05.gi.past-perfect-connectors.mc.011",
+      "key": "bd5499b55ec0",
+      "removedWith": "8a024e7a5773"
+    },
+    {
+      "id": "g4u05.gi.past-perfect-connectors.cp.002",
+      "key": "68d129b053b2",
+      "removedWith": "562fe3f12b38"
+    }
+  ]
+}

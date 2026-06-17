@@ -1,0 +1,3300 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g1-u10",
+  "briefBank": "219f364b86ff",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g1u10.w.20-twenty",
+      "w": "20 twenty",
+      "g": "20 zwanzig",
+      "d": "The number after 19 and before 21. It is two times ten.",
+      "s": "Look at the price tag: the headphones are ___ pounds.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "twenty",
+          "tier": "full"
+        },
+        {
+          "text": "20",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "twenty",
+          "tier": "full"
+        },
+        {
+          "text": "20",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "twenty",
+            "tier": "full"
+          },
+          {
+            "text": "20",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zwanzig",
+            "tier": "full"
+          },
+          {
+            "text": "20 zwanzig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "price tag",
+          "de": "Preisschild",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "thirty",
+        "fifty",
+        "ten"
+      ],
+      "hintDe": "Zähl in Zehnerschritten: zehn, dann ...",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "thirty",
+          "fifty",
+          "ten",
+          "forty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.30-thirty",
+      "w": "30 thirty",
+      "g": "30 dreißig",
+      "d": "The number after 29 and before 31. It is three times ten.",
+      "s": "Look at the price tag. The book is ___ pounds.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "thirty",
+          "tier": "full"
+        },
+        {
+          "text": "30",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thirty",
+          "tier": "full"
+        },
+        {
+          "text": "30",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thirty",
+            "tier": "full"
+          },
+          {
+            "text": "30",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dreißig",
+            "tier": "full"
+          },
+          {
+            "text": "30 dreißig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "price tag",
+          "de": "Preisschild",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "twenty",
+        "forty",
+        "ten"
+      ],
+      "hintDe": "Drei mal zehn.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "twenty",
+          "forty",
+          "ten",
+          "fifty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.40-forty",
+      "w": "40 forty",
+      "g": "40 vierzig",
+      "d": "The number after 39 and before 41. It is four times ten.",
+      "s": "I'd like ___ kilos of beans, please. I love beans!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "forty",
+          "tier": "full"
+        },
+        {
+          "text": "40",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "forty",
+          "tier": "full"
+        },
+        {
+          "text": "40",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "forty",
+            "tier": "full"
+          },
+          {
+            "text": "40",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vierzig",
+            "tier": "full"
+          },
+          {
+            "text": "40 vierzig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "kilos",
+          "de": "Kilo",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "fifty",
+        "twenty",
+        "thirty"
+      ],
+      "hintDe": "Vier mal zehn.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "fifty",
+          "twenty",
+          "thirty",
+          "ten"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.50-fifty",
+      "w": "50 fifty",
+      "g": "50 fünfzig",
+      "d": "The number after 49 and before 51. It is five times ten.",
+      "s": "Trainers for ___ pounds! Come and see them in the window.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fifty",
+          "tier": "full"
+        },
+        {
+          "text": "50",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fifty",
+          "tier": "full"
+        },
+        {
+          "text": "50",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fifty",
+            "tier": "full"
+          },
+          {
+            "text": "50",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fünfzig",
+            "tier": "full"
+          },
+          {
+            "text": "50 fünfzig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "forty",
+        "sixty",
+        "twenty"
+      ],
+      "hintDe": "Fünf mal zehn.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "forty",
+          "sixty",
+          "twenty",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.60-sixty",
+      "w": "60 sixty",
+      "g": "60 sechzig",
+      "d": "The number after 59 and before 61. It is six times ten.",
+      "s": "How much is the magazine? It's ___ pence.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sixty",
+          "tier": "full"
+        },
+        {
+          "text": "60",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sixty",
+          "tier": "full"
+        },
+        {
+          "text": "60",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sixty",
+            "tier": "full"
+          },
+          {
+            "text": "60",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sechzig",
+            "tier": "full"
+          },
+          {
+            "text": "60 sechzig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "pence",
+          "de": "Pence (Cent in Großbritannien)",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "fifty",
+        "seventy",
+        "twenty"
+      ],
+      "hintDe": "Sechs mal zehn.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "fifty",
+          "seventy",
+          "twenty",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.70-seventy",
+      "w": "70 seventy",
+      "g": "70 siebzig",
+      "d": "The number after 69 and before 71. It is seven times ten.",
+      "s": "The price of the shoes in the window is ___ pounds.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "seventy",
+          "tier": "full"
+        },
+        {
+          "text": "70",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "seventy",
+          "tier": "full"
+        },
+        {
+          "text": "70",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "seventy",
+            "tier": "full"
+          },
+          {
+            "text": "70",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "siebzig",
+            "tier": "full"
+          },
+          {
+            "text": "70 siebzig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sixty",
+        "eighty",
+        "twenty"
+      ],
+      "hintDe": "Sieben mal zehn.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "sixty",
+          "eighty",
+          "twenty",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.80-eighty",
+      "w": "80 eighty",
+      "g": "80 achtzig",
+      "d": "The number after 79 and before 81. It is eight times ten.",
+      "s": "A jacket for ___ pounds! Look at the price tag.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "eighty",
+          "tier": "full"
+        },
+        {
+          "text": "80",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "eighty",
+          "tier": "full"
+        },
+        {
+          "text": "80",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "eighty",
+            "tier": "full"
+          },
+          {
+            "text": "80",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "achtzig",
+            "tier": "full"
+          },
+          {
+            "text": "80 achtzig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "price tag",
+          "de": "Preisschild",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "seventy",
+        "ninety",
+        "twenty"
+      ],
+      "hintDe": "Acht mal zehn.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "seventy",
+          "ninety",
+          "twenty",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB p.85 ex.2",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.90-ninety",
+      "w": "90 ninety",
+      "g": "90 neunzig",
+      "d": "The number after 89 and before 91. Ten more and you have one hundred.",
+      "s": "Three sweaters for ___ pounds! That's a good price.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "ninety",
+          "tier": "full"
+        },
+        {
+          "text": "90",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ninety",
+          "tier": "full"
+        },
+        {
+          "text": "90",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ninety",
+            "tier": "full"
+          },
+          {
+            "text": "90",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "neunzig",
+            "tier": "full"
+          },
+          {
+            "text": "90 neunzig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "eighty",
+        "seventy",
+        "one hundred"
+      ],
+      "hintDe": "Zehn mehr, und du hast einhundert.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "eighty",
+          "seventy",
+          "one hundred",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB p.85 ex.2",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.100-one-hundred",
+      "w": "100 one hundred",
+      "g": "100 einhundert",
+      "d": "It is ten times ten.",
+      "s": "The mobile phone is over ___ pounds. It is very expensive.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "one hundred",
+          "tier": "full"
+        },
+        {
+          "text": "a hundred",
+          "tier": "partial"
+        },
+        {
+          "text": "hundred",
+          "tier": "partial"
+        },
+        {
+          "text": "100",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "one hundred",
+          "tier": "full"
+        },
+        {
+          "text": "a hundred",
+          "tier": "partial"
+        },
+        {
+          "text": "hundred",
+          "tier": "partial"
+        },
+        {
+          "text": "100",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "one hundred",
+            "tier": "full"
+          },
+          {
+            "text": "a hundred",
+            "tier": "partial"
+          },
+          {
+            "text": "hundred",
+            "tier": "partial"
+          },
+          {
+            "text": "100",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einhundert",
+            "tier": "full"
+          },
+          {
+            "text": "hundert",
+            "tier": "full"
+          },
+          {
+            "text": "100 einhundert",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "one thousand",
+        "ninety",
+        "ten"
+      ],
+      "hintDe": "Zehn mal zehn.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "one thousand",
+          "ninety",
+          "ten",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.1000-one-thousand",
+      "w": "1000 one thousand",
+      "g": "1000 eintausend",
+      "d": "It is ten times a hundred.",
+      "s": "This mobile phone is over ___ pounds! That is a lot of money.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "one thousand",
+          "tier": "full"
+        },
+        {
+          "text": "a thousand",
+          "tier": "partial"
+        },
+        {
+          "text": "thousand",
+          "tier": "partial"
+        },
+        {
+          "text": "1000",
+          "tier": "full"
+        },
+        {
+          "text": "1,000",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "one thousand",
+          "tier": "full"
+        },
+        {
+          "text": "a thousand",
+          "tier": "partial"
+        },
+        {
+          "text": "thousand",
+          "tier": "partial"
+        },
+        {
+          "text": "1000",
+          "tier": "full"
+        },
+        {
+          "text": "1,000",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "one thousand",
+            "tier": "full"
+          },
+          {
+            "text": "a thousand",
+            "tier": "partial"
+          },
+          {
+            "text": "thousand",
+            "tier": "partial"
+          },
+          {
+            "text": "1000",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eintausend",
+            "tier": "full"
+          },
+          {
+            "text": "tausend",
+            "tier": "full"
+          },
+          {
+            "text": "1000 eintausend",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "one hundred",
+        "ninety",
+        "fifty"
+      ],
+      "hintDe": "Zehn mal einhundert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "one hundred",
+          "ninety",
+          "fifty",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.how-much-is-are",
+      "w": "how much is/are ...",
+      "g": "wie viel kostet/kosten ...",
+      "d": "You ask this in a shop when you want to find out the price of something.",
+      "s": "___ the trainers? — They're 69 pounds.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "How much are",
+          "tier": "full"
+        },
+        {
+          "text": "How much is",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "how much is",
+          "tier": "full"
+        },
+        {
+          "text": "how much are",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "how much is",
+            "tier": "full"
+          },
+          {
+            "text": "how much are",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wie viel kostet",
+            "tier": "full"
+          },
+          {
+            "text": "wie viel kosten",
+            "tier": "full"
+          },
+          {
+            "text": "was kostet",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "Anything else?",
+        "No problem.",
+        "That's better."
+      ],
+      "hintDe": "So fragst du nach dem Preis. Bei mehreren Dingen nimmst du die Mehrzahl-Form.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "Anything else?",
+          "No problem.",
+          "That's better.",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.77 Dialogue 1",
+      "note": "Carrier uses plural 'trainers', so 'How much are' is the grammatical full answer; 'is' kept partial."
+    },
+    {
+      "wordId": "g1u10.w.price",
+      "w": "price",
+      "g": "Preis",
+      "d": "How much money you give for something. You can see it on the tag.",
+      "s": "There's no ___ on the key ring, so I can't see how much it is.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "price",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "price",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "price",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Preis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tag",
+          "de": "Schildchen, Etikett",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "rule",
+        "town",
+        "drawer"
+      ],
+      "hintDe": "Wie viel etwas kostet.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "rule",
+          "town",
+          "drawer",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.77 Dialogue 2",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.these",
+      "w": "these",
+      "g": "diese",
+      "d": "When there is more than one and it is here, close to you.",
+      "s": "I'd like ___ shoes here in front of me, please.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "these",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "these",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "these",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "diese",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "those",
+        "that",
+        "everything"
+      ],
+      "hintDe": "Mehrere Dinge, die nah bei dir sind.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "those",
+          "that",
+          "everything",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.80 Grammar",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.those",
+      "w": "those",
+      "g": "jene",
+      "d": "When there is more than one and it is over there, far from you.",
+      "s": "I'd like ___ trainers over there in the window.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "those",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "those",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "those",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jene",
+            "tier": "full"
+          },
+          {
+            "text": "die da",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "far",
+          "de": "weit",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "these",
+        "this",
+        "everything"
+      ],
+      "hintDe": "Mehrere Dinge, die weiter weg von dir sind.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "these",
+          "this",
+          "everything",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.80 Grammar",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.anything-else",
+      "w": "Anything else?",
+      "g": "Darf es noch etwas sein?",
+      "d": "In a shop, you ask this to find out if the customer wants more.",
+      "s": "Here are your three key rings. ___ — No, thank you.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Anything else?",
+          "tier": "full"
+        },
+        {
+          "text": "Anything else",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Anything else?",
+          "tier": "full"
+        },
+        {
+          "text": "Anything else",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Anything else?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Darf es noch etwas sein?",
+            "tier": "full"
+          },
+          {
+            "text": "Sonst noch etwas?",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "No problem.",
+        "Goodbye.",
+        "That's better."
+      ],
+      "hintDe": "Im Geschäft: ob du noch etwas möchtest.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "No problem.",
+          "Goodbye.",
+          "That's better.",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.77 Dialogue 2",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.can-i-help-you",
+      "w": "Can I help you?",
+      "g": "Kann ich dir/Ihnen behilflich sein?",
+      "d": "In a shop, you ask this when a customer comes in.",
+      "s": "___ — Yes, please. How much is this magazine?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Can I help you?",
+          "tier": "full"
+        },
+        {
+          "text": "Can I help you",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Can I help you?",
+          "tier": "full"
+        },
+        {
+          "text": "Can I help you",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Can I help you?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kann ich dir behilflich sein?",
+            "tier": "full"
+          },
+          {
+            "text": "Kann ich dir helfen?",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": "d"
+        },
+        {
+          "word": "comes",
+          "de": "kommt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "What can I do for you?",
+        "Anything else?",
+        "No wonder."
+      ],
+      "hintDe": "Womit eine Verkäuferin dich oft zuerst anspricht.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "What can I do for you?",
+          "Anything else?",
+          "No wonder.",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.77 Dialogue 2",
+      "note": "mc 'What can I do for you?' is a near-synonym but wrong as the exact bank phrase for this slot; acceptable as a same-class distractor."
+    },
+    {
+      "wordId": "g1u10.w.computer-game",
+      "w": "computer game",
+      "g": "Computerspiel",
+      "d": "Something fun you play on a screen.",
+      "s": "How much is this ___? — It's 34 pounds.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "computer game",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "computer game",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "computer game",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Computerspiel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "screen",
+          "de": "Bildschirm",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "magazine",
+        "scooter",
+        "headphones"
+      ],
+      "hintDe": "Spielst du am Computer.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "magazine",
+          "scooter",
+          "headphones",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.77/Word file (adapted)",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.headphones",
+      "w": "headphones",
+      "g": "Kopfhörer",
+      "d": "You put them over your two ears so you can listen to music.",
+      "s": "She can't listen to you now. She has ___ on for her music.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "headphones",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "headphones",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "headphones",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kopfhörer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "music",
+          "de": "Musik",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "sunglasses",
+        "magazine",
+        "scooter"
+      ],
+      "hintDe": "Setzt du auf die Ohren, um Musik zu hören.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "sunglasses",
+          "magazine",
+          "scooter",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.92 Word file (adapted)",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.key-ring",
+      "w": "key ring",
+      "g": "Schlüsselanhänger",
+      "d": "You open your door with what is on it. Then you don't lose it.",
+      "s": "I put my door key on my ___ so I don't lose it.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "key ring",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "key ring",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "key ring",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlüsselanhänger",
+            "tier": "full"
+          },
+          {
+            "text": "Schlüsselring",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "lose",
+          "de": "verlieren",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "magazine",
+        "tin",
+        "scooter"
+      ],
+      "hintDe": "Daran hängst du deine Schlüssel.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "magazine",
+          "tin",
+          "scooter",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.92 Word file (adapted)",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.magazine",
+      "w": "magazine",
+      "g": "Zeitschrift",
+      "d": "A thin book with lots of pictures and short stories. You read it for fun.",
+      "s": "Can I have this ___, please? I want to read it on the train.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "magazine",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "magazine",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "magazine",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zeitschrift",
+            "tier": "full"
+          },
+          {
+            "text": "Magazin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "thin",
+          "de": "dünn",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "computer game",
+        "headphones",
+        "tin"
+      ],
+      "hintDe": "Ein dünnes Heft mit Bildern; du liest es.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "computer game",
+          "headphones",
+          "tin",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.92 Word file (adapted)",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.mobile-phone",
+      "w": "mobile phone",
+      "g": "Handy",
+      "d": "A small thing you take with you. You can call your friends and read messages on it.",
+      "s": "I'd like a ___, please. I want to call my friends with it.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "mobile phone",
+          "tier": "full"
+        },
+        {
+          "text": "mobile",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mobile phone",
+          "tier": "full"
+        },
+        {
+          "text": "mobile",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mobile phone",
+            "tier": "full"
+          },
+          {
+            "text": "mobile",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Handy",
+            "tier": "full"
+          },
+          {
+            "text": "Mobiltelefon",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "messages",
+          "de": "Nachrichten",
+          "scope": "d"
+        },
+        {
+          "word": "take",
+          "de": "mitnehmen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "computer game",
+        "scooter",
+        "magazine"
+      ],
+      "hintDe": "Ein kleines Telefon für unterwegs.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "computer game",
+          "scooter",
+          "magazine",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.scooter",
+      "w": "scooter",
+      "g": "Roller",
+      "d": "You stand on it and push with one foot. It has two small wheels.",
+      "s": "I ride my ___ to school every morning.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "scooter",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "scooter",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "scooter",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Roller",
+            "tier": "full"
+          },
+          {
+            "text": "Tretroller",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "push",
+          "de": "stoßen, schieben",
+          "scope": "d"
+        },
+        {
+          "word": "wheels",
+          "de": "Räder",
+          "scope": "d"
+        },
+        {
+          "word": "ride",
+          "de": "fahren",
+          "scope": "s"
+        },
+        {
+          "word": "every",
+          "de": "jede/r",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "computer game",
+        "headphones",
+        "magazine"
+      ],
+      "hintDe": "Du stehst darauf und stößt dich mit einem Fuß ab.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "computer game",
+          "headphones",
+          "magazine",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.92 Word file (example)",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.sweets",
+      "w": "sweets (pl)",
+      "g": "Süßigkeiten",
+      "d": "You eat them and they have a lot of sugar. They are very nice, but bad for your teeth.",
+      "s": "The ___ are one pound 99. Don't eat too many!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sweets",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sweets",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sweets",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Süßigkeiten",
+            "tier": "full"
+          },
+          {
+            "text": "Bonbons",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "headphones",
+        "tin",
+        "magazine"
+      ],
+      "hintDe": "Etwas Süßes zum Essen; nicht gut für die Zähne.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "headphones",
+          "tin",
+          "magazine",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.92 Word file (adapted)",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.tin",
+      "w": "tin",
+      "g": "Dose",
+      "d": "There is food in it. You open it to get the chicken soup out.",
+      "s": "A ___ of chicken soup, please. We can have it for dinner.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tin",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tin",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tin",
+            "tier": "full"
+          },
+          {
+            "text": "can",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Dose",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "get",
+          "de": "holen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "scooter",
+        "headphones",
+        "magazine"
+      ],
+      "hintDe": "Darin ist zum Beispiel Suppe; du musst sie öffnen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "scooter",
+          "headphones",
+          "magazine",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.92 Word file (example)",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.congratulations",
+      "w": "Congratulations!",
+      "g": "Herzlichen Glückwunsch!",
+      "d": "You are very happy for a friend who did something very well.",
+      "s": "You are the best in the class! ___ Well done!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Congratulations!",
+          "tier": "full"
+        },
+        {
+          "text": "Congratulations",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Congratulations!",
+          "tier": "full"
+        },
+        {
+          "text": "Congratulations",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Congratulations!",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Herzlichen Glückwunsch!",
+            "tier": "full"
+          },
+          {
+            "text": "Gratuliere!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "No wonder.",
+        "Be careful.",
+        "Goodbye."
+      ],
+      "hintDe": "Sagst du, wenn jemand etwas toll gemacht hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "No wonder.",
+          "Be careful.",
+          "Goodbye.",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.rule",
+      "w": "rule",
+      "g": "Regel",
+      "d": "Something that you must do or must not do. In class you cannot break it.",
+      "s": "One ___ in our shop is: be nice to every customer.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "rule",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rule",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rule",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Regel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": "s"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "every",
+          "de": "jede/r",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "price",
+        "town",
+        "drawer"
+      ],
+      "hintDe": "Sagt dir, was erlaubt ist und was nicht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "price",
+          "town",
+          "drawer",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.92 Word file",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.customer",
+      "w": "customer",
+      "g": "Kunde/Kundin",
+      "d": "Somebody who comes to a shop and gives money for food and clothes.",
+      "s": "Mr Anderson is nice to every ___ in his shop.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "customer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "customer",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "customer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kunde",
+            "tier": "full"
+          },
+          {
+            "text": "Kundin",
+            "tier": "full"
+          },
+          {
+            "text": "Kunde/Kundin",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": null
+        },
+        {
+          "word": "every",
+          "de": "jede/r",
+          "scope": "s"
+        },
+        {
+          "word": "comes",
+          "de": "kommt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "price",
+        "town",
+        "rule"
+      ],
+      "hintDe": "Jemand, der ins Geschäft kommt und bezahlt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "price",
+          "town",
+          "rule",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78 The horse in the shop",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.everything",
+      "w": "everything",
+      "g": "alles",
+      "d": "All of it, with nothing forgotten.",
+      "s": "Have you got ___ for the trip — your bag, your shoes and your hat?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "everything",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "everything",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "everything",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "alles",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "trip",
+          "de": "Ausflug",
+          "scope": "s"
+        },
+        {
+          "word": "bag",
+          "de": "Tasche",
+          "scope": "s"
+        },
+        {
+          "word": "forgotten",
+          "de": "vergessen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "nothing",
+        "those",
+        "these"
+      ],
+      "hintDe": "Wirklich alle Dinge, nichts fehlt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "nothing",
+          "those",
+          "these",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.expensive",
+      "w": "expensive",
+      "g": "teuer",
+      "d": "It is a lot of money. You need a lot of money to get it.",
+      "s": "Everything in this shop is very ___. I can't get it all.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "expensive",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "expensive",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "expensive",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "teuer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": "s"
+        },
+        {
+          "word": "get",
+          "de": "bekommen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "happy",
+        "free",
+        "small"
+      ],
+      "hintDe": "Es kostet viel Geld.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "happy",
+          "free",
+          "small",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78 The horse in the shop",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.to-fall-asleep",
+      "w": "to fall asleep",
+      "g": "einschlafen",
+      "d": "To go to sleep. You are tired and then your eyes close.",
+      "s": "There are no customers, so Mr Anderson sits on his chair and ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "falls asleep",
+          "tier": "full"
+        },
+        {
+          "text": "fall asleep",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to fall asleep",
+          "tier": "full"
+        },
+        {
+          "text": "fall asleep",
+          "tier": "full"
+        },
+        {
+          "text": "falls asleep",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to fall asleep",
+            "tier": "full"
+          },
+          {
+            "text": "fall asleep",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einschlafen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sits",
+          "de": "sitzt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "walk away",
+        "sit down",
+        "stand up"
+      ],
+      "hintDe": "Vom Wachsein ins Schlafen kommen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "walk away",
+          "sit down",
+          "stand up",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78 The horse in the shop",
+      "note": "Carrier subject is 'Mr Anderson', so 'falls asleep' is the grammatical full answer; bare 'fall asleep' kept partial."
+    },
+    {
+      "wordId": "g1u10.w.goodbye",
+      "w": "Goodbye.",
+      "g": "Auf Wiedersehen.",
+      "d": "A nice bye, when you go away or leave.",
+      "s": "Thank you for your money. Here are your sweets. ___",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Goodbye.",
+          "tier": "full"
+        },
+        {
+          "text": "Goodbye",
+          "tier": "partial"
+        },
+        {
+          "text": "Bye.",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Goodbye.",
+          "tier": "full"
+        },
+        {
+          "text": "Goodbye",
+          "tier": "partial"
+        },
+        {
+          "text": "Bye.",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Goodbye.",
+            "tier": "full"
+          },
+          {
+            "text": "Bye.",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Auf Wiedersehen.",
+            "tier": "full"
+          },
+          {
+            "text": "Tschüss.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Hello.",
+        "No wonder.",
+        "Anything else?"
+      ],
+      "hintDe": "Sagst du, wenn du gehst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "Hello.",
+          "No wonder.",
+          "Anything else?",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.92 Word file",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.i-d-like",
+      "w": "I'd like ...",
+      "g": "Ich hätte gerne ...",
+      "d": "You want something in a shop, so you ask for it.",
+      "s": "___ 20 kilos of rice, please. And then some carrots.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "I'd like",
+          "tier": "full"
+        },
+        {
+          "text": "I would like",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "I'd like",
+          "tier": "full"
+        },
+        {
+          "text": "I would like",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "I'd like",
+            "tier": "full"
+          },
+          {
+            "text": "I would like",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich hätte gerne",
+            "tier": "full"
+          },
+          {
+            "text": "Ich möchte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": "d"
+        },
+        {
+          "word": "kilos",
+          "de": "Kilo",
+          "scope": "s"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "No problem.",
+        "Be careful.",
+        "Anything else?"
+      ],
+      "hintDe": "Höflich sagen, dass du etwas möchtest.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "No problem.",
+          "Be careful.",
+          "Anything else?",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78 The horse in the shop",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.no-wonder",
+      "w": "No wonder.",
+      "g": "Kein Wunder.",
+      "d": "You understand why it happens. It is not a big surprise.",
+      "s": "Everything here is so expensive! ___ I can't get it all.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "No wonder.",
+          "tier": "full"
+        },
+        {
+          "text": "No wonder",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "No wonder.",
+          "tier": "full"
+        },
+        {
+          "text": "No wonder",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "No wonder.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kein Wunder.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "surprise",
+          "de": "Überraschung",
+          "scope": "d"
+        },
+        {
+          "word": "get",
+          "de": "bekommen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "No problem.",
+        "Be careful.",
+        "That's better."
+      ],
+      "hintDe": "Wenn etwas dich nicht überrascht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "No problem.",
+          "Be careful.",
+          "That's better.",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78 The horse in the shop",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.suddenly",
+      "w": "suddenly",
+      "g": "plötzlich",
+      "d": "When something happens all at once. You do not understand it before.",
+      "s": "Mr Anderson is asleep. ___, a horse comes into the shop!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Suddenly",
+          "tier": "full"
+        },
+        {
+          "text": "suddenly",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "suddenly",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "suddenly",
+            "tier": "full"
+          },
+          {
+            "text": "all at once",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "plötzlich",
+            "tier": "full"
+          },
+          {
+            "text": "auf einmal",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": "s"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "asleep",
+          "de": "schlafend",
+          "scope": "s"
+        },
+        {
+          "word": "comes",
+          "de": "kommt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "always",
+        "usually",
+        "often"
+      ],
+      "hintDe": "Etwas passiert ganz schnell und unerwartet.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "always",
+          "usually",
+          "often",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78 The horse in the shop",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.town",
+      "w": "town",
+      "g": "Stadt",
+      "d": "A small city with streets, houses and shops. Many families live here.",
+      "s": "There's a small shop in our ___ on Baker Street.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "town",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "town",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "town",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stadt",
+            "tier": "full"
+          },
+          {
+            "text": "Ortschaft",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "houses",
+          "de": "Häuser",
+          "scope": "d"
+        },
+        {
+          "word": "shops",
+          "de": "Geschäfte, Läden",
+          "scope": "d"
+        },
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "city",
+        "park",
+        "river"
+      ],
+      "hintDe": "Eine kleine Stadt mit Straßen, Häusern und Geschäften.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "city",
+          "park",
+          "river",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78 The horse in the shop",
+      "note": "'shop' and 'houses' are above the digest; glossed. mc 'city','park','river' from g1-u06."
+    },
+    {
+      "wordId": "g1u10.w.to-walk-away",
+      "w": "to walk away",
+      "g": "weggehen",
+      "d": "To leave a room on your feet.",
+      "s": "The horse picks up the food and ___ from the shop.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "walks away",
+          "tier": "full"
+        },
+        {
+          "text": "walk away",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to walk away",
+          "tier": "full"
+        },
+        {
+          "text": "walk away",
+          "tier": "full"
+        },
+        {
+          "text": "walks away",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to walk away",
+            "tier": "full"
+          },
+          {
+            "text": "walk away",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "weggehen",
+            "tier": "full"
+          },
+          {
+            "text": "fortgehen",
+            "tier": "full"
+          },
+          {
+            "text": "davongehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": "s"
+        },
+        {
+          "word": "picks",
+          "de": "nimmt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "come back",
+        "fall asleep",
+        "stand up"
+      ],
+      "hintDe": "Zu Fuß von einem Ort weggehen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "come back",
+          "fall asleep",
+          "stand up",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78 The horse in the shop",
+      "note": "Subject 'The horse' → 'walks away' is the grammatical full answer."
+    },
+    {
+      "wordId": "g1u10.w.changing-room",
+      "w": "changing room",
+      "g": "Umkleidekabine",
+      "d": "In a shop, you go in here to try on clothes.",
+      "s": "You can't try the trousers on here. Go to the ___, please.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "changing room",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "changing room",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "changing room",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Umkleidekabine",
+            "tier": "full"
+          },
+          {
+            "text": "Umkleide",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": "d"
+        },
+        {
+          "word": "try",
+          "de": "anprobieren",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "drawer",
+        "town",
+        "window"
+      ],
+      "hintDe": "Dort probierst du im Geschäft Kleidung an.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "drawer",
+          "town",
+          "window",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.79 The jeans",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.no-problem",
+      "w": "No problem.",
+      "g": "Kein Problem.",
+      "d": "It is all good. You are happy to help.",
+      "s": "I don't like the jeans. — ___ What about the trousers over there?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "No problem.",
+          "tier": "full"
+        },
+        {
+          "text": "No problem",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "No problem.",
+          "tier": "full"
+        },
+        {
+          "text": "No problem",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "No problem.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kein Problem.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "jeans",
+          "de": "Jeans",
+          "scope": "s"
+        },
+        {
+          "word": "help",
+          "de": "helfen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "No wonder.",
+        "Be careful.",
+        "Anything else?"
+      ],
+      "hintDe": "Sagst du, wenn etwas in Ordnung ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "No wonder.",
+          "Be careful.",
+          "Anything else?",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.79 The jeans",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.over-there",
+      "w": "over there",
+      "g": "da/dort drüben",
+      "d": "Not near you. It is far away, but you can still see it.",
+      "s": "How much are those socks ___ in the window?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "over there",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "over there",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "over there",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "da drüben",
+            "tier": "full"
+          },
+          {
+            "text": "dort drüben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "over here",
+        "next to",
+        "in front of"
+      ],
+      "hintDe": "An einem Ort, der nicht nah bei dir ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "over here",
+          "next to",
+          "in front of",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.79 The jeans",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.drawer",
+      "w": "drawer",
+      "g": "Schublade",
+      "d": "A box in a desk that you pull open. Your socks or pens are in it.",
+      "s": "All my socks are in the ___ — I pull it open to get them.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "drawer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drawer",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drawer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schublade",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "get",
+          "de": "holen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "window",
+        "door",
+        "changing room"
+      ],
+      "hintDe": "Ziehst du aus dem Schreibtisch auf.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "window",
+          "door",
+          "changing room",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.80 Sounds right",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.that-s-better",
+      "w": "That's better.",
+      "g": "So ist es besser.",
+      "d": "Something is good now, but it was not good before.",
+      "s": "Put the sweater in the drawer. ___ Now it looks nice.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "That's better.",
+          "tier": "full"
+        },
+        {
+          "text": "That's better",
+          "tier": "partial"
+        },
+        {
+          "text": "That is better.",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "That's better.",
+          "tier": "full"
+        },
+        {
+          "text": "That's better",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "That's better.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "So ist es besser.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "No wonder.",
+        "Be careful.",
+        "No problem."
+      ],
+      "hintDe": "Sagst du, wenn etwas jetzt besser ist als vorher.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "No wonder.",
+          "Be careful.",
+          "No problem.",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.80 Sounds right",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.what-can-i-do-for-you",
+      "w": "What can I do for you?",
+      "g": "Was kann ich für dich/Sie tun?",
+      "d": "In a shop, you ask a customer this to find out how to help.",
+      "s": "Good morning! ___ — Yes, I'd like a magazine, please.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "What can I do for you?",
+          "tier": "full"
+        },
+        {
+          "text": "What can I do for you",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "What can I do for you?",
+          "tier": "full"
+        },
+        {
+          "text": "What can I do for you",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "What can I do for you?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Was kann ich für dich tun?",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft, Laden",
+          "scope": "d"
+        },
+        {
+          "word": "help",
+          "de": "helfen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "Can I help you?",
+        "Anything else?",
+        "No wonder."
+      ],
+      "hintDe": "Eine Verkäuferin fragt so, wie sie dir helfen kann.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "Can I help you?",
+          "Anything else?",
+          "No wonder.",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.80 Writing",
+      "note": "mc 'Can I help you?' is a near-synonym phrase but a different bank entry; acceptable as same-class distractor."
+    },
+    {
+      "wordId": "g1u10.w.be-careful",
+      "w": "Be careful.",
+      "g": "Sei(d) vorsichtig.",
+      "d": "You want a friend to look out, so they are not hurt.",
+      "s": "The floor is wet over there. ___ Don't fall down!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Be careful.",
+          "tier": "full"
+        },
+        {
+          "text": "Be careful",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Be careful.",
+          "tier": "full"
+        },
+        {
+          "text": "Be careful",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Be careful.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sei vorsichtig.",
+            "tier": "full"
+          },
+          {
+            "text": "Seid vorsichtig.",
+            "tier": "full"
+          },
+          {
+            "text": "Pass auf.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "floor",
+          "de": "Boden",
+          "scope": "s"
+        },
+        {
+          "word": "wet",
+          "de": "nass",
+          "scope": "s"
+        },
+        {
+          "word": "fall",
+          "de": "fallen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "No problem.",
+        "Goodbye.",
+        "Just a minute."
+      ],
+      "hintDe": "Warnst du jemanden, damit er sich nicht verletzt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "No problem.",
+          "Goodbye.",
+          "Just a minute.",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.81 Everyday English",
+      "note": null
+    },
+    {
+      "wordId": "g1u10.w.just-a-minute",
+      "w": "Just a minute.",
+      "g": "Einen Augenblick bitte.",
+      "d": "You ask a friend to wait a very short time.",
+      "s": "___ I want to find my keys before we go out.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Just a minute.",
+          "tier": "full"
+        },
+        {
+          "text": "Just a minute",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Just a minute.",
+          "tier": "full"
+        },
+        {
+          "text": "Just a minute",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Just a minute.",
+            "tier": "full"
+          },
+          {
+            "text": "One minute.",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Einen Augenblick bitte.",
+            "tier": "full"
+          },
+          {
+            "text": "Moment mal.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "keys",
+          "de": "Schlüssel",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "No wonder.",
+        "Be careful.",
+        "That's better."
+      ],
+      "hintDe": "Bittest du jemanden, kurz zu warten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "No wonder.",
+          "Be careful.",
+          "That's better.",
+          "thirty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.81 Everyday English",
+      "note": null
+    }
+  ]
+}

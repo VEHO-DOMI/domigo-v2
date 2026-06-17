@@ -1,0 +1,3289 @@
+{
+  "schema": "vocab@1",
+  "grade": 1,
+  "unit": 5,
+  "slug": "g1-u05",
+  "items": [
+    {
+      "id": "g1u05.w.boyfriend",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sister",
+            "uncle",
+            "teacher",
+            "drummer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": "boyfriend",
+        "narrative": null,
+        "note": null
+      },
+      "w": "boyfriend",
+      "g": "fester Freund",
+      "d": "a boy who is more than a friend to a girl",
+      "s": "Jack is her ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "boyfriend",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "boyfriend",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "boyfriend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fester Freund",
+            "tier": "full"
+          },
+          {
+            "text": "Freund",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sister",
+        "uncle",
+        "teacher"
+      ],
+      "hintDe": "Der besondere Freund von einem Mädchen."
+    },
+    {
+      "id": "g1u05.w.can",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bottle",
+            "box",
+            "table",
+            "chair"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.41",
+        "seedV1": "can",
+        "narrative": null,
+        "note": "Blank is plural 'cans' to match the carrier; dAnswers/translation teach the singular 'can'. Distinct from the modal can (g1u05.w.can-cannot-can-t)."
+      },
+      "w": "can",
+      "g": "Dose",
+      "d": "you drink from this small thing",
+      "s": "Look, he carries fifteen ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cans",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "can",
+          "tier": "full"
+        },
+        {
+          "text": "tin",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "can",
+            "tier": "full"
+          },
+          {
+            "text": "tin",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Dose",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "fifteen",
+          "de": "fünfzehn",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "bottle",
+        "box",
+        "table"
+      ],
+      "hintDe": "Aus diesem kleinen Ding trinkst du, zum Beispiel Limo."
+    },
+    {
+      "id": "g1u05.w.can-cannot-can-t",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "must",
+            "to play",
+            "to drink",
+            "to carry"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.39",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier blank takes can't/cannot (negative); dAnswers teaches the positive can."
+      },
+      "w": "can, cannot / can't",
+      "g": "können",
+      "d": "to be able to do a thing",
+      "s": "Pete ___ play the guitar, but he can carry it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "can't",
+          "tier": "full"
+        },
+        {
+          "text": "cannot",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "can",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "can",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "können",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "able",
+          "de": "fähig, etwas zu tun",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "must",
+        "to play",
+        "to drink"
+      ],
+      "hintDe": "Mit diesem Wort sagst du, dass du etwas machen kannst."
+    },
+    {
+      "id": "g1u05.w.concert",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "job",
+            "hospital",
+            "table",
+            "school canteen"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.39",
+        "seedV1": "concert",
+        "narrative": null,
+        "note": null
+      },
+      "w": "concert",
+      "g": "Konzert",
+      "d": "a big show where people play music",
+      "s": "Let's go to the ___ tomorrow.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "concert",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "concert",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "concert",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Konzert",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "people",
+          "de": "Menschen, Leute",
+          "scope": "d"
+        },
+        {
+          "word": "music",
+          "de": "Musik",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "job",
+        "hospital",
+        "table"
+      ],
+      "hintDe": "Dort spielen Leute Musik und du hörst zu."
+    },
+    {
+      "id": "g1u05.w.don-t-worry",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Sorry?",
+            "Is that so?",
+            "This is me.",
+            "Don't be late."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.39",
+        "seedV1": "Don't worry.",
+        "narrative": null,
+        "note": null
+      },
+      "w": "Don't worry.",
+      "g": "Keine Sorge.",
+      "d": "all is OK; a friend is not scared.",
+      "s": "Don't be scared. ___ It is all OK.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Don't worry.",
+          "tier": "full"
+        },
+        {
+          "text": "Don't worry",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Don't worry.",
+          "tier": "full"
+        },
+        {
+          "text": "Don't worry",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Don't worry.",
+            "tier": "full"
+          },
+          {
+            "text": "Don't worry",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Keine Sorge.",
+            "tier": "full"
+          },
+          {
+            "text": "Keine Sorge",
+            "tier": "full"
+          },
+          {
+            "text": "Mach dir keine Sorgen.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Sorry?",
+        "Is that so?",
+        "This is me."
+      ],
+      "hintDe": "Das sagst du, damit jemand keine Angst hat."
+    },
+    {
+      "id": "g1u05.w.drummer",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "singer",
+            "keyboard player",
+            "guitarist",
+            "saxophone player"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": "drummer",
+        "narrative": null,
+        "note": null
+      },
+      "w": "drummer",
+      "g": "Schlagzeuger/Schlagzeugerin",
+      "d": "the player of the drums",
+      "s": "Jessica plays the drums. She is the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "drummer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drummer",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drummer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlagzeuger",
+            "tier": "full"
+          },
+          {
+            "text": "Schlagzeugerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "singer",
+        "keyboard player",
+        "guitarist"
+      ],
+      "hintDe": "Diese Person spielt das Schlagzeug."
+    },
+    {
+      "id": "g1u05.w.drums",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "guitar",
+            "keyboard",
+            "saxophone",
+            "table"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": "drums",
+        "narrative": null,
+        "note": null
+      },
+      "w": "drums",
+      "g": "Schlagzeug",
+      "d": "You play this and hit it with two sticks.",
+      "s": "Jessica plays the ___ with two sticks.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "drums",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drums",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drums",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlagzeug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hit",
+          "de": "schlagen",
+          "scope": "d"
+        },
+        {
+          "word": "sticks",
+          "de": "Stöcke",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "guitar",
+        "keyboard",
+        "saxophone"
+      ],
+      "hintDe": "Du spielst es mit zwei Stöcken."
+    },
+    {
+      "id": "g1u05.w.economy",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hospital",
+            "concert",
+            "table",
+            "school canteen"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.43",
+        "seedV1": "economy",
+        "narrative": null,
+        "note": null
+      },
+      "w": "economy",
+      "g": "Wirtschaft",
+      "d": "the world of money and work",
+      "s": "The ___ is the world of money.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "economy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "economy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "economy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wirtschaft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "world",
+          "de": "Welt",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "hospital",
+        "concert",
+        "table"
+      ],
+      "hintDe": "Die Welt von Geld und Arbeit."
+    },
+    {
+      "id": "g1u05.w.guitar",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drums",
+            "keyboard",
+            "saxophone",
+            "table"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": "guitar",
+        "narrative": null,
+        "note": null
+      },
+      "w": "guitar",
+      "g": "Gitarre",
+      "d": "a long thing you play with your fingers",
+      "s": "Dan and Steve play the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "guitar",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "guitar",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "guitar",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gitarre",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drums",
+        "keyboard",
+        "saxophone"
+      ],
+      "hintDe": "Du spielst sie mit den Fingern, sie ist lang."
+    },
+    {
+      "id": "g1u05.w.guitarist",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drummer",
+            "singer",
+            "keyboard player",
+            "saxophone player"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": "guitarist",
+        "narrative": null,
+        "note": null
+      },
+      "w": "guitarist",
+      "g": "Gitarrist/Gitarristin",
+      "d": "the player of the guitar",
+      "s": "Dan plays the guitar. He is a ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "guitarist",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "guitarist",
+          "tier": "full"
+        },
+        {
+          "text": "guitar player",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "guitarist",
+            "tier": "full"
+          },
+          {
+            "text": "guitar player",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gitarrist",
+            "tier": "full"
+          },
+          {
+            "text": "Gitarristin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drummer",
+        "singer",
+        "keyboard player"
+      ],
+      "hintDe": "Diese Person spielt die Gitarre."
+    },
+    {
+      "id": "g1u05.w.hospital",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "concert",
+            "table",
+            "economy",
+            "school canteen"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.43",
+        "seedV1": "hospital",
+        "narrative": null,
+        "note": null
+      },
+      "w": "hospital",
+      "g": "Krankenhaus",
+      "d": "you go here when you are very ill",
+      "s": "Grandma is very ill, so she is in the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hospital",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hospital",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hospital",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Krankenhaus",
+            "tier": "full"
+          },
+          {
+            "text": "Spital",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "ill",
+          "de": "krank",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "concert",
+        "table",
+        "economy"
+      ],
+      "hintDe": "Dorthin gehst du, wenn du sehr krank bist."
+    },
+    {
+      "id": "g1u05.w.hundred",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ten",
+            "two",
+            "five",
+            "nine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.41",
+        "seedV1": "hundred",
+        "narrative": null,
+        "note": null
+      },
+      "w": "hundred",
+      "g": "hundert",
+      "d": "the number 100",
+      "s": "There are one ___ children in our school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hundred",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hundred",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hundred",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hundert",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ten",
+        "two",
+        "five"
+      ],
+      "hintDe": "Die Zahl 100."
+    },
+    {
+      "id": "g1u05.w.in-one-go",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "tomorrow",
+            "today",
+            "here",
+            "then"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.41",
+        "seedV1": "in one go",
+        "narrative": null,
+        "note": null
+      },
+      "w": "in one go",
+      "g": "in einem Zug",
+      "d": "all at one time, you do not stop",
+      "s": "Can you drink five cans ___?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "in one go",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "in one go",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "in one go",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in einem Zug",
+            "tier": "full"
+          },
+          {
+            "text": "auf einmal",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stop",
+          "de": "aufhören, anhalten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "tomorrow",
+        "today",
+        "here"
+      ],
+      "hintDe": "Alles auf einmal, ohne Pause."
+    },
+    {
+      "id": "g1u05.w.is-that-so",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Sorry?",
+            "This is me.",
+            "Don't worry.",
+            "Are you OK?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.41",
+        "seedV1": "Is that so?",
+        "narrative": null,
+        "note": null
+      },
+      "w": "Is that so?",
+      "g": "Ach wirklich?",
+      "d": "you ask this when you do not believe a thing",
+      "s": "I can drink ten bottles! — ___",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Is that so?",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Is that so?",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Is that so?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ach wirklich?",
+            "tier": "full"
+          },
+          {
+            "text": "Wirklich?",
+            "tier": "full"
+          },
+          {
+            "text": "Ist das so?",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "believe",
+          "de": "glauben",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "Sorry?",
+        "This is me.",
+        "Don't worry."
+      ],
+      "hintDe": "Das fragst du, wenn du etwas kaum glauben kannst."
+    },
+    {
+      "id": "g1u05.w.its",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "his",
+            "her",
+            "their",
+            "your"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.42",
+        "seedV1": "its",
+        "narrative": null,
+        "note": null
+      },
+      "w": "its",
+      "g": "sein/e",
+      "d": "for a thing or an animal, not a boy or girl",
+      "s": "The dog can wiggle ___ ears.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "its",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "its",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "its",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sein",
+            "tier": "full"
+          },
+          {
+            "text": "seine",
+            "tier": "full"
+          },
+          {
+            "text": "ihr",
+            "tier": "partial"
+          },
+          {
+            "text": "ihre",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "his",
+        "her",
+        "their"
+      ],
+      "hintDe": "Du sagst es für ein Tier oder eine Sache, nicht für einen Menschen."
+    },
+    {
+      "id": "g1u05.w.job",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "concert",
+            "table",
+            "hospital",
+            "school canteen"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.39",
+        "seedV1": "job",
+        "narrative": null,
+        "note": null
+      },
+      "w": "job",
+      "g": "Arbeit",
+      "d": "work that you do for money",
+      "s": "She has a good ___ at the hospital.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "job",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "job",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "job",
+            "tier": "full"
+          },
+          {
+            "text": "work",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Arbeit",
+            "tier": "full"
+          },
+          {
+            "text": "Aufgabe",
+            "tier": "full"
+          },
+          {
+            "text": "Job",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "concert",
+        "table",
+        "hospital"
+      ],
+      "hintDe": "Die Arbeit, die du für Geld machst."
+    },
+    {
+      "id": "g1u05.w.keyboard",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "guitar",
+            "drums",
+            "saxophone",
+            "table"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": "keyboard",
+        "narrative": null,
+        "note": null
+      },
+      "w": "keyboard",
+      "g": "Keyboard",
+      "d": "You sit down and play this big thing with your fingers.",
+      "s": "Ellie plays the ___ with her fingers.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "keyboard",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "keyboard",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "keyboard",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Keyboard",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "guitar",
+        "drums",
+        "saxophone"
+      ],
+      "hintDe": "Du spielst es mit den Fingern, ähnlich wie ein kleines Klavier."
+    },
+    {
+      "id": "g1u05.w.keyboard-player",
+      "rev": 3,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drummer",
+            "singer",
+            "guitarist",
+            "saxophone player"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": "keyboard player",
+        "narrative": null,
+        "note": null
+      },
+      "w": "keyboard player",
+      "g": "Keyboarder/Keyboarderin",
+      "d": "the one in the band who plays the keys",
+      "s": "Ellie is the ___. She plays the keyboard.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "keyboard player",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "keyboard player",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "keyboard player",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Keyboarder",
+            "tier": "full"
+          },
+          {
+            "text": "Keyboarderin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "keys",
+          "de": "Tasten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "drummer",
+        "singer",
+        "guitarist"
+      ],
+      "hintDe": "Diese Person sitzt am Keyboard und spielt."
+    },
+    {
+      "id": "g1u05.w.money",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "profit",
+            "pound",
+            "job",
+            "table"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.43",
+        "seedV1": "pocket money",
+        "narrative": null,
+        "note": null
+      },
+      "w": "(pocket) money",
+      "g": "(Taschen-)Geld",
+      "d": "the euros your mum and uncle give you",
+      "s": "My mum gives me ___ every week.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "money",
+          "tier": "full"
+        },
+        {
+          "text": "pocket money",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "money",
+          "tier": "full"
+        },
+        {
+          "text": "pocket money",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pocket money",
+            "tier": "full"
+          },
+          {
+            "text": "money",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Taschengeld",
+            "tier": "full"
+          },
+          {
+            "text": "Geld",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "euros",
+          "de": "Euro (Plural)",
+          "scope": "d"
+        },
+        {
+          "word": "every",
+          "de": "jede/jeder/jedes",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "profit",
+        "pound",
+        "job"
+      ],
+      "hintDe": "Das Geld, das deine Mama dir gibt."
+    },
+    {
+      "id": "g1u05.w.nothing",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "more",
+            "here",
+            "again",
+            "then"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.44",
+        "seedV1": "nothing",
+        "narrative": null,
+        "note": null
+      },
+      "w": "nothing",
+      "g": "nichts",
+      "d": "not one thing, zero",
+      "s": "There's ___ in the garden.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "nothing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nothing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nothing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nichts",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "zero",
+          "de": "null",
+          "scope": "d"
+        },
+        {
+          "word": "garden",
+          "de": "Garten",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "more",
+        "here",
+        "again"
+      ],
+      "hintDe": "Gar nichts, kein einziges Ding."
+    },
+    {
+      "id": "g1u05.w.perfect",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "happy",
+            "tired",
+            "scared",
+            "angry"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.39",
+        "seedV1": "perfect",
+        "narrative": null,
+        "note": null
+      },
+      "w": "perfect",
+      "g": "perfekt",
+      "d": "very very good, the best it can be",
+      "s": "The job is ___ for you!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "perfect",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "perfect",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "perfect",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "perfekt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "happy",
+        "tired",
+        "scared"
+      ],
+      "hintDe": "Ganz ohne Fehler, einfach das Beste."
+    },
+    {
+      "id": "g1u05.w.pound",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "profit",
+            "money",
+            "concert",
+            "table"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.43",
+        "seedV1": "pound",
+        "narrative": null,
+        "note": "Blank is plural 'pounds' (ten pounds); singular taught in dAnswers/translation."
+      },
+      "w": "pound",
+      "g": "Pfund",
+      "d": "the money in England",
+      "s": "In England, a book is ten ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pounds",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pound",
+          "tier": "full"
+        },
+        {
+          "text": "pounds",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pound",
+            "tier": "full"
+          },
+          {
+            "text": "pounds",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pfund",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "profit",
+        "money",
+        "concert"
+      ],
+      "hintDe": "Das Geld, das man in England benutzt."
+    },
+    {
+      "id": "g1u05.w.profit",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "money",
+            "pound",
+            "job",
+            "table"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.43",
+        "seedV1": "profit",
+        "narrative": null,
+        "note": null
+      },
+      "w": "profit",
+      "g": "Gewinn",
+      "d": "the money you have after you sell a thing",
+      "s": "It's 120 pounds. That's my ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "profit",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "profit",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "profit",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gewinn",
+            "tier": "full"
+          },
+          {
+            "text": "Profit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sell",
+          "de": "verkaufen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "money",
+        "pound",
+        "job"
+      ],
+      "hintDe": "Das Geld, das du behältst, wenn du etwas verkaufst."
+    },
+    {
+      "id": "g1u05.w.saxophone",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "guitar",
+            "drums",
+            "keyboard",
+            "table"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": "saxophone",
+        "narrative": null,
+        "note": null
+      },
+      "w": "saxophone",
+      "g": "Saxophon",
+      "d": "You play this long thing with your mouth.",
+      "s": "Jack plays the ___ with his mouth.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "saxophone",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "saxophone",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "saxophone",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Saxophon",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "guitar",
+        "drums",
+        "keyboard"
+      ],
+      "hintDe": "Du spielst es mit dem Mund."
+    },
+    {
+      "id": "g1u05.w.saxophone-player",
+      "rev": 3,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drummer",
+            "singer",
+            "guitarist",
+            "keyboard player"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": "saxophone player",
+        "narrative": null,
+        "note": null
+      },
+      "w": "saxophone player",
+      "g": "Saxophonist/Saxophonistin",
+      "d": "the one in the band who plays a long gold thing",
+      "s": "Jack plays the saxophone. He is the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "saxophone player",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "saxophone player",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "saxophone player",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Saxophonist",
+            "tier": "full"
+          },
+          {
+            "text": "Saxophonistin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "gold",
+          "de": "golden",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "drummer",
+        "singer",
+        "guitarist"
+      ],
+      "hintDe": "Diese Person spielt das Saxophon."
+    },
+    {
+      "id": "g1u05.w.school-canteen",
+      "rev": 4,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hospital",
+            "concert",
+            "table",
+            "economy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.43",
+        "seedV1": "school canteen",
+        "narrative": null,
+        "note": null
+      },
+      "w": "school canteen",
+      "g": "Schulkantine",
+      "d": "the room where you eat at lunchtime",
+      "s": "We eat our lunch in the ___ at school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "school canteen",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "school canteen",
+          "tier": "full"
+        },
+        {
+          "text": "canteen",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "school canteen",
+            "tier": "full"
+          },
+          {
+            "text": "canteen",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schulkantine",
+            "tier": "full"
+          },
+          {
+            "text": "Kantine",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "lunch",
+          "de": "Mittagessen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "hospital",
+        "concert",
+        "table"
+      ],
+      "hintDe": "Der Raum in der Schule, wo du zu Mittag isst."
+    },
+    {
+      "id": "g1u05.w.singer",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drummer",
+            "guitarist",
+            "keyboard player",
+            "saxophone player"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": "singer",
+        "narrative": null,
+        "note": null
+      },
+      "w": "singer",
+      "g": "Sänger/Sängerin",
+      "d": "This is the one who uses a mouth, not the guitar or drums.",
+      "s": "James is the ___. He uses his mouth, not a guitar.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "singer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "singer",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "singer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sänger",
+            "tier": "full"
+          },
+          {
+            "text": "Sängerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drummer",
+        "guitarist",
+        "keyboard player"
+      ],
+      "hintDe": "Diese Person benutzt den Mund, nicht ein Instrument."
+    },
+    {
+      "id": "g1u05.w.sister",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "uncle",
+            "teacher",
+            "boyfriend",
+            "singer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sister",
+      "g": "Schwester",
+      "d": "a girl in your family who is not your mum",
+      "s": "Jessica is my ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sister",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sister",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sister",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schwester",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "uncle",
+        "teacher",
+        "boyfriend"
+      ],
+      "hintDe": "Ein Mädchen mit derselben Mama wie du."
+    },
+    {
+      "id": "g1u05.w.sorry",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Is that so?",
+            "This is me.",
+            "Don't worry.",
+            "Are you OK?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.44",
+        "seedV1": "Sorry?",
+        "narrative": null,
+        "note": null
+      },
+      "w": "Sorry?",
+      "g": "Entschuldigung?",
+      "d": "you ask this when you do not understand and want it again",
+      "s": "___ I don't understand. Can you do it again?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Sorry?",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Sorry?",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Sorry?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Entschuldigung?",
+            "tier": "full"
+          },
+          {
+            "text": "Wie bitte?",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Is that so?",
+        "This is me.",
+        "Don't worry."
+      ],
+      "hintDe": "Das fragst du, wenn du etwas nicht verstanden hast."
+    },
+    {
+      "id": "g1u05.w.table",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "chair",
+            "bottle",
+            "box",
+            "desk"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.43",
+        "seedV1": "table",
+        "narrative": null,
+        "note": null
+      },
+      "w": "table",
+      "g": "Tisch",
+      "d": "a thing with four legs, you put plates on it to eat",
+      "s": "I put a ___ in our playground.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "table",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "table",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "table",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "plates",
+          "de": "Teller",
+          "scope": "d"
+        },
+        {
+          "word": "playground",
+          "de": "Schulhof, Spielplatz",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "chair",
+        "bottle",
+        "box"
+      ],
+      "hintDe": "Ein Möbel mit vier Beinen, du isst daran."
+    },
+    {
+      "id": "g1u05.w.teacher",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "uncle",
+            "sister",
+            "boyfriend",
+            "singer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.43",
+        "seedV1": "teacher",
+        "narrative": null,
+        "note": null
+      },
+      "w": "teacher",
+      "g": "Lehrer/Lehrerin",
+      "d": "this man or woman gives you homework at school",
+      "s": "Mr Davis is my ___ at school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "teacher",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "teacher",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "teacher",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lehrer",
+            "tier": "full"
+          },
+          {
+            "text": "Lehrerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "uncle",
+        "sister",
+        "boyfriend"
+      ],
+      "hintDe": "Diese Person gibt dir in der Schule Hausübungen."
+    },
+    {
+      "id": "g1u05.w.this-is-me",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Is that so?",
+            "Sorry?",
+            "Don't worry.",
+            "How are you?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.42",
+        "seedV1": "This is me.",
+        "narrative": null,
+        "note": null
+      },
+      "w": "This is me.",
+      "g": "Das bin ich.",
+      "d": "you show who you are in a picture",
+      "s": "Look at my photo from school. ___",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "This is me.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "This is me.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "This is me.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Das bin ich.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "photo",
+          "de": "Foto",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Is that so?",
+        "Sorry?",
+        "Don't worry."
+      ],
+      "hintDe": "Das sagst du, wenn du auf einem Foto auf dich zeigst."
+    },
+    {
+      "id": "g1u05.w.to-carry",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "touch",
+            "wash",
+            "drink",
+            "play"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.40",
+        "seedV1": "to carry",
+        "narrative": null,
+        "note": null
+      },
+      "w": "to carry",
+      "g": "tragen",
+      "d": "to hold a thing and go with it",
+      "s": "Can you ___ my guitar? It is very big.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "carry",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "carry",
+          "tier": "full"
+        },
+        {
+          "text": "to carry",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "carry",
+            "tier": "full"
+          },
+          {
+            "text": "to carry",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "tragen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hold",
+          "de": "halten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "touch",
+        "wash",
+        "drink"
+      ],
+      "hintDe": "Du hältst etwas in den Armen und gehst damit."
+    },
+    {
+      "id": "g1u05.w.to-dance",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "eat",
+            "wash",
+            "carry",
+            "drink"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.39",
+        "seedV1": "to dance",
+        "narrative": null,
+        "note": null
+      },
+      "w": "to dance",
+      "g": "tanzen",
+      "d": "You do this to music with your feet.",
+      "s": "Let's ___ to the music!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "dance",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dance",
+          "tier": "full"
+        },
+        {
+          "text": "to dance",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dance",
+            "tier": "full"
+          },
+          {
+            "text": "to dance",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "tanzen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "music",
+          "de": "Musik",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "eat",
+        "wash",
+        "carry"
+      ],
+      "hintDe": "Das machst du mit den Füßen, wenn Musik spielt."
+    },
+    {
+      "id": "g1u05.w.to-drink",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "eat",
+            "wash",
+            "carry",
+            "touch"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.41",
+        "seedV1": "to drink",
+        "narrative": null,
+        "note": null
+      },
+      "w": "to drink",
+      "g": "trinken",
+      "d": "you do this with a cup of water in your mouth",
+      "s": "I can't ___ fifteen cans.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "drink",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drink",
+          "tier": "full"
+        },
+        {
+          "text": "to drink",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drink",
+            "tier": "full"
+          },
+          {
+            "text": "to drink",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "trinken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cup",
+          "de": "Tasse, Becher",
+          "scope": "d"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        },
+        {
+          "word": "fifteen",
+          "de": "fünfzehn",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "eat",
+        "wash",
+        "carry"
+      ],
+      "hintDe": "Das machst du mit Wasser oder Saft im Mund."
+    },
+    {
+      "id": "g1u05.w.to-laugh",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "eat",
+            "wash",
+            "drink",
+            "carry"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.43",
+        "seedV1": "to laugh",
+        "narrative": null,
+        "note": null
+      },
+      "w": "to laugh",
+      "g": "lachen",
+      "d": "you do this when a thing is very funny: ha ha ha",
+      "s": "The clown is funny and we all ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "laugh",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "laugh",
+          "tier": "full"
+        },
+        {
+          "text": "to laugh",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "laugh",
+            "tier": "full"
+          },
+          {
+            "text": "to laugh",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lachen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "funny",
+          "de": "lustig",
+          "scope": null
+        },
+        {
+          "word": "ha",
+          "de": "ha (Lachlaut)",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "eat",
+        "wash",
+        "drink"
+      ],
+      "hintDe": "Das machst du, wenn etwas sehr lustig ist."
+    },
+    {
+      "id": "g1u05.w.to-play",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "eat",
+            "wash",
+            "carry",
+            "touch"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.38",
+        "seedV1": "to play",
+        "narrative": null,
+        "note": null
+      },
+      "w": "to play",
+      "g": "spielen",
+      "d": "to do this with a guitar, or to have fun with a toy",
+      "s": "Can you ___ the guitar?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "play",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "play",
+          "tier": "full"
+        },
+        {
+          "text": "to play",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "play",
+            "tier": "full"
+          },
+          {
+            "text": "to play",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "spielen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "toy",
+          "de": "Spielzeug",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "eat",
+        "wash",
+        "carry"
+      ],
+      "hintDe": "Das machst du mit der Gitarre oder mit Spielsachen."
+    },
+    {
+      "id": "g1u05.w.to-stand-on",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "walk on",
+            "touch",
+            "carry",
+            "wiggle"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.40",
+        "seedV1": "to stand on",
+        "narrative": null,
+        "note": null
+      },
+      "w": "to stand on",
+      "g": "auf etwas stehen",
+      "d": "to be up on a thing with your feet",
+      "s": "Look! Pete can ___ his head.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stand on",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stand on",
+          "tier": "full"
+        },
+        {
+          "text": "to stand on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stand on",
+            "tier": "full"
+          },
+          {
+            "text": "to stand on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auf etwas stehen",
+            "tier": "full"
+          },
+          {
+            "text": "stehen auf",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "head",
+          "de": "Kopf",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "walk on",
+        "touch",
+        "carry"
+      ],
+      "hintDe": "Mit deinen Füßen oben auf etwas sein."
+    },
+    {
+      "id": "g1u05.w.to-touch",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "carry",
+            "wash",
+            "drink",
+            "play"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.40",
+        "seedV1": "to touch",
+        "narrative": null,
+        "note": null
+      },
+      "w": "to touch",
+      "g": "berühren",
+      "d": "to put your fingers on a thing",
+      "s": "Please don't ___ my guitar.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "touch",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "touch",
+          "tier": "full"
+        },
+        {
+          "text": "to touch",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "touch",
+            "tier": "full"
+          },
+          {
+            "text": "to touch",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "berühren",
+            "tier": "full"
+          },
+          {
+            "text": "anfassen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "carry",
+        "wash",
+        "drink"
+      ],
+      "hintDe": "Deine Finger auf etwas legen."
+    },
+    {
+      "id": "g1u05.w.to-walk-on",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "stand on",
+            "touch",
+            "carry",
+            "wiggle"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.40",
+        "seedV1": "to walk on",
+        "narrative": null,
+        "note": null
+      },
+      "w": "to walk on",
+      "g": "auf etwas gehen",
+      "d": "to go on your feet over a thing",
+      "s": "Can you ___ your hands?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "walk on",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "walk on",
+          "tier": "full"
+        },
+        {
+          "text": "to walk on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "walk on",
+            "tier": "full"
+          },
+          {
+            "text": "to walk on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auf etwas gehen",
+            "tier": "full"
+          },
+          {
+            "text": "gehen auf",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hands",
+          "de": "Hände",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "stand on",
+        "touch",
+        "carry"
+      ],
+      "hintDe": "Mit deinen Füßen über etwas gehen."
+    },
+    {
+      "id": "g1u05.w.to-wash",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "clean",
+            "carry",
+            "touch",
+            "drink"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.43",
+        "seedV1": "to wash",
+        "narrative": null,
+        "note": null
+      },
+      "w": "to wash",
+      "g": "waschen",
+      "d": "to make a thing clean with water",
+      "s": "I ___ my mum's car with water.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "wash",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wash",
+          "tier": "full"
+        },
+        {
+          "text": "to wash",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wash",
+            "tier": "full"
+          },
+          {
+            "text": "to wash",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "waschen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "make",
+          "de": "machen",
+          "scope": "d"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "clean",
+        "carry",
+        "touch"
+      ],
+      "hintDe": "Etwas mit Wasser sauber machen."
+    },
+    {
+      "id": "g1u05.w.to-wiggle",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "touch",
+            "carry",
+            "walk on",
+            "stand on"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.40",
+        "seedV1": "to wiggle",
+        "narrative": null,
+        "note": null
+      },
+      "w": "to wiggle",
+      "g": "wackeln",
+      "d": "to move a thing fast, here and there, again and again",
+      "s": "He can ___ his ears up and down.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "wiggle",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wiggle",
+          "tier": "full"
+        },
+        {
+          "text": "to wiggle",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wiggle",
+            "tier": "full"
+          },
+          {
+            "text": "to wiggle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wackeln",
+            "tier": "full"
+          },
+          {
+            "text": "wackeln mit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "move",
+          "de": "bewegen",
+          "scope": "d"
+        },
+        {
+          "word": "fast",
+          "de": "schnell",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "touch",
+        "carry",
+        "walk on"
+      ],
+      "hintDe": "Etwas ganz schnell hin und her bewegen."
+    },
+    {
+      "id": "g1u05.w.tongue",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "nose",
+            "ear",
+            "eye",
+            "foot"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.40",
+        "seedV1": "tongue",
+        "narrative": null,
+        "note": null
+      },
+      "w": "tongue",
+      "g": "Zunge",
+      "d": "the thing in your mouth; you speak with it.",
+      "s": "He can touch his nose with his ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tongue",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tongue",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tongue",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zunge",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "nose",
+        "ear",
+        "eye"
+      ],
+      "hintDe": "Sie ist in deinem Mund, du isst und sprichst mit ihr."
+    },
+    {
+      "id": "g1u05.w.uncle",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sister",
+            "teacher",
+            "boyfriend",
+            "drummer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.43",
+        "seedV1": "uncle",
+        "narrative": null,
+        "note": null
+      },
+      "w": "uncle",
+      "g": "Onkel",
+      "d": "the brother of your mum or your dad",
+      "s": "My ___ is my mum's brother.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "uncle",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "uncle",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "uncle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Onkel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "brother",
+          "de": "Bruder",
+          "scope": null
+        },
+        {
+          "word": "dad",
+          "de": "Papa",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "sister",
+        "teacher",
+        "boyfriend"
+      ],
+      "hintDe": "Der Bruder von deiner Mama oder deinem Papa."
+    }
+  ]
+}

@@ -1,0 +1,3066 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g3-u08",
+  "briefBank": "7622da26418c",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g3u08.w.to-invent",
+      "w": "to invent",
+      "g": "erfinden",
+      "d": "to make something completely new that did not exist before",
+      "s": "Who first ___ the telephone back in 1876? It was Alexander Graham Bell.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "invented",
+          "tier": "full"
+        },
+        {
+          "text": "invent",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "invent",
+          "tier": "full"
+        },
+        {
+          "text": "to invent",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "invent",
+            "tier": "full"
+          },
+          {
+            "text": "to invent",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erfinden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to discover",
+        "to produce",
+        "to repair"
+      ],
+      "hintDe": "Du machst etwas ganz Neues, das es vorher noch nie gegeben hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to discover",
+          "to produce",
+          "to repair",
+          "to develop"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-experiment",
+      "w": "to experiment",
+      "g": "experimentieren",
+      "d": "to try different ways of doing something to find out what happens",
+      "s": "I ___ with different shapes and colours until I found one that worked well.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "experimented",
+          "tier": "full"
+        },
+        {
+          "text": "experiment",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "experiment",
+          "tier": "full"
+        },
+        {
+          "text": "to experiment",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "experiment",
+            "tier": "full"
+          },
+          {
+            "text": "to experiment",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "experimentieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to discover",
+        "to design",
+        "to support"
+      ],
+      "hintDe": "Du probierst verschiedene Wege aus, um herauszufinden, was passiert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to discover",
+          "to design",
+          "to support",
+          "to research"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-improve",
+      "w": "to improve",
+      "g": "verbessern",
+      "d": "to make something better than it was before",
+      "s": "I ___ my machine by putting an armchair in it so it was more comfortable.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "improved",
+          "tier": "full"
+        },
+        {
+          "text": "improve",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "improve",
+          "tier": "full"
+        },
+        {
+          "text": "to improve",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "improve",
+            "tier": "full"
+          },
+          {
+            "text": "to improve",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verbessern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to produce",
+        "to discover",
+        "to attach"
+      ],
+      "hintDe": "Du machst etwas besser, als es vorher war.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to produce",
+          "to discover",
+          "to attach",
+          "to develop"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-discover",
+      "w": "to discover",
+      "g": "entdecken",
+      "d": "to find out something that no one knew before",
+      "s": "First, I had to ___ a way of making time travel possible.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "discover",
+          "tier": "full"
+        },
+        {
+          "text": "discovered",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "discover",
+          "tier": "full"
+        },
+        {
+          "text": "to discover",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "discover",
+            "tier": "full"
+          },
+          {
+            "text": "to discover",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "entdecken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to invent",
+        "to design",
+        "to decorate"
+      ],
+      "hintDe": "Du findest etwas heraus, das vorher noch niemand wusste.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to invent",
+          "to design",
+          "to decorate",
+          "to research"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-work-sth-out",
+      "w": "to work sth. out",
+      "g": "etw. herausfinden",
+      "d": "to find the answer to a problem by thinking about it",
+      "s": "It took me a few weeks, but once I had ___ it wasn't too difficult.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "worked out",
+          "tier": "full"
+        },
+        {
+          "text": "worked it out",
+          "tier": "full"
+        },
+        {
+          "text": "work out",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "work out",
+          "tier": "full"
+        },
+        {
+          "text": "work sth. out",
+          "tier": "full"
+        },
+        {
+          "text": "to work sth. out",
+          "tier": "full"
+        },
+        {
+          "text": "work it out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "work out",
+            "tier": "full"
+          },
+          {
+            "text": "to work sth. out",
+            "tier": "full"
+          },
+          {
+            "text": "work it out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etwas herausfinden",
+            "tier": "full"
+          },
+          {
+            "text": "herausfinden",
+            "tier": "full"
+          },
+          {
+            "text": "lösen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to give up",
+        "to design",
+        "to support"
+      ],
+      "hintDe": "Du findest die Lösung für ein Problem, indem du darüber nachdenkst.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to give up",
+          "to design",
+          "to support",
+          "to produce"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-design",
+      "w": "to design",
+      "g": "entwerfen",
+      "d": "to draw the plans for how something will look",
+      "s": "I sat down with some pens and ___ my machine on paper.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "designed",
+          "tier": "full"
+        },
+        {
+          "text": "design",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "design",
+          "tier": "full"
+        },
+        {
+          "text": "to design",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "design",
+            "tier": "full"
+          },
+          {
+            "text": "to design",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "entwerfen",
+            "tier": "full"
+          },
+          {
+            "text": "gestalten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to produce",
+        "to discover",
+        "to repair"
+      ],
+      "hintDe": "Du zeichnest, wie etwas aussehen soll.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to produce",
+          "to discover",
+          "to repair",
+          "to experiment"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-try-out",
+      "w": "to try out",
+      "g": "ausprobieren",
+      "d": "to test something to see how it works or if you like it",
+      "s": "I've built a prototype, but I haven't ___ it yet.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tried out",
+          "tier": "full"
+        },
+        {
+          "text": "try out",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "try out",
+          "tier": "full"
+        },
+        {
+          "text": "to try out",
+          "tier": "full"
+        },
+        {
+          "text": "try it out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "try out",
+            "tier": "full"
+          },
+          {
+            "text": "to try out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ausprobieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "prototype",
+          "de": "Prototyp",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to invent",
+        "to support",
+        "to decorate"
+      ],
+      "hintDe": "Du testest etwas, um zu sehen, wie es funktioniert oder ob es dir gefällt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to invent",
+          "to support",
+          "to decorate",
+          "to develop"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-produce",
+      "w": "to produce",
+      "g": "produzieren",
+      "d": "to make a lot of things, usually so they can be sold",
+      "s": "If my machine works, I'll have to start ___ them so that all families can have one.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "producing",
+          "tier": "full"
+        },
+        {
+          "text": "produce",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "produce",
+          "tier": "full"
+        },
+        {
+          "text": "to produce",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "produce",
+            "tier": "full"
+          },
+          {
+            "text": "to produce",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "produzieren",
+            "tier": "full"
+          },
+          {
+            "text": "herstellen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to invent",
+        "to discover",
+        "to repair"
+      ],
+      "hintDe": "Du stellst viele Dinge her, meistens damit man sie verkaufen kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to invent",
+          "to discover",
+          "to repair",
+          "to design"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.bacon",
+      "w": "bacon",
+      "g": "Speck",
+      "d": "thin slices of salted meat from a pig that you fry",
+      "s": "Lots of people love ___ and egg for breakfast.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "bacon",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bacon",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bacon",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Speck",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "soap",
+        "dish",
+        "fat"
+      ],
+      "hintDe": "Dünne Scheiben gesalzenes Fleisch vom Schwein, die man brät.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "soap",
+          "dish",
+          "fat",
+          "ham"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-decorate",
+      "w": "to decorate",
+      "g": "dekorieren",
+      "d": "to make something look nicer by adding pretty things to it",
+      "s": "Then someone invented electric lights to ___ houses.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "decorate",
+          "tier": "full"
+        },
+        {
+          "text": "decorated",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "decorate",
+          "tier": "full"
+        },
+        {
+          "text": "to decorate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "decorate",
+            "tier": "full"
+          },
+          {
+            "text": "to decorate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dekorieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to repair",
+        "to produce",
+        "to research"
+      ],
+      "hintDe": "Du machst etwas schöner, indem du hübsche Dinge daran anbringst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to repair",
+          "to produce",
+          "to research",
+          "to design"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.dish",
+      "w": "dish",
+      "g": "Gericht",
+      "d": "food that has been cooked in a special way",
+      "s": "I invented a new ___ with the cook of the restaurant.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "dish",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dish",
+          "tier": "full"
+        },
+        {
+          "text": "dishes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dish",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gericht",
+            "tier": "full"
+          },
+          {
+            "text": "Speise",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "product",
+        "device",
+        "soap"
+      ],
+      "hintDe": "Essen, das auf eine besondere Art gekocht wurde.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "product",
+          "device",
+          "soap",
+          "fat"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.fat",
+      "w": "fat",
+      "g": "Fett",
+      "d": "the oily part of food or the soft part under the skin",
+      "s": "I like bacon with less ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fat",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fat",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fett",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "soap",
+        "current",
+        "dish"
+      ],
+      "hintDe": "Der ölige Teil von Essen oder der weiche Teil unter der Haut.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "soap",
+          "current",
+          "dish",
+          "bacon"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.invention",
+      "w": "invention",
+      "g": "Erfindung",
+      "d": "something completely new that a person has made for the first time",
+      "s": "He worked on his ___ for a number of years.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "invention",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "invention",
+          "tier": "full"
+        },
+        {
+          "text": "inventions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "invention",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erfindung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "inventor",
+        "device",
+        "product"
+      ],
+      "hintDe": "Etwas ganz Neues, das jemand zum ersten Mal gemacht hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "inventor",
+          "device",
+          "product",
+          "inspiration"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.crowd",
+      "w": "crowd",
+      "g": "Menschenmenge",
+      "d": "a very large group of people standing together in one place",
+      "s": "He used Tesla coils to shoot large lightning bolts into the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "crowd",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crowd",
+          "tier": "full"
+        },
+        {
+          "text": "crowds",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crowd",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Menschenmenge",
+            "tier": "full"
+          },
+          {
+            "text": "Publikum",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "lightning",
+          "de": "Blitz",
+          "scope": "s"
+        },
+        {
+          "word": "bolts",
+          "de": "Strahlen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "energy",
+        "influence",
+        "inspiration"
+      ],
+      "hintDe": "Eine sehr große Gruppe von Menschen, die an einem Ort zusammensteht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "energy",
+          "influence",
+          "inspiration",
+          "engineer"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.current",
+      "w": "current",
+      "g": "(elektrischer) Strom",
+      "d": "electricity that flows along through something",
+      "s": "He passed a huge ___ through his body to power eight light bulbs.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "current",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "current",
+          "tier": "full"
+        },
+        {
+          "text": "currents",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "current",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Strom",
+            "tier": "full"
+          },
+          {
+            "text": "elektrischer Strom",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "energy",
+        "soap",
+        "fat"
+      ],
+      "hintDe": "Elektrizität, die durch etwas hindurchfließt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "energy",
+          "soap",
+          "fat",
+          "device"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-develop",
+      "w": "to develop",
+      "g": "entwickeln",
+      "d": "to slowly make something new over a long time",
+      "s": "In the late 1880s, Tesla ___ a new kind of electricity.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "developed",
+          "tier": "full"
+        },
+        {
+          "text": "develop",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "develop",
+          "tier": "full"
+        },
+        {
+          "text": "to develop",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "develop",
+            "tier": "full"
+          },
+          {
+            "text": "to develop",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "entwickeln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to discover",
+        "to support",
+        "to decorate"
+      ],
+      "hintDe": "Du machst über lange Zeit langsam etwas Neues.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to discover",
+          "to support",
+          "to decorate",
+          "to produce"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.electric",
+      "w": "electric (motor)",
+      "g": "elektrisch",
+      "d": "working with electricity",
+      "s": "Tesla invented the ___ motor.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "electric",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "electric",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "electric",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "elektrisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "motor",
+          "de": "Motor",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "remarkable",
+        "confident",
+        "automatically"
+      ],
+      "hintDe": "Etwas, das mit Strom funktioniert.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "remarkable",
+          "confident",
+          "automatically",
+          "perhaps"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.energy",
+      "w": "energy",
+      "g": "Energie",
+      "d": "the power that makes machines work or keeps things moving",
+      "s": "He said he could send ___ waves through water.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "energy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "energy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "energy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Energie",
+            "tier": "full"
+          },
+          {
+            "text": "Strom",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "current",
+        "influence",
+        "soap"
+      ],
+      "hintDe": "Die Kraft, die Maschinen arbeiten lässt oder Dinge in Bewegung hält.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "current",
+          "influence",
+          "soap",
+          "device"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.influence",
+      "w": "influence",
+      "g": "Einfluss",
+      "d": "the power to change what other people think or do",
+      "s": "Edison used his ___ to tell people that AC was too dangerous.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "influence",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "influence",
+          "tier": "full"
+        },
+        {
+          "text": "influences",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "influence",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Einfluss",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "AC",
+          "de": "Wechselstrom",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "energy",
+        "inspiration",
+        "crowd"
+      ],
+      "hintDe": "Die Macht, zu verändern, was andere Menschen denken oder tun.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "energy",
+          "inspiration",
+          "crowd",
+          "current"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.inventor",
+      "w": "inventor",
+      "g": "Erfinder/Erfinderin",
+      "d": "a person who makes new things that did not exist before",
+      "s": "Thomas Edison was perhaps the most famous ___ of his time.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "inventor",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "inventor",
+          "tier": "full"
+        },
+        {
+          "text": "inventors",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "inventor",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erfinder",
+            "tier": "full"
+          },
+          {
+            "text": "Erfinderin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "engineer",
+        "device",
+        "crowd"
+      ],
+      "hintDe": "Eine Person, die neue Dinge macht, die es vorher nicht gab.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "engineer",
+          "device",
+          "crowd",
+          "inspiration"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-invest",
+      "w": "to invest",
+      "g": "investieren",
+      "d": "to put your money into something to get more money back later",
+      "s": "Edison ___ all his money in DC.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "invested",
+          "tier": "full"
+        },
+        {
+          "text": "invest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "invest",
+          "tier": "full"
+        },
+        {
+          "text": "to invest",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "invest",
+            "tier": "full"
+          },
+          {
+            "text": "to invest",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "investieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "DC",
+          "de": "Gleichstrom",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to produce",
+        "to support",
+        "to research"
+      ],
+      "hintDe": "Du steckst dein Geld in etwas, um später mehr Geld zurückzubekommen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to produce",
+          "to support",
+          "to research",
+          "to develop"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.perhaps",
+      "w": "perhaps",
+      "g": "vielleicht",
+      "d": "used to say that something is possible but you are not sure",
+      "s": "___ it was his mother who gave him the first idea.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "perhaps",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "perhaps",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "perhaps",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vielleicht",
+            "tier": "full"
+          },
+          {
+            "text": "eventuell",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "automatically",
+        "remarkable",
+        "confident"
+      ],
+      "hintDe": "Man sagt damit, dass etwas möglich ist, aber man ist sich nicht sicher.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "automatically",
+          "remarkable",
+          "confident",
+          "device"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-be-responsible-for",
+      "w": "to be responsible for",
+      "g": "für etw. verantwortlich sein",
+      "d": "to be the one who caused something or who must take care of it",
+      "s": "Perhaps his most important invention was also ___ his bad luck.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "responsible for",
+          "tier": "full"
+        },
+        {
+          "text": "be responsible for",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be responsible for",
+          "tier": "full"
+        },
+        {
+          "text": "to be responsible for",
+          "tier": "full"
+        },
+        {
+          "text": "responsible for",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be responsible for",
+            "tier": "full"
+          },
+          {
+            "text": "to be responsible for",
+            "tier": "full"
+          },
+          {
+            "text": "responsible for",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "für etwas verantwortlich sein",
+            "tier": "full"
+          },
+          {
+            "text": "verantwortlich sein für",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "confident",
+        "remarkable",
+        "automatically"
+      ],
+      "hintDe": "Du bist derjenige, der etwas verursacht hat oder sich darum kümmern muss.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "confident",
+          "remarkable",
+          "automatically",
+          "perhaps"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-shoot",
+      "w": "to shoot",
+      "g": "schießen",
+      "d": "to send something out very fast through the air",
+      "s": "He used the Tesla coil to ___ large electric lightning bolts into the room.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "shoot",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shoot",
+          "tier": "full"
+        },
+        {
+          "text": "to shoot",
+          "tier": "full"
+        },
+        {
+          "text": "shot",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shoot",
+            "tier": "full"
+          },
+          {
+            "text": "to shoot",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schießen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "coil",
+          "de": "Spule",
+          "scope": "s"
+        },
+        {
+          "word": "lightning",
+          "de": "Blitz",
+          "scope": "s"
+        },
+        {
+          "word": "bolts",
+          "de": "Strahlen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to develop",
+        "to repair",
+        "to support"
+      ],
+      "hintDe": "Du schickst etwas sehr schnell durch die Luft.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to develop",
+          "to repair",
+          "to support",
+          "to produce"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.confident",
+      "w": "confident",
+      "g": "(selbst)sicher",
+      "d": "feeling sure that you can do something well",
+      "s": "I'm quite ___ it will work, and I really hope that it does.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "confident",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "confident",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "confident",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "selbstsicher",
+            "tier": "full"
+          },
+          {
+            "text": "sicher",
+            "tier": "full"
+          },
+          {
+            "text": "zuversichtlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "remarkable",
+        "perhaps",
+        "automatically"
+      ],
+      "hintDe": "Du fühlst dich sicher, dass du etwas gut kannst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "remarkable",
+          "perhaps",
+          "automatically",
+          "device"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-impress",
+      "w": "to impress",
+      "g": "beeindrucken",
+      "d": "to make someone think you are very good at something",
+      "s": "I've invented something that I think might ___ my teacher.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "impress",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "impress",
+          "tier": "full"
+        },
+        {
+          "text": "to impress",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "impress",
+            "tier": "full"
+          },
+          {
+            "text": "to impress",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beeindrucken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to support",
+        "to research",
+        "to repair"
+      ],
+      "hintDe": "Du sorgst dafür, dass jemand denkt, du kannst etwas richtig gut.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to support",
+          "to research",
+          "to repair",
+          "to develop"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.soap",
+      "w": "soap",
+      "g": "Seife",
+      "d": "something you use with water to wash your body and hands",
+      "s": "Use ___ to wash your hands.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "soap",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "soap",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "soap",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Seife",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fat",
+        "dish",
+        "current"
+      ],
+      "hintDe": "Etwas, das du mit Wasser benutzt, um deinen Körper und deine Hände zu waschen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "fat",
+          "dish",
+          "current",
+          "bacon"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.device",
+      "w": "device",
+      "g": "Gerät",
+      "d": "a small machine made for one special job",
+      "s": "This ___ allows people to talk under water.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "device",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "device",
+          "tier": "full"
+        },
+        {
+          "text": "devices",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "device",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gerät",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "product",
+        "dish",
+        "soap"
+      ],
+      "hintDe": "Eine kleine Maschine, die für eine bestimmte Aufgabe gemacht ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "product",
+          "dish",
+          "soap",
+          "engineer"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.product",
+      "w": "product",
+      "g": "Produkt",
+      "d": "something that is made so that it can be sold",
+      "s": "He started a company to produce his ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "product",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "product",
+          "tier": "full"
+        },
+        {
+          "text": "products",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "product",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Produkt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "company",
+          "de": "Firma",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "device",
+        "invention",
+        "dish"
+      ],
+      "hintDe": "Etwas, das hergestellt wird, damit man es verkaufen kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "device",
+          "invention",
+          "dish",
+          "current"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.remarkable",
+      "w": "remarkable",
+      "g": "bemerkenswert",
+      "d": "so special that people notice it",
+      "s": "Kids can sometimes produce something quite ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "remarkable",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "remarkable",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "remarkable",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bemerkenswert",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "confident",
+        "automatically",
+        "perhaps"
+      ],
+      "hintDe": "So besonders, dass es den Leuten auffällt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "confident",
+          "automatically",
+          "perhaps",
+          "device"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-research",
+      "w": "to research",
+      "g": "erforschen",
+      "d": "to study a subject carefully to learn more about it",
+      "s": "He decided to ___ underwater sounds and how they travel.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "research",
+          "tier": "full"
+        },
+        {
+          "text": "to research",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "research",
+          "tier": "full"
+        },
+        {
+          "text": "to research",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "research",
+            "tier": "full"
+          },
+          {
+            "text": "to research",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erforschen",
+            "tier": "full"
+          },
+          {
+            "text": "recherchieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to invest",
+        "to impress",
+        "to decorate"
+      ],
+      "hintDe": "Du untersuchst ein Thema genau, um mehr darüber zu lernen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to invest",
+          "to impress",
+          "to decorate",
+          "to develop"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.wrist",
+      "w": "wrist",
+      "g": "Handgelenk",
+      "d": "the thin part of your body between your hand and your arm",
+      "s": "Her ___ was hurting from the cold.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wrist",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wrist",
+          "tier": "full"
+        },
+        {
+          "text": "wrists",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wrist",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Handgelenk",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collar",
+        "glove",
+        "ramp"
+      ],
+      "hintDe": "Der dünne Teil deines Körpers zwischen Hand und Arm.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "collar",
+          "glove",
+          "ramp",
+          "wheelchair"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.crutches",
+      "w": "crutches",
+      "g": "Krücken",
+      "d": "long sticks you put under your arms to help you walk when a leg is hurt",
+      "s": "She uses a walker or ___ to move about.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "crutches",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crutches",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crutches",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Krücken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "glove",
+        "wheelchair",
+        "collar"
+      ],
+      "hintDe": "Lange Stöcke, die du dir unter die Arme stellst, um zu gehen, wenn ein Bein verletzt ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "glove",
+          "wheelchair",
+          "collar",
+          "ramp"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.illness",
+      "w": "illness",
+      "g": "Krankheit",
+      "d": "a problem with your health that makes you feel unwell",
+      "s": "Her ___ had stopped Sadie from entering the competition.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "illness",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "illness",
+          "tier": "full"
+        },
+        {
+          "text": "illnesses",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "illness",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Krankheit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "inspiration",
+        "housework",
+        "energy"
+      ],
+      "hintDe": "Ein Problem mit deiner Gesundheit, durch das du dich krank fühlst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "inspiration",
+          "housework",
+          "energy",
+          "influence"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.ramp",
+      "w": "ramp",
+      "g": "Rampe",
+      "d": "a path that goes up at an angle instead of having steps",
+      "s": "She needs to look for ___ to get up and down steps.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ramps",
+          "tier": "full"
+        },
+        {
+          "text": "ramp",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ramp",
+          "tier": "full"
+        },
+        {
+          "text": "ramps",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ramp",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rampe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "steps",
+          "de": "Stufen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "wheelchair",
+        "collar",
+        "glove"
+      ],
+      "hintDe": "Ein Weg, der schräg nach oben führt, statt Stufen zu haben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "wheelchair",
+          "collar",
+          "glove",
+          "wrist"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.wheelchair",
+      "w": "wheelchair",
+      "g": "Rollstuhl",
+      "d": "a chair with wheels for someone who cannot walk",
+      "s": "A ___ helps her get around.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wheelchair",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wheelchair",
+          "tier": "full"
+        },
+        {
+          "text": "wheelchairs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wheelchair",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rollstuhl",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "crutches",
+        "ramp",
+        "device"
+      ],
+      "hintDe": "Ein Stuhl mit Rädern für jemanden, der nicht gehen kann.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "crutches",
+          "ramp",
+          "device",
+          "collar"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-adapt",
+      "w": "to adapt",
+      "g": "anpassen",
+      "d": "to change yourself or something to fit a new situation",
+      "s": "She is able to ___ easily to different situations.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "adapt",
+          "tier": "full"
+        },
+        {
+          "text": "to adapt",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "adapt",
+          "tier": "full"
+        },
+        {
+          "text": "to adapt",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "adapt",
+            "tier": "full"
+          },
+          {
+            "text": "to adapt",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "anpassen",
+            "tier": "full"
+          },
+          {
+            "text": "sich anpassen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to attach",
+        "to support",
+        "to repair"
+      ],
+      "hintDe": "Du veränderst dich oder etwas, damit es zu einer neuen Situation passt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to attach",
+          "to support",
+          "to repair",
+          "to develop"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-attach",
+      "w": "to attach",
+      "g": "anhängen",
+      "d": "to fix or join one thing to another thing",
+      "s": "I'll ___ a picture to my email.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "attach",
+          "tier": "full"
+        },
+        {
+          "text": "to attach",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "attach",
+          "tier": "full"
+        },
+        {
+          "text": "to attach",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "attach",
+            "tier": "full"
+          },
+          {
+            "text": "to attach",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "anhängen",
+            "tier": "full"
+          },
+          {
+            "text": "anfügen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to adapt",
+        "to repair",
+        "to support"
+      ],
+      "hintDe": "Du befestigst eine Sache an einer anderen oder fügst sie hinzu.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to adapt",
+          "to repair",
+          "to support",
+          "to decorate"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.glove",
+      "w": "glove",
+      "g": "Handschuh",
+      "d": "a piece of clothing you wear on your hand to keep it warm",
+      "s": "Wear some ___ to keep your hands warm in winter.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "gloves",
+          "tier": "full"
+        },
+        {
+          "text": "glove",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "glove",
+          "tier": "full"
+        },
+        {
+          "text": "gloves",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "glove",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Handschuh",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collar",
+        "wrist",
+        "soap"
+      ],
+      "hintDe": "Ein Kleidungsstück, das du an der Hand trägst, um sie warm zu halten.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "collar",
+          "wrist",
+          "soap",
+          "wheelchair"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.housework",
+      "w": "housework",
+      "g": "Hausarbeit",
+      "d": "the jobs you do to keep a home clean, like washing and cleaning",
+      "s": "Busy parents don't have enough time for ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "housework",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "housework",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "housework",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hausarbeit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "illness",
+        "inspiration",
+        "energy"
+      ],
+      "hintDe": "Die Arbeiten, die du machst, um ein Zuhause sauber zu halten, wie Waschen und Putzen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "illness",
+          "inspiration",
+          "energy",
+          "influence"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.automatically",
+      "w": "automatically",
+      "g": "automatisch",
+      "d": "happening by itself, without a person doing anything",
+      "s": "When the cat wants to go inside, the flap opens ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "automatically",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "automatically",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "automatically",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "automatisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "flap",
+          "de": "Klappe",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "perhaps",
+        "remarkable",
+        "confident"
+      ],
+      "hintDe": "Es passiert von selbst, ohne dass ein Mensch etwas tut.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "perhaps",
+          "remarkable",
+          "confident",
+          "device"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.collar",
+      "w": "collar",
+      "g": "Kragen",
+      "d": "a band that goes around the neck of a shirt or around an animal's neck",
+      "s": "I've created a ___ for our cat.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "collar",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "collar",
+          "tier": "full"
+        },
+        {
+          "text": "collars",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "collar",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kragen",
+            "tier": "full"
+          },
+          {
+            "text": "Halsband",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "neck",
+          "de": "Hals",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "glove",
+        "wrist",
+        "device"
+      ],
+      "hintDe": "Ein Band, das um den Hals eines Hemdes oder um den Hals eines Tieres geht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "glove",
+          "wrist",
+          "device",
+          "ramp"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.computer-science",
+      "w": "computer science",
+      "g": "Informatik",
+      "d": "the school subject where you learn how to write programs and make machines think",
+      "s": "His best subject at school is ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "computer science",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "computer science",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "computer science",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Informatik",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "programs",
+          "de": "Programme",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "engineer",
+        "inspiration",
+        "inventor"
+      ],
+      "hintDe": "Das Schulfach darüber, wie Computer funktionieren und wie man Programme schreibt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "engineer",
+          "inspiration",
+          "inventor",
+          "invention"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.engineer",
+      "w": "engineer",
+      "g": "Techniker/Technikerin",
+      "d": "a person who designs or makes machines, roads or bridges",
+      "s": "What subjects do you need to study to be an ___?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "engineer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "engineer",
+          "tier": "full"
+        },
+        {
+          "text": "engineers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "engineer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Techniker",
+            "tier": "full"
+          },
+          {
+            "text": "Technikerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "inventor",
+        "inspiration",
+        "crowd"
+      ],
+      "hintDe": "Eine Person, die Maschinen, Straßen oder Brücken entwirft oder baut.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "inventor",
+          "inspiration",
+          "crowd",
+          "device"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.inspiration",
+      "w": "inspiration",
+      "g": "Inspiration",
+      "d": "a feeling or idea that makes you want to make or do something",
+      "s": "This is not the kind of ___ I'm looking for right now.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "inspiration",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "inspiration",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "inspiration",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Inspiration",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "influence",
+        "illness",
+        "energy"
+      ],
+      "hintDe": "Ein Gefühl oder eine Idee, die dich etwas machen oder tun lassen will.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "influence",
+          "illness",
+          "energy",
+          "invention"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-repair",
+      "w": "to repair",
+      "g": "reparieren",
+      "d": "to fix something that is broken so it works again",
+      "s": "I love ___ things and playing around with new ideas.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "repairing",
+          "tier": "full"
+        },
+        {
+          "text": "repair",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "repair",
+          "tier": "full"
+        },
+        {
+          "text": "to repair",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "repair",
+            "tier": "full"
+          },
+          {
+            "text": "to repair",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "reparieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to attach",
+        "to invent",
+        "to design"
+      ],
+      "hintDe": "Du machst etwas, das kaputt ist, wieder ganz, damit es funktioniert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to attach",
+          "to invent",
+          "to design",
+          "to develop"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    },
+    {
+      "wordId": "g3u08.w.to-support",
+      "w": "to support",
+      "g": "unterstützen",
+      "d": "to help someone or give them what they need",
+      "s": "I want to do things that will ___ my dream for the future.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "support",
+          "tier": "full"
+        },
+        {
+          "text": "to support",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "support",
+          "tier": "full"
+        },
+        {
+          "text": "to support",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "support",
+            "tier": "full"
+          },
+          {
+            "text": "to support",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unterstützen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to impress",
+        "to repair",
+        "to research"
+      ],
+      "hintDe": "Du hilfst jemandem oder gibst ihm, was er braucht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to impress",
+          "to repair",
+          "to research",
+          "to adapt"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "More 3 SB Unit 8 word file",
+      "note": null
+    }
+  ]
+}

@@ -1,0 +1,979 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g1-u08",
+  "briefBank": "9dd0f200363c",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "___ you wear a cap? — Yes, I ___.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Do | do",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei you nimmst du Do, und in der Kurzantwort kommt do zurück.",
+      "hintEn": null,
+      "explainDe": "Bei I/you/we/they bildest du die Frage mit Do und antwortest kurz mit do: Do you wear a cap? — Yes, I do.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-cp-001",
+      "sbRef": "g1/sb/SB Unit 8- Clothes.txt#grammar-1 (Do you buy your own clothes? Yes, I do.)",
+      "note": "Question form Do + you + base verb and short answer Yes, I do. probe gate-clean (do is in core allowlist) but are NEW forms — flag Do-question + Yes…do short answer for grant. Carrier swaps untaught 'buy your own clothes' → 'wear a cap' (both gate-clean)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "___ she wear boots? — Yes, she ___.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Does | does",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she nimmst du Does, und in der Kurzantwort kommt does zurück.",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it bildest du die Frage mit Does und antwortest kurz mit does: Does she wear boots? — Yes, she does.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 8- Clothes.txt#grammar-1 (Does she wear yellow trainers? Yes, she does.)",
+      "note": "Does-question + Yes…does short answer (NEW forms, gate-clean via core allowlist) — flag for grant. Carrier swaps untaught 'yellow' away → plain 'boots'."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ he ___ (like) pizza? — No, he ___.",
+        "lang": "en",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "Does | like | doesn't",
+          "tier": "full"
+        },
+        {
+          "text": "Does | like | does not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach Does bleibt das Verb in der Grundform (kein -s!), und die Kurzantwort ist No, he doesn't.",
+      "hintEn": null,
+      "explainDe": "Nach Does steht das Verb ohne -s: Does he like pizza? Die kurze Verneinung ist No, he doesn't.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-gf-004",
+      "sbRef": "g1/sb/SB Unit 8- Clothes.txt#grammar-1 (Does he like T-shirts with animals? No, he doesn't.)",
+      "note": "Does + base 'like' (no -s) and No, he doesn't short answer — flag doesn't/does not. Carrier swaps untaught 'T-shirts' → 'pizza' (gate-clean)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ they ___ (wear) shoes? — Yes, they ___.",
+        "lang": "en",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "Do | wear | do",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei they nimmst du Do, das Verb bleibt in der Grundform, und die Kurzantwort ist Yes, they do.",
+      "hintEn": null,
+      "explainDe": "Bei they fragst du mit Do und dem Verb in der Grundform: Do they wear shoes? — Yes, they do.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-gf-003",
+      "sbRef": "g1/sb/SB Unit 8- Clothes.txt#grammar-1 (Do they wear blue jeans? Yes, they do.)",
+      "note": "Do + they + base + Yes, they do short answer (NEW forms) — flag for grant. Swaps untaught 'blue jeans' → 'shoes'."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ your sister ___ (wear) a skirt? — No, she ___. She ___ (wear) trousers.",
+        "lang": "en",
+        "blanks": 4
+      },
+      "answers": [
+        {
+          "text": "Does | wear | doesn't | wears",
+          "tier": "full"
+        },
+        {
+          "text": "Does | wear | does not | wears",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage bleibt wear in der Grundform; in der Aussage am Ende braucht she ein -s: wears.",
+      "hintEn": null,
+      "explainDe": "Frage mit Does + Grundform (Does she wear …?), aber in der normalen Aussage bekommt she das -s: She wears trousers.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-gf-005",
+      "sbRef": null,
+      "note": "Contrasts question base 'wear' vs statement 'wears'; Does-question + No, she doesn't short answer — flag doesn't/does not. All vocab gate-clean (sister, wear, skirt, trousers)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "What ___ is your sweater? — ___ red.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "colour | It's",
+          "tier": "full"
+        },
+        {
+          "text": "colour | It is",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du fragst What colour …? und antwortest mit It's + Farbe, weil sweater Einzahl ist.",
+      "hintEn": null,
+      "explainDe": "Bei einer Sache in der Einzahl fragst du What colour is …? und antwortest mit It's: It's red.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 8- Clothes.txt#grammar-1 (What colour is your new T-shirt? It's pink.)",
+      "note": "What colour is …? (singular → It's). 'colour' is untaught → glossed (= Farbe). Carrier gate-clean otherwise (sweater, red)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "What colour ___ your boots? — ___ grey.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "are | They're",
+          "tier": "full"
+        },
+        {
+          "text": "are | They are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "boots ist Mehrzahl, also fragst du What colour are …? und antwortest mit They're.",
+      "hintEn": null,
+      "explainDe": "Bei Mehrzahl (boots) fragst du What colour are …? und antwortest mit They're: They're grey.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 8- Clothes.txt#grammar-1 (What colour are your trainers? They're red and white.)",
+      "note": "What colour are …? (plural → They're); minimal pair is/are. 'colour' glossed (= Farbe). Rest gate-clean (boots, grey)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does she wear a skirt?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Does she wears a skirt?",
+        "Do she wear a skirt?",
+        "Is she wear a skirt?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she heißt es Does, und danach bleibt das Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Does she wear a skirt? — Does für she, und wear ohne -s.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Does she wears a skirt?",
+          "Do she wear a skirt?",
+          "Is she wear a skirt?",
+          "Do she wears a skirt?",
+          "Does he wears a skirt?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u8-present-simple-questions-mc-001",
+      "sbRef": null,
+      "note": "Tests Does + base for she vs the -s error and do-error. German stem ('Welcher Satz ist richtig?') → lang de, no grammar terms. All options gate-clean."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Antwort passt? — Do they like dogs?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Yes, they do.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Yes, they does.",
+        "Yes, they like.",
+        "Yes, they are."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Auf eine Do-Frage mit they antwortest du kurz mit do.",
+      "hintEn": null,
+      "explainDe": "Die kurze Antwort wiederholt das Fragewort: Do they …? — Yes, they do.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Yes, they does.",
+          "Yes, they like.",
+          "Yes, they are.",
+          "Yes, they don't.",
+          "Yes, they doesn't."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u8-present-simple-questions-mc-003",
+      "sbRef": null,
+      "note": "Short answer Yes, they do vs does/lexical-verb/be errors — flag short-answer form. German stem → lang de. Options gate-clean (dogs, like)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Antwort passt? — Does he like chocolate?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "No, he doesn't.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "No, he don't.",
+        "No, he doesn't like.",
+        "No, he isn't."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Auf eine Does-Frage mit he antwortest du kurz mit doesn't.",
+      "hintEn": null,
+      "explainDe": "Die kurze Verneinung passt zum Fragewort: Does he …? — No, he doesn't.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "No, he don't.",
+          "No, he doesn't like.",
+          "No, he isn't.",
+          "No, he does.",
+          "No, he hasn't."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Short answer No, he doesn't vs don't/redundant-verb/be errors — flag doesn't. German stem → lang de. Options gate-clean (chocolate, like)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du willst wissen, ob dein Freund einen Hoodie trägt. Frag ihn.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you wear a hoodie?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Does you wear a hoodie?",
+        "Do you wears a hoodie?",
+        "You wear a hoodie?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei you fragst du mit Do am Anfang, das Verb bleibt in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Do you wear a hoodie? — Do für you, und wear ohne -s.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Does you wear a hoodie?",
+          "Do you wears a hoodie?",
+          "You wear a hoodie?",
+          "Do you wear a hoodie",
+          "Wear you a hoodie?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Whole-sentence pick: Do-question for you vs does-error, -s-error, missing-auxiliary. German scenario → lang de. All sentences gate-clean (hoodie, wear)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du möchtest herausfinden, ob Sophia gerne Pizza isst. Frag danach.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does Sophia like pizza?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Does Sophia likes pizza?",
+        "Do Sophia like pizza?",
+        "Is Sophia like pizza?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Sophia ist wie she, also Does — und das Verb bleibt in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Sophia = she, daher Does Sophia like …? mit dem Verb ohne -s.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Does Sophia likes pizza?",
+          "Do Sophia like pizza?",
+          "Is Sophia like pizza?",
+          "Does Sophia like pizza",
+          "Do Sophia likes pizza?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 8- Clothes.txt#reading (Sophia/Debbie story)",
+      "note": "Proper-noun subject = he/she → Does + base. Distractors flaw the structure (-s, do-error, be-error). German scenario → lang de. Sophia is a harvested proper noun; pizza/like gate-clean."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Does she likes chocolate?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does she like chocolate?",
+          "tier": "full"
+        },
+        {
+          "text": "like",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach Does darf das Verb kein -s haben.",
+      "hintEn": null,
+      "explainDe": "Das -s steckt schon in Does, also bleibt das Verb in der Grundform: Does she like chocolate?",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-ec-001",
+      "sbRef": null,
+      "note": "Common error: -s kept on verb after Does. Carrier gate-clean (chocolate, like)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Do he wear a belt?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does he wear a belt?",
+          "tier": "full"
+        },
+        {
+          "text": "Does",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei he brauchst du Does, nicht Do.",
+      "hintEn": null,
+      "explainDe": "he/she/it bekommen Does: Does he wear a belt?",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-ec-002",
+      "sbRef": null,
+      "note": "Common error: Do instead of Does with he. Carrier gate-clean (belt, wear)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "You like dogs? Yes, I like.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you like dogs? Yes, I do.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Ja/Nein-Frage beginnt mit Do, und in der Kurzantwort sagst du nur Yes, I do.",
+      "hintEn": null,
+      "explainDe": "Die Frage braucht Do am Anfang und die Kurzantwort endet mit do (nicht mit dem Verb): Do you like dogs? — Yes, I do.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-ec-003",
+      "sbRef": null,
+      "note": "Two-fault repair: missing Do + wrong short answer (Yes, I like → Yes, I do). Flag Do-question + Yes…do form. Carrier gate-clean (dogs, like)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She wears trainers. (?)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does she wear trainers?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mach aus der Aussage eine Frage: Does an den Anfang, und das -s vom Verb fällt weg.",
+      "hintEn": null,
+      "explainDe": "Aus She wears … wird die Frage Does she wear …? — Does übernimmt das -s, das Verb bleibt in der Grundform.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-tf-002",
+      "sbRef": null,
+      "note": "Statement → Does-question; -s moves from verb to Does. Carrier gate-clean (trainers, wear)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You like pizza. (?)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you like pizza?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei you stellst du Do an den Anfang, das Verb bleibt gleich.",
+      "hintEn": null,
+      "explainDe": "Aus der Aussage You like … wird die Frage Do you like …?",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-tf-001",
+      "sbRef": null,
+      "note": "Statement → Do-question for you. Carrier gate-clean (pizza, like)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Debbie likes the trainers. Ask if this is true.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does Debbie like the trainers?",
+          "tier": "full"
+        },
+        {
+          "text": "Does she like the trainers?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Debbie ist wie she: Frag mit Does und dem Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Debbie = she, also Does Debbie like …? mit dem Verb ohne -s.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-qf-001",
+      "sbRef": "g1/sb/SB Unit 8- Clothes.txt#reading (Debbie/trainers)",
+      "note": "Build a yes/no question from a statement; proper-noun subject → Does. English cue 'Ask if this is true.' carries the task (no grammar terms). Debbie harvested noun; trainers/like gate-clean."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "she / wear / Does / boots / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does she wear boots?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Fang mit Does an, dann she, dann das Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge der Ja/Nein-Frage: Does + she + wear + boots? Das Verb bleibt ohne -s.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "wears",
+          "like",
+          "shoes",
+          "he"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": "m1-u8-present-simple-questions-sb-001",
+      "sbRef": null,
+      "note": "Word order of a Does-question. Distractor chips (wears/like/shoes/he) gate-clean and plausibly wrong. Answer chips gate-clean."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "you / a / Do / hoodie / wear / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you wear a hoodie?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Fang mit Do an, dann you, dann das Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: Do + you + wear + a hoodie? Bei you nimmst du Do.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Does",
+          "wears",
+          "she",
+          "cap"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Word order of a Do-question. Distractor chips (Does/wears/she/cap) gate-clean and plausibly wrong. Answer chips gate-clean."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Sortiere: gehört Do oder Does an den Anfang?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "Do",
+          "members": [
+            "___ you wear a cap?|Do you wear a cap?",
+            "___ they like dogs?|Do they like dogs?",
+            "___ we wear shoes?|Do we wear shoes?",
+            "___ I wear a hat?|Do I wear a hat?"
+          ]
+        },
+        {
+          "label": "Does",
+          "members": [
+            "___ she wear a skirt?|Does she wear a skirt?",
+            "___ he like pizza?|Does he like pizza?",
+            "___ it fit?|Does it fit?"
+          ]
+        }
+      ],
+      "hintDe": "I/you/we/they bekommen Do; he/she/it bekommen Does.",
+      "hintEn": null,
+      "explainDe": "Do steht bei I/you/we/they, Does steht bei he/she/it.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-gs-001",
+      "sbRef": null,
+      "note": "Two groups (Do: 4 members, Does: 3 members), in-bank labels Do/Does. Members pipe-split blank|full. German framing avoids grammar terms. All carriers gate-clean."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ordne zu, was zusammenpasst.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Do you like dogs?",
+          "right": "Yes, I do."
+        },
+        {
+          "left": "Does he wear a cap?",
+          "right": "No, he doesn't."
+        },
+        {
+          "left": "Do they wear boots?",
+          "right": "Yes, they do."
+        },
+        {
+          "left": "Does she like pizza?",
+          "right": "No, she doesn't."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Die Kurzantwort wiederholt das Fragewort: Do …? → … do. / Does …? → … does(n't).",
+      "hintEn": null,
+      "explainDe": "Achte auf das Subjekt: Do-Fragen mit I/you/we/they, Does-Fragen mit he/she/it — und die Kurzantwort passt dazu.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-mt-001",
+      "sbRef": "g1/wb/WB Unit 8 Clothes.txt#ex4 (Match the questions and answers)",
+      "note": "4 question↔short-answer pairs, all right-sides UNIQUE (Yes, I do. / No, he doesn't. / Yes, they do. / No, she doesn't.). English↔English. German framing, no grammar terms. answers=[]. All gate-clean."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "matching-pairs",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Ordne zu: Do oder Does?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "he",
+          "right": "Does he … ?"
+        },
+        {
+          "left": "you",
+          "right": "Do you … ?"
+        },
+        {
+          "left": "she",
+          "right": "Does she … ?"
+        },
+        {
+          "left": "they",
+          "right": "Do they … ?"
+        },
+        {
+          "left": "it",
+          "right": "Does it … ?"
+        },
+        {
+          "left": "we",
+          "right": "Do we … ?"
+        }
+      ],
+      "groups": [],
+      "hintDe": "he/she/it → Does; I/you/we/they → Do.",
+      "hintEn": null,
+      "explainDe": "Ordne jedem Subjekt das richtige Fragewort zu: Does bei he/she/it, Do bei you/we/they.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "6 pairs subject↔question-opener, right-sides unique. English↔English. German framing, no grammar terms. answers=[]. Do/Does gate-clean."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Magst du Pizza?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you like pizza?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine du-Frage beginnt im Englischen mit Do you …?",
+      "hintEn": null,
+      "explainDe": "Magst du …? heißt Do you like …? — die Frage startet mit Do.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u8-present-simple-questions-tr-001",
+      "sbRef": null,
+      "note": "deToEn translation of a du-question → Do you like …? German prompt → lang de. Answer gate-clean (pizza, like)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Trägt sie eine Jacke?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does she wear a jacket?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei sie (= she) beginnt die Frage mit Does, und das Verb bleibt in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Trägt sie …? heißt Does she wear …? — Does für she und wear ohne -s.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "deToEn translation → Does-question for she. German prompt → lang de. Answer gate-clean (jacket, wear)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Dieses kleine Wort brauchst du am Satzanfang bei he, she und it.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es beginnt mit D und gehört zu he/she/it.",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it fragst du mit Does.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Single-token anagram 'Does' (4 letters ≥3). German cue, no grammar terms. Gate-clean (core allowlist)."
+    },
+    {
+      "structureId": "g1u08.s.present-simple-questions",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "So sagst du kurz Nein bei he: No, he ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist die Kurzform von does not.",
+      "hintEn": null,
+      "explainDe": "No, he doesn't. ist die kurze Verneinung bei he/she/it.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Single-token anagram 'doesn't' (≥3 letters). German cue. doesn't gate-clean (core allowlist) — NEW short-answer form, flag for grant."
+    }
+  ]
+}

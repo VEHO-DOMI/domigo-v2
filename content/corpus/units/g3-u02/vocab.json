@@ -1,0 +1,3449 @@
+{
+  "schema": "vocab@1",
+  "grade": 3,
+  "unit": 2,
+  "slug": "g3-u02",
+  "items": [
+    {
+      "id": "g3u02.w.author",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "member",
+            "passenger",
+            "thief",
+            "coincidence"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "author",
+      "g": "Autor/Autorin",
+      "d": "a man or woman who writes books",
+      "s": "This famous ___ writes many books for children.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "author",
+          "tier": "full"
+        },
+        {
+          "text": "authors",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "author",
+          "tier": "full"
+        },
+        {
+          "text": "an author",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "author",
+            "tier": "full"
+          },
+          {
+            "text": "writer",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Autor",
+            "tier": "full"
+          },
+          {
+            "text": "Autorin",
+            "tier": "full"
+          },
+          {
+            "text": "Schriftsteller",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "member",
+        "passenger",
+        "thief"
+      ],
+      "hintDe": "Diese Person schreibt Bücher."
+    },
+    {
+      "id": "g3u02.w.awful",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "careless",
+            "similar",
+            "married",
+            "coincidence"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "awful",
+      "g": "furchtbar",
+      "d": "very bad and not nice at all",
+      "s": "The weather was ___ all day — it was cold, dark and wet.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "awful",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "awful",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "awful",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "furchtbar",
+            "tier": "full"
+          },
+          {
+            "text": "schrecklich",
+            "tier": "full"
+          },
+          {
+            "text": "scheußlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "careless",
+        "similar",
+        "married"
+      ],
+      "hintDe": "Etwas ist ganz schlimm und überhaupt nicht schön."
+    },
+    {
+      "id": "g3u02.w.careless",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "awful",
+            "similar",
+            "married",
+            "coincidence"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "careless",
+      "g": "unvorsichtig",
+      "d": "when you do not think about a thing or look after it well",
+      "s": "He was so ___ that he dropped his new tablet.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "careless",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "careless",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "careless",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unvorsichtig",
+            "tier": "full"
+          },
+          {
+            "text": "leichtsinnig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "awful",
+        "similar",
+        "married"
+      ],
+      "hintDe": "Du passt nicht gut auf und denkst nicht nach."
+    },
+    {
+      "id": "g3u02.w.coincidence",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "speech",
+            "queue",
+            "entrance",
+            "stage"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "coincidence",
+      "g": "Zufall",
+      "d": "a big surprise when two of them happen at one time and you did not think it would happen",
+      "s": "We are both wearing a red hat to school today — what a ___!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "coincidence",
+          "tier": "full"
+        },
+        {
+          "text": "coincidences",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "coincidence",
+          "tier": "full"
+        },
+        {
+          "text": "a coincidence",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "coincidence",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zufall",
+            "tier": "full"
+          },
+          {
+            "text": "ein Zufall",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "speech",
+        "queue",
+        "entrance"
+      ],
+      "hintDe": "Zwei Dinge passieren zur gleichen Zeit, ganz ohne Plan – eine große Überraschung."
+    },
+    {
+      "id": "g3u02.w.date-of-birth",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "speech",
+            "stage",
+            "entrance",
+            "queue"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "date of birth",
+      "g": "Geburtsdatum",
+      "d": "the day, month and year you have your birthday",
+      "s": "Please write down your ___ — the day, month and year of your birthday.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "date of birth",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "date of birth",
+          "tier": "full"
+        },
+        {
+          "text": "your date of birth",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "date of birth",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geburtsdatum",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "speech",
+        "stage",
+        "entrance"
+      ],
+      "hintDe": "Tag, Monat und Jahr, an dem du Geburtstag hast."
+    },
+    {
+      "id": "g3u02.w.entrance",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "queue",
+            "stage",
+            "handbag",
+            "note"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "entrance",
+      "g": "Eingang",
+      "d": "the door where you go into a building or a place",
+      "s": "We are going to meet at the big ___ of the museum at three o'clock.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "entrance",
+          "tier": "full"
+        },
+        {
+          "text": "entrances",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "entrance",
+          "tier": "full"
+        },
+        {
+          "text": "an entrance",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "entrance",
+            "tier": "full"
+          },
+          {
+            "text": "way in",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eingang",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "queue",
+        "stage",
+        "handbag"
+      ],
+      "hintDe": "Hier gehst du in ein Gebäude hinein."
+    },
+    {
+      "id": "g3u02.w.handbag",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "note",
+            "queue",
+            "entrance",
+            "stage"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "handbag",
+      "g": "Handtasche",
+      "d": "a small thing a woman carries her keys and money in",
+      "s": "She keeps her keys and money in her ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "handbag",
+          "tier": "full"
+        },
+        {
+          "text": "handbags",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "handbag",
+          "tier": "full"
+        },
+        {
+          "text": "a handbag",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "handbag",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Handtasche",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "note",
+        "queue",
+        "entrance"
+      ],
+      "hintDe": "Darin trägt eine Frau Schlüssel und Geld."
+    },
+    {
+      "id": "g3u02.w.hang-on-a-minute",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "awful",
+            "I beg your pardon.",
+            "What a ...!",
+            "similar"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Hang on a minute.",
+      "g": "Ein Augenblick (mal).",
+      "d": "a way to ask somebody to wait for a short time",
+      "s": "___ I just need to find my keys before we go.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Hang on a minute.",
+          "tier": "full"
+        },
+        {
+          "text": "Hang on a minute",
+          "tier": "full"
+        },
+        {
+          "text": "Hang on",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Hang on a minute.",
+          "tier": "full"
+        },
+        {
+          "text": "Hang on a minute",
+          "tier": "full"
+        },
+        {
+          "text": "Hang on",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Hang on a minute.",
+            "tier": "full"
+          },
+          {
+            "text": "Hang on a minute",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ein Augenblick.",
+            "tier": "full"
+          },
+          {
+            "text": "Einen Augenblick.",
+            "tier": "full"
+          },
+          {
+            "text": "Moment mal.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "awful",
+        "I beg your pardon.",
+        "What a ...!"
+      ],
+      "hintDe": "Du bittest jemanden, einen kurzen Augenblick zu warten."
+    },
+    {
+      "id": "g3u02.w.hold-on",
+      "rev": 3,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "awful",
+            "I beg your pardon.",
+            "What a ...!",
+            "similar"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Hold on!",
+      "g": "Warte(t)!",
+      "d": "a way to tell somebody to wait for a short time",
+      "s": "___ I need to put on my shoes before we go.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Hold on!",
+          "tier": "full"
+        },
+        {
+          "text": "Hold on",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Hold on!",
+          "tier": "full"
+        },
+        {
+          "text": "Hold on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Hold on!",
+            "tier": "full"
+          },
+          {
+            "text": "Hold on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Warte!",
+            "tier": "full"
+          },
+          {
+            "text": "Wartet!",
+            "tier": "full"
+          },
+          {
+            "text": "Moment!",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "awful",
+        "I beg your pardon.",
+        "What a ...!"
+      ],
+      "hintDe": "Du sagst jemandem, kurz zu warten."
+    },
+    {
+      "id": "g3u02.w.i-beg-your-pardon",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Hold on!",
+            "Hang on a minute.",
+            "What a ...!",
+            "coincidence"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "I beg your pardon.",
+      "g": "Entschuldigung",
+      "d": "a way to tell somebody you are sorry, or to ask them to tell you a thing again",
+      "s": "___ Can you tell me that again, please? I did not understand you.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "I beg your pardon.",
+          "tier": "full"
+        },
+        {
+          "text": "I beg your pardon",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "I beg your pardon.",
+          "tier": "full"
+        },
+        {
+          "text": "I beg your pardon",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "I beg your pardon.",
+            "tier": "full"
+          },
+          {
+            "text": "I beg your pardon",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Entschuldigung",
+            "tier": "full"
+          },
+          {
+            "text": "Verzeihung",
+            "tier": "full"
+          },
+          {
+            "text": "Wie bitte?",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Hold on!",
+        "Hang on a minute.",
+        "What a ...!"
+      ],
+      "hintDe": "Höflich: Du entschuldigst dich oder bittest, etwas zu wiederholen."
+    },
+    {
+      "id": "g3u02.w.laugh",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "note",
+            "speech",
+            "stage",
+            "queue"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "laugh",
+      "g": "Lacher",
+      "d": "the sound you make when you think a thing is funny",
+      "s": "When a joke is very funny, you give a big ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "laugh",
+          "tier": "full"
+        },
+        {
+          "text": "laughs",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "laugh",
+          "tier": "full"
+        },
+        {
+          "text": "a laugh",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "laugh",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lacher",
+            "tier": "full"
+          },
+          {
+            "text": "Lachen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "note",
+        "speech",
+        "stage"
+      ],
+      "hintDe": "Der Laut, den du machst, wenn etwas lustig ist."
+    },
+    {
+      "id": "g3u02.w.married",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "divorced",
+            "similar",
+            "careless",
+            "awful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "married",
+      "g": "verheiratet",
+      "d": "when you have a husband or a wife",
+      "s": "My aunt is now ___ to my uncle.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "married",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "married",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "married",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verheiratet",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "husband",
+          "de": "Ehemann",
+          "scope": "d"
+        },
+        {
+          "word": "wife",
+          "de": "Ehefrau",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "divorced",
+        "similar",
+        "careless"
+      ],
+      "hintDe": "Du hast einen Mann oder eine Frau geheiratet."
+    },
+    {
+      "id": "g3u02.w.member",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "author",
+            "passenger",
+            "thief",
+            "coincidence"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "member",
+      "g": "Mitglied",
+      "d": "one of the people in a group",
+      "s": "Every ___ of the group has a job to do.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "member",
+          "tier": "full"
+        },
+        {
+          "text": "members",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "member",
+          "tier": "full"
+        },
+        {
+          "text": "a member",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "member",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mitglied",
+            "tier": "full"
+          },
+          {
+            "text": "ein Mitglied",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "author",
+        "passenger",
+        "thief"
+      ],
+      "hintDe": "Du gehörst zu einer Gruppe oder einem Verein."
+    },
+    {
+      "id": "g3u02.w.north-pole",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "queue",
+            "entrance",
+            "stage",
+            "handbag"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "North Pole",
+      "g": "Nordpol",
+      "d": "the very cold place high up on the Earth, where there is a lot of snow and ice",
+      "s": "I want to travel to the ___ one day to look at the snow and ice.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "North Pole",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "North Pole",
+          "tier": "full"
+        },
+        {
+          "text": "the North Pole",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "North Pole",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nordpol",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "ice",
+          "de": "Eis",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "queue",
+        "entrance",
+        "stage"
+      ],
+      "hintDe": "Der ganz kalte Ort im Norden der Erde."
+    },
+    {
+      "id": "g3u02.w.note",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "handbag",
+            "queue",
+            "speech",
+            "entrance"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "note",
+      "g": "Geldschein",
+      "d": "money like a 50-pound one — it is not metal",
+      "s": "The £50 ___ on the floor was mine.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "note",
+          "tier": "full"
+        },
+        {
+          "text": "notes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "note",
+          "tier": "full"
+        },
+        {
+          "text": "a note",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "note",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geldschein",
+            "tier": "full"
+          },
+          {
+            "text": "Schein",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "floor",
+          "de": "Boden",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "handbag",
+        "queue",
+        "speech"
+      ],
+      "hintDe": "Geld aus Papier, kein Münzgeld – zum Beispiel ein 50er."
+    },
+    {
+      "id": "g3u02.w.passenger",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "member",
+            "author",
+            "thief",
+            "coincidence"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "passenger",
+      "g": "Passagier/Passagierin",
+      "d": "one of the people who travel in a train, a ship or a plane",
+      "s": "Every ___ on the ship was happy when it came to land.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "passenger",
+          "tier": "full"
+        },
+        {
+          "text": "passengers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "passenger",
+          "tier": "full"
+        },
+        {
+          "text": "a passenger",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "passenger",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Passagier",
+            "tier": "full"
+          },
+          {
+            "text": "Passagierin",
+            "tier": "full"
+          },
+          {
+            "text": "Fahrgast",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "member",
+        "author",
+        "thief"
+      ],
+      "hintDe": "Du fährst oder fliegst mit, zum Beispiel im Schiff oder Flugzeug."
+    },
+    {
+      "id": "g3u02.w.per-cent",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "note",
+            "speech",
+            "stage",
+            "laugh"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "per cent",
+      "g": "Prozent",
+      "d": "a number out of one hundred, with the % after it",
+      "s": "About 80 ___ of the children in our year are very good at maths.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "per cent",
+          "tier": "full"
+        },
+        {
+          "text": "percent",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "per cent",
+          "tier": "full"
+        },
+        {
+          "text": "percent",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "per cent",
+            "tier": "full"
+          },
+          {
+            "text": "percent",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Prozent",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "note",
+        "speech",
+        "stage"
+      ],
+      "hintDe": "Eine Zahl von hundert, mit dem Zeichen % dahinter."
+    },
+    {
+      "id": "g3u02.w.queue",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "entrance",
+            "stage",
+            "speech",
+            "note"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "queue",
+      "g": "Warteschlange",
+      "d": "a lot of people who wait to go into a place",
+      "s": "There was a very long ___ of people waiting to go into the museum.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "queue",
+          "tier": "full"
+        },
+        {
+          "text": "queues",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "queue",
+          "tier": "full"
+        },
+        {
+          "text": "a queue",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "queue",
+            "tier": "full"
+          },
+          {
+            "text": "line",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Warteschlange",
+            "tier": "full"
+          },
+          {
+            "text": "Schlange",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "entrance",
+        "stage",
+        "speech"
+      ],
+      "hintDe": "Viele Leute stehen hintereinander und warten."
+    },
+    {
+      "id": "g3u02.w.similar",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "careless",
+            "awful",
+            "married",
+            "coincidence"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "similar",
+      "g": "ähnlich",
+      "d": "when one thing looks very much like the other thing",
+      "s": "My new sweater looks very much like yours, so they are very ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "similar",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "similar",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "similar",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ähnlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "careless",
+        "awful",
+        "married"
+      ],
+      "hintDe": "Zwei Dinge schauen fast gleich aus."
+    },
+    {
+      "id": "g3u02.w.south-pole",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "North Pole",
+            "entrance",
+            "stage",
+            "queue"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "South Pole",
+      "g": "Südpol",
+      "d": "the very cold place at the bottom of the Earth, where penguins live",
+      "s": "Penguins live near the ___ in the cold south of the Earth.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "South Pole",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "South Pole",
+          "tier": "full"
+        },
+        {
+          "text": "the South Pole",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "South Pole",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Südpol",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "North Pole",
+        "entrance",
+        "stage"
+      ],
+      "hintDe": "Der ganz kalte Ort im Süden der Erde."
+    },
+    {
+      "id": "g3u02.w.speech",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "stage",
+            "note",
+            "queue",
+            "laugh"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "speech",
+      "g": "Rede",
+      "d": "a talk that one man or woman gives in front of a lot of people",
+      "s": "My teacher was giving a short ___ to the whole school in the morning.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "speech",
+          "tier": "full"
+        },
+        {
+          "text": "speeches",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "speech",
+          "tier": "full"
+        },
+        {
+          "text": "a speech",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "speech",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rede",
+            "tier": "full"
+          },
+          {
+            "text": "Ansprache",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "stage",
+        "note",
+        "queue"
+      ],
+      "hintDe": "Eine Person spricht vor vielen Leuten."
+    },
+    {
+      "id": "g3u02.w.stage",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "speech",
+            "entrance",
+            "queue",
+            "note"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "stage",
+      "g": "Bühne",
+      "d": "a high place where a singer is, up in front of a lot of people",
+      "s": "The singer was standing on the ___ while a lot of people watched.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "stage",
+          "tier": "full"
+        },
+        {
+          "text": "stages",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stage",
+          "tier": "full"
+        },
+        {
+          "text": "a stage",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stage",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bühne",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "speech",
+        "entrance",
+        "queue"
+      ],
+      "hintDe": "Der hohe Platz, auf dem ein Sänger vor vielen Leuten steht."
+    },
+    {
+      "id": "g3u02.w.thief",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "member",
+            "passenger",
+            "author",
+            "coincidence"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "thief (pl thieves)",
+      "g": "Dieb/Diebin",
+      "d": "a man or woman who steals",
+      "s": "The police want to find the ___ who has the woman's handbag now.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "thief",
+          "tier": "full"
+        },
+        {
+          "text": "thieves",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thief",
+          "tier": "full"
+        },
+        {
+          "text": "a thief",
+          "tier": "full"
+        },
+        {
+          "text": "thieves",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thief",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Dieb",
+            "tier": "full"
+          },
+          {
+            "text": "Diebin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "member",
+        "passenger",
+        "author"
+      ],
+      "hintDe": "Diese Person stiehlt Sachen."
+    },
+    {
+      "id": "g3u02.w.to-achieve",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to survive",
+            "to return",
+            "to hand sth. in",
+            "to wave"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to achieve (a goal)",
+      "g": "(ein Ziel) erreichen",
+      "d": "to do the thing you really wanted to do",
+      "s": "After a long time, at last she ___ what she wanted.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "achieved",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "achieve",
+          "tier": "full"
+        },
+        {
+          "text": "to achieve",
+          "tier": "full"
+        },
+        {
+          "text": "achieved",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "achieve",
+            "tier": "full"
+          },
+          {
+            "text": "to achieve",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erreichen",
+            "tier": "full"
+          },
+          {
+            "text": "ein Ziel erreichen",
+            "tier": "full"
+          },
+          {
+            "text": "schaffen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to survive",
+        "to return",
+        "to hand sth. in"
+      ],
+      "hintDe": "Du schaffst am Ende das, was du wolltest."
+    },
+    {
+      "id": "g3u02.w.to-buy-sth",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to pay the bill",
+            "to look at sth.",
+            "to return",
+            "to hand sth. in"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to buy sth.",
+      "g": "etw. kaufen",
+      "d": "you do this to a thing when you give money for it",
+      "s": "I want to ___ a new book with my pocket money.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "buy",
+          "tier": "full"
+        },
+        {
+          "text": "bought",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "buy",
+          "tier": "full"
+        },
+        {
+          "text": "buy sth.",
+          "tier": "full"
+        },
+        {
+          "text": "to buy sth.",
+          "tier": "full"
+        },
+        {
+          "text": "bought",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "buy",
+            "tier": "full"
+          },
+          {
+            "text": "buy sth.",
+            "tier": "full"
+          },
+          {
+            "text": "to buy sth.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kaufen",
+            "tier": "full"
+          },
+          {
+            "text": "etw. kaufen",
+            "tier": "full"
+          },
+          {
+            "text": "etwas kaufen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to pay the bill",
+        "to look at sth.",
+        "to return"
+      ],
+      "hintDe": "Du gibst Geld dafür her und bekommst die Sache."
+    },
+    {
+      "id": "g3u02.w.to-drink-eat-sth",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to buy sth.",
+            "to pay the bill",
+            "to look at sth.",
+            "to listen to music"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to drink/eat sth.",
+      "g": "etw. trinken/essen",
+      "d": "to put food or tea into your mouth",
+      "s": "Would you like to ___ a tea or a piece of cake at the café?",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "drink",
+          "tier": "full"
+        },
+        {
+          "text": "eat",
+          "tier": "full"
+        },
+        {
+          "text": "drank",
+          "tier": "partial"
+        },
+        {
+          "text": "ate",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drink",
+          "tier": "full"
+        },
+        {
+          "text": "eat",
+          "tier": "full"
+        },
+        {
+          "text": "drink/eat sth.",
+          "tier": "full"
+        },
+        {
+          "text": "to drink/eat sth.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drink",
+            "tier": "full"
+          },
+          {
+            "text": "eat",
+            "tier": "full"
+          },
+          {
+            "text": "drink/eat sth.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etw. trinken/essen",
+            "tier": "full"
+          },
+          {
+            "text": "trinken",
+            "tier": "full"
+          },
+          {
+            "text": "essen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to buy sth.",
+        "to pay the bill",
+        "to look at sth."
+      ],
+      "hintDe": "Du nimmst etwas zu dir – ein Getränk oder ein bisschen Essen."
+    },
+    {
+      "id": "g3u02.w.to-hand-sth-in",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to return",
+            "to steal",
+            "to buy sth.",
+            "to survive"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to hand sth. in",
+      "g": "abgeben",
+      "d": "to give your work to a teacher or to somebody who looks after it",
+      "s": "Please ___ your homework to the teacher before Friday.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hand in",
+          "tier": "full"
+        },
+        {
+          "text": "handed in",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hand in",
+          "tier": "full"
+        },
+        {
+          "text": "hand sth. in",
+          "tier": "full"
+        },
+        {
+          "text": "to hand sth. in",
+          "tier": "full"
+        },
+        {
+          "text": "handed in",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hand in",
+            "tier": "full"
+          },
+          {
+            "text": "hand sth. in",
+            "tier": "full"
+          },
+          {
+            "text": "to hand sth. in",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "abgeben",
+            "tier": "full"
+          },
+          {
+            "text": "einreichen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to return",
+        "to steal",
+        "to buy sth."
+      ],
+      "hintDe": "Du gibst deine Arbeit bei der Lehrerin oder dem Lehrer ab."
+    },
+    {
+      "id": "g3u02.w.to-leave-sb-alone",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to wave",
+            "to return",
+            "to hand sth. in",
+            "to steal"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to leave sb. alone",
+      "g": "jdn. in Ruhe lassen",
+      "d": "to go away and not bother somebody",
+      "s": "Lucas, please ___ your sister! She wants to read her book.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "leave alone",
+          "tier": "full"
+        },
+        {
+          "text": "leave her alone",
+          "tier": "full"
+        },
+        {
+          "text": "left alone",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "leave sb. alone",
+          "tier": "full"
+        },
+        {
+          "text": "to leave sb. alone",
+          "tier": "full"
+        },
+        {
+          "text": "leave alone",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "leave sb. alone",
+            "tier": "full"
+          },
+          {
+            "text": "to leave sb. alone",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jemanden in Ruhe und Frieden lassen",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden in Ruhe lassen",
+            "tier": "full"
+          },
+          {
+            "text": "jdn. in Ruhe lassen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to wave",
+        "to return",
+        "to hand sth. in"
+      ],
+      "hintDe": "Du gehst weg und störst die Person nicht."
+    },
+    {
+      "id": "g3u02.w.to-listen-to-music",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to look at sth.",
+            "to talk on the mobile",
+            "to buy sth.",
+            "to try on sunglasses"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to listen to music",
+      "g": "Musik hören",
+      "d": "to enjoy the sound of a singer with your ears, often with headphones on",
+      "s": "He likes to put on his headphones and ___ on the long way to school.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "listen to music",
+          "tier": "full"
+        },
+        {
+          "text": "listened to music",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "listen to music",
+          "tier": "full"
+        },
+        {
+          "text": "to listen to music",
+          "tier": "full"
+        },
+        {
+          "text": "listening to music",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "listen to music",
+            "tier": "full"
+          },
+          {
+            "text": "to listen to music",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Musik hören",
+            "tier": "full"
+          },
+          {
+            "text": "Musik anhören",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to look at sth.",
+        "to talk on the mobile",
+        "to buy sth."
+      ],
+      "hintDe": "Du setzt die Kopfhörer auf und hörst Lieder."
+    },
+    {
+      "id": "g3u02.w.to-look-at-sth",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to listen to music",
+            "to buy sth.",
+            "to talk on the mobile",
+            "to try on sunglasses"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to look at sth.",
+      "g": "etw. ansehen",
+      "d": "to watch a thing with your eyes so you can enjoy it or study it",
+      "s": "We were ___ at the pictures from our holiday on my tablet.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "looking",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "look at",
+          "tier": "full"
+        },
+        {
+          "text": "look at sth.",
+          "tier": "full"
+        },
+        {
+          "text": "to look at sth.",
+          "tier": "full"
+        },
+        {
+          "text": "looked at",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "look at",
+            "tier": "full"
+          },
+          {
+            "text": "look at sth.",
+            "tier": "full"
+          },
+          {
+            "text": "to look at sth.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etw. ansehen",
+            "tier": "full"
+          },
+          {
+            "text": "etwas anschauen",
+            "tier": "full"
+          },
+          {
+            "text": "ansehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to listen to music",
+        "to buy sth.",
+        "to talk on the mobile"
+      ],
+      "hintDe": "Du richtest die Augen darauf und schaust es dir an."
+    },
+    {
+      "id": "g3u02.w.to-look-forward-to-sth",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to hand sth. in",
+            "to return",
+            "to wave",
+            "to survive"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to look forward to sth.",
+      "g": "sich auf etw. freuen",
+      "d": "to feel happy about a good thing that is going to happen",
+      "s": "Lucas was very much ___ to the school holidays in summer.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "looking forward",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "look forward to",
+          "tier": "full"
+        },
+        {
+          "text": "look forward to sth.",
+          "tier": "full"
+        },
+        {
+          "text": "to look forward to sth.",
+          "tier": "full"
+        },
+        {
+          "text": "looking forward to",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "look forward to",
+            "tier": "full"
+          },
+          {
+            "text": "look forward to sth.",
+            "tier": "full"
+          },
+          {
+            "text": "to look forward to sth.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich auf etw. freuen",
+            "tier": "full"
+          },
+          {
+            "text": "sich auf etwas freuen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to hand sth. in",
+        "to return",
+        "to wave"
+      ],
+      "hintDe": "Du freust dich auf etwas Schönes, das noch kommt."
+    },
+    {
+      "id": "g3u02.w.to-pay-the-bill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to buy sth.",
+            "to drink/eat sth.",
+            "to look at sth.",
+            "to listen to music"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to pay the bill",
+      "g": "die Rechnung bezahlen",
+      "d": "to give money for your food and drinks in a café or restaurant",
+      "s": "After dinner my dad asked the waiter so he could ___ at the restaurant.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pay the bill",
+          "tier": "full"
+        },
+        {
+          "text": "paid the bill",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pay the bill",
+          "tier": "full"
+        },
+        {
+          "text": "to pay the bill",
+          "tier": "full"
+        },
+        {
+          "text": "paid the bill",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pay the bill",
+            "tier": "full"
+          },
+          {
+            "text": "to pay the bill",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "die Rechnung bezahlen",
+            "tier": "full"
+          },
+          {
+            "text": "die Rechnung zahlen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to buy sth.",
+        "to drink/eat sth.",
+        "to look at sth."
+      ],
+      "hintDe": "Du zahlst am Ende im Restaurant für das Essen."
+    },
+    {
+      "id": "g3u02.w.to-queue",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to wave",
+            "to return",
+            "to hand sth. in",
+            "to survive"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to queue (up)",
+      "g": "sich anstellen",
+      "d": "to wait with a lot of people to go into a place",
+      "s": "They were all ___ up at the door to go into the museum.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "queuing",
+          "tier": "full"
+        },
+        {
+          "text": "queueing",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "queue",
+          "tier": "full"
+        },
+        {
+          "text": "queue up",
+          "tier": "full"
+        },
+        {
+          "text": "to queue up",
+          "tier": "full"
+        },
+        {
+          "text": "queuing up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "queue",
+            "tier": "full"
+          },
+          {
+            "text": "queue up",
+            "tier": "full"
+          },
+          {
+            "text": "to queue up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich anstellen",
+            "tier": "full"
+          },
+          {
+            "text": "anstellen",
+            "tier": "full"
+          },
+          {
+            "text": "Schlange stehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to wave",
+        "to return",
+        "to hand sth. in"
+      ],
+      "hintDe": "Du stellst dich mit anderen hintereinander an."
+    },
+    {
+      "id": "g3u02.w.to-return",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to steal",
+            "to hand sth. in",
+            "to buy sth.",
+            "to survive"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to return",
+      "g": "zurückgeben",
+      "d": "to bring a thing back to a place, or to go back to a place",
+      "s": "Please ___ the library book before Friday.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "return",
+          "tier": "full"
+        },
+        {
+          "text": "returned",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "return",
+          "tier": "full"
+        },
+        {
+          "text": "to return",
+          "tier": "full"
+        },
+        {
+          "text": "returned",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "return",
+            "tier": "full"
+          },
+          {
+            "text": "to return",
+            "tier": "full"
+          },
+          {
+            "text": "give back",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zurückgeben",
+            "tier": "full"
+          },
+          {
+            "text": "zurückkehren",
+            "tier": "full"
+          },
+          {
+            "text": "zurückbringen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to steal",
+        "to hand sth. in",
+        "to buy sth."
+      ],
+      "hintDe": "Du bringst die Sache zurück oder gehst wieder an einen Ort."
+    },
+    {
+      "id": "g3u02.w.to-sink",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to survive",
+            "to wave",
+            "to steal",
+            "to return"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to sink",
+      "g": "sinken",
+      "d": "to go down under the sea",
+      "s": "A heavy stone is going to ___ to the bottom of the sea.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sink",
+          "tier": "full"
+        },
+        {
+          "text": "sank",
+          "tier": "partial"
+        },
+        {
+          "text": "sunk",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sink",
+          "tier": "full"
+        },
+        {
+          "text": "to sink",
+          "tier": "full"
+        },
+        {
+          "text": "sank",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sink",
+            "tier": "full"
+          },
+          {
+            "text": "to sink",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sinken",
+            "tier": "full"
+          },
+          {
+            "text": "untergehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to survive",
+        "to wave",
+        "to steal"
+      ],
+      "hintDe": "Etwas geht im Wasser nach unten."
+    },
+    {
+      "id": "g3u02.w.to-steal",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to survive",
+            "to return",
+            "to hand sth. in",
+            "to sink"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to steal",
+      "g": "stehlen",
+      "d": "to keep a thing that is not yours, like a thief does",
+      "s": "The thief wanted to ___ the woman's money, but a man was watching him.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "steal",
+          "tier": "full"
+        },
+        {
+          "text": "stole",
+          "tier": "partial"
+        },
+        {
+          "text": "stolen",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "steal",
+          "tier": "full"
+        },
+        {
+          "text": "to steal",
+          "tier": "full"
+        },
+        {
+          "text": "stole",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "steal",
+            "tier": "full"
+          },
+          {
+            "text": "to steal",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "stehlen",
+            "tier": "full"
+          },
+          {
+            "text": "klauen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to survive",
+        "to return",
+        "to hand sth. in"
+      ],
+      "hintDe": "Du nimmst etwas, das dir nicht gehört."
+    },
+    {
+      "id": "g3u02.w.to-survive",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to sink",
+            "to return",
+            "to steal",
+            "to wave"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to survive",
+      "g": "überleben",
+      "d": "to stay alive after a very dangerous thing",
+      "s": "The people on the small ship were very happy to ___ the big storm.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "survive",
+          "tier": "full"
+        },
+        {
+          "text": "survived",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "survive",
+          "tier": "full"
+        },
+        {
+          "text": "to survive",
+          "tier": "full"
+        },
+        {
+          "text": "survived",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "survive",
+            "tier": "full"
+          },
+          {
+            "text": "to survive",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "überleben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to sink",
+        "to return",
+        "to steal"
+      ],
+      "hintDe": "Du bleibst nach einer großen Gefahr am Leben."
+    },
+    {
+      "id": "g3u02.w.to-talk-on-the-mobile",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to listen to music",
+            "to look at sth.",
+            "to pay the bill",
+            "to buy sth."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to talk on the mobile",
+      "g": "am Handy telefonieren",
+      "d": "to speak with a friend who is not with you",
+      "s": "Please do not ___ in class.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "talk on the mobile",
+          "tier": "full"
+        },
+        {
+          "text": "talked on the mobile",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "talk on the mobile",
+          "tier": "full"
+        },
+        {
+          "text": "to talk on the mobile",
+          "tier": "full"
+        },
+        {
+          "text": "talking on the mobile",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "talk on the mobile",
+            "tier": "full"
+          },
+          {
+            "text": "to talk on the mobile",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "am Handy telefonieren",
+            "tier": "full"
+          },
+          {
+            "text": "mit dem Handy telefonieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to listen to music",
+        "to look at sth.",
+        "to pay the bill"
+      ],
+      "hintDe": "Du sprichst am Handy mit jemandem, der nicht bei dir ist."
+    },
+    {
+      "id": "g3u02.w.to-try-on-sunglasses",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to buy sth.",
+            "to look at sth.",
+            "to pay the bill",
+            "to listen to music"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to try on sunglasses",
+      "g": "Sonnenbrillen anprobieren",
+      "d": "to put a pair of these over your eyes to look if they are good on you",
+      "s": "She wanted to ___ to look which ones were best on her.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "try on sunglasses",
+          "tier": "full"
+        },
+        {
+          "text": "tried on sunglasses",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "try on sunglasses",
+          "tier": "full"
+        },
+        {
+          "text": "to try on sunglasses",
+          "tier": "full"
+        },
+        {
+          "text": "trying on sunglasses",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "try on sunglasses",
+            "tier": "full"
+          },
+          {
+            "text": "to try on sunglasses",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sonnenbrillen anprobieren",
+            "tier": "full"
+          },
+          {
+            "text": "eine Sonnenbrille anprobieren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "pair",
+          "de": "Paar",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "to buy sth.",
+        "to look at sth.",
+        "to pay the bill"
+      ],
+      "hintDe": "Du setzt sie kurz auf, um zu sehen, ob sie dir gut stehen."
+    },
+    {
+      "id": "g3u02.w.to-try-out",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to hand sth. in",
+            "to return",
+            "to pay the bill",
+            "to buy sth."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to try out",
+      "g": "ausprobieren",
+      "d": "to do a new thing to find out if you like it or how good it is",
+      "s": "Before you go on stage, ___ your jokes with a friend.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "try out",
+          "tier": "full"
+        },
+        {
+          "text": "tried out",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "try out",
+          "tier": "full"
+        },
+        {
+          "text": "to try out",
+          "tier": "full"
+        },
+        {
+          "text": "tried out",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "try out",
+            "tier": "full"
+          },
+          {
+            "text": "to try out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ausprobieren",
+            "tier": "full"
+          },
+          {
+            "text": "austesten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to hand sth. in",
+        "to return",
+        "to pay the bill"
+      ],
+      "hintDe": "Du machst etwas Neues einmal, um zu sehen, wie es ist."
+    },
+    {
+      "id": "g3u02.w.to-wave",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to queue (up)",
+            "to return",
+            "to hand sth. in",
+            "to steal"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to wave",
+      "g": "winken",
+      "d": "to put your arm up high to tell somebody hello or goodbye when they are far away",
+      "s": "At the door of the museum, a girl was ___ at us to come over.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "waving",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wave",
+          "tier": "full"
+        },
+        {
+          "text": "to wave",
+          "tier": "full"
+        },
+        {
+          "text": "waved",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wave",
+            "tier": "full"
+          },
+          {
+            "text": "to wave",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "winken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "arm",
+          "de": "Arm",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to queue (up)",
+        "to return",
+        "to hand sth. in"
+      ],
+      "hintDe": "Du hebst den Arm und grüßt jemanden, der weiter weg ist."
+    },
+    {
+      "id": "g3u02.w.what-a",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Hold on!",
+            "Hang on a minute.",
+            "I beg your pardon.",
+            "coincidence"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "What a ...!",
+      "g": "Was für ein/e ...!",
+      "d": "a way to show a strong feeling about a thing",
+      "s": "___ beautiful day it is today! Let's go to the park.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "What a",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "What a",
+          "tier": "full"
+        },
+        {
+          "text": "What a ...!",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "What a",
+            "tier": "full"
+          },
+          {
+            "text": "What a ...!",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Was für ein",
+            "tier": "full"
+          },
+          {
+            "text": "Was für eine",
+            "tier": "full"
+          },
+          {
+            "text": "Was für ein/e ...!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Hold on!",
+        "Hang on a minute.",
+        "I beg your pardon."
+      ],
+      "hintDe": "Du zeigst ein starkes Gefühl: „Was für ein …!“"
+    }
+  ]
+}

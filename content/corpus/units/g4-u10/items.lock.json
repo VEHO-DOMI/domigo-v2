@@ -1,0 +1,97 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g4-u10",
+  "items": {
+    "d26a870afa44": "g4u10.gi.third-conditional.gf.001",
+    "af49417b19c5": "g4u10.gi.third-conditional.gf.002",
+    "a6fe4667d794": "g4u10.gi.third-conditional.gf.003",
+    "9d6547109e99": "g4u10.gi.third-conditional.gf.004",
+    "b98a9780a17b": "g4u10.gi.third-conditional.gf.005",
+    "70e347c40474": "g4u10.gi.third-conditional.gf.006",
+    "074b5238a365": "g4u10.gi.third-conditional.gf.007",
+    "7d89119e796b": "g4u10.gi.third-conditional.gf.008",
+    "8b9a1edd1161": "g4u10.gi.third-conditional.gf.009",
+    "dd5023909e2a": "g4u10.gi.third-conditional.gf.010",
+    "16557a3a465e": "g4u10.gi.third-conditional.gf.011",
+    "5b6529cdb5b2": "g4u10.gi.third-conditional.gf.012",
+    "5c9b3488d8c2": "g4u10.gi.third-conditional.gf.013",
+    "2f8155be6358": "g4u10.gi.third-conditional.gf.014",
+    "0748e0ee3bcc": "g4u10.gi.third-conditional.mc.001",
+    "d8c158fa77df": "g4u10.gi.third-conditional.mc.002",
+    "b5fa0876bbf7": "g4u10.gi.third-conditional.mc.003",
+    "ca13d417774b": "g4u10.gi.third-conditional.mc.004",
+    "800b2d7349bc": "g4u10.gi.third-conditional.mc.005",
+    "14a25e8a67ed": "g4u10.gi.third-conditional.mc.006",
+    "dc232c4e3df6": "g4u10.gi.third-conditional.mc.007",
+    "f48e638c99f6": "g4u10.gi.third-conditional.ec.001",
+    "23992d2b6dd8": "g4u10.gi.third-conditional.ec.002",
+    "3b84806a791a": "g4u10.gi.third-conditional.ec.003",
+    "3e3f86cf93f6": "g4u10.gi.third-conditional.ec.004",
+    "ee31c9fe610b": "g4u10.gi.third-conditional.ec.005",
+    "f056f9c9de36": "g4u10.gi.third-conditional.ec.006",
+    "b2b593cec846": "g4u10.gi.third-conditional.ec.007",
+    "0d47c0d20e13": "g4u10.gi.third-conditional.ec.008",
+    "2a3cf56c0cf2": "g4u10.gi.third-conditional.tf.005",
+    "806de57826db": "g4u10.gi.third-conditional.sb.001",
+    "3d43bbc5b962": "g4u10.gi.third-conditional.sb.002",
+    "17e7cac54373": "g4u10.gi.third-conditional.sb.003",
+    "415b7dc27e00": "g4u10.gi.third-conditional.sb.004",
+    "5ee75bafee9b": "g4u10.gi.third-conditional.tr.001",
+    "605d5d2cff9e": "g4u10.gi.third-conditional.tr.002",
+    "cb7c931a858e": "g4u10.gi.third-conditional.tr.003",
+    "40bac1c8f8ad": "g4u10.gi.third-conditional.tr.004",
+    "b421a8f5880a": "g4u10.gi.third-conditional.mt.001",
+    "5fa56dd0e7f3": "g4u10.gi.third-conditional.mt.002",
+    "a1b588e37047": "g4u10.gi.third-conditional.gs.001",
+    "f768c4d95b02": "g4u10.gi.third-conditional.gs.002",
+    "aa3a0f1a4212": "g4u10.gi.third-conditional.cp.001",
+    "9ac6404287ea": "g4u10.gi.third-conditional.cp.002",
+    "e2101845c35a": "g4u10.gi.third-conditional.cp.003",
+    "0d4595bf113a": "g4u10.gi.third-conditional.qf.001",
+    "68fc99bceb3b": "g4u10.gi.third-conditional.qf.002",
+    "3c3031a0431f": "g4u10.gi.third-conditional.mc.009",
+    "3f8b2915697a": "g4u10.gi.third-conditional.tf.007",
+    "a2d3fa4921e9": "g4u10.gi.third-conditional.tf.008",
+    "d6aadad46da7": "g4u10.gi.third-conditional.tf.009",
+    "b16430f3da3a": "g4u10.gi.third-conditional.tf.010",
+    "9f6b61b29095": "g4u10.gi.third-conditional.gs.004",
+    "e5368098af55": "g4u10.gi.third-conditional.tf.011"
+  },
+  "tombstones": [
+    {
+      "id": "g4u10.gi.third-conditional.mc.008",
+      "key": "e6f5e4d6354e",
+      "removedWith": "30e97ebc8783"
+    },
+    {
+      "id": "g4u10.gi.third-conditional.tf.001",
+      "key": "dfcff036e621",
+      "removedWith": "30e97ebc8783"
+    },
+    {
+      "id": "g4u10.gi.third-conditional.tf.003",
+      "key": "f288708b6ffb",
+      "removedWith": "30e97ebc8783"
+    },
+    {
+      "id": "g4u10.gi.third-conditional.tf.004",
+      "key": "20c8ac58652a",
+      "removedWith": "30e97ebc8783"
+    },
+    {
+      "id": "g4u10.gi.third-conditional.tf.006",
+      "key": "e2e9bcb11e21",
+      "removedWith": "30e97ebc8783"
+    },
+    {
+      "id": "g4u10.gi.third-conditional.gs.003",
+      "key": "3b72c013b6fd",
+      "removedWith": "30e97ebc8783"
+    },
+    {
+      "id": "g4u10.gi.third-conditional.tf.002",
+      "key": "6c77fb760a04",
+      "removedWith": "4a7ede2ca2c1"
+    }
+  ]
+}

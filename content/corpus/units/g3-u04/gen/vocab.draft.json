@@ -1,0 +1,3088 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g3-u04",
+  "briefBank": "53100d4d15f9",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g3u04.w.poisonous",
+      "w": "poisonous",
+      "g": "giftig",
+      "d": "This can make you very ill if you eat or touch it.",
+      "s": "This tiny sea animal is very ___, so do not touch it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "poisonous",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "poisonous",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "poisonous",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "giftig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cuddly",
+        "furry",
+        "elegant"
+      ],
+      "hintDe": "Sag das über ein Tier oder eine Pflanze, die dich krank machen kann, wenn du sie isst oder anfasst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cuddly",
+          "furry",
+          "elegant",
+          "adorable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.aggressive",
+      "w": "aggressive",
+      "g": "aggressiv",
+      "d": "This animal likes to fight or hurt people.",
+      "s": "Swans can be very ___ when you come too close to their young.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "aggressive",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "aggressive",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "aggressive",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aggressiv",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cuddly",
+        "adorable",
+        "elegant"
+      ],
+      "hintDe": "Sag das über ein Tier, das schnell angreift oder andere verletzen will.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cuddly",
+          "adorable",
+          "elegant",
+          "cute"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.dangerous",
+      "w": "dangerous",
+      "g": "gefährlich",
+      "d": "This can hurt you very much.",
+      "s": "This sea animal can be very ___, and it can hurt humans too.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "dangerous",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dangerous",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dangerous",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gefährlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cuddly",
+        "adorable",
+        "cute"
+      ],
+      "hintDe": "Sag das über etwas, das dir wehtun kann.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cuddly",
+          "adorable",
+          "cute",
+          "furry"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.deadly",
+      "w": "deadly",
+      "g": "tödlich",
+      "d": "So bad that it can end your life.",
+      "s": "The bite of this sea animal can end your life, so it is very ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "deadly",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "deadly",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "deadly",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "tödlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cuddly",
+        "elegant",
+        "cute"
+      ],
+      "hintDe": "Sag das über etwas, das dich umbringen kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cuddly",
+          "elegant",
+          "cute",
+          "adorable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.elegant",
+      "w": "elegant",
+      "g": "elegant",
+      "d": "Very beautiful and lovely to look at.",
+      "s": "The swan looked very ___ on the lake.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "elegant",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "elegant",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "elegant",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "elegant",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "lovely",
+          "de": "wunderschön",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "aggressive",
+        "poisonous",
+        "deadly"
+      ],
+      "hintDe": "Sag das über etwas, das sehr schön aussieht und sich schön bewegt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "aggressive",
+          "poisonous",
+          "deadly",
+          "dangerous"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.stunning",
+      "w": "stunning",
+      "g": "atemberaubend",
+      "d": "So beautiful that it surprises you.",
+      "s": "This tiny sea animal is ___ and looks beautiful.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stunning",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stunning",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stunning",
+            "tier": "full"
+          },
+          {
+            "text": "amazing",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "atemberaubend",
+            "tier": "full"
+          },
+          {
+            "text": "umwerfend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aggressive",
+        "poisonous",
+        "dangerous"
+      ],
+      "hintDe": "Sag das über etwas, das so schön ist, dass es dich überrascht.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "aggressive",
+          "poisonous",
+          "dangerous",
+          "deadly"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.cute",
+      "w": "cute",
+      "g": "niedlich",
+      "d": "Pretty and nice to look at, often small.",
+      "s": "This young animal is the ___ animal in the world, with its big eyes.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cutest",
+          "tier": "full"
+        },
+        {
+          "text": "cute",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cute",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cute",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "niedlich",
+            "tier": "full"
+          },
+          {
+            "text": "süß",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aggressive",
+        "poisonous",
+        "deadly"
+      ],
+      "hintDe": "Sag das über etwas Kleines, das süß und lieb aussieht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "aggressive",
+          "poisonous",
+          "deadly",
+          "dangerous"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.furry",
+      "w": "furry",
+      "g": "pelzig",
+      "d": "Covered with lots of thick hair.",
+      "s": "Young seals are white and ___, so people love them.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "furry",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "furry",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "furry",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "pelzig",
+            "tier": "full"
+          },
+          {
+            "text": "flauschig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aggressive",
+        "poisonous",
+        "deadly"
+      ],
+      "hintDe": "Sag das über ein Tier mit viel dickem Fell.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "aggressive",
+          "poisonous",
+          "deadly",
+          "elegant"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.cuddly",
+      "w": "cuddly",
+      "g": "kuschelig",
+      "d": "Nice to hold close.",
+      "s": "What could be so dangerous about this ___ young animal?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cuddly",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cuddly",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cuddly",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kuschelig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aggressive",
+        "poisonous",
+        "deadly"
+      ],
+      "hintDe": "Sag das über etwas Weiches, das du gern in den Arm nimmst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "aggressive",
+          "poisonous",
+          "deadly",
+          "dangerous"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.cub",
+      "w": "cub",
+      "g": "(Bären-)Junges",
+      "d": "The young of a wild animal like a lion.",
+      "s": "The ___ stayed very close to its big mother all day.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cub",
+          "tier": "full"
+        },
+        {
+          "text": "cubs",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cub",
+          "tier": "full"
+        },
+        {
+          "text": "cubs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cub",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Junges",
+            "tier": "full"
+          },
+          {
+            "text": "Bärenjunges",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "adult",
+        "guide",
+        "owner"
+      ],
+      "hintDe": "So nennt man das Junge von einem großen wilden Tier wie einem Löwen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "adult",
+          "guide",
+          "owner",
+          "victim"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.good-luck",
+      "w": "Good luck!",
+      "g": "Viel Glück!",
+      "d": "You call this out to a friend before a big day to hope all is well.",
+      "s": "Your big day is tomorrow? ___! I really hope you do well.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Good luck",
+          "tier": "full"
+        },
+        {
+          "text": "Good luck!",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Good luck",
+          "tier": "full"
+        },
+        {
+          "text": "Good luck!",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Good luck",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Viel Glück",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Good for you!",
+        "Have fun!",
+        "Well done."
+      ],
+      "hintDe": "Das sagst du zu jemandem vor einem wichtigen Tag, damit alles gut läuft.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "Good for you!",
+          "Have fun!",
+          "Well done.",
+          "Hands off!"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.polar-bear",
+      "w": "polar bear",
+      "g": "Eisbär",
+      "d": "A big white animal that lives where it is very cold.",
+      "s": "There are about 3,000 ___ on the Svalbard Islands in Norway.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "polar bears",
+          "tier": "full"
+        },
+        {
+          "text": "polar bear",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "polar bear",
+          "tier": "full"
+        },
+        {
+          "text": "polar bears",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "polar bear",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eisbär",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "seal",
+        "swan",
+        "lizard"
+      ],
+      "hintDe": "Das große weiße Tier, das ganz im Norden auf dem Eis lebt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "seal",
+          "swan",
+          "lizard",
+          "spider"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.adorable",
+      "w": "adorable",
+      "g": "bezaubernd",
+      "d": "So cute that you love it at once.",
+      "s": "People love a young seal, but their parents are not so ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "adorable",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "adorable",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "adorable",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bezaubernd",
+            "tier": "full"
+          },
+          {
+            "text": "liebenswert",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aggressive",
+        "poisonous",
+        "deadly"
+      ],
+      "hintDe": "Sag das über etwas, das so süß ist, dass man es sofort lieb haben muss.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "aggressive",
+          "poisonous",
+          "deadly",
+          "dangerous"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.bite",
+      "w": "bite",
+      "g": "Biss",
+      "d": "When an animal closes its teeth on you.",
+      "s": "One ___ from this little animal can hurt you very much and could end your life.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bite",
+          "tier": "full"
+        },
+        {
+          "text": "bites",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bite",
+          "tier": "full"
+        },
+        {
+          "text": "bites",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bite",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Biss",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "little",
+          "de": "klein",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "injury",
+        "shape",
+        "death"
+      ],
+      "hintDe": "Das passiert, wenn ein Tier seine Zähne fest in dich schlägt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "injury",
+          "shape",
+          "death",
+          "poison"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-cause",
+      "w": "to cause",
+      "g": "verursachen",
+      "d": "To make a bad thing happen.",
+      "s": "One bite from this little animal can ___ a lot of pain.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cause",
+          "tier": "full"
+        },
+        {
+          "text": "caused",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cause",
+          "tier": "full"
+        },
+        {
+          "text": "to cause",
+          "tier": "full"
+        },
+        {
+          "text": "caused",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cause",
+            "tier": "full"
+          },
+          {
+            "text": "to cause",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verursachen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "little",
+          "de": "klein",
+          "scope": "s"
+        },
+        {
+          "word": "pain",
+          "de": "Schmerz",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "accept",
+        "defend",
+        "inform"
+      ],
+      "hintDe": "Das tust du, wenn du dafür sorgst, dass etwas Schlimmes passiert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "defend",
+          "inform",
+          "lift"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.poison",
+      "w": "poison",
+      "g": "Gift",
+      "d": "A thing that can make you very ill or end your life.",
+      "s": "This sea animal makes a ___ to keep a big animal away from its young.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "poison",
+          "tier": "full"
+        },
+        {
+          "text": "poisons",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "poison",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "poison",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gift",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "injury",
+        "shape",
+        "death"
+      ],
+      "hintDe": "Ein Stoff, der dich sehr krank machen oder umbringen kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "injury",
+          "shape",
+          "death",
+          "bite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.rabies",
+      "w": "rabies",
+      "g": "Tollwut",
+      "d": "A very dangerous thing an animal can give you when it bites you.",
+      "s": "Chipmunks are sweet, but they are famous for spreading ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "rabies",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rabies",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rabies",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tollwut",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Chipmunks",
+          "de": "Streifenhörnchen",
+          "scope": "s"
+        },
+        {
+          "word": "spreading",
+          "de": "verbreiten",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "injury",
+        "death",
+        "poison"
+      ],
+      "hintDe": "Eine sehr gefährliche Krankheit, die Tiere durch einen Biss auf Menschen übertragen können.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "injury",
+          "death",
+          "poison",
+          "bite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.seal",
+      "w": "seal",
+      "g": "Robbe",
+      "d": "A sea animal with short fur that lives where the sea is cold.",
+      "s": "People love a young ___, because they are white and furry.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "seal",
+          "tier": "full"
+        },
+        {
+          "text": "seals",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "seal",
+          "tier": "full"
+        },
+        {
+          "text": "seals",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "seal",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Robbe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "swan",
+        "lizard",
+        "spider"
+      ],
+      "hintDe": "Ein Meerestier mit glattem Fell, das im kalten Wasser lebt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "swan",
+          "lizard",
+          "spider",
+          "polar bear"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.swan",
+      "w": "swan",
+      "g": "Schwan",
+      "d": "A big white animal with a long neck that lives on lakes and rivers.",
+      "s": "A ___ often lives on lakes and rivers in Europe.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "swan",
+          "tier": "full"
+        },
+        {
+          "text": "swans",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "swan",
+          "tier": "full"
+        },
+        {
+          "text": "swans",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "swan",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schwan",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "neck",
+          "de": "Hals",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "seal",
+        "lizard",
+        "spider"
+      ],
+      "hintDe": "Ein großer weißer Vogel mit langem Hals, der auf Seen und Flüssen lebt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "seal",
+          "lizard",
+          "spider",
+          "polar bear"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-bite",
+      "w": "to bite (off)",
+      "g": "(ab-)beißen",
+      "d": "To close your teeth on a thing to hurt it or take a piece.",
+      "s": "Dave has a new lizard, and it can ___ your finger off!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bite",
+          "tier": "full"
+        },
+        {
+          "text": "bite off",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bite",
+          "tier": "full"
+        },
+        {
+          "text": "to bite",
+          "tier": "full"
+        },
+        {
+          "text": "bite off",
+          "tier": "full"
+        },
+        {
+          "text": "to bite off",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bite",
+            "tier": "full"
+          },
+          {
+            "text": "to bite",
+            "tier": "full"
+          },
+          {
+            "text": "bite off",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beißen",
+            "tier": "full"
+          },
+          {
+            "text": "abbeißen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "lift",
+        "accept",
+        "inform"
+      ],
+      "hintDe": "Das tut ein Tier, wenn es seine Zähne fest in etwas schlägt, um es zu verletzen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "lift",
+          "accept",
+          "inform",
+          "defend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.lizard",
+      "w": "lizard",
+      "g": "Eidechse",
+      "d": "A small animal with four legs, a long tail and cold blood.",
+      "s": "Dave has a new ___, and it can bite your finger.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lizard",
+          "tier": "full"
+        },
+        {
+          "text": "lizards",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lizard",
+          "tier": "full"
+        },
+        {
+          "text": "lizards",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lizard",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eidechse",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tail",
+          "de": "Schwanz",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "swan",
+        "seal",
+        "spider"
+      ],
+      "hintDe": "Ein kleines Tier mit vier Beinen, einem langen Schwanz und kaltem Blut.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "swan",
+          "seal",
+          "spider",
+          "polar bear"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-chase-away",
+      "w": "to chase away",
+      "g": "verjagen",
+      "d": "To run after an animal so it leaves.",
+      "s": "Charlie wanted to ___ the big fish away from his daughter.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "chase",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chase away",
+          "tier": "full"
+        },
+        {
+          "text": "to chase away",
+          "tier": "full"
+        },
+        {
+          "text": "chased away",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chase away",
+            "tier": "full"
+          },
+          {
+            "text": "to chase away",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verjagen",
+            "tier": "full"
+          },
+          {
+            "text": "vertreiben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "inform",
+        "complain"
+      ],
+      "hintDe": "Das tust du, wenn du hinter einem Tier herläufst, damit es weggeht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "inform",
+          "complain",
+          "defend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-complain",
+      "w": "to complain",
+      "g": "sich beschweren",
+      "d": "To tell people that you are not happy about a thing.",
+      "s": "Paige was happy with her new life and she never ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "complained",
+          "tier": "full"
+        },
+        {
+          "text": "complains",
+          "tier": "partial"
+        },
+        {
+          "text": "complain",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "complain",
+          "tier": "full"
+        },
+        {
+          "text": "to complain",
+          "tier": "full"
+        },
+        {
+          "text": "complained",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "complain",
+            "tier": "full"
+          },
+          {
+            "text": "to complain",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich beschweren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "inform",
+        "defend"
+      ],
+      "hintDe": "Das tust du, wenn du anderen sagst, dass du mit etwas nicht zufrieden bist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "inform",
+          "defend",
+          "lift"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.injury",
+      "w": "injury",
+      "g": "Verletzung",
+      "d": "A hurt and bad place on you, often after an accident.",
+      "s": "His daughter had a bad ___ on her leg after the shark bite.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "injury",
+          "tier": "full"
+        },
+        {
+          "text": "injuries",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "injury",
+          "tier": "full"
+        },
+        {
+          "text": "injuries",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "injury",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verletzung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "death",
+        "shape",
+        "poison"
+      ],
+      "hintDe": "Eine Stelle an dir, die verletzt ist, zum Beispiel nach einem Unfall.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "death",
+          "shape",
+          "poison",
+          "bite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-lift",
+      "w": "to lift",
+      "g": "aufheben",
+      "d": "To bring a thing up high from the ground.",
+      "s": "Charlie wanted to ___ the girl out of the sea before the shark could bite her.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lift",
+          "tier": "full"
+        },
+        {
+          "text": "lifted",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lift",
+          "tier": "full"
+        },
+        {
+          "text": "to lift",
+          "tier": "full"
+        },
+        {
+          "text": "lifted",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lift",
+            "tier": "full"
+          },
+          {
+            "text": "to lift",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufheben",
+            "tier": "full"
+          },
+          {
+            "text": "hochheben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "inform",
+        "defend"
+      ],
+      "hintDe": "Das tust du, wenn du etwas vom Boden nach oben hebst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "inform",
+          "defend",
+          "complain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-pull-down",
+      "w": "to pull down",
+      "g": "hinunterziehen",
+      "d": "To take somebody or a thing down towards the ground.",
+      "s": "There was a big shark, and it was ___ Paige down into the sea.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pulling",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pull down",
+          "tier": "full"
+        },
+        {
+          "text": "to pull down",
+          "tier": "full"
+        },
+        {
+          "text": "pulled down",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pull down",
+            "tier": "full"
+          },
+          {
+            "text": "to pull down",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hinunterziehen",
+            "tier": "full"
+          },
+          {
+            "text": "herunterziehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "lift",
+        "accept",
+        "inform"
+      ],
+      "hintDe": "Das tust du, wenn du jemanden oder etwas nach unten Richtung Boden ziehst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "lift",
+          "accept",
+          "inform",
+          "defend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-accept",
+      "w": "to accept",
+      "g": "akzeptieren",
+      "d": "To be ok with how a thing is and take it.",
+      "s": "Now Paige can ___ her new life, and she is happy again.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "accept",
+          "tier": "full"
+        },
+        {
+          "text": "accepts",
+          "tier": "partial"
+        },
+        {
+          "text": "accepted",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "accept",
+          "tier": "full"
+        },
+        {
+          "text": "to accept",
+          "tier": "full"
+        },
+        {
+          "text": "accepted",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "accept",
+            "tier": "full"
+          },
+          {
+            "text": "to accept",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "akzeptieren",
+            "tier": "full"
+          },
+          {
+            "text": "annehmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "complain",
+        "inform",
+        "defend"
+      ],
+      "hintDe": "Das tust du, wenn du eine Sache so annimmst, wie sie ist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "complain",
+          "inform",
+          "defend",
+          "lift"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.immediately",
+      "w": "immediately",
+      "g": "sofort",
+      "d": "At once, with no waiting.",
+      "s": "Why didn't they go back to the café ___ after the shark came?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "immediately",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "immediately",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "immediately",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sofort",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "on average",
+        "Hands off",
+        "Good luck"
+      ],
+      "hintDe": "Das heißt: gleich, ohne zu warten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "on average",
+          "Hands off",
+          "Good luck",
+          "Good luck!"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-advise-against-sth",
+      "w": "to advise (sb.) against sth.",
+      "g": "(jdn.) von etw. abraten",
+      "d": "To tell somebody not to do a thing that is bad for them.",
+      "s": "The expert would ___ against surfing or swimming out into the sea.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "advise",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "advise against",
+          "tier": "full"
+        },
+        {
+          "text": "to advise against",
+          "tier": "full"
+        },
+        {
+          "text": "advised against",
+          "tier": "full"
+        },
+        {
+          "text": "advise",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "advise against",
+            "tier": "full"
+          },
+          {
+            "text": "to advise against",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "abraten",
+            "tier": "full"
+          },
+          {
+            "text": "von etwas abraten",
+            "tier": "full"
+          },
+          {
+            "text": "warnen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "inform",
+        "defend"
+      ],
+      "hintDe": "Das tust du, wenn du jemandem sagst, dass er etwas nicht tun soll, weil es schlecht für ihn ist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "inform",
+          "defend",
+          "complain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-bleed",
+      "w": "to bleed",
+      "g": "bluten",
+      "d": "To lose blood.",
+      "s": "Her leg can ___ very much from a shark bite.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bleed",
+          "tier": "full"
+        },
+        {
+          "text": "bled",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bleed",
+          "tier": "full"
+        },
+        {
+          "text": "to bleed",
+          "tier": "full"
+        },
+        {
+          "text": "bled",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bleed",
+            "tier": "full"
+          },
+          {
+            "text": "to bleed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bluten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "inform",
+        "lift"
+      ],
+      "hintDe": "Das passiert, wenn Blut aus deinem Körper kommt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "inform",
+          "lift",
+          "defend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.death",
+      "w": "death",
+      "g": "Tod",
+      "d": "The end of a life, when a living thing dies.",
+      "s": "A great white shark watches its victims bleed to ___ before eating.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "death",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "death",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "death",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tod",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "injury",
+        "shape",
+        "poison"
+      ],
+      "hintDe": "Das Ende eines Lebens, wenn ein Mensch oder Tier aufhört zu leben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "injury",
+          "shape",
+          "poison",
+          "bite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-defend",
+      "w": "to defend",
+      "g": "verteidigen",
+      "d": "To fight to protect an animal or a place.",
+      "s": "A mother will ___ her young from a big animal.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "defend",
+          "tier": "full"
+        },
+        {
+          "text": "defended",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "defend",
+          "tier": "full"
+        },
+        {
+          "text": "to defend",
+          "tier": "full"
+        },
+        {
+          "text": "defended",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "defend",
+            "tier": "full"
+          },
+          {
+            "text": "to defend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verteidigen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "inform",
+        "complain"
+      ],
+      "hintDe": "Das tust du, wenn du kämpfst, um ein Tier oder einen Ort zu schützen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "inform",
+          "complain",
+          "lift"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-mistake-sth-for-sth",
+      "w": "to mistake sth. for sth.",
+      "g": "etw. mit etw. verwechseln",
+      "d": "To think one animal is a seal when it is really not.",
+      "s": "Sharks bite people when they ___ them for seals or sea lions.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mistake",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mistake for",
+          "tier": "full"
+        },
+        {
+          "text": "to mistake for",
+          "tier": "full"
+        },
+        {
+          "text": "mistook for",
+          "tier": "full"
+        },
+        {
+          "text": "mistake",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mistake for",
+            "tier": "full"
+          },
+          {
+            "text": "to mistake for",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verwechseln",
+            "tier": "full"
+          },
+          {
+            "text": "mit etwas verwechseln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "inform",
+        "defend"
+      ],
+      "hintDe": "Das tust du, wenn du das eine Tier für ein anderes hältst, das es gar nicht ist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "inform",
+          "defend",
+          "complain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.on-average",
+      "w": "on average",
+      "g": "durchschnittlich",
+      "d": "The middle number over a long time.",
+      "s": "Sharks hurt a small number of people every year ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "on average",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "on average",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "on average",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "durchschnittlich",
+            "tier": "full"
+          },
+          {
+            "text": "im Durchschnitt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "immediately",
+        "Hands off",
+        "Good luck"
+      ],
+      "hintDe": "Das heißt: wenn man die normale Zahl über eine lange Zeit nimmt.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "immediately",
+          "Hands off",
+          "Good luck",
+          "Good luck!"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.scuba-diver",
+      "w": "scuba diver",
+      "g": "Sporttaucher/Sporttaucherin",
+      "d": "Somebody who explores under the sea with breathing equipment.",
+      "s": "A ___ looks at the fish under the sea.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "scuba diver",
+          "tier": "full"
+        },
+        {
+          "text": "scuba divers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "scuba diver",
+          "tier": "full"
+        },
+        {
+          "text": "scuba divers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "scuba diver",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sporttaucher",
+            "tier": "full"
+          },
+          {
+            "text": "Taucher",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "politician",
+        "audience",
+        "victim"
+      ],
+      "hintDe": "Jemand, der mit Atemgerät unter dem Meer taucht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "politician",
+          "audience",
+          "victim",
+          "swan"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.shape",
+      "w": "shape",
+      "g": "Form",
+      "d": "The way a thing looks on the outside.",
+      "s": "From below, the ___ of a swimmer can look like a seal to a shark.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "shape",
+          "tier": "full"
+        },
+        {
+          "text": "shapes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shape",
+          "tier": "full"
+        },
+        {
+          "text": "shapes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shape",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Form",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "swimmer",
+          "de": "Schwimmer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "injury",
+        "death",
+        "poison"
+      ],
+      "hintDe": "So sieht etwas von außen aus.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "injury",
+          "death",
+          "poison",
+          "bite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-suppose",
+      "w": "to suppose",
+      "g": "vermuten",
+      "d": "To think that a thing is probably true.",
+      "s": "Are sharks really bad? I ___ so.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "suppose",
+          "tier": "full"
+        },
+        {
+          "text": "supposed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "suppose",
+          "tier": "full"
+        },
+        {
+          "text": "to suppose",
+          "tier": "full"
+        },
+        {
+          "text": "supposed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "suppose",
+            "tier": "full"
+          },
+          {
+            "text": "to suppose",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vermuten",
+            "tier": "full"
+          },
+          {
+            "text": "annehmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "inform",
+        "defend"
+      ],
+      "hintDe": "Das tust du, wenn du glaubst, dass etwas wahrscheinlich stimmt.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "inform",
+          "defend",
+          "complain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-take-care",
+      "w": "to take care",
+      "g": "aufpassen",
+      "d": "To be careful so that nothing bad happens to you.",
+      "s": "People must ___ care when they go swimming in the sea.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "take",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take care",
+          "tier": "full"
+        },
+        {
+          "text": "to take care",
+          "tier": "full"
+        },
+        {
+          "text": "took care",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "take care",
+            "tier": "full"
+          },
+          {
+            "text": "to take care",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufpassen",
+            "tier": "full"
+          },
+          {
+            "text": "sich hüten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "inform",
+        "complain"
+      ],
+      "hintDe": "Das tust du, wenn du gut aufpasst, damit dir nichts passiert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "inform",
+          "complain",
+          "defend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.victim",
+      "w": "victim",
+      "g": "Opfer",
+      "d": "The one that a shark hurts.",
+      "s": "A great white shark watches its ___ bleed before it eats.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "victims",
+          "tier": "full"
+        },
+        {
+          "text": "victim",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "victim",
+          "tier": "full"
+        },
+        {
+          "text": "victims",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "victim",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Opfer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "politician",
+        "audience",
+        "scuba diver"
+      ],
+      "hintDe": "Jemand, der von einem anderen verletzt wird.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "politician",
+          "audience",
+          "scuba diver",
+          "swan"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-communicate",
+      "w": "to communicate",
+      "g": "kommunizieren",
+      "d": "To talk to people and give them the news.",
+      "s": "In the story, they find out that the animal can ___ with one another.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "communicate",
+          "tier": "full"
+        },
+        {
+          "text": "communicated",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "communicate",
+          "tier": "full"
+        },
+        {
+          "text": "to communicate",
+          "tier": "full"
+        },
+        {
+          "text": "communicated",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "communicate",
+            "tier": "full"
+          },
+          {
+            "text": "to communicate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kommunizieren",
+            "tier": "full"
+          },
+          {
+            "text": "sich verständigen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "one another",
+          "de": "miteinander",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "accept",
+        "inform",
+        "defend"
+      ],
+      "hintDe": "Das tut man, wenn man mit anderen redet und ihnen etwas mitteilt.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "inform",
+          "defend",
+          "complain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.audience",
+      "w": "audience",
+      "g": "Publikum",
+      "d": "The people who watch or listen to a show or talk.",
+      "s": "There is more than one good way to reach an ___ and tell them the news.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "audience",
+          "tier": "full"
+        },
+        {
+          "text": "audiences",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "audience",
+          "tier": "full"
+        },
+        {
+          "text": "audiences",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "audience",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Publikum",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "politician",
+        "victim",
+        "scuba diver"
+      ],
+      "hintDe": "Die Leute, die einer Show oder einer Rede zusehen oder zuhören.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "politician",
+          "victim",
+          "scuba diver",
+          "swan"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.environment",
+      "w": "environment",
+      "g": "Umwelt",
+      "d": "The world we live in, with its land, sea and sky.",
+      "s": "Foxes are a part of our ___, so we must care for them too.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "environment",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "environment",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "environment",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Umwelt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Foxes",
+          "de": "Füchse",
+          "scope": "s"
+        },
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "audience",
+        "victim",
+        "shape"
+      ],
+      "hintDe": "Die Welt, in der wir leben, mit Land, Meer und Himmel.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "audience",
+          "victim",
+          "shape",
+          "death"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.hands-off",
+      "w": "Hands off!",
+      "g": "Finger weg!",
+      "d": "You call this out so people do not touch a thing.",
+      "s": "___ That big chocolate cake on the table is for tonight!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Hands off",
+          "tier": "full"
+        },
+        {
+          "text": "Hands off!",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Hands off",
+          "tier": "full"
+        },
+        {
+          "text": "Hands off!",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Hands off",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Finger weg",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Good luck!",
+        "Have fun!",
+        "Well done."
+      ],
+      "hintDe": "Das rufst du, wenn niemand etwas anfassen soll.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "Good luck!",
+          "Have fun!",
+          "Well done.",
+          "Good luck"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-inform",
+      "w": "to inform",
+      "g": "informieren",
+      "d": "To tell people what is happening.",
+      "s": "You need to ___ the public about the news.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "inform",
+          "tier": "full"
+        },
+        {
+          "text": "informed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "inform",
+          "tier": "full"
+        },
+        {
+          "text": "to inform",
+          "tier": "full"
+        },
+        {
+          "text": "informed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "inform",
+            "tier": "full"
+          },
+          {
+            "text": "to inform",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "informieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accept",
+        "defend",
+        "complain"
+      ],
+      "hintDe": "Das tust du, wenn du Leuten sagst, was gerade passiert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "defend",
+          "complain",
+          "lift"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.to-lock-sb-up",
+      "w": "to lock sb. up",
+      "g": "jdn. einsperren",
+      "d": "To put somebody in a room or cage and close the door.",
+      "s": "You must ___ up the chickens at night to keep them away from the foxes.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lock",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lock up",
+          "tier": "full"
+        },
+        {
+          "text": "to lock up",
+          "tier": "full"
+        },
+        {
+          "text": "locked up",
+          "tier": "full"
+        },
+        {
+          "text": "locks up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lock up",
+            "tier": "full"
+          },
+          {
+            "text": "to lock up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einsperren",
+            "tier": "full"
+          },
+          {
+            "text": "wegsperren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "foxes",
+          "de": "Füchse",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "accept",
+        "inform",
+        "defend"
+      ],
+      "hintDe": "Das tust du, wenn du jemanden in einen Raum oder Käfig steckst und die Tür zumachst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accept",
+          "inform",
+          "defend",
+          "complain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u04.w.politician",
+      "w": "politician",
+      "g": "Politiker/Politikerin",
+      "d": "Somebody whose job is to make new rules for the country.",
+      "s": "They are asking the local ___ to keep the foxes away from the streets.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "politicians",
+          "tier": "full"
+        },
+        {
+          "text": "politician",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "politician",
+          "tier": "full"
+        },
+        {
+          "text": "politicians",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "politician",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Politiker",
+            "tier": "full"
+          },
+          {
+            "text": "Politikerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "local",
+          "de": "örtlich",
+          "scope": "s"
+        },
+        {
+          "word": "foxes",
+          "de": "Füchse",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "audience",
+        "victim",
+        "scuba diver"
+      ],
+      "hintDe": "Jemand, dessen Beruf es ist, neue Regeln für das Land zu machen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "audience",
+          "victim",
+          "scuba diver",
+          "swan"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g3-u14",
+  "round": 1,
+  "itemsHash": "fa94353c94ba",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g3u14.gi.going-to-evidence.ec.003",
+      "kind": "new-gloss",
+      "itemId": "g3u14.gi.going-to-evidence.ec.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.at-once",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.at-once",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.balcony",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.balcony",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.branch",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.branch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.bug",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.bug",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.bush",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.bush",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.by-the-way",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.by-the-way",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.crash",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.crash",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.crime",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.crime",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.cut",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.cut",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.engine",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.engine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.front-seat",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.front-seat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.impolite",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.impolite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.official-language",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.official-language",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.otherwise",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.otherwise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.park-ranger",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.park-ranger",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.round-a-bend",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.round-a-bend",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.shocked",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.shocked",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.stuffed",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.stuffed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.sunburn",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.sunburn",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-book-a-holiday",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-book-a-holiday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-buy-a-dictionary",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-buy-a-dictionary",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-check-the-area-out-online",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-check-the-area-out-online",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-dig",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-dig",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-drive-off",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-drive-off",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-find-information-about-the-best-beaches",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-find-information-about-the-best-beaches",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-find-out-about-good-restaurants",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-find-out-about-good-restaurants",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-find-out-what-to-do-there",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-find-out-what-to-do-there",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-hire-a-car",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-hire-a-car",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-look-at-a-map-of-the-area",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-look-at-a-map-of-the-area",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-make-a-hotel-reservation",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-make-a-hotel-reservation",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-plan-a-trip",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-plan-a-trip",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-prefer",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-prefer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-turn-over",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-turn-over",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.to-whisper",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.to-whisper",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.wetland",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.wetland",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.wild-animal",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.wild-animal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.w.wildlife",
+      "kind": "translation-audit",
+      "itemId": "g3u14.w.wildlife",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.gi.going-to-evidence.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u14.gi.going-to-evidence.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u14.gi.going-to-evidence.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u14.gi.going-to-evidence.tr.003",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Going to for evidence-based predictions (be + going to + base) vs will (opinion / spontaneous decision); plans; is/are agreement; 3 error classes (missing be / base-after-going-to / agreement). 37 vocab + 28 grammar, full v1 parity (floor 22 → 28 items / 10 formats / diff 1-3). 4 verify lenses clean after fixes: reworded 7 multiword travel-phrase defs off their headword tokens; granted the going-to/will spine (going/will/won't/'ll + contraction fragments) + inflections + def carriers; stripped 9 cross-item-redundant glosses; changed tf evidence 'edge'→'end' (untaught, inside a lang:de prompt the gate doesn't level-scope); completed the tr.001 answer grid; disambiguated a sentence-initial 'Sie'→'Das Mädchen'; reworded 'Verneinung'→functional 'das Gegenteil (mit not)'. Editorial call: KEPT 'Vorhersage'/'Beweis' (prediction/evidence) in prompts — these name the communicative FUNCTION (predicting from visible evidence), not a grammar form like 'Passiv', so they are content not meta-talk (precedent: approved g3-u10 'über die Zukunft'). Defensible non-issues: 'could'/'diamonds' level-gloss warns are gate-taught (validate green); the 2 'find out' g-values are rule-compliant (g = one bank de value; full meaning carried in enToDe). 39 translation audits accurate both directions. Validate fully green (0 errors, 0 warns)."
+  },
+  "metrics": {
+    "itemsReviewed": 65,
+    "fullRows": 65,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

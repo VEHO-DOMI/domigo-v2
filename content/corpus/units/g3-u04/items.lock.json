@@ -1,0 +1,67 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g3-u04",
+  "items": {
+    "440f218c74f7": "g3u04.gi.comparative-intensifiers.gf.001",
+    "ca53820b1d0a": "g3u04.gi.comparative-intensifiers.gf.002",
+    "94b957c4e749": "g3u04.gi.comparative-intensifiers.gf.003",
+    "e2ff1539c10e": "g3u04.gi.comparative-intensifiers.gf.004",
+    "ef27a510f8e0": "g3u04.gi.comparative-intensifiers.gf.005",
+    "84b0dc2d0fe1": "g3u04.gi.comparative-intensifiers.gf.006",
+    "e738ab44b777": "g3u04.gi.comparative-intensifiers.gf.007",
+    "dd95699156f8": "g3u04.gi.comparative-intensifiers.gf.008",
+    "c00a4dfa8ffe": "g3u04.gi.comparative-intensifiers.gf.009",
+    "7c156821f02c": "g3u04.gi.comparative-intensifiers.gf.010",
+    "5196aa9a2af3": "g3u04.gi.comparative-intensifiers.mc.001",
+    "e2866e472402": "g3u04.gi.comparative-intensifiers.mc.002",
+    "6006052fb25e": "g3u04.gi.comparative-intensifiers.mc.003",
+    "8f447ea44373": "g3u04.gi.comparative-intensifiers.mc.004",
+    "1f899c36abd5": "g3u04.gi.comparative-intensifiers.mc.005",
+    "032b77652f24": "g3u04.gi.comparative-intensifiers.mc.006",
+    "b5117d7dc3c2": "g3u04.gi.comparative-intensifiers.cp.001",
+    "03ce98814609": "g3u04.gi.comparative-intensifiers.cp.002",
+    "72af76434992": "g3u04.gi.comparative-intensifiers.cp.003",
+    "15c3000fb016": "g3u04.gi.comparative-intensifiers.ec.001",
+    "d3b3f9249036": "g3u04.gi.comparative-intensifiers.ec.002",
+    "135e5c02caa8": "g3u04.gi.comparative-intensifiers.ec.003",
+    "0ec04e5c4782": "g3u04.gi.comparative-intensifiers.ec.004",
+    "9f75dc532d8c": "g3u04.gi.comparative-intensifiers.ec.005",
+    "b804961debbc": "g3u04.gi.comparative-intensifiers.ec.006",
+    "8e3e4f338969": "g3u04.gi.comparative-intensifiers.tf.003",
+    "2ff43b194084": "g3u04.gi.comparative-intensifiers.tf.004",
+    "77cc08a29062": "g3u04.gi.comparative-intensifiers.tr.001",
+    "52bc2f896750": "g3u04.gi.comparative-intensifiers.tr.002",
+    "6af1c05de1a4": "g3u04.gi.comparative-intensifiers.tr.003",
+    "58673ce2c4bd": "g3u04.gi.comparative-intensifiers.tr.004",
+    "8f2ff42ba255": "g3u04.gi.comparative-intensifiers.sb.001",
+    "01ec7410f40f": "g3u04.gi.comparative-intensifiers.sb.002",
+    "930ec26fe0ce": "g3u04.gi.comparative-intensifiers.sb.003",
+    "bbe79b3a7e93": "g3u04.gi.comparative-intensifiers.qf.001",
+    "26b50ecc29b4": "g3u04.gi.comparative-intensifiers.qf.002",
+    "d1bb3d64c36c": "g3u04.gi.comparative-intensifiers.mt.001",
+    "686a20c9ea1e": "g3u04.gi.comparative-intensifiers.mp.001",
+    "dd1f23453637": "g3u04.gi.comparative-intensifiers.gs.001",
+    "02cf5ef777eb": "g3u04.gi.comparative-intensifiers.gs.002",
+    "a011d21633ca": "g3u04.gi.comparative-intensifiers.ag.001",
+    "13fd29e32a1d": "g3u04.gi.comparative-intensifiers.tf.005",
+    "2838a1081355": "g3u04.gi.comparative-intensifiers.tf.006",
+    "6330e67b4ede": "g3u04.gi.comparative-intensifiers.gf.012"
+  },
+  "tombstones": [
+    {
+      "id": "g3u04.gi.comparative-intensifiers.tf.001",
+      "key": "53d5e7cb4672",
+      "removedWith": "dc5beb5e86ca"
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.tf.002",
+      "key": "6a36ae467237",
+      "removedWith": "dc5beb5e86ca"
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.011",
+      "key": "afb60dd47021",
+      "removedWith": "bc72929b0266"
+    }
+  ]
+}

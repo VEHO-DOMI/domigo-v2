@@ -1,0 +1,539 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u03",
+  "round": 1,
+  "itemsHash": "ba126dc65b37",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g1u03.w.also",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.also",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.beard",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.beard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.boy",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.boy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.captain",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.captain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.ear",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.ear",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.eye",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.eye",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.famous",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.famous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.feet",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.feet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.foot",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.foot",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.girl",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.girl",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.hair",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.hair",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.her-name-is",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.her-name-is",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.him",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.him",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.his-name-is",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.his-name-is",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.leg",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.leg",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.nose",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.nose",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.purple",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.purple",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.ship",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.ship",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.shoulder",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.shoulder",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.strong",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.strong",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.teeth",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.teeth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.to-paint",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.to-paint",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.tooth",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.tooth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u03.w.week",
+      "kind": "new-gloss",
+      "itemId": "g1u03.w.week",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.again",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.again",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.also",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.also",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.back",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.back",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.beard",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.beard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.big",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.big",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.boy",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.boy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.captain",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.captain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.ear",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.ear",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.eye",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.eye",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.famous",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.famous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.feet",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.feet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.finger",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.finger",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.foot",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.foot",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.girl",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.girl",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.hair",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.hair",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.have-got-has-got",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.have-got-has-got",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.her-name-is",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.her-name-is",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.him",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.him",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.his",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.his",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.his-name-is",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.his-name-is",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.left-arm",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.left-arm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.leg",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.leg",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.long",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.long",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.man",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.man",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.mouth",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.mouth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.nose",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.nose",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.pretty",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.pretty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.purple",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.purple",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.right-arm",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.right-arm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.ship",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.ship",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.short",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.short",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.shoulder",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.shoulder",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.sister",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.sister",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.small",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.small",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.strong",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.strong",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.tall",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.tall",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.teeth",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.teeth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.to-be-scared",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.to-be-scared",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.to-paint",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.to-paint",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.tooth",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.tooth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.week",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.week",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.w.woman",
+      "kind": "translation-audit",
+      "itemId": "g1u03.w.woman",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.gi.have-got.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u03.gi.have-got.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.gi.have-got.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g1u03.gi.have-got.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.gi.have-got.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g1u03.gi.have-got.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.gi.irregular-plurals-2.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u03.gi.irregular-plurals-2.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u03.gi.irregular-plurals-2.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u03.gi.irregular-plurals-2.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u03.w.her-name-is#47f926",
+      "kind": "validator-warn",
+      "itemId": "g1u03.w.her-name-is",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u03.w.her-name-is#c0e039",
+      "kind": "validator-warn",
+      "itemId": "g1u03.w.her-name-is",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u03.gi.have-got.tr.003#2c51f2",
+      "kind": "validator-warn",
+      "itemId": "g1u03.gi.have-got.tr.003",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "All 84 rows + 74 flags reviewed (FULL). Verify clean (0 fix, 0 warn); rejectRate 0%. 24 gloss + 47 translation audits lens-verified (deToEn EN / enToDe DE confirmed); 3 validator-warns sentence-initial \"Sie\" (= she/possessive, register-confirmed du-form). Full v1 parity: 42 grammar (have-got 28, irregular-plurals-2 14) over the 22 floor. Verify fixes landed: have-got family granted; 3 def-leak rewords (have-got/left-arm/right-arm); short/small deToEn corrected to English; her-name-is→\"Sie heißt\"; gf.005 strict answer; 3 DE-terms out of prompts; to-paint gloss scope; tr.002 German. Pipeline fix this unit: review-doc now dedupes repeated validator-warns (a sentence-initial \"Sie\" firing in 3 answer sentences had produced 3 identical flag blocks → duplicate-verdict ingest error)."
+  },
+  "metrics": {
+    "itemsReviewed": 84,
+    "fullRows": 84,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

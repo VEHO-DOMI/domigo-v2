@@ -1,0 +1,847 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u07",
+  "round": 1,
+  "itemsHash": "ca45f99fa37b",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "lens-warn:g1u07.w.chips#translation-unnatural",
+      "kind": "lens-warn",
+      "itemId": "g1u07.w.chips",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.an-apple",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.an-apple",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.an-orange",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.an-orange",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.any",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.any",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.broccoli",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.broccoli",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.butter",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.butter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.cake",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.cake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.carrot",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.carrot",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.cheese",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.cheese",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.chicken",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.chicken",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.chocolate",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.chocolate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.egg",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.egg",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.fish",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.fish",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.fries",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.fries",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.glass",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.glass",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.grapes",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.grapes",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.ham",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.ham",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.have-you-got",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.have-you-got",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.healthy",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.healthy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.i-ve-got",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.i-ve-got",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.junk-food",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.junk-food",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.kiwi",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.kiwi",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.meat",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.meat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.milk",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.milk",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.mum",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.mum",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.never",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.never",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.onion",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.onion",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.orange-juice",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.orange-juice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.peas",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.peas",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.rice",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.rice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.sausages",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.sausages",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.some",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.some",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.spinach",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.spinach",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.strawberry",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.strawberry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.sugar",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.sugar",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.that-s-nice",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.that-s-nice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.to-drink",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.to-drink",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.to-like",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.to-like",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.to-make",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.to-make",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.usually",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.usually",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u07.w.vegetable",
+      "kind": "new-gloss",
+      "itemId": "g1u07.w.vegetable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.always",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.always",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.an-apple",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.an-apple",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.an-orange",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.an-orange",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.any",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.any",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.beans",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.beans",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.bread",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.bread",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.breakfast",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.breakfast",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.broccoli",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.broccoli",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.butter",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.butter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.cake",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.cake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.carrot",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.carrot",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.cheese",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.cheese",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.chicken",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.chicken",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.chillies",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.chillies",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.chips",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.chips",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.chocolate",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.chocolate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.cucumber",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.cucumber",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.dinner",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.dinner",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.egg",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.egg",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.fish",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.fish",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.fries",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.fries",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.glass",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.glass",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.grapes",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.grapes",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.ham",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.ham",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.hamburger",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.hamburger",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.have-you-got",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.have-you-got",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.healthy",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.healthy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.i-ve-got",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.i-ve-got",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.ice-cream",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.ice-cream",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.junk-food",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.junk-food",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.kiwi",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.kiwi",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.lunch",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.lunch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.meat",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.meat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.menu",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.menu",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.milk",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.milk",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.mineral-water",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.mineral-water",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.money",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.money",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.mum",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.mum",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.never",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.never",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.often",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.often",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.onion",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.onion",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.orange-juice",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.orange-juice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.pasta",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.pasta",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.peas",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.peas",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.pizza",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.pizza",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.plate",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.plate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.red-pepper",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.red-pepper",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.restaurant",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.restaurant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.rice",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.rice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.salad",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.salad",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.sandwich",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.sandwich",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.sausages",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.sausages",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.some",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.some",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.sometimes",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.sometimes",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.soup",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.soup",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.spinach",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.spinach",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.strawberry",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.strawberry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.sugar",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.sugar",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.tea",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.tea",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.that-s-nice",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.that-s-nice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.to-drink",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.to-drink",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.to-like",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.to-like",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.to-make",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.to-make",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.tomato",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.tomato",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.usually",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.usually",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.vegetable",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.vegetable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.w.waiter",
+      "kind": "translation-audit",
+      "itemId": "g1u07.w.waiter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.gi.adverbs-frequency.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u07.gi.adverbs-frequency.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.gi.adverbs-frequency.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u07.gi.adverbs-frequency.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.gi.articles-a-an.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u07.gi.articles-a-an.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.gi.articles-a-an.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u07.gi.articles-a-an.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.gi.present-simple-negative.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u07.gi.present-simple-negative.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.gi.present-simple-negative.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u07.gi.present-simple-negative.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u07.gi.present-simple-negative.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g1u07.gi.present-simple-negative.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u07.w.menu#68e1d1",
+      "kind": "validator-warn",
+      "itemId": "g1u07.w.menu",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u07.gi.adverbs-frequency.tr.002#2bd4cd",
+      "kind": "validator-warn",
+      "itemId": "g1u07.gi.adverbs-frequency.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u07.gi.articles-a-an.tr.002#2bd4cd",
+      "kind": "validator-warn",
+      "itemId": "g1u07.gi.articles-a-an.tr.002",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "All 145 rows + 118 flags reviewed (FULL). Verify 0 fix, 1 warn; rejectRate 0%. 40 gloss + 74 translation audits lens-verified (deToEn EN / enToDe DE). 3 validator-warns benign. Full v1 parity: 78 grammar (present-simple-negative 25, articles-a-an 26, adverbs-frequency 27) over the 63 floor; grants don't/doesn't (a/an + frequency adverbs in allowlist)."
+  },
+  "metrics": {
+    "itemsReviewed": 145,
+    "fullRows": 145,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

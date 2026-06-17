@@ -1,0 +1,103 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g4-u01",
+  "items": {
+    "ba28f91e8855": "g4u01.gi.past-continuous-revision.gf.001",
+    "84a129491bda": "g4u01.gi.past-continuous-revision.gf.002",
+    "d6749cc865bc": "g4u01.gi.past-continuous-revision.gf.003",
+    "016d089d6dd5": "g4u01.gi.past-continuous-revision.gf.004",
+    "bcf79177cf2a": "g4u01.gi.past-continuous-revision.gf.005",
+    "774515b978c6": "g4u01.gi.past-continuous-revision.gf.006",
+    "819151457a73": "g4u01.gi.past-continuous-revision.gf.007",
+    "d4b7a7f500f4": "g4u01.gi.past-continuous-revision.gf.008",
+    "5bb5c1d4d4d2": "g4u01.gi.past-continuous-revision.gf.009",
+    "cee3ce04147b": "g4u01.gi.past-continuous-revision.gf.010",
+    "6f3b8c7795e8": "g4u01.gi.past-continuous-revision.gf.011",
+    "250f2507f62e": "g4u01.gi.past-continuous-revision.gf.012",
+    "076eaebe9ca7": "g4u01.gi.past-continuous-revision.gf.013",
+    "1e2c0f0c8e69": "g4u01.gi.past-continuous-revision.gf.014",
+    "3b45ea616a25": "g4u01.gi.past-continuous-revision.gf.015",
+    "c8a029ba12f0": "g4u01.gi.past-continuous-revision.gf.016",
+    "d3086a4afc4b": "g4u01.gi.past-continuous-revision.gf.017",
+    "164bf681438d": "g4u01.gi.past-continuous-revision.gf.018",
+    "69e64b619857": "g4u01.gi.past-continuous-revision.mc.001",
+    "144dde048089": "g4u01.gi.past-continuous-revision.mc.002",
+    "0875ece0eb5c": "g4u01.gi.past-continuous-revision.mc.003",
+    "714a181f8f0c": "g4u01.gi.past-continuous-revision.mc.004",
+    "93bbfbe93a51": "g4u01.gi.past-continuous-revision.mc.005",
+    "c2b33ca8242d": "g4u01.gi.past-continuous-revision.mc.007",
+    "06e39e733dca": "g4u01.gi.past-continuous-revision.mc.008",
+    "8118ad6f0101": "g4u01.gi.past-continuous-revision.mc.009",
+    "960c9e52427b": "g4u01.gi.past-continuous-revision.mc.010",
+    "cc279deb6ce0": "g4u01.gi.past-continuous-revision.ec.001",
+    "17d674fdcce1": "g4u01.gi.past-continuous-revision.ec.002",
+    "c7e372177614": "g4u01.gi.past-continuous-revision.ec.003",
+    "fb45887247e0": "g4u01.gi.past-continuous-revision.ec.004",
+    "4dbe65a330a3": "g4u01.gi.past-continuous-revision.ec.005",
+    "1634f4d5aaf1": "g4u01.gi.past-continuous-revision.ec.006",
+    "5248063922ce": "g4u01.gi.past-continuous-revision.ec.007",
+    "87f0dd533a14": "g4u01.gi.past-continuous-revision.ec.009",
+    "55a67a394be3": "g4u01.gi.past-continuous-revision.tf.001",
+    "405ee61a906d": "g4u01.gi.past-continuous-revision.tf.002",
+    "6cf632653fe7": "g4u01.gi.past-continuous-revision.tf.003",
+    "6b1f73dcfd71": "g4u01.gi.past-continuous-revision.tf.004",
+    "b4dddc0204a0": "g4u01.gi.past-continuous-revision.sb.003",
+    "aa00451df01f": "g4u01.gi.past-continuous-revision.cp.002",
+    "bc2508c37424": "g4u01.gi.past-continuous-revision.tr.002",
+    "9348ef3ffd0e": "g4u01.gi.past-continuous-revision.gs.001",
+    "0d720ca5db9e": "g4u01.gi.past-continuous-revision.gf.019",
+    "337d25b2c91f": "g4u01.gi.past-continuous-revision.gf.020",
+    "19e587f30a19": "g4u01.gi.past-continuous-revision.gf.021",
+    "57b51dd864c8": "g4u01.gi.past-continuous-revision.ec.010",
+    "a3a3271dd735": "g4u01.gi.past-continuous-revision.mc.011",
+    "5afa6533f299": "g4u01.gi.past-continuous-revision.gs.003",
+    "fece1179aa92": "g4u01.gi.past-continuous-revision.sb.004",
+    "8281def86ce0": "g4u01.gi.past-continuous-revision.sb.005",
+    "b496be9f9c54": "g4u01.gi.past-continuous-revision.cp.003",
+    "35c85bd404d4": "g4u01.gi.past-continuous-revision.tr.003",
+    "1c82bddbb0de": "g4u01.gi.past-continuous-revision.mt.002",
+    "1d6698906f4d": "g4u01.gi.past-continuous-revision.ec.011"
+  },
+  "tombstones": [
+    {
+      "id": "g4u01.gi.past-continuous-revision.mc.006",
+      "key": "d7261476ba40",
+      "removedWith": "0f7497b3d252"
+    },
+    {
+      "id": "g4u01.gi.past-continuous-revision.gs.002",
+      "key": "ccc2aff02609",
+      "removedWith": "0f7497b3d252"
+    },
+    {
+      "id": "g4u01.gi.past-continuous-revision.sb.001",
+      "key": "52361d25f4d6",
+      "removedWith": "5ed2a49509e6"
+    },
+    {
+      "id": "g4u01.gi.past-continuous-revision.sb.002",
+      "key": "d2fc46140a3d",
+      "removedWith": "5ed2a49509e6"
+    },
+    {
+      "id": "g4u01.gi.past-continuous-revision.cp.001",
+      "key": "1b1651c3277a",
+      "removedWith": "5ed2a49509e6"
+    },
+    {
+      "id": "g4u01.gi.past-continuous-revision.tr.001",
+      "key": "c7ec024fb0c0",
+      "removedWith": "5ed2a49509e6"
+    },
+    {
+      "id": "g4u01.gi.past-continuous-revision.mt.001",
+      "key": "f2bb1a7ce6f5",
+      "removedWith": "5ed2a49509e6"
+    },
+    {
+      "id": "g4u01.gi.past-continuous-revision.ec.008",
+      "key": "f8ee7028647f",
+      "removedWith": "83fe83d2c8c9"
+    }
+  ]
+}

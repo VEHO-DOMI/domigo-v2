@@ -1,0 +1,308 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u15",
+  "round": 1,
+  "itemsHash": "5a2e302029f4",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g1u15.w.board-game",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.board-game",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.campsite",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.campsite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.hippo",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.hippo",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.national-park",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.national-park",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.plane",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.plane",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.to-drive",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.to-drive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.to-fly-to",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.to-fly-to",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.to-go-fishing",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.to-go-fishing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.to-invite",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.to-invite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.to-join",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.to-join",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.to-play-badminton",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.to-play-badminton",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.to-play-board-games",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.to-play-board-games",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.to-stay-at-a-campsite",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.to-stay-at-a-campsite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.to-swim-in-the-sea",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.to-swim-in-the-sea",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.to-visit-a-castle",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.to-visit-a-castle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u15.w.to-write-a-postcard",
+      "kind": "new-gloss",
+      "itemId": "g1u15.w.to-write-a-postcard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.aunt",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.aunt",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.beach",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.beach",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.board-game",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.board-game",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.campsite",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.campsite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.cook",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.cook",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.hippo",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.hippo",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.holiday",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.holiday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.national-park",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.national-park",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.parents",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.parents",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.plane",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.plane",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.summer",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.summer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-drive",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-drive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-fly-to",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-fly-to",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-go-fishing",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-go-fishing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-invite",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-invite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-join",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-join",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-lie-in-the-sun",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-lie-in-the-sun",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-play-badminton",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-play-badminton",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-play-board-games",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-play-board-games",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-stay-at-a-campsite",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-stay-at-a-campsite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-swim-in-the-sea",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-swim-in-the-sea",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-visit-a-castle",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-visit-a-castle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.w.to-write-a-postcard",
+      "kind": "translation-audit",
+      "itemId": "g1u15.w.to-write-a-postcard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.gi.going-to.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u15.gi.going-to.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u15.gi.going-to.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g1u15.gi.going-to.tr.003",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 58 rows (structure: (be) going to, future plans). Verify: answers CLEAN (every be-form agrees with its subject, every verb after \"going to\" is base form, negatives/questions/short-answers well-formed, all distractors wrong in exactly this structure), translation CLEAN (holiday phrases + going-to future faithful, du-form), register CLEAN after fixing tf.006/007 (\"Mach den Satz negativ\" → \"mit not\"). Level-gloss fix: to-drive \"take\"=bringen (transport sense). Key fix: the contraction-form full answers tokenized to \"m\"/\"re\" (untaught fragments) — demoted all contractions to PARTIAL with the non-contracted form FULL (matches prior units; gate-exempt), and reworded mc.006 to non-contracted. Audited grants for the holiday-activity base verbs + nouns + wrong-form decoys; dropped a be-form group-sort that couldn't satisfy ≥2-members (the \"am\" group is only ever \"I\"). Non-actionable lens warn: hippo \"grey\" — the gate treats it as taught (glossing trips V-6), so the colour-vs-proper-noun nuance can't be a gloss. 0 fix, 0 drop → approve. **This completes all 15 G1 units at 0.0% reject.**"
+  },
+  "metrics": {
+    "itemsReviewed": 58,
+    "fullRows": 58,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

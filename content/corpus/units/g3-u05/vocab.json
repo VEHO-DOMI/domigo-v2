@@ -1,0 +1,3266 @@
+{
+  "schema": "vocab@1",
+  "grade": 3,
+  "unit": 5,
+  "slug": "g3-u05",
+  "items": [
+    {
+      "id": "g3u05.w.alarm-clock",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "toothbrush",
+            "sleeping bag",
+            "lucky charm",
+            "spirit"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from SB Scene 4 ('I really didn't want to get up when my alarm clock rang.'); 'rang/went off/woke/made' all untaught → 'helps me get up' with taught words."
+      },
+      "w": "alarm clock",
+      "g": "Wecker",
+      "d": "a small machine next to your bed that makes a noise in the morning so you get up.",
+      "s": "My ___ next to my bed helps me get up in the morning.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "alarm clock",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "alarm clock",
+          "tier": "full"
+        },
+        {
+          "text": "an alarm clock",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "alarm clock",
+            "tier": "full"
+          },
+          {
+            "text": "an alarm clock",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wecker",
+            "tier": "full"
+          },
+          {
+            "text": "der Wecker",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "toothbrush",
+        "sleeping bag",
+        "lucky charm"
+      ],
+      "hintDe": "Macht morgens Lärm, damit du aufstehst."
+    },
+    {
+      "id": "g3u05.w.any-luck",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Do you mind ...?",
+            "I'm joking.",
+            "I'm sure.",
+            "seriously"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB Scene 5 ('Any luck?'); distractorPool keeps the answer in-set per gameMeta rule but mc excludes it."
+      },
+      "w": "Any luck?",
+      "g": "Hattest du Glück?",
+      "d": "a short way to ask if somebody did well.",
+      "s": "Did you find your keys under the sofa? ___",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Any luck?",
+          "tier": "full"
+        },
+        {
+          "text": "Any luck",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Any luck?",
+          "tier": "full"
+        },
+        {
+          "text": "Any luck",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Any luck?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hattest du Glück?",
+            "tier": "full"
+          },
+          {
+            "text": "Und, Glück gehabt?",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Do you mind ...?",
+        "I'm joking.",
+        "I'm sure."
+      ],
+      "hintDe": "Kurze Frage: Hast du es geschafft / gefunden?"
+    },
+    {
+      "id": "g3u05.w.beside",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "obvious",
+            "evil",
+            "rich",
+            "spooky"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB Scene 2 stage line ('Mr Wallis, the teacher, arrives and sits down beside them.'); 'campfire' glossed (untaught)."
+      },
+      "w": "beside",
+      "g": "neben",
+      "d": "very close to a thing or to somebody, next to them.",
+      "s": "Mr Wallis, the teacher, arrives and sits down ___ them at the campfire.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "beside",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "beside",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "beside",
+            "tier": "full"
+          },
+          {
+            "text": "next to",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "neben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "obvious",
+        "evil",
+        "rich"
+      ],
+      "hintDe": "Direkt daneben."
+    },
+    {
+      "id": "g3u05.w.crack",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "pavement",
+            "salt",
+            "haircut",
+            "toothbrush"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB task 6 / grammar caption ('You'll have bad luck if you walk on the cracks in the pavement.'); 'walk/step/you'll' untaught → 'go over a crack'; 'thin' glossed in def."
+      },
+      "w": "crack",
+      "g": "Riss",
+      "d": "a break in the ground or a wall, like a thin opening.",
+      "s": "Some people think you will have bad luck if you go over a ___ in the pavement.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "crack",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crack",
+          "tier": "full"
+        },
+        {
+          "text": "a crack",
+          "tier": "full"
+        },
+        {
+          "text": "cracks",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crack",
+            "tier": "full"
+          },
+          {
+            "text": "a crack",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Riss",
+            "tier": "full"
+          },
+          {
+            "text": "Spalt",
+            "tier": "full"
+          },
+          {
+            "text": "Fuge",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "thin",
+          "de": "dünn",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "pavement",
+        "salt",
+        "haircut"
+      ],
+      "hintDe": "Ein Spalt oder Riss im Boden oder in einer Wand."
+    },
+    {
+      "id": "g3u05.w.cuckoo",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spirit",
+            "salt",
+            "crack",
+            "haircut"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB MORE Words example ('I can hear a cuckoo in the woods.') expanded; 'hear' glossed (untaught); def avoids untaught 'bird/says'."
+      },
+      "w": "cuckoo",
+      "g": "Kuckuck",
+      "d": "a small grey forest animal of the woods that calls in spring.",
+      "s": "We could hear a ___ calling over and over from the trees in the woods.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cuckoo",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cuckoo",
+          "tier": "full"
+        },
+        {
+          "text": "a cuckoo",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cuckoo",
+            "tier": "full"
+          },
+          {
+            "text": "a cuckoo",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kuckuck",
+            "tier": "full"
+          },
+          {
+            "text": "der Kuckuck",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hear",
+          "de": "hören",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "spirit",
+        "salt",
+        "crack"
+      ],
+      "hintDe": "Grauer Waldvogel, der im Frühling Kuckuck ruft."
+    },
+    {
+      "id": "g3u05.w.do-you-mind",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Any luck?",
+            "I'm joking.",
+            "I'm sure.",
+            "seriously"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from SB Scene 4 ('do you mind if I sit and join you?'); carrier rebuilt to avoid untaught 'sit'."
+      },
+      "w": "Do you mind ...?",
+      "g": "Macht es dir etwas aus ...?",
+      "d": "a nice way to ask if a thing is OK.",
+      "s": "___ if I open the window? It is very hot in here.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Do you mind",
+          "tier": "full"
+        },
+        {
+          "text": "Do you mind ...?",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Do you mind ...?",
+          "tier": "full"
+        },
+        {
+          "text": "Do you mind",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Do you mind ...?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Macht es dir etwas aus ...?",
+            "tier": "full"
+          },
+          {
+            "text": "Hast du etwas dagegen ...?",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Any luck?",
+        "I'm joking.",
+        "I'm sure."
+      ],
+      "hintDe": "Höflich fragen, ob etwas in Ordnung ist."
+    },
+    {
+      "id": "g3u05.w.evil",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rich",
+            "obvious",
+            "satisfied",
+            "traditional"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB ('Candyman is an evil spirit.'); 'who wants to scare and hurt you' added in-bank to fix the blank."
+      },
+      "w": "evil",
+      "g": "böse",
+      "d": "very bad and wanting to hurt people.",
+      "s": "Candyman is an ___ spirit who wants to scare and hurt you.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "evil",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "evil",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "evil",
+            "tier": "full"
+          },
+          {
+            "text": "wicked",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "böse",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rich",
+        "obvious",
+        "satisfied"
+      ],
+      "hintDe": "Sehr böse — will anderen wehtun."
+    },
+    {
+      "id": "g3u05.w.haircut",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "toothbrush",
+            "sleeping bag",
+            "alarm clock",
+            "crack"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB Vietnam text ('If you get a haircut before an exam...'); 'Vietnam/exam/forget' untaught → 'a big day at school'; def avoids untaught 'cut/hairdresser'."
+      },
+      "w": "haircut",
+      "g": "Haarschnitt",
+      "d": "when somebody makes your hair shorter for you.",
+      "s": "Some people think that a new ___ before a big day at school brings bad luck.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "haircut",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "haircut",
+          "tier": "full"
+        },
+        {
+          "text": "a haircut",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "haircut",
+            "tier": "full"
+          },
+          {
+            "text": "a haircut",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Haarschnitt",
+            "tier": "full"
+          },
+          {
+            "text": "der Haarschnitt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "toothbrush",
+        "sleeping bag",
+        "alarm clock"
+      ],
+      "hintDe": "Wenn dir die Haare kürzer geschnitten werden."
+    },
+    {
+      "id": "g3u05.w.i-m-joking",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I'm sure.",
+            "Any luck?",
+            "Do you mind ...?",
+            "seriously"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Mined from v1 ('I didn't really eat your last chocolate bar')."
+      },
+      "w": "I'm joking.",
+      "g": "Ich scherze nur.",
+      "d": "a way to tell somebody you are not serious.",
+      "s": "Don't worry, ___ ! I didn't really eat your last chocolate.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "I'm joking",
+          "tier": "full"
+        },
+        {
+          "text": "I'm joking.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "I'm joking.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm joking",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "I'm joking.",
+            "tier": "full"
+          },
+          {
+            "text": "I am joking.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich scherze nur.",
+            "tier": "full"
+          },
+          {
+            "text": "Ich mache nur Spaß.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "I'm sure.",
+        "Any luck?",
+        "Do you mind ...?"
+      ],
+      "hintDe": "Wenn du sagst, dass du es nicht ernst meinst."
+    },
+    {
+      "id": "g3u05.w.i-m-sure",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I'm joking.",
+            "Any luck?",
+            "Do you mind ...?",
+            "seriously"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Mined from v1 (train-on-time idea); 'certain' glossed in def (untaught)."
+      },
+      "w": "I'm sure.",
+      "g": "Ich bin mir sicher.",
+      "d": "a way to tell somebody you are really certain about a thing.",
+      "s": "Will the train come on time? — ___ It is always on time.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "I'm sure.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm sure",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "I'm sure.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm sure",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "I'm sure.",
+            "tier": "full"
+          },
+          {
+            "text": "I am sure.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich bin mir sicher.",
+            "tier": "full"
+          },
+          {
+            "text": "Ganz sicher.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "I'm joking.",
+        "Any luck?",
+        "Do you mind ...?"
+      ],
+      "hintDe": "Wenn du dir bei etwas ganz sicher bist."
+    },
+    {
+      "id": "g3u05.w.lucky-charm",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "alarm clock",
+            "toothbrush",
+            "sleeping bag",
+            "salt"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Mined from v1 (horseshoe-in-pocket idea); 'tiny/silver/test' untaught → 'a small horseshoe ... every day for good luck'; 'object' and 'horseshoe' glossed (untaught)."
+      },
+      "w": "lucky charm",
+      "g": "Glücksbringer",
+      "d": "a small object you carry because you think it brings you good luck.",
+      "s": "She always carries her ___ , a small horseshoe, in her pocket every day for good luck.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "lucky charm",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lucky charm",
+          "tier": "full"
+        },
+        {
+          "text": "a lucky charm",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lucky charm",
+            "tier": "full"
+          },
+          {
+            "text": "a lucky charm",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Glücksbringer",
+            "tier": "full"
+          },
+          {
+            "text": "der Glücksbringer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "horseshoe",
+          "de": "Hufeisen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "alarm clock",
+        "toothbrush",
+        "sleeping bag"
+      ],
+      "hintDe": "Ein kleiner Gegenstand, der dir Glück bringen soll."
+    },
+    {
+      "id": "g3u05.w.obvious",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spooky",
+            "evil",
+            "traditional",
+            "rich"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from SB MORE Words example ('Isn't it obvious...'); v1 'tired/yawning' carrier reused; 'yawning' glossed (untaught)."
+      },
+      "w": "obvious",
+      "g": "offensichtlich",
+      "d": "so plain that everybody can understand it at once.",
+      "s": "It was ___ that she was tired — she could not stop yawning in class.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "obvious",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "obvious",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "obvious",
+            "tier": "full"
+          },
+          {
+            "text": "clear",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "offensichtlich",
+            "tier": "full"
+          },
+          {
+            "text": "klar",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "yawning",
+          "de": "gähnen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "spooky",
+        "evil",
+        "traditional"
+      ],
+      "hintDe": "Ganz leicht zu sehen oder zu verstehen."
+    },
+    {
+      "id": "g3u05.w.pavement",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "crack",
+            "salt",
+            "haircut",
+            "toothbrush"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from SB MORE Words example ('I sometimes don't walk on the cracks in the pavement.'); 'walk/busy/safer/hard/part' untaught → 'Stay on the ___ next to the buildings, not on the road.'"
+      },
+      "w": "pavement",
+      "g": "Gehsteig",
+      "d": "the place beside a road where people go on foot.",
+      "s": "Stay on the ___ next to the buildings, not on the road.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pavement",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pavement",
+          "tier": "full"
+        },
+        {
+          "text": "the pavement",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pavement",
+            "tier": "full"
+          },
+          {
+            "text": "the pavement",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gehsteig",
+            "tier": "full"
+          },
+          {
+            "text": "der Gehsteig",
+            "tier": "full"
+          },
+          {
+            "text": "Gehweg",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "crack",
+        "salt",
+        "haircut"
+      ],
+      "hintDe": "Der harte Weg neben der Straße zum Gehen."
+    },
+    {
+      "id": "g3u05.w.rich",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spooky",
+            "evil",
+            "obvious",
+            "unlucky"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB task 6 ('You'll get rich if you hear a cuckoo and shake your money.'); 'you'll/get' untaught → 'You will be ___'; 'hear' glossed (untaught)."
+      },
+      "w": "rich",
+      "g": "reich",
+      "d": "having a lot of money.",
+      "s": "You will be ___ if you hear a cuckoo and shake the money in your pocket.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "rich",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rich",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rich",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "reich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hear",
+          "de": "hören",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "spooky",
+        "evil",
+        "obvious"
+      ],
+      "hintDe": "Wenn du sehr viel Geld hast."
+    },
+    {
+      "id": "g3u05.w.salt",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "toothbrush",
+            "haircut",
+            "lucky charm",
+            "crack"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from SB EXTRA example ('Oh no, I spilled the salt on the table.') + WB Carla; 'spilled/oh/powder/stuff' untaught → 'I dropped the ___ on the table'; distractors are in-bank nouns."
+      },
+      "w": "salt",
+      "g": "Salz",
+      "d": "white, and you put it on food to give it more taste.",
+      "s": "I dropped the ___ on the table — some people think that is bad luck.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "salt",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "salt",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "salt",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Salz",
+            "tier": "full"
+          },
+          {
+            "text": "das Salz",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "toothbrush",
+        "haircut",
+        "lucky charm"
+      ],
+      "hintDe": "Weißes Streugut, das Essen würzt."
+    },
+    {
+      "id": "g3u05.w.satisfied",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spooky",
+            "evil",
+            "rich",
+            "obvious"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB MORE Words example ('I am not really satisfied with your answer.'); 'answer/try' untaught → 'with your work — please do it again'."
+      },
+      "w": "satisfied",
+      "g": "zufrieden",
+      "d": "happy and pleased with a thing because it is good.",
+      "s": "I am not really ___ with your work — please do it again.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "satisfied",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "satisfied",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "satisfied",
+            "tier": "full"
+          },
+          {
+            "text": "happy",
+            "tier": "partial"
+          },
+          {
+            "text": "pleased",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zufrieden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "spooky",
+        "evil",
+        "rich"
+      ],
+      "hintDe": "Zufrieden, weil etwas gut genug ist."
+    },
+    {
+      "id": "g3u05.w.seriously",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "obvious",
+            "rich",
+            "spooky",
+            "evil"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB EXTRA example ('You seriously believe in all these things?'); 'believe' glossed (untaught as bare word); 'They are just stories!' added in-bank."
+      },
+      "w": "seriously",
+      "g": "ernsthaft",
+      "d": "really, not for fun.",
+      "s": "Do you ___ believe in all of these stories? They are just stories!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "seriously",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "seriously",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "seriously",
+            "tier": "full"
+          },
+          {
+            "text": "really",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ernsthaft",
+            "tier": "full"
+          },
+          {
+            "text": "im Ernst",
+            "tier": "full"
+          },
+          {
+            "text": "wirklich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "believe",
+          "de": "glauben",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "obvious",
+        "rich",
+        "spooky"
+      ],
+      "hintDe": "Wirklich, nicht als Spaß gemeint."
+    },
+    {
+      "id": "g3u05.w.sleeping-bag",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "toothbrush",
+            "alarm clock",
+            "lucky charm",
+            "pavement"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB Scene 3 stage line ('Nick is lying in his sleeping bag.'); 'lying/tent' untaught, so 'is in ... dreaming'; 'warm' glossed in def."
+      },
+      "w": "sleeping bag",
+      "g": "Schlafsack",
+      "d": "a warm cover you lie inside when you go camping.",
+      "s": "Nick is in his ___ , dreaming.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sleeping bag",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sleeping bag",
+          "tier": "full"
+        },
+        {
+          "text": "a sleeping bag",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sleeping bag",
+            "tier": "full"
+          },
+          {
+            "text": "a sleeping bag",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlafsack",
+            "tier": "full"
+          },
+          {
+            "text": "der Schlafsack",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "warm",
+          "de": "warm",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "toothbrush",
+        "alarm clock",
+        "lucky charm"
+      ],
+      "hintDe": "Darin schläfst du warm beim Zelten."
+    },
+    {
+      "id": "g3u05.w.spirit",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "superstition",
+            "crack",
+            "salt",
+            "haircut"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB ('There is a spirit by the name of Candyman.'); 'by the name of' (untaught 'name') swapped for 'called'; 'old house' (untaught 'old/house') → 'this home'."
+      },
+      "w": "spirit",
+      "g": "Geist",
+      "d": "a ghost or an evil thing — the dead man or woman who some people think still lives.",
+      "s": "There is a ___ called Candyman who lives in this home.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "spirit",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spirit",
+          "tier": "full"
+        },
+        {
+          "text": "a spirit",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spirit",
+            "tier": "full"
+          },
+          {
+            "text": "ghost",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geist",
+            "tier": "full"
+          },
+          {
+            "text": "der Geist",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "superstition",
+        "crack",
+        "salt"
+      ],
+      "hintDe": "Ein Geist oder böses Wesen."
+    },
+    {
+      "id": "g3u05.w.spooky",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "obvious",
+            "rich",
+            "satisfied",
+            "traditional"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB Scene 3 ('this house is really spooky. Who lives here?'); 'house/old' untaught → 'this home'; 'strange' glossed in def."
+      },
+      "w": "spooky",
+      "g": "unheimlich",
+      "d": "scary and strange, like a place where ghosts live.",
+      "s": "Wow, this home is really ___ . Who lives here?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "spooky",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spooky",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spooky",
+            "tier": "full"
+          },
+          {
+            "text": "creepy",
+            "tier": "partial"
+          },
+          {
+            "text": "scary",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unheimlich",
+            "tier": "full"
+          },
+          {
+            "text": "gruselig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "strange",
+          "de": "seltsam",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "obvious",
+        "rich",
+        "satisfied"
+      ],
+      "hintDe": "Ein bisschen gruselig — wie bei Geistern."
+    },
+    {
+      "id": "g3u05.w.superstition",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spirit",
+            "haircut",
+            "pavement",
+            "toothbrush"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB ('It's only a silly superstition, after all.') reworked with the break-a-mirror idea; 'broke/things/only' untaught; 'silly' glossed (untaught)."
+      },
+      "w": "superstition",
+      "g": "Aberglaube",
+      "d": "a story about luck that many people think is true.",
+      "s": "When you break a mirror, some people think it brings bad luck — but it's just a silly ___ .",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "superstition",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "superstition",
+          "tier": "full"
+        },
+        {
+          "text": "a superstition",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "superstition",
+            "tier": "full"
+          },
+          {
+            "text": "a superstition",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Aberglaube",
+            "tier": "full"
+          },
+          {
+            "text": "der Aberglaube",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "silly",
+          "de": "albern",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "spirit",
+        "haircut",
+        "pavement"
+      ],
+      "hintDe": "Eine Geschichte über Glück, die viele für wahr halten."
+    },
+    {
+      "id": "g3u05.w.superstitious",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spooky",
+            "rich",
+            "satisfied",
+            "obvious"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from SB ('Are you superstitious?') + WB Carla story ('Breaking a mirror brings ... bad luck'); 'walks/ladder' untaught → 'will never break a mirror'; 'magic' glossed in def (untaught)."
+      },
+      "w": "superstitious",
+      "g": "abergläubisch",
+      "d": "feeling that stories about luck and magic are true.",
+      "s": "My grandmother is very ___ , so she will never break a mirror.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "superstitious",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "superstitious",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "superstitious",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "abergläubisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "spooky",
+        "rich",
+        "satisfied"
+      ],
+      "hintDe": "Wenn jemand an Glücks- und Pechgeschichten glaubt."
+    },
+    {
+      "id": "g3u05.w.to-arrange",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to ignore",
+            "to attract",
+            "to trick",
+            "to enter"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from SB dialogue ('Have you got something else arranged?'); 'something/else/next' untaught → 'Can we ___ a time to meet after school on Friday?'"
+      },
+      "w": "to arrange",
+      "g": "vereinbaren",
+      "d": "to agree on a time and place to do a thing.",
+      "s": "Can we ___ a time to meet after school on Friday?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "arrange",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to arrange",
+          "tier": "full"
+        },
+        {
+          "text": "arrange",
+          "tier": "full"
+        },
+        {
+          "text": "arranged",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to arrange",
+            "tier": "full"
+          },
+          {
+            "text": "arrange",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vereinbaren",
+            "tier": "full"
+          },
+          {
+            "text": "arrangieren",
+            "tier": "full"
+          },
+          {
+            "text": "ausmachen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to ignore",
+        "to attract",
+        "to trick"
+      ],
+      "hintDe": "Eine Zeit und einen Ort zum Treffen ausmachen."
+    },
+    {
+      "id": "g3u05.w.to-attract",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to enter",
+            "to trick",
+            "to shake",
+            "to ignore"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB ('If you whistle, you'll attract a spirit.'); 'you'll/old/says' untaught → 'you will ... the people in China think'; 'in the woods' added in-bank."
+      },
+      "w": "to attract",
+      "g": "anlocken",
+      "d": "to make a thing or animal come near to you.",
+      "s": "If you whistle in the woods, you will ___ a spirit, the people in China think.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "attract",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to attract",
+          "tier": "full"
+        },
+        {
+          "text": "attract",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to attract",
+            "tier": "full"
+          },
+          {
+            "text": "attract",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "anlocken",
+            "tier": "full"
+          },
+          {
+            "text": "anziehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to enter",
+        "to trick",
+        "to shake"
+      ],
+      "hintDe": "Etwas oder jemanden näher zu dir bringen."
+    },
+    {
+      "id": "g3u05.w.to-be-unlucky",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to come true",
+            "to make a wish",
+            "spooky",
+            "to have (good/bad) luck"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to be unlucky",
+      "g": "Pech haben",
+      "d": "to have bad luck — bad luck keeps happening to you.",
+      "s": "Dan is always so ___ . Bad luck happens to him all the time.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "unlucky",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to be unlucky",
+          "tier": "full"
+        },
+        {
+          "text": "be unlucky",
+          "tier": "full"
+        },
+        {
+          "text": "unlucky",
+          "tier": "full"
+        },
+        {
+          "text": "to have bad luck",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to be unlucky",
+            "tier": "full"
+          },
+          {
+            "text": "be unlucky",
+            "tier": "full"
+          },
+          {
+            "text": "to have bad luck",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pech haben",
+            "tier": "full"
+          },
+          {
+            "text": "Pech zu haben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to come true",
+        "to make a wish",
+        "spooky"
+      ],
+      "hintDe": "Wenn dir immer wieder etwas Schlechtes passiert."
+    },
+    {
+      "id": "g3u05.w.to-believe-in-superstitions",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make a wish",
+            "to come true",
+            "to bring (good/bad) luck",
+            "to have (good/bad) luck"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from WB Dialogue 1 ('I don't believe in superstitions.'); 'silly' glossed in carrier (untaught)."
+      },
+      "w": "to believe in superstitions",
+      "g": "an Aberglauben glauben",
+      "d": "to think that stories about luck and magic are true.",
+      "s": "Do you really ___ , or do you think they are all just silly?",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "believe in superstitions",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to believe in superstitions",
+          "tier": "full"
+        },
+        {
+          "text": "believe in superstitions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to believe in superstitions",
+            "tier": "full"
+          },
+          {
+            "text": "believe in superstitions",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "an Aberglauben glauben",
+            "tier": "full"
+          },
+          {
+            "text": "abergläubisch sein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "silly",
+          "de": "albern",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to make a wish",
+        "to come true",
+        "to bring (good/bad) luck"
+      ],
+      "hintDe": "Daran glauben, dass Geschichten über Glück wahr sind."
+    },
+    {
+      "id": "g3u05.w.to-bring-luck",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to come true",
+            "to make a wish",
+            "to scream",
+            "to ignore"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB task 4 sentence 1 ('If you break a mirror, it brings you seven years' bad luck.'); 'people think' added in-bank (bare 'say' is untaught)."
+      },
+      "w": "to bring (good/bad) luck",
+      "g": "(Glück/Pech) bringen",
+      "d": "When people believe an object or action makes nice or unlucky things happen to you.",
+      "s": "If you break a mirror, it ___ you seven years' bad luck, people think.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "brings",
+          "tier": "full"
+        },
+        {
+          "text": "brings bad luck",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to bring luck",
+          "tier": "full"
+        },
+        {
+          "text": "bring luck",
+          "tier": "full"
+        },
+        {
+          "text": "to bring good luck",
+          "tier": "full"
+        },
+        {
+          "text": "to bring bad luck",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to bring good luck",
+            "tier": "full"
+          },
+          {
+            "text": "to bring bad luck",
+            "tier": "full"
+          },
+          {
+            "text": "to bring luck",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Glück bringen",
+            "tier": "full"
+          },
+          {
+            "text": "Pech bringen",
+            "tier": "full"
+          },
+          {
+            "text": "(Glück/Pech) bringen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "believe",
+          "de": "glauben",
+          "scope": "d"
+        },
+        {
+          "word": "action",
+          "de": "Handlung",
+          "scope": "d"
+        },
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to come true",
+        "to make a wish",
+        "to scream"
+      ],
+      "hintDe": "Etwas sorgt dafür, dass du Glück oder Pech hast."
+    },
+    {
+      "id": "g3u05.w.to-catch-a-cold",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make a wish",
+            "to come true",
+            "to shake",
+            "to scream"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from SB EXTRA example ('If you don't wear a jacket, you'll catch a cold.'); 'you'll' → 'you will'; 'runny/cough/warm' glossed in def/carrier (untaught)."
+      },
+      "w": "to catch a cold",
+      "g": "sich verkühlen",
+      "d": "to become ill, with a runny nose and a cough.",
+      "s": "Wear a warm jacket in the snow, or you will ___ and be sick in bed.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "catch a cold",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to catch a cold",
+          "tier": "full"
+        },
+        {
+          "text": "catch a cold",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to catch a cold",
+            "tier": "full"
+          },
+          {
+            "text": "catch a cold",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich verkühlen",
+            "tier": "full"
+          },
+          {
+            "text": "sich erkälten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "runny",
+          "de": "rinnend, laufend",
+          "scope": "d"
+        },
+        {
+          "word": "cough",
+          "de": "Husten",
+          "scope": "d"
+        },
+        {
+          "word": "warm",
+          "de": "warm",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to make a wish",
+        "to come true",
+        "to shake"
+      ],
+      "hintDe": "Krank werden mit Schnupfen und Husten."
+    },
+    {
+      "id": "g3u05.w.to-come-true",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make a wish",
+            "to wish for sth.",
+            "to attract",
+            "to bring (good/bad) luck"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from SB Scene 4 ('did your dreams come true?'); carrier rebuilt with taught words ('see/rainbow' avoided)."
+      },
+      "w": "to come true",
+      "g": "wahr werden",
+      "d": "when a dream or a hope really happens.",
+      "s": "I really hope my dream of going to Japan will ___ one day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "come true",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to come true",
+          "tier": "full"
+        },
+        {
+          "text": "come true",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to come true",
+            "tier": "full"
+          },
+          {
+            "text": "come true",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wahr werden",
+            "tier": "full"
+          },
+          {
+            "text": "in Erfüllung gehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make a wish",
+        "to wish for sth.",
+        "to attract"
+      ],
+      "hintDe": "Wenn ein Wunsch oder Traum wirklich passiert."
+    },
+    {
+      "id": "g3u05.w.to-enter",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to attract",
+            "to whistle",
+            "to trick",
+            "to shake"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB China text ('When you want to enter your home, you have to turn sharply to the left or right.'); 'turn/sharply/left/right' untaught → 'go this way or that way'."
+      },
+      "w": "to enter",
+      "g": "betreten",
+      "d": "to go into a place.",
+      "s": "When you want to ___ your home in China, you have to go this way or that way.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "enter",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to enter",
+          "tier": "full"
+        },
+        {
+          "text": "enter",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to enter",
+            "tier": "full"
+          },
+          {
+            "text": "enter",
+            "tier": "full"
+          },
+          {
+            "text": "to go into",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "betreten",
+            "tier": "full"
+          },
+          {
+            "text": "eintreten",
+            "tier": "full"
+          },
+          {
+            "text": "hineingehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to attract",
+        "to whistle",
+        "to trick"
+      ],
+      "hintDe": "In einen Raum oder ein Haus hineingehen."
+    },
+    {
+      "id": "g3u05.w.to-have-luck",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to come true",
+            "to make a wish",
+            "to scream",
+            "to shake"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Lucky-find idea from v1 simplified ('found/five-euro note' untaught); 'chance' glossed in def (untaught)."
+      },
+      "w": "to have (good/bad) luck",
+      "g": "(Glück/Pech) haben",
+      "d": "When nice or unlucky things happen to you by chance, not by skill.",
+      "s": "I ___ really good luck today, and I am very happy about it!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "had",
+          "tier": "full"
+        },
+        {
+          "text": "had good luck",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to have luck",
+          "tier": "full"
+        },
+        {
+          "text": "have luck",
+          "tier": "full"
+        },
+        {
+          "text": "to have good luck",
+          "tier": "full"
+        },
+        {
+          "text": "to have bad luck",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to have good luck",
+            "tier": "full"
+          },
+          {
+            "text": "to have bad luck",
+            "tier": "full"
+          },
+          {
+            "text": "to have luck",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Glück haben",
+            "tier": "full"
+          },
+          {
+            "text": "Pech haben",
+            "tier": "full"
+          },
+          {
+            "text": "(Glück/Pech) haben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        },
+        {
+          "word": "chance",
+          "de": "Zufall",
+          "scope": "d"
+        },
+        {
+          "word": "skill",
+          "de": "Können",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to come true",
+        "to make a wish",
+        "to scream"
+      ],
+      "hintDe": "Wenn dir im Leben Gutes oder Schlechtes widerfährt."
+    },
+    {
+      "id": "g3u05.w.to-ignore",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to attract",
+            "to enter",
+            "to scream",
+            "to shake"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB ('Ignore him – he's just being silly.'); 'being/silly' untaught → 'he just wants to scare you'."
+      },
+      "w": "to ignore",
+      "g": "ignorieren",
+      "d": "to take no notice of somebody, like they are not there.",
+      "s": "___ him — he just wants to scare you.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Ignore",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to ignore",
+          "tier": "full"
+        },
+        {
+          "text": "ignore",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to ignore",
+            "tier": "full"
+          },
+          {
+            "text": "ignore",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ignorieren",
+            "tier": "full"
+          },
+          {
+            "text": "nicht beachten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to attract",
+        "to enter",
+        "to scream"
+      ],
+      "hintDe": "Jemanden gar nicht beachten."
+    },
+    {
+      "id": "g3u05.w.to-make-a-wish",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to come true",
+            "to be unlucky",
+            "to ignore",
+            "to whistle"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from SB task 4 sentence 2 ('If you see a rainbow, you can make a wish.'); 'see/rainbow/maybe' untaught → reset to a birthday-candles context with taught words."
+      },
+      "w": "to make a wish",
+      "g": "sich etwas wünschen",
+      "d": "to close your eyes and hope for a thing you really want.",
+      "s": "Close your eyes and ___ on your birthday, then hope it comes true.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "make a wish",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to make a wish",
+          "tier": "full"
+        },
+        {
+          "text": "make a wish",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to make a wish",
+            "tier": "full"
+          },
+          {
+            "text": "make a wish",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich etwas wünschen",
+            "tier": "full"
+          },
+          {
+            "text": "sich was wünschen",
+            "tier": "full"
+          },
+          {
+            "text": "einen Wunsch äußern",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to come true",
+        "to be unlucky",
+        "to ignore"
+      ],
+      "hintDe": "Augen zu — und dir etwas wünschen."
+    },
+    {
+      "id": "g3u05.w.to-scream",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to whistle",
+            "to shake",
+            "to attract",
+            "to ignore"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idea from SB Scene 2 ('waking me up ... with your screams'); spider carrier mined from v1 with taught words."
+      },
+      "w": "to scream",
+      "g": "schreien",
+      "d": "to give a high cry because you are scared or hurt.",
+      "s": "She wanted to ___ when the big black spider came near.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "scream",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to scream",
+          "tier": "full"
+        },
+        {
+          "text": "scream",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to scream",
+            "tier": "full"
+          },
+          {
+            "text": "scream",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schreien",
+            "tier": "full"
+          },
+          {
+            "text": "aufschreien",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to whistle",
+        "to shake",
+        "to attract"
+      ],
+      "hintDe": "Laut aufschreien, weil du Angst hast."
+    },
+    {
+      "id": "g3u05.w.to-shake",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to whistle",
+            "to scream",
+            "to enter",
+            "to attract"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB MORE Words example ('I always shake the money in my pocket if I hear a cuckoo.'); 'hear' glossed (untaught); def avoids untaught 'move/hand/side'."
+      },
+      "w": "to shake",
+      "g": "schütteln",
+      "d": "to make a thing go up and down fast many times.",
+      "s": "I always ___ the money in my pocket if I hear a cuckoo.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "shake",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to shake",
+          "tier": "full"
+        },
+        {
+          "text": "shake",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to shake",
+            "tier": "full"
+          },
+          {
+            "text": "shake",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schütteln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hear",
+          "de": "hören",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to whistle",
+        "to scream",
+        "to enter"
+      ],
+      "hintDe": "Etwas schnell auf und ab bewegen."
+    },
+    {
+      "id": "g3u05.w.to-trick",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to enter",
+            "to attract",
+            "to whistle",
+            "to shake"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB China text ('Some homes in China have spirit screens to trick ghosts.'); 'and stop them' added in-bank."
+      },
+      "w": "to trick",
+      "g": "austricksen",
+      "d": "to make somebody think a lie is true.",
+      "s": "Some homes in China have spirit screens to ___ ghosts and stop them.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "trick",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to trick",
+          "tier": "full"
+        },
+        {
+          "text": "trick",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to trick",
+            "tier": "full"
+          },
+          {
+            "text": "trick",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "austricksen",
+            "tier": "full"
+          },
+          {
+            "text": "hereinlegen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to enter",
+        "to attract",
+        "to whistle"
+      ],
+      "hintDe": "Jemanden dazu bringen, eine Lüge zu glauben."
+    },
+    {
+      "id": "g3u05.w.to-whistle",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to scream",
+            "to shake",
+            "to enter",
+            "to attract"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB Norway text ('If you whistle when the sun is shining, it will shine for more than two hours.'); 'say/hours' untaught → 'people think ... all afternoon'; 'lips' glossed in def (untaught)."
+      },
+      "w": "to whistle",
+      "g": "pfeifen",
+      "d": "to make a high sound with your mouth.",
+      "s": "In Norway, people think that if you ___ when the sun shines, it will shine all afternoon.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "whistle",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to whistle",
+          "tier": "full"
+        },
+        {
+          "text": "whistle",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to whistle",
+            "tier": "full"
+          },
+          {
+            "text": "whistle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "pfeifen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to scream",
+        "to shake",
+        "to enter"
+      ],
+      "hintDe": "Mit dem Mund einen hohen Ton machen."
+    },
+    {
+      "id": "g3u05.w.to-wish-for-sth",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to come true",
+            "to make a wish",
+            "to bring (good/bad) luck",
+            "to have (good/bad) luck"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB task 4 sentence 4 ('They come true if you wish for something bad.'); 'wishes/only/ever/something' untaught → singular 'A dream comes true if you ___ a bad thing'."
+      },
+      "w": "to wish for sth.",
+      "g": "sich etw. wünschen",
+      "d": "to want a thing very much and to hope it happens.",
+      "s": "A dream comes true if you ___ a bad thing, but no one does that.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "wish for",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to wish for sth.",
+          "tier": "full"
+        },
+        {
+          "text": "wish for sth.",
+          "tier": "full"
+        },
+        {
+          "text": "to wish for",
+          "tier": "full"
+        },
+        {
+          "text": "wish for",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to wish for sth.",
+            "tier": "full"
+          },
+          {
+            "text": "wish for sth.",
+            "tier": "full"
+          },
+          {
+            "text": "to wish for something",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich etwas wünschen",
+            "tier": "full"
+          },
+          {
+            "text": "sich etw. wünschen",
+            "tier": "full"
+          },
+          {
+            "text": "sich was wünschen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to come true",
+        "to make a wish",
+        "to bring (good/bad) luck"
+      ],
+      "hintDe": "Sich etwas ganz fest wünschen."
+    },
+    {
+      "id": "g3u05.w.toothbrush",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "alarm clock",
+            "sleeping bag",
+            "lucky charm",
+            "salt"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB EXTRA example ('If you drop your toothbrush, you'll have to wash it.'); 'you'll/floor/use' untaught → 'on the ground, you have to wash it first'."
+      },
+      "w": "toothbrush",
+      "g": "Zahnbürste",
+      "d": "a small brush to clean your teeth.",
+      "s": "If you drop your ___ on the ground, you have to wash it first.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "toothbrush",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "toothbrush",
+          "tier": "full"
+        },
+        {
+          "text": "a toothbrush",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "toothbrush",
+            "tier": "full"
+          },
+          {
+            "text": "a toothbrush",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zahnbürste",
+            "tier": "full"
+          },
+          {
+            "text": "die Zahnbürste",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "alarm clock",
+        "sleeping bag",
+        "lucky charm"
+      ],
+      "hintDe": "Damit putzt du dir die Zähne."
+    },
+    {
+      "id": "g3u05.w.traditional",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "evil",
+            "spooky",
+            "obvious",
+            "satisfied"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB China text ('Traditional homes in China have large spirit screens.'); 'large' (untaught) → 'big'; 'screens' glossed; 'to trick' clause reworded to 'keep ghosts out'."
+      },
+      "w": "traditional",
+      "g": "traditionell",
+      "d": "done in this way for a very long time.",
+      "s": "___ homes in China have big spirit screens to keep ghosts out.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Traditional",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "traditional",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "traditional",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "traditionell",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "evil",
+        "spooky",
+        "obvious"
+      ],
+      "hintDe": "Seit langer Zeit auf die gleiche Weise gemacht."
+    },
+    {
+      "id": "g3u05.w.unlucky",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rich",
+            "spooky",
+            "obvious",
+            "evil"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB Italy text ('In Italy, the unlucky number is 17.'); 'and many people stay away from it' added in-bank."
+      },
+      "w": "unlucky",
+      "g": "unglücklich",
+      "d": "having or bringing bad luck.",
+      "s": "In Italy, the ___ number is 17, and many people stay away from it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "unlucky",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "unlucky",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "unlucky",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unglücklich",
+            "tier": "full"
+          },
+          {
+            "text": "glücklos",
+            "tier": "full"
+          },
+          {
+            "text": "Unglücks-",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rich",
+        "spooky",
+        "obvious"
+      ],
+      "hintDe": "Bringt Pech oder hat Pech."
+    }
+  ]
+}

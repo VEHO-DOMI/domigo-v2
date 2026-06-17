@@ -1,0 +1,2153 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g4-u08",
+  "briefBank": "c2962a2f7b3c",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setze die einfache Form von früher (2. Form) ein: I ___ (visit) my grandma last weekend.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "visited",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"last weekend\" ist eine abgeschlossene Zeit. Nimm die 2. Form (Past simple).",
+      "hintEn": null,
+      "explainDe": "Bei einem abgeschlossenen Zeitpunkt wie \"last weekend\" nimmst du das Past simple: \"visited\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-gf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "have/has + die 3. Form? Setze ein: I have ___ (collect) sand since 2019.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "collected",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"since 2019\" zeigt: bis jetzt. Nach \"have\" kommt die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Mit \"since\" und Gegenwartsbezug nimmst du have + 3. Form: \"have collected\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 8.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Das Wort der Vollendung mit \"just\" oder \"recently\": She has ___ joined our group. (gerade)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "just",
+          "tier": "full"
+        },
+        {
+          "text": "recently",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"gerade eben\" heißt hier \"just\". Es passt zu have/has + 3. Form.",
+      "hintEn": null,
+      "explainDe": "\"just\" (gerade) gehört zum Present perfect: \"has just joined\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-gf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze die richtige Form ein: We ___ (live) in Vienna for ten years.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have lived",
+          "tier": "full"
+        },
+        {
+          "text": "'ve lived",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"for ten years\" = eine offene Zeitspanne bis jetzt. Nimm have + 3. Form.",
+      "hintEn": null,
+      "explainDe": "\"for ten years\" reicht bis in die Gegenwart, darum Present perfect: \"have lived\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-gf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Seit Montag (since) — mit not: I ___ (not / visit) the library since Monday.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "haven't visited",
+          "tier": "full"
+        },
+        {
+          "text": "have not visited",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"since Monday\" reicht bis jetzt. Verneine mit haven't + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Mit \"since\" und Gegenwartsbezug: \"haven't visited\" (Present perfect, verneint).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-gf-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Abgeschlossene Zeit: The monk ___ (preserve) the books in 2013.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "preserved",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"in 2013\" ist ein abgeschlossener Zeitpunkt. Nimm die 2. Form.",
+      "hintEn": null,
+      "explainDe": "\"in 2013\" ist vorbei, darum Past simple: \"preserved\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 8.txt#10",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "for oder since? She has collected pictures ___ she was ten.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "since",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"she was ten\" ist ein Anfangspunkt, kein Zeitraum. Anfangspunkt = since.",
+      "hintEn": null,
+      "explainDe": "\"since\" steht vor einem Anfangspunkt (since she was ten); \"for\" stünde vor einer Spanne (for ten years).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "for oder since? He has played the guitar ___ three years.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "for",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"three years\" ist eine Zeitspanne. Zeitspanne = for.",
+      "hintEn": null,
+      "explainDe": "\"for\" steht vor einer Zeitspanne (for three years); \"since\" stünde vor einem Anfangspunkt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Zwei Lücken: She ___ (move) to London two years ago, and she ___ (live) there since then.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "moved | has lived",
+          "tier": "full"
+        },
+        {
+          "text": "moved | 's lived",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst \"two years ago\" (abgeschlossen → 2. Form), dann \"since then\" (bis jetzt → have/has + 3. Form).",
+      "hintEn": null,
+      "explainDe": "\"two years ago\" verlangt Past simple (moved); \"since then\" verlangt Present perfect (has lived).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-gf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Zwei Lücken: Last year the library ___ (rob), but the books ___ (not / turn) up since then.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was robbed | haven't turned",
+          "tier": "full"
+        },
+        {
+          "text": "was robbed | have not turned",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"Last year\" → abgeschlossen (2. Form, hier Passiv was robbed). \"since then\" → have/has + 3. Form.",
+      "hintEn": null,
+      "explainDe": "\"Last year\" verlangt Past simple (was robbed); \"since then\" verlangt Present perfect (haven't turned up).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 8.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Zwei Lücken (Frage + Antwort): ___ you ever ___ (collect) anything? — Yes, I ___ (collect) stones in 2013.",
+        "lang": "de",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "Have | collected | collected",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Erfahrungsfrage \"ever\" → Have + ... + 3. Form. Die Antwort \"in 2013\" → abgeschlossen, 2. Form.",
+      "hintEn": null,
+      "explainDe": "\"ever\" fragt nach Erfahrung (Have you ever collected ...?); \"in 2013\" ist abgeschlossen (collected, Past simple).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-gf-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 3
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setze die 2. Form ein: A few moments later I ___ (start) to play again.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "started",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das ist ein abgeschlossener Moment in der Vergangenheit. Nimm die 2. Form.",
+      "hintEn": null,
+      "explainDe": "Eine abgeschlossene Handlung von früher steht im Past simple: \"started\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 8.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Wähle die Zeit nach dem Signalwort: The judge ___ (arrive) recently, and the monk ___ (whisper) to him an hour ago.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "has arrived | whispered",
+          "tier": "full"
+        },
+        {
+          "text": "'s arrived | whispered",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"recently\" → have/has + 3. Form. \"an hour ago\" → abgeschlossen, 2. Form.",
+      "hintEn": null,
+      "explainDe": "\"recently\" gehört zum Present perfect (has arrived); \"an hour ago\" zum Past simple (whispered).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have never collected anything.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I have never collect anything.",
+        "I am never collecting anything.",
+        "I never collecting anything."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach \"have never\" kommt die 3. Form (bei collect ist das collected).",
+      "hintEn": null,
+      "explainDe": "\"never\" + Erfahrung = Present perfect: have never + 3. Form (collected).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I have never collect anything.",
+          "I am never collecting anything.",
+          "I never collecting anything.",
+          "I have never collected anything."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u8-tense-time-expression-review-mc-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welches Zeitwort passt NICHT zu have/has + 3. Form?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "yesterday",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "just",
+        "recently",
+        "never"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welches Wort zeigt eine abgeschlossene Zeit von früher?",
+      "hintEn": null,
+      "explainDe": "\"yesterday\" ist abgeschlossen und gehört zum Past simple, nicht zum Present perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "just",
+          "recently",
+          "never",
+          "yesterday"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u8-tense-time-expression-review-mc-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welches Wort passt? She has ___ collected sand for many years.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "recently",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "yesterday",
+        "ago",
+        "last year"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welches Wort passt zu have/has + 3. Form? Die anderen drei sind abgeschlossene Zeiten.",
+      "hintEn": null,
+      "explainDe": "\"recently\" gehört zum Present perfect; \"yesterday\", \"ago\" und \"last year\" sind abgeschlossen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "yesterday",
+          "ago",
+          "last year",
+          "recently"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist FALSCH?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have visited London last year.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I visited London last year.",
+        "I have just visited London.",
+        "I have recently visited London."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"last year\" ist abgeschlossen und darf nicht mit have/has + 3. Form stehen.",
+      "hintEn": null,
+      "explainDe": "\"last year\" verlangt das Past simple (visited). \"I have visited ... last year\" ist falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I visited London last year.",
+          "I have just visited London.",
+          "I have recently visited London.",
+          "I have visited London last year."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u8-tense-time-expression-review-mc-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Wähle das richtige Paar: I ___ here ___ 2019.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "have lived | since",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "have lived ... for",
+        "live ... since",
+        "lived ... since"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"2019\" ist ein Anfangspunkt → since. Und der Bezug bis jetzt verlangt have + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Vor einer Jahreszahl steht \"since\" (Anfangspunkt), und der Gegenwartsbezug verlangt \"have lived\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "have lived ... for",
+          "live ... since",
+          "lived ... since",
+          "have lived ... since"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u8-tense-time-expression-review-mc-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I have visited London last summer.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I visited London last summer.",
+          "tier": "full"
+        },
+        {
+          "text": "I visited London last summer",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"last summer\" ist abgeschlossen. Da darf kein have/has stehen.",
+      "hintEn": null,
+      "explainDe": "Bei \"last summer\" nimmst du das Past simple: \"I visited London last summer.\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-ec-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I live in this city since five years.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have lived in this city for five years.",
+          "tier": "full"
+        },
+        {
+          "text": "I've lived in this city for five years.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Dinge: \"since\" → \"for\" (fünf Jahre = Spanne) und der Gegenwartsbezug verlangt have + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Vor einer Spanne steht \"for\", und der Bezug bis jetzt verlangt das Present perfect: \"have lived ... for five years\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-ec-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: The judge has arrived two days ago.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The judge arrived two days ago.",
+          "tier": "full"
+        },
+        {
+          "text": "The judge arrived two days ago",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"two days ago\" ist abgeschlossen. Da darf kein has stehen, nur die 2. Form.",
+      "hintEn": null,
+      "explainDe": "\"ago\" zeigt eine abgeschlossene Zeit, darum Past simple: \"The judge arrived two days ago.\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-ec-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I am a collector since 2019.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have been a collector since 2019.",
+          "tier": "full"
+        },
+        {
+          "text": "I've been a collector since 2019.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"since 2019\" reicht bis jetzt. Mit \"since\" nimmst du have/has + 3. Form, nicht \"am\".",
+      "hintEn": null,
+      "explainDe": "Mit \"since\" und Gegenwartsbezug nimmst du das Present perfect: \"have been ... since 2019\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-ec-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Finde und verbessere den einen Fehler: She visited London ___ Monday.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "since",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor einem Anfangspunkt wie \"Monday\" steht nicht \"for\", sondern das andere Wort.",
+      "hintEn": null,
+      "explainDe": "Vor einem Anfangspunkt (Monday) steht \"since\", nicht \"for\".",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ändere den Zeitausdruck und passe die Zeit an: \"I visit the museum every Friday.\" → mit \"last Friday\": I ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "visited the museum last Friday",
+          "tier": "full"
+        },
+        {
+          "text": "I visited the museum last Friday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"last Friday\" ist abgeschlossen. Aus \"visit\" wird die 2. Form.",
+      "hintEn": null,
+      "explainDe": "\"last Friday\" verlangt das Past simple: \"visited the museum last Friday\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-tf-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Ändere den Zeitausdruck und passe die Zeit an: \"She collected stones last year.\" → mit \"recently\": She ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has recently collected stones",
+          "tier": "full"
+        },
+        {
+          "text": "She has recently collected stones.",
+          "tier": "full"
+        },
+        {
+          "text": "'s recently collected stones",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"recently\" verlangt have/has + 3. Form. Aus \"collected\" wird \"has collected\".",
+      "hintEn": null,
+      "explainDe": "\"recently\" gehört zum Present perfect: \"has recently collected\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-tf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Antworte deiner Freundin, wie lange du schon hier wohnst: \"I ___ (live) here ___ ten years.\"",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "have lived | for",
+          "tier": "full"
+        },
+        {
+          "text": "'ve lived | for",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"ten years\" ist eine Spanne (→ for), und der Bezug bis jetzt verlangt have + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Spanne = \"for\", Gegenwartsbezug = Present perfect: \"have lived ... for ten years\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-tf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Erzähle deinem Brieffreund, seit wann du den Mönch nicht gesehen hast: \"I ___ (not / visit) the monk ___ last Monday.\"",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "haven't visited | since",
+          "tier": "full"
+        },
+        {
+          "text": "have not visited | since",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"last Monday\" ist hier ein Anfangspunkt (→ since), und der Bezug bis jetzt verlangt haven't + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Anfangspunkt = \"since\", Gegenwartsbezug verneint = \"haven't visited ... since last Monday\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-tf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich wohne seit drei Jahren in Vienna.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have lived in Vienna for three years.",
+          "tier": "full"
+        },
+        {
+          "text": "I've lived in Vienna for three years.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"seit drei Jahren\" = eine Spanne. Im Englischen: have + 3. Form + for three years.",
+      "hintEn": null,
+      "explainDe": "Im Deutschen \"seit\", im Englischen aber Present perfect mit \"for\" (Spanne): \"have lived ... for three years\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich sammle Bücher, seit ich zehn war.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have collected books since I was ten.",
+          "tier": "full"
+        },
+        {
+          "text": "I've collected books since I was ten.",
+          "tier": "full"
+        },
+        {
+          "text": "I have collected books since I was ten",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"seit ich zehn war\" ist ein Anfangspunkt → since. Nimm have + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Anfangspunkt = \"since\", Gegenwartsbezug = Present perfect: \"have collected ... since I was ten\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Letztes Jahr besuchte ich das Kloster in Spain.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Last year I visited the monastery in Spain.",
+          "tier": "full"
+        },
+        {
+          "text": "I visited the monastery in Spain last year.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"Letztes Jahr\" ist abgeschlossen → 2. Form (visited).",
+      "hintEn": null,
+      "explainDe": "\"Last year\" ist abgeschlossen, darum Past simple: \"Last year I visited the monastery\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Ich sammle seit vielen Jahren Sand.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have collected sand for many years.",
+          "tier": "full"
+        },
+        {
+          "text": "I've collected sand for many years.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"have collected ... for many years\" heißt im Deutschen meist mit \"seit\".",
+      "hintEn": null,
+      "explainDe": "Das englische Present perfect mit \"for\" wird im Deutschen oft mit \"seit\" und Gegenwart übersetzt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: she / has / sand / for / collected / years / many",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has collected sand for many years.",
+          "tier": "full"
+        },
+        {
+          "text": "She has collected sand for many years",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "have/has + 3. Form + ... + for + Spanne. Fang mit dem Subjekt an.",
+      "hintEn": null,
+      "explainDe": "\"She has collected sand for many years.\" – have/has + 3. Form, dann \"for\" + Zeitspanne.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "have",
+          "has",
+          "saw",
+          "seen"
+        ],
+        "chipBudget": 12,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u8-tense-time-expression-review-sb-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: I / the / visited / last / library / weekend",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I visited the library last weekend.",
+          "tier": "full"
+        },
+        {
+          "text": "I visited the library last weekend",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"last weekend\" ist abgeschlossen → 2. Form (visited). Fang mit \"I\" an.",
+      "hintEn": null,
+      "explainDe": "\"I visited the library last weekend.\" – abgeschlossene Zeit, darum Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "have",
+          "has",
+          "saw",
+          "seen"
+        ],
+        "chipBudget": 12,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: the / robbed / monastery / two / ago / thieves / years",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The thieves robbed the monastery two years ago.",
+          "tier": "full"
+        },
+        {
+          "text": "The thieves robbed the monastery two years ago",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"two years ago\" ist abgeschlossen → 2. Form (robbed). Wer hat geraubt? Fang damit an.",
+      "hintEn": null,
+      "explainDe": "\"The thieves robbed the monastery two years ago.\" – \"ago\" verlangt das Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "have",
+          "has",
+          "saw",
+          "seen"
+        ],
+        "chipBudget": 12,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 8.txt#5",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satzanfang gehört zu welchem Satzende?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I have collected shells",
+          "right": "ever since I was small."
+        },
+        {
+          "left": "She has lived here",
+          "right": "for ten years."
+        },
+        {
+          "left": "He bought the painting",
+          "right": "at the auction last year."
+        },
+        {
+          "left": "We robbed the bank",
+          "right": "and then we ran away."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte auf das Zeitwort: \"since\"/\"for\" passen zu have/has + 3. Form, \"ago\"/\"last ...\" zur 2. Form.",
+      "hintEn": null,
+      "explainDe": "\"since 2019\"/\"for ten years\" gehören zum Present perfect; \"two years ago\"/\"last weekend\" zum Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-mt-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Frage passt zu welcher Antwort?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "How long have you collected sand?",
+          "right": "For many years."
+        },
+        {
+          "left": "When did you start your collection?",
+          "right": "Two years ago."
+        },
+        {
+          "left": "Where did you visit last summer?",
+          "right": "I visited Spain."
+        },
+        {
+          "left": "Have you collected anything recently?",
+          "right": "Yes, I have."
+        }
+      ],
+      "groups": [],
+      "hintDe": "\"How long ... have\" und \"recently\" gehören zur Gegenwartsform; \"When did\" und \"last summer\" zur 2. Form.",
+      "hintEn": null,
+      "explainDe": "Fragen mit \"have\" + Gegenwartsbezug bekommen Present-perfect-Antworten; Fragen mit \"did\" + abgeschlossener Zeit bekommen Past-simple-Antworten.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 8.txt#11",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Sortiere die Zeitwörter: Welche zeigen eine abgeschlossene Zeit, welche reichen bis jetzt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "yesterday / ago / last year",
+          "members": [
+            "yesterday",
+            "two years ago",
+            "last weekend",
+            "in 2013"
+          ]
+        },
+        {
+          "label": "since / for / recently",
+          "members": [
+            "since 2019",
+            "for ten years",
+            "recently",
+            "since Monday"
+          ]
+        }
+      ],
+      "hintDe": "Abgeschlossene Zeitpunkte gehören zur 2. Form; Wörter mit Gegenwartsbezug zu have/has + 3. Form.",
+      "hintEn": null,
+      "explainDe": "\"yesterday/ago/last ...\" sind abgeschlossen (Past simple); \"since/for/recently\" reichen bis jetzt (Present perfect).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-mt-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere die Wörter: einfache Form von früher (2. Form) oder Form mit have/has (3. Form)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "groups": [
+        {
+          "label": "visited / collected",
+          "members": [
+            "visited",
+            "collected",
+            "robbed",
+            "moved"
+          ]
+        },
+        {
+          "label": "have visited / have collected",
+          "members": [
+            "have visited",
+            "have collected",
+            "have robbed",
+            "have moved"
+          ]
+        }
+      ],
+      "pairs": [],
+      "hintDe": "Steht ein \"have/has\" davor? Dann ist es die 3. Form. Sonst die einfache 2. Form.",
+      "hintEn": null,
+      "explainDe": "Ohne Hilfsverb ist es die 2. Form (Past simple); mit \"have/has\" davor die 3. Form (Present perfect).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere die Wörter: stehen sie vor einer Spanne (for) oder vor einem Anfangspunkt (since)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "groups": [
+        {
+          "label": "for",
+          "members": [
+            "ten years",
+            "many years",
+            "three years",
+            "two weeks"
+          ]
+        },
+        {
+          "label": "since",
+          "members": [
+            "2019",
+            "Monday",
+            "I was ten",
+            "last year"
+          ]
+        }
+      ],
+      "pairs": [],
+      "hintDe": "Eine Dauer (zehn Jahre) steht hinter \"for\"; ein Startpunkt (2019, Montag) hinter \"since\".",
+      "hintEn": null,
+      "explainDe": "\"for\" steht vor einer Zeitspanne; \"since\" vor einem Anfangspunkt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sieh dir die Lage an: Anna sammelt Sand. Anna hat 2019 angefangen und sammelt heute noch. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has collected sand since 2019.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She collected sand since 2019.",
+        "She has collected sand in 2019.",
+        "She collected sand recently."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Handlung dauert bis heute an → have/has + 3. Form, und ein Anfangspunkt → since.",
+      "hintEn": null,
+      "explainDe": "Etwas, das in der Vergangenheit begann und noch andauert, steht im Present perfect mit \"since\": \"has collected ... since 2019\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She collected sand since 2019.",
+          "She has collected sand in 2019.",
+          "She collected sand recently.",
+          "She has collected sand since 2019."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u8-tense-time-expression-review-cp-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Deine Freundin erzählt von ihrer Reise. Letzte Woche war sie in London und ist jetzt wieder zu Hause. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I visited London last week.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I have visited London last week.",
+        "I have visited London recently.",
+        "I have lived in London since last week."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"last week\" ist abgeschlossen → 2. Form. Mit \"last week\" geht kein have/has.",
+      "hintEn": null,
+      "explainDe": "Bei der abgeschlossenen Zeit \"last week\" nimmst du das Past simple: \"I visited London last week.\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I have visited London last week.",
+          "I have visited London recently.",
+          "I have lived in London since last week.",
+          "I visited London last week."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u8-tense-time-expression-review-cp-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Der Bibliothekar arbeitet noch heute hier, und das schon lange. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has been a librarian for twenty years.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He was a librarian for twenty years.",
+        "He has been a librarian since twenty years.",
+        "He is a librarian since twenty years."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Er ist es noch immer → have/has + 3. Form. \"twenty years\" ist eine Spanne → for.",
+      "hintEn": null,
+      "explainDe": "Etwas, das andauert, steht im Present perfect; vor einer Spanne steht \"for\": \"has been ... for twenty years\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "He was a librarian for twenty years.",
+          "He has been a librarian since twenty years.",
+          "He is a librarian since twenty years.",
+          "He has been a librarian for twenty years."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bilde die Frage nach der Erfahrung: you / collect / anything (Erfahrung, schon einmal?)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you ever collected anything?",
+          "tier": "full"
+        },
+        {
+          "text": "Have you collected anything?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Erfahrungsfrage beginnt mit \"Have you ever\" + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Fragen nach Erfahrung stehen im Present perfect: \"Have you ever collected anything?\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 8.txt#11",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bilde die Frage nach einem abgeschlossenen Zeitpunkt: when / you / start / your collection",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When did you start your collection?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"When\" fragt nach einem abgeschlossenen Zeitpunkt → did + Grundform.",
+      "hintEn": null,
+      "explainDe": "Fragen nach einem genauen Zeitpunkt stehen im Past simple: \"When did you start ...?\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 8.txt#11",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bilde die Frage nach der Dauer bis jetzt: how long / you / collect / sand",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long have you collected sand?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"How long ... bis jetzt\" verlangt have/has + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Eine Frage nach der Dauer bis heute steht im Present perfect: \"How long have you collected ...?\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 8.txt#11",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setze die 2. Form ein: They ___ (rob) the bank last year.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "robbed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"last year\" ist abgeschlossen. Nimm die 2. Form.",
+      "hintEn": null,
+      "explainDe": "Bei \"last year\" nimmst du das Past simple: \"robbed\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "have/has + 3. Form: The monk ___ (live) in the monastery for many years.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has lived",
+          "tier": "full"
+        },
+        {
+          "text": "'s lived",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"for many years\" reicht bis jetzt. Bei \"he/she/it\" nimmst du has + 3. Form.",
+      "hintEn": null,
+      "explainDe": "\"for many years\" verlangt das Present perfect: \"has lived\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 8.txt#5",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wähle das Zeitwort: I have ___ looked at the collection. (gerade eben)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "just",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"gerade eben\" heißt \"just\" und steht bei \"I have looked\".",
+      "hintEn": null,
+      "explainDe": "\"just\" (gerade) gehört zum Present perfect. Beachte: \"just\" steht meist zwischen have und 3. Form (have just looked), am Satzende ist es aber auch verständlich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: She has collected stones last weekend.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She collected stones last weekend.",
+          "tier": "full"
+        },
+        {
+          "text": "She collected stones last weekend",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"last weekend\" ist abgeschlossen → kein has, nur die 2. Form.",
+      "hintEn": null,
+      "explainDe": "\"last weekend\" verlangt das Past simple: \"She collected stones last weekend.\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-ec-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Ich habe diesen Bibliothekar seit Montag nicht gesehen / besucht.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I haven't visited this librarian since Monday.",
+          "tier": "full"
+        },
+        {
+          "text": "I have not visited this librarian since Monday.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"seit Montag\" → since + Present perfect (verneint): haven't + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Mit \"since\" und Gegenwartsbezug nimmst du das verneinte Present perfect: \"haven't visited ... since Monday\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ändere den Zeitausdruck und passe die Zeit an: \"They rob a bank every year.\" → mit \"last year\": They ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "robbed a bank last year",
+          "tier": "full"
+        },
+        {
+          "text": "They robbed a bank last year.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"last year\" ist abgeschlossen → 2. Form (robbed).",
+      "hintEn": null,
+      "explainDe": "\"last year\" verlangt das Past simple: \"robbed a bank last year\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have lived in Vienna since 2019.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I have lived in Vienna in 2019.",
+        "I lived in Vienna since 2019.",
+        "I live in Vienna since 2019."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"since 2019\" reicht bis jetzt → have + 3. Form. \"in\" passt nicht zu \"since\".",
+      "hintEn": null,
+      "explainDe": "\"since 2019\" verlangt das Present perfect: \"have lived ... since 2019\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I have lived in Vienna in 2019.",
+          "I lived in Vienna since 2019.",
+          "I live in Vienna since 2019.",
+          "I have lived in Vienna since 2019."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u8-tense-time-expression-review-mc-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du fragst einen Freund nach seiner Erfahrung mit dem Sammeln. Welche Frage passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you ever collected anything?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Did you ever collected anything?",
+        "Have you collected anything yesterday?",
+        "Do you ever collected anything?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Erfahrungsfrage steht im Present perfect: \"Have you ever ...?\" + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Fragen nach Erfahrung ohne genaue Zeit stehen im Present perfect: \"Have you ever collected anything?\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Did you ever collected anything?",
+          "Have you collected anything yesterday?",
+          "Do you ever collected anything?",
+          "Have you ever collected anything?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 8.txt#11",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welches Zeitwort gehört zu have/has + 3. Form und bedeutet \"vor Kurzem\"? Ordne die Buchstaben: y t l n e e c r",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "recently",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es bedeutet \"vor Kurzem\" und passt zum Present perfect.",
+      "hintEn": null,
+      "explainDe": "\"recently\" (vor Kurzem) gehört zu have/has + 3. Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Setze die 2. Form ein: I ___ (look) at the rare books in the library yesterday.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "looked",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"yesterday\" ist abgeschlossen. Nimm die 2. Form.",
+      "hintEn": null,
+      "explainDe": "Bei \"yesterday\" nimmst du das Past simple: \"looked\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Zwei Lücken: He ___ (collect) tickets since he was ten, and last year he ___ (join) a club for collectors.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "has collected | joined",
+          "tier": "full"
+        },
+        {
+          "text": "'s collected | joined",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"since he was ten\" → have/has + 3. Form. \"last year\" → abgeschlossen, 2. Form.",
+      "hintEn": null,
+      "explainDe": "\"since he was ten\" verlangt das Present perfect (has collected); \"last year\" das Past simple (joined).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I have lived here for I was a child.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have lived here since I was a child.",
+          "tier": "full"
+        },
+        {
+          "text": "I've lived here since I was a child.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"I was a child\" ist ein Anfangspunkt. Vor einem Anfangspunkt steht nicht \"for\".",
+      "hintEn": null,
+      "explainDe": "Vor einem Anfangspunkt (\"I was a child\") steht \"since\", nicht \"for\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-ec-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u08.s.tense-time-expression-review",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Mia zog vor zwei Jahren nach London und wohnt seitdem dort.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mia moved to London two years ago and has lived there since then.",
+          "tier": "full"
+        },
+        {
+          "text": "Mia moved to London two years ago and she has lived there since then.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst \"vor zwei Jahren\" (abgeschlossen → 2. Form moved), dann \"seitdem\" (bis jetzt → has lived).",
+      "hintEn": null,
+      "explainDe": "\"vor zwei Jahren\" verlangt Past simple (moved); \"seitdem\" verlangt Present perfect (has lived since then).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u8-tense-time-expression-review-gf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    }
+  ]
+}

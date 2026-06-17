@@ -1,0 +1,25 @@
+{
+  "schema": "structure-ids-lock@1",
+  "grade": 3,
+  "structures": {
+    "present-simple": "g3u01.s.present-simple",
+    "past-continuous": "g3u02.s.past-continuous",
+    "time-connectors": "g3u03.s.time-connectors",
+    "it-takes": "g3u03.s.it-takes",
+    "comparative-intensifiers": "g3u04.s.comparative-intensifiers",
+    "first-conditional": "g3u05.s.first-conditional",
+    "unless": "g3u05.s.unless",
+    "relative-clauses": "g3u06.s.relative-clauses",
+    "present-perfect-for-since": "g3u07.s.present-perfect-for-since",
+    "past-simple-vs-present-perfect": "g3u08.s.past-simple-vs-present-perfect",
+    "be-allowed-to": "g3u09.s.be-allowed-to",
+    "let": "g3u09.s.let",
+    "could-was-able-to": "g3u10.s.could-was-able-to",
+    "be-allowed-to-tenses": "g3u10.s.be-allowed-to-tenses",
+    "present-perfect-continuous": "g3u11.s.present-perfect-continuous",
+    "passive-voice": "g3u12.s.passive-voice",
+    "second-conditional": "g3u13.s.second-conditional",
+    "going-to-evidence": "g3u14.s.going-to-evidence"
+  },
+  "tombstones": []
+}

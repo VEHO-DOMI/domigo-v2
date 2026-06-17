@@ -1,0 +1,2284 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g4-u01",
+  "briefBank": "05dcb9424620",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g4u01.w.be-aware-of-sth",
+      "w": "be aware of sth",
+      "g": "sich etw. bewusst sein",
+      "d": "to know that a thing is happening or true",
+      "s": "I wasn't ___ of that.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "aware",
+          "tier": "full"
+        },
+        {
+          "text": "aware of",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be aware of sth",
+          "tier": "full"
+        },
+        {
+          "text": "be aware of something",
+          "tier": "full"
+        },
+        {
+          "text": "be aware of",
+          "tier": "full"
+        },
+        {
+          "text": "aware",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be aware of sth",
+            "tier": "full"
+          },
+          {
+            "text": "be aware of something",
+            "tier": "full"
+          },
+          {
+            "text": "to know about something",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich etw. bewusst sein",
+            "tier": "full"
+          },
+          {
+            "text": "sich einer Sache bewusst sein",
+            "tier": "full"
+          },
+          {
+            "text": "über etw. Bescheid wissen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "independent",
+        "fluent",
+        "proper"
+      ],
+      "hintDe": "Du weißt etwas und hast es im Kopf.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "independent",
+          "fluent",
+          "proper",
+          "leading",
+          "improve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.catholic",
+      "w": "Catholic",
+      "g": "katholisch",
+      "d": "belonging to the church that has its head in Rome",
+      "s": "Most people in the Republic of Ireland are ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Catholics",
+          "tier": "full"
+        },
+        {
+          "text": "Catholic",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Catholic",
+          "tier": "full"
+        },
+        {
+          "text": "Catholics",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Catholic",
+            "tier": "full"
+          },
+          {
+            "text": "a Catholic",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "katholisch",
+            "tier": "full"
+          },
+          {
+            "text": "Katholik",
+            "tier": "full"
+          },
+          {
+            "text": "Katholikin",
+            "tier": "full"
+          },
+          {
+            "text": "Katholik/in",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "independent",
+        "fluent",
+        "leading"
+      ],
+      "hintDe": "Diese Leute gehen in eine Kirche, deren Oberhaupt in Rom sitzt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "independent",
+          "fluent",
+          "leading",
+          "proper",
+          "foreigner"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.fluent",
+      "w": "fluent",
+      "g": "fließend",
+      "d": "good at speaking a foreign language very well",
+      "s": "She speaks ___ English.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fluent",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fluent",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fluent",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fließend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "independent",
+        "leading",
+        "proper"
+      ],
+      "hintDe": "Du sprichst eine Sprache sehr gut und ohne Mühe.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "independent",
+          "leading",
+          "proper",
+          "Catholic",
+          "improve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.independent",
+      "w": "independent",
+      "g": "unabhängig",
+      "d": "free; a country that rules its own land",
+      "s": "The Republic of Ireland is an ___ country.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "independent",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "independent",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "independent",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unabhängig",
+            "tier": "full"
+          },
+          {
+            "text": "selbstständig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fluent",
+        "leading",
+        "proper"
+      ],
+      "hintDe": "Ein Land, das frei ist und sich selbst regiert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fluent",
+          "leading",
+          "proper",
+          "Catholic",
+          "free state"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.leading",
+      "w": "leading",
+      "g": "führend",
+      "d": "the biggest and best in a job or group",
+      "s": "She is one of the ___ singers of her time.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "leading",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "leading",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "leading",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "führend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fluent",
+        "independent",
+        "proper"
+      ],
+      "hintDe": "Die Besten und Wichtigsten in ihrem Bereich.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fluent",
+          "independent",
+          "proper",
+          "Catholic",
+          "improve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.member",
+      "w": "member",
+      "g": "Mitglied",
+      "d": "somebody who belongs to a group or band",
+      "s": "She is a ___ of our band.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "member",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "member",
+          "tier": "full"
+        },
+        {
+          "text": "members",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "member",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mitglied",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "foreigner",
+        "landlord",
+        "government"
+      ],
+      "hintDe": "So nennst du jemanden, der zu einer Gruppe gehört.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "foreigner",
+          "landlord",
+          "government",
+          "majority",
+          "leading"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.primary-school",
+      "w": "primary school",
+      "g": "Volksschule",
+      "d": "the place where the youngest children read and write",
+      "s": "Children from six to ten years old go to ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "primary school",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "primary school",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "primary school",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Volksschule",
+            "tier": "full"
+          },
+          {
+            "text": "Grundschule",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "government",
+        "free state",
+        "landlord"
+      ],
+      "hintDe": "Die erste Schule für die jüngsten Kinder.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "government",
+          "free state",
+          "landlord",
+          "member",
+          "majority"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.cattle",
+      "w": "cattle",
+      "g": "Rinder",
+      "d": "what a farmer keeps in the fields to give us milk and meat",
+      "s": "He keeps horses and ___ on his farm.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cattle",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cattle",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cattle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rinder",
+            "tier": "full"
+          },
+          {
+            "text": "Vieh",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "crop",
+        "grain",
+        "fungus"
+      ],
+      "hintDe": "Diese großen Tiere stehen auf der Weide und geben Milch und Fleisch.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "crop",
+          "grain",
+          "fungus",
+          "famine",
+          "tax"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.cheer",
+      "w": "cheer",
+      "g": "jubeln",
+      "d": "to make a happy noise for a group you like",
+      "s": "The crowd will ___ when the band comes on stage.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cheer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cheer",
+          "tier": "full"
+        },
+        {
+          "text": "cheered",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cheer",
+            "tier": "full"
+          },
+          {
+            "text": "to cheer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jubeln",
+            "tier": "full"
+          },
+          {
+            "text": "anfeuern",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "admire",
+        "improve",
+        "interfere"
+      ],
+      "hintDe": "Du machst laute, fröhliche Geräusche für deine Mannschaft.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "admire",
+          "improve",
+          "interfere",
+          "starve",
+          "found"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.crop",
+      "w": "crop",
+      "g": "Ernte",
+      "d": "the food a farmer brings in from the fields in one year",
+      "s": "In 1845, the potato ___ in Ireland was destroyed.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "crop",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crop",
+          "tier": "full"
+        },
+        {
+          "text": "crops",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crop",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ernte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "grain",
+        "cattle",
+        "famine"
+      ],
+      "hintDe": "Das, was der Bauer im Jahr von den Feldern holt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "grain",
+          "cattle",
+          "famine",
+          "fungus",
+          "tax"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.famine",
+      "w": "famine",
+      "g": "Hungersnot",
+      "d": "a time when many people have no food and die",
+      "s": "In a ___, people die because they have nothing to eat.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "famine",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "famine",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "famine",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hungersnot",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "incident",
+        "crop",
+        "fungus"
+      ],
+      "hintDe": "Eine schlimme Zeit, in der die Menschen nichts zu essen haben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "incident",
+          "crop",
+          "fungus",
+          "thunder",
+          "tax"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.found",
+      "w": "found",
+      "g": "gründen",
+      "d": "to begin a new country, group or city",
+      "s": "The Irish Republic was ___ in 1922.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "founded",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "found",
+          "tier": "full"
+        },
+        {
+          "text": "founded",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "found",
+            "tier": "full"
+          },
+          {
+            "text": "to found",
+            "tier": "full"
+          },
+          {
+            "text": "set up",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gründen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "improve",
+        "interfere",
+        "admire"
+      ],
+      "hintDe": "Etwas Neues ins Leben rufen, zum Beispiel einen Staat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "improve",
+          "interfere",
+          "admire",
+          "cheer",
+          "starve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.free-state",
+      "w": "free state",
+      "g": "Freistaat",
+      "d": "a land that rules its own people and makes its own laws",
+      "s": "Ireland was now a ___, free to rule its own land.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "free state",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "free state",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "free state",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Freistaat",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "government",
+        "primary school",
+        "majority"
+      ],
+      "hintDe": "Ein freies Land, das seine eigenen Gesetze macht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "government",
+          "primary school",
+          "majority",
+          "member",
+          "landlord"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.fungus",
+      "w": "fungus",
+      "g": "Pilz",
+      "d": "a small living thing that can destroy a crop",
+      "s": "A ___ destroyed all the potatoes in Ireland.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fungus",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fungus",
+          "tier": "full"
+        },
+        {
+          "text": "fungi",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fungus",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pilz",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "crop",
+        "grain",
+        "cattle"
+      ],
+      "hintDe": "Ein kleines Lebewesen, das die Ernte kaputt machen kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "crop",
+          "grain",
+          "cattle",
+          "famine",
+          "thunder"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.government",
+      "w": "government",
+      "g": "Regierung",
+      "d": "the people who control a country and make its laws",
+      "s": "The ___ makes the laws for the whole country.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "government",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "government",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "government",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Regierung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "majority",
+        "member",
+        "free state"
+      ],
+      "hintDe": "Die Leute, die ein Land lenken und die Gesetze machen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "majority",
+          "member",
+          "free state",
+          "landlord",
+          "primary school"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.grain",
+      "w": "grain",
+      "g": "Getreide",
+      "d": "food like rice from the fields that we make bread from",
+      "s": "You can make bread from ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "grain",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "grain",
+          "tier": "full"
+        },
+        {
+          "text": "grains",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "grain",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Getreide",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "crop",
+        "cattle",
+        "fungus"
+      ],
+      "hintDe": "Daraus macht man Brot; es wächst auf den Feldern.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "crop",
+          "cattle",
+          "fungus",
+          "famine",
+          "tax"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.incident",
+      "w": "incident",
+      "g": "Zwischenfall",
+      "d": "a thing that happens, usually a bad one",
+      "s": "There was a serious ___ at school today.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "incident",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "incident",
+          "tier": "full"
+        },
+        {
+          "text": "incidents",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "incident",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zwischenfall",
+            "tier": "full"
+          },
+          {
+            "text": "Vorfall",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "famine",
+        "intention",
+        "majority"
+      ],
+      "hintDe": "Etwas, das passiert, meistens etwas Unangenehmes.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "famine",
+          "intention",
+          "majority",
+          "thunder",
+          "government"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.intention",
+      "w": "intention",
+      "g": "Absicht",
+      "d": "the thing you want to do",
+      "s": "It was never my ___ to hurt you.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "intention",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "intention",
+          "tier": "full"
+        },
+        {
+          "text": "intentions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "intention",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Absicht",
+            "tier": "full"
+          },
+          {
+            "text": "Vorhaben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "incident",
+        "majority",
+        "government"
+      ],
+      "hintDe": "Das, was du tun willst oder vorhast.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "incident",
+          "majority",
+          "government",
+          "famine",
+          "member"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.interfere",
+      "w": "interfere",
+      "g": "sich einmischen",
+      "d": "to take part in a thing that is not yours, where you are not wanted",
+      "s": "Please don't ___ when I am talking to my friends.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "interfere",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "interfere",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "interfere",
+            "tier": "full"
+          },
+          {
+            "text": "to interfere",
+            "tier": "full"
+          },
+          {
+            "text": "get involved",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich einmischen",
+            "tier": "full"
+          },
+          {
+            "text": "in Konflikt geraten",
+            "tier": "full"
+          },
+          {
+            "text": "sich einschalten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "admire",
+        "improve",
+        "found"
+      ],
+      "hintDe": "Du mischst dich in etwas ein, das dich nichts angeht.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "admire",
+          "improve",
+          "found",
+          "cheer",
+          "starve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.landlord",
+      "w": "landlord",
+      "g": "Grundbesitzer",
+      "d": "a man who owns land or a house and rents it to people",
+      "s": "Our ___ owns the house where we live.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "landlord",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "landlord",
+          "tier": "full"
+        },
+        {
+          "text": "landlords",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "landlord",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Grundbesitzer",
+            "tier": "full"
+          },
+          {
+            "text": "Vermieter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "foreigner",
+        "member",
+        "government"
+      ],
+      "hintDe": "Ihm gehört das Land oder das Haus, in dem andere wohnen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "foreigner",
+          "member",
+          "government",
+          "majority",
+          "free state"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.majority",
+      "w": "majority",
+      "g": "Mehrheit",
+      "d": "the most people in a group",
+      "s": "Most of the people in the north were Protestant. They were the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "majority",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "majority",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "majority",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mehrheit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "member",
+        "government",
+        "foreigner"
+      ],
+      "hintDe": "Mehr als die Hälfte der Leute in einer Gruppe.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "member",
+          "government",
+          "foreigner",
+          "landlord",
+          "intention"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.put-down",
+      "w": "put down",
+      "g": "niederschlagen",
+      "d": "to use the army to stop a rebellion",
+      "s": "The army ___ the rebellion in the capital.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "put down",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "put down",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "put down",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "niederschlagen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "interfere",
+        "found",
+        "admire"
+      ],
+      "hintDe": "Mit Gewalt einen Aufstand stoppen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "interfere",
+          "found",
+          "admire",
+          "improve",
+          "cheer"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.shake-hands",
+      "w": "shake hands",
+      "g": "Hände schütteln",
+      "d": "to hold and move somebody's fingers up and down when you meet",
+      "s": "When you meet, it is good to ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "shake hands",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shake hands",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shake hands",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hände schütteln",
+            "tier": "full"
+          },
+          {
+            "text": "die Hand geben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "interfere",
+        "cheer",
+        "admire"
+      ],
+      "hintDe": "Zur Begrüßung nimmst du die Hand der anderen Person und bewegst sie auf und ab.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "interfere",
+          "cheer",
+          "admire",
+          "found",
+          "improve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.starve",
+      "w": "starve",
+      "g": "verhungern",
+      "d": "to be very ill or die because you have no food",
+      "s": "The people had nothing to eat. They were ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "starving",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "starve",
+          "tier": "full"
+        },
+        {
+          "text": "starving",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "starve",
+            "tier": "full"
+          },
+          {
+            "text": "to starve",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verhungern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "interfere",
+        "improve",
+        "cheer"
+      ],
+      "hintDe": "Krank werden oder sterben, weil man kein Essen hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "interfere",
+          "improve",
+          "cheer",
+          "found",
+          "admire"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.guess",
+      "w": "Guess!",
+      "g": "Rate!",
+      "d": "to find out a thing on your own, with no help",
+      "s": "I have a secret. ___ what it is!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Guess",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Guess",
+          "tier": "full"
+        },
+        {
+          "text": "guess",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Guess!",
+            "tier": "full"
+          },
+          {
+            "text": "Guess",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rate!",
+            "tier": "full"
+          },
+          {
+            "text": "Rate mal!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cheer",
+        "admire",
+        "improve"
+      ],
+      "hintDe": "Finde es selbst heraus, ohne dass dir jemand hilft!",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cheer",
+          "admire",
+          "improve",
+          "interfere",
+          "found"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.i-d-rather",
+      "w": "I'd rather",
+      "g": "Ich möchte eher",
+      "d": "used when you like one thing more than the second one",
+      "s": "___ stay at home than go on holiday this year.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "I'd rather",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "I'd rather",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "I'd rather",
+            "tier": "full"
+          },
+          {
+            "text": "I would rather",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich möchte eher",
+            "tier": "full"
+          },
+          {
+            "text": "Ich würde lieber",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Guess!",
+        "improve",
+        "admire"
+      ],
+      "hintDe": "Du sagst das, wenn du das eine lieber willst als das andere.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Guess!",
+          "improve",
+          "admire",
+          "cheer",
+          "interfere"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.foreigner",
+      "w": "foreigner",
+      "g": "Ausländer/-in",
+      "d": "somebody who is from a far away country",
+      "s": "Our city is home to many ___ from far away.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "foreigners",
+          "tier": "full"
+        },
+        {
+          "text": "foreigner",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "foreigner",
+          "tier": "full"
+        },
+        {
+          "text": "foreigners",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "foreigner",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ausländer",
+            "tier": "full"
+          },
+          {
+            "text": "Ausländerin",
+            "tier": "full"
+          },
+          {
+            "text": "Ausländer/-in",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "member",
+        "landlord",
+        "government"
+      ],
+      "hintDe": "Jemand, der aus einem weit entfernten Land kommt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "member",
+          "landlord",
+          "government",
+          "majority",
+          "Catholic"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.improve",
+      "w": "improve",
+      "g": "verbessern",
+      "d": "to make your work or English good when it was not good before",
+      "s": "He reads English books to ___ his English.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "improve",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "improve",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "improve",
+            "tier": "full"
+          },
+          {
+            "text": "to improve",
+            "tier": "full"
+          },
+          {
+            "text": "get better",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verbessern",
+            "tier": "full"
+          },
+          {
+            "text": "besser machen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "admire",
+        "interfere",
+        "found"
+      ],
+      "hintDe": "Etwas besser machen als vorher.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "admire",
+          "interfere",
+          "found",
+          "cheer",
+          "starve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.tax",
+      "w": "tax",
+      "g": "Steuer",
+      "d": "money that people must pay to the government",
+      "s": "Everyone in the country has to pay ___ to the government.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "taxes",
+          "tier": "full"
+        },
+        {
+          "text": "tax",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tax",
+          "tier": "full"
+        },
+        {
+          "text": "taxes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tax",
+            "tier": "full"
+          },
+          {
+            "text": "taxes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Steuer",
+            "tier": "full"
+          },
+          {
+            "text": "Steuern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "crop",
+        "grain",
+        "majority"
+      ],
+      "hintDe": "Geld, das die Leute an den Staat zahlen müssen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "crop",
+          "grain",
+          "majority",
+          "government",
+          "member"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.hiking",
+      "w": "hiking",
+      "g": "Wandern",
+      "d": "going on a long walk in the hills or mountains for fun",
+      "s": "National Parks are always great places for ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hiking",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hiking",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hiking",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wandern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "improve",
+        "admire",
+        "cheer"
+      ],
+      "hintDe": "Lange Wanderungen in den Bergen, zum Spaß.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "improve",
+          "admire",
+          "cheer",
+          "interfere",
+          "starve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.proper",
+      "w": "proper",
+      "g": "richtig",
+      "d": "good and right for what you need",
+      "s": "That's not a ___ job. Do it again!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "proper",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "proper",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "proper",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "richtig",
+            "tier": "full"
+          },
+          {
+            "text": "angemessen",
+            "tier": "full"
+          },
+          {
+            "text": "ordentlich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fluent",
+        "independent",
+        "leading"
+      ],
+      "hintDe": "Gut und passend für das, was du brauchst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fluent",
+          "independent",
+          "leading",
+          "Catholic",
+          "improve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.admire",
+      "w": "admire",
+      "g": "bewundern",
+      "d": "to think somebody is very good and look up to them",
+      "s": "They all ___ the brave singer.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "admired",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "admire",
+          "tier": "full"
+        },
+        {
+          "text": "admired",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "admire",
+            "tier": "full"
+          },
+          {
+            "text": "to admire",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bewundern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "improve",
+        "interfere",
+        "cheer"
+      ],
+      "hintDe": "Jemanden toll finden und zu ihm aufschauen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "improve",
+          "interfere",
+          "cheer",
+          "found",
+          "starve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.be-terrified",
+      "w": "be terrified",
+      "g": "fürchterliche Angst haben",
+      "d": "to be very, very scared",
+      "s": "Scared? I was absolutely ___!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "terrified",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be terrified",
+          "tier": "full"
+        },
+        {
+          "text": "terrified",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be terrified",
+            "tier": "full"
+          },
+          {
+            "text": "terrified",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fürchterliche Angst haben",
+            "tier": "full"
+          },
+          {
+            "text": "schreckliche Angst haben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fluent",
+        "independent",
+        "proper"
+      ],
+      "hintDe": "Ganz fürchterliche Angst haben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fluent",
+          "independent",
+          "proper",
+          "leading",
+          "Catholic"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.nonsense",
+      "w": "nonsense",
+      "g": "Unsinn",
+      "d": "rubbish that is not true at all",
+      "s": "That is just ___! It is not true at all.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "nonsense",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nonsense",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nonsense",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Unsinn",
+            "tier": "full"
+          },
+          {
+            "text": "Quatsch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "intention",
+        "incident",
+        "majority"
+      ],
+      "hintDe": "Dummes Zeug, das überhaupt nicht stimmt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "intention",
+          "incident",
+          "majority",
+          "government",
+          "thunder"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.thunder",
+      "w": "thunder",
+      "g": "Donner",
+      "d": "the big noise in the sky in a storm, after the flash of light",
+      "s": "After the flash of light came the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "thunder",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thunder",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thunder",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Donner",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fungus",
+        "incident",
+        "famine"
+      ],
+      "hintDe": "Das laute Grollen am Himmel im Gewitter, nach dem Blitz.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "fungus",
+          "incident",
+          "famine",
+          "crop",
+          "nonsense"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u01.w.unconscious",
+      "w": "unconscious",
+      "g": "bewusstlos",
+      "d": "not awake, like after an accident",
+      "s": "She was ___ for three days after the accident.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "unconscious",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "unconscious",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "unconscious",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bewusstlos",
+            "tier": "full"
+          },
+          {
+            "text": "unbewusst",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fluent",
+        "independent",
+        "proper"
+      ],
+      "hintDe": "Nicht wach, zum Beispiel nach einem Unfall.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fluent",
+          "independent",
+          "proper",
+          "leading",
+          "be terrified"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

@@ -1,0 +1,756 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u09",
+  "round": 1,
+  "itemsHash": "ba1d244426bd",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "lens-warn:g1u09.w.box#distractor-plausible-correct",
+      "kind": "lens-warn",
+      "itemId": "g1u09.w.box",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.across",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.across",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.basket",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.basket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.bat",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.bat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.beginning",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.beginning",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.box",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.box",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.budgie",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.budgie",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.cage",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.cage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.camel",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.camel",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.cuddly-toy",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.cuddly-toy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.dangerous",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.dangerous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.dear",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.dear",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.ending",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.ending",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.far-away",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.far-away",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.farm",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.farm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.fish",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.fish",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.fur",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.fur",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.grandpa",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.grandpa",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.letter",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.letter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.lizard",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.lizard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.mouse",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.mouse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.near",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.near",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.newspaper",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.newspaper",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.noise",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.noise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.owl",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.owl",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.owner",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.owner",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.personal",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.personal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.pig",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.pig",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.pony",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.pony",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.rabbit",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.rabbit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.rat",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.rat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.shark",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.shark",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.tank",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.tank",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.terrarium",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.terrarium",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.to-be-interested-in",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.to-be-interested-in",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.to-begin",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.to-begin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.tortoise",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.tortoise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.unusual",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.unusual",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.w.zebra",
+      "kind": "new-gloss",
+      "itemId": "g1u09.w.zebra",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u09.gi.possessive-s.gf.007",
+      "kind": "new-gloss",
+      "itemId": "g1u09.gi.possessive-s.gf.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.a-day",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.a-day",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.a-week",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.a-week",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.across",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.across",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.aunty",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.aunty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.basket",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.basket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.bat",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.bat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.beginning",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.beginning",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.best-wishes",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.best-wishes",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.box",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.box",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.budgie",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.budgie",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.cage",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.cage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.camel",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.camel",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.cuddly-toy",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.cuddly-toy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.dangerous",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.dangerous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.daughter",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.daughter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.dear",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.dear",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.elephant",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.elephant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.ending",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.ending",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.everybody",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.everybody",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.far-away",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.far-away",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.farm",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.farm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.fish",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.fish",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.fur",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.fur",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.grandpa",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.grandpa",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.guinea-pig",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.guinea-pig",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.letter",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.letter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.lizard",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.lizard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.man",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.man",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.mother",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.mother",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.mouse",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.mouse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.mouse-2",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.mouse-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.near",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.near",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.newspaper",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.newspaper",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.noise",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.noise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.once",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.once",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.owl",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.owl",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.owner",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.owner",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.personal",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.personal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.pig",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.pig",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.pony",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.pony",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.rabbit",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.rabbit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.rat",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.rat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.shark",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.shark",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.spider",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.spider",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.tank",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.tank",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.terrarium",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.terrarium",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.to-be-interested-in",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.to-be-interested-in",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.to-begin",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.to-begin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.to-bite",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.to-bite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.to-drive",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.to-drive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.to-need",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.to-need",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.to-stay",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.to-stay",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.to-visit",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.to-visit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.tortoise",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.tortoise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.twice",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.twice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.unusual",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.unusual",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.w.zebra",
+      "kind": "translation-audit",
+      "itemId": "g1u09.w.zebra",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.gi.irregular-plurals-3.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u09.gi.irregular-plurals-3.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.gi.object-pronouns.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u09.gi.object-pronouns.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.gi.object-pronouns.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u09.gi.object-pronouns.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.gi.possessive-s.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u09.gi.possessive-s.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.gi.possessive-s.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g1u09.gi.possessive-s.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.gi.question-words.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u09.gi.question-words.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u09.gi.question-words.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u09.gi.question-words.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u09.w.bat#68e1d1",
+      "kind": "validator-warn",
+      "itemId": "g1u09.w.bat",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 146 rows. The 4 verify lenses are clean after fixes: translation 0; register 0 (8 prompts/hints reworded off DE category terms — Mehrzahl/Objektform/Fürwort/\"Besitz mit 's\" → plain German; der Verb → das Verb in question-words.cp.001 hintDe); level-gloss false-positives (\"bed\") confirmed TAUGHT via probe-gate; answers 1 accepted warn. Judgment calls: (1) box.mc distractor \"tank\" kept — every in-bank container (cage/basket/terrarium) is equally plausible for a spider and the unit explicitly teaches the spider lives in a box, so no clearly-wrong replacement exists; (2) bat.hintDe sentence-initial \"Sie\" = \"she\" (the bat), not formal address; (3) terrarium.mc \"tank\" → \"basket\" (a glass tank is a genuine lizard habitat → was a real second-correct option). Glosses are German-correct, translations faithful and natural (du-register, correct genders/cases), distractors in-bank and genuinely wrong, deliberate error-forms (Toms, ponys) audited-granted with no orphans. 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 146,
+    "fullRows": 146,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

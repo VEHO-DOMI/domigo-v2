@@ -1,0 +1,1461 @@
+{
+  "schema": "grammar-structures@1",
+  "grade": 3,
+  "structures": [
+    {
+      "id": "g3u01.s.present-simple",
+      "key": "present-simple",
+      "unit": 1,
+      "name": "Present simple (revision)",
+      "nameDe": "Present simple (Wiederholung)",
+      "category": "tenses",
+      "description": "Revision of the present simple for opinions, facts and habits, with the negative (don't/doesn't) and the third-person -s carried over from earlier grades. The unit-1 box also recaps how present and past simple form negatives and questions with do/does/did.",
+      "rules": [
+        {
+          "id": "use-opinion-facts-habits",
+          "en": "Use the present simple to give an opinion, to talk about facts, or to talk about habits and things you do regularly.",
+          "de": "Du verwendest das Present simple, um eine Meinung auszudrücken, über Tatsachen zu sprechen oder über Gewohnheiten und Dinge, die du regelmäßig tust.",
+          "examples": [
+            {
+              "en": "I think Madonna is one of the greatest.",
+              "de": "Ich finde, Madonna ist eine der Größten."
+            },
+            {
+              "en": "I usually buy two or three records a week.",
+              "de": "Normalerweise kaufe ich zwei oder drei Schallplatten pro Woche."
+            }
+          ]
+        },
+        {
+          "id": "form-third-person-s",
+          "en": "Form it with person + verb, and add -s for the third person singular (he/she/it).",
+          "de": "Du bildest es mit Person + Verb und hängst in der 3. Person Einzahl (he/she/it) ein -s an.",
+          "examples": [
+            {
+              "en": "I like songs with a good tune.",
+              "de": "Ich mag Lieder mit einer schönen Melodie."
+            },
+            {
+              "en": "She writes some brilliant songs.",
+              "de": "Sie schreibt einige großartige Lieder."
+            }
+          ]
+        },
+        {
+          "id": "negative-dont-doesnt",
+          "en": "Make the negative with don't/doesn't + the base form of the verb (doesn't for he/she/it).",
+          "de": "Die Verneinung bildest du mit don't/doesn't + der Grundform des Verbs (doesn't bei he/she/it).",
+          "examples": [
+            {
+              "en": "I don't know why you came here.",
+              "de": "Ich weiß nicht, warum du hergekommen bist."
+            },
+            {
+              "en": "She doesn't seem to get old.",
+              "de": "Sie scheint nicht älter zu werden."
+            }
+          ]
+        },
+        {
+          "id": "questions-do-does",
+          "en": "Form questions with do/does + person + the base form of the verb.",
+          "de": "Fragen bildest du mit do/does + Person + der Grundform des Verbs.",
+          "examples": [
+            {
+              "en": "Do you like this song?",
+              "de": "Magst du dieses Lied?"
+            },
+            {
+              "en": "Does she write her own songs?",
+              "de": "Schreibt sie ihre eigenen Lieder?"
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Missing -s in the third person singular",
+          "wrong": "She write brilliant songs.",
+          "correct": "She writes brilliant songs."
+        },
+        {
+          "description": "Using don't instead of doesn't in the third person",
+          "wrong": "He don't like school.",
+          "correct": "He doesn't like school."
+        },
+        {
+          "description": "Keeping the -s after does/doesn't",
+          "wrong": "Does she writes her own songs?",
+          "correct": "Does she write her own songs?"
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 1.txt#grammar-1"
+      ],
+      "seedV1": [],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u02.s.past-continuous",
+      "key": "past-continuous",
+      "unit": 2,
+      "name": "Past continuous",
+      "nameDe": "Past continuous (Verlaufsform der Vergangenheit)",
+      "category": "tenses",
+      "description": "The past continuous (was/were + -ing) for longer actions that were happening at a certain time in the past, for setting the background or scene at the start of a story, and in contrast with the past simple for a shorter action that interrupts it.",
+      "rules": [
+        {
+          "id": "form-was-were-ing",
+          "en": "Form the past continuous with the past tense of be (was/were) + the -ing form of the verb. Use was with I/he/she/it and were with you/we/they.",
+          "de": "Du bildest die Verlaufsform der Vergangenheit mit was/were + der -ing-Form des Verbs. was steht bei I/he/she/it, were bei you/we/they.",
+          "examples": [
+            {
+              "en": "I was walking my dog.",
+              "de": "Ich ging gerade mit meinem Hund spazieren."
+            },
+            {
+              "en": "The sun was shining and we were having a lot of fun.",
+              "de": "Die Sonne schien und wir hatten viel Spaß."
+            }
+          ]
+        },
+        {
+          "id": "use-longer-action",
+          "en": "Use it for a longer action that was going on at a certain time in the past, or to describe the background at the beginning of a story.",
+          "de": "Du verwendest es für eine längere Handlung, die zu einem bestimmten Zeitpunkt in der Vergangenheit andauerte, oder um den Hintergrund am Anfang einer Geschichte zu beschreiben.",
+          "examples": [
+            {
+              "en": "What were you doing at 8 o'clock?",
+              "de": "Was hast du um 8 Uhr gerade gemacht?"
+            },
+            {
+              "en": "It was raining. The wind was blowing hard.",
+              "de": "Es regnete. Der Wind blies stark."
+            }
+          ]
+        },
+        {
+          "id": "interrupted-by-past-simple",
+          "en": "When a shorter action interrupts the longer one, use the past continuous for the long action and the past simple for the short one, often with when or while.",
+          "de": "Wenn eine kürzere Handlung die längere unterbricht, verwendest du für die lange Handlung die Verlaufsform und für die kurze das Past simple - oft mit when oder while.",
+          "examples": [
+            {
+              "en": "The Titanic was crossing the Atlantic when it hit an iceberg.",
+              "de": "Die Titanic überquerte gerade den Atlantik, als sie einen Eisberg rammte."
+            },
+            {
+              "en": "While the hunter was looking through his binoculars, the animals got an idea.",
+              "de": "Während der Jäger durch sein Fernglas schaute, kamen die Tiere auf eine Idee."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Wrong form of be (was/were mismatch)",
+          "wrong": "I were walking to school.",
+          "correct": "I was walking to school."
+        },
+        {
+          "description": "Missing the -ing ending on the main verb",
+          "wrong": "She was walk down the street.",
+          "correct": "She was walking down the street."
+        },
+        {
+          "description": "Using the past continuous for the short interrupting action too",
+          "wrong": "I was walking when I was seeing a cat.",
+          "correct": "I was walking when I saw a cat."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 2.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u2-past-continuous"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u03.s.it-takes",
+      "key": "it-takes",
+      "unit": 3,
+      "name": "It takes ... to (take time to do)",
+      "nameDe": "It takes ... to (Zeitdauer ausdrücken)",
+      "category": "other",
+      "description": "The fixed pattern it + take + person + time + to + verb for saying how long an activity lasts. Taught in the same unit-3 box as the time connectors but as a separate construction.",
+      "rules": [
+        {
+          "id": "it-takes-present",
+          "en": "Say how long something lasts with it + take(s) + person + time + to + the base verb. The subject is always it, never a person.",
+          "de": "Wie lange etwas dauert, sagst du mit it + take(s) + Person + Zeit + to + Grundform. Das Subjekt ist immer it, nie eine Person.",
+          "examples": [
+            {
+              "en": "It takes me twenty minutes to cycle there.",
+              "de": "Ich brauche zwanzig Minuten, um dorthin zu radeln."
+            },
+            {
+              "en": "It only took us an hour and a half to fly there.",
+              "de": "Wir brauchten nur eineinhalb Stunden, um dorthin zu fliegen."
+            }
+          ]
+        },
+        {
+          "id": "it-takes-past-question",
+          "en": "For the past use it took; ask how long with How long does/did it take (you) to ...?",
+          "de": "In der Vergangenheit verwendest du it took; nach der Dauer fragst du mit How long does/did it take (you) to ...?",
+          "examples": [
+            {
+              "en": "How long does it take you to get to school?",
+              "de": "Wie lange brauchst du zur Schule?"
+            },
+            {
+              "en": "How long did it take to fly there?",
+              "de": "Wie lange hat der Flug dorthin gedauert?"
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Missing to before the verb",
+          "wrong": "It takes me 20 minutes walk to school.",
+          "correct": "It takes me 20 minutes to walk to school."
+        },
+        {
+          "description": "Using a person as the subject instead of it",
+          "wrong": "I take 20 minutes to walk to school.",
+          "correct": "It takes me 20 minutes to walk to school."
+        },
+        {
+          "description": "Wrong tense of take in a past context",
+          "wrong": "It takes me two hours to get there yesterday.",
+          "correct": "It took me two hours to get there yesterday."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 3.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u3-it-takes"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u03.s.time-connectors",
+      "key": "time-connectors",
+      "unit": 3,
+      "name": "when, before, after, while, during, until, by the time",
+      "nameDe": "Zeitliche Verbindungswörter (when, before, after, while, during, until, by the time)",
+      "category": "connectors",
+      "description": "Time connectors that link actions and events to a point in time. The key contrast is while (followed by a verb/clause) versus during (followed by a noun), plus when, before, after, until and by the time.",
+      "rules": [
+        {
+          "id": "when-before-after",
+          "en": "Use when, before, after and until + a clause (subject + verb) to say at what time something happened. before = earlier than, after = later than, until = up to the moment when.",
+          "de": "Du verwendest when, before, after und until + einen Satz (Subjekt + Verb), um zu sagen, wann etwas geschah. before = früher als, after = später als, until = bis zu dem Moment.",
+          "examples": [
+            {
+              "en": "When some hippos blocked her way, she hit them with her umbrella.",
+              "de": "Als ihr einige Nilpferde den Weg versperrten, schlug sie sie mit ihrem Regenschirm."
+            },
+            {
+              "en": "After her travels, Mary wrote two bestsellers.",
+              "de": "Nach ihren Reisen schrieb Mary zwei Bestseller."
+            }
+          ]
+        },
+        {
+          "id": "while-vs-during",
+          "en": "After while you use a verb (a clause); after during you use a noun. They are not interchangeable.",
+          "de": "Nach while steht ein Verb (ein Satz), nach during steht ein Nomen. Sie sind nicht austauschbar.",
+          "examples": [
+            {
+              "en": "While she was resting in her tent, she heard a noise outside.",
+              "de": "Während sie in ihrem Zelt ruhte, hörte sie draußen ein Geräusch."
+            },
+            {
+              "en": "During his lifetime, he travelled more than 400,000 km.",
+              "de": "Während seines Lebens reiste er mehr als 400.000 km."
+            }
+          ]
+        },
+        {
+          "id": "by-the-time",
+          "en": "Use by the time + a clause to mean 'before/when' a later moment is reached - often suggesting something had already happened by then.",
+          "de": "Du verwendest by the time + einen Satz im Sinne von 'bis/als' ein späterer Zeitpunkt erreicht ist - oft mit der Bedeutung, dass bis dahin schon etwas geschehen war.",
+          "examples": [
+            {
+              "en": "By the time he was 25, Holman was completely blind.",
+              "de": "Als Holman 25 war, war er schon völlig blind."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using during with a clause instead of while",
+          "wrong": "During I was sleeping, the phone rang.",
+          "correct": "While I was sleeping, the phone rang."
+        },
+        {
+          "description": "Using while before a noun instead of during",
+          "wrong": "While the storm, we stayed inside.",
+          "correct": "During the storm, we stayed inside."
+        },
+        {
+          "description": "Dropping parts of by the time",
+          "wrong": "By they arrived, it was dark.",
+          "correct": "By the time they arrived, it was dark."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 3.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u3-time-connectors"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u04.s.comparative-intensifiers",
+      "key": "comparative-intensifiers",
+      "unit": 4,
+      "name": "Comparative intensifiers (much/a bit ...; (not) nearly as ... as)",
+      "nameDe": "Verstärker bei Vergleichen (much/a bit ...; (not) nearly as ... as)",
+      "category": "comparison",
+      "description": "Words that make comparisons stronger or weaker: much/a lot for a big difference and a bit/a little for a small one before a comparative, plus (not) nearly as ... as and the fewer/less distinction. This unit has no SB grammar box; the structure comes from the v1 seed.",
+      "rules": [
+        {
+          "id": "much-vs-a-bit",
+          "en": "Put much or a lot before a comparative for a big difference, and a bit or a little for a small difference.",
+          "de": "Du stellst much oder a lot vor den Komparativ für einen großen Unterschied und a bit oder a little für einen kleinen Unterschied.",
+          "examples": [
+            {
+              "en": "Elephants are much bigger than dogs.",
+              "de": "Elefanten sind viel größer als Hunde."
+            },
+            {
+              "en": "She is a bit taller than her sister.",
+              "de": "Sie ist ein bisschen größer als ihre Schwester."
+            }
+          ]
+        },
+        {
+          "id": "not-nearly-as",
+          "en": "nearly as ... as means almost the same; not nearly as ... as means there is a big difference.",
+          "de": "nearly as ... as bedeutet fast gleich; not nearly as ... as bedeutet, dass es einen großen Unterschied gibt.",
+          "examples": [
+            {
+              "en": "He is nearly as tall as his father.",
+              "de": "Er ist fast so groß wie sein Vater."
+            },
+            {
+              "en": "A cat is not nearly as dangerous as a lion.",
+              "de": "Eine Katze ist bei weitem nicht so gefährlich wie ein Löwe."
+            }
+          ]
+        },
+        {
+          "id": "fewer-vs-less",
+          "en": "Use fewer with countable nouns (fewer people) and less with uncountable nouns (less water).",
+          "de": "Du verwendest fewer bei zählbaren Nomen (fewer people) und less bei nicht zählbaren Nomen (less water).",
+          "examples": [
+            {
+              "en": "There are fewer students in our class than in yours.",
+              "de": "In unserer Klasse sind weniger Schüler als in eurer."
+            },
+            {
+              "en": "I have less time than yesterday.",
+              "de": "Ich habe weniger Zeit als gestern."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Double comparative (more together with the -er form)",
+          "wrong": "She is much more bigger than her sister.",
+          "correct": "She is much bigger than her sister."
+        },
+        {
+          "description": "Putting the intensifier after the comparative instead of before",
+          "wrong": "He is taller much than me.",
+          "correct": "He is much taller than me."
+        },
+        {
+          "description": "Using less with a countable noun instead of fewer",
+          "wrong": "There are less people in the park today.",
+          "correct": "There are fewer people in the park today."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [],
+      "seedV1": [
+        "m3-u4-comparative-intensifiers"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u05.s.first-conditional",
+      "key": "first-conditional",
+      "unit": 5,
+      "name": "1st conditional",
+      "nameDe": "Erster Konditional (Bedingungssatz Typ 1)",
+      "category": "conditionals",
+      "description": "The first conditional for real, likely situations and their future consequences: If + present simple in the if-clause and will + base verb in the main clause.",
+      "rules": [
+        {
+          "id": "form-if-present-will",
+          "en": "Form it with If + present simple in the if-clause and will + base verb in the main clause. The if-clause never uses will. Use a comma when the if-clause comes first.",
+          "de": "Du bildest ihn mit If + Present simple im if-Satz und will + Grundform im Hauptsatz. Im if-Satz steht nie will. Beistrich, wenn der if-Satz zuerst kommt.",
+          "examples": [
+            {
+              "en": "If you put your handbag on the floor, you'll never have money.",
+              "de": "Wenn du deine Handtasche auf den Boden stellst, wirst du nie Geld haben."
+            },
+            {
+              "en": "You'll have bad luck if you walk on cracks in the pavement.",
+              "de": "Du wirst Pech haben, wenn du auf Risse im Gehweg trittst."
+            }
+          ]
+        },
+        {
+          "id": "use-real-consequences",
+          "en": "Use it to describe what consequences a real, possible action or situation will have.",
+          "de": "Du verwendest ihn, um zu beschreiben, welche Folgen eine reale, mögliche Handlung oder Situation haben wird.",
+          "examples": [
+            {
+              "en": "If you don't whistle, there won't be any rain.",
+              "de": "Wenn du nicht pfeifst, wird es keinen Regen geben."
+            },
+            {
+              "en": "What will happen if you break a mirror?",
+              "de": "Was wird passieren, wenn du einen Spiegel zerbrichst?"
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using will in the if-clause instead of the present simple",
+          "wrong": "If I will go to London, I will visit Big Ben.",
+          "correct": "If I go to London, I will visit Big Ben."
+        },
+        {
+          "description": "Using the present continuous instead of the present simple in the if-clause",
+          "wrong": "If it is raining tomorrow, we'll stay inside.",
+          "correct": "If it rains tomorrow, we'll stay inside."
+        }
+      ],
+      "recursIn": [
+        13
+      ],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 5.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u5-first-conditional"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u05.s.unless",
+      "key": "unless",
+      "unit": 5,
+      "name": "unless",
+      "nameDe": "unless (es sei denn / wenn ... nicht)",
+      "category": "connectors",
+      "description": "unless as a one-word way of saying 'if ... not' in conditional sentences. Because unless already contains the negative idea, the verb after it stays affirmative. Taught in the same unit-5 box as the first conditional.",
+      "rules": [
+        {
+          "id": "unless-means-if-not",
+          "en": "unless means 'if ... not'. The verb after unless is always affirmative, because the 'not' is already inside unless.",
+          "de": "unless bedeutet 'wenn ... nicht'. Das Verb nach unless ist immer bejahend, weil das 'nicht' schon in unless steckt.",
+          "examples": [
+            {
+              "en": "I'll go and look for him after breakfast, unless he comes here first.",
+              "de": "Ich gehe ihn nach dem Frühstück suchen, es sei denn, er kommt zuerst hierher."
+            },
+            {
+              "en": "Unless you put up a spirit screen, the ghosts can follow you into your home.",
+              "de": "Wenn du keine Geisterwand aufstellst, können dir die Geister in dein Zuhause folgen."
+            }
+          ]
+        },
+        {
+          "id": "transform-if-not",
+          "en": "To turn 'if ... not' into unless, drop the not/don't/doesn't and replace if with unless; the meaning stays the same.",
+          "de": "Um 'if ... not' in unless umzuwandeln, lässt du not/don't/doesn't weg und ersetzt if durch unless; die Bedeutung bleibt gleich.",
+          "examples": [
+            {
+              "en": "If you don't hurry, you'll be late. = Unless you hurry, you'll be late.",
+              "de": "Wenn du dich nicht beeilst, kommst du zu spät. = Es sei denn, du beeilst dich, kommst du zu spät."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Adding a negative verb after unless (double negative)",
+          "wrong": "Unless you don't hurry, you'll be late.",
+          "correct": "Unless you hurry, you'll be late."
+        },
+        {
+          "description": "Using unless where a positive condition needs if",
+          "wrong": "Unless you study, you'll pass the exam.",
+          "correct": "If you study, you'll pass the exam."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 5.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u5-unless"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u06.s.relative-clauses",
+      "key": "relative-clauses",
+      "unit": 6,
+      "name": "Relative pronouns (who, which, that, whose)",
+      "nameDe": "Relativpronomen (who, which, that, whose)",
+      "category": "pronouns",
+      "description": "Defining relative clauses that add information about a person or thing using who/that for people, which/that for things and animals, and whose for possession (German dessen/deren).",
+      "rules": [
+        {
+          "id": "who-which-that",
+          "en": "Use who or that for people, and which or that for things and animals, to add new information about a noun.",
+          "de": "Du verwendest who oder that für Personen und which oder that für Dinge und Tiere, um neue Informationen zu einem Nomen hinzuzufügen.",
+          "examples": [
+            {
+              "en": "A walk by the river brings you closer to the people who make London such a fascinating city.",
+              "de": "Ein Spaziergang am Fluss bringt dich den Menschen näher, die London zu so einer faszinierenden Stadt machen."
+            },
+            {
+              "en": "There's a new Globe Theatre which looks almost the same.",
+              "de": "Es gibt ein neues Globe Theatre, das fast genauso aussieht."
+            }
+          ]
+        },
+        {
+          "id": "whose-possession",
+          "en": "Use whose for possession - wherever you could say dessen or deren in German. whose can refer to people, things or animals.",
+          "de": "Du verwendest whose für Besitz - überall dort, wo du im Deutschen dessen oder deren sagen könntest. whose kann sich auf Personen, Dinge oder Tiere beziehen.",
+          "examples": [
+            {
+              "en": "Check out the Beefeaters whose job is to protect the King's Crown Jewels.",
+              "de": "Sieh dir die Beefeater an, deren Aufgabe es ist, die Kronjuwelen des Königs zu schützen."
+            },
+            {
+              "en": "Tate Modern is an art gallery whose collection of modern art is one of the best in the world.",
+              "de": "Tate Modern ist eine Kunstgalerie, deren Sammlung moderner Kunst eine der besten der Welt ist."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using what as a relative pronoun instead of that or which",
+          "wrong": "The thing what I saw was amazing.",
+          "correct": "The thing that I saw was amazing."
+        },
+        {
+          "description": "Confusing whose (possession) with who's (who is)",
+          "wrong": "The boy who's father is a pilot ...",
+          "correct": "The boy whose father is a pilot ..."
+        },
+        {
+          "description": "Using which for people or who for things",
+          "wrong": "The teacher which helped me was nice.",
+          "correct": "The teacher who helped me was nice."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 6.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u6-relative-clauses"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u07.s.present-perfect-for-since",
+      "key": "present-perfect-for-since",
+      "unit": 7,
+      "name": "Present perfect with for / since",
+      "nameDe": "Present perfect mit for / since (Dauer und Zeitpunkt)",
+      "category": "tenses",
+      "description": "The present perfect (have/has + past participle) for actions and states that started in the past and continue now, with for for a length of time (German lang) and since for a starting point.",
+      "rules": [
+        {
+          "id": "use-started-continues",
+          "en": "Use the present perfect (have/has + past participle) for actions and states that started in the past and still continue in the present.",
+          "de": "Du verwendest das Present perfect (have/has + Partizip Perfekt) für Handlungen und Zustände, die in der Vergangenheit begonnen haben und bis jetzt andauern.",
+          "examples": [
+            {
+              "en": "I've been friends with Alessia for two years.",
+              "de": "Ich bin seit zwei Jahren mit Alessia befreundet."
+            },
+            {
+              "en": "He's been in the family for 800 years.",
+              "de": "Er ist seit 800 Jahren in der Familie."
+            }
+          ]
+        },
+        {
+          "id": "for-duration",
+          "en": "Use for with a length of time - whenever you could say lang in German: for years, for two months, for a week.",
+          "de": "Du verwendest for bei einer Zeitspanne - immer dann, wenn du im Deutschen lang sagen könntest: for years, for two months, for a week.",
+          "examples": [
+            {
+              "en": "You haven't used it for years.",
+              "de": "Du hast es jahrelang nicht benutzt."
+            },
+            {
+              "en": "I've had those books for years.",
+              "de": "Ich habe diese Bücher seit Jahren."
+            }
+          ]
+        },
+        {
+          "id": "since-starting-point",
+          "en": "Use since with a starting point - a moment when the action began: since Christmas, since 2015, since I was seven.",
+          "de": "Du verwendest since bei einem Anfangspunkt - dem Moment, in dem die Handlung begann: since Christmas, since 2015, since I was seven.",
+          "examples": [
+            {
+              "en": "I've had those toys since Christmas.",
+              "de": "Ich habe diese Spielsachen seit Weihnachten."
+            },
+            {
+              "en": "I've had them since I was seven.",
+              "de": "Ich habe sie, seit ich sieben war."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Confusing for (duration) and since (point in time)",
+          "wrong": "I've lived here since three years.",
+          "correct": "I've lived here for three years."
+        },
+        {
+          "description": "Using the present simple instead of the present perfect with for/since",
+          "wrong": "I live here for five years.",
+          "correct": "I've lived here for five years."
+        },
+        {
+          "description": "Using for with a specific point in time",
+          "wrong": "I've known her for 2015.",
+          "correct": "I've known her since 2015."
+        }
+      ],
+      "recursIn": [
+        8
+      ],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 7.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u7-present-perfect-for-since"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u08.s.past-simple-vs-present-perfect",
+      "key": "past-simple-vs-present-perfect",
+      "unit": 8,
+      "name": "Past simple and present perfect",
+      "nameDe": "Past simple und Present perfect (Vergleich)",
+      "category": "tenses",
+      "description": "Choosing between the past simple (a finished action at a definite past time) and the present perfect (something that happened with present relevance, when the exact time doesn't matter), guided by their signal words.",
+      "rules": [
+        {
+          "id": "past-simple-when",
+          "en": "Use the past simple for something that happened at a definite past time. Signal words: yesterday, last week/month/year, a week ago, in 2010, when I was young.",
+          "de": "Du verwendest das Past simple für etwas, das zu einem bestimmten Zeitpunkt in der Vergangenheit passiert ist. Signalwörter: yesterday, last week/month/year, a week ago, in 2010, when I was young.",
+          "examples": [
+            {
+              "en": "When Sadie was seven, she had operations on both hips.",
+              "de": "Als Sadie sieben war, wurde sie an beiden Hüften operiert."
+            }
+          ]
+        },
+        {
+          "id": "present-perfect-relevance",
+          "en": "Use the present perfect when you only want to know if something happened at all, not when. Signal words: ever, never, always, just.",
+          "de": "Du verwendest das Present perfect, wenn du nur wissen willst, ob etwas überhaupt passiert ist, nicht wann. Signalwörter: ever, never, always, just.",
+          "examples": [
+            {
+              "en": "Sadie's invention has won two more prizes.",
+              "de": "Sadies Erfindung hat zwei weitere Preise gewonnen."
+            },
+            {
+              "en": "Sadie has always spent a lot of time in hospital.",
+              "de": "Sadie hat immer viel Zeit im Krankenhaus verbracht."
+            }
+          ]
+        },
+        {
+          "id": "decision-rule",
+          "en": "Ask yourself: am I saying WHEN it happened? Then use the past simple. Am I only saying THAT it happened, or that it matters now? Then use the present perfect.",
+          "de": "Frag dich: Sage ich, WANN es passiert ist? Dann Past simple. Sage ich nur, DASS es passiert ist oder dass es jetzt wichtig ist? Dann Present perfect.",
+          "examples": [
+            {
+              "en": "When did you go there? - I went there in June.",
+              "de": "Wann warst du dort? - Ich war im Juni dort."
+            },
+            {
+              "en": "Have you ever been there? - Yes, I have.",
+              "de": "Warst du schon einmal dort? - Ja."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the present perfect with a definite past time marker",
+          "wrong": "I have been there yesterday.",
+          "correct": "I was there yesterday."
+        },
+        {
+          "description": "Using the past simple with ever/never in experience questions",
+          "wrong": "Did you ever go to London?",
+          "correct": "Have you ever been to London?"
+        },
+        {
+          "description": "Using the past simple with for/since",
+          "wrong": "I lived here since 2020.",
+          "correct": "I've lived here since 2020."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 8.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u8-past-simple-vs-present-perfect"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 8.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u09.s.be-allowed-to",
+      "key": "be-allowed-to",
+      "unit": 9,
+      "name": "be (not) allowed to",
+      "nameDe": "be (not) allowed to (Erlaubnis und Verbot)",
+      "category": "modals",
+      "description": "be (not) allowed to + verb for saying whether someone has permission to do something - typically rules and permissions from an authority such as parents or a school.",
+      "rules": [
+        {
+          "id": "form-be-allowed-to",
+          "en": "Form it with person + be (not) + allowed to + the base verb. Use be allowed to for permission and be not allowed to for a ban.",
+          "de": "Du bildest es mit Person + be (not) + allowed to + Grundform. be allowed to steht für Erlaubnis, be not allowed to für ein Verbot.",
+          "examples": [
+            {
+              "en": "We aren't allowed to play ballgames there.",
+              "de": "Wir dürfen dort nicht Ball spielen."
+            },
+            {
+              "en": "I'm not allowed to go out when it's dark.",
+              "de": "Ich darf nicht rausgehen, wenn es dunkel ist."
+            }
+          ]
+        },
+        {
+          "id": "questions-be-allowed-to",
+          "en": "Form questions by putting am/is/are in front: Am/Is/Are + person + allowed to ...?",
+          "de": "Fragen bildest du, indem du am/is/are nach vorne stellst: Am/Is/Are + Person + allowed to ...?",
+          "examples": [
+            {
+              "en": "Are you allowed to have parties at home?",
+              "de": "Darfst du zu Hause Partys feiern?"
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Omitting the form of be before allowed",
+          "wrong": "I not allowed to go out.",
+          "correct": "I'm not allowed to go out."
+        },
+        {
+          "description": "Wrong form of be (subject-verb agreement)",
+          "wrong": "She are allowed to go.",
+          "correct": "She is allowed to go."
+        },
+        {
+          "description": "Confusing be allowed to (permission) with can (ability)",
+          "wrong": "I'm allowed to swim very well.",
+          "correct": "I can swim very well."
+        }
+      ],
+      "recursIn": [
+        10
+      ],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 9.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u9-be-allowed-to"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 9.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u09.s.let",
+      "key": "let",
+      "unit": 9,
+      "name": "let / don't let",
+      "nameDe": "let / don't let (Erlaubnis geben oder verweigern)",
+      "category": "modals",
+      "description": "let + object + base verb (without to) for saying that someone gives or refuses permission. Here the person who gives permission is the subject, the mirror image of be allowed to. Taught in the same unit-9 box.",
+      "rules": [
+        {
+          "id": "form-let-base-verb",
+          "en": "Form it with person + let + object + the base verb, with no to. The person who gives the permission is the subject.",
+          "de": "Du bildest es mit Person + let + Objekt + Grundform, ohne to. Die Person, die die Erlaubnis gibt, ist das Subjekt.",
+          "examples": [
+            {
+              "en": "When there's a good film on, my parents let me watch it.",
+              "de": "Wenn ein guter Film läuft, lassen mich meine Eltern ihn ansehen."
+            },
+            {
+              "en": "I think my parents might let me have a stud anyway.",
+              "de": "Ich glaube, meine Eltern lassen mich vielleicht trotzdem einen Stecker tragen."
+            }
+          ]
+        },
+        {
+          "id": "negation-dont-let",
+          "en": "Make the negative with don't/doesn't let + object + base verb.",
+          "de": "Die Verneinung bildest du mit don't/doesn't let + Objekt + Grundform.",
+          "examples": [
+            {
+              "en": "My parents don't let me dye my hair.",
+              "de": "Meine Eltern lassen mich meine Haare nicht färben."
+            },
+            {
+              "en": "They don't let me eat fast food every day.",
+              "de": "Sie lassen mich nicht jeden Tag Fast Food essen."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Adding to after let + object",
+          "wrong": "My parents let me to go out.",
+          "correct": "My parents let me go out."
+        },
+        {
+          "description": "Forgetting the -s in the third person present",
+          "wrong": "She let us go every Friday.",
+          "correct": "She lets us go every Friday."
+        },
+        {
+          "description": "Mixing up let (no to) and allow (with to)",
+          "wrong": "They don't let me to go.",
+          "correct": "They don't let me go."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 9.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u9-let"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 9.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u10.s.be-allowed-to-tenses",
+      "key": "be-allowed-to-tenses",
+      "unit": 10,
+      "name": "Permission in the past, future and present perfect (was/will be/has been allowed to)",
+      "nameDe": "Erlaubnis in Vergangenheit, Zukunft und Present perfect (was/will be/has been allowed to)",
+      "category": "modals",
+      "description": "Extending be allowed to across the tenses for permission: was/were (not) allowed to for the past, will (not) be allowed to for the future, and have/has (not) been allowed to for the present perfect. Taught alongside past ability in the unit-10 box.",
+      "rules": [
+        {
+          "id": "past-permission",
+          "en": "Use was/were (not) allowed to + base verb for permission or a ban that existed in the past.",
+          "de": "Du verwendest was/were (not) allowed to + Grundform für eine Erlaubnis oder ein Verbot, das in der Vergangenheit galt.",
+          "examples": [
+            {
+              "en": "From 1897 onward, women were allowed to attend university.",
+              "de": "Ab 1897 durften Frauen die Universität besuchen."
+            },
+            {
+              "en": "They weren't allowed to study all subjects.",
+              "de": "Sie durften nicht alle Fächer studieren."
+            }
+          ]
+        },
+        {
+          "id": "future-permission",
+          "en": "Use will (not) be allowed to + base verb for permission or a ban in the future.",
+          "de": "Du verwendest will (not) be allowed to + Grundform für eine Erlaubnis oder ein Verbot in der Zukunft.",
+          "examples": [
+            {
+              "en": "They won't be allowed to have a supermarket there.",
+              "de": "Sie werden dort keinen Supermarkt haben dürfen."
+            },
+            {
+              "en": "We won't be allowed to play football there any longer.",
+              "de": "Wir werden dort nicht mehr Fußball spielen dürfen."
+            }
+          ]
+        },
+        {
+          "id": "present-perfect-permission",
+          "en": "Use have/has (not) been allowed to + base verb for permission with present relevance.",
+          "de": "Du verwendest have/has (not) been allowed to + Grundform für eine Erlaubnis mit Gegenwartsbezug.",
+          "examples": [
+            {
+              "en": "Even in Austria, women haven't always been allowed to do what men have.",
+              "de": "Sogar in Österreich durften Frauen nicht immer das tun, was Männer durften."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Omitting was/were from the past permission structure",
+          "wrong": "They allowed to go home early.",
+          "correct": "They were allowed to go home early."
+        },
+        {
+          "description": "Dropping be from will be allowed to",
+          "wrong": "We will allowed to stay out later.",
+          "correct": "We will be allowed to stay out later."
+        },
+        {
+          "description": "Wrong was/were agreement with a plural subject",
+          "wrong": "They was allowed to leave.",
+          "correct": "They were allowed to leave."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 10.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u10-past-permission"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 10.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u10.s.could-was-able-to",
+      "key": "could-was-able-to",
+      "unit": 10,
+      "name": "Past ability: could / was able to",
+      "nameDe": "Fähigkeit in der Vergangenheit: could / was able to",
+      "category": "modals",
+      "description": "Talking about ability in the past: could for general ability over a period of time, was/were able to for managing one particular thing on one occasion, and the be able to chain extended into the future (will be able to) and present perfect (have been able to) because can has no such forms.",
+      "rules": [
+        {
+          "id": "could-general",
+          "en": "Use could (or couldn't) for general ability in the past - things you were able to do over a period of time.",
+          "de": "Du verwendest could (oder couldn't) für allgemeine Fähigkeiten in der Vergangenheit - Dinge, die man über einen Zeitraum konnte.",
+          "examples": [
+            {
+              "en": "Finally, African-Americans could sit on a bus, the same as white people.",
+              "de": "Endlich durften Afroamerikaner im Bus sitzen, genau wie weiße Menschen."
+            },
+            {
+              "en": "I could swim when I was five.",
+              "de": "Ich konnte schwimmen, als ich fünf war."
+            }
+          ]
+        },
+        {
+          "id": "was-able-to-specific",
+          "en": "Use was/were able to for one specific achievement - something you managed to do on a particular occasion.",
+          "de": "Du verwendest was/were able to für eine bestimmte einmalige Leistung - etwas, das man bei einer bestimmten Gelegenheit geschafft hat.",
+          "examples": [
+            {
+              "en": "We were able to stop them this time.",
+              "de": "Wir konnten sie diesmal aufhalten."
+            },
+            {
+              "en": "They weren't able to get their jobs back.",
+              "de": "Sie konnten ihre Jobs nicht zurückbekommen."
+            }
+          ]
+        },
+        {
+          "id": "be-able-to-future-pp",
+          "en": "Because can has no future or perfect form, use be able to: will (won't) be able to + base verb for the future, and have(n't)/has(n't) been able to + base verb for the present perfect.",
+          "de": "Weil can keine Zukunfts- oder Perfektform hat, verwendest du be able to: will (won't) be able to + Grundform für die Zukunft und have(n't)/has(n't) been able to + Grundform für das Present perfect.",
+          "examples": [
+            {
+              "en": "My older brother will be able to print 1,500 leaflets for us.",
+              "de": "Mein älterer Bruder wird uns 1.500 Flugblätter drucken können."
+            },
+            {
+              "en": "We haven't been able to discuss everything in detail yet.",
+              "de": "Wir konnten noch nicht alles im Detail besprechen."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using could for one specific achievement (affirmative)",
+          "wrong": "I could pass the exam yesterday.",
+          "correct": "I was able to pass the exam yesterday."
+        },
+        {
+          "description": "Dropping be from the be able to chain",
+          "wrong": "I will able to come tomorrow.",
+          "correct": "I will be able to come tomorrow."
+        },
+        {
+          "description": "Using will can instead of will be able to",
+          "wrong": "I will can come tomorrow.",
+          "correct": "I will be able to come tomorrow."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 10.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u10-could-was-able-to",
+        "m3-u10-future-pp-ability"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 10.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u11.s.present-perfect-continuous",
+      "key": "present-perfect-continuous",
+      "unit": 11,
+      "name": "Present perfect continuous",
+      "nameDe": "Present perfect continuous (Verlaufsform des Present perfect)",
+      "category": "tenses",
+      "description": "have/has + been + -ing for an activity that has been going on for some time and is still continuing, often with for/since, contrasted with the present perfect simple, which focuses on the result. This unit has no SB grammar box; the structure comes from the v1 seed.",
+      "rules": [
+        {
+          "id": "form-have-been-ing",
+          "en": "Form it with person + have/has + been + the -ing form of the verb. Use it for an activity that has been going on for some time and is still continuing.",
+          "de": "Du bildest es mit Person + have/has + been + der -ing-Form des Verbs. Du verwendest es für eine Aktivität, die seit einiger Zeit andauert und noch weitergeht.",
+          "examples": [
+            {
+              "en": "I've been living here for six weeks.",
+              "de": "Ich wohne seit sechs Wochen hier."
+            },
+            {
+              "en": "She has been working all morning.",
+              "de": "Sie arbeitet schon den ganzen Vormittag."
+            }
+          ]
+        },
+        {
+          "id": "activity-vs-result",
+          "en": "Use the continuous to focus on the ongoing activity, and the present perfect simple to focus on the finished result.",
+          "de": "Du verwendest die Verlaufsform, um die laufende Aktivität zu betonen, und das einfache Present perfect, um das fertige Ergebnis zu betonen.",
+          "examples": [
+            {
+              "en": "I've been reading all morning.",
+              "de": "Ich lese schon den ganzen Vormittag."
+            },
+            {
+              "en": "I've read three books this month.",
+              "de": "Ich habe diesen Monat drei Bücher gelesen."
+            }
+          ]
+        },
+        {
+          "id": "no-stative-verbs",
+          "en": "Stative verbs (know, like, want, be, have) do not take the continuous form - use the present perfect simple instead.",
+          "de": "Zustandsverben (know, like, want, be, have) verwenden keine Verlaufsform - nimm stattdessen das einfache Present perfect.",
+          "examples": [
+            {
+              "en": "I've known her since primary school.",
+              "de": "Ich kenne sie seit der Volksschule."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Missing the -ing form after been",
+          "wrong": "I have been live here for six weeks.",
+          "correct": "I have been living here for six weeks."
+        },
+        {
+          "description": "Omitting been from the construction",
+          "wrong": "I have living here for six weeks.",
+          "correct": "I have been living here for six weeks."
+        },
+        {
+          "description": "Using the continuous with a stative verb",
+          "wrong": "I've been knowing her for years.",
+          "correct": "I've known her for years."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [],
+      "seedV1": [
+        "m3-u11-present-perfect-continuous"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u12.s.passive-voice",
+      "key": "passive-voice",
+      "unit": 12,
+      "name": "Passive voice (present and past simple)",
+      "nameDe": "Passiv (Gegenwart und Vergangenheit)",
+      "category": "passive",
+      "description": "The present simple passive (am/is/are + past participle) and past simple passive (was/were + past participle), used when the action or the thing it happens to matters more than who does it. The doer can be named with by. This unit has no SB grammar box; the structure comes from the v1 seed.",
+      "rules": [
+        {
+          "id": "present-passive",
+          "en": "Form the present simple passive with subject + am/is/are + the past participle. Use it when the action or object matters more than who does it.",
+          "de": "Das Gegenwartspassiv bildest du mit Subjekt + am/is/are + Partizip Perfekt. Du verwendest es, wenn die Handlung oder das Objekt wichtiger ist als der Handelnde.",
+          "examples": [
+            {
+              "en": "English is spoken in many countries.",
+              "de": "Englisch wird in vielen Ländern gesprochen."
+            },
+            {
+              "en": "The letters are delivered every morning.",
+              "de": "Die Briefe werden jeden Morgen zugestellt."
+            }
+          ]
+        },
+        {
+          "id": "past-passive",
+          "en": "Form the past simple passive with subject + was/were + the past participle, for a completed passive event in the past.",
+          "de": "Das Vergangenheitspassiv bildest du mit Subjekt + was/were + Partizip Perfekt, für ein abgeschlossenes passives Ereignis in der Vergangenheit.",
+          "examples": [
+            {
+              "en": "The city was destroyed by an earthquake.",
+              "de": "Die Stadt wurde durch ein Erdbeben zerstört."
+            },
+            {
+              "en": "Hundreds of people were rescued.",
+              "de": "Hunderte Menschen wurden gerettet."
+            }
+          ]
+        },
+        {
+          "id": "by-agent",
+          "en": "Name the doer with by, but only when it adds important information; leave it out if the doer is unknown or unimportant.",
+          "de": "Den Handelnden nennst du mit by, aber nur wenn er wichtige Information hinzufügt; lass ihn weg, wenn er unbekannt oder unwichtig ist.",
+          "examples": [
+            {
+              "en": "The book was written by J.K. Rowling.",
+              "de": "Das Buch wurde von J.K. Rowling geschrieben."
+            },
+            {
+              "en": "The window was broken.",
+              "de": "Das Fenster wurde zerbrochen."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the wrong past participle (base form or past simple)",
+          "wrong": "The house was build in 1960.",
+          "correct": "The house was built in 1960."
+        },
+        {
+          "description": "Omitting the form of be from the passive",
+          "wrong": "The city destroyed by an earthquake.",
+          "correct": "The city was destroyed by an earthquake."
+        },
+        {
+          "description": "Using from instead of by for the agent",
+          "wrong": "The city was hit from an earthquake.",
+          "correct": "The city was hit by an earthquake."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [],
+      "seedV1": [
+        "m3-u12-passive-voice"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u13.s.second-conditional",
+      "key": "second-conditional",
+      "unit": 13,
+      "name": "if-sentences (2nd conditional)",
+      "nameDe": "Zweiter Konditional (Bedingungssatz Typ 2)",
+      "category": "conditionals",
+      "description": "The second conditional for impossible, unlikely or imaginary situations and their results: If + past simple in the if-clause and would + base verb in the main clause. The past simple here does not mean the past - it signals that the situation is hypothetical.",
+      "rules": [
+        {
+          "id": "form-if-past-would",
+          "en": "Form it with If + past simple in the if-clause and would (often 'd) + base verb in the main clause. The past simple here does not refer to the past - it just signals that the situation is imaginary.",
+          "de": "Du bildest ihn mit If + Past simple im if-Satz und would (oft 'd) + Grundform im Hauptsatz. Das Past simple bezieht sich hier nicht auf die Vergangenheit - es zeigt nur, dass die Situation vorgestellt ist.",
+          "examples": [
+            {
+              "en": "If she wasn't a good coach, I would find another team.",
+              "de": "Wenn sie keine gute Trainerin wäre, würde ich mir ein anderes Team suchen."
+            },
+            {
+              "en": "If I needed the money, I'd keep it and leave the wallet.",
+              "de": "Wenn ich das Geld bräuchte, würde ich es behalten und die Geldbörse liegen lassen."
+            }
+          ]
+        },
+        {
+          "id": "use-unlikely-imaginary",
+          "en": "Use the second conditional to talk about situations that are impossible or unlikely and what would happen as a result.",
+          "de": "Du verwendest den zweiten Konditional, um über unmögliche oder unwahrscheinliche Situationen zu sprechen und darüber, was als Folge passieren würde.",
+          "examples": [
+            {
+              "en": "If you cared about your friends, this wouldn't be a difficult decision.",
+              "de": "Wenn dir deine Freunde wichtig wären, wäre das keine schwierige Entscheidung."
+            },
+            {
+              "en": "If he wasn't my friend, I wouldn't read his poem.",
+              "de": "Wenn er nicht mein Freund wäre, würde ich sein Gedicht nicht lesen."
+            }
+          ]
+        },
+        {
+          "id": "vs-first-conditional",
+          "en": "Compare with the first conditional: If + present, will for a real possibility; If + past, would for an unlikely or imaginary one. You sometimes also see If he/she/it were ..., but that form is rare in everyday English.",
+          "de": "Vergleiche mit dem ersten Konditional: If + Präsens, will für eine reale Möglichkeit; If + Vergangenheit, would für eine unwahrscheinliche oder vorgestellte. Manchmal siehst du auch If he/she/it were ..., aber diese Form ist im Alltagsenglisch selten.",
+          "examples": [
+            {
+              "en": "If it rains, we'll stay inside.",
+              "de": "Wenn es regnet, bleiben wir drinnen."
+            },
+            {
+              "en": "If I were a bird, I would fly to Africa.",
+              "de": "Wenn ich ein Vogel wäre, würde ich nach Afrika fliegen."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using would in the if-clause instead of the past simple",
+          "wrong": "If I would have more money, I would buy a car.",
+          "correct": "If I had more money, I would buy a car."
+        },
+        {
+          "description": "Using the present simple (1st conditional) where the past simple (2nd conditional) is needed",
+          "wrong": "If I have a million euros, I would travel the world.",
+          "correct": "If I had a million euros, I would travel the world."
+        },
+        {
+          "description": "Using would in both the if-clause and the result clause",
+          "wrong": "If I would be rich, I would buy a big house.",
+          "correct": "If I were rich, I would buy a big house."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g3/sb/More 3 SB Unit 13.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m3-u13-second-conditional"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    },
+    {
+      "id": "g3u14.s.going-to-evidence",
+      "key": "going-to-evidence",
+      "unit": 14,
+      "name": "going to for evidence-based predictions",
+      "nameDe": "going to für Vorhersagen aufgrund von Beweisen",
+      "category": "tenses",
+      "description": "Widening the going to future to predictions based on evidence you can see right now (something is clearly about to happen), alongside its known use for plans, and contrasting it with will for opinions and spontaneous decisions. This unit has no SB grammar box; the structure comes from the v1 seed.",
+      "rules": [
+        {
+          "id": "going-to-evidence",
+          "en": "Use going to for a prediction based on evidence you can see or know about right now - something that is clearly about to happen.",
+          "de": "Du verwendest going to für eine Vorhersage, die auf Beweisen beruht, die du gerade sehen oder wissen kannst - etwas, das offensichtlich gleich passieren wird.",
+          "examples": [
+            {
+              "en": "Look at those clouds - it's going to rain.",
+              "de": "Schau dir die Wolken an - es wird regnen."
+            },
+            {
+              "en": "The car is out of control - it's going to crash!",
+              "de": "Das Auto ist außer Kontrolle - es wird gleich verunglücken!"
+            }
+          ]
+        },
+        {
+          "id": "going-to-vs-will",
+          "en": "Use going to for evidence-based predictions and for plans. Use will for opinions, general predictions without evidence, and spontaneous decisions.",
+          "de": "Du verwendest going to für Vorhersagen mit Beweisen und für Pläne. Du verwendest will für Meinungen, allgemeine Vorhersagen ohne Beweis und spontane Entscheidungen.",
+          "examples": [
+            {
+              "en": "It's going to rain. (I can see dark clouds)",
+              "de": "Es wird regnen. (Ich sehe dunkle Wolken)"
+            },
+            {
+              "en": "I think it will rain tomorrow. (my opinion, no evidence)",
+              "de": "Ich glaube, es wird morgen regnen. (meine Meinung, kein Beweis)"
+            }
+          ]
+        },
+        {
+          "id": "going-to-plans",
+          "en": "Remember that going to is also used for planned future actions - intentions you had before the moment of speaking.",
+          "de": "Denk daran, dass going to auch für geplante zukünftige Handlungen verwendet wird - Absichten, die du schon vor dem Sprechen hattest.",
+          "examples": [
+            {
+              "en": "I'm going to visit London next summer.",
+              "de": "Ich werde nächsten Sommer London besuchen."
+            },
+            {
+              "en": "Are you going to book a hotel?",
+              "de": "Wirst du ein Hotel buchen?"
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using will for an evidence-based prediction instead of going to",
+          "wrong": "Look at those clouds - it will rain!",
+          "correct": "Look at those clouds - it's going to rain!"
+        },
+        {
+          "description": "Omitting the be verb from the going to construction",
+          "wrong": "I going to go to the cinema.",
+          "correct": "I'm going to go to the cinema."
+        },
+        {
+          "description": "Writing gonna in formal contexts",
+          "wrong": "I'm gonna visit London next summer.",
+          "correct": "I'm going to visit London next summer."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [],
+      "seedV1": [
+        "m3-u14-going-to-evidence"
+      ],
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      }
+    }
+  ],
+  "v1Waivers": []
+}

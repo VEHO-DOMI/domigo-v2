@@ -1,0 +1,2873 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g3-u11",
+  "briefBank": "d6e86622941b",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g3u11.w.canyon",
+      "w": "canyon",
+      "g": "Schlucht",
+      "d": "a deep valley where high steep walls of rock go up on both sides.",
+      "s": "We climbed down into the huge ___ where the walls of rock go up so high.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "canyon",
+          "tier": "full"
+        },
+        {
+          "text": "canyons",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "canyon",
+          "tier": "full"
+        },
+        {
+          "text": "a canyon",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "canyon",
+            "tier": "full"
+          },
+          {
+            "text": "a canyon",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlucht",
+            "tier": "full"
+          },
+          {
+            "text": "Canyon",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "deep",
+          "de": "tief",
+          "scope": "d"
+        },
+        {
+          "word": "sides",
+          "de": "Seiten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ridge",
+        "mountain range",
+        "ferry"
+      ],
+      "hintDe": "Ein tiefes Tal mit hohen, steilen Felswänden auf beiden Seiten.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ridge",
+          "mountain range",
+          "ferry",
+          "railway"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "wb p93 ex2/3",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.dirt-road",
+      "w": "dirt road",
+      "g": "unbefestigte Straße",
+      "d": "a way for cars of hard ground with no stones on it, often way out in the country.",
+      "s": "Out of the city, we drove along a bumpy brown ___ all the way to the old farm.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "dirt road",
+          "tier": "full"
+        },
+        {
+          "text": "dirt roads",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dirt road",
+          "tier": "full"
+        },
+        {
+          "text": "a dirt road",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dirt road",
+            "tier": "full"
+          },
+          {
+            "text": "a dirt road",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unbefestigte Straße",
+            "tier": "full"
+          },
+          {
+            "text": "Schotterstraße",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hard",
+          "de": "hart",
+          "scope": "d"
+        },
+        {
+          "word": "drove",
+          "de": "fuhr",
+          "scope": "s"
+        },
+        {
+          "word": "bumpy",
+          "de": "holprig",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "canyon",
+        "ridge",
+        "railway"
+      ],
+      "hintDe": "Eine Straße aus festgefahrener Erde, ohne Asphalt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "canyon",
+          "ridge",
+          "railway",
+          "ferry"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "wb p93 ex2/3",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.ridge",
+      "w": "ridge",
+      "g": "Bergrücken",
+      "d": "the long high rocky top that runs along a mountain or hill, where you can walk along it.",
+      "s": "From the high ___ at the top, we could look down into the valleys way down below on both sides.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "ridge",
+          "tier": "full"
+        },
+        {
+          "text": "ridges",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ridge",
+          "tier": "full"
+        },
+        {
+          "text": "a ridge",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ridge",
+            "tier": "full"
+          },
+          {
+            "text": "a ridge",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bergrücken",
+            "tier": "full"
+          },
+          {
+            "text": "Grat",
+            "tier": "full"
+          },
+          {
+            "text": "Kamm",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "top",
+          "de": "oberster Teil",
+          "scope": "d"
+        },
+        {
+          "word": "top",
+          "de": "Spitze",
+          "scope": "s"
+        },
+        {
+          "word": "sides",
+          "de": "Seiten",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "canyon",
+        "dirt road",
+        "shade"
+      ],
+      "hintDe": "Der lange, schmale obere Teil eines Berges, an dem man entlanggehen kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "canyon",
+          "dirt road",
+          "shade",
+          "mountain range"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "wb p93 ex2/3",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.headquarters",
+      "w": "headquarters (pl)",
+      "g": "Hauptquartier",
+      "d": "the main building or office of a big firm or group, where the bosses work.",
+      "s": "Two park rangers from the park's ___ came and helped us safely back down.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "headquarters",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "headquarters",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "headquarters",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hauptquartier",
+            "tier": "full"
+          },
+          {
+            "text": "Zentrale",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "main",
+          "de": "Haupt-",
+          "scope": "d"
+        },
+        {
+          "word": "firm",
+          "de": "Firma",
+          "scope": "d"
+        },
+        {
+          "word": "rangers",
+          "de": "Ranger",
+          "scope": "s"
+        },
+        {
+          "word": "helped",
+          "de": "halfen",
+          "scope": "s"
+        },
+        {
+          "word": "safely",
+          "de": "sicher",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "canyon",
+        "ferry",
+        "ridge"
+      ],
+      "hintDe": "Das Hauptgebäude einer Firma oder Gruppe, von dem aus alles geleitet wird.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "canyon",
+          "ferry",
+          "ridge",
+          "railway"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "wb p93 ex3",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.to-spot-sth",
+      "w": "to spot sth.",
+      "g": "etw. entdecken",
+      "d": "to suddenly find somebody hiding, or a small thing that was hard to find.",
+      "s": "It was so crowded that I couldn't ___ you in the big crowd at the match.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "spot",
+          "tier": "full"
+        },
+        {
+          "text": "spotted",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to spot",
+          "tier": "full"
+        },
+        {
+          "text": "spot",
+          "tier": "full"
+        },
+        {
+          "text": "to spot sth.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to spot",
+            "tier": "full"
+          },
+          {
+            "text": "spot",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "entdecken",
+            "tier": "full"
+          },
+          {
+            "text": "erspähen",
+            "tier": "partial"
+          },
+          {
+            "text": "bemerken",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hard",
+          "de": "schwer",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to commute",
+        "to crack",
+        "to take over"
+      ],
+      "hintDe": "Du bemerkst plötzlich etwas, das schwer zu finden ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to commute",
+          "to crack",
+          "to take over",
+          "to catch (the train)"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "wb p93 ex2",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.a-dry-place",
+      "w": "a dry place",
+      "g": "ein trockener Ort",
+      "d": "a spot with very little rain and no wet ground.",
+      "s": "Always keep your matches in ___ so they stay dry and still light when you need them.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "a dry place",
+          "tier": "full"
+        },
+        {
+          "text": "dry place",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "a dry place",
+          "tier": "full"
+        },
+        {
+          "text": "dry place",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "a dry place",
+            "tier": "full"
+          },
+          {
+            "text": "dry place",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ein trockener Ort",
+            "tier": "full"
+          },
+          {
+            "text": "trockener Ort",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "a backpack",
+        "a ridge",
+        "a ferry"
+      ],
+      "hintDe": "Ein Ort mit sehr wenig Regen, an dem alles trocken bleibt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "a backpack",
+          "a ridge",
+          "a ferry",
+          "a canyon"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.to-have-no-signal",
+      "w": "to have no signal",
+      "g": "kein Signal haben",
+      "d": "when your mobile phone does not work because it cannot connect here.",
+      "s": "High up in the mountains we ___, so we could not call anyone for help.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "have no signal",
+          "tier": "full"
+        },
+        {
+          "text": "had no signal",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to have no signal",
+          "tier": "full"
+        },
+        {
+          "text": "have no signal",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to have no signal",
+            "tier": "full"
+          },
+          {
+            "text": "have no signal",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kein Signal haben",
+            "tier": "full"
+          },
+          {
+            "text": "keinen Empfang haben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to be situated",
+        "to commute",
+        "to take over"
+      ],
+      "hintDe": "Dein Handy funktioniert hier nicht, weil es keine Verbindung bekommt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to be situated",
+          "to commute",
+          "to take over",
+          "to crack"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "wb p93 ex2/3",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.backpack",
+      "w": "backpack",
+      "g": "Rucksack",
+      "d": "a big bag you carry on your back, with your food and a drink inside for a long walk.",
+      "s": "We all had a ___ on our back, with food and a drink inside for the one-day walk.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "backpack",
+          "tier": "full"
+        },
+        {
+          "text": "backpacks",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "backpack",
+          "tier": "full"
+        },
+        {
+          "text": "a backpack",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "backpack",
+            "tier": "full"
+          },
+          {
+            "text": "a backpack",
+            "tier": "full"
+          },
+          {
+            "text": "rucksack",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rucksack",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bag",
+          "de": "Tasche",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ferry",
+        "ridge",
+        "canyon"
+      ],
+      "hintDe": "Eine Tasche, die du auf dem Rücken trägst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ferry",
+          "ridge",
+          "canyon",
+          "railway"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "wb p93 ex3",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.fabulous",
+      "w": "fabulous",
+      "g": "fabelhaft",
+      "d": "really great and wonderful, much more than just good.",
+      "s": "Don't forget our ___ national parks - they are some of the best in the whole world!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fabulous",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fabulous",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fabulous",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fabelhaft",
+            "tier": "full"
+          },
+          {
+            "text": "großartig",
+            "tier": "partial"
+          },
+          {
+            "text": "wunderbar",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wonderful",
+          "de": "wunderbar",
+          "scope": "d"
+        },
+        {
+          "word": "forget",
+          "de": "vergiss",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "steep",
+        "familiar",
+        "guided"
+      ],
+      "hintDe": "Etwas ist nicht nur gut, sondern ganz wunderbar.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "steep",
+          "familiar",
+          "guided",
+          "independent"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p100",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.height",
+      "w": "height",
+      "g": "Höhe",
+      "d": "how tall or how high a thing is, from the ground up to the very top.",
+      "s": "These giant redwood trees can reach a ___ of more than 100 metres.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "height",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "height",
+          "tier": "full"
+        },
+        {
+          "text": "the height",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "height",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Höhe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "top",
+          "de": "Spitze",
+          "scope": "d"
+        },
+        {
+          "word": "giant",
+          "de": "riesig",
+          "scope": "s"
+        },
+        {
+          "word": "metres",
+          "de": "Meter",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "shade",
+        "thirst",
+        "connection"
+      ],
+      "hintDe": "Wie hoch etwas ist, vom Boden bis ganz nach oben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "shade",
+          "thirst",
+          "connection",
+          "ridge"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p100",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.capital",
+      "w": "capital",
+      "g": "Hauptstadt",
+      "d": "the most important city of a country or state, where the country is run from.",
+      "s": "Which city is the state ___ of California - Los Angeles, Sacramento or San Francisco?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "capital",
+          "tier": "full"
+        },
+        {
+          "text": "capitals",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "capital",
+          "tier": "full"
+        },
+        {
+          "text": "the capital",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "capital",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hauptstadt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "important",
+          "de": "wichtig",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "state",
+        "connection",
+        "railway"
+      ],
+      "hintDe": "Die wichtigste Stadt eines Landes, von der aus das Land regiert wird.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "state",
+          "connection",
+          "railway",
+          "canyon"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "sb p93 quiz",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.independent",
+      "w": "independent",
+      "g": "unabhängig",
+      "d": "free and not ruled by another country.",
+      "s": "For just one month in 1846, California was an ___ country and ruled over itself.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "independent",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "independent",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "independent",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unabhängig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "by",
+          "de": "von",
+          "scope": "d"
+        },
+        {
+          "word": "another",
+          "de": "ein anderes",
+          "scope": "d"
+        },
+        {
+          "word": "itself",
+          "de": "sich selbst",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "familiar",
+        "fabulous",
+        "steep"
+      ],
+      "hintDe": "Frei und von keinem anderen Land regiert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "familiar",
+          "fabulous",
+          "steep",
+          "guided"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p100",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.innovation",
+      "w": "innovation",
+      "g": "Neuerung",
+      "d": "a clever new way of doing things, or a new machine nobody had before.",
+      "s": "The first mobile phone was a great ___ that completely changed how people live.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "innovation",
+          "tier": "full"
+        },
+        {
+          "text": "innovations",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "innovation",
+          "tier": "full"
+        },
+        {
+          "text": "an innovation",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "innovation",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Neuerung",
+            "tier": "full"
+          },
+          {
+            "text": "Innovation",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        },
+        {
+          "word": "changed",
+          "de": "veränderte",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "connection",
+        "capital",
+        "thirst"
+      ],
+      "hintDe": "Eine clevere neue Idee oder etwas Neues, das es vorher nicht gab.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "connection",
+          "capital",
+          "thirst",
+          "state"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p100",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.state",
+      "w": "state",
+      "g": "Staat",
+      "d": "a part of a country that has its own government, like California in the US.",
+      "s": "California is a big ___ in the west of the US, with cities like Los Angeles.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "state",
+          "tier": "full"
+        },
+        {
+          "text": "states",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "state",
+          "tier": "full"
+        },
+        {
+          "text": "a state",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "state",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Staat",
+            "tier": "full"
+          },
+          {
+            "text": "Bundesstaat",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "capital",
+        "connection",
+        "canyon"
+      ],
+      "hintDe": "Ein Teil eines Landes, der eine eigene Regierung hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "capital",
+          "connection",
+          "canyon",
+          "railway"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p93 quiz",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.to-commute",
+      "w": "to commute",
+      "g": "pendeln",
+      "d": "to travel to work and home again every day.",
+      "s": "My mum ___ to the Valley every day, but she did not like the long drive at all.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "commuted",
+          "tier": "full"
+        },
+        {
+          "text": "commute",
+          "tier": "partial"
+        },
+        {
+          "text": "commutes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to commute",
+          "tier": "full"
+        },
+        {
+          "text": "commute",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to commute",
+            "tier": "full"
+          },
+          {
+            "text": "commute",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "pendeln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to take over",
+        "to spot sth.",
+        "to crack"
+      ],
+      "hintDe": "Du fährst jeden Tag zur Arbeit und wieder nach Hause.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to take over",
+          "to spot sth.",
+          "to crack",
+          "to be situated"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p93 interview",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.connection",
+      "w": "connection",
+      "g": "Verbindung",
+      "d": "a link that joins two things, like the way your computer joins the internet.",
+      "s": "His internet ___ in the old hotel was so slow that the videos would not play.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "connection",
+          "tier": "full"
+        },
+        {
+          "text": "connections",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "connection",
+          "tier": "full"
+        },
+        {
+          "text": "a connection",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "connection",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verbindung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "link",
+          "de": "Verbindung",
+          "scope": "d"
+        },
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        },
+        {
+          "word": "computer",
+          "de": "Computer",
+          "scope": "d"
+        },
+        {
+          "word": "internet",
+          "de": "Internet",
+          "scope": "d"
+        },
+        {
+          "word": "internet",
+          "de": "Internet",
+          "scope": "s"
+        },
+        {
+          "word": "videos",
+          "de": "Videos",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "capital",
+        "thirst",
+        "innovation"
+      ],
+      "hintDe": "Eine Verbindung zwischen zwei Dingen, zum Beispiel zum Internet.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "capital",
+          "thirst",
+          "innovation",
+          "state"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p93 interview",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.programmer",
+      "w": "programmer",
+      "g": "Programmierer/Programmiererin",
+      "d": "the man or woman whose job is to write the instructions that make computers work.",
+      "s": "Olivia's mum has a ___ job at a big firm in Silicon Valley.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "programmer",
+          "tier": "full"
+        },
+        {
+          "text": "programmers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "programmer",
+          "tier": "full"
+        },
+        {
+          "text": "a programmer",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "programmer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Programmierer",
+            "tier": "full"
+          },
+          {
+            "text": "Programmiererin",
+            "tier": "full"
+          },
+          {
+            "text": "Programmierer/Programmiererin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "instructions",
+          "de": "Anweisungen",
+          "scope": "d"
+        },
+        {
+          "word": "computers",
+          "de": "Computer",
+          "scope": "d"
+        },
+        {
+          "word": "firm",
+          "de": "Firma",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "criminal",
+        "cyclist",
+        "gold digger"
+      ],
+      "hintDe": "Jemand, der die Anweisungen schreibt, mit denen Computer arbeiten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "criminal",
+          "cyclist",
+          "gold digger",
+          "ferry"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p93 interview",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.steep",
+      "w": "steep",
+      "g": "steil",
+      "d": "going up or down very fast, nearly straight, so it is not easy to climb.",
+      "s": "A canyon is deep, with ___ walls of rock that go up high on both sides.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "steep",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "steep",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "steep",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "steil",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "nearly",
+          "de": "fast",
+          "scope": "d"
+        },
+        {
+          "word": "straight",
+          "de": "gerade",
+          "scope": "d"
+        },
+        {
+          "word": "easy",
+          "de": "leicht",
+          "scope": "d"
+        },
+        {
+          "word": "deep",
+          "de": "tief",
+          "scope": "s"
+        },
+        {
+          "word": "sides",
+          "de": "Seiten",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "familiar",
+        "guided",
+        "independent"
+      ],
+      "hintDe": "Es geht sehr schnell nach oben oder unten, fast senkrecht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "familiar",
+          "guided",
+          "independent",
+          "fabulous"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p93 vocab",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.to-crack",
+      "w": "to crack",
+      "g": "aufbrechen",
+      "d": "to break open or break into pieces, often with a sharp noise.",
+      "s": "My mouth was so dry that my lips were sore and about to ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "crack",
+          "tier": "full"
+        },
+        {
+          "text": "cracked",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to crack",
+          "tier": "full"
+        },
+        {
+          "text": "crack",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to crack",
+            "tier": "full"
+          },
+          {
+            "text": "crack",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "zerbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "aufspringen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sharp",
+          "de": "scharf",
+          "scope": "d"
+        },
+        {
+          "word": "sore",
+          "de": "wund",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to spot sth.",
+        "to commute",
+        "to take over"
+      ],
+      "hintDe": "Etwas bricht oder platzt auf, oft mit einem scharfen Geräusch.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to spot sth.",
+          "to commute",
+          "to take over",
+          "to catch (the train)"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p100",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.four-wheel-drive",
+      "w": "four-wheel drive",
+      "g": "Allradantrieb",
+      "d": "a system that gives a car a lot of power, so it holds the road well on rough ground.",
+      "s": "We need a jeep with ___ to drive over the rough roads in the desert.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "four-wheel drive",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "four-wheel drive",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "four-wheel drive",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Allradantrieb",
+            "tier": "full"
+          },
+          {
+            "text": "Vierradantrieb",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "system",
+          "de": "System",
+          "scope": "d"
+        },
+        {
+          "word": "rough",
+          "de": "holprig",
+          "scope": "d"
+        },
+        {
+          "word": "jeep",
+          "de": "Jeep",
+          "scope": "s"
+        },
+        {
+          "word": "rough",
+          "de": "holprig",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "connection",
+        "innovation",
+        "shade"
+      ],
+      "hintDe": "Ein System im Auto, das alle vier Räder antreibt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "connection",
+          "innovation",
+          "shade",
+          "railway"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p100",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.gold-digger",
+      "w": "gold digger",
+      "g": "Goldgräber/Goldgräberin",
+      "d": "the man or woman who looks in the earth and in rivers to find a shiny yellow metal.",
+      "s": "Very many ___ came to California hoping to become rich from gold.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "gold diggers",
+          "tier": "full"
+        },
+        {
+          "text": "gold digger",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "gold digger",
+          "tier": "full"
+        },
+        {
+          "text": "a gold digger",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "gold digger",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Goldgräber",
+            "tier": "full"
+          },
+          {
+            "text": "Goldgräberin",
+            "tier": "full"
+          },
+          {
+            "text": "Goldgräber/Goldgräberin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shiny",
+          "de": "glänzend",
+          "scope": "d"
+        },
+        {
+          "word": "yellow",
+          "de": "gelb",
+          "scope": "d"
+        },
+        {
+          "word": "gold",
+          "de": "Gold",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "criminal",
+        "cyclist",
+        "programmer"
+      ],
+      "hintDe": "Jemand, der in der Erde und in Flüssen nach Gold sucht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "criminal",
+          "cyclist",
+          "programmer",
+          "ferry"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p95 did-you-know",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.gold-rush",
+      "w": "gold rush",
+      "g": "Goldrausch",
+      "d": "a time when very many people hurry to one place to look for a shiny yellow metal.",
+      "s": "The California ___ in 1849 was a time when very many people came to the American West for gold.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "gold rush",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "gold rush",
+          "tier": "full"
+        },
+        {
+          "text": "the gold rush",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "gold rush",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Goldrausch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shiny",
+          "de": "glänzend",
+          "scope": "d"
+        },
+        {
+          "word": "yellow",
+          "de": "gelb",
+          "scope": "d"
+        },
+        {
+          "word": "gold",
+          "de": "Gold",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "thirst",
+        "shade",
+        "connection"
+      ],
+      "hintDe": "Eine Zeit, in der ganz viele Menschen zum Goldsuchen an einen Ort eilen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "thirst",
+          "shade",
+          "connection",
+          "innovation"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p95 did-you-know",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.lip",
+      "w": "lip",
+      "g": "Lippe",
+      "d": "one of the two soft red parts of your mouth.",
+      "s": "Her ___ were dry and red, and she was shaking and about to cry.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "lips",
+          "tier": "full"
+        },
+        {
+          "text": "lip",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lip",
+          "tier": "full"
+        },
+        {
+          "text": "lips",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lip",
+            "tier": "full"
+          },
+          {
+            "text": "lips",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lippe",
+            "tier": "full"
+          },
+          {
+            "text": "Lippen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "soft",
+          "de": "weich",
+          "scope": "d"
+        },
+        {
+          "word": "parts",
+          "de": "Teile",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ridge",
+        "shade",
+        "ferry"
+      ],
+      "hintDe": "Einer der beiden weichen Teile oben und unten an deinem Mund.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ridge",
+          "shade",
+          "ferry",
+          "canyon"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p100",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.mountain-range",
+      "w": "mountain range",
+      "g": "Bergkette",
+      "d": "a long row of high rocky hills, all joined up.",
+      "s": "The Alps are the longest ___ in Europe and run across many countries.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "mountain range",
+          "tier": "full"
+        },
+        {
+          "text": "mountain ranges",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mountain range",
+          "tier": "full"
+        },
+        {
+          "text": "a mountain range",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mountain range",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bergkette",
+            "tier": "full"
+          },
+          {
+            "text": "Gebirge",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "canyon",
+        "ridge",
+        "railway"
+      ],
+      "hintDe": "Viele hohe Berge nebeneinander in einer langen Reihe.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "canyon",
+          "ridge",
+          "railway",
+          "ferry"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p95 did-you-know",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.shade",
+      "w": "shade (no pl)",
+      "g": "Schatten",
+      "d": "a cooler dark area out of the bright sun.",
+      "s": "I sat down in the cool ___ of a big rock to keep out of the burning sun.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "shade",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shade",
+          "tier": "full"
+        },
+        {
+          "text": "the shade",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shade",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schatten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sat",
+          "de": "saß",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "ridge",
+        "thirst",
+        "height"
+      ],
+      "hintDe": "Ein kühlerer, dunkler Bereich außerhalb der hellen Sonne.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ridge",
+          "thirst",
+          "height",
+          "connection"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p100",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.to-be-situated",
+      "w": "to be situated",
+      "g": "liegen",
+      "d": "to be in a certain place or in a certain part of a country.",
+      "s": "Death Valley is ___ between two long mountain ranges in California.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "situated",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to be situated",
+          "tier": "full"
+        },
+        {
+          "text": "be situated",
+          "tier": "full"
+        },
+        {
+          "text": "situated",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to be situated",
+            "tier": "full"
+          },
+          {
+            "text": "be situated",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "liegen",
+            "tier": "full"
+          },
+          {
+            "text": "sich befinden",
+            "tier": "full"
+          },
+          {
+            "text": "gelegen sein",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        },
+        {
+          "word": "between",
+          "de": "zwischen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to take over",
+        "to commute",
+        "to crack"
+      ],
+      "hintDe": "An einem bestimmten Ort oder in einer bestimmten Gegend sein.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to take over",
+          "to commute",
+          "to crack",
+          "to spot sth."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p95 did-you-know",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.thirst",
+      "w": "thirst",
+      "g": "Durst",
+      "d": "the feeling when you really want to drink.",
+      "s": "After a long time in the hot sun, their ___ was so bad that they died for want of water.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "thirst",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thirst",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thirst",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Durst",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "shade",
+        "height",
+        "connection"
+      ],
+      "hintDe": "Das Gefühl, wenn du unbedingt etwas trinken willst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "shade",
+          "height",
+          "connection",
+          "innovation"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p95 did-you-know",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.criminal",
+      "w": "criminal",
+      "g": "Krimineller/Kriminelle",
+      "d": "the man or woman who has done a crime.",
+      "s": "Alcatraz was a famous prison and home to some of the most dangerous ___ in the US.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "criminals",
+          "tier": "full"
+        },
+        {
+          "text": "criminal",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "criminal",
+          "tier": "full"
+        },
+        {
+          "text": "a criminal",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "criminal",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Krimineller",
+            "tier": "full"
+          },
+          {
+            "text": "Kriminelle",
+            "tier": "full"
+          },
+          {
+            "text": "Verbrecher",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cyclist",
+        "programmer",
+        "gold digger"
+      ],
+      "hintDe": "Jemand, der ein Verbrechen begangen hat.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cyclist",
+          "programmer",
+          "gold digger",
+          "ferry"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p96 website",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.cyclist",
+      "w": "cyclist",
+      "g": "Radfahrer/Radfahrerin",
+      "d": "the man or woman who is out on a bike.",
+      "s": "There is a special lane along the road just for every ___ to ride a bike.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cyclist",
+          "tier": "full"
+        },
+        {
+          "text": "cyclists",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cyclist",
+          "tier": "full"
+        },
+        {
+          "text": "a cyclist",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cyclist",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Radfahrer",
+            "tier": "full"
+          },
+          {
+            "text": "Radfahrerin",
+            "tier": "full"
+          },
+          {
+            "text": "Radfahrer/Radfahrerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bike",
+          "de": "Fahrrad",
+          "scope": "d"
+        },
+        {
+          "word": "special",
+          "de": "besonders",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "criminal",
+        "programmer",
+        "gold digger"
+      ],
+      "hintDe": "Jemand, der mit dem Fahrrad unterwegs ist.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "criminal",
+          "programmer",
+          "gold digger",
+          "ferry"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p96 website",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.familiar",
+      "w": "familiar",
+      "g": "vertraut",
+      "d": "well known to you, so you know it well when you look at it.",
+      "s": "The Golden Gate Bridge is one of the most ___ sights of San Francisco.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "familiar",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "familiar",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "familiar",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vertraut",
+            "tier": "full"
+          },
+          {
+            "text": "bekannt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "known",
+          "de": "bekannt",
+          "scope": "d"
+        },
+        {
+          "word": "sights",
+          "de": "Sehenswürdigkeiten",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "steep",
+        "guided",
+        "independent"
+      ],
+      "hintDe": "Dir gut bekannt, sodass du es sofort wiedererkennst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "steep",
+          "guided",
+          "independent",
+          "fabulous"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p96 website",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.ferry",
+      "w": "ferry",
+      "g": "Fähre",
+      "d": "a boat that carries people and cars over the sea or a river.",
+      "s": "You can take a ___ over the water to Alcatraz Island and back.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ferry",
+          "tier": "full"
+        },
+        {
+          "text": "ferries",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ferry",
+          "tier": "full"
+        },
+        {
+          "text": "a ferry",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ferry",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fähre",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "boat",
+          "de": "Boot",
+          "scope": "d"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "railway",
+        "backpack",
+        "ridge"
+      ],
+      "hintDe": "Ein Boot, das Menschen und Autos über das Wasser bringt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "railway",
+          "backpack",
+          "ridge",
+          "canyon"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p96 website",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.guided",
+      "w": "guided",
+      "g": "geführt",
+      "d": "led by somebody who shows you the way and talks about it.",
+      "s": "These days you can go on a ___ tour of Alcatraz Island with a real guide.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "guided",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "guided",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "guided",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "geführt",
+            "tier": "full"
+          },
+          {
+            "text": "geleitet",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "led",
+          "de": "geführt",
+          "scope": "d"
+        },
+        {
+          "word": "by",
+          "de": "von",
+          "scope": "d"
+        },
+        {
+          "word": "tour",
+          "de": "Tour",
+          "scope": "s"
+        },
+        {
+          "word": "real",
+          "de": "echt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "steep",
+        "familiar",
+        "thirsty"
+      ],
+      "hintDe": "Von einer Person geführt, die dir den Weg zeigt und alles erklärt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "steep",
+          "familiar",
+          "fabulous",
+          "independent"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p96 website",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.to-take-over",
+      "w": "to take over",
+      "g": "übernehmen",
+      "d": "to come into control of a place or thing that was not yours before.",
+      "s": "On Sundays the road has no cars, and the cyclists ___ the whole street.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "take over",
+          "tier": "full"
+        },
+        {
+          "text": "took over",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to take over",
+          "tier": "full"
+        },
+        {
+          "text": "take over",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to take over",
+            "tier": "full"
+          },
+          {
+            "text": "take over",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "übernehmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to commute",
+        "to spot sth.",
+        "to be situated"
+      ],
+      "hintDe": "Du übernimmst die Kontrolle über etwas, das vorher jemand anderem gehörte.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to commute",
+          "to spot sth.",
+          "to be situated",
+          "to crack"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p96 website",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.to-catch",
+      "w": "to catch (the train)",
+      "g": "(den Zug) erwischen",
+      "d": "to be at the platform in time to get on it before it leaves.",
+      "s": "We had to run to the platform to ___ the train before it left without us.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "catch",
+          "tier": "full"
+        },
+        {
+          "text": "catch the train",
+          "tier": "full"
+        },
+        {
+          "text": "caught",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to catch",
+          "tier": "full"
+        },
+        {
+          "text": "catch",
+          "tier": "full"
+        },
+        {
+          "text": "to catch the train",
+          "tier": "full"
+        },
+        {
+          "text": "catch the train",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to catch the train",
+            "tier": "full"
+          },
+          {
+            "text": "catch the train",
+            "tier": "full"
+          },
+          {
+            "text": "to catch",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "den Zug erwischen",
+            "tier": "full"
+          },
+          {
+            "text": "erwischen",
+            "tier": "full"
+          },
+          {
+            "text": "den Zug erreichen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "left",
+          "de": "fuhr ab",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to spot sth.",
+        "to take over",
+        "to commute"
+      ],
+      "hintDe": "Du bist rechtzeitig am Bahnsteig, um in deinen Zug einzusteigen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to spot sth.",
+          "to take over",
+          "to commute",
+          "to crack"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p99 dialogue",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.information-office",
+      "w": "information office",
+      "g": "Informationsbüro",
+      "d": "a place at a station where you can ask for help, times and the way.",
+      "s": "Ask at the ___ if you need a free map of the city or the times of the trains.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "information office",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "information office",
+          "tier": "full"
+        },
+        {
+          "text": "an information office",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "information office",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Informationsbüro",
+            "tier": "full"
+          },
+          {
+            "text": "Auskunftsbüro",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "railway",
+        "ferry",
+        "backpack"
+      ],
+      "hintDe": "Ein Ort am Bahnhof, an dem du nach Hilfe, Zeiten und dem Weg fragen kannst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "railway",
+          "ferry",
+          "backpack",
+          "headquarters (pl)"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p99 dialogue",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.railway",
+      "w": "railway",
+      "g": "Eisenbahn",
+      "d": "the trains and the long metal tracks they run on.",
+      "s": "The ___ service to Manchester is leaving from platform 3 in ten minutes.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "railway",
+          "tier": "full"
+        },
+        {
+          "text": "railways",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "railway",
+          "tier": "full"
+        },
+        {
+          "text": "the railway",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "railway",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eisenbahn",
+            "tier": "full"
+          },
+          {
+            "text": "Zug",
+            "tier": "full"
+          },
+          {
+            "text": "Bahn",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tracks",
+          "de": "Gleise",
+          "scope": "d"
+        },
+        {
+          "word": "service",
+          "de": "Verbindung",
+          "scope": "s"
+        },
+        {
+          "word": "minutes",
+          "de": "Minuten",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "ferry",
+        "canyon",
+        "headquarters (pl)"
+      ],
+      "hintDe": "Die Züge und die langen Gleise, auf denen sie fahren.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "ferry",
+          "canyon",
+          "headquarters (pl)",
+          "ridge"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p100",
+      "note": null
+    },
+    {
+      "wordId": "g3u11.w.totally",
+      "w": "totally",
+      "g": "total",
+      "d": "completely, in every way, with nothing missing.",
+      "s": "You are ___ right about this, and I agree with you.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "totally",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "totally",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "totally",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "total",
+            "tier": "full"
+          },
+          {
+            "text": "völlig",
+            "tier": "full"
+          },
+          {
+            "text": "ganz",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "familiar",
+        "steep",
+        "guided"
+      ],
+      "hintDe": "Völlig, in jeder Hinsicht, ohne Ausnahme.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "familiar",
+          "steep",
+          "guided",
+          "independent"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist; sb p100",
+      "note": null
+    }
+  ]
+}

@@ -1,0 +1,4170 @@
+{
+  "schema": "vocab@1",
+  "grade": 1,
+  "unit": 2,
+  "slug": "g1-u02",
+  "items": [
+    {
+      "id": "g1u02.w.adult",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "child",
+            "family",
+            "group",
+            "guide",
+            "ticket"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 poster: 'Adults £14.40.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "adult",
+      "g": "Erwachsene/r",
+      "d": "A man or woman who is not a child.",
+      "s": "___ are €14.40.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Adults",
+          "tier": "full"
+        },
+        {
+          "text": "adults",
+          "tier": "full"
+        },
+        {
+          "text": "adult",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "adult",
+          "tier": "full"
+        },
+        {
+          "text": "adults",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "adult",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erwachsener",
+            "tier": "full"
+          },
+          {
+            "text": "Erwachsene",
+            "tier": "full"
+          },
+          {
+            "text": "Erwachsene/r",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "man",
+          "de": "Mann",
+          "scope": "d"
+        },
+        {
+          "word": "woman",
+          "de": "Frau",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "child",
+        "family",
+        "group"
+      ],
+      "hintDe": "Kein Kind, schon groß."
+    },
+    {
+      "id": "g1u02.w.at",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "from",
+            "for",
+            "but",
+            "in",
+            "on"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'The children are at the zoo.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "primary clue avoids headword; example clause uses it after the blank-style gloss"
+      },
+      "w": "at",
+      "g": "bei",
+      "d": "It says where you are. The children are here, ___ school.",
+      "s": "The children are ___ the zoo.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "at",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "at",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "at",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bei",
+            "tier": "full"
+          },
+          {
+            "text": "an",
+            "tier": "full"
+          },
+          {
+            "text": "im",
+            "tier": "full"
+          },
+          {
+            "text": "in",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "says",
+          "de": "sagt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "from",
+        "for",
+        "but"
+      ],
+      "hintDe": "Sagt, wo du bist (zum Beispiel beim Zoo)."
+    },
+    {
+      "id": "g1u02.w.at-last",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "How strange!",
+            "Let me see.",
+            "Where",
+            "happy",
+            "free"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 p.21 Everyday English: 'At last!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "mc are the other two everyday-English phrases plus a repeat slot trimmed in distractorPool"
+      },
+      "w": "At last.",
+      "g": "Endlich.",
+      "d": "You speak this when you wait a long time and then it is here.",
+      "s": "___ The train is here now!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "At last.",
+          "tier": "full"
+        },
+        {
+          "text": "At last",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "At last.",
+          "tier": "full"
+        },
+        {
+          "text": "At last",
+          "tier": "full"
+        },
+        {
+          "text": "Finally",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "At last.",
+            "tier": "full"
+          },
+          {
+            "text": "At last",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Endlich.",
+            "tier": "full"
+          },
+          {
+            "text": "Endlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wait",
+          "de": "warten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "How strange!",
+        "Let me see.",
+        "Where"
+      ],
+      "hintDe": "Du sagst es nach langem Warten."
+    },
+    {
+      "id": "g1u02.w.beautiful",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "big",
+            "small",
+            "long",
+            "happy",
+            "free"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 story: 'The parrot is blue and yellow. It's beautiful.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "beautiful",
+      "g": "schön",
+      "d": "Very nice to look at.",
+      "s": "The parrot is blue and yellow. It's ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "beautiful",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "beautiful",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "beautiful",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schön",
+            "tier": "full"
+          },
+          {
+            "text": "hübsch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "blue",
+          "de": "blau",
+          "scope": "s"
+        },
+        {
+          "word": "yellow",
+          "de": "gelb",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "big",
+        "small",
+        "long"
+      ],
+      "hintDe": "Es schaut sehr schön aus."
+    },
+    {
+      "id": "g1u02.w.behind",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "in front of",
+            "on",
+            "next to",
+            "under",
+            "in"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'The chair is behind the desk.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "behind",
+      "g": "hinter",
+      "d": "It is at the back. You cannot look at it from the front.",
+      "s": "The chair is ___ the desk.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "behind",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "behind",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "behind",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hinter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "back",
+          "de": "Rückseite",
+          "scope": "d"
+        },
+        {
+          "word": "front",
+          "de": "Vorderseite",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "in front of",
+        "on",
+        "next to"
+      ],
+      "hintDe": "Auf der Rückseite, dahinter."
+    },
+    {
+      "id": "g1u02.w.behind-2",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "in front of",
+            "on",
+            "in",
+            "under",
+            "next to"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 story: 'Look – there are three monkeys. They're behind the tree.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "behind",
+      "g": "hinter",
+      "d": "It is at the back of a thing. It is not in front.",
+      "s": "There are three monkeys. They're ___ the tree.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "behind",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "behind",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "behind",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hinter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "back",
+          "de": "Rückseite",
+          "scope": "d"
+        },
+        {
+          "word": "front",
+          "de": "Vorderseite",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "in front of",
+        "on",
+        "in"
+      ],
+      "hintDe": "Dahinter, auf der Rückseite."
+    },
+    {
+      "id": "g1u02.w.big",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "small",
+            "long",
+            "free",
+            "happy",
+            "beautiful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 story: 'There's a big giraffe.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "big",
+      "g": "groß",
+      "d": "Not small. A giraffe is this.",
+      "s": "There's a ___ giraffe.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "big",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "big",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "big",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "groß",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "small",
+        "long",
+        "free"
+      ],
+      "hintDe": "Nicht klein."
+    },
+    {
+      "id": "g1u02.w.but",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "from",
+            "for",
+            "at",
+            "in",
+            "on"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 fact box: 'Dogs are welcome ... But they can't run around!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "but",
+      "g": "aber",
+      "d": "It joins two ideas. I love cats, ___ not dogs.",
+      "s": "Dogs are welcome. ___ they can't run around.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "But",
+          "tier": "full"
+        },
+        {
+          "text": "but",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "but",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "but",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aber",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "joins",
+          "de": "verbindet",
+          "scope": "d"
+        },
+        {
+          "word": "ideas",
+          "de": "Ideen",
+          "scope": "d"
+        },
+        {
+          "word": "cats",
+          "de": "Katzen",
+          "scope": "d"
+        },
+        {
+          "word": "run",
+          "de": "rennen",
+          "scope": "s"
+        },
+        {
+          "word": "around",
+          "de": "herum",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "from",
+        "for",
+        "at"
+      ],
+      "hintDe": "Verbindet zwei verschiedene Ideen."
+    },
+    {
+      "id": "g1u02.w.car",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "train",
+            "tree",
+            "stone",
+            "zoo",
+            "ticket"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Master list carrier: 'The parrot is in the car.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "car",
+      "g": "Auto",
+      "d": "A thing with four wheels that you go in on the road.",
+      "s": "The parrot is in the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "car",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "car",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "car",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Auto",
+            "tier": "full"
+          },
+          {
+            "text": "Wagen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wheels",
+          "de": "Räder",
+          "scope": "d"
+        },
+        {
+          "word": "road",
+          "de": "Straße",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "train",
+        "tree",
+        "stone"
+      ],
+      "hintDe": "Hat vier Räder, fährt auf der Straße."
+    },
+    {
+      "id": "g1u02.w.child",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "adult",
+            "guide",
+            "family",
+            "group",
+            "dog"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB Unit 2 ex.6: 'There ... four children.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "child (pl children)",
+      "g": "Kind",
+      "d": "A young one, not an adult. You go to school when you are this.",
+      "s": "There are four ___ in the wildlife park.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "children",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "child",
+          "tier": "full"
+        },
+        {
+          "text": "children",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "child",
+            "tier": "full"
+          },
+          {
+            "text": "children",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kind",
+            "tier": "full"
+          },
+          {
+            "text": "Kinder",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "young",
+          "de": "jung",
+          "scope": "d"
+        },
+        {
+          "word": "wildlife park",
+          "de": "Tierpark",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "adult",
+        "guide",
+        "family"
+      ],
+      "hintDe": "Noch kein Erwachsener."
+    },
+    {
+      "id": "g1u02.w.dog",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "lion",
+            "parrot",
+            "giraffe",
+            "monkey",
+            "penguin"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2: 'Buddy is a dog.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "dog",
+      "g": "Hund",
+      "d": "An animal you love. Buddy is one.",
+      "s": "Can I bring my ___, Buddy?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "dog",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dog",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dog",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hund",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "lion",
+        "parrot",
+        "giraffe"
+      ],
+      "hintDe": "Buddy ist einer."
+    },
+    {
+      "id": "g1u02.w.family",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "group",
+            "guide",
+            "adult",
+            "child",
+            "zoo"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Master list carrier: 'Buddy's family is at the zoo.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "family",
+      "g": "Familie",
+      "d": "It is your mum and dad and you.",
+      "s": "Buddy's ___ is at the zoo.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "family",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "family",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "family",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Familie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "mum",
+          "de": "Mama",
+          "scope": "d"
+        },
+        {
+          "word": "dad",
+          "de": "Papa",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "group",
+        "guide",
+        "adult"
+      ],
+      "hintDe": "Mama, Papa und du."
+    },
+    {
+      "id": "g1u02.w.for",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "from",
+            "at",
+            "but",
+            "in",
+            "on"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 chant: 'here's a chant for you.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "primary clue avoids headword; example uses it after the gloss-style clue"
+      },
+      "w": "for",
+      "g": "für",
+      "d": "It says who gets a thing. This is ___ you.",
+      "s": "Here's a chant ___ you.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "for",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "for",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "for",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "für",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "says",
+          "de": "sagt",
+          "scope": "d"
+        },
+        {
+          "word": "gets",
+          "de": "bekommt",
+          "scope": "d"
+        },
+        {
+          "word": "chant",
+          "de": "Sprechgesang",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "from",
+        "at",
+        "but"
+      ],
+      "hintDe": "Sagt, für wen etwas ist."
+    },
+    {
+      "id": "g1u02.w.free",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "big",
+            "small",
+            "happy",
+            "long",
+            "beautiful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Master list carrier: 'Parking is free.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "free",
+      "g": "kostenlos",
+      "d": "You do not give money for it.",
+      "s": "Parking is ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "free",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "free",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "free",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kostenlos",
+            "tier": "full"
+          },
+          {
+            "text": "gratis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "money",
+          "de": "Geld",
+          "scope": "d"
+        },
+        {
+          "word": "parking",
+          "de": "Parken",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "big",
+        "small",
+        "happy"
+      ],
+      "hintDe": "Du musst nichts dafür zahlen."
+    },
+    {
+      "id": "g1u02.w.from",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "for",
+            "at",
+            "but",
+            "in",
+            "on"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'They are from California.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "primary clue avoids headword; example uses it after the gloss-style clue"
+      },
+      "w": "from",
+      "g": "aus",
+      "d": "It says where your home is. They are here, ___ California.",
+      "s": "They are ___ California.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "from",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "from",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "from",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aus",
+            "tier": "full"
+          },
+          {
+            "text": "von",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "says",
+          "de": "sagt",
+          "scope": "d"
+        },
+        {
+          "word": "home",
+          "de": "Zuhause",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "for",
+        "at",
+        "but"
+      ],
+      "hintDe": "Sagt, woher jemand kommt."
+    },
+    {
+      "id": "g1u02.w.giraffe",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "monkey",
+            "penguin",
+            "parrot",
+            "lion",
+            "dog"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'There's a big giraffe.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "giraffe",
+      "g": "Giraffe",
+      "d": "A big animal at the zoo. It has a very long neck.",
+      "s": "There's a big ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "giraffe",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "giraffe",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "giraffe",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Giraffe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        },
+        {
+          "word": "neck",
+          "de": "Hals",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "monkey",
+        "penguin",
+        "parrot"
+      ],
+      "hintDe": "Dieses Tier hat einen sehr langen Hals."
+    },
+    {
+      "id": "g1u02.w.grandma",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "family",
+            "guide",
+            "adult",
+            "child",
+            "group"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Master list carrier: 'Say hi to Grandma!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Grandma",
+      "g": "Oma",
+      "d": "She is your mum's mum.",
+      "s": "Say hi to ___!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Grandma",
+          "tier": "full"
+        },
+        {
+          "text": "grandma",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Grandma",
+          "tier": "full"
+        },
+        {
+          "text": "grandma",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Grandma",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Oma",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "mum's",
+          "de": "von der Mama",
+          "scope": "d"
+        },
+        {
+          "word": "mum",
+          "de": "Mama",
+          "scope": "d"
+        },
+        {
+          "word": "Say",
+          "de": "Sag",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "family",
+        "guide",
+        "adult"
+      ],
+      "hintDe": "Die Mama von deiner Mama."
+    },
+    {
+      "id": "g1u02.w.group",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "family",
+            "adult",
+            "guide",
+            "child",
+            "ticket"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Master list carrier: 'A group ticket is €8.90.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "group",
+      "g": "Gruppe",
+      "d": "Many children, not one child.",
+      "s": "A ___ ticket is €8.90.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "group",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "group",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "group",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gruppe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "family",
+        "adult",
+        "guide"
+      ],
+      "hintDe": "Viele zusammen, nicht nur eine Person."
+    },
+    {
+      "id": "g1u02.w.guide",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "family",
+            "group",
+            "child",
+            "adult",
+            "dog"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 p.17: 'Listen to the guide.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "guide",
+      "g": "Führer/Führerin",
+      "d": "A man or woman who walks with you and tells you about the zoo.",
+      "s": "Listen to the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "guide",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "guide",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "guide",
+            "tier": "full"
+          },
+          {
+            "text": "Guide",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Führer",
+            "tier": "full"
+          },
+          {
+            "text": "Führerin",
+            "tier": "full"
+          },
+          {
+            "text": "Guide",
+            "tier": "full"
+          },
+          {
+            "text": "Reiseführer",
+            "tier": "full"
+          },
+          {
+            "text": "Reiseführerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "man",
+          "de": "Mann",
+          "scope": "d"
+        },
+        {
+          "word": "woman",
+          "de": "Frau",
+          "scope": "d"
+        },
+        {
+          "word": "walks",
+          "de": "geht",
+          "scope": "d"
+        },
+        {
+          "word": "tells",
+          "de": "erzählt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "family",
+        "group",
+        "child"
+      ],
+      "hintDe": "Diese Person zeigt dir den Zoo."
+    },
+    {
+      "id": "g1u02.w.happy",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "big",
+            "small",
+            "long",
+            "free",
+            "beautiful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Master list carrier: 'Buddy is happy.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "happy",
+      "g": "glücklich",
+      "d": "You feel good. You are not sad.",
+      "s": "Buddy is ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "happy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "happy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "happy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "glücklich",
+            "tier": "full"
+          },
+          {
+            "text": "fröhlich",
+            "tier": "full"
+          },
+          {
+            "text": "zufrieden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "feel",
+          "de": "fühlen",
+          "scope": "d"
+        },
+        {
+          "word": "good",
+          "de": "gut",
+          "scope": "d"
+        },
+        {
+          "word": "sad",
+          "de": "traurig",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "big",
+        "small",
+        "long"
+      ],
+      "hintDe": "Du fühlst dich gut, nicht traurig."
+    },
+    {
+      "id": "g1u02.w.he",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "she",
+            "they",
+            "we",
+            "it",
+            "us"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 p.18 model: 'He's in class 4A.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "he",
+      "g": "er",
+      "d": "It is for a boy or a man.",
+      "s": "Mike is at the zoo. ___ is happy.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "He",
+          "tier": "full"
+        },
+        {
+          "text": "he",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "he",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "he",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "er",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "boy",
+          "de": "Junge",
+          "scope": "d"
+        },
+        {
+          "word": "man",
+          "de": "Mann",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "she",
+        "they",
+        "we"
+      ],
+      "hintDe": "Für einen Jungen oder Mann."
+    },
+    {
+      "id": "g1u02.w.how-strange",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "At last.",
+            "Let me see.",
+            "Where",
+            "beautiful",
+            "happy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 p.21 Everyday English: 'How strange!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "How strange!",
+      "g": "Wie komisch!",
+      "d": "You speak this for a very, very odd thing.",
+      "s": "A dog in the tree? ___",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "How strange!",
+          "tier": "full"
+        },
+        {
+          "text": "How strange",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "How strange!",
+          "tier": "full"
+        },
+        {
+          "text": "How strange",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "How strange!",
+            "tier": "full"
+          },
+          {
+            "text": "How strange",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wie komisch!",
+            "tier": "full"
+          },
+          {
+            "text": "Wie komisch",
+            "tier": "full"
+          },
+          {
+            "text": "Wie seltsam!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "odd",
+          "de": "seltsam, komisch",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "At last.",
+        "Let me see.",
+        "Where"
+      ],
+      "hintDe": "Du sagst es, wenn etwas sehr seltsam ist."
+    },
+    {
+      "id": "g1u02.w.in",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "on",
+            "behind",
+            "next to",
+            "under",
+            "in front of"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 p.19: 'It's ... the car.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "in",
+      "g": "in",
+      "d": "It is not on the desk and not under it. The pen is here, ___ the box.",
+      "s": "The parrot is ___ the car.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "in",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "in",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "in",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "on",
+        "behind",
+        "next to"
+      ],
+      "hintDe": "Drinnen, zum Beispiel in der Box."
+    },
+    {
+      "id": "g1u02.w.in-front-of",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "behind",
+            "under",
+            "in",
+            "on",
+            "next to"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'The tree is in front of you.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "in front of",
+      "g": "vor",
+      "d": "It is here, you look at it. It is not behind you.",
+      "s": "The tree is ___ you.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "in front of",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "in front of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "in front of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vor",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "front",
+          "de": "Vorderseite",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "behind",
+        "under",
+        "in"
+      ],
+      "hintDe": "Davor, du schaust es an."
+    },
+    {
+      "id": "g1u02.w.in-front-of-2",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "behind",
+            "under",
+            "in",
+            "on",
+            "next to"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 story: 'The tree in front of you!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "in front of",
+      "g": "vor",
+      "d": "Here, where you look. It is not behind you.",
+      "s": "Yes, the tree ___ you!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "in front of",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "in front of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "in front of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vor",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "front",
+          "de": "Vorderseite",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "behind",
+        "under",
+        "in"
+      ],
+      "hintDe": "Davor, direkt vor dir."
+    },
+    {
+      "id": "g1u02.w.let-me-see",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "At last.",
+            "How strange!",
+            "Where",
+            "happy",
+            "free"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 p.21 Everyday English: 'Let me see.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Let me see.",
+      "g": "Lass mich mal schauen.",
+      "d": "You speak this when you want to look at a thing.",
+      "s": "You have a stone? ___",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Let me see.",
+          "tier": "full"
+        },
+        {
+          "text": "Let me see",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Let me see.",
+          "tier": "full"
+        },
+        {
+          "text": "Let me see",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Let me see.",
+            "tier": "full"
+          },
+          {
+            "text": "Let me see",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lass mich mal schauen.",
+            "tier": "full"
+          },
+          {
+            "text": "Lass mich mal schauen",
+            "tier": "full"
+          },
+          {
+            "text": "Lass mich sehen.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "At last.",
+        "How strange!",
+        "Where"
+      ],
+      "hintDe": "Du sagst es, wenn du etwas anschauen willst."
+    },
+    {
+      "id": "g1u02.w.lion",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "parrot",
+            "penguin",
+            "train",
+            "monkey",
+            "giraffe"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 poster: 'See a lion.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "lion",
+      "g": "Löwe",
+      "d": "A big animal at the zoo. It is the king of the animals.",
+      "s": "I want a ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lion",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lion",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lion",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Löwe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        },
+        {
+          "word": "king",
+          "de": "König",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "parrot",
+        "penguin",
+        "train"
+      ],
+      "hintDe": "Der König der Tiere."
+    },
+    {
+      "id": "g1u02.w.long",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "big",
+            "small",
+            "free",
+            "happy",
+            "beautiful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Master list carrier: 'The giraffe has a long neck.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "long",
+      "g": "lang",
+      "d": "Not short. A giraffe neck is this.",
+      "s": "The giraffe has a ___ neck.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "long",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "long",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "long",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lang",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "short",
+          "de": "kurz",
+          "scope": "d"
+        },
+        {
+          "word": "neck",
+          "de": "Hals",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "big",
+        "small",
+        "free"
+      ],
+      "hintDe": "Nicht kurz."
+    },
+    {
+      "id": "g1u02.w.monkey",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "lion",
+            "penguin",
+            "giraffe",
+            "parrot",
+            "dog"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'The parrot is next to the monkeys.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "monkey",
+      "g": "Affe",
+      "d": "A small animal that climbs in trees at the zoo.",
+      "s": "The ___ is next to the parrot.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "monkey",
+          "tier": "full"
+        },
+        {
+          "text": "monkeys",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "monkey",
+          "tier": "full"
+        },
+        {
+          "text": "monkeys",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "monkey",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Affe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        },
+        {
+          "word": "climbs",
+          "de": "klettert",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "lion",
+        "penguin",
+        "giraffe"
+      ],
+      "hintDe": "Es klettert gern auf Bäume."
+    },
+    {
+      "id": "g1u02.w.next-to",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "under",
+            "behind",
+            "in",
+            "on",
+            "in front of"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'The parrot is next to the monkeys.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "next to",
+      "g": "neben",
+      "d": "It is here, very close. It is not behind and not under.",
+      "s": "The parrot is ___ the monkeys.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "next to",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "next to",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "next to",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "neben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "under",
+        "behind",
+        "in"
+      ],
+      "hintDe": "Direkt daneben."
+    },
+    {
+      "id": "g1u02.w.next-to-2",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "under",
+            "behind",
+            "on",
+            "in",
+            "in front of"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 story: 'It's next to the brown monkey.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "next to",
+      "g": "neben",
+      "d": "Very close, at the side. The parrot is here, close to the monkey.",
+      "s": "It's ___ the brown monkey.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "next to",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "next to",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "next to",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "neben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "side",
+          "de": "Seite",
+          "scope": "d"
+        },
+        {
+          "word": "brown",
+          "de": "braun",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "under",
+        "behind",
+        "on"
+      ],
+      "hintDe": "Direkt daneben."
+    },
+    {
+      "id": "g1u02.w.on",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "under",
+            "in",
+            "behind",
+            "next to",
+            "in front of"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'There's a book on my desk.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "on",
+      "g": "auf",
+      "d": "It is at the top of a thing. The book is here, at the top of the desk.",
+      "s": "There's a book ___ my desk.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "on",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auf",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "top",
+          "de": "oben",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "under",
+        "in",
+        "behind"
+      ],
+      "hintDe": "Oben drauf."
+    },
+    {
+      "id": "g1u02.w.parrot",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "lion",
+            "giraffe",
+            "penguin",
+            "monkey",
+            "dog"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 story: 'Look! The parrot is on Buddy now.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "parrot",
+      "g": "Papagei",
+      "d": "A bird that can talk to you.",
+      "s": "The ___ is on Buddy now.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "parrot",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "parrot",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "parrot",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Papagei",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "lion",
+        "giraffe",
+        "penguin"
+      ],
+      "hintDe": "Dieser Vogel kann sprechen."
+    },
+    {
+      "id": "g1u02.w.penguin",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "giraffe",
+            "monkey",
+            "lion",
+            "parrot",
+            "tree"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 poster: 'Feed the penguins.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "penguin",
+      "g": "Pinguin",
+      "d": "A black and white bird. It cannot fly, but it can swim.",
+      "s": "Let's go and feed the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "penguins",
+          "tier": "full"
+        },
+        {
+          "text": "penguin",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "penguin",
+          "tier": "full"
+        },
+        {
+          "text": "penguins",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "penguin",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pinguin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "black",
+          "de": "schwarz",
+          "scope": "d"
+        },
+        {
+          "word": "white",
+          "de": "weiß",
+          "scope": "d"
+        },
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "d"
+        },
+        {
+          "word": "fly",
+          "de": "fliegen",
+          "scope": "d"
+        },
+        {
+          "word": "swim",
+          "de": "schwimmen",
+          "scope": "d"
+        },
+        {
+          "word": "feed",
+          "de": "füttern",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "giraffe",
+        "monkey",
+        "lion"
+      ],
+      "hintDe": "Schwarz-weiß, kann nicht fliegen."
+    },
+    {
+      "id": "g1u02.w.she",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "he",
+            "they",
+            "we",
+            "it",
+            "us"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'She is from England.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "she",
+      "g": "sie",
+      "d": "It is for a girl or a woman.",
+      "s": "___ is from England.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "She",
+          "tier": "full"
+        },
+        {
+          "text": "she",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "she",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "she",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "girl",
+          "de": "Mädchen",
+          "scope": "d"
+        },
+        {
+          "word": "woman",
+          "de": "Frau",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "he",
+        "they",
+        "we"
+      ],
+      "hintDe": "Für ein Mädchen oder eine Frau."
+    },
+    {
+      "id": "g1u02.w.small",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "big",
+            "long",
+            "happy",
+            "free",
+            "beautiful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'The monkey isn't big. It's small.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "small",
+      "g": "klein",
+      "d": "Not big. A baby monkey is this.",
+      "s": "The monkey isn't big. It's ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "small",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "small",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "small",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "klein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "baby",
+          "de": "Baby-",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "big",
+        "long",
+        "happy"
+      ],
+      "hintDe": "Nicht groß."
+    },
+    {
+      "id": "g1u02.w.stone",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "car",
+            "train",
+            "ticket",
+            "tree",
+            "zoo"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 p.21: 'Colour your stone.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "stone",
+      "g": "Stein",
+      "d": "It is grey and hard. You find it on the ground.",
+      "s": "Colour your ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stone",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stone",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stone",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "grey",
+          "de": "grau",
+          "scope": "d"
+        },
+        {
+          "word": "hard",
+          "de": "hart",
+          "scope": "d"
+        },
+        {
+          "word": "ground",
+          "de": "Boden",
+          "scope": "d"
+        },
+        {
+          "word": "Colour",
+          "de": "Male ... an",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "car",
+        "train",
+        "ticket"
+      ],
+      "hintDe": "Grau und hart, liegt am Boden."
+    },
+    {
+      "id": "g1u02.w.they",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "he",
+            "she",
+            "we",
+            "it",
+            "us"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'Rahim and Sue are 11. They are from Manchester.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "they",
+      "g": "sie",
+      "d": "It is for more than one. Sue and Mike are two.",
+      "s": "Don and Sue are 11. ___ are from Manchester.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "They",
+          "tier": "full"
+        },
+        {
+          "text": "they",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "they",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "they",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "he",
+        "she",
+        "we"
+      ],
+      "hintDe": "Für mehr als eine Person."
+    },
+    {
+      "id": "g1u02.w.ticket",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "car",
+            "tree",
+            "stone",
+            "zoo",
+            "train"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Master list carrier: 'Adult tickets are €14.40.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "ticket",
+      "g": "Eintrittskarte",
+      "d": "You give money for this. Then you can go in.",
+      "s": "Adult ___ are €14.40.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tickets",
+          "tier": "full"
+        },
+        {
+          "text": "ticket",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ticket",
+          "tier": "full"
+        },
+        {
+          "text": "tickets",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ticket",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eintrittskarte",
+            "tier": "full"
+          },
+          {
+            "text": "Ticket",
+            "tier": "full"
+          },
+          {
+            "text": "Karte",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "money",
+          "de": "Geld",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "car",
+        "tree",
+        "stone"
+      ],
+      "hintDe": "Damit darfst du hineingehen."
+    },
+    {
+      "id": "g1u02.w.to-bring",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "want",
+            "talk",
+            "find",
+            "give",
+            "love"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 poster: 'Can I bring my dog, Buddy?'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to bring",
+      "g": "(mit-)bringen",
+      "d": "To take a thing with you to a place.",
+      "s": "Can I ___ my dog, Buddy?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bring",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bring",
+          "tier": "full"
+        },
+        {
+          "text": "to bring",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bring",
+            "tier": "full"
+          },
+          {
+            "text": "to bring",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bringen",
+            "tier": "full"
+          },
+          {
+            "text": "mitbringen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "take",
+          "de": "nehmen",
+          "scope": "d"
+        },
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "want",
+        "talk",
+        "find"
+      ],
+      "hintDe": "Etwas mit dir mitnehmen."
+    },
+    {
+      "id": "g1u02.w.to-let-somebody-out",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "want",
+            "bring",
+            "talk",
+            "find",
+            "love"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 chant: 'We're not happy. Let us out.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "blank takes only the verb 'Let'; particle 'out' stays in the carrier so a single-token answer is grammatical"
+      },
+      "w": "to let somebody out",
+      "g": "jemanden herauslassen",
+      "d": "To open the door so a child can go out.",
+      "s": "We're not happy. ___ us out!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Let",
+          "tier": "full"
+        },
+        {
+          "text": "let",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "let out",
+          "tier": "full"
+        },
+        {
+          "text": "let somebody out",
+          "tier": "full"
+        },
+        {
+          "text": "to let somebody out",
+          "tier": "full"
+        },
+        {
+          "text": "let",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "let out",
+            "tier": "full"
+          },
+          {
+            "text": "let somebody out",
+            "tier": "full"
+          },
+          {
+            "text": "to let somebody out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "herauslassen",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden herauslassen",
+            "tier": "full"
+          },
+          {
+            "text": "rauslassen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "let",
+          "de": "lassen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "want",
+        "bring",
+        "talk"
+      ],
+      "hintDe": "Die Tür aufmachen und jemanden raus lassen."
+    },
+    {
+      "id": "g1u02.w.to-talk",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "want",
+            "bring",
+            "find",
+            "give",
+            "love"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 p.18: 'Talk about the boys and girls.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to talk",
+      "g": "sprechen",
+      "d": "To speak with a friend.",
+      "s": "___ about the boys and girls.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Talk",
+          "tier": "full"
+        },
+        {
+          "text": "talk",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "talk",
+          "tier": "full"
+        },
+        {
+          "text": "to talk",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "talk",
+            "tier": "full"
+          },
+          {
+            "text": "to talk",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sprechen",
+            "tier": "full"
+          },
+          {
+            "text": "reden",
+            "tier": "full"
+          },
+          {
+            "text": "sich unterhalten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "friend",
+          "de": "Freund",
+          "scope": "d"
+        },
+        {
+          "word": "boys",
+          "de": "Jungen",
+          "scope": "s"
+        },
+        {
+          "word": "girls",
+          "de": "Mädchen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "want",
+        "bring",
+        "find"
+      ],
+      "hintDe": "Mit einem Freund reden."
+    },
+    {
+      "id": "g1u02.w.to-want",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bring",
+            "talk",
+            "find",
+            "give",
+            "love"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 chant context: 'I want a lion.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to want",
+      "g": "wollen",
+      "d": "To wish to have a thing.",
+      "s": "I ___ a lion.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "want",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "want",
+          "tier": "full"
+        },
+        {
+          "text": "to want",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "want",
+            "tier": "full"
+          },
+          {
+            "text": "to want",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wollen",
+            "tier": "full"
+          },
+          {
+            "text": "möchten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wish",
+          "de": "wünschen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "bring",
+        "talk",
+        "find"
+      ],
+      "hintDe": "Etwas haben wollen."
+    },
+    {
+      "id": "g1u02.w.train",
+      "rev": 3,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "car",
+            "tree",
+            "stone",
+            "zoo",
+            "ticket"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'Let's go on a train.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "train",
+      "g": "Zug",
+      "d": "You go on this at the zoo. It is a long thing on tracks.",
+      "s": "Go on a ___ at the zoo.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "train",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "train",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "train",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tracks",
+          "de": "Schienen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "car",
+        "tree",
+        "stone"
+      ],
+      "hintDe": "Er fährt auf Schienen."
+    },
+    {
+      "id": "g1u02.w.tree",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "car",
+            "ticket",
+            "stone",
+            "train",
+            "zoo"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'The monkeys are behind the tree.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "tree",
+      "g": "Baum",
+      "d": "It is a big green plant. A monkey can climb in it.",
+      "s": "The monkeys are behind the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tree",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tree",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tree",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Baum",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": "d"
+        },
+        {
+          "word": "plant",
+          "de": "Pflanze",
+          "scope": "d"
+        },
+        {
+          "word": "climb",
+          "de": "klettern",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "car",
+        "ticket",
+        "stone"
+      ],
+      "hintDe": "Ein Affe sitzt gern darin."
+    },
+    {
+      "id": "g1u02.w.under",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "on",
+            "in front of",
+            "behind",
+            "next to",
+            "in"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'There's a book under my desk.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "definition uses headword inside an example after the gloss-free clue; primary clue does not contain it"
+      },
+      "w": "under",
+      "g": "unter",
+      "d": "It is here, at the bottom. The book is here, ___ the desk.",
+      "s": "There's a book ___ my desk.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "under",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "under",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "under",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bottom",
+          "de": "unten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "on",
+        "in front of",
+        "behind"
+      ],
+      "hintDe": "Darunter, zum Beispiel unter dem Tisch."
+    },
+    {
+      "id": "g1u02.w.under-2",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "on",
+            "in front of",
+            "behind",
+            "next to",
+            "in"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 story: 'there's a parrot under the giraffe!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "under",
+      "g": "unter",
+      "d": "At the bottom of a thing. The parrot is here, and the giraffe is on top.",
+      "s": "There's a parrot ___ the giraffe!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "under",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "under",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "under",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bottom",
+          "de": "unten",
+          "scope": "d"
+        },
+        {
+          "word": "top",
+          "de": "oben",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "on",
+        "in front of",
+        "behind"
+      ],
+      "hintDe": "Darunter."
+    },
+    {
+      "id": "g1u02.w.us",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "he",
+            "she",
+            "they",
+            "we",
+            "it"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 chant: 'Let us out!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "us",
+      "g": "uns",
+      "d": "It is for you and me. The guide can look at ___.",
+      "s": "Let ___ out!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "us",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "us",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "us",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "uns",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "let",
+          "de": "lassen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "he",
+        "she",
+        "they"
+      ],
+      "hintDe": "Für uns (dich und mich)."
+    },
+    {
+      "id": "g1u02.w.we",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "he",
+            "she",
+            "they",
+            "it",
+            "us"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 chant: 'We are from York.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "we",
+      "g": "wir",
+      "d": "It is for you and me.",
+      "s": "Sue and I are at the zoo. ___ are happy.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "We",
+          "tier": "full"
+        },
+        {
+          "text": "we",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "we",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "we",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wir",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "he",
+        "she",
+        "they"
+      ],
+      "hintDe": "Für dich und mich zusammen."
+    },
+    {
+      "id": "g1u02.w.where",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "who",
+            "when",
+            "what",
+            "how",
+            "which"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 story: 'Where's the parrot?'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "where",
+      "g": "wo",
+      "d": "You ask this when you want to find a thing.",
+      "s": "___ is the parrot?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "where",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "where",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "where",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wo",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "who",
+        "when",
+        "what"
+      ],
+      "hintDe": "Du fragst danach, wenn du etwas suchst."
+    },
+    {
+      "id": "g1u02.w.year",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "family",
+            "group",
+            "ticket",
+            "zoo",
+            "car"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 p.18: 'I'm in Year 7.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "year",
+      "g": "Jahr",
+      "d": "You are ten of these now.",
+      "s": "I'm in ___ 7.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Year",
+          "tier": "full"
+        },
+        {
+          "text": "year",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "year",
+          "tier": "full"
+        },
+        {
+          "text": "years",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "year",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Jahr",
+            "tier": "full"
+          },
+          {
+            "text": "Jahrgangsstufe",
+            "tier": "full"
+          },
+          {
+            "text": "Klasse",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "family",
+        "group",
+        "ticket"
+      ],
+      "hintDe": "Du bist zum Beispiel zehn davon alt."
+    },
+    {
+      "id": "g1u02.w.zoo",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "car",
+            "tree",
+            "ticket",
+            "train",
+            "stone"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 2 — MORE Words: 'There are many animals in the zoo.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "zoo",
+      "g": "Zoo",
+      "d": "A place where you can see a lion, a monkey and a giraffe.",
+      "s": "The children are at the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "zoo",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "zoo",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "zoo",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zoo",
+            "tier": "full"
+          },
+          {
+            "text": "Tierpark",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "car",
+        "tree",
+        "ticket"
+      ],
+      "hintDe": "Hier siehst du viele Tiere."
+    }
+  ]
+}

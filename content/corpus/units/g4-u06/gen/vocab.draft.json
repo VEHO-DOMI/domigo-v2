@@ -1,0 +1,1420 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g4-u06",
+  "briefBank": "4ede02fd891e",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g4u06.w.achieve",
+      "w": "achieve",
+      "g": "erreichen",
+      "d": "to do a thing you want very much after you work for it",
+      "s": "After all this work, they finally ___ their goal.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "achieved",
+          "tier": "full"
+        },
+        {
+          "text": "achieve",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "achieve",
+          "tier": "full"
+        },
+        {
+          "text": "to achieve",
+          "tier": "full"
+        },
+        {
+          "text": "achieved",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "achieve",
+            "tier": "full"
+          },
+          {
+            "text": "to achieve",
+            "tier": "full"
+          },
+          {
+            "text": "achieved",
+            "tier": "partial"
+          },
+          {
+            "text": "reach",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erreichen",
+            "tier": "full"
+          },
+          {
+            "text": "schaffen",
+            "tier": "partial"
+          },
+          {
+            "text": "erlangen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "donate",
+        "exceed",
+        "inspire"
+      ],
+      "hintDe": "Du schaffst etwas, für das du hart gearbeitet hast.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "donate",
+          "exceed",
+          "inspire",
+          "support",
+          "transmit"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.donate",
+      "w": "donate",
+      "g": "spenden",
+      "d": "to give money or your time for free so you can help",
+      "s": "We ___ our old clothes and books to the children in need.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "donated",
+          "tier": "full"
+        },
+        {
+          "text": "donate",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "donate",
+          "tier": "full"
+        },
+        {
+          "text": "to donate",
+          "tier": "full"
+        },
+        {
+          "text": "donated",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "donate",
+            "tier": "full"
+          },
+          {
+            "text": "to donate",
+            "tier": "full"
+          },
+          {
+            "text": "donated",
+            "tier": "partial"
+          },
+          {
+            "text": "give",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "spenden",
+            "tier": "full"
+          },
+          {
+            "text": "stiften",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "achieve",
+        "exceed",
+        "transmit"
+      ],
+      "hintDe": "Du gibst Geld oder Sachen, um anderen zu helfen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "achieve",
+          "exceed",
+          "transmit",
+          "inspire",
+          "support"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.drop-out",
+      "w": "drop out (of school)",
+      "g": "(die Schule) abbrechen",
+      "d": "to stop going to your classes before the end",
+      "s": "He had a difficult time at school and had to ___ when he was 16.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "drop out",
+          "tier": "full"
+        },
+        {
+          "text": "drop out of school",
+          "tier": "full"
+        },
+        {
+          "text": "dropped out",
+          "tier": "partial"
+        },
+        {
+          "text": "dropped out of school",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drop out",
+          "tier": "full"
+        },
+        {
+          "text": "drop out of school",
+          "tier": "full"
+        },
+        {
+          "text": "to drop out",
+          "tier": "full"
+        },
+        {
+          "text": "dropped out",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drop out",
+            "tier": "full"
+          },
+          {
+            "text": "drop out of school",
+            "tier": "full"
+          },
+          {
+            "text": "to drop out of school",
+            "tier": "full"
+          },
+          {
+            "text": "leave school early",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "die Schule abbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "abbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "die Schule vorzeitig verlassen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "donate",
+        "inspire",
+        "support"
+      ],
+      "hintDe": "Du hörst mit der Schule auf, bevor du fertig bist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "donate",
+          "inspire",
+          "support",
+          "achieve",
+          "exceed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.goal",
+      "w": "goal",
+      "g": "Ziel",
+      "d": "the thing you want to reach or do",
+      "s": "My biggest ___ this year is to read 100 books.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "goal",
+          "tier": "full"
+        },
+        {
+          "text": "goals",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "goal",
+          "tier": "full"
+        },
+        {
+          "text": "a goal",
+          "tier": "full"
+        },
+        {
+          "text": "goals",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "goal",
+            "tier": "full"
+          },
+          {
+            "text": "goals",
+            "tier": "partial"
+          },
+          {
+            "text": "aim",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ziel",
+            "tier": "full"
+          },
+          {
+            "text": "das Ziel",
+            "tier": "full"
+          },
+          {
+            "text": "Vorhaben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "income",
+        "encouragement",
+        "community"
+      ],
+      "hintDe": "Das ist, was du erreichen willst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "income",
+          "encouragement",
+          "community",
+          "range of",
+          "support"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.income",
+      "w": "income",
+      "g": "Einkommen",
+      "d": "the money you earn from your work",
+      "s": "Her career was successful and she had a really good ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "income",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "income",
+          "tier": "full"
+        },
+        {
+          "text": "an income",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "income",
+            "tier": "full"
+          },
+          {
+            "text": "an income",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Einkommen",
+            "tier": "full"
+          },
+          {
+            "text": "das Einkommen",
+            "tier": "full"
+          },
+          {
+            "text": "Verdienst",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "goal",
+        "support",
+        "encouragement"
+      ],
+      "hintDe": "Das ist das Geld, das du mit deiner Arbeit verdienst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "goal",
+          "support",
+          "encouragement",
+          "community",
+          "range of"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.inspire",
+      "w": "inspire",
+      "g": "inspirieren",
+      "d": "to make people want to do good and help",
+      "s": "My art teacher really ___ me to paint every day.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "inspired",
+          "tier": "full"
+        },
+        {
+          "text": "inspire",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "inspire",
+          "tier": "full"
+        },
+        {
+          "text": "to inspire",
+          "tier": "full"
+        },
+        {
+          "text": "inspired",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "inspire",
+            "tier": "full"
+          },
+          {
+            "text": "to inspire",
+            "tier": "full"
+          },
+          {
+            "text": "inspired",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "inspirieren",
+            "tier": "full"
+          },
+          {
+            "text": "anregen",
+            "tier": "partial"
+          },
+          {
+            "text": "begeistern",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "support",
+        "donate",
+        "achieve"
+      ],
+      "hintDe": "Du bringst jemanden dazu, etwas Gutes tun zu wollen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "support",
+          "donate",
+          "achieve",
+          "exceed",
+          "transmit"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.support",
+      "w": "support",
+      "g": "unterstützen",
+      "d": "to help somebody when they have a difficult time",
+      "s": "My parents always ___ me when I have a difficult day at school.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "support",
+          "tier": "full"
+        },
+        {
+          "text": "supported",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "support",
+          "tier": "full"
+        },
+        {
+          "text": "to support",
+          "tier": "full"
+        },
+        {
+          "text": "supported",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "support",
+            "tier": "full"
+          },
+          {
+            "text": "to support",
+            "tier": "full"
+          },
+          {
+            "text": "supported",
+            "tier": "partial"
+          },
+          {
+            "text": "help",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unterstützen",
+            "tier": "full"
+          },
+          {
+            "text": "helfen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "inspire",
+        "donate",
+        "exceed"
+      ],
+      "hintDe": "Du hilfst jemandem, wenn es ihm schwerfällt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "inspire",
+          "donate",
+          "exceed",
+          "achieve",
+          "transmit"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.encouragement",
+      "w": "encouragement",
+      "g": "Ermutigung",
+      "d": "the help and hope you give somebody so they do not give up",
+      "s": "My teacher gives me a lot of ___ when my work is difficult.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "encouragement",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "encouragement",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "encouragement",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ermutigung",
+            "tier": "full"
+          },
+          {
+            "text": "Förderung",
+            "tier": "full"
+          },
+          {
+            "text": "Zuspruch",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "income",
+        "goal",
+        "community"
+      ],
+      "hintDe": "Das sind Hilfe und Mut, die dir jemand gibt, damit du weitermachst.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "income",
+          "goal",
+          "community",
+          "range of",
+          "support"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.community",
+      "w": "community",
+      "g": "Gemeinschaft",
+      "d": "all the people who live in one place or who share a thing",
+      "s": "Everybody in our ___ came to help clean up the park.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "community",
+          "tier": "full"
+        },
+        {
+          "text": "communities",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "community",
+          "tier": "full"
+        },
+        {
+          "text": "a community",
+          "tier": "full"
+        },
+        {
+          "text": "communities",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "community",
+            "tier": "full"
+          },
+          {
+            "text": "communities",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gemeinschaft",
+            "tier": "full"
+          },
+          {
+            "text": "die Gemeinschaft",
+            "tier": "full"
+          },
+          {
+            "text": "Gemeinde",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "income",
+        "goal",
+        "encouragement"
+      ],
+      "hintDe": "Das sind alle Leute, die am selben Ort leben oder etwas teilen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "income",
+          "goal",
+          "encouragement",
+          "range of",
+          "support"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.exceed",
+      "w": "exceed",
+      "g": "übertreffen",
+      "d": "to be more than the number that was the most",
+      "s": "Now she has ___ her goal of 1,000 books after a lot of support.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "exceeded",
+          "tier": "full"
+        },
+        {
+          "text": "exceed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "exceed",
+          "tier": "full"
+        },
+        {
+          "text": "to exceed",
+          "tier": "full"
+        },
+        {
+          "text": "exceeded",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "exceed",
+            "tier": "full"
+          },
+          {
+            "text": "to exceed",
+            "tier": "full"
+          },
+          {
+            "text": "exceeded",
+            "tier": "partial"
+          },
+          {
+            "text": "go over",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "übertreffen",
+            "tier": "full"
+          },
+          {
+            "text": "überschreiten",
+            "tier": "full"
+          },
+          {
+            "text": "übersteigen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "achieve",
+        "donate",
+        "inspire"
+      ],
+      "hintDe": "Du machst oder bist mehr, als erlaubt oder geplant war.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "achieve",
+          "donate",
+          "inspire",
+          "support",
+          "transmit"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.frustrated",
+      "w": "frustrated",
+      "g": "frustriert",
+      "d": "feeling angry and upset because you cannot do what you want",
+      "s": "He could not do the difficult homework and was really ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "frustrated",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "frustrated",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "frustrated",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "frustriert",
+            "tier": "full"
+          },
+          {
+            "text": "enttäuscht",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "grateful",
+        "community",
+        "goal"
+      ],
+      "hintDe": "So fühlst du dich, wenn etwas nicht klappt und du dich ärgerst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "grateful",
+          "goal",
+          "community",
+          "encouragement",
+          "income"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.grateful",
+      "w": "grateful",
+      "g": "dankbar",
+      "d": "feeling that you want to thank somebody for their help",
+      "s": "I am so ___ that you helped me carry all these heavy books.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "grateful",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "grateful",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "grateful",
+            "tier": "full"
+          },
+          {
+            "text": "thankful",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dankbar",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "frustrated",
+        "goal",
+        "income"
+      ],
+      "hintDe": "So fühlst du dich, wenn du jemandem danken möchtest.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "frustrated",
+          "goal",
+          "income",
+          "community",
+          "encouragement"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.in-particular",
+      "w": "in particular",
+      "g": "besonders",
+      "d": "more than anyone or anything else",
+      "s": "I like all the subjects, but I love science ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "in particular",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "in particular",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "in particular",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "besonders",
+            "tier": "full"
+          },
+          {
+            "text": "im Speziellen",
+            "tier": "full"
+          },
+          {
+            "text": "vor allem",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Small wonder",
+        "range of",
+        "learn a lesson"
+      ],
+      "hintDe": "Du meinst etwas mehr als alles andere.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Small wonder",
+          "range of",
+          "learn a lesson",
+          "relate to",
+          "grateful"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.learn-a-lesson",
+      "w": "learn a lesson",
+      "g": "eine Lehre aus etw. ziehen",
+      "d": "to understand from a bad time so you do not do it again",
+      "s": "I did not read the difficult book in time, so now I ___ and start my homework early.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "learn a lesson",
+          "tier": "full"
+        },
+        {
+          "text": "learned a lesson",
+          "tier": "partial"
+        },
+        {
+          "text": "learnt a lesson",
+          "tier": "partial"
+        },
+        {
+          "text": "learned my lesson",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "learn a lesson",
+          "tier": "full"
+        },
+        {
+          "text": "to learn a lesson",
+          "tier": "full"
+        },
+        {
+          "text": "learned a lesson",
+          "tier": "partial"
+        },
+        {
+          "text": "learnt a lesson",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "learn a lesson",
+            "tier": "full"
+          },
+          {
+            "text": "to learn a lesson",
+            "tier": "full"
+          },
+          {
+            "text": "learned a lesson",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Lehre aus etwas ziehen",
+            "tier": "full"
+          },
+          {
+            "text": "aus etwas lernen",
+            "tier": "full"
+          },
+          {
+            "text": "seine Lektion lernen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "relate to",
+        "range of",
+        "in particular"
+      ],
+      "hintDe": "Du lernst aus etwas Schlechtem, damit es nicht wieder passiert.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "relate to",
+          "range of",
+          "in particular",
+          "Small wonder",
+          "achieve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.range-of",
+      "w": "range of",
+      "g": "eine Reihe von",
+      "d": "many kinds of one thing, like books or food",
+      "s": "We can read a wide ___ stories from all over the world.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "range of",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "range of",
+          "tier": "full"
+        },
+        {
+          "text": "a range of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "range of",
+            "tier": "full"
+          },
+          {
+            "text": "a range of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Reihe von",
+            "tier": "full"
+          },
+          {
+            "text": "zahlreiche",
+            "tier": "full"
+          },
+          {
+            "text": "eine Vielzahl von",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "in particular",
+        "Small wonder",
+        "relate to"
+      ],
+      "hintDe": "Das sind viele verschiedene Arten von einer Sache.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "in particular",
+          "Small wonder",
+          "relate to",
+          "learn a lesson",
+          "community"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.relate-to",
+      "w": "relate to",
+      "g": "sich mit jdm./etw. identifizieren",
+      "d": "to understand how somebody feels because it happened to you too",
+      "s": "I can really ___ this character because she loves reading, just like me.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "relate to",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "relate to",
+          "tier": "full"
+        },
+        {
+          "text": "to relate to",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "relate to",
+            "tier": "full"
+          },
+          {
+            "text": "to relate to",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich mit jemandem identifizieren",
+            "tier": "full"
+          },
+          {
+            "text": "nachempfinden",
+            "tier": "full"
+          },
+          {
+            "text": "sich hineinversetzen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "learn a lesson",
+        "range of",
+        "in particular"
+      ],
+      "hintDe": "Du verstehst, wie sich jemand fühlt, weil es dir auch passiert ist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "learn a lesson",
+          "range of",
+          "in particular",
+          "Small wonder",
+          "support"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.small-wonder",
+      "w": "Small wonder",
+      "g": "Kein Wunder",
+      "d": "it is not a surprise at all",
+      "s": "Some children do not read books. ___, because the books are not about them.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Small wonder",
+          "tier": "full"
+        },
+        {
+          "text": "small wonder",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "small wonder",
+          "tier": "full"
+        },
+        {
+          "text": "Small wonder",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "small wonder",
+            "tier": "full"
+          },
+          {
+            "text": "no wonder",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kein Wunder",
+            "tier": "full"
+          },
+          {
+            "text": "Wen wundert es",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "in particular",
+        "range of",
+        "relate to"
+      ],
+      "hintDe": "Du sagst das, wenn dich etwas gar nicht überrascht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "in particular",
+          "range of",
+          "relate to",
+          "learn a lesson",
+          "grateful"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u06.w.transmit",
+      "w": "transmit",
+      "g": "senden",
+      "d": "to move sound or pictures from one place to far away",
+      "s": "A radio can ___ sound to people many kilometres away.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "transmit",
+          "tier": "full"
+        },
+        {
+          "text": "transmits",
+          "tier": "partial"
+        },
+        {
+          "text": "transmitted",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "transmit",
+          "tier": "full"
+        },
+        {
+          "text": "to transmit",
+          "tier": "full"
+        },
+        {
+          "text": "transmitted",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "transmit",
+            "tier": "full"
+          },
+          {
+            "text": "to transmit",
+            "tier": "full"
+          },
+          {
+            "text": "transmitted",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "senden",
+            "tier": "full"
+          },
+          {
+            "text": "übermitteln",
+            "tier": "full"
+          },
+          {
+            "text": "übertragen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "donate",
+        "inspire",
+        "achieve"
+      ],
+      "hintDe": "Du schickst Töne oder Bilder über eine weite Strecke.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "donate",
+          "inspire",
+          "achieve",
+          "support",
+          "exceed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

@@ -1,0 +1,4371 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g3-u10",
+  "briefBank": "fa1519f49700",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "From 1897 onward, women ___ (allowed to / attend) university.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were allowed to attend",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um die Vergangenheit und um mehrere Frauen: was oder were?",
+      "hintEn": null,
+      "explainDe": "Frauen ist Plural und es geht um damals, also nimmst du were allowed to + Grundform: were allowed to attend.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "In 1918, women ___ (allowed to / vote) for the first time.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were allowed to vote",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mehrere Frauen, lange her: welche Form von be passt?",
+      "hintEn": null,
+      "explainDe": "Plural-Subjekt in der Vergangenheit: were allowed to + Grundform, also were allowed to vote.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "When I was little, I ___ (not allowed to / stay) up late.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "wasn't allowed to stay",
+          "tier": "full"
+        },
+        {
+          "text": "was not allowed to stay",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Ich-Satz in der Vergangenheit mit Verneinung.",
+      "hintEn": null,
+      "explainDe": "Bei I in der Vergangenheit nimmst du wasn't allowed to + Grundform: wasn't allowed to stay.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-gf-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Until 1949, female teachers ___ (not allowed to / marry).",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "weren't allowed to marry",
+          "tier": "full"
+        },
+        {
+          "text": "were not allowed to marry",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Teachers ist Plural und es geht um früher, mit Verneinung.",
+      "hintEn": null,
+      "explainDe": "Plural-Subjekt in der Vergangenheit mit Verneinung: weren't allowed to + Grundform, also weren't allowed to marry.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Next year, students ___ (be allowed to / choose) their own books.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will be allowed to choose",
+          "tier": "full"
+        },
+        {
+          "text": "'ll be allowed to choose",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Next year zeigt: es geht um die Zukunft. Vergiss be nicht.",
+      "hintEn": null,
+      "explainDe": "Zukunft heißt will be allowed to + Grundform. Das be darf nicht fehlen: will be allowed to choose.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-gf-022",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Even in Austria, women ___ (not always / been allowed to) do what men have.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "haven't always been allowed to",
+          "tier": "full"
+        },
+        {
+          "text": "have not always been allowed to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht bis heute: Present perfect mit have und been.",
+      "hintEn": null,
+      "explainDe": "Mit Gegenwartsbezug nimmst du have/has been allowed to. Bei women (Plural) also haven't always been allowed to.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We ___ (allowed to / use) our phones in class last year.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were allowed to use",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Last year zeigt die Vergangenheit, und we ist Plural.",
+      "hintEn": null,
+      "explainDe": "We in der Vergangenheit: were allowed to + Grundform, also were allowed to use.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-gf-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Until 1869, girls ___ (only allowed to / go) to school for five years, but today they ___ (allowed to / study) everything.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "were only allowed to go | are allowed to study",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst die Vergangenheit (1869), dann die Gegenwart (today): unterschiedliche Formen von be.",
+      "hintEn": null,
+      "explainDe": "Until 1869 ist Vergangenheit (were allowed to go), today ist Gegenwart (are allowed to study). Achte auf die Zeit.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ you ___ (allowed to / bring) your phone to school when you were younger?",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Were | allowed to bring",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Frage in der Vergangenheit mit you: womit beginnt sie?",
+      "hintEn": null,
+      "explainDe": "Bei einer Frage in der Vergangenheit mit you stellst du were nach vorne: Were you allowed to bring ...?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-gf-025",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Wähle den Satz, der zeigt, dass die Kinder gestern NICHT im See schwimmen durften.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The children weren't allowed to swim in the lake.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The children wasn't allowed to swim in the lake.",
+        "The children didn't allowed to swim in the lake.",
+        "The children weren't allowed swimming in the lake."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Children ist Plural, also brauchst du weren't, und nach allowed kommt to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist weren't allowed to swim: Plural-Subjekt nimmt weren't, und nach allowed steht to + Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The children wasn't allowed to swim in the lake.",
+          "The children didn't allowed to swim in the lake.",
+          "The children weren't allowed swimming in the lake.",
+          "The children weren't allow to swim in the lake."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u10-past-permission-mc-022",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wähle den Satz über eine Erlaubnis in der Zukunft.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We will be allowed to stay up late on New Year's Eve.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We will allowed to stay up late on New Year's Eve.",
+        "We will be allow to stay up late on New Year's Eve.",
+        "We are allowed to stay up late on New Year's Eve."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zukunft heißt will be allowed to + Grundform. Welcher Satz hat das genau so?",
+      "hintEn": null,
+      "explainDe": "Nur will be allowed to stay ist korrekt: das be und das to dürfen nicht fehlen, und are wäre Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "We will allowed to stay up late on New Year's Eve.",
+          "We will be allow to stay up late on New Year's Eve.",
+          "We are allowed to stay up late on New Year's Eve.",
+          "We were allowed to stay up late on New Year's Eve."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u10-past-permission-mc-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wähle den Satz, der sagt, dass Frauen bis heute nicht immer wählen durften.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Women haven't always been allowed to vote.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Women weren't always allowed to vote.",
+        "Women haven't always been allowed vote.",
+        "Women hasn't always been allowed to vote."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mit Gegenwartsbezug brauchst du have been allowed to. Achte auf been und to.",
+      "hintEn": null,
+      "explainDe": "Richtig ist haven't always been allowed to vote: Present perfect mit have + been, dann to + Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Women weren't always allowed to vote.",
+          "Women haven't always been allowed vote.",
+          "Women hasn't always been allowed to vote.",
+          "Women haven't always be allowed to vote."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wähle den Satz, der zeigt, dass Tom gestern früher gehen durfte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom was allowed to leave early yesterday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Tom were allowed to leave early yesterday.",
+        "Tom allowed to leave early yesterday.",
+        "Tom is allowed to leave early yesterday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Tom ist Singular und yesterday zeigt die Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Bei Tom (Singular) in der Vergangenheit nimmst du was allowed to + Grundform: was allowed to leave.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Tom were allowed to leave early yesterday.",
+          "Tom allowed to leave early yesterday.",
+          "Tom is allowed to leave early yesterday.",
+          "Tom was allowed leave early yesterday."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u10-past-permission-mc-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: We was allowed to leave school early on Friday.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We were allowed to leave school early on Friday.",
+          "tier": "full"
+        },
+        {
+          "text": "were allowed",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "We ist Plural. Welche Form von be in der Vergangenheit gehört dazu?",
+      "hintEn": null,
+      "explainDe": "We braucht were, nicht was: We were allowed to leave.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-ec-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: He didn't allowed to eat sweets before dinner.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He wasn't allowed to eat sweets before dinner.",
+          "tier": "full"
+        },
+        {
+          "text": "He was not allowed to eat sweets before dinner.",
+          "tier": "full"
+        },
+        {
+          "text": "wasn't allowed",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mit allowed to bildest du die Verneinung in der Vergangenheit ohne didn't.",
+      "hintEn": null,
+      "explainDe": "Statt didn't allowed nimmst du wasn't allowed to: He wasn't allowed to eat.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-ec-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: We will allowed to stay out later next year.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We will be allowed to stay out later next year.",
+          "tier": "full"
+        },
+        {
+          "text": "will be allowed",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Zukunft fehlt hier ein kleines Wort nach will.",
+      "hintEn": null,
+      "explainDe": "Nach will muss be stehen: will be allowed to stay.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: Women have not always be allowed to study all subjects.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Women have not always been allowed to study all subjects.",
+          "tier": "full"
+        },
+        {
+          "text": "Women haven't always been allowed to study all subjects.",
+          "tier": "full"
+        },
+        {
+          "text": "been allowed",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Im Present perfect steht nach have nicht be, sondern eine andere Form.",
+      "hintEn": null,
+      "explainDe": "Nach have/has steht been, nicht be: have not always been allowed to study.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib den Satz mit 'allowed to' um: 'Students could not run in the corridors.' → Students ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "weren't allowed to run in the corridors",
+          "tier": "full"
+        },
+        {
+          "text": "were not allowed to run in the corridors",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Students ist Plural und es geht um die Vergangenheit mit Verneinung.",
+      "hintEn": null,
+      "explainDe": "Aus could not wird weren't allowed to + Grundform: weren't allowed to run.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-tf-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreib weiter über die Zukunft: 'At the moment, children can't use the new sports court. But from September, children ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will be allowed to use the new sports court",
+          "tier": "full"
+        },
+        {
+          "text": "will be allowed to use it",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "From September zeigt die Zukunft: will be allowed to + Grundform.",
+      "hintEn": null,
+      "explainDe": "In der Zukunft nimmst du will be allowed to + Grundform: will be allowed to use.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-tf-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreib den Satz im Present perfect: 'In the past, women were not always allowed to vote.' → Up to now, women ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "haven't always been allowed to vote",
+          "tier": "full"
+        },
+        {
+          "text": "have not always been allowed to vote",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Up to now zeigt Gegenwartsbezug: have been allowed to.",
+      "hintEn": null,
+      "explainDe": "Mit Bezug bis heute nimmst du have/has been allowed to: haven't always been allowed to vote.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Wir durften im Park Fußball spielen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We were allowed to play football in the park.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vergangenheit, we ist Plural: were allowed to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Durften in der Vergangenheit mit we heißt were allowed to + Grundform: were allowed to play.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-tr-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Er wird nächstes Jahr allein reisen dürfen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He will be allowed to travel alone next year.",
+          "tier": "full"
+        },
+        {
+          "text": "Next year, he will be allowed to travel alone.",
+          "tier": "full"
+        },
+        {
+          "text": "He will be allowed to travel on his own next year.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zukunft: will be allowed to + Grundform. Vergiss be nicht.",
+      "hintEn": null,
+      "explainDe": "Wird ... dürfen heißt in der Zukunft will be allowed to + Grundform: will be allowed to travel.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-tr-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Ab 1897 durften Frauen die Universität besuchen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "From 1897, women were allowed to attend university.",
+          "tier": "full"
+        },
+        {
+          "text": "From 1897 onward, women were allowed to attend university.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mehrere Frauen, lange her: were allowed to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Plural-Subjekt in der Vergangenheit: were allowed to attend.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "she / wasn't / allowed / to / stay / out / late",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She wasn't allowed to stay out late.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt, dann wasn't allowed to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: She wasn't allowed to + Grundform: She wasn't allowed to stay out late.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "were",
+          "be",
+          "going",
+          "is"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u10-past-permission-sb-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "will / be / you / allowed / to / drive / when / you / are / 18",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You will be allowed to drive when you are 18.",
+          "tier": "full"
+        },
+        {
+          "text": "When you are 18, you will be allowed to drive.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zukunft: will be allowed to + Grundform, dann der when-Teil.",
+      "hintEn": null,
+      "explainDe": "You will be allowed to drive, dann when you are 18. Das be muss nach will stehen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was",
+          "were",
+          "going",
+          "been"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u10-past-permission-sb-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "women / were / allowed / to / vote / in / 1918",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Women were allowed to vote in 1918.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Plural-Subjekt in der Vergangenheit: were allowed to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Women were allowed to vote in 1918: were passt zum Plural und zur Vergangenheit.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was",
+          "be",
+          "are",
+          "been"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Deine Freundin erzählt von den Regeln an ihrer alten Schule. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We weren't allowed to eat in the classroom.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We aren't allowed to eat in the classroom.",
+        "We won't be allowed to eat in the classroom.",
+        "We haven't been allowed to eat in the classroom."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Alte Schule heißt Vergangenheit: weren't allowed to.",
+      "hintEn": null,
+      "explainDe": "Über früher sprichst du mit weren't allowed to. aren't wäre jetzt, won't wäre die Zukunft.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "We aren't allowed to eat in the classroom.",
+          "We won't be allowed to eat in the classroom.",
+          "We haven't been allowed to eat in the classroom.",
+          "We don't be allowed to eat in the classroom."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u10-past-permission-cp-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Ein Kind freut sich auf seinen 18. Geburtstag und spricht über die Zukunft. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I will be allowed to drive a car.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I was allowed to drive a car.",
+        "I will allowed to drive a car.",
+        "I have been allowed to drive a car."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um die Zukunft: will be allowed to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Über die Zukunft sprichst du mit will be allowed to drive. was wäre Vergangenheit, und will allowed fehlt das be.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I was allowed to drive a car.",
+          "I will allowed to drive a car.",
+          "I have been allowed to drive a car.",
+          "I am allowed to drive a car."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u10-past-permission-tf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere die Satzanfänge danach, ob sie über früher, später oder bis jetzt sprechen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "Last year, ...",
+          "members": [
+            "we were allowed to use our phones",
+            "she wasn't allowed to go out"
+          ]
+        },
+        {
+          "label": "Next year, ...",
+          "members": [
+            "students will be allowed to choose",
+            "we won't be allowed to play here"
+          ]
+        },
+        {
+          "label": "Up to now, ...",
+          "members": [
+            "women haven't always been allowed to vote",
+            "he has been allowed to stay up late"
+          ]
+        }
+      ],
+      "hintDe": "Achte auf die Form von be: were/wasn't, will be, has/haven't been.",
+      "hintEn": null,
+      "explainDe": "was/were allowed to gehört zu früher, will be allowed to zu später, have/has been allowed to zu bis jetzt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Sortiere die Sätze in richtig und falsch.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "They were allowed to leave early.",
+            "We will be allowed to vote soon.",
+            "She has been allowed to stay."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "They was allowed to leave early.",
+            "We will allowed to vote soon.",
+            "She has been allowed stay."
+          ]
+        }
+      ],
+      "hintDe": "Prüfe was/were beim Subjekt, das be nach will und das to vor der Grundform.",
+      "hintEn": null,
+      "explainDe": "Falsch sind: They was (Plural braucht were), will allowed (be fehlt) und allowed stay (to fehlt).",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "matching",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Verbinde die Satzhälften.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "When I was five, I",
+          "right": "wasn't allowed to cross the street alone."
+        },
+        {
+          "left": "Last summer, we",
+          "right": "were allowed to camp by the river."
+        },
+        {
+          "left": "Next year, students",
+          "right": "will be allowed to bring tablets to class."
+        },
+        {
+          "left": "Up to now, girls",
+          "right": "haven't always been allowed to study everything."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte auf die Form von be und auf die Zeitwörter wie last, next, up to now.",
+      "hintEn": null,
+      "explainDe": "was/were allowed to passt zu früher, will be allowed to zu next year, have/has been allowed to zu up to now.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-mt-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bilde eine Ja/Nein-Frage: 'She was allowed to go to the concert.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Was she allowed to go to the concert?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Stell was nach vorne, dann das Subjekt, dann allowed to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Für die Frage stellst du was nach vorne: Was she allowed to go to the concert?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-qf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.be-allowed-to-tenses",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bilde eine Ja/Nein-Frage über die Zukunft: 'They will be allowed to sign the petition.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Will they be allowed to sign the petition?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei der Zukunft stellst du will nach vorne; be allowed to bleibt zusammen.",
+      "hintEn": null,
+      "explainDe": "Will kommt nach vorne: Will they be allowed to sign the petition? Das be bleibt erhalten.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Allgemeine Fähigkeit früher. Ergänze: 'I ___ ride a bike when I was six.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeine Fähigkeit über einen längeren Zeitraum in der Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Für eine allgemeine Fähigkeit über einen Zeitraum nimmst du 'could'. 'can' ist Gegenwart und passt hier nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-gf-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Allgemeine Fähigkeit früher. Ergänze: 'My grandmother ___ speak French when she was young.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Fähigkeit, die jemand über Jahre hatte.",
+      "hintEn": null,
+      "explainDe": "Eine Fähigkeit, die über einen Zeitraum bestand, drückst du mit 'could' aus.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-gf-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Allgemeine Fähigkeit früher. Ergänze: 'When I was a child, I ___ climb trees really well.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Etwas, das du als Kind allgemein gut konntest.",
+      "hintEn": null,
+      "explainDe": "Für eine allgemeine Fähigkeit in der Kindheit nimmst du 'could'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-mc-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verneinte allgemeine Fähigkeit. Ergänze: 'She ___ ride a bike until she was eight.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "couldn't",
+          "tier": "full"
+        },
+        {
+          "text": "could not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinte Fähigkeit: Was war über einen Zeitraum nicht möglich?",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von 'could' ist 'couldn't' (could not). 'can't' wäre Gegenwart.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-gf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Einmaliger Erfolg bei einer bestimmten Gelegenheit. Ergänze: 'After practising for weeks, she ___ finally pass the test.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was able to",
+          "tier": "full"
+        },
+        {
+          "text": "managed to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger Erfolg bei einer bestimmten Gelegenheit - nicht 'could'.",
+      "hintEn": null,
+      "explainDe": "Bei einem einzelnen geschafften Erfolg nimmst du 'was able to', nicht 'could'. Vergiss das 'to' nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-gf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Einmaliger Erfolg. Ergänze: 'The test was difficult, but I ___ pass it.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was able to",
+          "tier": "full"
+        },
+        {
+          "text": "managed to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Etwas Schwieriges, das du dieses eine Mal geschafft hast.",
+      "hintEn": null,
+      "explainDe": "Für einen einmaligen geschafften Erfolg nimmst du 'was able to'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-gf-022",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Einmaliger Erfolg. Ergänze: 'After trying for hours, she ___ fix the computer.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was able to",
+          "tier": "full"
+        },
+        {
+          "text": "managed to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach langem Probieren hat sie es dieses eine Mal geschafft.",
+      "hintEn": null,
+      "explainDe": "Ein einmaliger Erfolg nach Anstrengung verlangt 'was able to'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-gf-023",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Einmaliger Erfolg in der Mehrzahl. Ergänze: 'The fire was dangerous, but the firefighters ___ stop it.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were able to",
+          "tier": "full"
+        },
+        {
+          "text": "managed to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mehrere Personen schaffen dieses eine Mal etwas. Achte auf was/were.",
+      "hintEn": null,
+      "explainDe": "Bei 'the firefighters' (Mehrzahl) heißt es 'were able to'. Für einen einmaligen Erfolg nimmst du 'was/were able to'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-gf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verneinter einmaliger Erfolg. Ergänze: 'They ___ win the match last Saturday.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "weren't able to",
+          "tier": "full"
+        },
+        {
+          "text": "were not able to",
+          "tier": "full"
+        },
+        {
+          "text": "couldn't",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei diesem einen Spiel haben sie es nicht geschafft. Mehrzahl.",
+      "hintEn": null,
+      "explainDe": "Bei einem einmaligen Ereignis in der Mehrzahl nimmst du 'weren't able to'. In der Verneinung ist auch 'couldn't' möglich.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Allgemein UND einmalig. Ergänze beide Lücken: 'He ___ swim when he was little, but yesterday he ___ swim across the lake for the first time.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "could | was able to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erste Lücke: allgemeine Fähigkeit. Zweite Lücke: einmaliger Erfolg.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeit = 'could'; der einmalige Erfolg 'gestern zum ersten Mal' = 'was able to'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-gf-024",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Was ging nicht, was hast du trotzdem geschafft? Ergänze beide Lücken: 'I ___ hear the teacher because the class was so noisy, but I ___ read the board.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "couldn't | was able to",
+          "tier": "full"
+        },
+        {
+          "text": "could not | was able to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erste Lücke: was war nicht möglich? Zweite Lücke: was hast du trotzdem geschafft?",
+      "hintEn": null,
+      "explainDe": "'couldn't hear' beschreibt, was unmöglich war; 'was able to read' den einmaligen Erfolg trotz Lärm.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-gf-025",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bestimmte Gelegenheit. Ergänze: 'The door was locked, but my brother ___ open it.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was able to",
+          "tier": "full"
+        },
+        {
+          "text": "managed to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einziger geschaffter Erfolg bei dieser einen Tür.",
+      "hintEn": null,
+      "explainDe": "Eine einmalige geschaffte Handlung ('die Tür war zu, aber er hat es geschafft') verlangt 'was able to', nicht 'could'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-ec-022",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Allgemeine Fähigkeit. Ergänze: 'My big brother ___ draw really well when he was ten.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Fähigkeit, die er mit zehn allgemein hatte.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeit in der Vergangenheit = 'could'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-tr-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Einmaliger Erfolg. Ergänze: 'There was a lot of traffic, but we ___ reach the meeting on time.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were able to",
+          "tier": "full"
+        },
+        {
+          "text": "managed to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Trotz eines Hindernisses dieses eine Mal geschafft. Mehrzahl 'we'.",
+      "hintEn": null,
+      "explainDe": "Ein einmaliger Erfolg trotz Hindernis = 'were able to' (Mehrzahl 'we').",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Allgemeine Fähigkeit früher. Wähle: 'She ___ play the guitar when she was six.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "was able",
+        "could to",
+        "can"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeine Fähigkeit über einen Zeitraum.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeit = 'could'. 'could to' gibt es nicht, und 'can' ist Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was able",
+          "could to",
+          "can",
+          "is able to",
+          "was able"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u10-could-was-able-to-mc-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Einmaliger Erfolg bei einer Gelegenheit. Wähle: 'After running for two hours, he ___ finish the race.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was able to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "could",
+        "was able",
+        "could to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einziger geschaffter Erfolg - achte auf das 'to'.",
+      "hintEn": null,
+      "explainDe": "Ein einmaliger Erfolg verlangt 'was able to'. 'could' wäre allgemein, 'was able' lässt das 'to' weg.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "could",
+          "was able",
+          "could to",
+          "were able to",
+          "can"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u10-could-was-able-to-mc-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Notausgang beim Feueralarm. Wähle den richtigen Satz.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Everybody was able to leave the building.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Everybody could leave the building.",
+        "Everybody was able leave the building.",
+        "Everybody could to leave the building."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Alle haben es bei diesem einen Notfall geschafft hinauszukommen.",
+      "hintEn": null,
+      "explainDe": "Ein einmaliger geschaffter Erfolg ('alle kamen heraus') verlangt 'was able to'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Everybody could leave the building.",
+          "Everybody was able leave the building.",
+          "Everybody could to leave the building.",
+          "Everybody were able to leave the building.",
+          "Everybody can leave the building."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u10-could-was-able-to-mc-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welches Satzpaar verwendet 'could' und 'was able to' richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He could run fast when he was a child. / He was able to win the race last Saturday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He was able to run fast when he was a child. / He could win the race last Saturday.",
+        "He could run fast when he was a child. / He could win the race last Saturday.",
+        "He was able to run fast when he was a child. / He was able to win the race last Saturday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeine Fähigkeit als Kind, dann ein einmaliger Sieg an einem bestimmten Tag.",
+      "hintEn": null,
+      "explainDe": "Allgemein 'schnell laufen' = 'could'; der einmalige Sieg 'letzten Samstag' = 'was able to'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "He was able to run fast when he was a child. / He could win the race last Saturday.",
+          "He could run fast when he was a child. / He could win the race last Saturday.",
+          "He was able to run fast when he was a child. / He was able to win the race last Saturday.",
+          "He could to run fast when he was a child. / He was able to win the race last Saturday.",
+          "He can run fast when he was a child. / He was able to win the race last Saturday."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u10-could-was-able-to-mc-022",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welcher Satz beschreibt eine allgemeine Fähigkeit von früher richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I could read when I was four.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I could readed when I was four.",
+        "I could to read when I was four.",
+        "I can read when I was four."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Fähigkeit über einen Zeitraum, nicht ein einmaliges Ereignis.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeit über einen Zeitraum = 'could'. 'was able to' wäre für ein einmaliges Ereignis.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I could readed when I was four.",
+          "I could to read when I was four.",
+          "I can read when I was four.",
+          "I was able read when I was four.",
+          "I am able to read when I was four."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Die Tür war abgeschlossen. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was able to open the door in the end.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She could open the door in the end.",
+        "She was able open the door in the end.",
+        "She could to open the door in the end."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger geschaffter Erfolg trotz Hindernis.",
+      "hintEn": null,
+      "explainDe": "Ein einziger geschaffter Erfolg ('am Ende hat sie es geschafft') verlangt 'was able to', nicht 'could'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She could open the door in the end.",
+          "She was able open the door in the end.",
+          "She could to open the door in the end.",
+          "She were able to open the door in the end.",
+          "She can open the door in the end."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Deine Freundin erzählt, was sie als kleines Kind allgemein konnte. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I could ride a horse when I was little.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I could rode a horse when I was little.",
+        "I could to ride a horse when I was little.",
+        "I can ride a horse when I was little."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeine Fähigkeit in der Kindheit, kein einmaliges Ereignis.",
+      "hintEn": null,
+      "explainDe": "Für eine allgemeine Fähigkeit in der Kindheit nimmst du 'could'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I could rode a horse when I was little.",
+          "I could to ride a horse when I was little.",
+          "I can ride a horse when I was little.",
+          "I was able ride a horse when I was little.",
+          "I could ride a horse last week."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Dein Freund erzählt von einem schweren Test, den er gestern gerade noch geschafft hat. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It was difficult, but I was able to pass it.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It was difficult, but I could pass it.",
+        "It was difficult, but I was able pass it.",
+        "It was difficult, but I could to pass it."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger Erfolg bei diesem einen Test - nicht 'could'.",
+      "hintEn": null,
+      "explainDe": "Ein einzelner geschaffter Erfolg ('schwer, aber geschafft') verlangt 'was able to'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "It was difficult, but I could pass it.",
+          "It was difficult, but I was able pass it.",
+          "It was difficult, but I could to pass it.",
+          "It was difficult, but I were able to pass it.",
+          "It was difficult, but I can pass it."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Die Freunde erzählen, wie sie nach dem Protestmarsch das Projekt aufhalten konnten. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "In the end, we were able to stop the project.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "In the end, we could stop the project.",
+        "In the end, we were able stop the project.",
+        "In the end, we could to stop the project."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger Erfolg der Gruppe - achte auf 'to' und auf was/were.",
+      "hintEn": null,
+      "explainDe": "Den einmaligen Erfolg der Gruppe drückst du mit 'were able to' aus (Mehrzahl 'we').",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "In the end, we could stop the project.",
+          "In the end, we were able stop the project.",
+          "In the end, we could to stop the project.",
+          "In the end, we was able to stop the project.",
+          "In the end, we can stop the project."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: 'She could to swim very well when she was a child.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She could swim very well when she was a child.",
+          "tier": "full"
+        },
+        {
+          "text": "could swim",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach 'could' steht kein 'to'.",
+      "hintEn": null,
+      "explainDe": "Nach 'could' folgt direkt die Grundform - kein 'to'. Richtig: 'could swim'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-ec-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: 'I was able swim across the lake last summer.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was able to swim across the lake last summer.",
+          "tier": "full"
+        },
+        {
+          "text": "was able to swim",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwischen 'able' und der Grundform fehlt etwas.",
+      "hintEn": null,
+      "explainDe": "Es heißt 'was able TO swim' - das 'to' darf nicht fehlen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-ec-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: 'She was able to swimming really fast when she was ten.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was able to swim really fast when she was ten.",
+          "tier": "full"
+        },
+        {
+          "text": "was able to swim",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach 'to' steht die Grundform, nicht die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Nach 'was able to' folgt die Grundform: 'swim', nicht 'swimming'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-ec-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: 'The test was very difficult, but I could pass it.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The test was very difficult, but I was able to pass it.",
+          "tier": "full"
+        },
+        {
+          "text": "was able to pass",
+          "tier": "partial"
+        },
+        {
+          "text": "managed to pass",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger Erfolg verlangt nicht 'could'.",
+      "hintEn": null,
+      "explainDe": "Für den einmaligen geschafften Erfolg nimmst du 'was able to pass', nicht 'could pass'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-ec-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: 'The door was locked, but my brother could open it in the end.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The door was locked, but my brother was able to open it in the end.",
+          "tier": "full"
+        },
+        {
+          "text": "was able to open",
+          "tier": "partial"
+        },
+        {
+          "text": "managed to open",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einziger geschaffter Erfolg, kein allgemeines Können.",
+      "hintEn": null,
+      "explainDe": "Bei diesem einmaligen Erfolg ('am Ende hat er es geschafft') brauchst du 'was able to open'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-ec-022",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: 'My grandmother could to speak French.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My grandmother could speak French.",
+          "tier": "full"
+        },
+        {
+          "text": "could speak",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach 'could' steht kein 'to'.",
+      "hintEn": null,
+      "explainDe": "Nach 'could' folgt direkt die Grundform: 'could speak'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: 'After hours of work, the firefighters could stop the fire.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After hours of work, the firefighters were able to stop the fire.",
+          "tier": "full"
+        },
+        {
+          "text": "were able to stop",
+          "tier": "partial"
+        },
+        {
+          "text": "managed to stop",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger Erfolg in der Mehrzahl, kein allgemeines Können.",
+      "hintEn": null,
+      "explainDe": "Der einmalige Erfolg verlangt 'were able to stop' (Mehrzahl), nicht 'could stop'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib mit 'was/were able to' um: 'We managed to finish the project on time.' → 'We ___ the project on time.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were able to finish",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'managed to' und 'were able to' bedeuten dasselbe. Mehrzahl 'we'.",
+      "hintEn": null,
+      "explainDe": "'managed to' heißt dasselbe wie 'was/were able to'. Bei 'we' nimmst du 'were able to finish'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-tf-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Erzähl von deiner Kindheit. Ergänze beide Lücken: 'When I was eight, I ___ (ride) a horse, but I ___ (not / skate).'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "could ride | couldn't skate",
+          "tier": "full"
+        },
+        {
+          "text": "could ride | could not skate",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beides sind allgemeine Fähigkeiten - einmal positiv, einmal verneint.",
+      "hintEn": null,
+      "explainDe": "Beide Lücken sind allgemeine Fähigkeiten: 'could ride' und 'couldn't skate'.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-tf-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreib mit 'was/were able to' um: 'They managed to win the match last Saturday.' → 'They ___ the match last Saturday.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were able to win",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger Erfolg an einem bestimmten Tag. Mehrzahl 'they'.",
+      "hintEn": null,
+      "explainDe": "'managed to' = 'was/were able to'. Bei 'they' heißt es 'were able to win'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach den Satz verneint: 'She could swim when she was five.' → 'She ___ when she was five.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "couldn't swim",
+          "tier": "full"
+        },
+        {
+          "text": "could not swim",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneine die allgemeine Fähigkeit.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von 'could swim' ist 'couldn't swim' (could not swim).",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "translation",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Ich konnte schwimmen, als ich fünf war.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I could swim when I was five.",
+          "tier": "full"
+        },
+        {
+          "text": "I could swim when I was five years old.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeine Fähigkeit als Kind = could + Grundform.",
+      "hintEn": null,
+      "explainDe": "Eine allgemeine Fähigkeit in der Vergangenheit übersetzt du mit 'could' + Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Als Kind konnte ich gut zeichnen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When I was a child, I could draw well.",
+          "tier": "full"
+        },
+        {
+          "text": "I could draw well when I was a child.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeine Fähigkeit von früher = could.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeit in der Kindheit = 'could draw'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-tr-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Nach vielen Versuchen konnte er die Prüfung bestehen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After trying many times, he was able to pass the test.",
+          "tier": "full"
+        },
+        {
+          "text": "After trying many times, he managed to pass the test.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Einmaliger Erfolg nach Anstrengung = was able to.",
+      "hintEn": null,
+      "explainDe": "Ein einmaliger geschaffter Erfolg ('nach vielen Versuchen geschafft') = 'was able to pass'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-tr-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Im Regen konnten wir das Spiel gewinnen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We were able to win the match in the rain.",
+          "tier": "full"
+        },
+        {
+          "text": "We managed to win the match in the rain.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger Sieg trotz Hindernis = were able to.",
+      "hintEn": null,
+      "explainDe": "Der einmalige Sieg trotz Regen = 'were able to win' (Mehrzahl 'we').",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-tr-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Meine Großmutter konnte Französisch sprechen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My grandmother could speak French.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Fähigkeit, die sie über Jahre hatte = could.",
+      "hintEn": null,
+      "explainDe": "Eine allgemeine Fähigkeit übersetzt du mit 'could speak'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Die Tür war abgeschlossen, aber ich konnte sie öffnen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The door was locked, but I was able to open it.",
+          "tier": "full"
+        },
+        {
+          "text": "The door was locked, but I managed to open it.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger geschaffter Erfolg = was able to, nicht could.",
+      "hintEn": null,
+      "explainDe": "Den einmaligen Erfolg ('ich habe es geschafft, sie zu öffnen') übersetzt du mit 'was able to open'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "sentence-building",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: I / could / read / when / I / was / six",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I could read when I was six.",
+          "tier": "full"
+        },
+        {
+          "text": "When I was six, I could read.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeine Fähigkeit: Subjekt + could + Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach 'could' folgt direkt die Grundform: 'I could read'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "to",
+          "can",
+          "was",
+          "able",
+          "couldn't"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": "m3-u10-could-was-able-to-sb-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: was / to / she / able / finish / the / race",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was able to finish the race.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Einmaliger Erfolg: was + able + to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Reihenfolge ist 'was able to' + Grundform: 'She was able to finish the race.'",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "could",
+          "can",
+          "were",
+          "finished",
+          "to"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": "m3-u10-could-was-able-to-sb-021",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: my / could / play / when / she / the / guitar / grandmother / was / young",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My grandmother could play the guitar when she was young.",
+          "tier": "full"
+        },
+        {
+          "text": "When she was young, my grandmother could play the guitar.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeine Fähigkeit: Subjekt + could + Grundform.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeit über einen Zeitraum = 'could play'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "to",
+          "able",
+          "was able to",
+          "can",
+          "couldn't"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": "m3-u10-could-was-able-to-sb-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: were / to / we / able / stop / the / project",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We were able to stop the project.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Einmaliger Erfolg der Gruppe: were + able + to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Der einmalige Erfolg der Gruppe = 'We were able to stop the project.'",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "could",
+          "was",
+          "can",
+          "stopped",
+          "to"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Dein Freund erzählt von seiner Kindheit. Frag, ob er Gitarre spielen konnte. Beginne mit 'Could'.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Could you play the guitar when you were a child?",
+          "tier": "full"
+        },
+        {
+          "text": "Could you play the guitar when you were young?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage nach allgemeiner Fähigkeit: Could + Subjekt + Grundform?",
+      "hintEn": null,
+      "explainDe": "Eine Frage nach allgemeiner Fähigkeit bildest du mit 'Could you' + Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-qf-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Tom konnte mit acht Gitarre spielen. Frag danach, was Tom mit acht spielen konnte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What could Tom play when he was eight?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage mit Fragewort: What + could + Subjekt + Grundform?",
+      "hintEn": null,
+      "explainDe": "Bei einer Frage mit 'what' steht 'could' vor dem Subjekt: 'What could Tom play ...?'",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-qf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bilde eine Ja/Nein-Frage zu: 'They were able to win the match.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Were they able to win the match?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage zu 'were able to': Were + Subjekt + able to + Grundform?",
+      "hintEn": null,
+      "explainDe": "Bei 'be able to' bildest du die Frage mit 'were' am Anfang: 'Were they able to win ...?'",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere: allgemeines Können über einen Zeitraum (could) oder ein einziges Mal geschafft (was/were able to)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "could",
+          "members": [
+            "She could read when she was four.",
+            "When I was a child, I could climb trees.",
+            "My grandmother could speak French.",
+            "He could run fast when he was young."
+          ]
+        },
+        {
+          "label": "was able to",
+          "members": [
+            "After hours, we were able to find the dog.",
+            "He was able to open the locked door.",
+            "They were able to win the match on Saturday.",
+            "She was able to finish the race in the end."
+          ]
+        }
+      ],
+      "hintDe": "Frag dich: ging es über einen Zeitraum, oder war es ein einzelner geschaffter Erfolg?",
+      "hintEn": null,
+      "explainDe": "'could' für allgemeines Können über einen Zeitraum; 'was/were able to' für einen einzelnen geschafften Erfolg.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-mt-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere: allgemeines Können über einen Zeitraum oder ein einziges Mal geschafft?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "could",
+          "members": [
+            "I could ride a bike when I was six.",
+            "She could play the guitar when she was seven.",
+            "When he was young, my brother could draw well."
+          ]
+        },
+        {
+          "label": "was able to",
+          "members": [
+            "The door was locked, but I was able to open it.",
+            "After hours, the firefighters were able to stop the fire.",
+            "It was difficult, but she was able to finish the race."
+          ]
+        }
+      ],
+      "hintDe": "Frag dich: ging es über einen Zeitraum, oder war es ein einzelner geschaffter Erfolg?",
+      "hintEn": null,
+      "explainDe": "'could' für allgemeines Können über einen Zeitraum; 'was/were able to' für einen einzelnen geschafften Erfolg.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sortiere nach der passenden Form: could oder was/were able to?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "could",
+          "members": [
+            "she ___ play the guitar when she was six",
+            "when he was young, he ___ run very fast",
+            "my mum ___ speak French when she was young"
+          ]
+        },
+        {
+          "label": "was/were able to",
+          "members": [
+            "after two hours, we ___ find the dog",
+            "he ___ escape from the building in time",
+            "she ___ open the locked door in the end"
+          ]
+        }
+      ],
+      "hintDe": "Zeitraum-Können → could; einzelner geschaffter Erfolg → was/were able to.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeiten über einen Zeitraum nehmen 'could'; einzelne geschaffte Erfolge nehmen 'was/were able to'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-mt-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verbinde die Satzhälften.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "When I was five,",
+          "right": "I could ride a bike."
+        },
+        {
+          "left": "After hours of work,",
+          "right": "the firefighters were able to stop the fire."
+        },
+        {
+          "left": "The door was locked, but",
+          "right": "she was able to open it in the end."
+        },
+        {
+          "left": "When she was young, my grandmother",
+          "right": "could speak French."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte darauf, ob es um allgemeines Können oder einen einmaligen Erfolg geht.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeiten passen zu 'could', einmalige geschaffte Erfolge zu 'was/were able to'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-past-permission-mt-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "matching",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Verbinde die Satzhälften zu sinnvollen Sätzen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "He could run fast",
+          "right": "when he was a child."
+        },
+        {
+          "left": "They were able to win",
+          "right": "the match last Saturday."
+        },
+        {
+          "left": "We couldn't hear the music",
+          "right": "because the room was so noisy."
+        },
+        {
+          "left": "After two hours, we were able to",
+          "right": "find the dog."
+        },
+        {
+          "left": "She could draw really well",
+          "right": "when she was ten."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Suche das Satzende, das logisch und grammatisch passt.",
+      "hintEn": null,
+      "explainDe": "Allgemeines Können steht meist mit einer Zeitangabe wie 'when he was a child'; einmalige Erfolge mit einem konkreten Anlass.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde die passenden Satzhälften.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "When I was five,",
+          "right": "I could swim."
+        },
+        {
+          "left": "After the race,",
+          "right": "I was able to win."
+        },
+        {
+          "left": "When I was four,",
+          "right": "I couldn't ride a bike."
+        },
+        {
+          "left": "That day,",
+          "right": "we weren't able to find the dog."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Ordne jeder Zeitangabe das passende Satzende zu.",
+      "hintEn": null,
+      "explainDe": "'could/couldn't' = allgemeines Können; 'was/were able to' = ein einzelner geschaffter (oder nicht geschaffter) Erfolg.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "free-form",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreib einen Satz darüber, was du als kleines Kind schon konntest. Verwende 'could'.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When I was little, I could ride a bike.",
+          "tier": "full"
+        },
+        {
+          "text": "I could swim when I was five.",
+          "tier": "full"
+        },
+        {
+          "text": "When I was young, I could climb trees.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeine Fähigkeit aus deiner Kindheit: 'I could ...'.",
+      "hintEn": null,
+      "explainDe": "Für eine allgemeine Fähigkeit aus deiner Kindheit nimmst du 'I could' + Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-tf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "free-form",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreib einen Satz über etwas Schwieriges, das du dieses eine Mal geschafft hast. Verwende 'was able to'.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The test was difficult, but I was able to pass it.",
+          "tier": "full"
+        },
+        {
+          "text": "After hours of work, I was able to fix it.",
+          "tier": "full"
+        },
+        {
+          "text": "I managed to finish the race.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger geschaffter Erfolg: 'I was able to ...'.",
+      "hintEn": null,
+      "explainDe": "Für einen einmaligen geschafften Erfolg nimmst du 'I was able to' + Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-tf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Allgemeine Fähigkeit. Ergänze: 'He ___ run very fast when he was a child.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Etwas, das er als Kind allgemein gut konnte.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeit in der Kindheit = 'could'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Einmaliger Erfolg. Ergänze: 'After two hours, we ___ find the lost dog.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were able to",
+          "tier": "full"
+        },
+        {
+          "text": "managed to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach langer Suche dieses eine Mal gefunden. Mehrzahl 'we'.",
+      "hintEn": null,
+      "explainDe": "Ein einmaliger Erfolg nach Suche = 'were able to' (Mehrzahl 'we').",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-mt-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Einmaliger Erfolg. Ergänze: 'The building was on fire, but he ___ escape.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was able to",
+          "tier": "full"
+        },
+        {
+          "text": "managed to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Er hat es dieses eine Mal trotz Gefahr geschafft.",
+      "hintEn": null,
+      "explainDe": "Ein einmaliger geschaffter Erfolg in Gefahr = 'was able to escape'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verneinte allgemeine Fähigkeit. Ergänze: 'Beethoven ___ hear later in his life, but he still wrote amazing music.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "couldn't",
+          "tier": "full"
+        },
+        {
+          "text": "could not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Über einen längeren Zeitraum nicht möglich = couldn't.",
+      "hintEn": null,
+      "explainDe": "Eine verneinte allgemeine Fähigkeit über einen Zeitraum = 'couldn't hear'.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-tf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Allgemeines Können UND verneinter einmaliger Erfolg. Ergänze beide Lücken: 'She ___ play the guitar well, but at the concert she ___ play her favourite piece.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "could | wasn't able to",
+          "tier": "full"
+        },
+        {
+          "text": "could | was not able to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erste Lücke: allgemeines Können. Zweite Lücke: an diesem einen Abend nicht geschafft.",
+      "hintEn": null,
+      "explainDe": "Allgemeines Können = 'could'; das einmalige Nicht-Schaffen beim Konzert = 'wasn't able to'.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Allgemeine Fähigkeit. Ergänze: 'I ___ play the piano when I was seven.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Etwas, das du mit sieben allgemein konntest.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeit in der Vergangenheit = 'could'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Einmaliger Erfolg quer durch den See. Wähle den richtigen Satz.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was able to swim across the lake.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I was able swim across the lake.",
+        "I could to swim across the lake.",
+        "I could swim across the lake yesterday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger Erfolg - achte auf 'able to' + Grundform.",
+      "hintEn": null,
+      "explainDe": "Ein einmaliger geschaffter Erfolg verlangt 'was able to swim'. 'was able swim' lässt das 'to' weg, und für diesen einen Erfolg passt 'could' nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I was able swim across the lake.",
+          "I could to swim across the lake.",
+          "I could swim across the lake yesterday.",
+          "I was able to swimming across the lake.",
+          "I can swim across the lake yesterday."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: 'He could swam very fast when he was a child.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He could swim very fast when he was a child.",
+          "tier": "full"
+        },
+        {
+          "text": "could swim",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach 'could' steht die Grundform, nicht die Vergangenheitsform.",
+      "hintEn": null,
+      "explainDe": "Nach 'could' folgt die Grundform 'swim', nicht 'swam'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: 'She was able to won the race in the end.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was able to win the race in the end.",
+          "tier": "full"
+        },
+        {
+          "text": "was able to win",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach 'to' steht die Grundform, nicht die Vergangenheitsform.",
+      "hintEn": null,
+      "explainDe": "Nach 'was able to' folgt die Grundform: 'win', nicht 'won'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib mit 'was/were able to' um: 'I managed to fix it yesterday.' → 'I ___ it yesterday.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was able to fix",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'managed to' und 'was able to' bedeuten dasselbe.",
+      "hintEn": null,
+      "explainDe": "'managed to' heißt dasselbe wie 'was able to': 'I was able to fix it yesterday.'",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Sie konnte mit vier lesen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She could read when she was four.",
+          "tier": "full"
+        },
+        {
+          "text": "She could read at four years old.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeine Fähigkeit von früher = could.",
+      "hintEn": null,
+      "explainDe": "Eine allgemeine Fähigkeit von früher = 'could read'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verneinter einmaliger Erfolg. Ergänze: 'The dog ran away and we ___ find it that day.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "weren't able to",
+          "tier": "full"
+        },
+        {
+          "text": "were not able to",
+          "tier": "full"
+        },
+        {
+          "text": "couldn't",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "An diesem einen Tag nicht geschafft. Mehrzahl 'we'.",
+      "hintEn": null,
+      "explainDe": "Ein verneinter einmaliger Erfolg in der Mehrzahl = 'weren't able to'. In der Verneinung geht auch 'couldn't'.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du erzählst, wie ihr nach Stunden den verlorenen Hund gefunden habt. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After hours of looking, we were able to find the dog.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "After hours of looking, we could find the dog.",
+        "After hours of looking, we were able find the dog.",
+        "After hours of looking, we could to find the dog."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger Erfolg nach langer Suche.",
+      "hintEn": null,
+      "explainDe": "Der einmalige Erfolg nach langem Suchen = 'were able to find' (Mehrzahl 'we').",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "After hours of looking, we could find the dog.",
+          "After hours of looking, we were able find the dog.",
+          "After hours of looking, we could to find the dog.",
+          "After hours of looking, we was able to find the dog.",
+          "After hours of looking, we can find the dog."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Allgemeine Fähigkeit. Ergänze: 'My sister ___ cook when she was a teenager.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Fähigkeit, die sie als Jugendliche allgemein hatte.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeit über einen Zeitraum = 'could'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-mt-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Zuerst ging es nicht, am Ende doch. Ergänze beide Lücken: 'At first I ___ open the door, but in the end I ___ open it.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "couldn't | was able to",
+          "tier": "full"
+        },
+        {
+          "text": "could not | was able to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst ging es nicht; am Ende hast du es dieses eine Mal geschafft.",
+      "hintEn": null,
+      "explainDe": "'couldn't open' = es ging zuerst nicht; 'was able to open' = der einmalige Erfolg am Ende.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: couldn't / I / the / hear / teacher / so / the / class / was / noisy / because",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I couldn't hear the teacher because the class was so noisy.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinte Fähigkeit: Subjekt + couldn't + Grundform, dann der Grund mit 'because'.",
+      "hintEn": null,
+      "explainDe": "Nach 'couldn't' folgt die Grundform 'hear'; der Grund kommt mit 'because'.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "could",
+          "to",
+          "can't",
+          "able",
+          "heard"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Einmaliger Erfolg. Ergänze: 'It was a difficult test, but in the end she ___ finish it.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was able to",
+          "tier": "full"
+        },
+        {
+          "text": "managed to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger Erfolg trotz Schwierigkeit.",
+      "hintEn": null,
+      "explainDe": "Ein einzelner geschaffter Erfolg = 'was able to finish'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Allgemeine Fähigkeit über einen Zeitraum. Wähle: 'When I was young, I ___ ride a horse.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "was able",
+        "could to",
+        "can"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine allgemeine Fähigkeit, kein einmaliges Ereignis.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeit über einen Zeitraum = 'could'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was able",
+          "could to",
+          "can",
+          "was able",
+          "is able to"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Verbinde zu EINEM Satz mit 'but': 'She could play the piano. At the concert, she didn't manage to play her piece.' Beginne mit 'She could play the piano, but ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "she wasn't able to play her piece at the concert",
+          "tier": "full"
+        },
+        {
+          "text": "she was not able to play her piece at the concert",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeines Können bleibt 'could'; das einmalige Nicht-Schaffen wird 'wasn't able to'.",
+      "hintEn": null,
+      "explainDe": "'didn't manage to' = 'wasn't able to'. Das allgemeine Können bleibt 'could'.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Das Spiel war schwer, aber wir konnten es gewinnen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The match was difficult, but we were able to win it.",
+          "tier": "full"
+        },
+        {
+          "text": "The match was difficult, but we managed to win it.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einmaliger Sieg = were able to, nicht could.",
+      "hintEn": null,
+      "explainDe": "Der einmalige Sieg ('wir haben es geschafft zu gewinnen') = 'were able to win'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Dein Freund erzählt von früher. Frag, ob er als Kind schwimmen konnte. Beginne mit 'Could'.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Could you swim when you were a child?",
+          "tier": "full"
+        },
+        {
+          "text": "Could you swim when you were young?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage nach allgemeiner Fähigkeit: Could + Subjekt + Grundform?",
+      "hintEn": null,
+      "explainDe": "Die Frage nach allgemeiner Fähigkeit beginnt mit 'Could you' + Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Bring die Buchstaben in die richtige Reihenfolge. Das Wort steht zwischen 'was' und 'to' in 'She was … to open the door.': LBEA",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "able",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wort, das zwischen 'was' und 'to' steht.",
+      "hintEn": null,
+      "explainDe": "Die Struktur lautet 'was able to' - das fehlende Wort ist 'able'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Allgemeines Können UND einmaliger Erfolg. Ergänze beide Lücken: 'My grandmother ___ play the guitar well, and last week she ___ play in a big concert.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "could | was able to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erste Lücke: allgemeines Können. Zweite Lücke: ein einmaliger Erfolg letzte Woche.",
+      "hintEn": null,
+      "explainDe": "Allgemeines Können = 'could'; der einmalige Erfolg 'letzte Woche' = 'was able to'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Allgemeine Fähigkeit. Ergänze: 'When she was young, my mum ___ speak French.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Fähigkeit, die sie über Jahre hatte.",
+      "hintEn": null,
+      "explainDe": "Allgemeine Fähigkeit über einen Zeitraum = 'could'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u10-could-was-able-to-mt-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Jemand fragt, was du als Kind allgemein gut konntest. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I could climb trees really well.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I could climbed trees really well.",
+        "I could to climb trees really well.",
+        "I can climb trees really well."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Allgemeines Können über einen Zeitraum, kein einmaliges Ereignis.",
+      "hintEn": null,
+      "explainDe": "Allgemeines Können in der Kindheit = 'could'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I could climbed trees really well.",
+          "I could to climb trees really well.",
+          "I can climb trees really well.",
+          "I was able climb trees really well.",
+          "I am able to climb trees really well."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: 'We could to win the match last Saturday.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We were able to win the match last Saturday.",
+          "tier": "full"
+        },
+        {
+          "text": "were able to win",
+          "tier": "partial"
+        },
+        {
+          "text": "managed to win",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hier sind zwei Dinge falsch: das 'to' nach could und die Wahl could vs. were able to.",
+      "hintEn": null,
+      "explainDe": "Ein einmaliger Sieg an einem bestimmten Tag braucht 'were able to win' - 'could to' gibt es nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Einmaliger Erfolg. Ergänze: 'The old window was difficult to open, but I ___ open it in the end.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was able to",
+          "tier": "full"
+        },
+        {
+          "text": "managed to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein einziger geschaffter Erfolg bei diesem einen Fenster.",
+      "hintEn": null,
+      "explainDe": "Ein einmaliger geschaffter Erfolg = 'was able to open'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Er konnte als Kind nicht Rad fahren.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He couldn't ride a bike when he was a child.",
+          "tier": "full"
+        },
+        {
+          "text": "He could not ride a bike when he was little.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinte allgemeine Fähigkeit = couldn't.",
+      "hintEn": null,
+      "explainDe": "Eine verneinte allgemeine Fähigkeit = 'couldn't ride'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u10.s.could-was-able-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Einmaliger Erfolg. Ergänze: 'My big brother ___ print 1,500 leaflets for the protest.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was able to",
+          "tier": "full"
+        },
+        {
+          "text": "managed to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine einzelne geschaffte Aufgabe für den Protest.",
+      "hintEn": null,
+      "explainDe": "Eine einzelne geschaffte Handlung = 'was able to print'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    }
+  ]
+}

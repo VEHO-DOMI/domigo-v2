@@ -57,6 +57,62 @@
       "contentHash": "2e7bd10777c1f3064a0b393949a3476f6c02dfae78598ea82163516cdefc9cfb",
       "note": "round 1: 0 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
       "at": "2026-06-11T16:12:35.415Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "10a988d4784414af3e463f263be0afc2ae42d2326fd7914d2fbe71ebe4651f19",
+      "note": "gen ingest: 37 vocab + 54 grammar item(s); draft b2cf7de92451",
+      "at": "2026-06-16T19:39:12.070Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "ae4bfedb36e5e60ef3e7f7d2cb37150ab6177b4c7f5dcbbb99a85659858a1598",
+      "note": "gen ingest: 37 vocab + 54 grammar item(s); draft 30e97ebc8783",
+      "at": "2026-06-16T19:42:09.249Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "97ec588f086eb0634ff04c082c1fba33ebd79aff436733a17f4d9011890af2a0",
+      "note": "gen ingest: 37 vocab + 54 grammar item(s); draft a119b99e6745",
+      "at": "2026-06-16T19:42:41.195Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "2a4426bd419efabd18a6046df868ab50dec75e9e70f4b7365488b4846debc371",
+      "note": "gen ingest: 37 vocab + 54 grammar item(s); draft 4a7ede2ca2c1",
+      "at": "2026-06-16T19:43:38.472Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "2a4426bd419efabd18a6046df868ab50dec75e9e70f4b7365488b4846debc371",
+      "note": "verify round 1: 0 fix, 0 warn",
+      "at": "2026-06-16T19:50:08.850Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "2a4426bd419efabd18a6046df868ab50dec75e9e70f4b7365488b4846debc371",
+      "note": "V-1..V-22 green (0 warn)",
+      "at": "2026-06-16T19:50:09.340Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "2a4426bd419efabd18a6046df868ab50dec75e9e70f4b7365488b4846debc371",
+      "note": "round 1 doc: 41 open flag(s), 91 row(s) rendered (FULL)",
+      "at": "2026-06-16T19:50:09.391Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "2a4426bd419efabd18a6046df868ab50dec75e9e70f4b7365488b4846debc371",
+      "note": "round 1: 41 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
+      "at": "2026-06-16T19:50:54.701Z"
     }
   ]
 }

@@ -1,0 +1,4588 @@
+{
+  "schema": "vocab@1",
+  "grade": 1,
+  "unit": 11,
+  "slug": "g1-u11",
+  "items": [
+    {
+      "id": "g1u11.w.9-a-m",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "9 p.m.",
+            "midday",
+            "midnight",
+            "9 o'clock"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "9 a.m.",
+      "g": "9 Uhr morgens",
+      "d": "The time early in the morning when many children go to school.",
+      "s": "School begins at ___ in the morning, so we go in.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "9 a.m.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "9 a.m.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "9 a.m.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "9 Uhr morgens",
+            "tier": "full"
+          },
+          {
+            "text": "9 Uhr vormittags",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "9 p.m.",
+        "midday",
+        "midnight"
+      ],
+      "hintDe": "Diese Zeit ist früh am Morgen."
+    },
+    {
+      "id": "g1u11.w.9-o-clock",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "half past nine",
+            "(a) quarter to ten",
+            "midday",
+            "(a) quarter past nine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "9 o'clock",
+      "g": "9 Uhr",
+      "d": "The time when the clock shows the small number and no minutes.",
+      "s": "The clock shows ___, with no minutes more.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "9 o'clock",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "9 o'clock",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "9 o'clock",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "9 Uhr",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "half past nine",
+        "(a) quarter to ten",
+        "midday"
+      ],
+      "hintDe": "Die Uhr zeigt genau 9, ohne Minuten dazu."
+    },
+    {
+      "id": "g1u11.w.9-p-m",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "9 a.m.",
+            "midday",
+            "midnight",
+            "9 o'clock"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "9 p.m.",
+      "g": "9 Uhr abends",
+      "d": "The time late in the evening when many children go to bed.",
+      "s": "My favourite programme is on at ___ in the evening.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "9 p.m.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "9 p.m.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "9 p.m.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "9 Uhr abends",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "late",
+          "de": "spät",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "9 a.m.",
+        "midday",
+        "midnight"
+      ],
+      "hintDe": "Diese Zeit ist am Abend."
+    },
+    {
+      "id": "g1u11.w.amazing",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "daily",
+            "outside",
+            "free time",
+            "weather"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 story: 'Something amazing!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "amazing",
+      "g": "großartig",
+      "d": "Very, very good — so good that you go wow!",
+      "s": "Tim has got something ___ for Suzy in the park.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "amazing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "amazing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "amazing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "großartig",
+            "tier": "full"
+          },
+          {
+            "text": "erstaunlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "daily",
+        "outside",
+        "free time"
+      ],
+      "hintDe": "Sehr, sehr gut – so toll, dass du staunst."
+    },
+    {
+      "id": "g1u11.w.bedtime",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "break",
+            "free time",
+            "midday",
+            "9 a.m."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: 'Bedtime is at ten o'clock.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "bedtime",
+      "g": "Schlafenszeit",
+      "d": "The time at night when you go to sleep.",
+      "s": "It's 9 o'clock at night, so it is ___ for the children.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "bedtime",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bedtime",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bedtime",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlafenszeit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "break",
+        "free time",
+        "midday"
+      ],
+      "hintDe": "Die Zeit am Abend, wenn du ins Bett gehst."
+    },
+    {
+      "id": "g1u11.w.break",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bedtime",
+            "clock",
+            "exercise",
+            "free time"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: 'At a quarter to nine, I have a break.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "break",
+      "g": "Pause",
+      "d": "A short time in school when you eat and play.",
+      "s": "At a quarter to nine we have a ___ and eat something.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "break",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "break",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "break",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pause",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "bedtime",
+        "clock",
+        "exercise"
+      ],
+      "hintDe": "Eine kurze Zeit in der Schule, in der du isst und spielst."
+    },
+    {
+      "id": "g1u11.w.bush",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "road",
+            "clock",
+            "surprise",
+            "knock"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 story: 'And hide behind the bush.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "bush",
+      "g": "Busch",
+      "d": "A small plant with many leaves, smaller than a tree.",
+      "s": "The dog is hiding behind the big ___ in the park.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bush",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bush",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bush",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Busch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "plant",
+          "de": "Pflanze",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "road",
+        "clock",
+        "surprise"
+      ],
+      "hintDe": "Eine kleine Pflanze mit vielen Blättern, kleiner als ein Baum."
+    },
+    {
+      "id": "g1u11.w.clock",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "road",
+            "bush",
+            "knock",
+            "weather"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: 'My clock shows the wrong time.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "clock",
+      "g": "Uhr",
+      "d": "A thing on the wall that shows you the time.",
+      "s": "I look at the ___ on the wall to get the time.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "clock",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "clock",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "clock",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Uhr",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "get",
+          "de": "ablesen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "road",
+        "bush",
+        "knock"
+      ],
+      "hintDe": "Ein Ding an der Wand, das dir die Zeit zeigt."
+    },
+    {
+      "id": "g1u11.w.clue",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "clock",
+            "knock",
+            "surprise",
+            "weather"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11: 'I can't remember. Give me a clue.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "clue",
+      "g": "Hinweis",
+      "d": "A little help so you can find the answer.",
+      "s": "I can't find the answer. Please give me a ___!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "clue",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "clue",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "clue",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hinweis",
+            "tier": "full"
+          },
+          {
+            "text": "Tipp",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "little",
+          "de": "kleine",
+          "scope": "d"
+        },
+        {
+          "word": "answer",
+          "de": "Antwort",
+          "scope": null
+        },
+        {
+          "word": "help",
+          "de": "Hilfe",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "clock",
+        "knock",
+        "surprise"
+      ],
+      "hintDe": "Eine kleine Hilfe, damit du die Antwort findest."
+    },
+    {
+      "id": "g1u11.w.daily",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "amazing",
+            "outside",
+            "free time",
+            "weather"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11: 'we do our daily exercise outside.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "daily",
+      "g": "täglich",
+      "d": "Happening every day.",
+      "s": "At a quarter to ten we do our ___ exercise outside.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "daily",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "daily",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "daily",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "täglich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "every",
+          "de": "jede/r",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "amazing",
+        "outside",
+        "free time"
+      ],
+      "hintDe": "Etwas, das jeden Tag passiert."
+    },
+    {
+      "id": "g1u11.w.excuse-me",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Have fun!",
+            "See you soon.",
+            "Hurry up.",
+            "What's the time?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11: 'Excuse me, what's the time?'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Excuse me.",
+      "g": "Entschuldigung.",
+      "d": "Nice words for somebody before you ask them something.",
+      "s": "___ What time is it, please?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Excuse me.",
+          "tier": "full"
+        },
+        {
+          "text": "Excuse me",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Excuse me.",
+          "tier": "full"
+        },
+        {
+          "text": "Excuse me",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Excuse me.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Entschuldigung.",
+            "tier": "full"
+          },
+          {
+            "text": "Entschuldige.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "words",
+          "de": "Worte",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "Have fun!",
+        "See you soon.",
+        "Hurry up."
+      ],
+      "hintDe": "So sprichst du jemanden höflich an, bevor du fragst."
+    },
+    {
+      "id": "g1u11.w.exercise",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "break",
+            "clock",
+            "weather",
+            "bedtime"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11: 'we do our daily exercise outside.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "exercise",
+      "g": "(körperliche) Bewegung",
+      "d": "When you run and jump to make your body healthy.",
+      "s": "Running and jumping outside are good ___ for you.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "exercise",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "exercise",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "exercise",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bewegung",
+            "tier": "full"
+          },
+          {
+            "text": "Übung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "body",
+          "de": "Körper",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "break",
+        "clock",
+        "weather"
+      ],
+      "hintDe": "Wenn du läufst und springst, um deinen Körper gesund zu halten."
+    },
+    {
+      "id": "g1u11.w.free-time",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bedtime",
+            "break",
+            "exercise",
+            "weather"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: 'I like to read comics in my free time.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "free time",
+      "g": "Freizeit",
+      "d": "When you have no school and can do what you like.",
+      "s": "In my ___ I like to read a book or ride my bike.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "free time",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "free time",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "free time",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Freizeit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bedtime",
+        "break",
+        "exercise"
+      ],
+      "hintDe": "Zeit, in der du keine Schule hast und machen kannst, was du magst."
+    },
+    {
+      "id": "g1u11.w.half-an-hour",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "midday",
+            "bedtime",
+            "free time",
+            "break"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11: 'The train leaves in half an hour.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "half an hour",
+      "g": "eine halbe Stunde",
+      "d": "30 minutes.",
+      "s": "The train comes in ___, so we wait 30 minutes.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "half an hour",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "half an hour",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "half an hour",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine halbe Stunde",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "comes",
+          "de": "kommt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "midday",
+        "bedtime",
+        "free time"
+      ],
+      "hintDe": "30 Minuten."
+    },
+    {
+      "id": "g1u11.w.half-past-nine",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "(a) quarter past nine",
+            "(a) quarter to ten",
+            "9 o'clock",
+            "midday"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "half past nine",
+      "g": "halb zehn",
+      "d": "30 minutes after the clock shows 9.",
+      "s": "I have my breakfast at ___, 30 minutes after 9.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "half past nine",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "half past nine",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "half past nine",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "halb zehn",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "(a) quarter past nine",
+        "(a) quarter to ten",
+        "9 o'clock"
+      ],
+      "hintDe": "Es ist 30 Minuten nach 9."
+    },
+    {
+      "id": "g1u11.w.have-fun",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "See you soon.",
+            "Excuse me.",
+            "Hurry up.",
+            "What's the time?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 story: 'Have fun!' says John.",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Have fun!",
+      "g": "Viel Spaß!",
+      "d": "Nice words for somebody who is going to do something good.",
+      "s": "You're going to the park? ___ See you soon!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Have fun!",
+          "tier": "full"
+        },
+        {
+          "text": "Have fun",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Have fun!",
+          "tier": "full"
+        },
+        {
+          "text": "Have fun",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Have fun!",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Viel Spaß!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "words",
+          "de": "Worte",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "See you soon.",
+        "Excuse me.",
+        "Hurry up."
+      ],
+      "hintDe": "Das sagst du jemandem, der etwas Schönes vorhat."
+    },
+    {
+      "id": "g1u11.w.hurry-up",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "See you soon.",
+            "Have fun!",
+            "Excuse me.",
+            "What's the time?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11: 'Hurry up.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Hurry up.",
+      "g": "Beeil dich. / Beeilt euch.",
+      "d": "Words for somebody who must be fast.",
+      "s": "___ The train leaves in five minutes!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Hurry up.",
+          "tier": "full"
+        },
+        {
+          "text": "Hurry up",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Hurry up.",
+          "tier": "full"
+        },
+        {
+          "text": "Hurry up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Hurry up.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Beeil dich.",
+            "tier": "full"
+          },
+          {
+            "text": "Beeilt euch.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "words",
+          "de": "Worte",
+          "scope": "d"
+        },
+        {
+          "word": "fast",
+          "de": "schnell",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "See you soon.",
+        "Have fun!",
+        "Excuse me."
+      ],
+      "hintDe": "So sagst du jemandem, dass er schnell sein soll."
+    },
+    {
+      "id": "g1u11.w.it-s-10-a-m",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "It's 8 p.m.",
+            "What time is it?",
+            "See you soon.",
+            "Have fun!"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "It's 10 a.m.",
+      "g": "Es ist 10 Uhr morgens/vormittags.",
+      "d": "Words for the time when the clock shows ten in the morning.",
+      "s": "___ in the morning, and our English class begins now.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "It's 10 a.m.",
+          "tier": "full"
+        },
+        {
+          "text": "It's 10 a.m",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "It's 10 a.m.",
+          "tier": "full"
+        },
+        {
+          "text": "It's 10 a.m",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "It's 10 a.m.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Es ist 10 Uhr morgens.",
+            "tier": "full"
+          },
+          {
+            "text": "Es ist 10 Uhr vormittags.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "words",
+          "de": "Worte",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "It's 8 p.m.",
+        "What time is it?",
+        "See you soon."
+      ],
+      "hintDe": "So sagst du, dass es 10 Uhr am Vormittag ist."
+    },
+    {
+      "id": "g1u11.w.it-s-8-p-m",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "It's 10 a.m.",
+            "What's the time?",
+            "Excuse me.",
+            "Hurry up."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "It's 8 p.m.",
+      "g": "Es ist 8 Uhr abends.",
+      "d": "Words for the time when the clock shows eight in the evening.",
+      "s": "___ in the evening, and it is night outside now.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "It's 8 p.m.",
+          "tier": "full"
+        },
+        {
+          "text": "It's 8 p.m",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "It's 8 p.m.",
+          "tier": "full"
+        },
+        {
+          "text": "It's 8 p.m",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "It's 8 p.m.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Es ist 8 Uhr abends.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "words",
+          "de": "Worte",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "It's 10 a.m.",
+        "What's the time?",
+        "Excuse me."
+      ],
+      "hintDe": "So sagst du, dass es 8 Uhr am Abend ist."
+    },
+    {
+      "id": "g1u11.w.knock",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "surprise",
+            "clock",
+            "road",
+            "bush"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 story: 'There's a knock at the door.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "knock",
+      "g": "Klopfen",
+      "d": "The noise when somebody puts a hand on a door again and again.",
+      "s": "There's a ___ at the door. Somebody is here.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "knock",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "knock",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "knock",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Klopfen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hand",
+          "de": "Hand",
+          "scope": "d"
+        },
+        {
+          "word": "puts",
+          "de": "legt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "surprise",
+        "clock",
+        "road"
+      ],
+      "hintDe": "Das Geräusch, wenn jemand mit der Hand an die Tür klopft."
+    },
+    {
+      "id": "g1u11.w.living-room",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "road",
+            "place",
+            "bush",
+            "weather"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 story: 'Suzy is sitting in the living room.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "living room",
+      "g": "Wohnzimmer",
+      "d": "The place where you sit and watch TV with the family.",
+      "s": "Mum is watching TV in the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "living room",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "living room",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "living room",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wohnzimmer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sit",
+          "de": "sitzen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "road",
+        "place",
+        "bush"
+      ],
+      "hintDe": "Der Raum zu Hause, wo du sitzt und fernsiehst."
+    },
+    {
+      "id": "g1u11.w.midday",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "midnight",
+            "bedtime",
+            "9 p.m.",
+            "9 a.m."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "midday",
+      "g": "Mittag",
+      "d": "The time in the day when the clock shows 12 and we often have lunch.",
+      "s": "We have lunch at ___, when the clock shows 12.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "midday",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "midday",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "midday",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mittag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "midnight",
+        "bedtime",
+        "9 p.m."
+      ],
+      "hintDe": "Es ist 12 Uhr am Tag."
+    },
+    {
+      "id": "g1u11.w.midnight",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "midday",
+            "9 a.m.",
+            "bedtime",
+            "9 p.m."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "midnight",
+      "g": "Mitternacht",
+      "d": "The time when the clock shows 12 late at night.",
+      "s": "It is very late at night. The clock shows ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "midnight",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "midnight",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "midnight",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mitternacht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "late",
+          "de": "spät",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "midday",
+        "9 a.m.",
+        "bedtime"
+      ],
+      "hintDe": "Es ist 12 Uhr in der Nacht."
+    },
+    {
+      "id": "g1u11.w.outside",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "daily",
+            "amazing",
+            "free time",
+            "weather"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11: 'We always do our exercise outside.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "outside",
+      "g": "draußen",
+      "d": "Not in a room, but in the open air.",
+      "s": "It is a nice day. Let's play ___ in the park!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "outside",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "outside",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "outside",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "draußen",
+            "tier": "full"
+          },
+          {
+            "text": "außerhalb",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "air",
+          "de": "Luft",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "daily",
+        "amazing",
+        "free time"
+      ],
+      "hintDe": "Nicht in einem Zimmer, sondern an der frischen Luft."
+    },
+    {
+      "id": "g1u11.w.place",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "road",
+            "clock",
+            "weather",
+            "bush"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11: 'Can you come to my place?'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "place",
+      "g": "Zuhause",
+      "d": "The home where somebody lives.",
+      "s": "Can you come to my ___ after school today?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "place",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "place",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "place",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zuhause",
+            "tier": "partial"
+          },
+          {
+            "text": "Wohnung",
+            "tier": "partial"
+          },
+          {
+            "text": "Ort",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "home",
+          "de": "Zuhause",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "road",
+        "clock",
+        "weather"
+      ],
+      "hintDe": "Der Ort, wo jemand wohnt."
+    },
+    {
+      "id": "g1u11.w.programme",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "text message",
+            "clock",
+            "road",
+            "weather"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: 'I'm watching a great TV programme.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "programme",
+      "g": "Sendung",
+      "d": "A show that you watch on TV.",
+      "s": "There is a great ___ on TV at 7 o'clock.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "programme",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "programme",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "programme",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sendung",
+            "tier": "full"
+          },
+          {
+            "text": "Programm",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "text message",
+        "clock",
+        "road"
+      ],
+      "hintDe": "Eine Sendung, die du im Fernsehen anschaust."
+    },
+    {
+      "id": "g1u11.w.quarter-past-nine",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "half past nine",
+            "(a) quarter to ten",
+            "9 o'clock",
+            "midday"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "(a) quarter past nine",
+      "g": "Viertel nach neun",
+      "d": "15 minutes after the clock shows 9.",
+      "s": "It is ___, so it is 15 minutes after 9.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "quarter past nine",
+          "tier": "full"
+        },
+        {
+          "text": "a quarter past nine",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "quarter past nine",
+          "tier": "full"
+        },
+        {
+          "text": "a quarter past nine",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "quarter past nine",
+            "tier": "full"
+          },
+          {
+            "text": "a quarter past nine",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Viertel nach neun",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "half past nine",
+        "(a) quarter to ten",
+        "9 o'clock"
+      ],
+      "hintDe": "Es ist 15 Minuten nach 9."
+    },
+    {
+      "id": "g1u11.w.quarter-to-ten",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "(a) quarter past nine",
+            "half past nine",
+            "9 o'clock",
+            "midnight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "(a) quarter to ten",
+      "g": "Viertel vor zehn",
+      "d": "15 minutes before the clock shows 10.",
+      "s": "It is ___, 15 minutes before 10. Let's hurry!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "quarter to ten",
+          "tier": "full"
+        },
+        {
+          "text": "a quarter to ten",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "quarter to ten",
+          "tier": "full"
+        },
+        {
+          "text": "a quarter to ten",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "quarter to ten",
+            "tier": "full"
+          },
+          {
+            "text": "a quarter to ten",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Viertel vor zehn",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "(a) quarter past nine",
+        "half past nine",
+        "9 o'clock"
+      ],
+      "hintDe": "Es ist 15 Minuten vor 10."
+    },
+    {
+      "id": "g1u11.w.road",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "clock",
+            "bush",
+            "place",
+            "weather"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 song: 'I'm walking down the road.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "road",
+      "g": "Straße",
+      "d": "A long way where cars go from place to place.",
+      "s": "I'm walking down the ___ to the park.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "road",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "road",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "road",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Straße",
+            "tier": "full"
+          },
+          {
+            "text": "Weg",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "way",
+          "de": "Weg",
+          "scope": "d"
+        },
+        {
+          "word": "walking",
+          "de": "gehen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "clock",
+        "bush",
+        "place"
+      ],
+      "hintDe": "Ein langer Weg, auf dem Autos fahren."
+    },
+    {
+      "id": "g1u11.w.see-you-soon",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Have fun!",
+            "Excuse me.",
+            "Hurry up.",
+            "What's the time?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 postcard: 'See you soon, Robert'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "See you soon.",
+      "g": "Bis bald.",
+      "d": "Nice words for a friend at the end, before going away.",
+      "s": "I have to go now. ___ Call me tomorrow!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "See you soon.",
+          "tier": "full"
+        },
+        {
+          "text": "See you soon",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "See you soon.",
+          "tier": "full"
+        },
+        {
+          "text": "See you soon",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "See you soon.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bis bald.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "words",
+          "de": "Worte",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "Have fun!",
+        "Excuse me.",
+        "Hurry up."
+      ],
+      "hintDe": "Das sagst du einem Freund, wenn du gehst und ihn bald wiedersiehst."
+    },
+    {
+      "id": "g1u11.w.surprise",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "knock",
+            "clock",
+            "weather",
+            "bush"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 story: 'Tim has got a surprise for Suzy.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "surprise",
+      "g": "Überraschung",
+      "d": "Something nice that you did not get before.",
+      "s": "Tim has got a ___ for Suzy. She is happy!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "surprise",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "surprise",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "surprise",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Überraschung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "get",
+          "de": "bekommen",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "knock",
+        "clock",
+        "weather"
+      ],
+      "hintDe": "Etwas Schönes, von dem du vorher nichts gewusst hast."
+    },
+    {
+      "id": "g1u11.w.text-message",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "programme",
+            "clock",
+            "weather",
+            "surprise"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 ex 14: 'He's sending a text message.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "text message",
+      "g": "Textnachricht",
+      "d": "A short note that you get on your phone.",
+      "s": "I got a ___ from my friend on my phone.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "text message",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "text message",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "text message",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Textnachricht",
+            "tier": "full"
+          },
+          {
+            "text": "SMS",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "note",
+          "de": "Nachricht",
+          "scope": "d"
+        },
+        {
+          "word": "get",
+          "de": "bekommen",
+          "scope": "d"
+        },
+        {
+          "word": "got",
+          "de": "bekommen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "programme",
+        "clock",
+        "weather"
+      ],
+      "hintDe": "Eine kurze Nachricht, die du auf dein Handy bekommst."
+    },
+    {
+      "id": "g1u11.w.to-answer-the-door",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to hide",
+            "to push",
+            "to look after",
+            "to study"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 story: 'Answer the door, Suzy!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to answer the door",
+      "g": "die Tür aufmachen",
+      "d": "To go and open up when somebody knocks.",
+      "s": "Somebody is at the door. Can you ___, please?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "answer the door",
+          "tier": "full"
+        },
+        {
+          "text": "to answer the door",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "answer the door",
+          "tier": "full"
+        },
+        {
+          "text": "to answer the door",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "answer the door",
+            "tier": "full"
+          },
+          {
+            "text": "to answer the door",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "die Tür aufmachen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to hide",
+        "to push",
+        "to look after"
+      ],
+      "hintDe": "Zur Tür gehen und sie aufmachen, wenn jemand klopft."
+    },
+    {
+      "id": "g1u11.w.to-cook",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to watch TV",
+            "to skate",
+            "to play football",
+            "to study"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to cook",
+      "g": "kochen",
+      "d": "To make food on the hot stove.",
+      "s": "My dad likes to ___ pizza for dinner.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cook",
+          "tier": "full"
+        },
+        {
+          "text": "to cook",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cook",
+          "tier": "full"
+        },
+        {
+          "text": "to cook",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cook",
+            "tier": "full"
+          },
+          {
+            "text": "to cook",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kochen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stove",
+          "de": "Herd",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to watch TV",
+        "to skate",
+        "to play football"
+      ],
+      "hintDe": "Du machst Essen auf dem Herd."
+    },
+    {
+      "id": "g1u11.w.to-cook-2",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to study",
+            "to push",
+            "to hide",
+            "to hurry"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: 'My mum cooks great spaghetti.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to cook",
+      "g": "kochen",
+      "d": "To make a hot dinner for the family to eat.",
+      "s": "My mum likes to ___ a big dinner for the family.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cook",
+          "tier": "full"
+        },
+        {
+          "text": "to cook",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cook",
+          "tier": "full"
+        },
+        {
+          "text": "to cook",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cook",
+            "tier": "full"
+          },
+          {
+            "text": "to cook",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kochen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to study",
+        "to push",
+        "to hide"
+      ],
+      "hintDe": "Ein warmes Abendessen für die Familie machen."
+    },
+    {
+      "id": "g1u11.w.to-go-to-bed",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to go to school",
+            "to wake somebody up",
+            "to study",
+            "to hurry"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: 'I go to bed at nine o'clock.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to go to bed",
+      "g": "schlafen gehen",
+      "d": "To get in and sleep at night.",
+      "s": "I always ___ at nine o'clock at night.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "go to bed",
+          "tier": "full"
+        },
+        {
+          "text": "to go to bed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "go to bed",
+          "tier": "full"
+        },
+        {
+          "text": "to go to bed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "go to bed",
+            "tier": "full"
+          },
+          {
+            "text": "to go to bed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schlafen gehen",
+            "tier": "full"
+          },
+          {
+            "text": "ins Bett gehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "get",
+          "de": "gehen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to go to school",
+        "to wake somebody up",
+        "to study"
+      ],
+      "hintDe": "Am Abend ins Bett gehen, um zu schlafen."
+    },
+    {
+      "id": "g1u11.w.to-go-to-school",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to go to bed",
+            "to study",
+            "to hurry",
+            "to wake somebody up"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: 'Sarah goes to school at a quarter to eight.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to go to school",
+      "g": "in die Schule gehen",
+      "d": "To walk in the morning to your class and study.",
+      "s": "Mary likes to ___ at a quarter to eight every day.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "go to school",
+          "tier": "full"
+        },
+        {
+          "text": "to go to school",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "go to school",
+          "tier": "full"
+        },
+        {
+          "text": "to go to school",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "go to school",
+            "tier": "full"
+          },
+          {
+            "text": "to go to school",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in die Schule gehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "every",
+          "de": "jede/r",
+          "scope": "s"
+        },
+        {
+          "word": "walk",
+          "de": "gehen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to go to bed",
+        "to study",
+        "to hurry"
+      ],
+      "hintDe": "Am Morgen in die Schule gehen, um zu lernen."
+    },
+    {
+      "id": "g1u11.w.to-hide",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to push",
+            "to study",
+            "to cook",
+            "to hurry"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 story: 'hide behind the bush'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to hide",
+      "g": "(sich) verstecken",
+      "d": "To go behind a tree or a bush so your friends can't find you.",
+      "s": "Let's ___ behind the big tree in the park.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hide",
+          "tier": "full"
+        },
+        {
+          "text": "to hide",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hide",
+          "tier": "full"
+        },
+        {
+          "text": "to hide",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hide",
+            "tier": "full"
+          },
+          {
+            "text": "to hide",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich verstecken",
+            "tier": "full"
+          },
+          {
+            "text": "verstecken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to push",
+        "to study",
+        "to cook"
+      ],
+      "hintDe": "Dorthin gehen, wo dich niemand sehen kann."
+    },
+    {
+      "id": "g1u11.w.to-hurry",
+      "rev": 4,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to study",
+            "to hide",
+            "to cook",
+            "to push"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11: 'We're late. Let's hurry.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to hurry",
+      "g": "sich beeilen",
+      "d": "To do something very fast.",
+      "s": "We are late! Let's ___ to school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hurry",
+          "tier": "full"
+        },
+        {
+          "text": "to hurry",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hurry",
+          "tier": "full"
+        },
+        {
+          "text": "to hurry",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hurry",
+            "tier": "full"
+          },
+          {
+            "text": "to hurry",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich beeilen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "fast",
+          "de": "schnell",
+          "scope": "d"
+        },
+        {
+          "word": "late",
+          "de": "spät",
+          "scope": "s"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to study",
+        "to hide",
+        "to cook"
+      ],
+      "hintDe": "Etwas sehr schnell machen."
+    },
+    {
+      "id": "g1u11.w.to-look-after",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to push",
+            "to hide",
+            "to hurry",
+            "to study"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 ex 14: 'She's looking after her cat.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to look after",
+      "g": "sich kümmern",
+      "d": "To give food and help to a pet or a child.",
+      "s": "Can you ___ my dog for a week? I am away.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "look after",
+          "tier": "full"
+        },
+        {
+          "text": "to look after",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "look after",
+          "tier": "full"
+        },
+        {
+          "text": "to look after",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "look after",
+            "tier": "full"
+          },
+          {
+            "text": "to look after",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich kümmern",
+            "tier": "full"
+          },
+          {
+            "text": "sich kümmern um",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "pet",
+          "de": "Haustier",
+          "scope": "d"
+        },
+        {
+          "word": "help",
+          "de": "Hilfe",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to push",
+        "to hide",
+        "to hurry"
+      ],
+      "hintDe": "Einem Haustier oder Kind Essen geben und helfen."
+    },
+    {
+      "id": "g1u11.w.to-play-computer-games",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to play football",
+            "to watch TV",
+            "to skate",
+            "to play the piano"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to play computer games",
+      "g": "Computerspiele spielen",
+      "d": "To have fun on a screen in your free time.",
+      "s": "My friend likes to ___ on his computer in the evening.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "play computer games",
+          "tier": "full"
+        },
+        {
+          "text": "to play computer games",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "play computer games",
+          "tier": "full"
+        },
+        {
+          "text": "to play computer games",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "play computer games",
+            "tier": "full"
+          },
+          {
+            "text": "to play computer games",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Computerspiele spielen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "screen",
+          "de": "Bildschirm",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to play football",
+        "to watch TV",
+        "to skate"
+      ],
+      "hintDe": "Du spielst Spiele am Computer."
+    },
+    {
+      "id": "g1u11.w.to-play-football",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to play the piano",
+            "to watch TV",
+            "to cook",
+            "to play computer games"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to play football",
+      "g": "Fußball spielen",
+      "d": "To kick a ball with your feet in a team game.",
+      "s": "The boys like to ___ in the park after school.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "play football",
+          "tier": "full"
+        },
+        {
+          "text": "to play football",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "play football",
+          "tier": "full"
+        },
+        {
+          "text": "to play football",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "play football",
+            "tier": "full"
+          },
+          {
+            "text": "to play football",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fußball spielen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "kick",
+          "de": "treten, schießen",
+          "scope": "d"
+        },
+        {
+          "word": "ball",
+          "de": "Ball",
+          "scope": "d"
+        },
+        {
+          "word": "team",
+          "de": "Mannschaft",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to play the piano",
+        "to watch TV",
+        "to cook"
+      ],
+      "hintDe": "Du schießt mit dem Fuß einen Ball."
+    },
+    {
+      "id": "g1u11.w.to-play-the-piano",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to play football",
+            "to ride a bike",
+            "to cook",
+            "to skate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to play the piano",
+      "g": "Klavier spielen",
+      "d": "To make music on a big thing with white and black keys.",
+      "s": "She can ___ very well. The music is great!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "play the piano",
+          "tier": "full"
+        },
+        {
+          "text": "to play the piano",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "play the piano",
+          "tier": "full"
+        },
+        {
+          "text": "to play the piano",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "play the piano",
+            "tier": "full"
+          },
+          {
+            "text": "to play the piano",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Klavier spielen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "black",
+          "de": "schwarz",
+          "scope": "d"
+        },
+        {
+          "word": "keys",
+          "de": "Tasten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to play football",
+        "to ride a bike",
+        "to cook"
+      ],
+      "hintDe": "Du machst Musik auf den schwarzen und weißen Tasten."
+    },
+    {
+      "id": "g1u11.w.to-push",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to hide",
+            "to cook",
+            "to study",
+            "to hurry"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11: 'The cat pushes the skateboard down the park.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to push",
+      "g": "schieben",
+      "d": "To move something away from you with your hands.",
+      "s": "___ the big door with both hands to open it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Push",
+          "tier": "full"
+        },
+        {
+          "text": "push",
+          "tier": "full"
+        },
+        {
+          "text": "to push",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "push",
+          "tier": "full"
+        },
+        {
+          "text": "to push",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "push",
+            "tier": "full"
+          },
+          {
+            "text": "to push",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schieben",
+            "tier": "full"
+          },
+          {
+            "text": "drücken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "move",
+          "de": "bewegen",
+          "scope": "d"
+        },
+        {
+          "word": "hands",
+          "de": "Hände",
+          "scope": null
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to hide",
+        "to cook",
+        "to study"
+      ],
+      "hintDe": "Etwas mit den Händen von dir weg bewegen."
+    },
+    {
+      "id": "g1u11.w.to-ride-a-bike",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to ride a horse",
+            "to ride a scooter",
+            "to skate",
+            "to skateboard"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to ride a bike",
+      "g": "Fahrrad fahren",
+      "d": "To go on a thing with two wheels that you push with your feet.",
+      "s": "In my free time I like to ___ in the park.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ride a bike",
+          "tier": "full"
+        },
+        {
+          "text": "to ride a bike",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ride a bike",
+          "tier": "full"
+        },
+        {
+          "text": "to ride a bike",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ride a bike",
+            "tier": "full"
+          },
+          {
+            "text": "to ride a bike",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fahrrad fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wheels",
+          "de": "Räder",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to ride a horse",
+        "to ride a scooter",
+        "to skate"
+      ],
+      "hintDe": "Du sitzt auf zwei Rädern und trittst in die Pedale."
+    },
+    {
+      "id": "g1u11.w.to-ride-a-horse",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to ride a bike",
+            "to ride a scooter",
+            "to ski",
+            "to skate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to ride a horse",
+      "g": "reiten",
+      "d": "To sit on a big farm animal and go on it.",
+      "s": "My sister goes to the farm to ___ every Sunday.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ride a horse",
+          "tier": "full"
+        },
+        {
+          "text": "to ride a horse",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ride a horse",
+          "tier": "full"
+        },
+        {
+          "text": "to ride a horse",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ride a horse",
+            "tier": "full"
+          },
+          {
+            "text": "to ride a horse",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "reiten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        },
+        {
+          "word": "every",
+          "de": "jede/r",
+          "scope": "s"
+        },
+        {
+          "word": "goes",
+          "de": "geht",
+          "scope": "s"
+        },
+        {
+          "word": "sit",
+          "de": "sitzen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to ride a bike",
+        "to ride a scooter",
+        "to ski"
+      ],
+      "hintDe": "Du sitzt auf einem Pferd und reitest."
+    },
+    {
+      "id": "g1u11.w.to-ride-a-scooter",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to ride a bike",
+            "to ride a horse",
+            "to skateboard",
+            "to skate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to ride a scooter",
+      "g": "Roller fahren",
+      "d": "To go on a thing with two small wheels, with one foot down.",
+      "s": "She likes to ___ to the park on two small wheels.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ride a scooter",
+          "tier": "full"
+        },
+        {
+          "text": "to ride a scooter",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ride a scooter",
+          "tier": "full"
+        },
+        {
+          "text": "to ride a scooter",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ride a scooter",
+            "tier": "full"
+          },
+          {
+            "text": "to ride a scooter",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Roller fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wheels",
+          "de": "Räder",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "to ride a bike",
+        "to ride a horse",
+        "to skateboard"
+      ],
+      "hintDe": "Du stehst auf einem Roller und stößt dich mit einem Fuß ab."
+    },
+    {
+      "id": "g1u11.w.to-skate",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to ski",
+            "to snowboard",
+            "to skateboard",
+            "to ride a bike"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 ex 15: 'He's skating.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to skate",
+      "g": "Schlittschuh laufen",
+      "d": "To go on the ice with special shoes on your feet.",
+      "s": "When it is cold we go on the ice to ___ with our friends.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "skate",
+          "tier": "full"
+        },
+        {
+          "text": "to skate",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "skate",
+          "tier": "full"
+        },
+        {
+          "text": "to skate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "skate",
+            "tier": "full"
+          },
+          {
+            "text": "to skate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlittschuh laufen",
+            "tier": "full"
+          },
+          {
+            "text": "eislaufen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "special",
+          "de": "besondere",
+          "scope": "d"
+        },
+        {
+          "word": "ice",
+          "de": "Eis",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "to ski",
+        "to snowboard",
+        "to skateboard"
+      ],
+      "hintDe": "Du läufst mit besonderen Schuhen über das Eis."
+    },
+    {
+      "id": "g1u11.w.to-skateboard",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to skate",
+            "to ski",
+            "to snowboard",
+            "to ride a scooter"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to skateboard",
+      "g": "Skateboard fahren",
+      "d": "To go on a small board with four wheels under it.",
+      "s": "Tim likes to ___ in the park with his friends.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "skateboard",
+          "tier": "full"
+        },
+        {
+          "text": "to skateboard",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "skateboard",
+          "tier": "full"
+        },
+        {
+          "text": "to skateboard",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "skateboard",
+            "tier": "full"
+          },
+          {
+            "text": "to skateboard",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Skateboard fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wheels",
+          "de": "Räder",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to skate",
+        "to ski",
+        "to snowboard"
+      ],
+      "hintDe": "Du fährst auf einem kleinen Brett mit vier Rädern."
+    },
+    {
+      "id": "g1u11.w.to-ski",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to snowboard",
+            "to skate",
+            "to skateboard",
+            "to ride a bike"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 postcard: 'Mum and Dad are skiing.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to ski",
+      "g": "Ski fahren",
+      "d": "To go down the snow on two long boards on your feet.",
+      "s": "When it snows, Mum and Dad like to ___ down the snow.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "ski",
+          "tier": "full"
+        },
+        {
+          "text": "to ski",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ski",
+          "tier": "full"
+        },
+        {
+          "text": "to ski",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ski",
+            "tier": "full"
+          },
+          {
+            "text": "to ski",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ski fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to snowboard",
+        "to skate",
+        "to skateboard"
+      ],
+      "hintDe": "Du fährst auf zwei langen Brettern den Schnee hinunter."
+    },
+    {
+      "id": "g1u11.w.to-snow",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to ski",
+            "to skate",
+            "to hide",
+            "to push"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 postcard: 'it's snowing.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to snow",
+      "g": "schneien",
+      "d": "When soft white ice comes down from the sky.",
+      "s": "Look! It is cold and it is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "snowing",
+          "tier": "full"
+        },
+        {
+          "text": "snow",
+          "tier": "partial"
+        },
+        {
+          "text": "to snow",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "snow",
+          "tier": "full"
+        },
+        {
+          "text": "to snow",
+          "tier": "full"
+        },
+        {
+          "text": "snowing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "snow",
+            "tier": "full"
+          },
+          {
+            "text": "to snow",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schneien",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "soft",
+          "de": "weich",
+          "scope": "d"
+        },
+        {
+          "word": "sky",
+          "de": "Himmel",
+          "scope": "d"
+        },
+        {
+          "word": "comes",
+          "de": "kommt",
+          "scope": "d"
+        },
+        {
+          "word": "ice",
+          "de": "Eis",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to ski",
+        "to skate",
+        "to hide"
+      ],
+      "hintDe": "Wenn weißer Schnee vom Himmel fällt."
+    },
+    {
+      "id": "g1u11.w.to-snowboard",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to ski",
+            "to skate",
+            "to skateboard",
+            "to ride a scooter"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 postcard: 'Jack's snowboarding.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to snowboard",
+      "g": "snowboarden",
+      "d": "To go down the snow on one wide board, with both feet on it.",
+      "s": "Jack likes to ___ down the snow on one big board.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "snowboard",
+          "tier": "full"
+        },
+        {
+          "text": "to snowboard",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "snowboard",
+          "tier": "full"
+        },
+        {
+          "text": "to snowboard",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "snowboard",
+            "tier": "full"
+          },
+          {
+            "text": "to snowboard",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "snowboarden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wide",
+          "de": "breit",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to ski",
+        "to skate",
+        "to skateboard"
+      ],
+      "hintDe": "Du fährst mit beiden Füßen auf einem breiten Brett den Schnee hinunter."
+    },
+    {
+      "id": "g1u11.w.to-study",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to hurry",
+            "to cook",
+            "to hide",
+            "to push"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: 'I study art and drawing.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to study",
+      "g": "lernen",
+      "d": "To read a lot for a test at school.",
+      "s": "I need to ___ for my big English test tomorrow.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "study",
+          "tier": "full"
+        },
+        {
+          "text": "to study",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "study",
+          "tier": "full"
+        },
+        {
+          "text": "to study",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "study",
+            "tier": "full"
+          },
+          {
+            "text": "to study",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lernen",
+            "tier": "full"
+          },
+          {
+            "text": "studieren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "test",
+          "de": "Test",
+          "scope": null
+        },
+        {
+          "word": "lot",
+          "de": "viel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to hurry",
+        "to cook",
+        "to hide"
+      ],
+      "hintDe": "Für die Schule lesen und etwas lernen."
+    },
+    {
+      "id": "g1u11.w.to-wake-somebody-up",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to go to bed",
+            "to go to school",
+            "to study",
+            "to hurry"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: 'My dad plays a loud song to wake me up.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to wake somebody up",
+      "g": "jemanden aufwecken",
+      "d": "To make a sleeping child or adult open their eyes.",
+      "s": "Mum has to ___ in the morning because I sleep a lot.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wake somebody up",
+          "tier": "full"
+        },
+        {
+          "text": "to wake somebody up",
+          "tier": "partial"
+        },
+        {
+          "text": "wake me up",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wake somebody up",
+          "tier": "full"
+        },
+        {
+          "text": "to wake somebody up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wake somebody up",
+            "tier": "full"
+          },
+          {
+            "text": "to wake somebody up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jemanden aufwecken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "lot",
+          "de": "viel",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to go to bed",
+        "to go to school",
+        "to study"
+      ],
+      "hintDe": "Jemanden, der schläft, wach machen."
+    },
+    {
+      "id": "g1u11.w.to-watch-tv",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to play football",
+            "to cook",
+            "to study",
+            "to play computer games"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to watch TV",
+      "g": "fernsehen",
+      "d": "To look at programmes on the big screen at your place.",
+      "s": "After dinner we like to ___ in the living room.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "watch TV",
+          "tier": "full"
+        },
+        {
+          "text": "to watch TV",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "watch TV",
+          "tier": "full"
+        },
+        {
+          "text": "to watch TV",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "watch TV",
+            "tier": "full"
+          },
+          {
+            "text": "to watch TV",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fernsehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "screen",
+          "de": "Bildschirm",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to play football",
+        "to cook",
+        "to study"
+      ],
+      "hintDe": "Du schaust dir Sendungen auf dem Bildschirm an."
+    },
+    {
+      "id": "g1u11.w.weather",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "clock",
+            "road",
+            "programme",
+            "surprise"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: 'I hope the weather is nice tomorrow.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "weather",
+      "g": "Wetter",
+      "d": "If it is cold, nice, or it snows outside.",
+      "s": "The ___ is nice today, so let's go to the park.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "weather",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "weather",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "weather",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wetter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "clock",
+        "road",
+        "programme"
+      ],
+      "hintDe": "Ob es draußen kalt, schön ist oder schneit."
+    },
+    {
+      "id": "g1u11.w.what-s-the-time",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "What time is it?",
+            "Excuse me.",
+            "Have fun!",
+            "See you soon."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11 ex 2: 'What's the time?'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "What's the time?",
+      "g": "Wie spät ist es?",
+      "d": "You ask this to find out how late it is.",
+      "s": "___ — It's half past nine now.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "What's the time?",
+          "tier": "full"
+        },
+        {
+          "text": "What's the time",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "What's the time?",
+          "tier": "full"
+        },
+        {
+          "text": "What's the time",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "What's the time?",
+            "tier": "full"
+          },
+          {
+            "text": "What time is it?",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wie spät ist es?",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "late",
+          "de": "spät",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "What time is it?",
+        "Excuse me.",
+        "Have fun!"
+      ],
+      "hintDe": "So fragst du, was die Uhr zeigt."
+    },
+    {
+      "id": "g1u11.w.what-time-is-it",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "What's the time?",
+            "Excuse me.",
+            "Have fun!",
+            "See you soon."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB Unit 11: 'Excuse me, what time is it?'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "What time is it?",
+      "g": "Wie spät ist es?",
+      "d": "You ask this to get the hour from a clock right now.",
+      "s": "___ I don't want to be late!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "What time is it?",
+          "tier": "full"
+        },
+        {
+          "text": "What time is it",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "What time is it?",
+          "tier": "full"
+        },
+        {
+          "text": "What time is it",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "What time is it?",
+            "tier": "full"
+          },
+          {
+            "text": "What's the time?",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wie spät ist es?",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "get",
+          "de": "erfahren",
+          "scope": "d"
+        },
+        {
+          "word": "late",
+          "de": "spät",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "What's the time?",
+        "Excuse me.",
+        "Have fun!"
+      ],
+      "hintDe": "So fragst du, wie spät es gerade ist."
+    }
+  ]
+}

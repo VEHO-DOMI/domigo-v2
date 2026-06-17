@@ -1,0 +1,840 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u12",
+  "round": 1,
+  "itemsHash": "08c10551a0cb",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g1u12.w.19th-nineteenth",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.19th-nineteenth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.20th-twentieth",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.20th-twentieth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.21st-twenty-first",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.21st-twenty-first",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.25th-twenty-fifth",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.25th-twenty-fifth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.alarm-clock",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.alarm-clock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.april",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.april",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.august",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.august",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.birthday-cake",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.birthday-cake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.candle",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.candle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.cinema",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.cinema",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.excellent",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.excellent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.finally",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.finally",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.garden",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.garden",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.good-for-you",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.good-for-you",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.how-dare-you",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.how-dare-you",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.how-old-are-you",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.how-old-are-you",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.ill",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.ill",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.inspector",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.inspector",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.it-s-my-birthday",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.it-s-my-birthday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.july",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.july",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.june",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.june",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.march",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.march",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.match",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.match",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.may",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.may",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.messy",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.messy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.month",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.month",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.november",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.november",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.october",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.october",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.piece",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.piece",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.probably",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.probably",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.robber",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.robber",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.robbery",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.robbery",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.september",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.september",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.that-was-close",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.that-was-close",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.w.you-re-welcome",
+      "kind": "new-gloss",
+      "itemId": "g1u12.w.you-re-welcome",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u12.gi.past-simple-was-were.ec.003",
+      "kind": "new-gloss",
+      "itemId": "g1u12.gi.past-simple-was-were.ec.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.10th-tenth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.10th-tenth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.11th-eleventh",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.11th-eleventh",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.12th-twelfth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.12th-twelfth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.13th-thirteenth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.13th-thirteenth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.14th-fourteenth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.14th-fourteenth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.15th-fifteenth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.15th-fifteenth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.16th-sixteenth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.16th-sixteenth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.17th-seventeenth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.17th-seventeenth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.18th-eighteenth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.18th-eighteenth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.19th-nineteenth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.19th-nineteenth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.1st-first",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.1st-first",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.20th-twentieth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.20th-twentieth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.21st-twenty-first",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.21st-twenty-first",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.22nd-twenty-second",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.22nd-twenty-second",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.23rd-twenty-third",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.23rd-twenty-third",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.24th-twenty-fourth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.24th-twenty-fourth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.25th-twenty-fifth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.25th-twenty-fifth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.2nd-second",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.2nd-second",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.30th-thirtieth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.30th-thirtieth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.31st-thirty-first",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.31st-thirty-first",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.3rd-third",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.3rd-third",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.4th-fourth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.4th-fourth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.5th-fifth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.5th-fifth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.6th-sixth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.6th-sixth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.7th-seventh",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.7th-seventh",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.8th-eighth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.8th-eighth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.9th-ninth",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.9th-ninth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.alarm-clock",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.alarm-clock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.april",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.april",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.august",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.august",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.bathroom",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.bathroom",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.bedroom",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.bedroom",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.birthday-cake",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.birthday-cake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.candle",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.candle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.cinema",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.cinema",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.date",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.date",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.december",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.december",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.delicious",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.delicious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.dining-room",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.dining-room",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.eater",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.eater",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.excellent",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.excellent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.february",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.february",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.finally",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.finally",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.garage",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.garage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.garden",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.garden",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.good-for-you",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.good-for-you",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.hall",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.hall",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.how-dare-you",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.how-dare-you",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.how-old-are-you",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.how-old-are-you",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.ill",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.ill",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.inspector",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.inspector",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.it-s-my-birthday",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.it-s-my-birthday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.january",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.january",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.july",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.july",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.june",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.june",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.kitchen",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.kitchen",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.last",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.last",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.library",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.library",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.living-room",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.living-room",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.march",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.march",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.match",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.match",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.may",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.may",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.messy",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.messy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.month",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.month",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.november",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.november",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.october",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.october",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.piece",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.piece",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.probably",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.probably",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.robber",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.robber",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.robbery",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.robbery",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.september",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.september",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.that-was-close",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.that-was-close",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.yesterday",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.yesterday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.w.you-re-welcome",
+      "kind": "translation-audit",
+      "itemId": "g1u12.w.you-re-welcome",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.gi.ordinal-numbers.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u12.gi.ordinal-numbers.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.gi.ordinal-numbers.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u12.gi.ordinal-numbers.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.gi.past-simple-was-were.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u12.gi.past-simple-was-were.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.gi.past-simple-was-were.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u12.gi.past-simple-was-were.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.gi.prepositions-time.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u12.gi.prepositions-time.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u12.gi.prepositions-time.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u12.gi.prepositions-time.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u12.gi.ordinal-numbers.tr.002#68e1d1",
+      "kind": "validator-warn",
+      "itemId": "g1u12.gi.ordinal-numbers.tr.002",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 161 rows across 3 structures (ordinals, past was/were, time-prepositions). Verify lenses: answers CLEAN (all spellings/agreement/prepositions correct, distractors unambiguously wrong, negation items strict:true), translation CLEAN (months Austrian-correct incl. Jänner, ordinals fünfter/achter, war/waren↔was/were, idiomatic phrases). REGISTER: fixed 13 prompts that carried German category terms \"Ordnungszahl\"/\"Vorwort\" — reworded to plain German (\"8. als Wort\", \"Wie schreibt man 5. als Wort?\", \"welches kleine Wort\"); those terms remain only in hintDe/explainDe (allowed). LEVEL-GLOSS: 2 warns (leaves=Blätter in month defs; think in probably) are NON-ACTIONABLE — the mechanical gate treats them as taught inflections of \"leave\"/\"think\" (glossing triggers V-6 unneeded), so the noun-vs-verb semantic nuance can't be expressed as a gloss; accepted as-is. Audited grants: 20 deliberate wrong ordinal spellings (fiveth/nineth/twelth…), cardinals eleven/twelve, race/came (race context), wake/half (phrase components), party/been. Other fixes: relabeled 2 group-sorts off German labels (ordinals \"like sixth\"/\"like fifth\"; past \"Yes\"/\"No\"); dropped past mp.001 (was/were can't yield unique matching right-sides); reworded how-old-are-you.d off the headword \"how\"; date ordinal 28th→25th (bank-covered); gf.004 dropped untaught \"late\". Minor noted nit (not re-cycled): prep gf.011 hint cites \"May 28th\" as a generic exact-date example while its prompt now reads 25th — pedagogically sound. tr.002(ordinals) hintDe \"sie\"=the number, not formal (the validator-warn). 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 161,
+    "fullRows": 161,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

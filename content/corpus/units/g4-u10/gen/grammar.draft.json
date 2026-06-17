@@ -1,0 +1,2058 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g4-u10",
+  "briefBank": "2e7bd10777c1",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "If I ___ (study) harder, I would have arrived first.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had studied",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Im if-Satz steht had + die 3. Form. Von 'study' ist das 'studied': had studied.",
+      "hintEn": null,
+      "explainDe": "Für etwas, das in der Vergangenheit NICHT passiert ist, nimmst du im if-Satz had + die 3. Form: had studied.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-gf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "If they ___ (arrive) on time, they would have come with us.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had arrived",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + die 3. Form von 'arrive' ist 'arrived': had arrived.",
+      "hintEn": null,
+      "explainDe": "If + had + 3. Form beschreibt die nicht passierte Vergangenheit: had arrived.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-gf-007",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If Vicente had known about Fair Trade, he ___ (join) the project earlier.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would have joined",
+          "tier": "full"
+        },
+        {
+          "text": "would've joined",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Im Hauptsatz steht would have + die 3. Form. Von 'join' ist das 'joined': would have joined.",
+      "hintEn": null,
+      "explainDe": "Der Hauptsatz beim dritten Typ ist would have + 3. Form: would have joined.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-gf-003",
+      "sbRef": "g4/sb/More 4 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If the company had paid a fair price, Sofia ___ (leave / not) the farm.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "wouldn't have left",
+          "tier": "full"
+        },
+        {
+          "text": "would not have left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "would + not + have + 3. Form. Von 'leave' ist die 3. Form 'left': wouldn't have left.",
+      "hintEn": null,
+      "explainDe": "Verneinung im Hauptsatz: would not have + 3. Form (left). 'leave' wird zu 'left'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-gf-002",
+      "sbRef": "g4/sb/More 4 SB Unit 10.txt#story",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If she ___ (miss / not) the bus, she would have arrived on time.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hadn't missed",
+          "tier": "full"
+        },
+        {
+          "text": "had not missed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung im if-Satz: had + not + 3. Form. Von 'miss' ist das 'missed': hadn't missed.",
+      "hintEn": null,
+      "explainDe": "Der if-Satz mit not heißt had not + 3. Form: hadn't missed.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-gf-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "If we ___ (invite) Tom, he would have come to the party.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had invited",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had + 3. Form von 'invite' ist 'invited': had invited.",
+      "hintEn": null,
+      "explainDe": "If + had + 3. Form (invited) für die nicht passierte Vergangenheit.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "If Fair Trade ___ (exist) then, my dad ___ (sell / not) his farm.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had existed | wouldn't have sold",
+          "tier": "full"
+        },
+        {
+          "text": "had existed | would not have sold",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "if-Satz: had existed. Hauptsatz: would not have + 3. Form von 'sell' = sold.",
+      "hintEn": null,
+      "explainDe": "Beide Teile gehören zusammen: had existed (if) und wouldn't have sold (Hauptsatz).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "If she ___ (wash) the car, it ___ (look) clean.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had washed | would have looked",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "if-Satz: had + 3. Form von 'wash' = washed. Hauptsatz: would have + 3. Form von 'look' = looked.",
+      "hintEn": null,
+      "explainDe": "had washed (if) + would have looked (Hauptsatz): die saubere Vergangenheit ist nicht passiert.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-gf-008",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If you had asked me, I ___ (help) you with your homework.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would have helped",
+          "tier": "full"
+        },
+        {
+          "text": "would've helped",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hauptsatz: would have + 3. Form von 'help' = helped: would have helped.",
+      "hintEn": null,
+      "explainDe": "would have helped = die Hilfe ist nicht passiert, weil du nicht gefragt hast.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-tf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She ___ (call) you if she ___ (have) your number.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "would have called | had had",
+          "tier": "full"
+        },
+        {
+          "text": "would've called | had had",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hauptsatz zuerst: would have called. if-Satz: had + 3. Form von 'have' = had: had had.",
+      "hintEn": null,
+      "explainDe": "Auch wenn der Hauptsatz vorne steht: would have called ... if ... had had.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-gf-011",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "If you buy Fair Trade products, you ___ (help) small farmers.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will help",
+          "tier": "full"
+        },
+        {
+          "text": "'ll help",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reale Zukunft: if + Präsens (buy), dann will + Grundform (help): will help.",
+      "hintEn": null,
+      "explainDe": "Erster Typ (reale Möglichkeit): If + Präsens, will + Grundform. will help.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 10.txt#ex7",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If it rains tomorrow, we ___ (stay) at home.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will stay",
+          "tier": "full"
+        },
+        {
+          "text": "'ll stay",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reale Zukunft: if + Präsens (rains), dann will + Grundform: will stay.",
+      "hintEn": null,
+      "explainDe": "Erster Typ: If + Präsens, will + Grundform. will stay (wahrscheinliche Zukunft).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If I ___ (be) you, I would join the Fair Trade project.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were",
+          "tier": "full"
+        },
+        {
+          "text": "was",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vorgestellt/jetzt unwahrscheinlich: if + Vergangenheit. Bei 'be' nimmst du 'were': If I were you.",
+      "hintEn": null,
+      "explainDe": "Zweiter Typ (vorgestellt jetzt): If + Past, would + Grundform. Mit 'I' heißt es im Buch 'were'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If I had more time, I ___ (travel) around the world.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would travel",
+          "tier": "full"
+        },
+        {
+          "text": "'d travel",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vorgestellt jetzt: if + Vergangenheit (had), dann would + Grundform: would travel.",
+      "hintEn": null,
+      "explainDe": "Zweiter Typ: If + Past, would + Grundform. would travel (vorgestellt, jetzt).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If we had left earlier, we ___ on time.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would have arrived",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "would arrive",
+        "had arrived",
+        "arrived"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hauptsatz beim dritten Typ: would have + 3. Form (arrived).",
+      "hintEn": null,
+      "explainDe": "Richtig ist 'would have arrived'. Nicht 'would arrive' (das wäre Typ 2) und nicht 'had arrived'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "would have arrived",
+          "would arrive",
+          "had arrived",
+          "arrived"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u10-third-conditional-mc-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If she ___ harder, she would have come first in the race.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had studied",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "would have studied",
+        "studied",
+        "has studied"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Im if-Satz steht had + 3. Form: had studied.",
+      "hintEn": null,
+      "explainDe": "Der if-Satz braucht had + 3. Form: had studied. 'would have studied' gehört in den Hauptsatz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had studied",
+          "would have studied",
+          "studied",
+          "has studied"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had studied, I would have arrived first.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If I would have studied, I would have arrived first.",
+        "If I had studied, I would arrived first.",
+        "If I studied, I would have arrived first."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "if-Satz: had + 3. Form. Hauptsatz: would have + 3. Form. Im if-Satz steht NIE 'would have'.",
+      "hintEn": null,
+      "explainDe": "Richtig: If I had studied, I would have arrived first. 'would have' gehört nicht in den if-Satz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "If I had studied, I would have arrived first.",
+          "If I would have studied, I would have arrived first.",
+          "If I had studied, I would arrived first.",
+          "If I studied, I would have arrived first."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u10-third-conditional-mc-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If they had invited me, I would have come.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If they had invited me, I would came.",
+        "If they invited me, I would have come.",
+        "If they would have invited me, I would have come."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hauptsatz: would have + 3. Form (come), if-Satz: had + 3. Form (invited).",
+      "hintEn": null,
+      "explainDe": "Richtig: If they had invited me, I would have come. 'would came' und 'would have' im if-Satz sind falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "If they had invited me, I would have come.",
+          "If they had invited me, I would came.",
+          "If they invited me, I would have come.",
+          "If they would have invited me, I would have come."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u10-third-conditional-mc-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "If she hadn't missed the train, she ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "wouldn't have been late",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "won't be late",
+        "wasn't late",
+        "wouldn't be late"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinter Hauptsatz: would not have + 3. Form (been): wouldn't have been late.",
+      "hintEn": null,
+      "explainDe": "Richtig ist 'wouldn't have been late'. 'wouldn't be late' wäre Typ 2 (jetzt), nicht die Vergangenheit.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "wouldn't have been late",
+          "won't be late",
+          "wasn't late",
+          "wouldn't be late"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u10-third-conditional-mc-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Es ist zu spät, es ist schon vorbei. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If it had rained, we would have stayed at home.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If it rains, we will stay at home.",
+        "If it rained, we would stay at home.",
+        "If it rains, we would have stayed at home."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vergangenheit, nicht mehr zu ändern: had + 3. Form ... would have + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Für die abgeschlossene Vergangenheit: If it had rained, we would have stayed. Die anderen sind Typ 1 oder 2.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "If it had rained, we would have stayed at home.",
+          "If it rains, we will stay at home.",
+          "If it rained, we would stay at home.",
+          "If it rains, we would have stayed at home."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u10-third-conditional-mc-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "If I had known, I ___ you.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would have helped",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "would help",
+        "had helped",
+        "help"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hauptsatz: would have + 3. Form (helped).",
+      "hintEn": null,
+      "explainDe": "Richtig ist 'would have helped'. Im Hauptsatz steht would have + 3. Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "would have helped",
+          "would help",
+          "had helped",
+          "help"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz beschreibt die Zeit von früher, die nicht passiert ist?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If we had had more money, we would have bought it.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If we had more money, we would have bought it.",
+        "If we had had more money, we would buy it.",
+        "If we have more money, we will buy it."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für die Vergangenheit brauchst du had + 3. Form von 'have' = had had: had had.",
+      "hintEn": null,
+      "explainDe": "Richtig: If we had had more money ... – 'had had' zeigt die Vergangenheit. Nur 'had' wäre Typ 2.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "If we had had more money, we would have bought it.",
+          "If we had more money, we would have bought it.",
+          "If we had had more money, we would buy it.",
+          "If we have more money, we will buy it."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u10-third-conditional-ec-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If I would have studied, I would have arrived first.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had studied, I would have arrived first.",
+          "tier": "full"
+        },
+        {
+          "text": "had studied",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Im if-Satz steht KEIN 'would have'. Ersetze es durch had: If I had studied ...",
+      "hintEn": null,
+      "explainDe": "Der häufigste Fehler: 'would have' im if-Satz. Richtig ist had + 3. Form: If I had studied.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-ec-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "If she had asked me, I would helped her.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If she had asked me, I would have helped her.",
+          "tier": "full"
+        },
+        {
+          "text": "would have helped",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Im Hauptsatz fehlt 'have': would + have + 3. Form (helped).",
+      "hintEn": null,
+      "explainDe": "Der Hauptsatz braucht 'have': would have helped. 'would helped' ist unvollständig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-ec-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If they had invited us, we would come.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If they had invited us, we would have come.",
+          "tier": "full"
+        },
+        {
+          "text": "would have come",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vergangenheit: der Hauptsatz braucht would have + 3. Form (come), nicht nur would come.",
+      "hintEn": null,
+      "explainDe": "'would come' ist Typ 2 (jetzt). Für die Vergangenheit: would have come.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-ec-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If Fair Trade would have existed, my dad would have kept the farm.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If Fair Trade had existed, my dad would have kept the farm.",
+          "tier": "full"
+        },
+        {
+          "text": "had existed",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "if-Satz ohne 'would have': If Fair Trade had existed ...",
+      "hintEn": null,
+      "explainDe": "Im if-Satz steht had + 3. Form (existed), nie 'would have'.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 10.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "If I had time yesterday, I would have visited you.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had had time yesterday, I would have visited you.",
+          "tier": "full"
+        },
+        {
+          "text": "had had",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für die Vergangenheit brauchst du had + 3. Form von 'have' = had had: had had time.",
+      "hintEn": null,
+      "explainDe": "'had time' allein ist Typ 2. Für die Vergangenheit: had had time.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "If they had won the match, they would celebrate.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If they had won the match, they would have celebrated.",
+          "tier": "full"
+        },
+        {
+          "text": "would have celebrated",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vergangenheit im Hauptsatz: would have + 3. Form (celebrated).",
+      "hintEn": null,
+      "explainDe": "'would celebrate' passt nicht zur Vergangenheit. Richtig: would have celebrated.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If he didn't miss the bus, he would have arrived on time.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If he hadn't missed the bus, he would have arrived on time.",
+          "tier": "full"
+        },
+        {
+          "text": "hadn't missed",
+          "tier": "partial"
+        },
+        {
+          "text": "had not missed",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der if-Satz braucht had not + 3. Form: hadn't missed (nicht 'didn't miss').",
+      "hintEn": null,
+      "explainDe": "Für die Vergangenheit im if-Satz: had not + 3. Form. 'didn't miss' ist hier falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-ec-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "If you would have asked, I would have helped.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you had asked, I would have helped.",
+          "tier": "full"
+        },
+        {
+          "text": "had asked",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Streiche 'would have' im if-Satz und setze had ein: If you had asked ...",
+      "hintEn": null,
+      "explainDe": "if-Satz = had + 3. Form (asked). 'would have' steht nur im Hauptsatz.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-ec-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bilde einen Satz vom 3. Typ (if + had + 3. Form → would have + 3. Form): 'She missed the train. She arrived late.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If she hadn't missed the train, she wouldn't have arrived late.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Dreh beide Sätze um: had not missed ... wouldn't have arrived late.",
+      "hintEn": null,
+      "explainDe": "Aus zwei Tatsachen wird der dritte Typ: hadn't missed (if) + wouldn't have arrived (Hauptsatz).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du hast nicht um Hilfe gefragt und bist durchgefallen. Drücke dein Bedauern als Satz vom 3. Typ aus.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had asked for help, I wouldn't have failed.",
+          "tier": "full"
+        },
+        {
+          "text": "If I had asked for help, I would not have failed.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "if-Satz: had asked. Hauptsatz verneint: wouldn't have + 3. Form von 'fail' = failed.",
+      "hintEn": null,
+      "explainDe": "had asked (if) + wouldn't have failed (Hauptsatz) zeigt das Bedauern über die Vergangenheit.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-tf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bilde einen Satz vom 3. Typ (if + had + 3. Form → would have + 3. Form): 'Die Firma hat keinen fairen Preis gezahlt. Sofias Vater hat die Farm verkauft.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If the company had paid a fair price, Sofia's dad wouldn't have sold the farm.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had paid (if) + wouldn't have sold (Hauptsatz).",
+      "hintEn": null,
+      "explainDe": "Beide Tatsachen werden umgedreht: had paid ... wouldn't have sold.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 10.txt#story",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bilde einen Satz vom 3. Typ (if + had + 3. Form → would have + 3. Form): 'We didn't invite Tom. He didn't come.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If we had invited Tom, he would have come.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "had invited (if) + would have come (Hauptsatz).",
+      "hintEn": null,
+      "explainDe": "Aus den zwei Tatsachen wird: If we had invited Tom, he would have come.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-tf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach aus diesem Satz den 2. Typ (vorgestellt, jetzt): If I have time, I will help you.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had time, I would help you.",
+          "tier": "full"
+        },
+        {
+          "text": "had time | would help you",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zweiter Typ: if + Vergangenheit (had), would + Grundform (help).",
+      "hintEn": null,
+      "explainDe": "Aus Typ 1 (have/will) wird Typ 2 (had/would): If I had time, I would help you.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Mach aus diesem Satz den 3. Typ (die Zeit von früher, schon vorbei): If I were rich, I would buy a farm.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had been rich, I would have bought a farm.",
+          "tier": "full"
+        },
+        {
+          "text": "had been rich | would have bought a farm",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Dritter Typ: if + had + 3. Form (been), would have + 3. Form (bought).",
+      "hintEn": null,
+      "explainDe": "Aus Typ 2 (were/would) wird Typ 3 (had been/would have): If I had been rich, I would have bought a farm.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "if / I / had / known / , / I / would / have / helped / you",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had known, I would have helped you.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "if-Satz zuerst: If I had known, dann der Hauptsatz: I would have helped you.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: If + I + had known, I + would have + helped you.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "did",
+          "was",
+          "would",
+          "had"
+        ],
+        "chipBudget": 9,
+        "minOptions": null
+      },
+      "seedV1": "m4-u10-third-conditional-sb-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "if / she / had / studied / , / she / would / have / arrived / first",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If she had studied, she would have arrived first.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "If she had studied, ... she would have arrived first.",
+      "hintEn": null,
+      "explainDe": "if + had + 3. Form (studied), Hauptsatz would have + 3. Form (arrived).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "did",
+          "has",
+          "would",
+          "had"
+        ],
+        "chipBudget": 9,
+        "minOptions": null
+      },
+      "seedV1": "m4-u10-third-conditional-sb-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "if / they / hadn't / missed / the / train / , / they / wouldn't / have / been / late",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If they hadn't missed the train, they wouldn't have been late.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "if-Satz verneint: If they hadn't missed the train, dann wouldn't have been late.",
+      "hintEn": null,
+      "explainDe": "hadn't missed (if) + wouldn't have been late (Hauptsatz).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "didn't",
+          "would",
+          "had",
+          "have"
+        ],
+        "chipBudget": 11,
+        "minOptions": null
+      },
+      "seedV1": "m4-u10-third-conditional-sb-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "if / Vicente / had / joined / earlier / , / he / would / have / saved / money",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If Vicente had joined earlier, he would have saved money.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "If Vicente had joined earlier, ... he would have saved money.",
+      "hintEn": null,
+      "explainDe": "if + had joined, Hauptsatz would have saved.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "did",
+          "would",
+          "had",
+          "have"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 10.txt#story",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wenn ich das gewusst hätte, hätte ich dir geholfen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had known that, I would have helped you.",
+          "tier": "full"
+        },
+        {
+          "text": "If I had known, I would have helped you.",
+          "tier": "full"
+        },
+        {
+          "text": "If I'd known that, I would've helped you.",
+          "tier": "partial"
+        },
+        {
+          "text": "I would have helped you if I had known that.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "if + had + 3. Form (known), would have + 3. Form (helped).",
+      "hintEn": null,
+      "explainDe": "Vergangenheit, nicht mehr zu ändern: If I had known, I would have helped you.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Wenn sie früher losgefahren wären, wären sie pünktlich angekommen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If they had left earlier, they would have arrived on time.",
+          "tier": "full"
+        },
+        {
+          "text": "If they had set off earlier, they would have arrived on time.",
+          "tier": "full"
+        },
+        {
+          "text": "They would have arrived on time if they had left earlier.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "if + had left, Hauptsatz would have arrived.",
+      "hintEn": null,
+      "explainDe": "If they had left earlier, they would have arrived on time.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-tr-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wenn es morgen regnet, bleiben wir zu Hause.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If it rains tomorrow, we will stay at home.",
+          "tier": "full"
+        },
+        {
+          "text": "If it rains tomorrow, we'll stay at home.",
+          "tier": "partial"
+        },
+        {
+          "text": "We will stay at home if it rains tomorrow.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reale Zukunft: If + Präsens (rains), will + Grundform (stay).",
+      "hintEn": null,
+      "explainDe": "Erster Typ: If it rains tomorrow, we will stay at home.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Wenn ich reich wäre, würde ich um die Welt reisen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I were rich, I would travel around the world.",
+          "tier": "full"
+        },
+        {
+          "text": "If I was rich, I would travel around the world.",
+          "tier": "partial"
+        },
+        {
+          "text": "I would travel around the world if I were rich.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zweiter Typ: If + Past (were), would + Grundform (travel).",
+      "hintEn": null,
+      "explainDe": "Vorgestellt, jetzt: If I were rich, I would travel around the world.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "matching",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Hauptsatz passt zu welchem if-Satz?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "If I had woken up earlier,",
+          "right": "I wouldn't have arrived late for school."
+        },
+        {
+          "left": "If she hadn't lost the tickets,",
+          "right": "we would have come to the concert."
+        },
+        {
+          "left": "If we had studied together,",
+          "right": "we would have done well in the exam."
+        },
+        {
+          "left": "If Tom had listened to the teacher,",
+          "right": "he would have understood the lesson."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Such zu jedem if-Satz den Hauptsatz mit would (not) have + 3. Form, der inhaltlich passt.",
+      "hintEn": null,
+      "explainDe": "Jeder if-Satz (had + 3. Form) braucht einen passenden Hauptsatz mit would have + 3. Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-mt-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher zweite Teil passt? Achte auf den Typ.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "If it rains tomorrow,",
+          "right": "we will stay at home."
+        },
+        {
+          "left": "If I were you,",
+          "right": "I would talk to him."
+        },
+        {
+          "left": "If she had studied,",
+          "right": "she would have passed the exam."
+        },
+        {
+          "left": "If you had asked,",
+          "right": "I would have helped you."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Typ 1 = will, Typ 2 = would, Typ 3 = would have. Such den passenden zweiten Teil.",
+      "hintEn": null,
+      "explainDe": "Jeder Typ hat eine eigene Form: will (Zukunft), would (jetzt vorgestellt), would have (Vergangenheit).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u10-third-conditional-mt-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Typ ist es? Ordne jeden Satz dem richtigen Muster zu.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "if + will",
+          "members": [
+            "If you buy Fair Trade, you will help farmers.",
+            "If I have time, I will visit you."
+          ]
+        },
+        {
+          "label": "if + would",
+          "members": [
+            "If I were rich, I would buy a farm.",
+            "If I had more time, I would travel."
+          ]
+        },
+        {
+          "label": "if + would have",
+          "members": [
+            "If they had invited me, I would have come.",
+            "If she had studied, she would have arrived first."
+          ]
+        }
+      ],
+      "hintDe": "'if + will' = reale Zukunft. 'if + would' = jetzt vorgestellt. 'if + would have' = Vergangenheit, vorbei.",
+      "hintEn": null,
+      "explainDe": "Typ 1 (will) ist eine reale Zukunft, Typ 2 (would) ist jetzt vorgestellt, Typ 3 (would have) ist die abgeschlossene Vergangenheit.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Richtiger if-Satz oder falsch?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "if + had",
+          "members": [
+            "If I had studied",
+            "If she had arrived",
+            "If they had asked"
+          ]
+        },
+        {
+          "label": "if + would have",
+          "members": [
+            "If I would have studied",
+            "If she would have arrived",
+            "If they would have asked"
+          ]
+        }
+      ],
+      "hintDe": "Im if-Satz steht had + 3. Form. 'would have' im if-Satz ist immer falsch.",
+      "hintEn": null,
+      "explainDe": "Richtig: If I had studied. Falsch: If I would have studied – 'would have' gehört nur in den Hauptsatz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Zeit von früher (vorbei) oder jetzt vorgestellt? Ordne die Hauptsätze zu.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "would have come",
+          "members": [
+            "I would have helped",
+            "she would have come",
+            "we would have stayed"
+          ]
+        },
+        {
+          "label": "would come",
+          "members": [
+            "I would help",
+            "she would come",
+            "we would stay"
+          ]
+        }
+      ],
+      "hintDe": "Vergangenheit (vorbei): would have + 3. Form. Jetzt vorgestellt: would + Grundform.",
+      "hintEn": null,
+      "explainDe": "'would have helped' = die Vergangenheit (vorbei). 'would help' = jetzt vorgestellt (Typ 2).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Tom hat nicht gelernt und ist im Rennen Letzter geworden. Er redet jetzt darüber. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had studied harder, I would have arrived first.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If I studied harder, I would arrive first.",
+        "If I study harder, I will arrive first.",
+        "If I would have studied, I arrived first."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist vorbei: had + 3. Form ... would have + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Für die abgeschlossene Vergangenheit: If I had studied harder, I would have arrived first.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "If I had studied harder, I would have arrived first.",
+          "If I studied harder, I would arrive first.",
+          "If I study harder, I will arrive first.",
+          "If I would have studied, I arrived first."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u10-third-conditional-cp-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Deine Freundin war gestern krank und ist nicht zur Party gekommen. Du findest das schade. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If she hadn't been ill, she would have come to the party.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If she wasn't ill, she would come to the party.",
+        "If she isn't ill, she will come to the party.",
+        "If she would have been ill, she had come to the party."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vergangenheit, vorbei: hadn't been ill ... would have come.",
+      "hintEn": null,
+      "explainDe": "Richtig: If she hadn't been ill, she would have come. Die anderen passen zur Gegenwart/Zukunft.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "If she hadn't been ill, she would have come to the party.",
+          "If she wasn't ill, she would come to the party.",
+          "If she isn't ill, she will come to the party.",
+          "If she would have been ill, she had come to the party."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u10-third-conditional-cp-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du sprichst über morgen. Es ist gut möglich, dass es regnet. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If it rains tomorrow, we will stay at home.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If it rained tomorrow, we would stay at home.",
+        "If it had rained tomorrow, we would have stayed at home.",
+        "If it rains tomorrow, we would have stayed at home."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reale Zukunft: If + Präsens (rains), will + Grundform (stay).",
+      "hintEn": null,
+      "explainDe": "Für eine wahrscheinliche Zukunft nimmst du Typ 1: If it rains tomorrow, we will stay at home.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "If it rains tomorrow, we will stay at home.",
+          "If it rained tomorrow, we would stay at home.",
+          "If it had rained tomorrow, we would have stayed at home.",
+          "If it rains tomorrow, we would have stayed at home."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Frag deine Freundin, was sie gemacht hätte, wenn sie mehr Zeit gehabt hätte. Beginne mit: What ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What would you have done if you had had more time?",
+          "tier": "full"
+        },
+        {
+          "text": "What would you have done if you'd had more time?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage: What would you have done if you had had ...? – would have + 3. Form (done), if + had had.",
+      "hintEn": null,
+      "explainDe": "Die Frage zum dritten Typ: What would you have done if you had had more time?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u10.s.third-conditional",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Frag deinen Freund, was er machen würde, wenn er reich wäre. Beginne mit: What ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What would you do if you were rich?",
+          "tier": "full"
+        },
+        {
+          "text": "What would you do if you was rich?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zweiter Typ als Frage: What would you do if you were rich? – would + Grundform, if + were.",
+      "hintEn": null,
+      "explainDe": "Die Frage zum zweiten Typ: What would you do if you were rich?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 10.txt#ex8",
+      "note": null,
+      "blanks": 0
+    }
+  ]
+}

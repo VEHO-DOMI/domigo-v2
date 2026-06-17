@@ -1,0 +1,2909 @@
+{
+  "schema": "vocab@1",
+  "grade": 4,
+  "unit": 12,
+  "slug": "g4-u12",
+  "items": [
+    {
+      "id": "g4u12.w.advert",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "warning",
+            "plaque",
+            "masterpiece",
+            "explosion",
+            "resource"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "advert",
+      "g": "Reklame",
+      "d": "A short notice or short message that helps to sell a thing.",
+      "s": "There was an ___ for flights to London in the newspaper.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "advert",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "advert",
+          "tier": "full"
+        },
+        {
+          "text": "adverts",
+          "tier": "full"
+        },
+        {
+          "text": "advertisement",
+          "tier": "full"
+        },
+        {
+          "text": "ad",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "advert",
+            "tier": "full"
+          },
+          {
+            "text": "advertisement",
+            "tier": "full"
+          },
+          {
+            "text": "an advert",
+            "tier": "full"
+          },
+          {
+            "text": "ad",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Reklame",
+            "tier": "full"
+          },
+          {
+            "text": "Anzeige",
+            "tier": "full"
+          },
+          {
+            "text": "Werbung",
+            "tier": "full"
+          },
+          {
+            "text": "eine Anzeige",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "helps",
+          "de": "hilft",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "warning",
+        "plaque",
+        "masterpiece"
+      ],
+      "hintDe": "Eine kurze Anzeige, die etwas verkaufen soll."
+    },
+    {
+      "id": "g4u12.w.altogether",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "disgusting",
+            "commercial",
+            "tiring",
+            "depressed",
+            "uninhabitable"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "altogether",
+      "g": "insgesamt",
+      "d": "When you add up everybody and everything; in all.",
+      "s": "___ there are eight planets that move close to our sun.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Altogether",
+          "tier": "full"
+        },
+        {
+          "text": "altogether",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "altogether",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "altogether",
+            "tier": "full"
+          },
+          {
+            "text": "in all",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "insgesamt",
+            "tier": "full"
+          },
+          {
+            "text": "alles in allem",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "disgusting",
+        "commercial",
+        "tiring"
+      ],
+      "hintDe": "Wenn du alles zusammenzählst."
+    },
+    {
+      "id": "g4u12.w.asteroid",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spacecraft",
+            "atmosphere",
+            "crew",
+            "plaque",
+            "orbit"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "asteroid",
+      "g": "Asteroid",
+      "d": "A very big rock in space that travels near the sun, between two planets.",
+      "s": "Many ___ move between Mars and Jupiter and never come close to a planet.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "asteroids",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "asteroid",
+          "tier": "full"
+        },
+        {
+          "text": "asteroids",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "asteroid",
+            "tier": "full"
+          },
+          {
+            "text": "an asteroid",
+            "tier": "full"
+          },
+          {
+            "text": "asteroids",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Asteroid",
+            "tier": "full"
+          },
+          {
+            "text": "ein Asteroid",
+            "tier": "full"
+          },
+          {
+            "text": "Asteroiden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "spacecraft",
+        "atmosphere",
+        "crew"
+      ],
+      "hintDe": "Ein riesiger Felsbrocken, der im Weltall um die Sonne fliegt."
+    },
+    {
+      "id": "g4u12.w.astronaut",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "commander",
+            "crew",
+            "asteroid",
+            "spacecraft",
+            "orbit"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "astronaut",
+      "g": "Astronaut/in",
+      "d": "Somebody whose job is to fly into space.",
+      "s": "She has always wanted to be an ___ and fly into space.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "astronaut",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "astronaut",
+          "tier": "full"
+        },
+        {
+          "text": "astronauts",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "astronaut",
+            "tier": "full"
+          },
+          {
+            "text": "an astronaut",
+            "tier": "full"
+          },
+          {
+            "text": "astronauts",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Astronaut",
+            "tier": "full"
+          },
+          {
+            "text": "Astronautin",
+            "tier": "full"
+          },
+          {
+            "text": "ein Astronaut",
+            "tier": "full"
+          },
+          {
+            "text": "Astronauten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "commander",
+        "crew",
+        "asteroid"
+      ],
+      "hintDe": "Jemand, der mit einem Raumfahrzeug ins All fliegt."
+    },
+    {
+      "id": "g4u12.w.atmosphere",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "orbit",
+            "surface",
+            "biosphere",
+            "gravity",
+            "explosion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "atmosphere",
+      "g": "Atmosphäre",
+      "d": "The thick cover of gases all over a planet that protects it from the sun.",
+      "s": "Mars has a very thin ___, so humans could not breathe there.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "atmosphere",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "atmosphere",
+          "tier": "full"
+        },
+        {
+          "text": "atmospheres",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "atmosphere",
+            "tier": "full"
+          },
+          {
+            "text": "an atmosphere",
+            "tier": "full"
+          },
+          {
+            "text": "the atmosphere",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Atmosphäre",
+            "tier": "full"
+          },
+          {
+            "text": "die Atmosphäre",
+            "tier": "full"
+          },
+          {
+            "text": "Lufthülle",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "gases",
+          "de": "Gase",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "orbit",
+        "surface",
+        "biosphere"
+      ],
+      "hintDe": "Die Hülle aus Gasen, die einen Planeten umgibt."
+    },
+    {
+      "id": "g4u12.w.biosphere",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "atmosphere",
+            "surface",
+            "orbit",
+            "gravity",
+            "resource"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "biosphere",
+      "g": "Lebensraum",
+      "d": "The closed place on a planet where plants and people can live and breathe.",
+      "s": "A ___ is a closed place where plants and people can live and breathe, like on a planet.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "biosphere",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "biosphere",
+          "tier": "full"
+        },
+        {
+          "text": "biospheres",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "biosphere",
+            "tier": "full"
+          },
+          {
+            "text": "a biosphere",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lebensraum",
+            "tier": "full"
+          },
+          {
+            "text": "Biosphäre",
+            "tier": "full"
+          },
+          {
+            "text": "die Biosphäre",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "atmosphere",
+        "surface",
+        "orbit"
+      ],
+      "hintDe": "Ein geschlossener Ort, wo Pflanzen und Menschen leben und atmen können."
+    },
+    {
+      "id": "g4u12.w.celebrate",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "reply",
+            "demand",
+            "disturb",
+            "warning",
+            "advert"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "celebrate",
+      "g": "feiern",
+      "d": "To have a party for a big, happy day, like a birthday.",
+      "s": "She wants to ___ her birthday with all her friends next weekend.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "celebrate",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "celebrate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "celebrate",
+            "tier": "full"
+          },
+          {
+            "text": "to celebrate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "feiern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "reply",
+        "demand",
+        "disturb"
+      ],
+      "hintDe": "An einem besonderen Tag eine Party machen."
+    },
+    {
+      "id": "g4u12.w.commander",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "astronaut",
+            "crew",
+            "mankind",
+            "spacecraft",
+            "asteroid"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "commander",
+      "g": "Kommandant/in",
+      "d": "The one who is in charge of a ship, a plane or a spaceship.",
+      "s": "The ___ of the spaceship is in charge of the whole crew.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "commander",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "commander",
+          "tier": "full"
+        },
+        {
+          "text": "commanders",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "commander",
+            "tier": "full"
+          },
+          {
+            "text": "a commander",
+            "tier": "full"
+          },
+          {
+            "text": "the commander",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kommandant",
+            "tier": "full"
+          },
+          {
+            "text": "Kommandantin",
+            "tier": "full"
+          },
+          {
+            "text": "der Kommandant",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "astronaut",
+        "crew",
+        "mankind"
+      ],
+      "hintDe": "Die Person, die das Kommando über ein Schiff oder Raumschiff hat."
+    },
+    {
+      "id": "g4u12.w.commercial",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "privately owned",
+            "disgusting",
+            "multibillion",
+            "tiring",
+            "depressed"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "commercial",
+      "g": "kommerziell",
+      "d": "To do with selling and making money.",
+      "s": "The company uses its spaceship for ___ flights and earns a lot of money.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "commercial",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "commercial",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "commercial",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kommerziell",
+            "tier": "full"
+          },
+          {
+            "text": "geschäftlich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "privately owned",
+        "disgusting",
+        "multibillion"
+      ],
+      "hintDe": "Etwas, das mit Verkaufen und Geldverdienen zu tun hat."
+    },
+    {
+      "id": "g4u12.w.crew",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "commander",
+            "astronaut",
+            "spacecraft",
+            "asteroid",
+            "orbit"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "crew",
+      "g": "Mannschaft",
+      "d": "All the people who work on a ship or a spaceship.",
+      "s": "All seven members of the ___ died when the spaceship exploded.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "crew",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crew",
+          "tier": "full"
+        },
+        {
+          "text": "crews",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crew",
+            "tier": "full"
+          },
+          {
+            "text": "a crew",
+            "tier": "full"
+          },
+          {
+            "text": "the crew",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mannschaft",
+            "tier": "full"
+          },
+          {
+            "text": "Besatzung",
+            "tier": "full"
+          },
+          {
+            "text": "die Mannschaft",
+            "tier": "full"
+          },
+          {
+            "text": "die Besatzung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "commander",
+        "astronaut",
+        "spacecraft"
+      ],
+      "hintDe": "Alle Leute, die zusammen auf einem Schiff oder Raumschiff arbeiten."
+    },
+    {
+      "id": "g4u12.w.demand",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "reply",
+            "disturb",
+            "celebrate",
+            "warning",
+            "advert"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "demand",
+      "g": "verlangen",
+      "d": "To ask for a thing in a strong way because you feel it is your right.",
+      "s": "Tell me the truth now. I ___ to know what happened.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "demand",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "demand",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "demand",
+            "tier": "full"
+          },
+          {
+            "text": "to demand",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verlangen",
+            "tier": "full"
+          },
+          {
+            "text": "fordern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "reply",
+        "disturb",
+        "celebrate"
+      ],
+      "hintDe": "Etwas sehr bestimmt verlangen, weil du findest, dass es dir zusteht."
+    },
+    {
+      "id": "g4u12.w.depressed",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "disgusting",
+            "tiring",
+            "commercial",
+            "uninhabitable",
+            "altogether"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "depressed",
+      "g": "deprimiert",
+      "d": "Feeling very unhappy and sad for a long time, with no hope.",
+      "s": "He was very ___ and unhappy, and he did not want to talk to anyone.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "depressed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "depressed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "depressed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "deprimiert",
+            "tier": "full"
+          },
+          {
+            "text": "niedergeschlagen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "disgusting",
+        "tiring",
+        "commercial"
+      ],
+      "hintDe": "Über lange Zeit sehr traurig und ohne Hoffnung."
+    },
+    {
+      "id": "g4u12.w.disgusting",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "depressed",
+            "tiring",
+            "commercial",
+            "uninhabitable",
+            "altogether"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "disgusting",
+      "g": "ekelhaft",
+      "d": "So horrible that you do not want to taste, smell or touch it.",
+      "s": "In space your favourite food can taste ___ and horrible.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "disgusting",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "disgusting",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "disgusting",
+            "tier": "full"
+          },
+          {
+            "text": "revolting",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ekelhaft",
+            "tier": "full"
+          },
+          {
+            "text": "eklig",
+            "tier": "full"
+          },
+          {
+            "text": "widerlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "depressed",
+        "tiring",
+        "commercial"
+      ],
+      "hintDe": "So eklig, dass du es nicht essen oder anfassen möchtest."
+    },
+    {
+      "id": "g4u12.w.disturb",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "demand",
+            "reply",
+            "celebrate",
+            "warning",
+            "advert"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "disturb",
+      "g": "stören",
+      "d": "To stop somebody who is busy, when they do not want anyone near them.",
+      "s": "Please don't ___ your sister while she is doing her homework.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "disturb",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "disturb",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "disturb",
+            "tier": "full"
+          },
+          {
+            "text": "to disturb",
+            "tier": "full"
+          },
+          {
+            "text": "interrupt",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "stören",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "demand",
+        "reply",
+        "celebrate"
+      ],
+      "hintDe": "Jemanden stören, der gerade beschäftigt ist."
+    },
+    {
+      "id": "g4u12.w.engineering",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "resource",
+            "gravity",
+            "surface",
+            "biosphere",
+            "atmosphere"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "engineering",
+      "g": "Maschinenbau",
+      "d": "The job of designing and building machines, bridges and roads.",
+      "s": "She wants to study ___ because she loves building machines and bridges.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "engineering",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "engineering",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "engineering",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Maschinenbau",
+            "tier": "full"
+          },
+          {
+            "text": "Ingenieurswesen",
+            "tier": "full"
+          },
+          {
+            "text": "Technik",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "surface",
+        "resource",
+        "gravity"
+      ],
+      "hintDe": "Das Fach, in dem man Maschinen und Brücken plant und baut."
+    },
+    {
+      "id": "g4u12.w.explosion",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "warning",
+            "orbit",
+            "sunset",
+            "atmosphere",
+            "crew"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "explosion",
+      "g": "Explosion",
+      "d": "A big noise when a thing blows up and breaks into pieces.",
+      "s": "The big ___ destroyed the whole spaceship at the start of its flight.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "explosion",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "explosion",
+          "tier": "full"
+        },
+        {
+          "text": "explosions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "explosion",
+            "tier": "full"
+          },
+          {
+            "text": "an explosion",
+            "tier": "full"
+          },
+          {
+            "text": "explosions",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Explosion",
+            "tier": "full"
+          },
+          {
+            "text": "eine Explosion",
+            "tier": "full"
+          },
+          {
+            "text": "Explosionen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "warning",
+        "orbit",
+        "sunset"
+      ],
+      "hintDe": "Ein lauter Knall, wenn etwas in die Luft fliegt."
+    },
+    {
+      "id": "g4u12.w.genetic-engineering",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "engineering",
+            "gravity",
+            "resource",
+            "biosphere",
+            "atmosphere"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "genetic engineering",
+      "g": "Gentechnik",
+      "d": "The science of changing the genes of a living thing to give it new qualities.",
+      "s": "Scientists use ___ to make a clone of a living thing.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "genetic engineering",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "genetic engineering",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "genetic engineering",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gentechnik",
+            "tier": "full"
+          },
+          {
+            "text": "die Gentechnik",
+            "tier": "full"
+          },
+          {
+            "text": "Gentechnologie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "genes",
+          "de": "Gene",
+          "scope": "d"
+        },
+        {
+          "word": "clone",
+          "de": "Klon",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "engineering",
+        "gravity",
+        "resource"
+      ],
+      "hintDe": "Die Wissenschaft, die die Gene von Lebewesen verändert."
+    },
+    {
+      "id": "g4u12.w.gravity",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "atmosphere",
+            "orbit",
+            "surface",
+            "biosphere",
+            "explosion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "gravity",
+      "g": "Schwerkraft",
+      "d": "The power that pulls everything down and holds us on the ground.",
+      "s": "It is ___ that pulls everything down to the ground and keeps us on the planet.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "gravity",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "gravity",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "gravity",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schwerkraft",
+            "tier": "full"
+          },
+          {
+            "text": "die Schwerkraft",
+            "tier": "full"
+          },
+          {
+            "text": "Gravitation",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "atmosphere",
+        "orbit",
+        "surface"
+      ],
+      "hintDe": "Die Kraft, die alles nach unten zieht und uns am Boden hält."
+    },
+    {
+      "id": "g4u12.w.mankind",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "crew",
+            "commander",
+            "biosphere",
+            "astronaut",
+            "resource"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "mankind",
+      "g": "Menschheit",
+      "d": "All the people on Earth; the whole human race.",
+      "s": "Landing on the moon was a great day for all ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mankind",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mankind",
+          "tier": "full"
+        },
+        {
+          "text": "humankind",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mankind",
+            "tier": "full"
+          },
+          {
+            "text": "humankind",
+            "tier": "partial"
+          },
+          {
+            "text": "humanity",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Menschheit",
+            "tier": "full"
+          },
+          {
+            "text": "die Menschheit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "crew",
+        "commander",
+        "biosphere"
+      ],
+      "hintDe": "Alle Menschen auf der Erde zusammen."
+    },
+    {
+      "id": "g4u12.w.masterpiece",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "plaque",
+            "advert",
+            "warning",
+            "resource",
+            "explosion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "masterpiece",
+      "g": "Meisterwerk",
+      "d": "A piece of art that somebody does so well it is their very best work.",
+      "s": "This is the best work the artist has done — a true ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "masterpiece",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "masterpiece",
+          "tier": "full"
+        },
+        {
+          "text": "masterpieces",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "masterpiece",
+            "tier": "full"
+          },
+          {
+            "text": "a masterpiece",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Meisterwerk",
+            "tier": "full"
+          },
+          {
+            "text": "ein Meisterwerk",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "plaque",
+        "advert",
+        "warning"
+      ],
+      "hintDe": "Ein Kunstwerk, das jemandem ganz besonders gut gelungen ist."
+    },
+    {
+      "id": "g4u12.w.multibillion",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "commercial",
+            "privately owned",
+            "tiring",
+            "disgusting",
+            "depressed"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "multibillion",
+      "g": "Multimilliarden-",
+      "d": "That uses very, very much money.",
+      "s": "Flying people to Mars needs a lot of money; it is a ___ project.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "multibillion",
+          "tier": "full"
+        },
+        {
+          "text": "multibillion-dollar",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "multibillion",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "multibillion",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Multimilliarden-",
+            "tier": "full"
+          },
+          {
+            "text": "milliardenschwer",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "commercial",
+        "privately owned",
+        "tiring"
+      ],
+      "hintDe": "So teuer, dass es viele Milliarden kostet."
+    },
+    {
+      "id": "g4u12.w.neither-nor",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "altogether",
+            "commercial",
+            "disgusting",
+            "tiring",
+            "depressed"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "neither ... nor",
+      "g": "weder ... noch",
+      "d": "Used to show that two people both do not do a thing.",
+      "s": "___ you nor I will fly into space for many years.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Neither",
+          "tier": "full"
+        },
+        {
+          "text": "neither",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "neither nor",
+          "tier": "full"
+        },
+        {
+          "text": "neither ... nor",
+          "tier": "full"
+        },
+        {
+          "text": "neither",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "neither ... nor",
+            "tier": "full"
+          },
+          {
+            "text": "neither nor",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "weder ... noch",
+            "tier": "full"
+          },
+          {
+            "text": "weder noch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "nor",
+          "de": "noch",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "altogether",
+        "commercial",
+        "disgusting"
+      ],
+      "hintDe": "Zeigt, dass das eine nicht stimmt und das andere auch nicht."
+    },
+    {
+      "id": "g4u12.w.orbit",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "atmosphere",
+            "surface",
+            "gravity",
+            "biosphere",
+            "explosion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "orbit",
+      "g": "Umlaufbahn",
+      "d": "The path that an object travels again and again near a planet or star in space.",
+      "s": "The space shuttle stayed in ___ for many days, travelling close to the Earth.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "orbit",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "orbit",
+          "tier": "full"
+        },
+        {
+          "text": "orbits",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "orbit",
+            "tier": "full"
+          },
+          {
+            "text": "an orbit",
+            "tier": "full"
+          },
+          {
+            "text": "orbits",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Umlaufbahn",
+            "tier": "full"
+          },
+          {
+            "text": "eine Umlaufbahn",
+            "tier": "full"
+          },
+          {
+            "text": "Umlaufbahnen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "atmosphere",
+        "surface",
+        "gravity"
+      ],
+      "hintDe": "Der Weg, auf dem ein Raumschiff immer wieder um einen Planeten fliegt."
+    },
+    {
+      "id": "g4u12.w.plaque",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "warning",
+            "advert",
+            "masterpiece",
+            "surface",
+            "crew"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "plaque",
+      "g": "Plakette",
+      "d": "A small plate of metal with writing on it that we put up to think of somebody.",
+      "s": "The astronauts put a ___ on the moon with a message for all mankind.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "plaque",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "plaque",
+          "tier": "full"
+        },
+        {
+          "text": "plaques",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "plaque",
+            "tier": "full"
+          },
+          {
+            "text": "a plaque",
+            "tier": "full"
+          },
+          {
+            "text": "plaques",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Plakette",
+            "tier": "full"
+          },
+          {
+            "text": "eine Plakette",
+            "tier": "full"
+          },
+          {
+            "text": "Plaketten",
+            "tier": "full"
+          },
+          {
+            "text": "Gedenktafel",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "warning",
+        "advert",
+        "masterpiece"
+      ],
+      "hintDe": "Ein kleines Metallschild mit einer Aufschrift, das an etwas erinnert."
+    },
+    {
+      "id": "g4u12.w.privately-owned",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "commercial",
+            "multibillion",
+            "uninhabitable",
+            "tiring",
+            "disgusting"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "privately owned",
+      "g": "im Privatbesitz befindlich",
+      "d": "When one company owns it, not the government.",
+      "s": "That spaceship is ___, so a company owns it and the government does not.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "privately owned",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "privately owned",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "privately owned",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "im Privatbesitz befindlich",
+            "tier": "full"
+          },
+          {
+            "text": "in Privatbesitz",
+            "tier": "full"
+          },
+          {
+            "text": "privat",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "commercial",
+        "multibillion",
+        "uninhabitable"
+      ],
+      "hintDe": "Wenn es einer Person oder Firma gehört und nicht dem Staat."
+    },
+    {
+      "id": "g4u12.w.reply",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "demand",
+            "disturb",
+            "celebrate",
+            "warning",
+            "advert"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "reply",
+      "g": "antworten",
+      "d": "To write or talk back to somebody who writes to you.",
+      "s": "It is good to ___ to a message and not just leave it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "reply",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "reply",
+          "tier": "full"
+        },
+        {
+          "text": "answer",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "reply",
+            "tier": "full"
+          },
+          {
+            "text": "to reply",
+            "tier": "full"
+          },
+          {
+            "text": "answer",
+            "tier": "full"
+          },
+          {
+            "text": "respond",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "antworten",
+            "tier": "full"
+          },
+          {
+            "text": "erwidern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "demand",
+        "disturb",
+        "celebrate"
+      ],
+      "hintDe": "Jemandem zurückschreiben oder zurückantworten."
+    },
+    {
+      "id": "g4u12.w.resource",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "engineering",
+            "surface",
+            "atmosphere",
+            "biosphere",
+            "gravity"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "resource",
+      "g": "Quelle",
+      "d": "A thing that a country has and can use, like oil, land or money.",
+      "s": "Oil is a natural ___ that many countries use to make money.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "resource",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "resource",
+          "tier": "full"
+        },
+        {
+          "text": "resources",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "resource",
+            "tier": "full"
+          },
+          {
+            "text": "a resource",
+            "tier": "full"
+          },
+          {
+            "text": "resources",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Quelle",
+            "tier": "full"
+          },
+          {
+            "text": "Rohstoff",
+            "tier": "full"
+          },
+          {
+            "text": "Mittel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "engineering",
+        "surface",
+        "atmosphere"
+      ],
+      "hintDe": "Etwas Nützliches, das ein Land hat und verwenden kann, wie Öl oder Land."
+    },
+    {
+      "id": "g4u12.w.space-shuttle",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spacecraft",
+            "asteroid",
+            "orbit",
+            "plaque",
+            "crew"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "space shuttle",
+      "g": "Raumfähre",
+      "d": "A flying machine that can carry astronauts away from the Earth and back, then fly again.",
+      "s": "A ___ can fly into space again and again, like a plane.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "space shuttle",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "space shuttle",
+          "tier": "full"
+        },
+        {
+          "text": "space shuttles",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "space shuttle",
+            "tier": "full"
+          },
+          {
+            "text": "a space shuttle",
+            "tier": "full"
+          },
+          {
+            "text": "space shuttles",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Raumfähre",
+            "tier": "full"
+          },
+          {
+            "text": "eine Raumfähre",
+            "tier": "full"
+          },
+          {
+            "text": "Raumfähren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "spacecraft",
+        "asteroid",
+        "orbit"
+      ],
+      "hintDe": "Ein Raumfahrzeug, das immer wieder ins All und zurück fliegen kann."
+    },
+    {
+      "id": "g4u12.w.space-travel",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spacecraft",
+            "engineering",
+            "orbit",
+            "atmosphere",
+            "crew"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "space travel",
+      "g": "Raumfahrt",
+      "d": "Going away from the Earth to visit the planets, stars and moons.",
+      "s": "Thanks to ___, people have walked on the moon and lived in space.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "space travel",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "space travel",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "space travel",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Raumfahrt",
+            "tier": "full"
+          },
+          {
+            "text": "die Raumfahrt",
+            "tier": "full"
+          },
+          {
+            "text": "Weltraumfahrt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "spacecraft",
+        "engineering",
+        "orbit"
+      ],
+      "hintDe": "Das Reisen weg von der Erde, hinaus ins Weltall."
+    },
+    {
+      "id": "g4u12.w.spacecraft",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "space shuttle",
+            "asteroid",
+            "atmosphere",
+            "orbit",
+            "crew"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "spacecraft",
+      "g": "Raumfahrzeug",
+      "d": "A flying machine that you can use to travel in space.",
+      "s": "One day there will be many kinds of ___ that can take people into space.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "spacecraft",
+          "tier": "full"
+        },
+        {
+          "text": "spacecrafts",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spacecraft",
+          "tier": "full"
+        },
+        {
+          "text": "spacecrafts",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spacecraft",
+            "tier": "full"
+          },
+          {
+            "text": "a spacecraft",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Raumfahrzeug",
+            "tier": "full"
+          },
+          {
+            "text": "ein Raumfahrzeug",
+            "tier": "full"
+          },
+          {
+            "text": "Raumfahrzeuge",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "space shuttle",
+        "asteroid",
+        "atmosphere"
+      ],
+      "hintDe": "Ein Fahrzeug, mit dem man ins All reisen kann."
+    },
+    {
+      "id": "g4u12.w.sunrise",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sunset",
+            "atmosphere",
+            "orbit",
+            "warning",
+            "surface"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sunrise",
+      "g": "Sonnenaufgang",
+      "d": "The time in the morning when the sun appears in the sky.",
+      "s": "We were up very early to watch the ___ at the start of the day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sunrise",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sunrise",
+          "tier": "full"
+        },
+        {
+          "text": "sunrises",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sunrise",
+            "tier": "full"
+          },
+          {
+            "text": "a sunrise",
+            "tier": "full"
+          },
+          {
+            "text": "sunrises",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sonnenaufgang",
+            "tier": "full"
+          },
+          {
+            "text": "der Sonnenaufgang",
+            "tier": "full"
+          },
+          {
+            "text": "Sonnenaufgänge",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sunset",
+        "atmosphere",
+        "orbit"
+      ],
+      "hintDe": "Der Moment am Morgen, wenn die Sonne aufgeht."
+    },
+    {
+      "id": "g4u12.w.sunset",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sunrise",
+            "warning",
+            "explosion",
+            "atmosphere",
+            "surface"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sunset",
+      "g": "Sonnenuntergang",
+      "d": "The time in the evening when the sun is no longer in the sky.",
+      "s": "At the end of the day we watched a beautiful ___ over the sea.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sunset",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sunset",
+          "tier": "full"
+        },
+        {
+          "text": "sunsets",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sunset",
+            "tier": "full"
+          },
+          {
+            "text": "a sunset",
+            "tier": "full"
+          },
+          {
+            "text": "sunsets",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sonnenuntergang",
+            "tier": "full"
+          },
+          {
+            "text": "der Sonnenuntergang",
+            "tier": "full"
+          },
+          {
+            "text": "Sonnenuntergänge",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sunrise",
+        "warning",
+        "explosion"
+      ],
+      "hintDe": "Der Moment am Abend, wenn die Sonne untergeht."
+    },
+    {
+      "id": "g4u12.w.surface",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "atmosphere",
+            "orbit",
+            "biosphere",
+            "gravity",
+            "resource"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "surface",
+      "g": "Oberfläche",
+      "d": "The outside of a thing, like the moon or the sea.",
+      "s": "The astronauts walked on the dry, rocky ___ of the moon.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "surface",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "surface",
+          "tier": "full"
+        },
+        {
+          "text": "surfaces",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "surface",
+            "tier": "full"
+          },
+          {
+            "text": "the surface",
+            "tier": "full"
+          },
+          {
+            "text": "surfaces",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Oberfläche",
+            "tier": "full"
+          },
+          {
+            "text": "die Oberfläche",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "atmosphere",
+        "orbit",
+        "biosphere"
+      ],
+      "hintDe": "Die äußere Seite von etwas, zum Beispiel vom Mond."
+    },
+    {
+      "id": "g4u12.w.tiring",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "disgusting",
+            "depressed",
+            "commercial",
+            "uninhabitable",
+            "altogether"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "tiring",
+      "g": "ermüdend",
+      "d": "Making you feel very tired.",
+      "s": "The long flight was very ___, and the whole crew was tired afterwards.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tiring",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tiring",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tiring",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ermüdend",
+            "tier": "full"
+          },
+          {
+            "text": "anstrengend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "disgusting",
+        "depressed",
+        "commercial"
+      ],
+      "hintDe": "So, dass es dich müde macht."
+    },
+    {
+      "id": "g4u12.w.uninhabitable",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "disgusting",
+            "commercial",
+            "privately owned",
+            "tiring",
+            "depressed"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "uninhabitable",
+      "g": "unbewohnbar",
+      "d": "Not good for anyone to live in.",
+      "s": "Mars is too cold and dry for people, so it is ___ today.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "uninhabitable",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "uninhabitable",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "uninhabitable",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unbewohnbar",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "disgusting",
+        "commercial",
+        "privately owned"
+      ],
+      "hintDe": "So, dass niemand dort wohnen kann."
+    },
+    {
+      "id": "g4u12.w.warning",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "advert",
+            "plaque",
+            "explosion",
+            "masterpiece",
+            "sunset"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "warning",
+      "g": "Warnung",
+      "d": "A sign that shows you a thing is dangerous, so you can be careful.",
+      "s": "There was a ___ that the sea was too dangerous for swimming.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "warning",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "warning",
+          "tier": "full"
+        },
+        {
+          "text": "warnings",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "warning",
+            "tier": "full"
+          },
+          {
+            "text": "a warning",
+            "tier": "full"
+          },
+          {
+            "text": "warnings",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Warnung",
+            "tier": "full"
+          },
+          {
+            "text": "eine Warnung",
+            "tier": "full"
+          },
+          {
+            "text": "Warnungen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "advert",
+        "plaque",
+        "explosion"
+      ],
+      "hintDe": "Etwas, das dich auf eine Gefahr aufmerksam macht."
+    }
+  ]
+}

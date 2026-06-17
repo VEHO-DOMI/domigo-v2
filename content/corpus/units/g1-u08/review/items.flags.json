@@ -1,0 +1,259 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u08",
+  "round": 1,
+  "itemsHash": "b0e8cce66c97",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "lens-warn:g1u08.w.hoodie#above-level",
+      "kind": "lens-warn",
+      "itemId": "g1u08.w.hoodie",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "lens-warn:g1u08.w.to-borrow#above-level",
+      "kind": "lens-warn",
+      "itemId": "g1u08.w.to-borrow",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.anything",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.anything",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.backwards",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.backwards",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.belt",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.belt",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.blouse",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.blouse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.boots",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.boots",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.building",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.building",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.cap",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.cap",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.cape",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.cape",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.exciting",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.exciting",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.hole",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.hole",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.hoodie",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.hoodie",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.horse",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.horse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.jacket",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.jacket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.let-s-get-out-of-here",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.let-s-get-out-of-here",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.mask",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.mask",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.poem",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.poem",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.pyjamas",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.pyjamas",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.shoes",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.shoes",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.somebody",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.somebody",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.sweater",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.sweater",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.tights",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.tights",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.to-borrow",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.to-borrow",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.to-fit",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.to-fit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.to-hurt",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.to-hurt",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.to-tickle",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.to-tickle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.to-try-on",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.to-try-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.to-wear",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.to-wear",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.tonight",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.tonight",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.trainers",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.trainers",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.w.trousers",
+      "kind": "translation-audit",
+      "itemId": "g1u08.w.trousers",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.gi.present-simple-questions.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u08.gi.present-simple-questions.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u08.gi.present-simple-questions.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u08.gi.present-simple-questions.tr.002",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "All 57 rows + 34 flags reviewed (FULL). Verify 0 fix, 2 warn; rejectRate 0%. 32 translation audits lens-verified (deToEn EN / enToDe DE; clothes genders correct). Notably ZERO vocab glosses — the gen agent rephrased every def into taught-only vocabulary (backwards \"from the end back to A\", belt \"so they do not come down\"), all truth-checked. Full v1 parity: 27 grammar (present-simple-questions) over the 21 floor; grant \"colour\" (for \"What colour is/are…?\"). 2 lens-warn KEEP: to-borrow (carrier disambiguates the borrow-from direction), hoodie \"pull a part up over your hair\" (recoverable). Verify fix: boots \"over your shoes\"→\"over your socks\" (boots replace shoes)."
+  },
+  "metrics": {
+    "itemsReviewed": 57,
+    "fullRows": 57,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

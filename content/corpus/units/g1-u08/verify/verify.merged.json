@@ -1,0 +1,49 @@
+{
+  "schema": "verify-merged@1",
+  "slug": "g1-u08",
+  "round": 1,
+  "itemsHash": "b0e8cce66c97",
+  "lenses": {
+    "level-gloss": {
+      "by": "fable-carryforward",
+      "flagged": 2
+    },
+    "answers": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "translation": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "register": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    }
+  },
+  "byItem": {
+    "g1u08.w.to-borrow": [
+      {
+        "key": "above-level:g1u08.w.to-borrow",
+        "kind": "above-level",
+        "itemId": "g1u08.w.to-borrow",
+        "severity": "warn",
+        "note": "SENSE imprecision in d: \"to have it for a short time and then give it back to a friend.\" You give it back to the OWNER you took it from (here a friend), but the phrasing reads as giving it to some friend, blurring the borrow-from relationship and edging toward 'lend'. Defensible given the carrier (\"Can I borrow your red sweater?\") but worth a human look.",
+        "lens": "level-gloss"
+      }
+    ],
+    "g1u08.w.hoodie": [
+      {
+        "key": "above-level:g1u08.w.hoodie",
+        "kind": "above-level",
+        "itemId": "g1u08.w.hoodie",
+        "severity": "warn",
+        "note": "SENSE imprecision in d: \"It is like a sweater and you can pull it up over your hair.\" It is the HOOD you pull up over your hair, not the whole hoodie (\"it\" = the garment). Recoverable for a child and the sweater item leans on this contrast, but literally imprecise.",
+        "lens": "level-gloss"
+      }
+    ]
+  },
+  "fixCount": 0,
+  "warnCount": 2,
+  "escalated": []
+}

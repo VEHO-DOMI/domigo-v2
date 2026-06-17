@@ -1,0 +1,1363 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g1-u15",
+  "briefBank": "d2f850cdb0ab",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Bilal ___ (be going to / fly) to Tunisia.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is going to fly",
+          "tier": "full"
+        },
+        {
+          "text": "'s going to fly",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei he/she/it nimmst du is. Danach kommt going to und das Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Bei Bilal (= he) heißt es is going to fly. Nach going to steht die Grundform fly, ohne -ing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-gf-002",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "We ___ (be going to / play) football on the beach.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are going to play",
+          "tier": "full"
+        },
+        {
+          "text": "'re going to play",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei we nimmst du are. Danach kommt going to und das Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Bei we heißt es are going to play. Nach going to steht die Grundform play, nicht playing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-gf-003",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I ___ (be going to / write) postcards to my friends.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "am going to write",
+          "tier": "full"
+        },
+        {
+          "text": "'m going to write",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei I nimmst du am. Danach kommt going to und das Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Bei I heißt es am going to write. Nach going to steht die Grundform write.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She ___ (be going to / show) us the city.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is going to show",
+          "tier": "full"
+        },
+        {
+          "text": "'s going to show",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she nimmst du is. Achte darauf, dass das Verb in der Grundform bleibt.",
+      "hintEn": null,
+      "explainDe": "Bei she heißt es is going to show. Du sagst nicht are und nicht showing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "They ___ (be going to / work) all summer.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are going to work",
+          "tier": "full"
+        },
+        {
+          "text": "'re going to work",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei they nimmst du are. Danach folgt going to und die Grundform.",
+      "hintEn": null,
+      "explainDe": "Bei they heißt es are going to work. Nach going to bleibt work in der Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We ___ (not / be going to / stay) at home.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "aren't going to stay",
+          "tier": "full"
+        },
+        {
+          "text": "are not going to stay",
+          "tier": "full"
+        },
+        {
+          "text": "'re not going to stay",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung: are + not vor going to. Danach steht die Grundform stay.",
+      "hintEn": null,
+      "explainDe": "Bei we heißt die Verneinung aren't going to stay. Das not steht zwischen are und going to.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He ___ (not / be going to / join) the band.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "isn't going to join",
+          "tier": "full"
+        },
+        {
+          "text": "is not going to join",
+          "tier": "full"
+        },
+        {
+          "text": "'s not going to join",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei he nimmst du is. Die Verneinung ist isn't, danach going to und die Grundform.",
+      "hintEn": null,
+      "explainDe": "Bei he heißt die Verneinung isn't going to join. Das not steht zwischen is und going to.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#2",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ you ___ (be going to / lie) in the sun?",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Are | going to lie",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage stellst du are vor you. Das Verb bleibt in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Frage beginnt mit Are you going to lie. In Fragen steht die be-Form vor dem Subjekt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-gf-005",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "What ___ you ___ (be going to / do) in your holidays?",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "are | going to do",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach dem Fragewort what kommt are, dann you und going to. Das Verb bleibt in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Es heißt What are you going to do. Nach dem Fragewort steht die be-Form are vor you.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-gf-006",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ they going to visit a castle?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei they brauchst du are am Satzanfang. Es ist keine Frage mit do.",
+      "hintEn": null,
+      "explainDe": "Die Frage beginnt mit Are they going to visit. Du nimmst die be-Form, kein Is und kein Do.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-gf-007",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They are going to visit a castle.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They going to visit a castle.",
+        "They are going to visiting a castle.",
+        "They are going to visited a castle."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du brauchst die be-Form, dann going to und das Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist They are going to visit a castle. Die be-Form are fehlt im ersten falschen Satz, und visit bleibt in der Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "They going to visit a castle.",
+          "They are going to visiting a castle.",
+          "They are going to visited a castle.",
+          "They is going to visit a castle."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u15-going-to-mc-001",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Frage ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is she going to visit a national park?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Does she going to visit a national park?",
+        "She is going to visit a national park?",
+        "Is she going to visiting a national park?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage steht die be-Form vor dem Subjekt. Du brauchst kein do.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Is she going to visit a national park? Die be-Form is steht vorne, nicht Does, und visit bleibt in der Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Does she going to visit a national park?",
+          "She is going to visit a national park?",
+          "Is she going to visiting a national park?",
+          "Are she going to visit a national park?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u15-going-to-mc-002",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I am not going to stay at home.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I not going to stay at home.",
+        "I am not going to staying at home.",
+        "I am not going to stayed at home."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei I brauchst du am. Das not steht danach, und stay bleibt in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist I'm not going to stay at home. Im ersten falschen Satz fehlt die be-Form, und nach going to steht die Grundform stay.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I not going to stay at home.",
+          "I am not going to staying at home.",
+          "I am not going to stayed at home.",
+          "I am not going to stay at home."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u15-going-to-mc-003",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He is going to go fishing.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He going to go fishing.",
+        "He are going to go fishing.",
+        "He is going to going fishing."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei he nimmst du is. Danach kommt going to und das Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist He is going to go fishing. Bei he heißt die be-Form is, nicht are, und sie darf nicht fehlen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "He going to go fishing.",
+          "He are going to go fishing.",
+          "He is going to going fishing.",
+          "He is go to go fishing."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We are going to swim in the sea.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We are going to swimming in the sea.",
+        "We going to swim in the sea.",
+        "We are going to swam in the sea."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach going to steht immer die Grundform. Die be-Form darf nicht fehlen.",
+      "hintEn": null,
+      "explainDe": "Richtig ist We are going to swim in the sea. Nach going to steht die Grundform swim, nicht swimming und nicht swam.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "We are going to swimming in the sea.",
+          "We going to swim in the sea.",
+          "We are going to swam in the sea.",
+          "We is going to swim in the sea."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du erzählst von deinen Ferien. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I am going to lie in the sun.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I going to lie in the sun.",
+        "I am going to lying in the sun.",
+        "I am go to lie in the sun."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei I brauchst du am. Nach going to steht die Grundform lie.",
+      "hintEn": null,
+      "explainDe": "Richtig ist I am going to lie in the sun. Die be-Form am darf nicht fehlen, und lie bleibt in der Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I going to lie in the sun.",
+          "I am going to lying in the sun.",
+          "I am go to lie in the sun.",
+          "I are going to lie in the sun."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#5",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Deine Familie plant den Sommer. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We are going to stay at a campsite.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We going to stay at a campsite.",
+        "We are going to staying at a campsite.",
+        "We are going stay at a campsite."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei we brauchst du are. Achte darauf, dass going to vollständig dasteht.",
+      "hintEn": null,
+      "explainDe": "Richtig ist We are going to stay at a campsite. Die be-Form are darf nicht fehlen, und nach going to steht die Grundform stay.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "We going to stay at a campsite.",
+          "We are going to staying at a campsite.",
+          "We are going stay at a campsite.",
+          "We is going to stay at a campsite."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u15-going-to-cp-001",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Dein Freund fragt nach deinem Sommer. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I am going to play badminton.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I am going to playing badminton.",
+        "I going to play badminton.",
+        "I am going to played badminton."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei I brauchst du am. Nach going to steht die Grundform play.",
+      "hintEn": null,
+      "explainDe": "Richtig ist I am going to play badminton. Nach going to steht die Grundform play, nicht playing und nicht played.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I am going to playing badminton.",
+          "I going to play badminton.",
+          "I am going to played badminton.",
+          "I are going to play badminton."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u15-going-to-cp-002",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I going to play football on the beach.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I am going to play football on the beach.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm going to play football on the beach.",
+          "tier": "partial"
+        },
+        {
+          "text": "am",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor going to fehlt die be-Form. Bei I brauchst du am.",
+      "hintEn": null,
+      "explainDe": "Es fehlt die be-Form: I am going to play. Bei I steht immer am vor going to.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-ec-001",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She is going to swimming in the sea.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is going to swim in the sea.",
+          "tier": "full"
+        },
+        {
+          "text": "She's going to swim in the sea.",
+          "tier": "partial"
+        },
+        {
+          "text": "swim",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach going to steht die Grundform. Das -ing muss weg.",
+      "hintEn": null,
+      "explainDe": "Nach going to kommt die Grundform: going to swim, nicht going to swimming.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Do you going to fly to the United States?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you going to fly to the United States?",
+          "tier": "full"
+        },
+        {
+          "text": "are",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage braucht die be-Form, nicht do. Bei you nimmst du are.",
+      "hintEn": null,
+      "explainDe": "Die Frage beginnt mit Are you going to fly. Du nimmst die be-Form are, kein Do.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-ec-002",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "They are going to visited a national park.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They are going to visit a national park.",
+          "tier": "full"
+        },
+        {
+          "text": "They're going to visit a national park.",
+          "tier": "partial"
+        },
+        {
+          "text": "visit",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach going to steht die Grundform, keine Vergangenheitsform.",
+      "hintEn": null,
+      "explainDe": "Nach going to kommt die Grundform: going to visit, nicht going to visited.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She are going to drive to the campsite.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is going to drive to the campsite.",
+          "tier": "full"
+        },
+        {
+          "text": "She's going to drive to the campsite.",
+          "tier": "partial"
+        },
+        {
+          "text": "is",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she passt die be-Form is, nicht are.",
+      "hintEn": null,
+      "explainDe": "Bei she heißt die be-Form is: She is going to drive. are passt nur zu you/we/they.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-ec-003",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach den Satz mit not: They are going to stay at home. → They ___ at home.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "aren't going to stay",
+          "tier": "full"
+        },
+        {
+          "text": "are not going to stay",
+          "tier": "full"
+        },
+        {
+          "text": "'re not going to stay",
+          "tier": "partial"
+        },
+        {
+          "text": "They aren't going to stay at home.",
+          "tier": "full"
+        },
+        {
+          "text": "They are not going to stay at home.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Setz not zwischen are und going to. Die Grundform stay bleibt.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung ist aren't going to stay. Das not steht zwischen are und going to.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-tf-001",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Mach eine Frage daraus: He is going to fly to California. → ___ he ___ to California?",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Is | going to fly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage stellst du die be-Form is vor he. Das Verb bleibt in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Frage heißt Is he going to fly to California? In Fragen steht die be-Form vor dem Subjekt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-tf-002",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach den Satz mit not: I am going to cook dinner. → I ___ dinner.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "am not going to cook",
+          "tier": "full"
+        },
+        {
+          "text": "'m not going to cook",
+          "tier": "partial"
+        },
+        {
+          "text": "I am not going to cook dinner.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm not going to cook dinner.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei I setzt du not nach am. Danach kommt going to und die Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung ist am not going to cook. Bei I steht das not nach am.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wir werden im Meer schwimmen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We are going to swim in the sea.",
+          "tier": "full"
+        },
+        {
+          "text": "We're going to swim in the sea.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei wir (= we) nimmst du are going to. Danach folgt die Grundform swim.",
+      "hintEn": null,
+      "explainDe": "schwimmen heißt swim. Bei we nimmst du are going to swim, das Verb bleibt in der Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Wirst du in der Sonne liegen? – Ja.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you going to lie in the sun? Yes, I am.",
+          "tier": "full"
+        },
+        {
+          "text": "Are you going to lie in the sun? - Yes, I am.",
+          "tier": "full"
+        },
+        {
+          "text": "Are you going to lie in the sun? Yes, I am",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage beginnt mit Are you going to. Die Kurzantwort wiederholt nur die be-Form: Yes, I am.",
+      "hintEn": null,
+      "explainDe": "Es heißt Are you going to lie in the sun? Die kurze Antwort ist Yes, I am, ohne going to zu wiederholen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-tr-002",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She is going to visit a castle. → Stell eine Ja/Nein-Frage.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is she going to visit a castle?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Stell die be-Form is an den Anfang, vor she. Das Verb bleibt in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Frage heißt Is she going to visit a castle? Die be-Form is wandert vor das Subjekt she.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-qf-001",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "They are going to play badminton. → Frag nach WAS (what).",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What are they going to play?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit what, dann kommt are vor they. Das Verb bleibt in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Frage heißt What are they going to play? Nach dem Fragewort what steht die be-Form are vor they.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u15-going-to-qf-002",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "she / going / to / is / a / postcard / write",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is going to write a postcard.",
+          "tier": "full"
+        },
+        {
+          "text": "She's going to write a postcard.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst das Subjekt, dann is going to und am Ende das Verb mit dem Rest.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She is going to write a postcard. Nach is going to steht die Grundform write.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "are",
+          "swim",
+          "writing",
+          "She is going to write a postcard."
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": "m1-u15-going-to-sb-001",
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "you / going / to / are / a / visit / castle / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you going to visit a castle?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage steht die be-Form are ganz vorne, vor you.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Are you going to visit a castle? In Fragen kommt die be-Form vor das Subjekt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "is",
+          "do",
+          "visiting",
+          "Are you going to visit a castle?"
+        ],
+        "chipBudget": 11,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "matching",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welche be-Form passt zu welchem Subjekt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I",
+          "right": "am going to"
+        },
+        {
+          "left": "she",
+          "right": "is going to"
+        },
+        {
+          "left": "they",
+          "right": "are going to"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Zu I gehört am, zu he/she/it gehört is, zu you/we/they gehört are.",
+      "hintEn": null,
+      "explainDe": "I geht mit am going to, she mit is going to, they mit are going to.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Kurzantwort passt zur Frage?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Are you going to swim?",
+          "right": "Yes, I am."
+        },
+        {
+          "left": "Is she going to drive?",
+          "right": "No, she isn't."
+        },
+        {
+          "left": "Are they going to fish?",
+          "right": "Yes, they are."
+        },
+        {
+          "left": "Is he going to cook?",
+          "right": "No, he isn't."
+        }
+      ],
+      "groups": [],
+      "hintDe": "In der Kurzantwort wiederholst du nur die be-Form, ohne going to.",
+      "hintEn": null,
+      "explainDe": "Die Kurzantwort nimmt dieselbe be-Form wie die Frage: Are you …? – Yes, I am. Is she …? – No, she isn't.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u15.s.going-to",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere: richtig oder falsch geschrieben?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "I am going to swim.",
+            "She is going to fly.",
+            "We are going to play."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "I going to swim.",
+            "She is going to flying.",
+            "We are going to played."
+          ]
+        }
+      ],
+      "hintDe": "Richtig ist: be-Form + going to + Grundform. Achte auf fehlende be-Form, auf -ing und auf Vergangenheitsformen.",
+      "hintEn": null,
+      "explainDe": "Richtig sind die Sätze mit be-Form und Grundform. Falsch ist es, wenn am/is/are fehlt oder das Verb -ing oder -ed bekommt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 15 What are you going to do?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    }
+  ]
+}

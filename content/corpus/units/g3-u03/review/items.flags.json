@@ -1,0 +1,756 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g3-u03",
+  "round": 1,
+  "itemsHash": "5593126519b1",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g3u03.w.awake",
+      "kind": "new-gloss",
+      "itemId": "g3u03.w.awake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.w.curious",
+      "kind": "new-gloss",
+      "itemId": "g3u03.w.curious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.w.flight",
+      "kind": "new-gloss",
+      "itemId": "g3u03.w.flight",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.w.hut",
+      "kind": "new-gloss",
+      "itemId": "g3u03.w.hut",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.w.impossible",
+      "kind": "new-gloss",
+      "itemId": "g3u03.w.impossible",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.w.painful",
+      "kind": "new-gloss",
+      "itemId": "g3u03.w.painful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.w.thirsty",
+      "kind": "new-gloss",
+      "itemId": "g3u03.w.thirsty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.w.to-get-close-to",
+      "kind": "new-gloss",
+      "itemId": "g3u03.w.to-get-close-to",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.w.to-sleep-in-a-tent",
+      "kind": "new-gloss",
+      "itemId": "g3u03.w.to-sleep-in-a-tent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.w.to-work-on",
+      "kind": "new-gloss",
+      "itemId": "g3u03.w.to-work-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.ec.002",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.ec.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.005",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.007",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.008",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.011",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.011",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.012",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.012",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.013",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.013",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.014",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.014",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.016",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.016",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.018",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.018",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.020",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.020",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.022",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.022",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.024",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.024",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.gf.026",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.gf.026",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.mc.003",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.mc.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.mc.005",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.mc.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.mc.006",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.mc.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.mc.008",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.mc.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.mp.001",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.mp.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.mt.001",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.mt.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.mt.002",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.mt.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.qf.002",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.qf.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.sb.003",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.sb.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.tf.001",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.tf.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.tf.002",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.tf.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.tr.001",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.tr.002",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.tr.003",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u03.gi.time-connectors.tr.004",
+      "kind": "new-gloss",
+      "itemId": "g3u03.gi.time-connectors.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.all-in-all",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.all-in-all",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.awake",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.awake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.curious",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.curious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.decision",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.decision",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.departure",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.departure",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.even-though",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.even-though",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.experience",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.experience",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.explorer",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.explorer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.flight",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.flight",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.hut",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.hut",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.impossible",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.impossible",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.it-takes",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.it-takes",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.journey",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.journey",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.lonely",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.lonely",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.on-foot",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.on-foot",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.painful",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.painful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.pretty",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.pretty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.recently",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.recently",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.thirsty",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.thirsty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-become",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-become",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-behave",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-behave",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-criticise",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-criticise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-cross",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-cross",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-drive",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-drive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-escape",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-escape",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-explore",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-explore",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-fix-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-fix-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-fly",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-fly",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-get-close-to",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-get-close-to",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-get-into",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-get-into",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-get-lost",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-get-lost",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-get-off",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-get-off",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-get-on",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-get-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-get-out-of",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-get-out-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-get-to",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-get-to",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-get-to-know-sb-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-get-to-know-sb-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-land",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-land",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-make-a-reservation",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-make-a-reservation",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-meet-up-with",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-meet-up-with",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-note",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-note",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-promise",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-promise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-reach",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-reach",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-recommend",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-recommend",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-rent",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-rent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-sail",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-sail",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-set-off",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-set-off",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-sleep-in-a-tent",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-sleep-in-a-tent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-suffer-from-altitude-sickness",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-suffer-from-altitude-sickness",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-take-off",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-take-off",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-turn-out",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-turn-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.to-work-on",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.to-work-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.traveller",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.traveller",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.unfortunately",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.unfortunately",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.w.wilderness",
+      "kind": "translation-audit",
+      "itemId": "g3u03.w.wilderness",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.gi.it-takes.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u03.gi.it-takes.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.gi.it-takes.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u03.gi.it-takes.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.gi.it-takes.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g3u03.gi.it-takes.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.gi.it-takes.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g3u03.gi.it-takes.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.gi.time-connectors.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u03.gi.time-connectors.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.gi.time-connectors.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u03.gi.time-connectors.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.gi.time-connectors.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u03.gi.time-connectors.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.gi.time-connectors.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g3u03.gi.time-connectors.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u03.gi.time-connectors.tr.006",
+      "kind": "translation-audit",
+      "itemId": "g3u03.gi.time-connectors.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g3u03.w.all-in-all#2e7eae",
+      "kind": "validator-warn",
+      "itemId": "g3u03.w.all-in-all",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g3u03.w.to-sleep-in-a-tent#dfbe38",
+      "kind": "validator-warn",
+      "itemId": "g3u03.w.to-sleep-in-a-tent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g3u03.w.to-work-on#b80663",
+      "kind": "validator-warn",
+      "itemId": "g3u03.w.to-work-on",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 168 rows, 2 structures (it-takes: it+takes/took+person+time+to+base; time-connectors when/before/after/while/during/until/by-the-time). Answers lens verified all 114 grammar items: it-takes pattern correct (it-subject, to+base, tense matches context), and the while-vs-during contrast is correctly taught (during+NOUN, while+clause). Fixed all lens findings: register 3 (\"Vergangenheit\" in it-takes prompts → \"von gestern\"/\"mit did\"); answers 4 (tr.001 +\"to go to school\"; gf.004 +When-valid; gf.011/gf.018 +When as accepted alternative to \"by the time\"); translation 3 (tr.005 +\"The children…\" literal; to-note feststellen→partial wrong sense; to-work-on enToDe cleaned). 34 audited grants (it-takes inflections, base verbs after \"to\", connector-clause words, harvesting-gap carriers). 12 it-takes prompts that the agent wrote as English instructions were re-German-ized; 6 phrasal-verb defs reworded off their parenthetical-noun headword tokens; 6 vocab `g` values fixed to a single bank de value. blind/started glossed (granted-but-rare). 3 residual weak-DE-evidence warns are correct German (in/an homograph quirk). 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 168,
+    "fullRows": 168,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

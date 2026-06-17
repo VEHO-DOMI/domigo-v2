@@ -1,0 +1,75 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g1-u03",
+  "items": {
+    "ce8b71c876cb": "g1u03.gi.have-got.gf.001",
+    "17dd825b5e7f": "g1u03.gi.have-got.gf.002",
+    "5c3e0c5e11fe": "g1u03.gi.have-got.gf.003",
+    "f0b512abb75c": "g1u03.gi.have-got.gf.004",
+    "fc24514bdab4": "g1u03.gi.have-got.gf.006",
+    "5dbfe38d95f5": "g1u03.gi.have-got.mc.001",
+    "b3483ba06ab6": "g1u03.gi.have-got.mc.002",
+    "cb36e0a8099c": "g1u03.gi.have-got.mc.003",
+    "ccd0807520e2": "g1u03.gi.have-got.mc.004",
+    "987a9b7390e2": "g1u03.gi.have-got.cp.001",
+    "dfa2f3941360": "g1u03.gi.have-got.cp.002",
+    "12a930e61b24": "g1u03.gi.have-got.ec.001",
+    "4255953e014f": "g1u03.gi.have-got.ec.002",
+    "4e7d1b4bfec8": "g1u03.gi.have-got.ec.003",
+    "0538d46a857d": "g1u03.gi.have-got.tf.001",
+    "7c25778d5cbd": "g1u03.gi.have-got.tf.002",
+    "d4725a79116c": "g1u03.gi.have-got.tf.003",
+    "7f2e18904226": "g1u03.gi.have-got.tr.001",
+    "a5016ac60598": "g1u03.gi.have-got.tr.003",
+    "ce984adb2c32": "g1u03.gi.have-got.sb.001",
+    "cafe114fa154": "g1u03.gi.have-got.sb.002",
+    "306e77bda488": "g1u03.gi.have-got.qf.001",
+    "4d7b060fa78f": "g1u03.gi.have-got.gs.001",
+    "f2bbfd651c06": "g1u03.gi.have-got.mt.001",
+    "08979c6eb32f": "g1u03.gi.have-got.mp.001",
+    "375a8dfd56ee": "g1u03.gi.have-got.ag.001",
+    "9d05dc5bfecf": "g1u03.gi.irregular-plurals-2.gf.001",
+    "0fc593fac29c": "g1u03.gi.irregular-plurals-2.gf.002",
+    "59c254100343": "g1u03.gi.irregular-plurals-2.mc.001",
+    "fa7cb0eb63bb": "g1u03.gi.irregular-plurals-2.mc.002",
+    "1630eb9658b9": "g1u03.gi.irregular-plurals-2.ec.001",
+    "1f9e1ef7a5c1": "g1u03.gi.irregular-plurals-2.ec.002",
+    "5b98f5512e59": "g1u03.gi.irregular-plurals-2.tf.001",
+    "4add01aa93db": "g1u03.gi.irregular-plurals-2.tf.002",
+    "56e80317f67c": "g1u03.gi.irregular-plurals-2.cp.001",
+    "3c45c2dcaba4": "g1u03.gi.irregular-plurals-2.tr.001",
+    "80ce7cc999bc": "g1u03.gi.irregular-plurals-2.tr.002",
+    "6aa230d4257c": "g1u03.gi.have-got.gf.007",
+    "2a9845e3a87a": "g1u03.gi.have-got.tr.004",
+    "d06abf8da004": "g1u03.gi.irregular-plurals-2.ag.003",
+    "8e9d426a5533": "g1u03.gi.irregular-plurals-2.ag.004",
+    "7a25733f561e": "g1u03.gi.irregular-plurals-2.gs.002"
+  },
+  "tombstones": [
+    {
+      "id": "g1u03.gi.have-got.gf.005",
+      "key": "549144823c38",
+      "removedWith": "87ca18b1f300"
+    },
+    {
+      "id": "g1u03.gi.have-got.tr.002",
+      "key": "fdbb7b5be490",
+      "removedWith": "87ca18b1f300"
+    },
+    {
+      "id": "g1u03.gi.irregular-plurals-2.ag.001",
+      "key": "e8f410f4dc18",
+      "removedWith": "87ca18b1f300"
+    },
+    {
+      "id": "g1u03.gi.irregular-plurals-2.ag.002",
+      "key": "a524faed38e9",
+      "removedWith": "87ca18b1f300"
+    },
+    {
+      "id": "g1u03.gi.irregular-plurals-2.gs.001",
+      "key": "76c1499130ba",
+      "removedWith": "87ca18b1f300"
+    }
+  ]
+}

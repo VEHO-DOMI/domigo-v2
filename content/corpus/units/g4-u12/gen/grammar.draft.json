@@ -1,0 +1,2594 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g4-u12",
+  "briefBank": "8238afa2164f",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The space shuttle will take ___ at sunrise.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "off",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "take + kleines Wort = vom Boden abheben (wie ein Flugzeug).",
+      "hintEn": null,
+      "explainDe": "\"take off\" heißt abheben. Das kleine Wort dazu ist \"off\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Don't give ___! You can do it if you keep trying.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "up",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "give + kleines Wort = aufhören, nicht weitermachen.",
+      "hintEn": null,
+      "explainDe": "\"give up\" heißt aufgeben. Das kleine Wort dazu ist \"up\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-gf-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "It's cold outside. Please put ___ your jacket.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "on",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "put + kleines Wort = anziehen (Kleidung).",
+      "hintEn": null,
+      "explainDe": "\"put on\" heißt anziehen. Das kleine Wort dazu ist \"on\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-gf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We've run ___ ___ food. Can you go to the shop?",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "out | of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "run + zwei kleine Wörter = nichts mehr davon übrig haben (run ___ ___).",
+      "hintEn": null,
+      "explainDe": "\"run out of\" heißt etwas ganz aufgebraucht haben. Die kleinen Wörter sind \"out\" und \"of\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-gf-012",
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Could you look ___ my dog while I'm away?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "after",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "look + kleines Wort = auf jemanden aufpassen, sich kümmern.",
+      "hintEn": null,
+      "explainDe": "\"look after\" heißt sich kümmern um. Das kleine Wort dazu ist \"after\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-gf-010",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She came ___ ___ a great story for the project.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "up | with",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "come + zwei kleine Wörter = sich etwas Neues ausdenken (come ___ ___).",
+      "hintEn": null,
+      "explainDe": "\"come up with\" heißt sich etwas einfallen lassen. Die kleinen Wörter sind \"up\" und \"with\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-gf-003",
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The crew set ___ for the moon early in the morning.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "off",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "set + kleines Wort = eine Reise beginnen, losfahren.",
+      "hintEn": null,
+      "explainDe": "\"set off\" heißt aufbrechen / losfahren. Das kleine Wort dazu ist \"off\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She gets ___ well ___ everyone in the crew.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "on | with",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "get ___ well ___ = sich gut verstehen mit jemandem.",
+      "hintEn": null,
+      "explainDe": "\"get on well with\" heißt sich gut verstehen mit. Die kleinen Wörter sind \"on\" und \"with\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Let's find ___ more about space travel.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "out",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "find + kleines Wort = etwas herausfinden, in Erfahrung bringen.",
+      "hintEn": null,
+      "explainDe": "\"find out\" heißt herausfinden. Das kleine Wort dazu ist \"out\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Your spacesuit is on the floor. Please put ___ ___ before you go outside.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "it | on",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei einem Fürwort (it) steht das kleine Wort HINTEN: put ___ ___.",
+      "hintEn": null,
+      "explainDe": "Mit \"it\" sagst du \"put it on\" – das kleine Wort \"on\" kommt nach \"it\", nicht davor.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He hadn't come ___ ___ anything good for a long time, so he was depressed.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "up | with",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "come + zwei kleine Wörter = sich etwas ausdenken (come ___ ___).",
+      "hintEn": null,
+      "explainDe": "\"come up with\" = sich etwas einfallen lassen. Die kleinen Wörter sind \"up\" und \"with\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The commander looks ___ the whole crew on the spaceship.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "after",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "look + kleines Wort = sich um jemanden kümmern.",
+      "hintEn": null,
+      "explainDe": "\"look after\" = sich kümmern um. Das kleine Wort dazu ist \"after\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The astronaut ___ her spacesuit before the flight.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "put on",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "put up",
+        "put out",
+        "put down"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Kleidung anziehen = put + welches kleine Wort?",
+      "hintEn": null,
+      "explainDe": "\"put on\" heißt anziehen. \"put up/out/down\" haben andere Bedeutungen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "put up",
+          "put out",
+          "put down",
+          "put on",
+          "put away"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The astronauts will ___ at sunrise and fly into the sky.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "take off",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "take on",
+        "take up",
+        "take out"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vom Boden abheben (wie ein Flugzeug) = take + welches kleine Wort?",
+      "hintEn": null,
+      "explainDe": "\"take off\" heißt abheben. \"take on/up/out\" haben andere Bedeutungen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "take on",
+          "take up",
+          "take out",
+          "take off",
+          "take after",
+          "take over"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u12-phrasal-verbs-mc-002",
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We've ___ food on the spaceship. Tell the commander!",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "run out of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "run out for",
+        "run up to",
+        "run away from"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nichts mehr davon übrig haben = run ___ ___. Welche zwei kleinen Wörter?",
+      "hintEn": null,
+      "explainDe": "\"run out of\" heißt etwas ganz aufgebraucht haben. Die richtigen kleinen Wörter sind \"out\" und \"of\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "run out for",
+          "run up to",
+          "run away from",
+          "run out of",
+          "run on with"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u12-phrasal-verbs-gf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Dein Raumanzug ist schmutzig. Welcher Satz hat die richtige Wortstellung mit 'it'?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Please put it on.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Please put on it.",
+        "Please it put on.",
+        "Please put on it now it."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei einem Fürwort (it) steht das kleine Wort HINTEN.",
+      "hintEn": null,
+      "explainDe": "Mit \"it\" heißt es \"put it on\" – das kleine Wort kommt nach \"it\", nie \"put on it\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Please put on it.",
+          "Please it put on.",
+          "Please put on it now it.",
+          "Please put it on.",
+          "Please on put it."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u12-phrasal-verbs-mc-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz lässt die zwei Wörter zusammen und ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She looks after the crew well.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She looks the crew after well.",
+        "She looks well after the crew it.",
+        "She after looks the crew well."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei \"look after\" bleiben die zwei Wörter IMMER zusammen.",
+      "hintEn": null,
+      "explainDe": "\"look after\" kann man nicht trennen: \"look after the crew\", nie \"look the crew after\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She looks the crew after well.",
+          "She looks well after the crew it.",
+          "She after looks the crew well.",
+          "She looks after the crew well."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u12-phrasal-verbs-mc-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Was bedeutet 'take off' hier? 'The space shuttle took a long time to take off.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "leave the ground and go into the sky",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "take care of the crew",
+        "begin a new life",
+        "stop and not go on"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Was macht eine Raumfähre, wenn sie startet?",
+      "hintEn": null,
+      "explainDe": "\"take off\" heißt hier abheben – vom Boden weg in den Himmel.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "take care of the crew",
+          "begin a new life",
+          "stop and not go on",
+          "leave the ground and go into the sky",
+          "have a good relationship with people"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u12-phrasal-verbs-mc-005",
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welche zwei Wörter bleiben immer zusammen (kein Wort dazwischen)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "look after",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "put on",
+        "give up",
+        "take off"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei welchem Paar kann KEIN Objekt in die Mitte?",
+      "hintEn": null,
+      "explainDe": "\"look after\" ist untrennbar: look after the crew. \"put on / give up\" kann man trennen: put it on, give it up.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "put on",
+          "give up",
+          "take off",
+          "look after",
+          "get on with"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u12-phrasal-verbs-mc-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Your spacesuit is on the ground. Please put on it.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Your spacesuit is on the ground. Please put it on.",
+          "tier": "full"
+        },
+        {
+          "text": "Please put it on.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei einem Fürwort (it) steht das kleine Wort HINTEN.",
+      "hintEn": null,
+      "explainDe": "\"put on it\" ist falsch. Mit \"it\" muss es \"put it on\" heißen.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-ec-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Don't give up it! You can do it.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Don't give it up! You can do it.",
+          "tier": "full"
+        },
+        {
+          "text": "Don't give it up!",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei einem Fürwort (it) steht das kleine Wort HINTEN.",
+      "hintEn": null,
+      "explainDe": "\"give up it\" ist falsch. Mit \"it\" heißt es \"give it up\".",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-ec-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She looks the crew after very well.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She looks after the crew very well.",
+          "tier": "full"
+        },
+        {
+          "text": "looks after the crew",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die zwei Wörter von \"look after\" bleiben zusammen.",
+      "hintEn": null,
+      "explainDe": "\"look after\" ist untrennbar. Richtig: \"look after the crew\", nicht \"look the crew after\".",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-ec-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She set off a new life on Mars.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She set up a new life on Mars.",
+          "tier": "full"
+        },
+        {
+          "text": "set up a new life",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein neues Leben beginnen = set + welches kleine Wort? (nicht \"off\")",
+      "hintEn": null,
+      "explainDe": "\"set off\" heißt losfahren, aber ein neues Leben beginnen heißt \"set up\".",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [
+        {
+          "word": "set",
+          "de": "gründen/aufbauen (set up)",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-ec-002",
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He carries on it with his work every day.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He carries on with his work every day.",
+          "tier": "full"
+        },
+        {
+          "text": "carries on with his work",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hier braucht es kein \"it\" – das gehört nicht dazwischen.",
+      "hintEn": null,
+      "explainDe": "\"carry on with something\" – das \"it\" gehört hier nicht hin. Richtig: \"carries on with his work\".",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "We have run of food on the spaceship.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have run out of food on the spaceship.",
+          "tier": "full"
+        },
+        {
+          "text": "run out of food",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es fehlt ein kleines Wort: run ___ of.",
+      "hintEn": null,
+      "explainDe": "Es muss \"run out of\" heißen – das kleine Wort \"out\" fehlt.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-ec-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "transformation",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Dein Bruder soll seinen Raumanzug anziehen. Sag es ihm mit \"it\": 'Here is your spacesuit. Put ___ ___!'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "it | on",
+          "tier": "full"
+        },
+        {
+          "text": "Put it on!",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei einem Fürwort (it) steht das kleine Wort HINTEN.",
+      "hintEn": null,
+      "explainDe": "Mit \"it\" heißt es \"put it on\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-tf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ersetze das unterstrichene Wort durch eins wie give up / take off: She STOPS eating chocolate. → She ___ chocolate.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "gives up",
+          "tier": "full"
+        },
+        {
+          "text": "She gives up chocolate.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "aufhören = give + kleines Wort.",
+      "hintEn": null,
+      "explainDe": "\"give up\" heißt aufgeben/aufhören.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-tf-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib den Satz mit \"it\" statt mit dem dicken Wort: Put on your SPACESUIT. → Put ___ ___.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "it | on",
+          "tier": "full"
+        },
+        {
+          "text": "Put it on.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wenn das Ding zu \"it\" wird, rutscht das kleine Wort nach hinten.",
+      "hintEn": null,
+      "explainDe": "\"Put on your spacesuit\" wird mit \"it\" zu \"Put it on\" – das kleine Wort kommt nach \"it\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-tf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Ersetze das unterstrichene Wort durch eins wie give up / take off: She INVENTED a great story. → She ___ ___ ___ a great story.",
+        "lang": "de",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "came | up | with",
+          "tier": "full"
+        },
+        {
+          "text": "She came up with a great story.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "sich etwas ausdenken = come ___ ___.",
+      "hintEn": null,
+      "explainDe": "\"come up with\" heißt sich etwas einfallen lassen. Vergangenheit: \"came up with\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-tf-003",
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 3
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Zieh deinen Raumanzug an!",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Put on your spacesuit!",
+          "tier": "full"
+        },
+        {
+          "text": "Put your spacesuit on!",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "anziehen = put on. Mit einem Ding (nicht it) sind beide Reihenfolgen erlaubt.",
+      "hintEn": null,
+      "explainDe": "\"Put on your spacesuit\" und \"Put your spacesuit on\" sind beide richtig, weil das Objekt kein Fürwort ist.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Wer passt auf den Hund auf, während ich weg bin?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Who looks after the dog while I'm away?",
+          "tier": "full"
+        },
+        {
+          "text": "Who looks after the dog while I am away?",
+          "tier": "full"
+        },
+        {
+          "text": "Who is looking after the dog while I'm away?",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "aufpassen auf = look after. Die zwei Wörter bleiben zusammen.",
+      "hintEn": null,
+      "explainDe": "\"look after\" heißt sich kümmern um / aufpassen auf. Es ist untrennbar: look after the dog.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-tr-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Wir haben kein Essen mehr. Wir müssen zurück zur Erde.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have run out of food. We must go back to Earth.",
+          "tier": "full"
+        },
+        {
+          "text": "We've run out of food. We must go back to Earth.",
+          "tier": "full"
+        },
+        {
+          "text": "We have run out of food. We have to go back to Earth.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "nichts mehr haben von = run out of.",
+      "hintEn": null,
+      "explainDe": "\"run out of food\" heißt kein Essen mehr haben. Die kleinen Wörter sind \"out\" und \"of\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-gf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Don't give up, astronaut!",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Gib nicht auf, Astronaut!",
+          "tier": "full"
+        },
+        {
+          "text": "Gib nicht auf, Astronautin!",
+          "tier": "full"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"give up\" heißt aufgeben.",
+      "hintEn": null,
+      "explainDe": "\"give up\" = aufgeben. Auf Deutsch: \"Gib nicht auf!\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The space shuttle took a long time to take off.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Die Raumfähre brauchte lange, um abzuheben.",
+          "tier": "full"
+        },
+        {
+          "text": "Das Space Shuttle brauchte lange, um abzuheben.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"take off\" heißt abheben.",
+      "hintEn": null,
+      "explainDe": "\"take off\" = abheben (vom Boden in den Himmel).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "sentence-building",
+      "difficulty": 1,
+      "prompt": {
+        "text": "off / shuttle / the / takes / space / sunrise / at",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The space shuttle takes off at sunrise.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit \"The space shuttle\".",
+      "hintEn": null,
+      "explainDe": "Wortstellung: The space shuttle + takes off + at sunrise.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "on",
+          "up",
+          "out",
+          "after"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "with / great / came / a / story / up / she",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She came up with a great story.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "come ___ ___ = sich etwas ausdenken. Beide kleinen Wörter kommen direkt nach \"came\".",
+      "hintEn": null,
+      "explainDe": "Wortstellung: She + came up with + a great story.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "on",
+          "after",
+          "out",
+          "down"
+        ],
+        "chipBudget": 8,
+        "minOptions": null
+      },
+      "seedV1": "m4-u12-phrasal-verbs-sb-003",
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "the / commander / after / crew / looks / the",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The commander looks after the crew.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "look after bleibt zusammen: looks after the crew.",
+      "hintEn": null,
+      "explainDe": "Wortstellung: The commander + looks after + the crew. \"look after\" wird nicht getrennt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "at",
+          "up",
+          "on",
+          "down"
+        ],
+        "chipBudget": 6,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "spacesuit / on / put / it / your / ground / the / is / on",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Your spacesuit is on the ground. Put it on.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei \"it\" steht das kleine Wort \"on\" am Ende: Put it on.",
+      "hintEn": null,
+      "explainDe": "Mit dem Fürwort \"it\" heißt es \"Put it on\" – das kleine Wort kommt nach \"it\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "up",
+          "down",
+          "out",
+          "after"
+        ],
+        "chipBudget": 9,
+        "minOptions": null
+      },
+      "seedV1": "m4-u12-phrasal-verbs-sb-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welches kleine Wort passt? (erste Runde)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "take",
+          "right": "off"
+        },
+        {
+          "left": "give",
+          "right": "up"
+        },
+        {
+          "left": "look",
+          "right": "after"
+        },
+        {
+          "left": "find",
+          "right": "out"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Jedes Verb hat sein eigenes kleines Wort.",
+      "hintEn": null,
+      "explainDe": "take off (abheben), give up (aufgeben), look after (sich kümmern), find out (herausfinden).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "matching",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welche Bedeutung passt? (erste Runde)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "take off",
+          "right": "go up into the sky"
+        },
+        {
+          "left": "set off",
+          "right": "begin a journey"
+        },
+        {
+          "left": "give up",
+          "right": "stop and not go on"
+        },
+        {
+          "left": "look after",
+          "right": "take care of a child"
+        },
+        {
+          "left": "get on with",
+          "right": "have a good relationship with people"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Denk an die Bedeutung, die das kleine Wort dem Verb gibt.",
+      "hintEn": null,
+      "explainDe": "take off = abheben, set off = aufbrechen, give up = aufgeben, look after = sich kümmern, get on with = sich verstehen mit.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-mt-001",
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "matching",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welche Bedeutung passt? (zweite Runde)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "set up",
+          "right": "start a new life"
+        },
+        {
+          "left": "run out of",
+          "right": "have nothing of it any more"
+        },
+        {
+          "left": "come up with",
+          "right": "think of a new story"
+        },
+        {
+          "left": "find out",
+          "right": "get to know the truth"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Denk an die Bedeutung der ganzen Wortgruppe.",
+      "hintEn": null,
+      "explainDe": "set up = gründen, run out of = aufgebraucht haben, come up with = sich ausdenken, find out = herausfinden.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "set",
+          "de": "gründen/aufbauen (set up)",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-mt-002",
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "put on / give up / look after / get on with",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "put it on, give it up …",
+          "members": [
+            "put on",
+            "give up"
+          ]
+        },
+        {
+          "label": "look after it, get on with it …",
+          "members": [
+            "look after",
+            "get on with"
+          ]
+        }
+      ],
+      "hintDe": "Bei manchen kann ein Fürwort (it) in die Mitte, bei anderen nicht.",
+      "hintEn": null,
+      "explainDe": "Trennbar: put it on, give it up. Untrennbar: look after it, get on with it.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "give up / take off / run out of / get on with",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "give up, take off …",
+          "members": [
+            "give up",
+            "take off"
+          ]
+        },
+        {
+          "label": "run out of, get on with …",
+          "members": [
+            "run out of",
+            "get on with"
+          ]
+        }
+      ],
+      "hintDe": "Manche haben nur ein kleines Wort, manche zwei kleine Wörter.",
+      "hintEn": null,
+      "explainDe": "\"give up\" und \"take off\" haben ein kleines Wort. \"run out of\" und \"get on with\" haben zwei kleine Wörter.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Die Astronauten heben gleich vom Boden ab. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The astronauts will take off.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The astronauts will take on.",
+        "The astronauts will take up.",
+        "The astronauts will take out."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "abheben = take + welches kleine Wort?",
+      "hintEn": null,
+      "explainDe": "\"take off\" heißt abheben. Die anderen kleinen Wörter passen hier nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The astronauts will take on.",
+          "The astronauts will take up.",
+          "The astronauts will take out.",
+          "The astronauts will take off.",
+          "The astronauts will take after."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du gibst deinem Bruder seinen Raumanzug und sagst ihm, er soll IHN anziehen. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Put it on.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Put on it.",
+        "Put on it on.",
+        "On put it."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei einem Fürwort (it) steht das kleine Wort HINTEN.",
+      "hintEn": null,
+      "explainDe": "Mit \"it\" heißt es \"Put it on\" – nie \"Put on it\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Put on it.",
+          "Put on it on.",
+          "On put it.",
+          "Put it on.",
+          "It put on."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du erzählst, dass die Mannschaft kein Essen mehr hat. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The crew has run out of food.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The crew has run up of food.",
+        "The crew has run out for food.",
+        "The crew has run away of food."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "nichts mehr haben von = run ___ ___.",
+      "hintEn": null,
+      "explainDe": "\"run out of food\" heißt kein Essen mehr haben. Die kleinen Wörter sind \"out\" und \"of\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The crew has run up of food.",
+          "The crew has run out for food.",
+          "The crew has run away of food.",
+          "The crew has run out of food.",
+          "The crew has run on of food."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Die Raumfähre ist gestartet. Frag, wann sie abgehoben hat. Beginne mit 'When did...'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When did the space shuttle take off?",
+          "tier": "full"
+        },
+        {
+          "text": "When did the spaceship take off?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach \"did\" kommt die Grundform: take off.",
+      "hintEn": null,
+      "explainDe": "Nach \"did\" steht die Grundform: \"When did the space shuttle take off?\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-qf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Dein Freund hat eine tolle Geschichte erfunden. Frag, wie er auf die Idee gekommen ist. Beginne mit 'How did...'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How did you come up with the story?",
+          "tier": "full"
+        },
+        {
+          "text": "How did you come up with that story?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "sich ausdenken = come up with. Nach \"did\" die Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach \"did\" steht die Grundform: \"How did you come up with the story?\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-qf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Das kleine Wort, das zu \"find\" passt (herausfinden): find ___",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "out",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist das Gegenteil von \"in\".",
+      "hintEn": null,
+      "explainDe": "\"find out\" heißt herausfinden. Das kleine Wort ist \"out\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Das kleine Wort, das zu \"look\" passt (sich kümmern um): look ___",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "after",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es bedeutet auch \"nach\" (zeitlich).",
+      "hintEn": null,
+      "explainDe": "\"look after\" heißt sich kümmern um. Das kleine Wort ist \"after\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Carry ___! You're nearly finished with the project.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "on",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "carry + kleines Wort = weitermachen.",
+      "hintEn": null,
+      "explainDe": "\"carry on\" heißt weitermachen. Das kleine Wort dazu ist \"on\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "What are you waiting ___? The space shuttle is ready!",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "for",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "warten auf = wait + welches kleine Wort? (im Englischen anders als im Deutschen)",
+      "hintEn": null,
+      "explainDe": "\"wait for\" heißt warten auf. Das kleine Wort ist \"for\", nicht \"on\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She spent all her pocket money ___ paint and paper.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "on",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Geld ausgeben für = spend money + welches kleine Wort?",
+      "hintEn": null,
+      "explainDe": "\"spend money on something\" heißt Geld für etwas ausgeben. Das kleine Wort ist \"on\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He's depressed because he can't ___ a good story.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "come up with",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "come up for",
+        "come on with",
+        "come out with"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "sich etwas ausdenken = come ___ ___. Welche zwei kleinen Wörter?",
+      "hintEn": null,
+      "explainDe": "\"come up with\" heißt sich etwas einfallen lassen. Die richtigen kleinen Wörter sind \"up\" und \"with\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "come up for",
+          "come on with",
+          "come out with",
+          "come up with",
+          "come on for",
+          "come down with"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u12-phrasal-verbs-gf-003",
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "On the spaceship the crew never gives ___, even when things go wrong.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "up",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "give + kleines Wort = aufhören, nicht weitermachen.",
+      "hintEn": null,
+      "explainDe": "\"give up\" heißt aufgeben. Das kleine Wort dazu ist \"up\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u12-phrasal-verbs-gf-009",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I'm waiting on the space shuttle.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'm waiting for the space shuttle.",
+          "tier": "full"
+        },
+        {
+          "text": "waiting for",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "warten auf = wait + welches kleine Wort? (nicht wie im Deutschen)",
+      "hintEn": null,
+      "explainDe": "Im Englischen heißt es \"wait for\", nicht \"wait on\". Das kleine Wort ist \"for\".",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Die Mannschaft brach früh zum Mond auf.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The crew set off for the moon early.",
+          "tier": "full"
+        },
+        {
+          "text": "The crew set off early for the moon.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "aufbrechen = set off. \"set\" bleibt in der Vergangenheit gleich.",
+      "hintEn": null,
+      "explainDe": "\"set off\" heißt aufbrechen / losfahren. \"set\" ändert sich in der Vergangenheit nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "up / never / the / crew / gives",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The crew never gives up.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "give up bleibt zusammen: gives up.",
+      "hintEn": null,
+      "explainDe": "Wortstellung: The crew + never + gives up.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "on",
+          "down",
+          "out",
+          "after"
+        ],
+        "chipBudget": 5,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "First the crew set ___ for the moon. Then the shuttle took ___.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "off | off",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "set ___ = aufbrechen, take ___ = abheben. Beide brauchen dasselbe kleine Wort.",
+      "hintEn": null,
+      "explainDe": "\"set off\" (aufbrechen) und \"take off\" (abheben) brauchen beide das kleine Wort \"off\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du fragst deinen Freund, warum er noch wartet. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What are you waiting for?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "What are you waiting on?",
+        "What are you waiting at?",
+        "What are you waiting after?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "warten auf = wait + welches kleine Wort?",
+      "hintEn": null,
+      "explainDe": "Im Englischen heißt es \"wait for\". Das kleine Wort ist \"for\", nicht \"on\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "What are you waiting on?",
+          "What are you waiting at?",
+          "What are you waiting after?",
+          "What are you waiting for?",
+          "What are you waiting up?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreib den Satz mit \"it\" statt mit dem dicken Wort: Give up CHOCOLATE. → Give ___ ___.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "it | up",
+          "tier": "full"
+        },
+        {
+          "text": "Give it up.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wenn das Ding zu \"it\" wird, rutscht das kleine Wort nach hinten.",
+      "hintEn": null,
+      "explainDe": "\"Give up chocolate\" wird mit \"it\" zu \"Give it up\" – das kleine Wort kommt nach \"it\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welches kleine Wort passt? (zweite Runde)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "wait",
+          "right": "for"
+        },
+        {
+          "left": "carry",
+          "right": "on"
+        },
+        {
+          "left": "run out",
+          "right": "of"
+        },
+        {
+          "left": "break",
+          "right": "up"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Lerne das kleine Wort immer mit dem Verb mit.",
+      "hintEn": null,
+      "explainDe": "wait for (warten auf), carry on (weitermachen), run out of (aufgebraucht haben), break up (auseinanderbrechen).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The space shuttle broke ___ when it came back into the atmosphere.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "up",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "break + kleines Wort = in viele Teile zerbrechen.",
+      "hintEn": null,
+      "explainDe": "\"break up\" heißt hier auseinanderbrechen. Das kleine Wort dazu ist \"up\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "free-form",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreib einen Satz über Astronauten mit \"take off\" (abheben).",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The astronauts take off in a space shuttle.",
+          "tier": "full"
+        },
+        {
+          "text": "The space shuttle takes off at sunrise.",
+          "tier": "full"
+        },
+        {
+          "text": "The astronauts will take off soon.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "take off = abheben. Schreib einen ganzen Satz.",
+      "hintEn": null,
+      "explainDe": "\"take off\" heißt abheben. Zum Beispiel: \"The space shuttle takes off at sunrise.\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She set ___ a new life on a new planet.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "up",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "ein neues Leben beginnen = set + welches kleine Wort? (nicht \"off\")",
+      "hintEn": null,
+      "explainDe": "\"set up\" heißt etwas Neues aufbauen/gründen. Das kleine Wort dazu ist \"up\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 12.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz mit einem Ding (nicht 'it') ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Put your spacesuit on.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Put on on your spacesuit.",
+        "Put your on spacesuit.",
+        "On put your spacesuit."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei einem Ding (nicht it) darf das kleine Wort vorne ODER hinten stehen.",
+      "hintEn": null,
+      "explainDe": "Mit einem Ding sind \"Put on your spacesuit\" und \"Put your spacesuit on\" beide richtig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Put on on your spacesuit.",
+          "Put your on spacesuit.",
+          "On put your spacesuit.",
+          "Put your spacesuit on.",
+          "Put on your spacesuit."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Die Mannschaft hat kein Essen mehr. Frag, ob sie aufgegeben hat. Beginne mit 'Did the crew...'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Did the crew give up?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach \"did\" kommt die Grundform: give up.",
+      "hintEn": null,
+      "explainDe": "Nach \"did\" steht die Grundform: \"Did the crew give up?\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Let's find ___ how a space shuttle works.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "out",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "find + kleines Wort = herausfinden.",
+      "hintEn": null,
+      "explainDe": "\"find out\" heißt herausfinden. Das kleine Wort dazu ist \"out\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Look it up in the dictionary, then carry on it with your work.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Look it up in the dictionary, then carry on with your work.",
+          "tier": "full"
+        },
+        {
+          "text": "carry on with your work",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei \"carry on with\" gehört kein \"it\" dazwischen.",
+      "hintEn": null,
+      "explainDe": "\"carry on with your work\" ist richtig – das \"it\" gehört hier nicht hin.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u12.s.phrasal-verbs",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach weiter! Du kannst es schaffen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Carry on! You can do it.",
+          "tier": "full"
+        },
+        {
+          "text": "Carry on! You can do this.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "weitermachen = carry on.",
+      "hintEn": null,
+      "explainDe": "\"carry on\" heißt weitermachen. Das kleine Wort dazu ist \"on\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    }
+  ]
+}

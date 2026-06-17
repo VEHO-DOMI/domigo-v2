@@ -1,0 +1,1469 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g1-u11",
+  "briefBank": "5c3fc203cee7",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Look! Dana ___ TV right now.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is watching",
+          "tier": "full"
+        },
+        {
+          "text": "'s watching",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Dana ist eine Person (he/she). Welche kurze Form von be passt dazu? Und das Verb braucht die -ing-Endung.",
+      "hintEn": null,
+      "explainDe": "Was gerade jetzt passiert, bildest du mit am/is/are + Verb-ing. Bei she/he/Dana nimmst du is: Dana is watching TV.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-gf-001",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I ___ a book right now.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "am reading",
+          "tier": "full"
+        },
+        {
+          "text": "'m reading",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zu I gehört eine ganz bestimmte kurze Form von be. Vergiss die -ing-Endung nicht.",
+      "hintEn": null,
+      "explainDe": "Zu I gehört am: I am reading a book. So beschreibst du, was du gerade jetzt machst.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-gf-002",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "They ___ football right now.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are playing",
+          "tier": "full"
+        },
+        {
+          "text": "'re playing",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "They ist Mehrzahl. Welche kurze Form von be gehört zu they?",
+      "hintEn": null,
+      "explainDe": "Zu they (Mehrzahl) gehört are: They are playing football. Das Verb bekommt die -ing-Endung.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-gf-003",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He ___ his bike to school today.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is riding",
+          "tier": "full"
+        },
+        {
+          "text": "'s riding",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "He braucht is. Achtung bei ride: das e fällt vor -ing weg.",
+      "hintEn": null,
+      "explainDe": "Zu he gehört is, und bei ride wird aus -e + -ing einfach riding: He is riding his bike.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-gf-004",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We ___ dinner now. We aren't eating pizza.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are cooking",
+          "tier": "full"
+        },
+        {
+          "text": "'re cooking",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "We braucht die gleiche kurze Form von be wie they. Das Verb endet auf -ing.",
+      "hintEn": null,
+      "explainDe": "Zu we gehört are: We are cooking dinner. So sagst du, was ihr gerade jetzt macht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She ___ to music right now. (not)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "isn't listening",
+          "tier": "full"
+        },
+        {
+          "text": "is not listening",
+          "tier": "full"
+        },
+        {
+          "text": "'s not listening",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei der Verneinung kommt das not nach is: she + isn't + Verb-ing.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung bildest du mit isn't (= is not) + Verb-ing: She isn't listening to music.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-gf-006",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Peter ___ the piano right now.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is playing",
+          "tier": "full"
+        },
+        {
+          "text": "'s playing",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Peter ist eine Person: dazu gehört is. Das Verb endet auf -ing.",
+      "hintEn": null,
+      "explainDe": "Zu I gehört am: I am drinking hot chocolate. Der Satz ist aus Roberts Postkarte.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#5",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "It's very cold outside and it ___. (snow)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is snowing",
+          "tier": "full"
+        },
+        {
+          "text": "'s snowing",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zu it gehört is. Hänge an snow die Endung -ing an.",
+      "hintEn": null,
+      "explainDe": "Zu it gehört is: It is snowing. So sagst du, was das Wetter gerade jetzt macht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#5",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "What ___ you ___ right now?",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "are | doing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage steht zuerst are, dann you, und das Verb do bekommt die -ing-Endung.",
+      "hintEn": null,
+      "explainDe": "Frage: What + are + you + doing? So fragst du, was jemand gerade jetzt macht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-gf-008",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#8",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Jack ___ and Mum and Dad ___. (snowboard / ski)",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "is snowboarding | are skiing",
+          "tier": "full"
+        },
+        {
+          "text": "'s snowboarding | are skiing",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Jack ist eine Person (is), Mum and Dad sind zwei (are). Beide Verben enden auf -ing.",
+      "hintEn": null,
+      "explainDe": "Jack is snowboarding (eine Person), Mum and Dad are skiing (zwei Personen). Der Satz ist aus Roberts Postkarte.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#5",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is cooking an egg.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She cooking an egg.",
+        "She do cooking an egg.",
+        "She cook an egg."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es braucht eine kurze Form von be (am/is/are) UND ein Verb mit -ing.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She is cooking an egg: is + Verb-ing. Ohne is oder ohne -ing ist es falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She cooking an egg.",
+          "She do cooking an egg.",
+          "She cook an egg.",
+          "She is cook an egg.",
+          "She cooks an egg."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u11-present-continuous-mc-001",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#15",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Frage ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you playing computer games?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Do you playing computer games?",
+        "You are playing computer games?",
+        "Is you playing computer games?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Frage beginnt mit Am/Is/Are. Zu you gehört are. Kein do!",
+      "hintEn": null,
+      "explainDe": "Richtig ist Are you playing computer games? Die Frage beginnt mit are, nicht mit do.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Do you playing computer games?",
+          "You are playing computer games?",
+          "Is you playing computer games?",
+          "Are you play computer games?",
+          "Do you play computer games now?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u11-present-continuous-mc-003",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#19",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They are riding their bikes.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They riding their bikes.",
+        "They is riding their bikes.",
+        "They are rideing their bikes."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zu they gehört are. Bei ride fällt das e vor -ing weg: riding.",
+      "hintEn": null,
+      "explainDe": "Richtig ist They are riding their bikes: are + riding (das e von ride fällt weg).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "They riding their bikes.",
+          "They is riding their bikes.",
+          "They are rideing their bikes.",
+          "They ride their bikes now.",
+          "They are ride their bikes."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/wb/WB Unit 11 What_s the time.txt#6",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Look! Dana ___ a book.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "is reading",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "reading",
+        "are reading",
+        "read"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Dana ist eine Person, also is. Das Verb endet auf -ing.",
+      "hintEn": null,
+      "explainDe": "Zu Dana (eine Person) gehört is: Dana is reading a book.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "reading",
+          "are reading",
+          "read",
+          "is read",
+          "am reading"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Deine Freunde sind gerade im Park. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They are playing football right now.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They play football right now.",
+        "They playing football right now.",
+        "They are play football right now."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Was gerade jetzt passiert: are + Verb-ing.",
+      "hintEn": null,
+      "explainDe": "Richtig ist They are playing football right now: are + playing. So beschreibst du, was gerade jetzt passiert.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "They play football right now.",
+          "They playing football right now.",
+          "They are play football right now.",
+          "They plays football right now.",
+          "Do they play football right now?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u11-present-continuous-cp-002",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Suzy sitzt im Wohnzimmer und spielt mit ihrem Handy. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Suzy is playing with her phone.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Suzy plays with her phone.",
+        "Suzy playing with her phone.",
+        "Suzy is play with her phone."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Suzy ist eine Person: is + Verb-ing.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Suzy is playing with her phone: is + playing. Der Satz ist aus der Geschichte 'A surprise for Suzy'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Suzy plays with her phone.",
+          "Suzy playing with her phone.",
+          "Suzy is play with her phone.",
+          "Suzy play with her phone.",
+          "Does Suzy play with her phone?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u11-present-continuous-cp-001",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#8",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du riechst etwas Gutes aus der Küche. Du fragst nach deinem Papa. Welche Frage ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is he cooking dinner?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Does he cooking dinner?",
+        "Is he cook dinner?",
+        "He is cooking dinner?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage beginnt mit Is (he). Kein does! Das Verb endet auf -ing.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Is he cooking dinner? Die Frage beginnt mit is + he + Verb-ing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Does he cooking dinner?",
+          "Is he cook dinner?",
+          "He is cooking dinner?",
+          "Do he cooking dinner?",
+          "Is he cooks dinner?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u11-present-continuous-tf-002",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She playing football right now.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is playing football right now.",
+          "tier": "full"
+        },
+        {
+          "text": "She's playing football right now.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es fehlt die kurze Form von be. Zu she gehört is.",
+      "hintEn": null,
+      "explainDe": "Es fehlt is: She is playing football. Ohne am/is/are ist der Satz nicht vollständig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-ec-001",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Do you playing computer games?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you playing computer games?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für diese Frage brauchst du kein do. Zu you gehört are.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Are you playing computer games? Die Frage beginnt mit are, nicht mit do.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-ec-002",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#19",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She doesn't reading a book.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She isn't reading a book.",
+          "tier": "full"
+        },
+        {
+          "text": "She is not reading a book.",
+          "tier": "full"
+        },
+        {
+          "text": "She's not reading a book.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei der Verneinung brauchst du kein doesn't. Zu she gehört isn't.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She isn't reading a book: isn't (= is not) + Verb-ing. Kein doesn't.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-ec-003",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He are watching TV.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He is watching TV.",
+          "tier": "full"
+        },
+        {
+          "text": "He's watching TV.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zu he gehört nicht are, sondern is.",
+      "hintEn": null,
+      "explainDe": "Zu he gehört is, nicht are: He is watching TV.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "They are playing football. → Mach den Satz verneint: They ___ football.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "aren't playing",
+          "tier": "full"
+        },
+        {
+          "text": "are not playing",
+          "tier": "full"
+        },
+        {
+          "text": "'re not playing",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung: are + not. Das Verb endet weiter auf -ing.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von they are playing ist they aren't playing (= are not playing).",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-tf-001",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He is cooking dinner. → Mach eine Frage daraus: ___ he ___ dinner?",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Is | cooking",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für die Frage stellst du is nach vorne: Is + he + Verb-ing?",
+      "hintEn": null,
+      "explainDe": "Für die Frage stellst du is an den Anfang: Is he cooking dinner?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-tf-002",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She is watching TV. → Mach den Satz verneint: She ___ TV.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "isn't watching",
+          "tier": "full"
+        },
+        {
+          "text": "is not watching",
+          "tier": "full"
+        },
+        {
+          "text": "'s not watching",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung bei she: isn't (= is not) + Verb-ing.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von she is watching ist she isn't watching (= is not watching).",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She is reading a book. → Stell eine Ja/Nein-Frage.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is she reading a book?",
+          "tier": "full"
+        },
+        {
+          "text": "Is she reading?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage beginnt mit Is. Danach kommt she und das Verb mit -ing.",
+      "hintEn": null,
+      "explainDe": "Für die Frage stellst du is an den Anfang: Is she reading a book?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-qf-001",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Peter is doing his homework. → Stell eine Ja/Nein-Frage.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is Peter doing his homework?",
+          "tier": "full"
+        },
+        {
+          "text": "Is Peter doing homework?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage beginnt mit Is. Peter ist eine Person.",
+      "hintEn": null,
+      "explainDe": "Für die Frage stellst du is an den Anfang: Is Peter doing his homework? Das steht so auch im Buch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sie spielt gerade Klavier.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is playing the piano.",
+          "tier": "full"
+        },
+        {
+          "text": "She's playing the piano.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'gerade' heißt: es passiert jetzt. Also is + Verb-ing.",
+      "hintEn": null,
+      "explainDe": "'Sie spielt gerade' = She is playing: is + Verb-ing für etwas, das jetzt passiert.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schläfst du gerade? – Nein.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you sleeping? – No, I'm not.",
+          "tier": "full"
+        },
+        {
+          "text": "Are you sleeping? No, I am not.",
+          "tier": "full"
+        },
+        {
+          "text": "Are you sleeping? No, I'm not.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage beginnt mit Are (you). Die kurze Antwort: No, I'm not.",
+      "hintEn": null,
+      "explainDe": "Frage: Are you sleeping? Kurzantwort mit nein: No, I'm not. (= I am not.)",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-tr-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "she / is / her / doing / homework",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is doing her homework.",
+          "tier": "full"
+        },
+        {
+          "text": "She's doing her homework.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: she + is + Verb-ing + Rest.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She is doing her homework: zuerst she, dann is, dann das Verb mit -ing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "are",
+          "do",
+          "does",
+          "playing"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": "m1-u11-present-continuous-sb-001",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "they / are / football / playing",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They are playing football.",
+          "tier": "full"
+        },
+        {
+          "text": "They're playing football.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: they + are + Verb-ing + Rest.",
+      "hintEn": null,
+      "explainDe": "Richtig ist They are playing football: they, dann are, dann playing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "is",
+          "do",
+          "plays",
+          "play"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "you / are / a / playing / game / computer",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are you playing a computer game?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist eine Frage: zuerst Are, dann you, dann das Verb mit -ing.",
+      "hintEn": null,
+      "explainDe": "Als Frage: Are you playing a computer game? Das steht so auch im Buch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "is",
+          "do",
+          "play",
+          "does"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Frage und passende Kurzantwort",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Are you playing a computer game?",
+          "right": "Yes, I am."
+        },
+        {
+          "left": "Is Peter doing his homework?",
+          "right": "No, he isn't."
+        },
+        {
+          "left": "Are Jennifer and Christine reading?",
+          "right": "Yes, they are."
+        },
+        {
+          "left": "Is Dana watching TV?",
+          "right": "No, she isn't."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte darauf, mit welchem Wort die Frage beginnt (Are/Is) und ob die Antwort ja oder nein ist.",
+      "hintEn": null,
+      "explainDe": "Die Kurzantwort passt zur Person und zu am/is/are aus der Frage: Are you …? → Yes, I am.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "play",
+          "right": "playing"
+        },
+        {
+          "left": "ride",
+          "right": "riding"
+        },
+        {
+          "left": "cook",
+          "right": "cooking"
+        },
+        {
+          "left": "watch",
+          "right": "watching"
+        },
+        {
+          "left": "study",
+          "right": "studying"
+        },
+        {
+          "left": "skate",
+          "right": "skating"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Manche Verben verlieren vor -ing ihr e (ride → riding, skate → skating).",
+      "hintEn": null,
+      "explainDe": "Für die -ing-Form hängst du meist -ing an. Endet das Verb auf -e, fällt das e weg: ride → riding.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u11-present-continuous-mp-001",
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche kurze Form von be passt? Sortiere die Sätze.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "is",
+          "members": [
+            "She ___ cooking dinner.",
+            "He ___ riding his bike.",
+            "Dana ___ watching TV.",
+            "Peter ___ playing football."
+          ]
+        },
+        {
+          "label": "are",
+          "members": [
+            "They ___ playing the piano.",
+            "We ___ cooking dinner.",
+            "You ___ watching TV.",
+            "Mum and Dad ___ skiing."
+          ]
+        }
+      ],
+      "hintDe": "Zu he/she und einem Namen gehört is. Zu we/you/they und zwei Personen gehört are.",
+      "hintEn": null,
+      "explainDe": "is gehört zu he/she und einer Person; are gehört zu we/you/they und mehreren Personen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere: sagt der Satz ja oder nein?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "Yes (+)",
+          "members": [
+            "She is watching TV.",
+            "They are playing football.",
+            "He is cooking dinner."
+          ]
+        },
+        {
+          "label": "No (–)",
+          "members": [
+            "She isn't watching TV.",
+            "They aren't playing football.",
+            "He isn't cooking dinner."
+          ]
+        }
+      ],
+      "hintDe": "Ein not, isn't oder aren't macht den Satz verneint.",
+      "hintEn": null,
+      "explainDe": "Mit isn't/aren't (= is not / are not) wird der Satz verneint, ohne not ist er positiv.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Die -ing-Form von 'cook':",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "cooking",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hänge einfach -ing an cook an.",
+      "hintEn": null,
+      "explainDe": "cook + ing = cooking. So bildest du die -ing-Form bei den meisten Verben.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "anagram",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Die -ing-Form von 'ride':",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "riding",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Achtung: das e von ride fällt vor -ing weg.",
+      "hintEn": null,
+      "explainDe": "Bei ride fällt das e weg: ride → riding.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u11.s.present-continuous",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Die kurze Form von 'is not':",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "isn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "is + not wird zu einem kurzen Wort mit Apostroph.",
+      "hintEn": null,
+      "explainDe": "is not wird kurz zu isn't. Das brauchst du für die Verneinung bei he/she/it.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 11- What's the time?.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    }
+  ]
+}

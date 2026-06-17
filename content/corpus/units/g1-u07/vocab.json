@@ -1,0 +1,4979 @@
+{
+  "schema": "vocab@1",
+  "grade": 1,
+  "unit": 7,
+  "slug": "g1-u07",
+  "items": [
+    {
+      "id": "g1u07.w.always",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "never",
+            "sometimes",
+            "often",
+            "usually"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "always",
+      "g": "immer",
+      "d": "at all times",
+      "s": "We ___ drink tea.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "always",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "always",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "always",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "immer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "never",
+        "sometimes",
+        "often"
+      ],
+      "hintDe": "Zu jeder Zeit, jeden Tag."
+    },
+    {
+      "id": "g1u07.w.an-apple",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "an orange",
+            "cheese",
+            "egg",
+            "ham"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "an apple",
+      "g": "ein Apfel",
+      "d": "a red food you eat for a snack",
+      "s": "I sometimes have ___ for breakfast.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "an apple",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "an apple",
+          "tier": "full"
+        },
+        {
+          "text": "apple",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "an apple",
+            "tier": "full"
+          },
+          {
+            "text": "apple",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ein Apfel",
+            "tier": "full"
+          },
+          {
+            "text": "Apfel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "snack",
+          "de": "kleine Zwischenmahlzeit",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "an orange",
+        "cheese",
+        "egg"
+      ],
+      "hintDe": "Eine rote Frucht für zwischendurch."
+    },
+    {
+      "id": "g1u07.w.an-orange",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "an apple",
+            "kiwi",
+            "strawberry",
+            "grapes"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.54",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "an orange",
+      "g": "eine Orange",
+      "d": "a round fruit you make juice from",
+      "s": "Tom likes an apple, but he doesn't like ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "an orange",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "an orange",
+          "tier": "full"
+        },
+        {
+          "text": "orange",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "an orange",
+            "tier": "full"
+          },
+          {
+            "text": "orange",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Orange",
+            "tier": "full"
+          },
+          {
+            "text": "Orange",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "round",
+          "de": "rund",
+          "scope": "d"
+        },
+        {
+          "word": "fruit",
+          "de": "Obst; Frucht",
+          "scope": "d"
+        },
+        {
+          "word": "juice",
+          "de": "Saft",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "an apple",
+        "kiwi",
+        "strawberry"
+      ],
+      "hintDe": "Eine runde Frucht, aus der du Saft machst."
+    },
+    {
+      "id": "g1u07.w.any",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "some",
+            "always",
+            "never",
+            "often"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "any",
+      "g": "irgendwelche",
+      "d": "you put this word in a question, like 'Have you got …?'",
+      "s": "Have you got ___ tomatoes?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "any",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "any",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "any",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "irgendwelche",
+            "tier": "full"
+          },
+          {
+            "text": "welche",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "word",
+          "de": "Wort",
+          "scope": "d"
+        },
+        {
+          "word": "question",
+          "de": "Frage",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "some",
+        "always",
+        "never"
+      ],
+      "hintDe": "Dieses Wort steht oft in Fragen."
+    },
+    {
+      "id": "g1u07.w.beans",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "peas",
+            "grapes",
+            "chillies",
+            "onion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.55",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "beans",
+      "g": "Bohnen",
+      "d": "small vegetables you can eat hot in soup",
+      "s": "My mum likes carrots, but she doesn't like ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "beans",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "beans",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "beans",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bohnen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "peas",
+        "grapes",
+        "chillies"
+      ],
+      "hintDe": "Kleines Gemüse, oft in der Suppe."
+    },
+    {
+      "id": "g1u07.w.bread",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rice",
+            "milk",
+            "tea",
+            "soup"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "bread",
+      "g": "Brot",
+      "d": "food you put butter and cheese on",
+      "s": "For breakfast we have ___ and eggs and tomatoes.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bread",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bread",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bread",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Brot",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rice",
+        "milk",
+        "tea"
+      ],
+      "hintDe": "Darauf tust du Butter und Käse."
+    },
+    {
+      "id": "g1u07.w.breakfast",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "lunch",
+            "dinner",
+            "restaurant",
+            "menu"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.57",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "breakfast",
+      "g": "Frühstück",
+      "d": "the food you eat in the morning",
+      "s": "I always have tea for ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "breakfast",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "breakfast",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "breakfast",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Frühstück",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "lunch",
+        "dinner",
+        "restaurant"
+      ],
+      "hintDe": "Das Essen am Morgen."
+    },
+    {
+      "id": "g1u07.w.broccoli",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spinach",
+            "onion",
+            "carrot",
+            "cucumber"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.55",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "broccoli",
+      "g": "Brokkoli",
+      "d": "a green vegetable like a small tree",
+      "s": "My mum likes carrots, but she doesn't like ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "broccoli",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "broccoli",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "broccoli",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Brokkoli",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "spinach",
+        "onion",
+        "carrot"
+      ],
+      "hintDe": "Grünes Gemüse, das wie ein kleiner Baum aussieht."
+    },
+    {
+      "id": "g1u07.w.butter",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sugar",
+            "tea",
+            "rice",
+            "milk"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.57",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "butter",
+      "g": "Butter",
+      "d": "a yellow food from milk that you put on bread",
+      "s": "He has milk, bread and ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "butter",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "butter",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "butter",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Butter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "yellow",
+          "de": "gelb",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "sugar",
+        "tea",
+        "rice"
+      ],
+      "hintDe": "Etwas Gelbes aus Milch für dein Brot."
+    },
+    {
+      "id": "g1u07.w.cake",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "soup",
+            "salad",
+            "sandwich",
+            "pizza"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cake",
+      "g": "Kuchen",
+      "d": "a sweet food you make for a birthday",
+      "s": "Mum makes a big birthday ___ with strawberries on it.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cake",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cake",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cake",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kuchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sweet",
+          "de": "süß",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "soup",
+        "salad",
+        "sandwich"
+      ],
+      "hintDe": "Etwas Süßes, das du zum Geburtstag backst."
+    },
+    {
+      "id": "g1u07.w.carrot",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "onion",
+            "cucumber",
+            "broccoli",
+            "spinach"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.55",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "carrot",
+      "g": "Karotte",
+      "d": "a long orange vegetable, rabbits love it",
+      "s": "My mum likes ___, but she doesn't like beans.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "carrots",
+          "tier": "full"
+        },
+        {
+          "text": "carrot",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "carrot",
+          "tier": "full"
+        },
+        {
+          "text": "carrots",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "carrot",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Karotte",
+            "tier": "full"
+          },
+          {
+            "text": "Möhre",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "rabbits",
+          "de": "Hasen",
+          "scope": "d"
+        },
+        {
+          "word": "orange",
+          "de": "orange (Farbe)",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "onion",
+        "cucumber",
+        "broccoli"
+      ],
+      "hintDe": "Langes Gemüse, das Hasen gern fressen."
+    },
+    {
+      "id": "g1u07.w.cheese",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "butter",
+            "sugar",
+            "ham",
+            "milk"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cheese",
+      "g": "Käse",
+      "d": "a yellow food from milk that you put on pizza",
+      "s": "My favourite food is bread with ___ in it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cheese",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cheese",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cheese",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Käse",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "yellow",
+          "de": "gelb",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "butter",
+        "sugar",
+        "ham"
+      ],
+      "hintDe": "Etwas aus Milch, das du auf die Pizza tust."
+    },
+    {
+      "id": "g1u07.w.chicken",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "fish",
+            "ham",
+            "cheese",
+            "meat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "chicken",
+      "g": "Huhn",
+      "d": "a bird that gives us eggs and meat",
+      "s": "For dinner we have ___ with rice.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "chicken",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chicken",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chicken",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Huhn",
+            "tier": "full"
+          },
+          {
+            "text": "Hühnchen",
+            "tier": "full"
+          },
+          {
+            "text": "Hähnchen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "fish",
+        "ham",
+        "cheese"
+      ],
+      "hintDe": "Ein Vogel, von dem die Eier kommen."
+    },
+    {
+      "id": "g1u07.w.chillies",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "grapes",
+            "peas",
+            "beans",
+            "onion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "chillies",
+      "g": "Chilischoten",
+      "d": "small red food that makes your soup very hot",
+      "s": "My mum and I always put ___ into the soup, but I don't like them.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "chillies",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chillies",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chillies",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Chilischoten",
+            "tier": "full"
+          },
+          {
+            "text": "Chilis",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "grapes",
+        "peas",
+        "beans"
+      ],
+      "hintDe": "Kleine, scharfe Schoten im Essen."
+    },
+    {
+      "id": "g1u07.w.chips",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sausages",
+            "grapes",
+            "beans",
+            "peas"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.63",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "chips",
+      "g": "Chips",
+      "d": "food you eat hot with fish",
+      "s": "My favourite food is fish and ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "chips",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chips",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chips",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Chips",
+            "tier": "full"
+          },
+          {
+            "text": "Pommes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "grapes",
+        "beans",
+        "peas"
+      ],
+      "hintDe": "Isst man warm zusammen mit Fisch."
+    },
+    {
+      "id": "g1u07.w.chocolate",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bread",
+            "cheese",
+            "butter",
+            "ham"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "chocolate",
+      "g": "Schokolade",
+      "d": "a sweet brown food you love",
+      "s": "She has a big box of ___ for her birthday.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "chocolate",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chocolate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chocolate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schokolade",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sweet",
+          "de": "süß",
+          "scope": "d"
+        },
+        {
+          "word": "brown",
+          "de": "braun",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "bread",
+        "cheese",
+        "butter"
+      ],
+      "hintDe": "Etwas Süßes und Braunes, das viele lieben."
+    },
+    {
+      "id": "g1u07.w.cucumber",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "onion",
+            "broccoli",
+            "carrot",
+            "spinach"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.55",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cucumber",
+      "g": "Gurke",
+      "d": "a long vegetable you put in a salad",
+      "s": "I like red peppers, but I don't like ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cucumber",
+          "tier": "full"
+        },
+        {
+          "text": "cucumbers",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cucumber",
+          "tier": "full"
+        },
+        {
+          "text": "cucumbers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cucumber",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gurke",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "onion",
+        "broccoli",
+        "carrot"
+      ],
+      "hintDe": "Ein langes Gemüse für den Salat."
+    },
+    {
+      "id": "g1u07.w.dinner",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "breakfast",
+            "lunch",
+            "restaurant",
+            "menu"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.61",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "dinner",
+      "g": "Abendessen",
+      "d": "the food you eat in the evening",
+      "s": "We sometimes have pizza for ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "dinner",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dinner",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dinner",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Abendessen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "breakfast",
+        "lunch",
+        "restaurant"
+      ],
+      "hintDe": "Das Essen am Abend."
+    },
+    {
+      "id": "g1u07.w.egg",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cheese",
+            "ham",
+            "fish",
+            "butter"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.54",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "egg",
+      "g": "Ei",
+      "d": "a small white ball that comes from a chicken",
+      "s": "I sometimes have an ___ for breakfast.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "egg",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "egg",
+          "tier": "full"
+        },
+        {
+          "text": "eggs",
+          "tier": "full"
+        },
+        {
+          "text": "an egg",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "egg",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ei",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "white",
+          "de": "weiß",
+          "scope": "d"
+        },
+        {
+          "word": "ball",
+          "de": "Kugel; Ball",
+          "scope": "d"
+        },
+        {
+          "word": "comes",
+          "de": "kommt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "cheese",
+        "ham",
+        "fish"
+      ],
+      "hintDe": "Etwas Kleines, Weißes, das vom Huhn kommt."
+    },
+    {
+      "id": "g1u07.w.fish",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "chicken",
+            "ham",
+            "meat",
+            "egg"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.64",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "fish",
+      "g": "Fisch",
+      "d": "an animal that lives in water",
+      "s": "We have ___ and chips for dinner on Friday.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "fish",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fish",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fish",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "chicken",
+        "ham",
+        "meat"
+      ],
+      "hintDe": "Ein Tier, das im Wasser lebt."
+    },
+    {
+      "id": "g1u07.w.fries",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "soup",
+            "salad",
+            "cake",
+            "rice"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "fries",
+      "g": "Pommes frites",
+      "d": "long hot potato that you eat with a hamburger",
+      "s": "I always have ___ with my hamburger.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fries",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fries",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fries",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pommes frites",
+            "tier": "full"
+          },
+          {
+            "text": "Pommes",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "potato",
+          "de": "Kartoffel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "soup",
+        "salad",
+        "cake"
+      ],
+      "hintDe": "Lange, heiße Kartoffel zum Hamburger."
+    },
+    {
+      "id": "g1u07.w.glass",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "plate",
+            "menu",
+            "waiter",
+            "restaurant"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "glass",
+      "g": "Glas",
+      "d": "you drink water or juice from it",
+      "s": "Would you like a ___ of orange juice?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "glass",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "glass",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "glass",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Glas",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        },
+        {
+          "word": "juice",
+          "de": "Saft",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "plate",
+        "menu",
+        "waiter"
+      ],
+      "hintDe": "Daraus trinkst du Wasser oder Saft."
+    },
+    {
+      "id": "g1u07.w.grapes",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "peas",
+            "beans",
+            "chillies",
+            "strawberry"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "grapes",
+      "g": "Weintrauben",
+      "d": "small sweet fruits, you eat many of them",
+      "s": "I love small green ___ from the market.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "grapes",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "grapes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "grapes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Weintrauben",
+            "tier": "full"
+          },
+          {
+            "text": "Trauben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sweet",
+          "de": "süß",
+          "scope": "d"
+        },
+        {
+          "word": "fruits",
+          "de": "Früchte",
+          "scope": "d"
+        },
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "peas",
+        "beans",
+        "chillies"
+      ],
+      "hintDe": "Viele kleine, süße Früchte, die zusammen wachsen."
+    },
+    {
+      "id": "g1u07.w.ham",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "fish",
+            "egg",
+            "cheese",
+            "meat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "ham",
+      "g": "Schinken",
+      "d": "pink meat from a pig that you put in a sandwich",
+      "s": "On Sunday, I sometimes have ___ and eggs for breakfast.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "ham",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ham",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ham",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schinken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "pink",
+          "de": "rosa",
+          "scope": "d"
+        },
+        {
+          "word": "pig",
+          "de": "Schwein",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "fish",
+        "egg",
+        "cheese"
+      ],
+      "hintDe": "Rosa Fleisch vom Schwein, oft im Sandwich."
+    },
+    {
+      "id": "g1u07.w.hamburger",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sandwich",
+            "soup",
+            "salad",
+            "pizza"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.63",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "hamburger",
+      "g": "Hamburger",
+      "d": "meat in bread that you eat with fries",
+      "s": "We often go to the ___ restaurant for lunch.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "hamburger",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hamburger",
+          "tier": "full"
+        },
+        {
+          "text": "hamburgers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hamburger",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hamburger",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sandwich",
+        "soup",
+        "salad"
+      ],
+      "hintDe": "Fleisch in einem Brötchen, oft mit Pommes."
+    },
+    {
+      "id": "g1u07.w.have-you-got",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I've got …",
+            "That's nice.",
+            "to like",
+            "to make"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Have you got …?",
+      "g": "Hast du / Habt ihr / Haben Sie ...?",
+      "d": "you say this to ask if a person has a thing",
+      "s": "___ any chips?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Have you got",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Have you got …?",
+          "tier": "full"
+        },
+        {
+          "text": "Have you got",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Have you got …?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hast du …?",
+            "tier": "full"
+          },
+          {
+            "text": "Habt ihr …?",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen; sagst",
+          "scope": "d"
+        },
+        {
+          "word": "person",
+          "de": "Person; jemand",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "I've got …",
+        "That's nice.",
+        "to like"
+      ],
+      "hintDe": "So fragst du, ob jemand etwas hat."
+    },
+    {
+      "id": "g1u07.w.healthy",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "junk food",
+            "sugar",
+            "chocolate",
+            "cake"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "healthy",
+      "g": "gesund",
+      "d": "good for your body",
+      "s": "A lot of junk food isn't ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "healthy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "healthy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "healthy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gesund",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "body",
+          "de": "Körper",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "junk food",
+        "sugar",
+        "chocolate"
+      ],
+      "hintDe": "Gut für deinen Körper."
+    },
+    {
+      "id": "g1u07.w.i-ve-got",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Have you got …?",
+            "That's nice.",
+            "to like",
+            "to make"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "I've got …",
+      "g": "Ich habe …",
+      "d": "you say this when you have a thing",
+      "s": "Yes, ___ four bags of chips.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "I've got",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "I've got …",
+          "tier": "full"
+        },
+        {
+          "text": "I've got",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "I've got …",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich habe …",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen; sagst",
+          "scope": "d"
+        },
+        {
+          "word": "bags",
+          "de": "Tüten; Beutel",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Have you got …?",
+        "That's nice.",
+        "to like"
+      ],
+      "hintDe": "Das sagst du, wenn du etwas hast."
+    },
+    {
+      "id": "g1u07.w.ice-cream",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "soup",
+            "bread",
+            "rice",
+            "cheese"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "ice cream",
+      "g": "Eis",
+      "d": "a cold food you love on a hot day",
+      "s": "On a hot day I love a cold ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "ice cream",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ice cream",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ice cream",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eis",
+            "tier": "full"
+          },
+          {
+            "text": "Eiscreme",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "soup",
+        "bread",
+        "rice"
+      ],
+      "hintDe": "Etwas Kaltes und Süßes, das du an heißen Tagen isst."
+    },
+    {
+      "id": "g1u07.w.junk-food",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "breakfast",
+            "vegetable",
+            "salad",
+            "soup"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "junk food",
+      "g": "Junk Food",
+      "d": "what you eat that is bad for your body, like chips",
+      "s": "A lot of ___ isn't healthy.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "junk food",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "junk food",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "junk food",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Junk Food",
+            "tier": "full"
+          },
+          {
+            "text": "ungesundes Essen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "body",
+          "de": "Körper",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "breakfast",
+        "vegetable",
+        "salad"
+      ],
+      "hintDe": "Essen, das nicht gut für deinen Körper ist."
+    },
+    {
+      "id": "g1u07.w.kiwi",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "an apple",
+            "an orange",
+            "strawberry",
+            "grapes"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.54",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "kiwi",
+      "g": "Kiwi",
+      "d": "a small brown fruit, green inside",
+      "s": "Jenny doesn't like an apple, but she likes ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "kiwis",
+          "tier": "full"
+        },
+        {
+          "text": "kiwi",
+          "tier": "full"
+        },
+        {
+          "text": "a kiwi",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "kiwi",
+          "tier": "full"
+        },
+        {
+          "text": "kiwis",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "kiwi",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kiwi",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "brown",
+          "de": "braun",
+          "scope": "d"
+        },
+        {
+          "word": "fruit",
+          "de": "Obst; Frucht",
+          "scope": "d"
+        },
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": "d"
+        },
+        {
+          "word": "inside",
+          "de": "innen; drinnen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "an apple",
+        "an orange",
+        "strawberry"
+      ],
+      "hintDe": "Eine kleine Frucht, braun außen, grün innen."
+    },
+    {
+      "id": "g1u07.w.lunch",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "breakfast",
+            "dinner",
+            "restaurant",
+            "menu"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.57",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "lunch",
+      "g": "Mittagessen",
+      "d": "the food you eat at lunchtime",
+      "s": "For ___ we often have pizza.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lunch",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lunch",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lunch",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mittagessen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "breakfast",
+        "dinner",
+        "restaurant"
+      ],
+      "hintDe": "Das Essen zur Mittagszeit."
+    },
+    {
+      "id": "g1u07.w.meat",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bread",
+            "rice",
+            "cheese",
+            "milk"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "meat",
+      "g": "Fleisch",
+      "d": "food from a cow or a pig",
+      "s": "I am vegetarian. I never eat ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "meat",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "meat",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "meat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fleisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cow",
+          "de": "Kuh",
+          "scope": "d"
+        },
+        {
+          "word": "pig",
+          "de": "Schwein",
+          "scope": "d"
+        },
+        {
+          "word": "vegetarian",
+          "de": "vegetarisch; isst kein Fleisch",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "bread",
+        "rice",
+        "cheese"
+      ],
+      "hintDe": "Essen von der Kuh oder vom Schwein."
+    },
+    {
+      "id": "g1u07.w.menu",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "plate",
+            "glass",
+            "waiter",
+            "restaurant"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "menu",
+      "g": "Speisekarte",
+      "d": "it shows you the food in a restaurant",
+      "s": "Can I have the ___, please?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "menu",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "menu",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "menu",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Speisekarte",
+            "tier": "full"
+          },
+          {
+            "text": "Menü",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "plate",
+        "glass",
+        "waiter"
+      ],
+      "hintDe": "Sie zeigt dir das Essen im Restaurant."
+    },
+    {
+      "id": "g1u07.w.milk",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "tea",
+            "bread",
+            "cheese",
+            "butter"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.54",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "milk",
+      "g": "Milch",
+      "d": "a white drink from a cow",
+      "s": "I never drink ___ for breakfast.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "milk",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "milk",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "milk",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Milch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "white",
+          "de": "weiß",
+          "scope": "d"
+        },
+        {
+          "word": "cow",
+          "de": "Kuh",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "tea",
+        "bread",
+        "cheese"
+      ],
+      "hintDe": "Ein weißes Getränk von der Kuh."
+    },
+    {
+      "id": "g1u07.w.mineral-water",
+      "rev": 4,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "orange juice",
+            "tea",
+            "milk",
+            "soup"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.52",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "mineral water",
+      "g": "Mineralwasser",
+      "d": "a clean drink from a bottle, with no sugar in it",
+      "s": "I like ___, but I don't like tea.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mineral water",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mineral water",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mineral water",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mineralwasser",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "orange juice",
+        "tea",
+        "milk"
+      ],
+      "hintDe": "Wasser ohne Zucker aus der Flasche."
+    },
+    {
+      "id": "g1u07.w.money",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bread",
+            "menu",
+            "plate",
+            "glass"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "money",
+      "g": "Geld",
+      "d": "you give this for food in a restaurant",
+      "s": "How much ___ have you got?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "money",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "money",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "money",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geld",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bread",
+        "menu",
+        "plate"
+      ],
+      "hintDe": "Das gibst du im Restaurant für das Essen."
+    },
+    {
+      "id": "g1u07.w.mum",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "waiter",
+            "menu",
+            "plate",
+            "glass"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Mum",
+      "g": "Mama",
+      "d": "the word for your mother",
+      "s": "My ___ makes breakfast.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Mum",
+          "tier": "full"
+        },
+        {
+          "text": "mum",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Mum",
+          "tier": "full"
+        },
+        {
+          "text": "mum",
+          "tier": "full"
+        },
+        {
+          "text": "Mom",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Mum",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mama",
+            "tier": "full"
+          },
+          {
+            "text": "Mutti",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "word",
+          "de": "Wort",
+          "scope": "d"
+        },
+        {
+          "word": "mother",
+          "de": "Mutter",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "waiter",
+        "menu",
+        "plate"
+      ],
+      "hintDe": "Ein anderes Wort für deine Mutter."
+    },
+    {
+      "id": "g1u07.w.never",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "always",
+            "usually",
+            "often",
+            "sometimes"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "never",
+      "g": "nie",
+      "d": "not at any time",
+      "s": "She is vegetarian. She ___ eats meat.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "never",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "never",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "never",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nie",
+            "tier": "full"
+          },
+          {
+            "text": "niemals",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "vegetarian",
+          "de": "vegetarisch; isst kein Fleisch",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "always",
+        "usually",
+        "often"
+      ],
+      "hintDe": "Zu keiner Zeit."
+    },
+    {
+      "id": "g1u07.w.often",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "never",
+            "always",
+            "usually",
+            "sometimes"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "often",
+      "g": "oft",
+      "d": "many times, but not always",
+      "s": "In my family we ___ eat rice.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "often",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "often",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "often",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "oft",
+            "tier": "full"
+          },
+          {
+            "text": "häufig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "never",
+        "always",
+        "usually"
+      ],
+      "hintDe": "Viele Male, aber nicht immer."
+    },
+    {
+      "id": "g1u07.w.onion",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "carrot",
+            "broccoli",
+            "cucumber",
+            "spinach"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "onion",
+      "g": "Zwiebel",
+      "d": "a round vegetable, it makes you cry when you cut it",
+      "s": "I put ___ in the soup, and it makes me cry.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "an onion",
+          "tier": "full"
+        },
+        {
+          "text": "onions",
+          "tier": "full"
+        },
+        {
+          "text": "onion",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "onion",
+          "tier": "full"
+        },
+        {
+          "text": "onions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "onion",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zwiebel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "round",
+          "de": "rund",
+          "scope": "d"
+        },
+        {
+          "word": "cry",
+          "de": "weinen",
+          "scope": null
+        },
+        {
+          "word": "cut",
+          "de": "schneiden",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "carrot",
+        "broccoli",
+        "cucumber"
+      ],
+      "hintDe": "Rundes Gemüse, das dich beim Schneiden weinen lässt."
+    },
+    {
+      "id": "g1u07.w.orange-juice",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mineral water",
+            "tea",
+            "milk",
+            "soup"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.52",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "orange juice",
+      "g": "Orangensaft",
+      "d": "a drink you make from a round fruit",
+      "s": "I like ___ , but I don't like milk.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "orange juice",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "orange juice",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "orange juice",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Orangensaft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "round",
+          "de": "rund",
+          "scope": "d"
+        },
+        {
+          "word": "fruit",
+          "de": "Obst",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "mineral water",
+        "tea",
+        "milk"
+      ],
+      "hintDe": "Ein Getränk, das du aus einer Orange machst."
+    },
+    {
+      "id": "g1u07.w.pasta",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rice",
+            "bread",
+            "cheese",
+            "soup"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.57",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "pasta",
+      "g": "Nudeln",
+      "d": "food you eat hot, often with tomatoes",
+      "s": "For lunch we often have ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pasta",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pasta",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pasta",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nudeln",
+            "tier": "full"
+          },
+          {
+            "text": "Pasta",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rice",
+        "bread",
+        "cheese"
+      ],
+      "hintDe": "Isst man warm, oft mit Tomaten."
+    },
+    {
+      "id": "g1u07.w.peas",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "beans",
+            "grapes",
+            "chillies",
+            "onion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "peas",
+      "g": "Erbsen",
+      "d": "small green vegetables you eat in your soup",
+      "s": "There are small green ___ in my soup.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "peas",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "peas",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "peas",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erbsen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "beans",
+        "grapes",
+        "chillies"
+      ],
+      "hintDe": "Kleine, grüne Kügelchen in der Suppe."
+    },
+    {
+      "id": "g1u07.w.pizza",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "soup",
+            "salad",
+            "sandwich",
+            "cake"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.54",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "pizza",
+      "g": "Pizza",
+      "d": "a hot food with cheese and tomatoes on it",
+      "s": "We sometimes have ___ for lunch or dinner.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pizza",
+          "tier": "full"
+        },
+        {
+          "text": "a pizza",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pizza",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pizza",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pizza",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "soup",
+        "salad",
+        "sandwich"
+      ],
+      "hintDe": "Heißes Essen mit Käse und Tomaten oben drauf."
+    },
+    {
+      "id": "g1u07.w.plate",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "glass",
+            "menu",
+            "waiter",
+            "restaurant"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "plate",
+      "g": "Teller",
+      "d": "you put your food on it and then you eat",
+      "s": "Can I have a clean ___?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "plate",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "plate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "plate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Teller",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "glass",
+        "menu",
+        "waiter"
+      ],
+      "hintDe": "Darauf legst du dein Essen."
+    },
+    {
+      "id": "g1u07.w.red-pepper",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cucumber",
+            "onion",
+            "broccoli",
+            "carrot"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "red pepper",
+      "g": "rote Paprika",
+      "d": "a big vegetable you eat in a salad",
+      "s": "He likes ___, but he doesn't like carrots.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "red peppers",
+          "tier": "full"
+        },
+        {
+          "text": "red pepper",
+          "tier": "full"
+        },
+        {
+          "text": "a red pepper",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "red pepper",
+          "tier": "full"
+        },
+        {
+          "text": "red peppers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "red pepper",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "rote Paprika",
+            "tier": "full"
+          },
+          {
+            "text": "Paprika",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cucumber",
+        "onion",
+        "broccoli"
+      ],
+      "hintDe": "Ein großes rotes Gemüse für den Salat."
+    },
+    {
+      "id": "g1u07.w.restaurant",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "breakfast",
+            "menu",
+            "waiter",
+            "plate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.57",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "restaurant",
+      "g": "Restaurant",
+      "d": "you go there to eat, and a waiter brings the food",
+      "s": "We sometimes go to a ___ on Sunday.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "restaurant",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "restaurant",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "restaurant",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Restaurant",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "breakfast",
+        "menu",
+        "waiter"
+      ],
+      "hintDe": "Dorthin gehst du zum Essen, der Kellner bringt das Essen."
+    },
+    {
+      "id": "g1u07.w.rice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bread",
+            "cheese",
+            "milk",
+            "pasta"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "rice",
+      "g": "Reis",
+      "d": "small white food you eat with meat and vegetables",
+      "s": "For lunch or dinner we have a lot of ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "rice",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rice",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rice",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Reis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "white",
+          "de": "weiß",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "bread",
+        "cheese",
+        "milk"
+      ],
+      "hintDe": "Kleines weißes Korn, oft mit Fleisch und Gemüse."
+    },
+    {
+      "id": "g1u07.w.salad",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "soup",
+            "cake",
+            "sandwich",
+            "pizza"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "salad",
+      "g": "Salat",
+      "d": "a cold food with tomatoes and cucumber",
+      "s": "I want to make a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "salad",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "salad",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "salad",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Salat",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "soup",
+        "cake",
+        "sandwich"
+      ],
+      "hintDe": "Kaltes Essen mit Tomaten und Gurke."
+    },
+    {
+      "id": "g1u07.w.sandwich",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "soup",
+            "salad",
+            "cake",
+            "pizza"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sandwich",
+      "g": "Sandwich",
+      "d": "bread with cheese or ham in it",
+      "s": "I have a cheese ___ for lunch.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sandwich",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sandwich",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sandwich",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sandwich",
+            "tier": "full"
+          },
+          {
+            "text": "belegtes Brot",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "soup",
+        "salad",
+        "cake"
+      ],
+      "hintDe": "Brot mit Käse oder Schinken darin."
+    },
+    {
+      "id": "g1u07.w.sausages",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "beans",
+            "grapes",
+            "peas",
+            "chips"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sausages",
+      "g": "Würstchen",
+      "d": "long meat that you eat hot",
+      "s": "My sister is vegetarian. She never eats meat or ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sausages",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sausages",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sausages",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Würstchen",
+            "tier": "full"
+          },
+          {
+            "text": "Würste",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "vegetarian",
+          "de": "vegetarisch; isst kein Fleisch",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "beans",
+        "grapes",
+        "peas"
+      ],
+      "hintDe": "Langes Fleisch, das du warm isst."
+    },
+    {
+      "id": "g1u07.w.some",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "any",
+            "always",
+            "never",
+            "often"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "some",
+      "g": "etwas",
+      "d": "a little, not a lot",
+      "s": "I need ___ cheese.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "some",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "some",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "some",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etwas",
+            "tier": "full"
+          },
+          {
+            "text": "einige",
+            "tier": "full"
+          },
+          {
+            "text": "ein bisschen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "little",
+          "de": "wenig",
+          "scope": "d"
+        },
+        {
+          "word": "lot",
+          "de": "viel; eine Menge",
+          "scope": "d"
+        },
+        {
+          "word": "need",
+          "de": "brauche; brauchst",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "any",
+        "always",
+        "never"
+      ],
+      "hintDe": "Ein wenig, nicht viel."
+    },
+    {
+      "id": "g1u07.w.sometimes",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "always",
+            "never",
+            "usually",
+            "often"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.57",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sometimes",
+      "g": "manchmal",
+      "d": "not always, but now and then",
+      "s": "I ___ have an egg for breakfast.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sometimes",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sometimes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sometimes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "manchmal",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "always",
+        "never",
+        "usually"
+      ],
+      "hintDe": "Nicht immer, aber ab und zu."
+    },
+    {
+      "id": "g1u07.w.soup",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "salad",
+            "cake",
+            "sandwich",
+            "pizza"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "soup",
+      "g": "Suppe",
+      "d": "a hot food you eat when it is cold",
+      "s": "Can I have a ___, please?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "soup",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "soup",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "soup",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Suppe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "salad",
+        "cake",
+        "sandwich"
+      ],
+      "hintDe": "Heißes Essen, gut wenn es kalt ist."
+    },
+    {
+      "id": "g1u07.w.spinach",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "broccoli",
+            "carrot",
+            "onion",
+            "cucumber"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.63",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "spinach",
+      "g": "Spinat",
+      "d": "a green vegetable with big leaves",
+      "s": "I like fish with rice or vegetables — tomatoes or ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "spinach",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spinach",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spinach",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Spinat",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "broccoli",
+        "carrot",
+        "onion"
+      ],
+      "hintDe": "Grünes Blattgemüse."
+    },
+    {
+      "id": "g1u07.w.strawberry",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "an apple",
+            "an orange",
+            "kiwi",
+            "grapes"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "strawberry",
+      "g": "Erdbeere",
+      "d": "a small red fruit you put on a cake",
+      "s": "Mum makes a big birthday cake with one red ___ on it.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "strawberry",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "strawberry",
+          "tier": "full"
+        },
+        {
+          "text": "strawberries",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "strawberry",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erdbeere",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "fruit",
+          "de": "Obst; Frucht",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "an apple",
+        "an orange",
+        "kiwi"
+      ],
+      "hintDe": "Eine kleine rote Frucht, oft auf dem Kuchen."
+    },
+    {
+      "id": "g1u07.w.sugar",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "butter",
+            "milk",
+            "tea",
+            "rice"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sugar",
+      "g": "Zucker",
+      "d": "a sweet white thing you put in your tea",
+      "s": "Do you want one or two spoons of ___ in your tea?",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sugar",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sugar",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sugar",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zucker",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sweet",
+          "de": "süß",
+          "scope": "d"
+        },
+        {
+          "word": "white",
+          "de": "weiß",
+          "scope": "d"
+        },
+        {
+          "word": "spoons",
+          "de": "Löffel",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "butter",
+        "milk",
+        "tea"
+      ],
+      "hintDe": "Etwas Süßes und Weißes für den Tee."
+    },
+    {
+      "id": "g1u07.w.tea",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "milk",
+            "bread",
+            "rice",
+            "soup"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.54",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "tea",
+      "g": "Tee",
+      "d": "a hot drink, grandma drinks it with sugar",
+      "s": "I always drink ___ for breakfast.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tea",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tea",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tea",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tee",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "milk",
+        "bread",
+        "rice"
+      ],
+      "hintDe": "Ein heißes Getränk, oft mit Zucker."
+    },
+    {
+      "id": "g1u07.w.that-s-nice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Have you got …?",
+            "I've got …",
+            "to like",
+            "to make"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": "mc keeps in-bank phrases; distractorPool uses earlier-unit phrases for variety"
+      },
+      "w": "That's nice.",
+      "g": "Das ist nett.",
+      "d": "you say this when you hear good news",
+      "s": "I love chicken, eggs and cheese. — ___",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "That's nice.",
+          "tier": "full"
+        },
+        {
+          "text": "That's nice",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "That's nice.",
+          "tier": "full"
+        },
+        {
+          "text": "That's nice",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "That's nice.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Das ist nett.",
+            "tier": "full"
+          },
+          {
+            "text": "Das ist schön.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen; sagst",
+          "scope": "d"
+        },
+        {
+          "word": "hear",
+          "de": "hören; hörst",
+          "scope": "d"
+        },
+        {
+          "word": "news",
+          "de": "Neuigkeit(en)",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "Have you got …?",
+        "I've got …",
+        "to like"
+      ],
+      "hintDe": "Eine nette Antwort auf gute Neuigkeiten."
+    },
+    {
+      "id": "g1u07.w.to-drink",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make",
+            "to like",
+            "Have you got …?",
+            "I've got …"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to drink",
+      "g": "trinken",
+      "d": "to have water, tea or milk in your mouth",
+      "s": "Would you like something to ___?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "drink",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drink",
+          "tier": "full"
+        },
+        {
+          "text": "to drink",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to drink",
+            "tier": "full"
+          },
+          {
+            "text": "drink",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "trinken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to make",
+        "to like",
+        "Have you got …?"
+      ],
+      "hintDe": "Tee oder Milch in den Mund nehmen."
+    },
+    {
+      "id": "g1u07.w.to-like",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make",
+            "to drink",
+            "Have you got …?",
+            "I've got …"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to like",
+      "g": "mögen",
+      "d": "to think a food is good or nice",
+      "s": "I ___ orange juice, but I don't like milk.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "like",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "like",
+          "tier": "full"
+        },
+        {
+          "text": "to like",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to like",
+            "tier": "full"
+          },
+          {
+            "text": "like",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mögen",
+            "tier": "full"
+          },
+          {
+            "text": "gernhaben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "think",
+          "de": "denken; finden",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to make",
+        "to drink",
+        "Have you got …?"
+      ],
+      "hintDe": "Etwas gut oder nett finden."
+    },
+    {
+      "id": "g1u07.w.to-make",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to drink",
+            "to like",
+            "Have you got …?",
+            "I've got …"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to make",
+      "g": "machen",
+      "d": "you do this with food when you cook it",
+      "s": "I want to ___ a salad.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "make",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make",
+          "tier": "full"
+        },
+        {
+          "text": "to make",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to make",
+            "tier": "full"
+          },
+          {
+            "text": "make",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "machen",
+            "tier": "full"
+          },
+          {
+            "text": "zubereiten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cook",
+          "de": "kochen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to drink",
+        "to like",
+        "Have you got …?"
+      ],
+      "hintDe": "Das tust du mit Essen, wenn du es kochst."
+    },
+    {
+      "id": "g1u07.w.tomato",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "onion",
+            "cucumber",
+            "broccoli",
+            "carrot"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "tomato (pl tomatoes)",
+      "g": "Tomate (pl Tomaten)",
+      "d": "a red vegetable you eat in a salad",
+      "s": "For breakfast we often have bread and eggs and ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tomatoes",
+          "tier": "full"
+        },
+        {
+          "text": "a tomato",
+          "tier": "partial"
+        },
+        {
+          "text": "tomato",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tomato",
+          "tier": "full"
+        },
+        {
+          "text": "tomatoes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tomato",
+            "tier": "full"
+          },
+          {
+            "text": "tomatoes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tomate",
+            "tier": "full"
+          },
+          {
+            "text": "Tomaten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "onion",
+        "cucumber",
+        "broccoli"
+      ],
+      "hintDe": "Ein rotes Gemüse für den Salat."
+    },
+    {
+      "id": "g1u07.w.usually",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "never",
+            "sometimes",
+            "always",
+            "often"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "usually",
+      "g": "normalerweise",
+      "d": "almost always, but not at all times",
+      "s": "In the morning, we ___ have a soup with meat.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "usually",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "usually",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "usually",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "normalerweise",
+            "tier": "full"
+          },
+          {
+            "text": "gewöhnlich",
+            "tier": "full"
+          },
+          {
+            "text": "meistens",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "almost",
+          "de": "fast",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "never",
+        "sometimes",
+        "always"
+      ],
+      "hintDe": "Fast immer, aber nicht jedes Mal."
+    },
+    {
+      "id": "g1u07.w.vegetable",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cake",
+            "soup",
+            "sandwich",
+            "menu"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "vegetable",
+      "g": "Gemüse",
+      "d": "broccoli, a carrot or an onion is this",
+      "s": "Broccoli is a green ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "vegetable",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "vegetable",
+          "tier": "full"
+        },
+        {
+          "text": "vegetables",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "vegetable",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gemüse",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "cake",
+        "soup",
+        "sandwich"
+      ],
+      "hintDe": "Brokkoli, eine Karotte oder eine Zwiebel ist das."
+    },
+    {
+      "id": "g1u07.w.waiter",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "menu",
+            "plate",
+            "restaurant",
+            "glass"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "masterlist",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "waiter",
+      "g": "Kellner/Kellnerin",
+      "d": "the man who brings the food in a restaurant",
+      "s": "The ___ brings the food to your table.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "waiter",
+          "tier": "full"
+        },
+        {
+          "text": "waitress",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "waiter",
+          "tier": "full"
+        },
+        {
+          "text": "waitress",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "waiter",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kellner",
+            "tier": "full"
+          },
+          {
+            "text": "Kellnerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "menu",
+        "plate",
+        "restaurant"
+      ],
+      "hintDe": "Der Mann, der im Restaurant das Essen bringt."
+    }
+  ]
+}

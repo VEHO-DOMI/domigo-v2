@@ -1,0 +1,2028 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g1-u06",
+  "briefBank": "dfbe7bb08bcd",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "She ___ (play) the guitar.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "plays",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she hängst du ein -s an das Verb.",
+      "explainDe": "Bei he/she/it bekommt das Verb ein -s: she plays. Ohne -s wäre es falsch.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-gf-001",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (She plays football.)",
+      "note": "3rd-person form used: plays."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He ___ (watch) the dogs in the park.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "watches",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verben auf -ch bekommen bei he ein -es.",
+      "explainDe": "Verben, die auf -ch enden, bekommen bei he/she/it ein -es: watch wird zu watches.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-gf-002",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (watch – watches)",
+      "note": "3rd-person form used: watches. Carrier rebuilt with bank words (dogs, park) — original 'people' untaught and swapped out."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "My uncle ___ (go) to the market.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "goes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "go ist eine Ausnahme: bei he/she/it wird es zu goes.",
+      "explainDe": "go bekommt bei he/she/it ein -es und wird zu goes. Das musst du dir merken.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-gf-003",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (go – goes)",
+      "note": "3rd-person form used: goes (untaught -es form; base 'go' is taught). Carrier uses bank word 'uncle' — original 'dad' untaught and swapped out."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She ___ (carry) her books to school.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "carries",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Konsonant + y wird bei he/she/it zu -ies.",
+      "explainDe": "carry endet auf Konsonant + y. Bei he/she/it wird das y zu -ies: carries.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-gf-004",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (carry – carries)",
+      "note": "3rd-person form used: carries."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "We ___ (live) in the city and they ___ (live) in London.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "live | live",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "we und they verwenden die Grundform ohne -s.",
+      "explainDe": "I/you/we/they verwenden die Grundform: we live, they live. Kein -s.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-gf-005",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (We love our cat. They live in Oxford.)",
+      "note": "Base forms used: live (no -s for we/they)."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "My uncle ___ (wash) the car.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "washes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verben auf -sh bekommen bei he ein -es.",
+      "explainDe": "Verben auf -sh bekommen bei he/she/it ein -es: wash wird zu washes.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/wb/WB Unit 6 The world's best detective.txt (Dad washes his car on Saturdays.)",
+      "note": "3rd-person form used: washes."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sherlock ___ (catch) the bad man.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "catches",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verben auf -ch bekommen bei he ein -es.",
+      "explainDe": "catch endet auf -ch, also kommt bei he/she/it ein -es dazu: catches.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt (They catch all the bad people.)",
+      "note": "3rd-person form used: catches."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "My sister ___ to the park.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "runs",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "run",
+        "is run",
+        "running"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Suche die Form mit -s für my sister (= she).",
+      "explainDe": "my sister ist wie she, also braucht das Verb ein -s: runs.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "run",
+          "is run",
+          "running",
+          "to run"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u6-present-simple-affirmative-mc-001",
+      "sbRef": null,
+      "note": "3rd-person form used: runs. Distractors run/is run/running/to run are all gate-clean."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "My friend ___ the drums.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "plays",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "play",
+        "is play",
+        "playing"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "my friend ist wie he/she, also Verb mit -s.",
+      "explainDe": "my friend ist eine Person (= he/she), darum plays mit -s.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "play",
+          "is play",
+          "playing",
+          "to play"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/wb/WB Unit 6 (Kathy / play the drums.)",
+      "note": "3rd-person form used: plays. Pool all gate-clean."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz stimmt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She reads a book in the morning.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She read a book in the morning.",
+        "She reading a book in the morning.",
+        "She is read a book in the morning."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she muss das Verb ein -s haben.",
+      "explainDe": "Richtig ist she reads: bei she braucht das Verb ein -s, und reading/read/is read passen hier nicht.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She read a book in the morning.",
+          "She reading a book in the morning.",
+          "She is read a book in the morning.",
+          "She to read a book in the morning."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u6-present-simple-affirmative-mc-003",
+      "sbRef": null,
+      "note": "3rd-person form used: reads. All option sentences gate-clean (read, reading)."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Deine Freundin macht das jeden Samstag. Welcher Satz stimmt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She plays the guitar on Saturdays.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She is playing the guitar on Saturdays.",
+        "She play the guitar on Saturdays.",
+        "She playing the guitar on Saturdays."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Gewohnheit steht im Präsens mit -s bei she.",
+      "explainDe": "Für eine Gewohnheit nimmst du das Präsens mit -s: she plays. is playing/playing/play sind hier falsch.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She is playing the guitar on Saturdays.",
+          "She play the guitar on Saturdays.",
+          "She playing the guitar on Saturdays.",
+          "She to play the guitar on Saturdays."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u6-present-simple-affirmative-cp-001",
+      "sbRef": null,
+      "note": "3rd-person form used: plays. Option sentences rebuilt with bank words (guitar) — original 'football' untaught and swapped out. All options gate-clean."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du erzählst von deinem Morgen. Welcher Satz stimmt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I run in the park in the morning.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I runs in the park in the morning.",
+        "I am run in the park in the morning.",
+        "I running in the park in the morning."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach I steht die Grundform ohne -s.",
+      "explainDe": "Nach I verwendest du die Grundform: I run. Kein -s, kein am run, kein running.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I runs in the park in the morning.",
+          "I am run in the park in the morning.",
+          "I running in the park in the morning.",
+          "I to run in the park in the morning."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u6-present-simple-affirmative-cp-002",
+      "sbRef": null,
+      "note": "Base form used: run (no -s for I). All option sentences gate-clean."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She find her hat in the room.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She finds her hat in the room.",
+          "tier": "full"
+        },
+        {
+          "text": "finds",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she fehlt das -s am Verb.",
+      "explainDe": "Bei she muss das Verb ein -s haben: finds. find ohne -s ist falsch.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-ec-001",
+      "sbRef": null,
+      "note": "3rd-person form used: finds; base find. Carrier rebuilt with bank words (hat, room) — original 'water/every' untaught and swapped out."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He go to school in the morning.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He goes to school in the morning.",
+          "tier": "full"
+        },
+        {
+          "text": "goes",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "go wird bei he zu goes.",
+      "explainDe": "go ist eine Ausnahme: bei he/she/it wird es zu goes (mit -es).",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-ec-002",
+      "sbRef": null,
+      "note": "3rd-person form used: goes (untaught -es form; base 'go' is taught) — flag goes for grant."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "My dog wash the car.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My dog washes the car.",
+          "tier": "full"
+        },
+        {
+          "text": "washes",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verben auf -sh bekommen bei it ein -es.",
+      "explainDe": "my dog ist wie it, also braucht wash ein -es: washes.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-ec-004",
+      "sbRef": null,
+      "note": "3rd-person form used: washes. Carrier rebuilt with bank words (dog, room) — original 'cat/face' untaught and swapped out."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I play the guitar. (he) → He ___ the guitar.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "plays",
+          "tier": "full"
+        },
+        {
+          "text": "He plays the guitar.",
+          "tier": "full"
+        },
+        {
+          "text": "He plays the guitar",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wenn du von I zu he wechselst, kommt ein -s dazu.",
+      "explainDe": "Bei he braucht das Verb ein -s: He plays. Bei I bleibt es ohne -s.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-tf-001",
+      "sbRef": null,
+      "note": "3rd-person form used: plays; base play."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I carry the bottle. (she) → She ___ the bottle.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "carries",
+          "tier": "full"
+        },
+        {
+          "text": "She carries the bottle.",
+          "tier": "full"
+        },
+        {
+          "text": "She carries the bottle",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "carry: das y wird bei she zu -ies.",
+      "explainDe": "carry endet auf Konsonant + y, darum wird es bei she zu carries.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-tf-002",
+      "sbRef": null,
+      "note": "3rd-person form used: carries; base carry."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Er wohnt in London.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He lives in London.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei he braucht das Verb ein -s: live wird zu lives.",
+      "explainDe": "wohnen heißt to live. Bei he kommt ein -s dazu: He lives.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (He lives in London.)",
+      "note": "3rd-person form used: lives."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sie spielt die Gitarre.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She plays the guitar.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she hängst du ein -s an das Verb.",
+      "explainDe": "spielen heißt to play. Bei she wird es zu plays.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-tr-001",
+      "sbRef": null,
+      "note": "3rd-person form used: plays."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Er geht in den Park.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He goes to the park.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "gehen ist eine Ausnahme: bei he wird go zu goes.",
+      "explainDe": "gehen heißt to go. Bei he/she/it wird es zu goes (mit -es).",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-tr-002",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (He goes to the park.)",
+      "note": "3rd-person form used: goes (untaught -es form; base 'go' is taught) — flag goes for grant."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "the / She / drums / plays",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She plays the drums.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt zuerst, dann das Verb mit -s.",
+      "explainDe": "Reihenfolge: Subjekt + Verb + Rest. Bei she braucht das Verb ein -s: She plays the drums.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "play",
+          "guitar",
+          "in",
+          "the park"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": "m1-u6-present-simple-affirmative-sb-001",
+      "sbRef": null,
+      "note": "3rd-person form used: plays. Distractor chips play/guitar/in/the park all gate-clean."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "to / school / He / books / his / carries",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He carries his books to school.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt + Verb (mit -s) + Objekt + Ort.",
+      "explainDe": "Bei he braucht carry ein -ies: carries. Reihenfolge: He carries his books to school.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "carry",
+          "the",
+          "in",
+          "park"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "3rd-person form used: carries. Distractor chips carry/the/in/park all gate-clean."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She reads a book. Ask what she does.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What does she read?",
+          "tier": "full"
+        },
+        {
+          "text": "What does she read",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage steht das -s bei does, das Verb bleibt in der Grundform.",
+      "explainDe": "In der Frage übernimmt does das -s: What does she read? Das Hauptverb read bleibt in der Grundform.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-qf-001",
+      "sbRef": null,
+      "note": "Forms used: does (core-allowlist), base read. No -s on main verb in questions."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "he/she/it: Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "go",
+          "right": "goes"
+        },
+        {
+          "left": "watch",
+          "right": "watches"
+        },
+        {
+          "left": "carry",
+          "right": "carries"
+        },
+        {
+          "left": "play",
+          "right": "plays"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte auf die Endung: -s, -es oder -ies.",
+      "explainDe": "Je nach Verb kommt -s, -es oder -ies dazu: play→plays, watch→watches, go→goes, carry→carries.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-mt-001",
+      "sbRef": null,
+      "note": "Forms used (left+right): go/goes, watch/watches, carry/carries, play/plays — only 'goes' is untaught (flag goes for grant); go/carry/carries/watch/watches/play/plays clean. Unique right-sides."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde die Paare: I … und he … .",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "play",
+          "right": "plays"
+        },
+        {
+          "left": "wash",
+          "right": "washes"
+        },
+        {
+          "left": "catch",
+          "right": "catches"
+        },
+        {
+          "left": "carry",
+          "right": "carries"
+        },
+        {
+          "left": "do",
+          "right": "does"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Suche zu jeder Grundform die Form mit der richtigen Endung.",
+      "explainDe": "play→plays, wash→washes, catch→catches, carry→carries, do→does. Achte auf -s, -es und -ies.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-mp-001",
+      "sbRef": null,
+      "note": "Forms used: play/plays, wash/washes, catch/catches, carry/carries, do/does — all gate-clean. Unique right-sides."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere: play oder plays?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "play",
+          "members": [
+            "I",
+            "you",
+            "we",
+            "they"
+          ]
+        },
+        {
+          "label": "plays",
+          "members": [
+            "he",
+            "she",
+            "it"
+          ]
+        }
+      ],
+      "hintDe": "Nur he, she und it bekommen ein -s am Verb.",
+      "explainDe": "I/you/we/they verwenden die Grundform play. Nur bei he/she/it hängst du ein -s an: plays.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-gs-001",
+      "sbRef": null,
+      "note": "Members are pronouns (core-allowlist). 2 groups, 4+3 members."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sortiere nach der he/she/it-Form: plays, goes oder carries?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "plays",
+          "members": [
+            "play",
+            "read",
+            "live",
+            "clean"
+          ]
+        },
+        {
+          "label": "goes",
+          "members": [
+            "go",
+            "watch",
+            "wash",
+            "catch"
+          ]
+        },
+        {
+          "label": "carries",
+          "members": [
+            "carry",
+            "study"
+          ]
+        }
+      ],
+      "hintDe": "Sortiere nach der Endung -s, -es oder -ies.",
+      "explainDe": "play/read/live/clean bekommen -s; go/watch/wash/catch bekommen -es; carry/study werden zu -ies.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-present-simple-affirmative-gs-002",
+      "sbRef": null,
+      "note": "In-bank labels are 3rd-person forms (plays/goes/carries). Members play,read,live,clean,go,watch,wash,catch,carry + labels plays/carries are clean; untaught forms here are label 'goes' and member 'study' — flag goes, study for grant. 3 groups (4/4/2 members)."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "he/she/it-Form von 'go' (gehen)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "goes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "go bekommt bei he/she/it ein -es.",
+      "explainDe": "go ist eine Ausnahme: die he/she/it-Form ist goes.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (go – goes)",
+      "note": "3rd-person form used: goes (single token, 4 letters) — flag goes for grant."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "he/she/it-Form von 'watch' (beobachten)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "watches",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verben auf -ch bekommen bei he/she/it ein -es.",
+      "explainDe": "watch endet auf -ch, also ist die he/she/it-Form watches.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (watch – watches)",
+      "note": "3rd-person form used: watches (single token, 7 letters)."
+    },
+    {
+      "structureId": "g1u06.s.present-simple",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I clean my room. (he) → He ___ his room.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "cleans",
+          "tier": "full"
+        },
+        {
+          "text": "He cleans his room.",
+          "tier": "full"
+        },
+        {
+          "text": "He cleans his room",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei he kommt ein -s dazu: clean wird zu cleans.",
+      "explainDe": "Bei he braucht das Verb ein -s: He cleans. Bei I bleibt clean ohne -s.",
+      "explainEn": null,
+      "hintEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/wb/WB Unit 6 (We clean our bikes at the weekend.)",
+      "note": "3rd-person form used: cleans; base clean."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Sherlock Groans has got ___ friends.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "a lot of",
+          "tier": "full"
+        },
+        {
+          "text": "lots of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für viele sagst du a lot of oder lots of. Beide sind richtig.",
+      "hintEn": null,
+      "explainDe": "Vor dem Nomen steht a lot of oder lots of (= viele): a lot of friends / lots of friends. Beide Formen passen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-gf-001",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of books / lots of books)",
+      "note": "Carrier in the Sherlock detective world. answers a lot of / lots of are bank phrase entries (probe clean)."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "There are ___ trees in the park.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "a lot of",
+          "tier": "full"
+        },
+        {
+          "text": "lots of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "viele Bäume = a lot of trees oder lots of trees.",
+      "hintEn": null,
+      "explainDe": "Bei zählbaren Nomen wie trees sagst du a lot of oder lots of: a lot of trees / lots of trees.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-gf-002",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#word-file (There are lots of beautiful trees in the park.)",
+      "note": "Carrier from the WORD FILE example. Both answer forms are bank phrase entries (probe clean)."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We have got ___ homework today.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "a lot of",
+          "tier": "full"
+        },
+        {
+          "text": "lots of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "homework ist unzählbar — trotzdem sagst du a lot of oder lots of (= viel).",
+      "hintEn": null,
+      "explainDe": "a lot of und lots of passen auch zu unzählbaren Nomen wie homework: a lot of homework / lots of homework (= viel Hausübung).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-gf-004",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of homework / lots of homework)",
+      "note": "Uncountable carrier (homework, no plural). Both answer forms probe clean."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The detective has got ___ work, but he is happy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "a lot of",
+          "tier": "full"
+        },
+        {
+          "text": "lots of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "viel Arbeit = a lot of work oder lots of work. work ist unzählbar.",
+      "hintEn": null,
+      "explainDe": "Auch vor work (unzählbar) steht a lot of oder lots of: a lot of work / lots of work. Du hängst nie ein -s an work.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#reading-2 (Sherlock detective theme)",
+      "note": "Uncountable carrier (work). Both answer forms probe clean."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She has got ___ books and ___ pens in her school bag.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "a lot of | a lot of",
+          "tier": "full"
+        },
+        {
+          "text": "lots of | lots of",
+          "tier": "full"
+        },
+        {
+          "text": "a lot of | lots of",
+          "tier": "full"
+        },
+        {
+          "text": "lots of | a lot of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zweimal viele: bei beiden Lücken passt a lot of oder lots of. Du darfst sie auch mischen.",
+      "hintEn": null,
+      "explainDe": "Vor books und vor pens steht jeweils a lot of oder lots of. Beide Formen bedeuten dasselbe, deshalb darfst du sie frei kombinieren.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-gf-006",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of books / lots of books)",
+      "note": "Multi-blank (2 blanks, pipe-split, blank order). Both forms interchangeable in each blank → 4 full variants."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "There are ___ cars in the city.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "lots of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "a lots of",
+        "many of",
+        "much of"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "viele Autos: lots of cars. Achte auf die richtige Form.",
+      "hintEn": null,
+      "explainDe": "Richtig ist lots of cars. a lots of gibt es nicht, und many of / much of brauchen hier noch ein Wort danach.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "a lots of",
+          "many of",
+          "much of",
+          "a lot of"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u6-a-lot-of-mc-001",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#word-file (Around town: city, cars)",
+      "note": "Answer is lots of (2 tokens) so the foil a lots of (3 tokens) does NOT lemma-clash (a lots of vs a lot of would, since lots is in lot's inflection family). Distractors a lots of / many of / much of probe clean and don't lemma-clash. Pool has 4 incl. a lot of (the other correct form, recognition foil only)."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He has got ___ time for the detective story.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "lots of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "a lots of",
+        "many",
+        "much"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "viel Zeit = lots of time. time ist unzählbar.",
+      "hintEn": null,
+      "explainDe": "Richtig ist lots of time. a lots of ist falsch; many und much stehen hier allein, aber gesucht ist die Form mit of.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "a lots of",
+          "many",
+          "much",
+          "a lot of"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of / lots of)",
+      "note": "Uncountable carrier (time). Answer lots of (2 tokens) keeps foil a lots of (3 tokens) clash-free. Distractors + pool probe clean and don't lemma-clash (many/much are a different lemma; a lot of in pool is the other correct form)."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are lots of bottles on the table.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "There are a lots of bottles on the table.",
+        "There are much of bottles on the table.",
+        "There are many of bottles on the table."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welcher Satz hat die richtige Form für viele Flaschen?",
+      "hintEn": null,
+      "explainDe": "Richtig ist There are lots of bottles … . a lots of gibt es nicht, und much of / many of passen hier nicht vor dem Nomen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "There are a lots of bottles on the table.",
+          "There are much of bottles on the table.",
+          "There are many of bottles on the table.",
+          "There are many bottles on the table."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u6-a-lot-of-mc-003",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of / lots of)",
+      "note": "Whole-sentence MC. Distractors flaw only the quantity form; all probe clean (a lots of, much of, many of, many bottles)."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "There are a lots of stories about Sherlock Groans.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are a lot of stories about Sherlock Groans.",
+          "tier": "full"
+        },
+        {
+          "text": "There are lots of stories about Sherlock Groans.",
+          "tier": "full"
+        },
+        {
+          "text": "a lot of",
+          "tier": "partial"
+        },
+        {
+          "text": "lots of",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "a lots of ist falsch. Richtig sind a lot of oder lots of.",
+      "hintEn": null,
+      "explainDe": "Es heißt a lot of oder lots of, aber nie a lots of. Du nimmst entweder a lot of stories oder lots of stories.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-ec-001",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#reading-6 (lots of films about Sherlock Holmes)",
+      "note": "Error form a lots of probes clean (a + bank phrase lots of). One error: the wrong quantity form."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He has got a lots of pens on the desk.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has got a lot of pens on the desk.",
+          "tier": "full"
+        },
+        {
+          "text": "He has got lots of pens on the desk.",
+          "tier": "full"
+        },
+        {
+          "text": "a lot of",
+          "tier": "partial"
+        },
+        {
+          "text": "lots of",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Streiche das falsche -s: a lot of oder lots of.",
+      "hintEn": null,
+      "explainDe": "a lots of ist nie richtig. Du sagst a lot of pens oder lots of pens.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-ec-001",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of books / lots of books)",
+      "note": "Error form a lots of probes clean. One error: the wrong quantity form."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She has got a lot friends in her class.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has got a lot of friends in her class.",
+          "tier": "full"
+        },
+        {
+          "text": "She has got lots of friends in her class.",
+          "tier": "full"
+        },
+        {
+          "text": "a lot of",
+          "tier": "partial"
+        },
+        {
+          "text": "of",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Da fehlt ein kleines Wort: a lot ___ friends.",
+      "hintEn": null,
+      "explainDe": "Nach a lot muss of stehen: a lot of friends. Ohne of ist der Satz falsch. lots of friends geht auch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-ec-002",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of friends)",
+      "note": "GRANT NEEDED: the error form 'a lot friends' (missing of) exposes the bare token 'lot' (the phrase a lot of is broken), which probes UNTAUGHT. Grant token 'lot' for this item so the prompt passes V-5. This is the textbook's documented common error #2 (leaving out 'of'). Corrected full answers probe clean."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She has got many books. → She has got ___ books.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "a lot of",
+          "tier": "full"
+        },
+        {
+          "text": "lots of",
+          "tier": "full"
+        },
+        {
+          "text": "She has got a lot of books.",
+          "tier": "full"
+        },
+        {
+          "text": "She has got lots of books.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Schreibe many neu als a lot of oder lots of.",
+      "hintEn": null,
+      "explainDe": "many bedeutet dasselbe wie a lot of / lots of bei zählbaren Nomen: many books → a lot of books / lots of books.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-tf-001",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of books / lots of books)",
+      "note": "Transform many → a lot of / lots of. Accepts blank-fill (partial-of-sentence) and full sentence, both forms."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "We have got a lot of homework. (lots of) → We have got ___ homework.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "lots of",
+          "tier": "full"
+        },
+        {
+          "text": "We have got lots of homework.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Sag dasselbe mit lots of statt a lot of.",
+      "hintEn": null,
+      "explainDe": "a lot of und lots of bedeuten dasselbe. a lot of homework → lots of homework.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-tf-002",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of homework / lots of homework)",
+      "note": "Trigger (lots of) forces the lots of form only. Uncountable carrier."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "a lot of / has got / She / friends",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has got a lot of friends.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: Subjekt + has got + a lot of + Nomen.",
+      "hintEn": null,
+      "explainDe": "Die Wörter ergeben She has got a lot of friends. a lot of steht direkt vor dem Nomen friends.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "books",
+          "dogs",
+          "many",
+          "much"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": "m1-u6-a-lot-of-sb-001",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of friends)",
+      "note": "Chips 'a lot of' and 'has got' are single bank-phrase tokens (probe clean; split a/lot/of or has/got would expose untaught 'lot'/'got'). distractorPool (books, dogs, many, much) all probe clean. 4 answer chips + 4 pool = 8 ≤ 12."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "lots of / are / There / trees / in the park",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are lots of trees in the park.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: There are + lots of + Nomen + Ort.",
+      "hintEn": null,
+      "explainDe": "Die Wörter ergeben There are lots of trees in the park. lots of steht vor dem Nomen trees.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "cars",
+          "dogs",
+          "many",
+          "much"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": "m1-u6-a-lot-of-sb-001",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#word-file (lots of trees in the park)",
+      "note": "Chip 'lots of' is a single bank-phrase token (probe clean; splitting lots/of would expose untaught 'lots'). distractorPool (cars, dogs, many, much) all probe clean. 5 answer chips + 4 pool = 9 ≤ 12."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "have got / a lot of / homework / We",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have got a lot of homework.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: We + have got + a lot of + Nomen. homework bleibt ohne -s.",
+      "hintEn": null,
+      "explainDe": "Die Wörter ergeben We have got a lot of homework. a lot of passt auch zu unzählbaren Nomen wie homework.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "books",
+          "pens",
+          "many",
+          "much"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": "m1-u6-a-lot-of-gf-004",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of homework)",
+      "note": "Uncountable carrier. Chips 'have got' and 'a lot of' are single bank-phrase tokens (probe clean; splitting would expose untaught 'got'/'lot'). distractorPool (books, pens, many, much) all probe clean. 4 answer chips + 4 pool = 8 ≤ 12."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Es gibt viele Bäume im Park.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are a lot of trees in the park.",
+          "tier": "full"
+        },
+        {
+          "text": "There are lots of trees in the park.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "viele = a lot of oder lots of. Beginne mit There are … .",
+      "hintEn": null,
+      "explainDe": "viele Bäume = a lot of trees / lots of trees. Beide Übersetzungen sind richtig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-tr-001",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#word-file (lots of trees in the park)",
+      "note": "deToEn. German cue → lang=de. Both English forms accepted; carriers probe clean."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Der Detektiv hat viel Arbeit.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The detective has got a lot of work.",
+          "tier": "full"
+        },
+        {
+          "text": "The detective has got lots of work.",
+          "tier": "full"
+        },
+        {
+          "text": "The detective has a lot of work.",
+          "tier": "partial"
+        },
+        {
+          "text": "The detective has lots of work.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "viel Arbeit = a lot of work oder lots of work. work bleibt ohne -s.",
+      "hintEn": null,
+      "explainDe": "viel = a lot of / lots of, auch vor unzählbaren Nomen wie work: a lot of work / lots of work.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-tr-002",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#reading-2 (detective theme)",
+      "note": "deToEn, uncountable noun (work). has got (full) and has (partial). Carriers probe clean."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She has got a lot of books.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sie hat viele Bücher.",
+          "tier": "full"
+        },
+        {
+          "text": "Sie hat jede Menge Bücher.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "a lot of = viele. Übersetze den ganzen Satz ins Deutsche.",
+      "hintEn": null,
+      "explainDe": "a lot of books heißt viele Bücher. Im Deutschen brauchst du kein Wort für of.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of books)",
+      "note": "enToDe. English prompt probes clean. German answers du-form, ü used."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "matching",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Sherlock comes to the park.",
+          "right": "There are a lot of trees."
+        },
+        {
+          "left": "She opens her school bag.",
+          "right": "There are a lot of books."
+        },
+        {
+          "left": "We look at the city street.",
+          "right": "There are a lot of cars."
+        },
+        {
+          "left": "It is time for school.",
+          "right": "There is a lot of homework."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Welcher zweite Satz mit a lot of passt zur ersten Aussage?",
+      "hintEn": null,
+      "explainDe": "Jede erste Aussage gibt einen Hinweis: im Park → a lot of trees, in der Schultasche → a lot of books, und so weiter.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-mt-001",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#word-file (Around town; a lot of)",
+      "note": "matching En<->En, 4 pairs, UNIQUE right-sides (a lot of trees / books / cars / homework). German framing line only (lang=de, not gated). All left+right sides probe clean. No En<->De."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wo findest du das? Sortiere die Sätze.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "In the park",
+          "members": [
+            "There are a lot of trees.",
+            "There are a lot of dogs."
+          ]
+        },
+        {
+          "label": "At school",
+          "members": [
+            "There are a lot of books.",
+            "There is a lot of homework."
+          ]
+        }
+      ],
+      "hintDe": "Überlege bei jedem Satz: passt das eher zum Park oder zur Schule?",
+      "hintEn": null,
+      "explainDe": "Bäume und Hunde findest du im Park (In the park), Bücher und Hausübung in der Schule (At school). a lot of bleibt in jedem Satz gleich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u6-a-lot-of-gs-001",
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#word-file (Around town: park, school)",
+      "note": "group-sort, 2 groups each 2 members. Labels In the park / At school are in-bank and probe clean. Members all use a lot of / a lot of (probe clean). Sorts by place, not by grammar jargon."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sortiere: viele Dinge oder viel von etwas?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "a lot of books",
+          "members": [
+            "friends",
+            "cars",
+            "trees",
+            "pens"
+          ]
+        },
+        {
+          "label": "a lot of homework",
+          "members": [
+            "money",
+            "time",
+            "work",
+            "fun"
+          ]
+        }
+      ],
+      "hintDe": "Bei welchen Nomen kannst du mitzählen (eins, zwei, drei …) und bei welchen nicht?",
+      "hintEn": null,
+      "explainDe": "Manche Nomen kannst du zählen (books, friends, cars), andere nicht (homework, money, time). a lot of passt bei beiden Gruppen gleich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#grammar-1 (a lot of books / a lot of homework)",
+      "note": "group-sort, 2 groups each 4 members. Labels are example phrases (a lot of books / a lot of homework), both probe clean and avoid grammar jargon. Members are bank nouns, all probe clean."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Im Park gibt es viele davon — grün und hoch: ___ (5 Buchstaben).",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "trees",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "There are a lot of … in the park. Welches Nomen ist gemeint?",
+      "hintEn": null,
+      "explainDe": "Das Lösungswort ist trees. Im Satz steht es nach a lot of: a lot of trees.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#word-file (lots of trees in the park)",
+      "note": "anagram, single token 'trees' (5 letters, probe clean). German du-form cue (lang=de) framing the a lot of context without jargon."
+    },
+    {
+      "structureId": "g1u06.s.a-lot-of",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Doctor Grey schaut in die Straße der Stadt. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are lots of cars in the street.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "There are a lots of cars in the street.",
+        "There are much of cars in the street.",
+        "There are many of cars in the street."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "viele Autos: welcher Satz hat die richtige Form?",
+      "hintEn": null,
+      "explainDe": "Richtig ist There are lots of cars … . a lots of gibt es nicht, und much of / many of passen nicht vor dem Nomen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "There are a lots of cars in the street.",
+          "There are much of cars in the street.",
+          "There are many of cars in the street.",
+          "There are many cars in the street."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 6- The world's best detective.txt#word-file (Around town: city, street, cars)",
+      "note": "context-picker (detective world). Answer uses lots of (8 tokens) so the a lots of foil (9 tokens) is clash-free. Each distractor flaws only the quantity form; all probe clean. Note: context-picker distractors are gated by V-9 token-wise (no lemma-clash branch for cp sentences), but lots-of answer keeps it clean anyway. Pool has 4."
+    }
+  ]
+}

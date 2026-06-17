@@ -1,0 +1,4459 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g3-u03",
+  "briefBank": "92c8a1d10f8d",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "It ___ me twenty minutes to walk to school every day.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "takes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Subjekt ist it (3. Person Einzahl) und es ist Gegenwart, also nicht take.",
+      "hintEn": "",
+      "explainDe": "Bei it im Singular und Gegenwart heißt es takes: It takes me twenty minutes ...",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-gf-001",
+      "sbRef": null,
+      "note": "present takes; grant: takes, minute(s), walk",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "It ___ her about fifteen minutes to get dressed in the morning.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "takes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Gegenwart, Subjekt it: Wie heißt die richtige Form von take?",
+      "hintEn": "",
+      "explainDe": "In der Gegenwart mit it nimmst du takes: It takes her fifteen minutes ...",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-gf-020",
+      "sbRef": null,
+      "note": "present; grant: takes, fifteen, minute(s) (get dressed taught phrase)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "It ___ us two hours to drive to Vienna last weekend.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "took",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Achte auf last weekend: Das ist Vergangenheit.",
+      "hintEn": "",
+      "explainDe": "Mit last weekend ist es Vergangenheit, darum took: It took us two hours ...",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-gf-002",
+      "sbRef": null,
+      "note": "past took; grant: took, hour(s)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It takes her an hour ___ finish her homework.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor dem Verb in der Grundform fehlt ein kleines Wort.",
+      "hintEn": "",
+      "explainDe": "Vor der Grundform steht immer to: ... an hour to finish her homework.",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-gf-003",
+      "sbRef": null,
+      "note": "missing-to slot; grant: takes, hour, finish",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It takes me an hour ___ do my homework every day.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welches Wort verbindet die Zeit mit dem Verb do?",
+      "hintEn": "",
+      "explainDe": "Zwischen der Zeit und der Grundform steht to: ... an hour to do my homework.",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-gf-022",
+      "sbRef": null,
+      "note": "missing-to slot; grant: takes, hour",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "How long does ___ take you to get to school?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "it",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Auch in der Frage ist das Subjekt immer it, nie you.",
+      "hintEn": "",
+      "explainDe": "Das Subjekt bleibt it: How long does it take you to get to school?",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-gf-004",
+      "sbRef": null,
+      "note": "it-subject in question; all taught (get to school OK)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "How long does it ___ you to cycle to school?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "take",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach does steht die Grundform, nicht takes.",
+      "hintEn": "",
+      "explainDe": "Nach dem Hilfsverb does folgt die Grundform take: How long does it take you ...",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-gf-023",
+      "sbRef": null,
+      "note": "base after does; grant: cycle",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It doesn't ___ long to learn this dance.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "take",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach doesn't steht die Grundform.",
+      "hintEn": "",
+      "explainDe": "Nach doesn't kommt die Grundform: It doesn't take long ...",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-gf-005",
+      "sbRef": null,
+      "note": "base after doesn't; grant: learn",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It will ___ us about three hours to drive to the beach.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "take",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach will steht die Grundform.",
+      "hintEn": "",
+      "explainDe": "Nach will folgt die Grundform take: It will take us three hours ...",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-gf-024",
+      "sbRef": null,
+      "note": "base after will; grant: hour(s)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It ___ the whole class thirty minutes to finish the project yesterday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "took",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "yesterday zeigt: Es ist Vergangenheit.",
+      "hintEn": "",
+      "explainDe": "Mit yesterday brauchst du die Vergangenheit took: It took the whole class ...",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-gf-021",
+      "sbRef": null,
+      "note": "past took; grant: took, minute(s), finish",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It ___ me five minutes to make a sandwich.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "takes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Gegenwart mit it: Welche Form von take?",
+      "hintEn": "",
+      "explainDe": "It im Singular und Gegenwart bekommt takes: It takes me five minutes ...",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "present; grant: takes, minute(s)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "It ___ (take) my dad three years to learn English when he was young.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "took",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "was young zeigt die Vergangenheit an. Bilde die Vergangenheit von take.",
+      "hintEn": "",
+      "explainDe": "take wird in der Vergangenheit zu took: It took my dad three years ...",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-gf-006",
+      "sbRef": null,
+      "note": "past took, cue verb; grant: took, year(s), learn",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Fülle beide Lücken: It ___ us about an hour ___ cook dinner.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "takes | to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erste Lücke: Form von take in der Gegenwart. Zweite Lücke: das kleine Wort vor der Grundform.",
+      "hintEn": "",
+      "explainDe": "It takes us an hour to cook dinner: takes in der Gegenwart, dann to vor der Grundform.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "two blanks takes+to; grant: takes, hour",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It takes me thirty minutes to get to school.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I take thirty minutes to get to school.",
+        "It takes me thirty minutes get to school.",
+        "It needs me thirty minutes to get to school."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Subjekt muss it sein, vor der Grundform muss to stehen, und das Verb ist take, nicht need.",
+      "hintEn": "",
+      "explainDe": "Richtig ist It takes me thirty minutes to get to school: it als Subjekt, to vor get, und take statt need.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "It takes me thirty minutes to get to school.",
+          "I take thirty minutes to get to school.",
+          "It takes me thirty minutes get to school.",
+          "It needs me thirty minutes to get to school."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u3-it-takes-mc-001",
+      "sbRef": null,
+      "note": "mc; errors: person-subject, missing-to, wrong-verb; grant: takes, minute(s)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It takes me ten minutes to walk to the bus stop.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It takes me ten minutes for walk to the bus stop.",
+        "It takes I ten minutes to walk to the bus stop.",
+        "I take ten minutes to walk to the bus stop."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor der Grundform steht to (nicht for), die Person nach takes ist me (nicht I), und das Subjekt ist it.",
+      "hintEn": "",
+      "explainDe": "Richtig ist It takes me ten minutes to walk to the bus stop: to vor walk, me als Person, it als Subjekt.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "It takes me ten minutes to walk to the bus stop.",
+          "It takes me ten minutes for walk to the bus stop.",
+          "It takes I ten minutes to walk to the bus stop.",
+          "I take ten minutes to walk to the bus stop."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u3-it-takes-mc-020",
+      "sbRef": null,
+      "note": "mc; errors: for-not-to, wrong-pronoun, person-subject; grant: takes, minute(s), walk",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz erzählt richtig von gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It took us two hours to finish the project.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It taked us two hours to finish the project.",
+        "It takes us two hours to finish the project yesterday.",
+        "It was taking us two hours to finish the project."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Vergangenheit von take ist took, nicht taked und nicht takes.",
+      "hintEn": "",
+      "explainDe": "take ist unregelmäßig: Die Vergangenheit ist took. It took us two hours to finish the project.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "It took us two hours to finish the project.",
+          "It taked us two hours to finish the project.",
+          "It takes us two hours to finish the project yesterday.",
+          "It was taking us two hours to finish the project."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u3-it-takes-mc-021",
+      "sbRef": null,
+      "note": "mc past; errors: taked, present+yesterday, was-taking; grant: took, taked, takes, taking, hour(s), finish",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welche Frage ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long does it take you to get to school?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "How long does it takes you to get to school?",
+        "How long it takes you to get to school?",
+        "How long do you take to get to school?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach does steht take (Grundform), das Subjekt ist it, und die Wortstellung mit does muss stimmen.",
+      "hintEn": "",
+      "explainDe": "Richtig ist How long does it take you to get to school?: does + take + it, nicht takes und nicht you als Subjekt.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "How long does it take you to get to school?",
+          "How long does it takes you to get to school?",
+          "How long it takes you to get to school?",
+          "How long do you take to get to school?"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u3-it-takes-mc-022",
+      "sbRef": null,
+      "note": "mc question; errors: does+takes, no-does, person-subject; grant: takes",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ein neuer Mitschüler fragt, wie lange dein Schulweg am Morgen dauert. Sag es ihm.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It takes me twenty minutes to walk to school.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I take twenty minutes to walk to school.",
+        "It takes me twenty minutes walk to school.",
+        "It takes me twenty minutes for walk to school."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Subjekt ist it (nicht I) und vor walk muss to stehen.",
+      "hintEn": "",
+      "explainDe": "It takes me twenty minutes to walk to school: it als Subjekt und to vor der Grundform walk.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "It takes me twenty minutes to walk to school.",
+          "I take twenty minutes to walk to school.",
+          "It takes me twenty minutes walk to school.",
+          "It takes me twenty minutes for walk to school."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "cp; errors: person-subject, missing-to, for-not-to; grant: takes, minute(s), walk",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Gestern hat deine Klasse gemeinsam das Zimmer geputzt. Sag, wie lange es gedauert hat.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It took us an hour to clean the room.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It takes us an hour to clean the room yesterday.",
+        "It taked us an hour to clean the room.",
+        "We took an hour to clean the room."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist Vergangenheit, also took (nicht takes, nicht taked), und das Subjekt ist it (nicht we).",
+      "hintEn": "",
+      "explainDe": "It took us an hour to clean the room: took für die Vergangenheit und it als Subjekt.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "It took us an hour to clean the room.",
+          "It takes us an hour to clean the room yesterday.",
+          "It taked us an hour to clean the room.",
+          "We took an hour to clean the room."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "cp past; errors: present+yesterday, taked, person-subject; grant: took, taked, takes, hour",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du willst deinen Brieffreund fragen, wie lange sein Schulweg dauert. Wähle die richtige Frage.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long does it take you to get to school?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "How long do you take to get to school?",
+        "How long does it take you get to school?",
+        "How long it takes you to get to school?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Subjekt ist it, vor get steht to, und die Frage braucht does an der richtigen Stelle.",
+      "hintEn": "",
+      "explainDe": "How long does it take you to get to school?: it als Subjekt, to vor get und does vorne.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "How long does it take you to get to school?",
+          "How long do you take to get to school?",
+          "How long does it take you get to school?",
+          "How long it takes you to get to school?"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u3-it-takes-mc-002",
+      "sbRef": null,
+      "note": "cp question; errors: person-subject, missing-to, no-does; all taught",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I take twenty minutes to get to school.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It takes me twenty minutes to get to school.",
+          "tier": "full"
+        },
+        {
+          "text": "It takes me",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Subjekt darf keine Person sein. Beginne mit It und denk an die Person nach takes.",
+      "hintEn": "",
+      "explainDe": "Das Subjekt ist immer it, nie I: It takes me twenty minutes to get to school.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-ec-001",
+      "sbRef": null,
+      "note": "ec person-subject; grant: takes, minute(s)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: It takes me ten minutes walk to the bus stop.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It takes me ten minutes to walk to the bus stop.",
+          "tier": "full"
+        },
+        {
+          "text": "to walk",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor der Grundform walk fehlt ein kleines Wort.",
+      "hintEn": "",
+      "explainDe": "Vor der Grundform steht to: It takes me ten minutes to walk to the bus stop.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-ec-002",
+      "sbRef": null,
+      "note": "ec missing-to; grant: takes, minute(s), walk",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: It takes me two hours to get to my grandma's village yesterday.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It took me two hours to get to my grandma's village yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "took",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "yesterday zeigt: Es ist Vergangenheit. Wie heißt take in der Vergangenheit?",
+      "hintEn": "",
+      "explainDe": "Mit yesterday brauchst du die Vergangenheit: It took me two hours ...",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-ec-003",
+      "sbRef": null,
+      "note": "ec wrong-tense; grant: takes, took, hour(s)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: It needs me twenty minutes to walk to school.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It takes me twenty minutes to walk to school.",
+          "tier": "full"
+        },
+        {
+          "text": "takes",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für die Zeitdauer benutzt du nicht need, sondern ein anderes Verb.",
+      "hintEn": "",
+      "explainDe": "Wie lange etwas dauert, sagst du mit take: It takes me twenty minutes to walk to school.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-ec-020",
+      "sbRef": null,
+      "note": "ec wrong-verb need; grant: takes, minute(s), walk",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: It taked us a long time to reach the village.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It took us a long time to reach the village.",
+          "tier": "full"
+        },
+        {
+          "text": "took",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "take ist unregelmäßig. Die Vergangenheit ist nicht taked.",
+      "hintEn": "",
+      "explainDe": "take ist unregelmäßig, die Vergangenheit ist took: It took us a long time ...",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-ec-021",
+      "sbRef": null,
+      "note": "ec irregular taked; grant: taked, took",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I take an hour to do my homework.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It takes me an hour to do my homework.",
+          "tier": "full"
+        },
+        {
+          "text": "It takes me",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit It und setze die Person nach der richtigen Form von take.",
+      "hintEn": "",
+      "explainDe": "Das Subjekt ist it, die Person kommt danach: It takes me an hour to do my homework.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "ec person-subject; grant: takes, hour",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Erzähl den Satz von gestern: It takes us an hour to drive to the beach. (yesterday)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It took us an hour to drive to the beach yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "It took us an hour to drive to the beach.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nur die Form von take ändert sich: Gegenwart takes wird zu Vergangenheit took.",
+      "hintEn": "",
+      "explainDe": "In der Vergangenheit wird takes zu took: It took us an hour to drive to the beach yesterday.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "tf present->past; grant: takes, took, hour",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Mach eine Frage daraus: It takes Lisa thirty minutes to cycle to school. (How long ...?)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long does it take Lisa to cycle to school?",
+          "tier": "full"
+        },
+        {
+          "text": "How long does it take her to cycle to school?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage steht does, danach die Grundform take, und das Subjekt bleibt it.",
+      "hintEn": "",
+      "explainDe": "How long does it take Lisa to cycle to school?: does + it + take + Person.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-qf-001",
+      "sbRef": null,
+      "note": "tf statement->question; grant: takes, minute(s), cycle",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Mach eine Frage mit did: It took you an hour to read the book. (How long ...?)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long did it take you to read the book?",
+          "tier": "full"
+        },
+        {
+          "text": "How long did it take to read the book?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Vergangenheit fragst du mit did, danach die Grundform take.",
+      "hintEn": "",
+      "explainDe": "How long did it take you to read the book?: did + it + take in der Vergangenheit.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-tr-002",
+      "sbRef": null,
+      "note": "tf past question; grant: took, hour",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Fülle beide Lücken: 'It ___ (take) me about five minutes ___ (brush) my teeth.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "takes | to brush",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erste Lücke: Gegenwartsform von take. Zweite Lücke: to + Grundform.",
+      "hintEn": "",
+      "explainDe": "It takes me about five minutes to brush my teeth: takes plus to vor der Grundform.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-tf-020",
+      "sbRef": null,
+      "note": "tf two cue blanks; grant: takes, minute(s)",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Fülle beide Lücken über das letzte Wochenende: 'It ___ (take) us four hours ___ (reach) the mountain.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "took | to reach",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um das letzte Wochenende, also Vergangenheit. Zweite Lücke: to + Grundform.",
+      "hintEn": "",
+      "explainDe": "It took us four hours to reach the mountain: took für die Vergangenheit, to vor reach.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-tf-021",
+      "sbRef": null,
+      "note": "tf two cue blanks past; grant: took, hour(s)",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich brauche zehn Minuten, um zur Schule zu gehen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It takes me ten minutes to walk to school.",
+          "tier": "full"
+        },
+        {
+          "text": "It takes me ten minutes to get to school.",
+          "tier": "full"
+        },
+        {
+          "text": "It takes me 10 minutes to walk to school.",
+          "tier": "full"
+        },
+        {
+          "text": "It takes me ten minutes to go to school.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Im Englischen beginnt der Satz mit It takes me ..., nicht mit I.",
+      "hintEn": "",
+      "explainDe": "Wie lange etwas dauert, sagst du mit It takes me ... to ...: It takes me ten minutes to walk to school.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-tr-001",
+      "sbRef": null,
+      "note": "tr deToEn present; grant: takes, minute(s), walk",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Wie lange hast du gebraucht, um das Buch zu lesen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long did it take you to read the book?",
+          "tier": "full"
+        },
+        {
+          "text": "How long did it take to read the book?",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage in der Vergangenheit beginnt mit How long did it take ...?",
+      "hintEn": "",
+      "explainDe": "How long did it take you to read the book?: did + it + take für die Vergangenheitsfrage.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-tr-002",
+      "sbRef": null,
+      "note": "tr deToEn past question; grant: took(none here),take base OK",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Es hat uns zwei Stunden gedauert, um nach Hause zu fahren.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It took us two hours to drive home.",
+          "tier": "full"
+        },
+        {
+          "text": "It took us two hours to get home.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es hat gedauert ist Vergangenheit: Beginne mit It took us ...",
+      "hintEn": "",
+      "explainDe": "It took us two hours to drive home: took für die Vergangenheit, to vor der Grundform.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "tr deToEn past; grant: took, hour(s)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It takes me an hour to do my homework.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Ich brauche eine Stunde, um meine Hausaufgaben zu machen.",
+          "tier": "full"
+        },
+        {
+          "text": "Ich brauche eine Stunde für meine Hausaufgaben.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "It takes me ... heißt auf Deutsch Ich brauche ...",
+      "hintEn": "",
+      "explainDe": "It takes me an hour to do my homework bedeutet: Ich brauche eine Stunde, um meine Hausaufgaben zu machen.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "tr enToDe; grant: takes, hour",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "sentence-building",
+      "difficulty": 1,
+      "prompt": {
+        "text": "it / takes / me / twenty / minutes / to / walk / to / school",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It takes me twenty minutes to walk to school.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: It + Form von take + Person + Zeit + to + Grundform.",
+      "hintEn": "",
+      "explainDe": "It takes me twenty minutes to walk to school: erst it und takes, dann die Person, die Zeit und to + Grundform.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "chipBudget": 9,
+        "minOptions": null,
+        "distractorPool": [
+          "takes",
+          "took",
+          "to walk",
+          "it"
+        ]
+      },
+      "seedV1": "m3-u3-it-takes-sb-001",
+      "sbRef": null,
+      "note": "sb 9 chips; grant: takes, minute(s), walk",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "it / takes / to / me / half an hour / homework / do / my",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It takes me half an hour to do my homework.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Setze die Zeitangabe half an hour vor to do.",
+      "hintEn": "",
+      "explainDe": "It takes me half an hour to do my homework: nach takes me kommt die Zeit, dann to + Grundform.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "chipBudget": 10,
+        "minOptions": null,
+        "distractorPool": [
+          "takes",
+          "took",
+          "to walk",
+          "it"
+        ]
+      },
+      "seedV1": "m3-u3-it-takes-sb-020",
+      "sbRef": null,
+      "note": "sb; grant: takes (half an hour is a taught phrase)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "how / long / did / it / take / you / to / get / there / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long did it take you to get there?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Vergangenheitsfrage: How long + did + it + take + you + to + Grundform.",
+      "hintEn": "",
+      "explainDe": "How long did it take you to get there?: did und danach die Grundform take.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "chipBudget": 10,
+        "minOptions": null,
+        "distractorPool": [
+          "takes",
+          "took",
+          "to walk",
+          "it"
+        ]
+      },
+      "seedV1": "m3-u3-it-takes-sb-021",
+      "sbRef": null,
+      "note": "sb question; grant: get (there OK)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "it / took / us / two / hours / to / cook / dinner",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It took us two hours to cook dinner.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge in der Vergangenheit: It + took + Person + Zeit + to + Grundform.",
+      "hintEn": "",
+      "explainDe": "It took us two hours to cook dinner: took für die Vergangenheit, dann die Person, die Zeit und to + Grundform.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "chipBudget": 8,
+        "minOptions": null,
+        "distractorPool": [
+          "takes",
+          "took",
+          "to walk",
+          "it"
+        ]
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "sb past; grant: took, hour(s)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It takes Amy thirty minutes to get dressed. Ask how long it takes Amy.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long does it take Amy to get dressed?",
+          "tier": "full"
+        },
+        {
+          "text": "How long does it take her to get dressed?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit How long does it take ...? und behalte it als Subjekt.",
+      "hintEn": "",
+      "explainDe": "How long does it take Amy to get ready?: does + it + take + Person.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-qf-001",
+      "sbRef": null,
+      "note": "qf present; grant: takes, minute(s) (get dressed taught)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Dein neuer Mitschüler wohnt weit weg. Frag, wie lange er zur Schule braucht. Beginne mit: How long ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long does it take you to get to school?",
+          "tier": "full"
+        },
+        {
+          "text": "How long does it take you to come to school?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Subjekt ist it, nicht you: How long does it take you ...?",
+      "hintEn": "",
+      "explainDe": "How long does it take you to get to school?: it bleibt das Subjekt, you ist die Person danach.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-qf-020",
+      "sbRef": null,
+      "note": "qf free production; all taught",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "matching",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welches Ende passt zu welchem Anfang?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "It takes me five minutes",
+          "right": "to brush my teeth."
+        },
+        {
+          "left": "It took us all day",
+          "right": "to climb the mountain."
+        },
+        {
+          "left": "How long does it take you",
+          "right": "to get to school?"
+        },
+        {
+          "left": "It doesn't take long",
+          "right": "to learn this dance."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Nach jeder Zeitangabe folgt to + Grundform. Achte darauf, was inhaltlich zusammenpasst.",
+      "hintEn": "",
+      "explainDe": "Jeder Anfang braucht das passende Ende mit to + Grundform, zum Beispiel It takes me five minutes to brush my teeth.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-it-takes-mt-001",
+      "sbRef": null,
+      "note": "matching 4 pairs unique right-sides; grant: takes, took, minute(s), learn",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Antwort passt zu welcher Frage?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "How long does it take you to walk to school?",
+          "right": "It takes me ten minutes."
+        },
+        {
+          "left": "How long does it take to fly to Vienna?",
+          "right": "It takes about an hour."
+        },
+        {
+          "left": "How long did it take to drive home?",
+          "right": "It took us two hours."
+        },
+        {
+          "left": "How long does it take to make a cake?",
+          "right": "It takes half an hour."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Verbinde jede Frage mit der Antwort, die zeitlich und inhaltlich passt.",
+      "hintEn": "",
+      "explainDe": "Jede How-long-Frage hat eine passende Antwort mit It takes / It took und einer Zeitangabe.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "matching-pairs Q<->A unique rights; grant: takes, took, walk, hour",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere: takes (jetzt) oder took (früher)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "Now (takes)",
+          "members": [
+            "It takes me ten minutes to walk to school.",
+            "It takes her an hour to cook dinner.",
+            "How long does it take you to get dressed?"
+          ]
+        },
+        {
+          "label": "Yesterday (took)",
+          "members": [
+            "It took us two hours to drive home.",
+            "It took the class an hour to finish the project.",
+            "How long did it take you to read the book?"
+          ]
+        }
+      ],
+      "hintDe": "takes und does gehören zur Gegenwart, took und did zur Vergangenheit.",
+      "hintEn": "",
+      "explainDe": "takes/does zeigen die Gegenwart, took/did die Vergangenheit. So erkennst du, in welche Gruppe ein Satz gehört.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "group-sort present vs past; grant: takes, took, minute(s), hour, walk, finish",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sortiere: richtig oder falsch?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "It takes me twenty minutes to walk to school.",
+            "It took us an hour to cook dinner.",
+            "How long does it take you to get to school?"
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "I take twenty minutes to walk to school.",
+            "It takes me twenty minutes walk to school.",
+            "It taked us an hour to cook dinner."
+          ]
+        }
+      ],
+      "hintDe": "Falsch ist ein Satz, wenn das Subjekt eine Person ist, wenn to fehlt oder wenn take falsch gebeugt ist (taked).",
+      "hintEn": "",
+      "explainDe": "Richtig braucht it als Subjekt, to vor der Grundform und took (nicht taked) in der Vergangenheit.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "group-sort correct vs wrong (person-subject/missing-to/taked); grant: takes, took, taked, minute(s), hour, walk",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It ___ them an hour to clean the room.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "took",
+          "tier": "full"
+        },
+        {
+          "text": "takes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Zeiten sind hier möglich, je nachdem ob es jetzt oder gestern war. Wähle eine richtige Form von take.",
+      "hintEn": "",
+      "explainDe": "Ohne Zeitangabe passen takes (Gegenwart) und took (Vergangenheit): It takes/took them an hour to clean the room.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "gf both tenses accepted; grant: took, takes, hour",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "It ___ me ten minutes to cycle to the lake.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "takes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Gegenwart, Subjekt it: Welche Form von take?",
+      "hintEn": "",
+      "explainDe": "It im Singular und Gegenwart bekommt takes: It takes me ten minutes to cycle to the lake.",
+      "explainEn": "",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "present; grant: takes, minute(s), cycle",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "It ___ me twenty minutes to cycle to school.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "takes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "take",
+        "took",
+        "taking"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist Gegenwart und das Subjekt it steht im Singular.",
+      "hintEn": "",
+      "explainDe": "Bei it und Gegenwart heißt es takes, nicht take, took oder taking.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "takes",
+          "take",
+          "took",
+          "taking"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u3-it-takes-gf-001",
+      "sbRef": null,
+      "note": "mc single-token form choice; grant: takes, took, taking, minute(s)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It ___ us three hours to drive to the city last weekend.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "took",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "takes",
+        "take",
+        "taking"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "last weekend zeigt die Vergangenheit an.",
+      "hintEn": "",
+      "explainDe": "Mit last weekend brauchst du die Vergangenheit took, nicht takes, take oder taking.",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "took",
+          "takes",
+          "take",
+          "taking"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u3-it-takes-gf-002",
+      "sbRef": null,
+      "note": "mc past form choice; grant: took, takes, taking, hour(s)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.it-takes",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: How long it takes you to cycle to school?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long does it take you to cycle to school?",
+          "tier": "full"
+        },
+        {
+          "text": "does it take",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage fehlt does, und danach steht die Grundform take.",
+      "hintEn": "",
+      "explainDe": "Die Frage braucht does und die Grundform: How long does it take you to cycle to school?",
+      "explainEn": "",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "ec question missing-does; grant: takes, cycle",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "We stayed inside ___ the storm.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "during",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach diesem Wort steht ein Nomen (the storm), kein Satz: Wähle during.",
+      "hintEn": null,
+      "explainDe": "Vor einem Nomen wie the storm steht during. while braucht danach ein Verb.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-002",
+      "sbRef": null,
+      "note": "while-vs-during: noun side",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "___ they were cooking dinner, the dog ran into the kitchen.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "While",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Danach kommt ein ganzer Satz (they were cooking). Vor einem Satz steht While, nicht During.",
+      "hintEn": null,
+      "explainDe": "Vor einem Satz mit Verb steht while. During kann hier nicht stehen, weil ein Satz folgt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-001",
+      "sbRef": null,
+      "note": "while-vs-during: clause side",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I fell asleep ___ the film. I didn't watch the ending.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "during",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "the film ist ein Nomen. Vor einem Nomen steht during.",
+      "hintEn": null,
+      "explainDe": "during steht vor einem Nomen wie the film. while bräuchte danach ein Verb.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-006",
+      "sbRef": null,
+      "note": "during + noun",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ she leaves home, she always closes all the windows.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Before",
+          "tier": "full"
+        },
+        {
+          "text": "When",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zuerst schaut sie nach den Fenstern, dann geht sie. Welches Wort heißt bevor?",
+      "hintEn": null,
+      "explainDe": "before zeigt: das eine geschieht früher als das andere. Das Mädchen schließt die Fenster, bevor es geht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-003",
+      "sbRef": null,
+      "note": "before = earlier",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ she cleaned her room, she went outside to play.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "After",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zuerst das Zimmer aufräumen, dann nach draußen. Welches Wort heißt nachdem?",
+      "hintEn": null,
+      "explainDe": "after zeigt: das eine geschieht später als das andere. Das Mädchen geht erst hinaus, nachdem das Zimmer sauber ist.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "went",
+          "de": "ging",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-020",
+      "sbRef": null,
+      "note": "after = later",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "They waited at the bus stop ___ the bus came.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "until",
+          "tier": "full"
+        },
+        {
+          "text": "till",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Leute warten bis zu dem Moment, in dem der Bus kommt. Welches Wort heißt bis?",
+      "hintEn": null,
+      "explainDe": "until heißt bis zu dem Zeitpunkt, an dem etwas passiert: bis der Bus kommt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-005",
+      "sbRef": null,
+      "note": "until = up to the point",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The baby fell asleep ___ the car ride.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "during",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "the car ride ist ein Nomen. Vor einem Nomen steht during.",
+      "hintEn": null,
+      "explainDe": "Vor dem Nomen the car ride steht during. while bräuchte einen Satz mit Verb.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "baby",
+          "de": "Baby",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-021",
+      "sbRef": null,
+      "note": "during + noun",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I was reading my book ___ my brother was playing a computer game.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "while",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Danach steht ein Satz (my brother was playing). Vor einem Satz steht while.",
+      "hintEn": null,
+      "explainDe": "while verbindet zwei Dinge, die gleichzeitig passieren, und danach steht ein Satz mit Verb.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "brother",
+          "de": "Bruder",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-004",
+      "sbRef": null,
+      "note": "while + clause, two things at once",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We always clean our teeth ___ we go to bed.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "before",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zuerst Zähne putzen, dann ins Bett. Welches Wort heißt bevor?",
+      "hintEn": null,
+      "explainDe": "before zeigt, was zuerst passiert: Zähne putzen kommt vor dem Schlafengehen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-023",
+      "sbRef": null,
+      "note": "before + clause",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "We didn't leave the cinema ___ the film was over.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "until",
+          "tier": "full"
+        },
+        {
+          "text": "till",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Leute bleiben bis zu dem Moment, in dem der Film aus ist. Welches Wort heißt bis?",
+      "hintEn": null,
+      "explainDe": "until heißt bis zu dem Zeitpunkt: Die Leute gehen erst, wenn der Film vorbei ist.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-025",
+      "sbRef": null,
+      "note": "until, negative frame",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ he was 25, James Holman was completely blind.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "By the time",
+          "tier": "full"
+        },
+        {
+          "text": "When",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bis zu diesem Zeitpunkt war schon etwas passiert. Welche Wortgruppe passt?",
+      "hintEn": null,
+      "explainDe": "by the time heißt: bis zu diesem späteren Zeitpunkt war es schon so weit. Es zeigt, dass bis dahin schon etwas geschehen war.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "blind",
+          "de": "blind",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "by the time, verbatim SB carrier (Holman)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ she was resting in her tent, Mary heard a noise outside.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "While",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Danach steht ein Satz (she was resting). Vor einem Satz steht While.",
+      "hintEn": null,
+      "explainDe": "while steht vor einem Satz mit Verb. Zwei Dinge passieren gleichzeitig: Ruhen und das Geräusch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "resting",
+          "de": "sich ausruhend",
+          "scope": "prompt"
+        },
+        {
+          "word": "heard",
+          "de": "hörte",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "while + clause, SB carrier (Kingsley)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ his lifetime, James Holman travelled very far.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "During",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "his lifetime ist ein Nomen. Vor einem Nomen steht During.",
+      "hintEn": null,
+      "explainDe": "during steht vor einem Nomen wie his lifetime. while bräuchte danach einen Satz mit Verb.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "lifetime",
+          "de": "Leben",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "during + noun, SB carrier (Holman)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ her travels, Mary wrote two books about Africa.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "After",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zuerst die Reisen, dann schreibt sie. Welches Wort heißt nach?",
+      "hintEn": null,
+      "explainDe": "after zeigt: zuerst die Reisen, danach schreibt sie die Bücher.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "wrote",
+          "de": "schrieb",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "after + noun phrase, SB carrier (Kingsley)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "James Holman stayed in the Royal Navy ___ 1810.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "until",
+          "tier": "full"
+        },
+        {
+          "text": "till",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Er bleibt bis zu diesem Jahr dabei. Welches Wort heißt bis?",
+      "hintEn": null,
+      "explainDe": "until kann auch vor einer Zeitangabe stehen und heißt bis: bis 1810.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "until + year, verbatim SB carrier (Holman)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I saw my favourite singer ___ the concert last Saturday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "during",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "the concert ist ein Nomen. Vor einem Nomen steht during.",
+      "hintEn": null,
+      "explainDe": "Vor dem Nomen the concert steht during. while bräuchte einen Satz danach.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "saw",
+          "de": "sah",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-024",
+      "sbRef": null,
+      "note": "during + noun",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ the teacher was reading the story, some children were talking.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "While",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Danach steht ein Satz (the teacher was reading). Vor einem Satz steht While.",
+      "hintEn": null,
+      "explainDe": "while steht vor einem Satz mit Verb und zeigt, dass zwei Dinge gleichzeitig passieren.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-022",
+      "sbRef": null,
+      "note": "while + clause",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ we came back to the house, Grandma's breakfast was ready.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "By the time",
+          "tier": "full"
+        },
+        {
+          "text": "When",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bis zu dem Moment, als sie zurückkommen, ist das Frühstück schon fertig. Welche Wortgruppe passt?",
+      "hintEn": null,
+      "explainDe": "by the time zeigt: bis zu diesem Zeitpunkt war schon etwas fertig (das Frühstück).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "house",
+          "de": "Haus",
+          "scope": "prompt"
+        },
+        {
+          "word": "ready",
+          "de": "fertig",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt",
+      "note": "by the time, unit world (Tony's lake holiday)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ the flight, Amy was reading and eating lunch.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "During",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "the flight ist ein Nomen. Vor einem Nomen steht During.",
+      "hintEn": null,
+      "explainDe": "Vor dem Nomen the flight steht During. while bräuchte danach einen Satz mit Verb.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt",
+      "note": "during + noun, unit world (Amy / Barcelona)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We had lunch ___ the break.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "during",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "while",
+        "until",
+        "by the time"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "the break ist ein Nomen. Vor einem Nomen steht during.",
+      "hintEn": null,
+      "explainDe": "Vor dem Nomen the break steht during. while bräuchte danach ein Verb, until und by the time passen hier nicht zur Bedeutung.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "while",
+          "until",
+          "by the time",
+          "before",
+          "after"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u3-time-connectors-mc-001",
+      "sbRef": null,
+      "note": "mc: during vs wrong connectors",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ Dad was cooking, I was washing the plates.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "While",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "During",
+        "Until",
+        "By the time"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Danach steht ein Satz (Dad was cooking). Vor einem Satz steht While.",
+      "hintEn": null,
+      "explainDe": "while steht vor einem Satz mit Verb. During bräuchte ein Nomen, Until und By the time passen nicht zur Bedeutung.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "During",
+          "Until",
+          "By the time",
+          "Before",
+          "After"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u3-time-connectors-mc-003",
+      "sbRef": null,
+      "note": "mc: while vs wrong connectors",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "They waited at the airport ___ the plane was ready.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "until",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "during",
+        "while",
+        "after"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Leute warten bis zu dem Moment, in dem das Flugzeug bereit ist. Welches Wort heißt bis?",
+      "hintEn": null,
+      "explainDe": "until heißt bis zu dem Zeitpunkt. during bräuchte ein Nomen, while und after passen nicht zur Bedeutung warten bis.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "ready",
+          "de": "bereit",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "during",
+          "while",
+          "after",
+          "before",
+          "by the time"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u3-time-connectors-gf-005",
+      "sbRef": null,
+      "note": "mc: until, unit world (airport)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ the long car ride, the children fell asleep.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "During",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "While",
+        "Until",
+        "By the time"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "the long car ride ist ein Nomen. Vor einem Nomen steht During.",
+      "hintEn": null,
+      "explainDe": "Vor dem Nomen the long car ride steht During. While bräuchte einen Satz, Until und By the time passen nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "While",
+          "Until",
+          "By the time",
+          "Before",
+          "After"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u3-time-connectors-mc-020",
+      "sbRef": null,
+      "note": "mc: during + noun",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We had breakfast ___ we went to school.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "before",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "during",
+        "until",
+        "by the time"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zuerst frühstücken, dann zur Schule. Welches Wort heißt bevor?",
+      "hintEn": null,
+      "explainDe": "before zeigt, was zuerst passiert. during bräuchte ein Nomen, until und by the time passen nicht zur Bedeutung.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "went",
+          "de": "gingen",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "during",
+          "until",
+          "by the time",
+          "while",
+          "after"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u3-time-connectors-mc-021",
+      "sbRef": null,
+      "note": "mc: before vs wrong connectors",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du möchtest sagen, dass du den ganzen Flug über gelesen hast. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was reading during the whole flight.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I was reading while the whole flight.",
+        "I was reading during I was on the plane.",
+        "I was reading by the flight."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor einem Nomen wie the whole flight steht during, und danach kommt kein Satz.",
+      "hintEn": null,
+      "explainDe": "during steht vor dem Nomen the whole flight. while bräuchte einen Satz; during + Satz ist falsch; by the flight ergibt keinen Sinn.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I was reading while the whole flight.",
+          "I was reading during I was on the plane.",
+          "I was reading by the flight.",
+          "I was reading while the flight.",
+          "I was reading until the whole flight long."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u3-time-connectors-mc-001",
+      "sbRef": null,
+      "note": "cp: during + noun, unit world (flight)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Zwei Dinge passieren gleichzeitig: Mum fährt, du liest. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While Mum was driving, I was reading.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "During Mum was driving, I was reading.",
+        "While the drive, I was reading.",
+        "During I was reading, Mum was driving."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor einem Satz mit Verb (Mum was driving) steht While, nicht During.",
+      "hintEn": null,
+      "explainDe": "while steht vor einem Satz mit Verb. During + Satz ist falsch; da the drive ein Nomen ist, müsste dort during stehen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "During Mum was driving, I was reading.",
+          "While the drive, I was reading.",
+          "During I was reading, Mum was driving.",
+          "During the drive, Mum was driving.",
+          "While the car, I was reading."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u3-time-connectors-mc-003",
+      "sbRef": null,
+      "note": "cp: while + clause vs during errors",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du möchtest sagen: Als sie ankamen, hatte der Film schon begonnen. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "By the time they arrived, the film had already started.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "By they arrived, the film had already started.",
+        "During they arrived, the film had already started.",
+        "By the time of they arrived, the film had already started."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "by the time besteht aus drei Wörtern und danach steht ein Satz (they arrived).",
+      "hintEn": null,
+      "explainDe": "by the time bleibt vollständig und steht vor einem Satz. By allein, During + Satz und by the time of sind falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "By they arrived, the film had already started.",
+          "During they arrived, the film had already started.",
+          "By the time of they arrived, the film had already started.",
+          "Until they arrived, the film had already started.",
+          "While they arrived, the film had already started."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m3-u3-time-connectors-ec-003",
+      "sbRef": null,
+      "note": "cp: by the time, drop-parts error",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "During I was sleeping, the dog ran into my room.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While I was sleeping, the dog ran into my room.",
+          "tier": "full"
+        },
+        {
+          "text": "While",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Danach steht ein Satz (I was sleeping). Vor einem Satz steht While, nicht During.",
+      "hintEn": null,
+      "explainDe": "Vor einem Satz mit Verb steht while. During darf nur vor einem Nomen stehen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-ec-001",
+      "sbRef": null,
+      "note": "ec: during→while before a clause",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "We went swimming while the summer holidays.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We went swimming during the summer holidays.",
+          "tier": "full"
+        },
+        {
+          "text": "during",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "the summer holidays ist ein Nomen. Vor einem Nomen steht during, nicht while.",
+      "hintEn": null,
+      "explainDe": "Vor einem Nomen wie the summer holidays steht during. while bräuchte danach ein Verb.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "went",
+          "de": "gingen",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-ec-002",
+      "sbRef": null,
+      "note": "ec: while→during before a noun",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "By they arrived at the cinema, the film was over.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "By the time they arrived at the cinema, the film was over.",
+          "tier": "full"
+        },
+        {
+          "text": "By the time",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Wortgruppe by the time darf nicht verkürzt werden. Ergänze die fehlenden Wörter.",
+      "hintEn": null,
+      "explainDe": "by the time bleibt vollständig: by the time they arrived. By allein ist falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-ec-003",
+      "sbRef": null,
+      "note": "ec: by the time, dropped parts",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "While the lunch break, we played football.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "During the lunch break, we played football.",
+          "tier": "full"
+        },
+        {
+          "text": "During",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "the lunch break ist ein Nomen. Vor einem Nomen steht During, nicht While.",
+      "hintEn": null,
+      "explainDe": "Vor einem Nomen wie the lunch break steht during. while bräuchte danach ein Verb.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-ec-020",
+      "sbRef": null,
+      "note": "ec: while→during, sentence-initial",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "During my mum was cooking, I was watching a film.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While my mum was cooking, I was watching a film.",
+          "tier": "full"
+        },
+        {
+          "text": "While",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Danach steht ein Satz (my mum was cooking). Vor einem Satz steht While.",
+      "hintEn": null,
+      "explainDe": "Vor einem Satz mit Verb steht while. During darf nur vor einem Nomen stehen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-ec-021",
+      "sbRef": null,
+      "note": "ec: during→while before a clause",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mary was resting in her tent. She heard a noise. (Verbinde die Sätze mit while.)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While Mary was resting in her tent, she heard a noise.",
+          "tier": "full"
+        },
+        {
+          "text": "Mary heard a noise while she was resting in her tent.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "while steht vor einem Satz mit Verb. Zwei Dinge passieren gleichzeitig.",
+      "hintEn": null,
+      "explainDe": "Mit while verbindest du zwei Sätze, die gleichzeitig passieren: das Ausruhen und das Geräusch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "resting",
+          "de": "sich ausruhend",
+          "scope": null
+        },
+        {
+          "word": "heard",
+          "de": "hörte",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-tf-002",
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "tf: join with while (Kingsley)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We had breakfast. Then we went to school. (Verbinde die Sätze mit before.)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We had breakfast before we went to school.",
+          "tier": "full"
+        },
+        {
+          "text": "Before we went to school, we had breakfast.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "before zeigt, was zuerst passiert. Danach steht ein Satz.",
+      "hintEn": null,
+      "explainDe": "before verbindet zwei Sätze und zeigt die Reihenfolge: zuerst Frühstück, dann Schule.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "went",
+          "de": "gingen",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-tf-003",
+      "sbRef": null,
+      "note": "tf: join with before",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreibe einen Satz mit until: Die Kinder warteten lange. Dann kam der Bus.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They waited a long time until the bus came.",
+          "tier": "full"
+        },
+        {
+          "text": "They waited until the bus came.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "until heißt bis zu dem Moment, in dem etwas passiert. Die Kinder warten, bis der Bus kommt.",
+      "hintEn": null,
+      "explainDe": "until zeigt den Endpunkt des Wartens: bis der Bus kommt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-005",
+      "sbRef": null,
+      "note": "tf: produce until clause",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreibe einen Satz mit by the time: Das Flugzeug landet. Dann ist die Reise vorbei.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "By the time the plane lands, the journey is over.",
+          "tier": "full"
+        },
+        {
+          "text": "By the time the plane landed, the journey was over.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "by the time zeigt: bis zu diesem Zeitpunkt ist schon etwas geschehen. Danach steht ein Satz.",
+      "hintEn": null,
+      "explainDe": "by the time steht vor einem Satz und zeigt einen Zeitpunkt, bis zu dem etwas fertig ist.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "tf: produce by the time, unit world (flight)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Während des Unterrichts darf man nicht essen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "During the lesson, you mustn't eat.",
+          "tier": "full"
+        },
+        {
+          "text": "You mustn't eat during the lesson.",
+          "tier": "full"
+        },
+        {
+          "text": "During class, you mustn't eat.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Während + Nomen (des Unterrichts) wird zu during + Nomen (the lesson).",
+      "hintEn": null,
+      "explainDe": "Vor einem Nomen steht during. Während des Unterrichts heißt during the lesson.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "mustn't",
+          "de": "darf nicht",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-tr-001",
+      "sbRef": null,
+      "note": "tr deToEn: during + noun",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Während wir auf den Bus warteten, begann es zu schneien.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While we were waiting for the bus, it started to snow.",
+          "tier": "full"
+        },
+        {
+          "text": "It started to snow while we were waiting for the bus.",
+          "tier": "full"
+        },
+        {
+          "text": "While we were waiting for the bus, it started snowing.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Während + Satz (wir warteten) wird zu while + Satz (we were waiting).",
+      "hintEn": null,
+      "explainDe": "Vor einem Satz mit Verb steht while. Während wir warteten heißt while we were waiting.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "started",
+          "de": "begann",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-tr-002",
+      "sbRef": null,
+      "note": "tr deToEn: while + clause",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bevor wir ins Kino gingen, haben wir Pizza gegessen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Before we went to the cinema, we ate pizza.",
+          "tier": "full"
+        },
+        {
+          "text": "We ate pizza before we went to the cinema.",
+          "tier": "full"
+        },
+        {
+          "text": "Before we went to the cinema, we had pizza.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bevor wird zu before und steht vor einem Satz.",
+      "hintEn": null,
+      "explainDe": "before zeigt die Reihenfolge: zuerst Pizza, dann Kino. Davor steht ein Satz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "ate",
+          "de": "aßen",
+          "scope": null
+        },
+        {
+          "word": "went",
+          "de": "gingen",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-tr-020",
+      "sbRef": null,
+      "note": "tr deToEn: before + clause",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Während der Pause hat es angefangen zu regnen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "During the break, it started to rain.",
+          "tier": "full"
+        },
+        {
+          "text": "It started to rain during the break.",
+          "tier": "full"
+        },
+        {
+          "text": "During the break, it started raining.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Während + Nomen (der Pause) wird zu during + Nomen (the break).",
+      "hintEn": null,
+      "explainDe": "Vor einem Nomen steht during. Während der Pause heißt during the break.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "started",
+          "de": "begann",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-tr-021",
+      "sbRef": null,
+      "note": "tr deToEn: during + noun",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "the / stayed / we / storm / during / inside",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We stayed inside during the storm.",
+          "tier": "full"
+        },
+        {
+          "text": "During the storm, we stayed inside.",
+          "tier": "full"
+        },
+        {
+          "text": "During the storm we stayed inside.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "during steht vor dem Nomen the storm. Wo beginnt der Satz?",
+      "hintEn": null,
+      "explainDe": "during the storm gehört zusammen (vor dem Nomen). Der Satz kann damit beginnen oder enden.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "while",
+          "until",
+          "after",
+          "before"
+        ],
+        "chipBudget": 8,
+        "minOptions": null
+      },
+      "seedV1": "m3-u3-time-connectors-sb-001",
+      "sbRef": null,
+      "note": "sb: during + noun",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "after / home / came / we / watched / we / a film",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After we came home, we watched a film.",
+          "tier": "full"
+        },
+        {
+          "text": "We watched a film after we came home.",
+          "tier": "full"
+        },
+        {
+          "text": "After we came home we watched a film.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "after steht vor einem Satz (we came home). Zuerst nach Hause, dann der Film.",
+      "hintEn": null,
+      "explainDe": "after zeigt die Reihenfolge. Der Satz kann mit After oder mit We watched beginnen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "during",
+          "while",
+          "until",
+          "before"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": "m3-u3-time-connectors-sb-020",
+      "sbRef": null,
+      "note": "sb: after + clause",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "while / reading / was / I / the / rang / alarm clock",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While I was reading, the alarm clock rang.",
+          "tier": "full"
+        },
+        {
+          "text": "The alarm clock rang while I was reading.",
+          "tier": "full"
+        },
+        {
+          "text": "While I was reading the alarm clock rang.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "while steht vor einem Satz (I was reading). Zwei Dinge passieren gleichzeitig.",
+      "hintEn": null,
+      "explainDe": "while steht vor einem Satz mit Verb. Der Satz kann mit While oder mit The alarm clock beginnen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "rang",
+          "de": "läutete",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "during",
+          "until",
+          "after",
+          "before"
+        ],
+        "chipBudget": 11,
+        "minOptions": null
+      },
+      "seedV1": "m3-u3-time-connectors-sb-021",
+      "sbRef": null,
+      "note": "sb: while + clause",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "question-formation",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Tom was reading during the lesson. (Frage danach, was Tom während des Unterrichts gemacht hat.)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What was Tom doing during the lesson?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "during the lesson bleibt am Ende der Frage stehen.",
+      "hintEn": null,
+      "explainDe": "during steht vor dem Nomen the lesson und bleibt auch in der Frage so stehen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-qf-001",
+      "sbRef": null,
+      "note": "qf: question with during",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Dein Freund sagt: 'I saw a famous singer.' Frag, ob er die Person beim Einkaufen gesehen hat. Beginne mit 'Did you see them while...'.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Did you see them while you were shopping?",
+          "tier": "full"
+        },
+        {
+          "text": "Did you see them while you were in town?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach while steht ein Satz mit Verb (you were shopping).",
+      "hintEn": null,
+      "explainDe": "while verbindet die zwei Dinge: das Sehen und das Einkaufen. Danach steht ein Satz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "shopping",
+          "de": "Einkaufen",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-qf-020",
+      "sbRef": null,
+      "note": "qf: while in a question",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Anfang passt zu welchem Ende?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "While she was studying,",
+          "right": "she heard a noise outside."
+        },
+        {
+          "left": "During the concert,",
+          "right": "all the people were happy."
+        },
+        {
+          "left": "Before we left,",
+          "right": "we cleaned the kitchen."
+        },
+        {
+          "left": "After the lesson,",
+          "right": "we went to the park."
+        },
+        {
+          "left": "They waited until",
+          "right": "the bus came."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte darauf: Nach during steht ein Nomen, nach while und until ein Satz.",
+      "hintEn": null,
+      "explainDe": "Jeder Anfang verlangt eine passende Fortsetzung. while und until leiten einen Satz ein, during steht vor einem Nomen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "heard",
+          "de": "hörte",
+          "scope": null
+        },
+        {
+          "word": "left",
+          "de": "gingen weg",
+          "scope": null
+        },
+        {
+          "word": "went",
+          "de": "gingen",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-mt-001",
+      "sbRef": null,
+      "note": "mt: connector beginnings → endings",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satzanfang passt zu welchem Ende?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "While I was washing the plates,",
+          "right": "my cat jumped on the table."
+        },
+        {
+          "left": "During the film,",
+          "right": "we had some ice cream."
+        },
+        {
+          "left": "Before the lesson,",
+          "right": "I cleaned the board."
+        },
+        {
+          "left": "After we washed the plates,",
+          "right": "we went to bed."
+        },
+        {
+          "left": "When the teacher came in,",
+          "right": "all the children were quiet."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Nach during steht ein Nomen (the film), nach while, before, after und when ein Satz.",
+      "hintEn": null,
+      "explainDe": "Die Verbindungswörter geben den Zeitpunkt an. Achte auf during + Nomen gegenüber while/when + Satz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "cat",
+          "de": "Katze",
+          "scope": null
+        },
+        {
+          "word": "quiet",
+          "de": "ruhig",
+          "scope": null
+        },
+        {
+          "word": "went",
+          "de": "gingen",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-mt-020",
+      "sbRef": null,
+      "note": "mt: connector beginnings → endings (2)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Was kommt nach while und was nach during?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "while",
+          "members": [
+            "she was studying",
+            "I was reading",
+            "they were cooking",
+            "Dad was driving"
+          ]
+        },
+        {
+          "label": "during",
+          "members": [
+            "the storm",
+            "the concert",
+            "the lesson",
+            "the flight"
+          ]
+        }
+      ],
+      "hintDe": "Nach while steht ein Satz mit Verb, nach during ein Nomen.",
+      "hintEn": null,
+      "explainDe": "while braucht danach einen Satz mit Verb, during ein Nomen. So unterscheidest du die beiden.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "gs: while+clause vs during+noun — the core contrast",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welche Wörter stehen vor einem Nomen, welche vor einem Satz?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "during the …",
+          "members": [
+            "storm",
+            "concert",
+            "lesson",
+            "flight"
+          ]
+        },
+        {
+          "label": "while she …",
+          "members": [
+            "was reading",
+            "was cooking",
+            "was waiting",
+            "was studying"
+          ]
+        }
+      ],
+      "hintDe": "during steht vor einem Nomen, while vor einem Satz mit Verb.",
+      "hintEn": null,
+      "explainDe": "Vor einem Nomen wie storm steht during. Vor einem Satz wie she was reading steht while.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "gs: noun-completions vs clause-completions",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Anfang passt zu welchem Ende?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "During the storm,",
+          "right": "we stayed inside."
+        },
+        {
+          "left": "While Dad was cooking,",
+          "right": "I was reading a book."
+        },
+        {
+          "left": "Before we went to bed,",
+          "right": "we cleaned our teeth."
+        },
+        {
+          "left": "After the match,",
+          "right": "we came home."
+        },
+        {
+          "left": "They waited until",
+          "right": "the rain stopped."
+        },
+        {
+          "left": "By the time we came back,",
+          "right": "dinner was ready."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte auf den Sinn und auf during + Nomen gegenüber while/until/by the time + Satz.",
+      "hintEn": null,
+      "explainDe": "Jeder Anfang hat genau eine passende Fortsetzung. during steht vor einem Nomen, die anderen Wörter vor einem Satz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "stopped",
+          "de": "aufhörte",
+          "scope": null
+        },
+        {
+          "word": "ready",
+          "de": "fertig",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "mp: connector beginnings → endings, all six connectors",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "___ the match, the players drank some water.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "During",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "the match ist ein Nomen. Vor einem Nomen steht During.",
+      "hintEn": null,
+      "explainDe": "Vor dem Nomen the match steht During. While bräuchte einen Satz mit Verb.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "players",
+          "de": "Spieler",
+          "scope": "prompt"
+        },
+        {
+          "word": "drank",
+          "de": "tranken",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "during + noun, easy",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ Mary was climbing the mountain, the men were waiting at the bottom.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "While",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Danach steht ein Satz (Mary was climbing). Vor einem Satz steht While.",
+      "hintEn": null,
+      "explainDe": "while steht vor einem Satz mit Verb. Zwei Dinge passieren gleichzeitig: Klettern und Warten.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt",
+      "note": "while + clause, unit world (Kingsley / Mount Cameroon)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Minnie gets to the airport ___ the plane takes off.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "before",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zuerst kommt sie zum Flughafen, dann hebt das Flugzeug ab. Welches Wort heißt bevor?",
+      "hintEn": null,
+      "explainDe": "before zeigt die Reihenfolge: zuerst am Flughafen, dann der Start.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "Minnie",
+          "de": "Minnie (Name)",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt",
+      "note": "before + clause, unit world (Minnie the pilot)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ Celia reached the coast, she had already cycled very far.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "By the time",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bis zu dem Moment, als sie die Küste erreicht, ist schon viel passiert. Welche Wortgruppe passt?",
+      "hintEn": null,
+      "explainDe": "by the time zeigt: bis zu diesem Zeitpunkt war schon etwas geschehen (sie war schon sehr weit gefahren).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt",
+      "note": "by the time, unit world (Celia's bike trip)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ Holman was 25, he was already completely blind.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "By the time",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "During",
+        "While",
+        "Until"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bis zu diesem Zeitpunkt war schon etwas passiert. Welche Wortgruppe passt?",
+      "hintEn": null,
+      "explainDe": "by the time zeigt einen Zeitpunkt, bis zu dem schon etwas geschehen war. During bräuchte ein Nomen, While und Until passen nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "already",
+          "de": "schon",
+          "scope": "prompt"
+        },
+        {
+          "word": "blind",
+          "de": "blind",
+          "scope": null
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "During",
+          "While",
+          "Until",
+          "Before",
+          "After"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "mc: by the time, SB world (Holman)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I always clean my room during my mum is cooking.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I always clean my room while my mum is cooking.",
+          "tier": "full"
+        },
+        {
+          "text": "while",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Danach steht ein Satz (my mum is cooking). Vor einem Satz steht while, nicht during.",
+      "hintEn": null,
+      "explainDe": "Vor einem Satz mit Verb steht while. During darf nur vor einem Nomen stehen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-ec-021",
+      "sbRef": null,
+      "note": "ec: during→while before a clause (present)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verbinde die Sätze mit during: Der Sturm war laut. Wir blieben drinnen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We stayed inside during the storm.",
+          "tier": "full"
+        },
+        {
+          "text": "During the storm, we stayed inside.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "during steht vor dem Nomen the storm, nicht vor einem ganzen Satz.",
+      "hintEn": null,
+      "explainDe": "during verbindet hier mit einem Nomen: during the storm. Deshalb wird aus dem Satz ein Nomen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-sb-001",
+      "sbRef": null,
+      "note": "tf: produce during + noun (turns clause into noun phrase)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We didn't go home ___ the rain stopped.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "until",
+          "tier": "full"
+        },
+        {
+          "text": "till",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Leute bleiben bis zu dem Moment, in dem der Regen aufhört. Welches Wort heißt bis?",
+      "hintEn": null,
+      "explainDe": "until heißt bis zu dem Zeitpunkt: Die Leute gehen erst, wenn der Regen aufhört.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "stopped",
+          "de": "aufhörte",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m3-u3-time-connectors-gf-005",
+      "sbRef": null,
+      "note": "until, negative frame",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "___ the long flight, Amy was watching a film.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "During",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "the long flight ist ein Nomen. Vor einem Nomen steht During.",
+      "hintEn": null,
+      "explainDe": "Vor dem Nomen the long flight steht During. While bräuchte einen Satz mit Verb.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt",
+      "note": "during + noun, easy, unit world (Amy)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ her travels, Mary visited many countries in Africa.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "During",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "While",
+        "Until",
+        "By the time"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "her travels ist ein Nomen. Vor einem Nomen steht During.",
+      "hintEn": null,
+      "explainDe": "Vor dem Nomen her travels steht During. While bräuchte einen Satz, Until und By the time passen nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "While",
+          "Until",
+          "By the time",
+          "Before",
+          "After"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt",
+      "note": "mc: during + noun, unit world (Kingsley)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Die Kinder warteten, bis der Zug kam.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They waited until the train came.",
+          "tier": "full"
+        },
+        {
+          "text": "They waited until the train arrived.",
+          "tier": "partial"
+        },
+        {
+          "text": "The children waited until the train came.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "bis wird zu until und steht vor einem Satz (the train came).",
+      "hintEn": null,
+      "explainDe": "until heißt bis zu dem Zeitpunkt, an dem etwas passiert. Danach steht ein Satz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "tr deToEn: until + clause",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Mary returned to Africa ___ the Second Boer War broke out.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "before",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zuerst kehrt sie zurück, dann beginnt der Krieg. Welches Wort heißt bevor?",
+      "hintEn": null,
+      "explainDe": "before zeigt die Reihenfolge: Mary kommt zurück, bevor der Krieg beginnt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "broke out",
+          "de": "ausbrach",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "before + clause, verbatim SB carrier (Kingsley)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ we arrived at the beach, it started to rain.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "When",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um den Zeitpunkt: in dem Moment, als sie ankamen. Welches Wort heißt als?",
+      "hintEn": null,
+      "explainDe": "when zeigt den Zeitpunkt, an dem etwas geschieht: als sie ankamen, fing der Regen an.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "when + clause (point in time)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u03.s.time-connectors",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ some hippos blocked her way, Mary hit them with her umbrella.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "When",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "During",
+        "Until",
+        "By the time"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um den Moment, in dem die Nilpferde den Weg versperrten. Welches Wort heißt als?",
+      "hintEn": null,
+      "explainDe": "when zeigt den Zeitpunkt, an dem etwas geschieht. During bräuchte ein Nomen, Until und By the time passen nicht zur Bedeutung.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "blocked",
+          "de": "versperrten",
+          "scope": "prompt"
+        },
+        {
+          "word": "hit",
+          "de": "schlug",
+          "scope": "prompt"
+        },
+        {
+          "word": "umbrella",
+          "de": "Regenschirm",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "During",
+          "Until",
+          "By the time",
+          "Before",
+          "After"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 3.txt#grammar-1",
+      "note": "when + clause, verbatim SB carrier (Kingsley/hippos)",
+      "blanks": 1
+    }
+  ]
+}

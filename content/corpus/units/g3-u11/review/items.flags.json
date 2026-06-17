@@ -1,0 +1,497 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g3-u11",
+  "round": 1,
+  "itemsHash": "85249bab4f34",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g3u11.w.backpack",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.backpack",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.canyon",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.canyon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.capital",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.capital",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.connection",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.connection",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.cyclist",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.cyclist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.dirt-road",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.dirt-road",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.fabulous",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.fabulous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.familiar",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.familiar",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.ferry",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.ferry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.four-wheel-drive",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.four-wheel-drive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.gold-digger",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.gold-digger",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.gold-rush",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.gold-rush",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.guided",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.guided",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.headquarters",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.headquarters",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.height",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.height",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.independent",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.independent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.innovation",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.innovation",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.lip",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.lip",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.programmer",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.programmer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.railway",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.railway",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.ridge",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.ridge",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.shade",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.shade",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.state",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.state",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.steep",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.steep",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.thirst",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.thirst",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.to-be-situated",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.to-be-situated",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.to-catch",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.to-catch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.to-crack",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.to-crack",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u11.w.to-spot-sth",
+      "kind": "new-gloss",
+      "itemId": "g3u11.w.to-spot-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.a-dry-place",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.a-dry-place",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.backpack",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.backpack",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.canyon",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.canyon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.capital",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.capital",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.connection",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.connection",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.criminal",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.criminal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.cyclist",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.cyclist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.dirt-road",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.dirt-road",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.fabulous",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.fabulous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.familiar",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.familiar",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.ferry",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.ferry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.four-wheel-drive",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.four-wheel-drive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.gold-digger",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.gold-digger",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.gold-rush",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.gold-rush",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.guided",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.guided",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.headquarters",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.headquarters",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.height",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.height",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.independent",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.independent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.information-office",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.information-office",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.innovation",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.innovation",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.lip",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.lip",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.mountain-range",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.mountain-range",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.programmer",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.programmer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.railway",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.railway",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.ridge",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.ridge",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.shade",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.shade",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.state",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.state",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.steep",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.steep",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.thirst",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.thirst",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.to-be-situated",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.to-be-situated",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.to-catch",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.to-catch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.to-commute",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.to-commute",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.to-crack",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.to-crack",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.to-have-no-signal",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.to-have-no-signal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.to-spot-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.to-spot-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.to-take-over",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.to-take-over",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.w.totally",
+      "kind": "translation-audit",
+      "itemId": "g3u11.w.totally",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.gi.present-perfect-continuous.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u11.gi.present-perfect-continuous.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u11.gi.present-perfect-continuous.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u11.gi.present-perfect-continuous.tr.003",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "37 vocab + 28 grammar (present perfect continuous: have/has + been + -ing, for/since, continuous-vs-result contrast). 4 verify lenses clean after fixes: removed ungrammatical \"heights\" full-answer (height); fixed gloss \"left (= fuhr ab)\" not \"abfuhr\" (to-catch); added \"since this morning\" accepted variant to tr.003 (seit dem Morgen); set strict:true on ec.001-003 (single-token error-correction, prevents fuzzy mis-accept); swapped distractor fabulous→thirsty (guided, removes plausible-correct); brother→sister in tf.003 (untaught→taught) + matching German scaffold; disambiguated sentence-initial \"Sie wohnen\"→\"Olivia und ihre Familie wohnen\" (cp.002 hintDe). All 29 gloss audits correct German on above-level words; all 39 translation audits accurate both directions. Validate green, 0 fix / 0 warn."
+  },
+  "metrics": {
+    "itemsReviewed": 65,
+    "fullRows": 65,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

@@ -1,0 +1,882 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u04",
+  "round": 1,
+  "itemsHash": "bd4bc1a2ccf2",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g4u04.w.accountant",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.accountant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.ambition",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.ambition",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.be-keen-on",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.be-keen-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.be-responsible-for",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.be-responsible-for",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.bonus",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.bonus",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.career",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.career",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.casual",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.casual",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.company",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.company",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.computing",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.computing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.computing-2",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.computing-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.confidently",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.confidently",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.deserve",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.deserve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.develop",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.develop",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.earn",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.earn",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.electrician",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.electrician",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.employer",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.employer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.enthusiastic",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.enthusiastic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.eye-contact",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.eye-contact",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.flight-attendant",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.flight-attendant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.health-care",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.health-care",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.health-care-2",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.health-care-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.interview",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.interview",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.journalism",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.journalism",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.marketing",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.marketing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.mechanic",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.mechanic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.memorise",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.memorise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.naturally",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.naturally",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.nurse",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.nurse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.pros-and-cons",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.pros-and-cons",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.receptionist",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.receptionist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.salary",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.salary",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.sales-and-marketing",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.sales-and-marketing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.satisfaction",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.satisfaction",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.secretary",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.secretary",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.skills",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.skills",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.think-up",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.think-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.unemployed",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.unemployed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.w.working-hours",
+      "kind": "new-gloss",
+      "itemId": "g4u04.w.working-hours",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.ag.001",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.ag.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.ec.002",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.ec.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.ec.003",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.ec.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.ec.005",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.ec.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.ec.007",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.ec.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.ec.009",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.ec.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.gf.002",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.gf.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.gf.008",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.gf.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.gf.011",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.gf.011",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.gf.014",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.gf.014",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.gf.015",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.gf.015",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.gf.019",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.gf.019",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.gf.020",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.gf.020",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.gf.021",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.gf.021",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.gs.002",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.gs.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.gs.003",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.gs.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.qf.002",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.qf.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.tf.001",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.tf.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.tf.003",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.tf.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.tf.005",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.tf.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.tf.009",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.tf.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.tf.010",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.tf.010",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.tf.011",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.tf.011",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.tf.012",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.tf.012",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.tr.007",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.tr.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.tr.008",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.tr.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u04.gi.reported-questions.tr.010",
+      "kind": "new-gloss",
+      "itemId": "g4u04.gi.reported-questions.tr.010",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.accountant",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.accountant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.advice",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.advice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.ambition",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.ambition",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.be-keen-on",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.be-keen-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.be-responsible-for",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.be-responsible-for",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.bonus",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.bonus",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.career",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.career",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.casual",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.casual",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.company",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.company",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.computing",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.computing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.computing-2",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.computing-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.confidently",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.confidently",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.deadline",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.deadline",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.deserve",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.deserve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.develop",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.develop",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.earn",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.earn",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.electrician",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.electrician",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.employer",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.employer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.enthusiastic",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.enthusiastic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.eye-contact",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.eye-contact",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.female",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.female",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.finance",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.finance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.finance-2",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.finance-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.flight-attendant",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.flight-attendant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.health-care",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.health-care",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.health-care-2",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.health-care-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.interview",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.interview",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.journalism",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.journalism",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.launch",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.launch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.male",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.male",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.marketing",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.marketing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.mechanic",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.mechanic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.memorise",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.memorise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.naturally",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.naturally",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.nurse",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.nurse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.pros-and-cons",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.pros-and-cons",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.receptionist",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.receptionist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.salary",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.salary",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.sales-and-marketing",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.sales-and-marketing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.satisfaction",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.satisfaction",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.secretary",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.secretary",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.skills",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.skills",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.think-up",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.think-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.unemployed",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.unemployed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.w.working-hours",
+      "kind": "translation-audit",
+      "itemId": "g4u04.w.working-hours",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.gi.reported-questions.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u04.gi.reported-questions.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.gi.reported-questions.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g4u04.gi.reported-questions.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.gi.reported-questions.tr.007",
+      "kind": "translation-audit",
+      "itemId": "g4u04.gi.reported-questions.tr.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.gi.reported-questions.tr.008",
+      "kind": "translation-audit",
+      "itemId": "g4u04.gi.reported-questions.tr.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.gi.reported-questions.tr.009",
+      "kind": "translation-audit",
+      "itemId": "g4u04.gi.reported-questions.tr.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u04.gi.reported-questions.tr.010",
+      "kind": "translation-audit",
+      "itemId": "g4u04.gi.reported-questions.tr.010",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u04.w.accountant#4c547f",
+      "kind": "validator-warn",
+      "itemId": "g4u04.w.accountant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u04.w.electrician#82d253",
+      "kind": "validator-warn",
+      "itemId": "g4u04.w.electrician",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u04.w.employer#ff091f",
+      "kind": "validator-warn",
+      "itemId": "g4u04.w.employer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u04.w.flight-attendant#68c17b",
+      "kind": "validator-warn",
+      "itemId": "g4u04.w.flight-attendant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u04.w.mechanic#4c823a",
+      "kind": "validator-warn",
+      "itemId": "g4u04.w.mechanic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u04.w.nurse#7f0755",
+      "kind": "validator-warn",
+      "itemId": "g4u04.w.nurse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u04.w.receptionist#d7413f",
+      "kind": "validator-warn",
+      "itemId": "g4u04.w.receptionist",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Reported questions (indirect questions): statement word order in the reported clause (drop do/does/did, no inversion); backshift (present→past, will→would, can→could, am/is→was, are→were); ask + wh-word for wh-questions, ask (sb) if/whether for yes/no; pronoun shifts. 45 vocab (the 3 duplicate bank entries computing/finance/health-care handled by distinct id) + 75 grammar, full v1 parity (floor 40 → 75 items / 11 formats). 4 verify lenses clean after fixes: the answers + translation lenses found ZERO defects (all 75 reported-question forms verified correct — statement order, backshift, if/whether, no say/ask confusion); reworded eye-contact & health-care-2 defs off their headword tokens (eye/care); disambiguated 4 translation prompts Sie→Mia/Sue (sentence-initial she); dropped 'job interview' from an 'an ___' carrier (a/an mismatch); reworded the interview carrier off untaught 'manager'; lowercased-jargon 'past simple'→'die 2. Form' in 3 hintDe/explainDe; granted healthcare/memorize/wh/word/helping. The 65 inline glosses (whether/worked/ready + vocab domain terms) are correct; 51 translation audits accurate. 7 defensible job-title enToDe warns (Buchhalter/Mechaniker/Elektriker/Rezeptionist/Sekretär/Flugbegleiter/Krankenpfleger — correct German, the -er/-erin slash forms with no umlaut trip the language-evidence heuristic). Validate green."
+  },
+  "metrics": {
+    "itemsReviewed": 120,
+    "fullRows": 120,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

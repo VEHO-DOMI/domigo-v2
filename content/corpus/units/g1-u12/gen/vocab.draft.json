@@ -1,0 +1,5280 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g1-u12",
+  "briefBank": "7926349cf887",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g1u12.w.january",
+      "w": "January",
+      "g": "Jänner",
+      "d": "It is the first cold month of the year, when we can play in the snow.",
+      "s": "We can ski in the white snow in ___, the first month of the year.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "January",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "January",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "January",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Jänner",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "February",
+        "June",
+        "December"
+      ],
+      "hintDe": "Der erste Monat im Jahr.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "February",
+          "June",
+          "December",
+          "March"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.february",
+      "w": "February",
+      "g": "Februar",
+      "d": "It is the short, cold month after January, when many children ski in the snow.",
+      "s": "We go skiing on the cold, white snow in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "February",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "February",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "February",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Februar",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "January",
+        "March",
+        "November"
+      ],
+      "hintDe": "Der zweite Monat, kurz und kalt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "January",
+          "March",
+          "November",
+          "April"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.march",
+      "w": "March",
+      "g": "März",
+      "d": "It is the cool month when the cold days end and the first new leaves come.",
+      "s": "The first new leaves come on the trees in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "March",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "March",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "March",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "März",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cool",
+          "de": "kühl",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "April",
+        "February",
+        "May"
+      ],
+      "hintDe": "In diesem Monat beginnt der Frühling.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "April",
+          "February",
+          "May",
+          "June"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.april",
+      "w": "April",
+      "g": "April",
+      "d": "It is the month after March, when it often rains and the trees have new leaves.",
+      "s": "It often rains and the trees have new leaves in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "April",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "April",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "April",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "April",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "rains",
+          "de": "regnet",
+          "scope": "d"
+        },
+        {
+          "word": "rains",
+          "de": "regnet",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "March",
+        "May",
+        "June"
+      ],
+      "hintDe": "Ein Frühlingsmonat mit viel Regen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "March",
+          "May",
+          "June",
+          "July"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.may",
+      "w": "May",
+      "g": "Mai",
+      "d": "It is the month before June, when the garden has many pretty flowers.",
+      "s": "The garden has many beautiful flowers in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "May",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "May",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "May",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mai",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "flowers",
+          "de": "Blumen",
+          "scope": "d"
+        },
+        {
+          "word": "flowers",
+          "de": "Blumen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "April",
+        "June",
+        "March"
+      ],
+      "hintDe": "Ein Frühlingsmonat voller Blumen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "April",
+          "June",
+          "March",
+          "August"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.june",
+      "w": "June",
+      "g": "Juni",
+      "d": "It is the first warm month of summer, before the long school holiday.",
+      "s": "The days are long and the school year ends soon in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "June",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "June",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "June",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Juni",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "summer",
+          "de": "Sommer",
+          "scope": "d"
+        },
+        {
+          "word": "warm",
+          "de": "warm",
+          "scope": "d"
+        },
+        {
+          "word": "holiday",
+          "de": "Urlaub",
+          "scope": "d"
+        },
+        {
+          "word": "soon",
+          "de": "bald",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "July",
+        "May",
+        "August"
+      ],
+      "hintDe": "Der erste Sommermonat.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "July",
+          "May",
+          "August",
+          "January"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.july",
+      "w": "July",
+      "g": "Juli",
+      "d": "It is a hot month of summer, when many children play at the sea.",
+      "s": "It is very hot and we play at the sea in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "July",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "July",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "July",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Juli",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "summer",
+          "de": "Sommer",
+          "scope": "d"
+        },
+        {
+          "word": "sea",
+          "de": "Meer",
+          "scope": "d"
+        },
+        {
+          "word": "sea",
+          "de": "Meer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "June",
+        "August",
+        "September"
+      ],
+      "hintDe": "Ein heißer Sommermonat.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "June",
+          "August",
+          "September",
+          "October"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.august",
+      "w": "August",
+      "g": "August",
+      "d": "It is a hot month of summer, when many families go away on a long holiday.",
+      "s": "Many families go away on a long holiday in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "August",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "August",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "August",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "August",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "summer",
+          "de": "Sommer",
+          "scope": "d"
+        },
+        {
+          "word": "holiday",
+          "de": "Urlaub",
+          "scope": "d"
+        },
+        {
+          "word": "holiday",
+          "de": "Urlaub",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "July",
+        "September",
+        "June"
+      ],
+      "hintDe": "Ein heißer Sommermonat mit Urlaub.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "July",
+          "September",
+          "June",
+          "December"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.september",
+      "w": "September",
+      "g": "September",
+      "d": "It is the month when the hot days end and children go back to school.",
+      "s": "We go back to school after the long holiday in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "September",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "September",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "September",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "September",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "holiday",
+          "de": "Urlaub",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "October",
+        "August",
+        "November"
+      ],
+      "hintDe": "In diesem Monat beginnt wieder die Schule.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "October",
+          "August",
+          "November",
+          "May"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.october",
+      "w": "October",
+      "g": "Oktober",
+      "d": "It is the cool month when the leaves on the trees go brown and red.",
+      "s": "The brown and red leaves come down from the trees in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "October",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "October",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "October",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Oktober",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cool",
+          "de": "kühl",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "September",
+        "November",
+        "December"
+      ],
+      "hintDe": "Ein Herbstmonat mit bunten Blättern.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "September",
+          "November",
+          "December",
+          "April"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.november",
+      "w": "November",
+      "g": "November",
+      "d": "It is the cold, grey month when the days are short and it often rains.",
+      "s": "The days are short and grey in ___, before December.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "November",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "November",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "November",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "November",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "rains",
+          "de": "regnet",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "October",
+        "December",
+        "September"
+      ],
+      "hintDe": "Ein kalter, grauer Monat.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "October",
+          "December",
+          "September",
+          "March"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.december",
+      "w": "December",
+      "g": "Dezember",
+      "d": "It is the last, cold month of the year, when we put up a tree with lights.",
+      "s": "We put up a tree with many lights in ___, the last month of the year.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "December",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "December",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "December",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Dezember",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "November",
+        "January",
+        "October"
+      ],
+      "hintDe": "Der letzte Monat im Jahr.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "November",
+          "January",
+          "October",
+          "July"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.bedroom",
+      "w": "bedroom",
+      "g": "Schlafzimmer",
+      "d": "It is the room with your bed, where you go at night.",
+      "s": "At night I go to my ___, where my bed is.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bedroom",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bedroom",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bedroom",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlafzimmer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "kitchen",
+        "bathroom",
+        "garage"
+      ],
+      "hintDe": "Hier steht dein Bett.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "kitchen",
+          "bathroom",
+          "garage",
+          "library"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.library",
+      "w": "library",
+      "g": "Bibliothek",
+      "d": "It is a room with many books to read.",
+      "s": "I read my books in the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "library",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "library",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "library",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bibliothek",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "kitchen",
+        "bathroom",
+        "bedroom"
+      ],
+      "hintDe": "Hier stehen viele Bücher zum Lesen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "kitchen",
+          "bathroom",
+          "bedroom",
+          "dining room"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.living-room",
+      "w": "living room",
+      "g": "Wohnzimmer",
+      "d": "It is where the family watches TV in the evening.",
+      "s": "We watch TV with the family in the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "living room",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "living room",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "living room",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wohnzimmer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bathroom",
+        "kitchen",
+        "bedroom"
+      ],
+      "hintDe": "Hier sitzt die Familie und schaut fern.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bathroom",
+          "kitchen",
+          "bedroom",
+          "hall"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.dining-room",
+      "w": "dining room",
+      "g": "Esszimmer",
+      "d": "It is where the family eats dinner at a big table.",
+      "s": "We eat our dinner at the big table in the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "dining room",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dining room",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dining room",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Esszimmer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "garage",
+        "bathroom",
+        "garden"
+      ],
+      "hintDe": "Hier isst die Familie am Tisch.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "garage",
+          "bathroom",
+          "garden",
+          "kitchen"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.bathroom",
+      "w": "bathroom",
+      "g": "Badezimmer",
+      "d": "It is the room where you wash and clean your teeth.",
+      "s": "I wash and clean my teeth in the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bathroom",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bathroom",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bathroom",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Badezimmer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bedroom",
+        "kitchen",
+        "living room"
+      ],
+      "hintDe": "Hier wäschst du dich.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bedroom",
+          "kitchen",
+          "living room",
+          "hall"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.hall",
+      "w": "hall",
+      "g": "Flur",
+      "d": "It is the first small room when you come in, where you put your jacket.",
+      "s": "Please put your jacket here in the ___ when you come in.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hall",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hall",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hall",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flur",
+            "tier": "full"
+          },
+          {
+            "text": "Diele",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "kitchen",
+        "bathroom",
+        "bedroom"
+      ],
+      "hintDe": "Der Raum gleich hinter der Eingangstür.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "kitchen",
+          "bathroom",
+          "bedroom",
+          "library"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.kitchen",
+      "w": "kitchen",
+      "g": "Küche",
+      "d": "It is the room where Mum makes the food and we cook.",
+      "s": "Mum makes our breakfast and we cook in the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "kitchen",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "kitchen",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "kitchen",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Küche",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bathroom",
+        "bedroom",
+        "living room"
+      ],
+      "hintDe": "Hier wird gekocht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bathroom",
+          "bedroom",
+          "living room",
+          "garden"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.garden",
+      "w": "garden",
+      "g": "Garten",
+      "d": "It is the place outside, with grass and flowers, where you can play.",
+      "s": "We play outside on the grass in the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "garden",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "garden",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "garden",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Garten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "grass",
+          "de": "Gras",
+          "scope": "d"
+        },
+        {
+          "word": "grass",
+          "de": "Gras",
+          "scope": "s"
+        },
+        {
+          "word": "flowers",
+          "de": "Blumen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "living room",
+        "bathroom",
+        "kitchen"
+      ],
+      "hintDe": "Der grüne Platz beim Haus.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "living room",
+          "bathroom",
+          "kitchen",
+          "garage"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.garage",
+      "w": "garage",
+      "g": "Garage",
+      "d": "It is the place where the car stays at night.",
+      "s": "Dad parks the car in the ___ at night.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "garage",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "garage",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "garage",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Garage",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "living room",
+        "bedroom",
+        "kitchen"
+      ],
+      "hintDe": "Hier steht das Auto.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "living room",
+          "bedroom",
+          "kitchen",
+          "garden"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.1st-first",
+      "w": "1st first",
+      "g": "1. erste/r/s",
+      "d": "It is the one at the very beginning. It is number 1.",
+      "s": "Monday is the ___ day of our school week.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "first",
+          "tier": "full"
+        },
+        {
+          "text": "1st",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "first",
+          "tier": "full"
+        },
+        {
+          "text": "1st",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "first",
+            "tier": "full"
+          },
+          {
+            "text": "1st",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erste",
+            "tier": "full"
+          },
+          {
+            "text": "1.",
+            "tier": "full"
+          },
+          {
+            "text": "erster",
+            "tier": "partial"
+          },
+          {
+            "text": "erstes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "second",
+        "third",
+        "last"
+      ],
+      "hintDe": "Ganz am Anfang, vor allen anderen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "second",
+          "third",
+          "last",
+          "fourth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.2nd-second",
+      "w": "2nd second",
+      "g": "2. zweite/r/s",
+      "d": "It is just after the first one. Number 2.",
+      "s": "Tuesday is the ___ day of the school week, after Monday.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "second",
+          "tier": "full"
+        },
+        {
+          "text": "2nd",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "second",
+          "tier": "full"
+        },
+        {
+          "text": "2nd",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "second",
+            "tier": "full"
+          },
+          {
+            "text": "2nd",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zweite",
+            "tier": "full"
+          },
+          {
+            "text": "2.",
+            "tier": "full"
+          },
+          {
+            "text": "zweiter",
+            "tier": "partial"
+          },
+          {
+            "text": "zweites",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "first",
+        "third",
+        "fourth"
+      ],
+      "hintDe": "Kommt gleich nach dem ersten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "first",
+          "third",
+          "fourth",
+          "fifth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.3rd-third",
+      "w": "3rd third",
+      "g": "3. dritte/r/s",
+      "d": "It is just after the second one. Number 3.",
+      "s": "Wednesday is the ___ day of the school week.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "third",
+          "tier": "full"
+        },
+        {
+          "text": "3rd",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "third",
+          "tier": "full"
+        },
+        {
+          "text": "3rd",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "third",
+            "tier": "full"
+          },
+          {
+            "text": "3rd",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dritte",
+            "tier": "full"
+          },
+          {
+            "text": "3.",
+            "tier": "full"
+          },
+          {
+            "text": "dritter",
+            "tier": "partial"
+          },
+          {
+            "text": "drittes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "second",
+        "fourth",
+        "fifth"
+      ],
+      "hintDe": "Kommt gleich nach dem zweiten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "second",
+          "fourth",
+          "fifth",
+          "first"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.4th-fourth",
+      "w": "4th fourth",
+      "g": "4. vierte/r/s",
+      "d": "It is just after the third one. Number 4.",
+      "s": "Thursday is the ___ day of the school week.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fourth",
+          "tier": "full"
+        },
+        {
+          "text": "4th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fourth",
+          "tier": "full"
+        },
+        {
+          "text": "4th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fourth",
+            "tier": "full"
+          },
+          {
+            "text": "4th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vierte",
+            "tier": "full"
+          },
+          {
+            "text": "4.",
+            "tier": "full"
+          },
+          {
+            "text": "vierter",
+            "tier": "partial"
+          },
+          {
+            "text": "viertes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "third",
+        "fifth",
+        "sixth"
+      ],
+      "hintDe": "Kommt gleich nach dem dritten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "third",
+          "fifth",
+          "sixth",
+          "second"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.5th-fifth",
+      "w": "5th fifth",
+      "g": "5. fünfte/r/s",
+      "d": "It is just after the fourth one. Number 5.",
+      "s": "Friday is the ___ day of the school week.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fifth",
+          "tier": "full"
+        },
+        {
+          "text": "5th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fifth",
+          "tier": "full"
+        },
+        {
+          "text": "5th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fifth",
+            "tier": "full"
+          },
+          {
+            "text": "5th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fünfte",
+            "tier": "full"
+          },
+          {
+            "text": "5.",
+            "tier": "full"
+          },
+          {
+            "text": "fünfter",
+            "tier": "partial"
+          },
+          {
+            "text": "fünftes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fourth",
+        "sixth",
+        "third"
+      ],
+      "hintDe": "Kommt gleich nach dem vierten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fourth",
+          "sixth",
+          "third",
+          "seventh"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.6th-sixth",
+      "w": "6th sixth",
+      "g": "6. sechste/r/s",
+      "d": "It is just after the fifth one. Number 6.",
+      "s": "The ___ piece of cake is for Bill.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sixth",
+          "tier": "full"
+        },
+        {
+          "text": "6th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sixth",
+          "tier": "full"
+        },
+        {
+          "text": "6th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sixth",
+            "tier": "full"
+          },
+          {
+            "text": "6th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sechste",
+            "tier": "full"
+          },
+          {
+            "text": "6.",
+            "tier": "full"
+          },
+          {
+            "text": "sechster",
+            "tier": "partial"
+          },
+          {
+            "text": "sechstes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fifth",
+        "seventh",
+        "fourth"
+      ],
+      "hintDe": "Kommt gleich nach dem fünften.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fifth",
+          "seventh",
+          "fourth",
+          "eighth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.7th-seventh",
+      "w": "7th seventh",
+      "g": "7. siebte/r/s",
+      "d": "It is just after the sixth one. Number 7.",
+      "s": "The ___ piece of cake is also for Bill.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "seventh",
+          "tier": "full"
+        },
+        {
+          "text": "7th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "seventh",
+          "tier": "full"
+        },
+        {
+          "text": "7th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "seventh",
+            "tier": "full"
+          },
+          {
+            "text": "7th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "siebte",
+            "tier": "full"
+          },
+          {
+            "text": "7.",
+            "tier": "full"
+          },
+          {
+            "text": "siebter",
+            "tier": "partial"
+          },
+          {
+            "text": "siebtes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sixth",
+        "eighth",
+        "fifth"
+      ],
+      "hintDe": "Kommt gleich nach dem sechsten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "sixth",
+          "eighth",
+          "fifth",
+          "ninth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.8th-eighth",
+      "w": "8th eighth",
+      "g": "8. achte/r/s",
+      "d": "It is just after the seventh one. Number 8.",
+      "s": "The ___ piece of cake is for you.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "eighth",
+          "tier": "full"
+        },
+        {
+          "text": "8th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "eighth",
+          "tier": "full"
+        },
+        {
+          "text": "8th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "eighth",
+            "tier": "full"
+          },
+          {
+            "text": "8th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "achte",
+            "tier": "full"
+          },
+          {
+            "text": "8.",
+            "tier": "full"
+          },
+          {
+            "text": "achter",
+            "tier": "partial"
+          },
+          {
+            "text": "achtes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "seventh",
+        "ninth",
+        "sixth"
+      ],
+      "hintDe": "Kommt gleich nach dem siebten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "seventh",
+          "ninth",
+          "sixth",
+          "tenth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.9th-ninth",
+      "w": "9th ninth",
+      "g": "9. neunte/r/s",
+      "d": "It is just after the eighth one. Number 9.",
+      "s": "The ___ piece of cake is for Jeremy.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "ninth",
+          "tier": "full"
+        },
+        {
+          "text": "9th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ninth",
+          "tier": "full"
+        },
+        {
+          "text": "9th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ninth",
+            "tier": "full"
+          },
+          {
+            "text": "9th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "neunte",
+            "tier": "full"
+          },
+          {
+            "text": "9.",
+            "tier": "full"
+          },
+          {
+            "text": "neunter",
+            "tier": "partial"
+          },
+          {
+            "text": "neuntes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "eighth",
+        "tenth",
+        "seventh"
+      ],
+      "hintDe": "Kommt gleich nach dem achten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "eighth",
+          "tenth",
+          "seventh",
+          "first"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.10th-tenth",
+      "w": "10th tenth",
+      "g": "10. zehnte/r/s",
+      "d": "It is just after the ninth one. Number 10.",
+      "s": "The ___ and last piece of cake is for me!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "tenth",
+          "tier": "full"
+        },
+        {
+          "text": "10th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tenth",
+          "tier": "full"
+        },
+        {
+          "text": "10th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tenth",
+            "tier": "full"
+          },
+          {
+            "text": "10th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zehnte",
+            "tier": "full"
+          },
+          {
+            "text": "10.",
+            "tier": "full"
+          },
+          {
+            "text": "zehnter",
+            "tier": "partial"
+          },
+          {
+            "text": "zehntes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ninth",
+        "eleventh",
+        "eighth"
+      ],
+      "hintDe": "Kommt gleich nach dem neunten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "ninth",
+          "eleventh",
+          "eighth",
+          "second"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.11th-eleventh",
+      "w": "11th eleventh",
+      "g": "11. elfte/r/s",
+      "d": "It is just after the tenth one. Number 11.",
+      "s": "Her birthday is on the ___ of May.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "eleventh",
+          "tier": "full"
+        },
+        {
+          "text": "11th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "eleventh",
+          "tier": "full"
+        },
+        {
+          "text": "11th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "eleventh",
+            "tier": "full"
+          },
+          {
+            "text": "11th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "elfte",
+            "tier": "full"
+          },
+          {
+            "text": "11.",
+            "tier": "full"
+          },
+          {
+            "text": "elfter",
+            "tier": "partial"
+          },
+          {
+            "text": "elftes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tenth",
+        "twelfth",
+        "ninth"
+      ],
+      "hintDe": "Kommt gleich nach dem zehnten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "tenth",
+          "twelfth",
+          "ninth",
+          "third"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.12th-twelfth",
+      "w": "12th twelfth",
+      "g": "12. zwölfte/r/s",
+      "d": "It is just after the eleventh one. Number 12.",
+      "s": "My birthday is on the ___ of June.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "twelfth",
+          "tier": "full"
+        },
+        {
+          "text": "12th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "twelfth",
+          "tier": "full"
+        },
+        {
+          "text": "12th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "twelfth",
+            "tier": "full"
+          },
+          {
+            "text": "12th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zwölfte",
+            "tier": "full"
+          },
+          {
+            "text": "12.",
+            "tier": "full"
+          },
+          {
+            "text": "zwölfter",
+            "tier": "partial"
+          },
+          {
+            "text": "zwölftes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "eleventh",
+        "thirteenth",
+        "tenth"
+      ],
+      "hintDe": "Kommt gleich nach dem elften.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "eleventh",
+          "thirteenth",
+          "tenth",
+          "fourth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.13th-thirteenth",
+      "w": "13th thirteenth",
+      "g": "13. dreizehnte/r/s",
+      "d": "It is just after the twelfth one. Number 13.",
+      "s": "His birthday is on the ___ of April.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "thirteenth",
+          "tier": "full"
+        },
+        {
+          "text": "13th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thirteenth",
+          "tier": "full"
+        },
+        {
+          "text": "13th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thirteenth",
+            "tier": "full"
+          },
+          {
+            "text": "13th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dreizehnte",
+            "tier": "full"
+          },
+          {
+            "text": "13.",
+            "tier": "full"
+          },
+          {
+            "text": "dreizehnter",
+            "tier": "partial"
+          },
+          {
+            "text": "dreizehntes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "twelfth",
+        "fourteenth",
+        "eleventh"
+      ],
+      "hintDe": "Kommt gleich nach dem zwölften.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "twelfth",
+          "fourteenth",
+          "eleventh",
+          "fifth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.14th-fourteenth",
+      "w": "14th fourteenth",
+      "g": "14. vierzehnte/r/s",
+      "d": "It is just after the thirteenth one. Number 14.",
+      "s": "The school day is on the ___ of February.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fourteenth",
+          "tier": "full"
+        },
+        {
+          "text": "14th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fourteenth",
+          "tier": "full"
+        },
+        {
+          "text": "14th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fourteenth",
+            "tier": "full"
+          },
+          {
+            "text": "14th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vierzehnte",
+            "tier": "full"
+          },
+          {
+            "text": "14.",
+            "tier": "full"
+          },
+          {
+            "text": "vierzehnter",
+            "tier": "partial"
+          },
+          {
+            "text": "vierzehntes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "thirteenth",
+        "fifteenth",
+        "twelfth"
+      ],
+      "hintDe": "Kommt gleich nach dem dreizehnten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "thirteenth",
+          "fifteenth",
+          "twelfth",
+          "sixth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.15th-fifteenth",
+      "w": "15th fifteenth",
+      "g": "15. fünfzehnte/r/s",
+      "d": "It is just after the fourteenth one. Number 15.",
+      "s": "Mario's birthday is on the ___ of May.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fifteenth",
+          "tier": "full"
+        },
+        {
+          "text": "15th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fifteenth",
+          "tier": "full"
+        },
+        {
+          "text": "15th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fifteenth",
+            "tier": "full"
+          },
+          {
+            "text": "15th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fünfzehnte",
+            "tier": "full"
+          },
+          {
+            "text": "15.",
+            "tier": "full"
+          },
+          {
+            "text": "fünfzehnter",
+            "tier": "partial"
+          },
+          {
+            "text": "fünfzehntes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fourteenth",
+        "sixteenth",
+        "thirteenth"
+      ],
+      "hintDe": "Kommt gleich nach dem vierzehnten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fourteenth",
+          "sixteenth",
+          "thirteenth",
+          "seventh"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.16th-sixteenth",
+      "w": "16th sixteenth",
+      "g": "16. sechzehnte/r/s",
+      "d": "It is just after the fifteenth one. Number 16.",
+      "s": "The match is on the ___ of June.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sixteenth",
+          "tier": "full"
+        },
+        {
+          "text": "16th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sixteenth",
+          "tier": "full"
+        },
+        {
+          "text": "16th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sixteenth",
+            "tier": "full"
+          },
+          {
+            "text": "16th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sechzehnte",
+            "tier": "full"
+          },
+          {
+            "text": "16.",
+            "tier": "full"
+          },
+          {
+            "text": "sechzehnter",
+            "tier": "partial"
+          },
+          {
+            "text": "sechzehntes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fifteenth",
+        "seventeenth",
+        "fourteenth"
+      ],
+      "hintDe": "Kommt gleich nach dem fünfzehnten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fifteenth",
+          "seventeenth",
+          "fourteenth",
+          "eighth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.17th-seventeenth",
+      "w": "17th seventeenth",
+      "g": "17. siebzehnte/r/s",
+      "d": "It is just after the sixteenth one. Number 17.",
+      "s": "The concert is on the ___ of November.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "seventeenth",
+          "tier": "full"
+        },
+        {
+          "text": "17th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "seventeenth",
+          "tier": "full"
+        },
+        {
+          "text": "17th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "seventeenth",
+            "tier": "full"
+          },
+          {
+            "text": "17th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "siebzehnte",
+            "tier": "full"
+          },
+          {
+            "text": "17.",
+            "tier": "full"
+          },
+          {
+            "text": "siebzehnter",
+            "tier": "partial"
+          },
+          {
+            "text": "siebzehntes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sixteenth",
+        "eighteenth",
+        "fifteenth"
+      ],
+      "hintDe": "Kommt gleich nach dem sechzehnten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "sixteenth",
+          "eighteenth",
+          "fifteenth",
+          "ninth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.18th-eighteenth",
+      "w": "18th eighteenth",
+      "g": "18. achtzehnte/r/s",
+      "d": "It is just after the seventeenth one. Number 18.",
+      "s": "His birthday is on the ___ of October.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "eighteenth",
+          "tier": "full"
+        },
+        {
+          "text": "18th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "eighteenth",
+          "tier": "full"
+        },
+        {
+          "text": "18th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "eighteenth",
+            "tier": "full"
+          },
+          {
+            "text": "18th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "achtzehnte",
+            "tier": "full"
+          },
+          {
+            "text": "18.",
+            "tier": "full"
+          },
+          {
+            "text": "achtzehnter",
+            "tier": "partial"
+          },
+          {
+            "text": "achtzehntes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "seventeenth",
+        "nineteenth",
+        "sixteenth"
+      ],
+      "hintDe": "Kommt gleich nach dem siebzehnten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "seventeenth",
+          "nineteenth",
+          "sixteenth",
+          "tenth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.19th-nineteenth",
+      "w": "19th nineteenth",
+      "g": "19. neunzehnte/r/s",
+      "d": "It is just after the eighteenth one. Number 19.",
+      "s": "The party is on the ___ of July.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "nineteenth",
+          "tier": "full"
+        },
+        {
+          "text": "19th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nineteenth",
+          "tier": "full"
+        },
+        {
+          "text": "19th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nineteenth",
+            "tier": "full"
+          },
+          {
+            "text": "19th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "neunzehnte",
+            "tier": "full"
+          },
+          {
+            "text": "19.",
+            "tier": "full"
+          },
+          {
+            "text": "neunzehnter",
+            "tier": "partial"
+          },
+          {
+            "text": "neunzehntes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "party",
+          "de": "Party",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "eighteenth",
+        "twentieth",
+        "seventeenth"
+      ],
+      "hintDe": "Kommt gleich nach dem achtzehnten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "eighteenth",
+          "twentieth",
+          "seventeenth",
+          "eleventh"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.20th-twentieth",
+      "w": "20th twentieth",
+      "g": "20. zwanzigste/r/s",
+      "d": "It is just after the nineteenth one. Number 20.",
+      "s": "The school holiday begins on the ___ of December.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "twentieth",
+          "tier": "full"
+        },
+        {
+          "text": "20th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "twentieth",
+          "tier": "full"
+        },
+        {
+          "text": "20th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "twentieth",
+            "tier": "full"
+          },
+          {
+            "text": "20th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zwanzigste",
+            "tier": "full"
+          },
+          {
+            "text": "20.",
+            "tier": "full"
+          },
+          {
+            "text": "zwanzigster",
+            "tier": "partial"
+          },
+          {
+            "text": "zwanzigstes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "holiday",
+          "de": "Urlaub",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "nineteenth",
+        "twenty-first",
+        "thirtieth"
+      ],
+      "hintDe": "Kommt gleich nach dem neunzehnten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "nineteenth",
+          "twenty-first",
+          "thirtieth",
+          "twelfth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.21st-twenty-first",
+      "w": "21st twenty-first",
+      "g": "21. einundzwanzigste/r/s",
+      "d": "It is number 21. It is the one just after number 20.",
+      "s": "The school trip is on the ___ of July.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "twenty-first",
+          "tier": "full"
+        },
+        {
+          "text": "21st",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "twenty-first",
+          "tier": "full"
+        },
+        {
+          "text": "21st",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "twenty-first",
+            "tier": "full"
+          },
+          {
+            "text": "21st",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einundzwanzigste",
+            "tier": "full"
+          },
+          {
+            "text": "21.",
+            "tier": "full"
+          },
+          {
+            "text": "einundzwanzigster",
+            "tier": "partial"
+          },
+          {
+            "text": "einundzwanzigstes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "trip",
+          "de": "Ausflug",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "twentieth",
+        "twenty-second",
+        "thirty-first"
+      ],
+      "hintDe": "Die Zahl 21, gleich nach 20.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "twentieth",
+          "twenty-second",
+          "thirty-first",
+          "thirteenth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.22nd-twenty-second",
+      "w": "22nd twenty-second",
+      "g": "22. zweiundzwanzigste/r/s",
+      "d": "It is number 22. It is the one just after number 21.",
+      "s": "Tom's birthday is on the ___ of March.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "twenty-second",
+          "tier": "full"
+        },
+        {
+          "text": "22nd",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "twenty-second",
+          "tier": "full"
+        },
+        {
+          "text": "22nd",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "twenty-second",
+            "tier": "full"
+          },
+          {
+            "text": "22nd",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zweiundzwanzigste",
+            "tier": "full"
+          },
+          {
+            "text": "22.",
+            "tier": "full"
+          },
+          {
+            "text": "zweiundzwanzigster",
+            "tier": "partial"
+          },
+          {
+            "text": "zweiundzwanzigstes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "twenty-first",
+        "twenty-third",
+        "twentieth"
+      ],
+      "hintDe": "Die Zahl 22, gleich nach 21.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "twenty-first",
+          "twenty-third",
+          "twentieth",
+          "fourteenth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.23rd-twenty-third",
+      "w": "23rd twenty-third",
+      "g": "23. dreiundzwanzigste/r/s",
+      "d": "It is number 23. It is the one just after number 22.",
+      "s": "The match is on the ___ of January.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "twenty-third",
+          "tier": "full"
+        },
+        {
+          "text": "23rd",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "twenty-third",
+          "tier": "full"
+        },
+        {
+          "text": "23rd",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "twenty-third",
+            "tier": "full"
+          },
+          {
+            "text": "23rd",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dreiundzwanzigste",
+            "tier": "full"
+          },
+          {
+            "text": "23.",
+            "tier": "full"
+          },
+          {
+            "text": "dreiundzwanzigster",
+            "tier": "partial"
+          },
+          {
+            "text": "dreiundzwanzigstes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "twenty-second",
+        "twenty-fourth",
+        "twenty-first"
+      ],
+      "hintDe": "Die Zahl 23, gleich nach 22.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "twenty-second",
+          "twenty-fourth",
+          "twenty-first",
+          "fifteenth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.24th-twenty-fourth",
+      "w": "24th twenty-fourth",
+      "g": "24. vierundzwanzigste/r/s",
+      "d": "It is number 24. It is the one just after number 23.",
+      "s": "Sue's birthday is on the ___ of December.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "twenty-fourth",
+          "tier": "full"
+        },
+        {
+          "text": "24th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "twenty-fourth",
+          "tier": "full"
+        },
+        {
+          "text": "24th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "twenty-fourth",
+            "tier": "full"
+          },
+          {
+            "text": "24th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vierundzwanzigste",
+            "tier": "full"
+          },
+          {
+            "text": "24.",
+            "tier": "full"
+          },
+          {
+            "text": "vierundzwanzigster",
+            "tier": "partial"
+          },
+          {
+            "text": "vierundzwanzigstes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "twenty-third",
+        "twenty-fifth",
+        "twenty-second"
+      ],
+      "hintDe": "Die Zahl 24, gleich nach 23.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "twenty-third",
+          "twenty-fifth",
+          "twenty-second",
+          "sixteenth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.25th-twenty-fifth",
+      "w": "25th twenty-fifth",
+      "g": "25. fünfundzwanzigste/r/s",
+      "d": "It is number 25. It is the one just after number 24.",
+      "s": "We open our presents on the ___ of December.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "twenty-fifth",
+          "tier": "full"
+        },
+        {
+          "text": "25th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "twenty-fifth",
+          "tier": "full"
+        },
+        {
+          "text": "25th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "twenty-fifth",
+            "tier": "full"
+          },
+          {
+            "text": "25th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fünfundzwanzigste",
+            "tier": "full"
+          },
+          {
+            "text": "25.",
+            "tier": "full"
+          },
+          {
+            "text": "fünfundzwanzigster",
+            "tier": "partial"
+          },
+          {
+            "text": "fünfundzwanzigstes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "presents",
+          "de": "Geschenke",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "twenty-fourth",
+        "twentieth",
+        "thirtieth"
+      ],
+      "hintDe": "Die Zahl 25, gleich nach 24.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "twenty-fourth",
+          "twentieth",
+          "thirtieth",
+          "seventeenth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.30th-thirtieth",
+      "w": "30th thirtieth",
+      "g": "30. dreißigste/r/s",
+      "d": "It is number 30. It is the last day of many months.",
+      "s": "The last day of April is the ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "thirtieth",
+          "tier": "full"
+        },
+        {
+          "text": "30th",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thirtieth",
+          "tier": "full"
+        },
+        {
+          "text": "30th",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thirtieth",
+            "tier": "full"
+          },
+          {
+            "text": "30th",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dreißigste",
+            "tier": "full"
+          },
+          {
+            "text": "30.",
+            "tier": "full"
+          },
+          {
+            "text": "dreißigster",
+            "tier": "partial"
+          },
+          {
+            "text": "dreißigstes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "twentieth",
+        "thirty-first",
+        "first"
+      ],
+      "hintDe": "Die Zahl 30, der letzte Tag vieler Monate.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "twentieth",
+          "thirty-first",
+          "first",
+          "twelfth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.31st-thirty-first",
+      "w": "31st thirty-first",
+      "g": "31. einunddreißigste/r/s",
+      "d": "It is number 31. It is the very last day of some months.",
+      "s": "The last day of the year is the ___ of December.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "thirty-first",
+          "tier": "full"
+        },
+        {
+          "text": "31st",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thirty-first",
+          "tier": "full"
+        },
+        {
+          "text": "31st",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thirty-first",
+            "tier": "full"
+          },
+          {
+            "text": "31st",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einunddreißigste",
+            "tier": "full"
+          },
+          {
+            "text": "31.",
+            "tier": "full"
+          },
+          {
+            "text": "einunddreißigster",
+            "tier": "partial"
+          },
+          {
+            "text": "einunddreißigstes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "thirtieth",
+        "twenty-first",
+        "first"
+      ],
+      "hintDe": "Der allerletzte Tag im Monat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "thirtieth",
+          "twenty-first",
+          "first",
+          "second"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.birthday-cake",
+      "w": "birthday cake",
+      "g": "Geburtstagskuchen/-torte",
+      "d": "It is the special, sweet thing with candles that you have on your big day in the year.",
+      "s": "Mum is making a big ___ with 12 candles for my birthday.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "birthday cake",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "birthday cake",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "birthday cake",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geburtstagskuchen/-torte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sweet",
+          "de": "süß",
+          "scope": "d"
+        },
+        {
+          "word": "special",
+          "de": "besonders",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "candle",
+        "piece",
+        "robbery"
+      ],
+      "hintDe": "Den isst du an deinem Geburtstag.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "candle",
+          "piece",
+          "robbery",
+          "match"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.eater",
+      "w": "eater",
+      "g": "Esser/Esserin",
+      "d": "It is what you call somebody, when you talk about their food at the table.",
+      "s": "Peter is a messy ___ and has food all over the table.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "eater",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "eater",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "eater",
+            "tier": "full"
+          },
+          {
+            "text": "diner",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Esser/Esserin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "robber",
+        "inspector",
+        "candle"
+      ],
+      "hintDe": "So nennst du jemanden danach, wie er isst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "robber",
+          "inspector",
+          "candle",
+          "piece"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.ill",
+      "w": "ill",
+      "g": "krank",
+      "d": "When you feel bad and have to stay in bed and cannot go to school.",
+      "s": "Bill had too much cake and now he is ___ in bed.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ill",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ill",
+          "tier": "full"
+        },
+        {
+          "text": "sick",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ill",
+            "tier": "full"
+          },
+          {
+            "text": "sick",
+            "tier": "partial"
+          },
+          {
+            "text": "unwell",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "krank",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "feel",
+          "de": "fühlen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "messy",
+        "excellent",
+        "delicious"
+      ],
+      "hintDe": "So fühlst du dich, wenn du im Bett bleiben musst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "messy",
+          "excellent",
+          "delicious",
+          "last"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.messy",
+      "w": "messy",
+      "g": "unordentlich",
+      "d": "When something is not clean and there is food or things all over the place.",
+      "s": "Peter is a ___ eater and has food all over the table.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "messy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "messy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "messy",
+            "tier": "full"
+          },
+          {
+            "text": "untidy",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unordentlich",
+            "tier": "full"
+          },
+          {
+            "text": "schlampig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "things",
+          "de": "Sachen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ill",
+        "delicious",
+        "excellent"
+      ],
+      "hintDe": "So ist es, wenn alles dreckig und durcheinander ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "ill",
+          "delicious",
+          "excellent",
+          "last"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.piece",
+      "w": "piece",
+      "g": "Stück",
+      "d": "It is one part of a bigger thing, like one part of a cake.",
+      "s": "Can I have a ___ of your birthday cake, please?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "piece",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "piece",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "piece",
+            "tier": "full"
+          },
+          {
+            "text": "bit",
+            "tier": "partial"
+          },
+          {
+            "text": "slice",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stück",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "candle",
+        "match",
+        "date"
+      ],
+      "hintDe": "Ein Teil von etwas Größerem, zum Beispiel vom Kuchen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "candle",
+          "match",
+          "date",
+          "month"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.cinema",
+      "w": "cinema",
+      "g": "Kino",
+      "d": "It is the place where you go to watch a new film on a very big screen.",
+      "s": "Let's go to the ___ on Friday and watch the new film.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cinema",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cinema",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cinema",
+            "tier": "full"
+          },
+          {
+            "text": "movies",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kino",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "film",
+          "de": "Film",
+          "scope": "d"
+        },
+        {
+          "word": "film",
+          "de": "Film",
+          "scope": "s"
+        },
+        {
+          "word": "screen",
+          "de": "Leinwand",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "library",
+        "kitchen",
+        "garage"
+      ],
+      "hintDe": "Dort schaust du einen Film auf großer Leinwand.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "library",
+          "kitchen",
+          "garage",
+          "match"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.excellent",
+      "w": "excellent",
+      "g": "ausgezeichnet",
+      "d": "When something is very, very good, the best it can be.",
+      "s": "Ten out of ten! That is ___ work!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "excellent",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "excellent",
+          "tier": "full"
+        },
+        {
+          "text": "great",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "excellent",
+            "tier": "full"
+          },
+          {
+            "text": "great",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ausgezeichnet",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "delicious",
+        "messy",
+        "ill"
+      ],
+      "hintDe": "Wenn etwas wirklich sehr gut ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "delicious",
+          "messy",
+          "ill",
+          "last"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.finally",
+      "w": "finally",
+      "g": "endlich",
+      "d": "When you wait a long time and then at last the thing happens.",
+      "s": "We waited a long time, and ___ the bus came!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "finally",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "finally",
+          "tier": "full"
+        },
+        {
+          "text": "at last",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "finally",
+            "tier": "full"
+          },
+          {
+            "text": "at last",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "endlich",
+            "tier": "full"
+          },
+          {
+            "text": "schließlich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bus",
+          "de": "Bus",
+          "scope": "s"
+        },
+        {
+          "word": "came",
+          "de": "kam",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "probably",
+        "yesterday",
+        "excellent"
+      ],
+      "hintDe": "Nach langem Warten ist es so weit.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "probably",
+          "yesterday",
+          "excellent",
+          "last"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.match",
+      "w": "match",
+      "g": "Match",
+      "d": "It is when two groups of children play, and we watch who is best.",
+      "s": "There is a volleyball ___ on Saturday.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "match",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "match",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "match",
+            "tier": "full"
+          },
+          {
+            "text": "game",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Match",
+            "tier": "full"
+          },
+          {
+            "text": "Spiel",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "volleyball",
+          "de": "Volleyball",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "piece",
+        "candle",
+        "date"
+      ],
+      "hintDe": "Ein Spiel, bei dem zwei Gruppen gegeneinander spielen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "piece",
+          "candle",
+          "date",
+          "month"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.it-s-my-birthday",
+      "w": "It's my birthday.",
+      "g": "Ich habe Geburtstag.",
+      "d": "Today is your special day with a cake, and you are one year older.",
+      "s": "___ I am 11 today, and we have a big cake!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "It's my birthday.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "It's my birthday.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "It's my birthday.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich habe Geburtstag.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "special",
+          "de": "besonders",
+          "scope": "d"
+        },
+        {
+          "word": "older",
+          "de": "älter",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "How old are you?",
+        "Good for you!",
+        "You're welcome."
+      ],
+      "hintDe": "Das sagst du an deinem Geburtstag.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "How old are you?",
+          "Good for you!",
+          "You're welcome.",
+          "That was close."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.date",
+      "w": "date",
+      "g": "Datum",
+      "d": "It is the day and the month, like the 5th of March.",
+      "s": "What is today's ___? It is the 7th of July.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "date",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "date",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "date",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Datum",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "month",
+        "piece",
+        "match"
+      ],
+      "hintDe": "Der Tag und der Monat, zum Beispiel der 5. März.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "month",
+          "piece",
+          "match",
+          "candle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.month",
+      "w": "month",
+      "g": "Monat",
+      "d": "It is one of the twelve parts of a year, like May or June.",
+      "s": "May is the fifth ___ of the year.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "month",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "month",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "month",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Monat",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "twelve",
+          "de": "zwölf",
+          "scope": "d"
+        },
+        {
+          "word": "parts",
+          "de": "Teile",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "date",
+        "piece",
+        "candle"
+      ],
+      "hintDe": "Eines der zwölf Teile eines Jahres.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "date",
+          "piece",
+          "candle",
+          "match"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.how-old-are-you",
+      "w": "How old are you?",
+      "g": "Wie alt bist du?",
+      "d": "You ask this to find out somebody's age in years.",
+      "s": "___ I am 11, and my birthday is in June.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "How old are you?",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "How old are you?",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "How old are you?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wie alt bist du?",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "age",
+          "de": "Alter",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "It's my birthday.",
+        "Good for you!",
+        "You're welcome."
+      ],
+      "hintDe": "So fragst du nach dem Alter.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "It's my birthday.",
+          "Good for you!",
+          "You're welcome.",
+          "That was close."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.candle",
+      "w": "candle",
+      "g": "Kerze",
+      "d": "It is a small thing that gives a tiny light on top of a birthday cake.",
+      "s": "We put 12 ___ on the birthday cake and light them.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "candles",
+          "tier": "full"
+        },
+        {
+          "text": "candle",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "candle",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "candle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kerze",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tiny",
+          "de": "winzig",
+          "scope": "d"
+        },
+        {
+          "word": "top",
+          "de": "Oberseite",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "piece",
+        "date",
+        "match"
+      ],
+      "hintDe": "Eine Kerze gibt ein kleines Licht auf der Torte.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "piece",
+          "date",
+          "match",
+          "month"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.delicious",
+      "w": "delicious",
+      "g": "köstlich",
+      "d": "When food is very, very good to eat.",
+      "s": "This chocolate cake is so ___! I want more.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "delicious",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "delicious",
+          "tier": "full"
+        },
+        {
+          "text": "tasty",
+          "tier": "partial"
+        },
+        {
+          "text": "yummy",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "delicious",
+            "tier": "full"
+          },
+          {
+            "text": "tasty",
+            "tier": "partial"
+          },
+          {
+            "text": "yummy",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "köstlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "excellent",
+        "messy",
+        "ill"
+      ],
+      "hintDe": "So schmeckt etwas sehr Gutes.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "excellent",
+          "messy",
+          "ill",
+          "last"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.last",
+      "w": "last",
+      "g": "letzter/letzte/letztes",
+      "d": "It is the one just before this one, the time before now.",
+      "s": "There was a robbery here ___ night, before today.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "last",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "last",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "last",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "letzte",
+            "tier": "full"
+          },
+          {
+            "text": "letzter",
+            "tier": "partial"
+          },
+          {
+            "text": "letztes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "excellent",
+        "delicious",
+        "messy"
+      ],
+      "hintDe": "Die Zeit gleich vor jetzt, zum Beispiel gestern Nacht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "excellent",
+          "delicious",
+          "messy",
+          "ill"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.robber",
+      "w": "robber",
+      "g": "Räuber/Räuberin",
+      "d": "It is a bad person who takes things that are not theirs.",
+      "s": "Jessie wants to find the ___ who took her cake.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "robber",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "robber",
+          "tier": "full"
+        },
+        {
+          "text": "thief",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "robber",
+            "tier": "full"
+          },
+          {
+            "text": "thief",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Räuber/Räuberin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        },
+        {
+          "word": "takes",
+          "de": "nimmt",
+          "scope": "d"
+        },
+        {
+          "word": "things",
+          "de": "Sachen",
+          "scope": "d"
+        },
+        {
+          "word": "took",
+          "de": "nahm",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "inspector",
+        "eater",
+        "candle"
+      ],
+      "hintDe": "Eine schlechte Person, die Dinge stiehlt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "inspector",
+          "eater",
+          "candle",
+          "robbery"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.robbery",
+      "w": "robbery",
+      "g": "Raubüberfall",
+      "d": "It is when a bad person takes things from a place like a shop.",
+      "s": "There was a ___ at the big shop, and all the money was gone.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "robbery",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "robbery",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "robbery",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Raubüberfall",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        },
+        {
+          "word": "takes",
+          "de": "nimmt",
+          "scope": "d"
+        },
+        {
+          "word": "things",
+          "de": "Sachen",
+          "scope": "d"
+        },
+        {
+          "word": "shop",
+          "de": "Geschäft",
+          "scope": null
+        },
+        {
+          "word": "gone",
+          "de": "weg",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "robber",
+        "inspector",
+        "date"
+      ],
+      "hintDe": "Wenn jemand etwas aus einem Haus oder Geschäft raubt.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "robber",
+          "inspector",
+          "date",
+          "candle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.yesterday",
+      "w": "yesterday",
+      "g": "gestern",
+      "d": "It is the day that was just before today.",
+      "s": "Where were you ___, the day before today?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "yesterday",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "yesterday",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "yesterday",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gestern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "finally",
+        "probably",
+        "last"
+      ],
+      "hintDe": "Der Tag, der gerade vor heute war.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "finally",
+          "probably",
+          "last",
+          "excellent"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.alarm-clock",
+      "w": "alarm clock",
+      "g": "Wecker",
+      "d": "It stands next to your bed and makes a loud noise to wake you up in the morning.",
+      "s": "My ___ makes a loud noise at seven in the morning.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "alarm clock",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "alarm clock",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "alarm clock",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wecker",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stands",
+          "de": "steht",
+          "scope": "d"
+        },
+        {
+          "word": "loud",
+          "de": "laut",
+          "scope": "d"
+        },
+        {
+          "word": "loud",
+          "de": "laut",
+          "scope": "s"
+        },
+        {
+          "word": "wake",
+          "de": "wecken",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "candle",
+        "piece",
+        "robber"
+      ],
+      "hintDe": "Die Uhr am Bett, die dich am Morgen aufweckt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "candle",
+          "piece",
+          "robber",
+          "match"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.probably",
+      "w": "probably",
+      "g": "wahrscheinlich",
+      "d": "When you think something is true, but you do not know it for sure.",
+      "s": "It is very grey outside, so it is ___ going to rain later.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "probably",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "probably",
+          "tier": "full"
+        },
+        {
+          "text": "maybe",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "probably",
+            "tier": "full"
+          },
+          {
+            "text": "maybe",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wahrscheinlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "know",
+          "de": "wissen",
+          "scope": "d"
+        },
+        {
+          "word": "sure",
+          "de": "sicher",
+          "scope": "d"
+        },
+        {
+          "word": "rain",
+          "de": "regnen",
+          "scope": "s"
+        },
+        {
+          "word": "later",
+          "de": "später",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "finally",
+        "yesterday",
+        "last"
+      ],
+      "hintDe": "Wenn du etwas annimmst, aber nicht ganz sicher bist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "finally",
+          "yesterday",
+          "last",
+          "excellent"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.good-for-you",
+      "w": "Good for you!",
+      "g": "Schön für dich!",
+      "d": "A happy thing you say when something nice happens to another person.",
+      "s": "You won the match? ___ I am so happy for you!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Good for you!",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Good for you!",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Good for you!",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schön für dich!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "another",
+          "de": "andere",
+          "scope": "d"
+        },
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        },
+        {
+          "word": "won",
+          "de": "gewonnen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "How dare you!",
+        "You're welcome.",
+        "That was close."
+      ],
+      "hintDe": "Das sagst du, wenn du dich für jemanden freust.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "How dare you!",
+          "You're welcome.",
+          "That was close.",
+          "It's my birthday."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.inspector",
+      "w": "inspector",
+      "g": "Inspektor/Inspektorin",
+      "d": "It is the person who asks everybody many things to find the robber.",
+      "s": "The police ___ asked everybody where they were last night.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "inspector",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "inspector",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "inspector",
+            "tier": "full"
+          },
+          {
+            "text": "detective",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Inspektor/Inspektorin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        },
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        },
+        {
+          "word": "police",
+          "de": "Polizei",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "robber",
+        "eater",
+        "candle"
+      ],
+      "hintDe": "Diese Person stellt Fragen, um den Räuber zu finden.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "robber",
+          "eater",
+          "candle",
+          "robbery"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.how-dare-you",
+      "w": "How dare you!",
+      "g": "Wie kannst du es wagen!",
+      "d": "An angry thing you say when a person does a very bad thing to you.",
+      "s": "You had my cake without asking me? ___",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "How dare you!",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "How dare you!",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "How dare you!",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wie kannst du es wagen!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        },
+        {
+          "word": "without",
+          "de": "ohne",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Good for you!",
+        "You're welcome.",
+        "That was close."
+      ],
+      "hintDe": "Das sagst du, wenn du sehr zornig bist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "Good for you!",
+          "You're welcome.",
+          "That was close.",
+          "It's my birthday."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.that-was-close",
+      "w": "That was close.",
+      "g": "Das war knapp.",
+      "d": "You say this when a bad thing nearly happens but in the end does not happen.",
+      "s": "That car was very close to us! ___",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "That was close.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "That was close.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "That was close.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Das war knapp.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "nearly",
+          "de": "fast",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "Good for you!",
+        "You're welcome.",
+        "How dare you!"
+      ],
+      "hintDe": "Das sagst du, wenn fast etwas Schlimmes passiert wäre.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "Good for you!",
+          "You're welcome.",
+          "How dare you!",
+          "It's my birthday."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u12.w.you-re-welcome",
+      "w": "You're welcome.",
+      "g": "Nichts zu danken.",
+      "d": "You say this back to a person after they say thank you to you.",
+      "s": "Thank you for your help! — ___",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "You're welcome.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "You're welcome.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "You're welcome.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nichts zu danken.",
+            "tier": "full"
+          },
+          {
+            "text": "Keine Ursache.",
+            "tier": "partial"
+          },
+          {
+            "text": "Gern geschehen.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        },
+        {
+          "word": "help",
+          "de": "Hilfe",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Good for you!",
+        "How dare you!",
+        "That was close."
+      ],
+      "hintDe": "Das antwortest du, wenn sich jemand bei dir bedankt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Good for you!",
+          "How dare you!",
+          "That was close.",
+          "It's my birthday."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

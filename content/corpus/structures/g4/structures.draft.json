@@ -1,0 +1,1175 @@
+{
+  "schema": "grammar-structures-draft@1",
+  "grade": 4,
+  "briefEvidence": "f91685ad630f",
+  "structures": [
+    {
+      "key": "past-continuous-revision",
+      "unit": 1,
+      "name": "Past continuous (revision)",
+      "nameDe": "Past continuous (Wiederholung)",
+      "category": "tenses",
+      "description": "Revision of the past continuous (was/were + -ing) for a longer action that was going on in the past, for a longer action interrupted by a shorter one (past simple), and for two longer actions happening at the same time. The unit-1 box recaps the form and contrasts it with the past simple.",
+      "rules": [
+        {
+          "id": "form-was-were-ing",
+          "en": "Form the past continuous with was/were + the -ing form of the verb. Use was with I/he/she/it and were with you/we/they.",
+          "de": "Du bildest das Past continuous mit was/were + der -ing-Form des Verbs. was steht bei I/he/she/it, were bei you/we/they.",
+          "examples": [
+            {
+              "en": "From 2014 onwards, everything was getting better for Ireland.",
+              "de": "Ab 2014 wurde alles besser für Irland."
+            },
+            {
+              "en": "While his mum was reading, Johnny gave her a surprise.",
+              "de": "Während seine Mutter las, überraschte Johnny sie."
+            }
+          ]
+        },
+        {
+          "id": "interrupted-by-past-simple",
+          "en": "Use the past continuous for a longer action and the past simple for a shorter action that interrupts it, often with when or while.",
+          "de": "Du verwendest das Past continuous für eine längere Handlung und das Past simple für eine kürzere, die sie unterbricht - oft mit when oder while.",
+          "examples": [
+            {
+              "en": "I was walking home when it started to rain.",
+              "de": "Ich ging gerade nach Hause, als es zu regnen begann."
+            },
+            {
+              "en": "While they were trying to find food, one million of them died.",
+              "de": "Während sie versuchten, Nahrung zu finden, starben eine Million von ihnen."
+            }
+          ]
+        },
+        {
+          "id": "two-simultaneous-actions",
+          "en": "Use the past continuous in both halves for two longer actions happening at the same time in the past. Pattern: While X was doing ..., Y was doing ...",
+          "de": "Du verwendest das Past continuous in beiden Satzteilen für zwei längere Handlungen, die gleichzeitig in der Vergangenheit stattfanden. Muster: While X was doing ..., Y was doing ...",
+          "examples": [
+            {
+              "en": "While many poor people were starving, the landlords were sending grain to England.",
+              "de": "Während viele arme Menschen hungerten, schickten die Grundbesitzer Getreide nach England."
+            },
+            {
+              "en": "She was cooking while he was cleaning the house.",
+              "de": "Sie kochte, während er das Haus putzte."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the past continuous for the short interrupting action too",
+          "wrong": "While he was walking, he was seeing a dog.",
+          "correct": "While he was walking, he saw a dog."
+        },
+        {
+          "description": "Using the past simple for the longer background action instead of the continuous",
+          "wrong": "While he walked, he saw a dog.",
+          "correct": "While he was walking, he saw a dog."
+        },
+        {
+          "description": "Using the continuous with a stative verb",
+          "wrong": "I was knowing the answer.",
+          "correct": "I knew the answer."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [],
+      "seedV1": [
+        "m4-u1-past-continuous-revision"
+      ]
+    },
+    {
+      "key": "past-perfect",
+      "unit": 2,
+      "name": "Past perfect",
+      "nameDe": "Past perfect (Vorvergangenheit)",
+      "category": "tenses",
+      "description": "The past perfect (had + past participle) for an action that had already happened before another point or action in the past, used to make the order of past events clear in narratives. It marks the earlier event; the past simple marks the later one.",
+      "rules": [
+        {
+          "id": "use-earlier-past-event",
+          "en": "Use the past perfect when you want to stress that an action had already happened before a certain time or another action in the past.",
+          "de": "Du verwendest das Past perfect, wenn du betonen möchtest, dass eine Handlung vor einem bestimmten Zeitpunkt oder einer anderen Handlung in der Vergangenheit schon geschehen war.",
+          "examples": [
+            {
+              "en": "Nobody was in the building. All the employees had left.",
+              "de": "Niemand war im Gebäude. Alle Angestellten waren gegangen."
+            },
+            {
+              "en": "When Harry got up, he realised that he had put his tent in the wrong place.",
+              "de": "Als Harry aufstand, merkte er, dass er sein Zelt am falschen Platz aufgestellt hatte."
+            }
+          ]
+        },
+        {
+          "id": "form-had-past-participle",
+          "en": "Form it with subject + had(n't) + the past participle (3rd form) of the verb. had is the same for all persons.",
+          "de": "Du bildest es mit Subjekt + had(n't) + dem Partizip Perfekt (3. Form) des Verbs. had ist für alle Personen gleich.",
+          "examples": [
+            {
+              "en": "The murderer was an orang-utan. It had escaped from a sailor.",
+              "de": "Der Mörder war ein Orang-Utan. Er war einem Matrosen entkommen."
+            },
+            {
+              "en": "By the time we got there, the shop had closed.",
+              "de": "Als wir dort ankamen, hatte der Laden schon geschlossen."
+            }
+          ]
+        },
+        {
+          "id": "sequence-with-past-simple",
+          "en": "In a sentence with two past events, the past perfect marks the earlier event and the past simple marks the later one.",
+          "de": "In einem Satz mit zwei vergangenen Ereignissen markiert das Past perfect das frühere Ereignis und das Past simple das spätere.",
+          "examples": [
+            {
+              "en": "When we arrived, the film had already started.",
+              "de": "Als wir ankamen, hatte der Film schon begonnen."
+            },
+            {
+              "en": "She was tired because she hadn't slept well.",
+              "de": "Sie war müde, weil sie nicht gut geschlafen hatte."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the past perfect for all past events, not just the earlier one",
+          "wrong": "I had eaten breakfast and then I had gone to school.",
+          "correct": "I had eaten breakfast and then I went to school."
+        },
+        {
+          "description": "Missing the past perfect when the order of events matters",
+          "wrong": "When I arrived, everyone left.",
+          "correct": "When I arrived, everyone had left."
+        },
+        {
+          "description": "Using the wrong (past simple) form after had instead of the past participle",
+          "wrong": "I had went to the shop.",
+          "correct": "I had gone to the shop."
+        }
+      ],
+      "recursIn": [
+        5
+      ],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 2.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u2-past-perfect"
+      ]
+    },
+    {
+      "key": "reported-speech-statements",
+      "unit": 3,
+      "name": "Reported speech (statements)",
+      "nameDe": "Indirekte Rede - Aussagesätze",
+      "category": "reported-speech",
+      "description": "Reporting what someone said with a past reporting verb (said/told): the tense shifts one step back, pronouns and time/place words are adjusted, and say is used without a person while tell is used with a person.",
+      "rules": [
+        {
+          "id": "tense-backshift",
+          "en": "When the reporting verb is in the past (said/told), shift the tense one step back: present -> past, past/present perfect -> past perfect, can -> could, will -> would, must -> had to.",
+          "de": "Wenn das einleitende Verb im Past steht (said/told), verschiebst du die Zeitform um eine Stufe zurück: present -> past, past/present perfect -> past perfect, can -> could, will -> would, must -> had to.",
+          "examples": [
+            {
+              "en": "\"It looks like a war.\" -> One critic said that it looked like a war.",
+              "de": "\"Es sieht aus wie ein Krieg.\" -> Ein Kritiker sagte, dass es wie ein Krieg aussah."
+            },
+            {
+              "en": "\"We will land on the river.\" -> Sully said that they would land on the river.",
+              "de": "\"Wir werden auf dem Fluss landen.\" -> Sully sagte, dass sie auf dem Fluss landen würden."
+            }
+          ]
+        },
+        {
+          "id": "pronoun-and-time-shift",
+          "en": "Adjust the pronouns to the new perspective and shift time/place words: today -> that day, here -> there, this -> the. If you report on the same day, the time words stay the same.",
+          "de": "Passe die Pronomen an die neue Perspektive an und verschiebe Zeit- und Ortsangaben: today -> that day, here -> there, this -> the. Wenn du am selben Tag berichtest, bleiben die Zeitangaben gleich.",
+          "examples": [
+            {
+              "en": "\"I like you,\" he said to me. -> He said that he liked me.",
+              "de": "\"Ich mag dich\", sagte er zu mir. -> Er sagte, dass er mich mochte."
+            },
+            {
+              "en": "\"I live here.\" -> He said that he lived there.",
+              "de": "\"Ich wohne hier.\" -> Er sagte, dass er dort wohnte."
+            }
+          ]
+        },
+        {
+          "id": "say-vs-tell",
+          "en": "Use said without a person: He said (that) ... Use told only with a person: He told me (that) ... Never say 'He said me' or 'He told that'.",
+          "de": "Verwende said ohne Person: He said (that) ... Verwende told nur mit Person: He told me (that) ... Nie 'He said me' oder 'He told that'.",
+          "examples": [
+            {
+              "en": "Harten said (to Sully) that runway 1 was free.",
+              "de": "Harten sagte (zu Sully), dass Startbahn 1 frei war."
+            },
+            {
+              "en": "Harten told Sully that runway 1 was free.",
+              "de": "Harten sagte Sully, dass Startbahn 1 frei war."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "No tense backshift - keeping the original present tense",
+          "wrong": "He said he likes jazz.",
+          "correct": "He said he liked jazz."
+        },
+        {
+          "description": "Confusing say and tell (said me / told without a person)",
+          "wrong": "He said me that he was tired.",
+          "correct": "He told me that he was tired."
+        },
+        {
+          "description": "Failing to shift the pronouns when reporting",
+          "wrong": "He said I like jazz.",
+          "correct": "He said he liked jazz."
+        }
+      ],
+      "recursIn": [
+        4
+      ],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 3.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u3-reported-speech-statements"
+      ]
+    },
+    {
+      "key": "reported-questions",
+      "unit": 4,
+      "name": "Questions in reported speech",
+      "nameDe": "Indirekte Fragen",
+      "category": "reported-speech",
+      "description": "Reporting questions: drop do/does/did, change the tense one step back as in reported statements, and use statement word order. Keep the question word for wh-questions; use if (or whether) for yes/no questions.",
+      "rules": [
+        {
+          "id": "no-do-statement-order",
+          "en": "In reported questions there is no do/does/did and no inversion. Use statement word order (subject before verb) and backshift the tense, just like in reported statements (Unit 3).",
+          "de": "In indirekten Fragen gibt es kein do/does/did und keine Inversion. Verwende die Aussagesatz-Wortstellung (Subjekt vor Verb) und verschiebe die Zeit zurück, genau wie in der indirekten Rede (Unit 3).",
+          "examples": [
+            {
+              "en": "\"Where do you live?\" -> She asked me where I lived.",
+              "de": "\"Wo wohnst du?\" -> Sie fragte mich, wo ich wohnte."
+            },
+            {
+              "en": "\"Why do you have a dog with you?\" -> He asked me why I had a dog with me.",
+              "de": "\"Warum hast du einen Hund dabei?\" -> Er fragte mich, warum ich einen Hund dabeihatte."
+            }
+          ]
+        },
+        {
+          "id": "keep-question-word",
+          "en": "For wh-questions, keep the question word (why, where, who, when, how, what) and follow it with subject + backshifted verb.",
+          "de": "Bei W-Fragen behältst du das Fragewort (why, where, who, when, how, what) und stellst danach Subjekt + zurückverschobenes Verb.",
+          "examples": [
+            {
+              "en": "\"Where have you worked before?\" -> He asked me where I had worked before.",
+              "de": "\"Wo hast du vorher gearbeitet?\" -> Er fragte mich, wo ich vorher gearbeitet hatte."
+            },
+            {
+              "en": "\"When can you start?\" -> They asked me when I could start.",
+              "de": "\"Wann kannst du anfangen?\" -> Sie fragten mich, wann ich anfangen könnte."
+            }
+          ]
+        },
+        {
+          "id": "if-for-yes-no",
+          "en": "For yes/no questions, use if (or whether) and backshift the tense (German: ob ...).",
+          "de": "Bei Ja/Nein-Fragen verwendest du if (oder whether) und verschiebst die Zeit zurück (deutsch: ob ...).",
+          "examples": [
+            {
+              "en": "\"Do you like working with people?\" -> He asked me if I liked working with people.",
+              "de": "\"Arbeitest du gern mit Menschen?\" -> Er fragte mich, ob ich gern mit Menschen arbeitete."
+            },
+            {
+              "en": "\"Can you start on Monday?\" -> They asked me if I could start on Monday.",
+              "de": "\"Kannst du am Montag anfangen?\" -> Sie fragten mich, ob ich am Montag anfangen könnte."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Keeping question word order (inversion) in the reported question",
+          "wrong": "He asked where did I work.",
+          "correct": "He asked where I worked."
+        },
+        {
+          "description": "Keeping do/does/did in the reported question",
+          "wrong": "She asked me did I like pizza.",
+          "correct": "She asked me if I liked pizza."
+        },
+        {
+          "description": "Adding that before if/whether",
+          "wrong": "He asked that if I was ready.",
+          "correct": "He asked if I was ready."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 4.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u4-reported-questions"
+      ]
+    },
+    {
+      "key": "past-perfect-connectors",
+      "unit": 5,
+      "name": "Past perfect with just / after / before (revision)",
+      "nameDe": "Past perfect mit just / after / before (Wiederholung)",
+      "category": "tenses",
+      "description": "Revision of the past perfect plus its use with the time connectors after, before and just to put two past events in the right order, and connecting ideas with because, although, however, in order to and so that.",
+      "rules": [
+        {
+          "id": "after-had-past-participle",
+          "en": "Use the past perfect for the first event and the past simple for the second. After + subject + had + past participle marks the earlier action.",
+          "de": "Du verwendest das Past perfect für das erste Ereignis und das Past simple für das zweite. After + Subjekt + had + Partizip Perfekt markiert die frühere Handlung.",
+          "examples": [
+            {
+              "en": "After James had eaten the two pizzas, he felt very ill.",
+              "de": "Nachdem James die zwei Pizzen gegessen hatte, fühlte er sich sehr schlecht."
+            },
+            {
+              "en": "After they had finished dinner, they went for a walk.",
+              "de": "Nachdem sie das Abendessen beendet hatten, gingen sie spazieren."
+            }
+          ]
+        },
+        {
+          "id": "just-and-before",
+          "en": "Put just between had and the past participle for an event that happened shortly before another. After before you usually do not need the past perfect, because before already shows the order.",
+          "de": "Du stellst just zwischen had und das Partizip Perfekt für ein Ereignis, das kurz vor einem anderen geschah. Nach before brauchst du meist kein Past perfect, weil before die Reihenfolge schon zeigt.",
+          "examples": [
+            {
+              "en": "Sally had just finished her meal when Tom came home.",
+              "de": "Sally hatte gerade ihr Essen beendet, als Tom nach Hause kam."
+            },
+            {
+              "en": "My friends had left before I got there.",
+              "de": "Meine Freunde waren gegangen, bevor ich dort ankam."
+            }
+          ]
+        },
+        {
+          "id": "connecting-ideas",
+          "en": "Link ideas with connectors: because / because of (cause), although / however (contrast), in order to / so that (purpose).",
+          "de": "Verknüpfe Gedanken mit Konnektoren: because / because of (Ursache), although / however (Gegensatz), in order to / so that (Absicht).",
+          "examples": [
+            {
+              "en": "Children will live shorter lives because of the food they eat.",
+              "de": "Kinder werden wegen des Essens, das sie essen, ein kürzeres Leben haben."
+            },
+            {
+              "en": "He did a TV programme in order to educate people about food.",
+              "de": "Er machte eine Fernsehsendung, um die Leute über Essen aufzuklären."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the past simple instead of the past perfect after 'after'",
+          "wrong": "After I ate dinner, I went to bed.",
+          "correct": "After I had eaten dinner, I went to bed."
+        },
+        {
+          "description": "Putting 'just' in the wrong position",
+          "wrong": "I had finished just my meal when she arrived.",
+          "correct": "I had just finished my meal when she arrived."
+        },
+        {
+          "description": "Using two contrast connectors together (although ... but)",
+          "wrong": "Although it was raining, but we went out.",
+          "correct": "Although it was raining, we went out."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 5.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u5-past-perfect-connectors"
+      ]
+    },
+    {
+      "key": "adverbs-of-manner",
+      "unit": 6,
+      "name": "Adverbs of manner (revision)",
+      "nameDe": "Adverbien der Art und Weise (Wiederholung)",
+      "category": "other",
+      "description": "Adverbs of manner say how someone does something or how something happens. Regular adverbs are adjective + -ly; some are irregular (well, fast, hard/hardly); and after linking verbs (look, sound, feel, taste, smell) you use an adjective, not an adverb. Taught in the unit-6 grammar box together with question tags.",
+      "rules": [
+        {
+          "id": "adjective-plus-ly",
+          "en": "Form regular adverbs of manner by adding -ly to the adjective. They tell you how something is done.",
+          "de": "Regelmäßige Adverbien der Art und Weise bildest du, indem du -ly an das Adjektiv anhängst. Sie sagen, wie etwas getan wird.",
+          "examples": [
+            {
+              "en": "Dream Boxes were successfully distributed to over 50,000 students.",
+              "de": "Dream Boxes wurden erfolgreich an über 50.000 Schüler verteilt."
+            },
+            {
+              "en": "He drove slowly through the village.",
+              "de": "Er fuhr langsam durch das Dorf."
+            }
+          ]
+        },
+        {
+          "id": "irregular-adverbs",
+          "en": "Some adverbs are irregular: good -> well, fast -> fast, hard -> hard. Watch out: hard means 'with effort', but hardly means 'almost not at all'.",
+          "de": "Einige Adverbien sind unregelmäßig: good -> well, fast -> fast, hard -> hard. Achtung: hard bedeutet 'mit Anstrengung', hardly aber 'kaum'.",
+          "examples": [
+            {
+              "en": "Everybody worked hard.",
+              "de": "Alle arbeiteten hart."
+            },
+            {
+              "en": "I hardly slept at all last night.",
+              "de": "Ich habe letzte Nacht kaum geschlafen."
+            }
+          ]
+        },
+        {
+          "id": "adjective-after-linking-verbs",
+          "en": "After the verbs look, sound, feel, taste and smell, use an adjective (not an adverb), because they describe a state, not an action.",
+          "de": "Nach den Verben look, sound, feel, taste und smell verwendest du ein Adjektiv (kein Adverb), weil sie einen Zustand und keine Handlung beschreiben.",
+          "examples": [
+            {
+              "en": "That doesn't sound good.",
+              "de": "Das klingt nicht gut."
+            },
+            {
+              "en": "This food tastes awful.",
+              "de": "Dieses Essen schmeckt schrecklich."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the adjective form where an adverb is needed",
+          "wrong": "She sings beautiful.",
+          "correct": "She sings beautifully."
+        },
+        {
+          "description": "Using an adverb after a linking verb instead of an adjective",
+          "wrong": "It tastes badly.",
+          "correct": "It tastes bad."
+        },
+        {
+          "description": "Confusing hard (with effort) and hardly (almost not)",
+          "wrong": "He hardly works. (meaning: he works a lot)",
+          "correct": "He works hard."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 6.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u6-adverbs-of-manner"
+      ]
+    },
+    {
+      "key": "question-tags",
+      "unit": 6,
+      "name": "Question tags",
+      "nameDe": "Frageanhängsel (Question tags)",
+      "category": "other",
+      "description": "Short question tags (the English 'oder?' / 'nicht wahr?') added to the end of a sentence: a positive sentence takes a negative tag and a negative sentence a positive tag. The tag repeats the auxiliary or modal, or uses do/does/did, and always ends with a pronoun. Taught in the unit-6 grammar box together with adverbs of manner.",
+      "rules": [
+        {
+          "id": "opposite-polarity",
+          "en": "Use the opposite polarity in the tag: a positive sentence takes a negative tag, and a negative sentence takes a positive tag.",
+          "de": "Verwende im Anhang die gegenteilige Polarität: Ein bejahender Satz bekommt einen verneinenden Anhang, ein verneinender einen bejahenden.",
+          "examples": [
+            {
+              "en": "That's easy, isn't it?",
+              "de": "Das ist einfach, oder?"
+            },
+            {
+              "en": "You aren't from here, are you?",
+              "de": "Du bist nicht von hier, oder?"
+            }
+          ]
+        },
+        {
+          "id": "repeat-auxiliary-or-do",
+          "en": "Repeat the auxiliary (be/have) or the modal (can/should/will/might) in the tag. If there is no auxiliary or modal, use a form of do.",
+          "de": "Wiederhole im Anhang das Hilfsverb (be/have) oder das Modalverb (can/should/will/might). Gibt es kein Hilfs- oder Modalverb, verwende eine Form von do.",
+          "examples": [
+            {
+              "en": "All kids should eat healthily, shouldn't they?",
+              "de": "Alle Kinder sollten sich gesund ernähren, oder?"
+            },
+            {
+              "en": "She started her healthy cooking channel, didn't she?",
+              "de": "Sie hat ihren Kanal für gesundes Kochen gestartet, oder?"
+            }
+          ]
+        },
+        {
+          "id": "pronoun-in-tag",
+          "en": "The tag always ends with a pronoun, never a noun - replace a noun subject with the matching pronoun. Special case: I am ..., aren't I? (not 'amn't I?').",
+          "de": "Der Anhang endet immer mit einem Pronomen, nie mit einem Nomen - ersetze ein Nomen-Subjekt durch das passende Pronomen. Sonderfall: I am ..., aren't I? (nicht 'amn't I?').",
+          "examples": [
+            {
+              "en": "Amber was only 11 at the time, wasn't she?",
+              "de": "Amber war damals erst 11, oder?"
+            },
+            {
+              "en": "I am late, aren't I?",
+              "de": "Ich bin spät dran, oder?"
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the wrong auxiliary in the tag (is instead of does)",
+          "wrong": "She likes music, isn't she?",
+          "correct": "She likes music, doesn't she?"
+        },
+        {
+          "description": "Using the same polarity instead of the opposite one",
+          "wrong": "She likes music, does she?",
+          "correct": "She likes music, doesn't she?"
+        },
+        {
+          "description": "Using a noun or the wrong pronoun in the tag",
+          "wrong": "The children are coming, isn't it?",
+          "correct": "The children are coming, aren't they?"
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 6.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u6-question-tags"
+      ]
+    },
+    {
+      "key": "present-simple-future",
+      "unit": 7,
+      "name": "Present simple for future",
+      "nameDe": "Present simple für die Zukunft",
+      "category": "tenses",
+      "description": "Using the present simple for fixed future arrangements such as timetables and schedules (trains, planes, events), where everything is officially agreed. there is/are and have got can be used the same way for fixed future plans. Taught in the unit-7 grammar box together with want someone to.",
+      "rules": [
+        {
+          "id": "timetables-schedules",
+          "en": "Use the present simple for future actions that are firmly agreed, such as timetables and schedules.",
+          "de": "Du verwendest das Present simple für zukünftige Handlungen, die fest vereinbart sind, etwa Fahrpläne und Flugpläne.",
+          "examples": [
+            {
+              "en": "Our plane to Alice Springs leaves at 8.30 tomorrow.",
+              "de": "Unser Flugzeug nach Alice Springs fliegt morgen um 8.30 ab."
+            },
+            {
+              "en": "We leave London at about 9 p.m. on Friday.",
+              "de": "Wir verlassen London am Freitag gegen 21 Uhr."
+            }
+          ]
+        },
+        {
+          "id": "there-is-have-got",
+          "en": "You can also use there is/are or have got to talk about firmly arranged future events.",
+          "de": "Du kannst auch there is/are oder have got verwenden, um über fest vereinbarte zukünftige Ereignisse zu sprechen.",
+          "examples": [
+            {
+              "en": "There's a beach party this Sunday.",
+              "de": "Diesen Sonntag gibt es eine Strandparty."
+            },
+            {
+              "en": "We've got another plane trip tomorrow.",
+              "de": "Wir haben morgen noch einen Flug."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the present simple for any future event, not just timetables",
+          "wrong": "I go to the cinema tomorrow with my friends.",
+          "correct": "I'm going to go to the cinema tomorrow with my friends."
+        },
+        {
+          "description": "Using will for a timetabled event instead of the present simple",
+          "wrong": "The train will leave at 6 tomorrow.",
+          "correct": "The train leaves at 6 tomorrow."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 7.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u7-present-simple-future"
+      ]
+    },
+    {
+      "key": "want-someone-to",
+      "unit": 7,
+      "name": "want / tell / ask + someone + to",
+      "nameDe": "want / tell / ask + Person + to-Infinitiv",
+      "category": "other",
+      "description": "The pattern want + person + to-infinitive for saying that you want someone (not) to do something - the English way of saying 'Ich will, dass jemand etwas tut'. tell and ask follow the same pattern. Contrast with let, which takes the bare infinitive. Taught in the unit-7 grammar box together with present simple for future.",
+      "rules": [
+        {
+          "id": "want-person-to",
+          "en": "Use want + person + to + the base verb. NOT want + that + clause. This is how English says 'Ich will, dass jemand etwas tut'.",
+          "de": "Du verwendest want + Person + to + Grundform. NICHT want + that + Satz. So sagt man im Englischen 'Ich will, dass jemand etwas tut'.",
+          "examples": [
+            {
+              "en": "Mum and Dad want us to see Ayers Rock.",
+              "de": "Mama und Papa wollen, dass wir den Ayers Rock sehen."
+            },
+            {
+              "en": "They wanted Morgan to cross Australia on foot.",
+              "de": "Sie wollten, dass Morgan Australien zu Fuß durchquert."
+            }
+          ]
+        },
+        {
+          "id": "tell-ask-same-pattern",
+          "en": "tell and ask use the same pattern: tell + person + to (a command), ask + person + to (a request). The negative is verb + person + not to + base verb.",
+          "de": "tell und ask verwenden dasselbe Muster: tell + Person + to (Befehl), ask + Person + to (Bitte). Die Verneinung ist Verb + Person + not to + Grundform.",
+          "examples": [
+            {
+              "en": "I told Eve to get out of the tent and run to the car.",
+              "de": "Ich sagte Eve, sie solle aus dem Zelt kommen und zum Auto laufen."
+            },
+            {
+              "en": "They asked her to come with them.",
+              "de": "Sie baten sie mitzukommen."
+            }
+          ]
+        },
+        {
+          "id": "want-vs-let",
+          "en": "Do not confuse this with let, which takes the bare infinitive (no 'to'): My parents let me go - but: My parents want me to go.",
+          "de": "Verwechsle das nicht mit let, das die Grundform ohne 'to' nimmt: My parents let me go - aber: My parents want me to go.",
+          "examples": [
+            {
+              "en": "My parents let me stay up late.",
+              "de": "Meine Eltern lassen mich lange aufbleiben."
+            },
+            {
+              "en": "My parents want me to go to bed early.",
+              "de": "Meine Eltern wollen, dass ich früh ins Bett gehe."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using 'want that + clause' instead of 'want + person + to'",
+          "wrong": "I want that you come.",
+          "correct": "I want you to come."
+        },
+        {
+          "description": "Leaving out 'to' before the infinitive",
+          "wrong": "I want you come.",
+          "correct": "I want you to come."
+        },
+        {
+          "description": "Adding 'to' after let (mixing up the patterns)",
+          "wrong": "My parents let me to go out.",
+          "correct": "My parents let me go out."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 7.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u7-want-someone-to"
+      ]
+    },
+    {
+      "key": "tense-time-expression-review",
+      "unit": 8,
+      "name": "Present perfect vs. past simple (revision)",
+      "nameDe": "Present perfect und Past simple (Wiederholung)",
+      "category": "tenses",
+      "description": "A systematic review that makes the link between the two tenses and their time expressions explicit: the past simple goes with finished-time words (yesterday, last year, ago, in 2013) and the present perfect with words connecting to now (just, already, never, recently, (not) yet, for, since).",
+      "rules": [
+        {
+          "id": "past-simple-finished-time",
+          "en": "Use the past simple for finished actions with a finished-time expression: yesterday, last year/month/weekend, in 2013, two months ago.",
+          "de": "Du verwendest das Past simple für abgeschlossene Handlungen mit einem abgeschlossenen Zeitausdruck: yesterday, last year/month/weekend, in 2013, two months ago.",
+          "examples": [
+            {
+              "en": "Last year I got a wonderful collection from a geology professor.",
+              "de": "Letztes Jahr bekam ich eine wunderbare Sammlung von einem Geologieprofessor."
+            },
+            {
+              "en": "A few hours later I started playing again.",
+              "de": "Ein paar Stunden später begann ich wieder zu spielen."
+            }
+          ]
+        },
+        {
+          "id": "present-perfect-now-words",
+          "en": "Use the present perfect for actions connected to now, with words like just, already, never, recently and (not) yet.",
+          "de": "Du verwendest das Present perfect für Handlungen mit Gegenwartsbezug, mit Wörtern wie just, already, never, recently und (not) yet.",
+          "examples": [
+            {
+              "en": "It hasn't turned up on the black market yet.",
+              "de": "Es ist noch nicht auf dem Schwarzmarkt aufgetaucht."
+            },
+            {
+              "en": "I've collected between 18,000 and 19,000 different kinds of sand.",
+              "de": "Ich habe zwischen 18.000 und 19.000 verschiedene Arten von Sand gesammelt."
+            }
+          ]
+        },
+        {
+          "id": "for-and-since",
+          "en": "With the present perfect, use for for a length of time (for two years) and since for a starting point (since 2013, since I started).",
+          "de": "Mit dem Present perfect verwendest du for für eine Zeitspanne (for two years) und since für einen Anfangspunkt (since 2013, since I started).",
+          "examples": [
+            {
+              "en": "I've collected sand since I started my hobby.",
+              "de": "Ich sammle Sand, seit ich mein Hobby begonnen habe."
+            },
+            {
+              "en": "I've lived here for ten years.",
+              "de": "Ich wohne seit zehn Jahren hier."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the present perfect with a finished-time marker",
+          "wrong": "I have been there yesterday.",
+          "correct": "I was there yesterday."
+        },
+        {
+          "description": "Using the past simple with a present perfect marker (ever)",
+          "wrong": "Did you ever eat sushi?",
+          "correct": "Have you ever eaten sushi?"
+        },
+        {
+          "description": "Confusing for and since",
+          "wrong": "I've lived here since ten years.",
+          "correct": "I've lived here for ten years."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 8.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u8-tense-time-expression-review"
+      ]
+    },
+    {
+      "key": "modals-possibility",
+      "unit": 9,
+      "name": "might / may / could (possibility)",
+      "nameDe": "might / may / could (Möglichkeit)",
+      "category": "modals",
+      "description": "The modal verbs might, may and could for talking about possibility - things that are perhaps true or perhaps going to happen. After the modal comes the base form. The unit also shows other ways of expressing possibility with likely to and the likelihood of + -ing.",
+      "rules": [
+        {
+          "id": "form-modal-base",
+          "en": "Use might / may / could + the base form (no 'to') to say that something is possible. They are the same for all persons.",
+          "de": "Du verwendest might / may / could + die Grundform (ohne 'to'), um zu sagen, dass etwas möglich ist. Sie sind für alle Personen gleich.",
+          "examples": [
+            {
+              "en": "If you go to Greece, you might be surprised.",
+              "de": "Wenn du nach Griechenland fährst, könntest du überrascht sein."
+            },
+            {
+              "en": "Japanese people may smile when they are confused or angry.",
+              "de": "Japaner lächeln vielleicht, wenn sie verwirrt oder verärgert sind."
+            }
+          ]
+        },
+        {
+          "id": "could-for-possibility",
+          "en": "could can also express possibility (something that could happen), not only past ability.",
+          "de": "could kann auch eine Möglichkeit ausdrücken (etwas, das passieren könnte), nicht nur Fähigkeit in der Vergangenheit.",
+          "examples": [
+            {
+              "en": "It could get you into trouble in some countries.",
+              "de": "Es könnte dir in manchen Ländern Ärger bringen."
+            },
+            {
+              "en": "There is a chance that a smile could get you into trouble.",
+              "de": "Es besteht die Möglichkeit, dass ein Lächeln dir Ärger bringen könnte."
+            }
+          ]
+        },
+        {
+          "id": "likely-likelihood",
+          "en": "Express possibility in other ways too: be likely to + base verb, and the likelihood of + the -ing form.",
+          "de": "Drücke Möglichkeit auch anders aus: be likely to + Grundform und the likelihood of + die -ing-Form.",
+          "examples": [
+            {
+              "en": "You are likely to offend the Japanese if you blow your nose into a handkerchief.",
+              "de": "Du beleidigst wahrscheinlich die Japaner, wenn du dir in ein Taschentuch schnäuzt."
+            },
+            {
+              "en": "The likelihood of insulting someone is quite high.",
+              "de": "Die Wahrscheinlichkeit, jemanden zu beleidigen, ist ziemlich hoch."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Adding 'to' after the modal verb",
+          "wrong": "She might to come later.",
+          "correct": "She might come later."
+        },
+        {
+          "description": "Using 'can' for a specific-situation possibility instead of might/may/could",
+          "wrong": "It can rain tomorrow.",
+          "correct": "It might rain tomorrow."
+        },
+        {
+          "description": "Adding -s to the modal in the third person",
+          "wrong": "She mights be at home.",
+          "correct": "She might be at home."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 9.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u9-modals-possibility"
+      ]
+    },
+    {
+      "key": "third-conditional",
+      "unit": 10,
+      "name": "3rd conditional (with 1st/2nd conditional revision)",
+      "nameDe": "Dritter Konditional (mit Wiederholung des 1./2. Konditionals)",
+      "category": "conditionals",
+      "description": "The third conditional (If + past perfect, would (not) have + past participle) for an imaginary past situation that did not happen and can no longer be changed. The unit-10 box first revises the 1st conditional (real future) and 2nd conditional (unlikely present/future) before introducing the 3rd.",
+      "rules": [
+        {
+          "id": "form-third-conditional",
+          "en": "Form the third conditional with If + past perfect (had + past participle) in the if-clause and would (not) have + past participle in the main clause.",
+          "de": "Du bildest den dritten Konditional mit If + Past perfect (had + Partizip Perfekt) im if-Satz und would (not) have + Partizip Perfekt im Hauptsatz.",
+          "examples": [
+            {
+              "en": "If Fair Trade had existed, he wouldn't have sold the farm.",
+              "de": "Wenn es Fair Trade gegeben hätte, hätte er die Farm nicht verkauft."
+            },
+            {
+              "en": "If you had read the invitation, you would have known what to wear.",
+              "de": "Wenn du die Einladung gelesen hättest, hättest du gewusst, was du anziehen sollst."
+            }
+          ]
+        },
+        {
+          "id": "use-impossible-past",
+          "en": "Use the third conditional for an imaginary situation in the past that did NOT happen - it is too late to change it.",
+          "de": "Du verwendest den dritten Konditional für eine vorgestellte Situation in der Vergangenheit, die NICHT passiert ist - es ist zu spät, sie zu ändern.",
+          "examples": [
+            {
+              "en": "If I had known, I would have helped.",
+              "de": "Wenn ich es gewusst hätte, hätte ich geholfen."
+            },
+            {
+              "en": "If Vicente had known about Fair Trade, he would have joined earlier.",
+              "de": "Wenn Vicente von Fair Trade gewusst hätte, wäre er früher beigetreten."
+            }
+          ]
+        },
+        {
+          "id": "three-conditionals-compared",
+          "en": "Compare the three types: 1st (If + present, will = a real future possibility), 2nd (If + past, would = unlikely/imaginary now), 3rd (If + past perfect, would have = it definitely didn't happen).",
+          "de": "Vergleiche die drei Typen: 1. (If + Präsens, will = reale Zukunftsmöglichkeit), 2. (If + Past, would = unwahrscheinlich/vorgestellt jetzt), 3. (If + Past perfect, would have = es ist definitiv nicht passiert).",
+          "examples": [
+            {
+              "en": "If I get a good price, I will sell the farm. (1st)",
+              "de": "Wenn ich einen guten Preis bekomme, werde ich die Farm verkaufen. (1.)"
+            },
+            {
+              "en": "If I got a good price, I would sell the farm. (2nd)",
+              "de": "Wenn ich einen guten Preis bekäme, würde ich die Farm verkaufen. (2.)"
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using 'would' in the if-clause instead of the past perfect",
+          "wrong": "If I would have known, I would have helped.",
+          "correct": "If I had known, I would have helped."
+        },
+        {
+          "description": "Mixing the second and third conditional forms",
+          "wrong": "If I had money, I would have bought it.",
+          "correct": "If I had had money, I would have bought it."
+        },
+        {
+          "description": "Leaving out 'have' in the result clause",
+          "wrong": "If I had known, I would helped.",
+          "correct": "If I had known, I would have helped."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 10.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u10-third-conditional"
+      ]
+    },
+    {
+      "key": "reflexive-pronouns",
+      "unit": 11,
+      "name": "Reflexive pronouns",
+      "nameDe": "Reflexivpronomen",
+      "category": "pronouns",
+      "description": "Reflexive pronouns (myself, yourself, himself, herself, itself, ourselves, yourselves, themselves) used as the object when the subject and object are the same person, and for emphasis ('without help / personally'). Some German reflexive verbs do not take a reflexive pronoun in English.",
+      "rules": [
+        {
+          "id": "subject-equals-object",
+          "en": "Use a reflexive pronoun as the object when the subject and the object of the verb are the same person.",
+          "de": "Du verwendest ein Reflexivpronomen als Objekt, wenn das Subjekt und das Objekt des Verbs dieselbe Person sind.",
+          "examples": [
+            {
+              "en": "She asks herself a big question.",
+              "de": "Sie stellt sich eine große Frage."
+            },
+            {
+              "en": "Did you hurt yourself?",
+              "de": "Hast du dich verletzt?"
+            }
+          ]
+        },
+        {
+          "id": "emphatic-use",
+          "en": "Use a reflexive pronoun for emphasis to stress that the person did something themselves (without help). by + reflexive pronoun means 'alone'.",
+          "de": "Du verwendest ein Reflexivpronomen zur Betonung, um zu unterstreichen, dass die Person etwas selbst (ohne Hilfe) getan hat. by + Reflexivpronomen bedeutet 'allein'.",
+          "examples": [
+            {
+              "en": "I wrote the book myself.",
+              "de": "Ich habe das Buch selbst geschrieben."
+            },
+            {
+              "en": "You'll have to read the book yourself.",
+              "de": "Du wirst das Buch selbst lesen müssen."
+            }
+          ]
+        },
+        {
+          "id": "no-reflexive-in-english",
+          "en": "Some verbs that are reflexive in German do NOT take a reflexive pronoun in English: enjoy, decide, feel, concentrate, remember, meet, hurry.",
+          "de": "Einige Verben, die im Deutschen reflexiv sind, haben im Englischen KEIN Reflexivpronomen: enjoy, decide, feel, concentrate, remember, meet, hurry.",
+          "examples": [
+            {
+              "en": "They're free to have parties and enjoy themselves. (BUT: I enjoyed the party, not 'I enjoyed myself the party.')",
+              "de": "Sie können Partys feiern und sich vergnügen. (ABER: I enjoyed the party, nicht 'I enjoyed myself the party.')"
+            },
+            {
+              "en": "He decides to enjoy himself by travelling with his wife.",
+              "de": "Er beschließt, sich zu vergnügen, indem er mit seiner Frau verreist."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using a reflexive pronoun where English does not need one (German reflexive transfer)",
+          "wrong": "I enjoyed myself the party.",
+          "correct": "I enjoyed the party."
+        },
+        {
+          "description": "Using the wrong reflexive pronoun form",
+          "wrong": "He hurt hisself.",
+          "correct": "He hurt himself."
+        },
+        {
+          "description": "Leaving out the reflexive pronoun where one is needed",
+          "wrong": "He hurt when he fell.",
+          "correct": "He hurt himself when he fell."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 11.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u11-reflexive-pronouns"
+      ]
+    },
+    {
+      "key": "phrasal-verbs",
+      "unit": 12,
+      "name": "Phrasal verbs",
+      "nameDe": "Phrasal verbs (Verben mit Partikel)",
+      "category": "other",
+      "description": "Phrasal verbs - a verb plus a preposition/particle. Sometimes the particle just belongs to the verb; sometimes it gives the verb a special or completely different meaning (take off, set off, set up, come up with, get on with, run out of, pick up). Because the English particle is often different from the German one, it must be learned with the verb.",
+      "rules": [
+        {
+          "id": "verb-plus-particle",
+          "en": "Many English verbs are followed by a preposition/particle. Sometimes the particle gives the verb a special or completely different meaning, so phrasal verbs must be learned as vocabulary.",
+          "de": "Viele englische Verben stehen mit einer Präposition/Partikel. Manchmal gibt die Partikel dem Verb eine spezielle oder völlig andere Bedeutung, daher musst du Phrasal verbs als Vokabeln lernen.",
+          "examples": [
+            {
+              "en": "We already have the technology to take off from our planet. (= leave the ground)",
+              "de": "Wir haben schon die Technologie, um von unserem Planeten abzuheben."
+            },
+            {
+              "en": "He hadn't come up with anything good for a long time. (= thought of)",
+              "de": "Ihm war lange nichts Gutes eingefallen."
+            }
+          ]
+        },
+        {
+          "id": "core-m4-phrasal-verbs",
+          "en": "Learn the core M4 phrasal verbs and their meanings: set off (start a journey), take off (leave the ground), set up (start a new life/business), come up with (think of an idea), get on with (have a relationship with), run out of (be finished completely).",
+          "de": "Lerne die wichtigsten M4 Phrasal verbs und ihre Bedeutung: set off (eine Reise beginnen), take off (vom Boden abheben), set up (ein neues Leben/Geschäft beginnen), come up with (eine Idee haben), get on with (sich verstehen mit), run out of (völlig aufgebraucht sein).",
+          "examples": [
+            {
+              "en": "She set off for the art shop.",
+              "de": "Sie machte sich auf den Weg zum Kunstgeschäft."
+            },
+            {
+              "en": "She got on well with everyone.",
+              "de": "Sie kam mit allen gut aus."
+            }
+          ]
+        },
+        {
+          "id": "learn-the-preposition",
+          "en": "The preposition in an English verb is often different from the German one, so always learn the preposition together with the verb (wait for = warten auf, think of = denken an).",
+          "de": "Die Präposition bei einem englischen Verb ist oft anders als im Deutschen, daher lerne die Präposition immer zusammen mit dem Verb (wait for = warten auf, think of = denken an).",
+          "examples": [
+            {
+              "en": "What are you waiting for?",
+              "de": "Worauf wartest du?"
+            },
+            {
+              "en": "She spent all her pocket money on paint and paper.",
+              "de": "Sie gab ihr ganzes Taschengeld für Farbe und Papier aus."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Putting the pronoun after the particle in a separable phrasal verb",
+          "wrong": "He picked up it.",
+          "correct": "He picked it up."
+        },
+        {
+          "description": "Using the wrong particle with the phrasal verb",
+          "wrong": "She set off a new business.",
+          "correct": "She set up a new business."
+        },
+        {
+          "description": "Using a German-style preposition instead of the English one",
+          "wrong": "I'm waiting on the bus. (meaning: warten auf)",
+          "correct": "I'm waiting for the bus."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 12.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u12-phrasal-verbs"
+      ]
+    },
+    {
+      "key": "word-formation",
+      "unit": 13,
+      "name": "Prefixes and suffixes (word formation)",
+      "nameDe": "Vorsilben und Nachsilben (Wortbildung)",
+      "category": "word-formation",
+      "description": "Building new words with affixes: negative prefixes in-/il-/im-/ir-/un- on adjectives, dis- and mis- on verbs, mini- on nouns, and the suffixes -ness (adjective -> noun), -ful (noun -> adjective, 'full of') and -less (noun -> adjective, 'without').",
+      "rules": [
+        {
+          "id": "negative-adjective-prefixes",
+          "en": "The prefixes in-, il-, im-, ir- and un- on adjectives mean 'not' or 'the opposite of': correct -> incorrect, legal -> illegal, possible -> impossible, regular -> irregular, fair -> unfair.",
+          "de": "Die Vorsilben in-, il-, im-, ir- und un- bei Adjektiven bedeuten 'nicht' oder 'das Gegenteil von': correct -> incorrect, legal -> illegal, possible -> impossible, regular -> irregular, fair -> unfair.",
+          "examples": [
+            {
+              "en": "It's impossible to finish this today.",
+              "de": "Es ist unmöglich, das heute fertigzustellen."
+            },
+            {
+              "en": "That answer is incorrect.",
+              "de": "Diese Antwort ist falsch."
+            }
+          ]
+        },
+        {
+          "id": "verb-prefixes-dis-mis",
+          "en": "On verbs, dis- means 'not / the opposite of' (agree -> disagree) and mis- means 'badly / wrongly' (understand -> misunderstand). The prefix mini- on nouns means 'small' (skirt -> miniskirt).",
+          "de": "Bei Verben bedeutet dis- 'nicht / das Gegenteil von' (agree -> disagree) und mis- 'schlecht / falsch' (understand -> misunderstand). Die Vorsilbe mini- bei Nomen bedeutet 'klein' (skirt -> miniskirt).",
+          "examples": [
+            {
+              "en": "I completely disagree with you.",
+              "de": "Ich bin völlig anderer Meinung als du."
+            },
+            {
+              "en": "Don't misunderstand me.",
+              "de": "Missversteh mich nicht."
+            }
+          ]
+        },
+        {
+          "id": "suffixes-ness-ful-less",
+          "en": "The suffix -ness turns an adjective into a noun (happy -> happiness). -ful turns a noun into an adjective (care -> careful) - note: only one 'l'. -less turns a noun into an adjective meaning 'without' (hope -> hopeless).",
+          "de": "Die Nachsilbe -ness macht aus einem Adjektiv ein Nomen (happy -> happiness). -ful macht aus einem Nomen ein Adjektiv (care -> careful) - beachte: nur ein 'l'. -less macht aus einem Nomen ein Adjektiv mit der Bedeutung 'ohne' (hope -> hopeless).",
+          "examples": [
+            {
+              "en": "Her kindness surprised everyone.",
+              "de": "Ihre Freundlichkeit überraschte alle."
+            },
+            {
+              "en": "The situation seemed hopeless, but she remained hopeful.",
+              "de": "Die Situation schien hoffnungslos, aber sie blieb hoffnungsvoll."
+            }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the wrong negative prefix",
+          "wrong": "That's inpossible.",
+          "correct": "That's impossible."
+        },
+        {
+          "description": "Spelling -ful with a double l",
+          "wrong": "She was beautifull.",
+          "correct": "She was beautiful."
+        },
+        {
+          "description": "Confusing -ful (full of) and -less (without)",
+          "wrong": "Be careless when you cross the road! (meaning: be careful)",
+          "correct": "Be careful when you cross the road!"
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": [
+        "g4/sb/More 4 SB Unit 13.txt#grammar-1"
+      ],
+      "seedV1": [
+        "m4-u13-word-formation"
+      ]
+    }
+  ],
+  "v1Waivers": []
+}

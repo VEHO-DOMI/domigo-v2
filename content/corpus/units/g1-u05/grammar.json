@@ -1,0 +1,2371 @@
+{
+  "schema": "grammar@1",
+  "grade": 1,
+  "unit": 5,
+  "slug": "g1-u05",
+  "items": [
+    {
+      "id": "g1u05.gi.can.cp.001",
+      "structureId": "g1u05.s.can",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She doesn't can dance.",
+            "She can't dances.",
+            "She no can dance.",
+            "She can not to dance."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#speaking-1 (No, I can't.)",
+        "seedV1": "m1-u5-can-mc-002",
+        "narrative": null,
+        "note": "German prompt -> lang=de. Correct sentence probes clean; distractors flawed only in the can-structure. can/can't core-allowlist; forms used: can't; wrong forms doesn't can / no can in distractors."
+      },
+      "prompt": {
+        "text": "Du erzählst, dass Ellie nicht tanzen kann. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She can't dance.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She doesn't can dance.",
+        "She can't dances.",
+        "She no can dance."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinung: can't + Grundform, kein doesn't.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She can't dance. Bei can brauchst du kein doesn't, nach can't steht die Grundform ohne -s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.cp.003",
+      "structureId": "g1u05.s.can",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Do you can play the guitar?",
+            "Can you plays the guitar?",
+            "You can play the guitar?",
+            "Are you can play the guitar?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (Can you play the guitar?)",
+        "seedV1": "m1-u5-can-mc-003",
+        "narrative": null,
+        "note": "German prompt -> lang=de. Question-initial 'Can' granted. can core-allowlist; forms used: Can. Distractors flawed only in question formation. Carrier swaps untaught 'sing' to 'play the guitar' (the actual SB question to Pete)."
+      },
+      "prompt": {
+        "text": "Du möchtest wissen, ob Pete singen kann. Was ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Can you play the guitar?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Do you can play the guitar?",
+        "Can you plays the guitar?",
+        "You can play the guitar?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage mit Can vorne, danach you und die Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Can you play …? Kein do davor, und play bekommt kein -s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.ec.001",
+      "structureId": "g1u05.s.can",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-12 (He can wiggle his ears.)",
+        "seedV1": "m1-u5-can-ec-001",
+        "narrative": null,
+        "note": "Corrected sentence probes clean. can core-allowlist; correct form: can; wrong form 'cans' in the prompt."
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: He cans wiggle his ears.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He can wiggle his ears.",
+          "tier": "full"
+        },
+        {
+          "text": "can",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "can bekommt bei he kein -s.",
+      "hintEn": null,
+      "explainDe": "can ist für alle Personen gleich: He can wiggle. Es gibt kein cans.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u05.gi.can.ec.002",
+      "structureId": "g1u05.s.can",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-can-ec-002",
+        "narrative": null,
+        "note": "Corrected sentence probes clean. can core-allowlist; correct form: can; wrong form 'can to' in the prompt."
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I can to speak English.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I can speak English.",
+          "tier": "full"
+        },
+        {
+          "text": "can speak",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach can steht kein to.",
+      "hintEn": null,
+      "explainDe": "Nach can kommt die Grundform direkt, ohne to: I can speak English.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.ec.003",
+      "structureId": "g1u05.s.can",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1 (The dog can't sing.)",
+        "seedV1": "m1-u5-can-ec-003",
+        "narrative": null,
+        "note": "Corrected sentence probes clean. can/can't/cannot core-allowlist; correct forms: can't, cannot; wrong form 'don't can' in the prompt."
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: She don't can play the drums.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She can't play the drums.",
+          "tier": "full"
+        },
+        {
+          "text": "She cannot play the drums.",
+          "tier": "full"
+        },
+        {
+          "text": "can't",
+          "tier": "partial"
+        },
+        {
+          "text": "cannot",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Statt don't can heißt es can't.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von can ist can't (cannot), nicht don't can: She can't play the drums.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u05.gi.can.ff.001",
+      "structureId": "g1u05.s.can",
+      "format": "free-form",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#speaking-1 (Yes, I can.)",
+        "seedV1": "m1-u5-can-ff-001",
+        "narrative": null,
+        "note": "German prompt -> lang=de (the embedded English question is the cue). can core-allowlist; forms used: can. Short answer Yes I can."
+      },
+      "prompt": {
+        "text": "Dein Freund fragt: \"Can you play the guitar?\" Du kannst es. Antworte mit einem ganzen Satz.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Yes, I can.",
+          "tier": "full"
+        },
+        {
+          "text": "Yes, I can play the guitar.",
+          "tier": "full"
+        },
+        {
+          "text": "I can play the guitar.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die kurze Antwort ist Yes, I can. (ohne to, ohne -s).",
+      "hintEn": null,
+      "explainDe": "Auf Can you …? antwortest du kurz mit Yes, I can. oder mit dem ganzen Satz I can play the guitar.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.gf.001",
+      "structureId": "g1u05.s.can",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1 (James can sing.)",
+        "seedV1": "m1-u5-can-gf-002",
+        "narrative": null,
+        "note": "Carrier in the Project 11 world. can/can't/cannot are core-allowlist; affirmative form used: can."
+      },
+      "prompt": {
+        "text": "James ___ play the guitar.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "can ist für alle Personen gleich, auch bei he. Kein cans.",
+      "hintEn": null,
+      "explainDe": "Mit can + Grundform sagst du, dass jemand etwas kann. can bleibt bei he/she/it gleich (kein -s): James can play.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u05.gi.can.gf.002",
+      "structureId": "g1u05.s.can",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1 (The dog can't sing.)",
+        "seedV1": "m1-u5-can-gf-001",
+        "narrative": null,
+        "note": "can/can't/cannot are core-allowlist; negative forms used: can't, cannot."
+      },
+      "prompt": {
+        "text": "The dog ___ dance. It can sit down. (–)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can't",
+          "tier": "full"
+        },
+        {
+          "text": "cannot",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinung: can't (= cannot) + Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung ist can't (cannot) + Grundform: The dog can't dance.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u05.gi.can.gf.003",
+      "structureId": "g1u05.s.can",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (She plays the drums.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Jessica the drummer. can is core-allowlist; affirmative form used: can play."
+      },
+      "prompt": {
+        "text": "She ___ (can / play) the drums very well.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can play",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "can + Grundform. Bei she kommt kein -s an play.",
+      "hintEn": null,
+      "explainDe": "Nach can steht die Grundform ohne -s: She can play. (Nicht: can plays.)",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.gf.004",
+      "structureId": "g1u05.s.can",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (Pete carry their instruments.)",
+        "seedV1": "m1-u5-can-gf-003",
+        "narrative": null,
+        "note": "Pete from The perfect job. can/can't/cannot are core-allowlist; negative forms used: can't carry, cannot carry."
+      },
+      "prompt": {
+        "text": "Pete ___ (not / can / carry) the guitar. It's too big! (–)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can't carry",
+          "tier": "full"
+        },
+        {
+          "text": "cannot carry",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "not + can wird zu can't (cannot) + Grundform.",
+      "hintEn": null,
+      "explainDe": "Aus not + can + carry wird can't carry: Pete can't carry the guitar. Nach can't steht die Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.gf.005",
+      "structureId": "g1u05.s.can",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (Dan and Steve play the guitar.)",
+        "seedV1": "m1-u5-can-gf-005",
+        "narrative": null,
+        "note": "Two blanks pipe-split in order. can/can't/cannot core-allowlist; forms used: can play, can't dance, cannot dance."
+      },
+      "prompt": {
+        "text": "Dan ___ (can / play) the guitar, but he ___ (not / can / dance). (+/–)",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "can play | can't dance",
+          "tier": "full"
+        },
+        {
+          "text": "can play | cannot dance",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst can + Grundform, dann can't + Grundform. Kein -s nach can.",
+      "hintEn": null,
+      "explainDe": "can play sagt, was Dan kann; can't dance sagt, was er nicht kann. Nach can/can't steht immer die Grundform.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u05.gi.can.gf.006",
+      "structureId": "g1u05.s.can",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (Can you play the guitar?)",
+        "seedV1": "m1-u5-can-gf-004",
+        "narrative": null,
+        "note": "Two blanks pipe-split. Question-initial 'Can' granted. can core-allowlist; forms used: Can, play."
+      },
+      "prompt": {
+        "text": "___ your sister ___ (can / play) the keyboard? (?)",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Can | play",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In der Frage steht Can ganz vorne, danach das Subjekt und die Grundform.",
+      "hintEn": null,
+      "explainDe": "Für eine Frage stellst du Can nach vorne: Can your sister play …? Nach play kommt kein -s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.gs.002",
+      "structureId": "g1u05.s.can",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#writing-12 (I can write … I can't touch my nose with my tongue, but I can wiggle my ears. I can walk on my feet.)",
+        "seedV1": "m1-u5-can-gs-001",
+        "narrative": null,
+        "note": "group-sort, 2 groups each 3 members; labels and members in-bank, members probe clean. can/can't core-allowlist; labels: I can, I can't."
+      },
+      "prompt": {
+        "text": "Was kann ich, was kann ich nicht? Sortiere die Sätze.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "I can",
+          "members": [
+            "play the guitar",
+            "wiggle my ears",
+            "speak English",
+            "walk on my feet"
+          ]
+        },
+        {
+          "label": "I can't",
+          "members": [
+            "carry the drums",
+            "touch my nose with my tongue"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Überlege bei jedem Satz: kann ich das (can) oder kann ich das nicht (can't)?",
+      "hintEn": null,
+      "explainDe": "Was du kannst, kommt zu I can; was du nicht kannst, zu I can't. Die Grundform bleibt in beiden Fällen gleich.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.mc.001",
+      "structureId": "g1u05.s.can",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cans",
+            "can to",
+            "is can",
+            "can't"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (Ellie can play the keyboards.)",
+        "seedV1": "m1-u5-can-gf-002",
+        "narrative": null,
+        "note": "Distractors word-distinct (cans/can to/is can), not apostrophe-only. can/can't core-allowlist; forms used: can, can't (pool); cans is the noun homograph used as a wrong-form chip."
+      },
+      "prompt": {
+        "text": "She ___ play the keyboard.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "cans",
+        "can to",
+        "is can"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "can bleibt bei she gleich und steht ohne to.",
+      "hintEn": null,
+      "explainDe": "Richtig ist can: She can play. cans gibt es nicht, can to ist falsch, und is can passt nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.mc.002",
+      "structureId": "g1u05.s.can",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cans",
+            "can to",
+            "doesn't can",
+            "is can"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (He's our saxophone player.)",
+        "seedV1": "m1-u5-can-mc-001",
+        "narrative": null,
+        "note": "Carrier-blank MC; distractors word-distinct (cans/can to/doesn't can), not apostrophe-only. can core-allowlist; form used: can. Jack the saxophone player."
+      },
+      "prompt": {
+        "text": "He ___ play the saxophone.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "cans",
+        "can to",
+        "doesn't can"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei he kein -s, nach can kein to.",
+      "hintEn": null,
+      "explainDe": "Richtig ist can: He can play. cans gibt es nicht, can to ist falsch, und doesn't can passt bei can nie.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.mc.003",
+      "structureId": "g1u05.s.can",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Do",
+            "Are",
+            "Can't",
+            "Does"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (Can you play the guitar?)",
+        "seedV1": "m1-u5-can-mc-003",
+        "narrative": null,
+        "note": "Carrier-blank question MC; question-initial 'Can' granted. can/can't core-allowlist; forms used: Can, Can't (distractor). Distractors word-distinct (Do/Are/Can't/Does)."
+      },
+      "prompt": {
+        "text": "___ they play the drums? (?)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Can",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Do",
+        "Are",
+        "Can't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die can-Frage beginnt mit Can, danach Subjekt und Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Can they play …? Du brauchst kein Do oder Are, und für eine normale Frage kein Can't.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.mp.001",
+      "structureId": "g1u05.s.can",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1 (James can sing. The dog can't sing.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "matching-pairs En<->En, 4 pairs, unique sides. Both sides probe clean. can/can't core-allowlist; forms used: can (left), can't (right)."
+      },
+      "prompt": {
+        "text": "Welche Sätze bedeuten das Gegenteil?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I can dance.",
+          "right": "I can't dance."
+        },
+        {
+          "left": "She can play the guitar.",
+          "right": "She can't play the guitar."
+        },
+        {
+          "left": "He can wiggle his ears.",
+          "right": "He can't wiggle his ears."
+        },
+        {
+          "left": "They can carry the drums.",
+          "right": "They can't carry the drums."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mach aus jedem can-Satz die Verneinung mit can't.",
+      "hintEn": null,
+      "explainDe": "Das Gegenteil bildest du mit can't: I can dance → I can't dance. Die Grundform bleibt gleich.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.mt.002",
+      "structureId": "g1u05.s.can",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (Can you play the guitar? Yes, I can. No, he can't.)",
+        "seedV1": "m1-u5-can-mt-001",
+        "narrative": null,
+        "note": "matching En<->En, 4 pairs, unique right-sides. Both sides probe clean. can/can't core-allowlist; short-answer forms used: Yes I can, No he/she/they can't."
+      },
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Can you play the guitar?",
+          "right": "Yes, I can."
+        },
+        {
+          "left": "Can Bacon dance?",
+          "right": "No, he can't."
+        },
+        {
+          "left": "Can Dan and Steve play the drums?",
+          "right": "Yes, they can."
+        },
+        {
+          "left": "Can Ellie carry the saxophone?",
+          "right": "No, she can't."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Kurzantwort wiederholt das Subjekt: you → I, Bacon → he, Dan und Steve → they.",
+      "hintEn": null,
+      "explainDe": "Auf eine can-Frage antwortest du mit Yes, … can / No, … can't und dem passenden Subjekt: Can you …? → Yes, I can.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.qf.001",
+      "structureId": "g1u05.s.can",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#speaking-1 (Can you …?)",
+        "seedV1": "m1-u5-can-qf-001",
+        "narrative": null,
+        "note": "Chips joined with ' / '. Question-initial 'Can' granted. can core-allowlist; form used: Can. All chip words in-bank."
+      },
+      "prompt": {
+        "text": "you / play / the saxophone",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Can you play the saxophone?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit Can.",
+      "hintEn": null,
+      "explainDe": "Aus den Wörtern wird die Frage Can you play the saxophone? Can steht ganz vorne.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.sb.001",
+      "structureId": "g1u05.s.can",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "can't",
+            "cannot",
+            "he",
+            "the guitar",
+            "dance",
+            "plays"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (She plays the drums.)",
+        "seedV1": "m1-u5-can-sb-001",
+        "narrative": null,
+        "note": "distractorPool chips all in-bank and probe clean. can/can't/cannot core-allowlist; forms used: can (answer), can't/cannot (pool)."
+      },
+      "prompt": {
+        "text": "play / she / the drums / can",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She can play the drums.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: Subjekt + can + Grundform + Objekt.",
+      "hintEn": null,
+      "explainDe": "Die Wörter ergeben She can play the drums. Nach can steht die Grundform play.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.sb.002",
+      "structureId": "g1u05.s.can",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "can",
+            "cannot",
+            "she",
+            "her ears",
+            "touch",
+            "wiggles"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-12 (He can wiggle his ears.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "distractorPool chips all in-bank and probe clean. can/can't/cannot core-allowlist; forms used: can't (answer), can/cannot (pool)."
+      },
+      "prompt": {
+        "text": "wiggle / can't / his ears / he",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He can't wiggle his ears.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: Subjekt + can't + Grundform + Objekt.",
+      "hintEn": null,
+      "explainDe": "Die Wörter ergeben He can't wiggle his ears. Nach can't steht die Grundform wiggle.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.tf.001",
+      "structureId": "g1u05.s.can",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-can-tf-001",
+        "narrative": null,
+        "note": "Source probes clean. can/can't/cannot core-allowlist; forms used: can (source), can't dance, cannot dance."
+      },
+      "prompt": {
+        "text": "I can dance. → I ___. (–)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can't dance",
+          "tier": "full"
+        },
+        {
+          "text": "cannot dance",
+          "tier": "full"
+        },
+        {
+          "text": "I can't dance.",
+          "tier": "partial"
+        },
+        {
+          "text": "I cannot dance.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus can wird in der Verneinung can't (cannot).",
+      "hintEn": null,
+      "explainDe": "Verneint heißt I can dance → I can't dance (= cannot dance). Die Grundform dance bleibt.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u05.gi.can.tf.002",
+      "structureId": "g1u05.s.can",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (Can you play the guitar?)",
+        "seedV1": "m1-u5-can-tf-002",
+        "narrative": null,
+        "note": "Two blanks pipe-split. Source probes clean. Question-initial 'Can' granted. can core-allowlist; forms used: Can, play."
+      },
+      "prompt": {
+        "text": "Steve can play the guitar. → ___ Steve ___ the guitar? (?)",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Can | play",
+          "tier": "full"
+        },
+        {
+          "text": "Can Steve play the guitar?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Für die Frage kommt Can nach vorne, das Verb bleibt in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Aus Steve can play … wird die Frage Can Steve play …? Can steht vorne, play bleibt ohne -s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.tr.001",
+      "structureId": "g1u05.s.can",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (She plays the drums.)",
+        "seedV1": "m1-u5-can-tr-001",
+        "narrative": null,
+        "note": "translation deToEn. English answer probes clean. can core-allowlist; form used: can play. Swaps untaught Fussball/football to the in-bank drums."
+      },
+      "prompt": {
+        "text": "Meine Schwester kann Schlagzeug spielen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My sister can play the drums.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "kann spielen = can play. Schlagzeug = the drums.",
+      "hintEn": null,
+      "explainDe": "kann + spielen wird zu can play (Grundform). Schlagzeug heißt the drums: My sister can play the drums.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.can.tr.002",
+      "structureId": "g1u05.s.can",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#reading-3 (Can you play the keyboards?)",
+        "seedV1": "m1-u5-can-tr-002",
+        "narrative": null,
+        "note": "translation deToEn. English answer probes clean. Question-initial 'Can' granted. can core-allowlist; form used: Can ... play. Swaps untaught Klavier/piano to the in-bank keyboard."
+      },
+      "prompt": {
+        "text": "Kannst du Keyboard spielen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Can you play the keyboard?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Frage beginnt mit Can. spielen = play (Grundform).",
+      "hintEn": null,
+      "explainDe": "Kannst du …? wird zur Frage Can you …? Can steht vorne, play bleibt Grundform: Can you play the keyboard?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.ag.001",
+      "structureId": "g1u05.s.possessives",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wem gehört es? Bilde das Wort für „ihr\" (mehrere Personen). Es beginnt mit t und gehört zu they.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "their",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es beginnt mit t und gehört zu they.",
+      "hintEn": null,
+      "explainDe": "Das besitzanzeigende Wort zu they ist their (= ihr, mehrere Personen).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.cp.001",
+      "structureId": "g1u05.s.possessives",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She keyboard is great.",
+            "His keyboard is great.",
+            "Their keyboard is great.",
+            "Our keyboard is great."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ellie plays the keyboard.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Her keyboard is great.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She keyboard is great.",
+        "His keyboard is great.",
+        "Their keyboard is great."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Keyboard gehört Ellie (sie). Wähle den Satz mit dem richtigen besitzanzeigenden Wort.",
+      "hintEn": null,
+      "explainDe": "Her (= ihr) zeigt, dass das Keyboard zu Ellie gehört. She ist ein Fürwort, his/their passen nicht zu einer Frau allein.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.ec.002",
+      "structureId": "g1u05.s.possessives",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-possessive-adjectives-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The dog can wiggle it's ears.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The dog can wiggle its ears.",
+          "tier": "full"
+        },
+        {
+          "text": "its",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Hier ist Besitz gemeint (die Ohren des Hundes). Schreibe its OHNE Apostroph.",
+      "hintEn": null,
+      "explainDe": "its (ohne Apostroph) = sein/ihr (Besitz). it's (mit Apostroph) heißt „it is\" und passt hier nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u05.gi.possessives.ec.003",
+      "structureId": "g1u05.s.possessives",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u5-possessive-adjectives-ec-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "We love we teacher very much.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We love our teacher very much.",
+          "tier": "full"
+        },
+        {
+          "text": "our",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor dem Nomen teacher brauchst du das Wort für „unser\", nicht we.",
+      "hintEn": null,
+      "explainDe": "our (= unser) steht vor dem Nomen; we ist das Subjektfürwort. Richtig: We love our teacher very much.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.ec.004",
+      "structureId": "g1u05.s.possessives",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dan and Steve love they dog Bacon.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Dan and Steve love their dog Bacon.",
+          "tier": "full"
+        },
+        {
+          "text": "their",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor dem Nomen dog brauchst du das Wort für „ihr\" (mehrere Personen), nicht they.",
+      "hintEn": null,
+      "explainDe": "their (= ihr, mehrere Personen) steht vor dem Nomen; they ist das Subjektfürwort. Richtig: their dog.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.ec.005",
+      "structureId": "g1u05.s.possessives",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u5-possessive-adjectives-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She loves he dog very much.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She loves his dog very much.",
+          "tier": "full"
+        },
+        {
+          "text": "his",
+          "tier": "partial"
+        },
+        {
+          "text": "She loves her dog very much.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor dem Nomen dog brauchst du ein besitzanzeigendes Wort, nicht das Subjektfürwort he.",
+      "hintEn": null,
+      "explainDe": "Vor einem Nomen steht his (= sein), nicht he. Richtig: She loves his dog very much.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.gf.001",
+      "structureId": "g1u05.s.possessives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-possessive-adjectives-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "James loves ___ (he) saxophone.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "his",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "he",
+        "him",
+        "her"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wem gehört das Saxophon? Setze das Wort für „sein\" ein, nicht das Fürwort he.",
+      "hintEn": null,
+      "explainDe": "Vor einem Nomen steht das besitzanzeigende Wort his (= sein), nicht das Subjektfürwort he.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.gf.002",
+      "structureId": "g1u05.s.possessives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-possessive-adjectives-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ellie loves ___ (she) keyboard.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "her",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "she",
+        "his",
+        "their"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wem gehört das Keyboard? Setze das Wort für „ihr\" ein, nicht she.",
+      "hintEn": null,
+      "explainDe": "her (= ihr) ist das besitzanzeigende Wort vor dem Nomen; she ist das Subjektfürwort.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.gf.003",
+      "structureId": "g1u05.s.possessives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-possessive-adjectives-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "We love ___ (we) school.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "our",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "we",
+        "us",
+        "their"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Was gehört uns? Setze das Wort für „unser\" ein, nicht we.",
+      "hintEn": null,
+      "explainDe": "our (= unser) gehört vor das Nomen; we ist das Subjektfürwort.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.gf.004",
+      "structureId": "g1u05.s.possessives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-possessive-adjectives-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dan and Steve play ___ (they) guitars at the concert.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "their",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "they",
+        "them",
+        "there"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wem gehören die Gitarren? Setze das Wort für „ihr\" (mehrere Personen) ein.",
+      "hintEn": null,
+      "explainDe": "their (= ihr, mehrere Personen) steht vor dem Nomen. they ist das Subjektfürwort, there bedeutet „dort\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.gf.005",
+      "structureId": "g1u05.s.possessives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-possessive-adjectives-gf-004",
+        "narrative": null,
+        "note": "its / it's tested by gap-fill, not MC (apostrophe-only discrimination banned in MC/cp)."
+      },
+      "prompt": {
+        "text": "Look at Bacon. ___ ears are very big.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Its",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It's",
+        "His",
+        "Their"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es geht um den Hund (es). Setze das besitzanzeigende its OHNE Apostroph ein.",
+      "hintEn": null,
+      "explainDe": "its (ohne Apostroph) = sein/ihr (Besitz). It's (mit Apostroph) heißt „it is\" und passt hier nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u05.gi.possessives.gf.006",
+      "structureId": "g1u05.s.possessives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This is ___ (I) sister Jessica.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "my",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I",
+        "me",
+        "your"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Was gehört zu mir? Setze das Wort für „mein\" ein, nicht I.",
+      "hintEn": null,
+      "explainDe": "my (= mein) steht vor dem Nomen; I ist das Subjektfürwort, me ist die Objektform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.gf.007",
+      "structureId": "g1u05.s.possessives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Tom plays the drums and Ellie plays the keyboard. ___ (he) drums are big and ___ (she) keyboard is great.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "His | her",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erste Lücke: Tom (er). Zweite Lücke: Ellie (sie). Setze für jede Person das passende besitzanzeigende Wort ein.",
+      "hintEn": null,
+      "explainDe": "His (= sein) gehört zu Tom, her (= ihr) zu Ellie. Jede Person bekommt ihr eigenes besitzanzeigendes Wort.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.gs.003",
+      "structureId": "g1u05.s.possessives",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u5-possessive-adjectives-gs-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere die Wörter.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "She plays.",
+          "members": [
+            "I",
+            "he",
+            "we",
+            "they"
+          ]
+        },
+        {
+          "label": "Her guitar.",
+          "members": [
+            "my",
+            "his",
+            "our",
+            "their"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Begleiter stehen vor einem Nomen (my dog). Fürwörter stehen für eine Person (I, he, she).",
+      "hintEn": null,
+      "explainDe": "I, he, she, we, they sind Subjektfürwörter. my, his, her, our, their sind besitzanzeigende Begleiter und stehen vor dem Nomen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.mc.001",
+      "structureId": "g1u05.s.possessives",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She",
+            "His",
+            "Their",
+            "Your",
+            "Our"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-possessive-adjectives-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Jessica is the drummer. ___ drums are big.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Her",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She",
+        "His",
+        "Their"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wem gehören die Drums? Wähle das Wort für „ihr\".",
+      "hintEn": null,
+      "explainDe": "Her (= ihr) zeigt, dass die Drums zu Jessica gehören. She ist das Subjektfürwort.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.mc.002",
+      "structureId": "g1u05.s.possessives",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "They",
+            "There",
+            "His",
+            "Her",
+            "Our"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u5-possessive-adjectives-mc-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dan and Steve are here. ___ guitars are great.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Their",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They",
+        "There",
+        "His"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zwei Personen (sie). Wähle das Wort für „ihr\" (mehrere Personen).",
+      "hintEn": null,
+      "explainDe": "Their (= ihr, mehrere Personen) steht vor dem Nomen. They ist das Subjektfürwort, There bedeutet „dort\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.mc.003",
+      "structureId": "g1u05.s.possessives",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He",
+            "Him",
+            "Her",
+            "Your",
+            "Their"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This is James. ___ saxophone is here.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "His",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He",
+        "Him",
+        "Her"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wem gehört das Saxophon? Wähle das Wort für „sein\".",
+      "hintEn": null,
+      "explainDe": "His (= sein) zeigt, dass das Saxophon zu James gehört. He ist das Subjektfürwort, Him die Objektform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.mp.002",
+      "structureId": "g1u05.s.possessives",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-possessive-adjectives-mp-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde die Paare.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I",
+          "right": "my"
+        },
+        {
+          "left": "you",
+          "right": "your"
+        },
+        {
+          "left": "he",
+          "right": "his"
+        },
+        {
+          "left": "she",
+          "right": "her"
+        },
+        {
+          "left": "it",
+          "right": "its"
+        },
+        {
+          "left": "we",
+          "right": "our"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jedem Fürwort gehört genau ein besitzanzeigendes Wort.",
+      "hintEn": null,
+      "explainDe": "I–my, you–your, he–his, she–her, it–its, we–our: jedes Fürwort hat sein eigenes besitzanzeigendes Wort.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.mt.002",
+      "structureId": "g1u05.s.possessives",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-possessive-adjectives-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Wörter passen zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I",
+          "right": "my"
+        },
+        {
+          "left": "he",
+          "right": "his"
+        },
+        {
+          "left": "she",
+          "right": "her"
+        },
+        {
+          "left": "we",
+          "right": "our"
+        },
+        {
+          "left": "they",
+          "right": "their"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ordne jedem Fürwort das passende besitzanzeigende Wort zu.",
+      "hintEn": null,
+      "explainDe": "Jedes Fürwort hat ein eigenes besitzanzeigendes Wort: I–my, he–his, she–her, we–our, they–their.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.sb.001",
+      "structureId": "g1u05.s.possessives",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "his",
+            "their",
+            "our",
+            "your"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u5-possessive-adjectives-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "is / her / This / saxophone",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This is her saxophone.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit This und sage dann, wem das Saxophon gehört.",
+      "hintEn": null,
+      "explainDe": "Das besitzanzeigende her (= ihr) steht direkt vor dem Nomen: This is her saxophone.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.sb.002",
+      "structureId": "g1u05.s.possessives",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "his",
+            "her",
+            "our",
+            "your",
+            "its"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "are / great / Dan / guitars / their / and / Steve",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Dan and Steve guitars are great.",
+          "tier": "partial"
+        },
+        {
+          "text": "Dan and Steve, their guitars are great.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sprich Dan und Steve an und sage dann, wem die Gitarren gehören.",
+      "hintEn": null,
+      "explainDe": "their (= ihr, mehrere Personen) steht vor dem Nomen: Dan and Steve, their guitars are great.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.tf.001",
+      "structureId": "g1u05.s.possessives",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u5-possessive-adjectives-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This guitar is Ellie's. → It is ___ guitar.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "her",
+          "tier": "full"
+        },
+        {
+          "text": "It is her guitar.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mache aus she das besitzanzeigende Wort für „ihr\".",
+      "hintEn": null,
+      "explainDe": "Aus dem Fürwort für Ellie (she) wird das besitzanzeigende her (= ihr): It is her guitar.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.tf.002",
+      "structureId": "g1u05.s.possessives",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u5-possessive-adjectives-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The guitars are for Dan and me. → They are ___ guitars.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "our",
+          "tier": "full"
+        },
+        {
+          "text": "They are our guitars.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Dan und ich = wir. Mache daraus das Wort für „unser\".",
+      "hintEn": null,
+      "explainDe": "Dan und ich = we; das besitzanzeigende Wort dazu ist our (= unser): They are our guitars.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.tr.001",
+      "structureId": "g1u05.s.possessives",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-possessive-adjectives-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Das ist meine Schwester.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This is my sister.",
+          "tier": "full"
+        },
+        {
+          "text": "That is my sister.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„meine\" vor einem Nomen heißt my.",
+      "hintEn": null,
+      "explainDe": "„meine/mein\" wird vor dem Nomen zu my: This is my sister.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u05.gi.possessives.tr.004",
+      "structureId": "g1u05.s.possessives",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 5- This is our band.txt#grammar-1",
+        "seedV1": "m1-u5-possessive-adjectives-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ihr Hund ist Bacon.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Their dog is Bacon.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„ihr\" für mehrere Personen heißt their.",
+      "hintEn": null,
+      "explainDe": "Gehört etwas mehreren Personen, heißt „ihr\" their: Their dog is Bacon.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

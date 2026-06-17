@@ -1,0 +1,861 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u02",
+  "round": 1,
+  "itemsHash": "70212a6b7573",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g1u02.w.adult",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.adult",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.at",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.at",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.at-last",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.at-last",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.beautiful",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.beautiful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.behind",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.behind",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.behind-2",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.behind-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.but",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.but",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.car",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.car",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.child",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.child",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.dog",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.dog",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.family",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.family",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.for",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.for",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.free",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.free",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.from",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.from",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.giraffe",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.giraffe",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.grandma",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.grandma",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.guide",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.guide",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.happy",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.happy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.he",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.he",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.how-strange",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.how-strange",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.in-front-of",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.in-front-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.in-front-of-2",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.in-front-of-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.lion",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.lion",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.long",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.long",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.monkey",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.monkey",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.next-to-2",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.next-to-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.on",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.parrot",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.parrot",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.penguin",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.penguin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.she",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.she",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.small",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.small",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.stone",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.stone",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.ticket",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.ticket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.to-bring",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.to-bring",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.to-let-somebody-out",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.to-let-somebody-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.to-talk",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.to-talk",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.to-want",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.to-want",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.train",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.train",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.tree",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.under",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.under",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.under-2",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.under-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.us",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.us",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u02.w.zoo",
+      "kind": "new-gloss",
+      "itemId": "g1u02.w.zoo",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.adult",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.adult",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.at",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.at",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.at-last",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.at-last",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.beautiful",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.beautiful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.behind",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.behind",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.behind-2",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.behind-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.big",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.big",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.but",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.but",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.car",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.car",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.child",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.child",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.dog",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.dog",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.family",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.family",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.for",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.for",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.free",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.free",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.from",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.from",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.giraffe",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.giraffe",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.grandma",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.grandma",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.group",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.group",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.guide",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.guide",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.happy",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.happy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.he",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.he",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.how-strange",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.how-strange",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.in",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.in",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.in-front-of",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.in-front-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.in-front-of-2",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.in-front-of-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.let-me-see",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.let-me-see",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.lion",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.lion",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.long",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.long",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.monkey",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.monkey",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.next-to",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.next-to",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.next-to-2",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.next-to-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.on",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.parrot",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.parrot",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.penguin",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.penguin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.she",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.she",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.small",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.small",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.stone",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.stone",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.they",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.they",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.ticket",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.ticket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.to-bring",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.to-bring",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.to-let-somebody-out",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.to-let-somebody-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.to-talk",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.to-talk",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.to-want",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.to-want",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.train",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.train",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.tree",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.under",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.under",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.under-2",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.under-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.us",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.us",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.we",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.we",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.where",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.where",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.year",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.year",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.w.zoo",
+      "kind": "translation-audit",
+      "itemId": "g1u02.w.zoo",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.prepositions-place.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.prepositions-place.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.prepositions-place.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.prepositions-place.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.prepositions-place.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.prepositions-place.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.prepositions-place.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.prepositions-place.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.prepositions-place.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.prepositions-place.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.prepositions-place.tr.006",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.prepositions-place.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.subject-pronouns.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.subject-pronouns.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.subject-pronouns.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.subject-pronouns.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.there-is-are.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.there-is-are.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.there-is-are.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.there-is-are.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.there-is-are.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.there-is-are.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.there-is-are.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.there-is-are.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.there-is-are.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.there-is-are.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.to-be.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.to-be.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.to-be.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.to-be.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.to-be.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.to-be.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.to-be.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.to-be.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.to-be.tr.006",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.to-be.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.to-be.tr.008",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.to-be.tr.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u02.gi.to-be.tr.009",
+      "kind": "translation-audit",
+      "itemId": "g1u02.gi.to-be.tr.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u02.w.where#df18d4",
+      "kind": "validator-warn",
+      "itemId": "g1u02.w.where",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u02.w.in#8a26e5",
+      "kind": "validator-warn",
+      "itemId": "g1u02.w.in",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u02.gi.prepositions-place.gf.014#2bd4cd",
+      "kind": "validator-warn",
+      "itemId": "g1u02.gi.prepositions-place.gf.014",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u02.gi.to-be.tr.003#2bd4cd",
+      "kind": "validator-warn",
+      "itemId": "g1u02.gi.to-be.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u02.gi.to-be.tr.006#2bd4cd",
+      "kind": "validator-warn",
+      "itemId": "g1u02.gi.to-be.tr.006",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "All 238 rows + 120 flags reviewed (FULL). Verify clean (0 fix, 0 warn) after a 4-lens pass; zero stage-8 fix/drop → rejectRate 0%."
+  },
+  "metrics": {
+    "itemsReviewed": 238,
+    "fullRows": 238,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

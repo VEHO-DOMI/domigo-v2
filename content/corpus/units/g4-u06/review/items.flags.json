@@ -1,0 +1,294 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u06",
+  "round": 1,
+  "itemsHash": "cc5e46d741cb",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g4u06.gi.adverbs-of-manner.gf.006",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.adverbs-of-manner.gf.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u06.gi.adverbs-of-manner.gf.008",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.adverbs-of-manner.gf.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u06.gi.adverbs-of-manner.gf.009",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.adverbs-of-manner.gf.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u06.gi.adverbs-of-manner.gf.011",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.adverbs-of-manner.gf.011",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u06.gi.adverbs-of-manner.gf.012",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.adverbs-of-manner.gf.012",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u06.gi.adverbs-of-manner.gf.013",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.adverbs-of-manner.gf.013",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u06.gi.adverbs-of-manner.gf.014",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.adverbs-of-manner.gf.014",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u06.gi.question-tags.gf.013",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.question-tags.gf.013",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u06.gi.question-tags.mt.002",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.question-tags.mt.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u06.gi.question-tags.mt.003",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.question-tags.mt.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u06.gi.question-tags.tf.003",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.question-tags.tf.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u06.gi.question-tags.tf.004",
+      "kind": "new-gloss",
+      "itemId": "g4u06.gi.question-tags.tf.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.achieve",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.achieve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.community",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.community",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.donate",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.donate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.drop-out",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.drop-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.encouragement",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.encouragement",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.exceed",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.exceed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.frustrated",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.frustrated",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.goal",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.goal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.grateful",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.grateful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.in-particular",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.in-particular",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.income",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.income",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.inspire",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.inspire",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.learn-a-lesson",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.learn-a-lesson",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.range-of",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.range-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.relate-to",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.relate-to",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.small-wonder",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.small-wonder",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.support",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.support",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.w.transmit",
+      "kind": "translation-audit",
+      "itemId": "g4u06.w.transmit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.gi.adverbs-of-manner.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u06.gi.adverbs-of-manner.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.gi.adverbs-of-manner.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g4u06.gi.adverbs-of-manner.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.gi.adverbs-of-manner.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g4u06.gi.adverbs-of-manner.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.gi.adverbs-of-manner.tr.006",
+      "kind": "translation-audit",
+      "itemId": "g4u06.gi.adverbs-of-manner.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.gi.adverbs-of-manner.tr.007",
+      "kind": "translation-audit",
+      "itemId": "g4u06.gi.adverbs-of-manner.tr.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.gi.question-tags.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u06.gi.question-tags.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.gi.question-tags.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u06.gi.question-tags.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.gi.question-tags.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u06.gi.question-tags.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u06.gi.question-tags.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g4u06.gi.question-tags.tr.005",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Two structures. Adverbs of manner (revision): adjective→adverb (+-ly, -y→-ily happy/happily, -le→-ly gentle/gently; irregular good→well, fast→fast, hard→hard), position after verb/object, adverb-vs-adjective, linking verbs (taste/feel/look) take the adjective. Question tags: positive statement→negative tag / negative→positive; tag repeats the auxiliary/modal (do-support where none); tag pronoun matches the subject. 18 vocab + 112 grammar (2 structures, floor 40 each → 58 + 54), full v1 parity. 4 verify lenses clean after fixes: the answers lens vetted BOTH structures (every -ly form, polarity, auxiliary, pronoun, and the special cases aren't I / shall we / won't it correct) and translation found 0 defects; relabeled both question-tag group-sorts off German labels (ja-Satz/nein-Satz/Eigenschaftswort → tag-exemplar labels 'isn't it?'/'is it?' and 'do/does/did'/'is/are/can/has'); reworded 3 'Eigenschaftswort' prompts → functional ('ein Wort wie good/bad, kein -ly-Wort'); swapped the too-valid 'well'/'fast' distractors → adjectives (careful/clear/beautiful + quick/quiet) in 3 cue-less adverb MCs so they test the real adverb-vs-adjective point; disambiguated 3 translation prompts Sie→Mia/Sue; reworded the drop-out def off its headword token 'school'. Granted the -ly adverb forms + base adjectives (derivational -ly is NOT in the gate's inflection family, so every -ly adverb gates untaught). The 12 inline glosses (won't/should/shouldn't + adverbs) are correct; 27 translation audits accurate (tag→German 'oder?'/'nicht wahr?'). Two non-actionable level-gloss warns (could/couldn't unglossed — but they are gate-taught, so a gloss would be V-6-unneeded). Validate green."
+  },
+  "metrics": {
+    "itemsReviewed": 130,
+    "fullRows": 130,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

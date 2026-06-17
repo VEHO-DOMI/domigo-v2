@@ -1,0 +1,2215 @@
+{
+  "schema": "grammar@1",
+  "grade": 3,
+  "unit": 7,
+  "slug": "g3-u07",
+  "items": [
+    {
+      "id": "g3u07.gi.present-perfect-for-since.ag.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "anagram single word 'for'"
+      },
+      "prompt": {
+        "text": "Buchstabensalat: Das Wort steht vor einer Zeitspanne (zehn Jahre ___). -> R F O",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "for",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor einer Zeitspanne (lang) steht dieses kleine Wort.",
+      "hintEn": null,
+      "explainDe": "for steht vor einer Zeitspanne: for ten years.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.ag.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "anagram single word 'since' (since in bank g2-u12)"
+      },
+      "prompt": {
+        "text": "Buchstabensalat: Das Wort steht vor einem Anfangspunkt (___ 2019). -> C N E I S",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "since",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor einem Anfangspunkt steht dieses Wort.",
+      "hintEn": null,
+      "explainDe": "since steht vor einem Anfangspunkt: since 2019.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.cp.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Tom has lived in Vienna for 2020.",
+            "Tom has lived in Vienna since six years.",
+            "Tom lived in Vienna since 2020.",
+            "Tom lives in Vienna for 2020."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-cp-001",
+        "narrative": null,
+        "note": "errors: for+point / since+duration / past-simple; grant: lived (live participle); proper: Vienna"
+      },
+      "prompt": {
+        "text": "Tom ist 2020 nach Wien gezogen. Er wohnt immer noch dort. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom has lived in Vienna since 2020.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Tom has lived in Vienna for 2020.",
+        "Tom has lived in Vienna since six years.",
+        "Tom lived in Vienna since 2020."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "2020 ist der Anfangspunkt, und er wohnt immer noch dort.",
+      "hintEn": null,
+      "explainDe": "Weil es ab 2020 gilt und bis jetzt andauert: has lived ... since 2020.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.cp.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She has studied English for September.",
+            "She studies English since September.",
+            "She has studied English since six months.",
+            "She studied English since September."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-cp-020",
+        "narrative": null,
+        "note": "errors: for+point / present-simple / since+duration; grant: studied (study participle)"
+      },
+      "prompt": {
+        "text": "Deine Freundin hat im September angefangen, Englisch zu lernen. Jetzt ist März. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has studied English since September.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She has studied English for September.",
+        "She studies English since September.",
+        "She has studied English since six months."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "September ist der Anfangspunkt, und sie lernt immer noch.",
+      "hintEn": null,
+      "explainDe": "Ab September und immer noch: has studied ... since September. for September und since six months sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.cp.003",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "We have had our dog since six years.",
+            "We have our dog for six years.",
+            "We had our dog for six years.",
+            "We have had our dog since last week."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "errors: since+duration / present-simple / past-simple; grant: had (have participle); carrier WB ex.7.6"
+      },
+      "prompt": {
+        "text": "Deine Familie hat den Hund vor sechs Jahren bekommen und hat ihn immer noch. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have had our dog for six years.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We have had our dog since six years.",
+        "We have our dog for six years.",
+        "We had our dog for six years."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sechs Jahre ist eine Zeitspanne, und ihr habt ihn immer noch.",
+      "hintEn": null,
+      "explainDe": "Eine Zeitspanne mit Present perfect: have had ... for six years. since six years und have/had sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.ec.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-ec-001",
+        "narrative": null,
+        "note": "grant: known (know participle)"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I have known her since three years.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have known her for three years.",
+          "tier": "full"
+        },
+        {
+          "text": "I have known her for three years",
+          "tier": "full"
+        },
+        {
+          "text": "I've known her for three years.",
+          "tier": "full"
+        },
+        {
+          "text": "for three years",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Drei Jahre ist eine Zeitspanne. Welches Wort gehört vor eine Zeitspanne?",
+      "hintEn": null,
+      "explainDe": "Vor einer Zeitspanne steht for, nicht since: for three years.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.ec.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-ec-002",
+        "narrative": null,
+        "note": "grant: lived (live participle); proper: Salzburg"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: He lives in Salzburg since 2019.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has lived in Salzburg since 2019.",
+          "tier": "full"
+        },
+        {
+          "text": "He has lived in Salzburg since 2019",
+          "tier": "full"
+        },
+        {
+          "text": "He's lived in Salzburg since 2019.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Etwas, das 2019 begann und andauert, braucht das Present perfect.",
+      "hintEn": null,
+      "explainDe": "Statt lives nimmst du das Present perfect has lived: He has lived in Salzburg since 2019.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.ec.003",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-ec-003",
+        "narrative": null,
+        "note": "grant: been (be participle)"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: We are friends for ten years.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have been friends for ten years.",
+          "tier": "full"
+        },
+        {
+          "text": "We have been friends for ten years",
+          "tier": "full"
+        },
+        {
+          "text": "We've been friends for ten years.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Etwas, das vor zehn Jahren begann und noch gilt, braucht das Present perfect.",
+      "hintEn": null,
+      "explainDe": "Statt are nimmst du have been: We have been friends for ten years.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.ec.004",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-ec-021",
+        "narrative": null,
+        "note": "grant: been (be participle); hospital (in bank g1-u05)"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: She has been in hospital for Monday.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has been in hospital since Monday.",
+          "tier": "full"
+        },
+        {
+          "text": "She has been in hospital since Monday",
+          "tier": "full"
+        },
+        {
+          "text": "since Monday",
+          "tier": "full"
+        },
+        {
+          "text": "She's been in hospital since Monday.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Montag ist ein Anfangspunkt. Welches Wort gehört vor einen Anfangspunkt?",
+      "hintEn": null,
+      "explainDe": "Vor einem Anfangspunkt steht since, nicht for: since Monday.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.ec.005",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: had (have participle)"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I have had this bike since three months.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have had this bike for three months.",
+          "tier": "full"
+        },
+        {
+          "text": "I have had this bike for three months",
+          "tier": "full"
+        },
+        {
+          "text": "for three months",
+          "tier": "full"
+        },
+        {
+          "text": "I've had this bike for three months.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Drei Monate ist eine Zeitspanne. Welches Wort gehört vor eine Zeitspanne?",
+      "hintEn": null,
+      "explainDe": "Vor einer Zeitspanne steht for: for three months.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.ec.006",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: worked (work participle); mother+office (in bank); carrier adapted from WB ex.9.3"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: My mother work in that office since 2015.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My mother has worked in that office since 2015.",
+          "tier": "full"
+        },
+        {
+          "text": "My mother has worked in that office since 2015",
+          "tier": "full"
+        },
+        {
+          "text": "My mother's worked in that office since 2015.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Etwas, das 2015 begann und andauert, braucht has + Partizip.",
+      "hintEn": null,
+      "explainDe": "Statt work nimmst du has worked: My mother has worked in that office since 2015.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.ff.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "free-form",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "free-form for; grant: lived/had/been/played/known (participles)"
+      },
+      "prompt": {
+        "text": "Schreib einen wahren Satz über dich mit have/has + for. Beispiel: I have had my dog for three years.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have lived here for ten years.",
+          "tier": "full"
+        },
+        {
+          "text": "I have had my phone for two years.",
+          "tier": "full"
+        },
+        {
+          "text": "We have been friends for five years.",
+          "tier": "full"
+        },
+        {
+          "text": "I have played football for three years.",
+          "tier": "partial"
+        },
+        {
+          "text": "I have known her for a long time.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nimm have/has + Partizip und eine Zeitspanne mit for.",
+      "hintEn": null,
+      "explainDe": "Ein richtiger Satz braucht have/has + Partizip und for + Zeitspanne, z.B. I have had my phone for two years.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-gf-001",
+        "narrative": null,
+        "note": "grant: lived (live in bank)"
+      },
+      "prompt": {
+        "text": "I have lived in this town ___ ten years.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "for",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zehn Jahre ist eine Zeitspanne (zehn Jahre lang). Da nimmst du for.",
+      "hintEn": null,
+      "explainDe": "Bei einer Zeitspanne (zehn Jahre lang) nimmst du for: for ten years.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-gf-002",
+        "narrative": null,
+        "note": "grant: been (be participle)"
+      },
+      "prompt": {
+        "text": "She has been my best friend ___ 2019.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "since",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "2019 ist ein Anfangspunkt. Da nimmst du since.",
+      "hintEn": null,
+      "explainDe": "Bei einem Anfangspunkt (ein Jahr, ein Datum) nimmst du since: since 2019.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.003",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-gf-003",
+        "narrative": null,
+        "note": "grant: known (know participle)"
+      },
+      "prompt": {
+        "text": "They have known each other ___ 2018.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "since",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "2018 ist ein bestimmter Zeitpunkt. Da passt since.",
+      "hintEn": null,
+      "explainDe": "since steht vor einem Anfangspunkt wie einer Jahreszahl: since 2018.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.004",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-gf-004",
+        "narrative": null,
+        "note": "grant: seen (see participle)"
+      },
+      "prompt": {
+        "text": "We haven't seen our friends ___ a long time.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "for",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eine lange Zeit ist eine Zeitspanne (lange). Da nimmst du for.",
+      "hintEn": null,
+      "explainDe": "a long time ist eine Zeitspanne, deshalb for: for a long time.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.005",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-gf-005",
+        "narrative": null,
+        "note": "grant: had (have participle)"
+      },
+      "prompt": {
+        "text": "He has had that phone ___ last Christmas.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "since",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "last Christmas ist ein Anfangspunkt - ab da hatte er es. Da nimmst du since.",
+      "hintEn": null,
+      "explainDe": "since zeigt, ab wann etwas gilt: since last Christmas.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.006",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-gf-006",
+        "narrative": null,
+        "note": "grant: played (play participle)"
+      },
+      "prompt": {
+        "text": "My sister has played the piano ___ she was six.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "since",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "seit sie sechs war - das ist ein Anfangspunkt. Da nimmst du since.",
+      "hintEn": null,
+      "explainDe": "Ein ganzer Anfangspunkt-Satzteil (she was six) kommt nach since.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.007",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-gf-023",
+        "narrative": null,
+        "note": "grant: played (play participle)"
+      },
+      "prompt": {
+        "text": "Tom has played the guitar ___ three months.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "for",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Drei Monate ist eine Zeitspanne (drei Monate lang). Da nimmst du for.",
+      "hintEn": null,
+      "explainDe": "for steht vor einer Zeitspanne: for three months.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.008",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-gf-025",
+        "narrative": null,
+        "note": "grant: had (have participle); born (in bank, g1-u03 'born')"
+      },
+      "prompt": {
+        "text": "My grandma has had that car ___ I was born.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "since",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "seit ich geboren wurde - ein Anfangspunkt. Da nimmst du since.",
+      "hintEn": null,
+      "explainDe": "since steht auch vor einem Satzteil, der den Anfang nennt: since I was born.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.009",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: been (be participle); carrier from WB ex.9 'students at this school a very long time'"
+      },
+      "prompt": {
+        "text": "We have been at this school ___ a very long time.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "for",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eine sehr lange Zeit ist eine Zeitspanne. Da nimmst du for.",
+      "hintEn": null,
+      "explainDe": "a very long time ist eine Zeitspanne, deshalb for.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.010",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: 'has had' (have participle form); carrier from WB ex.7.2"
+      },
+      "prompt": {
+        "text": "Schreib die richtige Form ein: Molly ___ (have) her cat since December.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has had",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du brauchst die Present-perfect-Form von have: has + Partizip.",
+      "hintEn": null,
+      "explainDe": "Present perfect von have ist has had: Molly has had her cat since December.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.011",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: 'has played' (play participle form); gloss tennis (not in bank); carrier WB ex.10.7"
+      },
+      "prompt": {
+        "text": "Schreib die richtige Form ein: Dave ___ (play) tennis since he was ten.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has played",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Present perfect von play: has + Partizip von play.",
+      "hintEn": null,
+      "explainDe": "Present perfect von play ist has played: Dave has played tennis since he was ten.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gf.012",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: 'have lived' (live participle form); carrier WB ex.10.3"
+      },
+      "prompt": {
+        "text": "Schreib zwei Wörter ein: They ___ (live) next door to us ___ six months.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "have lived | for",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zuerst die Present-perfect-Form von live, dann das Wort für eine Zeitspanne.",
+      "hintEn": null,
+      "explainDe": "have lived ist die Present-perfect-Form; sechs Monate ist eine Zeitspanne, also for.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gs.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 7.txt",
+        "seedV1": "m3-u7-present-perfect-for-since-mt-001",
+        "narrative": null,
+        "note": "gs duration-vs-point; members in bank/core; proper: Monday; carrier WB ex.6"
+      },
+      "prompt": {
+        "text": "Sortiere: Gehört das Wort zu for oder zu since?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "for (✓)",
+          "members": [
+            "two hours",
+            "a long time",
+            "three weeks",
+            "many years"
+          ]
+        },
+        {
+          "label": "since (✓)",
+          "members": [
+            "last summer",
+            "2020",
+            "Monday",
+            "I was a child"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "for steht bei einer Zeitspanne (lang), since bei einem Anfangspunkt.",
+      "hintEn": null,
+      "explainDe": "Zeitspannen kommen zu for (two hours, a long time ...), Anfangspunkte zu since (last summer, 2020 ...).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.gs.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "gs duration-vs-point; members in bank (inflections of year/minute/day/week); proper: Friday; carrier WB ex.6 word list"
+      },
+      "prompt": {
+        "text": "Sortiere: Gehört das Wort zu for oder zu since?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "for (✓)",
+          "members": [
+            "many years",
+            "ten minutes",
+            "three days",
+            "two weeks"
+          ]
+        },
+        {
+          "label": "since (✓)",
+          "members": [
+            "this morning",
+            "the weekend",
+            "1999",
+            "last Friday"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Frag dich: Kann ich lang sagen? Dann for. Ist es ein Anfangspunkt? Dann since.",
+      "hintEn": null,
+      "explainDe": "for bei Zeitspannen (many years, three days ...), since bei Anfangspunkten (this morning, 1999 ...).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.mc.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I have lived here since five years.",
+            "I live here for five years.",
+            "I lived here for five years.",
+            "I have lived here since last week."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-mc-001",
+        "narrative": null,
+        "note": "errors: since+duration / present-simple / past-simple; grant: lived (live participle)"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have lived here for five years.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I have lived here since five years.",
+        "I live here for five years.",
+        "I lived here for five years."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fünf Jahre ist eine Zeitspanne. Und du brauchst die Present-perfect-Form.",
+      "hintEn": null,
+      "explainDe": "Richtig ist for + Zeitspanne mit have lived. since five years ist falsch, und live/lived ist nicht das Present perfect.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.mc.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She has worked there for September.",
+            "She works there since September.",
+            "She worked there since September.",
+            "She has worked there for last year."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-mc-002",
+        "narrative": null,
+        "note": "errors: for+point / present-simple / past-simple; grant: worked (work participle)"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has worked there since September.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She has worked there for September.",
+        "She works there since September.",
+        "She worked there since September."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "September ist ein Anfangspunkt. Und du brauchst has + Partizip.",
+      "hintEn": null,
+      "explainDe": "Richtig ist since + Anfangspunkt mit has worked. for September ist falsch, und works/worked ist nicht das Present perfect.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.mc.003",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "They haven't eaten anything for breakfast.",
+            "They don't eat anything since breakfast.",
+            "They didn't eat anything since breakfast.",
+            "They haven't eaten anything for a day."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-mc-003",
+        "narrative": null,
+        "note": "errors: for+point / present-simple / past-simple; grant: eaten (eat participle)"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They haven't eaten anything since breakfast.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They haven't eaten anything for breakfast.",
+        "They don't eat anything since breakfast.",
+        "They didn't eat anything since breakfast."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Seit dem Frühstück ist ein Anfangspunkt. Und du brauchst haven't + Partizip.",
+      "hintEn": null,
+      "explainDe": "Richtig ist since breakfast mit haven't eaten. for breakfast ist falsch, und don't eat / didn't eat sind nicht das Present perfect.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.mc.004",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I have known her for 2019.",
+            "I have known her since five years.",
+            "I know her since 2019.",
+            "I have known her for last Monday."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-mc-020",
+        "narrative": null,
+        "note": "errors: for+point / since+duration / present-simple; grant: known (know participle)"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have known her since 2019.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I have known her for 2019.",
+        "I have known her since five years.",
+        "I know her since 2019."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "2019 ist ein Anfangspunkt (since), keine Zeitspanne (for).",
+      "hintEn": null,
+      "explainDe": "Richtig ist since 2019. for 2019 ist falsch (Anfangspunkt), since five years ist falsch (Zeitspanne), und know ist nicht das Present perfect.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.mc.005",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He has been ill for last Friday.",
+            "He is ill since last Friday.",
+            "He has been ill since a week.",
+            "He has been ill for last Friday morning."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-mc-022",
+        "narrative": null,
+        "note": "errors: for+point / present-simple / since+duration; grant: been (be participle), ill (in bank)"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has been ill since last Friday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He has been ill for last Friday.",
+        "He is ill since last Friday.",
+        "He has been ill since a week."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "last Friday ist ein Anfangspunkt. Und du brauchst has been.",
+      "hintEn": null,
+      "explainDe": "Richtig ist since last Friday mit has been. for last Friday und since a week sind falsch, und is ill ist nicht das Present perfect.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.mp.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "mp for-vs-since, unique rights; grant: known/been (participles); ill (in bank)"
+      },
+      "prompt": {
+        "text": "Welcher Satz gehört zu welcher Info?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Start: 2019. Still true.",
+          "right": "I have known her since 2019."
+        },
+        {
+          "left": "Length: ten years. Still true.",
+          "right": "I have known her for ten years."
+        },
+        {
+          "left": "Start: Monday. Still true.",
+          "right": "She has been ill since Monday."
+        },
+        {
+          "left": "Length: a week. Still true.",
+          "right": "She has been ill for a week."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Anfangspunkt (2019, Monday) braucht since, eine Zeitspanne (ten years, a week) braucht for.",
+      "hintEn": null,
+      "explainDe": "Anfangspunkt -> since (since 2019, since Monday), Zeitspanne -> for (for ten years, for a week).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.mt.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "matching halves, unique rights; grant: lived/been/known/seen (participles); gloss primary school"
+      },
+      "prompt": {
+        "text": "Welches Ende passt zu welchem Anfang?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I have lived here",
+          "right": "for ten years."
+        },
+        {
+          "left": "She has been my friend",
+          "right": "since primary school."
+        },
+        {
+          "left": "They have known each other",
+          "right": "since they were born."
+        },
+        {
+          "left": "We haven't seen them",
+          "right": "for a long time."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "for steht vor einer Zeitspanne, since vor einem Anfangspunkt.",
+      "hintEn": null,
+      "explainDe": "Zeitspannen bekommen for (ten years, a long time), Anfangspunkte bekommen since (primary school, they were born).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.mt.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "matching Q<->A English-English, unique rights; grant: had/known/played/lived (participles); proper: Tom, Vienna"
+      },
+      "prompt": {
+        "text": "Welche Antwort passt zu welcher Frage?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "How long have you had your dog?",
+          "right": "I have had him for six years."
+        },
+        {
+          "left": "How long have you known Tom?",
+          "right": "I have known him since 2018."
+        },
+        {
+          "left": "How long have you played the guitar?",
+          "right": "I have played it since I was eight."
+        },
+        {
+          "left": "How long have you lived in Vienna?",
+          "right": "I have lived here for three months."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte darauf, ob die Antwort eine Zeitspanne (for) oder einen Anfangspunkt (since) nennt.",
+      "hintEn": null,
+      "explainDe": "Jede Frage bekommt die passende Antwort mit for (Zeitspanne) oder since (Anfangspunkt).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.qf.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: known (know participle); carrier from SB ex.6 'How long have you known your best friend?'"
+      },
+      "prompt": {
+        "text": "Bilde die Frage: how long / you / have / known / your best friend",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long have you known your best friend?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit How long, dann have you, dann das Partizip known.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: How long + have you + known + your best friend?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.qf.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: had (have participle); carrier from SB ex.6 'How long have you had ...?'"
+      },
+      "prompt": {
+        "text": "Bilde die Frage: how long / you / have / had / your bike",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long have you had your bike?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit How long, dann have you, dann das Partizip had.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: How long + have you + had + your bike?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.sb.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "since",
+            "lives",
+            "living",
+            "stayed"
+          ],
+          "chipBudget": 8,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-sb-001",
+        "narrative": null,
+        "note": "grant: lived (live participle); 7 answer chips; decoys since/lives/living/stayed (all in bank)"
+      },
+      "prompt": {
+        "text": "for / lived / three / they / here / years / have",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They have lived here for three years.",
+          "tier": "full"
+        },
+        {
+          "text": "They have lived here for three years",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit They, dann have + Partizip, dann here, dann die Zeitspanne mit for.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: They + have lived + here + for three years.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.sb.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "for",
+            "saw",
+            "see",
+            "seeing"
+          ],
+          "chipBudget": 8,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-sb-021",
+        "narrative": null,
+        "note": "grant: seen (see participle); 6 answer chips (each other = 1 chip); decoys for/saw/see/seeing; proper: July"
+      },
+      "prompt": {
+        "text": "haven't / since / they / each other / seen / July",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They haven't seen each other since July.",
+          "tier": "full"
+        },
+        {
+          "text": "They haven't seen each other since July",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit They, dann haven't + Partizip, dann each other, dann since + Anfangspunkt.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: They + haven't seen + each other + since July.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.sb.003",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "for",
+            "have",
+            "having",
+            "got"
+          ],
+          "chipBudget": 8,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: had (have participle); 7 answer chips; decoys for/have/having/got; proper: December; carrier WB ex.7.2"
+      },
+      "prompt": {
+        "text": "since / has / she / had / December / cat / her",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has had her cat since December.",
+          "tier": "full"
+        },
+        {
+          "text": "She has had her cat since December",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit She, dann has had, dann her cat, dann since + Anfangspunkt.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: She + has had + her cat + since December.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.tf.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: studied (study participle); gloss Spanish (not in bank as common noun)"
+      },
+      "prompt": {
+        "text": "I started learning Spanish in 2020. I still learn it. (jetzt ein Satz mit since)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have studied Spanish since 2020.",
+          "tier": "full"
+        },
+        {
+          "text": "I've studied Spanish since 2020.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mach aus den zwei Infos einen Satz im Present perfect mit since.",
+      "hintEn": null,
+      "explainDe": "Was 2020 begann und andauert: I have studied Spanish since 2020.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.tf.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-tf-021",
+        "narrative": null,
+        "note": "grant: lived (live participle); moved (move participle, in carrier)"
+      },
+      "prompt": {
+        "text": "We moved here in 2018. We still live here. (ein Satz mit since)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have lived here since 2018.",
+          "tier": "full"
+        },
+        {
+          "text": "We've lived here since 2018.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Was 2018 begann und immer noch gilt, kommt ins Present perfect mit since.",
+      "hintEn": null,
+      "explainDe": "have lived ... since 2018: es begann 2018 und dauert an.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.tf.003",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: had (have participle); phone (in bank)"
+      },
+      "prompt": {
+        "text": "She got that phone two years ago. She still has it. (ein Satz mit for)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has had that phone for two years.",
+          "tier": "full"
+        },
+        {
+          "text": "She's had that phone for two years.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zwei Jahre ist eine Zeitspanne. Mach einen Satz im Present perfect mit for.",
+      "hintEn": null,
+      "explainDe": "has had ... for two years: eine Zeitspanne, die bis jetzt andauert.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.tf.004",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: worked (work participle)"
+      },
+      "prompt": {
+        "text": "He started this job last summer. He still works there. (ein Satz mit since)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has worked there since last summer.",
+          "tier": "full"
+        },
+        {
+          "text": "He's worked there since last summer.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "last summer ist ein Anfangspunkt. Present perfect mit since.",
+      "hintEn": null,
+      "explainDe": "has worked ... since last summer: es begann letzten Sommer und gilt noch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.tr.001",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-tr-001",
+        "narrative": null,
+        "note": "grant: lived (live participle); proper: Vienna"
+      },
+      "prompt": {
+        "text": "Ich wohne seit fünf Jahren in Wien.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have lived in Vienna for five years.",
+          "tier": "full"
+        },
+        {
+          "text": "I've lived in Vienna for five years.",
+          "tier": "full"
+        },
+        {
+          "text": "I have lived in Vienna for five years",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "seit ... Jahren wird im Englischen zur Present-perfect-Form mit for.",
+      "hintEn": null,
+      "explainDe": "Das deutsche seit fünf Jahren (eine Zeitspanne, fünf Jahre lang) wird zu for five years mit have lived.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.tr.002",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u7-present-perfect-for-since-tr-002",
+        "narrative": null,
+        "note": "grant: played (play participle)"
+      },
+      "prompt": {
+        "text": "Er spielt seit Montag kein Fußball.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He hasn't played football since Monday.",
+          "tier": "full"
+        },
+        {
+          "text": "He has not played football since Monday.",
+          "tier": "full"
+        },
+        {
+          "text": "He hasn't played football since Monday",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "seit Montag ist ein Anfangspunkt - im Englischen since mit dem Present perfect.",
+      "hintEn": null,
+      "explainDe": "seit Montag wird zu since Monday, und kein Fußball spielen wird zu hasn't played football.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.tr.003",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: been (be participle); from SB story 'friends with Alessia for two years'"
+      },
+      "prompt": {
+        "text": "Wir sind seit zwei Jahren befreundet.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have been friends for two years.",
+          "tier": "full"
+        },
+        {
+          "text": "We've been friends for two years.",
+          "tier": "full"
+        },
+        {
+          "text": "We have been friends for two years",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "seit zwei Jahren (zwei Jahre lang) ist eine Zeitspanne - im Englischen for.",
+      "hintEn": null,
+      "explainDe": "seit zwei Jahren wird zu for two years, und befreundet sein zu have been friends.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u07.gi.present-perfect-for-since.tr.004",
+      "structureId": "g3u07.s.present-perfect-for-since",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 7.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "grant: had (have participle); soft toys (in bank); carrier adapted from SB story 'had them since I was little'"
+      },
+      "prompt": {
+        "text": "She has had those soft toys since she was little.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sie hat diese Stofftiere, seit sie klein war.",
+          "tier": "full"
+        },
+        {
+          "text": "Sie hat die Stofftiere, seit sie klein war.",
+          "tier": "full"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "since she was little zeigt den Anfangspunkt - auf Deutsch seit sie klein war.",
+      "hintEn": null,
+      "explainDe": "since wird hier zu seit, weil es einen Anfangspunkt nennt: seit sie klein war.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

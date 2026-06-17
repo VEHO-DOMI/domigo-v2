@@ -1,0 +1,2636 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g4-u09",
+  "briefBank": "7b87ba493528",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g4u09.w.border",
+      "w": "border",
+      "g": "Grenze",
+      "d": "The place where one country ends and the next one begins.",
+      "s": "Malaysia is near the ___ with Indonesia.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "border",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "border",
+          "tier": "full"
+        },
+        {
+          "text": "borders",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "border",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Grenze",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "funeral",
+        "ceremony",
+        "gesture"
+      ],
+      "hintDe": "Hier hört ein Land auf und das nächste fängt an.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "funeral",
+          "ceremony",
+          "gesture",
+          "victory",
+          "needle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.communicate",
+      "w": "communicate",
+      "g": "kommunizieren",
+      "d": "To use language to tell people what you feel or think.",
+      "s": "We ___ every day when we talk and write.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "communicate",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "communicate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "communicate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kommunizieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "greet",
+        "bury",
+        "ignore"
+      ],
+      "hintDe": "Du tust es, wenn du mit anderen redest und schreibst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "greet",
+          "bury",
+          "ignore",
+          "insult",
+          "giggle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.fashionable",
+      "w": "fashionable",
+      "g": "in Mode",
+      "d": "Liked when very many young people love it just now.",
+      "s": "Black clothes were very ___ last year.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fashionable",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fashionable",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fashionable",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in Mode",
+            "tier": "full"
+          },
+          {
+            "text": "modisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "religious",
+        "rebellious",
+        "permanent"
+      ],
+      "hintDe": "Etwas, das gerade alle gut finden und tragen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "religious",
+          "rebellious",
+          "permanent",
+          "confused",
+          "decent-looking"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.firstly",
+      "w": "firstly",
+      "g": "erstens",
+      "d": "You use it to begin your first reason before the next.",
+      "s": "___ I think it looks good, and I also like it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "firstly",
+          "tier": "full"
+        },
+        {
+          "text": "Firstly",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "firstly",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "firstly",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erstens",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hastily",
+        "permanent",
+        "religious"
+      ],
+      "hintDe": "Das sagst du, wenn du deinen ersten Punkt nennst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "hastily",
+          "permanent",
+          "religious",
+          "fashionable",
+          "rebellious"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.funeral",
+      "w": "funeral",
+      "g": "Begräbnis",
+      "d": "The day when people put a dead body under the ground.",
+      "s": "Our neighbour died yesterday and the ___ is on Friday.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "funeral",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "funeral",
+          "tier": "full"
+        },
+        {
+          "text": "funerals",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "funeral",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Begräbnis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ceremony",
+        "border",
+        "victory"
+      ],
+      "hintDe": "Hier sagen alle einem toten Menschen Lebewohl.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ceremony",
+          "border",
+          "victory",
+          "gesture",
+          "possibility"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.health-risk",
+      "w": "health risk",
+      "g": "Gesundheitsrisiko",
+      "d": "A thing that can be bad or dangerous for your body.",
+      "s": "Body art can be a ___ because of dirty needles.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "health risk",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "health risk",
+          "tier": "full"
+        },
+        {
+          "text": "health risks",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "health risk",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gesundheitsrisiko",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "funeral",
+        "ceremony",
+        "gesture"
+      ],
+      "hintDe": "Etwas, das deinem Körper schaden kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "funeral",
+          "ceremony",
+          "gesture",
+          "border",
+          "victory"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.in-common",
+      "w": "in common",
+      "g": "gemeinsam",
+      "d": "You use it when two friends like or do much of what the one likes.",
+      "s": "My friend and I both like this music, so we have much ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "in common",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "in common",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "in common",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gemeinsam",
+            "tier": "full"
+          },
+          {
+            "text": "gemein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fashionable",
+        "permanent",
+        "religious"
+      ],
+      "hintDe": "Wenn ihr beide das Gleiche mögt, habt ihr es so.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "fashionable",
+          "permanent",
+          "religious",
+          "rebellious",
+          "confused"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.needle",
+      "w": "needle",
+      "g": "Nadel",
+      "d": "A very thin, sharp piece of metal that can make a small hole.",
+      "s": "The ___ makes a hole in your ear for the earring.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "needle",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "needle",
+          "tier": "full"
+        },
+        {
+          "text": "needles",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "needle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nadel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sharp",
+          "de": "spitz, scharf",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "sleeve",
+        "palm",
+        "thumb"
+      ],
+      "hintDe": "Damit macht man ein kleines Loch ins Ohr.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "sleeve",
+          "palm",
+          "thumb",
+          "gesture",
+          "border"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.permanent",
+      "w": "permanent",
+      "g": "dauerhaft",
+      "d": "It stays and does not go away.",
+      "s": "A mark on your skin can be ___ and stay there forever.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "permanent",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "permanent",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "permanent",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dauerhaft",
+            "tier": "full"
+          },
+          {
+            "text": "endgültig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fashionable",
+        "religious",
+        "rebellious"
+      ],
+      "hintDe": "Es bleibt für immer und geht nie mehr weg.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fashionable",
+          "religious",
+          "rebellious",
+          "confused",
+          "decent-looking"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.pierced",
+      "w": "pierced",
+      "g": "durchstochen",
+      "d": "When a small hole is now in your ear or skin.",
+      "s": "When your ear is ___ you can wear an earring.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pierced",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pierced",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pierced",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "durchstochen",
+            "tier": "full"
+          },
+          {
+            "text": "gepierct",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "religious",
+        "confused",
+        "embarrassed"
+      ],
+      "hintDe": "Dein Ohr hat ein kleines Loch und du kannst einen Ohrring tragen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "religious",
+          "confused",
+          "embarrassed",
+          "rebellious",
+          "fashionable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.rebellious",
+      "w": "rebellious",
+      "g": "rebellisch",
+      "d": "Not wanting to do what the rules want.",
+      "s": "She did not like school and she was ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "rebellious",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rebellious",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rebellious",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "rebellisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "religious",
+        "fashionable",
+        "confused"
+      ],
+      "hintDe": "Du willst die Regeln nicht befolgen und tust das Gegenteil.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "religious",
+          "fashionable",
+          "confused",
+          "permanent",
+          "embarrassed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.religious",
+      "w": "religious",
+      "g": "religiös",
+      "d": "You go to a church to pray and you love your god.",
+      "s": "___ people go to church and pray.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "religious",
+          "tier": "full"
+        },
+        {
+          "text": "Religious",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "religious",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "religious",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "religiös",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "god",
+          "de": "Gott",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "rebellious",
+        "fashionable",
+        "permanent"
+      ],
+      "hintDe": "Du glaubst an Gott und gehst in die Kirche.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "rebellious",
+          "fashionable",
+          "permanent",
+          "confused",
+          "decent-looking"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.ceremony",
+      "w": "ceremony",
+      "g": "Zeremonie",
+      "d": "A long, beautiful thing people do on a very big day.",
+      "s": "The church ___ for the two of them was long and beautiful.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ceremony",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ceremony",
+          "tier": "full"
+        },
+        {
+          "text": "ceremonies",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ceremony",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zeremonie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "funeral",
+        "border",
+        "gesture"
+      ],
+      "hintDe": "Ein feierlicher Ablauf für einen wichtigen Tag.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "funeral",
+          "border",
+          "gesture",
+          "victory",
+          "needle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.bury",
+      "w": "bury",
+      "g": "begraben",
+      "d": "To put a dead body or a thing down under the ground.",
+      "s": "People ___ their dead in the ground.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "bury",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bury",
+          "tier": "full"
+        },
+        {
+          "text": "buried",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bury",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "begraben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "greet",
+        "ignore",
+        "communicate"
+      ],
+      "hintDe": "Du legst etwas oder einen Toten unter die Erde.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "greet",
+          "ignore",
+          "communicate",
+          "insult",
+          "giggle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.devil",
+      "w": "devil",
+      "g": "Teufel",
+      "d": "An evil spirit in old stories that wants people to be bad.",
+      "s": "In old stories the ___ is an evil spirit that tricks people.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "devil",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "devil",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "devil",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Teufel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "needle",
+        "gesture",
+        "ceremony"
+      ],
+      "hintDe": "Ein böser Geist aus alten Geschichten.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "needle",
+          "gesture",
+          "ceremony",
+          "border",
+          "funeral"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.confused",
+      "w": "confused",
+      "g": "verwirrt",
+      "d": "When you cannot understand and do not know what to think.",
+      "s": "I am a little ___, can you tell me again?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "confused",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "confused",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "confused",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verwirrt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "embarrassed",
+        "religious",
+        "rebellious"
+      ],
+      "hintDe": "Du verstehst etwas nicht und weißt nicht mehr weiter.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "embarrassed",
+          "religious",
+          "rebellious",
+          "permanent",
+          "fashionable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.far-east",
+      "w": "Far East",
+      "g": "Ferner Osten",
+      "d": "The countries of Asia, like Japan and China.",
+      "s": "Japan and China are countries in the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Far East",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Far East",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Far East",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ferner Osten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "border",
+        "ceremony",
+        "funeral"
+      ],
+      "hintDe": "Dort liegen Länder wie Japan und China.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "border",
+          "ceremony",
+          "funeral",
+          "victory",
+          "gesture"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.gesture",
+      "w": "gesture",
+      "g": "Geste",
+      "d": "A move of your body that can show what you feel.",
+      "s": "A wave is a ___ that many people understand.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "gesture",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "gesture",
+          "tier": "full"
+        },
+        {
+          "text": "gestures",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "gesture",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geste",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "border",
+        "ceremony",
+        "needle"
+      ],
+      "hintDe": "Eine Bewegung mit Arm oder Körper, die etwas zeigt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "border",
+          "ceremony",
+          "needle",
+          "victory",
+          "funeral"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.greet",
+      "w": "greet",
+      "g": "begrüßen",
+      "d": "To welcome people and wave when you meet them.",
+      "s": "We ___ our friends when we meet them.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "greet",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "greet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "greet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "begrüßen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bury",
+        "ignore",
+        "insult"
+      ],
+      "hintDe": "Du sagst Hallo, wenn du jemanden triffst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bury",
+          "ignore",
+          "insult",
+          "communicate",
+          "giggle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.index-finger",
+      "w": "index finger",
+      "g": "Zeigefinger",
+      "d": "The one next to your thumb that you use to show the way.",
+      "s": "She used her ___ to show us the way on the map.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "index finger",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "index finger",
+          "tier": "full"
+        },
+        {
+          "text": "index fingers",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "index finger",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zeigefinger",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "thumb",
+        "palm",
+        "sleeve"
+      ],
+      "hintDe": "Der Finger neben dem Daumen, mit dem du zeigst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "thumb",
+          "palm",
+          "sleeve",
+          "needle",
+          "gesture"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.insult",
+      "w": "insult",
+      "g": "beleidigen",
+      "d": "To do or call out a rude thing that makes people sad or angry.",
+      "s": "A rude sign can ___ people in some countries.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "insult",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "insult",
+          "tier": "full"
+        },
+        {
+          "text": "insulted",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "insult",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beleidigen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "greet",
+        "ignore",
+        "bury"
+      ],
+      "hintDe": "Du sagst etwas Gemeines, das jemanden verletzt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "greet",
+          "ignore",
+          "bury",
+          "communicate",
+          "giggle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.nod-the-head",
+      "w": "nod the head",
+      "g": "mit dem Kopf nicken",
+      "d": "To move it up and down to show that you agree.",
+      "s": "If you agree with me, just ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "nod the head",
+          "tier": "full"
+        },
+        {
+          "text": "nod your head",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nod the head",
+          "tier": "full"
+        },
+        {
+          "text": "nod your head",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nod the head",
+            "tier": "full"
+          },
+          {
+            "text": "nod your head",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mit dem Kopf nicken",
+            "tier": "full"
+          },
+          {
+            "text": "nicken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "greet",
+        "ignore",
+        "communicate"
+      ],
+      "hintDe": "Du bewegst den Kopf auf und ab, weil du zustimmst.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "greet",
+          "ignore",
+          "communicate",
+          "insult",
+          "bury"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.palm",
+      "w": "palm",
+      "g": "Handfläche",
+      "d": "The inside of your hand below your fingers.",
+      "s": "Your fingers and your thumb are joined to your ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "palm",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "palm",
+          "tier": "full"
+        },
+        {
+          "text": "palms",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "palm",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Handfläche",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hand",
+          "de": "Hand",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "thumb",
+        "sleeve",
+        "needle"
+      ],
+      "hintDe": "Die flache Innenseite, an der deine Finger sitzen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "thumb",
+          "sleeve",
+          "needle",
+          "index finger",
+          "gesture"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.pass-something-on",
+      "w": "pass something on",
+      "g": "etwas weitergeben",
+      "d": "To give a thing to the next one after you have had it.",
+      "s": "After you read this note, please ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pass something on",
+          "tier": "full"
+        },
+        {
+          "text": "pass it on",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pass something on",
+          "tier": "full"
+        },
+        {
+          "text": "pass on",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pass something on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etwas weitergeben",
+            "tier": "full"
+          },
+          {
+            "text": "weitergeben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "greet",
+        "bury",
+        "ignore"
+      ],
+      "hintDe": "Du gibst es an die nächste Person weiter.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "greet",
+          "bury",
+          "ignore",
+          "insult",
+          "communicate"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.thumb",
+      "w": "thumb",
+      "g": "Daumen",
+      "d": "The short, thick finger that is not one of the four fingers.",
+      "s": "You can hold your ___ up to show that everything is OK.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "thumb",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thumb",
+          "tier": "full"
+        },
+        {
+          "text": "thumbs",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thumb",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Daumen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "palm",
+        "sleeve",
+        "needle"
+      ],
+      "hintDe": "Der kurze, dicke Finger, der allein steht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "palm",
+          "sleeve",
+          "needle",
+          "index finger",
+          "gesture"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.victory",
+      "w": "victory",
+      "g": "Sieg",
+      "d": "When you are best in a match, a fight or a war.",
+      "s": "It was a great ___ and everyone was very happy.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "victory",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "victory",
+          "tier": "full"
+        },
+        {
+          "text": "victories",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "victory",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sieg",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "border",
+        "ceremony",
+        "funeral"
+      ],
+      "hintDe": "Wenn du ein Spiel oder einen Kampf gewinnst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "border",
+          "ceremony",
+          "funeral",
+          "gesture",
+          "needle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.zero",
+      "w": "zero",
+      "g": "null",
+      "d": "The number 0; not one, not any.",
+      "s": "When the weather is very cold the temperature can drop to ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "zero",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "zero",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "zero",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "null",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "victory",
+        "border",
+        "gesture"
+      ],
+      "hintDe": "Die Zahl 0, also gar nichts.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "victory",
+          "border",
+          "gesture",
+          "needle",
+          "funeral"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.decent-looking",
+      "w": "decent-looking",
+      "g": "gut aussehend",
+      "d": "Quite nice, but not the most beautiful.",
+      "s": "He is not too cute, but he is a ___ boy.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "decent-looking",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "decent-looking",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "decent-looking",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gut aussehend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "confused",
+        "religious",
+        "rebellious"
+      ],
+      "hintDe": "Ganz nett anzusehen, aber nicht der Schönste.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "confused",
+          "religious",
+          "rebellious",
+          "permanent",
+          "fashionable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.embarrassed",
+      "w": "embarrassed",
+      "g": "verlegen",
+      "d": "When you feel that people make you go red.",
+      "s": "I ignored him because I was ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "embarrassed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "embarrassed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "embarrassed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verlegen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "confused",
+        "religious",
+        "rebellious"
+      ],
+      "hintDe": "Es ist dir vor anderen peinlich und unangenehm.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "confused",
+          "religious",
+          "rebellious",
+          "permanent",
+          "decent-looking"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.giggle",
+      "w": "giggle",
+      "g": "kichern",
+      "d": "To laugh in a funny way when you are nervous.",
+      "s": "He looked so funny that the girls ___ when they looked at him.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "giggled",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "giggle",
+          "tier": "full"
+        },
+        {
+          "text": "giggled",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "giggle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kichern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sigh",
+        "ignore",
+        "greet"
+      ],
+      "hintDe": "Du lachst leise und albern, oft aus Nervosität.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "sigh",
+          "ignore",
+          "greet",
+          "insult",
+          "communicate"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.goth",
+      "w": "goth",
+      "g": "Grufti",
+      "d": "A young man or woman who wears black and likes dark music.",
+      "s": "Everything she wears is black, so she must be a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "goth",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "goth",
+          "tier": "full"
+        },
+        {
+          "text": "goths",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "goth",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Grufti",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "devil",
+        "bride",
+        "needle"
+      ],
+      "hintDe": "Jemand, der nur Schwarz trägt und dunkle Musik mag.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "devil",
+          "bride",
+          "needle",
+          "gesture",
+          "bridesmaid"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.hastily",
+      "w": "hastily",
+      "g": "hastig",
+      "d": "Doing a thing far too fast and without care.",
+      "s": "She did it too fast and ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hastily",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hastily",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hastily",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hastig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "firstly",
+        "permanent",
+        "religious"
+      ],
+      "hintDe": "Viel zu schnell und ohne genug Sorgfalt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "firstly",
+          "permanent",
+          "religious",
+          "fashionable",
+          "rebellious"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.ignore",
+      "w": "ignore",
+      "g": "ignorieren",
+      "d": "To look away and give people no care at all.",
+      "s": "She did not even look at me and just ___ me.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ignored",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ignore",
+          "tier": "full"
+        },
+        {
+          "text": "ignored",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ignore",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ignorieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "greet",
+        "insult",
+        "bury"
+      ],
+      "hintDe": "Du beachtest jemanden gar nicht und siehst weg.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "greet",
+          "insult",
+          "bury",
+          "communicate",
+          "giggle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.sigh",
+      "w": "sigh",
+      "g": "seufzen",
+      "d": "To breathe out and show that you are sad or tired.",
+      "s": "That is so boring, she ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sighed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sigh",
+          "tier": "full"
+        },
+        {
+          "text": "sighed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sigh",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "seufzen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "giggle",
+        "ignore",
+        "greet"
+      ],
+      "hintDe": "Du atmest langsam aus, weil du müde oder traurig bist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "giggle",
+          "ignore",
+          "greet",
+          "insult",
+          "communicate"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.sitting-room",
+      "w": "sitting room",
+      "g": "Wohnzimmer",
+      "d": "The space at home where people relax and watch TV.",
+      "s": "We drink tea in the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sitting room",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sitting room",
+          "tier": "full"
+        },
+        {
+          "text": "sitting rooms",
+          "tier": "partial"
+        },
+        {
+          "text": "living room",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sitting room",
+            "tier": "full"
+          },
+          {
+            "text": "living room",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wohnzimmer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "relax",
+          "de": "sich entspannen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "sleeve",
+        "palm",
+        "needle"
+      ],
+      "hintDe": "Der Raum, in dem die Familie sich ausruht und fernsieht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "sleeve",
+          "palm",
+          "needle",
+          "gesture",
+          "border"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.scare-off",
+      "w": "scare off",
+      "g": "verschrecken",
+      "d": "To make people or a dog so afraid that they go away.",
+      "s": "The dogs ___ the small dog in the garden.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "scared off",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "scare off",
+          "tier": "full"
+        },
+        {
+          "text": "scared off",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "scare off",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verschrecken",
+            "tier": "full"
+          },
+          {
+            "text": "verscheuchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "afraid",
+          "de": "ängstlich",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "greet",
+        "bury",
+        "ignore"
+      ],
+      "hintDe": "Du machst jemandem solche Angst, dass er weggeht.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "greet",
+          "bury",
+          "ignore",
+          "insult",
+          "communicate"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.sleeve",
+      "w": "sleeve",
+      "g": "Ärmel",
+      "d": "It covers your arm on a shirt or jumper.",
+      "s": "Do you like shirts with long or short ___?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sleeves",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sleeve",
+          "tier": "full"
+        },
+        {
+          "text": "sleeves",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sleeve",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ärmel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "arm",
+          "de": "Arm",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "palm",
+        "thumb",
+        "needle"
+      ],
+      "hintDe": "Der Teil vom Hemd, der deinen Arm bedeckt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "palm",
+          "thumb",
+          "needle",
+          "gesture",
+          "border"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.possibility",
+      "w": "possibility",
+      "g": "Möglichkeit",
+      "d": "A thing that may happen but is not for sure.",
+      "s": "Is there a ___ that you may not come?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "possibility",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "possibility",
+          "tier": "full"
+        },
+        {
+          "text": "possibilities",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "possibility",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Möglichkeit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ceremony",
+        "victory",
+        "border"
+      ],
+      "hintDe": "Etwas, das passieren kann, aber nicht sicher ist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "ceremony",
+          "victory",
+          "border",
+          "gesture",
+          "funeral"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.wedding-dress",
+      "w": "wedding dress",
+      "g": "Brautkleid",
+      "d": "The long white clothes a bride wears to marry.",
+      "s": "The bride wears a beautiful white ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "wedding dress",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wedding dress",
+          "tier": "full"
+        },
+        {
+          "text": "wedding dresses",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wedding dress",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Brautkleid",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "marry",
+          "de": "heiraten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "wedding suit",
+        "bridesmaid",
+        "bridegroom"
+      ],
+      "hintDe": "Das lange weiße Kleid, das die Braut trägt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "wedding suit",
+          "bridesmaid",
+          "bridegroom",
+          "bride",
+          "sleeve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.wedding-suit",
+      "w": "wedding suit",
+      "g": "Hochzeitsanzug",
+      "d": "The dark jacket and trousers a bridegroom wears to marry.",
+      "s": "The bridegroom wears a dark ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "wedding suit",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wedding suit",
+          "tier": "full"
+        },
+        {
+          "text": "wedding suits",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wedding suit",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hochzeitsanzug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "marry",
+          "de": "heiraten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "wedding dress",
+        "bride",
+        "bridesmaid"
+      ],
+      "hintDe": "Der feine Anzug, den der Bräutigam trägt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "wedding dress",
+          "bride",
+          "bridesmaid",
+          "bridegroom",
+          "sleeve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.bride",
+      "w": "bride",
+      "g": "Braut",
+      "d": "The woman who is married on her big day.",
+      "s": "The ___ looks very beautiful in her white dress.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bride",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bride",
+          "tier": "full"
+        },
+        {
+          "text": "brides",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bride",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Braut",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bridegroom",
+        "bridesmaid",
+        "goth"
+      ],
+      "hintDe": "Die Frau, die an diesem Tag heiratet.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bridegroom",
+          "bridesmaid",
+          "goth",
+          "wedding dress",
+          "wedding suit"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.bridegroom",
+      "w": "bridegroom",
+      "g": "Bräutigam",
+      "d": "The man who is married on his big day.",
+      "s": "The ___ waits in the church for the bride.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bridegroom",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bridegroom",
+          "tier": "full"
+        },
+        {
+          "text": "groom",
+          "tier": "partial"
+        },
+        {
+          "text": "bridegrooms",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bridegroom",
+            "tier": "full"
+          },
+          {
+            "text": "groom",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bräutigam",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bride",
+        "bridesmaid",
+        "goth"
+      ],
+      "hintDe": "Der Mann, der an diesem Tag heiratet.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bride",
+          "bridesmaid",
+          "goth",
+          "wedding suit",
+          "wedding dress"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u09.w.bridesmaid",
+      "w": "bridesmaid",
+      "g": "Brautjungfer",
+      "d": "A girl or woman who is with the bride on her big day.",
+      "s": "She asked her best friend to be her ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bridesmaid",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bridesmaid",
+          "tier": "full"
+        },
+        {
+          "text": "bridesmaids",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bridesmaid",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Brautjungfer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bride",
+        "bridegroom",
+        "goth"
+      ],
+      "hintDe": "Ein Mädchen oder eine Frau, die der Braut hilft.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bride",
+          "bridegroom",
+          "goth",
+          "wedding dress",
+          "wedding suit"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

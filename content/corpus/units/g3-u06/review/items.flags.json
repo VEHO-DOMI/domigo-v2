@@ -1,0 +1,371 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g3-u06",
+  "round": 1,
+  "itemsHash": "ffe3bb58c674",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "translation-audit:g3u06.w.approximately",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.approximately",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.art-gallery",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.art-gallery",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.bridge",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.bridge",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.building",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.building",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.collection",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.collection",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.contract",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.contract",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.cruel",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.cruel",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.district",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.district",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.empty",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.empty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.fever",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.fever",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.government",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.government",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.in-advance",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.in-advance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.multicultural",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.multicultural",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.park",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.park",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.path",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.path",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.play",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.play",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.prison",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.prison",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.raven",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.raven",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.river",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.river",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.shop",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.shop",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.shopping-centre",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.shopping-centre",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.spectacular",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.spectacular",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.square",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.square",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.stadium",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.stadium",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.street",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.street",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.sugar",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.sugar",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.the-houses-of-parliament",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.the-houses-of-parliament",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.theatre",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.theatre",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.thrilling",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.thrilling",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.to-burn-down",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.to-burn-down",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.to-cough",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.to-cough",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.to-earn",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.to-earn",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.to-experience",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.to-experience",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.to-lead",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.to-lead",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.to-photograph",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.to-photograph",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.to-raise",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.to-raise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.to-report",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.to-report",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.to-save-up-for",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.to-save-up-for",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.to-sign",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.to-sign",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.to-take-a-walk",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.to-take-a-walk",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.tourist-attraction",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.tourist-attraction",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.tower",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.tower",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.traffic",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.traffic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.view",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.view",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.w.visitor",
+      "kind": "translation-audit",
+      "itemId": "g3u06.w.visitor",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.gi.relative-clauses.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u06.gi.relative-clauses.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.gi.relative-clauses.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u06.gi.relative-clauses.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.gi.relative-clauses.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u06.gi.relative-clauses.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.gi.relative-clauses.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g3u06.gi.relative-clauses.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u06.gi.relative-clauses.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g3u06.gi.relative-clauses.tr.005",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 100 rows (structure: relative pronouns who/which/that/whose). Answers lens verified the structure: who/that=people, which/that=things/animals, whose=possession; all distractors (which-for-person, who-for-thing, what, who's-for-whose) genuinely wrong. Translation CLEAN (the deToEn-had-German bug was fixed for district/square/tower → all deToEn now English, re-confirmed). Fixed: register 6 (\"Anschlusswort\"/\"Nomen\" German category terms in prompts → \"Wort\"/named the pronouns); answers 1 (sb.001 ambiguous chips → added the buildable \"Who is the woman that lives here?\"); level-gloss 1 (government \"run a country\" → \"lead\"); a stale ec.003 explainDe (\"grandparents\"→\"king\"). Dropped an invalid English↔German matching-pairs (mp.002 — the German right-sides got gated). ~65 audited grants (relative-clause content verbs/nouns + London-theme carriers). 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 100,
+    "fullRows": 100,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

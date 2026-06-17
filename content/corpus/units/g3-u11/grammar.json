@@ -1,0 +1,1348 @@
+{
+  "schema": "grammar@1",
+  "grade": 3,
+  "unit": 11,
+  "slug": "g3-u11",
+  "items": [
+    {
+      "id": "g3u11.gi.present-perfect-continuous.cp.001",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I've painting my room all afternoon.",
+            "I've been paint my room all afternoon.",
+            "I'm been painting my room all afternoon.",
+            "I has been painting my room all afternoon."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-cp-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Deine Hände sind voller Farbe. Jemand fragt, was du gemacht hast. Welche Antwort passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I've been painting my room all afternoon.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I've painting my room all afternoon.",
+        "I've been paint my room all afternoon.",
+        "I'm been painting my room all afternoon."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Tätigkeit lief den Nachmittag über: have been + die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "I've been painting zeigt die laufende Tätigkeit. Ohne been oder ohne -ing ist es falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.cp.002",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "context-picker",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "We've living here for six weeks.",
+            "We've been live here for six weeks.",
+            "We's been living here for six weeks.",
+            "We've been lived here for six weeks."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 11.txt#interview",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Amelia fragt Olivia, wie lange sie schon in Kalifornien wohnt. Welche Antwort passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We've been living here for six weeks.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We've living here for six weeks.",
+        "We've been live here for six weeks.",
+        "We's been living here for six weeks."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Olivia und ihre Familie wohnen seit sechs Wochen dort und immer noch: have been + die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "We've been living zeigt: seit sechs Wochen und es geht weiter. Die anderen Formen sind falsch gebaut.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.ec.001",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-ec-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: She have been working here since 2020.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has been working here since 2020.",
+          "tier": "full"
+        },
+        {
+          "text": "has been working",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "She braucht has, nicht have.",
+      "hintEn": null,
+      "explainDe": "Bei she nimmst du has been working, nicht have been working.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.ec.002",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-ec-022",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: He has been play the guitar since September.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has been playing the guitar since September.",
+          "tier": "full"
+        },
+        {
+          "text": "been playing",
+          "tier": "partial"
+        },
+        {
+          "text": "has been playing",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach been muss die -ing-Form stehen.",
+      "hintEn": null,
+      "explainDe": "Nach has been kommt die -ing-Form: has been playing, nicht has been play.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.ec.003",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I have living here since April.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have been living here since April.",
+          "tier": "full"
+        },
+        {
+          "text": "have been living",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zwischen have und der -ing-Form fehlt ein Wort.",
+      "hintEn": null,
+      "explainDe": "Es fehlt been: have been living, nicht have living.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.ec.004",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 11.txt#grammar",
+        "seedV1": null,
+        "narrative": null,
+        "note": "know keeps have + known, never been + -ing"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I've been knowing her since we were little.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I've known her since we were little.",
+          "tier": "full"
+        },
+        {
+          "text": "I have known her since we were little.",
+          "tier": "full"
+        },
+        {
+          "text": "known",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verben wie know nehmen keine Verlaufsform mit -ing.",
+      "hintEn": null,
+      "explainDe": "know beschreibt einen Zustand, darum kein been knowing. Richtig ist have known.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.gf.001",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 11.txt#grammar-7",
+        "seedV1": "m3-u11-present-perfect-continuous-gf-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I ___ (wait) for you all morning.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have been waiting",
+          "tier": "full"
+        },
+        {
+          "text": "'ve been waiting",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "have + been + die -ing-Form: have been waiting.",
+      "hintEn": null,
+      "explainDe": "Die Tätigkeit läuft seit dem Morgen weiter, also nimmst du have been + -ing: have been waiting.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.gf.002",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 11.txt#grammar-7",
+        "seedV1": "m3-u11-present-perfect-continuous-gf-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She ___ (learn) French since September.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has been learning",
+          "tier": "full"
+        },
+        {
+          "text": "'s been learning",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "She braucht has, dann been + die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Bei she nimmst du has been + -ing, und seit September läuft es weiter: has been learning.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.gf.003",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 11.txt#grammar-4",
+        "seedV1": "m3-u11-present-perfect-continuous-gf-025",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "It ___ (rain) all day. The streets are completely flooded.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has been raining",
+          "tier": "full"
+        },
+        {
+          "text": "'s been raining",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "It braucht has been, dann die -ing-Form von rain.",
+      "hintEn": null,
+      "explainDe": "Der Regen dauert den ganzen Tag an, darum has been raining mit -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.gf.004",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-gf-024",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "My dad ___ (paint) the house all week. The house still isn't done!",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has been painting",
+          "tier": "full"
+        },
+        {
+          "text": "'s been painting",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "My dad ist eine Person (= he): has been + -ing.",
+      "hintEn": null,
+      "explainDe": "Die Arbeit ist noch nicht fertig und geht weiter, also has been painting mit -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.gf.005",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 11.txt#grammar",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "We ___ (live) here for about six weeks now.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have been living",
+          "tier": "full"
+        },
+        {
+          "text": "'ve been living",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "We braucht have been, dann die -ing-Form von live.",
+      "hintEn": null,
+      "explainDe": "Olivia wohnt seit sechs Wochen dort und immer noch, also have been living.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.gf.006",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 11.txt#interview",
+        "seedV1": "m3-u11-present-perfect-continuous-gf-023",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "How long ___ you ___ (live) in California, Olivia?",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "have | been living",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage mit How long: have you been + die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "In der Frage steht have vorne, dann you, dann been living: How long have you been living?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.gf.007",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 11.txt#grammar-4",
+        "seedV1": "m3-u11-present-perfect-continuous-gf-022",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "They look tired. They ___ (run) all morning.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have been running",
+          "tier": "full"
+        },
+        {
+          "text": "'ve been running",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "They braucht have been, dann die -ing-Form von run (doppeltes n).",
+      "hintEn": null,
+      "explainDe": "Warum sie müde sind: They have been running. Das doppelte n macht running.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.gs.003",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 11.txt#grammar",
+        "seedV1": null,
+        "narrative": null,
+        "note": "sort by ongoing activity vs finished result"
+      },
+      "prompt": {
+        "text": "Sortiere: Betont der Satz die laufende Tätigkeit oder das fertige Ergebnis?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "been reading",
+          "members": [
+            "I've been reading all morning.",
+            "She has been painting the house all week.",
+            "They have been waiting for a long time."
+          ]
+        },
+        {
+          "label": "read it",
+          "members": [
+            "I've read three books this month.",
+            "She has painted the house.",
+            "They have done their homework."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "been + -ing betont die laufende Tätigkeit; have + 3. Form (read, done) betont das fertige Ergebnis.",
+      "hintEn": null,
+      "explainDe": "have been reading zeigt: es läuft noch. have read zeigt: es ist fertig. So unterscheidest du die beiden Formen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.gs.004",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 11.txt#grammar-8",
+        "seedV1": null,
+        "narrative": null,
+        "note": "correct vs malformed sort"
+      },
+      "prompt": {
+        "text": "Sortiere die Sätze: richtig gebaut oder falsch gebaut?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "She has been working all morning.",
+            "We have been sightseeing all day.",
+            "It has been raining all day."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "She has working all morning.",
+            "We have been live here for six weeks.",
+            "It have been raining all day."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Richtig ist immer have/has + been + die -ing-Form. Achte auf been und auf has/have.",
+      "hintEn": null,
+      "explainDe": "Korrekt sind has been working, have been living, has been raining. Falsch ist es ohne been, ohne -ing oder mit falschem have/has.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.mc.001",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She has living there for six weeks.",
+            "She has been live there for six weeks.",
+            "She have been living there for six weeks.",
+            "She has been lived there for six weeks."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 11.txt#grammar",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wähle den richtigen Satz: Olivia wohnt seit sechs Wochen dort und immer noch.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has been living there for six weeks.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She has living there for six weeks.",
+        "She has been live there for six weeks.",
+        "She have been living there for six weeks."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Such has + been + die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Richtig ist has been living. Ohne been oder ohne -ing oder mit have stimmt es nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.mc.002",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She has running all morning.",
+            "She has been run all morning.",
+            "She have been running all morning.",
+            "She is been running all morning."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-mc-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Deine Freundin sieht müde aus. Welcher Satz erklärt, warum?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has been running all morning.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She has running all morning.",
+        "She has been run all morning.",
+        "She have been running all morning."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die laufende Tätigkeit: has been + die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "has been running zeigt die Tätigkeit, die bis jetzt gedauert hat. Die anderen Formen sind falsch gebaut.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.mc.003",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "since",
+            "during",
+            "from",
+            "at"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-mc-022",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welches Wort passt? 'I've been reading this book ___ two weeks.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "for",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "since",
+        "during",
+        "from"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eine Zeitspanne (zwei Wochen lang): for oder since?",
+      "hintEn": null,
+      "explainDe": "Bei einer Dauer (two weeks) nimmst du for. since nimmst du nur bei einem Startpunkt (since Monday).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.mc.004",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "How long are you learning English?",
+            "How long you have been learning English?",
+            "How long has you been learning English?",
+            "How long do you have been learning English?"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-mc-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Frage passt, um nach der Dauer einer laufenden Tätigkeit zu fragen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long have you been learning English?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "How long are you learning English?",
+        "How long you have been learning English?",
+        "How long has you been learning English?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "How long + have + you + been + die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Richtig ist How long have you been learning. have steht vor you, danach been learning.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.mt.001",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-mt-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde die Satzhälften.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "It's been snowing",
+          "right": "all day."
+        },
+        {
+          "left": "She has been learning French",
+          "right": "since September."
+        },
+        {
+          "left": "We have been living here",
+          "right": "for six weeks."
+        },
+        {
+          "left": "They've been waiting",
+          "right": "since Monday."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "for nutzt du bei einer Dauer, since bei einem Startpunkt.",
+      "hintEn": null,
+      "explainDe": "for steht vor einer Zeitspanne (six weeks), since vor einem Startpunkt (September, Monday).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.mt.002",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 11.txt#grammar-6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde die Tätigkeit mit dem Grund.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "They've been running all morning.",
+          "right": "That's why they're so tired."
+        },
+        {
+          "left": "I've been studying all day.",
+          "right": "That's why I haven't been outside."
+        },
+        {
+          "left": "He's been practising the guitar all evening.",
+          "right": "That's why his fingers hurt."
+        },
+        {
+          "left": "She's been sleeping all afternoon.",
+          "right": "That's why she isn't awake."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Welche laufende Tätigkeit passt zu welcher Folge?",
+      "hintEn": null,
+      "explainDe": "Die been + -ing-Tätigkeit erklärt jeweils, warum etwas der Fall ist (z. B. müde sein, Hände tun weh).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.qf.001",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde eine Frage mit How long: 'They have been waiting for the train.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long have they been waiting for the train?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "How long an den Anfang, dann have they been + die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Aus der Aussage wird die Frage How long have they been waiting for the train?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.sb.001",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "have",
+            "is",
+            "are",
+            "was"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-sb-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "she / has / been / reading / since / the / morning",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has been reading since the morning.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Subjekt, dann has been + die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: She has been reading since the morning.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.sb.002",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "has",
+            "are",
+            "do",
+            "did"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-sb-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "how / long / have / they / been / waiting / for / us",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How long have they been waiting for us?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "How long + have + they + been + die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "In der Frage steht have vor they: How long have they been waiting for us?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.tf.002",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 11.txt#grammar-5",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde aus den Angaben einen Satz: she / sit / in the waiting room / all morning.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has been sitting in the waiting room all morning.",
+          "tier": "full"
+        },
+        {
+          "text": "She's been sitting in the waiting room all morning.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "She braucht has been, dann die -ing-Form von sit (doppeltes t).",
+      "hintEn": null,
+      "explainDe": "Die Tätigkeit dauert den ganzen Morgen, also has been sitting. Das doppelte t macht sitting.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.tf.003",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-tf-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib den Satz weiter: Deine Schwester hat um 4 Uhr zu kochen begonnen. Jetzt ist es Abend und sie kocht immer noch. 'My sister ___ all afternoon.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has been cooking",
+          "tier": "full"
+        },
+        {
+          "text": "'s been cooking",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "My sister (= she): has been + die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Er kocht seit dem Nachmittag und immer noch, also has been cooking.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.tr.002",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-tr-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Er lernt seit September Gitarre.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has been learning the guitar since September.",
+          "tier": "full"
+        },
+        {
+          "text": "He's been learning the guitar since September.",
+          "tier": "partial"
+        },
+        {
+          "text": "He has been learning guitar since September.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "He braucht has been, dann die -ing-Form; seit einem Startpunkt nimmst du since.",
+      "hintEn": null,
+      "explainDe": "has been learning zeigt die laufende Tätigkeit, und since September gibt den Startpunkt an.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u11.gi.present-perfect-continuous.tr.003",
+      "structureId": "g3u11.s.present-perfect-continuous",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u11-present-perfect-continuous-tr-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Übersetze ins Englische: 'Wir warten seit dem Morgen auf den Zug.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have been waiting for the train all morning.",
+          "tier": "full"
+        },
+        {
+          "text": "We've been waiting for the train all morning.",
+          "tier": "partial"
+        },
+        {
+          "text": "We have been waiting for the train since this morning.",
+          "tier": "full"
+        },
+        {
+          "text": "We've been waiting for the train since this morning.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "warten + es geht weiter: have been waiting.",
+      "hintEn": null,
+      "explainDe": "Das Warten läuft seit dem Morgen, darum have been waiting mit -ing.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

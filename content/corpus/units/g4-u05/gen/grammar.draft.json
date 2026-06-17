@@ -1,0 +1,2381 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g4-u05",
+  "briefBank": "d475a7bb945f",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "After James ___ (eat) the two pizzas, he was very ill.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had eaten",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zuerst hat er gegessen, dann wurde ihm schlecht – die frühere Handlung braucht had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Das Essen war zuerst (had eaten), das Schlechtsein kam danach. Nach after steht die frühere Handlung im Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "eaten",
+          "de": "gegessen (3. Form von eat)",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 5.txt#grammar-1",
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "After she ___ (cook) dinner, she washed the dishes.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had cooked",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Kochen war zuerst, das Abwaschen danach: had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Nach after steht die frühere Handlung (Kochen) im Past perfect: had cooked. Das Spätere (washed) steht im Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": "m4-u5-past-perfect-connectors-gf-007",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "After he ___ (clean) his room, he watched a film.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had cleaned",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst aufräumen, dann fernsehen: die frühere Handlung steht mit had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Das Aufräumen war zuerst (had cleaned), das Fernsehen kam danach (watched).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sally had just ___ (finish) her lunch when Tom came home.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "finished",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "just steht zwischen had und der 3. Form: had just ___.",
+      "hintEn": null,
+      "explainDe": "just zeigt, dass die Handlung gerade kurz vorher passierte: had just finished. Die 3. Form von finish ist finished.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "finished",
+          "de": "fertig gemacht (3. Form von finish)",
+          "scope": "prompt"
+        },
+        {
+          "word": "finish",
+          "de": "fertig machen",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 5.txt#grammar-1",
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "My friends ___ (leave) before I arrived.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Freunde waren schon weg, BEVOR du ankamst – die frühere Handlung braucht had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Das Weggehen war zuerst (had left), das Ankommen danach (arrived). Die 3. Form von leave ist left.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "left",
+          "de": "gegangen (3. Form von leave)",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 5.txt#grammar-1",
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Before I went to bed, I ___ (brush) my teeth.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had brushed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Was war FRÜHER? Das Zähneputzen – also had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Das Zähneputzen war zuerst (had brushed), das Schlafengehen danach (went). Hier zeigt das Past perfect, was vorher schon erledigt war.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "went",
+          "de": "ging (2. Form von go)",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-tr-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "When I went home, I knew I ___ (beat) my problem.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had beaten",
+          "tier": "full"
+        },
+        {
+          "text": "had finally beaten",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Besiegen des Problems lag schon FRÜHER – had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Shannon wusste beim Heimgehen, dass sie ihr Problem schon vorher besiegt hatte: had beaten. Die 3. Form von beat ist beaten.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "beaten",
+          "de": "besiegt (3. Form von beat)",
+          "scope": "prompt"
+        },
+        {
+          "word": "beat",
+          "de": "besiegen",
+          "scope": "prompt"
+        },
+        {
+          "word": "went",
+          "de": "ging (2. Form von go)",
+          "scope": "prompt"
+        },
+        {
+          "word": "knew",
+          "de": "wusste (2. Form von know)",
+          "scope": "prompt"
+        },
+        {
+          "word": "problem",
+          "de": "Problem",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 5.txt#grammar-1",
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She was happy because she ___ (pass) the test.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had passed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "because nennt den Grund, der schon FRÜHER passierte: had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Der Grund (bestehen) lag vor dem Glücklichsein, darum had passed. because verbindet Folge und früheren Grund.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "passed",
+          "de": "bestanden (3. Form von pass)",
+          "scope": "prompt"
+        },
+        {
+          "word": "pass",
+          "de": "bestehen",
+          "scope": "prompt"
+        },
+        {
+          "word": "test",
+          "de": "Test",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-ec-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Because she ___ (not / eat) all day, she was very hungry.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had not eaten",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinte frühere Handlung: had not + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Der Grund für den Hunger lag früher: had not eaten. Die Verneinung steht zwischen had und der 3. Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "eaten",
+          "de": "gegessen (3. Form von eat)",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Although he ___ (study) all week, he was nervous.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had studied",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "although zeigt einen Gegensatz; der frühere Teil steht mit had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Obwohl das Lernen schon erledigt war (had studied), war er trotzdem nervös. although verbindet zwei gegensätzliche Ideen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": "m4-u5-past-perfect-connectors-mc-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "After they ___ (go) home, the house was clean.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had gone",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst weggehen, dann der ruhige Zustand: had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Das Weggehen war zuerst (had gone), danach war das Haus sauber. Die 3. Form von go ist gone.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "___ she had washed the plates, she was happy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "After",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welcher Konnektor zeigt 'nachdem etwas Früheres passiert ist'?",
+      "hintEn": null,
+      "explainDe": "After leitet die frühere, schon erledigte Handlung ein (had washed), dann folgt das spätere Ereignis.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": "m4-u5-past-perfect-connectors-gf-009",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He did a cookery show ___ educate people about food.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "in order to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welcher Konnektor zeigt eine Absicht (wozu / um zu)? Danach kommt die Grundform des Verbs.",
+      "hintEn": null,
+      "explainDe": "in order to + Grundform zeigt das Ziel einer Handlung: in order to educate. So drückst du im Englischen 'um zu' aus.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "educate",
+          "de": "aufklären",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 5.txt#grammar-1",
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Children will live shorter lives ___ the food they eat.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "because of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welcher Konnektor steht vor einem Hauptwort (food) und zeigt den Grund? Nicht 'because', denn danach folgt kein ganzer Satz.",
+      "hintEn": null,
+      "explainDe": "Vor einem Hauptwort (the food) steht because of, nicht because. because of nennt die Ursache.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 5.txt#grammar-1",
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ they had cooked dinner, they ___ (eat) it in the garden, ___ the weather was nice.",
+        "lang": "en",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "After | ate | because",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "1: zuerst kochen, dann essen. 2: das spätere Ereignis steht in der 2. Form. 3: ein ganzer Satz nennt den Grund.",
+      "hintEn": null,
+      "explainDe": "After leitet die frühere Handlung ein (had cooked), das spätere Essen steht in der 2. Form (ate), und because nennt den Grund (es war schön).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "ate",
+          "de": "aßen (2. Form von eat)",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-gf-012",
+      "sbRef": null,
+      "note": null,
+      "blanks": 3,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "By the time her mum came home, she ___ already ___ (cook) dinner.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | cooked",
+          "tier": "full"
+        },
+        {
+          "text": "'d | cooked",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "by the time = 'bis dann'. already steht zwischen had und der 3. Form.",
+      "hintEn": null,
+      "explainDe": "Bis die Mutter heimkam, war das Kochen schon fertig: had already cooked. by the time zeigt, dass etwas vorher schon erledigt war.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "by",
+          "de": "bis (in 'by the time' = bis dann)",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-gf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welche Form passt? Es geht um die Handlung, die noch FRÜHER war:\n\nAfter she ___ dinner, she washed the dishes.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had cooked",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "cooked",
+        "has cooked",
+        "was cooking"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für die frühere Vergangenheit brauchst du had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Das Kochen war zuerst, darum had cooked. 'has cooked' wäre Gegenwart, 'was cooking' beschreibt nur den Verlauf.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had cooked",
+          "cooked",
+          "has cooked",
+          "was cooking"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u5-past-perfect-connectors-gf-007",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welche Form passt? Es geht um die Handlung, die noch FRÜHER war:\n\nMy friends ___ before I arrived.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "leave",
+        "has left",
+        "was leaving"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Freunde waren schon weg, BEVOR du ankamst: had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Das Weggehen war zuerst (had left). 'has left' wäre Gegenwart, 'was leaving' nur der Verlauf.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "left",
+          "de": "gegangen (3. Form von leave)",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "had left",
+          "leave",
+          "has left",
+          "was leaving"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Form passt? Es geht um die Handlung, die noch FRÜHER war:\n\nAlthough she ___ all morning, nobody was hungry.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had cooked",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "cooks",
+        "has cooked",
+        "was cooking"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der frühere Teil nach although braucht had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Obwohl sie schon den ganzen Morgen gekocht hatte (had cooked), war keiner hungrig. 'has cooked' wäre Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "had cooked",
+          "cooks",
+          "has cooked",
+          "was cooking"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welcher Konnektor passt? Er zeigt: zuerst das Eine, dann das Andere.\n\n___ he had washed the car, he was tired.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "After",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "So that",
+        "In order to",
+        "However"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welches Wort leitet die frühere, schon erledigte Handlung ein?",
+      "hintEn": null,
+      "explainDe": "After zeigt die Reihenfolge: zuerst hatte er das Auto gewaschen (had washed), danach war er müde.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "After",
+          "So that",
+          "In order to",
+          "However"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u5-past-perfect-connectors-mc-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Konnektor zeigt eine Absicht (wozu)?\n\nHe did a cookery show ___ help people eat well.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "in order to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "because",
+        "although",
+        "after"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welcher Konnektor zeigt das Ziel? Danach kommt die Grundform (help).",
+      "hintEn": null,
+      "explainDe": "in order to + Grundform zeigt die Absicht: in order to help. Die anderen Konnektoren zeigen Grund, Gegensatz oder Reihenfolge.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "in order to",
+          "because",
+          "although",
+          "after"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 5.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Konnektor zeigt einen Gegensatz?\n\n___ she had studied all day, she was nervous.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Although",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Because",
+        "So that",
+        "In order to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welches Wort zeigt 'obwohl' – einen Widerspruch zwischen den zwei Teilen?",
+      "hintEn": null,
+      "explainDe": "Although zeigt den Gegensatz: Obwohl sie gelernt hatte, war sie nervös. because würde einen Grund nennen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Although",
+          "Because",
+          "So that",
+          "In order to"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u5-past-perfect-connectors-mc-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Konnektor zeigt eine Absicht?\n\nMy teacher asked me to come to her room ___ she could talk to me.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "so that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "because of",
+        "although",
+        "after"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welcher Konnektor zeigt 'damit'? Danach folgt ein ganzer Satz mit could.",
+      "hintEn": null,
+      "explainDe": "so that zeigt die Absicht und wird von einem ganzen Satz gefolgt: so that she could talk to me.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "so that",
+          "because of",
+          "although",
+          "after"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 5.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz beschreibt die Reihenfolge richtig?\n\n(Zuerst aßen sie zu Abend, dann gingen sie spazieren.)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After they had eaten dinner, they went for a walk.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "After they ate dinner, they had gone for a walk.",
+        "After they had eaten dinner, they had gone for a walk.",
+        "After they have eaten dinner, they went for a walk."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nur die frühere Handlung (essen) steht mit had + die 3. Form; das Spätere steht in der 2. Form.",
+      "hintEn": null,
+      "explainDe": "Korrekt: had eaten (früher) + went (später). Es darf nur EINE Handlung im Past perfect stehen, nicht beide.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "eaten",
+          "de": "gegessen (3. Form von eat)",
+          "scope": null
+        },
+        {
+          "word": "went",
+          "de": "gingen (2. Form von go)",
+          "scope": null
+        },
+        {
+          "word": "ate",
+          "de": "aßen (2. Form von eat)",
+          "scope": null
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "After they had eaten dinner, they went for a walk.",
+          "After they ate dinner, they had gone for a walk.",
+          "After they had eaten dinner, they had gone for a walk.",
+          "After they have eaten dinner, they went for a walk."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u5-past-perfect-connectors-mc-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Although he had practised every day, he did not win.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Although he had practised every day, but he did not win.",
+        "Although he practised every day, he had not won.",
+        "Although he has practised every day, he did not win."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach although darf kein zweites Gegensatz-Wort wie 'but' stehen.",
+      "hintEn": null,
+      "explainDe": "Richtig: Although … , he did not win. 'although … but' ist doppelt gemoppelt – nur EIN Gegensatz-Wort ist erlaubt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "practised",
+          "de": "geübt",
+          "scope": null
+        },
+        {
+          "word": "win",
+          "de": "gewinnen",
+          "scope": null
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "Although he had practised every day, he did not win.",
+          "Although he had practised every day, but he did not win.",
+          "Although he practised every day, he had not won.",
+          "Although he has practised every day, he did not win."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u5-past-perfect-connectors-ec-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wo steht just richtig?\n\n(= Er hatte GERADE gegessen, als sie ankam.)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He had just eaten when she arrived.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He had eaten just when she arrived.",
+        "He just had eaten when she arrived.",
+        "He had eaten when she just arrived."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "just steht zwischen had und der 3. Form: had just eaten.",
+      "hintEn": null,
+      "explainDe": "just gehört zwischen had und die 3. Form: had just eaten. So zeigst du, dass die Handlung gerade kurz vorher passierte.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "eaten",
+          "de": "gegessen (3. Form von eat)",
+          "scope": null
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "He had just eaten when she arrived.",
+          "He had eaten just when she arrived.",
+          "He just had eaten when she arrived.",
+          "He had eaten when she just arrived."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u5-past-perfect-connectors-gf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler:\n\nAfter I eat breakfast, I left for school.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After I had eaten breakfast, I left for school.",
+          "tier": "full"
+        },
+        {
+          "text": "had eaten",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die frühere Handlung nach after braucht had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Das Frühstücken war zuerst, darum had eaten statt 'eat'. Nach after steht die frühere Handlung im Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "eaten",
+          "de": "gegessen (3. Form von eat)",
+          "scope": null
+        },
+        {
+          "word": "left",
+          "de": "ging weg (2. Form von leave)",
+          "scope": null
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-gf-007",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler:\n\nAfter she had cooked dinner, she had washed the dishes.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After she had cooked dinner, she washed the dishes.",
+          "tier": "full"
+        },
+        {
+          "text": "washed",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nur die FRÜHERE Handlung steht mit had + die 3. Form. Das Spätere steht in der 2. Form.",
+      "hintEn": null,
+      "explainDe": "Nur das Kochen war früher (had cooked); das Abwaschen kam danach und steht in der 2. Form: washed.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler:\n\nBefore she had left the house, she checked the windows.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Before she left the house, she had checked the windows.",
+          "tier": "full"
+        },
+        {
+          "text": "Before she left the house, she had checked the windows",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Was war FRÜHER? Das Kontrollieren der Fenster – nicht das Weggehen.",
+      "hintEn": null,
+      "explainDe": "Das Kontrollieren war zuerst (had checked), DANN ging sie (left). Nach before steht meist die 2. Form, das Past perfect gehört zur früheren Handlung.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "left",
+          "de": "ging weg (2. Form von leave)",
+          "scope": null
+        },
+        {
+          "word": "checked",
+          "de": "kontrollierte / kontrolliert",
+          "scope": null
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-ec-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler:\n\nAfter we had arrive at the cinema, the film started.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After we had arrived at the cinema, the film started.",
+          "tier": "full"
+        },
+        {
+          "text": "had arrived",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach had steht die 3. Form, nicht die Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach had brauchst du die 3. Form: had arrived (nicht 'had arrive'). Bei regelmäßigen Verben ist die 3. Form gleich wie die 2. Form.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [
+        {
+          "word": "film",
+          "de": "Film",
+          "scope": null
+        },
+        {
+          "word": "started",
+          "de": "begann (2. Form von start)",
+          "scope": null
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-ec-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler:\n\nShe was happy because she had pass the test.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was happy because she had passed the test.",
+          "tier": "full"
+        },
+        {
+          "text": "had passed",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach had steht die 3. Form (pass → passed).",
+      "hintEn": null,
+      "explainDe": "Nach had brauchst du die 3. Form: had passed. because nennt den früheren Grund für ihre Freude.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [
+        {
+          "word": "passed",
+          "de": "bestanden (3. Form von pass)",
+          "scope": null
+        },
+        {
+          "word": "pass",
+          "de": "bestehen",
+          "scope": null
+        },
+        {
+          "word": "test",
+          "de": "Test",
+          "scope": null
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-ec-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler:\n\nAlthough she had cooked all day, but nobody was hungry.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Although she had cooked all day, nobody was hungry.",
+          "tier": "full"
+        },
+        {
+          "text": "Although she had cooked all day, nobody was hungry",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach although darf kein zweites Gegensatz-Wort wie 'but' folgen.",
+      "hintEn": null,
+      "explainDe": "Wenn du although verwendest, brauchst du kein zweites 'but'. Eines der beiden Gegensatz-Wörter muss weg.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": "m4-u5-past-perfect-connectors-ec-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler:\n\nHe had finished just his lunch when Tom came home.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He had just finished his lunch when Tom came home.",
+          "tier": "full"
+        },
+        {
+          "text": "had just finished",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "just gehört zwischen had und die 3. Form.",
+      "hintEn": null,
+      "explainDe": "just steht direkt zwischen had und der 3. Form: had just finished, nicht 'had finished just'.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "finished",
+          "de": "fertig gemacht (3. Form von finish)",
+          "scope": null
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-gf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler:\n\nWhen I came home, the kitchen was clean because mum has cooked.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When I came home, the kitchen was clean because mum had cooked.",
+          "tier": "full"
+        },
+        {
+          "text": "had cooked",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Grund liegt in der Vergangenheit – had cooked, nicht 'has cooked'.",
+      "hintEn": null,
+      "explainDe": "Beide Handlungen sind vorbei, darum had cooked (frühere Vergangenheit). 'has cooked' wäre Gegenwart und passt hier nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler:\n\nAfter he washed the car, he had been tired.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After he had washed the car, he was tired.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die frühere Handlung (waschen) gehört ins Past perfect, der spätere Zustand (müde) in die 2. Form.",
+      "hintEn": null,
+      "explainDe": "Das Waschen war zuerst (had washed), das Müdesein danach (was). Das Past perfect gehört zur FRÜHEREN Handlung, nicht zum späteren Zustand.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Erzähl von deinem Abend. Setze die Verben ein (had + 3. Form bzw. 2. Form):\n\n'After I ___ (clean) the kitchen, I ___ (watch) a film.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had cleaned | watched",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Aufräumen ist das frühere Ereignis (had + 3. Form), Fernsehen das spätere (2. Form).",
+      "hintEn": null,
+      "explainDe": "Das Aufräumen war zuerst (had cleaned), das Fernsehen danach (watched). Nach after steht die frühere Handlung im Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": "m4-u5-past-perfect-connectors-tf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du kamst zu spät zum Bahnhof. Setze die Verben ein (had + already + 3. Form bzw. 2. Form):\n\n'When I ___ (arrive) at the station, the train ___ already ___ (leave).'",
+        "lang": "de",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "arrived | had | left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ankommen = 2. Form (arrived). Der Zug fuhr früher ab = had already left.",
+      "hintEn": null,
+      "explainDe": "Das Ankommen ist das spätere Ereignis (arrived), das Abfahren das frühere (had already left). already steht zwischen had und der 3. Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "left",
+          "de": "abgefahren (3. Form von leave)",
+          "scope": null
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-tf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 3,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Zwei Sätze, ein Satz daraus mit although:\n\nTom had studied all day. He was still nervous. (although)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Although Tom had studied all day, he was still nervous.",
+          "tier": "full"
+        },
+        {
+          "text": "Tom was still nervous although he had studied all day.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "although verbindet zwei gegensätzliche Ideen zu EINEM Satz. Kein zweites 'but'.",
+      "hintEn": null,
+      "explainDe": "although zeigt den Gegensatz: Obwohl er gelernt hatte (had studied), war er nervös. Die frühere Handlung bleibt im Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": "m4-u5-past-perfect-connectors-tf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Zwei Sätze, ein Satz daraus mit because of:\n\nThe school dinners were bad. Jamie Oliver was not happy. (because of)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Because of the bad school dinners, Jamie Oliver was not happy.",
+          "tier": "full"
+        },
+        {
+          "text": "Jamie Oliver was not happy because of the bad school dinners.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "because of steht vor einem Hauptwort (the bad school dinners), nicht vor einem ganzen Satz.",
+      "hintEn": null,
+      "explainDe": "because of + Hauptwort nennt die Ursache: because of the bad school dinners. Vor einem ganzen Satz würdest du because verwenden.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 5.txt#ex10",
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische:\n\nNachdem er gekocht hatte, wusch er das Geschirr.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After he had cooked, he washed the dishes.",
+          "tier": "full"
+        },
+        {
+          "text": "He washed the dishes after he had cooked.",
+          "tier": "full"
+        },
+        {
+          "text": "After he had cooked, he washed the plates.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nachdem = After. 'hatte gekocht' = had cooked (frühere Handlung). 'wusch' = 2. Form.",
+      "hintEn": null,
+      "explainDe": "Die frühere Handlung (kochen) steht im Past perfect (had cooked), die spätere (waschen) in der 2. Form (washed).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": "m4-u5-past-perfect-connectors-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Übersetze ins Englische:\n\nBevor sie ins Bett ging, hatte sie ihre Zähne geputzt.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Before she went to bed, she had brushed her teeth.",
+          "tier": "full"
+        },
+        {
+          "text": "She had brushed her teeth before she went to bed.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Was war FRÜHER? Das Zähneputzen = had brushed. 'ging' = 2. Form (went).",
+      "hintEn": null,
+      "explainDe": "Das Zähneputzen war zuerst (had brushed), das Schlafengehen danach (went). Nach before steht die spätere Handlung in der 2. Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "went",
+          "de": "ging (2. Form von go)",
+          "scope": null
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-tr-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Übersetze ins Englische:\n\nAls wir ankamen, hatte das Spiel schon begonnen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "When we arrived, the game had already started.",
+          "tier": "full"
+        },
+        {
+          "text": "The game had already started when we arrived.",
+          "tier": "full"
+        },
+        {
+          "text": "By the time we arrived, the game had already started.",
+          "tier": "full"
+        },
+        {
+          "text": "When we arrived, the game had started.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "ankommen = arrive (2. Form). 'hatte schon begonnen' = had already started.",
+      "hintEn": null,
+      "explainDe": "Das frühere Ereignis (Spiel begann) steht im Past perfect (had already started), das spätere (ankommen) in der 2. Form (arrived).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "game",
+          "de": "Spiel",
+          "scope": null
+        },
+        {
+          "word": "started",
+          "de": "begonnen / begann (von start)",
+          "scope": null
+        },
+        {
+          "word": "by",
+          "de": "bis (in 'by the time')",
+          "scope": null
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-tr-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Übersetze ins Englische:\n\nObwohl er das Buch schon gelesen hatte, schaute er sich den Film an.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Although he had already read the book, he watched the film.",
+          "tier": "full"
+        },
+        {
+          "text": "He watched the film although he had already read the book.",
+          "tier": "full"
+        },
+        {
+          "text": "Even though he had already read the book, he watched the film.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Obwohl = Although / Even though. 'hatte schon gelesen' = had already read.",
+      "hintEn": null,
+      "explainDe": "Das Lesen war früher (had already read), das Anschauen danach (watched). although zeigt den Gegensatz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "film",
+          "de": "Film",
+          "scope": null
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-tr-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Tom machte um 16 Uhr seine Hausaufgaben. Um 17 Uhr ging er in den Garten. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After he had done his homework, he went into the garden.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "After he did his homework, he had gone into the garden.",
+        "After he has done his homework, he went into the garden.",
+        "After he was doing his homework, he went into the garden."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nur die frühere Handlung (Hausaufgaben) steht mit had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Korrekt: had done (früher) + went (später). Nur die erste Handlung steht im Past perfect; 'has done' wäre Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "went",
+          "de": "ging (2. Form von go)",
+          "scope": null
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "After he had done his homework, he went into the garden.",
+          "After he did his homework, he had gone into the garden.",
+          "After he has done his homework, he went into the garden.",
+          "After he was doing his homework, he went into the garden."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u5-past-perfect-connectors-cp-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Lisa kam sehr spät zur Schule. Lisa hatte zwei Stunden verpasst und war traurig. Was ist passiert?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was sad because she had missed two lessons.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She was sad although she had missed two lessons.",
+        "She was sad before she had missed two lessons.",
+        "She was sad so that she had missed two lessons."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welcher Konnektor nennt den GRUND für ihre Traurigkeit?",
+      "hintEn": null,
+      "explainDe": "because nennt den Grund: Sie war traurig, WEIL sie die Stunden verpasst hatte (had missed). although, before und so that passen hier nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She was sad because she had missed two lessons.",
+          "She was sad although she had missed two lessons.",
+          "She was sad before she had missed two lessons.",
+          "She was sad so that she had missed two lessons."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u5-past-perfect-connectors-cp-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge:\n\nhad / he / after / cleaned / the kitchen / he / washed / the dishes",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After he had cleaned the kitchen, he washed the dishes.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit After he had cleaned … Das Frühere kommt zuerst.",
+      "hintEn": null,
+      "explainDe": "Das Aufräumen war zuerst (had cleaned), das Abwaschen danach (washed). Nach after steht die frühere Handlung im Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was",
+          "were",
+          "has",
+          "had"
+        ],
+        "chipBudget": 11,
+        "minOptions": null
+      },
+      "seedV1": "m4-u5-past-perfect-connectors-sb-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge:\n\nhad / they / although / arrived / early / there / were / no / seats",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Although they had arrived early, there were no seats.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit Although they had arrived early … Danach folgt der Gegensatz.",
+      "hintEn": null,
+      "explainDe": "although zeigt den Gegensatz: Obwohl sie früh angekommen waren (had arrived), gab es keine Plätze. Die frühere Handlung steht im Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was",
+          "has",
+          "were",
+          "had"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": "m4-u5-past-perfect-connectors-sb-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verbinde jeden Satzanfang mit dem passenden Ende.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "After the teacher had explained the task,",
+          "right": "the children started cooking."
+        },
+        {
+          "left": "Although they had studied all week,",
+          "right": "they were still nervous."
+        },
+        {
+          "left": "Because she had not cooked,",
+          "right": "the family was hungry."
+        },
+        {
+          "left": "After she had washed the plates,",
+          "right": "she watched a show."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte darauf, welcher Grund oder welche Folge (had + 3. Form) zu welchem Anfang passt.",
+      "hintEn": null,
+      "explainDe": "Jeder Satz beginnt mit der früheren Handlung im Past perfect (had + 3. Form) und endet mit dem späteren Ereignis in der 2. Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "explained",
+          "de": "erklärt (3. Form von explain)",
+          "scope": null
+        },
+        {
+          "word": "started",
+          "de": "begannen (2. Form von start)",
+          "scope": null
+        },
+        {
+          "word": "task",
+          "de": "Aufgabe",
+          "scope": null
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-mt-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "matching",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Verbinde jede einfache Form mit der passenden 3. Form (für had + 3. Form).",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "cook",
+          "right": "cooked"
+        },
+        {
+          "left": "clean",
+          "right": "cleaned"
+        },
+        {
+          "left": "wash",
+          "right": "washed"
+        },
+        {
+          "left": "study",
+          "right": "studied"
+        },
+        {
+          "left": "play",
+          "right": "played"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Für das Past perfect brauchst du immer die 3. Form (had + 3. Form). Bei regelmäßigen Verben endet sie auf -ed.",
+      "hintEn": null,
+      "explainDe": "Das sind regelmäßige 3. Formen auf -ed, die du nach had verwendest: cooked, cleaned, washed, studied, played.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 5.txt#ex5",
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Sätze benutzen had + die 3. Form richtig, welche nicht?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "She had cooked dinner.",
+            "They had washed the dishes.",
+            "He had cleaned his room."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "She had cook dinner.",
+            "They had wash the dishes.",
+            "He had cleans his room."
+          ]
+        }
+      ],
+      "hintDe": "Nach had steht die 3. Form (cooked, washed, cleaned) – nicht die Grundform oder eine -s-Form.",
+      "hintEn": null,
+      "explainDe": "Richtig: had + 3. Form (cooked, washed, cleaned). Falsch: had cook (Grundform), had wash (Grundform), had cleans (-s-Form).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sortiere die Konnektoren nach ihrer Bedeutung.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "why?",
+          "members": [
+            "because",
+            "because of"
+          ]
+        },
+        {
+          "label": "but",
+          "members": [
+            "although",
+            "even though"
+          ]
+        },
+        {
+          "label": "what for?",
+          "members": [
+            "in order to",
+            "so that"
+          ]
+        }
+      ],
+      "hintDe": "Denk daran: Warum? (Grund), Trotzdem? (Gegensatz), Wozu? (Absicht).",
+      "hintEn": null,
+      "explainDe": "because / because of nennen einen Grund, although / even though zeigen einen Gegensatz, in order to / so that zeigen eine Absicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 5.txt#grammar-1",
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bilde eine Frage mit had + der 3. Form aus den Stichwörtern:\n\nshe / cook / dinner / before the guests arrived ?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Had she cooked dinner before the guests arrived?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage: Had + Subjekt + 3. Form …? Die 3. Form von cook ist cooked.",
+      "hintEn": null,
+      "explainDe": "In der Frage steht had vorne: Had she cooked …? Die 3. Form (cooked) bleibt gleich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "After they had played in the garden, they ___ (be) very hungry.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Spielen war früher (had played), der Hunger danach – welche 2. Form von be passt zu they?",
+      "hintEn": null,
+      "explainDe": "Zu they gehört were. Das Spätere (hungrig sein) steht in der 2. Form, das Frühere (spielen) im Past perfect.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "She did not buy anything because she ___ (spend) all her money.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had spent",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "because nennt den früheren Grund: had + die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Sie kaufte nichts, WEIL sie schon alles ausgegeben hatte (had spent). because verbindet Folge und früheren Grund.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "spent",
+          "de": "ausgegeben (3. Form von spend)",
+          "scope": "prompt"
+        },
+        {
+          "word": "buy",
+          "de": "kaufen",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 5.txt#ex6",
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ they had checked in at the hotel, they went to the beach.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "After",
+          "tier": "full"
+        },
+        {
+          "text": "As soon as",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welcher Konnektor zeigt: nachdem die frühere Handlung (einchecken) erledigt war?",
+      "hintEn": null,
+      "explainDe": "After (oder As soon as) leitet die frühere Handlung ein (had checked in), danach folgt das spätere Ereignis (went).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "checked",
+          "de": "eingecheckt (von check in)",
+          "scope": "prompt"
+        },
+        {
+          "word": "went",
+          "de": "gingen (2. Form von go)",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-gf-012",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She did not recognise him ___ he had changed so much.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "because",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welcher Konnektor nennt den GRUND und steht vor einem ganzen Satz?",
+      "hintEn": null,
+      "explainDe": "because nennt den Grund: Sie erkannte ihn nicht, WEIL er sich so verändert hatte (had changed).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "recognise",
+          "de": "erkennen",
+          "scope": "prompt"
+        },
+        {
+          "word": "changed",
+          "de": "verändert (3. Form von change)",
+          "scope": "prompt"
+        }
+      ],
+      "seedV1": "m4-u5-past-perfect-connectors-gf-008",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1,
+      "gameMeta": null
+    },
+    {
+      "structureId": "g4u05.s.past-perfect-connectors",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?\n\n(Zuerst war die Familie zu Hause angekommen, dann aßen sie. – beides früher.)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After the family had arrived home, they had dinner.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "After the family arrived home, they had had dinner.",
+        "After the family has arrived home, they had dinner.",
+        "After the family had arrived home, they had had dinner."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nur die frühere Handlung (ankommen) steht mit had + die 3. Form; das Essen steht in der 2. Form (had dinner = sie aßen zu Abend).",
+      "hintEn": null,
+      "explainDe": "Korrekt: had arrived (früher) + had dinner (später; 'have dinner' = zu Abend essen). Nur EINE Handlung darf im Past perfect stehen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "After the family had arrived home, they had dinner.",
+          "After the family arrived home, they had had dinner.",
+          "After the family has arrived home, they had dinner.",
+          "After the family had arrived home, they had had dinner."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u5-past-perfect-connectors-mc-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    }
+  ]
+}

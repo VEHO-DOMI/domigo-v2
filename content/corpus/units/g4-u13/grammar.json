@@ -1,0 +1,2685 @@
+{
+  "schema": "grammar@1",
+  "grade": 4,
+  "unit": 13,
+  "slug": "g4-u13",
+  "items": [
+    {
+      "id": "g4u13.gi.word-formation.cp.001",
+      "structureId": "g4u13.s.word-formation",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He is very careful.",
+            "He is very careness.",
+            "He is very carely.",
+            "He is very careless."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein Freund fährt schnell und schaut nicht auf die Straße. Welcher Satz beschreibt das richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He is very careless.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He is very careful.",
+        "He is very careness.",
+        "He is very carely."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ohne Vorsicht = -less.",
+      "hintEn": null,
+      "explainDe": "care → careless (= ohne Vorsicht). careful wäre das Gegenteil; 'careness'/'carely' gibt es nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.cp.002",
+      "structureId": "g4u13.s.word-formation",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The band was very successless.",
+            "The band was very successness.",
+            "The band was very unsuccess.",
+            "The band was very successful."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du sollst sagen, dass die Band sehr erfolgreich war. Welcher Satz ist richtig gebaut?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The band was very successful.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The band was very successless.",
+        "The band was very successness.",
+        "The band was very unsuccess."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "erfolgreich = success mit -ful.",
+      "hintEn": null,
+      "explainDe": "success → successful (= erfolgreich) mit -ful. 'successless', 'successness' und 'unsuccess' gibt es nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.ec.001",
+      "structureId": "g4u13.s.word-formation",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: The homework was unpossible to finish in one hour.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The homework was impossible to finish in one hour.",
+          "tier": "full"
+        },
+        {
+          "text": "impossible",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor possible kommt nicht un-, sondern im-.",
+      "hintEn": null,
+      "explainDe": "Richtig ist impossible: vor p wird aus in- ein im-. 'unpossible' ist falsch.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u13.gi.word-formation.ec.002",
+      "structureId": "g4u13.s.word-formation",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: She was beautifull in her new dress.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was beautiful in her new dress.",
+          "tier": "full"
+        },
+        {
+          "text": "beautiful",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "-ful schreibt man nur mit einem l.",
+      "hintEn": null,
+      "explainDe": "Richtig ist beautiful – die Nachsilbe -ful hat nur ein l, nicht zwei.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u13.gi.word-formation.ec.003",
+      "structureId": "g4u13.s.word-formation",
+      "format": "error-correction",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-ec-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: Her kindful nature makes everyone feel welcome.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Her kind nature makes everyone feel welcome.",
+          "tier": "full"
+        },
+        {
+          "text": "kind",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'kindful' gibt es nicht. Hier brauchst du das einfache Eigenschaftswort.",
+      "hintEn": null,
+      "explainDe": "Richtig ist kind nature. 'kindful' existiert nicht; das Hauptwort wäre kindness, aber vor nature passt das einfache Wort kind.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u13.gi.word-formation.ec.004",
+      "structureId": "g4u13.s.word-formation",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-ec-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I think it's very inresponsible to drive without a seatbelt.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I think it's very irresponsible to drive without a seatbelt.",
+          "tier": "full"
+        },
+        {
+          "text": "irresponsible",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor responsible verdoppelt sich der erste Buchstabe (r).",
+      "hintEn": null,
+      "explainDe": "Richtig ist irresponsible: vor r wird aus in- ein ir-. 'inresponsible' ist falsch.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u13.gi.word-formation.ec.005",
+      "structureId": "g4u13.s.word-formation",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I completely agree with you – you are totally wrong!",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I completely disagree with you – you are totally wrong!",
+          "tier": "full"
+        },
+        {
+          "text": "disagree",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wenn jemand falsch liegt, stimmst du nicht zu. Häng vorne dis- an.",
+      "hintEn": null,
+      "explainDe": "Richtig ist disagree (= anderer Meinung sein). agree würde 'zustimmen' bedeuten und passt nicht zu 'you are wrong'.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u13.gi.word-formation.ec.006",
+      "structureId": "g4u13.s.word-formation",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: The man was very inpolite to the beggar and gave him nothing.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The man was very impolite to the beggar and gave him nothing.",
+          "tier": "full"
+        },
+        {
+          "text": "impolite",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor polite passt im-, nicht in-.",
+      "hintEn": null,
+      "explainDe": "Richtig ist impolite: vor p wird aus in- ein im-. 'inpolite' ist falsch.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u13.gi.word-formation.ec.007",
+      "structureId": "g4u13.s.word-formation",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: She drove very careless and had an accident.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She drove very carelessly and had an accident.",
+          "tier": "full"
+        },
+        {
+          "text": "carelessly",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wie sie fuhr – dafür brauchst du ein Wort auf -ly.",
+      "hintEn": null,
+      "explainDe": "Richtig ist carelessly: um zu sagen, WIE sie fuhr, hängt man -ly an (careless → carelessly).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.001",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz das Gegenteil von happy ein: She wasn't ___ about losing the match.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unhappy",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng vorne ein kleines Stück an, das 'nicht' bedeutet.",
+      "hintEn": null,
+      "explainDe": "Vor happy kommt un-: happy → unhappy. Das bedeutet 'nicht glücklich'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.002",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-gf-007",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form von possible ein: This exercise is ___. I can't do it!",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "impossible",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor possible passt nicht un-, sondern ein anderes kleines Stück.",
+      "hintEn": null,
+      "explainDe": "Vor possible kommt im-: possible → impossible. (Nicht 'unpossible' oder 'inpossible'.)",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.003",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-gf-008",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bau aus care ein Wort, das beschreibt, wie man eine Straße überquert: Be ___ when you cross the road!",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "careful",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng hinten -ful an (nur ein l!).",
+      "hintEn": null,
+      "explainDe": "care → careful (= voll von Vorsicht, aufpassend). Achtung: nur ein l, nicht 'carefull'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.004",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form von care ein: He drove very fast and didn't look. That was so ___!",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "careless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng hinten -less an. Das bedeutet 'ohne'.",
+      "hintEn": null,
+      "explainDe": "care → careless (= ohne Vorsicht, leichtsinnig). -less heißt 'ohne'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.005",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus happy ein Hauptwort: Her ___ surprised everyone after she won the tournament.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "happiness",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus dem y wird ein i, dann häng -ness an.",
+      "hintEn": null,
+      "explainDe": "happy → happiness. Bei -ness wird das y zu i: happy → happi + ness. Nicht 'happyness'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.006",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bau aus kind ein Hauptwort: Her ___ really surprised the new students.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "kindness",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng hinten -ness an.",
+      "hintEn": null,
+      "explainDe": "kind → kindness (= Freundlichkeit). -ness macht aus dem Eigenschaftswort ein Hauptwort.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.007",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form von hope ein: The situation looks ___. I don't think we can win.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hopeless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng hinten -less an. Das bedeutet 'ohne'.",
+      "hintEn": null,
+      "explainDe": "hope → hopeless (= ohne Hoffnung, aussichtslos). -less heißt 'ohne'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.008",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-tf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz beide Formen von hope ein: Your ending is a bit ___, but the rest is full of hope and very ___.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "hopeless | hopeful",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Einmal -less (ohne), einmal -ful (voll von).",
+      "hintEn": null,
+      "explainDe": "hope → hopeless (ohne Hoffnung) und hope → hopeful (voll Hoffnung). -less = ohne, -ful = voll von.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.009",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bau aus success ein Eigenschaftswort: The band was very ___ and won many fans.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "successful",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng hinten -ful an (nur ein l).",
+      "hintEn": null,
+      "explainDe": "success → successful (= erfolgreich). -ful macht aus dem Hauptwort ein Eigenschaftswort. Nur ein l!",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.010",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-gf-012",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form von understand ein: I'm sorry, I completely ___ you. Let me read it again.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "misunderstood",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng vorne mis- an (= falsch) und denk an die Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "understand → misunderstand (= falsch verstehen). In der Vergangenheit: misunderstood.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.011",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form von agree ein: I completely ___ with you. I think you are wrong.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "disagree",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng vorne dis- an. Das bedeutet 'nicht'.",
+      "hintEn": null,
+      "explainDe": "agree → disagree (= nicht zustimmen, anderer Meinung sein). dis- bedeutet 'nicht / das Gegenteil'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.012",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-gf-011",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form von meaning ein: The text was completely ___. The teacher couldn't understand a word.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "meaningless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng hinten -less an. Das bedeutet 'ohne'.",
+      "hintEn": null,
+      "explainDe": "meaning → meaningless (= ohne Sinn). -less heißt 'ohne'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.013",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#text-guilfest",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bau aus beauty ein Eigenschaftswort: Stoke Park, where the festival is held, is really ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "beautiful",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng hinten -ful an (nur ein l). Das y wird zu i.",
+      "hintEn": null,
+      "explainDe": "beauty → beautiful (= schön). Das y wird zu i, dann -ful mit nur einem l.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.014",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form von paint ein: He paints every day. He is a wonderful ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "painter",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng hinten -er an: jemand, der das tut.",
+      "hintEn": null,
+      "explainDe": "paint → painter (= Maler/in). -er macht aus dem Tätigkeitswort die Person, die das tut.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.015",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bau aus visit ein Wort für die Person: Every July a lot of people come to the festival. Each ___ loves the music.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "visitor",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng hinten -or an: die Person, die das tut.",
+      "hintEn": null,
+      "explainDe": "visit → visitor (= Besucher/in). Hier wird -or angehängt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.016",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form von care ein, um zu sagen, WIE er fuhr: He drove ___ and had an accident.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "carelessly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst -less (ohne), dann -ly (wie er etwas tat).",
+      "hintEn": null,
+      "explainDe": "care → careless → carelessly. Um zu sagen, WIE er fuhr, kommt am Ende noch -ly dazu.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.017",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bau aus help ein Eigenschaftswort: The guide was very ___ and showed us the way.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "helpful",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng -ful an (nur ein l).",
+      "hintEn": null,
+      "explainDe": "help → helpful (= hilfsbereit). -ful macht aus dem Wort ein Eigenschaftswort.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gf.018",
+      "structureId": "g4u13.s.word-formation",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz die richtige Form von regular ein: The bus times here are ___. You never know when it comes.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "irregular",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor regular verdoppelt sich der erste Buchstabe (r).",
+      "hintEn": null,
+      "explainDe": "regular → irregular (= unregelmäßig). Vor r wird aus in- ein ir-.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gs.005",
+      "structureId": "g4u13.s.word-formation",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortier die Wörter danach, welches kleine Stück am Ende angehängt wurde.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "-ful",
+          "members": [
+            "careful",
+            "successful",
+            "beautiful",
+            "powerful"
+          ]
+        },
+        {
+          "label": "-less",
+          "members": [
+            "hopeless",
+            "careless",
+            "helpless",
+            "spotless"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "-ful bedeutet 'voll von', -less bedeutet 'ohne'.",
+      "hintEn": null,
+      "explainDe": "-ful = voll von (careful, successful, beautiful, powerful). -less = ohne (hopeless, careless, helpless, spotless).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gs.006",
+      "structureId": "g4u13.s.word-formation",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortier die Wörter danach, ob es eine Sache/Eigenschaft oder eine Person beschreibt.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "-er",
+          "members": [
+            "painter",
+            "singer",
+            "writer",
+            "driver"
+          ]
+        },
+        {
+          "label": "-ness",
+          "members": [
+            "happiness",
+            "kindness",
+            "darkness",
+            "illness"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "-er macht meist eine Person, -ness macht meist eine Eigenschaft.",
+      "hintEn": null,
+      "explainDe": "painter/singer/writer/driver sind Personen (-er). happiness/kindness/darkness/illness sind Eigenschaften (-ness).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gs.007",
+      "structureId": "g4u13.s.word-formation",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortier die Gegenteile danach, welches kleine Stück vorne angehängt wurde.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "im-",
+          "members": [
+            "impossible",
+            "impolite",
+            "impatient"
+          ]
+        },
+        {
+          "label": "ir-",
+          "members": [
+            "irregular",
+            "irresponsible"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Vor p kommt im-, vor r kommt ir-.",
+      "hintEn": null,
+      "explainDe": "Welches Stück vorne kommt, hängt vom ersten Buchstaben ab: im- vor p (impossible), ir- vor r (irregular).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.gs.008",
+      "structureId": "g4u13.s.word-formation",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortier die Wörter danach, ob sie ein Wort für eine Person oder ein Eigenschaftswort sind.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "-or",
+          "members": [
+            "visitor",
+            "inventor",
+            "actor"
+          ]
+        },
+        {
+          "label": "-ous",
+          "members": [
+            "dangerous",
+            "famous",
+            "nervous"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "-or macht eine Person, -ous macht ein Eigenschaftswort.",
+      "hintEn": null,
+      "explainDe": "visitor/inventor/actor sind Personen (-or). dangerous/famous/nervous sind Eigenschaftswörter (-ous).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.001",
+      "structureId": "g4u13.s.word-formation",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dishappy",
+            "inhappy",
+            "mishappy",
+            "unhappy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-mc-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Form ist richtig gebaut? The opposite of happy is ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unhappy",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "dishappy",
+        "inhappy",
+        "mishappy"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor happy passt nur eines davon.",
+      "hintEn": null,
+      "explainDe": "Vor happy kommt un-: unhappy. dis-, in- und mis- passen hier nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.003",
+      "structureId": "g4u13.s.word-formation",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "unpossible",
+            "inpossible",
+            "dispossible",
+            "impossible"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Form von possible ist richtig? It's ___ to finish all this homework in one hour.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "impossible",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "unpossible",
+        "inpossible",
+        "dispossible"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor possible passt im-.",
+      "hintEn": null,
+      "explainDe": "possible → impossible. Vor p wird aus in- ein im-. 'unpossible' ist falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.004",
+      "structureId": "g4u13.s.word-formation",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "careless",
+            "careness",
+            "carely",
+            "careful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-gf-008",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Form passt? She always thinks about other people. She is very ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "careful",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "careless",
+        "careness",
+        "carely"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'voll von Vorsicht' = -ful.",
+      "hintEn": null,
+      "explainDe": "care → careful (= achtsam). careless wäre das Gegenteil (ohne Vorsicht). 'careness' und 'carely' gibt es nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.006",
+      "structureId": "g4u13.s.word-formation",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "paintness",
+            "paintful",
+            "paintless",
+            "painter"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Form passt in den Satz? He paints beautiful pictures. He is a famous ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "painter",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "paintness",
+        "paintful",
+        "paintless"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du brauchst die Person, die malt: -er.",
+      "hintEn": null,
+      "explainDe": "paint → painter (die Person, die malt). -ness/-ful/-less würden kein Wort für eine Person ergeben.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.007",
+      "structureId": "g4u13.s.word-formation",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "eldness",
+            "eldful",
+            "eldless",
+            "elder"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#text-guilfest",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Form passt? My ___ Daniel is 19 and I'm 15.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "elder",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "eldness",
+        "eldful",
+        "eldless"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Hier passt nur das richtige Wort für 'älter'.",
+      "hintEn": null,
+      "explainDe": "elder (= älter). Die anderen Formen gibt es nicht. Nicht jedes Wort kann jede Nachsilbe bekommen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.008",
+      "structureId": "g4u13.s.word-formation",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "meaningful",
+            "meaningness",
+            "unmeaning",
+            "meaningless"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/wb/More 4 WB Unit 13.txt#ex8",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Form von meaning passt? No idea what she wanted to say – it was completely ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "meaningless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "meaningful",
+        "meaningness",
+        "unmeaning"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'ohne Sinn' = -less.",
+      "hintEn": null,
+      "explainDe": "meaning → meaningless (ohne Sinn). meaningful wäre das Gegenteil (voll Sinn).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.010",
+      "structureId": "g4u13.s.word-formation",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "inlegal",
+            "unlegal",
+            "dislegal",
+            "illegal"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-mc-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welches Wort ist richtig gebaut? What he was doing was ___, so the police arrested him.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "illegal",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "inlegal",
+        "unlegal",
+        "dislegal"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor legal verdoppelt sich der erste Buchstabe.",
+      "hintEn": null,
+      "explainDe": "legal → illegal (vor l wird aus in- ein il-). 'inlegal', 'unlegal', 'dislegal' gibt es nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.011",
+      "structureId": "g4u13.s.word-formation",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hopeful",
+            "hopeness",
+            "unhope",
+            "hopeless"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Form von hope passt? I can't do it — it all looks ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hopeless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "hopeful",
+        "hopeness",
+        "unhope"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'ohne Hoffnung' = -less.",
+      "hintEn": null,
+      "explainDe": "hope → hopeless (= ohne Hoffnung, aussichtslos). hopeful wäre 'voll Hoffnung'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.012",
+      "structureId": "g4u13.s.word-formation",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "happyness",
+            "happyful",
+            "happyless",
+            "happiness"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/wb/More 4 WB Unit 13.txt#ex8",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Form von happy passt? All my friends were there. It filled me with ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "happiness",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "happyness",
+        "happyful",
+        "happyless"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du brauchst hier ein Hauptwort: -ness, aber das y wird zu i.",
+      "hintEn": null,
+      "explainDe": "happy → happiness. Das y wird zu i. 'happyness' ist falsch geschrieben.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mt.001",
+      "structureId": "g4u13.s.word-formation",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-mt-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welches Gegenteil gehört zu welchem Wort?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "happy",
+          "right": "unhappy"
+        },
+        {
+          "left": "possible",
+          "right": "impossible"
+        },
+        {
+          "left": "legal",
+          "right": "illegal"
+        },
+        {
+          "left": "polite",
+          "right": "impolite"
+        },
+        {
+          "left": "agree",
+          "right": "disagree"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jedes Wort bekommt vorne ein kleines Stück, das 'nicht' bedeutet.",
+      "hintEn": null,
+      "explainDe": "happy→unhappy, possible→impossible, legal→illegal, polite→impolite, agree→disagree. Welche Vorsilbe passt, hängt vom Wort ab.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mt.002",
+      "structureId": "g4u13.s.word-formation",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Person gehört zu welcher Tätigkeit?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "paint",
+          "right": "painter"
+        },
+        {
+          "left": "sing",
+          "right": "singer"
+        },
+        {
+          "left": "dance",
+          "right": "dancer"
+        },
+        {
+          "left": "write",
+          "right": "writer"
+        },
+        {
+          "left": "explore",
+          "right": "explorer"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng an jede Tätigkeit -er an: die Person, die das tut.",
+      "hintEn": null,
+      "explainDe": "paint→painter, sing→singer, dance→dancer, write→writer, explore→explorer. -er macht aus der Tätigkeit die Person.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.mt.003",
+      "structureId": "g4u13.s.word-formation",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche neue Form gehört zu welchem Wort?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "happy",
+          "right": "happiness"
+        },
+        {
+          "left": "care",
+          "right": "careful"
+        },
+        {
+          "left": "hope",
+          "right": "hopeless"
+        },
+        {
+          "left": "success",
+          "right": "successful"
+        },
+        {
+          "left": "beauty",
+          "right": "beautiful"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Manche bekommen -ness, manche -ful, manche -less.",
+      "hintEn": null,
+      "explainDe": "happy→happiness (-ness), care→careful (-ful), hope→hopeless (-less), success→successful (-ful), beauty→beautiful (-ful, y→i).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.qf.001",
+      "structureId": "g4u13.s.word-formation",
+      "format": "question-formation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein Freund sagt, ohne Führerschein zu fahren sei in Ordnung. Du bist anderer Meinung. Frag mit dem Gegenteil von legal: Is it really ___ to drive without a licence?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "illegal",
+          "tier": "full"
+        },
+        {
+          "text": "Is it really illegal to drive without a licence?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "legal mit der Vorsilbe il- (der erste Buchstabe verdoppelt sich).",
+      "hintEn": null,
+      "explainDe": "legal → illegal (= verboten). Vor l wird aus in- ein il-.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.qf.002",
+      "structureId": "g4u13.s.word-formation",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Tom ist sich nicht sicher, was du gesagt hast. Frag mit dem Wort understand: Did you ___ me?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "misunderstand",
+          "tier": "full"
+        },
+        {
+          "text": "Did you misunderstand me?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "falsch verstehen = understand mit der Vorsilbe mis-.",
+      "hintEn": null,
+      "explainDe": "understand → misunderstand (= falsch verstehen). mis- bedeutet 'falsch / schlecht'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.sb.001",
+      "structureId": "g4u13.s.word-formation",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "careful",
+            "happiness",
+            "decision",
+            "painter"
+          ],
+          "chipBudget": 4,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: is / this / impossible / exercise",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This exercise is impossible.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fang mit 'This exercise' an.",
+      "hintEn": null,
+      "explainDe": "Richtig: This exercise is impossible. (possible → impossible mit im-.)",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.sb.002",
+      "structureId": "g4u13.s.word-formation",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "careful",
+            "happiness",
+            "decision",
+            "painter"
+          ],
+          "chipBudget": 5,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#text-guilfest",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: was / the / very / festival / successful",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The festival was very successful.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fang mit 'The festival' an.",
+      "hintEn": null,
+      "explainDe": "Richtig: The festival was very successful. (success → successful mit -ful.)",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.sb.003",
+      "structureId": "g4u13.s.word-formation",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "careful",
+            "happiness",
+            "decision",
+            "painter"
+          ],
+          "chipBudget": 7,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#text-mangani",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: was / he / impolite / the / very / beggar / to",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He was very impolite to the beggar.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fang mit 'He was' an.",
+      "hintEn": null,
+      "explainDe": "Richtig: He was very impolite to the beggar. (polite → impolite mit im-.)",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.tf.001",
+      "structureId": "g4u13.s.word-formation",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-tf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus dem Wort in Klammern die passende Form: That word doesn't make any sense. (meaning) → That word is ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "meaningless",
+          "tier": "full"
+        },
+        {
+          "text": "That word is meaningless.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'ohne Sinn' = -less.",
+      "hintEn": null,
+      "explainDe": "meaning → meaningless (= ohne Sinn). -less heißt 'ohne'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.tf.002",
+      "structureId": "g4u13.s.word-formation",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-tf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus dem Wort in Klammern die passende Form: I don't agree with what you said. (agree) → I ___ with what you said.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "disagree",
+          "tier": "full"
+        },
+        {
+          "text": "I disagree with what you said.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng vorne dis- an.",
+      "hintEn": null,
+      "explainDe": "agree → disagree (= nicht zustimmen). dis- bedeutet 'nicht'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.tf.003",
+      "structureId": "g4u13.s.word-formation",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus dem Wort in Klammern ein Hauptwort: She is very happy. (happy) → Everyone could see her ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "happiness",
+          "tier": "full"
+        },
+        {
+          "text": "Everyone could see her happiness.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus happy wird mit -ness ein Hauptwort. Das y wird zu i.",
+      "hintEn": null,
+      "explainDe": "happy → happiness. -ness macht aus dem Eigenschaftswort ein Hauptwort; das y wird zu i.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.tf.004",
+      "structureId": "g4u13.s.word-formation",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus dem Wort in Klammern die passende Form: He drives the school bus every day. (drive) → He is the school ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "driver",
+          "tier": "full"
+        },
+        {
+          "text": "He is the school driver.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Person, die fährt: häng -er an (das e fällt weg).",
+      "hintEn": null,
+      "explainDe": "drive → driver (die Person, die fährt). Das e von drive bleibt, und -er kommt dazu.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.tf.005",
+      "structureId": "g4u13.s.word-formation",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u13-word-formation-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bau beide Formen aus den Wörtern in Klammern: Driving on this road is very (danger) ___. It's really not (safe) ___!",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "dangerous | safe",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "danger bekommt -ous; safe bleibt safe (mit 'not').",
+      "hintEn": null,
+      "explainDe": "danger → dangerous (= gefährlich) mit -ous. Nach 'not' bleibt safe einfach safe (= sicher).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.tf.006",
+      "structureId": "g4u13.s.word-formation",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus dem Wort in Klammern ein Eigenschaftswort: His new book was a big success. (success) → His new book was very ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "successful",
+          "tier": "full"
+        },
+        {
+          "text": "His new book was very successful.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng -ful an (nur ein l).",
+      "hintEn": null,
+      "explainDe": "success → successful (= erfolgreich). -ful mit nur einem l macht aus dem Hauptwort ein Eigenschaftswort.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.tr.001",
+      "structureId": "g4u13.s.word-formation",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Es ist unmöglich, das heute fertig zu machen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It's impossible to finish this today.",
+          "tier": "full"
+        },
+        {
+          "text": "It is impossible to finish this today.",
+          "tier": "full"
+        },
+        {
+          "text": "It's impossible to finish that today.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "unmöglich = possible mit der Vorsilbe im-.",
+      "hintEn": null,
+      "explainDe": "possible → impossible (= unmöglich). Vor p wird aus in- ein im-.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.tr.002",
+      "structureId": "g4u13.s.word-formation",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ich bin völlig anderer Meinung als du.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I completely disagree with you.",
+          "tier": "full"
+        },
+        {
+          "text": "I totally disagree with you.",
+          "tier": "full"
+        },
+        {
+          "text": "I disagree with you completely.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "anderer Meinung sein = agree mit der Vorsilbe dis-.",
+      "hintEn": null,
+      "explainDe": "agree → disagree (= nicht zustimmen, anderer Meinung sein). dis- bedeutet 'nicht'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.tr.003",
+      "structureId": "g4u13.s.word-formation",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u13-word-formation-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sein Verhalten war völlig verantwortungslos.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "His behaviour was completely irresponsible.",
+          "tier": "full"
+        },
+        {
+          "text": "His behavior was completely irresponsible.",
+          "tier": "full"
+        },
+        {
+          "text": "His behaviour was totally irresponsible.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "verantwortungslos = responsible mit der Vorsilbe ir-.",
+      "hintEn": null,
+      "explainDe": "responsible → irresponsible (= verantwortungslos). Vor r wird aus in- ein ir-.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u13.gi.word-formation.tr.004",
+      "structureId": "g4u13.s.word-formation",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 13.txt#grammar-1",
+        "seedV1": "m4-u13-word-formation-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ihre Freundlichkeit überraschte alle.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Her kindness surprised everyone.",
+          "tier": "full"
+        },
+        {
+          "text": "Her kindness surprised everybody.",
+          "tier": "full"
+        },
+        {
+          "text": "Her friendliness surprised everyone.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Freundlichkeit = kind als Hauptwort mit -ness.",
+      "hintEn": null,
+      "explainDe": "kind → kindness (= Freundlichkeit). -ness macht aus dem Eigenschaftswort ein Hauptwort.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

@@ -1,0 +1,4428 @@
+{
+  "schema": "vocab@1",
+  "grade": 1,
+  "unit": 9,
+  "slug": "g1-u09",
+  "items": [
+    {
+      "id": "g1u09.w.a-day",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "a week",
+            "once",
+            "twice",
+            "near"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.66",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Two-form phrase '... a day'; blank takes 'a' after 'three times'."
+      },
+      "w": "(...) a day",
+      "g": "(...) am Tag",
+      "d": "It shows how often, like two times in the morning and the evening.",
+      "s": "She gives her dog food three times ___ day.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "a",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "a day",
+          "tier": "full"
+        },
+        {
+          "text": "per day",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "a day",
+            "tier": "full"
+          },
+          {
+            "text": "per day",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "am Tag",
+            "tier": "full"
+          },
+          {
+            "text": "pro Tag",
+            "tier": "full"
+          },
+          {
+            "text": "täglich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "a week",
+        "once",
+        "twice"
+      ],
+      "hintDe": "Sagt, wie oft an einem Tag, zum Beispiel zweimal am Tag."
+    },
+    {
+      "id": "g1u09.w.a-week",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "a day",
+            "once",
+            "twice",
+            "near"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.66",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Two-form phrase '... a week'; blank takes 'a' after 'once'."
+      },
+      "w": "(...) a week",
+      "g": "(...) in der Woche",
+      "d": "It shows how often, like one time from Monday to Sunday.",
+      "s": "I give my spider food once ___ week.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "a",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "a week",
+          "tier": "full"
+        },
+        {
+          "text": "per week",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "a week",
+            "tier": "full"
+          },
+          {
+            "text": "per week",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in der Woche",
+            "tier": "full"
+          },
+          {
+            "text": "pro Woche",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "a day",
+        "once",
+        "twice"
+      ],
+      "hintDe": "Sagt, wie oft in einer Woche, zum Beispiel einmal in der Woche."
+    },
+    {
+      "id": "g1u09.w.across",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "near",
+            "far away",
+            "once",
+            "twice"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.67",
+        "seedV1": null,
+        "narrative": null,
+        "note": "MC keeps 3 distinct in-bank words; 'across' removed from mc as it is the headword."
+      },
+      "w": "across (Britain)",
+      "g": "in ganz (Großbritannien)",
+      "d": "It is in all of a big country.",
+      "s": "There are many dogs ___ Britain.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "across",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "across",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "across",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in ganz",
+            "tier": "full"
+          },
+          {
+            "text": "überall in",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "country",
+          "de": "Land",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "near",
+        "far away",
+        "behind"
+      ],
+      "hintDe": "Bedeutet: überall in einem großen Land."
+    },
+    {
+      "id": "g1u09.w.aunty",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mother",
+            "daughter",
+            "grandpa",
+            "owner"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.70",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "aunty",
+      "g": "Tante (Koseform)",
+      "d": "She is the sister of your mum or the sister of the man in your family.",
+      "s": "My ___ Jane is my mum's sister.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "aunty",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "aunty",
+          "tier": "full"
+        },
+        {
+          "text": "auntie",
+          "tier": "partial"
+        },
+        {
+          "text": "aunt",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "aunty",
+            "tier": "full"
+          },
+          {
+            "text": "auntie",
+            "tier": "partial"
+          },
+          {
+            "text": "aunt",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tante",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mother",
+        "daughter",
+        "grandpa"
+      ],
+      "hintDe": "Die Schwester deiner Mama oder die Schwester des Mannes in deiner Familie."
+    },
+    {
+      "id": "g1u09.w.basket",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "box",
+            "cage",
+            "tank",
+            "terrarium"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.69",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Blank is plural 'baskets' (after 'two'); singular 'basket' is the headword/dAnswer."
+      },
+      "w": "basket",
+      "g": "Korb",
+      "d": "It is a thing you put food or things in to carry them.",
+      "s": "She has two ___ for the food.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "baskets",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "basket",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "basket",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Korb",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "box",
+        "cage",
+        "tank"
+      ],
+      "hintDe": "Ein Ding, in das du Essen oder Sachen zum Tragen legst."
+    },
+    {
+      "id": "g1u09.w.bat",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "owl",
+            "mouse",
+            "rat",
+            "budgie"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "bat",
+      "g": "Fledermaus",
+      "d": "It flies at night and it sleeps in the day.",
+      "s": "A ___ sleeps in the day and flies at night.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "bat",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bat",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fledermaus",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "flies",
+          "de": "fliegt",
+          "scope": null
+        },
+        {
+          "word": "sleeps",
+          "de": "schläft",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "owl",
+        "mouse",
+        "rat"
+      ],
+      "hintDe": "Sie fliegt in der Nacht und schläft am Tag."
+    },
+    {
+      "id": "g1u09.w.beginning",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ending",
+            "letter",
+            "newspaper",
+            "noise"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.72",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "beginning",
+      "g": "Anfang",
+      "d": "It is the first part of a book or film.",
+      "s": "The ___ of the book is very good.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "beginning",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "beginning",
+          "tier": "full"
+        },
+        {
+          "text": "start",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "beginning",
+            "tier": "full"
+          },
+          {
+            "text": "start",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Anfang",
+            "tier": "full"
+          },
+          {
+            "text": "Beginn",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "first",
+          "de": "erste",
+          "scope": "d"
+        },
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        },
+        {
+          "word": "film",
+          "de": "Film",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ending",
+        "letter",
+        "newspaper"
+      ],
+      "hintDe": "Der erste Teil eines Buches oder Films."
+    },
+    {
+      "id": "g1u09.w.best-wishes",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dear",
+            "ending",
+            "letter",
+            "beginning"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.71",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Two-word phrase; blank takes 'wishes' after 'Best'."
+      },
+      "w": "best wishes",
+      "g": "herzliche Grüße",
+      "d": "You write these at the end of a letter to a friend.",
+      "s": "I end my letter like this: Best ___, Tom.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "wishes",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "best wishes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "best wishes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "herzliche Grüße",
+            "tier": "full"
+          },
+          {
+            "text": "viele Grüße",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dear",
+        "ending",
+        "letter"
+      ],
+      "hintDe": "Das schreibst du am Ende eines Briefes an einen Freund."
+    },
+    {
+      "id": "g1u09.w.box",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cage",
+            "tank",
+            "basket",
+            "terrarium"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.68",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "box",
+      "g": "Schachtel",
+      "d": "You put your school things in this. It is made of paper.",
+      "s": "The spider lives in a ___ and you feed it once a week.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "box",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "box",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "box",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schachtel",
+            "tier": "full"
+          },
+          {
+            "text": "Kiste",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Sachen",
+          "scope": "d"
+        },
+        {
+          "word": "made",
+          "de": "gemacht",
+          "scope": "d"
+        },
+        {
+          "word": "paper",
+          "de": "Papier",
+          "scope": "d"
+        },
+        {
+          "word": "feed",
+          "de": "fütterst",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "cage",
+        "tank",
+        "basket"
+      ],
+      "hintDe": "Du legst Dinge hinein; sie kann aus Papier sein."
+    },
+    {
+      "id": "g1u09.w.budgie",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "owl",
+            "rabbit",
+            "fish",
+            "mouse"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "budgie",
+      "g": "Wellensittich",
+      "d": "It is a small bird in a cage. It can talk.",
+      "s": "The ___ in its cage can talk.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "budgie",
+          "tier": "full"
+        },
+        {
+          "text": "budgerigar",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "budgie",
+          "tier": "full"
+        },
+        {
+          "text": "budgerigar",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "budgie",
+            "tier": "full"
+          },
+          {
+            "text": "budgerigar",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wellensittich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "owl",
+        "rabbit",
+        "fish"
+      ],
+      "hintDe": "Ein kleiner, bunter Vogel im Käfig, der sprechen kann."
+    },
+    {
+      "id": "g1u09.w.cage",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "tank",
+            "box",
+            "terrarium",
+            "basket"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.66",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cage",
+      "g": "Käfig",
+      "d": "A bird lives in this. It has thin bars.",
+      "s": "The budgie lives in its ___ all day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cage",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cage",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cage",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Käfig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "d"
+        },
+        {
+          "word": "thin",
+          "de": "dünn",
+          "scope": "d"
+        },
+        {
+          "word": "bars",
+          "de": "Gitterstäbe",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "tank",
+        "box",
+        "terrarium"
+      ],
+      "hintDe": "Darin lebt ein Vogel; er hat dünne Gitterstäbe."
+    },
+    {
+      "id": "g1u09.w.camel",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "zebra",
+            "elephant",
+            "pony",
+            "shark"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.67",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "camel",
+      "g": "Kamel",
+      "d": "It is big with a long neck and lives where it is hot.",
+      "s": "The big ___ at the zoo can go a long time with no milk or food.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "camel",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "camel",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "camel",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kamel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "neck",
+          "de": "Hals",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "zebra",
+        "elephant",
+        "pony"
+      ],
+      "hintDe": "Groß, mit langem Hals; lebt dort, wo es sehr heiß ist."
+    },
+    {
+      "id": "g1u09.w.cuddly-toy",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "basket",
+            "letter",
+            "newspaper",
+            "box"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.69",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cuddly toy",
+      "g": "Stofftier",
+      "d": "It is a soft thing like a bear that a child takes to bed.",
+      "s": "He plays all day with his soft ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cuddly toy",
+          "tier": "full"
+        },
+        {
+          "text": "cuddly toys",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cuddly toy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cuddly toy",
+            "tier": "full"
+          },
+          {
+            "text": "soft toy",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stofftier",
+            "tier": "full"
+          },
+          {
+            "text": "Kuscheltier",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "soft",
+          "de": "weich",
+          "scope": null
+        },
+        {
+          "word": "bear",
+          "de": "Bär",
+          "scope": "d"
+        },
+        {
+          "word": "takes",
+          "de": "nimmt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "basket",
+        "letter",
+        "newspaper"
+      ],
+      "hintDe": "Ein weiches Spielzeug, das ein Kind ins Bett mitnimmt."
+    },
+    {
+      "id": "g1u09.w.dangerous",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "unusual",
+            "personal",
+            "near",
+            "far away"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.67",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "dangerous",
+      "g": "gefährlich",
+      "d": "It is not safe and it can hurt you.",
+      "s": "Snakes can hurt you. They are ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "dangerous",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dangerous",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dangerous",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gefährlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "safe",
+          "de": "sicher",
+          "scope": "d"
+        },
+        {
+          "word": "snakes",
+          "de": "Schlangen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "unusual",
+        "personal",
+        "near"
+      ],
+      "hintDe": "Nicht sicher; es kann dir wehtun."
+    },
+    {
+      "id": "g1u09.w.daughter",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mother",
+            "aunty",
+            "owner",
+            "grandpa"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.69",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "daughter",
+      "g": "Tochter",
+      "d": "It is a girl child in a family.",
+      "s": "Clare is her ___. She is a girl.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "daughter",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "daughter",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "daughter",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tochter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mother",
+        "aunty",
+        "owner"
+      ],
+      "hintDe": "Das Mädchen-Kind in einer Familie."
+    },
+    {
+      "id": "g1u09.w.dear",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "best wishes",
+            "letter",
+            "ending",
+            "beginning"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.71",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "dear",
+      "g": "liebe/r (Anrede)",
+      "d": "It is a nice word like Hello at the start of a letter.",
+      "s": "___ Aunty Olivia, thank you for your letter.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Dear",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dear",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dear",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "liebe",
+            "tier": "full"
+          },
+          {
+            "text": "lieber",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "word",
+          "de": "Wort",
+          "scope": "d"
+        },
+        {
+          "word": "start",
+          "de": "Anfang",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "best wishes",
+        "letter",
+        "ending"
+      ],
+      "hintDe": "Ein nettes Wort wie \"Hallo\" am Anfang eines Briefes."
+    },
+    {
+      "id": "g1u09.w.elephant",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "zebra",
+            "camel",
+            "shark",
+            "pony"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.67",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "elephant",
+      "g": "Elefant",
+      "d": "It is very big and grey with big ears and a very long nose.",
+      "s": "The ___ at the zoo is grey with big ears and a long nose.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "elephant",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "elephant",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "elephant",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Elefant",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "zebra",
+        "camel",
+        "shark"
+      ],
+      "hintDe": "Sehr groß und grau, mit großen Ohren und einer langen Nase."
+    },
+    {
+      "id": "g1u09.w.ending",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "beginning",
+            "letter",
+            "newspaper",
+            "noise"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.72",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "ending",
+      "g": "Ende",
+      "d": "It is the last part of a book or film.",
+      "s": "The ___ of the film is very sad.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ending",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ending",
+          "tier": "full"
+        },
+        {
+          "text": "end",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ending",
+            "tier": "full"
+          },
+          {
+            "text": "end",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ende",
+            "tier": "full"
+          },
+          {
+            "text": "Schluss",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "last",
+          "de": "letzte",
+          "scope": "d"
+        },
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        },
+        {
+          "word": "film",
+          "de": "Film",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "beginning",
+        "letter",
+        "newspaper"
+      ],
+      "hintDe": "Der letzte Teil eines Buches oder Films."
+    },
+    {
+      "id": "g1u09.w.everybody",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "owner",
+            "mother",
+            "daughter",
+            "man"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.69",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "everybody",
+      "g": "jede/r",
+      "d": "It is all the children in the class, not one child.",
+      "s": "There is no Archie, and ___ is very sad.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "everybody",
+          "tier": "full"
+        },
+        {
+          "text": "everyone",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "everybody",
+          "tier": "full"
+        },
+        {
+          "text": "everyone",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "everybody",
+            "tier": "full"
+          },
+          {
+            "text": "everyone",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jeder",
+            "tier": "full"
+          },
+          {
+            "text": "jede",
+            "tier": "full"
+          },
+          {
+            "text": "alle",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "owner",
+        "mother",
+        "daughter"
+      ],
+      "hintDe": "Alle Kinder in der Klasse, nicht nur eines."
+    },
+    {
+      "id": "g1u09.w.far-away",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "near",
+            "across",
+            "dangerous",
+            "unusual"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.69",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "far away",
+      "g": "weit weg",
+      "d": "It is not near here. It is a long way from here.",
+      "s": "Grandpa lives ___, so we go in the car.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "far away",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "far away",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "far away",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "weit weg",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "way",
+          "de": "Weg",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "near",
+        "across",
+        "dangerous"
+      ],
+      "hintDe": "Nicht in der Nähe; ein langer Weg von hier."
+    },
+    {
+      "id": "g1u09.w.farm",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "zoo",
+            "park",
+            "city",
+            "market"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.67",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "farm",
+      "g": "Bauernhof",
+      "d": "Horses, pigs and cows live here in the woods.",
+      "s": "She lives on a ___ with horses and pigs.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "farm",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "farm",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "farm",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bauernhof",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cows",
+          "de": "Kühe",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "zoo",
+        "park",
+        "city"
+      ],
+      "hintDe": "Ein Zuhause für Pferde, Schweine und Kühe."
+    },
+    {
+      "id": "g1u09.w.fish",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "budgie",
+            "rabbit",
+            "lizard",
+            "tortoise"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.66",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "fish",
+      "g": "Fisch",
+      "d": "It can swim and you can keep it in a tank.",
+      "s": "My pet ___ swim in a big tank with water.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "fish",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fish",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fish",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "swim",
+          "de": "schwimmen",
+          "scope": null
+        },
+        {
+          "word": "keep",
+          "de": "halten",
+          "scope": "d"
+        },
+        {
+          "word": "pet",
+          "de": "Haustier",
+          "scope": "s"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "budgie",
+        "rabbit",
+        "lizard"
+      ],
+      "hintDe": "Es schwimmt; du hältst es in einem Aquarium."
+    },
+    {
+      "id": "g1u09.w.fur",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "noise",
+            "letter",
+            "basket",
+            "owner"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.70",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "fur",
+      "g": "Fell",
+      "d": "It is the soft hair on a cat or a dog.",
+      "s": "My rabbit has ___ on its body, lots of it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fur",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fur",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fur",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fell",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "soft",
+          "de": "weich",
+          "scope": "d"
+        },
+        {
+          "word": "cat",
+          "de": "Katze",
+          "scope": "d"
+        },
+        {
+          "word": "body",
+          "de": "Körper",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "noise",
+        "letter",
+        "basket"
+      ],
+      "hintDe": "Das weiche Haar auf einer Katze oder einem Hund."
+    },
+    {
+      "id": "g1u09.w.grandpa",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mother",
+            "aunty",
+            "owner",
+            "daughter"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.69",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "grandpa",
+      "g": "Opa",
+      "d": "He is the old man in your family. He is your mum's father.",
+      "s": "My ___ lives on a farm with horses.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "grandpa",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "grandpa",
+          "tier": "full"
+        },
+        {
+          "text": "grandfather",
+          "tier": "partial"
+        },
+        {
+          "text": "grandad",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "grandpa",
+            "tier": "full"
+          },
+          {
+            "text": "grandfather",
+            "tier": "partial"
+          },
+          {
+            "text": "grandad",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Opa",
+            "tier": "full"
+          },
+          {
+            "text": "Großvater",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "old",
+          "de": "alt",
+          "scope": "d"
+        },
+        {
+          "word": "father",
+          "de": "Vater",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "mother",
+        "aunty",
+        "owner"
+      ],
+      "hintDe": "Der alte Mann in deiner Familie; der Vater deiner Mama."
+    },
+    {
+      "id": "g1u09.w.guinea-pig",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rabbit",
+            "mouse",
+            "budgie",
+            "rat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "guinea pig",
+      "g": "Meerschweinchen",
+      "d": "It is small with no long ears and eats carrots in its cage.",
+      "s": "My ___ is small and eats carrots in its cage.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "guinea pig",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "guinea pig",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "guinea pig",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Meerschweinchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rabbit",
+        "mouse",
+        "budgie"
+      ],
+      "hintDe": "Klein, ohne lange Ohren; frisst Karotten im Käfig."
+    },
+    {
+      "id": "g1u09.w.letter",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "newspaper",
+            "basket",
+            "noise",
+            "fur"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.71",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "letter",
+      "g": "Brief",
+      "d": "You write it and send it to a friend.",
+      "s": "Thank you for your ___, Harry.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "letter",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "letter",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "letter",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Brief",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "send",
+          "de": "schicken",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "newspaper",
+        "basket",
+        "noise"
+      ],
+      "hintDe": "Du schreibst ihn und schickst ihn einem Freund."
+    },
+    {
+      "id": "g1u09.w.lizard",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spider",
+            "rat",
+            "tortoise",
+            "mouse"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.67",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "lizard",
+      "g": "Eidechse",
+      "d": "It is small and green and lives in a terrarium.",
+      "s": "The ___ lives in a terrarium with rocks and a long tail.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "lizard",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lizard",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lizard",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eidechse",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": "d"
+        },
+        {
+          "word": "rocks",
+          "de": "Steine",
+          "scope": "s"
+        },
+        {
+          "word": "tail",
+          "de": "Schwanz",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "spider",
+        "rat",
+        "tortoise"
+      ],
+      "hintDe": "Klein und grün; lebt in einem Terrarium."
+    },
+    {
+      "id": "g1u09.w.man",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mother",
+            "daughter",
+            "owner",
+            "grandpa"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.67",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "man (pl men)",
+      "g": "Mann",
+      "d": "It is a boy when he is big. He is not a girl or a woman.",
+      "s": "The ___ near Chester has a camel at his farm.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "man",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "man",
+          "tier": "full"
+        },
+        {
+          "text": "men",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "man",
+            "tier": "full"
+          },
+          {
+            "text": "men",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mann",
+            "tier": "full"
+          },
+          {
+            "text": "Männer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mother",
+        "daughter",
+        "owner"
+      ],
+      "hintDe": "Ein Bub, wenn er groß ist; kein Mädchen und keine Frau."
+    },
+    {
+      "id": "g1u09.w.mother",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "daughter",
+            "aunty",
+            "grandpa",
+            "owner"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.69",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "mother",
+      "g": "Mutter",
+      "d": "It is the woman in your family. You are her child.",
+      "s": "Clare and her ___ drive away in the car.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mother",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mother",
+          "tier": "full"
+        },
+        {
+          "text": "mum",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mother",
+            "tier": "full"
+          },
+          {
+            "text": "mum",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mutter",
+            "tier": "full"
+          },
+          {
+            "text": "Mama",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "daughter",
+        "aunty",
+        "grandpa"
+      ],
+      "hintDe": "Die Frau in deiner Familie; du bist ihr Kind."
+    },
+    {
+      "id": "g1u09.w.mouse",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rat",
+            "spider",
+            "budgie",
+            "lizard"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "mouse",
+      "g": "Maus",
+      "d": "It is very small and grey and a cat runs after it.",
+      "s": "A little grey ___ has big ears and a long tail.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "mouse",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mouse",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mouse",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Maus",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cat",
+          "de": "Katze",
+          "scope": "d"
+        },
+        {
+          "word": "little",
+          "de": "klein",
+          "scope": "s"
+        },
+        {
+          "word": "tail",
+          "de": "Schwanz",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "rat",
+        "spider",
+        "budgie"
+      ],
+      "hintDe": "Sehr klein und grau; eine Katze läuft ihr nach."
+    },
+    {
+      "id": "g1u09.w.mouse-2",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rat",
+            "spider",
+            "budgie",
+            "lizard"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.79",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "mouse (pl mice)",
+      "g": "Maus",
+      "d": "It is very small and grey.",
+      "s": "I have one ___ and my friend has four mice.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "mouse",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mouse",
+          "tier": "full"
+        },
+        {
+          "text": "mice",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mouse",
+            "tier": "full"
+          },
+          {
+            "text": "mice",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Maus",
+            "tier": "full"
+          },
+          {
+            "text": "Mäuse",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rat",
+        "spider",
+        "budgie"
+      ],
+      "hintDe": "Sehr klein und grau; viele davon heißen \"mice\"."
+    },
+    {
+      "id": "g1u09.w.near",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "far away",
+            "across",
+            "dangerous",
+            "unusual"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.67",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "near",
+      "g": "in der Nähe von",
+      "d": "It is close to a place. It is not far.",
+      "s": "The Smith family lives ___ London.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "near",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "near",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "near",
+            "tier": "full"
+          },
+          {
+            "text": "close to",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in der Nähe von",
+            "tier": "full"
+          },
+          {
+            "text": "nahe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        },
+        {
+          "word": "far",
+          "de": "weit",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "far away",
+        "across",
+        "dangerous"
+      ],
+      "hintDe": "Nahe bei einem Ort; nicht weit weg."
+    },
+    {
+      "id": "g1u09.w.newspaper",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "letter",
+            "basket",
+            "box",
+            "owner"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.66",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "newspaper",
+      "g": "Zeitung",
+      "d": "You read it for the news. It is not a book.",
+      "s": "Mum reads the ___ in the morning.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "newspaper",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "newspaper",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "newspaper",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zeitung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "news",
+          "de": "Nachrichten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "letter",
+        "basket",
+        "box"
+      ],
+      "hintDe": "Du liest sie für die Nachrichten; kein Buch."
+    },
+    {
+      "id": "g1u09.w.noise",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "letter",
+            "newspaper",
+            "basket",
+            "fur"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.69",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "noise",
+      "g": "Geräusch",
+      "d": "It is a loud sound that is not nice to hear.",
+      "s": "Clare can hear a ___ in the room. What is that?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "noise",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "noise",
+          "tier": "full"
+        },
+        {
+          "text": "sound",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "noise",
+            "tier": "full"
+          },
+          {
+            "text": "sound",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geräusch",
+            "tier": "full"
+          },
+          {
+            "text": "Lärm",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "loud",
+          "de": "laut",
+          "scope": "d"
+        },
+        {
+          "word": "sound",
+          "de": "Geräusch",
+          "scope": "d"
+        },
+        {
+          "word": "hear",
+          "de": "hören",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "letter",
+        "newspaper",
+        "basket"
+      ],
+      "hintDe": "Ein lautes Geräusch, das nicht schön zu hören ist."
+    },
+    {
+      "id": "g1u09.w.once",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "twice",
+            "near",
+            "dangerous",
+            "a week"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.66",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "once",
+      "g": "einmal",
+      "d": "It is one time.",
+      "s": "He gives his dog food ___ a day, in the morning.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "once",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "once",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "once",
+            "tier": "full"
+          },
+          {
+            "text": "one time",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einmal",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "twice",
+        "near",
+        "dangerous"
+      ],
+      "hintDe": "Ein Mal."
+    },
+    {
+      "id": "g1u09.w.owl",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "budgie",
+            "bat",
+            "fish",
+            "rat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.71",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "owl",
+      "g": "Eule",
+      "d": "It is a big bird with big eyes. At night it is not in bed.",
+      "s": "An ___ can fly at night and has big eyes.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "owl",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "owl",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "owl",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eule",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "d"
+        },
+        {
+          "word": "fly",
+          "de": "fliegen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "budgie",
+        "bat",
+        "fish"
+      ],
+      "hintDe": "Ein großer Vogel mit großen Augen, der in der Nacht wach ist."
+    },
+    {
+      "id": "g1u09.w.owner",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mother",
+            "daughter",
+            "man",
+            "grandpa"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.70",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "owner",
+      "g": "Besitzer/Besitzerin",
+      "d": "It is the man or woman who has the dog.",
+      "s": "Jamie is the ___ of an unusual pet.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "owner",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "owner",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "owner",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Besitzer",
+            "tier": "full"
+          },
+          {
+            "text": "Besitzerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "pet",
+          "de": "Haustier",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "mother",
+        "daughter",
+        "man"
+      ],
+      "hintDe": "Der Mann oder die Frau, der/dem der Hund gehört."
+    },
+    {
+      "id": "g1u09.w.personal",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "unusual",
+            "dangerous",
+            "near",
+            "far away"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.70",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "personal",
+      "g": "persönlich",
+      "d": "It is about you. It is not for other people to see.",
+      "s": "Where you live is your ___ thing, for you and your family.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "personal",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "personal",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "personal",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "persönlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": "d"
+        },
+        {
+          "word": "people",
+          "de": "Leute",
+          "scope": "d"
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "unusual",
+        "dangerous",
+        "near"
+      ],
+      "hintDe": "Es geht um dich; nicht für andere Leute zum Sehen."
+    },
+    {
+      "id": "g1u09.w.pig",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "pony",
+            "zebra",
+            "camel",
+            "shark"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.67",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "pig",
+      "g": "Schwein",
+      "d": "It is a small farm one. It is pink and likes mud.",
+      "s": "The ___ on the farm likes to play in the mud.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pig",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pig",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pig",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schwein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "pink",
+          "de": "rosa",
+          "scope": "d"
+        },
+        {
+          "word": "mud",
+          "de": "Schlamm",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "pony",
+        "zebra",
+        "camel"
+      ],
+      "hintDe": "Ein kleines Bauernhoftier; rosa und mag Schlamm."
+    },
+    {
+      "id": "g1u09.w.pony",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "zebra",
+            "camel",
+            "rabbit",
+            "guinea pig"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.75",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "pony",
+      "g": "Pony",
+      "d": "It is a small horse for children.",
+      "s": "The small ___ at the farm is a little horse for children.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "pony",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pony",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pony",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pony",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "little",
+          "de": "klein",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "zebra",
+        "camel",
+        "rabbit"
+      ],
+      "hintDe": "Ein kleines Pferd für Kinder."
+    },
+    {
+      "id": "g1u09.w.rabbit",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "guinea pig",
+            "mouse",
+            "budgie",
+            "rat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.75",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "rabbit",
+      "g": "Kaninchen",
+      "d": "It is small with very long ears and can run and jump.",
+      "s": "My ___ has soft fur and long ears.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "rabbit",
+          "tier": "full"
+        },
+        {
+          "text": "bunny",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rabbit",
+          "tier": "full"
+        },
+        {
+          "text": "bunny",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rabbit",
+            "tier": "full"
+          },
+          {
+            "text": "bunny",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kaninchen",
+            "tier": "full"
+          },
+          {
+            "text": "Hase",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "soft",
+          "de": "weich",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "guinea pig",
+        "mouse",
+        "budgie"
+      ],
+      "hintDe": "Klein, mit sehr langen Ohren; kann laufen und springen."
+    },
+    {
+      "id": "g1u09.w.rat",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mouse",
+            "spider",
+            "lizard",
+            "budgie"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.72",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "rat",
+      "g": "Ratte",
+      "d": "It looks like a big mouse and has a long tail.",
+      "s": "The ___ is grey and looks like a big mouse.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "rat",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rat",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ratte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tail",
+          "de": "Schwanz",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "mouse",
+        "spider",
+        "lizard"
+      ],
+      "hintDe": "Sieht aus wie eine große Maus und hat einen langen Schwanz."
+    },
+    {
+      "id": "g1u09.w.shark",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "pig",
+            "zebra",
+            "elephant",
+            "camel"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.66",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "shark",
+      "g": "Hai",
+      "d": "It is a big grey fish in the sea with sharp teeth.",
+      "s": "Mr White's ___ is big and eats fish in its tank.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "shark",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shark",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shark",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hai",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sea",
+          "de": "Meer",
+          "scope": "d"
+        },
+        {
+          "word": "sharp",
+          "de": "scharf",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "pig",
+        "zebra",
+        "elephant"
+      ],
+      "hintDe": "Ein großer grauer Fisch im Meer mit scharfen Zähnen."
+    },
+    {
+      "id": "g1u09.w.spider",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rat",
+            "mouse",
+            "lizard",
+            "budgie"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.68",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "spider",
+      "g": "Spinne",
+      "d": "It is very small and it has eight legs.",
+      "s": "There is a big ___ with eight legs on the wall.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "spider",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spider",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spider",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Spinne",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rat",
+        "mouse",
+        "lizard"
+      ],
+      "hintDe": "Sehr klein und hat acht Beine."
+    },
+    {
+      "id": "g1u09.w.tank",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cage",
+            "box",
+            "basket",
+            "terrarium"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.66",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "tank",
+      "g": "Aquarium",
+      "d": "You keep fish in this. It is glass and has water in it.",
+      "s": "My pet fish swim in a big glass ___ with water.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "tank",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tank",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tank",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Aquarium",
+            "tier": "full"
+          },
+          {
+            "text": "Terrarium",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "keep",
+          "de": "halten",
+          "scope": "d"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": null
+        },
+        {
+          "word": "pet",
+          "de": "Haustier",
+          "scope": "s"
+        },
+        {
+          "word": "swim",
+          "de": "schwimmen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "cage",
+        "box",
+        "basket"
+      ],
+      "hintDe": "Darin hältst du Fische; es ist aus Glas und voll Wasser."
+    },
+    {
+      "id": "g1u09.w.terrarium",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "tank",
+            "cage",
+            "box",
+            "basket"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.66",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "terrarium",
+      "g": "Terrarium",
+      "d": "You keep a lizard or a small snake in this glass box.",
+      "s": "The lizard lives in a glass ___ with rocks.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "terrarium",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "terrarium",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "terrarium",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Terrarium",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "keep",
+          "de": "halten",
+          "scope": "d"
+        },
+        {
+          "word": "snake",
+          "de": "Schlange",
+          "scope": "d"
+        },
+        {
+          "word": "rocks",
+          "de": "Steine",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "basket",
+        "cage",
+        "box"
+      ],
+      "hintDe": "Darin hältst du eine Eidechse oder kleine Schlange; eine Glasbox."
+    },
+    {
+      "id": "g1u09.w.to-be-interested-in",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dangerous",
+            "personal",
+            "unusual",
+            "near"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.70",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to be interested in",
+      "g": "an etw. interessiert sein",
+      "d": "You like a thing and you want to know more about it.",
+      "s": "I am ___ in dogs and books.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "interested",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "interested",
+          "tier": "full"
+        },
+        {
+          "text": "be interested in",
+          "tier": "full"
+        },
+        {
+          "text": "interested in",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be interested in",
+            "tier": "full"
+          },
+          {
+            "text": "interested in",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "interessiert sein an",
+            "tier": "full"
+          },
+          {
+            "text": "sich interessieren für",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "know",
+          "de": "wissen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "dangerous",
+        "personal",
+        "unusual"
+      ],
+      "hintDe": "Du magst etwas und willst mehr darüber wissen."
+    },
+    {
+      "id": "g1u09.w.to-begin",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drive",
+            "stay",
+            "visit",
+            "need"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.73",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Blank takes 3rd-person 'begins'; citation 'begin'/'to begin' are dAnswers."
+      },
+      "w": "to begin",
+      "g": "anfangen",
+      "d": "To start to do a thing.",
+      "s": "He always ___ his letter with Hi.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "begins",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "begin",
+          "tier": "full"
+        },
+        {
+          "text": "to begin",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "begin",
+            "tier": "full"
+          },
+          {
+            "text": "to begin",
+            "tier": "full"
+          },
+          {
+            "text": "start",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "anfangen",
+            "tier": "full"
+          },
+          {
+            "text": "beginnen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "start",
+          "de": "anfangen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "drive",
+        "stay",
+        "visit"
+      ],
+      "hintDe": "Anfangen, etwas zu tun."
+    },
+    {
+      "id": "g1u09.w.to-bite",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drive",
+            "stay",
+            "visit",
+            "need"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.71",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to bite",
+      "g": "beißen",
+      "d": "A dog does this with its teeth when it is angry.",
+      "s": "That dog is angry. It can ___ you with its teeth!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bite",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bite",
+          "tier": "full"
+        },
+        {
+          "text": "to bite",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bite",
+            "tier": "full"
+          },
+          {
+            "text": "to bite",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beißen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drive",
+        "stay",
+        "visit"
+      ],
+      "hintDe": "Das macht ein Hund mit seinen Zähnen, wenn er böse ist."
+    },
+    {
+      "id": "g1u09.w.to-drive",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "stay",
+            "visit",
+            "need",
+            "begin"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.69",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to drive",
+      "g": "fahren",
+      "d": "You do this when you go in a car to a city.",
+      "s": "On Sunday they ___ to Grandpa in the car.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "drive",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drive",
+          "tier": "full"
+        },
+        {
+          "text": "to drive",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drive",
+            "tier": "full"
+          },
+          {
+            "text": "to drive",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "stay",
+        "visit",
+        "need"
+      ],
+      "hintDe": "Das machst du, wenn du mit dem Auto in eine Stadt fährst."
+    },
+    {
+      "id": "g1u09.w.to-need",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drive",
+            "stay",
+            "visit",
+            "begin"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.73",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to need",
+      "g": "brauchen",
+      "d": "When you must have a thing, you do this.",
+      "s": "I ___ more food for my rabbit. It is hungry.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "need",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "need",
+          "tier": "full"
+        },
+        {
+          "text": "to need",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "need",
+            "tier": "full"
+          },
+          {
+            "text": "to need",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "brauchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drive",
+        "stay",
+        "visit"
+      ],
+      "hintDe": "Wenn du etwas haben musst, dann machst du das."
+    },
+    {
+      "id": "g1u09.w.to-stay",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drive",
+            "visit",
+            "begin",
+            "need"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.69",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to stay",
+      "g": "bleiben",
+      "d": "To not leave. To be here and not go.",
+      "s": "We can't ___ here, we must go now.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stay",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stay",
+          "tier": "full"
+        },
+        {
+          "text": "to stay",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stay",
+            "tier": "full"
+          },
+          {
+            "text": "to stay",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bleiben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drive",
+        "visit",
+        "begin"
+      ],
+      "hintDe": "Nicht weggehen; hier sein und nicht gehen."
+    },
+    {
+      "id": "g1u09.w.to-visit",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drive",
+            "stay",
+            "begin",
+            "need"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.69",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to visit",
+      "g": "besuchen",
+      "d": "You go to your grandpa and stay with him for a day.",
+      "s": "On Sunday they ___ Grandpa and have tea.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "visit",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "visit",
+          "tier": "full"
+        },
+        {
+          "text": "to visit",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "visit",
+            "tier": "full"
+          },
+          {
+            "text": "to visit",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "besuchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drive",
+        "stay",
+        "begin"
+      ],
+      "hintDe": "Du gehst zu deinem Opa und bleibst einen Tag bei ihm."
+    },
+    {
+      "id": "g1u09.w.tortoise",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rabbit",
+            "lizard",
+            "guinea pig",
+            "rat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.75",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "tortoise",
+      "g": "Schildkröte",
+      "d": "It is slow and has a hard shell on its back.",
+      "s": "My ___ is very slow and has a shell on its back.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "tortoise",
+          "tier": "full"
+        },
+        {
+          "text": "turtle",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tortoise",
+          "tier": "full"
+        },
+        {
+          "text": "turtle",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tortoise",
+            "tier": "full"
+          },
+          {
+            "text": "turtle",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schildkröte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "slow",
+          "de": "langsam",
+          "scope": null
+        },
+        {
+          "word": "hard",
+          "de": "hart",
+          "scope": "d"
+        },
+        {
+          "word": "shell",
+          "de": "Panzer",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "rabbit",
+        "lizard",
+        "guinea pig"
+      ],
+      "hintDe": "Langsam; hat einen harten Panzer auf dem Rücken."
+    },
+    {
+      "id": "g1u09.w.twice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "once",
+            "near",
+            "dangerous",
+            "a day"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.66",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "twice",
+      "g": "zweimal",
+      "d": "It is two times in one day.",
+      "s": "I give my spider food ___ a week.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "twice",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "twice",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "twice",
+            "tier": "full"
+          },
+          {
+            "text": "two times",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zweimal",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "once",
+        "near",
+        "dangerous"
+      ],
+      "hintDe": "Zwei Mal."
+    },
+    {
+      "id": "g1u09.w.unusual",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dangerous",
+            "personal",
+            "near",
+            "far away"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.66",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "unusual",
+      "g": "ungewöhnlich",
+      "d": "It is not like other things. It is not normal.",
+      "s": "A snake is a very ___ pet.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "unusual",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "unusual",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "unusual",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ungewöhnlich",
+            "tier": "full"
+          },
+          {
+            "text": "außergewöhnlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": "d"
+        },
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        },
+        {
+          "word": "normal",
+          "de": "normal",
+          "scope": "d"
+        },
+        {
+          "word": "snake",
+          "de": "Schlange",
+          "scope": "s"
+        },
+        {
+          "word": "pet",
+          "de": "Haustier",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "dangerous",
+        "personal",
+        "near"
+      ],
+      "hintDe": "Nicht wie andere Dinge; nicht normal."
+    },
+    {
+      "id": "g1u09.w.zebra",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "camel",
+            "elephant",
+            "pony",
+            "shark"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.67",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "zebra",
+      "g": "Zebra",
+      "d": "It looks like a horse with black and white stripes.",
+      "s": "The ___ looks like a horse and lives at the zoo.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "zebra",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "zebra",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "zebra",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zebra",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "black",
+          "de": "schwarz",
+          "scope": "d"
+        },
+        {
+          "word": "stripes",
+          "de": "Streifen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "camel",
+        "elephant",
+        "pony"
+      ],
+      "hintDe": "Sieht aus wie ein Pferd, hat schwarze und weiße Streifen."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g3-u08",
+  "items": {
+    "7d3194c7bac7": "g3u08.gi.past-simple-vs-present-perfect.gf.001",
+    "676a5faba8bc": "g3u08.gi.past-simple-vs-present-perfect.gf.002",
+    "14f0c8297506": "g3u08.gi.past-simple-vs-present-perfect.gf.003",
+    "2047b6be8b81": "g3u08.gi.past-simple-vs-present-perfect.gf.004",
+    "1995a3938d9b": "g3u08.gi.past-simple-vs-present-perfect.gf.005",
+    "6cea31bd0652": "g3u08.gi.past-simple-vs-present-perfect.gf.006",
+    "616696729d4a": "g3u08.gi.past-simple-vs-present-perfect.gf.007",
+    "245968bd43af": "g3u08.gi.past-simple-vs-present-perfect.gf.008",
+    "5accf1bd0014": "g3u08.gi.past-simple-vs-present-perfect.gf.009",
+    "537771d376f9": "g3u08.gi.past-simple-vs-present-perfect.gf.010",
+    "cbcc3a229b0e": "g3u08.gi.past-simple-vs-present-perfect.gf.011",
+    "1f34d4e9e1bf": "g3u08.gi.past-simple-vs-present-perfect.gf.012",
+    "1088795b6adb": "g3u08.gi.past-simple-vs-present-perfect.mc.001",
+    "3ed0596fe794": "g3u08.gi.past-simple-vs-present-perfect.mc.002",
+    "95b4d43daab9": "g3u08.gi.past-simple-vs-present-perfect.mc.003",
+    "a24ea4ba5403": "g3u08.gi.past-simple-vs-present-perfect.mc.004",
+    "a39cebb0bd8b": "g3u08.gi.past-simple-vs-present-perfect.mc.005",
+    "6be340ca7621": "g3u08.gi.past-simple-vs-present-perfect.cp.001",
+    "2cc0be875eee": "g3u08.gi.past-simple-vs-present-perfect.cp.002",
+    "8e5cb966eef2": "g3u08.gi.past-simple-vs-present-perfect.cp.003",
+    "667182754fca": "g3u08.gi.past-simple-vs-present-perfect.cp.004",
+    "2775cfe66b1c": "g3u08.gi.past-simple-vs-present-perfect.ec.001",
+    "9854581d6dff": "g3u08.gi.past-simple-vs-present-perfect.ec.002",
+    "860fa2a9fbda": "g3u08.gi.past-simple-vs-present-perfect.ec.003",
+    "c2517d98ab9a": "g3u08.gi.past-simple-vs-present-perfect.ec.004",
+    "956ad6c40a77": "g3u08.gi.past-simple-vs-present-perfect.ec.005",
+    "aa0bc583a390": "g3u08.gi.past-simple-vs-present-perfect.ec.006",
+    "c68d328f845d": "g3u08.gi.past-simple-vs-present-perfect.tf.001",
+    "6cc7ea6e0216": "g3u08.gi.past-simple-vs-present-perfect.tf.002",
+    "ef830e8b2846": "g3u08.gi.past-simple-vs-present-perfect.tf.003",
+    "308288901e28": "g3u08.gi.past-simple-vs-present-perfect.qf.001",
+    "11b6d7abc1b0": "g3u08.gi.past-simple-vs-present-perfect.qf.002",
+    "98e330ec71d8": "g3u08.gi.past-simple-vs-present-perfect.sb.001",
+    "64532dee1ba3": "g3u08.gi.past-simple-vs-present-perfect.sb.002",
+    "85497e390655": "g3u08.gi.past-simple-vs-present-perfect.sb.003",
+    "a848ac8b059b": "g3u08.gi.past-simple-vs-present-perfect.tr.001",
+    "fb680b89f7c8": "g3u08.gi.past-simple-vs-present-perfect.tr.002",
+    "7207733acbd1": "g3u08.gi.past-simple-vs-present-perfect.tr.003",
+    "2e6c55c50627": "g3u08.gi.past-simple-vs-present-perfect.tr.004",
+    "ff85234c358a": "g3u08.gi.past-simple-vs-present-perfect.gs.001",
+    "09b44ee5bb21": "g3u08.gi.past-simple-vs-present-perfect.mt.001",
+    "c640e0e0c579": "g3u08.gi.past-simple-vs-present-perfect.gf.013",
+    "5d139585179f": "g3u08.gi.past-simple-vs-present-perfect.gf.014",
+    "b50c38842a2d": "g3u08.gi.past-simple-vs-present-perfect.mc.006",
+    "0b78805fb6c3": "g3u08.gi.past-simple-vs-present-perfect.cp.005",
+    "1db0bd4c9135": "g3u08.gi.past-simple-vs-present-perfect.tf.004",
+    "06bb17a6b9e8": "g3u08.gi.past-simple-vs-present-perfect.gs.003",
+    "453645882ca2": "g3u08.gi.past-simple-vs-present-perfect.mp.003",
+    "bfea68685de7": "g3u08.gi.past-simple-vs-present-perfect.mp.004",
+    "d739c27a8e18": "g3u08.gi.past-simple-vs-present-perfect.mt.003"
+  },
+  "tombstones": [
+    {
+      "id": "g3u08.gi.past-simple-vs-present-perfect.gs.002",
+      "key": "7dd04d4a4f79",
+      "removedWith": "c33fb89b9e34"
+    },
+    {
+      "id": "g3u08.gi.past-simple-vs-present-perfect.mp.001",
+      "key": "105ea2b87876",
+      "removedWith": "c33fb89b9e34"
+    },
+    {
+      "id": "g3u08.gi.past-simple-vs-present-perfect.mp.002",
+      "key": "7755cda76e2b",
+      "removedWith": "c33fb89b9e34"
+    },
+    {
+      "id": "g3u08.gi.past-simple-vs-present-perfect.mt.002",
+      "key": "605fa2f2d398",
+      "removedWith": "3fa6bdca3279"
+    }
+  ]
+}

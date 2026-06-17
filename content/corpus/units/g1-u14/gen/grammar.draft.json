@@ -1,0 +1,2359 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g1-u14",
+  "briefBank": "001680d0f49a",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Wie heißt 'go' gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "went",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Dieses Verb bekommt kein -ed. Es hat eine ganz eigene Form, die du auswendig lernst.",
+      "hintEn": null,
+      "explainDe": "go wird zu went. Das musst du dir merken, denn es bekommt kein -ed.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Wie heißt 'see' gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "saw",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hier hilft kein -ed. Denk an die Geschichte: Annie ___ eine Fernbedienung im Fenster.",
+      "hintEn": null,
+      "explainDe": "see wird zu saw. Diese Form lernst du auswendig.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-gf-002",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Wie heißt 'take' gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "took",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Kein -ed. Annie ___ die Fernbedienung heraus.",
+      "hintEn": null,
+      "explainDe": "take wird zu took. Das ist eine eigene Form ohne -ed.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wie heißt 'think' gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "thought",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Kein -ed. Diese Form schreibt man ganz anders, als man sie spricht.",
+      "hintEn": null,
+      "explainDe": "think wird zu thought. Achte auf die Schreibweise mit -ought.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-ag-001",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wie heißt 'bring' gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "brought",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Kein -ed. Diese Form sieht fast aus wie die von 'think'.",
+      "hintEn": null,
+      "explainDe": "bring wird zu brought. Es endet wie thought auf -ought.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-ag-002",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wie heißt 'catch' gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "caught",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Kein -ed. Die Polizei ___ den Räuber.",
+      "hintEn": null,
+      "explainDe": "catch wird zu caught. Es endet auf -aught und bekommt kein -ed.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wie heißt 'freeze' gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "froze",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Kein -ed. In der Geschichte erstarrt Tom: Tom ___.",
+      "hintEn": null,
+      "explainDe": "freeze wird zu froze. Der Vokal ändert sich, ein -ed kommt nicht dazu.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Yesterday Annie ___ (go) into the shop.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "went",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "go bekommt kein -ed. Es hat eine eigene Form.",
+      "hintEn": null,
+      "explainDe": "go wird zu went, nicht goed. Diese Form lernst du auswendig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-gf-001",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#6",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Annie ___ (see) a remote control in the window.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "saw",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "see bekommt kein -ed. Denk an die eigene Form.",
+      "hintEn": null,
+      "explainDe": "see wird zu saw, nicht seed. Das musst du dir merken.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-gf-002",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#6",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We ___ (have) milk and bread for breakfast.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "have bekommt kein -ed. Welche kurze Form passt hier?",
+      "hintEn": null,
+      "explainDe": "have wird zu had, nicht haved. Diese Form gilt für alle Personen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-gf-005",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The robber ___ (hold) a gun in his hand.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "held",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "hold bekommt kein -ed. Der Vokal wird kürzer.",
+      "hintEn": null,
+      "explainDe": "hold wird zu held, nicht holded. Diese Form lernst du auswendig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#10",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Jill ___ (find) a ring on the park bench.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "found",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "find bekommt kein -ed. Denk an die eigene Form mit -ound.",
+      "hintEn": null,
+      "explainDe": "find wird zu found, nicht finded. Das ist eine eigene Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-gf-007",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#10",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The shop ___ (sell) lots of things.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "sold",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "sell bekommt kein -ed. Der Vokal ändert sich zu o.",
+      "hintEn": null,
+      "explainDe": "sell wird zu sold, nicht selled. Diese Form merkst du dir.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#6",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Yesterday I ___ (take) the bus and ___ (come) to school early.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "took | came",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Verben bekommen kein -ed. Welche eigenen Formen passen?",
+      "hintEn": null,
+      "explainDe": "take wird zu took und come wird zu came. Beide lernst du auswendig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-gf-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Annie ___ (read) the book and then ___ (put) it on the desk.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "read | put",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Manche Verben sehen in der Vergangenheit genauso aus wie in der Grundform.",
+      "hintEn": null,
+      "explainDe": "read bleibt read und put bleibt put. Sie ändern sich nicht und bekommen kein -ed.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-gf-008",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Wie heißt 'eat' gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "ate",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "eated",
+        "eat",
+        "eats"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "eat bekommt kein -ed. Welche kurze Form ist richtig?",
+      "hintEn": null,
+      "explainDe": "eat wird zu ate, nicht eated. Diese Form lernst du auswendig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "eated",
+          "eat",
+          "eats",
+          "eating"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wie heißt 'run' gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "ran",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "runned",
+        "runs",
+        "running"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "run bekommt kein -ed. Nur der Vokal ändert sich.",
+      "hintEn": null,
+      "explainDe": "run wird zu ran, nicht runned. Aus u wird a.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "runned",
+          "runs",
+          "running",
+          "runed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u14-irregular-verbs-mc-001",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Form ist FALSCH geschrieben?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "goed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "went",
+        "saw",
+        "took"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Form hat ein -ed bekommen, das dort nicht hingehört.",
+      "hintEn": null,
+      "explainDe": "goed gibt es nicht. go wird zu went. went, saw und took sind richtig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "went",
+          "saw",
+          "took",
+          "had"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u14-irregular-verbs-mc-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wie heißt 'give' gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "gave",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "gived",
+        "gives",
+        "given"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "give bekommt kein -ed. Welche eigene Form passt?",
+      "hintEn": null,
+      "explainDe": "give wird zu gave, nicht gived. Diese Form lernst du auswendig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "gived",
+          "gives",
+          "given",
+          "giving"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#10",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wie heißt 'pay' gestern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "paid",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "payed",
+        "pays",
+        "paying"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "pay bekommt hier kein -ed. Achte auf die Schreibweise mit i.",
+      "hintEn": null,
+      "explainDe": "pay wird zu paid, nicht payed. Das y wird zu i.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "payed",
+          "pays",
+          "paying",
+          "payd"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She made a beautiful cake.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She maked a beautiful cake.",
+        "She maded a beautiful cake.",
+        "She makes a beautiful cake yesterday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "make bekommt kein -ed. Welcher Satz benutzt die richtige eigene Form?",
+      "hintEn": null,
+      "explainDe": "make wird zu made. maked und maded gibt es nicht, und makes ist Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She maked a beautiful cake.",
+          "She maded a beautiful cake.",
+          "She makes a beautiful cake yesterday.",
+          "She make a beautiful cake."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u14-irregular-verbs-mc-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du erzählst deiner Lehrerin von gestern. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I ate lunch at school yesterday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I eated lunch at school yesterday.",
+        "I eat lunch at school yesterday.",
+        "I ated lunch at school yesterday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um gestern. eat bekommt kein -ed.",
+      "hintEn": null,
+      "explainDe": "Richtig ist ate. eated und ated gibt es nicht, und eat wäre Gegenwart.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I eated lunch at school yesterday.",
+          "I eat lunch at school yesterday.",
+          "I ated lunch at school yesterday.",
+          "I eats lunch at school yesterday."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u14-irregular-verbs-cp-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du erzählst von der Geschichte mit der Fernbedienung. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom froze and then Annie ran away.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Tom freezed and then Annie ran away.",
+        "Tom froze and then Annie runned away.",
+        "Tom freezed and then Annie runned away."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "freeze und run bekommen kein -ed. Beide haben eigene Formen.",
+      "hintEn": null,
+      "explainDe": "Richtig ist froze und ran. freezed und runned gibt es nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Tom freezed and then Annie ran away.",
+          "Tom froze and then Annie runned away.",
+          "Tom freezed and then Annie runned away.",
+          "Tom froze and then Annie runed away."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#6",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Annie catched the ball in the game.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Annie caught the ball in the game.",
+          "tier": "full"
+        },
+        {
+          "text": "caught",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "catch bekommt kein -ed. Welche eigene Form gehört hierher?",
+      "hintEn": null,
+      "explainDe": "catched gibt es nicht. catch wird zu caught.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-ec-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Tom thinked about it all day.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom thought about it all day.",
+          "tier": "full"
+        },
+        {
+          "text": "thought",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "think bekommt kein -ed. Denk an die Form mit -ought.",
+      "hintEn": null,
+      "explainDe": "thinked gibt es nicht. think wird zu thought.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-ec-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Jill writed a story about her dog.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Jill wrote a story about her dog.",
+          "tier": "full"
+        },
+        {
+          "text": "wrote",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "write bekommt kein -ed. Welche eigene Form passt?",
+      "hintEn": null,
+      "explainDe": "writed gibt es nicht. write wird zu wrote.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-ec-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The police catched the robber and holded him.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The police caught the robber and held him.",
+          "tier": "full"
+        },
+        {
+          "text": "caught | held",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Verben sind falsch. catch und hold bekommen kein -ed.",
+      "hintEn": null,
+      "explainDe": "catched und holded gibt es nicht. catch wird zu caught, hold wird zu held.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#10",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Erzähl es von gestern: I drink tea. → I ___ tea.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "drank",
+          "tier": "full"
+        },
+        {
+          "text": "I drank tea.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "drink bekommt kein -ed. Aus i wird a.",
+      "hintEn": null,
+      "explainDe": "drink wird zu drank, nicht drinked. Diese Form lernst du auswendig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Erzähl es von gestern: Andrew gets a present. → Andrew ___ a present.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "got",
+          "tier": "full"
+        },
+        {
+          "text": "Andrew got a present.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "get bekommt kein -ed. Welche kurze Form passt?",
+      "hintEn": null,
+      "explainDe": "get wird zu got, nicht getted. Das musst du dir merken.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Erzähl es von gestern: Jill tells Andrew a story. → Jill ___ Andrew a story.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "told",
+          "tier": "full"
+        },
+        {
+          "text": "Jill told Andrew a story.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "tell bekommt kein -ed. Der Vokal ändert sich zu o.",
+      "hintEn": null,
+      "explainDe": "tell wird zu told, nicht telled. Diese Form lernst du auswendig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#10",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich bin gestern in die Schule gegangen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I went to school yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday I went to school.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "go heißt gehen. In der Vergangenheit wird daraus eine eigene Form ohne -ed.",
+      "hintEn": null,
+      "explainDe": "gegangen heißt went. go wird zu went, nicht goed.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sie sah eine Katze und nahm ein Foto.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She saw a cat and took a photo.",
+          "tier": "full"
+        },
+        {
+          "text": "She saw a cat and she took a photo.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Verben in der Vergangenheit. see und take bekommen kein -ed.",
+      "hintEn": null,
+      "explainDe": "sah wird zu saw, nahm wird zu took. Beide Formen lernst du auswendig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "photo",
+          "de": "Foto",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "matching",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "go",
+          "right": "went"
+        },
+        {
+          "left": "see",
+          "right": "saw"
+        },
+        {
+          "left": "take",
+          "right": "took"
+        },
+        {
+          "left": "have",
+          "right": "had"
+        },
+        {
+          "left": "come",
+          "right": "came"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Such zu jeder Grundform die richtige eigene Form. Keine bekommt -ed.",
+      "hintEn": null,
+      "explainDe": "go–went, see–saw, take–took, have–had, come–came. Diese Formen lernst du auswendig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-mt-001",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "eat",
+          "right": "ate"
+        },
+        {
+          "left": "drink",
+          "right": "drank"
+        },
+        {
+          "left": "write",
+          "right": "wrote"
+        },
+        {
+          "left": "give",
+          "right": "gave"
+        },
+        {
+          "left": "think",
+          "right": "thought"
+        },
+        {
+          "left": "find",
+          "right": "found"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Keine dieser Formen bekommt -ed. Such die richtige eigene Form.",
+      "hintEn": null,
+      "explainDe": "eat–ate, drink–drank, write–wrote, give–gave, think–thought, find–found.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-mp-002",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "pay",
+          "right": "paid"
+        },
+        {
+          "left": "sell",
+          "right": "sold"
+        },
+        {
+          "left": "hold",
+          "right": "held"
+        },
+        {
+          "left": "catch",
+          "right": "caught"
+        },
+        {
+          "left": "bring",
+          "right": "brought"
+        },
+        {
+          "left": "tell",
+          "right": "told"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Keine dieser Formen bekommt -ed. Such die richtige eigene Form.",
+      "hintEn": null,
+      "explainDe": "pay–paid, sell–sold, hold–held, catch–caught, bring–brought, tell–told.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sortiere die Verben: mit -ed oder mit eigener Form?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "like walked",
+          "members": [
+            "walk",
+            "play",
+            "want",
+            "open",
+            "watch"
+          ]
+        },
+        {
+          "label": "like went",
+          "members": [
+            "go",
+            "see",
+            "take",
+            "have",
+            "come",
+            "make"
+          ]
+        }
+      ],
+      "hintDe": "Manche Verben hängen -ed an. Andere haben eine ganz eigene Form, die du auswendig lernst.",
+      "hintEn": null,
+      "explainDe": "walk, play, want, open und watch bekommen -ed. go, see, take, have, come und make haben eigene Formen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-irregular-verbs-gs-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-irregular",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sortiere nach dem Klang am Ende.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "like thought",
+          "members": [
+            "thought",
+            "brought",
+            "caught",
+            "fought"
+          ]
+        },
+        {
+          "label": "like told",
+          "members": [
+            "told",
+            "sold",
+            "held"
+          ]
+        }
+      ],
+      "hintDe": "Hör auf das Ende der Form. Manche enden gleich und sehen sich ähnlich.",
+      "hintEn": null,
+      "explainDe": "thought, brought, caught und fought enden auf -ought oder -aught. told, sold und held enden auf -old oder -eld.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I ___ (not/read) the detective story.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "didn't read",
+          "tier": "full"
+        },
+        {
+          "text": "did not read",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung im Past: didn't + Grundform. read bleibt read, nicht read als Vergangenheit denken.",
+      "hintEn": null,
+      "explainDe": "Nach didn't steht immer die Grundform: didn't read. Du brauchst keine zweite Vergangenheitsform.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-past-simple-negative-cp-001",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "She ___ (not/like) the horror film.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "didn't like",
+          "tier": "full"
+        },
+        {
+          "text": "did not like",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung: didn't + Grundform. Das -ed muss weg.",
+      "hintEn": null,
+      "explainDe": "Richtig ist didn't like. Nach didn't bleibt das Verb in der Grundform, also kein liked.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-past-simple-negative-gf-002",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "They ___ (not/watch) the news.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "didn't watch",
+          "tier": "full"
+        },
+        {
+          "text": "did not watch",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "didn't + Grundform watch. Für alle Personen gleich, auch bei they.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung ist für jede Person gleich: didn't watch. Nach didn't kommt die Grundform.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#4",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He ___ (not/go) to the cinema, so he ___ (not/see) the fantasy film.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "didn't go | didn't see",
+          "tier": "full"
+        },
+        {
+          "text": "did not go | did not see",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Lücken gleich: didn't + Grundform. Also didn't go und didn't see, nicht went oder saw.",
+      "hintEn": null,
+      "explainDe": "Nach didn't steht immer die Grundform: didn't go und didn't see. Die Vergangenheitsform steckt schon in didn't.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-past-simple-negative-gf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We ___ (not/have) screen time, so we ___ (not/watch) a film.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "didn't have | didn't watch",
+          "tier": "full"
+        },
+        {
+          "text": "did not have | did not watch",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "didn't + Grundform: didn't have, didn't watch. Kein had und kein watched.",
+      "hintEn": null,
+      "explainDe": "Richtig sind didn't have und didn't watch. Nach didn't bleibt das Verb in der Grundform.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-past-simple-negative-gf-007",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Tom ___ (not/tell) me about the cartoon, and I ___ (not/find) the remote control.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "didn't tell | didn't find",
+          "tier": "full"
+        },
+        {
+          "text": "did not tell | did not find",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zweimal didn't + Grundform: didn't tell, didn't find. Nicht told oder found.",
+      "hintEn": null,
+      "explainDe": "Nach didn't kommt die Grundform: didn't tell und didn't find. Die Vergangenheit zeigt didn't.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#6",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She didn't watch the horror film.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She didn't watched the horror film.",
+        "She didn't saw the horror film.",
+        "She wasn't watch the horror film."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach didn't steht die Grundform watch, kein -ed und keine Vergangenheitsform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She didn't watch the horror film. Nach didn't kommt die Grundform watch.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She didn't watch the horror film.",
+          "She didn't watched the horror film.",
+          "She didn't saw the horror film.",
+          "She wasn't watch the horror film."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u14-past-simple-negative-mc-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They didn't read the detective story.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They didn't told the detective story.",
+        "They didn't liked the detective story.",
+        "They wasn't read the detective story."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "didn't + Grundform read. Such den Satz ohne zweite Vergangenheitsform und ohne -ed.",
+      "hintEn": null,
+      "explainDe": "Richtig ist They didn't read the detective story. Nach didn't bleibt read in der Grundform.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "They didn't read the detective story.",
+          "They didn't told the detective story.",
+          "They didn't liked the detective story.",
+          "They wasn't read the detective story."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz mit didn't ist richtig? He ___ to the lake.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "didn't go",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "didn't went",
+        "didn't goed",
+        "wasn't go"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach didn't kommt die Grundform go, nicht went und nicht goed.",
+      "hintEn": null,
+      "explainDe": "Richtig ist didn't go. Die Vergangenheit steckt in didn't, darum bleibt go in der Grundform.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "didn't go",
+          "didn't went",
+          "didn't goed",
+          "wasn't go"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u14-past-simple-negative-gf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du erzählst, dass du den Krimi nicht gelesen hast. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I didn't read the detective story.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I didn't liked the detective story.",
+        "I didn't watched the detective story.",
+        "I wasn't read the detective story."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "didn't + Grundform read. Der richtige Satz hat kein -ed und kein wasn't vor dem Verb.",
+      "hintEn": null,
+      "explainDe": "Richtig ist I didn't read the detective story. Nach didn't steht die Grundform, und wasn't passt nicht vor ein Tätigkeitswort.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I didn't read the detective story.",
+          "I didn't liked the detective story.",
+          "I didn't watched the detective story.",
+          "I wasn't read the detective story."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u14-past-simple-negative-mc-001",
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Deine Freundin hat gestern nicht ferngesehen. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She didn't watch the cartoon yesterday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She didn't watched the cartoon yesterday.",
+        "She wasn't watch the cartoon yesterday.",
+        "She don't watch the cartoon yesterday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "didn't + Grundform watch. wasn't und don't passen hier nicht.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She didn't watch the cartoon yesterday. didn't zeigt die Vergangenheit, danach steht die Grundform watch.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She didn't watch the cartoon yesterday.",
+          "She didn't watched the cartoon yesterday.",
+          "She wasn't watch the cartoon yesterday.",
+          "She don't watch the cartoon yesterday."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: He didn't went to the cinema.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He didn't go to the cinema.",
+          "tier": "full"
+        },
+        {
+          "text": "He did not go to the cinema.",
+          "tier": "full"
+        },
+        {
+          "text": "go",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach didn't darf keine Vergangenheitsform stehen. went muss zur Grundform werden.",
+      "hintEn": null,
+      "explainDe": "didn't zeigt schon die Vergangenheit, darum heißt es didn't go statt didn't went.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-past-simple-negative-ec-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: She didn't liked the romantic film.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She didn't like the romantic film.",
+          "tier": "full"
+        },
+        {
+          "text": "She did not like the romantic film.",
+          "tier": "full"
+        },
+        {
+          "text": "like",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das -ed muss weg. Nach didn't steht die Grundform like.",
+      "hintEn": null,
+      "explainDe": "Richtig ist didn't like. Nach didn't bleibt das Verb in der Grundform, also ohne -ed.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-past-simple-negative-ec-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: She wasn't watch the sports programme.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She didn't watch the sports programme.",
+          "tier": "full"
+        },
+        {
+          "text": "She did not watch the sports programme.",
+          "tier": "full"
+        },
+        {
+          "text": "didn't watch",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor einem Tätigkeitswort steht keine Form von be. Für die Verneinung brauchst du didn't + Grundform.",
+      "hintEn": null,
+      "explainDe": "wasn't passt nicht vor watch. Die Verneinung heißt She didn't watch the sports programme.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach den Satz verneint: She watched the horror film. (not)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She didn't watch the horror film.",
+          "tier": "full"
+        },
+        {
+          "text": "She did not watch the horror film.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Setz didn't vor das Verb und nimm das -ed weg: didn't watch.",
+      "hintEn": null,
+      "explainDe": "Aus watched wird in der Verneinung didn't watch. Nach didn't steht immer die Grundform.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-past-simple-negative-tf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach den Satz verneint: They ran away. (not)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They didn't run away.",
+          "tier": "full"
+        },
+        {
+          "text": "They did not run away.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Aus ran wird die Grundform run: didn't run.",
+      "hintEn": null,
+      "explainDe": "Richtig ist They didn't run away. didn't zeigt die Vergangenheit, danach steht run in der Grundform.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Mach den Satz verneint: He ate all the chocolate. (not)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He didn't eat all the chocolate.",
+          "tier": "full"
+        },
+        {
+          "text": "He did not eat all the chocolate.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Aus ate wird die Grundform eat: didn't eat.",
+      "hintEn": null,
+      "explainDe": "Richtig ist He didn't eat all the chocolate. Nach didn't steht die Grundform eat, nicht ate.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-past-simple-negative-gf-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich habe den Film nicht gesehen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I didn't see the film.",
+          "tier": "full"
+        },
+        {
+          "text": "I did not see the film.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung im Past: didn't + Grundform see.",
+      "hintEn": null,
+      "explainDe": "nicht gesehen heißt didn't see. Nach didn't steht die Grundform see.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-past-simple-negative-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sie hat das Buch nicht gelesen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She didn't read the book.",
+          "tier": "full"
+        },
+        {
+          "text": "She did not read the book.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "didn't + Grundform read. read schreibt sich gleich, denk es aber als Grundform.",
+      "hintEn": null,
+      "explainDe": "nicht gelesen heißt didn't read. Nach didn't steht die Grundform des Verbs.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She / didn't / the / film / like / romantic",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She didn't like the romantic film.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: She didn't like the romantic film. Nach didn't kommt die Grundform like.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She didn't like the romantic film. didn't steht vor der Grundform like.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "liked",
+          "didn't",
+          "wasn't",
+          "She didn't like the romantic film."
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "They / to / didn't / Mum / listen",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They didn't listen to Mum.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "didn't + Grundform listen, dann to Mum.",
+      "hintEn": null,
+      "explainDe": "Richtig ist They didn't listen to Mum. Nach didn't bleibt listen in der Grundform.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "listened",
+          "wasn't",
+          "They didn't listen to Mum.",
+          "didn't"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Aussage: He watched the news. Frag verneint nach: Stimmt das nicht? Bilde: He ___ the news.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "He didn't watch the news.",
+          "tier": "full"
+        },
+        {
+          "text": "He did not watch the news.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung: didn't + Grundform watch, kein watched.",
+      "hintEn": null,
+      "explainDe": "Richtig ist He didn't watch the news. Nach didn't steht die Grundform watch.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Sätze mit didn't sind richtig, welche falsch?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "I didn't go to the cinema.",
+            "She didn't see the film.",
+            "We didn't watch the news.",
+            "He didn't like the cartoon."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "I didn't went to the cinema.",
+            "She didn't saw the film.",
+            "We didn't watched the news.",
+            "He didn't liked the cartoon."
+          ]
+        }
+      ],
+      "hintDe": "Richtig ist didn't + Grundform. Falsch ist alles mit Vergangenheitsform oder -ed nach didn't.",
+      "hintEn": null,
+      "explainDe": "Nach didn't steht die Grundform: didn't go, didn't see. Formen wie didn't went oder didn't watched sind falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u14-past-simple-negative-gs-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Was passt zusammen? Falsche Form und richtige Form.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "didn't went",
+          "right": "didn't go"
+        },
+        {
+          "left": "didn't saw",
+          "right": "didn't see"
+        },
+        {
+          "left": "didn't ate",
+          "right": "didn't eat"
+        },
+        {
+          "left": "didn't liked",
+          "right": "didn't like"
+        },
+        {
+          "left": "didn't watched",
+          "right": "didn't watch"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Such zu jeder falschen Form die richtige: nach didn't immer die Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach didn't steht die Grundform. didn't went wird didn't go, didn't liked wird didn't like.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u14.s.past-simple-negative",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satzanfang passt zu welchem Ende?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "She didn't read",
+          "right": "the Sherlock Holmes stories."
+        },
+        {
+          "left": "We didn't like",
+          "right": "the fantasy film."
+        },
+        {
+          "left": "They didn't listen",
+          "right": "to Mum."
+        },
+        {
+          "left": "He didn't catch",
+          "right": "the giraffe."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Lies jeden Anfang mit didn't + Grundform und such das passende Ende.",
+      "hintEn": null,
+      "explainDe": "Jeder Anfang hat didn't + Grundform. Read passt zu den Geschichten, catch passt zur Giraffe.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 14 It's my favourite.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    }
+  ]
+}

@@ -59,17 +59,16 @@ Both generation stages are deterministic and byte-stable: re-runs with unchanged
 nothing. Word-bank totals are asserted against each master list's self-declared counts
 (786 / 611 / 599 / 450). Entry ids are pinned in per-unit `ids.lock.json` and never reused.
 
-**Status (2026-06-11):** all **57/57 word banks `wordbank_approved`** (thorough adversarial review
-campaign, PRs #2–#7 — protocol in [content-review-loop](docs/runbooks/content-review-loop.md));
-core allowlist approved (135 tokens, `content/overlays/core-allowlist.json`); item + story schemas
-frozen (vocab@1 / grammar@1 / grammar-structures@1 / story@1, PR #10); **g2 structures catalog
-generated** (28 structures, 22/22 v1 ids mapped, `content/corpus/structures/g2/`); item stages
-5–8 tooling live (pinned prompts in `packages/content-pipeline/prompts/`, cumulative level gate,
-validators V-1…V-22 incl. the v1-unit-03 calibration suite, 4-lens verify, item review loop);
-**g2-u03 item pilot PASSED** (61 items `approved`, stage-8 reject 1.6% < 5% — see
-[item-pilot-g2-u03](docs/runbooks/item-pilot-g2-u03.md)); CI gates V-A…V-F + V-1…V-22 guard
-approved artifacts against drift. Next: item waves G2→G1→G3→G4 (~5,300 items), then the
-[game layer](docs/handover/10_game_layer.md) (four standalone grade games).
+**Status (2026-06-17): the items wave is ✅ COMPLETE.** All **57/57 units `approved` at 0.0% stage-8
+reject** (full v1 grammar parity), all **4 structure catalogs** generated (g1 35 / g2 28 / g3 18 /
+g4 15), **5,898 reviewed items** + 2,446 word-bank entries — `pnpm content status` → `approved=57`,
+`pnpm content validate` green (V-1…V-22 + V-A…V-F), `pnpm test` 60/60. Progress receipt + the per-unit
+rhythm live in [items-wave](docs/runbooks/items-wave.md); the g2-u03 pilot that gated the waves is in
+[item-pilot-g2-u03](docs/runbooks/item-pilot-g2-u03.md). Schemas frozen (vocab@1 / grammar@1 /
+grammar-structures@1 / story@1, PR #10); core allowlist approved (137 tokens incl. the song/band
+fix, `content/overlays/core-allowlist.json`). **Next:** merge `feat/items-wave-g2`, then wire the
+approved items into the trainer surfaces (foundation harness — loader + all-format renderer + grader),
+ahead of the [game layer](docs/handover/10_game_layer.md) (four standalone grade games).
 
 ## Database rules (shared Neon project with live v1 — do not skip)
 

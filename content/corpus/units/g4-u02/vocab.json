@@ -1,0 +1,3587 @@
+{
+  "schema": "vocab@1",
+  "grade": 4,
+  "unit": 2,
+  "slug": "g4-u02",
+  "items": [
+    {
+      "id": "g4u02.w.attractive",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "historical",
+            "common",
+            "excellent",
+            "personal",
+            "illegal"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "attractive",
+      "g": "attraktiv",
+      "d": "nice and good to look at",
+      "s": "Many people like the way she looks; she is very ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "attractive",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "attractive",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "attractive",
+            "tier": "full"
+          },
+          {
+            "text": "good-looking",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "attraktiv",
+            "tier": "full"
+          },
+          {
+            "text": "hübsch",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "historical",
+        "common",
+        "excellent"
+      ],
+      "hintDe": "So nennt man jemanden, der gut aussieht und vielen gefällt."
+    },
+    {
+      "id": "g4u02.w.besides",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "right away",
+            "Never mind.",
+            "likely",
+            "take over",
+            "excellent"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "besides",
+      "g": "außerdem",
+      "d": "and also; too",
+      "s": "I do not want to go out. ___, I have a lot of homework.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "besides",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "besides",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "besides",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "außerdem",
+            "tier": "full"
+          },
+          {
+            "text": "im Übrigen",
+            "tier": "full"
+          },
+          {
+            "text": "ohnehin",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "right away",
+        "Never mind.",
+        "likely"
+      ],
+      "hintDe": "Du fügst noch einen weiteren Grund hinzu – zusätzlich dazu."
+    },
+    {
+      "id": "g4u02.w.blackmail",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "murder",
+            "robbery",
+            "mystery",
+            "evidence",
+            "suspicion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "blackmail",
+      "g": "Erpressung",
+      "d": "the crime of making somebody pay money so you keep their secret",
+      "s": "He had to pay money or the ___ would tell everyone his secret.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "blackmail",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "blackmail",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "blackmail",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erpressung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "murder",
+        "robbery",
+        "mystery"
+      ],
+      "hintDe": "Bei dieser Tat zwingst du jemanden zu zahlen, sonst verrätst du sein Geheimnis."
+    },
+    {
+      "id": "g4u02.w.chest",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "nose",
+            "ear",
+            "shoulder",
+            "finger",
+            "leg"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "chest",
+      "g": "Brust",
+      "d": "the place where your heart is",
+      "s": "The dead man had blood on his ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "chest",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chest",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chest",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Brust",
+            "tier": "full"
+          },
+          {
+            "text": "Brustkorb",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "heart",
+          "de": "Herz",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "nose",
+        "ear",
+        "shoulder"
+      ],
+      "hintDe": "Das ist der vordere Teil deines Körpers, wo dein Herz schlägt."
+    },
+    {
+      "id": "g4u02.w.commit",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "prove",
+            "escape",
+            "consider",
+            "mention",
+            "realise"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "commit",
+      "g": "begehen",
+      "d": "to do a crime or a bad thing",
+      "s": "People who ___ crimes go to prison.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "commit",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "commit",
+          "tier": "full"
+        },
+        {
+          "text": "to commit",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "commit",
+            "tier": "full"
+          },
+          {
+            "text": "to commit",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "begehen",
+            "tier": "full"
+          },
+          {
+            "text": "verüben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "prove",
+        "escape",
+        "consider"
+      ],
+      "hintDe": "Du begehst ein Verbrechen oder tust etwas Schlechtes."
+    },
+    {
+      "id": "g4u02.w.common",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "historical",
+            "personal",
+            "illegal",
+            "attractive",
+            "excellent"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "common",
+      "g": "häufig",
+      "d": "that happens very often",
+      "s": "Headaches are very ___ when you look at screens too long.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "common",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "common",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "common",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "häufig",
+            "tier": "full"
+          },
+          {
+            "text": "gewöhnlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "historical",
+        "personal",
+        "illegal"
+      ],
+      "hintDe": "So nennst du etwas, das sehr oft vorkommt."
+    },
+    {
+      "id": "g4u02.w.conclusion",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mystery",
+            "suspicion",
+            "report",
+            "confusion",
+            "evidence"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "conclusion",
+      "g": "Schlussfolgerung",
+      "d": "a thing you think is true after you look at all the clues",
+      "s": "After he looked at all the clues, the detective came to the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "conclusion",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "conclusion",
+          "tier": "full"
+        },
+        {
+          "text": "conclusions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "conclusion",
+            "tier": "full"
+          },
+          {
+            "text": "a conclusion",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlussfolgerung",
+            "tier": "full"
+          },
+          {
+            "text": "Schluss",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mystery",
+        "suspicion",
+        "report"
+      ],
+      "hintDe": "Das ist das Ergebnis, zu dem du kommst, nachdem du alle Hinweise angeschaut hast."
+    },
+    {
+      "id": "g4u02.w.confusion",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "conclusion",
+            "mystery",
+            "suspicion",
+            "investigation",
+            "evidence"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "confusion",
+      "g": "Verwirrung",
+      "d": "when people do not understand what is happening",
+      "s": "There was a lot of ___ at the crime scene.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "confusion",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "confusion",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "confusion",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verwirrung",
+            "tier": "full"
+          },
+          {
+            "text": "Durcheinander",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "conclusion",
+        "mystery",
+        "suspicion"
+      ],
+      "hintDe": "Das ist der Zustand, wenn niemand versteht, was gerade los ist."
+    },
+    {
+      "id": "g4u02.w.consider",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mention",
+            "prove",
+            "retire",
+            "commit",
+            "escape"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "consider",
+      "g": "erwägen",
+      "d": "to think well about a thing before a decision",
+      "s": "Before you make a big decision, you must ___ all the clues with care.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "consider",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "consider",
+          "tier": "full"
+        },
+        {
+          "text": "to consider",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "consider",
+            "tier": "full"
+          },
+          {
+            "text": "to consider",
+            "tier": "full"
+          },
+          {
+            "text": "to think about",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erwägen",
+            "tier": "full"
+          },
+          {
+            "text": "überlegen",
+            "tier": "full"
+          },
+          {
+            "text": "in Betracht ziehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mention",
+        "prove",
+        "retire"
+      ],
+      "hintDe": "Du denkst gut über etwas nach, bevor du dich entscheidest."
+    },
+    {
+      "id": "g4u02.w.crime-scene",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "investigation",
+            "conclusion",
+            "suspicion",
+            "evidence",
+            "weapon"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "crime scene",
+      "g": "Tatort",
+      "d": "the place where a bad thing in the law happened",
+      "s": "The police looked for clues at the ___ where the murder happened.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "crime scene",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crime scene",
+          "tier": "full"
+        },
+        {
+          "text": "crime scenes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crime scene",
+            "tier": "full"
+          },
+          {
+            "text": "the crime scene",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tatort",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "investigation",
+        "conclusion",
+        "suspicion"
+      ],
+      "hintDe": "Das ist der Ort, an dem das Verbrechen passiert ist."
+    },
+    {
+      "id": "g4u02.w.criminal",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "suspect",
+            "witness",
+            "victim",
+            "employee",
+            "relative"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "criminal",
+      "g": "Verbrecher/in",
+      "d": "a man or woman who does crimes",
+      "s": "The ___ for the robbery did the crime at night.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "criminal",
+          "tier": "full"
+        },
+        {
+          "text": "criminals",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "criminal",
+          "tier": "full"
+        },
+        {
+          "text": "criminals",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "criminal",
+            "tier": "full"
+          },
+          {
+            "text": "a criminal",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verbrecher",
+            "tier": "full"
+          },
+          {
+            "text": "Verbrecherin",
+            "tier": "full"
+          },
+          {
+            "text": "Verbrecher/in",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "suspect",
+        "witness",
+        "victim"
+      ],
+      "hintDe": "So nennt man jemanden, der Verbrechen begeht."
+    },
+    {
+      "id": "g4u02.w.employee",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "relative",
+            "criminal",
+            "witness",
+            "nephew",
+            "suspect"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "employee",
+      "g": "Angestellte/r",
+      "d": "a man or woman who has a job and money from a boss",
+      "s": "Murdoch was at the office with four of his ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "employees",
+          "tier": "full"
+        },
+        {
+          "text": "employee",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "employee",
+          "tier": "full"
+        },
+        {
+          "text": "employees",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "employee",
+            "tier": "full"
+          },
+          {
+            "text": "an employee",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Angestellte",
+            "tier": "full"
+          },
+          {
+            "text": "Angestellter",
+            "tier": "full"
+          },
+          {
+            "text": "Angestellte/r",
+            "tier": "full"
+          },
+          {
+            "text": "Mitarbeiter",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "relative",
+        "criminal",
+        "witness"
+      ],
+      "hintDe": "Diese Person arbeitet für einen Chef und bekommt dafür Geld."
+    },
+    {
+      "id": "g4u02.w.escape",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "commit",
+            "prove",
+            "mention",
+            "consider",
+            "realise"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "escape",
+      "g": "entkommen",
+      "d": "to get out of a place where you are not free",
+      "s": "The thieves ___ from prison at night.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "escaped",
+          "tier": "full"
+        },
+        {
+          "text": "escape",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "escape",
+          "tier": "full"
+        },
+        {
+          "text": "to escape",
+          "tier": "full"
+        },
+        {
+          "text": "escaped",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "escape",
+            "tier": "full"
+          },
+          {
+            "text": "to escape",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "entkommen",
+            "tier": "full"
+          },
+          {
+            "text": "flüchten",
+            "tier": "full"
+          },
+          {
+            "text": "entfliehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "commit",
+        "prove",
+        "mention"
+      ],
+      "hintDe": "Du kommst aus einem Ort weg, an dem du nicht frei bist, zum Beispiel aus dem Gefängnis."
+    },
+    {
+      "id": "g4u02.w.evidence",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mystery",
+            "weapon",
+            "conclusion",
+            "report",
+            "suspicion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "evidence",
+      "g": "Beweis",
+      "d": "a thing that shows what is true",
+      "s": "The detective found new ___ at the crime scene: a knife.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "evidence",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "evidence",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "evidence",
+            "tier": "full"
+          },
+          {
+            "text": "proof",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Beweis",
+            "tier": "full"
+          },
+          {
+            "text": "Beweise",
+            "tier": "full"
+          },
+          {
+            "text": "Beweismaterial",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mystery",
+        "weapon",
+        "conclusion"
+      ],
+      "hintDe": "Das ist etwas, das zeigt, was wahr ist – zum Beispiel ein Fingerabdruck."
+    },
+    {
+      "id": "g4u02.w.excellent",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "common",
+            "historical",
+            "personal",
+            "attractive",
+            "likely"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "excellent",
+      "g": "hervorragend",
+      "d": "very, very good",
+      "s": "The food at the new restaurant was ___; we all loved it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "excellent",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "excellent",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "excellent",
+            "tier": "full"
+          },
+          {
+            "text": "really good",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hervorragend",
+            "tier": "full"
+          },
+          {
+            "text": "großartig",
+            "tier": "full"
+          },
+          {
+            "text": "ausgezeichnet",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "common",
+        "historical",
+        "personal"
+      ],
+      "hintDe": "So nennst du etwas, das richtig, richtig gut ist."
+    },
+    {
+      "id": "g4u02.w.expect",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "consider",
+            "mention",
+            "prove",
+            "realise",
+            "commit"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "expect",
+      "g": "erwarten",
+      "d": "to think that a thing will happen",
+      "s": "We ___ a lot of rain tomorrow because of the forecast.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "expect",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "expect",
+          "tier": "full"
+        },
+        {
+          "text": "to expect",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "expect",
+            "tier": "full"
+          },
+          {
+            "text": "to expect",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erwarten",
+            "tier": "full"
+          },
+          {
+            "text": "rechnen mit",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "consider",
+        "mention",
+        "prove"
+      ],
+      "hintDe": "Du glaubst, dass etwas passieren wird, und rechnest damit."
+    },
+    {
+      "id": "g4u02.w.get-hold-of-sth",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "take over",
+            "right away",
+            "Never mind.",
+            "besides"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "get hold of sth",
+      "g": "an etwas gelangen",
+      "d": "to find a thing after a lot of work",
+      "s": "The book is sold out, but I want to ___ one before school.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "get hold of",
+          "tier": "full"
+        },
+        {
+          "text": "get hold of sth",
+          "tier": "full"
+        },
+        {
+          "text": "get hold of something",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get hold of sth",
+          "tier": "full"
+        },
+        {
+          "text": "get hold of something",
+          "tier": "full"
+        },
+        {
+          "text": "get hold of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get hold of sth",
+            "tier": "full"
+          },
+          {
+            "text": "get hold of something",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "an etwas gelangen",
+            "tier": "full"
+          },
+          {
+            "text": "etwas bekommen",
+            "tier": "full"
+          },
+          {
+            "text": "etwas auftreiben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "take over",
+        "keep an eye on",
+        "right away"
+      ],
+      "hintDe": "Du schaffst es, nach einigem Suchen an etwas heranzukommen."
+    },
+    {
+      "id": "g4u02.w.handkerchief",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "weapon",
+            "report",
+            "wastepaper bin",
+            "evidence",
+            "conclusion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "handkerchief",
+      "g": "Taschentuch",
+      "d": "a thing you use to clean your nose",
+      "s": "He pulled out a white ___ and cleaned his nose.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "handkerchief",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "handkerchief",
+          "tier": "full"
+        },
+        {
+          "text": "handkerchiefs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "handkerchief",
+            "tier": "full"
+          },
+          {
+            "text": "a handkerchief",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Taschentuch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "weapon",
+        "report",
+        "wastepaper bin"
+      ],
+      "hintDe": "Damit putzt du dir die Nase, wenn du erkältet bist."
+    },
+    {
+      "id": "g4u02.w.historical",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "personal",
+            "common",
+            "illegal",
+            "attractive",
+            "excellent"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "historical",
+      "g": "historisch",
+      "d": "about the past or about old times",
+      "s": "We visited many ___ places in Rome, like the old castle.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "historical",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "historical",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "historical",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "historisch",
+            "tier": "full"
+          },
+          {
+            "text": "geschichtlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "personal",
+        "common",
+        "illegal"
+      ],
+      "hintDe": "So nennt man etwas, das mit der Vergangenheit und alten Zeiten zu tun hat."
+    },
+    {
+      "id": "g4u02.w.illegal",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "historical",
+            "personal",
+            "common",
+            "attractive",
+            "excellent"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "illegal",
+      "g": "illegal",
+      "d": "not OK in the law; a crime to do",
+      "s": "It is ___ to take money from a shop without paying.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "illegal",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "illegal",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "illegal",
+            "tier": "full"
+          },
+          {
+            "text": "against the law",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "illegal",
+            "tier": "full"
+          },
+          {
+            "text": "rechtswidrig",
+            "tier": "full"
+          },
+          {
+            "text": "verboten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "historical",
+        "personal",
+        "common"
+      ],
+      "hintDe": "So nennt man etwas, das gegen das Gesetz ist und verboten ist."
+    },
+    {
+      "id": "g4u02.w.investigation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "conclusion",
+            "confusion",
+            "suspicion",
+            "evidence",
+            "mystery"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "investigation",
+      "g": "Untersuchung",
+      "d": "all the work the police do to find out about a crime",
+      "s": "The police did a long ___ to find the thief.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "investigation",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "investigation",
+          "tier": "full"
+        },
+        {
+          "text": "investigations",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "investigation",
+            "tier": "full"
+          },
+          {
+            "text": "an investigation",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Untersuchung",
+            "tier": "full"
+          },
+          {
+            "text": "Ermittlung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "conclusion",
+        "confusion",
+        "suspicion"
+      ],
+      "hintDe": "Das ist die ganze Arbeit, die die Polizei macht, um ein Verbrechen aufzuklären."
+    },
+    {
+      "id": "g4u02.w.keep-an-eye-on",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "take over",
+            "get hold of sth",
+            "right away",
+            "Never mind."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "keep an eye on",
+      "g": "aufpassen auf",
+      "d": "to look after somebody or a thing with care",
+      "s": "Can you ___ my little sister while I cook dinner?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "keep an eye on",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "keep an eye on",
+          "tier": "full"
+        },
+        {
+          "text": "keep an eye on sb",
+          "tier": "full"
+        },
+        {
+          "text": "keep an eye on something",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "keep an eye on",
+            "tier": "full"
+          },
+          {
+            "text": "to keep an eye on",
+            "tier": "full"
+          },
+          {
+            "text": "to watch",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufpassen auf",
+            "tier": "full"
+          },
+          {
+            "text": "ein Auge haben auf",
+            "tier": "full"
+          },
+          {
+            "text": "im Auge behalten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "take over",
+        "get hold of sth",
+        "right away"
+      ],
+      "hintDe": "Du gibst gut auf jemanden oder etwas Acht."
+    },
+    {
+      "id": "g4u02.w.likely",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "common",
+            "personal",
+            "historical",
+            "excellent",
+            "attractive"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "likely",
+      "g": "wahrscheinlich",
+      "d": "that will probably happen",
+      "s": "It is very ___ that it will rain tomorrow.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "likely",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "likely",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "likely",
+            "tier": "full"
+          },
+          {
+            "text": "probable",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wahrscheinlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "common",
+        "personal",
+        "historical"
+      ],
+      "hintDe": "Etwas wird wohl passieren – es ist gut möglich."
+    },
+    {
+      "id": "g4u02.w.mention",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "consider",
+            "prove",
+            "retire",
+            "commit",
+            "escape"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "mention",
+      "g": "erwähnen",
+      "d": "to talk or write about a thing for a short time",
+      "s": "Did he ___ the witness when he talked to the police?",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "mention",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mention",
+          "tier": "full"
+        },
+        {
+          "text": "to mention",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mention",
+            "tier": "full"
+          },
+          {
+            "text": "to mention",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erwähnen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "consider",
+        "prove",
+        "retire"
+      ],
+      "hintDe": "Du sagst oder schreibst etwas ganz kurz, nur so nebenbei."
+    },
+    {
+      "id": "g4u02.w.murder",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "blackmail",
+            "robbery",
+            "evidence",
+            "weapon",
+            "mystery"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "murder",
+      "g": "Mord",
+      "d": "the crime of making somebody die",
+      "s": "The detective came to the house to look at the ___ of John Murdoch.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "murder",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "murder",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "murder",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mord",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "blackmail",
+        "robbery",
+        "evidence"
+      ],
+      "hintDe": "So nennt man die Tat, bei der ein Mensch absichtlich getötet wird."
+    },
+    {
+      "id": "g4u02.w.mystery",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "report",
+            "conclusion",
+            "evidence",
+            "suspicion",
+            "weapon"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "mystery",
+      "g": "Rätsel",
+      "d": "a thing that nobody can understand",
+      "s": "It is a ___ that nobody can understand.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "mystery",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mystery",
+          "tier": "full"
+        },
+        {
+          "text": "mysteries",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mystery",
+            "tier": "full"
+          },
+          {
+            "text": "a mystery",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rätsel",
+            "tier": "full"
+          },
+          {
+            "text": "Geheimnis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "report",
+        "conclusion",
+        "evidence"
+      ],
+      "hintDe": "So nennt man etwas Seltsames, das niemand erklären kann."
+    },
+    {
+      "id": "g4u02.w.nephew",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "relative",
+            "employee",
+            "criminal",
+            "witness",
+            "suspect"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "nephew",
+      "g": "Neffe",
+      "d": "the boy in your family who is the child of your sister",
+      "s": "My sister had a little boy, so now I have a young ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "nephew",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nephew",
+          "tier": "full"
+        },
+        {
+          "text": "nephews",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nephew",
+            "tier": "full"
+          },
+          {
+            "text": "a nephew",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Neffe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "relative",
+        "employee",
+        "criminal"
+      ],
+      "hintDe": "So nennst du den Sohn deiner Schwester oder deines Bruders."
+    },
+    {
+      "id": "g4u02.w.never-mind",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "right away",
+            "besides",
+            "take over",
+            "get hold of sth"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Never mind.",
+      "g": "Macht nichts.",
+      "d": "a way to tell somebody not to feel bad",
+      "s": "You cannot find it? ___, it is OK.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Never mind",
+          "tier": "full"
+        },
+        {
+          "text": "never mind",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Never mind",
+          "tier": "full"
+        },
+        {
+          "text": "never mind",
+          "tier": "full"
+        },
+        {
+          "text": "Never mind.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Never mind",
+            "tier": "full"
+          },
+          {
+            "text": "never mind",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Macht nichts.",
+            "tier": "full"
+          },
+          {
+            "text": "Egal.",
+            "tier": "full"
+          },
+          {
+            "text": "Schon gut.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "right away",
+        "besides",
+        "keep an eye on"
+      ],
+      "hintDe": "Das sagst du, damit sich jemand wegen einer Kleinigkeit nicht schlecht fühlt."
+    },
+    {
+      "id": "g4u02.w.office-clerk",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "employee",
+            "relative",
+            "nephew",
+            "criminal",
+            "witness"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "office clerk",
+      "g": "Büroangestellte/r",
+      "d": "a man or woman who has a job at a desk in a big building",
+      "s": "Jasper Ford has a desk job at the office; he is an ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "office clerk",
+          "tier": "full"
+        },
+        {
+          "text": "office clerks",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "office clerk",
+          "tier": "full"
+        },
+        {
+          "text": "office clerks",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "office clerk",
+            "tier": "full"
+          },
+          {
+            "text": "an office clerk",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Büroangestellte",
+            "tier": "full"
+          },
+          {
+            "text": "Büroangestellter",
+            "tier": "full"
+          },
+          {
+            "text": "Büroangestellte/r",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "employee",
+        "relative",
+        "nephew"
+      ],
+      "hintDe": "Diese Person arbeitet im Büro an einem Schreibtisch."
+    },
+    {
+      "id": "g4u02.w.personal",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "historical",
+            "common",
+            "illegal",
+            "attractive",
+            "excellent"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "personal",
+      "g": "persönlich",
+      "d": "about one man or woman, not for all",
+      "s": "Please do not read my letters; they are ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "personal",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "personal",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "personal",
+            "tier": "full"
+          },
+          {
+            "text": "private",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "persönlich",
+            "tier": "full"
+          },
+          {
+            "text": "privat",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "historical",
+        "common",
+        "illegal"
+      ],
+      "hintDe": "So nennst du etwas, das nur dich betrifft und nicht für alle ist."
+    },
+    {
+      "id": "g4u02.w.prove",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mention",
+            "consider",
+            "commit",
+            "escape",
+            "realise"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "prove",
+      "g": "beweisen",
+      "d": "to show that a thing is really true",
+      "s": "He is the thief, but the police cannot ___ it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "prove",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "prove",
+          "tier": "full"
+        },
+        {
+          "text": "to prove",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "prove",
+            "tier": "full"
+          },
+          {
+            "text": "to prove",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beweisen",
+            "tier": "full"
+          },
+          {
+            "text": "nachweisen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mention",
+        "consider",
+        "commit"
+      ],
+      "hintDe": "Du zeigst mit Beweisen, dass etwas wirklich wahr ist."
+    },
+    {
+      "id": "g4u02.w.realise",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "consider",
+            "mention",
+            "prove",
+            "commit",
+            "expect"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "realise",
+      "g": "erkennen",
+      "d": "to come to know or understand a thing for the first time",
+      "s": "At last, the police ___ who the thief was.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "realised",
+          "tier": "full"
+        },
+        {
+          "text": "realise",
+          "tier": "partial"
+        },
+        {
+          "text": "realized",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "realise",
+          "tier": "full"
+        },
+        {
+          "text": "to realise",
+          "tier": "full"
+        },
+        {
+          "text": "realize",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "realise",
+            "tier": "full"
+          },
+          {
+            "text": "to realise",
+            "tier": "full"
+          },
+          {
+            "text": "realize",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erkennen",
+            "tier": "full"
+          },
+          {
+            "text": "begreifen",
+            "tier": "full"
+          },
+          {
+            "text": "merken",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "consider",
+        "mention",
+        "prove"
+      ],
+      "hintDe": "Dir wird auf einmal klar, was los ist – du begreifst es."
+    },
+    {
+      "id": "g4u02.w.relative",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "employee",
+            "nephew",
+            "witness",
+            "suspect",
+            "criminal"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "relative",
+      "g": "Verwandte/r",
+      "d": "a member of your family",
+      "s": "I have a ___ who lives in America; she is my mum's aunt.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "relative",
+          "tier": "full"
+        },
+        {
+          "text": "relatives",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "relative",
+          "tier": "full"
+        },
+        {
+          "text": "relatives",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "relative",
+            "tier": "full"
+          },
+          {
+            "text": "a relative",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verwandte",
+            "tier": "full"
+          },
+          {
+            "text": "Verwandter",
+            "tier": "full"
+          },
+          {
+            "text": "Verwandte/r",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "employee",
+        "nephew",
+        "witness"
+      ],
+      "hintDe": "So nennt man jemanden aus deiner Familie, zum Beispiel eine Tante."
+    },
+    {
+      "id": "g4u02.w.report",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mystery",
+            "evidence",
+            "conclusion",
+            "suspicion",
+            "weapon"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "report",
+      "g": "Bericht",
+      "d": "a letter or talk about what happened",
+      "s": "The teacher asked us to write a ___ about our school day.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "report",
+          "tier": "full"
+        },
+        {
+          "text": "reports",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "report",
+          "tier": "full"
+        },
+        {
+          "text": "reports",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "report",
+            "tier": "full"
+          },
+          {
+            "text": "a report",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bericht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mystery",
+        "evidence",
+        "conclusion"
+      ],
+      "hintDe": "Das ist ein Text oder eine Rede darüber, was passiert ist."
+    },
+    {
+      "id": "g4u02.w.retire",
+      "rev": 5,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mention",
+            "consider",
+            "prove",
+            "commit",
+            "escape"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "retire",
+      "g": "in Pension gehen",
+      "d": "to stop work for good because you are old",
+      "s": "My uncle will ___ when he is 65.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "retire",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "retire",
+          "tier": "full"
+        },
+        {
+          "text": "to retire",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "retire",
+            "tier": "full"
+          },
+          {
+            "text": "to retire",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in Pension gehen",
+            "tier": "full"
+          },
+          {
+            "text": "in Rente gehen",
+            "tier": "full"
+          },
+          {
+            "text": "mit der Arbeit aufhören",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mention",
+        "consider",
+        "prove"
+      ],
+      "hintDe": "Wenn du alt genug bist, hörst du für immer auf zu arbeiten."
+    },
+    {
+      "id": "g4u02.w.right-away",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Never mind.",
+            "take over",
+            "get hold of sth",
+            "besides"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "right away",
+      "g": "sofort",
+      "d": "at once, with no wait",
+      "s": "Bring me the report ___, please!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "right away",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "right away",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "right away",
+            "tier": "full"
+          },
+          {
+            "text": "at once",
+            "tier": "full"
+          },
+          {
+            "text": "immediately",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sofort",
+            "tier": "full"
+          },
+          {
+            "text": "gleich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Never mind.",
+        "take over",
+        "keep an eye on"
+      ],
+      "hintDe": "Du machst etwas gleich und wartest keine Minute."
+    },
+    {
+      "id": "g4u02.w.suspect",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "witness",
+            "victim",
+            "criminal",
+            "employee",
+            "relative"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "suspect",
+      "g": "Verdächtige/r",
+      "d": "a man or woman who the police think did a crime",
+      "s": "The police think the ___ for the crime is a man.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "suspect",
+          "tier": "full"
+        },
+        {
+          "text": "suspects",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "suspect",
+          "tier": "full"
+        },
+        {
+          "text": "suspects",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "suspect",
+            "tier": "full"
+          },
+          {
+            "text": "a suspect",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verdächtige",
+            "tier": "full"
+          },
+          {
+            "text": "Verdächtiger",
+            "tier": "full"
+          },
+          {
+            "text": "Verdächtige/r",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "witness",
+        "victim",
+        "criminal"
+      ],
+      "hintDe": "Diese Person hat die Tat vielleicht begangen – die Polizei ist sich aber noch nicht sicher."
+    },
+    {
+      "id": "g4u02.w.suspicion",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "conclusion",
+            "mystery",
+            "evidence",
+            "confusion",
+            "report"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "suspicion",
+      "g": "Verdacht",
+      "d": "a feeling that somebody did a bad thing",
+      "s": "I have a ___ that John has my book, but I cannot prove it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "suspicion",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "suspicion",
+          "tier": "full"
+        },
+        {
+          "text": "suspicions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "suspicion",
+            "tier": "full"
+          },
+          {
+            "text": "a suspicion",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verdacht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "conclusion",
+        "mystery",
+        "evidence"
+      ],
+      "hintDe": "Du hast das Gefühl, dass jemand etwas Schlechtes getan hat, kannst es aber nicht beweisen."
+    },
+    {
+      "id": "g4u02.w.take-over",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "right away",
+            "get hold of sth",
+            "Never mind.",
+            "besides"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "take over",
+      "g": "übernehmen",
+      "d": "to begin to have control of a thing or job",
+      "s": "When the old boss leaves, Isabel will ___ his job.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "take over",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take over",
+          "tier": "full"
+        },
+        {
+          "text": "to take over",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "take over",
+            "tier": "full"
+          },
+          {
+            "text": "to take over",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "übernehmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "keep an eye on",
+        "right away",
+        "get hold of sth"
+      ],
+      "hintDe": "Du fängst an, eine Aufgabe oder eine Firma zu leiten."
+    },
+    {
+      "id": "g4u02.w.to-steal",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "prove",
+            "escape",
+            "mention",
+            "consider",
+            "commit"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to steal",
+      "g": "stehlen",
+      "d": "to take a thing that is not yours, with no right to it",
+      "s": "A thief came in the night to ___ money from the shop.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "steal",
+          "tier": "full"
+        },
+        {
+          "text": "to steal",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "steal",
+          "tier": "full"
+        },
+        {
+          "text": "to steal",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to steal",
+            "tier": "full"
+          },
+          {
+            "text": "steal",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "stehlen",
+            "tier": "full"
+          },
+          {
+            "text": "klauen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "prove",
+        "escape",
+        "mention"
+      ],
+      "hintDe": "Du nimmst etwas, das jemand anderem gehört, ohne zu fragen."
+    },
+    {
+      "id": "g4u02.w.unlock",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "escape",
+            "prove",
+            "commit",
+            "mention",
+            "consider"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "unlock",
+      "g": "aufschließen",
+      "d": "to open a door or box with a key",
+      "s": "Give me the key and I will ___ the door for you.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "unlock",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "unlock",
+          "tier": "full"
+        },
+        {
+          "text": "to unlock",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "unlock",
+            "tier": "full"
+          },
+          {
+            "text": "to unlock",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufschließen",
+            "tier": "full"
+          },
+          {
+            "text": "aufsperren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "escape",
+        "prove",
+        "commit"
+      ],
+      "hintDe": "Du machst eine Tür mit einem Schlüssel auf."
+    },
+    {
+      "id": "g4u02.w.upset",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "attractive",
+            "historical",
+            "common",
+            "excellent",
+            "personal"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "upset",
+      "g": "verstört",
+      "d": "sad because a bad thing has happened",
+      "s": "When the dog died, the girl was very ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "upset",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "upset",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "upset",
+            "tier": "full"
+          },
+          {
+            "text": "sad",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verstört",
+            "tier": "full"
+          },
+          {
+            "text": "aufgewühlt",
+            "tier": "full"
+          },
+          {
+            "text": "traurig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "attractive",
+        "historical",
+        "common"
+      ],
+      "hintDe": "So fühlst du dich, wenn etwas Schlimmes passiert ist und du traurig bist."
+    },
+    {
+      "id": "g4u02.w.victim",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "suspect",
+            "witness",
+            "criminal",
+            "employee",
+            "nephew"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "victim",
+      "g": "Opfer",
+      "d": "a man or woman who is hurt in a crime or accident",
+      "s": "The ___ of the robbery was hurt in the crime.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "victim",
+          "tier": "full"
+        },
+        {
+          "text": "victims",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "victim",
+          "tier": "full"
+        },
+        {
+          "text": "victims",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "victim",
+            "tier": "full"
+          },
+          {
+            "text": "a victim",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Opfer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "suspect",
+        "witness",
+        "criminal"
+      ],
+      "hintDe": "Das ist die Person, der bei einem Verbrechen oder Unfall etwas Schlimmes passiert."
+    },
+    {
+      "id": "g4u02.w.wastepaper-bin",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "handkerchief",
+            "weapon",
+            "evidence",
+            "report",
+            "conclusion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "wastepaper bin",
+      "g": "Papierkorb",
+      "d": "a basket for old letters you do not want",
+      "s": "He put all the old letters into the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wastepaper bin",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wastepaper bin",
+          "tier": "full"
+        },
+        {
+          "text": "wastepaper bins",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wastepaper bin",
+            "tier": "full"
+          },
+          {
+            "text": "a wastepaper bin",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Papierkorb",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "handkerchief",
+        "weapon",
+        "evidence"
+      ],
+      "hintDe": "Da hinein wirfst du altes Papier und Briefe, die du nicht mehr brauchst."
+    },
+    {
+      "id": "g4u02.w.weapon",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "witness",
+            "report",
+            "conclusion",
+            "evidence",
+            "mystery"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "weapon",
+      "g": "Waffe",
+      "d": "a thing used to hurt or to make somebody die",
+      "s": "The detective put the ___ knife away for the police.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "weapon",
+          "tier": "full"
+        },
+        {
+          "text": "weapons",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "weapon",
+          "tier": "full"
+        },
+        {
+          "text": "weapons",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "weapon",
+            "tier": "full"
+          },
+          {
+            "text": "a weapon",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Waffe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "witness",
+        "report",
+        "conclusion"
+      ],
+      "hintDe": "Ein Messer oder eine Pistole ist so etwas, womit man jemandem wehtun kann."
+    },
+    {
+      "id": "g4u02.w.witness",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "suspect",
+            "victim",
+            "criminal",
+            "employee",
+            "relative"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "witness",
+      "g": "Zeuge/Zeugin",
+      "d": "a man or woman who watches a crime happen",
+      "s": "A ___ can tell the police about a crime.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "witness",
+          "tier": "full"
+        },
+        {
+          "text": "witnesses",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "witness",
+          "tier": "full"
+        },
+        {
+          "text": "witnesses",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "witness",
+            "tier": "full"
+          },
+          {
+            "text": "a witness",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zeuge",
+            "tier": "full"
+          },
+          {
+            "text": "Zeugin",
+            "tier": "full"
+          },
+          {
+            "text": "Zeuge/Zeugin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "suspect",
+        "victim",
+        "criminal"
+      ],
+      "hintDe": "Diese Person hat das Verbrechen mit eigenen Augen gesehen."
+    }
+  ]
+}

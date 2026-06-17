@@ -1,0 +1,39 @@
+{
+  "schema": "verify-merged@1",
+  "slug": "g1-u07",
+  "round": 1,
+  "itemsHash": "ca45f99fa37b",
+  "lenses": {
+    "level-gloss": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "answers": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "translation": {
+      "by": "fable-carryforward",
+      "flagged": 1
+    },
+    "register": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    }
+  },
+  "byItem": {
+    "g1u07.w.chips": [
+      {
+        "key": "translation-unnatural:g1u07.w.chips",
+        "kind": "translation-unnatural",
+        "itemId": "g1u07.w.chips",
+        "severity": "warn",
+        "note": "enToDe gives 'Chips (full)' / 'Pommes (partial)', but the item teaches BrE 'chips' = hot fried potato (definition d: 'food you eat hot with fish'; carrier 'fish and chips'). In German 'Chips' = the cold bag snack (crisps), so the full-tier gloss reads against the intended hot-fries meaning while the meaning-accurate 'Pommes' is only partial. Defensible as the conventional loanword answer, but the tiers arguably sit the wrong way round for the BrE sense.",
+        "lens": "translation"
+      }
+    ]
+  },
+  "fixCount": 0,
+  "warnCount": 1,
+  "escalated": []
+}
