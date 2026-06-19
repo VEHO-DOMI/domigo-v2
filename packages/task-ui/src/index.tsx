@@ -193,7 +193,12 @@ const TEXT_FORMATS = new Set([
   "question-formation", "free-form", "sentence-building", "anagram",
 ]);
 
-export function GrammarItemView({ item, onResult }: { item: GrammarItem; onResult?: (tier: Tier) => void }) {
+/** The graded input + item id, surfaced to the parent for attempt recording. */
+export type ResultDetail =
+  | { kind: "grammar"; itemId: string; input: GrammarInput }
+  | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string } };
+
+export function GrammarItemView({ item, onResult }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void }) {
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
   const choiceOptions = useShuffled(
@@ -222,7 +227,7 @@ export function GrammarItemView({ item, onResult }: { item: GrammarItem; onResul
     else input = { kind: "text", value: text.join(" | ") };
     const r = gradeGrammar(item, input);
     setTier(r.tier);
-    onResult?.(r.tier);
+    onResult?.(r.tier, { kind: "grammar", itemId: item.id, input });
   };
 
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
@@ -254,14 +259,14 @@ export function GrammarItemView({ item, onResult }: { item: GrammarItem; onResul
 
 // ---- vocab item ----------------------------------------------------------
 
-export function VocabItemView({ item, onResult }: { item: VocabItem; onResult?: (tier: Tier) => void }) {
+export function VocabItemView({ item, onResult }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void }) {
   const [value, setValue] = useState("");
   const [tier, setTier] = useState<Tier | null>(null);
   const done = tier !== null;
   const submit = () => {
     const r = gradeVocab(item, value);
     setTier(r.tier);
-    onResult?.(r.tier);
+    onResult?.(r.tier, { kind: "vocab", itemId: item.id, input: { kind: "vocab", value } });
   };
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
   const answer = item.sAnswers.filter((a) => a.tier === "full").map((a) => a.text).join("  /  ");
