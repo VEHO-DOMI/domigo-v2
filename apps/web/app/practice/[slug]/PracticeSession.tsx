@@ -5,7 +5,7 @@ import type { CSSProperties } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
 import { xpForTier } from "@domigo/engine";
-import { GrammarItemView, VocabItemView } from "@domigo/task-ui";
+import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 
 type Mode = "grammar" | "vocab";
 
@@ -21,10 +21,24 @@ export default function PracticeSession({ slug, vocab, grammar }: {
   const item = list[i];
 
   const switchMode = (m: Mode) => { setMode(m); setI(0); setAnswered(false); setResults([]); };
-  const onResult = (tier: Tier) => {
+  const onResult = (tier: Tier, detail: ResultDetail) => {
     if (!item) return;
     setAnswered(true);
-    setResults((prev) => [...prev, { tier, xp: xpForTier(item.difficulty * 10, tier) }]);
+    setResults((prev) => [...prev, { tier, xp: xpForTier(item.difficulty * 10, tier) }]); // instant optimistic UI
+
+    // Best-effort persistence — non-blocking; the server re-grades authoritatively.
+    void fetch("/api/attempts", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        clientAttemptId: crypto.randomUUID(),
+        itemId: detail.itemId,
+        mode: "practice",
+        input: detail.input,
+        latencyMs: null,
+        hintUsed: false,
+      }),
+    }).catch(() => { /* swallow — offline outbox is a later PR; feedback already shown */ });
   };
   const next = () => { setAnswered(false); setI((x) => Math.min(x + 1, list.length - 1)); };
 
