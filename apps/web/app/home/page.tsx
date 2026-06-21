@@ -53,6 +53,10 @@ export default async function HomePage() {
           <strong style={{ fontSize: 17 }}>Study Path →</strong>
           <span style={{ color: "#64748b", fontSize: 14 }}>Guided units with checkpoints</span>
         </Link>
+        <Link href="/listening" style={cardStyle}>
+          <strong style={{ fontSize: 17 }}>Listening →</strong>
+          <span style={{ color: "#64748b", fontSize: 14 }}>Audio comprehension by unit</span>
+        </Link>
       </div>
       <form action={doSignOut} style={{ marginTop: 28 }}>
         <button type="submit" style={{ background: "none", border: "none", color: "#94a3b8", fontSize: 14, cursor: "pointer", textDecoration: "underline" }}>

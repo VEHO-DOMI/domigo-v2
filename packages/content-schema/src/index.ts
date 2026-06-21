@@ -1191,3 +1191,92 @@ export const StoryItems = z.object({
   grammarItems: z.array(GrammarItem),
 });
 export type StoryItems = z.infer<typeof StoryItems>;
+
+// ---------------------------------------------------------------------------
+// Listening — listening@1 (B3). Audio comprehension tasks. Defined INLINE here
+// (not a sibling file) to avoid an ESM circular-eval hazard: a separate file
+// importing these primitives while index re-exports it would hit them in TDZ.
+//
+// A ListeningItem is a SIBLING gradeable type, NOT a GrammarItem: a GrammarItem
+// id must be `.gi.` and pass an id↔structureId coherence check, neither of which
+// fits a listening item. It carries exactly the fields the grader + renderer read
+// (format/prompt/answers/distractors/pairs/groups/gloss/difficulty/id), so it is
+// cast to GrammarItem at the grade/render call (see /api/attempts, task-ui).
+// Content method: the srdp-listening-comprehension skill, re-leveled to A1–A2.
+// ---------------------------------------------------------------------------
+
+/** `g2u03.li.<taskKey>.<fmt>.<NNN>` — sibling to ItemRef (which stays vocab/grammar only). */
+export const ListeningRef = z
+  .string()
+  .regex(/^g[1-4]u\d{2}\.li\.[a-z0-9-]+\.(?:gf|mc|cp|tr|ec|tf|qf|ff|sb|mt|ag|gs|mp)\.\d{3}$/);
+
+/** A gradeable listening item — GrammarItem-shaped, minus id/structureId. */
+export const ListeningItem = z.object({
+  id: ListeningRef,
+  rev: z.number().int().min(1),
+  difficulty: Difficulty,
+  format: GrammarFormat,
+  prompt: z.object({
+    text: z.string().min(1),
+    lang: z.enum(["en", "de"]),
+    blanks: z.number().int().min(0).max(4),
+  }),
+  answers: z.array(TieredAnswer),
+  direction: TranslationDirection.nullable(),
+  distractors: z.array(z.string().min(1)),
+  pairs: z.array(z.object({ left: z.string().min(1), right: z.string().min(1) })),
+  groups: z.array(z.object({ label: z.string().min(1), members: z.array(z.string().min(1)).min(2) })),
+  gloss: z.array(Gloss),
+  hintDe: z.string().min(1),
+  hintEn: z.string().nullable(),
+  explainDe: z.string().min(1),
+  explainEn: z.string().nullable(),
+  strict: z.boolean(),
+});
+export type ListeningItem = z.infer<typeof ListeningItem>;
+
+/** One audio clip + its comprehension items. `transcript` is hidden (never rendered). */
+export const ListeningTask = z
+  .object({
+    id: z.string().regex(/^g[1-4]u\d{2}\.lt\.[a-z0-9-]+$/),
+    key: z.string().regex(/^[a-z0-9-]+$/),
+    titleDe: z.string().min(1),
+    audio: AudioRef,
+    transcript: z.string().min(1),
+    items: z.array(ListeningItem).min(1),
+  })
+  .superRefine((t, ctx) => {
+    const want = `.li.${t.key}.`;
+    for (const [i, it] of t.items.entries()) {
+      if (!it.id.includes(want)) {
+        ctx.addIssue({ code: "custom", path: ["items", i, "id"], message: `item id must embed task key "${t.key}"` });
+      }
+    }
+  });
+export type ListeningTask = z.infer<typeof ListeningTask>;
+
+export const ListeningFile = z
+  .object({
+    schema: z.literal("listening@1"),
+    grade: GradeZ,
+    unit: z.number().int().min(1).max(15),
+    slug: UnitSlug,
+    /** Re-leveling provenance (srdp-listening method, down to A1–A2). */
+    level: z.enum(["A1", "A1+", "A2", "A2+"]),
+    tasks: z.array(ListeningTask).min(1),
+  })
+  .superRefine((f, ctx) => {
+    const seen = new Set<string>();
+    for (const [i, t] of f.tasks.entries()) {
+      if (!t.id.startsWith(`g${f.grade}u`)) {
+        ctx.addIssue({ code: "custom", path: ["tasks", i, "id"], message: "grade prefix mismatch" });
+      }
+      for (const it of t.items) {
+        if (seen.has(it.id)) {
+          ctx.addIssue({ code: "custom", path: ["tasks", i], message: `duplicate item id ${it.id}` });
+        }
+        seen.add(it.id);
+      }
+    }
+  });
+export type ListeningFile = z.infer<typeof ListeningFile>;

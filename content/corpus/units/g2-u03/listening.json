@@ -1,0 +1,121 @@
+{
+  "schema": "listening@1",
+  "grade": 2,
+  "unit": 3,
+  "slug": "g2-u03",
+  "level": "A2",
+  "tasks": [
+    {
+      "id": "g2u03.lt.market",
+      "key": "market",
+      "titleDe": "Hör zu: Auf dem Markt",
+      "audio": {
+        "script": "Hello! My name is Mia. On Saturday morning, I go to the market with my mum. The market is in the town centre, next to the old church. We always buy fresh fruit and vegetables there. My mum buys apples, bananas and tomatoes. I love the apples because they are very sweet. The market opens at eight o'clock and closes at one o'clock. My favourite shop sells cheese and fresh bread. After shopping, we have a hot chocolate in a small café. I really like Saturday mornings!",
+        "voice": null,
+        "file": null
+      },
+      "transcript": "Hello! My name is Mia. On Saturday morning, I go to the market with my mum. The market is in the town centre, next to the old church. We always buy fresh fruit and vegetables there. My mum buys apples, bananas and tomatoes. I love the apples because they are very sweet. The market opens at eight o'clock and closes at one o'clock. My favourite shop sells cheese and fresh bread. After shopping, we have a hot chocolate in a small café. I really like Saturday mornings!",
+      "items": [
+        {
+          "id": "g2u03.li.market.mc.001",
+          "rev": 1,
+          "difficulty": 1,
+          "format": "multiple-choice",
+          "prompt": { "text": "When does Mia go to the market?", "lang": "en", "blanks": 0 },
+          "answers": [{ "text": "On Saturday morning", "tier": "full" }],
+          "direction": null,
+          "distractors": ["On Sunday morning", "On Friday evening", "Every afternoon"],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Achte auf den Wochentag und die Tageszeit.",
+          "hintEn": null,
+          "explainDe": "Mia sagt „On Saturday morning … I go to the market“.",
+          "explainEn": null,
+          "strict": false
+        },
+        {
+          "id": "g2u03.li.market.mc.002",
+          "rev": 1,
+          "difficulty": 1,
+          "format": "multiple-choice",
+          "prompt": { "text": "True or false? The market is next to the old church.", "lang": "en", "blanks": 0 },
+          "answers": [{ "text": "True", "tier": "full" }],
+          "direction": null,
+          "distractors": ["False"],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Wo steht der Markt?",
+          "hintEn": null,
+          "explainDe": "„The market is in the town centre, next to the old church.“",
+          "explainEn": null,
+          "strict": false
+        },
+        {
+          "id": "g2u03.li.market.gf.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "gap-fill",
+          "prompt": { "text": "The market opens at ___ o'clock.", "lang": "en", "blanks": 1 },
+          "answers": [
+            { "text": "eight", "tier": "full" },
+            { "text": "8", "tier": "full" }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Eine Uhrzeit am Morgen.",
+          "hintEn": null,
+          "explainDe": "„The market opens at eight o'clock.“",
+          "explainEn": null,
+          "strict": false
+        },
+        {
+          "id": "g2u03.li.market.mt.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "matching",
+          "prompt": { "text": "Match each place to what you can get there.", "lang": "en", "blanks": 0 },
+          "answers": [],
+          "direction": null,
+          "distractors": [],
+          "pairs": [
+            { "left": "The favourite shop", "right": "cheese and bread" },
+            { "left": "The café", "right": "a hot chocolate" }
+          ],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Was verkauft der Lieblingsladen? Was trinkt Mia im Café?",
+          "hintEn": null,
+          "explainDe": "Der Lieblingsladen verkauft Käse und Brot; im Café gibt es eine heiße Schokolade.",
+          "explainEn": null,
+          "strict": false
+        },
+        {
+          "id": "g2u03.li.market.ff.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "free-form",
+          "prompt": { "text": "What does Mia drink after shopping?", "lang": "en", "blanks": 0 },
+          "answers": [
+            { "text": "hot chocolate", "tier": "full" },
+            { "text": "a hot chocolate", "tier": "full" }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Ein warmes Getränk.",
+          "hintEn": null,
+          "explainDe": "„… we have a hot chocolate in a small café.“",
+          "explainEn": null,
+          "strict": false
+        }
+      ]
+    }
+  ]
+}

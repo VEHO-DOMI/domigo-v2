@@ -57,7 +57,8 @@ Four shipped increments, **all merged to `main`**:
 | **Smart Review UI** | ✅ `/review` + `/review/session` study loop (`mode:"review"`); home due-count badge (`feat/review-ui`) |
 | **Streaks / offline outbox** | ✅ daily Vienna-day streak (home + summary badge) + IndexedDB attempt outbox (`feat/streaks-outbox`) |
 | **Study Path (B1)** | ✅ `/learn` node map — teaching + graduated practice + checkpoint; unlock + stars (`feat/study-path`) |
-| **Mock Tests / Listening** | ❌ not started |
+| **Listening (B3)** | ✅ `/listening` audio tasks — Web-Speech/file player, reuse-grader items, Leitner-skipped (`feat/listening`) |
+| **Mock Tests (B2)** | ❌ not started |
 | **Game layer** | ❌ designed (`10_game_layer.md`); not started |
 | **Migration / cutover** | ◻️ v1 students in shared Neon; v2 reuse-accounts decided; cutover not done |
 | `main` HEAD | `9d2ae99` (merge #22) · `pnpm -r typecheck/lint/test/content/build` green · tests: engine 24 / pipeline 60 / loader 4 / db 8 |
@@ -133,7 +134,8 @@ Per-unit guided path at `/learn/[slug]`. The node graph is DERIVED (pure `buildU
 #### B2. Mock Tests  ◻️
 From the Check-up material; new content type + grading (auto where machine-checkable, teacher-graded for writing — see `07_task_formats.md`). Likely its own corpus + a `/tests` surface.
 
-#### B3. Listening  ◻️
+#### B3. Listening  ✅ **DONE (2026-06-21, PR `feat/listening`, stacked on B1)**
+`listening@1` schema (a task = `AudioRef` clip + hidden transcript + sibling gradeable items — NOT `GrammarItem`, cast to it at grade/render). `/listening` surface; the `AudioClip` player prefers a pre-generated `AudioRef.file`, else speaks `AudioRef.script` via the Web Speech API (A1–A2 pace) — swapping in TTS files later is content-only. Items reuse the engine + `GrammarItemView` (MC, TF→multiple-choice, gap, matching, short-answer); attempts post via the existing `/api/attempts` outbox (`mode:"listening"`) → XP + streak, but **skip the Leitner queue** (audio can't re-render in `/review`). Content method = the `srdp-listening-comprehension` skill, re-leveled A1–A2; a g2-u03 pilot ships (full corpus = later waves). Opt-in `pnpm content validate-listening` (the main gate stays blind to the new files). Verified: gate green + dev-DB E2E (all 5 formats grade correct, `kind='listening'`, `review_queue` stays 0). Original notes:
 The schema already reserves audio script fields. Decide audio source (TTS vs MORE! Test-Builder rights — `09` open decision). Generate audio → listening item formats (MC / true-false / gap / matching / short-answer tied to a clip).
 
 ### Track C — The game layer (P2) — _builds on A (auth + Smart Review)_
@@ -161,7 +163,7 @@ A1 (verify DB)  ──►  A2 (auth)  ──►  A3 (/review UI)  ──►  A4 
                                       (needs auth + Smart Review service)
 D (migration + bulletproof-beta) runs in parallel; it GATES any student go-live.
 ```
-**Do next:** A1 ✅ → A2 ✅ → A3 ✅ → A4 ✅ → B1 Study Path ✅. Next: **B2 Mock Tests** / **B3 Listening**, or **C / G1 RPG** — the game layer reuses the Study Path progression + `getDueRefs`.
+**Do next:** A1 ✅ → A2 ✅ → A3 ✅ → A4 ✅ → B1 ✅ → B3 Listening ✅. Next: **B2 Mock Tests** (in progress, `feat/mock-tests` on `feat/listening`), or **C / G1 RPG** — the game layer reuses the Study Path progression + `getDueRefs`.
 
 ---
 

@@ -4,9 +4,9 @@
  * item (not the route), so the games and Smart Review reuse these. Grading goes
  * through @domigo/engine; nothing here re-implements answer logic.
  */
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
-import type { GrammarItem, GrammarStructure, Gloss, VocabItem, WordBank } from "@domigo/content-schema";
+import type { AudioRef, GrammarItem, GrammarStructure, Gloss, ListeningTask, VocabItem, WordBank } from "@domigo/content-schema";
 import type { GrammarInput, Tier } from "@domigo/engine";
 import { breaksCombo, gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
 
@@ -349,6 +349,73 @@ export function GrammarIntroView({ structures }: { structures: GrammarStructure[
             </div>
           ))}
         </div>
+      ))}
+    </div>
+  );
+}
+
+// ---- listening (B3): audio player + task view ----------------------------
+
+/** A listening task as sent to the client — transcript stripped server-side. */
+export type ClientListeningTask = Omit<ListeningTask, "transcript">;
+
+/** Plays a clip: prefers a pre-generated file, else speaks the script via Web Speech (A1–A2 pace). */
+export function AudioClip({ audio }: { audio: AudioRef }) {
+  const [ready, setReady] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  useEffect(() => setReady(true), []);
+
+  const play = () => {
+    if (audio.file) {
+      const el = new Audio(audio.file);
+      el.onended = () => setPlaying(false);
+      setPlaying(true);
+      void el.play().catch(() => setPlaying(false));
+      return;
+    }
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(audio.script);
+    u.lang = "en-GB";
+    u.rate = 0.85; // slowed for A1–A2 listeners
+    if (audio.voice) {
+      const v = window.speechSynthesis.getVoices().find((x) => x.name === audio.voice);
+      if (v) u.voice = v;
+    }
+    u.onend = () => setPlaying(false);
+    setPlaying(true);
+    window.speechSynthesis.speak(u);
+  };
+  const stop = () => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    setPlaying(false);
+  };
+
+  const supported = ready && (!!audio.file || (typeof window !== "undefined" && "speechSynthesis" in window));
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+      <button onClick={play} disabled={!supported || playing} style={{ ...btn, background: "#2563eb" }}>
+        ▶ {playing ? "Playing…" : "Play audio"}
+      </button>
+      {playing && (
+        <button onClick={stop} style={{ ...btn, background: "#64748b" }}>Stop</button>
+      )}
+      {ready && !supported && <span style={{ fontSize: 13, color: "#94a3b8" }}>Audio unavailable on this device.</span>}
+    </div>
+  );
+}
+
+/** One listening task: heading + audio + its comprehension items (graded via GrammarItemView). */
+export function ListeningTaskView({ task, onResult }: {
+  task: ClientListeningTask;
+  onResult?: (tier: Tier, detail: ResultDetail) => void;
+}) {
+  return (
+    <div style={{ ...card, gap: 14 }}>
+      <h3 style={{ fontSize: 17, margin: 0 }}>{task.titleDe}</h3>
+      <AudioClip audio={task.audio} />
+      {task.items.map((it) => (
+        <GrammarItemView key={it.id} item={it as unknown as GrammarItem} onResult={onResult} />
       ))}
     </div>
   );

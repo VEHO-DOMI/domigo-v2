@@ -13,7 +13,7 @@ export interface RecordAttemptInput {
   userId: string;
   classId: string;
   itemId: string;
-  kind: "vocab" | "grammar";
+  kind: "vocab" | "grammar" | "listening";
   unitSlug: string;
   grade: number;
   mode: string;
@@ -62,8 +62,12 @@ export async function recordAttempt(db: Db, a: RecordAttemptInput): Promise<Reco
   const duplicate = inserted.length === 0;
   let streak = 0;
   if (!duplicate) {
-    const ref: ReviewRef = { itemId: a.itemId, kind: a.kind, unitSlug: a.unitSlug, grade: a.grade };
-    await updateReviewQueue(db, a.userId, ref, a.tier);
+    // Listening items can't be re-rendered in /review (they need their audio), so they
+    // earn XP + streak but never enter the Leitner queue. vocab/grammar always queue.
+    if (a.kind === "vocab" || a.kind === "grammar") {
+      const ref: ReviewRef = { itemId: a.itemId, kind: a.kind, unitSlug: a.unitSlug, grade: a.grade };
+      await updateReviewQueue(db, a.userId, ref, a.tier);
+    }
 
     // Streak + XP in one upsert. The streak advances on the FIRST attempt of each
     // Vienna day regardless of correctness (a wrong answer still counts as showing

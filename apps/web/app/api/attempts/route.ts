@@ -2,20 +2,22 @@
  * POST /api/attempts — idempotent, server-graded attempt recording.
  *
  * The client sends the RAW user answer; the server re-grades through the one
- * grading brain (@domigo/engine), records the attempt, updates the Leitner
- * review queue, and bumps the v2 XP pool (all via @domigo/db `recordAttempt`).
- * Best-effort persistence: grading always returns even if the DB write fails
- * (the UI stays correct). Failure never subtracts XP (10_game_layer Law 3).
+ * grading brain (@domigo/engine), records the attempt, updates the Leitner review
+ * queue (vocab/grammar only — listening items skip it), and bumps the v2 XP pool
+ * (all via @domigo/db `recordAttempt`). Best-effort persistence: grading always
+ * returns even if the DB write fails. Failure never subtracts XP (Law 3).
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { ItemRef } from "@domigo/content-schema";
-import { loadUnit } from "@domigo/content-loader";
+import { ItemRef, ListeningRef } from "@domigo/content-schema";
+import type { GrammarItem } from "@domigo/content-schema";
+import { loadListening, loadUnit } from "@domigo/content-loader";
 import { gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
 import type { GrammarInput, Tier } from "@domigo/engine";
 import { getDb, recordAttempt } from "@domigo/db";
 import { getActingUser } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
+import { parseListeningRef } from "@/lib/listeningRef";
 
 export const runtime = "nodejs"; // content-loader uses node:fs → not edge
 export const dynamic = "force-dynamic";
@@ -31,7 +33,7 @@ const GrammarInputSchema = z.union([
 
 const Body = z.object({
   clientAttemptId: z.string().regex(UUID),
-  itemId: ItemRef,
+  itemId: z.union([ItemRef, ListeningRef]),
   mode: z.string().min(1).max(40).regex(/^[a-z0-9:_-]+$/i),
   input: z.union([GrammarInputSchema, z.object({ kind: z.literal("vocab"), value: z.string() })]),
   latencyMs: z.number().int().nonnegative().nullable().optional(),
@@ -40,7 +42,7 @@ const Body = z.object({
 });
 
 export async function POST(req: Request): Promise<Response> {
-  // 1. Identity (dev now; auth() later).
+  // 1. Identity.
   const acting = await getActingUser(req);
   if (!acting) return NextResponse.json({ ok: false, error: "no_identity" }, { status: 401 });
 
@@ -49,25 +51,48 @@ export async function POST(req: Request): Promise<Response> {
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   const { clientAttemptId, itemId, mode, input, latencyMs, hintUsed, context } = parsed.data;
 
-  // 3. Derive coordinates from the id (never trust client slug/grade).
+  // 3. Derive coordinates from the id (never trust client slug/grade). vocab/grammar
+  //    route through parseItemRef; listening items through parseListeningRef.
   const ref = parseItemRef(itemId);
-  if (!ref) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+  const lref = ref ? null : parseListeningRef(itemId);
+  if (!ref && !lref) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
 
-  // 4–6. Load the unit, find the item, re-grade, compute XP (wrong → 0; never subtract).
+  // 4–6. Load + re-grade + compute XP (wrong → 0; never subtract).
   let tier: Tier;
   let xpAwarded: number;
+  let kind: "vocab" | "grammar" | "listening";
+  let unitSlug: string;
+  let grade: number;
   try {
-    const unit = loadUnit(ref.unitSlug);
-    if (ref.kind === "vocab") {
-      const item = unit.vocab.find((v) => v.id === itemId);
-      if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-      const value = "value" in input && typeof input.value === "string" ? input.value : "";
-      tier = gradeVocab(item, value).tier;
-      xpAwarded = xpForTier(item.difficulty * 10, tier);
+    if (ref) {
+      kind = ref.kind;
+      unitSlug = ref.unitSlug;
+      grade = ref.grade;
+      const unit = loadUnit(ref.unitSlug);
+      if (ref.kind === "vocab") {
+        const item = unit.vocab.find((v) => v.id === itemId);
+        if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+        const value = "value" in input && typeof input.value === "string" ? input.value : "";
+        tier = gradeVocab(item, value).tier;
+        xpAwarded = xpForTier(item.difficulty * 10, tier);
+      } else {
+        const item = unit.grammar.find((g) => g.id === itemId);
+        if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+        tier = gradeGrammar(item, input as GrammarInput).tier;
+        xpAwarded = xpForTier(item.difficulty * 10, tier);
+      }
     } else {
-      const item = unit.grammar.find((g) => g.id === itemId);
+      // listening: lref is non-null here (the !ref && !lref guard returned above).
+      const lr = lref!;
+      kind = "listening";
+      unitSlug = lr.unitSlug;
+      grade = lr.grade;
+      const file = loadListening(lr.unitSlug);
+      const item = file?.tasks.flatMap((t) => t.items).find((i) => i.id === itemId);
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-      tier = gradeGrammar(item, input as GrammarInput).tier;
+      // A ListeningItem is GrammarItem-shaped for grading (no structureId); the grader
+      // reads only format/answers/distractors/pairs/groups/prompt.
+      tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
       xpAwarded = xpForTier(item.difficulty * 10, tier);
     }
   } catch {
@@ -80,9 +105,9 @@ export async function POST(req: Request): Promise<Response> {
       userId: acting.userId,
       classId: acting.classId,
       itemId,
-      kind: ref.kind,
-      unitSlug: ref.unitSlug,
-      grade: ref.grade,
+      kind,
+      unitSlug,
+      grade,
       mode,
       tier,
       xpAwarded,
@@ -93,7 +118,6 @@ export async function POST(req: Request): Promise<Response> {
     });
     return NextResponse.json({ ok: true, tier, xpAwarded, box, dueAt: dueAt.toISOString(), duplicate, streak });
   } catch {
-    // Graded fine, DB failed → graceful, non-blocking (no 500).
     return NextResponse.json({ ok: false, error: "persist_failed", tier, xpAwarded });
   }
 }

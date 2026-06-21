@@ -11,7 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { GrammarFile, GrammarStructuresFile, VocabFile, WordBank } from "@domigo/content-schema";
+import { GrammarFile, GrammarStructuresFile, ListeningFile, VocabFile, WordBank } from "@domigo/content-schema";
 import type { GrammarItem, GrammarStructure, VocabItem } from "@domigo/content-schema";
 
 /**
@@ -107,6 +107,23 @@ export function loadUnitStructures(slug: string): GrammarStructure[] {
   const raw = readJson<unknown>(path.join(STRUCTURES_DIR, `g${grade}`, "structures.json"));
   if (raw === null) return [];
   return GrammarStructuresFile.parse(raw).structures.filter((s) => s.unit === unit);
+}
+
+/** Load + validate one unit's listening tasks (B3). Null if the unit has none. Server-only. */
+export function loadListening(slug: string): ListeningFile | null {
+  if (!UNIT_SLUG.test(slug)) throw new Error(`content-loader: bad unit slug "${slug}"`);
+  const raw = readJson<unknown>(path.join(UNITS_DIR, slug, "listening.json"));
+  return raw === null ? null : ListeningFile.parse(raw);
+}
+
+/** Unit slugs that have a listening.json (the listening "approval" signal), sorted. */
+export function listListeningUnits(): string[] {
+  if (!fs.existsSync(UNITS_DIR)) return [];
+  return fs
+    .readdirSync(UNITS_DIR)
+    .filter((n) => UNIT_SLUG.test(n))
+    .filter((slug) => fs.existsSync(path.join(UNITS_DIR, slug, "listening.json")))
+    .sort();
 }
 
 interface StateLogFile {
