@@ -1,20 +1,24 @@
 /**
- * Dev identity for the Smart Review foundation PR. Real NextAuth `auth()` slots
- * in here as priority 0 in the auth PR — at which point the header/env branches
- * are deleted and this becomes a thin session read. Everything downstream only
- * consumes `{userId, classId}`, so the swap is a pure replacement.
+ * Resolves the acting user for attempt recording. Real NextAuth session first;
+ * a non-prod env/header fallback remains for CI + the verification scripts.
+ * Downstream only consumes `{userId, classId}`.
  */
+import { auth } from "@/auth";
+
 export interface ActingUser {
   userId: string;
   classId: string;
 }
 
 export async function getActingUser(req: Request): Promise<ActingUser | null> {
-  // (auth PR) const session = await auth(); if (session?.user?.id) return {...};
+  // Signed-in STUDENT (teachers have classId=null → they don't record practice attempts).
+  const session = await auth();
+  if (session?.user?.id && session.user.classId) {
+    return { userId: session.user.id, classId: session.user.classId };
+  }
 
-  // The dev backdoor must NEVER resolve identity in production.
+  // Dev fallback — non-prod only (the backdoor must never resolve in production).
   if (process.env.VERCEL_ENV === "production") return null;
-
   const userId = req.headers.get("x-dev-user-id") ?? process.env.DEV_USER_ID ?? "";
   const classId = req.headers.get("x-dev-class-id") ?? process.env.DEV_CLASS_ID ?? "";
   if (!userId || !classId) return null;

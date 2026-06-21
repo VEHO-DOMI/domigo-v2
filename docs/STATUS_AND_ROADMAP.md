@@ -96,7 +96,9 @@ The Smart Review backend is merged but never run against a real DB.
 7. Add `DATABASE_URL` to Vercel **preview/prod** env (prod tables applied via the runbook below, not a live push). Then production attempts persist.
 - **Prod DDL (when ready):** `pg_dump` first; apply the committed `packages/db/drizzle/0000_*.sql` (it's `CREATE`-only in `domigo_v2`). Never `db:push` against prod.
 
-#### A2. Real auth — port v1 NextAuth  ◻️  _(branch `feat/auth`)_
+#### A2. Real auth — port v1 NextAuth  ✅ **DONE (2026-06-19)**
+NextAuth v5 (student + teacher Credentials) reusing the existing Neon accounts (class code + nickname + PIN), **read-only on `public.users`** (v1's lastSeenAt/onboardedAt writes dropped; pure callbacks). `apps/web/{auth.ts, middleware.ts, app/api/auth/[...nextauth], app/signin, app/admin/signin, app/home, app/admin}` + `@domigo/db` lookup helpers; `getActingUser` now reads the session. Verified live (dev branch, seeded fixture, cleaned up): 6/6 direct authorize + 6/6 E2E (sign-in→cookie→/home→middleware-protect→attempt records under the real id); `public` untouched. **Next blocking item is now A3 (`/review` study UI).** Original step-by-step kept below:
+
 Reuse the ~110 migrated accounts; students log in with their existing class + PIN.
 1. `cd /tmp && gh repo clone VEHO-DOMI/domigo /tmp/domigo-v1-ref` (port reference).
 2. Add deps to `apps/web`: `next-auth@beta` (v5) + `bcryptjs`.
