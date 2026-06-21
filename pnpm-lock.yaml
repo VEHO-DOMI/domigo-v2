@@ -72,6 +72,15 @@ importers:
         specifier: ^5
         version: 5.9.3
 
+  packages/art-gen:
+    devDependencies:
+      '@types/node':
+        specifier: ^24
+        version: 24.13.1
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
   packages/content-loader:
     dependencies:
       '@domigo/content-schema':
@@ -157,6 +166,25 @@ importers:
       vitest:
         specifier: ^3
         version: 3.2.6(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(tsx@4.22.4)
+
+  packages/game-core:
+    dependencies:
+      '@domigo/content-schema':
+        specifier: workspace:*
+        version: link:../content-schema
+      '@domigo/db':
+        specifier: workspace:*
+        version: link:../db
+      '@domigo/engine':
+        specifier: workspace:*
+        version: link:../engine
+    devDependencies:
+      '@types/node':
+        specifier: ^24
+        version: 24.13.1
+      typescript:
+        specifier: ^5
+        version: 5.9.3
 
   packages/task-ui:
     dependencies:
