@@ -70,7 +70,9 @@ Four shipped increments, **all merged to `main`**:
 
 ### Track A — Finish Smart Review (P1 learning pillar)
 
-#### A1. Provision + verify the live DB  ◻️  _(do this FIRST — unblocks everything DB)_
+#### A1. Provision + verify the live DB  ✅ **DONE (2026-06-19)**
+Dev branch `v2-dev` created off `domigo-db`; schema applied (additive confirmed — `public` 13→13 unchanged); **17/17 DB-layer + HTTP-route checks pass on live data**. Caught + fixed a real idempotency bug (partial-index `ON CONFLICT` → full unique index, [#21](https://github.com/VEHO-DOMI/domigo-v2/pull/21)). Dev `DATABASE_URL` + `DEV_USER_ID`/`DEV_CLASS_ID` are in gitignored `.env.local`. **The next blocking item is now A2 (auth).** Steps kept below for the prod apply + re-runs:
+
 The Smart Review backend is merged but never run against a real DB.
 1. In the Neon console, open the **`domigo-db`** project (Frankfurt — the shared DomiGo Postgres DB that holds the migrated students; _not_ "veho-vocab", which is the old Firebase project). Create a **dev branch** off `main` (⚠️ `domigo-db` may be at the free-tier 10-branch cap — delete a stale `preview/*` branch first, or reuse an existing dev branch); copy its **pooled** (`…-pooler…`) connection string.
 2. Find a real student identity for the dev backdoor:
