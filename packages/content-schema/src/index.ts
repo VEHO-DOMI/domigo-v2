@@ -1280,3 +1280,92 @@ export const ListeningFile = z
     }
   });
 export type ListeningFile = z.infer<typeof ListeningFile>;
+
+// ---------------------------------------------------------------------------
+// Mock tests — test@1 (B2). A test = ordered sections. REFERENCE sections point
+// at existing vocab/grammar/listening ids (no content copy — story-schema rule).
+// READING + WRITING sections embed test-only content. Reading items are a sibling
+// gradeable schema like ListeningItem (own `.ri.` id, no structureId → cast to
+// GrammarItem to grade). Writing is teacher-graded (not auto-scored), captured to
+// the writing_submissions table. Content method: srdp-reading, re-leveled A1–A2.
+// ---------------------------------------------------------------------------
+
+/** `g2u03.ri.<key>.<fmt>.<NNN>` — a reading-comprehension item (sibling to ItemRef). */
+export const TestRef = z
+  .string()
+  .regex(/^g[1-4]u\d{2}\.ri\.[a-z0-9-]+\.(?:gf|mc|cp|tr|ec|tf|qf|ff|sb|mt|ag|gs|mp)\.\d{3}$/);
+
+/** A gradeable reading item — same fields as ListeningItem, `.ri.` id, no structureId. */
+export const ReadingItem = z.object({
+  id: TestRef,
+  rev: z.number().int().min(1),
+  difficulty: Difficulty,
+  format: GrammarFormat,
+  prompt: z.object({
+    text: z.string().min(1),
+    lang: z.enum(["en", "de"]),
+    blanks: z.number().int().min(0).max(4),
+  }),
+  answers: z.array(TieredAnswer),
+  direction: TranslationDirection.nullable(),
+  distractors: z.array(z.string().min(1)),
+  pairs: z.array(z.object({ left: z.string().min(1), right: z.string().min(1) })),
+  groups: z.array(z.object({ label: z.string().min(1), members: z.array(z.string().min(1)).min(2) })),
+  gloss: z.array(Gloss),
+  hintDe: z.string().min(1),
+  hintEn: z.string().nullable(),
+  explainDe: z.string().min(1),
+  explainEn: z.string().nullable(),
+  strict: z.boolean(),
+});
+export type ReadingItem = z.infer<typeof ReadingItem>;
+
+/** A section that REFERENCES already-graded items (vocab/grammar/listening). */
+export const TestRefSection = z.object({
+  kind: z.enum(["vocab", "grammar", "listening"]),
+  titleDe: z.string().min(1),
+  itemIds: z.array(z.union([ItemRef, ListeningRef])).min(1),
+});
+
+/** A reading section EMBEDS a passage + comprehension items. */
+export const TestReadingSection = z.object({
+  kind: z.literal("reading"),
+  titleDe: z.string().min(1),
+  passage: z.string().min(1),
+  passageGloss: z.array(Gloss),
+  items: z.array(ReadingItem).min(1),
+});
+
+/** A writing section EMBEDS a prompt; NOT auto-graded (captured for teacher review — B2b). */
+export const TestWritingSection = z.object({
+  kind: z.literal("writing"),
+  titleDe: z.string().min(1),
+  promptId: z.string().regex(/^g[1-4]u\d{2}\.ti\.wr\.\d{3}$/),
+  promptDe: z.string().min(1),
+  taskEn: z.string().min(1),
+  minWords: z.number().int().min(10),
+  maxWords: z.number().int().min(20),
+  /** Reserved for B2b teacher grading; null for now. */
+  rubric: z.array(z.object({ criterion: z.string().min(1), maxPoints: z.number().int().min(1) })).nullable(),
+});
+
+/** Plain union (the ref-section discriminator is a 3-value enum, not one literal). */
+export const TestSection = z.union([TestRefSection, TestReadingSection, TestWritingSection]);
+export type TestSection = z.infer<typeof TestSection>;
+
+export const MockTest = z.object({
+  id: z.string().regex(/^g[1-4]u\d{2}\.tt\.[a-z0-9-]+$/),
+  titleDe: z.string().min(1),
+  sections: z.array(TestSection).min(1),
+});
+export type MockTest = z.infer<typeof MockTest>;
+
+export const TestFile = z.object({
+  schema: z.literal("test@1"),
+  grade: GradeZ,
+  unit: z.number().int().min(1).max(15),
+  slug: UnitSlug,
+  level: z.enum(["A1", "A1+", "A2", "A2+"]),
+  test: MockTest,
+});
+export type TestFile = z.infer<typeof TestFile>;

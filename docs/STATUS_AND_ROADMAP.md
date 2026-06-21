@@ -58,7 +58,7 @@ Four shipped increments, **all merged to `main`**:
 | **Streaks / offline outbox** | ✅ daily Vienna-day streak (home + summary badge) + IndexedDB attempt outbox (`feat/streaks-outbox`) |
 | **Study Path (B1)** | ✅ `/learn` node map — teaching + graduated practice + checkpoint; unlock + stars (`feat/study-path`) |
 | **Listening (B3)** | ✅ `/listening` audio tasks — Web-Speech/file player, reuse-grader items, Leitner-skipped (`feat/listening`) |
-| **Mock Tests (B2)** | ❌ not started |
+| **Mock Tests (B2)** | ✅ `/tests` Schularbeit-style sections (refs + reading + writing-capture); teacher-grading deferred to B2b (`feat/mock-tests`) |
 | **Game layer** | ❌ designed (`10_game_layer.md`); not started |
 | **Migration / cutover** | ◻️ v1 students in shared Neon; v2 reuse-accounts decided; cutover not done |
 | `main` HEAD | `9d2ae99` (merge #22) · `pnpm -r typecheck/lint/test/content/build` green · tests: engine 24 / pipeline 60 / loader 4 / db 8 |
@@ -131,7 +131,8 @@ Per-unit guided path at `/learn/[slug]`. The node graph is DERIVED (pure `buildU
 2. Routes `app/learn/[slug]` rendering the node map; nodes reuse `content-loader` + `task-ui` + `/api/attempts`.
 3. "Teaching" nodes (vocab/grammar intro) — new non-graded card types showing the word bank / structures.
 
-#### B2. Mock Tests  ◻️
+#### B2. Mock Tests  ✅ **DONE (2026-06-21, PR `feat/mock-tests`, stacked on B3)**
+`test@1` schema (a mock test = ordered sections). REFERENCE sections (vocab/grammar/listening) point at existing item ids (no content copy); a READING section embeds a passage + sibling-gradeable items (`.ri.`, srdp-reading method); a WRITING section embeds a prompt. `/tests` steps the sections (the server resolves reference ids → full items): auto-graded items reuse the engine + `/api/attempts` (`mode:"test:<section>"`) — referenced vocab/grammar feed Smart Review, embedded reading/listening skip it; the writing section captures the answer to a new `writing_submissions` table (additive `0003`) via `/api/writing-submission` (server-derived word count). **Teacher review + rubric scoring is deferred (B2b)** — submissions are captured, not yet surfaced. Pilot = an auto-assembled g2-u03 test. Opt-in `pnpm content validate-test`. Verified: gate green + dev-DB E2E (4 sections grade correct; vocab/grammar refs queue + reading/listening skip; writing captured w/ server word count; `public` 13→13). Original notes:
 From the Check-up material; new content type + grading (auto where machine-checkable, teacher-graded for writing — see `07_task_formats.md`). Likely its own corpus + a `/tests` surface.
 
 #### B3. Listening  ✅ **DONE (2026-06-21, PR `feat/listening`, stacked on B1)**
@@ -163,7 +164,7 @@ A1 (verify DB)  ──►  A2 (auth)  ──►  A3 (/review UI)  ──►  A4 
                                       (needs auth + Smart Review service)
 D (migration + bulletproof-beta) runs in parallel; it GATES any student go-live.
 ```
-**Do next:** A1 ✅ → A2 ✅ → A3 ✅ → A4 ✅ → B1 ✅ → B3 Listening ✅. Next: **B2 Mock Tests** (in progress, `feat/mock-tests` on `feat/listening`), or **C / G1 RPG** — the game layer reuses the Study Path progression + `getDueRefs`.
+**Do next:** A1 ✅ → A2 ✅ → A3 ✅ → A4 ✅ → B1 ✅ → B3 ✅ → B2 Mock Tests ✅ (Track B done; B2b teacher-grading UI + full content are follow-ups). Next: **C / G1 RPG** (the game layer) — reuses the Study Path progression + `getDueRefs`.
 
 ---
 

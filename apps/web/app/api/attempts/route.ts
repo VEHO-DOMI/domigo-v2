@@ -3,21 +3,22 @@
  *
  * The client sends the RAW user answer; the server re-grades through the one
  * grading brain (@domigo/engine), records the attempt, updates the Leitner review
- * queue (vocab/grammar only — listening items skip it), and bumps the v2 XP pool
- * (all via @domigo/db `recordAttempt`). Best-effort persistence: grading always
- * returns even if the DB write fails. Failure never subtracts XP (Law 3).
+ * queue (vocab/grammar only — listening + reading skip it), and bumps the v2 XP
+ * pool (all via @domigo/db `recordAttempt`). Best-effort persistence: grading
+ * always returns even if the DB write fails. Failure never subtracts XP (Law 3).
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { ItemRef, ListeningRef } from "@domigo/content-schema";
+import { ItemRef, ListeningRef, TestRef } from "@domigo/content-schema";
 import type { GrammarItem } from "@domigo/content-schema";
-import { loadListening, loadUnit } from "@domigo/content-loader";
+import { loadListening, loadTest, loadUnit } from "@domigo/content-loader";
 import { gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
 import type { GrammarInput, Tier } from "@domigo/engine";
 import { getDb, recordAttempt } from "@domigo/db";
 import { getActingUser } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
 import { parseListeningRef } from "@/lib/listeningRef";
+import { parseTestRef } from "@/lib/testRef";
 
 export const runtime = "nodejs"; // content-loader uses node:fs → not edge
 export const dynamic = "force-dynamic";
@@ -33,7 +34,7 @@ const GrammarInputSchema = z.union([
 
 const Body = z.object({
   clientAttemptId: z.string().regex(UUID),
-  itemId: z.union([ItemRef, ListeningRef]),
+  itemId: z.union([ItemRef, ListeningRef, TestRef]),
   mode: z.string().min(1).max(40).regex(/^[a-z0-9:_-]+$/i),
   input: z.union([GrammarInputSchema, z.object({ kind: z.literal("vocab"), value: z.string() })]),
   latencyMs: z.number().int().nonnegative().nullable().optional(),
@@ -52,15 +53,16 @@ export async function POST(req: Request): Promise<Response> {
   const { clientAttemptId, itemId, mode, input, latencyMs, hintUsed, context } = parsed.data;
 
   // 3. Derive coordinates from the id (never trust client slug/grade). vocab/grammar
-  //    route through parseItemRef; listening items through parseListeningRef.
+  //    → parseItemRef; listening → parseListeningRef; reading → parseTestRef.
   const ref = parseItemRef(itemId);
   const lref = ref ? null : parseListeningRef(itemId);
-  if (!ref && !lref) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+  const tref = ref || lref ? null : parseTestRef(itemId);
+  if (!ref && !lref && !tref) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
 
   // 4–6. Load + re-grade + compute XP (wrong → 0; never subtract).
   let tier: Tier;
   let xpAwarded: number;
-  let kind: "vocab" | "grammar" | "listening";
+  let kind: "vocab" | "grammar" | "listening" | "reading";
   let unitSlug: string;
   let grade: number;
   try {
@@ -81,17 +83,26 @@ export async function POST(req: Request): Promise<Response> {
         tier = gradeGrammar(item, input as GrammarInput).tier;
         xpAwarded = xpForTier(item.difficulty * 10, tier);
       }
-    } else {
-      // listening: lref is non-null here (the !ref && !lref guard returned above).
-      const lr = lref!;
+    } else if (lref) {
       kind = "listening";
-      unitSlug = lr.unitSlug;
-      grade = lr.grade;
-      const file = loadListening(lr.unitSlug);
+      unitSlug = lref.unitSlug;
+      grade = lref.grade;
+      const file = loadListening(lref.unitSlug);
       const item = file?.tasks.flatMap((t) => t.items).find((i) => i.id === itemId);
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-      // A ListeningItem is GrammarItem-shaped for grading (no structureId); the grader
-      // reads only format/answers/distractors/pairs/groups/prompt.
+      tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
+      xpAwarded = xpForTier(item.difficulty * 10, tier);
+    } else {
+      // reading: tref is non-null (the !ref && !lref && !tref guard returned above).
+      const tr = tref!;
+      kind = "reading";
+      unitSlug = tr.unitSlug;
+      grade = tr.grade;
+      const file = loadTest(tr.unitSlug);
+      const item = file?.test.sections
+        .flatMap((s) => (s.kind === "reading" ? s.items : []))
+        .find((i) => i.id === itemId);
+      if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
       tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
       xpAwarded = xpForTier(item.difficulty * 10, tier);
     }

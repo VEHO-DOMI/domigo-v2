@@ -131,3 +131,27 @@ export const studyPathProgress = v2.table(
     byUser: index("study_path_progress_user_idx").on(t.userId),
   }),
 );
+
+/**
+ * B2 Mock-test writing submissions (teacher-graded). Append-only capture now; the
+ * teacher review + rubric scoring (gradedAt/score/feedback/gradedBy) is a deferred
+ * follow-up (B2b) — additive columns then. domigo_v2 only; no FK to public.
+ */
+export const writingSubmissions = v2.table(
+  "writing_submissions",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id").notNull(),
+    classId: uuid("class_id").notNull(),
+    unitSlug: text("unit_slug").notNull(),
+    testId: text("test_id").notNull(),
+    promptId: text("prompt_id").notNull(),
+    text: text("text").notNull(),
+    wordCount: integer("word_count").notNull(),
+    submittedAt: timestamp("submitted_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    byUser: index("writing_submissions_user_idx").on(t.userId),
+    byClassUnit: index("writing_submissions_class_unit_idx").on(t.classId, t.unitSlug),
+  }),
+);

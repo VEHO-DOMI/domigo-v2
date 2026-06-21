@@ -11,7 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { GrammarFile, GrammarStructuresFile, ListeningFile, VocabFile, WordBank } from "@domigo/content-schema";
+import { GrammarFile, GrammarStructuresFile, ListeningFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
 import type { GrammarItem, GrammarStructure, VocabItem } from "@domigo/content-schema";
 
 /**
@@ -123,6 +123,23 @@ export function listListeningUnits(): string[] {
     .readdirSync(UNITS_DIR)
     .filter((n) => UNIT_SLUG.test(n))
     .filter((slug) => fs.existsSync(path.join(UNITS_DIR, slug, "listening.json")))
+    .sort();
+}
+
+/** Load + validate one unit's mock test (B2). Null if the unit has none. Server-only. */
+export function loadTest(slug: string): TestFile | null {
+  if (!UNIT_SLUG.test(slug)) throw new Error(`content-loader: bad unit slug "${slug}"`);
+  const raw = readJson<unknown>(path.join(UNITS_DIR, slug, "test.json"));
+  return raw === null ? null : TestFile.parse(raw);
+}
+
+/** Unit slugs that have a test.json (the mock-test "approval" signal), sorted. */
+export function listTestUnits(): string[] {
+  if (!fs.existsSync(UNITS_DIR)) return [];
+  return fs
+    .readdirSync(UNITS_DIR)
+    .filter((n) => UNIT_SLUG.test(n))
+    .filter((slug) => fs.existsSync(path.join(UNITS_DIR, slug, "test.json")))
     .sort();
 }
 

@@ -4,7 +4,7 @@
  */
 import { and, eq, sql } from "drizzle-orm";
 import type { Tier } from "@domigo/engine";
-import { practiceAttempts, reviewQueue, userProgress } from "./schema.ts";
+import { practiceAttempts, reviewQueue, userProgress, writingSubmissions } from "./schema.ts";
 import { updateReviewQueue, type ReviewRef } from "./review.ts";
 import { computeNextStreak, viennaDayBefore, viennaDayString } from "./streak.ts";
 import type { Db } from "./index.ts";
@@ -13,7 +13,7 @@ export interface RecordAttemptInput {
   userId: string;
   classId: string;
   itemId: string;
-  kind: "vocab" | "grammar" | "listening";
+  kind: "vocab" | "grammar" | "listening" | "reading";
   unitSlug: string;
   grade: number;
   mode: string;
@@ -147,3 +147,27 @@ export async function getUserProgress(db: Db, userId: string): Promise<UserProgr
     .limit(1);
   return rows[0] ?? null;
 }
+
+export interface RecordWritingInput {
+  userId: string;
+  classId: string;
+  unitSlug: string;
+  testId: string;
+  promptId: string;
+  text: string;
+  wordCount: number;
+}
+
+/** Append-only capture of a mock-test writing submission (teacher-graded later, B2b). */
+export async function recordWritingSubmission(db: Db, w: RecordWritingInput): Promise<void> {
+  await db.insert(writingSubmissions).values({
+    userId: w.userId,
+    classId: w.classId,
+    unitSlug: w.unitSlug,
+    testId: w.testId,
+    promptId: w.promptId,
+    text: w.text,
+    wordCount: w.wordCount,
+  });
+}
+

@@ -34,6 +34,7 @@ import { runStatus } from "./status.ts";
 import { runV1Snapshot } from "./v1snapshot.ts";
 import { runValidate } from "./validate.ts";
 import { runValidateListening } from "./validate-listening.ts";
+import { runValidateTest } from "./validate-test.ts";
 import { runVerifyIngest, runVerifyPrepare } from "./verify-items.ts";
 import { runWordbank } from "./wordbank.ts";
 
@@ -120,12 +121,15 @@ switch (command) {
   case "validate-listening":
     runValidateListening();
     break;
+  case "validate-test":
+    runValidateTest();
+    break;
   case "status":
     runStatus();
     break;
   default:
     console.error(
-      `unknown command: ${command ?? "(none)"}\nusage: pnpm content <extract|wordbank|v1-snapshot|gen|review-doc|ingest-review|validate|validate-listening|status> [flags]`,
+      `unknown command: ${command ?? "(none)"}\nusage: pnpm content <extract|wordbank|v1-snapshot|gen|review-doc|ingest-review|validate|validate-listening|validate-test|status> [flags]`,
     );
     process.exitCode = 2;
 }
