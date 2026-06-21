@@ -1369,3 +1369,161 @@ export const TestFile = z.object({
   test: MockTest,
 });
 export type TestFile = z.infer<typeof TestFile>;
+
+// ---------------------------------------------------------------------------
+// Game layer — encounter@1 / map@1 / quest@1 (Track C G0). Schema only; the
+// game runtime (game-core resolution, game-2d rendering) and the deferred
+// runtime invariants are Track C, not the schema.
+//
+// THE KEYSTONE RULE (G0.1): these schemas reference item ids (via scope/ItemRef/
+// TaskSlot) and NEVER embed graded item content. That is exactly what lets every
+// grade reuse the ONE grading brain + /api/attempts unchanged. Difficulty / XP /
+// distractors are DERIVED from the resolved item at runtime, never authored here.
+// No enums (erasableSyntaxOnly) → string unions only.
+// ---------------------------------------------------------------------------
+
+/** Grade-scoped encounter id, e.g. "g1.enc.classroom-spawns". */
+export const EncounterId = z.string().regex(/^g[1-4]\.enc\.[a-z0-9-]+$/);
+
+/** Where a game pulls its tasks from. Mirrors getDueRefs scope (no "all" — a
+ *  zone/encounter is always unit- or grade-scoped). Reused by quest clear. */
+export const GameScope = z.union([
+  z.object({ kind: z.literal("unit"), slug: UnitSlug }),
+  z.object({ kind: z.literal("grade"), grade: GradeZ }),
+]);
+export type GameScope = z.infer<typeof GameScope>;
+
+/** Mirror of engine's Tier — kept local so content-schema stays engine-free. */
+export const GameTier = z.enum(["correct", "partial", "close", "wrong"]);
+export type GameTier = z.infer<typeof GameTier>;
+
+/**
+ * encounter@1 — a RECIPE the runtime resolves, never baked items (so it stays
+ * grade-agnostic and reuses getDueRefs). `source.kind:"due"` → getDueRefs;
+ * empty queue → `fallback:"scope-random"` (Law 6: never a dead zone).
+ * `formatAllow:null` = the battle-friendly default subset (mc / gap-fill /
+ * anagram / context-picker), resolved by game-core.
+ */
+export const Encounter = z
+  .object({
+    schema: z.literal("encounter@1"),
+    id: EncounterId,
+    grade: GradeZ,
+    source: z.object({
+      kind: z.enum(["due", "scope-random"]),
+      scope: GameScope,
+      count: z.number().int().min(1).max(10),
+    }),
+    formatAllow: z.array(GrammarFormat).min(1).nullable(),
+    fallback: z.literal("scope-random"),
+  })
+  .superRefine((e, ctx) => {
+    if (!e.id.startsWith(`g${e.grade}.enc.`)) {
+      ctx.addIssue({ code: "custom", path: ["id"], message: "encounter id grade prefix mismatch" });
+    }
+    // Keystone: an encounter never sources cross-grade.
+    if (e.source.scope.kind === "grade" && e.source.scope.grade !== e.grade) {
+      ctx.addIssue({ code: "custom", path: ["source", "scope", "grade"], message: "scope grade must equal encounter grade" });
+    }
+    if (e.source.scope.kind === "unit" && !e.source.scope.slug.startsWith(`g${e.grade}-u`)) {
+      ctx.addIssue({ code: "custom", path: ["source", "scope", "slug"], message: "scope unit must be in the encounter's grade" });
+    }
+  });
+export type Encounter = z.infer<typeof Encounter>;
+
+/** Grade-scoped map / zone ids. */
+export const MapId = z.string().regex(/^g[1-4]\.map\.[a-z0-9-]+$/);
+export const ZoneId = z.string().regex(/^g[1-4]\.map\.[a-z0-9-]+\.z\d{2}$/);
+
+/**
+ * Render detail is DEFERRED — art-gen owns the atlas. The grid (width / height /
+ * tileSize) is FROZEN: save positions are (zoneId, tileX, tileY) and must
+ * survive art regeneration. `render:null` until a grade's art lands.
+ */
+export const ZoneRender = z.object({
+  generator: z.string().min(1),
+  seed: z.number().int(),
+});
+export type ZoneRender = z.infer<typeof ZoneRender>;
+
+export const MapZone = z.object({
+  id: ZoneId,
+  /** Gate unit: zone N requires units ≤ N released (mirrors Chapter.unit). */
+  unit: z.number().int().min(1).max(15),
+  titleEn: z.string().min(1),
+  titleDe: z.string().nullable(),
+  width: z.number().int().min(1),
+  height: z.number().int().min(1),
+  tileSize: z.number().int().min(1),
+  render: ZoneRender.nullable(),
+});
+export type MapZone = z.infer<typeof MapZone>;
+
+/** map@1 — the addressable world skeleton (one zone per unit). */
+export const GameMap = z
+  .object({
+    schema: z.literal("map@1"),
+    id: MapId,
+    grade: GradeZ,
+    zones: z.array(MapZone).min(1),
+  })
+  .superRefine((m, ctx) => {
+    if (!m.id.startsWith(`g${m.grade}.map.`)) {
+      ctx.addIssue({ code: "custom", path: ["id"], message: "map id grade prefix mismatch" });
+    }
+    const ids = new Set<string>();
+    for (const [i, zone] of m.zones.entries()) {
+      if (!zone.id.startsWith(`${m.id}.z`)) {
+        ctx.addIssue({ code: "custom", path: ["zones", i, "id"], message: "zone id outside map" });
+      }
+      if (ids.has(zone.id)) {
+        ctx.addIssue({ code: "custom", path: ["zones", i, "id"], message: "duplicate zone id" });
+      }
+      ids.add(zone.id);
+    }
+  });
+export type GameMap = z.infer<typeof GameMap>;
+
+/** Grade-scoped quest id, e.g. "g1.q.lost-pages-ch01". */
+export const QuestId = z.string().regex(/^g[1-4]\.q\.[a-z0-9-]+$/);
+
+/**
+ * quest@1 — the minimal zone-clear gate. Completion is DERIVED from the attempts
+ * ledger (Law 2: never a stored "done" flag). `clear` is a discriminated `kind`
+ * union → G2/G3/G4 add variants (doors / boss / branch trees) additively.
+ */
+export const QuestClear = z.union([
+  z.object({
+    kind: z.literal("encounters-cleared"),
+    encounterIds: z.array(EncounterId).min(1),
+    minTier: GameTier,
+  }),
+  z.object({ kind: z.literal("due-drained"), scope: GameScope }),
+  z.object({ kind: z.literal("story-chapter"), chapterId: ChapterId }),
+]);
+export type QuestClear = z.infer<typeof QuestClear>;
+
+export const Quest = z
+  .object({
+    schema: z.literal("quest@1"),
+    id: QuestId,
+    zoneId: ZoneId,
+    clear: QuestClear,
+  })
+  .superRefine((q, ctx) => {
+    const g = q.id.slice(1, 2); // "g{N}.q.…"
+    if (!q.zoneId.startsWith(`g${g}.map.`)) {
+      ctx.addIssue({ code: "custom", path: ["zoneId"], message: "zone grade must match quest grade" });
+    }
+    if (q.clear.kind === "story-chapter" && !q.clear.chapterId.startsWith(`g${g}.st.`)) {
+      ctx.addIssue({ code: "custom", path: ["clear", "chapterId"], message: "chapter grade must match quest grade" });
+    }
+    if (q.clear.kind === "encounters-cleared") {
+      for (const [i, eid] of q.clear.encounterIds.entries()) {
+        if (!eid.startsWith(`g${g}.enc.`)) {
+          ctx.addIssue({ code: "custom", path: ["clear", "encounterIds", i], message: "encounter grade must match quest grade" });
+        }
+      }
+    }
+  });
+export type Quest = z.infer<typeof Quest>;
