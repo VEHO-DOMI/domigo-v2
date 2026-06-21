@@ -11,8 +11,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { GrammarFile, GrammarStructuresFile, ListeningFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
+import { Cast, GrammarFile, GrammarStructuresFile, ListeningFile, Story, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
 import type { GrammarItem, GrammarStructure, VocabItem } from "@domigo/content-schema";
+import type { Cast as CastT, Story as StoryT } from "@domigo/content-schema";
 
 /**
  * Repo root. The pipeline derives it from the module path (paths.ts:22), but a
@@ -44,8 +45,10 @@ const CONTENT_DIR = path.join(REPO_ROOT, "content");
 const UNITS_DIR = path.join(CONTENT_DIR, "corpus", "units");
 const ITEM_FIXES_PATH = path.join(CONTENT_DIR, "overlays", "item-fixes.json");
 const STRUCTURES_DIR = path.join(CONTENT_DIR, "corpus", "structures");
+const STORIES_DIR = path.join(CONTENT_DIR, "corpus", "stories");
 
 const UNIT_SLUG = /^g[1-4]-u\d{2}$/;
+const STORY_ID = /^g[1-4]\.st\.[a-z0-9-]+$/;
 
 function readJson<T>(file: string): T | null {
   if (!fs.existsSync(file)) return null;
@@ -131,6 +134,27 @@ export function loadTest(slug: string): TestFile | null {
   if (!UNIT_SLUG.test(slug)) throw new Error(`content-loader: bad unit slug "${slug}"`);
   const raw = readJson<unknown>(path.join(UNITS_DIR, slug, "test.json"));
   return raw === null ? null : TestFile.parse(raw);
+}
+
+// ── Track C story bundles (content/corpus/stories/<storyId>/) ─────────────────
+
+export function loadStory(storyId: string): StoryT | null {
+  if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
+  const raw = readJson<unknown>(path.join(STORIES_DIR, storyId, "story.json"));
+  return raw === null ? null : Story.parse(raw);
+}
+
+export function loadStoryCast(storyId: string): CastT | null {
+  if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
+  const raw = readJson<unknown>(path.join(STORIES_DIR, storyId, "cast.json"));
+  return raw === null ? null : Cast.parse(raw);
+}
+
+/** Released chapter ids for a story (release.json); [] if none. */
+export function loadReleasedChapters(storyId: string): string[] {
+  if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
+  const raw = readJson<{ releasedChapters?: string[] }>(path.join(STORIES_DIR, storyId, "release.json"));
+  return raw?.releasedChapters ?? [];
 }
 
 /** Unit slugs that have a test.json (the mock-test "approval" signal), sorted. */

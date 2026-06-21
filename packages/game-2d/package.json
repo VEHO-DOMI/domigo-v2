@@ -1,0 +1,28 @@
+{
+  "name": "@domigo/game-2d",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.tsx"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@domigo/art-gen": "workspace:*",
+    "@domigo/content-schema": "workspace:*",
+    "@domigo/engine": "workspace:*",
+    "@domigo/game-core": "workspace:*",
+    "@domigo/task-ui": "workspace:*",
+    "phaser": "^3.90.0"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "typescript": "^5"
+  }
+}
