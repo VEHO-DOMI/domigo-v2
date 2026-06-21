@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth, signOut } from "@/auth";
+import { getDb, getDueCounts } from "@domigo/db";
 
 export const dynamic = "force-dynamic";
 
@@ -8,6 +9,15 @@ export default async function HomePage() {
   const session = await auth();
   if (!session) redirect("/signin");
   if (session.user.role === "teacher") redirect("/admin");
+
+  // Due-count badge for the Review card. Wrapped: a DB hiccup must never 500 the post-login landing.
+  let dueLabel = "Spaced review of past items";
+  try {
+    const c = await getDueCounts(getDb(), session.user.id);
+    if (c.total > 0) dueLabel = `${c.total} due now`;
+  } catch {
+    /* keep default */
+  }
 
   async function doSignOut() {
     "use server";
@@ -23,10 +33,10 @@ export default async function HomePage() {
           <strong style={{ fontSize: 17 }}>Practice →</strong>
           <span style={{ color: "#64748b", fontSize: 14 }}>Vocabulary &amp; grammar by unit</span>
         </Link>
-        <div style={{ ...cardStyle, opacity: 0.55, cursor: "default" }}>
-          <strong style={{ fontSize: 17 }}>Review</strong>
-          <span style={{ color: "#94a3b8", fontSize: 14 }}>Spaced review — coming soon</span>
-        </div>
+        <Link href="/review" style={cardStyle}>
+          <strong style={{ fontSize: 17 }}>Review →</strong>
+          <span style={{ color: "#64748b", fontSize: 14 }}>{dueLabel}</span>
+        </Link>
       </div>
       <form action={doSignOut} style={{ marginTop: 28 }}>
         <button type="submit" style={{ background: "none", border: "none", color: "#94a3b8", fontSize: 14, cursor: "pointer", textDecoration: "underline" }}>
