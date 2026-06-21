@@ -72,7 +72,7 @@ Four shipped increments, **all merged to `main`**:
 
 #### A1. Provision + verify the live DB  ◻️  _(do this FIRST — unblocks everything DB)_
 The Smart Review backend is merged but never run against a real DB.
-1. In the Neon console (the shared `veho-vocab`/v2 project), create a **dev branch**; copy its **pooled HTTP** connection string.
+1. In the Neon console, open the **`domigo-db`** project (Frankfurt — the shared DomiGo Postgres DB that holds the migrated students; _not_ "veho-vocab", which is the old Firebase project). Create a **dev branch** off `main` (⚠️ `domigo-db` may be at the free-tier 10-branch cap — delete a stale `preview/*` branch first, or reuse an existing dev branch); copy its **pooled** (`…-pooler…`) connection string.
 2. Find a real student identity for the dev backdoor:
    ```sql
    SELECT id AS dev_user_id, class_id AS dev_class_id FROM public.users WHERE role='student' LIMIT 1;
