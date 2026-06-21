@@ -1,6 +1,6 @@
 # DomiGo v2 — Build Status & Executable Roadmap
 
-_Last updated: 2026-06-19. Single source of truth for "what's done / what's next." Pairs with `docs/handover/` (the original design) and `docs/runbooks/` (operational detail). When you finish a step, check its box and update the snapshot in §3._
+_Last updated: 2026-06-21. Single source of truth for "what's done / what's next." Pairs with `docs/handover/` (the original design) and `docs/runbooks/` (operational detail). When you finish a step, check its box and update the snapshot in §3._
 
 ---
 
@@ -53,12 +53,12 @@ Four shipped increments, **all merged to `main`**:
 | **Loader / grader / renderer** | ✅ `@domigo/{content-loader,engine,task-ui}` |
 | **DB / persistence** | ✅ `@domigo/db` (schema + Leitner + attempts) on `main`; **live DB not yet provisioned/verified** |
 | **Practice trainer** | ✅ `/practice` (records attempts) |
-| **Auth** | ❌ dev identity only — no real login yet |
-| **Smart Review UI** | ❌ service exists; no `/review` screen yet |
+| **Auth** | ✅ NextAuth v5 (student + teacher), reuses Neon accounts ([#22](https://github.com/VEHO-DOMI/domigo-v2/pull/22)) |
+| **Smart Review UI** | ✅ `/review` + `/review/session` study loop (`mode:"review"`); home due-count badge (`feat/review-ui`) |
 | **Study Path / Mock Tests / Listening** | ❌ not started |
 | **Game layer** | ❌ designed (`10_game_layer.md`); not started |
 | **Migration / cutover** | ◻️ v1 students in shared Neon; v2 reuse-accounts decided; cutover not done |
-| `main` HEAD | `109448a` (merge #19) · `pnpm -r typecheck/lint/build` green · tests: engine 24 / pipeline 60 / loader 4 / db 8 |
+| `main` HEAD | `9d2ae99` (merge #22) · `pnpm -r typecheck/lint/test/content/build` green · tests: engine 24 / pipeline 60 / loader 4 / db 8 |
 
 **Repos:** `~/Code/domigo-v2` (VEHO-DOMI/domigo-v2, prod `domigo-v2.vercel.app`) · v1 reference `VEHO-DOMI/domigo` (clone to `/tmp/domigo-v1-ref` for porting) · live grade-1 app `VEHO-DOMI/1st-grade-vocab-trainer`.
 
@@ -108,8 +108,8 @@ Reuse the ~110 migrated accounts; students log in with their existing class + PI
 6. **Swap the identity seam:** in `apps/web/lib/identity.ts`, make `getActingUser` read the NextAuth session first (`const s = await auth(); if (s?.user) return {userId, classId}`); keep the dev env/header branch but only for non-prod. Nothing else changes — the endpoint already consumes `{userId, classId}`.
 - Verify: student sign-in → `/practice` records attempts under the real userId; sign-out/in preserves `user_progress`.
 
-#### A3. The `/review` study-mode UI  ◻️  _(branch `feat/review-ui`)_
-Turn the service into a student surface.
+#### A3. The `/review` study-mode UI  ✅ **DONE (2026-06-21, PR `feat/review-ui`)**
+The Leitner queue now has a student surface. `app/review/page.tsx` (server) → `getDueCounts` → "N items due (X vocab · Y grammar)" + Start-review link, or an "all caught up 🎉" empty state. `app/review/session/page.tsx` (server) → `getDueRefs(userId, {kind:"all"}, 20)` → dedupe-`loadUnit` per slug + match `itemId`→item (skips overlay-dropped/stale refs) → `app/review/session/ReviewSession.tsx` (client) steps the **single mixed queue**, renders via `@domigo/task-ui`, fires `POST /api/attempts` with **`mode:"review"`**, ends on a summary. Home Review card is now a real `<Link>` with a live due-count badge (DB read try/caught so it never 500s the landing). Scope = review-all-due (per-unit/grade scope picker deferred). Gate green (typecheck/lint/test/content/build). Verified live (dev branch, seeded `TestKid`, cleaned up): login→`/review` shows "2 items due / 1 vocab · 1 grammar"→`/review/session` 200 SSR-renders the soonest-due item→correct review attempt → `review_queue` box 1→2, due_at past→+1d, reps→1, `practice_attempts` `mode='review'`; empty state after clearing; `public` untouched. **Next blocking item is now A4 (progression) / B1 (Study Path) / the game layer.** Original steps below:
 1. `app/review/page.tsx` (server) — `getActingUser` → `getDueCounts(db, userId)` → render "due today" by scope (this unit / this grade / all) with counts; link into a session.
 2. `app/review/[scope]/ReviewSession.tsx` (client) — `getDueRefs(userId, scope, limit)` (via a server action or `/api/review/due` route) → for each ref `loadUnit(slug)` + find item → render with `@domigo/task-ui` → on answer POST `/api/attempts` with **`mode:"review"`** → advance. Empty state when nothing's due.
 3. Add a "Review (N due)" entry point on the home/practice nav.
@@ -159,7 +159,7 @@ A1 (verify DB)  ──►  A2 (auth)  ──►  A3 (/review UI)  ──►  A4 
                                       (needs auth + Smart Review service)
 D (migration + bulletproof-beta) runs in parallel; it GATES any student go-live.
 ```
-**Do next:** **A1** (15 min once a Neon URL exists) → **A2 auth** (the single biggest unlock — turns the harness into a real per-student app). Then either **A3 + Study Path** (learning-first) or jump to **C/G1 RPG** (engagement-first) per Koki's priority.
+**Do next:** A1 ✅ → A2 auth ✅ → A3 `/review` UI ✅. Next: **A4** (streaks / offline outbox) and/or **B1 Study Path** (learning-first), or jump to **C/G1 RPG** (engagement-first) per Koki's priority.
 
 ---
 
