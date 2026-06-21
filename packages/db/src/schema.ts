@@ -155,3 +155,31 @@ export const writingSubmissions = v2.table(
     byClassUnit: index("writing_submissions_class_unit_idx").on(t.classId, t.unitSlug),
   }),
 );
+
+/**
+ * Track C game saves — COSMETIC state only (cursor position, visited zones,
+ * palette, perf preset). One row per (user, game). Authoritative progression
+ * (XP/streak/unlocks/zone-clear) derives server-side from practice_attempts/
+ * review_queue/user_progress — a wiped save loses only position, never progress
+ * (Law 2). `clientRev` drives last-write-wins; `schemaVersion` pins the jsonb
+ * shape so it can evolve per grade without a DDL migration. Size is capped at
+ * the endpoint (≤64 KB). domigo_v2 only; no FK to public.
+ */
+export const gameSaves = v2.table(
+  "game_saves",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id").notNull(),
+    classId: uuid("class_id").notNull(), // denormalized, like practice_attempts
+    gameMode: text("game_mode").notNull(), // "game:g1".."game:g4" — same string space as attempts.mode
+    schemaVersion: smallint("schema_version").notNull().default(1),
+    clientRev: integer("client_rev").notNull().default(0), // last-write-wins
+    state: jsonb("state").notNull().default({}), // COSMETIC ONLY (≤64 KB, endpoint-enforced)
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    userGameUnique: uniqueIndex("game_saves_user_game_unique").on(t.userId, t.gameMode),
+    byUser: index("game_saves_user_idx").on(t.userId),
+  }),
+);
