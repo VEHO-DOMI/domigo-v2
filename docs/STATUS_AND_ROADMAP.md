@@ -55,6 +55,7 @@ Four shipped increments, **all merged to `main`**:
 | **Practice trainer** | ✅ `/practice` (records attempts) |
 | **Auth** | ✅ NextAuth v5 (student + teacher), reuses Neon accounts ([#22](https://github.com/VEHO-DOMI/domigo-v2/pull/22)) |
 | **Smart Review UI** | ✅ `/review` + `/review/session` study loop (`mode:"review"`); home due-count badge (`feat/review-ui`) |
+| **Streaks / offline outbox** | ✅ daily Vienna-day streak (home + summary badge) + IndexedDB attempt outbox (`feat/streaks-outbox`) |
 | **Study Path / Mock Tests / Listening** | ❌ not started |
 | **Game layer** | ❌ designed (`10_game_layer.md`); not started |
 | **Migration / cutover** | ◻️ v1 students in shared Neon; v2 reuse-accounts decided; cutover not done |
@@ -115,10 +116,10 @@ The Leitner queue now has a student surface. `app/review/page.tsx` (server) → 
 3. Add a "Review (N due)" entry point on the home/practice nav.
 - Verify: answer wrong in `/practice` → it appears in `/review` after its box-1 interval; answering it correctly there reschedules it forward.
 
-#### A4. Progression polish  ◻️  _(branch `feat/progression`)_
-1. **Streaks** — port v1 `recordSessionDay` (Vienna-day boundary) into `@domigo/db`; bump on each first attempt of the day. Add `streak`/`lastSessionDate` to `user_progress` (additive ALTER on `domigo_v2` only).
-2. **Badges** — port v1's badge catalog + award logic (optional; flag-gated).
-3. **Offline attempt outbox** — queue failed `/api/attempts` POSTs in IndexedDB; flush on reconnect (the "bulletproof / never lose progress" law).
+#### A4. Progression polish  🟡  _(streaks + outbox done — PR `feat/streaks-outbox`, stacked on `feat/review-ui`; badges remain)_
+1. **Streaks** ✅ **DONE (2026-06-21)** — v1's `recordSessionDay` ported into `@domigo/db` as pure `computeNextStreak` + Vienna-day helpers (`Intl` `Europe/Vienna`, DST-safe); `streak`/`last_session_date` added to `domigo_v2.user_progress` (additive `0001` ALTER); advanced inside `recordAttempt` on the first attempt of each Vienna day (any tier — showing up counts), returned via `/api/attempts`, shown on `/home` (active-only badge) + the session summary. Unit-tested (9) + live dev-DB E2E (fresh→1, same-day→1, consecutive→+1, gap→reset).
+2. **Badges** ◻️ — port v1's badge catalog + award logic (optional; flag-gated). _Not in this PR._
+3. **Offline attempt outbox** ✅ **DONE (2026-06-21)** — dependency-free IndexedDB outbox (`apps/web/lib/attempt-outbox.ts` + `useOutboxFlush`): `sendAttempt` enqueues on offline/5xx/`persist_failed` (idempotent on `clientAttemptId`), drops permanent 4xx, flushes on mount + the `online` event; wired into Practice + Review sessions. Module-tested (6 cases via an IndexedDB shim).
 
 ### Track B — Remaining P1 pillars
 
@@ -159,7 +160,7 @@ A1 (verify DB)  ──►  A2 (auth)  ──►  A3 (/review UI)  ──►  A4 
                                       (needs auth + Smart Review service)
 D (migration + bulletproof-beta) runs in parallel; it GATES any student go-live.
 ```
-**Do next:** A1 ✅ → A2 auth ✅ → A3 `/review` UI ✅. Next: **A4** (streaks / offline outbox) and/or **B1 Study Path** (learning-first), or jump to **C/G1 RPG** (engagement-first) per Koki's priority.
+**Do next:** A1 ✅ → A2 ✅ → A3 ✅ → A4 streaks + outbox ✅ (badges optional, deferred). Next: **B1 Study Path** (learning-first) or **C/G1 RPG** (engagement-first) per Koki's priority.
 
 ---
 

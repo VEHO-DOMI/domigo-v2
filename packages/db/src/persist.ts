@@ -6,6 +6,7 @@ import { and, eq, sql } from "drizzle-orm";
 import type { Tier } from "@domigo/engine";
 import { practiceAttempts, reviewQueue, userProgress } from "./schema.ts";
 import { updateReviewQueue, type ReviewRef } from "./review.ts";
+import { computeNextStreak, viennaDayBefore, viennaDayString } from "./streak.ts";
 import type { Db } from "./index.ts";
 
 export interface RecordAttemptInput {
@@ -28,6 +29,8 @@ export interface RecordAttemptResult {
   duplicate: boolean;
   box: number;
   dueAt: Date;
+  /** The user's daily streak after this attempt (Vienna-day; see streak.ts). */
+  streak: number;
 }
 
 /**
@@ -57,21 +60,57 @@ export async function recordAttempt(db: Db, a: RecordAttemptInput): Promise<Reco
     .returning({ id: practiceAttempts.id });
 
   const duplicate = inserted.length === 0;
+  let streak = 0;
   if (!duplicate) {
     const ref: ReviewRef = { itemId: a.itemId, kind: a.kind, unitSlug: a.unitSlug, grade: a.grade };
     await updateReviewQueue(db, a.userId, ref, a.tier);
-    if (a.xpAwarded > 0) {
-      const isVocab = a.kind === "vocab";
-      await db
-        .insert(userProgress)
-        .values({ userId: a.userId, xp: isVocab ? a.xpAwarded : 0, grammarXp: isVocab ? 0 : a.xpAwarded })
-        .onConflictDoUpdate({
-          target: userProgress.userId,
-          set: isVocab
-            ? { xp: sql`${userProgress.xp} + ${a.xpAwarded}`, updatedAt: new Date() }
-            : { grammarXp: sql`${userProgress.grammarXp} + ${a.xpAwarded}`, updatedAt: new Date() },
-        });
-    }
+
+    // Streak + XP in one upsert. The streak advances on the FIRST attempt of each
+    // Vienna day regardless of correctness (a wrong answer still counts as showing
+    // up); XP is added only when earned (wrong → 0, never subtracted — Law 3).
+    const now = new Date();
+    const prog = await db
+      .select({ streak: userProgress.streak, lastSessionDate: userProgress.lastSessionDate })
+      .from(userProgress)
+      .where(eq(userProgress.userId, a.userId))
+      .limit(1);
+    const next = computeNextStreak({
+      lastSessionDate: prog[0]?.lastSessionDate ?? null,
+      currentStreak: prog[0]?.streak ?? 0,
+      today: viennaDayString(now),
+      yesterday: viennaDayBefore(now),
+    });
+    streak = next.newStreak;
+    const isVocab = a.kind === "vocab";
+    const vocabXp = isVocab ? a.xpAwarded : 0;
+    const grammarXp = isVocab ? 0 : a.xpAwarded;
+    await db
+      .insert(userProgress)
+      .values({
+        userId: a.userId,
+        xp: vocabXp,
+        grammarXp,
+        streak: next.newStreak,
+        lastSessionDate: next.newLastSessionDate,
+        updatedAt: now,
+      })
+      .onConflictDoUpdate({
+        target: userProgress.userId,
+        set: {
+          xp: sql`${userProgress.xp} + ${vocabXp}`,
+          grammarXp: sql`${userProgress.grammarXp} + ${grammarXp}`,
+          streak: next.newStreak,
+          lastSessionDate: next.newLastSessionDate,
+          updatedAt: now,
+        },
+      });
+  } else {
+    const prog = await db
+      .select({ streak: userProgress.streak })
+      .from(userProgress)
+      .where(eq(userProgress.userId, a.userId))
+      .limit(1);
+    streak = prog[0]?.streak ?? 0;
   }
 
   const q = await db
@@ -80,5 +119,27 @@ export async function recordAttempt(db: Db, a: RecordAttemptInput): Promise<Reco
     .where(and(eq(reviewQueue.userId, a.userId), eq(reviewQueue.itemId, a.itemId)))
     .limit(1);
 
-  return { duplicate, box: q[0]?.box ?? 1, dueAt: q[0]?.dueAt ?? new Date() };
+  return { duplicate, box: q[0]?.box ?? 1, dueAt: q[0]?.dueAt ?? new Date(), streak };
+}
+
+export interface UserProgressRow {
+  xp: number;
+  grammarXp: number;
+  streak: number;
+  lastSessionDate: string | null;
+}
+
+/** Read a user's v2 progression (XP pool + daily streak). Null if no row exists yet. */
+export async function getUserProgress(db: Db, userId: string): Promise<UserProgressRow | null> {
+  const rows = await db
+    .select({
+      xp: userProgress.xp,
+      grammarXp: userProgress.grammarXp,
+      streak: userProgress.streak,
+      lastSessionDate: userProgress.lastSessionDate,
+    })
+    .from(userProgress)
+    .where(eq(userProgress.userId, userId))
+    .limit(1);
+  return rows[0] ?? null;
 }

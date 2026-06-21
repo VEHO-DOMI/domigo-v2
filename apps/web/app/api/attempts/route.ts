@@ -76,7 +76,7 @@ export async function POST(req: Request): Promise<Response> {
 
   // 7. Best-effort persist (idempotent; side-effects gated on first insert).
   try {
-    const { duplicate, box, dueAt } = await recordAttempt(getDb(), {
+    const { duplicate, box, dueAt, streak } = await recordAttempt(getDb(), {
       userId: acting.userId,
       classId: acting.classId,
       itemId,
@@ -91,7 +91,7 @@ export async function POST(req: Request): Promise<Response> {
       context,
       clientAttemptId,
     });
-    return NextResponse.json({ ok: true, tier, xpAwarded, box, dueAt: dueAt.toISOString(), duplicate });
+    return NextResponse.json({ ok: true, tier, xpAwarded, box, dueAt: dueAt.toISOString(), duplicate, streak });
   } catch {
     // Graded fine, DB failed → graceful, non-blocking (no 500).
     return NextResponse.json({ ok: false, error: "persist_failed", tier, xpAwarded });

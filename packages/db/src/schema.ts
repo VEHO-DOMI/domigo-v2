@@ -97,5 +97,10 @@ export const userProgress = v2.table("user_progress", {
   userId: uuid("user_id").primaryKey(),
   xp: integer("xp").notNull().default(0),
   grammarXp: integer("grammar_xp").notNull().default(0),
+  // Daily-streak state (A4). Advanced on the first attempt of each Vienna day in
+  // recordAttempt; lastSessionDate is "YYYY-MM-DD" plain text for a cheap day
+  // compare (see streak.ts). Both additive — see drizzle/0001.
+  streak: integer("streak").notNull().default(0),
+  lastSessionDate: text("last_session_date"),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });

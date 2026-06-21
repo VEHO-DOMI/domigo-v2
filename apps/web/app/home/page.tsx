@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth, signOut } from "@/auth";
-import { getDb, getDueCounts } from "@domigo/db";
+import { getDb, getDueCounts, getUserProgress, isStreakActive } from "@domigo/db";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +19,15 @@ export default async function HomePage() {
     /* keep default */
   }
 
+  // Daily-streak badge. Wrapped like the due count so a DB hiccup never 500s the landing.
+  let streakLabel: string | null = null;
+  try {
+    const p = await getUserProgress(getDb(), session.user.id);
+    if (p && p.streak > 0 && isStreakActive(p.lastSessionDate)) streakLabel = `🔥 ${p.streak}-day streak`;
+  } catch {
+    /* no streak badge on failure */
+  }
+
   async function doSignOut() {
     "use server";
     await signOut({ redirectTo: "/" });
@@ -27,6 +36,9 @@ export default async function HomePage() {
   return (
     <main style={{ maxWidth: 520, margin: "0 auto", padding: "48px 20px", fontFamily: "system-ui, sans-serif" }}>
       <h1 style={{ fontSize: 28, marginBottom: 4 }}>Hi, {session.user.name} 👋</h1>
+      {streakLabel && (
+        <p style={{ margin: "0 0 6px", color: "#ea580c", fontWeight: 600, fontSize: 15 }}>{streakLabel}</p>
+      )}
       <p style={{ color: "#64748b", marginTop: 0 }}>What would you like to do?</p>
       <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 20 }}>
         <Link href="/practice" style={cardStyle}>

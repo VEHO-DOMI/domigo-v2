@@ -6,6 +6,8 @@ import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
 import { xpForTier } from "@domigo/engine";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
+import { sendAttempt } from "@/lib/attempt-outbox";
+import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 type Mode = "grammar" | "vocab";
 
@@ -16,6 +18,8 @@ export default function PracticeSession({ slug, vocab, grammar }: {
   const [i, setI] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [results, setResults] = useState<Array<{ tier: Tier; xp: number }>>([]);
+  const [streak, setStreak] = useState<number | null>(null);
+  useOutboxFlush();
 
   const list: Array<GrammarItem | VocabItem> = mode === "grammar" ? grammar : vocab;
   const item = list[i];
@@ -26,19 +30,18 @@ export default function PracticeSession({ slug, vocab, grammar }: {
     setAnswered(true);
     setResults((prev) => [...prev, { tier, xp: xpForTier(item.difficulty * 10, tier) }]); // instant optimistic UI
 
-    // Best-effort persistence — non-blocking; the server re-grades authoritatively.
-    void fetch("/api/attempts", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        clientAttemptId: crypto.randomUUID(),
-        itemId: detail.itemId,
-        mode: "practice",
-        input: detail.input,
-        latencyMs: null,
-        hintUsed: false,
-      }),
-    }).catch(() => { /* swallow — offline outbox is a later PR; feedback already shown */ });
+    // Best-effort persistence via the offline outbox (queues + retries when offline);
+    // the server re-grades authoritatively and returns the updated daily streak.
+    void sendAttempt({
+      clientAttemptId: crypto.randomUUID(),
+      itemId: detail.itemId,
+      mode: "practice",
+      input: detail.input,
+      latencyMs: null,
+      hintUsed: false,
+    }).then((r) => {
+      if (typeof r.streak === "number") setStreak(r.streak);
+    });
   };
   const next = () => { setAnswered(false); setI((x) => Math.min(x + 1, list.length - 1)); };
 
@@ -69,6 +72,7 @@ export default function PracticeSession({ slug, vocab, grammar }: {
             .filter((t) => counts[t])
             .map((t) => `· ${counts[t]} ${t}`)
             .join(" ")}
+          {streak ? ` · 🔥 ${streak}` : ""}
         </span>
       </div>
 
