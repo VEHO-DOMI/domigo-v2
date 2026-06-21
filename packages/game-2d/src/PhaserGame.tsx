@@ -12,7 +12,10 @@ import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-sch
 import type { Tier } from "@domigo/engine";
 import type { ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
-import { OverworldScene } from "./OverworldScene.ts";
+import { OverworldScene, type OverworldState } from "./OverworldScene.ts";
+
+/** Cosmetic save state persisted by the app (position + cleared node positions). */
+export type GameSaveState = OverworldState;
 
 export interface GameAttempt {
   clientAttemptId: string;
@@ -34,6 +37,10 @@ export interface PhaserGameProps {
   /** itemId → resolved item, for the chapter's taskSlots. */
   storyItems: Record<string, ResolvedItem>;
   onAttempt: AttemptFn;
+  /** Cosmetic resume state (player position + cleared nodes). */
+  initialSave?: GameSaveState | null;
+  /** Persist cosmetic state (the app debounces localStorage + /api/game-save). */
+  onSave?: (s: GameSaveState) => void;
 }
 
 type Overlay = { kind: "encounter"; idx: number } | { kind: "dialogue" } | null;
@@ -150,6 +157,8 @@ export function PhaserGame(props: PhaserGameProps) {
       encounterCount: props.encounters.length,
       onEncounter: (idx) => setOverlay({ kind: "encounter", idx }),
       onNpc: () => setOverlay({ kind: "dialogue" }),
+      initial: props.initialSave ?? null,
+      onState: (s) => props.onSave?.(s),
     });
     sceneRef.current = scene;
     const game = new Phaser.Game({

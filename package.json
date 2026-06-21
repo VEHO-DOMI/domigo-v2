@@ -11,6 +11,7 @@
     "lint": "pnpm -r run lint",
     "test": "pnpm -r run test",
     "build": "pnpm --filter web run build",
+    "check:bundle": "node scripts/check-game-bundle.mjs",
     "content": "node packages/content-pipeline/src/content.ts"
   }
 }

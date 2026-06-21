@@ -8,8 +8,9 @@
 import { redirect } from "next/navigation";
 import { Encounter, type GrammarItem, type VocabItem } from "@domigo/content-schema";
 import { loadReleasedChapters, loadStory, loadStoryCast, loadUnit } from "@domigo/content-loader";
-import { getDb, getDueRefs } from "@domigo/db";
+import { getDb, getDueRefs, getGameSave } from "@domigo/db";
 import { resolveEncounterTasks, type ResolvedItem } from "@domigo/game-core";
+import type { GameSaveState } from "@domigo/game-2d";
 import { getActingUserForPage } from "@/lib/identity";
 import GameClient from "./GameClient";
 
@@ -73,13 +74,20 @@ export default async function PlayPage({ params }: { params: Promise<{ grade: st
   const castNames = Object.fromEntries((cast?.members ?? []).map((m) => [m.id, m.nameEn]));
   const seed = grade * 100 + chapter.unit;
 
+  // existing cosmetic save (resume); the client reconciles vs a fresher localStorage copy.
+  const gameMode = `game:g${grade}`;
+  const saved = await getGameSave(getDb(), acting.userId, gameMode).catch(() => null);
+  const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as GameSaveState } : null;
+
   return (
     <GameClient
       seed={seed}
+      gameMode={gameMode}
       encounters={encounters}
       chapter={chapter}
       castNames={castNames}
       storyItems={storyItems}
+      serverSave={serverSave}
     />
   );
 }
