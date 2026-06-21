@@ -17,7 +17,9 @@
  *   pnpm content review-doc    --allowlist                            core-allowlist review doc
  *   pnpm content ingest-review --wordbank [--grade N|--unit slug] [--dry-run]
  *   pnpm content ingest-review --allowlist [--dry-run]
+ *   pnpm content story import --grade 1         Track C stage 1: legacy campaignLevels → story-draft@1
  *   pnpm content validate                       CI-safe checks over committed artifacts
+ *   pnpm content validate-story                 opt-in: VS-1…VS-10 + release gate over story bundles
  *   pnpm content status                         per-unit state dashboard
  */
 import type { Grade } from "@domigo/content-schema";
@@ -31,9 +33,11 @@ import { runIngestWordbank } from "./ingest-wordbank.ts";
 import { runReviewDocItems } from "./review-items.ts";
 import { runReviewDocWordbank } from "./review-wordbank.ts";
 import { runStatus } from "./status.ts";
+import { runStoryImport } from "./import-story.ts";
 import { runV1Snapshot } from "./v1snapshot.ts";
 import { runValidate } from "./validate.ts";
 import { runValidateListening } from "./validate-listening.ts";
+import { runValidateStory } from "./validate-story.ts";
 import { runValidateTest } from "./validate-test.ts";
 import { runVerifyIngest, runVerifyPrepare } from "./verify-items.ts";
 import { runWordbank } from "./wordbank.ts";
@@ -115,11 +119,25 @@ switch (command) {
       runIngestItems(unit, rest.includes("--dry-run"));
     } else throw new Error("ingest-review needs --wordbank, --items or --allowlist");
     break;
+  case "story": {
+    const sub = rest[0];
+    if (sub === "import") {
+      const grade = parseGrade(rest);
+      if (grade === undefined) throw new Error("story import needs --grade N (only g1 wired so far)");
+      runStoryImport(grade);
+    } else {
+      throw new Error(`story needs a subcommand: import (got: ${sub ?? "(none)"})`);
+    }
+    break;
+  }
   case "validate":
     runValidate();
     break;
   case "validate-listening":
     runValidateListening();
+    break;
+  case "validate-story":
+    runValidateStory();
     break;
   case "validate-test":
     runValidateTest();
@@ -129,7 +147,7 @@ switch (command) {
     break;
   default:
     console.error(
-      `unknown command: ${command ?? "(none)"}\nusage: pnpm content <extract|wordbank|v1-snapshot|gen|review-doc|ingest-review|validate|validate-listening|validate-test|status> [flags]`,
+      `unknown command: ${command ?? "(none)"}\nusage: pnpm content <extract|wordbank|v1-snapshot|gen|review-doc|ingest-review|story|validate|validate-listening|validate-story|validate-test|status> [flags]`,
     );
     process.exitCode = 2;
 }
