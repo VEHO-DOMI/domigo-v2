@@ -56,7 +56,8 @@ Four shipped increments, **all merged to `main`**:
 | **Auth** | ✅ NextAuth v5 (student + teacher), reuses Neon accounts ([#22](https://github.com/VEHO-DOMI/domigo-v2/pull/22)) |
 | **Smart Review UI** | ✅ `/review` + `/review/session` study loop (`mode:"review"`); home due-count badge (`feat/review-ui`) |
 | **Streaks / offline outbox** | ✅ daily Vienna-day streak (home + summary badge) + IndexedDB attempt outbox (`feat/streaks-outbox`) |
-| **Study Path / Mock Tests / Listening** | ❌ not started |
+| **Study Path (B1)** | ✅ `/learn` node map — teaching + graduated practice + checkpoint; unlock + stars (`feat/study-path`) |
+| **Mock Tests / Listening** | ❌ not started |
 | **Game layer** | ❌ designed (`10_game_layer.md`); not started |
 | **Migration / cutover** | ◻️ v1 students in shared Neon; v2 reuse-accounts decided; cutover not done |
 | `main` HEAD | `9d2ae99` (merge #22) · `pnpm -r typecheck/lint/test/content/build` green · tests: engine 24 / pipeline 60 / loader 4 / db 8 |
@@ -123,8 +124,8 @@ The Leitner queue now has a student surface. `app/review/page.tsx` (server) → 
 
 ### Track B — Remaining P1 pillars
 
-#### B1. Study Path (guided unlock progression)  ◻️
-Per `06_vision_pillars.md §3.2`: a linear, unlockable path per unit — **vocabulary intro → grammar intro → graduated practice across task types → unit checkpoint** — with a visible node-map, per-node stars/mastery, and spaced re-practice (Smart Review plugs in here).
+#### B1. Study Path (guided unlock progression)  ✅ **DONE (2026-06-21, PR `feat/study-path`, stacked on A4)**
+Per-unit guided path at `/learn/[slug]`. The node graph is DERIVED (pure `buildUnitNodes`) — vocab intro (teaching) → vocab practice split by difficulty → grammar intro → grammar practice by difficulty → checkpoint (deterministic ~10-item cumulative sample from the unit, hints off). Sparse `domigo_v2.study_path_progress` (a row iff a node is completed; locked/available/stars DERIVED by `withProgress`); additive `0002` migration. Graded nodes reuse `task-ui` + the `/api/attempts` outbox (`mode:"study:<nodeId>"`) so they feed Smart Review + streaks + XP; a thin `/api/study-path` records node completion (server re-derives stars from the tier tally, validates the nodeId against the graph, keep-best via `GREATEST`). New content-loader `loadWordbank`/`loadUnitStructures` + task-ui `VocabIntroView`/`GrammarIntroView` (German-led, student-safe) + a `hideHint` checkpoint flag. Unlock enforced server-side (a locked-node URL 307-redirects to the map). 14 unit tests + live dev-DB E2E (unlock advance, attempts→`review_queue`, stars keep-best, locked-redirect); additive (`public` 13→13). Original steps below:
 1. A progression model: per-(user,unit) node states (locked/available/mastered) — additive `domigo_v2.study_path_progress` table.
 2. Routes `app/learn/[slug]` rendering the node map; nodes reuse `content-loader` + `task-ui` + `/api/attempts`.
 3. "Teaching" nodes (vocab/grammar intro) — new non-graded card types showing the word bank / structures.
@@ -160,7 +161,7 @@ A1 (verify DB)  ──►  A2 (auth)  ──►  A3 (/review UI)  ──►  A4 
                                       (needs auth + Smart Review service)
 D (migration + bulletproof-beta) runs in parallel; it GATES any student go-live.
 ```
-**Do next:** A1 ✅ → A2 ✅ → A3 ✅ → A4 streaks + outbox ✅ (badges optional, deferred). Next: **B1 Study Path** (learning-first) or **C/G1 RPG** (engagement-first) per Koki's priority.
+**Do next:** A1 ✅ → A2 ✅ → A3 ✅ → A4 ✅ → B1 Study Path ✅. Next: **B2 Mock Tests** / **B3 Listening**, or **C / G1 RPG** — the game layer reuses the Study Path progression + `getDueRefs`.
 
 ---
 

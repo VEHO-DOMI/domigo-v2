@@ -104,3 +104,30 @@ export const userProgress = v2.table("user_progress", {
   lastSessionDate: text("last_session_date"),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+/**
+ * B1 Study Path node progress. SPARSE: a row exists IFF a node is completed
+ * (locked/available are DERIVED in studypath.ts from which rows exist), so the
+ * table stays tiny (≤ ~10 rows/unit/student). Keyed by the reused v1 userId;
+ * classId denormalized (like practice_attempts) for a future teacher view.
+ */
+export const studyPathProgress = v2.table(
+  "study_path_progress",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id").notNull(),
+    classId: uuid("class_id").notNull(),
+    unitSlug: text("unit_slug").notNull(),
+    grade: smallint("grade").notNull(),
+    nodeId: text("node_id").notNull(), // "vocab-intro" | "vocab-practice-2" | "checkpoint" | …
+    kind: text("kind").notNull(), // NodeKind string (app-validated)
+    stars: smallint("stars").notNull().default(0), // 0 (teaching) .. 3
+    completedAt: timestamp("completed_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    userNodeUnique: uniqueIndex("study_path_progress_user_node_unique").on(t.userId, t.unitSlug, t.nodeId),
+    byUserUnit: index("study_path_progress_user_unit_idx").on(t.userId, t.unitSlug),
+    byUser: index("study_path_progress_user_idx").on(t.userId),
+  }),
+);

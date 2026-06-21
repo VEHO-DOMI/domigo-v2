@@ -6,7 +6,7 @@
  */
 import { useMemo, useState } from "react";
 import type { CSSProperties } from "react";
-import type { GrammarItem, Gloss, VocabItem } from "@domigo/content-schema";
+import type { GrammarItem, GrammarStructure, Gloss, VocabItem, WordBank } from "@domigo/content-schema";
 import type { GrammarInput, Tier } from "@domigo/engine";
 import { breaksCombo, gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
 
@@ -198,7 +198,7 @@ export type ResultDetail =
   | { kind: "grammar"; itemId: string; input: GrammarInput }
   | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string } };
 
-export function GrammarItemView({ item, onResult }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void }) {
+export function GrammarItemView({ item, onResult, hideHint }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean }) {
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
   const choiceOptions = useShuffled(
@@ -242,7 +242,7 @@ export function GrammarItemView({ item, onResult }: { item: GrammarItem; onResul
       {isGroup && <Dropdowns rows={sortMembers} options={groupLabels} value={map} onChange={setMap} disabled={done} />}
       {TEXT_FORMATS.has(item.format) && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} />}
       <GlossRow gloss={item.gloss} />
-      <HintRow hintDe={item.hintDe} />
+      {!hideHint && <HintRow hintDe={item.hintDe} />}
       {!done && <button style={btn} onClick={submit}>Check</button>}
       {done && tier && (
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -259,7 +259,7 @@ export function GrammarItemView({ item, onResult }: { item: GrammarItem; onResul
 
 // ---- vocab item ----------------------------------------------------------
 
-export function VocabItemView({ item, onResult }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void }) {
+export function VocabItemView({ item, onResult, hideHint }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean }) {
   const [value, setValue] = useState("");
   const [tier, setTier] = useState<Tier | null>(null);
   const done = tier !== null;
@@ -277,7 +277,7 @@ export function VocabItemView({ item, onResult }: { item: VocabItem; onResult?: 
       <Prompt text={item.s} />
       <input style={inputStyle} value={value} disabled={done} placeholder="Your answer" onChange={(e) => setValue(e.target.value)} />
       <GlossRow gloss={item.gloss} />
-      <HintRow hintDe={item.hintDe} />
+      {!hideHint && <HintRow hintDe={item.hintDe} />}
       {!done && <button style={btn} onClick={submit}>Check</button>}
       {done && tier && (
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -287,6 +287,69 @@ export function VocabItemView({ item, onResult }: { item: VocabItem; onResult?: 
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+// ---- teaching views (non-graded study-path intro nodes) ------------------
+
+/** Vocabulary intro — the unit word bank as a study list, grouped by theme. */
+export function VocabIntroView({ wordbank }: { wordbank: WordBank }) {
+  const groups = new Map<string, WordBank["entries"]>();
+  for (const e of wordbank.entries) {
+    const key = e.theme ?? "Words";
+    const arr = groups.get(key) ?? [];
+    arr.push(e);
+    groups.set(key, arr);
+  }
+  return (
+    <div style={{ ...card, gap: 14 }}>
+      <div style={{ fontSize: 12, color: "#94a3b8" }}>Word bank · {wordbank.entries.length} words</div>
+      {[...groups.entries()].map(([theme, entries]) => (
+        <div key={theme}>
+          {theme !== "Words" && (
+            <div style={{ fontWeight: 600, fontSize: 14, color: "#334155", marginBottom: 4 }}>{theme}</div>
+          )}
+          <ul style={{ margin: 0, paddingLeft: 18, color: "#0f172a", fontSize: 15, lineHeight: 1.6 }}>
+            {entries.map((e) => (
+              <li key={e.id}>
+                <strong>{e.en}</strong> — {e.de.join(" / ")}
+                {e.exampleSb && <span style={{ color: "#64748b", fontSize: 13 }}> · “{e.exampleSb}”</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** Grammar intro — the unit's structures, taught in German with bilingual examples.
+ *  Student-safe: shows nameDe + the German rule text + examples; never the
+ *  teacher-facing English `name`/`category`/`description`. */
+export function GrammarIntroView({ structures }: { structures: GrammarStructure[] }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+      {structures.map((s) => (
+        <div key={s.id} style={{ ...card, gap: 10 }}>
+          <div style={{ fontSize: 17, fontWeight: 700, color: "#0f172a" }}>{s.nameDe}</div>
+          {s.rules.map((r) => (
+            <div key={r.id} style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <div style={{ fontSize: 15, color: "#0f172a", lineHeight: 1.4 }}>{r.de}</div>
+              {r.examples.length > 0 && (
+                <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
+                  {r.examples.map((ex, i) => (
+                    <li key={i}>
+                      <strong>{ex.en}</strong>
+                      {ex.de && ex.de !== ex.en ? ` — ${ex.de}` : ""}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
