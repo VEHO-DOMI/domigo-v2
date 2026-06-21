@@ -44,7 +44,7 @@ CREATE TABLE "domigo_v2"."user_progress" (
 --> statement-breakpoint
 CREATE INDEX "practice_attempts_user_time_idx" ON "domigo_v2"."practice_attempts" USING btree ("user_id","created_at" DESC NULLS LAST);--> statement-breakpoint
 CREATE INDEX "practice_attempts_user_item_idx" ON "domigo_v2"."practice_attempts" USING btree ("user_id","item_id");--> statement-breakpoint
-CREATE UNIQUE INDEX "practice_attempts_client_attempt_unique" ON "domigo_v2"."practice_attempts" USING btree ("user_id","client_attempt_id") WHERE client_attempt_id IS NOT NULL;--> statement-breakpoint
+CREATE UNIQUE INDEX "practice_attempts_client_attempt_unique" ON "domigo_v2"."practice_attempts" USING btree ("user_id","client_attempt_id");--> statement-breakpoint
 CREATE UNIQUE INDEX "review_queue_user_item_unique" ON "domigo_v2"."review_queue" USING btree ("user_id","item_id");--> statement-breakpoint
 CREATE INDEX "review_queue_user_due_idx" ON "domigo_v2"."review_queue" USING btree ("user_id","due_at");--> statement-breakpoint
 CREATE INDEX "review_queue_user_unit_idx" ON "domigo_v2"."review_queue" USING btree ("user_id","unit_slug");--> statement-breakpoint
