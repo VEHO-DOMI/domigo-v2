@@ -30,6 +30,7 @@ the new pillars: a guided **Study Path**, an engaging **Story/RPG mode**, teache
 8. `08_design_principles.md` — the durable guardrails. **Non-negotiable. Re-read before every change.**
 9. `09_roadmap_and_open_decisions.md` — sequencing, open decisions, the bulletproof-beta checklist.
 10. `PASSOVER_PROMPT.md` — a self-contained kickoff message (also embeds the guardrails).
+11. `10_game_layer.md` — the four grade games (G1 RPG first). `STATUS_AND_ROADMAP.md` (live build status) + `11_remaining_work.md` (the remaining-work passover: B2b · content waves · TTS · the G1 RPG).
 
 ## The single most important warning
 Beta failed on **content quality**, not features. Students hit words they hadn't learned, answers that
@@ -38,6 +39,7 @@ or any sub-agent import is right — verify item by item, against the textbook.*
 of a real 10-year-old is the failure mode that matters. See `04` and `08`.
 
 ## Status as of this handover (2026-06-10)
+- **2026-06-21 update:** the P0 foundation + the full **P1 learning track** are built. Merged to `main`: content (57 units / 5,898 items) + the foundation harness + the Smart-Review backend + auth. A **5-PR stack** (CI-green, unmerged for Koki) adds A3 `/review` → A4 streaks+offline-outbox → B1 Study Path → B3 Listening → B2 Mock Tests — **Track B is complete.** See [`STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md) (live) + [`11_remaining_work.md`](11_remaining_work.md) (what's left: B2b teacher-grading, the listening/test content waves, TTS, and the **G1 RPG** — Track C).
 - **Live content-wave status → [`docs/runbooks/items-wave.md`](../runbooks/items-wave.md):** the items wave is ✅ **COMPLETE (2026-06-17) — 57/57 units approved at 0.0% reject** (G1 ✓, G2 ✓, G3 ✓, G4 ✓), all 4 structure catalogs generated, **5,898 items** (`pnpm content status` → `approved=57`). That runbook is the source of truth for the wave receipt, the per-unit rhythm, recurring fixes, and the now-resolved song/band bank gap (§7). Next tracks (runbook §4): merge `feat/items-wave-g2`, then wire items into the trainer surfaces (the foundation harness — loader + all-format renderer + grader).
 - v1 is live at `https://domigo-silk.vercel.app` (repo `VEHO-DOMI/domigo`, private).
 - Latest corpus fix merged: [#41 — grammar matching data](https://github.com/VEHO-DOMI/domigo/pull/41)

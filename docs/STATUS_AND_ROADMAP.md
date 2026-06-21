@@ -164,7 +164,9 @@ A1 (verify DB)  ──►  A2 (auth)  ──►  A3 (/review UI)  ──►  A4 
                                       (needs auth + Smart Review service)
 D (migration + bulletproof-beta) runs in parallel; it GATES any student go-live.
 ```
-**Do next:** A1 ✅ → A2 ✅ → A3 ✅ → A4 ✅ → B1 ✅ → B3 ✅ → B2 Mock Tests ✅ (Track B done; B2b teacher-grading UI + full content are follow-ups). Next: **C / G1 RPG** (the game layer) — reuses the Study Path progression + `getDueRefs`.
+**Do next:** A1 ✅ → A2 ✅ → A3 ✅ → A4 ✅ → B1 ✅ → B3 ✅ → B2 Mock Tests ✅ — **Track B complete.** Next: **C / G1 RPG** (the game layer) — reuses the Study Path progression + `getDueRefs`.
+
+> **Remaining work is specced to the teeth in [`docs/handover/11_remaining_work.md`](handover/11_remaining_work.md):** B2b teacher writing-grading UI · the listening/test **content waves** (→ [`docs/runbooks/content-waves.md`](runbooks/content-waves.md)) · pre-generated **TTS** files · the **G1 RPG** kickoff (full design in [`docs/handover/10_game_layer.md`](handover/10_game_layer.md)).
 
 ---
 
