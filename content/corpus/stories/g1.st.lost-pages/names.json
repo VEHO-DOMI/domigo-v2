@@ -1,0 +1,9 @@
+{
+  "schema": "names@1",
+  "storyId": "g1.st.lost-pages",
+  "reviewedBy": "fable",
+  "names": [
+    { "name": "Finn", "note": "the guide character who leads the student through the fading book" },
+    { "name": "Frau Berger", "note": "the teacher cameo" }
+  ]
+}
