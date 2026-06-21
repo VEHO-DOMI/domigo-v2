@@ -16,7 +16,6 @@ import {
   index,
   uniqueIndex,
 } from "drizzle-orm/pg-core";
-import { sql } from "drizzle-orm";
 
 /** Every v2-owned table lives here. */
 export const v2 = pgSchema("domigo_v2");
@@ -53,10 +52,10 @@ export const practiceAttempts = v2.table(
   (t) => ({
     byUserTime: index("practice_attempts_user_time_idx").on(t.userId, t.createdAt.desc()),
     byUserItem: index("practice_attempts_user_item_idx").on(t.userId, t.itemId),
-    // Idempotency: one logical attempt = one row, per user, when a key is present.
-    clientAttemptUnique: uniqueIndex("practice_attempts_client_attempt_unique")
-      .on(t.userId, t.clientAttemptId)
-      .where(sql`client_attempt_id IS NOT NULL`),
+    // Idempotency: one logical attempt = one row per (user, clientAttemptId).
+    // Full (non-partial) unique index so ON CONFLICT can infer it cleanly; Postgres
+    // treats NULLs as distinct, so a future keyless insert path stays allowed.
+    clientAttemptUnique: uniqueIndex("practice_attempts_client_attempt_unique").on(t.userId, t.clientAttemptId),
   }),
 );
 
