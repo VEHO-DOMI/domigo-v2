@@ -1,0 +1,1077 @@
+{
+  "schema": "story-draft@1",
+  "storyId": "g1.st.lost-pages",
+  "grade": 1,
+  "source": {
+    "file": "index.html",
+    "sha256": "a0619c321adbc51ecd8a79a8b6e7084c95ecf17b38d849540a258ae52f44c46a"
+  },
+  "chapters": [
+    {
+      "chapterId": "g1.st.lost-pages.ch01",
+      "unit": 1,
+      "titleEn": "Time for School",
+      "topic": "School & Classroom",
+      "grammar": "Plurals, imperatives, contractions",
+      "cameo": {
+        "name": "Frau Berger",
+        "emoji": "&#128105;&#8205;&#128218;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "Hallo {NAME}! This is Chapter 1. Look — the classroom is empty!",
+          "textDe": "Hallo {NAME}! Das ist Kapitel 1. Schau — das Klassenzimmer ist leer!",
+          "emotion": "excited"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "The desks have no pencils. The board has no words. Can we fix it?",
+          "textDe": "Auf den Tischen sind keine Bleistifte. An der Tafel stehen keine Worte. Können wir das reparieren?",
+          "emotion": "worried"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "Some words are coming back! Look — a pencil! A book!",
+          "textDe": "Manche Wörter kommen zurück! Schau — ein Bleistift! Ein Buch!",
+          "emotion": "excited"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "Danke, {NAME}! The classroom is bright now. Turn the page!",
+          "textDe": "Danke, {NAME}! Das Klassenzimmer ist jetzt hell. Blättere um!",
+          "emotion": "cheering"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Welcome to school! Wilkommen in der Schule!",
+          "textDe": "Welcome to school! Willkommen in der Schule!",
+          "emotion": "welcoming"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Name the Classroom",
+          "type": "image-matching",
+          "contextEn": "The page's classroom chapter is fading fast. Objects are turning grey and shapeless. Quick — name each one before it disappears forever!",
+          "contextDe": "Das Klassenzimmer-Kapitel der Seite verblasst schnell. Gegenstände werden grau und formlos. Schnell — benenne jeden, bevor er für immer verschwindet!",
+          "legacyItemCount": 8
+        },
+        {
+          "name": "More Than One",
+          "type": "mc",
+          "contextEn": "The page only has ONE of each object left — but the classroom needs MORE. Turn each singular word into its plural form to bring the missing copies back!",
+          "contextDe": "Die Seite hat nur noch EINS von jedem Gegenstand — aber das Klassenzimmer braucht MEHR. Verwandle jedes Wort in die Mehrzahl, um die fehlenden Kopien zurückzubringen!",
+          "legacyItemCount": 8
+        },
+        {
+          "name": "Listen to the Teacher",
+          "type": "mc",
+          "contextEn": "The teacher is frozen mid-sentence — her commands are jumbled! Pick the correct imperative so she can give instructions and keep the classroom running.",
+          "contextDe": "Die Lehrerin ist mitten im Satz eingefroren — ihre Befehle sind durcheinander! Wähle den richtigen Befehl, damit sie Anweisungen geben und das Klassenzimmer am Laufen halten kann.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Message from Finn",
+          "type": "chat-sim",
+          "contextEn": "You get a message from Finn. He found something strange in the classroom cupboard!",
+          "contextDe": "Du bekommst eine Nachricht von Finn. Er hat etwas Seltsames im Klassenzimmerschrank gefunden!",
+          "legacyItemCount": 3
+        },
+        {
+          "name": "A Letter from the Classroom",
+          "type": "reading",
+          "contextEn": "A letter has appeared on the last desk — it is from the students of Room 2B! Read it carefully. Finn says: if you answer the questions correctly, this page will glow again.",
+          "contextDe": "Auf dem letzten Tisch ist ein Brief aufgetaucht — er ist von den Schülern der Klasse 2B! Lies ihn aufmerksam. Finn sagt: Wenn du die Fragen richtig beantwortest, wird diese Seite wieder leuchten.",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch02",
+      "unit": 2,
+      "titleEn": "At the Zoo",
+      "topic": "Animals & Prepositions",
+      "grammar": "to be, prepositions of place, there is/are, subject pronouns",
+      "cameo": {
+        "name": "Pixel the cat",
+        "emoji": "&#128008;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "Look! The animals are floating. They can't stay on the page.",
+          "textDe": "Schau! Die Tiere schweben. Sie können nicht auf der Seite bleiben.",
+          "emotion": "worried"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "We need the right words: in, on, behind. Let's put every animal back.",
+          "textDe": "Wir brauchen die richtigen Wörter: in, on, behind. Bringen wir jedes Tier zurück.",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Meow! I want to see the lion!",
+          "textDe": "Miau! Ich möchte den Löwen sehen!",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "The zoo is full again. I hear the lions. Super!",
+          "textDe": "Der Zoo ist wieder voll. Ich höre die Löwen. Super!",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Name the Animals",
+          "type": "image-matching",
+          "contextEn": "The wildlife park chapter is losing its colours! Animals are fading to grey shapes. Name each creature before it vanishes — only the right word can bring its colours back!",
+          "contextDe": "Das Wildpark-Kapitel verliert seine Farben! Die Tiere verblassen zu grauen Formen. Benenne jedes Tier, bevor es verschwindet — nur das richtige Wort kann seine Farben zurückbringen!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Where Do They Live?",
+          "type": "mc",
+          "contextEn": "The animals are lost! Each one needs the right preposition — in, on, or at — to land back in its habitat. One wrong word and the giraffe ends up underwater!",
+          "contextDe": "Die Tiere haben sich verlaufen! Jedes braucht die richtige Präposition — in, on oder at — um wieder in seinem Lebensraum zu landen. Ein falsches Wort und die Giraffe landet unter Wasser!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "There Is / There Are",
+          "type": "gap-fill-mc",
+          "contextEn": "The park signs are blank! Each sign needs 'There is' or 'There are' to tell visitors what lives in each zone. Fill them in before the visitors get lost!",
+          "contextDe": "Die Parkschilder sind leer! Jedes Schild braucht ‘There is’ oder ‘There are’, um den Besuchern zu sagen, was in jeder Zone lebt. Fülle sie aus, bevor sich die Besucher verlaufen!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Am, Is or Are?",
+          "type": "gap-fill-mc",
+          "contextEn": "The zookeeper's descriptions are falling apart — am, is, and are have all disappeared! Without them, nobody can describe the animals. Fill in the right form of 'to be' to bring each sentence back to life!",
+          "contextDe": "Die Beschreibungen des Zookeepers fallen auseinander — am, is und are sind alle verschwunden! Ohne sie kann niemand die Tiere beschreiben. Setze die richtige Form von ‘to be’ ein, um jeden Satz wieder zum Leben zu erwecken!",
+          "legacyItemCount": 7
+        },
+        {
+          "name": "Wildlife Park Guide",
+          "type": "reading",
+          "contextEn": "A visitor guide flutters down from a tree — it is the only copy left! Read it carefully and answer the questions to restore the park's information boards.",
+          "contextDe": "Ein Besucherführer flattert von einem Baum herunter — es ist das einzige Exemplar! Lies ihn aufmerksam und beantworte die Fragen, um die Informationstafeln des Parks wiederherzustellen.",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch03",
+      "unit": 3,
+      "titleEn": "Pirates",
+      "topic": "Pirates & Treasure",
+      "grammar": "have got (aff/neg/qu)",
+      "cameo": {
+        "name": "Captain Jack",
+        "emoji": "&#127988;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "Ahoy! There's a pirate here. But his treasure is gone!",
+          "textDe": "Ahoi! Hier ist ein Pirat. Aber sein Schatz ist weg!",
+          "emotion": "worried"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Yo-ho-ho! Where is me parrot?",
+          "textDe": "Yo-ho-ho! Wo ist mein Papagei?",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "Look! Gold coins are coming back to the chest!",
+          "textDe": "Schau! Goldmünzen kommen in die Truhe zurück!",
+          "emotion": "excited"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "We found the gold. Captain Jack says thank you!",
+          "textDe": "Wir haben das Gold gefunden. Captain Jack sagt Danke!",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Pirate Features",
+          "type": "image-matching",
+          "contextEn": "Captain Blackbeard's crew is fading to blank shapes! Each pirate feature needs its name back — match the descriptions to restore beards, swords, and parrots before the crew vanishes!",
+          "contextDe": "Kapitän Blackbeards Crew verblasst zu leeren Formen! Jedes Piratenmerkmal braucht seinen Namen zurück — ordne die Beschreibungen zu, um Bärte, Schwerter und Papageien wiederherzustellen, bevor die Crew verschwindet!",
+          "legacyItemCount": 8
+        },
+        {
+          "name": "Has Got / Have Got",
+          "type": "mc",
+          "contextEn": "The pirates have forgotten what they own! Without 'has got' and 'have got', they cannot describe their gear. Fill in the POSITIVE form to give each feature back!",
+          "contextDe": "Die Piraten haben vergessen, was ihnen gehört! Ohne ‘has got’ und ‘have got’ können sie ihre Ausrüstung nicht beschreiben. Setze die POSITIVE Form ein, um jedem Merkmal seinen Besitz zurückzugeben!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Captain Jack's Log",
+          "type": "reading",
+          "contextEn": "A folded parchment blows across the deck — it is Captain Jack's logbook! Read it to find out about his crew and their things.",
+          "contextDe": "Ein gefaltetes Pergament weht über das Deck — es ist Captain Jacks Logbuch! Lies es, um mehr über seine Crew und ihre Sachen zu erfahren.",
+          "legacyItemCount": 5
+        },
+        {
+          "name": "True or False?",
+          "type": "tf",
+          "contextEn": "Look at Captain Jack again. Some features are real, some are not. Decide: true or false? Get it right and the page stays bright!",
+          "contextDe": "Schau dir Captain Jack noch einmal an. Manche Merkmale sind echt, manche nicht. Entscheide: richtig oder falsch? Liegst du richtig, bleibt die Seite hell!",
+          "legacyItemCount": 6
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch04",
+      "unit": 4,
+      "titleEn": "Emotions",
+      "topic": "Feelings",
+      "grammar": "to be neg + qu, because, emotion adjectives",
+      "cameo": {
+        "name": "Robo",
+        "emoji": "&#129302;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "Robo is broken. His face shows the wrong feelings!",
+          "textDe": "Robo ist kaputt. Sein Gesicht zeigt die falschen Gefühle!",
+          "emotion": "worried"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Beep. I am… sad? No! I am happy!",
+          "textDe": "Piep. Ich bin… traurig? Nein! Ich bin froh!",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "We can help Robo. Because + feeling = we know why!",
+          "textDe": "Wir können Robo helfen. Because + Gefühl = wir wissen warum!",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "Robo smiles now. He's happy because we helped.",
+          "textDe": "Robo lächelt jetzt. Er ist froh, weil wir geholfen haben.",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Name the Feeling",
+          "type": "image-matching",
+          "contextEn": "Each character's face is blank — frozen without expression. Match the description to the right emotion. Every correct answer paints a feeling back onto their face!",
+          "contextDe": "Die Gesichter der Figuren sind leer — ohne Ausdruck eingefroren. Ordne die Beschreibung dem richtigen Gefühl zu. Jede richtige Antwort malt ein Gefühl auf ihr Gesicht zurück!",
+          "legacyItemCount": 8
+        },
+        {
+          "name": "Not Feeling It",
+          "type": "mc",
+          "contextEn": "Some characters need to say what they are NOT feeling — but the negative forms of 'to be' have been erased! Choose isn't, aren't, or am not to let them express themselves.",
+          "contextDe": "Einige Figuren müssen sagen, was sie NICHT fühlen — aber die verneinten Formen von ‘to be’ wurden gelöscht! Wähle isn’t, aren’t oder am not, damit sie sich ausdrücken können.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "How Do They Feel?",
+          "type": "mc",
+          "contextEn": "The characters are trying to answer questions about their feelings, but they keep getting the short answers wrong. Help them reply properly — the book needs every answer to be perfect!",
+          "contextDe": "Die Figuren versuchen, Fragen über ihre Gefühle zu beantworten, aber die Kurzantworten sind immer falsch. Hilf ihnen, richtig zu antworten — die Seite braucht jede perfekte Antwort!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "A Day on the Emotion Islands",
+          "type": "reading",
+          "contextEn": "Read about the Emotion Islands and answer the questions.",
+          "contextDe": "Lies über die Gefühlsinseln und beantworte die Fragen.",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch05",
+      "unit": 5,
+      "titleEn": "Our Band",
+      "topic": "Instruments & Abilities",
+      "grammar": "Possessive adjectives, can/can’t",
+      "cameo": {
+        "name": "Anna the drummer",
+        "emoji": "&#129345;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "Anna is the drummer. She can't find her drumsticks!",
+          "textDe": "Anna ist die Schlagzeugerin. Sie findet ihre Drumsticks nicht!",
+          "emotion": "worried"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "My drum is missing! Help!",
+          "textDe": "Mein Schlagzeug ist weg! Hilfe!",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "Look! The guitar is back. And her drum too!",
+          "textDe": "Schau! Die Gitarre ist zurück. Und ihr Schlagzeug auch!",
+          "emotion": "excited"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "The band plays! I can dance. Can you?",
+          "textDe": "Die Band spielt! Ich kann tanzen. Kannst du?",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Name the Instrument",
+          "type": "image-matching",
+          "contextEn": "The instruments are jumbled backstage — labels torn off! Match each description to the right instrument so the band can set up before showtime.",
+          "contextDe": "Die Instrumente liegen durcheinander hinter der Bühne — die Schilder sind abgerissen! Ordne jede Beschreibung dem richtigen Instrument zu, damit die Band vor dem Auftritt aufbauen kann.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Whose Is It?",
+          "type": "gap-fill-mc",
+          "contextEn": "Every band member is holding the WRONG instrument! Fill in the possessive — his, her, my, their — so each musician gets their own gear back. The concert starts in minutes!",
+          "contextDe": "Jedes Bandmitglied hält das FALSCHE Instrument! Setze das richtige Possessivpronomen ein — his, her, my, their — damit jeder Musiker sein eigenes Instrument zurückbekommt. Das Konzert beginnt in wenigen Minuten!",
+          "legacyItemCount": 7
+        },
+        {
+          "name": "Can or Can't?",
+          "type": "mc",
+          "contextEn": "The band members are arguing about who CAN and CAN'T play! Abilities are scrambled. Choose correctly to settle each argument and get the music started.",
+          "contextDe": "Die Bandmitglieder streiten darüber, wer spielen KANN und wer NICHT! Die Fähigkeiten sind durcheinander. Wähle richtig, um jeden Streit zu schlichten und die Musik zum Laufen zu bringen.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Concert Poster",
+          "type": "reading",
+          "contextEn": "A concert poster appears on the wall — it is for Paper Notes! Read every detail. If you answer the questions correctly, the poster glows and the concert can finally begin.",
+          "contextDe": "Ein Konzertplakat erscheint an der Wand — es ist für Paper Notes! Lies jedes Detail. Wenn du die Fragen richtig beantwortest, leuchtet das Plakat und das Konzert kann endlich beginnen.",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch06",
+      "unit": 6,
+      "titleEn": "Detective",
+      "topic": "Clues & Actions",
+      "grammar": "Present simple aff + 3rd-person -s",
+      "cameo": {
+        "name": "Detective Mo",
+        "emoji": "&#128373;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "Detective Mo lost his clues. He can't solve the case!",
+          "textDe": "Detektiv Mo hat seine Hinweise verloren. Er kann den Fall nicht lösen!",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Where are my fingerprints?",
+          "textDe": "Wo sind meine Fingerabdrücke?",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "One clue a day! He finds, she looks, it works.",
+          "textDe": "Ein Hinweis pro Tag! He finds, she looks, it works.",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "Case closed! Mo walks home happy.",
+          "textDe": "Fall gelöst! Mo geht zufrieden nach Hause.",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "What Does a Detective Do?",
+          "type": "image-matching",
+          "contextEn": "The detective’s case file is open but every action word is blank! Name what a detective does so his investigation can begin — every action word brings the page back.",
+          "contextDe": "Die Fallakte des Detektivs ist offen, aber jedes Tätigkeitswort ist leer! Benenne, was ein Detektiv tut, damit die Ermittlung beginnen kann — jedes Tätigkeitswort bringt die Seite zurück.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Third Person -s",
+          "type": "mc",
+          "contextEn": "The detective is frozen because every 'he/she/it' verb has lost its -s ending! Choose the correct form to unfreeze each action. Every verb you fix lets the detective move one step closer to the clue!",
+          "contextDe": "Der Detektiv ist eingefroren, weil jedes ‘he/she/it’-Verb seine -s-Endung verloren hat! Wähle die richtige Form, um jede Aktion aufzutauen. Jedes Verb, das du reparierst, bringt den Detektiv einen Schritt näher zum Hinweis!",
+          "legacyItemCount": 8
+        },
+        {
+          "name": "Daily Routines",
+          "type": "gap-fill-typed",
+          "contextEn": "Finn discovered the detective's daily schedule — but the verb forms are erased! Type the correct third-person form to reconstruct his routine and track where he goes each day.",
+          "contextDe": "Finn hat den Tagesplan des Detektivs entdeckt — aber die Verbformen sind gelöscht! Schreibe die richtige Form der dritten Person, um seinen Tagesablauf zu rekonstruieren und zu verfolgen, wohin er jeden Tag geht.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "The Detective's Report",
+          "type": "reading",
+          "contextEn": "The detective wrote a short case report. Read every word carefully and answer the questions to complete his notes.",
+          "contextDe": "Der Detektiv hat einen kurzen Fallbericht geschrieben. Lies jedes Wort aufmerksam und beantworte die Fragen, um seine Notizen zu vervollständigen.",
+          "legacyItemCount": 5
+        },
+        {
+          "name": "A Lot Of",
+          "type": "mc",
+          "contextEn": "The detective's notes describe how MUCH evidence is at the scene — but 'a lot of' and 'lots of' keep getting written wrong. Fix each phrase so the case file is accurate!",
+          "contextDe": "Die Notizen des Detektivs beschreiben, wie VIEL Beweismaterial am Tatort ist — aber ‘a lot of’ und ‘lots of’ werden immer falsch geschrieben. Korrigiere jede Formulierung, damit die Fallakte stimmt!",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch07",
+      "unit": 7,
+      "titleEn": "Noodles",
+      "topic": "Food & Frequency",
+      "grammar": "Present simple neg, a/an/the, adverbs of frequency",
+      "cameo": {
+        "name": "Chef Luca",
+        "emoji": "&#129386;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "Chef Luca can't cook. His recipe book is empty!",
+          "textDe": "Koch Luca kann nicht kochen. Sein Kochbuch ist leer!",
+          "emotion": "worried"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Mama mia! My recipe!",
+          "textDe": "Mama mia! Mein Rezept!",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "I always eat noodles. She doesn't like cheese. We sometimes cook soup.",
+          "textDe": "Ich esse immer Nudeln. Sie mag keinen Käse. Wir kochen manchmal Suppe.",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "I eat the soup. It's good! I love noodles.",
+          "textDe": "Ich esse die Suppe. Sie ist gut! Ich liebe Nudeln.",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Food Words",
+          "type": "image-matching",
+          "contextEn": "The kitchen labels have fallen off every ingredient! Match each description to the right food. Without names, the cook cannot tell rice from noodles!",
+          "contextDe": "Die Küchenschilder sind von jeder Zutat abgefallen! Ordne jede Beschreibung dem richtigen Lebensmittel zu. Ohne Namen kann der Koch Reis nicht von Nudeln unterscheiden!",
+          "legacyItemCount": 8
+        },
+        {
+          "name": "Don't / Doesn't",
+          "type": "gap-fill-mc",
+          "contextEn": "The characters are stuck saying YES to everything! Fill in 'don't' or 'doesn't' to give them the power to refuse. Every correct answer frees someone from eating food they hate!",
+          "contextDe": "Die Figuren sagen zu allem JA! Setze ‘don’t’ oder ‘doesn’t’ ein, um ihnen die Möglichkeit zu geben, abzulehnen. Jede richtige Antwort befreit jemanden davon, Essen zu essen, das er hasst!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "How Often?",
+          "type": "mc",
+          "contextEn": "The adverbs of frequency — always, usually, often, sometimes, rarely, never — are floating in the wrong places! Put each one in the correct position before the characters' daily routines become total nonsense.",
+          "contextDe": "Die Häufigkeitswörter — always, usually, often, sometimes, rarely, never — schweben an den falschen Stellen! Setze jedes an die richtige Position, bevor der Tagesablauf der Figuren völliger Unsinn wird.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Fix the Broken Sentences",
+          "type": "mc",
+          "contextEn": "Finn found a torn page — but it is full of grammar errors! Fix the broken sentences so the page can heal.",
+          "contextDe": "Finn hat eine zerrissene Seite gefunden — aber sie ist voller Grammatikfehler! Korrigiere die kaputten Sätze, damit die Seite wieder heilt.",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch08",
+      "unit": 8,
+      "titleEn": "Clothes",
+      "topic": "Clothes & Questions",
+      "grammar": "Present simple qu (Do/Does), short answers",
+      "cameo": {
+        "name": "Mila",
+        "emoji": "&#128098;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "Mila wants to get dressed. But her clothes keep changing colour!",
+          "textDe": "Mila möchte sich anziehen. Aber ihre Kleidung wechselt die Farbe!",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Help! My jumper is pink, then blue, then green!",
+          "textDe": "Hilfe! Mein Pulli ist pink, dann blau, dann grün!",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "Do you like red? Does she wear a hat? Let's ask!",
+          "textDe": "Do you like red? Does she wear a hat? Fragen wir!",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "She wears a red jumper. Very cool!",
+          "textDe": "Sie trägt einen roten Pulli. Sehr cool!",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "What Are They Wearing?",
+          "type": "image-matching",
+          "contextEn": "The party guests' outfits are losing their labels! Match each description to the correct clothing item. Without names, the fashion show cannot even start!",
+          "contextDe": "Die Outfits der Partygäste verlieren ihre Etiketten! Ordne jede Beschreibung dem richtigen Kleidungsstück zu. Ohne Namen kann die Modenschau nicht einmal beginnen!",
+          "legacyItemCount": 8
+        },
+        {
+          "name": "Do or Does?",
+          "type": "gap-fill-mc",
+          "contextEn": "Emma's fashion show judges cannot ask questions! The Do/Does words are scrambled. Fix them so the judges can ask the models about their outfits — the show must go on!",
+          "contextDe": "Die Jury der Modenschau kann keine Fragen stellen! Die Do/Does-Wörter sind durcheinander. Korrigiere sie, damit die Jury die Models über ihre Outfits befragen kann — die Show muss weitergehen!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Short Answers",
+          "type": "mc",
+          "contextEn": "The party guests can finally ask questions — but now their answers are broken! Pick the right short answer for each question so the conversations can flow again.",
+          "contextDe": "Die Partygäste können endlich Fragen stellen — aber jetzt sind ihre Antworten kaputt! Wähle die richtige Kurzantwort für jede Frage, damit die Gespräche wieder fließen können.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "The Fashion Show",
+          "type": "reading",
+          "contextEn": "The fashion show is in full swing! Read about Emma's birthday party carefully. Finn says: every correct answer helps rebuild the chapter.",
+          "contextDe": "Die Modenschau ist in vollem Gange! Lies über Emmas Geburtstagsparty aufmerksam. Finn sagt: Jede richtige Antwort hilft, das Kapitel wieder aufzubauen.",
+          "legacyItemCount": 5
+        },
+        {
+          "name": "The School Trip Shop",
+          "type": "reading",
+          "contextEn": "Read about the school trip to the shop and answer the questions.",
+          "contextDe": "Lies über den Schulausflug zum Geschäft und beantworte die Fragen.",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch09",
+      "unit": 9,
+      "titleEn": "Unusual Pets",
+      "topic": "Pet Room & Questions",
+      "grammar": "Object pronouns, question words, frequency expressions",
+      "cameo": {
+        "name": "Professor Tim",
+        "emoji": "&#129454;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "Professor Tim has strange pets. But he can't see them!",
+          "textDe": "Professor Tim hat seltsame Haustiere. Aber er kann sie nicht sehen!",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Have you seen my snake?",
+          "textDe": "Hast du meine Schlange gesehen?",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "I feed them twice a day. I know him. I see her. I know them.",
+          "textDe": "Ich füttere sie zweimal am Tag. Ich kenne ihn. Ich sehe sie. Ich kenne sie.",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "The snake likes me. The spider likes you!",
+          "textDe": "Die Schlange mag mich. Die Spinne mag dich!",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "My Pet",
+          "type": "image-matching",
+          "contextEn": "The pets in the book have lost their names — a furry shape barks but nobody knows what to call it! Match each description to the right animal before the pets fade away completely.",
+          "contextDe": "Die Haustiere im Buch haben ihre Namen verloren — eine pelzige Gestalt bellt, aber niemand weiß, wie man sie nennt! Ordne jede Beschreibung dem richtigen Tier zu, bevor die Haustiere ganz verblassen.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Question Words",
+          "type": "mc",
+          "contextEn": "Finn needs to ask questions about the pets — but WHAT, WHERE, WHO, HOW, and WHY are all scrambled! Pick the right question word so Finn can learn more about the pets.",
+          "contextDe": "Finn muss Fragen über die Haustiere stellen — aber WHAT, WHERE, WHO, HOW und WHY sind alle durcheinander! Wähle das richtige Fragewort, damit Finn mehr über die Haustiere lernen kann.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Professor Tim's Pet List",
+          "type": "reading",
+          "contextEn": "Professor Tim keeps a list of all his unusual pets. Read it carefully and answer the questions about them.",
+          "contextDe": "Professor Tim führt eine Liste über alle seine seltsamen Haustiere. Lies sie aufmerksam und beantworte die Fragen.",
+          "legacyItemCount": 5
+        },
+        {
+          "name": "Object Pronouns",
+          "type": "gap-fill-mc",
+          "contextEn": "The characters want to talk about their pets — but 'him', 'her', 'them', 'us', and 'it' are all missing! Fill in the right object pronoun so each sentence makes sense again.",
+          "contextDe": "Die Figuren wollen über ihre Haustiere sprechen — aber ‘him’, ‘her’, ‘them’, ‘us’ und ‘it’ fehlen alle! Setze das richtige Objektpronomen ein, damit jeder Satz wieder Sinn ergibt.",
+          "legacyItemCount": 6
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch10",
+      "unit": 10,
+      "titleEn": "In a Shop",
+      "topic": "Shopping",
+      "grammar": "Demonstratives, How much / How many",
+      "cameo": {
+        "name": "Mrs Apple",
+        "emoji": "&#128106;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "Mrs Apple has a shop. The prices are all wrong!",
+          "textDe": "Frau Apple hat einen Laden. Die Preise sind alle falsch!",
+          "emotion": "worried"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Three euros, please!",
+          "textDe": "Drei Euro, bitte!",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "This cheese is fresh. Those apples are cheap. How many eggs?",
+          "textDe": "Dieser Käse ist frisch. Jene Äpfel sind billig. Wie viele Eier?",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "I buy a pen. It's one euro. Bitte!",
+          "textDe": "Ich kaufe einen Stift. Er kostet einen Euro. Bitte!",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "At the Shop",
+          "type": "image-matching",
+          "contextEn": "The market stalls have lost their price tags AND their labels! Match each description to the right item so the shoppers can finally see what is for sale.",
+          "contextDe": "Die Marktstände haben ihre Preisschilder UND ihre Etiketten verloren! Ordne jede Beschreibung dem richtigen Artikel zu, damit die Einkäufer endlich sehen können, was zum Verkauf steht.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "This, That, These, Those",
+          "type": "mc",
+          "contextEn": "Shoppers are pointing wildly but using the wrong words! Is it THIS (near, one) or THAT (far, one)? THESE (near, many) or THOSE (far, many)? Fix each one so the market comes back to life!",
+          "contextDe": "Einkäufer zeigen wild, aber benutzen die falschen Wörter! Ist es THIS (nah, eins) oder THAT (fern, eins)? THESE (nah, viele) oder THOSE (fern, viele)? Korrigiere jedes, damit der Markt wieder zum Leben erwacht!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "How Much?",
+          "type": "gap-fill-mc",
+          "contextEn": "Jack wants to buy presents but the price signs are broken! Fill in 'is' or 'are' after 'How much' so he can ask about each item. Singular gets 'is', plural gets 'are'!",
+          "contextDe": "Jack will Geschenke kaufen, aber die Preisschilder sind kaputt! Setze ‘is’ oder ‘are’ nach ‘How much’ ein, damit er nach jedem Artikel fragen kann. Einzahl bekommt ‘is’, Mehrzahl bekommt ‘are’!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "The Clever Shopper",
+          "type": "reading",
+          "contextEn": "Jack is shopping at the market. Read his story carefully and answer every question so the page stays bright.",
+          "contextDe": "Jack kauft auf dem Markt ein. Lies seine Geschichte aufmerksam und beantworte jede Frage, damit die Seite hell bleibt.",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch11",
+      "unit": 11,
+      "titleEn": "What's the Time",
+      "topic": "Daily Routine & Time",
+      "grammar": "Present continuous, -ing spelling, time-telling",
+      "cameo": {
+        "name": "Tik the Clockmaker",
+        "emoji": "&#9201;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "All the clocks stopped! Tik the Clockmaker is sad.",
+          "textDe": "Alle Uhren sind stehen geblieben! Tik der Uhrmacher ist traurig.",
+          "emotion": "worried"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Tick tock! My clocks are frozen!",
+          "textDe": "Tick tack! Meine Uhren sind eingefroren!",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "She is reading now. They are playing. What are you doing?",
+          "textDe": "Sie liest gerade. Sie spielen. Was machst du gerade?",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "It's three o'clock. Time for a snack!",
+          "textDe": "Es ist drei Uhr. Zeit für einen Snack!",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "What Are They Doing?",
+          "type": "image-matching",
+          "contextEn": "The characters are frozen mid-action but nobody can remember what they were doing! Name each activity to unfreeze the scene — then we can use the present continuous to describe them.",
+          "contextDe": "Die Figuren sind mitten in einer Handlung eingefroren, aber niemand erinnert sich, was sie getan haben! Benenne jede Aktivität, um die Szene aufzutauen — dann können wir das Present Continuous verwenden.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Unfreeze the Characters!",
+          "type": "gap-fill-mc",
+          "contextEn": "Every character is frozen mid-action! Complete each sentence with the correct form of the verb. Only the RIGHT form will unfreeze them!",
+          "contextDe": "Alle Figuren sind mitten in der Bewegung eingefroren! Ergänze jeden Satz mit der richtigen Form des Verbs. Nur die RICHTIGE Form kann sie auftauen!",
+          "legacyItemCount": 8
+        },
+        {
+          "name": "What Time Is It?",
+          "type": "mc",
+          "contextEn": "The clocks in the book have stopped! Each one shows a time but the characters cannot read it. Tell them the correct time in words — when all the clocks are read, time starts moving again.",
+          "contextDe": "Die Uhren im Buch sind stehen geblieben! Jede zeigt eine Uhrzeit, aber die Figuren können sie nicht lesen. Sage ihnen die richtige Uhrzeit in Worten — wenn alle Uhren gelesen sind, beginnt die Zeit wieder zu laufen.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Saturday Morning",
+          "type": "reading",
+          "contextEn": "A page glows softly — it is a story about a lazy Saturday morning. Read it carefully. Finn says the more stories we save, the stronger the book becomes. Every correct answer sends light to the empty pages where she is searching.",
+          "contextDe": "Eine Seite leuchtet sanft — es ist eine Geschichte über einen faulen Samstagmorgen. Lies sie aufmerksam. Finn sagt: Je mehr Geschichten wir retten, desto stärker wird die Seite. Jede richtige Antwort sendet Licht zu den leeren Seiten, wo sie sucht.",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch12",
+      "unit": 12,
+      "titleEn": "Birthday Cake",
+      "topic": "Birthday & Past",
+      "grammar": "was/were, ordinals, months, prepositions of time",
+      "cameo": {
+        "name": "Omi Rosa",
+        "emoji": "&#128116;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "It's Omi Rosa's birthday! But the cake is gone.",
+          "textDe": "Omi Rosa hat Geburtstag! Aber die Torte ist weg.",
+          "emotion": "worried"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Wo ist meine Torte?",
+          "textDe": "Wo ist meine Torte?",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "I was at home. They were at the party. My birthday is on the 5th of May.",
+          "textDe": "Ich war zu Hause. Sie waren auf der Party. Mein Geburtstag ist am 5. Mai.",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "Happy birthday, Omi! The cake was yummy!",
+          "textDe": "Alles Gute, Omi! Die Torte war lecker!",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Rooms of the House",
+          "type": "image-matching",
+          "contextEn": "Finn walked through these rooms last night — but their names have been erased from the doors! Match each description to the right room so the house comes back.",
+          "contextDe": "Finn ist letzte Nacht durch diese Räume gegangen — aber ihre Namen wurden von den Türen gelöscht! Ordne jede Beschreibung dem richtigen Raum zu, damit das Haus zurückkommt.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Was or Were?",
+          "type": "gap-fill-mc",
+          "contextEn": "Finn's birthday report has gaps everywhere — was and were are missing! Fill in the right form to complete each sentence. Every correct answer brings a memory back.",
+          "contextDe": "Finns Geburtstagsbericht hat überall Lücken — was und were fehlen! Setze die richtige Form ein, um jeden Satz zu vervollständigen. Jede richtige Antwort bringt eine Erinnerung zurück.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "On, In, At (Time)",
+          "type": "gap-fill-mc",
+          "contextEn": "To build a timeline for Omi's birthday week, we need exact TIMES — but the time prepositions are jumbled! Is it AT midnight, ON Monday, or IN June? Fix each one so the timeline is accurate.",
+          "contextDe": "Um eine Zeitleiste für Omis Geburtstagswoche zu bauen, brauchen wir genaue ZEITEN — aber die Zeitpräpositionen sind durcheinander! Ist es AT midnight, ON Monday oder IN June? Korrigiere jede, damit die Zeitleiste stimmt.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Omi's Birthday Morning",
+          "type": "reading",
+          "contextEn": "This is Finn's report about Omi Rosa's birthday morning. Read every part carefully — the questions are about what was happening at each time.",
+          "contextDe": "Das ist Finns Bericht über Omi Rosas Geburtstagsmorgen. Lies jeden Teil aufmerksam — die Fragen handeln davon, was zu jedem Zeitpunkt war.",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch13",
+      "unit": 13,
+      "titleEn": "Help!",
+      "topic": "Emergency & Past",
+      "grammar": "Past simple regular, linking words",
+      "cameo": {
+        "name": "Emergency Sam",
+        "emoji": "&#128657;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "There was a fire. Sam helped — but his story is gone!",
+          "textDe": "Es gab ein Feuer. Sam hat geholfen — aber seine Geschichte ist weg!",
+          "emotion": "worried"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "I climbed the ladder!",
+          "textDe": "Ich bin die Leiter hochgeklettert!",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "She called for help, and we climbed fast, but it was late.",
+          "textDe": "Sie rief um Hilfe und wir kletterten schnell, aber es war spät.",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "Everyone is safe. Sam is our hero!",
+          "textDe": "Alle sind sicher. Sam ist unser Held!",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Emergency Words",
+          "type": "image-matching",
+          "contextEn": "An emergency is unfolding in the book! But the words for help are scattered — name each thing so the rescue team can do their job. Every second counts!",
+          "contextDe": "Ein Notfall passiert im Buch! Aber die Wörter für Hilfe sind verstreut — benenne jedes Ding, damit das Rettungsteam seine Arbeit tun kann. Jede Sekunde zählt!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Past Simple -ed",
+          "type": "mc",
+          "contextEn": "The emergency stories are frozen mid-action! A girl slipped but the word says 'slip'. An ambulance arrived but the page says 'arrive'. Choose the correct -ed form to complete each rescue!",
+          "contextDe": "Die Notfallgeschichten sind mitten in der Handlung eingefroren! Ein Mädchen ist ausgerutscht, aber das Wort sagt ‘slip’. Ein Krankenwagen kam an, aber die Seite sagt ‘arrive’. Wähle die richtige -ed-Form, um jede Rettung abzuschließen!",
+          "legacyItemCount": 8
+        },
+        {
+          "name": "And, But, Because",
+          "type": "mc",
+          "contextEn": "The emergency reports need linking words to connect the events! Was it 'and' (two things happened), 'but' (something unexpected), or 'because' (a reason)? Link the sentences so the stories make sense.",
+          "contextDe": "Die Notfallberichte brauchen Verbindungswörter, um die Ereignisse zu verknüpfen! War es ‘and’ (zwei Dinge passierten), ‘but’ (etwas Unerwartetes) oder ‘because’ (ein Grund)? Verbinde die Sätze, damit die Geschichten Sinn ergeben.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Mountain Rescue",
+          "type": "reading",
+          "contextEn": "A dramatic news report about a mountain rescue! This is one of the book's most important stories — it shows how courage and quick thinking save lives. Read every detail. The page grows stronger with each answer.",
+          "contextDe": "Ein dramatischer Nachrichtenbericht über eine Bergrettung! Das ist eine der wichtigsten Geschichten der Seite — sie zeigt, wie Mut und schnelles Denken Leben retten. Lies jedes Detail. Die Seite wird mit jeder Antwort stärker.",
+          "legacyItemCount": 5
+        },
+        {
+          "name": "Type the Past Tense",
+          "type": "gap-fill-typed",
+          "contextEn": "These are Finn's notes about what happened in the book yesterday. The verb endings are missing — type the correct past tense form to complete each note. Careful: spelling counts!",
+          "contextDe": "Das sind Finns Notizen darüber, was gestern im Buch passiert ist. Die Verbendungen fehlen — schreibe die richtige Vergangenheitsform, um jede Notiz zu vervollständigen. Vorsicht: Rechtschreibung zählt!",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch14",
+      "unit": 14,
+      "titleEn": "Favourite",
+      "topic": "Music & Past Irregulars",
+      "grammar": "Past simple neg, ~25 irregular past verbs",
+      "cameo": {
+        "name": "DJ Peppi",
+        "emoji": "&#127911;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "DJ Peppi has a playlist. But half the songs are gone!",
+          "textDe": "DJ Peppi hat eine Playlist. Aber die Hälfte der Songs ist weg!",
+          "emotion": "worried"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Listen to my beat!",
+          "textDe": "Hör meinen Beat!",
+          "emotion": null
+        },
+        {
+          "speaker": "finn",
+          "textEn": "Yesterday I went to the park. I saw a bird. I didn't see a cat.",
+          "textDe": "Gestern bin ich in den Park gegangen. Ich sah einen Vogel. Ich sah keine Katze.",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "The music is back! My favourite song is on!",
+          "textDe": "Die Musik ist zurück! Mein Lieblingslied läuft!",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Broadcast Words",
+          "type": "image-matching",
+          "contextEn": "The broadcast tower is sending signals across the book — but the names of everything are scrambled! Name each one so the story can finally be heard.",
+          "contextDe": "Der Sendemast schickt Signale durch das ganze Buch — aber die Namen von allem sind durcheinander! Benenne jedes Ding, damit die Geschichte endlich gehört werden kann.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Irregular Verbs",
+          "type": "mc",
+          "contextEn": "The broadcast tower is blasting wrong past tenses across the book! 'Goed', 'thinked', 'eated' — these verbs do not follow the -ed rule. Choose the correct irregular form to shut down each broken broadcast!",
+          "contextDe": "Der Sendemast strahlt falsche Vergangenheitsformen über das ganze Buch aus! ‘Goed’, ‘thinked’, ‘eated’ — diese Verben folgen nicht der -ed-Regel. Wähle die richtige unregelmäßige Form, um jede fehlerhafte Sendung abzuschalten!",
+          "legacyItemCount": 8
+        },
+        {
+          "name": "Didn't + Base Form",
+          "type": "mc",
+          "contextEn": "DJ Peppi's story is full of things he DIDN'T do — but the negatives are wrong! Remember: after 'didn't', always use the BASE form, not the past form. Fix each sentence so the story flows.",
+          "contextDe": "DJ Peppis Geschichte ist voll von Dingen, die er NICHT getan hat — aber die Verneinungen sind falsch! Denk daran: Nach ‘didn’t’ kommt immer die GRUNDFORM, nicht die Vergangenheitsform. Korrigiere jeden Satz, damit die Geschichte flüssig ist.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Yesterday and Now",
+          "type": "tf",
+          "contextEn": "Finn wrote a short list of true and false facts about the past. Read each one and decide: true or false? This is your last mini-quiz before the final chapter.",
+          "contextDe": "Finn hat eine kurze Liste von richtigen und falschen Aussagen über die Vergangenheit geschrieben. Lies jede und entscheide: richtig oder falsch? Das ist dein letztes Mini-Quiz vor dem letzten Kapitel.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Fix the Torn Page",
+          "type": "mc",
+          "contextEn": "A torn page has words on it, but the irregular verbs are all wrong — 'I goed', 'Nobody seed', 'I thinked'. Fix the words so the page can be read again.",
+          "contextDe": "Eine zerrissene Seite hat Wörter darauf, aber die unregelmäßigen Verben sind alle falsch — ‘I goed’, ‘Nobody seed’, ‘I thinked’. Korrigiere die Wörter, damit die Seite wieder lesbar ist.",
+          "legacyItemCount": 5
+        },
+        {
+          "name": "DJ Peppi's Favourite Things",
+          "type": "reading",
+          "contextEn": "DJ Peppi wrote a list of everything he loves. Read it carefully — it is full of past tense verbs because these are memories.",
+          "contextDe": "DJ Peppi hat eine Liste von allem geschrieben, was er liebt. Lies sie aufmerksam — sie ist voller Vergangenheitsformen, denn es sind Erinnerungen.",
+          "legacyItemCount": 5
+        }
+      ]
+    },
+    {
+      "chapterId": "g1.st.lost-pages.ch15",
+      "unit": 15,
+      "titleEn": "What Are You Going to Do?",
+      "topic": "Future Plans · EPILOGUE",
+      "grammar": "going-to future",
+      "cameo": {
+        "name": "Frau Berger",
+        "emoji": "&#128105;&#8205;&#128218;"
+      },
+      "scenes": [
+        {
+          "speaker": "finn",
+          "textEn": "This is the last page! What are we going to do next?",
+          "textDe": "Das ist die letzte Seite! Was machen wir als Nächstes?",
+          "emotion": "excited"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "I'm going to meet you in real life. Outside the book.",
+          "textDe": "Ich werde dich im echten Leben treffen. Außerhalb des Buches.",
+          "emotion": "happy"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "What are you going to do tomorrow? Tell me!",
+          "textDe": "Was machst du morgen? Sag es mir!",
+          "emotion": "curious"
+        },
+        {
+          "speaker": "cameo",
+          "textEn": "Welcome, Finn. Welcome back!",
+          "textDe": "Willkommen, Finn. Willkommen zurück!",
+          "emotion": "welcoming"
+        },
+        {
+          "speaker": "finn",
+          "textEn": "Danke, {NAME}. See you tomorrow at school!",
+          "textDe": "Danke, {NAME}. Bis morgen in der Schule!",
+          "emotion": "cheering"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Holiday Words",
+          "type": "image-matching",
+          "contextEn": "The blank future page is waiting to be filled with plans! But the travel words are missing — name each one so the characters can describe where they are going to go.",
+          "contextDe": "Die leere Zukunftsseite wartet darauf, mit Plänen gefüllt zu werden! Aber die Reisewörter fehlen — benenne jedes, damit die Figuren beschreiben können, wohin sie gehen werden.",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Going To (Statements)",
+          "type": "mc",
+          "contextEn": "The blank future page is waiting to be written! Each character has a plan — but they need the right form of 'going to' to make it real. Choose am/is/are going to and watch each dream appear on the page!",
+          "contextDe": "Die leere Zukunftsseite wartet darauf, geschrieben zu werden! Jede Figur hat einen Plan — aber sie brauchen die richtige Form von ‘going to’, um ihn wahr werden zu lassen. Wähle am/is/are going to und sieh zu, wie jeder Traum auf der Seite erscheint!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Going To (Questions)",
+          "type": "mc",
+          "contextEn": "Now the characters want to ASK about the future — Are you going to come? Is she going to help? Choose the correct question form. Every question you fix adds a new line to the future chapter!",
+          "contextDe": "Jetzt wollen die Figuren über die Zukunft FRAGEN — Are you going to come? Is she going to help? Wähle die richtige Frageform. Jede Frage, die du korrigierst, fügt dem Zukunftskapitel eine neue Zeile hinzu!",
+          "legacyItemCount": 6
+        },
+        {
+          "name": "Holiday Plans",
+          "type": "reading",
+          "contextEn": "The final reading passage! Three friends share their summer plans — the first new words written on the once-blank future page. Read their dreams carefully. This is the last task before the book is whole again.",
+          "contextDe": "Die letzte Leseaufgabe! Drei Freunde teilen ihre Sommerpläne — die ersten neuen Wörter, die auf der einst leeren Zukunftsseite geschrieben wurden. Lies ihre Träume aufmerksam. Das ist die letzte Aufgabe, bevor die Seite wieder ganz ist.",
+          "legacyItemCount": 5
+        }
+      ]
+    }
+  ]
+}
