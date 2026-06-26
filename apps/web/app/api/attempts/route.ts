@@ -2,20 +2,23 @@
  * POST /api/attempts — idempotent, server-graded attempt recording.
  *
  * The client sends the RAW user answer; the server re-grades through the one
- * grading brain (@domigo/engine), records the attempt, updates the Leitner
- * review queue, and bumps the v2 XP pool (all via @domigo/db `recordAttempt`).
- * Best-effort persistence: grading always returns even if the DB write fails
- * (the UI stays correct). Failure never subtracts XP (10_game_layer Law 3).
+ * grading brain (@domigo/engine), records the attempt, updates the Leitner review
+ * queue (vocab/grammar only — listening + reading skip it), and bumps the v2 XP
+ * pool (all via @domigo/db `recordAttempt`). Best-effort persistence: grading
+ * always returns even if the DB write fails. Failure never subtracts XP (Law 3).
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { ItemRef } from "@domigo/content-schema";
-import { loadUnit } from "@domigo/content-loader";
+import { ItemRef, ListeningRef, TestRef } from "@domigo/content-schema";
+import type { GrammarItem } from "@domigo/content-schema";
+import { loadListening, loadTest, loadUnit } from "@domigo/content-loader";
 import { gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
 import type { GrammarInput, Tier } from "@domigo/engine";
 import { getDb, recordAttempt } from "@domigo/db";
 import { getActingUser } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
+import { parseListeningRef } from "@/lib/listeningRef";
+import { parseTestRef } from "@/lib/testRef";
 
 export const runtime = "nodejs"; // content-loader uses node:fs → not edge
 export const dynamic = "force-dynamic";
@@ -31,7 +34,7 @@ const GrammarInputSchema = z.union([
 
 const Body = z.object({
   clientAttemptId: z.string().regex(UUID),
-  itemId: ItemRef,
+  itemId: z.union([ItemRef, ListeningRef, TestRef]),
   mode: z.string().min(1).max(40).regex(/^[a-z0-9:_-]+$/i),
   input: z.union([GrammarInputSchema, z.object({ kind: z.literal("vocab"), value: z.string() })]),
   latencyMs: z.number().int().nonnegative().nullable().optional(),
@@ -40,7 +43,7 @@ const Body = z.object({
 });
 
 export async function POST(req: Request): Promise<Response> {
-  // 1. Identity (dev now; auth() later).
+  // 1. Identity.
   const acting = await getActingUser(req);
   if (!acting) return NextResponse.json({ ok: false, error: "no_identity" }, { status: 401 });
 
@@ -49,25 +52,58 @@ export async function POST(req: Request): Promise<Response> {
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   const { clientAttemptId, itemId, mode, input, latencyMs, hintUsed, context } = parsed.data;
 
-  // 3. Derive coordinates from the id (never trust client slug/grade).
+  // 3. Derive coordinates from the id (never trust client slug/grade). vocab/grammar
+  //    → parseItemRef; listening → parseListeningRef; reading → parseTestRef.
   const ref = parseItemRef(itemId);
-  if (!ref) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+  const lref = ref ? null : parseListeningRef(itemId);
+  const tref = ref || lref ? null : parseTestRef(itemId);
+  if (!ref && !lref && !tref) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
 
-  // 4–6. Load the unit, find the item, re-grade, compute XP (wrong → 0; never subtract).
+  // 4–6. Load + re-grade + compute XP (wrong → 0; never subtract).
   let tier: Tier;
   let xpAwarded: number;
+  let kind: "vocab" | "grammar" | "listening" | "reading";
+  let unitSlug: string;
+  let grade: number;
   try {
-    const unit = loadUnit(ref.unitSlug);
-    if (ref.kind === "vocab") {
-      const item = unit.vocab.find((v) => v.id === itemId);
+    if (ref) {
+      kind = ref.kind;
+      unitSlug = ref.unitSlug;
+      grade = ref.grade;
+      const unit = loadUnit(ref.unitSlug);
+      if (ref.kind === "vocab") {
+        const item = unit.vocab.find((v) => v.id === itemId);
+        if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+        const value = "value" in input && typeof input.value === "string" ? input.value : "";
+        tier = gradeVocab(item, value).tier;
+        xpAwarded = xpForTier(item.difficulty * 10, tier);
+      } else {
+        const item = unit.grammar.find((g) => g.id === itemId);
+        if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+        tier = gradeGrammar(item, input as GrammarInput).tier;
+        xpAwarded = xpForTier(item.difficulty * 10, tier);
+      }
+    } else if (lref) {
+      kind = "listening";
+      unitSlug = lref.unitSlug;
+      grade = lref.grade;
+      const file = loadListening(lref.unitSlug);
+      const item = file?.tasks.flatMap((t) => t.items).find((i) => i.id === itemId);
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-      const value = "value" in input && typeof input.value === "string" ? input.value : "";
-      tier = gradeVocab(item, value).tier;
+      tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
       xpAwarded = xpForTier(item.difficulty * 10, tier);
     } else {
-      const item = unit.grammar.find((g) => g.id === itemId);
+      // reading: tref is non-null (the !ref && !lref && !tref guard returned above).
+      const tr = tref!;
+      kind = "reading";
+      unitSlug = tr.unitSlug;
+      grade = tr.grade;
+      const file = loadTest(tr.unitSlug);
+      const item = file?.test.sections
+        .flatMap((s) => (s.kind === "reading" ? s.items : []))
+        .find((i) => i.id === itemId);
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-      tier = gradeGrammar(item, input as GrammarInput).tier;
+      tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
       xpAwarded = xpForTier(item.difficulty * 10, tier);
     }
   } catch {
@@ -76,13 +112,13 @@ export async function POST(req: Request): Promise<Response> {
 
   // 7. Best-effort persist (idempotent; side-effects gated on first insert).
   try {
-    const { duplicate, box, dueAt } = await recordAttempt(getDb(), {
+    const { duplicate, box, dueAt, streak } = await recordAttempt(getDb(), {
       userId: acting.userId,
       classId: acting.classId,
       itemId,
-      kind: ref.kind,
-      unitSlug: ref.unitSlug,
-      grade: ref.grade,
+      kind,
+      unitSlug,
+      grade,
       mode,
       tier,
       xpAwarded,
@@ -91,9 +127,8 @@ export async function POST(req: Request): Promise<Response> {
       context,
       clientAttemptId,
     });
-    return NextResponse.json({ ok: true, tier, xpAwarded, box, dueAt: dueAt.toISOString(), duplicate });
+    return NextResponse.json({ ok: true, tier, xpAwarded, box, dueAt: dueAt.toISOString(), duplicate, streak });
   } catch {
-    // Graded fine, DB failed → graceful, non-blocking (no 500).
     return NextResponse.json({ ok: false, error: "persist_failed", tier, xpAwarded });
   }
 }

@@ -97,5 +97,61 @@ export const userProgress = v2.table("user_progress", {
   userId: uuid("user_id").primaryKey(),
   xp: integer("xp").notNull().default(0),
   grammarXp: integer("grammar_xp").notNull().default(0),
+  // Daily-streak state (A4). Advanced on the first attempt of each Vienna day in
+  // recordAttempt; lastSessionDate is "YYYY-MM-DD" plain text for a cheap day
+  // compare (see streak.ts). Both additive — see drizzle/0001.
+  streak: integer("streak").notNull().default(0),
+  lastSessionDate: text("last_session_date"),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+/**
+ * B1 Study Path node progress. SPARSE: a row exists IFF a node is completed
+ * (locked/available are DERIVED in studypath.ts from which rows exist), so the
+ * table stays tiny (≤ ~10 rows/unit/student). Keyed by the reused v1 userId;
+ * classId denormalized (like practice_attempts) for a future teacher view.
+ */
+export const studyPathProgress = v2.table(
+  "study_path_progress",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id").notNull(),
+    classId: uuid("class_id").notNull(),
+    unitSlug: text("unit_slug").notNull(),
+    grade: smallint("grade").notNull(),
+    nodeId: text("node_id").notNull(), // "vocab-intro" | "vocab-practice-2" | "checkpoint" | …
+    kind: text("kind").notNull(), // NodeKind string (app-validated)
+    stars: smallint("stars").notNull().default(0), // 0 (teaching) .. 3
+    completedAt: timestamp("completed_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    userNodeUnique: uniqueIndex("study_path_progress_user_node_unique").on(t.userId, t.unitSlug, t.nodeId),
+    byUserUnit: index("study_path_progress_user_unit_idx").on(t.userId, t.unitSlug),
+    byUser: index("study_path_progress_user_idx").on(t.userId),
+  }),
+);
+
+/**
+ * B2 Mock-test writing submissions (teacher-graded). Append-only capture now; the
+ * teacher review + rubric scoring (gradedAt/score/feedback/gradedBy) is a deferred
+ * follow-up (B2b) — additive columns then. domigo_v2 only; no FK to public.
+ */
+export const writingSubmissions = v2.table(
+  "writing_submissions",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id").notNull(),
+    classId: uuid("class_id").notNull(),
+    unitSlug: text("unit_slug").notNull(),
+    testId: text("test_id").notNull(),
+    promptId: text("prompt_id").notNull(),
+    text: text("text").notNull(),
+    wordCount: integer("word_count").notNull(),
+    submittedAt: timestamp("submitted_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    byUser: index("writing_submissions_user_idx").on(t.userId),
+    byClassUnit: index("writing_submissions_class_unit_idx").on(t.classId, t.unitSlug),
+  }),
+);

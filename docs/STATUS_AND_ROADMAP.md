@@ -55,7 +55,10 @@ Four shipped increments, **all merged to `main`**:
 | **Practice trainer** | ✅ `/practice` (records attempts) |
 | **Auth** | ✅ NextAuth v5 (student + teacher), reuses Neon accounts ([#22](https://github.com/VEHO-DOMI/domigo-v2/pull/22)) |
 | **Smart Review UI** | ✅ `/review` + `/review/session` study loop (`mode:"review"`); home due-count badge (`feat/review-ui`) |
-| **Study Path / Mock Tests / Listening** | ❌ not started |
+| **Streaks / offline outbox** | ✅ daily Vienna-day streak (home + summary badge) + IndexedDB attempt outbox (`feat/streaks-outbox`) |
+| **Study Path (B1)** | ✅ `/learn` node map — teaching + graduated practice + checkpoint; unlock + stars (`feat/study-path`) |
+| **Listening (B3)** | ✅ `/listening` audio tasks — Web-Speech/file player, reuse-grader items, Leitner-skipped (`feat/listening`) |
+| **Mock Tests (B2)** | ✅ `/tests` Schularbeit-style sections (refs + reading + writing-capture); teacher-grading deferred to B2b (`feat/mock-tests`) |
 | **Game layer** | ❌ designed (`10_game_layer.md`); not started |
 | **Migration / cutover** | ◻️ v1 students in shared Neon; v2 reuse-accounts decided; cutover not done |
 | `main` HEAD | `9d2ae99` (merge #22) · `pnpm -r typecheck/lint/test/content/build` green · tests: engine 24 / pipeline 60 / loader 4 / db 8 |
@@ -115,23 +118,25 @@ The Leitner queue now has a student surface. `app/review/page.tsx` (server) → 
 3. Add a "Review (N due)" entry point on the home/practice nav.
 - Verify: answer wrong in `/practice` → it appears in `/review` after its box-1 interval; answering it correctly there reschedules it forward.
 
-#### A4. Progression polish  ◻️  _(branch `feat/progression`)_
-1. **Streaks** — port v1 `recordSessionDay` (Vienna-day boundary) into `@domigo/db`; bump on each first attempt of the day. Add `streak`/`lastSessionDate` to `user_progress` (additive ALTER on `domigo_v2` only).
-2. **Badges** — port v1's badge catalog + award logic (optional; flag-gated).
-3. **Offline attempt outbox** — queue failed `/api/attempts` POSTs in IndexedDB; flush on reconnect (the "bulletproof / never lose progress" law).
+#### A4. Progression polish  🟡  _(streaks + outbox done — PR `feat/streaks-outbox`, stacked on `feat/review-ui`; badges remain)_
+1. **Streaks** ✅ **DONE (2026-06-21)** — v1's `recordSessionDay` ported into `@domigo/db` as pure `computeNextStreak` + Vienna-day helpers (`Intl` `Europe/Vienna`, DST-safe); `streak`/`last_session_date` added to `domigo_v2.user_progress` (additive `0001` ALTER); advanced inside `recordAttempt` on the first attempt of each Vienna day (any tier — showing up counts), returned via `/api/attempts`, shown on `/home` (active-only badge) + the session summary. Unit-tested (9) + live dev-DB E2E (fresh→1, same-day→1, consecutive→+1, gap→reset).
+2. **Badges** ◻️ — port v1's badge catalog + award logic (optional; flag-gated). _Not in this PR._
+3. **Offline attempt outbox** ✅ **DONE (2026-06-21)** — dependency-free IndexedDB outbox (`apps/web/lib/attempt-outbox.ts` + `useOutboxFlush`): `sendAttempt` enqueues on offline/5xx/`persist_failed` (idempotent on `clientAttemptId`), drops permanent 4xx, flushes on mount + the `online` event; wired into Practice + Review sessions. Module-tested (6 cases via an IndexedDB shim).
 
 ### Track B — Remaining P1 pillars
 
-#### B1. Study Path (guided unlock progression)  ◻️
-Per `06_vision_pillars.md §3.2`: a linear, unlockable path per unit — **vocabulary intro → grammar intro → graduated practice across task types → unit checkpoint** — with a visible node-map, per-node stars/mastery, and spaced re-practice (Smart Review plugs in here).
+#### B1. Study Path (guided unlock progression)  ✅ **DONE (2026-06-21, PR `feat/study-path`, stacked on A4)**
+Per-unit guided path at `/learn/[slug]`. The node graph is DERIVED (pure `buildUnitNodes`) — vocab intro (teaching) → vocab practice split by difficulty → grammar intro → grammar practice by difficulty → checkpoint (deterministic ~10-item cumulative sample from the unit, hints off). Sparse `domigo_v2.study_path_progress` (a row iff a node is completed; locked/available/stars DERIVED by `withProgress`); additive `0002` migration. Graded nodes reuse `task-ui` + the `/api/attempts` outbox (`mode:"study:<nodeId>"`) so they feed Smart Review + streaks + XP; a thin `/api/study-path` records node completion (server re-derives stars from the tier tally, validates the nodeId against the graph, keep-best via `GREATEST`). New content-loader `loadWordbank`/`loadUnitStructures` + task-ui `VocabIntroView`/`GrammarIntroView` (German-led, student-safe) + a `hideHint` checkpoint flag. Unlock enforced server-side (a locked-node URL 307-redirects to the map). 14 unit tests + live dev-DB E2E (unlock advance, attempts→`review_queue`, stars keep-best, locked-redirect); additive (`public` 13→13). Original steps below:
 1. A progression model: per-(user,unit) node states (locked/available/mastered) — additive `domigo_v2.study_path_progress` table.
 2. Routes `app/learn/[slug]` rendering the node map; nodes reuse `content-loader` + `task-ui` + `/api/attempts`.
 3. "Teaching" nodes (vocab/grammar intro) — new non-graded card types showing the word bank / structures.
 
-#### B2. Mock Tests  ◻️
+#### B2. Mock Tests  ✅ **DONE (2026-06-21, PR `feat/mock-tests`, stacked on B3)**
+`test@1` schema (a mock test = ordered sections). REFERENCE sections (vocab/grammar/listening) point at existing item ids (no content copy); a READING section embeds a passage + sibling-gradeable items (`.ri.`, srdp-reading method); a WRITING section embeds a prompt. `/tests` steps the sections (the server resolves reference ids → full items): auto-graded items reuse the engine + `/api/attempts` (`mode:"test:<section>"`) — referenced vocab/grammar feed Smart Review, embedded reading/listening skip it; the writing section captures the answer to a new `writing_submissions` table (additive `0003`) via `/api/writing-submission` (server-derived word count). **Teacher review + rubric scoring is deferred (B2b)** — submissions are captured, not yet surfaced. Pilot = an auto-assembled g2-u03 test. Opt-in `pnpm content validate-test`. Verified: gate green + dev-DB E2E (4 sections grade correct; vocab/grammar refs queue + reading/listening skip; writing captured w/ server word count; `public` 13→13). Original notes:
 From the Check-up material; new content type + grading (auto where machine-checkable, teacher-graded for writing — see `07_task_formats.md`). Likely its own corpus + a `/tests` surface.
 
-#### B3. Listening  ◻️
+#### B3. Listening  ✅ **DONE (2026-06-21, PR `feat/listening`, stacked on B1)**
+`listening@1` schema (a task = `AudioRef` clip + hidden transcript + sibling gradeable items — NOT `GrammarItem`, cast to it at grade/render). `/listening` surface; the `AudioClip` player prefers a pre-generated `AudioRef.file`, else speaks `AudioRef.script` via the Web Speech API (A1–A2 pace) — swapping in TTS files later is content-only. Items reuse the engine + `GrammarItemView` (MC, TF→multiple-choice, gap, matching, short-answer); attempts post via the existing `/api/attempts` outbox (`mode:"listening"`) → XP + streak, but **skip the Leitner queue** (audio can't re-render in `/review`). Content method = the `srdp-listening-comprehension` skill, re-leveled A1–A2; a g2-u03 pilot ships (full corpus = later waves). Opt-in `pnpm content validate-listening` (the main gate stays blind to the new files). Verified: gate green + dev-DB E2E (all 5 formats grade correct, `kind='listening'`, `review_queue` stays 0). Original notes:
 The schema already reserves audio script fields. Decide audio source (TTS vs MORE! Test-Builder rights — `09` open decision). Generate audio → listening item formats (MC / true-false / gap / matching / short-answer tied to a clip).
 
 ### Track C — The game layer (P2) — _builds on A (auth + Smart Review)_
@@ -159,7 +164,9 @@ A1 (verify DB)  ──►  A2 (auth)  ──►  A3 (/review UI)  ──►  A4 
                                       (needs auth + Smart Review service)
 D (migration + bulletproof-beta) runs in parallel; it GATES any student go-live.
 ```
-**Do next:** A1 ✅ → A2 auth ✅ → A3 `/review` UI ✅. Next: **A4** (streaks / offline outbox) and/or **B1 Study Path** (learning-first), or jump to **C/G1 RPG** (engagement-first) per Koki's priority.
+**Do next:** A1 ✅ → A2 ✅ → A3 ✅ → A4 ✅ → B1 ✅ → B3 ✅ → B2 Mock Tests ✅ — **Track B complete.** Next: **C / G1 RPG** (the game layer) — reuses the Study Path progression + `getDueRefs`.
+
+> **Remaining work is specced to the teeth in [`docs/handover/11_remaining_work.md`](handover/11_remaining_work.md):** B2b teacher writing-grading UI · the listening/test **content waves** (→ [`docs/runbooks/content-waves.md`](runbooks/content-waves.md)) · pre-generated **TTS** files · the **G1 RPG** kickoff (full design in [`docs/handover/10_game_layer.md`](handover/10_game_layer.md)).
 
 ---
 

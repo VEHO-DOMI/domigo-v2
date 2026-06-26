@@ -4,9 +4,9 @@
  * item (not the route), so the games and Smart Review reuse these. Grading goes
  * through @domigo/engine; nothing here re-implements answer logic.
  */
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { CSSProperties } from "react";
-import type { GrammarItem, Gloss, VocabItem } from "@domigo/content-schema";
+import type { AudioRef, GrammarItem, GrammarStructure, Gloss, ListeningTask, VocabItem, WordBank } from "@domigo/content-schema";
 import type { GrammarInput, Tier } from "@domigo/engine";
 import { breaksCombo, gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
 
@@ -198,7 +198,7 @@ export type ResultDetail =
   | { kind: "grammar"; itemId: string; input: GrammarInput }
   | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string } };
 
-export function GrammarItemView({ item, onResult }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void }) {
+export function GrammarItemView({ item, onResult, hideHint }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean }) {
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
   const choiceOptions = useShuffled(
@@ -242,7 +242,7 @@ export function GrammarItemView({ item, onResult }: { item: GrammarItem; onResul
       {isGroup && <Dropdowns rows={sortMembers} options={groupLabels} value={map} onChange={setMap} disabled={done} />}
       {TEXT_FORMATS.has(item.format) && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} />}
       <GlossRow gloss={item.gloss} />
-      <HintRow hintDe={item.hintDe} />
+      {!hideHint && <HintRow hintDe={item.hintDe} />}
       {!done && <button style={btn} onClick={submit}>Check</button>}
       {done && tier && (
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -259,7 +259,7 @@ export function GrammarItemView({ item, onResult }: { item: GrammarItem; onResul
 
 // ---- vocab item ----------------------------------------------------------
 
-export function VocabItemView({ item, onResult }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void }) {
+export function VocabItemView({ item, onResult, hideHint }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean }) {
   const [value, setValue] = useState("");
   const [tier, setTier] = useState<Tier | null>(null);
   const done = tier !== null;
@@ -277,7 +277,7 @@ export function VocabItemView({ item, onResult }: { item: VocabItem; onResult?: 
       <Prompt text={item.s} />
       <input style={inputStyle} value={value} disabled={done} placeholder="Your answer" onChange={(e) => setValue(e.target.value)} />
       <GlossRow gloss={item.gloss} />
-      <HintRow hintDe={item.hintDe} />
+      {!hideHint && <HintRow hintDe={item.hintDe} />}
       {!done && <button style={btn} onClick={submit}>Check</button>}
       {done && tier && (
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -287,6 +287,136 @@ export function VocabItemView({ item, onResult }: { item: VocabItem; onResult?: 
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+// ---- teaching views (non-graded study-path intro nodes) ------------------
+
+/** Vocabulary intro — the unit word bank as a study list, grouped by theme. */
+export function VocabIntroView({ wordbank }: { wordbank: WordBank }) {
+  const groups = new Map<string, WordBank["entries"]>();
+  for (const e of wordbank.entries) {
+    const key = e.theme ?? "Words";
+    const arr = groups.get(key) ?? [];
+    arr.push(e);
+    groups.set(key, arr);
+  }
+  return (
+    <div style={{ ...card, gap: 14 }}>
+      <div style={{ fontSize: 12, color: "#94a3b8" }}>Word bank · {wordbank.entries.length} words</div>
+      {[...groups.entries()].map(([theme, entries]) => (
+        <div key={theme}>
+          {theme !== "Words" && (
+            <div style={{ fontWeight: 600, fontSize: 14, color: "#334155", marginBottom: 4 }}>{theme}</div>
+          )}
+          <ul style={{ margin: 0, paddingLeft: 18, color: "#0f172a", fontSize: 15, lineHeight: 1.6 }}>
+            {entries.map((e) => (
+              <li key={e.id}>
+                <strong>{e.en}</strong> — {e.de.join(" / ")}
+                {e.exampleSb && <span style={{ color: "#64748b", fontSize: 13 }}> · “{e.exampleSb}”</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** Grammar intro — the unit's structures, taught in German with bilingual examples.
+ *  Student-safe: shows nameDe + the German rule text + examples; never the
+ *  teacher-facing English `name`/`category`/`description`. */
+export function GrammarIntroView({ structures }: { structures: GrammarStructure[] }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+      {structures.map((s) => (
+        <div key={s.id} style={{ ...card, gap: 10 }}>
+          <div style={{ fontSize: 17, fontWeight: 700, color: "#0f172a" }}>{s.nameDe}</div>
+          {s.rules.map((r) => (
+            <div key={r.id} style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              <div style={{ fontSize: 15, color: "#0f172a", lineHeight: 1.4 }}>{r.de}</div>
+              {r.examples.length > 0 && (
+                <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
+                  {r.examples.map((ex, i) => (
+                    <li key={i}>
+                      <strong>{ex.en}</strong>
+                      {ex.de && ex.de !== ex.en ? ` — ${ex.de}` : ""}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ---- listening (B3): audio player + task view ----------------------------
+
+/** A listening task as sent to the client — transcript stripped server-side. */
+export type ClientListeningTask = Omit<ListeningTask, "transcript">;
+
+/** Plays a clip: prefers a pre-generated file, else speaks the script via Web Speech (A1–A2 pace). */
+export function AudioClip({ audio }: { audio: AudioRef }) {
+  const [ready, setReady] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  useEffect(() => setReady(true), []);
+
+  const play = () => {
+    if (audio.file) {
+      const el = new Audio(audio.file);
+      el.onended = () => setPlaying(false);
+      setPlaying(true);
+      void el.play().catch(() => setPlaying(false));
+      return;
+    }
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(audio.script);
+    u.lang = "en-GB";
+    u.rate = 0.85; // slowed for A1–A2 listeners
+    if (audio.voice) {
+      const v = window.speechSynthesis.getVoices().find((x) => x.name === audio.voice);
+      if (v) u.voice = v;
+    }
+    u.onend = () => setPlaying(false);
+    setPlaying(true);
+    window.speechSynthesis.speak(u);
+  };
+  const stop = () => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+    setPlaying(false);
+  };
+
+  const supported = ready && (!!audio.file || (typeof window !== "undefined" && "speechSynthesis" in window));
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+      <button onClick={play} disabled={!supported || playing} style={{ ...btn, background: "#2563eb" }}>
+        ▶ {playing ? "Playing…" : "Play audio"}
+      </button>
+      {playing && (
+        <button onClick={stop} style={{ ...btn, background: "#64748b" }}>Stop</button>
+      )}
+      {ready && !supported && <span style={{ fontSize: 13, color: "#94a3b8" }}>Audio unavailable on this device.</span>}
+    </div>
+  );
+}
+
+/** One listening task: heading + audio + its comprehension items (graded via GrammarItemView). */
+export function ListeningTaskView({ task, onResult }: {
+  task: ClientListeningTask;
+  onResult?: (tier: Tier, detail: ResultDetail) => void;
+}) {
+  return (
+    <div style={{ ...card, gap: 14 }}>
+      <h3 style={{ fontSize: 17, margin: 0 }}>{task.titleDe}</h3>
+      <AudioClip audio={task.audio} />
+      {task.items.map((it) => (
+        <GrammarItemView key={it.id} item={it as unknown as GrammarItem} onResult={onResult} />
+      ))}
     </div>
   );
 }

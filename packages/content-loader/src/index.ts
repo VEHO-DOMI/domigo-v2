@@ -11,8 +11,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { GrammarFile, VocabFile } from "@domigo/content-schema";
-import type { GrammarItem, VocabItem } from "@domigo/content-schema";
+import { GrammarFile, GrammarStructuresFile, ListeningFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
+import type { GrammarItem, GrammarStructure, VocabItem } from "@domigo/content-schema";
 
 /**
  * Repo root. The pipeline derives it from the module path (paths.ts:22), but a
@@ -43,6 +43,7 @@ export const REPO_ROOT = findRepoRoot();
 const CONTENT_DIR = path.join(REPO_ROOT, "content");
 const UNITS_DIR = path.join(CONTENT_DIR, "corpus", "units");
 const ITEM_FIXES_PATH = path.join(CONTENT_DIR, "overlays", "item-fixes.json");
+const STRUCTURES_DIR = path.join(CONTENT_DIR, "corpus", "structures");
 
 const UNIT_SLUG = /^g[1-4]-u\d{2}$/;
 
@@ -87,6 +88,59 @@ export function loadUnit(slug: string): UnitContent {
   const grammar = graw !== null ? GrammarFile.parse(graw).items : [];
   const fix = (readJson<ItemFixes>(ITEM_FIXES_PATH) ?? {})[slug];
   return { slug, vocab: applyFixes(vocab, fix), grammar: applyFixes(grammar, fix) };
+}
+
+/** Load + validate one unit's word bank (teaching source for the vocab-intro node). Server-only. */
+export function loadWordbank(slug: string): WordBank {
+  if (!UNIT_SLUG.test(slug)) throw new Error(`content-loader: bad unit slug "${slug}"`);
+  const raw = readJson<unknown>(path.join(UNITS_DIR, slug, "wordbank.json"));
+  if (raw === null) throw new Error(`content-loader: no wordbank for "${slug}"`);
+  return WordBank.parse(raw);
+}
+
+/** The grammar structures introduced in this unit (teaching source for the grammar-intro node). Server-only. */
+export function loadUnitStructures(slug: string): GrammarStructure[] {
+  const m = /^g([1-4])-u(\d{2})$/.exec(slug);
+  if (m === null) throw new Error(`content-loader: bad unit slug "${slug}"`);
+  const grade = Number(m[1]);
+  const unit = Number(m[2]);
+  const raw = readJson<unknown>(path.join(STRUCTURES_DIR, `g${grade}`, "structures.json"));
+  if (raw === null) return [];
+  return GrammarStructuresFile.parse(raw).structures.filter((s) => s.unit === unit);
+}
+
+/** Load + validate one unit's listening tasks (B3). Null if the unit has none. Server-only. */
+export function loadListening(slug: string): ListeningFile | null {
+  if (!UNIT_SLUG.test(slug)) throw new Error(`content-loader: bad unit slug "${slug}"`);
+  const raw = readJson<unknown>(path.join(UNITS_DIR, slug, "listening.json"));
+  return raw === null ? null : ListeningFile.parse(raw);
+}
+
+/** Unit slugs that have a listening.json (the listening "approval" signal), sorted. */
+export function listListeningUnits(): string[] {
+  if (!fs.existsSync(UNITS_DIR)) return [];
+  return fs
+    .readdirSync(UNITS_DIR)
+    .filter((n) => UNIT_SLUG.test(n))
+    .filter((slug) => fs.existsSync(path.join(UNITS_DIR, slug, "listening.json")))
+    .sort();
+}
+
+/** Load + validate one unit's mock test (B2). Null if the unit has none. Server-only. */
+export function loadTest(slug: string): TestFile | null {
+  if (!UNIT_SLUG.test(slug)) throw new Error(`content-loader: bad unit slug "${slug}"`);
+  const raw = readJson<unknown>(path.join(UNITS_DIR, slug, "test.json"));
+  return raw === null ? null : TestFile.parse(raw);
+}
+
+/** Unit slugs that have a test.json (the mock-test "approval" signal), sorted. */
+export function listTestUnits(): string[] {
+  if (!fs.existsSync(UNITS_DIR)) return [];
+  return fs
+    .readdirSync(UNITS_DIR)
+    .filter((n) => UNIT_SLUG.test(n))
+    .filter((slug) => fs.existsSync(path.join(UNITS_DIR, slug, "test.json")))
+    .sort();
 }
 
 interface StateLogFile {
