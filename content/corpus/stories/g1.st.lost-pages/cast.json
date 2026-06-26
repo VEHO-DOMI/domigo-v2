@@ -3,6 +3,7 @@
   "storyId": "g1.st.lost-pages",
   "members": [
     { "id": "finn", "nameEn": "Finn", "descriptionDe": "Dein Freund aus dem Buch", "voice": null, "art": null },
-    { "id": "berger", "nameEn": "Frau Berger", "descriptionDe": "die Lehrerin", "voice": null, "art": null }
+    { "id": "berger", "nameEn": "Frau Berger", "descriptionDe": "die Lehrerin", "voice": null, "art": null },
+    { "id": "guide", "nameEn": "Zoo Guide", "descriptionDe": "die Zooführerin", "voice": null, "art": null }
   ]
 }

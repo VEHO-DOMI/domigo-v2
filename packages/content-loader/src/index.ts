@@ -11,9 +11,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { Cast, GrammarFile, GrammarStructuresFile, ListeningFile, Story, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
+import { Cast, GameMap, GrammarFile, GrammarStructuresFile, ListeningFile, Story, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
 import type { GrammarItem, GrammarStructure, VocabItem } from "@domigo/content-schema";
-import type { Cast as CastT, Story as StoryT } from "@domigo/content-schema";
+import type { Cast as CastT, GameMap as GameMapT, Story as StoryT } from "@domigo/content-schema";
 
 /**
  * Repo root. The pipeline derives it from the module path (paths.ts:22), but a
@@ -155,6 +155,13 @@ export function loadReleasedChapters(storyId: string): string[] {
   if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
   const raw = readJson<{ releasedChapters?: string[] }>(path.join(STORIES_DIR, storyId, "release.json"));
   return raw?.releasedChapters ?? [];
+}
+
+/** The map@1 zone graph for a story (map.json); null if none. */
+export function loadGameMap(storyId: string): GameMapT | null {
+  if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
+  const raw = readJson<unknown>(path.join(STORIES_DIR, storyId, "map.json"));
+  return raw === null ? null : GameMap.parse(raw);
 }
 
 /** Unit slugs that have a test.json (the mock-test "approval" signal), sorted. */

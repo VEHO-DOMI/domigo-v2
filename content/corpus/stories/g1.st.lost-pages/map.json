@@ -1,0 +1,27 @@
+{
+  "schema": "map@1",
+  "id": "g1.map.lost-pages",
+  "grade": 1,
+  "zones": [
+    {
+      "id": "g1.map.lost-pages.z01",
+      "unit": 1,
+      "titleEn": "Time for School",
+      "titleDe": "Zeit für die Schule",
+      "width": 15,
+      "height": 11,
+      "tileSize": 16,
+      "render": { "generator": "school-room", "seed": 101 }
+    },
+    {
+      "id": "g1.map.lost-pages.z02",
+      "unit": 2,
+      "titleEn": "At the Zoo",
+      "titleDe": "Im Zoo",
+      "width": 15,
+      "height": 11,
+      "tileSize": 16,
+      "render": { "generator": "zoo-room", "seed": 102 }
+    }
+  ]
+}
