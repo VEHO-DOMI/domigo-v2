@@ -1,34 +1,18 @@
 /**
- * /play/[grade] — the G1 overworld RPG slice (Track C). Server component:
- * resolves identity, loads the released story chapter + its taskSlot items, and
- * resolves the wandering encounters (getDueRefs → game-core, falling back to
- * in-scope items so a fresh student is never in a dead zone). Phaser itself is
- * client-only (GameClient mounts it via next/dynamic ssr:false).
+ * /play/[grade] — the zone hub (world map). Lists a grade's map@1 zones; a zone
+ * is unlocked once a released story chapter exists for its gate unit (zone N
+ * requires units ≤ N released). Locked zones show "coming soon". Kept a simple
+ * server-rendered card list — the fancy Phaser hub is later polish.
  */
 import { redirect } from "next/navigation";
-import { Encounter, type GrammarItem, type VocabItem } from "@domigo/content-schema";
-import { loadReleasedChapters, loadStory, loadStoryCast, loadUnit } from "@domigo/content-loader";
-import { getDb, getDueRefs, getGameSave } from "@domigo/db";
-import { resolveEncounterTasks, type ResolvedItem } from "@domigo/game-core";
-import type { GameSaveState } from "@domigo/game-2d";
+import { loadGameMap, loadReleasedChapters, loadStory } from "@domigo/content-loader";
 import { getActingUserForPage } from "@/lib/identity";
-import GameClient from "./GameClient";
 
 export const dynamic = "force-dynamic";
 
 const STORY_BY_GRADE: Record<number, string> = { 1: "g1.st.lost-pages" };
 
-function notReady(message: string) {
-  return (
-    <main style={{ maxWidth: 640, margin: "0 auto", padding: "40px 20px", fontFamily: "system-ui, sans-serif" }}>
-      <h1 style={{ fontSize: 22 }}>The game world is still waking up…</h1>
-      <p style={{ color: "#475569" }}>{message}</p>
-      <a href="/home" style={{ color: "#2563eb" }}>← Home</a>
-    </main>
-  );
-}
-
-export default async function PlayPage({ params }: { params: Promise<{ grade: string }> }) {
+export default async function HubPage({ params }: { params: Promise<{ grade: string }> }) {
   const { grade: gradeStr } = await params;
   const grade = Number(gradeStr);
   if (![1, 2, 3, 4].includes(grade)) redirect("/home");
@@ -37,57 +21,52 @@ export default async function PlayPage({ params }: { params: Promise<{ grade: st
   if (!acting) redirect("/signin");
 
   const storyId = STORY_BY_GRADE[grade];
-  if (!storyId) return notReady(`Grade ${grade} doesn't have a game world yet.`);
+  const map = storyId ? loadGameMap(storyId) : null;
+  const story = storyId ? loadStory(storyId) : null;
+  const released = storyId ? loadReleasedChapters(storyId) : [];
 
-  const story = loadStory(storyId);
-  const released = loadReleasedChapters(storyId);
-  const chapter = story?.chapters.find((c) => released.includes(c.id));
-  if (!story || !chapter) return notReady("No released chapter for this grade yet.");
-
-  const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
-  const unit = loadUnit(slug);
-
-  // wandering encounters: due items first, topped up from in-scope (Law 6).
-  const due = await getDueRefs(getDb(), acting.userId, { kind: "unit", slug }, 8).catch(() => []);
-  const enc = Encounter.parse({
-    schema: "encounter@1",
-    id: `g${grade}.enc.${storyId.split(".").pop()}-z01`,
-    grade,
-    source: { kind: "due", scope: { kind: "unit", slug }, count: 4 },
-    formatAllow: null,
-    fallback: "scope-random",
+  const zones = (map?.zones ?? []).map((z) => {
+    const chapter = story?.chapters.find((c) => c.unit === z.unit && released.includes(c.id));
+    return { short: z.id.split(".").pop() ?? "", titleEn: z.titleEn, titleDe: z.titleDe, unit: z.unit, unlocked: chapter !== undefined };
   });
-  const encounters = resolveEncounterTasks(enc, { due, pool: { vocab: unit.vocab, grammar: unit.grammar } });
-
-  // resolve the chapter's taskSlot item ids → items for the dialogue overlay.
-  const storyItems: Record<string, ResolvedItem> = {};
-  for (const sc of chapter.scenes) {
-    for (const ts of sc.taskSlots) {
-      const v = unit.vocab.find((x: VocabItem) => x.id === ts.itemId);
-      if (v) { storyItems[ts.itemId] = { kind: "vocab", item: v }; continue; }
-      const g = unit.grammar.find((x: GrammarItem) => x.id === ts.itemId);
-      if (g) storyItems[ts.itemId] = { kind: "grammar", item: g };
-    }
-  }
-
-  const cast = loadStoryCast(storyId);
-  const castNames = Object.fromEntries((cast?.members ?? []).map((m) => [m.id, m.nameEn]));
-  const seed = grade * 100 + chapter.unit;
-
-  // existing cosmetic save (resume); the client reconciles vs a fresher localStorage copy.
-  const gameMode = `game:g${grade}`;
-  const saved = await getGameSave(getDb(), acting.userId, gameMode).catch(() => null);
-  const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as GameSaveState } : null;
 
   return (
-    <GameClient
-      seed={seed}
-      gameMode={gameMode}
-      encounters={encounters}
-      chapter={chapter}
-      castNames={castNames}
-      storyItems={storyItems}
-      serverSave={serverSave}
-    />
+    <main style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px", fontFamily: "system-ui, sans-serif" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
+        <h1 style={{ fontSize: 24, margin: 0 }}>The Lost Pages</h1>
+        <a href="/home" style={{ fontSize: 14, color: "#2563eb" }}>← Home</a>
+      </div>
+      <p style={{ color: "#475569", marginTop: 0 }}>Choose a page to bring back. New pages open as you learn more.</p>
+
+      {zones.length === 0 ? (
+        <p style={{ color: "#64748b" }}>No zones yet for this grade.</p>
+      ) : (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 14, marginTop: 16 }}>
+          {zones.map((z) =>
+            z.unlocked ? (
+              <a
+                key={z.short}
+                href={`/play/${grade}/${z.short}`}
+                style={{ display: "block", padding: "16px 18px", borderRadius: 12, border: "1px solid #cbd5e1", background: "#fff", textDecoration: "none", color: "#0f172a", boxShadow: "0 1px 2px rgba(0,0,0,.04)" }}
+              >
+                <div style={{ fontSize: 12, color: "#64748b" }}>Zone {z.unit}</div>
+                <div style={{ fontSize: 17, fontWeight: 600 }}>{z.titleEn}</div>
+                {z.titleDe && <div style={{ fontSize: 13, color: "#64748b" }}>{z.titleDe}</div>}
+                <div style={{ fontSize: 13, color: "#2563eb", marginTop: 8 }}>Play →</div>
+              </a>
+            ) : (
+              <div
+                key={z.short}
+                style={{ padding: "16px 18px", borderRadius: 12, border: "1px dashed #cbd5e1", background: "#f8fafc", color: "#94a3b8" }}
+              >
+                <div style={{ fontSize: 12 }}>Zone {z.unit}</div>
+                <div style={{ fontSize: 17, fontWeight: 600 }}>{z.titleEn}</div>
+                <div style={{ fontSize: 13, marginTop: 8 }}>🔒 Coming soon</div>
+              </div>
+            ),
+          )}
+        </div>
+      )}
+    </main>
   );
 }

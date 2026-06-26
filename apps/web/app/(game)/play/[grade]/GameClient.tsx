@@ -25,6 +25,9 @@ interface SavePayload { clientRev: number; state: GameSaveState }
 export default function GameClient(props: {
   seed: number;
   gameMode: string; // "game:g1".."game:g4"
+  zoneId: string;
+  zoneTitle: string;
+  hubHref: string;
   encounters: ResolvedItem[];
   chapter: Chapter;
   castNames: Record<string, string>;
@@ -95,11 +98,12 @@ export default function GameClient(props: {
   return (
     <main style={{ padding: "16px 12px", fontFamily: "system-ui, sans-serif" }}>
       <div style={{ display: "flex", justifyContent: "space-between", maxWidth: 720, margin: "0 auto 10px" }}>
-        <h1 style={{ fontSize: 20, margin: 0 }}>The Lost Pages</h1>
-        <a href="/home" style={{ fontSize: 14, color: "#2563eb" }}>← Home</a>
+        <h1 style={{ fontSize: 20, margin: 0 }}>{props.zoneTitle}</h1>
+        <a href={props.hubHref} style={{ fontSize: 14, color: "#2563eb" }}>← Zones</a>
       </div>
       <PhaserGame
         seed={props.seed}
+        zoneId={props.zoneId}
         encounters={props.encounters}
         chapter={props.chapter}
         castNames={props.castNames}

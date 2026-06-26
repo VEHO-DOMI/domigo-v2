@@ -28,18 +28,20 @@ const ROOM = [
   "###############",
 ];
 
-/** Cosmetic save state — player position (px) + which node positions look cleared. */
+/** Cosmetic save state — the zone it belongs to + player position (px) + cleared nodes. */
 export interface OverworldState {
+  zoneId: string;
   pos: [number, number];
   cleared: number[];
 }
 
 export interface OverworldConfig {
   seed: number;
+  zoneId: string;
   encounterCount: number;
   onEncounter: (idx: number) => void;
   onNpc: () => void;
-  /** Restore cosmetic state on boot (resume). */
+  /** Restore cosmetic state on boot (resume) — applied only if it's THIS zone. */
   initial?: OverworldState | null;
   /** Reports cosmetic state (throttled) for checkpointing. */
   onState?: (s: OverworldState) => void;
@@ -106,13 +108,15 @@ export class OverworldScene extends Phaser.Scene {
     }
 
     // pass 2 — player, then overlaps against the real player
-    const initPos = this.cfg.initial?.pos;
+    // restore only if the save belongs to THIS zone (one save slot per grade-game)
+    const resume = this.cfg.initial?.zoneId === this.cfg.zoneId ? this.cfg.initial : null;
+    const initPos = resume?.pos;
     this.player = this.physics.add.sprite(initPos?.[0] ?? start.x, initPos?.[1] ?? start.y, "p-down");
     this.player.setDisplaySize(TILE, TILE).setCollideWorldBounds(true);
     this.player.body.setSize(SRC * 0.6, SRC * 0.6).setOffset(SRC * 0.2, SRC * 0.3);
     this.physics.add.collider(this.player, walls);
     this.lastReport = { x: this.player.x, y: this.player.y };
-    const cleared = new Set(this.cfg.initial?.cleared ?? []);
+    const cleared = new Set(resume?.cleared ?? []);
 
     for (const { idx, x, y } of nodeCells) {
       const node = this.add.image(x, y, "t-encounter").setDisplaySize(TILE, TILE);
@@ -156,7 +160,7 @@ export class OverworldScene extends Phaser.Scene {
     const clearedIdx: number[] = [];
     this.nodes.forEach((node, idx) => { if (node.getData("done") === true) clearedIdx.push(idx); });
     this.lastReport = { x: this.player.x, y: this.player.y };
-    this.cfg.onState({ pos: [Math.round(this.player.x), Math.round(this.player.y)], cleared: clearedIdx });
+    this.cfg.onState({ zoneId: this.cfg.zoneId, pos: [Math.round(this.player.x), Math.round(this.player.y)], cleared: clearedIdx });
   }
 
   /** Called by React after an encounter is answered: fade the node, leave it cleared. */

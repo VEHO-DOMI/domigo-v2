@@ -84,6 +84,87 @@
           "next": null
         }
       ]
+    },
+    {
+      "id": "g1.st.lost-pages.ch02",
+      "unit": 2,
+      "titleEn": "At the Zoo",
+      "titleDe": "Im Zoo",
+      "scenes": [
+        {
+          "id": "g1.st.lost-pages.ch02.s001",
+          "speaker": "finn",
+          "textEn": "At last! Look — the zoo!",
+          "scaffoldDe": "Endlich! Schau — der Zoo!",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch02.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s002",
+          "speaker": "finn",
+          "textEn": "Where are the lion and the monkey?",
+          "scaffoldDe": "Wo sind der Löwe und der Affe?",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [{ "slot": "name-it", "itemId": "g1u02.w.lion", "variantKey": null }],
+          "next": "g1.st.lost-pages.ch02.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s003",
+          "speaker": "finn",
+          "textEn": "Look! A monkey is in the tree.",
+          "scaffoldDe": "Schau! Ein Affe ist im Baum.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [{ "slot": "place-it", "itemId": "g1u02.gi.prepositions-place.gf.001", "variantKey": null }],
+          "next": "g1.st.lost-pages.ch02.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s004",
+          "speaker": "finn",
+          "textEn": "How strange! Where is the parrot?",
+          "scaffoldDe": "Wie seltsam! Wo ist der Papagei?",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": [
+            { "id": "behind", "textEn": "Look behind the tree.", "scaffoldDe": "Schau hinter den Baum.", "next": "g1.st.lost-pages.ch02.s005" },
+            { "id": "nextto", "textEn": "Look next to the lion.", "scaffoldDe": "Schau neben den Löwen.", "next": "g1.st.lost-pages.ch02.s006" }
+          ]
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s005",
+          "speaker": "finn",
+          "textEn": "At last! The parrot!",
+          "scaffoldDe": "Endlich! Der Papagei!",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch02.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s006",
+          "speaker": "finn",
+          "textEn": "Yes! The parrot is here.",
+          "scaffoldDe": "Ja! Der Papagei ist hier.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch02.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s007",
+          "speaker": "guide",
+          "textEn": "At last! The zoo is happy now.",
+          "scaffoldDe": "Endlich! Der Zoo ist jetzt glücklich.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
+      ]
     }
   ]
 }
