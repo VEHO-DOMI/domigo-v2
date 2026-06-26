@@ -3,25 +3,10 @@
   "id": "g1.map.lost-pages",
   "grade": 1,
   "zones": [
-    {
-      "id": "g1.map.lost-pages.z01",
-      "unit": 1,
-      "titleEn": "Time for School",
-      "titleDe": "Zeit für die Schule",
-      "width": 15,
-      "height": 11,
-      "tileSize": 16,
-      "render": { "generator": "school-room", "seed": 101 }
-    },
-    {
-      "id": "g1.map.lost-pages.z02",
-      "unit": 2,
-      "titleEn": "At the Zoo",
-      "titleDe": "Im Zoo",
-      "width": 15,
-      "height": 11,
-      "tileSize": 16,
-      "render": { "generator": "zoo-room", "seed": 102 }
-    }
+    { "id": "g1.map.lost-pages.z01", "unit": 1, "titleEn": "Time for School", "titleDe": "Zeit für die Schule", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "school-room", "seed": 101 } },
+    { "id": "g1.map.lost-pages.z02", "unit": 2, "titleEn": "At the Zoo", "titleDe": "Im Zoo", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "zoo-room", "seed": 102 } },
+    { "id": "g1.map.lost-pages.z03", "unit": 3, "titleEn": "Pirates", "titleDe": "Piraten", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "ship-room", "seed": 103 } },
+    { "id": "g1.map.lost-pages.z04", "unit": 4, "titleEn": "Feelings", "titleDe": "Gefühle", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "feelings-room", "seed": 104 } },
+    { "id": "g1.map.lost-pages.z05", "unit": 5, "titleEn": "Our Band", "titleDe": "Unsere Band", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "band-room", "seed": 105 } }
   ]
 }
