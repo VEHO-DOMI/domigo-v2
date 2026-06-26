@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
     "@domigo/db",
     "@domigo/engine",
     "@domigo/task-ui",
+    "@domigo/game-core",
+    "@domigo/game-2d",
+    "@domigo/art-gen",
   ],
 };
 

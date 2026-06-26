@@ -10,6 +10,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@domigo/art-gen':
+        specifier: workspace:*
+        version: link:../../packages/art-gen
       '@domigo/content-loader':
         specifier: workspace:*
         version: link:../../packages/content-loader
@@ -22,6 +25,12 @@ importers:
       '@domigo/engine':
         specifier: workspace:*
         version: link:../../packages/engine
+      '@domigo/game-2d':
+        specifier: workspace:*
+        version: link:../../packages/game-2d
+      '@domigo/game-core':
+        specifier: workspace:*
+        version: link:../../packages/game-core
       '@domigo/task-ui':
         specifier: workspace:*
         version: link:../../packages/task-ui
@@ -166,6 +175,40 @@ importers:
       vitest:
         specifier: ^3
         version: 3.2.6(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(tsx@4.22.4)
+
+  packages/game-2d:
+    dependencies:
+      '@domigo/art-gen':
+        specifier: workspace:*
+        version: link:../art-gen
+      '@domigo/content-schema':
+        specifier: workspace:*
+        version: link:../content-schema
+      '@domigo/engine':
+        specifier: workspace:*
+        version: link:../engine
+      '@domigo/game-core':
+        specifier: workspace:*
+        version: link:../game-core
+      '@domigo/task-ui':
+        specifier: workspace:*
+        version: link:../task-ui
+      phaser:
+        specifier: ^3.90.0
+        version: 3.90.0
+      react:
+        specifier: ^19
+        version: 19.2.4
+    devDependencies:
+      '@types/node':
+        specifier: ^24
+        version: 24.13.1
+      '@types/react':
+        specifier: ^19
+        version: 19.2.17
+      typescript:
+        specifier: ^5
+        version: 5.9.3
 
   packages/game-core:
     dependencies:
@@ -2231,6 +2274,9 @@ packages:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
 
+  eventemitter3@5.0.4:
+    resolution: {integrity: sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==}
+
   expect-type@1.3.0:
     resolution: {integrity: sha512-knvyeauYhqjOYvQ66MznSMs83wmHrCycNEN6Ao+2AeYEfxUIkuiVxdEa1qlGEPK+We3n0THiDciYSsCcgW/DoA==}
     engines: {node: '>=12.0.0'}
@@ -2821,6 +2867,9 @@ packages:
   pathval@2.0.1:
     resolution: {integrity: sha512-//nshmD55c46FuFw26xV/xFAaB5HF9Xdap7HJBBnrKdAd6/GxDBaNA1870O79+9ueg61cZLSVc+OaFlfmObYVQ==}
     engines: {node: '>= 14.16'}
+
+  phaser@3.90.0:
+    resolution: {integrity: sha512-/cziz/5ZIn02uDkC9RzN8VF9x3Gs3XdFFf9nkiMEQT3p7hQlWuyjy4QWosU802qqno2YSLn2BfqwOKLv/sSVfQ==}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -5042,6 +5091,8 @@ snapshots:
 
   esutils@2.0.3: {}
 
+  eventemitter3@5.0.4: {}
+
   expect-type@1.3.0: {}
 
   fast-deep-equal@3.1.3: {}
@@ -5592,6 +5643,10 @@ snapshots:
   pathe@2.0.3: {}
 
   pathval@2.0.1: {}
+
+  phaser@3.90.0:
+    dependencies:
+      eventemitter3: 5.0.4
 
   picocolors@1.1.1: {}
 
