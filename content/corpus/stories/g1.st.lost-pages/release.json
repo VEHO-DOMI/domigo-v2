@@ -1,5 +1,11 @@
 {
   "schema": "story-release@1",
   "storyId": "g1.st.lost-pages",
-  "releasedChapters": ["g1.st.lost-pages.ch01", "g1.st.lost-pages.ch02"]
+  "releasedChapters": [
+    "g1.st.lost-pages.ch01",
+    "g1.st.lost-pages.ch02",
+    "g1.st.lost-pages.ch03",
+    "g1.st.lost-pages.ch04",
+    "g1.st.lost-pages.ch05"
+  ]
 }

@@ -10,79 +10,16 @@
       "titleEn": "Time for School",
       "titleDe": "Zeit für die Schule",
       "scenes": [
-        {
-          "id": "g1.st.lost-pages.ch01.s001",
-          "speaker": "finn",
-          "textEn": "Hello! Look at our class.",
-          "scaffoldDe": "Hallo! Schau dir unsere Klasse an.",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [],
-          "next": "g1.st.lost-pages.ch01.s002"
-        },
-        {
-          "id": "g1.st.lost-pages.ch01.s002",
-          "speaker": "finn",
-          "textEn": "The words are not here. Can you find them?",
-          "scaffoldDe": "Die Wörter sind nicht hier. Kannst du sie finden?",
-          "glosses": [{ "word": "words", "de": "Wörter", "scope": null }],
-          "audio": null,
-          "taskSlots": [{ "slot": "name-it", "itemId": "g1u01.w.pencil", "variantKey": null }],
-          "next": "g1.st.lost-pages.ch01.s003"
-        },
-        {
-          "id": "g1.st.lost-pages.ch01.s003",
-          "speaker": "finn",
-          "textEn": "More words! Look — a pen and a book.",
-          "scaffoldDe": "Mehr Wörter! Schau — ein Stift und ein Buch.",
-          "glosses": [{ "word": "words", "de": "Wörter", "scope": null }],
-          "audio": null,
-          "taskSlots": [{ "slot": "fix-it", "itemId": "g1u01.gi.contractions.mc.001", "variantKey": null }],
-          "next": "g1.st.lost-pages.ch01.s004"
-        },
-        {
-          "id": "g1.st.lost-pages.ch01.s004",
-          "speaker": "finn",
-          "textEn": "Look! A door or a window?",
-          "scaffoldDe": "Schau! Eine Tür oder ein Fenster?",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [],
-          "next": [
-            { "id": "door", "textEn": "Open the door.", "scaffoldDe": "Öffne die Tür.", "next": "g1.st.lost-pages.ch01.s005" },
-            { "id": "window", "textEn": "Look at the window.", "scaffoldDe": "Schau zum Fenster.", "next": "g1.st.lost-pages.ch01.s006" }
-          ]
-        },
-        {
-          "id": "g1.st.lost-pages.ch01.s005",
-          "speaker": "finn",
-          "textEn": "Yes! The door is open.",
-          "scaffoldDe": "Ja! Die Tür ist offen.",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [],
-          "next": "g1.st.lost-pages.ch01.s007"
-        },
-        {
-          "id": "g1.st.lost-pages.ch01.s006",
-          "speaker": "finn",
-          "textEn": "Yes! Look at the window.",
-          "scaffoldDe": "Ja! Schau zum Fenster.",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [],
-          "next": "g1.st.lost-pages.ch01.s007"
-        },
-        {
-          "id": "g1.st.lost-pages.ch01.s007",
-          "speaker": "berger",
-          "textEn": "Hello! Thank you!",
-          "scaffoldDe": "Hallo! Danke dir!",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [],
-          "next": null
-        }
+        { "id": "g1.st.lost-pages.ch01.s001", "speaker": "finn", "textEn": "Hello! Look at our class.", "scaffoldDe": "Hallo! Schau dir unsere Klasse an.", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch01.s002" },
+        { "id": "g1.st.lost-pages.ch01.s002", "speaker": "finn", "textEn": "The words are not here. Can you find them?", "scaffoldDe": "Die Wörter sind nicht hier. Kannst du sie finden?", "glosses": [{ "word": "words", "de": "Wörter", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u01.w.pencil", "variantKey": null }], "next": "g1.st.lost-pages.ch01.s003" },
+        { "id": "g1.st.lost-pages.ch01.s003", "speaker": "finn", "textEn": "More words! Look — a pen and a book.", "scaffoldDe": "Mehr Wörter! Schau — ein Stift und ein Buch.", "glosses": [{ "word": "words", "de": "Wörter", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u01.gi.contractions.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch01.s004" },
+        { "id": "g1.st.lost-pages.ch01.s004", "speaker": "finn", "textEn": "Look! A door or a window?", "scaffoldDe": "Schau! Eine Tür oder ein Fenster?", "glosses": [], "audio": null, "taskSlots": [], "next": [
+          { "id": "door", "textEn": "Open the door.", "scaffoldDe": "Öffne die Tür.", "next": "g1.st.lost-pages.ch01.s005" },
+          { "id": "window", "textEn": "Look at the window.", "scaffoldDe": "Schau zum Fenster.", "next": "g1.st.lost-pages.ch01.s006" }
+        ] },
+        { "id": "g1.st.lost-pages.ch01.s005", "speaker": "finn", "textEn": "Yes! The door is open.", "scaffoldDe": "Ja! Die Tür ist offen.", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch01.s007" },
+        { "id": "g1.st.lost-pages.ch01.s006", "speaker": "finn", "textEn": "Yes! Look at the window.", "scaffoldDe": "Ja! Schau zum Fenster.", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch01.s007" },
+        { "id": "g1.st.lost-pages.ch01.s007", "speaker": "berger", "textEn": "Hello! Thank you!", "scaffoldDe": "Hallo! Danke dir!", "glosses": [], "audio": null, "taskSlots": [], "next": null }
       ]
     },
     {
@@ -91,79 +28,70 @@
       "titleEn": "At the Zoo",
       "titleDe": "Im Zoo",
       "scenes": [
-        {
-          "id": "g1.st.lost-pages.ch02.s001",
-          "speaker": "finn",
-          "textEn": "At last! Look — the zoo!",
-          "scaffoldDe": "Endlich! Schau — der Zoo!",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [],
-          "next": "g1.st.lost-pages.ch02.s002"
-        },
-        {
-          "id": "g1.st.lost-pages.ch02.s002",
-          "speaker": "finn",
-          "textEn": "Where are the lion and the monkey?",
-          "scaffoldDe": "Wo sind der Löwe und der Affe?",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [{ "slot": "name-it", "itemId": "g1u02.w.lion", "variantKey": null }],
-          "next": "g1.st.lost-pages.ch02.s003"
-        },
-        {
-          "id": "g1.st.lost-pages.ch02.s003",
-          "speaker": "finn",
-          "textEn": "Look! A monkey is in the tree.",
-          "scaffoldDe": "Schau! Ein Affe ist im Baum.",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [{ "slot": "place-it", "itemId": "g1u02.gi.prepositions-place.gf.001", "variantKey": null }],
-          "next": "g1.st.lost-pages.ch02.s004"
-        },
-        {
-          "id": "g1.st.lost-pages.ch02.s004",
-          "speaker": "finn",
-          "textEn": "How strange! Where is the parrot?",
-          "scaffoldDe": "Wie seltsam! Wo ist der Papagei?",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [],
-          "next": [
-            { "id": "behind", "textEn": "Look behind the tree.", "scaffoldDe": "Schau hinter den Baum.", "next": "g1.st.lost-pages.ch02.s005" },
-            { "id": "nextto", "textEn": "Look next to the lion.", "scaffoldDe": "Schau neben den Löwen.", "next": "g1.st.lost-pages.ch02.s006" }
-          ]
-        },
-        {
-          "id": "g1.st.lost-pages.ch02.s005",
-          "speaker": "finn",
-          "textEn": "At last! The parrot!",
-          "scaffoldDe": "Endlich! Der Papagei!",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [],
-          "next": "g1.st.lost-pages.ch02.s007"
-        },
-        {
-          "id": "g1.st.lost-pages.ch02.s006",
-          "speaker": "finn",
-          "textEn": "Yes! The parrot is here.",
-          "scaffoldDe": "Ja! Der Papagei ist hier.",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [],
-          "next": "g1.st.lost-pages.ch02.s007"
-        },
-        {
-          "id": "g1.st.lost-pages.ch02.s007",
-          "speaker": "guide",
-          "textEn": "At last! The zoo is happy now.",
-          "scaffoldDe": "Endlich! Der Zoo ist jetzt glücklich.",
-          "glosses": [],
-          "audio": null,
-          "taskSlots": [],
-          "next": null
-        }
+        { "id": "g1.st.lost-pages.ch02.s001", "speaker": "finn", "textEn": "At last! Look — the zoo!", "scaffoldDe": "Endlich! Schau — der Zoo!", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch02.s002" },
+        { "id": "g1.st.lost-pages.ch02.s002", "speaker": "finn", "textEn": "Where are the lion and the monkey?", "scaffoldDe": "Wo sind der Löwe und der Affe?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u02.w.lion", "variantKey": null }], "next": "g1.st.lost-pages.ch02.s003" },
+        { "id": "g1.st.lost-pages.ch02.s003", "speaker": "finn", "textEn": "Look! A monkey is in the tree.", "scaffoldDe": "Schau! Ein Affe ist im Baum.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "place-it", "itemId": "g1u02.gi.prepositions-place.gf.001", "variantKey": null }], "next": "g1.st.lost-pages.ch02.s004" },
+        { "id": "g1.st.lost-pages.ch02.s004", "speaker": "finn", "textEn": "How strange! Where is the parrot?", "scaffoldDe": "Wie seltsam! Wo ist der Papagei?", "glosses": [], "audio": null, "taskSlots": [], "next": [
+          { "id": "behind", "textEn": "Look behind the tree.", "scaffoldDe": "Schau hinter den Baum.", "next": "g1.st.lost-pages.ch02.s005" },
+          { "id": "nextto", "textEn": "Look next to the lion.", "scaffoldDe": "Schau neben den Löwen.", "next": "g1.st.lost-pages.ch02.s006" }
+        ] },
+        { "id": "g1.st.lost-pages.ch02.s005", "speaker": "finn", "textEn": "At last! The parrot!", "scaffoldDe": "Endlich! Der Papagei!", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch02.s007" },
+        { "id": "g1.st.lost-pages.ch02.s006", "speaker": "finn", "textEn": "Yes! The parrot is here.", "scaffoldDe": "Ja! Der Papagei ist hier.", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch02.s007" },
+        { "id": "g1.st.lost-pages.ch02.s007", "speaker": "guide", "textEn": "At last! The zoo is happy now.", "scaffoldDe": "Endlich! Der Zoo ist jetzt glücklich.", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g1.st.lost-pages.ch03",
+      "unit": 3,
+      "titleEn": "Pirates",
+      "titleDe": "Piraten",
+      "scenes": [
+        { "id": "g1.st.lost-pages.ch03.s001", "speaker": "finn", "textEn": "Look! A big ship!", "scaffoldDe": "Schau! Ein großes Schiff!", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch03.s002" },
+        { "id": "g1.st.lost-pages.ch03.s002", "speaker": "finn", "textEn": "The captain has got a beard.", "scaffoldDe": "Der Kapitän hat einen Bart.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u03.w.captain", "variantKey": null }], "next": "g1.st.lost-pages.ch03.s003" },
+        { "id": "g1.st.lost-pages.ch03.s003", "speaker": "finn", "textEn": "He has got a parrot!", "scaffoldDe": "Er hat einen Papagei!", "glosses": [], "audio": null, "taskSlots": [{ "slot": "have-got", "itemId": "g1u03.gi.have-got.gf.001", "variantKey": null }], "next": "g1.st.lost-pages.ch03.s004" },
+        { "id": "g1.st.lost-pages.ch03.s004", "speaker": "finn", "textEn": "Look! Is the captain tall or short?", "scaffoldDe": "Schau! Ist der Kapitän groß oder klein?", "glosses": [], "audio": null, "taskSlots": [], "next": [
+          { "id": "tall", "textEn": "He is tall.", "scaffoldDe": "Er ist groß.", "next": "g1.st.lost-pages.ch03.s005" },
+          { "id": "short", "textEn": "He is short.", "scaffoldDe": "Er ist klein.", "next": "g1.st.lost-pages.ch03.s006" }
+        ] },
+        { "id": "g1.st.lost-pages.ch03.s005", "speaker": "finn", "textEn": "Yes! The captain is happy.", "scaffoldDe": "Ja! Der Kapitän ist glücklich.", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch03.s007" },
+        { "id": "g1.st.lost-pages.ch03.s006", "speaker": "finn", "textEn": "Yes! Look at the captain.", "scaffoldDe": "Ja! Schau den Kapitän an.", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch03.s007" },
+        { "id": "g1.st.lost-pages.ch03.s007", "speaker": "captain", "textEn": "At last! The ship is free!", "scaffoldDe": "Endlich! Das Schiff ist frei!", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g1.st.lost-pages.ch04",
+      "unit": 4,
+      "titleEn": "Feelings",
+      "titleDe": "Gefühle",
+      "scenes": [
+        { "id": "g1.st.lost-pages.ch04.s001", "speaker": "finn", "textEn": "Oh dear! Look at our friend.", "scaffoldDe": "Oje! Schau unseren Freund an.", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch04.s002" },
+        { "id": "g1.st.lost-pages.ch04.s002", "speaker": "finn", "textEn": "Is he sad or angry?", "scaffoldDe": "Ist er traurig oder wütend?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u04.w.angry", "variantKey": null }], "next": "g1.st.lost-pages.ch04.s003" },
+        { "id": "g1.st.lost-pages.ch04.s003", "speaker": "finn", "textEn": "He is sad because he is tired.", "scaffoldDe": "Er ist traurig, weil er müde ist.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "because", "itemId": "g1u04.gi.to-be-negative.gf.007", "variantKey": null }], "next": "g1.st.lost-pages.ch04.s004" },
+        { "id": "g1.st.lost-pages.ch04.s004", "speaker": "finn", "textEn": "Are you OK? What's happening?", "scaffoldDe": "Bist du okay? Was ist los?", "glosses": [], "audio": null, "taskSlots": [], "next": [
+          { "id": "happy", "textEn": "I am happy!", "scaffoldDe": "Ich bin glücklich!", "next": "g1.st.lost-pages.ch04.s005" },
+          { "id": "excited", "textEn": "I am excited!", "scaffoldDe": "Ich bin aufgeregt!", "next": "g1.st.lost-pages.ch04.s006" }
+        ] },
+        { "id": "g1.st.lost-pages.ch04.s005", "speaker": "finn", "textEn": "Yes! Now he is happy.", "scaffoldDe": "Ja! Jetzt ist er glücklich.", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch04.s007" },
+        { "id": "g1.st.lost-pages.ch04.s006", "speaker": "finn", "textEn": "Yes! At last — he is not sad.", "scaffoldDe": "Ja! Endlich — er ist nicht traurig.", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch04.s007" },
+        { "id": "g1.st.lost-pages.ch04.s007", "speaker": "berger", "textEn": "At last! You are happy now.", "scaffoldDe": "Endlich! Du bist jetzt glücklich.", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g1.st.lost-pages.ch05",
+      "unit": 5,
+      "titleEn": "Our Band",
+      "titleDe": "Unsere Band",
+      "scenes": [
+        { "id": "g1.st.lost-pages.ch05.s001", "speaker": "finn", "textEn": "Look! A concert!", "scaffoldDe": "Schau! Ein Konzert!", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch05.s002" },
+        { "id": "g1.st.lost-pages.ch05.s002", "speaker": "finn", "textEn": "Can you play the guitar?", "scaffoldDe": "Kannst du Gitarre spielen?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u05.w.guitar", "variantKey": null }], "next": "g1.st.lost-pages.ch05.s003" },
+        { "id": "g1.st.lost-pages.ch05.s003", "speaker": "finn", "textEn": "She can play the drums.", "scaffoldDe": "Sie kann Schlagzeug spielen.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "can", "itemId": "g1u05.gi.can.gf.001", "variantKey": null }], "next": "g1.st.lost-pages.ch05.s004" },
+        { "id": "g1.st.lost-pages.ch05.s004", "speaker": "finn", "textEn": "What can you play?", "scaffoldDe": "Was kannst du spielen?", "glosses": [], "audio": null, "taskSlots": [], "next": [
+          { "id": "keyboard", "textEn": "I can play the keyboard.", "scaffoldDe": "Ich kann Keyboard spielen.", "next": "g1.st.lost-pages.ch05.s005" },
+          { "id": "guitar", "textEn": "I can play the guitar.", "scaffoldDe": "Ich kann Gitarre spielen.", "next": "g1.st.lost-pages.ch05.s006" }
+        ] },
+        { "id": "g1.st.lost-pages.ch05.s005", "speaker": "finn", "textEn": "Yes! You can play!", "scaffoldDe": "Ja! Du kannst spielen!", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch05.s007" },
+        { "id": "g1.st.lost-pages.ch05.s006", "speaker": "finn", "textEn": "Yes! At last — the band can play.", "scaffoldDe": "Ja! Endlich — die Band kann spielen.", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch05.s007" },
+        { "id": "g1.st.lost-pages.ch05.s007", "speaker": "berger", "textEn": "At last! The band is happy.", "scaffoldDe": "Endlich! Die Band ist glücklich.", "glosses": [], "audio": null, "taskSlots": [], "next": null }
       ]
     }
   ]
