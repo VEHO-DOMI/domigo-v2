@@ -26,5 +26,6 @@ export * from "./review.ts";
 export * from "./persist.ts";
 export * from "./streak.ts";
 export * from "./studypath.ts";
+export * from "./gamesave.ts"; // Track C cosmetic game saves (clientRev LWW)
 export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth identity)
 export * from "./auth.ts"; // read-only identity lookups (lookupStudentForAuth/lookupTeacherForAuth)

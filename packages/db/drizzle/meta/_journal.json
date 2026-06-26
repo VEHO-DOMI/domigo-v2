@@ -29,6 +29,13 @@
       "when": 1782051005704,
       "tag": "0003_faulty_korg",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1782058508280,
+      "tag": "0004_wooden_omega_red",
+      "breakpoints": true
     }
   ]
 }
