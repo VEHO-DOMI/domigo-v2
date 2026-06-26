@@ -1,0 +1,89 @@
+{
+  "schema": "story@1",
+  "id": "g1.st.lost-pages",
+  "grade": 1,
+  "title": { "en": "The Lost Pages", "de": "Die verlorenen Seiten" },
+  "chapters": [
+    {
+      "id": "g1.st.lost-pages.ch01",
+      "unit": 1,
+      "titleEn": "Time for School",
+      "titleDe": "Zeit für die Schule",
+      "scenes": [
+        {
+          "id": "g1.st.lost-pages.ch01.s001",
+          "speaker": "finn",
+          "textEn": "Hello! Look at our class.",
+          "scaffoldDe": "Hallo! Schau dir unsere Klasse an.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch01.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s002",
+          "speaker": "finn",
+          "textEn": "The words are not here. Can you find them?",
+          "scaffoldDe": "Die Wörter sind nicht hier. Kannst du sie finden?",
+          "glosses": [{ "word": "words", "de": "Wörter", "scope": null }],
+          "audio": null,
+          "taskSlots": [{ "slot": "name-it", "itemId": "g1u01.w.pencil", "variantKey": null }],
+          "next": "g1.st.lost-pages.ch01.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s003",
+          "speaker": "finn",
+          "textEn": "More words! Look — a pen and a book.",
+          "scaffoldDe": "Mehr Wörter! Schau — ein Stift und ein Buch.",
+          "glosses": [{ "word": "words", "de": "Wörter", "scope": null }],
+          "audio": null,
+          "taskSlots": [{ "slot": "fix-it", "itemId": "g1u01.gi.contractions.mc.001", "variantKey": null }],
+          "next": "g1.st.lost-pages.ch01.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s004",
+          "speaker": "finn",
+          "textEn": "Look! A door or a window?",
+          "scaffoldDe": "Schau! Eine Tür oder ein Fenster?",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": [
+            { "id": "door", "textEn": "Open the door.", "scaffoldDe": "Öffne die Tür.", "next": "g1.st.lost-pages.ch01.s005" },
+            { "id": "window", "textEn": "Look at the window.", "scaffoldDe": "Schau zum Fenster.", "next": "g1.st.lost-pages.ch01.s006" }
+          ]
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s005",
+          "speaker": "finn",
+          "textEn": "Yes! The door is open.",
+          "scaffoldDe": "Ja! Die Tür ist offen.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch01.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s006",
+          "speaker": "finn",
+          "textEn": "Yes! Look at the window.",
+          "scaffoldDe": "Ja! Schau zum Fenster.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch01.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s007",
+          "speaker": "berger",
+          "textEn": "Hello! Thank you!",
+          "scaffoldDe": "Hallo! Danke dir!",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
+      ]
+    }
+  ]
+}
