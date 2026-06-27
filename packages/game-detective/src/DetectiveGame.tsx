@@ -12,6 +12,7 @@ import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-sch
 import type { Tier } from "@domigo/engine";
 import type { ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
+import { CharacterChip, EvidenceBoard, characterPalette } from "./art.tsx";
 
 export interface GameAttempt {
   clientAttemptId: string;
@@ -42,8 +43,6 @@ export interface DetectiveGameProps {
 
 const wrap: CSSProperties = { maxWidth: 640, margin: "0 auto", fontFamily: "system-ui, sans-serif" };
 const scenePanel: CSSProperties = { background: "#fff", border: "1px solid #e2e8f0", borderRadius: 14, padding: "18px 20px", boxShadow: "0 1px 3px rgba(0,0,0,.06)" };
-const board: CSSProperties = { background: "#fffdf5", border: "1px solid #e7d9a8", borderRadius: 14, padding: 14, minHeight: 160 };
-const clueCard: CSSProperties = { background: "#fff", border: "1px solid #e7d9a8", borderRadius: 8, padding: "8px 10px", fontSize: 13, color: "#3f3a26", marginBottom: 8, boxShadow: "0 1px 2px rgba(0,0,0,.05)" };
 const btn: CSSProperties = { marginTop: 14, background: "#2563eb", color: "#fff", border: "none", borderRadius: 8, padding: "9px 18px", fontSize: 15, cursor: "pointer" };
 const choiceBtn: CSSProperties = { ...btn, marginTop: 0, background: "#0ea5e9", textAlign: "left" };
 
@@ -69,15 +68,6 @@ function TaskClue({ item, onAttempt, onSolved, onContinue }: {
         : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} />}
       {answered && <button style={btn} onClick={onContinue}>Continue →</button>}
     </div>
-  );
-}
-
-function Magnifier() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ verticalAlign: "-4px" }}>
-      <circle cx="10.5" cy="10.5" r="6.5" stroke="#b45309" strokeWidth="2" />
-      <line x1="15.5" y1="15.5" x2="21" y2="21" stroke="#b45309" strokeWidth="2" strokeLinecap="round" />
-    </svg>
   );
 }
 
@@ -114,14 +104,7 @@ export function DetectiveGame(props: DetectiveGameProps) {
     save({ sceneId: nextId });
   };
 
-  const clueList = (
-    <div style={board}>
-      <div style={{ fontSize: 13, fontWeight: 700, color: "#7c5e16", marginBottom: 10 }}><Magnifier /> Case file</div>
-      {clues.length === 0
-        ? <p style={{ fontSize: 12, color: "#9a8a55", margin: 0 }}>No clues yet. Solve clues to fill the board.</p>
-        : clues.map((c) => <div key={c} style={clueCard}>✓ {humanize(c)}</div>)}
-    </div>
-  );
+  const clueList = <EvidenceBoard label="Case file" clues={clues.map((c) => ({ key: c, text: humanize(c) }))} />;
 
   if (done || !scene) {
     return (
@@ -145,8 +128,11 @@ export function DetectiveGame(props: DetectiveGameProps) {
         <a href="/play/2" style={{ fontSize: 14, color: "#2563eb" }}>← Cases</a>
       </div>
 
-      <section style={scenePanel}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: "#2563eb" }}>{castNames[scene.speaker] ?? scene.speaker}</div>
+      <section style={{ ...scenePanel, borderLeft: `4px solid ${characterPalette(scene.speaker).shirt}` }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 2 }}>
+          <CharacterChip charKey={scene.speaker} name={castNames[scene.speaker] ?? scene.speaker} />
+          <div style={{ fontSize: 15, fontWeight: 700, color: characterPalette(scene.speaker).shirt }}>{castNames[scene.speaker] ?? scene.speaker}</div>
+        </div>
         <p style={{ fontSize: 19, margin: "6px 0 4px", lineHeight: 1.4 }}>{scene.textEn}</p>
         {scene.scaffoldDe && <p style={{ fontSize: 14, color: "#64748b", margin: "0 0 6px" }}>{scene.scaffoldDe}</p>}
         {scene.glosses.length > 0 && (
