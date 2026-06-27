@@ -253,6 +253,79 @@
         { "id": "g2.st.wrong-name.ch10.s005", "speaker": "theo", "textEn": "A friend close to Lena, a friend with the truth.", "scaffoldDe": "Ein Freund, der Lena nahe ist, ein Freund mit der Wahrheit.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "moral-line", "itemId": "g2u10.gi.must.gs.001", "variantKey": null }], "next": "g2.st.wrong-name.ch10.s006" },
         { "id": "g2.st.wrong-name.ch10.s006", "speaker": "mina", "textEn": "We must find this friend. Who is it?", "scaffoldDe": "Wir müssen diesen Freund finden. Wer ist es?", "glosses": [], "audio": null, "taskSlots": [], "next": null }
       ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch11",
+      "unit": 11,
+      "titleEn": "Whose Name",
+      "titleDe": "Wessen Name",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch11.s001", "speaker": "mina", "textEn": "Whose name is on the new medal?", "scaffoldDe": "Wessen Name steht auf der neuen Medaille?", "glosses": [{ "word": "name", "de": "Name", "scope": null }, { "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch11.s002" },
+        { "id": "g2.st.wrong-name.ch11.s002", "speaker": "theo", "textEn": "The new name is Ben's.", "scaffoldDe": "Der neue Name ist Bens.", "glosses": [{ "word": "name", "de": "Name", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch11.s003" },
+        { "id": "g2.st.wrong-name.ch11.s003", "speaker": "mina", "textEn": "Look at this. Whose is it?", "scaffoldDe": "Schau dir das an. Wessen ist es?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "whose-card", "itemId": "g2u11.gi.who-whose.mt.002", "variantKey": null }], "next": "g2.st.wrong-name.ch11.s004" },
+        { "id": "g2.st.wrong-name.ch11.s004", "speaker": "theo", "textEn": "Ben and Lena are family.", "scaffoldDe": "Ben und Lena sind eine Familie.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch11.s005" },
+        { "id": "g2.st.wrong-name.ch11.s005", "speaker": "mina", "textEn": "Ben put Lena's name on the medal.", "scaffoldDe": "Ben hat Lenas Namen auf die Medaille gesetzt.", "glosses": [{ "word": "name", "de": "Name", "scope": null }, { "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch11.s006" },
+        { "id": "g2.st.wrong-name.ch11.s006", "speaker": "theo", "textEn": "Is it his or hers?", "scaffoldDe": "Ist es seins oder ihrs?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "his-or-hers", "itemId": "g2u11.gi.possessive-pronouns.mc.001", "variantKey": null }], "next": "g2.st.wrong-name.ch11.s007" },
+        { "id": "g2.st.wrong-name.ch11.s007", "speaker": "mina", "textEn": "We must talk to Ben.", "scaffoldDe": "Wir müssen mit Ben reden.", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch12",
+      "unit": 12,
+      "titleEn": "Ben",
+      "titleDe": "Ben",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch12.s001", "speaker": "ben", "textEn": "It was me. I have the medal.", "scaffoldDe": "Ich war es. Ich habe die Medaille.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch12.s002" },
+        { "id": "g2.st.wrong-name.ch12.s002", "speaker": "ben", "textEn": "I wanted Lena's name on it. She was first.", "scaffoldDe": "Ich wollte Lenas Namen darauf. Sie war Erste.", "glosses": [{ "word": "name", "de": "Name", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch12.s003" },
+        { "id": "g2.st.wrong-name.ch12.s003", "speaker": "mina", "textEn": "What has happened, Ben?", "scaffoldDe": "Was ist passiert, Ben?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "what-has-happened", "itemId": "g2u12.gi.present-perfect.gf.001", "variantKey": null }], "next": "g2.st.wrong-name.ch12.s004" },
+        { "id": "g2.st.wrong-name.ch12.s004", "speaker": "ben", "textEn": "Lena was first last year. But the medal had Dani's name.", "scaffoldDe": "Lena war letztes Jahr Erste. Aber die Medaille hatte Danis Namen.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }, { "word": "name", "de": "Name", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch12.s005" },
+        { "id": "g2.st.wrong-name.ch12.s005", "speaker": "theo", "textEn": "Ben, look at this with us.", "scaffoldDe": "Ben, schau dir das mit uns an.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "verify-confession", "itemId": "g2u12.gi.present-perfect.ec.001", "variantKey": null }], "next": "g2.st.wrong-name.ch12.s006" },
+        { "id": "g2.st.wrong-name.ch12.s006", "speaker": "mina", "textEn": "Ben, the medal was not yours.", "scaffoldDe": "Ben, die Medaille war nicht deine.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch12.s007" },
+        { "id": "g2.st.wrong-name.ch12.s007", "speaker": "ben", "textEn": "I am sorry. I wanted the truth.", "scaffoldDe": "Es tut mir leid. Ich wollte die Wahrheit.", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch13",
+      "unit": 13,
+      "titleEn": "Dani",
+      "titleDe": "Dani",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch13.s001", "speaker": "mina", "textEn": "Now, Dani. The numbers were wrong.", "scaffoldDe": "Jetzt, Dani. Die Zahlen waren falsch.", "glosses": [{ "word": "wrong", "de": "falsch", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch13.s002" },
+        { "id": "g2.st.wrong-name.ch13.s002", "speaker": "theo", "textEn": "Lena was first. You were not.", "scaffoldDe": "Lena war Erste. Du warst es nicht.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch13.s003" },
+        { "id": "g2.st.wrong-name.ch13.s003", "speaker": "mina", "textEn": "How did this happen? Look here.", "scaffoldDe": "Wie ist das passiert? Schau her.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "the-method", "itemId": "g2u13.gi.adverbs-manner.gf.001", "variantKey": null }], "next": "g2.st.wrong-name.ch13.s004" },
+        { "id": "g2.st.wrong-name.ch13.s004", "speaker": "dani", "textEn": "I put my name first. I am sorry.", "scaffoldDe": "Ich habe meinen Namen an die erste Stelle gesetzt. Es tut mir leid.", "glosses": [{ "word": "name", "de": "Name", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch13.s005" },
+        { "id": "g2.st.wrong-name.ch13.s005", "speaker": "theo", "textEn": "What happens now?", "scaffoldDe": "Was passiert jetzt?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "the-plan", "itemId": "g2u13.gi.will-future.gs.002", "variantKey": null }], "next": "g2.st.wrong-name.ch13.s006" },
+        { "id": "g2.st.wrong-name.ch13.s006", "speaker": "mina", "textEn": "Now the truth is here.", "scaffoldDe": "Jetzt ist die Wahrheit da.", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch14",
+      "unit": 14,
+      "titleEn": "The True Story",
+      "titleDe": "Die wahre Geschichte",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch14.s001", "speaker": "theo", "textEn": "Lena was first last year. The card was wrong.", "scaffoldDe": "Lena war letztes Jahr Erste. Die Karte war falsch.", "glosses": [{ "word": "card", "de": "Karte", "scope": null }, { "word": "wrong", "de": "falsch", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch14.s002" },
+        { "id": "g2.st.wrong-name.ch14.s002", "speaker": "mina", "textEn": "The school has the right numbers now.", "scaffoldDe": "Die Schule hat jetzt die richtigen Zahlen.", "glosses": [{ "word": "right", "de": "richtig", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch14.s003" },
+        { "id": "g2.st.wrong-name.ch14.s003", "speaker": "theo", "textEn": "What has the school done? Look.", "scaffoldDe": "Was hat die Schule gemacht? Schau.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "history-sealed", "itemId": "g2u14.gi.present-perfect-already-yet.gf.001", "variantKey": null }], "next": "g2.st.wrong-name.ch14.s004" },
+        { "id": "g2.st.wrong-name.ch14.s004", "speaker": "mina", "textEn": "Lena was first. The medal is Lena's.", "scaffoldDe": "Lena war Erste. Die Medaille ist Lenas.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch14.s005" },
+        { "id": "g2.st.wrong-name.ch14.s005", "speaker": "theo", "textEn": "Dani is sorry now.", "scaffoldDe": "Dani tut es jetzt leid.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "ever-never", "itemId": "g2u14.gi.present-perfect-ever-never.mt.001", "variantKey": null }], "next": "g2.st.wrong-name.ch14.s006" },
+        { "id": "g2.st.wrong-name.ch14.s006", "speaker": "mina", "textEn": "Lena has her medal now.", "scaffoldDe": "Lena hat jetzt ihre Medaille.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch15",
+      "unit": 15,
+      "titleEn": "The Right Name",
+      "titleDe": "Der richtige Name",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch15.s001", "speaker": "mina", "textEn": "The medal has Lena's name now. The right name!", "scaffoldDe": "Die Medaille hat jetzt Lenas Namen. Der richtige Name!", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }, { "word": "name", "de": "Name", "scope": null }, { "word": "right", "de": "richtig", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch15.s002" },
+        { "id": "g2.st.wrong-name.ch15.s002", "speaker": "lena", "textEn": "Thank you! I am so glad.", "scaffoldDe": "Danke! Ich bin so froh.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch15.s003" },
+        { "id": "g2.st.wrong-name.ch15.s003", "speaker": "theo", "textEn": "We are happy. So is Lena.", "scaffoldDe": "Wir sind glücklich. Lena auch.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "we-agree", "itemId": "g2u15.gi.so-do-i.gf.001", "variantKey": null }], "next": "g2.st.wrong-name.ch15.s004" },
+        { "id": "g2.st.wrong-name.ch15.s004", "speaker": "ben", "textEn": "I am sorry. I did it for Lena.", "scaffoldDe": "Es tut mir leid. Ich habe es für Lena getan.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch15.s005" },
+        { "id": "g2.st.wrong-name.ch15.s005", "speaker": "dani", "textEn": "I am sorry too, Lena. You were first.", "scaffoldDe": "Es tut mir auch leid, Lena. Du warst Erste.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch15.s006" },
+        { "id": "g2.st.wrong-name.ch15.s006", "speaker": "mina", "textEn": "Lena is happy. So are we!", "scaffoldDe": "Lena ist glücklich. Wir auch!", "glosses": [], "audio": null, "taskSlots": [{ "slot": "all-agree", "itemId": "g2u15.gi.so-do-i.mc.001", "variantKey": null }], "next": "g2.st.wrong-name.ch15.s007" },
+        { "id": "g2.st.wrong-name.ch15.s007", "speaker": "theo", "textEn": "Case closed! The right name is on the medal.", "scaffoldDe": "Fall gelöst! Der richtige Name ist auf der Medaille.", "glosses": [{ "word": "case", "de": "Fall", "scope": null }, { "word": "right", "de": "richtig", "scope": null }, { "word": "name", "de": "Name", "scope": null }, { "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+      ]
     }
   ]
 }
