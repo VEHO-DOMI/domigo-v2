@@ -1,0 +1,205 @@
+{
+  "schema": "story-art@1",
+  "storyId": "g2.st.wrong-name",
+  "base": "/art/g2",
+  "cover": "cover_title",
+  "endCard": "end_caseclosed",
+  "chapters": {
+    "g2.st.wrong-name.ch01": {
+      "card": "card_ch01",
+      "backdrop": "set_hall_empty"
+    },
+    "g2.st.wrong-name.ch02": {
+      "card": "card_ch02",
+      "backdrop": "set_back_corridor"
+    },
+    "g2.st.wrong-name.ch03": {
+      "card": "card_ch03",
+      "backdrop": "set_costume_hall"
+    },
+    "g2.st.wrong-name.ch04": {
+      "card": "card_ch04",
+      "backdrop": "set_hall_full"
+    },
+    "g2.st.wrong-name.ch05": {
+      "card": "card_ch05",
+      "backdrop": "set_townmap"
+    },
+    "g2.st.wrong-name.ch06": {
+      "card": "card_ch06",
+      "backdrop": "set_back_corridor"
+    },
+    "g2.st.wrong-name.ch07": {
+      "card": "card_ch07",
+      "backdrop": "set_club_room"
+    },
+    "g2.st.wrong-name.ch08": {
+      "card": "card_ch08",
+      "backdrop": "set_hall_night"
+    },
+    "g2.st.wrong-name.ch09": {
+      "card": "card_ch09",
+      "backdrop": "set_hall_full"
+    },
+    "g2.st.wrong-name.ch10": {
+      "card": "card_ch10",
+      "backdrop": "set_lab"
+    },
+    "g2.st.wrong-name.ch11": {
+      "card": "card_ch11",
+      "backdrop": "set_club_room"
+    },
+    "g2.st.wrong-name.ch12": {
+      "card": "card_ch12",
+      "backdrop": "set_club_room"
+    },
+    "g2.st.wrong-name.ch13": {
+      "card": "card_ch13",
+      "backdrop": "set_club_room"
+    },
+    "g2.st.wrong-name.ch14": {
+      "card": "card_ch14",
+      "backdrop": "set_hall_full"
+    },
+    "g2.st.wrong-name.ch15": {
+      "card": "card_ch15",
+      "backdrop": "set_assembly"
+    }
+  },
+  "portraits": {
+    "g2.st.wrong-name.ch01.s001": "mina_surprised",
+    "g2.st.wrong-name.ch01.s002": "theo_worried",
+    "g2.st.wrong-name.ch01.s003": "mina_thinking",
+    "g2.st.wrong-name.ch01.s004": "theo_surprised",
+    "g2.st.wrong-name.ch01.s005": "mina_thinking",
+    "g2.st.wrong-name.ch01.s006": "theo_worried",
+    "g2.st.wrong-name.ch01.s009": "theo_excited",
+    "g2.st.wrong-name.ch01.s010": "theo_excited",
+    "g2.st.wrong-name.ch02.s002": "max_deny",
+    "g2.st.wrong-name.ch02.s003": "mina_thinking",
+    "g2.st.wrong-name.ch02.s004": "max_sulky",
+    "g2.st.wrong-name.ch02.s005": "mina_determined",
+    "g2.st.wrong-name.ch02.s006": "theo_aha",
+    "g2.st.wrong-name.ch02.s007": "mina_thinking",
+    "g2.st.wrong-name.ch02.s008": "theo_worried",
+    "g2.st.wrong-name.ch03.s004": "mina_talking",
+    "g2.st.wrong-name.ch03.s005": "bell_explaining",
+    "g2.st.wrong-name.ch03.s006": "mina_determined",
+    "g2.st.wrong-name.ch03.s007": "theo_worried",
+    "g2.st.wrong-name.ch04.s003": "theo_surprised",
+    "g2.st.wrong-name.ch04.s004": "mina_thinking",
+    "g2.st.wrong-name.ch04.s005": "theo_aha",
+    "g2.st.wrong-name.ch04.s006": "mina_determined",
+    "g2.st.wrong-name.ch04.s007": "theo_worried",
+    "g2.st.wrong-name.ch05.s001": "max_brash",
+    "g2.st.wrong-name.ch05.s003": "mina_thinking",
+    "g2.st.wrong-name.ch05.s004": "mina_determined",
+    "g2.st.wrong-name.ch05.s006": "mina_thinking",
+    "g2.st.wrong-name.ch06.s001": "mina_thinking",
+    "g2.st.wrong-name.ch06.s002": "theo_talking",
+    "g2.st.wrong-name.ch06.s003": "bell_explaining",
+    "g2.st.wrong-name.ch06.s006": "mina_determined",
+    "g2.st.wrong-name.ch07.s001": "mina_talking",
+    "g2.st.wrong-name.ch07.s003": "mina_thinking",
+    "g2.st.wrong-name.ch08.s001": "theo_talking",
+    "g2.st.wrong-name.ch08.s002": "mina_thinking",
+    "g2.st.wrong-name.ch08.s005": "theo_surprised",
+    "g2.st.wrong-name.ch08.s006": "mina_thinking",
+    "g2.st.wrong-name.ch08.s007": "theo_aha",
+    "g2.st.wrong-name.ch09.s001": "mina_surprised",
+    "g2.st.wrong-name.ch09.s002": "theo_surprised",
+    "g2.st.wrong-name.ch09.s003": "mina_thinking",
+    "g2.st.wrong-name.ch09.s006": "theo_surprised",
+    "g2.st.wrong-name.ch09.s007": "mina_thinking",
+    "g2.st.wrong-name.ch10.s002": "mina_happy",
+    "g2.st.wrong-name.ch10.s006": "mina_determined",
+    "g2.st.wrong-name.ch11.s001": "mina_thinking",
+    "g2.st.wrong-name.ch11.s003": "mina_thinking",
+    "g2.st.wrong-name.ch11.s004": "theo_surprised",
+    "g2.st.wrong-name.ch11.s007": "mina_determined",
+    "g2.st.wrong-name.ch12.s001": "ben_guilty",
+    "g2.st.wrong-name.ch12.s002": "ben_talking",
+    "g2.st.wrong-name.ch12.s004": "ben_anxious",
+    "g2.st.wrong-name.ch12.s007": "ben_relieved",
+    "g2.st.wrong-name.ch13.s001": "mina_determined",
+    "g2.st.wrong-name.ch13.s003": "mina_thinking",
+    "g2.st.wrong-name.ch13.s004": "dani_sorry",
+    "g2.st.wrong-name.ch14.s004": "mina_happy",
+    "g2.st.wrong-name.ch14.s006": "mina_happy",
+    "g2.st.wrong-name.ch15.s001": "mina_happy",
+    "g2.st.wrong-name.ch15.s002": "lena_joyful",
+    "g2.st.wrong-name.ch15.s003": "theo_excited",
+    "g2.st.wrong-name.ch15.s004": "ben_relieved",
+    "g2.st.wrong-name.ch15.s005": "dani_sorry",
+    "g2.st.wrong-name.ch15.s006": "mina_happy",
+    "g2.st.wrong-name.ch15.s007": "theo_excited"
+  },
+  "beats": {
+    "g2.st.wrong-name.ch01.s001": "beat_ch01_empty",
+    "g2.st.wrong-name.ch01.s003": "beat_ch01_card",
+    "g2.st.wrong-name.ch01.s006": "beat_ch01_lena_sad",
+    "g2.st.wrong-name.ch02.s001": "beat_ch02_question",
+    "g2.st.wrong-name.ch02.s002": "beat_ch02_post",
+    "g2.st.wrong-name.ch03.s001": "beat_ch03_crowd",
+    "g2.st.wrong-name.ch03.s005": "beat_ch03_open_door",
+    "g2.st.wrong-name.ch04.s001": "beat_flashback_lena_wins",
+    "g2.st.wrong-name.ch04.s002": "beat_ch04_chart",
+    "g2.st.wrong-name.ch04.s003": "beat_ch04_crack",
+    "g2.st.wrong-name.ch05.s001": "beat_ch05_max_town",
+    "g2.st.wrong-name.ch05.s002": "beat_ch05_map",
+    "g2.st.wrong-name.ch06.s003": "beat_ch06_bell_keys",
+    "g2.st.wrong-name.ch06.s006": "beat_ch06_sort",
+    "g2.st.wrong-name.ch07.s001": "beat_ch07_theorise",
+    "g2.st.wrong-name.ch07.s003": "beat_ch07_lena_secret",
+    "g2.st.wrong-name.ch08.s002": "beat_ch08_timeline",
+    "g2.st.wrong-name.ch08.s005": "beat_ch08_night_figure",
+    "g2.st.wrong-name.ch08.s006": "beat_ch08_key_close",
+    "g2.st.wrong-name.ch09.s001": "beat_ch09_two_medals",
+    "g2.st.wrong-name.ch09.s005": "beat_ch09_new_card",
+    "g2.st.wrong-name.ch10.s002": "beat_ch10_lena_invents",
+    "g2.st.wrong-name.ch11.s003": "beat_ch11_match",
+    "g2.st.wrong-name.ch11.s004": "beat_ch11_family",
+    "g2.st.wrong-name.ch12.s001": "beat_ch12_confession",
+    "g2.st.wrong-name.ch12.s007": "beat_ch12_ben_lena",
+    "g2.st.wrong-name.ch13.s001": "beat_ch13_confront",
+    "g2.st.wrong-name.ch13.s003": "beat_flashback_dani_swaps",
+    "g2.st.wrong-name.ch14.s001": "beat_flashback_wrong_medal",
+    "g2.st.wrong-name.ch14.s003": "beat_ch14_correct",
+    "g2.st.wrong-name.ch15.s001": "beat_ch15_medal",
+    "g2.st.wrong-name.ch15.s004": "beat_ch15_ben_told",
+    "g2.st.wrong-name.ch15.s005": "beat_ch15_apology",
+    "g2.st.wrong-name.ch15.s007": "beat_ch15_caseclosed"
+  },
+  "clues": {
+    "g2.st.wrong-name.ch01.what-happened": "prop_card_blank",
+    "g2.st.wrong-name.ch01.first-statement": "prop_casefile",
+    "g2.st.wrong-name.ch02.interrogate": "prop_notebook",
+    "g2.st.wrong-name.ch02.catch-the-lie": "prop_magnifier",
+    "g2.st.wrong-name.ch03.the-rule": "prop_key",
+    "g2.st.wrong-name.ch03.sort-suspects": "prop_mask",
+    "g2.st.wrong-name.ch04.compare": "prop_chart",
+    "g2.st.wrong-name.ch04.the-record-lies": "prop_card_old",
+    "g2.st.wrong-name.ch05.trace-route": "prop_map",
+    "g2.st.wrong-name.ch05.broken-alibi": "prop_map",
+    "g2.st.wrong-name.ch06.who-must": "prop_key",
+    "g2.st.wrong-name.ch06.access-groups": "prop_corkboard",
+    "g2.st.wrong-name.ch07.what-is-true": "prop_magnifier",
+    "g2.st.wrong-name.ch07.their-plan": "prop_notebook",
+    "g2.st.wrong-name.ch08.timeline": "prop_clock",
+    "g2.st.wrong-name.ch08.order-the-night": "prop_corkboard",
+    "g2.st.wrong-name.ch09.which-one": "prop_medal",
+    "g2.st.wrong-name.ch09.any-name": "prop_card_new",
+    "g2.st.wrong-name.ch10.her-passion": "prop_flyingmachine",
+    "g2.st.wrong-name.ch10.moral-line": "prop_corkboard",
+    "g2.st.wrong-name.ch11.whose-card": "prop_card_new",
+    "g2.st.wrong-name.ch11.his-or-hers": "prop_medal",
+    "g2.st.wrong-name.ch12.what-has-happened": "prop_medal",
+    "g2.st.wrong-name.ch12.verify-confession": "prop_card_old",
+    "g2.st.wrong-name.ch13.the-method": "prop_chart",
+    "g2.st.wrong-name.ch13.the-plan": "prop_casefile",
+    "g2.st.wrong-name.ch14.history-sealed": "prop_chart",
+    "g2.st.wrong-name.ch14.ever-never": "prop_casefile",
+    "g2.st.wrong-name.ch15.we-agree": "prop_medal",
+    "g2.st.wrong-name.ch15.all-agree": "prop_casefile"
+  }
+}

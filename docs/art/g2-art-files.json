@@ -1,0 +1,762 @@
+{
+  "schema": "g2-art-files@1",
+  "count": 126,
+  "stems": [
+    {
+      "stem": "mina_ref",
+      "file": "mina_ref.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "theo_ref",
+      "file": "theo_ref.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "lena_ref",
+      "file": "lena_ref.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "ben_ref",
+      "file": "ben_ref.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "dani_ref",
+      "file": "dani_ref.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "max_ref",
+      "file": "max_ref.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "okafor_ref",
+      "file": "okafor_ref.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "bell_ref",
+      "file": "bell_ref.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "mina_neutral",
+      "file": "mina_neutral.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "mina_happy",
+      "file": "mina_happy.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "mina_surprised",
+      "file": "mina_surprised.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "mina_thinking",
+      "file": "mina_thinking.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "mina_determined",
+      "file": "mina_determined.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "mina_talking",
+      "file": "mina_talking.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "theo_neutral",
+      "file": "theo_neutral.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "theo_excited",
+      "file": "theo_excited.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "theo_surprised",
+      "file": "theo_surprised.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "theo_worried",
+      "file": "theo_worried.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "theo_aha",
+      "file": "theo_aha.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "theo_talking",
+      "file": "theo_talking.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "lena_neutral",
+      "file": "lena_neutral.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "lena_sad",
+      "file": "lena_sad.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "lena_hopeful",
+      "file": "lena_hopeful.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "lena_joyful",
+      "file": "lena_joyful.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "lena_explaining",
+      "file": "lena_explaining.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "ben_neutral",
+      "file": "ben_neutral.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "ben_anxious",
+      "file": "ben_anxious.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "ben_guilty",
+      "file": "ben_guilty.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "ben_relieved",
+      "file": "ben_relieved.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "ben_talking",
+      "file": "ben_talking.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "dani_smug",
+      "file": "dani_smug.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "dani_uneasy",
+      "file": "dani_uneasy.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "dani_caught",
+      "file": "dani_caught.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "dani_sorry",
+      "file": "dani_sorry.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "max_brash",
+      "file": "max_brash.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "max_deny",
+      "file": "max_deny.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "max_sulky",
+      "file": "max_sulky.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "max_surprised",
+      "file": "max_surprised.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "okafor_neutral",
+      "file": "okafor_neutral.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "okafor_thoughtful",
+      "file": "okafor_thoughtful.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "okafor_concerned",
+      "file": "okafor_concerned.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "bell_friendly",
+      "file": "bell_friendly.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "bell_explaining",
+      "file": "bell_explaining.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "bell_surprised",
+      "file": "bell_surprised.png",
+      "section": "A · Characters",
+      "isNew": false
+    },
+    {
+      "stem": "set_school_exterior",
+      "file": "set_school_exterior.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_hall_full",
+      "file": "set_hall_full.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_hall_empty",
+      "file": "set_hall_empty.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_hall_night",
+      "file": "set_hall_night.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_fair",
+      "file": "set_fair.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_club_room",
+      "file": "set_club_room.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_back_corridor",
+      "file": "set_back_corridor.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_caretaker_room",
+      "file": "set_caretaker_room.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_lab",
+      "file": "set_lab.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_assembly",
+      "file": "set_assembly.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_schoolyard",
+      "file": "set_schoolyard.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_costume_hall",
+      "file": "set_costume_hall.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_townmap",
+      "file": "set_townmap.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "set_noticeboard",
+      "file": "set_noticeboard.png",
+      "section": "B · Settings",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch01_empty",
+      "file": "beat_ch01_empty.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch01_card",
+      "file": "beat_ch01_card.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch01_lena_sad",
+      "file": "beat_ch01_lena_sad.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch02_question",
+      "file": "beat_ch02_question.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch02_post",
+      "file": "beat_ch02_post.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch03_crowd",
+      "file": "beat_ch03_crowd.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch03_open_door",
+      "file": "beat_ch03_open_door.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch04_crack",
+      "file": "beat_ch04_crack.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch04_chart",
+      "file": "beat_ch04_chart.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch05_map",
+      "file": "beat_ch05_map.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch05_max_town",
+      "file": "beat_ch05_max_town.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch06_bell_keys",
+      "file": "beat_ch06_bell_keys.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch06_sort",
+      "file": "beat_ch06_sort.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch07_lena_secret",
+      "file": "beat_ch07_lena_secret.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch07_theorise",
+      "file": "beat_ch07_theorise.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch08_timeline",
+      "file": "beat_ch08_timeline.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch08_night_figure",
+      "file": "beat_ch08_night_figure.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch08_key_close",
+      "file": "beat_ch08_key_close.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch09_two_medals",
+      "file": "beat_ch09_two_medals.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch09_new_card",
+      "file": "beat_ch09_new_card.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch10_lena_invents",
+      "file": "beat_ch10_lena_invents.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch11_match",
+      "file": "beat_ch11_match.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch11_family",
+      "file": "beat_ch11_family.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch12_confession",
+      "file": "beat_ch12_confession.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch13_confront",
+      "file": "beat_ch13_confront.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch14_correct",
+      "file": "beat_ch14_correct.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch15_medal",
+      "file": "beat_ch15_medal.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch15_apology",
+      "file": "beat_ch15_apology.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch15_caseclosed",
+      "file": "beat_ch15_caseclosed.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_ch15_ben_told",
+      "file": "beat_ch15_ben_told.png",
+      "section": "C · Story beats",
+      "isNew": false
+    },
+    {
+      "stem": "beat_flashback_lena_wins",
+      "file": "beat_flashback_lena_wins.png",
+      "section": "C · Story beats",
+      "isNew": true
+    },
+    {
+      "stem": "beat_flashback_dani_swaps",
+      "file": "beat_flashback_dani_swaps.png",
+      "section": "C · Story beats",
+      "isNew": true
+    },
+    {
+      "stem": "beat_flashback_wrong_medal",
+      "file": "beat_flashback_wrong_medal.png",
+      "section": "C · Story beats",
+      "isNew": true
+    },
+    {
+      "stem": "beat_ch12_ben_lena",
+      "file": "beat_ch12_ben_lena.png",
+      "section": "C · Story beats",
+      "isNew": true
+    },
+    {
+      "stem": "prop_medal",
+      "file": "prop_medal.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_card_old",
+      "file": "prop_card_old.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_card_new",
+      "file": "prop_card_new.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_card_blank",
+      "file": "prop_card_blank.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_chart",
+      "file": "prop_chart.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_map",
+      "file": "prop_map.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_key",
+      "file": "prop_key.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_mask",
+      "file": "prop_mask.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_flyingmachine",
+      "file": "prop_flyingmachine.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_banner",
+      "file": "prop_banner.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_magnifier",
+      "file": "prop_magnifier.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_notebook",
+      "file": "prop_notebook.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_casefile",
+      "file": "prop_casefile.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_corkboard",
+      "file": "prop_corkboard.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_cabinet",
+      "file": "prop_cabinet.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_pinnednote",
+      "file": "prop_pinnednote.png",
+      "section": "D · Props & evidence",
+      "isNew": false
+    },
+    {
+      "stem": "prop_clock",
+      "file": "prop_clock.png",
+      "section": "D · Props & evidence",
+      "isNew": true
+    },
+    {
+      "stem": "cover_title",
+      "file": "cover_title.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "end_caseclosed",
+      "file": "end_caseclosed.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch01",
+      "file": "card_ch01.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch02",
+      "file": "card_ch02.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch03",
+      "file": "card_ch03.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch04",
+      "file": "card_ch04.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch05",
+      "file": "card_ch05.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch06",
+      "file": "card_ch06.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch07",
+      "file": "card_ch07.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch08",
+      "file": "card_ch08.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch09",
+      "file": "card_ch09.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch10",
+      "file": "card_ch10.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch11",
+      "file": "card_ch11.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch12",
+      "file": "card_ch12.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch13",
+      "file": "card_ch13.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch14",
+      "file": "card_ch14.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    },
+    {
+      "stem": "card_ch15",
+      "file": "card_ch15.png",
+      "section": "E · Cover & cards",
+      "isNew": false
+    }
+  ]
+}

@@ -4,9 +4,11 @@
  * unlocks once its chapter is released (chapter N requires units ≤ N). Locked
  * stops show "coming soon". Simple server-rendered cards.
  */
+/* eslint-disable @next/next/no-img-element -- decorative ligne-claire banners served from synced public/art assets; next/image adds no value for these */
 import { redirect } from "next/navigation";
 import { loadGameMap, loadReleasedChapters, loadStory } from "@domigo/content-loader";
 import { getActingUserForPage } from "@/lib/identity";
+import { resolveHubArt } from "@/lib/story-art";
 
 export const dynamic = "force-dynamic";
 
@@ -25,9 +27,11 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const story = storyId ? loadStory(storyId) : null;
   const released = storyId ? loadReleasedChapters(storyId) : [];
 
+  const hubArt = storyId && !map ? resolveHubArt(storyId, grade) : null;
   const noun = map ? "Zone" : "Case";
   const stops = map
     ? map.zones.map((z) => ({
+        id: "",
         short: z.id.split(".").pop() ?? "",
         title: z.titleEn,
         sub: z.titleDe,
@@ -35,6 +39,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         unlocked: story?.chapters.some((c) => c.unit === z.unit && released.includes(c.id)) ?? false,
       }))
     : (story?.chapters ?? []).map((c, i) => ({
+        id: c.id,
         short: c.id.split(".").pop() ?? "",
         title: c.titleEn,
         sub: c.titleDe,
@@ -51,18 +56,21 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         <a href="/home" style={{ fontSize: 14, color: "#2563eb" }}>← Home</a>
       </div>
       <p style={{ color: "#475569", marginTop: 0 }}>{tagline}</p>
+      {hubArt?.cover && <img src={hubArt.cover} alt="" style={{ display: "block", width: "100%", height: 180, objectFit: "cover", borderRadius: 14, margin: "4px 0 8px" }} />}
 
       {stops.length === 0 ? (
         <p style={{ color: "#64748b" }}>Nothing here yet for this grade.</p>
       ) : (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 14, marginTop: 16 }}>
-          {stops.map((s) =>
-            s.unlocked ? (
+          {stops.map((s) => {
+            const cardImg = hubArt?.cards[s.id];
+            return s.unlocked ? (
               <a
                 key={s.short}
                 href={`/play/${grade}/${s.short}`}
-                style={{ display: "block", padding: "16px 18px", borderRadius: 12, border: "1px solid #cbd5e1", background: "#fff", textDecoration: "none", color: "#0f172a", boxShadow: "0 1px 2px rgba(0,0,0,.04)" }}
+                style={{ display: "block", padding: "16px 18px", borderRadius: 12, border: "1px solid #cbd5e1", background: "#fff", textDecoration: "none", color: "#0f172a", boxShadow: "0 1px 2px rgba(0,0,0,.04)", overflow: "hidden" }}
               >
+                {cardImg && <img src={cardImg} alt="" style={{ display: "block", width: "calc(100% + 36px)", margin: "-16px -18px 12px", height: 120, objectFit: "cover" }} />}
                 <div style={{ fontSize: 12, color: "#64748b" }}>{noun} {s.n}</div>
                 <div style={{ fontSize: 17, fontWeight: 600 }}>{s.title}</div>
                 {s.sub && <div style={{ fontSize: 13, color: "#64748b" }}>{s.sub}</div>}
@@ -74,8 +82,8 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
                 <div style={{ fontSize: 17, fontWeight: 600 }}>{s.title}</div>
                 <div style={{ fontSize: 13, marginTop: 8 }}>🔒 Coming soon</div>
               </div>
-            ),
-          )}
+            );
+          })}
         </div>
       )}
     </main>

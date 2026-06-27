@@ -5,4 +5,4 @@
  * @domigo/task-ui for grading and the injected onAttempt (mode:"game:g2").
  */
 export { DetectiveGame } from "./DetectiveGame.tsx";
-export type { DetectiveGameProps, DetectiveSave, GameAttempt, AttemptFn } from "./DetectiveGame.tsx";
+export type { DetectiveGameProps, DetectiveSave, DetectiveArt, GameAttempt, AttemptFn } from "./DetectiveGame.tsx";

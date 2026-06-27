@@ -103,7 +103,7 @@ function Pin() {
 }
 
 /** The case-file corkboard — solved clues as pinned notes (slight deterministic tilt). */
-export function EvidenceBoard({ clues, label }: { clues: { key: string; text: string }[]; label: string }) {
+export function EvidenceBoard({ clues, label, images }: { clues: { key: string; text: string }[]; label: string; images?: Record<string, string> }) {
   return (
     <div style={cork}>
       <div style={{ fontSize: 13, fontWeight: 700, color: "#4a3613", marginBottom: 12, textShadow: "0 1px 0 rgba(255,255,255,.3)" }}>
@@ -114,10 +114,12 @@ export function EvidenceBoard({ clues, label }: { clues: { key: string; text: st
       ) : (
         clues.map((c, i) => {
           const tilt = (hashStr(c.key) % 5) - 2; // -2..2 deg
+          const img = images?.[c.key];
           return (
-            <div key={c.key} style={{ ...pinned, transform: `rotate(${tilt}deg)`, marginTop: i === 0 ? 4 : undefined }}>
+            <div key={c.key} style={{ ...pinned, transform: `rotate(${tilt}deg)`, marginTop: i === 0 ? 4 : undefined, display: "flex", alignItems: "center", gap: 8 }}>
               <Pin />
-              <span style={{ color: "#15803d", fontWeight: 700 }}>✓</span> {c.text}
+              {img && <img src={img} alt="" width={40} height={40} style={{ borderRadius: 4, objectFit: "cover", flex: "0 0 auto", border: "1px solid #e7d9a8" }} />}
+              <span><span style={{ color: "#15803d", fontWeight: 700 }}>✓</span> {c.text}</span>
             </div>
           );
         })
