@@ -4,7 +4,7 @@
  * item (not the route), so the games and Smart Review reuse these. Grading goes
  * through @domigo/engine; nothing here re-implements answer logic.
  */
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import type { AudioRef, GrammarItem, GrammarStructure, Gloss, ListeningTask, VocabItem, WordBank } from "@domigo/content-schema";
 import type { GrammarInput, Tier } from "@domigo/engine";
@@ -85,14 +85,15 @@ function FeedbackBar({ tier, xp }: { tier: Tier; xp: number }) {
 
 function GlossRow({ gloss }: { gloss: Gloss[] }) {
   const [open, setOpen] = useState(false);
+  const id = useId();
   if (gloss.length === 0) return null;
   return (
     <div style={{ fontSize: 13 }}>
-      <button onClick={() => setOpen((o) => !o)} style={{ ...btn, background: "#f1f5f9", color: "#334155", padding: "4px 10px", fontSize: 13 }}>
+      <button aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)} style={{ ...btn, background: "#f1f5f9", color: "#334155", padding: "4px 10px", fontSize: 13 }}>
         {open ? "Hide" : "Show"} word help ({gloss.length})
       </button>
       {open && (
-        <ul style={{ margin: "6px 0 0", paddingLeft: 18, color: "#475569" }}>
+        <ul id={id} style={{ margin: "6px 0 0", paddingLeft: 18, color: "#475569" }}>
           {gloss.map((g, i) => (
             <li key={i}>
               <strong>{g.word}</strong> = {g.de}
@@ -106,34 +107,40 @@ function GlossRow({ gloss }: { gloss: Gloss[] }) {
 
 function HintRow({ hintDe }: { hintDe: string }) {
   const [open, setOpen] = useState(false);
+  const id = useId();
   return (
     <div style={{ fontSize: 13 }}>
-      <button onClick={() => setOpen((o) => !o)} style={{ ...btn, background: "#fef3c7", color: "#92400e", padding: "4px 10px", fontSize: 13 }}>
+      <button aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)} style={{ ...btn, background: "#fef3c7", color: "#92400e", padding: "4px 10px", fontSize: 13 }}>
         {open ? "Hide" : "Tipp"}
       </button>
-      {open && <span style={{ marginLeft: 8, color: "#92400e" }}>{hintDe}</span>}
+      {open && <span id={id} style={{ marginLeft: 8, color: "#92400e" }}>{hintDe}</span>}
     </div>
   );
 }
 
-function Prompt({ text }: { text: string }) {
-  return <div style={{ fontSize: 17, lineHeight: 1.4, whiteSpace: "pre-wrap" }}>{text}</div>;
+function Prompt({ text, id }: { text: string; id?: string }) {
+  return <div id={id} style={{ fontSize: 17, lineHeight: 1.4, whiteSpace: "pre-wrap" }}>{text}</div>;
 }
 
 // ---- format-specific inputs ----------------------------------------------
 
-function TextInputs({ count, values, onChange, disabled }: {
-  count: number; values: string[]; onChange: (v: string[]) => void; disabled: boolean;
+function TextInputs({ count, values, onChange, disabled, onEnter, autoFocusFirst }: {
+  count: number; values: string[]; onChange: (v: string[]) => void; disabled: boolean; onEnter?: () => void; autoFocusFirst?: boolean;
 }) {
+  const firstRef = useRef<HTMLInputElement>(null);
+  useEffect(() => { if (autoFocusFirst && !disabled) firstRef.current?.focus(); }, [autoFocusFirst, disabled]);
   return (
     <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
       {Array.from({ length: count }, (_, i) => (
         <input
           key={i}
+          ref={i === 0 ? firstRef : undefined}
           style={inputStyle}
           value={values[i] ?? ""}
           disabled={disabled}
+          aria-label={count > 1 ? `Blank ${i + 1}` : "Your answer"}
           placeholder={count > 1 ? `Blank ${i + 1}` : "Your answer"}
+          onKeyDown={(e) => { if (e.key === "Enter" && !disabled) { e.preventDefault(); onEnter?.(); } }}
           onChange={(e) => {
             const next = [...values];
             next[i] = e.target.value;
@@ -149,7 +156,7 @@ function Choices({ options, selected, onSelect, disabled }: {
   options: string[]; selected: string | null; onSelect: (v: string) => void; disabled: boolean;
 }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <div role="radiogroup" aria-label="Answer options" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
       {options.map((opt) => (
         <label key={opt} style={{ display: "flex", gap: 8, alignItems: "center", cursor: disabled ? "default" : "pointer" }}>
           <input type="radio" checked={selected === opt} disabled={disabled} onChange={() => onSelect(opt)} />
@@ -168,10 +175,11 @@ function Dropdowns({ rows, options, value, onChange, disabled }: {
       {rows.map((row) => (
         <div key={row} style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <span style={{ minWidth: 120, fontWeight: 500 }}>{row}</span>
-          <span>→</span>
+          <span aria-hidden="true">→</span>
           <select
             style={inputStyle}
             disabled={disabled}
+            aria-label={`${row}: choose`}
             value={value[row] ?? ""}
             onChange={(e) => onChange({ ...value, [row]: e.target.value })}
           >
@@ -198,7 +206,8 @@ export type ResultDetail =
   | { kind: "grammar"; itemId: string; input: GrammarInput }
   | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string } };
 
-export function GrammarItemView({ item, onResult, hideHint }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean }) {
+export function GrammarItemView({ item, onResult, hideHint, autoFocus }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean }) {
+  const promptId = useId();
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
   const choiceOptions = useShuffled(
@@ -234,18 +243,18 @@ export function GrammarItemView({ item, onResult, hideHint }: { item: GrammarIte
   const correctText = item.answers.filter((a) => a.tier === "full").map((a) => a.text).join("  /  ");
 
   return (
-    <div style={card}>
+    <div style={card} role="group" aria-labelledby={promptId}>
       <div style={{ fontSize: 12, color: "#94a3b8" }}>{item.format} · level {item.difficulty}</div>
-      <Prompt text={item.prompt.text} />
+      <Prompt id={promptId} text={item.prompt.text} />
       {isChoice && <Choices options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} />}
       {isMatch && <Dropdowns rows={item.pairs.map((p) => p.left)} options={matchRights} value={map} onChange={setMap} disabled={done} />}
       {isGroup && <Dropdowns rows={sortMembers} options={groupLabels} value={map} onChange={setMap} disabled={done} />}
-      {TEXT_FORMATS.has(item.format) && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} />}
+      {TEXT_FORMATS.has(item.format) && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} onEnter={submit} autoFocusFirst={autoFocus} />}
       <GlossRow gloss={item.gloss} />
       {!hideHint && <HintRow hintDe={item.hintDe} />}
       {!done && <button style={btn} onClick={submit}>Check</button>}
       {done && tier && (
-        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           <FeedbackBar tier={tier} xp={xp} />
           {tier !== "correct" && correctText && (
             <div style={{ fontSize: 14, color: "#374151" }}>Answer: <strong>{correctText}</strong></div>
@@ -259,10 +268,13 @@ export function GrammarItemView({ item, onResult, hideHint }: { item: GrammarIte
 
 // ---- vocab item ----------------------------------------------------------
 
-export function VocabItemView({ item, onResult, hideHint }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean }) {
+export function VocabItemView({ item, onResult, hideHint, autoFocus }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean }) {
+  const promptId = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
   const [tier, setTier] = useState<Tier | null>(null);
   const done = tier !== null;
+  useEffect(() => { if (autoFocus && !done) inputRef.current?.focus(); }, [autoFocus, done]);
   const submit = () => {
     const r = gradeVocab(item, value);
     setTier(r.tier);
@@ -271,16 +283,16 @@ export function VocabItemView({ item, onResult, hideHint }: { item: VocabItem; o
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
   const answer = item.sAnswers.filter((a) => a.tier === "full").map((a) => a.text).join("  /  ");
   return (
-    <div style={card}>
+    <div style={card} role="group" aria-labelledby={promptId}>
       <div style={{ fontSize: 12, color: "#94a3b8" }}>vocab · level {item.difficulty}</div>
       <div style={{ fontSize: 14, color: "#475569" }}>{item.d}</div>
-      <Prompt text={item.s} />
-      <input style={inputStyle} value={value} disabled={done} placeholder="Your answer" onChange={(e) => setValue(e.target.value)} />
+      <Prompt id={promptId} text={item.s} />
+      <input ref={inputRef} style={inputStyle} value={value} disabled={done} aria-label="Your answer" placeholder="Your answer" onKeyDown={(e) => { if (e.key === "Enter" && !done) { e.preventDefault(); submit(); } }} onChange={(e) => setValue(e.target.value)} />
       <GlossRow gloss={item.gloss} />
       {!hideHint && <HintRow hintDe={item.hintDe} />}
       {!done && <button style={btn} onClick={submit}>Check</button>}
       {done && tier && (
-        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           <FeedbackBar tier={tier} xp={xp} />
           <div style={{ fontSize: 14, color: "#374151" }}>
             {item.w} — <strong>{item.g}</strong>{tier !== "correct" && answer ? ` · answer: ${answer}` : ""}
