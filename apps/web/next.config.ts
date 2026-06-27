@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
     "@domigo/task-ui",
     "@domigo/game-core",
     "@domigo/game-2d",
+    "@domigo/game-detective",
     "@domigo/art-gen",
   ],
 };

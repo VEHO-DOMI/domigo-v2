@@ -17,6 +17,7 @@
     "@domigo/engine": "workspace:*",
     "@domigo/game-2d": "workspace:*",
     "@domigo/game-core": "workspace:*",
+    "@domigo/game-detective": "workspace:*",
     "@domigo/task-ui": "workspace:*",
     "bcryptjs": "^3.0.3",
     "next": "16.2.7",

@@ -1,0 +1,125 @@
+{
+  "schema": "story@1",
+  "id": "g2.st.wrong-name",
+  "grade": 2,
+  "title": { "en": "The Wrong Name", "de": "Der falsche Name" },
+  "chapters": [
+    {
+      "id": "g2.st.wrong-name.ch01",
+      "unit": 1,
+      "titleEn": "The Empty Glass",
+      "titleDe": "Das leere Glas",
+      "scenes": [
+        {
+          "id": "g2.st.wrong-name.ch01.s001",
+          "speaker": "mina",
+          "textEn": "Look! The medal is not here.",
+          "scaffoldDe": "Schau! Die Medaille ist nicht hier.",
+          "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.wrong-name.ch01.s002"
+        },
+        {
+          "id": "g2.st.wrong-name.ch01.s002",
+          "speaker": "theo",
+          "textEn": "Yesterday the medal was here. Now it is not here.",
+          "scaffoldDe": "Gestern war die Medaille hier. Jetzt ist sie nicht hier.",
+          "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.wrong-name.ch01.s003"
+        },
+        {
+          "id": "g2.st.wrong-name.ch01.s003",
+          "speaker": "mina",
+          "textEn": "Look — a small card on the desk.",
+          "scaffoldDe": "Schau — eine kleine Karte auf dem Tisch.",
+          "glosses": [{ "word": "card", "de": "Karte", "scope": null }],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.wrong-name.ch01.s004"
+        },
+        {
+          "id": "g2.st.wrong-name.ch01.s004",
+          "speaker": "theo",
+          "textEn": "The card has a name on it!",
+          "scaffoldDe": "Auf der Karte steht ein Name!",
+          "glosses": [
+            { "word": "card", "de": "Karte", "scope": null },
+            { "word": "name", "de": "Name", "scope": null }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.wrong-name.ch01.s005"
+        },
+        {
+          "id": "g2.st.wrong-name.ch01.s005",
+          "speaker": "mina",
+          "textEn": "What happened here? Let's look.",
+          "scaffoldDe": "Was ist hier passiert? Schauen wir.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [{ "slot": "what-happened", "itemId": "g2u01.gi.past-simple.gf.001", "variantKey": null }],
+          "next": "g2.st.wrong-name.ch01.s006"
+        },
+        {
+          "id": "g2.st.wrong-name.ch01.s006",
+          "speaker": "theo",
+          "textEn": "Lena looked at the glass. She was very sad.",
+          "scaffoldDe": "Lena schaute auf das Glas. Sie war sehr traurig.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.wrong-name.ch01.s007"
+        },
+        {
+          "id": "g2.st.wrong-name.ch01.s007",
+          "speaker": "mina",
+          "textEn": "What do we do now?",
+          "scaffoldDe": "Was machen wir jetzt?",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": [
+            { "id": "ask", "textEn": "Ask Lena.", "scaffoldDe": "Frag Lena.", "next": "g2.st.wrong-name.ch01.s008" },
+            { "id": "clues", "textEn": "Look for more clues.", "scaffoldDe": "Suche mehr Spuren.", "next": "g2.st.wrong-name.ch01.s009" }
+          ]
+        },
+        {
+          "id": "g2.st.wrong-name.ch01.s008",
+          "speaker": "mina",
+          "textEn": "Lena, are you OK?",
+          "scaffoldDe": "Lena, alles okay?",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.wrong-name.ch01.s010"
+        },
+        {
+          "id": "g2.st.wrong-name.ch01.s009",
+          "speaker": "theo",
+          "textEn": "Look! More clues here.",
+          "scaffoldDe": "Schau! Hier sind mehr Spuren.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.wrong-name.ch01.s010"
+        },
+        {
+          "id": "g2.st.wrong-name.ch01.s010",
+          "speaker": "theo",
+          "textEn": "We must find the medal. This is our case.",
+          "scaffoldDe": "Wir müssen die Medaille finden. Das ist unser Fall.",
+          "glosses": [
+            { "word": "medal", "de": "Medaille", "scope": null },
+            { "word": "case", "de": "Fall", "scope": null }
+          ],
+          "audio": null,
+          "taskSlots": [{ "slot": "first-statement", "itemId": "g2u01.gi.past-simple.ec.001", "variantKey": null }],
+          "next": null
+        }
+      ]
+    }
+  ]
+}
