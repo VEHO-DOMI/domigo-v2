@@ -1,5 +1,11 @@
 {
   "schema": "story-release@1",
   "storyId": "g2.st.wrong-name",
-  "releasedChapters": ["g2.st.wrong-name.ch01"]
+  "releasedChapters": [
+    "g2.st.wrong-name.ch01",
+    "g2.st.wrong-name.ch02",
+    "g2.st.wrong-name.ch03",
+    "g2.st.wrong-name.ch04",
+    "g2.st.wrong-name.ch05"
+  ]
 }
