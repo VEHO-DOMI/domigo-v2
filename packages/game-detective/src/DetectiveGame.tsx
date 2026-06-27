@@ -1,18 +1,21 @@
 "use client";
 /**
  * @domigo/game-detective — the G2 "Watson rework" surface (DOM + SVG, no Phaser).
- * Walks a story@1 chapter as an investigation: speaker dialogue (EN + du-form DE
- * subtitle + tap-to-reveal glosses), embedded taskSlots rendered by the ONE task
- * renderer (@domigo/task-ui), narrative choices, and a case-file EVIDENCE BOARD
- * that fills as clue-tasks are solved ("tasks ARE clues"). The app injects
- * `onAttempt` (mode:"game:g2") + `onSave`; this layer never grades or persists.
+ * Walks a story@1 chapter as an investigation: speaker dialogue (EN, with the
+ * German + word-glosses revealed on tap — G2 is A1+/A2), embedded taskSlots
+ * rendered by the ONE task renderer (@domigo/task-ui), narrative choices, and a
+ * case-file EVIDENCE BOARD that fills as clue-tasks are solved ("tasks ARE clues").
+ * Rewards are themed as the detective economy — Clues (the hidden XP), Case
+ * Progress, Hot Trail, and an Evidence Piece per Case File — never bare "+XP".
+ * The app injects `onAttempt` (mode:"game:g2") + `onSave`; this layer never grades.
  */
 import { useState, type CSSProperties } from "react";
 import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-schema";
-import type { Tier } from "@domigo/engine";
+import { xpForTier, type Tier } from "@domigo/engine";
 import type { ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { CharacterChip, EvidenceBoard, characterPalette } from "./art.tsx";
+import { COPY, EVIDENCE, resultLine, trailLabel } from "./detective-copy.ts";
 
 export interface GameAttempt {
   clientAttemptId: string;
@@ -66,22 +69,26 @@ function humanize(slot: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-function TaskClue({ item, onAttempt, onSolved, onContinue }: {
-  item: ResolvedItem; onAttempt: AttemptFn; onSolved: () => void; onContinue: () => void;
+function TaskClue({ item, onAttempt, onSolved, onContinue, onScored }: {
+  item: ResolvedItem; onAttempt: AttemptFn; onSolved: () => void; onContinue: () => void; onScored: (tier: Tier) => void;
 }) {
-  const [answered, setAnswered] = useState(false);
-  const onResult = (_tier: Tier, detail: ResultDetail) => {
-    setAnswered(true);
+  const [res, setRes] = useState<{ tier: Tier; clues: number } | null>(null);
+  const onResult = (tier: Tier, detail: ResultDetail) => {
+    const clues = xpForTier((item.item.difficulty ?? 1) * 10, tier);
+    setRes({ tier, clues });
     void onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: detail.itemId, mode: "game:g2", input: detail.input, latencyMs: null, hintUsed: false });
-    onSolved(); // pin the clue to the board immediately
+    onScored(tier);
+    onSolved(); // pin the clue to the case file immediately
   };
+  const line = res ? resultLine(item.kind, res.tier, res.clues) : null;
   return (
     <div style={{ marginTop: 14, borderTop: "1px solid #e2e8f0", paddingTop: 12 }}>
-      <div style={{ fontSize: 12, color: "#b45309", fontWeight: 600, marginBottom: 6 }}>🔍 A clue — solve it to add it to the board</div>
+      <div style={{ fontSize: 12, color: "#b45309", fontWeight: 600, marginBottom: 6 }}>{COPY.cluePrompt}</div>
       {item.kind === "grammar"
-        ? <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} />
-        : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} />}
-      {answered && <button style={btn} onClick={onContinue}>Continue →</button>}
+        ? <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} hideXp />
+        : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} hideXp />}
+      {line && <div style={{ marginTop: 10, fontWeight: 700, fontSize: 14, color: line.good ? "#15803d" : "#b91c1c" }}>{line.text}</div>}
+      {res && <button style={btn} onClick={onContinue}>{COPY.continue}</button>}
     </div>
   );
 }
@@ -96,7 +103,20 @@ export function DetectiveGame(props: DetectiveGameProps) {
   const [clues, setClues] = useState<string[]>(resume?.clues ?? []);
   const [taskDone, setTaskDone] = useState(false);
   const [showGloss, setShowGloss] = useState(false);
+  const [showDe, setShowDe] = useState(false);
+  // "Hot Trail" = consecutive non-combo-breaking answers (correct/partial); close/wrong reset.
+  // Persisted in sessionStorage so the streak spans Case Files within one sitting.
+  const [trail, setTrail] = useState<number>(() => {
+    if (typeof window === "undefined") return 0;
+    return Number(sessionStorage.getItem("domigo:g2:trail")) || 0;
+  });
   const [done, setDone] = useState(false);
+
+  const onScored = (tier: Tier): void => setTrail((t) => {
+    const next = tier === "correct" || tier === "partial" ? t + 1 : 0;
+    try { sessionStorage.setItem("domigo:g2:trail", String(next)); } catch { /* private mode */ }
+    return next;
+  });
 
   const scene: Scene | undefined = byId.get(sceneId);
 
@@ -114,6 +134,7 @@ export function DetectiveGame(props: DetectiveGameProps) {
   const go = (nextId: string | null): void => {
     setTaskDone(false);
     setShowGloss(false);
+    setShowDe(false);
     if (nextId === null) { setDone(true); return; }
     setSceneId(nextId);
     save({ sceneId: nextId });
@@ -125,9 +146,10 @@ export function DetectiveGame(props: DetectiveGameProps) {
     return (
       <main style={{ ...wrap, padding: "28px 16px" }}>
         {art?.endCard && <img src={art.endCard} alt="" style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 14, marginBottom: 14, border: "1px solid #e2e8f0" }} />}
-        <h1 style={{ fontSize: 22 }}>Case file saved 🗂️</h1>
-        <p style={{ color: "#334155" }}>You collected {clues.length} clue{clues.length === 1 ? "" : "s"} in “{caseTitle}”. The case continues…</p>
-        <a href="/play/2" style={{ color: "#2563eb", fontSize: 14 }}>← Back to cases</a>
+        <h1 style={{ fontSize: 22 }}>Case File complete! 🗂️</h1>
+        <p style={{ color: "#0f172a", fontSize: 17 }}>New <strong>evidence</strong> (= Beweis) found: <strong>{EVIDENCE[chapter.id] ?? "a new clue"}</strong>.</p>
+        <p style={{ color: "#64748b", fontSize: 14 }}>You found {clues.length} clue{clues.length === 1 ? "" : "s"} in this case file. It goes on your evidence board.</p>
+        <a href="/play/2" style={{ color: "#2563eb", fontSize: 14 }}>← Back to your cases</a>
       </main>
     );
   }
@@ -140,12 +162,25 @@ export function DetectiveGame(props: DetectiveGameProps) {
   const palette = characterPalette(scene.speaker);
   const portraitUrl = art?.portraits[scene.id];
   const topImg = art?.beats[scene.id] ?? art?.backdrop ?? null;
+  const totalTasks = chapter.scenes.reduce((n, s) => n + s.taskSlots.length, 0);
+  const pct = totalTasks ? Math.round((clues.length / totalTasks) * 100) : 0;
+  const trailMsg = trailLabel(trail);
 
   return (
     <main style={{ ...wrap, padding: "16px 12px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
         <h1 style={{ fontSize: 20, margin: 0 }}>{caseTitle} <span style={{ color: "#94a3b8", fontSize: 14, fontWeight: 400 }}>· {chapter.titleEn}</span></h1>
         <a href="/play/2" style={{ fontSize: 14, color: "#2563eb" }}>← Cases</a>
+      </div>
+
+      <div style={{ marginBottom: 12 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 4 }}>
+          <span style={{ color: "#64748b" }}>{COPY.caseProgress}</span>
+          <span style={{ fontWeight: trailMsg ? 700 : 400, color: trailMsg ? "#b45309" : "#64748b" }}>{trailMsg ?? `${clues.length}/${totalTasks} clues`}</span>
+        </div>
+        <div style={{ height: 8, background: "#e2e8f0", borderRadius: 999, overflow: "hidden" }}>
+          <div style={{ width: `${pct}%`, height: "100%", background: "#16a34a", borderRadius: 999, transition: "width .3s" }} />
+        </div>
       </div>
 
       {topImg && <img src={topImg} alt="" style={{ width: "100%", maxHeight: 220, objectFit: "cover", borderRadius: 14, marginBottom: 12, border: "1px solid #e2e8f0", boxShadow: "0 1px 3px rgba(0,0,0,.06)" }} />}
@@ -158,7 +193,14 @@ export function DetectiveGame(props: DetectiveGameProps) {
           <div style={{ fontSize: 15, fontWeight: 700, color: palette.shirt }}>{speakerName}</div>
         </div>
         <p style={{ fontSize: 19, margin: "6px 0 4px", lineHeight: 1.4 }}>{scene.textEn}</p>
-        {scene.scaffoldDe && <p style={{ fontSize: 14, color: "#64748b", margin: "0 0 6px" }}>{scene.scaffoldDe}</p>}
+        {scene.scaffoldDe && (
+          <div style={{ fontSize: 13, margin: "2px 0 4px" }}>
+            <button style={{ ...btn, marginTop: 0, background: "#e2e8f0", color: "#0f172a", padding: "3px 9px", fontSize: 12 }} aria-expanded={showDe} onClick={() => setShowDe((d) => !d)}>
+              {showDe ? COPY.deHide : COPY.deShow}
+            </button>
+            {showDe && <p style={{ fontSize: 14, color: "#64748b", margin: "6px 0 0" }}>{scene.scaffoldDe}</p>}
+          </div>
+        )}
         {scene.glosses.length > 0 && (
           <div style={{ fontSize: 13 }}>
             <button style={{ ...btn, marginTop: 4, background: "#e2e8f0", color: "#0f172a", padding: "4px 10px", fontSize: 13 }} onClick={() => setShowGloss((g) => !g)}>
@@ -169,7 +211,7 @@ export function DetectiveGame(props: DetectiveGameProps) {
         )}
 
         {taskBlocks ? (
-          <TaskClue item={slotItem} onAttempt={onAttempt} onSolved={() => addClue(slot.slot)} onContinue={() => setTaskDone(true)} />
+          <TaskClue item={slotItem} onAttempt={onAttempt} onSolved={() => addClue(slot.slot)} onContinue={() => setTaskDone(true)} onScored={onScored} />
         ) : Array.isArray(sNext) ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 14 }}>
             {sNext.map((c) => <button key={c.id} style={choiceBtn} onClick={() => go(c.next)}>{c.textEn}</button>)}

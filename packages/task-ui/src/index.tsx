@@ -70,15 +70,15 @@ const btn: CSSProperties = {
   alignSelf: "flex-start",
 };
 
-function FeedbackBar({ tier, xp }: { tier: Tier; xp: number }) {
+function FeedbackBar({ tier, xp, hideXp }: { tier: Tier; xp: number; hideXp?: boolean }) {
   const s = TIER_STYLE[tier];
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
       <span style={{ background: s.bg, color: "#fff", borderRadius: 999, padding: "3px 12px", fontWeight: 600, fontSize: 14 }}>
         {s.label}
       </span>
-      <span style={{ color: "#374151", fontSize: 14 }}>+{xp} XP</span>
-      {breaksCombo(tier) && <span style={{ color: "#9ca3af", fontSize: 13 }}>· combo reset</span>}
+      {!hideXp && <span style={{ color: "#374151", fontSize: 14 }}>+{xp} XP</span>}
+      {!hideXp && breaksCombo(tier) && <span style={{ color: "#9ca3af", fontSize: 13 }}>· combo reset</span>}
     </div>
   );
 }
@@ -206,7 +206,7 @@ export type ResultDetail =
   | { kind: "grammar"; itemId: string; input: GrammarInput }
   | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string } };
 
-export function GrammarItemView({ item, onResult, hideHint, autoFocus }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean }) {
+export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean }) {
   const promptId = useId();
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
@@ -255,7 +255,7 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus }: { item:
       {!done && <button style={btn} onClick={submit}>Check</button>}
       {done && tier && (
         <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          <FeedbackBar tier={tier} xp={xp} />
+          <FeedbackBar tier={tier} xp={xp} hideXp={hideXp} />
           {tier !== "correct" && correctText && (
             <div style={{ fontSize: 14, color: "#374151" }}>Answer: <strong>{correctText}</strong></div>
           )}
@@ -268,7 +268,7 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus }: { item:
 
 // ---- vocab item ----------------------------------------------------------
 
-export function VocabItemView({ item, onResult, hideHint, autoFocus }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean }) {
+export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean }) {
   const promptId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
@@ -293,7 +293,7 @@ export function VocabItemView({ item, onResult, hideHint, autoFocus }: { item: V
       {!done && <button style={btn} onClick={submit}>Check</button>}
       {done && tier && (
         <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          <FeedbackBar tier={tier} xp={xp} />
+          <FeedbackBar tier={tier} xp={xp} hideXp={hideXp} />
           <div style={{ fontSize: 14, color: "#374151" }}>
             {item.w} — <strong>{item.g}</strong>{tier !== "correct" && answer ? ` · answer: ${answer}` : ""}
           </div>
