@@ -180,6 +180,79 @@
         { "id": "g2.st.wrong-name.ch05.s005", "speaker": "theo", "textEn": "So Max was not in town. But Max did not do it.", "scaffoldDe": "Also war Max nicht in der Stadt. Aber Max war's nicht.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch05.s006" },
         { "id": "g2.st.wrong-name.ch05.s006", "speaker": "mina", "textEn": "Max is not the one. Who put the wrong name on the medal?", "scaffoldDe": "Max ist es nicht. Wer hat den falschen Namen auf die Medaille gesetzt?", "glosses": [{ "word": "wrong", "de": "falsch", "scope": null }, { "word": "name", "de": "Name", "scope": null }, { "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": null }
       ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch06",
+      "unit": 6,
+      "titleEn": "Who Was Here",
+      "titleDe": "Wer war hier",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch06.s001", "speaker": "mina", "textEn": "Max is not the one. Who was here that night?", "scaffoldDe": "Max ist es nicht. Wer war in dieser Nacht hier?", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch06.s002" },
+        { "id": "g2.st.wrong-name.ch06.s002", "speaker": "theo", "textEn": "Mr Bell has to close the gate at night.", "scaffoldDe": "Herr Bell muss nachts das Tor zumachen.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch06.s003" },
+        { "id": "g2.st.wrong-name.ch06.s003", "speaker": "bell", "textEn": "I have to close the doors. But the back door was open.", "scaffoldDe": "Ich muss die Türen zumachen. Aber die hintere Tür war offen.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch06.s004" },
+        { "id": "g2.st.wrong-name.ch06.s004", "speaker": "mina", "textEn": "Some people have to be here. Some do not.", "scaffoldDe": "Manche müssen hier sein. Manche nicht.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "who-must", "itemId": "g2u06.gi.have-to.gf.001", "variantKey": null }], "next": "g2.st.wrong-name.ch06.s005" },
+        { "id": "g2.st.wrong-name.ch06.s005", "speaker": "theo", "textEn": "So people could go in at the back.", "scaffoldDe": "Also konnten Leute hinten hinein.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch06.s006" },
+        { "id": "g2.st.wrong-name.ch06.s006", "speaker": "mina", "textEn": "Who has to be in school at night? Let's put them in groups.", "scaffoldDe": "Wer muss nachts in der Schule sein? Teilen wir sie in Gruppen.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "access-groups", "itemId": "g2u06.gi.have-to.gs.001", "variantKey": null }], "next": "g2.st.wrong-name.ch06.s007" },
+        { "id": "g2.st.wrong-name.ch06.s007", "speaker": "theo", "textEn": "Not many people could go in.", "scaffoldDe": "Nicht viele Leute konnten hinein.", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch07",
+      "unit": 7,
+      "titleEn": "A Secret",
+      "titleDe": "Ein Geheimnis",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch07.s001", "speaker": "mina", "textEn": "Who has the medal now? Let's look at our clues.", "scaffoldDe": "Wer hat jetzt die Medaille? Schauen wir uns die Spuren an.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch07.s002" },
+        { "id": "g2.st.wrong-name.ch07.s002", "speaker": "theo", "textEn": "A friend wanted the truth.", "scaffoldDe": "Ein Freund wollte die Wahrheit.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch07.s003" },
+        { "id": "g2.st.wrong-name.ch07.s003", "speaker": "mina", "textEn": "But why? Lena had a secret.", "scaffoldDe": "Aber warum? Lena hatte ein Geheimnis.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch07.s004" },
+        { "id": "g2.st.wrong-name.ch07.s004", "speaker": "theo", "textEn": "What is true? Let's look at this.", "scaffoldDe": "Was ist wahr? Schauen wir das an.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "what-is-true", "itemId": "g2u07.gi.might.mc.002", "variantKey": null }], "next": "g2.st.wrong-name.ch07.s005" },
+        { "id": "g2.st.wrong-name.ch07.s005", "speaker": "mina", "textEn": "A friend is not sad now. A friend is glad.", "scaffoldDe": "Ein Freund ist jetzt nicht traurig. Ein Freund ist froh.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "their-plan", "itemId": "g2u07.gi.going-to-negative.gf.003", "variantKey": null }], "next": "g2.st.wrong-name.ch07.s006" },
+        { "id": "g2.st.wrong-name.ch07.s006", "speaker": "theo", "textEn": "We need the name on the new medal.", "scaffoldDe": "Wir brauchen den Namen auf der neuen Medaille.", "glosses": [{ "word": "name", "de": "Name", "scope": null }, { "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch08",
+      "unit": 8,
+      "titleEn": "The Night",
+      "titleDe": "Die Nacht",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch08.s001", "speaker": "theo", "textEn": "Let's look at the night. First, then, after that.", "scaffoldDe": "Schauen wir die Nacht an. Zuerst, dann, danach.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch08.s002" },
+        { "id": "g2.st.wrong-name.ch08.s002", "speaker": "mina", "textEn": "First, the show ended. Then, the door was open.", "scaffoldDe": "Zuerst war die Show zu Ende. Dann war die Tür offen.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch08.s003" },
+        { "id": "g2.st.wrong-name.ch08.s003", "speaker": "theo", "textEn": "What happened first? And then?", "scaffoldDe": "Was passierte zuerst? Und dann?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "timeline", "itemId": "g2u08.gi.past-time-markers.gf.001", "variantKey": null }], "next": "g2.st.wrong-name.ch08.s004" },
+        { "id": "g2.st.wrong-name.ch08.s004", "speaker": "mina", "textEn": "At 8, Mr Bell closed the doors.", "scaffoldDe": "Um 8 machte Herr Bell die Türen zu.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch08.s005" },
+        { "id": "g2.st.wrong-name.ch08.s005", "speaker": "theo", "textEn": "But a friend had a key. A friend was in the school.", "scaffoldDe": "Aber ein Freund hatte einen Schlüssel. Ein Freund war in der Schule.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch08.s006" },
+        { "id": "g2.st.wrong-name.ch08.s006", "speaker": "mina", "textEn": "Who has a key to the glass?", "scaffoldDe": "Wer hat einen Schlüssel zum Glas?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "order-the-night", "itemId": "g2u08.gi.past-time-markers.gs.003", "variantKey": null }], "next": "g2.st.wrong-name.ch08.s007" },
+        { "id": "g2.st.wrong-name.ch08.s007", "speaker": "theo", "textEn": "Now we are close.", "scaffoldDe": "Jetzt sind wir nah dran.", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch09",
+      "unit": 9,
+      "titleEn": "A New Medal",
+      "titleDe": "Eine neue Medaille",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch09.s001", "speaker": "mina", "textEn": "Look at the medal again. This is a new one!", "scaffoldDe": "Schau die Medaille noch einmal an. Das ist eine neue!", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch09.s002" },
+        { "id": "g2.st.wrong-name.ch09.s002", "speaker": "theo", "textEn": "The first medal is not here. This is a new one.", "scaffoldDe": "Die erste Medaille ist nicht hier. Das ist eine neue.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch09.s003" },
+        { "id": "g2.st.wrong-name.ch09.s003", "speaker": "mina", "textEn": "Which one is here now?", "scaffoldDe": "Welche ist jetzt hier?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "which-one", "itemId": "g2u09.gi.one-ones.mc.001", "variantKey": null }], "next": "g2.st.wrong-name.ch09.s004" },
+        { "id": "g2.st.wrong-name.ch09.s004", "speaker": "theo", "textEn": "A friend put a new medal here. The first one is not here.", "scaffoldDe": "Ein Freund hat eine neue Medaille hergelegt. Die erste ist nicht hier.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch09.s005" },
+        { "id": "g2.st.wrong-name.ch09.s005", "speaker": "mina", "textEn": "Is there any name on the new one?", "scaffoldDe": "Steht ein Name auf der neuen?", "glosses": [{ "word": "name", "de": "Name", "scope": null }], "audio": null, "taskSlots": [{ "slot": "any-name", "itemId": "g2u09.gi.some-any.mc.001", "variantKey": null }], "next": "g2.st.wrong-name.ch09.s006" },
+        { "id": "g2.st.wrong-name.ch09.s006", "speaker": "theo", "textEn": "Yes! A new name. The name is not Dani.", "scaffoldDe": "Ja! Ein neuer Name. Der Name ist nicht Dani.", "glosses": [{ "word": "name", "de": "Name", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch09.s007" },
+        { "id": "g2.st.wrong-name.ch09.s007", "speaker": "mina", "textEn": "A friend wanted Lena's name on it.", "scaffoldDe": "Ein Freund wollte Lenas Namen darauf.", "glosses": [{ "word": "name", "de": "Name", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch10",
+      "unit": 10,
+      "titleEn": "Who Cares",
+      "titleDe": "Wer sich kümmert",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch10.s001", "speaker": "theo", "textEn": "Who likes Lena? Who cares about her?", "scaffoldDe": "Wer mag Lena? Wer kümmert sich um sie?", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch10.s002" },
+        { "id": "g2.st.wrong-name.ch10.s002", "speaker": "mina", "textEn": "Lena likes making new machines. She loves science.", "scaffoldDe": "Lena macht gern neue Maschinen. Sie liebt Naturwissenschaft.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch10.s003" },
+        { "id": "g2.st.wrong-name.ch10.s003", "speaker": "theo", "textEn": "What does Lena like doing?", "scaffoldDe": "Was macht Lena gern?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "her-passion", "itemId": "g2u10.gi.like-ing.gf.001", "variantKey": null }], "next": "g2.st.wrong-name.ch10.s004" },
+        { "id": "g2.st.wrong-name.ch10.s004", "speaker": "mina", "textEn": "A friend cares about Lena.", "scaffoldDe": "Ein Freund kümmert sich um Lena.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch10.s005" },
+        { "id": "g2.st.wrong-name.ch10.s005", "speaker": "theo", "textEn": "A friend close to Lena, a friend with the truth.", "scaffoldDe": "Ein Freund, der Lena nahe ist, ein Freund mit der Wahrheit.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "moral-line", "itemId": "g2u10.gi.must.gs.001", "variantKey": null }], "next": "g2.st.wrong-name.ch10.s006" },
+        { "id": "g2.st.wrong-name.ch10.s006", "speaker": "mina", "textEn": "We must find this friend. Who is it?", "scaffoldDe": "Wir müssen diesen Freund finden. Wer ist es?", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
     }
   ]
 }
