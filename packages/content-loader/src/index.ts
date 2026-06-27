@@ -164,6 +164,29 @@ export function loadGameMap(storyId: string): GameMapT | null {
   return raw === null ? null : GameMap.parse(raw);
 }
 
+/**
+ * Decoupled art-placement manifest (story-art@1) — maps scenes/chapters/clues to
+ * image STEMS. Intentionally NOT a content-schema type (ungated, additive, art
+ * direction): authored + validated by docs/art/build-art-json.mjs; the app
+ * resolves stem → actual file against the synced public/art dir. null if none.
+ */
+export interface StoryArt {
+  schema: "story-art@1";
+  storyId: string;
+  base: string;
+  cover: string;
+  endCard: string;
+  chapters: Record<string, { card: string; backdrop: string }>;
+  portraits: Record<string, string>;
+  beats: Record<string, string>;
+  clues: Record<string, string>;
+}
+
+export function loadStoryArt(storyId: string): StoryArt | null {
+  if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
+  return readJson<StoryArt>(path.join(STORIES_DIR, storyId, "art.json"));
+}
+
 /** Unit slugs that have a test.json (the mock-test "approval" signal), sorted. */
 export function listTestUnits(): string[] {
   if (!fs.existsSync(UNITS_DIR)) return [];

@@ -1,0 +1,3 @@
+# Raw image-generation drops (messily named, mixed extensions). Not committed —
+# run `node docs/art/sync-art.mjs` to copy finals into apps/web/public/art/g2/.
+Domigo Grade 2 story mode generated images/

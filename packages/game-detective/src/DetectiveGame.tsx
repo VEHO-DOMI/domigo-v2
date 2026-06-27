@@ -31,6 +31,20 @@ export interface DetectiveSave {
   clues: string[];
 }
 
+/**
+ * Server-resolved art URLs for this chapter — ONLY images that exist on disk are
+ * present (the app resolves stems → files against the synced public/art dir), so
+ * any missing slot simply falls back to the procedural art. Optional throughout.
+ */
+export interface DetectiveArt {
+  base: string;
+  backdrop: string | null;
+  endCard: string | null;
+  portraits: Record<string, string>; // sceneId → url
+  beats: Record<string, string>; // sceneId → url
+  clues: Record<string, string>; // taskSlot → url
+}
+
 export interface DetectiveGameProps {
   caseTitle: string;
   chapter: Chapter;
@@ -39,6 +53,7 @@ export interface DetectiveGameProps {
   onAttempt: AttemptFn;
   initialSave?: DetectiveSave | null;
   onSave?: (s: DetectiveSave) => void;
+  art?: DetectiveArt | null;
 }
 
 const wrap: CSSProperties = { maxWidth: 640, margin: "0 auto", fontFamily: "system-ui, sans-serif" };
@@ -72,7 +87,7 @@ function TaskClue({ item, onAttempt, onSolved, onContinue }: {
 }
 
 export function DetectiveGame(props: DetectiveGameProps) {
-  const { chapter, castNames, storyItems, onAttempt, onSave, caseTitle } = props;
+  const { chapter, castNames, storyItems, onAttempt, onSave, caseTitle, art } = props;
   const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
   const resume = props.initialSave && props.initialSave.chapterId === chapter.id ? props.initialSave : null;
   const first = chapter.scenes[0]?.id ?? "";
@@ -104,11 +119,12 @@ export function DetectiveGame(props: DetectiveGameProps) {
     save({ sceneId: nextId });
   };
 
-  const clueList = <EvidenceBoard label="Case file" clues={clues.map((c) => ({ key: c, text: humanize(c) }))} />;
+  const clueList = <EvidenceBoard label="Case file" clues={clues.map((c) => ({ key: c, text: humanize(c) }))} images={art?.clues} />;
 
   if (done || !scene) {
     return (
       <main style={{ ...wrap, padding: "28px 16px" }}>
+        {art?.endCard && <img src={art.endCard} alt="" style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 14, marginBottom: 14, border: "1px solid #e2e8f0" }} />}
         <h1 style={{ fontSize: 22 }}>Case file saved 🗂️</h1>
         <p style={{ color: "#334155" }}>You collected {clues.length} clue{clues.length === 1 ? "" : "s"} in “{caseTitle}”. The case continues…</p>
         <a href="/play/2" style={{ color: "#2563eb", fontSize: 14 }}>← Back to cases</a>
@@ -120,6 +136,10 @@ export function DetectiveGame(props: DetectiveGameProps) {
   const slotItem = slot ? storyItems[slot.itemId] : undefined;
   const taskBlocks = slot !== undefined && slotItem !== undefined && !taskDone;
   const sNext = scene.next;
+  const speakerName = castNames[scene.speaker] ?? scene.speaker;
+  const palette = characterPalette(scene.speaker);
+  const portraitUrl = art?.portraits[scene.id];
+  const topImg = art?.beats[scene.id] ?? art?.backdrop ?? null;
 
   return (
     <main style={{ ...wrap, padding: "16px 12px" }}>
@@ -128,10 +148,14 @@ export function DetectiveGame(props: DetectiveGameProps) {
         <a href="/play/2" style={{ fontSize: 14, color: "#2563eb" }}>← Cases</a>
       </div>
 
-      <section style={{ ...scenePanel, borderLeft: `4px solid ${characterPalette(scene.speaker).shirt}` }}>
+      {topImg && <img src={topImg} alt="" style={{ width: "100%", maxHeight: 220, objectFit: "cover", borderRadius: 14, marginBottom: 12, border: "1px solid #e2e8f0", boxShadow: "0 1px 3px rgba(0,0,0,.06)" }} />}
+
+      <section style={{ ...scenePanel, borderLeft: `4px solid ${palette.shirt}` }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 2 }}>
-          <CharacterChip charKey={scene.speaker} name={castNames[scene.speaker] ?? scene.speaker} />
-          <div style={{ fontSize: 15, fontWeight: 700, color: characterPalette(scene.speaker).shirt }}>{castNames[scene.speaker] ?? scene.speaker}</div>
+          {portraitUrl
+            ? <img src={portraitUrl} alt={speakerName} width={46} height={46} style={{ borderRadius: "50%", objectFit: "cover", flex: "0 0 auto", border: `2px solid ${palette.shirt}` }} />
+            : <CharacterChip charKey={scene.speaker} name={speakerName} />}
+          <div style={{ fontSize: 15, fontWeight: 700, color: palette.shirt }}>{speakerName}</div>
         </div>
         <p style={{ fontSize: 19, margin: "6px 0 4px", lineHeight: 1.4 }}>{scene.textEn}</p>
         {scene.scaffoldDe && <p style={{ fontSize: 14, color: "#64748b", margin: "0 0 6px" }}>{scene.scaffoldDe}</p>}

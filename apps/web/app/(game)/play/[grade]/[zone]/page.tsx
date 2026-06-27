@@ -10,6 +10,7 @@ import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadUnit }
 import { getDb, getDueRefs, getGameSave } from "@domigo/db";
 import { resolveEncounterTasks, type ResolvedItem } from "@domigo/game-core";
 import { getActingUserForPage } from "@/lib/identity";
+import { resolveDetectiveArt } from "@/lib/story-art";
 import GameClient from "../GameClient";
 import DetectiveClient from "../DetectiveClient";
 
@@ -58,6 +59,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
     if (!chapter) redirect(hubHref);
     const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
     const storyItems = storyItemsFor(chapter, loadUnit(slug));
+    const detectiveArt = resolveDetectiveArt(storyId, grade, chapter);
     const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-detective").DetectiveSave } : null;
     return (
       <DetectiveClient
@@ -67,6 +69,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
         castNames={castNames}
         storyItems={storyItems}
         serverSave={serverSave}
+        detectiveArt={detectiveArt}
       />
     );
   }
