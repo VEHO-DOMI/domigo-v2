@@ -120,6 +120,66 @@
           "next": null
         }
       ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch02",
+      "unit": 2,
+      "titleEn": "Two Questions",
+      "titleDe": "Zwei Fragen",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch02.s001", "speaker": "theo", "textEn": "Let's ask Max. Where was he yesterday?", "scaffoldDe": "Fragen wir Max. Wo war er gestern?", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch02.s002" },
+        { "id": "g2.st.wrong-name.ch02.s002", "speaker": "max", "textEn": "I didn't do it! I was not here yesterday.", "scaffoldDe": "Ich war's nicht! Ich war gestern nicht hier.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch02.s003" },
+        { "id": "g2.st.wrong-name.ch02.s003", "speaker": "mina", "textEn": "Why are you glad the medal is not here?", "scaffoldDe": "Warum bist du froh, dass die Medaille weg ist?", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch02.s004" },
+        { "id": "g2.st.wrong-name.ch02.s004", "speaker": "max", "textEn": "I was not nice about the medal. I am sorry.", "scaffoldDe": "Ich war nicht nett zur Medaille. Es tut mir leid.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch02.s005" },
+        { "id": "g2.st.wrong-name.ch02.s005", "speaker": "mina", "textEn": "Theo, ask him one more time.", "scaffoldDe": "Theo, frag ihn noch einmal.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "interrogate", "itemId": "g2u02.gi.past-simple-questions.qf.001", "variantKey": null }], "next": "g2.st.wrong-name.ch02.s006" },
+        { "id": "g2.st.wrong-name.ch02.s006", "speaker": "theo", "textEn": "Find the wrong English here.", "scaffoldDe": "Finde das falsche Englisch hier.", "glosses": [{ "word": "wrong", "de": "falsch", "scope": null }], "audio": null, "taskSlots": [{ "slot": "catch-the-lie", "itemId": "g2u02.gi.past-simple-negation.ec.001", "variantKey": null }], "next": "g2.st.wrong-name.ch02.s007" },
+        { "id": "g2.st.wrong-name.ch02.s007", "speaker": "mina", "textEn": "Max didn't do it. But why is he glad?", "scaffoldDe": "Max war's nicht. Aber warum ist er froh?", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch02.s008" },
+        { "id": "g2.st.wrong-name.ch02.s008", "speaker": "theo", "textEn": "We must look again. This is not over.", "scaffoldDe": "Wir müssen weiter suchen. Das ist noch nicht vorbei.", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch03",
+      "unit": 3,
+      "titleEn": "The Open Door",
+      "titleDe": "Die offene Tür",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch03.s001", "speaker": "theo", "textEn": "On costume night, many people were here.", "scaffoldDe": "In der Kostümnacht waren viele Leute hier.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch03.s002" },
+        { "id": "g2.st.wrong-name.ch03.s002", "speaker": "mina", "textEn": "People had masks. It was a big night.", "scaffoldDe": "Die Leute hatten Masken. Es war eine große Nacht.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch03.s003" },
+        { "id": "g2.st.wrong-name.ch03.s003", "speaker": "theo", "textEn": "The door must be closed at night. Was it?", "scaffoldDe": "Die Tür muss nachts zu sein. War sie zu?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "the-rule", "itemId": "g2u03.gi.should.gf.001", "variantKey": null }], "next": "g2.st.wrong-name.ch03.s004" },
+        { "id": "g2.st.wrong-name.ch03.s004", "speaker": "mina", "textEn": "Mr Bell, do you close the door at night?", "scaffoldDe": "Herr Bell, machst du abends die Tür zu?", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch03.s005" },
+        { "id": "g2.st.wrong-name.ch03.s005", "speaker": "bell", "textEn": "Yes. But on costume night, the door was open.", "scaffoldDe": "Ja. Aber in der Kostümnacht war die Tür offen.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch03.s006" },
+        { "id": "g2.st.wrong-name.ch03.s006", "speaker": "mina", "textEn": "Who could come to the medal? Let's put them in two groups.", "scaffoldDe": "Wer konnte zur Medaille? Teilen wir sie in zwei Gruppen.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [{ "slot": "sort-suspects", "itemId": "g2u03.gi.should.gs.001", "variantKey": null }], "next": "g2.st.wrong-name.ch03.s007" },
+        { "id": "g2.st.wrong-name.ch03.s007", "speaker": "theo", "textEn": "Many people could come in. We need more clues.", "scaffoldDe": "Viele Leute konnten herein. Wir brauchen mehr Spuren.", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch04",
+      "unit": 4,
+      "titleEn": "The Numbers",
+      "titleDe": "Die Zahlen",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch04.s001", "speaker": "theo", "textEn": "Look at last year's medal. Here are the numbers.", "scaffoldDe": "Schau die Medaille vom letzten Jahr an. Hier sind die Zahlen.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch04.s002" },
+        { "id": "g2.st.wrong-name.ch04.s002", "speaker": "mina", "textEn": "Lena's number was 9. Dani's number was 7.", "scaffoldDe": "Lenas Zahl war 9. Danis Zahl war 7.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch04.s003" },
+        { "id": "g2.st.wrong-name.ch04.s003", "speaker": "theo", "textEn": "9 is more than 7. So Lena was first, not Dani.", "scaffoldDe": "9 ist mehr als 7. Also war Lena Erste, nicht Dani.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch04.s004" },
+        { "id": "g2.st.wrong-name.ch04.s004", "speaker": "mina", "textEn": "Let's look at the numbers again.", "scaffoldDe": "Schauen wir die Zahlen noch einmal an.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "compare", "itemId": "g2u04.gi.comparatives.mc.001", "variantKey": null }], "next": "g2.st.wrong-name.ch04.s005" },
+        { "id": "g2.st.wrong-name.ch04.s005", "speaker": "theo", "textEn": "But the card has Dani's name. The card is wrong!", "scaffoldDe": "Aber auf der Karte steht Danis Name. Die Karte ist falsch!", "glosses": [{ "word": "card", "de": "Karte", "scope": null }, { "word": "name", "de": "Name", "scope": null }, { "word": "wrong", "de": "falsch", "scope": null }], "audio": null, "taskSlots": [{ "slot": "the-record-lies", "itemId": "g2u04.gi.comparatives.ec.001", "variantKey": null }], "next": "g2.st.wrong-name.ch04.s006" },
+        { "id": "g2.st.wrong-name.ch04.s006", "speaker": "mina", "textEn": "Lena was first. The medal is Lena's, not Dani's.", "scaffoldDe": "Lena war Erste. Die Medaille ist Lenas, nicht Danis.", "glosses": [{ "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch04.s007" },
+        { "id": "g2.st.wrong-name.ch04.s007", "speaker": "theo", "textEn": "Who put the wrong name on the medal? We must find out.", "scaffoldDe": "Wer hat den falschen Namen auf die Medaille gesetzt? Das müssen wir herausfinden.", "glosses": [{ "word": "wrong", "de": "falsch", "scope": null }, { "word": "name", "de": "Name", "scope": null }, { "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g2.st.wrong-name.ch05",
+      "unit": 5,
+      "titleEn": "The False Trail",
+      "titleDe": "Die falsche Spur",
+      "scenes": [
+        { "id": "g2.st.wrong-name.ch05.s001", "speaker": "max", "textEn": "I was in town yesterday. I was not here.", "scaffoldDe": "Ich war gestern in der Stadt. Ich war nicht hier.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch05.s002" },
+        { "id": "g2.st.wrong-name.ch05.s002", "speaker": "theo", "textEn": "Max was in town? Let's look at the map.", "scaffoldDe": "Max war in der Stadt? Schauen wir auf die Karte.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch05.s003" },
+        { "id": "g2.st.wrong-name.ch05.s003", "speaker": "mina", "textEn": "Max, which road? Show us.", "scaffoldDe": "Max, welche Straße? Zeig es uns.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "trace-route", "itemId": "g2u05.gi.prepositions-directions.gf.001", "variantKey": null }], "next": "g2.st.wrong-name.ch05.s004" },
+        { "id": "g2.st.wrong-name.ch05.s004", "speaker": "mina", "textEn": "The bank is opposite the church. That is not possible.", "scaffoldDe": "Die Bank ist gegenüber der Kirche. Das ist nicht möglich.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "broken-alibi", "itemId": "g2u05.gi.prepositions-directions.ec.001", "variantKey": null }], "next": "g2.st.wrong-name.ch05.s005" },
+        { "id": "g2.st.wrong-name.ch05.s005", "speaker": "theo", "textEn": "So Max was not in town. But Max did not do it.", "scaffoldDe": "Also war Max nicht in der Stadt. Aber Max war's nicht.", "glosses": [], "audio": null, "taskSlots": [], "next": "g2.st.wrong-name.ch05.s006" },
+        { "id": "g2.st.wrong-name.ch05.s006", "speaker": "mina", "textEn": "Max is not the one. Who put the wrong name on the medal?", "scaffoldDe": "Max ist es nicht. Wer hat den falschen Namen auf die Medaille gesetzt?", "glosses": [{ "word": "wrong", "de": "falsch", "scope": null }, { "word": "name", "de": "Name", "scope": null }, { "word": "medal", "de": "Medaille", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+      ]
     }
   ]
 }
