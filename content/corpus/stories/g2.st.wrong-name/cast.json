@@ -1,0 +1,14 @@
+{
+  "schema": "cast@1",
+  "storyId": "g2.st.wrong-name",
+  "members": [
+    { "id": "mina", "nameEn": "Mina", "descriptionDe": "Detektivin, Question Club", "voice": null, "art": null },
+    { "id": "theo", "nameEn": "Theo", "descriptionDe": "Detektiv, Question Club", "voice": null, "art": null },
+    { "id": "lena", "nameEn": "Lena", "descriptionDe": "die stille Erfinderin", "voice": null, "art": null },
+    { "id": "ben", "nameEn": "Ben", "descriptionDe": "Lenas älterer Bruder", "voice": null, "art": null },
+    { "id": "dani", "nameEn": "Dani", "descriptionDe": "der Gewinner vom letzten Jahr", "voice": null, "art": null },
+    { "id": "max", "nameEn": "Max", "descriptionDe": "ein lauter Mitschüler", "voice": null, "art": null },
+    { "id": "okafor", "nameEn": "Mr Okafor", "descriptionDe": "der Lehrer vom Science Club", "voice": null, "art": null },
+    { "id": "bell", "nameEn": "Mr Bell", "descriptionDe": "der Hausmeister", "voice": null, "art": null }
+  ]
+}

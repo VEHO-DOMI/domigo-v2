@@ -1,0 +1,14 @@
+{
+  "schema": "names@1",
+  "storyId": "g2.st.wrong-name",
+  "reviewedBy": "fable",
+  "names": [
+    { "name": "Mina", "note": "detective" },
+    { "name": "Theo", "note": "detective" },
+    { "name": "Lena", "note": "the wronged inventor" },
+    { "name": "Ben", "note": "Lena's older brother (the corrector)" },
+    { "name": "Dani", "note": "last year's recorded winner (real culprit)" },
+    { "name": "Max", "note": "red herring" },
+    { "name": "Birchwood", "note": "the school" }
+  ]
+}
