@@ -77,7 +77,19 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
     const chapter = story?.chapters.find((c) => c.id.endsWith(`.${zone}`) && released.includes(c.id));
     if (!chapter) redirect(hubHref);
     const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
-    const storyItems = storyItemsFor(chapter, loadUnit(slug), loadStoryComprehension(storyId)?.items ?? []);
+    const unit = loadUnit(slug);
+    const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
+    // Phase 4: genuine spaced retrieval — resolve ONLY actually-due clues from this
+    // unit (no scope-random filler), so the re-interview beat appears only when due.
+    const dueRefs = await getDueRefs(getDb(), acting.userId, { kind: "unit", slug }, 3).catch(() => []);
+    const reviewItems: ResolvedItem[] = dueRefs
+      .map((ref): ResolvedItem | null => {
+        const v = unit.vocab.find((x) => x.id === ref.itemId);
+        if (v) return { kind: "vocab", item: v };
+        const g = unit.grammar.find((x) => x.id === ref.itemId);
+        return g ? { kind: "grammar", item: g } : null;
+      })
+      .filter((x): x is ResolvedItem => x !== null);
     const detectiveArt = resolveDetectiveArt(storyId, grade, chapter);
     const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-detective").DetectiveSave } : null;
     return (
@@ -87,6 +99,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
         chapter={chapter}
         castNames={castNames}
         storyItems={storyItems}
+        reviewItems={reviewItems}
         serverSave={serverSave}
         detectiveArt={detectiveArt}
       />
