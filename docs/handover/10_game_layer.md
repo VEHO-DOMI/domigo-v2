@@ -73,6 +73,17 @@ the trophy to engrave the TRUE result; headmaster Kramer falsified the race) is 
 the story pipeline at the g2 gate — chapter N gated on units ≤ N (the legacy chapter themes already
 align 1:1 with the g2 units). All-new procedural art (the 118 legacy JPGs are reference only).
 
+> **⚠ Status update (2026-06-28) — G2 shipped as "The Wrong Name", a full reinvention (NOT Watson Manor).**
+> A fair-play moral-twist "Correction" mystery (the apparent theft = righting an earlier injustice; the
+> real culprit cheated first); new cast Mina & Theo / Lena / Ben / Dani / Max; same A1+/A2 + unit-gate
+> discipline + "tasks ARE clues". Two deliberate departures from the rules above: (a) **generated
+> ligne-claire raster art** (a 126-prompt library at `docs/art/`, wired via a decoupled `art.json`
+> manifest with **procedural fallback**) is an approved owner exception to "all-procedural art" for G2;
+> (b) the in-G2 surface re-labels XP as a **Clues / Evidence / Case** economy — a re-skin only, **no new
+> XP pool** (Law 5 intact). The pedagogy upgrade (Input→Guided→Output ladder, comprehension, in-story
+> spaced retrieval, the "Solve the Case" finale) is tracked in `~/.claude/plans/domigo-v2-velvet-squid.md`
+> Part 6. **Paste-ready passover: `12_g2_passover.md`.**
+
 ### G3 — FOURTEEN: the interactive graphic novel
 Panel-based visual novel (DOM + motion, SVG panel art). Four students run a YouTube channel; the
 internet laughs at Ben's grammar without him knowing. **The moral engine is the design:** the student

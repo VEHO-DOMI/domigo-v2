@@ -1,4 +1,6 @@
-# 11 — Remaining work (B2b · Content waves · TTS · G1 RPG)
+# 11 — Remaining work (B2b · Content waves · TTS · the grade games)
+
+> **⚠ 2026-06-28 status.** Since this doc was written, **Track C shipped two games to `main`**: the **G1 overworld RPG** (5 zones — §4 below is now **DONE**) and the **G2 "The Wrong Name"** detective game (15 chapters + Clues/Evidence/Case economy + wired ligne-claire art + a task-ui a11y pass; PRs #40–#49, no open PRs). The G2 **pedagogy upgrade** is mid-flight — see plan `~/.claude/plans/domigo-v2-velvet-squid.md` Part 6 and the paste-ready **[`12_g2_passover.md`](12_g2_passover.md)**. Still open from this doc: **§1 B2b**, **§2 content waves**, **§3 TTS**. Still ahead in Track C: **G3 FOURTEEN + G4 Syntaxia**, plus a cheap-Android perf pass before go-live.
 
 > **How to use this doc.** DomiGo v2's full P1 learning track is built and verified (see `STATUS_AND_ROADMAP.md`). Four things remain. Each section below is **self-contained** — a fresh session can pick up **one** of them cold. Work in `~/Code/domigo-v2`. **Read `08_design_principles.md` (the 11 guardrails) before any change.** Pick by priority: B2b (small, closes the Mock-Test loop) · content waves (large, multi-session) · TTS (small) · Track C / G1 RPG (the September headline — its full design is `10_game_layer.md`).
 
@@ -76,8 +78,10 @@ GitHub auto-retargets each to `main` as the one below it merges.
 
 ---
 
-## 4. Track C — start the G1 overworld RPG
+## 4. Track C — the grade games  ✅ G1 + G2 SHIPPED (2026-06-28)
 **The full design is `10_game_layer.md` — READ IT FIRST.** This is the kickoff + reuse seams only; do not re-document the game design.
+
+> **Status (2026-06-28).** **G1 overworld RPG (this section) is DONE** — hub + 5 story zones u1–5, encounters, zone-scoped saves, the bundle gate, all on `main`. **G2 "The Wrong Name"** detective game is also live (15 chapters; its pedagogy upgrade = plan Part 6, passover `12_g2_passover.md`). **Remaining in Track C: G3 FOURTEEN + G4 Syntaxia** (not started). The seams below (the 9 Laws, `getDueRefs` encounters, the task-ui overlay, `/api/attempts`, `game_saves`) are exactly what G3/G4 reuse — the kickoff text is retained as the template.
 
 **Unblocked:** every item carries `presentation.gameMeta` (distractor pools / chip budgets / minOptions) + `difficulty` 1–3, and the cumulative level gate is in force. **Non-negotiable:** the 9 Laws (game physics) + the 11 design principles (`08`). Key laws — **L5** one grading brain (task-ui DOM overlay + `@domigo/engine` + `practice_attempts`, `mode:"game:g1"`), **L6** spaced retrieval is world physics (`getDueRefs` due items spawn as encounters; cleared areas re-fog as retention decays), **L2** progress only by language, **L3** failure changes pace not position (no HP/lives/XP-loss), **L9** bulletproof (checkpoint ≤90 s, offline outbox, no dead toggles).
 
