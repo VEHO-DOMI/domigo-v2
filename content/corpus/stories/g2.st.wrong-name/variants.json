@@ -1,0 +1,14 @@
+{
+  "schema": "variants@1",
+  "storyId": "g2.st.wrong-name",
+  "variants": [
+    {
+      "key": "wrong-name.ch04.compare",
+      "itemId": "g2u04.gi.comparatives.gf.004",
+      "scene": "g2.st.wrong-name.ch04.s004",
+      "slot": "compare",
+      "prompt": { "text": "9 is ___ (big) than 7.", "lang": "en" },
+      "glosses": []
+    }
+  ]
+}

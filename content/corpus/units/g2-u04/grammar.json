@@ -1408,7 +1408,27 @@
       "rev": 1,
       "difficulty": 2,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch04.compare",
+            "prompt": {
+              "text": "9 is ___ (big) than 7.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch04"
+              },
+              "note": "g2.st.wrong-name.ch04.s004 · compare"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

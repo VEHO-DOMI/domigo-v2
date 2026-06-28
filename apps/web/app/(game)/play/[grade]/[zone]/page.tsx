@@ -24,9 +24,20 @@ function storyItemsFor(chapter: Chapter, unit: { vocab: VocabItem[]; grammar: Gr
   for (const sc of chapter.scenes) {
     for (const ts of sc.taskSlots) {
       const v = unit.vocab.find((x) => x.id === ts.itemId);
-      if (v) { out[ts.itemId] = { kind: "vocab", item: v }; continue; }
+      if (v) {
+        // Scene-embedded carrier (Phase 2): a variantKey re-frames the carrier as
+        // the in-fiction clue; answers/distractors are untouched so grading is identical.
+        const variant = ts.variantKey ? v.presentation.variants.find((va) => va.key === ts.variantKey) : undefined;
+        const item = variant ? { ...v, s: variant.prompt.text, gloss: variant.glosses } : v;
+        out[ts.itemId] = { kind: "vocab", item };
+        continue;
+      }
       const g = unit.grammar.find((x) => x.id === ts.itemId);
-      if (g) out[ts.itemId] = { kind: "grammar", item: g };
+      if (g) {
+        const variant = ts.variantKey ? g.presentation.variants.find((va) => va.key === ts.variantKey) : undefined;
+        const item = variant ? { ...g, prompt: { ...g.prompt, text: variant.prompt.text }, gloss: variant.glosses } : g;
+        out[ts.itemId] = { kind: "grammar", item };
+      }
     }
   }
   return out;

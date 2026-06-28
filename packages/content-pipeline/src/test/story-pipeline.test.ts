@@ -51,6 +51,7 @@ function mkCorpus(opts: { allowed?: string[]; known?: string[]; ready?: string[]
   return {
     itemExists: (id) => known.has(id),
     isUnitReady: (slug) => ready.has(slug),
+    variantKeysOf: () => [],
     unknownTokens: (_slug, text, extra) => {
       const ok = new Set(allowed);
       for (const p of extra) for (const w of wordsOf(p)) ok.add(w);
