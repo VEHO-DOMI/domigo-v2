@@ -905,12 +905,20 @@ function materializeUnit(
   // so withRev compares the FINAL (post-fix) content to prev. Bumping rev before
   // the overlay would thrash the rev on every re-materialize (the overlay re-adds
   // the same edit the draft lacks, so pre-overlay content always differs).
-  const assembledVocab = vocabDraftItems.map((d) =>
-    assembleVocabItem(d, prevVocabById.get(d.wordId)?.rev ?? 1),
-  );
-  const assembledGrammar = grammarDraftItems.map((d, i) =>
-    assembleGrammarItem(d, mint.ids[i]!, prevGrammarById.get(mint.ids[i]!)?.rev ?? 1),
-  );
+  // Carry over presentation.variants minted post-generation (story production
+  // owns these via `content story variants` — the generator must not clobber
+  // them). With the variants re-attached, withRev sees assembled == prev and
+  // keeps the committed row; a real re-ingest therefore preserves them too.
+  const assembledVocab = vocabDraftItems.map((d) => {
+    const it = assembleVocabItem(d, prevVocabById.get(d.wordId)?.rev ?? 1);
+    const pv = prevVocabById.get(d.wordId)?.presentation.variants;
+    return pv && pv.length > 0 ? { ...it, presentation: { ...it.presentation, variants: pv } } : it;
+  });
+  const assembledGrammar = grammarDraftItems.map((d, i) => {
+    const it = assembleGrammarItem(d, mint.ids[i]!, prevGrammarById.get(mint.ids[i]!)?.rev ?? 1);
+    const pv = prevGrammarById.get(mint.ids[i]!)?.presentation.variants;
+    return pv && pv.length > 0 ? { ...it, presentation: { ...it.presentation, variants: pv } } : it;
+  });
   const fixed = applyItemFixes(slug, { vocab: assembledVocab, grammar: assembledGrammar });
   let vocabItems = fixed.vocab.map((it) => withRev<VocabItemT>(it, prevVocabById.get(it.id)));
   let grammarItems = fixed.grammar.map((it) => withRev<GrammarItemT>(it, prevGrammarById.get(it.id)));

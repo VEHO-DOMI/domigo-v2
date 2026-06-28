@@ -75,6 +75,8 @@ interface EnField {
   text: string;
   /** Gloss scope keys that apply to this field. */
   scopes: string[];
+  /** Field-local gloss words — a presentation variant carries its OWN glosses. */
+  glossWords?: string[];
 }
 
 function fullsAndPartials(answers: TieredAnswerT[]): string {
@@ -99,7 +101,7 @@ export function vocabEnFields(it: VocabItemT): EnField[] {
   ];
   for (const v of it.presentation.variants) {
     if (v.prompt.lang === "en") {
-      fields.push({ itemId: it.id, field: `variant:${v.key}`, text: v.prompt.text, scopes: [v.key] });
+      fields.push({ itemId: it.id, field: `variant:${v.key}`, text: v.prompt.text, scopes: [v.key], glossWords: v.glosses.map((g) => g.word) });
     }
   }
   return fields;
@@ -121,7 +123,7 @@ export function grammarEnFields(it: GrammarItemT): EnField[] {
   }
   for (const v of it.presentation.variants) {
     if (v.prompt.lang === "en") {
-      fields.push({ itemId: it.id, field: `variant:${v.key}`, text: v.prompt.text, scopes: [v.key] });
+      fields.push({ itemId: it.id, field: `variant:${v.key}`, text: v.prompt.text, scopes: [v.key], glossWords: v.glosses.map((g) => g.word) });
     }
   }
   return fields;
@@ -170,7 +172,7 @@ export function levelGateErrors(
       // that word is the answer and naturally sits in the item's own fields.
       // Its tokens are in-level WITHIN this item (the definition is still guarded
       // against leaks by V-8). Single-word headwords already ride the bank.
-      const extraPhrases = ownTokens.length > 0 ? [...applicable, ...ownTokens] : applicable;
+      const extraPhrases = [...applicable, ...(f.glossWords ?? []), ...ownTokens];
       const granted = new Set([...grants.unitWide, ...(grants.byItem.get(f.itemId) ?? [])]);
       for (const token of matcher.unknownTokens(f.text, { extraPhrases, grantedTokens: granted })) {
         errors.push(`${slug}: V-5 — "${token}" in ${f.itemId}.${f.field} is above level and unglossed`);

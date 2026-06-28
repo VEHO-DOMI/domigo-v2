@@ -401,7 +401,27 @@
       "rev": 1,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch12.what-has-happened",
+            "prompt": {
+              "text": "I ___ just told you.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch12"
+              },
+              "note": "g2.st.wrong-name.ch12.s003 · what-has-happened"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

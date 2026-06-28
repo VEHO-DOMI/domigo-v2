@@ -244,7 +244,27 @@
       "rev": 1,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch14.history-sealed",
+            "prompt": {
+              "text": "We have ___ looked at the numbers.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch14"
+              },
+              "note": "g2.st.wrong-name.ch14.s003 · history-sealed"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

@@ -341,7 +341,33 @@
       "rev": 1,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch09.which-medal",
+            "prompt": {
+              "text": "The first medal is not here. This is a new ___.",
+              "lang": "en"
+            },
+            "glosses": [
+              {
+                "word": "medal",
+                "de": "Medaille",
+                "scope": "wrong-name.ch09.which-medal"
+              }
+            ],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch09"
+              },
+              "note": "g2.st.wrong-name.ch09.s002 · which-medal"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

@@ -281,7 +281,27 @@
       "rev": 1,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch03.the-rule",
+            "prompt": {
+              "text": "The door ___ be closed at night.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch03"
+              },
+              "note": "g2.st.wrong-name.ch03.s003 · the-rule"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

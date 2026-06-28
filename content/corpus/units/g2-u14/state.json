@@ -113,6 +113,13 @@
       "contentHash": "3b3f1280995cf13b3065bb27e3a8da855d8008e91e6ac9e793bc459d78026d72",
       "note": "round 1: 77 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-13T23:49:39.123Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "4985127065a62f57ba3045b1dd8490b9db4f5de9075d9d3ecffe1a79972ba32b",
+      "note": "variant mint for g2.st.wrong-name",
+      "at": "2026-06-28T17:16:52.537Z"
     }
   ]
 }

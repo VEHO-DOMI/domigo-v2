@@ -9,6 +9,86 @@
       "slot": "compare",
       "prompt": { "text": "9 is ___ (big) than 7.", "lang": "en" },
       "glosses": []
+    },
+    {
+      "key": "wrong-name.ch01.what-happened",
+      "itemId": "g2u01.gi.past-simple.gf.001",
+      "scene": "g2.st.wrong-name.ch01.s005",
+      "slot": "what-happened",
+      "prompt": { "text": "I ___ the card again.", "lang": "en" },
+      "glosses": [{ "word": "card", "de": "Karte" }]
+    },
+    {
+      "key": "wrong-name.ch03.the-rule",
+      "itemId": "g2u03.gi.should.gf.001",
+      "scene": "g2.st.wrong-name.ch03.s003",
+      "slot": "the-rule",
+      "prompt": { "text": "The door ___ be closed at night.", "lang": "en" },
+      "glosses": []
+    },
+    {
+      "key": "wrong-name.ch05.trace-route",
+      "itemId": "g2u05.gi.prepositions-directions.gf.001",
+      "scene": "g2.st.wrong-name.ch05.s003",
+      "slot": "trace-route",
+      "prompt": { "text": "The bank is ___ the church.", "lang": "en" },
+      "glosses": []
+    },
+    {
+      "key": "wrong-name.ch06.who-must",
+      "itemId": "g2u06.gi.have-to.gf.001",
+      "scene": "g2.st.wrong-name.ch06.s004",
+      "slot": "who-must",
+      "prompt": { "text": "You ___ close the back door at night.", "lang": "en" },
+      "glosses": []
+    },
+    {
+      "key": "wrong-name.ch08.timeline",
+      "itemId": "g2u08.gi.past-time-markers.gf.001",
+      "scene": "g2.st.wrong-name.ch08.s003",
+      "slot": "timeline",
+      "prompt": { "text": "___, the show ended.", "lang": "en" },
+      "glosses": []
+    },
+    {
+      "key": "wrong-name.ch09.which-medal",
+      "itemId": "g2u09.gi.one-ones.gf.001",
+      "scene": "g2.st.wrong-name.ch09.s002",
+      "slot": "which-medal",
+      "prompt": { "text": "The first medal is not here. This is a new ___.", "lang": "en" },
+      "glosses": [{ "word": "medal", "de": "Medaille" }]
+    },
+    {
+      "key": "wrong-name.ch10.her-passion",
+      "itemId": "g2u10.gi.like-ing.gf.001",
+      "scene": "g2.st.wrong-name.ch10.s003",
+      "slot": "her-passion",
+      "prompt": { "text": "She likes ___ about science.", "lang": "en" },
+      "glosses": []
+    },
+    {
+      "key": "wrong-name.ch12.what-has-happened",
+      "itemId": "g2u12.gi.present-perfect.gf.001",
+      "scene": "g2.st.wrong-name.ch12.s003",
+      "slot": "what-has-happened",
+      "prompt": { "text": "I ___ just told you.", "lang": "en" },
+      "glosses": []
+    },
+    {
+      "key": "wrong-name.ch14.history-sealed",
+      "itemId": "g2u14.gi.present-perfect-already-yet.gf.001",
+      "scene": "g2.st.wrong-name.ch14.s003",
+      "slot": "history-sealed",
+      "prompt": { "text": "We have ___ looked at the numbers.", "lang": "en" },
+      "glosses": []
+    },
+    {
+      "key": "wrong-name.ch15.we-agree",
+      "itemId": "g2u15.gi.so-do-i.gf.001",
+      "scene": "g2.st.wrong-name.ch15.s003",
+      "slot": "we-agree",
+      "prompt": { "text": "They want to help. So ___ I.", "lang": "en" },
+      "glosses": []
     }
   ]
 }
