@@ -1,0 +1,28 @@
+{
+  "schema": "comprehension@1",
+  "storyId": "g2.st.wrong-name",
+  "items": [
+    {
+      "id": "g2u04.ci.who-was-first.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": { "text": "Why was Lena first, not Dani?", "lang": "en", "blanks": 0 },
+      "answers": [{ "text": "Her number was bigger than Dani's.", "tier": "full" }],
+      "direction": null,
+      "distractors": [
+        "Her number was smaller than Dani's.",
+        "She was taller than Dani.",
+        "She was faster than Dani."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Schau auf die Zahlen: 9 und 7. Welche ist größer?",
+      "hintEn": null,
+      "explainDe": "Lenas Zahl (9) war größer als Danis Zahl (7). Darum war Lena Erste, nicht Dani.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

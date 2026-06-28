@@ -1,5 +1,5 @@
 /**
- * `content validate-story` — the deterministic story gate (VS-1…VS-11 + release).
+ * `content validate-story` — the deterministic story gate (VS-1…VS-12 + release).
  * Opt-in, like validate-listening/validate-test: the main `content validate`
  * stays blind to story files. The pure `validateStoryBundle(bundle, corpus)` is
  * fixture-tested; the runner wires the real corpus (level gate + item existence).
@@ -15,6 +15,7 @@
  *  VS-9  asset refs exist (audio.file / cast art) — informational until art lands
  *  VS-10 storyItems carriers pass the level gate at their narrative-lock unit
  *  VS-11 a taskSlot.variantKey resolves to a variant on its item (catches dangling wires)
+ *  VS-12 story-comprehension items (.ci.) exist + their EN carrier passes the level gate
  *  +     release gating: a released chapter's gate unit must be ready in the corpus
  */
 import fs from "node:fs";
@@ -25,6 +26,7 @@ import {
   type Gloss,
   type Scene,
   Story,
+  StoryComprehensionFile,
   StoryItems,
   StoryNames,
   UNITS_PER_GRADE,
@@ -57,6 +59,7 @@ export interface StoryBundle {
   cast: Cast | null;
   names: StoryNames | null;
   storyItems: StoryItems | null;
+  comprehension: StoryComprehensionFile | null;
   release: ReleaseFile | null;
 }
 
@@ -155,7 +158,7 @@ function reachabilityErrors(chapter: Chapter): string[] {
   return errors;
 }
 
-/** Pure VS-1…VS-10 + release gating over a parsed bundle. */
+/** Pure VS-1…VS-12 + release gating over a parsed bundle. */
 export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): { errors: string[]; infos: string[] } {
   const errors: string[] = [];
   const infos: string[] = [];
@@ -215,7 +218,9 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
         if (ref === null) { errors.push(`${scene.id}: VS-4 — taskSlot "${ts.slot}" itemId ${ts.itemId} is not a valid item ref`); continue; }
         if (ref.grade !== grade) errors.push(`${scene.id}: VS-4 — taskSlot ${ts.itemId} is grade ${ref.grade}, story is grade ${grade}`);
         else if (ref.unit > chapter.unit) errors.push(`${scene.id}: VS-4 — taskSlot ${ts.itemId} (unit ${ref.unit}) is above the chapter gate unit ${chapter.unit}`);
-        else if (!corpus.itemExists(ts.itemId)) errors.push(`${scene.id}: VS-4 — taskSlot ${ts.itemId} does not resolve to an approved item`);
+        else if (ts.itemId.includes(".ci.")) {
+          if (!(bundle.comprehension?.items.some((it) => it.id === ts.itemId) ?? false)) errors.push(`${scene.id}: VS-4 — taskSlot ${ts.itemId} does not resolve to a comprehension item`);
+        } else if (!corpus.itemExists(ts.itemId)) errors.push(`${scene.id}: VS-4 — taskSlot ${ts.itemId} does not resolve to an approved item`);
         // VS-11 a non-null variantKey must name a real variant on the item
         if (ts.variantKey !== null && !corpus.variantKeysOf(ts.itemId).includes(ts.variantKey)) {
           errors.push(`${scene.id}: VS-11 — taskSlot "${ts.slot}" variantKey "${ts.variantKey}" is not a variant of ${ts.itemId}`);
@@ -240,6 +245,22 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
     };
     for (const v of bundle.storyItems.vocabItems) checkItem(v.id, v.s, v.provenance.narrative?.chapterId, v.gloss);
     for (const g of bundle.storyItems.grammarItems) checkItem(g.id, g.prompt.text, g.provenance.narrative?.chapterId, g.gloss);
+  }
+
+  // VS-12 comprehension items: the EN carrier (question + answers + distractors) passes
+  // the level gate at the item's own unit (scene-comprehension content is gated like dialogue).
+  if (bundle.comprehension !== null) {
+    for (const it of bundle.comprehension.items) {
+      const u = itemRefUnit(it.id);
+      if (u === null || u.grade !== grade) { errors.push(`${it.id}: VS-12 — comprehension id has a bad grade/unit ref`); continue; }
+      const en = [
+        it.prompt.lang === "en" ? it.prompt.text : "",
+        ...it.answers.filter((a) => a.tier === "full").map((a) => a.text),
+        ...it.distractors,
+      ].join(" ");
+      const unknown = corpus.unknownTokens(unitSlug(grade, u.unit), en, [...glossWords(it.gloss), ...namePhrases]);
+      if (unknown.length > 0) errors.push(`${it.id}: VS-12 — comprehension carrier has above-level word(s) [${[...new Set(unknown)].join(", ")}]`);
+    }
   }
 
   // release gating
@@ -347,6 +368,9 @@ export function runValidateStory(): void {
     const items = itemsRaw === null ? null : StoryItems.safeParse(itemsRaw);
     if (items && !items.success) { errors.push(`${id}: story-items.json schema — ${items.error.issues[0]?.message ?? "?"}`); continue; }
     const release = readJsonIfExists<ReleaseFile>(path.join(dir, "release.json"));
+    const compRaw = readJsonIfExists<unknown>(path.join(dir, "comprehension.json"));
+    const comprehension = compRaw === null ? null : StoryComprehensionFile.safeParse(compRaw);
+    if (comprehension && !comprehension.success) { errors.push(`${id}: comprehension.json schema — ${comprehension.error.issues[0]?.message ?? "?"}`); continue; }
 
     const res = validateStoryBundle(
       {
@@ -354,6 +378,7 @@ export function runValidateStory(): void {
         cast: cast ? cast.data : null,
         names: names ? names.data : null,
         storyItems: items ? items.data : null,
+        comprehension: comprehension ? comprehension.data : null,
         release,
       },
       corpus,
@@ -370,5 +395,5 @@ export function runValidateStory(): void {
     process.exitCode = 1;
     return;
   }
-  console.log(`content validate-story: OK — ${ids.length} story/ies, ${chapters} chapter(s); VS-1…VS-11 + release green.`);
+  console.log(`content validate-story: OK — ${ids.length} story/ies, ${chapters} chapter(s); VS-1…VS-12 + release green.`);
 }

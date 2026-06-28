@@ -5,8 +5,8 @@
  * taskSlot items, and the cosmetic save; a locked/unknown stop bounces to the hub.
  */
 import { redirect } from "next/navigation";
-import { Encounter, type Chapter, type GrammarItem, type VocabItem } from "@domigo/content-schema";
-import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadUnit } from "@domigo/content-loader";
+import { Encounter, type Chapter, type ComprehensionItem, type GrammarItem, type VocabItem } from "@domigo/content-schema";
+import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadUnit } from "@domigo/content-loader";
 import { getDb, getDueRefs, getGameSave } from "@domigo/db";
 import { resolveEncounterTasks, type ResolvedItem } from "@domigo/game-core";
 import { getActingUserForPage } from "@/lib/identity";
@@ -19,10 +19,18 @@ export const dynamic = "force-dynamic";
 const STORY_BY_GRADE: Record<number, string> = { 1: "g1.st.lost-pages", 2: "g2.st.wrong-name" };
 const GAME_TYPE: Record<number, "overworld" | "detective"> = { 1: "overworld", 2: "detective" };
 
-function storyItemsFor(chapter: Chapter, unit: { vocab: VocabItem[]; grammar: GrammarItem[] }): Record<string, ResolvedItem> {
+function storyItemsFor(
+  chapter: Chapter,
+  unit: { vocab: VocabItem[]; grammar: GrammarItem[] },
+  comprehension: ComprehensionItem[] = [],
+): Record<string, ResolvedItem> {
   const out: Record<string, ResolvedItem> = {};
   for (const sc of chapter.scenes) {
     for (const ts of sc.taskSlots) {
+      // Phase 3: a `.ci.` ref is a scene-comprehension item (story bundle) — cast to
+      // GrammarItem so it renders/grades exactly like a grammar task (no structureId).
+      const ci = comprehension.find((x) => x.id === ts.itemId);
+      if (ci) { out[ts.itemId] = { kind: "grammar", item: ci as unknown as GrammarItem }; continue; }
       const v = unit.vocab.find((x) => x.id === ts.itemId);
       if (v) {
         // Scene-embedded carrier (Phase 2): a variantKey re-frames the carrier as
@@ -69,7 +77,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
     const chapter = story?.chapters.find((c) => c.id.endsWith(`.${zone}`) && released.includes(c.id));
     if (!chapter) redirect(hubHref);
     const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
-    const storyItems = storyItemsFor(chapter, loadUnit(slug));
+    const storyItems = storyItemsFor(chapter, loadUnit(slug), loadStoryComprehension(storyId)?.items ?? []);
     const detectiveArt = resolveDetectiveArt(storyId, grade, chapter);
     const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-detective").DetectiveSave } : null;
     return (
