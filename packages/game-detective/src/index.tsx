@@ -6,3 +6,6 @@
  */
 export { DetectiveGame } from "./DetectiveGame.tsx";
 export type { DetectiveGameProps, DetectiveSave, DetectiveArt, GameAttempt, AttemptFn } from "./DetectiveGame.tsx";
+export { EvidenceBoard, EvidenceGallery } from "./art.tsx";
+export type { EvidencePiece } from "./art.tsx";
+export { EVIDENCE } from "./detective-copy.ts";

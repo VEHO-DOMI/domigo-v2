@@ -11,7 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { REPO_ROOT, loadStoryArt } from "@domigo/content-loader";
-import type { Chapter } from "@domigo/content-schema";
+import type { Chapter, Story as StoryT } from "@domigo/content-schema";
 
 export interface ResolvedDetectiveArt {
   base: string;
@@ -82,4 +82,35 @@ export function resolveHubArt(storyId: string, grade: number): ResolvedHubArt | 
     if (u) cards[chId] = u;
   }
   return { cover: url(art.cover), cards };
+}
+
+/**
+ * One representative clue thumbnail per chapter for the persistent hub Evidence
+ * Board: the FIRST taskSlot (scene order) whose `${chapter.id}.${slot}` clue stem
+ * exists on disk. Missing → omitted (the UI shows a procedural/locked fallback).
+ * Same only-present discipline as resolveDetectiveArt.
+ */
+export function resolveEvidenceArt(storyId: string, grade: number, story: StoryT): Record<string, string> {
+  const art = loadStoryArt(storyId);
+  if (!art) return {};
+  const avail = availMap(grade);
+  const url = (stem: string | undefined): string | null =>
+    stem && avail.has(stem) ? `${art.base}/${avail.get(stem)}` : null;
+
+  const out: Record<string, string> = {};
+  for (const ch of story.chapters) {
+    let hit: string | null = null;
+    for (const sc of ch.scenes) {
+      for (const ts of sc.taskSlots) {
+        const u = url(art.clues[`${ch.id}.${ts.slot}`]);
+        if (u) {
+          hit = u;
+          break;
+        }
+      }
+      if (hit) break;
+    }
+    if (hit) out[ch.id] = hit;
+  }
+  return out;
 }
