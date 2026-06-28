@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Chapter } from "@domigo/content-schema";
 import type { GameAttempt, DetectiveSave, DetectiveArt } from "@domigo/game-detective";
 import type { ResolvedItem } from "@domigo/game-core";
-import { sendAttempt } from "@/lib/attempt-outbox";
+import { flushOutbox, sendAttempt } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 const DetectiveGame = dynamic(() => import("@domigo/game-detective").then((m) => m.DetectiveGame), {
@@ -44,6 +44,7 @@ export default function DetectiveClient(props: {
   });
   const revRef = useRef(initial?.clientRev ?? 0);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [paused, setPaused] = useState(false); // pause-on-blur veil (Law 9 — classroom tablets)
 
   const put = (payload: SavePayload) => {
     void fetch("/api/game-save", {
@@ -63,7 +64,7 @@ export default function DetectiveClient(props: {
   };
 
   useEffect(() => {
-    const flush = () => {
+    const flushSave = () => {
       if (!timer.current) return;
       clearTimeout(timer.current);
       timer.current = null;
@@ -72,9 +73,20 @@ export default function DetectiveClient(props: {
         if (raw) put(JSON.parse(raw) as SavePayload);
       } catch { /* ignore */ }
     };
-    window.addEventListener("pagehide", flush);
-    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flush(); });
-    return () => window.removeEventListener("pagehide", flush);
+    // Backgrounded (tab switch / app hidden): persist everything we have, then
+    // raise the paused veil so the student deliberately resumes on return (Law 9).
+    const onHidden = () => {
+      if (document.visibilityState !== "hidden") return;
+      flushSave();
+      void flushOutbox(); // drain any pending graded attempts while we still can
+      setPaused(true);
+    };
+    window.addEventListener("pagehide", flushSave);
+    document.addEventListener("visibilitychange", onHidden);
+    return () => {
+      window.removeEventListener("pagehide", flushSave);
+      document.removeEventListener("visibilitychange", onHidden);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lsKey]);
 
@@ -82,15 +94,36 @@ export default function DetectiveClient(props: {
     sendAttempt({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
 
   return (
-    <DetectiveGame
-      caseTitle={props.caseTitle}
-      chapter={props.chapter}
-      castNames={props.castNames}
-      storyItems={props.storyItems}
-      onAttempt={onAttempt}
-      initialSave={initial?.state ?? null}
-      onSave={onSave}
-      art={props.detectiveArt}
-    />
+    <>
+      <DetectiveGame
+        caseTitle={props.caseTitle}
+        chapter={props.chapter}
+        castNames={props.castNames}
+        storyItems={props.storyItems}
+        onAttempt={onAttempt}
+        initialSave={initial?.state ?? null}
+        onSave={onSave}
+        art={props.detectiveArt}
+      />
+      {paused && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Paused"
+          style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(15,23,42,.72)", backdropFilter: "blur(2px)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 16, fontFamily: "system-ui, sans-serif" }}
+        >
+          <div style={{ fontSize: 44 }} aria-hidden="true">⏸️</div>
+          <div style={{ color: "#fff", fontSize: 22, fontWeight: 700 }}>Paused</div>
+          <div style={{ color: "#cbd5e1", fontSize: 14 }}>Your case is saved.</div>
+          <button
+            autoFocus
+            onClick={() => setPaused(false)}
+            style={{ background: "#2563eb", color: "#fff", border: "none", borderRadius: 10, padding: "12px 28px", fontSize: 17, fontWeight: 600, cursor: "pointer" }}
+          >
+            ▶ Continue
+          </button>
+        </div>
+      )}
+    </>
   );
 }
