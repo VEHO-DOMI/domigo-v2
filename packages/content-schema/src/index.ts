@@ -1023,6 +1023,12 @@ export const ItemRef = z
     /^g[1-4]u\d{2}\.(?:w\.[a-z0-9-]+|gi\.[a-z0-9-]+\.(?:gf|mc|cp|tr|ec|tf|qf|ff|sb|mt|ag|gs|mp)\.\d{3})$/,
   );
 
+/** `g2u04.ci.<key>.<fmt>.<NNN>` — a story-comprehension item id (sibling to ItemRef;
+ *  the gradeable schema lives lower, near ReadingItem). Tests the SCENE, not grammar. */
+export const StoryComprehensionRef = z
+  .string()
+  .regex(/^g[1-4]u\d{2}\.ci\.[a-z0-9-]+\.(?:gf|mc|cp|tr|ec|tf|qf|ff|sb|mt|ag|gs|mp)\.\d{3}$/);
+
 /** A narrative branch option. Choices are never graded (no fake choices). */
 export const Choice = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/), // scene-local
@@ -1035,8 +1041,9 @@ export type Choice = z.infer<typeof Choice>;
 export const TaskSlot = z.object({
   /** Scene-local slot key. */
   slot: z.string().regex(/^[a-z0-9-]+$/),
-  /** Resolves ≤ the chapter's gate unit — VS-4 validator (Track C). */
-  itemId: ItemRef,
+  /** Resolves ≤ the chapter's gate unit — VS-4 validator (Track C). A `.ci.` ref
+   *  points at a scene-comprehension item (story-bundle comprehension.json). */
+  itemId: z.union([ItemRef, StoryComprehensionRef]),
   /** Which presentation variant renders here (null = base carrier). */
   variantKey: z.string().nullable(),
 });
@@ -1348,6 +1355,55 @@ export const ReadingItem = z.object({
   strict: z.boolean(),
 });
 export type ReadingItem = z.infer<typeof ReadingItem>;
+
+// ---------------------------------------------------------------------------
+// Story comprehension — comprehension@1 (Track C, Phase 3). Per-story SCENE/plot
+// checks ("Why is Max cleared?"), NOT abstract grammar. A ComprehensionItem is a
+// SIBLING gradeable type (own `.ci.` id, no structureId) cast to GrammarItem to
+// grade/render exactly like ListeningItem/ReadingItem. Lives at
+// content/corpus/stories/<id>/comprehension.json; referenced by a taskSlot, placed
+// right after the chapter's reveal (comprehension before production).
+// ---------------------------------------------------------------------------
+
+/** A gradeable comprehension item — same fields as ReadingItem, `.ci.` id. */
+export const ComprehensionItem = z.object({
+  id: StoryComprehensionRef,
+  rev: z.number().int().min(1),
+  difficulty: Difficulty,
+  format: GrammarFormat,
+  prompt: z.object({
+    text: z.string().min(1),
+    lang: z.enum(["en", "de"]),
+    blanks: z.number().int().min(0).max(4),
+  }),
+  answers: z.array(TieredAnswer),
+  direction: TranslationDirection.nullable(),
+  distractors: z.array(z.string().min(1)),
+  pairs: z.array(z.object({ left: z.string().min(1), right: z.string().min(1) })),
+  groups: z.array(z.object({ label: z.string().min(1), members: z.array(z.string().min(1)).min(2) })),
+  gloss: z.array(Gloss),
+  hintDe: z.string().min(1),
+  hintEn: z.string().nullable(),
+  explainDe: z.string().min(1),
+  explainEn: z.string().nullable(),
+  strict: z.boolean(),
+});
+export type ComprehensionItem = z.infer<typeof ComprehensionItem>;
+
+export const StoryComprehensionFile = z
+  .object({
+    schema: z.literal("comprehension@1"),
+    storyId: z.string().min(1),
+    items: z.array(ComprehensionItem).min(1),
+  })
+  .superRefine((f, ctx) => {
+    const seen = new Set<string>();
+    for (const [i, it] of f.items.entries()) {
+      if (seen.has(it.id)) ctx.addIssue({ code: "custom", path: ["items", i, "id"], message: `duplicate item id ${it.id}` });
+      seen.add(it.id);
+    }
+  });
+export type StoryComprehensionFile = z.infer<typeof StoryComprehensionFile>;
 
 /** A section that REFERENCES already-graded items (vocab/grammar/listening). */
 export const TestRefSection = z.object({

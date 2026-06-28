@@ -11,9 +11,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { Cast, GameMap, GrammarFile, GrammarStructuresFile, ListeningFile, Story, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
+import { Cast, GameMap, GrammarFile, GrammarStructuresFile, ListeningFile, Story, StoryComprehensionFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
 import type { GrammarItem, GrammarStructure, VocabItem } from "@domigo/content-schema";
-import type { Cast as CastT, GameMap as GameMapT, Story as StoryT } from "@domigo/content-schema";
+import type { Cast as CastT, GameMap as GameMapT, Story as StoryT, StoryComprehensionFile as StoryComprehensionFileT } from "@domigo/content-schema";
 
 /**
  * Repo root. The pipeline derives it from the module path (paths.ts:22), but a
@@ -142,6 +142,13 @@ export function loadStory(storyId: string): StoryT | null {
   if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
   const raw = readJson<unknown>(path.join(STORIES_DIR, storyId, "story.json"));
   return raw === null ? null : Story.parse(raw);
+}
+
+/** Load + validate a story's scene-comprehension checks (Phase 3). Null if none. Server-only. */
+export function loadStoryComprehension(storyId: string): StoryComprehensionFileT | null {
+  if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
+  const raw = readJson<unknown>(path.join(STORIES_DIR, storyId, "comprehension.json"));
+  return raw === null ? null : StoryComprehensionFile.parse(raw);
 }
 
 export function loadStoryCast(storyId: string): CastT | null {

@@ -9,9 +9,9 @@
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { ItemRef, ListeningRef, TestRef } from "@domigo/content-schema";
+import { ItemRef, ListeningRef, StoryComprehensionRef, TestRef } from "@domigo/content-schema";
 import type { GrammarItem } from "@domigo/content-schema";
-import { loadListening, loadTest, loadUnit } from "@domigo/content-loader";
+import { loadListening, loadStoryComprehension, loadTest, loadUnit } from "@domigo/content-loader";
 import { gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
 import type { GrammarInput, Tier } from "@domigo/engine";
 import { getDb, recordAttempt } from "@domigo/db";
@@ -19,11 +19,14 @@ import { getActingUser } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
 import { parseListeningRef } from "@/lib/listeningRef";
 import { parseTestRef } from "@/lib/testRef";
+import { parseComprehensionRef } from "@/lib/comprehensionRef";
 
 export const runtime = "nodejs"; // content-loader uses node:fs → not edge
 export const dynamic = "force-dynamic";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+// `.ci.` ids carry the grade but not the story; one story per grade (Track C).
+const STORY_BY_GRADE: Record<number, string> = { 1: "g1.st.lost-pages", 2: "g2.st.wrong-name" };
 
 const GrammarInputSchema = z.union([
   z.object({ kind: z.literal("text"), value: z.string() }),
@@ -34,7 +37,7 @@ const GrammarInputSchema = z.union([
 
 const Body = z.object({
   clientAttemptId: z.string().regex(UUID),
-  itemId: z.union([ItemRef, ListeningRef, TestRef]),
+  itemId: z.union([ItemRef, ListeningRef, TestRef, StoryComprehensionRef]),
   mode: z.string().min(1).max(40).regex(/^[a-z0-9:_-]+$/i),
   input: z.union([GrammarInputSchema, z.object({ kind: z.literal("vocab"), value: z.string() })]),
   latencyMs: z.number().int().nonnegative().nullable().optional(),
@@ -57,7 +60,8 @@ export async function POST(req: Request): Promise<Response> {
   const ref = parseItemRef(itemId);
   const lref = ref ? null : parseListeningRef(itemId);
   const tref = ref || lref ? null : parseTestRef(itemId);
-  if (!ref && !lref && !tref) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+  const cref = ref || lref || tref ? null : parseComprehensionRef(itemId);
+  if (!ref && !lref && !tref && !cref) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
 
   // 4–6. Load + re-grade + compute XP (wrong → 0; never subtract).
   let tier: Tier;
@@ -92,16 +96,26 @@ export async function POST(req: Request): Promise<Response> {
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
       tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
       xpAwarded = xpForTier(item.difficulty * 10, tier);
-    } else {
-      // reading: tref is non-null (the !ref && !lref && !tref guard returned above).
-      const tr = tref!;
+    } else if (tref) {
       kind = "reading";
-      unitSlug = tr.unitSlug;
-      grade = tr.grade;
-      const file = loadTest(tr.unitSlug);
+      unitSlug = tref.unitSlug;
+      grade = tref.grade;
+      const file = loadTest(tref.unitSlug);
       const item = file?.test.sections
         .flatMap((s) => (s.kind === "reading" ? s.items : []))
         .find((i) => i.id === itemId);
+      if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
+      tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
+      xpAwarded = xpForTier(item.difficulty * 10, tier);
+    } else {
+      // story comprehension (`.ci.`): a receptive sibling — graded like reading,
+      // queue-skipped. cref is non-null (the guard above returned otherwise).
+      const cr = cref!;
+      kind = "reading";
+      unitSlug = cr.unitSlug;
+      grade = cr.grade;
+      const storyId = STORY_BY_GRADE[cr.grade];
+      const item = (storyId ? loadStoryComprehension(storyId) : null)?.items.find((i) => i.id === itemId);
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
       tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
       xpAwarded = xpForTier(item.difficulty * 10, tier);

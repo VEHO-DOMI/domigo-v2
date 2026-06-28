@@ -85,7 +85,7 @@ function story(chapters?: unknown[]) {
 const cast = () => Cast.parse({ schema: "cast@1", storyId: "g1.st.lp", members: [{ id: "finn", nameEn: "Finn", descriptionDe: null, voice: null, art: null }] });
 
 function bundle(over: Partial<StoryBundle> = {}): StoryBundle {
-  return { story: story(), cast: cast(), names: null, storyItems: null, release: null, ...over };
+  return { story: story(), cast: cast(), names: null, storyItems: null, comprehension: null, release: null, ...over };
 }
 
 test("a clean story bundle passes VS-1…VS-10", () => {
