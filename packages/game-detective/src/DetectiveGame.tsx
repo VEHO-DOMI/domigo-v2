@@ -53,6 +53,8 @@ export interface DetectiveGameProps {
   chapter: Chapter;
   castNames: Record<string, string>;
   storyItems: Record<string, ResolvedItem>;
+  /** Due-item "re-interview" beat (Phase 4 spaced retrieval) — shown before the chapter on a fresh start. */
+  reviewItems?: ResolvedItem[];
   onAttempt: AttemptFn;
   initialSave?: DetectiveSave | null;
   onSave?: (s: DetectiveSave) => void;
@@ -69,8 +71,8 @@ function humanize(slot: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-function TaskClue({ item, onAttempt, onSolved, onContinue, onScored }: {
-  item: ResolvedItem; onAttempt: AttemptFn; onSolved: () => void; onContinue: () => void; onScored: (tier: Tier) => void;
+function TaskClue({ item, onAttempt, onSolved, onContinue, onScored, hideHint }: {
+  item: ResolvedItem; onAttempt: AttemptFn; onSolved: () => void; onContinue: () => void; onScored: (tier: Tier) => void; hideHint?: boolean;
 }) {
   const [res, setRes] = useState<{ tier: Tier; clues: number } | null>(null);
   const onResult = (tier: Tier, detail: ResultDetail) => {
@@ -85,8 +87,8 @@ function TaskClue({ item, onAttempt, onSolved, onContinue, onScored }: {
     <div style={{ marginTop: 14, borderTop: "1px solid #e2e8f0", paddingTop: 12 }}>
       <div style={{ fontSize: 12, color: "#b45309", fontWeight: 600, marginBottom: 6 }}>{COPY.cluePrompt}</div>
       {item.kind === "grammar"
-        ? <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} hideXp />
-        : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} hideXp />}
+        ? <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} hideXp hideHint={hideHint} />
+        : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} hideXp hideHint={hideHint} />}
       {line && <div style={{ marginTop: 10, fontWeight: 700, fontSize: 14, color: line.good ? "#15803d" : "#b91c1c" }}>{line.text}</div>}
       {res && <button style={btn} onClick={onContinue}>{COPY.continue}</button>}
     </div>
@@ -111,6 +113,11 @@ export function DetectiveGame(props: DetectiveGameProps) {
     return Number(sessionStorage.getItem("domigo:g2:trail")) || 0;
   });
   const [done, setDone] = useState(false);
+  // Phase 4: a due-item "re-interview" beat before the chapter (fresh start only).
+  const reviewItems = props.reviewItems ?? [];
+  const [reviewIdx, setReviewIdx] = useState(0);
+  const inReview = resume === null && reviewIdx < reviewItems.length;
+  const fadeHints = chapter.unit >= 10; // Phase 5: scaffold fade — drop the Tipp from ~ch10
 
   const onScored = (tier: Tier): void => setTrail((t) => {
     const next = tier === "correct" || tier === "partial" ? t + 1 : 0;
@@ -141,6 +148,27 @@ export function DetectiveGame(props: DetectiveGameProps) {
   };
 
   const clueList = <EvidenceBoard label="Case file" clues={clues.map((c) => ({ key: c, text: humanize(c) }))} images={art?.clues} />;
+
+  // Phase 4 — "re-interview": a due clue resurfaces before the new case (Law 6).
+  if (inReview) {
+    const rItem = reviewItems[reviewIdx]!;
+    return (
+      <main style={{ ...wrap, padding: "16px 12px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
+          <h1 style={{ fontSize: 20, margin: 0 }}>{caseTitle} <span style={{ color: "#94a3b8", fontSize: 14, fontWeight: 400 }}>· re-check the notes</span></h1>
+          <a href="/play/2" style={{ fontSize: 14, color: "#2563eb" }}>← Cases</a>
+        </div>
+        <section style={{ ...scenePanel, borderLeft: "4px solid #b45309" }}>
+          <div style={{ fontSize: 15, fontWeight: 700, color: "#b45309", marginBottom: 2 }}>🔍 Mina &amp; Theo</div>
+          <p style={{ fontSize: 18, margin: "6px 0 4px", lineHeight: 1.4 }}>
+            Before the new case — one more look at an old clue.{reviewItems.length > 1 ? ` (${reviewIdx + 1}/${reviewItems.length})` : ""}
+          </p>
+          <TaskClue item={rItem} onAttempt={onAttempt} onSolved={() => {}} onContinue={() => setReviewIdx((i) => i + 1)} onScored={onScored} hideHint={fadeHints} />
+        </section>
+        <div style={{ marginTop: 14 }}>{clueList}</div>
+      </main>
+    );
+  }
 
   if (done || !scene) {
     return (
@@ -211,7 +239,7 @@ export function DetectiveGame(props: DetectiveGameProps) {
         )}
 
         {taskBlocks ? (
-          <TaskClue item={slotItem} onAttempt={onAttempt} onSolved={() => addClue(slot.slot)} onContinue={() => setTaskDone(true)} onScored={onScored} />
+          <TaskClue item={slotItem} onAttempt={onAttempt} onSolved={() => addClue(slot.slot)} onContinue={() => setTaskDone(true)} onScored={onScored} hideHint={fadeHints} />
         ) : Array.isArray(sNext) ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 14 }}>
             {sNext.map((c) => <button key={c.id} style={choiceBtn} onClick={() => go(c.next)}>{c.textEn}</button>)}

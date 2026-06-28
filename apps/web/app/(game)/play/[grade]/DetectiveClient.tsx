@@ -26,6 +26,7 @@ export default function DetectiveClient(props: {
   chapter: Chapter;
   castNames: Record<string, string>;
   storyItems: Record<string, ResolvedItem>;
+  reviewItems: ResolvedItem[];
   serverSave: SavePayload | null;
   detectiveArt: DetectiveArt | null;
 }) {
@@ -100,6 +101,7 @@ export default function DetectiveClient(props: {
         chapter={props.chapter}
         castNames={props.castNames}
         storyItems={props.storyItems}
+        reviewItems={props.reviewItems}
         onAttempt={onAttempt}
         initialSave={initial?.state ?? null}
         onSave={onSave}
