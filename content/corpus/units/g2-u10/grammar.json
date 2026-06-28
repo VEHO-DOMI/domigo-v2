@@ -325,7 +325,27 @@
       "rev": 1,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch10.her-passion",
+            "prompt": {
+              "text": "She likes ___ about science.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch10"
+              },
+              "note": "g2.st.wrong-name.ch10.s003 · her-passion"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

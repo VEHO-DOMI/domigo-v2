@@ -299,7 +299,27 @@
       "rev": 2,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch05.trace-route",
+            "prompt": {
+              "text": "The bank is ___ the church.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch05"
+              },
+              "note": "g2.st.wrong-name.ch05.s003 · trace-route"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

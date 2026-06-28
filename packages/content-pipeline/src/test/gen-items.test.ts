@@ -79,8 +79,11 @@ test("rekeyFingerprint: review edits keep the id, move the pin", () => {
 // several fix rounds (validator fixes, w.sick, w.shall, trick-or-treat hyphens)
 // plus 3 stage-8 reviewer cell-edits. `draft + item-fixes + lock` must still
 // reproduce the approved corpus — proving fix-rounds keep the drafts in sync.
+// Strip rev (continuity) AND presentation.variants — variants are a post-generation
+// story-production layer (content story variants), not reproducible from draft+fixes
+// alone, so the empty-prev determinism check compares the generator-owned content only.
 const stripRev = (items: UnitItems["vocab"] | UnitItems["grammar"]): unknown[] =>
-  items.map(({ rev, ...rest }) => rest);
+  items.map(({ rev, ...rest }) => ({ ...rest, presentation: { ...rest.presentation, variants: [] } }));
 
 test("regenerateUnitItems: committed g2-u03 round-trips from draft + item-fixes", () => {
   const committed = readUnitItems("g2-u03");

@@ -204,7 +204,33 @@
       "rev": 1,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch01.what-happened",
+            "prompt": {
+              "text": "I ___ the card again.",
+              "lang": "en"
+            },
+            "glosses": [
+              {
+                "word": "card",
+                "de": "Karte",
+                "scope": "wrong-name.ch01.what-happened"
+              }
+            ],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch01"
+              },
+              "note": "g2.st.wrong-name.ch01.s005 · what-happened"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

@@ -387,7 +387,27 @@
       "rev": 1,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch06.who-must",
+            "prompt": {
+              "text": "You ___ close the back door at night.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch06"
+              },
+              "note": "g2.st.wrong-name.ch06.s004 · who-must"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

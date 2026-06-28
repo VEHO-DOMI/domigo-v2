@@ -405,7 +405,27 @@
       "rev": 1,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch08.timeline",
+            "prompt": {
+              "text": "___, the show ended.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch08"
+              },
+              "note": "g2.st.wrong-name.ch08.s003 · timeline"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },
