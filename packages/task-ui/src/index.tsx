@@ -206,6 +206,51 @@ export type ResultDetail =
   | { kind: "grammar"; itemId: string; input: GrammarInput }
   | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string } };
 
+/** Forgiving-retry ladder (Law 3): a wrong answer re-enables the input — nothing
+ *  shown lost — up to MAX_WRONG tries (1st wrong → try again, 2nd → the Tipp is
+ *  revealed, 3rd → the answer is shown). Only the TERMINAL outcome (a pass, or the
+ *  final wrong) is reported via onResult, so every host still sees exactly one
+ *  "task concluded" per item — now after the student's retries. Shared by both views. */
+const MAX_WRONG = 3;
+
+function useRetryGrading(
+  gradeOnce: () => { tier: Tier; detail: ResultDetail },
+  onResult?: (tier: Tier, detail: ResultDetail) => void,
+) {
+  const [tier, setTier] = useState<Tier | null>(null);
+  const [wrongCount, setWrongCount] = useState(0);
+  const solved = tier !== null && tier !== "wrong";
+  const exhausted = wrongCount >= MAX_WRONG;
+  const done = solved || exhausted; // locked: inputs disabled, feedback shown
+  const retrying = tier === "wrong" && !exhausted; // open for another try
+  const submit = () => {
+    if (done) return;
+    const { tier: t, detail } = gradeOnce();
+    setTier(t);
+    if (t !== "wrong") {
+      onResult?.(t, detail); // a pass concludes the task
+      return;
+    }
+    const n = wrongCount + 1;
+    setWrongCount(n);
+    if (n >= MAX_WRONG) onResult?.(t, detail); // out of tries → conclude (never blocks)
+  };
+  return { tier, wrongCount, done, retrying, submit };
+}
+
+/** Intermediate-wrong feedback shown before the task locks: a gentle "try again"
+ *  (announced for screen readers), with the German Tipp surfaced from the 2nd try. */
+function RetryNudge({ wrongCount, hintDe }: { wrongCount: number; hintDe: string }) {
+  return (
+    <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      <span style={{ color: TIER_STYLE.wrong.bg, fontWeight: 600, fontSize: 14 }}>Not quite — try again.</span>
+      {wrongCount >= 2 && hintDe && (
+        <div style={{ fontSize: 13, color: "#92400e", background: "#fef3c7", borderRadius: 8, padding: "6px 10px" }}>💡 {hintDe}</div>
+      )}
+    </div>
+  );
+}
+
 export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean }) {
   const promptId = useId();
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
@@ -221,23 +266,21 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp }:
   const [text, setText] = useState<string[]>([]);
   const [choice, setChoice] = useState<string | null>(null);
   const [map, setMap] = useState<Record<string, string>>({});
-  const [tier, setTier] = useState<Tier | null>(null);
 
   const isChoice = item.format === "multiple-choice" || item.format === "context-picker";
   const isMatch = item.format === "matching" || item.format === "matching-pairs";
   const isGroup = item.format === "group-sort";
-  const done = tier !== null;
 
-  const submit = () => {
+  const gradeOnce = (): { tier: Tier; detail: ResultDetail } => {
     let input: GrammarInput;
     if (isChoice) input = { kind: "choice", value: choice ?? "" };
     else if (isMatch) input = { kind: "matching", value: map };
     else if (isGroup) input = { kind: "groupSort", value: map };
     else input = { kind: "text", value: text.join(" | ") };
     const r = gradeGrammar(item, input);
-    setTier(r.tier);
-    onResult?.(r.tier, { kind: "grammar", itemId: item.id, input });
+    return { tier: r.tier, detail: { kind: "grammar", itemId: item.id, input } };
   };
+  const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult);
 
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
   const correctText = item.answers.filter((a) => a.tier === "full").map((a) => a.text).join("  /  ");
@@ -252,7 +295,8 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp }:
       {TEXT_FORMATS.has(item.format) && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} onEnter={submit} autoFocusFirst={autoFocus} />}
       <GlossRow gloss={item.gloss} />
       {!hideHint && <HintRow hintDe={item.hintDe} />}
-      {!done && <button style={btn} onClick={submit}>Check</button>}
+      {!done && <button style={btn} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
+      {retrying && <RetryNudge wrongCount={wrongCount} hintDe={item.hintDe} />}
       {done && tier && (
         <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           <FeedbackBar tier={tier} xp={xp} hideXp={hideXp} />
@@ -272,14 +316,12 @@ export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp }: {
   const promptId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
-  const [tier, setTier] = useState<Tier | null>(null);
-  const done = tier !== null;
-  useEffect(() => { if (autoFocus && !done) inputRef.current?.focus(); }, [autoFocus, done]);
-  const submit = () => {
+  const gradeOnce = (): { tier: Tier; detail: ResultDetail } => {
     const r = gradeVocab(item, value);
-    setTier(r.tier);
-    onResult?.(r.tier, { kind: "vocab", itemId: item.id, input: { kind: "vocab", value } });
+    return { tier: r.tier, detail: { kind: "vocab", itemId: item.id, input: { kind: "vocab", value } } };
   };
+  const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult);
+  useEffect(() => { if (autoFocus && !done) inputRef.current?.focus(); }, [autoFocus, done, wrongCount]);
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
   const answer = item.sAnswers.filter((a) => a.tier === "full").map((a) => a.text).join("  /  ");
   return (
@@ -290,7 +332,8 @@ export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp }: {
       <input ref={inputRef} style={inputStyle} value={value} disabled={done} aria-label="Your answer" placeholder="Your answer" onKeyDown={(e) => { if (e.key === "Enter" && !done) { e.preventDefault(); submit(); } }} onChange={(e) => setValue(e.target.value)} />
       <GlossRow gloss={item.gloss} />
       {!hideHint && <HintRow hintDe={item.hintDe} />}
-      {!done && <button style={btn} onClick={submit}>Check</button>}
+      {!done && <button style={btn} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
+      {retrying && <RetryNudge wrongCount={wrongCount} hintDe={item.hintDe} />}
       {done && tier && (
         <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           <FeedbackBar tier={tier} xp={xp} hideXp={hideXp} />
