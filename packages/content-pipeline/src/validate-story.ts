@@ -1,5 +1,5 @@
 /**
- * `content validate-story` — the deterministic story gate (VS-1…VS-10 + release).
+ * `content validate-story` — the deterministic story gate (VS-1…VS-11 + release).
  * Opt-in, like validate-listening/validate-test: the main `content validate`
  * stays blind to story files. The pure `validateStoryBundle(bundle, corpus)` is
  * fixture-tested; the runner wires the real corpus (level gate + item existence).
@@ -14,6 +14,7 @@
  *  VS-8  meta-talk blacklist (EN grammar jargon / tense names in student lines)
  *  VS-9  asset refs exist (audio.file / cast art) — informational until art lands
  *  VS-10 storyItems carriers pass the level gate at their narrative-lock unit
+ *  VS-11 a taskSlot.variantKey resolves to a variant on its item (catches dangling wires)
  *  +     release gating: a released chapter's gate unit must be ready in the corpus
  */
 import fs from "node:fs";
@@ -47,6 +48,8 @@ export interface StoryCorpus {
   isUnitReady(slug: string): boolean;
   /** Above-level tokens of `text` at unit `slug`, honoring `extraPhrases`. */
   unknownTokens(slug: string, text: string, extraPhrases: string[]): string[];
+  /** Variant keys minted on `itemId` ([] if the item is absent). */
+  variantKeysOf(itemId: string): string[];
 }
 
 export interface StoryBundle {
@@ -213,6 +216,10 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
         if (ref.grade !== grade) errors.push(`${scene.id}: VS-4 — taskSlot ${ts.itemId} is grade ${ref.grade}, story is grade ${grade}`);
         else if (ref.unit > chapter.unit) errors.push(`${scene.id}: VS-4 — taskSlot ${ts.itemId} (unit ${ref.unit}) is above the chapter gate unit ${chapter.unit}`);
         else if (!corpus.itemExists(ts.itemId)) errors.push(`${scene.id}: VS-4 — taskSlot ${ts.itemId} does not resolve to an approved item`);
+        // VS-11 a non-null variantKey must name a real variant on the item
+        if (ts.variantKey !== null && !corpus.variantKeysOf(ts.itemId).includes(ts.variantKey)) {
+          errors.push(`${scene.id}: VS-11 — taskSlot "${ts.slot}" variantKey "${ts.variantKey}" is not a variant of ${ts.itemId}`);
+        }
       }
       // VS-9 asset refs (audio.file / cast art) — fs existence is a runner concern
       // (the pure layer never touches disk); informational until art/TTS lands.
@@ -269,10 +276,28 @@ function buildRealCorpus(): StoryCorpus {
     itemCache.set(slug, set);
     return set;
   };
+  const variantCache = new Map<string, Map<string, string[]>>();
+  const variantsForSlug = (slug: string): Map<string, string[]> => {
+    const hit = variantCache.get(slug);
+    if (hit !== undefined) return hit;
+    const map = new Map<string, string[]>();
+    try {
+      const items = readUnitItems(slug);
+      for (const it of [...items.vocab, ...items.grammar]) map.set(it.id, it.presentation.variants.map((v) => v.key));
+    } catch {
+      /* unit has no items yet */
+    }
+    variantCache.set(slug, map);
+    return map;
+  };
   return {
     itemExists(itemId) {
       const ref = itemRefUnit(itemId);
       return ref !== null && itemsForSlug(ref.slug).has(itemId);
+    },
+    variantKeysOf(itemId) {
+      const ref = itemRefUnit(itemId);
+      return ref === null ? [] : variantsForSlug(ref.slug).get(itemId) ?? [];
     },
     isUnitReady(slug) {
       return (
@@ -345,5 +370,5 @@ export function runValidateStory(): void {
     process.exitCode = 1;
     return;
   }
-  console.log(`content validate-story: OK — ${ids.length} story/ies, ${chapters} chapter(s); VS-1…VS-10 + release green.`);
+  console.log(`content validate-story: OK — ${ids.length} story/ies, ${chapters} chapter(s); VS-1…VS-11 + release green.`);
 }

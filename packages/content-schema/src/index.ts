@@ -372,6 +372,35 @@ export const ItemPresentation = z.object({
 });
 export type ItemPresentation = z.infer<typeof ItemPresentation>;
 
+/**
+ * Hand-authored story-production INPUT — the carriers a story wants minted onto
+ * its task items. `content story variants` validates each (resolves the itemId,
+ * keeps the base blank count, level-gates the carrier at the item's unit) and
+ * upserts it into the item's `presentation.variants`, then re-stamps the unit.
+ * Lives at content/corpus/stories/<id>/variants.json.
+ */
+export const VariantSpec = z.object({
+  /** Stable, unique-within-item key (e.g. "wrong-name.ch04.compare"). */
+  key: z.string().regex(/^[a-z0-9-]+(\.[a-z0-9-]+)*$/),
+  /** The task item this re-frames (must resolve in its unit). */
+  itemId: z.string().min(1),
+  /** Where it attaches (cross-checked: this scene's slot must use itemId). */
+  scene: z.string().min(1),
+  slot: z.string().min(1),
+  /** Replacement carrier (grammar: prompt.text; vocab: s). Same blank count. */
+  prompt: z.object({ text: z.string().min(1), lang: z.enum(["en", "de"]) }),
+  /** Glosses the new carrier needs (the per-variant level gate honors these). */
+  glosses: z.array(z.object({ word: z.string().min(1), de: z.string().min(1) })),
+});
+export type VariantSpec = z.infer<typeof VariantSpec>;
+
+export const VariantsFile = z.object({
+  schema: z.literal("variants@1"),
+  storyId: z.string().min(1),
+  variants: z.array(VariantSpec),
+});
+export type VariantsFile = z.infer<typeof VariantsFile>;
+
 /** Fields shared by every graded item — spread into VocabItem/GrammarItem. */
 const gradedCore = {
   /** Bumped on any content change; ids never reused (tombstones). */

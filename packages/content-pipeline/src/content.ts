@@ -34,6 +34,7 @@ import { runReviewDocItems } from "./review-items.ts";
 import { runReviewDocWordbank } from "./review-wordbank.ts";
 import { runStatus } from "./status.ts";
 import { runStoryImport } from "./import-story.ts";
+import { runStoryVariants } from "./mint-variants.ts";
 import { runV1Snapshot } from "./v1snapshot.ts";
 import { runValidate } from "./validate.ts";
 import { runValidateListening } from "./validate-listening.ts";
@@ -58,6 +59,16 @@ function parseUnit(argv: string[]): string | undefined {
   const value = argv[i + 1];
   if (value === undefined || !/^g[1-4]-u\d{2}$/.test(value)) {
     throw new Error(`--unit must look like g2-u03, got: ${value}`);
+  }
+  return value;
+}
+
+function parseStoryId(argv: string[]): string | undefined {
+  const i = argv.indexOf("--story");
+  if (i === -1) return undefined;
+  const value = argv[i + 1];
+  if (value === undefined || !/^g[1-4]\.st\.[a-z0-9-]+$/.test(value)) {
+    throw new Error(`--story must look like g2.st.wrong-name, got: ${value}`);
   }
   return value;
 }
@@ -125,8 +136,12 @@ switch (command) {
       const grade = parseGrade(rest);
       if (grade === undefined) throw new Error("story import needs --grade N (only g1 wired so far)");
       runStoryImport(grade);
+    } else if (sub === "variants") {
+      const id = parseStoryId(rest);
+      if (id === undefined) throw new Error("story variants needs --story g2.st.<slug>");
+      runStoryVariants(id, rest.includes("--dry-run"));
     } else {
-      throw new Error(`story needs a subcommand: import (got: ${sub ?? "(none)"})`);
+      throw new Error(`story needs a subcommand: import | variants (got: ${sub ?? "(none)"})`);
     }
     break;
   }
