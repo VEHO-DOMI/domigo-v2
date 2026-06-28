@@ -127,3 +127,69 @@ export function EvidenceBoard({ clues, label, images }: { clues: { key: string; 
     </div>
   );
 }
+
+const TAG_TINTS = ["#fca5a5", "#fdba74", "#fcd34d", "#86efac", "#67e8f9", "#a5b4fc", "#f0abfc", "#d8b4fe"] as const;
+
+/** A small deterministic "evidence tag" — the fallback thumbnail for an unlocked
+ *  piece whose ligne-claire image hasn't been generated yet (all-procedural, Law 9). */
+function EvidenceTag({ seed }: { seed: string }) {
+  const tint = TAG_TINTS[hashStr(seed) % TAG_TINTS.length]!;
+  return (
+    <svg width={40} height={40} viewBox="0 0 40 40" role="img" aria-label="evidence" style={{ flex: "0 0 auto", display: "block", borderRadius: 4, border: "1px solid #e7d9a8" }}>
+      <rect x="0" y="0" width="40" height="40" fill="#fffef7" />
+      <rect x="7" y="10" width="26" height="21" rx="2" fill={tint} stroke="rgba(0,0,0,.35)" strokeWidth="0.75" />
+      <circle cx="20" cy="9" r="2.4" fill="#fff" stroke="rgba(0,0,0,.35)" strokeWidth="0.75" />
+      <path d="M12 19 H28 M12 24 H24" stroke="rgba(0,0,0,.3)" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export interface EvidencePiece {
+  chapterId: string;
+  caseNo: number; // 1..15, shown on locked pieces (no spoiler)
+  label: string; // the Evidence Piece name — rendered ONLY when unlocked
+  img?: string; // resolved clue thumbnail; absent → procedural EvidenceTag
+  unlocked: boolean;
+}
+
+/**
+ * The persistent hub Evidence Board — every Case File's piece across the whole
+ * story, locked until that chapter is solved. Locked pieces stay spoiler-safe
+ * (a 🔒 + "Case N", never the label, which would name the culprit). Pure/hook-free
+ * so a server page can render it as a static client island.
+ */
+export function EvidenceGallery({ pieces, label }: { pieces: EvidencePiece[]; label: string }) {
+  const found = pieces.filter((p) => p.unlocked).length;
+  return (
+    <div style={cork}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12, gap: 8 }}>
+        <span style={{ fontSize: 13, fontWeight: 700, color: "#4a3613", textShadow: "0 1px 0 rgba(255,255,255,.3)" }}>🔍 {label}</span>
+        <span style={{ fontSize: 12, color: "#6b5527", whiteSpace: "nowrap" }}>{found} / {pieces.length} found</span>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(116px, 1fr))", gap: 14 }}>
+        {pieces.map((p) => {
+          const tilt = (hashStr(p.chapterId) % 5) - 2; // -2..2 deg
+          const base: CSSProperties = { ...pinned, transform: `rotate(${tilt}deg)`, margin: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, textAlign: "center" };
+          return p.unlocked ? (
+            <div key={p.chapterId} style={base}>
+              <Pin />
+              {p.img ? (
+                <img src={p.img} alt="" width={40} height={40} style={{ borderRadius: 4, objectFit: "cover", border: "1px solid #e7d9a8" }} />
+              ) : (
+                <EvidenceTag seed={p.chapterId} />
+              )}
+              <span style={{ fontSize: 12 }}><span style={{ color: "#15803d", fontWeight: 700 }}>✓</span> {p.label}</span>
+              <span style={{ fontSize: 10, color: "#8a7c5a" }}>Case {p.caseNo}</span>
+            </div>
+          ) : (
+            <div key={p.chapterId} style={{ ...base, background: "#efe9da", color: "#9b8f73", opacity: 0.85 }}>
+              <Pin />
+              <span style={{ fontSize: 22, lineHeight: 1 }} aria-hidden="true">🔒</span>
+              <span style={{ fontSize: 12 }}>Case {p.caseNo}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

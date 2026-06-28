@@ -7,8 +7,10 @@
 /* eslint-disable @next/next/no-img-element -- decorative ligne-claire banners served from synced public/art assets; next/image adds no value for these */
 import { redirect } from "next/navigation";
 import { loadGameMap, loadReleasedChapters, loadStory } from "@domigo/content-loader";
+import { getDb, getSolvedGameItemIds } from "@domigo/db";
+import { EvidenceGallery, EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { getActingUserForPage } from "@/lib/identity";
-import { resolveHubArt } from "@/lib/story-art";
+import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 
 export const dynamic = "force-dynamic";
 
@@ -28,6 +30,24 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const released = storyId ? loadReleasedChapters(storyId) : [];
 
   const hubArt = storyId && !map ? resolveHubArt(storyId, grade) : null;
+
+  // Persistent Evidence Board (g2 detective only): each chapter's piece unlocks
+  // once every one of its clue tasks is solved (tier <> 'wrong') — derived from
+  // the authoritative attempts ledger, never the wipeable cosmetic save (Law 2).
+  const solvedItemIds =
+    story && !map
+      ? await getSolvedGameItemIds(getDb(), acting.userId, grade).catch(() => new Set<string>())
+      : new Set<string>();
+  const evidenceArt: Record<string, string> = story && storyId && !map ? resolveEvidenceArt(storyId, grade, story) : {};
+  const pieces: EvidencePiece[] =
+    story && !map
+      ? story.chapters.map((c, i): EvidencePiece => {
+          const refs = c.scenes.flatMap((s) => s.taskSlots).map((ts) => ts.itemId);
+          const unlocked = refs.length > 0 && refs.every((ref) => solvedItemIds.has(ref));
+          return { chapterId: c.id, caseNo: i + 1, label: EVIDENCE[c.id] ?? "a clue", img: evidenceArt[c.id], unlocked };
+        })
+      : [];
+
   const noun = map ? "Zone" : "Case";
   const stops = map
     ? map.zones.map((z) => ({
@@ -85,6 +105,12 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
             );
           })}
         </div>
+      )}
+
+      {pieces.length > 0 && (
+        <section style={{ marginTop: 28 }}>
+          <EvidenceGallery pieces={pieces} label="Evidence board (= Beweis)" />
+        </section>
       )}
     </main>
   );
