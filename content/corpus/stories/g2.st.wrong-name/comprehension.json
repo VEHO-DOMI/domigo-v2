@@ -7,8 +7,17 @@
       "rev": 1,
       "difficulty": 2,
       "format": "multiple-choice",
-      "prompt": { "text": "Why was Lena first, not Dani?", "lang": "en", "blanks": 0 },
-      "answers": [{ "text": "Her number was bigger than Dani's.", "tier": "full" }],
+      "prompt": {
+        "text": "Why was Lena first, not Dani?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Her number was bigger than Dani's.",
+          "tier": "full"
+        }
+      ],
       "direction": null,
       "distractors": [
         "Her number was smaller than Dani's.",
@@ -21,6 +30,526 @@
       "hintDe": "Schau auf die Zahlen: 9 und 7. Welche ist größer?",
       "hintEn": null,
       "explainDe": "Lenas Zahl (9) war größer als Danis Zahl (7). Darum war Lena Erste, nicht Dani.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u01.ci.where-is-medal.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Where is the medal now?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It is not here.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It is here.",
+        "It is in the box.",
+        "It is on the desk."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "medal",
+          "de": "Medaille",
+          "scope": null
+        }
+      ],
+      "hintDe": "Sieh in die Vitrine. Ist die Medaille da?",
+      "hintEn": null,
+      "explainDe": "Die Medaille ist weg — sie ist nicht mehr da.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u02.ci.did-max.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Did Max do it?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "No, he was not here.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Yes, he did it.",
+        "Yes, he is glad.",
+        "No, he was sad."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Was sagt Max über gestern?",
+      "hintEn": null,
+      "explainDe": "Max war nicht da — er hat es nicht getan.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u03.ci.why-access.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Why could people go to the medal?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The door was open.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The door was closed.",
+        "Mr Bell was there.",
+        "It was day."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "medal",
+          "de": "Medaille",
+          "scope": null
+        }
+      ],
+      "hintDe": "In der Kostümnacht — wie war die Tür?",
+      "hintEn": null,
+      "explainDe": "Die Tür war offen, also konnten viele Leute hin.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u05.ci.max-route.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Why was Max not in town?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The bank is opposite the church.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The bank is next to the church.",
+        "Max was at school.",
+        "Max had a map."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sieh auf die Karte. Geht Max' Weg?",
+      "hintEn": null,
+      "explainDe": "Die Bank ist gegenüber der Kirche — sein Weg geht nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u06.ci.which-door.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Which door was open that night?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The back door.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The gate.",
+        "No door.",
+        "The big door."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Welche Tür war offen?",
+      "hintEn": null,
+      "explainDe": "Die Hintertür war offen — so kam jemand hinein.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.ci.why-take.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Why did a friend want the medal?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "To show the truth.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "To sell it.",
+        "To play with it.",
+        "To hide it."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "medal",
+          "de": "Medaille",
+          "scope": null
+        },
+        {
+          "word": "truth",
+          "de": "Wahrheit",
+          "scope": null
+        }
+      ],
+      "hintDe": "Was wollte ein Freund?",
+      "hintEn": null,
+      "explainDe": "Ein Freund wollte die Wahrheit zeigen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u08.ci.who-at-night.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Who was in the school at night?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A friend with a key.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Mr Bell.",
+        "No one.",
+        "Max and Theo."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "key",
+          "de": "Schlüssel",
+          "scope": null
+        }
+      ],
+      "hintDe": "Wer hatte einen Schlüssel?",
+      "hintEn": null,
+      "explainDe": "Ein Freund mit einem Schlüssel war in der Schule.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u09.ci.new-medal.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "What is new about the medal?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It has a new name.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It is bigger.",
+        "It is heavy.",
+        "It is smaller."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "medal",
+          "de": "Medaille",
+          "scope": null
+        },
+        {
+          "word": "name",
+          "de": "Name",
+          "scope": null
+        }
+      ],
+      "hintDe": "Was ist anders an der Medaille?",
+      "hintEn": null,
+      "explainDe": "Die neue Medaille hat einen neuen Namen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u10.ci.lena-loves.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "What does Lena love?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Making machines and science.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Playing football.",
+        "Reading books.",
+        "Watching TV."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "machine",
+          "de": "Maschine",
+          "scope": null
+        }
+      ],
+      "hintDe": "Was macht Lena gern?",
+      "hintEn": null,
+      "explainDe": "Lena liebt es, Maschinen zu bauen, und sie liebt Wissenschaft.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.ci.who-put-name.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Who put Lena's name on the medal?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Ben.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Dani.",
+        "Max.",
+        "Mr Bell."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "medal",
+          "de": "Medaille",
+          "scope": null
+        },
+        {
+          "word": "name",
+          "de": "Name",
+          "scope": null
+        }
+      ],
+      "hintDe": "Wessen Schrift ist auf der Karte?",
+      "hintEn": null,
+      "explainDe": "Ben hat Lenas Namen auf die Medaille gesetzt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.ci.why-ben.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Why did Ben do it?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Lena was first, not Dani.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He wanted money.",
+        "He likes medals.",
+        "Dani asked him."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "medal",
+          "de": "Medaille",
+          "scope": null
+        }
+      ],
+      "hintDe": "Warum nahm Ben die Medaille?",
+      "hintEn": null,
+      "explainDe": "Lena war Erste, nicht Dani — Ben wollte das richtig machen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u13.ci.dani-did.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "What did Dani do last year?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He put his name first.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He was with Lena.",
+        "He was not there.",
+        "He was first."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "name",
+          "de": "Name",
+          "scope": null
+        }
+      ],
+      "hintDe": "Was machte Dani letztes Jahr?",
+      "hintEn": null,
+      "explainDe": "Dani setzte seinen Namen an die erste Stelle.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.ci.whose-medal.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Whose medal is it now?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It is Lena's.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It is Dani's.",
+        "It is Ben's.",
+        "It is Max's."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "medal",
+          "de": "Medaille",
+          "scope": null
+        }
+      ],
+      "hintDe": "Wem gehört die Medaille jetzt?",
+      "hintEn": null,
+      "explainDe": "Die Medaille gehört jetzt Lena — sie war Erste.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.ci.why-happy.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Why are they all happy now?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The medal has Lena's name.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Dani is happy alone.",
+        "Ben has the medal.",
+        "Max is sad."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "medal",
+          "de": "Medaille",
+          "scope": null
+        },
+        {
+          "word": "name",
+          "de": "Name",
+          "scope": null
+        }
+      ],
+      "hintDe": "Warum sind alle froh?",
+      "hintEn": null,
+      "explainDe": "Die Medaille hat jetzt Lenas Namen — der richtige Name.",
       "explainEn": null,
       "strict": false
     }
