@@ -15,7 +15,7 @@ import { xpForTier, type Tier } from "@domigo/engine";
 import type { ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { CastAvatar, CommentSection, castLook } from "./art.tsx";
-import { COPY, SUBSCRIBERS, episodeComments, resultLine, trailLabel, type CommentBand } from "./novel-copy.ts";
+import { COPY, SUBSCRIBERS, episodeComments, resultLine, slotPrompt, trailLabel, type CommentBand } from "./novel-copy.ts";
 
 export interface GameAttempt {
   clientAttemptId: string;
@@ -229,7 +229,7 @@ export function NovelGame(props: NovelGameProps) {
     taskOrNav = (
       <TaskTake
         item={slotItem}
-        prompt={fix ? COPY.fixPrompt : COPY.taskPrompt}
+        prompt={slotPrompt(slot.slot)}
         onAttempt={onAttempt}
         onScored={(tier) => { onScored(tier); if (fix) setFixTiers((p) => [...p, tier]); }}
         onContinue={() => { addTake(slot.slot); setTaskDone(true); if (fix) setShowComments(true); }}
