@@ -75,36 +75,32 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
       : "Open a case file to investigate. New cases open as you learn more.";
 
   return (
-    <main style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px", fontFamily: "system-ui, sans-serif" }}>
+    <main style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-        <h1 style={{ fontSize: 24, margin: 0 }}>{story?.title.en ?? "Play"}</h1>
-        <a href="/home" style={{ fontSize: 14, color: "#2563eb" }}>← Home</a>
+        <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{story?.title.en ?? "Play"}</h1>
+        <a href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</a>
       </div>
-      <p style={{ color: "#475569", marginTop: 0 }}>{tagline}</p>
-      {hubArt?.cover && <img src={hubArt.cover} alt="" style={{ display: "block", width: "100%", height: 180, objectFit: "cover", borderRadius: 14, margin: "4px 0 8px" }} />}
+      <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>{tagline}</p>
+      {hubArt?.cover && <img src={hubArt.cover} alt="" style={{ display: "block", width: "100%", height: 180, objectFit: "cover", borderRadius: 16, margin: "4px 0 8px", border: "1px solid var(--card-border)" }} />}
 
       {stops.length === 0 ? (
-        <p style={{ color: "#64748b" }}>Nothing here yet for this grade.</p>
+        <p style={{ color: "var(--muted)" }}>Nothing here yet for this grade.</p>
       ) : (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 14, marginTop: 16 }}>
           {stops.map((s) => {
             const cardImg = hubArt?.cards[s.id];
             return s.unlocked ? (
-              <a
-                key={s.short}
-                href={`/play/${grade}/${s.short}`}
-                style={{ display: "block", padding: "16px 18px", borderRadius: 12, border: "1px solid #cbd5e1", background: "#fff", textDecoration: "none", color: "#0f172a", boxShadow: "0 1px 2px rgba(0,0,0,.04)", overflow: "hidden" }}
-              >
+              <a key={s.short} href={`/play/${grade}/${s.short}`} className="dg-tile" style={{ padding: "16px 18px" }}>
                 {cardImg && <img src={cardImg} alt="" style={{ display: "block", width: "calc(100% + 36px)", margin: "-16px -18px 12px", height: 120, objectFit: "cover" }} />}
-                <div style={{ fontSize: 12, color: "#64748b" }}>{noun} {s.n}</div>
-                <div style={{ fontSize: 17, fontWeight: 600 }}>{s.title}</div>
-                {s.sub && <div style={{ fontSize: 13, color: "#64748b" }}>{s.sub}</div>}
-                <div style={{ fontSize: 13, color: "#2563eb", marginTop: 8 }}>{map ? "Play →" : "Open →"}</div>
+                <div style={{ fontSize: 11, color: "var(--muted)", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>{noun} {s.n}</div>
+                <div style={{ fontSize: 17, fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{s.title}</div>
+                {s.sub && <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>{s.sub}</div>}
+                <div style={{ fontSize: 13, color: "var(--accent)", marginTop: 8, fontWeight: 600 }}>{map ? "Play →" : "Open →"}</div>
               </a>
             ) : (
-              <div key={s.short} style={{ padding: "16px 18px", borderRadius: 12, border: "1px dashed #cbd5e1", background: "#f8fafc", color: "#94a3b8" }}>
-                <div style={{ fontSize: 12 }}>{noun} {s.n}</div>
-                <div style={{ fontSize: 17, fontWeight: 600 }}>{s.title}</div>
+              <div key={s.short} className="dg-tile--locked" style={{ padding: "16px 18px" }}>
+                <div style={{ fontSize: 11, fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>{noun} {s.n}</div>
+                <div style={{ fontSize: 17, fontWeight: 700, fontFamily: "var(--font-display)" }}>{s.title}</div>
                 <div style={{ fontSize: 13, marginTop: 8 }}>🔒 Coming soon</div>
               </div>
             );

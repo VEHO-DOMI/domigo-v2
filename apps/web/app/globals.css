@@ -166,6 +166,27 @@ body {
   box-shadow: var(--shadow-card);
 }
 
+/* Clickable card tile — glass surface that lifts to the accent on hover. */
+.dg-tile {
+  display: block;
+  text-decoration: none;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  color: var(--text);
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s;
+}
+.dg-tile:hover { transform: translateY(-2px); box-shadow: var(--shadow-elevated); border-color: var(--accent); }
+.dg-tile--locked {
+  display: block;
+  background: var(--bg-sunken);
+  border: 1.5px dashed var(--card-border);
+  border-radius: var(--radius-lg);
+  color: var(--muted);
+}
+
 /* Primary action — accent gradient, gloss inset, lift on hover, snappy press. */
 .dg-btn {
   display: inline-flex;

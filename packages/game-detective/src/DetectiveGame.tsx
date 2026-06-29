@@ -64,10 +64,8 @@ export interface DetectiveGameProps {
   art?: DetectiveArt | null;
 }
 
-const wrap: CSSProperties = { maxWidth: 640, margin: "0 auto", fontFamily: "system-ui, sans-serif" };
-const scenePanel: CSSProperties = { background: "#fff", border: "1px solid #e2e8f0", borderRadius: 14, padding: "18px 20px", boxShadow: "0 1px 3px rgba(0,0,0,.06)" };
-const btn: CSSProperties = { marginTop: 14, background: "#2563eb", color: "#fff", border: "none", borderRadius: 8, padding: "9px 18px", fontSize: 15, cursor: "pointer" };
-const choiceBtn: CSSProperties = { ...btn, marginTop: 0, background: "#0ea5e9", textAlign: "left" };
+const wrap: CSSProperties = { maxWidth: 640, margin: "0 auto", fontFamily: "var(--font-body)", color: "var(--text)" };
+const scenePanel: CSSProperties = { background: "var(--card)", borderWidth: 1, borderStyle: "solid", borderColor: "var(--card-border)", borderRadius: 20, padding: "18px 20px", boxShadow: "var(--shadow-card)", backdropFilter: "blur(20px)" };
 
 function humanize(slot: string): string {
   const s = slot.replace(/[-_]/g, " ");
@@ -97,13 +95,13 @@ function TaskClue({ item, onAttempt, onSolved, onContinue, onScored, hideHint }:
   };
   const line = res ? resultLine(item.kind, res.tier, res.clues) : null;
   return (
-    <div style={{ marginTop: 14, borderTop: "1px solid #e2e8f0", paddingTop: 12 }}>
-      <div style={{ fontSize: 12, color: "#b45309", fontWeight: 600, marginBottom: 6 }}>{COPY.cluePrompt}</div>
+    <div style={{ marginTop: 14, borderTop: "1px solid var(--card-border)", paddingTop: 12 }}>
+      <div style={{ fontSize: 12, color: "var(--accent)", fontWeight: 700, marginBottom: 6, fontFamily: "var(--font-label)", letterSpacing: "0.02em" }}>{COPY.cluePrompt}</div>
       {item.kind === "grammar"
         ? <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} hideXp hideHint={hideHint} />
         : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} hideXp hideHint={hideHint} />}
-      {line && <div style={{ marginTop: 10, fontWeight: 700, fontSize: 14, color: line.good ? "#15803d" : "#b91c1c" }}>{line.text}</div>}
-      {res && <button style={btn} onClick={onContinue}>{COPY.continue}</button>}
+      {line && <div style={{ marginTop: 10, fontWeight: 700, fontSize: 14, color: line.good ? "var(--correct)" : "var(--incorrect)" }}>{line.text}</div>}
+      {res && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onContinue}>{COPY.continue}</button>}
     </div>
   );
 }
@@ -168,12 +166,12 @@ export function DetectiveGame(props: DetectiveGameProps) {
     return (
       <main style={{ ...wrap, padding: "16px 12px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
-          <h1 style={{ fontSize: 20, margin: 0 }}>{caseTitle} <span style={{ color: "#94a3b8", fontSize: 14, fontWeight: 400 }}>· re-check the notes</span></h1>
-          <a href="/play/2" style={{ fontSize: 14, color: "#2563eb" }}>← Cases</a>
+          <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{caseTitle} <span style={{ color: "var(--muted)", fontSize: 14, fontWeight: 400, fontFamily: "var(--font-body)" }}>· re-check the notes</span></h1>
+          <a href="/play/2" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Cases</a>
         </div>
-        <section style={{ ...scenePanel, borderLeft: "4px solid #b45309" }}>
-          <div style={{ fontSize: 15, fontWeight: 700, color: "#b45309", marginBottom: 2 }}>🔍 Mina &amp; Theo</div>
-          <p style={{ fontSize: 18, margin: "6px 0 4px", lineHeight: 1.4 }}>
+        <section style={{ ...scenePanel, borderLeftWidth: 5, borderLeftColor: "var(--accent)" }}>
+          <div style={{ fontSize: 15, fontWeight: 700, color: "var(--accent)", marginBottom: 2, fontFamily: "var(--font-display)" }}>🔍 Mina &amp; Theo</div>
+          <p style={{ fontSize: 18, margin: "6px 0 4px", lineHeight: 1.4, color: "var(--text)" }}>
             Before the new case — one more look at an old clue.{reviewItems.length > 1 ? ` (${reviewIdx + 1}/${reviewItems.length})` : ""}
           </p>
           <TaskClue item={rItem} onAttempt={onAttempt} onSolved={() => {}} onContinue={() => setReviewIdx((i) => i + 1)} onScored={onScored} hideHint={fadeHints} />
@@ -196,14 +194,14 @@ export function DetectiveGame(props: DetectiveGameProps) {
         : "We got there — but the case had gaps. Re-open a case to find more clues.";
     return (
       <main style={{ ...wrap, padding: "28px 16px" }}>
-        {art?.endCard && <img src={art.endCard} alt="" style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 14, marginBottom: 14, border: "1px solid #e2e8f0" }} />}
-        <h1 style={{ fontSize: 24, margin: "0 0 6px" }}>Case Closed! 🗂️</h1>
-        <p style={{ fontSize: 18, color: "#0f172a", marginTop: 0 }}>You solved <strong>{caseTitle}</strong>. Lena&apos;s name is on the medal now — the truth is out, thanks to the clues you found.</p>
-        <p style={{ fontSize: 15, color: "#b45309", fontWeight: 600 }}>{verdict} ({found}/{total} pieces)</p>
+        {art?.endCard && <img src={art.endCard} alt="" style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 16, marginBottom: 14, border: "1px solid var(--card-border)" }} />}
+        <h1 style={{ fontSize: 26, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Case Closed! 🗂️</h1>
+        <p style={{ fontSize: 18, color: "var(--text)", marginTop: 0 }}>You solved <strong>{caseTitle}</strong>. Lena&apos;s name is on the medal now — the truth is out, thanks to the clues you found.</p>
+        <p style={{ fontSize: 15, color: "var(--accent)", fontWeight: 700 }}>{verdict} ({found}/{total} pieces)</p>
         <div style={{ marginTop: 14 }}>
           <EvidenceGallery pieces={finalePieces} label="Your evidence (= Beweis)" />
         </div>
-        <a href="/play/2" style={{ color: "#2563eb", fontSize: 14, display: "inline-block", marginTop: 16 }}>← Back to your cases</a>
+        <a href="/play/2" style={{ color: "var(--accent)", fontSize: 14, fontWeight: 700, display: "inline-block", marginTop: 16 }}>← Back to your cases</a>
       </main>
     );
   }
@@ -211,11 +209,11 @@ export function DetectiveGame(props: DetectiveGameProps) {
   if (done || !scene) {
     return (
       <main style={{ ...wrap, padding: "28px 16px" }}>
-        {art?.endCard && <img src={art.endCard} alt="" style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 14, marginBottom: 14, border: "1px solid #e2e8f0" }} />}
-        <h1 style={{ fontSize: 22 }}>Case File complete! 🗂️</h1>
-        <p style={{ color: "#0f172a", fontSize: 17 }}>New <strong>evidence</strong> (= Beweis) found: <strong>{EVIDENCE[chapter.id] ?? "a new clue"}</strong>.</p>
-        <p style={{ color: "#64748b", fontSize: 14 }}>You found {clues.length} clue{clues.length === 1 ? "" : "s"} in this case file. It goes on your evidence board.</p>
-        <a href="/play/2" style={{ color: "#2563eb", fontSize: 14 }}>← Back to your cases</a>
+        {art?.endCard && <img src={art.endCard} alt="" style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 16, marginBottom: 14, border: "1px solid var(--card-border)" }} />}
+        <h1 style={{ fontSize: 22, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Case File complete! 🗂️</h1>
+        <p style={{ color: "var(--text)", fontSize: 17 }}>New <strong>evidence</strong> (= Beweis) found: <strong>{EVIDENCE[chapter.id] ?? "a new clue"}</strong>.</p>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14 }}>You found {clues.length} clue{clues.length === 1 ? "" : "s"} in this case file. It goes on your evidence board.</p>
+        <a href="/play/2" style={{ color: "var(--accent)", fontSize: 14, fontWeight: 700 }}>← Back to your cases</a>
       </main>
     );
   }
@@ -235,45 +233,47 @@ export function DetectiveGame(props: DetectiveGameProps) {
   return (
     <main style={{ ...wrap, padding: "16px 12px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
-        <h1 style={{ fontSize: 20, margin: 0 }}>{caseTitle} <span style={{ color: "#94a3b8", fontSize: 14, fontWeight: 400 }}>· {chapter.titleEn}</span></h1>
-        <a href="/play/2" style={{ fontSize: 14, color: "#2563eb" }}>← Cases</a>
+        <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{caseTitle} <span style={{ color: "var(--muted)", fontSize: 14, fontWeight: 400, fontFamily: "var(--font-body)" }}>· {chapter.titleEn}</span></h1>
+        <a href="/play/2" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Cases</a>
       </div>
 
       <div style={{ marginBottom: 12 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 4 }}>
-          <span style={{ color: "#64748b" }}>{COPY.caseProgress}</span>
-          <span style={{ fontWeight: trailMsg ? 700 : 400, color: trailMsg ? "#b45309" : "#64748b" }}>{trailMsg ?? `${clues.length}/${totalTasks} clues`}</span>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 5 }}>
+          <span style={{ color: "var(--muted)", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>{COPY.caseProgress}</span>
+          <span style={{ fontWeight: 700, color: trailMsg ? "var(--accent)" : "var(--text-secondary)" }}>{trailMsg ?? `${clues.length}/${totalTasks} clues`}</span>
         </div>
-        <div style={{ height: 8, background: "#e2e8f0", borderRadius: 999, overflow: "hidden" }}>
-          <div style={{ width: `${pct}%`, height: "100%", background: "#16a34a", borderRadius: 999, transition: "width .3s" }} />
+        <div className="xp-track">
+          <div className="xp-fill" style={{ width: `${pct}%` }} />
         </div>
       </div>
 
-      {topImg && <img src={topImg} alt="" style={{ width: "100%", maxHeight: 220, objectFit: "cover", borderRadius: 14, marginBottom: 12, border: "1px solid #e2e8f0", boxShadow: "0 1px 3px rgba(0,0,0,.06)" }} />}
+      {topImg && <img src={topImg} alt="" style={{ width: "100%", maxHeight: 220, objectFit: "cover", borderRadius: 16, marginBottom: 12, border: "1px solid var(--card-border)" }} />}
 
-      <section style={{ ...scenePanel, borderLeft: `4px solid ${palette.shirt}` }}>
+      <section style={{ ...scenePanel, borderLeftWidth: 5, borderLeftColor: palette.shirt }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 2 }}>
           {portraitUrl
             ? <img src={portraitUrl} alt={speakerName} width={46} height={46} style={{ borderRadius: "50%", objectFit: "cover", flex: "0 0 auto", border: `2px solid ${palette.shirt}` }} />
             : <CharacterChip charKey={scene.speaker} name={speakerName} />}
-          <div style={{ fontSize: 15, fontWeight: 700, color: palette.shirt }}>{speakerName}</div>
+          <div style={{ fontSize: 15, fontWeight: 700, color: palette.shirt, fontFamily: "var(--font-display)" }}>{speakerName}</div>
           <button onClick={() => speak(scene.textEn)} aria-label="Read the line aloud" title="Read aloud" style={{ marginLeft: "auto", background: "none", border: "none", cursor: "pointer", fontSize: 18, lineHeight: 1, padding: 2 }}>🔊</button>
         </div>
-        <p style={{ fontSize: 19, margin: "6px 0 4px", lineHeight: 1.4 }}>{scene.textEn}</p>
+        <div style={{ background: "var(--bg-sunken)", border: "1px solid var(--card-border)", borderRadius: 14, padding: "11px 15px", marginTop: 4 }}>
+          <p style={{ fontSize: 19, margin: 0, lineHeight: 1.4, color: "var(--text)" }}>{scene.textEn}</p>
+        </div>
         {scene.scaffoldDe && (
-          <div style={{ fontSize: 13, margin: "2px 0 4px" }}>
-            <button style={{ ...btn, marginTop: 0, background: "#e2e8f0", color: "#0f172a", padding: "3px 9px", fontSize: 12 }} aria-expanded={showDe} onClick={() => setShowDe((d) => !d)}>
+          <div style={{ fontSize: 13, margin: "10px 0 2px" }}>
+            <button className="dg-chip" aria-expanded={showDe} onClick={() => setShowDe((d) => !d)}>
               {showDe ? COPY.deHide : COPY.deShow}
             </button>
-            {showDe && <p style={{ fontSize: 14, color: "#64748b", margin: "6px 0 0" }}>{scene.scaffoldDe}</p>}
+            {showDe && <p style={{ fontSize: 14, color: "var(--text-secondary)", margin: "6px 0 0" }}>{scene.scaffoldDe}</p>}
           </div>
         )}
         {scene.glosses.length > 0 && (
-          <div style={{ fontSize: 13 }}>
-            <button style={{ ...btn, marginTop: 4, background: "#e2e8f0", color: "#0f172a", padding: "4px 10px", fontSize: 13 }} onClick={() => setShowGloss((g) => !g)}>
+          <div style={{ fontSize: 13, marginTop: 6 }}>
+            <button className="dg-chip" aria-expanded={showGloss} onClick={() => setShowGloss((g) => !g)}>
               {showGloss ? "Hide word help" : "Show word help"}
             </button>
-            {showGloss && <ul style={{ margin: "8px 0 0", paddingLeft: 18, color: "#334155" }}>{scene.glosses.map((g) => <li key={g.word}>{g.word} = {g.de}</li>)}</ul>}
+            {showGloss && <ul style={{ margin: "8px 0 0", paddingLeft: 18, color: "var(--text-secondary)" }}>{scene.glosses.map((g) => <li key={g.word}>{g.word} = {g.de}</li>)}</ul>}
           </div>
         )}
 
@@ -281,10 +281,10 @@ export function DetectiveGame(props: DetectiveGameProps) {
           <TaskClue item={slotItem} onAttempt={onAttempt} onSolved={() => addClue(slot.slot)} onContinue={() => setTaskDone(true)} onScored={onScored} hideHint={fadeHints} />
         ) : Array.isArray(sNext) ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 14 }}>
-            {sNext.map((c) => <button key={c.id} style={choiceBtn} onClick={() => go(c.next)}>{c.textEn}</button>)}
+            {sNext.map((c) => <button key={c.id} className="dg-btn-secondary" style={{ textAlign: "left", justifyContent: "flex-start" }} onClick={() => go(c.next)}>{c.textEn}</button>)}
           </div>
         ) : (
-          <button style={btn} onClick={() => go(sNext)}>{sNext === null ? "Finish chapter →" : "Next →"}</button>
+          <button className="dg-btn" style={{ marginTop: 14 }} onClick={() => go(sNext)}>{sNext === null ? "Finish chapter →" : "Next →"}</button>
         )}
       </section>
 

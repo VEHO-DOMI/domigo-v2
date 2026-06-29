@@ -15,7 +15,7 @@ import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 const DetectiveGame = dynamic(() => import("@domigo/game-detective").then((m) => m.DetectiveGame), {
   ssr: false,
-  loading: () => <p style={{ textAlign: "center", padding: 40, color: "#64748b" }}>Opening the case…</p>,
+  loading: () => <p style={{ textAlign: "center", padding: 40, color: "var(--muted)" }}>Opening the case…</p>,
 });
 
 interface SavePayload { clientRev: number; state: DetectiveSave }
