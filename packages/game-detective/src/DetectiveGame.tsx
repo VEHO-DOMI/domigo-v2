@@ -169,7 +169,7 @@ export function DetectiveGame(props: DetectiveGameProps) {
           <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{caseTitle} <span style={{ color: "var(--muted)", fontSize: 14, fontWeight: 400, fontFamily: "var(--font-body)" }}>· re-check the notes</span></h1>
           <a href="/play/2" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Cases</a>
         </div>
-        <section style={{ ...scenePanel, borderLeftWidth: 5, borderLeftColor: "var(--accent)" }}>
+        <section style={{ ...scenePanel, boxShadow: "inset 5px 0 0 var(--accent), var(--shadow-card)" }}>
           <div style={{ fontSize: 15, fontWeight: 700, color: "var(--accent)", marginBottom: 2, fontFamily: "var(--font-display)" }}>🔍 Mina &amp; Theo</div>
           <p style={{ fontSize: 18, margin: "6px 0 4px", lineHeight: 1.4, color: "var(--text)" }}>
             Before the new case — one more look at an old clue.{reviewItems.length > 1 ? ` (${reviewIdx + 1}/${reviewItems.length})` : ""}
@@ -249,7 +249,7 @@ export function DetectiveGame(props: DetectiveGameProps) {
 
       {topImg && <img src={topImg} alt="" style={{ width: "100%", maxHeight: 220, objectFit: "cover", borderRadius: 16, marginBottom: 12, border: "1px solid var(--card-border)" }} />}
 
-      <section style={{ ...scenePanel, borderLeftWidth: 5, borderLeftColor: palette.shirt }}>
+      <section style={{ ...scenePanel, boxShadow: `inset 5px 0 0 ${palette.shirt}, var(--shadow-card)` }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 2 }}>
           {portraitUrl
             ? <img src={portraitUrl} alt={speakerName} width={46} height={46} style={{ borderRadius: "50%", objectFit: "cover", flex: "0 0 auto", border: `2px solid ${palette.shirt}` }} />
