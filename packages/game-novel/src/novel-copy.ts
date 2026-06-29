@@ -50,6 +50,11 @@ export const SUBSCRIBERS: Record<string, string> = {
   "g3.st.fourteen.ch04": "28,000",
   "g3.st.fourteen.ch05": "45,000",
   "g3.st.fourteen.ch06": "55,000",
+  "g3.st.fourteen.ch07": "60,000",
+  "g3.st.fourteen.ch08": "80,000",
+  // ch09 ("My Rules") deliberately has no milestone — it's the backlash episode
+  // (Ben pushes back; the legacy count dips 80k→65k), so no triumphant "hit X" boast.
+  "g3.st.fourteen.ch10": "70,000",
 };
 
 /** A rendered comment under the video. `tone` drives its colour/voice. */
