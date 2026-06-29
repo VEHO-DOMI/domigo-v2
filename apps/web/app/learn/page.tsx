@@ -22,28 +22,28 @@ export default async function LearnIndex() {
 
   const grades = [1, 2, 3, 4] as const;
   return (
-    <main style={{ maxWidth: 760, margin: "0 auto", padding: "32px 20px", fontFamily: "system-ui, sans-serif" }}>
+    <main style={{ maxWidth: 760, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-        <h1 style={{ fontSize: 26, marginBottom: 4 }}>Study Path</h1>
-        <Link href="/home" style={{ fontSize: 14, color: "#2563eb" }}>← Home</Link>
+        <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Study Path</h1>
+        <Link href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</Link>
       </div>
-      <p style={{ color: "#64748b", marginTop: 0 }}>
+      <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
         Work through each unit: learn the words and grammar, practise step by step, then pass the checkpoint.
       </p>
       {grades.map((g) => {
         const inGrade = units.filter((s) => s.startsWith(`g${g}-`));
         if (inGrade.length === 0) return null;
         return (
-          <section key={g} style={{ marginTop: 24 }}>
-            <h2 style={{ fontSize: 18, color: "#334155" }}>Grade {g}</h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <section key={g} data-grade={g} style={{ marginTop: 24 }}>
+            <h2 style={{ fontSize: 16, color: "var(--accent)", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>Grade {g}</h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 8 }}>
               {inGrade.map((slug) => {
                 const s = summary.get(slug);
                 const label = s ? `${s.completedNodes} done · ★ ${s.totalStars}` : "Not started";
                 return (
-                  <Link key={slug} href={`/learn/${slug}`} style={unitCard}>
-                    <span style={{ fontWeight: 600 }}>{slug}</span>
-                    <span style={{ fontSize: 13, color: "#64748b" }}>{label}</span>
+                  <Link key={slug} href={`/learn/${slug}`} className="dg-tile" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "13px 16px" }}>
+                    <span style={{ fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{slug}</span>
+                    <span style={{ fontSize: 13, color: s ? "var(--accent-deep)" : "var(--muted)", fontWeight: 600 }}>{label}</span>
                   </Link>
                 );
               })}
@@ -54,15 +54,3 @@ export default async function LearnIndex() {
     </main>
   );
 }
-
-const unitCard = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  border: "1px solid #e2e8f0",
-  borderRadius: 10,
-  padding: "12px 16px",
-  textDecoration: "none",
-  color: "#0f172a",
-  background: "#f8fafc",
-} as const;

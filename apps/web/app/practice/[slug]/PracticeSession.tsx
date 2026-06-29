@@ -47,16 +47,18 @@ export default function PracticeSession({ slug, vocab, grammar }: {
 
   const xpTotal = results.reduce((s, r) => s + r.xp, 0);
   const counts = results.reduce<Record<string, number>>((m, r) => ({ ...m, [r.tier]: (m[r.tier] ?? 0) + 1 }), {});
+  const grade = slug.match(/^g(\d)/)?.[1];
   const tabStyle = (active: boolean): CSSProperties => ({
-    border: "1px solid #e2e8f0", borderRadius: 8, padding: "6px 14px", cursor: "pointer",
-    background: active ? "#111827" : "#fff", color: active ? "#fff" : "#334155", fontSize: 14,
+    border: active ? "none" : "1.5px solid var(--card-border)", borderRadius: 999, padding: "7px 16px", cursor: "pointer",
+    background: active ? "var(--accent)" : "var(--card)", color: active ? "#fff" : "var(--text-secondary)",
+    fontSize: 14, fontWeight: 700, fontFamily: "var(--font-body)",
   });
 
   return (
-    <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "system-ui, sans-serif" }}>
+    <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-        <h1 style={{ fontSize: 22, margin: 0 }}>{slug}</h1>
-        <Link href="/practice" style={{ fontSize: 14, color: "#2563eb" }}>← all units</Link>
+        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{slug}</h1>
+        <Link href="/practice" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← all units</Link>
       </div>
 
       <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
@@ -64,7 +66,7 @@ export default function PracticeSession({ slug, vocab, grammar }: {
         <button style={tabStyle(mode === "vocab")} onClick={() => switchMode("vocab")}>Vocab ({vocab.length})</button>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "#64748b", marginBottom: 10 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--text-secondary)", marginBottom: 10 }}>
         <span>Item {Math.min(i + 1, list.length)} / {list.length}</span>
         <span>
           {xpTotal} XP{" "}
@@ -87,15 +89,7 @@ export default function PracticeSession({ slug, vocab, grammar }: {
       )}
 
       {answered && (
-        <button
-          onClick={next}
-          disabled={i >= list.length - 1}
-          style={{
-            marginTop: 14, background: "#2563eb", color: "#fff", border: "none", borderRadius: 8,
-            padding: "8px 18px", fontSize: 15, cursor: i >= list.length - 1 ? "default" : "pointer",
-            opacity: i >= list.length - 1 ? 0.5 : 1,
-          }}
-        >
+        <button className="dg-btn" onClick={next} disabled={i >= list.length - 1} style={{ marginTop: 14 }}>
           {i >= list.length - 1 ? "End of set" : "Next →"}
         </button>
       )}

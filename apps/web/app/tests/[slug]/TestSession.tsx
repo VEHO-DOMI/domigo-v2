@@ -14,7 +14,7 @@ export type ResolvedSection =
   | { kind: "reading"; titleDe: string; passage: string; passageGloss: Gloss[]; items: ReadingItem[] }
   | { kind: "writing"; titleDe: string; promptId: string; promptDe: string; taskEn: string; minWords: number; maxWords: number };
 
-const page = { maxWidth: 680, margin: "0 auto", padding: "28px 20px", fontFamily: "system-ui, sans-serif" } as const;
+const page = { maxWidth: 680, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" } as const;
 
 export default function TestSession({ slug, testId, sections }: { slug: string; testId: string; sections: ResolvedSection[] }) {
   const [s, setS] = useState(0);
@@ -45,29 +45,31 @@ export default function TestSession({ slug, testId, sections }: { slug: string; 
     setS((x) => x + 1);
   };
 
+  const grade = slug.match(/^g(\d)/)?.[1];
+
   if (done || !section) {
     const correct = results.filter((t) => t === "correct").length;
     return (
-      <main style={page}>
-        <h1 style={{ fontSize: 22 }}>Test complete 🎓</h1>
-        <p style={{ fontSize: 15, color: "#334155" }}>
+      <main data-grade={grade} style={page}>
+        <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Test complete 🎓</h1>
+        <p style={{ fontSize: 15, color: "var(--text-secondary)" }}>
           {correct}/{results.length} auto-graded correct · writing sent for review.{streak ? ` · 🔥 ${streak}-day streak` : ""}
         </p>
-        <Link href="/tests" style={{ fontSize: 14, color: "#2563eb" }}>← All tests</Link>
+        <Link href="/tests" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← All tests</Link>
       </main>
     );
   }
 
   return (
-    <main style={page}>
+    <main data-grade={grade} style={page}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
-        <h1 style={{ fontSize: 22, margin: 0 }}>{slug} — test</h1>
-        <Link href="/tests" style={{ fontSize: 14, color: "#2563eb" }}>← Tests</Link>
+        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{slug} — test</h1>
+        <Link href="/tests" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Tests</Link>
       </div>
-      <div style={{ fontSize: 13, color: "#64748b", marginBottom: 12 }}>
+      <div style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 12 }}>
         Section {s + 1} / {sections.length}{streak ? ` · 🔥 ${streak}` : ""}
       </div>
-      <h2 style={{ fontSize: 18, color: "#334155" }}>{section.titleDe}</h2>
+      <h2 style={{ fontSize: 17, color: "var(--accent)", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.03em", textTransform: "uppercase" }}>{section.titleDe}</h2>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
         {section.kind === "vocab" &&
@@ -93,10 +95,7 @@ export default function TestSession({ slug, testId, sections }: { slug: string; 
         {section.kind === "writing" && <WritingArea slug={slug} testId={testId} section={section} />}
       </div>
 
-      <button
-        onClick={next}
-        style={{ marginTop: 16, background: "#2563eb", color: "#fff", border: "none", borderRadius: 8, padding: "8px 18px", fontSize: 15, cursor: "pointer" }}
-      >
+      <button className="dg-btn" onClick={next} style={{ marginTop: 16 }}>
         {isLast ? "Finish →" : "Next section →"}
       </button>
     </main>
@@ -105,10 +104,10 @@ export default function TestSession({ slug, testId, sections }: { slug: string; 
 
 function ReadingPassage({ passage, gloss }: { passage: string; gloss: Gloss[] }) {
   return (
-    <div style={{ border: "1px solid #e5e7eb", borderRadius: 12, padding: 16, background: "#fff" }}>
-      <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, whiteSpace: "pre-wrap", color: "#0f172a" }}>{passage}</p>
+    <div className="dg-card">
+      <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, whiteSpace: "pre-wrap", color: "var(--text)" }}>{passage}</p>
       {gloss.length > 0 && (
-        <ul style={{ margin: "10px 0 0", paddingLeft: 18, color: "#475569", fontSize: 13 }}>
+        <ul style={{ margin: "10px 0 0", paddingLeft: 18, color: "var(--text-secondary)", fontSize: 13 }}>
           {gloss.map((g, i) => (
             <li key={i}>
               <strong>{g.word}</strong> = {g.de}
@@ -138,9 +137,9 @@ function WritingArea({ slug, testId, section }: {
     }).catch(() => {});
   };
   return (
-    <div style={{ border: "1px solid #e5e7eb", borderRadius: 12, padding: 16, background: "#fff", display: "flex", flexDirection: "column", gap: 8 }}>
-      <p style={{ margin: 0, fontSize: 15, color: "#0f172a" }}>{section.taskEn}</p>
-      <p style={{ margin: 0, fontSize: 13, color: "#64748b" }}>
+    <div className="dg-card" style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <p style={{ margin: 0, fontSize: 15, color: "var(--text)" }}>{section.taskEn}</p>
+      <p style={{ margin: 0, fontSize: 13, color: "var(--text-secondary)" }}>
         {section.promptDe} ({section.minWords}–{section.maxWords} Wörter)
       </p>
       <textarea
@@ -148,18 +147,12 @@ function WritingArea({ slug, testId, section }: {
         disabled={saved}
         onChange={(e) => setText(e.target.value)}
         rows={8}
-        style={{ width: "100%", border: "1px solid #cbd5e1", borderRadius: 8, padding: 10, fontSize: 15, fontFamily: "inherit" }}
+        className="dg-input"
+        style={{ width: "100%", resize: "vertical" }}
       />
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span style={{ fontSize: 13, color: ok ? "#16a34a" : "#94a3b8" }}>{words} words</span>
-        <button
-          onClick={submit}
-          disabled={saved || !ok}
-          style={{
-            background: "#111827", color: "#fff", border: "none", borderRadius: 8, padding: "8px 16px", fontSize: 14,
-            cursor: saved || !ok ? "default" : "pointer", opacity: saved || !ok ? 0.5 : 1,
-          }}
-        >
+        <span style={{ fontSize: 13, fontWeight: 600, color: ok ? "var(--correct)" : "var(--muted)" }}>{words} words</span>
+        <button className="dg-btn" onClick={submit} disabled={saved || !ok} style={{ padding: "8px 16px", fontSize: 14 }}>
           {saved ? "Submitted ✓" : "Submit writing"}
         </button>
       </div>

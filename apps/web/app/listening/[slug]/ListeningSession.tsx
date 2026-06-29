@@ -42,35 +42,31 @@ export default function ListeningSession({ slug, tasks }: { slug: string; tasks:
     .map((x) => `· ${counts[x]} ${x}`)
     .join(" ");
 
+  const grade = slug.match(/^g(\d)/)?.[1];
+
   if (done || !task) {
     return (
-      <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "system-ui, sans-serif" }}>
-        <h1 style={{ fontSize: 22 }}>Listening complete — {results.length} answered 👂</h1>
-        <p style={{ fontSize: 15, color: "#334155" }}>{tierSummary}{streak ? ` · 🔥 ${streak}-day streak` : ""}</p>
-        <Link href="/listening" style={{ fontSize: 14, color: "#2563eb" }}>← All listening</Link>
+      <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
+        <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Listening complete — {results.length} answered 👂</h1>
+        <p style={{ fontSize: 15, color: "var(--text-secondary)" }}>{tierSummary}{streak ? ` · 🔥 ${streak}-day streak` : ""}</p>
+        <Link href="/listening" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← All listening</Link>
       </main>
     );
   }
 
   return (
-    <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "system-ui, sans-serif" }}>
+    <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-        <h1 style={{ fontSize: 22, margin: 0 }}>{slug}</h1>
-        <Link href="/listening" style={{ fontSize: 14, color: "#2563eb" }}>← Listening</Link>
+        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{slug}</h1>
+        <Link href="/listening" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Listening</Link>
       </div>
-      <div style={{ fontSize: 13, color: "#64748b", marginBottom: 10 }}>
+      <div style={{ fontSize: 13, color: "var(--text-secondary)", marginBottom: 10 }}>
         Task {t + 1} / {tasks.length}{streak ? ` · 🔥 ${streak}` : ""}
       </div>
 
       <ListeningTaskView key={task.id} task={task} onResult={onResult} />
 
-      <button
-        onClick={next}
-        style={{
-          marginTop: 16, background: "#2563eb", color: "#fff", border: "none", borderRadius: 8,
-          padding: "8px 18px", fontSize: 15, cursor: "pointer",
-        }}
-      >
+      <button className="dg-btn" onClick={next} style={{ marginTop: 16 }}>
         {isLast ? "Finish →" : "Next task →"}
       </button>
     </main>

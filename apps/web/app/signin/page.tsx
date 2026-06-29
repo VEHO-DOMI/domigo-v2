@@ -27,54 +27,36 @@ export default async function SignInPage({
     }
   }
 
+  const label = { display: "flex", flexDirection: "column", gap: 5, fontSize: 14, fontWeight: 600, color: "var(--ink-soft)", fontFamily: "var(--font-body)" } as const;
+
   return (
-    <main style={{ maxWidth: 380, margin: "0 auto", padding: "48px 20px", fontFamily: "system-ui, sans-serif" }}>
-      <h1 style={{ fontSize: 26, marginBottom: 4 }}>Sign in</h1>
-      <p style={{ color: "#64748b", marginTop: 0 }}>Use your class code, nickname and PIN.</p>
+    <main style={{ maxWidth: 400, margin: "0 auto", padding: "24px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
+      <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Sign in</h1>
+      <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>Use your class code, nickname and PIN.</p>
       {error && (
-        <p style={{ background: "#fef2f2", color: "#b91c1c", padding: "8px 12px", borderRadius: 8, fontSize: 14 }}>
+        <p style={{ background: "var(--incorrect-soft)", color: "var(--incorrect)", padding: "9px 13px", borderRadius: 12, fontSize: 14, fontWeight: 600 }}>
           That class code, nickname, or PIN didn&apos;t match. Try again.
         </p>
       )}
-      <form action={studentSignIn} style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 16 }}>
+      <form action={studentSignIn} className="dg-card" style={{ display: "flex", flexDirection: "column", gap: 14, marginTop: 16 }}>
         <input type="hidden" name="from" value={from} />
-        <label style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14 }}>
+        <label style={label}>
           Class code
-          <input name="classCode" required maxLength={32} autoCapitalize="characters" autoComplete="off"
-            placeholder="e.g. ABC-D2F" style={inputStyle} />
+          <input name="classCode" required maxLength={32} autoCapitalize="characters" autoComplete="off" placeholder="e.g. ABC-D2F" className="dg-input" />
         </label>
-        <label style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14 }}>
+        <label style={label}>
           Nickname
-          <input name="nickname" required maxLength={32} autoComplete="off" style={inputStyle} />
+          <input name="nickname" required maxLength={32} autoComplete="off" className="dg-input" />
         </label>
-        <label style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 14 }}>
+        <label style={label}>
           PIN
-          <input name="pin" required inputMode="numeric" pattern="[0-9]{6}" maxLength={6}
-            type="password" autoComplete="off" placeholder="6 digits" style={inputStyle} />
+          <input name="pin" required inputMode="numeric" pattern="[0-9]{6}" maxLength={6} type="password" autoComplete="off" placeholder="6 digits" className="dg-input" />
         </label>
-        <button type="submit" style={btnStyle}>Sign in</button>
+        <button type="submit" className="dg-btn" style={{ marginTop: 4, padding: "12px 16px" }}>Sign in</button>
       </form>
-      <p style={{ marginTop: 20, fontSize: 13, color: "#94a3b8" }}>
-        Teacher? <Link href="/admin/signin" style={{ color: "#2563eb" }}>Sign in here</Link>.
+      <p style={{ marginTop: 20, fontSize: 13, color: "var(--muted)" }}>
+        Teacher? <Link href="/admin/signin" style={{ color: "var(--accent)", fontWeight: 600 }}>Sign in here</Link>.
       </p>
     </main>
   );
 }
-
-const inputStyle = {
-  border: "1px solid #cbd5e1",
-  borderRadius: 8,
-  padding: "10px 12px",
-  fontSize: 16,
-} as const;
-
-const btnStyle = {
-  background: "#111827",
-  color: "#fff",
-  border: "none",
-  borderRadius: 8,
-  padding: "11px 16px",
-  fontSize: 16,
-  cursor: "pointer",
-  marginTop: 4,
-} as const;

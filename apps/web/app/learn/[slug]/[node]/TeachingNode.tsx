@@ -28,22 +28,16 @@ export default function TeachingNode({ unitSlug, nodeId, kind, wordbank, structu
       .finally(() => router.push(`/learn/${unitSlug}`));
   };
 
+  const grade = unitSlug.match(/^g(\d)/)?.[1];
   return (
-    <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "system-ui, sans-serif" }}>
+    <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-        <h1 style={{ fontSize: 22, margin: 0 }}>{kind === "vocab-intro" ? "Vocabulary" : "Grammar"}</h1>
-        <Link href={`/learn/${unitSlug}`} style={{ fontSize: 14, color: "#2563eb" }}>← Path</Link>
+        <h1 style={{ fontSize: 24, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{kind === "vocab-intro" ? "Vocabulary" : "Grammar"}</h1>
+        <Link href={`/learn/${unitSlug}`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Path</Link>
       </div>
       {wordbank && <VocabIntroView wordbank={wordbank} />}
       {structures && <GrammarIntroView structures={structures} />}
-      <button
-        onClick={markDone}
-        disabled={saving}
-        style={{
-          marginTop: 16, background: "#2563eb", color: "#fff", border: "none", borderRadius: 8,
-          padding: "10px 20px", fontSize: 15, cursor: saving ? "default" : "pointer", opacity: saving ? 0.6 : 1,
-        }}
-      >
+      <button className="dg-btn" onClick={markDone} disabled={saving} style={{ marginTop: 16 }}>
         {saving ? "Saving…" : "Got it — done ✓"}
       </button>
     </main>

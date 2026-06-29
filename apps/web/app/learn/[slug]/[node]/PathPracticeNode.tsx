@@ -82,30 +82,31 @@ export default function PathPracticeNode({ unitSlug, nodeId, isCheckpoint, items
   };
 
   const xpTotal = results.reduce((s, r) => s + r.xp, 0);
+  const grade = unitSlug.match(/^g(\d)/)?.[1];
 
   if (done || !current) {
     return (
-      <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "system-ui, sans-serif" }}>
-        <h1 style={{ fontSize: 22 }}>{title} complete</h1>
-        <p style={{ fontSize: 24, margin: "4px 0", color: "#ea580c" }}>
+      <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
+        <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{title} complete</h1>
+        <p style={{ fontSize: 28, margin: "4px 0", color: "#e6a700", letterSpacing: 2 }}>
           {"★".repeat(stars)}
           {"☆".repeat(3 - stars)}
         </p>
-        <p style={{ fontSize: 15, color: "#334155" }}>
+        <p style={{ fontSize: 15, color: "var(--text-secondary)" }}>
           {xpTotal} XP{streak ? ` · 🔥 ${streak}-day streak` : ""}
         </p>
-        <Link href={`/learn/${unitSlug}`} style={{ fontSize: 14, color: "#2563eb" }}>← Back to path</Link>
+        <Link href={`/learn/${unitSlug}`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Back to path</Link>
       </main>
     );
   }
 
   return (
-    <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "system-ui, sans-serif" }}>
+    <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-        <h1 style={{ fontSize: 22, margin: 0 }}>{title}</h1>
-        <Link href={`/learn/${unitSlug}`} style={{ fontSize: 14, color: "#2563eb" }}>← Path</Link>
+        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{title}</h1>
+        <Link href={`/learn/${unitSlug}`} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Path</Link>
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "#64748b", marginBottom: 10 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--text-secondary)", marginBottom: 10 }}>
         <span>Item {Math.min(i + 1, items.length)} / {items.length}</span>
         <span>{xpTotal} XP{streak ? ` · 🔥 ${streak}` : ""}</span>
       </div>
@@ -117,13 +118,7 @@ export default function PathPracticeNode({ unitSlug, nodeId, isCheckpoint, items
       )}
 
       {answered && (
-        <button
-          onClick={next}
-          style={{
-            marginTop: 14, background: "#2563eb", color: "#fff", border: "none", borderRadius: 8,
-            padding: "8px 18px", fontSize: 15, cursor: "pointer",
-          }}
-        >
+        <button className="dg-btn" onClick={next} style={{ marginTop: 14 }}>
           {isLast ? "Finish →" : "Next →"}
         </button>
       )}
