@@ -22,7 +22,14 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${fredoka.variable} ${quicksand.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <header className="dg-app-header">
+          <div className="dg-glow" aria-hidden="true" />
+          <a href="/home" className="brand-wordmark" style={{ fontSize: 30, position: "relative", lineHeight: 1 }}>DomiGo</a>
+          <div className="dg-tagline">English · Vocabulary &amp; Grammar</div>
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
