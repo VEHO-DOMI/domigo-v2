@@ -89,6 +89,38 @@
       "slot": "we-agree",
       "prompt": { "text": "They want to help. So ___ I.", "lang": "en" },
       "glosses": []
+    },
+    {
+      "key": "wrong-name.ch02.why-so-glad",
+      "itemId": "g2u02.gi.why-because.gf.001",
+      "scene": "g2.st.wrong-name.ch02.s003",
+      "slot": "why-so-glad",
+      "prompt": { "text": "___ are you glad?", "lang": "en" },
+      "glosses": []
+    },
+    {
+      "key": "wrong-name.ch07.what-is-true",
+      "itemId": "g2u07.gi.might.gf.003",
+      "scene": "g2.st.wrong-name.ch07.s004",
+      "slot": "what-is-true",
+      "prompt": { "text": "A friend ___ tell the truth.", "lang": "en" },
+      "glosses": []
+    },
+    {
+      "key": "wrong-name.ch11.whose-it-is",
+      "itemId": "g2u11.gi.who-whose.gf.002",
+      "scene": "g2.st.wrong-name.ch11.s002",
+      "slot": "whose-it-is",
+      "prompt": { "text": "___ name is on the medal?", "lang": "en" },
+      "glosses": [{ "word": "name", "de": "Name" }, { "word": "medal", "de": "Medaille" }]
+    },
+    {
+      "key": "wrong-name.ch13.the-method",
+      "itemId": "g2u13.gi.adverbs-manner.gf.002",
+      "scene": "g2.st.wrong-name.ch13.s003",
+      "slot": "the-method",
+      "prompt": { "text": "It happened ___ (quiet).", "lang": "en" },
+      "glosses": [{ "word": "quiet", "de": "leise" }]
     }
   ]
 }
