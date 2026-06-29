@@ -45,6 +45,11 @@ export function trailLabel(trail: number): string | null {
 /** The Subscriber milestone each episode banks (the legacy's per-level count). */
 export const SUBSCRIBERS: Record<string, string> = {
   "g3.st.fourteen.ch01": "47",
+  "g3.st.fourteen.ch02": "3,200",
+  "g3.st.fourteen.ch03": "11,000",
+  "g3.st.fourteen.ch04": "28,000",
+  "g3.st.fourteen.ch05": "45,000",
+  "g3.st.fourteen.ch06": "55,000",
 };
 
 /** A rendered comment under the video. `tone` drives its colour/voice. */
@@ -68,12 +73,19 @@ const TEASE_WARM: Comment[] = [
   { author: "haha_no", text: "Ben said “the Beatles was” 😅", tone: "tease" },
   { author: "smiley22", text: "his little mistakes are kind of cute tbh", tone: "tease" },
 ];
+// TENSE band (L06–10): the channel is now KNOWN for Ben's slip-ups — the laughs turn
+// pitying, then pointed. Not yet cruel (that's the reckoning band, L11+).
+const TEASE_TENSE: Comment[] = [
+  { author: "lol_marco", text: "Poor Ben 😬 we only watch for the fails now", tone: "tease" },
+  { author: "study_girl", text: "the Grammar Fix guy again 😅", tone: "tease" },
+  { author: "anon_42", text: "do they laugh WITH him or AT him?", tone: "cruel" },
+];
 
 /**
  * Build the comment section from the player's fix-Ben accuracy, bounded by band.
  * `correct`/`total` count the episode's error-correction ("fix Ben's line") tasks.
- * WARM is the only band wired for the ep01 slice; tense/reckoning land with their
- * episodes (the harsher banks reuse this seam — never invented at random, Law 9).
+ * WARM (L01–05) + TENSE (L06–10) are wired; reckoning (L11+) lands with the
+ * confrontation episodes (the harsher banks reuse this seam — never invented at random, Law 9).
  */
 export function episodeComments(correct: number, total: number, band: CommentBand): { comments: Comment[]; clean: boolean; line: string } {
   const clean = total === 0 || correct >= total;
@@ -81,6 +93,11 @@ export function episodeComments(correct: number, total: number, band: CommentBan
     if (clean) return { comments: KIND, clean, line: "Ben's lines read perfectly. The comments are kind." };
     return { comments: [KIND[0]!, KIND[1]!, TEASE_WARM[0]!], clean, line: "One mistake slipped through — but the internet finds Ben charming… for now." };
   }
-  // tense / reckoning bands: authored with their episodes (PR content waves).
-  return { comments: clean ? KIND : [TEASE_WARM[0]!, TEASE_WARM[1]!], clean, line: clean ? "Ben's lines read clean." : "His mistakes aired." };
+  if (band === "tense") {
+    // Even a clean take can't undo the channel's reputation — one pitying voice creeps in.
+    if (clean) return { comments: [KIND[0]!, KIND[1]!, TEASE_TENSE[0]!], clean, line: "Clean takes — but the channel is famous for Ben's slip-ups now." };
+    return { comments: TEASE_TENSE, clean, line: "His mistake aired. The comments aren't laughing with him anymore." };
+  }
+  // reckoning band (L11+): authored with the confrontation episodes (later wave).
+  return { comments: clean ? KIND : [TEASE_TENSE[0]!, TEASE_TENSE[2]!], clean, line: clean ? "Ben's lines read clean." : "His mistakes aired — and this time it stings." };
 }

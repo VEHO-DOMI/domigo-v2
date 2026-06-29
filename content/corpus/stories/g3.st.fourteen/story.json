@@ -58,6 +58,60 @@
         { "id": "g3.st.fourteen.ch03.s009", "speaker": "narrator", "textEn": "Nobody is happy. But nobody stops it.", "scaffoldDe": "Niemand ist glücklich. Aber niemand stoppt es.", "glosses": [{ "word": "stops", "de": "stoppt, hört auf", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch03.s010" },
         { "id": "g3.st.fourteen.ch03.s010", "speaker": "you", "textEn": "It feels wrong. But I stay quiet.", "scaffoldDe": "Es fühlt sich falsch an. Aber ich bleibe still.", "glosses": [{ "word": "wrong", "de": "falsch", "scope": null }, { "word": "quiet", "de": "still", "scope": null }], "audio": null, "taskSlots": [], "next": null }
       ]
+    },
+    {
+      "id": "g3.st.fourteen.ch04",
+      "unit": 4,
+      "titleEn": "Beautiful Danger",
+      "titleDe": "Schöne Gefahr",
+      "scenes": [
+        { "id": "g3.st.fourteen.ch04.s001", "speaker": "you", "textEn": "Episode 4! Today: the most dangerous animals.", "scaffoldDe": "Folge 4! Heute: die gefährlichsten Tiere.", "glosses": [{ "word": "dangerous", "de": "gefährlich", "scope": null }, { "word": "animals", "de": "Tiere", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch04.s002" },
+        { "id": "g3.st.fourteen.ch04.s002", "speaker": "leah", "textEn": "Ben's lines are extra hard today. More fun!", "scaffoldDe": "Bens Text ist heute besonders schwer. Mehr Spaß!", "glosses": [{ "word": "lines", "de": "Text, Zeilen", "scope": null }, { "word": "extra", "de": "besonders", "scope": null }, { "word": "hard", "de": "schwer", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch04.s003" },
+        { "id": "g3.st.fourteen.ch04.s003", "speaker": "you", "textEn": "Let's write it. Help me!", "scaffoldDe": "Schreiben wir es. Hilf mir!", "glosses": [], "audio": null, "taskSlots": [{ "slot": "script-mc", "itemId": "g3u04.gi.comparative-intensifiers.mc.003", "variantKey": null }], "next": "g3.st.fourteen.ch04.s004" },
+        { "id": "g3.st.fourteen.ch04.s004", "speaker": "you", "textEn": "Now this one. Help me!", "scaffoldDe": "Jetzt das hier. Hilf mir!", "glosses": [], "audio": null, "taskSlots": [{ "slot": "script-gap", "itemId": "g3u04.gi.comparative-intensifiers.gf.001", "variantKey": null }], "next": "g3.st.fourteen.ch04.s005" },
+        { "id": "g3.st.fourteen.ch04.s005", "speaker": "narrator", "textEn": "Ben reads his lines for the camera.", "scaffoldDe": "Ben liest seinen Text für die Kamera.", "glosses": [{ "word": "lines", "de": "Text", "scope": null }, { "word": "camera", "de": "Kamera", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch04.s006" },
+        { "id": "g3.st.fourteen.ch04.s006", "speaker": "ben", "textEn": "He is more faster than his brother.", "scaffoldDe": "Bens Satz hat einen Fehler. Hilf ihm: „He is ___ faster than his brother.“", "glosses": [{ "word": "faster", "de": "schneller", "scope": null }, { "word": "brother", "de": "Bruder", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-bens-line", "itemId": "g3u04.gi.comparative-intensifiers.ec.002", "variantKey": null }], "next": "g3.st.fourteen.ch04.s007" },
+        { "id": "g3.st.fourteen.ch04.s007", "speaker": "leah", "textEn": "28,000 views! Sara liked it too.", "scaffoldDe": "28.000 Aufrufe! Sara hat es auch gemocht.", "glosses": [{ "word": "views", "de": "Aufrufe", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch04.s008" },
+        { "id": "g3.st.fourteen.ch04.s008", "speaker": "ben", "textEn": "Why do I always have the hardest lines?", "scaffoldDe": "Warum habe ich immer den schwersten Text?", "glosses": [{ "word": "hardest", "de": "schwersten", "scope": null }, { "word": "lines", "de": "Text", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch04.s009" },
+        { "id": "g3.st.fourteen.ch04.s009", "speaker": "leah", "textEn": "Because you are the funniest!", "scaffoldDe": "Weil du der Lustigste bist!", "glosses": [{ "word": "funniest", "de": "der Lustigste", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch04.s010" },
+        { "id": "g3.st.fourteen.ch04.s010", "speaker": "you", "textEn": "Ben smiles. But he did not ask to be funny.", "scaffoldDe": "Ben lächelt. Aber er wollte nicht der Lustige sein.", "glosses": [{ "word": "smiles", "de": "lächelt", "scope": null }, { "word": "funny", "de": "lustig", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch05",
+      "unit": 5,
+      "titleEn": "What If?",
+      "titleDe": "Was wäre, wenn?",
+      "scenes": [
+        { "id": "g3.st.fourteen.ch05.s001", "speaker": "you", "textEn": "Episode 5! Today: lucky and unlucky days.", "scaffoldDe": "Folge 5! Heute: Glückstage und Unglückstage.", "glosses": [{ "word": "lucky", "de": "Glücks-", "scope": null }, { "word": "unlucky", "de": "Unglücks-", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch05.s002" },
+        { "id": "g3.st.fourteen.ch05.s002", "speaker": "leah", "textEn": "Keep filming Ben's mistakes. They are our brand now.", "scaffoldDe": "Film Bens Fehler weiter. Sie sind jetzt unsere Marke.", "glosses": [{ "word": "filming", "de": "filmen", "scope": null }, { "word": "mistakes", "de": "Fehler", "scope": null }, { "word": "brand", "de": "Marke", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch05.s003" },
+        { "id": "g3.st.fourteen.ch05.s003", "speaker": "you", "textEn": "Help me write it.", "scaffoldDe": "Hilf mir, es zu schreiben.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "script-mc", "itemId": "g3u05.gi.first-conditional.mc.003", "variantKey": null }], "next": "g3.st.fourteen.ch05.s004" },
+        { "id": "g3.st.fourteen.ch05.s004", "speaker": "you", "textEn": "Now this one. Help me!", "scaffoldDe": "Jetzt das hier. Hilf mir!", "glosses": [], "audio": null, "taskSlots": [{ "slot": "script-gap", "itemId": "g3u05.gi.first-conditional.gf.005", "variantKey": null }], "next": "g3.st.fourteen.ch05.s005" },
+        { "id": "g3.st.fourteen.ch05.s005", "speaker": "narrator", "textEn": "Ben reads for the camera.", "scaffoldDe": "Ben liest für die Kamera.", "glosses": [{ "word": "camera", "de": "Kamera", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch05.s006" },
+        { "id": "g3.st.fourteen.ch05.s006", "speaker": "ben", "textEn": "If it will rain, we will stay inside.", "scaffoldDe": "Bens Satz hat einen Fehler. Hilf ihm: „If it ___, we will stay inside.“", "glosses": [{ "word": "rain", "de": "regnen", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-bens-line", "itemId": "g3u05.gi.first-conditional.ec.001", "variantKey": null }], "next": "g3.st.fourteen.ch05.s007" },
+        { "id": "g3.st.fourteen.ch05.s007", "speaker": "narrator", "textEn": "45,000 views! People come for Ben's mistakes now.", "scaffoldDe": "45.000 Aufrufe! Die Leute kommen jetzt wegen Bens Fehlern.", "glosses": [{ "word": "views", "de": "Aufrufe", "scope": null }, { "word": "mistakes", "de": "Fehler", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch05.s008" },
+        { "id": "g3.st.fourteen.ch05.s008", "speaker": "ben", "textEn": "They like ME too, yes? Not just my mistakes?", "scaffoldDe": "Sie mögen auch MICH, oder? Nicht nur meine Fehler?", "glosses": [{ "word": "mistakes", "de": "Fehler", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch05.s009" },
+        { "id": "g3.st.fourteen.ch05.s009", "speaker": "leah", "textEn": "Yes, they do!", "scaffoldDe": "Ja, klar!", "glosses": [], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch05.s010" },
+        { "id": "g3.st.fourteen.ch05.s010", "speaker": "you", "textEn": "But Leah is looking at her phone now.", "scaffoldDe": "Aber Leah schaut jetzt auf ihr Handy.", "glosses": [{ "word": "phone", "de": "Handy", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+      ]
+    },
+    {
+      "id": "g3.st.fourteen.ch06",
+      "unit": 6,
+      "titleEn": "London Calling",
+      "titleDe": "London ruft",
+      "scenes": [
+        { "id": "g3.st.fourteen.ch06.s001", "speaker": "you", "textEn": "Episode 6! A school trip to London.", "scaffoldDe": "Folge 6! Ein Schulausflug nach London.", "glosses": [{ "word": "trip", "de": "Ausflug", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch06.s002" },
+        { "id": "g3.st.fourteen.ch06.s002", "speaker": "leo", "textEn": "Big Ben, the Tower, the Globe. The best film!", "scaffoldDe": "Big Ben, der Tower, das Globe. Der beste Film!", "glosses": [{ "word": "film", "de": "Film", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch06.s003" },
+        { "id": "g3.st.fourteen.ch06.s003", "speaker": "you", "textEn": "Help me write Ben's lines.", "scaffoldDe": "Hilf mir, Bens Text zu schreiben.", "glosses": [{ "word": "lines", "de": "Text", "scope": null }], "audio": null, "taskSlots": [{ "slot": "script-mc", "itemId": "g3u06.gi.relative-clauses.mc.005", "variantKey": null }], "next": "g3.st.fourteen.ch06.s004" },
+        { "id": "g3.st.fourteen.ch06.s004", "speaker": "you", "textEn": "Now this one. Help me!", "scaffoldDe": "Jetzt das hier. Hilf mir!", "glosses": [], "audio": null, "taskSlots": [{ "slot": "script-gap", "itemId": "g3u06.gi.relative-clauses.gf.002", "variantKey": null }], "next": "g3.st.fourteen.ch06.s005" },
+        { "id": "g3.st.fourteen.ch06.s005", "speaker": "narrator", "textEn": "Ben reads the London facts.", "scaffoldDe": "Ben liest die London-Fakten.", "glosses": [{ "word": "facts", "de": "Fakten", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch06.s006" },
+        { "id": "g3.st.fourteen.ch06.s006", "speaker": "ben", "textEn": "The river who flows through London is the Thames.", "scaffoldDe": "Bens Satz hat einen Fehler. Hilf ihm: „The river ___ flows through London is the Thames.“", "glosses": [{ "word": "river", "de": "Fluss", "scope": null }, { "word": "flows", "de": "fließt", "scope": null }, { "word": "through", "de": "durch", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-bens-line", "itemId": "g3u06.gi.relative-clauses.ec.002", "variantKey": null }], "next": "g3.st.fourteen.ch06.s007" },
+        { "id": "g3.st.fourteen.ch06.s007", "speaker": "narrator", "textEn": "55,000 views. That evening, a message from Sara.", "scaffoldDe": "55.000 Aufrufe. An diesem Abend, eine Nachricht von Sara.", "glosses": [{ "word": "views", "de": "Aufrufe", "scope": null }, { "word": "message", "de": "Nachricht", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch06.s008" },
+        { "id": "g3.st.fourteen.ch06.s008", "speaker": "sara", "textEn": "The boy who makes mistakes — does he know that is the plan?", "scaffoldDe": "Der Junge, der Fehler macht — weiß er, dass das der Plan ist?", "glosses": [{ "word": "mistakes", "de": "Fehler", "scope": null }, { "word": "plan", "de": "Plan", "scope": null }, { "word": "know", "de": "weiß", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch06.s009" },
+        { "id": "g3.st.fourteen.ch06.s009", "speaker": "sara", "textEn": "Be careful. This fame is built on Ben's shame.", "scaffoldDe": "Sei vorsichtig. Dieser Ruhm ist auf Bens Scham gebaut.", "glosses": [{ "word": "careful", "de": "vorsichtig", "scope": null }, { "word": "fame", "de": "Ruhm", "scope": null }, { "word": "shame", "de": "Scham", "scope": null }, { "word": "built", "de": "gebaut", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch06.s010" },
+        { "id": "g3.st.fourteen.ch06.s010", "speaker": "you", "textEn": "I read it twice. I tell nobody.", "scaffoldDe": "Ich lese es zweimal. Ich erzähle es niemandem.", "glosses": [{ "word": "twice", "de": "zweimal", "scope": null }, { "word": "nobody", "de": "niemandem", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+      ]
     }
   ]
 }
