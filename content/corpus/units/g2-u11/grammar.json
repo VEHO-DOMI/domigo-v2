@@ -2425,7 +2425,38 @@
       "rev": 2,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch11.whose-it-is",
+            "prompt": {
+              "text": "___ name is on the medal?",
+              "lang": "en"
+            },
+            "glosses": [
+              {
+                "word": "name",
+                "de": "Name",
+                "scope": "wrong-name.ch11.whose-it-is"
+              },
+              {
+                "word": "medal",
+                "de": "Medaille",
+                "scope": "wrong-name.ch11.whose-it-is"
+              }
+            ],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch11"
+              },
+              "note": "g2.st.wrong-name.ch11.s002 · whose-it-is"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

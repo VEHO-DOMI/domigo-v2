@@ -819,7 +819,27 @@
       "rev": 1,
       "difficulty": 2,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch07.what-is-true",
+            "prompt": {
+              "text": "A friend ___ tell the truth.",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch07"
+              },
+              "note": "g2.st.wrong-name.ch07.s004 · what-is-true"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },

@@ -2568,7 +2568,27 @@
       "rev": 1,
       "difficulty": 1,
       "presentation": {
-        "variants": [],
+        "variants": [
+          {
+            "key": "wrong-name.ch02.why-so-glad",
+            "prompt": {
+              "text": "___ are you glad?",
+              "lang": "en"
+            },
+            "glosses": [],
+            "audio": null,
+            "provenance": {
+              "by": "fable",
+              "sbRef": null,
+              "seedV1": null,
+              "narrative": {
+                "storyId": "g2.st.wrong-name",
+                "chapterId": "g2.st.wrong-name.ch02"
+              },
+              "note": "g2.st.wrong-name.ch02.s003 · why-so-glad"
+            }
+          }
+        ],
         "gameMeta": null,
         "audio": null
       },
