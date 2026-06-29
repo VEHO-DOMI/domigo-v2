@@ -61,7 +61,7 @@ export type CommentBand = "warm" | "tense" | "reckoning";
 const KIND: Comment[] = [
   { author: "musicfan_07", text: "Ben explains it so well! 🎸", tone: "kind" },
   { author: "lena_b", text: "This helped me with my homework. Subscribed!", tone: "kind" },
-  { author: "mr_keller", text: "Great first video. Keep going! 👏", tone: "kind" },
+  { author: "mr_keller", text: "Great video. Keep going! 👏", tone: "kind" },
 ];
 // WARM band: if an error airs, the internet finds Ben charming (L01–02 "hilarious"), not cruel.
 const TEASE_WARM: Comment[] = [

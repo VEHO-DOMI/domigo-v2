@@ -275,7 +275,7 @@ export function NovelGame(props: NovelGameProps) {
           {taskOrNav}
         </section>
       ) : (
-        <section style={{ ...panel, borderLeftWidth: 5, borderLeftColor: look.shirt }}>
+        <section style={{ ...panel, boxShadow: `inset 5px 0 0 ${look.shirt}, var(--shadow-card)` }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
             {portraitUrl
               ? <img src={portraitUrl} alt={speakerName} width={46} height={46} style={{ borderRadius: "50%", objectFit: "cover", flex: "0 0 auto", border: `2px solid ${look.shirt}` }} />
