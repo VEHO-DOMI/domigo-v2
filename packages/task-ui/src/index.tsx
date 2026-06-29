@@ -3,6 +3,11 @@
  * @domigo/task-ui — render + grade one approved item. Presentation-driven by the
  * item (not the route), so the games and Smart Review reuse these. Grading goes
  * through @domigo/engine; nothing here re-implements answer logic.
+ *
+ * Styling is the DomiGo brand (globals.css tokens): brand glass card, accent
+ * gradient buttons (.dg-btn), focus-glow inputs (.dg-input), and the signature
+ * multiple-choice option buttons (.dg-mc-option, correct/wrong tint). Colours come
+ * from CSS vars so the accent themes per grade — presentation only, no logic change.
  */
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
@@ -11,10 +16,10 @@ import type { GrammarInput, Tier } from "@domigo/engine";
 import { breaksCombo, gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
 
 const TIER_STYLE: Record<Tier, { bg: string; label: string }> = {
-  correct: { bg: "#16a34a", label: "Correct" },
-  partial: { bg: "#d97706", label: "Partial" },
-  close: { bg: "#2563eb", label: "Close" },
-  wrong: { bg: "#dc2626", label: "Try again" },
+  correct: { bg: "var(--correct)", label: "Correct" },
+  partial: { bg: "var(--partial)", label: "Partial" },
+  close: { bg: "var(--accent)", label: "Close" },
+  wrong: { bg: "var(--incorrect)", label: "Try again" },
 };
 
 function hash(s: string): number {
@@ -44,41 +49,35 @@ function useShuffled<T>(arr: T[], seed: string): T[] {
 }
 
 const card: CSSProperties = {
-  border: "1px solid #e5e7eb",
-  borderRadius: 12,
+  border: "1px solid var(--card-border)",
+  borderRadius: 16,
   padding: 16,
-  background: "#fff",
+  background: "var(--card)",
+  boxShadow: "var(--shadow-card)",
+  fontFamily: "var(--font-body)",
+  color: "var(--text)",
   display: "flex",
   flexDirection: "column",
   gap: 10,
 };
-const inputStyle: CSSProperties = {
-  border: "1px solid #cbd5e1",
-  borderRadius: 8,
-  padding: "8px 10px",
-  fontSize: 16,
-  minWidth: 120,
-};
-const btn: CSSProperties = {
-  background: "#111827",
-  color: "#fff",
-  border: "none",
-  borderRadius: 8,
-  padding: "8px 16px",
-  fontSize: 15,
-  cursor: "pointer",
-  alignSelf: "flex-start",
+const metaLabel: CSSProperties = {
+  fontFamily: "var(--font-label)",
+  fontSize: 11,
+  fontWeight: 700,
+  letterSpacing: "0.08em",
+  textTransform: "uppercase",
+  color: "var(--muted)",
 };
 
 function FeedbackBar({ tier, xp, hideXp }: { tier: Tier; xp: number; hideXp?: boolean }) {
   const s = TIER_STYLE[tier];
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-      <span style={{ background: s.bg, color: "#fff", borderRadius: 999, padding: "3px 12px", fontWeight: 600, fontSize: 14 }}>
+      <span style={{ background: s.bg, color: "#fff", borderRadius: 999, padding: "3px 13px", fontWeight: 700, fontSize: 14, fontFamily: "var(--font-label)" }}>
         {s.label}
       </span>
-      {!hideXp && <span style={{ color: "#374151", fontSize: 14 }}>+{xp} XP</span>}
-      {!hideXp && breaksCombo(tier) && <span style={{ color: "#9ca3af", fontSize: 13 }}>· combo reset</span>}
+      {!hideXp && <span style={{ color: "var(--text-secondary)", fontSize: 14, fontWeight: 600 }}>+{xp} XP</span>}
+      {!hideXp && breaksCombo(tier) && <span style={{ color: "var(--muted)", fontSize: 13 }}>· combo reset</span>}
     </div>
   );
 }
@@ -89,11 +88,11 @@ function GlossRow({ gloss }: { gloss: Gloss[] }) {
   if (gloss.length === 0) return null;
   return (
     <div style={{ fontSize: 13 }}>
-      <button aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)} style={{ ...btn, background: "#f1f5f9", color: "#334155", padding: "4px 10px", fontSize: 13 }}>
+      <button className="dg-chip" aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)}>
         {open ? "Hide" : "Show"} word help ({gloss.length})
       </button>
       {open && (
-        <ul id={id} style={{ margin: "6px 0 0", paddingLeft: 18, color: "#475569" }}>
+        <ul id={id} style={{ margin: "6px 0 0", paddingLeft: 18, color: "var(--text-secondary)" }}>
           {gloss.map((g, i) => (
             <li key={i}>
               <strong>{g.word}</strong> = {g.de}
@@ -110,8 +109,8 @@ function HintRow({ hintDe }: { hintDe: string }) {
   const id = useId();
   return (
     <div style={{ fontSize: 13 }}>
-      <button aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)} style={{ ...btn, background: "#fef3c7", color: "#92400e", padding: "4px 10px", fontSize: 13 }}>
-        {open ? "Hide" : "Tipp"}
+      <button className="dg-chip" aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)}>
+        {open ? "Hide Tipp" : "💡 Tipp"}
       </button>
       {open && <span id={id} style={{ marginLeft: 8, color: "#92400e" }}>{hintDe}</span>}
     </div>
@@ -119,7 +118,7 @@ function HintRow({ hintDe }: { hintDe: string }) {
 }
 
 function Prompt({ text, id }: { text: string; id?: string }) {
-  return <div id={id} style={{ fontSize: 17, lineHeight: 1.4, whiteSpace: "pre-wrap" }}>{text}</div>;
+  return <div id={id} style={{ fontSize: 18, lineHeight: 1.4, whiteSpace: "pre-wrap", color: "var(--text)" }}>{text}</div>;
 }
 
 // ---- format-specific inputs ----------------------------------------------
@@ -135,7 +134,8 @@ function TextInputs({ count, values, onChange, disabled, onEnter, autoFocusFirst
         <input
           key={i}
           ref={i === 0 ? firstRef : undefined}
-          style={inputStyle}
+          className="dg-input"
+          style={{ minWidth: 120, flex: count > 1 ? "1 1 120px" : undefined }}
           value={values[i] ?? ""}
           disabled={disabled}
           aria-label={count > 1 ? `Blank ${i + 1}` : "Your answer"}
@@ -152,17 +152,35 @@ function TextInputs({ count, values, onChange, disabled, onEnter, autoFocusFirst
   );
 }
 
-function Choices({ options, selected, onSelect, disabled }: {
-  options: string[]; selected: string | null; onSelect: (v: string) => void; disabled: boolean;
+function Choices({ options, selected, onSelect, disabled, corrects }: {
+  options: string[]; selected: string | null; onSelect: (v: string) => void; disabled: boolean; corrects: string[];
 }) {
   return (
-    <div role="radiogroup" aria-label="Answer options" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-      {options.map((opt) => (
-        <label key={opt} style={{ display: "flex", gap: 8, alignItems: "center", cursor: disabled ? "default" : "pointer" }}>
-          <input type="radio" checked={selected === opt} disabled={disabled} onChange={() => onSelect(opt)} />
-          {opt}
-        </label>
-      ))}
+    <div role="radiogroup" aria-label="Answer options" style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      {options.map((opt) => {
+        const isSel = selected === opt;
+        // After grading, reveal: the right answer goes green; a wrong pick goes red.
+        const tintClass = disabled
+          ? corrects.includes(opt) ? " correct" : isSel ? " wrong" : ""
+          : "";
+        const selStyle: CSSProperties | undefined = isSel && !disabled
+          ? { borderColor: "var(--accent)", background: "var(--accent-soft)" }
+          : undefined;
+        return (
+          <button
+            key={opt}
+            type="button"
+            role="radio"
+            aria-checked={isSel}
+            disabled={disabled}
+            className={`dg-mc-option${tintClass}`}
+            style={selStyle}
+            onClick={() => onSelect(opt)}
+          >
+            {opt}
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -171,13 +189,14 @@ function Dropdowns({ rows, options, value, onChange, disabled }: {
   rows: string[]; options: string[]; value: Record<string, string>; onChange: (v: Record<string, string>) => void; disabled: boolean;
 }) {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       {rows.map((row) => (
         <div key={row} style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <span style={{ minWidth: 120, fontWeight: 500 }}>{row}</span>
-          <span aria-hidden="true">→</span>
+          <span style={{ minWidth: 120, fontWeight: 600 }}>{row}</span>
+          <span aria-hidden="true" style={{ color: "var(--muted)" }}>→</span>
           <select
-            style={inputStyle}
+            className="dg-input"
+            style={{ minWidth: 140 }}
             disabled={disabled}
             aria-label={`${row}: choose`}
             value={value[row] ?? ""}
@@ -243,7 +262,7 @@ function useRetryGrading(
 function RetryNudge({ wrongCount, hintDe }: { wrongCount: number; hintDe: string }) {
   return (
     <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-      <span style={{ color: TIER_STYLE.wrong.bg, fontWeight: 600, fontSize: 14 }}>Not quite — try again.</span>
+      <span style={{ color: "var(--incorrect)", fontWeight: 700, fontSize: 14 }}>Not quite — try again.</span>
       {wrongCount >= 2 && hintDe && (
         <div style={{ fontSize: 13, color: "#92400e", background: "#fef3c7", borderRadius: 8, padding: "6px 10px" }}>💡 {hintDe}</div>
       )}
@@ -255,8 +274,9 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp }:
   const promptId = useId();
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
+  const fullAnswers = useMemo(() => item.answers.filter((a) => a.tier === "full").map((a) => a.text), [item.answers]);
   const choiceOptions = useShuffled(
-    [...new Set([...item.answers.filter((a) => a.tier === "full").map((a) => a.text), ...item.distractors])],
+    [...new Set([...fullAnswers, ...item.distractors])],
     item.id,
   );
   const matchRights = useShuffled(item.pairs.map((p) => p.right), item.id);
@@ -283,27 +303,27 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp }:
   const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult);
 
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
-  const correctText = item.answers.filter((a) => a.tier === "full").map((a) => a.text).join("  /  ");
+  const correctText = fullAnswers.join("  /  ");
 
   return (
     <div style={card} role="group" aria-labelledby={promptId}>
-      <div style={{ fontSize: 12, color: "#94a3b8" }}>{item.format} · level {item.difficulty}</div>
+      <div style={metaLabel}>{item.format} · level {item.difficulty}</div>
       <Prompt id={promptId} text={item.prompt.text} />
-      {isChoice && <Choices options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} />}
+      {isChoice && <Choices options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} corrects={fullAnswers} />}
       {isMatch && <Dropdowns rows={item.pairs.map((p) => p.left)} options={matchRights} value={map} onChange={setMap} disabled={done} />}
       {isGroup && <Dropdowns rows={sortMembers} options={groupLabels} value={map} onChange={setMap} disabled={done} />}
       {TEXT_FORMATS.has(item.format) && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} onEnter={submit} autoFocusFirst={autoFocus} />}
       <GlossRow gloss={item.gloss} />
       {!hideHint && <HintRow hintDe={item.hintDe} />}
-      {!done && <button style={btn} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
+      {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
       {retrying && <RetryNudge wrongCount={wrongCount} hintDe={item.hintDe} />}
       {done && tier && (
         <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           <FeedbackBar tier={tier} xp={xp} hideXp={hideXp} />
           {tier !== "correct" && correctText && (
-            <div style={{ fontSize: 14, color: "#374151" }}>Answer: <strong>{correctText}</strong></div>
+            <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>Answer: <strong>{correctText}</strong></div>
           )}
-          {item.explainDe && <div style={{ fontSize: 13, color: "#6b7280" }}>{item.explainDe}</div>}
+          {item.explainDe && <div style={{ fontSize: 13, color: "var(--muted)" }}>{item.explainDe}</div>}
         </div>
       )}
     </div>
@@ -326,18 +346,18 @@ export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp }: {
   const answer = item.sAnswers.filter((a) => a.tier === "full").map((a) => a.text).join("  /  ");
   return (
     <div style={card} role="group" aria-labelledby={promptId}>
-      <div style={{ fontSize: 12, color: "#94a3b8" }}>vocab · level {item.difficulty}</div>
-      <div style={{ fontSize: 14, color: "#475569" }}>{item.d}</div>
+      <div style={metaLabel}>vocab · level {item.difficulty}</div>
+      <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>{item.d}</div>
       <Prompt id={promptId} text={item.s} />
-      <input ref={inputRef} style={inputStyle} value={value} disabled={done} aria-label="Your answer" placeholder="Your answer" onKeyDown={(e) => { if (e.key === "Enter" && !done) { e.preventDefault(); submit(); } }} onChange={(e) => setValue(e.target.value)} />
+      <input ref={inputRef} className="dg-input" style={{ minWidth: 120 }} value={value} disabled={done} aria-label="Your answer" placeholder="Your answer" onKeyDown={(e) => { if (e.key === "Enter" && !done) { e.preventDefault(); submit(); } }} onChange={(e) => setValue(e.target.value)} />
       <GlossRow gloss={item.gloss} />
       {!hideHint && <HintRow hintDe={item.hintDe} />}
-      {!done && <button style={btn} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
+      {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
       {retrying && <RetryNudge wrongCount={wrongCount} hintDe={item.hintDe} />}
       {done && tier && (
         <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
           <FeedbackBar tier={tier} xp={xp} hideXp={hideXp} />
-          <div style={{ fontSize: 14, color: "#374151" }}>
+          <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>
             {item.w} — <strong>{item.g}</strong>{tier !== "correct" && answer ? ` · answer: ${answer}` : ""}
           </div>
         </div>
@@ -359,17 +379,17 @@ export function VocabIntroView({ wordbank }: { wordbank: WordBank }) {
   }
   return (
     <div style={{ ...card, gap: 14 }}>
-      <div style={{ fontSize: 12, color: "#94a3b8" }}>Word bank · {wordbank.entries.length} words</div>
+      <div style={metaLabel}>Word bank · {wordbank.entries.length} words</div>
       {[...groups.entries()].map(([theme, entries]) => (
         <div key={theme}>
           {theme !== "Words" && (
-            <div style={{ fontWeight: 600, fontSize: 14, color: "#334155", marginBottom: 4 }}>{theme}</div>
+            <div style={{ fontWeight: 700, fontSize: 14, color: "var(--text-secondary)", marginBottom: 4 }}>{theme}</div>
           )}
-          <ul style={{ margin: 0, paddingLeft: 18, color: "#0f172a", fontSize: 15, lineHeight: 1.6 }}>
+          <ul style={{ margin: 0, paddingLeft: 18, color: "var(--text)", fontSize: 15, lineHeight: 1.6 }}>
             {entries.map((e) => (
               <li key={e.id}>
                 <strong>{e.en}</strong> — {e.de.join(" / ")}
-                {e.exampleSb && <span style={{ color: "#64748b", fontSize: 13 }}> · “{e.exampleSb}”</span>}
+                {e.exampleSb && <span style={{ color: "var(--muted)", fontSize: 13 }}> · “{e.exampleSb}”</span>}
               </li>
             ))}
           </ul>
@@ -387,12 +407,12 @@ export function GrammarIntroView({ structures }: { structures: GrammarStructure[
     <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
       {structures.map((s) => (
         <div key={s.id} style={{ ...card, gap: 10 }}>
-          <div style={{ fontSize: 17, fontWeight: 700, color: "#0f172a" }}>{s.nameDe}</div>
+          <div style={{ fontSize: 17, fontWeight: 700, color: "var(--text)", fontFamily: "var(--font-display)" }}>{s.nameDe}</div>
           {s.rules.map((r) => (
             <div key={r.id} style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <div style={{ fontSize: 15, color: "#0f172a", lineHeight: 1.4 }}>{r.de}</div>
+              <div style={{ fontSize: 15, color: "var(--text)", lineHeight: 1.4 }}>{r.de}</div>
               {r.examples.length > 0 && (
-                <ul style={{ margin: 0, paddingLeft: 18, color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
+                <ul style={{ margin: 0, paddingLeft: 18, color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.6 }}>
                   {r.examples.map((ex, i) => (
                     <li key={i}>
                       <strong>{ex.en}</strong>
@@ -449,13 +469,13 @@ export function AudioClip({ audio }: { audio: AudioRef }) {
   const supported = ready && (!!audio.file || (typeof window !== "undefined" && "speechSynthesis" in window));
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-      <button onClick={play} disabled={!supported || playing} style={{ ...btn, background: "#2563eb" }}>
+      <button className="dg-btn" onClick={play} disabled={!supported || playing}>
         ▶ {playing ? "Playing…" : "Play audio"}
       </button>
       {playing && (
-        <button onClick={stop} style={{ ...btn, background: "#64748b" }}>Stop</button>
+        <button className="dg-btn-secondary" onClick={stop}>Stop</button>
       )}
-      {ready && !supported && <span style={{ fontSize: 13, color: "#94a3b8" }}>Audio unavailable on this device.</span>}
+      {ready && !supported && <span style={{ fontSize: 13, color: "var(--muted)" }}>Audio unavailable on this device.</span>}
     </div>
   );
 }
@@ -467,7 +487,7 @@ export function ListeningTaskView({ task, onResult }: {
 }) {
   return (
     <div style={{ ...card, gap: 14 }}>
-      <h3 style={{ fontSize: 17, margin: 0 }}>{task.titleDe}</h3>
+      <h3 style={{ fontSize: 17, margin: 0, fontFamily: "var(--font-display)" }}>{task.titleDe}</h3>
       <AudioClip audio={task.audio} />
       {task.items.map((it) => (
         <GrammarItemView key={it.id} item={it as unknown as GrammarItem} onResult={onResult} />

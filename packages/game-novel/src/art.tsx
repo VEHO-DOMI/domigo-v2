@@ -8,7 +8,7 @@
  * (Ben = sandy hair + orange vest; Leah = glasses; Leo = headphones; Sara = silver
  * streak; You = seen-from-behind grey hoodie) so silhouettes read at a glance.
  */
-import { useId, type CSSProperties } from "react";
+import { useId } from "react";
 import type { Comment } from "./novel-copy.ts";
 
 function hashStr(s: string): number {
@@ -83,26 +83,27 @@ export function CastAvatar({ charKey, name, size = 46 }: { charKey: string; name
   );
 }
 
-const toneStyle: Record<Comment["tone"], CSSProperties> = {
-  kind: { borderLeft: "3px solid #16a34a" },
-  tease: { borderLeft: "3px solid #f59e0b" },
-  cruel: { borderLeft: "3px solid #dc2626" },
+const toneColor: Record<Comment["tone"], string> = {
+  kind: "var(--correct)",
+  tease: "var(--partial)",
+  cruel: "var(--incorrect)",
 };
 
 /**
  * The comment section under the freshly-uploaded video — the consequence beat.
  * `line` frames how the player's accuracy treated Ben; `comments` are toned by it.
+ * Brand glass surface; each comment's tone shows as a coloured left accent.
  */
 export function CommentSection({ comments, line, label }: { comments: Comment[]; line: string; label: string }) {
   return (
-    <div style={{ background: "#0f172a", borderRadius: 14, padding: "14px 16px", marginTop: 12 }}>
-      <div style={{ color: "#e2e8f0", fontSize: 14, fontWeight: 700, marginBottom: 4 }}>💬 {label}</div>
-      <p style={{ color: "#94a3b8", fontSize: 13, margin: "0 0 12px" }}>{line}</p>
+    <div style={{ background: "var(--bg-sunken)", borderWidth: 1, borderStyle: "solid", borderColor: "var(--card-border)", borderRadius: 14, padding: "14px 16px", marginTop: 12 }}>
+      <div style={{ color: "var(--ink)", fontSize: 14, fontWeight: 700, marginBottom: 4, fontFamily: "var(--font-display)" }}>💬 {label}</div>
+      <p style={{ color: "var(--text-secondary)", fontSize: 13, margin: "0 0 12px" }}>{line}</p>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {comments.map((c, i) => (
-          <div key={`${c.author}-${i}`} style={{ background: "#1e293b", borderRadius: 8, padding: "8px 11px", ...toneStyle[c.tone] }}>
-            <div style={{ color: "#cbd5e1", fontSize: 12, fontWeight: 600 }}>@{c.author}</div>
-            <div style={{ color: "#f1f5f9", fontSize: 14 }}>{c.text}</div>
+          <div key={`${c.author}-${i}`} style={{ background: "var(--card)", borderWidth: 1, borderStyle: "solid", borderColor: "var(--card-border)", borderLeftWidth: 3, borderLeftColor: toneColor[c.tone], borderRadius: 10, padding: "8px 11px" }}>
+            <div style={{ color: "var(--text-secondary)", fontSize: 12, fontWeight: 600 }}>@{c.author}</div>
+            <div style={{ color: "var(--text)", fontSize: 14 }}>{c.text}</div>
           </div>
         ))}
       </div>
