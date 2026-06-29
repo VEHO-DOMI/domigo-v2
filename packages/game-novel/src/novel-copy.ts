@@ -25,6 +25,21 @@ export const COPY = {
   viewsGloss: "views (= Aufrufe)",
 };
 
+/**
+ * The task label for a slot. The channel/"goes live" framing belongs to the
+ * exploitation arc (ep01-11). Once Ben stops being performed (ep12-14), the
+ * scripting/fix framing would be grotesque — the redemption slots carry neutral,
+ * story-true labels instead (and never trigger the comment beat; see isFixSlot).
+ */
+export function slotPrompt(slot: string): string {
+  if (/^fix(-|$)/.test(slot)) return COPY.fixPrompt;            // ep01-11: fix Ben's on-camera line
+  if (/^script(-|$)/.test(slot)) return COPY.taskPrompt;        // ep01-11: write the script
+  if (/^truth(-|$)/.test(slot)) return "✍️ Finish the report — the way it really happened.";  // ep12 passive
+  if (/^regret(-|$)/.test(slot)) return "💭 If you could go back — what would you do?";        // ep13 2nd conditional
+  if (/^promise(-|$)/.test(slot)) return "🎤 Live and honest — help Ben get it right.";        // ep14 going-to
+  return COPY.taskPrompt;
+}
+
 /** Themed result line by item kind + grade tier. `views` = the XP that was awarded. */
 export function resultLine(kind: "grammar" | "vocab", tier: Tier, views: number): { text: string; good: boolean } {
   if (tier === "wrong") return { text: "That line aired with a mistake. Check the answer.", good: false };
@@ -85,12 +100,19 @@ const TEASE_TENSE: Comment[] = [
   { author: "study_girl", text: "the Grammar Fix guy again 😅", tone: "tease" },
   { author: "anon_42", text: "do they laugh WITH him or AT him?", tone: "cruel" },
 ];
+// RECKONING band (L11, the compilation): the cruelty is structural now — a clean take
+// can't undo it. This is the gut-punch the whole comment arc has been building to.
+const CRUEL: Comment[] = [
+  { author: "clip_farm", text: "made a compilation of all his fails 💀", tone: "cruel" },
+  { author: "h8r_x", text: "this kid is so dumb lol", tone: "cruel" },
+  { author: "noname_99", text: "200k views and they're all laughing AT him", tone: "cruel" },
+];
 
 /**
  * Build the comment section from the player's fix-Ben accuracy, bounded by band.
  * `correct`/`total` count the episode's error-correction ("fix Ben's line") tasks.
- * WARM (L01–05) + TENSE (L06–10) are wired; reckoning (L11+) lands with the
- * confrontation episodes (the harsher banks reuse this seam — never invented at random, Law 9).
+ * WARM (L01–05) + TENSE (L06–10) + RECKONING (L11) are all wired. After L11 the
+ * fix-Ben mechanic is retired (Ben stops being performed), so this only fires through L11.
  */
 export function episodeComments(correct: number, total: number, band: CommentBand): { comments: Comment[]; clean: boolean; line: string } {
   const clean = total === 0 || correct >= total;
@@ -103,6 +125,7 @@ export function episodeComments(correct: number, total: number, band: CommentBan
     if (clean) return { comments: [KIND[0]!, KIND[1]!, TEASE_TENSE[0]!], clean, line: "Clean takes — but the channel is famous for Ben's slip-ups now." };
     return { comments: TEASE_TENSE, clean, line: "His mistake aired. The comments aren't laughing with him anymore." };
   }
-  // reckoning band (L11+): authored with the confrontation episodes (later wave).
-  return { comments: clean ? KIND : [TEASE_TENSE[0]!, TEASE_TENSE[2]!], clean, line: clean ? "Ben's lines read clean." : "His mistakes aired — and this time it stings." };
+  // RECKONING (L11): the cruelty is structural now — a compilation exists, made from old clips.
+  // A clean take changes nothing; that futility IS the point. The comments are cruel regardless.
+  return { comments: CRUEL, clean, line: "You kept this take clean. It doesn't matter — the cruelty has a life of its own now." };
 }
