@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fredoka, Inter, Quicksand } from "next/font/google";
+import BrandHeader from "./BrandHeader";
 import "./globals.css";
 
 // The DomiGo type system: Fredoka (display), Inter (body), Quicksand (labels).
@@ -22,7 +23,10 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${fredoka.variable} ${quicksand.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <BrandHeader />
+        {children}
+      </body>
     </html>
   );
 }

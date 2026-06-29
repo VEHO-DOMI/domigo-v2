@@ -12,9 +12,10 @@ export default async function HomePage() {
 
   // Due-count badge for the Review card. Wrapped: a DB hiccup must never 500 the post-login landing.
   let dueLabel = "Spaced review of past items";
+  let dueBadge: string | null = null;
   try {
     const c = await getDueCounts(getDb(), session.user.id);
-    if (c.total > 0) dueLabel = `${c.total} due now`;
+    if (c.total > 0) { dueLabel = "Spaced review of past items"; dueBadge = `${c.total} due now`; }
   } catch {
     /* keep default */
   }
@@ -33,52 +34,43 @@ export default async function HomePage() {
     await signOut({ redirectTo: "/" });
   }
 
+  const items: { href: string; icon: string; title: string; sub: string; badge?: string | null }[] = [
+    { href: "/practice", icon: "📚", title: "Practice", sub: "Vocabulary & grammar by unit" },
+    { href: "/review", icon: "🔁", title: "Review", sub: dueLabel, badge: dueBadge },
+    { href: "/learn", icon: "🗺️", title: "Study Path", sub: "Guided units with checkpoints" },
+    { href: "/listening", icon: "🎧", title: "Listening", sub: "Audio comprehension by unit" },
+    { href: "/tests", icon: "📝", title: "Mock Test", sub: "Practice a Schularbeit" },
+  ];
+
   return (
-    <main style={{ maxWidth: 520, margin: "0 auto", padding: "48px 20px", fontFamily: "system-ui, sans-serif" }}>
-      <h1 style={{ fontSize: 28, marginBottom: 4 }}>Hi, {session.user.name} 👋</h1>
+    <main style={{ maxWidth: 560, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
+      <h1 style={{ fontSize: 30, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Hi, {session.user.name} 👋</h1>
       {streakLabel && (
-        <p style={{ margin: "0 0 6px", color: "#ea580c", fontWeight: 600, fontSize: 15 }}>{streakLabel}</p>
+        <span style={{ display: "inline-flex", alignItems: "center", background: "rgba(234,88,12,0.12)", color: "#c2410c", fontWeight: 700, fontSize: 13, padding: "4px 12px", borderRadius: 999, fontFamily: "var(--font-label)" }}>{streakLabel}</span>
       )}
-      <p style={{ color: "#64748b", marginTop: 0 }}>What would you like to do?</p>
+      <p style={{ color: "var(--text-secondary)", margin: streakLabel ? "10px 0 0" : "0" }}>What would you like to do?</p>
+
       <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 20 }}>
-        <Link href="/practice" style={cardStyle}>
-          <strong style={{ fontSize: 17 }}>Practice →</strong>
-          <span style={{ color: "#64748b", fontSize: 14 }}>Vocabulary &amp; grammar by unit</span>
-        </Link>
-        <Link href="/review" style={cardStyle}>
-          <strong style={{ fontSize: 17 }}>Review →</strong>
-          <span style={{ color: "#64748b", fontSize: 14 }}>{dueLabel}</span>
-        </Link>
-        <Link href="/learn" style={cardStyle}>
-          <strong style={{ fontSize: 17 }}>Study Path →</strong>
-          <span style={{ color: "#64748b", fontSize: 14 }}>Guided units with checkpoints</span>
-        </Link>
-        <Link href="/listening" style={cardStyle}>
-          <strong style={{ fontSize: 17 }}>Listening →</strong>
-          <span style={{ color: "#64748b", fontSize: 14 }}>Audio comprehension by unit</span>
-        </Link>
-        <Link href="/tests" style={cardStyle}>
-          <strong style={{ fontSize: 17 }}>Mock Test →</strong>
-          <span style={{ color: "#64748b", fontSize: 14 }}>Practice a Schularbeit</span>
-        </Link>
+        {items.map((it) => (
+          <Link key={it.href} href={it.href} className="dg-tile" style={{ display: "flex", alignItems: "center", gap: 14, padding: "16px 18px" }}>
+            <span aria-hidden="true" style={{ fontSize: 26, lineHeight: 1, flex: "0 0 auto" }}>{it.icon}</span>
+            <span style={{ flex: 1, minWidth: 0 }}>
+              <span style={{ display: "block", fontSize: 17, fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{it.title}</span>
+              <span style={{ display: "block", fontSize: 14, color: "var(--text-secondary)" }}>{it.sub}</span>
+            </span>
+            {it.badge && (
+              <span style={{ flex: "0 0 auto", background: "var(--accent-soft)", color: "var(--accent-deep)", fontWeight: 700, fontSize: 12, padding: "3px 10px", borderRadius: 999, fontFamily: "var(--font-label)" }}>{it.badge}</span>
+            )}
+            <span aria-hidden="true" style={{ flex: "0 0 auto", color: "var(--accent)", fontSize: 18, fontWeight: 700 }}>→</span>
+          </Link>
+        ))}
       </div>
+
       <form action={doSignOut} style={{ marginTop: 28 }}>
-        <button type="submit" style={{ background: "none", border: "none", color: "#94a3b8", fontSize: 14, cursor: "pointer", textDecoration: "underline" }}>
+        <button type="submit" style={{ background: "none", border: "none", color: "var(--muted)", fontSize: 14, cursor: "pointer", textDecoration: "underline", fontFamily: "var(--font-body)" }}>
           Sign out
         </button>
       </form>
     </main>
   );
 }
-
-const cardStyle = {
-  display: "flex",
-  flexDirection: "column",
-  gap: 2,
-  border: "1px solid #e2e8f0",
-  borderRadius: 12,
-  padding: "16px 18px",
-  textDecoration: "none",
-  color: "#0f172a",
-  background: "#f8fafc",
-} as const;

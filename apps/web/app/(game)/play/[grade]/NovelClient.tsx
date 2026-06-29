@@ -16,7 +16,7 @@ import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 const NovelGame = dynamic(() => import("@domigo/game-novel").then((m) => m.NovelGame), {
   ssr: false,
-  loading: () => <p style={{ textAlign: "center", padding: 40, color: "#64748b" }}>Loading the episode…</p>,
+  loading: () => <p style={{ textAlign: "center", padding: 40, color: "var(--muted)" }}>Loading the episode…</p>,
 });
 
 interface SavePayload { clientRev: number; state: NovelSave }

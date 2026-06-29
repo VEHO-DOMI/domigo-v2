@@ -55,23 +55,23 @@ export default function ReviewSession({ items }: { items: QueueItem[] }) {
 
   if (done || !current) {
     return (
-      <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "system-ui, sans-serif" }}>
-        <h1 style={{ fontSize: 22 }}>Reviewed {results.length} — see you tomorrow 👋</h1>
-        <p style={{ fontSize: 15, color: "#334155" }}>{xpTotal} XP {tierSummary}</p>
-        {streak ? <p style={{ fontSize: 15, color: "#ea580c", fontWeight: 600 }}>🔥 {streak}-day streak</p> : null}
-        <Link href="/home" style={{ fontSize: 14, color: "#2563eb" }}>← Home</Link>
+      <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
+        <h1 style={{ fontSize: 24, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Reviewed {results.length} — see you tomorrow 👋</h1>
+        <p style={{ fontSize: 15, color: "var(--text-secondary)" }}>{xpTotal} XP {tierSummary}</p>
+        {streak ? <p style={{ fontSize: 15, color: "#ea580c", fontWeight: 700 }}>🔥 {streak}-day streak</p> : null}
+        <Link href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</Link>
       </main>
     );
   }
 
   return (
-    <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "system-ui, sans-serif" }}>
+    <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-        <h1 style={{ fontSize: 22, margin: 0 }}>Review</h1>
-        <Link href="/home" style={{ fontSize: 14, color: "#2563eb" }}>← Home</Link>
+        <h1 style={{ fontSize: 22, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Review</h1>
+        <Link href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</Link>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "#64748b", marginBottom: 10 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--text-secondary)", marginBottom: 10 }}>
         <span>Item {Math.min(i + 1, items.length)} / {items.length}</span>
         <span>{xpTotal} XP {tierSummary}</span>
       </div>
@@ -83,13 +83,7 @@ export default function ReviewSession({ items }: { items: QueueItem[] }) {
       )}
 
       {answered && (
-        <button
-          onClick={next}
-          style={{
-            marginTop: 14, background: "#2563eb", color: "#fff", border: "none", borderRadius: 8,
-            padding: "8px 18px", fontSize: 15, cursor: "pointer",
-          }}
-        >
+        <button className="dg-btn" onClick={next} style={{ marginTop: 14 }}>
           {isLast ? "Finish →" : "Next →"}
         </button>
       )}

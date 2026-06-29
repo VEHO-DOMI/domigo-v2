@@ -52,12 +52,9 @@ const card: CSSProperties = {
   background: "rgba(15,23,42,0.55)", padding: 16, zIndex: 10,
 };
 const panel: CSSProperties = {
-  background: "#fff", borderRadius: 14, padding: "20px 22px", maxWidth: 560, width: "100%",
-  maxHeight: "92%", overflowY: "auto", fontFamily: "system-ui, sans-serif", boxShadow: "0 12px 40px rgba(0,0,0,.3)",
-};
-const btn: CSSProperties = {
-  marginTop: 14, background: "#2563eb", color: "#fff", border: "none", borderRadius: 8,
-  padding: "9px 18px", fontSize: 15, cursor: "pointer",
+  background: "var(--card)", borderRadius: 20, padding: "20px 22px", maxWidth: 560, width: "100%",
+  maxHeight: "92%", overflowY: "auto", fontFamily: "var(--font-body)", color: "var(--text)",
+  border: "1px solid var(--card-border)", boxShadow: "var(--shadow-elevated)",
 };
 
 function postAttempt(onAttempt: AttemptFn, itemId: string, input: unknown): void {
@@ -72,13 +69,13 @@ function TaskCard({ item, onAttempt, onDone, label }: { item: ResolvedItem; onAt
   };
   return (
     <div style={panel}>
-      <div style={{ fontSize: 12, color: "#64748b", marginBottom: 8 }}>{label}</div>
+      <div style={{ fontSize: 12, color: "var(--text-secondary)", marginBottom: 8, fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.02em", textTransform: "uppercase" }}>{label}</div>
       {item.kind === "grammar" ? (
         <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} />
       ) : (
         <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} />
       )}
-      {answered && <button style={btn} onClick={onDone}>Continue →</button>}
+      {answered && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onDone}>Continue →</button>}
     </div>
   );
 }
@@ -103,30 +100,30 @@ function DialogueOverlay({ chapter, castNames, storyItems, onAttempt, onClose }:
   return (
     <div style={card}>
       <div style={panel}>
-        <div style={{ fontSize: 13, fontWeight: 600, color: "#2563eb" }}>{castNames[scene.speaker] ?? scene.speaker}</div>
-        <p style={{ fontSize: 18, margin: "6px 0 4px" }}>{scene.textEn}</p>
-        {scene.scaffoldDe && <p style={{ fontSize: 14, color: "#64748b", margin: "0 0 6px" }}>{scene.scaffoldDe}</p>}
+        <div style={{ fontSize: 14, fontWeight: 700, color: "var(--accent)", fontFamily: "var(--font-display)" }}>{castNames[scene.speaker] ?? scene.speaker}</div>
+        <p style={{ fontSize: 18, margin: "6px 0 4px", color: "var(--text)" }}>{scene.textEn}</p>
+        {scene.scaffoldDe && <p style={{ fontSize: 14, color: "var(--text-secondary)", margin: "0 0 6px" }}>{scene.scaffoldDe}</p>}
         {scene.glosses.length > 0 && (
           <div style={{ fontSize: 13 }}>
-            <button style={{ ...btn, marginTop: 4, background: "#e2e8f0", color: "#0f172a", padding: "4px 10px", fontSize: 13 }} onClick={() => setShowGloss((g) => !g)}>
+            <button className="dg-chip" onClick={() => setShowGloss((g) => !g)}>
               {showGloss ? "Hide help" : "Show word help"}
             </button>
-            {showGloss && <ul style={{ margin: "8px 0 0", paddingLeft: 18, color: "#334155" }}>{scene.glosses.map((g) => <li key={g.word}>{g.word} = {g.de}</li>)}</ul>}
+            {showGloss && <ul style={{ margin: "8px 0 0", paddingLeft: 18, color: "var(--text-secondary)" }}>{scene.glosses.map((g) => <li key={g.word}>{g.word} = {g.de}</li>)}</ul>}
           </div>
         )}
 
         {taskBlocks ? (
-          <div style={{ marginTop: 14, borderTop: "1px solid #e2e8f0", paddingTop: 12 }}>
+          <div style={{ marginTop: 14, borderTop: "1px solid var(--card-border)", paddingTop: 12 }}>
             <TaskCardInline item={slotItem} onAttempt={onAttempt} onDone={() => setTaskDone(true)} />
           </div>
         ) : Array.isArray(sNext) ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 12 }}>
             {sNext.map((c) => (
-              <button key={c.id} style={{ ...btn, marginTop: 0, background: "#0ea5e9" }} onClick={() => go(c.next)}>{c.textEn}</button>
+              <button key={c.id} className="dg-btn-secondary" style={{ textAlign: "left", justifyContent: "flex-start" }} onClick={() => go(c.next)}>{c.textEn}</button>
             ))}
           </div>
         ) : (
-          <button style={btn} onClick={() => go(sNext)}>{sNext === null ? "Close" : "Next →"}</button>
+          <button className="dg-btn" style={{ marginTop: 14 }} onClick={() => go(sNext)}>{sNext === null ? "Close" : "Next →"}</button>
         )}
       </div>
     </div>
@@ -142,7 +139,7 @@ function TaskCardInline({ item, onAttempt, onDone }: { item: ResolvedItem; onAtt
       {item.kind === "grammar"
         ? <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} />
         : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} />}
-      {answered && <button style={btn} onClick={onDone}>Continue →</button>}
+      {answered && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onDone}>Continue →</button>}
     </>
   );
 }
@@ -185,7 +182,7 @@ export function PhaserGame(props: PhaserGameProps) {
   return (
     <div style={{ position: "relative", width: "100%", maxWidth: 720, margin: "0 auto" }}>
       <div ref={hostRef} data-testid="game-canvas" style={{ width: "100%", aspectRatio: "15 / 11", background: "#1e293b", borderRadius: 8, overflow: "hidden" }} />
-      <p style={{ fontSize: 12, color: "#64748b", textAlign: "center", marginTop: 6 }}>Arrow keys / WASD to move · walk into a ✦ to practise · talk to Finn</p>
+      <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", marginTop: 6 }}>Arrow keys / WASD to move · walk into a ✦ to practise · talk to Finn</p>
 
       {overlay?.kind === "encounter" && props.encounters[overlay.idx] && (
         <div style={card}>

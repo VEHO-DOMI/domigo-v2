@@ -17,7 +17,7 @@ import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 const PhaserGame = dynamic(() => import("@domigo/game-2d").then((m) => m.PhaserGame), {
   ssr: false,
-  loading: () => <p style={{ textAlign: "center", padding: 40, color: "#64748b" }}>Loading the world…</p>,
+  loading: () => <p style={{ textAlign: "center", padding: 40, color: "var(--muted)" }}>Loading the world…</p>,
 });
 
 interface SavePayload { clientRev: number; state: GameSaveState }
@@ -96,10 +96,10 @@ export default function GameClient(props: {
     sendAttempt({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
 
   return (
-    <main style={{ padding: "16px 12px", fontFamily: "system-ui, sans-serif" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", maxWidth: 720, margin: "0 auto 10px" }}>
-        <h1 style={{ fontSize: 20, margin: 0 }}>{props.zoneTitle}</h1>
-        <a href={props.hubHref} style={{ fontSize: 14, color: "#2563eb" }}>← Zones</a>
+    <main style={{ padding: "16px 12px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", maxWidth: 720, margin: "0 auto 10px" }}>
+        <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{props.zoneTitle}</h1>
+        <a href={props.hubHref} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Zones</a>
       </div>
       <PhaserGame
         seed={props.seed}

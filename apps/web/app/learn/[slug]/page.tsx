@@ -23,12 +23,13 @@ export default async function UnitPathPage({ params }: { params: Promise<{ slug:
     /* empty — render the path as all-unstarted */
   }
   const views = withProgress(nodes, completed);
+  const grade = slug.match(/^g(\d)/)?.[1];
 
   return (
-    <main style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "system-ui, sans-serif" }}>
+    <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 14 }}>
-        <h1 style={{ fontSize: 22, margin: 0 }}>{slug}</h1>
-        <Link href="/learn" style={{ fontSize: 14, color: "#2563eb" }}>← Study Path</Link>
+        <h1 style={{ fontSize: 24, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{slug}</h1>
+        <Link href="/learn" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Study Path</Link>
       </div>
       <ol style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 8 }}>
         {views.map((n) => (
@@ -36,7 +37,7 @@ export default async function UnitPathPage({ params }: { params: Promise<{ slug:
         ))}
       </ol>
       <p style={{ marginTop: 18 }}>
-        <Link href="/review" style={{ fontSize: 14, color: "#2563eb" }}>Review due items →</Link>
+        <Link href="/review" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>Review due items →</Link>
       </p>
     </main>
   );
@@ -54,19 +55,11 @@ function NodeRow({ slug, node }: { slug: string; node: NodeView }) {
         : "🔒 Locked";
   const inner = (
     <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        border: "1px solid #e2e8f0",
-        borderRadius: 10,
-        padding: "12px 16px",
-        background: locked ? "#f8fafc" : "#fff",
-        opacity: locked ? 0.55 : 1,
-      }}
+      className={locked ? "dg-tile--locked" : "dg-tile"}
+      style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "13px 16px", opacity: locked ? 0.7 : 1 }}
     >
-      <span style={{ fontWeight: 600, color: locked ? "#94a3b8" : "#0f172a" }}>{node.title}</span>
-      <span style={{ fontSize: 13, color: locked ? "#94a3b8" : "#64748b" }}>{meta}</span>
+      <span style={{ fontWeight: 700, fontFamily: "var(--font-display)", color: locked ? "var(--muted)" : "var(--ink)" }}>{node.title}</span>
+      <span style={{ fontSize: 13, fontWeight: 600, color: locked ? "var(--muted)" : node.status === "available" ? "var(--accent)" : "var(--accent-deep)" }}>{meta}</span>
     </div>
   );
   return <li>{locked ? inner : <Link href={`/learn/${slug}/${node.id}`} style={{ textDecoration: "none" }}>{inner}</Link>}</li>;

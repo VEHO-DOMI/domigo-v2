@@ -31,8 +31,10 @@
   /* ── semantic ── */
   --correct:        #16a34a;
   --correct-soft:   #dcfce7;
+  --correct-glow:   rgba(22, 163, 74, 0.14);
   --incorrect:      #dc2626;
   --incorrect-soft: #fee2e2;
+  --wrong-glow:     rgba(220, 38, 38, 0.12);
   --partial:        #d97706;
 
   /* ── task-type accents ── */
@@ -82,18 +84,24 @@
 /* ── grade-indexed accents (grade 3 = blue is the :root default) ── */
 [data-grade="1"] {
   --accent: #16a34a; --accent-deep: #15803d; --accent-light: #22c55e;
-  --accent-soft: rgba(22, 163, 74, 0.12); --accent-glow: rgba(22, 163, 74, 0.18);
+  --accent-soft: rgba(22, 163, 74, 0.12); --accent-glow: rgba(22, 163, 74, 0.15);
   --rule: rgba(22, 163, 74, 0.16); --card-border: rgba(22, 163, 74, 0.16);
+  --bg: #eefbf2; --bg-sunken: #d8f5e1; --card-hover: #f4fcf6;
+  --logo-gradient: linear-gradient(140deg, #16a34a, #22c55e 40%, #15803d 80%);
 }
 [data-grade="2"] {
   --accent: #dc2626; --accent-deep: #b91c1c; --accent-light: #ef4444;
-  --accent-soft: rgba(220, 38, 38, 0.12); --accent-glow: rgba(220, 38, 38, 0.18);
-  --rule: rgba(220, 38, 38, 0.16); --card-border: rgba(220, 38, 38, 0.16);
+  --accent-soft: rgba(220, 38, 38, 0.12); --accent-glow: rgba(220, 38, 38, 0.15);
+  --rule: rgba(220, 38, 38, 0.16); --card-border: rgba(200, 40, 40, 0.14);
+  --bg: #fdf0f0; --bg-sunken: #fbe4e4; --card-hover: #fdf5f5;
+  --logo-gradient: linear-gradient(140deg, #d43a2a, #e8654a 40%, #b82e1e 80%);
 }
 [data-grade="4"] {
   --accent: #7c3aed; --accent-deep: #6d28d9; --accent-light: #8b5cf6;
-  --accent-soft: rgba(124, 58, 237, 0.12); --accent-glow: rgba(124, 58, 237, 0.18);
-  --rule: rgba(124, 58, 237, 0.16); --card-border: rgba(124, 58, 237, 0.16);
+  --accent-soft: rgba(124, 58, 237, 0.12); --accent-glow: rgba(124, 58, 237, 0.15);
+  --rule: rgba(124, 58, 237, 0.16); --card-border: rgba(124, 58, 237, 0.18);
+  --bg: #f6f0ff; --bg-sunken: #ece2fb; --card-hover: #faf6ff;
+  --logo-gradient: linear-gradient(140deg, #9b6dff, #c4a8f0 50%, #d4943a 90%);
 }
 
 .dark {
@@ -154,6 +162,35 @@ body {
   color: transparent;
 }
 
+/* The persistent app header — DomiGo wordmark + tagline + radial glow (trainer chrome). */
+.dg-app-header {
+  position: relative;
+  text-align: center;
+  padding: 16px 16px 10px;
+  overflow: hidden;
+}
+.dg-app-header .dg-glow {
+  position: absolute;
+  top: -55%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 240px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+}
+.dg-tagline {
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  opacity: 0.75;
+  margin-top: 5px;
+}
+
 /* ── brand component classes (ported from the trainer recipes) ─────────────── */
 
 /* Glass card — semi-transparent, blurred, soft layered shadow. */
@@ -164,6 +201,27 @@ body {
   padding: 1.1rem 1.15rem;
   backdrop-filter: blur(20px);
   box-shadow: var(--shadow-card);
+}
+
+/* Clickable card tile — glass surface that lifts to the accent on hover. */
+.dg-tile {
+  display: block;
+  text-decoration: none;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  color: var(--text);
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s;
+}
+.dg-tile:hover { transform: translateY(-2px); box-shadow: var(--shadow-elevated); border-color: var(--accent); }
+.dg-tile--locked {
+  display: block;
+  background: var(--bg-sunken);
+  border: 1.5px dashed var(--card-border);
+  border-radius: var(--radius-lg);
+  color: var(--muted);
 }
 
 /* Primary action — accent gradient, gloss inset, lift on hover, snappy press. */
@@ -196,28 +254,27 @@ body {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  background: var(--card);
+  background: rgba(0, 0, 0, 0.04);
   color: var(--text-secondary);
-  border: 1.5px solid var(--card-border);
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--radius);
   padding: 0.65rem 1.2rem;
   font-family: var(--font-body);
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: var(--shadow-card);
   transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.dg-btn-secondary:hover { background: var(--card-hover); color: var(--text); border-color: var(--accent); }
+.dg-btn-secondary:hover { background: rgba(0, 0, 0, 0.07); color: var(--text); border-color: rgba(0, 0, 0, 0.15); }
 .dg-btn-secondary:active { transform: scale(0.98); }
 
-/* Small chip button (toggles: "Auf Deutsch?", "Show word help"). */
+/* Small pill chip (Reset / Hint / "Auf Deutsch?" / "Show word help") — radius-20 white pill. */
 .dg-chip {
-  background: var(--bg-sunken);
-  color: var(--ink-soft);
+  background: var(--card);
+  color: var(--text-secondary);
   border: 1px solid var(--card-border);
-  border-radius: 999px;
-  padding: 4px 11px;
+  border-radius: 20px;
+  padding: 5px 14px;
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;
@@ -226,41 +283,41 @@ body {
 }
 .dg-chip:hover { background: var(--card-hover); color: var(--text); border-color: var(--accent); }
 
-/* Text / answer input — light glass fill, accent focus glow. */
+/* Text / answer input — the trainer's .answer-input: subtle fill, accent focus glow ring. */
 .dg-input {
-  padding: 0.7rem 1rem;
+  padding: 0.85rem 1rem;
   border-radius: var(--radius);
   border: 1.5px solid var(--card-border);
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.04);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 1rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-.dg-input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-glow); }
+.dg-input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-glow), 0 0 20px var(--accent-glow); }
 .dg-input::placeholder { color: var(--muted); }
 
-/* Multiple-choice option — reveals correct/wrong with a soft tint. */
+/* Multiple-choice option — the trainer's reveal: the answer goes coloured + bold. */
 .dg-mc-option {
   display: block;
   width: 100%;
   text-align: left;
-  padding: 0.8rem 1.05rem;
+  padding: 14px 16px;
   border-radius: var(--radius);
-  border: 1.5px solid var(--card-border);
+  border: 2px solid var(--card-border);
   background: var(--card);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  min-height: 48px;
-  transition: all 0.15s;
+  min-height: 3rem;
+  transition: all 0.15s ease;
 }
-.dg-mc-option:hover:not(:disabled) { border-color: var(--accent); background: var(--card-hover); }
-.dg-mc-option:active:not(:disabled) { transform: scale(0.98); }
-.dg-mc-option.correct { border-color: var(--correct); background: var(--correct-soft); }
-.dg-mc-option.wrong { border-color: var(--wrong); background: var(--incorrect-soft); }
+.dg-mc-option:hover:not(:disabled) { border-color: var(--accent); background: var(--card-hover); transform: translateY(-1px); }
+.dg-mc-option:active:not(:disabled) { transform: scale(0.99); }
+.dg-mc-option.correct { border-color: var(--correct); background: var(--correct-glow); color: var(--correct); font-weight: 800; }
+.dg-mc-option.wrong { border-color: var(--wrong); background: var(--wrong-glow); color: var(--wrong); }
 .dg-mc-option:disabled { cursor: default; }
 
 /* XP / progress bar — gradient fill + glow. */
