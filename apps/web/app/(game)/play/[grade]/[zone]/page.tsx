@@ -7,7 +7,8 @@
 import { redirect } from "next/navigation";
 import { Encounter, type Chapter, type ComprehensionItem, type GrammarItem, type VocabItem } from "@domigo/content-schema";
 import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadUnit } from "@domigo/content-loader";
-import { getDb, getDueRefs, getGameSave } from "@domigo/db";
+import { getDb, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db";
+import { EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { resolveEncounterTasks, type ResolvedItem } from "@domigo/game-core";
 import { getActingUserForPage } from "@/lib/identity";
 import { resolveDetectiveArt } from "@/lib/story-art";
@@ -91,6 +92,18 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
       })
       .filter((x): x is ResolvedItem => x !== null);
     const detectiveArt = resolveDetectiveArt(storyId, grade, chapter);
+    // Phase 6 — "Solve the Case": on the LAST chapter, recap the collected Evidence
+    // Pieces (same ledger derivation as the hub board) so the finale is evidence-driven.
+    const isFinale = story !== null && story.chapters[story.chapters.length - 1]?.id === chapter.id;
+    let finalePieces: EvidencePiece[] = [];
+    if (isFinale && story) {
+      const solved = await getSolvedGameItemIds(getDb(), acting.userId, grade).catch(() => new Set<string>());
+      finalePieces = story.chapters.map((c, i): EvidencePiece => {
+        const refs = c.scenes.flatMap((s) => s.taskSlots).map((ts) => ts.itemId);
+        const unlocked = c.id === chapter.id || (refs.length > 0 && refs.every((ref) => solved.has(ref)));
+        return { chapterId: c.id, caseNo: i + 1, label: EVIDENCE[c.id] ?? "a clue", img: undefined, unlocked };
+      });
+    }
     const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-detective").DetectiveSave } : null;
     return (
       <DetectiveClient
@@ -100,6 +113,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
         castNames={castNames}
         storyItems={storyItems}
         reviewItems={reviewItems}
+        finalePieces={finalePieces}
         serverSave={serverSave}
         detectiveArt={detectiveArt}
       />

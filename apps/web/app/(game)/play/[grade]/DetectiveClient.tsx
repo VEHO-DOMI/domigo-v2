@@ -8,7 +8,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import type { Chapter } from "@domigo/content-schema";
-import type { GameAttempt, DetectiveSave, DetectiveArt } from "@domigo/game-detective";
+import type { GameAttempt, DetectiveSave, DetectiveArt, EvidencePiece } from "@domigo/game-detective";
 import type { ResolvedItem } from "@domigo/game-core";
 import { flushOutbox, sendAttempt } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
@@ -27,6 +27,7 @@ export default function DetectiveClient(props: {
   castNames: Record<string, string>;
   storyItems: Record<string, ResolvedItem>;
   reviewItems: ResolvedItem[];
+  finalePieces: EvidencePiece[];
   serverSave: SavePayload | null;
   detectiveArt: DetectiveArt | null;
 }) {
@@ -102,6 +103,7 @@ export default function DetectiveClient(props: {
         castNames={props.castNames}
         storyItems={props.storyItems}
         reviewItems={props.reviewItems}
+        finalePieces={props.finalePieces}
         onAttempt={onAttempt}
         initialSave={initial?.state ?? null}
         onSave={onSave}

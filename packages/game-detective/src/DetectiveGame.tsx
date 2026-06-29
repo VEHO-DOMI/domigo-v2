@@ -14,7 +14,8 @@ import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-sch
 import { xpForTier, type Tier } from "@domigo/engine";
 import type { ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
-import { CharacterChip, EvidenceBoard, characterPalette } from "./art.tsx";
+import { CharacterChip, EvidenceBoard, EvidenceGallery, characterPalette } from "./art.tsx";
+import type { EvidencePiece } from "./art.tsx";
 import { COPY, EVIDENCE, resultLine, trailLabel } from "./detective-copy.ts";
 
 export interface GameAttempt {
@@ -55,6 +56,8 @@ export interface DetectiveGameProps {
   storyItems: Record<string, ResolvedItem>;
   /** Due-item "re-interview" beat (Phase 4 spaced retrieval) — shown before the chapter on a fresh start. */
   reviewItems?: ResolvedItem[];
+  /** Collected Evidence Pieces for the "Solve the Case" finale (last chapter only; Phase 6). */
+  finalePieces?: EvidencePiece[];
   onAttempt: AttemptFn;
   initialSave?: DetectiveSave | null;
   onSave?: (s: DetectiveSave) => void;
@@ -69,6 +72,16 @@ const choiceBtn: CSSProperties = { ...btn, marginTop: 0, background: "#0ea5e9", 
 function humanize(slot: string): string {
   const s = slot.replace(/[-_]/g, " ");
   return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+/** Phase 7 (read-aloud): speak a line via the browser voice (A1–A2 pace). No TTS provider needed. */
+function speak(text: string): void {
+  if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-GB";
+  u.rate = 0.85;
+  window.speechSynthesis.speak(u);
 }
 
 function TaskClue({ item, onAttempt, onSolved, onContinue, onScored, hideHint }: {
@@ -170,6 +183,31 @@ export function DetectiveGame(props: DetectiveGameProps) {
     );
   }
 
+  // Phase 6 — "Solve the Case": the last chapter's completion recaps the collected
+  // Evidence Pieces (derived from the ledger), framed by how complete the case is.
+  const finalePieces = props.finalePieces ?? [];
+  if (done && finalePieces.length > 0) {
+    const found = finalePieces.filter((p) => p.unlocked).length;
+    const total = finalePieces.length;
+    const verdict = found === total
+      ? "Airtight — you found every piece. The case is solved."
+      : found >= total - 3
+        ? "A strong case. The truth is clear."
+        : "We got there — but the case had gaps. Re-open a case to find more clues.";
+    return (
+      <main style={{ ...wrap, padding: "28px 16px" }}>
+        {art?.endCard && <img src={art.endCard} alt="" style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 14, marginBottom: 14, border: "1px solid #e2e8f0" }} />}
+        <h1 style={{ fontSize: 24, margin: "0 0 6px" }}>Case Closed! 🗂️</h1>
+        <p style={{ fontSize: 18, color: "#0f172a", marginTop: 0 }}>You solved <strong>{caseTitle}</strong>. Lena&apos;s name is on the medal now — the truth is out, thanks to the clues you found.</p>
+        <p style={{ fontSize: 15, color: "#b45309", fontWeight: 600 }}>{verdict} ({found}/{total} pieces)</p>
+        <div style={{ marginTop: 14 }}>
+          <EvidenceGallery pieces={finalePieces} label="Your evidence (= Beweis)" />
+        </div>
+        <a href="/play/2" style={{ color: "#2563eb", fontSize: 14, display: "inline-block", marginTop: 16 }}>← Back to your cases</a>
+      </main>
+    );
+  }
+
   if (done || !scene) {
     return (
       <main style={{ ...wrap, padding: "28px 16px" }}>
@@ -219,6 +257,7 @@ export function DetectiveGame(props: DetectiveGameProps) {
             ? <img src={portraitUrl} alt={speakerName} width={46} height={46} style={{ borderRadius: "50%", objectFit: "cover", flex: "0 0 auto", border: `2px solid ${palette.shirt}` }} />
             : <CharacterChip charKey={scene.speaker} name={speakerName} />}
           <div style={{ fontSize: 15, fontWeight: 700, color: palette.shirt }}>{speakerName}</div>
+          <button onClick={() => speak(scene.textEn)} aria-label="Read the line aloud" title="Read aloud" style={{ marginLeft: "auto", background: "none", border: "none", cursor: "pointer", fontSize: 18, lineHeight: 1, padding: 2 }}>🔊</button>
         </div>
         <p style={{ fontSize: 19, margin: "6px 0 4px", lineHeight: 1.4 }}>{scene.textEn}</p>
         {scene.scaffoldDe && (
