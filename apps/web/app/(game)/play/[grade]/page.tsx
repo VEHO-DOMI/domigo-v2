@@ -9,6 +9,7 @@ import { redirect } from "next/navigation";
 import { loadGameMap, loadReleasedChapters, loadStory } from "@domigo/content-loader";
 import { getDb, getSolvedGameItemIds } from "@domigo/db";
 import { EvidenceGallery, EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
+import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
 import { getActingUserForPage } from "@/lib/identity";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 
@@ -32,11 +33,13 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
 
   const hubArt = storyId && !map ? resolveHubArt(storyId, grade) : null;
 
-  // Persistent Evidence Board (g2 detective only): each chapter's piece unlocks
-  // once every one of its clue tasks is solved (tier <> 'wrong') — derived from
-  // the authoritative attempts ledger, never the wipeable cosmetic save (Law 2).
+  // Persistent progress surfaces (g2 Evidence Board + g3 Season board): a chapter's
+  // piece/episode completes once every one of its taskSlot items is solved (tier <>
+  // 'wrong') — derived from the authoritative attempts ledger, never the wipeable
+  // cosmetic save (Law 2).
+  const tracksProgress = isDetective || grade === 3;
   const solvedItemIds =
-    isDetective && story
+    tracksProgress && story
       ? await getSolvedGameItemIds(getDb(), acting.userId, grade).catch(() => new Set<string>())
       : new Set<string>();
   const evidenceArt: Record<string, string> = isDetective && story && storyId ? resolveEvidenceArt(storyId, grade, story) : {};
@@ -46,6 +49,16 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
           const refs = c.scenes.flatMap((s) => s.taskSlots).map((ts) => ts.itemId);
           const unlocked = refs.length > 0 && refs.every((ref) => solvedItemIds.has(ref));
           return { chapterId: c.id, caseNo: i + 1, label: EVIDENCE[c.id] ?? "a clue", img: evidenceArt[c.id], unlocked };
+        })
+      : [];
+
+  // g3 FOURTEEN season board: each episode "wraps" once all its taskSlot items are solved.
+  const episodes: EpisodeProgress[] =
+    grade === 3 && story
+      ? story.chapters.map((c, i): EpisodeProgress => {
+          const refs = c.scenes.flatMap((s) => s.taskSlots).map((ts) => ts.itemId);
+          const finished = refs.length > 0 && refs.every((ref) => solvedItemIds.has(ref));
+          return { chapterId: c.id, epNo: i + 1, titleEn: c.titleEn, finished, released: released.includes(c.id) };
         })
       : [];
 
@@ -111,6 +124,12 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
       {pieces.length > 0 && (
         <section style={{ marginTop: 28 }}>
           <EvidenceGallery pieces={pieces} label="Evidence board (= Beweis)" />
+        </section>
+      )}
+
+      {episodes.length > 0 && (
+        <section style={{ marginTop: 28 }}>
+          <SeasonBoard episodes={episodes} label="The season so far" />
         </section>
       )}
     </main>
