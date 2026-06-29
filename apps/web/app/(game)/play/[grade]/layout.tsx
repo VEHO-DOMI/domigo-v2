@@ -13,7 +13,7 @@ export default async function GradeLayout({
 }) {
   const { grade } = await params;
   return (
-    <div data-grade={grade} style={{ minHeight: "100%" }}>
+    <div data-grade={grade} style={{ minHeight: "100%", background: "var(--bg)" }}>
       {children}
     </div>
   );
