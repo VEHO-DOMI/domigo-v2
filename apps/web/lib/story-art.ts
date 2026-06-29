@@ -70,6 +70,40 @@ export function resolveDetectiveArt(storyId: string, grade: number, chapter: Cha
   return { base: art.base, backdrop: url(art.chapters[chapter.id]?.backdrop), endCard: url(art.endCard), portraits, beats, clues };
 }
 
+export interface ResolvedNovelArt {
+  base: string;
+  backdrop: string | null;
+  endCard: string | null;
+  portraits: Record<string, string>; // sceneId → url
+  beats: Record<string, string>; // sceneId → url
+  panels: Record<string, string>; // slot → url
+}
+
+/** G3 "FOURTEEN" graphic-novel art — same only-present discipline as the detective
+ *  resolver (the `clues` manifest map doubles as per-slot panel art). */
+export function resolveNovelArt(storyId: string, grade: number, chapter: Chapter): ResolvedNovelArt | null {
+  const art = loadStoryArt(storyId);
+  if (!art) return null;
+  const avail = availMap(grade);
+  const url = (stem: string | undefined): string | null =>
+    stem && avail.has(stem) ? `${art.base}/${avail.get(stem)}` : null;
+
+  const portraits: Record<string, string> = {};
+  const beats: Record<string, string> = {};
+  const panels: Record<string, string> = {};
+  for (const sc of chapter.scenes) {
+    const pu = url(art.portraits[sc.id] ?? `${sc.speaker}_neutral`);
+    if (pu) portraits[sc.id] = pu;
+    const bu = url(art.beats[sc.id]);
+    if (bu) beats[sc.id] = bu;
+    for (const ts of sc.taskSlots) {
+      const cu = url(art.clues[`${chapter.id}.${ts.slot}`]);
+      if (cu) panels[ts.slot] = cu;
+    }
+  }
+  return { base: art.base, backdrop: url(art.chapters[chapter.id]?.backdrop), endCard: url(art.endCard), portraits, beats, panels };
+}
+
 export function resolveHubArt(storyId: string, grade: number): ResolvedHubArt | null {
   const art = loadStoryArt(storyId);
   if (!art) return null;

@@ -1,0 +1,27 @@
+{
+  "schema": "story@1",
+  "id": "g3.st.fourteen",
+  "grade": 3,
+  "title": { "en": "FOURTEEN", "de": null },
+  "chapters": [
+    {
+      "id": "g3.st.fourteen.ch01",
+      "unit": 1,
+      "titleEn": "Sound On",
+      "titleDe": "Ton an",
+      "scenes": [
+        { "id": "g3.st.fourteen.ch01.s001", "speaker": "leah", "textEn": "Look at Sara's channel! So many people watch it.", "scaffoldDe": "Schau dir Saras Kanal an! So viele Leute schauen es.", "glosses": [{ "word": "channel", "de": "Kanal", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch01.s002" },
+        { "id": "g3.st.fourteen.ch01.s002", "speaker": "you", "textEn": "We can make videos. English from our book, but fun!", "scaffoldDe": "Das können wir auch. Videos über unser Englischbuch, aber lustig!", "glosses": [{ "word": "videos", "de": "Videos", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch01.s003" },
+        { "id": "g3.st.fourteen.ch01.s003", "speaker": "leo", "textEn": "But it must be good. Not boring.", "scaffoldDe": "Aber es muss gut sein. Nicht langweilig.", "glosses": [], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch01.s004" },
+        { "id": "g3.st.fourteen.ch01.s004", "speaker": "ben", "textEn": "I'm in! But my English is not so good.", "scaffoldDe": "Ich bin dabei! Aber mein Englisch ist nicht so gut.", "glosses": [], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch01.s005" },
+        { "id": "g3.st.fourteen.ch01.s005", "speaker": "leah", "textEn": "No problem. Let's write it. Help me!", "scaffoldDe": "Kein Problem. Schreiben wir es. Hilf mir!", "glosses": [], "audio": null, "taskSlots": [{ "slot": "script-mc", "itemId": "g3u01.gi.present-simple.mc.001", "variantKey": null }], "next": "g3.st.fourteen.ch01.s006" },
+        { "id": "g3.st.fourteen.ch01.s006", "speaker": "you", "textEn": "Now this one. Help me!", "scaffoldDe": "Jetzt das hier. Hilf mir!", "glosses": [], "audio": null, "taskSlots": [{ "slot": "script-gap", "itemId": "g3u01.gi.present-simple.gf.001", "variantKey": null }], "next": "g3.st.fourteen.ch01.s007" },
+        { "id": "g3.st.fourteen.ch01.s007", "speaker": "narrator", "textEn": "That evening. The camera is on. Ben reads.", "scaffoldDe": "An diesem Abend. Die Kamera läuft. Ben liest vor.", "glosses": [{ "word": "camera", "de": "Kamera", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch01.s008" },
+        { "id": "g3.st.fourteen.ch01.s008", "speaker": "ben", "textEn": "She write some great lyrics.", "scaffoldDe": "Bens Satz hat einen Fehler. Hilf ihm: „She ___ some great lyrics.“", "glosses": [], "audio": null, "taskSlots": [{ "slot": "fix-bens-line", "itemId": "g3u01.gi.present-simple.ec.001", "variantKey": null }], "next": "g3.st.fourteen.ch01.s009" },
+        { "id": "g3.st.fourteen.ch01.s009", "speaker": "leah", "textEn": "47 views! It's a good day.", "scaffoldDe": "47 Aufrufe! Es ist ein guter Tag.", "glosses": [{ "word": "views", "de": "Aufrufe", "scope": null }], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch01.s010" },
+        { "id": "g3.st.fourteen.ch01.s010", "speaker": "ben", "textEn": "Did people like me?", "scaffoldDe": "Haben mich die Leute gemocht?", "glosses": [], "audio": null, "taskSlots": [], "next": "g3.st.fourteen.ch01.s011" },
+        { "id": "g3.st.fourteen.ch01.s011", "speaker": "you", "textEn": "They loved it. This is going to be fun.", "scaffoldDe": "Sie haben es geliebt. Das wird lustig.", "glosses": [], "audio": null, "taskSlots": [], "next": null }
+      ]
+    }
+  ]
+}

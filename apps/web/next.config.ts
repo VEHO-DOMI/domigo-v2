@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     "@domigo/game-core",
     "@domigo/game-2d",
     "@domigo/game-detective",
+    "@domigo/game-novel",
     "@domigo/art-gen",
   ],
 };

@@ -1,0 +1,12 @@
+{
+  "schema": "names@1",
+  "storyId": "g3.st.fourteen",
+  "reviewedBy": "fable",
+  "names": [
+    { "name": "Leah", "note": "the ambitious host" },
+    { "name": "Leo", "note": "the quiet editor" },
+    { "name": "Ben", "note": "the grammar struggler, heart of the group" },
+    { "name": "Sara", "note": "older influencer (7B), the moral compass" },
+    { "name": "FOURTEEN", "note": "the channel name" }
+  ]
+}
