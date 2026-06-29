@@ -1,0 +1,13 @@
+{
+  "schema": "story-art@1",
+  "storyId": "g3.st.fourteen",
+  "base": "/art/g3",
+  "cover": "cover_title",
+  "endCard": "end_episode",
+  "chapters": {
+    "g3.st.fourteen.ch01": { "card": "card_ch01", "backdrop": "set_room_ringlight" }
+  },
+  "portraits": {},
+  "beats": {},
+  "clues": {}
+}

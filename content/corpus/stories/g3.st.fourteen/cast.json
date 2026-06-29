@@ -1,0 +1,12 @@
+{
+  "schema": "cast@1",
+  "storyId": "g3.st.fourteen",
+  "members": [
+    { "id": "you", "nameEn": "You", "descriptionDe": "die Drehbuchautorin / der Drehbuchautor (du)", "voice": null, "art": null },
+    { "id": "leah", "nameEn": "Leah", "descriptionDe": "die ehrgeizige Hostin", "voice": null, "art": null },
+    { "id": "leo", "nameEn": "Leo", "descriptionDe": "der ruhige Editor", "voice": null, "art": null },
+    { "id": "ben", "nameEn": "Ben", "descriptionDe": "macht Grammatikfehler, das Herz der Gruppe", "voice": null, "art": null },
+    { "id": "sara", "nameEn": "Sara", "descriptionDe": "ältere Influencerin aus der 7B", "voice": null, "art": null },
+    { "id": "narrator", "nameEn": "Narrator", "descriptionDe": "Erzählstimme", "voice": null, "art": null }
+  ]
+}

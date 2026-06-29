@@ -14,7 +14,7 @@ import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 
 export const dynamic = "force-dynamic";
 
-const STORY_BY_GRADE: Record<number, string> = { 1: "g1.st.lost-pages", 2: "g2.st.wrong-name" };
+const STORY_BY_GRADE: Record<number, string> = { 1: "g1.st.lost-pages", 2: "g2.st.wrong-name", 3: "g3.st.fourteen" };
 
 export default async function HubPage({ params }: { params: Promise<{ grade: string }> }) {
   const { grade: gradeStr } = await params;
@@ -28,6 +28,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const map = storyId ? loadGameMap(storyId) : null;
   const story = storyId ? loadStory(storyId) : null;
   const released = storyId ? loadReleasedChapters(storyId) : [];
+  const isDetective = grade === 2; // the Evidence Board is the g2 detective skin only
 
   const hubArt = storyId && !map ? resolveHubArt(storyId, grade) : null;
 
@@ -35,12 +36,12 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   // once every one of its clue tasks is solved (tier <> 'wrong') — derived from
   // the authoritative attempts ledger, never the wipeable cosmetic save (Law 2).
   const solvedItemIds =
-    story && !map
+    isDetective && story
       ? await getSolvedGameItemIds(getDb(), acting.userId, grade).catch(() => new Set<string>())
       : new Set<string>();
-  const evidenceArt: Record<string, string> = story && storyId && !map ? resolveEvidenceArt(storyId, grade, story) : {};
+  const evidenceArt: Record<string, string> = isDetective && story && storyId ? resolveEvidenceArt(storyId, grade, story) : {};
   const pieces: EvidencePiece[] =
-    story && !map
+    isDetective && story
       ? story.chapters.map((c, i): EvidencePiece => {
           const refs = c.scenes.flatMap((s) => s.taskSlots).map((ts) => ts.itemId);
           const unlocked = refs.length > 0 && refs.every((ref) => solvedItemIds.has(ref));
@@ -48,7 +49,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         })
       : [];
 
-  const noun = map ? "Zone" : "Case";
+  const noun = map ? "Zone" : grade === 3 ? "Episode" : "Case";
   const stops = map
     ? map.zones.map((z) => ({
         id: "",
@@ -67,7 +68,11 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         unlocked: released.includes(c.id),
       }));
 
-  const tagline = map ? "Choose a page to bring back. New pages open as you learn more." : "Open a case file to investigate. New cases open as you learn more.";
+  const tagline = map
+    ? "Choose a page to bring back. New pages open as you learn more."
+    : grade === 3
+      ? "Write the next episode of FOURTEEN. New episodes open as you learn more."
+      : "Open a case file to investigate. New cases open as you learn more.";
 
   return (
     <main style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px", fontFamily: "system-ui, sans-serif" }}>

@@ -11,14 +11,15 @@ import { getDb, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db
 import { EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { resolveEncounterTasks, type ResolvedItem } from "@domigo/game-core";
 import { getActingUserForPage } from "@/lib/identity";
-import { resolveDetectiveArt } from "@/lib/story-art";
+import { resolveDetectiveArt, resolveNovelArt } from "@/lib/story-art";
 import GameClient from "../GameClient";
 import DetectiveClient from "../DetectiveClient";
+import NovelClient from "../NovelClient";
 
 export const dynamic = "force-dynamic";
 
-const STORY_BY_GRADE: Record<number, string> = { 1: "g1.st.lost-pages", 2: "g2.st.wrong-name" };
-const GAME_TYPE: Record<number, "overworld" | "detective"> = { 1: "overworld", 2: "detective" };
+const STORY_BY_GRADE: Record<number, string> = { 1: "g1.st.lost-pages", 2: "g2.st.wrong-name", 3: "g3.st.fourteen" };
+const GAME_TYPE: Record<number, "overworld" | "detective" | "novel"> = { 1: "overworld", 2: "detective", 3: "novel" };
 
 function storyItemsFor(
   chapter: Chapter,
@@ -116,6 +117,29 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
         finalePieces={finalePieces}
         serverSave={serverSave}
         detectiveArt={detectiveArt}
+      />
+    );
+  }
+
+  // ── G3 "FOURTEEN": the stop is a story chapter rendered as a graphic-novel episode ──
+  if (gameType === "novel") {
+    const chapter = story?.chapters.find((c) => c.id.endsWith(`.${zone}`) && released.includes(c.id));
+    if (!chapter) redirect(hubHref);
+    const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
+    const unit = loadUnit(slug);
+    const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
+    const novelArt = resolveNovelArt(storyId, grade, chapter);
+    const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-novel").NovelSave } : null;
+    return (
+      <NovelClient
+        gameMode={gameMode}
+        episodeTitle={chapter.titleEn}
+        chapter={chapter}
+        castNames={castNames}
+        storyItems={storyItems}
+        reviewItems={[]}
+        serverSave={serverSave}
+        novelArt={novelArt}
       />
     );
   }
