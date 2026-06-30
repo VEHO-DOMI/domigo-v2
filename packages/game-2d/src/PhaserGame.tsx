@@ -31,6 +31,8 @@ export interface PhaserGameProps {
   seed: number;
   /** The map@1 zone id this overworld renders (scopes the save). */
   zoneId: string;
+  /** The zone's `render.generator` → its visual theme (palette + layout + props). */
+  generator: string;
   /** Wandering-encounter items (game-core resolved due/scope-random). */
   encounters: ResolvedItem[];
   /** The story chapter the Finn NPC plays. */
@@ -154,6 +156,7 @@ export function PhaserGame(props: PhaserGameProps) {
     const scene = new OverworldScene({
       seed: props.seed,
       zoneId: props.zoneId,
+      generator: props.generator,
       encounterCount: props.encounters.length,
       onEncounter: (idx) => setOverlay({ kind: "encounter", idx }),
       onNpc: () => setOverlay({ kind: "dialogue" }),

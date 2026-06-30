@@ -6,4 +6,5 @@
 export * from "./image.ts";
 export * from "./rng.ts";
 export * from "./tileset.ts";
+export * from "./theme.ts";
 export * from "./sprite.ts";
