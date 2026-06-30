@@ -5,7 +5,20 @@
   "cover": "cover_title",
   "endCard": "end_episode",
   "chapters": {
-    "g3.st.fourteen.ch01": { "card": "card_ch01", "backdrop": "set_room_ringlight" }
+    "g3.st.fourteen.ch01": { "card": "card_ch01" },
+    "g3.st.fourteen.ch02": { "card": "card_ch02" },
+    "g3.st.fourteen.ch03": { "card": "card_ch03" },
+    "g3.st.fourteen.ch04": { "card": "card_ch04" },
+    "g3.st.fourteen.ch05": { "card": "card_ch05" },
+    "g3.st.fourteen.ch06": { "card": "card_ch06" },
+    "g3.st.fourteen.ch07": { "card": "card_ch07" },
+    "g3.st.fourteen.ch08": { "card": "card_ch08" },
+    "g3.st.fourteen.ch09": { "card": "card_ch09" },
+    "g3.st.fourteen.ch10": { "card": "card_ch10" },
+    "g3.st.fourteen.ch11": { "card": "card_ch11" },
+    "g3.st.fourteen.ch12": { "card": "card_ch12" },
+    "g3.st.fourteen.ch13": { "card": "card_ch13" },
+    "g3.st.fourteen.ch14": { "card": "card_ch14" }
   },
   "portraits": {},
   "beats": {},
