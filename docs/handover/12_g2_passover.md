@@ -1,5 +1,7 @@
 # 12 — PASSOVER: G2 "The Wrong Name" + pedagogy track
 
+> ✅ **G2 IS COMPLETE (2026-06-30).** Retained as the G2 design reference, but the work it kicks off is **done** — the detective game (15 ch) **and** the entire Part-6 pedagogy upgrade shipped to `main` (PRs #40–#60: Clues/Evidence/Case economy + persistent Evidence Board + Input→Guided→Output ladder + forgiving retries + variant carriers on all 15 ch + dialogue-comprehension `.ci.` + spaced-retrieval re-interview + scaffold fade + fair-play deduction + the "Solve the Case" finale + teacher mastery view + read-aloud). **Live status: [`../STATUS_AND_ROADMAP.md`](../STATUS_AND_ROADMAP.md).** The one remaining grade game is **G4 Syntaxia** (`11_remaining_work.md` §4).
+
 > **Paste this to continue DomiGo v2's Grade-2 detective game and its pedagogy upgrade in a fresh session.** Self-contained; the linked docs/memory go deeper. Last refreshed **2026-06-28** (after PR #49 merged).
 
 ---
