@@ -37,6 +37,7 @@ export function slotPrompt(slot: string): string {
   if (/^truth(-|$)/.test(slot)) return "✍️ Finish the report — the way it really happened.";  // ep12 passive
   if (/^regret(-|$)/.test(slot)) return "💭 If you could go back — what would you do?";        // ep13 2nd conditional
   if (/^promise(-|$)/.test(slot)) return "🎤 Live and honest — help Ben get it right.";        // ep14 going-to
+  if (/^recap(-|$)/.test(slot)) return "🤔 Did you follow the story?";                          // .ci. comprehension check
   return COPY.taskPrompt;
 }
 
