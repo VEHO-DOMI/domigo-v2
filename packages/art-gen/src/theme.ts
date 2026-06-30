@@ -228,6 +228,106 @@ const shop: ZoneTheme = {
   props: { S: { tile: "stage", solid: true }, K: { tile: "barrel", solid: true } },
 };
 
+// What's the Time (z11) — a cosy evening bedroom: wall clocks + nightstands + a rug.
+const clock: ZoneTheme = {
+  palette: { floorBase: "#cfd6e8", floorSpeckle: "#bcc4dc", wallBase: "#5a6a9a", wallBorder: "#3a4570", propWood: "#9a7a4a", propDark: "#2a2f4a", propWarm: "#e0c060" },
+  extraKinds: ["board", "rug"],
+  layout: [
+    "###############",
+    "#......F......#",
+    "#.B.........B.#",
+    "#.D.........D.#",
+    "#...E.....E...#",
+    "#......P......#",
+    "#.D.........D.#",
+    "#...E.....E...#",
+    "#..RRRRRRRRR..#",
+    "#.............#",
+    "###############",
+  ],
+  props: { B: { tile: "board", solid: true }, D: { tile: "accent2", solid: true }, R: { tile: "rug", solid: false } },
+};
+
+// Birthday Cake (z12) — a festive party: a long table + gift boxes.
+const party: ZoneTheme = {
+  palette: { floorBase: "#f5e0e8", floorSpeckle: "#ecc8d8", wallBase: "#d86a9a", wallBorder: "#a03a6a", propWood: "#c08040", propWarm: "#f0c040", propDark: "#7a3a5a" },
+  extraKinds: ["stage", "barrel"],
+  layout: [
+    "###############",
+    "#......F......#",
+    "#.K.........K.#",
+    "#.K.........K.#",
+    "#...E.....E...#",
+    "#......P......#",
+    "#..TTTTTTTTT..#",
+    "#...E.....E...#",
+    "#.K.........K.#",
+    "#.............#",
+    "###############",
+  ],
+  props: { T: { tile: "stage", solid: true }, K: { tile: "barrel", solid: true } },
+};
+
+// Help! (z13) — an emergency station: a notice board + desks + buckets, alert palette.
+const emergency: ZoneTheme = {
+  palette: { floorBase: "#e8d8c8", floorSpeckle: "#d8c4b0", wallBase: "#c04a3a", wallBorder: "#8a2a1a", propWood: "#a05030", propDark: "#3a2a2a", propMetal: "#d0d0d8" },
+  extraKinds: ["board", "barrel"],
+  layout: [
+    "###############",
+    "#......F......#",
+    "#.BBBB...BBBB.#",
+    "#.............#",
+    "#...E.....E...#",
+    "#......P......#",
+    "#.K.........K.#",
+    "#...E.....E...#",
+    "#.D.K...K.D...#",
+    "#.............#",
+    "###############",
+  ],
+  props: { B: { tile: "board", solid: true }, D: { tile: "accent2", solid: true }, K: { tile: "barrel", solid: true } },
+};
+
+// Favourite (z14) — a neon disco: a DJ booth + speakers + floating notes, dark palette.
+const disco: ZoneTheme = {
+  palette: { floorBase: "#2a2440", floorSpeckle: "#3a3458", wallBase: "#5a3a8a", wallBorder: "#2a1a4a", propWood: "#7a4a9a", propWarm: "#e85aa8", propDark: "#5ad0e0", propMetal: "#40e0d0" },
+  extraKinds: ["stage", "note", "barrel"],
+  layout: [
+    "###############",
+    "#......F......#",
+    "#.SSSSSSSSSSS.#",
+    "#.N.N.N.N.N.N.#",
+    "#...E.....E...#",
+    "#......P......#",
+    "#.K.........K.#",
+    "#...E.....E...#",
+    "#.N.N.N.N.N.N.#",
+    "#.............#",
+    "###############",
+  ],
+  props: { S: { tile: "stage", solid: true }, N: { tile: "note", solid: false }, K: { tile: "barrel", solid: true } },
+};
+
+// What Are You Going to Do? (z15) — the EPILOGUE: a grand warm library framed in bookshelves.
+const library: ZoneTheme = {
+  palette: { floorBase: "#e8dcc0", floorSpeckle: "#d8c8a8", wallBase: "#a07840", wallBorder: "#6a4a20", propWood: "#8a5a2a", propDark: "#3a2a1a", propWarm: "#e0b050" },
+  extraKinds: ["board", "rug"],
+  layout: [
+    "###############",
+    "#......F......#",
+    "#.BBBBB.BBBBB.#",
+    "#.B.........B.#",
+    "#.B.E.....E.B.#",
+    "#.B....P....B.#",
+    "#.B.........B.#",
+    "#.B.E.....E.B.#",
+    "#.B..RRRRR..B.#",
+    "#.BBBBBBBBBBB.#",
+    "###############",
+  ],
+  props: { B: { tile: "board", solid: true }, R: { tile: "rug", solid: false } },
+};
+
 export const THEMES: Record<string, ZoneTheme> = {
   "school-room": school,
   "zoo-room": zoo,
@@ -239,6 +339,11 @@ export const THEMES: Record<string, ZoneTheme> = {
   "wardrobe-room": wardrobe,
   "pet-room": pet,
   "shop-room": shop,
+  "clock-room": clock,
+  "party-room": party,
+  "emergency-room": emergency,
+  "disco-room": disco,
+  "library-room": library,
 };
 
 /** Resolve a zone's theme by its `render.generator`, falling back to the classroom. */

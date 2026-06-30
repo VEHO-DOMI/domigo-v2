@@ -5,6 +5,7 @@ import { THEMES, resolveZoneTheme, paintTileset, TILE_KINDS } from "../index.ts"
 const GENERATORS = [
   "school-room", "zoo-room", "ship-room", "feelings-room", "band-room",
   "detective-room", "kitchen-room", "wardrobe-room", "pet-room", "shop-room",
+  "clock-room", "party-room", "emergency-room", "disco-room", "library-room",
 ];
 const SKELETON = new Set(["#", ".", "E", "F", "P"]);
 
