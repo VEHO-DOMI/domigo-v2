@@ -7,6 +7,11 @@
     { "name": "Frau Berger", "note": "the teacher cameo" },
     { "name": "Pixel", "note": "the cat cameo (zoo)" },
     { "name": "Robo", "note": "the robot cameo (feelings)" },
-    { "name": "Anna", "note": "the drummer cameo (band)" }
+    { "name": "Anna", "note": "the drummer cameo (band)" },
+    { "name": "Detective Mo", "note": "the detective cameo (unit 6)" },
+    { "name": "Chef Luca", "note": "the cook cameo (unit 7)" },
+    { "name": "Mila", "note": "the clothes cameo (unit 8)" },
+    { "name": "Professor Tim", "note": "the pets cameo (unit 9)" },
+    { "name": "Mrs Apple", "note": "the shopkeeper cameo (unit 10)" }
   ]
 }

@@ -128,12 +128,117 @@ const band: ZoneTheme = {
   props: { S: { tile: "stage", solid: true }, N: { tile: "note", solid: false } },
 };
 
+// Detective (z06) — a dim study: a case board + scattered desks, dark wood.
+const detective: ZoneTheme = {
+  palette: { floorBase: "#5e5240", floorSpeckle: "#4d4334", wallBase: "#3a3340", wallBorder: "#262130", accentLight: "#7a6c52", propWood: "#7a5a32", propDark: "#1c1c22" },
+  extraKinds: ["board"],
+  layout: [
+    "###############",
+    "#......F......#",
+    "#.BBBBBBBBBBB.#",
+    "#.D.........D.#",
+    "#...E.....E...#",
+    "#......P......#",
+    "#.D.........D.#",
+    "#...E.....E...#",
+    "#.D.........D.#",
+    "#.............#",
+    "###############",
+  ],
+  props: { B: { tile: "board", solid: true }, D: { tile: "accent2", solid: true } },
+};
+
+// Noodles (z07) — a warm kitchen: a counter along the back, pots in the corners.
+const kitchen: ZoneTheme = {
+  palette: { floorBase: "#e6ddc8", floorSpeckle: "#d8cbb0", wallBase: "#b5764a", wallBorder: "#7d5230", propWood: "#8a5a3a", propWarm: "#e0a030" },
+  extraKinds: ["stage", "barrel"],
+  layout: [
+    "###############",
+    "#......F......#",
+    "#.K.........K.#",
+    "#.K.........K.#",
+    "#...E.....E...#",
+    "#......P......#",
+    "#.K.........K.#",
+    "#...E.....E...#",
+    "#.CCCCCCCCCCC.#",
+    "#.............#",
+    "###############",
+  ],
+  props: { C: { tile: "stage", solid: true }, K: { tile: "barrel", solid: true } },
+};
+
+// Clothes (z08) — a pastel dressing room: wardrobes + baskets.
+const wardrobe: ZoneTheme = {
+  palette: { floorBase: "#efe2ef", floorSpeckle: "#e2cfe2", wallBase: "#b483b4", wallBorder: "#7d567d", propWood: "#9a6b9a", propDark: "#6b4f6b", propWarm: "#e89bc4" },
+  extraKinds: ["board", "barrel"],
+  layout: [
+    "###############",
+    "#......F......#",
+    "#.WW.......WW.#",
+    "#.WW.......WW.#",
+    "#...E.....E...#",
+    "#......P......#",
+    "#.K.........K.#",
+    "#...E.....E...#",
+    "#.WW.......WW.#",
+    "#.WW.......WW.#",
+    "###############",
+  ],
+  props: { W: { tile: "board", solid: true }, K: { tile: "barrel", solid: true } },
+};
+
+// Unusual Pets (z09) — a green pet room: plants + cages.
+const pet: ZoneTheme = {
+  palette: { floorBase: "#d6dec0", floorSpeckle: "#c4cfa8", wallBase: "#7d9a5a", wallBorder: "#566b3a", propLeaf: "#3a8a3a", propWood: "#8a6d3a" },
+  extraKinds: ["plant", "barrel"],
+  layout: [
+    "###############",
+    "#......F......#",
+    "#.L.K.....K.L.#",
+    "#.K.........K.#",
+    "#...E.....E...#",
+    "#......P......#",
+    "#.K.........K.#",
+    "#...E.....E...#",
+    "#.L.K.....K.L.#",
+    "#.............#",
+    "###############",
+  ],
+  props: { L: { tile: "plant", solid: true }, K: { tile: "barrel", solid: true } },
+};
+
+// In a Shop (z10) — a bright shop: shelves + boxes.
+const shop: ZoneTheme = {
+  palette: { floorBase: "#dfe7f0", floorSpeckle: "#cdd8e6", wallBase: "#5a8ac0", wallBorder: "#3a5e8a", propWood: "#a07840", propWarm: "#e0b040" },
+  extraKinds: ["stage", "barrel"],
+  layout: [
+    "###############",
+    "#......F......#",
+    "#.SSSSS.SSSSS.#",
+    "#.............#",
+    "#...E.....E...#",
+    "#......P......#",
+    "#.K.........K.#",
+    "#...E.....E...#",
+    "#.K.K.....K.K.#",
+    "#.............#",
+    "###############",
+  ],
+  props: { S: { tile: "stage", solid: true }, K: { tile: "barrel", solid: true } },
+};
+
 export const THEMES: Record<string, ZoneTheme> = {
   "school-room": school,
   "zoo-room": zoo,
   "ship-room": ship,
   "feelings-room": feelings,
   "band-room": band,
+  "detective-room": detective,
+  "kitchen-room": kitchen,
+  "wardrobe-room": wardrobe,
+  "pet-room": pet,
+  "shop-room": shop,
 };
 
 /** Resolve a zone's theme by its `render.generator`, falling back to the classroom. */
