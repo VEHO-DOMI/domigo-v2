@@ -1,6 +1,8 @@
 # DomiGo v2 — Build Status & Executable Roadmap
 
-_Last updated: 2026-06-21. Single source of truth for "what's done / what's next." Pairs with `docs/handover/` (the original design) and `docs/runbooks/` (operational detail). When you finish a step, check its box and update the snapshot in §3._
+_Last updated: **2026-06-30**. Single source of truth for "what's done / what's next." Pairs with `docs/handover/` (the original design) and `docs/runbooks/` (operational detail). When you finish a step, check its box and update the snapshot in §3._
+
+> **2026-06-30 — major reconciliation.** This doc had drifted ~6 weeks behind `main`. The reality per the **78 merged PRs (#1–#78)**: the full P0 content, the entire P1 learning track, **and three of the four grade games are shipped** — G1 (now a full 15-zone uplift), G2 "The Wrong Name" (15 chapters + its complete Part-6 pedagogy), and G3 "FOURTEEN" (14 episodes), plus a brand design system across all 4 grades. **What's actually left to go-live: G4 "Syntaxia", the listening/test content waves, TTS, B2b teacher-grading, and Track D (migration cutover + bulletproof-beta).**
 
 ---
 
@@ -13,35 +15,40 @@ DomiGo v2 is a from-scratch rebuild of the grades 1–4 EFL trainer (MORE! 1–4
 - **P2 — engagement + platform:** Story/RPG game mode (tech spike first) → PWA install → native eval.
 - **P3 — social (optional):** Battle Arena / Class Quiz / Study Buddies.
 
-The game layer is specified separately in `docs/handover/10_game_layer.md` (four standalone grade games; G1 overworld RPG first) — it's the concrete form of P2 and reuses everything P1 builds (one grading brain, one spaced-retrieval service).
+The game layer is specified separately in `docs/handover/10_game_layer.md` (four standalone grade games; G1 overworld RPG first) — it's the concrete form of P2 and reuses everything P1 builds (one grading brain, one spaced-retrieval service). **September floor (never preempted):** P0–P1 + Study Path + bulletproof checklist + g1 u1–5 + g2 ch1–5 + g3 ep1–5 + g4 first act. **Forfeit order on slip:** g4 depth → g3 → g2 → g1 zones → (never) the floor or item quality.
 
 ---
 
-## 2. What's been achieved
+## 2. What's been achieved (78 PRs merged to `main`)
 
-Four shipped increments, **all merged to `main`**:
-
-### ✅ P0.1 — Content rework COMPLETE (domigo-v2 [#17](https://github.com/VEHO-DOMI/domigo-v2/pull/17))
-- **All 57 units (G1–G4)** of vocab + grammar approved at **0.0% stage-8 reject**, full v1 grammar parity; **4 structure catalogs**; **5,898 items** + 2,446 word-bank entries.
-- Built through the deterministic pipeline (`pnpm content`): generate → 4 verify lenses → validate (V-1…V-22 + V-A…V-F) → Fable stage-8 review. Re-runnable; corpus is canonical (`content/corpus/units/*/{vocab,grammar}.json` + overlays).
-- Receipts: `pnpm content status` → `approved=57`; `pnpm content validate` green; runbook `docs/runbooks/items-wave.md`.
+### ✅ P0.1 — Content rework COMPLETE ([#1](https://github.com/VEHO-DOMI/domigo-v2/pull/1)–[#17](https://github.com/VEHO-DOMI/domigo-v2/pull/17))
+- **All 57 units (G1–G4)** of vocab + grammar approved at **0.0% stage-8 reject**, full v1 grammar parity; **4 structure catalogs (96 structures)**; **5,898 items** + 2,446 word-bank entries.
+- Deterministic pipeline (`pnpm content`): generate → 4 verify lenses → validate (V-1…V-22 + V-A…V-F) → Fable stage-8 review. Re-runnable; corpus canonical. Receipts: `pnpm content status` → `approved=57`. Runbook `docs/runbooks/items-wave.md`.
 
 ### ✅ Runtime seam — Foundation harness COMPLETE ([#18](https://github.com/VEHO-DOMI/domigo-v2/pull/18))
-- **`@domigo/content-loader`** — `loadUnit(slug)` reads + overlay-applies + schema-validates a unit's items; `listApprovedUnits()`. Server-only.
-- **`@domigo/engine`** — ported v1's 4-tier grader (canonicalize · Levenshtein 0.15/0.20 · partial-match · all-or-nothing) → `gradeGrammar`/`gradeVocab`/`xpForTier`/`breaksCombo`. Pure, DOM-free.
-- **`@domigo/task-ui`** — renders + grades all 13 grammar formats + vocab; tiered XP; gloss/hint reveal.
-- **`apps/web`** — stateless `/practice` + `/practice/[slug]`. **All 5,898 items self-grade as `correct`** when fed their own answer key.
+`@domigo/content-loader` (load + overlay + validate) · `@domigo/engine` (the one 4-tier grader, 13 formats) · `@domigo/task-ui` (renders + grades all formats + vocab) · `apps/web` `/practice`. **All 5,898 items self-grade `correct`** against their own key.
 
-### ✅ Live-app stopgap — G1 trainer upgraded (`1st-grade-vocab-trainer` [#1](https://github.com/VEHO-DOMI/1st-grade-vocab-trainer/pull/1), live on GitHub Pages)
-- Full content replace of the live standalone grade-1 app with the reviewed v2 corpus (786 vocab / 1106 grammar / 35 structures) via a re-runnable generator (`TOOLS/v2-import/build-from-v2.js`); story campaign + decks preserved.
-- Grammar trainer brought to v2 parity (4th "partial" tier, partial-match fallback, gloss tap-to-reveal). So real grade-1 students benefit **now**, before v2 go-live.
+### ✅ Live-app stopgap — G1 trainer upgraded (`1st-grade-vocab-trainer` [#1](https://github.com/VEHO-DOMI/1st-grade-vocab-trainer/pull/1))
+Full content replace of the live standalone grade-1 app with the reviewed v2 corpus + v2 grammar parity, so real grade-1 students benefit **now**.
 
-### ✅ P1 (start) — Smart Review backend COMPLETE ([#19](https://github.com/VEHO-DOMI/domigo-v2/pull/19))
-- **`@domigo/db`** (Neon HTTP) — all tables in a dedicated **`domigo_v2` Postgres schema** (additive wall; v1's `public` untouched): `practice_attempts` (unified ledger), `review_queue` (Leitner 5-box), `user_progress` (v2 XP pool). Read-only `v1.ts` mirrors of v1's `users`/`classes`.
-- **Leitner service** — `updateReviewQueue` / `getDueRefs(userId, scope, limit)` / `getDueCounts` / `recordAttempt`. Powers Smart Review **and** (later) game encounters.
-- **`POST /api/attempts`** — server re-grades (one grading brain), idempotent, best-effort, failure never subtracts XP. **Dev identity** (env/header, prod-refused) is the single swap-point for real auth.
-- `/practice` records attempts. Generated migration is provably additive (`CREATE`-only, 0 `public` refs).
-- **⚠️ Not yet verified against a live DB** — there was no Postgres/Neon available when it was built. See **Track A1** below (the first thing to do).
+### ✅ P1 Track A — Smart Review COMPLETE ([#19](https://github.com/VEHO-DOMI/domigo-v2/pull/19), [#21](https://github.com/VEHO-DOMI/domigo-v2/pull/21)–[#24](https://github.com/VEHO-DOMI/domigo-v2/pull/24))
+`@domigo/db` (Neon, `domigo_v2` schema, additive wall) — `practice_attempts` ledger + `review_queue` (Leitner 5-box) + `user_progress`. `getDueRefs`/`recordAttempt` powers Smart Review **and** game encounters. `POST /api/attempts` (one grading brain, idempotent). **Live-DB verified** (A1, #21 fixed a real idempotency bug). **Real auth** NextAuth v5 student+teacher (A2, [#22](https://github.com/VEHO-DOMI/domigo-v2/pull/22)). **`/review`** study UI (A3, #23). **Daily streaks + IndexedDB offline outbox** (A4, #24).
+
+### ✅ P1 Track B — learning pillars COMPLETE ([#25](https://github.com/VEHO-DOMI/domigo-v2/pull/25)–[#27](https://github.com/VEHO-DOMI/domigo-v2/pull/27))
+- **B1 Study Path** `/learn/[slug]` — derived node map (vocab intro → practice → grammar intro → practice → checkpoint), sparse `study_path_progress`, server-side unlock, stars; feeds Smart Review (#25).
+- **B3 Listening** `/listening` — `listening@1`, Web-Speech/file player, sibling-gradeable `.li.` items, Leitner-skipped (#26).
+- **B2 Mock Tests** `/tests` — `test@1` ref/reading/writing sections, `writing_submissions` capture (#27). _Teacher-grading deferred → B2b._
+
+### ✅ P2 Track C — the game layer (3 of 4 games SHIPPED)
+**Foundation:** `game_saves` + `/api/game-save` (#30) · `@domigo/game-core` + `@domigo/art-gen` (#31) · story pipeline + **VS-1…VS-12** validators (#32) · G0 contracts `story@1`/`map@1`/`quest@1`/`encounter@1` (#39). All on the 9 Laws (one grading brain, spaced-retrieval-as-physics, failure-changes-pace-not-position, bulletproof).
+
+- **✅ G1 — "The Lost Pages" overworld RPG (Phaser).** Shipped u1–5 (#34/#36/#33/#37) then **fully uplifted to the G2/G3 bar** ([#72](https://github.com/VEHO-DOMI/domigo-v2/pull/72)–[#78](https://github.com/VEHO-DOMI/domigo-v2/pull/78)): a per-zone theming engine + **all 15 units as bespoke themed zones** (each a cameo + story arc), per-zone comprehension `.ci.`, a "Lost Pages" hub progress board, and an art-prompt pipeline. (See `~/.claude/plans/passover-g2-the-wrong-precious-forest.md` — COMPLETE.)
+- **✅ G2 — "The Wrong Name" detective (DOM+SVG).** 15-chapter fair-play mystery (#40–#46) + ligne-claire raster art (#44/#45) + **the complete Part-6 pedagogy** (#47–#60): task-ui a11y, Clues/Evidence/Case economy + German-as-hint, Input→Guided→Output ladder, persistent hub Evidence Board, forgiving retries, scene-embedded variant carriers (all 15 ch), dialogue-comprehension `.ci.`, spaced-retrieval re-interview + scaffold fade + fair-play deduction, the "Solve the Case" finale, a teacher mastery view, and read-aloud. (Plan `~/.claude/plans/domigo-v2-velvet-squid.md` Part 6 — COMPLETE.)
+- **✅ G3 — "FOURTEEN" graphic novel (DOM+SVG).** All 14 episodes (#61/#64/#66/#67/#68) — the warm→tense→reckoning→redemption arc with the comment-section consequence — + a season board (#69), story-comprehension `.ci.` (#70), and an art-prompt pipeline (#71).
+- **❌ G4 — "Syntaxia"** — NOT started (the one remaining grade game).
+
+### ✅ Cross-cutting — Brand design system ([#62](https://github.com/VEHO-DOMI/domigo-v2/pull/62), [#63](https://github.com/VEHO-DOMI/domigo-v2/pull/63))
+A grade-indexed token system (G1 green / G2 red / G3 blue / G4 purple; Fredoka/Inter/Quicksand; glass+gradient) applied across all 4 grades' app-shell + task-ui + the 3 games.
 
 ---
 
@@ -51,130 +58,72 @@ Four shipped increments, **all merged to `main`**:
 |---|---|
 | **Content corpus** | ✅ 57 units / 5,898 items approved; canonical + re-runnable |
 | **Loader / grader / renderer** | ✅ `@domigo/{content-loader,engine,task-ui}` |
-| **DB / persistence** | ✅ `@domigo/db` (schema + Leitner + attempts) on `main`; **live DB not yet provisioned/verified** |
-| **Practice trainer** | ✅ `/practice` (records attempts) |
-| **Auth** | ✅ NextAuth v5 (student + teacher), reuses Neon accounts ([#22](https://github.com/VEHO-DOMI/domigo-v2/pull/22)) |
-| **Smart Review UI** | ✅ `/review` + `/review/session` study loop (`mode:"review"`); home due-count badge (`feat/review-ui`) |
-| **Streaks / offline outbox** | ✅ daily Vienna-day streak (home + summary badge) + IndexedDB attempt outbox (`feat/streaks-outbox`) |
-| **Study Path (B1)** | ✅ `/learn` node map — teaching + graduated practice + checkpoint; unlock + stars (`feat/study-path`) |
-| **Listening (B3)** | ✅ `/listening` audio tasks — Web-Speech/file player, reuse-grader items, Leitner-skipped (`feat/listening`) |
-| **Mock Tests (B2)** | ✅ `/tests` Schularbeit-style sections (refs + reading + writing-capture); teacher-grading deferred to B2b (`feat/mock-tests`) |
-| **Game layer** | ❌ designed (`10_game_layer.md`); not started |
-| **Migration / cutover** | ◻️ v1 students in shared Neon; v2 reuse-accounts decided; cutover not done |
-| `main` HEAD | `9d2ae99` (merge #22) · `pnpm -r typecheck/lint/test/content/build` green · tests: engine 24 / pipeline 60 / loader 4 / db 8 |
+| **DB / persistence** | ✅ `@domigo/db` (schema + Leitner + attempts + game_saves + writing_submissions); live-DB verified |
+| **Auth** | ✅ NextAuth v5 (student + teacher), reuses Neon accounts |
+| **Practice / Smart Review** | ✅ `/practice` · `/review` + session · streaks + offline outbox |
+| **Study Path (B1)** | ✅ `/learn` node map (teach + practice + checkpoint) |
+| **Listening (B3)** | ✅ `/listening` (runtime done; **content = pilot only**) |
+| **Mock Tests (B2)** | ✅ `/tests` (runtime done; **content = pilot only**; teacher-grading → B2b) |
+| **Game layer** | ✅✅✅ **G1 (15 zones), G2 (15 ch + full pedagogy), G3 (14 eps)** live · ❌ **G4 not started** |
+| **Design system** | ✅ all 4 grades themed (#62/#63) |
+| **Listening/Test content** | 🟡 **1 / 57 units** (g2-u03 pilot) — the big remaining content wave |
+| **TTS audio** | ❌ Web-Speech fallback only; pre-generated files not built |
+| **Teacher writing-grading (B2b)** | ❌ submissions captured, not surfaced |
+| **Migration cutover / bulletproof-beta / PWA install** | ◻️ Track D — gates go-live; not done |
+| `main` HEAD | merge #78 · full gate green (`typecheck/lint/test/content validate/validate-story/build/check:bundle`) |
 
-**Repos:** `~/Code/domigo-v2` (VEHO-DOMI/domigo-v2, prod `domigo-v2.vercel.app`) · v1 reference `VEHO-DOMI/domigo` (clone to `/tmp/domigo-v1-ref` for porting) · live grade-1 app `VEHO-DOMI/1st-grade-vocab-trainer`.
+**Repos:** `~/Code/domigo-v2` (VEHO-DOMI/domigo-v2, prod `domigo-v2.vercel.app`) · v1 reference `VEHO-DOMI/domigo` · live grade-1 app `VEHO-DOMI/1st-grade-vocab-trainer`.
 
 ---
 
-## 4. What's left — executable steps
+## 4. What's left — executable steps (priority order)
 
-> Convention: each track is a PR (or a few). Build on `main`, branch `feat/<name>`. Gate every PR on `pnpm -r run typecheck && pnpm lint && pnpm -r run test && pnpm content validate && pnpm build`. Deploys/merges are Koki's call.
+> Each is a PR (or a wave). Build on `main`, branch `feat/<name>`. Gate: `pnpm -r run typecheck && pnpm lint && pnpm -r run test && pnpm content validate && pnpm content validate-story && pnpm build && pnpm check:bundle`. Deploys/merges are Koki's call.
 
-### Track A — Finish Smart Review (P1 learning pillar)
+### 1. G4 — "Syntaxia" (the last grade game) — _the biggest remaining build; full design in `10_game_layer.md`_
+Grammar-structure mastery unlocks themed portal-worlds (past-tense pirate cove, conditional mirror maze, …); **real branching** story (choice graphs proven dead-end-free by VS-5); party members with a hint-economy (scaffolds, never answers); a structure boss per world. Stretch: one Three.js low-poly set-piece within the 30fps cheap-phone budget. Minimal German. Reuses every seam the other 3 games proved (story pipeline, task-ui overlay, `getDueRefs` encounters, `/api/attempts`, `game_saves`). Mirror the G2/G3 build: G0 story+map → vertical slice (GO/NO-GO) → act/world waves → enrichment (comprehension/board/art).
 
-#### A1. Provision + verify the live DB  ✅ **DONE (2026-06-19)**
-Dev branch `v2-dev` created off `domigo-db`; schema applied (additive confirmed — `public` 13→13 unchanged); **17/17 DB-layer + HTTP-route checks pass on live data**. Caught + fixed a real idempotency bug (partial-index `ON CONFLICT` → full unique index, [#21](https://github.com/VEHO-DOMI/domigo-v2/pull/21)). Dev `DATABASE_URL` + `DEV_USER_ID`/`DEV_CLASS_ID` are in gitignored `.env.local`. **The next blocking item is now A2 (auth).** Steps kept below for the prod apply + re-runs:
+### 2. Content waves — `listening.json` + `test.json` for the other 56 units — _large, multi-session_
+The runtime is done; the corpus is the pilot only (`g2-u03`). Author per `docs/runbooks/content-waves.md` (the `srdp-listening`/`srdp-reading` skills re-leveled A1–A2), validate (`pnpm content validate-listening` / `validate-test`), E2E spot-check, one grade at a time. **The single largest remaining effort.**
 
-The Smart Review backend is merged but never run against a real DB.
-1. In the Neon console, open the **`domigo-db`** project (Frankfurt — the shared DomiGo Postgres DB that holds the migrated students; _not_ "veho-vocab", which is the old Firebase project). Create a **dev branch** off `main` (⚠️ `domigo-db` may be at the free-tier 10-branch cap — delete a stale `preview/*` branch first, or reuse an existing dev branch); copy its **pooled** (`…-pooler…`) connection string.
-2. Find a real student identity for the dev backdoor:
-   ```sql
-   SELECT id AS dev_user_id, class_id AS dev_class_id FROM public.users WHERE role='student' LIMIT 1;
-   ```
-3. Create env files (gitignored):
-   - `apps/web/.env.local` → `DATABASE_URL=…`, `DEV_USER_ID=…`, `DEV_CLASS_ID=…`
-   - `packages/db/.env.local` → `DATABASE_URL=…`
-4. Push the schema (additive — dev branch only):
-   ```bash
-   pnpm --filter @domigo/db db:push:dry   # confirm: ONLY domigo_v2 CREATEs, zero public.*
-   pnpm --filter @domigo/db db:push
-   ```
-   Verify: `SELECT table_schema,table_name FROM information_schema.tables WHERE table_schema='domigo_v2';` → 3 tables; `public` untouched.
-5. Run the DB-integration test (now that `DATABASE_URL` is set it un-skips):
-   ```bash
-   DATABASE_URL=$(grep DATABASE_URL packages/db/.env.local|cut -d= -f2-) pnpm --filter @domigo/db test
-   ```
-6. End-to-end: `pnpm --filter web dev` → `/practice/g2-u03`. Answer one **correct** (→ `practice_attempts` row, `review_queue` box=2 / dueAt≈+1d, `user_progress.xp` up) and one **wrong** (→ box=1 / dueAt≈+10m / lapses=1, **xp not decreased**). Idempotency: replay the same `clientAttemptId` (curl with `x-dev-user-id`/`x-dev-class-id` headers) → `duplicate:true`, one row.
-7. Add `DATABASE_URL` to Vercel **preview/prod** env (prod tables applied via the runbook below, not a live push). Then production attempts persist.
-- **Prod DDL (when ready):** `pg_dump` first; apply the committed `packages/db/drizzle/0000_*.sql` (it's `CREATE`-only in `domigo_v2`). Never `db:push` against prod.
+### 3. TTS audio (one PR `feat/tts-audio`) — _small_
+`gen-audio.ts` + `pnpm content gen-audio`: hash each `listening.json` script → call the provider → write `public/audio/<hash>.mp3` → backfill `AudioRef.file`. One-line `AudioClip` URL fix. **Open decision: provider** (OpenAI `tts-1` recommended). Zero runtime change otherwise (the player already prefers `audio.file`).
 
-#### A2. Real auth — port v1 NextAuth  ✅ **DONE (2026-06-19)**
-NextAuth v5 (student + teacher Credentials) reusing the existing Neon accounts (class code + nickname + PIN), **read-only on `public.users`** (v1's lastSeenAt/onboardedAt writes dropped; pure callbacks). `apps/web/{auth.ts, middleware.ts, app/api/auth/[...nextauth], app/signin, app/admin/signin, app/home, app/admin}` + `@domigo/db` lookup helpers; `getActingUser` now reads the session. Verified live (dev branch, seeded fixture, cleaned up): 6/6 direct authorize + 6/6 E2E (sign-in→cookie→/home→middleware-protect→attempt records under the real id); `public` untouched. **Next blocking item is now A3 (`/review` study UI).** Original step-by-step kept below:
+### 4. B2b — Teacher writing-grading UI (one PR `feat/teacher-grading`) — _small, closes the Mock-Test loop_
+Migration `0004` (additive `graded_at/score/feedback/graded_by` on `writing_submissions`) → `@domigo/db` getters/setter joined to v1 user names → `/admin/submissions` list + grade view → `/api/admin/grade-submission`. MVP = single-teacher (all submissions). Optional student grade-view in `/tests`.
 
-Reuse the ~110 migrated accounts; students log in with their existing class + PIN.
-1. `cd /tmp && gh repo clone VEHO-DOMI/domigo /tmp/domigo-v1-ref` (port reference).
-2. Add deps to `apps/web`: `next-auth@beta` (v5) + `bcryptjs`.
-3. Create `apps/web/auth.ts` — port `/tmp/domigo-v1-ref/lib/auth.ts`: two Credentials providers — **student** (class invite-code + nickname + 6-digit PIN, case-insensitive name lookup, `bcrypt.compare` vs `public.users.pinHash`) and **teacher** (nickname + PIN). Read identity via the **`v1Users`/`v1Classes` mirrors already in `@domigo/db`** (`packages/db/src/v1.ts`) — read-only, never write.
-4. Create `apps/web/middleware.ts` — port v1's: redirect unauth → `/signin` (students) / `/admin/signin` (teachers); students lacking `onboardedAt` → `/onboarding`; guard `/admin/*`. (Auth routes per memory: teacher = **`/admin/signin`**, not `/signin/teacher`.)
-5. Sign-in pages: `app/signin/page.tsx`, `app/admin/signin/page.tsx`.
-6. **Swap the identity seam:** in `apps/web/lib/identity.ts`, make `getActingUser` read the NextAuth session first (`const s = await auth(); if (s?.user) return {userId, classId}`); keep the dev env/header branch but only for non-prod. Nothing else changes — the endpoint already consumes `{userId, classId}`.
-- Verify: student sign-in → `/practice` records attempts under the real userId; sign-out/in preserves `user_progress`.
+### 5. Track D — Migration, cutover & bulletproof-beta — _gates any student go-live_
+- **Migration completion** (`03_migration.md`): import post-2026-05-17 Firebase signups into Neon without clobbering claimed accounts; keep `/signin/migrate`.
+- **Bulletproof-Beta checklist** (`09` §gate): every audited unit validator-green + spot-checked · all auth paths work · no route 500s · progress persists across sign-out/in · combos/XP/streaks correct · mobile-first on a cheap phone + PWA install + flaky-network · **~30-concurrent class-scale attempt test** · no dead toggles.
+- **PWA install** + offline shell. **Firebase retirement** once v2 is live (+ one-time v1 frozen-XP → `user_progress` reconcile).
+- **Cheap-Android perf pass** — the Law-9 perf budget (60/30fps, ≤50 draw calls, pause-on-blur, `?perf=1` HUD), a Playwright perf gate in CI.
 
-#### A3. The `/review` study-mode UI  ✅ **DONE (2026-06-21, PR `feat/review-ui`)**
-The Leitner queue now has a student surface. `app/review/page.tsx` (server) → `getDueCounts` → "N items due (X vocab · Y grammar)" + Start-review link, or an "all caught up 🎉" empty state. `app/review/session/page.tsx` (server) → `getDueRefs(userId, {kind:"all"}, 20)` → dedupe-`loadUnit` per slug + match `itemId`→item (skips overlay-dropped/stale refs) → `app/review/session/ReviewSession.tsx` (client) steps the **single mixed queue**, renders via `@domigo/task-ui`, fires `POST /api/attempts` with **`mode:"review"`**, ends on a summary. Home Review card is now a real `<Link>` with a live due-count badge (DB read try/caught so it never 500s the landing). Scope = review-all-due (per-unit/grade scope picker deferred). Gate green (typecheck/lint/test/content/build). Verified live (dev branch, seeded `TestKid`, cleaned up): login→`/review` shows "2 items due / 1 vocab · 1 grammar"→`/review/session` 200 SSR-renders the soonest-due item→correct review attempt → `review_queue` box 1→2, due_at past→+1d, reps→1, `practice_attempts` `mode='review'`; empty state after clearing; `public` untouched. **Next blocking item is now A4 (progression) / B1 (Study Path) / the game layer.** Original steps below:
-1. `app/review/page.tsx` (server) — `getActingUser` → `getDueCounts(db, userId)` → render "due today" by scope (this unit / this grade / all) with counts; link into a session.
-2. `app/review/[scope]/ReviewSession.tsx` (client) — `getDueRefs(userId, scope, limit)` (via a server action or `/api/review/due` route) → for each ref `loadUnit(slug)` + find item → render with `@domigo/task-ui` → on answer POST `/api/attempts` with **`mode:"review"`** → advance. Empty state when nothing's due.
-3. Add a "Review (N due)" entry point on the home/practice nav.
-- Verify: answer wrong in `/practice` → it appears in `/review` after its box-1 interval; answering it correctly there reschedules it forward.
-
-#### A4. Progression polish  🟡  _(streaks + outbox done — PR `feat/streaks-outbox`, stacked on `feat/review-ui`; badges remain)_
-1. **Streaks** ✅ **DONE (2026-06-21)** — v1's `recordSessionDay` ported into `@domigo/db` as pure `computeNextStreak` + Vienna-day helpers (`Intl` `Europe/Vienna`, DST-safe); `streak`/`last_session_date` added to `domigo_v2.user_progress` (additive `0001` ALTER); advanced inside `recordAttempt` on the first attempt of each Vienna day (any tier — showing up counts), returned via `/api/attempts`, shown on `/home` (active-only badge) + the session summary. Unit-tested (9) + live dev-DB E2E (fresh→1, same-day→1, consecutive→+1, gap→reset).
-2. **Badges** ◻️ — port v1's badge catalog + award logic (optional; flag-gated). _Not in this PR._
-3. **Offline attempt outbox** ✅ **DONE (2026-06-21)** — dependency-free IndexedDB outbox (`apps/web/lib/attempt-outbox.ts` + `useOutboxFlush`): `sendAttempt` enqueues on offline/5xx/`persist_failed` (idempotent on `clientAttemptId`), drops permanent 4xx, flushes on mount + the `online` event; wired into Practice + Review sessions. Module-tested (6 cases via an IndexedDB shim).
-
-### Track B — Remaining P1 pillars
-
-#### B1. Study Path (guided unlock progression)  ✅ **DONE (2026-06-21, PR `feat/study-path`, stacked on A4)**
-Per-unit guided path at `/learn/[slug]`. The node graph is DERIVED (pure `buildUnitNodes`) — vocab intro (teaching) → vocab practice split by difficulty → grammar intro → grammar practice by difficulty → checkpoint (deterministic ~10-item cumulative sample from the unit, hints off). Sparse `domigo_v2.study_path_progress` (a row iff a node is completed; locked/available/stars DERIVED by `withProgress`); additive `0002` migration. Graded nodes reuse `task-ui` + the `/api/attempts` outbox (`mode:"study:<nodeId>"`) so they feed Smart Review + streaks + XP; a thin `/api/study-path` records node completion (server re-derives stars from the tier tally, validates the nodeId against the graph, keep-best via `GREATEST`). New content-loader `loadWordbank`/`loadUnitStructures` + task-ui `VocabIntroView`/`GrammarIntroView` (German-led, student-safe) + a `hideHint` checkpoint flag. Unlock enforced server-side (a locked-node URL 307-redirects to the map). 14 unit tests + live dev-DB E2E (unlock advance, attempts→`review_queue`, stars keep-best, locked-redirect); additive (`public` 13→13). Original steps below:
-1. A progression model: per-(user,unit) node states (locked/available/mastered) — additive `domigo_v2.study_path_progress` table.
-2. Routes `app/learn/[slug]` rendering the node map; nodes reuse `content-loader` + `task-ui` + `/api/attempts`.
-3. "Teaching" nodes (vocab/grammar intro) — new non-graded card types showing the word bank / structures.
-
-#### B2. Mock Tests  ✅ **DONE (2026-06-21, PR `feat/mock-tests`, stacked on B3)**
-`test@1` schema (a mock test = ordered sections). REFERENCE sections (vocab/grammar/listening) point at existing item ids (no content copy); a READING section embeds a passage + sibling-gradeable items (`.ri.`, srdp-reading method); a WRITING section embeds a prompt. `/tests` steps the sections (the server resolves reference ids → full items): auto-graded items reuse the engine + `/api/attempts` (`mode:"test:<section>"`) — referenced vocab/grammar feed Smart Review, embedded reading/listening skip it; the writing section captures the answer to a new `writing_submissions` table (additive `0003`) via `/api/writing-submission` (server-derived word count). **Teacher review + rubric scoring is deferred (B2b)** — submissions are captured, not yet surfaced. Pilot = an auto-assembled g2-u03 test. Opt-in `pnpm content validate-test`. Verified: gate green + dev-DB E2E (4 sections grade correct; vocab/grammar refs queue + reading/listening skip; writing captured w/ server word count; `public` 13→13). Original notes:
-From the Check-up material; new content type + grading (auto where machine-checkable, teacher-graded for writing — see `07_task_formats.md`). Likely its own corpus + a `/tests` surface.
-
-#### B3. Listening  ✅ **DONE (2026-06-21, PR `feat/listening`, stacked on B1)**
-`listening@1` schema (a task = `AudioRef` clip + hidden transcript + sibling gradeable items — NOT `GrammarItem`, cast to it at grade/render). `/listening` surface; the `AudioClip` player prefers a pre-generated `AudioRef.file`, else speaks `AudioRef.script` via the Web Speech API (A1–A2 pace) — swapping in TTS files later is content-only. Items reuse the engine + `GrammarItemView` (MC, TF→multiple-choice, gap, matching, short-answer); attempts post via the existing `/api/attempts` outbox (`mode:"listening"`) → XP + streak, but **skip the Leitner queue** (audio can't re-render in `/review`). Content method = the `srdp-listening-comprehension` skill, re-leveled A1–A2; a g2-u03 pilot ships (full corpus = later waves). Opt-in `pnpm content validate-listening` (the main gate stays blind to the new files). Verified: gate green + dev-DB E2E (all 5 formats grade correct, `kind='listening'`, `review_queue` stays 0). Original notes:
-The schema already reserves audio script fields. Decide audio source (TTS vs MORE! Test-Builder rights — `09` open decision). Generate audio → listening item formats (MC / true-false / gap / matching / short-answer tied to a clip).
-
-### Track C — The game layer (P2) — _builds on A (auth + Smart Review)_
-Per `docs/handover/10_game_layer.md`. **G1 overworld RPG first** (the Sept headline). All games reuse `getDueRefs`/`recordAttempt`/`task-ui` (no new grading).
-1. **Content contract** — new schemas in `@domigo/content-schema`: `story@1` (chapters/scenes/taskSlots referencing items, never copying), `quest@1`, `map@1`, `encounter@1`; `cast.json`; `names.json` proper-noun escape.
-2. **Story pipeline** — deterministic legacy importers (the m2-campaign.js → chapters; the G3 production-script parser) → `content story gen` (rewrite to in-bank-or-glossed at the chapter gate) → 4 narrative lenses → validators **VS-1…VS-10** → per-chapter review → release gating.
-3. **G1 RPG** — Phaser scaffold, zone-per-unit; due `review_queue` items spawn as wandering encounters (the task renderer is a DOM overlay above the canvas). Then G2 Watson / G3 FOURTEEN / G4 Syntaxia.
-- Gate: a game mode ships only when its loop + grading + offline-resume work at class scale (Law 9) — no dead toggles.
-
-### Track D — Migration, cutover & bulletproof-beta (P0.2/P0.3 → go-live)
-1. **Migration completion** (`03_migration.md`) — import post-2026-05-17 Firebase signups into Neon without clobbering claimed accounts; keep the claim flow (`/signin/migrate`) working.
-2. **Bulletproof-Beta checklist** (`09` §gate, run before any student go-live): every audited unit validator-green + spot-checked · student/teacher/legacy-claim auth all work · no route 500s · progress persists across sign-out/in · combos/XP/streaks/badges correct · mobile-first on a cheap phone + PWA install + flaky-network tolerance · **class-scale ~30-concurrent attempt test** (no race/lost-write) · no dead toggles.
-3. **PWA install** + offline shell. **Firebase retirement** once v2 is the live app (then a one-time reconcile of v1 frozen XP → `user_progress`).
+### 6. Optional / polish
+- **Real art PNGs** — run the committed prompt libraries (`docs/art/g1-lost-pages-prompts.html`, `g3-fourteen-prompts.html`; G2 already has wired raster art) → `public/art/g<n>/`. Procedural fallback until then.
+- **Dark mode** pass across the surfaces. **Native eval** (Capacitor/Expo) per the open decision.
+- **P3 social** (Battle Arena / Class Quiz / Study Buddies) — decide build-vs-drop; remove dead toggles either way.
 
 ---
 
 ## 5. Recommended order & dependencies
 
 ```
-A1 (verify DB)  ──►  A2 (auth)  ──►  A3 (/review UI)  ──►  A4 (streaks/outbox)
-                          │
-                          ├──►  B1 (Study Path)  ──►  B2 Mock Tests  ──►  B3 Listening
-                          │
-                          └──►  C (game layer: G1 RPG → G2 → G3 → G4)
-                                      (needs auth + Smart Review service)
-D (migration + bulletproof-beta) runs in parallel; it GATES any student go-live.
+DONE: P0 content ─► harness ─► A (Smart Review) ─► B (Study Path/Listening/Tests) ─► design system
+                                                  └─► C games: G1 ✓  G2 ✓  G3 ✓
+NEXT (parallelisable):
+  ① G4 Syntaxia (the last game)        ┐
+  ② Content waves (listening/test)     ├─ all independent; pick by appetite
+  ③ TTS · ④ B2b teacher-grading        ┘
+  ⑤ Track D (migration + bulletproof-beta + PWA + perf)  ── GATES go-live (Sept 2026)
 ```
-**Do next:** A1 ✅ → A2 ✅ → A3 ✅ → A4 ✅ → B1 ✅ → B3 ✅ → B2 Mock Tests ✅ — **Track B complete.** Next: **C / G1 RPG** (the game layer) — reuses the Study Path progression + `getDueRefs`.
-
-> **Remaining work is specced to the teeth in [`docs/handover/11_remaining_work.md`](handover/11_remaining_work.md):** B2b teacher writing-grading UI · the listening/test **content waves** (→ [`docs/runbooks/content-waves.md`](runbooks/content-waves.md)) · pre-generated **TTS** files · the **G1 RPG** kickoff (full design in [`docs/handover/10_game_layer.md`](handover/10_game_layer.md)).
+**Against the September floor:** the game layer is *well past* its floor for 3 of 4 grades (g1 all 15 / g2 all 15 / g3 all 14, vs. the floor's u1–5 / ch1–5 / ep1–5). The headline gaps to a shippable beta are now **G4**, the **content waves**, and **Track D** — not the learning spine or the first three games.
 
 ---
 
 ## 6. Reference
 
-- **Packages:** `@domigo/content-schema` (zod item/structure/story schemas) · `@domigo/content-loader` · `@domigo/engine` (grader) · `@domigo/task-ui` (renderer) · `@domigo/db` (persistence + Leitner) · `@domigo/content-pipeline` (authoring CLI: `pnpm content …`).
-- **Conventions:** packages export `./src/index.ts(x)`, tsconfig extends `tsconfig.base.json` (ES2023, nodenext, strict, **erasableSyntaxOnly** → no enums). Content is regenerable (author into the canonical source + validation gate). DB is **additive-only** on the shared Neon: v2 tables in `domigo_v2`, never DDL/write `public`; prod DDL runbook-gated; CI uses a Postgres service container, never per-PR Neon branches.
-- **Env:** `apps/web/.env.local` (`DATABASE_URL`, `DEV_USER_ID`, `DEV_CLASS_ID`) — gitignored; templates in `.env.example`. Prod `DATABASE_URL` never in repo.
-- **Identity swap point:** `apps/web/lib/identity.ts` `getActingUser` (dev → real `auth()`).
-- **v1 port reference:** `gh repo clone VEHO-DOMI/domigo /tmp/domigo-v1-ref` — `lib/db/{schema,index}.ts`, `lib/auth.ts`, `middleware.ts`, `lib/actions/vocab-practice.ts`.
-- **Design docs:** `docs/handover/02` (data model), `06` (pillars), `07` (task formats), `08` (laws), `09` (roadmap), `10` (game layer). **Runbooks:** `docs/runbooks/items-wave.md`.
+- **Packages:** `@domigo/content-schema` (zod item/structure/story/listening/test schemas) · `content-loader` · `engine` (grader) · `task-ui` (renderer) · `db` (persistence + Leitner + saves) · `content-pipeline` (`pnpm content …`) · **`game-core`** (quest/encounter/saves, pure) · **`game-2d`** (Phaser overworld; Phaser-free `/board` subpath for the hub) · **`art-gen`** (procedural tileset/sprite + per-zone `theme.ts`) · **`game-detective`** (G2) · **`game-novel`** (G3). _Games never import each other — they meet at `game-core`/`content-schema`._
+- **Conventions:** packages export `./src/index.ts(x)`; tsconfig `erasableSyntaxOnly` (no enums), `verbatimModuleSyntax`, `noUncheckedIndexedAccess`. Content regenerable. DB **additive-only** on shared Neon (`domigo_v2`, never DDL/write `public`; prod DDL runbook-gated). Server-only loaders never import into `"use client"`. **Commit hygiene:** branch off `main`; never a bare `#N` in a commit message; end with `Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>`; leave PRs unmerged for Koki.
+- **Identity swap point:** `apps/web/lib/identity.ts` `getActingUser`. **v1 port ref:** `gh repo clone VEHO-DOMI/domigo /tmp/domigo-v1-ref`.
+- **Design docs:** `docs/handover/02` (data model) · `06` (pillars) · `07` (task formats) · `08` (the laws) · `09` (roadmap) · `10` (game layer) · `11` (remaining-work spec) · `12` (G2 passover). **Runbooks:** `docs/runbooks/{items-wave,content-waves}.md`.
+- **The grade-game plans (all COMPLETE):** G1 uplift `~/.claude/plans/passover-g2-the-wrong-precious-forest.md` · G2 `~/.claude/plans/domigo-v2-velvet-squid.md` (Part 6) · G2 passover `docs/handover/12_g2_passover.md`.
