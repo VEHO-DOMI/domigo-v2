@@ -10,6 +10,7 @@ import { loadGameMap, loadReleasedChapters, loadStory } from "@domigo/content-lo
 import { getDb, getSolvedGameItemIds } from "@domigo/db";
 import { EvidenceGallery, EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
+import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
 import { getActingUserForPage } from "@/lib/identity";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 
@@ -37,7 +38,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   // piece/episode completes once every one of its taskSlot items is solved (tier <>
   // 'wrong') — derived from the authoritative attempts ledger, never the wipeable
   // cosmetic save (Law 2).
-  const tracksProgress = isDetective || grade === 3;
+  const tracksProgress = isDetective || grade === 3 || grade === 1;
   const solvedItemIds =
     tracksProgress && story
       ? await getSolvedGameItemIds(getDb(), acting.userId, grade).catch(() => new Set<string>())
@@ -62,10 +63,21 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         })
       : [];
 
+  // g1 "Lost Pages" board: a zone's page is "restored" once every taskSlot item in its chapter is solved.
+  const zones: ZoneProgress[] =
+    grade === 1 && map && story
+      ? map.zones.map((z): ZoneProgress => {
+          const chapter = story.chapters.find((c) => c.unit === z.unit && released.includes(c.id));
+          const refs = chapter ? chapter.scenes.flatMap((s) => s.taskSlots).map((ts) => ts.itemId) : [];
+          const restored = refs.length > 0 && refs.every((ref) => solvedItemIds.has(ref));
+          return { zoneId: z.id, pageNo: z.unit, titleEn: z.titleEn, restored, unlocked: !!chapter };
+        })
+      : [];
+
   const noun = map ? "Zone" : grade === 3 ? "Episode" : "Case";
   const stops = map
     ? map.zones.map((z) => ({
-        id: "",
+        id: z.id,
         short: z.id.split(".").pop() ?? "",
         title: z.titleEn,
         sub: z.titleDe,
@@ -130,6 +142,12 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
       {episodes.length > 0 && (
         <section style={{ marginTop: 28 }}>
           <SeasonBoard episodes={episodes} label="The season so far" />
+        </section>
+      )}
+
+      {zones.length > 0 && (
+        <section style={{ marginTop: 28 }}>
+          <ZoneBoard zones={zones} label="The Lost Pages" />
         </section>
       )}
     </main>
