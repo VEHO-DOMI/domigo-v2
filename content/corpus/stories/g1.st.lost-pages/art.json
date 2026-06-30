@@ -1,0 +1,27 @@
+{
+  "schema": "story-art@1",
+  "storyId": "g1.st.lost-pages",
+  "base": "/art/g1",
+  "cover": "cover_title",
+  "endCard": "end_book",
+  "chapters": {
+    "g1.map.lost-pages.z01": { "card": "card_z01", "backdrop": "bg_z01" },
+    "g1.map.lost-pages.z02": { "card": "card_z02", "backdrop": "bg_z02" },
+    "g1.map.lost-pages.z03": { "card": "card_z03", "backdrop": "bg_z03" },
+    "g1.map.lost-pages.z04": { "card": "card_z04", "backdrop": "bg_z04" },
+    "g1.map.lost-pages.z05": { "card": "card_z05", "backdrop": "bg_z05" },
+    "g1.map.lost-pages.z06": { "card": "card_z06", "backdrop": "bg_z06" },
+    "g1.map.lost-pages.z07": { "card": "card_z07", "backdrop": "bg_z07" },
+    "g1.map.lost-pages.z08": { "card": "card_z08", "backdrop": "bg_z08" },
+    "g1.map.lost-pages.z09": { "card": "card_z09", "backdrop": "bg_z09" },
+    "g1.map.lost-pages.z10": { "card": "card_z10", "backdrop": "bg_z10" },
+    "g1.map.lost-pages.z11": { "card": "card_z11", "backdrop": "bg_z11" },
+    "g1.map.lost-pages.z12": { "card": "card_z12", "backdrop": "bg_z12" },
+    "g1.map.lost-pages.z13": { "card": "card_z13", "backdrop": "bg_z13" },
+    "g1.map.lost-pages.z14": { "card": "card_z14", "backdrop": "bg_z14" },
+    "g1.map.lost-pages.z15": { "card": "card_z15", "backdrop": "bg_z15" }
+  },
+  "portraits": {},
+  "beats": {},
+  "clues": {}
+}
