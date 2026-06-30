@@ -4,6 +4,9 @@
   "reviewedBy": "fable",
   "names": [
     { "name": "Finn", "note": "the guide character who leads the student through the fading book" },
-    { "name": "Frau Berger", "note": "the teacher cameo" }
+    { "name": "Frau Berger", "note": "the teacher cameo" },
+    { "name": "Pixel", "note": "the cat cameo (zoo)" },
+    { "name": "Robo", "note": "the robot cameo (feelings)" },
+    { "name": "Anna", "note": "the drummer cameo (band)" }
   ]
 }
