@@ -12,6 +12,10 @@
     { "name": "Chef Luca", "note": "the cook cameo (unit 7)" },
     { "name": "Mila", "note": "the clothes cameo (unit 8)" },
     { "name": "Professor Tim", "note": "the pets cameo (unit 9)" },
-    { "name": "Mrs Apple", "note": "the shopkeeper cameo (unit 10)" }
+    { "name": "Mrs Apple", "note": "the shopkeeper cameo (unit 10)" },
+    { "name": "Tik", "note": "the clockmaker cameo (unit 11)" },
+    { "name": "Rosa", "note": "the birthday granny cameo (unit 12)" },
+    { "name": "Sam", "note": "the emergency hero cameo (unit 13)" },
+    { "name": "Peppi", "note": "the DJ cameo (unit 14)" }
   ]
 }

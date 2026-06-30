@@ -12,6 +12,11 @@
     { "id": "g1.map.lost-pages.z07", "unit": 7, "titleEn": "Noodles", "titleDe": "Nudeln", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "kitchen-room", "seed": 107 } },
     { "id": "g1.map.lost-pages.z08", "unit": 8, "titleEn": "Clothes", "titleDe": "Kleidung", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "wardrobe-room", "seed": 108 } },
     { "id": "g1.map.lost-pages.z09", "unit": 9, "titleEn": "Unusual Pets", "titleDe": "Ungewöhnliche Haustiere", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "pet-room", "seed": 109 } },
-    { "id": "g1.map.lost-pages.z10", "unit": 10, "titleEn": "In a Shop", "titleDe": "Im Geschäft", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "shop-room", "seed": 110 } }
+    { "id": "g1.map.lost-pages.z10", "unit": 10, "titleEn": "In a Shop", "titleDe": "Im Geschäft", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "shop-room", "seed": 110 } },
+    { "id": "g1.map.lost-pages.z11", "unit": 11, "titleEn": "What's the Time", "titleDe": "Wie spät ist es", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "clock-room", "seed": 111 } },
+    { "id": "g1.map.lost-pages.z12", "unit": 12, "titleEn": "Birthday Cake", "titleDe": "Geburtstagskuchen", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "party-room", "seed": 112 } },
+    { "id": "g1.map.lost-pages.z13", "unit": 13, "titleEn": "Help!", "titleDe": "Hilfe!", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "emergency-room", "seed": 113 } },
+    { "id": "g1.map.lost-pages.z14", "unit": 14, "titleEn": "Favourite", "titleDe": "Lieblings...", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "disco-room", "seed": 114 } },
+    { "id": "g1.map.lost-pages.z15", "unit": 15, "titleEn": "Going to Do?", "titleDe": "Was machst du?", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "library-room", "seed": 115 } }
   ]
 }
