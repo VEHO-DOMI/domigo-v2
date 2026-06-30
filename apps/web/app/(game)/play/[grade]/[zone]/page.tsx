@@ -152,7 +152,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
 
   const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
   const unit = loadUnit(slug);
-  const storyItems = storyItemsFor(chapter, unit);
+  const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
 
   const due = await getDueRefs(getDb(), acting.userId, { kind: "unit", slug }, 8).catch(() => []);
   const enc = Encounter.parse({
