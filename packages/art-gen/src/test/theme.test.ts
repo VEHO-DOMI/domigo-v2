@@ -2,7 +2,10 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { THEMES, resolveZoneTheme, paintTileset, TILE_KINDS } from "../index.ts";
 
-const GENERATORS = ["school-room", "zoo-room", "ship-room", "feelings-room", "band-room"];
+const GENERATORS = [
+  "school-room", "zoo-room", "ship-room", "feelings-room", "band-room",
+  "detective-room", "kitchen-room", "wardrobe-room", "pet-room", "shop-room",
+];
 const SKELETON = new Set(["#", ".", "E", "F", "P"]);
 
 test("every shipped generator resolves to its own theme; unknown/null falls back to school", () => {

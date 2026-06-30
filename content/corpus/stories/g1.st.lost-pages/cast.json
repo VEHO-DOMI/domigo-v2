@@ -8,6 +8,11 @@
     { "id": "captain", "nameEn": "Captain", "descriptionDe": "der Kapitän", "voice": null, "art": null },
     { "id": "pixel", "nameEn": "Pixel", "descriptionDe": "die Katze aus dem Buch", "voice": null, "art": null },
     { "id": "robo", "nameEn": "Robo", "descriptionDe": "der kleine Roboter", "voice": null, "art": null },
-    { "id": "anna", "nameEn": "Anna", "descriptionDe": "die Schlagzeugerin", "voice": null, "art": null }
+    { "id": "anna", "nameEn": "Anna", "descriptionDe": "die Schlagzeugerin", "voice": null, "art": null },
+    { "id": "mo", "nameEn": "Detective Mo", "descriptionDe": "der Detektiv", "voice": null, "art": null },
+    { "id": "luca", "nameEn": "Chef Luca", "descriptionDe": "der Koch", "voice": null, "art": null },
+    { "id": "mila", "nameEn": "Mila", "descriptionDe": "das Mädchen mit der Kleidung", "voice": null, "art": null },
+    { "id": "tim", "nameEn": "Professor Tim", "descriptionDe": "der Haustier-Professor", "voice": null, "art": null },
+    { "id": "apple", "nameEn": "Mrs Apple", "descriptionDe": "die Verkäuferin", "voice": null, "art": null }
   ]
 }
