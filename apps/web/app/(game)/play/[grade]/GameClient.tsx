@@ -26,6 +26,7 @@ export default function GameClient(props: {
   seed: number;
   gameMode: string; // "game:g1".."game:g4"
   zoneId: string;
+  generator: string;
   zoneTitle: string;
   hubHref: string;
   encounters: ResolvedItem[];
@@ -104,6 +105,7 @@ export default function GameClient(props: {
       <PhaserGame
         seed={props.seed}
         zoneId={props.zoneId}
+        generator={props.generator}
         encounters={props.encounters}
         chapter={props.chapter}
         castNames={props.castNames}

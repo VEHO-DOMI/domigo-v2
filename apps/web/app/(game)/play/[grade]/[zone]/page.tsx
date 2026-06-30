@@ -171,6 +171,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
       seed={mapZone.render?.seed ?? grade * 100 + chapter.unit}
       gameMode={gameMode}
       zoneId={mapZone.id}
+      generator={mapZone.render?.generator ?? "school-room"}
       zoneTitle={mapZone.titleEn}
       hubHref={hubHref}
       encounters={encounters}

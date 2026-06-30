@@ -6,27 +6,14 @@
  * client chunk (the app mounts PhaserGame via next/dynamic ssr:false).
  */
 import Phaser from "phaser";
-import { paintPlayerSprite, paintTileset, FACINGS, type Facing } from "@domigo/art-gen";
+import { paintPlayerSprite, paintTileset, resolveZoneTheme, DOMIGO_GREEN, TILE_KINDS, FACINGS, type Facing } from "@domigo/art-gen";
 import { rasterize } from "./rasterize.ts";
 
 const SCALE = 3;
 const SRC = 16;
 const TILE = SRC * SCALE; // 48px display tile
-
-// 15×11 room. # wall · . floor · E encounter node · F Finn NPC · P player start.
-const ROOM = [
-  "###############",
-  "#......F......#",
-  "#.............#",
-  "#..#.......#..#",
-  "#...E.....E...#",
-  "#......P......#",
-  "#.............#",
-  "#...E.....E...#",
-  "#..#.......#..#",
-  "#.............#",
-  "###############",
-];
+const GRID_W = 15;
+const GRID_H = 11; // grid frozen for save-compat (the cosmetic save stores the player's pixel position)
 
 /** Cosmetic save state — the zone it belongs to + player position (px) + cleared nodes. */
 export interface OverworldState {
@@ -38,6 +25,8 @@ export interface OverworldState {
 export interface OverworldConfig {
   seed: number;
   zoneId: string;
+  /** map@1 zone's `render.generator` → picks the per-zone theme (palette + layout + props). */
+  generator: string;
   encounterCount: number;
   onEncounter: (idx: number) => void;
   onNpc: () => void;
@@ -64,37 +53,46 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   static dimensions(): { width: number; height: number } {
-    return { width: ROOM[0]!.length * TILE, height: ROOM.length * TILE };
+    return { width: GRID_W * TILE, height: GRID_H * TILE };
   }
 
   create(): void {
-    // textures from art-gen (deterministic per seed)
-    const tileset = paintTileset(this.cfg.seed);
+    // per-zone theme + texture namespace. Phaser textures are GLOBAL; namespacing the
+    // tileset keys by zone fixes the "first zone to load wins" collision so each zone
+    // renders its own palette + props (not zone 1's). Player sprite stays shared.
+    const theme = resolveZoneTheme(this.cfg.generator);
+    const ns = this.cfg.zoneId.split(".").pop() ?? "z";
+    const tex = (key: string): string => `t-${key}-${ns}`;
+
+    const tileset = paintTileset(this.cfg.seed, {
+      palette: theme.palette,
+      accent: DOMIGO_GREEN,
+      kinds: [...TILE_KINDS, ...theme.extraKinds],
+    });
     for (const [key, img] of Object.entries(tileset.tiles)) {
-      const tex = `t-${key}`;
-      if (!this.textures.exists(tex)) this.textures.addCanvas(tex, rasterize(img, SCALE));
+      if (!this.textures.exists(tex(key))) this.textures.addCanvas(tex(key), rasterize(img, SCALE));
     }
     const sprite = paintPlayerSprite(this.cfg.seed);
     FACINGS.forEach((f, i) => {
-      const tex = `p-${f}`;
-      if (!this.textures.exists(tex)) this.textures.addCanvas(tex, rasterize(sprite.frames[i]!, SCALE));
+      const k = `p-${f}`;
+      if (!this.textures.exists(k)) this.textures.addCanvas(k, rasterize(sprite.frames[i]!, SCALE));
     });
 
-    // pass 1 — paint floor everywhere; collect walls + node/npc positions + start
+    // pass 1 — paint floor everywhere; collect walls + node/npc positions + start; place props
     const walls = this.physics.add.staticGroup();
     const nodeCells: Array<{ idx: number; x: number; y: number }> = [];
     const npcCells: Array<{ x: number; y: number }> = [];
     let start = { x: TILE * 7.5, y: TILE * 5.5 };
     let nodeIdx = 0;
-    for (let r = 0; r < ROOM.length; r += 1) {
-      const row = ROOM[r]!;
+    for (let r = 0; r < theme.layout.length; r += 1) {
+      const row = theme.layout[r]!;
       for (let c = 0; c < row.length; c += 1) {
         const ch = row[c]!;
         const x = c * TILE + TILE / 2;
         const y = r * TILE + TILE / 2;
-        this.add.image(x, y, "t-floor").setDisplaySize(TILE, TILE);
+        this.add.image(x, y, tex("floor")).setDisplaySize(TILE, TILE);
         if (ch === "#") {
-          const w = walls.create(x, y, "t-wall") as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+          const w = walls.create(x, y, tex("wall")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
           w.setDisplaySize(TILE, TILE).refreshBody();
         } else if (ch === "E" && nodeIdx < this.cfg.encounterCount) {
           nodeCells.push({ idx: nodeIdx, x, y });
@@ -103,6 +101,14 @@ export class OverworldScene extends Phaser.Scene {
           npcCells.push({ x, y });
         } else if (ch === "P") {
           start = { x, y };
+        } else {
+          const prop = theme.props[ch];
+          if (prop?.solid) {
+            const w = walls.create(x, y, tex(prop.tile)) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+            w.setDisplaySize(TILE, TILE).refreshBody();
+          } else if (prop) {
+            this.add.image(x, y, tex(prop.tile)).setDisplaySize(TILE, TILE);
+          }
         }
       }
     }
@@ -119,7 +125,7 @@ export class OverworldScene extends Phaser.Scene {
     const cleared = new Set(resume?.cleared ?? []);
 
     for (const { idx, x, y } of nodeCells) {
-      const node = this.add.image(x, y, "t-encounter").setDisplaySize(TILE, TILE);
+      const node = this.add.image(x, y, tex("encounter")).setDisplaySize(TILE, TILE);
       this.physics.add.existing(node, true);
       node.setData("idx", idx);
       if (cleared.has(idx)) { node.setData("done", true); node.setAlpha(0.25); }
@@ -127,7 +133,7 @@ export class OverworldScene extends Phaser.Scene {
       this.physics.add.overlap(this.player, node, () => this.tryEncounter(idx));
     }
     for (const { x, y } of npcCells) {
-      const npc = this.add.image(x, y, "t-accent2").setDisplaySize(TILE, TILE);
+      const npc = this.add.image(x, y, tex("accent2")).setDisplaySize(TILE, TILE);
       this.physics.add.existing(npc, true);
       this.physics.add.overlap(this.player, npc, () => this.tryNpc());
     }
