@@ -32,7 +32,9 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const released = storyId ? loadReleasedChapters(storyId) : [];
   const isDetective = grade === 2; // the Evidence Board is the g2 detective skin only
 
-  const hubArt = storyId && !map ? resolveHubArt(storyId, grade) : null;
+  // Hub cover + cards art (only-present discipline: resolves only stems that exist on
+  // disk, else null → procedural fallback). g1 keys its cards by ZONE id (= the stop id).
+  const hubArt = storyId ? resolveHubArt(storyId, grade) : null;
 
   // Persistent progress surfaces (g2 Evidence Board + g3 Season board): a chapter's
   // piece/episode completes once every one of its taskSlot items is solved (tier <>
