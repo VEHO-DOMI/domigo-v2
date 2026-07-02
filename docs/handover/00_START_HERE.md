@@ -1,5 +1,7 @@
 # DomiGo v2 — START HERE (handover for Fable)
 
+> **📋 Reviewing or picking up this project? Read [`../HANDOVER_FOR_REVIEW.md`](../HANDOVER_FOR_REVIEW.md) first** — the review-oriented master handover (scope · intent · execution · how-it-works · **known gaps / risks / review-targets** · open decisions · how-to-pick-up). This doc (`00`) is the original design entry-point; the review guide is the current, gap-focused overlay on top of it.
+
 You are picking up **DomiGo**, an EFL practice app for **Austrian AHS Klasse 1–4 (MORE! 1–4, level
 A1→A2, ages ~10–14)** at the Gymnasium der Dominikanerinnen. A working **v1** exists; you are
 **rebuilding it from scratch**, keeping the durable foundations and fixing what beta testing exposed.
@@ -31,7 +33,8 @@ the new pillars: a guided **Study Path**, an engaging **Story/RPG mode**, teache
 9. `09_roadmap_and_open_decisions.md` — sequencing, open decisions, the bulletproof-beta checklist.
 10. `PASSOVER_PROMPT.md` — a self-contained kickoff message (also embeds the guardrails).
 11. `10_game_layer.md` — the four grade games (G1/G2/G3 done; **G4 Syntaxia** remains). `../STATUS_AND_ROADMAP.md` (live build status) + `11_remaining_work.md` (remaining-work passover: G4 · content waves · B2b · TTS · Track D).
-12. `12_g2_passover.md` — **the current G2 / pedagogy passover** (paste-ready; the live work as of 2026-06-28: the G2 "The Wrong Name" detective game + its Part-6 pedagogy upgrade).
+12. `12_g2_passover.md` — the G2 "The Wrong Name" detective + pedagogy passover (now **complete**, #40–#60).
+13. `13_g4_syntaxia.md` — **the G4 "Syntaxia" design + build plan** (the last grade game; PLANNED, not started — one narrative decision open for Koki).
 
 ## The single most important warning
 Beta failed on **content quality**, not features. Students hit words they hadn't learned, answers that
