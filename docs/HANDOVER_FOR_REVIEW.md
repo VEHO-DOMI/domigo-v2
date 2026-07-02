@@ -18,6 +18,7 @@ _Written 2026-06-30 for the next AI (or engineer) who will **pick up, review, an
   - `handover/11_remaining_work.md` — self-contained passovers for B2b · content waves · TTS.
   - `handover/12_g2_passover.md` — the G2 detective + pedagogy passover (now complete).
   - `handover/13_g4_syntaxia.md` — **the G4 Syntaxia design + roadmap (planned, not built; one narrative decision open).**
+  - **`handover/grades/` — the four-grade encyclopedia: `README.md` (cross-grade content matrix + the shared learning app) + `g1.md`/`g2.md`/`g3.md`/`g4.md` (each grade's full content + game as-built — every chapter/zone/episode, the mechanics, and per-grade review-targets). Read the grade doc for whichever grade you're working in.**
   - `runbooks/{items-wave,content-waves}.md` — operational how-tos for the content waves.
   - `art/` — the procedural art prompt libraries + generators (`build-g{2,3,1}-prompts.*`).
 - **Memory (Claude's persistent notes, outside the repo):** `~/.claude/projects/…/memory/` — `MEMORY.md` is the index; `project_domigo_v2_master_status.md` is the authoritative inventory; per-area memories (`_track_c`, `_g3_fourteen`, `_g1_uplift`, `_design_system`, `_smart_review`, …) go deeper.
