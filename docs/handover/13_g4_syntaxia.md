@@ -1,6 +1,8 @@
 # 13 — G4 "Syntaxia": design & build plan (the last grade game)
 
-> **Status: PLANNED, not started (2026-06-30).** No G4 story/map/code exists. This doc is the full design + roadmap + the exact code seams, ready to build. **One decision is open:** which of the 3 narratives (§3) — Koki is reviewing them. The build resumes once he picks. Mirror of the working plan `~/.claude/plans/passover-g2-the-wrong-precious-forest.md`.
+> **⚠️ SUPERSEDED 2026-07-06.** Koki reviewed the three narratives in §3 and **rejected all three** — mandate: a fully fresh angle rooted in a real-life conflict/setting for 14-year-olds, no fantasy realm. The G4 game is now **"Lost for Words" / "Sprachlos"** (the Sprachwoche story), fully designed in **`docs/BLUEPRINT.md` Part III.4** — which also carries forward, verbatim, this doc's mechanics layer (branching/flags, companions/hint-economy, bosses, the code seams of §§4–6; those remain valid engineering). Do NOT build any §3 narrative. This doc stays as the mechanics reference + design history.
+
+> Original status note (2026-06-30): PLANNED, not started. No G4 story/map/code exists. Mirror of the working plan `~/.claude/plans/passover-g2-the-wrong-precious-forest.md` (plans-dir copy has since churned).
 
 G4 "Syntaxia" is the **one unbuilt grade game** (G1 "Lost Pages" #72–78, G2 "The Wrong Name" #40–60, G3 "FOURTEEN" #61–71 all shipped). It is the design's "full-blown branching game" (`10_game_layer.md` §G4) — a Phaser overworld where each of the 13 grade-4 grammar structures is a themed portal-world, with real branching choices, a party/hint-economy, boss battles, and an optional 3D set-piece. Building it completes the game layer 4/4 and clears the September floor's "g4 first act".
 
