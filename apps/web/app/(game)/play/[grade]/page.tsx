@@ -10,6 +10,7 @@ import { loadGameMap, loadReleasedChapters, loadStory, storyIdForGrade } from "@
 import { getDb, getSolvedGameItemIds } from "@domigo/db";
 import { EvidenceGallery, EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
+import { JournalBoard, type DayProgress } from "@domigo/game-trip";
 import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
 import { getActingUserForPage } from "@/lib/identity";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
@@ -39,7 +40,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   // piece/episode completes once every one of its taskSlot items is solved (tier <>
   // 'wrong') — derived from the authoritative attempts ledger, never the wipeable
   // cosmetic save (Law 2).
-  const tracksProgress = isDetective || grade === 3 || grade === 1;
+  const tracksProgress = isDetective || grade === 3 || grade === 1 || grade === 4;
   const solvedItemIds =
     tracksProgress && story
       ? await getSolvedGameItemIds(getDb(), acting.userId, grade).catch(() => new Set<string>())
@@ -64,6 +65,16 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         })
       : [];
 
+  // g4 "Lost for Words" trip journal: a day is "stamped" once all its taskSlot items are solved.
+  const days: DayProgress[] =
+    grade === 4 && story
+      ? story.chapters.map((c, i): DayProgress => {
+          const refs = c.scenes.flatMap((s) => s.taskSlots).map((ts) => ts.itemId);
+          const stamped = refs.length > 0 && refs.every((ref) => solvedItemIds.has(ref));
+          return { chapterId: c.id, dayNo: i + 1, titleEn: c.titleEn, stamped, released: released.includes(c.id) };
+        })
+      : [];
+
   // g1 "Lost Pages" board: a zone's page is "restored" once every taskSlot item in its chapter is solved.
   const zones: ZoneProgress[] =
     grade === 1 && map && story
@@ -75,7 +86,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         })
       : [];
 
-  const noun = map ? "Zone" : grade === 3 ? "Episode" : "Case";
+  const noun = map ? "Zone" : grade === 3 ? "Episode" : grade === 4 ? "Day" : "Case";
   const stops = map
     ? map.zones.map((z) => ({
         id: z.id,
@@ -98,7 +109,9 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
     ? "Choose a page to bring back. New pages open as you learn more."
     : grade === 3
       ? "Write the next episode of FOURTEEN. New episodes open as you learn more."
-      : "Open a case file to investigate. New cases open as you learn more.";
+      : grade === 4
+        ? "One week in England — write it down as it happens. New days open as you learn more."
+        : "Open a case file to investigate. New cases open as you learn more.";
 
   return (
     <main style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
@@ -143,6 +156,12 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
       {episodes.length > 0 && (
         <section style={{ marginTop: 28 }}>
           <SeasonBoard episodes={episodes} label="The season so far" />
+        </section>
+      )}
+
+      {days.length > 0 && (
+        <section style={{ marginTop: 28 }}>
+          <JournalBoard days={days} label="Your trip journal (= Reisetagebuch)" />
         </section>
       )}
 

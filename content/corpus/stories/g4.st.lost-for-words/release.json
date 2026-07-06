@@ -1,0 +1,11 @@
+{
+  "schema": "story-release@1",
+  "storyId": "g4.st.lost-for-words",
+  "releasedChapters": [
+    "g4.st.lost-for-words.ch01",
+    "g4.st.lost-for-words.ch02",
+    "g4.st.lost-for-words.ch03",
+    "g4.st.lost-for-words.ch04",
+    "g4.st.lost-for-words.ch05"
+  ]
+}
