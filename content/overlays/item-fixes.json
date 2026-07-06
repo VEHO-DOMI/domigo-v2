@@ -47,5 +47,69 @@
         }
       }
     }
+  },
+  "g3-u05": {
+    "patch": {
+      "g3u05.gi.first-conditional.sb.005": {
+        "prompt": {
+          "text": "bus / the / you / If / will / miss / don't / hurry / you",
+          "lang": "de",
+          "blanks": 0
+        }
+      },
+      "g3u05.gi.first-conditional.sb.006": {
+        "prompt": {
+          "text": "it / If / won't / we / the / to / go / rains / park",
+          "lang": "de",
+          "blanks": 0
+        }
+      },
+      "g3u05.gi.first-conditional.sb.007": {
+        "prompt": {
+          "text": "bad / you / mirror / a / you'll / luck / break / If / have",
+          "lang": "de",
+          "blanks": 0
+        }
+      },
+      "g3u05.gi.first-conditional.sb.008": {
+        "prompt": {
+          "text": "you'll / hear / you / cuckoo / rich / a / If / get",
+          "lang": "de",
+          "blanks": 0
+        }
+      },
+      "g3u05.gi.unless.sb.001": {
+        "prompt": {
+          "text": "come / me / unless / will / with / go / you / I / not",
+          "lang": "de",
+          "blanks": 0
+        }
+      },
+      "g3u05.gi.unless.sb.002": {
+        "prompt": {
+          "text": "you / apologise / unless / you / She / will / not / invite",
+          "lang": "de",
+          "blanks": 0
+        }
+      },
+      "g3u05.gi.unless.sb.003": {
+        "prompt": {
+          "text": "bus / Unless / you / the / hurry / will / you / miss",
+          "lang": "de",
+          "blanks": 0
+        }
+      }
+    }
+  },
+  "g4-u08": {
+    "patch": {
+      "g4u08.gi.tense-time-expression-review.sb.003": {
+        "prompt": {
+          "text": "Bring die Wörter in die richtige Reihenfolge: the / robbed / monastery / two / ago / the / thieves / years",
+          "lang": "de",
+          "blanks": 0
+        }
+      }
+    }
   }
 }

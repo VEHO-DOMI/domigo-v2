@@ -120,6 +120,13 @@
       "contentHash": "e1ddda3c1db0bde7f75a218caa250628d846ed6dd4bcf74051c592541d7f272b",
       "note": "round 1: 76 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T16:51:19.829Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "ac6f183472bae4b194b7a1e4ae6cd894f5876d4655c97b07b1ddf3623b30e528",
+      "note": "tactile parity sweep (T1/T2): 7 sb prompts had no token lists (unsolvable as rendered) — seeded scrambles folded + overlay-recorded",
+      "at": "2026-07-06T20:19:02.033Z"
     }
   ]
 }

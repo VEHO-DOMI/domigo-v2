@@ -1871,7 +1871,7 @@
         "note": "Chips are the answer tokens; no extra distractor chips."
       },
       "prompt": {
-        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "text": "bus / the / you / If / will / miss / don't / hurry / you",
         "lang": "de",
         "blanks": 0
       },
@@ -1933,7 +1933,7 @@
         "note": null
       },
       "prompt": {
-        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "text": "it / If / won't / we / the / to / go / rains / park",
         "lang": "de",
         "blanks": 0
       },
@@ -1991,7 +1991,7 @@
         "note": "Carrier from Candyman play (break a mirror -> bad luck)."
       },
       "prompt": {
-        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "text": "bad / you / mirror / a / you'll / luck / break / If / have",
         "lang": "de",
         "blanks": 0
       },
@@ -2052,7 +2052,7 @@
         "note": "Carrier from SB 6 superstition (cuckoo -> rich)."
       },
       "prompt": {
-        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "text": "you'll / hear / you / cuckoo / rich / a / If / get",
         "lang": "de",
         "blanks": 0
       },
@@ -4293,7 +4293,7 @@
         "note": "Chips: I / will / not / go / unless / you / come / with / me (9). distractorPool decoys catch double-negative + if-swap + will-in-clause."
       },
       "prompt": {
-        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "text": "come / me / unless / will / with / go / you / I / not",
         "lang": "de",
         "blanks": 0
       },
@@ -4346,7 +4346,7 @@
         "note": "Chips: She / will / not / invite / you / unless / you / apologise (8) + decoys. 'apologise' granted."
       },
       "prompt": {
-        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "text": "you / apologise / unless / you / She / will / not / invite",
         "lang": "de",
         "blanks": 0
       },
@@ -4399,7 +4399,7 @@
         "note": "Chips: Unless / you / hurry / you / will / miss / the / bus (8) + decoys."
       },
       "prompt": {
-        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "text": "bus / Unless / you / the / hurry / will / you / miss",
         "lang": "de",
         "blanks": 0
       },

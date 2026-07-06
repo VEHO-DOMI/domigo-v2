@@ -17,6 +17,12 @@ export default auth((req) => {
   }
 
   if (!session) {
+    // The documented dev-identity fallback (lib/identity.ts) also passes the
+    // middleware: non-prod + DEV_USER_ID set → student pages render locally
+    // without a DB-backed session. Never active in production (same guard).
+    const devFallback =
+      process.env.VERCEL_ENV !== "production" && !!process.env.DEV_USER_ID && !pathname.startsWith("/admin");
+    if (devFallback) return NextResponse.next();
     const signinPath = pathname.startsWith("/admin") ? "/admin/signin" : "/signin";
     const url = new URL(signinPath, req.nextUrl);
     url.searchParams.set("from", pathname + (search ?? ""));
