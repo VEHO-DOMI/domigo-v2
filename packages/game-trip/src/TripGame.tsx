@@ -101,7 +101,7 @@ function TaskLine({ item, prompt, onAttempt, onContinue, onScored, hideHint }: {
       {item.kind === "grammar"
         ? <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} hideXp hideHint={hideHint} />
         : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} hideXp hideHint={hideHint} />}
-      {line && <div style={{ marginTop: 10, fontWeight: 700, fontSize: 14, color: line.good ? "var(--correct)" : "var(--incorrect)" }}>{line.text}</div>}
+      {line && <div style={{ marginTop: 10, fontWeight: 700, fontSize: 14, color: line.good ? "var(--correct)" : "var(--ink-soft)" }}>{line.text}</div>}
       {res && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onContinue}>{COPY.continue}</button>}
     </div>
   );

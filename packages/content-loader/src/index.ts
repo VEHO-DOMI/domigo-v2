@@ -151,10 +151,14 @@ export function loadStoryComprehension(storyId: string): StoryComprehensionFileT
   return raw === null ? null : StoryComprehensionFile.parse(raw);
 }
 
-/** trap-registry@1 — the named-trap taxonomy (content/corpus/traps/traps.json). Null if absent. */
+/** trap-registry@1 — the named-trap taxonomy (content/corpus/traps/traps.json). Null if absent.
+ *  Cached: the root layout reads it per request to feed the client TrapProvider. */
+let trapRegistryCache: TrapRegistryT | null | undefined;
 export function loadTrapRegistry(): TrapRegistryT | null {
+  if (trapRegistryCache !== undefined) return trapRegistryCache;
   const raw = readJson<unknown>(path.join(REPO_ROOT, "content", "corpus", "traps", "traps.json"));
-  return raw === null ? null : TrapRegistry.parse(raw);
+  trapRegistryCache = raw === null ? null : TrapRegistry.parse(raw);
+  return trapRegistryCache;
 }
 
 /** flags@1 manifest (VS-13 hygiene; runtime FlagGate/flagLines routing). Null if none. */

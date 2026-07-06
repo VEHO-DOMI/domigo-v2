@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@domigo/content-schema": "workspace:*",
-    "@domigo/engine": "workspace:*"
+    "@domigo/engine": "workspace:*",
+    "@domigo/game-feel": "workspace:*"
   },
   "peerDependencies": {
     "react": "^19"
