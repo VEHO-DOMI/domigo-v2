@@ -7,6 +7,7 @@
  */
 import Phaser from "phaser";
 import { paintPlayerSprite, paintTileset, resolveZoneTheme, DOMIGO_GREEN, TILE_KINDS, FACINGS, type Facing } from "@domigo/art-gen";
+import { findPath, nearestWalkable, type Cell, type GridSpec } from "./path.ts";
 import { rasterize } from "./rasterize.ts";
 
 const SCALE = 3;
@@ -22,6 +23,16 @@ export interface OverworldState {
   cleared: number[];
 }
 
+/** D-pad state, written by the React overlay, read every tick (A1-1). Sharing a
+ *  mutable object keeps the d-pad and the keyboard in the SAME axis expressions
+ *  in update() — touch parity with keys by construction, never a second path. */
+export interface PadState {
+  up: boolean;
+  down: boolean;
+  left: boolean;
+  right: boolean;
+}
+
 export interface OverworldConfig {
   seed: number;
   zoneId: string;
@@ -34,6 +45,8 @@ export interface OverworldConfig {
   initial?: OverworldState | null;
   /** Reports cosmetic state (throttled) for checkpointing. */
   onState?: (s: OverworldState) => void;
+  /** Floating d-pad state (coarse-pointer devices); OR'd with the keyboard. */
+  pad?: PadState;
 }
 
 export class OverworldScene extends Phaser.Scene {
@@ -46,6 +59,9 @@ export class OverworldScene extends Phaser.Scene {
   private facing: Facing = "down";
   private tick = 0;
   private lastReport = { x: 0, y: 0 };
+  // A1-1 tap-to-move: the zone's walkable grid + the waypoint queue being walked.
+  private blockedCells = new Set<number>();
+  private pathQueue: Cell[] = [];
 
   constructor(cfg: OverworldConfig) {
     super("overworld");
@@ -94,6 +110,7 @@ export class OverworldScene extends Phaser.Scene {
         if (ch === "#") {
           const w = walls.create(x, y, tex("wall")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
           w.setDisplaySize(TILE, TILE).refreshBody();
+          this.blockedCells.add(r * GRID_W + c);
         } else if (ch === "E" && nodeIdx < this.cfg.encounterCount) {
           nodeCells.push({ idx: nodeIdx, x, y });
           nodeIdx += 1;
@@ -106,6 +123,7 @@ export class OverworldScene extends Phaser.Scene {
           if (prop?.solid) {
             const w = walls.create(x, y, tex(prop.tile)) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
             w.setDisplaySize(TILE, TILE).refreshBody();
+            this.blockedCells.add(r * GRID_W + c);
           } else if (prop) {
             this.add.image(x, y, tex(prop.tile)).setDisplaySize(TILE, TILE);
           }
@@ -143,6 +161,46 @@ export class OverworldScene extends Phaser.Scene {
       this.cursors = kb.createCursorKeys();
       this.wasd = kb.addKeys("W,A,S,D") as typeof this.wasd;
     }
+
+    // A1-1 tap-to-move: a tap anywhere in the world walks the player there
+    // (point-and-click). Tapping a node/NPC paths INTO its cell, so the
+    // EXISTING overlap fires the encounter — no second trigger path.
+    this.input.on(Phaser.Input.Events.POINTER_UP, (p: Phaser.Input.Pointer) => this.tapAt(p.worldX, p.worldY));
+  }
+
+  /** The walkable-grid view for the pure pathfinder. */
+  private gridSpec(): GridSpec {
+    return { w: GRID_W, h: GRID_H, blocked: (c, r) => this.blockedCells.has(r * GRID_W + c) };
+  }
+
+  /**
+   * The ONE tap entry point (pointer handler + the non-prod `__domigo.tap`
+   * harness call the same code). World px → cell → fat-finger retarget →
+   * deterministic BFS → waypoint queue consumed by update().
+   */
+  tapAt(worldX: number, worldY: number): void {
+    if (this.paused || !this.player) return;
+    const spec = this.gridSpec();
+    const target = nearestWalkable(spec, Math.floor(worldX / TILE), Math.floor(worldY / TILE));
+    if (target === null) return;
+    const from: Cell = { c: Math.floor(this.player.x / TILE), r: Math.floor(this.player.y / TILE) };
+    const path = findPath(spec, from, target);
+    this.pathQueue = path ?? [];
+  }
+
+  /** Read-only snapshot for the non-prod `__domigo.state()` dev harness. */
+  debugState(): { x: number; y: number; cell: Cell; facing: Facing; paused: boolean; pathLeft: number; cleared: number[] } {
+    const cleared: number[] = [];
+    this.nodes.forEach((node, idx) => { if (node.getData("done") === true) cleared.push(idx); });
+    return {
+      x: Math.round(this.player?.x ?? 0),
+      y: Math.round(this.player?.y ?? 0),
+      cell: { c: Math.floor((this.player?.x ?? 0) / TILE), r: Math.floor((this.player?.y ?? 0) / TILE) },
+      facing: this.facing,
+      paused: this.paused,
+      pathLeft: this.pathQueue.length,
+      cleared,
+    };
   }
 
   private tryEncounter(idx: number): void {
@@ -185,18 +243,45 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   update(): void {
-    if (!this.player || this.cursors === null || this.wasd === null) return;
+    if (!this.player) return;
     if (this.paused) {
       this.player.setVelocity(0);
+      this.pathQueue = [];
       return;
     }
     const speed = 150;
+    const pad = this.cfg.pad;
+    // ONE axis expression for keyboard AND d-pad (touch parity by construction).
+    const left = this.cursors?.left.isDown === true || this.wasd?.A.isDown === true || pad?.left === true;
+    const right = this.cursors?.right.isDown === true || this.wasd?.D.isDown === true || pad?.right === true;
+    const up = this.cursors?.up.isDown === true || this.wasd?.W.isDown === true || pad?.up === true;
+    const down = this.cursors?.down.isDown === true || this.wasd?.S.isDown === true || pad?.down === true;
+
     let vx = 0;
     let vy = 0;
-    if (this.cursors.left.isDown || this.wasd.A.isDown) vx = -speed;
-    else if (this.cursors.right.isDown || this.wasd.D.isDown) vx = speed;
-    if (this.cursors.up.isDown || this.wasd.W.isDown) vy = -speed;
-    else if (this.cursors.down.isDown || this.wasd.S.isDown) vy = speed;
+    if (left) vx = -speed;
+    else if (right) vx = speed;
+    if (up) vy = -speed;
+    else if (down) vy = speed;
+
+    if (vx !== 0 || vy !== 0) {
+      // Manual input always wins: steering a key or the d-pad cancels the tap target.
+      this.pathQueue = [];
+    } else if (this.pathQueue.length > 0) {
+      // Tap-to-move: steer toward the next waypoint's cell center; a waypoint
+      // counts as reached inside a small radius (physics never teleports).
+      const wp = this.pathQueue[0]!;
+      const tx = wp.c * TILE + TILE / 2;
+      const ty = wp.r * TILE + TILE / 2;
+      const dx = tx - this.player.x;
+      const dy = ty - this.player.y;
+      if (Math.abs(dx) <= 6 && Math.abs(dy) <= 6) {
+        this.pathQueue.shift();
+      } else {
+        if (Math.abs(dx) > 6) vx = dx < 0 ? -speed : speed;
+        if (Math.abs(dy) > 6) vy = dy < 0 ? -speed : speed;
+      }
+    }
     this.player.setVelocity(vx, vy);
 
     const next: Facing = vx < 0 ? "left" : vx > 0 ? "right" : vy < 0 ? "up" : vy > 0 ? "down" : this.facing;
