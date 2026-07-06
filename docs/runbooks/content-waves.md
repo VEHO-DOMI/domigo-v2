@@ -52,3 +52,26 @@ Progress receipt = the git log. `pnpm content validate-listening` / `validate-te
 - Validators: `packages/content-pipeline/src/validate-{listening,test}.ts`; run via `pnpm content validate-listening` / `validate-test`.
 - Pilots (copy these shapes): `content/corpus/units/g2-u03/{listening,test}.json`.
 - Surfaces: `/listening`, `/listening/[slug]`, `/tests`, `/tests/[slug]`.
+
+---
+
+## 2026-07-06 — the wave-blocking upgrade (W-0; BLUEPRINT Part III.2)
+
+**Authoring now goes through the in-repo skills** — read them first, they are the contract:
+`skills/domigo-listening-comprehension-a/SKILL.md` and `skills/domigo-reading-test-a/SKILL.md`.
+Gold standards: `g2-u01` (authored to the skills, 0 warnings) and the retrofitted `g2-u03` pilot.
+
+**New MANDATORY fields for wave content** (additive in `listening@1`/`test@1`; the D-3 runtime
+ritual and D-1 feedback card consume them): task `predictChips[3]` · per-item `phase`
+(gist|detail), `cue {type, quote-verbatim-from-source}`, `trickDe` (≤12 du-form words),
+`distractorMeta` (parallel; ≥1 lure on MC difficulty ≥2) · writing `checklistDe[3–5]` +
+`exemplar {textEn fully-in-bank, calloutsDe ≤3 quoting textEn}`.
+
+**Validators** (step 2 of the rhythm now enforces): `pnpm content validate-listening` — V-LC1
+quote-verbatim, V-LC2 gist discipline, V-LC3 echo-lure firewall + meta parity, V-LC4 trick
+budget/register, V-LC5 prompt/distractor level probe (WARN-only; your new unit must print 0);
+`pnpm content validate-test` — V-LC1r/V-LC4r on reading, V-EX1 callout quotes, V-EX2 exemplar
+fully-in-bank (no gloss escape), V-CK1 checklist du-form.
+
+**Wave stats in every PR body:** items authored · strategy-complete count (the validator prints
+it) · V-LC5 warning count for your unit (must be 0) · engine spot-check result.

@@ -1247,6 +1247,38 @@ export const ListeningRef = z
   .regex(/^g[1-4]u\d{2}\.li\.[a-z0-9-]+\.(?:gf|mc|cp|tr|ec|tf|qf|ff|sb|mt|ag|gs|mp)\.\d{3}$/);
 
 /** A gradeable listening item — GrammarItem-shaped, minus id/structureId. */
+
+/** Listening/reading strategy cue types (BLUEPRINT WS-D D-3): what the ear/eye
+ *  must learn to catch. `gist`/`detail-fact` cover global items; the rest are
+ *  the trainable micro-cues the clinics drill. */
+export const CueType = z.enum([
+  "number-time",
+  "spelling",
+  "signal-word",
+  "list-intonation",
+  "speaker-id",
+  "place-prep",
+  "gist",
+  "detail-fact",
+]);
+export type CueTypeT = z.infer<typeof CueType>;
+
+/** The strategy fields every NEW wave item carries (additive: the pilot era
+ *  lacked them; validators enforce internal consistency when present and the
+ *  runbook mandates them for wave authoring). `quote` must appear VERBATIM in
+ *  the task transcript / reading passage (V-LC1) — the anti-hallucination lint. */
+export const StrategyCue = z.object({
+  type: CueType,
+  quote: z.string().min(1),
+  para: z.number().int().min(1).optional(),
+});
+
+/** Per-distractor lure metadata, parallel to `distractors` (V-LC3). */
+export const DistractorMeta = z.object({
+  whyDe: z.string().min(1),
+  lure: z.enum(["echo", "near-number", "similar-name"]).optional(),
+});
+
 export const ListeningItem = z.object({
   id: ListeningRef,
   rev: z.number().int().min(1),
@@ -1268,6 +1300,12 @@ export const ListeningItem = z.object({
   explainDe: z.string().min(1),
   explainEn: z.string().nullable(),
   strict: z.boolean(),
+  /** Strategy layer (wave-mandated; see StrategyCue). */
+  cue: StrategyCue.optional(),
+  phase: z.enum(["gist", "detail"]).optional(),
+  /** The reusable move, du-form, <=12 words (word count enforced by V-LC4). */
+  trickDe: z.string().min(1).optional(),
+  distractorMeta: z.array(DistractorMeta).optional(),
 });
 export type ListeningItem = z.infer<typeof ListeningItem>;
 
@@ -1280,6 +1318,8 @@ export const ListeningTask = z
     audio: AudioRef,
     transcript: z.string().min(1),
     items: z.array(ListeningItem).min(1),
+    /** Vorschau ritual: 3 German prediction chips shown BEFORE the first listen. */
+    predictChips: z.array(z.string().min(1)).length(3).optional(),
   })
   .superRefine((t, ctx) => {
     const want = `.li.${t.key}.`;
@@ -1353,6 +1393,12 @@ export const ReadingItem = z.object({
   explainDe: z.string().min(1),
   explainEn: z.string().nullable(),
   strict: z.boolean(),
+  /** Strategy layer (wave-mandated; see StrategyCue). */
+  cue: StrategyCue.optional(),
+  phase: z.enum(["gist", "detail"]).optional(),
+  /** The reusable move, du-form, <=12 words (word count enforced by V-LC4). */
+  trickDe: z.string().min(1).optional(),
+  distractorMeta: z.array(DistractorMeta).optional(),
 });
 export type ReadingItem = z.infer<typeof ReadingItem>;
 
@@ -1432,6 +1478,17 @@ export const TestWritingSection = z.object({
   maxWords: z.number().int().min(20),
   /** Reserved for B2b teacher grading; null for now. */
   rubric: z.array(z.object({ criterion: z.string().min(1), maxPoints: z.number().int().min(1) })).nullable(),
+  /** Pre-submit self-check, du-form tap-questions (3-5). Never blocks submission. */
+  checklistDe: z.array(z.string().min(1)).min(3).max(5).optional(),
+  /** "So kann's aussehen" — unlocked AFTER first submission (anti-copy-priming).
+   *  textEn must be fully in-bank at the unit (V-EX2: no gloss escape — a model
+   *  answer the student can't fully read is not a model answer). */
+  exemplar: z
+    .object({
+      textEn: z.string().min(1),
+      calloutsDe: z.array(z.object({ quote: z.string().min(1), whyDe: z.string().min(1) })).min(1).max(3),
+    })
+    .optional(),
 });
 
 /** Plain union (the ref-section discriminator is a 3-value enum, not one literal). */

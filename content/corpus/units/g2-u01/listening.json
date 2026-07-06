@@ -1,0 +1,241 @@
+{
+  "schema": "listening@1",
+  "grade": 2,
+  "unit": 1,
+  "slug": "g2-u01",
+  "level": "A1+",
+  "tasks": [
+    {
+      "id": "g2u01.lt.school-day",
+      "key": "school-day",
+      "titleDe": "Hör zu: Bens Schultag",
+      "audio": {
+        "script": "Hello! My name is Ben. I want to tell you about Monday — my favourite school day. School starts at eight o'clock. First we have maths. I don't love maths, but our teacher is funny. Then we have English and art. Art is my favourite subject because we paint pictures. At ten o'clock we have a break. I eat an apple and play football with my friends. After the break we have geography and music. School finishes at one o'clock. Then I go home, I eat, and I go for a walk with my dog.",
+        "voice": null,
+        "file": null
+      },
+      "transcript": "Hello! My name is Ben. I want to tell you about Monday — my favourite school day. School starts at eight o'clock. First we have maths. I don't love maths, but our teacher is funny. Then we have English and art. Art is my favourite subject because we paint pictures. At ten o'clock we have a break. I eat an apple and play football with my friends. After the break we have geography and music. School finishes at one o'clock. Then I go home, I eat, and I go for a walk with my dog.",
+      "predictChips": [
+        "Jemand erzählt von der Schule",
+        "Jemand erzählt von einer Reise",
+        "Jemand erzählt vom Wochenende"
+      ],
+      "items": [
+        {
+          "id": "g2u01.li.school-day.mc.001",
+          "rev": 1,
+          "difficulty": 1,
+          "format": "multiple-choice",
+          "prompt": {
+            "text": "What does Ben talk about?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "A day at school",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [
+            "His dog",
+            "His birthday",
+            "His friends"
+          ],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Worum geht es im GANZEN Text — nicht nur in einem Satz?",
+          "hintEn": null,
+          "explainDe": "Ben sagt am Anfang: „I want to tell you about Monday — my favourite school day.“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "gist",
+          "cue": {
+            "type": "gist",
+            "quote": "I want to tell you about Monday — my favourite school day."
+          },
+          "trickDe": "Der erste Satz sagt dir fast immer das Thema.",
+          "distractorMeta": [
+            {
+              "whyDe": "Du hörst dog am Ende — aber nur ein Satz ist über den Hund.",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Von einem Geburtstag sagt Ben nichts."
+            },
+            {
+              "whyDe": "Du hörst friends im Text — aber nur in der Pause.",
+              "lure": "echo"
+            }
+          ]
+        },
+        {
+          "id": "g2u01.li.school-day.gf.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "gap-fill",
+          "prompt": {
+            "text": "School begins at ___ o'clock.",
+            "lang": "en",
+            "blanks": 1
+          },
+          "answers": [
+            {
+              "text": "eight",
+              "tier": "full"
+            },
+            {
+              "text": "8",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Es gibt mehrere Zahlen im Text. Welche gehört zum Schulanfang?",
+          "hintEn": null,
+          "explainDe": "„School starts at eight o'clock.“ — die Zehn gehört zur Pause, die Eins zum Schulschluss.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "number-time",
+            "quote": "School starts at eight o'clock."
+          },
+          "trickDe": "Drei Zahlen im Text — höre, welche zu starts gehört."
+        },
+        {
+          "id": "g2u01.li.school-day.mc.002",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "multiple-choice",
+          "prompt": {
+            "text": "Which subject does Ben love?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "Art",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [
+            "Maths",
+            "Geography",
+            "Music"
+          ],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Achte auf das Wort favourite — und auf ein kleines don't!",
+          "hintEn": null,
+          "explainDe": "„Art is my favourite subject because we paint pictures.“ Bei maths sagt Ben: „I don't love maths.“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "signal-word",
+            "quote": "Art is my favourite subject"
+          },
+          "trickDe": "Nach because kommt der Grund — favourite ist dein Signal.",
+          "distractorMeta": [
+            {
+              "whyDe": "Du hörst love und maths im selben Satz — aber mit don't davor!",
+              "lure": "echo"
+            },
+            {
+              "whyDe": "Geography kommt vor, aber ohne favourite."
+            },
+            {
+              "whyDe": "Music kommt vor, aber ohne favourite."
+            }
+          ]
+        },
+        {
+          "id": "g2u01.li.school-day.mt.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "matching",
+          "prompt": {
+            "text": "Match the time to what happens.",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [],
+          "direction": null,
+          "distractors": [],
+          "pairs": [
+            {
+              "left": "eight o'clock",
+              "right": "school starts"
+            },
+            {
+              "left": "ten o'clock",
+              "right": "the break"
+            },
+            {
+              "left": "one o'clock",
+              "right": "school finishes"
+            }
+          ],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Drei Uhrzeiten, drei Dinge — hör beim zweiten Mal genau auf die Reihenfolge.",
+          "hintEn": null,
+          "explainDe": "Acht Uhr: Schulanfang. Zehn Uhr: Pause. Ein Uhr: Schulschluss.",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "number-time",
+            "quote": "At ten o'clock we have a break."
+          },
+          "trickDe": "Ordne erst nach dem zweiten Hören zu."
+        },
+        {
+          "id": "g2u01.li.school-day.ff.001",
+          "rev": 1,
+          "difficulty": 2,
+          "format": "free-form",
+          "prompt": {
+            "text": "What does Ben eat in the break?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "an apple",
+              "tier": "full"
+            },
+            {
+              "text": "apple",
+              "tier": "full"
+            }
+          ],
+          "direction": null,
+          "distractors": [],
+          "pairs": [],
+          "groups": [],
+          "gloss": [],
+          "hintDe": "Etwas zu essen — direkt nach dem Wort break.",
+          "hintEn": null,
+          "explainDe": "„At ten o'clock we have a break. I eat an apple …“",
+          "explainEn": null,
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "detail-fact",
+            "quote": "I eat an apple and play football with my friends."
+          },
+          "trickDe": "Nach break kommt, was Ben isst und spielt."
+        }
+      ]
+    }
+  ]
+}

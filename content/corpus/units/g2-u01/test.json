@@ -1,0 +1,135 @@
+{
+  "schema": "test@1",
+  "grade": 2,
+  "unit": 1,
+  "slug": "g2-u01",
+  "level": "A1+",
+  "test": {
+    "id": "g2u01.tt.school-day",
+    "titleDe": "Schularbeit (Übung) — Unit 1",
+    "sections": [
+      {
+        "kind": "grammar",
+        "titleDe": "Teil 1: Grammatik (present simple)",
+        "itemIds": ["g2u01.gi.present-simple.gf.001", "g2u01.gi.present-simple.cp.001", "g2u01.gi.present-simple.ec.001"]
+      },
+      {
+        "kind": "vocab",
+        "titleDe": "Teil 2: Wortschatz",
+        "itemIds": ["g2u01.w.timetable", "g2u01.w.subject", "g2u01.w.break"]
+      },
+      {
+        "kind": "listening",
+        "titleDe": "Teil 3: Hörverstehen",
+        "itemIds": ["g2u01.li.school-day.mc.001", "g2u01.li.school-day.gf.001"]
+      },
+      {
+        "kind": "reading",
+        "titleDe": "Teil 4: Leseverständnis",
+        "passage": "Hello! My name is Anna and this is my new timetable. On Monday I have English, maths and music. My favourite lesson is music because we sing. On Friday we have art and I paint with my friends. Every day school starts at eight o'clock. After school I go for a walk or I read a book. I love my new class!",
+        "passageGloss": [{ "word": "timetable", "de": "Stundenplan", "scope": null }],
+        "items": [
+          {
+            "id": "g2u01.ri.timetable.mc.001",
+            "rev": 1,
+            "difficulty": 1,
+            "format": "multiple-choice",
+            "prompt": { "text": "What is Anna's favourite lesson?", "lang": "en", "blanks": 0 },
+            "answers": [{ "text": "Music", "tier": "full" }],
+            "direction": null,
+            "distractors": ["English", "Maths", "Art"],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Suche das Wort favourite im Text.",
+            "hintEn": null,
+            "explainDe": "„My favourite lesson is music because we sing.“",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": { "type": "signal-word", "quote": "My favourite lesson is music" },
+            "trickDe": "Suche favourite — der Satz danach ist die Antwort.",
+            "distractorMeta": [
+              { "whyDe": "English steht im Text — aber ohne favourite." },
+              { "whyDe": "Maths steht im Text — aber ohne favourite." },
+              { "whyDe": "Anna malt am Freitag — aber favourite steht bei music.", "lure": "echo" }
+            ]
+          },
+          {
+            "id": "g2u01.ri.timetable.gf.001",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "gap-fill",
+            "prompt": { "text": "Every day school starts at ___ o'clock.", "lang": "en", "blanks": 1 },
+            "answers": [
+              { "text": "eight", "tier": "full" },
+              { "text": "8", "tier": "full" }
+            ],
+            "direction": null,
+            "distractors": [],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Eine Uhrzeit am Morgen — steht im Text.",
+            "hintEn": null,
+            "explainDe": "„Every day school starts at eight o'clock.“",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": { "type": "number-time", "quote": "Every day school starts at eight o'clock." },
+            "trickDe": "Finde die Zahl direkt neben o'clock."
+          },
+          {
+            "id": "g2u01.ri.timetable.mc.002",
+            "rev": 1,
+            "difficulty": 2,
+            "format": "multiple-choice",
+            "prompt": { "text": "What does Anna do after school?", "lang": "en", "blanks": 0 },
+            "answers": [{ "text": "She goes for a walk or reads a book.", "tier": "full" }],
+            "direction": null,
+            "distractors": ["She sings with her class.", "She paints with her friends.", "She plays football."],
+            "pairs": [],
+            "groups": [],
+            "gloss": [],
+            "hintDe": "Suche die Wörter after school.",
+            "hintEn": null,
+            "explainDe": "„After school I go for a walk or I read a book.“",
+            "explainEn": null,
+            "strict": false,
+            "phase": "detail",
+            "cue": { "type": "detail-fact", "quote": "After school I go for a walk or I read a book." },
+            "trickDe": "after school ist dein Anker — lies den Satz dahinter.",
+            "distractorMeta": [
+              { "whyDe": "Singen steht im Text — aber in der Musikstunde, nicht nach der Schule.", "lure": "echo" },
+              { "whyDe": "Malen steht im Text — aber am Freitag im Unterricht.", "lure": "echo" },
+              { "whyDe": "Fußball steht nicht im Text." }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "writing",
+        "titleDe": "Teil 5: Schreiben",
+        "promptId": "g2u01.ti.wr.001",
+        "promptDe": "Schreib über deinen Schultag (40–70 Wörter): Welche Fächer hast du? Was ist dein Lieblingsfach und warum? Was machst du nach der Schule?",
+        "taskEn": "Write about your school day (40-70 words): your subjects, your favourite subject and why, and what you do after school.",
+        "minWords": 40,
+        "maxWords": 70,
+        "rubric": null,
+        "checklistDe": [
+          "Hast du dein Lieblingsfach UND ein warum geschrieben?",
+          "Beginnt jeder Satz mit einem großen Buchstaben?",
+          "Hast du 40 bis 70 Wörter geschrieben?"
+        ],
+        "exemplar": {
+          "textEn": "My school day is good. On Monday I have English, maths and art. My favourite subject is art because I love to paint. At ten o'clock we have a break and I play with my friends. After school I go for a walk with my dog and then I read a book.",
+          "calloutsDe": [
+            { "quote": "My favourite subject is art because I love to paint.", "whyDe": "Lieblingsfach plus warum in einem Satz — genau das fragt die Aufgabe." },
+            { "quote": "On Monday I have English, maths and art.", "whyDe": "Eine Liste mit Komma und and — so zählst du Fächer auf." },
+            { "quote": "After school I go for a walk with my dog", "whyDe": "after school beantwortet den letzten Teil der Frage." }
+          ]
+        }
+      }
+    ]
+  }
+}

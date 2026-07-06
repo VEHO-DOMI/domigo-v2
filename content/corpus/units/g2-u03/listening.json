@@ -21,10 +21,23 @@
           "rev": 1,
           "difficulty": 1,
           "format": "multiple-choice",
-          "prompt": { "text": "When does Mia go to the market?", "lang": "en", "blanks": 0 },
-          "answers": [{ "text": "On Saturday morning", "tier": "full" }],
+          "prompt": {
+            "text": "When does Mia go to the market?",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "On Saturday morning",
+              "tier": "full"
+            }
+          ],
           "direction": null,
-          "distractors": ["On Sunday morning", "On Friday evening", "Every afternoon"],
+          "distractors": [
+            "On Sunday morning",
+            "On Friday evening",
+            "Every afternoon"
+          ],
           "pairs": [],
           "groups": [],
           "gloss": [],
@@ -32,17 +45,46 @@
           "hintEn": null,
           "explainDe": "Mia sagt „On Saturday morning … I go to the market“.",
           "explainEn": null,
-          "strict": false
+          "strict": false,
+          "phase": "gist",
+          "cue": {
+            "type": "gist",
+            "quote": "On Saturday morning, I go to the market with my mum."
+          },
+          "trickDe": "Der erste Satz sagt dir oft, worum es geht.",
+          "distractorMeta": [
+            {
+              "whyDe": "Klingt fast wie Saturday — aber es ist ein anderer Tag.",
+              "lure": "similar-name"
+            },
+            {
+              "whyDe": "Ein Tag kommt vor, aber evening hörst du nicht."
+            },
+            {
+              "whyDe": "afternoon sagt Mia nie — sie spricht vom Morgen."
+            }
+          ]
         },
         {
           "id": "g2u03.li.market.mc.002",
           "rev": 1,
           "difficulty": 1,
           "format": "multiple-choice",
-          "prompt": { "text": "True or false? The market is next to the old church.", "lang": "en", "blanks": 0 },
-          "answers": [{ "text": "True", "tier": "full" }],
+          "prompt": {
+            "text": "True or false? The market is next to the old church.",
+            "lang": "en",
+            "blanks": 0
+          },
+          "answers": [
+            {
+              "text": "True",
+              "tier": "full"
+            }
+          ],
           "direction": null,
-          "distractors": ["False"],
+          "distractors": [
+            "False"
+          ],
           "pairs": [],
           "groups": [],
           "gloss": [],
@@ -50,17 +92,38 @@
           "hintEn": null,
           "explainDe": "„The market is in the town centre, next to the old church.“",
           "explainEn": null,
-          "strict": false
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "place-prep",
+            "quote": "The market is in the town centre, next to the old church."
+          },
+          "trickDe": "Bei Orts-Fragen: warte auf next to, in, at.",
+          "distractorMeta": [
+            {
+              "whyDe": "Du hörst church im Text — genau darum musst du prüfen, WO."
+            }
+          ]
         },
         {
           "id": "g2u03.li.market.gf.001",
           "rev": 1,
           "difficulty": 2,
           "format": "gap-fill",
-          "prompt": { "text": "The market opens at ___ o'clock.", "lang": "en", "blanks": 1 },
+          "prompt": {
+            "text": "The market opens at ___ o'clock.",
+            "lang": "en",
+            "blanks": 1
+          },
           "answers": [
-            { "text": "eight", "tier": "full" },
-            { "text": "8", "tier": "full" }
+            {
+              "text": "eight",
+              "tier": "full"
+            },
+            {
+              "text": "8",
+              "tier": "full"
+            }
           ],
           "direction": null,
           "distractors": [],
@@ -71,20 +134,36 @@
           "hintEn": null,
           "explainDe": "„The market opens at eight o'clock.“",
           "explainEn": null,
-          "strict": false
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "number-time",
+            "quote": "The market opens at eight o'clock"
+          },
+          "trickDe": "Zahlen kommen oft doppelt: opens UND closes. Höre genau, welche."
         },
         {
           "id": "g2u03.li.market.mt.001",
           "rev": 1,
           "difficulty": 2,
           "format": "matching",
-          "prompt": { "text": "Match each place to what you can get there.", "lang": "en", "blanks": 0 },
+          "prompt": {
+            "text": "Match each place to what you can get there.",
+            "lang": "en",
+            "blanks": 0
+          },
           "answers": [],
           "direction": null,
           "distractors": [],
           "pairs": [
-            { "left": "The favourite shop", "right": "cheese and bread" },
-            { "left": "The café", "right": "a hot chocolate" }
+            {
+              "left": "The favourite shop",
+              "right": "cheese and bread"
+            },
+            {
+              "left": "The café",
+              "right": "a hot chocolate"
+            }
           ],
           "groups": [],
           "gloss": [],
@@ -92,17 +171,33 @@
           "hintEn": null,
           "explainDe": "Der Lieblingsladen verkauft Käse und Brot; im Café gibt es eine heiße Schokolade.",
           "explainEn": null,
-          "strict": false
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "detail-fact",
+            "quote": "My favourite shop sells cheese and fresh bread."
+          },
+          "trickDe": "Verbinde Ort und Sache erst NACH dem zweiten Hören."
         },
         {
           "id": "g2u03.li.market.ff.001",
           "rev": 1,
           "difficulty": 2,
           "format": "free-form",
-          "prompt": { "text": "What does Mia drink after shopping?", "lang": "en", "blanks": 0 },
+          "prompt": {
+            "text": "What does Mia drink after shopping?",
+            "lang": "en",
+            "blanks": 0
+          },
           "answers": [
-            { "text": "hot chocolate", "tier": "full" },
-            { "text": "a hot chocolate", "tier": "full" }
+            {
+              "text": "hot chocolate",
+              "tier": "full"
+            },
+            {
+              "text": "a hot chocolate",
+              "tier": "full"
+            }
           ],
           "direction": null,
           "distractors": [],
@@ -113,8 +208,19 @@
           "hintEn": null,
           "explainDe": "„… we have a hot chocolate in a small café.“",
           "explainEn": null,
-          "strict": false
+          "strict": false,
+          "phase": "detail",
+          "cue": {
+            "type": "detail-fact",
+            "quote": "we have a hot chocolate in a small café"
+          },
+          "trickDe": "Nach After shopping kommt, was danach passiert."
         }
+      ],
+      "predictChips": [
+        "Jemand erzählt vom Einkaufen",
+        "Jemand erzählt von der Schule",
+        "Jemand erzählt von einem Fest"
       ]
     }
   ]
