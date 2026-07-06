@@ -15,10 +15,11 @@ import { resolveDetectiveArt, resolveNovelArt } from "@/lib/story-art";
 import GameClient from "../GameClient";
 import DetectiveClient from "../DetectiveClient";
 import NovelClient from "../NovelClient";
+import TripClient from "../TripClient";
 
 export const dynamic = "force-dynamic";
 
-const GAME_TYPE: Record<number, "overworld" | "detective" | "novel"> = { 1: "overworld", 2: "detective", 3: "novel" };
+const GAME_TYPE: Record<number, "overworld" | "detective" | "novel" | "trip"> = { 1: "overworld", 2: "detective", 3: "novel", 4: "trip" };
 
 function storyItemsFor(
   chapter: Chapter,
@@ -139,6 +140,32 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
         reviewItems={[]}
         serverSave={serverSave}
         novelArt={novelArt}
+      />
+    );
+  }
+
+  // ── G4 "Lost for Words": the stop is a story chapter rendered as one day of
+  //    the trip — the first FLAG-AWARE runtime (Choice.sets / FlagGate / flagLines
+  //    resolve against the cosmetic save's story-scoped flags) ──
+  if (gameType === "trip") {
+    const chapter = story?.chapters.find((c) => c.id.endsWith(`.${zone}`) && released.includes(c.id));
+    if (!chapter) redirect(hubHref);
+    const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
+    const unit = loadUnit(slug);
+    const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
+    // resolveNovelArt is story-art@1-generic despite the name (same manifest shape).
+    const tripArt = resolveNovelArt(storyId, grade, chapter);
+    const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-trip").TripSave } : null;
+    return (
+      <TripClient
+        gameMode={gameMode}
+        dayTitle={chapter.titleEn}
+        chapter={chapter}
+        castNames={castNames}
+        storyItems={storyItems}
+        reviewItems={[]}
+        serverSave={serverSave}
+        tripArt={tripArt}
       />
     );
   }

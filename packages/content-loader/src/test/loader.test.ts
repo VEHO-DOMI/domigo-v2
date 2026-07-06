@@ -32,7 +32,7 @@ test("loadUnit rejects a bad slug", () => {
   assert.throws(() => loadUnit("../etc"), /bad unit slug/);
 });
 
-test("listReleasedStories derives one story per grade from the corpus (g1/g2/g3 released)", () => {
+test("listReleasedStories derives one story per grade from the corpus (all four grades released)", () => {
   const stories = listReleasedStories();
   assert.deepEqual(
     stories.map((s) => [s.grade, s.storyId]),
@@ -40,12 +40,13 @@ test("listReleasedStories derives one story per grade from the corpus (g1/g2/g3 
       [1, "g1.st.lost-pages"],
       [2, "g2.st.wrong-name"],
       [3, "g3.st.fourteen"],
+      [4, "g4.st.lost-for-words"],
     ],
   );
   assert.ok(stories.every((s) => s.titleEn.length > 0), "every released story carries a display title");
 });
 
-test("storyIdForGrade resolves released grades and is null for unreleased ones (g4 until its release.json ships)", () => {
+test("storyIdForGrade resolves every released grade from the corpus (no stale hand-maps)", () => {
   assert.equal(storyIdForGrade(3), "g3.st.fourteen"); // the stale app-side map missed g3 — this is the regression guard
-  assert.equal(storyIdForGrade(4), null);
+  assert.equal(storyIdForGrade(4), "g4.st.lost-for-words"); // released with the game-trip runtime (Act 1, ch01–ch05)
 });
