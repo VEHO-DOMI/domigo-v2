@@ -11,25 +11,42 @@
       {
         "kind": "grammar",
         "titleDe": "Teil 1: Grammatik (should)",
-        "itemIds": ["g2u03.gi.should.cp.001", "g2u03.gi.should.cp.002"]
+        "itemIds": [
+          "g2u03.gi.should.cp.001",
+          "g2u03.gi.should.cp.002"
+        ]
       },
       {
         "kind": "vocab",
         "titleDe": "Teil 2: Wortschatz",
-        "itemIds": ["g2u03.w.apple-bobbing", "g2u03.w.century"]
+        "itemIds": [
+          "g2u03.w.apple-bobbing",
+          "g2u03.w.century"
+        ]
       },
       {
         "kind": "listening",
         "titleDe": "Teil 3: Hörverständnis",
-        "itemIds": ["g2u03.li.market.mc.001", "g2u03.li.market.gf.001"]
+        "itemIds": [
+          "g2u03.li.market.mc.001",
+          "g2u03.li.market.gf.001"
+        ]
       },
       {
         "kind": "reading",
         "titleDe": "Teil 4: Leseverständnis",
         "passage": "Tom is having a Halloween party on Saturday. It starts at six o'clock in the evening. Everyone must wear a costume. There will be games, music and lots of food. Tom's favourite game is apple bobbing. Please bring a small snack to share. The party is at Tom's house in Baker Street.",
         "passageGloss": [
-          { "word": "costume", "de": "Kostüm, Verkleidung", "scope": null },
-          { "word": "snack", "de": "kleiner Imbiss", "scope": null }
+          {
+            "word": "costume",
+            "de": "Kostüm, Verkleidung",
+            "scope": null
+          },
+          {
+            "word": "snack",
+            "de": "kleiner Imbiss",
+            "scope": null
+          }
         ],
         "items": [
           {
@@ -37,10 +54,23 @@
             "rev": 1,
             "difficulty": 1,
             "format": "multiple-choice",
-            "prompt": { "text": "What kind of party is Tom having?", "lang": "en", "blanks": 0 },
-            "answers": [{ "text": "A Halloween party", "tier": "full" }],
+            "prompt": {
+              "text": "What kind of party is Tom having?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "A Halloween party",
+                "tier": "full"
+              }
+            ],
             "direction": null,
-            "distractors": ["A birthday party", "A school party", "A summer party"],
+            "distractors": [
+              "A birthday party",
+              "A school party",
+              "A summer party"
+            ],
             "pairs": [],
             "groups": [],
             "gloss": [],
@@ -55,10 +85,20 @@
             "rev": 1,
             "difficulty": 2,
             "format": "gap-fill",
-            "prompt": { "text": "The party starts at ___ o'clock.", "lang": "en", "blanks": 1 },
+            "prompt": {
+              "text": "The party starts at ___ o'clock.",
+              "lang": "en",
+              "blanks": 1
+            },
             "answers": [
-              { "text": "six", "tier": "full" },
-              { "text": "6", "tier": "full" }
+              {
+                "text": "six",
+                "tier": "full"
+              },
+              {
+                "text": "6",
+                "tier": "full"
+              }
             ],
             "direction": null,
             "distractors": [],
@@ -76,10 +116,23 @@
             "rev": 1,
             "difficulty": 1,
             "format": "multiple-choice",
-            "prompt": { "text": "What must everyone wear?", "lang": "en", "blanks": 0 },
-            "answers": [{ "text": "A costume", "tier": "full" }],
+            "prompt": {
+              "text": "What must everyone wear?",
+              "lang": "en",
+              "blanks": 0
+            },
+            "answers": [
+              {
+                "text": "A costume",
+                "tier": "full"
+              }
+            ],
             "direction": null,
-            "distractors": ["A uniform", "Sports clothes", "Pyjamas"],
+            "distractors": [
+              "A uniform",
+              "Sports clothes",
+              "Pyjamas"
+            ],
             "pairs": [],
             "groups": [],
             "gloss": [],
@@ -99,7 +152,29 @@
         "taskEn": "Write a short invitation to your own party. Say when it is, where it is, and what people should bring.",
         "minWords": 20,
         "maxWords": 50,
-        "rubric": null
+        "rubric": null,
+        "checklistDe": [
+          "Steht dabei: wann und wo die Party ist?",
+          "Beginnt jeder Satz mit einem großen Buchstaben?",
+          "Hast du 20 bis 50 Wörter geschrieben?"
+        ],
+        "exemplar": {
+          "textEn": "Dear friend, please come to our Halloween evening at school! It is on Friday at six o'clock. We play apple bobbing and we eat good food. You can wear a scary costume. Please bring your friends. Your friend, Lisa",
+          "calloutsDe": [
+            {
+              "quote": "It is on Friday at six o'clock.",
+              "whyDe": "Zeit und Tag in einem Satz — das braucht jede Einladung."
+            },
+            {
+              "quote": "please come to our Halloween evening at school!",
+              "whyDe": "So lädst du freundlich ein — und sagst gleich, wo es ist."
+            },
+            {
+              "quote": "Please bring your friends.",
+              "whyDe": "Ein Bitte-Satz mit please ist höflich und klar."
+            }
+          ]
+        }
       }
     ]
   }
