@@ -23,6 +23,7 @@ import type { Grade, WordBankEntry } from "@domigo/content-schema";
 import {
   GRADES,
   GrammarStructuresFile,
+  TrapRegistry,
   UNITS_PER_GRADE,
   WordBank,
   unitIdPrefix,
@@ -37,10 +38,12 @@ import { readJsonIfExists } from "./json.ts";
 import {
   OVERLAYS_DIR,
   STRUCTURES_DIR,
+  TRAPS_PATH,
   UNITS_DIR,
   V1_GRAMMAR_SNAPSHOT_DIR,
   V1_SNAPSHOT_DIR,
 } from "./paths.ts";
+import { duFormViolation } from "./validate-listening.ts";
 import { buildWordbankReview, entryMatchesWord, loadV1Unit } from "./review-wordbank.ts";
 import { readStateLog } from "./state.ts";
 import { wordTokens } from "./tokenize.ts";
@@ -406,6 +409,29 @@ export function runValidate(): void {
     }
   }
 
+  // ---- V-TR: the trap registry (D-2) — schema-parsed + register-linted
+  let trapCount = 0;
+  {
+    const raw = readJsonIfExists<unknown>(TRAPS_PATH);
+    if (raw !== null) {
+      const parsed = TrapRegistry.safeParse(raw);
+      if (!parsed.success) {
+        errors.push(
+          `traps: V-TR — schema violation: ${parsed.error.issues[0]?.message ?? "unknown"} at ${parsed.error.issues[0]?.path.join(".") ?? "?"}`,
+        );
+      } else {
+        trapCount = parsed.data.traps.length;
+        for (const t of parsed.data.traps) {
+          if (duFormViolation(t.oneLinerDe)) errors.push(`traps: V-TR — ${t.id}: oneLinerDe breaks du-form`);
+          if (duFormViolation(t.contrast.de)) errors.push(`traps: V-TR — ${t.id}: contrast.de breaks du-form`);
+          if (t.contrast.wrong === t.contrast.right) {
+            errors.push(`traps: V-TR — ${t.id}: contrast wrong/right are identical`);
+          }
+        }
+      }
+    }
+  }
+
   for (const i of infos) console.log(`  ℹ ${i}`);
   if (errors.length > 0) {
     console.error(`content validate: ${errors.length} error(s)`);
@@ -414,6 +440,6 @@ export function runValidate(): void {
     return;
   }
   console.log(
-    `content validate: OK — ${dirs.length} units, ${seenIds.size} entries, ${approvedSlugs.size} approved${structuresCount > 0 ? `, ${structuresCount} structures` : ""}${itemUnits > 0 ? `, ${itemCount} items in ${itemUnits} unit(s)` : ""}; schemas valid, ids unique, totals match, V-A…V-F${itemUnits > 0 ? " + V-1…V-23" : ""} green.`,
+    `content validate: OK — ${dirs.length} units, ${seenIds.size} entries, ${approvedSlugs.size} approved${structuresCount > 0 ? `, ${structuresCount} structures` : ""}${itemUnits > 0 ? `, ${itemCount} items in ${itemUnits} unit(s)` : ""}${trapCount > 0 ? `, ${trapCount} traps` : ""}; schemas valid, ids unique, totals match, V-A…V-F${itemUnits > 0 ? " + V-1…V-23" : ""}${trapCount > 0 ? " + V-TR" : ""} green.`,
   );
 }

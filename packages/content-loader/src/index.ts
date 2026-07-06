@@ -11,9 +11,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { Cast, GameMap, StoryFlags, GrammarFile, GrammarStructuresFile, ListeningFile, Story, StoryComprehensionFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
+import { Cast, GameMap, StoryFlags, TrapRegistry, GrammarFile, GrammarStructuresFile, ListeningFile, Story, StoryComprehensionFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
 import type { GrammarItem, GrammarStructure, VocabItem } from "@domigo/content-schema";
-import type { Cast as CastT, GameMap as GameMapT, Story as StoryT, StoryComprehensionFile as StoryComprehensionFileT, StoryFlags as StoryFlagsT } from "@domigo/content-schema";
+import type { Cast as CastT, GameMap as GameMapT, Story as StoryT, StoryComprehensionFile as StoryComprehensionFileT, StoryFlags as StoryFlagsT, TrapRegistry as TrapRegistryT } from "@domigo/content-schema";
 
 /**
  * Repo root. The pipeline derives it from the module path (paths.ts:22), but a
@@ -149,6 +149,12 @@ export function loadStoryComprehension(storyId: string): StoryComprehensionFileT
   if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
   const raw = readJson<unknown>(path.join(STORIES_DIR, storyId, "comprehension.json"));
   return raw === null ? null : StoryComprehensionFile.parse(raw);
+}
+
+/** trap-registry@1 — the named-trap taxonomy (content/corpus/traps/traps.json). Null if absent. */
+export function loadTrapRegistry(): TrapRegistryT | null {
+  const raw = readJson<unknown>(path.join(REPO_ROOT, "content", "corpus", "traps", "traps.json"));
+  return raw === null ? null : TrapRegistry.parse(raw);
 }
 
 /** flags@1 manifest (VS-13 hygiene; runtime FlagGate/flagLines routing). Null if none. */

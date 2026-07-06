@@ -34,3 +34,6 @@ export function breaksCombo(tier: Tier): boolean {
 
 // Per-format grader (canonicalize · Levenshtein-close · partial-match · all-or-nothing).
 export * from "./grade.ts";
+
+// Wrong-answer trap classifier (trap-registry@1 ids; never changes grading).
+export * from "./classify.ts";

@@ -231,7 +231,8 @@ export function gradeGrammar(item: GrammarItem, input: GrammarInput): GradeResul
 /** Which of a vocab item's authored answer pools an exercise grades against. */
 export type VocabPool = "carrier" | "definition" | "deToEn" | "enToDe";
 
-function vocabAnswers(item: VocabItem, pool: VocabPool): TieredAnswer[] {
+/** The authored answer set a vocab pool grades against (exported for the trap classifier). */
+export function vocabAnswers(item: VocabItem, pool: VocabPool): TieredAnswer[] {
   switch (pool) {
     case "definition":
       return item.dAnswers;

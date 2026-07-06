@@ -1266,6 +1266,40 @@ export const StoryFlags = z.object({
 });
 export type StoryFlags = z.infer<typeof StoryFlags>;
 
+/** trap-registry@1 — the kid-named A1–A2 L1-interference trap taxonomy (WS-D D-2).
+ *  Names are child-facing brand assets; feedback, review grouping, the arcade and
+ *  teacher analytics all speak them. `detect: true` traps have a pure heuristic in
+ *  @domigo/engine classifyWrong; choice-format traps are authored via
+ *  distractorMeta.trapRef instead. */
+export const TrapRegistry = z
+  .object({
+    schema: z.literal("trap-registry@1"),
+    traps: z
+      .array(
+        z.object({
+          id: z.string().regex(/^[a-z0-9-]+$/),
+          nameDe: z.string().min(1),
+          icon: z.string().min(1),
+          oneLinerDe: z.string().min(1),
+          contrast: z.object({ wrong: z.string().min(1), right: z.string().min(1), de: z.string().min(1) }),
+          gradeSpan: z.tuple([z.number().int().min(1).max(4), z.number().int().min(1).max(4)]),
+          structureHints: z.array(z.string()),
+          falseFriends: z.array(z.object({ de: z.string().min(1), enFalse: z.string().min(1), enRight: z.string().min(1) })).optional(),
+          detect: z.boolean(),
+        }),
+      )
+      .min(1),
+  })
+  .superRefine((r, ctx) => {
+    const seen = new Set<string>();
+    for (const [i, t] of r.traps.entries()) {
+      if (seen.has(t.id)) ctx.addIssue({ code: "custom", path: ["traps", i, "id"], message: `duplicate trap id ${t.id}` });
+      seen.add(t.id);
+      if (t.gradeSpan[0] > t.gradeSpan[1]) ctx.addIssue({ code: "custom", path: ["traps", i, "gradeSpan"], message: "gradeSpan min > max" });
+    }
+  });
+export type TrapRegistry = z.infer<typeof TrapRegistry>;
+
 /** Narrative-locked items — FULL item schema, same id space, same grading brain. */
 export const StoryItems = z.object({
   schema: z.literal("story-items@1"),
