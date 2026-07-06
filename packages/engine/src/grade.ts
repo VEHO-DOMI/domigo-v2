@@ -14,6 +14,13 @@
  *   - anagram: exact + close (+ partial tier), no partial-match fallback.
  *   - matching / matching-pairs / group-sort: all-or-nothing.
  *   - multi-blank answers are pipe-joined ("did | go"); graded per blank.
+ *   - `strict` items grade exact-only against their authored answers: the close
+ *     tier and the partial-match fallback are OFF (authored partial-tier answers
+ *     still grade partial — strict disables fuzz, not authored intent).
+ *   - prompt-echo guard (translation / transformation / error-correction /
+ *     question-formation): retyping the prompt is never credit — compared via
+ *     `canonicalEcho` (case + apostrophes preserved) so apostrophe/case-error
+ *     items stay solvable while the echo itself grades wrong.
  */
 import type { GrammarItem, TieredAnswer, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "./index.ts";
@@ -27,6 +34,23 @@ export function canonical(s: string): string {
     .normalize("NFC")
     .toLowerCase()
     .replace(/['’`.,!?;:"“”()\[\]]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Prompt-echo form: like `canonical` but KEEPS case and apostrophes (typographic
+ * ’/` normalized to ASCII '). The distinction is load-bearing: 8 corpus
+ * error-correction items differ from their prompt ONLY by an apostrophe or a
+ * capital letter ("it's" → "its", "two Desks" → "two desks") — under `canonical`
+ * the wrong sentence and the fix collapse to the same string, so the echo test
+ * must not erase them.
+ */
+export function canonicalEcho(s: string): string {
+  return s
+    .normalize("NFC")
+    .replace(/[’`]/g, "'")
+    .replace(/[.,!?;:"“”()\[\]]/g, "")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -85,14 +109,23 @@ interface TextOpts {
   ratio: number;
   partialTier: boolean;
   partialFallback: boolean;
+  /** Exact-only grading: disables the close tier + partial-match fallback (authored answers untouched). */
+  strict?: boolean;
+  /** When set, an input that echoes this text (via canonicalEcho) grades wrong before any matching. */
+  echoGuard?: string;
 }
 
 function gradeText(input: string, answers: TieredAnswer[], opts: TextOpts): Tier {
   if (canonical(input) === "") return "wrong";
+  // Prompt-echo guard: retyping the prompt never demonstrates the transformation
+  // the format asks for — and must never reach the close/fallback paths (a
+  // retyped error-correction prompt used to earn partial credit that way).
+  if (opts.echoGuard !== undefined && canonicalEcho(input) === canonicalEcho(opts.echoGuard)) return "wrong";
   const fulls = answers.filter((a) => a.tier === "full");
   const partials = answers.filter((a) => a.tier === "partial");
   if (fulls.some((a) => exactMatch(input, a.text))) return "correct";
   if (opts.partialTier && partials.some((a) => exactMatch(input, a.text))) return "partial";
+  if (opts.strict) return "wrong";
   if (fulls.some((a) => closeMatch(input, a.text, opts.ratio))) return "close";
   if (opts.partialFallback && fulls.some((a) => partialContains(input, a.text))) return "partial";
   return "wrong";
@@ -139,7 +172,13 @@ const PARTIAL_FALLBACK_FORMATS = new Set([
   "free-form",
 ]);
 
+// Formats where the prompt is the SOURCE the student must transform — echoing it
+// back is never credit. (Gap-fill prompts contain blanks and can't echo; the
+// sentence-building prompt is a slash-separated chip list and fails exact anyway.)
+const ECHO_GUARD_FORMATS = new Set(["translation", "transformation", "error-correction", "question-formation"]);
+
 export function gradeGrammar(item: GrammarItem, input: GrammarInput): GradeResult {
+  const strict = item.strict === true;
   switch (item.format) {
     case "multiple-choice":
     case "context-picker":
@@ -157,6 +196,7 @@ export function gradeGrammar(item: GrammarItem, input: GrammarInput): GradeResul
                 ratio: GRAMMAR_RATIO,
                 partialTier: false,
                 partialFallback: false,
+                strict,
               })
             : "wrong",
       };
@@ -168,6 +208,7 @@ export function gradeGrammar(item: GrammarItem, input: GrammarInput): GradeResul
                 ratio: GRAMMAR_RATIO,
                 partialTier: true,
                 partialFallback: false,
+                strict,
               })
             : "wrong",
       };
@@ -179,16 +220,40 @@ export function gradeGrammar(item: GrammarItem, input: GrammarInput): GradeResul
                 ratio: GRAMMAR_RATIO,
                 partialTier: true,
                 partialFallback: PARTIAL_FALLBACK_FORMATS.has(item.format),
+                strict,
+                echoGuard: ECHO_GUARD_FORMATS.has(item.format) ? item.prompt?.text : undefined,
               })
             : "wrong",
       };
   }
 }
 
-/** Vocab trainer: the user fills the carrier blank; graded vs sAnswers. */
-export function gradeVocab(item: VocabItem, input: string): GradeResult {
+/** Which of a vocab item's authored answer pools an exercise grades against. */
+export type VocabPool = "carrier" | "definition" | "deToEn" | "enToDe";
+
+function vocabAnswers(item: VocabItem, pool: VocabPool): TieredAnswer[] {
+  switch (pool) {
+    case "definition":
+      return item.dAnswers;
+    case "deToEn":
+      return item.translation.deToEn;
+    case "enToDe":
+      return item.translation.enToDe;
+    default:
+      return item.sAnswers;
+  }
+}
+
+/**
+ * Vocab trainer: graded against the pool the exercise actually asked for —
+ * carrier gap-fill (default, today's only live mode), definition, or a
+ * DIRECTION-AWARE translation pool. Callers must pass the pool matching their
+ * prompt direction; pooling both directions is how a student could "translate"
+ * German with German.
+ */
+export function gradeVocab(item: VocabItem, input: string, pool: VocabPool = "carrier"): GradeResult {
   return {
-    tier: gradeText(input, item.sAnswers, {
+    tier: gradeText(input, vocabAnswers(item, pool), {
       ratio: VOCAB_RATIO,
       partialTier: true,
       partialFallback: true,

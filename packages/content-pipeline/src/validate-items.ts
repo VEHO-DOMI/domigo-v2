@@ -1,5 +1,5 @@
 /**
- * Stage 7 — deterministic item validators V-1…V-22, wired into
+ * Stage 7 — deterministic item validators V-1…V-23, wired into
  * `content validate` (CI) for every unit that has item artifacts.
  *
  *  V-1  vocab@1/grammar@1 schema validity (incl. all schema refinements)
@@ -28,6 +28,9 @@
  *  V-22 gate integrity (state-hash drift, verify freshness, review-flag
  *       completeness, review-doc byte-regen, item-fixes landed, harvest
  *       drift, grant orphans)
+ *  V-23 translation answer-pool consistency (PER-ANSWER, direction-aware —
+ *       V-10 checks the concatenated pool, which dilutes one stray
+ *       wrong-language answer)
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -414,6 +417,29 @@ export function translationSanity(slug: string, items: UnitItems): { errors: str
     }
     checkSide(it.id, "prompt", it.prompt.text, promptWant);
     checkSide(it.id, "answers", fullsAndPartials(it.answers), answersWant);
+  }
+  // V-23 — per-answer pool consistency. V-10 checks the CONCATENATED answer pool,
+  // which dilutes a single wrong-language answer inside an otherwise-correct pool;
+  // one such stray answer lets a student "translate" the source language with
+  // itself (the engine grades against the whole pool, direction-blind).
+  const checkEach = (itemId: string, label: string, answers: TieredAnswerT[], want: "de" | "en"): void => {
+    for (const a of answers) {
+      if (a.tier !== "full") continue;
+      const ev = langEvidence(a.text);
+      const right = want === "de" ? ev.de : ev.en;
+      const wrong = want === "de" ? ev.en : ev.de;
+      if (right === 0 && wrong >= 2) {
+        errors.push(`${slug}: V-23 — ${itemId}: ${label} answer ${JSON.stringify(a.text.slice(0, 60))} reads like ${want === "de" ? "English" : "German"} in a ${want.toUpperCase()} pool`);
+      }
+    }
+  };
+  for (const it of items.vocab) {
+    checkEach(it.id, "translation.enToDe", it.translation.enToDe, "de");
+    checkEach(it.id, "translation.deToEn", it.translation.deToEn, "en");
+  }
+  for (const it of items.grammar) {
+    if (it.format !== "translation") continue;
+    checkEach(it.id, "answers", it.answers, it.direction === "deToEn" ? "en" : "de");
   }
   return { errors, warns };
 }
