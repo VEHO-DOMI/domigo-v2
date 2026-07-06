@@ -48,6 +48,100 @@
       "explainDe": "Der Ring ist etwas Altes für Katies Hochzeit — Nans Mutter hat ihn getragen, und davor ihre Mutter.",
       "explainEn": null,
       "strict": false
+    },
+    {
+      "id": "g4u02.ci.crime-scene.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "What does Callum call the kitchen?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A crime scene.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "A podcast room.",
+        "The best room.",
+        "Nan's room."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "crime scene",
+          "de": "Tatort",
+          "scope": null
+        },
+        {
+          "word": "podcast",
+          "de": "Podcast",
+          "scope": null
+        }
+      ],
+      "hintDe": "Denk an Callums großen Auftritt am Morgen.",
+      "hintEn": null,
+      "explainDe": "Callum ruft: „This is a crime scene now!“ — er spielt seinen Podcast nach.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.ci.what-lewis-said.mc.001",
+      "rev": 1,
+      "difficulty": 3,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "What did Lewis really say?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That Niko was holding the ring.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "That Niko took the ring.",
+        "That the ring was his.",
+        "Nothing about the ring."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "ring",
+          "de": "Ring",
+          "scope": null
+        },
+        {
+          "word": "holding",
+          "de": "in der Hand halten",
+          "scope": null
+        },
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": null
+        },
+        {
+          "word": "took",
+          "de": "genommen (hat)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Genau hinschauen: holding ist nicht dasselbe wie took.",
+      "hintEn": null,
+      "explainDe": "Lewis hat nur gesagt, dass Niko den Ring in der Hand hatte. Das Wort „took“ kam erst später dazu — von jemand anderem.",
+      "explainEn": null,
+      "strict": false
     }
   ]
 }
