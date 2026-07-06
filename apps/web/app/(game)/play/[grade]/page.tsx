@@ -6,7 +6,7 @@
  */
 /* eslint-disable @next/next/no-img-element -- decorative ligne-claire banners served from synced public/art assets; next/image adds no value for these */
 import { redirect } from "next/navigation";
-import { loadGameMap, loadReleasedChapters, loadStory } from "@domigo/content-loader";
+import { loadGameMap, loadReleasedChapters, loadStory, storyIdForGrade } from "@domigo/content-loader";
 import { getDb, getSolvedGameItemIds } from "@domigo/db";
 import { EvidenceGallery, EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
@@ -16,8 +16,6 @@ import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 
 export const dynamic = "force-dynamic";
 
-const STORY_BY_GRADE: Record<number, string> = { 1: "g1.st.lost-pages", 2: "g2.st.wrong-name", 3: "g3.st.fourteen" };
-
 export default async function HubPage({ params }: { params: Promise<{ grade: string }> }) {
   const { grade: gradeStr } = await params;
   const grade = Number(gradeStr);
@@ -26,7 +24,8 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
 
-  const storyId = STORY_BY_GRADE[grade];
+  // One released story per grade, derived from the corpus (no stale hand-maintained maps).
+  const storyId = storyIdForGrade(grade);
   const map = storyId ? loadGameMap(storyId) : null;
   const story = storyId ? loadStory(storyId) : null;
   const released = storyId ? loadReleasedChapters(storyId) : [];

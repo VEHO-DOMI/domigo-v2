@@ -21,3 +21,6 @@ next-env.d.ts
 
 # NOTE: content/ (corpus, transcripts, dist artifacts) is COMMITTED by design —
 # CI validates artifacts without needing iCloud sources. Do not ignore it.
+
+# local Claude Code session tooling (launch configs etc.) — never repo state
+.claude/

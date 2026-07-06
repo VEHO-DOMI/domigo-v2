@@ -194,6 +194,48 @@ export function loadStoryArt(storyId: string): StoryArt | null {
   return readJson<StoryArt>(path.join(STORIES_DIR, storyId, "art.json"));
 }
 
+/** A released story (release.json with ≥1 chapter), with its grade + display title. */
+export interface ReleasedStory {
+  storyId: string;
+  grade: number;
+  titleEn: string;
+}
+
+// Cached at module scope: the corpus is immutable at deploy time, and the grade→story
+// map sits on the attempts hot path (a fresh 3×Story.parse per POST would be waste).
+let releasedStoriesCache: ReleasedStory[] | null = null;
+
+/**
+ * The released stories, one per grade (the Track-C invariant), sorted by grade.
+ * DERIVED from the corpus so a new grade's story registers itself everywhere
+ * (home tile, /play chooser, admin mastery, attempt grading) the moment its
+ * release.json ships — no hand-maintained grade→story maps in the app (a stale
+ * copy of one is what 400'd every g3 `.ci.` attempt). Throws if a grade ever has
+ * two released stories: the invariant must break loudly, not by picking one.
+ */
+export function listReleasedStories(): ReleasedStory[] {
+  if (releasedStoriesCache) return releasedStoriesCache;
+  if (!fs.existsSync(STORIES_DIR)) return [];
+  const out: ReleasedStory[] = [];
+  const ids = fs.readdirSync(STORIES_DIR).filter((n) => STORY_ID.test(n)).sort();
+  for (const id of ids) {
+    if (loadReleasedChapters(id).length === 0) continue;
+    const story = loadStory(id);
+    if (!story) continue;
+    const dup = out.find((s) => s.grade === story.grade);
+    if (dup) throw new Error(`content-loader: two released stories for grade ${story.grade} ("${dup.storyId}", "${id}")`);
+    out.push({ storyId: id, grade: story.grade, titleEn: story.title.en });
+  }
+  out.sort((a, b) => a.grade - b.grade);
+  releasedStoriesCache = out;
+  return out;
+}
+
+/** The released story id for a grade; null while that grade's game is unreleased. */
+export function storyIdForGrade(grade: number): string | null {
+  return listReleasedStories().find((s) => s.grade === grade)?.storyId ?? null;
+}
+
 /** Unit slugs that have a test.json (the mock-test "approval" signal), sorted. */
 export function listTestUnits(): string[] {
   if (!fs.existsSync(UNITS_DIR)) return [];
