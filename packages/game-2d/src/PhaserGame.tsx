@@ -12,7 +12,7 @@ import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-sch
 import type { Tier } from "@domigo/engine";
 import type { ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
-import { OverworldScene, type OverworldState } from "./OverworldScene.ts";
+import { OverworldScene, type OverworldState, type PadState } from "./OverworldScene.ts";
 
 /** Cosmetic save state persisted by the app (position + cleared node positions). */
 export type GameSaveState = OverworldState;
@@ -135,6 +135,65 @@ function DialogueOverlay({ chapter, castNames, storyItems, onAttempt, onClose }:
   );
 }
 
+/**
+ * Floating d-pad for coarse-pointer devices (A1-1) — G1's phones had NO way to
+ * move until this. Buttons write into the SHARED PadState the scene reads in
+ * its one axis expression, so touch behaves exactly like holding a key.
+ * ≥48px targets; press states cover multi-touch, pointer-leave and cancel.
+ */
+function DPad({ pad }: { pad: PadState }) {
+  const [, force] = useState(0);
+  const btn = (dir: keyof PadState, label: string, glyph: string, grid: CSSProperties): ReturnType<typeof DPadButton> => (
+    <DPadButton pad={pad} dir={dir} label={label} glyph={glyph} style={grid} onChange={() => force((n) => n + 1)} />
+  );
+  return (
+    <div
+      aria-label="Move"
+      role="group"
+      style={{
+        position: "absolute", left: 10, bottom: 10, zIndex: 5,
+        display: "grid", gridTemplateColumns: "48px 48px 48px", gridTemplateRows: "48px 48px 48px",
+        gap: 2, opacity: 0.82, touchAction: "none", userSelect: "none",
+      }}
+    >
+      {btn("up", "Move up", "▲", { gridColumn: 2, gridRow: 1 })}
+      {btn("left", "Move left", "◀", { gridColumn: 1, gridRow: 2 })}
+      {btn("right", "Move right", "▶", { gridColumn: 3, gridRow: 2 })}
+      {btn("down", "Move down", "▼", { gridColumn: 2, gridRow: 3 })}
+    </div>
+  );
+}
+
+function DPadButton({ pad, dir, label, glyph, style, onChange }: {
+  pad: PadState; dir: keyof PadState; label: string; glyph: string; style: CSSProperties; onChange: () => void;
+}) {
+  const set = (v: boolean) => { if (pad[dir] !== v) { pad[dir] = v; onChange(); } };
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      aria-pressed={pad[dir]}
+      onPointerDown={(e) => {
+        e.preventDefault();
+        set(true);
+        // capture so a finger sliding off still delivers pointerup here; best-effort
+        try { e.currentTarget.setPointerCapture(e.pointerId); } catch { /* synthetic/stale pointer */ }
+      }}
+      onPointerUp={() => set(false)}
+      onPointerCancel={() => set(false)}
+      onPointerLeave={() => set(false)}
+      onContextMenu={(e) => e.preventDefault()}
+      style={{
+        ...style, width: 48, height: 48, borderRadius: 12, border: "1px solid rgba(255,255,255,0.35)",
+        background: pad[dir] ? "rgba(255,255,255,0.45)" : "rgba(15,23,42,0.45)",
+        color: "#fff", fontSize: 18, lineHeight: 1, cursor: "pointer", touchAction: "none",
+      }}
+    >
+      {glyph}
+    </button>
+  );
+}
+
 /** Inline task inside dialogue (no extra overlay chrome). */
 function TaskCardInline({ item, onAttempt, onDone }: { item: ResolvedItem; onAttempt: AttemptFn; onDone: () => void }) {
   const [answered, setAnswered] = useState(false);
@@ -153,6 +212,19 @@ export function PhaserGame(props: PhaserGameProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<OverworldScene | null>(null);
   const [overlay, setOverlay] = useState<Overlay>(null);
+  // Shared with the scene: the d-pad writes, update() reads (one axis expression).
+  const padRef = useRef<PadState>({ up: false, down: false, left: false, right: false });
+  const [coarse, setCoarse] = useState(false);
+
+  useEffect(() => {
+    // `?dpad=1` forces the pad on for playtesting (the `?motion=reduce` pattern).
+    const forced = new URLSearchParams(window.location.search).has("dpad");
+    const mq = window.matchMedia("(pointer: coarse)");
+    setCoarse(forced || mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setCoarse(forced || e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     const { width, height } = OverworldScene.dimensions();
@@ -165,6 +237,7 @@ export function PhaserGame(props: PhaserGameProps) {
       onNpc: () => setOverlay({ kind: "dialogue" }),
       initial: props.initialSave ?? null,
       onState: (s) => props.onSave?.(s),
+      pad: padRef.current,
     });
     sceneRef.current = scene;
     const game = new Phaser.Game({
@@ -178,7 +251,21 @@ export function PhaserGame(props: PhaserGameProps) {
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
       scene,
     });
-    return () => game.destroy(true);
+    // Non-prod machine-playtest harness: `tap` calls the EXACT pointer code path;
+    // `state` is a read-only snapshot. Setters are permanently out of scope —
+    // the harness can drive input, never rewrite the world.
+    if (process.env.NODE_ENV !== "production") {
+      (window as unknown as Record<string, unknown>)["__domigo"] = {
+        tap: (wx: number, wy: number) => scene.tapAt(wx, wy),
+        state: () => scene.debugState(),
+      };
+    }
+    return () => {
+      if (process.env.NODE_ENV !== "production") {
+        delete (window as unknown as Record<string, unknown>)["__domigo"];
+      }
+      game.destroy(true);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -187,8 +274,13 @@ export function PhaserGame(props: PhaserGameProps) {
 
   return (
     <div style={{ position: "relative", width: "100%", maxWidth: 720, margin: "0 auto" }}>
-      <div ref={hostRef} data-testid="game-canvas" style={{ width: "100%", aspectRatio: "15 / 11", background: "#1e293b", borderRadius: 8, overflow: "hidden" }} />
-      <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", marginTop: 6 }}>Arrow keys / WASD to move · walk into a ✦ to practise · talk to Finn</p>
+      <div style={{ position: "relative" }}>
+        <div ref={hostRef} data-testid="game-canvas" style={{ width: "100%", aspectRatio: "15 / 11", background: "#1e293b", borderRadius: 8, overflow: "hidden" }} />
+        {coarse && overlay === null && <DPad pad={padRef.current} />}
+      </div>
+      <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", marginTop: 6 }}>
+        {coarse ? "Tap where you want to go" : "Tap or use arrow keys / WASD"} · walk into a ✦ to practise · talk to Finn
+      </p>
 
       {overlay?.kind === "encounter" && props.encounters[overlay.idx] && (
         <div style={card}>
