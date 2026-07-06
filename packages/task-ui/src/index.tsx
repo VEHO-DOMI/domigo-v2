@@ -9,18 +9,40 @@
  * multiple-choice option buttons (.dg-mc-option, correct/wrong tint). Colours come
  * from CSS vars so the accent themes per grade — presentation only, no logic change.
  */
-import { useEffect, useId, useMemo, useRef, useState } from "react";
-import type { CSSProperties } from "react";
+import { createContext, useContext, useEffect, useId, useMemo, useRef, useState } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { AudioRef, GrammarItem, GrammarStructure, Gloss, ListeningTask, VocabItem, WordBank } from "@domigo/content-schema";
-import type { GrammarInput, Tier } from "@domigo/engine";
-import { breaksCombo, gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
+import type { ClassifiableItem, GrammarInput, Tier } from "@domigo/engine";
+import { breaksCombo, classifyWrong, gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
+import { diffWords, playTier } from "@domigo/game-feel";
 
+/** The D-1 verdict register (docs/handover/14_feedback_register.md, G-D gate):
+ *  fixed words, never randomized; wrong = a calm dark pill, never red — failure
+ *  changes pace, not tone (Law 3). */
 const TIER_STYLE: Record<Tier, { bg: string; label: string }> = {
-  correct: { bg: "var(--correct)", label: "Correct" },
-  partial: { bg: "var(--partial)", label: "Partial" },
-  close: { bg: "var(--accent)", label: "Close" },
-  wrong: { bg: "var(--incorrect)", label: "Try again" },
+  correct: { bg: "var(--correct)", label: "Stark!" },
+  partial: { bg: "var(--partial)", label: "Fast!" },
+  close: { bg: "var(--accent)", label: "Knapp!" },
+  wrong: { bg: "var(--ink)", label: "Schau her:" },
 };
+
+// ---- the trap registry context (D-2 → D-1) --------------------------------
+
+/** Student-facing slice of one trap-registry@1 entry (nameDe/icon/oneLinerDe). */
+export interface TrapInfo {
+  nameDe: string;
+  icon: string;
+  oneLinerDe: string;
+}
+export type TrapMap = Record<string, TrapInfo>;
+
+const TrapContext = createContext<TrapMap>({});
+
+/** Mounted once (root layout) with the server-loaded trap registry so every
+ *  task surface can name the kind-of-wrong. Absent provider = no trap lines. */
+export function TrapProvider({ traps, children }: { traps: TrapMap; children: ReactNode }) {
+  return <TrapContext.Provider value={traps}>{children}</TrapContext.Provider>;
+}
 
 function hash(s: string): number {
   let h = 2166136261;
@@ -78,6 +100,78 @@ function FeedbackBar({ tier, xp, hideXp }: { tier: Tier; xp: number; hideXp?: bo
       </span>
       {!hideXp && <span style={{ color: "var(--text-secondary)", fontSize: 14, fontWeight: 600 }}>+{xp} XP</span>}
       {!hideXp && breaksCombo(tier) && <span style={{ color: "var(--muted)", fontSize: 13 }}>· combo reset</span>}
+    </div>
+  );
+}
+
+/** The correct answer with the changed parts made visible against the student's
+ *  input (D-1 "Check" moment): their words struck through softly, the correct
+ *  words bold — the explicit contrast, computed, never authored. */
+function AnswerDiff({ input, answer }: { input: string; answer: string }) {
+  const toks = diffWords(input, answer);
+  // A diff that keeps nothing in common teaches nothing — show the answer plain.
+  if (!toks.some((t) => t.type === "same")) {
+    return <div style={{ fontSize: 15, color: "var(--text)" }}>Answer: <strong>{answer}</strong></div>;
+  }
+  return (
+    <div style={{ fontSize: 15, color: "var(--text)", lineHeight: 1.6 }}>
+      {toks.map((t, i) => {
+        if (t.type === "del") {
+          return <span key={i} style={{ textDecoration: "line-through", color: "var(--muted)", marginRight: 5 }}>{t.text}</span>;
+        }
+        if (t.type === "ins") {
+          return <strong key={i} style={{ background: "var(--accent-soft)", borderRadius: 4, padding: "0 3px", marginRight: 5 }}>{t.text}</strong>;
+        }
+        return <span key={i} style={{ marginRight: 5 }}>{t.text}</span>;
+      })}
+    </div>
+  );
+}
+
+/**
+ * The D-1 Feedback Card — the fixed post-answer moment (~one breath to consume):
+ * verdict word → the correction as a computed diff → the trap named in kid-German
+ * (when `classifyWrong` is confident) → the re-encounter promise. One tier chime
+ * fires through @domigo/game-feel (opt-in, default OFF — silent in class).
+ * Decoration never gates content: everything renders frame 0.
+ */
+function FeedbackCard({ tier, xp, hideXp, item, input, correct, others, explainDe }: {
+  tier: Tier;
+  xp: number;
+  hideXp?: boolean;
+  /** answers view for the trap classifier (grammar item / vocab carrier pool) */
+  item: ClassifiableItem;
+  /** the student's typed text, null for choice/matching/sort inputs */
+  input: string | null;
+  /** the first full answer (diff target) */
+  correct: string;
+  /** remaining accepted answers, shown after the diff */
+  others?: string[];
+  explainDe?: string | null;
+}) {
+  const traps = useContext(TrapContext);
+  useEffect(() => { playTier(tier); }, [tier]);
+  const trapId = tier === "wrong" && input !== null && input.trim() !== "" ? classifyWrong(item, input) : null;
+  const trap = trapId !== null ? traps[trapId] : undefined;
+  const showDiff = tier !== "correct" && correct !== "" && input !== null && input.trim() !== "";
+  return (
+    <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      <FeedbackBar tier={tier} xp={xp} hideXp={hideXp} />
+      {showDiff && <AnswerDiff input={input} answer={correct} />}
+      {tier !== "correct" && !showDiff && correct !== "" && (
+        <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>Answer: <strong>{correct}</strong></div>
+      )}
+      {tier !== "correct" && others !== undefined && others.length > 0 && (
+        <div style={{ fontSize: 13, color: "var(--muted)" }}>auch richtig: {others.join("  /  ")}</div>
+      )}
+      {trap && (
+        <div style={{ fontSize: 14, color: "var(--text)", background: "var(--bg-sunken)", border: "1px solid var(--card-border)", borderRadius: 10, padding: "7px 11px" }}>
+          <span aria-hidden="true" style={{ marginRight: 6 }}>{trap.icon}</span>
+          <strong>{trap.nameDe}</strong> — {trap.oneLinerDe}
+        </div>
+      )}
+      {tier === "wrong" && <div style={{ fontSize: 13, color: "var(--accent-deep)", fontWeight: 600 }}>Das kommt gleich nochmal!</div>}
+      {explainDe && <div style={{ fontSize: 13, color: "var(--muted)" }}>{explainDe}</div>}
     </div>
   );
 }
@@ -257,12 +351,13 @@ function useRetryGrading(
   return { tier, wrongCount, done, retrying, submit };
 }
 
-/** Intermediate-wrong feedback shown before the task locks: a gentle "try again"
- *  (announced for screen readers), with the German Tipp surfaced from the 2nd try. */
+/** Intermediate-wrong feedback shown before the task locks: a calm retry nudge
+ *  in the du-form register (never red, never "Falsch" — Law 3 as tone), with the
+ *  German Tipp surfaced from the 2nd try. */
 function RetryNudge({ wrongCount, hintDe }: { wrongCount: number; hintDe: string }) {
   return (
     <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-      <span style={{ color: "var(--incorrect)", fontWeight: 700, fontSize: 14 }}>Not quite — try again.</span>
+      <span style={{ color: "var(--ink-soft)", fontWeight: 700, fontSize: 14 }}>↻ Noch nicht — versuch es gleich nochmal.</span>
       {wrongCount >= 2 && hintDe && (
         <div style={{ fontSize: 13, color: "#92400e", background: "#fef3c7", borderRadius: 8, padding: "6px 10px" }}>💡 {hintDe}</div>
       )}
@@ -303,7 +398,7 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp }:
   const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult);
 
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
-  const correctText = fullAnswers.join("  /  ");
+  const isText = TEXT_FORMATS.has(item.format);
 
   return (
     <div style={card} role="group" aria-labelledby={promptId}>
@@ -312,19 +407,22 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp }:
       {isChoice && <Choices options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} corrects={fullAnswers} />}
       {isMatch && <Dropdowns rows={item.pairs.map((p) => p.left)} options={matchRights} value={map} onChange={setMap} disabled={done} />}
       {isGroup && <Dropdowns rows={sortMembers} options={groupLabels} value={map} onChange={setMap} disabled={done} />}
-      {TEXT_FORMATS.has(item.format) && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} onEnter={submit} autoFocusFirst={autoFocus} />}
+      {isText && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} onEnter={submit} autoFocusFirst={autoFocus} />}
       <GlossRow gloss={item.gloss} />
       {!hideHint && <HintRow hintDe={item.hintDe} />}
       {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
       {retrying && <RetryNudge wrongCount={wrongCount} hintDe={item.hintDe} />}
       {done && tier && (
-        <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          <FeedbackBar tier={tier} xp={xp} hideXp={hideXp} />
-          {tier !== "correct" && correctText && (
-            <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>Answer: <strong>{correctText}</strong></div>
-          )}
-          {item.explainDe && <div style={{ fontSize: 13, color: "var(--muted)" }}>{item.explainDe}</div>}
-        </div>
+        <FeedbackCard
+          tier={tier}
+          xp={xp}
+          hideXp={hideXp}
+          item={item}
+          input={isText ? text.join(" | ") : null}
+          correct={fullAnswers[0] ?? ""}
+          others={fullAnswers.slice(1)}
+          explainDe={item.explainDe}
+        />
       )}
     </div>
   );
@@ -343,7 +441,7 @@ export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp }: {
   const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult);
   useEffect(() => { if (autoFocus && !done) inputRef.current?.focus(); }, [autoFocus, done, wrongCount]);
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
-  const answer = item.sAnswers.filter((a) => a.tier === "full").map((a) => a.text).join("  /  ");
+  const fullAnswers = item.sAnswers.filter((a) => a.tier === "full").map((a) => a.text);
   return (
     <div style={card} role="group" aria-labelledby={promptId}>
       <div style={metaLabel}>vocab · level {item.difficulty}</div>
@@ -355,12 +453,20 @@ export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp }: {
       {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
       {retrying && <RetryNudge wrongCount={wrongCount} hintDe={item.hintDe} />}
       {done && tier && (
-        <div role="status" aria-live="polite" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          <FeedbackBar tier={tier} xp={xp} hideXp={hideXp} />
+        <>
+          <FeedbackCard
+            tier={tier}
+            xp={xp}
+            hideXp={hideXp}
+            item={{ answers: item.sAnswers }}
+            input={value}
+            correct={fullAnswers[0] ?? ""}
+            others={fullAnswers.slice(1)}
+          />
           <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>
-            {item.w} — <strong>{item.g}</strong>{tier !== "correct" && answer ? ` · answer: ${answer}` : ""}
+            {item.w} — <strong>{item.g}</strong>
           </div>
-        </div>
+        </>
       )}
     </div>
   );

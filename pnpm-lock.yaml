@@ -349,6 +349,9 @@ importers:
       '@domigo/engine':
         specifier: workspace:*
         version: link:../engine
+      '@domigo/game-feel':
+        specifier: workspace:*
+        version: link:../game-feel
       react:
         specifier: ^19
         version: 19.2.4
