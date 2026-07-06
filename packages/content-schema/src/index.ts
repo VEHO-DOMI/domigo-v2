@@ -1030,13 +1030,30 @@ export const StoryComprehensionRef = z
   .regex(/^g[1-4]u\d{2}\.ci\.[a-z0-9-]+\.(?:gf|mc|cp|tr|ec|tf|qf|ff|sb|mt|ag|gs|mp)\.\d{3}$/);
 
 /** A narrative branch option. Choices are never graded (no fake choices). */
+/** Narrative flag id: `w04.said` — chapter-scoped consequence state (flags@1). */
+export const FlagId = z.string().regex(/^w\d{2}\.[a-z0-9-]+$/);
+
 export const Choice = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/), // scene-local
   textEn: z.string().min(1),
   scaffoldDe: z.string().nullable(),
   next: SceneId,
+  /** Flags this choice sets (persisted in the cosmetic save; VS-13 enforces that
+   *  every set flag is declared and consumed — a choice that changes nothing
+   *  fails CI). Flags gate flavor and scene selection, never items/XP (Law 2). */
+  sets: z.array(FlagId).optional(),
 });
 export type Choice = z.infer<typeof Choice>;
+
+/** Flag-conditioned routing: `then` when the flag is set, `else` otherwise.
+ *  The else-path is the authored NEUTRAL default (wiped-save doctrine). */
+export const FlagGate = z.object({
+  kind: z.literal("flag"),
+  flag: FlagId,
+  then: SceneId,
+  else: SceneId,
+});
+export type FlagGate = z.infer<typeof FlagGate>;
 
 export const TaskSlot = z.object({
   /** Scene-local slot key. */
@@ -1061,7 +1078,19 @@ export const Scene = z.object({
   audio: AudioRef.nullable(), // reserved
   taskSlots: z.array(TaskSlot),
   /** Linear next scene, a branch (≥2 choices), or null = chapter end. */
-  next: z.union([SceneId, z.array(Choice).min(2), z.null()]),
+  next: z.union([SceneId, z.array(Choice).min(2), FlagGate, z.null()]),
+  /** Flag-keyed line overrides (choice callbacks). Full VS-2/VS-3/VS-7 line
+   *  checks apply — no student-facing string ever escapes to code. */
+  flagLines: z
+    .array(
+      z.object({
+        flag: FlagId,
+        textEn: z.string().min(1),
+        scaffoldDe: z.string().nullable(),
+        glosses: z.array(Gloss),
+      }),
+    )
+    .optional(),
 });
 export type Scene = z.infer<typeof Scene>;
 
@@ -1218,6 +1247,24 @@ export const StoryNames = z.object({
   ),
 });
 export type StoryNames = z.infer<typeof StoryNames>;
+
+/** flags@1 — the story's declared narrative flags (VS-13 hygiene manifest). */
+export const StoryFlags = z.object({
+  schema: z.literal("flags@1"),
+  storyId: StoryId,
+  flags: z
+    .array(
+      z.object({
+        id: FlagId,
+        label: z.string().min(1),
+        setIn: ChapterId,
+        /** Major flags select endings (VS-15 evaluates ending coverage per combination once endings exist). */
+        major: z.boolean(),
+      }),
+    )
+    .min(1),
+});
+export type StoryFlags = z.infer<typeof StoryFlags>;
 
 /** Narrative-locked items — FULL item schema, same id space, same grading brain. */
 export const StoryItems = z.object({

@@ -1,0 +1,18 @@
+{
+  "schema": "flags@1",
+  "storyId": "g4.st.lost-for-words",
+  "flags": [
+    {
+      "id": "w04.said",
+      "label": "Told Ms Blake everything, exactly",
+      "setIn": "g4.st.lost-for-words.ch04",
+      "major": false
+    },
+    {
+      "id": "w04.vague",
+      "label": "Kept the answer short",
+      "setIn": "g4.st.lost-for-words.ch04",
+      "major": false
+    }
+  ]
+}
