@@ -364,3 +364,82 @@ body {
 .lvl-pill--bold.zone-gold     { background: linear-gradient(135deg, #f0c040, #a67c2e); color: #412402; }
 .lvl-pill--bold.zone-diamond  { background: linear-gradient(135deg, #b8a9f0, #6e5cbf); }
 .lvl-pill--bold.zone-prestige { background: linear-gradient(135deg, #a855f7, #6366f1); }
+
+/* ── @domigo/game-feel (ALIVE-0) ─────────────────────────────────────────────
+   Celebration/transition keyframes consumed by the juice kit. Two kill-switch
+   belts: the OS media query below AND the kit's JS gate (motionOK) — either
+   alone silences every dgf-* animation. Wrong answers have NO keyframe here by
+   design (no shake, no flash — Law 3 as tone). */
+
+@keyframes dgf-pop-in {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes dgf-sweep {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+@keyframes dgf-fall {
+  0% { transform: translateY(-4px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(72px) rotate(var(--dgf-rot, 180deg)); opacity: 0; }
+}
+@keyframes dgf-fade-up {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes dgf-stamp {
+  0% { transform: scale(1.6) rotate(-8deg); opacity: 0; }
+  60% { transform: scale(0.95) rotate(-3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-3deg); }
+}
+@keyframes dgf-pin-drop {
+  0% { transform: translateY(-16px) rotate(0deg); opacity: 0; }
+  70% { transform: translateY(0) rotate(var(--dgf-tilt, 2deg)); opacity: 1; }
+  85% { transform: translateY(-2px) rotate(var(--dgf-tilt, 2deg)); }
+  100% { transform: translateY(0) rotate(var(--dgf-tilt, 2deg)); }
+}
+@keyframes dgf-caret-blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+
+.dgf-pop-in { animation: dgf-pop-in 0.25s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.dgf-sweep { animation: dgf-sweep 0.24s ease-out both; }
+.dgf-fall { animation: dgf-fall 0.6s ease-in both; }
+.dgf-fade-up { animation: dgf-fade-up 0.2s ease-out both; }
+.dgf-stamp { animation: dgf-stamp 0.25s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.dgf-pin-drop { animation: dgf-pin-drop 0.3s ease-out both; }
+.dgf-caret { animation: dgf-caret-blink 1s steps(1) infinite; }
+
+.dgf-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* The app's reduced-motion floor (first of its kind here): kills every
+   game-feel animation AND calms the pre-existing hover/active transitions. */
+@media (prefers-reduced-motion: reduce) {
+  .dgf-pop-in, .dgf-sweep, .dgf-fall, .dgf-fade-up, .dgf-stamp, .dgf-pin-drop, .dgf-caret {
+    animation: none !important;
+  }
+  .dg-tile, .dg-btn, .dg-btn-secondary, .dg-chip, .dg-mc-option, .xp-fill {
+    transition: none !important;
+  }
+}
+[data-motion="reduce"] .dgf-pop-in,
+[data-motion="reduce"] .dgf-sweep,
+[data-motion="reduce"] .dgf-fall,
+[data-motion="reduce"] .dgf-fade-up,
+[data-motion="reduce"] .dgf-stamp,
+[data-motion="reduce"] .dgf-pin-drop,
+[data-motion="reduce"] .dgf-caret {
+  animation: none !important;
+}
