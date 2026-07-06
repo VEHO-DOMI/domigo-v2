@@ -1,0 +1,361 @@
+{
+  "schema": "story@1",
+  "id": "g4.st.lost-for-words",
+  "grade": 4,
+  "title": {
+    "en": "Lost for Words",
+    "de": "Sprachlos"
+  },
+  "chapters": [
+    {
+      "id": "g4.st.lost-for-words.ch01",
+      "unit": 1,
+      "titleEn": "The Longest Day",
+      "titleDe": "Der längste Tag",
+      "scenes": [
+        {
+          "id": "g4.st.lost-for-words.ch01.s001",
+          "speaker": "narrator",
+          "textEn": "Six o'clock in the morning. Vienna airport. One week in England begins today.",
+          "scaffoldDe": "Sechs Uhr morgens. Flughafen Wien. Heute beginnt eine Woche in England.",
+          "glosses": [
+            {
+              "word": "airport",
+              "de": "Flughafen",
+              "scope": null
+            },
+            {
+              "word": "begins",
+              "de": "beginnt",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s002"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s002",
+          "speaker": "niko",
+          "textEn": "A whole week in English. Help me when my words don't come, yes?",
+          "scaffoldDe": "Eine ganze Woche auf Englisch. Hilf mir, wenn mir die Wörter fehlen, ja?",
+          "glosses": [
+            {
+              "word": "words",
+              "de": "Wörter",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s003"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s003",
+          "speaker": "you",
+          "textEn": "They will come. Your English is good — I know it.",
+          "scaffoldDe": "Die kommen schon. Dein Englisch ist gut — ich weiß es.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s004"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s004",
+          "speaker": "frau-maier",
+          "textEn": "One line in your journal every day, in English — that is all your homework. Day one is today.",
+          "scaffoldDe": "Jeden Tag eine Zeile ins Tagebuch, auf Englisch — das ist die ganze Hausübung. Tag eins ist heute.",
+          "glosses": [
+            {
+              "word": "journal",
+              "de": "Tagebuch",
+              "scope": null
+            },
+            {
+              "word": "line",
+              "de": "Zeile",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s005"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s005",
+          "speaker": "narrator",
+          "textEn": "The plane is small and the rain is long. Niko holds his ticket the whole way.",
+          "scaffoldDe": "Das Flugzeug ist klein und der Regen ist lang. Niko hält sein Ticket die ganze Zeit fest.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s006"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s006",
+          "speaker": "niko",
+          "textEn": "My first journal line. Was I scared this morning? Yes. Very.",
+          "scaffoldDe": "Meine erste Tagebuch-Zeile. War ich heute Morgen nervös? Ja. Sehr.",
+          "glosses": [
+            {
+              "word": "journal",
+              "de": "Tagebuch",
+              "scope": null
+            },
+            {
+              "word": "line",
+              "de": "Zeile",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "plane-journal",
+              "itemId": "g4u01.w.be-terrified",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch01.s007"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s007",
+          "speaker": "narrator",
+          "textEn": "Then: England. Green fields under grey rain. A small street, a green door. Number 11: the Harpers.",
+          "scaffoldDe": "Dann: England. Grüne Felder unter grauem Regen. Eine kleine Straße, eine grüne Tür. Nummer 11: die Harpers.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s008"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s008",
+          "speaker": "sue",
+          "textEn": "Hello! Our two boys from Austria! Come in, come in — out of the rain.",
+          "scaffoldDe": "Hallo! Unsere zwei Jungs aus Österreich! Kommt rein, kommt rein — raus aus dem Regen.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s009"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s009",
+          "speaker": "dev",
+          "textEn": "Dev Harper. Welcome! In England we do it like this —",
+          "scaffoldDe": "Dev Harper. Willkommen! In England machen wir das so —",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "hello-hands",
+              "itemId": "g4u01.w.shake-hands",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch01.s010"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s010",
+          "speaker": "callum",
+          "textEn": "I'm Callum. I make a podcast about old crimes. Fifty-one people listen to it!",
+          "scaffoldDe": "Ich bin Callum. Ich mache einen Podcast über alte Kriminalfälle. Einundfünfzig Leute hören ihn!",
+          "glosses": [
+            {
+              "word": "podcast",
+              "de": "Podcast",
+              "scope": null
+            },
+            {
+              "word": "crimes",
+              "de": "Kriminalfälle",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s011"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s011",
+          "speaker": "nan",
+          "textEn": "Tea first. Sit down, loves. Callum can ask you everything tomorrow.",
+          "scaffoldDe": "Zuerst Tee. Setzt euch, ihr Lieben. Callum kann euch morgen alles fragen.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s012"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s012",
+          "speaker": "sue",
+          "textEn": "So — the trip! Tell us everything. What was happening while you two were on the way?",
+          "scaffoldDe": "Also — die Reise! Erzählt uns alles. Was war los, während ihr zwei unterwegs wart?",
+          "glosses": [
+            {
+              "word": "trip",
+              "de": "Reise",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "tell-the-trip",
+              "itemId": "g4u01.gi.past-continuous-revision.gf.002",
+              "variantKey": null
+            },
+            {
+              "slot": "tell-the-trip-2",
+              "itemId": "g4u01.gi.past-continuous-revision.mc.010",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch01.s013"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s013",
+          "speaker": "nan",
+          "textEn": "Good stories! When I was a girl in Ireland, we had cattle and green hills and rain like this. I will tell you that story one evening.",
+          "scaffoldDe": "Gute Geschichten! Als ich ein Mädchen in Irland war, hatten wir Rinder und grüne Hügel und Regen wie diesen. Die Geschichte erzähle ich euch an einem Abend.",
+          "glosses": [
+            {
+              "word": "hills",
+              "de": "Hügel",
+              "scope": null
+            },
+            {
+              "word": "cattle",
+              "de": "Rinder",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "nan-story",
+              "itemId": "g4u01.gi.past-continuous-revision.gf.004",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch01.s014"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s014",
+          "speaker": "nan",
+          "textEn": "And look — this is for Katie's wedding on Saturday week. My mother wore it, and her mother before her.",
+          "scaffoldDe": "Und schaut — das ist für Katies Hochzeit am Samstag in einer Woche. Meine Mutter hat ihn getragen, und davor ihre Mutter.",
+          "glosses": [
+            {
+              "word": "wedding",
+              "de": "Hochzeit",
+              "scope": null
+            },
+            {
+              "word": "wore",
+              "de": "trug (tragen)",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s015"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s015",
+          "speaker": "niko",
+          "textEn": "It's beautiful! I'd rather guard this ring than wash the dishes, Mrs Harper.",
+          "scaffoldDe": "Er ist wunderschön! Ich würde lieber diesen Ring bewachen als abwaschen, Mrs Harper.",
+          "glosses": [
+            {
+              "word": "guard",
+              "de": "bewachen",
+              "scope": null
+            },
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s016"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s016",
+          "speaker": "sue",
+          "textEn": "Nan — he speaks fluent charm, this one! Right, boys: your room is upstairs.",
+          "scaffoldDe": "Oh, Nan — der Junge ist ein Charmeur! So, Jungs: euer Zimmer ist oben.",
+          "glosses": [
+            {
+              "word": "charm",
+              "de": "Charme",
+              "scope": null
+            },
+            {
+              "word": "upstairs",
+              "de": "oben",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fluent-line",
+              "itemId": "g4u01.w.fluent",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch01.s017"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s017",
+          "speaker": "narrator",
+          "textEn": "Night. Rain on the window. Think back — what do you know now?",
+          "scaffoldDe": "Nacht. Regen am Fenster. Denk zurück — was weißt du jetzt?",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g4u01.ci.the-ring.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch01.s018"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s018",
+          "speaker": "niko",
+          "textEn": "One week. We can do this. Good night!",
+          "scaffoldDe": "Eine Woche. Das schaffen wir. Gute Nacht!",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch01.s019"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch01.s019",
+          "speaker": "narrator",
+          "textEn": "Your journal, day one: “Everyone was smiling when we arrived.” And it is true.",
+          "scaffoldDe": "Dein Tagebuch, Tag eins: „Alle haben gelächelt, als wir angekommen sind.“ Und es stimmt.",
+          "glosses": [
+            {
+              "word": "journal",
+              "de": "Tagebuch",
+              "scope": null
+            },
+            {
+              "word": "smiling",
+              "de": "lächelnd",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
+      ]
+    }
+  ]
+}
