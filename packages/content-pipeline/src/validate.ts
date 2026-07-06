@@ -13,7 +13,7 @@
  *       lock, v1 floor mapped-XOR-waived vs the committed snapshot, state-hash
  *       drift guard, sbRefs resolve against committed transcripts + overlay
  *
- * Units with item artifacts additionally run the item validators V-1…V-22
+ * Units with item artifacts additionally run the item validators V-1…V-23
  * (validate-items.ts) plus the corpus-global item checks (proper-noun harvest
  * drift, level-grant integrity, live item-review-doc byte-regeneration).
  */
@@ -271,7 +271,7 @@ export function runValidate(): void {
     infos.push("V-C skipped: no v1 snapshot on disk (run `content v1-snapshot`)");
   }
 
-  // ---- item validators V-1…V-22 (units with item artifacts only)
+  // ---- item validators V-1…V-23 (units with item artifacts only)
   let itemUnits = 0;
   let itemCount = 0;
   for (const dir of dirs) {
@@ -414,6 +414,6 @@ export function runValidate(): void {
     return;
   }
   console.log(
-    `content validate: OK — ${dirs.length} units, ${seenIds.size} entries, ${approvedSlugs.size} approved${structuresCount > 0 ? `, ${structuresCount} structures` : ""}${itemUnits > 0 ? `, ${itemCount} items in ${itemUnits} unit(s)` : ""}; schemas valid, ids unique, totals match, V-A…V-F${itemUnits > 0 ? " + V-1…V-22" : ""} green.`,
+    `content validate: OK — ${dirs.length} units, ${seenIds.size} entries, ${approvedSlugs.size} approved${structuresCount > 0 ? `, ${structuresCount} structures` : ""}${itemUnits > 0 ? `, ${itemCount} items in ${itemUnits} unit(s)` : ""}; schemas valid, ids unique, totals match, V-A…V-F${itemUnits > 0 ? " + V-1…V-23" : ""} green.`,
   );
 }

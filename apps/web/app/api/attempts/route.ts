@@ -40,7 +40,17 @@ const Body = z.object({
   clientAttemptId: z.string().regex(UUID),
   itemId: z.union([ItemRef, ListeningRef, TestRef, StoryComprehensionRef]),
   mode: z.string().min(1).max(40).regex(/^[a-z0-9:_-]+$/i),
-  input: z.union([GrammarInputSchema, z.object({ kind: z.literal("vocab"), value: z.string() })]),
+  input: z.union([
+    GrammarInputSchema,
+    z.object({
+      kind: z.literal("vocab"),
+      value: z.string(),
+      // Which authored answer pool the exercise asked for (direction-aware for
+      // translation modes). Server-validated so a client can never grade a
+      // German prompt against the German pool. Default: the carrier gap-fill.
+      pool: z.enum(["carrier", "definition", "deToEn", "enToDe"]).optional(),
+    }),
+  ]),
   latencyMs: z.number().int().nonnegative().nullable().optional(),
   hintUsed: z.boolean().optional(),
   context: z.unknown().optional(),
@@ -80,7 +90,8 @@ export async function POST(req: Request): Promise<Response> {
         const item = unit.vocab.find((v) => v.id === itemId);
         if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
         const value = "value" in input && typeof input.value === "string" ? input.value : "";
-        tier = gradeVocab(item, value).tier;
+        const pool = input.kind === "vocab" ? input.pool : undefined;
+        tier = gradeVocab(item, value, pool).tier;
         xpAwarded = xpForTier(item.difficulty * 10, tier);
       } else {
         const item = unit.grammar.find((g) => g.id === itemId);
