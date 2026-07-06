@@ -26,6 +26,7 @@ export const TRANSCRIPTS_DIR = path.join(CONTENT_DIR, "build", "transcripts");
 export const SOURCES_LOCK_PATH = path.join(CONTENT_DIR, "build", "sources.lock.json");
 export const UNITS_DIR = path.join(CONTENT_DIR, "corpus", "units");
 export const OVERLAYS_DIR = path.join(CONTENT_DIR, "overlays");
+export const TRAPS_PATH = path.join(CONTENT_DIR, "corpus", "traps", "traps.json");
 
 /** v1 working copy (parity oracle; READ-ONLY — never run git there). */
 export const V1_BASE =

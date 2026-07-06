@@ -1,0 +1,195 @@
+{
+  "schema": "trap-registry@1",
+  "traps": [
+    {
+      "id": "wilde-verben",
+      "nameDe": "Wilde Verben",
+      "icon": "🦁",
+      "oneLinerDe": "Wilde Verben folgen keiner Regel: go → went.",
+      "contrast": { "wrong": "He goed home.", "right": "He went home.", "de": "go ist wild — es baut seine gestern-Form selbst." },
+      "gradeSpan": [1, 4],
+      "structureHints": ["past-simple", "irregular", "past-perfect"],
+      "detect": true
+    },
+    {
+      "id": "gestern-falle",
+      "nameDe": "Gestern-Falle",
+      "icon": "🕰️",
+      "oneLinerDe": "gestern / last / ago = vorbei → Vergangenheits-Form.",
+      "contrast": { "wrong": "Yesterday I play football.", "right": "Yesterday I played football.", "de": "gestern ist vorbei — das Verb muss mit." },
+      "gradeSpan": [1, 4],
+      "structureHints": ["past-simple", "past-continuous", "past-perfect"],
+      "detect": true
+    },
+    {
+      "id": "do-falle",
+      "nameDe": "Do-Falle",
+      "icon": "❓",
+      "oneLinerDe": "Im Deutschen drehst du um — im Englischen fragt do/does zuerst.",
+      "contrast": { "wrong": "Play you football?", "right": "Do you play football?", "de": "Die Frage holt sich ein Helfer-Wort: do." },
+      "gradeSpan": [1, 4],
+      "structureHints": ["question", "do-support", "present-simple"],
+      "detect": true
+    },
+    {
+      "id": "not-allein",
+      "nameDe": "Not-allein-Falle",
+      "icon": "🚫",
+      "oneLinerDe": "not steht nie allein: don't, doesn't, isn't.",
+      "contrast": { "wrong": "I play not football.", "right": "I don't play football.", "de": "not braucht einen Partner: do + not = don't." },
+      "gradeSpan": [1, 3],
+      "structureHints": ["negation", "present-simple", "past-simple"],
+      "detect": true
+    },
+    {
+      "id": "wann-ans-ende",
+      "nameDe": "Wann-ans-Ende-Falle",
+      "icon": "📦",
+      "oneLinerDe": "Im Deutschen mittendrin — im Englischen: Zeit ans Ende.",
+      "contrast": { "wrong": "I play today football.", "right": "I play football today.", "de": "Wer → tut was → wann: die Zeit wandert nach hinten." },
+      "gradeSpan": [1, 4],
+      "structureHints": ["word-order", "adverb"],
+      "detect": false
+    },
+    {
+      "id": "he-she-it-s",
+      "nameDe": "He-She-It-s",
+      "icon": "🐍",
+      "oneLinerDe": "he/she/it → das s muss mit: she plays.",
+      "contrast": { "wrong": "She play tennis.", "right": "She plays tennis.", "de": "Bei he, she und it zischt das Verb: -s." },
+      "gradeSpan": [1, 4],
+      "structureHints": ["present-simple"],
+      "detect": true
+    },
+    {
+      "id": "jetzt-oder-immer",
+      "nameDe": "Jetzt-oder-immer-Falle",
+      "icon": "⏯️",
+      "oneLinerDe": "jetzt gerade → am/is/are + -ing · immer → einfache Form.",
+      "contrast": { "wrong": "I am playing every day.", "right": "I play every day.", "de": "every day = immer → keine -ing-Form." },
+      "gradeSpan": [1, 3],
+      "structureHints": ["present-continuous", "present-simple"],
+      "detect": true
+    },
+    {
+      "id": "mischmasch",
+      "nameDe": "Mischmasch-Falle",
+      "icon": "🥣",
+      "oneLinerDe": "Entweder I play oder I am playing — nie halb-halb.",
+      "contrast": { "wrong": "I am play football.", "right": "I am playing football.", "de": "am ohne -ing ist ein halber Satz." },
+      "gradeSpan": [1, 2],
+      "structureHints": ["present-continuous"],
+      "detect": true
+    },
+    {
+      "id": "falsche-freunde",
+      "nameDe": "Falsche Freunde",
+      "icon": "🎭",
+      "oneLinerDe": "become heißt werden — bekommen heißt get!",
+      "contrast": { "wrong": "I become a letter.", "right": "I get a letter.", "de": "become sieht aus wie bekommen — ist es aber nicht." },
+      "gradeSpan": [1, 4],
+      "structureHints": [],
+      "falseFriends": [
+        { "de": "bekommen", "enFalse": "become", "enRight": "get" },
+        { "de": "das Handy", "enFalse": "handy", "enRight": "mobile phone" },
+        { "de": "der Chef", "enFalse": "chef", "enRight": "boss" },
+        { "de": "das Gift", "enFalse": "gift", "enRight": "poison (Achtung: gift = Geschenk)" },
+        { "de": "brav", "enFalse": "brave", "enRight": "good / well-behaved" },
+        { "de": "aktuell", "enFalse": "actually", "enRight": "current / at the moment" },
+        { "de": "sensibel", "enFalse": "sensible", "enRight": "sensitive" },
+        { "de": "spenden", "enFalse": "spend", "enRight": "donate" }
+      ],
+      "detect": true
+    },
+    {
+      "id": "wem-gehoerts",
+      "nameDe": "Wem-gehört's-Falle",
+      "icon": "🔑",
+      "oneLinerDe": "his/her fragt: WEM gehört es? — nicht der/die/das.",
+      "contrast": { "wrong": "Tom and her car.", "right": "Tom and his car.", "de": "Das Auto gehört Tom → his, egal ob 'das' Auto." },
+      "gradeSpan": [1, 3],
+      "structureHints": ["possessive"],
+      "detect": true
+    },
+    {
+      "id": "zaehl-falle",
+      "nameDe": "Zähl-Falle",
+      "icon": "🧮",
+      "oneLinerDe": "Zwei oder mehr → s: two cats. Aber: information bleibt allein.",
+      "contrast": { "wrong": "I have two apple.", "right": "I have two apples.", "de": "Ab zwei zählt das s mit." },
+      "gradeSpan": [1, 4],
+      "structureHints": ["plural"],
+      "detect": true
+    },
+    {
+      "id": "a-oder-an",
+      "nameDe": "a-oder-an-Falle",
+      "icon": "🍎",
+      "oneLinerDe": "an vor Vokal-KLANG: an apple — aber a university.",
+      "contrast": { "wrong": "I eat a apple.", "right": "I eat an apple.", "de": "Es zählt der Klang, nicht der Buchstabe." },
+      "gradeSpan": [1, 2],
+      "structureHints": ["article"],
+      "detect": true
+    },
+    {
+      "id": "nackte-adjektive",
+      "nameDe": "Nackte-Adjektive-Falle",
+      "icon": "🧥",
+      "oneLinerDe": "Englische Adjektive bleiben nackt: the blue cars.",
+      "contrast": { "wrong": "The blues cars are fast.", "right": "The blue cars are fast.", "de": "Kein -e, kein -s, keine Endung — Adjektive bleiben gleich." },
+      "gradeSpan": [1, 3],
+      "structureHints": ["adjective"],
+      "detect": false
+    },
+    {
+      "id": "wie-ly",
+      "nameDe": "Wie?-ly-Falle",
+      "icon": "🐌",
+      "oneLinerDe": "WIE macht er es? → -ly: carefully.",
+      "contrast": { "wrong": "He drives careful.", "right": "He drives carefully.", "de": "Die Wie-Frage holt sich -ly." },
+      "gradeSpan": [3, 4],
+      "structureHints": ["adverb"],
+      "detect": true
+    },
+    {
+      "id": "groesser-falle",
+      "nameDe": "Größer-Falle",
+      "icon": "📏",
+      "oneLinerDe": "Kurz + -er: bigger. Lang mit more. good → better!",
+      "contrast": { "wrong": "This film is more good.", "right": "This film is better.", "de": "good ist ein wildes Adjektiv: better, best." },
+      "gradeSpan": [2, 4],
+      "structureHints": ["comparative", "comparison"],
+      "detect": true
+    },
+    {
+      "id": "seit-falle",
+      "nameDe": "Seit-Falle",
+      "icon": "📅",
+      "oneLinerDe": "seit einem PUNKT → since 2023 · seit einer DAUER → for three years.",
+      "contrast": { "wrong": "I live here since three years.", "right": "I have lived here for three years.", "de": "Drei Jahre sind eine Dauer → for." },
+      "gradeSpan": [4, 4],
+      "structureHints": ["present-perfect"],
+      "detect": true
+    },
+    {
+      "id": "wenn-falle",
+      "nameDe": "Wenn-Falle",
+      "icon": "🔮",
+      "oneLinerDe": "Nach if kein will: If it rains, …",
+      "contrast": { "wrong": "If it will rain, we stay home.", "right": "If it rains, we stay home.", "de": "will darf nicht in den if-Teil." },
+      "gradeSpan": [4, 4],
+      "structureHints": ["conditional"],
+      "detect": true
+    },
+    {
+      "id": "halb-neun",
+      "nameDe": "Halb-Neun-Falle",
+      "icon": "🕤",
+      "oneLinerDe": "halb neun = 8:30 — aber half past nine = 9:30!",
+      "contrast": { "wrong": "half nine = 8:30", "right": "half past nine = 9:30", "de": "Deutsch schaut nach vorn, Englisch schaut zurück." },
+      "gradeSpan": [1, 2],
+      "structureHints": ["time"],
+      "detect": false
+    }
+  ]
+}

@@ -12,8 +12,8 @@ import { z } from "zod";
 import { ItemRef, ListeningRef, StoryComprehensionRef, TestRef } from "@domigo/content-schema";
 import type { GrammarItem } from "@domigo/content-schema";
 import { loadListening, loadStoryComprehension, loadTest, loadUnit, storyIdForGrade } from "@domigo/content-loader";
-import { gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
-import type { GrammarInput, Tier } from "@domigo/engine";
+import { classifyWrong, gradeGrammar, gradeVocab, vocabAnswers, xpForTier } from "@domigo/engine";
+import type { ClassifiableItem, GrammarInput, Tier } from "@domigo/engine";
 import { getDb, recordAttempt } from "@domigo/db";
 import { getActingUser } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
@@ -80,6 +80,12 @@ export async function POST(req: Request): Promise<Response> {
   let kind: "vocab" | "grammar" | "listening" | "reading";
   let unitSlug: string;
   let grade: number;
+  // D-2 trap classification input: the graded item's full-answer view, plus the
+  // typed text (choice/matching/groupSort never classify — their traps are
+  // authored via distractorMeta).
+  let classifiable: ClassifiableItem | null = null;
+  const typedValue =
+    (input.kind === "text" || input.kind === "vocab") && typeof input.value === "string" ? input.value : null;
   try {
     if (ref) {
       kind = ref.kind;
@@ -93,11 +99,13 @@ export async function POST(req: Request): Promise<Response> {
         const pool = input.kind === "vocab" ? input.pool : undefined;
         tier = gradeVocab(item, value, pool).tier;
         xpAwarded = xpForTier(item.difficulty * 10, tier);
+        classifiable = { answers: vocabAnswers(item, pool ?? "carrier") };
       } else {
         const item = unit.grammar.find((g) => g.id === itemId);
         if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
         tier = gradeGrammar(item, input as GrammarInput).tier;
         xpAwarded = xpForTier(item.difficulty * 10, tier);
+        classifiable = item;
       }
     } else if (lref) {
       kind = "listening";
@@ -108,6 +116,7 @@ export async function POST(req: Request): Promise<Response> {
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
       tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
       xpAwarded = xpForTier(item.difficulty * 10, tier);
+      classifiable = item as unknown as ClassifiableItem;
     } else if (tref) {
       kind = "reading";
       unitSlug = tref.unitSlug;
@@ -119,6 +128,7 @@ export async function POST(req: Request): Promise<Response> {
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
       tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
       xpAwarded = xpForTier(item.difficulty * 10, tier);
+      classifiable = item as unknown as ClassifiableItem;
     } else {
       // story comprehension (`.ci.`): a receptive sibling — graded like reading,
       // queue-skipped. cref is non-null (the guard above returned otherwise).
@@ -131,10 +141,19 @@ export async function POST(req: Request): Promise<Response> {
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
       tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;
       xpAwarded = xpForTier(item.difficulty * 10, tier);
+      classifiable = item as unknown as ClassifiableItem;
     }
   } catch {
     return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   }
+
+  // 6b. D-2: name the KIND of wrong (trap-registry@1 id) into the attempt's
+  // context jsonb — classification never changes the tier or the XP; a null
+  // trap is the common case and writes nothing.
+  const trap = tier === "wrong" && typedValue !== null && classifiable ? classifyWrong(classifiable, typedValue) : null;
+  const contextWithTrap = trap
+    ? { ...(typeof context === "object" && context !== null && !Array.isArray(context) ? context : {}), trap }
+    : context;
 
   // 7. Best-effort persist (idempotent; side-effects gated on first insert).
   try {
@@ -150,11 +169,20 @@ export async function POST(req: Request): Promise<Response> {
       xpAwarded,
       latencyMs: latencyMs ?? null,
       hintUsed: hintUsed ?? false,
-      context,
+      context: contextWithTrap,
       clientAttemptId,
     });
-    return NextResponse.json({ ok: true, tier, xpAwarded, box, dueAt: dueAt.toISOString(), duplicate, streak });
+    return NextResponse.json({
+      ok: true,
+      tier,
+      xpAwarded,
+      box,
+      dueAt: dueAt.toISOString(),
+      duplicate,
+      streak,
+      ...(trap ? { trap } : {}),
+    });
   } catch {
-    return NextResponse.json({ ok: false, error: "persist_failed", tier, xpAwarded });
+    return NextResponse.json({ ok: false, error: "persist_failed", tier, xpAwarded, ...(trap ? { trap } : {}) });
   }
 }
