@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { listApprovedUnits, loadUnit } from "../index.ts";
+import { listApprovedUnits, listReleasedStories, loadUnit, storyIdForGrade } from "../index.ts";
 
 test("loadUnit reads + schema-validates a real approved unit", () => {
   const u = loadUnit("g1-u01");
@@ -30,4 +30,22 @@ test("listApprovedUnits returns all 57, sorted, g1-u01 first", () => {
 
 test("loadUnit rejects a bad slug", () => {
   assert.throws(() => loadUnit("../etc"), /bad unit slug/);
+});
+
+test("listReleasedStories derives one story per grade from the corpus (g1/g2/g3 released)", () => {
+  const stories = listReleasedStories();
+  assert.deepEqual(
+    stories.map((s) => [s.grade, s.storyId]),
+    [
+      [1, "g1.st.lost-pages"],
+      [2, "g2.st.wrong-name"],
+      [3, "g3.st.fourteen"],
+    ],
+  );
+  assert.ok(stories.every((s) => s.titleEn.length > 0), "every released story carries a display title");
+});
+
+test("storyIdForGrade resolves released grades and is null for unreleased ones (g4 until its release.json ships)", () => {
+  assert.equal(storyIdForGrade(3), "g3.st.fourteen"); // the stale app-side map missed g3 — this is the regression guard
+  assert.equal(storyIdForGrade(4), null);
 });

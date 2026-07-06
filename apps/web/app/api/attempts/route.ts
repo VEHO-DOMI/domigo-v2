@@ -11,7 +11,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { ItemRef, ListeningRef, StoryComprehensionRef, TestRef } from "@domigo/content-schema";
 import type { GrammarItem } from "@domigo/content-schema";
-import { loadListening, loadStoryComprehension, loadTest, loadUnit } from "@domigo/content-loader";
+import { loadListening, loadStoryComprehension, loadTest, loadUnit, storyIdForGrade } from "@domigo/content-loader";
 import { gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
 import type { GrammarInput, Tier } from "@domigo/engine";
 import { getDb, recordAttempt } from "@domigo/db";
@@ -25,8 +25,9 @@ export const runtime = "nodejs"; // content-loader uses node:fs → not edge
 export const dynamic = "force-dynamic";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-// `.ci.` ids carry the grade but not the story; one story per grade (Track C).
-const STORY_BY_GRADE: Record<number, string> = { 1: "g1.st.lost-pages", 2: "g2.st.wrong-name" };
+// `.ci.` ids carry the grade but not the story; the one-story-per-grade map is
+// DERIVED from the corpus (`storyIdForGrade`) — a hardcoded copy here can go
+// stale when a new grade's story ships and 400 its comprehension attempts.
 
 const GrammarInputSchema = z.union([
   z.object({ kind: z.literal("text"), value: z.string() }),
@@ -114,7 +115,7 @@ export async function POST(req: Request): Promise<Response> {
       kind = "reading";
       unitSlug = cr.unitSlug;
       grade = cr.grade;
-      const storyId = STORY_BY_GRADE[cr.grade];
+      const storyId = storyIdForGrade(cr.grade);
       const item = (storyId ? loadStoryComprehension(storyId) : null)?.items.find((i) => i.id === itemId);
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
       tier = gradeGrammar(item as unknown as GrammarItem, input as GrammarInput).tier;

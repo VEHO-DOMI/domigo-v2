@@ -6,7 +6,7 @@
  */
 import { redirect } from "next/navigation";
 import { Encounter, type Chapter, type ComprehensionItem, type GrammarItem, type VocabItem } from "@domigo/content-schema";
-import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadUnit } from "@domigo/content-loader";
+import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadUnit, storyIdForGrade } from "@domigo/content-loader";
 import { getDb, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db";
 import { EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { resolveEncounterTasks, type ResolvedItem } from "@domigo/game-core";
@@ -18,7 +18,6 @@ import NovelClient from "../NovelClient";
 
 export const dynamic = "force-dynamic";
 
-const STORY_BY_GRADE: Record<number, string> = { 1: "g1.st.lost-pages", 2: "g2.st.wrong-name", 3: "g3.st.fourteen" };
 const GAME_TYPE: Record<number, "overworld" | "detective" | "novel"> = { 1: "overworld", 2: "detective", 3: "novel" };
 
 function storyItemsFor(
@@ -61,7 +60,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
 
-  const storyId = STORY_BY_GRADE[grade];
+  const storyId = storyIdForGrade(grade);
   const hubHref = `/play/${grade}`;
   if (!storyId) redirect("/home");
 

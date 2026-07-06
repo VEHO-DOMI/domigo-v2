@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { auth, signOut } from "@/auth";
-import { getDb, getDueCounts, getUserProgress, isStreakActive } from "@domigo/db";
+import { listReleasedStories } from "@domigo/content-loader";
+import { getClassGrade, getDb, getDueCounts, getUserProgress, isStreakActive } from "@domigo/db";
+import { DEFAULT_STORY_UI, STORY_UI } from "@/lib/stories";
 
 export const dynamic = "force-dynamic";
 
@@ -29,12 +31,29 @@ export default async function HomePage() {
     /* no streak badge on failure */
   }
 
+  // Story tile — the grade's game, first on the landing (the story modes are the
+  // app's engagement heart and must be one tap from sign-in). The grade→story map
+  // is derived from the corpus; the lookup is wrapped like the badges: a DB hiccup
+  // degrades to the /play chooser, never a dead link and never a 500.
+  let storyTile = { href: "/play", icon: DEFAULT_STORY_UI.icon, title: "Story", sub: "Story adventures by grade" };
+  try {
+    const grade = session.user.classId ? await getClassGrade(getDb(), session.user.classId) : null;
+    const story = grade === null ? undefined : listReleasedStories().find((s) => s.grade === grade);
+    if (story) {
+      const ui = STORY_UI[story.grade] ?? DEFAULT_STORY_UI;
+      storyTile = { href: `/play/${story.grade}`, icon: ui.icon, title: "Story", sub: `${story.titleEn} — ${ui.blurb}` };
+    }
+  } catch {
+    /* keep the chooser fallback */
+  }
+
   async function doSignOut() {
     "use server";
     await signOut({ redirectTo: "/" });
   }
 
   const items: { href: string; icon: string; title: string; sub: string; badge?: string | null }[] = [
+    storyTile,
     { href: "/practice", icon: "📚", title: "Practice", sub: "Vocabulary & grammar by unit" },
     { href: "/review", icon: "🔁", title: "Review", sub: dueLabel, badge: dueBadge },
     { href: "/learn", icon: "🗺️", title: "Study Path", sub: "Guided units with checkpoints" },

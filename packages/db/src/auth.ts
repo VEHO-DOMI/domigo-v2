@@ -48,6 +48,16 @@ export async function lookupStudentForAuth(
   return rows[0] ?? null;
 }
 
+/** Grade (1–4) of a class by id — read-only `public.classes` lookup for grade-aware surfaces (the session carries classId, not grade). Null if the class is absent. */
+export async function getClassGrade(db: Db, classId: string): Promise<number | null> {
+  const rows = await db
+    .select({ grade: v1Classes.grade })
+    .from(v1Classes)
+    .where(eq(v1Classes.id, classId))
+    .limit(1);
+  return rows[0]?.grade ?? null;
+}
+
 /** Teacher by nickname (case-insensitive). */
 export async function lookupTeacherForAuth(db: Db, nickname: string): Promise<AuthUserRow | null> {
   const rows = await db
