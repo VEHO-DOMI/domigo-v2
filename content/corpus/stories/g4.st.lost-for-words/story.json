@@ -356,6 +356,765 @@
           "next": null
         }
       ]
+    },
+    {
+      "id": "g4.st.lost-for-words.ch02",
+      "unit": 2,
+      "titleEn": "The Empty Box",
+      "titleDe": "Die leere Schachtel",
+      "scenes": [
+        {
+          "id": "g4.st.lost-for-words.ch02.s001",
+          "speaker": "narrator",
+          "textEn": "Tuesday morning. Rain again. In the kitchen, Nan is not laughing.",
+          "scaffoldDe": "Dienstagmorgen. Wieder Regen. In der Küche lacht Nan nicht.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s002"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s002",
+          "speaker": "sue",
+          "textEn": "Nan, where is the ring box? Katie is here at ten — she wants to look at it.",
+          "scaffoldDe": "Nan, wo ist die Ring-Schachtel? Katie kommt um zehn — sie will ihn anschauen.",
+          "glosses": [
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            },
+            {
+              "word": "box",
+              "de": "Schachtel",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s003"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s003",
+          "speaker": "nan",
+          "textEn": "In the box, love. Where it always is.",
+          "scaffoldDe": "In der Schachtel, Liebes. Wo er immer ist.",
+          "glosses": [
+            {
+              "word": "box",
+              "de": "Schachtel",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s004"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s004",
+          "speaker": "narrator",
+          "textEn": "But the box is empty. Then: no one speaks.",
+          "scaffoldDe": "Aber die Schachtel ist leer. Dann: Niemand spricht.",
+          "glosses": [
+            {
+              "word": "box",
+              "de": "Schachtel",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s005"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s005",
+          "speaker": "callum",
+          "textEn": "Nobody move! This is a crime scene now. I know this from my podcast.",
+          "scaffoldDe": "Keiner bewegt sich! Das ist jetzt ein Tatort. Ich kenne solche Sachen aus meinem Podcast.",
+          "glosses": [
+            {
+              "word": "podcast",
+              "de": "Podcast",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "crime-scene",
+              "itemId": "g4u02.w.crime-scene",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch02.s006"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s006",
+          "speaker": "callum",
+          "textEn": "In my podcast, episode nine, the inspector is in the office — and what does he find?",
+          "scaffoldDe": "In meinem Podcast, Folge neun, ist der Inspektor im Büro — und was findet er?",
+          "glosses": [
+            {
+              "word": "podcast",
+              "de": "Podcast",
+              "scope": null
+            },
+            {
+              "word": "inspector",
+              "de": "Inspektor",
+              "scope": null
+            },
+            {
+              "word": "episode",
+              "de": "Folge",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "callums-case",
+              "itemId": "g4u02.gi.past-perfect.cp.002",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch02.s007"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s007",
+          "speaker": "dev",
+          "textEn": "Callum. This is not your podcast. Please.",
+          "scaffoldDe": "Callum. Das ist nicht dein Podcast. Bitte.",
+          "glosses": [
+            {
+              "word": "podcast",
+              "de": "Podcast",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s008"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s008",
+          "speaker": "sue",
+          "textEn": "Think back, everyone. Last night: the dinner, then the washing up. What had happened before I closed the kitchen?",
+          "scaffoldDe": "Denkt zurück, alle. Gestern Abend: das Essen, dann der Abwasch. Was war passiert, bevor ich die Küche zugemacht habe?",
+          "glosses": [
+            {
+              "word": "washing up",
+              "de": "Abwasch",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s009"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s009",
+          "speaker": "nan",
+          "textEn": "Wait. When I was cooking, I had put the ring down. But where?",
+          "scaffoldDe": "Wartet. Als ich gekocht habe, hatte ich den Ring hingelegt. Aber wo?",
+          "glosses": [
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s010"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s010",
+          "speaker": "narrator",
+          "textEn": "Then it happens. Sue looks at Niko. For one second. One second too long.",
+          "scaffoldDe": "Dann passiert es. Sue schaut Niko an. Eine Sekunde lang. Eine Sekunde zu lang.",
+          "glosses": [
+            {
+              "word": "second",
+              "de": "Sekunde",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s011"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s011",
+          "speaker": "niko",
+          "textEn": "Did you notice that? She looked at me.",
+          "scaffoldDe": "Hast du das gemerkt? Sie hat mich angeschaut.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s012"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s012",
+          "speaker": "you",
+          "textEn": "She looked at everyone.",
+          "scaffoldDe": "Sie hat alle angeschaut.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s013"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s013",
+          "speaker": "niko",
+          "textEn": "No. Not like that.",
+          "scaffoldDe": "Nein. Nicht so.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s014"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s014",
+          "speaker": "narrator",
+          "textEn": "Your journal, day two. Write what had already happened before breakfast.",
+          "scaffoldDe": "Dein Tagebuch, Tag zwei. Schreib, was vor dem Frühstück schon passiert war.",
+          "glosses": [
+            {
+              "word": "journal",
+              "de": "Tagebuch",
+              "scope": null
+            },
+            {
+              "word": "already",
+              "de": "schon",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "journal-two",
+              "itemId": "g4u02.gi.past-perfect.cp.001",
+              "variantKey": null
+            },
+            {
+              "slot": "journal-two-b",
+              "itemId": "g4u02.gi.past-perfect.ec.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch02.s015"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s015",
+          "speaker": "nan",
+          "textEn": "Never mind, loves. A ring is small. Rings hide. It will come back.",
+          "scaffoldDe": "Macht euch nichts draus, ihr Lieben. Ein Ring ist klein. Ringe verstecken sich. Er kommt zurück.",
+          "glosses": [
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            },
+            {
+              "word": "Rings",
+              "de": "Ringe",
+              "scope": null
+            },
+            {
+              "word": "hide",
+              "de": "verstecken (sich)",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s016"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s016",
+          "speaker": "callum",
+          "textEn": "I can help look. Not for the podcast. Just looking.",
+          "scaffoldDe": "Ich kann suchen helfen. Nicht für den Podcast. Einfach nur suchen.",
+          "glosses": [
+            {
+              "word": "podcast",
+              "de": "Podcast",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch02.s017"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s017",
+          "speaker": "narrator",
+          "textEn": "Now think back.",
+          "scaffoldDe": "Jetzt denk zurück.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap-two",
+              "itemId": "g4u02.ci.crime-scene.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch02.s018"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch02.s018",
+          "speaker": "narrator",
+          "textEn": "Day two ends with no ring — and with one look that stays with Niko.",
+          "scaffoldDe": "Tag zwei endet ohne Ring — und mit einem Blick, der Niko nicht loslässt.",
+          "glosses": [
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "g4.st.lost-for-words.ch03",
+      "unit": 3,
+      "titleEn": "What They Said",
+      "titleDe": "Was sie gesagt haben",
+      "scenes": [
+        {
+          "id": "g4.st.lost-for-words.ch03.s001",
+          "speaker": "narrator",
+          "textEn": "Wednesday evening: the youth club. Music, table football, many boys and girls from the town.",
+          "scaffoldDe": "Mittwochabend: der Jugendclub. Musik, Tischfußball, viele Kinder aus der Stadt.",
+          "glosses": [
+            {
+              "word": "youth club",
+              "de": "Jugendclub",
+              "scope": null
+            },
+            {
+              "word": "table football",
+              "de": "Tischfußball",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s002"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s002",
+          "speaker": "lewis",
+          "textEn": "I'm Lewis. You're the two from Austria, right? Callum told me all about you.",
+          "scaffoldDe": "Ich bin Lewis. Ihr seid die zwei aus Österreich, oder? Callum hat mir alles über euch erzählt.",
+          "glosses": [
+            {
+              "word": "told",
+              "de": "erzählt (hat)",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s003"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s003",
+          "speaker": "narrator",
+          "textEn": "All about you — and all about Monday evening. The dinner. The ring.",
+          "scaffoldDe": "Alles über euch — und alles über den Montagabend. Das Essen. Den Ring.",
+          "glosses": [
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s004"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s004",
+          "speaker": "lewis",
+          "textEn": "The boy from Austria? He was holding the ring at dinner. Funny guy. And now the ring is gone!",
+          "scaffoldDe": "Der Junge aus Österreich? Er hat den Ring beim Essen in der Hand gehalten. Lustiger Typ. Und jetzt ist der Ring weg!",
+          "glosses": [
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            },
+            {
+              "word": "holding",
+              "de": "in der Hand halten",
+              "scope": null
+            },
+            {
+              "word": "guy",
+              "de": "Typ",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s005"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s005",
+          "speaker": "amy",
+          "textEn": "Listen! Lewis said the boy from Austria had been holding the ring. And now it is gone!",
+          "scaffoldDe": "Hört mal! Lewis hat gesagt, der Junge aus Österreich hätte den Ring in der Hand gehabt. Und jetzt ist er weg!",
+          "glosses": [
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            },
+            {
+              "word": "said",
+              "de": "gesagt (hat)",
+              "scope": null
+            },
+            {
+              "word": "had been holding",
+              "de": "in der Hand gehalten hatte",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s006"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s006",
+          "speaker": "narrator",
+          "textEn": "At nine o'clock, the sentence is new: “He took it.” Who was first? Nobody. Everybody. That is how a sentence travels.",
+          "scaffoldDe": "Um neun Uhr ist der Satz neu: „Er hat ihn genommen.“ Wer war zuerst? Niemand. Alle. So reist ein Satz.",
+          "glosses": [
+            {
+              "word": "sentence",
+              "de": "Satz",
+              "scope": null
+            },
+            {
+              "word": "took",
+              "de": "genommen (hat)",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s007"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s007",
+          "speaker": "narrator",
+          "textEn": "In the room, Niko laughs at a song with two boys. He does not know it now.",
+          "scaffoldDe": "Im Raum lacht Niko mit zwei Jungen über ein Lied. Er weiß es jetzt noch nicht.",
+          "glosses": [
+            {
+              "word": "song",
+              "de": "Lied",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s008"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s008",
+          "speaker": "you",
+          "textEn": "I take out my journal. I write down who said what. The first words — not the new ones.",
+          "scaffoldDe": "Ich nehme mein Tagebuch heraus. Ich schreibe auf, wer was gesagt hat. Die ersten Wörter — nicht die neuen.",
+          "glosses": [
+            {
+              "word": "journal",
+              "de": "Tagebuch",
+              "scope": null
+            },
+            {
+              "word": "said",
+              "de": "gesagt (hat)",
+              "scope": null
+            },
+            {
+              "word": "words",
+              "de": "Wörter",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "chronicle",
+              "itemId": "g4u03.gi.reported-speech-statements.gf.018",
+              "variantKey": null
+            },
+            {
+              "slot": "chronicle-b",
+              "itemId": "g4u03.gi.reported-speech-statements.gf.011",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch03.s009"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s009",
+          "speaker": "you",
+          "textEn": "Lewis. What did you really say? Word for word.",
+          "scaffoldDe": "Lewis. Was hast du wirklich gesagt? Wort für Wort.",
+          "glosses": [
+            {
+              "word": "say",
+              "de": "sagen",
+              "scope": null
+            },
+            {
+              "word": "Word",
+              "de": "Wort",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s010"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s010",
+          "speaker": "lewis",
+          "textEn": "I said he was holding it. At dinner. That's all! It was a joke about the washing up.",
+          "scaffoldDe": "Ich habe gesagt, er hat ihn in der Hand gehalten. Beim Essen. Mehr nicht! Es war ein Witz über den Abwasch.",
+          "glosses": [
+            {
+              "word": "said",
+              "de": "gesagt (habe)",
+              "scope": null
+            },
+            {
+              "word": "holding",
+              "de": "in der Hand halten",
+              "scope": null
+            },
+            {
+              "word": "joke",
+              "de": "Witz",
+              "scope": null
+            },
+            {
+              "word": "washing up",
+              "de": "Abwasch",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s011"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s011",
+          "speaker": "you",
+          "textEn": "Then that is the sentence. Not the new one. Help me fix it in my journal.",
+          "scaffoldDe": "Dann ist DAS der Satz. Nicht der neue. Hilf mir, es in meinem Tagebuch richtigzustellen.",
+          "glosses": [
+            {
+              "word": "sentence",
+              "de": "Satz",
+              "scope": null
+            },
+            {
+              "word": "fix",
+              "de": "richtigstellen",
+              "scope": null
+            },
+            {
+              "word": "journal",
+              "de": "Tagebuch",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-record",
+              "itemId": "g4u03.gi.reported-speech-statements.ec.001",
+              "variantKey": null
+            },
+            {
+              "slot": "fix-record-b",
+              "itemId": "g4u03.gi.reported-speech-statements.mc.009",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch03.s012"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s012",
+          "speaker": "amy",
+          "textEn": "I ... I said what Lewis said. That is all.",
+          "scaffoldDe": "Ich ... ich habe gesagt, was Lewis gesagt hat. Mehr nicht.",
+          "glosses": [
+            {
+              "word": "said",
+              "de": "gesagt (hat)",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s013"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s013",
+          "speaker": "lewis",
+          "textEn": "Wait — who said “took”? I never said “took”.",
+          "scaffoldDe": "Moment — wer hat „genommen“ gesagt? Ich habe nie „genommen“ gesagt.",
+          "glosses": [
+            {
+              "word": "said",
+              "de": "gesagt (hat)",
+              "scope": null
+            },
+            {
+              "word": "took",
+              "de": "genommen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s014"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s014",
+          "speaker": "narrator",
+          "textEn": "No one speaks. The music plays on.",
+          "scaffoldDe": "Niemand spricht. Die Musik spielt weiter.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s015"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s015",
+          "speaker": "niko",
+          "textEn": "Why is everyone looking at me? Will I be in trouble?",
+          "scaffoldDe": "Warum schauen mich alle an? Bekomme ich jetzt Probleme?",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "in-trouble",
+              "itemId": "g4u03.w.be-in-trouble",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch03.s016"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s016",
+          "speaker": "niko",
+          "textEn": "They don't say it to me. That is the worst.",
+          "scaffoldDe": "Sie sagen es mir nicht ins Gesicht. Das ist das Schlimmste.",
+          "glosses": [
+            {
+              "word": "say",
+              "de": "sagen",
+              "scope": null
+            },
+            {
+              "word": "worst",
+              "de": "das Schlimmste",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s017"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s017",
+          "speaker": "niko",
+          "textEn": "One week, we said. We can still do this. Right?",
+          "scaffoldDe": "Eine Woche, haben wir gesagt. Wir schaffen das noch. Oder?",
+          "glosses": [
+            {
+              "word": "said",
+              "de": "gesagt (haben)",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch03.s018"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s018",
+          "speaker": "narrator",
+          "textEn": "Now think back — then sleep well.",
+          "scaffoldDe": "Jetzt denk zurück — und dann schlaf gut.",
+          "glosses": [
+            {
+              "word": "sleep",
+              "de": "schlaf(en)",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap-three",
+              "itemId": "g4u03.ci.what-lewis-said.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch03.s019"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch03.s019",
+          "speaker": "narrator",
+          "textEn": "Your journal, day three: “A sentence can travel. And it is new when it is back.”",
+          "scaffoldDe": "Dein Tagebuch, Tag drei: „Ein Satz kann reisen. Und er ist neu, wenn er zurückkommt.“",
+          "glosses": [
+            {
+              "word": "journal",
+              "de": "Tagebuch",
+              "scope": null
+            },
+            {
+              "word": "sentence",
+              "de": "Satz",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
+      ]
     }
   ]
 }

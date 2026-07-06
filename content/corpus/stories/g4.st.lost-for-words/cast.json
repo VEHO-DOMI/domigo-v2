@@ -2,16 +2,89 @@
   "schema": "cast@1",
   "storyId": "g4.st.lost-for-words",
   "members": [
-    { "id": "you", "nameEn": "You", "descriptionDe": "du — Austauschschüler:in aus Wien, von hinten gesehen", "voice": null, "art": null },
-    { "id": "niko", "nameEn": "Niko", "descriptionDe": "dein bester Freund und Zimmerkollege", "voice": null, "art": null },
-    { "id": "sue", "nameEn": "Sue", "descriptionDe": "die Gastmutter — herzlich, und ihr Zögern wird später Teil der Geschichte", "voice": null, "art": null },
-    { "id": "dev", "nameEn": "Dev", "descriptionDe": "der Gastvater — führt ein kleines Auktionshaus", "voice": null, "art": null },
-    { "id": "callum", "nameEn": "Callum", "descriptionDe": "der Gastbruder, 15 — True-Crime-Podcast-Fan", "voice": null, "art": null },
-    { "id": "nan", "nameEn": "Nan", "descriptionDe": "Sues Mutter, aus Irland — Keksdose, kluge Sprüche", "voice": null, "art": null },
-    { "id": "katie", "nameEn": "Katie", "descriptionDe": "Sues Schwester, die Braut", "voice": null, "art": null },
-    { "id": "lewis", "nameEn": "Lewis", "descriptionDe": "ein Junge aus dem Jugendclub — unvorsichtig, nicht böse", "voice": null, "art": null },
-    { "id": "ash", "nameEn": "Ash", "descriptionDe": "Katies Cousine — Goth, sitzt später bei Niko", "voice": null, "art": null },
-    { "id": "frau-maier", "nameEn": "Frau Maier", "descriptionDe": "die Begleitlehrerin — die deutsche Stimme der Woche", "voice": null, "art": null },
-    { "id": "narrator", "nameEn": "Narrator", "descriptionDe": "Erzählstimme", "voice": null, "art": null }
+    {
+      "id": "you",
+      "nameEn": "You",
+      "descriptionDe": "du — Austauschschüler:in aus Wien, von hinten gesehen",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "niko",
+      "nameEn": "Niko",
+      "descriptionDe": "dein bester Freund und Zimmerkollege",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "sue",
+      "nameEn": "Sue",
+      "descriptionDe": "die Gastmutter — herzlich, und ihr Zögern wird später Teil der Geschichte",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "dev",
+      "nameEn": "Dev",
+      "descriptionDe": "der Gastvater — führt ein kleines Auktionshaus",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "callum",
+      "nameEn": "Callum",
+      "descriptionDe": "der Gastbruder, 15 — True-Crime-Podcast-Fan",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "nan",
+      "nameEn": "Nan",
+      "descriptionDe": "Sues Mutter, aus Irland — Keksdose, kluge Sprüche",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "katie",
+      "nameEn": "Katie",
+      "descriptionDe": "Sues Schwester, die Braut",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "lewis",
+      "nameEn": "Lewis",
+      "descriptionDe": "ein Junge aus dem Jugendclub — unvorsichtig, nicht böse",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "ash",
+      "nameEn": "Ash",
+      "descriptionDe": "Katies Cousine — Goth, sitzt später bei Niko",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "frau-maier",
+      "nameEn": "Frau Maier",
+      "descriptionDe": "die Begleitlehrerin — die deutsche Stimme der Woche",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "narrator",
+      "nameEn": "Narrator",
+      "descriptionDe": "Erzählstimme",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "amy",
+      "nameEn": "Amy",
+      "descriptionDe": "ein Mädchen aus dem Jugendclub — gibt den Satz weiter",
+      "voice": null,
+      "art": null
+    }
   ]
 }
