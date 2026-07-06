@@ -1,0 +1,23 @@
+{
+  "schema": "names@1",
+  "storyId": "g4.st.lost-for-words",
+  "reviewedBy": "fable",
+  "names": [
+    { "name": "Niko", "note": "the best friend; Austrian student" },
+    { "name": "Sue", "note": "host mother" },
+    { "name": "Dev", "note": "host father; runs a small auction house" },
+    { "name": "Callum", "note": "host brother, 15" },
+    { "name": "Nan", "note": "Sue's Irish mother (as a name: what the family calls her)" },
+    { "name": "Katie", "note": "Sue's sister, the bride" },
+    { "name": "Lewis", "note": "youth-club local; careless, not cruel" },
+    { "name": "Ash", "note": "Katie's cousin" },
+    { "name": "Frau", "note": "Frau Maier — the accompanying Austrian teacher (title)" },
+    { "name": "Maier", "note": "Frau Maier — the accompanying Austrian teacher (surname)" },
+    { "name": "Harper", "note": "the host family's surname" },
+    { "name": "Harpers", "note": "the host family, plural form" },
+    { "name": "England", "note": "destination country (pending the Leicester-vs-Ireland gate decision the town stays unnamed in ch1)" },
+    { "name": "Austria", "note": "home country" },
+    { "name": "Vienna", "note": "home city" },
+    { "name": "Ireland", "note": "Nan's home country; also the g4-u01 topic vocabulary" }
+  ]
+}

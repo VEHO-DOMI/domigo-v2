@@ -1,0 +1,53 @@
+{
+  "schema": "comprehension@1",
+  "storyId": "g4.st.lost-for-words",
+  "items": [
+    {
+      "id": "g4u01.ci.the-ring.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Why is Nan's ring special?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It is for Katie's wedding.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It is Niko's ring.",
+        "It is from the school.",
+        "Dev wants to sell it."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "wedding",
+          "de": "Hochzeit",
+          "scope": null
+        },
+        {
+          "word": "ring",
+          "de": "Ring",
+          "scope": null
+        },
+        {
+          "word": "special",
+          "de": "besonders",
+          "scope": null
+        }
+      ],
+      "hintDe": "Denk daran, was Nan am Abend gezeigt hat — und für wen es ist.",
+      "hintEn": null,
+      "explainDe": "Der Ring ist etwas Altes für Katies Hochzeit — Nans Mutter hat ihn getragen, und davor ihre Mutter.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}
