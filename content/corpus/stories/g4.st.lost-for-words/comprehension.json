@@ -142,6 +142,110 @@
       "explainDe": "Lewis hat nur gesagt, dass Niko den Ring in der Hand hatte. Das Wort „took“ kam erst später dazu — von jemand anderem.",
       "explainEn": null,
       "strict": false
+    },
+    {
+      "id": "g4u04.ci.nikos-truth.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "What did Niko tell Ms Blake?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That he had put the ring back on the windowsill.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "That he had taken the ring.",
+        "That he had seen nothing.",
+        "That Lewis had the ring."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "ring",
+          "de": "Ring",
+          "scope": null
+        },
+        {
+          "word": "windowsill",
+          "de": "Fensterbrett",
+          "scope": null
+        },
+        {
+          "word": "tell",
+          "de": "sagen",
+          "scope": null
+        },
+        {
+          "word": "taken",
+          "de": "genommen",
+          "scope": null
+        },
+        {
+          "word": "seen",
+          "de": "gesehen",
+          "scope": null
+        }
+      ],
+      "hintDe": "Niko hat die Wahrheit gesagt — wohin hatte er den Ring gelegt?",
+      "hintEn": null,
+      "explainDe": "Niko sagt: „I had put it back on the windowsill.“ — zurück aufs Fensterbrett, vor dem Abwasch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u05.ci.the-bags.mc.001",
+      "rev": 1,
+      "difficulty": 2,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Where did everything next to the window go?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Into the bags for the charity shop.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Into the school.",
+        "Into Katie's car.",
+        "Into the garden."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "bags",
+          "de": "Tüten",
+          "scope": null
+        },
+        {
+          "word": "charity shop",
+          "de": "Secondhand-Laden",
+          "scope": null
+        },
+        {
+          "word": "garden",
+          "de": "Garten",
+          "scope": null
+        }
+      ],
+      "hintDe": "Sue hat am Montagabend aufgeräumt — wohin?",
+      "hintEn": null,
+      "explainDe": "Sue sagt: „After we had eaten, I cleared everything … into the bags for the charity shop.“",
+      "explainEn": null,
+      "strict": false
     }
   ]
 }

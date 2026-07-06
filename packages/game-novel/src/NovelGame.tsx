@@ -178,7 +178,10 @@ export function NovelGame(props: NovelGameProps) {
   const slot = scene.taskSlots[0];
   const slotItem = slot ? storyItems[slot.itemId] : undefined;
   const taskBlocks = slot !== undefined && slotItem !== undefined && !taskDone;
-  const sNext = scene.next;
+  // FlagGate resolves to its `else` path here (the authored neutral default —
+  // wiped-save doctrine); the flag-aware runtime arrives with the G4 package.
+  const rawNext = scene.next;
+  const sNext = rawNext !== null && typeof rawNext === "object" && !Array.isArray(rawNext) ? rawNext.else : rawNext;
   const isNarrator = scene.speaker === "narrator";
   const speakerName = castNames[scene.speaker] ?? scene.speaker;
   const look = castLook(scene.speaker);

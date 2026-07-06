@@ -85,6 +85,13 @@
       "descriptionDe": "ein Mädchen aus dem Jugendclub — gibt den Satz weiter",
       "voice": null,
       "art": null
+    },
+    {
+      "id": "ms-blake",
+      "nameEn": "Ms Blake",
+      "descriptionDe": "die Programm-Koordinatorin — freundlich, genau",
+      "voice": null,
+      "art": null
     }
   ]
 }

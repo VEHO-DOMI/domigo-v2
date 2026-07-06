@@ -1115,6 +1115,865 @@
           "next": null
         }
       ]
+    },
+    {
+      "id": "g4.st.lost-for-words.ch04",
+      "unit": 4,
+      "titleEn": "Questions",
+      "titleDe": "Fragen",
+      "scenes": [
+        {
+          "id": "g4.st.lost-for-words.ch04.s001",
+          "speaker": "narrator",
+          "textEn": "Thursday. Frau Maier and Ms Blake from the programme talk with everyone today. One talk, then one more.",
+          "scaffoldDe": "Donnerstag. Frau Maier und Ms Blake vom Programm sprechen heute mit allen. Ein Gespräch, dann das nächste.",
+          "glosses": [
+            {
+              "word": "programme",
+              "de": "Programm",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s002"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s002",
+          "speaker": "frau-maier",
+          "textEn": "Just a talk. Everyone has one today. Nothing more.",
+          "scaffoldDe": "Nur ein Gespräch. Jeder hat heute eins. Mehr nicht.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s003"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s003",
+          "speaker": "narrator",
+          "textEn": "It feels like a job interview. A small room, two chairs, eye contact.",
+          "scaffoldDe": "Es fühlt sich an wie ein Bewerbungsgespräch. Ein kleiner Raum, zwei Stühle, Blickkontakt.",
+          "glosses": [
+            {
+              "word": "job interview",
+              "de": "Bewerbungsgespräch",
+              "scope": null
+            },
+            {
+              "word": "eye contact",
+              "de": "Blickkontakt",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s004"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s004",
+          "speaker": "ms-blake",
+          "textEn": "Nothing bad is happening here. I ask, you answer — and then we all have tea. Where were you on Monday evening?",
+          "scaffoldDe": "Hier passiert nichts Schlimmes. Ich frage, du antwortest — und dann trinken wir alle Tee. Wo warst du am Montagabend?",
+          "glosses": [
+            {
+              "word": "answer",
+              "de": "antworten",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s005"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s005",
+          "speaker": "narrator",
+          "textEn": "In your journal, you write her questions down — reported, the way Frau Maier likes it.",
+          "scaffoldDe": "In dein Tagebuch schreibst du ihre Fragen auf — in Reported Speech, so wie Frau Maier es mag.",
+          "glosses": [
+            {
+              "word": "journal",
+              "de": "Tagebuch",
+              "scope": null
+            },
+            {
+              "word": "questions",
+              "de": "Fragen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "report-q1",
+              "itemId": "g4u04.gi.reported-questions.gf.001",
+              "variantKey": null
+            },
+            {
+              "slot": "report-q2",
+              "itemId": "g4u04.gi.reported-questions.gf.002",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch04.s006"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s006",
+          "speaker": "ms-blake",
+          "textEn": "One more. Did you or Niko hold the ring after dinner? Think first. Then answer.",
+          "scaffoldDe": "Noch eine. Hast du oder hat Niko den Ring nach dem Essen in der Hand gehabt? Denk zuerst nach. Dann antworte.",
+          "glosses": [
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            },
+            {
+              "word": "hold",
+              "de": "in der Hand halten",
+              "scope": null
+            },
+            {
+              "word": "answer",
+              "de": "antworte(n)",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s007"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s007",
+          "speaker": "narrator",
+          "textEn": "What do you tell her?",
+          "scaffoldDe": "Was sagst du ihr?",
+          "glosses": [
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            },
+            {
+              "word": "hand",
+              "de": "Hand",
+              "scope": null
+            },
+            {
+              "word": "exact",
+              "de": "genau",
+              "scope": null
+            },
+            {
+              "word": "joke",
+              "de": "Witz",
+              "scope": null
+            },
+            {
+              "word": "washing up",
+              "de": "Abwasch",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": [
+            {
+              "id": "say-it-all",
+              "textEn": "Tell her everything — the joke, the ring in Niko's hand, the washing up. Exact.",
+              "scaffoldDe": "Erzähl ihr alles — den Witz, den Ring in Nikos Hand, den Abwasch. Genau.",
+              "next": "g4.st.lost-for-words.ch04.s008",
+              "sets": [
+                "w04.said"
+              ]
+            },
+            {
+              "id": "keep-it-short",
+              "textEn": "Keep it short. Dinner. Then our room. That is all.",
+              "scaffoldDe": "Halte es kurz. Essen. Dann unser Zimmer. Mehr nicht.",
+              "next": "g4.st.lost-for-words.ch04.s010",
+              "sets": [
+                "w04.vague"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s008",
+          "speaker": "you",
+          "textEn": "Niko had the ring in his hand — for one minute, at dinner. It was a joke about the washing up. Then Nan had it back. That is all I know.",
+          "scaffoldDe": "Niko hatte den Ring in der Hand — eine Minute, beim Essen. Es war ein Witz über den Abwasch. Dann hatte Nan ihn wieder. Mehr weiß ich nicht.",
+          "glosses": [
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            },
+            {
+              "word": "hand",
+              "de": "Hand",
+              "scope": null
+            },
+            {
+              "word": "minute",
+              "de": "Minute",
+              "scope": null
+            },
+            {
+              "word": "joke",
+              "de": "Witz",
+              "scope": null
+            },
+            {
+              "word": "washing up",
+              "de": "Abwasch",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s009"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s009",
+          "speaker": "narrator",
+          "textEn": "Ms Blake writes. Frau Maier gives you a small nod. Outside, you think: the truth is exact. And exact words can travel too.",
+          "scaffoldDe": "Ms Blake schreibt. Frau Maier nickt dir kurz zu. Draußen denkst du: Die Wahrheit ist genau. Und auch genaue Wörter können reisen.",
+          "glosses": [
+            {
+              "word": "nod",
+              "de": "Nicken",
+              "scope": null
+            },
+            {
+              "word": "exact",
+              "de": "genau",
+              "scope": null
+            },
+            {
+              "word": "words",
+              "de": "Wörter",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s012"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s010",
+          "speaker": "you",
+          "textEn": "We had dinner. Then: our room. That is all.",
+          "scaffoldDe": "Wir haben gegessen. Dann: unser Zimmer. Das ist alles.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s011"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s011",
+          "speaker": "narrator",
+          "textEn": "Ms Blake's pen waits. “Nothing more?” — “Nothing more.” Outside, the words you did not give her walk with you.",
+          "scaffoldDe": "Ms Blakes Stift stoppt. „Mehr nicht?“ — „Mehr nicht.“ Draußen gehen die Wörter, die du ihr nicht gegeben hast, mit dir mit.",
+          "glosses": [
+            {
+              "word": "pen",
+              "de": "Stift",
+              "scope": null
+            },
+            {
+              "word": "words",
+              "de": "Wörter",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s012"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s012",
+          "speaker": "niko",
+          "textEn": "There you are! What did they ask you? Tell me — every question.",
+          "scaffoldDe": "Da bist du ja! Was haben sie dich gefragt? Sag schon — jede Frage.",
+          "glosses": [
+            {
+              "word": "ask",
+              "de": "fragen",
+              "scope": null
+            },
+            {
+              "word": "question",
+              "de": "Frage",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s013"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s013",
+          "speaker": "you",
+          "textEn": "She asked me where we had been. She asked me what I had seen. The whole interview.",
+          "scaffoldDe": "Sie hat mich gefragt, wo wir gewesen waren. Sie hat mich gefragt, was ich gesehen hatte. Das volle Interview.",
+          "glosses": [
+            {
+              "word": "asked",
+              "de": "gefragt (hat)",
+              "scope": null
+            },
+            {
+              "word": "been",
+              "de": "gewesen",
+              "scope": null
+            },
+            {
+              "word": "seen",
+              "de": "gesehen",
+              "scope": null
+            },
+            {
+              "word": "interview",
+              "de": "Interview",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "tell-niko",
+              "itemId": "g4u04.gi.reported-questions.gf.003",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch04.s014"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s014",
+          "speaker": "niko",
+          "textEn": "I told them the truth: I had put it back on the windowsill. Before the washing up.",
+          "scaffoldDe": "Ich habe ihnen die Wahrheit gesagt: Ich hatte ihn zurück aufs Fensterbrett gelegt. Vor dem Abwasch.",
+          "glosses": [
+            {
+              "word": "told",
+              "de": "gesagt (habe)",
+              "scope": null
+            },
+            {
+              "word": "truth",
+              "de": "Wahrheit",
+              "scope": null
+            },
+            {
+              "word": "windowsill",
+              "de": "Fensterbrett",
+              "scope": null
+            },
+            {
+              "word": "washing up",
+              "de": "Abwasch",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s015"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s015",
+          "speaker": "niko",
+          "textEn": "Do you think they believed me?",
+          "scaffoldDe": "Glaubst du, sie haben mir geglaubt?",
+          "glosses": [
+            {
+              "word": "believed",
+              "de": "geglaubt (haben)",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s016"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s016",
+          "speaker": "narrator",
+          "textEn": "You want to answer fast. You answer one second too slow. Niko looks away first.",
+          "scaffoldDe": "Du willst schnell antworten. Du antwortest eine Sekunde zu langsam. Niko schaut zuerst weg.",
+          "glosses": [
+            {
+              "word": "answer",
+              "de": "antworten",
+              "scope": null
+            },
+            {
+              "word": "second",
+              "de": "Sekunde",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch04.s017"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s017",
+          "speaker": "narrator",
+          "textEn": "Now think back.",
+          "scaffoldDe": "Jetzt denk zurück.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap-four",
+              "itemId": "g4u04.ci.nikos-truth.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch04.s018"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch04.s018",
+          "speaker": "narrator",
+          "textEn": "Your journal, day four: “She asked me what I had seen. The question is still with me.”",
+          "scaffoldDe": "Dein Tagebuch, Tag vier: „Sie hat mich gefragt, was ich gesehen hatte. Die Frage ist immer noch da.“",
+          "glosses": [
+            {
+              "word": "journal",
+              "de": "Tagebuch",
+              "scope": null
+            },
+            {
+              "word": "asked",
+              "de": "gefragt (hat)",
+              "scope": null
+            },
+            {
+              "word": "seen",
+              "de": "gesehen",
+              "scope": null
+            },
+            {
+              "word": "question",
+              "de": "Frage",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "g4.st.lost-for-words.ch05",
+      "unit": 5,
+      "titleEn": "The Dinner, Again",
+      "titleDe": "Das Essen, noch einmal",
+      "scenes": [
+        {
+          "id": "g4.st.lost-for-words.ch05.s001",
+          "speaker": "sue",
+          "textEn": "Friday. New plan, everyone. Tonight we cook Monday's dinner again. Every step, first to last. Afterwards we know more.",
+          "scaffoldDe": "Freitag. Neuer Plan, alle mal herhören. Heute Abend kochen wir das Essen von Montag noch einmal. Jeden Schritt, einen nach dem anderen. Danach wissen wir mehr.",
+          "glosses": [
+            {
+              "word": "plan",
+              "de": "Plan",
+              "scope": null
+            },
+            {
+              "word": "step",
+              "de": "Schritt",
+              "scope": null
+            },
+            {
+              "word": "Afterwards",
+              "de": "danach",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch05.s002"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s002",
+          "speaker": "callum",
+          "textEn": "A reconstruction! That is what the good podcasts do!",
+          "scaffoldDe": "Eine Rekonstruktion! Genau das machen die guten Podcasts!",
+          "glosses": [
+            {
+              "word": "reconstruction",
+              "de": "Rekonstruktion",
+              "scope": null
+            },
+            {
+              "word": "podcasts",
+              "de": "Podcasts",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch05.s003"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s003",
+          "speaker": "narrator",
+          "textEn": "So you cook. The same soup. The same bread. Nan tells the same Ireland story — and this time, everyone watches her.",
+          "scaffoldDe": "Also kocht ihr. Die gleiche Suppe. Das gleiche Brot. Nan erzählt die gleiche Irland-Geschichte — und diesmal schauen ihr alle zu.",
+          "glosses": [
+            {
+              "word": "same",
+              "de": "gleich(e)",
+              "scope": null
+            },
+            {
+              "word": "soup",
+              "de": "Suppe",
+              "scope": null
+            },
+            {
+              "word": "bread",
+              "de": "Brot",
+              "scope": null
+            },
+            {
+              "word": "tells",
+              "de": "erzählt",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recook",
+              "itemId": "g4u05.gi.past-perfect-connectors.gf.002",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch05.s004"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s004",
+          "speaker": "nan",
+          "textEn": "Here. This is the moment. I had the ring in my hand — then the pot was too hot, and I put the ring down. There.",
+          "scaffoldDe": "Hier. Das ist der Moment. Ich hatte den Ring in der Hand — dann war der Topf zu heiß, und ich habe den Ring hingelegt. Dort.",
+          "glosses": [
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            },
+            {
+              "word": "hand",
+              "de": "Hand",
+              "scope": null
+            },
+            {
+              "word": "moment",
+              "de": "Moment",
+              "scope": null
+            },
+            {
+              "word": "pot",
+              "de": "Topf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch05.s005"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s005",
+          "speaker": "narrator",
+          "textEn": "Everyone looks. Next to the window: an empty place where a small box had been on Monday.",
+          "scaffoldDe": "Alle schauen hin. Neben dem Fenster: eine leere Stelle, wo am Montag eine kleine Schachtel gestanden hatte.",
+          "glosses": [
+            {
+              "word": "box",
+              "de": "Schachtel",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "place",
+              "de": "Stelle",
+              "scope": null
+            },
+            {
+              "word": "been",
+              "de": "gewesen / gestanden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "timeline",
+              "itemId": "g4u05.gi.past-perfect-connectors.gf.004",
+              "variantKey": null
+            },
+            {
+              "slot": "timeline-b",
+              "itemId": "g4u05.gi.past-perfect-connectors.gf.005",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch05.s006"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s006",
+          "speaker": "sue",
+          "textEn": "Wait. After we had eaten, I cleared everything next to the window — into the bags for the charity shop. That same evening.",
+          "scaffoldDe": "Wartet. Nachdem wir gegessen hatten, habe ich alles neben dem Fenster weggeräumt — in die Tüten für den Secondhand-Laden. Am selben Abend.",
+          "glosses": [
+            {
+              "word": "eaten",
+              "de": "gegessen",
+              "scope": null
+            },
+            {
+              "word": "cleared",
+              "de": "weggeräumt (habe)",
+              "scope": null
+            },
+            {
+              "word": "bags",
+              "de": "Tüten",
+              "scope": null
+            },
+            {
+              "word": "charity shop",
+              "de": "Secondhand-Laden",
+              "scope": null
+            },
+            {
+              "word": "same",
+              "de": "selben",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch05.s007"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s007",
+          "speaker": "dev",
+          "textEn": "And the bags went to the shop on Wednesday. All of them. I think.",
+          "scaffoldDe": "Und die Tüten sind am Mittwoch in den Laden gegangen. Alle. Glaube ich.",
+          "glosses": [
+            {
+              "word": "bags",
+              "de": "Tüten",
+              "scope": null
+            },
+            {
+              "word": "went",
+              "de": "gegangen (sind)",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch05.s008"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s008",
+          "speaker": "narrator",
+          "textEn": "“I think.” Two small words, and the kitchen is very awake now.",
+          "scaffoldDe": "„Glaube ich.“ Zwei kleine Wörter, und die Küche ist jetzt sehr wach.",
+          "glosses": [
+            {
+              "word": "words",
+              "de": "Wörter",
+              "scope": null
+            },
+            {
+              "word": "awake",
+              "de": "wach",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch05.s009"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s009",
+          "speaker": "sue",
+          "textEn": "Ms Blake told me about your talks today. Words help, you know.",
+          "scaffoldDe": "Ms Blake hat mir heute von euren Gesprächen erzählt. Wörter helfen, weißt du.",
+          "glosses": [
+            {
+              "word": "told",
+              "de": "erzählt (hat)",
+              "scope": null
+            },
+            {
+              "word": "Words",
+              "de": "Wörter",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch05.s010",
+          "flagLines": [
+            {
+              "flag": "w04.said",
+              "textEn": "Ms Blake told me what you said today. Thank you — you were exact. Exact words help Niko.",
+              "scaffoldDe": "Ms Blake hat mir erzählt, was du heute gesagt hast. Danke — du warst genau. Genaue Wörter helfen Niko.",
+              "glosses": [
+                {
+                  "word": "told",
+                  "de": "erzählt (hat)",
+                  "scope": null
+                },
+                {
+                  "word": "said",
+                  "de": "gesagt (hast)",
+                  "scope": null
+                },
+                {
+                  "word": "exact",
+                  "de": "genau",
+                  "scope": null
+                }
+              ]
+            },
+            {
+              "flag": "w04.vague",
+              "textEn": "Ms Blake told me your answer was short today. I understand that. But exact words help — give her all of them when she asks again.",
+              "scaffoldDe": "Ms Blake hat mir erzählt, dass deine Antwort heute kurz war. Ich verstehe das. Aber genaue Wörter helfen — gib ihr alle, wenn sie wieder fragt.",
+              "glosses": [
+                {
+                  "word": "told",
+                  "de": "erzählt (hat)",
+                  "scope": null
+                },
+                {
+                  "word": "answer",
+                  "de": "Antwort",
+                  "scope": null
+                },
+                {
+                  "word": "exact",
+                  "de": "genau",
+                  "scope": null
+                },
+                {
+                  "word": "asks",
+                  "de": "fragt",
+                  "scope": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s010",
+          "speaker": "sue",
+          "textEn": "Niko. Look at me. Even though I am upset about the ring — I trust you. Both of you.",
+          "scaffoldDe": "Niko. Schau mich an. Auch wenn ich wegen des Rings traurig bin — ich vertraue euch. Euch beiden.",
+          "glosses": [
+            {
+              "word": "Even though",
+              "de": "auch wenn",
+              "scope": null
+            },
+            {
+              "word": "upset",
+              "de": "traurig / aufgewühlt",
+              "scope": null
+            },
+            {
+              "word": "ring",
+              "de": "Ring",
+              "scope": null
+            },
+            {
+              "word": "trust",
+              "de": "vertraue(n)",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch05.s011"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s011",
+          "speaker": "niko",
+          "textEn": "That is the first time this week that one of you said it out loud.",
+          "scaffoldDe": "Das ist das erste Mal diese Woche, dass es einer von euch laut gesagt hat.",
+          "glosses": [
+            {
+              "word": "said",
+              "de": "gesagt (hat)",
+              "scope": null
+            },
+            {
+              "word": "out loud",
+              "de": "laut",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.lost-for-words.ch05.s012"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s012",
+          "speaker": "narrator",
+          "textEn": "Now think back.",
+          "scaffoldDe": "Jetzt denk zurück.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap-five",
+              "itemId": "g4u05.ci.the-bags.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.lost-for-words.ch05.s013"
+        },
+        {
+          "id": "g4.st.lost-for-words.ch05.s013",
+          "speaker": "narrator",
+          "textEn": "Your journal, day five: “After we had cooked everything again, the kitchen was warmer. But one look is still there, between Sue and Niko.”",
+          "scaffoldDe": "Dein Tagebuch, Tag fünf: „Nachdem wir alles noch einmal gekocht hatten, war die Küche wärmer. Aber ein Blick ist immer noch da, zwischen Sue und Niko.“",
+          "glosses": [
+            {
+              "word": "journal",
+              "de": "Tagebuch",
+              "scope": null
+            },
+            {
+              "word": "warmer",
+              "de": "wärmer",
+              "scope": null
+            },
+            {
+              "word": "look",
+              "de": "Blick",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
+      ]
     }
   ]
 }

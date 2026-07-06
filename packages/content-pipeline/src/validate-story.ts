@@ -8,7 +8,11 @@
  *  VS-2  level gate over EVERY student-facing line (textEn + choices) via tokenize
  *  VS-3  du-form scaffolds (no formal Sie/Ihnen/Ihr — mid-sentence red)
  *  VS-4  taskSlot itemIds resolve, same grade, unit ≤ the chapter's gate unit
- *  VS-5  choice-graph reachability + no dead-ends (every scene reaches an ending)
+ *  VS-5  choice-graph reachability + no dead-ends (every scene reaches an ending;
+ *        FlagGate walks BOTH paths)
+ *  VS-13 flag hygiene (declared/set-in-place/consumed — a choice that changes
+ *        nothing fails CI)
+ *  VS-14 spine-tasks (no taskSlot on branch-exclusive scenes)
  *  VS-6  speakers resolve against cast.json
  *  VS-7  gloss correctness (a glossed word actually appears in its line)
  *  VS-8  meta-talk blacklist (EN grammar jargon / tense names in student lines)
@@ -31,6 +35,7 @@ import {
   StoryNames,
   UNITS_PER_GRADE,
   unitSlug,
+  StoryFlags,
 } from "@domigo/content-schema";
 import { buildAllowedMatcher } from "./cumulative-bank.ts";
 import { readUnitItems } from "./gen-items.ts";
@@ -61,6 +66,7 @@ export interface StoryBundle {
   storyItems: StoryItems | null;
   comprehension: StoryComprehensionFile | null;
   release: ReleaseFile | null;
+  flags?: import("@domigo/content-schema").StoryFlags | null;
 }
 
 // ── du-form + meta-talk (mirrors validate-items V-12/V-13, story carriers) ────
@@ -99,12 +105,14 @@ function glossWords(glosses: Gloss[]): string[] {
 function nextTargets(scene: Scene): string[] {
   if (scene.next === null) return [];
   if (Array.isArray(scene.next)) return scene.next.map((c) => c.next);
+  if (typeof scene.next === "object") return [scene.next.then, scene.next.else]; // FlagGate — both paths walked
   return [scene.next];
 }
 
 function studentLines(scene: Scene): string[] {
   const lines = [scene.textEn];
   if (Array.isArray(scene.next)) for (const c of scene.next) lines.push(c.textEn);
+  for (const l of scene.flagLines ?? []) lines.push(l.textEn);
   return lines;
 }
 
@@ -112,6 +120,7 @@ function scaffolds(scene: Scene): string[] {
   const out: string[] = [];
   if (scene.scaffoldDe) out.push(scene.scaffoldDe);
   if (Array.isArray(scene.next)) for (const c of scene.next) if (c.scaffoldDe) out.push(c.scaffoldDe);
+  for (const l of scene.flagLines ?? []) if (l.scaffoldDe) out.push(l.scaffoldDe);
   return out;
 }
 
@@ -158,6 +167,87 @@ function reachabilityErrors(chapter: Chapter): string[] {
   return errors;
 }
 
+
+/** Chapter number from a chapter id ("....ch04" -> 4). */
+function chNum(chapterId: string): number {
+  return Number(chapterId.slice(-2));
+}
+
+/**
+ * VS-13 flag hygiene + VS-14 spine-tasks.
+ *  VS-13: every flag used (Choice.sets / FlagGate / flagLines) is declared in
+ *  flags.json; declared flags are SET by a choice in their setIn chapter;
+ *  every set flag is CONSUMED (a gate or a flag line) in a chapter >= setIn —
+ *  a choice that changes nothing fails CI.
+ *  VS-14: no taskSlot on a branch-exclusive scene (reachable from some but not
+ *  all choices of a fork before the paths merge) — progress derivation stays
+ *  path-independent; nobody can choose their way out of practice.
+ */
+function flagErrors(story: Story, flags: import("@domigo/content-schema").StoryFlags | null): string[] {
+  const errors: string[] = [];
+  const declared = new Map<string, { setIn: string; major: boolean }>();
+  for (const f of flags?.flags ?? []) declared.set(f.id, { setIn: f.setIn, major: f.major });
+  const setBy = new Map<string, string[]>(); // flag -> chapters that set it
+  const consumedIn = new Map<string, number[]>(); // flag -> chapter numbers
+  for (const chapter of story.chapters) {
+    for (const scene of chapter.scenes) {
+      if (Array.isArray(scene.next)) {
+        for (const c of scene.next) {
+          for (const f of c.sets ?? []) {
+            if (!declared.has(f)) errors.push(`${scene.id}: VS-13 — choice sets undeclared flag "${f}"`);
+            else if (declared.get(f)!.setIn !== chapter.id) errors.push(`${scene.id}: VS-13 — flag "${f}" is declared setIn ${declared.get(f)!.setIn} but set here`);
+            setBy.set(f, [...(setBy.get(f) ?? []), chapter.id]);
+          }
+        }
+      } else if (scene.next !== null && typeof scene.next === "object") {
+        const f = scene.next.flag;
+        if (!declared.has(f)) errors.push(`${scene.id}: VS-13 — FlagGate uses undeclared flag "${f}"`);
+        consumedIn.set(f, [...(consumedIn.get(f) ?? []), chNum(chapter.id)]);
+      }
+      for (const l of scene.flagLines ?? []) {
+        if (!declared.has(l.flag)) errors.push(`${scene.id}: VS-13 — flagLine uses undeclared flag "${l.flag}"`);
+        consumedIn.set(l.flag, [...(consumedIn.get(l.flag) ?? []), chNum(chapter.id)]);
+      }
+    }
+  }
+  for (const [f, meta] of declared) {
+    if (!setBy.has(f)) errors.push(`${story.id}: VS-13 — declared flag "${f}" is never set by any choice`);
+    const uses = consumedIn.get(f) ?? [];
+    if (uses.length === 0) errors.push(`${story.id}: VS-13 — flag "${f}" is set but never consumed (a choice that changes nothing)`);
+    for (const u of uses) if (u < chNum(meta.setIn)) errors.push(`${story.id}: VS-13 — flag "${f}" consumed in ch${String(u).padStart(2, "0")} before its setIn ${meta.setIn}`);
+  }
+  // VS-14 spine-tasks
+  for (const chapter of story.chapters) {
+    const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
+    for (const scene of chapter.scenes) {
+      if (!Array.isArray(scene.next)) continue;
+      const reaches: Set<string>[] = scene.next.map((c) => {
+        const seen = new Set<string>();
+        const stack = [c.next];
+        while (stack.length > 0) {
+          const id = stack.pop()!;
+          if (seen.has(id)) continue;
+          seen.add(id);
+          const s = byId.get(id);
+          if (s) for (const t of nextTargets(s)) stack.push(t);
+        }
+        return seen;
+      });
+      const inAll = new Set([...reaches[0]!].filter((id) => reaches.every((r) => r.has(id))));
+      for (const [i, r] of reaches.entries()) {
+        for (const id of r) {
+          if (inAll.has(id)) continue; // shared spine
+          const s = byId.get(id);
+          if (s && s.taskSlots.length > 0) {
+            errors.push(`${s.id}: VS-14 — taskSlot on a branch-exclusive scene (choice "${scene.next[i]!.id}" of ${scene.id}) — tasks must live on the shared spine`);
+          }
+        }
+      }
+    }
+  }
+  return errors;
+}
+
 /** Pure VS-1…VS-12 + release gating over a parsed bundle. */
 export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): { errors: string[]; infos: string[] } {
   const errors: string[] = [];
@@ -169,6 +259,8 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
   if (!story.id.startsWith(`g${grade}.st.`)) errors.push(`${story.id}: VS-1 — id grade prefix disagrees with grade ${grade}`);
   if (bundle.cast && bundle.cast.storyId !== story.id) errors.push(`${story.id}: VS-1 — cast.json storyId ${bundle.cast.storyId} != ${story.id}`);
   if (bundle.names && bundle.names.storyId !== story.id) errors.push(`${story.id}: VS-1 — names.json storyId ${bundle.names.storyId} != ${story.id}`);
+  if (bundle.flags && bundle.flags.storyId !== story.id) errors.push(`${story.id}: VS-1 — flags.json storyId ${bundle.flags.storyId} != ${story.id}`);
+  errors.push(...flagErrors(story, bundle.flags ?? null));
   if (bundle.storyItems && bundle.storyItems.storyId !== story.id) errors.push(`${story.id}: VS-1 — story-items storyId ${bundle.storyItems.storyId} != ${story.id}`);
 
   const castIds = new Set((bundle.cast?.members ?? []).map((m) => m.id));
@@ -187,7 +279,7 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
         errors.push(`${scene.id}: VS-6 — speaker "${scene.speaker}" not in cast.json`);
       }
       // VS-2 level gate over every student-facing line (gloss words + names are honored)
-      const extra = [...glossWords(scene.glosses), ...namePhrases];
+      const extra = [...glossWords(scene.glosses), ...(scene.flagLines ?? []).flatMap((l) => glossWords(l.glosses)), ...namePhrases];
       for (const line of studentLines(scene)) {
         const unknown = corpus.unknownTokens(gateSlug, line, extra);
         if (unknown.length > 0) {
@@ -202,9 +294,19 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
       }
       // VS-7 gloss correctness
       for (const g of scene.glosses) {
-        const hay = `${scene.textEn} ${scene.scaffoldDe ?? ""}`.toLowerCase();
+        const choiceText = Array.isArray(scene.next) ? scene.next.map((c) => `${c.textEn} ${c.scaffoldDe ?? ""}`).join(" ") : "";
+        const hay = `${scene.textEn} ${scene.scaffoldDe ?? ""} ${choiceText}`.toLowerCase();
         if (!hay.includes(g.word.toLowerCase())) {
           errors.push(`${scene.id}: VS-7 — gloss word "${g.word}" does not appear in the scene line`);
+        }
+      }
+      // VS-7 gloss correctness for flag-line glosses (against their own line)
+      for (const l of scene.flagLines ?? []) {
+        for (const g of l.glosses) {
+          const hay = `${l.textEn} ${l.scaffoldDe ?? ""}`.toLowerCase();
+          if (!hay.includes(g.word.toLowerCase())) {
+            errors.push(`${scene.id}: VS-7 — flagLine gloss word "${g.word}" does not appear in its line`);
+          }
         }
       }
       // VS-8 meta-talk in student lines
@@ -368,6 +470,9 @@ export function runValidateStory(): void {
     const items = itemsRaw === null ? null : StoryItems.safeParse(itemsRaw);
     if (items && !items.success) { errors.push(`${id}: story-items.json schema — ${items.error.issues[0]?.message ?? "?"}`); continue; }
     const release = readJsonIfExists<ReleaseFile>(path.join(dir, "release.json"));
+    const flagsRaw = readJsonIfExists<unknown>(path.join(dir, "flags.json"));
+    const flags = flagsRaw === null ? null : StoryFlags.safeParse(flagsRaw);
+    if (flags && !flags.success) { errors.push(`${id}: flags.json schema — ${flags.error.issues[0]?.message ?? "?"}`); continue; }
     const compRaw = readJsonIfExists<unknown>(path.join(dir, "comprehension.json"));
     const comprehension = compRaw === null ? null : StoryComprehensionFile.safeParse(compRaw);
     if (comprehension && !comprehension.success) { errors.push(`${id}: comprehension.json schema — ${comprehension.error.issues[0]?.message ?? "?"}`); continue; }
@@ -375,6 +480,7 @@ export function runValidateStory(): void {
     const res = validateStoryBundle(
       {
         story: parsed.data,
+        flags: flags ? flags.data : null,
         cast: cast ? cast.data : null,
         names: names ? names.data : null,
         storyItems: items ? items.data : null,

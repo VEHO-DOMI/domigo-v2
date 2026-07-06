@@ -95,7 +95,10 @@ function DialogueOverlay({ chapter, castNames, storyItems, onAttempt, onClose }:
   const slot = scene.taskSlots[0];
   const slotItem = slot ? storyItems[slot.itemId] : undefined;
   const taskBlocks = slot !== undefined && slotItem !== undefined && !taskDone;
-  const sNext = scene.next; // string | Choice[] | null
+  // FlagGate resolves to its `else` path here (the authored neutral default —
+  // wiped-save doctrine); the flag-aware runtime arrives with the G4 package.
+  const rawNext = scene.next;
+  const sNext = rawNext !== null && typeof rawNext === "object" && !Array.isArray(rawNext) ? rawNext.else : rawNext;
 
   const go = (nextId: string | null) => { setTaskDone(false); setShowGloss(false); if (nextId === null) onClose(); else setSceneId(nextId); };
 
