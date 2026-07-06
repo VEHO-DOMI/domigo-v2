@@ -77,7 +77,7 @@ export default function ReviewSession({ items }: { items: QueueItem[] }) {
       </div>
 
       {current.kind === "grammar" ? (
-        <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} />
+        <GrammarItemView key={current.item.id} item={current.item as GrammarItem} onResult={onResult} tactile />
       ) : (
         <VocabItemView key={current.item.id} item={current.item as VocabItem} onResult={onResult} />
       )}

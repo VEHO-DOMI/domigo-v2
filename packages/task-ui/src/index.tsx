@@ -15,6 +15,10 @@ import type { AudioRef, GrammarItem, GrammarStructure, Gloss, ListeningTask, Voc
 import type { ClassifiableItem, GrammarInput, Tier } from "@domigo/engine";
 import { breaksCombo, classifyWrong, gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
 import { diffWords, playTier } from "@domigo/game-feel";
+import { agAssemble, agSlots, agTiles, sbChips } from "./tactile.ts";
+
+export { agAssemble, agSlots, agTiles, sbChips, sbAnswerOrder, seededShuffle } from "./tactile.ts";
+export type { AgSlot, AgTile, SbChip } from "./tactile.ts";
 
 /** The D-1 verdict register (docs/handover/14_feedback_register.md, G-D gate):
  *  fixed words, never randomized; wrong = a calm dark pill, never red — failure
@@ -365,7 +369,152 @@ function RetryNudge({ wrongCount, hintDe }: { wrongCount: number; hintDe: string
   );
 }
 
-export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean }) {
+// ---- the tactile task layer (ALIVE-T T1/T2) --------------------------------
+// Letter tiles + word chips ASSEMBLE TEXT into the same state the keyboard
+// writes — one GrammarInput, one grading path (Law 5). Deterministic tile
+// order (seeded by item id, Law 9). The visible "Type instead" chip swaps to
+// the classic inputs forever — tactile is an offer, never a wall.
+
+const tileBtn: CSSProperties = {
+  minWidth: 44, height: 44, padding: "0 10px", borderRadius: 10, fontSize: 18, fontWeight: 700,
+  border: "1px solid var(--card-border)", background: "var(--bg-sunken)", color: "var(--text)",
+  cursor: "pointer", fontFamily: "var(--font-body)", touchAction: "manipulation",
+};
+const slotBox: CSSProperties = {
+  width: 34, height: 44, borderRadius: 8, display: "inline-flex", alignItems: "center", justifyContent: "center",
+  fontSize: 20, fontWeight: 700, fontFamily: "var(--font-body)",
+};
+const srOnly: CSSProperties = {
+  position: "absolute", width: 1, height: 1, padding: 0, margin: -1, overflow: "hidden",
+  clip: "rect(0 0 0 0)", whiteSpace: "nowrap", border: 0,
+};
+
+/** T1 · anagram letter-tile tray: tap tiles to fill slots; tapping a filled
+ *  slot pops it AND everything after it (the v1 spelling-bee ergonomic);
+ *  apostrophes/hyphens are fixed, pre-filled slots. Backspace pops, Enter checks. */
+function AnagramTray({ answer, seed, disabled, onChange, onEnter }: {
+  answer: string; seed: string; disabled: boolean; onChange: (assembled: string) => void; onEnter: () => void;
+}) {
+  const slots = useMemo(() => agSlots(answer), [answer]);
+  const tiles = useMemo(() => agTiles(answer, seed), [answer, seed]);
+  const letterSlots = useMemo(() => slots.filter((s) => s.fixed === null).length, [slots]);
+  const [placed, setPlaced] = useState<number[]>([]); // tile indices, in placement order
+
+  const emit = (p: number[]) => {
+    const chars: Array<string | null> = Array.from({ length: letterSlots }, (_, i) => (i < p.length ? tiles[p[i]!]!.ch : null));
+    onChange(agAssemble(slots, chars));
+  };
+  const place = (ti: number) => {
+    if (disabled || placed.includes(ti) || placed.length >= letterSlots) return;
+    const p = [...placed, ti];
+    setPlaced(p);
+    emit(p);
+  };
+  const popTo = (k: number) => {
+    if (disabled) return;
+    const p = placed.slice(0, k);
+    setPlaced(p);
+    emit(p);
+  };
+
+  let letterIdx = -1;
+  const assembled = agAssemble(slots, placed.map((ti) => tiles[ti]!.ch));
+  return (
+    <div
+      onKeyDown={(e) => {
+        if (disabled) return;
+        if (e.key === "Backspace" && placed.length > 0) { e.preventDefault(); popTo(placed.length - 1); }
+        if (e.key === "Enter") { e.preventDefault(); onEnter(); }
+      }}
+    >
+      <div aria-label="Your letters so far" style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 8 }}>
+        {slots.map((s, i) => {
+          if (s.fixed !== null) {
+            return <span key={i} aria-hidden="true" style={{ ...slotBox, color: "var(--muted)" }}>{s.fixed}</span>;
+          }
+          letterIdx += 1;
+          const k = letterIdx;
+          const ti = placed[k];
+          return ti !== undefined ? (
+            <button key={i} type="button" aria-label={`Remove letter ${tiles[ti]!.ch}`} disabled={disabled} onClick={() => popTo(k)}
+              style={{ ...slotBox, border: "1px solid var(--accent)", background: "var(--accent-soft)", color: "var(--ink)", cursor: "pointer" }}>
+              {tiles[ti]!.ch}
+            </button>
+          ) : (
+            <span key={i} aria-hidden="true" style={{ ...slotBox, borderBottom: "2px solid var(--card-border)", background: "var(--bg-sunken)" }} />
+          );
+        })}
+      </div>
+      <div role="group" aria-label="Letter tiles" style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+        {tiles.map((t, ti) => (
+          <button key={t.key} type="button" aria-label={`Letter ${t.ch}`} disabled={disabled || placed.includes(ti)} onClick={() => place(ti)}
+            style={{ ...tileBtn, opacity: placed.includes(ti) ? 0.25 : 1 }}>
+            {t.ch}
+          </button>
+        ))}
+      </div>
+      <span role="status" aria-live="polite" style={srOnly}>{assembled === "" ? "" : `So far: ${assembled}`}</span>
+    </div>
+  );
+}
+
+/** T2 · sentence-building word-chip builder: tap tray chips to append, tap a
+ *  chip in the sentence to send it back. Punctuation never rides the tray
+ *  (grade-neutral — the reveal shows the full sentence). */
+function ChipBuilder({ promptText, disabled, onChange, onEnter }: {
+  promptText: string; disabled: boolean; onChange: (assembled: string) => void; onEnter: () => void;
+}) {
+  const chips = useMemo(() => sbChips(promptText), [promptText]);
+  const [chosen, setChosen] = useState<number[]>([]);
+
+  const emit = (c: number[]) => onChange(c.map((i) => chips[i]!.text).join(" "));
+  const add = (i: number) => {
+    if (disabled || chosen.includes(i)) return;
+    const c = [...chosen, i];
+    setChosen(c);
+    emit(c);
+  };
+  const removeAt = (k: number) => {
+    if (disabled) return;
+    const c = chosen.filter((_, idx) => idx !== k);
+    setChosen(c);
+    emit(c);
+  };
+
+  const assembled = chosen.map((i) => chips[i]!.text).join(" ");
+  return (
+    <div
+      onKeyDown={(e) => {
+        if (disabled) return;
+        if (e.key === "Backspace" && chosen.length > 0) { e.preventDefault(); removeAt(chosen.length - 1); }
+        if (e.key === "Enter") { e.preventDefault(); onEnter(); }
+      }}
+    >
+      <div aria-label="Your sentence so far" style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", minHeight: 48, padding: "6px 10px", borderRadius: 12, border: "1px solid var(--card-border)", background: "var(--bg-sunken)", marginBottom: 8 }}>
+        {chosen.map((i, k) => (
+          <button key={`${chips[i]!.key}@${k}`} type="button" aria-label={`Remove word ${chips[i]!.text}`} disabled={disabled} onClick={() => removeAt(k)}
+            style={{ ...tileBtn, height: 36, fontSize: 15, border: "1px solid var(--accent)", background: "var(--accent-soft)", color: "var(--ink)" }}>
+            {chips[i]!.text}
+          </button>
+        ))}
+        {!disabled && chosen.length < chips.length && (
+          <span aria-hidden="true" style={{ color: "var(--muted)", fontSize: 18, animation: undefined }}>▏</span>
+        )}
+      </div>
+      <div role="group" aria-label="Word chips" style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+        {chips.map((chip, i) => (
+          <button key={chip.key} type="button" aria-label={`Add word ${chip.text}`} disabled={disabled || chosen.includes(i)} onClick={() => add(i)}
+            style={{ ...tileBtn, height: 40, fontSize: 15, opacity: chosen.includes(i) ? 0.25 : 1 }}>
+            {chip.text}
+          </button>
+        ))}
+      </div>
+      <span role="status" aria-live="polite" style={srOnly}>{assembled === "" ? "" : `So far: ${assembled}`}</span>
+    </div>
+  );
+}
+
+export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, tactile }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; tactile?: boolean }) {
   const promptId = useId();
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
@@ -399,6 +548,13 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp }:
 
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
   const isText = TEXT_FORMATS.has(item.format);
+  // T1/T2: the tactile renderers apply to single-blank anagram/sentence-building
+  // with an authored answer; "Type instead" falls back to the classic inputs.
+  const [typeInstead, setTypeInstead] = useState(false);
+  const tactileMode =
+    tactile === true && !typeInstead && blankCount === 1 && fullAnswers.length > 0 && (item.format === "anagram" || item.format === "sentence-building")
+      ? item.format
+      : null;
 
   return (
     <div style={card} role="group" aria-labelledby={promptId}>
@@ -407,7 +563,16 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp }:
       {isChoice && <Choices options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} corrects={fullAnswers} />}
       {isMatch && <Dropdowns rows={item.pairs.map((p) => p.left)} options={matchRights} value={map} onChange={setMap} disabled={done} />}
       {isGroup && <Dropdowns rows={sortMembers} options={groupLabels} value={map} onChange={setMap} disabled={done} />}
-      {isText && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} onEnter={submit} autoFocusFirst={autoFocus} />}
+      {isText && tactileMode === null && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} onEnter={submit} autoFocusFirst={autoFocus} />}
+      {tactileMode === "anagram" && (
+        <AnagramTray answer={fullAnswers[0]!} seed={item.id} disabled={done} onChange={(a) => setText([a])} onEnter={submit} />
+      )}
+      {tactileMode === "sentence-building" && (
+        <ChipBuilder promptText={item.prompt.text} disabled={done} onChange={(a) => setText([a])} onEnter={submit} />
+      )}
+      {tactileMode !== null && !done && (
+        <button className="dg-chip" style={{ alignSelf: "flex-start" }} onClick={() => setTypeInstead(true)}>⌨️ Type instead</button>
+      )}
       <GlossRow gloss={item.gloss} />
       {!hideHint && <HintRow hintDe={item.hintDe} />}
       {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}

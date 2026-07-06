@@ -80,7 +80,7 @@ export default function PracticeSession({ slug, vocab, grammar }: {
 
       {item ? (
         mode === "grammar" ? (
-          <GrammarItemView key={item.id} item={item as GrammarItem} onResult={onResult} />
+          <GrammarItemView key={item.id} item={item as GrammarItem} onResult={onResult} tactile />
         ) : (
           <VocabItemView key={item.id} item={item as VocabItem} onResult={onResult} />
         )
