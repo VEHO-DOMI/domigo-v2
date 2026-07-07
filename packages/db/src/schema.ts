@@ -10,6 +10,7 @@ import {
   text,
   integer,
   smallint,
+  numeric,
   boolean,
   timestamp,
   jsonb,
@@ -149,10 +150,16 @@ export const writingSubmissions = v2.table(
     text: text("text").notNull(),
     wordCount: integer("word_count").notNull(),
     submittedAt: timestamp("submitted_at", { withTimezone: true }).notNull().defaultNow(),
+    // M-1: when a submission belongs to a teacher assignment's writing section, it
+    // carries the assignment + session it was written in (both nullable — the
+    // legacy auto-assembled /tests writing path leaves them null). Additive.
+    assignmentId: uuid("assignment_id"),
+    sessionId: uuid("session_id"),
   },
   (t) => ({
     byUser: index("writing_submissions_user_idx").on(t.userId),
     byClassUnit: index("writing_submissions_class_unit_idx").on(t.classId, t.unitSlug),
+    byAssignment: index("writing_submissions_assignment_idx").on(t.assignmentId),
   }),
 );
 
@@ -181,5 +188,116 @@ export const gameSaves = v2.table(
   (t) => ({
     userGameUnique: uniqueIndex("game_saves_user_game_unique").on(t.userId, t.gameMode),
     byUser: index("game_saves_user_idx").on(t.userId),
+  }),
+);
+
+// ── M-wave: teacher-designable assignments / mock tests (BLUEPRINT III.7) ──────
+// No-FK style (integrity at the endpoints), like every table above; all ids are
+// reused v1 uuids where they cross to `public`. `mode` splits an untimed practice
+// set from a timed, weighted, Notenschlüssel-graded mock test (Schularbeit rehearsal).
+
+/**
+ * One teacher-authored assignment. `notenSchluessel` is null ⇒ the AHS default
+ * ({1:90,2:80,3:65,4:50}); when present, a `{ "1":n, "2":n, "3":n, "4":n }` jsonb
+ * of the *minimum* percent for each Note (Note 5 is the implicit floor). Score
+ * math lives in assignments.ts (pure) — never in SQL.
+ */
+export const assignments = v2.table(
+  "assignments",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    classId: uuid("class_id").notNull(), // → v1 class
+    createdBy: uuid("created_by").notNull(), // → v1 teacher userId
+    title: text("title").notNull(),
+    descriptionDe: text("description_de"),
+    mode: text("mode").notNull(), // 'practice' | 'mock_test'
+    startsAt: timestamp("starts_at", { withTimezone: true }),
+    dueAt: timestamp("due_at", { withTimezone: true }),
+    archivedAt: timestamp("archived_at", { withTimezone: true }),
+    sessionDurationMinutes: integer("session_duration_minutes"), // whole-test timer (null = untimed)
+    attemptsPerTest: smallint("attempts_per_test").notNull().default(1), // 1..3, endpoint-capped
+    notenSchluessel: jsonb("noten_schluessel"), // null ⇒ AHS default
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    byClass: index("assignments_class_idx").on(t.classId),
+    byCreator: index("assignments_creator_idx").on(t.createdBy),
+  }),
+);
+
+/**
+ * A section of an assignment. `itemIds` is the authored order; the server
+ * RE-RESOLVES items via the content loaders at grade time and never trusts this
+ * jsonb for grading. `weightPct` sums to 100 across a mock test's sections
+ * (endpoint-enforced); a practice assignment ignores weights.
+ */
+export const assignmentSections = v2.table(
+  "assignment_sections",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    assignmentId: uuid("assignment_id").notNull(),
+    position: smallint("position").notNull(),
+    kind: text("kind").notNull(), // 'vocab'|'grammar'|'listening'|'reading'|'writing'
+    itemIds: jsonb("item_ids"), // string[] — authored order (server re-resolves)
+    listeningTaskId: text("listening_task_id"),
+    writingPromptId: text("writing_prompt_id"),
+    timerMinutes: integer("timer_minutes"),
+    weightPct: smallint("weight_pct").notNull().default(0),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    byAssignment: index("assignment_sections_assignment_idx").on(t.assignmentId, t.position),
+  }),
+);
+
+/**
+ * One student's attempt at an assignment. `expiresAt` is the SERVER timing gate
+ * (null = untimed); `scorePct` (numeric, exact-ish for display) and `note`
+ * (1..5, the authoritative computed Note) are written on submit from the pure
+ * score math — the Note is computed from the exact percent, never re-derived
+ * from a rounded stored value.
+ */
+export const assignmentSessions = v2.table(
+  "assignment_sessions",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    assignmentId: uuid("assignment_id").notNull(),
+    userId: uuid("user_id").notNull(),
+    attemptNumber: smallint("attempt_number").notNull().default(1),
+    expiresAt: timestamp("expires_at", { withTimezone: true }), // server wall (null = untimed)
+    currentSection: smallint("current_section").notNull().default(0),
+    sectionTimes: jsonb("section_times"), // { [position]: secondsSpent }
+    submittedAt: timestamp("submitted_at", { withTimezone: true }),
+    scorePct: numeric("score_pct", { precision: 5, scale: 2 }),
+    note: smallint("note"), // 1..5
+    startedAt: timestamp("started_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    attemptUnique: uniqueIndex("assignment_sessions_attempt_unique").on(t.assignmentId, t.userId, t.attemptNumber),
+    byUser: index("assignment_sessions_user_idx").on(t.userId),
+    byAssignment: index("assignment_sessions_assignment_idx").on(t.assignmentId),
+  }),
+);
+
+/**
+ * Items a teacher has RESERVED for a class (held out of practice/review so a
+ * mock test can use them unseen). One row per (class, item); `active=false` +
+ * `releasedAt` records a release back into the practice pool.
+ */
+export const reservedItems = v2.table(
+  "reserved_items",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    classId: uuid("class_id").notNull(),
+    itemId: text("item_id").notNull(),
+    active: boolean("active").notNull().default(true),
+    releasedAt: timestamp("released_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    classItemUnique: uniqueIndex("reserved_items_class_item_unique").on(t.classId, t.itemId),
+    byClass: index("reserved_items_class_idx").on(t.classId),
   }),
 );
