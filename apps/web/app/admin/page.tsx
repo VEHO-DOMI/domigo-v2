@@ -65,11 +65,20 @@ export default async function AdminPage() {
       })}
 
       <section className="dg-card" style={{ marginTop: 24 }}>
+        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Assignments</h2>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
+          Compose, time and assign your own practice sets and mock tests (Schularbeit rehearsal), graded by your
+          own Notenschlüssel.
+        </p>
+        <a href="/admin/assignments" className="dg-btn" style={{ display: "inline-block" }}>Open the assignment builder →</a>
+      </section>
+
+      <section className="dg-card" style={{ marginTop: 16 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Next for teachers</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: 0 }}>
-          Landing through the summer program, in build order: grading captured writing submissions, the mock-test
-          builder (compose, time and assign your own Schularbeit practice), and native content editing with a
-          student “report a problem” inbox. Until each one ships, it doesn’t appear here — no dead buttons.
+          Landing through the summer program, in build order: the student runner + results for these assignments,
+          grading captured writing submissions, and native content editing with a student “report a problem”
+          inbox. Until each one ships, it doesn’t appear here — no dead buttons.
         </p>
       </section>
 
