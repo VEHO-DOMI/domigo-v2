@@ -42,3 +42,25 @@ export async function getActingUserForPage(): Promise<ActingUser | null> {
   if (!userId || !classId) return null;
   return { userId, classId };
 }
+
+export interface ActingTeacher {
+  userId: string;
+  name: string;
+}
+
+/**
+ * Teacher identity for the /admin surface — a real teacher session (role
+ * "teacher", classId null) first, then a non-prod `DEV_TEACHER_ID` fallback so
+ * the mock-test builder renders under the dev server without a live login (the
+ * teacher analog of DEV_USER_ID; never resolves in production).
+ */
+export async function getTeacherForPage(): Promise<ActingTeacher | null> {
+  const session = await auth();
+  if (session?.user?.id && session.user.role === "teacher") {
+    return { userId: session.user.id, name: session.user.name ?? "Teacher" };
+  }
+  if (process.env.VERCEL_ENV === "production") return null;
+  const userId = process.env.DEV_TEACHER_ID ?? "";
+  if (!userId) return null;
+  return { userId, name: process.env.DEV_TEACHER_NAME ?? "Dev Teacher" };
+}

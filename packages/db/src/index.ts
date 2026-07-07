@@ -29,5 +29,7 @@ export * from "./studypath.ts";
 export * from "./gamesave.ts"; // Track C cosmetic game saves (clientRev LWW)
 export * from "./game-progress.ts"; // Track C: solved-item derivation from the attempts ledger (Law 2)
 export * from "./assignments.ts"; // M-wave: pure mock-test scoring (Note math, DB-free)
+export * from "./assignment-draft.ts"; // M-2: pure draft shape + publish validation (DB-free)
+export * from "./assignment-service.ts"; // M-2: assignment CRUD + v1 class list (best-effort)
 export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth identity)
 export * from "./auth.ts"; // read-only identity lookups (lookupStudentForAuth/lookupTeacherForAuth)
