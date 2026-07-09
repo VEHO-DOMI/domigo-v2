@@ -46,3 +46,49 @@ test("down vs up frames differ (facing cue is real)", () => {
   const up = sp.frames[FACINGS.indexOf("up")]!;
   assert.notDeepEqual(down.pixels, up.pixels);
 });
+
+// ── A1-3 walk cycle ──────────────────────────────────────────────────────────
+
+/** The 1-based rows a pixel index lives in (16-wide image). */
+const rowOf = (i: number) => Math.floor(i / TILE);
+
+test("walk: two valid step frames per facing", () => {
+  const sp = paintPlayerSprite(42);
+  assert.deepEqual(Object.keys(sp.walk).sort(), [...FACINGS].sort());
+  for (const f of FACINGS) {
+    const steps = sp.walk[f];
+    assert.equal(steps.length, 2);
+    for (const img of steps) {
+      assert.equal(img.pixels.length, TILE * TILE);
+      assert.ok(img.pixels.every((p) => p >= 0 && p < img.palette.length), "indices in palette range");
+    }
+  }
+});
+
+test("walk steps differ from the neutral frame ONLY in the leg rows (12..14)", () => {
+  const sp = paintPlayerSprite(7);
+  for (const f of FACINGS) {
+    const neutral = sp.frames[FACINGS.indexOf(f)]!.pixels;
+    for (const step of sp.walk[f]) {
+      let differed = false;
+      for (let i = 0; i < neutral.length; i++) {
+        if (step.pixels[i] !== neutral[i]) {
+          differed = true;
+          assert.ok(rowOf(i) >= 12 && rowOf(i) <= 14, `${f}: change at row ${rowOf(i)} is outside the legs — head/torso must stay identical`);
+        }
+      }
+      assert.ok(differed, `${f}: a walk step must actually move a foot`);
+    }
+  }
+});
+
+test("the two walk steps alternate feet (step 1 ≠ step 2)", () => {
+  const sp = paintPlayerSprite(7);
+  for (const f of FACINGS) {
+    assert.notDeepEqual(sp.walk[f][0].pixels, sp.walk[f][1].pixels);
+  }
+});
+
+test("walk cycle is deterministic per seed", () => {
+  assert.deepEqual(paintPlayerSprite(42).walk, paintPlayerSprite(42).walk);
+});

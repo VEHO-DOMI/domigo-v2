@@ -231,6 +231,11 @@ export function PhaserGame(props: PhaserGameProps) {
 
   useEffect(() => {
     const { width, height } = OverworldScene.dimensions();
+    // A1-3: honor OS reduced-motion for the canvas (the walk cycle won't play);
+    // `?motion=reduce` forces it on for playtesting (the `?dpad=1` pattern).
+    const reducedMotion =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      new URLSearchParams(window.location.search).get("motion") === "reduce";
     const scene = new OverworldScene({
       seed: props.seed,
       playerSeed: props.playerSeed,
@@ -242,6 +247,7 @@ export function PhaserGame(props: PhaserGameProps) {
       initial: props.initialSave ?? null,
       onState: (s) => props.onSave?.(s),
       pad: padRef.current,
+      reducedMotion,
     });
     sceneRef.current = scene;
     const game = new Phaser.Game({
