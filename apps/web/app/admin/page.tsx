@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { listReleasedStories } from "@domigo/content-loader";
 import { getDb, getUnitMastery } from "@domigo/db";
@@ -70,7 +71,7 @@ export default async function AdminPage() {
           Compose, time and assign your own practice sets and mock tests (Schularbeit rehearsal), graded by your
           own Notenschlüssel.
         </p>
-        <a href="/admin/assignments" className="dg-btn" style={{ display: "inline-block" }}>Open the assignment builder →</a>
+        <Link href="/admin/assignments" className="dg-btn" style={{ display: "inline-block" }}>Open the assignment builder →</Link>
       </section>
 
       <section className="dg-card" style={{ marginTop: 16 }}>

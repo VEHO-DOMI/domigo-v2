@@ -1,8 +1,9 @@
 /**
  * /admin/assignments — the teacher's assignments list. Newest first, each linking
- * to its (future M-4) results view; a "New assignment" button opens the builder.
+ * to its results roster; a "New assignment" button opens the builder.
  * Teacher-only (getTeacherForPage — real session or the non-prod dev fallback).
  */
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getDb, listAssignmentsByCreator, listClasses } from "@domigo/db";
 import { getTeacherForPage } from "@/lib/identity";
@@ -29,14 +30,14 @@ export default async function AssignmentsPage() {
         Compose, time and assign your own practice sets and mock tests (Schularbeit rehearsal).
       </p>
 
-      <a href="/admin/assignments/new" className="dg-btn" style={{ display: "inline-block", marginTop: 6 }}>+ New assignment</a>
+      <Link href="/admin/assignments/new" className="dg-btn" style={{ display: "inline-block", marginTop: 6 }}>+ New assignment</Link>
 
       {rows.length === 0 ? (
         <p style={{ color: "var(--muted)", marginTop: 24 }}>No assignments yet. Build your first one.</p>
       ) : (
         <div style={{ marginTop: 24, display: "flex", flexDirection: "column", gap: 10 }}>
           {rows.map((a) => (
-            <div key={a.id} className="dg-card" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", opacity: a.archivedAt ? 0.55 : 1 }}>
+            <Link key={a.id} href={`/admin/assignments/${a.id}`} className="dg-tile" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px", opacity: a.archivedAt ? 0.55 : 1 }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 16, color: "var(--ink)" }}>{a.title}</div>
                 <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>
@@ -45,10 +46,8 @@ export default async function AssignmentsPage() {
                   {a.archivedAt ? " · archived" : ""}
                 </div>
               </div>
-              <span style={{ fontSize: 12, fontFamily: "var(--font-label)", fontWeight: 700, color: "var(--muted)", textTransform: "uppercase" }}>
-                {a.mode === "mock_test" ? "📝" : "✏️"}
-              </span>
-            </div>
+              <span style={{ fontSize: 13, color: "var(--accent)", fontWeight: 700 }}>Ergebnisse →</span>
+            </Link>
           ))}
         </div>
       )}

@@ -8,6 +8,7 @@
 import { and, asc, desc, eq, isNull, lte, or } from "drizzle-orm";
 import type { Db } from "./index.ts";
 import { assignments, assignmentSections, assignmentSessions, practiceAttempts } from "./schema.ts";
+import { v1Users } from "./v1.ts";
 import { sessionExpiry } from "./assignment-session.ts";
 import type { ScorableAttempt } from "./assignments.ts";
 import type { SubmittedScore } from "./assignment-session.ts";
@@ -87,6 +88,31 @@ export async function getSessionAttempts(db: Db, userId: string, assignmentId: s
   return rows
     .filter((r) => (r.context as { sessionId?: string } | null)?.sessionId === sessionId)
     .map((r) => ({ itemId: r.itemId, tier: r.tier as ScorableAttempt["tier"], createdAt: r.createdAt }));
+}
+
+// ── M-4 · teacher results roster reads ───────────────────────────────────────
+
+/** Every student's sittings for an assignment (all attempts), for the roster. */
+export async function listSessionsForAssignment(db: Db, assignmentId: string) {
+  return db
+    .select()
+    .from(assignmentSessions)
+    .where(eq(assignmentSessions.assignmentId, assignmentId))
+    .orderBy(asc(assignmentSessions.userId), asc(assignmentSessions.attemptNumber));
+}
+
+export interface StudentRow {
+  id: string;
+  name: string;
+}
+
+/** The students of a class (read-only SELECT on v1 public.users) — the roster's names. */
+export async function listStudentsForClass(db: Db, classId: string): Promise<StudentRow[]> {
+  const rows = await db
+    .select({ id: v1Users.id, name: v1Users.displayName })
+    .from(v1Users)
+    .where(and(eq(v1Users.classId, classId), eq(v1Users.role, "student")));
+  return rows.map((r) => ({ id: r.id, name: r.name }));
 }
 
 /** Finalize a submitted sitting with its exact score + Note (from the pure scorer). */
