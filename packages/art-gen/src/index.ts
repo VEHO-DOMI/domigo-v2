@@ -4,6 +4,7 @@
  * to textures; this package owns map@1's `render.generator` outputs.
  */
 export * from "./image.ts";
+export * from "./color.ts";
 export * from "./rng.ts";
 export * from "./tileset.ts";
 export * from "./theme.ts";

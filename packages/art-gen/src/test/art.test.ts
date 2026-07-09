@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { FACINGS, TILE, TILE_KINDS, paintPlayerSprite, paintTileset } from "../index.ts";
 
-test("tileset: 6 tiles, each a valid 16x16 indexed image", () => {
+test("tileset: base tiles, each a valid TILE×TILE indexed image", () => {
   const ts = paintTileset(7);
   assert.deepEqual(Object.keys(ts.tiles).sort(), [...TILE_KINDS].sort());
   for (const k of TILE_KINDS) {
@@ -21,7 +21,9 @@ test("tileset is deterministic per seed, and varies across seeds", () => {
 
 test("encounter tile actually paints the glow marker (not blank floor)", () => {
   const enc = paintTileset(3).tiles.encounter!;
-  assert.ok(enc.pixels.some((p) => p === 8), "has the green glow index");
+  const glowIdx = enc.palette.indexOf("#22c55e"); // default encounterGlow slot
+  assert.ok(glowIdx > 0, "palette carries the glow colour");
+  assert.ok(enc.pixels.some((p) => p === glowIdx), "the ✦ star is actually painted");
 });
 
 test("player sprite: 4 directional frames, valid indexed images", () => {
@@ -49,8 +51,10 @@ test("down vs up frames differ (facing cue is real)", () => {
 
 // ── A1-3 walk cycle ──────────────────────────────────────────────────────────
 
-/** The 1-based rows a pixel index lives in (16-wide image). */
+/** The 0-based row a pixel index lives in (TILE-wide image). */
 const rowOf = (i: number) => Math.floor(i / TILE);
+/** Walk steps only ever touch the legs — at or below this row (matches sprite.ts LEG_TOP). */
+const LEG_TOP = 34;
 
 test("walk: two valid step frames per facing", () => {
   const sp = paintPlayerSprite(42);
@@ -65,7 +69,7 @@ test("walk: two valid step frames per facing", () => {
   }
 });
 
-test("walk steps differ from the neutral frame ONLY in the leg rows (12..14)", () => {
+test("walk steps differ from the neutral frame ONLY in the leg rows (34+)", () => {
   const sp = paintPlayerSprite(7);
   for (const f of FACINGS) {
     const neutral = sp.frames[FACINGS.indexOf(f)]!.pixels;
@@ -74,7 +78,7 @@ test("walk steps differ from the neutral frame ONLY in the leg rows (12..14)", (
       for (let i = 0; i < neutral.length; i++) {
         if (step.pixels[i] !== neutral[i]) {
           differed = true;
-          assert.ok(rowOf(i) >= 12 && rowOf(i) <= 14, `${f}: change at row ${rowOf(i)} is outside the legs — head/torso must stay identical`);
+          assert.ok(rowOf(i) >= LEG_TOP, `${f}: change at row ${rowOf(i)} is above the legs — head/torso must stay identical`);
         }
       }
       assert.ok(differed, `${f}: a walk step must actually move a foot`);

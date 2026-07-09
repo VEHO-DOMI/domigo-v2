@@ -11,9 +11,9 @@ import { walkFrameKey } from "./anim.ts";
 import { findPath, nearestWalkable, type Cell, type GridSpec } from "./path.ts";
 import { rasterize } from "./rasterize.ts";
 
-const SCALE = 3;
-const SRC = 16;
-const TILE = SRC * SCALE; // 48px display tile
+const SRC = 48; // art-gen source resolution — crafted 1:1 (was 16px upscaled 3× = chunky)
+const SCALE = 1; // rasterize scale; 1:1 keeps the crisp GBA pixels (no interpolation)
+const TILE = SRC * SCALE; // 48px display tile — grid/save/camera/tap math all unchanged
 const GRID_W = 15;
 const GRID_H = 11; // grid frozen for save-compat (the cosmetic save stores the player's pixel position)
 
@@ -158,7 +158,10 @@ export class OverworldScene extends Phaser.Scene {
     const initPos = resume?.pos;
     this.player = this.physics.add.sprite(initPos?.[0] ?? start.x, initPos?.[1] ?? start.y, "p-down");
     this.player.setDisplaySize(TILE, TILE).setCollideWorldBounds(true);
-    this.player.body.setSize(SRC * 0.6, SRC * 0.6).setOffset(SRC * 0.2, SRC * 0.3);
+    // Collision body: a compact box around the lower body/feet (not the whole 48px
+    // frame) so the head/shoulders can overlap walls above — the top-down convention.
+    // Authored in the sprite's 48px source space (display scale is 1).
+    this.player.body.setSize(22, 16).setOffset(13, 26);
     this.physics.add.collider(this.player, walls);
     this.lastReport = { x: this.player.x, y: this.player.y };
     const cleared = new Set(resume?.cleared ?? []);

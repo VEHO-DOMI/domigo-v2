@@ -1,11 +1,14 @@
 /**
- * Procedural overworld tileset. Deterministic from a seed; emits IndexedImages
- * (no canvas). The 6 base tiles (floor/wall/path/accent/accent2/encounter) plus
- * optional decor PROPS (board/plant/barrel/rug/stage/note) used by per-zone themes.
- * Colours are NAMED palette slots so a theme can recolour by name; `paintTileset(seed)`
- * with no opts reproduces the original "School & Classroom" output (rendered) verbatim.
+ * Procedural overworld tileset — 48px, deterministic from a seed, DOM-free.
+ * The 6 base tiles (floor/wall/path/accent/accent2/encounter) plus per-zone decor
+ * props. One CRAFTED painter recoloured per zone: a theme supplies base colours
+ * (named slots) and the painter DERIVES highlights/shadows/outlines from them via
+ * color.ts, so every zone gets walls-with-height, grounded props and a glowing ✦
+ * without hand-listing shade colours per zone. `paintTileset(seed)` with no opts
+ * paints the default classroom.
  */
-import { TILE, border, grid, put, rect, type IndexedImage } from "./image.ts";
+import { TILE, disc, grid, hline, put, rect, roundRect, type IndexedImage } from "./image.ts";
+import { darken, lighten, mix } from "./color.ts";
 import { mulberry32 } from "./rng.ts";
 
 export type TileKind =
@@ -14,19 +17,17 @@ export type TileKind =
 /** The base tileset (what `paintTileset(seed)` paints by default). Props are opt-in via a theme. */
 export const TILE_KINDS: TileKind[] = ["floor", "wall", "path", "accent", "accent2", "encounter"];
 
-/** Named palette slots — a theme overrides by name; the painter reads them as indices. */
+/** Named palette slots a theme overrides by name. */
 export type PaletteSlot =
   | "floorBase" | "floorSpeckle" | "wallBase" | "wallBorder" | "pathBase" | "accentLight"
   | "propWood" | "encounterGlow" | "encounterRing" | "propLeaf" | "propDark" | "propMetal" | "propWarm";
 
-/** Slot order == palette index (offset by 1; index 0 is always transparent). */
 const SLOTS: PaletteSlot[] = [
   "floorBase", "floorSpeckle", "wallBase", "wallBorder", "pathBase", "accentLight",
   "propWood", "encounterGlow", "encounterRing", "propLeaf", "propDark", "propMetal", "propWarm",
 ];
-const IDX = Object.fromEntries(SLOTS.map((s, i) => [s, i + 1])) as Record<PaletteSlot, number>;
 
-/** Default colours — slots 1-9 reproduce the original PALETTE exactly; 10-13 are prop colours. */
+/** Default colours — the classroom. */
 const DEFAULT_COLORS: Record<PaletteSlot, string> = {
   floorBase: "#cdb89a", floorSpeckle: "#b9a079", wallBase: "#6b7280", wallBorder: "#434a55",
   pathBase: "#9ca3af", accentLight: "#d6c7a8", propWood: "#b45309", encounterGlow: "#22c55e",
@@ -34,92 +35,195 @@ const DEFAULT_COLORS: Record<PaletteSlot, string> = {
 };
 
 export interface TilesetOptions {
-  /** Per-slot colour overrides (theme palette). */
   palette?: Partial<Record<PaletteSlot, string>>;
-  /** Brand accent for the encounter-node glow (kept legible by a dark ring). */
+  /** Brand accent for the ✦ glow (kept legible by its own bright core). */
   accent?: string;
-  /** Which tiles to paint (default = the 6 base kinds). Themes add their props. */
   kinds?: TileKind[];
 }
 
-function buildPalette(opts?: TilesetOptions): string[] {
-  const colors = { ...DEFAULT_COLORS, ...(opts?.palette ?? {}) };
-  if (opts?.accent) colors.encounterGlow = opts.accent; // ring stays dark → green node pops on any floor
-  return ["#00000000", ...SLOTS.map((s) => colors[s])];
+/** The full palette (base + DERIVED shades) and a name→index map. Index 0 = transparent. */
+function buildPalette(opts?: TilesetOptions): { palette: string[]; k: Record<string, number> } {
+  const c = { ...DEFAULT_COLORS, ...(opts?.palette ?? {}) };
+  if (opts?.accent) c.encounterGlow = opts.accent;
+
+  // name → colour, in order; the index is the position (+1 for the transparent slot).
+  const entries: Array<[string, string]> = [
+    // base
+    ["floorBase", c.floorBase], ["floorSpeckle", c.floorSpeckle], ["wallBase", c.wallBase],
+    ["wallBorder", c.wallBorder], ["pathBase", c.pathBase], ["accentLight", c.accentLight],
+    ["propWood", c.propWood], ["encounterGlow", c.encounterGlow], ["encounterRing", c.encounterRing],
+    ["propLeaf", c.propLeaf], ["propDark", c.propDark], ["propMetal", c.propMetal], ["propWarm", c.propWarm],
+    // derived — floor
+    ["floorHi", lighten(c.floorBase, 0.05)], ["floorLo", darken(c.floorBase, 0.06)],
+    ["floorSeam", darken(c.floorBase, 0.12)],
+    // derived — wall (top-lit face + cast shadow onto the floor)
+    ["wallTop", lighten(c.wallBase, 0.22)], ["wallTopLip", lighten(c.wallBase, 0.34)],
+    ["wallHi", lighten(c.wallBase, 0.08)], ["wallLo", darken(c.wallBase, 0.16)],
+    ["wallDark", darken(c.wallBase, 0.34)], ["wallCast", darken(c.floorBase, 0.30)],
+    // derived — path
+    ["pathHi", lighten(c.pathBase, 0.06)], ["pathLo", darken(c.pathBase, 0.10)],
+    // derived — wood props (desk/frames)
+    ["woodHi", lighten(c.propWood, 0.18)], ["woodLo", darken(c.propWood, 0.20)], ["woodDark", darken(c.propWood, 0.40)],
+    // derived — leaf / metal / warm
+    ["leafHi", lighten(c.propLeaf, 0.16)], ["leafLo", darken(c.propLeaf, 0.18)],
+    ["metalHi", lighten(c.propMetal, 0.18)], ["metalLo", darken(c.propMetal, 0.18)],
+    ["warmHi", lighten(c.propWarm, 0.18)], ["warmLo", darken(c.propWarm, 0.20)],
+    // derived — the ✦
+    ["encCore", mix(c.encounterGlow, "#ffffff", 0.55)], ["encHalo", `${c.encounterGlow}44`],
+    // shared
+    ["shadow", "#0000002e"], ["shadowSoft", "#00000018"], ["ink", "#20242e"], ["white", "#ffffff"],
+  ];
+  const palette = ["#00000000", ...entries.map((e) => e[1])];
+  const k: Record<string, number> = {};
+  entries.forEach(([name], i) => { k[name] = i + 1; });
+  return { palette, k };
 }
 
-function speckle(px: number[], rng: () => number, baseIdx: number, speckleIdx: number, p: number): void {
-  for (let i = 0; i < px.length; i++) if (px[i] === baseIdx && rng() < p) px[i] = speckleIdx;
+/** Sparse seed-stable texture flecks so different seeds differ (determinism test). */
+function fleck(px: number[], rng: () => number, baseIdx: number, fleckIdx: number, p: number): void {
+  for (let i = 0; i < px.length; i++) if (px[i] === baseIdx && rng() < p) px[i] = fleckIdx;
 }
 
-/** Pixels for one tile kind (palette-index grid). Determinism: speckle positions are seed-stable. */
-function paintTile(kind: TileKind, seed: number): number[] {
+/** A soft grounding shadow at the base of a standing prop (soft outer, then core). */
+function groundShadow(px: number[], k: Record<string, number>, cx: number, cy: number, rx: number, ry: number): void {
+  disc(px, TILE, TILE, cx, cy, rx * 1.35, ry * 1.25, k.shadowSoft!); // soft falloff (behind)
+  disc(px, TILE, TILE, cx, cy, rx, ry, k.shadow!);                   // core shadow (on top)
+}
+
+function paintTile(kind: TileKind, seed: number, k: Record<string, number>): number[] {
   const rng = mulberry32(seed);
-  const px = grid(TILE, TILE, IDX.floorBase);
+  // Props start TRANSPARENT so the real floor tile (and the alpha ground shadows)
+  // show through; the ground tiles fill their base explicitly below.
+  const px = grid(TILE, TILE, 0);
+
   switch (kind) {
-    case "floor":
-      speckle(px, rng, IDX.floorBase, IDX.floorSpeckle, 0.12);
-      break;
-    case "wall":
-      rect(px, TILE, TILE, 0, 0, TILE, TILE, IDX.wallBase);
-      speckle(px, rng, IDX.wallBase, IDX.wallBorder, 0.1);
-      border(px, TILE, TILE, IDX.wallBorder);
-      break;
-    case "path":
-      rect(px, TILE, TILE, 0, 0, TILE, TILE, IDX.pathBase);
-      speckle(px, rng, IDX.pathBase, IDX.accentLight, 0.14);
-      break;
-    case "accent":
-      speckle(px, rng, IDX.floorBase, IDX.accentLight, 0.2);
-      break;
-    case "accent2": // a desk block on floor
-      rect(px, TILE, TILE, 2, 4, 12, 8, IDX.propWood);
-      speckle(px, rng, IDX.propWood, IDX.accentLight, 0.1);
-      break;
-    case "encounter": { // a glowing node marker: filled diamond + ring
-      const c = TILE / 2;
-      for (let y = 0; y < TILE; y++) for (let x = 0; x < TILE; x++) {
-        const d = Math.abs(x - c + 0.5) + Math.abs(y - c + 0.5);
-        if (d < 4) put(px, TILE, TILE, x, y, IDX.encounterGlow);
-        else if (d < 5.5) put(px, TILE, TILE, x, y, IDX.encounterRing);
-      }
+    case "floor": {
+      // Calm, designed ground: a faint tile seam (darker bottom+right, lit top+left)
+      // that lines up into a subtle grid when tiled, plus a few soft flecks.
+      rect(px, TILE, TILE, 0, 0, TILE, TILE, k.floorBase!);
+      hline(px, TILE, TILE, 0, 0, TILE, k.floorHi!);
+      for (let y = 0; y < TILE; y++) put(px, TILE, TILE, 0, y, k.floorHi!);
+      hline(px, TILE, TILE, 0, TILE - 1, TILE, k.floorSeam!);
+      for (let y = 0; y < TILE; y++) put(px, TILE, TILE, TILE - 1, y, k.floorSeam!);
+      fleck(px, rng, k.floorBase!, k.floorLo!, 0.03);
+      fleck(px, rng, k.floorBase!, k.floorHi!, 0.02);
       break;
     }
-    case "board": // blackboard: dark panel with a wood frame
-      rect(px, TILE, TILE, 1, 1, 14, 11, IDX.propWood);
-      rect(px, TILE, TILE, 2, 2, 12, 9, IDX.propDark);
-      speckle(px, rng, IDX.propDark, IDX.propMetal, 0.04);
-      break;
-    case "plant": { // leafy bush: a wood pot + a green diamond canopy
-      rect(px, TILE, TILE, 5, 11, 6, 4, IDX.propWood);
-      const cx = TILE / 2;
-      for (let y = 0; y < 11; y++) for (let x = 0; x < TILE; x++) {
-        if (Math.abs(x - cx + 0.5) + Math.abs(y - 5) < 5) put(px, TILE, TILE, x, y, IDX.propLeaf);
-      }
-      speckle(px, rng, IDX.propLeaf, IDX.encounterRing, 0.18);
+    case "path": {
+      rect(px, TILE, TILE, 0, 0, TILE, TILE, k.pathBase!);
+      hline(px, TILE, TILE, 0, 0, TILE, k.pathHi!);
+      hline(px, TILE, TILE, 0, TILE - 1, TILE, k.pathLo!);
+      fleck(px, rng, k.pathBase!, k.pathLo!, 0.05);
       break;
     }
-    case "barrel": // wooden barrel with two dark bands
-      rect(px, TILE, TILE, 3, 2, 10, 12, IDX.propWood);
-      rect(px, TILE, TILE, 3, 5, 10, 1, IDX.propDark);
-      rect(px, TILE, TILE, 3, 10, 10, 1, IDX.propDark);
-      speckle(px, rng, IDX.propWood, IDX.propDark, 0.06);
+    case "accent": {
+      // a lighter ground patch (a highlight cell)
+      rect(px, TILE, TILE, 0, 0, TILE, TILE, k.floorBase!);
+      fleck(px, rng, k.floorBase!, k.floorHi!, 0.22);
+      fleck(px, rng, k.floorBase!, k.accentLight!, 0.10);
       break;
-    case "rug": // a soft walkable rug: warm field + dark border
-      rect(px, TILE, TILE, 1, 3, 14, 10, IDX.propWarm);
-      border(px, TILE, TILE, IDX.floorBase); // blend the edge into the floor
-      rect(px, TILE, TILE, 3, 5, 10, 6, IDX.propMetal);
+    }
+    case "wall": {
+      // Top-down wall with HEIGHT: a lit top surface, a textured front face, and a
+      // soft shadow cast onto the floor at its base — the classic GBA depth cue.
+      rect(px, TILE, TILE, 0, 0, TILE, TILE, k.wallBase!);
+      rect(px, TILE, TILE, 0, 0, TILE, 12, k.wallTop!);   // top surface (catches light)
+      hline(px, TILE, TILE, 0, 0, TILE, k.wallTopLip!);   // bright top lip
+      hline(px, TILE, TILE, 0, 12, TILE, k.wallDark!);    // shelf edge under the top
+      // brick mortar on the front face (subtle, offset rows)
+      for (let y = 20; y < 40; y += 10) hline(px, TILE, TILE, 0, y, TILE, k.wallLo!);
+      for (let y = 13; y < 40; y += 10) {
+        const off = ((y / 10) | 0) % 2 === 0 ? 0 : 24;
+        for (let x = off; x < TILE; x += 48) rect(px, TILE, TILE, x + 22, y, 1, 7, k.wallLo!);
+      }
+      rect(px, TILE, TILE, 0, 40, TILE, 3, k.wallLo!);    // base of the wall (darker)
+      rect(px, TILE, TILE, 0, 43, TILE, 5, k.wallCast!);  // cast shadow onto the floor below
+      for (let y = 0; y < 43; y++) put(px, TILE, TILE, 0, y, k.wallHi!);  // left catch light
+      for (let y = 12; y < 43; y++) put(px, TILE, TILE, TILE - 1, y, k.wallDark!); // right shade
       break;
-    case "stage": // a raised platform: warm top edge over a wood body
-      rect(px, TILE, TILE, 0, 4, TILE, 12, IDX.propWood);
-      rect(px, TILE, TILE, 0, 4, TILE, 2, IDX.propWarm);
-      speckle(px, rng, IDX.propWood, IDX.propDark, 0.08);
+    }
+    case "accent2": {
+      // A wooden classroom desk, grounded by a shadow. Sits on the floor cell.
+      groundShadow(px, k, 24, 41, 17, 5);
+      rect(px, TILE, TILE, 8, 26, 32, 12, k.propWood!);       // front face
+      rect(px, TILE, TILE, 8, 36, 32, 2, k.woodLo!);          // bottom edge
+      roundRect(px, TILE, TILE, 6, 16, 36, 12, k.woodHi!, 2); // desk top (lit)
+      rect(px, TILE, TILE, 6, 26, 36, 1, k.woodLo!);          // top/front seam
+      rect(px, TILE, TILE, 11, 38, 3, 5, k.woodLo!);          // legs
+      rect(px, TILE, TILE, 34, 38, 3, 5, k.woodLo!);
+      // outline
+      for (let x = 6; x < 42; x++) { put(px, TILE, TILE, x, 15, k.ink!); }
       break;
-    case "note": // a single music note shape (decor)
-      rect(px, TILE, TILE, 9, 2, 2, 9, IDX.propDark); // stem
-      rect(px, TILE, TILE, 5, 9, 5, 4, IDX.propDark); // head
-      put(px, TILE, TILE, 11, 2, IDX.propWarm);
+    }
+    case "encounter": {
+      // A glowing collectible ✦ — a soft halo, a bright four-point star, a core
+      // highlight, and a ground shadow. Reads as "practise here / bring it back".
+      groundShadow(px, k, 24, 40, 11, 4);
+      disc(px, TILE, TILE, 24, 22, 15, 15, k.encHalo!);        // soft glow halo
+      // four-point star
+      rect(px, TILE, TILE, 22, 8, 4, 28, k.encounterGlow!);    // vertical
+      rect(px, TILE, TILE, 10, 20, 28, 4, k.encounterGlow!);   // horizontal
+      disc(px, TILE, TILE, 24, 22, 7, 7, k.encounterGlow!);    // body
+      disc(px, TILE, TILE, 24, 22, 4, 4, k.encCore!);          // bright core
+      put(px, TILE, TILE, 22, 20, k.white!);                   // sparkle highlight
+      put(px, TILE, TILE, 23, 19, k.white!);
       break;
+    }
+    case "board": {
+      // Blackboard on the back wall: wood frame + dark slate + faint chalk.
+      rect(px, TILE, TILE, 2, 2, 44, 34, k.propWood!);        // frame
+      hline(px, TILE, TILE, 2, 2, 44, k.woodHi!);             // lit top of frame
+      rect(px, TILE, TILE, 5, 5, 38, 28, k.propDark!);        // slate
+      hline(px, TILE, TILE, 8, 13, 20, k.propMetal!);         // chalk line
+      hline(px, TILE, TILE, 8, 20, 27, k.propMetal!);
+      rect(px, TILE, TILE, 2, 35, 44, 4, k.shadow!);          // shadow under the frame
+      break;
+    }
+    case "plant": {
+      // A leafy bush in a pot.
+      groundShadow(px, k, 24, 42, 13, 4);
+      rect(px, TILE, TILE, 17, 33, 14, 10, k.propWood!);      // pot
+      rect(px, TILE, TILE, 17, 33, 14, 2, k.woodHi!);
+      rect(px, TILE, TILE, 17, 41, 14, 2, k.woodLo!);
+      disc(px, TILE, TILE, 24, 20, 15, 14, k.propLeaf!);      // canopy
+      disc(px, TILE, TILE, 18, 16, 7, 7, k.leafHi!);          // lit lobe
+      disc(px, TILE, TILE, 30, 24, 6, 6, k.leafLo!);          // shade lobe
+      fleck(px, rng, k.propLeaf!, k.leafLo!, 0.12);
+      break;
+    }
+    case "barrel": {
+      groundShadow(px, k, 24, 42, 12, 4);
+      roundRect(px, TILE, TILE, 12, 8, 24, 34, k.propWood!, 3);
+      rect(px, TILE, TILE, 13, 8, 4, 34, k.woodHi!);          // left highlight
+      rect(px, TILE, TILE, 31, 8, 4, 34, k.woodLo!);          // right shade
+      for (const y of [8, 22, 41]) rect(px, TILE, TILE, 12, y, 24, 2, k.woodDark!); // bands
+      break;
+    }
+    case "rug": {
+      // A soft walkable rug that blends into the floor at the edges.
+      roundRect(px, TILE, TILE, 4, 6, 40, 36, k.propWarm!, 3);
+      roundRect(px, TILE, TILE, 8, 10, 32, 28, k.warmHi!, 2);
+      roundRect(px, TILE, TILE, 12, 14, 24, 20, k.propWarm!, 2);
+      for (let x = 6; x < 42; x += 3) { put(px, TILE, TILE, x, 6, k.warmLo!); put(px, TILE, TILE, x, 41, k.warmLo!); } // fringe
+      break;
+    }
+    case "stage": {
+      // A raised platform edge.
+      rect(px, TILE, TILE, 0, 10, TILE, 38, k.propWood!);
+      rect(px, TILE, TILE, 0, 10, TILE, 4, k.warmHi!);        // lit front lip
+      rect(px, TILE, TILE, 0, 14, TILE, 2, k.woodLo!);
+      for (let x = 4; x < TILE; x += 12) rect(px, TILE, TILE, x, 16, 1, 30, k.woodLo!); // plank seams
+      break;
+    }
+    case "note": {
+      // A floating music note (decor).
+      groundShadow(px, k, 24, 42, 8, 3);
+      rect(px, TILE, TILE, 27, 8, 3, 26, k.propDark!);        // stem
+      disc(px, TILE, TILE, 20, 33, 8, 6, k.propDark!);        // head
+      disc(px, TILE, TILE, 18, 31, 3, 2, k.propMetal!);       // gloss
+      rect(px, TILE, TILE, 27, 8, 9, 3, k.propDark!);         // flag
+      break;
+    }
   }
   return px;
 }
@@ -129,16 +233,12 @@ export interface Tileset {
   tiles: Record<string, IndexedImage>;
 }
 
-/**
- * Deterministic tileset for a zone seed. With no opts → the original 6-tile output
- * (rendered) verbatim. A theme passes a palette, the brand accent, and its prop kinds.
- */
 export function paintTileset(seed: number, opts?: TilesetOptions): Tileset {
-  const palette = buildPalette(opts);
+  const { palette, k } = buildPalette(opts);
   const kinds = opts?.kinds ?? TILE_KINDS;
   const tiles: Record<string, IndexedImage> = {};
-  kinds.forEach((k, i) => {
-    tiles[k] = { width: TILE, height: TILE, palette, pixels: paintTile(k, seed * 131 + i * 17 + 1) };
+  kinds.forEach((kind, i) => {
+    tiles[kind] = { width: TILE, height: TILE, palette, pixels: paintTile(kind, seed * 131 + i * 17 + 1, k) };
   });
   return { palette, tiles };
 }
