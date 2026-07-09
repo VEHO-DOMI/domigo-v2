@@ -7,6 +7,7 @@
  */
 import Phaser from "phaser";
 import { paintPlayerSprite, paintTileset, resolveZoneTheme, DOMIGO_GREEN, TILE_KINDS, FACINGS, type Facing } from "@domigo/art-gen";
+import { walkFrameKey } from "./anim.ts";
 import { findPath, nearestWalkable, type Cell, type GridSpec } from "./path.ts";
 import { rasterize } from "./rasterize.ts";
 
@@ -47,6 +48,9 @@ export interface OverworldConfig {
   onState?: (s: OverworldState) => void;
   /** Floating d-pad state (coarse-pointer devices); OR'd with the keyboard. */
   pad?: PadState;
+  /** A1-3: OS/user reduced-motion — when true the walk cycle never plays (the
+   *  player stays on the resting frame). Set by PhaserGame from the media query. */
+  reducedMotion?: boolean;
   /** A1-4: stable per-STUDENT avatar seed (fnv1a32 of userId). The player sprite
    *  used to be painted from `seed` (the ZONE seed), so the avatar's hair/shirt
    *  changed in every zone — an identity bug. Falls back to `seed` for old
@@ -68,6 +72,8 @@ export class OverworldScene extends Phaser.Scene {
   private blurred = false;
   private facing: Facing = "down";
   private tick = 0;
+  // A1-3 walk cycle: ms accumulated while moving; drives the foot-lift phase.
+  private walkTimer = 0;
   private lastReport = { x: 0, y: 0 };
   // A1-1 tap-to-move: the zone's walkable grid + the waypoint queue being walked.
   private blockedCells = new Set<number>();
@@ -102,6 +108,11 @@ export class OverworldScene extends Phaser.Scene {
     FACINGS.forEach((f, i) => {
       const k = `p-${f}`;
       if (!this.textures.exists(k)) this.textures.addCanvas(k, rasterize(sprite.frames[i]!, SCALE));
+      // A1-3 walk cycle: two step frames per facing (`p-down-1`, `p-down-2`, …).
+      sprite.walk[f].forEach((img, s) => {
+        const wk = `p-${f}-${s + 1}`;
+        if (!this.textures.exists(wk)) this.textures.addCanvas(wk, rasterize(img, SCALE));
+      });
     });
 
     // pass 1 — paint floor everywhere; collect walls + node/npc positions + start; place props
@@ -205,12 +216,13 @@ export class OverworldScene extends Phaser.Scene {
     this.blurred = b;
     if (b) {
       this.pathQueue = [];
+      this.walkTimer = 0; // resume on the resting frame, not mid-stride
       this.player?.setVelocity(0);
     }
   }
 
   /** Read-only snapshot for the non-prod `__domigo.state()` dev harness. */
-  debugState(): { x: number; y: number; cell: Cell; facing: Facing; paused: boolean; blurred: boolean; pathLeft: number; fps: number; cleared: number[] } {
+  debugState(): { x: number; y: number; cell: Cell; facing: Facing; frame: string; paused: boolean; blurred: boolean; pathLeft: number; fps: number; cleared: number[] } {
     const cleared: number[] = [];
     this.nodes.forEach((node, idx) => { if (node.getData("done") === true) cleared.push(idx); });
     return {
@@ -218,6 +230,7 @@ export class OverworldScene extends Phaser.Scene {
       y: Math.round(this.player?.y ?? 0),
       cell: { c: Math.floor((this.player?.x ?? 0) / TILE), r: Math.floor((this.player?.y ?? 0) / TILE) },
       facing: this.facing,
+      frame: this.player?.texture?.key ?? "", // A1-3: current walk frame (p-down / p-down-1 / …)
       paused: this.paused,
       blurred: this.blurred,
       pathLeft: this.pathQueue.length,
@@ -308,9 +321,16 @@ export class OverworldScene extends Phaser.Scene {
     this.player.setVelocity(vx, vy);
 
     const next: Facing = vx < 0 ? "left" : vx > 0 ? "right" : vy < 0 ? "up" : vy > 0 ? "down" : this.facing;
-    if (next !== this.facing) {
-      this.facing = next;
-      this.player.setTexture(`p-${next}`);
+    this.facing = next;
+
+    // A1-3 walk cycle: accumulate move-time and pick the frame via the pure
+    // selector (unit-tested in anim.test.ts). Idle → reset to the resting frame.
+    const moving = vx !== 0 || vy !== 0;
+    if (moving) this.walkTimer += Math.min(this.game.loop.delta, 100); // cap post-blur/throttle spikes
+    else this.walkTimer = 0;
+    const frameKey = walkFrameKey(next, this.walkTimer, moving, this.cfg.reducedMotion === true);
+    if (this.player.texture.key !== frameKey) {
+      this.player.setTexture(frameKey);
       this.player.setDisplaySize(TILE, TILE);
     }
 
