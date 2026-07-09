@@ -47,6 +47,11 @@ export interface OverworldConfig {
   onState?: (s: OverworldState) => void;
   /** Floating d-pad state (coarse-pointer devices); OR'd with the keyboard. */
   pad?: PadState;
+  /** A1-4: stable per-STUDENT avatar seed (fnv1a32 of userId). The player sprite
+   *  used to be painted from `seed` (the ZONE seed), so the avatar's hair/shirt
+   *  changed in every zone — an identity bug. Falls back to `seed` for old
+   *  callers/tests. Cosmetic only (the sprite isn't saved) → no migration. */
+  playerSeed?: number;
 }
 
 export class OverworldScene extends Phaser.Scene {
@@ -56,6 +61,11 @@ export class OverworldScene extends Phaser.Scene {
   private wasd: Record<"W" | "A" | "S" | "D", Phaser.Input.Keyboard.Key> | null = null;
   private nodes = new Map<number, Phaser.GameObjects.Image>();
   private paused = false;
+  // A1-2: pause-on-blur (Law 9). Distinct from `paused` (which is the React
+  // overlay's turn): while backgrounded the sim halts but no encounter fires, so
+  // resuming can't jump or trigger a stale overlap. Audio suspend is handled
+  // globally by @domigo/game-feel's own visibilitychange hook (not re-done here).
+  private blurred = false;
   private facing: Facing = "down";
   private tick = 0;
   private lastReport = { x: 0, y: 0 };
@@ -88,7 +98,7 @@ export class OverworldScene extends Phaser.Scene {
     for (const [key, img] of Object.entries(tileset.tiles)) {
       if (!this.textures.exists(tex(key))) this.textures.addCanvas(tex(key), rasterize(img, SCALE));
     }
-    const sprite = paintPlayerSprite(this.cfg.seed);
+    const sprite = paintPlayerSprite(this.cfg.playerSeed ?? this.cfg.seed);
     FACINGS.forEach((f, i) => {
       const k = `p-${f}`;
       if (!this.textures.exists(k)) this.textures.addCanvas(k, rasterize(sprite.frames[i]!, SCALE));
@@ -188,8 +198,19 @@ export class OverworldScene extends Phaser.Scene {
     this.pathQueue = path ?? [];
   }
 
+  /** A1-2 pause-on-blur: React (PhaserGame) toggles this on visibilitychange.
+   *  Halts the sim + drops any tap path so a backgrounded game never drifts and
+   *  resuming can't fire a stale overlap. */
+  setBlurred(b: boolean): void {
+    this.blurred = b;
+    if (b) {
+      this.pathQueue = [];
+      this.player?.setVelocity(0);
+    }
+  }
+
   /** Read-only snapshot for the non-prod `__domigo.state()` dev harness. */
-  debugState(): { x: number; y: number; cell: Cell; facing: Facing; paused: boolean; pathLeft: number; cleared: number[] } {
+  debugState(): { x: number; y: number; cell: Cell; facing: Facing; paused: boolean; blurred: boolean; pathLeft: number; fps: number; cleared: number[] } {
     const cleared: number[] = [];
     this.nodes.forEach((node, idx) => { if (node.getData("done") === true) cleared.push(idx); });
     return {
@@ -198,7 +219,9 @@ export class OverworldScene extends Phaser.Scene {
       cell: { c: Math.floor((this.player?.x ?? 0) / TILE), r: Math.floor((this.player?.y ?? 0) / TILE) },
       facing: this.facing,
       paused: this.paused,
+      blurred: this.blurred,
       pathLeft: this.pathQueue.length,
+      fps: Math.round(this.game.loop.actualFps),
       cleared,
     };
   }
@@ -244,7 +267,7 @@ export class OverworldScene extends Phaser.Scene {
 
   update(): void {
     if (!this.player) return;
-    if (this.paused) {
+    if (this.paused || this.blurred) {
       this.player.setVelocity(0);
       this.pathQueue = [];
       return;
