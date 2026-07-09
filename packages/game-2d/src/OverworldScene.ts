@@ -187,6 +187,26 @@ export class OverworldScene extends Phaser.Scene {
     // (point-and-click). Tapping a node/NPC paths INTO its cell, so the
     // EXISTING overlap fires the encounter — no second trigger path.
     this.input.on(Phaser.Input.Events.POINTER_UP, (p: Phaser.Input.Pointer) => this.tapAt(p.worldX, p.worldY));
+
+    // A1-5 encounter staging: bound the camera to the room so the punch-in
+    // (zoom 1.3 + pan to the ✦) never reveals black past the walls.
+    this.cameras.main.setBounds(0, 0, GRID_W * TILE, GRID_H * TILE);
+  }
+
+  /** A1-5: punch the camera in on the ✦ (pan + zoom); a no-op under reduced-motion. */
+  private focusOn(x: number, y: number): void {
+    if (this.cfg.reducedMotion === true) return;
+    const cam = this.cameras.main;
+    cam.pan(x, y, 220, "Sine.easeInOut");
+    cam.zoomTo(1.3, 220, "Sine.easeInOut");
+  }
+
+  /** A1-5: return the camera to the full-room view after an overlay closes. */
+  private unfocus(): void {
+    if (this.cfg.reducedMotion === true) return; // never zoomed in reduced-motion
+    const cam = this.cameras.main;
+    cam.pan((GRID_W * TILE) / 2, (GRID_H * TILE) / 2, 220, "Sine.easeInOut");
+    cam.zoomTo(1, 220, "Sine.easeInOut");
   }
 
   /** The walkable-grid view for the pure pathfinder. */
@@ -222,7 +242,7 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   /** Read-only snapshot for the non-prod `__domigo.state()` dev harness. */
-  debugState(): { x: number; y: number; cell: Cell; facing: Facing; frame: string; paused: boolean; blurred: boolean; pathLeft: number; fps: number; cleared: number[] } {
+  debugState(): { x: number; y: number; cell: Cell; facing: Facing; frame: string; paused: boolean; blurred: boolean; pathLeft: number; fps: number; zoom: number; cleared: number[] } {
     const cleared: number[] = [];
     this.nodes.forEach((node, idx) => { if (node.getData("done") === true) cleared.push(idx); });
     return {
@@ -235,6 +255,7 @@ export class OverworldScene extends Phaser.Scene {
       blurred: this.blurred,
       pathLeft: this.pathQueue.length,
       fps: Math.round(this.game.loop.actualFps),
+      zoom: Math.round((this.cameras?.main?.zoom ?? 1) * 100) / 100, // A1-5 punch-in verify
       cleared,
     };
   }
@@ -244,7 +265,14 @@ export class OverworldScene extends Phaser.Scene {
     if (this.paused || node === undefined || node.getData("done") === true) return;
     this.paused = true;
     this.player.setVelocity(0);
-    this.cfg.onEncounter(idx);
+    // A1-5: punch in on the ✦, then raise the task card after the ~200ms move so
+    // the staging reads as an event. Reduced-motion → the card opens instantly.
+    if (this.cfg.reducedMotion === true) {
+      this.cfg.onEncounter(idx);
+    } else {
+      this.focusOn(node.x, node.y);
+      this.time.delayedCall(180, () => this.cfg.onEncounter(idx));
+    }
   }
 
   private tryNpc(): void {
@@ -263,19 +291,27 @@ export class OverworldScene extends Phaser.Scene {
     this.cfg.onState({ zoneId: this.cfg.zoneId, pos: [Math.round(this.player.x), Math.round(this.player.y)], cleared: clearedIdx });
   }
 
-  /** Called by React after an encounter is answered: fade the node, leave it cleared. */
+  /** Called by React after an encounter is answered: fade the node, leave it cleared.
+   *  A1-5: the fade is a scale-pop reveal (motion-gated) — the "solved!" beat.
+   *  The `done` flag + checkpoint are byte-identical to before (tier gates flavor only). */
   clearEncounter(idx: number): void {
     const node = this.nodes.get(idx);
     if (node) {
       node.setData("done", true);
-      node.setAlpha(0.25);
+      if (this.cfg.reducedMotion === true) {
+        node.setAlpha(0.25);
+      } else {
+        const s = node.scaleX;
+        this.tweens.add({ targets: node, alpha: { from: 1, to: 0.25 }, scale: { from: s * 1.35, to: s }, duration: 300, ease: "Back.easeOut" });
+      }
     }
     this.reportState(); // cleared set changed → checkpoint
   }
 
-  /** Called by React when an overlay closes — hand control back to the player. */
+  /** Called by React when an overlay closes — hand control back + return the camera. */
   resumePlayer(): void {
     this.paused = false;
+    this.unfocus();
   }
 
   update(): void {

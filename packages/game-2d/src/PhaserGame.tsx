@@ -54,12 +54,20 @@ type Overlay = { kind: "encounter"; idx: number } | { kind: "dialogue" } | null;
 
 const card: CSSProperties = {
   position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
-  background: "rgba(15,23,42,0.55)", padding: 16, zIndex: 10,
+  // A1-5: a radial vignette (light centre → dark edges) funnels the eye to the card.
+  background: "radial-gradient(ellipse 70% 60% at 50% 46%, rgba(15,23,42,0.32) 0%, rgba(15,23,42,0.74) 78%)",
+  padding: 16, zIndex: 10,
 };
 const panel: CSSProperties = {
   background: "var(--card)", borderRadius: 20, padding: "20px 22px", maxWidth: 560, width: "100%",
   maxHeight: "92%", overflowY: "auto", fontFamily: "var(--font-body)", color: "var(--text)",
   border: "1px solid var(--card-border)", boxShadow: "var(--shadow-elevated)",
+};
+/** A1-5: the accented "event" frame for a ✦ encounter card. */
+const encounterPanel: CSSProperties = {
+  ...panel,
+  border: "2px solid var(--accent)",
+  boxShadow: "0 0 0 4px var(--accent-soft), var(--shadow-elevated)",
 };
 
 function postAttempt(onAttempt: AttemptFn, itemId: string, input: unknown): void {
@@ -73,8 +81,8 @@ function TaskCard({ item, onAttempt, onDone, label }: { item: ResolvedItem; onAt
     postAttempt(onAttempt, detail.itemId, detail.input); // optimistic; server re-grades + queues
   };
   return (
-    <div style={panel}>
-      <div style={{ fontSize: 12, color: "var(--text-secondary)", marginBottom: 8, fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.02em", textTransform: "uppercase" }}>{label}</div>
+    <div style={encounterPanel} className="dg-encounter-card">
+      <div style={{ fontSize: 12, color: "var(--accent)", marginBottom: 8, fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.02em", textTransform: "uppercase" }}>{label}</div>
       {item.kind === "grammar" ? (
         <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} />
       ) : (
@@ -301,7 +309,7 @@ export function PhaserGame(props: PhaserGameProps) {
       </p>
 
       {overlay?.kind === "encounter" && props.encounters[overlay.idx] && (
-        <div style={card}>
+        <div style={card} className="dg-encounter-veil">
           <TaskCard item={props.encounters[overlay.idx]!} onAttempt={props.onAttempt} onDone={() => closeEncounter(overlay.idx)} label="A word is fading — bring it back!" />
         </div>
       )}

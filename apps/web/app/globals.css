@@ -427,7 +427,8 @@ body {
 /* The app's reduced-motion floor (first of its kind here): kills every
    game-feel animation AND calms the pre-existing hover/active transitions. */
 @media (prefers-reduced-motion: reduce) {
-  .dgf-pop-in, .dgf-sweep, .dgf-fall, .dgf-fade-up, .dgf-stamp, .dgf-pin-drop, .dgf-caret {
+  .dgf-pop-in, .dgf-sweep, .dgf-fall, .dgf-fade-up, .dgf-stamp, .dgf-pin-drop, .dgf-caret,
+  .dg-encounter-veil, .dg-encounter-card {
     animation: none !important;
   }
   .dg-tile, .dg-btn, .dg-btn-secondary, .dg-chip, .dg-mc-option, .xp-fill {
@@ -440,6 +441,21 @@ body {
 [data-motion="reduce"] .dgf-fade-up,
 [data-motion="reduce"] .dgf-stamp,
 [data-motion="reduce"] .dgf-pin-drop,
-[data-motion="reduce"] .dgf-caret {
+[data-motion="reduce"] .dgf-caret,
+[data-motion="reduce"] .dg-encounter-veil,
+[data-motion="reduce"] .dg-encounter-card {
   animation: none !important;
 }
+
+/* A1-5 encounter staging: the vignette veil fades in and the accented ✦ card
+   pops up as an event. Both are killed by the reduced-motion rules above. */
+@keyframes dg-encounter-veil-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes dg-encounter-card-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: none; }
+}
+.dg-encounter-veil { animation: dg-encounter-veil-in 180ms ease-out; }
+.dg-encounter-card { animation: dg-encounter-card-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1); }
