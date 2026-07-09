@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DomiGo v2 — G1 Overworld Image Library (School)</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #f0f2f5; color: #14261a; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0f3d24, #14261a); color: white; padding: 1.6rem 2rem; text-align: center; position: sticky; top: 0; z-index: 100; }
+.header h1 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; }
+.header p { font-size: 0.78rem; opacity: 0.82; margin-top: 0.3rem; }
+.nav { display: flex; gap: 0; overflow-x: auto; background: #16653a; padding: 0; position: sticky; top: 74px; z-index: 99; }
+.nav button { flex-shrink: 0; padding: 0.6rem 1.05rem; background: none; border: none; color: rgba(255,255,255,0.62); font-size: 0.72rem; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.15s; white-space: nowrap; }
+.nav button:hover { color: white; background: rgba(255,255,255,0.06); }
+.nav button.active { color: #7dffb0; border-bottom-color: #22c55e; background: rgba(255,255,255,0.09); }
+.section { display: none; padding: 1rem; max-width: 820px; margin: 0 auto; }
+.section.active { display: block; }
+.section h2 { font-size: 1.18rem; font-weight: 800; color: #14261a; margin: 1.5rem 0 0.5rem; padding-bottom: 0.3rem; border-bottom: 2px solid #dbe4dc; }
+.section h3 { font-size: 0.95rem; font-weight: 700; color: #0f3d24; margin: 1.2rem 0 0.4rem; }
+.section p { font-size: 0.85rem; }
+.prompt-card { background: white; border: 1.5px solid #dbe4dc; border-radius: 12px; padding: 1rem 1rem 0.9rem; margin: 0.8rem 0; position: relative; }
+.prompt-card .placement { display: inline-block; font-size: 0.62rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.6px; }
+.placement.tile { background: #E8F5E9; color: #2E7D32; }
+.placement.prop { background: #FFF3E0; color: #B45309; }
+.placement.marker { background: #E0F7EC; color: #15803d; }
+.placement.character { background: #F3E5F5; color: #6A1B9A; }
+.placement.ui { background: #E3F2FD; color: #1565C0; }
+.placement.optional { background: #ECEFF1; color: #607D8B; }
+.prompt-card .title { font-weight: 700; font-size: 0.9rem; color: #14261a; margin-bottom: 0.15rem; }
+.prompt-card .file { font-size: 0.72rem; color: #16653a; font-family: 'SF Mono','Fira Code',monospace; margin-bottom: 0.55rem; }
+.prompt-card .file .dims { color: #90a49a; }
+.prompt-text { background: #f7faf8; border: 1px solid #e0e8e2; border-radius: 8px; padding: 0.8rem; font-size: 0.76rem; line-height: 1.7; color: #2a3a30; white-space: pre-wrap; word-wrap: break-word; max-height: 320px; overflow-y: auto; }
+.copy-btn { position: absolute; top: 0.6rem; right: 0.6rem; background: #14261a; color: white; border: none; padding: 0.4rem 0.85rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700; cursor: pointer; transition: all 0.15s; }
+.copy-btn:hover { background: #22c55e; }
+.copy-btn.copied { background: #2E7D32; }
+.info-box { background: #e9f5ee; border-left: 4px solid #22c55e; padding: 0.8rem 1rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; font-size: 0.8rem; }
+.info-box.blue { background: #E3F2FD; border-color: #2196F3; }
+.info-box.red { background: #FFEBEE; border-color: #e53935; }
+.info-box.amber { background: #FFF8E1; border-color: #FF9800; }
+.info-box.grey { background: #eceff1; border-color: #90A4AE; }
+.spec { background: #f5f7f5; border: 1px solid #e0e8e2; border-radius: 8px; padding: 0.8rem; font-family: 'SF Mono','Fira Code',monospace; font-size: 0.7rem; line-height: 1.55; overflow-x: auto; white-space: pre-wrap; margin: 0.5rem 0; }
+.stats { display: flex; gap: 0.8rem; justify-content: center; margin: 1rem 0; flex-wrap: wrap; }
+.stat { background: white; border: 1px solid #dbe4dc; border-radius: 8px; padding: 0.5rem 1rem; text-align: center; min-width: 92px; }
+.stat .num { font-size: 1.35rem; font-weight: 800; color: #16653a; }
+.stat .label { font-size: 0.62rem; color: #90a49a; text-transform: uppercase; letter-spacing: 0.4px; }
+.pal-group { margin: 0.7rem 0; }
+.pal-group .pg-title { font-size: 0.72rem; font-weight: 700; color: #607D8B; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 0.3rem; }
+.swatches { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.sw { display: flex; flex-direction: column; align-items: center; width: 62px; }
+.sw .chip { width: 46px; height: 34px; border-radius: 5px; border: 1px solid rgba(0,0,0,0.15); }
+.sw .hex { font-size: 0.58rem; font-family: 'SF Mono',monospace; color: #607D8B; margin-top: 2px; }
+.chapter-header { background: linear-gradient(135deg, #e9f5ee, #f3faf5); border: 2px solid #a7d8bd; border-radius: 12px; padding: 0.9rem 1rem; margin: 1rem 0; text-align: center; }
+.chapter-header .ch-name { font-size: 1.05rem; font-weight: 800; color: #14261a; }
+.chapter-header .ch-sub { font-size: 0.75rem; color: #5a7566; margin-top: 0.15rem; }
+code { background: #e9f5ee; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono',monospace; }
+footer { text-align: center; padding: 2rem; color: #90a49a; font-size: 0.72rem; }
+a { color: #16653a; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>DomiGo v2 — Grade 1 Overworld · Image Library</h1>
+  <p>"School" level · GBA / Pokémon FireRed–LeafGreen pixel-art tileset · Tap any prompt to copy</p>
+</div>
+
+<div class="nav" id="nav"></div>
+<div id="content"></div>
+<footer>DomiGo v2 · G1 Overworld Art Backbone · School level · 2026 — clone this file per zone (zoo, detective, …)</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+//  MASTER STYLE PREFIX — prepended to EVERY prompt
+// ═══════════════════════════════════════════════════════════════════════════
+const STYLE = `16-bit GBA top-down RPG pixel art, in the exact spirit of Pokémon FireRed & LeafGreen — overworld tiles and overworld character sprites. Flat cel-shaded pixel art: each material uses a 2–3 step tonal ramp (base + highlight + shadow), a clean 1px near-black outline around discrete objects and characters, and hard-edged shading (dithering allowed, NO smooth gradients, NO anti-aliasing, NO blur, NO glow bloom, NO drop-shadow filters). Straight top-down 3/4 overhead camera with a slight forward tilt — you read the top surface of things plus a short sliver of their front face, exactly like a FireRed interior. Bright, warm, friendly early-primary-school mood. Crisp square pixels only. ABSOLUTELY NO text, letters, numbers, logos, signatures, watermarks, or UI. Use ONLY the DomiGo classroom palette given below — do not invent new hues.`;
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  LOCKED PALETTE — appended to every prompt (keeps all assets one family)
+// ═══════════════════════════════════════════════════════════════════════════
+const PALETTE = `[PALETTE — use only these]
+Outline/ink #23252b. Floor wood: #c9a86d base, #e3c78f highlight, #a9853f shadow, #86602f seam. Wall plaster: #e7d8b6 base, #f5ead0 highlight, #c9b487 shadow; wall skirting wood #9c6b3f / #7a5230. Chalkboard: #33513f slate, #26402f deep, #e9f0e6 chalk; board frame wood #a06a3a / #c08a4f. Desk wood #b97b3f / #d69a5b / #8a5a2e; metal legs #9aa3ad / #c7d0d7. Encounter green #22c55e with #b8f7cf luminous core and #15803d ring; sparkle #ffffff / #fff4d6. Skin #f2c690 / #d9a768. Contact shadow: pure black at ~20% opacity, hard oval, no blur.`;
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  ENTITY SPECS — auto-injected when a prompt names the character
+// ═══════════════════════════════════════════════════════════════════════════
+const CHAR_SPECS = {
+  domi: {
+    trigger: /\bDOMI\b/, // case-sensitive: only asset prompts that explicitly name the avatar "DOMI" (not incidental "the player"/"Domi" mentions elsewhere)
+    spec: `[DOMI — the player avatar · the DEFAULT skin, later swappable] A cheerful ~7-year-old primary pupil in chunky GBA overworld-sprite proportions: big round head, short body, about 2.5 heads tall, reads clearly at 48px. Round friendly face, warm skin (#f2c690), two dark dot eyes, tousled brown hair (#5a3b23 / #3c2716). Grass-green zip hoodie (#2fae5a base, #1f7d40 shadow), navy shorts (#33405e), little red sneakers (#d1493f), a small yellow backpack (#f0c04a) on the back. Same outfit, palette, size and anchor in EVERY frame — only the pose changes.`
+  },
+  finn: {
+    trigger: /\bfinn\b/i,
+    spec: `[FINN — the classmate NPC/guide] Same age and chunky GBA proportions as Domi but instantly distinct: a red baseball cap (#d94b45 / #b0332e) over short dark hair (#2b2b2b), a bright blue tee (#3f78c4 / #2b558f), denim shorts, green sneakers, warm skin (#f2c690). Friendly, open posture.`
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  PROMPT BUILDER
+// ═══════════════════════════════════════════════════════════════════════════
+let counter = 0;
+function prompt(placement, cls, title, file, dims, body) {
+  let charBlocks = '', badges = [];
+  for (const [key, def] of Object.entries(CHAR_SPECS)) {
+    if (def.trigger.test(body) || def.trigger.test(title)) { badges.push(key); charBlocks += '\n\n' + def.spec; }
+  }
+  const full = STYLE + '\n\n' + PALETTE + charBlocks + '\n\n' + body;
+  const id = 'p' + (counter++);
+  const badgeHtml = badges.length
+    ? '<div style="margin-bottom:0.4rem;">' + badges.map(b => '<span style="display:inline-block;font-size:0.58rem;font-weight:800;padding:1px 6px;border-radius:3px;margin-right:3px;background:#F3E5F5;color:#6A1B9A;">' + b.toUpperCase() + '</span>').join('') + '</div>'
+    : '';
+  return `<div class="prompt-card">
+    <button class="copy-btn" onclick="copyPrompt('${id}', this)">Copy</button>
+    <div class="placement ${cls}">${placement}</div>
+    <div class="title">${title}</div>
+    <div class="file">${file} <span class="dims">· ${dims}</span></div>
+    ${badgeHtml}
+    <div class="prompt-text" id="${id}">${full}</div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  OVERVIEW
+// ═══════════════════════════════════════════════════════════════════════════
+function buildOverview() {
+  return `<div class="section active" id="sec-overview">
+    <h2>What this is</h2>
+    <p>Every image needed to render <strong>one</strong> DomiGo v2 Grade-1 overworld level — the <strong>"School" room</strong> (zone <code>z01</code>, the classroom you screenshotted) — as a hand-made <strong>GBA / FireRed-LeafGreen pixel-art tileset</strong>. This file is the <em>backbone template</em>: once the School level looks right, clone it per zone (zoo, ship, detective, …) by swapping the palette + props.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="num">5</div><div class="label">Tileset</div></div>
+      <div class="stat"><div class="num">1+7</div><div class="label">Props (req+opt)</div></div>
+      <div class="stat"><div class="num">1</div><div class="label">Marker</div></div>
+      <div class="stat"><div class="num">12+1</div><div class="label">Player frames</div></div>
+      <div class="stat"><div class="num">1</div><div class="label">NPC (Finn)</div></div>
+      <div class="stat"><div class="num">≤26</div><div class="label">Palette colours</div></div>
+    </div>
+
+    <div class="info-box"><strong>The bar:</strong> Pokémon FireRed / LeafGreen interiors. Flat cel shading, 1px dark outlines, a tiny cohesive palette, readable at 48px. If a tile looks airbrushed, gradient-y, or "AI-painted", it's wrong — regenerate.</div>
+
+    <div class="info-box red"><strong>Three non-negotiables (they break the engine if ignored):</strong>
+      <br>1. <strong>NO text</strong> anywhere in any image.
+      <br>2. <strong>Ground &amp; wall tiles must be SEAMLESS</strong> — the same tile repeats across a grid, so no centred motif, no lighting vignette, no border frame, even brightness corner-to-corner.
+      <br>3. <strong>Props, markers &amp; characters sit on a FULLY TRANSPARENT background</strong> — the floor tile is drawn beneath them by the engine. Nothing but a small hard contact-shadow oval may touch the ground.</div>
+
+    <div class="info-box amber"><strong>Sizes.</strong> The engine grid is <strong>48×48 px per cell</strong>. Generate each asset as a large pixel-art image (512×512 for tiles/props/markers; the character sheet at 1536×2048), then the build step downsamples to the crisp 48px PNG (+ a 96px @2× copy). Author at 4× so the pixels stay clean — see <strong>Pipeline</strong>.</p></div>
+
+    <h2>File map</h2>
+    <p>Everything for this level lands in one folder. Filenames are semantic; the resolver maps them to the engine's tile-kinds (see Pipeline).</p>
+    <div class="spec">apps/web/public/art/g1/school/
+  _style_key.png          # generate FIRST — the style anchor (Pipeline)
+  floor.png  floor_accent.png  wall.png  wall_top.png  blackboard.png
+  desk.png                # + optional: plant, window, door, clock, teacher_desk, bookshelf, rug
+  sparkle.png             # the ✦ encounter node (+ optional sparkle_1/2 shimmer)
+  player_sheet.png        # 3 cols × 4 rows — RECOMMENDED (one image → 12 frames)
+    player_down_0..2  player_up_0..2  player_left_0..2  player_right_0..2
+  finn_down.png           # + optional finn_up/left/right</div>
+
+    <h2>How the level uses them</h2>
+    <p>The School room is a frozen 15×11 grid. Its layout only uses these kinds today — so <strong>floor, wall, blackboard, desk, sparkle, the 12 player frames and Finn are REQUIRED</strong>; the rest are optional enrichment (adding them means placing new decor glyphs in the layout, a separate small step).</p>
+    <div class="spec">###############     # = wall.png (the room border)
+#......F......#     F = finn_down.png (NPC)   . = floor.png
+#.BBBBBBBBBBB.#     B = blackboard.png (tiles L→R along the back wall)
+#..D.......D..#     D = desk.png
+#...E.....E...#     E = sparkle.png (encounter node)
+#......P......#     P = player start (Domi spawns here)
+#..D.......D..#
+#...E.....E...#
+#..D.......D..#
+#.............#
+###############</div>
+    <div class="info-box blue"><strong>Style-key first.</strong> Generate <code>_style_key.png</code> before anything else, then feed it as a reference image to every other generation. It is the single biggest lever for making 30 separate images look like one game. See Pipeline.</div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  PALETTE (visual)
+// ═══════════════════════════════════════════════════════════════════════════
+function sw(hex){ return `<div class="sw"><div class="chip" style="background:${hex}"></div><div class="hex">${hex}</div></div>`; }
+function palGroup(title, hexes){ return `<div class="pal-group"><div class="pg-title">${title}</div><div class="swatches">${hexes.map(sw).join('')}</div></div>`; }
+function buildPalette() {
+  return `<div class="section" id="sec-palette">
+    <h2>Locked palette (≤26 colours)</h2>
+    <p>Every asset draws from this ramp and <strong>nothing else</strong> — that single constraint is what makes a tileset read as one world. It is injected into every prompt automatically.</p>
+    ${palGroup('Ink', ['#23252b'])}
+    ${palGroup('Floor (parquet)', ['#c9a86d','#e3c78f','#a9853f','#86602f'])}
+    ${palGroup('Wall (plaster + skirting)', ['#e7d8b6','#f5ead0','#c9b487','#9c6b3f','#7a5230'])}
+    ${palGroup('Chalkboard', ['#33513f','#26402f','#e9f0e6','#a06a3a','#c08a4f'])}
+    ${palGroup('Desk', ['#b97b3f','#d69a5b','#8a5a2e','#9aa3ad','#c7d0d7'])}
+    ${palGroup('Encounter ✦', ['#22c55e','#b8f7cf','#15803d','#ffffff','#fff4d6'])}
+    ${palGroup('Domi (player)', ['#f2c690','#d9a768','#5a3b23','#2fae5a','#1f7d40','#33405e','#d1493f','#f0c04a'])}
+    ${palGroup('Finn (NPC)', ['#d94b45','#b0332e','#3f78c4','#2b558f','#2b2b2b'])}
+    <div class="info-box">Warm, sunny, low-saturation-but-cheerful — a bright primary classroom. Other zones re-tint this ramp (zoo → greens, ship → sea-greys) but keep the same structure.</div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  TILESET
+// ═══════════════════════════════════════════════════════════════════════════
+function buildTileset() {
+  let h = `<div class="section" id="sec-tileset">
+    <div class="chapter-header"><div class="ch-name">Tileset — ground &amp; structure</div><div class="ch-sub">Seamless · opaque · full-bleed (no transparency, no outline on ground)</div></div>
+    <div class="info-box amber"><strong>Seamless test:</strong> if you tile the image 3×3 you must not see where copies meet — no seam line, no bright centre, no dark corners. Design the pattern to wrap: what leaves the right edge re-enters the left.</div>`;
+
+  h += prompt('Tile', 'tile', 'Classroom floor', 'floor.png', '48×48 · seamless · opaque',
+    `[SEAMLESS GROUND TILE] A single classroom floor tile of warm honey-wood parquet, viewed straight top-down. Short planks in a subtle offset/basket-weave layout, 2–3 wood tones from the floor ramp, faint grain speckle, a 1px darker seam between planks. It MUST tile invisibly in a grid: the plank pattern wraps at all four edges, brightness is even corner-to-corner, there is NO centred feature, NO vignette, NO outline, NO shadow. Fills the frame edge to edge, fully opaque.`);
+
+  h += prompt('Tile', 'tile', 'Floor accent (subtle variant)', 'floor_accent.png', '48×48 · seamless · opaque',
+    `[SEAMLESS GROUND TILE — variant] The same honey-wood parquet as floor.png but a touch lighter and cleaner, as a gentle "walk here" highlight patch (in front of the blackboard). Same seamless-wrap rules, same plank direction so it blends beside the base floor. Even brightness, no motif, no outline, opaque, full-bleed.`);
+
+  h += prompt('Tile', 'tile', 'Wall block', 'wall.png', '48×48 · seamless (both axes) · opaque',
+    `[SEAMLESS WALL TILE] A single classroom wall block that tiles seamlessly BOTH horizontally and vertically to form the room's solid border. Warm cream plaster upper, a warm wood skirting board running along the very bottom edge, a thin lit lip along the very top edge, and a 1px darker line where it will meet the floor. It reads as a chunky solid wall from a FireRed top-down camera. Repeatable in every direction: no centred object, even tone, no vignette. Opaque, full-bleed. (One versatile block, used for the whole ring.)`);
+
+  h += prompt('Tile', 'tile', 'Wall top-cap (optional depth)', 'wall_top.png', '48×48 · seamless L↔R · opaque',
+    `[OPTIONAL — seamless wall-cap] The lit top course of the wall for the back (top) row: mostly the pale plaster highlight with a crisp 1px top edge and a soft 1px shadow along the bottom where the wall face begins. Tiles seamlessly left↔right. Gives the top wall a little height like FireRed. Opaque, full-bleed.`);
+
+  h += prompt('Tile', 'tile', 'Blackboard', 'blackboard.png', '48×48 · seamless L↔R · opaque',
+    `[SEAMLESS WALL-MOUNTED TILE] One segment of a long classroom blackboard, mounted flat on the back wall, seen top-down-ish. Dark green slate centre, a warm wood frame running along the TOP and BOTTOM edges only (the left and right edges are frameless slate so segments butt together into one continuous board). Very faint pale chalk smudges and one soft horizontal chalk streak — NO letters, NO words. A subtle highlight on the top frame rail. Tiles seamlessly left↔right. Opaque, full-bleed.`);
+
+  return h + '</div>';
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  PROPS
+// ═══════════════════════════════════════════════════════════════════════════
+function buildProps() {
+  let h = `<div class="section" id="sec-props">
+    <div class="chapter-header"><div class="ch-name">Props — freestanding objects</div><div class="ch-sub">Transparent background · centred · small hard contact-shadow only</div></div>
+    <div class="info-box"><strong>Rule for every prop:</strong> one object, centred, on a 100% transparent background, with nothing touching the frame edges (so it composites cleanly over any floor). Its only ground contact is a small hard black oval at ~20% opacity beneath it. 1px dark outline around the object.</div>`;
+
+  h += prompt('Prop', 'prop', 'Pupil desk', 'desk.png', '48×48 · transparent · required',
+    `[OBJECT SPRITE] A single primary-school pupil desk with a chair tucked under it, GBA top-down 3/4. Honey-wood desktop showing its top surface and a short front edge, slim grey metal legs, a small closed book resting on top. Occupies roughly the lower-centre ~40px of the frame with a small hard contact-shadow oval at its base. 1px dark outline. Transparent background, nothing at the frame edges.`);
+
+  h += prompt('Prop', 'optional', 'Potted plant', 'plant.png', '48×48 · transparent · optional',
+    `[OBJECT SPRITE — optional decor] A small leafy classroom pot plant: a terracotta pot and a rounded bush of layered green leaves with a lit top-left lobe and a shaded lower-right lobe. FireRed top-down. Small hard contact shadow, 1px outline, transparent background, edges clear.`);
+
+  h += prompt('Prop', 'optional', 'Window (wall-mounted)', 'window.png', '48×48 · transparent · optional',
+    `[OBJECT SPRITE — optional, sits on the top wall] A bright classroom window: wooden frame, two panes of pale sky-blue glass with a soft diagonal light streak, a thin sill. Designed to overlay a wall tile (so its silhouette is a neat rectangle with a 1px outline). Transparent background outside the frame, no contact shadow (it is on the wall).`);
+
+  h += prompt('Prop', 'optional', 'Door', 'door.png', '48×48 · transparent · optional',
+    `[OBJECT SPRITE — optional, sits on a wall tile] A warm wooden classroom door set into a frame, closed, with a small round handle and two recessed panels, top-down-ish FireRed style. Neat rectangular silhouette with 1px outline to overlay a wall cell. Transparent background, no free-floating shadow.`);
+
+  h += prompt('Prop', 'optional', 'Wall clock', 'clock.png', '48×48 · transparent · optional',
+    `[OBJECT SPRITE — optional, on the wall] A simple round classroom wall clock: white face, thin red rim, two dark hands (no numbers, no text), small top-down tilt. Small silhouette centred, 1px outline, transparent background.`);
+
+  h += prompt('Prop', 'optional', "Teacher's desk", 'teacher_desk.png', '48×48 · transparent · optional',
+    `[OBJECT SPRITE — optional] A larger wooden teacher's desk facing the class: broad honey-wood top with a front panel, a stack of papers and a red apple on top. FireRed top-down 3/4, small hard contact shadow, 1px outline, transparent background, edges clear.`);
+
+  h += prompt('Prop', 'optional', 'Bookshelf', 'bookshelf.png', '48×48 · transparent · optional',
+    `[OBJECT SPRITE — optional, against a wall] A short wooden bookshelf with two rows of colourful book spines (blocks of palette colour, NO text). Top-down-ish, flat front, 1px outline, small contact shadow, transparent background.`);
+
+  h += prompt('Prop', 'optional', 'Reading rug', 'rug.png', '48×48 · seamless-ish · optional',
+    `[GROUND OVERLAY — optional] A soft rectangular reading rug in warm friendly tones with a simple woven border and a calm central pattern, laid flat on the floor top-down. Unlike props this sits ON the floor: give it a full-bleed rug that can tile in a 2×2 block, low contrast so it reads as "sit here". Slight 1px darker edge, no free shadow.`);
+
+  return h + '</div>';
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  MARKERS
+// ═══════════════════════════════════════════════════════════════════════════
+function buildMarkers() {
+  let h = `<div class="section" id="sec-markers">
+    <div class="chapter-header"><div class="ch-name">Markers — the interaction FX</div><div class="ch-sub">Transparent · centred · reads as "do the task here"</div></div>`;
+
+  h += prompt('Marker', 'marker', 'Encounter sparkle ✦', 'sparkle.png', '48×48 · transparent · required',
+    `[FX SPRITE] A glowing collectible star that marks an encounter node — the thing the player walks onto to trigger a task. A bright brand-green (#22c55e) four-point sparkle-star with a pale luminous core (#b8f7cf), a soft green halo ring behind it (a clean 2-tone ring, NOT a blurry glow), and two tiny white glints. It should feel inviting and "pick me up". Occupies the centre ~34px, 1px outline on the star body, a small hard contact-shadow oval on the ground beneath. Transparent background, edges clear.`);
+
+  h += prompt('Marker', 'optional', 'Sparkle shimmer — frame 2', 'sparkle_1.png', '48×48 · transparent · optional',
+    `[FX SPRITE — animation frame 2 of 3] Exactly the same encounter star as sparkle.png, same position/anchor, but mid-shimmer: the halo ring one step larger and fainter, one extra white glint, the core one shade brighter. For a 3-frame twinkle loop (sparkle → sparkle_1 → sparkle_2 → sparkle). Transparent background.`);
+
+  h += prompt('Marker', 'optional', 'Sparkle shimmer — frame 3', 'sparkle_2.png', '48×48 · transparent · optional',
+    `[FX SPRITE — animation frame 3 of 3] The same encounter star again, same anchor, at the shimmer low point: halo ring smallest and softest, glints gone, core at base brightness. Completes the twinkle loop. Transparent background.`);
+
+  return h + '</div>';
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  CHARACTERS
+// ═══════════════════════════════════════════════════════════════════════════
+const FACES = [
+  { f:'down',  look:'facing the camera (walking toward the viewer), both dot-eyes and face visible' },
+  { f:'up',    look:'facing away (walking up-screen), we see the back of the head and backpack, no face' },
+  { f:'left',  look:'in profile facing screen-left, one eye visible' },
+  { f:'right', look:'in profile facing screen-right, one eye visible' },
+];
+const STEPS = [
+  { s:0, pose:'STANDING neutral, both feet together (the resting frame)' },
+  { s:1, pose:'MID-STRIDE with the LEFT leg forward (walk frame A)' },
+  { s:2, pose:'MID-STRIDE with the RIGHT leg forward (walk frame B)' },
+];
+function buildCharacters() {
+  let h = `<div class="section" id="sec-characters">
+    <div class="chapter-header"><div class="ch-name">Characters — Domi &amp; Finn</div><div class="ch-sub">GBA overworld walk sprites · transparent · exact same anchor every frame</div></div>
+    <div class="info-box red"><strong>Consistency is everything.</strong> The 12 player frames must be the same character — same outfit, palette, size and feet-position — differing ONLY in facing + stride. <strong>Strongly prefer generating the single <code>player_sheet.png</code></strong> (one image, all 12 poses) so the model holds identity across frames; the build step slices it. The per-frame prompts below are the fallback if you generate them one at a time — always pass <code>_style_key.png</code> + the sheet as references.</div>`;
+
+  h += prompt('Character', 'character', 'Domi — walk sheet (RECOMMENDED)', 'player_sheet.png', '1536×2048 → 3×4 of 48px · transparent',
+    `[SPRITE SHEET] A GBA overworld walk-cycle sheet for the player DOMI: a clean grid of 3 columns × 4 rows, evenly spaced, on a fully transparent background, each cell a 48×48 sprite. ROWS = facing: row 1 DOWN (toward camera), row 2 UP (away, back of head + backpack), row 3 LEFT profile, row 4 RIGHT profile. COLUMNS = walk step: col 1 standing neutral, col 2 left-leg-forward, col 3 right-leg-forward. The SAME child in all 12 cells — identical outfit, palette, size and feet-line — only facing and stride change. Chunky FireRed proportions, 1px outline, feet near the bottom of each cell. No grid lines, no text, transparent between cells.`);
+
+  h += `<h3>Per-frame prompts (fallback — only if not using the sheet)</h3>`;
+  FACES.forEach(fc => STEPS.forEach(st => {
+    h += prompt('Character', 'character', `Domi — ${fc.f} · frame ${st.s}`, `player_${fc.f}_${st.s}.png`, '48×48 · transparent',
+      `[SINGLE WALK FRAME] The player DOMI, ${fc.look}, ${st.pose}. One centred GBA overworld sprite on a transparent background, feet resting near the bottom of the 48×48 cell, ~44px tall, 1px dark outline. Must match every other Domi frame exactly (same outfit, palette, size, anchor) — this is one cell of a walk cycle. No shadow baked in, no text, edges clear.`);
+  }));
+
+  h += `<h3>Finn — the classmate NPC</h3>`;
+  h += prompt('Character', 'character', 'Finn — facing down (required)', 'finn_down.png', '48×48 · transparent · required',
+    `[NPC SPRITE] Finn standing and facing the camera, friendly and waiting to be talked to. One centred GBA overworld sprite, transparent background, feet near the bottom of the cell, small hard contact-shadow oval, 1px outline. Clearly a different kid from Domi (red cap, blue tee) but the same art size and style.`);
+  h += prompt('Character', 'optional', 'Finn — up / left / right (optional)', 'finn_{up,left,right}.png', '48×48 · transparent · optional',
+    `[NPC SPRITE — optional 3 more facings] Finn in the other three facings to match the player set: UP (back of head + cap), LEFT profile, RIGHT profile. Same character, outfit, size and anchor as finn_down.png; standing (no walk cycle needed). Transparent background, 1px outline, small contact shadow. Generate as a 1×3 row sheet or three files.`);
+
+  return h + '</div>';
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  UI (optional — DOM/CSS overlays, illustrated skins)
+// ═══════════════════════════════════════════════════════════════════════════
+function buildUI() {
+  let h = `<div class="section" id="sec-ui">
+    <div class="chapter-header"><div class="ch-name">UI skins — optional</div><div class="ch-sub">These are React/DOM overlays, not Phaser textures — lowest priority</div></div>
+    <div class="info-box grey">The task card, d-pad and quest chip are drawn in the DOM (CSS), so they don't strictly need images. Generate these only if you want an illustrated GBA frame instead of the CSS one. 9-slice pieces must have seamless edges/corners.</div>`;
+
+  h += prompt('UI', 'ui', 'Task-card frame (9-slice)', 'ui_taskcard.png', '96×96 · transparent · optional',
+    `[UI 9-SLICE FRAME] A GBA-style dialogue/task panel frame: a warm wooden border with softly rounded corners and a cream inner fill, drawn so the 4 corners and 4 edges can stretch (9-slice) around any-sized card. Only the border is detailed; the centre is a flat fill that can be cut out. 1px dark outline, transparent outside the frame, no text.`);
+  h += prompt('UI', 'ui', 'D-pad', 'ui_dpad.png', '128×128 · transparent · optional',
+    `[UI CONTROL] A chunky friendly GBA-style directional pad: a rounded dark-grey cross with a subtle highlight bevel and a soft green centre dot, top-down flat. Transparent background, 1px outline, no text, no labels.`);
+  h += prompt('UI', 'ui', 'Quest chip / banner', 'ui_questchip.png', '128×48 · transparent · optional',
+    `[UI BADGE] A small pinned paper banner / ribbon in warm cream with a soft wood-brown edge and a little green corner tab, for the "find the words" quest counter. Blank interior (text is added by the app), 1px outline, transparent background.`);
+
+  return h + '</div>';
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  PIPELINE
+// ═══════════════════════════════════════════════════════════════════════════
+function buildPipeline() {
+  return `<div class="section" id="sec-pipeline">
+    <h2>Production pipeline</h2>
+
+    <h3>1 · Style key first</h3>
+    <p>Before any asset, generate one <strong>style anchor</strong> and reuse it as a reference image on every subsequent generation. It locks palette, outline weight, pixel scale and lighting across 30 separate images.</p>
+    ${prompt('Character', 'tile', 'Style key / reference sheet', '_style_key.png', '1024×1024 · reference only',
+      `[STYLE REFERENCE — not shipped] A single reference plate showing the DomiGo classroom art language: a 3×2 patch of the seamless honey-wood floor, one wall block, one blackboard segment, the pupil desk, the green encounter sparkle, and the player DOMI facing down — all arranged as separate labelled-free swatches on a neutral grey background, all in the exact same 16-bit FireRed pixel style, 1px outlines, the locked palette. This plate is the visual bible every other prompt matches.`)}
+
+    <h3>2 · Generate at 4×, deliver clean</h3>
+    <div class="info-box amber">Author each tile/prop/marker at <strong>512×512</strong> (the character sheet at 1536×2048) as crisp pixel art — big, clean, hard-edged pixels. Turn OFF any "creative upscale / smoothing". A build step then downsamples with <strong>nearest-neighbour</strong> to the shipping sizes.</div>
+
+    <h3>3 · Build step (downsample + palette-quantize)</h3>
+    <p>A small script normalises every raw image into the engine's exact sizes and snaps stray colours back onto the locked palette, then writes the shipping PNGs:</p>
+    <div class="spec">raw/  →  scripts/prep-art.mjs  →  apps/web/public/art/g1/school/
+  • nearest-neighbour resize to 48×48 (tiles/props/markers/frames)
+  • also emit a 96×96 @2x copy for hi-dpi
+  • quantize to the ≤26-colour palette (kills stray AI in-between pixels)
+  • slice player_sheet.png (3×4) into the 12 player_*_*.png frames
+  • assert: ground/wall tiles are seamless (edge-wrap diff ≈ 0)
+         props/markers/sprites have a transparent border ring</div>
+
+    <h3>4 · Engine integration ("build the level")</h3>
+    <p>The renderer stays exactly as it is — it just gains an <strong>image-first resolver</strong>. For each texture key it looks for a dropped-in PNG and, if absent, falls back to the procedural art we already ship (so a half-finished asset set still runs):</p>
+    <div class="spec">// game-2d texture resolve (new)
+tex("floor")  →  /art/g1/school/floor.png   ?? procedural floor tile
+tex("wall")   →  /art/g1/school/wall.png    ?? procedural wall tile
+tex("board")  →  /art/g1/school/blackboard.png ?? procedural board
+tex("accent2")→  /art/g1/school/desk.png    ?? procedural desk
+tex("encounter") → /art/g1/school/sparkle.png ?? procedural ✦
+p-{facing}-{step} → /art/g1/school/player_{facing}_{step}.png ?? procedural sprite
+npc           →  /art/g1/school/finn_down.png  ?? (today borrows the desk tile)</div>
+    <div class="info-box"><strong>Bonus:</strong> because the NPC gets its own <code>finn_down.png</code>, wiring this resolver also fixes the long-standing "Finn renders as a desk" bug for free.</div>
+    <div class="info-box blue"><strong>Filename ↔ engine-key map.</strong> <code>floor→floor</code>, <code>floor_accent→accent</code>, <code>wall→wall</code>, <code>blackboard→board</code>, <code>desk→accent2</code>, <code>sparkle→encounter</code>, <code>player_*→p-*</code>, <code>finn_*→npc</code>. Keep these names and the loader is a two-line lookup.</div>
+
+    <h3>5 · Seamless / transparency QA (before you ship an asset)</h3>
+    <div class="spec">☐ Ground/wall: tile it 3×3 — no visible seam, no bright centre, no dark corners
+☐ Prop/marker/sprite: 1px+ fully transparent ring around the art
+☐ Palette: no colour outside the locked ramp (the quantizer will flag it)
+☐ No text/letters/numbers anywhere
+☐ Player: all 12 frames share one feet-line + outfit + size
+☐ Reads at 48px (zoom the shipping PNG to 100%, not the 512px source)</div>
+
+    <h2>Cloning this for other zones</h2>
+    <p>This <em>is</em> the backbone. To build the zoo, ship, detective … levels: duplicate this file, swap the palette group + the prop list + the layout glyphs, keep the tileset/marker/character structure identical. Same resolver, same sizes, same QA. Fifteen zones, one system.</p>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  ASSEMBLY
+// ═══════════════════════════════════════════════════════════════════════════
+const sections = [
+  { id:'overview',   label:'Overview',   build:buildOverview },
+  { id:'palette',    label:'Palette',    build:buildPalette },
+  { id:'tileset',    label:'Tileset',    build:buildTileset },
+  { id:'props',      label:'Props',      build:buildProps },
+  { id:'markers',    label:'Markers ✦',  build:buildMarkers },
+  { id:'characters', label:'Characters', build:buildCharacters },
+  { id:'ui',         label:'UI (opt)',   build:buildUI },
+  { id:'pipeline',   label:'Pipeline',   build:buildPipeline },
+];
+document.getElementById('nav').innerHTML = sections.map((s,i) =>
+  `<button data-sec="${s.id}" class="${i===0?'active':''}" onclick="showSection('${s.id}',this)">${s.label}</button>`).join('');
+document.getElementById('content').innerHTML = sections.map(s => s.build()).join('');
+
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function copyPrompt(id, btn) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied ✓'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1400);
+  });
+}
+</script>
+</body>
+</html>
