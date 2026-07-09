@@ -6,6 +6,7 @@
  * Scope: vocab + grammar sections (the auto-graded core); listening/reading/
  * writing land in M-2b.
  */
+import Link from "next/link";
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 
 interface ClassRow { id: string; name: string; grade: number }
@@ -112,7 +113,7 @@ export default function AssignmentBuilder({ classes }: { classes: ClassRow[] }) 
     <main style={{ maxWidth: 760, margin: "0 auto", padding: "28px 20px 64px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
         <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>New assignment</h1>
-        <a href="/admin/assignments" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← All assignments</a>
+        <Link href="/admin/assignments" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← All assignments</Link>
       </div>
 
       <div style={card}>

@@ -33,5 +33,6 @@ export * from "./assignment-draft.ts"; // M-2: pure draft shape + publish valida
 export * from "./assignment-service.ts"; // M-2: assignment CRUD + v1 class list (best-effort)
 export * from "./assignment-session.ts"; // M-3: pure session lifecycle + timing wall + scoring (DB-free)
 export * from "./assignment-session-service.ts"; // M-3: session CRUD + attempt read-back (best-effort)
+export * from "./assignment-results.ts"; // M-4: pure teacher-roster aggregation (DB-free)
 export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth identity)
 export * from "./auth.ts"; // read-only identity lookups (lookupStudentForAuth/lookupTeacherForAuth)
