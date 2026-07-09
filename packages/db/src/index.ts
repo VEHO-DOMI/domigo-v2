@@ -31,5 +31,7 @@ export * from "./game-progress.ts"; // Track C: solved-item derivation from the 
 export * from "./assignments.ts"; // M-wave: pure mock-test scoring (Note math, DB-free)
 export * from "./assignment-draft.ts"; // M-2: pure draft shape + publish validation (DB-free)
 export * from "./assignment-service.ts"; // M-2: assignment CRUD + v1 class list (best-effort)
+export * from "./assignment-session.ts"; // M-3: pure session lifecycle + timing wall + scoring (DB-free)
+export * from "./assignment-session-service.ts"; // M-3: session CRUD + attempt read-back (best-effort)
 export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth identity)
 export * from "./auth.ts"; // read-only identity lookups (lookupStudentForAuth/lookupTeacherForAuth)

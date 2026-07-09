@@ -333,11 +333,14 @@ const MAX_WRONG = 3;
 function useRetryGrading(
   gradeOnce: () => { tier: Tier; detail: ResultDetail },
   onResult?: (tier: Tier, detail: ResultDetail) => void,
+  // Mock tests (M-3) pass 1: the FIRST submit is terminal — no retry ladder, so
+  // the recorded tier IS the first attempt the scorer grades (Schularbeit rules).
+  maxWrong: number = MAX_WRONG,
 ) {
   const [tier, setTier] = useState<Tier | null>(null);
   const [wrongCount, setWrongCount] = useState(0);
   const solved = tier !== null && tier !== "wrong";
-  const exhausted = wrongCount >= MAX_WRONG;
+  const exhausted = wrongCount >= maxWrong;
   const done = solved || exhausted; // locked: inputs disabled, feedback shown
   const retrying = tier === "wrong" && !exhausted; // open for another try
   const submit = () => {
@@ -350,7 +353,7 @@ function useRetryGrading(
     }
     const n = wrongCount + 1;
     setWrongCount(n);
-    if (n >= MAX_WRONG) onResult?.(t, detail); // out of tries → conclude (never blocks)
+    if (n >= maxWrong) onResult?.(t, detail); // out of tries → conclude (never blocks)
   };
   return { tier, wrongCount, done, retrying, submit };
 }
@@ -514,7 +517,7 @@ function ChipBuilder({ promptText, disabled, onChange, onEnter }: {
   );
 }
 
-export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, tactile }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; tactile?: boolean }) {
+export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, tactile, singleAttempt }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; tactile?: boolean; singleAttempt?: boolean }) {
   const promptId = useId();
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
@@ -544,7 +547,7 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, t
     const r = gradeGrammar(item, input);
     return { tier: r.tier, detail: { kind: "grammar", itemId: item.id, input } };
   };
-  const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult);
+  const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult, singleAttempt ? 1 : MAX_WRONG);
 
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
   const isText = TEXT_FORMATS.has(item.format);
@@ -595,7 +598,7 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, t
 
 // ---- vocab item ----------------------------------------------------------
 
-export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean }) {
+export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp, singleAttempt }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; singleAttempt?: boolean }) {
   const promptId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
@@ -603,7 +606,7 @@ export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp }: {
     const r = gradeVocab(item, value);
     return { tier: r.tier, detail: { kind: "vocab", itemId: item.id, input: { kind: "vocab", value } } };
   };
-  const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult);
+  const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult, singleAttempt ? 1 : MAX_WRONG);
   useEffect(() => { if (autoFocus && !done) inputRef.current?.focus(); }, [autoFocus, done, wrongCount]);
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
   const fullAnswers = item.sAnswers.filter((a) => a.tier === "full").map((a) => a.text);

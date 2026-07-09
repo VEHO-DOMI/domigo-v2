@@ -59,6 +59,7 @@ export default async function HomePage() {
     { href: "/learn", icon: "🗺️", title: "Study Path", sub: "Guided units with checkpoints" },
     { href: "/listening", icon: "🎧", title: "Listening", sub: "Audio comprehension by unit" },
     { href: "/tests", icon: "📝", title: "Mock Test", sub: "Practice a Schularbeit" },
+    { href: "/assignments", icon: "🗂️", title: "Aufgaben", sub: "Assigned by your teacher" },
   ];
 
   return (

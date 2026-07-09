@@ -40,5 +40,5 @@ export default auth((req) => {
 
 // Everything else (the public landing, /signin, the /api/auth handlers) is unguarded.
 export const config = {
-  matcher: ["/home", "/practice", "/practice/:path*", "/review", "/review/:path*", "/learn", "/learn/:path*", "/listening", "/listening/:path*", "/tests", "/tests/:path*", "/admin", "/admin/:path*"],
+  matcher: ["/home", "/practice", "/practice/:path*", "/review", "/review/:path*", "/learn", "/learn/:path*", "/listening", "/listening/:path*", "/tests", "/tests/:path*", "/assignments", "/assignments/:path*", "/admin", "/admin/:path*"],
 };
