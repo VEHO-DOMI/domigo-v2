@@ -29,6 +29,9 @@ export type AttemptFn = (a: GameAttempt) => Promise<{ ok: boolean; queued: boole
 
 export interface PhaserGameProps {
   seed: number;
+  /** A1-4: stable per-student avatar seed (the app derives it from the userId).
+   *  Absent → falls back to the zone seed (the old, identity-bugged behavior). */
+  playerSeed?: number;
   /** The map@1 zone id this overworld renders (scopes the save). */
   zoneId: string;
   /** The zone's `render.generator` → its visual theme (palette + layout + props). */
@@ -230,6 +233,7 @@ export function PhaserGame(props: PhaserGameProps) {
     const { width, height } = OverworldScene.dimensions();
     const scene = new OverworldScene({
       seed: props.seed,
+      playerSeed: props.playerSeed,
       zoneId: props.zoneId,
       generator: props.generator,
       encounterCount: props.encounters.length,
@@ -251,6 +255,13 @@ export function PhaserGame(props: PhaserGameProps) {
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
       scene,
     });
+    // A1-2 pause-on-blur (Law 9): halt the sim while the tab is backgrounded so a
+    // classroom student who tab-switches doesn't return to a drifted world or a
+    // stale encounter. Audio is suspended globally by @domigo/game-feel's own
+    // visibilitychange hook — not re-done here. Listener owned + cleaned up here.
+    const onVisibility = () => scene.setBlurred(document.visibilityState === "hidden");
+    document.addEventListener("visibilitychange", onVisibility);
+
     // Non-prod machine-playtest harness: `tap` calls the EXACT pointer code path;
     // `state` is a read-only snapshot. Setters are permanently out of scope —
     // the harness can drive input, never rewrite the world.
@@ -261,6 +272,7 @@ export function PhaserGame(props: PhaserGameProps) {
       };
     }
     return () => {
+      document.removeEventListener("visibilitychange", onVisibility);
       if (process.env.NODE_ENV !== "production") {
         delete (window as unknown as Record<string, unknown>)["__domigo"];
       }

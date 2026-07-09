@@ -24,6 +24,8 @@ interface SavePayload { clientRev: number; state: GameSaveState }
 
 export default function GameClient(props: {
   seed: number;
+  /** A1-4: stable per-student avatar seed (from the userId) — decoupled from the zone seed. */
+  playerSeed?: number;
   gameMode: string; // "game:g1".."game:g4"
   zoneId: string;
   generator: string;
@@ -87,9 +89,15 @@ export default function GameClient(props: {
         if (raw) put(JSON.parse(raw) as SavePayload);
       } catch { /* ignore */ }
     };
+    // A1-2: the visibilitychange handler must be NAMED so cleanup can remove it —
+    // the previous inline arrow leaked one listener per mount (game route churn).
+    const onHidden = () => { if (document.visibilityState === "hidden") flush(); };
     window.addEventListener("pagehide", flush);
-    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flush(); });
-    return () => window.removeEventListener("pagehide", flush);
+    document.addEventListener("visibilitychange", onHidden);
+    return () => {
+      window.removeEventListener("pagehide", flush);
+      document.removeEventListener("visibilitychange", onHidden);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lsKey]);
 
@@ -104,6 +112,7 @@ export default function GameClient(props: {
       </div>
       <PhaserGame
         seed={props.seed}
+        playerSeed={props.playerSeed}
         zoneId={props.zoneId}
         generator={props.generator}
         encounters={props.encounters}

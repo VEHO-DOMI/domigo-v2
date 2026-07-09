@@ -21,6 +21,17 @@ export const dynamic = "force-dynamic";
 
 const GAME_TYPE: Record<number, "overworld" | "detective" | "novel" | "trip"> = { 1: "overworld", 2: "detective", 3: "novel", 4: "trip" };
 
+/** FNV-1a 32-bit — a stable numeric seed from a string (A1-4 avatar identity).
+ *  Same family the games use for seeded shuffles; deterministic per user. */
+function fnv1a32(s: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
 function storyItemsFor(
   chapter: Chapter,
   unit: { vocab: VocabItem[]; grammar: GrammarItem[] },
@@ -195,6 +206,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
   return (
     <GameClient
       seed={mapZone.render?.seed ?? grade * 100 + chapter.unit}
+      playerSeed={fnv1a32(acting.userId)}
       gameMode={gameMode}
       zoneId={mapZone.id}
       generator={mapZone.render?.generator ?? "school-room"}
