@@ -27,15 +27,19 @@ Three vision tests applied to every merged PR (the weekly Vision log in BLUEPRIN
 
 ## Koki decision ledger (do not re-litigate; append with dates)
 
-- **2026-07-06 · G4 narrative:** the three fantasy options (handover/13) REJECTED — "no rehash of grade 1 elements; a fully fresh angle rooted in a suitable real-life conflict for 14-year-olds." The program builds **"Lost for Words" / "Sprachlos"** (BLUEPRINT Part III.4), gated by G4-N.
+- **2026-07-06 · G4 narrative:** the three fantasy options (handover/13) REJECTED — "no rehash of grade 1 elements; a fully fresh angle rooted in a suitable real-life conflict for 14-year-olds." The program builds **"Lost for Words" / "Sprachlos"** (BLUEPRINT Part III.4), gated by G4-N. *(REVERSED 2026-07-10 — see below.)*
 - **2026-07-06 · v1 parity:** FULL Law-compliant port (arcades/speed modes as mastered-only fluency arcade; Daily Challenge; profile/badges/avatars; Word of the Day; dictionary; dark mode; dual-opt-in leaderboards; Activity Game later). v1's hint penalty is deliberately NOT ported (Law 4).
 - **2026-07-06 · TTS:** ElevenLabs quality tier, per-character voices; pipeline provider-abstracted; costs printed per wave.
-- **2026-07-06 · Timeline:** September 1, 2026 is a HARD go-live gate with the protected floor + pre-agreed forfeit order (BLUEPRINT Part V).
-- **Standing (inherited):** grades 1–4 only; PWA-first; teacher hand-grades writing by default (AI correction is teacher-released); in-Studio task creation = never (the pipeline + blind-solve is the moat); XP/unlock math never editable in UI.
+- **2026-07-06 · Timeline:** September 1, 2026 is a HARD go-live gate with the protected floor + pre-agreed forfeit order (BLUEPRINT Part V). *(RETIRED 2026-07-10 — see below.)*
+- **Standing (inherited):** grades 1–4 only; PWA-first; teacher hand-grades writing by default (AI correction is teacher-released); in-Studio task creation = never (the pipeline + blind-solve is the moat) *(REVERSED 2026-07-10)*; XP/unlock math never editable in UI *(still binding)*.
+- **2026-07-10 · No deadlines (Wave 2):** the Sept-1 hard gate, the floor, and the cut-order are RETIRED. Doctrine: quality-gated sequential execution — one item at a time, end-to-end verified; an item is done when its exit criteria pass, not when time runs out. (BLUEPRINT_V2 Part 0.)
+- **2026-07-10 · Two duologies:** grades 1+2 share the book-world universe (G1 gains the trapped-former-student antagonist arc + redemption; G2 = replacement campaign where he is the deuteragonist, school setting, Phaser overworld). Grades 3+4 share the FOURTEEN universe (G3 untouched; G4 = full pivot to the FOURTEEN investigative-journalism sequel). "The Wrong Name" → playable bonus story; "Lost for Words" → parked (release.json emptied, bundle stays validate-green). (BLUEPRINT_V2 WS-N/WS-B.)
+- **2026-07-10 · Studio v2:** full native CRUD (create/edit/remove/rename) behind automated gates — server-side validators + an automated AI blind-solve graded by the real engine before publish; fold-back to git preserved. (BLUEPRINT_V2 S-1/S-2.)
+- **2026-07-10 · Authored, not programmed:** algorithms assemble/validate/audit/route; they never author student-facing prose. Calibration set + register sheet + Koki gate before every volume wave. (BLUEPRINT_V2 A-3.)
 
 ## Artifact roles
 
-`docs/BLUEPRINT.md` = the program (workstreams, milestones, loops, gates — updated by strike-through, not rewrites) · `docs/VISION.md` = this constitution · `docs/STATUS_AND_ROADMAP.md` = live status ledger · `docs/handover/**` = the original design encyclopedia (13_g4_syntaxia.md is superseded by BLUEPRINT III.4) · `docs/runbooks/**` = operational how-tos · `~/.claude/plans/` + session memory = volatile, never authoritative.
+**`docs/BLUEPRINT_V2.md` = the current program (Wave 2, 2026-07-10 — sequencing, per-item specs, the Ralph-loop protocol; supersedes BLUEPRINT.md Part V + named items)** · `docs/BLUEPRINT.md` = the v1 program (Part II principles + unretired Part III specs remain in force) · `docs/VISION.md` = this constitution · `docs/STATUS_AND_ROADMAP.md` = live status ledger · `docs/handover/**` = the original design encyclopedia (13_g4_syntaxia.md AND 16_g4_lost_for_words.md are superseded — the latter's mechanics layer survives via BLUEPRINT III.4 → BLUEPRINT_V2 WS-B) · `docs/runbooks/**` = operational how-tos · `~/.claude/plans/` + session memory = volatile, never authoritative.
 
 ## How to run a session (the loops, in one breath)
 
