@@ -424,6 +424,59 @@ body {
   border: 0;
 }
 
+
+/* ── Game hub (level select) — the /play/[grade] menu, themed per story world:
+   g1 storybook pages · g2 case files · g3 studio episodes · g4 journal days.
+   Pure CSS, no assets; grade accents ride the [data-grade] tokens. ─────────── */
+.dgh-hub { background: radial-gradient(640px 240px at 50% -80px, var(--accent-glow), transparent 72%); }
+.dgh-emblem { font-size: 30px; line-height: 1; margin-right: 10px; filter: drop-shadow(0 2px 8px var(--accent-glow)); }
+.dgh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 18px; }
+
+.dgh-card { position: relative; display: block; text-decoration: none; color: var(--text); border-radius: var(--radius-lg); padding: 15px 17px 13px; box-shadow: var(--shadow-card); transition: transform .18s cubic-bezier(.22,1,.36,1), box-shadow .18s; }
+a.dgh-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-elevated); }
+.dgh-label { font-size: 11px; font-family: var(--font-label); font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); position: relative; }
+.dgh-title { font-size: 17px; font-weight: 700; font-family: var(--font-display); color: var(--ink); margin-top: 2px; position: relative; }
+.dgh-sub { font-size: 13px; color: var(--text-secondary); position: relative; }
+.dgh-cta { font-size: 13px; color: var(--accent); font-weight: 700; margin-top: 10px; position: relative; }
+.dgh-num { position: absolute; right: 8px; bottom: -16px; font-size: 68px; font-weight: 800; font-family: var(--font-display); color: var(--accent); opacity: .09; pointer-events: none; user-select: none; }
+.dgh-done { position: absolute; top: 9px; right: 11px; font-size: 11px; font-weight: 800; letter-spacing: .05em; z-index: 1; }
+.dgh-card--locked { opacity: .62; box-shadow: none; }
+.dgh-thumbwrap { position: relative; border-radius: 10px; overflow: hidden; margin-bottom: 10px; height: 112px; background: linear-gradient(135deg, var(--accent-soft), var(--bg-sunken)); }
+.dgh-thumbwrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* g1 — a storybook page: cream paper, ruled lines, a folded corner; restored pages glow gold. */
+.dgh-g1 { background: linear-gradient(180deg, #fffdf4 0%, #fbf3dd 100%); border: 1px solid #ecdfc0; }
+.dgh-g1::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: repeating-linear-gradient(180deg, transparent 0 25px, rgba(139, 105, 49, 0.09) 25px 26px); pointer-events: none; }
+.dgh-g1::after { content: ""; position: absolute; top: 0; right: 0; border-style: solid; border-width: 0 22px 22px 0; border-color: transparent var(--bg) transparent transparent; filter: drop-shadow(-2px 2px 2px rgba(92, 64, 10, 0.18)); }
+.dgh-g1.dgh-card--done { border-color: #e3b23c; box-shadow: 0 0 0 2px rgba(227, 178, 60, 0.35), 0 0 20px rgba(227, 178, 60, 0.35); }
+.dgh-g1 .dgh-done { color: #a97b12; }
+.dgh-g1.dgh-card--locked { filter: saturate(0.35); border-style: dashed; }
+
+/* g2 — a manila case file with a folder tab, pinned slightly askew; solved = the red stamp. */
+.dgh-g2 { background: linear-gradient(180deg, #f8ecd3 0%, #f1dfba 100%); border: 1px solid #dcc48f; margin-top: 10px; border-top-left-radius: 4px; }
+.dgh-g2::before { content: ""; position: absolute; top: -9px; left: 12px; width: 38%; height: 10px; background: #f4e4c2; border: 1px solid #dcc48f; border-bottom: none; border-radius: 7px 7px 0 0; }
+.dgh-g2:nth-child(even) { rotate: 0.6deg; }
+.dgh-g2:nth-child(3n) { rotate: -0.5deg; }
+.dgh-g2 .dgh-done { color: #b91c1c; border: 2px solid #b91c1c; border-radius: 4px; padding: 1px 6px; rotate: -8deg; background: rgba(255, 255, 255, 0.55); }
+.dgh-g2.dgh-card--locked { background: #efe6d2; }
+
+/* g3 — a studio episode card: dark slate, thumb with a play badge, REC-dot label. */
+.dgh-g3 { background: linear-gradient(180deg, #1d2536 0%, #151b2a 100%); border: 1px solid #2d374b; }
+.dgh-g3 .dgh-title { color: #f1f5f9; }
+.dgh-g3 .dgh-sub { color: #94a3b8; }
+.dgh-g3 .dgh-label { color: #7d8ba3; }
+.dgh-g3 .dgh-label::before { content: "●"; color: #ef4444; margin-right: 5px; font-size: 9px; vertical-align: 1px; }
+.dgh-g3 .dgh-thumbwrap::after { content: "▶"; position: absolute; inset: 0; display: grid; place-items: center; font-size: 24px; color: #fff; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65); }
+.dgh-g3 .dgh-num { color: #93c5fd; opacity: 0.1; }
+.dgh-g3 .dgh-done { color: #4ade80; }
+.dgh-g3.dgh-card--locked { filter: brightness(0.8) saturate(0.5); }
+
+/* g4 — a journal day: a lined page under a washi-tape strip, slightly askew. */
+.dgh-g4 { background: linear-gradient(180deg, #fcfbf7 0%, #f4f1e8 100%); border: 1px solid #e2dcca; margin-top: 8px; }
+.dgh-g4::before { content: ""; position: absolute; top: -8px; left: 50%; width: 86px; height: 17px; background: var(--accent-soft); opacity: 0.9; border-radius: 2px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14); translate: -50% 0; rotate: -2deg; }
+.dgh-g4:nth-child(even) { rotate: -0.5deg; }
+.dgh-g4 .dgh-done { color: var(--accent-deep); border: 2px solid var(--accent-deep); border-radius: 999px; padding: 2px 7px; rotate: 6deg; }
+
 /* The app's reduced-motion floor (first of its kind here): kills every
    game-feel animation AND calms the pre-existing hover/active transitions. */
 @media (prefers-reduced-motion: reduce) {
@@ -431,7 +484,7 @@ body {
   .dg-encounter-veil, .dg-encounter-card {
     animation: none !important;
   }
-  .dg-tile, .dg-btn, .dg-btn-secondary, .dg-chip, .dg-mc-option, .xp-fill {
+  .dg-tile, .dg-btn, .dg-btn-secondary, .dg-chip, .dg-mc-option, .xp-fill, .dgh-card {
     transition: none !important;
   }
 }
