@@ -108,6 +108,35 @@ test("VS-2: above-level word in a student line (not glossed/named)", () => {
   assert.deepEqual(validateStoryBundle(bundle({ story: s2 }), mkCorpus()).errors, []);
 });
 
+test("VS-17: a grade-1 scene without scaffoldDe fails (German-first UX); grade 3+ is free", () => {
+  const s = story([{ id: "g1.st.lp.ch01", unit: 1, titleEn: "T", titleDe: null, scenes: [scene({ scaffoldDe: null })] }]);
+  const res = validateStoryBundle(bundle({ story: s }), mkCorpus());
+  assert.ok(res.errors.some((e) => e.includes("VS-17") && e.includes("scaffoldDe required")));
+  // a choice without scaffoldDe fails too at grade ≤2
+  const withChoice = scene({
+    taskSlots: [],
+    next: [
+      { id: "a", textEn: "Wait here.", scaffoldDe: "Warte hier.", next: "g1.st.lp.ch01.s002" },
+      { id: "b", textEn: "Open the book.", scaffoldDe: null, next: "g1.st.lp.ch01.s002" },
+    ],
+  });
+  const closer = scene({ id: "g1.st.lp.ch01.s002", taskSlots: [], next: null });
+  const s2 = story([{ id: "g1.st.lp.ch01", unit: 1, titleEn: "T", titleDe: null, scenes: [withChoice, closer] }]);
+  const res2 = validateStoryBundle(bundle({ story: s2 }), mkCorpus());
+  assert.ok(res2.errors.some((e) => e.includes("VS-17") && e.includes('choice "b"')));
+  // grade 3 has no scaffold requirement (English-first doctrine unchanged there)
+  const s3 = Story.parse({
+    schema: "story@1",
+    id: "g3.st.x",
+    grade: 3,
+    title: { en: "X", de: null },
+    chapters: [{ id: "g3.st.x.ch01", unit: 1, titleEn: "T", titleDe: null, scenes: [scene({ id: "g3.st.x.ch01.s001", scaffoldDe: null, taskSlots: [] })] }],
+  });
+  const cast3 = Cast.parse({ schema: "cast@1", storyId: "g3.st.x", members: [{ id: "finn", nameEn: "Finn", descriptionDe: null, voice: null, art: null }] });
+  const res3 = validateStoryBundle(bundle({ story: s3, cast: cast3 }), mkCorpus({ ready: ["g3-u01"] }));
+  assert.ok(!res3.errors.some((e) => e.includes("VS-17")));
+});
+
 test("VS-3: formal Sie in a scaffold is an error", () => {
   const s = story([{ id: "g1.st.lp.ch01", unit: 1, titleEn: "T", titleDe: null, scenes: [scene({ scaffoldDe: "Schau! Können Sie das Buch sehen?" })] }]);
   const res = validateStoryBundle(bundle({ story: s }), mkCorpus());

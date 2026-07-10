@@ -22,9 +22,11 @@ export interface FeelSettings {
   haptics: boolean;
   /** "auto" = follow the OS; "reduce" = force-reduce even if the OS allows motion. */
   motion: "auto" | "reduce";
+  /** L-1 story language: "auto" = grade decides (grade 1 → German-first). */
+  lang: "auto" | LangMode;
 }
 
-export const DEFAULT_SETTINGS: FeelSettings = { sound: false, haptics: false, motion: "auto" };
+export const DEFAULT_SETTINGS: FeelSettings = { sound: false, haptics: false, motion: "auto", lang: "auto" };
 
 /** Parse a persisted settings blob defensively (never throw on junk). */
 export function parseSettings(raw: string | null): FeelSettings {
@@ -35,10 +37,51 @@ export function parseSettings(raw: string | null): FeelSettings {
       sound: p.sound === true,
       haptics: p.haptics === true,
       motion: p.motion === "reduce" ? "reduce" : "auto",
+      lang: p.lang === "de-first" || p.lang === "en-first" ? p.lang : "auto",
     };
   } catch {
     return DEFAULT_SETTINGS;
   }
+}
+
+// ---------------------------------------------------------------------------
+// L-1 · story language mode (Koki 2026-07-10: German-first for the youngest —
+// meaning first, English on demand; the device toggle always wins)
+// ---------------------------------------------------------------------------
+
+/** Which language leads the story dialogue. Graded tasks are NEVER affected. */
+export type LangMode = "de-first" | "en-first";
+
+/** "auto" resolves by grade: grade 1 reads German-first, everyone else English-first. */
+export function resolveLangMode(lang: FeelSettings["lang"], grade: number): LangMode {
+  if (lang === "de-first" || lang === "en-first") return lang;
+  return grade === 1 ? "de-first" : "en-first";
+}
+
+/** The line the student reads first. de-first falls back to English when a
+ *  scene has no German scaffold — never a blank bubble. */
+export function primaryLine(mode: LangMode, textEn: string, scaffoldDe: string | null | undefined): string {
+  return mode === "de-first" ? (scaffoldDe ?? textEn) : textEn;
+}
+
+/** The other language, behind the reveal chip; null when there is nothing to reveal. */
+export function secondaryLine(mode: LangMode, textEn: string, scaffoldDe: string | null | undefined): string | null {
+  if (mode === "de-first") return scaffoldDe ? textEn : null;
+  return scaffoldDe ?? null;
+}
+
+/** Chip labels for the secondary-language reveal (the established "Auf Deutsch?" affordance, mirrored). */
+export function revealLabels(mode: LangMode): { show: string; hide: string } {
+  return mode === "de-first"
+    ? { show: "Auf Englisch?", hide: "Englisch ausblenden" }
+    : { show: "Auf Deutsch?", hide: "Deutsch ausblenden" };
+}
+
+/** Word-help chip labels follow the leading language. */
+export function glossLabels(mode: LangMode): { show: string; hide: string } {
+  return mode === "de-first"
+    ? { show: "Wort-Hilfe zeigen", hide: "Wort-Hilfe ausblenden" }
+    : { show: "Show word help", hide: "Hide word help" };
 }
 
 /** The one motion rule: OS reduce always wins; our toggle can only reduce further. */

@@ -70,6 +70,7 @@ This is Koki's premise (2026-07-10, verbatim intent: "someone flipped the whole 
 - **Every heavy beat ends with one warm hand** (Pixel's purr, a cameo's kindness, Finn's "Komm."). No chapter ends on the sad beat itself.
 - **A1 discipline:** du-form scaffolds everywhere; ≤2 sentences/line; glossed above-level words ≤4 per scene; grammar named never (VS-8); kid-German glosses `(word → de)` via the array.
 - **The redemption is taught, not granted:** Jona is never told "it's okay." He is *shown* the thing he missed (a birthday, a rescue, a conversation) and then ASKED the future-tense question. Agency stays his.
+- **`scaffoldDe` is first-class prose (L-1 amendment, 2026-07-10):** grade 1 reads GERMAN-FIRST — the German line is the primary surface, not a translation aid. Write natural kid-German (never translationese) at the same register bar as the English; waves review the German lines with the same care. VS-17 enforces presence on every scene/choice/flagLine at grades ≤2; this sheet enforces quality.
 
 ## 6 · What Koki approves at this gate
 

@@ -12,6 +12,7 @@
 import { useState, type CSSProperties } from "react";
 import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-schema";
 import { xpForTier, type Tier } from "@domigo/engine";
+import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, useLangMode } from "@domigo/game-feel";
 import type { ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { CharacterChip, EvidenceBoard, EvidenceGallery, characterPalette } from "./art.tsx";
@@ -51,6 +52,8 @@ export interface DetectiveArt {
 
 export interface DetectiveGameProps {
   caseTitle: string;
+  /** L-1: drives the story-language default (defaults to 2 — today's only case game). */
+  grade?: number;
   chapter: Chapter;
   castNames: Record<string, string>;
   storyItems: Record<string, ResolvedItem>;
@@ -108,6 +111,8 @@ function TaskClue({ item, onAttempt, onSolved, onContinue, onScored, hideHint }:
 
 export function DetectiveGame(props: DetectiveGameProps) {
   const { chapter, castNames, storyItems, onAttempt, onSave, caseTitle, art } = props;
+  // L-1: story-language mode (device toggle; grade 2 defaults English-first).
+  const mode = useLangMode(props.grade ?? 2);
   const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
   const resume = props.initialSave && props.initialSave.chapterId === chapter.id ? props.initialSave : null;
   const first = chapter.scenes[0]?.id ?? "";
@@ -115,8 +120,6 @@ export function DetectiveGame(props: DetectiveGameProps) {
   const [sceneId, setSceneId] = useState(resume && byId.has(resume.sceneId) ? resume.sceneId : first);
   const [clues, setClues] = useState<string[]>(resume?.clues ?? []);
   const [taskDone, setTaskDone] = useState(false);
-  const [showGloss, setShowGloss] = useState(false);
-  const [showDe, setShowDe] = useState(false);
   // "Hot Trail" = consecutive non-combo-breaking answers (correct/partial); close/wrong reset.
   // Persisted in sessionStorage so the streak spans Case Files within one sitting.
   const [trail, setTrail] = useState<number>(() => {
@@ -151,8 +154,6 @@ export function DetectiveGame(props: DetectiveGameProps) {
 
   const go = (nextId: string | null): void => {
     setTaskDone(false);
-    setShowGloss(false);
-    setShowDe(false);
     if (nextId === null) { setDone(true); return; }
     setSceneId(nextId);
     save({ sceneId: nextId });
@@ -237,7 +238,10 @@ export function DetectiveGame(props: DetectiveGameProps) {
     <main style={{ ...wrap, padding: "16px 12px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
         <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{caseTitle} <span style={{ color: "var(--muted)", fontSize: 14, fontWeight: 400, fontFamily: "var(--font-body)" }}>· {chapter.titleEn}</span></h1>
-        <a href="/play/2" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Cases</a>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+          <LangToggle grade={props.grade ?? 2} />
+          <a href="/play/2" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Cases</a>
+        </span>
       </div>
 
       <div style={{ marginBottom: 12 }}>
@@ -261,30 +265,20 @@ export function DetectiveGame(props: DetectiveGameProps) {
           <button onClick={() => speak(scene.textEn)} aria-label="Read the line aloud" title="Read aloud" style={{ marginLeft: "auto", background: "none", border: "none", cursor: "pointer", fontSize: 18, lineHeight: 1, padding: 2 }}>🔊</button>
         </div>
         <div style={{ background: "var(--bg-sunken)", border: "1px solid var(--card-border)", borderRadius: 14, padding: "11px 15px", marginTop: 4 }}>
-          <p style={{ fontSize: 19, margin: 0, lineHeight: 1.4, color: "var(--text)" }}>{scene.textEn}</p>
+          <p style={{ fontSize: 19, margin: 0, lineHeight: 1.4, color: "var(--text)" }}>{primaryLine(mode, scene.textEn, scene.scaffoldDe)}</p>
         </div>
-        {scene.scaffoldDe && (
-          <div style={{ fontSize: 13, margin: "10px 0 2px" }}>
-            <button className="dg-chip" aria-expanded={showDe} onClick={() => setShowDe((d) => !d)}>
-              {showDe ? COPY.deHide : COPY.deShow}
-            </button>
-            {showDe && <p style={{ fontSize: 14, color: "var(--text-secondary)", margin: "6px 0 0" }}>{scene.scaffoldDe}</p>}
-          </div>
-        )}
-        {scene.glosses.length > 0 && (
-          <div style={{ fontSize: 13, marginTop: 6 }}>
-            <button className="dg-chip" aria-expanded={showGloss} onClick={() => setShowGloss((g) => !g)}>
-              {showGloss ? "Hide word help" : "Show word help"}
-            </button>
-            {showGloss && <ul style={{ margin: "8px 0 0", paddingLeft: 18, color: "var(--text-secondary)" }}>{scene.glosses.map((g) => <li key={g.word}>{g.word} = {g.de}</li>)}</ul>}
-          </div>
-        )}
+        <DialogueReveal key={`de-${scene.id}`} mode={mode} textEn={scene.textEn} scaffoldDe={scene.scaffoldDe} />
+        <GlossReveal key={`gl-${scene.id}`} mode={mode} glosses={scene.glosses} />
 
         {taskBlocks ? (
           <TaskClue item={slotItem} onAttempt={onAttempt} onSolved={() => addClue(slot.slot)} onContinue={() => setTaskDone(true)} onScored={onScored} hideHint={fadeHints} />
         ) : Array.isArray(sNext) ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 14 }}>
-            {sNext.map((c) => <button key={c.id} className="dg-btn-secondary" style={{ textAlign: "left", justifyContent: "flex-start" }} onClick={() => go(c.next)}>{c.textEn}</button>)}
+            {sNext.map((c) => (
+              <button key={c.id} className="dg-btn-secondary" style={{ textAlign: "left", justifyContent: "flex-start", display: "block" }} onClick={() => go(c.next)}>
+                <ChoiceContent mode={mode} textEn={c.textEn} scaffoldDe={c.scaffoldDe} />
+              </button>
+            ))}
           </div>
         ) : (
           <button className="dg-btn" style={{ marginTop: 14 }} onClick={() => go(sNext)}>{sNext === null ? "Finish chapter →" : "Next →"}</button>

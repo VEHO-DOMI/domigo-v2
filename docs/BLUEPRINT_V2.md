@@ -92,6 +92,17 @@ Exit criteria: `node scripts/verify-deploy.mjs --url https://domigo-v2.vercel.ap
 **T-3 · Eyes-on design parity pass** (rides T-2's session)
 Goal: 10A applied to prod — an actual browser session over prod vs local build on `/home`, `/practice/<unit>`, `/learn`, `/review`, `/tests`, `/admin`, `/signin`, one game shell, at 360×740 + 1280×800, screenshots saved to the session log; discrepancies become worklist items. The automated suite is V-1 (later, after Wave-2 UI stabilizes). Done-means: a written parity verdict with screenshots in the PR/passover.
 
+### IV.0b · WS-L — The language layer (Koki directive 2026-07-10, second session)
+
+_A documented philosophy change: the old doctrine ("comprehensible-input-first, German on demand" — handover/12:24, handover/grades/g2.md:141) inverts for the youngest learners. **Grade 1 reads GERMAN-FIRST** (meaning first, English on demand); an always-visible toggle flips it; graded tasks are never affected. Defaults: grade 1 → de-first, grades 2–4 → en-first (flip g2 later via one constant in `resolveLangMode` if Koki prefers)._
+
+**L-1 · Story-runtime language layer** (**SHIPPED with this section's PR**): `lang: auto|de-first|en-first` in the `game-feel` device settings (same localStorage key, defensive parse) · pure `resolveLangMode/primaryLine/secondaryLine/revealLabels/glossLabels` in `game-feel/core.ts` · shared `LangToggle`/`DialogueReveal`/`GlossReveal`/`ChoiceContent` components · all four runtimes rewired (G4 passes its flag-resolved lines; the 🔊 read-aloud always speaks the ENGLISH line) · LangToggle in all four game headers + a Sprache row in FeelGear · grade-1 chrome German unconditionally (hub, GameClient header, zone-board, overlay buttons — the toggle governs story LINES only) · **VS-17**: scaffoldDe required on every scene/choice/flagLine at grades ≤2 (German is the primary surface there — a missing scaffold would be a blank bubble).
+Exit criteria: game-feel + story-pipeline unit tests (mode matrix, null-scaffold fallback, VS-17 fixtures) · standing full gate · DOM playtest — g1 dialogue renders German primary with "Auf Englisch?" reveal, the toggle flips live and persists across reload, g2 unchanged by default but toggleable, tasks unaffected.
+
+**L-2 · Grade-1 platform chrome sweep (backlog):** German-first labels across /home, /practice, /review for grade-1 students — rides the D-6 autonomy lane.
+
+**Authoring consequence (binding for all g1/g2 waves):** `scaffoldDe` is **first-class prose**, not a translation aid — natural kid-German at the same register bar as the English line (handover/18 §5 amendment). VS-17 enforces presence; the register gate enforces quality.
+
 ### IV.1 · WS-A — Content quality / curation machinery
 
 _Verified baseline: the feared v1 "to go"-verbatim defect is ABSENT from graded carriers (0 such items; "to X" appears only as partial-tier tolerance). The real risks: variant gaps, ambiguous single-answer items, dormant `dAnswers`/`translation` pools. Order: A-1 → A-2 → A-3 → A-4 → A-5 (waves) → A-6._
@@ -260,7 +271,7 @@ Exit criteria: `verify-deploy` + `verify-design` green against prod; scripted au
 **(a) The single-file order** (deviate only when a Koki gate blocks — then pull the next unblocked item, per v1 loop (a)):
 
 ```
-0. BLUEPRINT_V2 + T-1 (this PR)
+0. BLUEPRINT_V2 + T-1 ✅ · G1-N gate pack ✅ · L-1 language layer (IV.0b) ✅
 1. T-2 deploy-truth (+T-3 eyes-on pass)
 2. A-1 E-2 audit script          ← unblocks K-4 + first fix waves
 3. A-2 E-3 strictness (K-2)

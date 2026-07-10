@@ -82,17 +82,20 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
           const chapter = story.chapters.find((c) => c.unit === z.unit && released.includes(c.id));
           const refs = chapter ? chapter.scenes.flatMap((s) => s.taskSlots).map((ts) => ts.itemId) : [];
           const restored = refs.length > 0 && refs.every((ref) => solvedItemIds.has(ref));
-          return { zoneId: z.id, pageNo: z.unit, titleEn: z.titleEn, restored, unlocked: !!chapter };
+          return { zoneId: z.id, pageNo: z.unit, titleEn: z.titleEn, titleDe: z.titleDe, restored, unlocked: !!chapter };
         })
       : [];
 
-  const noun = map ? "Zone" : grade === 3 ? "Episode" : grade === 4 ? "Day" : "Case";
+  // L-1: grade-1 chrome is German (the story-language toggle governs lines only).
+  const deChrome = grade === 1;
+  const noun = deChrome ? "Seite" : map ? "Zone" : grade === 3 ? "Episode" : grade === 4 ? "Day" : "Case";
+  // L-1: at grade 1 the German title leads and English becomes the subtitle.
   const stops = map
     ? map.zones.map((z) => ({
         id: z.id,
         short: z.id.split(".").pop() ?? "",
-        title: z.titleEn,
-        sub: z.titleDe,
+        title: deChrome ? (z.titleDe ?? z.titleEn) : z.titleEn,
+        sub: deChrome ? z.titleEn : z.titleDe,
         n: z.unit,
         unlocked: story?.chapters.some((c) => c.unit === z.unit && released.includes(c.id)) ?? false,
       }))
@@ -105,18 +108,20 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         unlocked: released.includes(c.id),
       }));
 
-  const tagline = map
-    ? "Choose a page to bring back. New pages open as you learn more."
-    : grade === 3
-      ? "Write the next episode of FOURTEEN. New episodes open as you learn more."
-      : grade === 4
-        ? "One week in England — write it down as it happens. New days open as you learn more."
-        : "Open a case file to investigate. New cases open as you learn more.";
+  const tagline = deChrome
+    ? "Wähl eine Seite und hol sie zurück. Neue Seiten öffnen sich, wenn du mehr lernst."
+    : map
+      ? "Choose a page to bring back. New pages open as you learn more."
+      : grade === 3
+        ? "Write the next episode of FOURTEEN. New episodes open as you learn more."
+        : grade === 4
+          ? "One week in England — write it down as it happens. New days open as you learn more."
+          : "Open a case file to investigate. New cases open as you learn more.";
 
   return (
     <main style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-        <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{story?.title.en ?? "Play"}</h1>
+        <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{(deChrome ? story?.title.de : story?.title.en) ?? story?.title.en ?? "Play"}</h1>
         <a href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</a>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>{tagline}</p>
@@ -134,13 +139,13 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
                 <div style={{ fontSize: 11, color: "var(--muted)", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>{noun} {s.n}</div>
                 <div style={{ fontSize: 17, fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{s.title}</div>
                 {s.sub && <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>{s.sub}</div>}
-                <div style={{ fontSize: 13, color: "var(--accent)", marginTop: 8, fontWeight: 600 }}>{map ? "Play →" : "Open →"}</div>
+                <div style={{ fontSize: 13, color: "var(--accent)", marginTop: 8, fontWeight: 600 }}>{deChrome ? "Spielen →" : map ? "Play →" : "Open →"}</div>
               </a>
             ) : (
               <div key={s.short} className="dg-tile--locked" style={{ padding: "16px 18px" }}>
                 <div style={{ fontSize: 11, fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>{noun} {s.n}</div>
                 <div style={{ fontSize: 17, fontWeight: 700, fontFamily: "var(--font-display)" }}>{s.title}</div>
-                <div style={{ fontSize: 13, marginTop: 8 }}>🔒 Coming soon</div>
+                <div style={{ fontSize: 13, marginTop: 8 }}>{deChrome ? "🔒 Bald!" : "🔒 Coming soon"}</div>
               </div>
             );
           })}
@@ -167,7 +172,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
 
       {zones.length > 0 && (
         <section style={{ marginTop: 28 }}>
-          <ZoneBoard zones={zones} label="The Lost Pages" />
+          <ZoneBoard zones={zones} label="Die verlorenen Seiten" lang="de" />
         </section>
       )}
     </main>

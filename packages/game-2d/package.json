@@ -16,6 +16,7 @@
     "@domigo/content-schema": "workspace:*",
     "@domigo/engine": "workspace:*",
     "@domigo/game-core": "workspace:*",
+    "@domigo/game-feel": "workspace:*",
     "@domigo/task-ui": "workspace:*",
     "phaser": "^3.90.0"
   },
