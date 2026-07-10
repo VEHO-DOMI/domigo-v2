@@ -1,0 +1,55 @@
+{
+  "schema": "cast@1",
+  "storyId": "g4.st.fourteen-live",
+  "members": [
+    {
+      "id": "you",
+      "nameEn": "You",
+      "descriptionDe": "du — Kopf und Stift des Kanals",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "leah",
+      "nameEn": "Leah",
+      "descriptionDe": "die Moderatorin",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "leo",
+      "nameEn": "Leo",
+      "descriptionDe": "die Kamera",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "ben",
+      "nameEn": "Ben",
+      "descriptionDe": "das Herz des Kanals",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "sara",
+      "nameEn": "Sara",
+      "descriptionDe": "der Fakten-Check",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "narrator",
+      "nameEn": "Narrator",
+      "descriptionDe": null,
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "direktorin",
+      "nameEn": "Direktorin Huber",
+      "descriptionDe": "die Direktorin",
+      "voice": null,
+      "art": null
+    }
+  ]
+}

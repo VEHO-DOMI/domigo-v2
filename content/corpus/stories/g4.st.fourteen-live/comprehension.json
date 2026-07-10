@@ -1,0 +1,53 @@
+{
+  "schema": "comprehension@1",
+  "storyId": "g4.st.fourteen-live",
+  "items": [
+    {
+      "id": "g4u01.ci.the-poster.mc.001",
+      "rev": 1,
+      "difficulty": 1,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "Why is the Sydney poster strange?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The vote is not open now.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Sydney is not one of the three cities.",
+        "The poster is not in English.",
+        "Leo does not like posters."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "vote",
+          "de": "Abstimmung",
+          "scope": null
+        },
+        {
+          "word": "poster",
+          "de": "Plakat",
+          "scope": null
+        },
+        {
+          "word": "strange",
+          "de": "seltsam",
+          "scope": null
+        }
+      ],
+      "hintDe": "Die Abstimmung startet erst am Freitag — und heute ist Montag.",
+      "hintEn": null,
+      "explainDe": "Das Plakat zeigt einen Sieger, aber niemand hat abgestimmt. Genau das macht die vier stutzig.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

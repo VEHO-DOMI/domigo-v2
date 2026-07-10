@@ -1,0 +1,47 @@
+{
+  "schema": "names@1",
+  "storyId": "g4.st.fourteen-live",
+  "reviewedBy": "fable",
+  "names": [
+    {
+      "name": "FOURTEEN",
+      "note": "the channel (G3 canon, carried over)"
+    },
+    {
+      "name": "Leah",
+      "note": "host (G3 canon)"
+    },
+    {
+      "name": "Leo",
+      "note": "camera (G3 canon)"
+    },
+    {
+      "name": "Ben",
+      "note": "community (G3 canon)"
+    },
+    {
+      "name": "Sara",
+      "note": "fact-check (G3 canon)"
+    },
+    {
+      "name": "Dublin",
+      "note": "candidate destination (u01 pitch)"
+    },
+    {
+      "name": "New York",
+      "note": "candidate destination (u03 pitch)"
+    },
+    {
+      "name": "Sydney",
+      "note": "candidate destination (u07 pitch; the pre-printed winner)"
+    },
+    {
+      "name": "Direktorin Huber",
+      "note": "the head of school"
+    },
+    {
+      "name": "Huber",
+      "note": "short form of Direktorin Huber"
+    }
+  ]
+}
