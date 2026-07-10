@@ -2,7 +2,10 @@
   "schema": "story@1",
   "id": "g1.st.lost-pages",
   "grade": 1,
-  "title": { "en": "The Lost Pages", "de": "Die verlorenen Seiten" },
+  "title": {
+    "en": "The Lost Pages",
+    "de": "Die verlorenen Seiten"
+  },
   "chapters": [
     {
       "id": "g1.st.lost-pages.ch01",
@@ -10,14 +13,191 @@
       "titleEn": "Time for School",
       "titleDe": "Zeit für die Schule",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch01.s001", "speaker": "finn", "textEn": "Hi! This page is empty. Our class is gone!", "scaffoldDe": "Hi! Diese Seite ist leer. Unsere Klasse ist weg!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "gone", "de": "weg", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch01.s002" },
-        { "id": "g1.st.lost-pages.ch01.s002", "speaker": "finn", "textEn": "The words are lost. Can you find them?", "scaffoldDe": "Die Wörter sind verloren. Kannst du sie finden?", "glosses": [{ "word": "words", "de": "Wörter", "scope": null }, { "word": "lost", "de": "verloren", "scope": null }, { "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u01.w.pencil", "variantKey": null }], "next": "g1.st.lost-pages.ch01.s003" },
-        { "id": "g1.st.lost-pages.ch01.s003", "speaker": "finn", "textEn": "Yes! A pencil! Look here.", "scaffoldDe": "Ja! Ein Bleistift! Schau her.", "glosses": [], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch01.s004" },
-        { "id": "g1.st.lost-pages.ch01.s004", "speaker": "finn", "textEn": "One book, two of them? Help!", "scaffoldDe": "Ein Buch, zwei davon? Hilf!", "glosses": [{ "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u01.gi.plurals.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch01.s005" },
-        { "id": "g1.st.lost-pages.ch01.s005", "speaker": "finn", "textEn": "Now the door. Is it open?", "scaffoldDe": "Jetzt die Tür. Ist sie offen?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u01.w.door", "variantKey": null }], "next": "g1.st.lost-pages.ch01.s006" },
-        { "id": "g1.st.lost-pages.ch01.s006", "speaker": "finn", "textEn": "The class is back. We did it!", "scaffoldDe": "Die Klasse ist zurück. Wir haben es geschafft!", "glosses": [{ "word": "back", "de": "zurück", "scope": null }, { "word": "did", "de": "geschafft", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u01.ci.whats-lost.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch01.s007" },
-        { "id": "g1.st.lost-pages.ch01.s007", "speaker": "berger", "textEn": "Welcome to school! Thank you!", "scaffoldDe": "Willkommen in der Schule! Danke!", "glosses": [{ "word": "welcome", "de": "willkommen", "scope": null }, { "word": "thank", "de": "danke", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch01.s008" },
-        { "id": "g1.st.lost-pages.ch01.s008", "speaker": "finn", "textEn": "The page is full. Next room!", "scaffoldDe": "Die Seite ist voll. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch01.s001",
+          "speaker": "finn",
+          "textEn": "Hi! This page is empty. Our class is gone!",
+          "scaffoldDe": "Hi! Diese Seite ist leer. Unsere Klasse ist weg!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch01.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s002",
+          "speaker": "finn",
+          "textEn": "The words are lost. Can you find them?",
+          "scaffoldDe": "Die Wörter sind verloren. Kannst du sie finden?",
+          "glosses": [
+            {
+              "word": "words",
+              "de": "Wörter",
+              "scope": null
+            },
+            {
+              "word": "lost",
+              "de": "verloren",
+              "scope": null
+            },
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u01.w.pencil",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch01.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s003",
+          "speaker": "finn",
+          "textEn": "Yes! A pencil! Look here.",
+          "scaffoldDe": "Ja! Ein Bleistift! Schau her.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch01.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s004",
+          "speaker": "finn",
+          "textEn": "One book, two of them? Help!",
+          "scaffoldDe": "Ein Buch, zwei davon? Hilf!",
+          "glosses": [
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u01.gi.plurals.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch01.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s005",
+          "speaker": "finn",
+          "textEn": "Now the door. Is it open?",
+          "scaffoldDe": "Jetzt die Tür. Ist sie offen?",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u01.w.door",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch01.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s006",
+          "speaker": "finn",
+          "textEn": "The class is back. We did it!",
+          "scaffoldDe": "Die Klasse ist zurück. Wir haben es geschafft!",
+          "glosses": [
+            {
+              "word": "back",
+              "de": "zurück",
+              "scope": null
+            },
+            {
+              "word": "did",
+              "de": "geschafft",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u01.ci.whats-lost.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch01.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s007",
+          "speaker": "berger",
+          "textEn": "Welcome to school! Thank you!",
+          "scaffoldDe": "Willkommen in der Schule! Danke!",
+          "glosses": [
+            {
+              "word": "welcome",
+              "de": "willkommen",
+              "scope": null
+            },
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch01.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch01.s008",
+          "speaker": "finn",
+          "textEn": "The page is full. Next room!",
+          "scaffoldDe": "Die Seite ist voll. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -26,14 +206,213 @@
       "titleEn": "At the Zoo",
       "titleDe": "Im Zoo",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch02.s001", "speaker": "finn", "textEn": "This page is empty. The zoo is gone!", "scaffoldDe": "Diese Seite ist leer. Der Zoo ist weg!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "gone", "de": "weg", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch02.s002" },
-        { "id": "g1.st.lost-pages.ch02.s002", "speaker": "finn", "textEn": "The animals are lost. Find this one!", "scaffoldDe": "Die Tiere sind verloren. Finde dieses!", "glosses": [{ "word": "animals", "de": "Tiere", "scope": null }, { "word": "lost", "de": "verloren", "scope": null }, { "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u02.w.lion", "variantKey": null }], "next": "g1.st.lost-pages.ch02.s003" },
-        { "id": "g1.st.lost-pages.ch02.s003", "speaker": "pixel", "textEn": "Meow! I want to see the lion!", "scaffoldDe": "Miau! Ich will den Löwen sehen!", "glosses": [{ "word": "meow", "de": "Miau", "scope": null }, { "word": "see", "de": "sehen", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch02.s004" },
-        { "id": "g1.st.lost-pages.ch02.s004", "speaker": "finn", "textEn": "And this animal?", "scaffoldDe": "Und dieses Tier?", "glosses": [{ "word": "animal", "de": "Tier", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u02.w.monkey", "variantKey": null }], "next": "g1.st.lost-pages.ch02.s005" },
-        { "id": "g1.st.lost-pages.ch02.s005", "speaker": "finn", "textEn": "Where do they live? Help!", "scaffoldDe": "Wo wohnen sie? Hilf!", "glosses": [{ "word": "live", "de": "wohnen", "scope": null }, { "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u02.gi.there-is-are.mc.002", "variantKey": null }], "next": "g1.st.lost-pages.ch02.s006" },
-        { "id": "g1.st.lost-pages.ch02.s006", "speaker": "finn", "textEn": "The zoo is full! I hear the lions.", "scaffoldDe": "Der Zoo ist voll! Ich höre die Löwen.", "glosses": [{ "word": "full", "de": "voll", "scope": null }, { "word": "hear", "de": "höre", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u02.ci.first-animal.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch02.s007" },
-        { "id": "g1.st.lost-pages.ch02.s007", "speaker": "pixel", "textEn": "Meow! Thank you!", "scaffoldDe": "Miau! Danke!", "glosses": [{ "word": "meow", "de": "Miau", "scope": null }, { "word": "thank", "de": "danke", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch02.s008" },
-        { "id": "g1.st.lost-pages.ch02.s008", "speaker": "finn", "textEn": "The page is back. Next room!", "scaffoldDe": "Die Seite ist zurück. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "back", "de": "zurück", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch02.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. The zoo is gone!",
+          "scaffoldDe": "Diese Seite ist leer. Der Zoo ist weg!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch02.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s002",
+          "speaker": "finn",
+          "textEn": "The animals are lost. Find this one!",
+          "scaffoldDe": "Die Tiere sind verloren. Finde dieses!",
+          "glosses": [
+            {
+              "word": "animals",
+              "de": "Tiere",
+              "scope": null
+            },
+            {
+              "word": "lost",
+              "de": "verloren",
+              "scope": null
+            },
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u02.w.lion",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch02.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s003",
+          "speaker": "pixel",
+          "textEn": "Meow! I want to see the lion!",
+          "scaffoldDe": "Miau! Ich will den Löwen sehen!",
+          "glosses": [
+            {
+              "word": "meow",
+              "de": "Miau",
+              "scope": null
+            },
+            {
+              "word": "see",
+              "de": "sehen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch02.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s004",
+          "speaker": "finn",
+          "textEn": "And this animal?",
+          "scaffoldDe": "Und dieses Tier?",
+          "glosses": [
+            {
+              "word": "animal",
+              "de": "Tier",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u02.w.monkey",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch02.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s005",
+          "speaker": "finn",
+          "textEn": "Where do they live? Help!",
+          "scaffoldDe": "Wo wohnen sie? Hilf!",
+          "glosses": [
+            {
+              "word": "live",
+              "de": "wohnen",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u02.gi.there-is-are.mc.002",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch02.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s006",
+          "speaker": "finn",
+          "textEn": "The zoo is full! I hear the lions.",
+          "scaffoldDe": "Der Zoo ist voll! Ich höre die Löwen.",
+          "glosses": [
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "hear",
+              "de": "höre",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u02.ci.first-animal.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch02.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s007",
+          "speaker": "pixel",
+          "textEn": "Meow! Thank you!",
+          "scaffoldDe": "Miau! Danke!",
+          "glosses": [
+            {
+              "word": "meow",
+              "de": "Miau",
+              "scope": null
+            },
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch02.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch02.s008",
+          "speaker": "finn",
+          "textEn": "The page is back. Next room!",
+          "scaffoldDe": "Die Seite ist zurück. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "back",
+              "de": "zurück",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -42,14 +421,218 @@
       "titleEn": "Pirates",
       "titleDe": "Piraten",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch03.s001", "speaker": "finn", "textEn": "This page is empty. A pirate is here!", "scaffoldDe": "Diese Seite ist leer. Ein Pirat ist hier!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "pirate", "de": "Pirat", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch03.s002" },
-        { "id": "g1.st.lost-pages.ch03.s002", "speaker": "captain", "textEn": "Help! My gold is gone!", "scaffoldDe": "Hilfe! Mein Gold ist weg!", "glosses": [{ "word": "help", "de": "Hilfe", "scope": null }, { "word": "gold", "de": "Gold", "scope": null }, { "word": "gone", "de": "weg", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch03.s003" },
-        { "id": "g1.st.lost-pages.ch03.s003", "speaker": "finn", "textEn": "Find the pirate's ship!", "scaffoldDe": "Finde das Schiff des Piraten!", "glosses": [{ "word": "find", "de": "finden", "scope": null }, { "word": "pirate", "de": "Pirat", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u03.w.ship", "variantKey": null }], "next": "g1.st.lost-pages.ch03.s004" },
-        { "id": "g1.st.lost-pages.ch03.s004", "speaker": "finn", "textEn": "He has a big one? Help!", "scaffoldDe": "Er hat ein großes? Hilf!", "glosses": [{ "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u03.gi.have-got.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch03.s005" },
-        { "id": "g1.st.lost-pages.ch03.s005", "speaker": "finn", "textEn": "Look at his face. Find this!", "scaffoldDe": "Schau sein Gesicht an. Finde das!", "glosses": [{ "word": "face", "de": "Gesicht", "scope": null }, { "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u03.w.beard", "variantKey": null }], "next": "g1.st.lost-pages.ch03.s006" },
-        { "id": "g1.st.lost-pages.ch03.s006", "speaker": "finn", "textEn": "The gold is back in the chest!", "scaffoldDe": "Das Gold ist zurück in der Truhe!", "glosses": [{ "word": "gold", "de": "Gold", "scope": null }, { "word": "back", "de": "zurück", "scope": null }, { "word": "chest", "de": "Truhe", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u03.ci.pirate-loss.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch03.s007" },
-        { "id": "g1.st.lost-pages.ch03.s007", "speaker": "captain", "textEn": "Thank you, friend!", "scaffoldDe": "Danke, Freund!", "glosses": [{ "word": "thank", "de": "danke", "scope": null }, { "word": "friend", "de": "Freund", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch03.s008" },
-        { "id": "g1.st.lost-pages.ch03.s008", "speaker": "finn", "textEn": "The page is full. Next room!", "scaffoldDe": "Die Seite ist voll. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch03.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. A pirate is here!",
+          "scaffoldDe": "Diese Seite ist leer. Ein Pirat ist hier!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "pirate",
+              "de": "Pirat",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch03.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch03.s002",
+          "speaker": "captain",
+          "textEn": "Help! My gold is gone!",
+          "scaffoldDe": "Hilfe! Mein Gold ist weg!",
+          "glosses": [
+            {
+              "word": "help",
+              "de": "Hilfe",
+              "scope": null
+            },
+            {
+              "word": "gold",
+              "de": "Gold",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch03.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch03.s003",
+          "speaker": "finn",
+          "textEn": "Find the pirate's ship!",
+          "scaffoldDe": "Finde das Schiff des Piraten!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            },
+            {
+              "word": "pirate",
+              "de": "Pirat",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u03.w.ship",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch03.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch03.s004",
+          "speaker": "finn",
+          "textEn": "He has a big one? Help!",
+          "scaffoldDe": "Er hat ein großes? Hilf!",
+          "glosses": [
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u03.gi.have-got.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch03.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch03.s005",
+          "speaker": "finn",
+          "textEn": "Look at his face. Find this!",
+          "scaffoldDe": "Schau sein Gesicht an. Finde das!",
+          "glosses": [
+            {
+              "word": "face",
+              "de": "Gesicht",
+              "scope": null
+            },
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u03.w.beard",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch03.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch03.s006",
+          "speaker": "finn",
+          "textEn": "The gold is back in the chest!",
+          "scaffoldDe": "Das Gold ist zurück in der Truhe!",
+          "glosses": [
+            {
+              "word": "gold",
+              "de": "Gold",
+              "scope": null
+            },
+            {
+              "word": "back",
+              "de": "zurück",
+              "scope": null
+            },
+            {
+              "word": "chest",
+              "de": "Truhe",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u03.ci.pirate-loss.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch03.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch03.s007",
+          "speaker": "captain",
+          "textEn": "Thank you, friend!",
+          "scaffoldDe": "Danke, Freund!",
+          "glosses": [
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            },
+            {
+              "word": "friend",
+              "de": "Freund",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch03.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch03.s008",
+          "speaker": "finn",
+          "textEn": "The page is full. Next room!",
+          "scaffoldDe": "Die Seite ist voll. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -58,14 +641,182 @@
       "titleEn": "Feelings",
       "titleDe": "Gefühle",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch04.s001", "speaker": "finn", "textEn": "This page is empty. Robo is sad!", "scaffoldDe": "Diese Seite ist leer. Robo ist traurig!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch04.s002" },
-        { "id": "g1.st.lost-pages.ch04.s002", "speaker": "robo", "textEn": "Beep. I am sad. Or happy?", "scaffoldDe": "Piep. Ich bin traurig. Oder glücklich?", "glosses": [{ "word": "beep", "de": "Piep", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch04.s003" },
-        { "id": "g1.st.lost-pages.ch04.s003", "speaker": "finn", "textEn": "Find this feeling!", "scaffoldDe": "Finde dieses Gefühl!", "glosses": [{ "word": "find", "de": "finden", "scope": null }, { "word": "feeling", "de": "Gefühl", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u04.w.happy", "variantKey": null }], "next": "g1.st.lost-pages.ch04.s004" },
-        { "id": "g1.st.lost-pages.ch04.s004", "speaker": "finn", "textEn": "And this one?", "scaffoldDe": "Und dieses?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u04.w.sad", "variantKey": null }], "next": "g1.st.lost-pages.ch04.s005" },
-        { "id": "g1.st.lost-pages.ch04.s005", "speaker": "finn", "textEn": "Robo is not sad. Help!", "scaffoldDe": "Robo ist nicht traurig. Hilf!", "glosses": [{ "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u04.gi.to-be-negative.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch04.s006" },
-        { "id": "g1.st.lost-pages.ch04.s006", "speaker": "finn", "textEn": "Robo smiles now. He is happy!", "scaffoldDe": "Robo lächelt jetzt. Er ist glücklich!", "glosses": [{ "word": "smiles", "de": "lächelt", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u04.ci.robo-feeling.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch04.s007" },
-        { "id": "g1.st.lost-pages.ch04.s007", "speaker": "robo", "textEn": "Beep! Happy! Thank you!", "scaffoldDe": "Piep! Glücklich! Danke!", "glosses": [{ "word": "beep", "de": "Piep", "scope": null }, { "word": "thank", "de": "danke", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch04.s008" },
-        { "id": "g1.st.lost-pages.ch04.s008", "speaker": "finn", "textEn": "The page is back. Next room!", "scaffoldDe": "Die Seite ist zurück. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "back", "de": "zurück", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch04.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. Robo is sad!",
+          "scaffoldDe": "Diese Seite ist leer. Robo ist traurig!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch04.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch04.s002",
+          "speaker": "robo",
+          "textEn": "Beep. I am sad. Or happy?",
+          "scaffoldDe": "Piep. Ich bin traurig. Oder glücklich?",
+          "glosses": [
+            {
+              "word": "beep",
+              "de": "Piep",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch04.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch04.s003",
+          "speaker": "finn",
+          "textEn": "Find this feeling!",
+          "scaffoldDe": "Finde dieses Gefühl!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            },
+            {
+              "word": "feeling",
+              "de": "Gefühl",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u04.w.happy",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch04.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch04.s004",
+          "speaker": "finn",
+          "textEn": "And this one?",
+          "scaffoldDe": "Und dieses?",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u04.w.sad",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch04.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch04.s005",
+          "speaker": "finn",
+          "textEn": "Robo is not sad. Help!",
+          "scaffoldDe": "Robo ist nicht traurig. Hilf!",
+          "glosses": [
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u04.gi.to-be-negative.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch04.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch04.s006",
+          "speaker": "finn",
+          "textEn": "Robo smiles now. He is happy!",
+          "scaffoldDe": "Robo lächelt jetzt. Er ist glücklich!",
+          "glosses": [
+            {
+              "word": "smiles",
+              "de": "lächelt",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u04.ci.robo-feeling.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch04.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch04.s007",
+          "speaker": "robo",
+          "textEn": "Beep! Happy! Thank you!",
+          "scaffoldDe": "Piep! Glücklich! Danke!",
+          "glosses": [
+            {
+              "word": "beep",
+              "de": "Piep",
+              "scope": null
+            },
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch04.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch04.s008",
+          "speaker": "finn",
+          "textEn": "The page is back. Next room!",
+          "scaffoldDe": "Die Seite ist zurück. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "back",
+              "de": "zurück",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -74,30 +825,529 @@
       "titleEn": "Our Band",
       "titleDe": "Unsere Band",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch05.s001", "speaker": "finn", "textEn": "This page is empty. The band is quiet!", "scaffoldDe": "Diese Seite ist leer. Die Band ist still!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "band", "de": "Band", "scope": null }, { "word": "quiet", "de": "still", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch05.s002" },
-        { "id": "g1.st.lost-pages.ch05.s002", "speaker": "anna", "textEn": "My drum is gone! Help!", "scaffoldDe": "Meine Trommel ist weg! Hilf!", "glosses": [{ "word": "drum", "de": "Trommel", "scope": null }, { "word": "gone", "de": "weg", "scope": null }, { "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch05.s003" },
-        { "id": "g1.st.lost-pages.ch05.s003", "speaker": "finn", "textEn": "Find Anna's drums!", "scaffoldDe": "Finde Annas Trommeln!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u05.w.drums", "variantKey": null }], "next": "g1.st.lost-pages.ch05.s004" },
-        { "id": "g1.st.lost-pages.ch05.s004", "speaker": "finn", "textEn": "And this one?", "scaffoldDe": "Und dieses?", "glosses": [], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u05.w.guitar", "variantKey": null }], "next": "g1.st.lost-pages.ch05.s005" },
-        { "id": "g1.st.lost-pages.ch05.s005", "speaker": "finn", "textEn": "What can she play? Help!", "scaffoldDe": "Was kann sie spielen? Hilf!", "glosses": [{ "word": "play", "de": "spielen", "scope": null }, { "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u05.gi.can.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch05.s006" },
-        { "id": "g1.st.lost-pages.ch05.s006", "speaker": "finn", "textEn": "The band plays! I can dance!", "scaffoldDe": "Die Band spielt! Ich kann tanzen!", "glosses": [{ "word": "band", "de": "Band", "scope": null }, { "word": "plays", "de": "spielt", "scope": null }, { "word": "dance", "de": "tanzen", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u05.ci.anna-plays.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch05.s007" },
-        { "id": "g1.st.lost-pages.ch05.s007", "speaker": "anna", "textEn": "Thank you! Let's play!", "scaffoldDe": "Danke! Lass uns spielen!", "glosses": [{ "word": "thank", "de": "danke", "scope": null }, { "word": "play", "de": "spielen", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch05.s008" },
-        { "id": "g1.st.lost-pages.ch05.s008", "speaker": "finn", "textEn": "The page is full. Next room!", "scaffoldDe": "Die Seite ist voll. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch05.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. The band is quiet!",
+          "scaffoldDe": "Diese Seite ist leer. Die Band ist still!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "band",
+              "de": "Band",
+              "scope": null
+            },
+            {
+              "word": "quiet",
+              "de": "still",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch05.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch05.s002",
+          "speaker": "anna",
+          "textEn": "My drum is gone! Help!",
+          "scaffoldDe": "Meine Trommel ist weg! Hilf!",
+          "glosses": [
+            {
+              "word": "drum",
+              "de": "Trommel",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch05.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch05.s003",
+          "speaker": "finn",
+          "textEn": "Find Anna's drums!",
+          "scaffoldDe": "Finde Annas Trommeln!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u05.w.drums",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch05.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch05.s004",
+          "speaker": "finn",
+          "textEn": "And this one?",
+          "scaffoldDe": "Und dieses?",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u05.w.guitar",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch05.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch05.s005",
+          "speaker": "finn",
+          "textEn": "What can she play? Help!",
+          "scaffoldDe": "Was kann sie spielen? Hilf!",
+          "glosses": [
+            {
+              "word": "play",
+              "de": "spielen",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u05.gi.can.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch05.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch05.s006",
+          "speaker": "finn",
+          "textEn": "The band plays! I can dance!",
+          "scaffoldDe": "Die Band spielt! Ich kann tanzen!",
+          "glosses": [
+            {
+              "word": "band",
+              "de": "Band",
+              "scope": null
+            },
+            {
+              "word": "plays",
+              "de": "spielt",
+              "scope": null
+            },
+            {
+              "word": "dance",
+              "de": "tanzen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u05.ci.anna-plays.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch05.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch05.s007",
+          "speaker": "anna",
+          "textEn": "Thank you! Let's play!",
+          "scaffoldDe": "Danke! Lass uns spielen!",
+          "glosses": [
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            },
+            {
+              "word": "play",
+              "de": "spielen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch05.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch05.s008",
+          "speaker": "finn",
+          "textEn": "The page is full. Next room!",
+          "scaffoldDe": "Die Seite ist voll. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
       "id": "g1.st.lost-pages.ch06",
       "unit": 6,
-      "titleEn": "Detective",
-      "titleDe": "Detektiv",
+      "titleEn": "The Wrong Clues",
+      "titleDe": "Die falschen Hinweise",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch06.s001", "speaker": "finn", "textEn": "This page is empty. A detective lost his clues!", "scaffoldDe": "Diese Seite ist leer. Ein Detektiv hat seine Hinweise verloren!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "lost", "de": "verloren", "scope": null }, { "word": "clues", "de": "Hinweise", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch06.s002" },
-        { "id": "g1.st.lost-pages.ch06.s002", "speaker": "mo", "textEn": "Where are my clues? I can't see them!", "scaffoldDe": "Wo sind meine Hinweise? Ich kann sie nicht sehen!", "glosses": [{ "word": "clues", "de": "Hinweise", "scope": null }, { "word": "see", "de": "sehen", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch06.s003" },
-        { "id": "g1.st.lost-pages.ch06.s003", "speaker": "finn", "textEn": "Find the detective first!", "scaffoldDe": "Finde zuerst den Detektiv!", "glosses": [{ "word": "find", "de": "finden", "scope": null }, { "word": "first", "de": "zuerst", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u06.w.detective", "variantKey": null }], "next": "g1.st.lost-pages.ch06.s004" },
-        { "id": "g1.st.lost-pages.ch06.s004", "speaker": "finn", "textEn": "And his office. Find it!", "scaffoldDe": "Und sein Büro. Finde es!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u06.w.office", "variantKey": null }], "next": "g1.st.lost-pages.ch06.s005" },
-        { "id": "g1.st.lost-pages.ch06.s005", "speaker": "finn", "textEn": "He looks for clues. Help him!", "scaffoldDe": "Er sucht nach Hinweisen. Hilf ihm!", "glosses": [{ "word": "looks", "de": "sucht", "scope": null }, { "word": "clues", "de": "Hinweise", "scope": null }, { "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u06.gi.present-simple.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch06.s006" },
-        { "id": "g1.st.lost-pages.ch06.s006", "speaker": "finn", "textEn": "Case closed! The clues are back.", "scaffoldDe": "Fall gelöst! Die Hinweise sind zurück.", "glosses": [{ "word": "case", "de": "Fall", "scope": null }, { "word": "closed", "de": "gelöst", "scope": null }, { "word": "clues", "de": "Hinweise", "scope": null }, { "word": "back", "de": "zurück", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u06.ci.mo-loss.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch06.s007" },
-        { "id": "g1.st.lost-pages.ch06.s007", "speaker": "mo", "textEn": "Thank you! Good work!", "scaffoldDe": "Danke! Gute Arbeit!", "glosses": [{ "word": "thank", "de": "danke", "scope": null }, { "word": "work", "de": "Arbeit", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch06.s008" },
-        { "id": "g1.st.lost-pages.ch06.s008", "speaker": "finn", "textEn": "The page is full. Next room!", "scaffoldDe": "Die Seite ist voll. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch06.s001",
+          "speaker": "finn",
+          "textEn": "Look at this page! Someone rubbed out the words!",
+          "scaffoldDe": "Schau dir diese Seite an! Jemand hat die Wörter wegradiert!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "someone",
+              "de": "jemand",
+              "scope": null
+            },
+            {
+              "word": "rubbed out",
+              "de": "wegradiert",
+              "scope": null
+            },
+            {
+              "word": "words",
+              "de": "Wörter",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch06.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch06.s002",
+          "speaker": "mo",
+          "textEn": "My clues! All gone. This is not right.",
+          "scaffoldDe": "Meine Hinweise! Alle weg. Das ist nicht richtig.",
+          "glosses": [
+            {
+              "word": "clues",
+              "de": "Hinweise",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            },
+            {
+              "word": "right",
+              "de": "richtig",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch06.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch06.s003",
+          "speaker": "finn",
+          "textEn": "Detective Mo finds things for people. What is his job? Find the word!",
+          "scaffoldDe": "Detektiv Mo findet Dinge für Leute. Was ist sein Beruf? Finde das Wort!",
+          "glosses": [
+            {
+              "word": "things",
+              "de": "Dinge",
+              "scope": null
+            },
+            {
+              "word": "people",
+              "de": "Leute",
+              "scope": null
+            },
+            {
+              "word": "job",
+              "de": "Beruf",
+              "scope": null
+            },
+            {
+              "word": "word",
+              "de": "Wort",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u06.w.detective",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch06.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch06.s004",
+          "speaker": "mo",
+          "textEn": "Good! Now my office. The word for it is gone. Find it!",
+          "scaffoldDe": "Gut! Jetzt mein Büro. Das Wort dafür ist weg. Finde es!",
+          "glosses": [
+            {
+              "word": "office",
+              "de": "Büro",
+              "scope": null
+            },
+            {
+              "word": "word",
+              "de": "Wort",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u06.w.office",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch06.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch06.s005",
+          "speaker": "finn",
+          "textEn": "Detective Mo looks for clues every day. Help him!",
+          "scaffoldDe": "Detektiv Mo sucht jeden Tag nach Hinweisen. Hilf ihm!",
+          "glosses": [
+            {
+              "word": "looks for",
+              "de": "sucht nach",
+              "scope": null
+            },
+            {
+              "word": "clues",
+              "de": "Hinweise",
+              "scope": null
+            },
+            {
+              "word": "every day",
+              "de": "jeden Tag",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u06.gi.present-simple.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch06.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch06.s006",
+          "speaker": "finn",
+          "textEn": "The clues are back! But wait — this paper is not from the book.",
+          "scaffoldDe": "Die Hinweise sind zurück! Aber warte — dieses Papier ist nicht aus dem Buch.",
+          "glosses": [
+            {
+              "word": "clues",
+              "de": "Hinweise",
+              "scope": null
+            },
+            {
+              "word": "back",
+              "de": "zurück",
+              "scope": null
+            },
+            {
+              "word": "wait",
+              "de": "warte",
+              "scope": null
+            },
+            {
+              "word": "paper",
+              "de": "Papier",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u06.ci.mo-loss.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch06.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch06.s007",
+          "speaker": "mo",
+          "textEn": "It says: Nobody helps me. Nobody plays with me.",
+          "scaffoldDe": "Da steht: Niemand hilft mir. Niemand spielt mit mir.",
+          "glosses": [
+            {
+              "word": "says",
+              "de": "steht",
+              "scope": null
+            },
+            {
+              "word": "nobody",
+              "de": "niemand",
+              "scope": null
+            },
+            {
+              "word": "helps",
+              "de": "hilft",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch06.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch06.s008",
+          "speaker": "mo",
+          "textEn": "Who writes this? Finn, do you know?",
+          "scaffoldDe": "Wer schreibt das? Finn, weißt du es?",
+          "glosses": [
+            {
+              "word": "writes",
+              "de": "schreibt",
+              "scope": null
+            },
+            {
+              "word": "know",
+              "de": "wissen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch06.s009"
+        },
+        {
+          "id": "g1.st.lost-pages.ch06.s009",
+          "speaker": "finn",
+          "textEn": "I do not know. Look at Pixel — she hears something. We are not alone in this book.",
+          "scaffoldDe": "Ich weiß es nicht. Schau Pixel an — sie hört etwas. Wir sind nicht allein in diesem Buch.",
+          "glosses": [
+            {
+              "word": "know",
+              "de": "wissen",
+              "scope": null
+            },
+            {
+              "word": "hears",
+              "de": "hört",
+              "scope": null
+            },
+            {
+              "word": "something",
+              "de": "etwas",
+              "scope": null
+            },
+            {
+              "word": "alone",
+              "de": "allein",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch06.s010"
+        },
+        {
+          "id": "g1.st.lost-pages.ch06.s010",
+          "speaker": "finn",
+          "textEn": "But do not be afraid, friend. We are two — with Pixel, three. Next room!",
+          "scaffoldDe": "Aber hab keine Angst, Freund. Wir sind zwei — mit Pixel drei. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "afraid",
+              "de": "Angst",
+              "scope": null
+            },
+            {
+              "word": "friend",
+              "de": "Freund",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -106,14 +1356,208 @@
       "titleEn": "Noodles",
       "titleDe": "Nudeln",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch07.s001", "speaker": "finn", "textEn": "This page is empty. Chef Luca can't cook!", "scaffoldDe": "Diese Seite ist leer. Chef Luca kann nicht kochen!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "cook", "de": "kochen", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch07.s002" },
-        { "id": "g1.st.lost-pages.ch07.s002", "speaker": "luca", "textEn": "My recipe is gone! Help!", "scaffoldDe": "Mein Rezept ist weg! Hilfe!", "glosses": [{ "word": "recipe", "de": "Rezept", "scope": null }, { "word": "gone", "de": "weg", "scope": null }, { "word": "help", "de": "Hilfe", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch07.s003" },
-        { "id": "g1.st.lost-pages.ch07.s003", "speaker": "finn", "textEn": "Find the cheese!", "scaffoldDe": "Finde den Käse!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u07.w.cheese", "variantKey": null }], "next": "g1.st.lost-pages.ch07.s004" },
-        { "id": "g1.st.lost-pages.ch07.s004", "speaker": "finn", "textEn": "And the bread. Find it!", "scaffoldDe": "Und das Brot. Finde es!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u07.w.bread", "variantKey": null }], "next": "g1.st.lost-pages.ch07.s005" },
-        { "id": "g1.st.lost-pages.ch07.s005", "speaker": "finn", "textEn": "What does he eat? Help!", "scaffoldDe": "Was isst er? Hilf!", "glosses": [{ "word": "eat", "de": "essen", "scope": null }, { "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u07.gi.adverbs-frequency.mc.004", "variantKey": null }], "next": "g1.st.lost-pages.ch07.s006" },
-        { "id": "g1.st.lost-pages.ch07.s006", "speaker": "finn", "textEn": "The soup is back! It smells good.", "scaffoldDe": "Die Suppe ist zurück! Sie riecht gut.", "glosses": [{ "word": "soup", "de": "Suppe", "scope": null }, { "word": "back", "de": "zurück", "scope": null }, { "word": "smells", "de": "riecht", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u07.ci.luca-cant.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch07.s007" },
-        { "id": "g1.st.lost-pages.ch07.s007", "speaker": "luca", "textEn": "So good! Thank you!", "scaffoldDe": "So gut! Danke!", "glosses": [{ "word": "thank", "de": "danke", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch07.s008" },
-        { "id": "g1.st.lost-pages.ch07.s008", "speaker": "finn", "textEn": "The page is full. Next room!", "scaffoldDe": "Die Seite ist voll. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch07.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. Chef Luca can't cook!",
+          "scaffoldDe": "Diese Seite ist leer. Chef Luca kann nicht kochen!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "cook",
+              "de": "kochen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch07.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch07.s002",
+          "speaker": "luca",
+          "textEn": "My recipe is gone! Help!",
+          "scaffoldDe": "Mein Rezept ist weg! Hilfe!",
+          "glosses": [
+            {
+              "word": "recipe",
+              "de": "Rezept",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "Hilfe",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch07.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch07.s003",
+          "speaker": "finn",
+          "textEn": "Find the cheese!",
+          "scaffoldDe": "Finde den Käse!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u07.w.cheese",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch07.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch07.s004",
+          "speaker": "finn",
+          "textEn": "And the bread. Find it!",
+          "scaffoldDe": "Und das Brot. Finde es!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u07.w.bread",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch07.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch07.s005",
+          "speaker": "finn",
+          "textEn": "What does he eat? Help!",
+          "scaffoldDe": "Was isst er? Hilf!",
+          "glosses": [
+            {
+              "word": "eat",
+              "de": "essen",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u07.gi.adverbs-frequency.mc.004",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch07.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch07.s006",
+          "speaker": "finn",
+          "textEn": "The soup is back! It smells good.",
+          "scaffoldDe": "Die Suppe ist zurück! Sie riecht gut.",
+          "glosses": [
+            {
+              "word": "soup",
+              "de": "Suppe",
+              "scope": null
+            },
+            {
+              "word": "back",
+              "de": "zurück",
+              "scope": null
+            },
+            {
+              "word": "smells",
+              "de": "riecht",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u07.ci.luca-cant.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch07.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch07.s007",
+          "speaker": "luca",
+          "textEn": "So good! Thank you!",
+          "scaffoldDe": "So gut! Danke!",
+          "glosses": [
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch07.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch07.s008",
+          "speaker": "finn",
+          "textEn": "The page is full. Next room!",
+          "scaffoldDe": "Die Seite ist voll. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -122,14 +1566,213 @@
       "titleEn": "Clothes",
       "titleDe": "Kleidung",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch08.s001", "speaker": "finn", "textEn": "This page is empty. Mila has no clothes!", "scaffoldDe": "Diese Seite ist leer. Mila hat keine Kleidung!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "clothes", "de": "Kleidung", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch08.s002" },
-        { "id": "g1.st.lost-pages.ch08.s002", "speaker": "mila", "textEn": "My clothes are gone! Help!", "scaffoldDe": "Meine Kleidung ist weg! Hilfe!", "glosses": [{ "word": "clothes", "de": "Kleidung", "scope": null }, { "word": "gone", "de": "weg", "scope": null }, { "word": "help", "de": "Hilfe", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch08.s003" },
-        { "id": "g1.st.lost-pages.ch08.s003", "speaker": "finn", "textEn": "Find the cap!", "scaffoldDe": "Finde die Mütze!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u08.w.cap", "variantKey": null }], "next": "g1.st.lost-pages.ch08.s004" },
-        { "id": "g1.st.lost-pages.ch08.s004", "speaker": "finn", "textEn": "And the belt. Find it!", "scaffoldDe": "Und den Gürtel. Finde ihn!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u08.w.belt", "variantKey": null }], "next": "g1.st.lost-pages.ch08.s005" },
-        { "id": "g1.st.lost-pages.ch08.s005", "speaker": "finn", "textEn": "Does she wear a hat? Help!", "scaffoldDe": "Trägt sie einen Hut? Hilf!", "glosses": [{ "word": "wear", "de": "tragen", "scope": null }, { "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u08.gi.present-simple-questions.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch08.s006" },
-        { "id": "g1.st.lost-pages.ch08.s006", "speaker": "finn", "textEn": "Mila is dressed! She looks cool.", "scaffoldDe": "Mila ist angezogen! Sie sieht cool aus.", "glosses": [{ "word": "dressed", "de": "angezogen", "scope": null }, { "word": "looks", "de": "sieht aus", "scope": null }, { "word": "cool", "de": "cool", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u08.ci.mila-needs.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch08.s007" },
-        { "id": "g1.st.lost-pages.ch08.s007", "speaker": "mila", "textEn": "Cool! Thank you!", "scaffoldDe": "Cool! Danke!", "glosses": [{ "word": "cool", "de": "cool", "scope": null }, { "word": "thank", "de": "danke", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch08.s008" },
-        { "id": "g1.st.lost-pages.ch08.s008", "speaker": "finn", "textEn": "The page is full. Next room!", "scaffoldDe": "Die Seite ist voll. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch08.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. Mila has no clothes!",
+          "scaffoldDe": "Diese Seite ist leer. Mila hat keine Kleidung!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "clothes",
+              "de": "Kleidung",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch08.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch08.s002",
+          "speaker": "mila",
+          "textEn": "My clothes are gone! Help!",
+          "scaffoldDe": "Meine Kleidung ist weg! Hilfe!",
+          "glosses": [
+            {
+              "word": "clothes",
+              "de": "Kleidung",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "Hilfe",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch08.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch08.s003",
+          "speaker": "finn",
+          "textEn": "Find the cap!",
+          "scaffoldDe": "Finde die Mütze!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u08.w.cap",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch08.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch08.s004",
+          "speaker": "finn",
+          "textEn": "And the belt. Find it!",
+          "scaffoldDe": "Und den Gürtel. Finde ihn!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u08.w.belt",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch08.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch08.s005",
+          "speaker": "finn",
+          "textEn": "Does she wear a hat? Help!",
+          "scaffoldDe": "Trägt sie einen Hut? Hilf!",
+          "glosses": [
+            {
+              "word": "wear",
+              "de": "tragen",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u08.gi.present-simple-questions.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch08.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch08.s006",
+          "speaker": "finn",
+          "textEn": "Mila is dressed! She looks cool.",
+          "scaffoldDe": "Mila ist angezogen! Sie sieht cool aus.",
+          "glosses": [
+            {
+              "word": "dressed",
+              "de": "angezogen",
+              "scope": null
+            },
+            {
+              "word": "looks",
+              "de": "sieht aus",
+              "scope": null
+            },
+            {
+              "word": "cool",
+              "de": "cool",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u08.ci.mila-needs.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch08.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch08.s007",
+          "speaker": "mila",
+          "textEn": "Cool! Thank you!",
+          "scaffoldDe": "Cool! Danke!",
+          "glosses": [
+            {
+              "word": "cool",
+              "de": "cool",
+              "scope": null
+            },
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch08.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch08.s008",
+          "speaker": "finn",
+          "textEn": "The page is full. Next room!",
+          "scaffoldDe": "Die Seite ist voll. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -138,14 +1781,213 @@
       "titleEn": "Unusual Pets",
       "titleDe": "Ungewöhnliche Haustiere",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch09.s001", "speaker": "finn", "textEn": "This page is empty. The pets are lost!", "scaffoldDe": "Diese Seite ist leer. Die Haustiere sind verloren!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "pets", "de": "Haustiere", "scope": null }, { "word": "lost", "de": "verloren", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch09.s002" },
-        { "id": "g1.st.lost-pages.ch09.s002", "speaker": "tim", "textEn": "Where are my pets? Help!", "scaffoldDe": "Wo sind meine Haustiere? Hilfe!", "glosses": [{ "word": "pets", "de": "Haustiere", "scope": null }, { "word": "help", "de": "Hilfe", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch09.s003" },
-        { "id": "g1.st.lost-pages.ch09.s003", "speaker": "finn", "textEn": "Find the cage!", "scaffoldDe": "Finde den Käfig!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u09.w.cage", "variantKey": null }], "next": "g1.st.lost-pages.ch09.s004" },
-        { "id": "g1.st.lost-pages.ch09.s004", "speaker": "finn", "textEn": "And the box. Find it!", "scaffoldDe": "Und die Box. Finde sie!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u09.w.box", "variantKey": null }], "next": "g1.st.lost-pages.ch09.s005" },
-        { "id": "g1.st.lost-pages.ch09.s005", "speaker": "finn", "textEn": "I know him. Help with the words!", "scaffoldDe": "Ich kenne ihn. Hilf mit den Wörtern!", "glosses": [{ "word": "know", "de": "kenne", "scope": null }, { "word": "help", "de": "hilf", "scope": null }, { "word": "words", "de": "Wörter", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u09.gi.object-pronouns.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch09.s006" },
-        { "id": "g1.st.lost-pages.ch09.s006", "speaker": "finn", "textEn": "The pets are back! Look at them.", "scaffoldDe": "Die Haustiere sind zurück! Schau sie an.", "glosses": [{ "word": "pets", "de": "Haustiere", "scope": null }, { "word": "back", "de": "zurück", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u09.ci.tim-loss.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch09.s007" },
-        { "id": "g1.st.lost-pages.ch09.s007", "speaker": "tim", "textEn": "Thank you, friend!", "scaffoldDe": "Danke, Freund!", "glosses": [{ "word": "thank", "de": "danke", "scope": null }, { "word": "friend", "de": "Freund", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch09.s008" },
-        { "id": "g1.st.lost-pages.ch09.s008", "speaker": "finn", "textEn": "The page is full. Next room!", "scaffoldDe": "Die Seite ist voll. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch09.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. The pets are lost!",
+          "scaffoldDe": "Diese Seite ist leer. Die Haustiere sind verloren!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "pets",
+              "de": "Haustiere",
+              "scope": null
+            },
+            {
+              "word": "lost",
+              "de": "verloren",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch09.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch09.s002",
+          "speaker": "tim",
+          "textEn": "Where are my pets? Help!",
+          "scaffoldDe": "Wo sind meine Haustiere? Hilfe!",
+          "glosses": [
+            {
+              "word": "pets",
+              "de": "Haustiere",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "Hilfe",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch09.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch09.s003",
+          "speaker": "finn",
+          "textEn": "Find the cage!",
+          "scaffoldDe": "Finde den Käfig!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u09.w.cage",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch09.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch09.s004",
+          "speaker": "finn",
+          "textEn": "And the box. Find it!",
+          "scaffoldDe": "Und die Box. Finde sie!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u09.w.box",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch09.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch09.s005",
+          "speaker": "finn",
+          "textEn": "I know him. Help with the words!",
+          "scaffoldDe": "Ich kenne ihn. Hilf mit den Wörtern!",
+          "glosses": [
+            {
+              "word": "know",
+              "de": "kenne",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            },
+            {
+              "word": "words",
+              "de": "Wörter",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u09.gi.object-pronouns.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch09.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch09.s006",
+          "speaker": "finn",
+          "textEn": "The pets are back! Look at them.",
+          "scaffoldDe": "Die Haustiere sind zurück! Schau sie an.",
+          "glosses": [
+            {
+              "word": "pets",
+              "de": "Haustiere",
+              "scope": null
+            },
+            {
+              "word": "back",
+              "de": "zurück",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u09.ci.tim-loss.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch09.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch09.s007",
+          "speaker": "tim",
+          "textEn": "Thank you, friend!",
+          "scaffoldDe": "Danke, Freund!",
+          "glosses": [
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            },
+            {
+              "word": "friend",
+              "de": "Freund",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch09.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch09.s008",
+          "speaker": "finn",
+          "textEn": "The page is full. Next room!",
+          "scaffoldDe": "Die Seite ist voll. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -154,14 +1996,233 @@
       "titleEn": "In a Shop",
       "titleDe": "Im Geschäft",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch10.s001", "speaker": "finn", "textEn": "This page is empty. The shop is closed!", "scaffoldDe": "Diese Seite ist leer. Das Geschäft ist geschlossen!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "shop", "de": "Geschäft", "scope": null }, { "word": "closed", "de": "geschlossen", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch10.s002" },
-        { "id": "g1.st.lost-pages.ch10.s002", "speaker": "apple", "textEn": "My things are gone! Help!", "scaffoldDe": "Meine Sachen sind weg! Hilfe!", "glosses": [{ "word": "things", "de": "Sachen", "scope": null }, { "word": "gone", "de": "weg", "scope": null }, { "word": "help", "de": "Hilfe", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch10.s003" },
-        { "id": "g1.st.lost-pages.ch10.s003", "speaker": "finn", "textEn": "Find the phone!", "scaffoldDe": "Finde das Handy!", "glosses": [{ "word": "find", "de": "finden", "scope": null }, { "word": "phone", "de": "Handy", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u10.w.mobile-phone", "variantKey": null }], "next": "g1.st.lost-pages.ch10.s004" },
-        { "id": "g1.st.lost-pages.ch10.s004", "speaker": "finn", "textEn": "And the sweets. Find them!", "scaffoldDe": "Und die Süßigkeiten. Finde sie!", "glosses": [{ "word": "find", "de": "finden", "scope": null }, { "word": "sweets", "de": "Süßigkeiten", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u10.w.sweets", "variantKey": null }], "next": "g1.st.lost-pages.ch10.s005" },
-        { "id": "g1.st.lost-pages.ch10.s005", "speaker": "finn", "textEn": "These or those? Help!", "scaffoldDe": "Diese oder jene? Hilf!", "glosses": [{ "word": "these", "de": "diese", "scope": null }, { "word": "those", "de": "jene", "scope": null }, { "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u10.gi.this-that-these-those.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch10.s006" },
-        { "id": "g1.st.lost-pages.ch10.s006", "speaker": "finn", "textEn": "The shop is full! It's open now.", "scaffoldDe": "Das Geschäft ist voll! Es ist jetzt offen.", "glosses": [{ "word": "shop", "de": "Geschäft", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "open", "de": "offen", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u10.ci.apple-loss.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch10.s007" },
-        { "id": "g1.st.lost-pages.ch10.s007", "speaker": "apple", "textEn": "Thank you! Goodbye!", "scaffoldDe": "Danke! Auf Wiedersehen!", "glosses": [{ "word": "thank", "de": "danke", "scope": null }, { "word": "goodbye", "de": "auf Wiedersehen", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch10.s008" },
-        { "id": "g1.st.lost-pages.ch10.s008", "speaker": "finn", "textEn": "The page is full. More rooms wait!", "scaffoldDe": "Die Seite ist voll. Mehr Räume warten!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "rooms", "de": "Räume", "scope": null }, { "word": "wait", "de": "warten", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch10.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. The shop is closed!",
+          "scaffoldDe": "Diese Seite ist leer. Das Geschäft ist geschlossen!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "shop",
+              "de": "Geschäft",
+              "scope": null
+            },
+            {
+              "word": "closed",
+              "de": "geschlossen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch10.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch10.s002",
+          "speaker": "apple",
+          "textEn": "My things are gone! Help!",
+          "scaffoldDe": "Meine Sachen sind weg! Hilfe!",
+          "glosses": [
+            {
+              "word": "things",
+              "de": "Sachen",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "Hilfe",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch10.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch10.s003",
+          "speaker": "finn",
+          "textEn": "Find the phone!",
+          "scaffoldDe": "Finde das Handy!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            },
+            {
+              "word": "phone",
+              "de": "Handy",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u10.w.mobile-phone",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch10.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch10.s004",
+          "speaker": "finn",
+          "textEn": "And the sweets. Find them!",
+          "scaffoldDe": "Und die Süßigkeiten. Finde sie!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            },
+            {
+              "word": "sweets",
+              "de": "Süßigkeiten",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u10.w.sweets",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch10.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch10.s005",
+          "speaker": "finn",
+          "textEn": "These or those? Help!",
+          "scaffoldDe": "Diese oder jene? Hilf!",
+          "glosses": [
+            {
+              "word": "these",
+              "de": "diese",
+              "scope": null
+            },
+            {
+              "word": "those",
+              "de": "jene",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u10.gi.this-that-these-those.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch10.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch10.s006",
+          "speaker": "finn",
+          "textEn": "The shop is full! It's open now.",
+          "scaffoldDe": "Das Geschäft ist voll! Es ist jetzt offen.",
+          "glosses": [
+            {
+              "word": "shop",
+              "de": "Geschäft",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "open",
+              "de": "offen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u10.ci.apple-loss.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch10.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch10.s007",
+          "speaker": "apple",
+          "textEn": "Thank you! Goodbye!",
+          "scaffoldDe": "Danke! Auf Wiedersehen!",
+          "glosses": [
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            },
+            {
+              "word": "goodbye",
+              "de": "auf Wiedersehen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch10.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch10.s008",
+          "speaker": "finn",
+          "textEn": "The page is full. More rooms wait!",
+          "scaffoldDe": "Die Seite ist voll. Mehr Räume warten!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "rooms",
+              "de": "Räume",
+              "scope": null
+            },
+            {
+              "word": "wait",
+              "de": "warten",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -170,14 +2231,233 @@
       "titleEn": "What's the Time",
       "titleDe": "Wie spät ist es",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch11.s001", "speaker": "finn", "textEn": "This page is empty. The clocks stopped!", "scaffoldDe": "Diese Seite ist leer. Die Uhren stehen still!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "clocks", "de": "Uhren", "scope": null }, { "word": "stopped", "de": "stehen still", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch11.s002" },
-        { "id": "g1.st.lost-pages.ch11.s002", "speaker": "tik", "textEn": "Tick tock! My clocks are frozen!", "scaffoldDe": "Tick tack! Meine Uhren sind eingefroren!", "glosses": [{ "word": "tick", "de": "tick", "scope": null }, { "word": "tock", "de": "tack", "scope": null }, { "word": "clocks", "de": "Uhren", "scope": null }, { "word": "frozen", "de": "eingefroren", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch11.s003" },
-        { "id": "g1.st.lost-pages.ch11.s003", "speaker": "finn", "textEn": "Find the clock!", "scaffoldDe": "Finde die Uhr!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u11.w.clock", "variantKey": null }], "next": "g1.st.lost-pages.ch11.s004" },
-        { "id": "g1.st.lost-pages.ch11.s004", "speaker": "finn", "textEn": "And the living room. Find it!", "scaffoldDe": "Und das Wohnzimmer. Finde es!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u11.w.living-room", "variantKey": null }], "next": "g1.st.lost-pages.ch11.s005" },
-        { "id": "g1.st.lost-pages.ch11.s005", "speaker": "finn", "textEn": "She is reading now. Help!", "scaffoldDe": "Sie liest jetzt. Hilf!", "glosses": [{ "word": "reading", "de": "liest", "scope": null }, { "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u11.gi.present-continuous.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch11.s006" },
-        { "id": "g1.st.lost-pages.ch11.s006", "speaker": "finn", "textEn": "Tick tock! The clocks work again.", "scaffoldDe": "Tick tack! Die Uhren gehen wieder.", "glosses": [{ "word": "tick", "de": "tick", "scope": null }, { "word": "tock", "de": "tack", "scope": null }, { "word": "clocks", "de": "Uhren", "scope": null }, { "word": "work", "de": "gehen", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u11.ci.what-stopped.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch11.s007" },
-        { "id": "g1.st.lost-pages.ch11.s007", "speaker": "tik", "textEn": "Thank you! Tick tock!", "scaffoldDe": "Danke! Tick tack!", "glosses": [{ "word": "thank", "de": "danke", "scope": null }, { "word": "tick", "de": "tick", "scope": null }, { "word": "tock", "de": "tack", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch11.s008" },
-        { "id": "g1.st.lost-pages.ch11.s008", "speaker": "finn", "textEn": "The page is full. Next room!", "scaffoldDe": "Die Seite ist voll. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch11.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. The clocks stopped!",
+          "scaffoldDe": "Diese Seite ist leer. Die Uhren stehen still!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "clocks",
+              "de": "Uhren",
+              "scope": null
+            },
+            {
+              "word": "stopped",
+              "de": "stehen still",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch11.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch11.s002",
+          "speaker": "tik",
+          "textEn": "Tick tock! My clocks are frozen!",
+          "scaffoldDe": "Tick tack! Meine Uhren sind eingefroren!",
+          "glosses": [
+            {
+              "word": "tick",
+              "de": "tick",
+              "scope": null
+            },
+            {
+              "word": "tock",
+              "de": "tack",
+              "scope": null
+            },
+            {
+              "word": "clocks",
+              "de": "Uhren",
+              "scope": null
+            },
+            {
+              "word": "frozen",
+              "de": "eingefroren",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch11.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch11.s003",
+          "speaker": "finn",
+          "textEn": "Find the clock!",
+          "scaffoldDe": "Finde die Uhr!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u11.w.clock",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch11.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch11.s004",
+          "speaker": "finn",
+          "textEn": "And the living room. Find it!",
+          "scaffoldDe": "Und das Wohnzimmer. Finde es!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u11.w.living-room",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch11.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch11.s005",
+          "speaker": "finn",
+          "textEn": "She is reading now. Help!",
+          "scaffoldDe": "Sie liest jetzt. Hilf!",
+          "glosses": [
+            {
+              "word": "reading",
+              "de": "liest",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u11.gi.present-continuous.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch11.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch11.s006",
+          "speaker": "finn",
+          "textEn": "Tick tock! The clocks work again.",
+          "scaffoldDe": "Tick tack! Die Uhren gehen wieder.",
+          "glosses": [
+            {
+              "word": "tick",
+              "de": "tick",
+              "scope": null
+            },
+            {
+              "word": "tock",
+              "de": "tack",
+              "scope": null
+            },
+            {
+              "word": "clocks",
+              "de": "Uhren",
+              "scope": null
+            },
+            {
+              "word": "work",
+              "de": "gehen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u11.ci.what-stopped.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch11.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch11.s007",
+          "speaker": "tik",
+          "textEn": "Thank you! Tick tock!",
+          "scaffoldDe": "Danke! Tick tack!",
+          "glosses": [
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            },
+            {
+              "word": "tick",
+              "de": "tick",
+              "scope": null
+            },
+            {
+              "word": "tock",
+              "de": "tack",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch11.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch11.s008",
+          "speaker": "finn",
+          "textEn": "The page is full. Next room!",
+          "scaffoldDe": "Die Seite ist voll. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -186,14 +2466,213 @@
       "titleEn": "Birthday Cake",
       "titleDe": "Geburtstagskuchen",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch12.s001", "speaker": "finn", "textEn": "This page is empty. It's Rosa's birthday!", "scaffoldDe": "Diese Seite ist leer. Es ist Rosas Geburtstag!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "birthday", "de": "Geburtstag", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch12.s002" },
-        { "id": "g1.st.lost-pages.ch12.s002", "speaker": "rosa", "textEn": "My cake is gone! Help!", "scaffoldDe": "Mein Kuchen ist weg! Hilfe!", "glosses": [{ "word": "gone", "de": "weg", "scope": null }, { "word": "help", "de": "Hilfe", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch12.s003" },
-        { "id": "g1.st.lost-pages.ch12.s003", "speaker": "finn", "textEn": "Find the birthday cake!", "scaffoldDe": "Finde den Geburtstagskuchen!", "glosses": [{ "word": "find", "de": "finden", "scope": null }, { "word": "birthday", "de": "Geburtstag", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u12.w.birthday-cake", "variantKey": null }], "next": "g1.st.lost-pages.ch12.s004" },
-        { "id": "g1.st.lost-pages.ch12.s004", "speaker": "finn", "textEn": "And a candle. Find it!", "scaffoldDe": "Und eine Kerze. Finde sie!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u12.w.candle", "variantKey": null }], "next": "g1.st.lost-pages.ch12.s005" },
-        { "id": "g1.st.lost-pages.ch12.s005", "speaker": "finn", "textEn": "They were happy. Help!", "scaffoldDe": "Sie waren glücklich. Hilf!", "glosses": [{ "word": "were", "de": "waren", "scope": null }, { "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u12.gi.past-simple-was-were.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch12.s006" },
-        { "id": "g1.st.lost-pages.ch12.s006", "speaker": "finn", "textEn": "The cake is back! It looks yummy.", "scaffoldDe": "Der Kuchen ist zurück! Er sieht lecker aus.", "glosses": [{ "word": "back", "de": "zurück", "scope": null }, { "word": "looks", "de": "sieht aus", "scope": null }, { "word": "yummy", "de": "lecker", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u12.ci.whats-gone.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch12.s007" },
-        { "id": "g1.st.lost-pages.ch12.s007", "speaker": "rosa", "textEn": "Thank you! Happy birthday!", "scaffoldDe": "Danke! Alles Gute zum Geburtstag!", "glosses": [{ "word": "thank", "de": "danke", "scope": null }, { "word": "birthday", "de": "Geburtstag", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch12.s008" },
-        { "id": "g1.st.lost-pages.ch12.s008", "speaker": "finn", "textEn": "The page is full. Next room!", "scaffoldDe": "Die Seite ist voll. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch12.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. It's Rosa's birthday!",
+          "scaffoldDe": "Diese Seite ist leer. Es ist Rosas Geburtstag!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "birthday",
+              "de": "Geburtstag",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch12.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch12.s002",
+          "speaker": "rosa",
+          "textEn": "My cake is gone! Help!",
+          "scaffoldDe": "Mein Kuchen ist weg! Hilfe!",
+          "glosses": [
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "Hilfe",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch12.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch12.s003",
+          "speaker": "finn",
+          "textEn": "Find the birthday cake!",
+          "scaffoldDe": "Finde den Geburtstagskuchen!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            },
+            {
+              "word": "birthday",
+              "de": "Geburtstag",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u12.w.birthday-cake",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch12.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch12.s004",
+          "speaker": "finn",
+          "textEn": "And a candle. Find it!",
+          "scaffoldDe": "Und eine Kerze. Finde sie!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u12.w.candle",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch12.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch12.s005",
+          "speaker": "finn",
+          "textEn": "They were happy. Help!",
+          "scaffoldDe": "Sie waren glücklich. Hilf!",
+          "glosses": [
+            {
+              "word": "were",
+              "de": "waren",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u12.gi.past-simple-was-were.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch12.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch12.s006",
+          "speaker": "finn",
+          "textEn": "The cake is back! It looks yummy.",
+          "scaffoldDe": "Der Kuchen ist zurück! Er sieht lecker aus.",
+          "glosses": [
+            {
+              "word": "back",
+              "de": "zurück",
+              "scope": null
+            },
+            {
+              "word": "looks",
+              "de": "sieht aus",
+              "scope": null
+            },
+            {
+              "word": "yummy",
+              "de": "lecker",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u12.ci.whats-gone.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch12.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch12.s007",
+          "speaker": "rosa",
+          "textEn": "Thank you! Happy birthday!",
+          "scaffoldDe": "Danke! Alles Gute zum Geburtstag!",
+          "glosses": [
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            },
+            {
+              "word": "birthday",
+              "de": "Geburtstag",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch12.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch12.s008",
+          "speaker": "finn",
+          "textEn": "The page is full. Next room!",
+          "scaffoldDe": "Die Seite ist voll. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -202,14 +2681,213 @@
       "titleEn": "Help!",
       "titleDe": "Hilfe!",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch13.s001", "speaker": "finn", "textEn": "This page is empty. There was a fire!", "scaffoldDe": "Diese Seite ist leer. Es gab ein Feuer!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "was", "de": "war", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch13.s002" },
-        { "id": "g1.st.lost-pages.ch13.s002", "speaker": "sam", "textEn": "I climbed the ladder! My story is gone!", "scaffoldDe": "Ich bin die Leiter hochgeklettert! Meine Geschichte ist weg!", "glosses": [{ "word": "climbed", "de": "hochgeklettert", "scope": null }, { "word": "ladder", "de": "Leiter", "scope": null }, { "word": "story", "de": "Geschichte", "scope": null }, { "word": "gone", "de": "weg", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch13.s003" },
-        { "id": "g1.st.lost-pages.ch13.s003", "speaker": "finn", "textEn": "Find the fire!", "scaffoldDe": "Finde das Feuer!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u13.w.fire", "variantKey": null }], "next": "g1.st.lost-pages.ch13.s004" },
-        { "id": "g1.st.lost-pages.ch13.s004", "speaker": "finn", "textEn": "And the ambulance. Find it!", "scaffoldDe": "Und den Krankenwagen. Finde ihn!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u13.w.ambulance", "variantKey": null }], "next": "g1.st.lost-pages.ch13.s005" },
-        { "id": "g1.st.lost-pages.ch13.s005", "speaker": "finn", "textEn": "She called for help. Help!", "scaffoldDe": "Sie rief um Hilfe. Hilf!", "glosses": [{ "word": "called", "de": "rief", "scope": null }, { "word": "help", "de": "Hilfe", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u13.gi.past-simple-regular.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch13.s006" },
-        { "id": "g1.st.lost-pages.ch13.s006", "speaker": "finn", "textEn": "Everyone is safe now!", "scaffoldDe": "Alle sind jetzt sicher!", "glosses": [{ "word": "everyone", "de": "alle", "scope": null }, { "word": "safe", "de": "sicher", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u13.ci.sam-climbed.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch13.s007" },
-        { "id": "g1.st.lost-pages.ch13.s007", "speaker": "sam", "textEn": "Thank you! We are a team!", "scaffoldDe": "Danke! Wir sind ein Team!", "glosses": [{ "word": "thank", "de": "danke", "scope": null }, { "word": "team", "de": "Team", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch13.s008" },
-        { "id": "g1.st.lost-pages.ch13.s008", "speaker": "finn", "textEn": "The page is full. Next room!", "scaffoldDe": "Die Seite ist voll. Nächster Raum!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "next", "de": "nächster", "scope": null }, { "word": "room", "de": "Raum", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch13.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. There was a fire!",
+          "scaffoldDe": "Diese Seite ist leer. Es gab ein Feuer!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "was",
+              "de": "war",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch13.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch13.s002",
+          "speaker": "sam",
+          "textEn": "I climbed the ladder! My story is gone!",
+          "scaffoldDe": "Ich bin die Leiter hochgeklettert! Meine Geschichte ist weg!",
+          "glosses": [
+            {
+              "word": "climbed",
+              "de": "hochgeklettert",
+              "scope": null
+            },
+            {
+              "word": "ladder",
+              "de": "Leiter",
+              "scope": null
+            },
+            {
+              "word": "story",
+              "de": "Geschichte",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch13.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch13.s003",
+          "speaker": "finn",
+          "textEn": "Find the fire!",
+          "scaffoldDe": "Finde das Feuer!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u13.w.fire",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch13.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch13.s004",
+          "speaker": "finn",
+          "textEn": "And the ambulance. Find it!",
+          "scaffoldDe": "Und den Krankenwagen. Finde ihn!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u13.w.ambulance",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch13.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch13.s005",
+          "speaker": "finn",
+          "textEn": "She called for help. Help!",
+          "scaffoldDe": "Sie rief um Hilfe. Hilf!",
+          "glosses": [
+            {
+              "word": "called",
+              "de": "rief",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "Hilfe",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u13.gi.past-simple-regular.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch13.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch13.s006",
+          "speaker": "finn",
+          "textEn": "Everyone is safe now!",
+          "scaffoldDe": "Alle sind jetzt sicher!",
+          "glosses": [
+            {
+              "word": "everyone",
+              "de": "alle",
+              "scope": null
+            },
+            {
+              "word": "safe",
+              "de": "sicher",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u13.ci.sam-climbed.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch13.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch13.s007",
+          "speaker": "sam",
+          "textEn": "Thank you! We are a team!",
+          "scaffoldDe": "Danke! Wir sind ein Team!",
+          "glosses": [
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            },
+            {
+              "word": "team",
+              "de": "Team",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch13.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch13.s008",
+          "speaker": "finn",
+          "textEn": "The page is full. Next room!",
+          "scaffoldDe": "Die Seite ist voll. Nächster Raum!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "next",
+              "de": "nächster",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -218,14 +2896,233 @@
       "titleEn": "Favourite",
       "titleDe": "Lieblings...",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch14.s001", "speaker": "finn", "textEn": "This page is empty. The songs are gone!", "scaffoldDe": "Diese Seite ist leer. Die Lieder sind weg!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "empty", "de": "leer", "scope": null }, { "word": "songs", "de": "Lieder", "scope": null }, { "word": "gone", "de": "weg", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch14.s002" },
-        { "id": "g1.st.lost-pages.ch14.s002", "speaker": "peppi", "textEn": "Listen to my beat!", "scaffoldDe": "Hör dir meinen Beat an!", "glosses": [{ "word": "listen", "de": "hör an", "scope": null }, { "word": "beat", "de": "Beat", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch14.s003" },
-        { "id": "g1.st.lost-pages.ch14.s003", "speaker": "finn", "textEn": "Find the music video!", "scaffoldDe": "Finde das Musikvideo!", "glosses": [{ "word": "find", "de": "finden", "scope": null }, { "word": "music", "de": "Musik", "scope": null }, { "word": "video", "de": "Video", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u14.w.music-video", "variantKey": null }], "next": "g1.st.lost-pages.ch14.s004" },
-        { "id": "g1.st.lost-pages.ch14.s004", "speaker": "finn", "textEn": "And a cartoon. Find it!", "scaffoldDe": "Und einen Zeichentrickfilm. Finde ihn!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u14.w.cartoon", "variantKey": null }], "next": "g1.st.lost-pages.ch14.s005" },
-        { "id": "g1.st.lost-pages.ch14.s005", "speaker": "finn", "textEn": "Yesterday I went to the park. Help!", "scaffoldDe": "Gestern ging ich in den Park. Hilf!", "glosses": [{ "word": "yesterday", "de": "gestern", "scope": null }, { "word": "went", "de": "ging", "scope": null }, { "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u14.gi.past-simple-irregular.mc.003", "variantKey": null }], "next": "g1.st.lost-pages.ch14.s006" },
-        { "id": "g1.st.lost-pages.ch14.s006", "speaker": "finn", "textEn": "The music is back! Let's dance!", "scaffoldDe": "Die Musik ist zurück! Lass uns tanzen!", "glosses": [{ "word": "music", "de": "Musik", "scope": null }, { "word": "back", "de": "zurück", "scope": null }, { "word": "dance", "de": "tanzen", "scope": null }], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u14.ci.peppi-loss.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch14.s007" },
-        { "id": "g1.st.lost-pages.ch14.s007", "speaker": "peppi", "textEn": "Thank you! Turn it up!", "scaffoldDe": "Danke! Mach lauter!", "glosses": [{ "word": "thank", "de": "danke", "scope": null }, { "word": "turn", "de": "mach", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch14.s008" },
-        { "id": "g1.st.lost-pages.ch14.s008", "speaker": "finn", "textEn": "The page is full. The last room waits!", "scaffoldDe": "Die Seite ist voll. Der letzte Raum wartet!", "glosses": [{ "word": "page", "de": "Seite", "scope": null }, { "word": "full", "de": "voll", "scope": null }, { "word": "last", "de": "letzte", "scope": null }, { "word": "room", "de": "Raum", "scope": null }, { "word": "waits", "de": "wartet", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch14.s001",
+          "speaker": "finn",
+          "textEn": "This page is empty. The songs are gone!",
+          "scaffoldDe": "Diese Seite ist leer. Die Lieder sind weg!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "empty",
+              "de": "leer",
+              "scope": null
+            },
+            {
+              "word": "songs",
+              "de": "Lieder",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch14.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch14.s002",
+          "speaker": "peppi",
+          "textEn": "Listen to my beat!",
+          "scaffoldDe": "Hör dir meinen Beat an!",
+          "glosses": [
+            {
+              "word": "listen",
+              "de": "hör an",
+              "scope": null
+            },
+            {
+              "word": "beat",
+              "de": "Beat",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch14.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch14.s003",
+          "speaker": "finn",
+          "textEn": "Find the music video!",
+          "scaffoldDe": "Finde das Musikvideo!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            },
+            {
+              "word": "music",
+              "de": "Musik",
+              "scope": null
+            },
+            {
+              "word": "video",
+              "de": "Video",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u14.w.music-video",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch14.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch14.s004",
+          "speaker": "finn",
+          "textEn": "And a cartoon. Find it!",
+          "scaffoldDe": "Und einen Zeichentrickfilm. Finde ihn!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u14.w.cartoon",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch14.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch14.s005",
+          "speaker": "finn",
+          "textEn": "Yesterday I went to the park. Help!",
+          "scaffoldDe": "Gestern ging ich in den Park. Hilf!",
+          "glosses": [
+            {
+              "word": "yesterday",
+              "de": "gestern",
+              "scope": null
+            },
+            {
+              "word": "went",
+              "de": "ging",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u14.gi.past-simple-irregular.mc.003",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch14.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch14.s006",
+          "speaker": "finn",
+          "textEn": "The music is back! Let's dance!",
+          "scaffoldDe": "Die Musik ist zurück! Lass uns tanzen!",
+          "glosses": [
+            {
+              "word": "music",
+              "de": "Musik",
+              "scope": null
+            },
+            {
+              "word": "back",
+              "de": "zurück",
+              "scope": null
+            },
+            {
+              "word": "dance",
+              "de": "tanzen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u14.ci.peppi-loss.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch14.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch14.s007",
+          "speaker": "peppi",
+          "textEn": "Thank you! Turn it up!",
+          "scaffoldDe": "Danke! Mach lauter!",
+          "glosses": [
+            {
+              "word": "thank",
+              "de": "danke",
+              "scope": null
+            },
+            {
+              "word": "turn",
+              "de": "mach",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch14.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch14.s008",
+          "speaker": "finn",
+          "textEn": "The page is full. The last room waits!",
+          "scaffoldDe": "Die Seite ist voll. Der letzte Raum wartet!",
+          "glosses": [
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            },
+            {
+              "word": "last",
+              "de": "letzte",
+              "scope": null
+            },
+            {
+              "word": "room",
+              "de": "Raum",
+              "scope": null
+            },
+            {
+              "word": "waits",
+              "de": "wartet",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     },
     {
@@ -234,15 +3131,213 @@
       "titleEn": "Going to Do?",
       "titleDe": "Was machst du?",
       "scenes": [
-        { "id": "g1.st.lost-pages.ch15.s001", "speaker": "finn", "textEn": "This is the last page! What now?", "scaffoldDe": "Das ist die letzte Seite! Was nun?", "glosses": [{ "word": "last", "de": "letzte", "scope": null }, { "word": "page", "de": "Seite", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch15.s002" },
-        { "id": "g1.st.lost-pages.ch15.s002", "speaker": "finn", "textEn": "I am going to leave the book. To meet you!", "scaffoldDe": "Ich werde das Buch verlassen. Um dich zu treffen!", "glosses": [{ "word": "going", "de": "werde", "scope": null }, { "word": "leave", "de": "verlassen", "scope": null }, { "word": "book", "de": "Buch", "scope": null }, { "word": "meet", "de": "treffen", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch15.s003" },
-        { "id": "g1.st.lost-pages.ch15.s003", "speaker": "finn", "textEn": "Find a holiday!", "scaffoldDe": "Finde einen Urlaub!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u15.w.holiday", "variantKey": null }], "next": "g1.st.lost-pages.ch15.s004" },
-        { "id": "g1.st.lost-pages.ch15.s004", "speaker": "finn", "textEn": "And a beach. Find it!", "scaffoldDe": "Und einen Strand. Finde ihn!", "glosses": [{ "word": "find", "de": "finden", "scope": null }], "audio": null, "taskSlots": [{ "slot": "name-it", "itemId": "g1u15.w.beach", "variantKey": null }], "next": "g1.st.lost-pages.ch15.s005" },
-        { "id": "g1.st.lost-pages.ch15.s005", "speaker": "finn", "textEn": "What are you going to do? Help!", "scaffoldDe": "Was wirst du machen? Hilf!", "glosses": [{ "word": "going", "de": "wirst", "scope": null }, { "word": "help", "de": "hilf", "scope": null }], "audio": null, "taskSlots": [{ "slot": "fix-it", "itemId": "g1u15.gi.going-to.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch15.s006" },
-        { "id": "g1.st.lost-pages.ch15.s006", "speaker": "finn", "textEn": "Look! A door to school.", "scaffoldDe": "Schau! Eine Tür zur Schule.", "glosses": [], "audio": null, "taskSlots": [{ "slot": "recap", "itemId": "g1u15.ci.finn-goes.mc.001", "variantKey": null }], "next": "g1.st.lost-pages.ch15.s007" },
-        { "id": "g1.st.lost-pages.ch15.s007", "speaker": "berger", "textEn": "Welcome, Finn! Welcome back!", "scaffoldDe": "Willkommen, Finn! Willkommen zurück!", "glosses": [{ "word": "welcome", "de": "willkommen", "scope": null }, { "word": "back", "de": "zurück", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch15.s008" },
-        { "id": "g1.st.lost-pages.ch15.s008", "speaker": "finn", "textEn": "We did it! The book is full!", "scaffoldDe": "Wir haben es geschafft! Das Buch ist voll!", "glosses": [{ "word": "did", "de": "geschafft", "scope": null }, { "word": "book", "de": "Buch", "scope": null }, { "word": "full", "de": "voll", "scope": null }], "audio": null, "taskSlots": [], "next": "g1.st.lost-pages.ch15.s009" },
-        { "id": "g1.st.lost-pages.ch15.s009", "speaker": "finn", "textEn": "See you at school. Bye!", "scaffoldDe": "Wir sehen uns in der Schule. Tschüss!", "glosses": [{ "word": "see", "de": "sehen", "scope": null }, { "word": "bye", "de": "tschüss", "scope": null }], "audio": null, "taskSlots": [], "next": null }
+        {
+          "id": "g1.st.lost-pages.ch15.s001",
+          "speaker": "finn",
+          "textEn": "This is the last page! What now?",
+          "scaffoldDe": "Das ist die letzte Seite! Was nun?",
+          "glosses": [
+            {
+              "word": "last",
+              "de": "letzte",
+              "scope": null
+            },
+            {
+              "word": "page",
+              "de": "Seite",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch15.s002"
+        },
+        {
+          "id": "g1.st.lost-pages.ch15.s002",
+          "speaker": "finn",
+          "textEn": "I am going to leave the book. To meet you!",
+          "scaffoldDe": "Ich werde das Buch verlassen. Um dich zu treffen!",
+          "glosses": [
+            {
+              "word": "going",
+              "de": "werde",
+              "scope": null
+            },
+            {
+              "word": "leave",
+              "de": "verlassen",
+              "scope": null
+            },
+            {
+              "word": "book",
+              "de": "Buch",
+              "scope": null
+            },
+            {
+              "word": "meet",
+              "de": "treffen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch15.s003"
+        },
+        {
+          "id": "g1.st.lost-pages.ch15.s003",
+          "speaker": "finn",
+          "textEn": "Find a holiday!",
+          "scaffoldDe": "Finde einen Urlaub!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u15.w.holiday",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch15.s004"
+        },
+        {
+          "id": "g1.st.lost-pages.ch15.s004",
+          "speaker": "finn",
+          "textEn": "And a beach. Find it!",
+          "scaffoldDe": "Und einen Strand. Finde ihn!",
+          "glosses": [
+            {
+              "word": "find",
+              "de": "finden",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g1u15.w.beach",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch15.s005"
+        },
+        {
+          "id": "g1.st.lost-pages.ch15.s005",
+          "speaker": "finn",
+          "textEn": "What are you going to do? Help!",
+          "scaffoldDe": "Was wirst du machen? Hilf!",
+          "glosses": [
+            {
+              "word": "going",
+              "de": "wirst",
+              "scope": null
+            },
+            {
+              "word": "help",
+              "de": "hilf",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g1u15.gi.going-to.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch15.s006"
+        },
+        {
+          "id": "g1.st.lost-pages.ch15.s006",
+          "speaker": "finn",
+          "textEn": "Look! A door to school.",
+          "scaffoldDe": "Schau! Eine Tür zur Schule.",
+          "glosses": [],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g1u15.ci.finn-goes.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g1.st.lost-pages.ch15.s007"
+        },
+        {
+          "id": "g1.st.lost-pages.ch15.s007",
+          "speaker": "berger",
+          "textEn": "Welcome, Finn! Welcome back!",
+          "scaffoldDe": "Willkommen, Finn! Willkommen zurück!",
+          "glosses": [
+            {
+              "word": "welcome",
+              "de": "willkommen",
+              "scope": null
+            },
+            {
+              "word": "back",
+              "de": "zurück",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch15.s008"
+        },
+        {
+          "id": "g1.st.lost-pages.ch15.s008",
+          "speaker": "finn",
+          "textEn": "We did it! The book is full!",
+          "scaffoldDe": "Wir haben es geschafft! Das Buch ist voll!",
+          "glosses": [
+            {
+              "word": "did",
+              "de": "geschafft",
+              "scope": null
+            },
+            {
+              "word": "book",
+              "de": "Buch",
+              "scope": null
+            },
+            {
+              "word": "full",
+              "de": "voll",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g1.st.lost-pages.ch15.s009"
+        },
+        {
+          "id": "g1.st.lost-pages.ch15.s009",
+          "speaker": "finn",
+          "textEn": "See you at school. Bye!",
+          "scaffoldDe": "Wir sehen uns in der Schule. Tschüss!",
+          "glosses": [
+            {
+              "word": "see",
+              "de": "sehen",
+              "scope": null
+            },
+            {
+              "word": "bye",
+              "de": "tschüss",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
       ]
     }
   ]
