@@ -20,6 +20,8 @@
  *  VS-10 storyItems carriers pass the level gate at their narrative-lock unit
  *  VS-11 a taskSlot.variantKey resolves to a variant on its item (catches dangling wires)
  *  VS-12 story-comprehension items (.ci.) exist + their EN carrier passes the level gate
+ *  VS-17 scaffoldDe coverage at grades 1–2 (L-1 German-first UX: scenes, choices,
+ *        flagLines must all carry German — it is the PRIMARY line there)
  *  +     release gating: a released chapter's gate unit must be ready in the corpus
  */
 import fs from "node:fs";
@@ -313,6 +315,19 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
       for (const line of studentLines(scene)) {
         const hits = metaHits(line);
         if (hits.length > 0) errors.push(`${scene.id}: VS-8 — meta-talk [${hits.join(", ")}] in a student line`);
+      }
+      // VS-17 scaffoldDe coverage at grades 1–2 (L-1: German is the PRIMARY
+      // story surface for the youngest — a missing scaffold is a blank bubble).
+      if (bundle.story.grade <= 2) {
+        if (!scene.scaffoldDe) errors.push(`${scene.id}: VS-17 — scaffoldDe required at grade ≤2 (German-first UX)`);
+        if (Array.isArray(scene.next)) {
+          for (const c of scene.next) {
+            if (!c.scaffoldDe) errors.push(`${scene.id}: VS-17 — choice "${c.id}" needs scaffoldDe at grade ≤2 (German-first UX)`);
+          }
+        }
+        for (const l of scene.flagLines ?? []) {
+          if (!l.scaffoldDe) errors.push(`${scene.id}: VS-17 — flagLine "${l.flag}" needs scaffoldDe at grade ≤2 (German-first UX)`);
+        }
       }
       // VS-4 taskSlots resolve ≤ gate unit, same grade, exist
       for (const ts of scene.taskSlots) {

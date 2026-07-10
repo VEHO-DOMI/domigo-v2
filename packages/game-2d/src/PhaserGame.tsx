@@ -10,6 +10,7 @@ import Phaser from "phaser";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
+import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, useLangMode } from "@domigo/game-feel";
 import type { ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { OverworldScene, type OverworldState, type PadState } from "./OverworldScene.ts";
@@ -29,6 +30,9 @@ export type AttemptFn = (a: GameAttempt) => Promise<{ ok: boolean; queued: boole
 
 export interface PhaserGameProps {
   seed: number;
+  /** The grade this overworld serves (L-1: drives the story-language default +
+   *  the German chrome at grade 1). Defaults to 1 — today's only overworld. */
+  grade?: number;
   /** A1-4: stable per-student avatar seed (the app derives it from the userId).
    *  Absent → falls back to the zone seed (the old, identity-bugged behavior). */
   playerSeed?: number;
@@ -74,7 +78,7 @@ function postAttempt(onAttempt: AttemptFn, itemId: string, input: unknown): void
   void onAttempt({ clientAttemptId: crypto.randomUUID(), itemId, mode: "game:g1", input, latencyMs: null, hintUsed: false });
 }
 
-function TaskCard({ item, onAttempt, onDone, label }: { item: ResolvedItem; onAttempt: AttemptFn; onDone: () => void; label: string }) {
+function TaskCard({ item, onAttempt, onDone, label, continueLabel }: { item: ResolvedItem; onAttempt: AttemptFn; onDone: () => void; label: string; continueLabel: string }) {
   const [answered, setAnswered] = useState(false);
   const onResult = (_tier: Tier, detail: ResultDetail) => {
     setAnswered(true);
@@ -88,18 +92,22 @@ function TaskCard({ item, onAttempt, onDone, label }: { item: ResolvedItem; onAt
       ) : (
         <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} />
       )}
-      {answered && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onDone}>Continue →</button>}
+      {answered && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onDone}>{continueLabel}</button>}
     </div>
   );
 }
 
-function DialogueOverlay({ chapter, castNames, storyItems, onAttempt, onClose }: {
-  chapter: Chapter; castNames: Record<string, string>; storyItems: Record<string, ResolvedItem>; onAttempt: AttemptFn; onClose: () => void;
+function DialogueOverlay({ grade, chapter, castNames, storyItems, onAttempt, onClose }: {
+  grade: number; chapter: Chapter; castNames: Record<string, string>; storyItems: Record<string, ResolvedItem>; onAttempt: AttemptFn; onClose: () => void;
 }) {
+  // L-1: the story language follows the device toggle (grade 1 defaults German-
+  // first — meaning first, English on demand). Chrome is German at grade 1
+  // unconditionally; the toggle governs the story LINES only. Tasks untouched.
+  const mode = useLangMode(grade);
+  const deChrome = grade === 1;
   const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
   const [sceneId, setSceneId] = useState(chapter.scenes[0]?.id ?? "");
   const [taskDone, setTaskDone] = useState(false);
-  const [showGloss, setShowGloss] = useState(false);
   const scene: Scene | undefined = byId.get(sceneId);
   if (!scene) { onClose(); return null; }
 
@@ -111,35 +119,35 @@ function DialogueOverlay({ chapter, castNames, storyItems, onAttempt, onClose }:
   const rawNext = scene.next;
   const sNext = rawNext !== null && typeof rawNext === "object" && !Array.isArray(rawNext) ? rawNext.else : rawNext;
 
-  const go = (nextId: string | null) => { setTaskDone(false); setShowGloss(false); if (nextId === null) onClose(); else setSceneId(nextId); };
+  const go = (nextId: string | null) => { setTaskDone(false); if (nextId === null) onClose(); else setSceneId(nextId); };
 
   return (
     <div style={card}>
       <div style={panel}>
-        <div style={{ fontSize: 14, fontWeight: 700, color: "var(--accent)", fontFamily: "var(--font-display)" }}>{castNames[scene.speaker] ?? scene.speaker}</div>
-        <p style={{ fontSize: 18, margin: "6px 0 4px", color: "var(--text)" }}>{scene.textEn}</p>
-        {scene.scaffoldDe && <p style={{ fontSize: 14, color: "var(--text-secondary)", margin: "0 0 6px" }}>{scene.scaffoldDe}</p>}
-        {scene.glosses.length > 0 && (
-          <div style={{ fontSize: 13 }}>
-            <button className="dg-chip" onClick={() => setShowGloss((g) => !g)}>
-              {showGloss ? "Hide help" : "Show word help"}
-            </button>
-            {showGloss && <ul style={{ margin: "8px 0 0", paddingLeft: 18, color: "var(--text-secondary)" }}>{scene.glosses.map((g) => <li key={g.word}>{g.word} = {g.de}</li>)}</ul>}
-          </div>
-        )}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+          <div style={{ fontSize: 14, fontWeight: 700, color: "var(--accent)", fontFamily: "var(--font-display)" }}>{castNames[scene.speaker] ?? scene.speaker}</div>
+          <LangToggle grade={grade} />
+        </div>
+        <p style={{ fontSize: 18, margin: "6px 0 4px", color: "var(--text)" }}>{primaryLine(mode, scene.textEn, scene.scaffoldDe)}</p>
+        <DialogueReveal key={`de-${scene.id}`} mode={mode} textEn={scene.textEn} scaffoldDe={scene.scaffoldDe} />
+        <GlossReveal key={`gl-${scene.id}`} mode={mode} glosses={scene.glosses} />
 
         {taskBlocks ? (
           <div style={{ marginTop: 14, borderTop: "1px solid var(--card-border)", paddingTop: 12 }}>
-            <TaskCardInline item={slotItem} onAttempt={onAttempt} onDone={() => setTaskDone(true)} />
+            <TaskCardInline item={slotItem} onAttempt={onAttempt} onDone={() => setTaskDone(true)} continueLabel={deChrome ? "Weiter →" : "Continue →"} />
           </div>
         ) : Array.isArray(sNext) ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 12 }}>
             {sNext.map((c) => (
-              <button key={c.id} className="dg-btn-secondary" style={{ textAlign: "left", justifyContent: "flex-start" }} onClick={() => go(c.next)}>{c.textEn}</button>
+              <button key={c.id} className="dg-btn-secondary" style={{ textAlign: "left", justifyContent: "flex-start", display: "block" }} onClick={() => go(c.next)}>
+                <ChoiceContent mode={mode} textEn={c.textEn} scaffoldDe={c.scaffoldDe} />
+              </button>
             ))}
           </div>
         ) : (
-          <button className="dg-btn" style={{ marginTop: 14 }} onClick={() => go(sNext)}>{sNext === null ? "Close" : "Next →"}</button>
+          <button className="dg-btn" style={{ marginTop: 14 }} onClick={() => go(sNext)}>
+            {sNext === null ? (deChrome ? "Schließen" : "Close") : deChrome ? "Weiter →" : "Next →"}
+          </button>
         )}
       </div>
     </div>
@@ -206,7 +214,7 @@ function DPadButton({ pad, dir, label, glyph, style, onChange }: {
 }
 
 /** Inline task inside dialogue (no extra overlay chrome). */
-function TaskCardInline({ item, onAttempt, onDone }: { item: ResolvedItem; onAttempt: AttemptFn; onDone: () => void }) {
+function TaskCardInline({ item, onAttempt, onDone, continueLabel }: { item: ResolvedItem; onAttempt: AttemptFn; onDone: () => void; continueLabel: string }) {
   const [answered, setAnswered] = useState(false);
   const onResult = (_tier: Tier, detail: ResultDetail) => { setAnswered(true); postAttempt(onAttempt, detail.itemId, detail.input); };
   return (
@@ -214,12 +222,13 @@ function TaskCardInline({ item, onAttempt, onDone }: { item: ResolvedItem; onAtt
       {item.kind === "grammar"
         ? <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} />
         : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} />}
-      {answered && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onDone}>Continue →</button>}
+      {answered && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onDone}>{continueLabel}</button>}
     </>
   );
 }
 
 export function PhaserGame(props: PhaserGameProps) {
+  const grade = props.grade ?? 1;
   const hostRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<OverworldScene | null>(null);
   const [overlay, setOverlay] = useState<Overlay>(null);
@@ -305,16 +314,24 @@ export function PhaserGame(props: PhaserGameProps) {
         {coarse && overlay === null && <DPad pad={padRef.current} />}
       </div>
       <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", marginTop: 6 }}>
-        {coarse ? "Tap where you want to go" : "Tap or use arrow keys / WASD"} · walk into a ✦ to practise · talk to Finn
+        {grade === 1
+          ? `${coarse ? "Tipp dorthin, wo du hinwillst" : "Tippen oder Pfeiltasten / WASD"} · geh zu einem ✦ zum Üben · sprich mit Finn`
+          : `${coarse ? "Tap where you want to go" : "Tap or use arrow keys / WASD"} · walk into a ✦ to practise · talk to Finn`}
       </p>
 
       {overlay?.kind === "encounter" && props.encounters[overlay.idx] && (
         <div style={card} className="dg-encounter-veil">
-          <TaskCard item={props.encounters[overlay.idx]!} onAttempt={props.onAttempt} onDone={() => closeEncounter(overlay.idx)} label="A word is fading — bring it back!" />
+          <TaskCard
+            item={props.encounters[overlay.idx]!}
+            onAttempt={props.onAttempt}
+            onDone={() => closeEncounter(overlay.idx)}
+            label={grade === 1 ? "Ein Wort verblasst — hol es zurück!" : "A word is fading — bring it back!"}
+            continueLabel={grade === 1 ? "Weiter →" : "Continue →"}
+          />
         </div>
       )}
       {overlay?.kind === "dialogue" && (
-        <DialogueOverlay chapter={props.chapter} castNames={props.castNames} storyItems={props.storyItems} onAttempt={props.onAttempt} onClose={closeDialogue} />
+        <DialogueOverlay grade={grade} chapter={props.chapter} castNames={props.castNames} storyItems={props.storyItems} onAttempt={props.onAttempt} onClose={closeDialogue} />
       )}
     </div>
   );

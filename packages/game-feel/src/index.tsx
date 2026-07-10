@@ -28,18 +28,35 @@ import type { ReactNode } from "react";
 import {
   confettiPieces,
   DEFAULT_SETTINGS,
+  glossLabels,
   graphemes,
   HAPTIC_PATTERNS,
   motionOK,
   parseSettings,
+  primaryLine,
+  resolveLangMode,
+  revealLabels,
+  secondaryLine,
   SFX_RECIPES,
   sfxForTier,
   type FeelSettings,
+  type LangMode,
   type SfxName,
   type Tier,
 } from "./core.ts";
 
-export { diffWords, sfxForTier, type DiffToken, type Tier } from "./core.ts";
+export {
+  diffWords,
+  glossLabels,
+  primaryLine,
+  resolveLangMode,
+  revealLabels,
+  secondaryLine,
+  sfxForTier,
+  type DiffToken,
+  type LangMode,
+  type Tier,
+} from "./core.ts";
 
 // ---------------------------------------------------------------------------
 // the settings store (module-level; useSyncExternalStore; no provider)
@@ -54,9 +71,11 @@ export interface FeelSnapshot {
   motionOK: boolean;
   /** The raw user choice, for the gear UI. */
   motion: "auto" | "reduce";
+  /** L-1 story language choice (raw; resolve per grade via resolveLangMode). */
+  lang: FeelSettings["lang"];
 }
 
-const SERVER_SNAPSHOT: FeelSnapshot = { sound: false, haptics: false, motionOK: false, motion: "auto" };
+const SERVER_SNAPSHOT: FeelSnapshot = { sound: false, haptics: false, motionOK: false, motion: "auto", lang: "auto" };
 
 let settings: FeelSettings = DEFAULT_SETTINGS;
 let osReduced = false;
@@ -70,6 +89,7 @@ function recompute(): void {
     haptics: settings.haptics,
     motionOK: motionOK(settings, osReduced),
     motion: settings.motion,
+    lang: settings.lang,
   };
   for (const l of listeners) l();
 }
@@ -292,9 +312,103 @@ export function FeelGear(): ReactNode {
             <input type="checkbox" checked={f.motion === "reduce"} onChange={(e) => setFeel({ motion: e.target.checked ? "reduce" : "auto" })} />
             Weniger Animation
           </label>
+          <label style={row}>
+            Sprache
+            <select
+              value={f.lang}
+              onChange={(e) => setFeel({ lang: e.target.value as FeelSettings["lang"] })}
+              style={{ marginLeft: "auto", fontSize: 13 }}
+            >
+              <option value="auto">Automatisch</option>
+              <option value="de-first">Deutsch zuerst</option>
+              <option value="en-first">English first</option>
+            </select>
+          </label>
         </div>
       )}
     </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// L-1 · the story language layer (shared by all four game runtimes)
+// Tasks are NEVER routed through these — only dialogue/story lines.
+// ---------------------------------------------------------------------------
+
+/** Resolved story-language mode for a grade, reactive to the device setting. */
+export function useLangMode(grade: number): LangMode {
+  const f = useGameFeel();
+  return resolveLangMode(f.lang, grade);
+}
+
+/** The always-visible DE⇄EN switch (mounts in game headers). Shows the language
+ *  the student is currently reading; one tap flips it, device-persistent. */
+export function LangToggle({ grade }: { grade: number }): ReactNode {
+  const mode = useLangMode(grade);
+  const de = mode === "de-first";
+  return (
+    <button
+      type="button"
+      className="dg-chip"
+      aria-label={de ? "Auf Englisch umschalten" : "Auf Deutsch umschalten"}
+      title={de ? "Auf Englisch umschalten" : "Auf Deutsch umschalten"}
+      onClick={() => setFeel({ lang: de ? "en-first" : "de-first" })}
+    >
+      {de ? "Deutsch" : "English"} <span aria-hidden="true">⇄</span>
+    </button>
+  );
+}
+
+/** The secondary-language reveal chip + text. Mount with key={scene.id} so the
+ *  reveal state resets per scene. Renders nothing when there is nothing to show. */
+export function DialogueReveal({ mode, textEn, scaffoldDe }: {
+  mode: LangMode; textEn: string; scaffoldDe: string | null | undefined;
+}): ReactNode {
+  const [open, setOpen] = useState(false);
+  const secondary = secondaryLine(mode, textEn, scaffoldDe);
+  if (secondary === null) return null;
+  const labels = revealLabels(mode);
+  return (
+    <div style={{ fontSize: 13, margin: "10px 0 2px" }}>
+      <button className="dg-chip" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+        {open ? labels.hide : labels.show}
+      </button>
+      {open && <p style={{ fontSize: 14, color: "var(--text-secondary)", margin: "6px 0 0" }}>{secondary}</p>}
+    </div>
+  );
+}
+
+/** The word-help reveal (the glosses list), labels following the leading language.
+ *  Mount with key={scene.id} so it resets per scene. */
+export function GlossReveal({ mode, glosses }: {
+  mode: LangMode; glosses: ReadonlyArray<{ word: string; de: string }>;
+}): ReactNode {
+  const [open, setOpen] = useState(false);
+  if (glosses.length === 0) return null;
+  const labels = glossLabels(mode);
+  return (
+    <div style={{ fontSize: 13, marginTop: 6 }}>
+      <button className="dg-chip" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+        {open ? labels.hide : labels.show}
+      </button>
+      {open && <ul style={{ margin: "8px 0 0", paddingLeft: 18, color: "var(--text-secondary)" }}>{glosses.map((g) => <li key={g.word}>{g.word} = {g.de}</li>)}</ul>}
+    </div>
+  );
+}
+
+/** Choice-button content: the leading language first, the other small below.
+ *  en-first shows the German anchor only when `alwaysDual` (the G4 doctrine:
+ *  weighty moments deserve it); de-first always leads German when authored. */
+export function ChoiceContent({ mode, textEn, scaffoldDe, alwaysDual = false }: {
+  mode: LangMode; textEn: string; scaffoldDe: string | null | undefined; alwaysDual?: boolean;
+}): ReactNode {
+  const primary = primaryLine(mode, textEn, scaffoldDe);
+  const secondary = mode === "de-first" ? secondaryLine(mode, textEn, scaffoldDe) : alwaysDual ? (scaffoldDe ?? null) : null;
+  return (
+    <>
+      <span style={{ display: "block" }}>{primary}</span>
+      {secondary && <span style={{ display: "block", fontSize: 12, fontWeight: 400, color: "var(--text-secondary)", marginTop: 3 }}>{secondary}</span>}
+    </>
   );
 }
 

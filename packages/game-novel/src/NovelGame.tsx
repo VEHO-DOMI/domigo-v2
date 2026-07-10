@@ -12,6 +12,7 @@
 import { useState, type CSSProperties, type ReactNode } from "react";
 import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-schema";
 import { xpForTier, type Tier } from "@domigo/engine";
+import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, useLangMode } from "@domigo/game-feel";
 import type { ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { CastAvatar, CommentSection, castLook } from "./art.tsx";
@@ -46,6 +47,8 @@ export interface NovelArt {
 
 export interface NovelGameProps {
   episodeTitle: string;
+  /** L-1: drives the story-language default (defaults to 3 — today's only novel game). */
+  grade?: number;
   chapter: Chapter;
   castNames: Record<string, string>;
   storyItems: Record<string, ResolvedItem>;
@@ -108,6 +111,8 @@ function TaskTake({ item, prompt, onAttempt, onContinue, onScored, hideHint }: {
 
 export function NovelGame(props: NovelGameProps) {
   const { chapter, castNames, storyItems, onAttempt, onSave, episodeTitle, art } = props;
+  // L-1: story-language mode (device toggle; grade 3 defaults English-first).
+  const mode = useLangMode(props.grade ?? 3);
   const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
   const resume = props.initialSave && props.initialSave.chapterId === chapter.id ? props.initialSave : null;
   const first = chapter.scenes[0]?.id ?? "";
@@ -116,8 +121,6 @@ export function NovelGame(props: NovelGameProps) {
   const [sceneId, setSceneId] = useState(resume && byId.has(resume.sceneId) ? resume.sceneId : first);
   const [takes, setTakes] = useState<string[]>(resume?.takes ?? []);
   const [taskDone, setTaskDone] = useState(false);
-  const [showGloss, setShowGloss] = useState(false);
-  const [showDe, setShowDe] = useState(false);
   const [trail, setTrail] = useState<number>(() => {
     if (typeof window === "undefined") return 0;
     return Number(sessionStorage.getItem("domigo:g3:trail")) || 0;
@@ -143,8 +146,6 @@ export function NovelGame(props: NovelGameProps) {
 
   const go = (nextId: string | null): void => {
     setTaskDone(false);
-    setShowGloss(false);
-    setShowDe(false);
     setShowComments(false);
     if (nextId === null) { setDone(true); return; }
     setSceneId(nextId);
@@ -198,22 +199,8 @@ export function NovelGame(props: NovelGameProps) {
 
   const scaffoldNode = (
     <>
-      {scene.scaffoldDe && (
-        <div style={{ fontSize: 13, margin: "10px 0 2px" }}>
-          <button className="dg-chip" aria-expanded={showDe} onClick={() => setShowDe((d) => !d)}>
-            {showDe ? COPY.deHide : COPY.deShow}
-          </button>
-          {showDe && <p style={{ fontSize: 14, color: "var(--text-secondary)", margin: "6px 0 0" }}>{scene.scaffoldDe}</p>}
-        </div>
-      )}
-      {scene.glosses.length > 0 && (
-        <div style={{ fontSize: 13, marginTop: 6 }}>
-          <button className="dg-chip" aria-expanded={showGloss} onClick={() => setShowGloss((g) => !g)}>
-            {showGloss ? "Hide word help" : "Show word help"}
-          </button>
-          {showGloss && <ul style={{ margin: "8px 0 0", paddingLeft: 18, color: "var(--text-secondary)" }}>{scene.glosses.map((g) => <li key={g.word}>{g.word} = {g.de}</li>)}</ul>}
-        </div>
-      )}
+      <DialogueReveal key={`de-${scene.id}`} mode={mode} textEn={scene.textEn} scaffoldDe={scene.scaffoldDe} />
+      <GlossReveal key={`gl-${scene.id}`} mode={mode} glosses={scene.glosses} />
     </>
   );
 
@@ -242,7 +229,11 @@ export function NovelGame(props: NovelGameProps) {
   } else if (Array.isArray(sNext)) {
     taskOrNav = (
       <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 14 }}>
-        {sNext.map((c) => <button key={c.id} className="dg-btn-secondary" style={{ textAlign: "left", justifyContent: "flex-start" }} onClick={() => go(c.next)}>{c.textEn}</button>)}
+        {sNext.map((c) => (
+          <button key={c.id} className="dg-btn-secondary" style={{ textAlign: "left", justifyContent: "flex-start", display: "block" }} onClick={() => go(c.next)}>
+            <ChoiceContent mode={mode} textEn={c.textEn} scaffoldDe={c.scaffoldDe} />
+          </button>
+        ))}
       </div>
     );
   } else {
@@ -253,7 +244,10 @@ export function NovelGame(props: NovelGameProps) {
     <main style={{ ...wrap, padding: "16px 12px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
         <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>FOURTEEN <span style={{ color: "var(--muted)", fontSize: 14, fontWeight: 400, fontFamily: "var(--font-body)" }}>· {chapter.titleEn}</span></h1>
-        <a href="/play/3" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Channel</a>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+          <LangToggle grade={props.grade ?? 3} />
+          <a href="/play/3" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Channel</a>
+        </span>
       </div>
 
       <div style={{ marginBottom: 12 }}>
@@ -271,7 +265,7 @@ export function NovelGame(props: NovelGameProps) {
       {isNarrator ? (
         <section style={{ ...panel, background: "var(--accent-soft)", color: "var(--ink-soft)" }}>
           <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-            <p style={{ fontSize: 16, margin: 0, lineHeight: 1.45, flex: 1, fontStyle: "italic" }}>{scene.textEn}</p>
+            <p style={{ fontSize: 16, margin: 0, lineHeight: 1.45, flex: 1, fontStyle: "italic" }}>{primaryLine(mode, scene.textEn, scene.scaffoldDe)}</p>
             <button onClick={() => speak(scene.textEn)} aria-label="Read aloud" title="Read aloud" style={{ background: "none", border: "none", cursor: "pointer", fontSize: 17, padding: 2 }}>🔊</button>
           </div>
           {scaffoldNode}
@@ -287,7 +281,7 @@ export function NovelGame(props: NovelGameProps) {
             <button onClick={() => speak(scene.textEn)} aria-label="Read the line aloud" title="Read aloud" style={{ marginLeft: "auto", background: "none", border: "none", cursor: "pointer", fontSize: 18, lineHeight: 1, padding: 2 }}>🔊</button>
           </div>
           <div style={{ background: "var(--bg-sunken)", border: "1px solid var(--card-border)", borderRadius: 14, padding: "11px 15px" }}>
-            <p style={{ fontSize: 19, margin: 0, lineHeight: 1.4, color: "var(--text)" }}>{scene.textEn}</p>
+            <p style={{ fontSize: 19, margin: 0, lineHeight: 1.4, color: "var(--text)" }}>{primaryLine(mode, scene.textEn, scene.scaffoldDe)}</p>
           </div>
           {scaffoldNode}
           {taskOrNav}

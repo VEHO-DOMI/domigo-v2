@@ -3,27 +3,67 @@ import {
   confettiPieces,
   DEFAULT_SETTINGS,
   diffWords,
+  glossLabels,
   graphemes,
   HAPTIC_PATTERNS,
   motionOK,
   parseSettings,
+  primaryLine,
+  resolveLangMode,
+  revealLabels,
+  secondaryLine,
   SFX_RECIPES,
   sfxForTier,
   type ToneStep,
 } from "../core.ts";
 
 describe("settings", () => {
-  it("defaults are classroom-safe: silent, still-hands, motion follows the OS", () => {
-    expect(DEFAULT_SETTINGS).toEqual({ sound: false, haptics: false, motion: "auto" });
+  it("defaults are classroom-safe: silent, still-hands, motion follows the OS, language by grade", () => {
+    expect(DEFAULT_SETTINGS).toEqual({ sound: false, haptics: false, motion: "auto", lang: "auto" });
     expect(parseSettings(null)).toEqual(DEFAULT_SETTINGS);
     expect(parseSettings("{not json")).toEqual(DEFAULT_SETTINGS);
-    expect(parseSettings(JSON.stringify({ sound: "yes", motion: "party" }))).toEqual(DEFAULT_SETTINGS);
+    expect(parseSettings(JSON.stringify({ sound: "yes", motion: "party", lang: "klingon" }))).toEqual(DEFAULT_SETTINGS);
+  });
+  it("persisted lang round-trips; junk lang falls back to auto", () => {
+    expect(parseSettings(JSON.stringify({ lang: "de-first" })).lang).toBe("de-first");
+    expect(parseSettings(JSON.stringify({ lang: "en-first" })).lang).toBe("en-first");
+    expect(parseSettings(JSON.stringify({ lang: 42 })).lang).toBe("auto");
   });
   it("OS reduced-motion ALWAYS wins; the user toggle only reduces further", () => {
     expect(motionOK({ ...DEFAULT_SETTINGS, motion: "auto" }, false)).toBe(true);
     expect(motionOK({ ...DEFAULT_SETTINGS, motion: "auto" }, true)).toBe(false); // no force-on exists
     expect(motionOK({ ...DEFAULT_SETTINGS, motion: "reduce" }, false)).toBe(false);
     expect(motionOK({ ...DEFAULT_SETTINGS, motion: "reduce" }, true)).toBe(false);
+  });
+});
+
+describe("L-1 story language mode (German-first for the youngest)", () => {
+  it("auto resolves by grade: grade 1 German-first, everyone else English-first", () => {
+    expect(resolveLangMode("auto", 1)).toBe("de-first");
+    expect(resolveLangMode("auto", 2)).toBe("en-first");
+    expect(resolveLangMode("auto", 3)).toBe("en-first");
+    expect(resolveLangMode("auto", 4)).toBe("en-first");
+  });
+  it("an explicit device choice always wins over the grade default", () => {
+    expect(resolveLangMode("en-first", 1)).toBe("en-first");
+    expect(resolveLangMode("de-first", 4)).toBe("de-first");
+  });
+  it("de-first leads German and reveals English; en-first is the mirror", () => {
+    expect(primaryLine("de-first", "Hello!", "Hallo!")).toBe("Hallo!");
+    expect(secondaryLine("de-first", "Hello!", "Hallo!")).toBe("Hello!");
+    expect(primaryLine("en-first", "Hello!", "Hallo!")).toBe("Hello!");
+    expect(secondaryLine("en-first", "Hello!", "Hallo!")).toBe("Hallo!");
+  });
+  it("a missing scaffold NEVER leaves a blank bubble: de-first falls back to English, nothing to reveal", () => {
+    expect(primaryLine("de-first", "Hello!", null)).toBe("Hello!");
+    expect(secondaryLine("de-first", "Hello!", null)).toBeNull();
+    expect(secondaryLine("en-first", "Hello!", undefined)).toBeNull();
+  });
+  it("chip labels mirror the established Auf-Deutsch affordance", () => {
+    expect(revealLabels("de-first").show).toBe("Auf Englisch?");
+    expect(revealLabels("en-first").show).toBe("Auf Deutsch?");
+    expect(glossLabels("de-first").show).toBe("Wort-Hilfe zeigen");
+    expect(glossLabels("en-first").show).toBe("Show word help");
   });
 });
 

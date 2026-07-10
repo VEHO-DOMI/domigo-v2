@@ -39,6 +39,8 @@ export default function GameClient(props: {
 }) {
   useOutboxFlush();
   const { gameMode, serverSave } = props;
+  // L-1: the grade drives the story-language default + German chrome at grade 1.
+  const grade = Number(/^game:g(\d)$/.exec(gameMode)?.[1] ?? 1);
   const lsKey = `domigo:gamesave:${gameMode}`;
 
   // Resolve the resume state client-side (localStorage may be fresher than the
@@ -108,10 +110,11 @@ export default function GameClient(props: {
     <main style={{ padding: "16px 12px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", maxWidth: 720, margin: "0 auto 10px" }}>
         <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{props.zoneTitle}</h1>
-        <a href={props.hubHref} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Zones</a>
+        <a href={props.hubHref} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{grade === 1 ? "← Alle Räume" : "← Zones"}</a>
       </div>
       <PhaserGame
         seed={props.seed}
+        grade={grade}
         playerSeed={props.playerSeed}
         zoneId={props.zoneId}
         generator={props.generator}
