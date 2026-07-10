@@ -13,6 +13,7 @@ import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
 import { JournalBoard, type DayProgress } from "@domigo/game-trip";
 import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
 import { getActingUserForPage } from "@/lib/identity";
+import { DEFAULT_STORY_UI, STORY_UI } from "@/lib/stories";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 
 export const dynamic = "force-dynamic";
@@ -118,10 +119,32 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
           ? "One week in England — write it down as it happens. New days open as you learn more."
           : "Open a case file to investigate. New cases open as you learn more.";
 
+  // Level-select "cleared" state per stop, derived from the attempts ledger
+  // (never the cosmetic save): a stop is done once every taskSlot item in its
+  // chapter is solved. Map grades key stops by zone id; chapter grades by chapter id.
+  const doneStopIds = new Set<string>();
+  if (story) {
+    for (const c of story.chapters) {
+      const refs = c.scenes.flatMap((sc) => sc.taskSlots).map((ts) => ts.itemId);
+      if (refs.length === 0 || !refs.every((ref) => solvedItemIds.has(ref))) continue;
+      if (map) {
+        const z = map.zones.find((mz) => mz.unit === c.unit);
+        if (z) doneStopIds.add(z.id);
+      } else {
+        doneStopIds.add(c.id);
+      }
+    }
+  }
+  const doneLabel = grade === 1 ? "✨ Zurück!" : grade === 2 ? "CLOSED" : grade === 3 ? "✓ uploaded" : "✓ stamped";
+  const emblem = (STORY_UI[grade] ?? DEFAULT_STORY_UI).icon;
+
   return (
-    <main style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
+    <main className="dgh-hub" style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-        <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{(deChrome ? story?.title.de : story?.title.en) ?? story?.title.en ?? "Play"}</h1>
+        <h1 style={{ fontSize: 26, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)", display: "flex", alignItems: "center" }}>
+          <span className="dgh-emblem" aria-hidden="true">{emblem}</span>
+          {(deChrome ? story?.title.de : story?.title.en) ?? story?.title.en ?? "Play"}
+        </h1>
         <a href="/home" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Home</a>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>{tagline}</p>
@@ -130,22 +153,32 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
       {stops.length === 0 ? (
         <p style={{ color: "var(--muted)" }}>Nothing here yet for this grade.</p>
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 14, marginTop: 16 }}>
+        <div className="dgh-grid">
           {stops.map((s) => {
             const cardImg = hubArt?.cards[s.id];
+            const done = doneStopIds.has(s.id);
+            const themed = `dgh-card dgh-g${grade}`;
+            const inner = (
+              <>
+                {(cardImg || grade === 3) && (
+                  <div className="dgh-thumbwrap">{cardImg && <img src={cardImg} alt="" />}</div>
+                )}
+                <div className="dgh-label">{noun} {s.n}</div>
+                <div className="dgh-title">{s.title}</div>
+                {s.sub && <div className="dgh-sub">{s.sub}</div>}
+                <div className="dgh-num" aria-hidden="true">{s.n}</div>
+              </>
+            );
             return s.unlocked ? (
-              <a key={s.short} href={`/play/${grade}/${s.short}`} className="dg-tile" style={{ padding: "16px 18px" }}>
-                {cardImg && <img src={cardImg} alt="" style={{ display: "block", width: "calc(100% + 36px)", margin: "-16px -18px 12px", height: 120, objectFit: "cover" }} />}
-                <div style={{ fontSize: 11, color: "var(--muted)", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>{noun} {s.n}</div>
-                <div style={{ fontSize: 17, fontWeight: 700, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{s.title}</div>
-                {s.sub && <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>{s.sub}</div>}
-                <div style={{ fontSize: 13, color: "var(--accent)", marginTop: 8, fontWeight: 600 }}>{deChrome ? "Spielen →" : map ? "Play →" : "Open →"}</div>
+              <a key={s.short} href={`/play/${grade}/${s.short}`} className={`${themed}${done ? " dgh-card--done" : ""}`}>
+                {inner}
+                <div className="dgh-cta">{deChrome ? "Spielen →" : map ? "Play →" : "Open →"}</div>
+                {done && <div className="dgh-done">{doneLabel}</div>}
               </a>
             ) : (
-              <div key={s.short} className="dg-tile--locked" style={{ padding: "16px 18px" }}>
-                <div style={{ fontSize: 11, fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>{noun} {s.n}</div>
-                <div style={{ fontSize: 17, fontWeight: 700, fontFamily: "var(--font-display)" }}>{s.title}</div>
-                <div style={{ fontSize: 13, marginTop: 8 }}>{deChrome ? "🔒 Bald!" : "🔒 Coming soon"}</div>
+              <div key={s.short} className={`${themed} dgh-card--locked`}>
+                {inner}
+                <div className="dgh-cta" style={{ color: "var(--muted)" }}>{deChrome ? "🔒 Bald!" : "🔒 Coming soon"}</div>
               </div>
             );
           })}

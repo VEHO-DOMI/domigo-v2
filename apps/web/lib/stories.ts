@@ -15,6 +15,7 @@ export const STORY_UI: Record<number, StoryUi> = {
   1: { icon: "📖", blurb: "explore the zones, restore the pages" },
   2: { icon: "🔎", blurb: "solve the case, file by file" },
   3: { icon: "🎬", blurb: "run the channel, episode by episode" },
+  4: { icon: "📓", blurb: "write the week as it happens" },
 };
 
 export const DEFAULT_STORY_UI: StoryUi = { icon: "📖", blurb: "play your story, chapter by chapter" };
