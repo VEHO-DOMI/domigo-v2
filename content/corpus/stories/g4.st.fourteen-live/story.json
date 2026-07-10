@@ -1,0 +1,565 @@
+{
+  "schema": "story@1",
+  "id": "g4.st.fourteen-live",
+  "grade": 4,
+  "title": {
+    "en": "FOURTEEN: LIVE",
+    "de": "FOURTEEN: LIVE"
+  },
+  "chapters": [
+    {
+      "id": "g4.st.fourteen-live.ch01",
+      "unit": 1,
+      "titleEn": "Going Live",
+      "titleDe": "Wir sind live",
+      "scenes": [
+        {
+          "id": "g4.st.fourteen-live.ch01.s001",
+          "speaker": "narrator",
+          "textEn": "One year later. The channel is real now: no scripts, no lies. 20,000 people watch FOURTEEN.",
+          "scaffoldDe": "Ein Jahr später. Der Kanal ist jetzt echt: keine Drehbücher, keine Lügen. 20.000 Leute schauen FOURTEEN.",
+          "glosses": [
+            {
+              "word": "later",
+              "de": "später",
+              "scope": null
+            },
+            {
+              "word": "real",
+              "de": "echt",
+              "scope": null
+            },
+            {
+              "word": "scripts",
+              "de": "Drehbücher",
+              "scope": null
+            },
+            {
+              "word": "lies",
+              "de": "Lügen",
+              "scope": null
+            },
+            {
+              "word": "channel",
+              "de": "Kanal",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s002"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s002",
+          "speaker": "leah",
+          "textEn": "Live in three, two, one — hello, we are FOURTEEN. And this is real.",
+          "scaffoldDe": "Live in drei, zwei, eins — hallo, wir sind FOURTEEN. Und das hier ist echt.",
+          "glosses": [
+            {
+              "word": "live",
+              "de": "live",
+              "scope": null
+            },
+            {
+              "word": "real",
+              "de": "echt",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s003"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s003",
+          "speaker": "narrator",
+          "textEn": "Monday assembly. Direktorin Huber has big news.",
+          "scaffoldDe": "Montag, Versammlung in der Aula. Direktorin Huber hat große Neuigkeiten.",
+          "glosses": [
+            {
+              "word": "assembly",
+              "de": "Versammlung",
+              "scope": null
+            },
+            {
+              "word": "news",
+              "de": "Neuigkeiten",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s004"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s004",
+          "speaker": "direktorin",
+          "textEn": "There is a class trip for our school — all paid! And you choose where: Dublin, New York or Sydney. The vote opens on Friday.",
+          "scaffoldDe": "Es gibt eine Klassenfahrt für unsere Schule — alles bezahlt! Und ihr wählt, wohin: Dublin, New York oder Sydney. Die Abstimmung startet am Freitag.",
+          "glosses": [
+            {
+              "word": "paid",
+              "de": "bezahlt",
+              "scope": null
+            },
+            {
+              "word": "vote",
+              "de": "Abstimmung",
+              "scope": null
+            },
+            {
+              "word": "choose",
+              "de": "wählen",
+              "scope": null
+            },
+            {
+              "word": "class trip",
+              "de": "Klassenfahrt",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s005"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s005",
+          "speaker": "ben",
+          "textEn": "A free trip?! I was still sleeping when the news came. Somebody pinch me!",
+          "scaffoldDe": "Eine gratis Reise?! Ich habe noch geschlafen, als die Nachricht kam. Zwickt mich mal!",
+          "glosses": [
+            {
+              "word": "news",
+              "de": "Nachricht",
+              "scope": null
+            },
+            {
+              "word": "pinch",
+              "de": "zwicken",
+              "scope": null
+            },
+            {
+              "word": "trip",
+              "de": "Reise",
+              "scope": null
+            },
+            {
+              "word": "sleeping",
+              "de": "schlafen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s006"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s006",
+          "speaker": "leah",
+          "textEn": "This is our story, team. We cover the vote — live.",
+          "scaffoldDe": "Das ist unsere Story, Leute. Wir berichten über die Abstimmung — live.",
+          "glosses": [
+            {
+              "word": "cover",
+              "de": "berichten über",
+              "scope": null
+            },
+            {
+              "word": "vote",
+              "de": "Abstimmung",
+              "scope": null
+            },
+            {
+              "word": "team",
+              "de": "Team",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s007"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s007",
+          "speaker": "leo",
+          "textEn": "I film. You talk. Sara checks the facts. Like always.",
+          "scaffoldDe": "Ich filme. Du redest. Sara prüft die Fakten. Wie immer.",
+          "glosses": [
+            {
+              "word": "facts",
+              "de": "Fakten",
+              "scope": null
+            },
+            {
+              "word": "film",
+              "de": "filmen",
+              "scope": null
+            },
+            {
+              "word": "checks",
+              "de": "prüft",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s008"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s008",
+          "speaker": "sara",
+          "textEn": "One rule: we show it straight. No cuts, no tricks.",
+          "scaffoldDe": "Eine Regel: Wir zeigen es ehrlich. Keine Schnitte, keine Tricks.",
+          "glosses": [
+            {
+              "word": "straight",
+              "de": "ehrlich",
+              "scope": null
+            },
+            {
+              "word": "cuts",
+              "de": "Schnitte",
+              "scope": null
+            },
+            {
+              "word": "tricks",
+              "de": "Tricks",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s009"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s009",
+          "speaker": "leah",
+          "textEn": "First segment: what were you doing when the news came? Ask the school!",
+          "scaffoldDe": "Erster Beitrag: Was hast du gerade gemacht, als die Nachricht kam? Fragt die Schule!",
+          "glosses": [
+            {
+              "word": "segment",
+              "de": "Beitrag",
+              "scope": null
+            },
+            {
+              "word": "news",
+              "de": "Nachricht",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g4u01.gi.past-continuous-revision.cp.002",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.fourteen-live.ch01.s010"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s010",
+          "speaker": "narrator",
+          "textEn": "In the corridor, everyone was talking about the trip. Everyone had a favourite city.",
+          "scaffoldDe": "Auf dem Gang haben alle über die Reise geredet. Jeder hatte eine Lieblingsstadt.",
+          "glosses": [
+            {
+              "word": "corridor",
+              "de": "Gang",
+              "scope": null
+            },
+            {
+              "word": "trip",
+              "de": "Reise",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s011"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s011",
+          "speaker": "ben",
+          "textEn": "Nobody knows the winner. But everyone has a tip!",
+          "scaffoldDe": "Niemand kennt den Sieger. Aber jeder hat einen Tipp!",
+          "glosses": [
+            {
+              "word": "winner",
+              "de": "Sieger",
+              "scope": null
+            },
+            {
+              "word": "tip",
+              "de": "Tipp",
+              "scope": null
+            },
+            {
+              "word": "knows",
+              "de": "kennt",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g4u01.w.guess",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.fourteen-live.ch01.s012"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s012",
+          "speaker": "sara",
+          "textEn": "Our class presents Dublin. Green hills, old streets — and five days to learn everything.",
+          "scaffoldDe": "Unsere Klasse präsentiert Dublin. Grüne Hügel, alte Straßen — und fünf Tage, um alles zu lernen.",
+          "glosses": [
+            {
+              "word": "presents",
+              "de": "präsentiert",
+              "scope": null
+            },
+            {
+              "word": "hills",
+              "de": "Hügel",
+              "scope": null
+            },
+            {
+              "word": "learn",
+              "de": "lernen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s013"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s013",
+          "speaker": "leo",
+          "textEn": "Good. My plan for this year: make my English better every week.",
+          "scaffoldDe": "Gut. Mein Plan für dieses Jahr: mein Englisch jede Woche besser machen.",
+          "glosses": [
+            {
+              "word": "plan",
+              "de": "Plan",
+              "scope": null
+            },
+            {
+              "word": "better",
+              "de": "besser",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g4u01.w.improve",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.fourteen-live.ch01.s014"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s014",
+          "speaker": "leah",
+          "textEn": "And Sara? She sounds like a real Dublin girl.",
+          "scaffoldDe": "Und Sara? Die klingt wie ein echtes Dublin-Mädchen.",
+          "glosses": [
+            {
+              "word": "sounds",
+              "de": "klingt",
+              "scope": null
+            },
+            {
+              "word": "real",
+              "de": "echt",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g4u01.w.fluent",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.fourteen-live.ch01.s015"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s015",
+          "speaker": "narrator",
+          "textEn": "Then Leo stops. In the office window there is a poster: WINNER — SYDNEY. But the vote opens on Friday. Today is Monday.",
+          "scaffoldDe": "Dann bleibt Leo stehen. Im Bürofenster hängt ein Plakat: SIEGER — SYDNEY. Aber die Abstimmung startet erst am Freitag. Heute ist Montag.",
+          "glosses": [
+            {
+              "word": "office window",
+              "de": "Bürofenster",
+              "scope": null
+            },
+            {
+              "word": "poster",
+              "de": "Plakat",
+              "scope": null
+            },
+            {
+              "word": "winner",
+              "de": "Sieger",
+              "scope": null
+            },
+            {
+              "word": "vote",
+              "de": "Abstimmung",
+              "scope": null
+            },
+            {
+              "word": "stops",
+              "de": "bleibt stehen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s016"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s016",
+          "speaker": "leo",
+          "textEn": "I was only walking past. Look — it is on camera.",
+          "scaffoldDe": "Ich bin nur vorbeigegangen. Schaut — ich habe es auf Kamera.",
+          "glosses": [
+            {
+              "word": "camera",
+              "de": "Kamera",
+              "scope": null
+            },
+            {
+              "word": "only",
+              "de": "nur",
+              "scope": null
+            },
+            {
+              "word": "walking",
+              "de": "gehen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s017"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s017",
+          "speaker": "narrator",
+          "textEn": "Tell it like a reporter: what was happening at the office window?",
+          "scaffoldDe": "Erzähl es wie ein Reporter: Was ist da gerade am Bürofenster passiert?",
+          "glosses": [
+            {
+              "word": "reporter",
+              "de": "Reporter",
+              "scope": null
+            },
+            {
+              "word": "office window",
+              "de": "Bürofenster",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g4u01.gi.past-continuous-revision.cp.003",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.fourteen-live.ch01.s018"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s018",
+          "speaker": "sara",
+          "textEn": "Maybe it is nothing. A test print. We stay fair — and we check it first.",
+          "scaffoldDe": "Vielleicht ist es nichts. Ein Probedruck. Wir bleiben fair — und wir prüfen es zuerst.",
+          "glosses": [
+            {
+              "word": "test print",
+              "de": "Probedruck",
+              "scope": null
+            },
+            {
+              "word": "fair",
+              "de": "fair",
+              "scope": null
+            },
+            {
+              "word": "maybe",
+              "de": "vielleicht",
+              "scope": null
+            },
+            {
+              "word": "check",
+              "de": "prüfen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g4.st.fourteen-live.ch01.s019"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s019",
+          "speaker": "narrator",
+          "textEn": "Four friends. One camera. One strange poster.",
+          "scaffoldDe": "Vier Freunde. Eine Kamera. Ein seltsames Plakat.",
+          "glosses": [
+            {
+              "word": "camera",
+              "de": "Kamera",
+              "scope": null
+            },
+            {
+              "word": "strange",
+              "de": "seltsam",
+              "scope": null
+            },
+            {
+              "word": "poster",
+              "de": "Plakat",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g4u01.ci.the-poster.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g4.st.fourteen-live.ch01.s020"
+        },
+        {
+          "id": "g4.st.fourteen-live.ch01.s020",
+          "speaker": "leah",
+          "textEn": "FOURTEEN is live on this story. Stay with us.",
+          "scaffoldDe": "FOURTEEN ist live an dieser Story dran. Bleibt bei uns.",
+          "glosses": [
+            {
+              "word": "live",
+              "de": "live",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
+      ]
+    }
+  ]
+}
