@@ -23,7 +23,7 @@ Vercel → **domigo-v2** → Settings:
 
 Don't deploy yet — Step 2 supplies the DB URL the build needs.
 
-## Step 2 — Environment variables + first deploy  ·  *browser + Koki (secrets)*
+## Step 2 — Environment variables + first deploy  ·  *browser + Koki (secrets)*  ✅ done 2026-07-12
 
 Settings → Environment Variables → **Production**:
 - `DATABASE_URL` = Neon **`main` (production) branch** *pooled* connection string
@@ -39,7 +39,13 @@ scaffold ⇒ the Root-Directory / include-outside-files settings are wrong — f
 redeploy. *(DB-backed pages 500 until Step 4 — expected; do Step 4 to clear it, or
 run Step 4 first so the first deploy is fully working.)*
 
-## Step 3 — Deploy-truth harness  ·  *code*  ✅ shipped (this PR)
+**✅ Verified 2026-07-12:** `domigo-v2.vercel.app` serves the real DomiGo home;
+`/api/version` → `{sha:66fafe4, ref:main, env:production}`. Merging #125 auto-triggered a
+deploy (Git now connected); one redeploy picked up the secrets, then promoted. **Rotate
+`NEXTAUTH_SECRET` before students sign in** — it transited chat during setup: `openssl rand
+-base64 32` → update the Vercel var → redeploy (free now, no live sessions).
+
+## Step 3 — Deploy-truth harness  ·  *code*  ✅ shipped #125 · verify-deploy GREEN 2026-07-12
 
 `apps/web/app/api/version/route.ts` (advertises the build's git SHA) +
 `scripts/verify-deploy.mjs`. **After the Step-2 deploy, run:**

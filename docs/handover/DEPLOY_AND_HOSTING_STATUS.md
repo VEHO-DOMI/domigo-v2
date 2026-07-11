@@ -7,6 +7,15 @@
 > and the v2 database has never been provisioned in production.** The *code* and
 > *design* are done and correct; *deployment* is the gap.
 
+> **UPDATE 2026-07-12 — DEPLOYED.** The gap above is now closed: DomiGo v2 is live at
+> `domigo-v2.vercel.app` (first deploy). Vercel is git-connected, env vars are set
+> (Production-scoped), `verify-deploy.mjs` is GREEN (prod == `origin/main` `66fafe4`),
+> `/api/version` responds, and the home page serves the real app (not the CNA scaffold).
+> **Still pending to be class-usable:** Step 4 prod DDL (the `domigo_v2` schema is still
+> dev-branch-only, so DB-backed pages 500) and Step 5 Firebase→Neon completion. See
+> `../runbooks/deploy.md`. Security note: rotate `NEXTAUTH_SECRET` before students sign
+> in — it transited chat during setup; no live sessions yet, so it's free to rotate now.
+
 ---
 
 ## Sanity check #1 — design parity (v2 vs the four OG GitHub trainers)
@@ -141,5 +150,6 @@ dev branch immediately — good enough to demo. GO-1 + Track-D make it
 
 ## One-line status
 
-Code ✅ · Design ✅ · **Hosted ❌ (never deployed)** · **Prod DB ❌ (dev-branch
-only)** · **Firebase→Neon completion ❌ (Track-D, pending)**.
+Code ✅ · Design ✅ · **Hosted ✅ (first deploy 2026-07-12 — verify-deploy green)** ·
+**Prod DB ❌ (dev-branch only — Step 4 pending)** · **Firebase→Neon completion ❌
+(Track-D, pending)**.
