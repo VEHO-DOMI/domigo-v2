@@ -9,11 +9,20 @@
  *               This is the KEY-SOLVABILITY audit — an authored key that does
  *               not grade "correct" through the frame's input shape is a
  *               defect (unreachable answer), reported as class "key-defect".
- *   (default)   live: Claude answers each frame; candidates are triaged into
- *               class (a) missing-variant / (b) ambiguous-carrier / (c) noise.
+ *   --export-frames / --candidates   the SUBSCRIPTION path (no API key): a
+ *               Claude Code session exports the student-view frames, fans them
+ *               out to fresh-context subagents (each sees ONLY the frames —
+ *               never keys, never the repo), collects their answers into one
+ *               JSON file, and feeds it back for grading + triage. Billed to
+ *               the Claude plan the session runs on, like SRDP's sandbox runner.
+ *   (default)   live via ANTHROPIC_API_KEY: Claude answers each frame through
+ *               the Anthropic SDK; candidates are triaged into class (a)
+ *               missing-variant / (b) ambiguous-carrier / (c) noise.
  *
  * Usage (off-CI, run from repo root):
  *   node scripts/audit/blind-solve.ts --no-llm --grade all
+ *   node scripts/audit/blind-solve.ts --grade g2 --export-frames /tmp/frames.json
+ *   node scripts/audit/blind-solve.ts --grade g2 --candidates /tmp/answers.json
  *   ANTHROPIC_API_KEY=... node scripts/audit/blind-solve.ts --grade g2 --limit 50
  *
  * Flags:
@@ -25,6 +34,9 @@
  *   --effort low|medium|high  default low (routine solve work)
  *   --concurrency <n>         live-mode parallel requests, default 4
  *   --no-llm                  dry run (no API key needed)
+ *   --export-frames <file>    write frames [{itemId, grade, prompt}] and exit
+ *   --candidates <file>       grade+triage answers produced elsewhere:
+ *                             {"<itemId>": [{"answer": "...", "confidence": 0.9}]}
  *
  * Outputs: content/build/audit/blind-solve/<scope>.json (+ worklist-<scope>.md
  * when findings exist). Live responses are cached in cache.json (gitignored)
@@ -81,6 +93,8 @@ interface Args {
   effort: "low" | "medium" | "high";
   concurrency: number;
   noLlm: boolean;
+  exportFrames: string | null;
+  candidates: string | null;
 }
 
 function parseArgs(argv: string[]): Args {
@@ -93,6 +107,8 @@ function parseArgs(argv: string[]): Args {
     effort: "low",
     concurrency: 4,
     noLlm: false,
+    exportFrames: null,
+    candidates: null,
   };
   for (let i = 0; i < argv.length; i++) {
     const k = argv[i]!;
@@ -109,6 +125,8 @@ function parseArgs(argv: string[]): Args {
     else if (k === "--effort") a.effort = v() as Args["effort"];
     else if (k === "--concurrency") a.concurrency = Number(v());
     else if (k === "--no-llm") a.noLlm = true;
+    else if (k === "--export-frames") a.exportFrames = v();
+    else if (k === "--candidates") a.candidates = v();
     else throw new Error(`unknown flag ${k}`);
   }
   if (a.grade === null && a.unit === null && a.only === null) {
@@ -116,6 +134,9 @@ function parseArgs(argv: string[]): Args {
   }
   if (a.grade !== null && !/^(g[1-4]|all)$/.test(a.grade)) throw new Error(`bad --grade ${a.grade}`);
   if (!["low", "medium", "high"].includes(a.effort)) throw new Error(`bad --effort ${a.effort}`);
+  if ([a.noLlm, a.exportFrames !== null, a.candidates !== null].filter(Boolean).length > 1) {
+    throw new Error("--no-llm, --export-frames, and --candidates are mutually exclusive");
+  }
   return a;
 }
 
@@ -325,20 +346,46 @@ async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
   const { entries, skipped } = collectEntries(args);
   const scope = args.only ?? args.unit ?? args.grade ?? "scope";
-  const mode = args.noLlm ? "no-llm" : "live";
+  const mode = args.noLlm ? "no-llm" : args.candidates !== null ? "candidates-file" : "live";
   console.log(`blind-solve — ${mode} · scope=${scope} · ${entries.length} items` +
     (Object.keys(skipped).length > 0 ? ` (skipped: ${Object.entries(skipped).map(([f, n]) => `${f}×${n}`).join(", ")})` : ""));
+
+  // --export-frames: emit the student view for external solving, then stop.
+  if (args.exportFrames !== null) {
+    const frames = entries.map((e) => ({
+      itemId: e.item.id,
+      grade: e.slug.slice(0, 2),
+      prompt: buildSolvePrompt(e.frame),
+    }));
+    fs.writeFileSync(args.exportFrames, `${JSON.stringify(frames, null, 1)}\n`);
+    console.log(`frames → ${args.exportFrames} (${frames.length}); solve them fresh-context, then re-run with --candidates`);
+    return;
+  }
+
+  // --candidates: answers were produced elsewhere (fresh-context subagents).
+  const fileCandidates: Record<string, SolveCandidate[]> | null =
+    args.candidates !== null ? (JSON.parse(fs.readFileSync(args.candidates, "utf8")) as Record<string, SolveCandidate[]>) : null;
+  if (fileCandidates !== null) {
+    const missing = entries.filter((e) => fileCandidates[e.item.id] === undefined).length;
+    if (missing > 0) console.log(`  ! ${missing} item(s) in scope have no candidates in the file — counted as unanswered`);
+  }
 
   const usage: Usage = { input: 0, output: 0, calls: 0, cacheHits: 0 };
   const solve = args.noLlm
     ? async (e: Entry): Promise<SolveCandidate[]> => cannedCandidates(e.fullAnswers)
-    : await makeLiveSolver(args, usage);
+    : fileCandidates !== null
+      ? async (e: Entry): Promise<SolveCandidate[]> =>
+          (fileCandidates[e.item.id] ?? []).slice(0, 3).map((c) => ({
+            answer: String(c.answer),
+            confidence: Math.min(1, Math.max(0, Number(c.confidence))),
+          }))
+      : await makeLiveSolver(args, usage);
 
   const findings: Finding[] = [];
   const tierTotals: Record<Tier, number> = { correct: 0, partial: 0, close: 0, wrong: 0 };
   let done = 0;
 
-  await mapPool(entries, args.noLlm ? 1 : args.concurrency, async (entry) => {
+  await mapPool(entries, args.noLlm || fileCandidates !== null ? 1 : args.concurrency, async (entry) => {
     const candidates = await solve(entry);
     const graded: GradedCandidate[] = candidates.map((c) => ({
       ...c,
@@ -376,15 +423,15 @@ async function main(): Promise<void> {
 
   const price = PRICES[args.model];
   const costUsd =
-    !args.noLlm && price !== undefined
+    mode === "live" && price !== undefined
       ? (usage.input / 1e6) * price.input + (usage.output / 1e6) * price.output
       : null;
 
   const report = {
     schema: "blind-solve@1",
     mode,
-    model: args.noLlm ? null : args.model,
-    effort: args.noLlm ? null : args.effort,
+    model: mode === "live" ? args.model : mode === "candidates-file" ? "external (fresh-context subagents)" : null,
+    effort: mode === "live" ? args.effort : null,
     scope,
     totals: {
       items: entries.length,
@@ -396,12 +443,12 @@ async function main(): Promise<void> {
       topCandidateTiers: tierTotals,
       skippedFormats: skipped,
     },
-    usage: args.noLlm ? null : { ...usage, costUsd },
+    usage: mode === "live" ? { ...usage, costUsd } : null,
     findings,
   };
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
-  const stem = `${scope}${mode === "no-llm" ? ".dry" : ""}`;
+  const stem = `${scope}${mode === "no-llm" ? ".dry" : mode === "candidates-file" ? ".sub" : ""}`;
   const reportPath = path.join(OUT_DIR, `${stem}.json`);
   fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
   console.log(`report → ${path.relative(ROOT, reportPath)}`);
