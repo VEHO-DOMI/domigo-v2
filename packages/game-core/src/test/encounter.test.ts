@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { Encounter, type GrammarFormat, type GrammarItem, type VocabItem } from "@domigo/content-schema";
 import type { DueRef } from "@domigo/db";
-import { DEFAULT_BATTLE_FORMATS, resolveEncounterTasks } from "../index.ts";
+import { DEFAULT_BATTLE_FORMATS, resolveEncounterTasks, seedStoryFlags, storyItemKey } from "../index.ts";
 
 // Minimal casts — the resolver only reads id + (grammar) format.
 const g = (id: string, format: GrammarFormat): GrammarItem => ({ id, format }) as unknown as GrammarItem;
@@ -92,4 +92,25 @@ test("stale due ref (not in pool) is skipped", () => {
     pool,
   });
   assert.deepEqual(out.map((r) => r.item.id), ["g1u01.w.apple"]);
+});
+
+// ─────────────────────────────────────────── B-0 shared helpers ───────
+
+test("storyItemKey: bare itemId with no variant; itemId#variant with one (no collision)", () => {
+  assert.equal(storyItemKey("g4u01.w.guess", null), "g4u01.w.guess");
+  assert.equal(storyItemKey("g4u01.w.guess", "clue"), "g4u01.w.guess#clue");
+  // the whole point: one item, two variants → two distinct keys (the second no
+  // longer overwrites the first in a Record<string, ResolvedItem>).
+  assert.notEqual(storyItemKey("x", "a"), storyItemKey("x", "b"));
+});
+
+test("seedStoryFlags: keeps only flags the story declares (stale cross-campaign flags dropped)", () => {
+  // a returning "Lost for Words" save (w04.*) loaded into FOURTEEN: LIVE, which
+  // declares w06/w10/w13 — the w04 flag must not leak in and mis-resolve gates.
+  assert.deepEqual(
+    seedStoryFlags(["w04.said", "w06.open", "w10.private"], ["w06.open", "w06.quiet", "w10.private", "w10.public", "w13.live"]),
+    ["w06.open", "w10.private"],
+  );
+  // a story with no declared flags carries nothing.
+  assert.deepEqual(seedStoryFlags(["w04.said"], []), []);
 });

@@ -13,7 +13,7 @@ import { useState, type CSSProperties } from "react";
 import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-schema";
 import { xpForTier, type Tier } from "@domigo/engine";
 import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, useLangMode } from "@domigo/game-feel";
-import type { ResolvedItem } from "@domigo/game-core";
+import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { CharacterChip, EvidenceBoard, EvidenceGallery, characterPalette } from "./art.tsx";
 import type { EvidencePiece } from "./art.tsx";
@@ -220,7 +220,7 @@ export function DetectiveGame(props: DetectiveGameProps) {
   }
 
   const slot = scene.taskSlots[0];
-  const slotItem = slot ? storyItems[slot.itemId] : undefined;
+  const slotItem = slot ? storyItems[storyItemKey(slot.itemId, slot.variantKey)] : undefined;
   const taskBlocks = slot !== undefined && slotItem !== undefined && !taskDone;
   // FlagGate resolves to its `else` path here (the authored neutral default —
   // wiped-save doctrine); the flag-aware runtime arrives with the G4 package.

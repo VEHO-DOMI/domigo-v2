@@ -32,6 +32,7 @@ export default function TripClient(props: {
   reviewItems: ResolvedItem[];
   serverSave: SavePayload | null;
   tripArt: TripArt | null;
+  storyFlags: string[];
 }) {
   useOutboxFlush();
   const { gameMode, serverSave } = props;
@@ -107,6 +108,7 @@ export default function TripClient(props: {
         initialSave={initial?.state ?? null}
         onSave={onSave}
         art={props.tripArt}
+        storyFlags={props.storyFlags}
       />
       {paused && (
         <div

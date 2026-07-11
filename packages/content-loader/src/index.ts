@@ -216,6 +216,35 @@ export interface ReleasedStory {
   storyId: string;
   grade: number;
   titleEn: string;
+  /** B-0: `canonical` = the game a grade plays by default (at most one per grade);
+   *  `bonus` = an extra released story that rides alongside (e.g. the old detective
+   *  campaign after the new one becomes canonical). From release.json `role`
+   *  (default `canonical`). */
+  role: "canonical" | "bonus";
+}
+
+/**
+ * B-0 — reduce raw released-story records to the per-grade release list. At most
+ * ONE canonical per grade; any number of bonus stories may ride alongside without
+ * throwing (this is what lets a grade release a new canonical game while keeping
+ * the old one as a bonus). Two canonicals for one grade is the Track-C invariant
+ * breaking — throw loudly, never silently pick one. Deterministic order.
+ */
+export function resolveReleased(raw: ReleasedStory[]): ReleasedStory[] {
+  const out = [...raw].sort((a, b) => a.grade - b.grade || a.storyId.localeCompare(b.storyId));
+  for (const grade of new Set(out.map((s) => s.grade))) {
+    const canon = out.filter((s) => s.grade === grade && s.role === "canonical");
+    if (canon.length > 1) {
+      throw new Error(`content-loader: two canonical released stories for grade ${grade} (${canon.map((s) => `"${s.storyId}"`).join(", ")})`);
+    }
+  }
+  return out;
+}
+
+/** release.json `role` for a story (default "canonical"). */
+function loadStoryRole(storyId: string): "canonical" | "bonus" {
+  const raw = readJson<{ role?: string }>(path.join(STORIES_DIR, storyId, "release.json"));
+  return raw?.role === "bonus" ? "bonus" : "canonical";
 }
 
 // Cached at module scope: the corpus is immutable at deploy time, and the grade→story
@@ -233,24 +262,22 @@ let releasedStoriesCache: ReleasedStory[] | null = null;
 export function listReleasedStories(): ReleasedStory[] {
   if (releasedStoriesCache) return releasedStoriesCache;
   if (!fs.existsSync(STORIES_DIR)) return [];
-  const out: ReleasedStory[] = [];
+  const raw: ReleasedStory[] = [];
   const ids = fs.readdirSync(STORIES_DIR).filter((n) => STORY_ID.test(n)).sort();
   for (const id of ids) {
     if (loadReleasedChapters(id).length === 0) continue;
     const story = loadStory(id);
     if (!story) continue;
-    const dup = out.find((s) => s.grade === story.grade);
-    if (dup) throw new Error(`content-loader: two released stories for grade ${story.grade} ("${dup.storyId}", "${id}")`);
-    out.push({ storyId: id, grade: story.grade, titleEn: story.title.en });
+    raw.push({ storyId: id, grade: story.grade, titleEn: story.title.en, role: loadStoryRole(id) });
   }
-  out.sort((a, b) => a.grade - b.grade);
-  releasedStoriesCache = out;
-  return out;
+  releasedStoriesCache = resolveReleased(raw);
+  return releasedStoriesCache;
 }
 
-/** The released story id for a grade; null while that grade's game is unreleased. */
+/** The CANONICAL released story id for a grade; null while that grade's main game
+ *  is unreleased (a grade with only a bonus story still returns null). */
 export function storyIdForGrade(grade: number): string | null {
-  return listReleasedStories().find((s) => s.grade === grade)?.storyId ?? null;
+  return listReleasedStories().find((s) => s.grade === grade && s.role === "canonical")?.storyId ?? null;
 }
 
 /** Unit slugs that have a test.json (the mock-test "approval" signal), sorted. */

@@ -18,7 +18,7 @@ import { useState, type CSSProperties, type ReactNode } from "react";
 import type { Chapter, Choice, GrammarItem, Scene, VocabItem } from "@domigo/content-schema";
 import { xpForTier, type Tier } from "@domigo/engine";
 import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, useLangMode } from "@domigo/game-feel";
-import type { ResolvedItem } from "@domigo/game-core";
+import { seedStoryFlags, storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { CastAvatar, castLook } from "./art.tsx";
 import { COPY, DAY_STAMP, resultLine, slotPrompt, trailLabel } from "./trip-copy.ts";
@@ -72,6 +72,10 @@ export interface TripGameProps {
   initialSave?: TripSave | null;
   onSave?: (s: TripSave) => void;
   art?: TripArt | null;
+  /** B-0 flag-scope guard: the flag ids this story DECLARES (flags.json). The
+   *  initial flags from a shared-slot save are filtered to these so a prior
+   *  campaign's flags can't leak in. Omit ⇒ no filtering (back-compat). */
+  storyFlags?: string[];
 }
 
 const wrap: CSSProperties = { maxWidth: 640, margin: "0 auto", fontFamily: "var(--font-body)", color: "var(--text)" };
@@ -121,7 +125,11 @@ export function TripGame(props: TripGameProps) {
 
   const [sceneId, setSceneId] = useState(resume && byId.has(resume.sceneId) ? resume.sceneId : first);
   const [entries, setEntries] = useState<string[]>(resume?.entries ?? []);
-  const [flags, setFlags] = useState<string[]>(props.initialSave?.flags ?? []);
+  const [flags, setFlags] = useState<string[]>(
+    props.storyFlags === undefined
+      ? (props.initialSave?.flags ?? [])
+      : seedStoryFlags(props.initialSave?.flags ?? [], props.storyFlags),
+  );
   const [taskDone, setTaskDone] = useState(false);
   const [trail, setTrail] = useState<number>(() => {
     if (typeof window === "undefined") return 0;
@@ -194,7 +202,7 @@ export function TripGame(props: TripGameProps) {
   const lineGlosses = flagLine !== undefined ? flagLine.glosses : scene.glosses;
 
   const slot = scene.taskSlots[0];
-  const slotItem = slot ? storyItems[slot.itemId] : undefined;
+  const slotItem = slot ? storyItems[storyItemKey(slot.itemId, slot.variantKey)] : undefined;
   const taskBlocks = slot !== undefined && slotItem !== undefined && !taskDone;
   // The flag-aware next: a FlagGate routes then/else against the save's flags.
   const rawNext = scene.next;

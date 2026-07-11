@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { Cast, Story, StoryItems } from "@domigo/content-schema";
+import { Cast, Story, StoryFlags, StoryItems } from "@domigo/content-schema";
 import { extractArrayLiteral, parseLegacyCampaign } from "../import-story.ts";
-import { validateStoryBundle, type StoryBundle, type StoryCorpus } from "../validate-story.ts";
+import { endingCoverage, validateStoryBundle, type StoryBundle, type StoryCorpus } from "../validate-story.ts";
 
 // ─────────────────────────────────────────────────────────── importer ────────
 
@@ -206,4 +206,59 @@ test("VS-10: story item carrier above level at its lock unit", () => {
     vocabItems: [{ ...items.vocabItems[0]!, s: "The ___ dragon is here." }],
   });
   assert.ok(validateStoryBundle(bundle({ storyItems: itemsBad }), mkCorpus()).errors.some((e) => e.includes("VS-10")));
+});
+
+// ─────────────────────────────────────────── VS-15 ending coverage ────────
+
+// Minimal flag-story builder for endingCoverage (bypasses the level gate — we
+// only exercise the fork/gate graph walk). One fork (w01.a|w01.b, major, set in
+// ch01), a FlagGate that reconverges to a single ending s003.
+const FS = "g4.st.x";
+const fscene = (n: number, next: unknown) => ({
+  id: `${FS}.ch01.s${String(n).padStart(3, "0")}`,
+  speaker: "narrator", textEn: "x", scaffoldDe: null, glosses: [], audio: null, taskSlots: [], next,
+});
+function flagStory(extraScenes: unknown[] = []) {
+  return Story.parse({
+    schema: "story@1", id: FS, grade: 4, title: { en: "X", de: null },
+    chapters: [{
+      id: `${FS}.ch01`, unit: 1, titleEn: "T", titleDe: null,
+      scenes: [
+        fscene(1, [
+          { id: "a", textEn: "A", scaffoldDe: null, next: `${FS}.ch01.s002`, sets: ["w01.a"] },
+          { id: "b", textEn: "B", scaffoldDe: null, next: `${FS}.ch01.s002`, sets: ["w01.b"] },
+        ]),
+        fscene(2, { kind: "flag", flag: "w01.a", then: `${FS}.ch01.s003`, else: `${FS}.ch01.s003` }),
+        fscene(3, null),
+        ...extraScenes,
+      ],
+    }],
+  });
+}
+const flagsDecl = (major: boolean) => StoryFlags.parse({
+  schema: "flags@1", storyId: FS,
+  flags: [
+    { id: "w01.a", label: "A", setIn: `${FS}.ch01`, major },
+    { id: "w01.b", label: "B", setIn: `${FS}.ch01`, major },
+  ],
+});
+
+test("VS-15: a reconverging fork story passes; the matrix reports 3 combos → 1 ending", () => {
+  const res = endingCoverage(flagStory(), flagsDecl(true));
+  assert.deepEqual(res.errors, []);
+  assert.equal(res.infos.length, 1);
+  assert.match(res.infos[0]!, /VS-15 — OK \(3 combos → 1 ending/); // neutral + {w01.a} + {w01.b}
+});
+
+test("VS-15: an authored ending that no combo routes to fails (orphaned)", () => {
+  // s004 is a terminal (next:null) that nothing points to — an ending nobody can reach.
+  const res = endingCoverage(flagStory([fscene(4, null)]), flagsDecl(true));
+  assert.equal(res.infos.length, 0);
+  assert.ok(res.errors.some((e) => /VS-15 — final-chapter ending .*s004 is reached by no flag combination \(orphaned\)/.test(e)), res.errors.join(" | "));
+});
+
+test("VS-15: minor-only flags (no major) are a no-op — flagless/minor stories untouched", () => {
+  const res = endingCoverage(flagStory(), flagsDecl(false));
+  assert.deepEqual(res.errors, []);
+  assert.deepEqual(res.infos, []);
 });

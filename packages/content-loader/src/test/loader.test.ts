@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { listApprovedUnits, listReleasedStories, loadUnit, storyIdForGrade } from "../index.ts";
+import { listApprovedUnits, listReleasedStories, loadUnit, resolveReleased, storyIdForGrade, type ReleasedStory } from "../index.ts";
 
 test("loadUnit reads + schema-validates a real approved unit", () => {
   const u = loadUnit("g1-u01");
@@ -49,4 +49,28 @@ test("listReleasedStories derives one story per grade from the corpus (all four 
 test("storyIdForGrade resolves every released grade from the corpus (no stale hand-maps)", () => {
   assert.equal(storyIdForGrade(3), "g3.st.fourteen"); // the stale app-side map missed g3 — this is the regression guard
   assert.equal(storyIdForGrade(4), "g4.st.lost-for-words"); // released with the game-trip runtime (Act 1, ch01–ch05)
+});
+
+// ─────────────────────────────────────── B-0: canonical|bonus release ────
+
+test("resolveReleased: a canonical + a bonus in one grade coexist; two canonicals throw", () => {
+  const canon = (storyId: string, grade: number): ReleasedStory => ({ storyId, grade, titleEn: storyId, role: "canonical" });
+  const bonus = (storyId: string, grade: number): ReleasedStory => ({ storyId, grade, titleEn: storyId, role: "bonus" });
+
+  // the case B-2/B-3 need: a new canonical game released alongside the old story kept as a bonus.
+  const ok = resolveReleased([bonus("g2.st.wrong-name", 2), canon("g2.st.the-spill", 2), canon("g1.st.lost-pages", 1)]);
+  assert.deepEqual(
+    ok.map((s) => [s.grade, s.storyId, s.role]),
+    [
+      [1, "g1.st.lost-pages", "canonical"],
+      [2, "g2.st.the-spill", "canonical"],
+      [2, "g2.st.wrong-name", "bonus"],
+    ],
+  );
+
+  // two canonicals for one grade is the Track-C invariant breaking — it must throw, not pick one.
+  assert.throws(
+    () => resolveReleased([canon("g2.st.the-spill", 2), canon("g2.st.wrong-name", 2)]),
+    /two canonical released stories for grade 2/,
+  );
 });

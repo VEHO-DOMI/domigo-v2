@@ -20,6 +20,31 @@ export type ResolvedItem =
   | { kind: "vocab"; item: VocabItem }
   | { kind: "grammar"; item: GrammarItem };
 
+/**
+ * B-0: the stable map key for a story task slot's resolved item. A chapter may
+ * use the SAME itemId twice under different presentation `variantKey`s (variant
+ * reuse); keying a `Record<string, ResolvedItem>` by itemId alone would let the
+ * second slot silently overwrite the first. Compose `itemId#variantKey` (bare
+ * itemId when no variant) so both the builder (`storyItemsFor`) and every
+ * runtime look the item up by the same non-colliding key.
+ */
+export function storyItemKey(itemId: string, variantKey: string | null): string {
+  return variantKey ? `${itemId}#${variantKey}` : itemId;
+}
+
+/**
+ * B-0 flag-scope guard: when a cosmetic save is loaded into a story, keep only
+ * the flags that story actually DECLARES (its flags.json). Two campaigns per
+ * grade share one save slot (e.g. g4 "Lost for Words" and the new "FOURTEEN:
+ * LIVE" both live at `game:g4`), so a returning player's stale `w04.*` flags
+ * must NOT survive into the new story and mis-resolve its FlagGates. `declared`
+ * empty (a story with no flags.json) ⇒ no flags survive, which is correct.
+ */
+export function seedStoryFlags(saveFlags: readonly string[], declared: readonly string[]): string[] {
+  const ok = new Set(declared);
+  return saveFlags.filter((f) => ok.has(f));
+}
+
 export interface EncounterPool {
   vocab: VocabItem[];
   grammar: GrammarItem[];

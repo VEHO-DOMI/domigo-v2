@@ -250,6 +250,96 @@ function flagErrors(story: Story, flags: import("@domigo/content-schema").StoryF
   return errors;
 }
 
+/**
+ * VS-15 — ending coverage over major-flag combinations. A "fork" is the set of
+ * MAJOR flags sharing a `setIn` chapter (the mutually-exclusive options of one
+ * choice). A combo picks exactly one option per fork, plus the all-unset neutral
+ * (a wiped save resolves every FlagGate to its authored `else`). For each combo
+ * we walk each chapter resolving FlagGate by the combo and following ALL Choice
+ * branches, collecting terminal (next:null) scenes. Hard-fail: (i) a combo that
+ * reaches no terminal in some chapter (a gate branch dead-ends that combo's only
+ * path), (ii) a terminal of the FINAL chapter reached by NO combo (an authored
+ * ending nothing routes to). Emits the combo→endings matrix as info (the
+ * narrative-gate review aid; NOT forced 1:1). Runs only when a major flag exists,
+ * so flagless / minor-flag-only stories are untouched.
+ */
+export function endingCoverage(
+  story: Story,
+  flags: import("@domigo/content-schema").StoryFlags | null,
+): { errors: string[]; infos: string[] } {
+  const errors: string[] = [];
+  const infos: string[] = [];
+  const majors = (flags?.flags ?? []).filter((f) => f.major);
+  if (majors.length === 0) return { errors, infos };
+
+  // forks = major flags grouped by setIn chapter, in chapter order
+  const forkMap = new Map<string, string[]>();
+  for (const f of majors) forkMap.set(f.setIn, [...(forkMap.get(f.setIn) ?? []), f.id]);
+  const forks = [...forkMap.entries()].sort((a, b) => chNum(a[0]) - chNum(b[0])).map(([, ids]) => ids);
+
+  // combos = one option per fork (cartesian) + the all-unset neutral
+  let cart: Set<string>[] = [new Set()];
+  for (const fork of forks) {
+    const next: Set<string>[] = [];
+    for (const partial of cart) for (const opt of fork) next.push(new Set([...partial, opt]));
+    cart = next;
+  }
+  const combos = [new Set<string>(), ...cart];
+  const label = (c: Set<string>): string => (c.size ? [...c].sort().join("+") : "(neutral)");
+
+  const terminalsUnder = (chapter: Chapter, combo: Set<string>): Set<string> => {
+    const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
+    const terminals = new Set<string>();
+    const seen = new Set<string>();
+    const start = chapter.scenes[0];
+    if (!start) return terminals;
+    const stack = [start.id];
+    while (stack.length > 0) {
+      const id = stack.pop()!;
+      if (seen.has(id)) continue;
+      seen.add(id);
+      const s = byId.get(id);
+      if (!s) continue;
+      const nx = s.next;
+      if (nx === null) { terminals.add(id); continue; }
+      if (Array.isArray(nx)) { for (const c of nx) if (byId.has(c.next)) stack.push(c.next); continue; }
+      if (typeof nx === "object") { const t = combo.has(nx.flag) ? nx.then : nx.else; if (byId.has(t)) stack.push(t); continue; }
+      if (byId.has(nx)) stack.push(nx);
+    }
+    return terminals;
+  };
+
+  // (i) every combo reaches an ending in every chapter
+  for (const combo of combos) {
+    for (const chapter of story.chapters) {
+      if (terminalsUnder(chapter, combo).size === 0) {
+        errors.push(`${story.id}: VS-15 — flag combo ${label(combo)} reaches no ending in ${chapter.id}`);
+      }
+    }
+  }
+
+  // (ii) every final-chapter ending is reached by some combo
+  const finalChapter = story.chapters[story.chapters.length - 1];
+  if (finalChapter) {
+    const authored = finalChapter.scenes.filter((s) => s.next === null).map((s) => s.id);
+    const reached = new Set<string>();
+    for (const combo of combos) for (const t of terminalsUnder(finalChapter, combo)) reached.add(t);
+    for (const t of authored) {
+      if (!reached.has(t)) errors.push(`${story.id}: VS-15 — final-chapter ending ${t} is reached by no flag combination (orphaned)`);
+    }
+    if (errors.length === 0) {
+      const bySet = new Map<string, number>();
+      for (const combo of combos) {
+        const key = [...terminalsUnder(finalChapter, combo)].map((x) => x.split(".").pop()).sort().join(",") || "(none)";
+        bySet.set(key, (bySet.get(key) ?? 0) + 1);
+      }
+      const matrix = [...bySet.entries()].map(([k, n]) => `${k}×${n}`).join(" · ");
+      infos.push(`${story.id}: VS-15 — OK (${combos.length} combos → ${authored.length} ending(s) in ${finalChapter.id.split(".").pop()}): ${matrix}`);
+    }
+  }
+  return { errors, infos };
+}
+
 /** Pure VS-1…VS-12 + release gating over a parsed bundle. */
 export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): { errors: string[]; infos: string[] } {
   const errors: string[] = [];
@@ -263,6 +353,9 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
   if (bundle.names && bundle.names.storyId !== story.id) errors.push(`${story.id}: VS-1 — names.json storyId ${bundle.names.storyId} != ${story.id}`);
   if (bundle.flags && bundle.flags.storyId !== story.id) errors.push(`${story.id}: VS-1 — flags.json storyId ${bundle.flags.storyId} != ${story.id}`);
   errors.push(...flagErrors(story, bundle.flags ?? null));
+  const ec = endingCoverage(story, bundle.flags ?? null); // VS-15 ending coverage
+  errors.push(...ec.errors);
+  infos.push(...ec.infos);
   if (bundle.storyItems && bundle.storyItems.storyId !== story.id) errors.push(`${story.id}: VS-1 — story-items storyId ${bundle.storyItems.storyId} != ${story.id}`);
 
   const castIds = new Set((bundle.cast?.members ?? []).map((m) => m.id));

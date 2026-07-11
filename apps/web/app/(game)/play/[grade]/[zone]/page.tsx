@@ -6,10 +6,10 @@
  */
 import { redirect } from "next/navigation";
 import { Encounter, type Chapter, type ComprehensionItem, type GrammarItem, type VocabItem } from "@domigo/content-schema";
-import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadUnit, storyIdForGrade } from "@domigo/content-loader";
+import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadStoryFlags, loadUnit, storyIdForGrade } from "@domigo/content-loader";
 import { getDb, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db";
 import { EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
-import { resolveEncounterTasks, type ResolvedItem } from "@domigo/game-core";
+import { resolveEncounterTasks, storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { getActingUserForPage } from "@/lib/identity";
 import { resolveTileArt } from "@/lib/tile-art";
 import { resolveDetectiveArt, resolveNovelArt } from "@/lib/story-art";
@@ -44,21 +44,21 @@ function storyItemsFor(
       // Phase 3: a `.ci.` ref is a scene-comprehension item (story bundle) — cast to
       // GrammarItem so it renders/grades exactly like a grammar task (no structureId).
       const ci = comprehension.find((x) => x.id === ts.itemId);
-      if (ci) { out[ts.itemId] = { kind: "grammar", item: ci as unknown as GrammarItem }; continue; }
+      if (ci) { out[storyItemKey(ts.itemId, ts.variantKey)] = { kind: "grammar", item: ci as unknown as GrammarItem }; continue; }
       const v = unit.vocab.find((x) => x.id === ts.itemId);
       if (v) {
         // Scene-embedded carrier (Phase 2): a variantKey re-frames the carrier as
         // the in-fiction clue; answers/distractors are untouched so grading is identical.
         const variant = ts.variantKey ? v.presentation.variants.find((va) => va.key === ts.variantKey) : undefined;
         const item = variant ? { ...v, s: variant.prompt.text, gloss: variant.glosses } : v;
-        out[ts.itemId] = { kind: "vocab", item };
+        out[storyItemKey(ts.itemId, ts.variantKey)] = { kind: "vocab", item };
         continue;
       }
       const g = unit.grammar.find((x) => x.id === ts.itemId);
       if (g) {
         const variant = ts.variantKey ? g.presentation.variants.find((va) => va.key === ts.variantKey) : undefined;
         const item = variant ? { ...g, prompt: { ...g.prompt, text: variant.prompt.text }, gloss: variant.glosses } : g;
-        out[ts.itemId] = { kind: "grammar", item };
+        out[storyItemKey(ts.itemId, ts.variantKey)] = { kind: "grammar", item };
       }
     }
   }
@@ -167,6 +167,9 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
     const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
     // resolveNovelArt is story-art@1-generic despite the name (same manifest shape).
     const tripArt = resolveNovelArt(storyId, grade, chapter);
+    // B-0 flag-scope guard: pass THIS story's declared flags so a shared-slot save
+    // from the other g4 campaign can't leak its flags into this story's gates.
+    const storyFlags = loadStoryFlags(storyId)?.flags.map((f) => f.id) ?? [];
     const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-trip").TripSave } : null;
     return (
       <TripClient
@@ -178,6 +181,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
         reviewItems={[]}
         serverSave={serverSave}
         tripArt={tripArt}
+        storyFlags={storyFlags}
       />
     );
   }
