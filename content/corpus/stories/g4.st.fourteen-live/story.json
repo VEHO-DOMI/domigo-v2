@@ -2769,8 +2769,8 @@
     {
      "id": "g4.st.fourteen-live.ch05.s013",
      "speaker": "ben",
-     "textEn": "I accepted pizza from the... other side? I need a moment. And maybe another slice, for research.",
-     "scaffoldDe": "Ich habe Pizza von der... Gegenseite angenommen? Ich brauche einen Moment. Und vielleicht noch ein Stück, für die Forschung.",
+     "textEn": "I accepted pizza from the... other side? I need a moment. And two slices to take home — that part is not a joke.",
+     "scaffoldDe": "Ich habe Pizza von der... Gegenseite angenommen? Ich brauche einen Moment. Und zwei Stücke zum Mitnehmen — der Teil ist kein Witz.",
      "glosses": [
       {
        "word": "accepted",
@@ -2780,11 +2780,6 @@
       {
        "word": "slice",
        "de": "Stück",
-       "scope": null
-      },
-      {
-       "word": "research",
-       "de": "Forschung",
        "scope": null
       },
       {
@@ -2803,8 +2798,23 @@
        "scope": null
       },
       {
-       "word": "another",
-       "de": "noch eine",
+       "word": "slices",
+       "de": "Stücke",
+       "scope": null
+      },
+      {
+       "word": "joke",
+       "de": "Witz",
+       "scope": null
+      },
+      {
+       "word": "take home",
+       "de": "mitnehmen",
+       "scope": null
+      },
+      {
+       "word": "part",
+       "de": "Teil",
        "scope": null
       }
      ],
@@ -4547,8 +4557,8 @@
     {
      "id": "g4.st.fourteen-live.ch08.s005",
      "speaker": "leah",
-     "textEn": "I used to check everything twice. This week I have slept four hours and checked nothing. I know how this looks.",
-     "scaffoldDe": "Früher habe ich alles doppelt geprüft. Diese Woche habe ich vier Stunden geschlafen und nichts geprüft. Ich weiß, wie das aussieht.",
+     "textEn": "I used to check everything twice. Last year we turned Ben into a joke for views, and I promised: never that person again. Tonight I was her.",
+     "scaffoldDe": "Früher habe ich alles doppelt geprüft. Letztes Jahr haben wir Ben für Views zu einem Witz gemacht, und ich habe versprochen: nie wieder diese Person. Heute Nacht war ich sie.",
      "glosses": [
       {
        "word": "used to",
@@ -4561,23 +4571,43 @@
        "scope": null
       },
       {
-       "word": "slept",
-       "de": "geschlafen",
-       "scope": null
-      },
-      {
-       "word": "checked",
-       "de": "geprüft",
-       "scope": null
-      },
-      {
        "word": "check",
        "de": "prüfen",
        "scope": null
       },
       {
-       "word": "hours",
-       "de": "Stunden",
+       "word": "turned",
+       "de": "gemacht",
+       "scope": null
+      },
+      {
+       "word": "joke",
+       "de": "Witz",
+       "scope": null
+      },
+      {
+       "word": "views",
+       "de": "Views",
+       "scope": null
+      },
+      {
+       "word": "promised",
+       "de": "versprochen",
+       "scope": null
+      },
+      {
+       "word": "person",
+       "de": "Person",
+       "scope": null
+      },
+      {
+       "word": "tonight",
+       "de": "heute Nacht",
+       "scope": null
+      },
+      {
+       "word": "never",
+       "de": "nie",
        "scope": null
       }
      ],
@@ -5048,8 +5078,8 @@
     {
      "id": "g4.st.fourteen-live.ch09.s004",
      "speaker": "sara",
-     "textEn": "So we prepare like professionals. Breathe in four, hold four, out four. Then: every question on its own card.",
-     "scaffoldDe": "Also bereiten wir uns vor wie Profis. Vier einatmen, vier halten, vier ausatmen. Dann: jede Frage auf ihrer eigenen Karte.",
+     "textEn": "We prepare like professionals. My rules come from last year, when the internet nearly broke Ben — people first, because I have seen the alternative. Breathe in four, hold four, out four. Then: every question on its own card.",
+     "scaffoldDe": "Wir bereiten uns vor wie Profis. Meine Regeln kommen vom letzten Jahr, als das Internet Ben fast zerbrochen hat — zuerst der Mensch, weil ich die Alternative gesehen habe. Vier einatmen, vier halten, vier ausatmen. Dann: jede Frage auf ihrer eigenen Karte.",
      "glosses": [
       {
        "word": "prepare",
@@ -5074,6 +5104,41 @@
       {
        "word": "question",
        "de": "Frage",
+       "scope": null
+      },
+      {
+       "word": "rules",
+       "de": "Regeln",
+       "scope": null
+      },
+      {
+       "word": "internet",
+       "de": "Internet",
+       "scope": null
+      },
+      {
+       "word": "nearly",
+       "de": "fast",
+       "scope": null
+      },
+      {
+       "word": "broke",
+       "de": "zerbrochen",
+       "scope": null
+      },
+      {
+       "word": "alternative",
+       "de": "Alternative",
+       "scope": null
+      },
+      {
+       "word": "seen",
+       "de": "gesehen",
+       "scope": null
+      },
+      {
+       "word": "own",
+       "de": "eigene",
        "scope": null
       }
      ],
@@ -5698,33 +5763,48 @@
     },
     {
      "id": "g4.st.fourteen-live.ch10.s004",
-     "speaker": "sara",
-     "textEn": "I know four of these names. They are kids whose families cannot afford ANY trip. The sponsor money — it pays for them.",
-     "scaffoldDe": "Ich kenne vier von diesen Namen. Das sind Kinder, deren Familien sich GAR keine Reise leisten können. Das Sponsorgeld — es bezahlt für sie.",
+     "speaker": "ben",
+     "textEn": "I know these names. Mine is one of them. My family — we were never flying anywhere, whatever city wins.",
+     "scaffoldDe": "Ich kenne diese Namen. Meiner ist einer davon. Meine Familie — wir wären nie irgendwohin geflogen, egal welche Stadt gewinnt.",
      "glosses": [
-      {
-       "word": "afford",
-       "de": "sich leisten",
-       "scope": null
-      },
-      {
-       "word": "families",
-       "de": "Familien",
-       "scope": null
-      },
-      {
-       "word": "sponsor",
-       "de": "Sponsor",
-       "scope": null
-      },
       {
        "word": "names",
        "de": "Namen",
        "scope": null
       },
       {
-       "word": "trip",
-       "de": "Reise",
+       "word": "mine",
+       "de": "meiner",
+       "scope": null
+      },
+      {
+       "word": "family",
+       "de": "Familie",
+       "scope": null
+      },
+      {
+       "word": "flying",
+       "de": "fliegen",
+       "scope": null
+      },
+      {
+       "word": "whatever",
+       "de": "egal welche",
+       "scope": null
+      },
+      {
+       "word": "wins",
+       "de": "gewinnt",
+       "scope": null
+      },
+      {
+       "word": "never",
+       "de": "nie",
+       "scope": null
+      },
+      {
+       "word": "anywhere",
+       "de": "irgendwohin",
        "scope": null
       }
      ],
@@ -5735,8 +5815,8 @@
     {
      "id": "g4.st.fourteen-live.ch10.s005",
      "speaker": "narrator",
-     "textEn": "The studio goes quiet the way a room goes quiet when a story grows a second heart.",
-     "scaffoldDe": "Im Studio wird es so still, wie ein Raum still wird, wenn eine Geschichte ein zweites Herz bekommt.",
+     "textEn": "The studio goes quiet the way a room goes quiet when a story grows a second heart. Leo slides the last pizza slice over to Ben without one word.",
+     "scaffoldDe": "Im Studio wird es so still, wie ein Raum still wird, wenn eine Geschichte ein zweites Herz bekommt. Leo schiebt Ben das letzte Stück Pizza rüber, ohne ein Wort.",
      "glosses": [
       {
        "word": "grows",
@@ -5762,6 +5842,26 @@
        "word": "goes",
        "de": "geht",
        "scope": null
+      },
+      {
+       "word": "slides",
+       "de": "schiebt",
+       "scope": null
+      },
+      {
+       "word": "slice",
+       "de": "Stück",
+       "scope": null
+      },
+      {
+       "word": "word",
+       "de": "Wort",
+       "scope": null
+      },
+      {
+       "word": "last",
+       "de": "letzte",
+       "scope": null
       }
      ],
      "audio": null,
@@ -5770,7 +5870,7 @@
     },
     {
      "id": "g4.st.fourteen-live.ch10.s006",
-     "speaker": "ben",
+     "speaker": "leah",
      "textEn": "So the deal is dirty AND the reason is decent. If he had asked the school for a fund, none of this would have happened.",
      "scaffoldDe": "Also ist der Deal schmutzig UND der Grund ist anständig. Hätte er die Schule um einen Fonds gebeten, wäre nichts davon passiert.",
      "glosses": [
@@ -6223,17 +6323,12 @@
     {
      "id": "g4.st.fourteen-live.ch10.s015",
      "speaker": "ben",
-     "textEn": "Whatever happens tomorrow — the twelve kids on that list go on a trip. We write the ending THAT way. Promise me.",
-     "scaffoldDe": "Was auch immer morgen passiert — die zwölf Kinder auf der Liste fahren auf eine Reise. Wir schreiben das Ende SO. Versprecht es mir.",
+     "textEn": "Whatever happens tomorrow — the twelve kids on that list go on the trip. All twelve. I am allowed to say that now. Promise me.",
+     "scaffoldDe": "Was auch immer morgen passiert — die zwölf Kinder auf der Liste fahren mit. Alle zwölf. Das darf ich jetzt sagen. Versprecht es mir.",
      "glosses": [
       {
        "word": "promise",
        "de": "versprechen",
-       "scope": null
-      },
-      {
-       "word": "ending",
-       "de": "Ende",
        "scope": null
       },
       {
@@ -6254,6 +6349,21 @@
       {
        "word": "trip",
        "de": "Reise",
+       "scope": null
+      },
+      {
+       "word": "allowed",
+       "de": "dürfen",
+       "scope": null
+      },
+      {
+       "word": "kids",
+       "de": "Kinder",
+       "scope": null
+      },
+      {
+       "word": "say",
+       "de": "sagen",
        "scope": null
       }
      ],
@@ -6694,28 +6804,48 @@
     },
     {
      "id": "g4.st.fourteen-live.ch11.s010",
-     "speaker": "narrator",
-     "textEn": "The crew photographs everything and puts the boxes back neatly — archives keep those who keep them.",
-     "scaffoldDe": "Die Crew fotografiert alles und stellt die Kisten ordentlich zurück — Archive schützen die, die sie pflegen.",
+     "speaker": "leo",
+     "textEn": "I photograph everything myself, twice. I film because I talk slowly. A camera waits — people do not.",
+     "scaffoldDe": "Ich fotografiere alles selbst, zweimal. Ich filme, weil ich langsam rede. Eine Kamera wartet — Menschen nicht.",
      "glosses": [
       {
-       "word": "photographs",
-       "de": "fotografiert",
+       "word": "photograph",
+       "de": "fotografiere",
        "scope": null
       },
       {
-       "word": "neatly",
-       "de": "ordentlich",
+       "word": "myself",
+       "de": "selbst",
        "scope": null
       },
       {
-       "word": "puts",
-       "de": "stellt",
+       "word": "twice",
+       "de": "zweimal",
        "scope": null
       },
       {
-       "word": "archives",
-       "de": "Archive",
+       "word": "film",
+       "de": "filme",
+       "scope": null
+      },
+      {
+       "word": "slowly",
+       "de": "langsam",
+       "scope": null
+      },
+      {
+       "word": "camera",
+       "de": "Kamera",
+       "scope": null
+      },
+      {
+       "word": "waits",
+       "de": "wartet",
+       "scope": null
+      },
+      {
+       "word": "talk",
+       "de": "rede",
        "scope": null
       }
      ],

@@ -81,6 +81,22 @@ flags.json (flags@1)
 - **Language discipline:** cumulative bank at each chapter's unit; grammar-taught words (said/told/took, irregular participles) glossed deliberately; `scaffoldDe` is first-class natural teen German (never translationese; the L-1 rule applies at g4 for the toggle path); no meta-talk (VS-8).
 - **Every heavy beat ends with the crew** — a hand on a shoulder, Ben's joke, the red REC light going steady. The season's warmth is the friendship, not the outcome.
 
+## 5.1 · Character-stake layer (the identification pass, 2026-07-11)
+
+The scandal plot is the spine; each crew member also carries a **personal stake a 14-year-old recognises** — so the season is character-*driven*, not just well-plotted. Binding for any future revision (do not flatten these back into plot function):
+
+- **Ben — money / class.** Ben is himself one of the twelve names on Steiner's trip-fund list; his family could never afford any trip. Seeded lightly at `ch05.s013` ("two slices to take home — that part is not a joke"), revealed by him at `ch10.s004` ("Mine is one of them"), and paid off at `ch10.s015` ("I am allowed to say that now"). The dignity beat `ch10.s005` (Leo silently slides him the last slice, nobody makes it weird) is load-bearing — never play it for pity.
+- **Leah — guilt / becoming-better.** Her ch08 obsession is rooted in Season 1: the crew turned Ben into content, and she swore never to be that person again (`ch08.s005` "Tonight I was her."). Her arc is fear of relapse, not ambition.
+- **Sara — protectiveness with an origin.** "People first" exists because she watched the internet nearly break Ben last year (`ch09.s004`). She is not an oracle; the rule has a wound under it.
+- **Leo — the quiet kid's medium.** `ch11.s010`: "I film because I talk slowly. A camera waits — people do not." One line, but it turns the camera from a prop into who he is.
+- **You — the editor.** Intentionally faceless (player projection); the stake is authorship — your three forks decide who is protected when the truth lands.
+
+The `ch10` reveal deliberately moved the "who the fund helps" explanation off Sara and onto Ben (emotion) — the causal ethics ("sponsor money pays for kids who can't afford trips") are carried by Leah's `ch10.s006` and the `g4u10.ci.the-reason` recap key, so the "true and unfair" logic still lands without exposition. Provenance: `scripts/story/g4-live-character-pass.py`.
+
+## 5.2 · Art (graphic-novel key art, story-art@1)
+
+Season 2 renders on the `@domigo/game-trip` DOM runtime, so its art is **graphic-novel key art, not a tileset** (the same family as G3's `g3-fourteen-prompts.html`). Library + manifest are generated from ONE source of truth by `docs/art/build-g4-prompts.mjs` → `docs/art/g4-fourteen-live-prompts.html` (10 cast busts + cover + season end + 13 segment cards + 3 Fork-3 ending cards = 28 prompts) **and** `content/corpus/stories/g4.st.fourteen-live/art.json` (resolves via `resolveNovelArt`; procedural/absent-fallback until Koki generates the PNGs into `apps/web/public/art/g4/`). The five crew visual-locks are the G3 locks one year older — continuity is the identity; do not redesign. `art.json` `endCard` is the neutral `end_season`; the three fork endings (`end_live`/`end_print`/`end_desk`) are generated assets B-3 wires per-flag.
+
 ## 6 · Mechanics notes (consumed by B-3 — no engineering in this PR)
 
 Runs verbatim on `@domigo/game-trip` (Choice.sets / FlagGate / flagLines / chapter-scoped position, story-scoped flags). Copy pack (`tripCopyFor("g4.st.fourteen-live")`): journal → **the story file**; "+N lines" → **"+N Takes"**; day stamp → **"Segment aufgenommen"**; hub noun Day → **Segment**; board = the season-2 rundown. The flag-scope guard (B-0) must land before any release (LfW `w04.*` saves must not leak). VS-15 validates the 12-combo → 3-cluster matrix; the 3-way F3 is the reason VS-15 enumerates per-choice flags, not binary pairs.

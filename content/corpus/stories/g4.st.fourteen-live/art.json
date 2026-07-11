@@ -1,0 +1,51 @@
+{
+  "schema": "story-art@1",
+  "storyId": "g4.st.fourteen-live",
+  "base": "/art/g4",
+  "cover": "cover_title",
+  "endCard": "end_season",
+  "chapters": {
+    "g4.st.fourteen-live.ch01": {
+      "card": "card_ch01"
+    },
+    "g4.st.fourteen-live.ch02": {
+      "card": "card_ch02"
+    },
+    "g4.st.fourteen-live.ch03": {
+      "card": "card_ch03"
+    },
+    "g4.st.fourteen-live.ch04": {
+      "card": "card_ch04"
+    },
+    "g4.st.fourteen-live.ch05": {
+      "card": "card_ch05"
+    },
+    "g4.st.fourteen-live.ch06": {
+      "card": "card_ch06"
+    },
+    "g4.st.fourteen-live.ch07": {
+      "card": "card_ch07"
+    },
+    "g4.st.fourteen-live.ch08": {
+      "card": "card_ch08"
+    },
+    "g4.st.fourteen-live.ch09": {
+      "card": "card_ch09"
+    },
+    "g4.st.fourteen-live.ch10": {
+      "card": "card_ch10"
+    },
+    "g4.st.fourteen-live.ch11": {
+      "card": "card_ch11"
+    },
+    "g4.st.fourteen-live.ch12": {
+      "card": "card_ch12"
+    },
+    "g4.st.fourteen-live.ch13": {
+      "card": "card_ch13"
+    }
+  },
+  "portraits": {},
+  "beats": {},
+  "clues": {}
+}
