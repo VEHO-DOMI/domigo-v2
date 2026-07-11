@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DomiGo v2 — G1 Image Library · All 15 Zones</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', system-ui, sans-serif; background: #f0f2f5; color: #14261a; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #0f3d24, #14261a); color: white; padding: 1.6rem 2rem; text-align: center; position: sticky; top: 0; z-index: 100; }
+.header h1 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; }
+.header p { font-size: 0.78rem; opacity: 0.82; margin-top: 0.3rem; }
+.nav { display: flex; gap: 0; overflow-x: auto; background: #16653a; padding: 0; position: sticky; top: 74px; z-index: 99; }
+.nav button { flex-shrink: 0; padding: 0.6rem 0.8rem; background: none; border: none; color: rgba(255,255,255,0.62); font-size: 0.72rem; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.15s; white-space: nowrap; }
+.nav button:hover { color: white; background: rgba(255,255,255,0.06); }
+.nav button.active { color: #7dffb0; border-bottom-color: #22c55e; background: rgba(255,255,255,0.09); }
+.section { display: none; padding: 1rem; max-width: 820px; margin: 0 auto; }
+.section.active { display: block; }
+.section h2 { font-size: 1.18rem; font-weight: 800; color: #14261a; margin: 1.5rem 0 0.5rem; padding-bottom: 0.3rem; border-bottom: 2px solid #dbe4dc; }
+.section h3 { font-size: 0.95rem; font-weight: 700; color: #0f3d24; margin: 1.2rem 0 0.4rem; }
+.section p { font-size: 0.85rem; }
+.prompt-card { background: white; border: 1.5px solid #dbe4dc; border-radius: 12px; padding: 1rem 1rem 0.9rem; margin: 0.8rem 0; position: relative; }
+.prompt-card .placement { display: inline-block; font-size: 0.62rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.6px; }
+.placement.tile { background: #E8F5E9; color: #2E7D32; }
+.placement.prop { background: #FFF3E0; color: #B45309; }
+.placement.optional { background: #ECEFF1; color: #607D8B; }
+.prompt-card .title { font-weight: 700; font-size: 0.9rem; color: #14261a; margin-bottom: 0.15rem; }
+.prompt-card .file { font-size: 0.72rem; color: #16653a; font-family: 'SF Mono','Fira Code',monospace; margin-bottom: 0.55rem; }
+.prompt-card .file .dims { color: #90a49a; }
+.prompt-text { background: #f7faf8; border: 1px solid #e0e8e2; border-radius: 8px; padding: 0.8rem; font-size: 0.76rem; line-height: 1.7; color: #2a3a30; white-space: pre-wrap; word-wrap: break-word; max-height: 320px; overflow-y: auto; }
+.copy-btn { position: absolute; top: 0.6rem; right: 0.6rem; background: #14261a; color: white; border: none; padding: 0.4rem 0.85rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700; cursor: pointer; transition: all 0.15s; }
+.copy-btn:hover { background: #22c55e; }
+.copy-btn.copied { background: #2E7D32; }
+.info-box { background: #e9f5ee; border-left: 4px solid #22c55e; padding: 0.8rem 1rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; font-size: 0.8rem; }
+.info-box.blue { background: #E3F2FD; border-color: #2196F3; }
+.info-box.red { background: #FFEBEE; border-color: #e53935; }
+.info-box.amber { background: #FFF8E1; border-color: #FF9800; }
+.spec { background: #f5f7f5; border: 1px solid #e0e8e2; border-radius: 8px; padding: 0.8rem; font-family: 'SF Mono','Fira Code',monospace; font-size: 0.7rem; line-height: 1.55; overflow-x: auto; white-space: pre-wrap; margin: 0.5rem 0; }
+.swatches { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.5rem 0 0.8rem; }
+.sw { display: flex; flex-direction: column; align-items: center; width: 62px; }
+.sw .chip { width: 46px; height: 34px; border-radius: 5px; border: 1px solid rgba(0,0,0,0.15); }
+.sw .hex { font-size: 0.58rem; font-family: 'SF Mono',monospace; color: #607D8B; margin-top: 2px; }
+.zone-header { background: linear-gradient(135deg, #e9f5ee, #f3faf5); border: 2px solid #a7d8bd; border-radius: 12px; padding: 0.9rem 1rem; margin: 1rem 0; text-align: center; }
+.zone-header .ch-name { font-size: 1.05rem; font-weight: 800; color: #14261a; }
+.zone-header .ch-sub { font-size: 0.75rem; color: #5a7566; margin-top: 0.15rem; }
+code { background: #e9f5ee; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono',monospace; }
+footer { text-align: center; padding: 2rem; color: #90a49a; font-size: 0.72rem; }
+a { color: #16653a; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>DomiGo v2 — Grade 1 "The Lost Pages" · Image Library, All 15 Zones</h1>
+  <p>GBA / Pokémon FireRed–LeafGreen pixel-art tilesets · one tab per zone · tap any prompt to copy</p>
+</div>
+
+<div class="nav" id="nav"></div>
+<div id="content"></div>
+<footer>DomiGo v2 · G1 Overworld Art · all zones z02–z15 · 2026 — z01 School lives in G1_SCHOOL_IMAGE_PROMPTS.html (do that one FIRST)</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+//  MASTER STYLE PREFIX — identical to the School library, prepended to EVERY prompt
+// ═══════════════════════════════════════════════════════════════════════════
+const STYLE = `16-bit GBA top-down RPG pixel art, in the exact spirit of Pokémon FireRed & LeafGreen — overworld tiles and overworld character sprites. Flat cel-shaded pixel art: each material uses a 2–3 step tonal ramp (base + highlight + shadow), a clean 1px near-black outline around discrete objects and characters, and hard-edged shading (dithering allowed, NO smooth gradients, NO anti-aliasing, NO blur, NO glow bloom, NO drop-shadow filters). Straight top-down 3/4 overhead camera with a slight forward tilt — you read the top surface of things plus a short sliver of their front face, exactly like a FireRed interior. Bright, warm, friendly early-primary-school mood. Crisp square pixels only. ABSOLUTELY NO text, letters, numbers, logos, signatures, watermarks, or UI. Use ONLY the zone palette given below — do not invent new hues.`;
+
+// Shared constants injected into every zone palette block
+const SHARED = `Outline/ink #23252b. Encounter sparkle (shared, same in every zone): #22c55e star, #b8f7cf core, #15803d ring, #ffffff / #fff4d6 glints. Contact shadow: pure black at ~20% opacity, hard oval, no blur.`;
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  ZONE DATA — palettes are copied 1:1 from packages/art-gen/src/theme.ts
+//  (the procedural fallback uses the SAME hexes, so images and fallback
+//  always sit in one family). kind → filename is what the engine loads.
+// ═══════════════════════════════════════════════════════════════════════════
+const ZONES = [
+ { z:'z02', dir:'zoo', gen:'zoo-room', en:'At the Zoo', de:'Im Zoo', unit:2,
+   mood:'A sunny zoo garden — grass paths, hedge walls, animal-pen greens. Pixel the book-cat joins here.',
+   pal:{ 'Grass floor':['#a7c98a','#8fb56f'], 'Hedge wall':['#3f6b3a','#2c4d29'], 'Accent':['#c7e0b0'] },
+   cards:[
+    ['Tile','tile','Zoo grass path','floor.png','[SEAMLESS GROUND TILE] A single tile of short sunny zoo-lawn grass seen straight top-down: base green #a7c98a with sparse darker blade speckles #8fb56f and 2–3 tiny lighter tufts #c7e0b0. It MUST tile invisibly in a grid — the speckle pattern wraps at all four edges, even brightness corner-to-corner, NO centred feature, NO vignette, NO outline, NO shadow. Fully opaque, fills the frame edge to edge.'],
+    ['Tile','tile','Hedge wall block','wall.png','[SEAMLESS WALL TILE] A single dense zoo hedge block that tiles seamlessly BOTH horizontally and vertically to form the zone border: rounded dark-green leaf clumps (#3f6b3a base, #c7e0b0 lit tips, #2c4d29 deep shadow) with a 1px darker base line #2c4d29 where it meets the grass. Chunky and solid like a FireRed hedge. Repeatable in every direction: no centred bush, even tone, no vignette. Opaque, full-bleed.'],
+    ['Prop','prop','Jungle plant (kind: plant)','plant.png','[OBJECT SPRITE] A lush zoo plant: a terracotta pot with a burst of long tropical leaves — lit upper-left lobes #c7e0b0, mid #a7c98a, shaded under-leaves #2c4d29. One object, centred, on a 100% transparent background, nothing touching the frame edges, small hard black contact-shadow oval at ~20% opacity beneath, 1px dark outline. FireRed top-down 3/4.'],
+   ]},
+ { z:'z03', dir:'ship', gen:'ship-room', en:'Pirates', de:'Piraten', unit:3,
+   mood:'A pirate ship deck — warm planks, sea-grey rails, barrels of supplies.',
+   pal:{ 'Deck floor':['#a9763f','#8a5d2e'], 'Hull wall':['#4b5b6b','#2f3a45'], 'Pier path':['#7c8a99'], 'Barrel wood':['#7a4a1e'] },
+   cards:[
+    ['Tile','tile','Ship deck planks','floor.png','[SEAMLESS GROUND TILE] A single tile of a pirate ship\'s wooden deck seen straight top-down: long warm planks running horizontally, base #a9763f, grain speckle and shadowed seams #8a5d2e, a 1px darker joint line between planks. Tiles invisibly in a grid — plank pattern wraps at all four edges, even brightness, NO centred knot, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Ship hull / rail wall','wall.png','[SEAMLESS WALL TILE] A single block of the ship\'s side that tiles seamlessly BOTH axes as the zone border: weathered blue-grey hull timber #4b5b6b with a lit top rail edge #7c8a99 and deep shadow lines #2f3a45, a 1px dark base line where it meets the deck. Sturdy and chunky, FireRed camera. No centred feature, even tone, opaque, full-bleed.'],
+    ['Prop','prop','Pirate barrel (kind: barrel)','barrel.png','[OBJECT SPRITE] A round wooden pirate barrel seen top-down 3/4: warm stave wood #7a4a1e with lit stave tops #a9763f, two darker metal-grey hoops #2f3a45, an open lid rim showing a sliver of interior shadow. One object, centred, transparent background, edges clear, small hard contact-shadow oval, 1px dark outline.'],
+   ]},
+ { z:'z04', dir:'feelings', gen:'feelings-room', en:'Feelings', de:'Gefühle', unit:4,
+   mood:'A calm, cosy feelings room — soft rose and sand tones, a place to sit and talk.',
+   pal:{ 'Floor':['#efd9c7','#e3c4ad'], 'Wall':['#b08968','#7f5f47'], 'Warm props':['#e8a0a0','#f3d9d9'] },
+   cards:[
+    ['Tile','tile','Soft sand floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a warm sand-rose floor (soft cork or warm linoleum) straight top-down: base #efd9c7 with gentle mottled speckle #e3c4ad, very low contrast, calm and quiet. Tiles invisibly — speckle wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Warm plaster wall','wall.png','[SEAMLESS WALL TILE] A single warm clay-brown wall block tiling seamlessly BOTH axes: soft plaster #b08968 with a lit top lip #efd9c7 and deep base shadow #7f5f47, a 1px darker line where it meets the floor. Cosy and calm, FireRed camera. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','Round calm rug (kind: rug)','rug.png','[GROUND OVERLAY] A soft round sitting-circle rug laid flat on the floor, straight top-down: rose pink #e8a0a0 with a paler woven border ring #f3d9d9 and a simple calm concentric pattern, low contrast so it reads as "sit here". This sits ON the floor: fills most of the frame as a flat circle, slight 1px darker edge, NO free-floating shadow, transparent background outside the circle.'],
+   ]},
+ { z:'z05', dir:'band', gen:'band-room', en:'Our Band', de:'Unsere Band', unit:5,
+   mood:'A music room dimmed for band practice — indigo floor, purple walls, a warm-lit stage.',
+   pal:{ 'Floor':['#3f3f5e','#34344e'], 'Wall':['#5b4b8a','#3a2f5a'], 'Stage light':['#f0c040'], 'Stage wood':['#8a6d3a'] },
+   cards:[
+    ['Tile','tile','Indigo music-room floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a dark indigo music-room floor straight top-down: base #3f3f5e with subtle darker speckle #34344e, quiet and even so the warm stage pops. Tiles invisibly — pattern wraps at all edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Purple wall block','wall.png','[SEAMLESS WALL TILE] A single deep-purple wall block tiling seamlessly BOTH axes: velvet purple #5b4b8a with a thin lit top lip and heavy base shadow #3a2f5a, 1px dark floor line. Moody but friendly, FireRed camera. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','Stage platform (kind: stage)','stage.png','[OBJECT SPRITE — platform block] One block of a low wooden stage platform seen top-down 3/4: warm honey top boards #8a6d3a with a lit gold edge #f0c040 along the front lip and a short shadowed front face #3a2f5a. Designed so several copies in a row read as one stage. Neat square silhouette with 1px outline, transparent background, no free shadow.'],
+    ['Prop','prop','Floating music note (kind: note)','note.png','[FX SPRITE] A cheerful floating musical note in warm gold #f0c040 with a paler lit edge and a 1px dark outline, hovering with two tiny white glints beside it and a small hard contact-shadow oval on the floor far beneath. Occupies the centre ~30px. Transparent background, edges clear. NO letters — just the note glyph as a drawn object.'],
+   ]},
+ { z:'z06', dir:'detective', gen:'detective-room', en:'Detective', de:'Detektiv', unit:6,
+   mood:'The detective office — dim amber lamplight, dark walls, the pinboard where the mystery turns.',
+   pal:{ 'Floor':['#5e5240','#4d4334'], 'Wall':['#3a3340','#262130'], 'Lamplight':['#7a6c52'], 'Desk wood':['#7a5a32'], 'Dark':['#1c1c22'] },
+   cards:[
+    ['Tile','tile','Dim office floorboards','floor.png','[SEAMLESS GROUND TILE] A single tile of old office floorboards in dim lamplight, straight top-down: umber planks #5e5240 with darker seams and grain #4d4334, a faint warm sheen #7a6c52 on a few plank tops. Tiles invisibly — wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Dark office wall','wall.png','[SEAMLESS WALL TILE] A single dark plum-grey office wall block tiling seamlessly BOTH axes: #3a3340 face with a faint lamplit upper edge #7a6c52 and deep base shadow #262130, 1px dark floor line. Mysterious but never scary — FireRed camera, kid-friendly. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','Evidence pinboard (kind: board)','board.png','[OBJECT SPRITE — wall-mounted] One segment of a detective\'s cork pinboard mounted on the wall: warm cork #7a5a32 in a dark wood frame #1c1c22, pinned with small BLANK paper notes (empty rectangles — NO letters, NO writing) connected by a piece of red string. Left and right edges are frameless cork so segments butt into one long board. Tiles seamlessly left↔right, opaque, full-bleed.'],
+    ['Prop','prop','Detective desk (kind: accent2)','desk.png','[OBJECT SPRITE] A dark wooden detective desk seen top-down 3/4: desktop #7a5a32 with a lit edge #7a6c52, a small brass desk lamp casting a warm pool, a closed folder and a magnifying glass resting on top (NO text anywhere). One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
+   ]},
+ { z:'z07', dir:'kitchen', gen:'kitchen-room', en:'Noodles', de:'Nudeln', unit:7,
+   mood:'Chef Luca\'s kitchen — cream tiles, terracotta walls, a counter and a crate of vegetables.',
+   pal:{ 'Floor':['#e6ddc8','#d8cbb0'], 'Wall':['#b5764a','#7d5230'], 'Counter wood':['#8a5a3a'], 'Warm':['#e0a030'] },
+   cards:[
+    ['Tile','tile','Cream kitchen tiles','floor.png','[SEAMLESS GROUND TILE] A single tile of a cream kitchen floor straight top-down: large square ceramic tiles #e6ddc8 with 1px grout lines #d8cbb0 in a simple grid that wraps perfectly at all four edges. Clean and bright, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Terracotta kitchen wall','wall.png','[SEAMLESS WALL TILE] A single warm terracotta wall block tiling seamlessly BOTH axes: #b5764a face with a lit top lip #e6ddc8 and base shadow #7d5230, 1px dark floor line. Cosy trattoria warmth, FireRed camera. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','Kitchen counter (kind: stage)','stage.png','[OBJECT SPRITE — platform block] One block of a kitchen counter seen top-down 3/4: pale worktop #e6ddc8 with a lit edge, warm wood cabinet front #8a5a3a below, a wooden spoon and a small bowl resting on top (NO text). Several copies in a row read as one counter. Neat square silhouette, 1px outline, transparent background, no free shadow.'],
+    ['Prop','prop','Vegetable crate (kind: barrel)','barrel.png','[OBJECT SPRITE] An open wooden crate of fresh vegetables top-down 3/4: slatted wood #8a5a3a with lit edges, heaped with round tomatoes #e0a030 tinted red-orange, a green leaf or two. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
+   ]},
+ { z:'z08', dir:'wardrobe', gen:'wardrobe-room', en:'Clothes', de:'Kleidung', unit:8,
+   mood:'The wardrobe room — lilac and rose, tall wardrobes and a laundry basket. The jacket beat happens here.',
+   pal:{ 'Floor':['#efe2ef','#e2cfe2'], 'Wall':['#b483b4','#7d567d'], 'Wardrobe wood':['#9a6b9a','#6b4f6b'], 'Warm pink':['#e89bc4'] },
+   cards:[
+    ['Tile','tile','Lilac floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a pale lilac floor straight top-down: soft base #efe2ef with gentle mottle #e2cfe2, calm and clean. Tiles invisibly — wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Rose-purple wall','wall.png','[SEAMLESS WALL TILE] A single rose-purple wall block tiling seamlessly BOTH axes: #b483b4 face, lit top lip #efe2ef, base shadow #7d567d, 1px dark floor line. Friendly boutique feel, FireRed camera. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','Tall wardrobe (kind: board)','board.png','[OBJECT SPRITE — wall-mounted] One segment of a tall wooden wardrobe standing against the wall: plum-wood doors #9a6b9a with carved panel lines #6b4f6b, small round handles, a sliver of lit top #efe2ef. Left and right edges are flush door-wood so segments butt into one long wardrobe wall. Tiles seamlessly left↔right, opaque, full-bleed, NO text.'],
+    ['Prop','prop','Laundry basket (kind: barrel)','barrel.png','[OBJECT SPRITE] A round woven laundry basket top-down 3/4: plum wicker weave #9a6b9a with lit strands #e2cfe2, a soft heap of folded clothes on top in rose pink #e89bc4. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
+   ]},
+ { z:'z09', dir:'pet', gen:'pet-room', en:'Unusual Pets', de:'Ungewöhnliche Haustiere', unit:9,
+   mood:'The pet room — sage greens, leafy corners, crates with curious animals.',
+   pal:{ 'Floor':['#d6dec0','#c4cfa8'], 'Wall':['#7d9a5a','#566b3a'], 'Leaf':['#3a8a3a'], 'Wood':['#8a6d3a'] },
+   cards:[
+    ['Tile','tile','Sage floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a sage-green floor straight top-down: base #d6dec0 with soft speckle #c4cfa8, fresh and airy. Tiles invisibly — wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Leaf-green wall','wall.png','[SEAMLESS WALL TILE] A single leaf-green wall block tiling seamlessly BOTH axes: #7d9a5a face, lit top lip #d6dec0, base shadow #566b3a, 1px dark floor line. FireRed camera, friendly vet-room feel. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','Leafy plant (kind: plant)','plant.png','[OBJECT SPRITE] A big-leafed houseplant for the pet room: warm wood planter #8a6d3a, broad rounded leaves in vivid green #3a8a3a with lit tips #d6dec0 and shaded underleaves #566b3a. One object, centred, transparent background, edges clear, small hard contact-shadow oval, 1px dark outline.'],
+    ['Prop','prop','Pet crate (kind: barrel)','barrel.png','[OBJECT SPRITE] A cosy wooden pet crate top-down 3/4: slatted warm wood #8a6d3a with a round dark entry hole on the front face, a folded blanket sliver #d6dec0 visible inside, straw wisps at the base. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline. No animal inside (NPCs are separate sprites).'],
+   ]},
+ { z:'z10', dir:'shop', gen:'shop-room', en:'In a Shop', de:'Im Geschäft', unit:10,
+   mood:'A bright little supermarket — cool blue-white floor, blue walls, counter and goods crates.',
+   pal:{ 'Floor':['#dfe7f0','#cdd8e6'], 'Wall':['#5a8ac0','#3a5e8a'], 'Counter wood':['#a07840'], 'Warm':['#e0b040'] },
+   cards:[
+    ['Tile','tile','Blue-white shop floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a clean shop floor straight top-down: pale blue-white linoleum squares #dfe7f0 with 1px grout lines #cdd8e6 in a grid that wraps at all four edges. Bright retail freshness, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Shop-blue wall','wall.png','[SEAMLESS WALL TILE] A single friendly shop-blue wall block tiling seamlessly BOTH axes: #5a8ac0 face, lit top lip #dfe7f0, base shadow #3a5e8a, 1px dark floor line. FireRed Poké-Mart energy. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','Shop counter (kind: stage)','stage.png','[OBJECT SPRITE — platform block] One block of a shop checkout counter top-down 3/4: pale top #dfe7f0 with lit edge, warm wood front #a07840, a small basket of golden goods #e0b040 on top (NO text, NO price tags). Several copies in a row read as one counter. Neat square silhouette, 1px outline, transparent background, no free shadow.'],
+    ['Prop','prop','Goods crate (kind: barrel)','barrel.png','[OBJECT SPRITE] A stacked pair of shop crates top-down 3/4: light wood #a07840 with lit slats, the top crate heaped with round golden fruit #e0b040 with tiny highlight dots. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
+   ]},
+ { z:'z11', dir:'clock', gen:'clock-room', en:"What's the Time", de:'Wie spät ist es', unit:11,
+   mood:'The clock room — steel-blue calm, a great wall clock, a round rug like a clock face.',
+   pal:{ 'Floor':['#cfd6e8','#bcc4dc'], 'Wall':['#5a6a9a','#3a4570'], 'Wood':['#9a7a4a'], 'Deep':['#2a2f4a'], 'Gold':['#e0c060'] },
+   cards:[
+    ['Tile','tile','Steel-blue floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a cool steel-blue floor straight top-down: base #cfd6e8 with soft speckle #bcc4dc, quiet and precise. Tiles invisibly — wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Slate-blue wall','wall.png','[SEAMLESS WALL TILE] A single slate-blue wall block tiling seamlessly BOTH axes: #5a6a9a face, lit top lip #cfd6e8, base shadow #3a4570, 1px dark floor line. Calm clockmaker\'s workshop, FireRed camera. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','Great wall clock (kind: board)','board.png','[OBJECT SPRITE — wall-mounted] One segment of a grand wall-clock cabinet against the wall: dark wood case #2a2f4a with warm wood trim #9a7a4a and a large round pale clock face #cfd6e8 with two gold hands #e0c060 — NO numbers, NO numerals, just small gold tick-marks. Left and right edges are flush cabinet wood so segments butt together. Tiles seamlessly left↔right, opaque, full-bleed.'],
+    ['Prop','prop','Clock-face rug (kind: rug)','rug.png','[GROUND OVERLAY] A round rug woven like a soft clock face, laid flat straight top-down: pale blue field #cfd6e8, a gold border ring #e0c060, twelve small woven tick-marks (NO numerals), low contrast. Sits ON the floor: flat circle filling most of the frame, slight 1px darker edge, NO free shadow, transparent outside the circle.'],
+   ]},
+ { z:'z12', dir:'party', gen:'party-room', en:'Birthday Cake', de:'Geburtstagskuchen', unit:12,
+   mood:'The party room — pink and gold, a gift table and stacked presents.',
+   pal:{ 'Floor':['#f5e0e8','#ecc8d8'], 'Wall':['#d86a9a','#a03a6a'], 'Wood':['#c08040'], 'Gold':['#f0c040'], 'Deep':['#7a3a5a'] },
+   cards:[
+    ['Tile','tile','Pink party floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a soft pink party floor straight top-down: base #f5e0e8 with gentle confetti-fine speckle #ecc8d8 (tiny dots, evenly scattered, wrapping at all four edges). Even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Rose party wall','wall.png','[SEAMLESS WALL TILE] A single rose-pink wall block tiling seamlessly BOTH axes: #d86a9a face with a scalloped lit bunting-like top lip #f5e0e8 (the scallop pattern wraps left↔right), base shadow #a03a6a, 1px dark floor line. Joyful, FireRed camera, NO text. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','Gift table (kind: stage)','stage.png','[OBJECT SPRITE — platform block] One block of a party gift table top-down 3/4: warm wood top #c08040 with a lit gold edge #f0c040, a pale tablecloth sliver on the front face #f5e0e8, a small round frosted cake with one candle on top (NO text, NO letters on the cake). Several copies in a row read as one long table. Neat square silhouette, 1px outline, transparent background, no free shadow.'],
+    ['Prop','prop','Present stack (kind: barrel)','barrel.png','[OBJECT SPRITE] A cheerful stack of two wrapped presents top-down 3/4: a deep plum box #7a3a5a with a gold ribbon #f0c040 under a smaller pink box #ecc8d8 with a white bow. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
+   ]},
+ { z:'z13', dir:'emergency', gen:'emergency-room', en:'Help!', de:'Hilfe!', unit:13,
+   mood:'The help station — warm sand floor, brick-red walls, first-aid panel and supply crate. Urgent but safe.',
+   pal:{ 'Floor':['#e8d8c8','#d8c4b0'], 'Wall':['#c04a3a','#8a2a1a'], 'Wood':['#a05030'], 'Dark':['#3a2a2a'], 'Metal':['#d0d0d8'] },
+   cards:[
+    ['Tile','tile','Sand station floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a warm sand-beige station floor straight top-down: base #e8d8c8 with soft speckle #d8c4b0, clean and practical. Tiles invisibly — wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Brick-red wall','wall.png','[SEAMLESS WALL TILE] A single brick-red wall block tiling seamlessly BOTH axes: #c04a3a face with a subtle brick-course pattern (courses wrap at every edge), lit top lip #e8d8c8, base shadow #8a2a1a, 1px dark floor line. Confident fire-station energy — urgent but friendly, never alarming. FireRed camera. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','First-aid wall panel (kind: board)','board.png','[OBJECT SPRITE — wall-mounted] One segment of a first-aid supply panel on the wall: a pale metal cabinet face #d0d0d8 in a dark frame #3a2a2a with one bold white square bearing a simple thick cross symbol (a plus shape — NOT text, NO letters), small closed compartments. Left and right edges flush so segments butt together. Tiles seamlessly left↔right, opaque, full-bleed.'],
+    ['Prop','prop','Supply crate (kind: barrel)','barrel.png','[OBJECT SPRITE] A sturdy emergency supply crate top-down 3/4: warm wood #a05030 with metal corner braces #d0d0d8, a coiled pale rope resting on the lid. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
+   ]},
+ { z:'z14', dir:'disco', gen:'disco-room', en:'Favourite', de:'Lieblings...', unit:14,
+   mood:'The disco — deep night-purple floor, neon pink and turquoise, a DJ stage, floating notes.',
+   pal:{ 'Floor':['#2a2440','#3a3458'], 'Wall':['#5a3a8a','#2a1a4a'], 'Neon pink':['#e85aa8'], 'Neon cyan':['#5ad0e0','#40e0d0'], 'Wood':['#7a4a9a'] },
+   cards:[
+    ['Tile','tile','Night dance floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a dark disco dance floor straight top-down: deep night-purple squares #2a2440 and #3a3458 in a checker that wraps perfectly at all four edges, with the faintest neon edge glints (#e85aa8 / #40e0d0) on a few square corners — tiny, hard-edged, evenly scattered so the pattern still tiles invisibly. Even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Neon-violet wall','wall.png','[SEAMLESS WALL TILE] A single deep violet wall block tiling seamlessly BOTH axes: #5a3a8a face with a thin neon-cyan lit strip #40e0d0 running along the top edge (wraps left↔right), heavy base shadow #2a1a4a, 1px dark floor line. Fun school-disco energy, FireRed camera. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','DJ stage (kind: stage)','stage.png','[OBJECT SPRITE — platform block] One block of a glowing DJ stage top-down 3/4: dark top #2a1a4a with a hard-edged neon-pink front lip #e85aa8 and a cyan accent line #40e0d0, a small turntable disc shape on top (NO text). Several copies in a row read as one stage. Neat square silhouette, 1px outline, transparent background, no free shadow.'],
+    ['Prop','prop','Neon note (kind: note)','note.png','[FX SPRITE] A floating musical note glowing neon pink #e85aa8 with a hard-edged pale core and a 1px dark outline, two tiny cyan glints #40e0d0 beside it, hovering with a small hard contact-shadow oval far beneath. Centre ~30px, transparent background, edges clear.'],
+    ['Prop','prop','Speaker box (kind: barrel)','barrel.png','[OBJECT SPRITE] A chunky disco speaker box top-down 3/4: deep violet cabinet #5a3a8a with a dark front face #2a1a4a, one big round woofer ring and one small tweeter circle picked out in cyan #5ad0e0, a neon-pink corner accent #e85aa8. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
+   ]},
+ { z:'z15', dir:'library', gen:'library-room', en:'Going to Do?', de:'Was machst du?', unit:15,
+   mood:'The great library — warm paper cream, oak shelves, the reading rug. The finale: Jona\'s zone.',
+   pal:{ 'Floor':['#e8dcc0','#d8c8a8'], 'Wall':['#a07840','#6a4a20'], 'Shelf wood':['#8a5a2a'], 'Deep':['#3a2a1a'], 'Gold':['#e0b050'] },
+   cards:[
+    ['Tile','tile','Library parquet','floor.png','[SEAMLESS GROUND TILE] A single tile of warm library parquet straight top-down: pale honey herringbone planks #e8dcc0 with seams and grain #d8c8a8, soft and bookish. The herringbone wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
+    ['Tile','tile','Oak library wall','wall.png','[SEAMLESS WALL TILE] A single oak-panelled library wall block tiling seamlessly BOTH axes: warm oak #a07840 with vertical panel lines #6a4a20, a lit top lip #e8dcc0, base shadow #6a4a20, 1px dark floor line. Grand but warm, FireRed camera. No centred object, even tone, opaque, full-bleed.'],
+    ['Prop','prop','Bookshelf wall (kind: board)','board.png','[OBJECT SPRITE — wall-mounted] One segment of a tall library bookshelf against the wall: deep oak case #8a5a2a with two shelf rows of colourful book spines — simple blocks of muted palette colour (#e0b050, #a07840, #d8c8a8, #3a2a1a) with NO text, NO letters on any spine — and a lit top edge. Left and right edges are flush shelf-wood so segments butt into one long wall of books. Tiles seamlessly left↔right, opaque, full-bleed.'],
+    ['Prop','prop','Reading rug (kind: rug)','rug.png','[GROUND OVERLAY] A rectangular reading rug laid flat straight top-down: warm gold field #e0b050 with a woven oak-brown border #8a5a2a and a simple calm diamond pattern, low contrast — it reads as "sit and read here". Sits ON the floor: full-bleed flat rectangle that can tile in a 2×2 block, slight 1px darker edge, NO free shadow.'],
+   ]},
+];
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  BUILDERS
+// ═══════════════════════════════════════════════════════════════════════════
+let counter = 0;
+function palBlock(zone){
+  const lines = Object.entries(zone.pal).map(([k,v]) => k + ': ' + v.join(', ')).join('. ');
+  return `[ZONE PALETTE — use only these] ${lines}. ${SHARED}`;
+}
+function card(zone, placement, cls, title, file, body){
+  const full = STYLE + '\n\n' + palBlock(zone) + '\n\n' + body;
+  const id = 'p' + (counter++);
+  return `<div class="prompt-card">
+    <button class="copy-btn" onclick="copyPrompt('${id}', this)">Copy</button>
+    <div class="placement ${cls}">${placement}</div>
+    <div class="title">${title}</div>
+    <div class="file">apps/web/public/art/g1/${zone.dir}/${file} <span class="dims">· 48×48 shipping (author at 512×512)</span></div>
+    <div class="prompt-text" id="${id}">${full}</div>
+  </div>`;
+}
+function sw(hex){ return `<div class="sw"><div class="chip" style="background:${hex}"></div><div class="hex">${hex}</div></div>`; }
+
+function buildStartHere(){
+  return `<div class="section active" id="sec-start">
+    <h2>▶ START HERE — read this once, then work zone by zone</h2>
+    <p>This library holds the image-generation prompts for <strong>all remaining Grade-1 zones (z02–z15)</strong> of "The Lost Pages". Zone z01 (School) has its own file — <code>docs/art/G1_SCHOOL_IMAGE_PROMPTS.html</code> — and it is the <strong>backbone: do School first</strong>, because its <code>_style_key.png</code> is the reference image you feed into every generation here.</p>
+
+    <div class="info-box blue"><strong>The order of work (signpost):</strong>
+      <br><strong>1.</strong> Finish the School zone from the other file (style key → tiles → props → Finn).
+      <br><strong>2.</strong> Pick any zone tab above. Each zone needs only <strong>3–5 images</strong> (floor, wall, and its signature props) — everything else (sparkle, Finn, Pixel, player) is shared or on hold.
+      <br><strong>3.</strong> Drop finished PNGs into the iCloud folder <code>DomiGo v2 Art Prompts/generated-images/g1-&lt;zone&gt;/</code> (e.g. <code>g1-zoo/</code>).
+      <br><strong>4.</strong> A Claude session runs the sync + QA tools and the images appear in the game — the engine falls back to the procedural art for anything you haven't generated yet, so partial zones always still run.</div>
+
+    <div class="info-box red"><strong>Three non-negotiables (identical to the School file — they break the engine if ignored):</strong>
+      <br>1. <strong>NO text</strong> anywhere in any image — no letters, numbers, logos.
+      <br>2. <strong>Floor &amp; wall tiles must be SEAMLESS</strong> — the same tile repeats across a grid: no centred motif, no vignette, even brightness corner-to-corner.
+      <br>3. <strong>Props sit on a FULLY TRANSPARENT background</strong> — only a small hard contact-shadow oval may touch the ground.</div>
+
+    <div class="info-box amber"><strong>Shared assets — generate ONCE, reuse everywhere.</strong> The green encounter sparkle ✦, Finn, and Pixel are the <em>same</em> images in every zone (that sameness is what makes 15 rooms feel like one game). Generate them once via the School file, then the sync tool copies the approved PNGs into each zone folder. Player sprites stay ⏸ ON HOLD (per-student procedural avatars are a feature — LOOK-0).</div>
+
+    <h3>What each zone needs (the whole checklist)</h3>
+    <div class="spec">REQUIRED per zone   floor.png · wall.png · the zone's signature props (listed on its tab)
+SHARED (copy in)    sparkle.png · finn_down.png · pixel_down.png (from School)
+ON HOLD             player_* (LOOK-0 — do not generate)
+NAMING RULE         file stem = engine tile-kind (board/desk/plant/barrel/rug/stage/note);
+                    desk.png → engine kind "accent2", sparkle.png → "encounter" (aliased automatically)</div>
+
+    <h3>Why the palettes are locked</h3>
+    <p>Each zone tab shows its palette as swatches. These hexes are copied <strong>1:1 from the game's procedural renderer</strong> (<code>packages/art-gen/src/theme.ts</code>) — so a zone where you've generated only the floor still looks coherent: your floor and the procedural wall share the exact same colours. That's also why every prompt ends with "use ONLY the zone palette".</p>
+  </div>`;
+}
+
+function buildZone(zone){
+  let h = `<div class="section" id="sec-${zone.z}">
+    <div class="zone-header"><div class="ch-name">${zone.z} · ${zone.en} — ${zone.de}</div><div class="ch-sub">unit ${zone.unit} · generator <code>${zone.gen}</code> · drop folder <code>g1-${zone.dir}/</code></div></div>
+    <p><em>${zone.mood}</em></p>
+    <div class="swatches">${Object.values(zone.pal).flat().map(sw).join('')}</div>
+    <div class="info-box">Required for this zone: <strong>${zone.cards.map(c=>c[3]).join(' · ')}</strong> — plus the shared sparkle/Finn copies (see Start Here). Feed <code>_style_key.png</code> from the School zone as a reference image with every prompt.</div>`;
+  for (const [placement, cls, title, file, body] of zone.cards) h += card(zone, placement, cls, title, file, body);
+  return h + '</div>';
+}
+
+function buildPipeline(){
+  return `<div class="section" id="sec-pipeline">
+    <h2>Pipeline — from generated image to in-game tile</h2>
+    <h3>1 · Generate at 4×</h3>
+    <div class="info-box amber">Author each tile/prop at <strong>512×512</strong> as crisp hard-edged pixel art (no "creative upscale/smoothing"). The prep tool downsamples to the shipping 48px with nearest-neighbour.</div>
+    <h3>2 · Drop → sync → QA (a Claude session runs these)</h3>
+    <div class="spec"># per zone (example: zoo)
+node docs/art/sync-art.mjs --lib "…/DomiGo v2 Art Prompts/generated-images/g1-zoo" \\
+                           --dest apps/web/public/art/g1/zoo
+node docs/art/prep-art.mjs apps/web/public/art/g1/zoo   # sizes, seams, transparency QA</div>
+    <h3>3 · QA checklist (same as School)</h3>
+    <div class="spec">☐ Floor/wall: tile it 3×3 — no visible seam, no bright centre, no dark corners
+☐ Props: 1px+ fully transparent ring around the art
+☐ Palette: no colour outside the zone ramp
+☐ No text/letters/numbers anywhere
+☐ Reads at 48px (zoom the shipping PNG to 100%, not the 512px source)</div>
+    <div class="info-box"><strong>Incremental by design:</strong> the resolver ships only the stems that exist. One finished floor.png upgrades one tile; everything else keeps the procedural fallback. There is no "must finish the zone" pressure — drop, sync, see it, iterate.</div>
+  </div>`;
+}
+
+const sections = [
+  { id:'start', label:'▶ Start Here', build: buildStartHere },
+  ...ZONES.map(z => ({ id:z.z, label:`${z.z} ${z.dir}`, build: () => buildZone(z) })),
+  { id:'pipeline', label:'Pipeline', build: buildPipeline },
+];
+document.getElementById('nav').innerHTML = sections.map((s,i) =>
+  `<button data-sec="${s.id}" class="${i===0?'active':''}" onclick="showSection('${s.id}',this)">${s.label}</button>`).join('');
+document.getElementById('content').innerHTML = sections.map(s => s.build()).join('');
+
+function showSection(id, btn){
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function copyPrompt(id, btn){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied ✓'; btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1400);
+  });
+}
+</script>
+</body>
+</html>

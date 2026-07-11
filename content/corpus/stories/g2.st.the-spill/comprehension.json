@@ -1,63 +1,1161 @@
 {
-  "schema": "comprehension@1",
-  "storyId": "g2.st.the-spill",
-  "items": [
+ "schema": "comprehension@1",
+ "storyId": "g2.st.the-spill",
+ "items": [
+  {
+   "id": "g2u01.ci.the-smudge.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What does the pale smudge do?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
     {
-      "id": "g2u01.ci.the-smudge.mc.001",
-      "rev": 1,
-      "difficulty": 1,
-      "format": "multiple-choice",
-      "prompt": {
-        "text": "What does the pale smudge do?",
-        "lang": "en",
-        "blanks": 0
-      },
-      "answers": [
-        {
-          "text": "It takes a word from the blackboard.",
-          "tier": "full"
-        }
-      ],
-      "direction": null,
-      "distractors": [
-        "It writes on the desk.",
-        "It is Jona's book.",
-        "It plays with Pixel."
-      ],
-      "pairs": [],
-      "groups": [],
-      "gloss": [
-        {
-          "word": "smudge",
-          "de": "Fleck",
-          "scope": null
-        },
-        {
-          "word": "pale",
-          "de": "blass",
-          "scope": null
-        },
-        {
-          "word": "blackboard",
-          "de": "Tafel",
-          "scope": null
-        },
-        {
-          "word": "takes",
-          "de": "nimmt",
-          "scope": null
-        },
-        {
-          "word": "word",
-          "de": "Wort",
-          "scope": null
-        }
-      ],
-      "hintDe": "Die Tinte schreibt. Und der blasse Fleck...?",
-      "hintEn": null,
-      "explainDe": "Die Tinte schreibt Wörter — der blasse Fleck nimmt sie weg. Das Wort für die Pause ist verschwunden.",
-      "explainEn": null,
-      "strict": false
+     "text": "It takes a word from the blackboard.",
+     "tier": "full"
     }
-  ]
+   ],
+   "direction": null,
+   "distractors": [
+    "It writes on the desk.",
+    "It is Jona's book.",
+    "It plays with Pixel."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "smudge",
+     "de": "Fleck",
+     "scope": null
+    },
+    {
+     "word": "pale",
+     "de": "blass",
+     "scope": null
+    },
+    {
+     "word": "blackboard",
+     "de": "Tafel",
+     "scope": null
+    },
+    {
+     "word": "takes",
+     "de": "nimmt",
+     "scope": null
+    },
+    {
+     "word": "word",
+     "de": "Wort",
+     "scope": null
+    }
+   ],
+   "hintDe": "Die Tinte schreibt. Und der blasse Fleck...?",
+   "hintEn": null,
+   "explainDe": "Die Tinte schreibt Wörter — der blasse Fleck nimmt sie weg. Das Wort für die Pause ist verschwunden.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u02.ci.the-wrong-words.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What is wrong with the announcements?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "The words come out wrong.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "The loudspeaker is off.",
+    "Nobody is in the hall.",
+    "The teachers are late."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "announcements",
+     "de": "Durchsagen",
+     "scope": null
+    },
+    {
+     "word": "loudspeaker",
+     "de": "Lautsprecher",
+     "scope": null
+    },
+    {
+     "word": "wrong",
+     "de": "falsch",
+     "scope": null
+    },
+    {
+     "word": "hall",
+     "de": "Aula",
+     "scope": null
+    },
+    {
+     "word": "late",
+     "de": "zu spät",
+     "scope": null
+    },
+    {
+     "word": "come out",
+     "de": "herauskommen",
+     "scope": null
+    },
+    {
+     "word": "words",
+     "de": "Wörter",
+     "scope": null
+    },
+    {
+     "word": "off",
+     "de": "aus",
+     "scope": null
+    },
+    {
+     "word": "nobody",
+     "de": "niemand",
+     "scope": null
+    }
+   ],
+   "hintDe": "Hör auf die Durchsagen — was machen die Wörter?",
+   "hintEn": null,
+   "explainDe": "Die Wörter tauschen mitten im Satz die Plätze — die Durchsagen kommen falsch heraus. Der Lautsprecher ist an, die Lehrer sind da: Es liegt an den Wörtern selbst.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u03.ci.the-orange.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What does the smudge take from the wall?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "The orange colour.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "The paper bat.",
+    "The costumes.",
+    "The spider."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "smudge",
+     "de": "Fleck",
+     "scope": null
+    },
+    {
+     "word": "wall",
+     "de": "Wand",
+     "scope": null
+    },
+    {
+     "word": "colour",
+     "de": "Farbe",
+     "scope": null
+    },
+    {
+     "word": "paper",
+     "de": "Papier",
+     "scope": null
+    },
+    {
+     "word": "bat",
+     "de": "Fledermaus",
+     "scope": null
+    },
+    {
+     "word": "spider",
+     "de": "Spinne",
+     "scope": null
+    },
+    {
+     "word": "costumes",
+     "de": "Kostüme",
+     "scope": null
+    },
+    {
+     "word": "orange",
+     "de": "orange",
+     "scope": null
+    },
+    {
+     "word": "take",
+     "de": "nehmen",
+     "scope": null
+    }
+   ],
+   "hintDe": "Schau auf die Wand — welche FARBE fehlt?",
+   "hintEn": null,
+   "explainDe": "Der Fleck nimmt nur die orange Farbe von der Wand — die Dekorationen selbst lässt er in Ruhe. Er nimmt Farben und Wörter, keine Dinge.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u04.ci.the-storeroom.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "Where do the animals not want to go?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "Near the storeroom corridor.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "Near the bio room.",
+    "Near the sports hall.",
+    "Near the classroom."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "storeroom",
+     "de": "Abstellkammer",
+     "scope": null
+    },
+    {
+     "word": "corridor",
+     "de": "Gang",
+     "scope": null
+    },
+    {
+     "word": "bio room",
+     "de": "Biosaal",
+     "scope": null
+    },
+    {
+     "word": "sports hall",
+     "de": "Turnhalle",
+     "scope": null
+    },
+    {
+     "word": "classroom",
+     "de": "Klassenzimmer",
+     "scope": null
+    },
+    {
+     "word": "near",
+     "de": "bei",
+     "scope": null
+    },
+    {
+     "word": "animals",
+     "de": "Tiere",
+     "scope": null
+    }
+   ],
+   "hintDe": "Wohin will sogar der laute Hamster NICHT?",
+   "hintEn": null,
+   "explainDe": "Alle Tiere bleiben weg vom Gang zur Abstellkammer — dort wohnt etwas, das sie spüren. Tiere erkennen, was leer ist.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u05.ci.the-town.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What is wrong with the town?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "The streets and places move around.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "The shops are all closed.",
+    "The map is lost.",
+    "The class is too loud."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "streets",
+     "de": "Straßen",
+     "scope": null
+    },
+    {
+     "word": "places",
+     "de": "Orte",
+     "scope": null
+    },
+    {
+     "word": "move around",
+     "de": "bewegen sich",
+     "scope": null
+    },
+    {
+     "word": "shops",
+     "de": "Geschäfte",
+     "scope": null
+    },
+    {
+     "word": "closed",
+     "de": "geschlossen",
+     "scope": null
+    },
+    {
+     "word": "map",
+     "de": "Karte",
+     "scope": null
+    },
+    {
+     "word": "lost",
+     "de": "verloren",
+     "scope": null
+    },
+    {
+     "word": "loud",
+     "de": "laut",
+     "scope": null
+    },
+    {
+     "word": "town",
+     "de": "Stadt",
+     "scope": null
+    },
+    {
+     "word": "wrong",
+     "de": "falsch",
+     "scope": null
+    }
+   ],
+   "hintDe": "Der Supermarkt, der Brunnen — was machen sie?",
+   "hintEn": null,
+   "explainDe": "Die Straßen und Orte bewegen sich, weil die Tinte in den Stadtplan geraten ist. Mit Wegbeschreibungen heftet ihr die Stadt wieder fest.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u06.ci.finn-visit.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What does Jona notice about the leaks?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "The ink runs away from something.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "The ink is gone.",
+    "The leaks are random.",
+    "The shelf is empty."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "notice",
+     "de": "bemerken",
+     "scope": null
+    },
+    {
+     "word": "ink",
+     "de": "Tinte",
+     "scope": null
+    },
+    {
+     "word": "runs away",
+     "de": "läuft weg",
+     "scope": null
+    },
+    {
+     "word": "leaks",
+     "de": "Lecks",
+     "scope": null
+    },
+    {
+     "word": "random",
+     "de": "zufällig",
+     "scope": null
+    },
+    {
+     "word": "shelf",
+     "de": "Regal",
+     "scope": null
+    },
+    {
+     "word": "empty",
+     "de": "leer",
+     "scope": null
+    },
+    {
+     "word": "gone",
+     "de": "weg",
+     "scope": null
+    },
+    {
+     "word": "something",
+     "de": "etwas",
+     "scope": null
+    }
+   ],
+   "hintDe": "Jona schaut auf die Karte der Lecks — wohin läuft die Tinte?",
+   "hintEn": null,
+   "explainDe": "Die Lecks sind nicht zufällig: Die Tinte läuft immer in eine Richtung — sie läuft vor etwas davon. Das ist Jonas große Entdeckung am Ende von Akt 1.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u07.ci.the-weekend.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What does the blank take this time?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "Everyone's weekend plans.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "The school books.",
+    "The classroom door.",
+    "Tarik's bike."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "blank",
+     "de": "leere Stelle",
+     "scope": null
+    },
+    {
+     "word": "weekend",
+     "de": "Wochenende",
+     "scope": null
+    },
+    {
+     "word": "plans",
+     "de": "Pläne",
+     "scope": null
+    },
+    {
+     "word": "everyone",
+     "de": "alle",
+     "scope": null
+    },
+    {
+     "word": "classroom",
+     "de": "Klassenzimmer",
+     "scope": null
+    },
+    {
+     "word": "bike",
+     "de": "Fahrrad",
+     "scope": null
+    },
+    {
+     "word": "take",
+     "de": "nehmen",
+     "scope": null
+    }
+   ],
+   "hintDe": "Was fehlt in allen Kalendern nach Freitag?",
+   "hintEn": null,
+   "explainDe": "Die leere Stelle hat alle Wochenendpläne genommen — Kino, Match, Kuchen. Emma erkennt das Muster: Es nimmt, worauf sich Leute freuen.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u08.ci.the-quiet.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What does Jona learn about the blank?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "It stays away from the leaks and wants quiet.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "It loves the rocket.",
+    "It is afraid of Pixel.",
+    "It lives in the gym."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "learn",
+     "de": "lernen",
+     "scope": null
+    },
+    {
+     "word": "stays away",
+     "de": "bleibt weg",
+     "scope": null
+    },
+    {
+     "word": "leaks",
+     "de": "Lecks",
+     "scope": null
+    },
+    {
+     "word": "quiet",
+     "de": "Stille",
+     "scope": null
+    },
+    {
+     "word": "rocket",
+     "de": "Rakete",
+     "scope": null
+    },
+    {
+     "word": "afraid",
+     "de": "Angst",
+     "scope": null
+    },
+    {
+     "word": "gym",
+     "de": "Turnhalle",
+     "scope": null
+    },
+    {
+     "word": "blank",
+     "de": "leere Stelle",
+     "scope": null
+    }
+   ],
+   "hintDe": "Jona steht an der Tür und beobachtet — was will die leere Stelle?",
+   "hintEn": null,
+   "explainDe": "Sie kommt nie in die Nähe der lauten Lecks: Sie will keine Geschichte, sie will Stille. Darum ist der lauteste Tag auch der sicherste.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u09.ci.the-menu.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "Why can nobody order lunch?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "The menu words are gone.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "The canteen is closed.",
+    "The chef is on holiday.",
+    "The soup is cold."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "order",
+     "de": "bestellen",
+     "scope": null
+    },
+    {
+     "word": "menu",
+     "de": "Speisekarte",
+     "scope": null
+    },
+    {
+     "word": "gone",
+     "de": "weg",
+     "scope": null
+    },
+    {
+     "word": "canteen",
+     "de": "Kantine",
+     "scope": null
+    },
+    {
+     "word": "closed",
+     "de": "geschlossen",
+     "scope": null
+    },
+    {
+     "word": "chef",
+     "de": "Chef",
+     "scope": null
+    },
+    {
+     "word": "holiday",
+     "de": "Urlaub",
+     "scope": null
+    },
+    {
+     "word": "soup",
+     "de": "Suppe",
+     "scope": null
+    },
+    {
+     "word": "cold",
+     "de": "kalt",
+     "scope": null
+    },
+    {
+     "word": "words",
+     "de": "Wörter",
+     "scope": null
+    },
+    {
+     "word": "lunch",
+     "de": "Mittagessen",
+     "scope": null
+    },
+    {
+     "word": "nobody",
+     "de": "niemand",
+     "scope": null
+    }
+   ],
+   "hintDe": "Schau auf die Tafel in der Kantine — was fehlt?",
+   "hintEn": null,
+   "explainDe": "Die leere Stelle hat alle Wörter der Speisekarte genommen — und was niemand benennen kann, kann niemand bestellen. Ihr schreibt sie Wort für Wort zurück.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u10.ci.the-gap.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What do the gap in the photos and the smudge at school have in common?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "They are the same paleness.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "They are both photos.",
+    "They are both at school.",
+    "They are both loud."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "gap",
+     "de": "Lücke",
+     "scope": null
+    },
+    {
+     "word": "photos",
+     "de": "Fotos",
+     "scope": null
+    },
+    {
+     "word": "smudge",
+     "de": "Fleck",
+     "scope": null
+    },
+    {
+     "word": "school",
+     "de": "Schule",
+     "scope": null
+    },
+    {
+     "word": "paleness",
+     "de": "Blässe",
+     "scope": null
+    },
+    {
+     "word": "same",
+     "de": "dieselbe",
+     "scope": null
+    },
+    {
+     "word": "loud",
+     "de": "laut",
+     "scope": null
+    },
+    {
+     "word": "have in common",
+     "de": "gemeinsam haben",
+     "scope": null
+    }
+   ],
+   "hintDe": "Emma hält Foto und Fleck nebeneinander — was sieht sie?",
+   "hintEn": null,
+   "explainDe": "Die Lücke in Jonas Fotos und der Fleck in der Schule haben dieselbe Blässe: Die leere Stelle besteht aus allem, was Jona wegradiert hat — auch aus ihm selbst. Das ist das Herz der Geschichte.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u11.ci.the-nest.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What does the team find in the storeroom?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "The taken things, kept with care.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "A dangerous animal.",
+    "An empty room.",
+    "The school books."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "storeroom",
+     "de": "Abstellkammer",
+     "scope": null
+    },
+    {
+     "word": "taken",
+     "de": "genommen",
+     "scope": null
+    },
+    {
+     "word": "things",
+     "de": "Dinge",
+     "scope": null
+    },
+    {
+     "word": "kept",
+     "de": "aufgehoben",
+     "scope": null
+    },
+    {
+     "word": "care",
+     "de": "Sorgfalt",
+     "scope": null
+    },
+    {
+     "word": "dangerous",
+     "de": "gefährlich",
+     "scope": null
+    },
+    {
+     "word": "animal",
+     "de": "Tier",
+     "scope": null
+    },
+    {
+     "word": "empty",
+     "de": "leer",
+     "scope": null
+    },
+    {
+     "word": "room",
+     "de": "Zimmer",
+     "scope": null
+    },
+    {
+     "word": "find",
+     "de": "finden",
+     "scope": null
+    },
+    {
+     "word": "team",
+     "de": "Team",
+     "scope": null
+    },
+    {
+     "word": "school",
+     "de": "Schule",
+     "scope": null
+    },
+    {
+     "word": "books",
+     "de": "Bücher",
+     "scope": null
+    }
+   ],
+   "hintDe": "Kein Versteck — was ist das Zimmer wirklich?",
+   "hintEn": null,
+   "explainDe": "Die leere Stelle hebt alles Genommene sorgfältig auf — wie jemand, der behält, was sonst niemand wollte. Darum beschließt das Team: nicht jagen, sondern einladen.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u12.ci.first-word.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What is the blank's first word?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "Glad.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "Help.",
+    "Stop.",
+    "Mine."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "blank",
+     "de": "leere Stelle",
+     "scope": null
+    },
+    {
+     "word": "first",
+     "de": "erste",
+     "scope": null
+    },
+    {
+     "word": "word",
+     "de": "Wort",
+     "scope": null
+    },
+    {
+     "word": "glad",
+     "de": "froh",
+     "scope": null
+    },
+    {
+     "word": "stop",
+     "de": "stopp",
+     "scope": null
+    },
+    {
+     "word": "mine",
+     "de": "meins",
+     "scope": null
+    },
+    {
+     "word": "help",
+     "de": "Hilfe",
+     "scope": null
+    }
+   ],
+   "hintDe": "Ein einziges gestohlenes Wort, als Frage zurückgegeben...",
+   "hintEn": null,
+   "explainDe": "Die leere Stelle spricht zum ersten Mal — nur in Wörtern, die sie genommen hat. Ihr erstes Wort zurück ist 'froh?' — und Tarik schenkt es ihr. Ab jetzt wird nicht mehr gejagt.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u13.ci.the-rule.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What is the rule the class learns?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "Chased, it takes more — included, it takes less.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "Grey days are normal.",
+    "Weather words are magic.",
+    "The juice is always grey."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "rule",
+     "de": "Regel",
+     "scope": null
+    },
+    {
+     "word": "chased",
+     "de": "gejagt",
+     "scope": null
+    },
+    {
+     "word": "included",
+     "de": "dazugehörig",
+     "scope": null
+    },
+    {
+     "word": "takes",
+     "de": "nimmt",
+     "scope": null
+    },
+    {
+     "word": "grey",
+     "de": "grau",
+     "scope": null
+    },
+    {
+     "word": "weather",
+     "de": "Wetter",
+     "scope": null
+    },
+    {
+     "word": "magic",
+     "de": "Magie",
+     "scope": null
+    },
+    {
+     "word": "juice",
+     "de": "Saft",
+     "scope": null
+    },
+    {
+     "word": "normal",
+     "de": "normal",
+     "scope": null
+    },
+    {
+     "word": "class",
+     "de": "Klasse",
+     "scope": null
+    },
+    {
+     "word": "learn",
+     "de": "lernen",
+     "scope": null
+    },
+    {
+     "word": "more",
+     "de": "mehr",
+     "scope": null
+    },
+    {
+     "word": "less",
+     "de": "weniger",
+     "scope": null
+    },
+    {
+     "word": "days",
+     "de": "Tage",
+     "scope": null
+    },
+    {
+     "word": "always",
+     "de": "immer",
+     "scope": null
+    },
+    {
+     "word": "words",
+     "de": "Wörter",
+     "scope": null
+    }
+   ],
+   "hintDe": "Was passiert, wenn man sie jagt — und was, wenn sie dazugehört?",
+   "hintEn": null,
+   "explainDe": "Der graue Tag lehrt die stille Regel der Kampagne: Gejagt nimmt die leere Stelle mehr, dazugehörig weniger. Die Kinder lassen ihr von jetzt an absichtlich kleine Wörter da.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u14.ci.the-rescue.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "Who goes into the blank gym first?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "Jona.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "Emma.",
+    "Frau Berger.",
+    "Tarik."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "blank",
+     "de": "leer",
+     "scope": null
+    },
+    {
+     "word": "gym",
+     "de": "Turnhalle",
+     "scope": null
+    },
+    {
+     "word": "first",
+     "de": "zuerst",
+     "scope": null
+    },
+    {
+     "word": "goes",
+     "de": "geht",
+     "scope": null
+    }
+   ],
+   "hintDe": "Wer kennt leere Dinge von innen?",
+   "hintEn": null,
+   "explainDe": "Jona geht zuerst hinein — er war selbst in einem leeren Ding und kennt den Weg zurück. Er holt Pixel heraus, und die leere Stelle gibt die Turnhalle von selbst zurück: Vertrauen, auf beiden Seiten.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g2u15.ci.klecks.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What does the class give the blank?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "A story of its own.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "A new school bag.",
+    "A bowl of food.",
+    "A place to hide."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "class",
+     "de": "Klasse",
+     "scope": null
+    },
+    {
+     "word": "blank",
+     "de": "leere Stelle",
+     "scope": null
+    },
+    {
+     "word": "story",
+     "de": "Geschichte",
+     "scope": null
+    },
+    {
+     "word": "own",
+     "de": "eigene",
+     "scope": null
+    },
+    {
+     "word": "school bag",
+     "de": "Schultasche",
+     "scope": null
+    },
+    {
+     "word": "bowl",
+     "de": "Napf",
+     "scope": null
+    },
+    {
+     "word": "food",
+     "de": "Futter",
+     "scope": null
+    },
+    {
+     "word": "hide",
+     "de": "verstecken",
+     "scope": null
+    },
+    {
+     "word": "place",
+     "de": "Platz",
+     "scope": null
+    },
+    {
+     "word": "give",
+     "de": "geben",
+     "scope": null
+    },
+    {
+     "word": "new",
+     "de": "neu",
+     "scope": null
+    }
+   ],
+   "hintDe": "Nicht Futter, nicht ein Versteck — was füllt eine leere Stelle?",
+   "hintEn": null,
+   "explainDe": "Die Klasse schreibt der leeren Stelle eine eigene Geschichte — jedes Kind gibt Wörter. Gefüllt mit Wörtern wird sie zu Klecks: dem Klassentier und dem neuen Hüter des Buchs.",
+   "explainEn": null,
+   "strict": false
+  }
+ ]
 }
