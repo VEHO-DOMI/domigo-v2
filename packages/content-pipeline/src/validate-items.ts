@@ -381,7 +381,7 @@ export function distractorErrors(slug: string, items: UnitItems, matcher: Allowe
 const DE_STOPS = new Set(["der", "die", "das", "und", "ist", "nicht", "ein", "eine", "ich", "du", "er", "wir", "ihr", "mit", "auf", "für", "nach", "zu", "im", "am", "sollte", "sollten", "sollst"]);
 const EN_STOPS = new Set(["the", "a", "an", "is", "are", "not", "and", "i", "you", "he", "she", "we", "they", "to", "with", "for", "in", "on", "at", "should", "shouldn't"]);
 
-function langEvidence(text: string): { de: number; en: number } {
+export function langEvidence(text: string): { de: number; en: number } {
   let de = /[äöüß]/.test(text.toLowerCase()) ? 2 : 0;
   let en = 0;
   for (const t of wordTokens(text)) {
