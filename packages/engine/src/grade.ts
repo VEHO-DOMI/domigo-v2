@@ -163,12 +163,15 @@ export interface GradeResult {
   tier: Tier;
 }
 
+// E-3: error-correction and question-formation are deliberately ABSENT — on
+// those formats the prompt shares most of its words with the answer, so the
+// ≥2-shared-words fallback rewarded retyping the mistake (evidence pass
+// 2026-07-11: 225/227 non-strict ec + 87/101 non-strict qf items). Authored
+// partial-TIER answers still grade partial; only the fallback is closed.
 const PARTIAL_FALLBACK_FORMATS = new Set([
   "gap-fill",
   "translation",
   "transformation",
-  "error-correction",
-  "question-formation",
   "free-form",
 ]);
 
