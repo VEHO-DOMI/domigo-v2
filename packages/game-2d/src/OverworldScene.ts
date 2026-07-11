@@ -56,7 +56,24 @@ export interface OverworldConfig {
    *  changed in every zone — an identity bug. Falls back to `seed` for old
    *  callers/tests. Cosmetic only (the sprite isn't saved) → no migration. */
   playerSeed?: number;
+  /** LOOK-1: real-art stems present on disk (stem → URL), resolved server-side
+   *  by apps/web/lib/tile-art.ts. preload() queues them; tex() prefers a loaded
+   *  image over the procedural paint PER KIND — fully incremental, zero risk
+   *  (absent images simply keep the art-gen fallback). Player frames are
+   *  deliberately NOT wired (per-student procedural identity is a feature;
+   *  replacing it is a standing LOOK-0 decision, not a default). */
+  tileArt?: Record<string, string>;
 }
+
+/** Prompt-library filename stems → engine texture kinds (everything else is
+ *  already kind-named: floor, wall, path, board, plant, …). `finn_down` drives
+ *  the NPC — landing that one PNG retires the Finn-as-desk placeholder. */
+const STEM_ALIAS: Record<string, string> = {
+  blackboard: "board",
+  desk: "accent2",
+  sparkle: "encounter",
+  finn_down: "npc",
+};
 
 export class OverworldScene extends Phaser.Scene {
   private cfg: OverworldConfig;
@@ -88,13 +105,28 @@ export class OverworldScene extends Phaser.Scene {
     return { width: GRID_W * TILE, height: GRID_H * TILE };
   }
 
+  /** LOOK-1: queue whatever real art exists; a failed load just leaves the
+   *  procedural fallback in place (Phaser logs a warning, nothing breaks). */
+  preload(): void {
+    const ns = this.cfg.zoneId.split(".").pop() ?? "z";
+    for (const [stem, url] of Object.entries(this.cfg.tileArt ?? {})) {
+      if (stem.startsWith("player_") || stem.startsWith("_")) continue; // player HOLD; _style_key is a reference, not a tile
+      const kind = STEM_ALIAS[stem] ?? stem;
+      this.load.image(`img-${kind}-${ns}`, url);
+    }
+  }
+
   create(): void {
     // per-zone theme + texture namespace. Phaser textures are GLOBAL; namespacing the
     // tileset keys by zone fixes the "first zone to load wins" collision so each zone
     // renders its own palette + props (not zone 1's). Player sprite stays shared.
     const theme = resolveZoneTheme(this.cfg.generator);
     const ns = this.cfg.zoneId.split(".").pop() ?? "z";
-    const tex = (key: string): string => `t-${key}-${ns}`;
+    // Real art wins PER KIND when its image actually loaded; art-gen paint is the
+    // fallback for every other kind. setDisplaySize(TILE, TILE) below normalizes
+    // whatever source resolution the generation produced.
+    const tex = (key: string): string =>
+      this.textures.exists(`img-${key}-${ns}`) ? `img-${key}-${ns}` : `t-${key}-${ns}`;
 
     const tileset = paintTileset(this.cfg.seed, {
       palette: theme.palette,
@@ -173,11 +205,26 @@ export class OverworldScene extends Phaser.Scene {
       if (cleared.has(idx)) { node.setData("done", true); node.setAlpha(0.25); }
       this.nodes.set(idx, node);
       this.physics.add.overlap(this.player, node, () => this.tryEncounter(idx));
+      // LOOK-5: the ✦ breathes — a slow alpha pulse says "this is alive, come
+      // here". Visual only (the overlap body is untouched); never on cleared
+      // nodes; killed when the node clears; skipped under reduced-motion.
+      if (this.cfg.reducedMotion !== true && !cleared.has(idx)) {
+        this.tweens.add({ targets: node, alpha: { from: 1, to: 0.55 }, duration: 900, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+      }
     }
     for (const { x, y } of npcCells) {
-      const npc = this.add.image(x, y, tex("accent2")).setDisplaySize(TILE, TILE);
+      // LOOK-1: `finn_down.png` (→ kind "npc") renders the real guide the moment
+      // it lands; until then the desk tile stays the honest placeholder.
+      const npcTex = this.textures.exists(`img-npc-${ns}`) ? `img-npc-${ns}` : tex("accent2");
+      const npc = this.add.image(x, y, npcTex).setDisplaySize(TILE, TILE);
       this.physics.add.existing(npc, true);
       this.physics.add.overlap(this.player, npc, () => this.tryNpc());
+      // LOOK-5: Finn is canonically a FLOATING book-sprite — a gentle hover bob
+      // sells that with zero assets. The static overlap body stays where it is
+      // (±3px is well inside the touch cell); skipped under reduced-motion.
+      if (this.cfg.reducedMotion !== true) {
+        this.tweens.add({ targets: npc, y: y - 3, duration: 1200, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+      }
     }
 
     const kb = this.input.keyboard;
@@ -194,6 +241,11 @@ export class OverworldScene extends Phaser.Scene {
     // A1-5 encounter staging: bound the camera to the room so the punch-in
     // (zoom 1.3 + pan to the ✦) never reveals black past the walls.
     this.cameras.main.setBounds(0, 0, GRID_W * TILE, GRID_H * TILE);
+
+    // LOOK-5: arriving in a zone gets a beat of theater — a short fade-in, like
+    // stepping through a door in FireRed. Pure camera work, no assets, and a
+    // no-op under reduced-motion.
+    if (this.cfg.reducedMotion !== true) this.cameras.main.fadeIn(240, 30, 41, 59);
   }
 
   /** A1-5: punch the camera in on the ✦ (pan + zoom); a no-op under reduced-motion. */
@@ -301,6 +353,7 @@ export class OverworldScene extends Phaser.Scene {
     const node = this.nodes.get(idx);
     if (node) {
       node.setData("done", true);
+      this.tweens.killTweensOf(node); // LOOK-5: stop the idle pulse before the solved-pop
       if (this.cfg.reducedMotion === true) {
         node.setAlpha(0.25);
       } else {

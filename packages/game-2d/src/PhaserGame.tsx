@@ -48,6 +48,9 @@ export interface PhaserGameProps {
   /** itemId → resolved item, for the chapter's taskSlots. */
   storyItems: Record<string, ResolvedItem>;
   onAttempt: AttemptFn;
+  /** LOOK-1: real-art stems on disk (stem → URL) from apps/web/lib/tile-art.ts;
+   *  the scene preloads these and falls back to procedural paint per kind. */
+  tileArt?: Record<string, string>;
   /** Cosmetic resume state (player position + cleared nodes). */
   initialSave?: GameSaveState | null;
   /** Persist cosmetic state (the app debounces localStorage + /api/game-save). */
@@ -258,6 +261,7 @@ export function PhaserGame(props: PhaserGameProps) {
       playerSeed: props.playerSeed,
       zoneId: props.zoneId,
       generator: props.generator,
+      tileArt: props.tileArt,
       encounterCount: props.encounters.length,
       onEncounter: (idx) => setOverlay({ kind: "encounter", idx }),
       onNpc: () => setOverlay({ kind: "dialogue" }),

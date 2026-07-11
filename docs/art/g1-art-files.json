@@ -1,0 +1,102 @@
+{
+ "zone": "school",
+ "generator": "school-room",
+ "library": "docs/art/G1_SCHOOL_IMAGE_PROMPTS.html",
+ "dropFolder": "iCloud: Domi Gym/DomiGo v2 Art Prompts/generated-images/g1-school/",
+ "note": "LOOK-2 manifest \u2014 stems the sync accepts for apps/web/public/art/g1/school/. player_* stems are ON HOLD (LOOK-0: per-student procedural avatars stay until a deliberate decision); _style_key is a cohesion reference, synced but never rendered; ui_* are DOM-layer candidates, not engine tiles.",
+ "count": 23,
+ "stems": [
+  {
+   "stem": "_style_key",
+   "class": "reference"
+  },
+  {
+   "stem": "blackboard",
+   "class": "tile"
+  },
+  {
+   "stem": "bookshelf",
+   "class": "tile"
+  },
+  {
+   "stem": "clock",
+   "class": "tile"
+  },
+  {
+   "stem": "desk",
+   "class": "tile"
+  },
+  {
+   "stem": "door",
+   "class": "tile"
+  },
+  {
+   "stem": "finn_down",
+   "class": "character"
+  },
+  {
+   "stem": "floor",
+   "class": "tile"
+  },
+  {
+   "stem": "floor_accent",
+   "class": "tile"
+  },
+  {
+   "stem": "pixel_down",
+   "class": "character"
+  },
+  {
+   "stem": "plant",
+   "class": "tile"
+  },
+  {
+   "stem": "player_sheet",
+   "class": "character-HOLD"
+  },
+  {
+   "stem": "rug",
+   "class": "tile"
+  },
+  {
+   "stem": "sparkle",
+   "class": "tile"
+  },
+  {
+   "stem": "sparkle_1",
+   "class": "tile"
+  },
+  {
+   "stem": "sparkle_2",
+   "class": "tile"
+  },
+  {
+   "stem": "teacher_desk",
+   "class": "tile"
+  },
+  {
+   "stem": "ui_dpad",
+   "class": "ui-optional"
+  },
+  {
+   "stem": "ui_questchip",
+   "class": "ui-optional"
+  },
+  {
+   "stem": "ui_taskcard",
+   "class": "ui-optional"
+  },
+  {
+   "stem": "wall",
+   "class": "tile"
+  },
+  {
+   "stem": "wall_top",
+   "class": "tile"
+  },
+  {
+   "stem": "window",
+   "class": "tile"
+  }
+ ]
+}
