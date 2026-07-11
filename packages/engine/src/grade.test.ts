@@ -160,6 +160,27 @@ describe("strict items — exact-only against authored answers (662 corpus items
   });
 });
 
+describe("E-3: no partial fallback on error-correction / question-formation", () => {
+  it("a NEAR-echo of the error sentence grades wrong (one word changed — the echo guard alone missed this)", () => {
+    const item = gi({ format: "error-correction", prompt: { text: "She play football every day.", lang: "en", blanks: 0 }, answers: [full("She plays football every day.")] } as Partial<GrammarItem>);
+    // a word-shuffled retype of the error — full word overlap, far from the
+    // answer by edit distance (so the close tier can't catch it either)
+    expect(gradeGrammar(item, { kind: "text", value: "Football she play every day." }).tier).toBe("wrong");
+  });
+  it("question-formation: retyping the statement (near-echo) grades wrong", () => {
+    const item = gi({ format: "question-formation", prompt: { text: "He plays football.", lang: "en", blanks: 0 }, answers: [full("Does he play football?")] } as Partial<GrammarItem>);
+    expect(gradeGrammar(item, { kind: "text", value: "He play football" }).tier).toBe("wrong");
+  });
+  it("authored partial-TIER answers on error-correction still grade partial (only the fallback closed)", () => {
+    const item = gi({ format: "error-correction", prompt: { text: "She play football.", lang: "en", blanks: 0 }, answers: [full("She plays football."), { text: "She does play football.", tier: "partial" } as TieredAnswer] } as Partial<GrammarItem>);
+    expect(gradeGrammar(item, { kind: "text", value: "She does play football." }).tier).toBe("partial");
+  });
+  it("the fallback stays alive on translation and gap-fill (a genuinely half-right answer earns partial)", () => {
+    const tr = gi({ format: "translation", direction: "deToEn", prompt: { text: "Ich spiele jeden Tag Fußball im Park.", lang: "de", blanks: 0 }, answers: [full("I play football in the park every day.")] } as Partial<GrammarItem>);
+    expect(gradeGrammar(tr, { kind: "text", value: "I play football every day" }).tier).toBe("partial");
+  });
+});
+
 describe("prompt-echo guard (translation / transformation / error-correction / question-formation)", () => {
   it("error-correction: retyping the apostrophe-error prompt grades wrong; the fix grades correct (g1u01 ec.004 shape)", () => {
     const item = gi({ format: "error-correction", prompt: { text: "The child loves it's book.", lang: "en", blanks: 0 }, answers: [full("The child loves its book.")] } as Partial<GrammarItem>);
