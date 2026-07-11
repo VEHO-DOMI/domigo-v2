@@ -11,6 +11,7 @@ import { getDb, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db
 import { EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { resolveEncounterTasks, type ResolvedItem } from "@domigo/game-core";
 import { getActingUserForPage } from "@/lib/identity";
+import { resolveTileArt } from "@/lib/tile-art";
 import { resolveDetectiveArt, resolveNovelArt } from "@/lib/story-art";
 import GameClient from "../GameClient";
 import DetectiveClient from "../DetectiveClient";
@@ -210,6 +211,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
       gameMode={gameMode}
       zoneId={mapZone.id}
       generator={mapZone.render?.generator ?? "school-room"}
+      tileArt={resolveTileArt(grade, mapZone.render?.generator ?? "school-room")}
       zoneTitle={grade === 1 ? (mapZone.titleDe ?? mapZone.titleEn) : mapZone.titleEn}
       hubHref={hubHref}
       encounters={encounters}

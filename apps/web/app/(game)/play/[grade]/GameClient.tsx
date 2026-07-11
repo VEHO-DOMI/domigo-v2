@@ -29,6 +29,8 @@ export default function GameClient(props: {
   gameMode: string; // "game:g1".."game:g4"
   zoneId: string;
   generator: string;
+  /** LOOK-1: stem → URL of real tileset art present on disk (server-resolved). */
+  tileArt?: Record<string, string>;
   zoneTitle: string;
   hubHref: string;
   encounters: ResolvedItem[];
@@ -118,6 +120,7 @@ export default function GameClient(props: {
         playerSeed={props.playerSeed}
         zoneId={props.zoneId}
         generator={props.generator}
+        tileArt={props.tileArt}
         encounters={props.encounters}
         chapter={props.chapter}
         castNames={props.castNames}
