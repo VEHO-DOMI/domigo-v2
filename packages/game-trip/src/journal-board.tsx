@@ -28,14 +28,14 @@ const card: CSSProperties = {
   boxShadow: "var(--shadow-card)",
 };
 
-export function JournalBoard({ days, label }: { days: DayProgress[]; label: string }) {
+export function JournalBoard({ days, label, dayNoun = "Day", stampedWord = "stamped" }: { days: DayProgress[]; label: string; dayNoun?: string; stampedWord?: string }) {
   const done = days.filter((d) => d.stamped).length;
   const complete = done === days.length && days.length > 0;
   return (
     <div style={card}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12, gap: 8 }}>
         <span style={{ fontSize: 13, fontWeight: 700, color: "var(--ink)", fontFamily: "var(--font-label)", letterSpacing: "0.03em" }}>📓 {label}</span>
-        <span style={{ fontSize: 12, color: "var(--text-secondary)", whiteSpace: "nowrap", fontWeight: 600 }}>{done} / {days.length} stamped</span>
+        <span style={{ fontSize: 12, color: "var(--text-secondary)", whiteSpace: "nowrap", fontWeight: 600 }}>{done} / {days.length} {stampedWord}</span>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(138px, 1fr))", gap: 10 }}>
         {days.map((d) => (
@@ -56,7 +56,7 @@ export function JournalBoard({ days, label }: { days: DayProgress[]; label: stri
           >
             <span aria-hidden="true" style={{ fontSize: 15, lineHeight: 1 }}>{d.stamped ? "🖋️" : d.released ? "○" : "🔒"}</span>
             <span style={{ minWidth: 0 }}>
-              <span style={{ display: "block", fontSize: 10, fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: d.stamped ? "var(--accent-deep)" : "var(--muted)" }}>Day {d.dayNo}</span>
+              <span style={{ display: "block", fontSize: 10, fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: d.stamped ? "var(--accent-deep)" : "var(--muted)" }}>{dayNoun} {d.dayNo}</span>
               <span style={{ display: "block", fontSize: 12.5, fontWeight: 600, color: d.stamped ? "var(--ink)" : "var(--text-secondary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{d.titleEn}</span>
             </span>
           </div>

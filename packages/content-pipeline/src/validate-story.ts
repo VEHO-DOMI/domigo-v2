@@ -475,6 +475,10 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
 
   // release gating
   if (bundle.release !== null) {
+    // B-3: a story with a release.json but 0 released chapters is deliberately
+    // PARKED (kept in CI, invisible to students) — flag it so the empty release
+    // reads as intentional, never an accidental un-release.
+    if (bundle.release.releasedChapters.length === 0) infos.push(`${story.id}: release — story parked (0 released chapters)`);
     const chapterById = new Map(story.chapters.map((c) => [c.id, c]));
     for (const cid of bundle.release.releasedChapters) {
       const ch = chapterById.get(cid);

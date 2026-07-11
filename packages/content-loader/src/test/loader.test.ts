@@ -40,7 +40,7 @@ test("listReleasedStories derives one story per grade from the corpus (all four 
       [1, "g1.st.lost-pages"],
       [2, "g2.st.wrong-name"],
       [3, "g3.st.fourteen"],
-      [4, "g4.st.lost-for-words"],
+      [4, "g4.st.fourteen-live"], // B-3: Season 2 is now the released g4 game; "Lost for Words" is parked
     ],
   );
   assert.ok(stories.every((s) => s.titleEn.length > 0), "every released story carries a display title");
@@ -48,7 +48,7 @@ test("listReleasedStories derives one story per grade from the corpus (all four 
 
 test("storyIdForGrade resolves every released grade from the corpus (no stale hand-maps)", () => {
   assert.equal(storyIdForGrade(3), "g3.st.fourteen"); // the stale app-side map missed g3 — this is the regression guard
-  assert.equal(storyIdForGrade(4), "g4.st.lost-for-words"); // released with the game-trip runtime (Act 1, ch01–ch05)
+  assert.equal(storyIdForGrade(4), "g4.st.fourteen-live"); // B-3 swap: the full FOURTEEN: LIVE season on the game-trip runtime
 });
 
 // ─────────────────────────────────────── B-0: canonical|bonus release ────

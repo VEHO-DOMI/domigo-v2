@@ -18,7 +18,7 @@ import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 const TripGame = dynamic(() => import("@domigo/game-trip").then((m) => m.TripGame), {
   ssr: false,
-  loading: () => <p style={{ textAlign: "center", padding: 40, color: "var(--muted)" }}>Opening your journal…</p>,
+  loading: () => <p style={{ textAlign: "center", padding: 40, color: "var(--muted)" }}>Opening…</p>,
 });
 
 interface SavePayload { clientRev: number; state: TripSave }
@@ -119,7 +119,7 @@ export default function TripClient(props: {
         >
           <div style={{ fontSize: 44 }} aria-hidden="true">⏸️</div>
           <div style={{ color: "#fff", fontSize: 22, fontWeight: 700 }}>Paused</div>
-          <div style={{ color: "#cbd5e1", fontSize: 14 }}>Your journal is saved.</div>
+          <div style={{ color: "#cbd5e1", fontSize: 14 }}>Your progress is saved.</div>
           <button
             autoFocus
             onClick={() => setPaused(false)}
