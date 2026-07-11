@@ -1,0 +1,63 @@
+{
+  "schema": "comprehension@1",
+  "storyId": "g2.st.the-spill",
+  "items": [
+    {
+      "id": "g2u01.ci.the-smudge.mc.001",
+      "rev": 1,
+      "difficulty": 1,
+      "format": "multiple-choice",
+      "prompt": {
+        "text": "What does the pale smudge do?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It takes a word from the blackboard.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It writes on the desk.",
+        "It is Jona's book.",
+        "It plays with Pixel."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "smudge",
+          "de": "Fleck",
+          "scope": null
+        },
+        {
+          "word": "pale",
+          "de": "blass",
+          "scope": null
+        },
+        {
+          "word": "blackboard",
+          "de": "Tafel",
+          "scope": null
+        },
+        {
+          "word": "takes",
+          "de": "nimmt",
+          "scope": null
+        },
+        {
+          "word": "word",
+          "de": "Wort",
+          "scope": null
+        }
+      ],
+      "hintDe": "Die Tinte schreibt. Und der blasse Fleck...?",
+      "hintEn": null,
+      "explainDe": "Die Tinte schreibt Wörter — der blasse Fleck nimmt sie weg. Das Wort für die Pause ist verschwunden.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

@@ -1,0 +1,655 @@
+{
+  "schema": "story@1",
+  "id": "g2.st.the-spill",
+  "grade": 2,
+  "title": {
+    "en": "The Spill",
+    "de": "Der Klecks"
+  },
+  "chapters": [
+    {
+      "id": "g2.st.the-spill.ch01",
+      "unit": 1,
+      "titleEn": "The First Day (Again)",
+      "titleDe": "Der erste Tag (schon wieder)",
+      "scenes": [
+        {
+          "id": "g2.st.the-spill.ch01.s001",
+          "speaker": "narrator",
+          "textEn": "First day back at school. New timetable, new pencil case — and one thing only you know: the boy from the book starts school today.",
+          "scaffoldDe": "Erster Schultag nach den Ferien. Neuer Stundenplan, neues Federpennal — und eine Sache weißt nur du: Der Junge aus dem Buch kommt heute in die Schule.",
+          "glosses": [
+            {
+              "word": "timetable",
+              "de": "Stundenplan",
+              "scope": null
+            },
+            {
+              "word": "pencil case",
+              "de": "Federpennal",
+              "scope": null
+            },
+            {
+              "word": "know",
+              "de": "wissen",
+              "scope": null
+            },
+            {
+              "word": "starts",
+              "de": "beginnt",
+              "scope": null
+            },
+            {
+              "word": "only",
+              "de": "nur",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s002"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s002",
+          "speaker": "berger",
+          "textEn": "Good morning, everyone! This is Jona. He is new in our class — be nice to him.",
+          "scaffoldDe": "Guten Morgen zusammen! Das ist Jona. Er ist neu in unserer Klasse — seid nett zu ihm.",
+          "glosses": [
+            {
+              "word": "everyone",
+              "de": "alle",
+              "scope": null
+            },
+            {
+              "word": "nice",
+              "de": "nett",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s003"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s003",
+          "speaker": "jona",
+          "textEn": "First day. Again. My last first day was a long time ago.",
+          "scaffoldDe": "Erster Tag. Schon wieder. Mein letzter erster Tag ist lange her.",
+          "glosses": [
+            {
+              "word": "again",
+              "de": "schon wieder",
+              "scope": null
+            },
+            {
+              "word": "ago",
+              "de": "her",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s004"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s004",
+          "speaker": "emma",
+          "textEn": "The new boy in row three. Why does he look at our school like he knows it?",
+          "scaffoldDe": "Der Neue in Reihe drei. Warum schaut er unsere Schule an, als würde er sie kennen?",
+          "glosses": [
+            {
+              "word": "row",
+              "de": "Reihe",
+              "scope": null
+            },
+            {
+              "word": "knows",
+              "de": "kennt",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s005"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s005",
+          "speaker": "berger",
+          "textEn": "Here is your plan for the year — every day, every hour. What is its name? Find the word!",
+          "scaffoldDe": "Hier ist euer Plan für das Jahr — jeder Tag, jede Stunde. Wie heißt das? Finde das Wort!",
+          "glosses": [
+            {
+              "word": "plan",
+              "de": "Plan",
+              "scope": null
+            },
+            {
+              "word": "name",
+              "de": "Name",
+              "scope": null
+            },
+            {
+              "word": "word",
+              "de": "Wort",
+              "scope": null
+            },
+            {
+              "word": "hour",
+              "de": "Stunde",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g2u01.w.timetable",
+              "variantKey": null
+            }
+          ],
+          "next": "g2.st.the-spill.ch01.s006"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s006",
+          "speaker": "tarik",
+          "textEn": "Maths, music, sport — I love them all! What is the word for one of these?",
+          "scaffoldDe": "Mathe, Musik, Sport — ich liebe alle! Wie heißt das Wort für so ein Fach?",
+          "glosses": [
+            {
+              "word": "maths",
+              "de": "Mathe",
+              "scope": null
+            },
+            {
+              "word": "sport",
+              "de": "Sport",
+              "scope": null
+            },
+            {
+              "word": "word",
+              "de": "Wort",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g2u01.w.subject",
+              "variantKey": null
+            }
+          ],
+          "next": "g2.st.the-spill.ch01.s007"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s007",
+          "speaker": "narrator",
+          "textEn": "The door opens. A small cat walks in like the school is hers. Nobody stops her.",
+          "scaffoldDe": "Die Tür geht auf. Eine kleine Katze spaziert herein, als würde ihr die Schule gehören. Niemand hält sie auf.",
+          "glosses": [
+            {
+              "word": "nobody",
+              "de": "niemand",
+              "scope": null
+            },
+            {
+              "word": "stops",
+              "de": "aufhalten",
+              "scope": null
+            },
+            {
+              "word": "cat",
+              "de": "Katze",
+              "scope": null
+            },
+            {
+              "word": "walks",
+              "de": "spaziert",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s008"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s008",
+          "speaker": "emma",
+          "textEn": "Whose cat is that?!",
+          "scaffoldDe": "Wem gehört DIE Katze?!",
+          "glosses": [
+            {
+              "word": "whose",
+              "de": "wessen",
+              "scope": null
+            },
+            {
+              "word": "cat",
+              "de": "Katze",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s009"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s009",
+          "speaker": "jona",
+          "textEn": "That is Pixel. She... came with me.",
+          "scaffoldDe": "Das ist Pixel. Sie... ist mit mir gekommen.",
+          "glosses": [
+            {
+              "word": "came",
+              "de": "gekommen",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s010"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s010",
+          "speaker": "berger",
+          "textEn": "A normal school day: lessons, breaks, homework. Tell it right!",
+          "scaffoldDe": "Ein normaler Schultag: Stunden, Pausen, Hausübung. Sag es richtig!",
+          "glosses": [
+            {
+              "word": "normal",
+              "de": "normal",
+              "scope": null
+            },
+            {
+              "word": "breaks",
+              "de": "Pausen",
+              "scope": null
+            },
+            {
+              "word": "homework",
+              "de": "Hausübung",
+              "scope": null
+            },
+            {
+              "word": "right",
+              "de": "richtig",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g2u01.gi.present-simple.cp.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g2.st.the-spill.ch01.s011"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s011",
+          "speaker": "narrator",
+          "textEn": "Then it happens. Thin black ink crawls out of Jona's bag, up the desk — and writes one small word on the wood.",
+          "scaffoldDe": "Dann passiert es. Dünne schwarze Tinte kriecht aus Jonas Tasche, das Pult hinauf — und schreibt ein kleines Wort auf das Holz.",
+          "glosses": [
+            {
+              "word": "ink",
+              "de": "Tinte",
+              "scope": null
+            },
+            {
+              "word": "crawls",
+              "de": "kriecht",
+              "scope": null
+            },
+            {
+              "word": "desk",
+              "de": "Pult",
+              "scope": null
+            },
+            {
+              "word": "wood",
+              "de": "Holz",
+              "scope": null
+            },
+            {
+              "word": "thin",
+              "de": "dünn",
+              "scope": null
+            },
+            {
+              "word": "bag",
+              "de": "Tasche",
+              "scope": null
+            },
+            {
+              "word": "word",
+              "de": "Wort",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s012"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s012",
+          "speaker": "jona",
+          "textEn": "That is book ink. It came out with us. It is not dangerous — it just wants to write.",
+          "scaffoldDe": "Das ist Buch-Tinte. Sie ist mit uns herausgekommen. Sie ist nicht gefährlich — sie will nur schreiben.",
+          "glosses": [
+            {
+              "word": "ink",
+              "de": "Tinte",
+              "scope": null
+            },
+            {
+              "word": "came",
+              "de": "gekommen",
+              "scope": null
+            },
+            {
+              "word": "dangerous",
+              "de": "gefährlich",
+              "scope": null
+            },
+            {
+              "word": "just",
+              "de": "nur",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s013"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s013",
+          "speaker": "emma",
+          "textEn": "Okay. OKAY. Tell me exactly what happened, from the start!",
+          "scaffoldDe": "Okay. OKAY. Erzähl mir genau, was passiert ist — von Anfang an!",
+          "glosses": [
+            {
+              "word": "exactly",
+              "de": "genau",
+              "scope": null
+            },
+            {
+              "word": "happened",
+              "de": "passiert",
+              "scope": null
+            },
+            {
+              "word": "okay",
+              "de": "okay",
+              "scope": null
+            },
+            {
+              "word": "start",
+              "de": "Anfang",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "fix-it",
+              "itemId": "g2u01.gi.past-simple.cp.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g2.st.the-spill.ch01.s014"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s014",
+          "speaker": "narrator",
+          "textEn": "On the blackboard, one word goes pale — then it is gone. In the corner of the room: a pale smudge.",
+          "scaffoldDe": "Auf der Tafel wird ein Wort blass — dann ist es weg. In der Ecke des Raums: ein blasser Fleck.",
+          "glosses": [
+            {
+              "word": "blackboard",
+              "de": "Tafel",
+              "scope": null
+            },
+            {
+              "word": "pale",
+              "de": "blass",
+              "scope": null
+            },
+            {
+              "word": "smudge",
+              "de": "Fleck",
+              "scope": null
+            },
+            {
+              "word": "gone",
+              "de": "weg",
+              "scope": null
+            },
+            {
+              "word": "word",
+              "de": "Wort",
+              "scope": null
+            },
+            {
+              "word": "goes",
+              "de": "wird",
+              "scope": null
+            },
+            {
+              "word": "corner",
+              "de": "Ecke",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s015"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s015",
+          "speaker": "jona",
+          "textEn": "Ink writes. This... takes. I know what that is. It followed me out.",
+          "scaffoldDe": "Tinte schreibt. Das da... nimmt. Ich weiß, was das ist. Es ist mir hinaus gefolgt.",
+          "glosses": [
+            {
+              "word": "ink",
+              "de": "Tinte",
+              "scope": null
+            },
+            {
+              "word": "takes",
+              "de": "nimmt",
+              "scope": null
+            },
+            {
+              "word": "know",
+              "de": "wissen",
+              "scope": null
+            },
+            {
+              "word": "followed",
+              "de": "gefolgt",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s016"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s016",
+          "speaker": "emma",
+          "textEn": "That thing takes words. There is a word for how that feels — find it!",
+          "scaffoldDe": "Dieses Ding nimmt Wörter. Es gibt ein Wort dafür, wie sich das anfühlt — finde es!",
+          "glosses": [
+            {
+              "word": "thing",
+              "de": "Ding",
+              "scope": null
+            },
+            {
+              "word": "takes",
+              "de": "nimmt",
+              "scope": null
+            },
+            {
+              "word": "feels",
+              "de": "anfühlt",
+              "scope": null
+            },
+            {
+              "word": "words",
+              "de": "Wörter",
+              "scope": null
+            },
+            {
+              "word": "word",
+              "de": "Wort",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "name-it",
+              "itemId": "g2u01.w.scary",
+              "variantKey": null
+            }
+          ],
+          "next": "g2.st.the-spill.ch01.s017"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s017",
+          "speaker": "jona",
+          "textEn": "It is not scary. It is sad. Sad things can look scary.",
+          "scaffoldDe": "Es ist nicht gruselig. Es ist traurig. Traurige Dinge können gruselig aussehen.",
+          "glosses": [
+            {
+              "word": "scary",
+              "de": "gruselig",
+              "scope": null
+            },
+            {
+              "word": "sad",
+              "de": "traurig",
+              "scope": null
+            },
+            {
+              "word": "things",
+              "de": "Dinge",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s018"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s018",
+          "speaker": "narrator",
+          "textEn": "New class, new cat — and one pale smudge. Nobody else knows.",
+          "scaffoldDe": "Neue Klasse, neue Katze — und ein blasser Fleck. Sonst weiß niemand davon.",
+          "glosses": [
+            {
+              "word": "pale",
+              "de": "blass",
+              "scope": null
+            },
+            {
+              "word": "smudge",
+              "de": "Fleck",
+              "scope": null
+            },
+            {
+              "word": "nobody",
+              "de": "niemand",
+              "scope": null
+            },
+            {
+              "word": "knows",
+              "de": "weiß",
+              "scope": null
+            },
+            {
+              "word": "cat",
+              "de": "Katze",
+              "scope": null
+            },
+            {
+              "word": "else",
+              "de": "sonst",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [
+            {
+              "slot": "recap",
+              "itemId": "g2u01.ci.the-smudge.mc.001",
+              "variantKey": null
+            }
+          ],
+          "next": "g2.st.the-spill.ch01.s019"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s019",
+          "speaker": "jona",
+          "textEn": "In the book, I broke things. Here, we fix them. Together?",
+          "scaffoldDe": "Im Buch habe ich Dinge kaputt gemacht. Hier reparieren wir sie. Zusammen?",
+          "glosses": [
+            {
+              "word": "broke",
+              "de": "kaputt gemacht",
+              "scope": null
+            },
+            {
+              "word": "fix",
+              "de": "reparieren",
+              "scope": null
+            },
+            {
+              "word": "together",
+              "de": "zusammen",
+              "scope": null
+            },
+            {
+              "word": "things",
+              "de": "Dinge",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": "g2.st.the-spill.ch01.s020"
+        },
+        {
+          "id": "g2.st.the-spill.ch01.s020",
+          "speaker": "berger",
+          "textEn": "And who cleaned the blackboard? Very helpful — thank you!",
+          "scaffoldDe": "Und wer hat die Tafel geputzt? Sehr hilfreich — danke!",
+          "glosses": [
+            {
+              "word": "cleaned",
+              "de": "geputzt",
+              "scope": null
+            },
+            {
+              "word": "blackboard",
+              "de": "Tafel",
+              "scope": null
+            },
+            {
+              "word": "helpful",
+              "de": "hilfreich",
+              "scope": null
+            }
+          ],
+          "audio": null,
+          "taskSlots": [],
+          "next": null
+        }
+      ]
+    }
+  ]
+}
