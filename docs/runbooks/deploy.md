@@ -56,7 +56,18 @@ Must print **✓ deploy-truth OK — production is exactly origin/main**. It fai
 loudly if the URL serves no `/api/version` (i.e. a blank/placeholder deploy) — the
 guard that would have caught the un-connected project immediately.
 
-## Step 4 — Provision `domigo_v2` on the Neon **production** branch  ·  *terminal, Koki co-pilots*
+## Step 4 — Provision `domigo_v2` on the Neon **production** branch  ·  ✅ done 2026-07-12 (via Neon SQL Editor)
+
+> **✅ DONE 2026-07-12 — but NOT via the psql commands below.** This Mac has no
+> `psql` / `pg_dump` / Homebrew, so the terminal path can't run. The schema was applied
+> through the **Neon SQL Editor** instead (console → `domigo-db` → SQL Editor, branch
+> **`main`**, database **`neondb`**): the six migration files concatenated and wrapped in one
+> `BEGIN … COMMIT`, then a `pg_tables` verify. Result: 40 statements committed, **10
+> `domigo_v2` tables created, 13 v1 `public` tables verified untouched**. The pg_dump diff
+> was replaced by a static read confirming the DDL only touches `domigo_v2` + the pg_tables
+> check showing `public` unchanged. **For future prod DDL (platform-wave 0006+), use the Neon
+> SQL Editor** (or install the client first: `brew install libpq`). The psql recipe below
+> stays as reference.
 
 The v2 schema exists only on `v2-dev`; apply it to `main`. It is **additive** —
 `0000_*.sql` opens with `CREATE SCHEMA "domigo_v2";` and all 14 tables are created

@@ -11,10 +11,13 @@
 > `domigo-v2.vercel.app` (first deploy). Vercel is git-connected, env vars are set
 > (Production-scoped), `verify-deploy.mjs` is GREEN (prod == `origin/main` `66fafe4`),
 > `/api/version` responds, and the home page serves the real app (not the CNA scaffold).
-> **Still pending to be class-usable:** Step 4 prod DDL (the `domigo_v2` schema is still
-> dev-branch-only, so DB-backed pages 500) and Step 5 Firebase→Neon completion. See
-> `../runbooks/deploy.md`. Security note: rotate `NEXTAUTH_SECRET` before students sign
-> in — it transited chat during setup; no live sessions yet, so it's free to rotate now.
+> **Step 4 done 2026-07-12:** the `domigo_v2` schema is now on Neon `main` (applied via the
+> Neon SQL Editor — no `psql` on this Mac); v1's `public` verified untouched; DB-backed pages
+> stopped 500-ing. **The app is usable now for existing students** — sign-in reads the migrated
+> v1 accounts (`apps/web/auth.ts` → `lookupStudentForAuth`), so a migrated student logs in with
+> class code + nickname + PIN and plays. **Still pending (polish):** rotate `NEXTAUTH_SECRET`
+> (transited chat during setup), and Step 5 = migrate post-2026-05-17 signups + build
+> `/signin/migrate` (404 today). See `../runbooks/deploy.md`.
 
 ---
 
@@ -151,5 +154,6 @@ dev branch immediately — good enough to demo. GO-1 + Track-D make it
 ## One-line status
 
 Code ✅ · Design ✅ · **Hosted ✅ (first deploy 2026-07-12 — verify-deploy green)** ·
-**Prod DB ❌ (dev-branch only — Step 4 pending)** · **Firebase→Neon completion ❌
-(Track-D, pending)**.
+**Prod DB ✅ (Step 4 done 2026-07-12 — `domigo_v2` on Neon `main`; v1 untouched)** ·
+**Firebase→Neon completion ❌ (Track-D / Step 5, pending)**. Existing migrated students
+can sign in & play now; Step 5 covers post-cutoff signups + the claim flow.
