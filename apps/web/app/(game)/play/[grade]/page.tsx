@@ -10,7 +10,7 @@ import { loadGameMap, loadReleasedChapters, loadStory, storyIdForGrade } from "@
 import { getDb, getSolvedGameItemIds } from "@domigo/db";
 import { EvidenceGallery, EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
-import { JournalBoard, type DayProgress } from "@domigo/game-trip";
+import { JournalBoard, tripCopyFor, type DayProgress } from "@domigo/game-trip";
 import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
 import { getActingUserForPage } from "@/lib/identity";
 import { DEFAULT_STORY_UI, STORY_UI } from "@/lib/stories";
@@ -89,7 +89,9 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
 
   // L-1: grade-1 chrome is German (the story-language toggle governs lines only).
   const deChrome = grade === 1;
-  const noun = deChrome ? "Seite" : map ? "Zone" : grade === 3 ? "Episode" : grade === 4 ? "Day" : "Case";
+  // B-3: the g4 trip skin (noun/tagline/board copy) is per-story.
+  const tripCopy = grade === 4 && storyId ? tripCopyFor(storyId) : null;
+  const noun = deChrome ? "Seite" : map ? "Zone" : grade === 3 ? "Episode" : grade === 4 ? (tripCopy?.hubNoun ?? "Day") : "Case";
   // L-1: at grade 1 the German title leads and English becomes the subtitle.
   const stops = map
     ? map.zones.map((z) => ({
@@ -116,7 +118,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
       : grade === 3
         ? "Write the next episode of FOURTEEN. New episodes open as you learn more."
         : grade === 4
-          ? "One week in England — write it down as it happens. New days open as you learn more."
+          ? (tripCopy?.hubTagline ?? "New chapters open as you learn more.")
           : "Open a case file to investigate. New cases open as you learn more.";
 
   // Level-select "cleared" state per stop, derived from the attempts ledger
@@ -197,9 +199,9 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         </section>
       )}
 
-      {days.length > 0 && (
+      {days.length > 0 && tripCopy && (
         <section style={{ marginTop: 28 }}>
-          <JournalBoard days={days} label="Your trip journal (= Reisetagebuch)" />
+          <JournalBoard days={days} label={tripCopy.boardLabel} dayNoun={tripCopy.hubNoun} stampedWord={tripCopy.boardStampedWord} />
         </section>
       )}
 

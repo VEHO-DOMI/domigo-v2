@@ -1,6 +1,6 @@
 "use client";
 /**
- * @domigo/game-trip — the G4 "Lost for Words" surface (DOM + SVG, no Phaser).
+ * @domigo/game-trip — the shared grade-4 trip surface (DOM + SVG, no Phaser).
  * Walks a story@1 chapter as one day of the Sprachwoche in Leicester, and is the
  * app's FIRST flag-aware story runtime (BLUEPRINT III.4):
  *   - Choice.sets writes narrative flags into the cosmetic save (story-scoped —
@@ -21,7 +21,7 @@ import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, us
 import { seedStoryFlags, storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { CastAvatar, castLook } from "./art.tsx";
-import { COPY, DAY_STAMP, resultLine, slotPrompt, trailLabel } from "./trip-copy.ts";
+import { tripCopyFor, type TripCopy } from "./trip-copy.ts";
 
 export interface GameAttempt {
   clientAttemptId: string;
@@ -91,8 +91,8 @@ function speak(text: string): void {
   window.speechSynthesis.speak(u);
 }
 
-function TaskLine({ item, prompt, onAttempt, onContinue, onScored, hideHint }: {
-  item: ResolvedItem; prompt: string; onAttempt: AttemptFn; onContinue: () => void; onScored: (tier: Tier) => void; hideHint?: boolean;
+function TaskLine({ item, prompt, copy, onAttempt, onContinue, onScored, hideHint }: {
+  item: ResolvedItem; prompt: string; copy: TripCopy; onAttempt: AttemptFn; onContinue: () => void; onScored: (tier: Tier) => void; hideHint?: boolean;
 }) {
   const [res, setRes] = useState<{ tier: Tier; lines: number } | null>(null);
   const onResult = (tier: Tier, detail: ResultDetail) => {
@@ -101,7 +101,7 @@ function TaskLine({ item, prompt, onAttempt, onContinue, onScored, hideHint }: {
     void onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: detail.itemId, mode: "game:g4", input: detail.input, latencyMs: null, hintUsed: false });
     onScored(tier);
   };
-  const line = res ? resultLine(res.tier, res.lines) : null;
+  const line = res ? copy.resultLine(res.tier, res.lines) : null;
   return (
     <div style={{ marginTop: 14, borderTop: "1px dashed var(--card-border)", paddingTop: 12 }}>
       <div style={{ fontSize: 12, color: "var(--accent)", fontWeight: 700, marginBottom: 6, fontFamily: "var(--font-label)", letterSpacing: "0.02em" }}>{prompt}</div>
@@ -109,13 +109,15 @@ function TaskLine({ item, prompt, onAttempt, onContinue, onScored, hideHint }: {
         ? <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} hideXp hideHint={hideHint} />
         : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} hideXp hideHint={hideHint} />}
       {line && <div style={{ marginTop: 10, fontWeight: 700, fontSize: 14, color: line.good ? "var(--correct)" : "var(--ink-soft)" }}>{line.text}</div>}
-      {res && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onContinue}>{COPY.continue}</button>}
+      {res && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onContinue}>{copy.continue}</button>}
     </div>
   );
 }
 
 export function TripGame(props: TripGameProps) {
   const { chapter, castNames, storyItems, onAttempt, onSave, dayTitle, art } = props;
+  // B-3: the story-specific skin (title / economy nouns / stamps / slot prompts).
+  const copy = tripCopyFor(chapter.id.split(".").slice(0, 3).join("."));
   // L-1: story-language mode (device toggle; grade 4 defaults English-first).
   const mode = useLangMode(props.grade ?? 4);
   const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
@@ -170,17 +172,17 @@ export function TripGame(props: TripGameProps) {
   };
 
   if (done) {
-    const stamp = DAY_STAMP[chapter.id];
+    const stamp = copy.dayStamp[chapter.id];
     return (
       <main style={{ ...wrap, padding: "28px 16px" }}>
         {art?.endCard && <img src={art.endCard} alt="" style={{ width: "100%", maxHeight: 260, objectFit: "cover", borderRadius: 16, marginBottom: 14, border: "1px solid var(--card-border)" }} />}
-        <h1 style={{ fontSize: 26, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Day stamped! 🖋️</h1>
+        <h1 style={{ fontSize: 26, margin: "0 0 6px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>{copy.doneTitle}</h1>
         <p style={{ fontSize: 18, color: "var(--text)", marginTop: 0 }}>
-          <strong>{dayTitle}</strong> is in your journal.
+          <strong>{dayTitle}</strong> {copy.savedSuffix}
         </p>
         {stamp && <p style={{ fontSize: 15, color: "var(--text-secondary)", fontStyle: "italic", borderLeft: "3px solid var(--accent)", paddingLeft: 12 }}>{stamp}</p>}
-        <p style={{ color: "var(--text-secondary)", fontSize: 14 }}>You wrote {entries.length} line{entries.length === 1 ? "" : "s"} today.</p>
-        <a href="/play/4" style={{ color: "var(--accent)", fontSize: 14, fontWeight: 700 }}>{COPY.backToJournal}</a>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14 }}>{copy.wroteCount(entries.length)}</p>
+        <a href="/play/4" style={{ color: "var(--accent)", fontSize: 14, fontWeight: 700 }}>{copy.backToBoard}</a>
       </main>
     );
   }
@@ -188,8 +190,8 @@ export function TripGame(props: TripGameProps) {
   if (!scene) {
     return (
       <main style={{ ...wrap, padding: "28px 16px" }}>
-        <h1 style={{ fontSize: 22, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Day complete! 🖋️</h1>
-        <a href="/play/4" style={{ color: "var(--accent)", fontSize: 14, fontWeight: 700 }}>{COPY.backToJournal}</a>
+        <h1 style={{ fontSize: 22, fontFamily: "var(--font-display)", color: "var(--ink)" }}>{copy.doneTitleAlt}</h1>
+        <a href="/play/4" style={{ color: "var(--accent)", fontSize: 14, fontWeight: 700 }}>{copy.backToBoard}</a>
       </main>
     );
   }
@@ -216,7 +218,7 @@ export function TripGame(props: TripGameProps) {
   const topImg = art?.beats[scene.id] ?? art?.backdrop ?? null;
   const totalTasks = chapter.scenes.reduce((n, s) => n + s.taskSlots.length, 0);
   const pct = totalTasks ? Math.round((entries.length / totalTasks) * 100) : 0;
-  const trailMsg = trailLabel(trail);
+  const trailMsg = copy.trailLabel(trail);
 
   const scaffoldNode = (
     <>
@@ -230,7 +232,8 @@ export function TripGame(props: TripGameProps) {
     taskOrNav = (
       <TaskLine
         item={slotItem}
-        prompt={slotPrompt(slot.slot)}
+        prompt={copy.slotPrompt(slot.slot)}
+        copy={copy}
         onAttempt={onAttempt}
         onScored={onScored}
         onContinue={() => { addEntry(slot.slot); setTaskDone(true); }}
@@ -250,23 +253,23 @@ export function TripGame(props: TripGameProps) {
       </div>
     );
   } else {
-    taskOrNav = <button className="dg-btn" style={{ marginTop: 14 }} onClick={() => go(sNext)}>{sNext === null ? COPY.finishChapter : COPY.next}</button>;
+    taskOrNav = <button className="dg-btn" style={{ marginTop: 14 }} onClick={() => go(sNext)}>{sNext === null ? copy.finishChapter : copy.next}</button>;
   }
 
   return (
     <main style={{ ...wrap, padding: "16px 12px" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
-        <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>LOST FOR WORDS <span style={{ color: "var(--muted)", fontSize: 14, fontWeight: 400, fontFamily: "var(--font-body)" }}>· {chapter.titleEn}</span></h1>
+        <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{copy.title} <span style={{ color: "var(--muted)", fontSize: 14, fontWeight: 400, fontFamily: "var(--font-body)" }}>· {chapter.titleEn}</span></h1>
         <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
           <LangToggle grade={props.grade ?? 4} />
-          <a href="/play/4" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Journal</a>
+          <a href="/play/4" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{copy.backLink}</a>
         </span>
       </div>
 
       <div style={{ marginBottom: 12 }}>
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 5 }}>
-          <span style={{ color: "var(--muted)", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>{COPY.journalProgress}</span>
-          <span style={{ fontWeight: 700, color: trailMsg ? "var(--accent)" : "var(--text-secondary)" }}>{trailMsg ?? `${entries.length}/${totalTasks} lines`}</span>
+          <span style={{ color: "var(--muted)", fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }}>{copy.progressLabel}</span>
+          <span style={{ fontWeight: 700, color: trailMsg ? "var(--accent)" : "var(--text-secondary)" }}>{trailMsg ?? `${entries.length}/${totalTasks} ${copy.economyNoun}`}</span>
         </div>
         <div className="xp-track">
           <div className="xp-fill" style={{ width: `${pct}%` }} />
