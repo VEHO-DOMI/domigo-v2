@@ -1,0 +1,48 @@
+{
+  "schema": "flags@1",
+  "storyId": "g4.st.fourteen-live",
+  "flags": [
+    {
+      "id": "w06.open",
+      "label": "Announced the investigation on the channel",
+      "setIn": "g4.st.fourteen-live.ch06",
+      "major": true
+    },
+    {
+      "id": "w06.quiet",
+      "label": "Worked quietly, no announcement",
+      "setIn": "g4.st.fourteen-live.ch06",
+      "major": true
+    },
+    {
+      "id": "w10.private",
+      "label": "Showed Steiner everything first, alone",
+      "setIn": "g4.st.fourteen-live.ch10",
+      "major": true
+    },
+    {
+      "id": "w10.public",
+      "label": "Kept the formal on-camera interview",
+      "setIn": "g4.st.fourteen-live.ch10",
+      "major": true
+    },
+    {
+      "id": "w13.live",
+      "label": "Broke the story as a live special",
+      "setIn": "g4.st.fourteen-live.ch13",
+      "major": true
+    },
+    {
+      "id": "w13.print",
+      "label": "Revived the school mag — the special issue",
+      "setIn": "g4.st.fourteen-live.ch13",
+      "major": true
+    },
+    {
+      "id": "w13.direktorin",
+      "label": "Brought the file to Direktorin Huber first",
+      "setIn": "g4.st.fourteen-live.ch13",
+      "major": true
+    }
+  ]
+}

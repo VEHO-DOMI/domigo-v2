@@ -1,53 +1,902 @@
 {
-  "schema": "comprehension@1",
-  "storyId": "g4.st.fourteen-live",
-  "items": [
+ "schema": "comprehension@1",
+ "storyId": "g4.st.fourteen-live",
+ "items": [
+  {
+   "id": "g4u01.ci.the-poster.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "Why is the Sydney poster strange?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
     {
-      "id": "g4u01.ci.the-poster.mc.001",
-      "rev": 1,
-      "difficulty": 1,
-      "format": "multiple-choice",
-      "prompt": {
-        "text": "Why is the Sydney poster strange?",
-        "lang": "en",
-        "blanks": 0
-      },
-      "answers": [
-        {
-          "text": "The vote is not open now.",
-          "tier": "full"
-        }
-      ],
-      "direction": null,
-      "distractors": [
-        "Sydney is not one of the three cities.",
-        "The poster is not in English.",
-        "Leo does not like posters."
-      ],
-      "pairs": [],
-      "groups": [],
-      "gloss": [
-        {
-          "word": "vote",
-          "de": "Abstimmung",
-          "scope": null
-        },
-        {
-          "word": "poster",
-          "de": "Plakat",
-          "scope": null
-        },
-        {
-          "word": "strange",
-          "de": "seltsam",
-          "scope": null
-        }
-      ],
-      "hintDe": "Die Abstimmung startet erst am Freitag — und heute ist Montag.",
-      "hintEn": null,
-      "explainDe": "Das Plakat zeigt einen Sieger, aber niemand hat abgestimmt. Genau das macht die vier stutzig.",
-      "explainEn": null,
-      "strict": false
+     "text": "The vote is not open now.",
+     "tier": "full"
     }
-  ]
+   ],
+   "direction": null,
+   "distractors": [
+    "Sydney is not one of the three cities.",
+    "The poster is not in English.",
+    "Leo does not like posters."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "vote",
+     "de": "Abstimmung",
+     "scope": null
+    },
+    {
+     "word": "poster",
+     "de": "Plakat",
+     "scope": null
+    },
+    {
+     "word": "strange",
+     "de": "seltsam",
+     "scope": null
+    }
+   ],
+   "hintDe": "Die Abstimmung startet erst am Freitag — und heute ist Montag.",
+   "hintEn": null,
+   "explainDe": "Das Plakat zeigt einen Sieger, aber niemand hat abgestimmt. Genau das macht die vier stutzig.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u02.ci.the-method.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What are the three things on the studio wall?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "Motive, opportunity, evidence.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "Camera, lights, microphone.",
+    "Dublin, New York, Sydney.",
+    "Pizza, poster, printer."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "motive",
+     "de": "Motiv",
+     "scope": null
+    },
+    {
+     "word": "opportunity",
+     "de": "Gelegenheit",
+     "scope": null
+    },
+    {
+     "word": "evidence",
+     "de": "Beweise",
+     "scope": null
+    },
+    {
+     "word": "microphone",
+     "de": "Mikrofon",
+     "scope": null
+    },
+    {
+     "word": "lights",
+     "de": "Lichter",
+     "scope": null
+    },
+    {
+     "word": "wall",
+     "de": "Wand",
+     "scope": null
+    },
+    {
+     "word": "printer",
+     "de": "Drucker",
+     "scope": null
+    },
+    {
+     "word": "poster",
+     "de": "Plakat",
+     "scope": null
+    },
+    {
+     "word": "things",
+     "de": "Dinge",
+     "scope": null
+    },
+    {
+     "word": "studio",
+     "de": "Studio",
+     "scope": null
+    },
+    {
+     "word": "camera",
+     "de": "Kamera",
+     "scope": null
+    }
+   ],
+   "hintDe": "Die Detektivgeschichte aus der Hausübung nennt genau drei Dinge.",
+   "hintEn": null,
+   "explainDe": "Sara liest die Zeile vor: Ein Detektiv braucht Motiv, Gelegenheit und Beweise — die Crew macht daraus ihre Checkliste.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u03.ci.the-lists.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What did Leo notice about the pitch lists?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "The loudest classes all got Sydney.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "Every class got its favourite city.",
+    "The lists were written in English.",
+    "New York was not on the lists."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "loudest",
+     "de": "lautesten",
+     "scope": null
+    },
+    {
+     "word": "lists",
+     "de": "Listen",
+     "scope": null
+    },
+    {
+     "word": "notice",
+     "de": "bemerken",
+     "scope": null
+    },
+    {
+     "word": "favourite",
+     "de": "Lieblings-",
+     "scope": null
+    },
+    {
+     "word": "classes",
+     "de": "Klassen",
+     "scope": null
+    },
+    {
+     "word": "pitch",
+     "de": "Pitch",
+     "scope": null
+    },
+    {
+     "word": "got",
+     "de": "bekommen",
+     "scope": null
+    },
+    {
+     "word": "written",
+     "de": "geschrieben",
+     "scope": null
+    }
+   ],
+   "hintDe": "Leo hat aufgeschrieben, wer welche Stadt bekommen hat — und ein Muster gesehen.",
+   "hintEn": null,
+   "explainDe": "Die drei lautesten Klassen haben alle Sydney bekommen. Zufall sieht anders aus — das ist das erste Muster der Investigation.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u04.ci.the-craft.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What is Novak's rule about facts?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "Two sources for every fact.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "Write facts in capital letters.",
+    "Only film facts, never write them.",
+    "Facts need a good title."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "sources",
+     "de": "Quellen",
+     "scope": null
+    },
+    {
+     "word": "fact",
+     "de": "Fakt",
+     "scope": null
+    },
+    {
+     "word": "capital letters",
+     "de": "Großbuchstaben",
+     "scope": null
+    },
+    {
+     "word": "title",
+     "de": "Titel",
+     "scope": null
+    },
+    {
+     "word": "rule",
+     "de": "Regel",
+     "scope": null
+    },
+    {
+     "word": "only",
+     "de": "nur",
+     "scope": null
+    },
+    {
+     "word": "film",
+     "de": "filmen",
+     "scope": null
+    }
+   ],
+   "hintDe": "Eine Stimme ist ein Gerücht — wie viele braucht ein Bericht?",
+   "hintEn": null,
+   "explainDe": "Novaks Handwerksregel: Zwei Quellen für jeden Fakt. Eine Stimme ist ein Gerücht, zwei sind ein Bericht.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u05.ci.the-stand.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "Who paid for the free pizza stand?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "SunWays, the travel sponsor.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "Direktorin Huber, as a surprise.",
+    "Class 4B, from the class fund.",
+    "Nobody — the pizza was left over."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "paid",
+     "de": "bezahlt",
+     "scope": null
+    },
+    {
+     "word": "sponsor",
+     "de": "Sponsor",
+     "scope": null
+    },
+    {
+     "word": "surprise",
+     "de": "Überraschung",
+     "scope": null
+    },
+    {
+     "word": "left over",
+     "de": "übrig",
+     "scope": null
+    },
+    {
+     "word": "fund",
+     "de": "Kassa",
+     "scope": null
+    },
+    {
+     "word": "travel",
+     "de": "Reise-",
+     "scope": null
+    },
+    {
+     "word": "stand",
+     "de": "Stand",
+     "scope": null
+    },
+    {
+     "word": "as",
+     "de": "als",
+     "scope": null
+    }
+   ],
+   "hintDe": "Schau auf das kleine Logo am Stand: eine Sonne über einem Flugzeug.",
+   "hintEn": null,
+   "explainDe": "Der Stand trägt das SunWays-Logo — die Firma, die die Reisen verkauft, füttert die Leute, die abstimmen. Genau das macht die Crew stutzig.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u06.ci.the-question.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What is Amelie's question?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "If the vote is fake, why vote?",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "Which city has the best pizza?",
+    "When does the plane leave?",
+    "Who runs the community chat?"
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "fake",
+     "de": "fake",
+     "scope": null
+    },
+    {
+     "word": "vote",
+     "de": "Abstimmung / abstimmen",
+     "scope": null
+    },
+    {
+     "word": "community",
+     "de": "Community",
+     "scope": null
+    },
+    {
+     "word": "chat",
+     "de": "Chat",
+     "scope": null
+    },
+    {
+     "word": "plane",
+     "de": "Flugzeug",
+     "scope": null
+    },
+    {
+     "word": "question",
+     "de": "Frage",
+     "scope": null
+    }
+   ],
+   "hintDe": "Die naive Frage ist die schärfste — sie beendet das Zögern der Crew.",
+   "hintEn": null,
+   "explainDe": "Amelies Frage bringt es auf den Punkt: Wenn die Abstimmung nicht echt ist, ist Mitmachen sinnlos. Danach gibt es kein Zurück mehr.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u07.ci.the-package.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What did the crew find in the SunWays catalogue?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "Only Sydney has a ready school package.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "All three cities have school packages.",
+    "The catalogue is eight years old.",
+    "Dublin is the cheapest city."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "catalogue",
+     "de": "Katalog",
+     "scope": null
+    },
+    {
+     "word": "package",
+     "de": "Paket",
+     "scope": null
+    },
+    {
+     "word": "ready",
+     "de": "fertig",
+     "scope": null
+    },
+    {
+     "word": "cheapest",
+     "de": "billigste",
+     "scope": null
+    },
+    {
+     "word": "only",
+     "de": "nur",
+     "scope": null
+    }
+   ],
+   "hintDe": "Dublin: nichts. New York: nichts. Sydney: „Schul-Spezial, Komplettservice.“",
+   "hintEn": null,
+   "explainDe": "Nur EINE der drei Städte existiert als fertiges SunWays-Produkt — die Reise nach Sydney war geplant, bevor irgendwer abgestimmt hat.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u08.ci.the-clip.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What happens to Leah's 3 a.m. clip?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "Leah deletes it herself.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "The crew publishes it live.",
+    "Steiner takes the camera away.",
+    "Leo hides it in the archive."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "deletes",
+     "de": "löscht",
+     "scope": null
+    },
+    {
+     "word": "publishes",
+     "de": "veröffentlicht",
+     "scope": null
+    },
+    {
+     "word": "hides",
+     "de": "versteckt",
+     "scope": null
+    },
+    {
+     "word": "herself",
+     "de": "selbst",
+     "scope": null
+    },
+    {
+     "word": "clip",
+     "de": "Clip",
+     "scope": null
+    },
+    {
+     "word": "takes",
+     "de": "nimmt",
+     "scope": null
+    },
+    {
+     "word": "camera",
+     "de": "Kamera",
+     "scope": null
+    },
+    {
+     "word": "archive",
+     "de": "Archiv",
+     "scope": null
+    }
+   ],
+   "hintDe": "Der beste Beweis, auf die schlechteste Art bekommen — was macht die Crew damit?",
+   "hintEn": null,
+   "explainDe": "Der Clip bricht Novaks und Saras Regeln. Leah drückt selbst auf Löschen — und schreibt die neue Regel an die Wand: Wir sind nicht die Story.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u09.ci.the-cards.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "How does the crew prepare for the interview?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "Breathing, and every question on its own card.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "They write angry comments online.",
+    "They film Steiner secretly again.",
+    "They cancel the interview."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "breathing",
+     "de": "Atmen",
+     "scope": null
+    },
+    {
+     "word": "card",
+     "de": "Karte",
+     "scope": null
+    },
+    {
+     "word": "cancel",
+     "de": "absagen",
+     "scope": null
+    },
+    {
+     "word": "secretly",
+     "de": "heimlich",
+     "scope": null
+    },
+    {
+     "word": "prepare",
+     "de": "vorbereiten",
+     "scope": null
+    },
+    {
+     "word": "question",
+     "de": "Frage",
+     "scope": null
+    },
+    {
+     "word": "online",
+     "de": "online",
+     "scope": null
+    },
+    {
+     "word": "film",
+     "de": "filmen",
+     "scope": null
+    }
+   ],
+   "hintDe": "Vier einatmen, vier halten, vier aus — und dann Karte für Karte.",
+   "hintEn": null,
+   "explainDe": "Profis bereiten sich vor: Atmen gegen die Angst, kurze höfliche Fragen auf Karten. Der Körper zittert trotzdem — gefragt wird trotzdem.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u10.ci.the-reason.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "Why did Steiner sign the SunWays agreement?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "The sponsor money pays for kids who cannot afford a trip.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "He wants to fly to Sydney himself.",
+    "Brandt is his old school friend.",
+    "The Direktorin ordered him to sign."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "sponsor",
+     "de": "Sponsor",
+     "scope": null
+    },
+    {
+     "word": "afford",
+     "de": "sich leisten",
+     "scope": null
+    },
+    {
+     "word": "sign",
+     "de": "unterschreiben",
+     "scope": null
+    },
+    {
+     "word": "ordered",
+     "de": "befohlen",
+     "scope": null
+    },
+    {
+     "word": "agreement",
+     "de": "Vereinbarung",
+     "scope": null
+    },
+    {
+     "word": "trip",
+     "de": "Reise",
+     "scope": null
+    },
+    {
+     "word": "himself",
+     "de": "selbst",
+     "scope": null
+    },
+    {
+     "word": "Direktorin",
+     "de": "Direktorin",
+     "scope": null
+    }
+   ],
+   "hintDe": "Die zweite Seite hinter dem Vertrag: zwölf Namen, Beträge, „Reise-Fonds“.",
+   "hintEn": null,
+   "explainDe": "Der Deal ist falsch, der Grund ist menschlich: Steiners Liste bezahlt die Reise für Kinder, deren Familien es sich nicht leisten können. Wahr und unfair im selben Satz.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u11.ci.the-hole.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "What did the crew find in the old school mags?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "An investigation that was announced but never printed.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "A love letter from a teacher.",
+    "The winner of this year's vote.",
+    "Leo's baby photos."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "investigation",
+     "de": "Recherche",
+     "scope": null
+    },
+    {
+     "word": "announced",
+     "de": "angekündigt",
+     "scope": null
+    },
+    {
+     "word": "printed",
+     "de": "gedruckt",
+     "scope": null
+    },
+    {
+     "word": "mags",
+     "de": "Zeitungen",
+     "scope": null
+    },
+    {
+     "word": "winner",
+     "de": "Sieger",
+     "scope": null
+    },
+    {
+     "word": "baby",
+     "de": "Baby-",
+     "scope": null
+    },
+    {
+     "word": "photos",
+     "de": "Fotos",
+     "scope": null
+    }
+   ],
+   "hintDe": "Ausgabe 4 kündigt Teil zwei an — und Ausgabe 5 hat ein Loch.",
+   "hintEn": null,
+   "explainDe": "Vor acht Jahren wollte die Schülerzeitung eine gelenkte Abstimmung aufdecken. Der Artikel erschien nie — die Crew erbt die unvollendete Geschichte.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u12.ci.the-dome.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "Why does the planetarium evening matter?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "The whole cast of the story is in one room.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "The crew films the fake stars for the channel.",
+    "Ben wins the space quiz.",
+    "The vote happens under the dome."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "dome",
+     "de": "Kuppel",
+     "scope": null
+    },
+    {
+     "word": "cast",
+     "de": "alle Beteiligten",
+     "scope": null
+    },
+    {
+     "word": "quiz",
+     "de": "Quiz",
+     "scope": null
+    },
+    {
+     "word": "matter",
+     "de": "wichtig sein",
+     "scope": null
+    },
+    {
+     "word": "planetarium",
+     "de": "Planetarium",
+     "scope": null
+    },
+    {
+     "word": "films",
+     "de": "filmt",
+     "scope": null
+    },
+    {
+     "word": "fake",
+     "de": "falsch",
+     "scope": null
+    },
+    {
+     "word": "channel",
+     "de": "Kanal",
+     "scope": null
+    },
+    {
+     "word": "wins",
+     "de": "gewinnt",
+     "scope": null
+    }
+   ],
+   "hintDe": "Crew, Steiner, Brandt, Huber — alle unter einer Kuppel, in einer Pause.",
+   "hintEn": null,
+   "explainDe": "Die Weltraumwoche bringt alle Beteiligten in einen Raum. Genau dort passiert die Konfrontation — so, wie die Crew sie in Kapitel 10 angelegt hat.",
+   "explainEn": null,
+   "strict": false
+  },
+  {
+   "id": "g4u13.ci.the-revote.mc.001",
+   "rev": 1,
+   "difficulty": 1,
+   "format": "multiple-choice",
+   "prompt": {
+    "text": "Who wins the honest re-vote?",
+    "lang": "en",
+    "blanks": 0
+   },
+   "answers": [
+    {
+     "text": "Sydney — the same city, fairly this time.",
+     "tier": "full"
+    }
+   ],
+   "direction": null,
+   "distractors": [
+    "Dublin, because the crew pitched it.",
+    "New York, in Ben's honour.",
+    "Nobody — the trip is cancelled."
+   ],
+   "pairs": [],
+   "groups": [],
+   "gloss": [
+    {
+     "word": "fairly",
+     "de": "fair / ehrlich",
+     "scope": null
+    },
+    {
+     "word": "honour",
+     "de": "zu Ehren",
+     "scope": null
+    },
+    {
+     "word": "cancelled",
+     "de": "abgesagt",
+     "scope": null
+    },
+    {
+     "word": "re-vote",
+     "de": "Neuwahl",
+     "scope": null
+    },
+    {
+     "word": "wins",
+     "de": "gewinnt",
+     "scope": null
+    },
+    {
+     "word": "same",
+     "de": "gleiche",
+     "scope": null
+    },
+    {
+     "word": "pitched",
+     "de": "gepitcht",
+     "scope": null
+    },
+    {
+     "word": "trip",
+     "de": "Reise",
+     "scope": null
+    }
+   ],
+   "hintDe": "Das Ergebnis wird zweimal vorgelesen, weil die Aula lacht.",
+   "hintEn": null,
+   "explainDe": "Sydney gewinnt wieder — aber diesmal echt. Ben sagt es am besten: Gleiche Stadt, andere Schule. Es ging nie um das Reiseziel, sondern um die ehrliche Wahl.",
+   "explainEn": null,
+   "strict": false
+  }
+ ]
 }
