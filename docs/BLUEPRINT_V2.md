@@ -119,7 +119,7 @@ Goal: retyping the uncorrected sentence (or the statement) never earns partial v
 Steps: (1) evidence pass — for every error-correction/question-formation item, does `partialContains(prompt.text, fullAnswer)` pass? Table into the PR body (the K-2 artifact). (2) Remove both formats from `PARTIAL_FALLBACK_FORMATS` (`packages/engine/src/grade.ts:166-173`). (3) Regression tests: retyped error ⇒ `wrong` · near-echo (prompt minus one word) ⇒ `wrong` · genuine half-right on translation/gap-fill still earns partial · authored partial-TIER answers on ec/qf still grade `partial`.
 Exit criteria: `pnpm --filter @domigo/engine test` green incl. the 4 new tests; evidence table present. Koki-gate **K-2** (15min policy) before merge.
 
-**A-3 · The curation standard** (0.5–1d, **Fable-authored**, lands before the first fix wave)
+**A-3 · The curation standard** (0.5–1d, **Fable-authored**, lands before the first fix wave) — **✅ SHIPPED** (`docs/handover/17_curation_standard.md`; the doc self-updates via its §7 acceptance rule)
 Goal: codify authored-not-programmed for ALL future student-facing content.
 Files: NEW `docs/handover/17_curation_standard.md` — (1) the doctrine + existing proof points; (2) E-2's R1–R4 as **authoring rules** for new items (ship variant-complete; the audit trends to zero instead of policing forever); (3) the calibration-set pattern (frozen 10–20 item batch + register sheet + Koki gate BEFORE volume — the W-0/G-W/G4-N pattern generalized); (4) overlay-only fix path + **whole-field patch semantics** (full replacement arrays, never deltas — `{...item, ...patch}` verified in `ingest-items.ts:232-239` + `content-loader/src/index.ts:66-94`); (5) blind-solve mandatory whenever keys are touched; (6) fixed sampling tiers per content kind.
 Done-means: merged; the next wave PR links it and follows it.
@@ -271,11 +271,11 @@ Exit criteria: `verify-deploy` + `verify-design` green against prod; scripted au
 **(a) The single-file order** (deviate only when a Koki gate blocks — then pull the next unblocked item, per v1 loop (a)):
 
 ```
-0. BLUEPRINT_V2 + T-1 ✅ · G1-N gate pack ✅ · L-1 language layer (IV.0b) ✅
+0. BLUEPRINT_V2 + T-1 ✅ · G1-N ✅ · L-1 ✅ · hub menu (campaign-keyed themes) ✅ · G4-N ✅ · G2-N ✅ — the narrative program (Part IV.2) is COMPLETE and gated
 1. T-2 deploy-truth (+T-3 eyes-on pass)
 2. A-1 E-2 audit script          ← unblocks K-4 + first fix waves
 3. A-2 E-3 strictness (K-2)
-4. A-3 curation standard (Fable) ← before any wave
+4. A-3 curation standard (Fable) ✅ — handover/17 governs every wave
 5. A-4 E-4 blind-solve harness   → g2 run → K-4/K-8 calibration
 6. A-5 fix waves to green        (interleaves with everything below)
 7. A-6 P-10 vocab rotation
