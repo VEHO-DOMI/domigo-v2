@@ -1,0 +1,35 @@
+{
+  "schema": "names@1",
+  "storyId": "g2.st.the-spill",
+  "reviewedBy": "fable",
+  "names": [
+    {
+      "name": "Jona",
+      "note": "the boy from the book (G1 canon, redeemed — now a real student)"
+    },
+    {
+      "name": "Pixel",
+      "note": "the book-cat (G1 canon; lives at the school now)"
+    },
+    {
+      "name": "Frau Berger",
+      "note": "the class teacher (canon in both grades)"
+    },
+    {
+      "name": "Emma",
+      "note": "class skeptic, new G2 cast"
+    },
+    {
+      "name": "Tarik",
+      "note": "class enthusiast, new G2 cast"
+    },
+    {
+      "name": "Finn",
+      "note": "the book-guide (G1 canon; cameo visits in u06/u15)"
+    },
+    {
+      "name": "Klecks",
+      "note": "what the Blank becomes in the finale (u15)"
+    }
+  ]
+}

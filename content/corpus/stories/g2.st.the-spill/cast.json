@@ -1,0 +1,41 @@
+{
+  "schema": "cast@1",
+  "storyId": "g2.st.the-spill",
+  "members": [
+    {
+      "id": "jona",
+      "nameEn": "Jona",
+      "descriptionDe": "der Junge aus dem Buch — er kann die Tinte lesen",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "berger",
+      "nameEn": "Frau Berger",
+      "descriptionDe": "die Klassenlehrerin — sie weiß mehr, als sie sagt",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "emma",
+      "nameEn": "Emma",
+      "descriptionDe": "die Skeptikerin der Klasse",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "tarik",
+      "nameEn": "Tarik",
+      "descriptionDe": "der Begeisterte",
+      "voice": null,
+      "art": null
+    },
+    {
+      "id": "narrator",
+      "nameEn": "Narrator",
+      "descriptionDe": null,
+      "voice": null,
+      "art": null
+    }
+  ]
+}
