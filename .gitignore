@@ -24,3 +24,4 @@ next-env.d.ts
 
 # local Claude Code session tooling (launch configs etc.) — never repo state
 .claude/
+content/build/audit/blind-solve/cache.json
