@@ -13,7 +13,7 @@ import { useState, type CSSProperties, type ReactNode } from "react";
 import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-schema";
 import { xpForTier, type Tier } from "@domigo/engine";
 import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, useLangMode } from "@domigo/game-feel";
-import type { ResolvedItem } from "@domigo/game-core";
+import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { CastAvatar, CommentSection, castLook } from "./art.tsx";
 import { COPY, SUBSCRIBERS, episodeComments, resultLine, slotPrompt, trailLabel, type CommentBand } from "./novel-copy.ts";
@@ -177,7 +177,7 @@ export function NovelGame(props: NovelGameProps) {
   }
 
   const slot = scene.taskSlots[0];
-  const slotItem = slot ? storyItems[slot.itemId] : undefined;
+  const slotItem = slot ? storyItems[storyItemKey(slot.itemId, slot.variantKey)] : undefined;
   const taskBlocks = slot !== undefined && slotItem !== undefined && !taskDone;
   // FlagGate resolves to its `else` path here (the authored neutral default —
   // wiped-save doctrine); the flag-aware runtime arrives with the G4 package.

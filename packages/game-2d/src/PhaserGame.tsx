@@ -11,7 +11,7 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
 import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, useLangMode } from "@domigo/game-feel";
-import type { ResolvedItem } from "@domigo/game-core";
+import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
 import { OverworldScene, type OverworldState, type PadState } from "./OverworldScene.ts";
 
@@ -115,7 +115,7 @@ function DialogueOverlay({ grade, chapter, castNames, storyItems, onAttempt, onC
   if (!scene) { onClose(); return null; }
 
   const slot = scene.taskSlots[0];
-  const slotItem = slot ? storyItems[slot.itemId] : undefined;
+  const slotItem = slot ? storyItems[storyItemKey(slot.itemId, slot.variantKey)] : undefined;
   const taskBlocks = slot !== undefined && slotItem !== undefined && !taskDone;
   // FlagGate resolves to its `else` path here (the authored neutral default —
   // wiped-save doctrine); the flag-aware runtime arrives with the G4 package.
