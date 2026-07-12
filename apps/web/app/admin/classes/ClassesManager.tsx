@@ -171,6 +171,7 @@ export default function ClassesManager({ initialClasses }: { initialClasses: Cla
                 </div>
                 {editingId !== c.id && (
                   <div style={{ display: "flex", gap: 10, alignItems: "center", flexShrink: 0 }}>
+                    <Link href={`/admin/classes/${c.id}/roster`} style={{ color: "var(--accent)", fontSize: 13, fontWeight: 700 }}>Roster</Link>
                     <button type="button" onClick={() => startRename(c)} style={{ background: "none", border: "none", color: "var(--accent)", cursor: "pointer", fontSize: 13, fontWeight: 700 }}>Rename</button>
                     <button type="button" disabled={savingId === c.id} onClick={() => archive(c)} style={{ background: "none", border: "none", color: "var(--incorrect)", cursor: "pointer", fontSize: 13, fontWeight: 700 }}>Archive</button>
                   </div>

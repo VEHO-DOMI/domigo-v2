@@ -4,6 +4,7 @@
  * strongest additive-safety wall: `drizzle-kit` (scoped by `schemaFilter`) is
  * structurally incapable of dropping/altering a v1 table.
  */
+import { sql } from "drizzle-orm";
 import {
   pgSchema,
   uuid,
@@ -333,6 +334,13 @@ export const v2IdentityUsers = v2.table(
   },
   (t) => ({
     byClass: index("users_class_idx").on(t.classId),
+    // At most one CLAIMED student per (class, case-insensitive nickname) — the DB-level
+    // guard behind roster-service's app-code check. PARTIAL so it ignores provisional
+    // placeholders (many share a givenName-derived displayName pre-claim) and null-class
+    // teachers; a claimed duplicate is what would make lower(display_name) login ambiguous.
+    claimedNicknameUnique: uniqueIndex("users_class_claimed_nickname_unique")
+      .on(t.classId, sql`lower(${t.displayName})`)
+      .where(sql`${t.role} = 'student' and ${t.claimedAt} is not null`),
   }),
 );
 

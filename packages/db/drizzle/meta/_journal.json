@@ -50,6 +50,13 @@
       "when": 1783860589515,
       "tag": "0006_handy_whistler",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1783864450603,
+      "tag": "0007_romantic_human_torch",
+      "breakpoints": true
     }
   ]
 }
