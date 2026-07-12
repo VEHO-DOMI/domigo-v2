@@ -127,6 +127,20 @@
       "contentHash": "fa94353c94bae284dd89af68a9385d40f6f8b7bd28a86060f9e547ffa6adbf33",
       "note": "round 1: 40 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-16T13:07:38.570Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "b26b7a9de6938f9217846f18a851a196715e16d8978ba30fe9eaa9f541cc1794",
+      "note": "gen ingest: 37 vocab + 28 grammar item(s); draft 6f5f13267bf4",
+      "at": "2026-07-12T10:50:26.787Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "b26b7a9de6938f9217846f18a851a196715e16d8978ba30fe9eaa9f541cc1794",
+      "note": "trusted patch (mechanical): 12 answer-pool fix(es) [g3u14.w.balcony, g3u14.w.branch, g3u14.w.bug, g3u14.w.bush, g3u14.w.crash, g3u14.w.crime, g3u14.w.engine, g3u14.w.front-seat, g3u14.w.official-language, g3u14.w.sunburn, g3u14.w.wetland, g3u14.w.wild-animal] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:50:26.789Z"
     }
   ]
 }

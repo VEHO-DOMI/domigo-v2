@@ -78,7 +78,7 @@
     },
     {
       "id": "g3u06.w.art-gallery",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -133,6 +133,10 @@
           {
             "text": "Kunstgalerie",
             "tier": "full"
+          },
+          {
+            "text": "die Kunstgalerie",
+            "tier": "full"
           }
         ]
       },
@@ -146,7 +150,7 @@
     },
     {
       "id": "g3u06.w.bridge",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -201,6 +205,10 @@
           {
             "text": "Brücke",
             "tier": "full"
+          },
+          {
+            "text": "die Brücke",
+            "tier": "full"
           }
         ]
       },
@@ -214,7 +222,7 @@
     },
     {
       "id": "g3u06.w.building",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -269,6 +277,10 @@
           {
             "text": "Gebäude",
             "tier": "full"
+          },
+          {
+            "text": "das Gebäude",
+            "tier": "full"
           }
         ]
       },
@@ -282,7 +294,7 @@
     },
     {
       "id": "g3u06.w.collection",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -337,6 +349,10 @@
           {
             "text": "Sammlung",
             "tier": "full"
+          },
+          {
+            "text": "die Sammlung",
+            "tier": "full"
           }
         ]
       },
@@ -350,7 +366,7 @@
     },
     {
       "id": "g3u06.w.contract",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -404,6 +420,10 @@
         "enToDe": [
           {
             "text": "Vertrag",
+            "tier": "full"
+          },
+          {
+            "text": "der Vertrag",
             "tier": "full"
           }
         ]
@@ -486,7 +506,7 @@
     },
     {
       "id": "g3u06.w.district",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -548,6 +568,14 @@
           },
           {
             "text": "Viertel",
+            "tier": "full"
+          },
+          {
+            "text": "der Bezirk",
+            "tier": "full"
+          },
+          {
+            "text": "das Viertel",
             "tier": "full"
           }
         ]
@@ -626,7 +654,7 @@
     },
     {
       "id": "g3u06.w.fever",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -681,6 +709,10 @@
           {
             "text": "Fieber",
             "tier": "full"
+          },
+          {
+            "text": "das Fieber",
+            "tier": "full"
           }
         ]
       },
@@ -694,7 +726,7 @@
     },
     {
       "id": "g3u06.w.government",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -748,6 +780,10 @@
         "enToDe": [
           {
             "text": "Regierung",
+            "tier": "full"
+          },
+          {
+            "text": "die Regierung",
             "tier": "full"
           }
         ]
@@ -890,7 +926,7 @@
     },
     {
       "id": "g3u06.w.park",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -945,6 +981,10 @@
           {
             "text": "Park",
             "tier": "full"
+          },
+          {
+            "text": "der Park",
+            "tier": "full"
           }
         ]
       },
@@ -958,7 +998,7 @@
     },
     {
       "id": "g3u06.w.path",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1017,6 +1057,14 @@
           {
             "text": "Pfad",
             "tier": "full"
+          },
+          {
+            "text": "der Weg",
+            "tier": "full"
+          },
+          {
+            "text": "der Pfad",
+            "tier": "full"
           }
         ]
       },
@@ -1030,7 +1078,7 @@
     },
     {
       "id": "g3u06.w.play",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1085,6 +1133,10 @@
           {
             "text": "Theaterstück",
             "tier": "full"
+          },
+          {
+            "text": "das Theaterstück",
+            "tier": "full"
           }
         ]
       },
@@ -1098,7 +1150,7 @@
     },
     {
       "id": "g3u06.w.prison",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1153,6 +1205,10 @@
           {
             "text": "Gefängnis",
             "tier": "full"
+          },
+          {
+            "text": "das Gefängnis",
+            "tier": "full"
           }
         ]
       },
@@ -1166,7 +1222,7 @@
     },
     {
       "id": "g3u06.w.raven",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1221,6 +1277,10 @@
           {
             "text": "Rabe",
             "tier": "full"
+          },
+          {
+            "text": "der Rabe",
+            "tier": "full"
           }
         ]
       },
@@ -1234,7 +1294,7 @@
     },
     {
       "id": "g3u06.w.river",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1289,6 +1349,10 @@
           {
             "text": "Fluss",
             "tier": "full"
+          },
+          {
+            "text": "der Fluss",
+            "tier": "full"
           }
         ]
       },
@@ -1302,7 +1366,7 @@
     },
     {
       "id": "g3u06.w.shop",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1365,6 +1429,14 @@
           {
             "text": "Laden",
             "tier": "full"
+          },
+          {
+            "text": "das Geschäft",
+            "tier": "full"
+          },
+          {
+            "text": "der Laden",
+            "tier": "full"
           }
         ]
       },
@@ -1378,7 +1450,7 @@
     },
     {
       "id": "g3u06.w.shopping-centre",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1436,6 +1508,10 @@
         "enToDe": [
           {
             "text": "Einkaufszentrum",
+            "tier": "full"
+          },
+          {
+            "text": "das Einkaufszentrum",
             "tier": "full"
           }
         ]
@@ -1522,7 +1598,7 @@
     },
     {
       "id": "g3u06.w.square",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1577,6 +1653,10 @@
           {
             "text": "Platz",
             "tier": "full"
+          },
+          {
+            "text": "der Platz",
+            "tier": "full"
           }
         ]
       },
@@ -1590,7 +1670,7 @@
     },
     {
       "id": "g3u06.w.stadium",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1645,6 +1725,10 @@
           {
             "text": "Stadion",
             "tier": "full"
+          },
+          {
+            "text": "das Stadion",
+            "tier": "full"
           }
         ]
       },
@@ -1658,7 +1742,7 @@
     },
     {
       "id": "g3u06.w.street",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1713,6 +1797,10 @@
           {
             "text": "Straße",
             "tier": "full"
+          },
+          {
+            "text": "die Straße",
+            "tier": "full"
           }
         ]
       },
@@ -1726,7 +1814,7 @@
     },
     {
       "id": "g3u06.w.sugar",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1777,6 +1865,10 @@
           {
             "text": "Zucker",
             "tier": "full"
+          },
+          {
+            "text": "der Zucker",
+            "tier": "full"
           }
         ]
       },
@@ -1790,7 +1882,7 @@
     },
     {
       "id": "g3u06.w.the-houses-of-parliament",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1849,6 +1941,10 @@
           {
             "text": "das Parlament",
             "tier": "full"
+          },
+          {
+            "text": "Parlament",
+            "tier": "full"
           }
         ]
       },
@@ -1862,7 +1958,7 @@
     },
     {
       "id": "g3u06.w.theatre",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1920,6 +2016,10 @@
         "enToDe": [
           {
             "text": "Theater",
+            "tier": "full"
+          },
+          {
+            "text": "das Theater",
             "tier": "full"
           }
         ]
@@ -2810,7 +2910,7 @@
     },
     {
       "id": "g3u06.w.tourist-attraction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2865,6 +2965,10 @@
           {
             "text": "Sehenswürdigkeit",
             "tier": "full"
+          },
+          {
+            "text": "die Sehenswürdigkeit",
+            "tier": "full"
           }
         ]
       },
@@ -2878,7 +2982,7 @@
     },
     {
       "id": "g3u06.w.tower",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2933,6 +3037,10 @@
           {
             "text": "Turm",
             "tier": "full"
+          },
+          {
+            "text": "der Turm",
+            "tier": "full"
           }
         ]
       },
@@ -2946,7 +3054,7 @@
     },
     {
       "id": "g3u06.w.traffic",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2997,6 +3105,10 @@
           {
             "text": "Verkehr",
             "tier": "full"
+          },
+          {
+            "text": "der Verkehr",
+            "tier": "full"
           }
         ]
       },
@@ -3010,7 +3122,7 @@
     },
     {
       "id": "g3u06.w.view",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3068,6 +3180,14 @@
           },
           {
             "text": "Aussicht",
+            "tier": "full"
+          },
+          {
+            "text": "der Ausblick",
+            "tier": "full"
+          },
+          {
+            "text": "die Aussicht",
             "tier": "full"
           }
         ]

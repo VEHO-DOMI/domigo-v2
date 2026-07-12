@@ -214,7 +214,7 @@
     },
     {
       "id": "g3u03.w.decision",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -273,6 +273,10 @@
           {
             "text": "Entscheidung",
             "tier": "full"
+          },
+          {
+            "text": "die Entscheidung",
+            "tier": "full"
           }
         ]
       },
@@ -286,7 +290,7 @@
     },
     {
       "id": "g3u03.w.departure",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -348,6 +352,14 @@
           },
           {
             "text": "Abfahrt",
+            "tier": "full"
+          },
+          {
+            "text": "der Abflug",
+            "tier": "full"
+          },
+          {
+            "text": "die Abfahrt",
             "tier": "full"
           }
         ]
@@ -430,7 +442,7 @@
     },
     {
       "id": "g3u03.w.experience",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -493,6 +505,10 @@
           {
             "text": "Erlebnis",
             "tier": "partial"
+          },
+          {
+            "text": "die Erfahrung",
+            "tier": "full"
           }
         ]
       },
@@ -582,7 +598,7 @@
     },
     {
       "id": "g3u03.w.flight",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -641,6 +657,10 @@
           {
             "text": "Flug",
             "tier": "full"
+          },
+          {
+            "text": "der Flug",
+            "tier": "full"
           }
         ]
       },
@@ -665,7 +685,7 @@
     },
     {
       "id": "g3u03.w.hut",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -723,6 +743,10 @@
         "enToDe": [
           {
             "text": "Hütte",
+            "tier": "full"
+          },
+          {
+            "text": "die Hütte",
             "tier": "full"
           }
         ]
@@ -901,7 +925,7 @@
     },
     {
       "id": "g3u03.w.journey",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -963,6 +987,10 @@
         "enToDe": [
           {
             "text": "Reise",
+            "tier": "full"
+          },
+          {
+            "text": "die Reise",
             "tier": "full"
           }
         ]
@@ -4464,7 +4492,7 @@
     },
     {
       "id": "g3u03.w.wilderness",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -4514,6 +4542,10 @@
         "enToDe": [
           {
             "text": "Wildnis",
+            "tier": "full"
+          },
+          {
+            "text": "die Wildnis",
             "tier": "full"
           }
         ]

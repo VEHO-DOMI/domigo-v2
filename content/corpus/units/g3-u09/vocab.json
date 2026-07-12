@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "g3u09.w.community",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -64,6 +64,14 @@
           },
           {
             "text": "Gemeinde",
+            "tier": "full"
+          },
+          {
+            "text": "die Gemeinschaft",
+            "tier": "full"
+          },
+          {
+            "text": "die Gemeinde",
             "tier": "full"
           }
         ]
@@ -455,7 +463,7 @@
     },
     {
       "id": "g3u09.w.litter-picking",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -517,6 +525,10 @@
         "enToDe": [
           {
             "text": "Müllsammeln",
+            "tier": "full"
+          },
+          {
+            "text": "das Müllsammeln",
             "tier": "full"
           }
         ]

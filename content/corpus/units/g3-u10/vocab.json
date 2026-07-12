@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "g3u10.w.ability",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -69,6 +69,10 @@
           {
             "text": "Können",
             "tier": "partial"
+          },
+          {
+            "text": "die Fähigkeit",
+            "tier": "full"
           }
         ]
       },
@@ -82,7 +86,7 @@
     },
     {
       "id": "g3u10.w.argument",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -145,6 +149,14 @@
           {
             "text": "Streit",
             "tier": "full"
+          },
+          {
+            "text": "das Argument",
+            "tier": "full"
+          },
+          {
+            "text": "der Streit",
+            "tier": "full"
           }
         ]
       },
@@ -164,7 +176,7 @@
     },
     {
       "id": "g3u10.w.businessman",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -223,6 +235,10 @@
           {
             "text": "Geschäftsmann",
             "tier": "full"
+          },
+          {
+            "text": "der Geschäftsmann",
+            "tier": "full"
           }
         ]
       },
@@ -242,7 +258,7 @@
     },
     {
       "id": "g3u10.w.city-council",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -301,6 +317,10 @@
           {
             "text": "Gemeinderat",
             "tier": "partial"
+          },
+          {
+            "text": "der Stadtrat",
+            "tier": "full"
           }
         ]
       },
@@ -314,7 +334,7 @@
     },
     {
       "id": "g3u10.w.cloth-bag",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -377,6 +397,14 @@
           {
             "text": "Stoffbeutel",
             "tier": "full"
+          },
+          {
+            "text": "die Stofftasche",
+            "tier": "full"
+          },
+          {
+            "text": "der Stoffbeutel",
+            "tier": "full"
           }
         ]
       },
@@ -390,7 +418,7 @@
     },
     {
       "id": "g3u10.w.compromise",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -449,6 +477,10 @@
           {
             "text": "Kompromiss",
             "tier": "full"
+          },
+          {
+            "text": "der Kompromiss",
+            "tier": "full"
           }
         ]
       },
@@ -473,7 +505,7 @@
     },
     {
       "id": "g3u10.w.concern",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -535,6 +567,14 @@
           },
           {
             "text": "Sorge",
+            "tier": "full"
+          },
+          {
+            "text": "das Anliegen",
+            "tier": "full"
+          },
+          {
+            "text": "die Sorge",
             "tier": "full"
           }
         ]
@@ -641,7 +681,7 @@
     },
     {
       "id": "g3u10.w.debate",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -703,6 +743,14 @@
           },
           {
             "text": "Diskussion",
+            "tier": "full"
+          },
+          {
+            "text": "die Debatte",
+            "tier": "full"
+          },
+          {
+            "text": "die Diskussion",
             "tier": "full"
           }
         ]
@@ -1443,7 +1491,7 @@
     },
     {
       "id": "g3u10.w.law",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1501,6 +1549,10 @@
         "enToDe": [
           {
             "text": "Gesetz",
+            "tier": "full"
+          },
+          {
+            "text": "das Gesetz",
             "tier": "full"
           }
         ]
@@ -1583,7 +1635,7 @@
     },
     {
       "id": "g3u10.w.majority",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1641,6 +1693,10 @@
         "enToDe": [
           {
             "text": "Mehrheit",
+            "tier": "full"
+          },
+          {
+            "text": "die Mehrheit",
             "tier": "full"
           }
         ]
@@ -1809,7 +1865,7 @@
     },
     {
       "id": "g3u10.w.organisation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1868,6 +1924,10 @@
           {
             "text": "Organisation",
             "tier": "full"
+          },
+          {
+            "text": "die Organisation",
+            "tier": "full"
           }
         ]
       },
@@ -1881,7 +1941,7 @@
     },
     {
       "id": "g3u10.w.quality",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1936,6 +1996,10 @@
           {
             "text": "Güte",
             "tier": "partial"
+          },
+          {
+            "text": "die Qualität",
+            "tier": "full"
           }
         ]
       },
@@ -2039,7 +2103,7 @@
     },
     {
       "id": "g3u10.w.suffrage",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2098,6 +2162,14 @@
           {
             "text": "Stimmrecht",
             "tier": "full"
+          },
+          {
+            "text": "das Wahlrecht",
+            "tier": "full"
+          },
+          {
+            "text": "das Stimmrecht",
+            "tier": "full"
           }
         ]
       },
@@ -2117,7 +2189,7 @@
     },
     {
       "id": "g3u10.w.suffragette",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2179,6 +2251,14 @@
           },
           {
             "text": "Suffragette",
+            "tier": "full"
+          },
+          {
+            "text": "die Frauenrechtlerin",
+            "tier": "full"
+          },
+          {
+            "text": "die Suffragette",
             "tier": "full"
           }
         ]
@@ -4139,7 +4219,7 @@
     },
     {
       "id": "g3u10.w.town-hall",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4198,6 +4278,14 @@
           {
             "text": "Gemeindeamt",
             "tier": "full"
+          },
+          {
+            "text": "das Rathaus",
+            "tier": "full"
+          },
+          {
+            "text": "das Gemeindeamt",
+            "tier": "full"
           }
         ]
       },
@@ -4211,7 +4299,7 @@
     },
     {
       "id": "g3u10.w.way-out",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4274,6 +4362,10 @@
           {
             "text": "Lösung",
             "tier": "partial"
+          },
+          {
+            "text": "der Ausweg",
+            "tier": "full"
           }
         ]
       },
@@ -4298,7 +4390,7 @@
     },
     {
       "id": "g3u10.w.wrapping",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4356,6 +4448,10 @@
         "enToDe": [
           {
             "text": "Verpackung",
+            "tier": "full"
+          },
+          {
+            "text": "die Verpackung",
             "tier": "full"
           }
         ]

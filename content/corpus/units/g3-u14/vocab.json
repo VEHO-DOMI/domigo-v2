@@ -79,7 +79,7 @@
     },
     {
       "id": "g3u14.w.balcony",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -139,6 +139,10 @@
           {
             "text": "Balkon",
             "tier": "full"
+          },
+          {
+            "text": "der Balkon",
+            "tier": "full"
           }
         ]
       },
@@ -152,7 +156,7 @@
     },
     {
       "id": "g3u14.w.branch",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -216,6 +220,10 @@
           {
             "text": "Zweig",
             "tier": "partial"
+          },
+          {
+            "text": "der Ast",
+            "tier": "full"
           }
         ]
       },
@@ -229,7 +237,7 @@
     },
     {
       "id": "g3u14.w.bug",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -301,6 +309,10 @@
           {
             "text": "Käfer",
             "tier": "partial"
+          },
+          {
+            "text": "das Insekt",
+            "tier": "full"
           }
         ]
       },
@@ -314,7 +326,7 @@
     },
     {
       "id": "g3u14.w.bush",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -378,6 +390,10 @@
           {
             "text": "Strauch",
             "tier": "partial"
+          },
+          {
+            "text": "der Busch",
+            "tier": "full"
           }
         ]
       },
@@ -464,7 +480,7 @@
     },
     {
       "id": "g3u14.w.crash",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -532,6 +548,14 @@
           {
             "text": "Zusammenstoß",
             "tier": "full"
+          },
+          {
+            "text": "der Unfall",
+            "tier": "full"
+          },
+          {
+            "text": "der Zusammenstoß",
+            "tier": "full"
           }
         ]
       },
@@ -545,7 +569,7 @@
     },
     {
       "id": "g3u14.w.crime",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -609,6 +633,10 @@
           {
             "text": "Straftat",
             "tier": "partial"
+          },
+          {
+            "text": "das Verbrechen",
+            "tier": "full"
           }
         ]
       },
@@ -699,7 +727,7 @@
     },
     {
       "id": "g3u14.w.engine",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -763,6 +791,10 @@
           {
             "text": "Motor",
             "tier": "full"
+          },
+          {
+            "text": "der Motor",
+            "tier": "full"
           }
         ]
       },
@@ -776,7 +808,7 @@
     },
     {
       "id": "g3u14.w.front-seat",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -840,6 +872,10 @@
           {
             "text": "Beifahrersitz",
             "tier": "partial"
+          },
+          {
+            "text": "der Vordersitz",
+            "tier": "full"
           }
         ]
       },
@@ -921,7 +957,7 @@
     },
     {
       "id": "g3u14.w.official-language",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -976,6 +1012,10 @@
           },
           {
             "text": "offizielle Sprache",
+            "tier": "full"
+          },
+          {
+            "text": "die Amtssprache",
             "tier": "full"
           }
         ]
@@ -1349,7 +1389,7 @@
     },
     {
       "id": "g3u14.w.sunburn",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1400,6 +1440,10 @@
         "enToDe": [
           {
             "text": "Sonnenbrand",
+            "tier": "full"
+          },
+          {
+            "text": "der Sonnenbrand",
             "tier": "full"
           }
         ]
@@ -2712,7 +2756,7 @@
     },
     {
       "id": "g3u14.w.wetland",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2776,6 +2820,14 @@
           {
             "text": "Feuchtgebiet",
             "tier": "full"
+          },
+          {
+            "text": "das Sumpfgebiet",
+            "tier": "full"
+          },
+          {
+            "text": "das Feuchtgebiet",
+            "tier": "full"
           }
         ]
       },
@@ -2789,7 +2841,7 @@
     },
     {
       "id": "g3u14.w.wild-animal",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2852,6 +2904,10 @@
           },
           {
             "text": "wildes Tier",
+            "tier": "full"
+          },
+          {
+            "text": "das Wildtier",
             "tier": "full"
           }
         ]
