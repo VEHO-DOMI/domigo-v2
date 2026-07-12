@@ -2,10 +2,10 @@
   "schema": "variant-audit@1",
   "totals": {
     "scanned": 5898,
-    "critical": 13,
+    "critical": 0,
     "advisory": 298,
     "byRule": {
-      "R2": 157,
+      "R2": 144,
       "R3": 154
     },
     "byGrade": {
@@ -18,11 +18,11 @@
         "advisory": 44
       },
       "g3": {
-        "critical": 9,
+        "critical": 0,
         "advisory": 75
       },
       "g4": {
-        "critical": 4,
+        "critical": 0,
         "advisory": 60
       }
     }
@@ -1477,14 +1477,6 @@
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
-      "itemId": "g3u05.gi.first-conditional.ec.005",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If you don't hurry, we will be late for school.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
       "itemId": "g3u05.gi.first-conditional.qf.001",
       "unitSlug": "g3-u05",
       "rule": "R3",
@@ -1501,52 +1493,12 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g3u05.gi.first-conditional.tr.002",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I will go without you if you don't come soon.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.first-conditional.tr.002",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If you don't come soon, I will go without you.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.ec.005",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless you finish your homework, you can not play outside.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
       "itemId": "g3u05.gi.unless.tf.001",
       "unitSlug": "g3-u05",
       "rule": "R3",
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"unless he asks me to\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tr.004",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless you do your homework, you can not play with your friends.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tr.004",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You can not play with your friends unless you do your homework.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
     },
     {
       "itemId": "g3u06.gi.relative-clauses.ec.003",
@@ -1765,14 +1717,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g3u10.gi.be-allowed-to-tenses.ec.003",
-      "unitSlug": "g3-u10",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We will be allowed to stay out later next year.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
       "itemId": "g3u10.gi.be-allowed-to-tenses.qf.001",
       "unitSlug": "g3-u10",
       "rule": "R3",
@@ -1787,22 +1731,6 @@
       "severity": "advisory",
       "evidence": "question-formation accepts exactly one full answer: \"Will they be allowed to sign the petition?\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g3u10.gi.be-allowed-to-tenses.tr.002",
-      "unitSlug": "g3-u10",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He will be allowed to travel alone next year.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u10.gi.be-allowed-to-tenses.tr.002",
-      "unitSlug": "g3-u10",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Next year, he will be allowed to travel alone.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
     },
     {
       "itemId": "g3u10.gi.could-was-able-to.qf.002",
@@ -2125,14 +2053,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g4u05.gi.past-perfect-connectors.gf.009",
-      "unitSlug": "g4-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"had not eaten\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
       "itemId": "g4u05.gi.past-perfect-connectors.qf.001",
       "unitSlug": "g4-u05",
       "rule": "R3",
@@ -2373,14 +2293,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g4u10.gi.third-conditional.tr.003",
-      "unitSlug": "g4-u10",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If it rains tomorrow, we will stay at home.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
       "itemId": "g4u11.gi.reflexive-pronouns.ec.007",
       "unitSlug": "g4-u11",
       "rule": "R2",
@@ -2419,22 +2331,6 @@
       "severity": "advisory",
       "evidence": "question-formation accepts exactly one full answer: \"Who taught Tom to play the guitar?\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g4u11.gi.reflexive-pronouns.tf.002",
-      "unitSlug": "g4-u11",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Don't worry — I cooked dinner myself!\" has no expanded twin",
-      "suggestion": "add \"do not worry — i cooked dinner myself!\" as a full answer"
-    },
-    {
-      "itemId": "g4u11.gi.reflexive-pronouns.tr.005",
-      "unitSlug": "g4-u11",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You will have to read the book yourself.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
     },
     {
       "itemId": "g4u12.gi.phrasal-verbs.qf.001",

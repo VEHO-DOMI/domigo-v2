@@ -16101,6 +16101,48 @@
       "reason": "word-formation: affix label / base word — literal taught content of this unit",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g3-u10",
+      "itemId": null,
+      "field": null,
+      "token": "we'll",
+      "reason": "A-5 R2: natural contraction of already-taught full-form words; accepted as an answer per K-4 (a correct contraction must not grade wrong)."
+    },
+    {
+      "slug": "g3-u10",
+      "itemId": null,
+      "field": null,
+      "token": "he'll",
+      "reason": "A-5 R2: natural contraction of already-taught full-form words; accepted as an answer per K-4 (a correct contraction must not grade wrong)."
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "hadn't",
+      "reason": "A-5 R2: natural contraction of already-taught full-form words; accepted as an answer per K-4 (a correct contraction must not grade wrong)."
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "we'll",
+      "reason": "A-5 R2: natural contraction of already-taught full-form words; accepted as an answer per K-4 (a correct contraction must not grade wrong)."
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "you'll",
+      "reason": "A-5 R2: natural contraction of already-taught full-form words; accepted as an answer per K-4 (a correct contraction must not grade wrong)."
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "worry",
+      "reason": "A-5 R2: already used in the item's own answer (Don't worry…); allow its expansion twin (Do not worry…)."
     }
   ]
 }

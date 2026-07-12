@@ -2460,7 +2460,7 @@
       "id": "g4u10.gi.third-conditional.tr.003",
       "structureId": "g4u10.s.third-conditional",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2491,6 +2491,10 @@
         {
           "text": "We will stay at home if it rains tomorrow.",
           "tier": "partial"
+        },
+        {
+          "text": "If it rains tomorrow, we'll stay at home.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",

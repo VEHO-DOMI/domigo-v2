@@ -155,6 +155,20 @@
       "contentHash": "0f9ab4d14ddcee2e9b17db50af4aef257bff4046eea1301d44bb2afc013b9e36",
       "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g3u10.gi.could-was-able-to.tr.009] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T12:03:30.674Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "5b1e6658a0631d0d8081b1460788f8a970e75d9d07be40fd01ec6dc5eebcb435",
+      "note": "gen ingest: 53 vocab + 117 grammar item(s); draft 73977cb02d07",
+      "at": "2026-07-12T12:23:27.542Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "5b1e6658a0631d0d8081b1460788f8a970e75d9d07be40fd01ec6dc5eebcb435",
+      "note": "trusted patch (mechanical): 2 answer-pool fix(es) [g3u10.gi.be-allowed-to-tenses.ec.003, g3u10.gi.be-allowed-to-tenses.tr.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:23:27.544Z"
     }
   ]
 }
