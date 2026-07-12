@@ -4988,7 +4988,7 @@
       "id": "g4u07.gi.want-someone-to.tf.004",
       "structureId": "g4u07.s.want-someone-to",
       "format": "transformation",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -5022,6 +5022,14 @@
         },
         {
           "text": "The school doesn't want us to use our phones in class.",
+          "tier": "full"
+        },
+        {
+          "text": "The school does not want you to use your phones in class.",
+          "tier": "full"
+        },
+        {
+          "text": "The school does not want us to use our phones in class.",
           "tier": "full"
         }
       ],

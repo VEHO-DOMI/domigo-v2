@@ -2075,7 +2075,7 @@
       "id": "g3u07.gi.present-perfect-for-since.tr.002",
       "structureId": "g3u07.s.present-perfect-for-since",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2105,6 +2105,10 @@
         },
         {
           "text": "He hasn't played football since Monday",
+          "tier": "full"
+        },
+        {
+          "text": "He has not played football since Monday",
           "tier": "full"
         }
       ],

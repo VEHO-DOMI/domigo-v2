@@ -148,6 +148,20 @@
       "contentHash": "fe8fe890bda7ea9e76c7359f71367cd499a8fdc9aff88a42b6ed4473c9e2c700",
       "note": "trusted patch (mechanical): 7 answer-pool fix(es) [g3u03.w.decision, g3u03.w.departure, g3u03.w.experience, g3u03.w.flight, g3u03.w.hut, g3u03.w.journey, g3u03.w.wilderness] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:50:23.693Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "83492696a0902b12c537f985cc0dbd0d566dc63c681e4c022ae3d898574fed31",
+      "note": "gen ingest: 54 vocab + 114 grammar item(s); draft d611e38035b4",
+      "at": "2026-07-12T12:03:29.133Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "83492696a0902b12c537f985cc0dbd0d566dc63c681e4c022ae3d898574fed31",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g3u03.gi.time-connectors.tr.001] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:29.135Z"
     }
   ]
 }

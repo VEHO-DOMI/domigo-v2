@@ -127,6 +127,20 @@
       "contentHash": "aba8b8f9dad4706271f413670a117ebc9096d1073265f36770984996c4f97f4c",
       "note": "round 1: 38 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-16T12:31:40.319Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "0be6408b15b7bb4b2e2de742f1a669d0f14b86e3697db6be8d73e235a297b4be",
+      "note": "gen ingest: 34 vocab + 32 grammar item(s); draft c23d9b1873b3",
+      "at": "2026-07-12T12:03:30.977Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "0be6408b15b7bb4b2e2de742f1a669d0f14b86e3697db6be8d73e235a297b4be",
+      "note": "trusted patch (mechanical): 4 answer-pool fix(es) [g3u13.gi.second-conditional.ec.004, g3u13.gi.second-conditional.gf.005, g3u13.gi.second-conditional.gf.009, g3u13.gi.second-conditional.tf.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:30.979Z"
     }
   ]
 }

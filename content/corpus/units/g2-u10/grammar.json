@@ -1404,7 +1404,7 @@
       "id": "g2u10.gi.must.ff.002",
       "structureId": "g2u10.s.must",
       "format": "free-form",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1435,6 +1435,14 @@
         {
           "text": "You mustn't go in there.",
           "tier": "partial"
+        },
+        {
+          "text": "You must not open the door.",
+          "tier": "full"
+        },
+        {
+          "text": "You must not touch the tools.",
+          "tier": "full"
         }
       ],
       "direction": null,

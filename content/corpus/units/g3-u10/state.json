@@ -141,6 +141,20 @@
       "contentHash": "1380194030960e6873993fc7746db522edc724e4c7fb825989062d6844843f37",
       "note": "trusted patch (mechanical): 17 answer-pool fix(es) [g3u10.w.ability, g3u10.w.argument, g3u10.w.businessman, g3u10.w.city-council, g3u10.w.cloth-bag, g3u10.w.compromise, g3u10.w.concern, g3u10.w.debate, g3u10.w.law, g3u10.w.majority, g3u10.w.organisation, g3u10.w.quality, g3u10.w.suffrage, g3u10.w.suffragette, g3u10.w.town-hall, g3u10.w.way-out, g3u10.w.wrapping] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:50:25.881Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "0f9ab4d14ddcee2e9b17db50af4aef257bff4046eea1301d44bb2afc013b9e36",
+      "note": "gen ingest: 53 vocab + 117 grammar item(s); draft 73977cb02d07",
+      "at": "2026-07-12T12:03:30.672Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "0f9ab4d14ddcee2e9b17db50af4aef257bff4046eea1301d44bb2afc013b9e36",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g3u10.gi.could-was-able-to.tr.009] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:30.674Z"
     }
   ]
 }

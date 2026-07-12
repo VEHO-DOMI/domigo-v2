@@ -120,6 +120,20 @@
       "contentHash": "528876114a6f21e554ff7beffe4a08c3da9477f9125cef1405d8334b0fb01bc4",
       "note": "trusted patch (mechanical): 6 answer-pool fix(es) [g2u07.w.communication, g2u07.w.excuse, g2u07.w.fancy-dress-party, g2u07.w.german, g2u07.w.group-chat, g2u07.w.ticket] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:35:59.806Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "8ddbe382b19130d2577ee74d444b84a430e08c966d6885653b7f4a8625fa96da",
+      "note": "gen ingest: 30 vocab + 34 grammar item(s); draft ef4b24fc67ca",
+      "at": "2026-07-12T12:03:27.317Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "8ddbe382b19130d2577ee74d444b84a430e08c966d6885653b7f4a8625fa96da",
+      "note": "trusted patch (mechanical): 2 answer-pool fix(es) [g2u07.gi.going-to-negative.tf.001, g2u07.gi.going-to-negative.tr.001] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:27.319Z"
     }
   ]
 }

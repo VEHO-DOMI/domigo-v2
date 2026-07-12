@@ -348,7 +348,7 @@
       "id": "g4u12.gi.phrasal-verbs.ec.002",
       "structureId": "g4u12.s.phrasal-verbs",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -375,6 +375,10 @@
         {
           "text": "Don't give it up!",
           "tier": "partial"
+        },
+        {
+          "text": "Do not give it up! You can do it.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -574,7 +578,7 @@
       "id": "g4u12.gi.phrasal-verbs.ec.007",
       "structureId": "g4u12.s.phrasal-verbs",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -601,6 +605,10 @@
         {
           "text": "waiting for",
           "tier": "partial"
+        },
+        {
+          "text": "I am waiting for the space shuttle.",
+          "tier": "full"
         }
       ],
       "direction": null,

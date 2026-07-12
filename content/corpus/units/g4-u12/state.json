@@ -134,6 +134,20 @@
       "contentHash": "5feb0502ff9b6af30b72b5367828f85491a474cf64f9f441a836e9051657a1f2",
       "note": "trusted patch (mechanical): 2 answer-pool fix(es) [g4u12.w.engineering, g4u12.w.resource] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T11:06:25.426Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "54b24a206ad77580eee6da8408536aabe12bc4c54fefb7c890440c4a80e444e8",
+      "note": "gen ingest: 36 vocab + 70 grammar item(s); draft d2c334e9d9b5",
+      "at": "2026-07-12T12:03:33.458Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "54b24a206ad77580eee6da8408536aabe12bc4c54fefb7c890440c4a80e444e8",
+      "note": "trusted patch (mechanical): 2 answer-pool fix(es) [g4u12.gi.phrasal-verbs.ec.002, g4u12.gi.phrasal-verbs.ec.007] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:33.460Z"
     }
   ]
 }

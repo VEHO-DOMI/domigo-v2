@@ -1310,7 +1310,7 @@
       "id": "g2u06.gi.have-to.tr.002",
       "structureId": "g2u06.s.have-to",
       "format": "translation",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1345,6 +1345,10 @@
         {
           "text": "You don't have to wash up.",
           "tier": "partial"
+        },
+        {
+          "text": "You do not have to wash up. The guides do it",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",

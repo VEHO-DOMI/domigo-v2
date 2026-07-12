@@ -5216,7 +5216,7 @@
       "id": "g3u03.gi.time-connectors.tr.001",
       "structureId": "g3u03.s.time-connectors",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -5247,6 +5247,14 @@
         {
           "text": "During class, you mustn't eat.",
           "tier": "partial"
+        },
+        {
+          "text": "During the lesson, you must not eat.",
+          "tier": "full"
+        },
+        {
+          "text": "You must not eat during the lesson.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",

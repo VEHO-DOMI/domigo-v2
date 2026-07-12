@@ -3009,7 +3009,7 @@
       "id": "g4u06.gi.question-tags.ec.004",
       "structureId": "g4u06.s.question-tags",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -3040,6 +3040,10 @@
         {
           "text": "do you?",
           "tier": "partial"
+        },
+        {
+          "text": "You do not like maths, do you?",
+          "tier": "full"
         }
       ],
       "direction": null,

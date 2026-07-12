@@ -2,11 +2,11 @@
   "schema": "variant-audit@1",
   "totals": {
     "scanned": 5898,
-    "critical": 166,
-    "advisory": 301,
+    "critical": 13,
+    "advisory": 298,
     "byRule": {
-      "R2": 308,
-      "R3": 159
+      "R2": 157,
+      "R3": 154
     },
     "byGrade": {
       "g1": {
@@ -14,16 +14,16 @@
         "advisory": 119
       },
       "g2": {
-        "critical": 24,
+        "critical": 0,
         "advisory": 44
       },
       "g3": {
-        "critical": 76,
-        "advisory": 77
+        "critical": 9,
+        "advisory": 75
       },
       "g4": {
-        "critical": 66,
-        "advisory": 61
+        "critical": 4,
+        "advisory": 60
       }
     }
   },
@@ -981,70 +981,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g2u02.gi.irregular-verbs.ec.002",
-      "unitSlug": "g2-u02",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I didn't know the password.\" has no expanded twin",
-      "suggestion": "add \"i did not know the password.\" as a full answer"
-    },
-    {
-      "itemId": "g2u02.gi.irregular-verbs.ec.002",
-      "unitSlug": "g2-u02",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I didn't know the password\" has no expanded twin",
-      "suggestion": "add \"i did not know the password\" as a full answer"
-    },
-    {
-      "itemId": "g2u02.gi.past-simple-negation.ec.001",
-      "unitSlug": "g2-u02",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I didn't listen to a thing.\" has no expanded twin",
-      "suggestion": "add \"i did not listen to a thing.\" as a full answer"
-    },
-    {
-      "itemId": "g2u02.gi.past-simple-negation.ec.001",
-      "unitSlug": "g2-u02",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I didn't listen to a thing\" has no expanded twin",
-      "suggestion": "add \"i did not listen to a thing\" as a full answer"
-    },
-    {
-      "itemId": "g2u02.gi.past-simple-negation.ec.002",
-      "unitSlug": "g2-u02",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"The jacket wasn't on the screen.\" has no expanded twin",
-      "suggestion": "add \"the jacket was not on the screen.\" as a full answer"
-    },
-    {
-      "itemId": "g2u02.gi.past-simple-negation.ec.002",
-      "unitSlug": "g2-u02",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"The jacket wasn't on the screen\" has no expanded twin",
-      "suggestion": "add \"the jacket was not on the screen\" as a full answer"
-    },
-    {
-      "itemId": "g2u02.gi.past-simple-negation.gf.001",
-      "unitSlug": "g2-u02",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"didn't\" has no expanded twin",
-      "suggestion": "add \"did not\" as a full answer"
-    },
-    {
-      "itemId": "g2u02.gi.past-simple-negation.gf.002",
-      "unitSlug": "g2-u02",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"wasn't\" has no expanded twin",
-      "suggestion": "add \"was not\" as a full answer"
-    },
-    {
       "itemId": "g2u04.gi.as-as.tf.001",
       "unitSlug": "g2-u04",
       "rule": "R3",
@@ -1101,38 +1037,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g2u06.gi.have-to.tr.002",
-      "unitSlug": "g2-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You don't have to wash up. The guides do it\" has no expanded twin",
-      "suggestion": "add \"you do not have to wash up. the guides do it\" as a full answer"
-    },
-    {
-      "itemId": "g2u07.gi.going-to-negative.tf.001",
-      "unitSlug": "g2-u07",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He isn't going to do the shopping today.\" has no expanded twin",
-      "suggestion": "add \"he is not going to do the shopping today.\" as a full answer"
-    },
-    {
-      "itemId": "g2u07.gi.going-to-negative.tr.001",
-      "unitSlug": "g2-u07",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm not going to do my homework today\" has no expanded twin",
-      "suggestion": "add \"i am not going to do my homework today\" as a full answer"
-    },
-    {
-      "itemId": "g2u08.gi.past-time-markers.ec.004",
-      "unitSlug": "g2-u08",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"She didn't take a photograph of the UFO.\" has no expanded twin",
-      "suggestion": "add \"she did not take a photograph of the ufo.\" as a full answer"
-    },
-    {
       "itemId": "g2u08.gi.past-time-markers.tf.003",
       "unitSlug": "g2-u08",
       "rule": "R3",
@@ -1144,25 +1048,9 @@
       "itemId": "g2u09.gi.one-ones.ff.001",
       "unitSlug": "g2-u09",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Can I have the cheese one? I don't like ham.\" has no expanded twin",
-      "suggestion": "add \"can i have the cheese one? i do not like ham.\" as a full answer"
-    },
-    {
-      "itemId": "g2u09.gi.one-ones.ff.001",
-      "unitSlug": "g2-u09",
-      "rule": "R2",
       "severity": "advisory",
       "evidence": "full answer \"I'd like the ham one, please. I really like ham.\" carries an ambiguous 's/'d — expansion needs a human",
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
-    },
-    {
-      "itemId": "g2u09.gi.one-ones.tf.001",
-      "unitSlug": "g2-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I don't want the red one. I want the green one.\" has no expanded twin",
-      "suggestion": "add \"i do not want the red one. i want the green one.\" as a full answer"
     },
     {
       "itemId": "g2u09.gi.one-ones.tf.002",
@@ -1173,14 +1061,6 @@
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
-      "itemId": "g2u09.gi.some-any.ec.001",
-      "unitSlug": "g2-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I don't have any money.\" has no expanded twin",
-      "suggestion": "add \"i do not have any money.\" as a full answer"
-    },
-    {
       "itemId": "g2u09.gi.some-any.ec.003",
       "unitSlug": "g2-u09",
       "rule": "R2",
@@ -1189,52 +1069,12 @@
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
-      "itemId": "g2u09.gi.some-any.ff.001",
-      "unitSlug": "g2-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"There are some grapes, but there aren't any peaches.\" has no expanded twin",
-      "suggestion": "add \"there are some grapes, but there are not any peaches.\" as a full answer"
-    },
-    {
-      "itemId": "g2u09.gi.some-any.ff.001",
-      "unitSlug": "g2-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"There are some plums and some pears, but there aren't any strawberries.\" has no expanded twin",
-      "suggestion": "add \"there are some plums and some pears, but there are not any strawberries.\" as a full answer"
-    },
-    {
       "itemId": "g2u09.gi.some-any.qf.001",
       "unitSlug": "g2-u09",
       "rule": "R3",
       "severity": "advisory",
       "evidence": "question-formation accepts exactly one full answer: \"Is there any beef in the fridge?\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g2u09.gi.some-any.tr.002",
-      "unitSlug": "g2-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Are there any grapes? — No, there aren't any grapes.\" has no expanded twin",
-      "suggestion": "add \"are there any grapes? — no, there are not any grapes.\" as a full answer"
-    },
-    {
-      "itemId": "g2u09.gi.some-any.tr.002",
-      "unitSlug": "g2-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Are there any grapes? — No, there aren't any.\" has no expanded twin",
-      "suggestion": "add \"are there any grapes? — no, there are not any.\" as a full answer"
-    },
-    {
-      "itemId": "g2u09.gi.some-any.tr.002",
-      "unitSlug": "g2-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Are there any grapes? No, there aren't any grapes.\" has no expanded twin",
-      "suggestion": "add \"are there any grapes? no, there are not any grapes.\" as a full answer"
     },
     {
       "itemId": "g2u10.gi.like-ing.qf.001",
@@ -1251,22 +1091,6 @@
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"I like painting pictures.\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g2u10.gi.must.ff.002",
-      "unitSlug": "g2-u10",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You mustn't open the door.\" has no expanded twin",
-      "suggestion": "add \"you must not open the door.\" as a full answer"
-    },
-    {
-      "itemId": "g2u10.gi.must.ff.002",
-      "unitSlug": "g2-u10",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You mustn't touch the tools.\" has no expanded twin",
-      "suggestion": "add \"you must not touch the tools.\" as a full answer"
     },
     {
       "itemId": "g2u11.gi.possessive-pronouns.qf.001",
@@ -1509,38 +1333,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g2u15.gi.so-do-i.tr.002",
-      "unitSlug": "g2-u15",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"\\\"I can't cook.\\\" — \\\"Neither can I.\\\"\" has no expanded twin",
-      "suggestion": "add \"\\\"i cannot cook.\\\" — \\\"neither can i.\\\"\" as a full answer"
-    },
-    {
-      "itemId": "g2u15.gi.so-do-i.tr.002",
-      "unitSlug": "g2-u15",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I can't cook. Neither can I.\" has no expanded twin",
-      "suggestion": "add \"i cannot cook. neither can i.\" as a full answer"
-    },
-    {
-      "itemId": "g3u01.gi.present-simple.ec.002",
-      "unitSlug": "g3-u01",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He doesn't like pop music\" has no expanded twin",
-      "suggestion": "add \"he does not like pop music\" as a full answer"
-    },
-    {
-      "itemId": "g3u01.gi.present-simple.gf.003",
-      "unitSlug": "g3-u01",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"doesn't\" has no expanded twin",
-      "suggestion": "add \"does not\" as a full answer"
-    },
-    {
       "itemId": "g3u01.gi.present-simple.qf.002",
       "unitSlug": "g3-u01",
       "rule": "R3",
@@ -1637,22 +1429,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g3u03.gi.time-connectors.tr.001",
-      "unitSlug": "g3-u03",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"During the lesson, you mustn't eat.\" has no expanded twin",
-      "suggestion": "add \"during the lesson, you must not eat.\" as a full answer"
-    },
-    {
-      "itemId": "g3u03.gi.time-connectors.tr.001",
-      "unitSlug": "g3-u03",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You mustn't eat during the lesson.\" has no expanded twin",
-      "suggestion": "add \"you must not eat during the lesson.\" as a full answer"
-    },
-    {
       "itemId": "g3u04.gi.comparative-intensifiers.qf.001",
       "unitSlug": "g3-u04",
       "rule": "R3",
@@ -1666,22 +1442,6 @@
       "rule": "R3",
       "severity": "advisory",
       "evidence": "question-formation accepts exactly one full answer: \"How much heavier is a blue whale than an elephant?\"",
-      "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g3u04.gi.comparative-intensifiers.tf.003",
-      "unitSlug": "g3-u04",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"A cat is not nearly as dangerous as a lion.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u04.gi.comparative-intensifiers.tf.003",
-      "unitSlug": "g3-u04",
-      "rule": "R3",
-      "severity": "advisory",
-      "evidence": "transformation accepts exactly one full answer: \"A cat is not nearly as dangerous as a lion.\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
@@ -1709,14 +1469,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g3u04.gi.comparative-intensifiers.tr.002",
-      "unitSlug": "g3-u04",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We've got less homework than last week.\" has no expanded twin",
-      "suggestion": "add \"we have got less homework than last week.\" as a full answer"
-    },
-    {
       "itemId": "g3u04.gi.comparative-intensifiers.tr.004",
       "unitSlug": "g3-u04",
       "rule": "R2",
@@ -1731,22 +1483,6 @@
       "severity": "critical",
       "evidence": "full answer \"If you don't hurry, we will be late for school.\" has no contracted twin",
       "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.first-conditional.ec.005",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If you don't hurry, we will be late for school.\" has no expanded twin",
-      "suggestion": "add \"if you do not hurry, we will be late for school.\" as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.first-conditional.ec.005",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If you don't hurry, we'll be late for school.\" has no expanded twin",
-      "suggestion": "add \"if you do not hurry, we will be late for school.\" as a full answer"
     },
     {
       "itemId": "g3u05.gi.first-conditional.qf.001",
@@ -1765,14 +1501,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g3u05.gi.first-conditional.tr.001",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We will stay at home if it rains tomorrow.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
       "itemId": "g3u05.gi.first-conditional.tr.002",
       "unitSlug": "g3-u05",
       "rule": "R2",
@@ -1785,71 +1513,7 @@
       "unitSlug": "g3-u05",
       "rule": "R2",
       "severity": "critical",
-      "evidence": "full answer \"I will go without you if you don't come soon.\" has no expanded twin",
-      "suggestion": "add \"i will go without you if you do not come soon.\" as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.first-conditional.tr.002",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
       "evidence": "full answer \"If you don't come soon, I will go without you.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.first-conditional.tr.002",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If you don't come soon, I will go without you.\" has no expanded twin",
-      "suggestion": "add \"if you do not come soon, i will go without you.\" as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.first-conditional.tr.002",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If you don't come soon, I'll go without you.\" has no expanded twin",
-      "suggestion": "add \"if you do not come soon, i will go without you.\" as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.first-conditional.tr.005",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We will be late for school if we miss the bus.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.ec.001",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I will not go unless you come with me.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.ec.002",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless you hurry, we will miss the bus.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.ec.003",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We will be late unless we hurry.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.ec.004",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless you study, you will not pass the test.\" has no contracted twin",
       "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
     },
     {
@@ -1861,180 +1525,12 @@
       "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
     },
     {
-      "itemId": "g3u05.gi.unless.ec.006",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If you study, you will pass the exam.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.ec.006",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless you study, you will not pass the exam.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.ec.007",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I will come to the party unless you tell me it is cancelled.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.qf.001",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Will we go if the weather is not nice?\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.qf.001",
-      "unitSlug": "g3-u05",
-      "rule": "R3",
-      "severity": "advisory",
-      "evidence": "question-formation accepts exactly one full answer: \"Will we go if the weather is not nice?\"",
-      "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g3u05.gi.unless.qf.002",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Will you pass if you do not study?\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.qf.002",
-      "unitSlug": "g3-u05",
-      "rule": "R3",
-      "severity": "advisory",
-      "evidence": "question-formation accepts exactly one full answer: \"Will you pass if you do not study?\"",
-      "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
       "itemId": "g3u05.gi.unless.tf.001",
       "unitSlug": "g3-u05",
       "rule": "R3",
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"unless he asks me to\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tf.002",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He will be sick unless he stops eating.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tf.002",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless he stops eating, he will be sick.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tf.003",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless you run, you will not be here in time.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tf.003",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You will not be here in time unless you run.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tf.004",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I will not talk to him again unless Tom apologises.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tf.004",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless Tom apologises, I will not talk to him again.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tf.005",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless you bring an umbrella, you will get wet.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tf.005",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You will get wet unless you bring an umbrella.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tr.001",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I will not go swimming unless you come with me.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tr.001",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless you come with me, I will not go swimming.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tr.002",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless you study more, you will not pass the test.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tr.002",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You will not pass the test unless you study more.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tr.003",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless we run faster, we will be late.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tr.003",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We will be late unless we run faster.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
     },
     {
       "itemId": "g3u05.gi.unless.tr.004",
@@ -2050,22 +1546,6 @@
       "rule": "R2",
       "severity": "critical",
       "evidence": "full answer \"You can not play with your friends unless you do your homework.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tr.005",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Unless you wear a hat, you will catch a cold.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u05.gi.unless.tr.005",
-      "unitSlug": "g3-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You will catch a cold unless you wear a hat.\" has no contracted twin",
       "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
     },
     {
@@ -2197,14 +1677,6 @@
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
-      "itemId": "g3u07.gi.present-perfect-for-since.tr.002",
-      "unitSlug": "g3-u07",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He hasn't played football since Monday\" has no expanded twin",
-      "suggestion": "add \"he has not played football since monday\" as a full answer"
-    },
-    {
       "itemId": "g3u08.gi.past-simple-vs-present-perfect.qf.001",
       "unitSlug": "g3-u08",
       "rule": "R3",
@@ -2245,28 +1717,12 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g3u09.gi.be-allowed-to.ec.001",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm not allowed to eat too many sweets\" has no expanded twin",
-      "suggestion": "add \"i am not allowed to eat too many sweets\" as a full answer"
-    },
-    {
       "itemId": "g3u09.gi.be-allowed-to.ec.002",
       "unitSlug": "g3-u09",
       "rule": "R2",
       "severity": "advisory",
       "evidence": "full answer \"She's allowed to go to the disco on Saturday.\" carries an ambiguous 's/'d — expansion needs a human",
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
-    },
-    {
-      "itemId": "g3u09.gi.be-allowed-to.ec.003",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We aren't allowed to go roller-skating without pads\" has no expanded twin",
-      "suggestion": "add \"we are not allowed to go roller-skating without pads\" as a full answer"
     },
     {
       "itemId": "g3u09.gi.be-allowed-to.ec.004",
@@ -2277,140 +1733,12 @@
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
-      "itemId": "g3u09.gi.be-allowed-to.ec.005",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We aren't allowed to eat in the classroom\" has no expanded twin",
-      "suggestion": "add \"we are not allowed to eat in the classroom\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.be-allowed-to.ff.001",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm allowed to buy my own clothes.\" has no expanded twin",
-      "suggestion": "add \"i am allowed to buy my own clothes.\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.be-allowed-to.ff.001",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm not allowed to get a tattoo.\" has no expanded twin",
-      "suggestion": "add \"i am not allowed to get a tattoo.\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.be-allowed-to.ff.001",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm not allowed to watch TV after 10 o'clock.\" has no expanded twin",
-      "suggestion": "add \"i am not allowed to watch tv after 10 o'clock.\" as a full answer"
-    },
-    {
       "itemId": "g3u09.gi.be-allowed-to.tf.002",
       "unitSlug": "g3-u09",
       "rule": "R3",
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"am allowed to\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g3u09.gi.be-allowed-to.tr.001",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We aren't allowed to use our phones in class.\" has no expanded twin",
-      "suggestion": "add \"we are not allowed to use our phones in class.\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.be-allowed-to.tr.001",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We aren't allowed to use phones in class\" has no expanded twin",
-      "suggestion": "add \"we are not allowed to use phones in class\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.let.ec.003",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"doesn't let\" has no expanded twin",
-      "suggestion": "add \"does not let\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.let.ec.003",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"My dad doesn't let me ride his bike.\" has no expanded twin",
-      "suggestion": "add \"my dad does not let me ride his bike.\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.let.ec.003",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"My dad doesn't let me ride his bike\" has no expanded twin",
-      "suggestion": "add \"my dad does not let me ride his bike\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.let.ec.004",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"didn't let\" has no expanded twin",
-      "suggestion": "add \"did not let\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.let.ec.004",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"The coach didn't let us go home early.\" has no expanded twin",
-      "suggestion": "add \"the coach did not let us go home early.\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.let.ec.004",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"The coach didn't let us go home early\" has no expanded twin",
-      "suggestion": "add \"the coach did not let us go home early\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.let.ec.006",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"doesn't let\" has no expanded twin",
-      "suggestion": "add \"does not let\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.let.ec.006",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"My mum doesn't let me stay up late.\" has no expanded twin",
-      "suggestion": "add \"my mum does not let me stay up late.\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.let.ec.006",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"My mum doesn't let me stay up late\" has no expanded twin",
-      "suggestion": "add \"my mum does not let me stay up late\" as a full answer"
-    },
-    {
-      "itemId": "g3u09.gi.let.ff.001",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"My parents don't let me come home after ten.\" has no expanded twin",
-      "suggestion": "add \"my parents do not let me come home after ten.\" as a full answer"
     },
     {
       "itemId": "g3u09.gi.let.qf.001",
@@ -2435,14 +1763,6 @@
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"My parents let me use my phone after school.\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g3u09.gi.let.tr.002",
-      "unitSlug": "g3-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"The teacher doesn't let us eat during class.\" has no expanded twin",
-      "suggestion": "add \"the teacher does not let us eat during class.\" as a full answer"
     },
     {
       "itemId": "g3u10.gi.be-allowed-to-tenses.ec.003",
@@ -2525,22 +1845,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g3u10.gi.could-was-able-to.tr.009",
-      "unitSlug": "g3-u10",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He could not ride a bike when he was little.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u10.gi.could-was-able-to.tr.009",
-      "unitSlug": "g3-u10",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He couldn't ride a bike when he was a child.\" has no expanded twin",
-      "suggestion": "add \"he could not ride a bike when he was a child.\" as a full answer"
-    },
-    {
       "itemId": "g3u11.gi.present-perfect-continuous.qf.001",
       "unitSlug": "g3-u11",
       "rule": "R3",
@@ -2605,60 +1909,12 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g3u13.gi.second-conditional.ec.004",
-      "unitSlug": "g3-u13",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If I were you, I would not worry so much.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g3u13.gi.second-conditional.gf.005",
-      "unitSlug": "g3-u13",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"didn't live | 'd ride\" has no expanded twin",
-      "suggestion": "add \"did not live | 'd ride\" as a full answer"
-    },
-    {
-      "itemId": "g3u13.gi.second-conditional.gf.009",
-      "unitSlug": "g3-u13",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"wasn't | would play\" has no expanded twin",
-      "suggestion": "add \"was not | would play\" as a full answer"
-    },
-    {
-      "itemId": "g3u13.gi.second-conditional.gf.009",
-      "unitSlug": "g3-u13",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"weren't | 'd play\" has no expanded twin",
-      "suggestion": "add \"were not | 'd play\" as a full answer"
-    },
-    {
       "itemId": "g3u13.gi.second-conditional.qf.001",
       "unitSlug": "g3-u13",
       "rule": "R3",
       "severity": "advisory",
       "evidence": "question-formation accepts exactly one full answer: \"What would you do if you won a lot of money?\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g3u13.gi.second-conditional.tf.002",
-      "unitSlug": "g3-u13",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If she wasn't ill, she would be at school.\" has no expanded twin",
-      "suggestion": "add \"if she was not ill, she would be at school.\" as a full answer"
-    },
-    {
-      "itemId": "g3u13.gi.second-conditional.tf.002",
-      "unitSlug": "g3-u13",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If she were not ill, she would be at school.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
     },
     {
       "itemId": "g3u13.gi.second-conditional.tf.002",
@@ -2672,9 +1928,9 @@
       "itemId": "g3u13.gi.second-conditional.tf.002",
       "unitSlug": "g3-u13",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If she were not ill, she'd be at school.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"If she weren't ill, she'd be at school.\" carries an ambiguous 's/'d — expansion needs a human",
+      "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
       "itemId": "g3u13.gi.second-conditional.tf.003",
@@ -2829,30 +2085,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g4u03.gi.reported-speech-statements.ec.004",
-      "unitSlug": "g4-u03",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He said that he couldn't come to the concert.\" has no expanded twin",
-      "suggestion": "add \"he said that he could not come to the concert.\" as a full answer"
-    },
-    {
-      "itemId": "g4u03.gi.reported-speech-statements.tf.008",
-      "unitSlug": "g4-u03",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Lisa said she didn't have any homework that day.\" has no expanded twin",
-      "suggestion": "add \"lisa said she did not have any homework that day.\" as a full answer"
-    },
-    {
-      "itemId": "g4u03.gi.reported-speech-statements.tf.009",
-      "unitSlug": "g4-u03",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Sully told Harten they couldn't make runway 1.\" has no expanded twin",
-      "suggestion": "add \"sully told harten they could not make runway 1.\" as a full answer"
-    },
-    {
       "itemId": "g4u04.gi.reported-questions.qf.001",
       "unitSlug": "g4-u04",
       "rule": "R3",
@@ -2925,22 +2157,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g4u05.gi.past-perfect-connectors.tf.004",
-      "unitSlug": "g4-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Because of the bad school dinners, Jamie Oliver was not happy.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g4u05.gi.past-perfect-connectors.tf.004",
-      "unitSlug": "g4-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Jamie Oliver was not happy because of the bad school dinners.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
       "itemId": "g4u06.gi.adverbs-of-manner.qf.001",
       "unitSlug": "g4-u06",
       "rule": "R3",
@@ -3005,364 +2221,12 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g4u06.gi.question-tags.ec.001",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"She likes music, doesn't she?\" has no expanded twin",
-      "suggestion": "add \"she likes music, does not she?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.ec.002",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"She likes the book, doesn't she?\" has no expanded twin",
-      "suggestion": "add \"she likes the book, does not she?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.ec.003",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"The children have donated the books, haven't they?\" has no expanded twin",
-      "suggestion": "add \"the children have donated the books, have not they?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.ec.004",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You don't like maths, do you?\" has no expanded twin",
-      "suggestion": "add \"you do not like maths, do you?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.ec.006",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They have donated the books, haven't they?\" has no expanded twin",
-      "suggestion": "add \"they have donated the books, have not they?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.001",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"isn't she?\" has no expanded twin",
-      "suggestion": "add \"is not she?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.001",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"isn't she\" has no expanded twin",
-      "suggestion": "add \"is not she\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.002",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"aren't you?\" has no expanded twin",
-      "suggestion": "add \"are not you?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.002",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"aren't you\" has no expanded twin",
-      "suggestion": "add \"are not you\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.003",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"doesn't he?\" has no expanded twin",
-      "suggestion": "add \"does not he?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.003",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"doesn't he\" has no expanded twin",
-      "suggestion": "add \"does not he\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.004",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"weren't they?\" has no expanded twin",
-      "suggestion": "add \"were not they?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.004",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"weren't they\" has no expanded twin",
-      "suggestion": "add \"were not they\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.006",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"can't you?\" has no expanded twin",
-      "suggestion": "add \"cannot you?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.006",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"can't you\" has no expanded twin",
-      "suggestion": "add \"cannot you\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.007",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"hasn't she?\" has no expanded twin",
-      "suggestion": "add \"has not she?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.007",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"hasn't she\" has no expanded twin",
-      "suggestion": "add \"has not she\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.010",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"aren't I?\" has no expanded twin",
-      "suggestion": "add \"are not i?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.010",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"aren't I\" has no expanded twin",
-      "suggestion": "add \"are not i\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.012",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"don't you?\" has no expanded twin",
-      "suggestion": "add \"do not you?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.012",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"don't you\" has no expanded twin",
-      "suggestion": "add \"do not you\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.013",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"won't it?\" has no expanded twin",
-      "suggestion": "add \"will not it?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.013",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"won't it\" has no expanded twin",
-      "suggestion": "add \"will not it\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.014",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"didn't she?\" has no expanded twin",
-      "suggestion": "add \"did not she?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.014",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"didn't she\" has no expanded twin",
-      "suggestion": "add \"did not she\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.015",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"didn't he?\" has no expanded twin",
-      "suggestion": "add \"did not he?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.015",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"didn't he\" has no expanded twin",
-      "suggestion": "add \"did not he\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.016",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"haven't you?\" has no expanded twin",
-      "suggestion": "add \"have not you?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.016",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"haven't you\" has no expanded twin",
-      "suggestion": "add \"have not you\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.017",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"isn't he?\" has no expanded twin",
-      "suggestion": "add \"is not he?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.017",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"isn't he\" has no expanded twin",
-      "suggestion": "add \"is not he\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.018",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"don't they?\" has no expanded twin",
-      "suggestion": "add \"do not they?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.gf.018",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"don't they\" has no expanded twin",
-      "suggestion": "add \"do not they\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.qf.001",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He has cleaned his room, hasn't he?\" has no expanded twin",
-      "suggestion": "add \"he has cleaned his room, has not he?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.qf.002",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You have read the book, haven't you?\" has no expanded twin",
-      "suggestion": "add \"you have read the book, have not you?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.qf.002",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You've read the book, haven't you?\" has no expanded twin",
-      "suggestion": "add \"you have read the book, have not you?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.tf.001",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He can cook well, can't he?\" has no expanded twin",
-      "suggestion": "add \"he can cook well, cannot he?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.tf.002",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They live in Vienna, don't they?\" has no expanded twin",
-      "suggestion": "add \"they live in vienna, do not they?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.tf.003",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Marley started her campaign, didn't she?\" has no expanded twin",
-      "suggestion": "add \"marley started her campaign, did not she?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.tf.004",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Tom should eat more vegetables, shouldn't he?\" has no expanded twin",
-      "suggestion": "add \"tom should eat more vegetables, should not he?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.tf.005",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We could help the community, couldn't we?\" has no expanded twin",
-      "suggestion": "add \"we could help the community, could not we?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.tr.001",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He is nice, isn't he?\" has no expanded twin",
-      "suggestion": "add \"he is nice, is not he?\" as a full answer"
-    },
-    {
       "itemId": "g4u06.gi.question-tags.tr.001",
       "unitSlug": "g4-u06",
       "rule": "R2",
       "severity": "advisory",
       "evidence": "full answer \"He's nice, isn't he?\" carries an ambiguous 's/'d — expansion needs a human",
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.tr.001",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"He's nice, isn't he?\" has no expanded twin",
-      "suggestion": "add \"he's nice, is not he?\" as a full answer"
-    },
-    {
-      "itemId": "g4u06.gi.question-tags.tr.002",
-      "unitSlug": "g4-u06",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"You like chocolate, don't you?\" has no expanded twin",
-      "suggestion": "add \"you like chocolate, do not you?\" as a full answer"
     },
     {
       "itemId": "g4u07.gi.present-simple-future.qf.002",
@@ -3421,22 +2285,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g4u07.gi.want-someone-to.tf.004",
-      "unitSlug": "g4-u07",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"The school doesn't want us to use our phones in class.\" has no expanded twin",
-      "suggestion": "add \"the school does not want us to use our phones in class.\" as a full answer"
-    },
-    {
-      "itemId": "g4u07.gi.want-someone-to.tf.004",
-      "unitSlug": "g4-u07",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"The school doesn't want you to use your phones in class.\" has no expanded twin",
-      "suggestion": "add \"the school does not want you to use your phones in class.\" as a full answer"
-    },
-    {
       "itemId": "g4u08.gi.tense-time-expression-review.qf.001",
       "unitSlug": "g4-u08",
       "rule": "R3",
@@ -3461,44 +2309,12 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g4u09.gi.modals-possibility.ec.006",
-      "unitSlug": "g4-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"She could be at school — I'm not sure.\" has no expanded twin",
-      "suggestion": "add \"she could be at school — i am not sure.\" as a full answer"
-    },
-    {
-      "itemId": "g4u09.gi.modals-possibility.ec.006",
-      "unitSlug": "g4-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"She may be at school — I'm not sure.\" has no expanded twin",
-      "suggestion": "add \"she may be at school — i am not sure.\" as a full answer"
-    },
-    {
-      "itemId": "g4u09.gi.modals-possibility.ec.006",
-      "unitSlug": "g4-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"She might be at school — I'm not sure.\" has no expanded twin",
-      "suggestion": "add \"she might be at school — i am not sure.\" as a full answer"
-    },
-    {
       "itemId": "g4u09.gi.modals-possibility.tf.005",
       "unitSlug": "g4-u09",
       "rule": "R3",
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"may not come\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g4u10.gi.third-conditional.ec.007",
-      "unitSlug": "g4-u10",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If he hadn't missed the bus, he would have arrived on time.\" has no expanded twin",
-      "suggestion": "add \"if he had not missed the bus, he would have arrived on time.\" as a full answer"
     },
     {
       "itemId": "g4u10.gi.third-conditional.qf.001",
@@ -3525,20 +2341,12 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g4u10.gi.third-conditional.tf.007",
+      "itemId": "g4u10.gi.third-conditional.tf.008",
       "unitSlug": "g4-u10",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If she hadn't missed the train, she wouldn't have arrived late.\" has no expanded twin",
-      "suggestion": "add \"if she had not missed the train, she would not have arrived late.\" as a full answer"
-    },
-    {
-      "itemId": "g4u10.gi.third-conditional.tf.007",
-      "unitSlug": "g4-u10",
-      "rule": "R3",
       "severity": "advisory",
-      "evidence": "transformation accepts exactly one full answer: \"If she hadn't missed the train, she wouldn't have arrived la\"",
-      "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
+      "evidence": "full answer \"If the company had paid a fair price, Sofia's dad would not have sold the farm.\" carries an ambiguous 's/'d — expansion needs a human",
+      "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
       "itemId": "g4u10.gi.third-conditional.tf.008",
@@ -3547,22 +2355,6 @@
       "severity": "advisory",
       "evidence": "full answer \"If the company had paid a fair price, Sofia's dad wouldn't have sold the farm.\" carries an ambiguous 's/'d — expansion needs a human",
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
-    },
-    {
-      "itemId": "g4u10.gi.third-conditional.tf.008",
-      "unitSlug": "g4-u10",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"If the company had paid a fair price, Sofia's dad wouldn't have sold the farm.\" has no expanded twin",
-      "suggestion": "add \"if the company had paid a fair price, sofia's dad would not have sold the farm.\" as a full answer"
-    },
-    {
-      "itemId": "g4u10.gi.third-conditional.tf.008",
-      "unitSlug": "g4-u10",
-      "rule": "R3",
-      "severity": "advisory",
-      "evidence": "transformation accepts exactly one full answer: \"If the company had paid a fair price, Sofia's dad wouldn't h\"",
-      "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
       "itemId": "g4u10.gi.third-conditional.tf.009",
@@ -3637,44 +2429,12 @@
       "suggestion": "add \"do not worry — i cooked dinner myself!\" as a full answer"
     },
     {
-      "itemId": "g4u11.gi.reflexive-pronouns.tr.002",
-      "unitSlug": "g4-u11",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Be careful with the knife! Don't cut yourself!\" has no expanded twin",
-      "suggestion": "add \"be careful with the knife! do not cut yourself!\" as a full answer"
-    },
-    {
-      "itemId": "g4u11.gi.reflexive-pronouns.tr.002",
-      "unitSlug": "g4-u11",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Be careful with the knife! Don't cut yourself.\" has no expanded twin",
-      "suggestion": "add \"be careful with the knife! do not cut yourself.\" as a full answer"
-    },
-    {
       "itemId": "g4u11.gi.reflexive-pronouns.tr.005",
       "unitSlug": "g4-u11",
       "rule": "R2",
       "severity": "critical",
       "evidence": "full answer \"You will have to read the book yourself.\" has no contracted twin",
       "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g4u12.gi.phrasal-verbs.ec.002",
-      "unitSlug": "g4-u12",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Don't give it up! You can do it.\" has no expanded twin",
-      "suggestion": "add \"do not give it up! you can do it.\" as a full answer"
-    },
-    {
-      "itemId": "g4u12.gi.phrasal-verbs.ec.007",
-      "unitSlug": "g4-u12",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm waiting for the space shuttle.\" has no expanded twin",
-      "suggestion": "add \"i am waiting for the space shuttle.\" as a full answer"
     },
     {
       "itemId": "g4u12.gi.phrasal-verbs.qf.001",
@@ -3731,14 +2491,6 @@
       "severity": "advisory",
       "evidence": "full answer \"I think it's very irresponsible to drive without a seatbelt.\" carries an ambiguous 's/'d — expansion needs a human",
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
-    },
-    {
-      "itemId": "g4u13.gi.word-formation.ec.005",
-      "unitSlug": "g4-u13",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I completely disagree with you – you are totally wrong!\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
     },
     {
       "itemId": "g4u13.gi.word-formation.tf.005",

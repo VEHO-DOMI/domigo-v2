@@ -2812,7 +2812,7 @@
       "id": "g4u11.gi.reflexive-pronouns.tr.002",
       "structureId": "g4u11.s.reflexive-pronouns",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2838,6 +2838,14 @@
         },
         {
           "text": "Be careful with the knife! Don't cut yourself.",
+          "tier": "full"
+        },
+        {
+          "text": "Be careful with the knife! Do not cut yourself!",
+          "tier": "full"
+        },
+        {
+          "text": "Be careful with the knife! Do not cut yourself.",
           "tier": "full"
         }
       ],

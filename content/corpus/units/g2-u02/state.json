@@ -127,6 +127,20 @@
       "contentHash": "f2aa1bbc860d3efe415915767413b555026089de526a358b43c9012c0f5223c0",
       "note": "trusted patch (mechanical): 12 answer-pool fix(es) [g2u02.w.admission-fee, g2u02.w.behaviour, g2u02.w.exhibition, g2u02.w.mess, g2u02.w.museum, g2u02.w.password, g2u02.w.plate, g2u02.w.posting, g2u02.w.sculpture, g2u02.w.secret, g2u02.w.surprise-party, g2u02.w.tip] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:35:58.891Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "b805ab55b076cbac7b335e605ae1dea1d2df16f654b468d425291476ab498f74",
+      "note": "gen ingest: 36 vocab + 60 grammar item(s); draft cf6118b61ba2",
+      "at": "2026-07-12T12:03:26.701Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "b805ab55b076cbac7b335e605ae1dea1d2df16f654b468d425291476ab498f74",
+      "note": "trusted patch (mechanical): 5 answer-pool fix(es) [g2u02.gi.irregular-verbs.ec.002, g2u02.gi.past-simple-negation.ec.001, g2u02.gi.past-simple-negation.ec.002, g2u02.gi.past-simple-negation.gf.001, g2u02.gi.past-simple-negation.gf.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:26.703Z"
     }
   ]
 }

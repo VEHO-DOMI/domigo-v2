@@ -141,6 +141,20 @@
       "contentHash": "ff470b878c80c7e9b4eda6b7361150e1e339d68a8790731ec526c98065675b5a",
       "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g3u05.w.crack] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:50:24.304Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "a99faabbe402a95bd67045c3f1f9c3fc6a55f56e14fe8d795b75c6057b8875d8",
+      "note": "gen ingest: 41 vocab + 101 grammar item(s); draft 59bfb8bbf90b",
+      "at": "2026-07-12T12:03:29.752Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "a99faabbe402a95bd67045c3f1f9c3fc6a55f56e14fe8d795b75c6057b8875d8",
+      "note": "trusted patch (mechanical): 20 answer-pool fix(es) [g3u05.gi.first-conditional.ec.005, g3u05.gi.first-conditional.tr.001, g3u05.gi.first-conditional.tr.002, g3u05.gi.first-conditional.tr.005, g3u05.gi.unless.ec.001, g3u05.gi.unless.ec.002, g3u05.gi.unless.ec.003, g3u05.gi.unless.ec.004, g3u05.gi.unless.ec.006, g3u05.gi.unless.ec.007, g3u05.gi.unless.qf.001, g3u05.gi.unless.qf.002, g3u05.gi.unless.tf.002, g3u05.gi.unless.tf.003, g3u05.gi.unless.tf.004, g3u05.gi.unless.tf.005, g3u05.gi.unless.tr.001, g3u05.gi.unless.tr.002, g3u05.gi.unless.tr.003, g3u05.gi.unless.tr.005] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:29.755Z"
     }
   ]
 }

@@ -141,6 +141,20 @@
       "contentHash": "e30678060c7940a0cf5ef82750b16aaf8ce4f289d31b6acd9dd4742b84a0ba71",
       "note": "trusted patch (mechanical): 2 answer-pool fix(es) [g3u09.w.community, g3u09.w.litter-picking] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:50:25.568Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "52862cffcaaf6f71cbeb87a598355083be7e43e87add78f8ea5d3d2a94d7f6a7",
+      "note": "gen ingest: 39 vocab + 93 grammar item(s); draft fe03b4a8f264",
+      "at": "2026-07-12T12:03:30.360Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "52862cffcaaf6f71cbeb87a598355083be7e43e87add78f8ea5d3d2a94d7f6a7",
+      "note": "trusted patch (mechanical): 10 answer-pool fix(es) [g3u09.gi.be-allowed-to.ec.001, g3u09.gi.be-allowed-to.ec.003, g3u09.gi.be-allowed-to.ec.005, g3u09.gi.be-allowed-to.ff.001, g3u09.gi.be-allowed-to.tr.001, g3u09.gi.let.ec.003, g3u09.gi.let.ec.004, g3u09.gi.let.ec.006, g3u09.gi.let.ff.001, g3u09.gi.let.tr.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:30.362Z"
     }
   ]
 }

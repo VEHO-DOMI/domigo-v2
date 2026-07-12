@@ -359,7 +359,7 @@
       "id": "g3u05.gi.first-conditional.ec.005",
       "structureId": "g3u05.s.first-conditional",
       "format": "error-correction",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -390,6 +390,10 @@
         {
           "text": "don't hurry",
           "tier": "partial"
+        },
+        {
+          "text": "If you do not hurry, we will be late for school.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -2261,7 +2265,7 @@
       "id": "g3u05.gi.first-conditional.tr.001",
       "structureId": "g3u05.s.first-conditional",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2292,6 +2296,10 @@
         {
           "text": "We will stay at home if it rains tomorrow.",
           "tier": "full"
+        },
+        {
+          "text": "We'll stay at home if it rains tomorrow.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",
@@ -2309,7 +2317,7 @@
       "id": "g3u05.gi.first-conditional.tr.002",
       "structureId": "g3u05.s.first-conditional",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2340,6 +2348,14 @@
         {
           "text": "I will go without you if you don't come soon.",
           "tier": "full"
+        },
+        {
+          "text": "If you do not come soon, I will go without you.",
+          "tier": "full"
+        },
+        {
+          "text": "I will go without you if you do not come soon.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",
@@ -2357,7 +2373,7 @@
       "id": "g3u05.gi.first-conditional.tr.005",
       "structureId": "g3u05.s.first-conditional",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2387,6 +2403,10 @@
         },
         {
           "text": "We will be late for school if we miss the bus.",
+          "tier": "full"
+        },
+        {
+          "text": "We'll be late for school if we miss the bus.",
           "tier": "full"
         }
       ],
@@ -2619,7 +2639,7 @@
       "id": "g3u05.gi.unless.ec.001",
       "structureId": "g3u05.s.unless",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2650,6 +2670,10 @@
         {
           "text": "unless you come with me",
           "tier": "partial"
+        },
+        {
+          "text": "I won't go unless you come with me.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -2667,7 +2691,7 @@
       "id": "g3u05.gi.unless.ec.002",
       "structureId": "g3u05.s.unless",
       "format": "error-correction",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2694,6 +2718,10 @@
         {
           "text": "Unless you hurry",
           "tier": "partial"
+        },
+        {
+          "text": "Unless you hurry, we'll miss the bus.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -2711,7 +2739,7 @@
       "id": "g3u05.gi.unless.ec.003",
       "structureId": "g3u05.s.unless",
       "format": "error-correction",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2738,6 +2766,10 @@
         {
           "text": "unless we hurry",
           "tier": "partial"
+        },
+        {
+          "text": "We'll be late unless we hurry.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -2755,7 +2787,7 @@
       "id": "g3u05.gi.unless.ec.004",
       "structureId": "g3u05.s.unless",
       "format": "error-correction",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2782,6 +2814,10 @@
         {
           "text": "Unless you study",
           "tier": "partial"
+        },
+        {
+          "text": "Unless you study, you won't pass the test.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -2843,7 +2879,7 @@
       "id": "g3u05.gi.unless.ec.006",
       "structureId": "g3u05.s.unless",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2870,6 +2906,14 @@
         {
           "text": "Unless you study, you will not pass the exam.",
           "tier": "full"
+        },
+        {
+          "text": "If you study, you'll pass the exam.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you study, you won't pass the exam.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -2893,7 +2937,7 @@
       "id": "g3u05.gi.unless.ec.007",
       "structureId": "g3u05.s.unless",
       "format": "error-correction",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2920,6 +2964,10 @@
         {
           "text": "unless you tell me",
           "tier": "partial"
+        },
+        {
+          "text": "I'll come to the party unless you tell me it is cancelled.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -4180,7 +4228,7 @@
       "id": "g3u05.gi.unless.qf.001",
       "structureId": "g3u05.s.unless",
       "format": "question-formation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4207,6 +4255,10 @@
         {
           "text": "Will we go if the weather isn't nice?",
           "tier": "partial"
+        },
+        {
+          "text": "Will we go if the weather isn't nice?",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -4224,7 +4276,7 @@
       "id": "g3u05.gi.unless.qf.002",
       "structureId": "g3u05.s.unless",
       "format": "question-formation",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -4251,6 +4303,10 @@
         {
           "text": "Will you pass if you don't study?",
           "tier": "partial"
+        },
+        {
+          "text": "Will you pass if you don't study?",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -4472,7 +4528,7 @@
       "id": "g3u05.gi.unless.tf.002",
       "structureId": "g3u05.s.unless",
       "format": "transformation",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -4499,6 +4555,14 @@
         {
           "text": "Unless he stops eating, he will be sick.",
           "tier": "full"
+        },
+        {
+          "text": "He'll be sick unless he stops eating.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless he stops eating, he'll be sick.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -4516,7 +4580,7 @@
       "id": "g3u05.gi.unless.tf.003",
       "structureId": "g3u05.s.unless",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -4543,6 +4607,14 @@
         {
           "text": "Unless you run, you will not be here in time.",
           "tier": "full"
+        },
+        {
+          "text": "You won't be here in time unless you run.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you run, you won't be here in time.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -4560,7 +4632,7 @@
       "id": "g3u05.gi.unless.tf.004",
       "structureId": "g3u05.s.unless",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -4587,6 +4659,14 @@
         {
           "text": "I will not talk to him again unless Tom apologises.",
           "tier": "full"
+        },
+        {
+          "text": "Unless Tom apologises, I won't talk to him again.",
+          "tier": "full"
+        },
+        {
+          "text": "I won't talk to him again unless Tom apologises.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -4610,7 +4690,7 @@
       "id": "g3u05.gi.unless.tf.005",
       "structureId": "g3u05.s.unless",
       "format": "transformation",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4637,6 +4717,14 @@
         {
           "text": "Unless you bring an umbrella, you will get wet.",
           "tier": "full"
+        },
+        {
+          "text": "You'll get wet unless you bring an umbrella.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you bring an umbrella, you'll get wet.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -4660,7 +4748,7 @@
       "id": "g3u05.gi.unless.tr.001",
       "structureId": "g3u05.s.unless",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4691,6 +4779,14 @@
         {
           "text": "I won't go swimming unless you come with me.",
           "tier": "partial"
+        },
+        {
+          "text": "I won't go swimming unless you come with me.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you come with me, I won't go swimming.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",
@@ -4708,7 +4804,7 @@
       "id": "g3u05.gi.unless.tr.002",
       "structureId": "g3u05.s.unless",
       "format": "translation",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -4739,6 +4835,14 @@
         {
           "text": "You won't pass the test unless you study more.",
           "tier": "partial"
+        },
+        {
+          "text": "You won't pass the test unless you study more.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you study more, you won't pass the test.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",
@@ -4756,7 +4860,7 @@
       "id": "g3u05.gi.unless.tr.003",
       "structureId": "g3u05.s.unless",
       "format": "translation",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -4787,6 +4891,14 @@
         {
           "text": "We'll be late unless we run faster.",
           "tier": "partial"
+        },
+        {
+          "text": "We'll be late unless we run faster.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless we run faster, we'll be late.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",
@@ -4852,7 +4964,7 @@
       "id": "g3u05.gi.unless.tr.005",
       "structureId": "g3u05.s.unless",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4883,6 +4995,14 @@
         {
           "text": "You'll catch a cold unless you wear a hat.",
           "tier": "partial"
+        },
+        {
+          "text": "You'll catch a cold unless you wear a hat.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you wear a hat, you'll catch a cold.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",

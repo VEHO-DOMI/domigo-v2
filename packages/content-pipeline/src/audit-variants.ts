@@ -97,6 +97,15 @@ export function hasAmbiguousContraction(text: string): boolean {
   return AMBIGUOUS.some((suf) => new RegExp(`\\p{L}${suf.replace("'", "'")}(\\s|$)`, "u").test(text.toLowerCase()));
 }
 
+/** True when a negative contraction sits in a SUBJECT-AUXILIARY INVERSION — a
+ *  question tag ("…, isn't she?") or a negative question ("Isn't she coming?").
+ *  There the naïve expansion is ungrammatical ("is not she?"); the correct form
+ *  inverts the subject ("is she not?") and is archaic, so no expanded twin exists.
+ *  Detect: a "…n't" (incl. won't/can't/shan't) immediately followed by a subject pronoun. */
+export function hasInvertedContraction(text: string): boolean {
+  return /n't\s+(i|you|he|she|it|we|they)\b/i.test(text);
+}
+
 // ---------------------------------------------------------------------------
 // R1 · German-noun article variants
 // ---------------------------------------------------------------------------
@@ -203,7 +212,9 @@ export function auditGrammarItem(slug: string, it: GrammarItem): Finding[] {
   if (typed) {
     for (const a of fulls) {
       const expanded = expandContractions(a.text);
-      if (expanded !== canon(a.text) && !fullCanon.has(expanded)) {
+      // An inverted negative (tag / negative question) has no grammatical expanded
+      // twin — "isn't she?" → "is she not?" (archaic), never "is not she?". Skip it.
+      if (expanded !== canon(a.text) && !fullCanon.has(expanded) && !hasInvertedContraction(a.text)) {
         out.push({
           itemId: it.id, unitSlug: slug, rule: "R2", severity: r2Sev,
           evidence: `full answer ${JSON.stringify(a.text)} has no expanded twin${r2Drill ? " (form-drill: asymmetry intended)" : ""}`,

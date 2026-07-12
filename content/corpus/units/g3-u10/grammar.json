@@ -5380,7 +5380,7 @@
       "id": "g3u10.gi.could-was-able-to.tr.009",
       "structureId": "g3u10.s.could-was-able-to",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -5406,6 +5406,14 @@
         },
         {
           "text": "He could not ride a bike when he was little.",
+          "tier": "full"
+        },
+        {
+          "text": "He could not ride a bike when he was a child.",
+          "tier": "full"
+        },
+        {
+          "text": "He couldn't ride a bike when he was little.",
           "tier": "full"
         }
       ],

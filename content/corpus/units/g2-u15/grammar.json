@@ -1625,7 +1625,7 @@
       "id": "g2u15.gi.so-do-i.tr.002",
       "structureId": "g2u15.s.so-do-i",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1656,6 +1656,14 @@
         {
           "text": "I cannot cook. Neither can I.",
           "tier": "partial"
+        },
+        {
+          "text": "\"I cannot cook.\" — \"Neither can I.\"",
+          "tier": "full"
+        },
+        {
+          "text": "I cannot cook. Neither can I.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",

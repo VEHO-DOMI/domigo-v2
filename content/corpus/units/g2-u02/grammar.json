@@ -189,7 +189,7 @@
       "id": "g2u02.gi.irregular-verbs.ec.002",
       "structureId": "g2u02.s.irregular-verbs",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -220,6 +220,14 @@
         {
           "text": "know",
           "tier": "partial"
+        },
+        {
+          "text": "I did not know the password.",
+          "tier": "full"
+        },
+        {
+          "text": "I did not know the password",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -1160,7 +1168,7 @@
       "id": "g2u02.gi.past-simple-negation.ec.001",
       "structureId": "g2u02.s.past-simple-negation",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1191,6 +1199,14 @@
         {
           "text": "listen",
           "tier": "partial"
+        },
+        {
+          "text": "I did not listen to a thing.",
+          "tier": "full"
+        },
+        {
+          "text": "I did not listen to a thing",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -1208,7 +1224,7 @@
       "id": "g2u02.gi.past-simple-negation.ec.002",
       "structureId": "g2u02.s.past-simple-negation",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1239,6 +1255,14 @@
         {
           "text": "wasn't",
           "tier": "partial"
+        },
+        {
+          "text": "The jacket was not on the screen.",
+          "tier": "full"
+        },
+        {
+          "text": "The jacket was not on the screen",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -1256,7 +1280,7 @@
       "id": "g2u02.gi.past-simple-negation.gf.001",
       "structureId": "g2u02.s.past-simple-negation",
       "format": "gap-fill",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1279,6 +1303,10 @@
         {
           "text": "didn't",
           "tier": "full"
+        },
+        {
+          "text": "did not",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -1296,7 +1324,7 @@
       "id": "g2u02.gi.past-simple-negation.gf.002",
       "structureId": "g2u02.s.past-simple-negation",
       "format": "gap-fill",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1318,6 +1346,10 @@
       "answers": [
         {
           "text": "wasn't",
+          "tier": "full"
+        },
+        {
+          "text": "was not",
           "tier": "full"
         }
       ],

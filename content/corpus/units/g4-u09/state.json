@@ -127,6 +127,20 @@
       "contentHash": "81c5f71c3829426069e74687e98c83428bfff3cbefedcf6cd028cd3011a3280e",
       "note": "trusted patch (mechanical): 20 answer-pool fix(es) [g4u09.w.border, g4u09.w.bride, g4u09.w.bridegroom, g4u09.w.bridesmaid, g4u09.w.ceremony, g4u09.w.devil, g4u09.w.funeral, g4u09.w.gesture, g4u09.w.goth, g4u09.w.health-risk, g4u09.w.index-finger, g4u09.w.needle, g4u09.w.palm, g4u09.w.possibility, g4u09.w.sitting-room, g4u09.w.sleeve, g4u09.w.thumb, g4u09.w.victory, g4u09.w.wedding-dress, g4u09.w.wedding-suit] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T11:06:24.509Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "427f158b606863d0f3bec53a37d9e337eded837ffb256b6390013e7e3535a29f",
+      "note": "gen ingest: 43 vocab + 58 grammar item(s); draft eacd04d58ab5",
+      "at": "2026-07-12T12:03:32.525Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "427f158b606863d0f3bec53a37d9e337eded837ffb256b6390013e7e3535a29f",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g4u09.gi.modals-possibility.ec.006] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:32.526Z"
     }
   ]
 }

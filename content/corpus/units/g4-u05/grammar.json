@@ -2630,7 +2630,7 @@
       "id": "g4u05.gi.past-perfect-connectors.tf.004",
       "structureId": "g4u05.s.past-perfect-connectors",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2656,6 +2656,14 @@
         },
         {
           "text": "Jamie Oliver was not happy because of the bad school dinners.",
+          "tier": "full"
+        },
+        {
+          "text": "Because of the bad school dinners, Jamie Oliver wasn't happy.",
+          "tier": "full"
+        },
+        {
+          "text": "Jamie Oliver wasn't happy because of the bad school dinners.",
           "tier": "full"
         }
       ],

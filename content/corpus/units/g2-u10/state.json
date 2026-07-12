@@ -113,6 +113,20 @@
       "contentHash": "f1967f258083ea0770467a0aa99c794d0c16beeb97c25c9e58b919685491d9ba",
       "note": "trusted patch (mechanical): 7 answer-pool fix(es) [g2u10.w.auntie, g2u10.w.fault, g2u10.w.file, g2u10.w.foreign-language, g2u10.w.ice-skating, g2u10.w.tool, g2u10.w.tractor] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:36:00.405Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "81312d5e449226690ec4f490d2d857a68ac4f3dfb58e442a8e5940b683bdbf1b",
+      "note": "gen ingest: 22 vocab + 45 grammar item(s); draft ab34e26b358d",
+      "at": "2026-07-12T12:03:28.217Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "81312d5e449226690ec4f490d2d857a68ac4f3dfb58e442a8e5940b683bdbf1b",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g2u10.gi.must.ff.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:28.219Z"
     }
   ]
 }
