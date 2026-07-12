@@ -4,14 +4,18 @@ Turns the E-2 variant-audit findings (`content/build/audit/`) into merged, verif
 content fixes — one bounded wave per PR. Pairs with the curation standard
 (`docs/handover/17_curation_standard.md`) and the audit (`pnpm content audit-variants`).
 
-> **Verified 2026-07-12 (R4 pilot).** The flow below was validated end-to-end on the 7 R4
-> findings (audit R4 7→0, `content validate` green, loader correct), then reverted pending
-> the §Decision. **It corrects BLUEPRINT_V2 IV.1 (A-5), which says "overlay entries only":**
-> answer-pool fixes (R1/R2/R4 — the bulk of the 1,007 findings) touch `answers` /
-> `translation` / `dAnswers`, which are **not** review-editable overlay cells, so an
-> item-fixes overlay *alone* fails `content validate` with `V-22 — item-fixes patch …
-> did not land`. The patch must be **materialized into the corpus and the unit
-> re-approved.** See §"Why it isn't overlay-only."
+> **⚠ CORRECTED 2026-07-12 (walked the flow to the end — an earlier draft of this doc
+> understated the cost).** Landing an answer-pool fix is **far heavier** than a surgical
+> overlay. Changing *any* item in an approved unit re-stales all **four LLM verification
+> lenses** (`level-gloss`, `answers`, `translation`, `register` — keyed to the items'
+> content hash), so `content verify --ingest` fails `lens … STALE — re-run the lens`.
+> Landing the fix therefore requires **re-verifying the whole unit** (re-run the 4 lenses
+> over all ~94 items) → validate → re-review → re-approve — *not* a ≤25-item surgical patch.
+> **There is no lightweight surgical-fix path today.** Koki chose policy **(B)** (auto-approve
+> mechanical fixes), but the real blocker isn't the approval verdict — it's the lens
+> re-verification. **See §"The real blocker" for the recommendation.** (Also corrects
+> BLUEPRINT_V2 IV.1's "overlay entries only", which fails V-22 — see §"Why it isn't
+> overlay-only".)
 
 ## The wave loop (per PR)
 
@@ -23,19 +27,20 @@ content fixes — one bounded wave per PR. Pairs with the curation standard
    Author with model intelligence per handover/17; never machine-generated prose.
 3. **Materialize + re-lock** (per touched unit): `pnpm content gen --unit <slug> --ingest`.
    Applies the overlay into `grammar.json` / `vocab.json`, bumps each touched item's `rev`,
-   and records a `generated` state transition with a fresh content hash. **Confirm the diff
-   is surgical** (`git diff` — only the intended items change; nothing else).
-4. **Re-approve** (per touched unit) — **Koki's content-authority gate (see §Decision):**
-   `pnpm content review-doc --items --unit <slug>` → verdict `ok` →
-   `pnpm content ingest-review --items --unit <slug>` → state `approved`.
-   Until this runs, the unit sits in `generated`, is dropped from `listApprovedUnits`
-   (not served), and the `@domigo/content-loader` test fails.
-5. **Verify.** `pnpm content validate` (V-22 green: overlay == materialized corpus; unit
-   approved) · `pnpm content audit-variants` (the touched rule's criticals drop) · keys
-   touched ⇒ `node scripts/audit/blind-solve.ts --only <ids>` → 0 class-(a) · the full
-   standing gate.
-6. **PR** ≤25 items with the before/after audit counts (the drift alarm) + a
-   Verification-honesty note.
+   records a `generated` state transition + fresh content hash. **Confirm the diff is surgical.**
+4. **Re-verify the whole unit (the heavy step).** The item change re-stales all 4 LLM lenses:
+   `pnpm content verify --unit <slug> --prepare` → run the 4 lenses (level-gloss / answers /
+   translation / register) over the unit via fresh-context subagents (the blind-solve pattern;
+   no API key) → `pnpm content verify --unit <slug> --ingest` (→ `verified`) → the validate
+   stage (→ `review_ready`). **This re-verifies ALL ~94 items, not just the fixed ones** — the
+   disproportion §"The real blocker" is about.
+5. **Re-approve** — **Koki's content gate (see §Decision):** `pnpm content review-doc --items
+   --unit <slug>` (prior verdicts sticky-resolve; answer only new flags + the unit verdict) →
+   verdict `ok` → `pnpm content ingest-review --items --unit <slug>` → `approved`. Until this,
+   the unit sits pre-approved, is dropped from `listApprovedUnits`, and the loader test fails.
+6. **Verify + PR.** `pnpm content validate` green · `audit-variants` criticals drop · keys
+   touched ⇒ `blind-solve --only <ids>` → 0 class-(a) · full standing gate · PR with before/after
+   counts + a Verification-honesty note.
 
 **Arc exit:** `critical: 0` per grade AND blind-solve class-(a) < 1% per grade.
 
@@ -52,21 +57,35 @@ entry **and** materialized corpus **and** a recorded `approved` transition — e
 `prompt/distractors/gloss/hintDe`) — answer pools are never overlay-only, they go through
 this loop.
 
-## Decision for Koki — the re-approval verdict
+## The real blocker + recommendation (the decision that matters)
 
-Step 4's `ok` verdict is your content sign-off (the `approved` state means *you* approved).
-Two policies:
+Koki chose **(B)** — auto-approve mechanical fixes — and that's the right policy; the
+`approved` state is his content sign-off, and for a mechanical bug-removal the blind-solve +
+audit re-run + his PR merge already gate quality. **But walking the flow to the end
+(2026-07-12) showed the approval verdict was never the bottleneck:** any item change re-stales
+the 4 LLM verification lenses, forcing a full-unit re-verification. So "fix 7 unreachable
+answers" actually means "re-verify + re-review + re-approve 3 whole units (~280 items through 4
+lenses)." That is disproportionate, and it makes A-5's ≤25-item "surgical fix waves" impossible
+as specced.
 
-- **(A) You verdict every wave** — safest; each fix waits for you.
-- **(B) Delegate auto-approval for MECHANICAL fixes** — e.g. R4 unreachable-answer removals
-  (a provably-broken partial dropped; zero pedagogical judgment) and R1 article-form adds
-  under the K-4 rule (a correct article added; German genders are facts) — while you keep
-  the verdict for content-*authored* fixes (rewrites, ambiguous-carrier repairs). A session
-  then auto-approves the mechanical class; you review at PR merge.
+**The real unblock is engineering, not policy: a lightweight "trusted patch" path** — a
+`content patch` mode that materializes a mechanically-verified item-fixes patch + re-locks +
+re-approves **without re-running the LLM lenses**, gated instead by the deterministic validators
+(`content validate` all green) + a targeted `blind-solve --only` on the touched keys. A
+mechanical fix introduces no new prose for the lenses to judge, so skipping them is safe *for
+that class* — but **whether to trust that gate is a policy + corpus-integrity decision that's
+Koki's.**
 
-**Recommendation: (B).** The blind-solve pass + audit re-run + your PR merge already gate
-quality; a separate per-wave verdict for a mechanical bug-removal is redundant. This is your
-call — flag it and I'll follow it.
+**Options for Koki:**
+- **(1) Build the trusted-patch path** *(recommended)* — a bounded engineering task on the
+  content-pipeline; then mechanical A-5 waves (R4, then R1's 791) become genuinely surgical +
+  solo. Needs your OK: it changes the corpus-integrity contract (a patch that skips the LLM lenses).
+- **(2) Accept the full re-verification cost** — a session drives the whole pipeline (lenses via
+  subagents) per touched unit; heavy, but no new machinery.
+- **(3) Defer** — the 7 R4 bugs are dead *partial-credit* answers, not wrong primary answers, so
+  they are low-harm; leave them until (1) exists.
+
+The 7 R4 fixes are captured below, ready for whichever path you pick.
 
 ## Pilot worklist — R4 unreachable answers (7 items, ready)
 
