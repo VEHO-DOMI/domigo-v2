@@ -2,16 +2,16 @@
   "schema": "variant-audit@1",
   "totals": {
     "scanned": 5898,
-    "critical": 1000,
+    "critical": 970,
     "advisory": 286,
     "byRule": {
       "R2": 336,
       "R3": 159,
-      "R1": 791
+      "R1": 761
     },
     "byGrade": {
       "g1": {
-        "critical": 379,
+        "critical": 349,
         "advisory": 104
       },
       "g2": {
@@ -422,252 +422,12 @@
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
-      "itemId": "g1u01.w.board",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Tafel] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Tafel\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.book",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Buch] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Buch\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.chair",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Stuhl | Sessel] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Stuhl\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.child",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Kind] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Kind\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.desk",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Schreibtisch | Pult] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Schreibtisch\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.door",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Tür] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Tür\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.exercise-book",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Heft | Schreibheft] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Heft\" as a full answer"
-    },
-    {
       "itemId": "g1u01.w.favourite",
       "unitSlug": "g1-u01",
       "rule": "R1",
       "severity": "critical",
       "evidence": "enToDe full pool [Lieblings- | liebste] has bare noun(s) but no der/die/das form",
       "suggestion": "add the article form of \"Lieblings-\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.hairband",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Haarreif] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Haarreif\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.hat",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Hut] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Hut\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.midnight",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Mitternacht] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Mitternacht\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.pen",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Kugelschreiber | Kuli] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Kugelschreiber\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.pencil",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Bleistift] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Bleistift\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.pencil-case",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Federmäppchen | Federpennal] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Federmäppchen\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.picture",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Bild] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Bild\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.projector",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Projektor | Beamer] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Projektor\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.rubber",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Radiergummi] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Radiergummi\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.ruler",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Lineal] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Lineal\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.school-bag",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Schultasche] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Schultasche\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.school-tie",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Schulkrawatte] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Schulkrawatte\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.scissors",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Schere] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Schere\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.shirt",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Hemd] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Hemd\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.shoe",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Schuh] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Schuh\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.skirt",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Rock] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Rock\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.socks",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Socken] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Socken\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.sound-system",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Soundsystem | Musikanlage] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Soundsystem\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.sunglasses",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Sonnenbrille] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Sonnenbrille\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.sweater",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Pullover | Pulli] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Pullover\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.tablet",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Tablet] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Tablet\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.time",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Zeit | Uhrzeit] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Zeit\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.w.window",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Fenster] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Fenster\" as a full answer"
     },
     {
       "itemId": "g1u02.gi.prepositions-place.ec.004",

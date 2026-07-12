@@ -108,7 +108,7 @@
     },
     {
       "id": "g1u01.w.board",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -168,6 +168,10 @@
           {
             "text": "Tafel",
             "tier": "full"
+          },
+          {
+            "text": "die Tafel",
+            "tier": "full"
           }
         ]
       },
@@ -197,7 +201,7 @@
     },
     {
       "id": "g1u01.w.book",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -249,6 +253,10 @@
           {
             "text": "Buch",
             "tier": "full"
+          },
+          {
+            "text": "das Buch",
+            "tier": "full"
           }
         ]
       },
@@ -278,7 +286,7 @@
     },
     {
       "id": "g1u01.w.chair",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -334,6 +342,14 @@
           {
             "text": "Sessel",
             "tier": "full"
+          },
+          {
+            "text": "der Stuhl",
+            "tier": "full"
+          },
+          {
+            "text": "der Sessel",
+            "tier": "full"
           }
         ]
       },
@@ -347,7 +363,7 @@
     },
     {
       "id": "g1u01.w.child",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -398,6 +414,10 @@
         "enToDe": [
           {
             "text": "Kind",
+            "tier": "full"
+          },
+          {
+            "text": "das Kind",
             "tier": "full"
           }
         ]
@@ -518,7 +538,7 @@
     },
     {
       "id": "g1u01.w.desk",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -578,6 +598,14 @@
           {
             "text": "Tisch",
             "tier": "partial"
+          },
+          {
+            "text": "der Schreibtisch",
+            "tier": "full"
+          },
+          {
+            "text": "das Pult",
+            "tier": "full"
           }
         ]
       },
@@ -591,7 +619,7 @@
     },
     {
       "id": "g1u01.w.door",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -643,6 +671,10 @@
           {
             "text": "Tür",
             "tier": "full"
+          },
+          {
+            "text": "die Tür",
+            "tier": "full"
           }
         ]
       },
@@ -662,7 +694,7 @@
     },
     {
       "id": "g1u01.w.exercise-book",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -721,6 +753,14 @@
           },
           {
             "text": "Schreibheft",
+            "tier": "full"
+          },
+          {
+            "text": "das Heft",
+            "tier": "full"
+          },
+          {
+            "text": "das Schreibheft",
             "tier": "full"
           }
         ]
@@ -843,7 +883,7 @@
     },
     {
       "id": "g1u01.w.hairband",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -907,6 +947,10 @@
           {
             "text": "Haarband",
             "tier": "partial"
+          },
+          {
+            "text": "der Haarreif",
+            "tier": "full"
           }
         ]
       },
@@ -946,7 +990,7 @@
     },
     {
       "id": "g1u01.w.hat",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1002,6 +1046,10 @@
           {
             "text": "Mütze",
             "tier": "partial"
+          },
+          {
+            "text": "der Hut",
+            "tier": "full"
           }
         ]
       },
@@ -1677,7 +1725,7 @@
     },
     {
       "id": "g1u01.w.midnight",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1728,6 +1776,10 @@
         "enToDe": [
           {
             "text": "Mitternacht",
+            "tier": "full"
+          },
+          {
+            "text": "die Mitternacht",
             "tier": "full"
           }
         ]
@@ -2085,7 +2137,7 @@
     },
     {
       "id": "g1u01.w.pen",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2145,6 +2197,14 @@
           {
             "text": "Stift",
             "tier": "partial"
+          },
+          {
+            "text": "der Kugelschreiber",
+            "tier": "full"
+          },
+          {
+            "text": "der Kuli",
+            "tier": "full"
           }
         ]
       },
@@ -2179,7 +2239,7 @@
     },
     {
       "id": "g1u01.w.pencil",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2235,6 +2295,10 @@
           {
             "text": "Stift",
             "tier": "partial"
+          },
+          {
+            "text": "der Bleistift",
+            "tier": "full"
           }
         ]
       },
@@ -2259,7 +2323,7 @@
     },
     {
       "id": "g1u01.w.pencil-case",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2319,6 +2383,14 @@
           {
             "text": "Mäppchen",
             "tier": "partial"
+          },
+          {
+            "text": "das Federmäppchen",
+            "tier": "full"
+          },
+          {
+            "text": "das Federpennal",
+            "tier": "full"
           }
         ]
       },
@@ -2348,7 +2420,7 @@
     },
     {
       "id": "g1u01.w.picture",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2400,6 +2472,10 @@
           {
             "text": "Bild",
             "tier": "full"
+          },
+          {
+            "text": "das Bild",
+            "tier": "full"
           }
         ]
       },
@@ -2439,7 +2515,7 @@
     },
     {
       "id": "g1u01.w.projector",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2503,6 +2579,14 @@
           {
             "text": "Beamer",
             "tier": "full"
+          },
+          {
+            "text": "der Projektor",
+            "tier": "full"
+          },
+          {
+            "text": "der Beamer",
+            "tier": "full"
           }
         ]
       },
@@ -2547,7 +2631,7 @@
     },
     {
       "id": "g1u01.w.rubber",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2607,6 +2691,10 @@
           {
             "text": "Gummi",
             "tier": "partial"
+          },
+          {
+            "text": "der Radiergummi",
+            "tier": "full"
           }
         ]
       },
@@ -2646,7 +2734,7 @@
     },
     {
       "id": "g1u01.w.ruler",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2698,6 +2786,10 @@
           {
             "text": "Lineal",
             "tier": "full"
+          },
+          {
+            "text": "das Lineal",
+            "tier": "full"
           }
         ]
       },
@@ -2742,7 +2834,7 @@
     },
     {
       "id": "g1u01.w.school-bag",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2802,6 +2894,10 @@
           {
             "text": "Schulrucksack",
             "tier": "partial"
+          },
+          {
+            "text": "die Schultasche",
+            "tier": "full"
           }
         ]
       },
@@ -2826,7 +2922,7 @@
     },
     {
       "id": "g1u01.w.school-tie",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2886,6 +2982,10 @@
           {
             "text": "Krawatte",
             "tier": "partial"
+          },
+          {
+            "text": "die Schulkrawatte",
+            "tier": "full"
           }
         ]
       },
@@ -2920,7 +3020,7 @@
     },
     {
       "id": "g1u01.w.scissors",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2972,6 +3072,10 @@
           {
             "text": "Schere",
             "tier": "full"
+          },
+          {
+            "text": "die Schere",
+            "tier": "full"
           }
         ]
       },
@@ -3001,7 +3105,7 @@
     },
     {
       "id": "g1u01.w.shirt",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3053,6 +3157,10 @@
           {
             "text": "Hemd",
             "tier": "full"
+          },
+          {
+            "text": "das Hemd",
+            "tier": "full"
           }
         ]
       },
@@ -3092,7 +3200,7 @@
     },
     {
       "id": "g1u01.w.shoe",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3144,6 +3252,10 @@
           {
             "text": "Schuh",
             "tier": "full"
+          },
+          {
+            "text": "der Schuh",
+            "tier": "full"
           }
         ]
       },
@@ -3178,7 +3290,7 @@
     },
     {
       "id": "g1u01.w.skirt",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3230,6 +3342,10 @@
           {
             "text": "Rock",
             "tier": "full"
+          },
+          {
+            "text": "der Rock",
+            "tier": "full"
           }
         ]
       },
@@ -3264,7 +3380,7 @@
     },
     {
       "id": "g1u01.w.socks",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3316,6 +3432,10 @@
           {
             "text": "Socken",
             "tier": "full"
+          },
+          {
+            "text": "die Socken",
+            "tier": "full"
           }
         ]
       },
@@ -3345,7 +3465,7 @@
     },
     {
       "id": "g1u01.w.sound-system",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3409,6 +3529,14 @@
           {
             "text": "Anlage",
             "tier": "partial"
+          },
+          {
+            "text": "das Soundsystem",
+            "tier": "full"
+          },
+          {
+            "text": "die Musikanlage",
+            "tier": "full"
           }
         ]
       },
@@ -3443,7 +3571,7 @@
     },
     {
       "id": "g1u01.w.sunglasses",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3495,6 +3623,10 @@
           {
             "text": "Sonnenbrille",
             "tier": "full"
+          },
+          {
+            "text": "die Sonnenbrille",
+            "tier": "full"
           }
         ]
       },
@@ -3544,7 +3676,7 @@
     },
     {
       "id": "g1u01.w.sweater",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3616,6 +3748,14 @@
           {
             "text": "Pulli",
             "tier": "full"
+          },
+          {
+            "text": "der Pullover",
+            "tier": "full"
+          },
+          {
+            "text": "der Pulli",
+            "tier": "full"
           }
         ]
       },
@@ -3655,7 +3795,7 @@
     },
     {
       "id": "g1u01.w.tablet",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3706,6 +3846,10 @@
         "enToDe": [
           {
             "text": "Tablet",
+            "tier": "full"
+          },
+          {
+            "text": "das Tablet",
             "tier": "full"
           }
         ]
@@ -3916,7 +4060,7 @@
     },
     {
       "id": "g1u01.w.time",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3971,6 +4115,14 @@
           },
           {
             "text": "Uhrzeit",
+            "tier": "full"
+          },
+          {
+            "text": "die Zeit",
+            "tier": "full"
+          },
+          {
+            "text": "die Uhrzeit",
             "tier": "full"
           }
         ]
@@ -6049,7 +6201,7 @@
     },
     {
       "id": "g1u01.w.window",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -6100,6 +6252,10 @@
         "enToDe": [
           {
             "text": "Fenster",
+            "tier": "full"
+          },
+          {
+            "text": "das Fenster",
             "tier": "full"
           }
         ]

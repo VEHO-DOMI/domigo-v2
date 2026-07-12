@@ -179,5 +179,737 @@
         ]
       }
     }
+  },
+  "g1-u01": {
+    "patch": {
+      "g1u01.w.board": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "board",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Tafel",
+              "tier": "full"
+            },
+            {
+              "text": "die Tafel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.book": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "book",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Buch",
+              "tier": "full"
+            },
+            {
+              "text": "das Buch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.chair": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "chair",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stuhl",
+              "tier": "full"
+            },
+            {
+              "text": "Sessel",
+              "tier": "full"
+            },
+            {
+              "text": "der Stuhl",
+              "tier": "full"
+            },
+            {
+              "text": "der Sessel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.child": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "child",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kind",
+              "tier": "full"
+            },
+            {
+              "text": "das Kind",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.desk": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "desk",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schreibtisch",
+              "tier": "full"
+            },
+            {
+              "text": "Pult",
+              "tier": "full"
+            },
+            {
+              "text": "Tisch",
+              "tier": "partial"
+            },
+            {
+              "text": "der Schreibtisch",
+              "tier": "full"
+            },
+            {
+              "text": "das Pult",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.door": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "door",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Tür",
+              "tier": "full"
+            },
+            {
+              "text": "die Tür",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.exercise-book": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "exercise book",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Heft",
+              "tier": "full"
+            },
+            {
+              "text": "Schreibheft",
+              "tier": "full"
+            },
+            {
+              "text": "das Heft",
+              "tier": "full"
+            },
+            {
+              "text": "das Schreibheft",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.hairband": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hairband",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Haarreif",
+              "tier": "full"
+            },
+            {
+              "text": "Stirnband",
+              "tier": "partial"
+            },
+            {
+              "text": "Haarband",
+              "tier": "partial"
+            },
+            {
+              "text": "der Haarreif",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.hat": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hat",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hut",
+              "tier": "full"
+            },
+            {
+              "text": "Mütze",
+              "tier": "partial"
+            },
+            {
+              "text": "der Hut",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.midnight": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "midnight",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mitternacht",
+              "tier": "full"
+            },
+            {
+              "text": "die Mitternacht",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.pen": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pen",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kugelschreiber",
+              "tier": "full"
+            },
+            {
+              "text": "Kuli",
+              "tier": "full"
+            },
+            {
+              "text": "Stift",
+              "tier": "partial"
+            },
+            {
+              "text": "der Kugelschreiber",
+              "tier": "full"
+            },
+            {
+              "text": "der Kuli",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.pencil": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pencil",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bleistift",
+              "tier": "full"
+            },
+            {
+              "text": "Stift",
+              "tier": "partial"
+            },
+            {
+              "text": "der Bleistift",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.pencil-case": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pencil case",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Federmäppchen",
+              "tier": "full"
+            },
+            {
+              "text": "Federpennal",
+              "tier": "full"
+            },
+            {
+              "text": "Mäppchen",
+              "tier": "partial"
+            },
+            {
+              "text": "das Federmäppchen",
+              "tier": "full"
+            },
+            {
+              "text": "das Federpennal",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.picture": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "picture",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bild",
+              "tier": "full"
+            },
+            {
+              "text": "das Bild",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.projector": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "projector",
+              "tier": "full"
+            },
+            {
+              "text": "beamer",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Projektor",
+              "tier": "full"
+            },
+            {
+              "text": "Beamer",
+              "tier": "full"
+            },
+            {
+              "text": "der Projektor",
+              "tier": "full"
+            },
+            {
+              "text": "der Beamer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.rubber": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "rubber",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Radiergummi",
+              "tier": "full"
+            },
+            {
+              "text": "Gummi",
+              "tier": "partial"
+            },
+            {
+              "text": "der Radiergummi",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.ruler": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ruler",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Lineal",
+              "tier": "full"
+            },
+            {
+              "text": "das Lineal",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.school-bag": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "school bag",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schultasche",
+              "tier": "full"
+            },
+            {
+              "text": "Schulrucksack",
+              "tier": "partial"
+            },
+            {
+              "text": "die Schultasche",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.school-tie": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "school tie",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schulkrawatte",
+              "tier": "full"
+            },
+            {
+              "text": "Krawatte",
+              "tier": "partial"
+            },
+            {
+              "text": "die Schulkrawatte",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.scissors": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "scissors",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schere",
+              "tier": "full"
+            },
+            {
+              "text": "die Schere",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.shirt": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "shirt",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hemd",
+              "tier": "full"
+            },
+            {
+              "text": "das Hemd",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.shoe": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "shoe",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schuh",
+              "tier": "full"
+            },
+            {
+              "text": "der Schuh",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.skirt": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "skirt",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Rock",
+              "tier": "full"
+            },
+            {
+              "text": "der Rock",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.socks": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "socks",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Socken",
+              "tier": "full"
+            },
+            {
+              "text": "die Socken",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.sound-system": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sound system",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Soundsystem",
+              "tier": "full"
+            },
+            {
+              "text": "Musikanlage",
+              "tier": "full"
+            },
+            {
+              "text": "Anlage",
+              "tier": "partial"
+            },
+            {
+              "text": "das Soundsystem",
+              "tier": "full"
+            },
+            {
+              "text": "die Musikanlage",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.sunglasses": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sunglasses",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sonnenbrille",
+              "tier": "full"
+            },
+            {
+              "text": "die Sonnenbrille",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.sweater": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sweater",
+              "tier": "full"
+            },
+            {
+              "text": "jumper",
+              "tier": "partial"
+            },
+            {
+              "text": "pullover",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Pullover",
+              "tier": "full"
+            },
+            {
+              "text": "Pulli",
+              "tier": "full"
+            },
+            {
+              "text": "der Pullover",
+              "tier": "full"
+            },
+            {
+              "text": "der Pulli",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.tablet": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tablet",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Tablet",
+              "tier": "full"
+            },
+            {
+              "text": "das Tablet",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.time": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "time",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zeit",
+              "tier": "full"
+            },
+            {
+              "text": "Uhrzeit",
+              "tier": "full"
+            },
+            {
+              "text": "die Zeit",
+              "tier": "full"
+            },
+            {
+              "text": "die Uhrzeit",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u01.w.window": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "window",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fenster",
+              "tier": "full"
+            },
+            {
+              "text": "das Fenster",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
   }
 }
