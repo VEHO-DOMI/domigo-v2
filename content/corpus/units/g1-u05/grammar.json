@@ -2239,7 +2239,7 @@
       "id": "g1u05.gi.possessives.tf.002",
       "structureId": "g1u05.s.possessives",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2265,6 +2265,10 @@
         },
         {
           "text": "They are our guitars.",
+          "tier": "full"
+        },
+        {
+          "text": "They're our guitars.",
           "tier": "full"
         }
       ],

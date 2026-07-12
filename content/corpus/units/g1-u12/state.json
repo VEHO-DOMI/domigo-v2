@@ -120,6 +120,20 @@
       "contentHash": "5e96756e5ec9ffb20cf8da10ef5fabec471f8b1a2db14af66d78e9b96dc89c5b",
       "note": "trusted patch (mechanical): 29 answer-pool fix(es) [g1u12.w.alarm-clock, g1u12.w.april, g1u12.w.august, g1u12.w.bathroom, g1u12.w.bedroom, g1u12.w.candle, g1u12.w.cinema, g1u12.w.date, g1u12.w.december, g1u12.w.dining-room, g1u12.w.february, g1u12.w.garage, g1u12.w.garden, g1u12.w.hall, g1u12.w.january, g1u12.w.july, g1u12.w.june, g1u12.w.kitchen, g1u12.w.library, g1u12.w.living-room, g1u12.w.march, g1u12.w.match, g1u12.w.may, g1u12.w.month, g1u12.w.november, g1u12.w.october, g1u12.w.piece, g1u12.w.robbery, g1u12.w.september] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:10:12.334Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "c5279ba51d297097b2cf61b27e0cbb25cd9ca8eea338c3e0a0d4b57db6a404dc",
+      "note": "gen ingest: 74 vocab + 87 grammar item(s); draft a7f5e42b2708",
+      "at": "2026-07-12T11:30:33.764Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "c5279ba51d297097b2cf61b27e0cbb25cd9ca8eea338c3e0a0d4b57db6a404dc",
+      "note": "trusted patch (mechanical): 2 answer-pool fix(es) [g1u12.gi.past-simple-was-were.tf.003, g1u12.gi.past-simple-was-were.tr.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:30:33.766Z"
     }
   ]
 }

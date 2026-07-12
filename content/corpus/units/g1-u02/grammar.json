@@ -4122,7 +4122,7 @@
       "id": "g1u02.gi.there-is-are.ec.005",
       "structureId": "g1u02.s.there-is-are",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -4157,6 +4157,10 @@
         {
           "text": "isn't",
           "tier": "partial"
+        },
+        {
+          "text": "There is not a lion in front of the train.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -6102,7 +6106,7 @@
       "id": "g1u02.gi.there-is-are.tr.005",
       "structureId": "g1u02.s.there-is-are",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -6132,6 +6136,10 @@
         },
         {
           "text": "There's no ruler on the desk.",
+          "tier": "full"
+        },
+        {
+          "text": "There is not a ruler on the desk.",
           "tier": "full"
         }
       ],
@@ -6725,7 +6733,7 @@
       "id": "g1u02.gi.to-be.ff.001",
       "structureId": "g1u02.s.to-be",
       "format": "free-form",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -6760,6 +6768,18 @@
         {
           "text": "I'm happy.",
           "tier": "partial"
+        },
+        {
+          "text": "I'm from England.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm happy.",
+          "tier": "full"
+        },
+        {
+          "text": "I am from London.",
+          "tier": "full"
         }
       ],
       "direction": null,

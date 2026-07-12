@@ -102,8 +102,13 @@ export function hasAmbiguousContraction(text: string): boolean {
 // ---------------------------------------------------------------------------
 
 const ARTICLE = /^(der|die|das|ein|eine)\s+(\S+)$/i;
-/** A single capitalized German token (the classic noun gloss shape). */
-const BARE_NOUN = /^[A-ZÄÖÜ][a-zäöüß-]+$/;
+/** A single capitalized German token (the classic noun gloss shape). Must END in a
+ *  letter: a trailing hyphen marks a combining PREFIX (Lieblings-, Multimilliarden-),
+ *  not a standalone noun — a prefix can't take an article, so it's no R1 candidate. */
+const BARE_NOUN = /^[A-ZÄÖÜ][a-zäöüß-]*[a-zäöüß]$/;
+/** Proper nouns that match the bare-noun shape but take no citation article
+ *  (place names) — a curated R1 exclusion so they aren't flagged as missing one. */
+const R1_PROPER_EXCLUDE = new Set(["Zentralasien", "Mittelasien"]);
 
 // ---------------------------------------------------------------------------
 // per-item audits (pure — fixture-tested)
@@ -118,8 +123,9 @@ export function auditVocabItem(slug: string, it: VocabItem): Finding[] {
   // or the gloss is a single capitalized token). Multi-word phrase glosses
   // ("der gleichen Meinung sein") stay out of scope — conservative by design.
   const articleForms = fulls.filter((t) => ARTICLE.test(t) && BARE_NOUN.test(t.replace(ARTICLE, "$2")));
-  const bareNounForms = fulls.filter((t) => BARE_NOUN.test(t));
-  const eligible = articleForms.length > 0 || (BARE_NOUN.test((it.g ?? "").trim()) && fulls.length > 0);
+  const bareNounForms = fulls.filter((t) => BARE_NOUN.test(t) && !R1_PROPER_EXCLUDE.has(t));
+  const gBare = (it.g ?? "").trim();
+  const eligible = articleForms.length > 0 || (BARE_NOUN.test(gBare) && !R1_PROPER_EXCLUDE.has(gBare) && fulls.length > 0);
   if (eligible) {
     const missingBare =
       articleForms.length > 0 && !articleForms.some((t) => canonSet.has(canon(t.replace(ARTICLE, "$2"))));
@@ -182,6 +188,16 @@ export function auditGrammarItem(slug: string, it: GrammarItem): Finding[] {
   const fulls = answers.filter((a) => a.tier === "full");
   const fullCanon = new Set(fulls.map((a) => canon(a.text)));
   const typed = TYPED_FORMATS.has(it.format);
+  // A contraction DRILL — the prompt asks to convert TO a specific form ("Kurzform"/
+  // "Langform"/short/long form), or the item lives in a .contractions. teaching unit —
+  // deliberately accepts only ONE form; the missing twin is intended, not a defect.
+  // Flag those advisory so they don't inflate the critical count (parallel to R1's
+  // non-noun exclusion). The fix wave adds the twin ONLY to non-drill (incidental) items.
+  const promptText = typeof it.prompt === "string" ? it.prompt : (it.prompt?.text ?? "");
+  const r2Drill =
+    /kurzform|langform|short form|long form|contracted form|full form|schreib.*(kurz|lang)|write.*(short|long|contract|full) form/i.test(promptText) ||
+    it.id.includes(".contractions.");
+  const r2Sev: "critical" | "advisory" = r2Drill ? "advisory" : "critical";
 
   // R2 — contraction symmetry on typed formats.
   if (typed) {
@@ -189,9 +205,9 @@ export function auditGrammarItem(slug: string, it: GrammarItem): Finding[] {
       const expanded = expandContractions(a.text);
       if (expanded !== canon(a.text) && !fullCanon.has(expanded)) {
         out.push({
-          itemId: it.id, unitSlug: slug, rule: "R2", severity: "critical",
-          evidence: `full answer ${JSON.stringify(a.text)} has no expanded twin`,
-          suggestion: `add ${JSON.stringify(expanded)} as a full answer`,
+          itemId: it.id, unitSlug: slug, rule: "R2", severity: r2Sev,
+          evidence: `full answer ${JSON.stringify(a.text)} has no expanded twin${r2Drill ? " (form-drill: asymmetry intended)" : ""}`,
+          suggestion: r2Drill ? "form-drill — leave asymmetric (the exercise wants this one form)" : `add ${JSON.stringify(expanded)} as a full answer`,
         });
       }
       if (hasAmbiguousContraction(a.text)) {
@@ -208,16 +224,19 @@ export function auditGrammarItem(slug: string, it: GrammarItem): Finding[] {
       // NB: "have" is deliberately absent from the reverse direction — main-verb
       // have ("you have to read", "have a good day") must NOT suggest "you've";
       // the forward direction still catches authored 've answers.
+      // Affirmative aux ('re/'m/'ll) can't contract when clause-final/stranded
+      // ("Yes, I am." never → "Yes, I'm.") → require a following word. Negations
+      // (isn't/don't/aren't) contract fine even clause-final, so they stay unguarded.
       const contractible =
         / (do|does|did|is|are|was|were|has|have|had|would|should|could|can|will|must) not /.test(t) ||
-        / (we|you|they) are /.test(t) || / i am /.test(t) || /\b(i|we|you|they|he|she|it) will /.test(t);
+        / (we|you|they) are \p{L}/u.test(t) || / i am \p{L}/u.test(t) || /\b(i|we|you|they|he|she|it) will \p{L}/u.test(t);
       if (!contractible) continue;
       const hasShortTwin = fulls.some((b) => b !== a && expandContractions(b.text) === canon(a.text));
       if (!hasShortTwin) {
         out.push({
-          itemId: it.id, unitSlug: slug, rule: "R2", severity: "critical",
-          evidence: `full answer ${JSON.stringify(a.text)} has no contracted twin`,
-          suggestion: "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer",
+          itemId: it.id, unitSlug: slug, rule: "R2", severity: r2Sev,
+          evidence: `full answer ${JSON.stringify(a.text)} has no contracted twin${r2Drill ? " (form-drill: asymmetry intended)" : ""}`,
+          suggestion: r2Drill ? "form-drill — leave asymmetric (the exercise wants this one form)" : "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer",
         });
       }
     }

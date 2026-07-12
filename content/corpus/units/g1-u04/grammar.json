@@ -154,7 +154,7 @@
       "id": "g1u04.gi.to-be-negative.ec.001",
       "structureId": "g1u04.s.to-be-negative",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -181,6 +181,10 @@
         {
           "text": "isn't",
           "tier": "partial"
+        },
+        {
+          "text": "She is not sad.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -198,7 +202,7 @@
       "id": "g1u04.gi.to-be-negative.ec.002",
       "structureId": "g1u04.s.to-be-negative",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -225,6 +229,10 @@
         {
           "text": "aren't",
           "tier": "partial"
+        },
+        {
+          "text": "They are not hungry.",
+          "tier": "full"
         }
       ],
       "direction": null,

@@ -1763,7 +1763,7 @@
       "id": "g1u11.gi.present-continuous.tr.002",
       "structureId": "g1u11.s.present-continuous",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1794,6 +1794,14 @@
         {
           "text": "Are you sleeping? No, I'm not.",
           "tier": "partial"
+        },
+        {
+          "text": "Are you sleeping? – No, I am not.",
+          "tier": "full"
+        },
+        {
+          "text": "Are you sleeping? No, I'm not.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",

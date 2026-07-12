@@ -54,6 +54,26 @@ content fixes — one bounded wave per PR. Pairs with the curation standard
 >    `ein Stapel` with no "Stapel"). Fix = ADD the bare noun (strip the article; no gender lookup
 >    needed — the article is already present and correct). `build-missingbare.cjs` handles these.
 
+## R2 — contraction symmetry (judgment-laden, NOT purely mechanical)
+
+R2 adds the missing "twin" (expansion ⇄ contraction) so a pupil isn't marked wrong for the form —
+BUT only where the contraction is **incidental**. It is NOT a blind sweep like R1:
+
+- **Skip DRILLS.** When the prompt asks to convert TO a specific form ("Kurzform"/"Langform"/short/
+  long form) or the item is in a `.contractions.` teaching unit, the asymmetry is *intended* — adding
+  the twin lets a pupil pass without doing the task (and the `echoGuard` already rejects the twin).
+  The audit now **downgrades these to advisory** (`r2Drill` in `audit-variants.ts`), parallel to R1's
+  non-noun exclusion. Detect by prompt-keyword **OR** topic — a keyword-only or topic-only check
+  misses cases (e.g. `g1u02.gi.to-be.tf.003` is a "Kurzform" drill *outside* a contractions unit).
+- **Stranded auxiliaries can't contract.** "Yes, I am." never → "Yes, I'm." (an affirmative aux is
+  clause-final). The forward expansion is always safe; the REVERSE (adding a contraction) needs a
+  following-word guard. Both the builder and the audit's reverse rule now require it (negations like
+  "isn't"/"aren't" contract fine clause-finally, so they stay unguarded).
+- **Verify, not trust.** `build-r2.cjs` computes each twin case-preserving with a round-trip guard
+  (`canonA(twin) === expandContractions(answer)`), then a fresh-context subagent reviews every twin
+  for grammar + pedagogy (does it break the exercise?), then each twin is graded `correct` through
+  `gradeGrammar`. Grade 1 exemplar: 27 twins added, 15 drills skipped, R1→0, g1 R2 critical→0.
+
 ## The wave loop (per PR)
 
 1. **Worklist.** Take a bounded slice from `content/build/audit/worklist-g<n>.md`

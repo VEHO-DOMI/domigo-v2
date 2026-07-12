@@ -2552,7 +2552,7 @@
       "id": "g1u12.gi.past-simple-was-were.tf.003",
       "structureId": "g1u12.s.past-simple-was-were",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2582,6 +2582,10 @@
         },
         {
           "text": "They weren't at school.",
+          "tier": "full"
+        },
+        {
+          "text": "They were not at school.",
           "tier": "full"
         }
       ],
@@ -2644,7 +2648,7 @@
       "id": "g1u12.gi.past-simple-was-were.tr.002",
       "structureId": "g1u12.s.past-simple-was-were",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2674,6 +2678,10 @@
         },
         {
           "text": "Yesterday he wasn't at school.",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday he was not at school.",
           "tier": "full"
         }
       ],
