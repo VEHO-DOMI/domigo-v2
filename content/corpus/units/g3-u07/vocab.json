@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "g3u07.w.a-pile-of",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -81,6 +81,10 @@
           {
             "text": "ein Haufen",
             "tier": "partial"
+          },
+          {
+            "text": "Stapel",
+            "tier": "full"
           }
         ]
       },
@@ -162,7 +166,7 @@
     },
     {
       "id": "g3u07.w.childhood",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -212,6 +216,10 @@
         "enToDe": [
           {
             "text": "Kindheit",
+            "tier": "full"
+          },
+          {
+            "text": "die Kindheit",
             "tier": "full"
           }
         ]
@@ -294,7 +302,7 @@
     },
     {
       "id": "g3u07.w.earring",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -360,6 +368,14 @@
           },
           {
             "text": "Ohrringe",
+            "tier": "full"
+          },
+          {
+            "text": "der Ohrring",
+            "tier": "full"
+          },
+          {
+            "text": "die Ohrringe",
             "tier": "full"
           }
         ]
@@ -658,7 +674,7 @@
     },
     {
       "id": "g3u07.w.questionnaire",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -713,6 +729,10 @@
           {
             "text": "Fragebogen",
             "tier": "full"
+          },
+          {
+            "text": "der Fragebogen",
+            "tier": "full"
           }
         ]
       },
@@ -726,7 +746,7 @@
     },
     {
       "id": "g3u07.w.rash",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -789,6 +809,14 @@
           {
             "text": "Ausschlag",
             "tier": "full"
+          },
+          {
+            "text": "der Hautausschlag",
+            "tier": "full"
+          },
+          {
+            "text": "der Ausschlag",
+            "tier": "full"
           }
         ]
       },
@@ -802,7 +830,7 @@
     },
     {
       "id": "g3u07.w.relationship",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -857,6 +885,10 @@
           {
             "text": "Beziehung",
             "tier": "full"
+          },
+          {
+            "text": "die Beziehung",
+            "tier": "full"
           }
         ]
       },
@@ -870,7 +902,7 @@
     },
     {
       "id": "g3u07.w.script",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -925,6 +957,10 @@
           {
             "text": "Drehbuch",
             "tier": "full"
+          },
+          {
+            "text": "das Drehbuch",
+            "tier": "full"
           }
         ]
       },
@@ -938,7 +974,7 @@
     },
     {
       "id": "g3u07.w.soft-toy",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1004,6 +1040,14 @@
           },
           {
             "text": "Kuscheltier",
+            "tier": "full"
+          },
+          {
+            "text": "das Stofftier",
+            "tier": "full"
+          },
+          {
+            "text": "das Kuscheltier",
             "tier": "full"
           }
         ]

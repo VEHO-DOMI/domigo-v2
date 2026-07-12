@@ -226,7 +226,7 @@
     },
     {
       "id": "g3u05.w.crack",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -296,6 +296,18 @@
           },
           {
             "text": "Fuge",
+            "tier": "full"
+          },
+          {
+            "text": "der Riss",
+            "tier": "full"
+          },
+          {
+            "text": "der Spalt",
+            "tier": "full"
+          },
+          {
+            "text": "die Fuge",
             "tier": "full"
           }
         ]

@@ -120,6 +120,20 @@
       "contentHash": "85249bab4f34aa6b2bf6e951db9d2c3ded32cc372fb662b9089fe877c068ae42",
       "note": "round 1: 68 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T20:03:36.789Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "f0c47f35f4433d2e8923d3c165383a7ab03e3956d6513a5378d493f34ea88be2",
+      "note": "gen ingest: 37 vocab + 28 grammar item(s); draft f24b01bb940b",
+      "at": "2026-07-12T10:50:26.183Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "f0c47f35f4433d2e8923d3c165383a7ab03e3956d6513a5378d493f34ea88be2",
+      "note": "trusted patch (mechanical): 18 answer-pool fix(es) [g3u11.w.backpack, g3u11.w.canyon, g3u11.w.capital, g3u11.w.connection, g3u11.w.ferry, g3u11.w.four-wheel-drive, g3u11.w.gold-rush, g3u11.w.headquarters, g3u11.w.height, g3u11.w.information-office, g3u11.w.innovation, g3u11.w.lip, g3u11.w.mountain-range, g3u11.w.railway, g3u11.w.ridge, g3u11.w.shade, g3u11.w.state, g3u11.w.thirst] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:50:26.184Z"
     }
   ]
 }

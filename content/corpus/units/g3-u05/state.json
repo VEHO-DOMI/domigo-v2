@@ -127,6 +127,20 @@
       "contentHash": "ac6f183472bae4b194b7a1e4ae6cd894f5876d4655c97b07b1ddf3623b30e528",
       "note": "tactile parity sweep (T1/T2): 7 sb prompts had no token lists (unsolvable as rendered) — seeded scrambles folded + overlay-recorded",
       "at": "2026-07-06T20:19:02.033Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "ff470b878c80c7e9b4eda6b7361150e1e339d68a8790731ec526c98065675b5a",
+      "note": "gen ingest: 41 vocab + 101 grammar item(s); draft 59bfb8bbf90b",
+      "at": "2026-07-12T10:50:24.302Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "ff470b878c80c7e9b4eda6b7361150e1e339d68a8790731ec526c98065675b5a",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g3u05.w.crack] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:50:24.304Z"
     }
   ]
 }

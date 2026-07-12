@@ -306,7 +306,7 @@
     },
     {
       "id": "g3u02.w.date-of-birth",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -361,6 +361,10 @@
           {
             "text": "Geburtsdatum",
             "tier": "full"
+          },
+          {
+            "text": "das Geburtsdatum",
+            "tier": "full"
           }
         ]
       },
@@ -374,7 +378,7 @@
     },
     {
       "id": "g3u02.w.entrance",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -437,6 +441,10 @@
           {
             "text": "Eingang",
             "tier": "full"
+          },
+          {
+            "text": "der Eingang",
+            "tier": "full"
           }
         ]
       },
@@ -450,7 +458,7 @@
     },
     {
       "id": "g3u02.w.handbag",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -508,6 +516,10 @@
         "enToDe": [
           {
             "text": "Handtasche",
+            "tier": "full"
+          },
+          {
+            "text": "die Handtasche",
             "tier": "full"
           }
         ]
@@ -698,7 +710,7 @@
     },
     {
       "id": "g3u02.w.i-beg-your-pardon",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -769,6 +781,14 @@
           {
             "text": "Wie bitte?",
             "tier": "partial"
+          },
+          {
+            "text": "die Entschuldigung",
+            "tier": "full"
+          },
+          {
+            "text": "die Verzeihung",
+            "tier": "full"
           }
         ]
       },
@@ -782,7 +802,7 @@
     },
     {
       "id": "g3u02.w.laugh",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -845,6 +865,10 @@
           {
             "text": "Lachen",
             "tier": "partial"
+          },
+          {
+            "text": "der Lacher",
+            "tier": "full"
           }
         ]
       },
@@ -1009,7 +1033,7 @@
     },
     {
       "id": "g3u02.w.north-pole",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1064,6 +1088,10 @@
           {
             "text": "Nordpol",
             "tier": "full"
+          },
+          {
+            "text": "der Nordpol",
+            "tier": "full"
           }
         ]
       },
@@ -1083,7 +1111,7 @@
     },
     {
       "id": "g3u02.w.note",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1146,6 +1174,10 @@
           {
             "text": "Schein",
             "tier": "partial"
+          },
+          {
+            "text": "der Geldschein",
+            "tier": "full"
           }
         ]
       },
@@ -1245,7 +1277,7 @@
     },
     {
       "id": "g3u02.w.per-cent",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1308,6 +1340,10 @@
           {
             "text": "Prozent",
             "tier": "full"
+          },
+          {
+            "text": "das Prozent",
+            "tier": "full"
           }
         ]
       },
@@ -1321,7 +1357,7 @@
     },
     {
       "id": "g3u02.w.queue",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1387,6 +1423,14 @@
           },
           {
             "text": "Schlange",
+            "tier": "full"
+          },
+          {
+            "text": "die Warteschlange",
+            "tier": "full"
+          },
+          {
+            "text": "die Schlange",
             "tier": "full"
           }
         ]
@@ -1471,7 +1515,7 @@
     },
     {
       "id": "g3u02.w.south-pole",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1526,6 +1570,10 @@
           {
             "text": "Südpol",
             "tier": "full"
+          },
+          {
+            "text": "der Südpol",
+            "tier": "full"
           }
         ]
       },
@@ -1539,7 +1587,7 @@
     },
     {
       "id": "g3u02.w.speech",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1602,6 +1650,14 @@
           {
             "text": "Ansprache",
             "tier": "full"
+          },
+          {
+            "text": "die Rede",
+            "tier": "full"
+          },
+          {
+            "text": "die Ansprache",
+            "tier": "full"
           }
         ]
       },
@@ -1615,7 +1671,7 @@
     },
     {
       "id": "g3u02.w.stage",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1673,6 +1729,10 @@
         "enToDe": [
           {
             "text": "Bühne",
+            "tier": "full"
+          },
+          {
+            "text": "die Bühne",
             "tier": "full"
           }
         ]

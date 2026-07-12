@@ -76,7 +76,7 @@
     },
     {
       "id": "g3u08.w.bacon",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -127,6 +127,10 @@
           {
             "text": "Speck",
             "tier": "full"
+          },
+          {
+            "text": "der Speck",
+            "tier": "full"
           }
         ]
       },
@@ -140,7 +144,7 @@
     },
     {
       "id": "g3u08.w.collar",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -199,6 +203,10 @@
           {
             "text": "Halsband",
             "tier": "partial"
+          },
+          {
+            "text": "der Kragen",
+            "tier": "full"
           }
         ]
       },
@@ -218,7 +226,7 @@
     },
     {
       "id": "g3u08.w.computer-science",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -268,6 +276,10 @@
         "enToDe": [
           {
             "text": "Informatik",
+            "tier": "full"
+          },
+          {
+            "text": "die Informatik",
             "tier": "full"
           }
         ]
@@ -360,7 +372,7 @@
     },
     {
       "id": "g3u08.w.crowd",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -419,6 +431,14 @@
           {
             "text": "Publikum",
             "tier": "full"
+          },
+          {
+            "text": "die Menschenmenge",
+            "tier": "full"
+          },
+          {
+            "text": "das Publikum",
+            "tier": "full"
           }
         ]
       },
@@ -443,7 +463,7 @@
     },
     {
       "id": "g3u08.w.crutches",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -493,6 +513,10 @@
         "enToDe": [
           {
             "text": "Krücken",
+            "tier": "full"
+          },
+          {
+            "text": "die Krücken",
             "tier": "full"
           }
         ]
@@ -579,7 +603,7 @@
     },
     {
       "id": "g3u08.w.device",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -634,6 +658,10 @@
           {
             "text": "Gerät",
             "tier": "full"
+          },
+          {
+            "text": "das Gerät",
+            "tier": "full"
           }
         ]
       },
@@ -647,7 +675,7 @@
     },
     {
       "id": "g3u08.w.dish",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -706,6 +734,10 @@
           {
             "text": "Speise",
             "tier": "partial"
+          },
+          {
+            "text": "das Gericht",
+            "tier": "full"
           }
         ]
       },
@@ -789,7 +821,7 @@
     },
     {
       "id": "g3u08.w.energy",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -844,6 +876,10 @@
           {
             "text": "Strom",
             "tier": "partial"
+          },
+          {
+            "text": "die Energie",
+            "tier": "full"
           }
         ]
       },
@@ -929,7 +965,7 @@
     },
     {
       "id": "g3u08.w.fat",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -980,6 +1016,10 @@
           {
             "text": "Fett",
             "tier": "full"
+          },
+          {
+            "text": "das Fett",
+            "tier": "full"
           }
         ]
       },
@@ -993,7 +1033,7 @@
     },
     {
       "id": "g3u08.w.glove",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1052,6 +1092,10 @@
           {
             "text": "Handschuh",
             "tier": "full"
+          },
+          {
+            "text": "der Handschuh",
+            "tier": "full"
           }
         ]
       },
@@ -1065,7 +1109,7 @@
     },
     {
       "id": "g3u08.w.housework",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1116,6 +1160,10 @@
           {
             "text": "Hausarbeit",
             "tier": "full"
+          },
+          {
+            "text": "die Hausarbeit",
+            "tier": "full"
           }
         ]
       },
@@ -1129,7 +1177,7 @@
     },
     {
       "id": "g3u08.w.illness",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1184,6 +1232,10 @@
           {
             "text": "Krankheit",
             "tier": "full"
+          },
+          {
+            "text": "die Krankheit",
+            "tier": "full"
           }
         ]
       },
@@ -1197,7 +1249,7 @@
     },
     {
       "id": "g3u08.w.influence",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1252,6 +1304,10 @@
           {
             "text": "Einfluss",
             "tier": "full"
+          },
+          {
+            "text": "der Einfluss",
+            "tier": "full"
           }
         ]
       },
@@ -1271,7 +1327,7 @@
     },
     {
       "id": "g3u08.w.inspiration",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1322,6 +1378,10 @@
           {
             "text": "Inspiration",
             "tier": "full"
+          },
+          {
+            "text": "die Inspiration",
+            "tier": "full"
           }
         ]
       },
@@ -1335,7 +1395,7 @@
     },
     {
       "id": "g3u08.w.invention",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1389,6 +1449,10 @@
         "enToDe": [
           {
             "text": "Erfindung",
+            "tier": "full"
+          },
+          {
+            "text": "die Erfindung",
             "tier": "full"
           }
         ]
@@ -1543,7 +1607,7 @@
     },
     {
       "id": "g3u08.w.product",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1598,6 +1662,10 @@
           {
             "text": "Produkt",
             "tier": "full"
+          },
+          {
+            "text": "das Produkt",
+            "tier": "full"
           }
         ]
       },
@@ -1617,7 +1685,7 @@
     },
     {
       "id": "g3u08.w.ramp",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1675,6 +1743,10 @@
         "enToDe": [
           {
             "text": "Rampe",
+            "tier": "full"
+          },
+          {
+            "text": "die Rampe",
             "tier": "full"
           }
         ]
@@ -1759,7 +1831,7 @@
     },
     {
       "id": "g3u08.w.soap",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1809,6 +1881,10 @@
         "enToDe": [
           {
             "text": "Seife",
+            "tier": "full"
+          },
+          {
+            "text": "die Seife",
             "tier": "full"
           }
         ]
@@ -3351,7 +3427,7 @@
     },
     {
       "id": "g3u08.w.wheelchair",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3406,6 +3482,10 @@
           {
             "text": "Rollstuhl",
             "tier": "full"
+          },
+          {
+            "text": "der Rollstuhl",
+            "tier": "full"
           }
         ]
       },
@@ -3419,7 +3499,7 @@
     },
     {
       "id": "g3u08.w.wrist",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3473,6 +3553,10 @@
         "enToDe": [
           {
             "text": "Handgelenk",
+            "tier": "full"
+          },
+          {
+            "text": "das Handgelenk",
             "tier": "full"
           }
         ]

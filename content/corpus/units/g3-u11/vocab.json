@@ -86,7 +86,7 @@
     },
     {
       "id": "g3u11.w.backpack",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -153,6 +153,10 @@
           {
             "text": "Rucksack",
             "tier": "full"
+          },
+          {
+            "text": "der Rucksack",
+            "tier": "full"
           }
         ]
       },
@@ -172,7 +176,7 @@
     },
     {
       "id": "g3u11.w.canyon",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -239,6 +243,14 @@
           {
             "text": "Canyon",
             "tier": "full"
+          },
+          {
+            "text": "die Schlucht",
+            "tier": "full"
+          },
+          {
+            "text": "der Canyon",
+            "tier": "full"
           }
         ]
       },
@@ -263,7 +275,7 @@
     },
     {
       "id": "g3u11.w.capital",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -322,6 +334,10 @@
           {
             "text": "Hauptstadt",
             "tier": "full"
+          },
+          {
+            "text": "die Hauptstadt",
+            "tier": "full"
           }
         ]
       },
@@ -341,7 +357,7 @@
     },
     {
       "id": "g3u11.w.connection",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -399,6 +415,10 @@
         "enToDe": [
           {
             "text": "Verbindung",
+            "tier": "full"
+          },
+          {
+            "text": "die Verbindung",
             "tier": "full"
           }
         ]
@@ -873,7 +893,7 @@
     },
     {
       "id": "g3u11.w.ferry",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -932,6 +952,10 @@
           {
             "text": "Fähre",
             "tier": "full"
+          },
+          {
+            "text": "die Fähre",
+            "tier": "full"
           }
         ]
       },
@@ -956,7 +980,7 @@
     },
     {
       "id": "g3u11.w.four-wheel-drive",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1011,6 +1035,10 @@
           {
             "text": "Vierradantrieb",
             "tier": "partial"
+          },
+          {
+            "text": "der Allradantrieb",
+            "tier": "full"
           }
         ]
       },
@@ -1141,7 +1169,7 @@
     },
     {
       "id": "g3u11.w.gold-rush",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1195,6 +1223,10 @@
         "enToDe": [
           {
             "text": "Goldrausch",
+            "tier": "full"
+          },
+          {
+            "text": "der Goldrausch",
             "tier": "full"
           }
         ]
@@ -1314,7 +1346,7 @@
     },
     {
       "id": "g3u11.w.headquarters",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1369,6 +1401,10 @@
           {
             "text": "Zentrale",
             "tier": "partial"
+          },
+          {
+            "text": "das Hauptquartier",
+            "tier": "full"
           }
         ]
       },
@@ -1408,7 +1444,7 @@
     },
     {
       "id": "g3u11.w.height",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1462,6 +1498,10 @@
         "enToDe": [
           {
             "text": "Höhe",
+            "tier": "full"
+          },
+          {
+            "text": "die Höhe",
             "tier": "full"
           }
         ]
@@ -1572,7 +1612,7 @@
     },
     {
       "id": "g3u11.w.information-office",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1631,6 +1671,14 @@
           {
             "text": "Auskunftsbüro",
             "tier": "full"
+          },
+          {
+            "text": "das Informationsbüro",
+            "tier": "full"
+          },
+          {
+            "text": "das Auskunftsbüro",
+            "tier": "full"
           }
         ]
       },
@@ -1644,7 +1692,7 @@
     },
     {
       "id": "g3u11.w.innovation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1707,6 +1755,14 @@
           {
             "text": "Innovation",
             "tier": "full"
+          },
+          {
+            "text": "die Neuerung",
+            "tier": "full"
+          },
+          {
+            "text": "die Innovation",
+            "tier": "full"
           }
         ]
       },
@@ -1731,7 +1787,7 @@
     },
     {
       "id": "g3u11.w.lip",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1798,6 +1854,14 @@
           {
             "text": "Lippen",
             "tier": "full"
+          },
+          {
+            "text": "die Lippe",
+            "tier": "full"
+          },
+          {
+            "text": "die Lippen",
+            "tier": "full"
           }
         ]
       },
@@ -1822,7 +1886,7 @@
     },
     {
       "id": "g3u11.w.mountain-range",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1885,6 +1949,10 @@
           {
             "text": "Gebirge",
             "tier": "partial"
+          },
+          {
+            "text": "die Bergkette",
+            "tier": "full"
           }
         ]
       },
@@ -1994,7 +2062,7 @@
     },
     {
       "id": "g3u11.w.railway",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2061,6 +2129,14 @@
           {
             "text": "Bahn",
             "tier": "partial"
+          },
+          {
+            "text": "die Eisenbahn",
+            "tier": "full"
+          },
+          {
+            "text": "der Zug",
+            "tier": "full"
           }
         ]
       },
@@ -2090,7 +2166,7 @@
     },
     {
       "id": "g3u11.w.ridge",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2161,6 +2237,14 @@
           {
             "text": "Kamm",
             "tier": "partial"
+          },
+          {
+            "text": "der Bergrücken",
+            "tier": "full"
+          },
+          {
+            "text": "der Grat",
+            "tier": "full"
           }
         ]
       },
@@ -2190,7 +2274,7 @@
     },
     {
       "id": "g3u11.w.shade",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2245,6 +2329,10 @@
           {
             "text": "Schatten",
             "tier": "full"
+          },
+          {
+            "text": "der Schatten",
+            "tier": "full"
           }
         ]
       },
@@ -2264,7 +2352,7 @@
     },
     {
       "id": "g3u11.w.state",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2326,6 +2414,14 @@
           },
           {
             "text": "Bundesstaat",
+            "tier": "full"
+          },
+          {
+            "text": "der Staat",
+            "tier": "full"
+          },
+          {
+            "text": "der Bundesstaat",
             "tier": "full"
           }
         ]
@@ -2436,7 +2532,7 @@
     },
     {
       "id": "g3u11.w.thirst",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2486,6 +2582,10 @@
         "enToDe": [
           {
             "text": "Durst",
+            "tier": "full"
+          },
+          {
+            "text": "der Durst",
             "tier": "full"
           }
         ]

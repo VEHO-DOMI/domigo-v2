@@ -2013,7 +2013,7 @@
     },
     {
       "id": "g3u12.w.pleasure",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2080,7 +2080,11 @@
           },
           {
             "text": "das Vergnügen",
-            "tier": "partial"
+            "tier": "full"
+          },
+          {
+            "text": "die Freude",
+            "tier": "full"
           }
         ]
       },
@@ -2445,7 +2449,7 @@
     },
     {
       "id": "g3u12.w.shelter",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2516,7 +2520,11 @@
           },
           {
             "text": "der Unterschlupf",
-            "tier": "partial"
+            "tier": "full"
+          },
+          {
+            "text": "die Unterkunft",
+            "tier": "full"
           }
         ]
       },

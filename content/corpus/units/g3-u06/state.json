@@ -120,6 +120,20 @@
       "contentHash": "ffe3bb58c6744a6a94794b79bb4dea63e0db336adf08f4f1973f5aec28b824ec",
       "note": "round 1: 50 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T17:18:07.339Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "bfede9ad5a52637f291d7d117a3f1dbc760eb58ebb214eca5751e145baca1b00",
+      "note": "gen ingest: 45 vocab + 55 grammar item(s); draft 24d0f1cecc11",
+      "at": "2026-07-12T10:50:24.610Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "bfede9ad5a52637f291d7d117a3f1dbc760eb58ebb214eca5751e145baca1b00",
+      "note": "trusted patch (mechanical): 26 answer-pool fix(es) [g3u06.w.art-gallery, g3u06.w.bridge, g3u06.w.building, g3u06.w.collection, g3u06.w.contract, g3u06.w.district, g3u06.w.fever, g3u06.w.government, g3u06.w.park, g3u06.w.path, g3u06.w.play, g3u06.w.prison, g3u06.w.raven, g3u06.w.river, g3u06.w.shop, g3u06.w.shopping-centre, g3u06.w.square, g3u06.w.stadium, g3u06.w.street, g3u06.w.sugar, g3u06.w.theatre, g3u06.w.tourist-attraction, g3u06.w.tower, g3u06.w.traffic, g3u06.w.view, g3u06.w.the-houses-of-parliament] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:50:24.612Z"
     }
   ]
 }

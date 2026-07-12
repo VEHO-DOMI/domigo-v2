@@ -149,7 +149,7 @@
     },
     {
       "id": "g3u01.w.audition",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -207,6 +207,14 @@
           },
           {
             "text": "Vorsprechen",
+            "tier": "full"
+          },
+          {
+            "text": "das Vorsingen",
+            "tier": "full"
+          },
+          {
+            "text": "das Vorsprechen",
             "tier": "full"
           }
         ]
@@ -439,7 +447,7 @@
     },
     {
       "id": "g3u01.w.flute",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -497,6 +505,14 @@
           },
           {
             "text": "Querflöte",
+            "tier": "full"
+          },
+          {
+            "text": "die Flöte",
+            "tier": "full"
+          },
+          {
+            "text": "die Querflöte",
             "tier": "full"
           }
         ]
@@ -779,7 +795,7 @@
     },
     {
       "id": "g3u01.w.lyrics",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -833,6 +849,14 @@
           },
           {
             "text": "Songtext",
+            "tier": "full"
+          },
+          {
+            "text": "der Liedtext",
+            "tier": "full"
+          },
+          {
+            "text": "der Songtext",
             "tier": "full"
           }
         ]
@@ -1236,7 +1260,7 @@
     },
     {
       "id": "g3u01.w.suit",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1290,6 +1314,10 @@
         "enToDe": [
           {
             "text": "Anzug",
+            "tier": "full"
+          },
+          {
+            "text": "der Anzug",
             "tier": "full"
           }
         ]
@@ -2937,7 +2965,7 @@
     },
     {
       "id": "g3u01.w.tune",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2991,6 +3019,10 @@
         "enToDe": [
           {
             "text": "Melodie",
+            "tier": "full"
+          },
+          {
+            "text": "die Melodie",
             "tier": "full"
           }
         ]

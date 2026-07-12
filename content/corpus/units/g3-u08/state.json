@@ -113,6 +113,20 @@
       "contentHash": "58382b23fcb265aeacabe209d3a0999a2809025342ec13e201e471e62eb7d393",
       "note": "round 1: 63 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T18:01:58.041Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "2c43490092a12431b63c517fe3cb6bd56f6256b3e5857fc586e44b7c037299e3",
+      "note": "gen ingest: 47 vocab + 50 grammar item(s); draft 3fa6bdca3279",
+      "at": "2026-07-12T10:50:25.255Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "2c43490092a12431b63c517fe3cb6bd56f6256b3e5857fc586e44b7c037299e3",
+      "note": "trusted patch (mechanical): 20 answer-pool fix(es) [g3u08.w.bacon, g3u08.w.collar, g3u08.w.computer-science, g3u08.w.crowd, g3u08.w.crutches, g3u08.w.device, g3u08.w.dish, g3u08.w.energy, g3u08.w.fat, g3u08.w.glove, g3u08.w.housework, g3u08.w.illness, g3u08.w.influence, g3u08.w.inspiration, g3u08.w.invention, g3u08.w.product, g3u08.w.ramp, g3u08.w.soap, g3u08.w.wheelchair, g3u08.w.wrist] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:50:25.257Z"
     }
   ]
 }

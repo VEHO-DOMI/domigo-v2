@@ -49,6 +49,10 @@ content fixes — one bounded wave per PR. Pairs with the curation standard
 >    prefix) and "Zentralasien" (a place name; `das Zentralasien` is grammatical but article-less in
 >    use) can't take a natural article → leave them flagged (1 residual per grade so far). Refining the
 >    R1 rule to exclude these is a small follow-up.
+> 4. **The "missingBare" inverse (g3 had 2).** Most R1 items have the bare noun and lack the article;
+>    a few have the reverse — an article form but no bare noun (`das Parlament` with no "Parlament",
+>    `ein Stapel` with no "Stapel"). Fix = ADD the bare noun (strip the article; no gender lookup
+>    needed — the article is already present and correct). `build-missingbare.cjs` handles these.
 
 ## The wave loop (per PR)
 
