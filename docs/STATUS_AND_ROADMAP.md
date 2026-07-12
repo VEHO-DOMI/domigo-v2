@@ -1,6 +1,8 @@
 # DomiGo v2 — Build Status & Executable Roadmap
 
-_Last updated: **2026-07-10**. Single source of truth for "what's done / what's next." Pairs with `docs/handover/` (the original design) and `docs/runbooks/` (operational detail). When you finish a step, check its box and update the snapshot in §3._
+_Last updated: **2026-07-12**. Single source of truth for "what's done / what's next." Pairs with `docs/handover/` (the original design) and `docs/runbooks/` (operational detail). When you finish a step, check its box and update the snapshot in §3._
+
+> **2026-07-12 — WAVE 2 EXECUTED + THE APP IS LIVE (read this first).** True state, from `git log` / `gh pr list`: **127 PRs merged · 0 open · HEAD = A-6 (#128).** Since the 2026-07-10 banner below: the narrative program landed — **all four grade campaigns are story-complete** (G1 "The Lost Pages" revision #118 · G2 "The Spill" #119 · G4 "FOURTEEN: LIVE" #120/#123 · G3 untouched); the German-first language layer + game-styled hubs shipped (#106/#107); the content-quality machinery is built and green (curation standard + E-2/E-3/E-4, #110–#114); the B-0 shared game-engineering fixes landed (#122); and A-6 vocab-pool rotation made the dormant recall pools playable (#128). **The app is now DEPLOYED and usable:** `domigo-v2.vercel.app` is git-connected and live, `verify-deploy` is green, the `domigo_v2` schema is provisioned on the Neon **production** branch, and existing migrated students can sign in and play (detail in `docs/handover/DEPLOY_AND_HOSTING_STATUS.md` + `docs/runbooks/deploy.md`). **§3 below is current; §4–§5 mirror `docs/BLUEPRINT_V2.md` Part V, which is the governing queue** (next: A-5 fix waves · B-2 the G2 walkable-school overworld · the platform wave · GO-1). §1–§2 are historical. Executor sessions boot from `docs/VISION.md` + `docs/BLUEPRINT_V2.md` Part V.
 
 > **2026-07-10 — PROGRAM WAVE 2 approved: `docs/BLUEPRINT_V2.md` is now the governing program.** True state at approval: **103 PRs, ALL merged, 0 open** — the E-1 engine fixes (#83), the D-wave feedback layer (#90/#92), the tactile layer (#94), the full M-wave mock-test loop (#95–#98), the ALIVE-1 G1 uplift (#93/#99/#100/#101), G4 "Lost for Words" Act 1 (#86–#91), and the overworld art overhaul (#102) + prompt library (#103) all landed since the 2026-07-06 banners below were written. Wave-2 decisions (Koki, locked — full ledger in `docs/VISION.md`): **no deadlines** (the Sept-1 gate, floor, and cut-order are RETIRED; quality-gated sequential execution — an item is done when its exit criteria pass); **two duologies** (G1 gains the antagonist/redemption arc · G2 = replacement campaign on the Phaser overworld with the redeemed antagonist as deuteragonist, "The Wrong Name" becomes a playable bonus story · G3 untouched · **G4 pivots to the FOURTEEN investigative-journalism sequel** — "Lost for Words" is parked and `handover/16` is superseded); **Studio v2 = full native CRUD behind automated blind-solve gates** (reverses "creation = never"); the **authored-not-programmed** content doctrine; the curation machinery (E-2/E-3/E-4 — still unbuilt as of this banner) promoted to the top of the queue; the platform wave = v2-native identity/roster → checkups → Studio → journeys → writing+OCR (migrations 0006–0011). **Executor sessions boot from `docs/VISION.md` + `docs/BLUEPRINT_V2.md` Part V — the W1–W9 plan and §4/§5 below are historical.**
 
@@ -25,7 +27,7 @@ The game layer is specified separately in `docs/handover/10_game_layer.md` (four
 
 ---
 
-## 2. What's been achieved (78 PRs merged to `main`)
+## 2. What's been achieved (78 PRs merged to `main`) — _historical snapshot through #78; see the §3 table + the 2026-07-12 banner for current state (127 PRs)_
 
 ### ✅ P0.1 — Content rework COMPLETE ([#1](https://github.com/VEHO-DOMI/domigo-v2/pull/1)–[#17](https://github.com/VEHO-DOMI/domigo-v2/pull/17))
 - **All 57 units (G1–G4)** of vocab + grammar approved at **0.0% stage-8 reject**, full v1 grammar parity; **4 structure catalogs (96 structures)**; **5,898 items** + 2,446 word-bank entries.
@@ -63,66 +65,45 @@ A grade-indexed token system (G1 green / G2 red / G3 blue / G4 purple; Fredoka/I
 | Layer | State |
 |---|---|
 | **Content corpus** | ✅ 57 units / 5,898 items approved; canonical + re-runnable |
+| **Content-quality machinery** | ✅ curation standard (`handover/17`) + E-2 variant audit + E-3 grading strictness + E-4 blind-solve harness (#110–#114) |
 | **Loader / grader / renderer** | ✅ `@domigo/{content-loader,engine,task-ui}` |
-| **DB / persistence** | ✅ `@domigo/db` (schema + Leitner + attempts + game_saves + writing_submissions); live-DB verified |
-| **Auth** | ✅ NextAuth v5 (student + teacher), reuses Neon accounts |
+| **DB / persistence** | ✅ `@domigo/db` (schema + Leitner + attempts + game_saves + writing_submissions); live-DB verified; **prod `domigo_v2` schema provisioned** (Step 4) |
+| **Auth** | ✅ NextAuth v5 (student + teacher), reuses the **migrated v1 Neon accounts** (existing students can sign in) |
 | **Practice / Smart Review** | ✅ `/practice` · `/review` + session · streaks + offline outbox |
+| **Vocab exercise pools** | ✅ all 4 live (#128): carrier gap-fill · definition→word · De→En · En→De (rotating in `/practice`) |
 | **Study Path (B1)** | ✅ `/learn` node map (teach + practice + checkpoint) |
 | **Listening (B3)** | ✅ `/listening` (runtime done; **content = pilot only**) |
-| **Mock Tests (B2)** | ✅ `/tests` (runtime done; **content = pilot only**; teacher-grading → B2b) |
-| **Game layer** | ✅✅✅ **G1 (15 zones), G2 (15 ch + full pedagogy), G3 (14 eps)** live · ❌ **G4 not started** |
+| **Mock Tests (B2)** | ✅ `/tests` (runtime done; **content = pilot only**; teacher-grading → W-1/W-2) |
+| **Game layer — story** | ✅ **all 4 campaigns story-complete:** G1 "The Lost Pages" revision (#118) · G2 "The Spill" (#119) · G3 FOURTEEN (14 eps) · G4 "FOURTEEN: LIVE" (#120/#123) |
+| **Game layer — engine** | ✅ G1 (Phaser overworld) · G3 (novel) · G4 (flag-aware trip #123) playable · 🟡 **G2 walkable-school overworld (B-2) = the last engine piece** |
+| **Language layer** | ✅ German-first stories + always-available EN/DE toggle + game-styled per-grade hubs (#106/#107) |
 | **Design system** | ✅ all 4 grades themed (#62/#63) |
-| **Listening/Test content** | 🟡 **1 / 57 units** (g2-u03 pilot) — the big remaining content wave |
+| **Hosting / deploy** | ✅ **LIVE at `domigo-v2.vercel.app`** (git-connected, `verify-deploy` green); see `docs/handover/DEPLOY_AND_HOSTING_STATUS.md` |
+| **Listening/Test content** | 🟡 **2 / 57 units** (pilot) — the big content wave (W-waves) is still pending |
 | **TTS audio** | ❌ Web-Speech fallback only; pre-generated files not built |
-| **Teacher writing-grading (B2b)** | ❌ submissions captured, not surfaced |
-| **Migration cutover / bulletproof-beta / PWA install** | ◻️ Track D — gates go-live; not done |
-| `main` HEAD | merge #78 · full gate green (`typecheck/lint/test/content validate/validate-story/build/check:bundle`) |
+| **Teacher writing-grading** | ❌ submissions captured, not surfaced (folds into the platform wave W-1/W-2) |
+| **Migration completion / beta / PWA** | 🟡 Track D — migrated students usable **now**; post-2026-05-17 signups + `/signin/migrate` claim flow + beta checklist still pending |
+| `main` HEAD | merge **#128** (A-6) · **127 PRs merged** · full gate green (`typecheck/lint/test/content validate/validate-story/build/check:bundle`) |
 
 **Repos:** `~/Code/domigo-v2` (VEHO-DOMI/domigo-v2, prod `domigo-v2.vercel.app`) · v1 reference `VEHO-DOMI/domigo` · live grade-1 app `VEHO-DOMI/1st-grade-vocab-trainer`.
 
 ---
 
-## 4. What's left — executable steps (priority order)
+## 4–5. What's left — the governing queue is `docs/BLUEPRINT_V2.md` Part V
 
-> Each is a PR (or a wave). Build on `main`, branch `feat/<name>`. Gate: `pnpm -r run typecheck && pnpm lint && pnpm -r run test && pnpm content validate && pnpm content validate-story && pnpm build && pnpm check:bundle`. Deploys/merges are Koki's call.
+> The item-by-item plan, dependency order, per-item exit criteria, and the Koki-gate queue now live in **`docs/BLUEPRINT_V2.md`** (Part IV = specs · Part V = sequencing). This section mirrors only the **remaining** items so this doc stays a truthful index; BLUEPRINT_V2 is authoritative on scope and order. (The pre-Wave-2 §4/§5 — "G4 Syntaxia", the Sept-2026 floor and forfeit order — are **retired**: G4 became FOURTEEN: LIVE and shipped; there are no deadlines.)
 
-### 1. G4 — "Syntaxia" (the last grade game) — _the biggest remaining build; full design in `10_game_layer.md`_
-Grammar-structure mastery unlocks themed portal-worlds (past-tense pirate cove, conditional mirror maze, …); **real branching** story (choice graphs proven dead-end-free by VS-5); party members with a hint-economy (scaffolds, never answers); a structure boss per world. Stretch: one Three.js low-poly set-piece within the 30fps cheap-phone budget. Minimal German. Reuses every seam the other 3 games proved (story pipeline, task-ui overlay, `getDueRefs` encounters, `/api/attempts`, `game_saves`). Mirror the G2/G3 build: G0 story+map → vertical slice (GO/NO-GO) → act/world waves → enrichment (comprehension/board/art).
+**Done since the Wave-2 approval — do not re-open:** the three campaign bibles + narrative gates · the German-first language layer + hub redesign · the content-quality machinery (curation standard, E-2/E-3/E-4) · T-2 deploy-truth harness · B-0 shared game-engineering fixes · G1/G2/G4 campaign authoring · B-3 (G4 playable) · A-6 vocab-pool rotation · **the first deployment + prod-DB provisioning** (the app is live and usable for migrated students).
 
-### 2. Content waves — `listening.json` + `test.json` for the other 56 units — _large, multi-session_
-The runtime is done; the corpus is the pilot only (`g2-u03`). Author per `docs/runbooks/content-waves.md` (the `srdp-listening`/`srdp-reading` skills re-leveled A1–A2), validate (`pnpm content validate-listening` / `validate-test`), E2E spot-check, one grade at a time. **The single largest remaining effort.**
+**Remaining (BLUEPRINT_V2 Part V order):**
+1. **A-5 · curation fix waves** — turn the 1,007 E-2 audit findings into overlay patches (≤25 items/PR, blind-solve re-check on touched keys, Koki 1-in-5 sample). Unblocked by the K-4 decision.
+2. **B-2 · G2 walkable-school overworld** — generalize the Phaser engine + scaffold the "The Spill" campaign (the last engine piece that makes every grade's game playable), then the G2 chapter/art waves.
+3. **Go-live completion (Track-D):** rotate `NEXTAUTH_SECRET`; import post-2026-05-17 v1 signups into Neon; build the `/signin/migrate` claim flow.
+4. **Platform wave (migrations 0006–0011, all additive):** P-1 v2-native identity → P-2 roster import → C-1 checkups → S-1/S-2 Studio full CRUD → J-1/J-2 journeys → W-1/W-2 writing capture + sandbox AI correction + OCR → V-1 visual-parity suite.
+5. **GO-1 · closing receipts** — the remaining prod DDL (0006+) applied per `docs/runbooks/deploy.md` + the closing verification (verify-deploy + verify-design + the auth/persona acceptance script).
+6. **Retained v1 backlog** (BLUEPRINT_V2 Part V.d — no deadlines): the 56-unit listening/test content waves (W-0…), ElevenLabs audio (AU-1…4), the didactics D-wave, game enrichment (GX), TTS audio, and the v1-parity engagement features (arcade, daily challenge, leaderboards, dark mode). Slot after GO-1 or interleave when a lane is gate-blocked.
 
-### 3. TTS audio (one PR `feat/tts-audio`) — _small_
-`gen-audio.ts` + `pnpm content gen-audio`: hash each `listening.json` script → call the provider → write `public/audio/<hash>.mp3` → backfill `AudioRef.file`. One-line `AudioClip` URL fix. **Open decision: provider** (OpenAI `tts-1` recommended). Zero runtime change otherwise (the player already prefers `audio.file`).
-
-### 4. B2b — Teacher writing-grading UI (one PR `feat/teacher-grading`) — _small, closes the Mock-Test loop_
-Migration `0004` (additive `graded_at/score/feedback/graded_by` on `writing_submissions`) → `@domigo/db` getters/setter joined to v1 user names → `/admin/submissions` list + grade view → `/api/admin/grade-submission`. MVP = single-teacher (all submissions). Optional student grade-view in `/tests`.
-
-### 5. Track D — Migration, cutover & bulletproof-beta — _gates any student go-live_
-- **Migration completion** (`03_migration.md`): import post-2026-05-17 Firebase signups into Neon without clobbering claimed accounts; keep `/signin/migrate`.
-- **Bulletproof-Beta checklist** (`09` §gate): every audited unit validator-green + spot-checked · all auth paths work · no route 500s · progress persists across sign-out/in · combos/XP/streaks correct · mobile-first on a cheap phone + PWA install + flaky-network · **~30-concurrent class-scale attempt test** · no dead toggles.
-- **PWA install** + offline shell. **Firebase retirement** once v2 is live (+ one-time v1 frozen-XP → `user_progress` reconcile).
-- **Cheap-Android perf pass** — the Law-9 perf budget (60/30fps, ≤50 draw calls, pause-on-blur, `?perf=1` HUD), a Playwright perf gate in CI.
-
-### 6. Optional / polish
-- **Real art PNGs** — run the committed prompt libraries (`docs/art/g1-lost-pages-prompts.html`, `g3-fourteen-prompts.html`; G2 already has wired raster art) → `public/art/g<n>/`. Procedural fallback until then.
-- **Dark mode** pass across the surfaces. **Native eval** (Capacitor/Expo) per the open decision.
-- **P3 social** (Battle Arena / Class Quiz / Study Buddies) — decide build-vs-drop; remove dead toggles either way.
-
----
-
-## 5. Recommended order & dependencies
-
-```
-DONE: P0 content ─► harness ─► A (Smart Review) ─► B (Study Path/Listening/Tests) ─► design system
-                                                  └─► C games: G1 ✓  G2 ✓  G3 ✓
-NEXT (parallelisable):
-  ① G4 Syntaxia (the last game)        ┐
-  ② Content waves (listening/test)     ├─ all independent; pick by appetite
-  ③ TTS · ④ B2b teacher-grading        ┘
-  ⑤ Track D (migration + bulletproof-beta + PWA + perf)  ── GATES go-live (Sept 2026)
-```
-**Against the September floor:** the game layer is *well past* its floor for 3 of 4 grades (g1 all 15 / g2 all 15 / g3 all 14, vs. the floor's u1–5 / ch1–5 / ep1–5). The headline gaps to a shippable beta are now **G4**, the **content waves**, and **Track D** — not the learning spine or the first three games.
+**Gate (every PR):** the standing gate — `pnpm -r run typecheck && pnpm lint && pnpm -r run test && pnpm content validate && pnpm content validate-story && pnpm build && pnpm check:bundle` — plus the item's exit criteria + a Verification-honesty note. Branch off `main`, one PR at a time; Koki squash-merges.
 
 ---
 
