@@ -1063,7 +1063,7 @@
       "id": "g1u05.gi.can.tf.002",
       "structureId": "g1u05.s.can",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1086,10 +1086,6 @@
         {
           "text": "Can | play",
           "tier": "full"
-        },
-        {
-          "text": "Can Steve play the guitar?",
-          "tier": "partial"
         }
       ],
       "direction": null,

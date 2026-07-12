@@ -2,17 +2,16 @@
   "schema": "variant-audit@1",
   "totals": {
     "scanned": 5898,
-    "critical": 1007,
+    "critical": 1000,
     "advisory": 286,
     "byRule": {
       "R2": 336,
       "R3": 159,
-      "R1": 791,
-      "R4": 7
+      "R1": 791
     },
     "byGrade": {
       "g1": {
-        "critical": 380,
+        "critical": 379,
         "advisory": 104
       },
       "g2": {
@@ -20,11 +19,11 @@
         "advisory": 44
       },
       "g3": {
-        "critical": 221,
+        "critical": 219,
         "advisory": 77
       },
       "g4": {
-        "critical": 199,
+        "critical": 195,
         "advisory": 61
       }
     }
@@ -1493,14 +1492,6 @@
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"Can | play\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g1u05.gi.can.tf.002",
-      "unitSlug": "g1-u05",
-      "rule": "R4",
-      "severity": "critical",
-      "evidence": "prompt has 2 blank(s) but partial answer \"Can Steve play the guitar?\" has 1 segment(s)",
-      "suggestion": "re-author with one pipe segment per blank (the answer is unreachable as written)"
     },
     {
       "itemId": "g1u05.gi.possessives.tf.002",
@@ -6279,28 +6270,12 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g3u04.gi.comparative-intensifiers.tf.005",
-      "unitSlug": "g3-u04",
-      "rule": "R4",
-      "severity": "critical",
-      "evidence": "prompt has 2 blank(s) but partial answer \"Croatia is much cheaper than Switzerland, but Swit\" has 1 segment(s)",
-      "suggestion": "re-author with one pipe segment per blank (the answer is unreachable as written)"
-    },
-    {
       "itemId": "g3u04.gi.comparative-intensifiers.tf.006",
       "unitSlug": "g3-u04",
       "rule": "R3",
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"slightly easier | far more exciting\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g3u04.gi.comparative-intensifiers.tf.006",
-      "unitSlug": "g3-u04",
-      "rule": "R4",
-      "severity": "critical",
-      "evidence": "prompt has 2 blank(s) but partial answer \"Game A is only slightly easier than Game B, but Ga\" has 1 segment(s)",
-      "suggestion": "re-author with one pipe segment per blank (the answer is unreachable as written)"
     },
     {
       "itemId": "g3u04.gi.comparative-intensifiers.tr.002",
@@ -10255,28 +10230,12 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g4u12.gi.phrasal-verbs.tf.001",
-      "unitSlug": "g4-u12",
-      "rule": "R4",
-      "severity": "critical",
-      "evidence": "prompt has 2 blank(s) but partial answer \"Put it on!\" has 1 segment(s)",
-      "suggestion": "re-author with one pipe segment per blank (the answer is unreachable as written)"
-    },
-    {
       "itemId": "g4u12.gi.phrasal-verbs.tf.003",
       "unitSlug": "g4-u12",
       "rule": "R3",
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"it | on\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g4u12.gi.phrasal-verbs.tf.003",
-      "unitSlug": "g4-u12",
-      "rule": "R4",
-      "severity": "critical",
-      "evidence": "prompt has 2 blank(s) but partial answer \"Put it on.\" has 1 segment(s)",
-      "suggestion": "re-author with one pipe segment per blank (the answer is unreachable as written)"
     },
     {
       "itemId": "g4u12.gi.phrasal-verbs.tf.005",
@@ -10287,28 +10246,12 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g4u12.gi.phrasal-verbs.tf.005",
-      "unitSlug": "g4-u12",
-      "rule": "R4",
-      "severity": "critical",
-      "evidence": "prompt has 2 blank(s) but partial answer \"Give it up.\" has 1 segment(s)",
-      "suggestion": "re-author with one pipe segment per blank (the answer is unreachable as written)"
-    },
-    {
       "itemId": "g4u12.gi.phrasal-verbs.tf.007",
       "unitSlug": "g4-u12",
       "rule": "R3",
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"came | up | with\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g4u12.gi.phrasal-verbs.tf.007",
-      "unitSlug": "g4-u12",
-      "rule": "R4",
-      "severity": "critical",
-      "evidence": "prompt has 3 blank(s) but partial answer \"She came up with a great story.\" has 1 segment(s)",
-      "suggestion": "re-author with one pipe segment per blank (the answer is unreachable as written)"
     },
     {
       "itemId": "g4u12.w.engineering",

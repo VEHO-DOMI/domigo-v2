@@ -111,5 +111,73 @@
         }
       }
     }
+  },
+  "g1-u05": {
+    "patch": {
+      "g1u05.gi.can.tf.002": {
+        "answers": [
+          {
+            "text": "Can | play",
+            "tier": "full"
+          }
+        ]
+      }
+    }
+  },
+  "g3-u04": {
+    "patch": {
+      "g3u04.gi.comparative-intensifiers.tf.005": {
+        "answers": [
+          {
+            "text": "much cheaper | a bit more beautiful",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u04.gi.comparative-intensifiers.tf.006": {
+        "answers": [
+          {
+            "text": "slightly easier | far more exciting",
+            "tier": "full"
+          }
+        ]
+      }
+    }
+  },
+  "g4-u12": {
+    "patch": {
+      "g4u12.gi.phrasal-verbs.tf.001": {
+        "answers": [
+          {
+            "text": "it | on",
+            "tier": "full"
+          }
+        ]
+      },
+      "g4u12.gi.phrasal-verbs.tf.003": {
+        "answers": [
+          {
+            "text": "it | on",
+            "tier": "full"
+          }
+        ]
+      },
+      "g4u12.gi.phrasal-verbs.tf.005": {
+        "answers": [
+          {
+            "text": "it | up",
+            "tier": "full"
+          }
+        ]
+      },
+      "g4u12.gi.phrasal-verbs.tf.007": {
+        "answers": [
+          {
+            "text": "came | up | with",
+            "tier": "full"
+          }
+        ]
+      }
+    }
   }
 }

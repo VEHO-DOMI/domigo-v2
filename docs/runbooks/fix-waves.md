@@ -4,14 +4,24 @@ Turns the E-2 variant-audit findings (`content/build/audit/`) into merged, verif
 content fixes — one bounded wave per PR. Pairs with the curation standard
 (`docs/handover/17_curation_standard.md`) and the audit (`pnpm content audit-variants`).
 
-> **Verified 2026-07-12 (R4 pilot).** The flow below was validated end-to-end on the 7 R4
-> findings (audit R4 7→0, `content validate` green, loader correct), then reverted pending
-> the §Decision. **It corrects BLUEPRINT_V2 IV.1 (A-5), which says "overlay entries only":**
-> answer-pool fixes (R1/R2/R4 — the bulk of the 1,007 findings) touch `answers` /
-> `translation` / `dAnswers`, which are **not** review-editable overlay cells, so an
-> item-fixes overlay *alone* fails `content validate` with `V-22 — item-fixes patch …
-> did not land`. The patch must be **materialized into the corpus and the unit
-> re-approved.** See §"Why it isn't overlay-only."
+> **✅ 2026-07-12 — SOLVED: mechanical fixes use `content patch --unit <slug>`.** Landing an
+> answer-pool fix through the manual flow below (gen → verify → review → approve) re-runs the
+> four LLM verification lenses over the WHOLE unit (~94 items), because any item change
+> re-stales them — disproportionate for a mechanical fix. The new **`content patch`** command
+> (`packages/content-pipeline/src/trusted-patch.ts`) is the sanctioned shortcut for the
+> mechanical class Koki authorized (decision **B**): it materializes the overlay + re-approves
+> the unit **without re-running the lenses**, and a machine guard **REFUSES any prose change**
+> (answer-pool fields only — `answers`/`sAnswers`/`dAnswers`/`translation`), so prose rewrites
+> still go through the full flow. The **mechanical wave loop** is now:
+>   1. draft the answer-pool fix as an `item-fixes.json` overlay entry (whole-field arrays);
+>   2. `pnpm content patch --unit <slug>` per touched unit (`--dry-run` previews + shows the guard);
+>   3. gate: `pnpm content validate` green + `blind-solve --only <ids>` → 0 class-(a);
+>   4. PR with before/after audit counts.
+>
+> The **R4 unreachable-answer pilot (7 bugs across g1-u05 / g3-u04 / g4-u12) landed this way**
+> (audit R4 7→0, validate green, all units still `approved`). The manual flow below still
+> governs content-**authored** fixes (rewrites, ambiguous carriers) that genuinely need lens
+> review — those go through gen → verify → review-doc → `ok` verdict → ingest-review.
 
 ## The wave loop (per PR)
 

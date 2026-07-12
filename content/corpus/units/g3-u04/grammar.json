@@ -1854,7 +1854,7 @@
       "id": "g3u04.gi.comparative-intensifiers.tf.005",
       "structureId": "g3u04.s.comparative-intensifiers",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1875,10 +1875,6 @@
       },
       "answers": [
         {
-          "text": "Croatia is much cheaper than Switzerland, but Switzerland is a bit more beautiful.",
-          "tier": "partial"
-        },
-        {
           "text": "much cheaper | a bit more beautiful",
           "tier": "full"
         }
@@ -1898,7 +1894,7 @@
       "id": "g3u04.gi.comparative-intensifiers.tf.006",
       "structureId": "g3u04.s.comparative-intensifiers",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1918,10 +1914,6 @@
         "blanks": 2
       },
       "answers": [
-        {
-          "text": "Game A is only slightly easier than Game B, but Game B is far more exciting.",
-          "tier": "partial"
-        },
         {
           "text": "slightly easier | far more exciting",
           "tier": "full"

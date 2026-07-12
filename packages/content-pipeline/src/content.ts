@@ -42,6 +42,7 @@ import { runValidateListening } from "./validate-listening.ts";
 import { runValidateStory } from "./validate-story.ts";
 import { runValidateTest } from "./validate-test.ts";
 import { runVerifyIngest, runVerifyPrepare } from "./verify-items.ts";
+import { runTrustedPatch } from "./trusted-patch.ts";
 import { runWordbank } from "./wordbank.ts";
 
 function parseGrade(argv: string[]): Grade | undefined {
@@ -108,6 +109,12 @@ switch (command) {
     if (rest.includes("--prepare")) runVerifyPrepare(unit);
     else if (rest.includes("--ingest")) runVerifyIngest(unit, rest.includes("--dry-run"));
     else throw new Error("verify needs --prepare or --ingest");
+    break;
+  }
+  case "patch": {
+    const unit = parseUnit(rest);
+    if (unit === undefined) throw new Error("patch needs --unit g2-u03 (trusted mechanical answer-pool fix on an APPROVED unit; skips the LLM lenses)");
+    runTrustedPatch(unit, rest.includes("--dry-run"));
     break;
   }
   case "harvest-nouns":

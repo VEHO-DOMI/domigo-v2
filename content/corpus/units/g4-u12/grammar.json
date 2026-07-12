@@ -2688,7 +2688,7 @@
       "id": "g4u12.gi.phrasal-verbs.tf.001",
       "structureId": "g4u12.s.phrasal-verbs",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2711,10 +2711,6 @@
         {
           "text": "it | on",
           "tier": "full"
-        },
-        {
-          "text": "Put it on!",
-          "tier": "partial"
         }
       ],
       "direction": null,
@@ -2732,7 +2728,7 @@
       "id": "g4u12.gi.phrasal-verbs.tf.003",
       "structureId": "g4u12.s.phrasal-verbs",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2755,10 +2751,6 @@
         {
           "text": "it | on",
           "tier": "full"
-        },
-        {
-          "text": "Put it on.",
-          "tier": "partial"
         }
       ],
       "direction": null,
@@ -2776,7 +2768,7 @@
       "id": "g4u12.gi.phrasal-verbs.tf.005",
       "structureId": "g4u12.s.phrasal-verbs",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2799,10 +2791,6 @@
         {
           "text": "it | up",
           "tier": "full"
-        },
-        {
-          "text": "Give it up.",
-          "tier": "partial"
         }
       ],
       "direction": null,
@@ -2864,7 +2852,7 @@
       "id": "g4u12.gi.phrasal-verbs.tf.007",
       "structureId": "g4u12.s.phrasal-verbs",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2887,10 +2875,6 @@
         {
           "text": "came | up | with",
           "tier": "full"
-        },
-        {
-          "text": "She came up with a great story.",
-          "tier": "partial"
         }
       ],
       "direction": null,
