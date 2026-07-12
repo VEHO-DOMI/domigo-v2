@@ -316,7 +316,7 @@
     },
     {
       "id": "g1u09.w.basket",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -367,6 +367,10 @@
           {
             "text": "Korb",
             "tier": "full"
+          },
+          {
+            "text": "der Korb",
+            "tier": "full"
           }
         ]
       },
@@ -386,7 +390,7 @@
     },
     {
       "id": "g1u09.w.bat",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -437,6 +441,10 @@
           {
             "text": "Fledermaus",
             "tier": "full"
+          },
+          {
+            "text": "die Fledermaus",
+            "tier": "full"
           }
         ]
       },
@@ -461,7 +469,7 @@
     },
     {
       "id": "g1u09.w.beginning",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -523,6 +531,14 @@
           },
           {
             "text": "Beginn",
+            "tier": "full"
+          },
+          {
+            "text": "der Anfang",
+            "tier": "full"
+          },
+          {
+            "text": "der Beginn",
             "tier": "full"
           }
         ]
@@ -621,7 +637,7 @@
     },
     {
       "id": "g1u09.w.box",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -676,6 +692,14 @@
           {
             "text": "Kiste",
             "tier": "full"
+          },
+          {
+            "text": "die Schachtel",
+            "tier": "full"
+          },
+          {
+            "text": "die Kiste",
+            "tier": "full"
           }
         ]
       },
@@ -710,7 +734,7 @@
     },
     {
       "id": "g1u09.w.budgie",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -773,6 +797,10 @@
           {
             "text": "Wellensittich",
             "tier": "full"
+          },
+          {
+            "text": "der Wellensittich",
+            "tier": "full"
           }
         ]
       },
@@ -792,7 +820,7 @@
     },
     {
       "id": "g1u09.w.cage",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -843,6 +871,10 @@
           {
             "text": "Käfig",
             "tier": "full"
+          },
+          {
+            "text": "der Käfig",
+            "tier": "full"
           }
         ]
       },
@@ -872,7 +904,7 @@
     },
     {
       "id": "g1u09.w.camel",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -923,6 +955,10 @@
           {
             "text": "Kamel",
             "tier": "full"
+          },
+          {
+            "text": "das Kamel",
+            "tier": "full"
           }
         ]
       },
@@ -942,7 +978,7 @@
     },
     {
       "id": "g1u09.w.cuddly-toy",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1004,6 +1040,14 @@
           },
           {
             "text": "Kuscheltier",
+            "tier": "full"
+          },
+          {
+            "text": "das Stofftier",
+            "tier": "full"
+          },
+          {
+            "text": "das Kuscheltier",
             "tier": "full"
           }
         ]
@@ -1109,7 +1153,7 @@
     },
     {
       "id": "g1u09.w.daughter",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1159,6 +1203,10 @@
         "enToDe": [
           {
             "text": "Tochter",
+            "tier": "full"
+          },
+          {
+            "text": "die Tochter",
             "tier": "full"
           }
         ]
@@ -1252,7 +1300,7 @@
     },
     {
       "id": "g1u09.w.elephant",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1303,6 +1351,10 @@
           {
             "text": "Elefant",
             "tier": "full"
+          },
+          {
+            "text": "der Elefant",
+            "tier": "full"
           }
         ]
       },
@@ -1316,7 +1368,7 @@
     },
     {
       "id": "g1u09.w.ending",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1378,6 +1430,14 @@
           },
           {
             "text": "Schluss",
+            "tier": "full"
+          },
+          {
+            "text": "das Ende",
+            "tier": "full"
+          },
+          {
+            "text": "der Schluss",
             "tier": "full"
           }
         ]
@@ -1562,7 +1622,7 @@
     },
     {
       "id": "g1u09.w.farm",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1613,6 +1673,10 @@
           {
             "text": "Bauernhof",
             "tier": "full"
+          },
+          {
+            "text": "der Bauernhof",
+            "tier": "full"
           }
         ]
       },
@@ -1632,7 +1696,7 @@
     },
     {
       "id": "g1u09.w.fish",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1683,6 +1747,10 @@
           {
             "text": "Fisch",
             "tier": "full"
+          },
+          {
+            "text": "der Fisch",
+            "tier": "full"
           }
         ]
       },
@@ -1717,7 +1785,7 @@
     },
     {
       "id": "g1u09.w.fur",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1768,6 +1836,10 @@
           {
             "text": "Fell",
             "tier": "full"
+          },
+          {
+            "text": "das Fell",
+            "tier": "full"
           }
         ]
       },
@@ -1797,7 +1869,7 @@
     },
     {
       "id": "g1u09.w.grandpa",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1868,6 +1940,14 @@
           {
             "text": "Großvater",
             "tier": "full"
+          },
+          {
+            "text": "der Opa",
+            "tier": "full"
+          },
+          {
+            "text": "der Großvater",
+            "tier": "full"
           }
         ]
       },
@@ -1892,7 +1972,7 @@
     },
     {
       "id": "g1u09.w.guinea-pig",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1943,6 +2023,10 @@
           {
             "text": "Meerschweinchen",
             "tier": "full"
+          },
+          {
+            "text": "das Meerschweinchen",
+            "tier": "full"
           }
         ]
       },
@@ -1956,7 +2040,7 @@
     },
     {
       "id": "g1u09.w.letter",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2007,6 +2091,10 @@
           {
             "text": "Brief",
             "tier": "full"
+          },
+          {
+            "text": "der Brief",
+            "tier": "full"
           }
         ]
       },
@@ -2026,7 +2114,7 @@
     },
     {
       "id": "g1u09.w.lizard",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2077,6 +2165,10 @@
           {
             "text": "Eidechse",
             "tier": "full"
+          },
+          {
+            "text": "die Eidechse",
+            "tier": "full"
           }
         ]
       },
@@ -2106,7 +2198,7 @@
     },
     {
       "id": "g1u09.w.man",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2169,6 +2261,14 @@
           {
             "text": "Männer",
             "tier": "full"
+          },
+          {
+            "text": "der Mann",
+            "tier": "full"
+          },
+          {
+            "text": "die Männer",
+            "tier": "full"
           }
         ]
       },
@@ -2182,7 +2282,7 @@
     },
     {
       "id": "g1u09.w.mother",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2245,6 +2345,14 @@
           {
             "text": "Mama",
             "tier": "full"
+          },
+          {
+            "text": "die Mutter",
+            "tier": "full"
+          },
+          {
+            "text": "die Mama",
+            "tier": "full"
           }
         ]
       },
@@ -2258,7 +2366,7 @@
     },
     {
       "id": "g1u09.w.mouse",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2309,6 +2417,10 @@
           {
             "text": "Maus",
             "tier": "full"
+          },
+          {
+            "text": "die Maus",
+            "tier": "full"
           }
         ]
       },
@@ -2338,7 +2450,7 @@
     },
     {
       "id": "g1u09.w.mouse-2",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2400,6 +2512,14 @@
           },
           {
             "text": "Mäuse",
+            "tier": "full"
+          },
+          {
+            "text": "die Maus",
+            "tier": "full"
+          },
+          {
+            "text": "die Mäuse",
             "tier": "full"
           }
         ]
@@ -2497,7 +2617,7 @@
     },
     {
       "id": "g1u09.w.newspaper",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2548,6 +2668,10 @@
           {
             "text": "Zeitung",
             "tier": "full"
+          },
+          {
+            "text": "die Zeitung",
+            "tier": "full"
           }
         ]
       },
@@ -2567,7 +2691,7 @@
     },
     {
       "id": "g1u09.w.noise",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2630,6 +2754,10 @@
           {
             "text": "Lärm",
             "tier": "partial"
+          },
+          {
+            "text": "das Geräusch",
+            "tier": "full"
           }
         ]
       },
@@ -2727,7 +2855,7 @@
     },
     {
       "id": "g1u09.w.owl",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2777,6 +2905,10 @@
         "enToDe": [
           {
             "text": "Eule",
+            "tier": "full"
+          },
+          {
+            "text": "die Eule",
             "tier": "full"
           }
         ]
@@ -2956,7 +3088,7 @@
     },
     {
       "id": "g1u09.w.pig",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3007,6 +3139,10 @@
           {
             "text": "Schwein",
             "tier": "full"
+          },
+          {
+            "text": "das Schwein",
+            "tier": "full"
           }
         ]
       },
@@ -3031,7 +3167,7 @@
     },
     {
       "id": "g1u09.w.pony",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3082,6 +3218,10 @@
           {
             "text": "Pony",
             "tier": "full"
+          },
+          {
+            "text": "das Pony",
+            "tier": "full"
           }
         ]
       },
@@ -3101,7 +3241,7 @@
     },
     {
       "id": "g1u09.w.rabbit",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3168,6 +3308,14 @@
           {
             "text": "Hase",
             "tier": "full"
+          },
+          {
+            "text": "das Kaninchen",
+            "tier": "full"
+          },
+          {
+            "text": "der Hase",
+            "tier": "full"
           }
         ]
       },
@@ -3187,7 +3335,7 @@
     },
     {
       "id": "g1u09.w.rat",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3238,6 +3386,10 @@
           {
             "text": "Ratte",
             "tier": "full"
+          },
+          {
+            "text": "die Ratte",
+            "tier": "full"
           }
         ]
       },
@@ -3257,7 +3409,7 @@
     },
     {
       "id": "g1u09.w.shark",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3308,6 +3460,10 @@
           {
             "text": "Hai",
             "tier": "full"
+          },
+          {
+            "text": "der Hai",
+            "tier": "full"
           }
         ]
       },
@@ -3332,7 +3488,7 @@
     },
     {
       "id": "g1u09.w.spider",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3383,6 +3539,10 @@
           {
             "text": "Spinne",
             "tier": "full"
+          },
+          {
+            "text": "die Spinne",
+            "tier": "full"
           }
         ]
       },
@@ -3396,7 +3556,7 @@
     },
     {
       "id": "g1u09.w.tank",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3451,6 +3611,10 @@
           {
             "text": "Terrarium",
             "tier": "partial"
+          },
+          {
+            "text": "das Aquarium",
+            "tier": "full"
           }
         ]
       },
@@ -3485,7 +3649,7 @@
     },
     {
       "id": "g1u09.w.terrarium",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3535,6 +3699,10 @@
         "enToDe": [
           {
             "text": "Terrarium",
+            "tier": "full"
+          },
+          {
+            "text": "das Terrarium",
             "tier": "full"
           }
         ]
@@ -4097,7 +4265,7 @@
     },
     {
       "id": "g1u09.w.tortoise",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4159,6 +4327,10 @@
         "enToDe": [
           {
             "text": "Schildkröte",
+            "tier": "full"
+          },
+          {
+            "text": "die Schildkröte",
             "tier": "full"
           }
         ]
@@ -4351,7 +4523,7 @@
     },
     {
       "id": "g1u09.w.zebra",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4401,6 +4573,10 @@
         "enToDe": [
           {
             "text": "Zebra",
+            "tier": "full"
+          },
+          {
+            "text": "das Zebra",
             "tier": "full"
           }
         ]

@@ -99,6 +99,20 @@
       "contentHash": "b0e8cce66c9777beb5b9522d4a2ec1bebefc466dd211ca8438436b6c65dc1117",
       "note": "round 1: 34 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T08:42:07.574Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "f64e19a16bdb5a08ee99c06abcbf6b321bf605e0cfa0e80173973c050e7c9b30",
+      "note": "gen ingest: 30 vocab + 27 grammar item(s); draft 3d5c15ac3c13",
+      "at": "2026-07-12T10:10:11.094Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "f64e19a16bdb5a08ee99c06abcbf6b321bf605e0cfa0e80173973c050e7c9b30",
+      "note": "trusted patch (mechanical): 18 answer-pool fix(es) [g1u08.w.belt, g1u08.w.blouse, g1u08.w.boots, g1u08.w.building, g1u08.w.cap, g1u08.w.cape, g1u08.w.hole, g1u08.w.hoodie, g1u08.w.horse, g1u08.w.jacket, g1u08.w.mask, g1u08.w.poem, g1u08.w.pyjamas, g1u08.w.shoes, g1u08.w.sweater, g1u08.w.tights, g1u08.w.trainers, g1u08.w.trousers] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:10:11.096Z"
     }
   ]
 }

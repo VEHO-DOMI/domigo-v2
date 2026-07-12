@@ -121,6 +121,378 @@
             "tier": "full"
           }
         ]
+      },
+      "g1u05.w.can": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "can",
+              "tier": "full"
+            },
+            {
+              "text": "tin",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Dose",
+              "tier": "full"
+            },
+            {
+              "text": "die Dose",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.concert": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "concert",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Konzert",
+              "tier": "full"
+            },
+            {
+              "text": "das Konzert",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.drums": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "drums",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schlagzeug",
+              "tier": "full"
+            },
+            {
+              "text": "das Schlagzeug",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.economy": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "economy",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wirtschaft",
+              "tier": "full"
+            },
+            {
+              "text": "die Wirtschaft",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.guitar": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "guitar",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gitarre",
+              "tier": "full"
+            },
+            {
+              "text": "die Gitarre",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.hospital": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hospital",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Krankenhaus",
+              "tier": "full"
+            },
+            {
+              "text": "Spital",
+              "tier": "full"
+            },
+            {
+              "text": "das Krankenhaus",
+              "tier": "full"
+            },
+            {
+              "text": "das Spital",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.job": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "job",
+              "tier": "full"
+            },
+            {
+              "text": "work",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Arbeit",
+              "tier": "full"
+            },
+            {
+              "text": "Aufgabe",
+              "tier": "full"
+            },
+            {
+              "text": "Job",
+              "tier": "full"
+            },
+            {
+              "text": "die Arbeit",
+              "tier": "full"
+            },
+            {
+              "text": "die Aufgabe",
+              "tier": "full"
+            },
+            {
+              "text": "der Job",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.keyboard": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "keyboard",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Keyboard",
+              "tier": "full"
+            },
+            {
+              "text": "das Keyboard",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.pound": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pound",
+              "tier": "full"
+            },
+            {
+              "text": "pounds",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Pfund",
+              "tier": "full"
+            },
+            {
+              "text": "das Pfund",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.profit": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "profit",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gewinn",
+              "tier": "full"
+            },
+            {
+              "text": "Profit",
+              "tier": "full"
+            },
+            {
+              "text": "der Gewinn",
+              "tier": "full"
+            },
+            {
+              "text": "der Profit",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.saxophone": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "saxophone",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Saxophon",
+              "tier": "full"
+            },
+            {
+              "text": "das Saxophon",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.school-canteen": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "school canteen",
+              "tier": "full"
+            },
+            {
+              "text": "canteen",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schulkantine",
+              "tier": "full"
+            },
+            {
+              "text": "Kantine",
+              "tier": "partial"
+            },
+            {
+              "text": "die Schulkantine",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.sister": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sister",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schwester",
+              "tier": "full"
+            },
+            {
+              "text": "die Schwester",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.table": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "table",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Tisch",
+              "tier": "full"
+            },
+            {
+              "text": "der Tisch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.tongue": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tongue",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zunge",
+              "tier": "full"
+            },
+            {
+              "text": "die Zunge",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u05.w.uncle": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "uncle",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Onkel",
+              "tier": "full"
+            },
+            {
+              "text": "der Onkel",
+              "tier": "full"
+            }
+          ]
+        }
       }
     }
   },
@@ -905,6 +1277,6514 @@
             },
             {
               "text": "das Fenster",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u02": {
+    "patch": {
+      "g1u02.w.car": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "car",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Auto",
+              "tier": "full"
+            },
+            {
+              "text": "Wagen",
+              "tier": "partial"
+            },
+            {
+              "text": "das Auto",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.child": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "child",
+              "tier": "full"
+            },
+            {
+              "text": "children",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kind",
+              "tier": "full"
+            },
+            {
+              "text": "Kinder",
+              "tier": "full"
+            },
+            {
+              "text": "das Kind",
+              "tier": "full"
+            },
+            {
+              "text": "die Kinder",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.dog": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "dog",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hund",
+              "tier": "full"
+            },
+            {
+              "text": "der Hund",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.family": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "family",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Familie",
+              "tier": "full"
+            },
+            {
+              "text": "die Familie",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.giraffe": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "giraffe",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Giraffe",
+              "tier": "full"
+            },
+            {
+              "text": "die Giraffe",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.grandma": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "Grandma",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Oma",
+              "tier": "full"
+            },
+            {
+              "text": "die Oma",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.group": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "group",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gruppe",
+              "tier": "full"
+            },
+            {
+              "text": "die Gruppe",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.lion": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "lion",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Löwe",
+              "tier": "full"
+            },
+            {
+              "text": "der Löwe",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.monkey": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "monkey",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Affe",
+              "tier": "full"
+            },
+            {
+              "text": "der Affe",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.parrot": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "parrot",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Papagei",
+              "tier": "full"
+            },
+            {
+              "text": "der Papagei",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.penguin": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "penguin",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Pinguin",
+              "tier": "full"
+            },
+            {
+              "text": "der Pinguin",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.stone": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "stone",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stein",
+              "tier": "full"
+            },
+            {
+              "text": "der Stein",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.ticket": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ticket",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Eintrittskarte",
+              "tier": "full"
+            },
+            {
+              "text": "Ticket",
+              "tier": "full"
+            },
+            {
+              "text": "Karte",
+              "tier": "partial"
+            },
+            {
+              "text": "die Eintrittskarte",
+              "tier": "full"
+            },
+            {
+              "text": "das Ticket",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.train": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "train",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zug",
+              "tier": "full"
+            },
+            {
+              "text": "der Zug",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.tree": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tree",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Baum",
+              "tier": "full"
+            },
+            {
+              "text": "der Baum",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.year": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "year",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Jahr",
+              "tier": "full"
+            },
+            {
+              "text": "Jahrgangsstufe",
+              "tier": "full"
+            },
+            {
+              "text": "Klasse",
+              "tier": "partial"
+            },
+            {
+              "text": "das Jahr",
+              "tier": "full"
+            },
+            {
+              "text": "die Jahrgangsstufe",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u02.w.zoo": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "zoo",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zoo",
+              "tier": "full"
+            },
+            {
+              "text": "Tierpark",
+              "tier": "partial"
+            },
+            {
+              "text": "der Zoo",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u03": {
+    "patch": {
+      "g1u03.w.beard": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "beard",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bart",
+              "tier": "full"
+            },
+            {
+              "text": "der Bart",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.boy": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "boy",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Junge",
+              "tier": "full"
+            },
+            {
+              "text": "Bub",
+              "tier": "full"
+            },
+            {
+              "text": "der Junge",
+              "tier": "full"
+            },
+            {
+              "text": "der Bub",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.ear": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ear",
+              "tier": "full"
+            },
+            {
+              "text": "ears",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Ohr",
+              "tier": "full"
+            },
+            {
+              "text": "Ohren",
+              "tier": "full"
+            },
+            {
+              "text": "das Ohr",
+              "tier": "full"
+            },
+            {
+              "text": "die Ohren",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.eye": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "eye",
+              "tier": "full"
+            },
+            {
+              "text": "eyes",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Auge",
+              "tier": "full"
+            },
+            {
+              "text": "Augen",
+              "tier": "full"
+            },
+            {
+              "text": "das Auge",
+              "tier": "full"
+            },
+            {
+              "text": "die Augen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.feet": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "feet",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Füße",
+              "tier": "full"
+            },
+            {
+              "text": "die Füße",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.finger": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "finger",
+              "tier": "full"
+            },
+            {
+              "text": "fingers",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Finger",
+              "tier": "full"
+            },
+            {
+              "text": "der Finger",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.foot": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "foot",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fuß",
+              "tier": "full"
+            },
+            {
+              "text": "der Fuß",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.girl": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "girl",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mädchen",
+              "tier": "full"
+            },
+            {
+              "text": "das Mädchen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.leg": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "leg",
+              "tier": "full"
+            },
+            {
+              "text": "legs",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bein",
+              "tier": "full"
+            },
+            {
+              "text": "Beine",
+              "tier": "full"
+            },
+            {
+              "text": "das Bein",
+              "tier": "full"
+            },
+            {
+              "text": "die Beine",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.man": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "man",
+              "tier": "full"
+            },
+            {
+              "text": "men",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mann",
+              "tier": "full"
+            },
+            {
+              "text": "Männer",
+              "tier": "full"
+            },
+            {
+              "text": "der Mann",
+              "tier": "full"
+            },
+            {
+              "text": "die Männer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.mouth": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mouth",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mund",
+              "tier": "full"
+            },
+            {
+              "text": "der Mund",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.nose": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "nose",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Nase",
+              "tier": "full"
+            },
+            {
+              "text": "die Nase",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.ship": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ship",
+              "tier": "full"
+            },
+            {
+              "text": "boat",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schiff",
+              "tier": "full"
+            },
+            {
+              "text": "das Schiff",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.shoulder": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "shoulder",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schulter",
+              "tier": "full"
+            },
+            {
+              "text": "die Schulter",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.sister": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sister",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schwester",
+              "tier": "full"
+            },
+            {
+              "text": "die Schwester",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.teeth": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "teeth",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zähne",
+              "tier": "full"
+            },
+            {
+              "text": "die Zähne",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.tooth": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tooth",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zahn",
+              "tier": "full"
+            },
+            {
+              "text": "der Zahn",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.week": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "week",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Woche",
+              "tier": "full"
+            },
+            {
+              "text": "die Woche",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u03.w.woman": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "woman",
+              "tier": "full"
+            },
+            {
+              "text": "women",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Frau",
+              "tier": "full"
+            },
+            {
+              "text": "Frauen",
+              "tier": "full"
+            },
+            {
+              "text": "die Frau",
+              "tier": "full"
+            },
+            {
+              "text": "die Frauen",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u04": {
+    "patch": {
+      "g1u04.w.afternoon": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "afternoon",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Nachmittag",
+              "tier": "full"
+            },
+            {
+              "text": "der Nachmittag",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.birthday": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "birthday",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Geburtstag",
+              "tier": "full"
+            },
+            {
+              "text": "der Geburtstag",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.bottle": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bottle",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Flasche",
+              "tier": "full"
+            },
+            {
+              "text": "die Flasche",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.day": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "day",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Tag",
+              "tier": "full"
+            },
+            {
+              "text": "der Tag",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.end": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "end",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Ende",
+              "tier": "full"
+            },
+            {
+              "text": "das Ende",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.evening": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "evening",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Abend",
+              "tier": "full"
+            },
+            {
+              "text": "der Abend",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.friday": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "Friday",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Freitag",
+              "tier": "full"
+            },
+            {
+              "text": "der Freitag",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.fun": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fun",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Spaß",
+              "tier": "full"
+            },
+            {
+              "text": "der Spaß",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.homework": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "homework",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hausaufgaben",
+              "tier": "full"
+            },
+            {
+              "text": "Hausübung",
+              "tier": "full"
+            },
+            {
+              "text": "die Hausaufgaben",
+              "tier": "full"
+            },
+            {
+              "text": "die Hausübung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.life": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "life",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Leben",
+              "tier": "full"
+            },
+            {
+              "text": "das Leben",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.lunchtime": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "lunchtime",
+              "tier": "full"
+            },
+            {
+              "text": "lunch time",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mittagszeit",
+              "tier": "full"
+            },
+            {
+              "text": "Mittagspause",
+              "tier": "full"
+            },
+            {
+              "text": "die Mittagszeit",
+              "tier": "full"
+            },
+            {
+              "text": "die Mittagspause",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.monday": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "Monday",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Montag",
+              "tier": "full"
+            },
+            {
+              "text": "der Montag",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.morning": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "morning",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Morgen",
+              "tier": "full"
+            },
+            {
+              "text": "der Morgen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.night": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "night",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Nacht",
+              "tier": "full"
+            },
+            {
+              "text": "die Nacht",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.room": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "room",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Raum",
+              "tier": "full"
+            },
+            {
+              "text": "Zimmer",
+              "tier": "full"
+            },
+            {
+              "text": "der Raum",
+              "tier": "full"
+            },
+            {
+              "text": "das Zimmer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.saturday": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "Saturday",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Samstag",
+              "tier": "full"
+            },
+            {
+              "text": "der Samstag",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.show": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "show",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Show",
+              "tier": "full"
+            },
+            {
+              "text": "Vorführung",
+              "tier": "full"
+            },
+            {
+              "text": "die Show",
+              "tier": "full"
+            },
+            {
+              "text": "die Vorführung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.story": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "story",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Geschichte",
+              "tier": "full"
+            },
+            {
+              "text": "die Geschichte",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.sunday": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "Sunday",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sonntag",
+              "tier": "full"
+            },
+            {
+              "text": "der Sonntag",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.thursday": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "Thursday",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Donnerstag",
+              "tier": "full"
+            },
+            {
+              "text": "der Donnerstag",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.tuesday": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "Tuesday",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Dienstag",
+              "tier": "full"
+            },
+            {
+              "text": "der Dienstag",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u04.w.wednesday": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "Wednesday",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mittwoch",
+              "tier": "full"
+            },
+            {
+              "text": "der Mittwoch",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u06": {
+    "patch": {
+      "g1u06.w.city": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "city",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stadt",
+              "tier": "full"
+            },
+            {
+              "text": "Großstadt",
+              "tier": "full"
+            },
+            {
+              "text": "die Stadt",
+              "tier": "full"
+            },
+            {
+              "text": "die Großstadt",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u06.w.market": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "market",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Markt",
+              "tier": "full"
+            },
+            {
+              "text": "der Markt",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u06.w.mirror": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mirror",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Spiegel",
+              "tier": "full"
+            },
+            {
+              "text": "der Spiegel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u06.w.office": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "office",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Büro",
+              "tier": "full"
+            },
+            {
+              "text": "das Büro",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u06.w.park": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "park",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Park",
+              "tier": "full"
+            },
+            {
+              "text": "der Park",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u06.w.river": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "river",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fluss",
+              "tier": "full"
+            },
+            {
+              "text": "der Fluss",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u06.w.street": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "street",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Straße",
+              "tier": "full"
+            },
+            {
+              "text": "die Straße",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u06.w.street-2": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "street",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Straße",
+              "tier": "full"
+            },
+            {
+              "text": "die Straße",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u06.w.supermarket": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "supermarket",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Supermarkt",
+              "tier": "full"
+            },
+            {
+              "text": "der Supermarkt",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u06.w.tree": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tree",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Baum",
+              "tier": "full"
+            },
+            {
+              "text": "der Baum",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u06.w.woods": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "woods",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wald",
+              "tier": "full"
+            },
+            {
+              "text": "der Wald",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u07": {
+    "patch": {
+      "g1u07.w.beans": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "beans",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bohnen",
+              "tier": "full"
+            },
+            {
+              "text": "die Bohnen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.bread": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bread",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Brot",
+              "tier": "full"
+            },
+            {
+              "text": "das Brot",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.breakfast": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "breakfast",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Frühstück",
+              "tier": "full"
+            },
+            {
+              "text": "das Frühstück",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.broccoli": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "broccoli",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Brokkoli",
+              "tier": "full"
+            },
+            {
+              "text": "der Brokkoli",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.butter": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "butter",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Butter",
+              "tier": "full"
+            },
+            {
+              "text": "die Butter",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.cake": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cake",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kuchen",
+              "tier": "full"
+            },
+            {
+              "text": "der Kuchen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.carrot": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "carrot",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Karotte",
+              "tier": "full"
+            },
+            {
+              "text": "Möhre",
+              "tier": "full"
+            },
+            {
+              "text": "die Karotte",
+              "tier": "full"
+            },
+            {
+              "text": "die Möhre",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.cheese": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cheese",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Käse",
+              "tier": "full"
+            },
+            {
+              "text": "der Käse",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.chicken": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "chicken",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Huhn",
+              "tier": "full"
+            },
+            {
+              "text": "Hühnchen",
+              "tier": "full"
+            },
+            {
+              "text": "Hähnchen",
+              "tier": "partial"
+            },
+            {
+              "text": "das Huhn",
+              "tier": "full"
+            },
+            {
+              "text": "das Hühnchen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.chillies": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "chillies",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Chilischoten",
+              "tier": "full"
+            },
+            {
+              "text": "Chilis",
+              "tier": "partial"
+            },
+            {
+              "text": "die Chilischoten",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.chips": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "chips",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Chips",
+              "tier": "full"
+            },
+            {
+              "text": "Pommes",
+              "tier": "partial"
+            },
+            {
+              "text": "die Chips",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.chocolate": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "chocolate",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schokolade",
+              "tier": "full"
+            },
+            {
+              "text": "die Schokolade",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.cucumber": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cucumber",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gurke",
+              "tier": "full"
+            },
+            {
+              "text": "die Gurke",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.dinner": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "dinner",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Abendessen",
+              "tier": "full"
+            },
+            {
+              "text": "das Abendessen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.egg": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "egg",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Ei",
+              "tier": "full"
+            },
+            {
+              "text": "das Ei",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.fish": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fish",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fisch",
+              "tier": "full"
+            },
+            {
+              "text": "der Fisch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.glass": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "glass",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Glas",
+              "tier": "full"
+            },
+            {
+              "text": "das Glas",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.grapes": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "grapes",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Weintrauben",
+              "tier": "full"
+            },
+            {
+              "text": "Trauben",
+              "tier": "full"
+            },
+            {
+              "text": "die Weintrauben",
+              "tier": "full"
+            },
+            {
+              "text": "die Trauben",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.ham": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ham",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schinken",
+              "tier": "full"
+            },
+            {
+              "text": "der Schinken",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.hamburger": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hamburger",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hamburger",
+              "tier": "full"
+            },
+            {
+              "text": "der Hamburger",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.ice-cream": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ice cream",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Eis",
+              "tier": "full"
+            },
+            {
+              "text": "Eiscreme",
+              "tier": "full"
+            },
+            {
+              "text": "das Eis",
+              "tier": "full"
+            },
+            {
+              "text": "die Eiscreme",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.kiwi": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "kiwi",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kiwi",
+              "tier": "full"
+            },
+            {
+              "text": "die Kiwi",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.lunch": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "lunch",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mittagessen",
+              "tier": "full"
+            },
+            {
+              "text": "das Mittagessen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.meat": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "meat",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fleisch",
+              "tier": "full"
+            },
+            {
+              "text": "das Fleisch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.menu": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "menu",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Speisekarte",
+              "tier": "full"
+            },
+            {
+              "text": "Menü",
+              "tier": "partial"
+            },
+            {
+              "text": "die Speisekarte",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.milk": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "milk",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Milch",
+              "tier": "full"
+            },
+            {
+              "text": "die Milch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.mineral-water": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mineral water",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mineralwasser",
+              "tier": "full"
+            },
+            {
+              "text": "das Mineralwasser",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.money": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "money",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Geld",
+              "tier": "full"
+            },
+            {
+              "text": "das Geld",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.mum": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "Mum",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mama",
+              "tier": "full"
+            },
+            {
+              "text": "Mutti",
+              "tier": "full"
+            },
+            {
+              "text": "die Mama",
+              "tier": "full"
+            },
+            {
+              "text": "die Mutti",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.onion": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "onion",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zwiebel",
+              "tier": "full"
+            },
+            {
+              "text": "die Zwiebel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.orange-juice": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "orange juice",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Orangensaft",
+              "tier": "full"
+            },
+            {
+              "text": "der Orangensaft",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.pasta": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pasta",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Nudeln",
+              "tier": "full"
+            },
+            {
+              "text": "Pasta",
+              "tier": "full"
+            },
+            {
+              "text": "die Nudeln",
+              "tier": "full"
+            },
+            {
+              "text": "die Pasta",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.peas": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "peas",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Erbsen",
+              "tier": "full"
+            },
+            {
+              "text": "die Erbsen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.pizza": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pizza",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Pizza",
+              "tier": "full"
+            },
+            {
+              "text": "die Pizza",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.plate": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "plate",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Teller",
+              "tier": "full"
+            },
+            {
+              "text": "der Teller",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.restaurant": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "restaurant",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Restaurant",
+              "tier": "full"
+            },
+            {
+              "text": "das Restaurant",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.rice": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "rice",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Reis",
+              "tier": "full"
+            },
+            {
+              "text": "der Reis",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.salad": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "salad",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Salat",
+              "tier": "full"
+            },
+            {
+              "text": "der Salat",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.sandwich": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sandwich",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sandwich",
+              "tier": "full"
+            },
+            {
+              "text": "belegtes Brot",
+              "tier": "full"
+            },
+            {
+              "text": "das Sandwich",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.sausages": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sausages",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Würstchen",
+              "tier": "full"
+            },
+            {
+              "text": "Würste",
+              "tier": "partial"
+            },
+            {
+              "text": "die Würstchen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.soup": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "soup",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Suppe",
+              "tier": "full"
+            },
+            {
+              "text": "die Suppe",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.spinach": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "spinach",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Spinat",
+              "tier": "full"
+            },
+            {
+              "text": "der Spinat",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.strawberry": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "strawberry",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Erdbeere",
+              "tier": "full"
+            },
+            {
+              "text": "die Erdbeere",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.sugar": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sugar",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zucker",
+              "tier": "full"
+            },
+            {
+              "text": "der Zucker",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.tea": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tea",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Tee",
+              "tier": "full"
+            },
+            {
+              "text": "der Tee",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u07.w.vegetable": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "vegetable",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gemüse",
+              "tier": "full"
+            },
+            {
+              "text": "das Gemüse",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u08": {
+    "patch": {
+      "g1u08.w.belt": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "belt",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gürtel",
+              "tier": "full"
+            },
+            {
+              "text": "der Gürtel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.blouse": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "blouse",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bluse",
+              "tier": "full"
+            },
+            {
+              "text": "die Bluse",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.boots": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "boots",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stiefel",
+              "tier": "full"
+            },
+            {
+              "text": "die Stiefel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.building": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "building",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gebäude",
+              "tier": "full"
+            },
+            {
+              "text": "das Gebäude",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.cap": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cap",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kappe",
+              "tier": "full"
+            },
+            {
+              "text": "Mütze",
+              "tier": "full"
+            },
+            {
+              "text": "die Kappe",
+              "tier": "full"
+            },
+            {
+              "text": "die Mütze",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.cape": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cape",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Umhang",
+              "tier": "full"
+            },
+            {
+              "text": "der Umhang",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.hole": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hole",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Loch",
+              "tier": "full"
+            },
+            {
+              "text": "das Loch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.hoodie": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hoodie",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hoodie",
+              "tier": "full"
+            },
+            {
+              "text": "Kapuzenpulli",
+              "tier": "full"
+            },
+            {
+              "text": "Kapuzenpullover",
+              "tier": "full"
+            },
+            {
+              "text": "der Hoodie",
+              "tier": "full"
+            },
+            {
+              "text": "der Kapuzenpulli",
+              "tier": "full"
+            },
+            {
+              "text": "der Kapuzenpullover",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.horse": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "horse",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Pferd",
+              "tier": "full"
+            },
+            {
+              "text": "das Pferd",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.jacket": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "jacket",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Jacke",
+              "tier": "full"
+            },
+            {
+              "text": "die Jacke",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.mask": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mask",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Maske",
+              "tier": "full"
+            },
+            {
+              "text": "die Maske",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.poem": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "poem",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gedicht",
+              "tier": "full"
+            },
+            {
+              "text": "das Gedicht",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.pyjamas": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pyjamas",
+              "tier": "full"
+            },
+            {
+              "text": "pajamas",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Pyjama",
+              "tier": "full"
+            },
+            {
+              "text": "Schlafanzug",
+              "tier": "full"
+            },
+            {
+              "text": "der Pyjama",
+              "tier": "full"
+            },
+            {
+              "text": "der Schlafanzug",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.shoes": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "shoes",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schuhe",
+              "tier": "full"
+            },
+            {
+              "text": "die Schuhe",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.sweater": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sweater",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Pullover",
+              "tier": "full"
+            },
+            {
+              "text": "Pulli",
+              "tier": "full"
+            },
+            {
+              "text": "der Pullover",
+              "tier": "full"
+            },
+            {
+              "text": "der Pulli",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.tights": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tights",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Strumpfhose",
+              "tier": "full"
+            },
+            {
+              "text": "die Strumpfhose",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.trainers": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "trainers",
+              "tier": "full"
+            },
+            {
+              "text": "sneakers",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Turnschuhe",
+              "tier": "full"
+            },
+            {
+              "text": "Sneakers",
+              "tier": "full"
+            },
+            {
+              "text": "die Turnschuhe",
+              "tier": "full"
+            },
+            {
+              "text": "die Sneakers",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u08.w.trousers": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "trousers",
+              "tier": "full"
+            },
+            {
+              "text": "pants",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hose",
+              "tier": "full"
+            },
+            {
+              "text": "die Hose",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u09": {
+    "patch": {
+      "g1u09.w.basket": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "basket",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Korb",
+              "tier": "full"
+            },
+            {
+              "text": "der Korb",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.bat": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bat",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fledermaus",
+              "tier": "full"
+            },
+            {
+              "text": "die Fledermaus",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.beginning": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "beginning",
+              "tier": "full"
+            },
+            {
+              "text": "start",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Anfang",
+              "tier": "full"
+            },
+            {
+              "text": "Beginn",
+              "tier": "full"
+            },
+            {
+              "text": "der Anfang",
+              "tier": "full"
+            },
+            {
+              "text": "der Beginn",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.box": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "box",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schachtel",
+              "tier": "full"
+            },
+            {
+              "text": "Kiste",
+              "tier": "full"
+            },
+            {
+              "text": "die Schachtel",
+              "tier": "full"
+            },
+            {
+              "text": "die Kiste",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.budgie": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "budgie",
+              "tier": "full"
+            },
+            {
+              "text": "budgerigar",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wellensittich",
+              "tier": "full"
+            },
+            {
+              "text": "der Wellensittich",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.cage": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cage",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Käfig",
+              "tier": "full"
+            },
+            {
+              "text": "der Käfig",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.camel": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "camel",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kamel",
+              "tier": "full"
+            },
+            {
+              "text": "das Kamel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.cuddly-toy": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cuddly toy",
+              "tier": "full"
+            },
+            {
+              "text": "soft toy",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stofftier",
+              "tier": "full"
+            },
+            {
+              "text": "Kuscheltier",
+              "tier": "full"
+            },
+            {
+              "text": "das Stofftier",
+              "tier": "full"
+            },
+            {
+              "text": "das Kuscheltier",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.daughter": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "daughter",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Tochter",
+              "tier": "full"
+            },
+            {
+              "text": "die Tochter",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.elephant": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "elephant",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Elefant",
+              "tier": "full"
+            },
+            {
+              "text": "der Elefant",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.ending": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ending",
+              "tier": "full"
+            },
+            {
+              "text": "end",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Ende",
+              "tier": "full"
+            },
+            {
+              "text": "Schluss",
+              "tier": "full"
+            },
+            {
+              "text": "das Ende",
+              "tier": "full"
+            },
+            {
+              "text": "der Schluss",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.farm": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "farm",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bauernhof",
+              "tier": "full"
+            },
+            {
+              "text": "der Bauernhof",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.fish": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fish",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fisch",
+              "tier": "full"
+            },
+            {
+              "text": "der Fisch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.fur": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fur",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fell",
+              "tier": "full"
+            },
+            {
+              "text": "das Fell",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.grandpa": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "grandpa",
+              "tier": "full"
+            },
+            {
+              "text": "grandfather",
+              "tier": "partial"
+            },
+            {
+              "text": "grandad",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Opa",
+              "tier": "full"
+            },
+            {
+              "text": "Großvater",
+              "tier": "full"
+            },
+            {
+              "text": "der Opa",
+              "tier": "full"
+            },
+            {
+              "text": "der Großvater",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.guinea-pig": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "guinea pig",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Meerschweinchen",
+              "tier": "full"
+            },
+            {
+              "text": "das Meerschweinchen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.letter": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "letter",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Brief",
+              "tier": "full"
+            },
+            {
+              "text": "der Brief",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.lizard": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "lizard",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Eidechse",
+              "tier": "full"
+            },
+            {
+              "text": "die Eidechse",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.man": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "man",
+              "tier": "full"
+            },
+            {
+              "text": "men",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mann",
+              "tier": "full"
+            },
+            {
+              "text": "Männer",
+              "tier": "full"
+            },
+            {
+              "text": "der Mann",
+              "tier": "full"
+            },
+            {
+              "text": "die Männer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.mother": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mother",
+              "tier": "full"
+            },
+            {
+              "text": "mum",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mutter",
+              "tier": "full"
+            },
+            {
+              "text": "Mama",
+              "tier": "full"
+            },
+            {
+              "text": "die Mutter",
+              "tier": "full"
+            },
+            {
+              "text": "die Mama",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.mouse": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mouse",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Maus",
+              "tier": "full"
+            },
+            {
+              "text": "die Maus",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.mouse-2": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mouse",
+              "tier": "full"
+            },
+            {
+              "text": "mice",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Maus",
+              "tier": "full"
+            },
+            {
+              "text": "Mäuse",
+              "tier": "full"
+            },
+            {
+              "text": "die Maus",
+              "tier": "full"
+            },
+            {
+              "text": "die Mäuse",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.newspaper": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "newspaper",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zeitung",
+              "tier": "full"
+            },
+            {
+              "text": "die Zeitung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.noise": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "noise",
+              "tier": "full"
+            },
+            {
+              "text": "sound",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Geräusch",
+              "tier": "full"
+            },
+            {
+              "text": "Lärm",
+              "tier": "partial"
+            },
+            {
+              "text": "das Geräusch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.owl": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "owl",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Eule",
+              "tier": "full"
+            },
+            {
+              "text": "die Eule",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.pig": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pig",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schwein",
+              "tier": "full"
+            },
+            {
+              "text": "das Schwein",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.pony": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pony",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Pony",
+              "tier": "full"
+            },
+            {
+              "text": "das Pony",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.rabbit": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "rabbit",
+              "tier": "full"
+            },
+            {
+              "text": "bunny",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kaninchen",
+              "tier": "full"
+            },
+            {
+              "text": "Hase",
+              "tier": "full"
+            },
+            {
+              "text": "das Kaninchen",
+              "tier": "full"
+            },
+            {
+              "text": "der Hase",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.rat": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "rat",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Ratte",
+              "tier": "full"
+            },
+            {
+              "text": "die Ratte",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.shark": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "shark",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hai",
+              "tier": "full"
+            },
+            {
+              "text": "der Hai",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.spider": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "spider",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Spinne",
+              "tier": "full"
+            },
+            {
+              "text": "die Spinne",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.tank": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tank",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Aquarium",
+              "tier": "full"
+            },
+            {
+              "text": "Terrarium",
+              "tier": "partial"
+            },
+            {
+              "text": "das Aquarium",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.terrarium": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "terrarium",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Terrarium",
+              "tier": "full"
+            },
+            {
+              "text": "das Terrarium",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.tortoise": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tortoise",
+              "tier": "full"
+            },
+            {
+              "text": "turtle",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schildkröte",
+              "tier": "full"
+            },
+            {
+              "text": "die Schildkröte",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u09.w.zebra": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "zebra",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zebra",
+              "tier": "full"
+            },
+            {
+              "text": "das Zebra",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u10": {
+    "patch": {
+      "g1u10.w.changing-room": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "changing room",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Umkleidekabine",
+              "tier": "full"
+            },
+            {
+              "text": "Umkleide",
+              "tier": "partial"
+            },
+            {
+              "text": "die Umkleidekabine",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.computer-game": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "computer game",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Computerspiel",
+              "tier": "full"
+            },
+            {
+              "text": "das Computerspiel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.drawer": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "drawer",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schublade",
+              "tier": "full"
+            },
+            {
+              "text": "die Schublade",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.headphones": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "headphones",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kopfhörer",
+              "tier": "full"
+            },
+            {
+              "text": "der Kopfhörer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.key-ring": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "key ring",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schlüsselanhänger",
+              "tier": "full"
+            },
+            {
+              "text": "Schlüsselring",
+              "tier": "partial"
+            },
+            {
+              "text": "der Schlüsselanhänger",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.magazine": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "magazine",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zeitschrift",
+              "tier": "full"
+            },
+            {
+              "text": "Magazin",
+              "tier": "full"
+            },
+            {
+              "text": "die Zeitschrift",
+              "tier": "full"
+            },
+            {
+              "text": "das Magazin",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.mobile-phone": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mobile phone",
+              "tier": "full"
+            },
+            {
+              "text": "mobile",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Handy",
+              "tier": "full"
+            },
+            {
+              "text": "Mobiltelefon",
+              "tier": "full"
+            },
+            {
+              "text": "das Handy",
+              "tier": "full"
+            },
+            {
+              "text": "das Mobiltelefon",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.price": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "price",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Preis",
+              "tier": "full"
+            },
+            {
+              "text": "der Preis",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.rule": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "rule",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Regel",
+              "tier": "full"
+            },
+            {
+              "text": "die Regel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.scooter": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "scooter",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Roller",
+              "tier": "full"
+            },
+            {
+              "text": "Tretroller",
+              "tier": "partial"
+            },
+            {
+              "text": "der Roller",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.sweets": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sweets",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Süßigkeiten",
+              "tier": "full"
+            },
+            {
+              "text": "Bonbons",
+              "tier": "partial"
+            },
+            {
+              "text": "die Süßigkeiten",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.tin": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tin",
+              "tier": "full"
+            },
+            {
+              "text": "can",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Dose",
+              "tier": "full"
+            },
+            {
+              "text": "die Dose",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u10.w.town": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "town",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stadt",
+              "tier": "full"
+            },
+            {
+              "text": "Ortschaft",
+              "tier": "partial"
+            },
+            {
+              "text": "die Stadt",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u11": {
+    "patch": {
+      "g1u11.w.bedtime": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bedtime",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schlafenszeit",
+              "tier": "full"
+            },
+            {
+              "text": "die Schlafenszeit",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.break": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "break",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Pause",
+              "tier": "full"
+            },
+            {
+              "text": "die Pause",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.bush": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bush",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Busch",
+              "tier": "full"
+            },
+            {
+              "text": "der Busch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.clock": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "clock",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Uhr",
+              "tier": "full"
+            },
+            {
+              "text": "die Uhr",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.clue": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "clue",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hinweis",
+              "tier": "full"
+            },
+            {
+              "text": "Tipp",
+              "tier": "full"
+            },
+            {
+              "text": "der Hinweis",
+              "tier": "full"
+            },
+            {
+              "text": "der Tipp",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.free-time": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "free time",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Freizeit",
+              "tier": "full"
+            },
+            {
+              "text": "die Freizeit",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.knock": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "knock",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Klopfen",
+              "tier": "full"
+            },
+            {
+              "text": "das Klopfen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.living-room": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "living room",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wohnzimmer",
+              "tier": "full"
+            },
+            {
+              "text": "das Wohnzimmer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.midday": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "midday",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mittag",
+              "tier": "full"
+            },
+            {
+              "text": "der Mittag",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.midnight": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "midnight",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mitternacht",
+              "tier": "full"
+            },
+            {
+              "text": "die Mitternacht",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.place": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "place",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zuhause",
+              "tier": "partial"
+            },
+            {
+              "text": "Wohnung",
+              "tier": "partial"
+            },
+            {
+              "text": "Ort",
+              "tier": "full"
+            },
+            {
+              "text": "der Ort",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.programme": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "programme",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sendung",
+              "tier": "full"
+            },
+            {
+              "text": "Programm",
+              "tier": "full"
+            },
+            {
+              "text": "die Sendung",
+              "tier": "full"
+            },
+            {
+              "text": "das Programm",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.road": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "road",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Straße",
+              "tier": "full"
+            },
+            {
+              "text": "Weg",
+              "tier": "partial"
+            },
+            {
+              "text": "die Straße",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.surprise": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "surprise",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Überraschung",
+              "tier": "full"
+            },
+            {
+              "text": "die Überraschung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.text-message": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "text message",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Textnachricht",
+              "tier": "full"
+            },
+            {
+              "text": "SMS",
+              "tier": "full"
+            },
+            {
+              "text": "die Textnachricht",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u11.w.weather": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "weather",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wetter",
+              "tier": "full"
+            },
+            {
+              "text": "das Wetter",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u12": {
+    "patch": {
+      "g1u12.w.alarm-clock": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "alarm clock",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wecker",
+              "tier": "full"
+            },
+            {
+              "text": "der Wecker",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.april": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "April",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "April",
+              "tier": "full"
+            },
+            {
+              "text": "der April",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.august": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "August",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "August",
+              "tier": "full"
+            },
+            {
+              "text": "der August",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.bathroom": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bathroom",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Badezimmer",
+              "tier": "full"
+            },
+            {
+              "text": "das Badezimmer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.bedroom": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bedroom",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schlafzimmer",
+              "tier": "full"
+            },
+            {
+              "text": "das Schlafzimmer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.candle": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "candle",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kerze",
+              "tier": "full"
+            },
+            {
+              "text": "die Kerze",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.cinema": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cinema",
+              "tier": "full"
+            },
+            {
+              "text": "movies",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kino",
+              "tier": "full"
+            },
+            {
+              "text": "das Kino",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.date": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "date",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Datum",
+              "tier": "full"
+            },
+            {
+              "text": "das Datum",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.december": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "December",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Dezember",
+              "tier": "full"
+            },
+            {
+              "text": "der Dezember",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.dining-room": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "dining room",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Esszimmer",
+              "tier": "full"
+            },
+            {
+              "text": "das Esszimmer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.february": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "February",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Februar",
+              "tier": "full"
+            },
+            {
+              "text": "der Februar",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.garage": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "garage",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Garage",
+              "tier": "full"
+            },
+            {
+              "text": "die Garage",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.garden": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "garden",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Garten",
+              "tier": "full"
+            },
+            {
+              "text": "der Garten",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.hall": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hall",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Flur",
+              "tier": "full"
+            },
+            {
+              "text": "Diele",
+              "tier": "partial"
+            },
+            {
+              "text": "der Flur",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.january": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "January",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Jänner",
+              "tier": "full"
+            },
+            {
+              "text": "der Jänner",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.july": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "July",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Juli",
+              "tier": "full"
+            },
+            {
+              "text": "der Juli",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.june": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "June",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Juni",
+              "tier": "full"
+            },
+            {
+              "text": "der Juni",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.kitchen": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "kitchen",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Küche",
+              "tier": "full"
+            },
+            {
+              "text": "die Küche",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.library": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "library",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bibliothek",
+              "tier": "full"
+            },
+            {
+              "text": "die Bibliothek",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.living-room": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "living room",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wohnzimmer",
+              "tier": "full"
+            },
+            {
+              "text": "das Wohnzimmer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.march": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "March",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "März",
+              "tier": "full"
+            },
+            {
+              "text": "der März",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.match": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "match",
+              "tier": "full"
+            },
+            {
+              "text": "game",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Match",
+              "tier": "full"
+            },
+            {
+              "text": "Spiel",
+              "tier": "partial"
+            },
+            {
+              "text": "das Match",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.may": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "May",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mai",
+              "tier": "full"
+            },
+            {
+              "text": "der Mai",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.month": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "month",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Monat",
+              "tier": "full"
+            },
+            {
+              "text": "der Monat",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.november": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "November",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "November",
+              "tier": "full"
+            },
+            {
+              "text": "der November",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.october": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "October",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Oktober",
+              "tier": "full"
+            },
+            {
+              "text": "der Oktober",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.piece": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "piece",
+              "tier": "full"
+            },
+            {
+              "text": "bit",
+              "tier": "partial"
+            },
+            {
+              "text": "slice",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stück",
+              "tier": "full"
+            },
+            {
+              "text": "das Stück",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.robbery": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "robbery",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Raubüberfall",
+              "tier": "full"
+            },
+            {
+              "text": "der Raubüberfall",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u12.w.september": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "September",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "September",
+              "tier": "full"
+            },
+            {
+              "text": "der September",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u13": {
+    "patch": {
+      "g1u13.w.accident": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "accident",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Unfall",
+              "tier": "full"
+            },
+            {
+              "text": "der Unfall",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.adventure": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "adventure",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Abenteuer",
+              "tier": "full"
+            },
+            {
+              "text": "Erlebnis",
+              "tier": "full"
+            },
+            {
+              "text": "das Abenteuer",
+              "tier": "full"
+            },
+            {
+              "text": "das Erlebnis",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.ambulance": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ambulance",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Rettungswagen",
+              "tier": "full"
+            },
+            {
+              "text": "Krankenwagen",
+              "tier": "full"
+            },
+            {
+              "text": "der Rettungswagen",
+              "tier": "full"
+            },
+            {
+              "text": "der Krankenwagen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.backpack": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "backpack",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Rucksack",
+              "tier": "full"
+            },
+            {
+              "text": "der Rucksack",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.button": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "button",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Knopf",
+              "tier": "full"
+            },
+            {
+              "text": "Schalter",
+              "tier": "full"
+            },
+            {
+              "text": "Taste",
+              "tier": "partial"
+            },
+            {
+              "text": "der Knopf",
+              "tier": "full"
+            },
+            {
+              "text": "der Schalter",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.character": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "character",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Figur",
+              "tier": "full"
+            },
+            {
+              "text": "Person",
+              "tier": "full"
+            },
+            {
+              "text": "Charakter",
+              "tier": "partial"
+            },
+            {
+              "text": "die Figur",
+              "tier": "full"
+            },
+            {
+              "text": "die Person",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.cloud": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cloud",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wolke",
+              "tier": "full"
+            },
+            {
+              "text": "die Wolke",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.coastguard": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "coastguard",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Küstenwache",
+              "tier": "full"
+            },
+            {
+              "text": "die Küstenwache",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.country": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "country",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Land",
+              "tier": "full"
+            },
+            {
+              "text": "Staat",
+              "tier": "full"
+            },
+            {
+              "text": "das Land",
+              "tier": "full"
+            },
+            {
+              "text": "der Staat",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.crime": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "crime",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Verbrechen",
+              "tier": "full"
+            },
+            {
+              "text": "das Verbrechen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.democracy": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "democracy",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Demokratie",
+              "tier": "full"
+            },
+            {
+              "text": "die Demokratie",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.earth": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "Earth",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Erde",
+              "tier": "full"
+            },
+            {
+              "text": "die Erde",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.fire": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fire",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Feuer",
+              "tier": "full"
+            },
+            {
+              "text": "das Feuer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.fire-brigade": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fire brigade",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Feuerwehr",
+              "tier": "full"
+            },
+            {
+              "text": "die Feuerwehr",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.forest": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "forest",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wald",
+              "tier": "full"
+            },
+            {
+              "text": "der Wald",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.helicopter": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "helicopter",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hubschrauber",
+              "tier": "full"
+            },
+            {
+              "text": "Heli",
+              "tier": "partial"
+            },
+            {
+              "text": "der Hubschrauber",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.introduction": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "introduction",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Einleitung",
+              "tier": "full"
+            },
+            {
+              "text": "die Einleitung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.jetpack": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "jetpack",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Jetpack",
+              "tier": "full"
+            },
+            {
+              "text": "Raketenrucksack",
+              "tier": "full"
+            },
+            {
+              "text": "das Jetpack",
+              "tier": "full"
+            },
+            {
+              "text": "der Raketenrucksack",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.medicine": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "medicine",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Medikament",
+              "tier": "full"
+            },
+            {
+              "text": "Medizin",
+              "tier": "full"
+            },
+            {
+              "text": "Arznei",
+              "tier": "partial"
+            },
+            {
+              "text": "das Medikament",
+              "tier": "full"
+            },
+            {
+              "text": "die Medizin",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.mountain-rescue": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mountain rescue",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bergrettung",
+              "tier": "full"
+            },
+            {
+              "text": "die Bergrettung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.police": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "police",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Polizei",
+              "tier": "full"
+            },
+            {
+              "text": "die Polizei",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.rescue-team": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "rescue team",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Rettungsteam",
+              "tier": "full"
+            },
+            {
+              "text": "Rettungsmannschaft",
+              "tier": "partial"
+            },
+            {
+              "text": "das Rettungsteam",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.rock": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "rock",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stein",
+              "tier": "full"
+            },
+            {
+              "text": "Fels",
+              "tier": "partial"
+            },
+            {
+              "text": "Felsen",
+              "tier": "partial"
+            },
+            {
+              "text": "der Stein",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.screen": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "screen",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bildschirm",
+              "tier": "full"
+            },
+            {
+              "text": "der Bildschirm",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.sky": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sky",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Himmel",
+              "tier": "full"
+            },
+            {
+              "text": "der Himmel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.space": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "space",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Weltall",
+              "tier": "full"
+            },
+            {
+              "text": "Weltraum",
+              "tier": "full"
+            },
+            {
+              "text": "All",
+              "tier": "partial"
+            },
+            {
+              "text": "das Weltall",
+              "tier": "full"
+            },
+            {
+              "text": "der Weltraum",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.storm": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "storm",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sturm",
+              "tier": "full"
+            },
+            {
+              "text": "Unwetter",
+              "tier": "partial"
+            },
+            {
+              "text": "der Sturm",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u13.w.storm-2": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "storm",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sturm",
+              "tier": "full"
+            },
+            {
+              "text": "Unwetter",
+              "tier": "partial"
+            },
+            {
+              "text": "der Sturm",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u14": {
+    "patch": {
+      "g1u14.w.adventure": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "adventure",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Abenteuer",
+              "tier": "full"
+            },
+            {
+              "text": "das Abenteuer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.adventure-story": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "adventure story",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Abenteuergeschichte",
+              "tier": "full"
+            },
+            {
+              "text": "die Abenteuergeschichte",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.comedy": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "comedy",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Komödie",
+              "tier": "full"
+            },
+            {
+              "text": "die Komödie",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.detective-story": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "detective story",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kriminalgeschichte",
+              "tier": "full"
+            },
+            {
+              "text": "Krimi",
+              "tier": "full"
+            },
+            {
+              "text": "die Kriminalgeschichte",
+              "tier": "full"
+            },
+            {
+              "text": "der Krimi",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.drama-series": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "drama series",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Dramaserie",
+              "tier": "full"
+            },
+            {
+              "text": "die Dramaserie",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.episode": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "episode",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Episode",
+              "tier": "full"
+            },
+            {
+              "text": "Folge",
+              "tier": "full"
+            },
+            {
+              "text": "die Episode",
+              "tier": "full"
+            },
+            {
+              "text": "die Folge",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.fantasy-film": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fantasy film",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fantasyfilm",
+              "tier": "full"
+            },
+            {
+              "text": "der Fantasyfilm",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.fantasy-story": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fantasy story",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fantasygeschichte",
+              "tier": "full"
+            },
+            {
+              "text": "die Fantasygeschichte",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.friendship": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "friendship",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Freundschaft",
+              "tier": "full"
+            },
+            {
+              "text": "die Freundschaft",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.headline": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "headline",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schlagzeile",
+              "tier": "full"
+            },
+            {
+              "text": "die Schlagzeile",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.horror-story": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "horror story",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Horrorgeschichte",
+              "tier": "full"
+            },
+            {
+              "text": "Gruselgeschichte",
+              "tier": "partial"
+            },
+            {
+              "text": "die Horrorgeschichte",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.lake": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "lake",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "See",
+              "tier": "full"
+            },
+            {
+              "text": "der See",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.music-video": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "music video",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Musikvideo",
+              "tier": "full"
+            },
+            {
+              "text": "das Musikvideo",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.nature-programme": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "nature programme",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Naturdokumentation",
+              "tier": "full"
+            },
+            {
+              "text": "Tierdokumentation",
+              "tier": "partial"
+            },
+            {
+              "text": "die Naturdokumentation",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.poem": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "poem",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gedicht",
+              "tier": "full"
+            },
+            {
+              "text": "das Gedicht",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.power": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "power",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kraft",
+              "tier": "full"
+            },
+            {
+              "text": "die Kraft",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.quiz-show": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "quiz show",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Quizshow",
+              "tier": "full"
+            },
+            {
+              "text": "die Quizshow",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.remote-control": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "remote control",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fernbedienung",
+              "tier": "full"
+            },
+            {
+              "text": "die Fernbedienung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.romantic-film": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "romantic film",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Liebesfilm",
+              "tier": "full"
+            },
+            {
+              "text": "der Liebesfilm",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.romantic-story": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "romantic story",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Liebesgeschichte",
+              "tier": "full"
+            },
+            {
+              "text": "die Liebesgeschichte",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.skin": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "skin",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Haut",
+              "tier": "full"
+            },
+            {
+              "text": "die Haut",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.sports-programme": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sports programme",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sportsendung",
+              "tier": "full"
+            },
+            {
+              "text": "die Sportsendung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.spot": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "spot",
+              "tier": "full"
+            },
+            {
+              "text": "spots",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Punkt",
+              "tier": "full"
+            },
+            {
+              "text": "Fleck",
+              "tier": "partial"
+            },
+            {
+              "text": "der Punkt",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.voice": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "voice",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stimme",
+              "tier": "full"
+            },
+            {
+              "text": "die Stimme",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u14.w.weekend": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "weekend",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wochenende",
+              "tier": "full"
+            },
+            {
+              "text": "das Wochenende",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g1-u15": {
+    "patch": {
+      "g1u15.w.aunt": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "aunt",
+              "tier": "full"
+            },
+            {
+              "text": "aunty",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Tante",
+              "tier": "full"
+            },
+            {
+              "text": "die Tante",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u15.w.beach": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "beach",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Strand",
+              "tier": "full"
+            },
+            {
+              "text": "der Strand",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u15.w.board-game": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "board game",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Brettspiel",
+              "tier": "full"
+            },
+            {
+              "text": "das Brettspiel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u15.w.campsite": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "campsite",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Campingplatz",
+              "tier": "full"
+            },
+            {
+              "text": "der Campingplatz",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u15.w.hippo": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hippo",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Nilpferd",
+              "tier": "full"
+            },
+            {
+              "text": "das Nilpferd",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u15.w.holiday": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "holiday",
+              "tier": "full"
+            },
+            {
+              "text": "holidays",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Urlaub",
+              "tier": "full"
+            },
+            {
+              "text": "Ferien",
+              "tier": "full"
+            },
+            {
+              "text": "der Urlaub",
+              "tier": "full"
+            },
+            {
+              "text": "die Ferien",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u15.w.national-park": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "national park",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Nationalpark",
+              "tier": "full"
+            },
+            {
+              "text": "der Nationalpark",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u15.w.parents": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "parents",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Eltern",
+              "tier": "full"
+            },
+            {
+              "text": "die Eltern",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u15.w.plane": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "plane",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Flugzeug",
+              "tier": "full"
+            },
+            {
+              "text": "das Flugzeug",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g1u15.w.summer": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "summer",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sommer",
+              "tier": "full"
+            },
+            {
+              "text": "der Sommer",
               "tier": "full"
             }
           ]

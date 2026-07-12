@@ -106,6 +106,20 @@
       "contentHash": "ca33d0b51fc1b0c8c3ed6892676c908a0525d2e473dc8ba918aa5e81458bd4e6",
       "note": "round 1: 102 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T07:41:45.987Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "b513380a6603918f1538cf6f00d2c416046a59878592b22fae762f62da488902",
+      "note": "gen ingest: 49 vocab + 54 grammar item(s); draft 69ef5e4fa000",
+      "at": "2026-07-12T10:10:10.480Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "b513380a6603918f1538cf6f00d2c416046a59878592b22fae762f62da488902",
+      "note": "trusted patch (mechanical): 11 answer-pool fix(es) [g1u06.w.city, g1u06.w.market, g1u06.w.mirror, g1u06.w.office, g1u06.w.park, g1u06.w.river, g1u06.w.street, g1u06.w.street-2, g1u06.w.supermarket, g1u06.w.tree, g1u06.w.woods] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:10:10.482Z"
     }
   ]
 }

@@ -120,6 +120,20 @@
       "contentHash": "5c0bbc31ed04683727aaa058080a7d308097c58ac2391c1eedfdb9f0c8e2fe3d",
       "note": "round 1: 83 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T10:12:55.650Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "441a92de4970efe87945a9b5a2556b68698089d06cdbad2914484f0984404bb6",
+      "note": "gen ingest: 44 vocab + 63 grammar item(s); draft b7d0371510cb",
+      "at": "2026-07-12T10:10:11.706Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "441a92de4970efe87945a9b5a2556b68698089d06cdbad2914484f0984404bb6",
+      "note": "trusted patch (mechanical): 13 answer-pool fix(es) [g1u10.w.changing-room, g1u10.w.computer-game, g1u10.w.drawer, g1u10.w.headphones, g1u10.w.key-ring, g1u10.w.magazine, g1u10.w.mobile-phone, g1u10.w.price, g1u10.w.rule, g1u10.w.scooter, g1u10.w.sweets, g1u10.w.tin, g1u10.w.town] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:10:11.708Z"
     }
   ]
 }

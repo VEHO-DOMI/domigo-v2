@@ -22,6 +22,17 @@ content fixes — one bounded wave per PR. Pairs with the curation standard
 > (audit R4 7→0, validate green, all units still `approved`). The manual flow below still
 > governs content-**authored** fixes (rewrites, ambiguous carriers) that genuinely need lens
 > review — those go through gen → verify → review-doc → `ok` verdict → ingest-review.
+>
+> **Batch sizing for the mechanical class (amended 2026-07-12).** The ≤25-items / one-unit bound
+> (step 1) was written when each fix might carry judgment. Under decision **B**, R1 article-adds and
+> R4 removals are mechanical (pre-approved, zero teaching judgment), so per-unit PRs (~50 for R1) are
+> pure merge overhead — the gate is blind-solve + audit + your merge, not a per-item read. For this
+> class we batch **one GRADE per PR**. The drift alarm is preserved *inside* the wave: every unit's
+> German genders are cross-checked by **≥3 independent fresh-context grammar subagents (unanimity
+> required)** + a manual audit of the risk subset (Austrian / plural / homograph / loanword) + an
+> engine grade of **every** added form, with wave stats in the PR body. R1 wave 1 = g1-u01
+> (calibration, #133); R1 wave 2 = the rest of grade 1 (14 units / 305 items). Prose fixes stay
+> ≤25/PR (they carry judgment). This bound only relaxes for the machine-verified mechanical class.
 
 ## The wave loop (per PR)
 

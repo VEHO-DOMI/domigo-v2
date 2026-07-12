@@ -1171,7 +1171,7 @@
     },
     {
       "id": "g1u10.w.changing-room",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1226,6 +1226,10 @@
           {
             "text": "Umkleide",
             "tier": "partial"
+          },
+          {
+            "text": "die Umkleidekabine",
+            "tier": "full"
           }
         ]
       },
@@ -1250,7 +1254,7 @@
     },
     {
       "id": "g1u10.w.computer-game",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1300,6 +1304,10 @@
         "enToDe": [
           {
             "text": "Computerspiel",
+            "tier": "full"
+          },
+          {
+            "text": "das Computerspiel",
             "tier": "full"
           }
         ]
@@ -1495,7 +1503,7 @@
     },
     {
       "id": "g1u10.w.drawer",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1545,6 +1553,10 @@
         "enToDe": [
           {
             "text": "Schublade",
+            "tier": "full"
+          },
+          {
+            "text": "die Schublade",
             "tier": "full"
           }
         ]
@@ -1808,7 +1820,7 @@
     },
     {
       "id": "g1u10.w.headphones",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1858,6 +1870,10 @@
         "enToDe": [
           {
             "text": "Kopfhörer",
+            "tier": "full"
+          },
+          {
+            "text": "der Kopfhörer",
             "tier": "full"
           }
         ]
@@ -2155,7 +2171,7 @@
     },
     {
       "id": "g1u10.w.key-ring",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2210,6 +2226,10 @@
           {
             "text": "Schlüsselring",
             "tier": "partial"
+          },
+          {
+            "text": "der Schlüsselanhänger",
+            "tier": "full"
           }
         ]
       },
@@ -2229,7 +2249,7 @@
     },
     {
       "id": "g1u10.w.magazine",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2284,6 +2304,14 @@
           {
             "text": "Magazin",
             "tier": "full"
+          },
+          {
+            "text": "die Zeitschrift",
+            "tier": "full"
+          },
+          {
+            "text": "das Magazin",
+            "tier": "full"
           }
         ]
       },
@@ -2303,7 +2331,7 @@
     },
     {
       "id": "g1u10.w.mobile-phone",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2369,6 +2397,14 @@
           },
           {
             "text": "Mobiltelefon",
+            "tier": "full"
+          },
+          {
+            "text": "das Handy",
+            "tier": "full"
+          },
+          {
+            "text": "das Mobiltelefon",
             "tier": "full"
           }
         ]
@@ -2634,7 +2670,7 @@
     },
     {
       "id": "g1u10.w.price",
-      "rev": 4,
+      "rev": 5,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2685,6 +2721,10 @@
           {
             "text": "Preis",
             "tier": "full"
+          },
+          {
+            "text": "der Preis",
+            "tier": "full"
           }
         ]
       },
@@ -2714,7 +2754,7 @@
     },
     {
       "id": "g1u10.w.rule",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2765,6 +2805,10 @@
           {
             "text": "Regel",
             "tier": "full"
+          },
+          {
+            "text": "die Regel",
+            "tier": "full"
           }
         ]
       },
@@ -2794,7 +2838,7 @@
     },
     {
       "id": "g1u10.w.scooter",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2849,6 +2893,10 @@
           {
             "text": "Tretroller",
             "tier": "partial"
+          },
+          {
+            "text": "der Roller",
+            "tier": "full"
           }
         ]
       },
@@ -2980,7 +3028,7 @@
     },
     {
       "id": "g1u10.w.sweets",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3035,6 +3083,10 @@
           {
             "text": "Bonbons",
             "tier": "partial"
+          },
+          {
+            "text": "die Süßigkeiten",
+            "tier": "full"
           }
         ]
       },
@@ -3268,7 +3320,7 @@
     },
     {
       "id": "g1u10.w.tin",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3322,6 +3374,10 @@
         "enToDe": [
           {
             "text": "Dose",
+            "tier": "full"
+          },
+          {
+            "text": "die Dose",
             "tier": "full"
           }
         ]
@@ -3527,7 +3583,7 @@
     },
     {
       "id": "g1u10.w.town",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3582,6 +3638,10 @@
           {
             "text": "Ortschaft",
             "tier": "partial"
+          },
+          {
+            "text": "die Stadt",
+            "tier": "full"
           }
         ]
       },

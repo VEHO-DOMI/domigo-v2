@@ -74,7 +74,7 @@
     },
     {
       "id": "g1u05.w.can",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -132,6 +132,10 @@
         "enToDe": [
           {
             "text": "Dose",
+            "tier": "full"
+          },
+          {
+            "text": "die Dose",
             "tier": "full"
           }
         ]
@@ -226,7 +230,7 @@
     },
     {
       "id": "g1u05.w.concert",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -276,6 +280,10 @@
         "enToDe": [
           {
             "text": "Konzert",
+            "tier": "full"
+          },
+          {
+            "text": "das Konzert",
             "tier": "full"
           }
         ]
@@ -453,7 +461,7 @@
     },
     {
       "id": "g1u05.w.drums",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -504,6 +512,10 @@
           {
             "text": "Schlagzeug",
             "tier": "full"
+          },
+          {
+            "text": "das Schlagzeug",
+            "tier": "full"
           }
         ]
       },
@@ -528,7 +540,7 @@
     },
     {
       "id": "g1u05.w.economy",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -579,6 +591,10 @@
           {
             "text": "Wirtschaft",
             "tier": "full"
+          },
+          {
+            "text": "die Wirtschaft",
+            "tier": "full"
           }
         ]
       },
@@ -598,7 +614,7 @@
     },
     {
       "id": "g1u05.w.guitar",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -648,6 +664,10 @@
         "enToDe": [
           {
             "text": "Gitarre",
+            "tier": "full"
+          },
+          {
+            "text": "die Gitarre",
             "tier": "full"
           }
         ]
@@ -738,7 +758,7 @@
     },
     {
       "id": "g1u05.w.hospital",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -792,6 +812,14 @@
           },
           {
             "text": "Spital",
+            "tier": "full"
+          },
+          {
+            "text": "das Krankenhaus",
+            "tier": "full"
+          },
+          {
+            "text": "das Spital",
             "tier": "full"
           }
         ]
@@ -1110,7 +1138,7 @@
     },
     {
       "id": "g1u05.w.job",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1173,6 +1201,18 @@
           {
             "text": "Job",
             "tier": "full"
+          },
+          {
+            "text": "die Arbeit",
+            "tier": "full"
+          },
+          {
+            "text": "die Aufgabe",
+            "tier": "full"
+          },
+          {
+            "text": "der Job",
+            "tier": "full"
           }
         ]
       },
@@ -1186,7 +1226,7 @@
     },
     {
       "id": "g1u05.w.keyboard",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1236,6 +1276,10 @@
         "enToDe": [
           {
             "text": "Keyboard",
+            "tier": "full"
+          },
+          {
+            "text": "das Keyboard",
             "tier": "full"
           }
         ]
@@ -1554,7 +1598,7 @@
     },
     {
       "id": "g1u05.w.pound",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1613,6 +1657,10 @@
           {
             "text": "Pfund",
             "tier": "full"
+          },
+          {
+            "text": "das Pfund",
+            "tier": "full"
           }
         ]
       },
@@ -1626,7 +1674,7 @@
     },
     {
       "id": "g1u05.w.profit",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1681,6 +1729,14 @@
           {
             "text": "Profit",
             "tier": "full"
+          },
+          {
+            "text": "der Gewinn",
+            "tier": "full"
+          },
+          {
+            "text": "der Profit",
+            "tier": "full"
           }
         ]
       },
@@ -1700,7 +1756,7 @@
     },
     {
       "id": "g1u05.w.saxophone",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1750,6 +1806,10 @@
         "enToDe": [
           {
             "text": "Saxophon",
+            "tier": "full"
+          },
+          {
+            "text": "das Saxophon",
             "tier": "full"
           }
         ]
@@ -1838,7 +1898,7 @@
     },
     {
       "id": "g1u05.w.school-canteen",
-      "rev": 4,
+      "rev": 5,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1901,6 +1961,10 @@
           {
             "text": "Kantine",
             "tier": "partial"
+          },
+          {
+            "text": "die Schulkantine",
+            "tier": "full"
           }
         ]
       },
@@ -1988,7 +2052,7 @@
     },
     {
       "id": "g1u05.w.sister",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2038,6 +2102,10 @@
         "enToDe": [
           {
             "text": "Schwester",
+            "tier": "full"
+          },
+          {
+            "text": "die Schwester",
             "tier": "full"
           }
         ]
@@ -2120,7 +2188,7 @@
     },
     {
       "id": "g1u05.w.table",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2170,6 +2238,10 @@
         "enToDe": [
           {
             "text": "Tisch",
+            "tier": "full"
+          },
+          {
+            "text": "der Tisch",
             "tier": "full"
           }
         ]
@@ -3148,7 +3220,7 @@
     },
     {
       "id": "g1u05.w.tongue",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3199,6 +3271,10 @@
           {
             "text": "Zunge",
             "tier": "full"
+          },
+          {
+            "text": "die Zunge",
+            "tier": "full"
           }
         ]
       },
@@ -3212,7 +3288,7 @@
     },
     {
       "id": "g1u05.w.uncle",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3262,6 +3338,10 @@
         "enToDe": [
           {
             "text": "Onkel",
+            "tier": "full"
+          },
+          {
+            "text": "der Onkel",
             "tier": "full"
           }
         ]
