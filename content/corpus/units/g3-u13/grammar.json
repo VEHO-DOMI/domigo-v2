@@ -256,7 +256,7 @@
       "id": "g3u13.gi.second-conditional.ec.004",
       "structureId": "g3u13.s.second-conditional",
       "format": "error-correction",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -283,6 +283,10 @@
         {
           "text": "were",
           "tier": "partial"
+        },
+        {
+          "text": "If I were you, I wouldn't worry so much.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -520,7 +524,7 @@
       "id": "g3u13.gi.second-conditional.gf.005",
       "structureId": "g3u13.s.second-conditional",
       "format": "gap-fill",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -550,6 +554,10 @@
         },
         {
           "text": "didn't live | 'd ride",
+          "tier": "full"
+        },
+        {
+          "text": "did not live | 'd ride",
           "tier": "full"
         }
       ],
@@ -696,7 +704,7 @@
       "id": "g3u13.gi.second-conditional.gf.009",
       "structureId": "g3u13.s.second-conditional",
       "format": "gap-fill",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -730,6 +738,14 @@
         },
         {
           "text": "weren't | 'd play",
+          "tier": "full"
+        },
+        {
+          "text": "was not | would play",
+          "tier": "full"
+        },
+        {
+          "text": "were not | 'd play",
           "tier": "full"
         }
       ],
@@ -1294,7 +1310,7 @@
       "id": "g3u13.gi.second-conditional.tf.002",
       "structureId": "g3u13.s.second-conditional",
       "format": "transformation",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1324,6 +1340,18 @@
         },
         {
           "text": "If she were not ill, she'd be at school.",
+          "tier": "full"
+        },
+        {
+          "text": "If she weren't ill, she would be at school.",
+          "tier": "full"
+        },
+        {
+          "text": "If she was not ill, she would be at school.",
+          "tier": "full"
+        },
+        {
+          "text": "If she weren't ill, she'd be at school.",
           "tier": "full"
         }
       ],

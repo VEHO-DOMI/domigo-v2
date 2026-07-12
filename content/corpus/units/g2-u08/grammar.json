@@ -322,7 +322,7 @@
       "id": "g2u08.gi.past-time-markers.ec.004",
       "structureId": "g2u08.s.past-time-markers",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -344,6 +344,10 @@
       "answers": [
         {
           "text": "She didn't take a photograph of the UFO.",
+          "tier": "full"
+        },
+        {
+          "text": "She did not take a photograph of the UFO.",
           "tier": "full"
         }
       ],

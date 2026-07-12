@@ -73,6 +73,17 @@ BUT only where the contraction is **incidental**. It is NOT a blind sweep like R
   (`canonA(twin) === expandContractions(answer)`), then a fresh-context subagent reviews every twin
   for grammar + pedagogy (does it break the exercise?), then each twin is graded `correct` through
   `gradeGrammar`. Grade 1 exemplar: 27 twins added, 15 drills skipped, R1→0, g1 R2 critical→0.
+- **Two more false-positive classes (found replicating to g2/g3/g4, independent review caught them):**
+  (a) **Inverted negatives** — a question tag or negative question ("…, isn't she?", "Isn't she coming?")
+  has NO grammatical expansion ("is she not?" is archaic; "is not she?" is wrong). `hasInvertedContraction`
+  (a `n't` followed by a subject pronoun) guards both the builder and the audit's forward rule. g4's
+  question-tag unit alone was 42 would-be-wrong twins. (b) **Level-gate (V-5)** — a reverse contraction
+  can be an above-level token for its unit ("we'll"/"he'll"/"hadn't" not in the unit's allowed vocab);
+  adding it fails `content validate` V-5. `build-r2` now runs each twin through the unit's
+  `buildAllowedMatcher` and skips any that introduces an unknown token. These + the "can not"/"cannot"
+  spelling edge leave ~13 honest residuals that need a gloss (content-authoring, out of mechanical scope).
+  Result across g2/g3/g4: 108 twins, R2 critical 336→13. **Lesson: an independent per-grade review is
+  load-bearing here — my own eyeball checked the contract direction but missed the tag-expansion class.**
 
 ## The wave loop (per PR)
 

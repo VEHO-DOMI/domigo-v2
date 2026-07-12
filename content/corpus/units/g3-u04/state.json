@@ -141,6 +141,20 @@
       "contentHash": "4d1ca9f9be1a89801d43248d880732bdeecc69f2b37877c9a7c6319f6cbf173e",
       "note": "trusted patch (mechanical): 13 answer-pool fix(es) [g3u04.w.audience, g3u04.w.bite, g3u04.w.death, g3u04.w.environment, g3u04.w.injury, g3u04.w.lizard, g3u04.w.poison, g3u04.w.polar-bear, g3u04.w.rabies, g3u04.w.seal, g3u04.w.shape, g3u04.w.swan, g3u04.w.victim] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:50:23.997Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "1ecb4043ac382334c598f0c2bded4e265ae990f2aed4620b0417cabbd176814e",
+      "note": "gen ingest: 46 vocab + 44 grammar item(s); draft bc72929b0266",
+      "at": "2026-07-12T12:03:29.442Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "1ecb4043ac382334c598f0c2bded4e265ae990f2aed4620b0417cabbd176814e",
+      "note": "trusted patch (mechanical): 2 answer-pool fix(es) [g3u04.gi.comparative-intensifiers.tf.003, g3u04.gi.comparative-intensifiers.tr.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:29.444Z"
     }
   ]
 }

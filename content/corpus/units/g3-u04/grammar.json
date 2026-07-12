@@ -1774,7 +1774,7 @@
       "id": "g3u04.gi.comparative-intensifiers.tf.003",
       "structureId": "g3u04.s.comparative-intensifiers",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1796,6 +1796,10 @@
       "answers": [
         {
           "text": "A cat is not nearly as dangerous as a lion.",
+          "tier": "full"
+        },
+        {
+          "text": "A cat isn't nearly as dangerous as a lion.",
           "tier": "full"
         }
       ],
@@ -1986,7 +1990,7 @@
       "id": "g3u04.gi.comparative-intensifiers.tr.002",
       "structureId": "g3u04.s.comparative-intensifiers",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2012,6 +2016,10 @@
         },
         {
           "text": "We've got less homework than last week.",
+          "tier": "full"
+        },
+        {
+          "text": "We have got less homework than last week.",
           "tier": "full"
         }
       ],

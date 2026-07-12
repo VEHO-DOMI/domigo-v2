@@ -202,7 +202,7 @@
       "id": "g3u01.gi.present-simple.ec.002",
       "structureId": "g3u01.s.present-simple",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -237,6 +237,10 @@
         {
           "text": "doesn't like",
           "tier": "partial"
+        },
+        {
+          "text": "He does not like pop music",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -382,7 +386,7 @@
       "id": "g3u01.gi.present-simple.gf.003",
       "structureId": "g3u01.s.present-simple",
       "format": "gap-fill",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -404,6 +408,10 @@
       "answers": [
         {
           "text": "doesn't",
+          "tier": "full"
+        },
+        {
+          "text": "does not",
           "tier": "full"
         }
       ],

@@ -290,7 +290,7 @@
       "id": "g2u09.gi.one-ones.ff.001",
       "structureId": "g2u09.s.one-ones",
       "format": "free-form",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -321,6 +321,10 @@
         {
           "text": "I'd like the cheese one.",
           "tier": "partial"
+        },
+        {
+          "text": "Can I have the cheese one? I do not like ham.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -964,7 +968,7 @@
       "id": "g2u09.gi.one-ones.tf.001",
       "structureId": "g2u09.s.one-ones",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -986,6 +990,10 @@
       "answers": [
         {
           "text": "I don't want the red one. I want the green one.",
+          "tier": "full"
+        },
+        {
+          "text": "I do not want the red one. I want the green one.",
           "tier": "full"
         }
       ],
@@ -1273,7 +1281,7 @@
       "id": "g2u09.gi.some-any.ec.001",
       "structureId": "g2u09.s.some-any",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1300,6 +1308,10 @@
         {
           "text": "any",
           "tier": "partial"
+        },
+        {
+          "text": "I do not have any money.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -1409,7 +1421,7 @@
       "id": "g2u09.gi.some-any.ff.001",
       "structureId": "g2u09.s.some-any",
       "format": "free-form",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1440,6 +1452,14 @@
         {
           "text": "There are some grapes.",
           "tier": "partial"
+        },
+        {
+          "text": "There are some grapes, but there are not any peaches.",
+          "tier": "full"
+        },
+        {
+          "text": "There are some plums and some pears, but there are not any strawberries.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -2137,7 +2157,7 @@
       "id": "g2u09.gi.some-any.tr.002",
       "structureId": "g2u09.s.some-any",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2167,6 +2187,18 @@
         },
         {
           "text": "Are there any grapes? — No, there aren't any.",
+          "tier": "full"
+        },
+        {
+          "text": "Are there any grapes? — No, there are not any grapes.",
+          "tier": "full"
+        },
+        {
+          "text": "Are there any grapes? No, there are not any grapes.",
+          "tier": "full"
+        },
+        {
+          "text": "Are there any grapes? — No, there are not any.",
           "tier": "full"
         }
       ],

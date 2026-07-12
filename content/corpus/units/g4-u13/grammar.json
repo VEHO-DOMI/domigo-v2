@@ -290,7 +290,7 @@
       "id": "g4u13.gi.word-formation.ec.005",
       "structureId": "g4u13.s.word-formation",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -317,6 +317,10 @@
         {
           "text": "disagree",
           "tier": "partial"
+        },
+        {
+          "text": "I completely disagree with you – you're totally wrong!",
+          "tier": "full"
         }
       ],
       "direction": null,

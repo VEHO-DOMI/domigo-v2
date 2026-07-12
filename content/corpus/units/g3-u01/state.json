@@ -134,6 +134,20 @@
       "contentHash": "2d0cb5078d21169fb34ebd072686f7b3592048da6b1ece8138da3e0079ab6d3f",
       "note": "trusted patch (mechanical): 5 answer-pool fix(es) [g3u01.w.audition, g3u01.w.flute, g3u01.w.lyrics, g3u01.w.suit, g3u01.w.tune] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:50:23.084Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "01a135a68231edda1935cf2fc0e0e3af6952d6b5da0198efa95ebab3a5ee7e87",
+      "note": "gen ingest: 40 vocab + 24 grammar item(s); draft bf6162edaf7a",
+      "at": "2026-07-12T12:03:28.821Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "01a135a68231edda1935cf2fc0e0e3af6952d6b5da0198efa95ebab3a5ee7e87",
+      "note": "trusted patch (mechanical): 2 answer-pool fix(es) [g3u01.gi.present-simple.ec.002, g3u01.gi.present-simple.gf.003] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:28.823Z"
     }
   ]
 }

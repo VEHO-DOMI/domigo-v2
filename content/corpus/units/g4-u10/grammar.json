@@ -431,7 +431,7 @@
       "id": "g4u10.gi.third-conditional.ec.007",
       "structureId": "g4u10.s.third-conditional",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -462,6 +462,10 @@
         {
           "text": "had not missed",
           "tier": "partial"
+        },
+        {
+          "text": "If he had not missed the bus, he would have arrived on time.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -2140,7 +2144,7 @@
       "id": "g4u10.gi.third-conditional.tf.007",
       "structureId": "g4u10.s.third-conditional",
       "format": "transformation",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2163,6 +2167,10 @@
         {
           "text": "If she hadn't missed the train, she wouldn't have arrived late.",
           "tier": "full"
+        },
+        {
+          "text": "If she had not missed the train, she would not have arrived late.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -2180,7 +2188,7 @@
       "id": "g4u10.gi.third-conditional.tf.008",
       "structureId": "g4u10.s.third-conditional",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2202,6 +2210,10 @@
       "answers": [
         {
           "text": "If the company had paid a fair price, Sofia's dad wouldn't have sold the farm.",
+          "tier": "full"
+        },
+        {
+          "text": "If the company had paid a fair price, Sofia's dad would not have sold the farm.",
           "tier": "full"
         }
       ],

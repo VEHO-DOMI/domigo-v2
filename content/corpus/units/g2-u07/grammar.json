@@ -352,7 +352,7 @@
       "id": "g2u07.gi.going-to-negative.tf.001",
       "structureId": "g2u07.s.going-to-negative",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -383,6 +383,10 @@
         {
           "text": "He isn't going to do the shopping today.",
           "tier": "full"
+        },
+        {
+          "text": "He is not going to do the shopping today.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -400,7 +404,7 @@
       "id": "g2u07.gi.going-to-negative.tr.001",
       "structureId": "g2u07.s.going-to-negative",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -430,6 +434,10 @@
         },
         {
           "text": "I'm not going to do my homework today",
+          "tier": "full"
+        },
+        {
+          "text": "I am not going to do my homework today",
           "tier": "full"
         }
       ],

@@ -120,6 +120,20 @@
       "contentHash": "d0b36d5907e75d84ce341bd664cd62f131ffb263d3f946ca15e35cbf3d98a646",
       "note": "trusted patch (mechanical): 6 answer-pool fix(es) [g4u11.w.anthology, g4u11.w.fiction, g4u11.w.non-fiction, g4u11.w.poetry, g4u11.w.reference-2, g4u11.w.spot-of-bother] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T11:06:25.119Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "25c3279d2e33dde4868e4cdecba8b71ac75a7303af5b2c52fc87801b868ca555",
+      "note": "gen ingest: 33 vocab + 64 grammar item(s); draft 8b4ec305c42d",
+      "at": "2026-07-12T12:03:33.153Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "25c3279d2e33dde4868e4cdecba8b71ac75a7303af5b2c52fc87801b868ca555",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g4u11.gi.reflexive-pronouns.tr.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:03:33.155Z"
     }
   ]
 }

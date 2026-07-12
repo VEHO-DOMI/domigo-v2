@@ -1141,6 +1141,26 @@
             }
           ]
         }
+      },
+      "g4u11.gi.reflexive-pronouns.tr.002": {
+        "answers": [
+          {
+            "text": "Be careful with the knife! Don't cut yourself!",
+            "tier": "full"
+          },
+          {
+            "text": "Be careful with the knife! Don't cut yourself.",
+            "tier": "full"
+          },
+          {
+            "text": "Be careful with the knife! Do not cut yourself!",
+            "tier": "full"
+          },
+          {
+            "text": "Be careful with the knife! Do not cut yourself.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -1234,6 +1254,402 @@
             }
           ]
         }
+      },
+      "g3u05.gi.first-conditional.ec.005": {
+        "answers": [
+          {
+            "text": "If you don't hurry, we'll be late for school.",
+            "tier": "full"
+          },
+          {
+            "text": "If you don't hurry, we will be late for school.",
+            "tier": "full"
+          },
+          {
+            "text": "don't hurry",
+            "tier": "partial"
+          },
+          {
+            "text": "If you do not hurry, we will be late for school.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.first-conditional.tr.001": {
+        "answers": [
+          {
+            "text": "If it rains tomorrow, we will stay at home.",
+            "tier": "full"
+          },
+          {
+            "text": "If it rains tomorrow, we'll stay at home.",
+            "tier": "full"
+          },
+          {
+            "text": "We will stay at home if it rains tomorrow.",
+            "tier": "full"
+          },
+          {
+            "text": "We'll stay at home if it rains tomorrow.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.first-conditional.tr.002": {
+        "answers": [
+          {
+            "text": "If you don't come soon, I will go without you.",
+            "tier": "full"
+          },
+          {
+            "text": "If you don't come soon, I'll go without you.",
+            "tier": "full"
+          },
+          {
+            "text": "I will go without you if you don't come soon.",
+            "tier": "full"
+          },
+          {
+            "text": "If you do not come soon, I will go without you.",
+            "tier": "full"
+          },
+          {
+            "text": "I will go without you if you do not come soon.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.first-conditional.tr.005": {
+        "answers": [
+          {
+            "text": "If we miss the bus, we will be late for school.",
+            "tier": "full"
+          },
+          {
+            "text": "If we miss the bus, we'll be late for school.",
+            "tier": "full"
+          },
+          {
+            "text": "We will be late for school if we miss the bus.",
+            "tier": "full"
+          },
+          {
+            "text": "We'll be late for school if we miss the bus.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.ec.001": {
+        "answers": [
+          {
+            "text": "I will not go unless you come with me.",
+            "tier": "full"
+          },
+          {
+            "text": "unless you come",
+            "tier": "partial"
+          },
+          {
+            "text": "unless you come with me",
+            "tier": "partial"
+          },
+          {
+            "text": "I won't go unless you come with me.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.ec.002": {
+        "answers": [
+          {
+            "text": "Unless you hurry, we will miss the bus.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you hurry",
+            "tier": "partial"
+          },
+          {
+            "text": "Unless you hurry, we'll miss the bus.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.ec.003": {
+        "answers": [
+          {
+            "text": "We will be late unless we hurry.",
+            "tier": "full"
+          },
+          {
+            "text": "unless we hurry",
+            "tier": "partial"
+          },
+          {
+            "text": "We'll be late unless we hurry.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.ec.004": {
+        "answers": [
+          {
+            "text": "Unless you study, you will not pass the test.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you study",
+            "tier": "partial"
+          },
+          {
+            "text": "Unless you study, you won't pass the test.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.ec.006": {
+        "answers": [
+          {
+            "text": "If you study, you will pass the exam.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you study, you will not pass the exam.",
+            "tier": "full"
+          },
+          {
+            "text": "If you study, you'll pass the exam.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you study, you won't pass the exam.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.ec.007": {
+        "answers": [
+          {
+            "text": "I will come to the party unless you tell me it is cancelled.",
+            "tier": "full"
+          },
+          {
+            "text": "unless you tell me",
+            "tier": "partial"
+          },
+          {
+            "text": "I'll come to the party unless you tell me it is cancelled.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.qf.001": {
+        "answers": [
+          {
+            "text": "Will we go if the weather is not nice?",
+            "tier": "full"
+          },
+          {
+            "text": "Will we go if the weather isn't nice?",
+            "tier": "partial"
+          },
+          {
+            "text": "Will we go if the weather isn't nice?",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.qf.002": {
+        "answers": [
+          {
+            "text": "Will you pass if you do not study?",
+            "tier": "full"
+          },
+          {
+            "text": "Will you pass if you don't study?",
+            "tier": "partial"
+          },
+          {
+            "text": "Will you pass if you don't study?",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.tf.002": {
+        "answers": [
+          {
+            "text": "He will be sick unless he stops eating.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless he stops eating, he will be sick.",
+            "tier": "full"
+          },
+          {
+            "text": "He'll be sick unless he stops eating.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless he stops eating, he'll be sick.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.tf.003": {
+        "answers": [
+          {
+            "text": "You will not be here in time unless you run.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you run, you will not be here in time.",
+            "tier": "full"
+          },
+          {
+            "text": "You won't be here in time unless you run.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you run, you won't be here in time.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.tf.004": {
+        "answers": [
+          {
+            "text": "Unless Tom apologises, I will not talk to him again.",
+            "tier": "full"
+          },
+          {
+            "text": "I will not talk to him again unless Tom apologises.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless Tom apologises, I won't talk to him again.",
+            "tier": "full"
+          },
+          {
+            "text": "I won't talk to him again unless Tom apologises.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.tf.005": {
+        "answers": [
+          {
+            "text": "You will get wet unless you bring an umbrella.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you bring an umbrella, you will get wet.",
+            "tier": "full"
+          },
+          {
+            "text": "You'll get wet unless you bring an umbrella.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you bring an umbrella, you'll get wet.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.tr.001": {
+        "answers": [
+          {
+            "text": "I will not go swimming unless you come with me.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you come with me, I will not go swimming.",
+            "tier": "full"
+          },
+          {
+            "text": "I won't go swimming unless you come with me.",
+            "tier": "partial"
+          },
+          {
+            "text": "I won't go swimming unless you come with me.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you come with me, I won't go swimming.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.tr.002": {
+        "answers": [
+          {
+            "text": "You will not pass the test unless you study more.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you study more, you will not pass the test.",
+            "tier": "full"
+          },
+          {
+            "text": "You won't pass the test unless you study more.",
+            "tier": "partial"
+          },
+          {
+            "text": "You won't pass the test unless you study more.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you study more, you won't pass the test.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.tr.003": {
+        "answers": [
+          {
+            "text": "We will be late unless we run faster.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless we run faster, we will be late.",
+            "tier": "full"
+          },
+          {
+            "text": "We'll be late unless we run faster.",
+            "tier": "partial"
+          },
+          {
+            "text": "We'll be late unless we run faster.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless we run faster, we'll be late.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.tr.005": {
+        "answers": [
+          {
+            "text": "You will catch a cold unless you wear a hat.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you wear a hat, you will catch a cold.",
+            "tier": "full"
+          },
+          {
+            "text": "You'll catch a cold unless you wear a hat.",
+            "tier": "partial"
+          },
+          {
+            "text": "You'll catch a cold unless you wear a hat.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you wear a hat, you'll catch a cold.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -1925,6 +2341,34 @@
             }
           ]
         }
+      },
+      "g3u04.gi.comparative-intensifiers.tf.003": {
+        "answers": [
+          {
+            "text": "A cat is not nearly as dangerous as a lion.",
+            "tier": "full"
+          },
+          {
+            "text": "A cat isn't nearly as dangerous as a lion.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u04.gi.comparative-intensifiers.tr.002": {
+        "answers": [
+          {
+            "text": "We have less homework than last week.",
+            "tier": "full"
+          },
+          {
+            "text": "We've got less homework than last week.",
+            "tier": "full"
+          },
+          {
+            "text": "We have got less homework than last week.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -2037,6 +2481,38 @@
             }
           ]
         }
+      },
+      "g4u12.gi.phrasal-verbs.ec.002": {
+        "answers": [
+          {
+            "text": "Don't give it up! You can do it.",
+            "tier": "full"
+          },
+          {
+            "text": "Don't give it up!",
+            "tier": "partial"
+          },
+          {
+            "text": "Do not give it up! You can do it.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g4u12.gi.phrasal-verbs.ec.007": {
+        "answers": [
+          {
+            "text": "I'm waiting for the space shuttle.",
+            "tier": "full"
+          },
+          {
+            "text": "waiting for",
+            "tier": "partial"
+          },
+          {
+            "text": "I am waiting for the space shuttle.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -10025,6 +10501,102 @@
             }
           ]
         }
+      },
+      "g2u02.gi.irregular-verbs.ec.002": {
+        "answers": [
+          {
+            "text": "I didn't know the password.",
+            "tier": "full"
+          },
+          {
+            "text": "I didn't know the password",
+            "tier": "full"
+          },
+          {
+            "text": "know",
+            "tier": "partial"
+          },
+          {
+            "text": "I did not know the password.",
+            "tier": "full"
+          },
+          {
+            "text": "I did not know the password",
+            "tier": "full"
+          }
+        ]
+      },
+      "g2u02.gi.past-simple-negation.ec.001": {
+        "answers": [
+          {
+            "text": "I didn't listen to a thing.",
+            "tier": "full"
+          },
+          {
+            "text": "I didn't listen to a thing",
+            "tier": "full"
+          },
+          {
+            "text": "listen",
+            "tier": "partial"
+          },
+          {
+            "text": "I did not listen to a thing.",
+            "tier": "full"
+          },
+          {
+            "text": "I did not listen to a thing",
+            "tier": "full"
+          }
+        ]
+      },
+      "g2u02.gi.past-simple-negation.ec.002": {
+        "answers": [
+          {
+            "text": "The jacket wasn't on the screen.",
+            "tier": "full"
+          },
+          {
+            "text": "The jacket wasn't on the screen",
+            "tier": "full"
+          },
+          {
+            "text": "wasn't",
+            "tier": "partial"
+          },
+          {
+            "text": "The jacket was not on the screen.",
+            "tier": "full"
+          },
+          {
+            "text": "The jacket was not on the screen",
+            "tier": "full"
+          }
+        ]
+      },
+      "g2u02.gi.past-simple-negation.gf.001": {
+        "answers": [
+          {
+            "text": "didn't",
+            "tier": "full"
+          },
+          {
+            "text": "did not",
+            "tier": "full"
+          }
+        ]
+      },
+      "g2u02.gi.past-simple-negation.gf.002": {
+        "answers": [
+          {
+            "text": "wasn't",
+            "tier": "full"
+          },
+          {
+            "text": "was not",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -10977,6 +11549,46 @@
             }
           ]
         }
+      },
+      "g2u07.gi.going-to-negative.tf.001": {
+        "answers": [
+          {
+            "text": "isn't going to",
+            "tier": "full"
+          },
+          {
+            "text": "is not going to",
+            "tier": "full"
+          },
+          {
+            "text": "He isn't going to do the shopping today.",
+            "tier": "full"
+          },
+          {
+            "text": "He is not going to do the shopping today.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g2u07.gi.going-to-negative.tr.001": {
+        "answers": [
+          {
+            "text": "I'm not going to do my homework today.",
+            "tier": "full"
+          },
+          {
+            "text": "I am not going to do my homework today.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm not going to do my homework today",
+            "tier": "full"
+          },
+          {
+            "text": "I am not going to do my homework today",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -11081,6 +11693,18 @@
             }
           ]
         }
+      },
+      "g2u08.gi.past-time-markers.ec.004": {
+        "answers": [
+          {
+            "text": "She didn't take a photograph of the UFO.",
+            "tier": "full"
+          },
+          {
+            "text": "She did not take a photograph of the UFO.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -11257,6 +11881,30 @@
             }
           ]
         }
+      },
+      "g2u10.gi.must.ff.002": {
+        "answers": [
+          {
+            "text": "You mustn't open the door.",
+            "tier": "full"
+          },
+          {
+            "text": "You mustn't touch the tools.",
+            "tier": "full"
+          },
+          {
+            "text": "You mustn't go in there.",
+            "tier": "partial"
+          },
+          {
+            "text": "You must not open the door.",
+            "tier": "full"
+          },
+          {
+            "text": "You must not touch the tools.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -13773,6 +14421,42 @@
             }
           ]
         }
+      },
+      "g3u01.gi.present-simple.ec.002": {
+        "answers": [
+          {
+            "text": "He doesn't like pop music.",
+            "tier": "full"
+          },
+          {
+            "text": "He doesn't like pop music",
+            "tier": "full"
+          },
+          {
+            "text": "He does not like pop music.",
+            "tier": "full"
+          },
+          {
+            "text": "doesn't like",
+            "tier": "partial"
+          },
+          {
+            "text": "He does not like pop music",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u01.gi.present-simple.gf.003": {
+        "answers": [
+          {
+            "text": "doesn't",
+            "tier": "full"
+          },
+          {
+            "text": "does not",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -14229,6 +14913,30 @@
             }
           ]
         }
+      },
+      "g3u03.gi.time-connectors.tr.001": {
+        "answers": [
+          {
+            "text": "During the lesson, you mustn't eat.",
+            "tier": "full"
+          },
+          {
+            "text": "You mustn't eat during the lesson.",
+            "tier": "full"
+          },
+          {
+            "text": "During class, you mustn't eat.",
+            "tier": "partial"
+          },
+          {
+            "text": "During the lesson, you must not eat.",
+            "tier": "full"
+          },
+          {
+            "text": "You must not eat during the lesson.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -15001,6 +15709,26 @@
             }
           ]
         }
+      },
+      "g3u07.gi.present-perfect-for-since.tr.002": {
+        "answers": [
+          {
+            "text": "He hasn't played football since Monday.",
+            "tier": "full"
+          },
+          {
+            "text": "He has not played football since Monday.",
+            "tier": "full"
+          },
+          {
+            "text": "He hasn't played football since Monday",
+            "tier": "full"
+          },
+          {
+            "text": "He has not played football since Monday",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -15481,6 +16209,262 @@
             }
           ]
         }
+      },
+      "g3u09.gi.be-allowed-to.ec.001": {
+        "answers": [
+          {
+            "text": "I'm not allowed to eat too many sweets.",
+            "tier": "full"
+          },
+          {
+            "text": "I am not allowed to eat too many sweets.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm not allowed to eat too many sweets",
+            "tier": "full"
+          },
+          {
+            "text": "I am not allowed to eat too many sweets",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u09.gi.be-allowed-to.ec.003": {
+        "answers": [
+          {
+            "text": "We aren't allowed to go roller-skating without pads.",
+            "tier": "full"
+          },
+          {
+            "text": "We are not allowed to go roller-skating without pads.",
+            "tier": "full"
+          },
+          {
+            "text": "We aren't allowed to go roller-skating without pads",
+            "tier": "full"
+          },
+          {
+            "text": "We are not allowed to go roller-skating without pads",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u09.gi.be-allowed-to.ec.005": {
+        "answers": [
+          {
+            "text": "We aren't allowed to eat in the classroom.",
+            "tier": "full"
+          },
+          {
+            "text": "We are not allowed to eat in the classroom.",
+            "tier": "full"
+          },
+          {
+            "text": "We aren't allowed to eat in the classroom",
+            "tier": "full"
+          },
+          {
+            "text": "We are not allowed to eat in the classroom",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u09.gi.be-allowed-to.ff.001": {
+        "answers": [
+          {
+            "text": "I'm not allowed to watch TV after 10 o'clock.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm allowed to buy my own clothes.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm not allowed to get a tattoo.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm allowed to go to the disco on Saturdays.",
+            "tier": "partial"
+          },
+          {
+            "text": "I'm not allowed to dye my hair.",
+            "tier": "partial"
+          },
+          {
+            "text": "I am not allowed to watch TV after 10 o'clock.",
+            "tier": "full"
+          },
+          {
+            "text": "I am allowed to buy my own clothes.",
+            "tier": "full"
+          },
+          {
+            "text": "I am not allowed to get a tattoo.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u09.gi.be-allowed-to.tr.001": {
+        "answers": [
+          {
+            "text": "We aren't allowed to use phones in class.",
+            "tier": "full"
+          },
+          {
+            "text": "We are not allowed to use phones in class.",
+            "tier": "full"
+          },
+          {
+            "text": "We aren't allowed to use our phones in class.",
+            "tier": "full"
+          },
+          {
+            "text": "We aren't allowed to use phones in class",
+            "tier": "full"
+          },
+          {
+            "text": "We are not allowed to use our phones in class.",
+            "tier": "full"
+          },
+          {
+            "text": "We are not allowed to use phones in class",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u09.gi.let.ec.003": {
+        "answers": [
+          {
+            "text": "My dad doesn't let me ride his bike.",
+            "tier": "full"
+          },
+          {
+            "text": "My dad doesn't let me ride his bike",
+            "tier": "full"
+          },
+          {
+            "text": "doesn't let",
+            "tier": "full"
+          },
+          {
+            "text": "My dad does not let me ride his bike.",
+            "tier": "full"
+          },
+          {
+            "text": "My dad does not let me ride his bike",
+            "tier": "full"
+          },
+          {
+            "text": "does not let",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u09.gi.let.ec.004": {
+        "answers": [
+          {
+            "text": "The coach didn't let us go home early.",
+            "tier": "full"
+          },
+          {
+            "text": "The coach didn't let us go home early",
+            "tier": "full"
+          },
+          {
+            "text": "didn't let",
+            "tier": "full"
+          },
+          {
+            "text": "The coach did not let us go home early.",
+            "tier": "full"
+          },
+          {
+            "text": "The coach did not let us go home early",
+            "tier": "full"
+          },
+          {
+            "text": "did not let",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u09.gi.let.ec.006": {
+        "answers": [
+          {
+            "text": "My mum doesn't let me stay up late.",
+            "tier": "full"
+          },
+          {
+            "text": "My mum doesn't let me stay up late",
+            "tier": "full"
+          },
+          {
+            "text": "doesn't let",
+            "tier": "full"
+          },
+          {
+            "text": "My mum does not let me stay up late.",
+            "tier": "full"
+          },
+          {
+            "text": "My mum does not let me stay up late",
+            "tier": "full"
+          },
+          {
+            "text": "does not let",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u09.gi.let.ff.001": {
+        "answers": [
+          {
+            "text": "My parents let me play video games at the weekend.",
+            "tier": "full"
+          },
+          {
+            "text": "My mum lets me watch TV after dinner.",
+            "tier": "full"
+          },
+          {
+            "text": "My parents don't let me come home after ten.",
+            "tier": "full"
+          },
+          {
+            "text": "My dad doesn't let me ride my bike without a helmet.",
+            "tier": "partial"
+          },
+          {
+            "text": "They let me go to the disco on Saturdays.",
+            "tier": "partial"
+          },
+          {
+            "text": "My parents do not let me come home after ten.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u09.gi.let.tr.002": {
+        "answers": [
+          {
+            "text": "The teacher doesn't let us eat in class.",
+            "tier": "full"
+          },
+          {
+            "text": "The teacher does not let us eat in class.",
+            "tier": "full"
+          },
+          {
+            "text": "The teacher doesn't let us eat during class.",
+            "tier": "full"
+          },
+          {
+            "text": "The teacher does not let us eat during class.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -15905,6 +16889,26 @@
             }
           ]
         }
+      },
+      "g3u10.gi.could-was-able-to.tr.009": {
+        "answers": [
+          {
+            "text": "He couldn't ride a bike when he was a child.",
+            "tier": "full"
+          },
+          {
+            "text": "He could not ride a bike when he was little.",
+            "tier": "full"
+          },
+          {
+            "text": "He could not ride a bike when he was a child.",
+            "tier": "full"
+          },
+          {
+            "text": "He couldn't ride a bike when he was little.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -18009,6 +19013,66 @@
             }
           ]
         }
+      },
+      "g4u03.gi.reported-speech-statements.ec.004": {
+        "answers": [
+          {
+            "text": "He said he couldn't come to the concert.",
+            "tier": "full"
+          },
+          {
+            "text": "He said he could not come to the concert.",
+            "tier": "full"
+          },
+          {
+            "text": "He said that he couldn't come to the concert.",
+            "tier": "full"
+          },
+          {
+            "text": "He said that he could not come to the concert.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g4u03.gi.reported-speech-statements.tf.008": {
+        "answers": [
+          {
+            "text": "Lisa said that she didn't have any homework that day.",
+            "tier": "full"
+          },
+          {
+            "text": "Lisa said she didn't have any homework that day.",
+            "tier": "full"
+          },
+          {
+            "text": "Lisa said that she did not have any homework that day.",
+            "tier": "full"
+          },
+          {
+            "text": "Lisa said she did not have any homework that day.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g4u03.gi.reported-speech-statements.tf.009": {
+        "answers": [
+          {
+            "text": "Sully told Harten that they couldn't make runway 1.",
+            "tier": "full"
+          },
+          {
+            "text": "Sully told Harten they couldn't make runway 1.",
+            "tier": "full"
+          },
+          {
+            "text": "Sully told Harten that they could not make runway 1.",
+            "tier": "full"
+          },
+          {
+            "text": "Sully told Harten they could not make runway 1.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -18773,6 +19837,26 @@
             }
           ]
         }
+      },
+      "g4u05.gi.past-perfect-connectors.tf.004": {
+        "answers": [
+          {
+            "text": "Because of the bad school dinners, Jamie Oliver was not happy.",
+            "tier": "full"
+          },
+          {
+            "text": "Jamie Oliver was not happy because of the bad school dinners.",
+            "tier": "full"
+          },
+          {
+            "text": "Because of the bad school dinners, Jamie Oliver wasn't happy.",
+            "tier": "full"
+          },
+          {
+            "text": "Jamie Oliver wasn't happy because of the bad school dinners.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -18809,6 +19893,26 @@
             }
           ]
         }
+      },
+      "g4u06.gi.question-tags.ec.004": {
+        "answers": [
+          {
+            "text": "You don't like maths, do you?",
+            "tier": "full"
+          },
+          {
+            "text": "do you",
+            "tier": "partial"
+          },
+          {
+            "text": "do you?",
+            "tier": "partial"
+          },
+          {
+            "text": "You do not like maths, do you?",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -19309,6 +20413,34 @@
             }
           ]
         }
+      },
+      "g4u07.gi.want-someone-to.tf.004": {
+        "answers": [
+          {
+            "text": "you to use your phones in class",
+            "tier": "full"
+          },
+          {
+            "text": "us to use our phones in class",
+            "tier": "full"
+          },
+          {
+            "text": "The school doesn't want you to use your phones in class.",
+            "tier": "full"
+          },
+          {
+            "text": "The school doesn't want us to use our phones in class.",
+            "tier": "full"
+          },
+          {
+            "text": "The school does not want you to use your phones in class.",
+            "tier": "full"
+          },
+          {
+            "text": "The school does not want us to use our phones in class.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -19721,6 +20853,34 @@
             }
           ]
         }
+      },
+      "g4u09.gi.modals-possibility.ec.006": {
+        "answers": [
+          {
+            "text": "She might be at school — I'm not sure.",
+            "tier": "full"
+          },
+          {
+            "text": "She may be at school — I'm not sure.",
+            "tier": "full"
+          },
+          {
+            "text": "She could be at school — I'm not sure.",
+            "tier": "full"
+          },
+          {
+            "text": "She might be at school — I am not sure.",
+            "tier": "full"
+          },
+          {
+            "text": "She may be at school — I am not sure.",
+            "tier": "full"
+          },
+          {
+            "text": "She could be at school — I am not sure.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -19809,6 +20969,326 @@
             }
           ]
         }
+      },
+      "g4u10.gi.third-conditional.ec.007": {
+        "answers": [
+          {
+            "text": "If he hadn't missed the bus, he would have arrived on time.",
+            "tier": "full"
+          },
+          {
+            "text": "hadn't missed",
+            "tier": "partial"
+          },
+          {
+            "text": "had not missed",
+            "tier": "partial"
+          },
+          {
+            "text": "If he had not missed the bus, he would have arrived on time.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g4u10.gi.third-conditional.tf.007": {
+        "answers": [
+          {
+            "text": "If she hadn't missed the train, she wouldn't have arrived late.",
+            "tier": "full"
+          },
+          {
+            "text": "If she had not missed the train, she would not have arrived late.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g4u10.gi.third-conditional.tf.008": {
+        "answers": [
+          {
+            "text": "If the company had paid a fair price, Sofia's dad wouldn't have sold the farm.",
+            "tier": "full"
+          },
+          {
+            "text": "If the company had paid a fair price, Sofia's dad would not have sold the farm.",
+            "tier": "full"
+          }
+        ]
+      }
+    }
+  },
+  "g2-u06": {
+    "patch": {
+      "g2u06.gi.have-to.tr.002": {
+        "answers": [
+          {
+            "text": "You don't have to wash up. The guides do it.",
+            "tier": "full"
+          },
+          {
+            "text": "You don't have to wash up. The guides do it",
+            "tier": "full"
+          },
+          {
+            "text": "You do not have to wash up. The guides do it.",
+            "tier": "full"
+          },
+          {
+            "text": "You don't have to wash up.",
+            "tier": "partial"
+          },
+          {
+            "text": "You do not have to wash up. The guides do it",
+            "tier": "full"
+          }
+        ]
+      }
+    }
+  },
+  "g2-u09": {
+    "patch": {
+      "g2u09.gi.one-ones.ff.001": {
+        "answers": [
+          {
+            "text": "I'd like the ham one, please. I really like ham.",
+            "tier": "full"
+          },
+          {
+            "text": "Can I have the cheese one? I don't like ham.",
+            "tier": "full"
+          },
+          {
+            "text": "I'd like the cheese one.",
+            "tier": "partial"
+          },
+          {
+            "text": "Can I have the cheese one? I do not like ham.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g2u09.gi.one-ones.tf.001": {
+        "answers": [
+          {
+            "text": "I don't want the red one. I want the green one.",
+            "tier": "full"
+          },
+          {
+            "text": "I do not want the red one. I want the green one.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g2u09.gi.some-any.ec.001": {
+        "answers": [
+          {
+            "text": "I don't have any money.",
+            "tier": "full"
+          },
+          {
+            "text": "any",
+            "tier": "partial"
+          },
+          {
+            "text": "I do not have any money.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g2u09.gi.some-any.ff.001": {
+        "answers": [
+          {
+            "text": "There are some grapes, but there aren't any peaches.",
+            "tier": "full"
+          },
+          {
+            "text": "There are some plums and some pears, but there aren't any strawberries.",
+            "tier": "full"
+          },
+          {
+            "text": "There are some grapes.",
+            "tier": "partial"
+          },
+          {
+            "text": "There are some grapes, but there are not any peaches.",
+            "tier": "full"
+          },
+          {
+            "text": "There are some plums and some pears, but there are not any strawberries.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g2u09.gi.some-any.tr.002": {
+        "answers": [
+          {
+            "text": "Are there any grapes? — No, there aren't any grapes.",
+            "tier": "full"
+          },
+          {
+            "text": "Are there any grapes? No, there aren't any grapes.",
+            "tier": "full"
+          },
+          {
+            "text": "Are there any grapes? — No, there aren't any.",
+            "tier": "full"
+          },
+          {
+            "text": "Are there any grapes? — No, there are not any grapes.",
+            "tier": "full"
+          },
+          {
+            "text": "Are there any grapes? No, there are not any grapes.",
+            "tier": "full"
+          },
+          {
+            "text": "Are there any grapes? — No, there are not any.",
+            "tier": "full"
+          }
+        ]
+      }
+    }
+  },
+  "g2-u15": {
+    "patch": {
+      "g2u15.gi.so-do-i.tr.002": {
+        "answers": [
+          {
+            "text": "\"I can't cook.\" — \"Neither can I.\"",
+            "tier": "full"
+          },
+          {
+            "text": "I can't cook. Neither can I.",
+            "tier": "full"
+          },
+          {
+            "text": "I cannot cook. Neither can I.",
+            "tier": "partial"
+          },
+          {
+            "text": "\"I cannot cook.\" — \"Neither can I.\"",
+            "tier": "full"
+          },
+          {
+            "text": "I cannot cook. Neither can I.",
+            "tier": "full"
+          }
+        ]
+      }
+    }
+  },
+  "g3-u13": {
+    "patch": {
+      "g3u13.gi.second-conditional.ec.004": {
+        "answers": [
+          {
+            "text": "If I were you, I would not worry so much.",
+            "tier": "full"
+          },
+          {
+            "text": "were",
+            "tier": "partial"
+          },
+          {
+            "text": "If I were you, I wouldn't worry so much.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u13.gi.second-conditional.gf.005": {
+        "answers": [
+          {
+            "text": "didn't live | would ride",
+            "tier": "full"
+          },
+          {
+            "text": "did not live | would ride",
+            "tier": "full"
+          },
+          {
+            "text": "didn't live | 'd ride",
+            "tier": "full"
+          },
+          {
+            "text": "did not live | 'd ride",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u13.gi.second-conditional.gf.009": {
+        "answers": [
+          {
+            "text": "weren't | would play",
+            "tier": "full"
+          },
+          {
+            "text": "wasn't | would play",
+            "tier": "full"
+          },
+          {
+            "text": "were not | would play",
+            "tier": "full"
+          },
+          {
+            "text": "weren't | 'd play",
+            "tier": "full"
+          },
+          {
+            "text": "was not | would play",
+            "tier": "full"
+          },
+          {
+            "text": "were not | 'd play",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u13.gi.second-conditional.tf.002": {
+        "answers": [
+          {
+            "text": "If she were not ill, she would be at school.",
+            "tier": "full"
+          },
+          {
+            "text": "If she wasn't ill, she would be at school.",
+            "tier": "full"
+          },
+          {
+            "text": "If she were not ill, she'd be at school.",
+            "tier": "full"
+          },
+          {
+            "text": "If she weren't ill, she would be at school.",
+            "tier": "full"
+          },
+          {
+            "text": "If she was not ill, she would be at school.",
+            "tier": "full"
+          },
+          {
+            "text": "If she weren't ill, she'd be at school.",
+            "tier": "full"
+          }
+        ]
+      }
+    }
+  },
+  "g4-u13": {
+    "patch": {
+      "g4u13.gi.word-formation.ec.005": {
+        "answers": [
+          {
+            "text": "I completely disagree with you – you are totally wrong!",
+            "tier": "full"
+          },
+          {
+            "text": "disagree",
+            "tier": "partial"
+          },
+          {
+            "text": "I completely disagree with you – you're totally wrong!",
+            "tier": "full"
+          }
+        ]
       }
     }
   }
