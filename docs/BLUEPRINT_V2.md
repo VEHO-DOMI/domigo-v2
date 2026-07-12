@@ -71,6 +71,11 @@ v1 Part II (the 11 principles) applies verbatim, PLUS:
 - **Art loop:** style key first → generate → QA pass (seams / dimensions / transparency) → sync → **in-game screenshot compared against the reference** → integrate. AI image-gen is weak at seamless tiles/exact dims: quantize + downsample + QA every batch.
 - **Deploy loop:** `verify-deploy` (+ `verify-design` once V-1 exists) green against prod after every merged batch.
 
+**Standing method rules (extending 10A/10B from the Part 0 ledger):**
+- **10C · Stacked PRs:** when a parent PR merges, re-point every child PR's base to main BEFORE it merges; after ANY merge, verify the changed files exist on main (a stacked child merged into its feature-branch base silently misses main — P-31).
+- **10D ·** Never `git reset --hard` with uncommitted code edits in the tree — it reverts them silently (P-30); revert content with a pathspec checkout instead.
+- **10E ·** Client components never import `@domigo/db` (it loads server-only Neon/drizzle at module top and poisons the client bundle — P-29b); inline the pure helper or compute server-side.
+
 **Why this shape (the backwards-engineered method, for executor sessions):** the loop encodes how the planning model works — (i) never trust a spec or a memory over the code in front of you; (ii) produce the smallest thing that could be complete, because small things can be *fully* verified; (iii) the most valuable minute is the one spent trying to break your own work before anyone else sees it; (iv) evidence beats claims — a "how I verified" line with commands is worth more than any assertion; (v) when verification keeps failing, the design is talking to you — listen, don't push.
 
 ---
@@ -292,21 +297,21 @@ Exit criteria: `verify-deploy` + `verify-design` green against prod; scripted au
 **(a) The single-file order** (deviate only when a Koki gate blocks — then pull the next unblocked item, per v1 loop (a)):
 
 ```
-0. BLUEPRINT_V2 + T-1 ✅ · G1-N ✅ · L-1 ✅ · hub menu (campaign-keyed themes) ✅ · G4-N ✅ · G2-N ✅ — the narrative program (Part IV.2) is COMPLETE and gated
-1. T-2 deploy-truth (+T-3 eyes-on pass)
-2. A-1 E-2 audit script          ← unblocks K-4 + first fix waves
-3. A-2 E-3 strictness (K-2)
-4. A-3 curation standard (Fable) ✅ — handover/17 governs every wave
-5. A-4 E-4 blind-solve harness ✅ (dry audit green ×4 grades; live runs need NO API key — subscription path via --export-frames/--candidates + fresh-context subagents) → K-4 ✅ DECIDED → full-g2 live run → K-8
-6. A-5 fix waves to green        (interleaves with everything below)
-7. A-6 P-10 vocab rotation
-7b. LOOK-1 image-first resolver + LOOK-2 sync/prep pipeline   ← unlocks Koki's art generation (WS-LOOK; LOOK-0 canon pass rides the first LOOK PR)
-8. B-0 shared fixes (VS-15 · loader role · composite key · flag guard)
-9. WS-N gates: G1-N pack → G4-N pack → G2-N pack   (Fable authors; Koki gates)
-10. B-1 G1 retrofit engineering → G1 revision waves (WS-C)
-11. B-3 G4 swap engineering     → G4 chapter waves (WS-C)
-12. B-2 G2 overworld engineering → G2 campaign waves (WS-C, + art loop)
-13. P-1 identity → P-2 roster → C-1 checkups
+0. BLUEPRINT_V2 + T-1 ✅ (STATUS reconciled #129) · G1-N ✅ (#105) · L-1 ✅ (#106) · hub menu (campaign-keyed themes) ✅ (#107) · G4-N ✅ (#108) · G2-N ✅ (#109) — the narrative program (Part IV.2) is COMPLETE and gated
+1. T-2 deploy-truth (+T-3 eyes-on pass) ✅ (#125)
+2. A-1 E-2 audit script ✅ (#111)          ← unblocked K-4 + the fix waves
+3. A-2 E-3 strictness (K-2) ✅ (#112)
+4. A-3 curation standard (Fable) ✅ (#110) — handover/17 governs every wave
+5. A-4 E-4 blind-solve harness ✅ (#113/#114) (dry audit green ×4 grades; live runs need NO API key — subscription path via --export-frames/--candidates + fresh-context subagents) → K-4 ✅ DECIDED → full-g2 live run → K-8
+6. A-5 fix waves to green ✅ COMPLETE (#130, #132–#140 — R1 791→0 · R2 336→0 · audit critical=0)
+7. A-6 P-10 vocab rotation ✅ (#128)
+7b. LOOK-1 image-first resolver + LOOK-2 sync/prep pipeline ✅ (#115/#116)   ← unlocked Koki's art generation (WS-LOOK; LOOK-0 canon pass rode the first LOOK PR)
+8. B-0 shared fixes (VS-15 · loader role · composite key · flag guard) ✅ (#122)
+9. WS-N gates: G1-N pack → G4-N pack → G2-N pack   (Fable authored; Koki gated) ✅ (#105/#108/#109)
+10. B-1 G1 retrofit engineering → G1 revision waves (WS-C) ✅ story-complete (#118; character pass #121)
+11. B-3 G4 swap engineering ✅ (#123) → G4 chapter waves (WS-C) ✅ (#120)
+12. B-2 G2 overworld engineering → G2 campaign waves (WS-C, + art loop) — story authored ✅ (#119); the overworld ENGINE is the remaining piece
+13. P-1 identity ✅ (#141 migration 0006 · #142 class CRUD) → P-2 roster ✅ (#143 stacked-merge miss, re-landed #144, migration 0007 nickname guard) → C-1 checkups
 14. S-1 overlay → S-2 full CRUD
 15. J-1 journeys runtime → J-2 pilot + wave
 16. W-1 writing capture → W-2 sandbox correction
@@ -340,3 +345,15 @@ Exit criteria: `verify-deploy` + `verify-design` green against prod; scripted au
 _(dated 3–5-line verdicts, newest first)_
 
 - **2026-07-10 (Wave-2 program start):** plan approved in-session; deadlines retired; G4 pivoted to the FOURTEEN sequel; G2 pivoted to a Phaser overworld replacement (old game → bonus); Studio unlocked to full CRUD behind automated gates; curation machinery (E-2/E-3/E-4) promoted to the top of the queue. This blueprint + T-1 reconciliation are the first PR.
+
+---
+
+## Vision-log — Verdict №1 (2026-07-12, Fable 5, at #144)
+
+The three standing questions, answered against evidence:
+
+- **Erase-the-teacher? NO — held.** Every AI output in the platform remains feedback or a draft behind a human gate; nothing grades a child but the one engine, and nothing publishes content but Koki's merge. The A-5 waves never bypassed this: even "mechanical" fixes ran through his pre-approved policy (decision B) plus his PR merge.
+- **One-brain held? YES.** All 1,100+ answer-pool changes of A-5 were verified by grading through `@domigo/engine` itself — the same brain that grades students. No second grader, no shadow logic, was introduced anywhere (checkups will reuse the M-wave scorer; Studio's gate will call the same engine).
+- **Level-gate held? YES — and strengthened.** V-5 now actively polices even answer-pool *additions* (the R2 wave was blocked from adding above-level contractions until explicit grants), and the grants file carries reasons. The gate is stronger than when this blueprint was written.
+
+Sub-verdict on the execution architecture: the Ralph-loop + delegation matrix worked as designed — the independent-verification layer caught three real defect classes before merge (ungrammatical question-tag expansions; a client bundle poisoned by a server import; a prose fix silently overwritten), and both process failures that occurred (P-30 reset --hard, P-31 stacked-merge miss) were self-caught and encoded as pitfalls. Autonomy is affordable because verification is real. — *Fable 5*
