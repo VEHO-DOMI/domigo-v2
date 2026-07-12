@@ -242,7 +242,10 @@ export function auditGrammarItem(slug: string, it: GrammarItem): Finding[] {
         / (do|does|did|is|are|was|were|has|have|had|would|should|could|can|will|must) not /.test(t) ||
         / (we|you|they) are \p{L}/u.test(t) || / i am \p{L}/u.test(t) || /\b(i|we|you|they|he|she|it) will \p{L}/u.test(t);
       if (!contractible) continue;
-      const hasShortTwin = fulls.some((b) => b !== a && expandContractions(b.text) === canon(a.text));
+      // Compare FULLY-EXPANDED forms — the two answers may share another contraction
+      // ("don't"), which expandContractions expands on both sides; comparing to
+      // canon(a.text) would falsely miss an existing contracted twin ("we'll").
+      const hasShortTwin = fulls.some((b) => b !== a && expandContractions(b.text) === expandContractions(a.text));
       if (!hasShortTwin) {
         out.push({
           itemId: it.id, unitSlug: slug, rule: "R2", severity: r2Sev,

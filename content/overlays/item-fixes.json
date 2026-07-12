@@ -1161,6 +1161,42 @@
             "tier": "full"
           }
         ]
+      },
+      "g4u11.gi.reflexive-pronouns.tr.005": {
+        "answers": [
+          {
+            "text": "You have to read the book yourself.",
+            "tier": "full"
+          },
+          {
+            "text": "You will have to read the book yourself.",
+            "tier": "full"
+          },
+          {
+            "text": "You must read the book yourself.",
+            "tier": "partial"
+          },
+          {
+            "text": "You'll have to read the book yourself.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g4u11.gi.reflexive-pronouns.tf.002": {
+        "answers": [
+          {
+            "text": "myself",
+            "tier": "full"
+          },
+          {
+            "text": "Don't worry — I cooked dinner myself!",
+            "tier": "full"
+          },
+          {
+            "text": "Do not worry — I cooked dinner myself!",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -1648,6 +1684,42 @@
           {
             "text": "Unless you wear a hat, you'll catch a cold.",
             "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.tr.004": {
+        "answers": [
+          {
+            "text": "You cannot play with your friends unless you do your homework.",
+            "tier": "full"
+          },
+          {
+            "text": "You can't play with your friends unless you do your homework.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you do your homework, you cannot play with your friends.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you do your homework, you can't play with your friends.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u05.gi.unless.ec.005": {
+        "answers": [
+          {
+            "text": "Unless you finish your homework, you cannot play outside.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you finish your homework, you can't play outside.",
+            "tier": "full"
+          },
+          {
+            "text": "Unless you finish your homework",
+            "tier": "partial"
           }
         ]
       }
@@ -16909,6 +16981,46 @@
             "tier": "full"
           }
         ]
+      },
+      "g3u10.gi.be-allowed-to-tenses.ec.003": {
+        "answers": [
+          {
+            "text": "We will be allowed to stay out later next year.",
+            "tier": "full"
+          },
+          {
+            "text": "will be allowed",
+            "tier": "partial"
+          },
+          {
+            "text": "We'll be allowed to stay out later next year.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g3u10.gi.be-allowed-to-tenses.tr.002": {
+        "answers": [
+          {
+            "text": "He will be allowed to travel alone next year.",
+            "tier": "full"
+          },
+          {
+            "text": "Next year, he will be allowed to travel alone.",
+            "tier": "full"
+          },
+          {
+            "text": "He will be allowed to travel on his own next year.",
+            "tier": "partial"
+          },
+          {
+            "text": "He'll be allowed to travel alone next year.",
+            "tier": "full"
+          },
+          {
+            "text": "Next year, he'll be allowed to travel alone.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -19857,6 +19969,18 @@
             "tier": "full"
           }
         ]
+      },
+      "g4u05.gi.past-perfect-connectors.gf.009": {
+        "answers": [
+          {
+            "text": "had not eaten",
+            "tier": "full"
+          },
+          {
+            "text": "hadn't eaten",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -21010,6 +21134,26 @@
           },
           {
             "text": "If the company had paid a fair price, Sofia's dad would not have sold the farm.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g4u10.gi.third-conditional.tr.003": {
+        "answers": [
+          {
+            "text": "If it rains tomorrow, we will stay at home.",
+            "tier": "full"
+          },
+          {
+            "text": "If it rains tomorrow, we'll stay at home.",
+            "tier": "partial"
+          },
+          {
+            "text": "We will stay at home if it rains tomorrow.",
+            "tier": "partial"
+          },
+          {
+            "text": "If it rains tomorrow, we'll stay at home.",
             "tier": "full"
           }
         ]

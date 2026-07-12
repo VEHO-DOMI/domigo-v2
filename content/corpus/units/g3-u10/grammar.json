@@ -206,7 +206,7 @@
       "id": "g3u10.gi.be-allowed-to-tenses.ec.003",
       "structureId": "g3u10.s.be-allowed-to-tenses",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -233,6 +233,10 @@
         {
           "text": "will be allowed",
           "tier": "partial"
+        },
+        {
+          "text": "We'll be allowed to stay out later next year.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -1450,7 +1454,7 @@
       "id": "g3u10.gi.be-allowed-to-tenses.tr.002",
       "structureId": "g3u10.s.be-allowed-to-tenses",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1481,6 +1485,14 @@
         {
           "text": "He will be allowed to travel on his own next year.",
           "tier": "partial"
+        },
+        {
+          "text": "He'll be allowed to travel alone next year.",
+          "tier": "full"
+        },
+        {
+          "text": "Next year, he'll be allowed to travel alone.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",

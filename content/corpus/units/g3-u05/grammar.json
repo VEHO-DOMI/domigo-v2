@@ -2835,7 +2835,7 @@
       "id": "g3u05.gi.unless.ec.005",
       "structureId": "g3u05.s.unless",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2856,7 +2856,11 @@
       },
       "answers": [
         {
-          "text": "Unless you finish your homework, you can not play outside.",
+          "text": "Unless you finish your homework, you cannot play outside.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you finish your homework, you can't play outside.",
           "tier": "full"
         },
         {
@@ -4916,7 +4920,7 @@
       "id": "g3u05.gi.unless.tr.004",
       "structureId": "g3u05.s.unless",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -4937,16 +4941,20 @@
       },
       "answers": [
         {
-          "text": "You can not play with your friends unless you do your homework.",
-          "tier": "full"
-        },
-        {
-          "text": "Unless you do your homework, you can not play with your friends.",
+          "text": "You cannot play with your friends unless you do your homework.",
           "tier": "full"
         },
         {
           "text": "You can't play with your friends unless you do your homework.",
-          "tier": "partial"
+          "tier": "full"
+        },
+        {
+          "text": "Unless you do your homework, you cannot play with your friends.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you do your homework, you can't play with your friends.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",

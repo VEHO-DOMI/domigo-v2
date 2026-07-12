@@ -962,7 +962,7 @@
       "id": "g4u05.gi.past-perfect-connectors.gf.009",
       "structureId": "g4u05.s.past-perfect-connectors",
       "format": "gap-fill",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -984,6 +984,10 @@
       "answers": [
         {
           "text": "had not eaten",
+          "tier": "full"
+        },
+        {
+          "text": "hadn't eaten",
           "tier": "full"
         }
       ],

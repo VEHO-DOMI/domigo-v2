@@ -134,6 +134,34 @@
       "contentHash": "25c3279d2e33dde4868e4cdecba8b71ac75a7303af5b2c52fc87801b868ca555",
       "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g4u11.gi.reflexive-pronouns.tr.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T12:03:33.155Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "305201f0445f02a52cb54bbb050e0700ec98678c7d5bb4b1ef22a80338112952",
+      "note": "gen ingest: 33 vocab + 64 grammar item(s); draft 8b4ec305c42d",
+      "at": "2026-07-12T12:23:28.445Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "305201f0445f02a52cb54bbb050e0700ec98678c7d5bb4b1ef22a80338112952",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g4u11.gi.reflexive-pronouns.tr.005] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:23:28.447Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "137b5c0e416892b01c198a789368084e7751e34e9966bbfefffe3f745dc92be0",
+      "note": "gen ingest: 33 vocab + 64 grammar item(s); draft 8b4ec305c42d",
+      "at": "2026-07-12T12:26:02.302Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "137b5c0e416892b01c198a789368084e7751e34e9966bbfefffe3f745dc92be0",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g4u11.gi.reflexive-pronouns.tf.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T12:26:02.303Z"
     }
   ]
 }

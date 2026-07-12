@@ -2538,7 +2538,7 @@
       "id": "g4u11.gi.reflexive-pronouns.tf.002",
       "structureId": "g4u11.s.reflexive-pronouns",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2564,6 +2564,10 @@
         },
         {
           "text": "Don't worry — I cooked dinner myself!",
+          "tier": "full"
+        },
+        {
+          "text": "Do not worry — I cooked dinner myself!",
           "tier": "full"
         }
       ],
@@ -2964,7 +2968,7 @@
       "id": "g4u11.gi.reflexive-pronouns.tr.005",
       "structureId": "g4u11.s.reflexive-pronouns",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2995,6 +2999,10 @@
         {
           "text": "You must read the book yourself.",
           "tier": "partial"
+        },
+        {
+          "text": "You'll have to read the book yourself.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",

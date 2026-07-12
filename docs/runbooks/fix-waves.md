@@ -84,6 +84,14 @@ BUT only where the contraction is **incidental**. It is NOT a blind sweep like R
   spelling edge leave ~13 honest residuals that need a gloss (content-authoring, out of mechanical scope).
   Result across g2/g3/g4: 108 twins, R2 critical 336→13. **Lesson: an independent per-grade review is
   load-bearing here — my own eyeball checked the contract direction but missed the tag-expansion class.**
+- **R2 → 0 pass (cleared the last 13).** Two more root causes, both round-trip bugs: (a) the audit's
+  reverse `hasShortTwin` and build-r2's reverse guard compared `expandContractions(twin)` to
+  `canon(answer)` — wrong when both answers share another contraction (`don't`), which expands on the twin
+  side only. Fixed to compare `expandContractions(twin) === expandContractions(answer)` on both. (b) The
+  remaining genuinely-above-level contractions (`we'll`/`he'll`/`hadn't`/`you'll`) were **granted** in
+  `content/overlays/level-grants.json` (a natural contraction of already-taught words must be accepted per
+  K-4). The `can not` (two-word) answers were normalized to standard `cannot` + the `can't` twin added.
+  **A-5 end state: R1 critical 0, R2 critical 0** across all 57 units.
 
 ## The wave loop (per PR)
 
