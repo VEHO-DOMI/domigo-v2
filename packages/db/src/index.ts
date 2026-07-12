@@ -37,3 +37,4 @@ export * from "./assignment-results.ts"; // M-4: pure teacher-roster aggregation
 export * from "./identity.ts"; // P-1a: pure identity helpers (pickIdentity dual-read precedence, invite-code minting)
 export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth identity)
 export * from "./auth.ts"; // v2→v1 dual-read identity lookups (lookupStudentForAuth/lookupTeacherForAuth) + allocateClassCode
+export * from "./class-service.ts"; // P-1b: teacher class CRUD (v2-native, authz by teacherId) + pure name/grade validation

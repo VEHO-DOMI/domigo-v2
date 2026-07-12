@@ -66,6 +66,14 @@ export default async function AdminPage() {
       })}
 
       <section className="dg-card" style={{ marginTop: 24 }}>
+        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Your classes</h2>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
+          Create a class, share its invite code for students to join, and keep an eye on the roster.
+        </p>
+        <Link href="/admin/classes" className="dg-btn" style={{ display: "inline-block" }}>Manage classes →</Link>
+      </section>
+
+      <section className="dg-card" style={{ marginTop: 16 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Assignments</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
           Compose, time and assign your own practice sets and mock tests (Schularbeit rehearsal), graded by your
