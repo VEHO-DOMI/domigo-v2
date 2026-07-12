@@ -134,6 +134,20 @@
       "contentHash": "5a2e302029f44f4b4704f7b247cbc66725ef59632242b51ba5525554db354cc6",
       "note": "round 1: 41 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T13:29:46.932Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "2540b0f91858076191ee62f99c21597ffa4f59a243dcd0b6f8a17c0d868bdd2d",
+      "note": "gen ingest: 23 vocab + 35 grammar item(s); draft 98688e61428b",
+      "at": "2026-07-12T10:10:13.315Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "2540b0f91858076191ee62f99c21597ffa4f59a243dcd0b6f8a17c0d868bdd2d",
+      "note": "trusted patch (mechanical): 10 answer-pool fix(es) [g1u15.w.aunt, g1u15.w.beach, g1u15.w.board-game, g1u15.w.campsite, g1u15.w.hippo, g1u15.w.holiday, g1u15.w.national-park, g1u15.w.parents, g1u15.w.plane, g1u15.w.summer] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:10:13.317Z"
     }
   ]
 }

@@ -350,7 +350,7 @@
     },
     {
       "id": "g1u06.w.city",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -405,6 +405,14 @@
           },
           {
             "text": "Großstadt",
+            "tier": "full"
+          },
+          {
+            "text": "die Stadt",
+            "tier": "full"
+          },
+          {
+            "text": "die Großstadt",
             "tier": "full"
           }
         ]
@@ -873,7 +881,7 @@
     },
     {
       "id": "g1u06.w.market",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -925,6 +933,10 @@
           {
             "text": "Markt",
             "tier": "full"
+          },
+          {
+            "text": "der Markt",
+            "tier": "full"
           }
         ]
       },
@@ -959,7 +971,7 @@
     },
     {
       "id": "g1u06.w.mirror",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1010,6 +1022,10 @@
         "enToDe": [
           {
             "text": "Spiegel",
+            "tier": "full"
+          },
+          {
+            "text": "der Spiegel",
             "tier": "full"
           }
         ]
@@ -1115,7 +1131,7 @@
     },
     {
       "id": "g1u06.w.office",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1167,6 +1183,10 @@
           {
             "text": "Büro",
             "tier": "full"
+          },
+          {
+            "text": "das Büro",
+            "tier": "full"
           }
         ]
       },
@@ -1180,7 +1200,7 @@
     },
     {
       "id": "g1u06.w.park",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1232,6 +1252,10 @@
           {
             "text": "Park",
             "tier": "full"
+          },
+          {
+            "text": "der Park",
+            "tier": "full"
           }
         ]
       },
@@ -1251,7 +1275,7 @@
     },
     {
       "id": "g1u06.w.river",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1303,6 +1327,10 @@
           {
             "text": "Fluss",
             "tier": "full"
+          },
+          {
+            "text": "der Fluss",
+            "tier": "full"
           }
         ]
       },
@@ -1332,7 +1360,7 @@
     },
     {
       "id": "g1u06.w.street",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1384,6 +1412,10 @@
           {
             "text": "Straße",
             "tier": "full"
+          },
+          {
+            "text": "die Straße",
+            "tier": "full"
           }
         ]
       },
@@ -1413,7 +1445,7 @@
     },
     {
       "id": "g1u06.w.street-2",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1469,6 +1501,10 @@
           {
             "text": "Straße",
             "tier": "full"
+          },
+          {
+            "text": "die Straße",
+            "tier": "full"
           }
         ]
       },
@@ -1488,7 +1524,7 @@
     },
     {
       "id": "g1u06.w.supermarket",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1539,6 +1575,10 @@
         "enToDe": [
           {
             "text": "Supermarkt",
+            "tier": "full"
+          },
+          {
+            "text": "der Supermarkt",
             "tier": "full"
           }
         ]
@@ -4156,7 +4196,7 @@
     },
     {
       "id": "g1u06.w.tree",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4207,6 +4247,10 @@
         "enToDe": [
           {
             "text": "Baum",
+            "tier": "full"
+          },
+          {
+            "text": "der Baum",
             "tier": "full"
           }
         ]
@@ -4317,7 +4361,7 @@
     },
     {
       "id": "g1u06.w.woods",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4368,6 +4412,10 @@
         "enToDe": [
           {
             "text": "Wald",
+            "tier": "full"
+          },
+          {
+            "text": "der Wald",
             "tier": "full"
           }
         ]

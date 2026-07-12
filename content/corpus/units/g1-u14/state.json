@@ -169,6 +169,20 @@
       "contentHash": "1e4d4c2a2d9c6b7b8b5776399807cc7ce137a372c3d44f4697acd12139c243a8",
       "note": "round 2: 2 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-16T10:53:45.696Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "5d64a35ea13e65702eaae4b97abeb5eaedf9e6a7e91697d18f3ec184204e935d",
+      "note": "gen ingest: 59 vocab + 62 grammar item(s); draft c800af0db80e",
+      "at": "2026-07-12T10:10:13.014Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "5d64a35ea13e65702eaae4b97abeb5eaedf9e6a7e91697d18f3ec184204e935d",
+      "note": "trusted patch (mechanical): 25 answer-pool fix(es) [g1u14.w.adventure, g1u14.w.adventure-story, g1u14.w.comedy, g1u14.w.detective-story, g1u14.w.drama-series, g1u14.w.episode, g1u14.w.fantasy-film, g1u14.w.fantasy-story, g1u14.w.friendship, g1u14.w.headline, g1u14.w.horror-story, g1u14.w.lake, g1u14.w.music-video, g1u14.w.nature-programme, g1u14.w.poem, g1u14.w.power, g1u14.w.quiz-show, g1u14.w.remote-control, g1u14.w.romantic-film, g1u14.w.romantic-story, g1u14.w.skin, g1u14.w.sports-programme, g1u14.w.spot, g1u14.w.voice, g1u14.w.weekend] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:10:13.016Z"
     }
   ]
 }

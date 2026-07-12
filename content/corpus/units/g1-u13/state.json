@@ -113,6 +113,20 @@
       "contentHash": "8c52fe76eab18650b72396da492a86937a6bf66443ee24340e7bdf36c8b8d1b5",
       "note": "round 1: 129 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T12:23:40.994Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "1dc0364a5712a66841297f75736ff879e4b28ba7ef6413f0c027f1543bdaad7b",
+      "note": "gen ingest: 58 vocab + 80 grammar item(s); draft 0b09a775c1b3",
+      "at": "2026-07-12T10:10:12.707Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "1dc0364a5712a66841297f75736ff879e4b28ba7ef6413f0c027f1543bdaad7b",
+      "note": "trusted patch (mechanical): 28 answer-pool fix(es) [g1u13.w.accident, g1u13.w.adventure, g1u13.w.ambulance, g1u13.w.backpack, g1u13.w.button, g1u13.w.character, g1u13.w.cloud, g1u13.w.coastguard, g1u13.w.country, g1u13.w.crime, g1u13.w.democracy, g1u13.w.earth, g1u13.w.fire, g1u13.w.fire-brigade, g1u13.w.forest, g1u13.w.helicopter, g1u13.w.introduction, g1u13.w.jetpack, g1u13.w.medicine, g1u13.w.mountain-rescue, g1u13.w.police, g1u13.w.rescue-team, g1u13.w.rock, g1u13.w.screen, g1u13.w.sky, g1u13.w.space, g1u13.w.storm, g1u13.w.storm-2] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:10:12.710Z"
     }
   ]
 }

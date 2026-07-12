@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "g1u14.w.adventure",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -57,6 +57,10 @@
           {
             "text": "Abenteuer",
             "tier": "full"
+          },
+          {
+            "text": "das Abenteuer",
+            "tier": "full"
           }
         ]
       },
@@ -76,7 +80,7 @@
     },
     {
       "id": "g1u14.w.adventure-story",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -126,6 +130,10 @@
         "enToDe": [
           {
             "text": "Abenteuergeschichte",
+            "tier": "full"
+          },
+          {
+            "text": "die Abenteuergeschichte",
             "tier": "full"
           }
         ]
@@ -258,7 +266,7 @@
     },
     {
       "id": "g1u14.w.comedy",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -308,6 +316,10 @@
         "enToDe": [
           {
             "text": "Komödie",
+            "tier": "full"
+          },
+          {
+            "text": "die Komödie",
             "tier": "full"
           }
         ]
@@ -487,7 +499,7 @@
     },
     {
       "id": "g1u14.w.detective-story",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -542,6 +554,14 @@
           {
             "text": "Krimi",
             "tier": "full"
+          },
+          {
+            "text": "die Kriminalgeschichte",
+            "tier": "full"
+          },
+          {
+            "text": "der Krimi",
+            "tier": "full"
           }
         ]
       },
@@ -555,7 +575,7 @@
     },
     {
       "id": "g1u14.w.drama-series",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -606,6 +626,10 @@
           {
             "text": "Dramaserie",
             "tier": "full"
+          },
+          {
+            "text": "die Dramaserie",
+            "tier": "full"
           }
         ]
       },
@@ -625,7 +649,7 @@
     },
     {
       "id": "g1u14.w.episode",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -680,6 +704,14 @@
           {
             "text": "Folge",
             "tier": "full"
+          },
+          {
+            "text": "die Episode",
+            "tier": "full"
+          },
+          {
+            "text": "die Folge",
+            "tier": "full"
           }
         ]
       },
@@ -709,7 +741,7 @@
     },
     {
       "id": "g1u14.w.fantasy-film",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -760,6 +792,10 @@
           {
             "text": "Fantasyfilm",
             "tier": "full"
+          },
+          {
+            "text": "der Fantasyfilm",
+            "tier": "full"
           }
         ]
       },
@@ -794,7 +830,7 @@
     },
     {
       "id": "g1u14.w.fantasy-story",
-      "rev": 4,
+      "rev": 5,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -845,6 +881,10 @@
           {
             "text": "Fantasygeschichte",
             "tier": "full"
+          },
+          {
+            "text": "die Fantasygeschichte",
+            "tier": "full"
           }
         ]
       },
@@ -869,7 +909,7 @@
     },
     {
       "id": "g1u14.w.friendship",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -919,6 +959,10 @@
         "enToDe": [
           {
             "text": "Freundschaft",
+            "tier": "full"
+          },
+          {
+            "text": "die Freundschaft",
             "tier": "full"
           }
         ]
@@ -1036,7 +1080,7 @@
     },
     {
       "id": "g1u14.w.headline",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1087,6 +1131,10 @@
           {
             "text": "Schlagzeile",
             "tier": "full"
+          },
+          {
+            "text": "die Schlagzeile",
+            "tier": "full"
           }
         ]
       },
@@ -1111,7 +1159,7 @@
     },
     {
       "id": "g1u14.w.horror-story",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1166,6 +1214,10 @@
           {
             "text": "Gruselgeschichte",
             "tier": "partial"
+          },
+          {
+            "text": "die Horrorgeschichte",
+            "tier": "full"
           }
         ]
       },
@@ -1419,7 +1471,7 @@
     },
     {
       "id": "g1u14.w.lake",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1469,6 +1521,10 @@
         "enToDe": [
           {
             "text": "See",
+            "tier": "full"
+          },
+          {
+            "text": "der See",
             "tier": "full"
           }
         ]
@@ -1674,7 +1730,7 @@
     },
     {
       "id": "g1u14.w.music-video",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1725,6 +1781,10 @@
           {
             "text": "Musikvideo",
             "tier": "full"
+          },
+          {
+            "text": "das Musikvideo",
+            "tier": "full"
           }
         ]
       },
@@ -1738,7 +1798,7 @@
     },
     {
       "id": "g1u14.w.nature-programme",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1793,6 +1853,10 @@
           {
             "text": "Tierdokumentation",
             "tier": "partial"
+          },
+          {
+            "text": "die Naturdokumentation",
+            "tier": "full"
           }
         ]
       },
@@ -2069,7 +2133,7 @@
     },
     {
       "id": "g1u14.w.poem",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2120,6 +2184,10 @@
           {
             "text": "Gedicht",
             "tier": "full"
+          },
+          {
+            "text": "das Gedicht",
+            "tier": "full"
           }
         ]
       },
@@ -2149,7 +2217,7 @@
     },
     {
       "id": "g1u14.w.power",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2199,6 +2267,10 @@
         "enToDe": [
           {
             "text": "Kraft",
+            "tier": "full"
+          },
+          {
+            "text": "die Kraft",
             "tier": "full"
           }
         ]
@@ -2304,7 +2376,7 @@
     },
     {
       "id": "g1u14.w.quiz-show",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2354,6 +2426,10 @@
         "enToDe": [
           {
             "text": "Quizshow",
+            "tier": "full"
+          },
+          {
+            "text": "die Quizshow",
             "tier": "full"
           }
         ]
@@ -2473,7 +2549,7 @@
     },
     {
       "id": "g1u14.w.remote-control",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2524,6 +2600,10 @@
           {
             "text": "Fernbedienung",
             "tier": "full"
+          },
+          {
+            "text": "die Fernbedienung",
+            "tier": "full"
           }
         ]
       },
@@ -2558,7 +2638,7 @@
     },
     {
       "id": "g1u14.w.romantic-film",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2609,6 +2689,10 @@
           {
             "text": "Liebesfilm",
             "tier": "full"
+          },
+          {
+            "text": "der Liebesfilm",
+            "tier": "full"
           }
         ]
       },
@@ -2622,7 +2706,7 @@
     },
     {
       "id": "g1u14.w.romantic-story",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2672,6 +2756,10 @@
         "enToDe": [
           {
             "text": "Liebesgeschichte",
+            "tier": "full"
+          },
+          {
+            "text": "die Liebesgeschichte",
             "tier": "full"
           }
         ]
@@ -2925,7 +3013,7 @@
     },
     {
       "id": "g1u14.w.skin",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2976,6 +3064,10 @@
           {
             "text": "Haut",
             "tier": "full"
+          },
+          {
+            "text": "die Haut",
+            "tier": "full"
           }
         ]
       },
@@ -3010,7 +3102,7 @@
     },
     {
       "id": "g1u14.w.sports-programme",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3061,6 +3153,10 @@
           {
             "text": "Sportsendung",
             "tier": "full"
+          },
+          {
+            "text": "die Sportsendung",
+            "tier": "full"
           }
         ]
       },
@@ -3095,7 +3191,7 @@
     },
     {
       "id": "g1u14.w.spot",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3162,6 +3258,10 @@
           {
             "text": "Fleck",
             "tier": "partial"
+          },
+          {
+            "text": "der Punkt",
+            "tier": "full"
           }
         ]
       },
@@ -4561,7 +4661,7 @@
     },
     {
       "id": "g1u14.w.voice",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4611,6 +4711,10 @@
         "enToDe": [
           {
             "text": "Stimme",
+            "tier": "full"
+          },
+          {
+            "text": "die Stimme",
             "tier": "full"
           }
         ]
@@ -4706,7 +4810,7 @@
     },
     {
       "id": "g1u14.w.weekend",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4756,6 +4860,10 @@
         "enToDe": [
           {
             "text": "Wochenende",
+            "tier": "full"
+          },
+          {
+            "text": "das Wochenende",
             "tier": "full"
           }
         ]

@@ -227,7 +227,7 @@
     },
     {
       "id": "g1u03.w.beard",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -278,6 +278,10 @@
         "enToDe": [
           {
             "text": "Bart",
+            "tier": "full"
+          },
+          {
+            "text": "der Bart",
             "tier": "full"
           }
         ]
@@ -368,7 +372,7 @@
     },
     {
       "id": "g1u03.w.boy",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -423,6 +427,14 @@
           },
           {
             "text": "Bub",
+            "tier": "full"
+          },
+          {
+            "text": "der Junge",
+            "tier": "full"
+          },
+          {
+            "text": "der Bub",
             "tier": "full"
           }
         ]
@@ -523,7 +535,7 @@
     },
     {
       "id": "g1u03.w.ear",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -587,6 +599,14 @@
           {
             "text": "Ohren",
             "tier": "full"
+          },
+          {
+            "text": "das Ohr",
+            "tier": "full"
+          },
+          {
+            "text": "die Ohren",
+            "tier": "full"
           }
         ]
       },
@@ -611,7 +631,7 @@
     },
     {
       "id": "g1u03.w.eye",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -674,6 +694,14 @@
           },
           {
             "text": "Augen",
+            "tier": "full"
+          },
+          {
+            "text": "das Auge",
+            "tier": "full"
+          },
+          {
+            "text": "die Augen",
             "tier": "full"
           }
         ]
@@ -775,7 +803,7 @@
     },
     {
       "id": "g1u03.w.feet",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -827,6 +855,10 @@
           {
             "text": "Füße",
             "tier": "full"
+          },
+          {
+            "text": "die Füße",
+            "tier": "full"
           }
         ]
       },
@@ -846,7 +878,7 @@
     },
     {
       "id": "g1u03.w.finger",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -906,6 +938,10 @@
           {
             "text": "Finger",
             "tier": "full"
+          },
+          {
+            "text": "der Finger",
+            "tier": "full"
           }
         ]
       },
@@ -919,7 +955,7 @@
     },
     {
       "id": "g1u03.w.foot",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -971,6 +1007,10 @@
           {
             "text": "Fuß",
             "tier": "full"
+          },
+          {
+            "text": "der Fuß",
+            "tier": "full"
           }
         ]
       },
@@ -990,7 +1030,7 @@
     },
     {
       "id": "g1u03.w.girl",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1041,6 +1081,10 @@
         "enToDe": [
           {
             "text": "Mädchen",
+            "tier": "full"
+          },
+          {
+            "text": "das Mädchen",
             "tier": "full"
           }
         ]
@@ -1573,7 +1617,7 @@
     },
     {
       "id": "g1u03.w.leg",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1636,6 +1680,14 @@
           },
           {
             "text": "Beine",
+            "tier": "full"
+          },
+          {
+            "text": "das Bein",
+            "tier": "full"
+          },
+          {
+            "text": "die Beine",
             "tier": "full"
           }
         ]
@@ -1721,7 +1773,7 @@
     },
     {
       "id": "g1u03.w.man",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1785,6 +1837,14 @@
           {
             "text": "Männer",
             "tier": "full"
+          },
+          {
+            "text": "der Mann",
+            "tier": "full"
+          },
+          {
+            "text": "die Männer",
+            "tier": "full"
           }
         ]
       },
@@ -1798,7 +1858,7 @@
     },
     {
       "id": "g1u03.w.mouth",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1850,6 +1910,10 @@
           {
             "text": "Mund",
             "tier": "full"
+          },
+          {
+            "text": "der Mund",
+            "tier": "full"
           }
         ]
       },
@@ -1863,7 +1927,7 @@
     },
     {
       "id": "g1u03.w.nose",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1914,6 +1978,10 @@
         "enToDe": [
           {
             "text": "Nase",
+            "tier": "full"
+          },
+          {
+            "text": "die Nase",
             "tier": "full"
           }
         ]
@@ -2170,7 +2238,7 @@
     },
     {
       "id": "g1u03.w.ship",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2229,6 +2297,10 @@
         "enToDe": [
           {
             "text": "Schiff",
+            "tier": "full"
+          },
+          {
+            "text": "das Schiff",
             "tier": "full"
           }
         ]
@@ -2323,7 +2395,7 @@
     },
     {
       "id": "g1u03.w.shoulder",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2375,6 +2447,10 @@
           {
             "text": "Schulter",
             "tier": "full"
+          },
+          {
+            "text": "die Schulter",
+            "tier": "full"
           }
         ]
       },
@@ -2394,7 +2470,7 @@
     },
     {
       "id": "g1u03.w.sister",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2445,6 +2521,10 @@
         "enToDe": [
           {
             "text": "Schwester",
+            "tier": "full"
+          },
+          {
+            "text": "die Schwester",
             "tier": "full"
           }
         ]
@@ -2665,7 +2745,7 @@
     },
     {
       "id": "g1u03.w.teeth",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2716,6 +2796,10 @@
         "enToDe": [
           {
             "text": "Zähne",
+            "tier": "full"
+          },
+          {
+            "text": "die Zähne",
             "tier": "full"
           }
         ]
@@ -2935,7 +3019,7 @@
     },
     {
       "id": "g1u03.w.tooth",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2987,6 +3071,10 @@
           {
             "text": "Zahn",
             "tier": "full"
+          },
+          {
+            "text": "der Zahn",
+            "tier": "full"
           }
         ]
       },
@@ -3006,7 +3094,7 @@
     },
     {
       "id": "g1u03.w.week",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3058,6 +3146,10 @@
           {
             "text": "Woche",
             "tier": "full"
+          },
+          {
+            "text": "die Woche",
+            "tier": "full"
           }
         ]
       },
@@ -3077,7 +3169,7 @@
     },
     {
       "id": "g1u03.w.woman",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3140,6 +3232,14 @@
           },
           {
             "text": "Frauen",
+            "tier": "full"
+          },
+          {
+            "text": "die Frau",
+            "tier": "full"
+          },
+          {
+            "text": "die Frauen",
             "tier": "full"
           }
         ]

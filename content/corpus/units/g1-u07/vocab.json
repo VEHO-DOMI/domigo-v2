@@ -323,7 +323,7 @@
     },
     {
       "id": "g1u07.w.beans",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -374,6 +374,10 @@
           {
             "text": "Bohnen",
             "tier": "full"
+          },
+          {
+            "text": "die Bohnen",
+            "tier": "full"
           }
         ]
       },
@@ -387,7 +391,7 @@
     },
     {
       "id": "g1u07.w.bread",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -438,6 +442,10 @@
           {
             "text": "Brot",
             "tier": "full"
+          },
+          {
+            "text": "das Brot",
+            "tier": "full"
           }
         ]
       },
@@ -451,7 +459,7 @@
     },
     {
       "id": "g1u07.w.breakfast",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -502,6 +510,10 @@
           {
             "text": "Frühstück",
             "tier": "full"
+          },
+          {
+            "text": "das Frühstück",
+            "tier": "full"
           }
         ]
       },
@@ -515,7 +527,7 @@
     },
     {
       "id": "g1u07.w.broccoli",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -566,6 +578,10 @@
           {
             "text": "Brokkoli",
             "tier": "full"
+          },
+          {
+            "text": "der Brokkoli",
+            "tier": "full"
           }
         ]
       },
@@ -585,7 +601,7 @@
     },
     {
       "id": "g1u07.w.butter",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -636,6 +652,10 @@
           {
             "text": "Butter",
             "tier": "full"
+          },
+          {
+            "text": "die Butter",
+            "tier": "full"
           }
         ]
       },
@@ -655,7 +675,7 @@
     },
     {
       "id": "g1u07.w.cake",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -706,6 +726,10 @@
           {
             "text": "Kuchen",
             "tier": "full"
+          },
+          {
+            "text": "der Kuchen",
+            "tier": "full"
           }
         ]
       },
@@ -725,7 +749,7 @@
     },
     {
       "id": "g1u07.w.carrot",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -788,6 +812,14 @@
           {
             "text": "Möhre",
             "tier": "full"
+          },
+          {
+            "text": "die Karotte",
+            "tier": "full"
+          },
+          {
+            "text": "die Möhre",
+            "tier": "full"
           }
         ]
       },
@@ -812,7 +844,7 @@
     },
     {
       "id": "g1u07.w.cheese",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -863,6 +895,10 @@
           {
             "text": "Käse",
             "tier": "full"
+          },
+          {
+            "text": "der Käse",
+            "tier": "full"
           }
         ]
       },
@@ -882,7 +918,7 @@
     },
     {
       "id": "g1u07.w.chicken",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -941,6 +977,14 @@
           {
             "text": "Hähnchen",
             "tier": "partial"
+          },
+          {
+            "text": "das Huhn",
+            "tier": "full"
+          },
+          {
+            "text": "das Hühnchen",
+            "tier": "full"
           }
         ]
       },
@@ -960,7 +1004,7 @@
     },
     {
       "id": "g1u07.w.chillies",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1015,6 +1059,10 @@
           {
             "text": "Chilis",
             "tier": "partial"
+          },
+          {
+            "text": "die Chilischoten",
+            "tier": "full"
           }
         ]
       },
@@ -1028,7 +1076,7 @@
     },
     {
       "id": "g1u07.w.chips",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1083,6 +1131,10 @@
           {
             "text": "Pommes",
             "tier": "partial"
+          },
+          {
+            "text": "die Chips",
+            "tier": "full"
           }
         ]
       },
@@ -1096,7 +1148,7 @@
     },
     {
       "id": "g1u07.w.chocolate",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1147,6 +1199,10 @@
           {
             "text": "Schokolade",
             "tier": "full"
+          },
+          {
+            "text": "die Schokolade",
+            "tier": "full"
           }
         ]
       },
@@ -1171,7 +1227,7 @@
     },
     {
       "id": "g1u07.w.cucumber",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1230,6 +1286,10 @@
           {
             "text": "Gurke",
             "tier": "full"
+          },
+          {
+            "text": "die Gurke",
+            "tier": "full"
           }
         ]
       },
@@ -1243,7 +1303,7 @@
     },
     {
       "id": "g1u07.w.dinner",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1294,6 +1354,10 @@
           {
             "text": "Abendessen",
             "tier": "full"
+          },
+          {
+            "text": "das Abendessen",
+            "tier": "full"
           }
         ]
       },
@@ -1307,7 +1371,7 @@
     },
     {
       "id": "g1u07.w.egg",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1366,6 +1430,10 @@
           {
             "text": "Ei",
             "tier": "full"
+          },
+          {
+            "text": "das Ei",
+            "tier": "full"
           }
         ]
       },
@@ -1395,7 +1463,7 @@
     },
     {
       "id": "g1u07.w.fish",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1445,6 +1513,10 @@
         "enToDe": [
           {
             "text": "Fisch",
+            "tier": "full"
+          },
+          {
+            "text": "der Fisch",
             "tier": "full"
           }
         ]
@@ -1544,7 +1616,7 @@
     },
     {
       "id": "g1u07.w.glass",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1595,6 +1667,10 @@
           {
             "text": "Glas",
             "tier": "full"
+          },
+          {
+            "text": "das Glas",
+            "tier": "full"
           }
         ]
       },
@@ -1619,7 +1695,7 @@
     },
     {
       "id": "g1u07.w.grapes",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1674,6 +1750,14 @@
           {
             "text": "Trauben",
             "tier": "full"
+          },
+          {
+            "text": "die Weintrauben",
+            "tier": "full"
+          },
+          {
+            "text": "die Trauben",
+            "tier": "full"
           }
         ]
       },
@@ -1703,7 +1787,7 @@
     },
     {
       "id": "g1u07.w.ham",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1754,6 +1838,10 @@
           {
             "text": "Schinken",
             "tier": "full"
+          },
+          {
+            "text": "der Schinken",
+            "tier": "full"
           }
         ]
       },
@@ -1778,7 +1866,7 @@
     },
     {
       "id": "g1u07.w.hamburger",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1832,6 +1920,10 @@
         "enToDe": [
           {
             "text": "Hamburger",
+            "tier": "full"
+          },
+          {
+            "text": "der Hamburger",
             "tier": "full"
           }
         ]
@@ -2078,7 +2170,7 @@
     },
     {
       "id": "g1u07.w.ice-cream",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2132,6 +2224,14 @@
           },
           {
             "text": "Eiscreme",
+            "tier": "full"
+          },
+          {
+            "text": "das Eis",
+            "tier": "full"
+          },
+          {
+            "text": "die Eiscreme",
             "tier": "full"
           }
         ]
@@ -2220,7 +2320,7 @@
     },
     {
       "id": "g1u07.w.kiwi",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2283,6 +2383,10 @@
           {
             "text": "Kiwi",
             "tier": "full"
+          },
+          {
+            "text": "die Kiwi",
+            "tier": "full"
           }
         ]
       },
@@ -2317,7 +2421,7 @@
     },
     {
       "id": "g1u07.w.lunch",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2368,6 +2472,10 @@
           {
             "text": "Mittagessen",
             "tier": "full"
+          },
+          {
+            "text": "das Mittagessen",
+            "tier": "full"
           }
         ]
       },
@@ -2381,7 +2489,7 @@
     },
     {
       "id": "g1u07.w.meat",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2432,6 +2540,10 @@
           {
             "text": "Fleisch",
             "tier": "full"
+          },
+          {
+            "text": "das Fleisch",
+            "tier": "full"
           }
         ]
       },
@@ -2461,7 +2573,7 @@
     },
     {
       "id": "g1u07.w.menu",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2516,6 +2628,10 @@
           {
             "text": "Menü",
             "tier": "partial"
+          },
+          {
+            "text": "die Speisekarte",
+            "tier": "full"
           }
         ]
       },
@@ -2529,7 +2645,7 @@
     },
     {
       "id": "g1u07.w.milk",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2580,6 +2696,10 @@
           {
             "text": "Milch",
             "tier": "full"
+          },
+          {
+            "text": "die Milch",
+            "tier": "full"
           }
         ]
       },
@@ -2604,7 +2724,7 @@
     },
     {
       "id": "g1u07.w.mineral-water",
-      "rev": 4,
+      "rev": 5,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2655,6 +2775,10 @@
           {
             "text": "Mineralwasser",
             "tier": "full"
+          },
+          {
+            "text": "das Mineralwasser",
+            "tier": "full"
           }
         ]
       },
@@ -2668,7 +2792,7 @@
     },
     {
       "id": "g1u07.w.money",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2719,6 +2843,10 @@
           {
             "text": "Geld",
             "tier": "full"
+          },
+          {
+            "text": "das Geld",
+            "tier": "full"
           }
         ]
       },
@@ -2732,7 +2860,7 @@
     },
     {
       "id": "g1u07.w.mum",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2798,6 +2926,14 @@
           },
           {
             "text": "Mutti",
+            "tier": "full"
+          },
+          {
+            "text": "die Mama",
+            "tier": "full"
+          },
+          {
+            "text": "die Mutti",
             "tier": "full"
           }
         ]
@@ -2965,7 +3101,7 @@
     },
     {
       "id": "g1u07.w.onion",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3028,6 +3164,10 @@
           {
             "text": "Zwiebel",
             "tier": "full"
+          },
+          {
+            "text": "die Zwiebel",
+            "tier": "full"
           }
         ]
       },
@@ -3057,7 +3197,7 @@
     },
     {
       "id": "g1u07.w.orange-juice",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3108,6 +3248,10 @@
           {
             "text": "Orangensaft",
             "tier": "full"
+          },
+          {
+            "text": "der Orangensaft",
+            "tier": "full"
           }
         ]
       },
@@ -3132,7 +3276,7 @@
     },
     {
       "id": "g1u07.w.pasta",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3187,6 +3331,14 @@
           {
             "text": "Pasta",
             "tier": "full"
+          },
+          {
+            "text": "die Nudeln",
+            "tier": "full"
+          },
+          {
+            "text": "die Pasta",
+            "tier": "full"
           }
         ]
       },
@@ -3200,7 +3352,7 @@
     },
     {
       "id": "g1u07.w.peas",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3251,6 +3403,10 @@
           {
             "text": "Erbsen",
             "tier": "full"
+          },
+          {
+            "text": "die Erbsen",
+            "tier": "full"
           }
         ]
       },
@@ -3270,7 +3426,7 @@
     },
     {
       "id": "g1u07.w.pizza",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3325,6 +3481,10 @@
           {
             "text": "Pizza",
             "tier": "full"
+          },
+          {
+            "text": "die Pizza",
+            "tier": "full"
           }
         ]
       },
@@ -3338,7 +3498,7 @@
     },
     {
       "id": "g1u07.w.plate",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3388,6 +3548,10 @@
         "enToDe": [
           {
             "text": "Teller",
+            "tier": "full"
+          },
+          {
+            "text": "der Teller",
             "tier": "full"
           }
         ]
@@ -3482,7 +3646,7 @@
     },
     {
       "id": "g1u07.w.restaurant",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3533,6 +3697,10 @@
           {
             "text": "Restaurant",
             "tier": "full"
+          },
+          {
+            "text": "das Restaurant",
+            "tier": "full"
           }
         ]
       },
@@ -3546,7 +3714,7 @@
     },
     {
       "id": "g1u07.w.rice",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3597,6 +3765,10 @@
           {
             "text": "Reis",
             "tier": "full"
+          },
+          {
+            "text": "der Reis",
+            "tier": "full"
           }
         ]
       },
@@ -3616,7 +3788,7 @@
     },
     {
       "id": "g1u07.w.salad",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3667,6 +3839,10 @@
           {
             "text": "Salat",
             "tier": "full"
+          },
+          {
+            "text": "der Salat",
+            "tier": "full"
           }
         ]
       },
@@ -3680,7 +3856,7 @@
     },
     {
       "id": "g1u07.w.sandwich",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3735,6 +3911,10 @@
           {
             "text": "belegtes Brot",
             "tier": "full"
+          },
+          {
+            "text": "das Sandwich",
+            "tier": "full"
           }
         ]
       },
@@ -3748,7 +3928,7 @@
     },
     {
       "id": "g1u07.w.sausages",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3803,6 +3983,10 @@
           {
             "text": "Würste",
             "tier": "partial"
+          },
+          {
+            "text": "die Würstchen",
+            "tier": "full"
           }
         ]
       },
@@ -3974,7 +4158,7 @@
     },
     {
       "id": "g1u07.w.soup",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4025,6 +4209,10 @@
           {
             "text": "Suppe",
             "tier": "full"
+          },
+          {
+            "text": "die Suppe",
+            "tier": "full"
           }
         ]
       },
@@ -4038,7 +4226,7 @@
     },
     {
       "id": "g1u07.w.spinach",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4089,6 +4277,10 @@
           {
             "text": "Spinat",
             "tier": "full"
+          },
+          {
+            "text": "der Spinat",
+            "tier": "full"
           }
         ]
       },
@@ -4108,7 +4300,7 @@
     },
     {
       "id": "g1u07.w.strawberry",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4163,6 +4355,10 @@
           {
             "text": "Erdbeere",
             "tier": "full"
+          },
+          {
+            "text": "die Erdbeere",
+            "tier": "full"
           }
         ]
       },
@@ -4182,7 +4378,7 @@
     },
     {
       "id": "g1u07.w.sugar",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4233,6 +4429,10 @@
           {
             "text": "Zucker",
             "tier": "full"
+          },
+          {
+            "text": "der Zucker",
+            "tier": "full"
           }
         ]
       },
@@ -4262,7 +4462,7 @@
     },
     {
       "id": "g1u07.w.tea",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4312,6 +4512,10 @@
         "enToDe": [
           {
             "text": "Tee",
+            "tier": "full"
+          },
+          {
+            "text": "der Tee",
             "tier": "full"
           }
         ]
@@ -4827,7 +5031,7 @@
     },
     {
       "id": "g1u07.w.vegetable",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4881,6 +5085,10 @@
         "enToDe": [
           {
             "text": "Gemüse",
+            "tier": "full"
+          },
+          {
+            "text": "das Gemüse",
             "tier": "full"
           }
         ]

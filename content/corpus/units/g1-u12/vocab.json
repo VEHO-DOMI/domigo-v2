@@ -2406,7 +2406,7 @@
     },
     {
       "id": "g1u12.w.alarm-clock",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2457,6 +2457,10 @@
           {
             "text": "Wecker",
             "tier": "full"
+          },
+          {
+            "text": "der Wecker",
+            "tier": "full"
           }
         ]
       },
@@ -2491,7 +2495,7 @@
     },
     {
       "id": "g1u12.w.april",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2542,6 +2546,10 @@
           {
             "text": "April",
             "tier": "full"
+          },
+          {
+            "text": "der April",
+            "tier": "full"
           }
         ]
       },
@@ -2566,7 +2574,7 @@
     },
     {
       "id": "g1u12.w.august",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2617,6 +2625,10 @@
           {
             "text": "August",
             "tier": "full"
+          },
+          {
+            "text": "der August",
+            "tier": "full"
           }
         ]
       },
@@ -2646,7 +2658,7 @@
     },
     {
       "id": "g1u12.w.bathroom",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2697,6 +2709,10 @@
           {
             "text": "Badezimmer",
             "tier": "full"
+          },
+          {
+            "text": "das Badezimmer",
+            "tier": "full"
           }
         ]
       },
@@ -2710,7 +2726,7 @@
     },
     {
       "id": "g1u12.w.bedroom",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2760,6 +2776,10 @@
         "enToDe": [
           {
             "text": "Schlafzimmer",
+            "tier": "full"
+          },
+          {
+            "text": "das Schlafzimmer",
             "tier": "full"
           }
         ]
@@ -2849,7 +2869,7 @@
     },
     {
       "id": "g1u12.w.candle",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2904,6 +2924,10 @@
           {
             "text": "Kerze",
             "tier": "full"
+          },
+          {
+            "text": "die Kerze",
+            "tier": "full"
           }
         ]
       },
@@ -2928,7 +2952,7 @@
     },
     {
       "id": "g1u12.w.cinema",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2983,6 +3007,10 @@
           {
             "text": "Kino",
             "tier": "full"
+          },
+          {
+            "text": "das Kino",
+            "tier": "full"
           }
         ]
       },
@@ -3012,7 +3040,7 @@
     },
     {
       "id": "g1u12.w.date",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3063,6 +3091,10 @@
           {
             "text": "Datum",
             "tier": "full"
+          },
+          {
+            "text": "das Datum",
+            "tier": "full"
           }
         ]
       },
@@ -3076,7 +3108,7 @@
     },
     {
       "id": "g1u12.w.december",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3126,6 +3158,10 @@
         "enToDe": [
           {
             "text": "Dezember",
+            "tier": "full"
+          },
+          {
+            "text": "der Dezember",
             "tier": "full"
           }
         ]
@@ -3220,7 +3256,7 @@
     },
     {
       "id": "g1u12.w.dining-room",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3270,6 +3306,10 @@
         "enToDe": [
           {
             "text": "Esszimmer",
+            "tier": "full"
+          },
+          {
+            "text": "das Esszimmer",
             "tier": "full"
           }
         ]
@@ -3430,7 +3470,7 @@
     },
     {
       "id": "g1u12.w.february",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3480,6 +3520,10 @@
         "enToDe": [
           {
             "text": "Februar",
+            "tier": "full"
+          },
+          {
+            "text": "der Februar",
             "tier": "full"
           }
         ]
@@ -3581,7 +3625,7 @@
     },
     {
       "id": "g1u12.w.garage",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3632,6 +3676,10 @@
           {
             "text": "Garage",
             "tier": "full"
+          },
+          {
+            "text": "die Garage",
+            "tier": "full"
           }
         ]
       },
@@ -3645,7 +3693,7 @@
     },
     {
       "id": "g1u12.w.garden",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3695,6 +3743,10 @@
         "enToDe": [
           {
             "text": "Garten",
+            "tier": "full"
+          },
+          {
+            "text": "der Garten",
             "tier": "full"
           }
         ]
@@ -3815,7 +3867,7 @@
     },
     {
       "id": "g1u12.w.hall",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3870,6 +3922,10 @@
           {
             "text": "Diele",
             "tier": "partial"
+          },
+          {
+            "text": "der Flur",
+            "tier": "full"
           }
         ]
       },
@@ -4274,7 +4330,7 @@
     },
     {
       "id": "g1u12.w.january",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4325,6 +4381,10 @@
           {
             "text": "Jänner",
             "tier": "full"
+          },
+          {
+            "text": "der Jänner",
+            "tier": "full"
           }
         ]
       },
@@ -4338,7 +4398,7 @@
     },
     {
       "id": "g1u12.w.july",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4389,6 +4449,10 @@
           {
             "text": "Juli",
             "tier": "full"
+          },
+          {
+            "text": "der Juli",
+            "tier": "full"
           }
         ]
       },
@@ -4418,7 +4482,7 @@
     },
     {
       "id": "g1u12.w.june",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4469,6 +4533,10 @@
           {
             "text": "Juni",
             "tier": "full"
+          },
+          {
+            "text": "der Juni",
+            "tier": "full"
           }
         ]
       },
@@ -4503,7 +4571,7 @@
     },
     {
       "id": "g1u12.w.kitchen",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4553,6 +4621,10 @@
         "enToDe": [
           {
             "text": "Küche",
+            "tier": "full"
+          },
+          {
+            "text": "die Küche",
             "tier": "full"
           }
         ]
@@ -4639,7 +4711,7 @@
     },
     {
       "id": "g1u12.w.library",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4690,6 +4762,10 @@
           {
             "text": "Bibliothek",
             "tier": "full"
+          },
+          {
+            "text": "die Bibliothek",
+            "tier": "full"
           }
         ]
       },
@@ -4703,7 +4779,7 @@
     },
     {
       "id": "g1u12.w.living-room",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4754,6 +4830,10 @@
           {
             "text": "Wohnzimmer",
             "tier": "full"
+          },
+          {
+            "text": "das Wohnzimmer",
+            "tier": "full"
           }
         ]
       },
@@ -4767,7 +4847,7 @@
     },
     {
       "id": "g1u12.w.march",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4818,6 +4898,10 @@
           {
             "text": "März",
             "tier": "full"
+          },
+          {
+            "text": "der März",
+            "tier": "full"
           }
         ]
       },
@@ -4837,7 +4921,7 @@
     },
     {
       "id": "g1u12.w.match",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4896,6 +4980,10 @@
           {
             "text": "Spiel",
             "tier": "partial"
+          },
+          {
+            "text": "das Match",
+            "tier": "full"
           }
         ]
       },
@@ -4915,7 +5003,7 @@
     },
     {
       "id": "g1u12.w.may",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4965,6 +5053,10 @@
         "enToDe": [
           {
             "text": "Mai",
+            "tier": "full"
+          },
+          {
+            "text": "der Mai",
             "tier": "full"
           }
         ]
@@ -5073,7 +5165,7 @@
     },
     {
       "id": "g1u12.w.month",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -5124,6 +5216,10 @@
           {
             "text": "Monat",
             "tier": "full"
+          },
+          {
+            "text": "der Monat",
+            "tier": "full"
           }
         ]
       },
@@ -5148,7 +5244,7 @@
     },
     {
       "id": "g1u12.w.november",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -5199,6 +5295,10 @@
           {
             "text": "November",
             "tier": "full"
+          },
+          {
+            "text": "der November",
+            "tier": "full"
           }
         ]
       },
@@ -5218,7 +5318,7 @@
     },
     {
       "id": "g1u12.w.october",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -5269,6 +5369,10 @@
           {
             "text": "Oktober",
             "tier": "full"
+          },
+          {
+            "text": "der Oktober",
+            "tier": "full"
           }
         ]
       },
@@ -5288,7 +5392,7 @@
     },
     {
       "id": "g1u12.w.piece",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -5346,6 +5450,10 @@
         "enToDe": [
           {
             "text": "Stück",
+            "tier": "full"
+          },
+          {
+            "text": "das Stück",
             "tier": "full"
           }
         ]
@@ -5557,7 +5665,7 @@
     },
     {
       "id": "g1u12.w.robbery",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -5608,6 +5716,10 @@
           {
             "text": "Raubüberfall",
             "tier": "full"
+          },
+          {
+            "text": "der Raubüberfall",
+            "tier": "full"
           }
         ]
       },
@@ -5647,7 +5759,7 @@
     },
     {
       "id": "g1u12.w.september",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -5697,6 +5809,10 @@
         "enToDe": [
           {
             "text": "September",
+            "tier": "full"
+          },
+          {
+            "text": "der September",
             "tier": "full"
           }
         ]

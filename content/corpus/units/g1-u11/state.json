@@ -141,6 +141,20 @@
       "contentHash": "e2b0f58f98672e54182c4f3c3b03938a4b1b14134389a2ec181a244e6e95d5fc",
       "note": "round 1: 105 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T10:57:40.417Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "5d65a2da3f02ba5fec1f8e3a173bd765f07c343f60004949284546da5d4e7f20",
+      "note": "gen ingest: 58 vocab + 38 grammar item(s); draft 2cd11dc2dc6c",
+      "at": "2026-07-12T10:10:12.022Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "5d65a2da3f02ba5fec1f8e3a173bd765f07c343f60004949284546da5d4e7f20",
+      "note": "trusted patch (mechanical): 16 answer-pool fix(es) [g1u11.w.bedtime, g1u11.w.break, g1u11.w.bush, g1u11.w.clock, g1u11.w.clue, g1u11.w.free-time, g1u11.w.knock, g1u11.w.living-room, g1u11.w.midday, g1u11.w.midnight, g1u11.w.place, g1u11.w.programme, g1u11.w.road, g1u11.w.surprise, g1u11.w.text-message, g1u11.w.weather] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:10:12.024Z"
     }
   ]
 }

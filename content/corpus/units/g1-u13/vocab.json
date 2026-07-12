@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "g1u13.w.accident",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -57,6 +57,10 @@
           {
             "text": "Unfall",
             "tier": "full"
+          },
+          {
+            "text": "der Unfall",
+            "tier": "full"
           }
         ]
       },
@@ -86,7 +90,7 @@
     },
     {
       "id": "g1u13.w.adventure",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -140,6 +144,14 @@
           },
           {
             "text": "Erlebnis",
+            "tier": "full"
+          },
+          {
+            "text": "das Abenteuer",
+            "tier": "full"
+          },
+          {
+            "text": "das Erlebnis",
             "tier": "full"
           }
         ]
@@ -244,7 +256,7 @@
     },
     {
       "id": "g1u13.w.ambulance",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -299,6 +311,14 @@
           {
             "text": "Krankenwagen",
             "tier": "full"
+          },
+          {
+            "text": "der Rettungswagen",
+            "tier": "full"
+          },
+          {
+            "text": "der Krankenwagen",
+            "tier": "full"
           }
         ]
       },
@@ -328,7 +348,7 @@
     },
     {
       "id": "g1u13.w.backpack",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -379,6 +399,10 @@
           {
             "text": "Rucksack",
             "tier": "full"
+          },
+          {
+            "text": "der Rucksack",
+            "tier": "full"
           }
         ]
       },
@@ -403,7 +427,7 @@
     },
     {
       "id": "g1u13.w.button",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -462,6 +486,14 @@
           {
             "text": "Taste",
             "tier": "partial"
+          },
+          {
+            "text": "der Knopf",
+            "tier": "full"
+          },
+          {
+            "text": "der Schalter",
+            "tier": "full"
           }
         ]
       },
@@ -496,7 +528,7 @@
     },
     {
       "id": "g1u13.w.character",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -555,6 +587,14 @@
           {
             "text": "Charakter",
             "tier": "partial"
+          },
+          {
+            "text": "die Figur",
+            "tier": "full"
+          },
+          {
+            "text": "die Person",
+            "tier": "full"
           }
         ]
       },
@@ -653,7 +693,7 @@
     },
     {
       "id": "g1u13.w.cloud",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -704,6 +744,10 @@
           {
             "text": "Wolke",
             "tier": "full"
+          },
+          {
+            "text": "die Wolke",
+            "tier": "full"
           }
         ]
       },
@@ -728,7 +772,7 @@
     },
     {
       "id": "g1u13.w.coastguard",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -779,6 +823,10 @@
           {
             "text": "Küstenwache",
             "tier": "full"
+          },
+          {
+            "text": "die Küstenwache",
+            "tier": "full"
           }
         ]
       },
@@ -803,7 +851,7 @@
     },
     {
       "id": "g1u13.w.country",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -858,6 +906,14 @@
           {
             "text": "Staat",
             "tier": "full"
+          },
+          {
+            "text": "das Land",
+            "tier": "full"
+          },
+          {
+            "text": "der Staat",
+            "tier": "full"
           }
         ]
       },
@@ -887,7 +943,7 @@
     },
     {
       "id": "g1u13.w.crime",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -937,6 +993,10 @@
         "enToDe": [
           {
             "text": "Verbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "das Verbrechen",
             "tier": "full"
           }
         ]
@@ -1036,7 +1096,7 @@
     },
     {
       "id": "g1u13.w.democracy",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1087,6 +1147,10 @@
           {
             "text": "Demokratie",
             "tier": "full"
+          },
+          {
+            "text": "die Demokratie",
+            "tier": "full"
           }
         ]
       },
@@ -1111,7 +1175,7 @@
     },
     {
       "id": "g1u13.w.earth",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1162,6 +1226,10 @@
           {
             "text": "Erde",
             "tier": "full"
+          },
+          {
+            "text": "die Erde",
+            "tier": "full"
           }
         ]
       },
@@ -1181,7 +1249,7 @@
     },
     {
       "id": "g1u13.w.fire",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1232,6 +1300,10 @@
           {
             "text": "Feuer",
             "tier": "full"
+          },
+          {
+            "text": "das Feuer",
+            "tier": "full"
           }
         ]
       },
@@ -1261,7 +1333,7 @@
     },
     {
       "id": "g1u13.w.fire-brigade",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1312,6 +1384,10 @@
           {
             "text": "Feuerwehr",
             "tier": "full"
+          },
+          {
+            "text": "die Feuerwehr",
+            "tier": "full"
           }
         ]
       },
@@ -1331,7 +1407,7 @@
     },
     {
       "id": "g1u13.w.forest",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1381,6 +1457,10 @@
         "enToDe": [
           {
             "text": "Wald",
+            "tier": "full"
+          },
+          {
+            "text": "der Wald",
             "tier": "full"
           }
         ]
@@ -1479,7 +1559,7 @@
     },
     {
       "id": "g1u13.w.helicopter",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1534,6 +1614,10 @@
           {
             "text": "Heli",
             "tier": "partial"
+          },
+          {
+            "text": "der Hubschrauber",
+            "tier": "full"
           }
         ]
       },
@@ -1558,7 +1642,7 @@
     },
     {
       "id": "g1u13.w.introduction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1609,6 +1693,10 @@
           {
             "text": "Einleitung",
             "tier": "full"
+          },
+          {
+            "text": "die Einleitung",
+            "tier": "full"
           }
         ]
       },
@@ -1628,7 +1716,7 @@
     },
     {
       "id": "g1u13.w.jetpack",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1682,6 +1770,14 @@
           },
           {
             "text": "Raketenrucksack",
+            "tier": "full"
+          },
+          {
+            "text": "das Jetpack",
+            "tier": "full"
+          },
+          {
+            "text": "der Raketenrucksack",
             "tier": "full"
           }
         ]
@@ -1781,7 +1877,7 @@
     },
     {
       "id": "g1u13.w.medicine",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1840,6 +1936,14 @@
           {
             "text": "Arznei",
             "tier": "partial"
+          },
+          {
+            "text": "das Medikament",
+            "tier": "full"
+          },
+          {
+            "text": "die Medizin",
+            "tier": "full"
           }
         ]
       },
@@ -1879,7 +1983,7 @@
     },
     {
       "id": "g1u13.w.mountain-rescue",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1930,6 +2034,10 @@
           {
             "text": "Bergrettung",
             "tier": "full"
+          },
+          {
+            "text": "die Bergrettung",
+            "tier": "full"
           }
         ]
       },
@@ -1964,7 +2072,7 @@
     },
     {
       "id": "g1u13.w.police",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2014,6 +2122,10 @@
         "enToDe": [
           {
             "text": "Polizei",
+            "tier": "full"
+          },
+          {
+            "text": "die Polizei",
             "tier": "full"
           }
         ]
@@ -2108,7 +2220,7 @@
     },
     {
       "id": "g1u13.w.rescue-team",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2163,6 +2275,10 @@
           {
             "text": "Rettungsmannschaft",
             "tier": "partial"
+          },
+          {
+            "text": "das Rettungsteam",
+            "tier": "full"
           }
         ]
       },
@@ -2182,7 +2298,7 @@
     },
     {
       "id": "g1u13.w.rock",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2241,6 +2357,10 @@
           {
             "text": "Felsen",
             "tier": "partial"
+          },
+          {
+            "text": "der Stein",
+            "tier": "full"
           }
         ]
       },
@@ -2270,7 +2390,7 @@
     },
     {
       "id": "g1u13.w.screen",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2321,6 +2441,10 @@
           {
             "text": "Bildschirm",
             "tier": "full"
+          },
+          {
+            "text": "der Bildschirm",
+            "tier": "full"
           }
         ]
       },
@@ -2365,7 +2489,7 @@
     },
     {
       "id": "g1u13.w.sky",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2416,6 +2540,10 @@
           {
             "text": "Himmel",
             "tier": "full"
+          },
+          {
+            "text": "der Himmel",
+            "tier": "full"
           }
         ]
       },
@@ -2429,7 +2557,7 @@
     },
     {
       "id": "g1u13.w.space",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2488,6 +2616,14 @@
           {
             "text": "All",
             "tier": "partial"
+          },
+          {
+            "text": "das Weltall",
+            "tier": "full"
+          },
+          {
+            "text": "der Weltraum",
+            "tier": "full"
           }
         ]
       },
@@ -2517,7 +2653,7 @@
     },
     {
       "id": "g1u13.w.storm",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2572,6 +2708,10 @@
           {
             "text": "Unwetter",
             "tier": "partial"
+          },
+          {
+            "text": "der Sturm",
+            "tier": "full"
           }
         ]
       },
@@ -2596,7 +2736,7 @@
     },
     {
       "id": "g1u13.w.storm-2",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2651,6 +2791,10 @@
           {
             "text": "Unwetter",
             "tier": "partial"
+          },
+          {
+            "text": "der Sturm",
+            "tier": "full"
           }
         ]
       },

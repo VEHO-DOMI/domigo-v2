@@ -138,7 +138,7 @@
     },
     {
       "id": "g1u08.w.belt",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -189,6 +189,10 @@
           {
             "text": "Gürtel",
             "tier": "full"
+          },
+          {
+            "text": "der Gürtel",
+            "tier": "full"
           }
         ]
       },
@@ -202,7 +206,7 @@
     },
     {
       "id": "g1u08.w.blouse",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -253,6 +257,10 @@
           {
             "text": "Bluse",
             "tier": "full"
+          },
+          {
+            "text": "die Bluse",
+            "tier": "full"
           }
         ]
       },
@@ -266,7 +274,7 @@
     },
     {
       "id": "g1u08.w.boots",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -317,6 +325,10 @@
           {
             "text": "Stiefel",
             "tier": "full"
+          },
+          {
+            "text": "die Stiefel",
+            "tier": "full"
           }
         ]
       },
@@ -330,7 +342,7 @@
     },
     {
       "id": "g1u08.w.building",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -381,6 +393,10 @@
           {
             "text": "Gebäude",
             "tier": "full"
+          },
+          {
+            "text": "das Gebäude",
+            "tier": "full"
           }
         ]
       },
@@ -394,7 +410,7 @@
     },
     {
       "id": "g1u08.w.cap",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -449,6 +465,14 @@
           {
             "text": "Mütze",
             "tier": "full"
+          },
+          {
+            "text": "die Kappe",
+            "tier": "full"
+          },
+          {
+            "text": "die Mütze",
+            "tier": "full"
           }
         ]
       },
@@ -462,7 +486,7 @@
     },
     {
       "id": "g1u08.w.cape",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -512,6 +536,10 @@
         "enToDe": [
           {
             "text": "Umhang",
+            "tier": "full"
+          },
+          {
+            "text": "der Umhang",
             "tier": "full"
           }
         ]
@@ -590,7 +618,7 @@
     },
     {
       "id": "g1u08.w.hole",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -641,6 +669,10 @@
           {
             "text": "Loch",
             "tier": "full"
+          },
+          {
+            "text": "das Loch",
+            "tier": "full"
           }
         ]
       },
@@ -654,7 +686,7 @@
     },
     {
       "id": "g1u08.w.hoodie",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -713,6 +745,18 @@
           {
             "text": "Kapuzenpullover",
             "tier": "full"
+          },
+          {
+            "text": "der Hoodie",
+            "tier": "full"
+          },
+          {
+            "text": "der Kapuzenpulli",
+            "tier": "full"
+          },
+          {
+            "text": "der Kapuzenpullover",
+            "tier": "full"
           }
         ]
       },
@@ -726,7 +770,7 @@
     },
     {
       "id": "g1u08.w.horse",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -777,6 +821,10 @@
           {
             "text": "Pferd",
             "tier": "full"
+          },
+          {
+            "text": "das Pferd",
+            "tier": "full"
           }
         ]
       },
@@ -790,7 +838,7 @@
     },
     {
       "id": "g1u08.w.jacket",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -840,6 +888,10 @@
         "enToDe": [
           {
             "text": "Jacke",
+            "tier": "full"
+          },
+          {
+            "text": "die Jacke",
             "tier": "full"
           }
         ]
@@ -926,7 +978,7 @@
     },
     {
       "id": "g1u08.w.mask",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -977,6 +1029,10 @@
           {
             "text": "Maske",
             "tier": "full"
+          },
+          {
+            "text": "die Maske",
+            "tier": "full"
           }
         ]
       },
@@ -990,7 +1046,7 @@
     },
     {
       "id": "g1u08.w.poem",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1045,6 +1101,10 @@
           {
             "text": "Gedicht",
             "tier": "full"
+          },
+          {
+            "text": "das Gedicht",
+            "tier": "full"
           }
         ]
       },
@@ -1058,7 +1118,7 @@
     },
     {
       "id": "g1u08.w.pyjamas",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1121,6 +1181,14 @@
           {
             "text": "Schlafanzug",
             "tier": "full"
+          },
+          {
+            "text": "der Pyjama",
+            "tier": "full"
+          },
+          {
+            "text": "der Schlafanzug",
+            "tier": "full"
           }
         ]
       },
@@ -1134,7 +1202,7 @@
     },
     {
       "id": "g1u08.w.shoes",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1184,6 +1252,10 @@
         "enToDe": [
           {
             "text": "Schuhe",
+            "tier": "full"
+          },
+          {
+            "text": "die Schuhe",
             "tier": "full"
           }
         ]
@@ -1270,7 +1342,7 @@
     },
     {
       "id": "g1u08.w.sweater",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1325,6 +1397,14 @@
           {
             "text": "Pulli",
             "tier": "full"
+          },
+          {
+            "text": "der Pullover",
+            "tier": "full"
+          },
+          {
+            "text": "der Pulli",
+            "tier": "full"
           }
         ]
       },
@@ -1338,7 +1418,7 @@
     },
     {
       "id": "g1u08.w.tights",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1388,6 +1468,10 @@
         "enToDe": [
           {
             "text": "Strumpfhose",
+            "tier": "full"
+          },
+          {
+            "text": "die Strumpfhose",
             "tier": "full"
           }
         ]
@@ -1918,7 +2002,7 @@
     },
     {
       "id": "g1u08.w.trainers",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1981,6 +2065,14 @@
           {
             "text": "Sneakers",
             "tier": "full"
+          },
+          {
+            "text": "die Turnschuhe",
+            "tier": "full"
+          },
+          {
+            "text": "die Sneakers",
+            "tier": "full"
           }
         ]
       },
@@ -1994,7 +2086,7 @@
     },
     {
       "id": "g1u08.w.trousers",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2052,6 +2144,10 @@
         "enToDe": [
           {
             "text": "Hose",
+            "tier": "full"
+          },
+          {
+            "text": "die Hose",
             "tier": "full"
           }
         ]

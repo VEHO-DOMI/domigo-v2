@@ -120,6 +120,20 @@
       "contentHash": "22d315a2d185c725df04617b1608361a2419844df3b6642570f2149d0fa37451",
       "note": "round 1: 92 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T06:33:25.386Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "545ddcbcfd000d78553201d953f70978eeb1a9ad1a9e8cb56dfbbeecfee1a8e4",
+      "note": "gen ingest: 61 vocab + 44 grammar item(s); draft 514baec6f881",
+      "at": "2026-07-12T10:10:09.837Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "545ddcbcfd000d78553201d953f70978eeb1a9ad1a9e8cb56dfbbeecfee1a8e4",
+      "note": "trusted patch (mechanical): 22 answer-pool fix(es) [g1u04.w.afternoon, g1u04.w.birthday, g1u04.w.bottle, g1u04.w.day, g1u04.w.end, g1u04.w.evening, g1u04.w.friday, g1u04.w.fun, g1u04.w.homework, g1u04.w.life, g1u04.w.lunchtime, g1u04.w.monday, g1u04.w.morning, g1u04.w.night, g1u04.w.room, g1u04.w.saturday, g1u04.w.show, g1u04.w.story, g1u04.w.sunday, g1u04.w.thursday, g1u04.w.tuesday, g1u04.w.wednesday] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:10:09.839Z"
     }
   ]
 }

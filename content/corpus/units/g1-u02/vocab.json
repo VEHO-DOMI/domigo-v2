@@ -668,7 +668,7 @@
     },
     {
       "id": "g1u02.w.car",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -724,6 +724,10 @@
           {
             "text": "Wagen",
             "tier": "partial"
+          },
+          {
+            "text": "das Auto",
+            "tier": "full"
           }
         ]
       },
@@ -748,7 +752,7 @@
     },
     {
       "id": "g1u02.w.child",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -812,6 +816,14 @@
           {
             "text": "Kinder",
             "tier": "full"
+          },
+          {
+            "text": "das Kind",
+            "tier": "full"
+          },
+          {
+            "text": "die Kinder",
+            "tier": "full"
           }
         ]
       },
@@ -836,7 +848,7 @@
     },
     {
       "id": "g1u02.w.dog",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -888,6 +900,10 @@
           {
             "text": "Hund",
             "tier": "full"
+          },
+          {
+            "text": "der Hund",
+            "tier": "full"
           }
         ]
       },
@@ -907,7 +923,7 @@
     },
     {
       "id": "g1u02.w.family",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -958,6 +974,10 @@
         "enToDe": [
           {
             "text": "Familie",
+            "tier": "full"
+          },
+          {
+            "text": "die Familie",
             "tier": "full"
           }
         ]
@@ -1224,7 +1244,7 @@
     },
     {
       "id": "g1u02.w.giraffe",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1276,6 +1296,10 @@
           {
             "text": "Giraffe",
             "tier": "full"
+          },
+          {
+            "text": "die Giraffe",
+            "tier": "full"
           }
         ]
       },
@@ -1300,7 +1324,7 @@
     },
     {
       "id": "g1u02.w.grandma",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1360,6 +1384,10 @@
           {
             "text": "Oma",
             "tier": "full"
+          },
+          {
+            "text": "die Oma",
+            "tier": "full"
           }
         ]
       },
@@ -1389,7 +1417,7 @@
     },
     {
       "id": "g1u02.w.group",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1440,6 +1468,10 @@
         "enToDe": [
           {
             "text": "Gruppe",
+            "tier": "full"
+          },
+          {
+            "text": "die Gruppe",
             "tier": "full"
           }
         ]
@@ -2112,7 +2144,7 @@
     },
     {
       "id": "g1u02.w.lion",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2163,6 +2195,10 @@
         "enToDe": [
           {
             "text": "Löwe",
+            "tier": "full"
+          },
+          {
+            "text": "der Löwe",
             "tier": "full"
           }
         ]
@@ -2264,7 +2300,7 @@
     },
     {
       "id": "g1u02.w.monkey",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2323,6 +2359,10 @@
         "enToDe": [
           {
             "text": "Affe",
+            "tier": "full"
+          },
+          {
+            "text": "der Affe",
             "tier": "full"
           }
         ]
@@ -2560,7 +2600,7 @@
     },
     {
       "id": "g1u02.w.parrot",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2612,6 +2652,10 @@
           {
             "text": "Papagei",
             "tier": "full"
+          },
+          {
+            "text": "der Papagei",
+            "tier": "full"
           }
         ]
       },
@@ -2631,7 +2675,7 @@
     },
     {
       "id": "g1u02.w.penguin",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2690,6 +2734,10 @@
         "enToDe": [
           {
             "text": "Pinguin",
+            "tier": "full"
+          },
+          {
+            "text": "der Pinguin",
             "tier": "full"
           }
         ]
@@ -2886,7 +2934,7 @@
     },
     {
       "id": "g1u02.w.stone",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2937,6 +2985,10 @@
         "enToDe": [
           {
             "text": "Stein",
+            "tier": "full"
+          },
+          {
+            "text": "der Stein",
             "tier": "full"
           }
         ]
@@ -3041,7 +3093,7 @@
     },
     {
       "id": "g1u02.w.ticket",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3109,6 +3161,14 @@
           {
             "text": "Karte",
             "tier": "partial"
+          },
+          {
+            "text": "die Eintrittskarte",
+            "tier": "full"
+          },
+          {
+            "text": "das Ticket",
+            "tier": "full"
           }
         ]
       },
@@ -3503,7 +3563,7 @@
     },
     {
       "id": "g1u02.w.train",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3555,6 +3615,10 @@
           {
             "text": "Zug",
             "tier": "full"
+          },
+          {
+            "text": "der Zug",
+            "tier": "full"
           }
         ]
       },
@@ -3574,7 +3638,7 @@
     },
     {
       "id": "g1u02.w.tree",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3625,6 +3689,10 @@
         "enToDe": [
           {
             "text": "Baum",
+            "tier": "full"
+          },
+          {
+            "text": "der Baum",
             "tier": "full"
           }
         ]
@@ -4007,7 +4075,7 @@
     },
     {
       "id": "g1u02.w.year",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4075,6 +4143,14 @@
           {
             "text": "Klasse",
             "tier": "partial"
+          },
+          {
+            "text": "das Jahr",
+            "tier": "full"
+          },
+          {
+            "text": "die Jahrgangsstufe",
+            "tier": "full"
           }
         ]
       },
@@ -4088,7 +4164,7 @@
     },
     {
       "id": "g1u02.w.zoo",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4144,6 +4220,10 @@
           {
             "text": "Tierpark",
             "tier": "partial"
+          },
+          {
+            "text": "der Zoo",
+            "tier": "full"
           }
         ]
       },

@@ -140,7 +140,7 @@
     },
     {
       "id": "g1u04.w.afternoon",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -190,6 +190,10 @@
         "enToDe": [
           {
             "text": "Nachmittag",
+            "tier": "full"
+          },
+          {
+            "text": "der Nachmittag",
             "tier": "full"
           }
         ]
@@ -607,7 +611,7 @@
     },
     {
       "id": "g1u04.w.birthday",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -657,6 +661,10 @@
         "enToDe": [
           {
             "text": "Geburtstag",
+            "tier": "full"
+          },
+          {
+            "text": "der Geburtstag",
             "tier": "full"
           }
         ]
@@ -741,7 +749,7 @@
     },
     {
       "id": "g1u04.w.bottle",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -791,6 +799,10 @@
         "enToDe": [
           {
             "text": "Flasche",
+            "tier": "full"
+          },
+          {
+            "text": "die Flasche",
             "tier": "full"
           }
         ]
@@ -885,7 +897,7 @@
     },
     {
       "id": "g1u04.w.day",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -935,6 +947,10 @@
         "enToDe": [
           {
             "text": "Tag",
+            "tier": "full"
+          },
+          {
+            "text": "der Tag",
             "tier": "full"
           }
         ]
@@ -1103,7 +1119,7 @@
     },
     {
       "id": "g1u04.w.end",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1154,6 +1170,10 @@
           {
             "text": "Ende",
             "tier": "full"
+          },
+          {
+            "text": "das Ende",
+            "tier": "full"
           }
         ]
       },
@@ -1178,7 +1198,7 @@
     },
     {
       "id": "g1u04.w.evening",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1228,6 +1248,10 @@
         "enToDe": [
           {
             "text": "Abend",
+            "tier": "full"
+          },
+          {
+            "text": "der Abend",
             "tier": "full"
           }
         ]
@@ -1306,7 +1330,7 @@
     },
     {
       "id": "g1u04.w.friday",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1356,6 +1380,10 @@
         "enToDe": [
           {
             "text": "Freitag",
+            "tier": "full"
+          },
+          {
+            "text": "der Freitag",
             "tier": "full"
           }
         ]
@@ -1449,7 +1477,7 @@
     },
     {
       "id": "g1u04.w.fun",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1499,6 +1527,10 @@
         "enToDe": [
           {
             "text": "Spaß",
+            "tier": "full"
+          },
+          {
+            "text": "der Spaß",
             "tier": "full"
           }
         ]
@@ -1669,7 +1701,7 @@
     },
     {
       "id": "g1u04.w.homework",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1723,6 +1755,14 @@
           },
           {
             "text": "Hausübung",
+            "tier": "full"
+          },
+          {
+            "text": "die Hausaufgaben",
+            "tier": "full"
+          },
+          {
+            "text": "die Hausübung",
             "tier": "full"
           }
         ]
@@ -2123,7 +2163,7 @@
     },
     {
       "id": "g1u04.w.life",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2174,6 +2214,10 @@
           {
             "text": "Leben",
             "tier": "full"
+          },
+          {
+            "text": "das Leben",
+            "tier": "full"
           }
         ]
       },
@@ -2187,7 +2231,7 @@
     },
     {
       "id": "g1u04.w.lunchtime",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2253,6 +2297,14 @@
           },
           {
             "text": "Mittagspause",
+            "tier": "full"
+          },
+          {
+            "text": "die Mittagszeit",
+            "tier": "full"
+          },
+          {
+            "text": "die Mittagspause",
             "tier": "full"
           }
         ]
@@ -2433,7 +2485,7 @@
     },
     {
       "id": "g1u04.w.monday",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2484,6 +2536,10 @@
           {
             "text": "Montag",
             "tier": "full"
+          },
+          {
+            "text": "der Montag",
+            "tier": "full"
           }
         ]
       },
@@ -2503,7 +2559,7 @@
     },
     {
       "id": "g1u04.w.morning",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2553,6 +2609,10 @@
         "enToDe": [
           {
             "text": "Morgen",
+            "tier": "full"
+          },
+          {
+            "text": "der Morgen",
             "tier": "full"
           }
         ]
@@ -2637,7 +2697,7 @@
     },
     {
       "id": "g1u04.w.night",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2687,6 +2747,10 @@
         "enToDe": [
           {
             "text": "Nacht",
+            "tier": "full"
+          },
+          {
+            "text": "die Nacht",
             "tier": "full"
           }
         ]
@@ -2928,7 +2992,7 @@
     },
     {
       "id": "g1u04.w.room",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2982,6 +3046,14 @@
           },
           {
             "text": "Zimmer",
+            "tier": "full"
+          },
+          {
+            "text": "der Raum",
+            "tier": "full"
+          },
+          {
+            "text": "das Zimmer",
             "tier": "full"
           }
         ]
@@ -3066,7 +3138,7 @@
     },
     {
       "id": "g1u04.w.saturday",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3116,6 +3188,10 @@
         "enToDe": [
           {
             "text": "Samstag",
+            "tier": "full"
+          },
+          {
+            "text": "der Samstag",
             "tier": "full"
           }
         ]
@@ -3206,7 +3282,7 @@
     },
     {
       "id": "g1u04.w.show",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3260,6 +3336,14 @@
           },
           {
             "text": "Vorführung",
+            "tier": "full"
+          },
+          {
+            "text": "die Show",
+            "tier": "full"
+          },
+          {
+            "text": "die Vorführung",
             "tier": "full"
           }
         ]
@@ -3352,7 +3436,7 @@
     },
     {
       "id": "g1u04.w.story",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3403,6 +3487,10 @@
           {
             "text": "Geschichte",
             "tier": "full"
+          },
+          {
+            "text": "die Geschichte",
+            "tier": "full"
           }
         ]
       },
@@ -3427,7 +3515,7 @@
     },
     {
       "id": "g1u04.w.sunday",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3478,6 +3566,10 @@
           {
             "text": "Sonntag",
             "tier": "full"
+          },
+          {
+            "text": "der Sonntag",
+            "tier": "full"
           }
         ]
       },
@@ -3491,7 +3583,7 @@
     },
     {
       "id": "g1u04.w.thursday",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3541,6 +3633,10 @@
         "enToDe": [
           {
             "text": "Donnerstag",
+            "tier": "full"
+          },
+          {
+            "text": "der Donnerstag",
             "tier": "full"
           }
         ]
@@ -4268,7 +4364,7 @@
     },
     {
       "id": "g1u04.w.tuesday",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4319,6 +4415,10 @@
           {
             "text": "Dienstag",
             "tier": "full"
+          },
+          {
+            "text": "der Dienstag",
+            "tier": "full"
           }
         ]
       },
@@ -4332,7 +4432,7 @@
     },
     {
       "id": "g1u04.w.wednesday",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4382,6 +4482,10 @@
         "enToDe": [
           {
             "text": "Mittwoch",
+            "tier": "full"
+          },
+          {
+            "text": "der Mittwoch",
             "tier": "full"
           }
         ]

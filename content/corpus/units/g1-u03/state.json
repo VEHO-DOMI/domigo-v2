@@ -127,6 +127,20 @@
       "contentHash": "ba126dc65b37e6af1a76abec23e99eaf7669df8cce049ce184052c180bb5f6f6",
       "note": "round 1: 74 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T05:54:58.375Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "f34215222e27d8f07443c5180d1e6f6ee637d9540c742409458458f18529ed94",
+      "note": "gen ingest: 42 vocab + 42 grammar item(s); draft 87ca18b1f300",
+      "at": "2026-07-12T10:10:09.533Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "f34215222e27d8f07443c5180d1e6f6ee637d9540c742409458458f18529ed94",
+      "note": "trusted patch (mechanical): 19 answer-pool fix(es) [g1u03.w.beard, g1u03.w.boy, g1u03.w.ear, g1u03.w.eye, g1u03.w.feet, g1u03.w.finger, g1u03.w.foot, g1u03.w.girl, g1u03.w.leg, g1u03.w.man, g1u03.w.mouth, g1u03.w.nose, g1u03.w.ship, g1u03.w.shoulder, g1u03.w.sister, g1u03.w.teeth, g1u03.w.tooth, g1u03.w.week, g1u03.w.woman] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:10:09.535Z"
     }
   ]
 }
