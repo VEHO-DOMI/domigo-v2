@@ -120,6 +120,20 @@
       "contentHash": "1631094c0d9394feb347175c72acbd1d8c928dd7a3ef17a9e214ce2cfe1f656c",
       "note": "variant mint for g2.st.wrong-name",
       "at": "2026-06-29T03:59:22.361Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "261e1eb110585fda99c6ebf57af5076798f3ae2887ab9626e94be1f7de6e4b37",
+      "note": "gen ingest: 56 vocab + 68 grammar item(s); draft 3da580813ab1",
+      "at": "2026-07-12T10:36:00.714Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "261e1eb110585fda99c6ebf57af5076798f3ae2887ab9626e94be1f7de6e4b37",
+      "note": "trusted patch (mechanical): 38 answer-pool fix(es) [g2u11.w.armchair, g2u11.w.bed, g2u11.w.bedside-table, g2u11.w.cellar, g2u11.w.cellar-2, g2u11.w.chair, g2u11.w.cooker, g2u11.w.cotton, g2u11.w.cupboard, g2u11.w.curtain, g2u11.w.electricity, g2u11.w.fridge, g2u11.w.furniture, g2u11.w.ground, g2u11.w.hammock, g2u11.w.island, g2u11.w.lamp, g2u11.w.leather, g2u11.w.material, g2u11.w.metal, g2u11.w.pattern, g2u11.w.plastic, g2u11.w.pond, g2u11.w.radiator, g2u11.w.reed, g2u11.w.roof, g2u11.w.rug, g2u11.w.sink, g2u11.w.sofa, g2u11.w.staircase, g2u11.w.stilts, g2u11.w.strap, g2u11.w.table, g2u11.w.trailer, g2u11.w.tree-house, g2u11.w.wall, g2u11.w.wardrobe, g2u11.w.window] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:36:00.716Z"
     }
   ]
 }

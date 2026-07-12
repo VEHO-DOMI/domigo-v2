@@ -99,6 +99,20 @@
       "contentHash": "80c42cc51da6d1ffbec4163f2e487fa9c939e96ef9f4f6a6ff9cf50811bafaf6",
       "note": "variant mint for g2.st.wrong-name",
       "at": "2026-06-28T17:16:52.535Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "13f0153f202d2505a2e0f46019d897a47dcc4f54d01f9f1bf45f15ed3fddf645",
+      "note": "gen ingest: 33 vocab + 30 grammar item(s); draft 79e4d8156520",
+      "at": "2026-07-12T10:36:01.020Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "13f0153f202d2505a2e0f46019d897a47dcc4f54d01f9f1bf45f15ed3fddf645",
+      "note": "trusted patch (mechanical): 18 answer-pool fix(es) [g2u12.w.backache, g2u12.w.bath, g2u12.w.blood, g2u12.w.cure, g2u12.w.earache, g2u12.w.headache, g2u12.w.knee, g2u12.w.lamp-post, g2u12.w.medicine, g2u12.w.memory, g2u12.w.smell, g2u12.w.spoon, g2u12.w.stomach-ache, g2u12.w.taste, g2u12.w.throat, g2u12.w.toothache, g2u12.w.toothpaste, g2u12.w.worm] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:36:01.022Z"
     }
   ]
 }

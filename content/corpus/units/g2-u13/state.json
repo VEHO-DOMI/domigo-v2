@@ -141,6 +141,20 @@
       "contentHash": "646c2dcd75976556f2ab0586f470d29eb9f2afadcf33839d5175552a247a6456",
       "note": "variant mint for g2.st.wrong-name",
       "at": "2026-06-29T03:59:22.364Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "ddbff783014f90e1f16ef327b2aa3801e6e871790f1ef21ee83d4786ae31e583",
+      "note": "gen ingest: 53 vocab + 47 grammar item(s); draft 9820309a2d80",
+      "at": "2026-07-12T10:36:01.338Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "ddbff783014f90e1f16ef327b2aa3801e6e871790f1ef21ee83d4786ae31e583",
+      "note": "trusted patch (mechanical): 18 answer-pool fix(es) [g2u13.w.axe, g2u13.w.binoculars, g2u13.w.career, g2u13.w.coast, g2u13.w.flash-of-light, g2u13.w.fog, g2u13.w.forecast, g2u13.w.formula, g2u13.w.hope, g2u13.w.inch, g2u13.w.outlook, g2u13.w.rainfall, g2u13.w.scale, g2u13.w.sea-level, g2u13.w.small-talk, g2u13.w.sunshine, g2u13.w.temperature, g2u13.w.thunderstorm] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:36:01.340Z"
     }
   ]
 }

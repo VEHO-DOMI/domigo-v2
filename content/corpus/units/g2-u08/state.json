@@ -106,6 +106,20 @@
       "contentHash": "06aa94522090f1488157bf213382768681c94f33785d76c19b6bb01aa8bff836",
       "note": "variant mint for g2.st.wrong-name",
       "at": "2026-06-28T17:16:52.525Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "2909e5ca330d455cd4d7a5ec0f7c1a1019554e83a903e591f1fb8f28f07edceb",
+      "note": "gen ingest: 32 vocab + 30 grammar item(s); draft 8ab227fcc51f",
+      "at": "2026-07-12T10:36:00.103Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "2909e5ca330d455cd4d7a5ec0f7c1a1019554e83a903e591f1fb8f28f07edceb",
+      "note": "trusted patch (mechanical): 3 answer-pool fix(es) [g2u08.w.hero-heroine, g2u08.w.hoax, g2u08.w.nonsense] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:36:00.104Z"
     }
   ]
 }

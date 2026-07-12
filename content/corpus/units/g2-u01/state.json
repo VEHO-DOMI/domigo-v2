@@ -211,6 +211,20 @@
       "contentHash": "f5d22dfeed39951e5d25b4b4f9b22bc6759c8daa81c44cc69cc66680f67f6aaa",
       "note": "variant mint for g2.st.wrong-name",
       "at": "2026-06-28T17:16:52.513Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "371acea535775662fe78aa1887e08141f1b116d50cd1705402cf62477c66683c",
+      "note": "gen ingest: 48 vocab + 22 grammar item(s); draft bfb861639ede",
+      "at": "2026-07-12T10:35:58.581Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "371acea535775662fe78aa1887e08141f1b116d50cd1705402cf62477c66683c",
+      "note": "trusted patch (mechanical): 29 answer-pool fix(es) [g2u01.w.science, g2u01.w.webpage, g2u01.w.area, g2u01.w.art, g2u01.w.bicycle-lane, g2u01.w.break, g2u01.w.calendar, g2u01.w.design-and-technology, g2u01.w.english, g2u01.w.french, g2u01.w.geography, g2u01.w.grandmother, g2u01.w.history, g2u01.w.information-technology, g2u01.w.joke, g2u01.w.kilometre, g2u01.w.king, g2u01.w.lesson, g2u01.w.maths, g2u01.w.music, g2u01.w.online-safety, g2u01.w.opinion, g2u01.w.physical-education, g2u01.w.queen, g2u01.w.rubbish, g2u01.w.shadow, g2u01.w.spring, g2u01.w.supper, g2u01.w.timetable] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:35:58.585Z"
     }
   ]
 }

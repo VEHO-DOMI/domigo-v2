@@ -75,7 +75,7 @@
     },
     {
       "id": "g2u13.w.axe",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -130,6 +130,10 @@
         "enToDe": [
           {
             "text": "Axt",
+            "tier": "full"
+          },
+          {
+            "text": "die Axt",
             "tier": "full"
           }
         ]
@@ -213,7 +217,7 @@
     },
     {
       "id": "g2u13.w.binoculars",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -264,6 +268,10 @@
         "enToDe": [
           {
             "text": "Fernglas",
+            "tier": "full"
+          },
+          {
+            "text": "das Fernglas",
             "tier": "full"
           }
         ]
@@ -351,7 +359,7 @@
     },
     {
       "id": "g2u13.w.career",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -410,6 +418,14 @@
           },
           {
             "text": "Laufbahn",
+            "tier": "full"
+          },
+          {
+            "text": "die Karriere",
+            "tier": "full"
+          },
+          {
+            "text": "die Laufbahn",
             "tier": "full"
           }
         ]
@@ -501,7 +517,7 @@
     },
     {
       "id": "g2u13.w.coast",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -556,6 +572,10 @@
         "enToDe": [
           {
             "text": "Küste",
+            "tier": "full"
+          },
+          {
+            "text": "die Küste",
             "tier": "full"
           }
         ]
@@ -866,7 +886,7 @@
     },
     {
       "id": "g2u13.w.flash-of-light",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -926,6 +946,10 @@
           {
             "text": "Blitz",
             "tier": "partial"
+          },
+          {
+            "text": "der Lichtblitz",
+            "tier": "full"
           }
         ]
       },
@@ -939,7 +963,7 @@
     },
     {
       "id": "g2u13.w.fog",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -994,6 +1018,10 @@
         "enToDe": [
           {
             "text": "Nebel",
+            "tier": "full"
+          },
+          {
+            "text": "der Nebel",
             "tier": "full"
           }
         ]
@@ -1081,7 +1109,7 @@
     },
     {
       "id": "g2u13.w.forecast",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1141,6 +1169,14 @@
           {
             "text": "Wettervorhersage",
             "tier": "full"
+          },
+          {
+            "text": "die Vorhersage",
+            "tier": "full"
+          },
+          {
+            "text": "die Wettervorhersage",
+            "tier": "full"
           }
         ]
       },
@@ -1154,7 +1190,7 @@
     },
     {
       "id": "g2u13.w.formula",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1213,6 +1249,10 @@
         "enToDe": [
           {
             "text": "Formel",
+            "tier": "full"
+          },
+          {
+            "text": "die Formel",
             "tier": "full"
           }
         ]
@@ -1448,7 +1488,7 @@
     },
     {
       "id": "g2u13.w.hope",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1503,6 +1543,10 @@
         "enToDe": [
           {
             "text": "Hoffnung",
+            "tier": "full"
+          },
+          {
+            "text": "die Hoffnung",
             "tier": "full"
           }
         ]
@@ -1590,7 +1634,7 @@
     },
     {
       "id": "g2u13.w.inch",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1653,6 +1697,10 @@
         "enToDe": [
           {
             "text": "Zoll",
+            "tier": "full"
+          },
+          {
+            "text": "der Zoll",
             "tier": "full"
           }
         ]
@@ -1813,7 +1861,7 @@
     },
     {
       "id": "g2u13.w.outlook",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1873,6 +1921,14 @@
           {
             "text": "Ausblick",
             "tier": "full"
+          },
+          {
+            "text": "die Aussicht",
+            "tier": "full"
+          },
+          {
+            "text": "der Ausblick",
+            "tier": "full"
           }
         ]
       },
@@ -1886,7 +1942,7 @@
     },
     {
       "id": "g2u13.w.rainfall",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1941,6 +1997,14 @@
           },
           {
             "text": "Regenmenge",
+            "tier": "full"
+          },
+          {
+            "text": "der Niederschlag",
+            "tier": "full"
+          },
+          {
+            "text": "die Regenmenge",
             "tier": "full"
           }
         ]
@@ -2028,7 +2092,7 @@
     },
     {
       "id": "g2u13.w.scale",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2088,6 +2152,14 @@
           {
             "text": "Maßstab",
             "tier": "full"
+          },
+          {
+            "text": "die Skala",
+            "tier": "full"
+          },
+          {
+            "text": "der Maßstab",
+            "tier": "full"
           }
         ]
       },
@@ -2101,7 +2173,7 @@
     },
     {
       "id": "g2u13.w.sea-level",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2153,6 +2225,10 @@
           {
             "text": "Meeresspiegel",
             "tier": "full"
+          },
+          {
+            "text": "der Meeresspiegel",
+            "tier": "full"
           }
         ]
       },
@@ -2172,7 +2248,7 @@
     },
     {
       "id": "g2u13.w.small-talk",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2227,6 +2303,10 @@
           },
           {
             "text": "Small Talk",
+            "tier": "full"
+          },
+          {
+            "text": "die Plauderei",
             "tier": "full"
           }
         ]
@@ -2397,7 +2477,7 @@
     },
     {
       "id": "g2u13.w.sunshine",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2448,6 +2528,10 @@
         "enToDe": [
           {
             "text": "Sonnenschein",
+            "tier": "full"
+          },
+          {
+            "text": "der Sonnenschein",
             "tier": "full"
           }
         ]
@@ -2535,7 +2619,7 @@
     },
     {
       "id": "g2u13.w.temperature",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2590,6 +2674,10 @@
         "enToDe": [
           {
             "text": "Temperatur",
+            "tier": "full"
+          },
+          {
+            "text": "die Temperatur",
             "tier": "full"
           }
         ]
@@ -2750,7 +2838,7 @@
     },
     {
       "id": "g2u13.w.thunderstorm",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2809,6 +2897,10 @@
         "enToDe": [
           {
             "text": "Gewitter",
+            "tier": "full"
+          },
+          {
+            "text": "das Gewitter",
             "tier": "full"
           }
         ]

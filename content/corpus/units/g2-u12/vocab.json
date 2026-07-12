@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "g2u12.w.backache",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -74,6 +74,14 @@
           {
             "text": "Rückenschmerz",
             "tier": "partial"
+          },
+          {
+            "text": "die Rückenschmerzen",
+            "tier": "full"
+          },
+          {
+            "text": "das Rückenweh",
+            "tier": "full"
           }
         ]
       },
@@ -87,7 +95,7 @@
     },
     {
       "id": "g2u12.w.bath",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -163,6 +171,10 @@
           {
             "text": "Vollbad",
             "tier": "partial"
+          },
+          {
+            "text": "das Bad",
+            "tier": "full"
           }
         ]
       },
@@ -261,7 +273,7 @@
     },
     {
       "id": "g2u12.w.blood",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -316,7 +328,7 @@
           },
           {
             "text": "das Blut",
-            "tier": "partial"
+            "tier": "full"
           }
         ]
       },
@@ -330,7 +342,7 @@
     },
     {
       "id": "g2u12.w.cure",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -410,6 +422,10 @@
           {
             "text": "Heilung",
             "tier": "partial"
+          },
+          {
+            "text": "das Heilmittel",
+            "tier": "full"
           }
         ]
       },
@@ -516,7 +532,7 @@
     },
     {
       "id": "g2u12.w.earache",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -584,6 +600,14 @@
           {
             "text": "Ohrenschmerz",
             "tier": "partial"
+          },
+          {
+            "text": "die Ohrenschmerzen",
+            "tier": "full"
+          },
+          {
+            "text": "das Ohrenweh",
+            "tier": "full"
           }
         ]
       },
@@ -666,7 +690,7 @@
     },
     {
       "id": "g2u12.w.headache",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -746,6 +770,14 @@
           {
             "text": "Kopfschmerz",
             "tier": "partial"
+          },
+          {
+            "text": "die Kopfschmerzen",
+            "tier": "full"
+          },
+          {
+            "text": "das Kopfweh",
+            "tier": "full"
           }
         ]
       },
@@ -1002,7 +1034,7 @@
     },
     {
       "id": "g2u12.w.knee",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1066,6 +1098,10 @@
           {
             "text": "Knie",
             "tier": "full"
+          },
+          {
+            "text": "das Knie",
+            "tier": "full"
           }
         ]
       },
@@ -1079,7 +1115,7 @@
     },
     {
       "id": "g2u12.w.lamp-post",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1163,6 +1199,18 @@
           {
             "text": "Straßenlaterne",
             "tier": "full"
+          },
+          {
+            "text": "der Laternenmast",
+            "tier": "full"
+          },
+          {
+            "text": "die Laterne",
+            "tier": "full"
+          },
+          {
+            "text": "die Straßenlaterne",
+            "tier": "full"
           }
         ]
       },
@@ -1176,7 +1224,7 @@
     },
     {
       "id": "g2u12.w.medicine",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1244,6 +1292,14 @@
           {
             "text": "Medikament",
             "tier": "partial"
+          },
+          {
+            "text": "die Medizin",
+            "tier": "full"
+          },
+          {
+            "text": "die Arznei",
+            "tier": "full"
           }
         ]
       },
@@ -1257,7 +1313,7 @@
     },
     {
       "id": "g2u12.w.memory",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1317,6 +1373,10 @@
           {
             "text": "Erinnerung",
             "tier": "partial"
+          },
+          {
+            "text": "das Gedächtnis",
+            "tier": "full"
           }
         ]
       },
@@ -1686,7 +1746,7 @@
     },
     {
       "id": "g2u12.w.smell",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1745,7 +1805,7 @@
           },
           {
             "text": "der Geruch",
-            "tier": "partial"
+            "tier": "full"
           }
         ]
       },
@@ -1759,7 +1819,7 @@
     },
     {
       "id": "g2u12.w.spoon",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1834,7 +1894,7 @@
           },
           {
             "text": "der Löffel",
-            "tier": "partial"
+            "tier": "full"
           }
         ]
       },
@@ -1848,7 +1908,7 @@
     },
     {
       "id": "g2u12.w.stomach-ache",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1920,6 +1980,14 @@
           {
             "text": "Magenschmerzen",
             "tier": "partial"
+          },
+          {
+            "text": "die Bauchschmerzen",
+            "tier": "full"
+          },
+          {
+            "text": "das Bauchweh",
+            "tier": "full"
           }
         ]
       },
@@ -1933,7 +2001,7 @@
     },
     {
       "id": "g2u12.w.taste",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1992,7 +2060,7 @@
           },
           {
             "text": "der Geschmack",
-            "tier": "partial"
+            "tier": "full"
           }
         ]
       },
@@ -2006,7 +2074,7 @@
     },
     {
       "id": "g2u12.w.throat",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2074,6 +2142,14 @@
           {
             "text": "Rachen",
             "tier": "partial"
+          },
+          {
+            "text": "der Hals",
+            "tier": "full"
+          },
+          {
+            "text": "die Kehle",
+            "tier": "full"
           }
         ]
       },
@@ -2459,7 +2535,7 @@
     },
     {
       "id": "g2u12.w.toothache",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2527,6 +2603,14 @@
           {
             "text": "Zahnschmerz",
             "tier": "partial"
+          },
+          {
+            "text": "die Zahnschmerzen",
+            "tier": "full"
+          },
+          {
+            "text": "das Zahnweh",
+            "tier": "full"
           }
         ]
       },
@@ -2540,7 +2624,7 @@
     },
     {
       "id": "g2u12.w.toothpaste",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2600,6 +2684,14 @@
           {
             "text": "Zahnpaste",
             "tier": "partial"
+          },
+          {
+            "text": "die Zahnpasta",
+            "tier": "full"
+          },
+          {
+            "text": "die Zahncreme",
+            "tier": "full"
           }
         ]
       },
@@ -2613,7 +2705,7 @@
     },
     {
       "id": "g2u12.w.worm",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2688,7 +2780,7 @@
           },
           {
             "text": "der Wurm",
-            "tier": "partial"
+            "tier": "full"
           }
         ]
       },

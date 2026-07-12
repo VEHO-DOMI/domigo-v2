@@ -99,6 +99,20 @@
       "contentHash": "346862a945d4435632f1294780bb73a93829addb19a10192fb80081a247a22a1",
       "note": "variant mint for g2.st.wrong-name",
       "at": "2026-06-28T17:16:52.533Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "f1967f258083ea0770467a0aa99c794d0c16beeb97c25c9e58b919685491d9ba",
+      "note": "gen ingest: 22 vocab + 45 grammar item(s); draft ab34e26b358d",
+      "at": "2026-07-12T10:36:00.403Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "f1967f258083ea0770467a0aa99c794d0c16beeb97c25c9e58b919685491d9ba",
+      "note": "trusted patch (mechanical): 7 answer-pool fix(es) [g2u10.w.auntie, g2u10.w.fault, g2u10.w.file, g2u10.w.foreign-language, g2u10.w.ice-skating, g2u10.w.tool, g2u10.w.tractor] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:36:00.405Z"
     }
   ]
 }
