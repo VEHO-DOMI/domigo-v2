@@ -342,7 +342,7 @@
     },
     {
       "id": "g4u01.w.cattle",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -397,6 +397,14 @@
           },
           {
             "text": "Vieh",
+            "tier": "full"
+          },
+          {
+            "text": "die Rinder",
+            "tier": "full"
+          },
+          {
+            "text": "das Vieh",
             "tier": "full"
           }
         ]
@@ -488,7 +496,7 @@
     },
     {
       "id": "g4u01.w.crop",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -544,6 +552,10 @@
           {
             "text": "Ernte",
             "tier": "full"
+          },
+          {
+            "text": "die Ernte",
+            "tier": "full"
           }
         ]
       },
@@ -557,7 +569,7 @@
     },
     {
       "id": "g4u01.w.famine",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -608,6 +620,10 @@
         "enToDe": [
           {
             "text": "Hungersnot",
+            "tier": "full"
+          },
+          {
+            "text": "die Hungersnot",
             "tier": "full"
           }
         ]
@@ -845,7 +861,7 @@
     },
     {
       "id": "g4u01.w.free-state",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -897,6 +913,10 @@
           {
             "text": "Freistaat",
             "tier": "full"
+          },
+          {
+            "text": "der Freistaat",
+            "tier": "full"
           }
         ]
       },
@@ -910,7 +930,7 @@
     },
     {
       "id": "g4u01.w.fungus",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -966,6 +986,10 @@
           {
             "text": "Pilz",
             "tier": "full"
+          },
+          {
+            "text": "der Pilz",
+            "tier": "full"
           }
         ]
       },
@@ -979,7 +1003,7 @@
     },
     {
       "id": "g4u01.w.government",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1031,6 +1055,10 @@
           {
             "text": "Regierung",
             "tier": "full"
+          },
+          {
+            "text": "die Regierung",
+            "tier": "full"
           }
         ]
       },
@@ -1044,7 +1072,7 @@
     },
     {
       "id": "g4u01.w.grain",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1099,6 +1127,10 @@
         "enToDe": [
           {
             "text": "Getreide",
+            "tier": "full"
+          },
+          {
+            "text": "das Getreide",
             "tier": "full"
           }
         ]
@@ -1190,7 +1222,7 @@
     },
     {
       "id": "g4u01.w.hiking",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1241,6 +1273,10 @@
         "enToDe": [
           {
             "text": "Wandern",
+            "tier": "full"
+          },
+          {
+            "text": "das Wandern",
             "tier": "full"
           }
         ]
@@ -1405,7 +1441,7 @@
     },
     {
       "id": "g4u01.w.incident",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1465,6 +1501,10 @@
           {
             "text": "Vorfall",
             "tier": "partial"
+          },
+          {
+            "text": "der Zwischenfall",
+            "tier": "full"
           }
         ]
       },
@@ -1547,7 +1587,7 @@
     },
     {
       "id": "g4u01.w.intention",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1606,6 +1646,14 @@
           },
           {
             "text": "Vorhaben",
+            "tier": "full"
+          },
+          {
+            "text": "die Absicht",
+            "tier": "full"
+          },
+          {
+            "text": "das Vorhaben",
             "tier": "full"
           }
         ]
@@ -1701,7 +1749,7 @@
     },
     {
       "id": "g4u01.w.landlord",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1760,6 +1808,14 @@
           },
           {
             "text": "Vermieter",
+            "tier": "full"
+          },
+          {
+            "text": "der Grundbesitzer",
+            "tier": "full"
+          },
+          {
+            "text": "der Vermieter",
             "tier": "full"
           }
         ]
@@ -1839,7 +1895,7 @@
     },
     {
       "id": "g4u01.w.majority",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1891,6 +1947,10 @@
           {
             "text": "Mehrheit",
             "tier": "full"
+          },
+          {
+            "text": "die Mehrheit",
+            "tier": "full"
           }
         ]
       },
@@ -1904,7 +1964,7 @@
     },
     {
       "id": "g4u01.w.member",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1960,6 +2020,10 @@
           {
             "text": "Mitglied",
             "tier": "full"
+          },
+          {
+            "text": "das Mitglied",
+            "tier": "full"
           }
         ]
       },
@@ -1973,7 +2037,7 @@
     },
     {
       "id": "g4u01.w.nonsense",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2029,6 +2093,14 @@
           {
             "text": "Quatsch",
             "tier": "full"
+          },
+          {
+            "text": "der Unsinn",
+            "tier": "full"
+          },
+          {
+            "text": "der Quatsch",
+            "tier": "full"
           }
         ]
       },
@@ -2042,7 +2114,7 @@
     },
     {
       "id": "g4u01.w.primary-school",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2098,6 +2170,10 @@
           {
             "text": "Grundschule",
             "tier": "partial"
+          },
+          {
+            "text": "die Volksschule",
+            "tier": "full"
           }
         ]
       },
@@ -2391,7 +2467,7 @@
     },
     {
       "id": "g4u01.w.tax",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2459,6 +2535,14 @@
           {
             "text": "Steuern",
             "tier": "full"
+          },
+          {
+            "text": "die Steuer",
+            "tier": "full"
+          },
+          {
+            "text": "die Steuern",
+            "tier": "full"
           }
         ]
       },
@@ -2472,7 +2556,7 @@
     },
     {
       "id": "g4u01.w.thunder",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2523,6 +2607,10 @@
         "enToDe": [
           {
             "text": "Donner",
+            "tier": "full"
+          },
+          {
+            "text": "der Donner",
             "tier": "full"
           }
         ]

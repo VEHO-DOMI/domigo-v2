@@ -113,6 +113,20 @@
       "contentHash": "2a4426bd419efabd18a6046df868ab50dec75e9e70f4b7365488b4846debc371",
       "note": "round 1: 41 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-16T19:50:54.701Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "0f4e2b2b8975f98d949d1d83d816704cd6312edfc22ce262bdd46c58493385fd",
+      "note": "gen ingest: 37 vocab + 54 grammar item(s); draft 4a7ede2ca2c1",
+      "at": "2026-07-12T11:06:24.811Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "0f4e2b2b8975f98d949d1d83d816704cd6312edfc22ce262bdd46c58493385fd",
+      "note": "trusted patch (mechanical): 3 answer-pool fix(es) [g4u10.w.harmony, g4u10.w.ignorance, g4u10.w.pesticide] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:06:24.813Z"
     }
   ]
 }

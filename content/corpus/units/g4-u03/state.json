@@ -113,6 +113,20 @@
       "contentHash": "369ba6e44c9407d4c6500fe4409630c94272485b1edd734e5ecf16301095e312",
       "note": "round 1: 108 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-16T15:04:16.157Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "8dcea6926a2cfa5d97c9300fcf06f5a3cf0c881ed3abe946db518b943e777221",
+      "note": "gen ingest: 32 vocab + 73 grammar item(s); draft db01a50899d5",
+      "at": "2026-07-12T11:06:22.983Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "8dcea6926a2cfa5d97c9300fcf06f5a3cf0c881ed3abe946db518b943e777221",
+      "note": "trusted patch (mechanical): 17 answer-pool fix(es) [g4u03.w.announcement, g4u03.w.bravery, g4u03.w.campaign, g4u03.w.crowd-funding, g4u03.w.cuisine, g4u03.w.elevator, g4u03.w.emergency-landing, g4u03.w.flock-of-birds, g4u03.w.miracle, g4u03.w.origin, g4u03.w.politics, g4u03.w.rescue-boat, g4u03.w.runway, g4u03.w.statement, g4u03.w.takeoff, g4u03.w.treatment, g4u03.w.wing] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:06:22.985Z"
     }
   ]
 }

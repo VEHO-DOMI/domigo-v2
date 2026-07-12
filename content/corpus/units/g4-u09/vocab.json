@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "g4u09.w.border",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -62,6 +62,10 @@
           {
             "text": "Grenze",
             "tier": "full"
+          },
+          {
+            "text": "die Grenze",
+            "tier": "full"
           }
         ]
       },
@@ -75,7 +79,7 @@
     },
     {
       "id": "g4u09.w.bride",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -131,6 +135,10 @@
           {
             "text": "Braut",
             "tier": "full"
+          },
+          {
+            "text": "die Braut",
+            "tier": "full"
           }
         ]
       },
@@ -144,7 +152,7 @@
     },
     {
       "id": "g4u09.w.bridegroom",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -208,6 +216,10 @@
           {
             "text": "Bräutigam",
             "tier": "full"
+          },
+          {
+            "text": "der Bräutigam",
+            "tier": "full"
           }
         ]
       },
@@ -221,7 +233,7 @@
     },
     {
       "id": "g4u09.w.bridesmaid",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -276,6 +288,10 @@
         "enToDe": [
           {
             "text": "Brautjungfer",
+            "tier": "full"
+          },
+          {
+            "text": "die Brautjungfer",
             "tier": "full"
           }
         ]
@@ -359,7 +375,7 @@
     },
     {
       "id": "g4u09.w.ceremony",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -414,6 +430,10 @@
         "enToDe": [
           {
             "text": "Zeremonie",
+            "tier": "full"
+          },
+          {
+            "text": "die Zeremonie",
             "tier": "full"
           }
         ]
@@ -623,7 +643,7 @@
     },
     {
       "id": "g4u09.w.devil",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -674,6 +694,10 @@
         "enToDe": [
           {
             "text": "Teufel",
+            "tier": "full"
+          },
+          {
+            "text": "der Teufel",
             "tier": "full"
           }
         ]
@@ -956,7 +980,7 @@
     },
     {
       "id": "g4u09.w.funeral",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1012,6 +1036,10 @@
           {
             "text": "Begräbnis",
             "tier": "full"
+          },
+          {
+            "text": "das Begräbnis",
+            "tier": "full"
           }
         ]
       },
@@ -1025,7 +1053,7 @@
     },
     {
       "id": "g4u09.w.gesture",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1080,6 +1108,10 @@
         "enToDe": [
           {
             "text": "Geste",
+            "tier": "full"
+          },
+          {
+            "text": "die Geste",
             "tier": "full"
           }
         ]
@@ -1163,7 +1195,7 @@
     },
     {
       "id": "g4u09.w.goth",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1218,6 +1250,10 @@
         "enToDe": [
           {
             "text": "Grufti",
+            "tier": "full"
+          },
+          {
+            "text": "der Grufti",
             "tier": "full"
           }
         ]
@@ -1362,7 +1398,7 @@
     },
     {
       "id": "g4u09.w.health-risk",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1417,6 +1453,10 @@
         "enToDe": [
           {
             "text": "Gesundheitsrisiko",
+            "tier": "full"
+          },
+          {
+            "text": "das Gesundheitsrisiko",
             "tier": "full"
           }
         ]
@@ -1569,7 +1609,7 @@
     },
     {
       "id": "g4u09.w.index-finger",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1624,6 +1664,10 @@
         "enToDe": [
           {
             "text": "Zeigefinger",
+            "tier": "full"
+          },
+          {
+            "text": "der Zeigefinger",
             "tier": "full"
           }
         ]
@@ -1707,7 +1751,7 @@
     },
     {
       "id": "g4u09.w.needle",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1762,6 +1806,10 @@
         "enToDe": [
           {
             "text": "Nadel",
+            "tier": "full"
+          },
+          {
+            "text": "die Nadel",
             "tier": "full"
           }
         ]
@@ -1863,7 +1911,7 @@
     },
     {
       "id": "g4u09.w.palm",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1918,6 +1966,10 @@
         "enToDe": [
           {
             "text": "Handfläche",
+            "tier": "full"
+          },
+          {
+            "text": "die Handfläche",
             "tier": "full"
           }
         ]
@@ -2153,7 +2205,7 @@
     },
     {
       "id": "g4u09.w.possibility",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2208,6 +2260,10 @@
         "enToDe": [
           {
             "text": "Möglichkeit",
+            "tier": "full"
+          },
+          {
+            "text": "die Möglichkeit",
             "tier": "full"
           }
         ]
@@ -2510,7 +2566,7 @@
     },
     {
       "id": "g4u09.w.sitting-room",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2574,6 +2630,10 @@
           {
             "text": "Wohnzimmer",
             "tier": "full"
+          },
+          {
+            "text": "das Wohnzimmer",
+            "tier": "full"
           }
         ]
       },
@@ -2593,7 +2653,7 @@
     },
     {
       "id": "g4u09.w.sleeve",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2649,6 +2709,10 @@
           {
             "text": "Ärmel",
             "tier": "full"
+          },
+          {
+            "text": "der Ärmel",
+            "tier": "full"
           }
         ]
       },
@@ -2668,7 +2732,7 @@
     },
     {
       "id": "g4u09.w.thumb",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2724,6 +2788,10 @@
           {
             "text": "Daumen",
             "tier": "full"
+          },
+          {
+            "text": "der Daumen",
+            "tier": "full"
           }
         ]
       },
@@ -2737,7 +2805,7 @@
     },
     {
       "id": "g4u09.w.victory",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2793,6 +2861,10 @@
           {
             "text": "Sieg",
             "tier": "full"
+          },
+          {
+            "text": "der Sieg",
+            "tier": "full"
           }
         ]
       },
@@ -2806,7 +2878,7 @@
     },
     {
       "id": "g4u09.w.wedding-dress",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2862,6 +2934,10 @@
           {
             "text": "Brautkleid",
             "tier": "full"
+          },
+          {
+            "text": "das Brautkleid",
+            "tier": "full"
           }
         ]
       },
@@ -2881,7 +2957,7 @@
     },
     {
       "id": "g4u09.w.wedding-suit",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2936,6 +3012,10 @@
         "enToDe": [
           {
             "text": "Hochzeitsanzug",
+            "tier": "full"
+          },
+          {
+            "text": "der Hochzeitsanzug",
             "tier": "full"
           }
         ]

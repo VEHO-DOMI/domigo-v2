@@ -113,6 +113,20 @@
       "contentHash": "85d993378c1acee477036bd9ac98e7ace1af19106f788d82d08f2735ccd0ea07",
       "note": "round 1: 72 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-16T16:13:35.457Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "7063cfb12826be4498f0536f00e05169cdd804df505970c4b3e9bfb8792f8f1c",
+      "note": "gen ingest: 34 vocab + 57 grammar item(s); draft 562fe3f12b38",
+      "at": "2026-07-12T11:06:23.595Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "7063cfb12826be4498f0536f00e05169cdd804df505970c4b3e9bfb8792f8f1c",
+      "note": "trusted patch (mechanical): 9 answer-pool fix(es) [g4u05.w.cookery, g4u05.w.diet, g4u05.w.eating-disorder, g4u05.w.gym, g4u05.w.habits, g4u05.w.health, g4u05.w.hunger, g4u05.w.intake, g4u05.w.nutrition] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:06:23.596Z"
     }
   ]
 }

@@ -420,7 +420,7 @@
     },
     {
       "id": "g4u05.w.cookery",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -476,6 +476,10 @@
           {
             "text": "Kochen",
             "tier": "partial"
+          },
+          {
+            "text": "die Kochkunst",
+            "tier": "full"
           }
         ]
       },
@@ -489,7 +493,7 @@
     },
     {
       "id": "g4u05.w.diet",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -540,6 +544,10 @@
         "enToDe": [
           {
             "text": "Ernährung",
+            "tier": "full"
+          },
+          {
+            "text": "die Ernährung",
             "tier": "full"
           }
         ]
@@ -619,7 +627,7 @@
     },
     {
       "id": "g4u05.w.eating-disorder",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -670,6 +678,10 @@
         "enToDe": [
           {
             "text": "Essstörung",
+            "tier": "full"
+          },
+          {
+            "text": "die Essstörung",
             "tier": "full"
           }
         ]
@@ -1090,7 +1102,7 @@
     },
     {
       "id": "g4u05.w.gym",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1142,6 +1154,10 @@
           {
             "text": "Turnhalle",
             "tier": "full"
+          },
+          {
+            "text": "die Turnhalle",
+            "tier": "full"
           }
         ]
       },
@@ -1155,7 +1171,7 @@
     },
     {
       "id": "g4u05.w.habits",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1210,6 +1226,10 @@
         "enToDe": [
           {
             "text": "Gewohnheiten",
+            "tier": "full"
+          },
+          {
+            "text": "die Gewohnheiten",
             "tier": "full"
           }
         ]
@@ -1295,7 +1315,7 @@
     },
     {
       "id": "g4u05.w.health",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1346,6 +1366,10 @@
         "enToDe": [
           {
             "text": "Gesundheit",
+            "tier": "full"
+          },
+          {
+            "text": "die Gesundheit",
             "tier": "full"
           }
         ]
@@ -1425,7 +1449,7 @@
     },
     {
       "id": "g4u05.w.hunger",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1477,6 +1501,10 @@
           {
             "text": "Hunger",
             "tier": "full"
+          },
+          {
+            "text": "der Hunger",
+            "tier": "full"
           }
         ]
       },
@@ -1490,7 +1518,7 @@
     },
     {
       "id": "g4u05.w.intake",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1542,6 +1570,10 @@
           {
             "text": "Aufnahme",
             "tier": "full"
+          },
+          {
+            "text": "die Aufnahme",
+            "tier": "full"
           }
         ]
       },
@@ -1555,7 +1587,7 @@
     },
     {
       "id": "g4u05.w.nutrition",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1606,6 +1638,10 @@
         "enToDe": [
           {
             "text": "Ernährung",
+            "tier": "full"
+          },
+          {
+            "text": "die Ernährung",
             "tier": "full"
           }
         ]

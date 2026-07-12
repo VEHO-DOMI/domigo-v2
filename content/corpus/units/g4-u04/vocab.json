@@ -97,7 +97,7 @@
     },
     {
       "id": "g4u04.w.advice",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -156,6 +156,14 @@
           {
             "text": "Tipp",
             "tier": "partial"
+          },
+          {
+            "text": "der Ratschlag",
+            "tier": "full"
+          },
+          {
+            "text": "der Rat",
+            "tier": "full"
           }
         ]
       },
@@ -169,7 +177,7 @@
     },
     {
       "id": "g4u04.w.ambition",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -228,6 +236,10 @@
           {
             "text": "großes Ziel",
             "tier": "partial"
+          },
+          {
+            "text": "der Ehrgeiz",
+            "tier": "full"
           }
         ]
       },
@@ -433,7 +445,7 @@
     },
     {
       "id": "g4u04.w.bonus",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -496,6 +508,18 @@
           {
             "text": "Zulage",
             "tier": "full"
+          },
+          {
+            "text": "die Prämie",
+            "tier": "full"
+          },
+          {
+            "text": "der Bonus",
+            "tier": "full"
+          },
+          {
+            "text": "die Zulage",
+            "tier": "full"
           }
         ]
       },
@@ -525,7 +549,7 @@
     },
     {
       "id": "g4u04.w.career",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -588,6 +612,14 @@
           {
             "text": "Laufbahn",
             "tier": "partial"
+          },
+          {
+            "text": "die Karriere",
+            "tier": "full"
+          },
+          {
+            "text": "die Berufslaufbahn",
+            "tier": "full"
           }
         ]
       },
@@ -695,7 +727,7 @@
     },
     {
       "id": "g4u04.w.company",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -758,6 +790,14 @@
           {
             "text": "Betrieb",
             "tier": "partial"
+          },
+          {
+            "text": "die Firma",
+            "tier": "full"
+          },
+          {
+            "text": "das Unternehmen",
+            "tier": "full"
           }
         ]
       },
@@ -782,7 +822,7 @@
     },
     {
       "id": "g4u04.w.computing",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -842,6 +882,14 @@
           {
             "text": "Informatik",
             "tier": "partial"
+          },
+          {
+            "text": "das Computerwesen",
+            "tier": "full"
+          },
+          {
+            "text": "die Datenverarbeitung",
+            "tier": "full"
           }
         ]
       },
@@ -871,7 +919,7 @@
     },
     {
       "id": "g4u04.w.computing-2",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -931,6 +979,14 @@
           {
             "text": "Informatik",
             "tier": "partial"
+          },
+          {
+            "text": "die Datenverarbeitung",
+            "tier": "full"
+          },
+          {
+            "text": "das Computerwesen",
+            "tier": "full"
           }
         ]
       },
@@ -1049,7 +1105,7 @@
     },
     {
       "id": "g4u04.w.deadline",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1112,6 +1168,14 @@
           {
             "text": "Termin",
             "tier": "partial"
+          },
+          {
+            "text": "der Abgabetermin",
+            "tier": "full"
+          },
+          {
+            "text": "die Frist",
+            "tier": "full"
           }
         ]
       },
@@ -1667,7 +1731,7 @@
     },
     {
       "id": "g4u04.w.eye-contact",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1721,6 +1785,14 @@
           },
           {
             "text": "Blickkontakt",
+            "tier": "full"
+          },
+          {
+            "text": "der Augenkontakt",
+            "tier": "full"
+          },
+          {
+            "text": "der Blickkontakt",
             "tier": "full"
           }
         ]
@@ -1805,7 +1877,7 @@
     },
     {
       "id": "g4u04.w.finance",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1861,6 +1933,14 @@
           {
             "text": "Finanzen",
             "tier": "full"
+          },
+          {
+            "text": "das Finanzwesen",
+            "tier": "full"
+          },
+          {
+            "text": "die Finanzen",
+            "tier": "full"
           }
         ]
       },
@@ -1874,7 +1954,7 @@
     },
     {
       "id": "g4u04.w.finance-2",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1929,6 +2009,14 @@
           },
           {
             "text": "Finanzen",
+            "tier": "full"
+          },
+          {
+            "text": "das Finanzwesen",
+            "tier": "full"
+          },
+          {
+            "text": "die Finanzen",
             "tier": "full"
           }
         ]
@@ -2042,7 +2130,7 @@
     },
     {
       "id": "g4u04.w.health-care",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2110,6 +2198,10 @@
           {
             "text": "Gesundheitsbereich",
             "tier": "partial"
+          },
+          {
+            "text": "das Gesundheitswesen",
+            "tier": "full"
           }
         ]
       },
@@ -2129,7 +2221,7 @@
     },
     {
       "id": "g4u04.w.health-care-2",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2197,6 +2289,10 @@
           {
             "text": "Gesundheitsbereich",
             "tier": "partial"
+          },
+          {
+            "text": "das Gesundheitswesen",
+            "tier": "full"
           }
         ]
       },
@@ -2226,7 +2322,7 @@
     },
     {
       "id": "g4u04.w.interview",
-      "rev": 4,
+      "rev": 5,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2293,6 +2389,14 @@
           {
             "text": "Bewerbungsgespräch",
             "tier": "full"
+          },
+          {
+            "text": "das Vorstellungsgespräch",
+            "tier": "full"
+          },
+          {
+            "text": "das Bewerbungsgespräch",
+            "tier": "full"
           }
         ]
       },
@@ -2317,7 +2421,7 @@
     },
     {
       "id": "g4u04.w.journalism",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2367,6 +2471,10 @@
         "enToDe": [
           {
             "text": "Journalismus",
+            "tier": "full"
+          },
+          {
+            "text": "der Journalismus",
             "tier": "full"
           }
         ]
@@ -2540,7 +2648,7 @@
     },
     {
       "id": "g4u04.w.marketing",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2596,6 +2704,10 @@
           {
             "text": "Vermarktung",
             "tier": "partial"
+          },
+          {
+            "text": "das Marketing",
+            "tier": "full"
           }
         ]
       },
@@ -3180,7 +3292,7 @@
     },
     {
       "id": "g4u04.w.salary",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3239,6 +3351,10 @@
           {
             "text": "Lohn",
             "tier": "partial"
+          },
+          {
+            "text": "das Gehalt",
+            "tier": "full"
           }
         ]
       },
@@ -3334,7 +3450,7 @@
     },
     {
       "id": "g4u04.w.satisfaction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3388,6 +3504,14 @@
           },
           {
             "text": "Genugtuung",
+            "tier": "full"
+          },
+          {
+            "text": "die Zufriedenheit",
+            "tier": "full"
+          },
+          {
+            "text": "die Genugtuung",
             "tier": "full"
           }
         ]
@@ -3509,7 +3633,7 @@
     },
     {
       "id": "g4u04.w.skills",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3568,6 +3692,10 @@
           {
             "text": "Können",
             "tier": "partial"
+          },
+          {
+            "text": "die Fähigkeiten",
+            "tier": "full"
           }
         ]
       },
@@ -3749,7 +3877,7 @@
     },
     {
       "id": "g4u04.w.working-hours",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3803,6 +3931,14 @@
           },
           {
             "text": "Arbeitszeiten",
+            "tier": "full"
+          },
+          {
+            "text": "die Arbeitszeit",
+            "tier": "full"
+          },
+          {
+            "text": "die Arbeitszeiten",
             "tier": "full"
           }
         ]

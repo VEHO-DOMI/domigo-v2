@@ -99,7 +99,7 @@
     },
     {
       "id": "g4u07.w.aircraft",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -163,6 +163,10 @@
           {
             "text": "Maschine",
             "tier": "partial"
+          },
+          {
+            "text": "das Flugzeug",
+            "tier": "full"
           }
         ]
       },
@@ -176,7 +180,7 @@
     },
     {
       "id": "g4u07.w.airline",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -240,6 +244,14 @@
           {
             "text": "Airline",
             "tier": "partial"
+          },
+          {
+            "text": "die Fluglinie",
+            "tier": "full"
+          },
+          {
+            "text": "die Fluggesellschaft",
+            "tier": "full"
           }
         ]
       },
@@ -253,7 +265,7 @@
     },
     {
       "id": "g4u07.w.ambulance",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -317,6 +329,14 @@
           {
             "text": "Rettung",
             "tier": "partial"
+          },
+          {
+            "text": "der Krankenwagen",
+            "tier": "full"
+          },
+          {
+            "text": "der Rettungswagen",
+            "tier": "full"
           }
         ]
       },
@@ -427,7 +447,7 @@
     },
     {
       "id": "g4u07.w.bush-trail",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -495,6 +515,10 @@
           {
             "text": "Buschweg",
             "tier": "partial"
+          },
+          {
+            "text": "der Buschpfad",
+            "tier": "full"
           }
         ]
       },
@@ -508,7 +532,7 @@
     },
     {
       "id": "g4u07.w.cheque",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -580,6 +604,10 @@
           {
             "text": "ein Scheck",
             "tier": "partial"
+          },
+          {
+            "text": "der Scheck",
+            "tier": "full"
           }
         ]
       },
@@ -754,7 +782,7 @@
     },
     {
       "id": "g4u07.w.distance",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -826,6 +854,14 @@
           {
             "text": "Strecke",
             "tier": "partial"
+          },
+          {
+            "text": "die Entfernung",
+            "tier": "full"
+          },
+          {
+            "text": "die Distanz",
+            "tier": "full"
           }
         ]
       },
@@ -927,7 +963,7 @@
     },
     {
       "id": "g4u07.w.drugs",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1003,6 +1039,14 @@
           {
             "text": "Medizin",
             "tier": "partial"
+          },
+          {
+            "text": "die Medikamente",
+            "tier": "full"
+          },
+          {
+            "text": "die Arzneien",
+            "tier": "full"
           }
         ]
       },
@@ -1016,7 +1060,7 @@
     },
     {
       "id": "g4u07.w.envelope",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1080,6 +1124,14 @@
           {
             "text": "Umschlag",
             "tier": "partial"
+          },
+          {
+            "text": "das Kuvert",
+            "tier": "full"
+          },
+          {
+            "text": "der Briefumschlag",
+            "tier": "full"
           }
         ]
       },
@@ -1416,7 +1468,7 @@
     },
     {
       "id": "g4u07.w.headlight",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1484,6 +1536,10 @@
           {
             "text": "Autoscheinwerfer",
             "tier": "partial"
+          },
+          {
+            "text": "der Scheinwerfer",
+            "tier": "full"
           }
         ]
       },
@@ -1497,7 +1553,7 @@
     },
     {
       "id": "g4u07.w.heritage",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1557,6 +1613,14 @@
           {
             "text": "Kulturerbe",
             "tier": "partial"
+          },
+          {
+            "text": "das Erbe",
+            "tier": "full"
+          },
+          {
+            "text": "die Tradition",
+            "tier": "full"
           }
         ]
       },
@@ -1658,7 +1722,7 @@
     },
     {
       "id": "g4u07.w.landing",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1717,6 +1781,10 @@
         "enToDe": [
           {
             "text": "Landung",
+            "tier": "full"
+          },
+          {
+            "text": "die Landung",
             "tier": "full"
           }
         ]
@@ -1816,7 +1884,7 @@
     },
     {
       "id": "g4u07.w.pressure",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1880,6 +1948,10 @@
           {
             "text": "Stress",
             "tier": "partial"
+          },
+          {
+            "text": "der Druck",
+            "tier": "full"
           }
         ]
       },
@@ -1981,7 +2053,7 @@
     },
     {
       "id": "g4u07.w.reed",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2053,6 +2125,14 @@
           {
             "text": "Rohr",
             "tier": "partial"
+          },
+          {
+            "text": "das Schilfrohr",
+            "tier": "full"
+          },
+          {
+            "text": "das Schilf",
+            "tier": "full"
           }
         ]
       },
@@ -2066,7 +2146,7 @@
     },
     {
       "id": "g4u07.w.shade",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2118,6 +2198,10 @@
           {
             "text": "Schatten",
             "tier": "full"
+          },
+          {
+            "text": "der Schatten",
+            "tier": "full"
           }
         ]
       },
@@ -2131,7 +2215,7 @@
     },
     {
       "id": "g4u07.w.string",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2191,6 +2275,14 @@
           {
             "text": "Faden",
             "tier": "partial"
+          },
+          {
+            "text": "die Schnur",
+            "tier": "full"
+          },
+          {
+            "text": "der Bindfaden",
+            "tier": "full"
           }
         ]
       },
@@ -2204,7 +2296,7 @@
     },
     {
       "id": "g4u07.w.survival-skills",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2260,6 +2352,10 @@
           {
             "text": "Überlebenskünste",
             "tier": "partial"
+          },
+          {
+            "text": "die Überlebenstechniken",
+            "tier": "full"
           }
         ]
       },
@@ -2362,7 +2458,7 @@
     },
     {
       "id": "g4u07.w.walkabout",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2426,6 +2522,10 @@
           {
             "text": "Wanderung",
             "tier": "partial"
+          },
+          {
+            "text": "die Buschwanderung",
+            "tier": "full"
           }
         ]
       },

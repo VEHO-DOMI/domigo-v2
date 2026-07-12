@@ -134,6 +134,20 @@
       "contentHash": "bd4bc1a2ccf29303523e232fb833523eb06dc23ae261e9cbd5c081e740d0b600",
       "note": "round 1: 123 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-16T15:40:55.699Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "44dd182e776937b4d9aea7bf9c188aa0bb9d48772966a7a0329c125ba003a912",
+      "note": "gen ingest: 45 vocab + 75 grammar item(s); draft 119dd98caf15",
+      "at": "2026-07-12T11:06:23.292Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "44dd182e776937b4d9aea7bf9c188aa0bb9d48772966a7a0329c125ba003a912",
+      "note": "trusted patch (mechanical): 20 answer-pool fix(es) [g4u04.w.advice, g4u04.w.ambition, g4u04.w.bonus, g4u04.w.career, g4u04.w.company, g4u04.w.computing, g4u04.w.computing-2, g4u04.w.deadline, g4u04.w.eye-contact, g4u04.w.finance, g4u04.w.finance-2, g4u04.w.health-care, g4u04.w.health-care-2, g4u04.w.interview, g4u04.w.journalism, g4u04.w.marketing, g4u04.w.salary, g4u04.w.satisfaction, g4u04.w.skills, g4u04.w.working-hours] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:06:23.294Z"
     }
   ]
 }

@@ -127,6 +127,20 @@
       "contentHash": "fa13b94a59e90e6dceb1f10f4fa1089aeeffbe3eb4b0fa8fab71e58335aab082",
       "note": "round 1: 54 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-16T17:40:57.794Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "1b2b0e7b68bf7b5d2b48a27873a46423fcab5289d118b3216d428fa284757a75",
+      "note": "gen ingest: 30 vocab + 117 grammar item(s); draft 7943067c868a",
+      "at": "2026-07-12T11:06:24.203Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "1b2b0e7b68bf7b5d2b48a27873a46423fcab5289d118b3216d428fa284757a75",
+      "note": "trusted patch (mechanical): 17 answer-pool fix(es) [g4u07.w.aircraft, g4u07.w.airline, g4u07.w.ambulance, g4u07.w.bush-trail, g4u07.w.cheque, g4u07.w.distance, g4u07.w.drugs, g4u07.w.envelope, g4u07.w.headlight, g4u07.w.heritage, g4u07.w.landing, g4u07.w.pressure, g4u07.w.reed, g4u07.w.shade, g4u07.w.string, g4u07.w.survival-skills, g4u07.w.walkabout] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:06:24.206Z"
     }
   ]
 }
