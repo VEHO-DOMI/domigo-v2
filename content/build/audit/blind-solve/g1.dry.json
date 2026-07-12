@@ -1,5 +1,7 @@
 {
-  "schema": "blind-solve@1",
+  "schema": "blind-solve@2",
+  "generatedAt": "2026-07-12T15:04:27.295Z",
+  "corpusHash": "95c0b22c0bd80854",
   "mode": "no-llm",
   "model": null,
   "effort": null,

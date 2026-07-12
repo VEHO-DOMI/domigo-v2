@@ -63,6 +63,7 @@ import {
   type SolveCandidate,
   type Tier,
 } from "../../packages/content-pipeline/src/blind-solve.ts";
+import { corpusStamp } from "../../packages/content-pipeline/src/corpus-stamp.ts";
 import { applyItemFixes, readUnitItems } from "../../packages/content-pipeline/src/gen-items.ts";
 import { UNITS_DIR } from "../../packages/content-pipeline/src/paths.ts";
 import { gradeGrammar, gradeVocab } from "../../packages/engine/src/index.ts";
@@ -428,7 +429,10 @@ async function main(): Promise<void> {
       : null;
 
   const report = {
-    schema: "blind-solve@1",
+    schema: "blind-solve@2",
+    // Freshness stamp (V-2b): binds this committed report to the exact corpus state.
+    generatedAt: new Date().toISOString(),
+    corpusHash: corpusStamp(),
     mode,
     model: mode === "live" ? args.model : mode === "candidates-file" ? "external (fresh-context subagents)" : null,
     effort: mode === "live" ? args.effort : null,

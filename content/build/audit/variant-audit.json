@@ -1,5 +1,7 @@
 {
-  "schema": "variant-audit@1",
+  "schema": "variant-audit@2",
+  "generatedAt": "2026-07-12T15:04:27.165Z",
+  "corpusHash": "95c0b22c0bd80854",
   "totals": {
     "scanned": 5898,
     "critical": 0,

@@ -30,6 +30,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { countBlanks, type GrammarItem, type TieredAnswer, type VocabItem } from "@domigo/content-schema";
+import { corpusStamp } from "./corpus-stamp.ts";
 import { ITEM_FIXES_PATH, readUnitItems, type ItemFixes } from "./gen-items.ts";
 import { readJsonIfExists } from "./json.ts";
 import { langEvidence } from "./validate-items.ts";
@@ -343,9 +344,11 @@ export function runAuditVariants(): void {
   }
 
   fs.mkdirSync(AUDIT_DIR, { recursive: true });
+  // Freshness stamp (V-2b): binds this committed report to the exact corpus state.
+  const stamp = { generatedAt: new Date().toISOString(), corpusHash: corpusStamp() };
   fs.writeFileSync(
     path.join(AUDIT_DIR, "variant-audit.json"),
-    `${JSON.stringify({ schema: "variant-audit@1", totals: { scanned, critical, advisory, byRule, byGrade }, items: findings }, null, 2)}\n`,
+    `${JSON.stringify({ schema: "variant-audit@2", ...stamp, totals: { scanned, critical, advisory, byRule, byGrade }, items: findings }, null, 2)}\n`,
   );
 
   for (const grade of ["g1", "g2", "g3", "g4"]) {
