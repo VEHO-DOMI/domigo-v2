@@ -34,5 +34,6 @@ export * from "./assignment-service.ts"; // M-2: assignment CRUD + v1 class list
 export * from "./assignment-session.ts"; // M-3: pure session lifecycle + timing wall + scoring (DB-free)
 export * from "./assignment-session-service.ts"; // M-3: session CRUD + attempt read-back (best-effort)
 export * from "./assignment-results.ts"; // M-4: pure teacher-roster aggregation (DB-free)
+export * from "./identity.ts"; // P-1a: pure identity helpers (pickIdentity dual-read precedence, invite-code minting)
 export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth identity)
-export * from "./auth.ts"; // read-only identity lookups (lookupStudentForAuth/lookupTeacherForAuth)
+export * from "./auth.ts"; // v2→v1 dual-read identity lookups (lookupStudentForAuth/lookupTeacherForAuth) + allocateClassCode

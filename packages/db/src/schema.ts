@@ -301,3 +301,83 @@ export const reservedItems = v2.table(
     byClass: index("reserved_items_class_idx").on(t.classId),
   }),
 );
+
+// ── P-1a: v2-native identity (writable) — the dual-read auth foundation ────────
+// Today auth reads identity ONLY from v1's public.users/public.classes (the
+// read-only mirrors in v1.ts). These three tables let teachers later OWN classes
+// + rosters natively inside domigo_v2. Auth becomes an ordered dual-read (v2
+// first → v1 mirror fallback, see auth.ts + pickIdentity in identity.ts), so
+// every existing v1 login keeps working unchanged. Same no-FK, plain-uuid style
+// as every table above; ids that cross to `public` are reused v1 uuids.
+
+/**
+ * A v2-native person (student or teacher). `displayName` is the auth handle (the
+ * chosen nickname); `givenName` is the real first name captured for the teacher's
+ * roster view (nullable). `classId` is the student's class (plain uuid, nullable —
+ * teachers have none). `claimedAt` null ⇒ a provisional row (roster-imported but
+ * not yet claimed by the student setting a PIN); non-null ⇒ claimed. `role` is
+ * app-validated ('student'|'teacher'). Exported as `v2IdentityUsers` so it never
+ * shadows the v1 `users` mirror (v1.ts) at the TypeScript level.
+ */
+export const v2IdentityUsers = v2.table(
+  "users",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    role: text("role").notNull(), // 'student' | 'teacher' (app-validated)
+    displayName: text("display_name").notNull(), // chosen nickname (auth handle)
+    givenName: text("given_name"), // real given name for the roster (nullable)
+    classId: uuid("class_id"), // student's class — plain, nullable; teachers null. NO cross-schema FK
+    pinHash: text("pin_hash").notNull(),
+    claimedAt: timestamp("claimed_at", { withTimezone: true }), // null = provisional/unclaimed
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    byClass: index("users_class_idx").on(t.classId),
+  }),
+);
+
+/**
+ * A v2-native class OWNED by a teacher. `inviteCode` is globally unique (a v2 code
+ * is minted to avoid colliding with any v1 code too — see allocateClassCode in
+ * auth.ts). `teacherId` is the owning teacher's uuid (plain). `smartReviewEnabled`
+ * mirrors the v1 flag (default on). `archivedAt` null ⇒ active.
+ */
+export const v2Classes = v2.table(
+  "classes",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    name: text("name").notNull(),
+    inviteCode: text("invite_code").notNull(),
+    grade: smallint("grade").notNull(),
+    teacherId: uuid("teacher_id").notNull(), // owning teacher — plain uuid, NO cross-schema FK
+    smartReviewEnabled: boolean("smart_review_enabled").notNull().default(true),
+    archivedAt: timestamp("archived_at", { withTimezone: true }), // null = active
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    inviteCodeUnique: uniqueIndex("classes_invite_code_unique").on(t.inviteCode),
+    byTeacher: index("classes_teacher_idx").on(t.teacherId),
+  }),
+);
+
+/**
+ * The roster journal. Neon HTTP has no multi-statement transactions, so roster
+ * mutations use journal-then-flip: append the intent HERE first, then flip the
+ * live `users`/`classes` state. `kind` is app-validated; `payload` is the
+ * operation's data (imported names, the claimed id, the new name, …); `actorId`
+ * is the teacher/actor uuid (nullable — e.g. a self-serve student claim).
+ */
+export const v2RosterEvents = v2.table(
+  "roster_events",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    classId: uuid("class_id").notNull(),
+    kind: text("kind").notNull(), // 'import'|'claim'|'rename'|'remove'|'reset_pin' (app-validated)
+    payload: jsonb("payload").notNull(),
+    actorId: uuid("actor_id"), // teacher/actor uuid — nullable, NO cross-schema FK
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    byClass: index("roster_events_class_idx").on(t.classId),
+  }),
+);
