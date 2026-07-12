@@ -127,6 +127,20 @@
       "contentHash": "119f100b54e96ac21177541bfe1a8387ac1fbf1da647e7d998de89613c530d71",
       "note": "trusted patch (mechanical): 17 answer-pool fix(es) [g1u02.w.car, g1u02.w.child, g1u02.w.dog, g1u02.w.family, g1u02.w.giraffe, g1u02.w.grandma, g1u02.w.group, g1u02.w.lion, g1u02.w.monkey, g1u02.w.parrot, g1u02.w.penguin, g1u02.w.stone, g1u02.w.ticket, g1u02.w.train, g1u02.w.tree, g1u02.w.year, g1u02.w.zoo] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:10:09.239Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "a2e12ea514a0d840907a02f41d8e0669d2bf204dbc5fcb4c29860b3cfb28b7a4",
+      "note": "gen ingest: 52 vocab + 186 grammar item(s); draft 767dba021d1a",
+      "at": "2026-07-12T11:30:31.611Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "a2e12ea514a0d840907a02f41d8e0669d2bf204dbc5fcb4c29860b3cfb28b7a4",
+      "note": "trusted patch (mechanical): 3 answer-pool fix(es) [g1u02.gi.there-is-are.ec.005, g1u02.gi.there-is-are.tr.005, g1u02.gi.to-be.ff.001] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:30:31.613Z"
     }
   ]
 }

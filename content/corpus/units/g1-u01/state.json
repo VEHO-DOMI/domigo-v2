@@ -162,6 +162,20 @@
       "contentHash": "9cc65d99d25977fa031688472a1e9901251ce824e1a40193cc6905b62b2ee841",
       "note": "trusted patch (mechanical): 30 answer-pool fix(es) [g1u01.w.board, g1u01.w.book, g1u01.w.chair, g1u01.w.child, g1u01.w.desk, g1u01.w.door, g1u01.w.exercise-book, g1u01.w.hairband, g1u01.w.hat, g1u01.w.midnight, g1u01.w.pen, g1u01.w.pencil, g1u01.w.pencil-case, g1u01.w.picture, g1u01.w.projector, g1u01.w.rubber, g1u01.w.ruler, g1u01.w.school-bag, g1u01.w.school-tie, g1u01.w.scissors, g1u01.w.shirt, g1u01.w.shoe, g1u01.w.skirt, g1u01.w.socks, g1u01.w.sound-system, g1u01.w.sunglasses, g1u01.w.sweater, g1u01.w.tablet, g1u01.w.time, g1u01.w.window] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T09:36:42.187Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "56d9684d48f7f7014ab9860d9e867b8385df21ddf157aa557cce772c7daea5a8",
+      "note": "gen ingest: 68 vocab + 171 grammar item(s); draft 10541db0539d",
+      "at": "2026-07-12T11:30:31.297Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "56d9684d48f7f7014ab9860d9e867b8385df21ddf157aa557cce772c7daea5a8",
+      "note": "trusted patch (mechanical): 7 answer-pool fix(es) [g1u01.gi.imperatives.ff.001, g1u01.gi.imperatives.tf.001, g1u01.gi.imperatives.tf.004, g1u01.gi.imperatives.tr.004, g1u01.gi.questions-personal-info.ec.002, g1u01.gi.questions-personal-info.ff.001, g1u01.gi.questions-personal-info.tr.001] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:30:31.301Z"
     }
   ]
 }

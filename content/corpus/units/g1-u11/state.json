@@ -155,6 +155,20 @@
       "contentHash": "5d65a2da3f02ba5fec1f8e3a173bd765f07c343f60004949284546da5d4e7f20",
       "note": "trusted patch (mechanical): 16 answer-pool fix(es) [g1u11.w.bedtime, g1u11.w.break, g1u11.w.bush, g1u11.w.clock, g1u11.w.clue, g1u11.w.free-time, g1u11.w.knock, g1u11.w.living-room, g1u11.w.midday, g1u11.w.midnight, g1u11.w.place, g1u11.w.programme, g1u11.w.road, g1u11.w.surprise, g1u11.w.text-message, g1u11.w.weather] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:10:12.024Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "34e3c8eef33957e53a68e603564fe3fa1961d06d6a1c02a9ad948cea976b252e",
+      "note": "gen ingest: 58 vocab + 38 grammar item(s); draft 2cd11dc2dc6c",
+      "at": "2026-07-12T11:30:33.454Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "34e3c8eef33957e53a68e603564fe3fa1961d06d6a1c02a9ad948cea976b252e",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g1u11.gi.present-continuous.tr.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:30:33.456Z"
     }
   ]
 }

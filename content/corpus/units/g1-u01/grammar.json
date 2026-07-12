@@ -2773,7 +2773,7 @@
       "id": "g1u01.gi.imperatives.ff.001",
       "structureId": "g1u01.s.imperatives",
       "format": "free-form",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2808,6 +2808,10 @@
         {
           "text": "Don't eat!",
           "tier": "partial"
+        },
+        {
+          "text": "Do not eat in class!",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -4015,7 +4019,7 @@
       "id": "g1u01.gi.imperatives.tf.001",
       "structureId": "g1u01.s.imperatives",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4045,6 +4049,10 @@
         },
         {
           "text": "Do not open your books.",
+          "tier": "full"
+        },
+        {
+          "text": "Do not open your books!",
           "tier": "full"
         }
       ],
@@ -4151,7 +4159,7 @@
       "id": "g1u01.gi.imperatives.tf.004",
       "structureId": "g1u01.s.imperatives",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -4181,6 +4189,10 @@
         },
         {
           "text": "Do not open the window!",
+          "tier": "full"
+        },
+        {
+          "text": "Do not open the window.",
           "tier": "full"
         }
       ],
@@ -4375,7 +4387,7 @@
       "id": "g1u01.gi.imperatives.tr.004",
       "structureId": "g1u01.s.imperatives",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -4405,6 +4417,10 @@
         },
         {
           "text": "Don't open your books.",
+          "tier": "full"
+        },
+        {
+          "text": "Do not open your books.",
           "tier": "full"
         }
       ],
@@ -7255,7 +7271,7 @@
       "id": "g1u01.gi.questions-personal-info.ec.002",
       "structureId": "g1u01.s.questions-personal-info",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -7286,6 +7302,10 @@
         {
           "text": "I'm fine.",
           "tier": "partial"
+        },
+        {
+          "text": "How are you? – I am fine, thanks.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -7303,7 +7323,7 @@
       "id": "g1u01.gi.questions-personal-info.ff.001",
       "structureId": "g1u01.s.questions-personal-info",
       "format": "free-form",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -7338,6 +7358,14 @@
         {
           "text": "How are you?",
           "tier": "partial"
+        },
+        {
+          "text": "I am Don. How are you?",
+          "tier": "full"
+        },
+        {
+          "text": "I am Mike. How are you?",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -7907,7 +7935,7 @@
       "id": "g1u01.gi.questions-personal-info.tr.001",
       "structureId": "g1u01.s.questions-personal-info",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -7934,6 +7962,10 @@
         {
           "text": "How are you? – I'm fine, thanks.",
           "tier": "partial"
+        },
+        {
+          "text": "How are you? – I am fine, thanks. And you?",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",

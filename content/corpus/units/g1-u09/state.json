@@ -120,6 +120,20 @@
       "contentHash": "07ee7d83a2af6931edfa09788a8b8d22ed6e7162bccbdde6c69b1393846f8f71",
       "note": "trusted patch (mechanical): 35 answer-pool fix(es) [g1u09.w.basket, g1u09.w.bat, g1u09.w.beginning, g1u09.w.box, g1u09.w.budgie, g1u09.w.cage, g1u09.w.camel, g1u09.w.cuddly-toy, g1u09.w.daughter, g1u09.w.elephant, g1u09.w.ending, g1u09.w.farm, g1u09.w.fish, g1u09.w.fur, g1u09.w.grandpa, g1u09.w.guinea-pig, g1u09.w.letter, g1u09.w.lizard, g1u09.w.man, g1u09.w.mother, g1u09.w.mouse, g1u09.w.mouse-2, g1u09.w.newspaper, g1u09.w.noise, g1u09.w.owl, g1u09.w.pig, g1u09.w.pony, g1u09.w.rabbit, g1u09.w.rat, g1u09.w.shark, g1u09.w.spider, g1u09.w.tank, g1u09.w.terrarium, g1u09.w.tortoise, g1u09.w.zebra] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:10:11.404Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "1ce618005d51f4eca6ad6ad30a4810423e34192c1d81a1b73a68ff106ba44251",
+      "note": "gen ingest: 57 vocab + 89 grammar item(s); draft 678647c63713",
+      "at": "2026-07-12T11:30:33.150Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "1ce618005d51f4eca6ad6ad30a4810423e34192c1d81a1b73a68ff106ba44251",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g1u09.gi.object-pronouns.tr.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:30:33.152Z"
     }
   ]
 }

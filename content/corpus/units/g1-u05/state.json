@@ -190,6 +190,20 @@
       "contentHash": "fc9a79c15762485977481063962bbac5bbe4ba87c8a3f7c12805f0f622f14cec",
       "note": "trusted patch (mechanical): 16 answer-pool fix(es) [g1u05.w.can, g1u05.w.concert, g1u05.w.drums, g1u05.w.economy, g1u05.w.guitar, g1u05.w.hospital, g1u05.w.job, g1u05.w.keyboard, g1u05.w.pound, g1u05.w.profit, g1u05.w.saxophone, g1u05.w.school-canteen, g1u05.w.sister, g1u05.w.table, g1u05.w.tongue, g1u05.w.uncle] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:10:10.173Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "d3d6f9b55d7e9b0a25f8e69a850bdbe54dbedf26f98bfc279fd072acdaf54451",
+      "note": "gen ingest: 44 vocab + 50 grammar item(s); draft 858240af27ee",
+      "at": "2026-07-12T11:30:32.503Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "d3d6f9b55d7e9b0a25f8e69a850bdbe54dbedf26f98bfc279fd072acdaf54451",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g1u05.gi.possessives.tf.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:30:32.505Z"
     }
   ]
 }

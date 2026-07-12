@@ -134,6 +134,20 @@
       "contentHash": "ff416cf9dccd2efea50052a1fc8270f9ed43e744c5b18bf1d579b764b6032ac9",
       "note": "trusted patch (mechanical): 46 answer-pool fix(es) [g1u07.w.beans, g1u07.w.bread, g1u07.w.breakfast, g1u07.w.broccoli, g1u07.w.butter, g1u07.w.cake, g1u07.w.carrot, g1u07.w.cheese, g1u07.w.chicken, g1u07.w.chillies, g1u07.w.chips, g1u07.w.chocolate, g1u07.w.cucumber, g1u07.w.dinner, g1u07.w.egg, g1u07.w.fish, g1u07.w.glass, g1u07.w.grapes, g1u07.w.ham, g1u07.w.hamburger, g1u07.w.ice-cream, g1u07.w.kiwi, g1u07.w.lunch, g1u07.w.meat, g1u07.w.menu, g1u07.w.milk, g1u07.w.mineral-water, g1u07.w.money, g1u07.w.mum, g1u07.w.onion, g1u07.w.orange-juice, g1u07.w.pasta, g1u07.w.peas, g1u07.w.pizza, g1u07.w.plate, g1u07.w.restaurant, g1u07.w.rice, g1u07.w.salad, g1u07.w.sandwich, g1u07.w.sausages, g1u07.w.soup, g1u07.w.spinach, g1u07.w.strawberry, g1u07.w.sugar, g1u07.w.tea, g1u07.w.vegetable] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
       "at": "2026-07-12T10:10:10.791Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "1e730d63ce58b54dd2f70899c0d530c99d72842ffbe13ec2790a14bb67c5614e",
+      "note": "gen ingest: 67 vocab + 78 grammar item(s); draft 25ef61d1f1e7",
+      "at": "2026-07-12T11:30:32.845Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "1e730d63ce58b54dd2f70899c0d530c99d72842ffbe13ec2790a14bb67c5614e",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g1u07.gi.adverbs-frequency.tf.002] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:30:32.848Z"
     }
   ]
 }

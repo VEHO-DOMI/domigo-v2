@@ -2,20 +2,19 @@
   "schema": "variant-audit@1",
   "totals": {
     "scanned": 5898,
-    "critical": 212,
-    "advisory": 286,
+    "critical": 166,
+    "advisory": 301,
     "byRule": {
-      "R2": 336,
-      "R3": 159,
-      "R1": 3
+      "R2": 308,
+      "R3": 159
     },
     "byGrade": {
       "g1": {
-        "critical": 44,
-        "advisory": 104
+        "critical": 0,
+        "advisory": 119
       },
       "g2": {
-        "critical": 25,
+        "critical": 24,
         "advisory": 44
       },
       "g3": {
@@ -23,7 +22,7 @@
         "advisory": 77
       },
       "g4": {
-        "critical": 67,
+        "critical": 66,
         "advisory": 61
       }
     }
@@ -41,9 +40,9 @@
       "itemId": "g1u01.gi.contractions.ec.006",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They're here today.\" has no expanded twin",
-      "suggestion": "add \"they are here today.\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"They're here today.\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.ec.007",
@@ -65,9 +64,9 @@
       "itemId": "g1u01.gi.contractions.gf.001",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm\" has no expanded twin",
-      "suggestion": "add \"i am\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"I'm\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.gf.002",
@@ -89,9 +88,9 @@
       "itemId": "g1u01.gi.contractions.gf.004",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"isn't\" has no expanded twin",
-      "suggestion": "add \"is not\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"isn't\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.gf.005",
@@ -113,17 +112,17 @@
       "itemId": "g1u01.gi.contractions.gf.008",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They're\" has no expanded twin",
-      "suggestion": "add \"they are\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"They're\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.gf.009",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"aren't\" has no expanded twin",
-      "suggestion": "add \"are not\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"aren't\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.gf.010",
@@ -145,9 +144,9 @@
       "itemId": "g1u01.gi.contractions.gf.012",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Don't\" has no expanded twin",
-      "suggestion": "add \"do not\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"Don't\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.tf.001",
@@ -169,17 +168,17 @@
       "itemId": "g1u01.gi.contractions.tf.002",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm here.\" has no expanded twin",
-      "suggestion": "add \"i am here.\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"I'm here.\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.tf.003",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"It is not here.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"It is not here.\" has no contracted twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.tf.003",
@@ -193,9 +192,9 @@
       "itemId": "g1u01.gi.contractions.tf.004",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We are not here.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"We are not here.\" has no contracted twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.tf.004",
@@ -225,9 +224,9 @@
       "itemId": "g1u01.gi.contractions.tf.006",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They are in our class.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"They are in our class.\" has no contracted twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.tf.006",
@@ -241,9 +240,9 @@
       "itemId": "g1u01.gi.contractions.tf.007",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"It isn't here.\" has no expanded twin",
-      "suggestion": "add \"it is not here.\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"It isn't here.\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.tf.007",
@@ -257,9 +256,9 @@
       "itemId": "g1u01.gi.contractions.tr.001",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm in class one.\" has no expanded twin",
-      "suggestion": "add \"i am in class one.\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"I'm in class one.\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.tr.002",
@@ -273,9 +272,9 @@
       "itemId": "g1u01.gi.contractions.tr.003",
       "unitSlug": "g1-u01",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"That isn't my pen.\" has no expanded twin",
-      "suggestion": "add \"that is not my pen.\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"That isn't my pen.\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u01.gi.contractions.tr.003",
@@ -294,68 +293,12 @@
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
-      "itemId": "g1u01.gi.imperatives.ff.001",
-      "unitSlug": "g1-u01",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Don't eat in class!\" has no expanded twin",
-      "suggestion": "add \"do not eat in class!\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.gi.imperatives.tf.001",
-      "unitSlug": "g1-u01",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Don't open your books!\" has no expanded twin",
-      "suggestion": "add \"do not open your books!\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.gi.imperatives.tf.004",
-      "unitSlug": "g1-u01",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Don't open the window.\" has no expanded twin",
-      "suggestion": "add \"do not open the window.\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.gi.imperatives.tr.004",
-      "unitSlug": "g1-u01",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Don't open your books.\" has no expanded twin",
-      "suggestion": "add \"do not open your books.\" as a full answer"
-    },
-    {
       "itemId": "g1u01.gi.questions-personal-info.ec.001",
       "unitSlug": "g1-u01",
       "rule": "R2",
       "severity": "advisory",
       "evidence": "full answer \"What's your name?\" carries an ambiguous 's/'d — expansion needs a human",
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
-    },
-    {
-      "itemId": "g1u01.gi.questions-personal-info.ec.002",
-      "unitSlug": "g1-u01",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"How are you? – I'm fine, thanks.\" has no expanded twin",
-      "suggestion": "add \"how are you? – i am fine, thanks.\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.gi.questions-personal-info.ff.001",
-      "unitSlug": "g1-u01",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm Don. How are you?\" has no expanded twin",
-      "suggestion": "add \"i am don. how are you?\" as a full answer"
-    },
-    {
-      "itemId": "g1u01.gi.questions-personal-info.ff.001",
-      "unitSlug": "g1-u01",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm Mike. How are you?\" has no expanded twin",
-      "suggestion": "add \"i am mike. how are you?\" as a full answer"
     },
     {
       "itemId": "g1u01.gi.questions-personal-info.gf.001",
@@ -406,28 +349,12 @@
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
-      "itemId": "g1u01.gi.questions-personal-info.tr.001",
-      "unitSlug": "g1-u01",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"How are you? – I'm fine, thanks. And you?\" has no expanded twin",
-      "suggestion": "add \"how are you? – i am fine, thanks. and you?\" as a full answer"
-    },
-    {
       "itemId": "g1u01.gi.questions-personal-info.tr.002",
       "unitSlug": "g1-u01",
       "rule": "R2",
       "severity": "advisory",
       "evidence": "full answer \"What's your name?\" carries an ambiguous 's/'d — expansion needs a human",
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
-    },
-    {
-      "itemId": "g1u01.w.favourite",
-      "unitSlug": "g1-u01",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Lieblings- | liebste] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Lieblings-\" as a full answer"
     },
     {
       "itemId": "g1u02.gi.prepositions-place.ec.004",
@@ -521,14 +448,6 @@
       "itemId": "g1u02.gi.there-is-are.ec.005",
       "unitSlug": "g1-u02",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"There isn't a lion in front of the train.\" has no expanded twin",
-      "suggestion": "add \"there is not a lion in front of the train.\" as a full answer"
-    },
-    {
-      "itemId": "g1u02.gi.there-is-are.ec.005",
-      "unitSlug": "g1-u02",
-      "rule": "R2",
       "severity": "advisory",
       "evidence": "full answer \"There's no lion in front of the train.\" carries an ambiguous 's/'d — expansion needs a human",
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
@@ -593,14 +512,6 @@
       "itemId": "g1u02.gi.there-is-are.tr.005",
       "unitSlug": "g1-u02",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"There isn't a ruler on the desk.\" has no expanded twin",
-      "suggestion": "add \"there is not a ruler on the desk.\" as a full answer"
-    },
-    {
-      "itemId": "g1u02.gi.there-is-are.tr.005",
-      "unitSlug": "g1-u02",
-      "rule": "R2",
       "severity": "advisory",
       "evidence": "full answer \"There's no ruler on the desk.\" carries an ambiguous 's/'d — expansion needs a human",
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
@@ -622,30 +533,6 @@
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
-      "itemId": "g1u02.gi.to-be.ff.001",
-      "unitSlug": "g1-u02",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I am from England.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g1u02.gi.to-be.ff.001",
-      "unitSlug": "g1-u02",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I am happy.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g1u02.gi.to-be.ff.001",
-      "unitSlug": "g1-u02",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I'm from London.\" has no expanded twin",
-      "suggestion": "add \"i am from london.\" as a full answer"
-    },
-    {
       "itemId": "g1u02.gi.to-be.tf.002",
       "unitSlug": "g1-u02",
       "rule": "R2",
@@ -665,17 +552,17 @@
       "itemId": "g1u02.gi.to-be.tf.003",
       "unitSlug": "g1-u02",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They're in Year 7.\" has no expanded twin",
-      "suggestion": "add \"they are in year 7.\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"They're in Year 7.\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u02.gi.to-be.tf.003",
       "unitSlug": "g1-u02",
       "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They're\" has no expanded twin",
-      "suggestion": "add \"they are\" as a full answer"
+      "severity": "advisory",
+      "evidence": "full answer \"They're\" has no expanded twin (form-drill: asymmetry intended)",
+      "suggestion": "form-drill — leave asymmetric (the exercise wants this one form)"
     },
     {
       "itemId": "g1u02.gi.to-be.tf.005",
@@ -710,36 +597,12 @@
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
-      "itemId": "g1u03.gi.have-got.ec.003",
-      "unitSlug": "g1-u03",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They haven't got a ship.\" has no expanded twin",
-      "suggestion": "add \"they have not got a ship.\" as a full answer"
-    },
-    {
       "itemId": "g1u03.gi.have-got.qf.001",
       "unitSlug": "g1-u03",
       "rule": "R3",
       "severity": "advisory",
       "evidence": "question-formation accepts exactly one full answer: \"Have you got a parrot?\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g1u04.gi.to-be-negative.ec.001",
-      "unitSlug": "g1-u04",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"She isn't sad.\" has no expanded twin",
-      "suggestion": "add \"she is not sad.\" as a full answer"
-    },
-    {
-      "itemId": "g1u04.gi.to-be-negative.ec.002",
-      "unitSlug": "g1-u04",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They aren't hungry.\" has no expanded twin",
-      "suggestion": "add \"they are not hungry.\" as a full answer"
     },
     {
       "itemId": "g1u04.gi.to-be-questions.qf.001",
@@ -790,28 +653,12 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g1u05.gi.possessives.tf.002",
-      "unitSlug": "g1-u05",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They are our guitars.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
       "itemId": "g1u06.gi.present-simple.qf.001",
       "unitSlug": "g1-u06",
       "rule": "R3",
       "severity": "advisory",
       "evidence": "question-formation accepts exactly one full answer: \"What does she read?\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g1u07.gi.adverbs-frequency.tf.002",
-      "unitSlug": "g1-u07",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They are often happy.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
     },
     {
       "itemId": "g1u07.gi.adverbs-frequency.tr.002",
@@ -828,14 +675,6 @@
       "severity": "advisory",
       "evidence": "full answer \"colour | It's\" carries an ambiguous 's/'d — expansion needs a human",
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
-    },
-    {
-      "itemId": "g1u09.gi.object-pronouns.tr.002",
-      "unitSlug": "g1-u09",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We don't like him.\" has no expanded twin",
-      "suggestion": "add \"we do not like him.\" as a full answer"
     },
     {
       "itemId": "g1u09.gi.possessive-s.ec.001",
@@ -1046,22 +885,6 @@
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
     },
     {
-      "itemId": "g1u11.gi.present-continuous.tr.002",
-      "unitSlug": "g1-u11",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Are you sleeping? – No, I'm not.\" has no expanded twin",
-      "suggestion": "add \"are you sleeping? – no, i am not.\" as a full answer"
-    },
-    {
-      "itemId": "g1u11.gi.present-continuous.tr.002",
-      "unitSlug": "g1-u11",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Are you sleeping? No, I am not.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
       "itemId": "g1u12.gi.past-simple-was-were.qf.001",
       "unitSlug": "g1-u12",
       "rule": "R3",
@@ -1076,22 +899,6 @@
       "severity": "advisory",
       "evidence": "question-formation accepts exactly one full answer: \"Were Sandra and Kate in the garden?\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g1u12.gi.past-simple-was-were.tf.003",
-      "unitSlug": "g1-u12",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They weren't at school.\" has no expanded twin",
-      "suggestion": "add \"they were not at school.\" as a full answer"
-    },
-    {
-      "itemId": "g1u12.gi.past-simple-was-were.tr.002",
-      "unitSlug": "g1-u12",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Yesterday he wasn't at school.\" has no expanded twin",
-      "suggestion": "add \"yesterday he was not at school.\" as a full answer"
     },
     {
       "itemId": "g1u12.gi.prepositions-time.tf.001",
@@ -1150,22 +957,6 @@
       "suggestion": "decide is/has (or would/had) and add the expanded twin if the register allows it"
     },
     {
-      "itemId": "g1u15.gi.going-to.ec.006",
-      "unitSlug": "g1-u15",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I am going to play football on the beach.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g1u15.gi.going-to.ec.008",
-      "unitSlug": "g1-u15",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"They are going to visit a national park.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
       "itemId": "g1u15.gi.going-to.qf.001",
       "unitSlug": "g1-u15",
       "rule": "R3",
@@ -1188,30 +979,6 @@
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"Is | going to fly\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g1u15.gi.going-to.tf.007",
-      "unitSlug": "g1-u15",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"I am not going to cook dinner.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g1u15.gi.going-to.tr.002",
-      "unitSlug": "g1-u15",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"Are you going to lie in the sun? Yes, I am\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
-    },
-    {
-      "itemId": "g1u15.gi.going-to.tr.003",
-      "unitSlug": "g1-u15",
-      "rule": "R2",
-      "severity": "critical",
-      "evidence": "full answer \"We are going to swim in the sea.\" has no contracted twin",
-      "suggestion": "add the natural contraction (don't/isn't/we're/I'll/…) as a full answer"
     },
     {
       "itemId": "g2u02.gi.irregular-verbs.ec.002",
@@ -1660,14 +1427,6 @@
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"Who cleaned the kitchen?\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g2u11.w.central-asia",
-      "unitSlug": "g2-u11",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Zentralasien] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Zentralasien\" as a full answer"
     },
     {
       "itemId": "g2u12.gi.present-perfect.ec.001",
@@ -3964,14 +3723,6 @@
       "severity": "advisory",
       "evidence": "transformation accepts exactly one full answer: \"came | up | with\"",
       "suggestion": "enumerate defensible variants (or mark strict with an authoring note) — blind-solve will cross-check"
-    },
-    {
-      "itemId": "g4u12.w.multibillion",
-      "unitSlug": "g4-u12",
-      "rule": "R1",
-      "severity": "critical",
-      "evidence": "enToDe full pool [Multimilliarden-] has bare noun(s) but no der/die/das form",
-      "suggestion": "add the article form of \"Multimilliarden-\" as a full answer"
     },
     {
       "itemId": "g4u13.gi.word-formation.ec.004",

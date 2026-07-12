@@ -1629,6 +1629,22 @@
             }
           ]
         }
+      },
+      "g1u05.gi.possessives.tf.002": {
+        "answers": [
+          {
+            "text": "our",
+            "tier": "full"
+          },
+          {
+            "text": "They are our guitars.",
+            "tier": "full"
+          },
+          {
+            "text": "They're our guitars.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -2753,6 +2769,154 @@
             }
           ]
         }
+      },
+      "g1u01.gi.imperatives.ff.001": {
+        "answers": [
+          {
+            "text": "Don't eat here!",
+            "tier": "full"
+          },
+          {
+            "text": "Don't eat in class!",
+            "tier": "full"
+          },
+          {
+            "text": "Do not eat here!",
+            "tier": "full"
+          },
+          {
+            "text": "Don't eat!",
+            "tier": "partial"
+          },
+          {
+            "text": "Do not eat in class!",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u01.gi.imperatives.tf.001": {
+        "answers": [
+          {
+            "text": "Don't open your books.",
+            "tier": "full"
+          },
+          {
+            "text": "Don't open your books!",
+            "tier": "full"
+          },
+          {
+            "text": "Do not open your books.",
+            "tier": "full"
+          },
+          {
+            "text": "Do not open your books!",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u01.gi.imperatives.tf.004": {
+        "answers": [
+          {
+            "text": "Don't open the window!",
+            "tier": "full"
+          },
+          {
+            "text": "Don't open the window.",
+            "tier": "full"
+          },
+          {
+            "text": "Do not open the window!",
+            "tier": "full"
+          },
+          {
+            "text": "Do not open the window.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u01.gi.imperatives.tr.004": {
+        "answers": [
+          {
+            "text": "Don't open your books!",
+            "tier": "full"
+          },
+          {
+            "text": "Do not open your books!",
+            "tier": "full"
+          },
+          {
+            "text": "Don't open your books.",
+            "tier": "full"
+          },
+          {
+            "text": "Do not open your books.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u01.gi.questions-personal-info.ec.002": {
+        "answers": [
+          {
+            "text": "How are you? – I'm fine, thanks.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm fine, thanks.",
+            "tier": "partial"
+          },
+          {
+            "text": "I'm fine.",
+            "tier": "partial"
+          },
+          {
+            "text": "How are you? – I am fine, thanks.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u01.gi.questions-personal-info.ff.001": {
+        "answers": [
+          {
+            "text": "I'm Don. How are you?",
+            "tier": "full"
+          },
+          {
+            "text": "I'm Mike. How are you?",
+            "tier": "full"
+          },
+          {
+            "text": "I'm Don.",
+            "tier": "partial"
+          },
+          {
+            "text": "How are you?",
+            "tier": "partial"
+          },
+          {
+            "text": "I am Don. How are you?",
+            "tier": "full"
+          },
+          {
+            "text": "I am Mike. How are you?",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u01.gi.questions-personal-info.tr.001": {
+        "answers": [
+          {
+            "text": "How are you? – I'm fine, thanks. And you?",
+            "tier": "full"
+          },
+          {
+            "text": "How are you? – I'm fine, thanks.",
+            "tier": "partial"
+          },
+          {
+            "text": "How are you? – I am fine, thanks. And you?",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -3141,6 +3305,82 @@
             }
           ]
         }
+      },
+      "g1u02.gi.there-is-are.ec.005": {
+        "answers": [
+          {
+            "text": "There isn't a lion in front of the train.",
+            "tier": "full"
+          },
+          {
+            "text": "There's no lion in front of the train.",
+            "tier": "full"
+          },
+          {
+            "text": "There isn't a lion in front of the train",
+            "tier": "partial"
+          },
+          {
+            "text": "isn't",
+            "tier": "partial"
+          },
+          {
+            "text": "There is not a lion in front of the train.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u02.gi.there-is-are.tr.005": {
+        "answers": [
+          {
+            "text": "There isn't a ruler on the desk.",
+            "tier": "full"
+          },
+          {
+            "text": "There is no ruler on the desk.",
+            "tier": "full"
+          },
+          {
+            "text": "There's no ruler on the desk.",
+            "tier": "full"
+          },
+          {
+            "text": "There is not a ruler on the desk.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u02.gi.to-be.ff.001": {
+        "answers": [
+          {
+            "text": "I am from England.",
+            "tier": "full"
+          },
+          {
+            "text": "I am happy.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm from London.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm happy.",
+            "tier": "partial"
+          },
+          {
+            "text": "I'm from England.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm happy.",
+            "tier": "full"
+          },
+          {
+            "text": "I am from London.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -3601,6 +3841,22 @@
             }
           ]
         }
+      },
+      "g1u03.gi.have-got.ec.003": {
+        "answers": [
+          {
+            "text": "They haven't got a ship.",
+            "tier": "full"
+          },
+          {
+            "text": "haven't",
+            "tier": "partial"
+          },
+          {
+            "text": "They have not got a ship.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -4081,6 +4337,38 @@
             }
           ]
         }
+      },
+      "g1u04.gi.to-be-negative.ec.001": {
+        "answers": [
+          {
+            "text": "She isn't sad.",
+            "tier": "full"
+          },
+          {
+            "text": "isn't",
+            "tier": "partial"
+          },
+          {
+            "text": "She is not sad.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u04.gi.to-be-negative.ec.002": {
+        "answers": [
+          {
+            "text": "They aren't hungry.",
+            "tier": "full"
+          },
+          {
+            "text": "aren't",
+            "tier": "partial"
+          },
+          {
+            "text": "They are not hungry.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -5309,6 +5597,18 @@
             }
           ]
         }
+      },
+      "g1u07.gi.adverbs-frequency.tf.002": {
+        "answers": [
+          {
+            "text": "They are often happy.",
+            "tier": "full"
+          },
+          {
+            "text": "They're often happy.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -6565,6 +6865,18 @@
             }
           ]
         }
+      },
+      "g1u09.gi.object-pronouns.tr.002": {
+        "answers": [
+          {
+            "text": "We don't like him.",
+            "tier": "full"
+          },
+          {
+            "text": "We do not like him.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -7229,6 +7541,30 @@
             }
           ]
         }
+      },
+      "g1u11.gi.present-continuous.tr.002": {
+        "answers": [
+          {
+            "text": "Are you sleeping? – No, I'm not.",
+            "tier": "full"
+          },
+          {
+            "text": "Are you sleeping? No, I am not.",
+            "tier": "full"
+          },
+          {
+            "text": "Are you sleeping? No, I'm not.",
+            "tier": "partial"
+          },
+          {
+            "text": "Are you sleeping? – No, I am not.",
+            "tier": "full"
+          },
+          {
+            "text": "Are you sleeping? No, I'm not.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -7837,6 +8173,46 @@
             }
           ]
         }
+      },
+      "g1u12.gi.past-simple-was-were.tf.003": {
+        "answers": [
+          {
+            "text": "weren't",
+            "tier": "full"
+          },
+          {
+            "text": "were not",
+            "tier": "full"
+          },
+          {
+            "text": "They weren't at school.",
+            "tier": "full"
+          },
+          {
+            "text": "They were not at school.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u12.gi.past-simple-was-were.tr.002": {
+        "answers": [
+          {
+            "text": "He wasn't at school yesterday.",
+            "tier": "full"
+          },
+          {
+            "text": "He was not at school yesterday.",
+            "tier": "full"
+          },
+          {
+            "text": "Yesterday he wasn't at school.",
+            "tier": "full"
+          },
+          {
+            "text": "Yesterday he was not at school.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },
@@ -9261,6 +9637,86 @@
             }
           ]
         }
+      },
+      "g1u15.gi.going-to.ec.006": {
+        "answers": [
+          {
+            "text": "I am going to play football on the beach.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm going to play football on the beach.",
+            "tier": "partial"
+          },
+          {
+            "text": "am",
+            "tier": "partial"
+          },
+          {
+            "text": "I'm going to play football on the beach.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u15.gi.going-to.ec.008": {
+        "answers": [
+          {
+            "text": "They are going to visit a national park.",
+            "tier": "full"
+          },
+          {
+            "text": "They're going to visit a national park.",
+            "tier": "partial"
+          },
+          {
+            "text": "visit",
+            "tier": "partial"
+          },
+          {
+            "text": "They're going to visit a national park.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u15.gi.going-to.tf.007": {
+        "answers": [
+          {
+            "text": "am not going to cook",
+            "tier": "full"
+          },
+          {
+            "text": "'m not going to cook",
+            "tier": "partial"
+          },
+          {
+            "text": "I am not going to cook dinner.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm not going to cook dinner.",
+            "tier": "partial"
+          },
+          {
+            "text": "I'm not going to cook dinner.",
+            "tier": "full"
+          }
+        ]
+      },
+      "g1u15.gi.going-to.tr.003": {
+        "answers": [
+          {
+            "text": "We are going to swim in the sea.",
+            "tier": "full"
+          },
+          {
+            "text": "We're going to swim in the sea.",
+            "tier": "partial"
+          },
+          {
+            "text": "We're going to swim in the sea.",
+            "tier": "full"
+          }
+        ]
       }
     }
   },

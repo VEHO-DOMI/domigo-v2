@@ -1079,7 +1079,7 @@
       "id": "g1u07.gi.adverbs-frequency.tf.002",
       "structureId": "g1u07.s.adverbs-frequency",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1101,6 +1101,10 @@
       "answers": [
         {
           "text": "They are often happy.",
+          "tier": "full"
+        },
+        {
+          "text": "They're often happy.",
           "tier": "full"
         }
       ],

@@ -242,7 +242,7 @@
       "id": "g1u03.gi.have-got.ec.003",
       "structureId": "g1u03.s.have-got",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -269,6 +269,10 @@
         {
           "text": "haven't",
           "tier": "partial"
+        },
+        {
+          "text": "They have not got a ship.",
+          "tier": "full"
         }
       ],
       "direction": null,

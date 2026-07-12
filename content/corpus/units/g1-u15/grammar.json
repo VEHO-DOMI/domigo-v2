@@ -211,7 +211,7 @@
       "id": "g1u15.gi.going-to.ec.006",
       "structureId": "g1u15.s.going-to",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -242,6 +242,10 @@
         {
           "text": "am",
           "tier": "partial"
+        },
+        {
+          "text": "I'm going to play football on the beach.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -307,7 +311,7 @@
       "id": "g1u15.gi.going-to.ec.008",
       "structureId": "g1u15.s.going-to",
       "format": "error-correction",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -338,6 +342,10 @@
         {
           "text": "visit",
           "tier": "partial"
+        },
+        {
+          "text": "They're going to visit a national park.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -1534,7 +1542,7 @@
       "id": "g1u15.gi.going-to.tf.007",
       "structureId": "g1u15.s.going-to",
       "format": "transformation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1569,6 +1577,10 @@
         {
           "text": "I'm not going to cook dinner.",
           "tier": "partial"
+        },
+        {
+          "text": "I'm not going to cook dinner.",
+          "tier": "full"
         }
       ],
       "direction": null,
@@ -1634,7 +1646,7 @@
       "id": "g1u15.gi.going-to.tr.003",
       "structureId": "g1u15.s.going-to",
       "format": "translation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1661,6 +1673,10 @@
         {
           "text": "We're going to swim in the sea.",
           "tier": "partial"
+        },
+        {
+          "text": "We're going to swim in the sea.",
+          "tier": "full"
         }
       ],
       "direction": "deToEn",
