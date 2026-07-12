@@ -394,7 +394,7 @@
     },
     {
       "id": "g4u06.w.encouragement",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -454,6 +454,14 @@
           {
             "text": "Zuspruch",
             "tier": "partial"
+          },
+          {
+            "text": "die Ermutigung",
+            "tier": "full"
+          },
+          {
+            "text": "die Förderung",
+            "tier": "full"
           }
         ]
       },

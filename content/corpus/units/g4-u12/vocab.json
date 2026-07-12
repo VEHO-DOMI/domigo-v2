@@ -1140,7 +1140,7 @@
     },
     {
       "id": "g4u12.w.engineering",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1200,6 +1200,14 @@
           {
             "text": "Technik",
             "tier": "partial"
+          },
+          {
+            "text": "der Maschinenbau",
+            "tier": "full"
+          },
+          {
+            "text": "das Ingenieurswesen",
+            "tier": "full"
           }
         ]
       },
@@ -2109,7 +2117,7 @@
     },
     {
       "id": "g4u12.w.resource",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2180,6 +2188,18 @@
           },
           {
             "text": "Mittel",
+            "tier": "full"
+          },
+          {
+            "text": "die Quelle",
+            "tier": "full"
+          },
+          {
+            "text": "der Rohstoff",
+            "tier": "full"
+          },
+          {
+            "text": "das Mittel",
             "tier": "full"
           }
         ]

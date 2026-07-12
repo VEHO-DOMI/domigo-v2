@@ -152,7 +152,7 @@
     },
     {
       "id": "g4u02.w.blackmail",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -204,6 +204,10 @@
           {
             "text": "Erpressung",
             "tier": "full"
+          },
+          {
+            "text": "die Erpressung",
+            "tier": "full"
           }
         ]
       },
@@ -217,7 +221,7 @@
     },
     {
       "id": "g4u02.w.chest",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -273,6 +277,10 @@
           {
             "text": "Brustkorb",
             "tier": "partial"
+          },
+          {
+            "text": "die Brust",
+            "tier": "full"
           }
         ]
       },
@@ -438,7 +446,7 @@
     },
     {
       "id": "g4u02.w.conclusion",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -502,6 +510,10 @@
           {
             "text": "Schluss",
             "tier": "partial"
+          },
+          {
+            "text": "die Schlussfolgerung",
+            "tier": "full"
           }
         ]
       },
@@ -515,7 +527,7 @@
     },
     {
       "id": "g4u02.w.confusion",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -571,6 +583,10 @@
           {
             "text": "Durcheinander",
             "tier": "partial"
+          },
+          {
+            "text": "die Verwirrung",
+            "tier": "full"
           }
         ]
       },
@@ -669,7 +685,7 @@
     },
     {
       "id": "g4u02.w.crime-scene",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -728,6 +744,10 @@
         "enToDe": [
           {
             "text": "Tatort",
+            "tier": "full"
+          },
+          {
+            "text": "der Tatort",
             "tier": "full"
           }
         ]
@@ -1005,7 +1025,7 @@
     },
     {
       "id": "g4u02.w.evidence",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1069,6 +1089,14 @@
           {
             "text": "Beweismaterial",
             "tier": "partial"
+          },
+          {
+            "text": "der Beweis",
+            "tier": "full"
+          },
+          {
+            "text": "die Beweise",
+            "tier": "full"
           }
         ]
       },
@@ -1328,7 +1356,7 @@
     },
     {
       "id": "g4u02.w.handkerchief",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1387,6 +1415,10 @@
         "enToDe": [
           {
             "text": "Taschentuch",
+            "tier": "full"
+          },
+          {
+            "text": "das Taschentuch",
             "tier": "full"
           }
         ]
@@ -1547,7 +1579,7 @@
     },
     {
       "id": "g4u02.w.investigation",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1610,6 +1642,14 @@
           },
           {
             "text": "Ermittlung",
+            "tier": "full"
+          },
+          {
+            "text": "die Untersuchung",
+            "tier": "full"
+          },
+          {
+            "text": "die Ermittlung",
             "tier": "full"
           }
         ]
@@ -1854,7 +1894,7 @@
     },
     {
       "id": "g4u02.w.murder",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1906,6 +1946,10 @@
           {
             "text": "Mord",
             "tier": "full"
+          },
+          {
+            "text": "der Mord",
+            "tier": "full"
           }
         ]
       },
@@ -1919,7 +1963,7 @@
     },
     {
       "id": "g4u02.w.mystery",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1983,6 +2027,14 @@
           {
             "text": "Geheimnis",
             "tier": "full"
+          },
+          {
+            "text": "das Rätsel",
+            "tier": "full"
+          },
+          {
+            "text": "das Geheimnis",
+            "tier": "full"
           }
         ]
       },
@@ -1996,7 +2048,7 @@
     },
     {
       "id": "g4u02.w.nephew",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2055,6 +2107,10 @@
         "enToDe": [
           {
             "text": "Neffe",
+            "tier": "full"
+          },
+          {
+            "text": "der Neffe",
             "tier": "full"
           }
         ]
@@ -2574,7 +2630,7 @@
     },
     {
       "id": "g4u02.w.report",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2637,6 +2693,10 @@
         "enToDe": [
           {
             "text": "Bericht",
+            "tier": "full"
+          },
+          {
+            "text": "der Bericht",
             "tier": "full"
           }
         ]
@@ -2893,7 +2953,7 @@
     },
     {
       "id": "g4u02.w.suspicion",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2952,6 +3012,10 @@
         "enToDe": [
           {
             "text": "Verdacht",
+            "tier": "full"
+          },
+          {
+            "text": "der Verdacht",
             "tier": "full"
           }
         ]
@@ -3273,7 +3337,7 @@
     },
     {
       "id": "g4u02.w.victim",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3337,6 +3401,10 @@
           {
             "text": "Opfer",
             "tier": "full"
+          },
+          {
+            "text": "das Opfer",
+            "tier": "full"
           }
         ]
       },
@@ -3350,7 +3418,7 @@
     },
     {
       "id": "g4u02.w.wastepaper-bin",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3410,6 +3478,10 @@
           {
             "text": "Papierkorb",
             "tier": "full"
+          },
+          {
+            "text": "der Papierkorb",
+            "tier": "full"
           }
         ]
       },
@@ -3423,7 +3495,7 @@
     },
     {
       "id": "g4u02.w.weapon",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3486,6 +3558,10 @@
         "enToDe": [
           {
             "text": "Waffe",
+            "tier": "full"
+          },
+          {
+            "text": "die Waffe",
             "tier": "full"
           }
         ]

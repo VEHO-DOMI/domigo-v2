@@ -127,6 +127,20 @@
       "contentHash": "b209f975f67d782b1ee63e7361b5da9f2f6fd271fbe987c78823dc3a96acce9a",
       "note": "round 1: 59 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-16T14:28:45.362Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "8f3290c7bc705e28f52327541b2eb051b7fe756140a3f62ba7411df5c9971084",
+      "note": "gen ingest: 46 vocab + 82 grammar item(s); draft 0682e0605cad",
+      "at": "2026-07-12T11:06:22.683Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "8f3290c7bc705e28f52327541b2eb051b7fe756140a3f62ba7411df5c9971084",
+      "note": "trusted patch (mechanical): 16 answer-pool fix(es) [g4u02.w.blackmail, g4u02.w.chest, g4u02.w.conclusion, g4u02.w.confusion, g4u02.w.crime-scene, g4u02.w.evidence, g4u02.w.handkerchief, g4u02.w.investigation, g4u02.w.murder, g4u02.w.mystery, g4u02.w.nephew, g4u02.w.report, g4u02.w.suspicion, g4u02.w.victim, g4u02.w.wastepaper-bin, g4u02.w.weapon] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:06:22.685Z"
     }
   ]
 }

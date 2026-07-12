@@ -120,6 +120,20 @@
       "contentHash": "cc5e46d741cbbc4feb7c3c08cebf71a04d379cdae8f6e101e5c54e8675a17aa2",
       "note": "round 1: 39 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-16T16:49:56.395Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "bfb71303ddd4dd022ad86fb1b2242d64c2f0c7e79a05c88f3b52a8e1a8524338",
+      "note": "gen ingest: 18 vocab + 112 grammar item(s); draft 8b90fc013c7f",
+      "at": "2026-07-12T11:06:23.898Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "bfb71303ddd4dd022ad86fb1b2242d64c2f0c7e79a05c88f3b52a8e1a8524338",
+      "note": "trusted patch (mechanical): 1 answer-pool fix(es) [g4u06.w.encouragement] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T11:06:23.899Z"
     }
   ]
 }

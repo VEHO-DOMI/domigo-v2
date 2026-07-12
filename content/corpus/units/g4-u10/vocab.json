@@ -752,7 +752,7 @@
     },
     {
       "id": "g4u10.w.harmony",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -808,6 +808,10 @@
           {
             "text": "Eintracht",
             "tier": "partial"
+          },
+          {
+            "text": "die Harmonie",
+            "tier": "full"
           }
         ]
       },
@@ -1182,7 +1186,7 @@
     },
     {
       "id": "g4u10.w.ignorance",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1237,6 +1241,14 @@
           },
           {
             "text": "Unwissenheit",
+            "tier": "full"
+          },
+          {
+            "text": "die Ignoranz",
+            "tier": "full"
+          },
+          {
+            "text": "die Unwissenheit",
             "tier": "full"
           }
         ]
@@ -1835,7 +1847,7 @@
     },
     {
       "id": "g4u10.w.pesticide",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1903,6 +1915,14 @@
           {
             "text": "Schädlingsbekämpfungsmittel",
             "tier": "partial"
+          },
+          {
+            "text": "das Pestizid",
+            "tier": "full"
+          },
+          {
+            "text": "das Insektenbekämpfungsmittel",
+            "tier": "full"
           }
         ]
       },

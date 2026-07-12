@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "g4u03.w.announcement",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -69,6 +69,14 @@
           {
             "text": "Ansage",
             "tier": "partial"
+          },
+          {
+            "text": "die Durchsage",
+            "tier": "full"
+          },
+          {
+            "text": "die Ankündigung",
+            "tier": "full"
           }
         ]
       },
@@ -310,7 +318,7 @@
     },
     {
       "id": "g4u03.w.bravery",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -372,6 +380,14 @@
           },
           {
             "text": "Tapferkeit",
+            "tier": "full"
+          },
+          {
+            "text": "der Mut",
+            "tier": "full"
+          },
+          {
+            "text": "die Tapferkeit",
             "tier": "full"
           }
         ]
@@ -466,7 +482,7 @@
     },
     {
       "id": "g4u03.w.campaign",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -524,6 +540,14 @@
           },
           {
             "text": "Aktion",
+            "tier": "full"
+          },
+          {
+            "text": "die Kampagne",
+            "tier": "full"
+          },
+          {
+            "text": "die Aktion",
             "tier": "full"
           }
         ]
@@ -770,7 +794,7 @@
     },
     {
       "id": "g4u03.w.crowd-funding",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -837,6 +861,10 @@
           {
             "text": "Schwarmfinanzierung",
             "tier": "partial"
+          },
+          {
+            "text": "die Gruppenfinanzierung",
+            "tier": "full"
           }
         ]
       },
@@ -856,7 +884,7 @@
     },
     {
       "id": "g4u03.w.cuisine",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -923,6 +951,14 @@
           {
             "text": "Kochkunst",
             "tier": "partial"
+          },
+          {
+            "text": "die Küche",
+            "tier": "full"
+          },
+          {
+            "text": "die Kulinarik",
+            "tier": "full"
           }
         ]
       },
@@ -936,7 +972,7 @@
     },
     {
       "id": "g4u03.w.elevator",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1015,6 +1051,14 @@
           {
             "text": "Lift",
             "tier": "partial"
+          },
+          {
+            "text": "der Aufzug",
+            "tier": "full"
+          },
+          {
+            "text": "der Fahrstuhl",
+            "tier": "full"
           }
         ]
       },
@@ -1028,7 +1072,7 @@
     },
     {
       "id": "g4u03.w.emergency-landing",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1082,6 +1126,10 @@
         "enToDe": [
           {
             "text": "Notlandung",
+            "tier": "full"
+          },
+          {
+            "text": "die Notlandung",
             "tier": "full"
           }
         ]
@@ -1252,7 +1300,7 @@
     },
     {
       "id": "g4u03.w.flock-of-birds",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1311,6 +1359,10 @@
           {
             "text": "Schwarm von Vögeln",
             "tier": "partial"
+          },
+          {
+            "text": "der Vogelschwarm",
+            "tier": "full"
           }
         ]
       },
@@ -1476,7 +1528,7 @@
     },
     {
       "id": "g4u03.w.miracle",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1534,6 +1586,10 @@
         "enToDe": [
           {
             "text": "Wunder",
+            "tier": "full"
+          },
+          {
+            "text": "das Wunder",
             "tier": "full"
           }
         ]
@@ -1764,7 +1820,7 @@
     },
     {
       "id": "g4u03.w.origin",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1827,6 +1883,14 @@
           {
             "text": "Ursprung",
             "tier": "full"
+          },
+          {
+            "text": "die Herkunft",
+            "tier": "full"
+          },
+          {
+            "text": "der Ursprung",
+            "tier": "full"
           }
         ]
       },
@@ -1840,7 +1904,7 @@
     },
     {
       "id": "g4u03.w.politics",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1891,6 +1955,10 @@
           {
             "text": "Politik",
             "tier": "full"
+          },
+          {
+            "text": "die Politik",
+            "tier": "full"
           }
         ]
       },
@@ -1904,7 +1972,7 @@
     },
     {
       "id": "g4u03.w.rescue-boat",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1962,6 +2030,10 @@
         "enToDe": [
           {
             "text": "Rettungsboot",
+            "tier": "full"
+          },
+          {
+            "text": "das Rettungsboot",
             "tier": "full"
           }
         ]
@@ -2056,7 +2128,7 @@
     },
     {
       "id": "g4u03.w.runway",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2119,6 +2191,10 @@
           {
             "text": "Rollbahn",
             "tier": "partial"
+          },
+          {
+            "text": "die Landebahn",
+            "tier": "full"
           }
         ]
       },
@@ -2132,7 +2208,7 @@
     },
     {
       "id": "g4u03.w.statement",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2191,6 +2267,10 @@
           {
             "text": "Erklärung",
             "tier": "partial"
+          },
+          {
+            "text": "die Aussage",
+            "tier": "full"
           }
         ]
       },
@@ -2204,7 +2284,7 @@
     },
     {
       "id": "g4u03.w.takeoff",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2275,6 +2355,14 @@
           {
             "text": "Start",
             "tier": "full"
+          },
+          {
+            "text": "der Abflug",
+            "tier": "full"
+          },
+          {
+            "text": "der Start",
+            "tier": "full"
           }
         ]
       },
@@ -2288,7 +2376,7 @@
     },
     {
       "id": "g4u03.w.treatment",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2347,6 +2435,10 @@
           {
             "text": "Behandlung",
             "tier": "full"
+          },
+          {
+            "text": "die Behandlung",
+            "tier": "full"
           }
         ]
       },
@@ -2360,7 +2452,7 @@
     },
     {
       "id": "g4u03.w.wing",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2423,6 +2515,10 @@
           {
             "text": "Tragfläche",
             "tier": "partial"
+          },
+          {
+            "text": "der Flügel",
+            "tier": "full"
           }
         ]
       },
