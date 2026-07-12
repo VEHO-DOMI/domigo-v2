@@ -46,6 +46,37 @@ export interface ClassSummary {
   createdAt: Date;
 }
 
+/** One class the teacher owns (core fields, no roster count) — for a detail page. */
+export interface OwnedClass {
+  id: string;
+  name: string;
+  inviteCode: string;
+  grade: number;
+  archivedAt: Date | null;
+  createdAt: Date;
+}
+
+/**
+ * Fetch ONE class by id, but only if `teacherId` owns it (else null) — the authz
+ * gate for a per-class detail page (the roster view). Includes `archivedAt` so the
+ * page can flag an archived class rather than 404 a still-valid bookmark.
+ */
+export async function getClassForTeacher(db: Db, id: string, teacherId: string): Promise<OwnedClass | null> {
+  const rows = await db
+    .select({
+      id: v2Classes.id,
+      name: v2Classes.name,
+      inviteCode: v2Classes.inviteCode,
+      grade: v2Classes.grade,
+      archivedAt: v2Classes.archivedAt,
+      createdAt: v2Classes.createdAt,
+    })
+    .from(v2Classes)
+    .where(and(eq(v2Classes.id, id), eq(v2Classes.teacherId, teacherId)))
+    .limit(1);
+  return rows[0] ?? null;
+}
+
 /**
  * Create a class owned by `teacherId`. Re-validates name/grade (defense in depth —
  * the endpoint already 400s bad input) and mints a globally-unique invite code
