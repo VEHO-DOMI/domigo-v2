@@ -9,6 +9,182 @@
       },
       "g2u03.gi.should.mc.002": {
         "hintDe": "Der Kürbiseimer ist super gruselig! Ihn zu behalten – gute Idee oder nicht?"
+      },
+      "g2u03.w.cycle-helmet": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cycle helmet",
+              "tier": "full"
+            },
+            {
+              "text": "bike helmet",
+              "tier": "partial"
+            },
+            {
+              "text": "helmet",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fahrradhelm",
+              "tier": "full"
+            },
+            {
+              "text": "Radhelm",
+              "tier": "full"
+            },
+            {
+              "text": "Helm",
+              "tier": "partial"
+            },
+            {
+              "text": "der Fahrradhelm",
+              "tier": "full"
+            },
+            {
+              "text": "der Radhelm",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u03.w.front-window": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "front window",
+              "tier": "full"
+            },
+            {
+              "text": "window",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Vorderfenster",
+              "tier": "full"
+            },
+            {
+              "text": "vorderes Fenster",
+              "tier": "full"
+            },
+            {
+              "text": "Fenster",
+              "tier": "partial"
+            },
+            {
+              "text": "das Vorderfenster",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u03.w.guys": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "guys",
+              "tier": "full"
+            },
+            {
+              "text": "people",
+              "tier": "full"
+            },
+            {
+              "text": "folks",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Leute",
+              "tier": "full"
+            },
+            {
+              "text": "Jungs",
+              "tier": "partial"
+            },
+            {
+              "text": "Freunde",
+              "tier": "partial"
+            },
+            {
+              "text": "die Leute",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u03.w.sticker": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sticker",
+              "tier": "full"
+            },
+            {
+              "text": "stickers",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Aufkleber",
+              "tier": "full"
+            },
+            {
+              "text": "Sticker",
+              "tier": "full"
+            },
+            {
+              "text": "Pickerl",
+              "tier": "partial"
+            },
+            {
+              "text": "der Aufkleber",
+              "tier": "full"
+            },
+            {
+              "text": "der Sticker",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u03.w.superheroine": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "superheroine",
+              "tier": "full"
+            },
+            {
+              "text": "superhero",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Superheldin",
+              "tier": "full"
+            },
+            {
+              "text": "Superheld",
+              "tier": "partial"
+            },
+            {
+              "text": "Heldin",
+              "tier": "partial"
+            },
+            {
+              "text": "die Superheldin",
+              "tier": "full"
+            }
+          ]
+        }
       }
     }
   },
@@ -19,14 +195,746 @@
       },
       "g2u01.w.science": {
         "d": "The subject where you study light, space and the Earth.",
-        "s": "We study light and space in ___."
+        "s": "We study light and space in ___.",
+        "translation": {
+          "deToEn": [
+            {
+              "text": "science",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Naturwissenschaften",
+              "tier": "full"
+            },
+            {
+              "text": "Naturwissenschaft",
+              "tier": "full"
+            },
+            {
+              "text": "die Naturwissenschaften",
+              "tier": "full"
+            },
+            {
+              "text": "die Naturwissenschaft",
+              "tier": "full"
+            }
+          ]
+        }
       },
       "g2u01.w.subject": {
         "s": "English is my favourite ___ of all."
       },
       "g2u01.w.webpage": {
         "s": "Open the school ___ and read it on your tablet.",
-        "d": "A screen of stories and pictures that you open and read on a tablet."
+        "d": "A screen of stories and pictures that you open and read on a tablet.",
+        "translation": {
+          "deToEn": [
+            {
+              "text": "webpage",
+              "tier": "full"
+            },
+            {
+              "text": "web page",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Internetseite",
+              "tier": "full"
+            },
+            {
+              "text": "Webseite",
+              "tier": "partial"
+            },
+            {
+              "text": "die Internetseite",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.area": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "area",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gebiet",
+              "tier": "full"
+            },
+            {
+              "text": "Region",
+              "tier": "full"
+            },
+            {
+              "text": "Gegend",
+              "tier": "partial"
+            },
+            {
+              "text": "das Gebiet",
+              "tier": "full"
+            },
+            {
+              "text": "die Region",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.art": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "art",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kunst",
+              "tier": "full"
+            },
+            {
+              "text": "die Kunst",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.bicycle-lane": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bicycle lane",
+              "tier": "full"
+            },
+            {
+              "text": "bike lane",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Radweg",
+              "tier": "full"
+            },
+            {
+              "text": "Fahrradweg",
+              "tier": "partial"
+            },
+            {
+              "text": "der Radweg",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.break": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "break",
+              "tier": "full"
+            },
+            {
+              "text": "breaks",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Pause",
+              "tier": "full"
+            },
+            {
+              "text": "die Pause",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.calendar": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "calendar",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kalender",
+              "tier": "full"
+            },
+            {
+              "text": "der Kalender",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.design-and-technology": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "design and technology",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Werken",
+              "tier": "full"
+            },
+            {
+              "text": "das Werken",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.english": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "English",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Englisch",
+              "tier": "full"
+            },
+            {
+              "text": "das Englisch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.french": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "French",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Französisch",
+              "tier": "full"
+            },
+            {
+              "text": "das Französisch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.geography": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "geography",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Geografie",
+              "tier": "full"
+            },
+            {
+              "text": "Geographie",
+              "tier": "full"
+            },
+            {
+              "text": "die Geografie",
+              "tier": "full"
+            },
+            {
+              "text": "die Geographie",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.grandmother": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "grandmother",
+              "tier": "full"
+            },
+            {
+              "text": "grandma",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Großmutter",
+              "tier": "full"
+            },
+            {
+              "text": "Oma",
+              "tier": "partial"
+            },
+            {
+              "text": "die Großmutter",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.history": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "history",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Geschichte",
+              "tier": "full"
+            },
+            {
+              "text": "die Geschichte",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.information-technology": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "information technology",
+              "tier": "full"
+            },
+            {
+              "text": "IT",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Informatik",
+              "tier": "full"
+            },
+            {
+              "text": "die Informatik",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.joke": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "joke",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Witz",
+              "tier": "full"
+            },
+            {
+              "text": "Scherz",
+              "tier": "partial"
+            },
+            {
+              "text": "der Witz",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.kilometre": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "kilometre",
+              "tier": "full"
+            },
+            {
+              "text": "kilometer",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kilometer",
+              "tier": "full"
+            },
+            {
+              "text": "der Kilometer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.king": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "king",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "König",
+              "tier": "full"
+            },
+            {
+              "text": "der König",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.lesson": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "lesson",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Unterrichtsstunde",
+              "tier": "full"
+            },
+            {
+              "text": "Stunde",
+              "tier": "full"
+            },
+            {
+              "text": "Schulstunde",
+              "tier": "partial"
+            },
+            {
+              "text": "die Unterrichtsstunde",
+              "tier": "full"
+            },
+            {
+              "text": "die Stunde",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.maths": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "maths",
+              "tier": "full"
+            },
+            {
+              "text": "math",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mathematik",
+              "tier": "full"
+            },
+            {
+              "text": "Mathe",
+              "tier": "full"
+            },
+            {
+              "text": "die Mathematik",
+              "tier": "full"
+            },
+            {
+              "text": "die Mathe",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.music": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "music",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Musik",
+              "tier": "full"
+            },
+            {
+              "text": "die Musik",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.online-safety": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "online safety",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Internetsicherheit",
+              "tier": "full"
+            },
+            {
+              "text": "Online-Sicherheit",
+              "tier": "partial"
+            },
+            {
+              "text": "die Internetsicherheit",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.opinion": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "opinion",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Meinung",
+              "tier": "full"
+            },
+            {
+              "text": "Ansicht",
+              "tier": "partial"
+            },
+            {
+              "text": "die Meinung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.physical-education": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "PE",
+              "tier": "full"
+            },
+            {
+              "text": "physical education",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sport",
+              "tier": "full"
+            },
+            {
+              "text": "Leibeserziehung",
+              "tier": "full"
+            },
+            {
+              "text": "Turnen",
+              "tier": "full"
+            },
+            {
+              "text": "der Sport",
+              "tier": "full"
+            },
+            {
+              "text": "die Leibeserziehung",
+              "tier": "full"
+            },
+            {
+              "text": "das Turnen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.queen": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "queen",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Königin",
+              "tier": "full"
+            },
+            {
+              "text": "die Königin",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.rubbish": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "rubbish",
+              "tier": "full"
+            },
+            {
+              "text": "trash",
+              "tier": "partial"
+            },
+            {
+              "text": "garbage",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Müll",
+              "tier": "full"
+            },
+            {
+              "text": "Abfall",
+              "tier": "full"
+            },
+            {
+              "text": "der Müll",
+              "tier": "full"
+            },
+            {
+              "text": "der Abfall",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.shadow": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "shadow",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schatten",
+              "tier": "full"
+            },
+            {
+              "text": "der Schatten",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.spring": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "spring",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Frühling",
+              "tier": "full"
+            },
+            {
+              "text": "Frühjahr",
+              "tier": "partial"
+            },
+            {
+              "text": "der Frühling",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.supper": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "supper",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Abendessen",
+              "tier": "full"
+            },
+            {
+              "text": "Nachtmahl",
+              "tier": "full"
+            },
+            {
+              "text": "Abendbrot",
+              "tier": "partial"
+            },
+            {
+              "text": "das Abendessen",
+              "tier": "full"
+            },
+            {
+              "text": "das Nachtmahl",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u01.w.timetable": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "timetable",
+              "tier": "full"
+            },
+            {
+              "text": "timetables",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stundenplan",
+              "tier": "full"
+            },
+            {
+              "text": "der Stundenplan",
+              "tier": "full"
+            }
+          ]
+        }
       }
     }
   },
@@ -7785,6 +8693,3934 @@
             },
             {
               "text": "der Sommer",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g2-u02": {
+    "patch": {
+      "g2u02.w.admission-fee": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "admission fee",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Eintritt",
+              "tier": "full"
+            },
+            {
+              "text": "Eintrittspreis",
+              "tier": "full"
+            },
+            {
+              "text": "Eintrittsgeld",
+              "tier": "partial"
+            },
+            {
+              "text": "der Eintritt",
+              "tier": "full"
+            },
+            {
+              "text": "der Eintrittspreis",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u02.w.behaviour": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "behaviour",
+              "tier": "full"
+            },
+            {
+              "text": "behavior",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Verhalten",
+              "tier": "full"
+            },
+            {
+              "text": "Benehmen",
+              "tier": "partial"
+            },
+            {
+              "text": "das Verhalten",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u02.w.exhibition": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "exhibition",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Ausstellung",
+              "tier": "full"
+            },
+            {
+              "text": "die Ausstellung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u02.w.mess": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mess",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Unordnung",
+              "tier": "full"
+            },
+            {
+              "text": "Durcheinander",
+              "tier": "full"
+            },
+            {
+              "text": "Chaos",
+              "tier": "partial"
+            },
+            {
+              "text": "die Unordnung",
+              "tier": "full"
+            },
+            {
+              "text": "das Durcheinander",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u02.w.museum": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "museum",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Museum",
+              "tier": "full"
+            },
+            {
+              "text": "das Museum",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u02.w.password": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "password",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Passwort",
+              "tier": "full"
+            },
+            {
+              "text": "Kennwort",
+              "tier": "partial"
+            },
+            {
+              "text": "das Passwort",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u02.w.plate": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "plate",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Teller",
+              "tier": "full"
+            },
+            {
+              "text": "der Teller",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u02.w.posting": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "posting",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Posting",
+              "tier": "full"
+            },
+            {
+              "text": "Beitrag",
+              "tier": "full"
+            },
+            {
+              "text": "das Posting",
+              "tier": "full"
+            },
+            {
+              "text": "der Beitrag",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u02.w.sculpture": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sculpture",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Skulptur",
+              "tier": "full"
+            },
+            {
+              "text": "Statue",
+              "tier": "partial"
+            },
+            {
+              "text": "die Skulptur",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u02.w.secret": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "secret",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Geheimnis",
+              "tier": "full"
+            },
+            {
+              "text": "das Geheimnis",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u02.w.surprise-party": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "surprise party",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Überraschungsparty",
+              "tier": "full"
+            },
+            {
+              "text": "Überraschungsfest",
+              "tier": "partial"
+            },
+            {
+              "text": "die Überraschungsparty",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u02.w.tip": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tip",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Tipp",
+              "tier": "full"
+            },
+            {
+              "text": "Hinweis",
+              "tier": "full"
+            },
+            {
+              "text": "Ratschlag",
+              "tier": "partial"
+            },
+            {
+              "text": "der Tipp",
+              "tier": "full"
+            },
+            {
+              "text": "der Hinweis",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g2-u04": {
+    "patch": {
+      "g2u04.w.anaconda": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "anaconda",
+              "tier": "full"
+            },
+            {
+              "text": "anacondas",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Anakonda",
+              "tier": "full"
+            },
+            {
+              "text": "Anakondas",
+              "tier": "full"
+            },
+            {
+              "text": "die Anakonda",
+              "tier": "full"
+            },
+            {
+              "text": "die Anakondas",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.antelope": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "antelope",
+              "tier": "full"
+            },
+            {
+              "text": "antelopes",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Antilope",
+              "tier": "full"
+            },
+            {
+              "text": "Antilopen",
+              "tier": "full"
+            },
+            {
+              "text": "die Antilope",
+              "tier": "full"
+            },
+            {
+              "text": "die Antilopen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.bat": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bat",
+              "tier": "full"
+            },
+            {
+              "text": "bats",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fledermaus",
+              "tier": "full"
+            },
+            {
+              "text": "Fledermäuse",
+              "tier": "full"
+            },
+            {
+              "text": "die Fledermaus",
+              "tier": "full"
+            },
+            {
+              "text": "die Fledermäuse",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.centimetre": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "centimetre",
+              "tier": "full"
+            },
+            {
+              "text": "centimetres",
+              "tier": "full"
+            },
+            {
+              "text": "centimeter",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zentimeter",
+              "tier": "full"
+            },
+            {
+              "text": "der Zentimeter",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.cheetah": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cheetah",
+              "tier": "full"
+            },
+            {
+              "text": "cheetahs",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gepard",
+              "tier": "full"
+            },
+            {
+              "text": "Geparde",
+              "tier": "full"
+            },
+            {
+              "text": "Geparden",
+              "tier": "full"
+            },
+            {
+              "text": "der Gepard",
+              "tier": "full"
+            },
+            {
+              "text": "die Geparde",
+              "tier": "full"
+            },
+            {
+              "text": "die Geparden",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.chimpanzee": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "chimpanzee",
+              "tier": "full"
+            },
+            {
+              "text": "chimpanzees",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schimpanse",
+              "tier": "full"
+            },
+            {
+              "text": "Schimpansen",
+              "tier": "full"
+            },
+            {
+              "text": "der Schimpanse",
+              "tier": "full"
+            },
+            {
+              "text": "die Schimpansen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.climate-change": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "climate change",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Klimawandel",
+              "tier": "full"
+            },
+            {
+              "text": "Klimaveränderung",
+              "tier": "partial"
+            },
+            {
+              "text": "der Klimawandel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.crocodile": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "crocodile",
+              "tier": "full"
+            },
+            {
+              "text": "crocodiles",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Krokodil",
+              "tier": "full"
+            },
+            {
+              "text": "Krokodile",
+              "tier": "full"
+            },
+            {
+              "text": "das Krokodil",
+              "tier": "full"
+            },
+            {
+              "text": "die Krokodile",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.desert": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "desert",
+              "tier": "full"
+            },
+            {
+              "text": "deserts",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wüste",
+              "tier": "full"
+            },
+            {
+              "text": "Wüsten",
+              "tier": "full"
+            },
+            {
+              "text": "die Wüste",
+              "tier": "full"
+            },
+            {
+              "text": "die Wüsten",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.dolphin": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "dolphin",
+              "tier": "full"
+            },
+            {
+              "text": "dolphins",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Delfin",
+              "tier": "full"
+            },
+            {
+              "text": "Delfine",
+              "tier": "full"
+            },
+            {
+              "text": "Delphin",
+              "tier": "full"
+            },
+            {
+              "text": "der Delfin",
+              "tier": "full"
+            },
+            {
+              "text": "die Delfine",
+              "tier": "full"
+            },
+            {
+              "text": "der Delphin",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.giraffe": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "giraffe",
+              "tier": "full"
+            },
+            {
+              "text": "giraffes",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Giraffe",
+              "tier": "full"
+            },
+            {
+              "text": "Giraffen",
+              "tier": "full"
+            },
+            {
+              "text": "die Giraffe",
+              "tier": "full"
+            },
+            {
+              "text": "die Giraffen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.human": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "human",
+              "tier": "full"
+            },
+            {
+              "text": "humans",
+              "tier": "full"
+            },
+            {
+              "text": "human being",
+              "tier": "partial"
+            },
+            {
+              "text": "person",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mensch",
+              "tier": "full"
+            },
+            {
+              "text": "Menschen",
+              "tier": "full"
+            },
+            {
+              "text": "der Mensch",
+              "tier": "full"
+            },
+            {
+              "text": "die Menschen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.length": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "length",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Länge",
+              "tier": "full"
+            },
+            {
+              "text": "die Länge",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.luck": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "luck",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Glück",
+              "tier": "full"
+            },
+            {
+              "text": "das Glück",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.mammal": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mammal",
+              "tier": "full"
+            },
+            {
+              "text": "mammals",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Säugetier",
+              "tier": "full"
+            },
+            {
+              "text": "Säugetiere",
+              "tier": "full"
+            },
+            {
+              "text": "das Säugetier",
+              "tier": "full"
+            },
+            {
+              "text": "die Säugetiere",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.mosquito": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mosquito",
+              "tier": "full"
+            },
+            {
+              "text": "mosquitos",
+              "tier": "full"
+            },
+            {
+              "text": "mosquitoes",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stechmücke",
+              "tier": "full"
+            },
+            {
+              "text": "Moskito",
+              "tier": "full"
+            },
+            {
+              "text": "Mücke",
+              "tier": "partial"
+            },
+            {
+              "text": "die Stechmücke",
+              "tier": "full"
+            },
+            {
+              "text": "der Moskito",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.ostrich": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ostrich",
+              "tier": "full"
+            },
+            {
+              "text": "ostriches",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Strauß",
+              "tier": "full"
+            },
+            {
+              "text": "Strauße",
+              "tier": "full"
+            },
+            {
+              "text": "Vogel Strauß",
+              "tier": "partial"
+            },
+            {
+              "text": "der Strauß",
+              "tier": "full"
+            },
+            {
+              "text": "die Strauße",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.parrot": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "parrot",
+              "tier": "full"
+            },
+            {
+              "text": "parrots",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Papagei",
+              "tier": "full"
+            },
+            {
+              "text": "Papageien",
+              "tier": "full"
+            },
+            {
+              "text": "der Papagei",
+              "tier": "full"
+            },
+            {
+              "text": "die Papageien",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.pigeon": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pigeon",
+              "tier": "full"
+            },
+            {
+              "text": "pigeons",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Taube",
+              "tier": "full"
+            },
+            {
+              "text": "Tauben",
+              "tier": "full"
+            },
+            {
+              "text": "die Taube",
+              "tier": "full"
+            },
+            {
+              "text": "die Tauben",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.reason": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "reason",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Grund",
+              "tier": "full"
+            },
+            {
+              "text": "der Grund",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.rhino": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "rhino",
+              "tier": "full"
+            },
+            {
+              "text": "rhinos",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Nashorn",
+              "tier": "full"
+            },
+            {
+              "text": "Nashörner",
+              "tier": "full"
+            },
+            {
+              "text": "das Nashorn",
+              "tier": "full"
+            },
+            {
+              "text": "die Nashörner",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.shark": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "shark",
+              "tier": "full"
+            },
+            {
+              "text": "sharks",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hai",
+              "tier": "full"
+            },
+            {
+              "text": "Haie",
+              "tier": "full"
+            },
+            {
+              "text": "Haifisch",
+              "tier": "full"
+            },
+            {
+              "text": "der Hai",
+              "tier": "full"
+            },
+            {
+              "text": "die Haie",
+              "tier": "full"
+            },
+            {
+              "text": "der Haifisch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.speed": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "speed",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Geschwindigkeit",
+              "tier": "full"
+            },
+            {
+              "text": "Tempo",
+              "tier": "full"
+            },
+            {
+              "text": "die Geschwindigkeit",
+              "tier": "full"
+            },
+            {
+              "text": "das Tempo",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.truck": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "truck",
+              "tier": "full"
+            },
+            {
+              "text": "lorry",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Lastwagen",
+              "tier": "full"
+            },
+            {
+              "text": "Lkw",
+              "tier": "full"
+            },
+            {
+              "text": "Laster",
+              "tier": "partial"
+            },
+            {
+              "text": "der Lastwagen",
+              "tier": "full"
+            },
+            {
+              "text": "der Lkw",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u04.w.whale": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "whale",
+              "tier": "full"
+            },
+            {
+              "text": "whales",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wal",
+              "tier": "full"
+            },
+            {
+              "text": "Wale",
+              "tier": "full"
+            },
+            {
+              "text": "der Wal",
+              "tier": "full"
+            },
+            {
+              "text": "die Wale",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g2-u07": {
+    "patch": {
+      "g2u07.w.communication": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "communication",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kommunikation",
+              "tier": "full"
+            },
+            {
+              "text": "Verständigung",
+              "tier": "partial"
+            },
+            {
+              "text": "die Kommunikation",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u07.w.excuse": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "excuse",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Ausrede",
+              "tier": "full"
+            },
+            {
+              "text": "Entschuldigung",
+              "tier": "partial"
+            },
+            {
+              "text": "die Ausrede",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u07.w.fancy-dress-party": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fancy dress party",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kostümparty",
+              "tier": "full"
+            },
+            {
+              "text": "Verkleidungsparty",
+              "tier": "partial"
+            },
+            {
+              "text": "die Kostümparty",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u07.w.german": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "German",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Deutsch",
+              "tier": "full"
+            },
+            {
+              "text": "das Deutsch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u07.w.group-chat": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "group chat",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gruppenchat",
+              "tier": "full"
+            },
+            {
+              "text": "der Gruppenchat",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u07.w.ticket": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ticket",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Eintrittskarte",
+              "tier": "full"
+            },
+            {
+              "text": "Ticket",
+              "tier": "full"
+            },
+            {
+              "text": "Karte",
+              "tier": "full"
+            },
+            {
+              "text": "die Eintrittskarte",
+              "tier": "full"
+            },
+            {
+              "text": "das Ticket",
+              "tier": "full"
+            },
+            {
+              "text": "die Karte",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g2-u08": {
+    "patch": {
+      "g2u08.w.hero-heroine": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hero",
+              "tier": "full"
+            },
+            {
+              "text": "heroine",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Held",
+              "tier": "full"
+            },
+            {
+              "text": "Heldin",
+              "tier": "full"
+            },
+            {
+              "text": "der Held",
+              "tier": "full"
+            },
+            {
+              "text": "die Heldin",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u08.w.hoax": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hoax",
+              "tier": "full"
+            },
+            {
+              "text": "hoaxes",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Täuschung",
+              "tier": "full"
+            },
+            {
+              "text": "Streich",
+              "tier": "partial"
+            },
+            {
+              "text": "Schwindel",
+              "tier": "full"
+            },
+            {
+              "text": "die Täuschung",
+              "tier": "full"
+            },
+            {
+              "text": "der Schwindel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u08.w.nonsense": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "nonsense",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Unsinn",
+              "tier": "full"
+            },
+            {
+              "text": "Quatsch",
+              "tier": "full"
+            },
+            {
+              "text": "Blödsinn",
+              "tier": "partial"
+            },
+            {
+              "text": "der Unsinn",
+              "tier": "full"
+            },
+            {
+              "text": "der Quatsch",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g2-u10": {
+    "patch": {
+      "g2u10.w.auntie": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "auntie",
+              "tier": "full"
+            },
+            {
+              "text": "aunty",
+              "tier": "full"
+            },
+            {
+              "text": "aunt",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Tantchen",
+              "tier": "full"
+            },
+            {
+              "text": "Tante",
+              "tier": "full"
+            },
+            {
+              "text": "das Tantchen",
+              "tier": "full"
+            },
+            {
+              "text": "die Tante",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u10.w.fault": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fault",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schuld",
+              "tier": "full"
+            },
+            {
+              "text": "die Schuld",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u10.w.file": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "file",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Datei",
+              "tier": "full"
+            },
+            {
+              "text": "Ordner",
+              "tier": "full"
+            },
+            {
+              "text": "die Datei",
+              "tier": "full"
+            },
+            {
+              "text": "der Ordner",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u10.w.foreign-language": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "foreign language",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fremdsprache",
+              "tier": "full"
+            },
+            {
+              "text": "die Fremdsprache",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u10.w.ice-skating": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ice skating",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Eislaufen",
+              "tier": "full"
+            },
+            {
+              "text": "Schlittschuhlaufen",
+              "tier": "full"
+            },
+            {
+              "text": "das Eislaufen",
+              "tier": "full"
+            },
+            {
+              "text": "das Schlittschuhlaufen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u10.w.tool": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tool",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Werkzeug",
+              "tier": "full"
+            },
+            {
+              "text": "das Werkzeug",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u10.w.tractor": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tractor",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Traktor",
+              "tier": "full"
+            },
+            {
+              "text": "der Traktor",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g2-u11": {
+    "patch": {
+      "g2u11.w.armchair": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "armchair",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sessel",
+              "tier": "full"
+            },
+            {
+              "text": "Lehnstuhl",
+              "tier": "partial"
+            },
+            {
+              "text": "der Sessel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.bed": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bed",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bett",
+              "tier": "full"
+            },
+            {
+              "text": "das Bett",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.bedside-table": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bedside table",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Nachttisch",
+              "tier": "full"
+            },
+            {
+              "text": "der Nachttisch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.cellar": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cellar",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Keller",
+              "tier": "full"
+            },
+            {
+              "text": "der Keller",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.cellar-2": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cellar",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Keller",
+              "tier": "full"
+            },
+            {
+              "text": "der Keller",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.chair": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "chair",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stuhl",
+              "tier": "full"
+            },
+            {
+              "text": "der Stuhl",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.cooker": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cooker",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Herd",
+              "tier": "full"
+            },
+            {
+              "text": "der Herd",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.cotton": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cotton",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Baumwolle",
+              "tier": "full"
+            },
+            {
+              "text": "die Baumwolle",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.cupboard": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cupboard",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schrank",
+              "tier": "full"
+            },
+            {
+              "text": "Küchenschrank",
+              "tier": "partial"
+            },
+            {
+              "text": "der Schrank",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.curtain": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "curtain",
+              "tier": "full"
+            },
+            {
+              "text": "curtains",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Vorhang",
+              "tier": "full"
+            },
+            {
+              "text": "Vorhänge",
+              "tier": "partial"
+            },
+            {
+              "text": "der Vorhang",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.electricity": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "electricity",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Elektrizität",
+              "tier": "full"
+            },
+            {
+              "text": "Strom",
+              "tier": "full"
+            },
+            {
+              "text": "die Elektrizität",
+              "tier": "full"
+            },
+            {
+              "text": "der Strom",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.fridge": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fridge",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kühlschrank",
+              "tier": "full"
+            },
+            {
+              "text": "der Kühlschrank",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.furniture": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "furniture",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Möbel",
+              "tier": "full"
+            },
+            {
+              "text": "Möbelstücke",
+              "tier": "partial"
+            },
+            {
+              "text": "das Möbel",
+              "tier": "full"
+            },
+            {
+              "text": "die Möbel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.ground": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ground",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Boden",
+              "tier": "full"
+            },
+            {
+              "text": "der Boden",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.hammock": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hammock",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hängematte",
+              "tier": "full"
+            },
+            {
+              "text": "die Hängematte",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.island": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "island",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Insel",
+              "tier": "full"
+            },
+            {
+              "text": "die Insel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.lamp": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "lamp",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Lampe",
+              "tier": "full"
+            },
+            {
+              "text": "die Lampe",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.leather": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "leather",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Leder",
+              "tier": "full"
+            },
+            {
+              "text": "das Leder",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.material": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "material",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Material",
+              "tier": "full"
+            },
+            {
+              "text": "Stoff",
+              "tier": "partial"
+            },
+            {
+              "text": "das Material",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.metal": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "metal",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Metall",
+              "tier": "full"
+            },
+            {
+              "text": "das Metall",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.pattern": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pattern",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Muster",
+              "tier": "full"
+            },
+            {
+              "text": "das Muster",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.plastic": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "plastic",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Plastik",
+              "tier": "full"
+            },
+            {
+              "text": "Kunststoff",
+              "tier": "partial"
+            },
+            {
+              "text": "das Plastik",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.pond": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "pond",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Teich",
+              "tier": "full"
+            },
+            {
+              "text": "der Teich",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.radiator": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "radiator",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Heizkörper",
+              "tier": "full"
+            },
+            {
+              "text": "Heizung",
+              "tier": "partial"
+            },
+            {
+              "text": "der Heizkörper",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.reed": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "reed",
+              "tier": "full"
+            },
+            {
+              "text": "reeds",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schilf",
+              "tier": "full"
+            },
+            {
+              "text": "das Schilf",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.roof": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "roof",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Dach",
+              "tier": "full"
+            },
+            {
+              "text": "das Dach",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.rug": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "rug",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Teppich",
+              "tier": "full"
+            },
+            {
+              "text": "Vorleger",
+              "tier": "partial"
+            },
+            {
+              "text": "der Teppich",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.sink": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sink",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Spülbecken",
+              "tier": "full"
+            },
+            {
+              "text": "Waschbecken",
+              "tier": "partial"
+            },
+            {
+              "text": "das Spülbecken",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.sofa": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sofa",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sofa",
+              "tier": "full"
+            },
+            {
+              "text": "Couch",
+              "tier": "partial"
+            },
+            {
+              "text": "das Sofa",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.staircase": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "staircase",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Treppe",
+              "tier": "full"
+            },
+            {
+              "text": "Stiege",
+              "tier": "partial"
+            },
+            {
+              "text": "die Treppe",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.stilts": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "stilts",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Stelzen",
+              "tier": "full"
+            },
+            {
+              "text": "Pfähle",
+              "tier": "partial"
+            },
+            {
+              "text": "die Stelzen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.strap": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "strap",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Band",
+              "tier": "full"
+            },
+            {
+              "text": "Armband",
+              "tier": "partial"
+            },
+            {
+              "text": "Riemen",
+              "tier": "partial"
+            },
+            {
+              "text": "das Band",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.table": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "table",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Tisch",
+              "tier": "full"
+            },
+            {
+              "text": "der Tisch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.trailer": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "trailer",
+              "tier": "full"
+            },
+            {
+              "text": "caravan",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wohnwagen",
+              "tier": "full"
+            },
+            {
+              "text": "der Wohnwagen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.tree-house": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "tree house",
+              "tier": "full"
+            },
+            {
+              "text": "treehouse",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Baumhaus",
+              "tier": "full"
+            },
+            {
+              "text": "das Baumhaus",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.wall": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "wall",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wand",
+              "tier": "full"
+            },
+            {
+              "text": "Mauer",
+              "tier": "full"
+            },
+            {
+              "text": "die Wand",
+              "tier": "full"
+            },
+            {
+              "text": "die Mauer",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.wardrobe": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "wardrobe",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kleiderschrank",
+              "tier": "full"
+            },
+            {
+              "text": "Schrank",
+              "tier": "partial"
+            },
+            {
+              "text": "der Kleiderschrank",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u11.w.window": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "window",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fenster",
+              "tier": "full"
+            },
+            {
+              "text": "das Fenster",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g2-u12": {
+    "patch": {
+      "g2u12.w.backache": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "backache",
+              "tier": "full"
+            },
+            {
+              "text": "a backache",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Rückenschmerzen",
+              "tier": "full"
+            },
+            {
+              "text": "Rückenweh",
+              "tier": "full"
+            },
+            {
+              "text": "Rückenschmerz",
+              "tier": "partial"
+            },
+            {
+              "text": "die Rückenschmerzen",
+              "tier": "full"
+            },
+            {
+              "text": "das Rückenweh",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.bath": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "bath",
+              "tier": "full"
+            },
+            {
+              "text": "a bath",
+              "tier": "full"
+            },
+            {
+              "text": "baths",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bad",
+              "tier": "full"
+            },
+            {
+              "text": "Vollbad",
+              "tier": "partial"
+            },
+            {
+              "text": "das Bad",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.blood": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "blood",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Blut",
+              "tier": "full"
+            },
+            {
+              "text": "das Blut",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.cure": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cure",
+              "tier": "full"
+            },
+            {
+              "text": "a cure",
+              "tier": "full"
+            },
+            {
+              "text": "cures",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Heilmittel",
+              "tier": "full"
+            },
+            {
+              "text": "Mittel",
+              "tier": "partial"
+            },
+            {
+              "text": "Heilung",
+              "tier": "partial"
+            },
+            {
+              "text": "das Heilmittel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.earache": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "earache",
+              "tier": "full"
+            },
+            {
+              "text": "an earache",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Ohrenschmerzen",
+              "tier": "full"
+            },
+            {
+              "text": "Ohrenweh",
+              "tier": "full"
+            },
+            {
+              "text": "Ohrenschmerz",
+              "tier": "partial"
+            },
+            {
+              "text": "die Ohrenschmerzen",
+              "tier": "full"
+            },
+            {
+              "text": "das Ohrenweh",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.headache": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "headache",
+              "tier": "full"
+            },
+            {
+              "text": "a headache",
+              "tier": "full"
+            },
+            {
+              "text": "headaches",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Kopfschmerzen",
+              "tier": "full"
+            },
+            {
+              "text": "Kopfweh",
+              "tier": "full"
+            },
+            {
+              "text": "Kopfschmerz",
+              "tier": "partial"
+            },
+            {
+              "text": "die Kopfschmerzen",
+              "tier": "full"
+            },
+            {
+              "text": "das Kopfweh",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.knee": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "knee",
+              "tier": "full"
+            },
+            {
+              "text": "knees",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Knie",
+              "tier": "full"
+            },
+            {
+              "text": "das Knie",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.lamp-post": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "lamp post",
+              "tier": "full"
+            },
+            {
+              "text": "a lamp post",
+              "tier": "full"
+            },
+            {
+              "text": "lamppost",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Laternenmast",
+              "tier": "full"
+            },
+            {
+              "text": "Laterne",
+              "tier": "full"
+            },
+            {
+              "text": "Straßenlaterne",
+              "tier": "full"
+            },
+            {
+              "text": "der Laternenmast",
+              "tier": "full"
+            },
+            {
+              "text": "die Laterne",
+              "tier": "full"
+            },
+            {
+              "text": "die Straßenlaterne",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.medicine": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "medicine",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Medizin",
+              "tier": "full"
+            },
+            {
+              "text": "Arznei",
+              "tier": "full"
+            },
+            {
+              "text": "Medikament",
+              "tier": "partial"
+            },
+            {
+              "text": "die Medizin",
+              "tier": "full"
+            },
+            {
+              "text": "die Arznei",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.memory": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "memory",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gedächtnis",
+              "tier": "full"
+            },
+            {
+              "text": "Erinnerung",
+              "tier": "partial"
+            },
+            {
+              "text": "das Gedächtnis",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.smell": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "smell",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Geruch",
+              "tier": "full"
+            },
+            {
+              "text": "der Geruch",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.spoon": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "spoon",
+              "tier": "full"
+            },
+            {
+              "text": "a spoon",
+              "tier": "full"
+            },
+            {
+              "text": "spoons",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Löffel",
+              "tier": "full"
+            },
+            {
+              "text": "der Löffel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.stomach-ache": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "stomach ache",
+              "tier": "full"
+            },
+            {
+              "text": "stomachache",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bauchschmerzen",
+              "tier": "full"
+            },
+            {
+              "text": "Bauchweh",
+              "tier": "full"
+            },
+            {
+              "text": "Magenschmerzen",
+              "tier": "partial"
+            },
+            {
+              "text": "die Bauchschmerzen",
+              "tier": "full"
+            },
+            {
+              "text": "das Bauchweh",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.taste": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "taste",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Geschmack",
+              "tier": "full"
+            },
+            {
+              "text": "der Geschmack",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.throat": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "throat",
+              "tier": "full"
+            },
+            {
+              "text": "throats",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hals",
+              "tier": "full"
+            },
+            {
+              "text": "Kehle",
+              "tier": "full"
+            },
+            {
+              "text": "Rachen",
+              "tier": "partial"
+            },
+            {
+              "text": "der Hals",
+              "tier": "full"
+            },
+            {
+              "text": "die Kehle",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.toothache": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "toothache",
+              "tier": "full"
+            },
+            {
+              "text": "a toothache",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zahnschmerzen",
+              "tier": "full"
+            },
+            {
+              "text": "Zahnweh",
+              "tier": "full"
+            },
+            {
+              "text": "Zahnschmerz",
+              "tier": "partial"
+            },
+            {
+              "text": "die Zahnschmerzen",
+              "tier": "full"
+            },
+            {
+              "text": "das Zahnweh",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.toothpaste": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "toothpaste",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zahnpasta",
+              "tier": "full"
+            },
+            {
+              "text": "Zahncreme",
+              "tier": "full"
+            },
+            {
+              "text": "Zahnpaste",
+              "tier": "partial"
+            },
+            {
+              "text": "die Zahnpasta",
+              "tier": "full"
+            },
+            {
+              "text": "die Zahncreme",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u12.w.worm": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "worm",
+              "tier": "full"
+            },
+            {
+              "text": "a worm",
+              "tier": "full"
+            },
+            {
+              "text": "worms",
+              "tier": "partial"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wurm",
+              "tier": "full"
+            },
+            {
+              "text": "der Wurm",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g2-u13": {
+    "patch": {
+      "g2u13.w.axe": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "axe",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Axt",
+              "tier": "full"
+            },
+            {
+              "text": "die Axt",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.binoculars": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "binoculars",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Fernglas",
+              "tier": "full"
+            },
+            {
+              "text": "das Fernglas",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.career": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "career",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Karriere",
+              "tier": "full"
+            },
+            {
+              "text": "Laufbahn",
+              "tier": "full"
+            },
+            {
+              "text": "die Karriere",
+              "tier": "full"
+            },
+            {
+              "text": "die Laufbahn",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.coast": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "coast",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Küste",
+              "tier": "full"
+            },
+            {
+              "text": "die Küste",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.flash-of-light": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "flash of light",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Lichtblitz",
+              "tier": "full"
+            },
+            {
+              "text": "Blitz",
+              "tier": "partial"
+            },
+            {
+              "text": "der Lichtblitz",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.fog": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "fog",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Nebel",
+              "tier": "full"
+            },
+            {
+              "text": "der Nebel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.forecast": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "forecast",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Vorhersage",
+              "tier": "full"
+            },
+            {
+              "text": "Wettervorhersage",
+              "tier": "full"
+            },
+            {
+              "text": "die Vorhersage",
+              "tier": "full"
+            },
+            {
+              "text": "die Wettervorhersage",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.formula": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "formula",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Formel",
+              "tier": "full"
+            },
+            {
+              "text": "die Formel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.hope": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "hope",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Hoffnung",
+              "tier": "full"
+            },
+            {
+              "text": "die Hoffnung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.inch": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "inch",
+              "tier": "full"
+            },
+            {
+              "text": "inches",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zoll",
+              "tier": "full"
+            },
+            {
+              "text": "der Zoll",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.outlook": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "outlook",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Aussicht",
+              "tier": "full"
+            },
+            {
+              "text": "Ausblick",
+              "tier": "full"
+            },
+            {
+              "text": "die Aussicht",
+              "tier": "full"
+            },
+            {
+              "text": "der Ausblick",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.rainfall": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "rainfall",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Niederschlag",
+              "tier": "full"
+            },
+            {
+              "text": "Regenmenge",
+              "tier": "full"
+            },
+            {
+              "text": "der Niederschlag",
+              "tier": "full"
+            },
+            {
+              "text": "die Regenmenge",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.scale": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "scale",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Skala",
+              "tier": "full"
+            },
+            {
+              "text": "Maßstab",
+              "tier": "full"
+            },
+            {
+              "text": "die Skala",
+              "tier": "full"
+            },
+            {
+              "text": "der Maßstab",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.sea-level": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sea level",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Meeresspiegel",
+              "tier": "full"
+            },
+            {
+              "text": "der Meeresspiegel",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.small-talk": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "small talk",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Plauderei",
+              "tier": "full"
+            },
+            {
+              "text": "Small Talk",
+              "tier": "full"
+            },
+            {
+              "text": "die Plauderei",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.sunshine": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "sunshine",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Sonnenschein",
+              "tier": "full"
+            },
+            {
+              "text": "der Sonnenschein",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.temperature": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "temperature",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Temperatur",
+              "tier": "full"
+            },
+            {
+              "text": "die Temperatur",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u13.w.thunderstorm": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "thunderstorm",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Gewitter",
+              "tier": "full"
+            },
+            {
+              "text": "das Gewitter",
+              "tier": "full"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "g2-u14": {
+    "patch": {
+      "g2u14.w.challenge": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "challenge",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Herausforderung",
+              "tier": "full"
+            },
+            {
+              "text": "die Herausforderung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.competition": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "competition",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Wettbewerb",
+              "tier": "full"
+            },
+            {
+              "text": "Wettkampf",
+              "tier": "full"
+            },
+            {
+              "text": "der Wettbewerb",
+              "tier": "full"
+            },
+            {
+              "text": "der Wettkampf",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.cycling": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "cycling",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Radfahren",
+              "tier": "full"
+            },
+            {
+              "text": "Rad fahren",
+              "tier": "full"
+            },
+            {
+              "text": "das Radfahren",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.distance": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "distance",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Distanz",
+              "tier": "full"
+            },
+            {
+              "text": "Abstand",
+              "tier": "full"
+            },
+            {
+              "text": "Entfernung",
+              "tier": "full"
+            },
+            {
+              "text": "die Distanz",
+              "tier": "full"
+            },
+            {
+              "text": "der Abstand",
+              "tier": "full"
+            },
+            {
+              "text": "die Entfernung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.equipment": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "equipment",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Ausrüstung",
+              "tier": "full"
+            },
+            {
+              "text": "die Ausrüstung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.flood": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "flood",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Flut",
+              "tier": "full"
+            },
+            {
+              "text": "Überschwemmung",
+              "tier": "full"
+            },
+            {
+              "text": "Hochwasser",
+              "tier": "full"
+            },
+            {
+              "text": "die Flut",
+              "tier": "full"
+            },
+            {
+              "text": "die Überschwemmung",
+              "tier": "full"
+            },
+            {
+              "text": "das Hochwasser",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.ice-skating": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "ice skating",
+              "tier": "full"
+            },
+            {
+              "text": "ice-skating",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Eislaufen",
+              "tier": "full"
+            },
+            {
+              "text": "Schlittschuhlaufen",
+              "tier": "full"
+            },
+            {
+              "text": "das Eislaufen",
+              "tier": "full"
+            },
+            {
+              "text": "das Schlittschuhlaufen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.member": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "member",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mitglied",
+              "tier": "full"
+            },
+            {
+              "text": "das Mitglied",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.mountain-biking": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mountain biking",
+              "tier": "full"
+            },
+            {
+              "text": "mountain-biking",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Mountainbiken",
+              "tier": "full"
+            },
+            {
+              "text": "Mountainbike fahren",
+              "tier": "full"
+            },
+            {
+              "text": "das Mountainbiken",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.mountain-climbing": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "mountain climbing",
+              "tier": "full"
+            },
+            {
+              "text": "mountain-climbing",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Bergsteigen",
+              "tier": "full"
+            },
+            {
+              "text": "Klettern",
+              "tier": "partial"
+            },
+            {
+              "text": "das Bergsteigen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.race": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "race",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Rennen",
+              "tier": "full"
+            },
+            {
+              "text": "Wettfahrt",
+              "tier": "full"
+            },
+            {
+              "text": "Wettrennen",
+              "tier": "full"
+            },
+            {
+              "text": "das Rennen",
+              "tier": "full"
+            },
+            {
+              "text": "die Wettfahrt",
+              "tier": "full"
+            },
+            {
+              "text": "das Wettrennen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.roller-skating": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "roller-skating",
+              "tier": "full"
+            },
+            {
+              "text": "roller skating",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Rollschuhlaufen",
+              "tier": "full"
+            },
+            {
+              "text": "Rollschuh fahren",
+              "tier": "full"
+            },
+            {
+              "text": "das Rollschuhlaufen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.skateboarding": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "skateboarding",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Skateboardfahren",
+              "tier": "full"
+            },
+            {
+              "text": "Skateboard fahren",
+              "tier": "full"
+            },
+            {
+              "text": "das Skateboardfahren",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.skiing": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "skiing",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Skifahren",
+              "tier": "full"
+            },
+            {
+              "text": "Ski fahren",
+              "tier": "full"
+            },
+            {
+              "text": "das Skifahren",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.snowboarding": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "snowboarding",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Snowboarden",
+              "tier": "full"
+            },
+            {
+              "text": "Snowboard fahren",
+              "tier": "full"
+            },
+            {
+              "text": "das Snowboarden",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.success": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "success",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Erfolg",
+              "tier": "full"
+            },
+            {
+              "text": "der Erfolg",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.surfing": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "surfing",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Surfen",
+              "tier": "full"
+            },
+            {
+              "text": "Wellenreiten",
+              "tier": "full"
+            },
+            {
+              "text": "das Surfen",
+              "tier": "full"
+            },
+            {
+              "text": "das Wellenreiten",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.swimming": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "swimming",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Schwimmen",
+              "tier": "full"
+            },
+            {
+              "text": "das Schwimmen",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.waste-of-time": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "waste of time",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Zeitverschwendung",
+              "tier": "full"
+            },
+            {
+              "text": "die Zeitverschwendung",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.windsurfing": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "windsurfing",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Windsurfen",
+              "tier": "full"
+            },
+            {
+              "text": "Windsurfing",
+              "tier": "full"
+            },
+            {
+              "text": "das Windsurfen",
+              "tier": "full"
+            },
+            {
+              "text": "das Windsurfing",
+              "tier": "full"
+            }
+          ]
+        }
+      },
+      "g2u14.w.world-record": {
+        "translation": {
+          "deToEn": [
+            {
+              "text": "world record",
+              "tier": "full"
+            }
+          ],
+          "enToDe": [
+            {
+              "text": "Weltrekord",
+              "tier": "full"
+            },
+            {
+              "text": "der Weltrekord",
               "tier": "full"
             }
           ]

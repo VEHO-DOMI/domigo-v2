@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "g2u07.w.communication",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -62,6 +62,10 @@
           {
             "text": "Verständigung",
             "tier": "partial"
+          },
+          {
+            "text": "die Kommunikation",
+            "tier": "full"
           }
         ]
       },
@@ -144,7 +148,7 @@
     },
     {
       "id": "g2u07.w.excuse",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -204,6 +208,10 @@
           {
             "text": "Entschuldigung",
             "tier": "partial"
+          },
+          {
+            "text": "die Ausrede",
+            "tier": "full"
           }
         ]
       },
@@ -217,7 +225,7 @@
     },
     {
       "id": "g2u07.w.fancy-dress-party",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -281,6 +289,10 @@
           {
             "text": "Verkleidungsparty",
             "tier": "partial"
+          },
+          {
+            "text": "die Kostümparty",
+            "tier": "full"
           }
         ]
       },
@@ -294,7 +306,7 @@
     },
     {
       "id": "g2u07.w.german",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -346,6 +358,10 @@
           {
             "text": "Deutsch",
             "tier": "full"
+          },
+          {
+            "text": "das Deutsch",
+            "tier": "full"
           }
         ]
       },
@@ -359,7 +375,7 @@
     },
     {
       "id": "g2u07.w.group-chat",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -418,6 +434,10 @@
         "enToDe": [
           {
             "text": "Gruppenchat",
+            "tier": "full"
+          },
+          {
+            "text": "der Gruppenchat",
             "tier": "full"
           }
         ]
@@ -869,7 +889,7 @@
     },
     {
       "id": "g2u07.w.ticket",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -932,6 +952,18 @@
           },
           {
             "text": "Karte",
+            "tier": "full"
+          },
+          {
+            "text": "die Eintrittskarte",
+            "tier": "full"
+          },
+          {
+            "text": "das Ticket",
+            "tier": "full"
+          },
+          {
+            "text": "die Karte",
             "tier": "full"
           }
         ]

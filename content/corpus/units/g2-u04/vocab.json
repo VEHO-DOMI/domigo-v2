@@ -74,7 +74,7 @@
     },
     {
       "id": "g2u04.w.anaconda",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -137,6 +137,14 @@
           {
             "text": "Anakondas",
             "tier": "full"
+          },
+          {
+            "text": "die Anakonda",
+            "tier": "full"
+          },
+          {
+            "text": "die Anakondas",
+            "tier": "full"
           }
         ]
       },
@@ -156,7 +164,7 @@
     },
     {
       "id": "g2u04.w.antelope",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -219,6 +227,14 @@
           {
             "text": "Antilopen",
             "tier": "full"
+          },
+          {
+            "text": "die Antilope",
+            "tier": "full"
+          },
+          {
+            "text": "die Antilopen",
+            "tier": "full"
           }
         ]
       },
@@ -232,7 +248,7 @@
     },
     {
       "id": "g2u04.w.bat",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -295,6 +311,14 @@
           {
             "text": "Fledermäuse",
             "tier": "full"
+          },
+          {
+            "text": "die Fledermaus",
+            "tier": "full"
+          },
+          {
+            "text": "die Fledermäuse",
+            "tier": "full"
           }
         ]
       },
@@ -319,7 +343,7 @@
     },
     {
       "id": "g2u04.w.centimetre",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -398,6 +422,10 @@
           {
             "text": "Zentimeter",
             "tier": "full"
+          },
+          {
+            "text": "der Zentimeter",
+            "tier": "full"
           }
         ]
       },
@@ -417,7 +445,7 @@
     },
     {
       "id": "g2u04.w.cheetah",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -484,6 +512,18 @@
           {
             "text": "Geparden",
             "tier": "full"
+          },
+          {
+            "text": "der Gepard",
+            "tier": "full"
+          },
+          {
+            "text": "die Geparde",
+            "tier": "full"
+          },
+          {
+            "text": "die Geparden",
+            "tier": "full"
           }
         ]
       },
@@ -503,7 +543,7 @@
     },
     {
       "id": "g2u04.w.chimpanzee",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -574,6 +614,14 @@
           {
             "text": "Schimpansen",
             "tier": "full"
+          },
+          {
+            "text": "der Schimpanse",
+            "tier": "full"
+          },
+          {
+            "text": "die Schimpansen",
+            "tier": "full"
           }
         ]
       },
@@ -587,7 +635,7 @@
     },
     {
       "id": "g2u04.w.climate-change",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -642,6 +690,10 @@
           {
             "text": "Klimaveränderung",
             "tier": "partial"
+          },
+          {
+            "text": "der Klimawandel",
+            "tier": "full"
           }
         ]
       },
@@ -671,7 +723,7 @@
     },
     {
       "id": "g2u04.w.crocodile",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -737,6 +789,14 @@
           },
           {
             "text": "Krokodile",
+            "tier": "full"
+          },
+          {
+            "text": "das Krokodil",
+            "tier": "full"
+          },
+          {
+            "text": "die Krokodile",
             "tier": "full"
           }
         ]
@@ -821,7 +881,7 @@
     },
     {
       "id": "g2u04.w.desert",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -884,6 +944,14 @@
           {
             "text": "Wüsten",
             "tier": "full"
+          },
+          {
+            "text": "die Wüste",
+            "tier": "full"
+          },
+          {
+            "text": "die Wüsten",
+            "tier": "full"
           }
         ]
       },
@@ -913,7 +981,7 @@
     },
     {
       "id": "g2u04.w.dolphin",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -979,6 +1047,18 @@
           },
           {
             "text": "Delphin",
+            "tier": "full"
+          },
+          {
+            "text": "der Delfin",
+            "tier": "full"
+          },
+          {
+            "text": "die Delfine",
+            "tier": "full"
+          },
+          {
+            "text": "der Delphin",
             "tier": "full"
           }
         ]
@@ -1304,7 +1384,7 @@
     },
     {
       "id": "g2u04.w.giraffe",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1366,6 +1446,14 @@
           },
           {
             "text": "Giraffen",
+            "tier": "full"
+          },
+          {
+            "text": "die Giraffe",
+            "tier": "full"
+          },
+          {
+            "text": "die Giraffen",
             "tier": "full"
           }
         ]
@@ -1532,7 +1620,7 @@
     },
     {
       "id": "g2u04.w.human",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1606,6 +1694,14 @@
           },
           {
             "text": "Menschen",
+            "tier": "full"
+          },
+          {
+            "text": "der Mensch",
+            "tier": "full"
+          },
+          {
+            "text": "die Menschen",
             "tier": "full"
           }
         ]
@@ -1784,7 +1880,7 @@
     },
     {
       "id": "g2u04.w.length",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1838,6 +1934,10 @@
         "enToDe": [
           {
             "text": "Länge",
+            "tier": "full"
+          },
+          {
+            "text": "die Länge",
             "tier": "full"
           }
         ]
@@ -1922,7 +2022,7 @@
     },
     {
       "id": "g2u04.w.luck",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1972,6 +2072,10 @@
         "enToDe": [
           {
             "text": "Glück",
+            "tier": "full"
+          },
+          {
+            "text": "das Glück",
             "tier": "full"
           }
         ]
@@ -2100,7 +2204,7 @@
     },
     {
       "id": "g2u04.w.mammal",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2163,6 +2267,14 @@
           {
             "text": "Säugetiere",
             "tier": "full"
+          },
+          {
+            "text": "das Säugetier",
+            "tier": "full"
+          },
+          {
+            "text": "die Säugetiere",
+            "tier": "full"
           }
         ]
       },
@@ -2187,7 +2299,7 @@
     },
     {
       "id": "g2u04.w.mosquito",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2262,6 +2374,14 @@
           {
             "text": "Mücke",
             "tier": "partial"
+          },
+          {
+            "text": "die Stechmücke",
+            "tier": "full"
+          },
+          {
+            "text": "der Moskito",
+            "tier": "full"
           }
         ]
       },
@@ -2366,7 +2486,7 @@
     },
     {
       "id": "g2u04.w.ostrich",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2433,6 +2553,14 @@
           {
             "text": "Vogel Strauß",
             "tier": "partial"
+          },
+          {
+            "text": "der Strauß",
+            "tier": "full"
+          },
+          {
+            "text": "die Strauße",
+            "tier": "full"
           }
         ]
       },
@@ -2457,7 +2585,7 @@
     },
     {
       "id": "g2u04.w.parrot",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2520,6 +2648,14 @@
           {
             "text": "Papageien",
             "tier": "full"
+          },
+          {
+            "text": "der Papagei",
+            "tier": "full"
+          },
+          {
+            "text": "die Papageien",
+            "tier": "full"
           }
         ]
       },
@@ -2539,7 +2675,7 @@
     },
     {
       "id": "g2u04.w.pigeon",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2601,6 +2737,14 @@
           },
           {
             "text": "Tauben",
+            "tier": "full"
+          },
+          {
+            "text": "die Taube",
+            "tier": "full"
+          },
+          {
+            "text": "die Tauben",
             "tier": "full"
           }
         ]
@@ -2689,7 +2833,7 @@
     },
     {
       "id": "g2u04.w.reason",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2744,6 +2888,10 @@
           {
             "text": "Grund",
             "tier": "full"
+          },
+          {
+            "text": "der Grund",
+            "tier": "full"
           }
         ]
       },
@@ -2757,7 +2905,7 @@
     },
     {
       "id": "g2u04.w.rhino",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2819,6 +2967,14 @@
           },
           {
             "text": "Nashörner",
+            "tier": "full"
+          },
+          {
+            "text": "das Nashorn",
+            "tier": "full"
+          },
+          {
+            "text": "die Nashörner",
             "tier": "full"
           }
         ]
@@ -2930,7 +3086,7 @@
     },
     {
       "id": "g2u04.w.shark",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2996,6 +3152,18 @@
           },
           {
             "text": "Haifisch",
+            "tier": "full"
+          },
+          {
+            "text": "der Hai",
+            "tier": "full"
+          },
+          {
+            "text": "die Haie",
+            "tier": "full"
+          },
+          {
+            "text": "der Haifisch",
             "tier": "full"
           }
         ]
@@ -3118,7 +3286,7 @@
     },
     {
       "id": "g2u04.w.speed",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3176,6 +3344,14 @@
           },
           {
             "text": "Tempo",
+            "tier": "full"
+          },
+          {
+            "text": "die Geschwindigkeit",
+            "tier": "full"
+          },
+          {
+            "text": "das Tempo",
             "tier": "full"
           }
         ]
@@ -3902,7 +4078,7 @@
     },
     {
       "id": "g2u04.w.truck",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3973,6 +4149,14 @@
           {
             "text": "Laster",
             "tier": "partial"
+          },
+          {
+            "text": "der Lastwagen",
+            "tier": "full"
+          },
+          {
+            "text": "der Lkw",
+            "tier": "full"
           }
         ]
       },
@@ -4065,7 +4249,7 @@
     },
     {
       "id": "g2u04.w.whale",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4127,6 +4311,14 @@
           },
           {
             "text": "Wale",
+            "tier": "full"
+          },
+          {
+            "text": "der Wal",
+            "tier": "full"
+          },
+          {
+            "text": "die Wale",
             "tier": "full"
           }
         ]

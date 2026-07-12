@@ -127,6 +127,20 @@
       "contentHash": "bf974fcaa53f27e51cea93bab563ee1eae79685d1adc6400c2db968c7642411f",
       "note": "variant mint for g2.st.wrong-name",
       "at": "2026-06-28T16:52:33.463Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "d637bbde81fb386eb21e13fcdccd8aec88f1fa9a5008bd05ed7db01a5509217a",
+      "note": "gen ingest: 50 vocab + 66 grammar item(s); draft 33243d27595e",
+      "at": "2026-07-12T10:35:59.505Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "d637bbde81fb386eb21e13fcdccd8aec88f1fa9a5008bd05ed7db01a5509217a",
+      "note": "trusted patch (mechanical): 25 answer-pool fix(es) [g2u04.w.anaconda, g2u04.w.antelope, g2u04.w.bat, g2u04.w.centimetre, g2u04.w.cheetah, g2u04.w.chimpanzee, g2u04.w.climate-change, g2u04.w.crocodile, g2u04.w.desert, g2u04.w.dolphin, g2u04.w.giraffe, g2u04.w.human, g2u04.w.length, g2u04.w.luck, g2u04.w.mammal, g2u04.w.mosquito, g2u04.w.ostrich, g2u04.w.parrot, g2u04.w.pigeon, g2u04.w.reason, g2u04.w.rhino, g2u04.w.shark, g2u04.w.speed, g2u04.w.truck, g2u04.w.whale] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:35:59.507Z"
     }
   ]
 }

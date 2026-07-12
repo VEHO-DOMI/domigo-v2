@@ -818,7 +818,7 @@
     },
     {
       "id": "g2u08.w.hero-heroine",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -894,6 +894,14 @@
           {
             "text": "Heldin",
             "tier": "full"
+          },
+          {
+            "text": "der Held",
+            "tier": "full"
+          },
+          {
+            "text": "die Heldin",
+            "tier": "full"
           }
         ]
       },
@@ -907,7 +915,7 @@
     },
     {
       "id": "g2u08.w.hoax",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -974,6 +982,14 @@
           },
           {
             "text": "Schwindel",
+            "tier": "full"
+          },
+          {
+            "text": "die Täuschung",
+            "tier": "full"
+          },
+          {
+            "text": "der Schwindel",
             "tier": "full"
           }
         ]
@@ -1300,7 +1316,7 @@
     },
     {
       "id": "g2u08.w.nonsense",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1360,6 +1376,14 @@
           {
             "text": "Blödsinn",
             "tier": "partial"
+          },
+          {
+            "text": "der Unsinn",
+            "tier": "full"
+          },
+          {
+            "text": "der Quatsch",
+            "tier": "full"
           }
         ]
       },

@@ -87,7 +87,7 @@
     },
     {
       "id": "g2u11.w.armchair",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -151,6 +151,10 @@
           {
             "text": "Lehnstuhl",
             "tier": "partial"
+          },
+          {
+            "text": "der Sessel",
+            "tier": "full"
           }
         ]
       },
@@ -164,7 +168,7 @@
     },
     {
       "id": "g2u11.w.bed",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -224,6 +228,10 @@
           {
             "text": "Bett",
             "tier": "full"
+          },
+          {
+            "text": "das Bett",
+            "tier": "full"
           }
         ]
       },
@@ -237,7 +245,7 @@
     },
     {
       "id": "g2u11.w.bedside-table",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -296,6 +304,10 @@
         "enToDe": [
           {
             "text": "Nachttisch",
+            "tier": "full"
+          },
+          {
+            "text": "der Nachttisch",
             "tier": "full"
           }
         ]
@@ -387,7 +399,7 @@
     },
     {
       "id": "g2u11.w.cellar",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -447,6 +459,10 @@
           {
             "text": "Keller",
             "tier": "full"
+          },
+          {
+            "text": "der Keller",
+            "tier": "full"
           }
         ]
       },
@@ -466,7 +482,7 @@
     },
     {
       "id": "g2u11.w.cellar-2",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -525,6 +541,10 @@
         "enToDe": [
           {
             "text": "Keller",
+            "tier": "full"
+          },
+          {
+            "text": "der Keller",
             "tier": "full"
           }
         ]
@@ -619,7 +639,7 @@
     },
     {
       "id": "g2u11.w.chair",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -679,6 +699,10 @@
           {
             "text": "Stuhl",
             "tier": "full"
+          },
+          {
+            "text": "der Stuhl",
+            "tier": "full"
           }
         ]
       },
@@ -692,7 +716,7 @@
     },
     {
       "id": "g2u11.w.cooker",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -752,6 +776,10 @@
           {
             "text": "Herd",
             "tier": "full"
+          },
+          {
+            "text": "der Herd",
+            "tier": "full"
           }
         ]
       },
@@ -765,7 +793,7 @@
     },
     {
       "id": "g2u11.w.cotton",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -817,6 +845,10 @@
           {
             "text": "Baumwolle",
             "tier": "full"
+          },
+          {
+            "text": "die Baumwolle",
+            "tier": "full"
           }
         ]
       },
@@ -836,7 +868,7 @@
     },
     {
       "id": "g2u11.w.cupboard",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -900,6 +932,10 @@
           {
             "text": "Küchenschrank",
             "tier": "partial"
+          },
+          {
+            "text": "der Schrank",
+            "tier": "full"
           }
         ]
       },
@@ -913,7 +949,7 @@
     },
     {
       "id": "g2u11.w.curtain",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -981,6 +1017,10 @@
           {
             "text": "Vorhänge",
             "tier": "partial"
+          },
+          {
+            "text": "der Vorhang",
+            "tier": "full"
           }
         ]
       },
@@ -994,7 +1034,7 @@
     },
     {
       "id": "g2u11.w.electricity",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1050,6 +1090,14 @@
           {
             "text": "Strom",
             "tier": "full"
+          },
+          {
+            "text": "die Elektrizität",
+            "tier": "full"
+          },
+          {
+            "text": "der Strom",
+            "tier": "full"
           }
         ]
       },
@@ -1063,7 +1111,7 @@
     },
     {
       "id": "g2u11.w.fridge",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1123,6 +1171,10 @@
           {
             "text": "Kühlschrank",
             "tier": "full"
+          },
+          {
+            "text": "der Kühlschrank",
+            "tier": "full"
           }
         ]
       },
@@ -1136,7 +1188,7 @@
     },
     {
       "id": "g2u11.w.furniture",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1192,6 +1244,14 @@
           {
             "text": "Möbelstücke",
             "tier": "partial"
+          },
+          {
+            "text": "das Möbel",
+            "tier": "full"
+          },
+          {
+            "text": "die Möbel",
+            "tier": "full"
           }
         ]
       },
@@ -1205,7 +1265,7 @@
     },
     {
       "id": "g2u11.w.ground",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1257,6 +1317,10 @@
           {
             "text": "Boden",
             "tier": "full"
+          },
+          {
+            "text": "der Boden",
+            "tier": "full"
           }
         ]
       },
@@ -1270,7 +1334,7 @@
     },
     {
       "id": "g2u11.w.hammock",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1329,6 +1393,10 @@
         "enToDe": [
           {
             "text": "Hängematte",
+            "tier": "full"
+          },
+          {
+            "text": "die Hängematte",
             "tier": "full"
           }
         ]
@@ -1499,7 +1567,7 @@
     },
     {
       "id": "g2u11.w.island",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1559,6 +1627,10 @@
           {
             "text": "Insel",
             "tier": "full"
+          },
+          {
+            "text": "die Insel",
+            "tier": "full"
           }
         ]
       },
@@ -1583,7 +1655,7 @@
     },
     {
       "id": "g2u11.w.lamp",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1643,6 +1715,10 @@
           {
             "text": "Lampe",
             "tier": "full"
+          },
+          {
+            "text": "die Lampe",
+            "tier": "full"
           }
         ]
       },
@@ -1656,7 +1732,7 @@
     },
     {
       "id": "g2u11.w.leather",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1708,6 +1784,10 @@
           {
             "text": "Leder",
             "tier": "full"
+          },
+          {
+            "text": "das Leder",
+            "tier": "full"
           }
         ]
       },
@@ -1727,7 +1807,7 @@
     },
     {
       "id": "g2u11.w.material",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1791,6 +1871,10 @@
           {
             "text": "Stoff",
             "tier": "partial"
+          },
+          {
+            "text": "das Material",
+            "tier": "full"
           }
         ]
       },
@@ -1810,7 +1894,7 @@
     },
     {
       "id": "g2u11.w.metal",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1869,6 +1953,10 @@
         "enToDe": [
           {
             "text": "Metall",
+            "tier": "full"
+          },
+          {
+            "text": "das Metall",
             "tier": "full"
           }
         ]
@@ -2125,7 +2213,7 @@
     },
     {
       "id": "g2u11.w.pattern",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2184,6 +2272,10 @@
         "enToDe": [
           {
             "text": "Muster",
+            "tier": "full"
+          },
+          {
+            "text": "das Muster",
             "tier": "full"
           }
         ]
@@ -2284,7 +2376,7 @@
     },
     {
       "id": "g2u11.w.plastic",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2340,6 +2432,10 @@
           {
             "text": "Kunststoff",
             "tier": "partial"
+          },
+          {
+            "text": "das Plastik",
+            "tier": "full"
           }
         ]
       },
@@ -2364,7 +2460,7 @@
     },
     {
       "id": "g2u11.w.pond",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2424,6 +2520,10 @@
           {
             "text": "Teich",
             "tier": "full"
+          },
+          {
+            "text": "der Teich",
+            "tier": "full"
           }
         ]
       },
@@ -2448,7 +2548,7 @@
     },
     {
       "id": "g2u11.w.radiator",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2512,6 +2612,10 @@
           {
             "text": "Heizung",
             "tier": "partial"
+          },
+          {
+            "text": "der Heizkörper",
+            "tier": "full"
           }
         ]
       },
@@ -2525,7 +2629,7 @@
     },
     {
       "id": "g2u11.w.reed",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -2589,6 +2693,10 @@
           {
             "text": "Schilf",
             "tier": "full"
+          },
+          {
+            "text": "das Schilf",
+            "tier": "full"
           }
         ]
       },
@@ -2608,7 +2716,7 @@
     },
     {
       "id": "g2u11.w.roof",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2668,6 +2776,10 @@
           {
             "text": "Dach",
             "tier": "full"
+          },
+          {
+            "text": "das Dach",
+            "tier": "full"
           }
         ]
       },
@@ -2687,7 +2799,7 @@
     },
     {
       "id": "g2u11.w.rug",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2751,6 +2863,10 @@
           {
             "text": "Vorleger",
             "tier": "partial"
+          },
+          {
+            "text": "der Teppich",
+            "tier": "full"
           }
         ]
       },
@@ -2845,7 +2961,7 @@
     },
     {
       "id": "g2u11.w.sink",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2909,6 +3025,10 @@
           {
             "text": "Waschbecken",
             "tier": "partial"
+          },
+          {
+            "text": "das Spülbecken",
+            "tier": "full"
           }
         ]
       },
@@ -2922,7 +3042,7 @@
     },
     {
       "id": "g2u11.w.sofa",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2986,6 +3106,10 @@
           {
             "text": "Couch",
             "tier": "partial"
+          },
+          {
+            "text": "das Sofa",
+            "tier": "full"
           }
         ]
       },
@@ -3068,7 +3192,7 @@
     },
     {
       "id": "g2u11.w.staircase",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3132,6 +3256,10 @@
           {
             "text": "Stiege",
             "tier": "partial"
+          },
+          {
+            "text": "die Treppe",
+            "tier": "full"
           }
         ]
       },
@@ -3151,7 +3279,7 @@
     },
     {
       "id": "g2u11.w.stilts",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -3207,6 +3335,10 @@
           {
             "text": "Pfähle",
             "tier": "partial"
+          },
+          {
+            "text": "die Stelzen",
+            "tier": "full"
           }
         ]
       },
@@ -3226,7 +3358,7 @@
     },
     {
       "id": "g2u11.w.strap",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3294,6 +3426,10 @@
           {
             "text": "Riemen",
             "tier": "partial"
+          },
+          {
+            "text": "das Band",
+            "tier": "full"
           }
         ]
       },
@@ -3378,7 +3514,7 @@
     },
     {
       "id": "g2u11.w.table",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -3437,6 +3573,10 @@
         "enToDe": [
           {
             "text": "Tisch",
+            "tier": "full"
+          },
+          {
+            "text": "der Tisch",
             "tier": "full"
           }
         ]
@@ -3719,7 +3859,7 @@
     },
     {
       "id": "g2u11.w.trailer",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3787,6 +3927,10 @@
           {
             "text": "Wohnwagen",
             "tier": "full"
+          },
+          {
+            "text": "der Wohnwagen",
+            "tier": "full"
           }
         ]
       },
@@ -3811,7 +3955,7 @@
     },
     {
       "id": "g2u11.w.tree-house",
-      "rev": 3,
+      "rev": 4,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3882,6 +4026,10 @@
         "enToDe": [
           {
             "text": "Baumhaus",
+            "tier": "full"
+          },
+          {
+            "text": "das Baumhaus",
             "tier": "full"
           }
         ]
@@ -3975,7 +4123,7 @@
     },
     {
       "id": "g2u11.w.wall",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4039,6 +4187,14 @@
           {
             "text": "Mauer",
             "tier": "full"
+          },
+          {
+            "text": "die Wand",
+            "tier": "full"
+          },
+          {
+            "text": "die Mauer",
+            "tier": "full"
           }
         ]
       },
@@ -4058,7 +4214,7 @@
     },
     {
       "id": "g2u11.w.wardrobe",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4122,6 +4278,10 @@
           {
             "text": "Schrank",
             "tier": "partial"
+          },
+          {
+            "text": "der Kleiderschrank",
+            "tier": "full"
           }
         ]
       },
@@ -4204,7 +4364,7 @@
     },
     {
       "id": "g2u11.w.window",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4263,6 +4423,10 @@
         "enToDe": [
           {
             "text": "Fenster",
+            "tier": "full"
+          },
+          {
+            "text": "das Fenster",
             "tier": "full"
           }
         ]

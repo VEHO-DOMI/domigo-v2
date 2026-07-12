@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "g2u10.w.auntie",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -85,6 +85,14 @@
           },
           {
             "text": "Tante",
+            "tier": "full"
+          },
+          {
+            "text": "das Tantchen",
+            "tier": "full"
+          },
+          {
+            "text": "die Tante",
             "tier": "full"
           }
         ]
@@ -233,7 +241,7 @@
     },
     {
       "id": "g2u10.w.fault",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -289,6 +297,10 @@
           {
             "text": "Schuld",
             "tier": "full"
+          },
+          {
+            "text": "die Schuld",
+            "tier": "full"
           }
         ]
       },
@@ -302,7 +314,7 @@
     },
     {
       "id": "g2u10.w.file",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -362,6 +374,14 @@
           {
             "text": "Ordner",
             "tier": "full"
+          },
+          {
+            "text": "die Datei",
+            "tier": "full"
+          },
+          {
+            "text": "der Ordner",
+            "tier": "full"
           }
         ]
       },
@@ -375,7 +395,7 @@
     },
     {
       "id": "g2u10.w.foreign-language",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -430,6 +450,10 @@
         "enToDe": [
           {
             "text": "Fremdsprache",
+            "tier": "full"
+          },
+          {
+            "text": "die Fremdsprache",
             "tier": "full"
           }
         ]
@@ -582,7 +606,7 @@
     },
     {
       "id": "g2u10.w.ice-skating",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -637,6 +661,14 @@
           },
           {
             "text": "Schlittschuhlaufen",
+            "tier": "full"
+          },
+          {
+            "text": "das Eislaufen",
+            "tier": "full"
+          },
+          {
+            "text": "das Schlittschuhlaufen",
             "tier": "full"
           }
         ]
@@ -1408,7 +1440,7 @@
     },
     {
       "id": "g2u10.w.tool",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1464,6 +1496,10 @@
           {
             "text": "Werkzeug",
             "tier": "full"
+          },
+          {
+            "text": "das Werkzeug",
+            "tier": "full"
           }
         ]
       },
@@ -1477,7 +1513,7 @@
     },
     {
       "id": "g2u10.w.tractor",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1532,6 +1568,10 @@
         "enToDe": [
           {
             "text": "Traktor",
+            "tier": "full"
+          },
+          {
+            "text": "der Traktor",
             "tier": "full"
           }
         ]

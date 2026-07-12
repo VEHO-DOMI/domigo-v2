@@ -120,6 +120,20 @@
       "contentHash": "4985127065a62f57ba3045b1dd8490b9db4f5de9075d9d3ecffe1a79972ba32b",
       "note": "variant mint for g2.st.wrong-name",
       "at": "2026-06-28T17:16:52.537Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "8756d03dc26da3a6e6c59ba1da982c75238801cf61a76847d4f0c117200f8854",
+      "note": "gen ingest: 37 vocab + 34 grammar item(s); draft ad8b8a668f56",
+      "at": "2026-07-12T10:36:01.646Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable-trusted-patch",
+      "contentHash": "8756d03dc26da3a6e6c59ba1da982c75238801cf61a76847d4f0c117200f8854",
+      "note": "trusted patch (mechanical): 21 answer-pool fix(es) [g2u14.w.challenge, g2u14.w.competition, g2u14.w.cycling, g2u14.w.distance, g2u14.w.equipment, g2u14.w.flood, g2u14.w.ice-skating, g2u14.w.member, g2u14.w.mountain-biking, g2u14.w.mountain-climbing, g2u14.w.race, g2u14.w.roller-skating, g2u14.w.skateboarding, g2u14.w.skiing, g2u14.w.snowboarding, g2u14.w.success, g2u14.w.surfing, g2u14.w.swimming, g2u14.w.waste-of-time, g2u14.w.windsurfing, g2u14.w.world-record] — overlay materialized, LLM lenses carried forward; gated by content validate + blind-solve (Koki decision B, 2026-07-12)",
+      "at": "2026-07-12T10:36:01.648Z"
     }
   ]
 }

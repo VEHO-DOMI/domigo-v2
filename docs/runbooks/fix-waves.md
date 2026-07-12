@@ -33,6 +33,22 @@ content fixes — one bounded wave per PR. Pairs with the curation standard
 > engine grade of **every** added form, with wave stats in the PR body. R1 wave 1 = g1-u01
 > (calibration, #133); R1 wave 2 = the rest of grade 1 (14 units / 305 items). Prose fixes stay
 > ≤25/PR (they carry judgment). This bound only relaxes for the machine-verified mechanical class.
+>
+> **R1 mechanical-wave gotchas (learned g1→g2, 2026-07-12).** Three cases the naive "append the
+> article form" builder gets wrong — a wave builder MUST handle all three:
+> 1. **Merge, never replace, an item's overlay patch.** Some R1 items already carry a *prose* fix
+>    (a `d`/`s` edit from an earlier PR, e.g. g2u01.w.science). Writing `patch[id] = {translation}`
+>    silently drops that prose fix (V-22 still passes — the corpus keeps the stale materialized value,
+>    but the overlay no longer records it, so the next `gen --ingest` reverts it). Always
+>    `patch[id] = {...existing, translation}`. The adversarial diff review (HEAD-vs-now on every
+>    pre-existing patch *field*) is what catches this — run it every wave.
+> 2. **Promote a partial article form to full — don't skip it.** The audit counts only *full*-tier
+>    article forms, so an item with `"das Blut"` at **partial** tier is still R1-flagged. The fix is to
+>    set that entry's tier to `full` (K-4), not to add a duplicate. Grade 1 had none; grade 2 had 7.
+> 3. **Skip R1 false-positives — non-nouns AND article-less proper names.** "favourite" (adjective/
+>    prefix) and "Zentralasien" (a place name; `das Zentralasien` is grammatical but article-less in
+>    use) can't take a natural article → leave them flagged (1 residual per grade so far). Refining the
+>    R1 rule to exclude these is a small follow-up.
 
 ## The wave loop (per PR)
 

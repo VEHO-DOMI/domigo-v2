@@ -75,7 +75,7 @@
     },
     {
       "id": "g2u01.w.area",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -143,6 +143,14 @@
           {
             "text": "Gegend",
             "tier": "partial"
+          },
+          {
+            "text": "das Gebiet",
+            "tier": "full"
+          },
+          {
+            "text": "die Region",
+            "tier": "full"
           }
         ]
       },
@@ -156,7 +164,7 @@
     },
     {
       "id": "g2u01.w.art",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -207,6 +215,10 @@
         "enToDe": [
           {
             "text": "Kunst",
+            "tier": "full"
+          },
+          {
+            "text": "die Kunst",
             "tier": "full"
           }
         ]
@@ -293,7 +305,7 @@
     },
     {
       "id": "g2u01.w.bicycle-lane",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -369,6 +381,10 @@
           {
             "text": "Fahrradweg",
             "tier": "partial"
+          },
+          {
+            "text": "der Radweg",
+            "tier": "full"
           }
         ]
       },
@@ -382,7 +398,7 @@
     },
     {
       "id": "g2u01.w.break",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -445,7 +461,7 @@
           },
           {
             "text": "die Pause",
-            "tier": "partial"
+            "tier": "full"
           }
         ]
       },
@@ -459,7 +475,7 @@
     },
     {
       "id": "g2u01.w.calendar",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -513,6 +529,10 @@
         "enToDe": [
           {
             "text": "Kalender",
+            "tier": "full"
+          },
+          {
+            "text": "der Kalender",
             "tier": "full"
           }
         ]
@@ -676,7 +696,7 @@
     },
     {
       "id": "g2u01.w.design-and-technology",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -728,6 +748,10 @@
           {
             "text": "Werken",
             "tier": "full"
+          },
+          {
+            "text": "das Werken",
+            "tier": "full"
           }
         ]
       },
@@ -741,7 +765,7 @@
     },
     {
       "id": "g2u01.w.english",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -793,6 +817,10 @@
           {
             "text": "Englisch",
             "tier": "full"
+          },
+          {
+            "text": "das Englisch",
+            "tier": "full"
           }
         ]
       },
@@ -806,7 +834,7 @@
     },
     {
       "id": "g2u01.w.french",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -858,6 +886,10 @@
           {
             "text": "Französisch",
             "tier": "full"
+          },
+          {
+            "text": "das Französisch",
+            "tier": "full"
           }
         ]
       },
@@ -871,7 +903,7 @@
     },
     {
       "id": "g2u01.w.geography",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -926,6 +958,14 @@
           },
           {
             "text": "Geographie",
+            "tier": "full"
+          },
+          {
+            "text": "die Geografie",
+            "tier": "full"
+          },
+          {
+            "text": "die Geographie",
             "tier": "full"
           }
         ]
@@ -1017,7 +1057,7 @@
     },
     {
       "id": "g2u01.w.grandmother",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1085,6 +1125,10 @@
           {
             "text": "Oma",
             "tier": "partial"
+          },
+          {
+            "text": "die Großmutter",
+            "tier": "full"
           }
         ]
       },
@@ -1098,7 +1142,7 @@
     },
     {
       "id": "g2u01.w.history",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1150,6 +1194,10 @@
           {
             "text": "Geschichte",
             "tier": "full"
+          },
+          {
+            "text": "die Geschichte",
+            "tier": "full"
           }
         ]
       },
@@ -1163,7 +1211,7 @@
     },
     {
       "id": "g2u01.w.information-technology",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1227,6 +1275,10 @@
           {
             "text": "Informatik",
             "tier": "full"
+          },
+          {
+            "text": "die Informatik",
+            "tier": "full"
           }
         ]
       },
@@ -1240,7 +1292,7 @@
     },
     {
       "id": "g2u01.w.joke",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1303,6 +1355,10 @@
           {
             "text": "Scherz",
             "tier": "partial"
+          },
+          {
+            "text": "der Witz",
+            "tier": "full"
           }
         ]
       },
@@ -1316,7 +1372,7 @@
     },
     {
       "id": "g2u01.w.kilometre",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1388,6 +1444,10 @@
           {
             "text": "Kilometer",
             "tier": "full"
+          },
+          {
+            "text": "der Kilometer",
+            "tier": "full"
           }
         ]
       },
@@ -1401,7 +1461,7 @@
     },
     {
       "id": "g2u01.w.king",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1461,6 +1521,10 @@
           {
             "text": "König",
             "tier": "full"
+          },
+          {
+            "text": "der König",
+            "tier": "full"
           }
         ]
       },
@@ -1474,7 +1538,7 @@
     },
     {
       "id": "g2u01.w.lesson",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1537,6 +1601,14 @@
           {
             "text": "Schulstunde",
             "tier": "partial"
+          },
+          {
+            "text": "die Unterrichtsstunde",
+            "tier": "full"
+          },
+          {
+            "text": "die Stunde",
+            "tier": "full"
           }
         ]
       },
@@ -1550,7 +1622,7 @@
     },
     {
       "id": "g2u01.w.maths",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1618,6 +1690,14 @@
           {
             "text": "Mathe",
             "tier": "full"
+          },
+          {
+            "text": "die Mathematik",
+            "tier": "full"
+          },
+          {
+            "text": "die Mathe",
+            "tier": "full"
           }
         ]
       },
@@ -1631,7 +1711,7 @@
     },
     {
       "id": "g2u01.w.music",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1682,6 +1762,10 @@
         "enToDe": [
           {
             "text": "Musik",
+            "tier": "full"
+          },
+          {
+            "text": "die Musik",
             "tier": "full"
           }
         ]
@@ -1769,7 +1853,7 @@
     },
     {
       "id": "g2u01.w.online-safety",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 3,
       "presentation": {
         "variants": [],
@@ -1825,6 +1909,10 @@
           {
             "text": "Online-Sicherheit",
             "tier": "partial"
+          },
+          {
+            "text": "die Internetsicherheit",
+            "tier": "full"
           }
         ]
       },
@@ -1838,7 +1926,7 @@
     },
     {
       "id": "g2u01.w.opinion",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1902,6 +1990,10 @@
           {
             "text": "Ansicht",
             "tier": "partial"
+          },
+          {
+            "text": "die Meinung",
+            "tier": "full"
           }
         ]
       },
@@ -1915,7 +2007,7 @@
     },
     {
       "id": "g2u01.w.physical-education",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1986,6 +2078,18 @@
           },
           {
             "text": "Turnen",
+            "tier": "full"
+          },
+          {
+            "text": "der Sport",
+            "tier": "full"
+          },
+          {
+            "text": "die Leibeserziehung",
+            "tier": "full"
+          },
+          {
+            "text": "das Turnen",
             "tier": "full"
           }
         ]
@@ -2064,7 +2168,7 @@
     },
     {
       "id": "g2u01.w.queen",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2124,6 +2228,10 @@
           {
             "text": "Königin",
             "tier": "full"
+          },
+          {
+            "text": "die Königin",
+            "tier": "full"
           }
         ]
       },
@@ -2137,7 +2245,7 @@
     },
     {
       "id": "g2u01.w.rubbish",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2200,6 +2308,14 @@
           },
           {
             "text": "Abfall",
+            "tier": "full"
+          },
+          {
+            "text": "der Müll",
+            "tier": "full"
+          },
+          {
+            "text": "der Abfall",
             "tier": "full"
           }
         ]
@@ -2287,7 +2403,7 @@
     },
     {
       "id": "g2u01.w.science",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2347,6 +2463,14 @@
           {
             "text": "Naturwissenschaft",
             "tier": "full"
+          },
+          {
+            "text": "die Naturwissenschaften",
+            "tier": "full"
+          },
+          {
+            "text": "die Naturwissenschaft",
+            "tier": "full"
           }
         ]
       },
@@ -2360,7 +2484,7 @@
     },
     {
       "id": "g2u01.w.shadow",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2420,6 +2544,10 @@
           {
             "text": "Schatten",
             "tier": "full"
+          },
+          {
+            "text": "der Schatten",
+            "tier": "full"
           }
         ]
       },
@@ -2433,7 +2561,7 @@
     },
     {
       "id": "g2u01.w.spring",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -2489,6 +2617,10 @@
           {
             "text": "Frühjahr",
             "tier": "partial"
+          },
+          {
+            "text": "der Frühling",
+            "tier": "full"
           }
         ]
       },
@@ -2595,7 +2727,7 @@
     },
     {
       "id": "g2u01.w.supper",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2658,6 +2790,14 @@
           {
             "text": "Abendbrot",
             "tier": "partial"
+          },
+          {
+            "text": "das Abendessen",
+            "tier": "full"
+          },
+          {
+            "text": "das Nachtmahl",
+            "tier": "full"
           }
         ]
       },
@@ -2671,7 +2811,7 @@
     },
     {
       "id": "g2u01.w.timetable",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -2734,7 +2874,7 @@
           },
           {
             "text": "der Stundenplan",
-            "tier": "partial"
+            "tier": "full"
           }
         ]
       },
@@ -3618,7 +3758,7 @@
     },
     {
       "id": "g2u01.w.webpage",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3694,6 +3834,10 @@
           {
             "text": "Webseite",
             "tier": "partial"
+          },
+          {
+            "text": "die Internetseite",
+            "tier": "full"
           }
         ]
       },
