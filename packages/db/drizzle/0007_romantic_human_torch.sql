@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "users_class_claimed_nickname_unique" ON "domigo_v2"."users" USING btree ("class_id",lower("display_name")) WHERE "domigo_v2"."users"."role" = 'student' and "domigo_v2"."users"."claimed_at" is not null;
