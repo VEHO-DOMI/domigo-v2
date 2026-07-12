@@ -43,6 +43,13 @@
       "when": 1783407559726,
       "tag": "0005_silly_loa",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1783860589515,
+      "tag": "0006_handy_whistler",
+      "breakpoints": true
     }
   ]
 }
