@@ -3,18 +3,21 @@ import Link from "next/link";
 import { useState } from "react";
 import type { CSSProperties } from "react";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
-import type { Tier } from "@domigo/engine";
+import type { Tier, VocabPool } from "@domigo/engine";
 import { xpForTier } from "@domigo/engine";
-import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
+import { GrammarItemView, VocabItemView, rotateVocabPool, VOCAB_POOL_LABEL, VOCAB_POOLS, type ResultDetail } from "@domigo/task-ui";
 import { sendAttempt } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 type Mode = "grammar" | "vocab";
+/** "auto" rotates the vocab answer pool per (item, day); a VocabPool forces one. */
+type PoolChoice = "auto" | VocabPool;
 
-export default function PracticeSession({ slug, vocab, grammar }: {
-  slug: string; vocab: VocabItem[]; grammar: GrammarItem[];
+export default function PracticeSession({ slug, vocab, grammar, today }: {
+  slug: string; vocab: VocabItem[]; grammar: GrammarItem[]; today: string;
 }) {
   const [mode, setMode] = useState<Mode>("grammar");
+  const [vocabPool, setVocabPool] = useState<PoolChoice>("auto");
   const [i, setI] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [results, setResults] = useState<Array<{ tier: Tier; xp: number }>>([]);
@@ -23,8 +26,13 @@ export default function PracticeSession({ slug, vocab, grammar }: {
 
   const list: Array<GrammarItem | VocabItem> = mode === "grammar" ? grammar : vocab;
   const item = list[i];
+  // A-6: in vocab mode, "auto" (Mix) rotates the answer pool deterministically per
+  // (item, Vienna-day); a manual chip forces one direction for the whole set.
+  const resolvedPool: VocabPool =
+    mode === "vocab" && item ? (vocabPool === "auto" ? rotateVocabPool(item.id, today) : vocabPool) : "carrier";
 
   const switchMode = (m: Mode) => { setMode(m); setI(0); setAnswered(false); setResults([]); };
+  const switchPool = (p: PoolChoice) => { setVocabPool(p); setI(0); setAnswered(false); setResults([]); };
   const onResult = (tier: Tier, detail: ResultDetail) => {
     if (!item) return;
     setAnswered(true);
@@ -53,6 +61,11 @@ export default function PracticeSession({ slug, vocab, grammar }: {
     background: active ? "var(--accent)" : "var(--card)", color: active ? "#fff" : "var(--text-secondary)",
     fontSize: 14, fontWeight: 700, fontFamily: "var(--font-body)",
   });
+  const chipStyle = (active: boolean): CSSProperties => ({
+    border: active ? "none" : "1.5px solid var(--card-border)", borderRadius: 999, padding: "5px 12px", cursor: "pointer",
+    background: active ? "var(--accent)" : "var(--card)", color: active ? "#fff" : "var(--text-secondary)",
+    fontSize: 12.5, fontWeight: 700, fontFamily: "var(--font-body)",
+  });
 
   return (
     <main data-grade={grade} style={{ maxWidth: 640, margin: "0 auto", padding: "28px 20px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
@@ -65,6 +78,15 @@ export default function PracticeSession({ slug, vocab, grammar }: {
         <button style={tabStyle(mode === "grammar")} onClick={() => switchMode("grammar")}>Grammar ({grammar.length})</button>
         <button style={tabStyle(mode === "vocab")} onClick={() => switchMode("vocab")}>Vocab ({vocab.length})</button>
       </div>
+
+      {mode === "vocab" && (
+        <div style={{ display: "flex", gap: 6, marginBottom: 14, flexWrap: "wrap" }} role="group" aria-label="Vocab exercise mode">
+          <button style={chipStyle(vocabPool === "auto")} onClick={() => switchPool("auto")}>Mix</button>
+          {VOCAB_POOLS.map((p) => (
+            <button key={p} style={chipStyle(vocabPool === p)} onClick={() => switchPool(p)}>{VOCAB_POOL_LABEL[p]}</button>
+          ))}
+        </div>
+      )}
 
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, color: "var(--text-secondary)", marginBottom: 10 }}>
         <span>Item {Math.min(i + 1, list.length)} / {list.length}</span>
@@ -82,7 +104,7 @@ export default function PracticeSession({ slug, vocab, grammar }: {
         mode === "grammar" ? (
           <GrammarItemView key={item.id} item={item as GrammarItem} onResult={onResult} tactile />
         ) : (
-          <VocabItemView key={item.id} item={item as VocabItem} onResult={onResult} />
+          <VocabItemView key={`${item.id}:${resolvedPool}`} item={item as VocabItem} onResult={onResult} pool={resolvedPool} />
         )
       ) : (
         <p>No items in this mode.</p>
