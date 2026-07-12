@@ -12,12 +12,14 @@
 import { createContext, useContext, useEffect, useId, useMemo, useRef, useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import type { AudioRef, GrammarItem, GrammarStructure, Gloss, ListeningTask, VocabItem, WordBank } from "@domigo/content-schema";
-import type { ClassifiableItem, GrammarInput, Tier } from "@domigo/engine";
-import { breaksCombo, classifyWrong, gradeGrammar, gradeVocab, xpForTier } from "@domigo/engine";
+import type { ClassifiableItem, GrammarInput, Tier, VocabPool } from "@domigo/engine";
+import { breaksCombo, classifyWrong, gradeGrammar, gradeVocab, vocabAnswers, xpForTier } from "@domigo/engine";
 import { diffWords, playTier } from "@domigo/game-feel";
 import { agAssemble, agSlots, agTiles, sbChips } from "./tactile.ts";
+import { vocabPrompt, VOCAB_POOL_LABEL } from "./vocab-pool.ts";
 
 export { agAssemble, agSlots, agTiles, sbChips, sbAnswerOrder, seededShuffle } from "./tactile.ts";
+export * from "./vocab-pool.ts";
 export type { AgSlot, AgTile, SbChip } from "./tactile.ts";
 
 /** The D-1 verdict register (docs/handover/14_feedback_register.md, G-D gate):
@@ -321,7 +323,7 @@ const TEXT_FORMATS = new Set([
 /** The graded input + item id, surfaced to the parent for attempt recording. */
 export type ResultDetail =
   | { kind: "grammar"; itemId: string; input: GrammarInput }
-  | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string } };
+  | { kind: "vocab"; itemId: string; input: { kind: "vocab"; value: string; pool?: VocabPool } };
 
 /** Forgiving-retry ladder (Law 3): a wrong answer re-enables the input — nothing
  *  shown lost — up to MAX_WRONG tries (1st wrong → try again, 2nd → the Tipp is
@@ -598,35 +600,43 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, t
 
 // ---- vocab item ----------------------------------------------------------
 
-export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp, singleAttempt }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; singleAttempt?: boolean }) {
+export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp, singleAttempt, pool = "carrier" }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; singleAttempt?: boolean; pool?: VocabPool }) {
   const promptId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
+  // A-6/P-10: the exercise grades against the pool it actually asked for. `ask`
+  // is the leak-safe prompt for that pool (carrier shows the ___ sentence + a
+  // definition context and its scaffolds; the recall pools show the opposite-
+  // language prompt only). `pool` flows into detail.input so the SERVER regrades
+  // in the same pool — otherwise a definition answer would persist as carrier-wrong.
+  const ask = vocabPrompt(item, pool);
+  const answers = vocabAnswers(item, pool);
   const gradeOnce = (): { tier: Tier; detail: ResultDetail } => {
-    const r = gradeVocab(item, value);
-    return { tier: r.tier, detail: { kind: "vocab", itemId: item.id, input: { kind: "vocab", value } } };
+    const r = gradeVocab(item, value, pool);
+    return { tier: r.tier, detail: { kind: "vocab", itemId: item.id, input: { kind: "vocab", value, pool } } };
   };
   const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult, singleAttempt ? 1 : MAX_WRONG);
   useEffect(() => { if (autoFocus && !done) inputRef.current?.focus(); }, [autoFocus, done, wrongCount]);
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
-  const fullAnswers = item.sAnswers.filter((a) => a.tier === "full").map((a) => a.text);
+  const fullAnswers = answers.filter((a) => a.tier === "full").map((a) => a.text);
   return (
     <div style={card} role="group" aria-labelledby={promptId}>
-      <div style={metaLabel}>vocab · level {item.difficulty}</div>
-      <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>{item.d}</div>
-      <Prompt id={promptId} text={item.s} />
+      <div style={metaLabel}>vocab · {VOCAB_POOL_LABEL[pool]} · level {item.difficulty}</div>
+      {ask.context !== null && <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>{ask.context}</div>}
+      {ask.instruction !== "" && <div style={{ fontSize: 13, color: "var(--text-secondary)", fontWeight: 600 }}>{ask.instruction}</div>}
+      <Prompt id={promptId} text={ask.text} />
       <input ref={inputRef} className="dg-input" style={{ minWidth: 120 }} value={value} disabled={done} aria-label="Your answer" placeholder="Your answer" onKeyDown={(e) => { if (e.key === "Enter" && !done) { e.preventDefault(); submit(); } }} onChange={(e) => setValue(e.target.value)} />
-      <GlossRow gloss={item.gloss} />
-      {!hideHint && <HintRow hintDe={item.hintDe} />}
+      {ask.scaffold && <GlossRow gloss={item.gloss} />}
+      {ask.scaffold && !hideHint && <HintRow hintDe={item.hintDe} />}
       {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
-      {retrying && <RetryNudge wrongCount={wrongCount} hintDe={item.hintDe} />}
+      {retrying && <RetryNudge wrongCount={wrongCount} hintDe={ask.scaffold ? item.hintDe : ""} />}
       {done && tier && (
         <>
           <FeedbackCard
             tier={tier}
             xp={xp}
             hideXp={hideXp}
-            item={{ answers: item.sAnswers }}
+            item={{ answers }}
             input={value}
             correct={fullAnswers[0] ?? ""}
             others={fullAnswers.slice(1)}
