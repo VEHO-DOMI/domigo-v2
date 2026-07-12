@@ -39,3 +39,4 @@ export * from "./v1.ts"; // read-only mirrors of v1's public.users/classes (auth
 export * from "./auth.ts"; // v2→v1 dual-read identity lookups (lookupStudentForAuth/lookupTeacherForAuth) + allocateClassCode
 export * from "./class-service.ts"; // P-1b: teacher class CRUD (v2-native, authz by teacherId) + pure name/grade validation
 export * from "./roster-service.ts"; // P-2: roster import + student self-claim (journal-then-flip, authz by teacherId)
+export * from "./bootstrap-teacher.ts"; // one-time v2-native teacher bootstrap (lock-out recovery; token + one-shot gated at /bootstrap)
