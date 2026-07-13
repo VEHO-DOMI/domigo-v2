@@ -81,6 +81,10 @@ export default async function JoinPage({
     <main style={{ maxWidth: 400, margin: "0 auto", padding: "24px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <h1 style={{ fontSize: 28, margin: "0 0 4px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Join {cls.name}</h1>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>Find your name, pick a nickname and a 6-digit PIN to log in with.</p>
+      <p style={{ fontSize: 13, color: "var(--muted)", marginTop: 6 }}>
+        Schon beigetreten? · Already joined?{" "}
+        <Link href="/signin" style={{ color: "var(--accent)", fontWeight: 600 }}>Zur Anmeldung →</Link>
+      </p>
 
       {error && (
         <p style={{ background: "var(--incorrect-soft)", color: "var(--incorrect)", padding: "9px 13px", borderRadius: 12, fontSize: 14, fontWeight: 600 }}>

@@ -13,6 +13,17 @@ export default async function SignInPage({
   const from = sp.from && sp.from.startsWith("/") ? sp.from : "/home";
   const error = sp.error;
 
+  // D-0: the bridge for NEW students. Sign-in only works for claimed accounts; a
+  // fresh student holding an invite code must go through /join/<code> to pick
+  // themselves + set a PIN. Without this form, typing the code above just yields
+  // "didn't match" with no way forward (the exact dead end hit on 2026-07-13).
+  async function goToJoin(formData: FormData) {
+    "use server";
+    const code = String(formData.get("joinCode") ?? "").trim().toUpperCase();
+    if (!code) redirect("/signin");
+    redirect(`/join/${encodeURIComponent(code)}`);
+  }
+
   async function studentSignIn(formData: FormData) {
     "use server";
     const classCode = String(formData.get("classCode") ?? "");
@@ -53,6 +64,25 @@ export default async function SignInPage({
           <input name="pin" required inputMode="numeric" pattern="[0-9]{6}" maxLength={6} type="password" autoComplete="off" placeholder="6 digits" className="dg-input" />
         </label>
         <button type="submit" className="dg-btn" style={{ marginTop: 4, padding: "12px 16px" }}>Sign in</button>
+      </form>
+      <form action={goToJoin} className="dg-card" style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16 }}>
+        <p style={{ margin: 0, fontSize: 14, fontWeight: 700, color: "var(--ink)" }}>Neu hier? · New here?</p>
+        <p style={{ margin: 0, fontSize: 13, color: "var(--text-secondary)" }}>
+          Erster Besuch? Gib den Beitritts-Code deiner Klasse ein und such dich aus der Liste aus — dort wählst du
+          deinen Spitznamen und deine PIN.
+        </p>
+        <div style={{ display: "flex", gap: 8 }}>
+          <input
+            name="joinCode"
+            maxLength={32}
+            autoCapitalize="characters"
+            autoComplete="off"
+            placeholder="Beitritts-Code, z.B. 78QVDZ"
+            className="dg-input"
+            style={{ flex: 1 }}
+          />
+          <button type="submit" className="dg-btn" style={{ padding: "10px 16px" }}>Beitreten →</button>
+        </div>
       </form>
       <p style={{ marginTop: 20, fontSize: 13, color: "var(--muted)" }}>
         Teacher? <Link href="/admin/signin" style={{ color: "var(--accent)", fontWeight: 600 }}>Sign in here</Link>.
