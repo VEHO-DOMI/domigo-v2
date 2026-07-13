@@ -1,0 +1,71 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 90,
+ "cols": 4,
+ "rows": 3,
+ "cells": [
+  {
+   "stem": "floor",
+   "col": 0,
+   "row": 0,
+   "opaque": true
+  },
+  {
+   "stem": "wall",
+   "col": 1,
+   "row": 0,
+   "opaque": true
+  },
+  {
+   "stem": "wall_top",
+   "col": 2,
+   "row": 0,
+   "opaque": true
+  },
+  {
+   "stem": "door",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "stem": "desk",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "teacher_desk",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "blackboard",
+   "col": 2,
+   "row": 1
+  },
+  {
+   "stem": "window",
+   "col": 3,
+   "row": 1
+  },
+  {
+   "stem": "timetable",
+   "col": 0,
+   "row": 2
+  },
+  {
+   "stem": "ink_desk",
+   "col": 1,
+   "row": 2
+  },
+  {
+   "stem": "sparkle",
+   "col": 2,
+   "row": 2
+  },
+  {
+   "stem": "npc_down",
+   "col": 3,
+   "row": 2
+  }
+ ]
+}

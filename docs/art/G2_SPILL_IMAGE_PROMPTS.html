@@ -1,357 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DomiGo v2 — G2 "The Spill" Image Library · All 15 Zones</title>
+<!doctype html>
+<!-- ART-2 · G2 "The Spill" SHEET-BASED image-prompt library (2026-07-14).
+     One SHEET per zone (4×3 grid on solid magenta) instead of ~12 single
+     generations — cropped + alpha-keyed by docs/art/slice-art.mjs. Supersedes
+     G2_SPILL_IMAGE_PROMPTS_v1_singles.html (kept as visual reference). Design
+     source: docs/handover/22_g2_overworld_design.md §3–§5. -->
+<html lang="en"><head><meta charset="utf-8"><title>G2 · The Spill — sheet prompt library</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', system-ui, sans-serif; background: #f0f2f5; color: #141b2e; line-height: 1.6; }
-.header { background: linear-gradient(135deg, #16224a, #0c1226); color: white; padding: 1.6rem 2rem; text-align: center; position: sticky; top: 0; z-index: 100; }
-.header h1 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; }
-.header p { font-size: 0.78rem; opacity: 0.82; margin-top: 0.3rem; }
-.nav { display: flex; gap: 0; overflow-x: auto; background: #24357a; padding: 0; position: sticky; top: 74px; z-index: 99; }
-.nav button { flex-shrink: 0; padding: 0.6rem 0.75rem; background: none; border: none; color: rgba(255,255,255,0.62); font-size: 0.7rem; font-weight: 600; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.15s; white-space: nowrap; }
-.nav button:hover { color: white; background: rgba(255,255,255,0.06); }
-.nav button.active { color: #9db8ff; border-bottom-color: #5a7dff; background: rgba(255,255,255,0.09); }
-.section { display: none; padding: 1rem; max-width: 820px; margin: 0 auto; }
-.section.active { display: block; }
-.section h2 { font-size: 1.18rem; font-weight: 800; color: #141b2e; margin: 1.5rem 0 0.5rem; padding-bottom: 0.3rem; border-bottom: 2px solid #d9dee9; }
-.section h3 { font-size: 0.95rem; font-weight: 700; color: #16224a; margin: 1.2rem 0 0.4rem; }
-.section p { font-size: 0.85rem; }
-.prompt-card { background: white; border: 1.5px solid #d9dee9; border-radius: 12px; padding: 1rem 1rem 0.9rem; margin: 0.8rem 0; position: relative; }
-.prompt-card .placement { display: inline-block; font-size: 0.62rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.6px; }
-.placement.tile { background: #E3EAFB; color: #2545a8; }
-.placement.prop { background: #FFF3E0; color: #B45309; }
-.placement.character { background: #F3E5F5; color: #6A1B9A; }
-.placement.optional { background: #ECEFF1; color: #607D8B; }
-.prompt-card .title { font-weight: 700; font-size: 0.9rem; color: #141b2e; margin-bottom: 0.15rem; }
-.prompt-card .file { font-size: 0.72rem; color: #24357a; font-family: 'SF Mono','Fira Code',monospace; margin-bottom: 0.55rem; }
-.prompt-card .file .dims { color: #90a49a; }
-.prompt-text { background: #f7f8fc; border: 1px solid #e0e4ee; border-radius: 8px; padding: 0.8rem; font-size: 0.76rem; line-height: 1.7; color: #2a3040; white-space: pre-wrap; word-wrap: break-word; max-height: 320px; overflow-y: auto; }
-.copy-btn { position: absolute; top: 0.6rem; right: 0.6rem; background: #16224a; color: white; border: none; padding: 0.4rem 0.85rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700; cursor: pointer; transition: all 0.15s; }
-.copy-btn:hover { background: #5a7dff; }
-.copy-btn.copied { background: #2E7D32; }
-.info-box { background: #e9eefb; border-left: 4px solid #5a7dff; padding: 0.8rem 1rem; margin: 0.8rem 0; border-radius: 0 8px 8px 0; font-size: 0.8rem; }
-.info-box.red { background: #FFEBEE; border-color: #e53935; }
-.info-box.amber { background: #FFF8E1; border-color: #FF9800; }
-.info-box.green { background: #e9f5ee; border-color: #22c55e; }
-.spec { background: #f5f6fa; border: 1px solid #e0e4ee; border-radius: 8px; padding: 0.8rem; font-family: 'SF Mono','Fira Code',monospace; font-size: 0.7rem; line-height: 1.55; overflow-x: auto; white-space: pre-wrap; margin: 0.5rem 0; }
-.swatches { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.5rem 0 0.8rem; }
-.sw { display: flex; flex-direction: column; align-items: center; width: 62px; }
-.sw .chip { width: 46px; height: 34px; border-radius: 5px; border: 1px solid rgba(0,0,0,0.15); }
-.sw .hex { font-size: 0.58rem; font-family: 'SF Mono',monospace; color: #607D8B; margin-top: 2px; }
-.zone-header { background: linear-gradient(135deg, #e9eefb, #f3f6fd); border: 2px solid #a9bdf0; border-radius: 12px; padding: 0.9rem 1rem; margin: 1rem 0; text-align: center; }
-.zone-header .ch-name { font-size: 1.05rem; font-weight: 800; color: #141b2e; }
-.zone-header .ch-sub { font-size: 0.75rem; color: #5a6580; margin-top: 0.15rem; }
-code { background: #e9eefb; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; font-family: 'SF Mono',monospace; }
-footer { text-align: center; padding: 2rem; color: #90a49a; font-size: 0.72rem; }
-a { color: #24357a; }
-</style>
-</head>
-<body>
+  body{font-family:-apple-system,sans-serif;max-width:900px;margin:0 auto;padding:24px;background:#faf9f6;color:#1e293b}
+  h1{font-size:22px} h2{font-size:16px;margin-top:28px;border-bottom:2px solid #e2e8f0;padding-bottom:4px}
+  .rules{background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:12px 16px;font-size:13.5px}
+  .cal{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:12px 16px;font-size:13.5px;margin-top:10px}
+  .card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;margin:14px 0;font-size:13px}
+  .card h3{margin:0 0 6px;font-size:14px} .grid{color:#475569;font-size:12px;margin:4px 0 8px}
+  textarea{width:100%;height:150px;font:11.5px/1.5 ui-monospace,monospace;border:1px solid #cbd5e1;border-radius:8px;padding:8px}
+  .manifest{font:11px ui-monospace,monospace;background:#f1f5f9;border-radius:8px;padding:8px;white-space:pre-wrap}
+  button{margin:4px 4px 0 0;padding:5px 12px;border-radius:8px;border:1px solid #cbd5e1;background:#fff;cursor:pointer;font-size:12px}
+</style></head><body>
+<h1>G2 · The Spill — sheet prompt library (ART-2 format)</h1>
 
-<div class="header">
-  <h1>DomiGo v2 — Grade 2 "The Spill / Der Klecks" · Image Library, All 15 Zones</h1>
-  <p>The school overworld · GBA / FireRed–LeafGreen pixel art · one tab per zone · tap any prompt to copy</p>
-</div>
+<div class="rules"><b>The three pipeline rules (supersede the single-element workflow):</b><br>
+1 · <b>One generation = one SHEET</b> — a 4-column × 3-row grid of elements on <b>solid magenta #FF00FF</b>. Never ask the generator for transparency: <i>transparency is enforced by our slicer, never trusted from the generator.</i><br>
+2 · Save the sheet PNG into the zone's drop folder, then run:<br>
+<code>node docs/art/slice-art.mjs --sheet &lt;sheet.png&gt; --manifest docs/art/sheets/g2-&lt;zone&gt;.manifest.json</code> → then the usual <code>prep-art.mjs</code> (QA/resize) + <code>sync-art.mjs</code>.<br>
+3 · Cell ORDER is the contract (row-major, matching the manifest) — the prompt never asks for text labels inside the image (text breeds artifacts).</div>
 
-<div class="nav" id="nav"></div>
-<div id="content"></div>
-<footer>DomiGo v2 · G2 "The Spill" Overworld Art · zones u01–u15 · 2026 — the engine for these zones lands with work item B-2; images generated now are forward-compatible</footer>
+<div class="cal"><b>Generator calibration (Koki's tools):</b><br>
+<b>GPT-Image 2</b> — obeys grids well. Keep the GRID block verbatim at the top; if a cell bleeds, regenerate adding "each element fully inside its cell, generous magenta margin around every element."<br>
+<b>Nano Banana Pro 2</b> — needs redundancy: repeat the background demand ("solid flat magenta #FF00FF everywhere between elements — NO checkerboard, NO gradient, NO texture") and prefer "12 separate small pixel-art objects arranged 4 across, 3 down" over abstract grid language. If it draws thin cell borders, fine — the slicer crops inside them.</div>
+
+<div id="library"></div>
 
 <script>
-// ═══════════════════════════════════════════════════════════════════════════
-//  MASTER STYLE PREFIX — same FireRed bar as Grade 1, retuned for a REAL school
-// ═══════════════════════════════════════════════════════════════════════════
-const STYLE = `16-bit GBA top-down RPG pixel art, in the exact spirit of Pokémon FireRed & LeafGreen — overworld tiles and overworld character sprites. Flat cel-shaded pixel art: each material uses a 2–3 step tonal ramp (base + highlight + shadow), a clean 1px near-black outline around discrete objects and characters, and hard-edged shading (dithering allowed, NO smooth gradients, NO anti-aliasing, NO blur, NO glow bloom, NO drop-shadow filters). Straight top-down 3/4 overhead camera with a slight forward tilt, exactly like a FireRed interior. Mood: a REAL, ordinary Austrian primary school — warm, believable, slightly grown-up compared to Grade 1 — into which story-ink is quietly leaking. Crisp square pixels only. ABSOLUTELY NO text, letters, numbers, logos, signatures, watermarks, or UI. Use ONLY the zone palette given below — do not invent new hues.`;
-
-// The G2 signature accents, injected into every palette block.
-const SHARED = `Outline/ink #23252b. STORY-INK accent (the spill — use ONLY where a prompt asks for it): ink blue-black #1b2a4a base, #2a3c66 sheen, #10182e deep. ERASED/BLANK accent (where a prompt asks): pale drained paper #f1ece0 with #e6ddc9 shadow — colour simply missing, never white glow. Encounter sparkle (shared with G1): #22c55e star, #b8f7cf core, #15803d ring. Contact shadow: pure black ~20% opacity, hard oval, no blur.`;
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  ZONE DATA — u01–u15, one school zone per unit (bible: docs/handover/20 §6).
-//  ⚠ PALETTES HERE ARE AUTHORED PROPOSALS: work item B-2 encodes them into
-//  packages/art-gen/src/theme.ts as the new school theme family. If B-2 tunes
-//  a hex, the procedural fallback wins and this file gets updated — but images
-//  generated from these ramps stay usable (same family, same structure).
-// ═══════════════════════════════════════════════════════════════════════════
-const ZONES = [
- { z:'u01', dir:'classroom', gen:'classroom', en:'The Spill', de:'Der Klecks', beat:'Ch01 — first day back; the ink bottle tips; only you see it.',
-   pal:{ 'Floor':['#cbb389','#b09666'], 'Wall':['#e9e2cf','#c8bfa4'], 'Desk wood':['#b97b3f','#8a5a2e'] },
-   cards:[
-    ['Tile','tile','G2 classroom floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a real primary-school classroom floor straight top-down: pale oak-laminate planks #cbb389 with seams and grain #b09666 — cleaner and cooler than the Grade-1 honey parquet (this is an ordinary modern school, not a storybook). Tiles invisibly in a grid: pattern wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Classroom wall','wall.png','[SEAMLESS WALL TILE] A single classroom wall block tiling seamlessly BOTH axes: calm off-white plaster #e9e2cf with a lit top lip, a grey-beige skirting #c8bfa4 along the bottom and a 1px dark floor line. Ordinary, believable, tidy. No centred object, even tone, opaque, full-bleed.'],
-    ['Prop','prop','Pupil desk (kind: accent2)','desk.png','[OBJECT SPRITE] A modern school desk with a chair tucked in, top-down 3/4: light wood top #b97b3f with lit edge, slim grey metal legs, an open exercise book on top with BLANK pages (NO letters, NO lines of text). One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-    ['Prop','prop','The ink spill (kind: note) — the story object','note.png','[FX SPRITE — the title object] A small spilled pool of living story-ink on the floor, top-down: a hand-sized irregular ink blot in deep blue-black #1b2a4a with a wet sheen highlight #2a3c66 and one thin runaway trickle, its edge just slightly TOO neat — as if drawn rather than spilled. A tipped-over little ink bottle beside it. Hard-edged pixel shapes, 1px outline, transparent background, no free shadow (the blot IS on the floor). Quietly wrong, not scary.'],
-   ]},
- { z:'u02', dir:'aula', gen:'aula', en:'The Wrong Words', de:'Die falschen Wörter', beat:'Ch02 — the loudspeaker announcements come out wrong; Emma and Tarik are let in.',
-   pal:{ 'Floor':['#b8a988','#9c8d6c'], 'Wall':['#8e9bb4','#5f6c88'], 'Stage':['#7a5a32','#a07840'], 'Curtain':['#7d3a4a'] },
-   cards:[
-    ['Tile','tile','Aula parquet','floor.png','[SEAMLESS GROUND TILE] A single tile of an assembly-hall parquet floor straight top-down: grey-gold herringbone #b8a988 with seams #9c8d6c, slightly worn and formal. The herringbone wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Aula wall','wall.png','[SEAMLESS WALL TILE] A single assembly-hall wall block tiling seamlessly BOTH axes: cool blue-grey panelling #8e9bb4 with vertical panel seams, lit top lip, base shadow #5f6c88, 1px dark floor line. Institutional but friendly. No centred object, even tone, opaque, full-bleed.'],
-    ['Prop','prop','Aula stage (kind: stage)','stage.png','[OBJECT SPRITE — platform block] One block of the assembly-hall stage top-down 3/4: warm wood boards #a07840 on top with a lit front lip, a dark red curtain sliver #7d3a4a hanging at the back edge, shadowed front face #7a5a32. Several copies in a row read as one stage. Neat square silhouette, 1px outline, transparent background, no free shadow.'],
-    ['Prop','prop','Loudspeaker (kind: barrel)','barrel.png','[OBJECT SPRITE] An old wall-style loudspeaker box on a stand, top-down 3/4: grey-blue metal case #5f6c88 with a round fabric speaker face, a thin ink-blue trickle #1b2a4a running from one corner of the grille — the first visible sign the ink is inside the words. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-   ]},
- { z:'u03', dir:'corridor-halloween', gen:'corridor-halloween', en:'The Orange', de:'Das Orange', beat:'Ch03 — Halloween decorations act alive; the wall display has been drained of its orange.',
-   pal:{ 'Floor':['#c4b49a','#a8977c'], 'Wall':['#ddd3ba','#b5a988'], 'Pumpkin':['#e08a30','#a85e18'], 'Drained':['#f1ece0','#e6ddc9'] },
-   cards:[
-    ['Tile','tile','School corridor floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a school corridor floor straight top-down: warm beige linoleum #c4b49a with a fine speckle #a8977c, the every-school floor. Tiles invisibly — wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Corridor wall, half-drained','wall.png','[SEAMLESS WALL TILE] A single corridor wall block tiling seamlessly BOTH axes: warm paper-cream #ddd3ba with skirting #b5a988 — but with one or two small patches where the colour has gone PALE and DRAINED (#f1ece0, hard-edged patches, evenly placed so the tile still wraps invisibly). The wall looks quietly faded in spots, not damaged. No centred object, even tone overall, opaque, full-bleed.'],
-    ['Prop','prop','Pumpkin that turned around (kind: barrel)','barrel.png','[OBJECT SPRITE] A carved paper Halloween pumpkin decoration standing on the floor, top-down 3/4: bright orange #e08a30 with shaded ribs #a85e18, a friendly carved face — its expression mid-turn, looking slightly to one side, as if it just moved. Cute and funny, absolutely NOT scary. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-    ['Prop','prop','Drained wall display (kind: board)','board.png','[OBJECT SPRITE — wall-mounted] One segment of a pinned paper wall display: cut-out paper pumpkins, leaves and suns pinned to a cork strip — but every shape has been DRAINED to pale paper (#f1ece0 / #e6ddc9): the outlines and pin dots remain, the orange is simply gone. NO letters, NO text. Left/right edges flush cork so segments butt together, tiles seamlessly left↔right, opaque, full-bleed. Quiet, wistful, not spooky.'],
-   ]},
- { z:'u04', dir:'bio-room', gen:'bio-room', en:'The Storeroom Door', de:'Die Tür zur Abstellkammer', beat:'Ch04 — the bio-room animals talk; none of them will go near the storeroom.',
-   pal:{ 'Floor':['#d3d8c4','#b9c0a6'], 'Wall':['#9db386','#6e8258'], 'Terrarium':['#7ec2c2','#4a8a8a'], 'Wood':['#8a6d3a'] },
-   cards:[
-    ['Tile','tile','Bio-room floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a biology-room floor straight top-down: pale sage linoleum #d3d8c4 with speckle #b9c0a6, clean lab-adjacent calm. Tiles invisibly — wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Bio-room wall','wall.png','[SEAMLESS WALL TILE] A single biology-room wall block tiling seamlessly BOTH axes: leafy green paint #9db386 with lit top lip #d3d8c4, base shadow #6e8258, 1px dark floor line. No centred object, even tone, opaque, full-bleed.'],
-    ['Prop','prop','Terrarium (kind: barrel)','barrel.png','[OBJECT SPRITE] A glass terrarium on a wooden stand, top-down 3/4: aqua glass #7ec2c2 with hard-edged highlight strokes, a strip of sand and one green plant inside, wooden base #8a6d3a. The glass lid stands slightly OPEN. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline. No animal inside (they are out talking).'],
-    ['Prop','prop','Big leafy plant (kind: plant)','plant.png','[OBJECT SPRITE] A tall bio-room plant: terracotta pot, broad monstera-like leaves in deep green #6e8258 with lit tops #9db386. One object, centred, transparent background, edges clear, small hard contact-shadow oval, 1px dark outline.'],
-   ]},
- { z:'u05', dir:'town-square', gen:'town-square', en:'The Shuffled Town', de:'Die verschobene Stadt', beat:'Ch05 — the excursion: the town map rearranges itself; the class pins the town back down.',
-   pal:{ 'Cobbles':['#b0a6a0','#948a84'], 'Buildings':['#d8c2a0','#a88c64'], 'Roof':['#a8543a'], 'Sky accent':['#9db8d8'] },
-   cards:[
-    ['Tile','tile','Town-square cobbles','floor.png','[SEAMLESS GROUND TILE] A single tile of town-square cobblestones straight top-down: rounded grey-warm cobbles #b0a6a0 with shadowed joints #948a84 in an offset pattern that wraps at all four edges. Even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Town house facade (wall)','wall.png','[SEAMLESS WALL TILE] A single old-town house facade block tiling seamlessly BOTH axes as the zone border: warm plaster #d8c2a0 with a shuttered window shape (closed wooden shutters #a88c64, NO glass detail, NO text), a sliver of red roof tiles #a8543a along the very top edge. Austrian old-town charm. Repeats invisibly, even tone, opaque, full-bleed.'],
-    ['Prop','prop','Market stand (kind: stage)','stage.png','[OBJECT SPRITE — platform block] One block of a little market stand top-down 3/4: striped awning sliver (warm red #a8543a and cream #d8c2a0) over a wooden counter #a88c64 with round fruit shapes on top. Several copies read as one stand row. Neat square silhouette, 1px outline, transparent background, no free shadow, NO text.'],
-    ['Prop','prop','Town fountain (kind: barrel)','barrel.png','[OBJECT SPRITE] A small round town fountain top-down 3/4: a stone basin #b0a6a0 with lit rim, calm pale-blue water disc #9db8d8 with two hard-edged sparkle glints, a low centre pillar. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-   ]},
- { z:'u06', dir:'library', gen:'library', en:"Finn's Visit", de:'Finns Besuch', beat:'Ch06 — Finn slips out of the book-world to warn you; the shelves lean in to listen.',
-   pal:{ 'Floor':['#d9cbaa','#bfae8a'], 'Wall':['#9a7848','#6a4e28'], 'Shelf':['#84582a'], 'Paper':['#f3ead6'] },
-   cards:[
-    ['Tile','tile','Library carpet','floor.png','[SEAMLESS GROUND TILE] A single tile of a school-library carpet straight top-down: warm oat #d9cbaa with a fine woven texture #bfae8a, soft and quiet. Tiles invisibly — wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Library wall','wall.png','[SEAMLESS WALL TILE] A single library wall block tiling seamlessly BOTH axes: warm oak panelling #9a7848 with vertical seams #6a4e28, lit top lip #d9cbaa, 1px dark floor line. Bookish and warm. No centred object, even tone, opaque, full-bleed.'],
-    ['Prop','prop','Leaning bookshelf (kind: board)','board.png','[OBJECT SPRITE — wall-mounted] One segment of a tall library shelf: deep oak case #84582a, two rows of book spines as simple colour blocks (#a8543a-adjacent warm red, #9db386-adjacent green, #f3ead6 cream — NO text on any spine) — and the whole row of books leans VERY slightly toward the viewer, as if listening. Subtle: 2–3px of lean, nothing falling. Left/right edges flush so segments butt together, tiles seamlessly left↔right, opaque, full-bleed.'],
-    ['Prop','prop','Open book on a stand (kind: note)','note.png','[FX SPRITE] A large open book on a wooden reading stand, top-down 3/4: cream paper pages #f3ead6 that are completely BLANK (no letters, no lines), a faint warm green-gold pixel shimmer (#9edb7a steps, hard-edged) rising off the page — the door Finn came through. Wooden stand #84582a. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-   ]},
- { z:'u07', dir:'schoolyard', gen:'schoolyard', en:'The Weekend', de:'Das Wochenende', beat:'Ch07 — the quiet midpoint: the empty weekend schoolyard; Jona tells more of his story.',
-   pal:{ 'Asphalt':['#a8a49c','#8c8880'], 'Fence/wall':['#c05a3a','#8a3a22'], 'Grass':['#9db86a'], 'Chalk':['#e8e4da'] },
-   cards:[
-    ['Tile','tile','Yard asphalt with chalk','floor.png','[SEAMLESS GROUND TILE] A single tile of schoolyard asphalt straight top-down: warm grey #a8a49c with fine speckle #8c8880 and one or two faint pale chalk-line fragments #e8e4da (simple arcs — NO letters, NO numbers, NO complete hopscotch) placed so the tile still wraps invisibly at all four edges. Even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','School brick wall','wall.png','[SEAMLESS WALL TILE] A single school-building brick wall block tiling seamlessly BOTH axes: warm red-orange bricks #c05a3a with mortar lines #8a3a22, lit top course, 1px dark ground line. Courses wrap at every edge. No centred object, even tone, opaque, full-bleed.'],
-    ['Prop','prop','Yard bench (kind: barrel)','barrel.png','[OBJECT SPRITE] A simple schoolyard bench top-down 3/4: weathered wood slats #c05a3a-warm with lit edges, grey metal legs #8c8880. The place where Jona sits and talks. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-    ['Prop','optional','Grass patch (kind: rug)','rug.png','[GROUND OVERLAY — optional] A soft patch of yard grass laid flat, straight top-down: fresh green #9db86a with darker blade speckle, irregular but low-contrast edges so it reads as a worn grass island on the asphalt. Full-bleed-ish flat patch that can tile 2×2, slight 1px darker edge, NO free shadow.'],
-   ]},
- { z:'u08', dir:'gym-spaceport', gen:'gym-spaceport', en:'The Spaceport', de:'Der Weltraumhafen', beat:'Ch08 — the sci-fi shelf leaks into the gym: gym equipment plays spaceport.',
-   pal:{ 'Gym floor':['#d2a86a','#b08848'], 'Wall':['#8898a8','#5a6a7a'], 'Star deep':['#1b2a4a','#2a3c66'], 'Signal':['#e0c060'] },
-   cards:[
-    ['Tile','tile','Gym floor with court line','floor.png','[SEAMLESS GROUND TILE] A single tile of a sports-hall floor straight top-down: honey gym-parquet #d2a86a with grain #b08848 and ONE straight painted court line crossing the tile edge-to-edge (pale #e0c060, exactly 2px, positioned so copies align into continuous lines). Wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Gym wall, starfield leak','wall.png','[SEAMLESS WALL TILE] A single gym wall block tiling seamlessly BOTH axes: grey-blue padded panels #8898a8 with seams #5a6a7a — and along the very top edge a thin leaked strip of deep space (#1b2a4a with 2–3 tiny hard-edged star dots #e0c060, wrapping left↔right). The story is literally seeping in at the ceiling. No centred object, even tone below the strip, opaque, full-bleed.'],
-    ['Prop','prop','Vault-box rocket (kind: stage)','stage.png','[OBJECT SPRITE — platform block] One block of a gym vaulting box that thinks it is a rocket, top-down 3/4: stacked wooden layers #d2a86a/#b08848, a round porthole ring painted on the side #e0c060, a small triangular paper fin taped on. Playful, clearly still gym equipment. Neat square silhouette, 1px outline, transparent background, no free shadow, NO text.'],
-    ['Prop','prop','Planet ball rack (kind: barrel)','barrel.png','[OBJECT SPRITE] A gym ball rack top-down 3/4: grey metal frame #5a6a7a holding three balls repainted as planets — one banded #e0c060, one deep blue #2a3c66, one warm red — with hard-edged pixel bands, NO text. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-   ]},
- { z:'u09', dir:'canteen', gen:'canteen', en:'The Menu', de:'Die Speisekarte', beat:'Ch09 — the canteen serves weather: a small raincloud in the soup.',
-   pal:{ 'Floor':['#e0d6c0','#c6b99e'], 'Wall':['#c8843a','#93591e'], 'Counter':['#a07840'], 'Cloud':['#dfe7f0','#aebccc'] },
-   cards:[
-    ['Tile','tile','Canteen floor','floor.png','[SEAMLESS GROUND TILE] A single tile of a canteen floor straight top-down: cream tiles #e0d6c0 with 1px grout #c6b99e in a simple grid wrapping at all four edges. Warm lunchtime light. Even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Canteen wall','wall.png','[SEAMLESS WALL TILE] A single canteen wall block tiling seamlessly BOTH axes: warm orange paint #c8843a with lit top lip #e0d6c0, base shadow #93591e, 1px dark floor line. Cheerful mensa energy. No centred object, even tone, opaque, full-bleed.'],
-    ['Prop','prop','Serving counter (kind: stage)','stage.png','[OBJECT SPRITE — platform block] One block of the canteen serving counter top-down 3/4: steel top #dfe7f0 with lit edge, warm wood front #a07840, a tray with a bowl on top. Several copies read as one counter. Neat square silhouette, 1px outline, transparent background, no free shadow, NO text.'],
-    ['Prop','prop','Soup with weather (kind: note)','note.png','[FX SPRITE — the story gag] A soup bowl on a tray, top-down 3/4 — with a TINY pixel raincloud #dfe7f0/#aebccc hovering a few pixels above it, three hard-edged rain-pixel streaks falling into the soup, one mini lightning zag #e0c060. Funny, charming, Ghibli-mundane. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-   ]},
- { z:'u10', dir:'home-street', gen:'home-street', en:'The Gap', de:'Die Lücke', beat:'Ch10 — the HEART: the class photo wall has a gap where a boy should be. "It is made of me."',
-   pal:{ 'Pavement':['#b4aca0','#98908440'].slice(0,1).concat(['#989084']), 'House':['#d8cfc0','#a89e8c'], 'Evening':['#8898b8'], 'Photo paper':['#f3ead6','#f1ece0'] },
-   cards:[
-    ['Tile','tile','Evening pavement','floor.png','[SEAMLESS GROUND TILE] A single tile of a quiet street pavement in soft evening light, straight top-down: grey-warm paving slabs #b4aca0 with joints #989084, a faint cool evening cast. Tiles invisibly — wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','House front (wall)','wall.png','[SEAMLESS WALL TILE] A single house-front block tiling seamlessly BOTH axes as the border of the home street: warm grey plaster #d8cfc0, a window with a soft evening-blue glow #8898b8 behind closed curtains (glow as flat colour steps, NO bloom), skirting #a89e8c, 1px dark ground line. Lived-in and gentle. Repeats invisibly, even tone, opaque, full-bleed.'],
-    ['Prop','prop','The photo wall (kind: board)','board.png','[OBJECT SPRITE — wall-mounted, THE HEART OF THE STORY] One segment of a wall of framed class photos: small wooden frames #a89e8c on the wall, each holding a tiny pixel group of children (dot faces, no detail, NO text) — and ONE frame holds a photo with a person-shaped GAP: the children stand around a pale, paper-blank silhouette (#f1ece0) where a boy should be. Nothing spooky — just an absence you notice on the second look. Left/right edges flush so segments butt together, tiles seamlessly left↔right, opaque, full-bleed.'],
-    ['Prop','prop','Street lamp (kind: barrel)','barrel.png','[OBJECT SPRITE] A small old street lamp top-down 3/4: dark green-grey post, a warm glowing lamp head #e0c060 rendered as hard-edged colour steps (no bloom), a pool of warm light suggested by a lit circle in the contact-shadow position. One object, centred, transparent background, 1px dark outline.'],
-   ]},
- { z:'u11', dir:'storeroom', gen:'storeroom', en:'The Nest', de:'Das Nest', beat:'Ch11 — behind the door the animals feared: the Blank\'s nest of taken things.',
-   pal:{ 'Floor':['#8c8274','#726a5e'], 'Wall':['#6e6658','#4e483e'], 'Shelf wood':['#7a5a32'], 'Taken things':['#f1ece0','#e6ddc9'] },
-   cards:[
-    ['Tile','tile','Storeroom concrete','floor.png','[SEAMLESS GROUND TILE] A single tile of a storeroom floor straight top-down: cool grey-brown concrete #8c8274 with fine speckle and hairline cracks #726a5e (cracks placed to wrap at the edges). Dim but readable. Even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Storeroom wall','wall.png','[SEAMLESS WALL TILE] A single storeroom wall block tiling seamlessly BOTH axes: dim grey-brown plaster #6e6658 with base shadow #4e483e and a faint lit top edge. Close and quiet, never horror — a cupboard, not a dungeon. 1px dark floor line. No centred object, even tone, opaque, full-bleed.'],
-    ['Prop','prop','Storage shelf (kind: board)','board.png','[OBJECT SPRITE — wall-mounted] One segment of a deep storeroom shelf: dark wood uprights #7a5a32 with stacked ordinary school things — boxes, a bucket, folded cloth — all slightly greyed by dust, NO text anywhere. Left/right edges flush so segments butt together, tiles seamlessly left↔right, opaque, full-bleed.'],
-    ['Prop','prop','The nest of taken things (kind: note)','note.png','[FX SPRITE — story object] A small careful round nest ARRANGED on the floor from pale, drained things (#f1ece0 / #e6ddc9): a smoothed-out folded paper, a faded ribbon, small blank cards — laid in a neat circle, clearly ordered by someone lonely, not scattered. At its centre one tiny ink-blue drop #1b2a4a. Tender, sad, absolutely not creepy. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-   ]},
- { z:'u12', dir:'quiet-room', gen:'quiet-room', en:'The First Word', de:'Das erste Wort', beat:'Ch12 — feelings unit; the Blank speaks its first stolen word back: "...glad?"',
-   pal:{ 'Floor':['#e5d8cc','#cbbcae'], 'Wall':['#b596a0','#8a6a76'], 'Cushion':['#d8a0a8','#e8c8b0'], 'Soft blue':['#a8b8d0'] },
-   cards:[
-    ['Tile','tile','Quiet-room soft floor','floor.png','[SEAMLESS GROUND TILE] A single tile of the quiet room\'s soft floor straight top-down: warm rose-beige foam matting #e5d8cc with a subtle large-square seam grid #cbbcae wrapping at all edges. Calm, padded, safe. Even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Quiet-room wall','wall.png','[SEAMLESS WALL TILE] A single quiet-room wall block tiling seamlessly BOTH axes: dusty rose #b596a0 with lit top lip #e5d8cc, base shadow #8a6a76, 1px dark floor line. The feelings room — warm and low-stimulus. No centred object, even tone, opaque, full-bleed.'],
-    ['Prop','prop','Cushion circle (kind: rug)','rug.png','[GROUND OVERLAY] A circle of floor cushions laid flat, straight top-down: five round cushions (#d8a0a8 rose, #e8c8b0 sand, #a8b8d0 soft blue) arranged in a ring with a gap where one more could sit — the open seat. Low contrast, flat, reads as "sit with us". Fills most of the frame, slight 1px darker edges, NO free shadow, transparent outside the ring.'],
-    ['Prop','prop','Feelings cards stand (kind: barrel)','barrel.png','[OBJECT SPRITE] A small wooden stand holding large picture cards, top-down 3/4: warm wood #8a6a76-adjacent brown, the visible card showing a simple round pixel face with a gentle smile (a drawn face icon — NO letters, NO words). One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-   ]},
- { z:'u13', dir:'yard-rain', gen:'yard-rain', en:'The Rule', de:'Die Regel', beat:'Ch13 — rain on the yard; Jona\'s rule: "You cannot un-erase a thing. But you can write the next thing."',
-   pal:{ 'Wet asphalt':['#7e8288','#65696f'], 'Wall':['#9a8a7a','#6e6254'], 'Puddle':['#9db8d8','#7a95b5'], 'Raincoat':['#e0c060'] },
-   cards:[
-    ['Tile','tile','Wet asphalt','floor.png','[SEAMLESS GROUND TILE] A single tile of rain-wet schoolyard asphalt straight top-down: darkened grey #7e8288 with speckle #65696f and 2–3 tiny hard-edged rain-ring circles (1px circles, evenly scattered, wrapping at the edges). Even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Rainy-day school wall','wall.png','[SEAMLESS WALL TILE] A single school wall block in the rain, tiling seamlessly BOTH axes: rain-darkened plaster #9a8a7a with streak lines #6e6254 running vertically (streaks wrap top↔bottom), 1px dark ground line. Moody-cosy, not gloomy. No centred object, even tone, opaque, full-bleed.'],
-    ['Prop','prop','Puddle (kind: rug)','rug.png','[GROUND OVERLAY] A flat rain puddle straight top-down: an irregular pale-blue mirror shape #9db8d8 with a darker rim step #7a95b5 and one hard-edged sky glint — and in the reflection, a faint pale patch (#f1ece0) that does not match anything standing there. Subtle, one-look-then-gone. Flat on the ground, slight 1px darker edge, NO free shadow, transparent outside the puddle shape.'],
-    ['Prop','prop','Umbrella stand (kind: barrel)','barrel.png','[OBJECT SPRITE] A school umbrella stand by the door, top-down 3/4: grey metal cylinder #65696f with three closed umbrellas leaning in it — one warm yellow #e0c060, one soft blue #9db8d8, one deep red. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-   ]},
- { z:'u14', dir:'sports-field', gen:'sports-field', en:'The Rescue', de:'Die Rettung', beat:'Ch14 — sports day; the Blank overreaches; the class calls it by the name it wants: "Jona" is written back.',
-   pal:{ 'Track':['#c86a4a','#a04e32'], 'Grass':['#9db86a','#7d9a4e'], 'Line white':['#efe9dc'], 'Sky':['#9db8d8'] },
-   cards:[
-    ['Tile','tile','Running track','floor.png','[SEAMLESS GROUND TILE] A single tile of a red running track straight top-down: warm brick-red rubber #c86a4a with fine granular speckle #a04e32 and ONE straight white lane line #efe9dc (2px, edge-to-edge so copies align into continuous lanes). Wraps at all four edges, even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Field hedge (wall)','wall.png','[SEAMLESS WALL TILE] A single sports-field hedge block tiling seamlessly BOTH axes as the field border: dense green leaf clumps #7d9a4e with lit tips #9db86a, 1px dark base line. Repeats invisibly, even tone, opaque, full-bleed.'],
-    ['Prop','prop','Winners\' podium (kind: stage)','stage.png','[OBJECT SPRITE — platform block] One block of a small sports-day podium top-down 3/4: pale wood top #efe9dc-warm with lit edge, sturdy front face, a ribbon rosette pinned to the front (simple pixel rosette, NO text, NO numbers). Several copies read as one podium row. Neat square silhouette, 1px outline, transparent background, no free shadow.'],
-    ['Prop','prop','Equipment basket (kind: barrel)','barrel.png','[OBJECT SPRITE] A woven basket of sports gear top-down 3/4: warm wicker with a striped ball, a skipping-rope coil #c86a4a, a beanbag. Bright field-day colours from the zone ramp only. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-   ]},
- { z:'u15', dir:'book-nook', gen:'book-nook', en:'Klecks', de:'Klecks', beat:'Ch15 — the reading corner: the filled Blank becomes Klecks and gets a story of its own.',
-   pal:{ 'Floor':['#d9cbaa','#bfae8a'], 'Wall':['#a07848','#6a4e28'], 'Ink':['#1b2a4a','#2a3c66'], 'Paper':['#f3ead6'], 'Lamp':['#e0c060'] },
-   cards:[
-    ['Tile','tile','Book-nook floor','floor.png','[SEAMLESS GROUND TILE] A single tile of the reading corner\'s warm floor straight top-down: oat carpet #d9cbaa with woven texture #bfae8a — and the faintest scattered ink-blue flecks #2a3c66 (tiny, hard-edged, evenly placed so the tile wraps) — Klecks lives here now, happily. Even brightness, NO centred feature, NO vignette, NO outline, NO shadow. Opaque, full-bleed.'],
-    ['Tile','tile','Book-nook wall','wall.png','[SEAMLESS WALL TILE] A single reading-corner wall block tiling seamlessly BOTH axes: warm oak #a07848 with seams #6a4e28, a string of small paper pennant flags #f3ead6 along the top edge (pennants wrap left↔right, NO letters on them), 1px dark floor line. Cosy finale warmth. Even tone, opaque, full-bleed.'],
-    ['Prop','prop','Reading armchair (kind: barrel)','barrel.png','[OBJECT SPRITE] A round soft reading armchair top-down 3/4: warm cream upholstery #f3ead6 with shaded folds, wooden feet #6a4e28, a small ink-blue cushion #2a3c66. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-    ['Prop','prop','Klecks\'s own little book (kind: note)','note.png','[FX SPRITE — the closing image] A small handmade book lying open on the floor, top-down: cream paper #f3ead6, and on its pages a single joyful ink-blot illustration #1b2a4a with one white spot — a picture, NOT text, NO letters — with two tiny warm glints #e0c060 above it. The story the class wrote FOR the Blank. One object, centred, transparent background, small hard contact-shadow oval, 1px dark outline.'],
-   ]},
+const STYLE = `16-bit GBA-era pixel art, Pokémon FireRed interior fidelity, crisp 1px dark outlines, readable at 48px, flat cel shading, no anti-aliasing halos, consistent top-down 3/4 view.`;
+const GRID = `SHEET FORMAT: one image containing a 4-column by 3-row grid of 12 separate pixel-art elements. The background of the ENTIRE image is solid flat magenta (#FF00FF) — no checkerboard, no gradient, no texture, nothing behind the elements but pure magenta. Each element sits fully inside its own grid cell with a generous magenta margin; elements never touch or overlap. No text, no labels, no watermarks anywhere.`;
+const PAL = {
+  classroom:"warm chalk-yellow palette (honey wood, cream walls, chalk white), slightly MORE saturated than a normal classroom — the story leaks make school vivid",
+  aula:"stage-red and brass palette, warm spotlights",
+  "corridor-halloween":"orange and black Halloween palette, friendly-spooky never horror; ONE element (the drained wall) appears pale grey-washed as if its color was taken",
+  "bio-room":"leaf green palette with aquarium-glow cyan accents",
+  "town-square":"postcard pastel palette (mint, butter, sky)",
+  library:"amber wood and dust-light palette, golden",
+  schoolyard:"schoolyard palette with the sky ONE step grey-desaturated (the draining begins); the calendar board element is pale, color-taken",
+  "gym-spaceport":"neon sci-fi accents (cyan, silver) over grey gym tones — fun over drain",
+  canteen:"warm food palette (tomato, bread, steam) but wall tones draining toward grey; the menu board element is pale, half-erased",
+  "home-street":"dusk blue palette with warm window lights; the photo elements have PALE GAPS where a figure should be",
+  storeroom:"near-grey palette with careful warm lamplight",
+  "quiet-room":"grey palette with exactly one warm amber lamp glow",
+  "yard-rain":"grey rain palette with color returning in the puddles (each puddle reflects vivid color)",
+  "sports-field":"full warm color restored, storm-edge sky at the horizon",
+  "book-nook":"the warmest palette in the game (honey, cream, leaf) plus ink-black with one white patch for Klecks"};
+// element lists per doc 22 §3/§4: base tiles first (opaque), then props, sparkle, npc_down last.
+const Z = [
+ ["z01","classroom","Frau Berger (kind teacher, brown bun, mustard cardigan)",["floor|classroom wooden floor tile, seamless, opaque|1","wall|cream classroom wall tile with skirting, seamless, opaque|1","wall_top|classroom wall top edge tile, seamless, opaque|1","door|classroom door with window pane","desk|pupil desk with tucked chair, small book on top","teacher_desk|teacher's desk with plant and papers","blackboard|wide blackboard with chalk tray, ONE word half-vanishing as a pale smudge","window|classroom window with daylight","timetable|pinned timetable poster","ink_desk|pupil desk with living ink crawling across it, small ink trail","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Frau Berger"]],
+ ["z02","aula","Emma (skeptical girl, dark ponytail, green jacket)",["floor|aula parquet floor tile, seamless, opaque|1","wall|aula wall with acoustic panels, seamless, opaque|1","wall_top|aula wall top edge, seamless, opaque|1","door|double aula door","stage|wooden stage edge block","podium|speaker podium with microphone","loudspeaker|wall loudspeaker with soundwaves coming out slightly WRONG (wavy, rhyming)","curtain|red stage curtain segment with rope","announce|announcement sheet on a stand, letters floating off it","chairs|row of three folding chairs","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Emma"]],
+ ["z03","corridor-halloween","Tarik (excited boy, curly hair, orange hoodie)",["floor|school corridor floor tile, seamless, opaque|1","wall|corridor wall with lockers base, seamless, opaque|1","wall_top|corridor wall top edge with paper garland, seamless, opaque|1","door|classroom door with pumpkin sticker","bat|friendly paper bat decoration, mid-flap, alive","spider|plastic spider decoration looking nervously down from a thread","pumpkin|row of three small carved pumpkins, goofy faces","garland|paper-chain Halloween garland piece","drained_wall|wall segment drained of ALL color — pale grey outline where orange decorations were","locker|school locker with a witch-hat sticker","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Tarik"]],
+ ["z04","bio-room","Jona (quiet boy from the book, pale, ink-stained sleeve, soft smile)",["floor|bio room linoleum floor tile, seamless, opaque|1","wall|bio room wall with poster rail, seamless, opaque|1","wall_top|bio room wall top edge, seamless, opaque|1","door|bio room door with paw-print sign","hamster|hamster cage with an OPINIONATED hamster mid-speech","aquarium|glowing aquarium with one skeptical fish","bird_poster|bird identification poster, one bird winking","terrarium|small terrarium with a turtle","shelf|specimen shelf the animals avoid — slightly darker, uneasy","plant|potted classroom plant","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Jona"]],
+ ["z05","town-square","Emma",["floor|cobblestone town square tile, seamless, opaque|1","wall|town building facade base, seamless, opaque|1","wall_top|town facade top with awning, seamless, opaque|1","door|shop door with bell","map_board|town map board with streets visibly REARRANGING (arrows, sliding blocks)","supermarket|small supermarket sign walking away on tiny legs","bus_stop|bus stop sign and bench","cinema|cinema marquee with scrambled letters","fountain|small town fountain","postbox|yellow Austrian postbox","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Emma"]],
+ ["z06","library","Finn (floating paper-and-ink book spirit, proud, delightful)",["floor|library carpet tile, seamless, opaque|1","wall|bookshelf-lined wall base, seamless, opaque|1","wall_top|bookshelf top with dust light, seamless, opaque|1","door|library door with a book icon sign","shelf_quest|the adventure shelf GLOWING, one book leaking golden quest-light","table|reading table with open book and lamp","catalogue|wooden card catalogue","nook|window reading nook with cushion","ladder|rolling library ladder","globe|old globe on a stand","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Finn, floating"]],
+ ["z07","schoolyard","Jona",["floor|schoolyard asphalt tile, seamless, opaque|1","wall|schoolyard fence base, seamless, opaque|1","wall_top|fence top with one grey-stepped sky band, seamless, opaque|1","door|door back into the school","calendar|the big yard calendar board, PALE and half-erased — its plans are gone","kiosk|small snack kiosk, shuttered","bench|bench with an abandoned open diary","goal|football goal wall","tree|yard tree, leaves slightly grey-tinged","hopscotch|hopscotch grid chalk marks fading","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Jona"]],
+ ["z08","gym-spaceport","Tarik",["floor|gym floor tile with court line, seamless, opaque|1","wall|gym wall with ribstall bars, seamless, opaque|1","wall_top|gym wall top with high windows, seamless, opaque|1","door|gym door with a rocket icon taped over the sign","rocket|vault-horse converted into a cardboard rocket, cyan glow","antenna|climbing ropes braided into a satellite antenna","console|scoreboard reimagined as a mission-control console","planet|paper planet mobile hanging","mat|blue crash mat","flag|small pennant flag turned mission flag","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Tarik"]],
+ ["z09","canteen","Frau Berger",["floor|canteen tile floor, seamless, opaque|1","wall|canteen wall draining toward grey, seamless, opaque|1","wall_top|canteen wall top edge, seamless, opaque|1","door|kitchen swing door","menu|the menu board — HALF-EATEN pale, words missing in bites","pot|big soup pot with tiny weather inside (a raincloud over the soup)","tray|tray rail with stacked trays","counter|serving counter with steam","specials|specials sheet stand, pale-gapped","table_c|canteen table with two stools","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Frau Berger"]],
+ ["z10","home-street","Jona",["floor|dusk street cobble tile, seamless, opaque|1","wall|house facade base with warm window, seamless, opaque|1","wall_top|rooftop line at dusk, seamless, opaque|1","door|Jona's front door, slightly open","photo_wall|framed family photos — each with a PALE GAP where a boy should be","kitchen|kitchen table through a doorway, one chair","postbox_h|house postbox with the family name faded","room_door|a boy's old bedroom door with faint sticker outlines","lamp_street|street lamp, warm halo","cat|Pixel the cat sitting on a wall, unimpressed","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Jona"]],
+ ["z11","storeroom","Emma",["floor|dusty storeroom floor tile, seamless, opaque|1","wall|storeroom shelf wall base, seamless, opaque|1","wall_top|storeroom wall top in lamplight, seamless, opaque|1","door|the old storeroom door, key in lock","nest|a careful NEST of taken things — a scarf, a photo corner, paper slips, arranged gently","crate|old book crate, stencil faded","label_shelf|shelf of faded labels","lamp_store|one warm work lamp","dust|dust motes in a light shaft","box_open|opened box with soft cloth","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Emma"]],
+ ["z12","quiet-room","Jona (sitting, calm)",["floor|quiet room grey floor tile, seamless, opaque|1","wall|quiet room grey wall, seamless, opaque|1","wall_top|quiet room wall top with rain window band, seamless, opaque|1","door|quiet room door, half open","lamp|THE warm lamp — the only saturated element, amber glow","cards|feelings cards laid out (simple face icons: sad, glad, afraid)","cushion|floor cushion","rain_win|window with rain running down","blank_corner|the Blank's corner — a soft pale smudge shape, shy, not scary","shelf_q|low shelf with one plant","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Jona sitting cross-legged"]],
+ ["z13","yard-rain","Tarik",["floor|rain-wet yard tile, seamless, opaque|1","wall|yard fence in rain, seamless, opaque|1","wall_top|grey rain sky band, seamless, opaque|1","door|school door with rain overhang","puddle|puddle reflecting VIVID color in a grey world","weather_board|weather board with sun, cloud and rain symbols","umbrella|bright umbrella, one spot of color","cloud_mural|wall mural of clouds, half grey half colored","sun_patch|a patch of ground where sun breaks through, warm","boots|pair of rubber boots","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Tarik under umbrella"]],
+ ["z14","sports-field","Emma",["floor|running track tile, seamless, opaque|1","wall|sports field fence with storm-edge sky, seamless, opaque|1","wall_top|field sky band, color restored, seamless, opaque|1","door|gym door PALE and swallowed — outline only","track|track lane marking","circle|warm-up circle marking","hurdle|small hurdle","flag_s|sports day pennant string","megaphone|megaphone on a bench","pixel_spot|a cat-shaped empty spot with tiny paw prints leading toward the pale door","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Emma at a track start line"]],
+ ["z15","book-nook","Frau Berger (center, warm)",["floor|warm reading-corner carpet tile, seamless, opaque|1","wall|book-nook shelf wall, warmest palette, seamless, opaque|1","wall_top|book-nook top with fairy-light string, seamless, opaque|1","door|book-nook archway","book_shelf|THE book on its shelf, new last page glowing softly","word_wall|wall of contributed colorful paper slips (no readable text)","rug_big|big round reading rug","cushion_s|sitting cushion","klecks|KLECKS: small round ink-black creature with ONE white patch, asleep, adorable","writing_table|low writing table with pencils","sparkle|four-point golden encounter sparkle with soft glow","npc_down|NPC sprite facing down: Frau Berger"]],
 ];
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  G2 CAST — canon from the bible (docs/handover/20 §3–4). Injected when named.
-// ═══════════════════════════════════════════════════════════════════════════
-const CHAR_SPECS = {
-  jona: { trigger:/\bJONA\b/, spec:`[JONA — the deuteragonist, HUMAN FORM] The boy who came back out of the book (Grade 1's finale): a quiet ~11-year-old in chunky GBA overworld proportions, slightly taller than the Grade-2 kids. Pale-warm skin (#f2c690 family), straight dark hair a little too long over the eyes (#2b2b2b), a plain slate-blue jumper (#4b5b6b base, #2f3a45 shadow), dark trousers, worn brown shoes. On his fingertips, tiny permanent ink stains (#1b2a4a). Calm, watchful, kind — an old soul in a school photo. Same outfit, palette, size and anchor in every frame. 1px outline, reads clearly at 48px.` },
-  emma: { trigger:/\bEMMA\b/, spec:`[EMMA — classmate NPC] A bright, fast-talking ~8-year-old in chunky GBA proportions: warm skin, ginger hair in two short bunches (#c05a3a), a sunny yellow jumper (#e0c060 base, #a8843a shadow), blue leggings, red shoes. Big curious dot eyes, mouth usually mid-sentence. 1px outline, reads at 48px.` },
-  tarik: { trigger:/\bTARIK\b/, spec:`[TARIK — classmate NPC] A steady, dry-witted ~8-year-old in chunky GBA proportions: brown skin (#b5764a family), short black curls (#23252b), a green zip hoodie (#7d9a4e base, #566b3a shadow), dark joggers, white-and-blue trainers. Calm half-smile, one eyebrow of scepticism. 1px outline, reads at 48px.` },
-  klecks: { trigger:/\bKLECKS\b/, spec:`[KLECKS — the filled Blank, finale creature] A small, round, ink-black creature the size of a football, in chunky GBA sprite proportions: a soft blob body of deep story-ink (#1b2a4a base, #2a3c66 sheen highlight, #10182e shadow) with ONE round white spot on its side, two simple pale dot-eyes, no mouth needed — its whole body tilts to show feeling. It sits ON the ground (small hard contact-shadow oval). Friendly, shy, endearing — a creature that was an absence and is now a somebody. 1px outline, reads at 48px.` },
-};
-
-// ═══════════════════════════════════════════════════════════════════════════
-//  BUILDERS
-// ═══════════════════════════════════════════════════════════════════════════
-let counter = 0;
-function palBlock(zone){
-  const lines = Object.entries(zone.pal).map(([k,v]) => k + ': ' + v.join(', ')).join('. ');
-  return `[ZONE PALETTE — use only these] ${lines}. ${SHARED}`;
-}
-function card(zone, placement, cls, title, file, body){
-  let charBlocks = '';
-  for (const def of Object.values(CHAR_SPECS)) if (def.trigger.test(body) || def.trigger.test(title)) charBlocks += '\n\n' + def.spec;
-  const full = STYLE + '\n\n' + palBlock(zone) + charBlocks + '\n\n' + body;
-  const id = 'p' + (counter++);
-  return `<div class="prompt-card">
-    <button class="copy-btn" onclick="copyPrompt('${id}', this)">Copy</button>
-    <div class="placement ${cls}">${placement}</div>
-    <div class="title">${title}</div>
-    <div class="file">apps/web/public/art/g2/${zone.dir}/${file} <span class="dims">· 48×48 shipping (author at 512×512)</span></div>
-    <div class="prompt-text" id="${id}">${full}</div>
-  </div>`;
-}
-function charCard(title, file, body){
-  let charBlocks = '';
-  for (const def of Object.values(CHAR_SPECS)) if (def.trigger.test(body) || def.trigger.test(title)) charBlocks += '\n\n' + def.spec;
-  const full = STYLE + '\n\n[CAST PALETTE] Outline/ink #23252b. Story-ink #1b2a4a / #2a3c66 / #10182e. Skin tones #f2c690 / #d9a768 / #b5764a. Contact shadow: pure black ~20% opacity, hard oval, no blur.' + charBlocks + '\n\n' + body;
-  const id = 'p' + (counter++);
-  return `<div class="prompt-card">
-    <button class="copy-btn" onclick="copyPrompt('${id}', this)">Copy</button>
-    <div class="placement character">Character</div>
-    <div class="title">${title}</div>
-    <div class="file">${file} <span class="dims">· 48×48 shipping (author at 512×512)</span></div>
-    <div class="prompt-text" id="${id}">${full}</div>
-  </div>`;
-}
-function sw(hex){ return `<div class="sw"><div class="chip" style="background:${hex}"></div><div class="hex">${hex}</div></div>`; }
-
-function buildStartHere(){
-  return `<div class="section active" id="sec-start">
-    <h2>▶ START HERE — what this library is</h2>
-    <p>Every image-generation prompt for the <strong>Grade-2 campaign "The Spill / Der Klecks"</strong>: 15 school zones (one per unit) on the same walkable engine as Grade 1, plus the G2 cast. The story: on the first day of school, story-ink leaks out of the book-world into an ordinary Austrian primary school — and something pale and hungry leaked out with it.</p>
-
-    <div class="info-box"><strong>The order of work (signpost):</strong>
-      <br><strong>1.</strong> Do the Grade-1 School backbone first (<code>G1_SCHOOL_IMAGE_PROMPTS.html</code>) — its <code>_style_key.png</code> is the style anchor for EVERY generation here too. One style key, one game world.
-      <br><strong>2.</strong> Generate the <strong>Cast</strong> tab next (Jona above all — he walks beside the player through all 15 zones).
-      <br><strong>3.</strong> Then any zone tab, in any order. Each zone needs <strong>3–5 images</strong>: floor, wall, its signature props.
-      <br><strong>4.</strong> Drop finished PNGs into iCloud <code>DomiGo v2 Art Prompts/generated-images/g2-&lt;zone&gt;/</code> (e.g. <code>g2-classroom/</code>). A Claude session syncs + QAs them into <code>apps/web/public/art/g2/&lt;zone&gt;/</code>.</div>
-
-    <div class="info-box amber"><strong>Honesty box — when will I SEE these in the game?</strong> The G2 overworld engine is work item <strong>B-2</strong> (the next big Opus build: it generalizes the Grade-1 walkable engine to this school map). The story text is already written and validated; these images become visible the moment B-2 lands. Generating now is safe and useful — the folder contract and file names above are fixed, so nothing you generate needs redoing.</div>
-
-    <div class="info-box red"><strong>Three non-negotiables (same as Grade 1):</strong>
-      <br>1. <strong>NO text</strong> anywhere in any image — no letters, numbers, logos (blank pages stay blank).
-      <br>2. <strong>Floor &amp; wall tiles must be SEAMLESS</strong> — no centred motif, no vignette, even brightness corner-to-corner.
-      <br>3. <strong>Props &amp; characters sit on a FULLY TRANSPARENT background</strong> — only a small hard contact-shadow oval touches the ground.</div>
-
-    <div class="info-box red"><strong>THE BLANK IS NEVER DRAWN. (Bible rule — binding.)</strong> The story's presence is an <em>absence</em>: it appears ONLY as drained-pale patches (#f1ece0), gaps where something should be, colour that is missing. There is NO Blank sprite, NO shadowy figure, NO creature — if a generation produces "a ghost", delete it. The only creature you ever draw is <strong>Klecks</strong> (Cast tab), who exists only in the finale, AFTER the Blank has been filled with a name and a story. Erased ≠ spooky: the register is wistful, gentle, never horror.</div>
-
-    <h3>What each zone needs</h3>
-    <div class="spec">REQUIRED per zone   floor.png · wall.png · the zone's signature props (listed on its tab)
-CAST (once)         jona_down.png · emma_down.png · tarik_down.png · klecks_down.png (u15 only)
-SHARED (copy in)    sparkle.png from the G1 School set (the SAME green ✦ everywhere)
-ON HOLD             player_* (per-student avatars — LOOK-0, same rule as Grade 1)
-NAMING RULE         file stem = engine tile-kind (board/stage/barrel/plant/rug/note);
-                    desk.png → "accent2", sparkle.png → "encounter" (aliased automatically)</div>
-
-    <h3>Two things that make G2 look like G2</h3>
-    <p><strong>1 · Real school, not storybook.</strong> Grade 1 plays <em>inside</em> a book — warm honey fantasy rooms. Grade 2 is an ordinary school the book is leaking <em>into</em>: cooler laminate, linoleum corridors, brick yard. The magic is an intrusion, so the base world must look believable.
-    <br><strong>2 · The two accents.</strong> Story-ink (deep blue-black #1b2a4a) marks where the book leaks IN; drained-pale (#f1ece0) marks what the Blank took OUT. Each zone's prompts say exactly where these accents may appear — never add them elsewhere.</p>
-
-    <div class="info-box green"><strong>Palette status:</strong> these zone ramps are the authored proposals this campaign was written against. Work item B-2 encodes them 1:1 into the game's procedural renderer (<code>art-gen/theme.ts</code>, new school family) so the fallback art and your images share exact hexes — the same contract Grade 1 already has.</div>
-  </div>`;
-}
-
-function buildCast(){
-  let h = `<div class="section" id="sec-cast">
-    <div class="zone-header"><div class="ch-name">The Cast — Jona, Emma, Tarik, Klecks</div><div class="ch-sub">canon: docs/handover/20 §3 · drop folder <code>g2-cast/</code> → synced into each zone as needed</div></div>
-    <div class="info-box"><strong>Who they are in one line each:</strong> <strong>Jona</strong> — the boy the Grade-1 player freed from the book; now real, quiet, ink-stained, your guide. <strong>Emma</strong> — believes you instantly, talks fast. <strong>Tarik</strong> — believes you slowly, notices everything. <strong>Klecks</strong> — what the Blank becomes at the very end, when the class gives it a name and a story. The player character stays ⏸ ON HOLD (per-student procedural avatars, LOOK-0).</div>`;
-  h += charCard('Jona — facing down (required)','apps/web/public/art/g2/cast/jona_down.png',
-    '[NPC SPRITE] JONA standing and facing the camera, calm and waiting — the pose of someone who has stood still for a very long time and is finally somewhere he wants to be. One centred GBA overworld sprite on a transparent background, feet near the bottom of the 48×48 cell, small hard contact-shadow oval, 1px outline.');
-  h += charCard('Emma — facing down (required)','apps/web/public/art/g2/cast/emma_down.png',
-    '[NPC SPRITE] EMMA facing the camera mid-gesture, one hand up as if making a point. One centred GBA overworld sprite, transparent background, feet near the bottom of the cell, small hard contact-shadow oval, 1px outline.');
-  h += charCard('Tarik — facing down (required)','apps/web/public/art/g2/cast/tarik_down.png',
-    '[NPC SPRITE] TARIK facing the camera with arms loosely crossed, the calm sceptic. One centred GBA overworld sprite, transparent background, feet near the bottom of the cell, small hard contact-shadow oval, 1px outline.');
-  h += charCard('Klecks — facing down (finale only, u15)','apps/web/public/art/g2/cast/klecks_down.png',
-    '[NPC SPRITE] KLECKS sitting on the ground facing the camera, body tilted in a happy little lean, its one white spot showing. One centred GBA overworld sprite, transparent background, resting on the bottom third of the 48×48 cell, small hard contact-shadow oval, 1px outline.');
-  h += `<div class="info-box amber"><strong>Optional facings:</strong> once a character's <code>_down</code> frame is approved, generate up/left/right the same way Grade 1 does (same character, outfit, size, anchor — only the facing changes). Jona benefits most; Emma/Tarik/Klecks can stay single-facing indefinitely.</div>`;
-  return h + '</div>';
-}
-
-function buildZone(zone){
-  let h = `<div class="section" id="sec-${zone.z}">
-    <div class="zone-header"><div class="ch-name">${zone.z} · ${zone.en} — ${zone.de}</div><div class="ch-sub">generator <code>${zone.gen}</code> · drop folder <code>g2-${zone.dir}/</code></div></div>
-    <p><em>${zone.beat}</em></p>
-    <div class="swatches">${Object.values(zone.pal).flat().map(sw).join('')}</div>
-    <div class="info-box">Required for this zone: <strong>${zone.cards.map(c=>c[3]).join(' · ')}</strong> — plus the shared green sparkle copy. Feed the G1 <code>_style_key.png</code> as a reference image with every prompt.</div>`;
-  for (const [placement, cls, title, file, body] of zone.cards) h += card(zone, placement, cls, title, file, body);
-  return h + '</div>';
-}
-
-function buildPipeline(){
-  return `<div class="section" id="sec-pipeline">
-    <h2>Pipeline — from generated image to in-game tile</h2>
-    <h3>1 · Generate at 4×</h3>
-    <div class="info-box amber">Author each tile/prop at <strong>512×512</strong> as crisp hard-edged pixel art (no "creative upscale/smoothing"). The prep tool downsamples to the shipping 48px with nearest-neighbour.</div>
-    <h3>2 · Drop → sync → QA (a Claude session runs these)</h3>
-    <div class="spec"># per zone (example: classroom)
-node docs/art/sync-art.mjs --lib "…/DomiGo v2 Art Prompts/generated-images/g2-classroom" \\
-                           --dest apps/web/public/art/g2/classroom
-node docs/art/prep-art.mjs apps/web/public/art/g2/classroom   # sizes, seams, transparency QA</div>
-    <h3>3 · QA checklist</h3>
-    <div class="spec">☐ Floor/wall: tile it 3×3 — no visible seam, no bright centre, no dark corners
-☐ Props/characters: 1px+ fully transparent ring around the art
-☐ Palette: no colour outside the zone ramp (+ the two story accents only where asked)
-☐ No text/letters/numbers anywhere
-☐ Nothing that draws the Blank as a creature (drained patches only)
-☐ Reads at 48px (zoom the shipping PNG to 100%, not the 512px source)</div>
-    <div class="info-box"><strong>Incremental by design:</strong> once B-2 lands, the same resolver as Grade 1 ships only the stems that exist — one finished floor.png upgrades one tile, everything else keeps its procedural fallback. Drop, sync, see it, iterate.</div>
-  </div>`;
-}
-
-const sections = [
-  { id:'start', label:'▶ Start Here', build: buildStartHere },
-  { id:'cast', label:'★ Cast', build: buildCast },
-  ...ZONES.map(z => ({ id:z.z, label:`${z.z} ${z.dir}`, build: () => buildZone(z) })),
-  { id:'pipeline', label:'Pipeline', build: buildPipeline },
-];
-document.getElementById('nav').innerHTML = sections.map((s,i) =>
-  `<button data-sec="${s.id}" class="${i===0?'active':''}" onclick="showSection('${s.id}',this)">${s.label}</button>`).join('');
-document.getElementById('content').innerHTML = sections.map(s => s.build()).join('');
-
-function showSection(id, btn){
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.getElementById('sec-' + id).classList.add('active');
-  document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  window.scrollTo(0, 0);
-}
-function copyPrompt(id, btn){
-  const text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = 'Copied ✓'; btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1400);
-  });
+const lib = document.getElementById("library");
+for (const [zid, gen, npcDesc, els] of Z) {
+  const cells = els.map((e,i) => { const [stem,desc,opq] = e.split("|"); return {stem, desc, opaque: opq==="1", col: i%4, row: Math.floor(i/4)}; });
+  const elLines = cells.map((c,i)=>`${i+1}. ${c.desc}${c.opaque?" (this element fills its whole cell edge-to-edge as a seamless opaque tile)":""}`).join("\n");
+  const promptText = `${GRID}\n\nSTYLE: ${STYLE}\nPALETTE: ${PAL[gen]}.\nCharacter reference where one appears: ${npcDesc}.\n\nTHE 12 ELEMENTS, row by row, left to right:\n${elLines}`;
+  const manifest = { keyColor:"#FF00FF", tolerance:90, cols:4, rows:3, cells: cells.map(({stem,col,row,opaque})=> opaque?{stem,col,row,opaque}:{stem,col,row}) };
+  const card = document.createElement("div"); card.className="card";
+  const ta = document.createElement("textarea"); ta.readOnly = true; ta.value = promptText;
+  card.innerHTML = `<h3>${zid} · <code>${gen}</code> — one sheet, 12 elements</h3>
+    <div class="grid">Drop: <code>generated-images/g2-${gen}/sheet.png</code> · slice with <code>docs/art/sheets/g2-${gen}.manifest.json</code></div>`;
+  card.appendChild(ta);
+  const btn = document.createElement("button"); btn.textContent = "Copy prompt";
+  btn.onclick = () => navigator.clipboard.writeText(ta.value);
+  card.appendChild(btn);
+  const det = document.createElement("details");
+  det.innerHTML = `<summary style="font-size:12px;cursor:pointer">manifest JSON (already saved in docs/art/sheets/)</summary><div class="manifest">${JSON.stringify(manifest,null,1)}</div>`;
+  card.appendChild(det);
+  lib.appendChild(card);
 }
 </script>
-</body>
-</html>
+<h2>Character master sheet (once, shared by all zones)</h2>
+<div class="card"><p style="font-size:13px">One extra sheet: the five walkable NPC sprites (Frau Berger, Emma, Tarik, Jona, Finn — each facing down) plus Pixel and Klecks — same magenta rule, same style key, 4×2 grid. Manifest: <code>docs/art/sheets/g2-cast.manifest.json</code>. The per-zone <code>npc_down</code> in each zone sheet can then be SKIPPED at generation time if you prefer pulling from this master (the slicer + sync don't care which route the PNG took).</p></div>
+</body></html>

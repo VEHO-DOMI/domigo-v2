@@ -1,0 +1,43 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 90,
+ "cols": 4,
+ "rows": 2,
+ "cells": [
+  {
+   "stem": "berger_down",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "emma_down",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "tarik_down",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "jona_down",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "stem": "finn_down",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "pixel_down",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "klecks_down",
+   "col": 2,
+   "row": 1
+  }
+ ]
+}
