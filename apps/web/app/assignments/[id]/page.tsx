@@ -9,14 +9,35 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { loadUnit } from "@domigo/content-loader";
-import { getDb, getStudentAssignmentView, startOrResumeSession, isSessionLive } from "@domigo/db";
+import {
+  formatCheckupPoints,
+  getDb,
+  getStudentAssignmentView,
+  isSessionLive,
+  parseCheckupSectionConfig,
+  parseDisplayConfig,
+  startOrResumeSession,
+  CHECKUP_DEFAULT_DISPLAY,
+  type CheckupKind,
+} from "@domigo/db";
+import { sectionItemPools } from "@/lib/checkup";
 import { getActingUserForPage } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
 import AssignmentRunner, { type RunnerSection } from "./AssignmentRunner";
+import CheckupRunner, { type CheckupRunnerSection } from "./CheckupRunner";
 
 export const dynamic = "force-dynamic";
 
 const NOTE_LABEL: Record<number, string> = { 1: "Sehr gut", 2: "Gut", 3: "Befriedigend", 4: "Genügend", 5: "Nicht genügend" };
+
+/** Paper-style German section titles for the checkup runner (doc 21 §6). */
+const CHECKUP_TITLE: Record<CheckupKind, string> = {
+  "words-phrases": "Wörter & Sätze",
+  translations: "Übersetzen",
+  definitions: "Definitionen",
+  grammar: "Grammatik",
+  "picture-mc": "Bilder",
+};
 
 /** Resolve a section's item ids to full items (cached loadUnit per slug). */
 function resolveItems(itemIds: string[], cache: Map<string, ReturnType<typeof loadUnit>>): Array<VocabItem | GrammarItem> {
@@ -58,6 +79,37 @@ export default async function AssignmentPage({ params }: { params: Promise<{ id:
   // ── active sitting → the runner ──
   if (live) {
     const cache = new Map<string, ReturnType<typeof loadUnit>>();
+
+    // C-1: a checkup renders the paper-shaped one-page runner. Sections carry
+    // their /20 config; per-item pools are computed HERE (server) so the client
+    // never needs @domigo/db (P-29b) and render + grade agree deterministically.
+    if (assignment.mode === "checkup") {
+      const display = parseDisplayConfig(assignment.displayConfig) ?? CHECKUP_DEFAULT_DISPLAY;
+      const checkupSections: CheckupRunnerSection[] = sections.map((s) => {
+        const items = resolveItems((s.itemIds as string[] | null) ?? [], cache);
+        const cfg = parseCheckupSectionConfig(s.sectionConfig);
+        return {
+          position: s.position,
+          kind: s.kind as "vocab" | "grammar",
+          titleDe: cfg ? CHECKUP_TITLE[cfg.checkupKind] : s.kind === "vocab" ? "Vokabel" : "Grammatik",
+          points: cfg?.points ?? items.length,
+          mask: cfg?.mask === "first-letter",
+          pools: cfg ? sectionItemPools(cfg, items.length) : items.map(() => "carrier" as const),
+          items,
+        };
+      });
+      return (
+        <CheckupRunner
+          assignmentId={id}
+          sessionId={live.id}
+          title={assignment.title}
+          expiresAt={live.expiresAt ? live.expiresAt.toISOString() : null}
+          sections={checkupSections}
+          feedback={display.feedback}
+        />
+      );
+    }
+
     const runnerSections: RunnerSection[] = sections.map((s) => ({
       position: s.position,
       kind: s.kind as "vocab" | "grammar",
@@ -84,7 +136,7 @@ export default async function AssignmentPage({ params }: { params: Promise<{ id:
         <Link href="/assignments" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Aufgaben</Link>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-        {assignment.mode === "mock_test" ? "📝 Schularbeit-Übung" : "✏️ Übung"}
+        {assignment.mode === "mock_test" ? "📝 Schularbeit-Übung" : assignment.mode === "checkup" ? "✅ Check-up · 20 Punkte" : "✏️ Übung"}
         {assignment.sessionDurationMinutes ? ` · ${assignment.sessionDurationMinutes} Minuten` : " · ohne Zeitlimit"}
         {` · ${sections.length} Teile`}
       </p>
@@ -92,14 +144,29 @@ export default async function AssignmentPage({ params }: { params: Promise<{ id:
       {submitted.length > 0 && (
         <div className="dg-card" style={{ marginTop: 16 }}>
           <h2 style={{ fontSize: 16, margin: "0 0 8px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Deine Versuche</h2>
-          {submitted.map((s) => (
-            <div key={s.id} style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderTop: "1px solid var(--card-border)" }}>
-              <span>Versuch {s.attemptNumber}</span>
-              <span style={{ fontWeight: 700, color: (s.note ?? 5) <= 2 ? "var(--correct)" : (s.note ?? 5) <= 4 ? "var(--partial)" : "var(--incorrect)" }}>
-                {s.scorePct != null ? `${Math.round(Number(s.scorePct))}%` : "—"}{s.note ? ` · Note ${s.note} (${NOTE_LABEL[s.note]})` : ""}
-              </span>
-            </div>
-          ))}
+          {submitted.map((s) => {
+            // C-1: a checkup is points-only (note stays null, doc 21 §8-③) —
+            // show X / 20 Punkte, reconstructed from the stored exact percent.
+            if (assignment.mode === "checkup") {
+              const pts = s.scorePct != null ? Math.round((Number(s.scorePct) / 100) * 20 * 10) / 10 : null;
+              return (
+                <div key={s.id} style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderTop: "1px solid var(--card-border)" }}>
+                  <span>Versuch {s.attemptNumber}</span>
+                  <span style={{ fontWeight: 700, color: pts !== null && pts >= 10 ? "var(--correct)" : "var(--partial)" }}>
+                    {pts !== null ? `${formatCheckupPoints(pts)} / 20 Punkte` : "—"}
+                  </span>
+                </div>
+              );
+            }
+            return (
+              <div key={s.id} style={{ display: "flex", justifyContent: "space-between", padding: "6px 0", borderTop: "1px solid var(--card-border)" }}>
+                <span>Versuch {s.attemptNumber}</span>
+                <span style={{ fontWeight: 700, color: (s.note ?? 5) <= 2 ? "var(--correct)" : (s.note ?? 5) <= 4 ? "var(--partial)" : "var(--incorrect)" }}>
+                  {s.scorePct != null ? `${Math.round(Number(s.scorePct))}%` : "—"}{s.note ? ` · Note ${s.note} (${NOTE_LABEL[s.note]})` : ""}
+                </span>
+              </div>
+            );
+          })}
         </div>
       )}
 

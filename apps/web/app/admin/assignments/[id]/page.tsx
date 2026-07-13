@@ -8,6 +8,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
+  formatCheckupPoints,
   getAssignmentWithSections,
   getDb,
   getSessionAttempts,
@@ -92,7 +93,7 @@ export default async function AssignmentResultsPage({ params }: { params: Promis
         <Link href="/admin/assignments" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Assignments</Link>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
-        {mode === "mock_test" ? "Mock test" : "Practice"} · {summary.done}/{summary.students} abgegeben
+        {mode === "mock_test" ? "Mock test" : mode === "checkup" ? "Check-up (/20)" : "Practice"} · {summary.done}/{summary.students} abgegeben
         {summary.inProgress > 0 ? ` · ${summary.inProgress} gerade dran` : ""}
         {summary.classAvgPct !== null ? ` · Ø ${Math.round(summary.classAvgPct)}%` : ""}
       </p>
@@ -151,7 +152,12 @@ export default async function AssignmentResultsPage({ params }: { params: Promis
                     return <td key={s.position} style={{ ...td, textAlign: "right", color: p ? pctColor(p.pct) : "var(--muted)" }}>{p ? `${Math.round(p.pct)}%` : "—"}</td>;
                   })}
                   <td style={{ ...td, textAlign: "right", fontWeight: 700 }}>
-                    {r.status === "done" ? `${Math.round(r.overallPct ?? 0)}%` : r.status === "in_progress" ? <span style={{ color: "var(--accent)", fontWeight: 600 }}>läuft…</span> : <span style={{ color: "var(--muted)", fontWeight: 400 }}>—</span>}
+                    {r.status === "done"
+                      // C-1: a checkup roster reads in points (X / 20) — never % or Note (§8-③).
+                      ? mode === "checkup"
+                        ? `${formatCheckupPoints(((r.overallPct ?? 0) / 100) * 20)} / 20`
+                        : `${Math.round(r.overallPct ?? 0)}%`
+                      : r.status === "in_progress" ? <span style={{ color: "var(--accent)", fontWeight: 600 }}>läuft…</span> : <span style={{ color: "var(--muted)", fontWeight: 400 }}>—</span>}
                   </td>
                   {mode === "mock_test" && (
                     <td style={{ ...td, textAlign: "right" }}>

@@ -41,7 +41,7 @@ export default async function AssignmentsPage() {
               <div>
                 <div style={{ fontWeight: 700, fontSize: 16, color: "var(--ink)" }}>{a.title}</div>
                 <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>
-                  {a.mode === "mock_test" ? "Mock test" : "Practice"} · {className.get(a.classId) ?? "a class"}
+                  {a.mode === "mock_test" ? "Mock test" : a.mode === "checkup" ? "Check-up (/20)" : "Practice"} · {className.get(a.classId) ?? "a class"}
                   {a.dueAt ? ` · due ${new Date(a.dueAt).toLocaleDateString("de-AT")}` : ""}
                   {a.archivedAt ? " · archived" : ""}
                 </div>

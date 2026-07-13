@@ -29,6 +29,9 @@
  *   --grade g1|g2|g3|g4|all   unit scope by grade
  *   --unit <slug>             one unit (e.g. g2-u03)
  *   --only <itemId>           one item
+ *   --items <file.json>       a JSON array of itemIds — the C-1 checkup gate
+ *                             path (doc 21 §5.5): a composed checkup's exact
+ *                             item set is exported and blind-solved offline
  *   --limit <n>               cap item count (after filtering)
  *   --model <id>              default claude-opus-4-8
  *   --effort low|medium|high  default low (routine solve work)
@@ -89,6 +92,7 @@ interface Args {
   grade: string | null;
   unit: string | null;
   only: string | null;
+  items: string | null;
   limit: number | null;
   model: string;
   effort: "low" | "medium" | "high";
@@ -103,6 +107,7 @@ function parseArgs(argv: string[]): Args {
     grade: null,
     unit: null,
     only: null,
+    items: null,
     limit: null,
     model: "claude-opus-4-8",
     effort: "low",
@@ -121,6 +126,7 @@ function parseArgs(argv: string[]): Args {
     if (k === "--grade") a.grade = v();
     else if (k === "--unit") a.unit = v();
     else if (k === "--only") a.only = v();
+    else if (k === "--items") a.items = v();
     else if (k === "--limit") a.limit = Number(v());
     else if (k === "--model") a.model = v();
     else if (k === "--effort") a.effort = v() as Args["effort"];
@@ -130,8 +136,8 @@ function parseArgs(argv: string[]): Args {
     else if (k === "--candidates") a.candidates = v();
     else throw new Error(`unknown flag ${k}`);
   }
-  if (a.grade === null && a.unit === null && a.only === null) {
-    throw new Error("scope required: --grade g1|g2|g3|g4|all, --unit <slug>, or --only <itemId>");
+  if (a.grade === null && a.unit === null && a.only === null && a.items === null) {
+    throw new Error("scope required: --grade g1|g2|g3|g4|all, --unit <slug>, --only <itemId>, or --items <file.json>");
   }
   if (a.grade !== null && !/^(g[1-4]|all)$/.test(a.grade)) throw new Error(`bad --grade ${a.grade}`);
   if (!["low", "medium", "high"].includes(a.effort)) throw new Error(`bad --effort ${a.effort}`);
@@ -154,6 +160,10 @@ interface Entry {
 }
 
 function collectEntries(args: Args): { entries: Entry[]; skipped: Record<string, number> } {
+  // --items: an explicit id set (a composed checkup, doc 21 §5.5). The walk
+  // stays the overlay-applied corpus view; the set only FILTERS it.
+  const itemSet: Set<string> | null =
+    args.items !== null ? new Set(JSON.parse(fs.readFileSync(args.items, "utf8")) as string[]) : null;
   const slugs = fs
     .readdirSync(UNITS_DIR)
     .filter((s) => /^g[1-4]-u\d{2}$/.test(s))
@@ -189,6 +199,14 @@ function collectEntries(args: Args): { entries: Entry[]; skipped: Record<string,
     }
   }
   let filtered = args.only !== null ? entries.filter((e) => e.item.id === args.only) : entries;
+  if (itemSet !== null) {
+    filtered = filtered.filter((e) => itemSet.has(e.item.id));
+    const found = new Set(filtered.map((e) => e.item.id));
+    const missing = [...itemSet].filter((id) => !found.has(id));
+    if (missing.length > 0) {
+      console.error(`  ! ${missing.length} requested item(s) not in the (frameable) corpus: ${missing.slice(0, 5).join(", ")}${missing.length > 5 ? ", …" : ""}`);
+    }
+  }
   if (args.limit !== null) filtered = filtered.slice(0, args.limit);
   return { entries: filtered, skipped };
 }
@@ -346,7 +364,11 @@ async function mapPool<T, R>(items: T[], n: number, fn: (t: T) => Promise<R>): P
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
   const { entries, skipped } = collectEntries(args);
-  const scope = args.only ?? args.unit ?? args.grade ?? "scope";
+  const scope =
+    args.only ??
+    args.unit ??
+    args.grade ??
+    (args.items !== null ? `items-${path.basename(args.items).replace(/\.json$/i, "")}` : "scope");
   const mode = args.noLlm ? "no-llm" : args.candidates !== null ? "candidates-file" : "live";
   console.log(`blind-solve — ${mode} · scope=${scope} · ${entries.length} items` +
     (Object.keys(skipped).length > 0 ? ` (skipped: ${Object.entries(skipped).map(([f, n]) => `${f}×${n}`).join(", ")})` : ""));

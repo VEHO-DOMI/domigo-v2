@@ -218,6 +218,9 @@ export const assignments = v2.table(
     sessionDurationMinutes: integer("session_duration_minutes"), // whole-test timer (null = untimed)
     attemptsPerTest: smallint("attempts_per_test").notNull().default(1), // 1..3, endpoint-capped
     notenSchluessel: jsonb("noten_schluessel"), // null ⇒ AHS default
+    // C-1: when the student sees verdicts/points ({feedback, showScore} — checkup.ts
+    // DisplayConfig). Null ⇒ mode default (checkup: on-submit; practice/mock: immediate).
+    displayConfig: jsonb("display_config"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },
@@ -245,6 +248,9 @@ export const assignmentSections = v2.table(
     writingPromptId: text("writing_prompt_id"),
     timerMinutes: integer("timer_minutes"),
     weightPct: smallint("weight_pct").notNull().default(0),
+    // C-1: checkup section config ({checkupKind, points, mask, direction} — checkup.ts
+    // CheckupSectionConfig). Null on non-checkup sections; Σ points = 20 (endpoint-gated).
+    sectionConfig: jsonb("section_config"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => ({
