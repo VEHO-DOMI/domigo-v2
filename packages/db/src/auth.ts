@@ -41,20 +41,42 @@ const v2Cols = {
  * class/user absent or class archived. Invite codes are globally unique across
  * v1+v2 (see allocateClassCode), so a v2 code can never also match a v1 class.
  */
+/**
+ * Run the v2-native half of a dual-read, degrading to `fallback` if the
+ * domigo_v2 tables are unreachable (e.g. migrations not yet applied to this
+ * deployment's database). The v1 mirror path must keep working REGARDLESS of
+ * v2's state — 2026-07-12 incident: migration 0006 was merged but never applied
+ * to prod, these queries threw before the v1 fallback could run, and every
+ * sign-in (student AND teacher) on production died with "invalid credentials".
+ * Deliberately one-sided: v1 queries stay unguarded — if the v1 mirror itself
+ * is down, that's a real outage and MUST surface, not degrade.
+ */
+async function v2Safe<T>(query: () => Promise<T>, fallback: T): Promise<T> {
+  try {
+    return await query();
+  } catch (err) {
+    console.error(
+      "[auth] v2 identity query failed — falling back to the v1 mirror:",
+      err instanceof Error ? err.message.slice(0, 200) : String(err).slice(0, 200),
+    );
+    return fallback;
+  }
+}
+
 export async function lookupStudentForAuth(
   db: Db,
   inviteCode: string,
   nickname: string,
 ): Promise<AuthUserRow | null> {
   // v2-native first: active class by invite code, then its student by nickname.
-  const v2ClsRows = await db
-    .select({ id: v2Classes.id })
-    .from(v2Classes)
-    .where(and(eq(v2Classes.inviteCode, inviteCode), isNull(v2Classes.archivedAt)))
-    .limit(1);
-  const v2Cls = v2ClsRows[0];
-  let v2Row: AuthUserRow | null = null;
-  if (v2Cls) {
+  const v2Row = await v2Safe<AuthUserRow | null>(async () => {
+    const v2ClsRows = await db
+      .select({ id: v2Classes.id })
+      .from(v2Classes)
+      .where(and(eq(v2Classes.inviteCode, inviteCode), isNull(v2Classes.archivedAt)))
+      .limit(1);
+    const v2Cls = v2ClsRows[0];
+    if (!v2Cls) return null;
     const rows = await db
       .select(v2Cols)
       .from(v2IdentityUsers)
@@ -66,8 +88,8 @@ export async function lookupStudentForAuth(
         ),
       )
       .limit(1);
-    v2Row = rows[0] ?? null;
-  }
+    return rows[0] ?? null;
+  }, null);
   if (v2Row) return pickIdentity(v2Row, null);
 
   // v1 fallback: the existing read-only mirror query, unchanged in shape.
@@ -98,11 +120,10 @@ export async function lookupStudentForAuth(
  * Null if the class is absent in both.
  */
 export async function getClassGrade(db: Db, classId: string): Promise<number | null> {
-  const v2Rows = await db
-    .select({ grade: v2Classes.grade })
-    .from(v2Classes)
-    .where(eq(v2Classes.id, classId))
-    .limit(1);
+  const v2Rows = await v2Safe(
+    () => db.select({ grade: v2Classes.grade }).from(v2Classes).where(eq(v2Classes.id, classId)).limit(1),
+    [],
+  );
   const v2Grade = v2Rows[0]?.grade ?? null;
   if (v2Grade != null) return v2Grade; // != null (not truthiness) so a 0 grade wouldn't fall through
   const rows = await db
@@ -115,11 +136,15 @@ export async function getClassGrade(db: Db, classId: string): Promise<number | n
 
 /** Teacher by nickname (case-insensitive). Dual-read: v2-native teacher first, then the v1 mirror. */
 export async function lookupTeacherForAuth(db: Db, nickname: string): Promise<AuthUserRow | null> {
-  const v2Rows = await db
-    .select(v2Cols)
-    .from(v2IdentityUsers)
-    .where(and(eq(v2IdentityUsers.role, "teacher"), sql`lower(${v2IdentityUsers.displayName}) = lower(${nickname})`))
-    .limit(1);
+  const v2Rows = await v2Safe(
+    () =>
+      db
+        .select(v2Cols)
+        .from(v2IdentityUsers)
+        .where(and(eq(v2IdentityUsers.role, "teacher"), sql`lower(${v2IdentityUsers.displayName}) = lower(${nickname})`))
+        .limit(1),
+    [],
+  );
   const v2Row = v2Rows[0] ?? null;
   if (v2Row) return pickIdentity(v2Row, null);
   const rows = await db
@@ -138,9 +163,12 @@ export async function lookupTeacherForAuth(db: Db, nickname: string): Promise<Au
  * then delegates to the pure nextInviteCode.
  */
 export async function allocateClassCode(db: Db): Promise<string> {
+  // v2 side degrades to "no v2 codes yet" (an absent table genuinely holds none);
+  // the v1 read stays unguarded — minting a code without seeing real v1 codes
+  // could collide, so a v1 failure must throw, not degrade.
   const [v1Rows, v2Rows] = await Promise.all([
     db.select({ code: v1Classes.inviteCode }).from(v1Classes),
-    db.select({ code: v2Classes.inviteCode }).from(v2Classes),
+    v2Safe(() => db.select({ code: v2Classes.inviteCode }).from(v2Classes), []),
   ]);
   const taken = new Set<string>();
   for (const r of v1Rows) taken.add(r.code.toUpperCase());
