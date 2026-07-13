@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { Cast, Story, StoryFlags, StoryItems } from "@domigo/content-schema";
+import { Cast, GameMap, Story, StoryFlags, StoryItems } from "@domigo/content-schema";
 import { extractArrayLiteral, parseLegacyCampaign } from "../import-story.ts";
 import { endingCoverage, validateStoryBundle, type StoryBundle, type StoryCorpus } from "../validate-story.ts";
 
@@ -42,16 +42,18 @@ test("parseLegacyCampaign maps a legacy level → draft chapter (no content copi
 
 // ─────────────────────────────────────────────────────── VS validators ───────
 
-function mkCorpus(opts: { allowed?: string[]; known?: string[]; ready?: string[] } = {}): StoryCorpus {
+function mkCorpus(opts: { allowed?: string[]; known?: string[]; ready?: string[]; generators?: string[] } = {}): StoryCorpus {
   const base = ["hello", "look", "here", "the", "book", "is", "go", "in", "wait", "for", "open", "and", "a", "we", "can", "it"];
   const allowed = new Set([...base, ...(opts.allowed ?? [])]);
   const known = new Set(opts.known ?? ["g1u01.w.book"]);
   const ready = new Set(opts.ready ?? ["g1-u01"]);
+  const generators = new Set(opts.generators ?? ["school-room"]);
   const wordsOf = (s: string): string[] => s.toLowerCase().match(/[a-zäöüß']+/g) ?? [];
   return {
     itemExists: (id) => known.has(id),
     isUnitReady: (slug) => ready.has(slug),
     variantKeysOf: () => [],
+    generatorExists: (g) => generators.has(g),
     unknownTokens: (_slug, text, extra) => {
       const ok = new Set(allowed);
       for (const p of extra) for (const w of wordsOf(p)) ok.add(w);
@@ -261,4 +263,66 @@ test("VS-15: minor-only flags (no major) are a no-op — flagless/minor stories 
   const res = endingCoverage(flagStory(), flagsDecl(false));
   assert.deepEqual(res.errors, []);
   assert.deepEqual(res.infos, []);
+});
+
+// ─────────────────────────────────────────────── VS-18 map@1 integrity (B-2) ──
+
+function mkMap(zones?: Array<Record<string, unknown>>) {
+  return GameMap.parse({
+    schema: "map@1",
+    id: "g1.map.lp",
+    grade: 1,
+    zones: zones ?? [
+      { id: "g1.map.lp.z01", unit: 1, titleEn: "Classroom", titleDe: "Klassenzimmer", width: 15, height: 11, tileSize: 16, render: { generator: "school-room", seed: 101 } },
+    ],
+  });
+}
+
+test("VS-18: a matching map (1:1 units, registered generator) passes", () => {
+  const res = validateStoryBundle(bundle({ map: mkMap() }), mkCorpus());
+  assert.deepEqual(res.errors, []);
+});
+
+test("VS-18: a zone unit with no chapter (and vice versa) fails the bijection", () => {
+  const m = mkMap([
+    { id: "g1.map.lp.z01", unit: 2, titleEn: "Aula", titleDe: null, width: 15, height: 11, tileSize: 16, render: { generator: "school-room", seed: 102 } },
+  ]);
+  const res = validateStoryBundle(bundle({ map: m }), mkCorpus());
+  assert.ok(res.errors.some((e) => e.includes("VS-18") && e.includes("zone unit 2 has no chapter")), res.errors.join(" | "));
+  assert.ok(res.errors.some((e) => e.includes("VS-18") && e.includes("chapter unit 1 has no zone")), res.errors.join(" | "));
+});
+
+test("VS-18: zone count != chapter count fails", () => {
+  const m = mkMap([
+    { id: "g1.map.lp.z01", unit: 1, titleEn: "A", titleDe: null, width: 15, height: 11, tileSize: 16, render: { generator: "school-room", seed: 101 } },
+    { id: "g1.map.lp.z02", unit: 2, titleEn: "B", titleDe: null, width: 15, height: 11, tileSize: 16, render: { generator: "school-room", seed: 102 } },
+  ]);
+  const res = validateStoryBundle(bundle({ map: m }), mkCorpus());
+  assert.ok(res.errors.some((e) => e.includes("VS-18") && e.includes("2 zone(s) but 1 chapter(s)")), res.errors.join(" | "));
+});
+
+test("VS-18: an unregistered render.generator fails; render:null is info-only (art deferred)", () => {
+  const bad = mkMap([
+    { id: "g1.map.lp.z01", unit: 1, titleEn: "A", titleDe: null, width: 15, height: 11, tileSize: 16, render: { generator: "no-such-theme", seed: 101 } },
+  ]);
+  const res = validateStoryBundle(bundle({ map: bad }), mkCorpus());
+  assert.ok(res.errors.some((e) => e.includes("VS-18") && e.includes('"no-such-theme"')), res.errors.join(" | "));
+
+  const deferred = mkMap([
+    { id: "g1.map.lp.z01", unit: 1, titleEn: "A", titleDe: null, width: 15, height: 11, tileSize: 16, render: null },
+  ]);
+  const res2 = validateStoryBundle(bundle({ map: deferred }), mkCorpus());
+  assert.deepEqual(res2.errors, []);
+  assert.ok(res2.infos.some((i) => i.includes("VS-18") && i.includes("render deferred")), res2.infos.join(" | "));
+});
+
+test("VS-18: a map whose id/grade disagrees with the story fails", () => {
+  const m = GameMap.parse({
+    schema: "map@1",
+    id: "g1.map.other",
+    grade: 1,
+    zones: [{ id: "g1.map.other.z01", unit: 1, titleEn: "A", titleDe: null, width: 15, height: 11, tileSize: 16, render: { generator: "school-room", seed: 101 } }],
+  });
+  const res = validateStoryBundle(bundle({ map: m }), mkCorpus());
+  assert.ok(res.errors.some((e) => e.includes("VS-18") && e.includes("does not match the story slug")), res.errors.join(" | "));
 });

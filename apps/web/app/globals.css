@@ -477,6 +477,37 @@ a.dgh-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-elevate
 .dgh-g4:nth-child(even) { rotate: -0.5deg; }
 .dgh-g4 .dgh-done { color: var(--accent-deep); border: 2px solid var(--accent-deep); border-radius: 999px; padding: 2px 7px; rotate: 6deg; }
 
+/* ink (g2 "The Spill") — pale paper with an ink-blot corner and blue-black
+   accents; LOCKED rooms render HALF-ERASED (outline + a pale smudge where the
+   room art will be — the Blank has them; the board itself tells the story).
+   Pure CSS, no assets (HUB_THEME doctrine, docs/handover/22 §1). */
+.dgh-ink { background: linear-gradient(180deg, #fbfaf5 0%, #f1efe6 100%); border: 1px solid #c8cddd; }
+.dgh-ink::after { content: ""; position: absolute; top: -7px; right: -6px; width: 34px; height: 30px; background: radial-gradient(closest-side at 40% 55%, #232a44 62%, transparent 63%), radial-gradient(closest-side at 78% 30%, #232a44 34%, transparent 36%), radial-gradient(closest-side at 22% 22%, #232a44 26%, transparent 28%); opacity: 0.85; pointer-events: none; }
+.dgh-ink .dgh-title { color: #1e2438; }
+.dgh-ink .dgh-label { color: #5a6383; }
+.dgh-ink .dgh-cta { color: #2f3e9e; }
+.dgh-ink .dgh-num { color: #2f3e9e; opacity: 0.08; }
+.dgh-ink.dgh-card--done { border-color: #2f3e9e; box-shadow: 0 0 0 2px rgba(47, 62, 158, 0.25), 0 0 18px rgba(47, 62, 158, 0.22); }
+.dgh-ink .dgh-done { color: #2f3e9e; }
+/* half-erased: a dashed outline, the ink blot gone pale, a smudge where the room would be */
+.dgh-ink.dgh-card--locked { opacity: 1; background: transparent; border: 1.5px dashed #b9bfd2; box-shadow: none; }
+.dgh-ink.dgh-card--locked::before { content: ""; position: absolute; inset: 22% 18% 30% 14%; border-radius: 45% 55% 50% 48%; background: radial-gradient(closest-side, rgba(178, 185, 205, 0.5), rgba(178, 185, 205, 0.14) 68%, transparent); pointer-events: none; }
+.dgh-ink.dgh-card--locked::after { opacity: 0.16; }
+.dgh-ink.dgh-card--locked .dgh-title,
+.dgh-ink.dgh-card--locked .dgh-sub,
+.dgh-ink.dgh-card--locked .dgh-label { color: #a9aec0; }
+.dgh-ink.dgh-card--locked .dgh-num { opacity: 0.04; }
+/* excursion zones sit "outside the fence": dashed edge + a slight lean */
+.dgh-ink.dgh-card--excursion { border-style: dashed; rotate: -0.7deg; }
+.dgh-ink.dgh-card--excursion:nth-child(even) { rotate: 0.7deg; }
+
+/* the school floor plan (three labelled bands inside one drawn building) */
+.dgh-fp { border: 2px solid #2a3050; border-radius: 14px; margin-top: 18px; overflow: hidden; background: rgba(43, 50, 84, 0.03); }
+.dgh-fp-band { padding: 12px 14px 16px; }
+.dgh-fp-band + .dgh-fp-band { border-top: 2px solid #2a3050; }
+.dgh-fp-bandlabel { font-size: 12px; font-family: var(--font-label); font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #2a3050; margin: 0 0 2px; }
+.dgh-grid--fp { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin-top: 10px; }
+
 /* The app's reduced-motion floor (first of its kind here): kills every
    game-feel animation AND calms the pre-existing hover/active transitions. */
 @media (prefers-reduced-motion: reduce) {

@@ -34,15 +34,26 @@ const card: CSSProperties = {
   boxShadow: "var(--shadow-card)",
 };
 
-export function ZoneBoard({ zones, label, lang = "en" }: { zones: ZoneProgress[]; label: string; lang?: "de" | "en" }) {
-  const de = lang === "de";
+/** B-2: every campaign string on the board arrives via props (serializable —
+ *  the server page passes them). G1's hub passes its exact former "Lost Pages"
+ *  strings, so its rendered output is byte-identical to the pre-B-2 board. */
+export interface ZoneBoardCopy {
+  /** The per-zone unit noun rendered before the number ("Seite" / "Page"). */
+  noun: string;
+  /** The header progress line, already counted by the server ("3 / 15 Seiten zurückgeholt"). */
+  countLabel: string;
+  /** The all-done celebration line (rendered with the 📖 mark). */
+  completeLabel: string;
+}
+
+export function ZoneBoard({ zones, label, copy }: { zones: ZoneProgress[]; label: string; copy: ZoneBoardCopy }) {
   const done = zones.filter((z) => z.restored).length;
   const complete = done === zones.length && zones.length > 0;
   return (
     <div style={card}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12, gap: 8 }}>
         <span style={{ fontSize: 13, fontWeight: 700, color: "var(--ink)", fontFamily: "var(--font-label)", letterSpacing: "0.03em" }}>📖 {label}</span>
-        <span style={{ fontSize: 12, color: "var(--text-secondary)", whiteSpace: "nowrap", fontWeight: 600 }}>{de ? `${done} / ${zones.length} Seiten zurückgeholt` : `${done} / ${zones.length} pages restored`}</span>
+        <span style={{ fontSize: 12, color: "var(--text-secondary)", whiteSpace: "nowrap", fontWeight: 600 }}>{copy.countLabel}</span>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(138px, 1fr))", gap: 10 }}>
         {zones.map((z) => (
@@ -63,15 +74,15 @@ export function ZoneBoard({ zones, label, lang = "en" }: { zones: ZoneProgress[]
           >
             <span aria-hidden="true" style={{ fontSize: 15, lineHeight: 1 }}>{z.restored ? "✅" : z.unlocked ? "○" : "🔒"}</span>
             <span style={{ minWidth: 0 }}>
-              <span style={{ display: "block", fontSize: 10, fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: z.restored ? "var(--accent-deep)" : "var(--muted)" }}>{de ? "Seite" : "Page"} {z.pageNo}</span>
-              <span style={{ display: "block", fontSize: 12.5, fontWeight: 600, color: z.restored ? "var(--ink)" : "var(--text-secondary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{de ? (z.titleDe ?? z.titleEn) : z.titleEn}</span>
+              <span style={{ display: "block", fontSize: 10, fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: z.restored ? "var(--accent-deep)" : "var(--muted)" }}>{copy.noun} {z.pageNo}</span>
+              <span style={{ display: "block", fontSize: 12.5, fontWeight: 600, color: z.restored ? "var(--ink)" : "var(--text-secondary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{z.titleDe ?? z.titleEn}</span>
             </span>
           </div>
         ))}
       </div>
       {complete && (
         <p style={{ marginTop: 12, fontSize: 13, fontWeight: 700, color: "var(--accent-deep)" }}>
-          📖 {de ? "Das Buch ist wieder ganz — alle Seiten sind zurück!" : "The book is whole again — every page restored!"}
+          📖 {copy.completeLabel}
         </p>
       )}
     </div>

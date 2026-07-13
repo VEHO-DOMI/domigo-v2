@@ -19,3 +19,13 @@ export const STORY_UI: Record<number, StoryUi> = {
 };
 
 export const DEFAULT_STORY_UI: StoryUi = { icon: "📖", blurb: "play your story, chapter by chapter" };
+
+/**
+ * HUB_THEME doctrine (bible 20 §6): a story may claim its own hub-card skin
+ * (a `.dgh-<skin>` CSS family in globals.css) instead of the grade default
+ * (`dgh-g1..dgh-g4`). "The Spill" is `ink` — pale paper, ink-blot corner,
+ * blue-black accents; locked cards render half-erased (the Blank took them).
+ */
+export const HUB_SKIN: Record<string, string> = {
+  "g2.st.the-spill": "ink",
+};

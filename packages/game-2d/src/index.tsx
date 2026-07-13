@@ -4,6 +4,6 @@
  * (it never imports content-loader or another game package).
  */
 export { PhaserGame } from "./PhaserGame.tsx";
-export type { PhaserGameProps, GameAttempt, AttemptFn, GameSaveState } from "./PhaserGame.tsx";
+export type { PhaserGameProps, GameAttempt, AttemptFn, GameSaveState, WorldCopy } from "./PhaserGame.tsx";
 export { OverworldScene } from "./OverworldScene.ts";
 export { rasterize } from "./rasterize.ts";

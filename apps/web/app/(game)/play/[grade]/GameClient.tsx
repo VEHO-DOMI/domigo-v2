@@ -2,7 +2,7 @@
 /**
  * Client boundary for the game route — mounts the Phaser overworld (ssr:false so
  * Phaser never runs on the server) and owns the TWO persistence paths:
- *  - graded answers → the A4 offline attempt outbox (mode:"game:g1");
+ *  - graded answers → the A4 offline attempt outbox (mode = the grade's game slot);
  *  - COSMETIC saves → localStorage (instant resume) + a debounced PUT to
  *    /api/game-save (clientRev last-write-wins). The save carries no progression
  *    (XP/streak/unlocks derive from attempts) — losing it costs only position.
@@ -10,7 +10,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import type { Chapter } from "@domigo/content-schema";
-import type { GameAttempt, GameSaveState } from "@domigo/game-2d";
+import type { GameAttempt, GameSaveState, WorldCopy } from "@domigo/game-2d";
 import type { ResolvedItem } from "@domigo/game-core";
 import { sendAttempt } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
@@ -27,6 +27,8 @@ export default function GameClient(props: {
   /** A1-4: stable per-student avatar seed (from the userId) — decoupled from the zone seed. */
   playerSeed?: number;
   gameMode: string; // "game:g1".."game:g4"
+  /** B-2: campaign chrome strings for the world layer (server-built, per story). */
+  copy: WorldCopy;
   zoneId: string;
   generator: string;
   /** LOOK-1: stem → URL of real tileset art present on disk (server-resolved). */
@@ -112,11 +114,13 @@ export default function GameClient(props: {
     <main style={{ padding: "16px 12px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", maxWidth: 720, margin: "0 auto 10px" }}>
         <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{props.zoneTitle}</h1>
-        <a href={props.hubHref} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{grade === 1 ? "← Alle Räume" : "← Zones"}</a>
+        <a href={props.hubHref} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{grade <= 2 ? "← Alle Räume" : "← Zones"}</a>
       </div>
       <PhaserGame
         seed={props.seed}
         grade={grade}
+        mode={gameMode}
+        copy={props.copy}
         playerSeed={props.playerSeed}
         zoneId={props.zoneId}
         generator={props.generator}

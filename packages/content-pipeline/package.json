@@ -8,6 +8,7 @@
     "test": "node --test \"src/test/*.test.ts\""
   },
   "dependencies": {
+    "@domigo/art-gen": "workspace:*",
     "@domigo/content-schema": "workspace:*",
     "zod": "^4.4.3"
   },

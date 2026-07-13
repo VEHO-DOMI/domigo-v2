@@ -22,13 +22,19 @@
  *  VS-12 story-comprehension items (.ci.) exist + their EN carrier passes the level gate
  *  VS-17 scaffoldDe coverage at grades 1–2 (L-1 German-first UX: scenes, choices,
  *        flagLines must all carry German — it is the PRIMARY line there)
+ *  VS-18 map@1 integrity (B-2): when a bundle ships map.json — zone count ==
+ *        chapter count, zone.unit ↔ chapter.unit is an exact bijection, and
+ *        every non-null render.generator exists in art-gen's THEMES registry
+ *        (a zone with render:null is legal — art deferred — and reported as info)
  *  +     release gating: a released chapter's gate unit must be ready in the corpus
  */
 import fs from "node:fs";
 import path from "node:path";
+import { THEMES } from "@domigo/art-gen";
 import {
   Cast,
   type Chapter,
+  GameMap,
   type Gloss,
   type Scene,
   Story,
@@ -59,6 +65,8 @@ export interface StoryCorpus {
   unknownTokens(slug: string, text: string, extraPhrases: string[]): string[];
   /** Variant keys minted on `itemId` ([] if the item is absent). */
   variantKeysOf(itemId: string): string[];
+  /** VS-18: is `generator` a registered ZoneTheme (art-gen THEMES)? */
+  generatorExists(generator: string): boolean;
 }
 
 export interface StoryBundle {
@@ -69,6 +77,8 @@ export interface StoryBundle {
   comprehension: StoryComprehensionFile | null;
   release: ReleaseFile | null;
   flags?: import("@domigo/content-schema").StoryFlags | null;
+  /** map@1 (B-2 overworld bundles); absent/null = a DOM-game story, no VS-18. */
+  map?: GameMap | null;
 }
 
 // ── du-form + meta-talk (mirrors validate-items V-12/V-13, story carriers) ────
@@ -340,6 +350,62 @@ export function endingCoverage(
   return { errors, infos };
 }
 
+/**
+ * VS-18 — map@1 ↔ story integrity (B-2). A bundle that ships a map.json is an
+ * overworld: its zones and chapters must be the SAME set of units (an exact
+ * bijection — a zone without a chapter is an unreachable room, a chapter
+ * without a zone is unplayable), and every zone that already carries render
+ * detail must name a REGISTERED ZoneTheme (a typo'd generator would silently
+ * fall back to the G1 classroom at runtime — resolveZoneTheme never throws,
+ * so the validator is the only place this can hard-fail). `render:null` is
+ * legal (the schema's art-deferred state) and surfaces as an info line.
+ */
+export function mapIntegrityErrors(
+  story: Story,
+  map: GameMap,
+  corpus: Pick<StoryCorpus, "generatorExists">,
+): { errors: string[]; infos: string[] } {
+  const errors: string[] = [];
+  const infos: string[] = [];
+
+  // the map belongs to this story (same grade prefix + same slug)
+  if (map.grade !== story.grade) errors.push(`${story.id}: VS-18 — map.json grade ${map.grade} != story grade ${story.grade}`);
+  const storySlug = story.id.split(".st.")[1];
+  const mapSlug = map.id.split(".map.")[1];
+  if (storySlug !== mapSlug) errors.push(`${story.id}: VS-18 — map id "${map.id}" does not match the story slug`);
+
+  // zone count == chapter count
+  if (map.zones.length !== story.chapters.length) {
+    errors.push(`${story.id}: VS-18 — ${map.zones.length} zone(s) but ${story.chapters.length} chapter(s) (must match 1:1)`);
+  }
+
+  // unit bijection: every zone.unit names exactly one chapter.unit and vice versa
+  const chapterUnits = new Map<number, number>();
+  for (const c of story.chapters) chapterUnits.set(c.unit, (chapterUnits.get(c.unit) ?? 0) + 1);
+  const zoneUnits = new Map<number, number>();
+  for (const z of map.zones) zoneUnits.set(z.unit, (zoneUnits.get(z.unit) ?? 0) + 1);
+  for (const [unit, n] of zoneUnits) {
+    if (n > 1) errors.push(`${story.id}: VS-18 — ${n} zones share unit ${unit} (units must be unique per zone)`);
+    if (!chapterUnits.has(unit)) errors.push(`${story.id}: VS-18 — zone unit ${unit} has no chapter (unreachable room)`);
+  }
+  for (const [unit, n] of chapterUnits) {
+    if (n > 1) errors.push(`${story.id}: VS-18 — ${n} chapters share unit ${unit} (units must be unique per chapter)`);
+    if (!zoneUnits.has(unit)) errors.push(`${story.id}: VS-18 — chapter unit ${unit} has no zone (unplayable chapter)`);
+  }
+
+  // every present render.generator is a registered ZoneTheme
+  const deferred: string[] = [];
+  for (const z of map.zones) {
+    if (z.render === null) { deferred.push(z.id.split(".").pop() ?? z.id); continue; }
+    if (!corpus.generatorExists(z.render.generator)) {
+      errors.push(`${story.id}: VS-18 — zone ${z.id.split(".").pop()} generator "${z.render.generator}" is not a registered ZoneTheme`);
+    }
+  }
+  if (deferred.length > 0) infos.push(`${story.id}: VS-18 — ${deferred.length} zone(s) with render deferred (theme pending): ${deferred.join(", ")}`);
+
+  return { errors, infos };
+}
+
 /** Pure VS-1…VS-12 + release gating over a parsed bundle. */
 export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): { errors: string[]; infos: string[] } {
   const errors: string[] = [];
@@ -356,6 +422,11 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
   const ec = endingCoverage(story, bundle.flags ?? null); // VS-15 ending coverage
   errors.push(...ec.errors);
   infos.push(...ec.infos);
+  if (bundle.map != null) { // VS-18 map@1 ↔ story integrity (B-2 overworld bundles)
+    const mi = mapIntegrityErrors(story, bundle.map, corpus);
+    errors.push(...mi.errors);
+    infos.push(...mi.infos);
+  }
   if (bundle.storyItems && bundle.storyItems.storyId !== story.id) errors.push(`${story.id}: VS-1 — story-items storyId ${bundle.storyItems.storyId} != ${story.id}`);
 
   const castIds = new Set((bundle.cast?.members ?? []).map((m) => m.id));
@@ -540,6 +611,9 @@ function buildRealCorpus(): StoryCorpus {
         fs.existsSync(path.join(UNITS_DIR, slug, "grammar.json"))
       );
     },
+    generatorExists(generator) {
+      return generator in THEMES; // art-gen's registry — the runtime's own truth
+    },
     unknownTokens(slug, text, extraPhrases) {
       try {
         return buildAllowedMatcher(slug).unknownTokens(text, { extraPhrases });
@@ -588,6 +662,9 @@ export function runValidateStory(): void {
     const compRaw = readJsonIfExists<unknown>(path.join(dir, "comprehension.json"));
     const comprehension = compRaw === null ? null : StoryComprehensionFile.safeParse(compRaw);
     if (comprehension && !comprehension.success) { errors.push(`${id}: comprehension.json schema — ${comprehension.error.issues[0]?.message ?? "?"}`); continue; }
+    const mapRaw = readJsonIfExists<unknown>(path.join(dir, "map.json"));
+    const map = mapRaw === null ? null : GameMap.safeParse(mapRaw);
+    if (map && !map.success) { errors.push(`${id}: map.json schema — ${map.error.issues[0]?.message ?? "?"} at ${map.error.issues[0]?.path.join(".") ?? "?"}`); continue; }
 
     const res = validateStoryBundle(
       {
@@ -598,6 +675,7 @@ export function runValidateStory(): void {
         storyItems: items ? items.data : null,
         comprehension: comprehension ? comprehension.data : null,
         release,
+        map: map ? map.data : null,
       },
       corpus,
     );
@@ -613,5 +691,5 @@ export function runValidateStory(): void {
     process.exitCode = 1;
     return;
   }
-  console.log(`content validate-story: OK — ${ids.length} story/ies, ${chapters} chapter(s); VS-1…VS-12 + release green.`);
+  console.log(`content validate-story: OK — ${ids.length} story/ies, ${chapters} chapter(s); VS-1…VS-18 + release green.`);
 }

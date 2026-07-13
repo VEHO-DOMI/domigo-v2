@@ -37,6 +37,23 @@ test("every layout glyph is a skeleton cell or a declared prop", () => {
   }
 });
 
+// G2 "The Spill" school family (bare generator names — the G2 naming rule).
+// Stage 1 ships four exemplar themes; the design law is EXACTLY four E (row-major
+// task order) and EXACTLY one F — stricter than the ≥ floor above, enforced here.
+const G2_GENERATORS = ["classroom", "schoolyard", "quiet-room", "book-nook"];
+
+test("the G2 school themes exist, resolve by bare name, and obey the exact 1P/4E/1F law", () => {
+  for (const g of G2_GENERATORS) {
+    const t = THEMES[g];
+    assert.ok(t !== undefined, `${g}: registered in THEMES`);
+    assert.equal(resolveZoneTheme(g), t);
+    const flat = t!.layout.join("");
+    assert.equal([...flat].filter((c) => c === "P").length, 1, `${g}: exactly one player start`);
+    assert.equal([...flat].filter((c) => c === "E").length, 4, `${g}: exactly four encounter nodes`);
+    assert.equal([...flat].filter((c) => c === "F").length, 1, `${g}: exactly one NPC anchor`);
+  }
+});
+
 test("a theme's prop tiles paint non-blank pixels", () => {
   for (const [g, t] of Object.entries(THEMES)) {
     if (t.extraKinds.length === 0) continue;

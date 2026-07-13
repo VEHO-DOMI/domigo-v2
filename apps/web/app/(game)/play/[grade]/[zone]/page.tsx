@@ -1,8 +1,10 @@
 /**
- * /play/[grade]/[stop] — one playable "stop" of a grade's story, dispatched by
- * game type: g1 = a map@1 overworld zone (Phaser); g2 = a story chapter rendered
- * as a DOM+SVG detective case. Server resolves identity, the chapter + its
- * taskSlot items, and the cosmetic save; a locked/unknown stop bounces to the hub.
+ * /play/[grade]/[stop] — one playable "stop" of a grade's story. BUNDLE-DERIVED
+ * dispatch (B-2): a story that ships a map@1 is a Phaser OVERWORLD zone (g1
+ * book-rooms, g2 school); a story without one falls back to the grade's DOM
+ * game (g2 detective / g3 novel / g4 trip). Server resolves identity, the
+ * chapter + its taskSlot items, and the cosmetic save; a locked/unknown stop
+ * bounces to the hub.
  */
 import { redirect } from "next/navigation";
 import { Encounter, type Chapter, type ComprehensionItem, type GrammarItem, type VocabItem } from "@domigo/content-schema";
@@ -13,6 +15,8 @@ import { resolveEncounterTasks, storyItemKey, type ResolvedItem } from "@domigo/
 import { getActingUserForPage } from "@/lib/identity";
 import { resolveTileArt } from "@/lib/tile-art";
 import { resolveDetectiveArt, resolveNovelArt } from "@/lib/story-art";
+import { devReleasedChapters, devStoryOverride } from "@/lib/story-dev";
+import { worldCopyFor } from "@/lib/world-copy";
 import GameClient from "../GameClient";
 import DetectiveClient from "../DetectiveClient";
 import NovelClient from "../NovelClient";
@@ -20,7 +24,9 @@ import TripClient from "../TripClient";
 
 export const dynamic = "force-dynamic";
 
-const GAME_TYPE: Record<number, "overworld" | "detective" | "novel" | "trip"> = { 1: "overworld", 2: "detective", 3: "novel", 4: "trip" };
+/** B-2: the DOM-game fallback per grade — used ONLY when the story has no map@1
+ *  (a map in the bundle always means overworld; the dispatch is bundle-derived). */
+const DOM_FALLBACK: Record<number, "detective" | "novel" | "trip"> = { 2: "detective", 3: "novel", 4: "trip" };
 
 /** FNV-1a 32-bit — a stable numeric seed from a string (A1-4 avatar identity).
  *  Same family the games use for seeded shuffles; deterministic per user. */
@@ -73,16 +79,26 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
 
-  const storyId = storyIdForGrade(grade);
+  // Non-prod: DEV_STORY_G<grade> previews an unreleased bundle (story-dev.ts).
+  const devStory = devStoryOverride(grade);
+  const storyId = devStory?.storyId ?? storyIdForGrade(grade);
   const hubHref = `/play/${grade}`;
   if (!storyId) redirect("/home");
 
   const story = loadStory(storyId);
-  const released = loadReleasedChapters(storyId);
-  const gameType = GAME_TYPE[grade] ?? "overworld";
+  const released = devStory
+    ? devReleasedChapters(devStory, story?.chapters.map((c) => c.id) ?? [])
+    : loadReleasedChapters(storyId);
+  // B-2 bundle-derived dispatch: map@1 present ⇒ overworld; else the grade's DOM game.
+  const map = loadGameMap(storyId);
+  const gameType = map !== null ? "overworld" : DOM_FALLBACK[grade] ?? "overworld";
   const gameMode = `game:g${grade}`;
+  // B-2 step 5: the detective game rides the BONUS save slot from here on (the
+  // school overworld owns `game:g2`); its attempts `mode` stays "game:g2" —
+  // the ledger is shared by design, only the cosmetic save slot moves.
+  const saveMode = gameType === "detective" ? `game:g${grade}:bonus` : gameMode;
 
-  const saved = await getGameSave(getDb(), acting.userId, gameMode).catch(() => null);
+  const saved = await getGameSave(getDb(), acting.userId, saveMode).catch(() => null);
   const cast = loadStoryCast(storyId);
   const castNames = Object.fromEntries((cast?.members ?? []).map((m) => [m.id, m.nameEn]));
 
@@ -120,7 +136,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
     const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-detective").DetectiveSave } : null;
     return (
       <DetectiveClient
-        gameMode={gameMode}
+        gameMode={saveMode}
         caseTitle={story?.title.en ?? "The case"}
         chapter={chapter}
         castNames={castNames}
@@ -186,8 +202,7 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
     );
   }
 
-  // ── G1 overworld: the stop is a map@1 zone → its released chapter ──
-  const map = loadGameMap(storyId);
+  // ── Overworld (bundle has a map@1): the stop is a zone → its released chapter ──
   const mapZone = map?.zones.find((z) => z.id.endsWith(`.${zone}`));
   const chapter = mapZone && story ? story.chapters.find((c) => c.unit === mapZone.unit && released.includes(c.id)) : undefined;
   if (!mapZone || !chapter) redirect(hubHref);
@@ -213,10 +228,11 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
       seed={mapZone.render?.seed ?? grade * 100 + chapter.unit}
       playerSeed={fnv1a32(acting.userId)}
       gameMode={gameMode}
+      copy={worldCopyFor(storyId, zone)}
       zoneId={mapZone.id}
       generator={mapZone.render?.generator ?? "school-room"}
       tileArt={resolveTileArt(grade, mapZone.render?.generator ?? "school-room")}
-      zoneTitle={grade === 1 ? (mapZone.titleDe ?? mapZone.titleEn) : mapZone.titleEn}
+      zoneTitle={grade <= 2 ? (mapZone.titleDe ?? mapZone.titleEn) : mapZone.titleEn}
       hubHref={hubHref}
       encounters={encounters}
       chapter={chapter}

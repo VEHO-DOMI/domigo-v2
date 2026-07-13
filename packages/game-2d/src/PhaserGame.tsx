@@ -1,10 +1,13 @@
 "use client";
 /**
- * @domigo/game-2d — the G1 overworld React mount. Phaser renders the world on a
- * canvas; the graded tasks + story dialogue render as a DOM overlay ABOVE it
- * (the one task renderer, @domigo/task-ui), so there is no second grading path.
- * Answers go out through the injected `onAttempt` (the app wires the offline
- * outbox + mode:"game:g1"); the world layer never persists or grades itself.
+ * @domigo/game-2d — the overworld React mount (campaign-agnostic since B-2).
+ * Phaser renders the world on a canvas; the graded tasks + story dialogue render
+ * as a DOM overlay ABOVE it (the one task renderer, @domigo/task-ui), so there
+ * is no second grading path. Answers go out through the injected `onAttempt`
+ * with the injected `mode` (the app wires the offline outbox + "game:gN");
+ * all world-chrome strings arrive via `copy` (B-2: the engine carries no
+ * campaign copy of its own — G1 passes its exact former strings, byte-identical).
+ * The world layer never persists or grades itself.
  */
 import Phaser from "phaser";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
@@ -28,8 +31,38 @@ export interface GameAttempt {
 }
 export type AttemptFn = (a: GameAttempt) => Promise<{ ok: boolean; queued: boolean; streak?: number }>;
 
+/**
+ * B-2: every campaign-specific chrome string the overworld shows, injected by
+ * the app (serializable — it crosses the server→client boundary). The G1 zone
+ * page passes its exact former hardcoded strings; the G2 school campaign
+ * passes its own German-first pack (apps/web/lib/world-copy.ts).
+ */
+export interface WorldCopy {
+  /** Under-canvas move hint, coarse-pointer variant ("Tipp dorthin, …"). */
+  moveHintCoarse: string;
+  /** Under-canvas move hint, keyboard variant ("Tippen oder Pfeiltasten / WASD"). */
+  moveHintFine: string;
+  /** "geh zu einem ✦ zum Üben" — joined as `{moveHint} · {encounterHint} · {npcHint}`. */
+  encounterHint: string;
+  /** "sprich mit Finn" / "sprich mit Frau Berger" (the zone's F NPC). */
+  npcHint: string;
+  /** The ✦ task-card header ("Ein Wort verblasst — hol es zurück!"). */
+  encounterLabel: string;
+  /** The after-answer button on a task card ("Weiter →"). */
+  continueLabel: string;
+  /** The linear-next dialogue button ("Weiter →"). */
+  nextLabel: string;
+  /** The end-of-dialogue button ("Schließen"). */
+  closeLabel: string;
+}
+
 export interface PhaserGameProps {
   seed: number;
+  /** The attempt `mode` this world posts ("game:g1", "game:g2", …) — B-2 killed
+   *  the old `game:g1` hardcode; the app owns the string. */
+  mode: string;
+  /** Campaign chrome strings (see WorldCopy) — the engine renders, never authors. */
+  copy: WorldCopy;
   /** The grade this overworld serves (L-1: drives the story-language default +
    *  the German chrome at grade 1). Defaults to 1 — today's only overworld. */
   grade?: number;
@@ -77,15 +110,15 @@ const encounterPanel: CSSProperties = {
   boxShadow: "0 0 0 4px var(--accent-soft), var(--shadow-elevated)",
 };
 
-function postAttempt(onAttempt: AttemptFn, itemId: string, input: unknown): void {
-  void onAttempt({ clientAttemptId: crypto.randomUUID(), itemId, mode: "game:g1", input, latencyMs: null, hintUsed: false });
+function postAttempt(onAttempt: AttemptFn, mode: string, itemId: string, input: unknown): void {
+  void onAttempt({ clientAttemptId: crypto.randomUUID(), itemId, mode, input, latencyMs: null, hintUsed: false });
 }
 
-function TaskCard({ item, onAttempt, onDone, label, continueLabel }: { item: ResolvedItem; onAttempt: AttemptFn; onDone: () => void; label: string; continueLabel: string }) {
+function TaskCard({ item, mode, onAttempt, onDone, label, continueLabel }: { item: ResolvedItem; mode: string; onAttempt: AttemptFn; onDone: () => void; label: string; continueLabel: string }) {
   const [answered, setAnswered] = useState(false);
   const onResult = (_tier: Tier, detail: ResultDetail) => {
     setAnswered(true);
-    postAttempt(onAttempt, detail.itemId, detail.input); // optimistic; server re-grades + queues
+    postAttempt(onAttempt, mode, detail.itemId, detail.input); // optimistic; server re-grades + queues
   };
   return (
     <div style={encounterPanel} className="dg-encounter-card">
@@ -100,14 +133,13 @@ function TaskCard({ item, onAttempt, onDone, label, continueLabel }: { item: Res
   );
 }
 
-function DialogueOverlay({ grade, chapter, castNames, storyItems, onAttempt, onClose }: {
-  grade: number; chapter: Chapter; castNames: Record<string, string>; storyItems: Record<string, ResolvedItem>; onAttempt: AttemptFn; onClose: () => void;
+function DialogueOverlay({ grade, mode: attemptMode, copy, chapter, castNames, storyItems, onAttempt, onClose }: {
+  grade: number; mode: string; copy: WorldCopy; chapter: Chapter; castNames: Record<string, string>; storyItems: Record<string, ResolvedItem>; onAttempt: AttemptFn; onClose: () => void;
 }) {
   // L-1: the story language follows the device toggle (grade 1 defaults German-
-  // first — meaning first, English on demand). Chrome is German at grade 1
-  // unconditionally; the toggle governs the story LINES only. Tasks untouched.
+  // first — meaning first, English on demand). Chrome strings come from the
+  // injected `copy` pack (B-2); the toggle governs the story LINES only.
   const mode = useLangMode(grade);
-  const deChrome = grade === 1;
   const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
   const [sceneId, setSceneId] = useState(chapter.scenes[0]?.id ?? "");
   const [taskDone, setTaskDone] = useState(false);
@@ -137,7 +169,7 @@ function DialogueOverlay({ grade, chapter, castNames, storyItems, onAttempt, onC
 
         {taskBlocks ? (
           <div style={{ marginTop: 14, borderTop: "1px solid var(--card-border)", paddingTop: 12 }}>
-            <TaskCardInline item={slotItem} onAttempt={onAttempt} onDone={() => setTaskDone(true)} continueLabel={deChrome ? "Weiter →" : "Continue →"} />
+            <TaskCardInline item={slotItem} mode={attemptMode} onAttempt={onAttempt} onDone={() => setTaskDone(true)} continueLabel={copy.continueLabel} />
           </div>
         ) : Array.isArray(sNext) ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 12 }}>
@@ -149,7 +181,7 @@ function DialogueOverlay({ grade, chapter, castNames, storyItems, onAttempt, onC
           </div>
         ) : (
           <button className="dg-btn" style={{ marginTop: 14 }} onClick={() => go(sNext)}>
-            {sNext === null ? (deChrome ? "Schließen" : "Close") : deChrome ? "Weiter →" : "Next →"}
+            {sNext === null ? copy.closeLabel : copy.nextLabel}
           </button>
         )}
       </div>
@@ -217,9 +249,9 @@ function DPadButton({ pad, dir, label, glyph, style, onChange }: {
 }
 
 /** Inline task inside dialogue (no extra overlay chrome). */
-function TaskCardInline({ item, onAttempt, onDone, continueLabel }: { item: ResolvedItem; onAttempt: AttemptFn; onDone: () => void; continueLabel: string }) {
+function TaskCardInline({ item, mode, onAttempt, onDone, continueLabel }: { item: ResolvedItem; mode: string; onAttempt: AttemptFn; onDone: () => void; continueLabel: string }) {
   const [answered, setAnswered] = useState(false);
-  const onResult = (_tier: Tier, detail: ResultDetail) => { setAnswered(true); postAttempt(onAttempt, detail.itemId, detail.input); };
+  const onResult = (_tier: Tier, detail: ResultDetail) => { setAnswered(true); postAttempt(onAttempt, mode, detail.itemId, detail.input); };
   return (
     <>
       {item.kind === "grammar"
@@ -318,24 +350,23 @@ export function PhaserGame(props: PhaserGameProps) {
         {coarse && overlay === null && <DPad pad={padRef.current} />}
       </div>
       <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", marginTop: 6 }}>
-        {grade === 1
-          ? `${coarse ? "Tipp dorthin, wo du hinwillst" : "Tippen oder Pfeiltasten / WASD"} · geh zu einem ✦ zum Üben · sprich mit Finn`
-          : `${coarse ? "Tap where you want to go" : "Tap or use arrow keys / WASD"} · walk into a ✦ to practise · talk to Finn`}
+        {`${coarse ? props.copy.moveHintCoarse : props.copy.moveHintFine} · ${props.copy.encounterHint} · ${props.copy.npcHint}`}
       </p>
 
       {overlay?.kind === "encounter" && props.encounters[overlay.idx] && (
         <div style={card} className="dg-encounter-veil">
           <TaskCard
             item={props.encounters[overlay.idx]!}
+            mode={props.mode}
             onAttempt={props.onAttempt}
             onDone={() => closeEncounter(overlay.idx)}
-            label={grade === 1 ? "Ein Wort verblasst — hol es zurück!" : "A word is fading — bring it back!"}
-            continueLabel={grade === 1 ? "Weiter →" : "Continue →"}
+            label={props.copy.encounterLabel}
+            continueLabel={props.copy.continueLabel}
           />
         </div>
       )}
       {overlay?.kind === "dialogue" && (
-        <DialogueOverlay grade={grade} chapter={props.chapter} castNames={props.castNames} storyItems={props.storyItems} onAttempt={props.onAttempt} onClose={closeDialogue} />
+        <DialogueOverlay grade={grade} mode={props.mode} copy={props.copy} chapter={props.chapter} castNames={props.castNames} storyItems={props.storyItems} onAttempt={props.onAttempt} onClose={closeDialogue} />
       )}
     </div>
   );

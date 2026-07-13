@@ -1,8 +1,11 @@
 /**
- * /play/[grade] — the story hub. For a grade with a map@1 (g1) it lists overworld
- * ZONES; otherwise (g2 detective) it lists released CHAPTERS as case files. A stop
- * unlocks once its chapter is released (chapter N requires units ≤ N). Locked
- * stops show "coming soon". Simple server-rendered cards.
+ * /play/[grade] — the story hub. BUNDLE-DERIVED (B-2): a grade whose canonical
+ * story ships a map@1 lists overworld ZONES (g1 book-rooms; g2 school floor
+ * plan); otherwise it lists released CHAPTERS in the grade's DOM-game skin
+ * (g2 detective case files / g3 episodes / g4 journal days). A stop unlocks
+ * once its chapter is released (chapter N requires units ≤ N). Locked stops
+ * show "coming soon" — except the ink skin, where they render half-erased
+ * (the Blank took them; the board itself tells the story).
  */
 /* eslint-disable @next/next/no-img-element -- decorative ligne-claire banners served from synced public/art assets; next/image adds no value for these */
 import { redirect } from "next/navigation";
@@ -12,9 +15,11 @@ import { EvidenceGallery, EVIDENCE, type EvidencePiece } from "@domigo/game-dete
 import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
 import { JournalBoard, tripCopyFor, type DayProgress } from "@domigo/game-trip";
 import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
+import { FLOOR_PLANS } from "@/lib/floor-plan";
 import { getActingUserForPage } from "@/lib/identity";
-import { DEFAULT_STORY_UI, STORY_UI } from "@/lib/stories";
+import { DEFAULT_STORY_UI, HUB_SKIN, STORY_UI } from "@/lib/stories";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
+import { devReleasedChapters, devStoryOverride } from "@/lib/story-dev";
 
 export const dynamic = "force-dynamic";
 
@@ -26,12 +31,20 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
 
-  // One released story per grade, derived from the corpus (no stale hand-maintained maps).
-  const storyId = storyIdForGrade(grade);
+  // One released story per grade, derived from the corpus (no stale hand-maintained
+  // maps). Non-prod: DEV_STORY_G<grade> previews an unreleased bundle (story-dev.ts).
+  const devStory = devStoryOverride(grade);
+  const storyId = devStory?.storyId ?? storyIdForGrade(grade);
   const map = storyId ? loadGameMap(storyId) : null;
   const story = storyId ? loadStory(storyId) : null;
-  const released = storyId ? loadReleasedChapters(storyId) : [];
-  const isDetective = grade === 2; // the Evidence Board is the g2 detective skin only
+  const released = devStory
+    ? devReleasedChapters(devStory, story?.chapters.map((c) => c.id) ?? [])
+    : storyId
+      ? loadReleasedChapters(storyId)
+      : [];
+  // B-2 bundle-derived dispatch: a map@1 story is an overworld; the detective
+  // Evidence Board is the g2 DOM-game (chapter-list) skin only.
+  const isDetective = grade === 2 && map === null;
 
   // Hub cover + cards art (only-present discipline: resolves only stems that exist on
   // disk, else null → procedural fallback). g1 keys its cards by ZONE id (= the stop id).
@@ -41,7 +54,7 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   // piece/episode completes once every one of its taskSlot items is solved (tier <>
   // 'wrong') — derived from the authoritative attempts ledger, never the wipeable
   // cosmetic save (Law 2).
-  const tracksProgress = isDetective || grade === 3 || grade === 1 || grade === 4;
+  const tracksProgress = isDetective || grade === 3 || grade === 4 || map !== null;
   const solvedItemIds =
     tracksProgress && story
       ? await getSolvedGameItemIds(getDb(), acting.userId, grade).catch(() => new Set<string>())
@@ -76,9 +89,10 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         })
       : [];
 
-  // g1 "Lost Pages" board: a zone's page is "restored" once every taskSlot item in its chapter is solved.
+  // Map-story progress (g1 "Lost Pages" board / g2 floor-plan fill-in): a zone is
+  // "restored" once every taskSlot item in its chapter is solved.
   const zones: ZoneProgress[] =
-    grade === 1 && map && story
+    map && story
       ? map.zones.map((z): ZoneProgress => {
           const chapter = story.chapters.find((c) => c.unit === z.unit && released.includes(c.id));
           const refs = chapter ? chapter.scenes.flatMap((s) => s.taskSlots).map((ts) => ts.itemId) : [];
@@ -87,11 +101,15 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         })
       : [];
 
-  // L-1: grade-1 chrome is German (the story-language toggle governs lines only).
-  const deChrome = grade === 1;
+  // HUB_THEME doctrine: a story may claim its own card skin ("ink" for The Spill).
+  const skin = (storyId ? HUB_SKIN[storyId] : undefined) ?? `g${grade}`;
+  const inkHub = skin === "ink";
+  // L-1: grade-1 chrome is German (the story-language toggle governs lines only);
+  // the ink hub (g2 school campaign) is German-first too (doc 22 §2.6).
+  const deChrome = grade === 1 || inkHub;
   // B-3: the g4 trip skin (noun/tagline/board copy) is per-story.
   const tripCopy = grade === 4 && storyId ? tripCopyFor(storyId) : null;
-  const noun = deChrome ? "Seite" : map ? "Zone" : grade === 3 ? "Episode" : grade === 4 ? (tripCopy?.hubNoun ?? "Day") : "Case";
+  const noun = inkHub ? "Raum" : deChrome ? "Seite" : map ? "Zone" : grade === 3 ? "Episode" : grade === 4 ? (tripCopy?.hubNoun ?? "Day") : "Case";
   // L-1: at grade 1 the German title leads and English becomes the subtitle.
   const stops = map
     ? map.zones.map((z) => ({
@@ -111,7 +129,9 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         unlocked: released.includes(c.id),
       }));
 
-  const tagline = deChrome
+  const tagline = inkHub
+    ? "Geh in einen Raum und hol die Wörter zurück. Neue Räume öffnen sich, wenn du mehr lernst."
+    : deChrome
     ? "Wähl eine Seite und hol sie zurück. Neue Seiten öffnen sich, wenn du mehr lernst."
     : map
       ? "Choose a page to bring back. New pages open as you learn more."
@@ -137,8 +157,16 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
       }
     }
   }
-  const doneLabel = grade === 1 ? "✨ Zurück!" : grade === 2 ? "CLOSED" : grade === 3 ? "✓ uploaded" : "✓ stamped";
-  const emblem = (STORY_UI[grade] ?? DEFAULT_STORY_UI).icon;
+  const doneLabel = inkHub ? "✨ Wieder da!" : grade === 1 ? "✨ Zurück!" : grade === 2 ? "CLOSED" : grade === 3 ? "✓ uploaded" : "✓ stamped";
+  const emblem = inkHub ? "🖋" : (STORY_UI[grade] ?? DEFAULT_STORY_UI).icon;
+
+  // Doc 22 §1 — the ink hub's level select is the school FLOOR PLAN: three
+  // labelled bands (Draußen / Erdgeschoss / Oben-Hinten); excursion zones sit
+  // "outside the fence" (dashed). Presentation only — unlock stays the linear
+  // spine; any zone the plan misses falls back to the flat grid below.
+  const floorPlan = inkHub && storyId ? FLOOR_PLANS[storyId] ?? null : null;
+  const stopByShort = new Map(stops.map((s) => [s.short, s]));
+  const plannedShorts = new Set((floorPlan ?? []).flatMap((b) => b.zones.map((z) => z.short)));
 
   return (
     <main className="dgh-hub" style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
@@ -152,40 +180,62 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>{tagline}</p>
       {hubArt?.cover && <img src={hubArt.cover} alt="" style={{ display: "block", width: "100%", height: 180, objectFit: "cover", borderRadius: 16, margin: "4px 0 8px", border: "1px solid var(--card-border)" }} />}
 
-      {stops.length === 0 ? (
-        <p style={{ color: "var(--muted)" }}>Nothing here yet for this grade.</p>
-      ) : (
-        <div className="dgh-grid">
-          {stops.map((s) => {
-            const cardImg = hubArt?.cards[s.id];
-            const done = doneStopIds.has(s.id);
-            const themed = `dgh-card dgh-g${grade}`;
-            const inner = (
-              <>
-                {(cardImg || grade === 3) && (
-                  <div className="dgh-thumbwrap">{cardImg && <img src={cardImg} alt="" />}</div>
-                )}
-                <div className="dgh-label">{noun} {s.n}</div>
-                <div className="dgh-title">{s.title}</div>
-                {s.sub && <div className="dgh-sub">{s.sub}</div>}
-                <div className="dgh-num" aria-hidden="true">{s.n}</div>
-              </>
-            );
-            return s.unlocked ? (
-              <a key={s.short} href={`/play/${grade}/${s.short}`} className={`${themed}${done ? " dgh-card--done" : ""}`}>
-                {inner}
-                <div className="dgh-cta">{deChrome ? "Spielen →" : map ? "Play →" : "Open →"}</div>
-                {done && <div className="dgh-done">{doneLabel}</div>}
-              </a>
-            ) : (
-              <div key={s.short} className={`${themed} dgh-card--locked`}>
-                {inner}
-                <div className="dgh-cta" style={{ color: "var(--muted)" }}>{deChrome ? "🔒 Bald!" : "🔒 Coming soon"}</div>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      {(() => {
+        if (stops.length === 0) return <p style={{ color: "var(--muted)" }}>Nothing here yet for this grade.</p>;
+
+        const stopCard = (s: (typeof stops)[number], excursion = false) => {
+          const cardImg = hubArt?.cards[s.id];
+          const done = doneStopIds.has(s.id);
+          const themed = `dgh-card dgh-${skin}${excursion ? " dgh-card--excursion" : ""}`;
+          const inner = (
+            <>
+              {(cardImg || grade === 3) && (
+                <div className="dgh-thumbwrap">{cardImg && <img src={cardImg} alt="" />}</div>
+              )}
+              <div className="dgh-label">{noun} {s.n}{excursion ? " · Ausflug" : ""}</div>
+              <div className="dgh-title">{s.title}</div>
+              {s.sub && <div className="dgh-sub">{s.sub}</div>}
+              <div className="dgh-num" aria-hidden="true">{s.n}</div>
+            </>
+          );
+          return s.unlocked ? (
+            <a key={s.short} href={`/play/${grade}/${s.short}`} className={`${themed}${done ? " dgh-card--done" : ""}`}>
+              {inner}
+              <div className="dgh-cta">{deChrome ? "Spielen →" : map ? "Play →" : "Open →"}</div>
+              {done && <div className="dgh-done">{doneLabel}</div>}
+            </a>
+          ) : (
+            <div key={s.short} className={`${themed} dgh-card--locked`}>
+              {inner}
+              <div className="dgh-cta" style={{ color: "var(--muted)" }}>{deChrome ? "🔒 Bald!" : "🔒 Coming soon"}</div>
+            </div>
+          );
+        };
+
+        // Doc 22 §1: the ink hub renders the school floor plan (three bands);
+        // every other hub keeps the flat grid. A zone the plan misses falls
+        // back to the flat grid below the plan (drift-safe).
+        if (floorPlan) {
+          const unplanned = stops.filter((s) => !plannedShorts.has(s.short));
+          return (
+            <div className="dgh-fp">
+              {floorPlan.map((band) => (
+                <section key={band.label} className="dgh-fp-band">
+                  <h2 className="dgh-fp-bandlabel">{band.label}</h2>
+                  <div className="dgh-grid dgh-grid--fp">
+                    {band.zones.map((ref) => {
+                      const s = stopByShort.get(ref.short);
+                      return s ? stopCard(s, ref.excursion === true) : null;
+                    })}
+                  </div>
+                </section>
+              ))}
+              {unplanned.length > 0 && <div className="dgh-grid">{unplanned.map((s) => stopCard(s))}</div>}
+            </div>
+          );
+        }
+        return <div className="dgh-grid">{stops.map((s) => stopCard(s))}</div>;
+      })()}
 
       {pieces.length > 0 && (
         <section style={{ marginTop: 28 }}>
@@ -205,9 +255,19 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
         </section>
       )}
 
-      {zones.length > 0 && (
+      {zones.length > 0 && grade === 1 && (
         <section style={{ marginTop: 28 }}>
-          <ZoneBoard zones={zones} label="Die verlorenen Seiten" lang="de" />
+          {/* B-2: board copy via props — these are G1's exact former strings
+              (the ink hub needs no board: its floor plan IS the progress surface). */}
+          <ZoneBoard
+            zones={zones}
+            label="Die verlorenen Seiten"
+            copy={{
+              noun: "Seite",
+              countLabel: `${zones.filter((z) => z.restored).length} / ${zones.length} Seiten zurückgeholt`,
+              completeLabel: "Das Buch ist wieder ganz — alle Seiten sind zurück!",
+            }}
+          />
         </section>
       )}
     </main>
