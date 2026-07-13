@@ -79,6 +79,7 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
   const [sections, setSections] = useState<Section[]>([]);
   const [catalog, setCatalog] = useState<CatalogUnit[]>([]);
   const [loadingCat, setLoadingCat] = useState(false);
+  const [catError, setCatError] = useState<string | null>(null);
   const [preview, setPreview] = useState(false);
   const [saving, setSaving] = useState(false);
   const [serverErrors, setServerErrors] = useState<string[]>([]);
@@ -108,13 +109,28 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
     // All state writes live inside this async fn (never synchronously in the
     // effect body — that would cascade renders; see the react-hooks lint).
     const load = async () => {
-      if (!classId || !grade) { if (alive) setCatalog([]); return; }
-      if (alive) setLoadingCat(true);
+      if (!classId || !grade) { if (alive) { setCatalog([]); setCatError(null); } return; }
+      if (alive) { setLoadingCat(true); setCatError(null); }
+      // A failed/empty catalog must be VISIBLE, never mistaken for "no class
+      // picked" — this exact silence hid the missing-corpus deploy bug
+      // (2026-07-13: Vercel functions shipped without content/, catalog 500'd,
+      // the builder showed the innocent placeholder).
       try {
-        const d = await fetch(`/api/admin/catalog?grade=${grade}&classId=${classId}`).then((r) => r.json());
-        if (alive && d.ok) setCatalog(d.units as CatalogUnit[]);
+        const r = await fetch(`/api/admin/catalog?grade=${grade}&classId=${classId}`);
+        const d = await r.json().catch(() => null);
+        if (!alive) return;
+        if (r.ok && d?.ok && Array.isArray(d.units) && d.units.length > 0) {
+          setCatalog(d.units as CatalogUnit[]);
+        } else {
+          setCatalog([]);
+          setCatError(
+            d?.error === "forbidden"
+              ? "Katalog: keine Berechtigung — bitte neu anmelden."
+              : `Der Aufgaben-Katalog konnte nicht geladen werden (${r.status}${d?.error ? ` · ${d.error}` : ""}). Das ist ein Plattform-Problem, kein Bedienfehler — bitte an Fable melden.`,
+          );
+        }
       } catch {
-        /* leave catalog empty; the picker shows "pick a class" */
+        if (alive) { setCatalog([]); setCatError("Der Aufgaben-Katalog konnte nicht geladen werden (Netzwerkfehler)."); }
       } finally {
         if (alive) setLoadingCat(false);
       }
@@ -356,6 +372,12 @@ export default function AssignmentBuilder({ classes, checkupPresets }: { classes
           </span>
         )}
       </div>
+
+      {catError && (
+        <p style={{ background: "var(--incorrect-soft)", color: "var(--incorrect)", padding: "10px 14px", borderRadius: 12, fontSize: 13.5, fontWeight: 600, marginTop: 10 }}>
+          ⚠ {catError}
+        </p>
+      )}
 
       {sections.map((s, i) => (
         <div key={i} style={card}>
