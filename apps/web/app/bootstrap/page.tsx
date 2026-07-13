@@ -22,13 +22,24 @@ import { adoptAssignments, createV2Teacher, getDb, hasV2Teacher } from "@domigo/
 import { hashPin, TEACHER_PIN_PATTERN } from "@/lib/pin";
 
 export const dynamic = "force-dynamic";
-export const runtime = "nodejs"; // bcrypt + DB
 
 /** Timing-safe string compare via fixed-length digests (inputs differ in length). */
 function tokenMatches(candidate: string, expected: string): boolean {
   const a = createHash("sha256").update(candidate).digest();
   const b = createHash("sha256").update(expected).digest();
   return timingSafeEqual(a, b);
+}
+
+/** The DB endpoint label (`ep-…`) this deployment is wired to — NOT a secret (no
+ *  credentials), and the answer to "which Neon branch do I migrate?". Shown only
+ *  in the token-gated error state. */
+function dbEndpoint(): string {
+  try {
+    const url = process.env.DATABASE_URL ?? process.env.POSTGRES_URL ?? "";
+    return new URL(url.replace(/^postgres(ql)?:\/\//, "https://")).host.split(".")[0] || "(unknown)";
+  } catch {
+    return "(unknown)";
+  }
 }
 
 const card = { maxWidth: 460, margin: "48px auto", padding: 28, borderRadius: 16, background: "var(--card, #fff)", boxShadow: "0 8px 30px rgba(30,45,90,.08)" } as const;
@@ -40,6 +51,7 @@ const ERRORS: Record<string, string> = {
   pin: "The PIN must be 4–6 digits (numbers only), and both PIN fields must match.",
   name: "Please enter a nickname (up to 40 characters).",
   used: "A v2 teacher account already exists — this page has done its job.",
+  db: "Couldn’t reach the database to create the account — the domigo_v2 migrations may not be applied to this deployment’s database yet.",
 };
 
 export default async function BootstrapPage({
@@ -81,8 +93,33 @@ export default async function BootstrapPage({
     );
   }
 
-  // Gate 2 — one-shot: inert forever once a v2 teacher exists.
-  if (await hasV2Teacher(getDb())) {
+  // Gate 2 — one-shot: inert forever once a v2 teacher exists. Defensive: if the
+  // v2 tables aren't reachable (e.g. migrations not applied to THIS deployment's
+  // database), render a legible diagnostic — never a 500 — and name the endpoint
+  // so the fix lands on the right Neon branch.
+  let teacherExists: boolean;
+  try {
+    teacherExists = await hasV2Teacher(getDb());
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : String(err);
+    return (
+      <main style={card}>
+        <h1 style={{ marginTop: 0 }}>Setup can’t reach the database</h1>
+        <p style={{ color: "var(--ink-soft)" }}>
+          The token is set, but the platform’s teacher table couldn’t be read. This almost always
+          means the <code>domigo_v2</code> migrations (0006 + 0007) haven’t been applied to this
+          deployment’s database yet.
+        </p>
+        <p style={{ color: "var(--ink-soft)", fontSize: 14 }}>
+          Database endpoint to migrate: <strong>{dbEndpoint()}</strong>
+        </p>
+        <p style={{ fontSize: 13, fontFamily: "monospace", background: "rgba(0,0,0,.05)", padding: "8px 10px", borderRadius: 8, overflowX: "auto" }}>
+          {detail.slice(0, 300)}
+        </p>
+      </main>
+    );
+  }
+  if (teacherExists) {
     return (
       <main style={card}>
         <h1 style={{ marginTop: 0 }}>Already set up</h1>
@@ -106,12 +143,24 @@ export default async function BootstrapPage({
     if (!nickname || nickname.length > 40) redirect("/bootstrap?error=name");
     if (!TEACHER_PIN_PATTERN.test(pin) || pin !== pin2) redirect("/bootstrap?error=pin");
 
+    // DB work inside the try; redirect() works by THROWING, so every redirect stays
+    // OUTSIDE the try or it would be swallowed. Any DB failure → a legible error, never a 500.
     const db = getDb();
-    if (await hasV2Teacher(db)) redirect("/bootstrap?error=used"); // race re-check
-    const pinHash = await hashPin(pin);
-    const id = await createV2Teacher(db, { displayName: nickname, pinHash });
-    const adopted = await adoptAssignments(db, id);
-    redirect(`/bootstrap?done=1&adopted=${adopted}&name=${encodeURIComponent(nickname)}`);
+    let result: { ok: true; adopted: number } | { ok: false; reason: "used" | "db" };
+    try {
+      if (await hasV2Teacher(db)) {
+        result = { ok: false, reason: "used" }; // race re-check
+      } else {
+        const pinHash = await hashPin(pin);
+        const id = await createV2Teacher(db, { displayName: nickname, pinHash });
+        const adopted = await adoptAssignments(db, id);
+        result = { ok: true, adopted };
+      }
+    } catch {
+      result = { ok: false, reason: "db" };
+    }
+    if (!result.ok) redirect(`/bootstrap?error=${result.reason}`);
+    redirect(`/bootstrap?done=1&adopted=${result.adopted}&name=${encodeURIComponent(nickname)}`);
   }
 
   return (
