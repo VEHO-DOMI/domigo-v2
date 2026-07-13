@@ -20,6 +20,8 @@ const G1_COPY: WorldCopy = {
   continueLabel: "Weiter →",
   nextLabel: "Weiter →",
   closeLabel: "Schließen",
+  stageSkin: "book", // G-A1: the book world battles among fluttering pages
+  victoryLabel: "Zurückgeholt!",
 };
 
 /** The engine's former non-G1 fallback strings (kept for an unknown map story). */
@@ -32,6 +34,8 @@ const DEFAULT_COPY: WorldCopy = {
   continueLabel: "Continue →",
   nextLabel: "Next →",
   closeLabel: "Close",
+  stageSkin: "ink",
+  victoryLabel: "Recovered!",
 };
 
 /** Doc 22 §3, the F column: the NPC waiting in each zone of "The Spill". */
@@ -53,6 +57,8 @@ function spillCopy(zoneShort: string): WorldCopy {
     continueLabel: "Weiter →",
     nextLabel: "Weiter →",
     closeLabel: "Schließen",
+    stageSkin: "ink", // G-A1: the Blank's strays battle in ink and dark glass
+    victoryLabel: "Zurückgeholt!",
   };
 }
 

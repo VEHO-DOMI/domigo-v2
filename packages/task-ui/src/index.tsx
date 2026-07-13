@@ -349,7 +349,9 @@ function Dropdowns({ rows, options, value, onChange, disabled }: {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       {rows.map((row) => (
-        <div key={row} style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        // flexWrap: long left-hand labels (matching rows) fold the select onto the
+        // next line instead of overflowing a 375px card (the battle spell card).
+        <div key={row} style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
           <span style={{ minWidth: 120, fontWeight: 600 }}>{row}</span>
           <span aria-hidden="true" style={{ color: "var(--muted)" }}>→</span>
           <select
@@ -396,6 +398,10 @@ function useRetryGrading(
   // Mock tests (M-3) pass 1: the FIRST submit is terminal — no retry ladder, so
   // the recorded tier IS the first attempt the scorer grades (Schularbeit rules).
   maxWrong: number = MAX_WRONG,
+  // G-A1: fires on EVERY graded submit (non-terminal wrongs included) so a host
+  // can react to each attempt — the BattleStage's smudge wobbles per wrong.
+  // onResult semantics stay untouched: exactly one terminal report per item.
+  onTier?: (tier: Tier, wrongCount: number) => void,
 ) {
   const [tier, setTier] = useState<Tier | null>(null);
   const [wrongCount, setWrongCount] = useState(0);
@@ -408,11 +414,13 @@ function useRetryGrading(
     const { tier: t, detail } = gradeOnce();
     setTier(t);
     if (t !== "wrong") {
+      onTier?.(t, wrongCount);
       onResult?.(t, detail); // a pass concludes the task
       return;
     }
     const n = wrongCount + 1;
     setWrongCount(n);
+    onTier?.(t, n);
     if (n >= maxWrong) onResult?.(t, detail); // out of tries → conclude (never blocks)
   };
   return { tier, wrongCount, done, retrying, submit };
@@ -577,7 +585,63 @@ function ChipBuilder({ promptText, disabled, onChange, onEnter }: {
   );
 }
 
-export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, tactile, singleAttempt, hideFeedback }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; tactile?: boolean; singleAttempt?: boolean; hideFeedback?: boolean }) {
+/** G-A1 word-bank chip row (EZ-1 #2): the stolen word hiding among decoys.
+ *  Presentation only — tapping a chip FILLS the input (typing stays open, a
+ *  chip is an offer, never a wall); grading is untouched. The host supplies
+ *  the bank pre-shuffled (seeded — battleBank), so render order is stable. */
+function BankRow({ bank, current, disabled, onPick }: {
+  bank: string[]; current: string; disabled: boolean; onPick: (w: string) => void;
+}) {
+  return (
+    <div role="group" aria-label="Word bank" style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+      {bank.map((w) => (
+        <button
+          key={w}
+          type="button"
+          aria-label={`Use word ${w}`}
+          aria-pressed={current === w}
+          disabled={disabled}
+          onClick={() => onPick(w)}
+          style={{ ...tileBtn, height: 40, fontSize: 15, ...(current === w ? { border: "1px solid var(--accent)", background: "var(--accent-soft)", color: "var(--ink)" } : {}) }}
+        >
+          {w}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/** G-A1 dropdown cloze (EZ-1 #11): the SAME shuffled options as the button
+ *  list, rendered as one inline select. Post-lock the select itself tints —
+ *  options can't be styled cross-browser, and on a correct pick the tint is
+ *  the confirmation (FeedbackCard only prints the answer on non-correct
+ *  tiers). reveal=false keeps the locked state neutral (checkup papers). */
+function ChoiceDropdown({ options, selected, onSelect, disabled, corrects, reveal = true }: {
+  options: string[]; selected: string | null; onSelect: (v: string) => void; disabled: boolean; corrects: string[]; reveal?: boolean;
+}) {
+  const tint: CSSProperties | undefined = disabled && reveal
+    ? corrects.includes(selected ?? "")
+      ? { borderColor: "var(--correct)", background: "var(--correct-glow)", color: "var(--correct)", fontWeight: 800 }
+      : { borderColor: "var(--wrong)", background: "var(--wrong-glow)", color: "var(--wrong)" }
+    : undefined;
+  return (
+    <select
+      className="dg-input"
+      style={{ minWidth: 160, maxWidth: "100%", ...tint }}
+      disabled={disabled}
+      aria-label="Choose your answer"
+      value={selected ?? ""}
+      onChange={(e) => onSelect(e.target.value)}
+    >
+      <option value="" disabled>…</option>
+      {options.map((o) => (
+        <option key={o} value={o}>{o}</option>
+      ))}
+    </select>
+  );
+}
+
+export function GrammarItemView({ item, onResult, onTier, hideHint, autoFocus, hideXp, tactile, singleAttempt, hideFeedback, bank, choiceRender }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; tactile?: boolean; singleAttempt?: boolean; hideFeedback?: boolean; bank?: string[] | null; choiceRender?: "buttons" | "dropdown" }) {
   const promptId = useId();
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
@@ -607,7 +671,7 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, t
     const r = gradeGrammar(item, input);
     return { tier: r.tier, detail: { kind: "grammar", itemId: item.id, input } };
   };
-  const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult, singleAttempt ? 1 : MAX_WRONG);
+  const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult, singleAttempt ? 1 : MAX_WRONG, onTier);
 
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
   const isText = TEXT_FORMATS.has(item.format);
@@ -618,14 +682,19 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, t
     tactile === true && !typeInstead && blankCount === 1 && fullAnswers.length > 0 && (item.format === "anagram" || item.format === "sentence-building")
       ? item.format
       : null;
+  // G-A1: the word bank scaffolds a SINGLE typed blank only, and never on top
+  // of a tactile tray (the tray owns the assembly slot).
+  const showBank = isText && tactileMode === null && blankCount === 1 && bank != null && bank.length > 0;
 
   return (
     <div style={card} role="group" aria-labelledby={promptId}>
       <div style={metaLabel}>{item.format} · level {item.difficulty}</div>
       <Prompt id={promptId} text={item.prompt.text} />
-      {isChoice && <Choices options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} corrects={fullAnswers} reveal={!hideFeedback} />}
+      {isChoice && choiceRender !== "dropdown" && <Choices options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} corrects={fullAnswers} reveal={!hideFeedback} />}
+      {isChoice && choiceRender === "dropdown" && <ChoiceDropdown options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} corrects={fullAnswers} reveal={!hideFeedback} />}
       {isMatch && <Dropdowns rows={item.pairs.map((p) => p.left)} options={matchRights} value={map} onChange={setMap} disabled={done} />}
       {isGroup && <Dropdowns rows={sortMembers} options={groupLabels} value={map} onChange={setMap} disabled={done} />}
+      {showBank && <BankRow bank={bank!} current={text[0] ?? ""} disabled={done} onPick={(w) => setText([w])} />}
       {isText && tactileMode === null && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} onEnter={submit} autoFocusFirst={autoFocus} />}
       {tactileMode === "anagram" && (
         <AnagramTray answer={fullAnswers[0]!} seed={item.id} disabled={done} onChange={(a) => setText([a])} onEnter={submit} />
@@ -659,7 +728,7 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, t
 
 // ---- vocab item ----------------------------------------------------------
 
-export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp, singleAttempt, pool = "carrier", mask, hideFeedback }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; singleAttempt?: boolean; pool?: VocabPool; mask?: "first-letter"; hideFeedback?: boolean }) {
+export function VocabItemView({ item, onResult, onTier, hideHint, autoFocus, hideXp, singleAttempt, pool = "carrier", mask, hideFeedback, bank }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; onTier?: (tier: Tier, wrongCount: number) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; singleAttempt?: boolean; pool?: VocabPool; mask?: "first-letter"; hideFeedback?: boolean; bank?: string[] | null }) {
   const promptId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
@@ -680,15 +749,19 @@ export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp, sin
     const r = gradeVocab(item, value, pool);
     return { tier: r.tier, detail: { kind: "vocab", itemId: item.id, input: { kind: "vocab", value, pool } } };
   };
-  const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult, singleAttempt ? 1 : MAX_WRONG);
+  const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult, singleAttempt ? 1 : MAX_WRONG, onTier);
   useEffect(() => { if (autoFocus && !done) inputRef.current?.focus(); }, [autoFocus, done, wrongCount]);
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
+  // G-A1: bank and mask are mutually exclusive — the bank CONTAINS the full
+  // answer the mask exists to hide, so a masked prompt always wins.
+  const showBank = !masked && bank != null && bank.length > 0;
   return (
     <div style={card} role="group" aria-labelledby={promptId}>
       <div style={metaLabel}>vocab · {VOCAB_POOL_LABEL[pool]} · level {item.difficulty}</div>
       {ask.context !== null && <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>{ask.context}</div>}
       {ask.instruction !== "" && <div style={{ fontSize: 13, color: "var(--text-secondary)", fontWeight: 600 }}>{ask.instruction}</div>}
       {masked ? <MaskedPrompt id={promptId} text={ask.text} segments={maskSegments} /> : <Prompt id={promptId} text={ask.text} />}
+      {showBank && <BankRow bank={bank!} current={value} disabled={done} onPick={setValue} />}
       <input ref={inputRef} className="dg-input" style={{ minWidth: 120 }} value={value} disabled={done} aria-label="Your answer" placeholder="Your answer" onKeyDown={(e) => { if (e.key === "Enter" && !done) { e.preventDefault(); submit(); } }} onChange={(e) => setValue(e.target.value)} />
       {ask.scaffold && !masked && <GlossRow gloss={item.gloss} />}
       {ask.scaffold && !hideHint && !masked && <HintRow hintDe={item.hintDe} />}

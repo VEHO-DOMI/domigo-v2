@@ -151,7 +151,11 @@ export type SfxName =
   | "chime-partial"
   | "chime-correct"
   | "stamp"
-  | "streak";
+  | "streak"
+  | "ink-swirl"
+  | "spark-burst"
+  | "letters-return"
+  | "smudge-pop";
 
 export interface ToneStep {
   /** Oscillator frequency in Hz at note start (ramps to `to` when set). */
@@ -214,6 +218,32 @@ export const SFX_RECIPES: Record<SfxName, SfxStep[]> = {
     { wave: "triangle", freq: C5, at: 60, dur: 120, peak: 0.2 },
     { wave: "triangle", freq: E5, at: 160, dur: 120, peak: 0.2 },
     { wave: "triangle", freq: G5, at: 260, dur: 140, peak: 0.2 },
+  ],
+  // ---- G-A1 Word-Battle stingers. These cover only the moments the tier
+  // chime doesn't (transition, burst, victory theater) — the graded verdict
+  // stays FeedbackCard's chime/thud, so nothing ever plays twice.
+  /** The ink wipe: a dark noise sweep falling through the band — liquid, not windy. */
+  "ink-swirl": [
+    { noise: true, at: 0, dur: 420, peak: 0.2, band: [900, 220] },
+    { wave: "sine", freq: 220, to: 110, at: 60, dur: 320, peak: 0.1 },
+  ],
+  /** The ✦ bursting: one bright rising ping + a glittery high hiss. */
+  "spark-burst": [
+    { wave: "triangle", freq: G5, to: C6 * 1.5, at: 0, dur: 140, peak: 0.2 },
+    { noise: true, at: 20, dur: 120, peak: 0.12, highpass: 4000 },
+  ],
+  /** The stolen word flying home: a quick ascending sparkle run (distinct from
+   *  chime-correct: faster, higher, sine — a glissando, not a verdict). */
+  "letters-return": [
+    { wave: "sine", freq: E5, at: 0, dur: 70, peak: 0.16 },
+    { wave: "sine", freq: G5, at: 60, dur: 70, peak: 0.16 },
+    { wave: "sine", freq: C6, at: 120, dur: 70, peak: 0.16 },
+    { wave: "sine", freq: E5 * 2, at: 180, dur: 110, peak: 0.16 },
+  ],
+  /** The Schluckwort popping into harmless dots: a soft pop + a puff. */
+  "smudge-pop": [
+    { wave: "sine", freq: 300, to: 520, at: 0, dur: 90, peak: 0.24 },
+    { noise: true, at: 30, dur: 90, peak: 0.1, band: [600, 1600] },
   ],
 };
 

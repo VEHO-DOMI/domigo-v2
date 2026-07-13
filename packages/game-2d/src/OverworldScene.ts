@@ -7,9 +7,19 @@
  */
 import Phaser from "phaser";
 import { paintPlayerSprite, paintTileset, resolveZoneTheme, DOMIGO_GREEN, TILE_KINDS, FACINGS, type Facing } from "@domigo/art-gen";
+import { playSfx } from "@domigo/game-feel";
 import { walkFrameKey } from "./anim.ts";
+import { drainAlpha } from "./battle.ts";
 import { findPath, nearestWalkable, type Cell, type GridSpec } from "./path.ts";
 import { rasterize } from "./rasterize.ts";
+
+/** G-A1 depth plan (the scene otherwise relies on insertion order): the drain
+ *  veil sits above the drained WORLD (floor/walls/props) but below everything
+ *  ALIVE (player, ✦ nodes, NPC) — the kid and the magic keep their color while
+ *  the room around them is washed out until words are won back. */
+const DEPTH_VEIL = 1;
+const DEPTH_ALIVE = 2;
+const DEPTH_FX = 3;
 
 const SRC = 48; // art-gen source resolution — crafted 1:1 (was 16px upscaled 3× = chunky)
 const SCALE = 1; // rasterize scale; 1:1 keeps the crisp GBA pixels (no interpolation)
@@ -95,6 +105,10 @@ export class OverworldScene extends Phaser.Scene {
   // A1-1 tap-to-move: the zone's walkable grid + the waypoint queue being walked.
   private blockedCells = new Set<number>();
   private pathQueue: Cell[] = [];
+  // G-A1 Word-Battle: the drained-world veil + the ✦ burst emitter (one per
+  // scene, reused via explode() — per-encounter emitters would leak).
+  private veil: Phaser.GameObjects.Rectangle | null = null;
+  private burst: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
 
   constructor(cfg: OverworldConfig) {
     super("overworld");
@@ -184,11 +198,21 @@ export class OverworldScene extends Phaser.Scene {
       }
     }
 
+    // G-A1 drain veil: the zone starts washed out and literally re-colors one
+    // step per solved node (palette-is-plot, made mechanical). Above the world,
+    // below everything alive; alpha derives from the SAVE's cleared nodes so a
+    // resumed zone shows exactly the progress the kid earned.
+    this.veil = this.add
+      .rectangle(0, 0, GRID_W * TILE, GRID_H * TILE, 0xaeb4bf)
+      .setOrigin(0, 0)
+      .setDepth(DEPTH_VEIL);
+
     // pass 2 — player, then overlaps against the real player
     // restore only if the save belongs to THIS zone (one save slot per grade-game)
     const resume = this.cfg.initial?.zoneId === this.cfg.zoneId ? this.cfg.initial : null;
     const initPos = resume?.pos;
     this.player = this.physics.add.sprite(initPos?.[0] ?? start.x, initPos?.[1] ?? start.y, "p-down");
+    this.player.setDepth(DEPTH_ALIVE);
     this.player.setDisplaySize(TILE, TILE).setCollideWorldBounds(true);
     // Collision body: a compact box around the lower body/feet (not the whole 48px
     // frame) so the head/shoulders can overlap walls above — the top-down convention.
@@ -199,7 +223,7 @@ export class OverworldScene extends Phaser.Scene {
     const cleared = new Set(resume?.cleared ?? []);
 
     for (const { idx, x, y } of nodeCells) {
-      const node = this.add.image(x, y, tex("encounter")).setDisplaySize(TILE, TILE);
+      const node = this.add.image(x, y, tex("encounter")).setDisplaySize(TILE, TILE).setDepth(DEPTH_ALIVE);
       this.physics.add.existing(node, true);
       node.setData("idx", idx);
       if (cleared.has(idx)) { node.setData("done", true); node.setAlpha(0.25); }
@@ -216,7 +240,7 @@ export class OverworldScene extends Phaser.Scene {
       // LOOK-1: `finn_down.png` (→ kind "npc") renders the real guide the moment
       // it lands; until then the desk tile stays the honest placeholder.
       const npcTex = this.textures.exists(`img-npc-${ns}`) ? `img-npc-${ns}` : tex("accent2");
-      const npc = this.add.image(x, y, npcTex).setDisplaySize(TILE, TILE);
+      const npc = this.add.image(x, y, npcTex).setDisplaySize(TILE, TILE).setDepth(DEPTH_ALIVE);
       this.physics.add.existing(npc, true);
       this.physics.add.overlap(this.player, npc, () => this.tryNpc());
       // LOOK-5: Finn is canonically a FLOATING book-sprite — a gentle hover bob
@@ -226,6 +250,40 @@ export class OverworldScene extends Phaser.Scene {
         this.tweens.add({ targets: npc, y: y - 3, duration: 1200, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
       }
     }
+
+    // G-A1: the veil opens at exactly the progress the save proves (a resumed
+    // half-cleared zone is already half re-colored); the ✦ burst emitter is
+    // created ONCE and fired via explode() per encounter.
+    this.veil.setAlpha(this.currentDrain());
+    const sparkKey = "fx-spark";
+    if (!this.textures.exists(sparkKey)) {
+      const spark = document.createElement("canvas");
+      spark.width = 8;
+      spark.height = 8;
+      const sctx = spark.getContext("2d");
+      if (sctx) {
+        sctx.fillStyle = "#fff7cc";
+        sctx.beginPath();
+        sctx.arc(4, 4, 3, 0, Math.PI * 2);
+        sctx.fill();
+        sctx.fillStyle = "#ffe066";
+        sctx.beginPath();
+        sctx.arc(4, 4, 1.6, 0, Math.PI * 2);
+        sctx.fill();
+      }
+      this.textures.addCanvas(sparkKey, spark);
+    }
+    this.burst = this.add
+      .particles(0, 0, sparkKey, {
+        speed: { min: 60, max: 220 },
+        angle: { min: 0, max: 360 },
+        scale: { start: 1.3, end: 0 },
+        alpha: { start: 1, end: 0 },
+        lifespan: { min: 260, max: 520 },
+        gravityY: 70,
+        emitting: false,
+      })
+      .setDepth(DEPTH_FX);
 
     const kb = this.input.keyboard;
     if (kb) {
@@ -297,7 +355,7 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   /** Read-only snapshot for the non-prod `__domigo.state()` dev harness. */
-  debugState(): { x: number; y: number; cell: Cell; facing: Facing; frame: string; paused: boolean; blurred: boolean; pathLeft: number; fps: number; zoom: number; cleared: number[] } {
+  debugState(): { x: number; y: number; cell: Cell; facing: Facing; frame: string; paused: boolean; blurred: boolean; pathLeft: number; fps: number; zoom: number; drain: number; cleared: number[] } {
     const cleared: number[] = [];
     this.nodes.forEach((node, idx) => { if (node.getData("done") === true) cleared.push(idx); });
     return {
@@ -311,8 +369,18 @@ export class OverworldScene extends Phaser.Scene {
       pathLeft: this.pathQueue.length,
       fps: Math.round(this.game.loop.actualFps),
       zoom: Math.round((this.cameras?.main?.zoom ?? 1) * 100) / 100, // A1-5 punch-in verify
+      drain: Math.round((this.veil?.alpha ?? 0) * 1000) / 1000, // G-A1 color-return verify
       cleared,
     };
+  }
+
+  /** G-A1: veil alpha from the nodes actually marked done among the nodes
+   *  actually rendered — stale saves (indices beyond today's node count) and
+   *  empty zones can never overshoot (drainAlpha clamps the rest). */
+  private currentDrain(): number {
+    let done = 0;
+    this.nodes.forEach((node) => { if (node.getData("done") === true) done += 1; });
+    return drainAlpha(done, this.nodes.size);
   }
 
   private tryEncounter(idx: number): void {
@@ -320,13 +388,16 @@ export class OverworldScene extends Phaser.Scene {
     if (this.paused || node === undefined || node.getData("done") === true) return;
     this.paused = true;
     this.player.setVelocity(0);
-    // A1-5: punch in on the ✦, then raise the task card after the ~200ms move so
-    // the staging reads as an event. Reduced-motion → the card opens instantly.
+    // A1-5 → G-A1: the ✦ BURSTS (particle scatter) while the camera punches in,
+    // and the battle opens on the beat after the burst reads (~420ms). Reduced-
+    // motion → no burst, no zoom, the battle opens instantly (the old contract).
     if (this.cfg.reducedMotion === true) {
       this.cfg.onEncounter(idx);
     } else {
+      this.burst?.explode(22, node.x, node.y);
+      playSfx("spark-burst"); // no-op unless the device opted into sound
       this.focusOn(node.x, node.y);
-      this.time.delayedCall(180, () => this.cfg.onEncounter(idx));
+      this.time.delayedCall(420, () => this.cfg.onEncounter(idx));
     }
   }
 
@@ -359,6 +430,14 @@ export class OverworldScene extends Phaser.Scene {
       } else {
         const s = node.scaleX;
         this.tweens.add({ targets: node, alpha: { from: 1, to: 0.25 }, scale: { from: s * 1.35, to: s }, duration: 300, ease: "Back.easeOut" });
+      }
+      // G-A1 color-return: the zone regains one saturation step per solved node
+      // — the drain veil eases down to the new progress level (instant under
+      // reduced-motion). This is the moment the world visibly wins a word back.
+      if (this.veil) {
+        const target = this.currentDrain();
+        if (this.cfg.reducedMotion === true) this.veil.setAlpha(target);
+        else this.tweens.add({ targets: this.veil, alpha: target, duration: 650, ease: "Sine.easeOut" });
       }
     }
     this.reportState(); // cleared set changed → checkpoint

@@ -8,12 +8,18 @@
 import type { DueRef } from "@domigo/db";
 import type { Encounter, GrammarFormat, GrammarItem, VocabItem } from "@domigo/content-schema";
 
-/** Grammar formats that work as quick battle cards (mc buttons / typed gap / letter tiles). */
+/** Grammar formats that work as battle cards. G-A1 widened the gate (EZ-1 §2):
+ *  matching renders as dropdown rows, sentence-building/anagram get the tactile
+ *  trays inside the BattleStage, transformation is a typed spell — so battles
+ *  rotate through the full breadth instead of the original quick-card slice. */
 export const DEFAULT_BATTLE_FORMATS: GrammarFormat[] = [
   "multiple-choice",
   "gap-fill",
   "anagram",
   "context-picker",
+  "matching",
+  "sentence-building",
+  "transformation",
 ];
 
 export type ResolvedItem =

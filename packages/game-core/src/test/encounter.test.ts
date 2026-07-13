@@ -49,15 +49,26 @@ test("formatAllow filters grammar; vocab always allowed (due path, count exact)"
   assert.deepEqual(out.map((r) => r.item.id), ["g1u01.gi.plural.mc.001", "g1u01.w.apple"]);
 });
 
-test("default battle formats exclude sentence-building", () => {
-  assert.ok(!DEFAULT_BATTLE_FORMATS.includes("sentence-building"));
+test("default battle formats carry the G-A1 widened gate", () => {
+  for (const f of ["multiple-choice", "gap-fill", "anagram", "context-picker", "matching", "sentence-building", "transformation"] as const) {
+    assert.ok(DEFAULT_BATTLE_FORMATS.includes(f), `${f} must be battle-eligible by default`);
+  }
   const out = resolveEncounterTasks(enc({ source: { kind: "due", scope: { kind: "unit", slug: "g1-u01" }, count: 5 } }), {
     due: [due("g1u01.gi.order.sb.001", "grammar")],
     pool,
   });
-  // The sb due item is dropped; the zone tops up from scope order instead (Law 6).
-  assert.ok(!out.some((r) => r.item.id === "g1u01.gi.order.sb.001"));
+  // The due sentence-building item now ENTERS the battle (the BattleStage
+  // renders it with the tactile chip tray), first in line as the due item.
+  assert.equal(out[0]!.item.id, "g1u01.gi.order.sb.001");
   assert.equal(out.length, 5);
+});
+
+test("an explicit formatAllow still narrows below the widened default", () => {
+  const out = resolveEncounterTasks(enc({ formatAllow: ["multiple-choice"], source: { kind: "due", scope: { kind: "unit", slug: "g1-u01" }, count: 5 } }), {
+    due: [due("g1u01.gi.order.sb.001", "grammar")],
+    pool,
+  });
+  assert.ok(!out.some((r) => r.item.id === "g1u01.gi.order.sb.001"));
 });
 
 test("short/empty queue tops up from deterministic scope order (sorted by id)", () => {
@@ -78,7 +89,7 @@ test("short/empty queue tops up from deterministic scope order (sorted by id)", 
 });
 
 test("scope-random kind ignores the queue, draws from scope order (battle-filtered)", () => {
-  const out = resolveEncounterTasks(enc({ source: { kind: "scope-random", scope: { kind: "unit", slug: "g1-u01" }, count: 2 } }), {
+  const out = resolveEncounterTasks(enc({ formatAllow: ["multiple-choice", "gap-fill"], source: { kind: "scope-random", scope: { kind: "unit", slug: "g1-u01" }, count: 2 } }), {
     due: [due("g1u01.w.cat", "vocab")],
     pool,
   });
