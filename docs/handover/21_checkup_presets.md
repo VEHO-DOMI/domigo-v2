@@ -1,8 +1,8 @@
 # 21 · Checkup presets — the F-1 extraction (C-1's build contract)
 
-*Fable 5, 2026-07-13. Status: **DRAFT pending the Koki gate** (§8). Once gated, this document
-is the binding spec for C-1 (`BLUEPRINT_V2.md` Part V step 13); the C-1 executor builds
-`apps/web/lib/checkup.ts` against §3–§7 verbatim and treats §8's recorded decisions as law.*
+*Fable 5, 2026-07-13. Status: **GATED — Koki's answers recorded in §8 (2026-07-13, same day)**.
+This document is the binding spec for C-1 (`BLUEPRINT_V2.md` Part V step 13); the executor
+builds against §3–§7 + §4b + §5.5 verbatim and treats §8's recorded decisions as law.*
 
 **Sources (ground truth, not memory):**
 - Koki's real checkups: 21 papers in iCloud `Domi Gym/Claude/Check up Skill Source Data/`
@@ -11,6 +11,14 @@ is the binding spec for C-1 (`BLUEPRINT_V2.md` Part V step 13); the C-1 executor
   (2A U6 and 4B U6-A — both match the analysis exactly, both sum to /20).
 - The `efl-checkup-generator` skill bundle (same folder) — the docx-generation framework.
 - Repo inventory with file:line anchors (M-wave reuse surface), 2026-07-13.
+
+**Source-of-truth amendment (Koki, 2026-07-13):** the LIVING corpus is the per-unit material
+folders — `Domi Gym 2025:26/<class>/Units MORE N (2025:26)/Unit X …/` — which hold his most
+recent, actually-used checkups (far more units than the Source Data folder: ~12 g2 units,
+Group-A/B pairs across g3/g4). Six 2025/26 papers were structure-verified for this gate
+(g2 u12/u13 · g3 u8/u9 · g4 u2/u9): **all sum to /20; section counts and point splits VARY
+freely** (e.g. 4B u9 = 8+2+2+8) — confirming the model below: presets are DEFAULTS, the
+teacher edits everything, only Σ=20 is enforced. Future calibration reads THESE folders first.
 
 **The invariant that names the feature: every checkup is exactly /20.**
 
@@ -101,6 +109,30 @@ Rationale: g2's shape, simplified one rung (A1 kids, German-first platform chrom
 | C | grammar | 6 | unit's taught point |
 | D | picture-mc *(pending §8-②; defer ⇒ +3 to translations)* | 3 | — |
 
+## 4b · Two creation modes, both native (Koki requirement, 2026-07-13)
+
+The teacher chooses per checkup; both modes end in the same `mode:'checkup'` assignment:
+
+1. **Automated generation** — pick unit + grade preset → `composeCheckup` fills the sections
+   (rules in §5) → teacher reviews the composed paper, may swap any item or adjust section
+   points → publish. The LLM sanity gate (§5.5) runs before publish.
+2. **Manual assembly** — the teacher builds from the item library (the existing
+   `AssignmentBuilder` picker, extended): choose items per section, set **points per
+   section** (dynamic, teacher-controlled; server still enforces Σ=20 for `mode:'checkup'`),
+   set the **timer**, schedule the **window** (`startsAt`/`dueAt` — already exist), set
+   attempts. Manual mode draws on the post-A-5 curated library (every item already
+   engine-verified), so the LLM gate is optional here (default off).
+
+**Feedback & grading visibility (both modes, teacher-controlled):** new assignment-level
+`display_config` jsonb (rides migration 0009 as a second additive column):
+`{ feedback: 'immediate' | 'on-submit' | 'on-release', showScore: 'on-submit' | 'on-release' }`.
+'immediate' = per-item verdict as the student answers (practice-like); 'on-submit' = verdicts
++ points appear when the paper is submitted (checkup default); 'on-release' = nothing until
+the teacher releases results. This knob applies to mock tests too (same machinery).
+
+**Native editability (standing platform principle, Koki 2026-07-13):** everything above is
+edited IN the platform — no config files, no redeploys. Presets seed; the UI owns the values.
+
 ## 5 · Composition rules (`composeCheckup(unit, classId, config)`)
 
 1. **Eligibility filters, in order:** items of the unit only → level-gate holds by
@@ -125,6 +157,25 @@ Rationale: g2's shape, simplified one rung (A1 kids, German-first platform chrom
    · every composed item self-grades `correct` against its own key through the real engine
    before the assignment can publish (the blind-solve spirit, deterministic tier).
 
+## 5.5 · The LLM sanity gate (Koki principle, 2026-07-13 — cross-platform)
+
+**Why (his words, condensed):** pure-algorithmic task assembly is what produced the v1 defect
+class A-5 spent nine PRs repairing — templates that lift original wording into boxes it
+doesn't fit, keys missing the answers students actually write. We do not fall victim twice.
+
+**What:** before any AUTO-composed checkup (later: mock test) publishes, each composed task —
+exactly as the student will see it — goes through an **LLM sanity pass with a proper model,
+thinking enabled, in the sandboxed CLI path** (the W-2 sandbox runner pattern / the #114
+account-based path; no key in the app): *Does this task make sense as rendered? Is the
+expected answer the thing a student would actually write? Are acceptable variants missing?*
+Verdict journaled (S-2's `content_checks` pattern); a failing task blocks composition and
+routes to the curation fix-wave path. This COMPLEMENTS (never replaces) the deterministic
+self-grade sweep in §5.4 — machine check for key integrity, intelligence check for sense.
+
+**Scope note:** this is a platform principle, not a checkup feature — S-2's Studio
+blind-solve gate is the same idea for created content; C-1 is its first assembly-time use.
+Cross-project: banked for SRDP and domi-pup (assessment assembly there gets the same gate).
+
 ## 6 · Rendering rules (runner)
 
 - **One page, sections in preset order**, paper-style header: title + `___/20`, per-section
@@ -135,7 +186,8 @@ Rationale: g2's shape, simplified one rung (A1 kids, German-first platform chrom
   untouched full answer through the engine; the mask never touches keys.
 - `singleAttempt` per item (the M-wave Schularbeit path), section verdicts revealed per
   M-wave behavior; **no `hintDe`, no gloss reveal** in checkup mode.
-- Timing: `sessionDurationMinutes` default **15** (his real duration), server wall enforced
+- Timing: `sessionDurationMinutes` default **10** (Koki, 2026-07-13 gate), teacher-editable
+  per assignment in the builder, server wall enforced
   by the existing `canRecordAssignAttempt` gate — nothing new.
 
 ## 7 · Scoring & Notenschlüssel
@@ -149,14 +201,21 @@ Rationale: g2's shape, simplified one rung (A1 kids, German-first platform chrom
 
 ## 8 · The Koki gate (≈30 min) — decisions to record here at sign-off
 
-| # | Decision | Options | Fable's recommendation |
-|---|----------|---------|------------------------|
-| ① | Per-grade presets (§4) as defaults | sign off / amend points & order | as written |
-| ② | Picture sections | real art / emoji-as-image MC / **defer to v1.1** | defer; +points fallback keeps /20 |
-| ③ | Grade display | **points-only** / points + Note (AHS default) | points-only, Note as opt-in toggle |
-| ④ | g1 preset (derived, no corpus) | accept / amend / wait for real g1 papers | accept provisionally, revisit after first real g1 checkup |
-| ⑤ | Reserve handling | ack the reserved-EXCLUDED correction (§5.1) | ack |
-| ⑥ | Default timer | 15 min / other / untimed | 15 min |
+**ANSWERED by Koki, 2026-07-13 (chat, same day as #149's merge) — recorded as law:**
+
+| # | Decision | KOKI'S ANSWER |
+|---|----------|----------------|
+| ① | Per-grade presets as defaults | **YES** — and everything stays teacher-editable natively (see §4b) |
+| ② | Picture sections | **Real images preferred** (open-source, book screenshots, or platform-drawn art if genuinely pleasing); **no emojis**; deferring is fine — explicitly "not that important, don't get sidetracked" |
+| ③ | Grade display | **Points-only, no Note** for checkups |
+| ④ | g1 preset | Provisional preset accepted; **NEW WORK ITEM G1-CANON**: build the grade-1 checkup canon deliberately from the MORE! 1 student's book + workbook (transcripts + `MORE1 SB Screenshots` in the 1ABC folder) — "deliberately and precisely, no half-baked things" — before the first real g1 checkup ships |
+| ⑤ | Reserve handling | Explained in plain terms (below); **default = exclude stands** unless Koki objects after reading |
+| ⑥ | Default timer | **10 minutes** (not 15), teacher-editable per checkup |
+
+*⑤ in plain words: some vocabulary/grammar items are set aside per class as a locked "test
+vault" so that when a big Schularbeit mock happens, students face items they could NOT have
+ground in practice. The question was whether checkups may use vault items. Answer built in
+here: no — checkups draw from the open pool only, so the vault stays fresh for the mocks.*
 
 **Calibration example for the gate (read this, not code):** g2-u06 (HAVE TO — the same unit
 as the real 2A U6 paper): B pulls 5 unit vocab carriers masked to first letters ("You can
@@ -165,7 +224,9 @@ as the real 2A U6 paper): B pulls 5 unit vocab carriers masked to first letters 
 
 ## 9 · Out of scope v1 (recorded so it can't creep)
 
-Group A/B disjoint sampling (v1.1 toggle) · picture assets (unless §8-② says otherwise) ·
+Group A/B disjoint sampling (v1.1 toggle) · picture sections until real image assets exist
+(per §8-②: real images preferred, no emojis; the +points fallback keeps /20 meanwhile) ·
+the G1-CANON build (its own gated work item; the g1 preset here is provisional until then) ·
 handwriting/photo capture (that's W-2's lane) · printable docx export (the paper skill
 already does this; in-platform print stylesheet = later polish) · listening/reading sections
 (not part of the checkup canon).
