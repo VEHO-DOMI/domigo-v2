@@ -1,0 +1,139 @@
+<!doctype html>
+<!-- D-1 mockup · GRADE 2 · light register — warm red, cream, case-file warmth.
+     Conviction target: the 2A student home. Every element here is a committed
+     design decision (doc 23): full token sheet, profile card w/ sprite avatar +
+     dual XP bars + title pill, gradient CTA, menu tiles, weekly leaderboard. -->
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DomiGo · Mockup g2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ── g2 token sheet (OG-derived, doc 23 §1) ─────────────────────────── */
+  :root{
+    --accent:#dc2626; --accent-deep:#991b1b; --accent-soft:#fee2e2;
+    --bg:#fdf3f2; --card:#ffffff; --cream:#FFF8F0;
+    --ink:#1c1917; --ink-soft:#57534e; --ink-mute:#a8a29e;
+    --wrong:#c2410c; /* burnt orange — never collides with the red accent */
+    --gold:#d4943a; --rule:#f3dedd;
+    --zone-bronze:linear-gradient(135deg,#b45309,#92400e);
+    --r:16px; --r-lg:24px;
+    --font-display:"Fredoka",sans-serif; --font-body:"Inter",sans-serif; --font-label:"Quicksand",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);font-family:var(--font-body);color:var(--ink);
+       background-image:radial-gradient(ellipse 60% 40% at 50% -5%, #fbe4e2 0%, transparent 70%);}
+  .page{max-width:430px;margin:0 auto;padding:20px 16px 48px}
+  /* wordmark */
+  .brand{text-align:center;padding:10px 0 18px}
+  .wordmark{font-family:var(--font-display);font-weight:700;font-size:44px;line-height:1;
+    background:linear-gradient(120deg,#ef4444,#991b1b);-webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 6px 24px rgba(220,38,38,.18));}
+  .tagline{font-family:var(--font-label);font-size:9.5px;font-weight:700;letter-spacing:.28em;color:var(--ink-mute);margin-top:4px}
+  .gradechip{display:inline-block;margin-top:8px;font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--accent)}
+  /* profile card */
+  .card{background:var(--card);border-radius:var(--r-lg);box-shadow:0 10px 34px rgba(153,27,27,.09);overflow:hidden}
+  .profile{position:relative;padding:18px 18px 16px;margin-bottom:14px}
+  .profile::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,#ef4444,var(--gold));}
+  .prow{display:flex;gap:14px;align-items:center}
+  .avatar{width:64px;height:64px;border-radius:50%;background:var(--cream);
+    box-shadow:0 0 0 3px var(--accent-soft),0 0 0 5px #fff;display:grid;place-items:center;flex:none}
+  .avatar svg{image-rendering:pixelated}
+  .pname{font-weight:800;font-size:17px}
+  .classchip{font-family:var(--font-label);font-size:10.5px;font-weight:700;background:var(--accent-soft);color:var(--accent-deep);
+    border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:2px}
+  .titlepill{display:inline-block;margin-top:4px;font-family:var(--font-label);font-size:11px;font-weight:700;color:#fff;
+    background:var(--zone-bronze);border-radius:999px;padding:3px 10px;box-shadow:0 2px 8px rgba(180,83,9,.35)}
+  .vibe{font-size:12px;color:var(--ink-mute);font-style:italic;margin-top:3px}
+  .streak{margin-left:auto;text-align:center;font-weight:800;font-size:15px;color:var(--accent-deep)}
+  .streak small{display:block;font-family:var(--font-label);font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--ink-mute)}
+  .bars{margin-top:14px;display:grid;gap:9px}
+  .bar label{display:flex;justify-content:space-between;font-family:var(--font-label);font-size:10.5px;font-weight:700;color:var(--ink-soft);margin-bottom:3px}
+  .track{height:8px;border-radius:999px;background:#f6e7e6;overflow:hidden}
+  .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),#f97316)}
+  .fill.g{background:linear-gradient(90deg,#f59e0b,var(--gold))}
+  /* CTA */
+  .cta{display:block;width:100%;border:0;cursor:pointer;margin:16px 0 8px;padding:15px;border-radius:18px;
+    font-family:var(--font-display);font-weight:600;font-size:19px;color:#fff;
+    background:linear-gradient(135deg,var(--accent),var(--accent-deep));
+    box-shadow:0 10px 26px rgba(220,38,38,.35), inset 0 1px 0 rgba(255,255,255,.25);}
+  .cta small{display:block;font-family:var(--font-body);font-weight:500;font-size:12px;opacity:.85;margin-top:2px}
+  /* menu tiles */
+  .tiles{display:grid;gap:10px;margin-top:10px}
+  .tile{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:var(--r-lg);background:var(--card);
+    box-shadow:0 6px 20px rgba(153,27,27,.07);transition:transform .15s}
+  .tile:hover{transform:translateY(-2px)}
+  .tile .ic{font-size:22px}
+  .tile b{font-family:var(--font-display);font-weight:600;font-size:15.5px}
+  .tile span{display:block;font-size:12px;color:var(--ink-soft)}
+  .tile .go{margin-left:auto;color:var(--ink-mute)}
+  .tile.story{background:linear-gradient(180deg,var(--cream),#fff);border:1px solid #f3e2c9;position:relative}
+  .tile.story::after{content:"AKTE ▸ DER FLECK";position:absolute;top:-8px;left:16px;background:#e7d6bc;color:#7c5a1e;
+    font-family:var(--font-label);font-size:8.5px;font-weight:700;letter-spacing:.1em;padding:2px 8px;border-radius:4px 4px 0 0}
+  /* leaderboard */
+  h2{font-family:var(--font-display);font-weight:600;font-size:16px;margin:22px 0 10px;display:flex;align-items:center;gap:8px}
+  h2 .wk{font-family:var(--font-label);font-size:9.5px;font-weight:700;letter-spacing:.12em;color:var(--ink-mute);margin-left:auto}
+  .lb{padding:6px 0}
+  .lbrow{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:13.5px}
+  .lbrow+.lbrow{border-top:1px solid var(--rule)}
+  .medal{width:22px;text-align:center;font-size:15px}
+  .mini{width:30px;height:30px;border-radius:50%;background:var(--cream);box-shadow:0 0 0 2px var(--accent-soft);display:grid;place-items:center}
+  .lbname{font-weight:700}
+  .lbpill{font-family:var(--font-label);font-size:9.5px;font-weight:700;color:#fff;border-radius:999px;padding:2px 8px;background:var(--zone-bronze)}
+  .lbxp{margin-left:auto;font-weight:800;color:var(--accent-deep)}
+  .goal{margin-top:10px;padding:12px 16px}
+  .goal label{display:flex;justify-content:space-between;font-family:var(--font-label);font-size:10.5px;font-weight:700;color:var(--ink-soft);margin-bottom:5px}
+  footer{margin-top:26px;text-align:center;font-family:var(--font-label);font-size:9px;font-weight:600;letter-spacing:.04em;color:var(--ink-mute)}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brand">
+    <div class="wordmark">DomiGo</div>
+    <div class="tagline">ENGLISH · VOCABULARY &amp; GRAMMAR</div>
+    <div class="gradechip">2. Klasse</div>
+  </div>
+
+  <div class="card profile">
+    <div class="prow">
+      <div class="avatar"><!-- per-student procedural sprite (seeded) -->
+        <svg width="48" height="48" viewBox="0 0 12 12"><rect x="3" y="1" width="6" height="4" fill="#7c3f2c"/><rect x="3" y="3" width="6" height="3" fill="#f2c9a0"/><rect x="4" y="4" width="1" height="1" fill="#1c1917"/><rect x="7" y="4" width="1" height="1" fill="#1c1917"/><rect x="2" y="6" width="8" height="4" fill="#dc2626"/><rect x="2" y="6" width="2" height="3" fill="#f2c9a0"/><rect x="8" y="6" width="2" height="3" fill="#f2c9a0"/><rect x="3" y="10" width="2" height="2" fill="#44403c"/><rect x="7" y="10" width="2" height="2" fill="#44403c"/></svg>
+      </div>
+      <div>
+        <div class="pname">Leni<span class="classchip">2A</span></div>
+        <div class="titlepill">Lv 4 · Letter Looter</div>
+        <div class="vibe">„sammelt Buchstaben wie Sticker“</div>
+      </div>
+      <div class="streak">🔥 6<small>TAGE-SERIE</small></div>
+    </div>
+    <div class="bars">
+      <div class="bar"><label><span>VOKABELN · Lv 4</span><span>350 / 500 XP</span></label><div class="track"><div class="fill" style="width:70%"></div></div></div>
+      <div class="bar"><label><span>GRAMMATIK · Lv 3</span><span>260 / 350 XP</span></label><div class="track"><div class="fill g" style="width:74%"></div></div></div>
+    </div>
+  </div>
+
+  <button class="cta">🎯 Jetzt üben<small>Einheiten &amp; Übungsart wählen</small></button>
+
+  <div class="tiles">
+    <div class="tile story"><div class="ic">🕵️</div><div><b>Der Fleck · Story</b><span>Kapitel 7 wartet auf dich</span></div><div class="go">→</div></div>
+    <div class="tile"><div class="ic">📖</div><div><b>Wörterbuch &amp; Karten</b><span>Nachschlagen und lernen</span></div><div class="go">→</div></div>
+    <div class="tile"><div class="ic">📝</div><div><b>Aufgaben</b><span>1 Check-up offen · bis Freitag</span></div><div class="go">→</div></div>
+  </div>
+
+  <h2>🏆 Bestenliste <span class="wk">DIESE WOCHE · 2A</span></h2>
+  <div class="card lb">
+    <div class="lbrow"><div class="medal">🥇</div><div class="mini">🦊</div><div class="lbname">Moritz</div><div class="lbpill">Vocab Raider</div><div class="lbxp">412 XP</div></div>
+    <div class="lbrow"><div class="medal">🥈</div><div class="mini">🐸</div><div class="lbname">Leni</div><div class="lbpill">Letter Looter</div><div class="lbxp">385 XP</div></div>
+    <div class="lbrow"><div class="medal">🥉</div><div class="mini">🐨</div><div class="lbname">Aylin</div><div class="lbpill">Letter Looter</div><div class="lbxp">340 XP</div></div>
+  </div>
+  <div class="card goal">
+    <label><span>WOCHENZIEL DER KLASSE</span><span>3.410 / 5.000 XP</span></label>
+    <div class="track"><div class="fill" style="width:68%"></div></div>
+  </div>
+
+  <footer>VEHO – GYMNASIUM UND WIRTSCHAFTSKUNDLICHES REALGYMNASIUM DER DOMINIKANERINNEN</footer>
+</div>
+</body>
+</html>

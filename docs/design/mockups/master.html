@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- D-1 mockup · MASTER identity — the all-grades layer (doc 23 §2): shared
+     surfaces (sign-in, join, admin). Warm-white editorial, slate ink, the
+     wordmark's blue→gold spectrum as THE brand; each grade appears only as
+     its tile. Calm: no glow, no aurora — the grades own the drama. -->
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DomiGo · Mockup master</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand-a:#2563eb; --brand-b:#d4943a;
+    --bg:#faf9f6; --card:#ffffff;
+    --ink:#1e293b; --ink-soft:#475569; --ink-mute:#94a3b8; --rule:#e9e5dc;
+    --g1:#16a34a; --g2:#dc2626; --g3:#2563eb; --g4:#7c3aed;
+    --r:16px; --r-lg:24px;
+    --font-display:"Fredoka",sans-serif; --font-body:"Inter",sans-serif; --font-label:"Quicksand",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);font-family:var(--font-body);color:var(--ink)}
+  .page{max-width:430px;margin:0 auto;padding:20px 16px 48px}
+  .brand{text-align:center;padding:14px 0 22px}
+  .wordmark{font-family:var(--font-display);font-weight:700;font-size:46px;line-height:1;
+    background:linear-gradient(120deg,var(--brand-a) 20%,var(--brand-b) 90%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .tagline{font-family:var(--font-label);font-size:9.5px;font-weight:700;letter-spacing:.28em;color:var(--ink-mute);margin-top:5px}
+  .card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r-lg);
+    box-shadow:0 8px 28px rgba(30,41,59,.06);overflow:hidden}
+  /* sign-in */
+  .signin{padding:20px 18px}
+  .signin h1{font-family:var(--font-display);font-weight:600;font-size:21px;margin-bottom:2px}
+  .signin p{font-size:13px;color:var(--ink-soft);margin-bottom:14px}
+  label{display:block;font-family:var(--font-label);font-size:11px;font-weight:700;color:var(--ink-soft);margin:10px 0 4px}
+  input{width:100%;padding:11px 13px;border-radius:var(--r);border:1.5px solid var(--rule);font-size:15px;background:#fdfcfa}
+  input:focus{outline:none;border-color:var(--brand-a)}
+  .btn{display:block;width:100%;border:0;cursor:pointer;margin-top:16px;padding:13px;border-radius:var(--r);
+    font-family:var(--font-display);font-weight:600;font-size:16.5px;color:#fff;
+    background:linear-gradient(120deg,var(--brand-a),#1e40af);}
+  .alt{margin-top:12px;text-align:center;font-size:12.5px;color:var(--ink-mute)}
+  .alt a{color:var(--brand-a);font-weight:700;text-decoration:none}
+  /* grade tiles — the one place all four hues meet */
+  h2{font-family:var(--font-display);font-weight:600;font-size:16px;margin:24px 0 10px}
+  .grades{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .gtile{border-radius:var(--r-lg);padding:14px;color:#fff;position:relative;overflow:hidden;min-height:86px}
+  .gtile b{font-family:var(--font-display);font-weight:600;font-size:15px;display:block}
+  .gtile span{font-family:var(--font-label);font-size:10px;font-weight:700;letter-spacing:.06em;opacity:.85}
+  .gtile .n{position:absolute;right:10px;bottom:2px;font-family:var(--font-display);font-weight:700;font-size:44px;opacity:.22}
+  .g1{background:linear-gradient(135deg,#22c55e,#166534)} .g2{background:linear-gradient(135deg,#ef4444,#991b1b)}
+  .g3{background:linear-gradient(135deg,#3b82f6,#1e40af)} .g4{background:linear-gradient(135deg,#8b5cf6,#6d28d9)}
+  /* admin strip sample */
+  .adminbar{display:flex;align-items:center;gap:10px;padding:12px 16px;margin-top:8px}
+  .adminbar .wm{font-family:var(--font-display);font-weight:700;font-size:17px;
+    background:linear-gradient(120deg,var(--brand-a),var(--brand-b));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .adminbar nav{margin-left:auto;display:flex;gap:14px;font-size:12.5px;font-weight:600;color:var(--ink-soft)}
+  .adminbar nav .on{color:var(--brand-a);border-bottom:2px solid var(--brand-a);padding-bottom:2px}
+  .adminnote{font-size:11px;color:var(--ink-mute);padding:0 16px 12px;font-style:italic}
+  .caption{font-family:var(--font-label);font-size:9.5px;font-weight:700;letter-spacing:.14em;color:var(--ink-mute);margin:22px 0 8px;text-transform:uppercase}
+  footer{margin-top:26px;text-align:center;font-family:var(--font-label);font-size:9px;font-weight:600;letter-spacing:.04em;color:var(--ink-mute)}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brand">
+    <div class="wordmark">DomiGo</div>
+    <div class="tagline">ENGLISH · VOCABULARY &amp; GRAMMAR</div>
+  </div>
+
+  <div class="caption">Anmeldung (shared surface)</div>
+  <div class="card signin">
+    <h1>Anmelden</h1>
+    <p>Mit Klassencode, Spitznamen und PIN.</p>
+    <label>KLASSENCODE</label><input placeholder="z.B. 78QVDZ">
+    <label>SPITZNAME</label><input>
+    <label>PIN</label><input type="password" placeholder="6 Ziffern">
+    <button class="btn">Anmelden</button>
+    <div class="alt">Neu hier? <a href="#">Beitritts-Code eingeben →</a></div>
+  </div>
+
+  <div class="caption">Die vier Welten (grade chooser)</div>
+  <div class="grades">
+    <div class="gtile g1"><b>1. Klasse</b><span>DIE VERLORENEN SEITEN</span><div class="n">1</div></div>
+    <div class="gtile g2"><b>2. Klasse</b><span>DER FLECK</span><div class="n">2</div></div>
+    <div class="gtile g3"><b>3rd Grade</b><span>FOURTEEN</span><div class="n">3</div></div>
+    <div class="gtile g4"><b>4th Grade</b><span>FOURTEEN: LIVE</span><div class="n">4</div></div>
+  </div>
+
+  <div class="caption">Lehrer-Ansicht (admin header)</div>
+  <div class="card">
+    <div class="adminbar">
+      <span class="wm">DomiGo</span>
+      <nav><span class="on">Klassen</span><span>Aufgaben</span><span>Check-ups</span><span>Ergebnisse</span></nav>
+    </div>
+    <div class="adminnote">Editorial ruhig: keine Verläufe außer der Wortmarke, keine Effekte — die Bühne gehört den Klassen-Welten.</div>
+  </div>
+
+  <footer>VEHO – GYMNASIUM UND WIRTSCHAFTSKUNDLICHES REALGYMNASIUM DER DOMINIKANERINNEN</footer>
+</div>
+</body>
+</html>

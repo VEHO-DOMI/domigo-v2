@@ -1,0 +1,134 @@
+<!doctype html>
+<!-- D-1 mockup · GRADE 1 · light register — storybook green: paper, ruled lines,
+     gentle shapes, German-first (L-1 doctrine), the GENTLE title ladder. -->
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DomiGo · Mockup g1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent:#16a34a; --accent-deep:#166534; --accent-soft:#dcfce7;
+    --bg:#f2f8f0; --card:#fffdf7; --paper:#fffaf0;
+    --ink:#1a2e1a; --ink-soft:#4d6650; --ink-mute:#94a89a;
+    --gold:#d4943a; --rule:#e3eede;
+    --zone-bronze:linear-gradient(135deg,#b45309,#92400e);
+    --font-display:"Fredoka",sans-serif; --font-body:"Inter",sans-serif; --font-label:"Quicksand",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);font-family:var(--font-body);color:var(--ink);
+       background-image:radial-gradient(ellipse 60% 40% at 50% -5%, #e2f3e0 0%, transparent 70%);}
+  .page{max-width:430px;margin:0 auto;padding:20px 16px 48px}
+  .brand{text-align:center;padding:10px 0 18px}
+  .wordmark{font-family:var(--font-display);font-weight:700;font-size:46px;line-height:1;
+    background:linear-gradient(120deg,#22c55e,#166534);-webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 6px 24px rgba(22,163,74,.18));}
+  .tagline{font-family:var(--font-label);font-size:9.5px;font-weight:700;letter-spacing:.28em;color:var(--ink-mute);margin-top:4px}
+  .gradechip{display:inline-block;margin-top:8px;font-family:var(--font-display);font-weight:600;font-size:14px;color:var(--accent)}
+  /* g1 cards read as STORYBOOK PAGES: warmer paper, ruled lines, bigger radius, folded corner */
+  .card{background:var(--card);border-radius:28px;box-shadow:0 10px 34px rgba(22,101,52,.10);overflow:hidden;position:relative}
+  .card.paper{background:
+      linear-gradient(180deg, rgba(255,250,240,.6), rgba(255,250,240,.6)),
+      repeating-linear-gradient(180deg, transparent 0 26px, #eadfc8 26px 27px);
+      background-color:var(--paper)}
+  .profile{padding:20px 18px 18px;margin-bottom:14px}
+  .profile::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,#22c55e,var(--gold));}
+  .prow{display:flex;gap:14px;align-items:center}
+  .avatar{width:68px;height:68px;border-radius:50%;background:var(--accent-soft);
+    box-shadow:0 0 0 3px #bbe8c8,0 0 0 6px #fff;display:grid;place-items:center;flex:none}
+  .pname{font-weight:800;font-size:18px}
+  .classchip{font-family:var(--font-label);font-size:10.5px;font-weight:700;background:var(--accent-soft);color:var(--accent-deep);
+    border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:2px}
+  .titlepill{display:inline-block;margin-top:4px;font-family:var(--font-label);font-size:11.5px;font-weight:700;color:#fff;
+    background:var(--zone-bronze);border-radius:999px;padding:3px 11px;box-shadow:0 2px 8px rgba(180,83,9,.3)}
+  .vibe{font-size:12.5px;color:var(--ink-mute);font-style:italic;margin-top:3px}
+  .streak{margin-left:auto;text-align:center;font-weight:800;font-size:16px;color:var(--accent-deep)}
+  .streak small{display:block;font-family:var(--font-label);font-size:9px;font-weight:700;letter-spacing:.08em;color:var(--ink-mute)}
+  .bars{margin-top:15px;display:grid;gap:10px}
+  .bar label{display:flex;justify-content:space-between;font-family:var(--font-label);font-size:11px;font-weight:700;color:var(--ink-soft);margin-bottom:3px}
+  .track{height:10px;border-radius:999px;background:#e4efe2;overflow:hidden}
+  .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#22c55e,var(--accent-deep))}
+  .fill.g{background:linear-gradient(90deg,#a3e635,#4d7c0f)}
+  .cta{display:block;width:100%;border:0;cursor:pointer;margin:16px 0 8px;padding:16px;border-radius:22px;
+    font-family:var(--font-display);font-weight:600;font-size:20px;color:#fff;
+    background:linear-gradient(135deg,#22c55e,var(--accent-deep));
+    box-shadow:0 10px 26px rgba(22,163,74,.35), inset 0 1px 0 rgba(255,255,255,.25);}
+  .cta small{display:block;font-family:var(--font-body);font-weight:500;font-size:12.5px;opacity:.9;margin-top:2px}
+  .tiles{display:grid;gap:10px;margin-top:10px}
+  .tile{display:flex;align-items:center;gap:12px;padding:15px 16px;border-radius:24px;background:var(--card);
+    box-shadow:0 6px 20px rgba(22,101,52,.07)}
+  .tile .ic{font-size:24px}
+  .tile b{font-family:var(--font-display);font-weight:600;font-size:16px}
+  .tile span{display:block;font-size:12.5px;color:var(--ink-soft)}
+  .tile .go{margin-left:auto;color:var(--ink-mute)}
+  /* the storybook tile: folded corner + ruled paper */
+  .tile.story{border:1px solid #eadfc8}
+  .tile.story::after{content:"";position:absolute;}
+  .story-wrap{position:relative}
+  .story-wrap .fold{position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 26px 26px 0;
+    border-color:transparent #e8dcc0 transparent transparent;border-radius:0 24px 0 0}
+  h2{font-family:var(--font-display);font-weight:600;font-size:17px;margin:22px 0 10px;display:flex;align-items:center;gap:8px}
+  h2 .wk{font-family:var(--font-label);font-size:9.5px;font-weight:700;letter-spacing:.12em;color:var(--ink-mute);margin-left:auto}
+  .lb{padding:6px 0}
+  .lbrow{display:flex;align-items:center;gap:10px;padding:10px 16px;font-size:14px}
+  .lbrow+.lbrow{border-top:1px solid var(--rule)}
+  .medal{width:22px;text-align:center;font-size:16px}
+  .mini{width:32px;height:32px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center}
+  .lbname{font-weight:700}
+  .lbpill{font-family:var(--font-label);font-size:9.5px;font-weight:700;color:#fff;border-radius:999px;padding:2px 8px;background:var(--zone-bronze)}
+  .lbxp{margin-left:auto;font-weight:800;color:var(--accent-deep)}
+  .goal{margin-top:10px;padding:13px 16px}
+  .goal label{display:flex;justify-content:space-between;font-family:var(--font-label);font-size:11px;font-weight:700;color:var(--ink-soft);margin-bottom:5px}
+  footer{margin-top:26px;text-align:center;font-family:var(--font-label);font-size:9px;font-weight:600;letter-spacing:.04em;color:var(--ink-mute)}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brand">
+    <div class="wordmark">DomiGo</div>
+    <div class="tagline">ENGLISH · VOCABULARY &amp; GRAMMAR</div>
+    <div class="gradechip">1. Klasse</div>
+  </div>
+
+  <div class="card profile paper">
+    <div class="prow">
+      <div class="avatar">
+        <svg width="52" height="52" viewBox="0 0 12 12"><rect x="3" y="1" width="6" height="4" fill="#5b4632"/><rect x="3" y="3" width="6" height="3" fill="#f6d7b0"/><rect x="4" y="4" width="1" height="1" fill="#1a2e1a"/><rect x="7" y="4" width="1" height="1" fill="#1a2e1a"/><rect x="2" y="6" width="8" height="4" fill="#16a34a"/><rect x="2" y="6" width="2" height="3" fill="#f6d7b0"/><rect x="8" y="6" width="2" height="3" fill="#f6d7b0"/><rect x="3" y="10" width="2" height="2" fill="#3f4a3f"/><rect x="7" y="10" width="2" height="2" fill="#3f4a3f"/><rect x="8" y="1" width="2" height="1" fill="#d4943a"/></svg>
+      </div>
+      <div>
+        <div class="pname">Emil<span class="classchip">1A</span></div>
+        <div class="titlepill">Lv 2 · Wordling</div>
+        <div class="vibe">„gerade erst geschlüpft“</div>
+      </div>
+      <div class="streak">🔥 3<small>TAGE-SERIE</small></div>
+    </div>
+    <div class="bars">
+      <div class="bar"><label><span>WÖRTER · Lv 2</span><span>80 / 120 XP</span></label><div class="track"><div class="fill" style="width:66%"></div></div></div>
+      <div class="bar"><label><span>GRAMMATIK · Lv 1</span><span>30 / 50 XP</span></label><div class="track"><div class="fill g" style="width:60%"></div></div></div>
+    </div>
+  </div>
+
+  <button class="cta">🌱 Jetzt üben<small>Wörter aus deiner Einheit</small></button>
+
+  <div class="tiles">
+    <div class="story-wrap"><div class="tile story card paper"><div class="ic">📖</div><div><b>Die verlorenen Seiten</b><span>Kapitel 4 · Finn wartet auf dich!</span></div><div class="go">→</div></div><div class="fold"></div></div>
+    <div class="tile"><div class="ic">🃏</div><div><b>Wörterbuch &amp; Karten</b><span>Bilder anschauen und lernen</span></div><div class="go">→</div></div>
+    <div class="tile"><div class="ic">⭐</div><div><b>Wiederholen</b><span>5 Wörter warten auf dich</span></div><div class="go">→</div></div>
+  </div>
+
+  <h2>🏆 Bestenliste <span class="wk">DIESE WOCHE · 1A</span></h2>
+  <div class="card lb">
+    <div class="lbrow"><div class="medal">🥇</div><div class="mini">🐣</div><div class="lbname">Mia</div><div class="lbpill">Word Collector</div><div class="lbxp">280 XP</div></div>
+    <div class="lbrow"><div class="medal">🥈</div><div class="mini">🦔</div><div class="lbname">Emil</div><div class="lbpill">Wordling</div><div class="lbxp">245 XP</div></div>
+    <div class="lbrow"><div class="medal">🥉</div><div class="mini">🐻</div><div class="lbname">Jana</div><div class="lbpill">Wordling</div><div class="lbxp">210 XP</div></div>
+  </div>
+  <div class="card goal">
+    <label><span>KLASSENZIEL DIESE WOCHE</span><span>2.140 / 5.000 XP</span></label>
+    <div class="track"><div class="fill" style="width:43%"></div></div>
+  </div>
+
+  <footer>VEHO – GYMNASIUM UND WIRTSCHAFTSKUNDLICHES REALGYMNASIUM DER DOMINIKANERINNEN</footer>
+</div>
+</body>
+</html>
