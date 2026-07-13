@@ -115,8 +115,14 @@ export async function listStudentsForClass(db: Db, classId: string): Promise<Stu
   return rows.map((r) => ({ id: r.id, name: r.name }));
 }
 
-/** Finalize a submitted sitting with its exact score + Note (from the pure scorer). */
-export async function submitSession(db: Db, sessionId: string, score: SubmittedScore, submittedAt: Date): Promise<void> {
+/** Finalize a submitted sitting with its exact score (from the pure scorer).
+ *  `note` is null for checkups — they are points-only by decision (doc 21 §8-③). */
+export async function submitSession(
+  db: Db,
+  sessionId: string,
+  score: Pick<SubmittedScore, "displayPct"> & { note: SubmittedScore["note"] | null },
+  submittedAt: Date,
+): Promise<void> {
   await db
     .update(assignmentSessions)
     .set({ submittedAt, scorePct: score.displayPct.toFixed(2), note: score.note, updatedAt: submittedAt })

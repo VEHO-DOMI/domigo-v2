@@ -8,8 +8,9 @@
  * endpoint splits it into an `assignments` row + N `assignment_sections` rows.
  */
 import { AHS_DEFAULT_NOTENSCHLUESSEL, isValidNotenschluessel, sectionWeightsValid, type NotenSchluessel } from "./assignments.ts";
+import { parseDisplayConfig, validateCheckupSections, type CheckupSectionConfig, type DisplayConfig } from "./checkup.ts";
 
-export type AssignmentMode = "practice" | "mock_test";
+export type AssignmentMode = "practice" | "mock_test" | "checkup";
 
 /** The five authored section kinds (mirrors the test.json / TestSession model). */
 export type SectionKind = "vocab" | "grammar" | "listening" | "reading" | "writing";
@@ -29,6 +30,8 @@ export interface DraftSection {
   timerMinutes?: number | null;
   /** 0..100; sums to 100 across a mock test's sections */
   weightPct: number;
+  /** C-1: checkup sections only ({checkupKind, points, mask, direction}); Σ points = 20 */
+  sectionConfig?: CheckupSectionConfig | null;
 }
 
 export interface AssignmentDraft {
@@ -42,6 +45,8 @@ export interface AssignmentDraft {
   attemptsPerTest: number;
   /** null ⇒ the AHS default; a custom schedule must be well-formed */
   notenSchluessel?: NotenSchluessel | null;
+  /** C-1: verdict/points visibility; null ⇒ the mode default (checkup: on-submit) */
+  displayConfig?: DisplayConfig | null;
   sections: DraftSection[];
 }
 
@@ -104,6 +109,20 @@ export function validateAssignmentDraft(draft: AssignmentDraft, opts: ValidateOp
     if (draft.notenSchluessel != null && !isValidNotenschluessel(draft.notenSchluessel)) {
       errors.push("The Notenschlüssel must descend strictly from Note 1 to Note 4 (0–100%).");
     }
+  }
+
+  if (draft.mode === "checkup") {
+    // The C-1 hard rules (doc 21 §3): every section configured, active kinds
+    // only, one item = one point, Σ = 20. Weights are ignored like practice.
+    errors.push(...validateCheckupSections(draft.sections));
+    if (draft.sections.some((s) => s.kind !== "vocab" && s.kind !== "grammar")) {
+      errors.push("A checkup only has vocabulary and grammar sections.");
+    }
+  }
+
+  // displayConfig (any mode that sends one) must be well-formed.
+  if (draft.displayConfig != null && parseDisplayConfig(draft.displayConfig) === null) {
+    errors.push("The feedback setting must be immediate, on-submit, or on-release.");
   }
 
   return errors;

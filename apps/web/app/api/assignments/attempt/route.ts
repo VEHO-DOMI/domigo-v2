@@ -31,7 +31,15 @@ const Body = z.object({
     z.object({ kind: z.literal("choice"), value: z.string() }),
     z.object({ kind: z.literal("matching"), value: z.record(z.string(), z.string()) }),
     z.object({ kind: z.literal("groupSort"), value: z.record(z.string(), z.string()) }),
-    z.object({ kind: z.literal("vocab"), value: z.string() }),
+    z.object({
+      kind: z.literal("vocab"),
+      value: z.string(),
+      // C-1: which authored answer pool the exercise asked for (checkup
+      // translations/definitions sections). Server-validated enum so a client
+      // can never grade a German prompt against the German pool. Default:
+      // carrier — exactly what practice/mock vocab sections render.
+      pool: z.enum(["carrier", "definition", "deToEn", "enToDe"]).optional(),
+    }),
   ]),
 });
 
@@ -68,7 +76,8 @@ export async function POST(req: Request): Promise<Response> {
       const item = unit.vocab.find((v) => v.id === itemId);
       if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
       const value = "value" in input && typeof input.value === "string" ? input.value : "";
-      tier = gradeVocab(item, value).tier;
+      const pool = input.kind === "vocab" ? input.pool : undefined;
+      tier = gradeVocab(item, value, pool).tier;
       kind = "vocab";
     } else {
       const item = unit.grammar.find((g) => g.id === itemId);

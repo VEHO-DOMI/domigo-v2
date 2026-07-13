@@ -87,6 +87,7 @@ export async function createAssignment(db: Db, draft: AssignmentDraft, createdBy
       sessionDurationMinutes: draft.sessionDurationMinutes ?? null,
       attemptsPerTest: draft.attemptsPerTest,
       notenSchluessel: draft.notenSchluessel ?? null,
+      displayConfig: draft.displayConfig ?? null,
     })
     .returning({ id: assignments.id });
   const assignmentId = row!.id;
@@ -102,6 +103,7 @@ export async function createAssignment(db: Db, draft: AssignmentDraft, createdBy
         writingPromptId: s.writingPromptId ?? null,
         timerMinutes: s.timerMinutes ?? null,
         weightPct: s.weightPct,
+        sectionConfig: s.sectionConfig ?? null,
       })),
     );
   }

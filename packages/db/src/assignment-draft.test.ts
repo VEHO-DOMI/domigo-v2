@@ -84,3 +84,83 @@ describe("validateAssignmentDraft", () => {
     expect(validateAssignmentDraft(d).some((e) => e.includes("Notenschlüssel"))).toBe(true);
   });
 });
+
+// ── C-1 · checkup mode (doc 21 §3: Σ=20, one item = one point) ───────────────
+
+function checkupSection(over: Partial<DraftSection> & { points: number; checkupKind?: "words-phrases" | "translations" | "definitions" | "grammar" | "picture-mc" }): DraftSection {
+  const { points, checkupKind = "words-phrases", ...rest } = over;
+  const kind = checkupKind === "grammar" ? "grammar" : "vocab";
+  return {
+    position: 0,
+    kind,
+    itemIds: Array.from({ length: points }, (_, i) => `g2u01.${kind === "grammar" ? "gi" : "w"}.${checkupKind}-${i}`),
+    weightPct: 0,
+    sectionConfig: { checkupKind, points },
+    ...rest,
+  };
+}
+
+describe("validateAssignmentDraft — checkup mode (C-1)", () => {
+  const checkupDraft = (over: Partial<AssignmentDraft> = {}): AssignmentDraft =>
+    draft({
+      mode: "checkup",
+      sections: [
+        checkupSection({ position: 0, points: 8 }),
+        checkupSection({ position: 1, points: 6, checkupKind: "grammar" }),
+        checkupSection({ position: 2, points: 6, checkupKind: "translations" }),
+      ],
+      ...over,
+    });
+
+  it("accepts a well-formed /20 checkup (weights ignored)", () => {
+    expect(validateAssignmentDraft(checkupDraft())).toEqual([]);
+  });
+
+  it("rejects a checkup whose sections do not sum to exactly 20", () => {
+    const d = checkupDraft({
+      sections: [checkupSection({ position: 0, points: 8 }), checkupSection({ position: 1, points: 6, checkupKind: "grammar" })],
+    });
+    expect(validateAssignmentDraft(d).some((e) => e.includes("/20") && e.includes("14"))).toBe(true);
+  });
+
+  it("rejects a section whose item count does not match its points", () => {
+    const short = checkupSection({ position: 0, points: 8 });
+    short.itemIds = short.itemIds.slice(0, 5);
+    const d = checkupDraft({
+      sections: [short, checkupSection({ position: 1, points: 6, checkupKind: "grammar" }), checkupSection({ position: 2, points: 6, checkupKind: "translations" })],
+    });
+    expect(validateAssignmentDraft(d).some((e) => e.includes("one item = one point"))).toBe(true);
+  });
+
+  it("rejects a checkup section without a config, and the deferred picture-mc kind", () => {
+    const bare = checkupDraft({
+      sections: [{ position: 0, kind: "vocab", itemIds: ["g2u01.w.along"], weightPct: 0 }],
+    });
+    expect(validateAssignmentDraft(bare).some((e) => e.includes("section config"))).toBe(true);
+
+    const pic = checkupDraft({ sections: [checkupSection({ position: 0, points: 20, checkupKind: "picture-mc" })] });
+    expect(validateAssignmentDraft(pic).some((e) => e.includes("deferred"))).toBe(true);
+  });
+
+  it("rejects a kind mismatch (grammar config on a vocab section)", () => {
+    const wrong = checkupSection({ position: 0, points: 20, checkupKind: "grammar" });
+    wrong.kind = "vocab";
+    const d = checkupDraft({ sections: [wrong] });
+    expect(validateAssignmentDraft(d).some((e) => e.includes("must be a grammar section"))).toBe(true);
+  });
+
+  it("still rejects reserved items inside a checkup (J-1)", () => {
+    const d = checkupDraft();
+    const someId = d.sections[0]!.itemIds[0]!;
+    expect(validateAssignmentDraft(d, { reservedIds: new Set([someId]) }).some((e) => e.includes("reserved"))).toBe(true);
+  });
+
+  it("validates displayConfig on any mode", () => {
+    expect(validateAssignmentDraft(checkupDraft({ displayConfig: { feedback: "on-submit", showScore: "on-submit" } }))).toEqual([]);
+    expect(
+      validateAssignmentDraft(checkupDraft({ displayConfig: { feedback: "whenever" } as never })).some((e) =>
+        e.includes("feedback setting"),
+      ),
+    ).toBe(true);
+  });
+});

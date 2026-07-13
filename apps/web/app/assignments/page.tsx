@@ -32,7 +32,7 @@ export default async function AssignmentsPage() {
               <div>
                 <div style={{ fontWeight: 700, fontSize: 16, color: "var(--ink)" }}>{a.title}</div>
                 <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>
-                  {a.mode === "mock_test" ? "📝 Schularbeit-Übung" : "✏️ Übung"}
+                  {a.mode === "mock_test" ? "📝 Schularbeit-Übung" : a.mode === "checkup" ? "✅ Check-up" : "✏️ Übung"}
                   {a.sessionDurationMinutes ? ` · ${a.sessionDurationMinutes} min` : ""}
                   {a.dueAt ? ` · bis ${new Date(a.dueAt).toLocaleDateString("de-AT")}` : ""}
                 </div>

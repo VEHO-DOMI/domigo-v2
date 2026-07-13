@@ -20,10 +20,19 @@ export const dynamic = "force-dynamic";
 
 const SECTION_KIND = z.enum(["vocab", "grammar", "listening", "reading", "writing"]);
 
+// C-1: the checkup section config (doc 21 §3) — validated structurally here,
+// then semantically (Σ=20, one item = one point) by validateAssignmentDraft.
+const SectionConfigSchema = z.object({
+  checkupKind: z.enum(["words-phrases", "translations", "definitions", "grammar", "picture-mc"]),
+  points: z.number().int().min(1),
+  mask: z.enum(["first-letter"]).nullable().optional(),
+  direction: z.enum(["mixed", "deToEn", "enToDe"]).optional(),
+});
+
 const DraftSchema = z.object({
   title: z.string(),
   descriptionDe: z.string().nullable().optional(),
-  mode: z.enum(["practice", "mock_test"]),
+  mode: z.enum(["practice", "mock_test", "checkup"]),
   classId: z.string(),
   startsAt: z.string().nullable().optional(),
   dueAt: z.string().nullable().optional(),
@@ -31,6 +40,13 @@ const DraftSchema = z.object({
   attemptsPerTest: z.number().int(),
   notenSchluessel: z
     .object({ 1: z.number(), 2: z.number(), 3: z.number(), 4: z.number() })
+    .nullable()
+    .optional(),
+  displayConfig: z
+    .object({
+      feedback: z.enum(["immediate", "on-submit", "on-release"]),
+      showScore: z.enum(["on-submit", "on-release"]).optional(),
+    })
     .nullable()
     .optional(),
   sections: z
@@ -43,6 +59,7 @@ const DraftSchema = z.object({
         writingPromptId: z.string().nullable().optional(),
         timerMinutes: z.number().int().positive().nullable().optional(),
         weightPct: z.number().int(),
+        sectionConfig: SectionConfigSchema.nullable().optional(),
       }),
     )
     .max(12),

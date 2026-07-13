@@ -176,6 +176,17 @@ self-grade sweep in §5.4 — machine check for key integrity, intelligence chec
 blind-solve gate is the same idea for created content; C-1 is its first assembly-time use.
 Cross-project: banked for SRDP and domi-pup (assessment assembly there gets the same gate).
 
+**v1 wiring (as built, C-1 2026-07-13):** the IN-APP runtime gate rides S-2's sandbox-runner
+infrastructure (`content_checks` journaling, the #114 account-based path) and lands with S-2.
+Until then the verify loop runs OFFLINE: `scripts/audit/blind-solve.ts --items <file.json>`
+takes a JSON array of itemIds (a composed checkup's exact item set) and blind-solves it through
+the existing frames/engine/triage paths — deterministic tier via `--no-llm`, intelligence tier
+via `--export-frames`/`--candidates` or the live SDK path. `scripts/verify-checkup.mjs` runs the
+deterministic tier (compose → Σ=20 → every composed item's key round-trips `correct` in the SAME
+pool the checkup asks) corpus-wide without a database. Known v1 limit: `frameVocabItem` frames
+the CARRIER view, so the LLM tier sees translations/definitions items as carrier tasks until the
+pool-aware frames land with S-2 (the deterministic tier IS pool-aware already).
+
 ## 6 · Rendering rules (runner)
 
 - **One page, sections in preset order**, paper-style header: title + `___/20`, per-section
@@ -216,6 +227,18 @@ Cross-project: banked for SRDP and domi-pup (assessment assembly there gets the 
 vault" so that when a big Schularbeit mock happens, students face items they could NOT have
 ground in practice. The question was whether checkups may use vault items. Answer built in
 here: no — checkups draw from the open pool only, so the vault stays fresh for the mocks.*
+
+**§8 addendum (2026-07-13, recorded at C-1 build):**
+- **Tested vocabulary = wordlist-derived items only.** True by construction — the corpus IS
+  wordlist-derived (every vocab item traces to the MORE! unit word list), so no extra filter
+  exists or is needed; recorded so the scope question never reopens.
+- **Reserve semantics are ITEM-level, not word-level.** Excluding a reserved ITEM from checkups
+  does not quarantine its WORD: the same word may still appear in other task types (a different
+  carrier item, a grammar item's sentence). Only the exact reserved item ids are vault-locked.
+- **Migration numbering, as built:** the two additive columns (`assignment_sections.section_config`,
+  `assignments.display_config`) shipped as **drizzle migration `0008_checkup_config`** — this doc's
+  "migration 0009" (§3, §10) predated the real sequence (0000–0007 existed; drizzle numbers from
+  0000). One migration, two columns, both nullable jsonb; apply in Neon before merge.
 
 **Calibration example for the gate (read this, not code):** g2-u06 (HAVE TO — the same unit
 as the real 2A U6 paper): B pulls 5 unit vocab carriers masked to first letters ("You can

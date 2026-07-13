@@ -16,9 +16,11 @@ import type { ClassifiableItem, GrammarInput, Tier, VocabPool } from "@domigo/en
 import { breaksCombo, classifyWrong, gradeGrammar, gradeVocab, vocabAnswers, xpForTier } from "@domigo/engine";
 import { diffWords, playTier } from "@domigo/game-feel";
 import { agAssemble, agSlots, agTiles, sbChips } from "./tactile.ts";
+import { firstLetterMask, type MaskSegment } from "./mask.ts";
 import { vocabPrompt, VOCAB_POOL_LABEL } from "./vocab-pool.ts";
 
 export { agAssemble, agSlots, agTiles, sbChips, sbAnswerOrder, seededShuffle } from "./tactile.ts";
+export * from "./mask.ts";
 export * from "./vocab-pool.ts";
 export type { AgSlot, AgTile, SbChip } from "./tactile.ts";
 
@@ -221,6 +223,59 @@ function Prompt({ text, id }: { text: string; id?: string }) {
   return <div id={id} style={{ fontSize: 18, lineHeight: 1.4, whiteSpace: "pre-wrap", color: "var(--text)" }}>{text}</div>;
 }
 
+/** The rendered first-letter mask (C-1, doc 21 §6): one bold first letter per
+ *  word + a FIXED blank. Presentation only — grading never sees it. */
+function MaskChips({ segments }: { segments: MaskSegment[] }) {
+  return (
+    <span style={{ whiteSpace: "nowrap", letterSpacing: "0.02em" }}>
+      {segments.map((s, i) => (
+        <span key={i}>
+          {i > 0 && " "}
+          <strong>{s.first}</strong>
+          <span aria-hidden="true" style={{ color: "var(--muted)" }}>{s.blank}</span>
+        </span>
+      ))}
+    </span>
+  );
+}
+
+/**
+ * A prompt with the first-letter mask woven in: when the text carries a blank
+ * run (the carrier's `___`), the mask REPLACES it in place — the student sees
+ * "You can t____ me…" exactly like on paper. Promptless pools (definitions)
+ * get the mask as a separate line under the prompt instead.
+ */
+function MaskedPrompt({ text, id, segments }: { text: string; id?: string; segments: MaskSegment[] }) {
+  const style: CSSProperties = { fontSize: 18, lineHeight: 1.4, whiteSpace: "pre-wrap", color: "var(--text)" };
+  const m = /_{2,}/.exec(text);
+  if (!m) {
+    return (
+      <div id={id} style={style}>
+        {text}
+        <div style={{ fontSize: 16, marginTop: 4 }}><MaskChips segments={segments} /></div>
+      </div>
+    );
+  }
+  return (
+    <div id={id} style={style}>
+      {text.slice(0, m.index)}
+      <MaskChips segments={segments} />
+      {text.slice(m.index + m[0].length)}
+    </div>
+  );
+}
+
+/** The neutral checkup-style "answer recorded" line shown while verdicts are
+ *  deferred (display_config feedback ≠ immediate): the input locks, nothing is
+ *  revealed — like handing in a paper question. */
+function SavedMark() {
+  return (
+    <div role="status" aria-live="polite" style={{ fontSize: 14, fontWeight: 700, color: "var(--muted)" }}>
+      Gespeichert ✓
+    </div>
+  );
+}
+
 // ---- format-specific inputs ----------------------------------------------
 
 function TextInputs({ count, values, onChange, disabled, onEnter, autoFocusFirst }: {
@@ -252,18 +307,21 @@ function TextInputs({ count, values, onChange, disabled, onEnter, autoFocusFirst
   );
 }
 
-function Choices({ options, selected, onSelect, disabled, corrects }: {
+function Choices({ options, selected, onSelect, disabled, corrects, reveal = true }: {
   options: string[]; selected: string | null; onSelect: (v: string) => void; disabled: boolean; corrects: string[];
+  /** C-1 deferred feedback: false keeps the post-lock state NEUTRAL (no green/red
+   *  tint — a checkup paper reveals nothing until submit/release). */
+  reveal?: boolean;
 }) {
   return (
     <div role="radiogroup" aria-label="Answer options" style={{ display: "flex", flexDirection: "column", gap: 8 }}>
       {options.map((opt) => {
         const isSel = selected === opt;
         // After grading, reveal: the right answer goes green; a wrong pick goes red.
-        const tintClass = disabled
+        const tintClass = disabled && reveal
           ? corrects.includes(opt) ? " correct" : isSel ? " wrong" : ""
           : "";
-        const selStyle: CSSProperties | undefined = isSel && !disabled
+        const selStyle: CSSProperties | undefined = isSel && (!disabled || !reveal)
           ? { borderColor: "var(--accent)", background: "var(--accent-soft)" }
           : undefined;
         return (
@@ -519,7 +577,7 @@ function ChipBuilder({ promptText, disabled, onChange, onEnter }: {
   );
 }
 
-export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, tactile, singleAttempt }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; tactile?: boolean; singleAttempt?: boolean }) {
+export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, tactile, singleAttempt, hideFeedback }: { item: GrammarItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; tactile?: boolean; singleAttempt?: boolean; hideFeedback?: boolean }) {
   const promptId = useId();
   const firstFull = item.answers.find((a) => a.tier === "full")?.text ?? "";
   const blankCount = Math.max(1, firstFull.split("|").length);
@@ -565,7 +623,7 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, t
     <div style={card} role="group" aria-labelledby={promptId}>
       <div style={metaLabel}>{item.format} · level {item.difficulty}</div>
       <Prompt id={promptId} text={item.prompt.text} />
-      {isChoice && <Choices options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} corrects={fullAnswers} />}
+      {isChoice && <Choices options={choiceOptions} selected={choice} onSelect={setChoice} disabled={done} corrects={fullAnswers} reveal={!hideFeedback} />}
       {isMatch && <Dropdowns rows={item.pairs.map((p) => p.left)} options={matchRights} value={map} onChange={setMap} disabled={done} />}
       {isGroup && <Dropdowns rows={sortMembers} options={groupLabels} value={map} onChange={setMap} disabled={done} />}
       {isText && tactileMode === null && <TextInputs count={blankCount} values={text} onChange={setText} disabled={done} onEnter={submit} autoFocusFirst={autoFocus} />}
@@ -582,7 +640,8 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, t
       {!hideHint && <HintRow hintDe={item.hintDe} />}
       {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
       {retrying && <RetryNudge wrongCount={wrongCount} hintDe={item.hintDe} />}
-      {done && tier && (
+      {done && tier && hideFeedback && <SavedMark />}
+      {done && tier && !hideFeedback && (
         <FeedbackCard
           tier={tier}
           xp={xp}
@@ -600,7 +659,7 @@ export function GrammarItemView({ item, onResult, hideHint, autoFocus, hideXp, t
 
 // ---- vocab item ----------------------------------------------------------
 
-export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp, singleAttempt, pool = "carrier" }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; singleAttempt?: boolean; pool?: VocabPool }) {
+export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp, singleAttempt, pool = "carrier", mask, hideFeedback }: { item: VocabItem; onResult?: (tier: Tier, detail: ResultDetail) => void; hideHint?: boolean; autoFocus?: boolean; hideXp?: boolean; singleAttempt?: boolean; pool?: VocabPool; mask?: "first-letter"; hideFeedback?: boolean }) {
   const promptId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
@@ -611,6 +670,12 @@ export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp, sin
   // in the same pool — otherwise a definition answer would persist as carrier-wrong.
   const ask = vocabPrompt(item, pool);
   const answers = vocabAnswers(item, pool);
+  const fullAnswers = answers.filter((a) => a.tier === "full").map((a) => a.text);
+  // C-1 first-letter mask (doc 21 §6): derived from the asked pool's PRIMARY
+  // full answer, presentation only — grading below stays the untouched engine
+  // path. The hintDe is suppressed while masked (the mask IS the scaffold).
+  const maskSegments = mask === "first-letter" ? firstLetterMask(fullAnswers[0] ?? "") : null;
+  const masked = maskSegments !== null && maskSegments.length > 0;
   const gradeOnce = (): { tier: Tier; detail: ResultDetail } => {
     const r = gradeVocab(item, value, pool);
     return { tier: r.tier, detail: { kind: "vocab", itemId: item.id, input: { kind: "vocab", value, pool } } };
@@ -618,19 +683,19 @@ export function VocabItemView({ item, onResult, hideHint, autoFocus, hideXp, sin
   const { tier, wrongCount, done, retrying, submit } = useRetryGrading(gradeOnce, onResult, singleAttempt ? 1 : MAX_WRONG);
   useEffect(() => { if (autoFocus && !done) inputRef.current?.focus(); }, [autoFocus, done, wrongCount]);
   const xp = tier ? xpForTier(item.difficulty * 10, tier) : 0;
-  const fullAnswers = answers.filter((a) => a.tier === "full").map((a) => a.text);
   return (
     <div style={card} role="group" aria-labelledby={promptId}>
       <div style={metaLabel}>vocab · {VOCAB_POOL_LABEL[pool]} · level {item.difficulty}</div>
       {ask.context !== null && <div style={{ fontSize: 14, color: "var(--text-secondary)" }}>{ask.context}</div>}
       {ask.instruction !== "" && <div style={{ fontSize: 13, color: "var(--text-secondary)", fontWeight: 600 }}>{ask.instruction}</div>}
-      <Prompt id={promptId} text={ask.text} />
+      {masked ? <MaskedPrompt id={promptId} text={ask.text} segments={maskSegments} /> : <Prompt id={promptId} text={ask.text} />}
       <input ref={inputRef} className="dg-input" style={{ minWidth: 120 }} value={value} disabled={done} aria-label="Your answer" placeholder="Your answer" onKeyDown={(e) => { if (e.key === "Enter" && !done) { e.preventDefault(); submit(); } }} onChange={(e) => setValue(e.target.value)} />
-      {ask.scaffold && <GlossRow gloss={item.gloss} />}
-      {ask.scaffold && !hideHint && <HintRow hintDe={item.hintDe} />}
+      {ask.scaffold && !masked && <GlossRow gloss={item.gloss} />}
+      {ask.scaffold && !hideHint && !masked && <HintRow hintDe={item.hintDe} />}
       {!done && <button className="dg-btn" style={{ alignSelf: "flex-start" }} onClick={submit}>{wrongCount > 0 ? "Try again" : "Check"}</button>}
-      {retrying && <RetryNudge wrongCount={wrongCount} hintDe={ask.scaffold ? item.hintDe : ""} />}
-      {done && tier && (
+      {retrying && <RetryNudge wrongCount={wrongCount} hintDe={ask.scaffold && !masked ? item.hintDe : ""} />}
+      {done && tier && hideFeedback && <SavedMark />}
+      {done && tier && !hideFeedback && (
         <>
           <FeedbackCard
             tier={tier}
