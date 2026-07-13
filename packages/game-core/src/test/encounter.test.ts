@@ -93,8 +93,17 @@ test("scope-random kind ignores the queue, draws from scope order (battle-filter
     due: [due("g1u01.w.cat", "vocab")],
     pool,
   });
-  // Queue ignored; scope order by id with sentence-building filtered out → gf, then mc.
-  assert.deepEqual(out.map((r) => r.item.id), ["g1u01.gi.plural.gf.001", "g1u01.gi.plural.mc.001"]);
+  // Queue ignored; scope order INTERLEAVES vocab/grammar (G-A1 battle variety):
+  // apple(v ✓), order.sb(g ✗ filtered), book(v ✓ — count reached) → apple, book.
+  assert.deepEqual(out.map((r) => r.item.id), ["g1u01.w.apple", "g1u01.w.book"]);
+});
+
+test("scope order alternates vocab and grammar (no same-kind battle clusters)", () => {
+  const out = resolveEncounterTasks(enc({ source: { kind: "scope-random", scope: { kind: "unit", slug: "g1-u01" }, count: 6 } }), {
+    due: [],
+    pool,
+  });
+  assert.deepEqual(out.map((r) => r.kind), ["vocab", "grammar", "vocab", "grammar", "vocab", "grammar"]);
 });
 
 test("stale due ref (not in pool) is skipped", () => {
