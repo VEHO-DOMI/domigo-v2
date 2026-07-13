@@ -118,6 +118,9 @@ importers:
 
   packages/content-pipeline:
     dependencies:
+      '@domigo/art-gen':
+        specifier: workspace:*
+        version: link:../art-gen
       '@domigo/content-schema':
         specifier: workspace:*
         version: link:../content-schema

@@ -1,6 +1,6 @@
 /**
- * Per-zone visual themes for the G1 overworld, keyed by a map@1 zone's
- * `render.generator`. A theme recolours the tileset (named palette slots), adds
+ * Per-zone visual themes for the overworld grades (G1 "Lost Pages" + the G2
+ * "The Spill" school family), keyed by a map@1 zone's `render.generator`. A theme recolours the tileset (named palette slots), adds
  * decor PROP tiles, and supplies a bespoke 15×11 room layout — all on the DomiGo
  * green brand. The grid is FROZEN 15×11 (save-compat: the cosmetic save stores the
  * player's pixel position); the save-stable SKELETON — one `P` (player start), four
@@ -328,6 +328,135 @@ const library: ZoneTheme = {
   props: { B: { tile: "board", solid: true }, R: { tile: "rug", solid: false } },
 };
 
+// ─── G2 "The Spill" school family (docs/handover/22_g2_overworld_design.md) ───
+// Generator names are BARE (no `-room` suffix — G2's naming rule; art dirs are
+// per-grade so they can never collide with G1's). Palette is plot (§2.5): Act 1
+// saturates ABOVE the G1 school family, Act 2 drains stepwise toward grey-blue
+// (#9aa3b2), Act 3 brings the warmth back plus one colour no G1 zone has —
+// Klecks-ink black with the white patch (propDark + propMetal white).
+
+// z01 `classroom` (u01, Act-1 opener) — warm chalk-yellow saturated above G1's
+// school default; the leak-ink desk (`L`, walkable) sits in the back corner.
+const g2Classroom: ZoneTheme = {
+  palette: {
+    floorBase: "#e3c98f", floorSpeckle: "#d0b268", wallBase: "#8a7a52", wallBorder: "#5c4f2f",
+    pathBase: "#c2ab7a", accentLight: "#f1e0ac", propWood: "#b06a1f", propWarm: "#f0a11c",
+    propDark: "#191b26", propMetal: "#e9e6da",
+  },
+  extraKinds: ["board", "note"],
+  layout: [
+    "###############",
+    "#W.W.......B..#",
+    "#.............#",
+    "#.DDD.DDD.DDD.#",
+    "#.............#",
+    "#.DDD.DDD.EDD.#",
+    "#.....E.......#",
+    "#.DDD.DDD.DDD.#",
+    "#..E......L...#",
+    "#F....P....E..#",
+    "###############",
+  ],
+  props: {
+    W: { tile: "board", solid: true }, // window
+    B: { tile: "board", solid: true }, // blackboard
+    D: { tile: "accent2", solid: true }, // desk rows
+    L: { tile: "note", solid: false }, // the leak-ink desk (walkable — the ink crawls)
+  },
+};
+
+// z07 `schoolyard` (u07, Act-2 midpoint) — the first drain: floorSpeckle/accentLight
+// step to grey-blue #9aa3b2; the calendar board's slate (propDark) is PALE (taken).
+const g2Schoolyard: ZoneTheme = {
+  palette: {
+    floorBase: "#b7c0aa", floorSpeckle: "#9aa3b2", wallBase: "#7e8794", wallBorder: "#525a66",
+    pathBase: "#a5abb4", accentLight: "#9aa3b2", propLeaf: "#6f8f60", propWood: "#8a6a44",
+    propWarm: "#a7aeb9", propDark: "#c2c7d1", propMetal: "#e6e9ee",
+  },
+  extraKinds: ["plant", "board", "barrel", "rug"],
+  layout: [
+    "###############",
+    "#..T......C.C.#",
+    "#.....E.......#",
+    "#.............#",
+    "#...K....E....#",
+    "#P............#",
+    "#....F........#",
+    "#..E......B...#",
+    "#.....R.R.....#",
+    "#.........E...#",
+    "###############",
+  ],
+  props: {
+    T: { tile: "plant", solid: true }, // tree
+    C: { tile: "board", solid: true }, // the emptied calendar board (pale slate)
+    K: { tile: "barrel", solid: true }, // kiosk
+    B: { tile: "accent2", solid: true }, // bench
+    R: { tile: "rug", solid: false }, // rain drains (walkable, drained grey)
+  },
+};
+
+// z12 `quiet-room` (u12, Act-3 pivot) — grey with ONE warm slot (propWarm stays:
+// the lamp); the smallest furniture count in the game — negative space IS the design.
+const g2QuietRoom: ZoneTheme = {
+  palette: {
+    floorBase: "#c9cdd6", floorSpeckle: "#b7bcc8", wallBase: "#79808d", wallBorder: "#535a67",
+    pathBase: "#a7acb8", accentLight: "#d8dbe2", propLeaf: "#8b9299", propWood: "#8f959f",
+    propWarm: "#f2b13d", propDark: "#b6bbc6", propMetal: "#e2e5ea",
+  },
+  extraKinds: ["rug", "stage", "note"],
+  layout: [
+    "###############",
+    "#.............#",
+    "#....R.R......#",
+    "#..E.......E..#",
+    "#.............#",
+    "#.....LL......#",
+    "#P....LL...F..#",
+    "#.............#",
+    "#..E.......E..#",
+    "#......N......#",
+    "###############",
+  ],
+  props: {
+    R: { tile: "rug", solid: false }, // rain windows (light pooling under them)
+    L: { tile: "stage", solid: true }, // the one warm lamp (glow kind)
+    N: { tile: "note", solid: true }, // the Blank's corner (pale; presence, not the NPC)
+  },
+};
+
+// z15 `book-nook` (finale) — the fullest, warmest room; plus the NEW colour:
+// Klecks-ink black with the white patch (propDark #12121a + propMetal #ffffff).
+const g2BookNook: ZoneTheme = {
+  palette: {
+    floorBase: "#ecd7ac", floorSpeckle: "#dcc183", wallBase: "#a87c42", wallBorder: "#6f4f22",
+    pathBase: "#cdb384", accentLight: "#f7e9c2", propWood: "#8f5c26", propWarm: "#f0ad3c",
+    propLeaf: "#3f9b4f", propDark: "#12121a", propMetal: "#ffffff",
+  },
+  extraKinds: ["board", "note", "rug", "plant"],
+  layout: [
+    "###############",
+    "#.B.B.....W.W.#",
+    "#..E....E.....#",
+    "#.....RRR.....#",
+    "#..S..RRR..S..#",
+    "#.....RFR.....#",
+    "#..S..RRR..S..#",
+    "#....E....E...#",
+    "#.L..........K#",
+    "#......P......#",
+    "###############",
+  ],
+  props: {
+    B: { tile: "board", solid: true }, // bookshelves
+    W: { tile: "note", solid: true }, // the class's word-wall
+    R: { tile: "rug", solid: false }, // the big reading rug
+    S: { tile: "accent2", solid: true }, // sitting cushions
+    L: { tile: "plant", solid: true },
+    K: { tile: "note", solid: true }, // Klecks's cushion (ink black + white patch)
+  },
+};
+
 export const THEMES: Record<string, ZoneTheme> = {
   "school-room": school,
   "zoo-room": zoo,
@@ -344,6 +473,12 @@ export const THEMES: Record<string, ZoneTheme> = {
   "emergency-room": emergency,
   "disco-room": disco,
   "library-room": library,
+  // G2 "The Spill" school family (bare names — the G2 naming rule). APPEND-ONLY:
+  // the 15 G1 `*-room` entries above stay byte-identical (snapshots frozen).
+  "classroom": g2Classroom,
+  "schoolyard": g2Schoolyard,
+  "quiet-room": g2QuietRoom,
+  "book-nook": g2BookNook,
 };
 
 /** Resolve a zone's theme by its `render.generator`, falling back to the classroom. */

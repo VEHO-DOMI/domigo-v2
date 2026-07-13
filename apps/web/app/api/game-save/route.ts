@@ -15,7 +15,9 @@ import { getActingUser } from "@/lib/identity";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const GameMode = z.string().regex(/^game:g[1-4]$/);
+// B-2: `:bonus` = a grade's extra released story's COSMETIC slot (the detective
+// game after the school overworld takes `game:g2`). Attempt modes are unaffected.
+const GameMode = z.string().regex(/^game:g[1-4](:bonus)?$/);
 
 const PutBody = z.object({
   gameMode: GameMode,

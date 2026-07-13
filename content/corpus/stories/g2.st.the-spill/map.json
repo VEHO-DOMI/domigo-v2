@@ -1,0 +1,22 @@
+{
+  "schema": "map@1",
+  "id": "g2.map.the-spill",
+  "grade": 2,
+  "zones": [
+    { "id": "g2.map.the-spill.z01", "unit": 1, "titleEn": "Classroom", "titleDe": "Klassenzimmer", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "classroom", "seed": 201 } },
+    { "id": "g2.map.the-spill.z02", "unit": 2, "titleEn": "Assembly Hall", "titleDe": "Aula", "width": 15, "height": 11, "tileSize": 16, "render": null },
+    { "id": "g2.map.the-spill.z03", "unit": 3, "titleEn": "Corridor", "titleDe": "Gang", "width": 15, "height": 11, "tileSize": 16, "render": null },
+    { "id": "g2.map.the-spill.z04", "unit": 4, "titleEn": "Biology Room", "titleDe": "Biosaal", "width": 15, "height": 11, "tileSize": 16, "render": null },
+    { "id": "g2.map.the-spill.z05", "unit": 5, "titleEn": "The Town", "titleDe": "die Stadt", "width": 15, "height": 11, "tileSize": 16, "render": null },
+    { "id": "g2.map.the-spill.z06", "unit": 6, "titleEn": "Library", "titleDe": "Bibliothek", "width": 15, "height": 11, "tileSize": 16, "render": null },
+    { "id": "g2.map.the-spill.z07", "unit": 7, "titleEn": "Schoolyard", "titleDe": "Schulhof", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "schoolyard", "seed": 207 } },
+    { "id": "g2.map.the-spill.z08", "unit": 8, "titleEn": "Gym", "titleDe": "Turnhalle", "width": 15, "height": 11, "tileSize": 16, "render": null },
+    { "id": "g2.map.the-spill.z09", "unit": 9, "titleEn": "Canteen", "titleDe": "Kantine", "width": 15, "height": 11, "tileSize": 16, "render": null },
+    { "id": "g2.map.the-spill.z10", "unit": 10, "titleEn": "Jona's Street", "titleDe": "Jonas Straße", "width": 15, "height": 11, "tileSize": 16, "render": null },
+    { "id": "g2.map.the-spill.z11", "unit": 11, "titleEn": "Storeroom", "titleDe": "Abstellkammer", "width": 15, "height": 11, "tileSize": 16, "render": null },
+    { "id": "g2.map.the-spill.z12", "unit": 12, "titleEn": "Quiet Room", "titleDe": "stilles Zimmer", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "quiet-room", "seed": 212 } },
+    { "id": "g2.map.the-spill.z13", "unit": 13, "titleEn": "Schoolyard (Rain)", "titleDe": "Schulhof (Regen)", "width": 15, "height": 11, "tileSize": 16, "render": null },
+    { "id": "g2.map.the-spill.z14", "unit": 14, "titleEn": "Sports Field", "titleDe": "Sportplatz", "width": 15, "height": 11, "tileSize": 16, "render": null },
+    { "id": "g2.map.the-spill.z15", "unit": 15, "titleEn": "Book Nook", "titleDe": "Buchecke", "width": 15, "height": 11, "tileSize": 16, "render": { "generator": "book-nook", "seed": 215 } }
+  ]
+}
