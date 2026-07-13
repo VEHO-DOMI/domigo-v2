@@ -1,0 +1,71 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 90,
+ "cols": 4,
+ "rows": 3,
+ "cells": [
+  {
+   "stem": "floor",
+   "col": 0,
+   "row": 0,
+   "opaque": true
+  },
+  {
+   "stem": "wall",
+   "col": 1,
+   "row": 0,
+   "opaque": true
+  },
+  {
+   "stem": "wall_top",
+   "col": 2,
+   "row": 0,
+   "opaque": true
+  },
+  {
+   "stem": "door",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "stem": "stage",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "podium",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "loudspeaker",
+   "col": 2,
+   "row": 1
+  },
+  {
+   "stem": "curtain",
+   "col": 3,
+   "row": 1
+  },
+  {
+   "stem": "announce",
+   "col": 0,
+   "row": 2
+  },
+  {
+   "stem": "chairs",
+   "col": 1,
+   "row": 2
+  },
+  {
+   "stem": "sparkle",
+   "col": 2,
+   "row": 2
+  },
+  {
+   "stem": "npc_down",
+   "col": 3,
+   "row": 2
+  }
+ ]
+}
