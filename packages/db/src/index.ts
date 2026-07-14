@@ -42,4 +42,5 @@ export * from "./class-service.ts"; // P-1b: teacher class CRUD (v2-native, auth
 export * from "./roster-service.ts"; // P-2: roster import + student self-claim (journal-then-flip, authz by teacherId)
 export * from "./overrides.ts"; // S-1: Studio content overlay (journal-then-flip publish/revert/fold)
 export * from "./drafts.ts"; // S-2: Studio full-CRUD drafts (blind-solve gate; journal-then-flip)
+export * from "./solve-runs.ts"; // S-2b: async blind-solve runs (Vercel Sandbox orchestration)
 export * from "./bootstrap-teacher.ts"; // one-time v2-native teacher bootstrap (lock-out recovery; token + one-shot gated at /bootstrap)

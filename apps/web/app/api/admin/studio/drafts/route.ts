@@ -1,17 +1,22 @@
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+// publish does the sandbox setup + npm install synchronously (~20–40s) before
+// the solve runs DETACHED; give the function room for that setup.
+export const maxDuration = 60;
 
 /**
- * S-2 · Studio full-item CRUD mutations (teacher-gated). One POST, three
- * actions (save draft / publish / revert). The publish action is the HARD
- * BLOCK: a created/replaced item goes live ONLY after
+ * S-2 · Studio full-item CRUD mutations (teacher-gated). One POST, actions:
+ * save draft / publish / poll / revert. The publish action is the HARD BLOCK: a
+ * created/replaced item goes live ONLY after
  *   (a) the free pre-gate — zod + frameability + key-solvability, AND
- *   (b) the live blind-solve gate — a capable model solves it and its answer
- *       grades "correct" through the real engine.
- * Both checks are journaled to content_checks BEFORE the status flip
- * (journal-then-flip: Neon HTTP has no transactions, so a crash must leave a
- * recorded check with an un-flipped draft, never a published draft with no
- * check). A "remove" draft skips the solve gate — there is nothing to solve.
+ *   (b) the sandbox blind-solve gate (S-2b) — a capable model solves the item
+ *       BLIND in a Vercel Sandbox (authed by the operator's Claude subscription
+ *       OAuth token), and its answer grades "correct" through @domigo/engine.
+ * The blind-solve is ASYNC (a sandbox outlives a serverless function): publish
+ * kicks it off + returns { status: "checking", runId }; the client polls the
+ * `poll` action until the run reaches a terminal state. journal-then-flip: the
+ * check is recorded BEFORE the draft flips (in the poll's grade step). A
+ * "remove" draft skips the solve gate — there is nothing to solve.
  *
  * The client is never trusted: canon-membership coherence (create ⇒ new id,
  * replace/remove ⇒ existing id), id↔unit coherence, and the full schema are
@@ -19,12 +24,13 @@ export const dynamic = "force-dynamic";
  */
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { deleteDraft, getDb, loadDraft, recordCheck, saveDraft, setDraftStatus, type DraftAction } from "@domigo/db";
+import { createSolveRun, deleteDraft, getDb, loadDraft, recordCheck, saveDraft, setDraftStatus, type DraftAction } from "@domigo/db";
 import { loadUnit, normalizePatchColumn, validateFullItem, type ItemKind } from "@domigo/content-loader";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { getTeacher } from "@/lib/teacher";
 import { preGate } from "@/lib/studio-gate";
-import { solveGate } from "@/lib/studio-solve";
+import { startSolveRun, pollSolveRun } from "@/lib/studio-solve-sandbox";
+import { DEFAULT_STUDIO_SOLVER_MODEL, isStudioSolverModel } from "@/lib/studio-solver-models";
 
 const SaveBody = z.object({
   action: z.literal("save"),
@@ -34,9 +40,10 @@ const SaveBody = z.object({
   draftAction: z.enum(["create", "replace", "remove"]),
   item: z.unknown(), // full item (create/replace); null/ignored for remove
 });
-const PublishBody = z.object({ action: z.literal("publish"), itemId: z.string().min(1) });
+const PublishBody = z.object({ action: z.literal("publish"), itemId: z.string().min(1), model: z.string().optional() });
+const PollBody = z.object({ action: z.literal("poll"), runId: z.string().min(1) });
 const RevertBody = z.object({ action: z.literal("revert"), itemId: z.string().min(1) });
-const Body = z.discriminatedUnion("action", [SaveBody, PublishBody, RevertBody]);
+const Body = z.discriminatedUnion("action", [SaveBody, PublishBody, PollBody, RevertBody]);
 
 /** "g2u03.w.foo" / "g2u03.gi.key.mc.001" → "g2-u03" (the unit slug). */
 function unitOfId(itemId: string): string | null {
@@ -138,31 +145,30 @@ export async function POST(req: Request): Promise<Response> {
       return NextResponse.json({ ok: false, error: "gate_failed", stage: pre.stage, errors: pre.errors }, { status: 400 });
     }
 
-    // layer 4 · live blind-solve
+    // layer 4 · ASYNC sandbox blind-solve (subscription OAuth). Create the run
+    // row, spin up + kick off the detached sandbox, and hand back a runId; the
+    // client polls until it reaches a terminal state (the poll grades + flips).
+    const model = body.model && isStudioSolverModel(body.model) ? body.model : DEFAULT_STUDIO_SOLVER_MODEL;
     await setDraftStatus(getDb(), body.itemId, "checking").catch(() => {});
-    const solve = await solveGate({ kind, item, frame: pre.frame!, grade: row.unitSlug });
+    let runId: string;
     try {
-      await recordCheck(getDb(), {
-        draftId: row.id,
-        checkKind: "blind_solve",
-        verdict: solve.ok ? "pass" : "fail",
-        evidence: { stage: solve.stage, model: solve.model, effort: solve.effort, candidates: solve.candidates, top: solve.top, usage: solve.usage, note: solve.note },
-      });
+      runId = await createSolveRun(getDb(), { itemId: body.itemId, unitSlug: row.unitSlug, kind, model, triggeredBy: teacher.userId });
     } catch {
       return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });
     }
-    if (!solve.ok) {
+    try {
+      await startSolveRun(runId); // startSolveRun marks the run failed on setup error
+    } catch (err) {
       await setDraftStatus(getDb(), body.itemId, "check_failed").catch(() => {});
-      return NextResponse.json({ ok: false, error: "gate_failed", stage: solve.stage, errors: solve.note ? [solve.note] : [], candidates: solve.candidates }, { status: 400 });
+      return NextResponse.json({ ok: false, error: "solve_start_failed", errors: [err instanceof Error ? err.message : String(err)] }, { status: 500 });
     }
+    return NextResponse.json({ ok: true, status: "checking", runId, model });
+  }
 
-    // journal-then-flip: the passing checks are already recorded — now flip live.
-    try {
-      await setDraftStatus(getDb(), body.itemId, "published");
-    } catch {
-      return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });
-    }
-    return NextResponse.json({ ok: true, status: "published", solvedBy: solve.model });
+  // ── poll a running solve (grade + flip happens here when it finishes) ──
+  if (body.action === "poll") {
+    const result = await pollSolveRun(body.runId);
+    return NextResponse.json({ ok: true, ...result });
   }
 
   // ── revert (discard the draft → back to canon) ──
