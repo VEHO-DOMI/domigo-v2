@@ -62,12 +62,20 @@ function paintSmudge(kind: EnemyKind): HTMLCanvasElement {
   c.width = 40;
   c.height = 34;
   const g = c.getContext("2d")!;
-  g.fillStyle = kind === "flyer" ? "#2c2350" : "#1c1b2e";
-  g.beginPath();
-  if (kind === "walker") g.ellipse(20, 22, 17, 11, 0, 0, Math.PI * 2);
-  else if (kind === "hopper") g.ellipse(20, 19, 13, 14, 0, 0, Math.PI * 2);
-  else { g.ellipse(20, 16, 15, 10, 0, 0, Math.PI * 2); g.ellipse(8, 10, 5, 3, -0.5, 0, Math.PI * 2); g.ellipse(32, 10, 5, 3, 0.5, 0, Math.PI * 2); }
+  // a violet rim light so the ink reads against the dark backdrop
+  const body = () => {
+    g.beginPath();
+    if (kind === "walker") g.ellipse(20, 22, 17, 11, 0, 0, Math.PI * 2);
+    else if (kind === "hopper") g.ellipse(20, 19, 13, 14, 0, 0, Math.PI * 2);
+    else { g.ellipse(20, 16, 15, 10, 0, 0, Math.PI * 2); g.ellipse(8, 10, 5, 3, -0.5, 0, Math.PI * 2); g.ellipse(32, 10, 5, 3, 0.5, 0, Math.PI * 2); }
+  };
+  g.fillStyle = kind === "flyer" ? "#453a78" : "#37325c";
+  body();
   g.fill();
+  g.strokeStyle = "#8b7cf5";
+  g.lineWidth = 2;
+  body();
+  g.stroke();
   // eyes — big and wary (the Schluckwort family resemblance)
   g.fillStyle = "#f6f5ff";
   g.beginPath(); g.ellipse(14, 15, 4.5, 5.5, 0, 0, Math.PI * 2); g.ellipse(26, 15, 4.5, 5.5, 0, 0, Math.PI * 2); g.fill();
@@ -147,6 +155,10 @@ export class ArcadeScene extends Phaser.Scene {
   private jumpPressedAt = -9999;
   private jumpHeld = false;
   private invulnUntil = 0;
+  /** Last grounded, spike-free footing — a spike hit returns you HERE (the
+   *  kind version of Keen's pit death: pits are un-jumpable by design, so
+   *  damage-in-place would trap a kid into bleeding hearts). */
+  private safePos = { x: 0, y: 0 };
   private hearts = 3;
   private letters = 0;
   private words = 0;
@@ -158,6 +170,11 @@ export class ArcadeScene extends Phaser.Scene {
   private burst: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
   private dust: Phaser.GameObjects.Particles.ParticleEmitter | null = null;
   private wasGrounded = false;
+  /** The player's true scale — every squash/stretch tween starts and ends
+   *  HERE (multiplying the live scale let an interrupted tween capture a
+   *  mid-squash value as its base, permanently shrinking sprite AND body —
+   *  the embedded-in-the-floor bug the machine playtest caught). */
+  private baseScale = 1;
 
   constructor(cfg: ArcadeConfig) {
     super("arcade");
@@ -247,8 +264,10 @@ export class ArcadeScene extends Phaser.Scene {
 
     // ── the player ──
     this.startPx = { x: level.start.c * TILE + TILE / 2, y: level.start.r * TILE + TILE / 2 };
+    this.safePos = { ...this.startPx };
     this.player = this.physics.add.sprite(this.startPx.x, this.startPx.y, "p-right");
     this.player.setDisplaySize(TILE, TILE);
+    this.baseScale = this.player.scaleY;
     this.player.body.setSize(20, 40).setOffset(14, 6);
     this.player.body.setMaxVelocityY(ARCADE.maxFall);
     this.physics.world.gravity.y = ARCADE.gravity;
@@ -300,8 +319,10 @@ export class ArcadeScene extends Phaser.Scene {
   }
 
   /** Read-only snapshot for the non-prod `__domigo` machine-playtest harness. */
-  debugState(): { x: number; y: number; vx: number; vy: number; grounded: boolean; hearts: number; letters: number; words: number; combo: number; frozen: boolean; over: boolean; exitOpen: boolean; enemiesLeft: number; fps: number } {
+  debugState(): { x: number; y: number; vx: number; vy: number; grounded: boolean; hearts: number; letters: number; words: number; combo: number; frozen: boolean; over: boolean; exitOpen: boolean; enemiesLeft: number; fps: number; scaleY: number; bodyBottom: number } {
     return {
+      scaleY: Math.round((this.player?.scaleY ?? 0) * 1000) / 1000,
+      bodyBottom: Math.round(this.player?.body?.bottom ?? 0),
       x: Math.round(this.player?.x ?? 0),
       y: Math.round(this.player?.y ?? 0),
       vx: Math.round(this.player?.body?.velocity.x ?? 0),
@@ -366,24 +387,28 @@ export class ArcadeScene extends Phaser.Scene {
         this.cameras.main.shake(70, 0.004);
       }
     }
+    // The word comes back EITHER WAY (the answer was shown — same doctrine as
+    // the overworld battle: progress is never hostage to one tap). Skill is
+    // rewarded through combo/points/hearts, not through lockout — a run can
+    // always reach the exit.
+    this.words += 1;
+    this.cfg.onWords(this.words);
     if (correct) {
       this.combo += 1;
       this.maxCombo = Math.max(this.maxCombo, this.combo);
-      this.words += 1;
       const pts = comboPoints(this.combo);
       this.cfg.onCombo(this.combo, pts);
-      this.cfg.onWords(this.words);
       playSfx(this.combo >= 3 ? "streak" : "chime-correct");
       if (this.cfg.reducedMotion !== true && enemy) {
         const t = this.add.text(enemy.sprite.x, enemy.sprite.y - 20, `+${pts}`, { fontFamily: "system-ui, sans-serif", fontSize: "22px", fontStyle: "bold", color: "#ffe066" }).setOrigin(0.5).setDepth(6);
         this.tweens.add({ targets: t, y: t.y - 40, alpha: 0, duration: 700, ease: "Sine.easeOut", onComplete: () => t.destroy() });
       }
-      if (!this.exitOpen && this.words >= this.cfg.wordsNeeded) this.openExit();
     } else {
       this.combo = 0;
       this.cfg.onCombo(0, 0);
       this.hurt("quickfire");
     }
+    if (!this.exitOpen && this.words >= this.cfg.wordsNeeded) this.openExit();
     this.invulnUntil = this.time.now + 1200;
   }
 
@@ -404,8 +429,11 @@ export class ArcadeScene extends Phaser.Scene {
     this.cfg.onHearts(this.hearts);
     playSfx("thud");
     if (source === "spikes") {
-      // knock back up and toward safety, brief red flash
-      this.player.setVelocity(this.player.body.velocity.x > 0 ? -180 : 180, -430);
+      // pop up out of the ink, then return to the last safe footing
+      this.player.setVelocity(0, -430);
+      this.time.delayedCall(260, () => {
+        if (!this.over) this.player.setPosition(this.safePos.x, this.safePos.y).setVelocity(0, 0);
+      });
     }
     if (this.cfg.reducedMotion !== true) {
       this.player.setTintFill(0xff6b6b);
@@ -417,6 +445,26 @@ export class ArcadeScene extends Phaser.Scene {
       this.player.setVelocity(0, 0);
       this.cfg.onGameOver();
     }
+  }
+
+  /** Fall speed at the moment of leaving the air (for the landing squash gate). */
+  private landingVy = 0;
+
+  /** Idempotent squash/stretch: kill any live scale tween, reset to the true
+   *  base, tween out and ALWAYS restore the base — the body follows the scale,
+   *  so a drifting scale physically shrinks the player into the floor. */
+  private squashStretch(sy: number, sx: number): void {
+    this.tweens.killTweensOf(this.player);
+    this.player.setScale(this.baseScale);
+    this.tweens.add({
+      targets: this.player,
+      scaleY: this.baseScale * sy,
+      scaleX: this.baseScale * sx,
+      duration: 80,
+      yoyo: true,
+      onComplete: () => this.player.setScale(this.baseScale),
+      onStop: () => this.player.setScale(this.baseScale),
+    });
   }
 
   /** Restart after game over: position + hearts reset; letters, popped enemies
@@ -466,19 +514,28 @@ export class ArcadeScene extends Phaser.Scene {
       this.jumpPressedAt = -9999;
       playSfx("tick");
       if (this.cfg.reducedMotion !== true) {
-        // stretch on take-off
-        this.tweens.add({ targets: this.player, scaleY: this.player.scaleY * 1.12, scaleX: this.player.scaleX * 0.9, duration: 90, yoyo: true });
+        this.squashStretch(1.12, 0.9); // stretch on take-off
         this.dust?.explode(5, this.player.x, this.player.y + 20);
       }
     }
     if (!jumpDown && this.jumpHeld) body.setVelocityY(jumpCut(body.velocity.y));
     this.jumpHeld = jumpDown;
 
-    // land squash + dust
-    if (grounded && !this.wasGrounded && this.cfg.reducedMotion !== true) {
-      this.tweens.add({ targets: this.player, scaleY: this.player.scaleY * 0.86, scaleX: this.player.scaleX * 1.1, duration: 80, yoyo: true });
+    // remember safe footing (grounded, not standing over spikes)
+    if (grounded && now >= this.invulnUntil) {
+      const c = Math.floor(this.player.x / TILE);
+      const r = Math.floor(this.player.y / TILE);
+      if (this.cfg.level.rows[r + 1]?.[c] !== "^" && this.cfg.level.rows[r]?.[c] !== "^") {
+        this.safePos = { x: this.player.x, y: this.player.y };
+      }
+    }
+
+    // land squash + dust (only for a REAL landing, not boot-settle flicker)
+    if (grounded && !this.wasGrounded && this.landingVy > 250 && this.cfg.reducedMotion !== true) {
+      this.squashStretch(0.86, 1.1);
       this.dust?.explode(6, this.player.x, this.player.y + 20);
     }
+    if (!grounded) this.landingVy = body.velocity.y;
     this.wasGrounded = grounded;
 
     // run frames (reuse the overworld walk cycle on the right-facing frames)

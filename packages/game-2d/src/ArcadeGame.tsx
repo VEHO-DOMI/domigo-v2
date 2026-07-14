@@ -41,7 +41,10 @@ export function ArcadeGame(props: ArcadeGameProps) {
   const [combo, setCombo] = useState(0);
   const [reducedMotion, setReducedMotion] = useState(false);
   const level = useMemo(() => parseArcadeLevel(TINTENLAUF_ROWS), []);
-  const wordsNeeded = Math.min(5, level.enemies.length);
+  // The gate must be earnable ON the running line — flyers hover off it and
+  // are bonus (combo/points), never the key. A kid who can't reach the flyer
+  // still finishes the run.
+  const wordsNeeded = Math.min(5, level.enemies.filter((e) => e.kind !== "flyer").length);
   const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -64,6 +67,9 @@ export function ArcadeGame(props: ArcadeGameProps) {
           scene.resolveQuickfire(true);
           return;
         }
+        if (process.env.NODE_ENV !== "production") {
+          (window as unknown as Record<string, unknown>)["__domigoArcadeQf"] = qf; // machine-playtest peek
+        }
         setPhase({ kind: "quickfire", qf, deadline: Date.now() + QF_SECONDS * 1000 });
       },
       onLetters: setLetters,
@@ -82,6 +88,10 @@ export function ArcadeGame(props: ArcadeGameProps) {
       pixelArt: true,
       backgroundColor: "#141221",
       fps: { target: 60, min: 30 },
+      // ALL sound is the game-feel synth's job; Phaser's own sound manager
+      // would otherwise fight a closed AudioContext across route navigations
+      // (console InvalidStateError on every visibility flip).
+      audio: { noAudio: true },
       physics: { default: "arcade", arcade: { gravity: { x: 0, y: 0 } } },
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
       scene,
