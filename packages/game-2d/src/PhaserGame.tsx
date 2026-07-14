@@ -19,8 +19,10 @@ import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-
 import { battlePlan } from "./battle.ts";
 import { BattleStage } from "./BattleStage.tsx";
 import { OverworldScene, type OverworldState, type PadState } from "./OverworldScene.ts";
+import { cellCenterPx, spawnFor, type ParsedZone } from "./world.ts";
 
-/** Cosmetic save state persisted by the app (position + cleared node positions). */
+/** ONE zone's cosmetic state as the scene reports it (position + cleared node
+ *  cells). The app folds these into the v2 world container (world.ts). */
 export type GameSaveState = OverworldState;
 
 export interface GameAttempt {
@@ -61,6 +63,8 @@ export interface WorldCopy {
   stageSkin: "ink" | "book";
   /** G-A1: caption over the recovered word on victory ("Zurückgeholt!"). */
   victoryLabel: string;
+  /** W-1: the bump line on an ink-sealed door ("Versiegelt — …"). */
+  sealedLabel: string;
 }
 
 export interface PhaserGameProps {
@@ -91,9 +95,17 @@ export interface PhaserGameProps {
   /** LOOK-1: real-art stems on disk (stem → URL) from apps/web/lib/tile-art.ts;
    *  the scene preloads these and falls back to procedural paint per kind. */
   tileArt?: Record<string, string>;
-  /** Cosmetic resume state (player position + cleared nodes). */
-  initialSave?: GameSaveState | null;
-  /** Persist cosmetic state (the app debounces localStorage + /api/game-save). */
+  /** W-1: the zone's parsed data floor plan (null ⇒ legacy THEMES room). */
+  layout?: ParsedZone | null;
+  /** W-1: the zone short the player walked in FROM (door spawn beats save pos). */
+  from?: string | null;
+  /** W-1: zone shorts with released chapters — doors to the rest are ink-sealed. */
+  unlockedZones?: string[];
+  /** W-1: door travel — the app fades and navigates to the target zone. */
+  onNavigate?: (targetZoneShort: string) => void;
+  /** Cosmetic resume state (position nullable — fresh entries have none). */
+  initialSave?: { pos: [number, number] | null; cleared: Array<string | number> } | null;
+  /** Persist ONE zone's cosmetic state (the app merges + debounces persistence). */
   onSave?: (s: GameSaveState) => void;
 }
 
@@ -257,6 +269,9 @@ export function PhaserGame(props: PhaserGameProps) {
   // G-A1: the BattleStage needs the motion verdict in render (state, not just
   // the scene config); resolved in the mount effect below.
   const [reducedMotion, setReducedMotion] = useState(false);
+  // W-1: door-travel fade + the sealed-door toast.
+  const [leaving, setLeaving] = useState(false);
+  const [sealedToast, setSealedToast] = useState(false);
   // One deterministic presentation per ✦ node (pool rotation, word bank, dropdown).
   const plan = useMemo(() => battlePlan(props.encounters), [props.encounters]);
 
@@ -281,12 +296,32 @@ export function PhaserGame(props: PhaserGameProps) {
       new URLSearchParams(window.location.search).get("motion") === "reduce" ||
       !feel().motionOK;
     setReducedMotion(reducedMotion);
+    // W-1: walking in through a door spawns at that door's threshold — beating
+    // the saved position (spawnFor is pure + unit-tested; null without `from`).
+    const spawnPx = props.layout && props.from ? cellCenterPx(spawnFor(props.layout, props.from)) : null;
     const scene = new OverworldScene({
       seed: props.seed,
       playerSeed: props.playerSeed,
       zoneId: props.zoneId,
       generator: props.generator,
       tileArt: props.tileArt,
+      layout: props.layout ?? null,
+      unlockedZones: props.unlockedZones,
+      spawnPx,
+      // W-1 door travel: freeze the world, fade to ink, let the app navigate.
+      // Reduced-motion skips the fade beat (instant travel).
+      onDoor: (target) => {
+        if (reducedMotion) {
+          props.onNavigate?.(target);
+        } else {
+          setLeaving(true);
+          window.setTimeout(() => props.onNavigate?.(target), 260);
+        }
+      },
+      onSealedDoor: () => {
+        setSealedToast(true);
+        window.setTimeout(() => setSealedToast(false), 2200);
+      },
       encounterCount: props.encounters.length,
       onEncounter: (idx) => setOverlay({ kind: "encounter", idx }),
       onNpc: () => setOverlay({ kind: "dialogue" }),
@@ -345,6 +380,26 @@ export function PhaserGame(props: PhaserGameProps) {
       <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", marginTop: 6 }}>
         {`${coarse ? props.copy.moveHintCoarse : props.copy.moveHintFine} · ${props.copy.encounterHint} · ${props.copy.npcHint}`}
       </p>
+
+      {/* W-1: the sealed-door bump line — a calm toast, auto-hides. */}
+      {sealedToast && (
+        <div role="status" style={{
+          position: "absolute", left: "50%", bottom: 46, transform: "translateX(-50%)",
+          background: "rgba(15, 14, 26, 0.88)", color: "#e8e6f5", fontSize: 13, fontWeight: 600,
+          padding: "8px 14px", borderRadius: 999, whiteSpace: "nowrap", zIndex: 6,
+          boxShadow: "0 6px 20px rgba(0,0,0,0.35)",
+        }}>
+          {props.copy.sealedLabel}
+        </div>
+      )}
+
+      {/* W-1: door travel — an ink dip while the next zone loads. */}
+      {leaving && (
+        <div aria-hidden="true" style={{
+          position: "fixed", inset: 0, zIndex: 120, background: "#14121f",
+          animation: "dg-encounter-veil-in 240ms ease-out both",
+        }} />
+      )}
 
       {overlay?.kind === "encounter" && props.encounters[overlay.idx] && (
         <BattleStage
