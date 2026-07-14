@@ -1,7 +1,8 @@
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
 import type { AudioRef, GrammarItem, ListeningItem, VocabItem } from "@domigo/content-schema";
-import { listTestUnits, loadListening, loadTest, loadUnit } from "@domigo/content-loader";
+import { listTestUnits, loadListening, loadTest } from "@domigo/content-loader";
+import { loadUnitWithOverrides } from "@/lib/content-service";
 import TestSession, { type ResolvedSection } from "./TestSession";
 
 export const dynamic = "force-dynamic";
@@ -15,7 +16,7 @@ export default async function TestPage({ params }: { params: Promise<{ slug: str
 
   const file = loadTest(slug);
   if (!file) notFound();
-  const unit = loadUnit(slug);
+  const unit = await loadUnitWithOverrides(slug);
   const listening = loadListening(slug);
 
   // listening item id → {item, its task's audio} (a listening test section needs the clip).

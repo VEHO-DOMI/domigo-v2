@@ -64,6 +64,13 @@
       "when": 1783950111458,
       "tag": "0008_checkup_config",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1784047221432,
+      "tag": "0009_blue_captain_stacy",
+      "breakpoints": true
     }
   ]
 }

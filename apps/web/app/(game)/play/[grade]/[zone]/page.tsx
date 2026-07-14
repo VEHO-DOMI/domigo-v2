@@ -8,7 +8,8 @@
  */
 import { redirect } from "next/navigation";
 import { Encounter, type Chapter, type ComprehensionItem, type GrammarItem, type VocabItem } from "@domigo/content-schema";
-import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadStoryFlags, loadUnit, storyIdForGrade } from "@domigo/content-loader";
+import { loadGameMap, loadReleasedChapters, loadStory, loadStoryCast, loadStoryComprehension, loadStoryFlags, storyIdForGrade } from "@domigo/content-loader";
+import { loadUnitWithOverrides } from "@/lib/content-service";
 import { getDb, getDueRefs, getGameSave, getSolvedGameItemIds } from "@domigo/db";
 import { EVIDENCE, type EvidencePiece } from "@domigo/game-detective";
 import { resolveEncounterTasks, storyItemKey, type ResolvedItem } from "@domigo/game-core";
@@ -107,7 +108,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     const chapter = story?.chapters.find((c) => c.id.endsWith(`.${zone}`) && released.includes(c.id));
     if (!chapter) redirect(hubHref);
     const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
-    const unit = loadUnit(slug);
+    const unit = await loadUnitWithOverrides(slug);
     const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
     // Phase 4: genuine spaced retrieval — resolve ONLY actually-due clues from this
     // unit (no scope-random filler), so the re-interview beat appears only when due.
@@ -154,7 +155,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     const chapter = story?.chapters.find((c) => c.id.endsWith(`.${zone}`) && released.includes(c.id));
     if (!chapter) redirect(hubHref);
     const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
-    const unit = loadUnit(slug);
+    const unit = await loadUnitWithOverrides(slug);
     const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
     const novelArt = resolveNovelArt(storyId, grade, chapter);
     const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-novel").NovelSave } : null;
@@ -179,7 +180,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     const chapter = story?.chapters.find((c) => c.id.endsWith(`.${zone}`) && released.includes(c.id));
     if (!chapter) redirect(hubHref);
     const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
-    const unit = loadUnit(slug);
+    const unit = await loadUnitWithOverrides(slug);
     const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
     // resolveNovelArt is story-art@1-generic despite the name (same manifest shape).
     const tripArt = resolveNovelArt(storyId, grade, chapter);
@@ -208,7 +209,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
   if (!mapZone || !chapter) redirect(hubHref);
 
   const slug = `g${grade}-u${String(chapter.unit).padStart(2, "0")}`;
-  const unit = loadUnit(slug);
+  const unit = await loadUnitWithOverrides(slug);
   const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
 
   // W-1 WORLD-ALIVE: a zone with a data layout declares its own battle count;

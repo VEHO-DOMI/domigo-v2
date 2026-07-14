@@ -395,3 +395,65 @@ export const v2RosterEvents = v2.table(
     byClass: index("roster_events_class_idx").on(t.classId),
   }),
 );
+
+// ---------------------------------------------------------------------------
+// S-1 · Studio content overlay (migration 0009). A teacher edits PROSE on a
+// task item; the patch is allowlist-gated in the app (@domigo/content-loader
+// `validatePatch`) so grading keys can never enter it. Publish is journal-
+// then-flip: append a `content_revisions` row FIRST, then flip the override's
+// status — a crash between the two leaves a harmless orphan history row.
+// `site_copy` is the flat chrome-copy overlay (save = live).
+// ---------------------------------------------------------------------------
+
+/** One row per patched item (the editor upserts on `item_id`). `patch` is the
+ *  prose-only field→value map; `status` gates whether it is served. */
+export const v2ContentOverrides = v2.table(
+  "content_overrides",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    itemId: text("item_id").notNull(), // g2u03.w.… (vocab) | g2u03.gi.….001 (grammar)
+    unitSlug: text("unit_slug").notNull(), // g<N>-u<NN> — the unit the item lives in
+    kind: text("kind").notNull(), // 'vocab'|'grammar' — picks the prose allowlist
+    patch: jsonb("patch").notNull().default({}), // prose-only field→value map
+    status: text("status").notNull().default("draft"), // 'draft'|'published' (app-validated)
+    foldedAt: timestamp("folded_at", { withTimezone: true }), // set once exported back to git
+    updatedBy: uuid("updated_by"), // teacher uuid — nullable, NO cross-schema FK
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    itemUnique: uniqueIndex("content_overrides_item_unique").on(t.itemId),
+    byStatus: index("content_overrides_status_idx").on(t.status),
+  }),
+);
+
+/** Append-only publish/revert/fold history (journal-then-flip's journal). */
+export const v2ContentRevisions = v2.table(
+  "content_revisions",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    itemId: text("item_id").notNull(),
+    unitSlug: text("unit_slug").notNull(),
+    patch: jsonb("patch").notNull().default({}),
+    action: text("action").notNull(), // 'publish'|'revert'|'fold' (app-validated)
+    actorId: uuid("actor_id"), // teacher uuid — nullable
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    byItem: index("content_revisions_item_idx").on(t.itemId, t.createdAt.desc()),
+  }),
+);
+
+/** Flat site/UI copy overlay (chrome strings), keyed by a dotted copy key. */
+export const v2SiteCopy = v2.table(
+  "site_copy",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    key: text("key").notNull(), // e.g. 'home.hero.title' (app-registered keyspace)
+    value: text("value").notNull(),
+    updatedBy: uuid("updated_by"),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    keyUnique: uniqueIndex("site_copy_key_unique").on(t.key),
+  }),
+);

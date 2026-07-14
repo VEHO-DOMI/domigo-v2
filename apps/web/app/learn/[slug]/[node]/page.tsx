@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
-import { listApprovedUnits, loadUnit, loadUnitStructures, loadWordbank } from "@domigo/content-loader";
+import { listApprovedUnits, loadUnitStructures, loadWordbank } from "@domigo/content-loader";
+import { loadUnitWithOverrides } from "@/lib/content-service";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { buildUnitNodes, getDb, getUnitPathProgress, nodeItemIds, withProgress } from "@domigo/db";
 import TeachingNode from "./TeachingNode";
@@ -17,7 +18,7 @@ export default async function NodeRunnerPage({ params }: { params: Promise<{ slu
   if (session.user.role === "teacher") redirect("/admin");
   if (!listApprovedUnits().includes(slug)) notFound();
 
-  const unit = loadUnit(slug);
+  const unit = await loadUnitWithOverrides(slug);
   const nodes = buildUnitNodes(unit.vocab, unit.grammar);
   const def = nodes.find((n) => n.id === nodeId);
   if (!def) notFound();
