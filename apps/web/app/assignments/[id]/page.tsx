@@ -8,7 +8,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import type { GrammarItem, VocabItem } from "@domigo/content-schema";
-import { loadUnit } from "@domigo/content-loader";
+import { loadUnitWithOverrides, type UnitContent } from "@/lib/content-service";
 import {
   formatCheckupPoints,
   getDb,
@@ -39,14 +39,15 @@ const CHECKUP_TITLE: Record<CheckupKind, string> = {
   "picture-mc": "Bilder",
 };
 
-/** Resolve a section's item ids to full items (cached loadUnit per slug). */
-function resolveItems(itemIds: string[], cache: Map<string, ReturnType<typeof loadUnit>>): Array<VocabItem | GrammarItem> {
+/** Resolve a section's item ids to full items from the pre-filled overlay cache
+ *  (sync — the caller pre-loads every referenced unit WITH overrides applied). */
+function resolveItems(itemIds: string[], cache: Map<string, UnitContent>): Array<VocabItem | GrammarItem> {
   const out: Array<VocabItem | GrammarItem> = [];
   for (const id of itemIds) {
     const ref = parseItemRef(id);
     if (!ref) continue;
-    let unit = cache.get(ref.unitSlug);
-    if (!unit) { unit = loadUnit(ref.unitSlug); cache.set(ref.unitSlug, unit); }
+    const unit = cache.get(ref.unitSlug);
+    if (!unit) continue; // unit not pre-loaded (stale/un-approved slug) — skip
     const item = ref.kind === "vocab" ? unit.vocab.find((v) => v.id === id) : unit.grammar.find((g) => g.id === id);
     if (item) out.push(item);
   }
@@ -78,7 +79,25 @@ export default async function AssignmentPage({ params }: { params: Promise<{ id:
 
   // ── active sitting → the runner ──
   if (live) {
-    const cache = new Map<string, ReturnType<typeof loadUnit>>();
+    // Pre-load every unit this assignment references, WITH the Studio prose
+    // overlay applied (once, async), so resolveItems can stay synchronous.
+    const cache = new Map<string, UnitContent>();
+    const neededSlugs = new Set<string>();
+    for (const s of sections) {
+      for (const iid of (s.itemIds as string[] | null) ?? []) {
+        const r = parseItemRef(iid);
+        if (r) neededSlugs.add(r.unitSlug);
+      }
+    }
+    await Promise.all(
+      [...neededSlugs].map(async (slug) => {
+        try {
+          cache.set(slug, await loadUnitWithOverrides(slug));
+        } catch {
+          /* stale/un-approved slug — resolveItems skips its items */
+        }
+      }),
+    );
 
     // C-1: a checkup renders the paper-shaped one-page runner. Sections carry
     // their /20 config; per-item pools are computed HERE (server) so the client

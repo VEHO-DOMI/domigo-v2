@@ -11,6 +11,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+// The Studio overlay security core (pure, IO-free) — re-exported for the
+// content-service + API route. See ./overrides.ts.
+export { applyStudioOverlay, fieldsChanged, normalizePatchColumn, validatePatch, VOCAB_PROSE_KEYS, GRAMMAR_PROSE_KEYS } from "./overrides.ts";
+export type { ItemKind, ItemPatch, VocabPatch, GrammarPatch, ValidationResult } from "./overrides.ts";
 import { Cast, GameMap, StoryFlags, TrapRegistry, GrammarFile, GrammarStructuresFile, ListeningFile, Story, StoryComprehensionFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
 import type { GrammarItem, GrammarStructure, VocabItem } from "@domigo/content-schema";
 import type { Cast as CastT, GameMap as GameMapT, Story as StoryT, StoryComprehensionFile as StoryComprehensionFileT, StoryFlags as StoryFlagsT, TrapRegistry as TrapRegistryT } from "@domigo/content-schema";

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { auth } from "@/auth";
-import { listApprovedUnits, loadUnit } from "@domigo/content-loader";
+import { listApprovedUnits } from "@domigo/content-loader";
+import { loadUnitWithOverrides } from "@/lib/content-service";
 import { buildUnitNodes, getDb, getUnitPathProgress, withProgress } from "@domigo/db";
 import type { NodeView } from "@domigo/db";
 
@@ -14,7 +15,7 @@ export default async function UnitPathPage({ params }: { params: Promise<{ slug:
   if (session.user.role === "teacher") redirect("/admin");
   if (!listApprovedUnits().includes(slug)) notFound();
 
-  const unit = loadUnit(slug);
+  const unit = await loadUnitWithOverrides(slug);
   const nodes = buildUnitNodes(unit.vocab, unit.grammar);
   let completed = new Map<string, { stars: number }>();
   try {

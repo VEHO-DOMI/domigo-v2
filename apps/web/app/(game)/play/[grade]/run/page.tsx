@@ -8,7 +8,7 @@
  */
 import { redirect } from "next/navigation";
 import { Encounter } from "@domigo/content-schema";
-import { loadUnit } from "@domigo/content-loader";
+import { loadUnitWithOverrides } from "@/lib/content-service";
 import { getDb, getDueRefs } from "@domigo/db";
 import { resolveEncounterTasks } from "@domigo/game-core";
 import { getActingUserForPage } from "@/lib/identity";
@@ -37,7 +37,7 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
   if (!acting) redirect("/signin");
 
   const slug = `g${grade}-u01`;
-  const unit = loadUnit(slug);
+  const unit = await loadUnitWithOverrides(slug);
   const due = await getDueRefs(getDb(), acting.userId, { kind: "unit", slug }, 24).catch(() => []);
   const enc = Encounter.parse({
     schema: "encounter@1",
