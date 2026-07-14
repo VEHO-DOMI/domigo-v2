@@ -32,7 +32,10 @@ export default async function StudioListPage() {
     <main style={{ maxWidth: 780, margin: "0 auto", padding: "28px 20px 48px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
         <h1 style={{ fontSize: 25, margin: 0, fontFamily: "var(--font-display)", color: "var(--ink)" }}>Studio</h1>
-        <Link href="/admin" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Verwaltung</Link>
+        <div style={{ display: "flex", gap: 14, alignItems: "baseline" }}>
+          <Link href="/admin/studio/new" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 700 }}>+ Neue Aufgabe</Link>
+          <Link href="/admin" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Verwaltung</Link>
+        </div>
       </div>
       <p style={{ color: "var(--text-secondary)", marginTop: 0 }}>
         Bearbeite den <strong>Text</strong> einer Aufgabe — Hinweise, Erklärungen, Definitionen, Beispielsätze. Die Lösungen (Übersetzungen, Antworten) bleiben gesperrt.
