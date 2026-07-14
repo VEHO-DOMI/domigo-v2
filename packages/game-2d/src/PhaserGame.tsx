@@ -10,12 +10,14 @@
  * The world layer never persists or grades itself.
  */
 import Phaser from "phaser";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import type { Chapter, GrammarItem, Scene, VocabItem } from "@domigo/content-schema";
 import type { Tier } from "@domigo/engine";
-import { ChoiceContent, DialogueReveal, GlossReveal, LangToggle, primaryLine, useLangMode } from "@domigo/game-feel";
+import { ChoiceContent, DialogueReveal, feel, GlossReveal, LangToggle, primaryLine, useLangMode } from "@domigo/game-feel";
 import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { GrammarItemView, VocabItemView, type ResultDetail } from "@domigo/task-ui";
+import { battlePlan } from "./battle.ts";
+import { BattleStage } from "./BattleStage.tsx";
 import { OverworldScene, type OverworldState, type PadState } from "./OverworldScene.ts";
 
 /** Cosmetic save state persisted by the app (position + cleared node positions). */
@@ -54,6 +56,11 @@ export interface WorldCopy {
   nextLabel: string;
   /** The end-of-dialogue button ("Schließen"). */
   closeLabel: string;
+  /** G-A1: the BattleStage's theme — "ink" (school/Blank campaigns) or "book"
+   *  (the G1 book world). Campaign-owned like every other chrome decision. */
+  stageSkin: "ink" | "book";
+  /** G-A1: caption over the recovered word on victory ("Zurückgeholt!"). */
+  victoryLabel: string;
 }
 
 export interface PhaserGameProps {
@@ -103,34 +110,11 @@ const panel: CSSProperties = {
   maxHeight: "92%", overflowY: "auto", fontFamily: "var(--font-body)", color: "var(--text)",
   border: "1px solid var(--card-border)", boxShadow: "var(--shadow-elevated)",
 };
-/** A1-5: the accented "event" frame for a ✦ encounter card. */
-const encounterPanel: CSSProperties = {
-  ...panel,
-  border: "2px solid var(--accent)",
-  boxShadow: "0 0 0 4px var(--accent-soft), var(--shadow-elevated)",
-};
+// G-A1: the plain ✦ TaskCard (and its encounterPanel frame) is gone — a ✦ now
+// opens the BattleStage (BattleStage.tsx), which hosts the same task views.
 
 function postAttempt(onAttempt: AttemptFn, mode: string, itemId: string, input: unknown): void {
   void onAttempt({ clientAttemptId: crypto.randomUUID(), itemId, mode, input, latencyMs: null, hintUsed: false });
-}
-
-function TaskCard({ item, mode, onAttempt, onDone, label, continueLabel }: { item: ResolvedItem; mode: string; onAttempt: AttemptFn; onDone: () => void; label: string; continueLabel: string }) {
-  const [answered, setAnswered] = useState(false);
-  const onResult = (_tier: Tier, detail: ResultDetail) => {
-    setAnswered(true);
-    postAttempt(onAttempt, mode, detail.itemId, detail.input); // optimistic; server re-grades + queues
-  };
-  return (
-    <div style={encounterPanel} className="dg-encounter-card">
-      <div style={{ fontSize: 12, color: "var(--accent)", marginBottom: 8, fontFamily: "var(--font-label)", fontWeight: 700, letterSpacing: "0.02em", textTransform: "uppercase" }}>{label}</div>
-      {item.kind === "grammar" ? (
-        <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} />
-      ) : (
-        <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} />
-      )}
-      {answered && <button className="dg-btn" style={{ marginTop: 14 }} onClick={onDone}>{continueLabel}</button>}
-    </div>
-  );
 }
 
 function DialogueOverlay({ grade, mode: attemptMode, copy, chapter, castNames, storyItems, onAttempt, onClose }: {
@@ -270,6 +254,11 @@ export function PhaserGame(props: PhaserGameProps) {
   // Shared with the scene: the d-pad writes, update() reads (one axis expression).
   const padRef = useRef<PadState>({ up: false, down: false, left: false, right: false });
   const [coarse, setCoarse] = useState(false);
+  // G-A1: the BattleStage needs the motion verdict in render (state, not just
+  // the scene config); resolved in the mount effect below.
+  const [reducedMotion, setReducedMotion] = useState(false);
+  // One deterministic presentation per ✦ node (pool rotation, word bank, dropdown).
+  const plan = useMemo(() => battlePlan(props.encounters), [props.encounters]);
 
   useEffect(() => {
     // `?dpad=1` forces the pad on for playtesting (the `?motion=reduce` pattern).
@@ -285,9 +274,13 @@ export function PhaserGame(props: PhaserGameProps) {
     const { width, height } = OverworldScene.dimensions();
     // A1-3: honor OS reduced-motion for the canvas (the walk cycle won't play);
     // `?motion=reduce` forces it on for playtesting (the `?dpad=1` pattern).
+    // G-A1: the user's own FeelGear motion toggle finally reaches the scene too
+    // (feel() is game-feel's imperative snapshot — OS-reduced always wins inside it).
     const reducedMotion =
       window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      new URLSearchParams(window.location.search).get("motion") === "reduce";
+      new URLSearchParams(window.location.search).get("motion") === "reduce" ||
+      !feel().motionOK;
+    setReducedMotion(reducedMotion);
     const scene = new OverworldScene({
       seed: props.seed,
       playerSeed: props.playerSeed,
@@ -354,16 +347,19 @@ export function PhaserGame(props: PhaserGameProps) {
       </p>
 
       {overlay?.kind === "encounter" && props.encounters[overlay.idx] && (
-        <div style={card} className="dg-encounter-veil">
-          <TaskCard
-            item={props.encounters[overlay.idx]!}
-            mode={props.mode}
-            onAttempt={props.onAttempt}
-            onDone={() => closeEncounter(overlay.idx)}
-            label={props.copy.encounterLabel}
-            continueLabel={props.copy.continueLabel}
-          />
-        </div>
+        <BattleStage
+          key={overlay.idx}
+          item={props.encounters[overlay.idx]!}
+          presentation={plan[overlay.idx] ?? { pool: null, bank: null, dropdown: false }}
+          skin={props.copy.stageSkin}
+          label={props.copy.encounterLabel}
+          continueLabel={props.copy.continueLabel}
+          victoryLabel={props.copy.victoryLabel}
+          mode={props.mode}
+          reducedMotion={reducedMotion}
+          onAttempt={props.onAttempt}
+          onDone={() => closeEncounter(overlay.idx)}
+        />
       )}
       {overlay?.kind === "dialogue" && (
         <DialogueOverlay grade={grade} mode={props.mode} copy={props.copy} chapter={props.chapter} castNames={props.castNames} storyItems={props.storyItems} onAttempt={props.onAttempt} onClose={closeDialogue} />

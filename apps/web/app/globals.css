@@ -512,7 +512,9 @@ a.dgh-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-elevate
    game-feel animation AND calms the pre-existing hover/active transitions. */
 @media (prefers-reduced-motion: reduce) {
   .dgf-pop-in, .dgf-sweep, .dgf-fall, .dgf-fade-up, .dgf-stamp, .dgf-pin-drop, .dgf-caret,
-  .dg-encounter-veil, .dg-encounter-card {
+  .dg-encounter-veil, .dg-encounter-card,
+  .dg-bs-swirl-blob, .dg-bs-smudge, .dg-bs-absorb, .dg-bs-dot, .dg-bs-letter,
+  .dg-bs-word-whole, .dg-bs-page, .dg-bs-card {
     animation: none !important;
   }
   .dg-tile, .dg-btn, .dg-btn-secondary, .dg-chip, .dg-mc-option, .xp-fill, .dgh-card {
@@ -527,7 +529,21 @@ a.dgh-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-elevate
 [data-motion="reduce"] .dgf-pin-drop,
 [data-motion="reduce"] .dgf-caret,
 [data-motion="reduce"] .dg-encounter-veil,
-[data-motion="reduce"] .dg-encounter-card {
+[data-motion="reduce"] .dg-encounter-card,
+[data-motion="reduce"] .dg-bs-swirl-blob,
+[data-motion="reduce"] .dg-bs-smudge,
+[data-motion="reduce"] .dg-bs-absorb,
+[data-motion="reduce"] .dg-bs-dot,
+[data-motion="reduce"] .dg-bs-letter,
+[data-motion="reduce"] .dg-bs-word-whole,
+[data-motion="reduce"] .dg-bs-page,
+[data-motion="reduce"] .dg-bs-card {
+  animation: none !important;
+}
+/* G-A1: the BattleStage's own motion switch (set from JS — OS ∨ ?motion=reduce
+   ∨ the FeelGear toggle, which no data-attribute setter covers). Base styles
+   are end-states, so a motionless battle is complete, never stuck mid-wipe. */
+.dg-bs-still *, .dg-bs-still *::before, .dg-bs-still *::after {
   animation: none !important;
 }
 
@@ -543,3 +559,96 @@ a.dgh-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-elevate
 }
 .dg-encounter-veil { animation: dg-encounter-veil-in 180ms ease-out; }
 .dg-encounter-card { animation: dg-encounter-card-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+/* ── G-A1 · Word-Battle theater ──────────────────────────────────────────────
+   Every animated class here is listed in BOTH reduced-motion kill lists above
+   AND neutralized wholesale by .dg-bs-still (the stage's JS-driven switch).
+   All keyframes animate FROM an offset TO the natural state, so with
+   animations killed the base styles are the finished picture. */
+
+/* the ink-swirl wipe: an organic blob swells over the screen, then retracts */
+@keyframes dg-bs-swirl {
+  0% { transform: scale(0) rotate(0deg); }
+  42% { transform: scale(1.06) rotate(16deg); }
+  58% { transform: scale(1.06) rotate(20deg); }
+  100% { transform: scale(0) rotate(-12deg); }
+}
+.dg-bs-swirl-blob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 165vmax;
+  height: 165vmax;
+  margin: -82.5vmax 0 0 -82.5vmax;
+  border-radius: 43% 57% 52% 48% / 46% 49% 51% 54%;
+  transform: scale(0);
+  animation: dg-bs-swirl 700ms cubic-bezier(0.6, 0, 0.4, 1) forwards;
+}
+.dg-bs-swirl-blob-b {
+  border-radius: 57% 43% 48% 52% / 51% 54% 46% 49%;
+  animation-delay: 60ms;
+  animation-duration: 640ms;
+}
+
+/* the stage content settles in under the retracting ink */
+@keyframes dg-bs-card-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.97); }
+}
+.dg-bs-card { animation: dg-bs-card-in 420ms 260ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+
+/* the Schluckwort breathes — a squashy idle wobble */
+@keyframes dg-bs-wobble {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  35% { transform: translateY(2px) scale(1.03, 0.96) rotate(-1.2deg); }
+  70% { transform: translateY(-2px) scale(0.97, 1.04) rotate(1.2deg); }
+}
+.dg-bs-smudge { animation: dg-bs-wobble 2.6s ease-in-out infinite; transform-origin: 50% 80%; }
+
+/* a wrong attempt: the smudge absorbs it — quick greedy gulp + grey pulse */
+@keyframes dg-bs-absorb-kf {
+  0% { transform: scale(1); filter: none; }
+  30% { transform: scale(1.12, 0.86); filter: grayscale(0.9) brightness(0.82); }
+  60% { transform: scale(0.94, 1.08); filter: grayscale(0.4); }
+  100% { transform: scale(1); filter: none; }
+}
+.dg-bs-absorb { animation: dg-bs-absorb-kf 480ms ease-out; }
+
+/* victory: the smudge pops into harmless dots */
+@keyframes dg-bs-pop-kf {
+  0% { transform: scale(1); opacity: 1; }
+  55% { transform: scale(1.25, 0.8); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.dg-bs-smudge.dg-bs-pop { animation: dg-bs-pop-kf 520ms 180ms ease-in forwards; }
+@keyframes dg-bs-dot-fly {
+  from { transform: translate(0, 0) scale(1); opacity: 1; }
+  to { transform: translate(var(--dx, 40px), var(--dy, -30px)) scale(0); opacity: 0; }
+}
+.dg-bs-dot { animation: dg-bs-dot-fly 640ms 320ms ease-out forwards; opacity: 0; }
+
+/* defeat: the smudge droops and greys — pace changes, tone stays kind */
+@keyframes dg-bs-defeat-kf {
+  from { transform: none; filter: none; }
+  to { transform: translateY(6px) rotate(-4deg) scale(0.96); filter: grayscale(0.7) brightness(0.9); }
+}
+.dg-bs-smudge.dg-bs-defeat { animation: dg-bs-defeat-kf 700ms ease-out forwards; }
+
+/* the recovered word: letters fly home from the smudge, one by one */
+@keyframes dg-bs-letter-fly {
+  from { opacity: 0; transform: translateY(-46px) scale(0.4) rotate(-18deg); }
+  60% { opacity: 1; transform: translateY(4px) scale(1.08) rotate(3deg); }
+}
+.dg-bs-letter { animation: dg-bs-letter-fly 460ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+@keyframes dg-bs-word-glide {
+  from { opacity: 0; transform: translateY(-30px) scale(0.7); }
+}
+.dg-bs-word-whole { animation: dg-bs-word-glide 560ms 140ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+
+/* book skin: pages drifting in the stage depth */
+@keyframes dg-bs-page-drift {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 6px -12px; }
+}
+.dg-bs-page { animation: dg-bs-page-drift 7s ease-in-out infinite; }
+.dg-bs-page-b { animation-duration: 9s; animation-delay: 1.2s; }
+.dg-bs-page-c { animation-duration: 11s; animation-delay: 0.6s; }

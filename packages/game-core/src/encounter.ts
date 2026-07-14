@@ -8,12 +8,18 @@
 import type { DueRef } from "@domigo/db";
 import type { Encounter, GrammarFormat, GrammarItem, VocabItem } from "@domigo/content-schema";
 
-/** Grammar formats that work as quick battle cards (mc buttons / typed gap / letter tiles). */
+/** Grammar formats that work as battle cards. G-A1 widened the gate (EZ-1 §2):
+ *  matching renders as dropdown rows, sentence-building/anagram get the tactile
+ *  trays inside the BattleStage, transformation is a typed spell — so battles
+ *  rotate through the full breadth instead of the original quick-card slice. */
 export const DEFAULT_BATTLE_FORMATS: GrammarFormat[] = [
   "multiple-choice",
   "gap-fill",
   "anagram",
   "context-picker",
+  "matching",
+  "sentence-building",
+  "transformation",
 ];
 
 export type ResolvedItem =
@@ -73,13 +79,21 @@ function indexPool(pool: EncounterPool): Map<string, ResolvedItem> {
   return m;
 }
 
-/** Deterministic in-scope fallback order (Law 6) — vocab+grammar sorted by id. */
+/** Deterministic in-scope fallback order (Law 6) — vocab and grammar each
+ *  sorted by id, then INTERLEAVED (v, g, v, g, …). A flat id sort clustered
+ *  all `gi.*` grammar ahead of all `w.*` vocab, so a fresh zone (empty due
+ *  queue) served four same-shaped grammar battles in a row — G-A1's battle
+ *  variety (vocab pool rotation, word banks) never fired. Still pure and
+ *  order-stable: same pool ⇒ same order, no RNG. */
 function scopeOrder(pool: EncounterPool): ResolvedItem[] {
-  const all: ResolvedItem[] = [
-    ...pool.vocab.map((v): ResolvedItem => ({ kind: "vocab", item: v })),
-    ...pool.grammar.map((g): ResolvedItem => ({ kind: "grammar", item: g })),
-  ];
-  return all.sort((a, b) => a.item.id.localeCompare(b.item.id));
+  const v = [...pool.vocab].sort((a, b) => a.id.localeCompare(b.id)).map((it): ResolvedItem => ({ kind: "vocab", item: it }));
+  const g = [...pool.grammar].sort((a, b) => a.id.localeCompare(b.id)).map((it): ResolvedItem => ({ kind: "grammar", item: it }));
+  const out: ResolvedItem[] = [];
+  for (let i = 0; i < Math.max(v.length, g.length); i += 1) {
+    if (v[i]) out.push(v[i]!);
+    if (g[i]) out.push(g[i]!);
+  }
+  return out;
 }
 
 /**
