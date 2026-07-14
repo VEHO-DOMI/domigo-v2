@@ -403,6 +403,101 @@ export function mapIntegrityErrors(
   }
   if (deferred.length > 0) infos.push(`${story.id}: VS-18 — ${deferred.length} zone(s) with render deferred (theme pending): ${deferred.join(", ")}`);
 
+  // ── W-1 WORLD-ALIVE: data floor-plan laws ─────────────────────────────────
+  // A zone that ships a `layout` is a real place in the connected world: rows
+  // rectangular and at least the 15×11 viewport, every glyph resolves, doors
+  // lead to real zones (reciprocally, where the target has a layout of its
+  // own), and everything that matters — every E node, every door, the NPC —
+  // is REACHABLE from the start. The runtime is tolerant by design, so this
+  // validator is where authoring mistakes hard-fail.
+  const shorts = new Set(map.zones.map((z) => z.id.split(".").pop() ?? ""));
+  const layoutByShort = new Map(map.zones.filter((z) => z.layout).map((z) => [z.id.split(".").pop() ?? "", z.layout!]));
+  const withLayout: string[] = [];
+  for (const z of map.zones) {
+    const layout = z.layout;
+    if (!layout) continue;
+    const short = z.id.split(".").pop() ?? z.id;
+    withLayout.push(short);
+    const tag = `${story.id}: VS-18 — zone ${short}`;
+    const rows = layout.rows;
+    const w = rows[0]?.length ?? 0;
+    const h = rows.length;
+
+    if (rows.some((r) => r.length !== w)) errors.push(`${tag} layout rows are not rectangular`);
+    if (w < 15 || h < 11) errors.push(`${tag} layout ${w}×${h} is smaller than the 15×11 viewport`);
+    if (z.width !== w || z.height !== h) errors.push(`${tag} width/height fields (${z.width}×${z.height}) do not match the layout (${w}×${h})`);
+
+    const doors: Array<{ c: number; r: number; to: string }> = [];
+    let pCount = 0;
+    let eCount = 0;
+    for (let r = 0; r < h; r += 1) {
+      for (let c = 0; c < rows[r]!.length; c += 1) {
+        const ch = rows[r]![c]!;
+        if (ch === "P") pCount += 1;
+        else if (ch === "E") eCount += 1;
+        else if (ch !== "#" && ch !== "." && ch !== "F") {
+          const entry = layout.legend[ch];
+          if (!entry) errors.push(`${tag} glyph "${ch}" at ${c},${r} has no legend entry`);
+          else if ("door" in entry) doors.push({ c, r, to: entry.door });
+        }
+      }
+    }
+    if (pCount !== 1) errors.push(`${tag} needs exactly one P start (found ${pCount})`);
+    const declared = layout.encounters ?? 4;
+    if (eCount < declared) errors.push(`${tag} declares ${declared} encounters but has only ${eCount} E cell(s)`);
+
+    for (const d of doors) {
+      if (d.to === short) errors.push(`${tag} door at ${d.c},${d.r} leads to itself`);
+      else if (!shorts.has(d.to)) errors.push(`${tag} door at ${d.c},${d.r} leads to unknown zone "${d.to}"`);
+      else {
+        const targetLayout = layoutByShort.get(d.to);
+        const hasReturn = targetLayout
+          ? Object.values(targetLayout.legend).some((e) => "door" in e && e.door === short)
+          : true; // legacy target (no layout yet) — exempt until its own layout lands
+        if (!hasReturn) errors.push(`${tag} door to ${d.to} has no door back (one-way world)`);
+      }
+    }
+
+    // Reachability BFS from P over walkable cells (doors count as walkable
+    // TARGETS — even sealed ones open eventually; walls + solid props block).
+    const solid = (c: number, r: number): boolean => {
+      const ch = rows[r]?.[c];
+      if (ch === undefined || ch === "#") return true;
+      if (ch === "." || ch === "E" || ch === "F" || ch === "P") return false;
+      const entry = layout.legend[ch];
+      return entry !== undefined && "prop" in entry ? entry.solid : false;
+    };
+    let start: { c: number; r: number } | null = null;
+    for (let r = 0; r < h && start === null; r += 1) {
+      const c = rows[r]!.indexOf("P");
+      if (c !== -1) start = { c, r };
+    }
+    if (start) {
+      const seen = new Set<number>([start.r * w + start.c]);
+      const queue: Array<{ c: number; r: number }> = [start];
+      while (queue.length > 0) {
+        const cur = queue.shift()!;
+        for (const [dc, dr] of [[0, -1], [-1, 0], [1, 0], [0, 1]] as const) {
+          const nc = cur.c + dc;
+          const nr = cur.r + dr;
+          const key = nr * w + nc;
+          if (nc < 0 || nc >= w || nr < 0 || nr >= h || seen.has(key) || solid(nc, nr)) continue;
+          seen.add(key);
+          queue.push({ c: nc, r: nr });
+        }
+      }
+      for (let r = 0; r < h; r += 1) {
+        for (let c = 0; c < rows[r]!.length; c += 1) {
+          const ch = rows[r]![c]!;
+          const entry = ch !== "#" && ch !== "." && ch !== "E" && ch !== "F" && ch !== "P" ? layout.legend[ch] : undefined;
+          const must = ch === "E" || ch === "F" || (entry !== undefined && "door" in entry);
+          if (must && !seen.has(r * w + c)) errors.push(`${tag} "${ch}" at ${c},${r} is unreachable from P`);
+        }
+      }
+    }
+  }
+  if (withLayout.length > 0) infos.push(`${story.id}: VS-18 — ${withLayout.length} zone(s) with data floor plans: ${withLayout.join(", ")}`);
+
   return { errors, infos };
 }
 
