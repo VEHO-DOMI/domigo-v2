@@ -24,8 +24,9 @@ function fnv1a32(s: string): number {
   return h >>> 0;
 }
 
-export default async function ArcadeRunPage({ params }: { params: Promise<{ grade: string }> }) {
+export default async function ArcadeRunPage({ params, searchParams }: { params: Promise<{ grade: string }>; searchParams: Promise<{ level?: string; tier?: string }> }) {
   const { grade: gradeStr } = await params;
+  const { level: levelId, tier } = await searchParams;
   const grade = Number(gradeStr);
   if (![1, 2, 3, 4].includes(grade)) redirect("/home");
   // gate: a mock never reaches students (release.json rules don't cover it,
@@ -56,6 +57,8 @@ export default async function ArcadeRunPage({ params }: { params: Promise<{ grad
       items={items}
       hubHref={`/play/${grade}`}
       title="Tintenlauf"
+      levelId={levelId}
+      tier={tier === "E" || tier === "M" || tier === "S" ? tier : undefined}
     />
   );
 }
