@@ -16,7 +16,7 @@ const ArcadeGame = dynamic(() => import("@domigo/game-2d").then((m) => m.ArcadeG
   loading: () => <p style={{ textAlign: "center", padding: 40, color: "var(--muted)" }}>Die Tinte steigt…</p>,
 });
 
-export default function ArcadeClient(props: { seed: number; playerSeed?: number; mode: string; items: ResolvedItem[]; hubHref: string; title: string }) {
+export default function ArcadeClient(props: { seed: number; playerSeed?: number; mode: string; items: ResolvedItem[]; hubHref: string; title: string; levelId?: string; tier?: "E" | "M" | "S" }) {
   useOutboxFlush();
   const onAttempt = (a: GameAttempt) =>
     sendAttempt({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
@@ -26,7 +26,7 @@ export default function ArcadeClient(props: { seed: number; playerSeed?: number;
         <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{props.title}</h1>
         <a href={props.hubHref} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Alle Räume</a>
       </div>
-      <ArcadeGame seed={props.seed} playerSeed={props.playerSeed} mode={props.mode} items={props.items} onAttempt={onAttempt} hubHref={props.hubHref} />
+      <ArcadeGame seed={props.seed} playerSeed={props.playerSeed} mode={props.mode} items={props.items} onAttempt={onAttempt} hubHref={props.hubHref} levelId={props.levelId} tier={props.tier} />
     </main>
   );
 }
