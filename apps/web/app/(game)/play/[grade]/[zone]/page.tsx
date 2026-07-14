@@ -71,7 +71,7 @@ function storyItemsFor(
   return out;
 }
 
-export default async function ZonePage({ params }: { params: Promise<{ grade: string; zone: string }> }) {
+export default async function ZonePage({ params, searchParams }: { params: Promise<{ grade: string; zone: string }>; searchParams: Promise<{ from?: string }> }) {
   const { grade: gradeStr, zone } = await params;
   const grade = Number(gradeStr);
   if (![1, 2, 3, 4].includes(grade)) redirect("/home");
@@ -211,17 +211,27 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
   const unit = loadUnit(slug);
   const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
 
-  const due = await getDueRefs(getDb(), acting.userId, { kind: "unit", slug }, 8).catch(() => []);
+  // W-1 WORLD-ALIVE: a zone with a data layout declares its own battle count;
+  // doors travel to neighbour zones (?from= spawns at the matching door), and
+  // doors to unreleased chapters render ink-SEALED.
+  const encounterCount = mapZone.layout?.encounters ?? 4;
+  const unlockedZones = (map?.zones ?? [])
+    .filter((z) => story?.chapters.some((c) => c.unit === z.unit && released.includes(c.id)))
+    .map((z) => z.id.split(".").pop() ?? "");
+  const fromRaw = (await searchParams)?.from;
+  const from = typeof fromRaw === "string" && /^z\d{2}$/.test(fromRaw) ? fromRaw : null;
+
+  const due = await getDueRefs(getDb(), acting.userId, { kind: "unit", slug }, Math.max(8, encounterCount * 2)).catch(() => []);
   const enc = Encounter.parse({
     schema: "encounter@1",
     id: `g${grade}.enc.${storyId.split(".").pop()}-${zone}`,
     grade,
-    source: { kind: "due", scope: { kind: "unit", slug }, count: 4 },
+    source: { kind: "due", scope: { kind: "unit", slug }, count: encounterCount },
     formatAllow: null,
     fallback: "scope-random",
   });
   const encounters = resolveEncounterTasks(enc, { due, pool: { vocab: unit.vocab, grammar: unit.grammar } });
-  const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown as import("@domigo/game-2d").GameSaveState } : null;
+  const serverSave = saved ? { clientRev: saved.clientRev, state: saved.state as unknown } : null;
 
   return (
     <GameClient
@@ -239,6 +249,9 @@ export default async function ZonePage({ params }: { params: Promise<{ grade: st
       castNames={castNames}
       storyItems={storyItems}
       serverSave={serverSave}
+      layout={mapZone.layout ?? null}
+      from={from}
+      unlockedZones={unlockedZones}
     />
   );
 }

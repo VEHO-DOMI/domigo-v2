@@ -1669,6 +1669,42 @@ export const ZoneRender = z.object({
 });
 export type ZoneRender = z.infer<typeof ZoneRender>;
 
+/** W-1 WORLD-ALIVE: how a zone's encounters present (one grading brain behind all of them). */
+export const NodeStyle = z.enum(["sparkle", "grass", "puddle", "page", "mote", "wanderer"]);
+export type NodeStyle = z.infer<typeof NodeStyle>;
+
+/** A door cell: stepping on it walks the player into another zone of the SAME map. */
+export const LegendDoor = z.object({
+  /** Target zone short id ("z03"). VS-18 verifies it exists and is not self. */
+  door: z.string().regex(/^z\d{2}$/),
+});
+/** A prop cell: painted from the named tile kind; solid props collide. */
+export const LegendProp = z.object({
+  prop: z.string().min(1),
+  solid: z.boolean(),
+});
+export const LegendEntry = z.union([LegendDoor, LegendProp]);
+export type LegendEntry = z.infer<typeof LegendEntry>;
+
+/**
+ * W-1 WORLD-ALIVE: a zone's floor plan as DATA (the FireRed doctrine — variable
+ * map sizes, scrolling camera, doors between zones). Optional: zones without a
+ * layout keep rendering their art-gen THEMES layout (the legacy single-screen
+ * room — G1 until its retrofit). Glyphs are single characters: the skeleton
+ * (`#` wall · `.` floor · `E` encounter · `F` NPC · `P` start) plus legend keys.
+ * Rows must be rectangular and at least the 15×11 viewport (VS-18 enforces,
+ * along with door resolution + reachability).
+ */
+export const ZoneLayout = z.object({
+  rows: z.array(z.string().min(15)).min(11),
+  legend: z.record(z.string().length(1), LegendEntry),
+  /** Encounter presentation family (default sparkle). */
+  nodeStyle: NodeStyle.optional(),
+  /** How many battles this zone offers (≤ its E cells; encounter@1 caps at 10). */
+  encounters: z.number().int().min(1).max(10).optional(),
+});
+export type ZoneLayout = z.infer<typeof ZoneLayout>;
+
 export const MapZone = z.object({
   id: ZoneId,
   /** Gate unit: zone N requires units ≤ N released (mirrors Chapter.unit). */
@@ -1679,6 +1715,8 @@ export const MapZone = z.object({
   height: z.number().int().min(1),
   tileSize: z.number().int().min(1),
   render: ZoneRender.nullable(),
+  /** W-1: the data floor plan (absent ⇒ legacy THEMES room). */
+  layout: ZoneLayout.optional(),
 });
 export type MapZone = z.infer<typeof MapZone>;
 

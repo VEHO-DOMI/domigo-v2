@@ -22,6 +22,7 @@ const G1_COPY: WorldCopy = {
   closeLabel: "Schließen",
   stageSkin: "book", // G-A1: the book world battles among fluttering pages
   victoryLabel: "Zurückgeholt!",
+  sealedLabel: "Diese Seite ist noch verblasst — lies weiter, dann öffnet sie sich.",
 };
 
 /** The engine's former non-G1 fallback strings (kept for an unknown map story). */
@@ -36,6 +37,7 @@ const DEFAULT_COPY: WorldCopy = {
   closeLabel: "Close",
   stageSkin: "ink",
   victoryLabel: "Recovered!",
+  sealedLabel: "Sealed — this door opens later in the story.",
 };
 
 /** Doc 22 §3, the F column: the NPC waiting in each zone of "The Spill". */
@@ -59,6 +61,7 @@ function spillCopy(zoneShort: string): WorldCopy {
     closeLabel: "Schließen",
     stageSkin: "ink", // G-A1: the Blank's strays battle in ink and dark glass
     victoryLabel: "Zurückgeholt!",
+    sealedLabel: "Versiegelt! Die leere Stelle hält diese Tür — spiel weiter, dann öffnet sie sich.",
   };
 }
 
