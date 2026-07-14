@@ -47,6 +47,8 @@ export const practiceAttempts = v2.table(
     latencyMs: integer("latency_ms"),
     hintUsed: boolean("hint_used").notNull().default(false),
     context: jsonb("context"),
+    worldId: text("world_id"),
+    worldEncounterId: text("world_encounter_id"),
 
     clientAttemptId: uuid("client_attempt_id"), // idempotency key
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
@@ -58,6 +60,7 @@ export const practiceAttempts = v2.table(
     // Full (non-partial) unique index so ON CONFLICT can infer it cleanly; Postgres
     // treats NULLs as distinct, so a future keyless insert path stays allowed.
     clientAttemptUnique: uniqueIndex("practice_attempts_client_attempt_unique").on(t.userId, t.clientAttemptId),
+    byWorldEncounter: index("practice_attempts_world_encounter_idx").on(t.userId, t.worldId, t.worldEncounterId),
   }),
 );
 
@@ -189,6 +192,69 @@ export const gameSaves = v2.table(
   (t) => ({
     userGameUnique: uniqueIndex("game_saves_user_game_unique").on(t.userId, t.gameMode),
     byUser: index("game_saves_user_idx").on(t.userId),
+  }),
+);
+
+/** Authoritative position + cached projection for one student in one world. */
+export const studentWorldStates = v2.table(
+  "student_world_states",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id").notNull(),
+    classId: uuid("class_id").notNull(),
+    worldId: text("world_id").notNull(),
+    currentAreaId: text("current_area_id").notNull(),
+    currentSpawnId: text("current_spawn_id").notNull(),
+    posX: integer("pos_x").notNull(),
+    posY: integer("pos_y").notNull(),
+    visitedAreaIds: jsonb("visited_area_ids").notNull().default([]),
+    statePayload: jsonb("state_payload").notNull().default({}),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    userWorldUnique: uniqueIndex("student_world_states_user_world_unique").on(t.userId, t.worldId),
+    byWorld: index("student_world_states_world_idx").on(t.worldId),
+  }),
+);
+
+/** Append-only story/world journal. The unique event id makes retries harmless. */
+export const gameWorldEvents = v2.table(
+  "game_world_events",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id").notNull(),
+    worldId: text("world_id").notNull(),
+    eventId: text("event_id").notNull(),
+    eventType: text("event_type").notNull(),
+    sourceId: text("source_id").notNull(),
+    areaId: text("area_id"),
+    payload: jsonb("payload").notNull().default({}),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    userWorldEventUnique: uniqueIndex("game_world_events_user_world_event_unique").on(t.userId, t.worldId, t.eventId),
+    byUserWorld: index("game_world_events_user_world_idx").on(t.userId, t.worldId, t.createdAt),
+  }),
+);
+
+/** Immutable XP ledger for the connected world; the client never supplies amount. */
+export const xpEntries = v2.table(
+  "xp_entries",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id").notNull(),
+    worldId: text("world_id").notNull(),
+    sourceType: text("source_type").notNull(),
+    sourceId: text("source_id").notNull(),
+    amount: integer("amount").notNull(),
+    reason: text("reason").notNull(),
+    idempotencyKey: text("idempotency_key").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    userKeyUnique: uniqueIndex("xp_entries_user_key_unique").on(t.userId, t.idempotencyKey),
+    byUserWorld: index("xp_entries_user_world_idx").on(t.userId, t.worldId, t.createdAt),
   }),
 );
 
@@ -336,6 +402,7 @@ export const v2IdentityUsers = v2.table(
     classId: uuid("class_id"), // student's class — plain, nullable; teachers null. NO cross-schema FK
     pinHash: text("pin_hash").notNull(),
     claimedAt: timestamp("claimed_at", { withTimezone: true }), // null = provisional/unclaimed
+    isTestProfile: boolean("is_test_profile").notNull().default(false),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => ({

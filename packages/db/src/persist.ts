@@ -23,6 +23,9 @@ export interface RecordAttemptInput {
   hintUsed?: boolean;
   context?: unknown;
   clientAttemptId: string;
+  worldContext?: { worldId: string; encounterId: string } | null;
+  /** World XP is journalled in xp_entries, while the attempt retains the computed amount for reconciliation. */
+  skipProgressXp?: boolean;
 }
 
 export interface RecordAttemptResult {
@@ -54,6 +57,8 @@ export async function recordAttempt(db: Db, a: RecordAttemptInput): Promise<Reco
       latencyMs: a.latencyMs ?? null,
       hintUsed: a.hintUsed ?? false,
       context: a.context ?? null,
+      worldId: a.worldContext?.worldId ?? null,
+      worldEncounterId: a.worldContext?.encounterId ?? null,
       clientAttemptId: a.clientAttemptId,
     })
     .onConflictDoNothing({ target: [practiceAttempts.userId, practiceAttempts.clientAttemptId] })
@@ -86,8 +91,9 @@ export async function recordAttempt(db: Db, a: RecordAttemptInput): Promise<Reco
     });
     streak = next.newStreak;
     const isVocab = a.kind === "vocab";
-    const vocabXp = isVocab ? a.xpAwarded : 0;
-    const grammarXp = isVocab ? 0 : a.xpAwarded;
+    const progressXp = a.skipProgressXp === true ? 0 : a.xpAwarded;
+    const vocabXp = isVocab ? progressXp : 0;
+    const grammarXp = isVocab ? 0 : progressXp;
     await db
       .insert(userProgress)
       .values({
@@ -170,4 +176,3 @@ export async function recordWritingSubmission(db: Db, w: RecordWritingInput): Pr
     wordCount: w.wordCount,
   });
 }
-

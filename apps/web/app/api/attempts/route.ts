@@ -14,7 +14,8 @@ import type { GrammarItem } from "@domigo/content-schema";
 import { loadListening, loadStoryComprehension, loadTest, loadUnit, storyIdForGrade } from "@domigo/content-loader";
 import { classifyWrong, gradeGrammar, gradeVocab, vocabAnswers, xpForTier } from "@domigo/engine";
 import type { ClassifiableItem, GrammarInput, Tier } from "@domigo/engine";
-import { getDb, recordAttempt } from "@domigo/db";
+import { getDb, recordAttempt, reconcileWorldRewards } from "@domigo/db";
+import { sandboxEnabled, sandboxWorld } from "@/lib/sandbox-preview";
 import { getActingUser } from "@/lib/identity";
 import { parseItemRef } from "@/lib/itemRef";
 import { parseListeningRef } from "@/lib/listeningRef";
@@ -54,6 +55,7 @@ const Body = z.object({
   latencyMs: z.number().int().nonnegative().nullable().optional(),
   hintUsed: z.boolean().optional(),
   context: z.unknown().optional(),
+  worldContext: z.object({ worldId: z.string().min(1), encounterId: z.string().min(1) }).optional(),
 });
 
 export async function POST(req: Request): Promise<Response> {
@@ -64,7 +66,8 @@ export async function POST(req: Request): Promise<Response> {
   // 2. Validate body.
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-  const { clientAttemptId, itemId, mode, input, latencyMs, hintUsed, context } = parsed.data;
+  const { clientAttemptId, itemId, mode, input, latencyMs, hintUsed, context, worldContext } = parsed.data;
+  if (worldContext && !sandboxEnabled()) return NextResponse.json({ ok: false, error: "not_found" }, { status: 404 });
 
   // 3. Derive coordinates from the id (never trust client slug/grade). vocab/grammar
   //    → parseItemRef; listening → parseListeningRef; reading → parseTestRef.
@@ -155,6 +158,19 @@ export async function POST(req: Request): Promise<Response> {
     ? { ...(typeof context === "object" && context !== null && !Array.isArray(context) ? context : {}), trap }
     : context;
 
+  let world: ReturnType<typeof sandboxWorld> | null = null;
+  if (worldContext) {
+    try {
+      world = sandboxWorld();
+      const encounter = world.encounters.find((candidate) => candidate.id === worldContext.encounterId);
+      if (worldContext.worldId !== world.id || !encounter || !encounter.taskRefs.includes(itemId as never)) {
+        return NextResponse.json({ ok: false, error: "bad_world_context" }, { status: 400 });
+      }
+    } catch {
+      return NextResponse.json({ ok: false, error: "bad_world_context" }, { status: 400 });
+    }
+  }
+
   // 7. Best-effort persist (idempotent; side-effects gated on first insert).
   try {
     const { duplicate, box, dueAt, streak } = await recordAttempt(getDb(), {
@@ -171,7 +187,10 @@ export async function POST(req: Request): Promise<Response> {
       hintUsed: hintUsed ?? false,
       context: contextWithTrap,
       clientAttemptId,
+      worldContext: worldContext ?? null,
+      skipProgressXp: worldContext !== undefined,
     });
+    const worldState = world ? await reconcileWorldRewards(getDb(), { userId: acting.userId, classId: acting.classId, world }) : undefined;
     return NextResponse.json({
       ok: true,
       tier,
@@ -180,6 +199,7 @@ export async function POST(req: Request): Promise<Response> {
       dueAt: dueAt.toISOString(),
       duplicate,
       streak,
+      ...(worldState ? { worldState } : {}),
       ...(trap ? { trap } : {}),
     });
   } catch {

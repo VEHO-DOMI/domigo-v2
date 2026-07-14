@@ -1,15 +1,12 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { Encounter, type GrammarFormat, type GrammarItem, type VocabItem } from "@domigo/content-schema";
-import type { DueRef } from "@domigo/db";
-import { DEFAULT_BATTLE_FORMATS, resolveEncounterTasks, seedStoryFlags, storyItemKey } from "../index.ts";
+import { DEFAULT_BATTLE_FORMATS, resolveEncounterTasks, seedStoryFlags, storyItemKey, type DueItemRef } from "../index.ts";
 
 // Minimal casts — the resolver only reads id + (grammar) format.
 const g = (id: string, format: GrammarFormat): GrammarItem => ({ id, format }) as unknown as GrammarItem;
 const v = (id: string): VocabItem => ({ id }) as unknown as VocabItem;
-const due = (itemId: string, kind: "vocab" | "grammar"): DueRef => ({
-  itemId, kind, unitSlug: "g1-u01", grade: 1, box: 1, dueAt: new Date(),
-});
+const due = (itemId: string, _kind: "vocab" | "grammar"): DueItemRef => ({ itemId });
 
 function enc(over: Partial<Record<string, unknown>> = {}) {
   return Encounter.parse({

@@ -4,6 +4,7 @@
  * Downstream only consumes `{userId, classId}`.
  */
 import { auth } from "@/auth";
+import { getPreviewStudent } from "@/lib/sandbox-preview";
 
 export interface ActingUser {
   userId: string;
@@ -11,6 +12,8 @@ export interface ActingUser {
 }
 
 export async function getActingUser(req: Request): Promise<ActingUser | null> {
+  const preview = getPreviewStudent(req);
+  if (preview) return { userId: preview.userId, classId: preview.classId };
   // Signed-in STUDENT (teachers have classId=null → they don't record practice attempts).
   const session = await auth();
   if (session?.user?.id && session.user.classId) {

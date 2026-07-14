@@ -15,8 +15,10 @@
     "db:push:dry": "drizzle-kit push --strict --verbose"
   },
   "dependencies": {
+    "@domigo/content-loader": "workspace:*",
     "@domigo/content-schema": "workspace:*",
     "@domigo/engine": "workspace:*",
+    "@domigo/game-core": "workspace:*",
     "@neondatabase/serverless": "^1.1.0",
     "drizzle-orm": "^0.45.2"
   },

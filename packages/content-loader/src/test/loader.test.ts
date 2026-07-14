@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { listApprovedUnits, listReleasedStories, loadUnit, resolveReleased, storyIdForGrade, type ReleasedStory } from "../index.ts";
+import { listApprovedUnits, listReleasedStories, loadUnit, loadWorld, resolveReleased, storyIdForGrade, type ReleasedStory } from "../index.ts";
 
 test("loadUnit reads + schema-validates a real approved unit", () => {
   const u = loadUnit("g1-u01");
@@ -73,4 +73,11 @@ test("resolveReleased: a canonical + a bonus in one grade coexist; two canonical
     () => resolveReleased([canon("g2.st.the-spill", 2), canon("g2.st.wrong-name", 2)]),
     /two canonical released stories for grade 2/,
   );
+});
+
+test("loadWorld validates the Grade 1 connected-room slice", () => {
+  const world = loadWorld("g1.st.lost-pages", "z01");
+  assert.equal(world?.schema, "world@1");
+  assert.equal(world?.areas.length, 6);
+  assert.equal(world?.areas.find((area) => area.id === "corridor")?.width, 31);
 });

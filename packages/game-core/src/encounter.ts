@@ -5,8 +5,11 @@
  * game-core never reaches for them itself. `@domigo/db` is a TYPE-only import
  * (erased), so this stays free of the server-only db module graph.
  */
-import type { DueRef } from "@domigo/db";
 import type { Encounter, GrammarFormat, GrammarItem, VocabItem } from "@domigo/content-schema";
+
+/** Structural view of a due item. Keeping this local prevents pure game logic
+ * from depending on the server-only database package. */
+export interface DueItemRef { itemId: string }
 
 /** Grammar formats that work as battle cards. G-A1 widened the gate (EZ-1 §2):
  *  matching renders as dropdown rows, sentence-building/anagram get the tactile
@@ -58,7 +61,7 @@ export interface EncounterPool {
 
 export interface EncounterInput {
   /** getDueRefs output — soonest-due first, already scope-filtered by the caller. */
-  due: DueRef[];
+  due: DueItemRef[];
   /** The in-scope item pool (a unit's, or a grade's, loaded server-side). */
   pool: EncounterPool;
 }

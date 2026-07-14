@@ -8,6 +8,8 @@
  * harmless — it comes back as a duplicate. Dependency-free (raw IndexedDB).
  */
 
+import type { ProjectedWorldState } from "@domigo/game-core";
+
 export interface AttemptBody {
   clientAttemptId: string;
   itemId: string;
@@ -15,6 +17,8 @@ export interface AttemptBody {
   input: unknown;
   latencyMs: number | null;
   hintUsed: boolean;
+  worldContext?: { worldId: string; encounterId: string };
+  previewToken?: string;
 }
 
 export interface AttemptResult {
@@ -24,12 +28,16 @@ export interface AttemptResult {
   queued: boolean;
   /** The user's daily streak after this attempt, when the server answered. */
   streak?: number;
+  worldState?: ProjectedWorldState;
+  xpAwarded?: number;
 }
 
 interface AttemptResponse {
   ok?: boolean;
   error?: string;
   streak?: number;
+  worldState?: ProjectedWorldState;
+  xpAwarded?: number;
 }
 
 const DB_NAME = "domigo";
@@ -91,10 +99,11 @@ async function allQueued(): Promise<AttemptBody[]> {
 }
 
 function postAttempt(body: AttemptBody): Promise<Response> {
+  const { previewToken, ...payload } = body;
   return fetch("/api/attempts", {
     method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(body),
+    headers: { "content-type": "application/json", ...(previewToken ? { "x-domigo-preview-token": previewToken } : {}) },
+    body: JSON.stringify(payload),
   });
 }
 
@@ -126,7 +135,7 @@ export async function sendAttempt(body: AttemptBody): Promise<AttemptResult> {
   }
   if (data?.ok) {
     void flushOutbox(); // a live response means we're online — opportunistically drain any backlog
-    return { ok: true, queued: false, streak: data.streak };
+    return { ok: true, queued: false, streak: data.streak, worldState: data.worldState, xpAwarded: data.xpAwarded };
   }
   return { ok: false, queued: false }; // permanent 4xx — nothing to retry
 }

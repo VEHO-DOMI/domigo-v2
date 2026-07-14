@@ -1750,3 +1750,293 @@ export const Quest = z
     }
   });
 export type Quest = z.infer<typeof Quest>;
+
+// ---------------------------------------------------------------------------
+// Connected world — world@1. This is an additive sibling of frozen map@1:
+// map@1 keeps the one-zone-per-unit campaign board; world@1 describes several
+// connected rooms INSIDE one zone. Graded work remains references to the
+// existing item corpus — never embedded answers or a second grading path.
+// ---------------------------------------------------------------------------
+
+export const LocalizedText = z.object({ de: z.string().min(1), en: z.string().min(1) }).strict();
+export type LocalizedText = z.infer<typeof LocalizedText>;
+
+export const WorldId = z.string().regex(/^g[1-4]\.world\.[a-z0-9-]+$/);
+export const WorldAreaId = z.string().regex(/^[a-z][a-z0-9-]*$/);
+export const WorldAssetId = z.string().regex(/^[a-z][a-z0-9.-]*$/);
+export const WorldEncounterId = z.string().regex(/^[a-z][a-z0-9-]*$/);
+export const WorldFlagId = z.string().regex(/^[a-z][a-z0-9-]*$/);
+
+export const WorldPosition = z.object({
+  x: z.number().int().nonnegative(),
+  y: z.number().int().nonnegative(),
+}).strict();
+export type WorldPosition = z.infer<typeof WorldPosition>;
+
+export const WorldAsset = z.object({
+  id: WorldAssetId,
+  kind: z.enum(["tile", "prop", "npc", "effect", "collectible"]),
+  width: z.number().int().positive(),
+  height: z.number().int().positive(),
+  recipe: z.object({
+    shape: z.enum(["floor", "wall", "path", "rug", "plant", "desk", "shelf", "door", "page", "barrier", "fountain", "npc", "sparkle", "collectible"]),
+    base: z.string().regex(/^#[0-9a-f]{6}$/i),
+    accent: z.string().regex(/^#[0-9a-f]{6}$/i),
+    shadow: z.string().regex(/^#[0-9a-f]{6}$/i),
+  }).strict(),
+  replacementPath: z.string().min(1).nullable(),
+}).strict();
+export type WorldAsset = z.infer<typeof WorldAsset>;
+
+const WorldRows = z.array(z.string().min(1)).min(1);
+export const WorldTileLayer = z.object({
+  rows: WorldRows,
+  legend: z.record(z.string().length(1), WorldAssetId),
+}).strict();
+export const WorldCollisionLayer = z.object({
+  rows: WorldRows,
+  blockedTokens: z.string().min(1).default("#"),
+}).strict();
+
+export const WorldSpawn = z.object({
+  id: z.string().regex(/^[a-z][a-z0-9-]*$/),
+  position: WorldPosition,
+  facing: z.enum(["up", "down", "left", "right"]),
+}).strict();
+
+export const WorldNpc = z.object({
+  id: z.string().regex(/^[a-z][a-z0-9-]*$/),
+  assetId: WorldAssetId,
+  position: WorldPosition,
+  moveWhenFlag: z.object({ flag: WorldFlagId, position: WorldPosition }).nullable(),
+  dialogue: z.array(LocalizedText).min(1),
+}).strict();
+
+export const WorldEffect = z.discriminatedUnion("kind", [
+  z.object({ kind: z.literal("set-flag"), flag: WorldFlagId }).strict(),
+  z.object({ kind: z.literal("open-connection"), connectionId: z.string().min(1) }).strict(),
+  z.object({ kind: z.literal("set-area-variant"), areaId: WorldAreaId, variantId: z.string().min(1) }).strict(),
+  z.object({ kind: z.literal("reveal-interactable"), interactableId: z.string().min(1) }).strict(),
+]);
+export type WorldEffect = z.infer<typeof WorldEffect>;
+
+export const WorldInteractable = z
+  .object({
+    id: z.string().regex(/^[a-z][a-z0-9-]*$/),
+    kind: z.enum(["npc", "object", "door", "page", "barrier", "collectible"]),
+    position: WorldPosition,
+    assetId: WorldAssetId.nullable(),
+    prompt: LocalizedText,
+    dialogue: z.array(LocalizedText),
+    encounterId: WorldEncounterId.nullable(),
+    connectionId: z.string().nullable(),
+    eventId: z.string().nullable(),
+    requiresFlag: WorldFlagId.nullable(),
+    hiddenUntilFlag: WorldFlagId.nullable(),
+    moveWhenFlag: z.object({ flag: WorldFlagId, position: WorldPosition }).nullable(),
+    assetWhenFlag: z.object({ flag: WorldFlagId, assetId: WorldAssetId }).nullable(),
+    rewardXp: z.number().int().min(0).max(20).default(0),
+    effects: z.array(WorldEffect),
+  })
+  .strict()
+  .superRefine((i, ctx) => {
+    if (i.kind === "door" && i.connectionId === null) ctx.addIssue({ code: "custom", path: ["connectionId"], message: "door requires connectionId" });
+    if ((i.kind === "npc" || i.kind === "object" || i.kind === "page") && i.dialogue.length === 0 && i.encounterId === null) {
+      ctx.addIssue({ code: "custom", path: ["dialogue"], message: "contextual interaction requires dialogue or encounter" });
+    }
+    if (i.kind === "collectible" && i.eventId === null) ctx.addIssue({ code: "custom", path: ["eventId"], message: "collectible requires eventId" });
+  });
+export type WorldInteractable = z.infer<typeof WorldInteractable>;
+
+export const WorldAreaVariant = z.object({
+  id: z.string().regex(/^[a-z][a-z0-9-]*$/),
+  whenFlag: WorldFlagId,
+  title: LocalizedText,
+}).strict();
+
+export const WorldArea = z.object({
+  id: WorldAreaId,
+  title: LocalizedText,
+  width: z.number().int().min(5).max(80),
+  height: z.number().int().min(5).max(80),
+  tileSize: z.literal(32),
+  ambience: z.enum(["book", "courtyard", "school", "library", "hidden"]),
+  layers: z.object({
+    ground: WorldTileLayer,
+    objects: WorldTileLayer,
+    collision: WorldCollisionLayer,
+    foreground: WorldTileLayer,
+  }).strict(),
+  spawns: z.array(WorldSpawn).min(1),
+  npcs: z.array(WorldNpc),
+  interactables: z.array(WorldInteractable),
+  variants: z.array(WorldAreaVariant),
+}).strict();
+export type WorldArea = z.infer<typeof WorldArea>;
+
+export const WorldConnection = z.object({
+  id: z.string().regex(/^[a-z][a-z0-9-]*$/),
+  from: z.object({ areaId: WorldAreaId, position: WorldPosition, trigger: z.enum(["action", "edge"]) }).strict(),
+  to: z.object({ areaId: WorldAreaId, spawnId: z.string().min(1) }).strict(),
+  requiredFlag: WorldFlagId.nullable(),
+  lockedText: LocalizedText.nullable(),
+}).strict();
+export type WorldConnection = z.infer<typeof WorldConnection>;
+
+export const WorldEncounter = z.object({
+  id: WorldEncounterId,
+  taskRefs: z.array(z.union([ItemRef, StoryComprehensionRef])).min(1).max(5),
+  completion: z.literal("all"),
+  requiresFlag: WorldFlagId.nullable(),
+  intro: z.array(LocalizedText).min(1),
+  success: z.array(LocalizedText).min(1),
+  retry: z.array(LocalizedText).min(1),
+  completionFlag: WorldFlagId,
+  effects: z.array(WorldEffect),
+  reward: z.object({ xp: z.number().int().min(0).max(50), itemId: z.string().nullable(), unlockId: z.string().nullable() }).strict(),
+}).strict();
+export type WorldEncounter = z.infer<typeof WorldEncounter>;
+
+export const WorldDefinition = z
+  .object({
+    schema: z.literal("world@1"),
+    id: WorldId,
+    storyId: StoryId,
+    zoneId: ZoneId,
+    grade: GradeZ,
+    entry: z.object({ areaId: WorldAreaId, spawnId: z.string().min(1) }),
+    assets: z.array(WorldAsset).min(1),
+    areas: z.array(WorldArea).min(1),
+    connections: z.array(WorldConnection).min(1),
+    encounters: z.array(WorldEncounter).min(1),
+  })
+  .strict()
+  .superRefine((w, ctx) => {
+    if (!w.id.startsWith(`g${w.grade}.world.`) || !w.storyId.startsWith(`g${w.grade}.st.`) || !w.zoneId.startsWith(`g${w.grade}.map.`)) {
+      ctx.addIssue({ code: "custom", path: ["grade"], message: "world, story, zone and grade prefixes must agree" });
+    }
+    const assetIds = new Set<string>();
+    w.assets.forEach((asset, i) => {
+      if (assetIds.has(asset.id)) ctx.addIssue({ code: "custom", path: ["assets", i, "id"], message: "duplicate asset id" });
+      assetIds.add(asset.id);
+    });
+    const encounterIds = new Set<string>();
+    const encounterTasks = new Set<string>();
+    w.encounters.forEach((enc, i) => {
+      if (encounterIds.has(enc.id)) ctx.addIssue({ code: "custom", path: ["encounters", i, "id"], message: "duplicate encounter id" });
+      enc.taskRefs.forEach((taskId, ti) => {
+        if (encounterTasks.has(taskId)) ctx.addIssue({ code: "custom", path: ["encounters", i, "taskRefs", ti], message: "a task may belong to only one world encounter" });
+        encounterTasks.add(taskId);
+      });
+      encounterIds.add(enc.id);
+    });
+    const connectionIds = new Set<string>();
+    w.connections.forEach((connection, i) => {
+      if (connectionIds.has(connection.id)) ctx.addIssue({ code: "custom", path: ["connections", i, "id"], message: "duplicate connection id" });
+      connectionIds.add(connection.id);
+    });
+    const areas = new Map(w.areas.map((area) => [area.id, area]));
+    if (areas.size !== w.areas.length) ctx.addIssue({ code: "custom", path: ["areas"], message: "duplicate area id" });
+    const inside = (area: z.infer<typeof WorldArea>, p: z.infer<typeof WorldPosition>) => p.x < area.width && p.y < area.height;
+    const blocked = (area: z.infer<typeof WorldArea>, p: z.infer<typeof WorldPosition>) => {
+      const token = [...(area.layers.collision.rows[p.y] ?? "")][p.x] ?? "";
+      return area.layers.collision.blockedTokens.includes(token);
+    };
+    const globalInteractableIds = new Set<string>();
+    const globalEventIds = new Set<string>();
+    for (const [ai, area] of w.areas.entries()) {
+      for (const [name, layer] of Object.entries(area.layers)) {
+        if (layer.rows.length !== area.height) ctx.addIssue({ code: "custom", path: ["areas", ai, "layers", name, "rows"], message: "layer height must equal area height" });
+        layer.rows.forEach((row, ri) => {
+          if ([...row].length !== area.width) ctx.addIssue({ code: "custom", path: ["areas", ai, "layers", name, "rows", ri], message: "row width must equal area width" });
+        });
+      }
+      const spawnIds = new Set<string>();
+      area.spawns.forEach((spawn, si) => {
+        if (spawnIds.has(spawn.id)) ctx.addIssue({ code: "custom", path: ["areas", ai, "spawns", si, "id"], message: "duplicate spawn id" });
+        if (!inside(area, spawn.position)) ctx.addIssue({ code: "custom", path: ["areas", ai, "spawns", si, "position"], message: "spawn outside area" });
+        else if (blocked(area, spawn.position)) ctx.addIssue({ code: "custom", path: ["areas", ai, "spawns", si, "position"], message: "spawn is on a blocked collision tile" });
+        spawnIds.add(spawn.id);
+      });
+      const interactableIds = new Set<string>();
+      area.interactables.forEach((item, ii) => {
+        if (interactableIds.has(item.id)) ctx.addIssue({ code: "custom", path: ["areas", ai, "interactables", ii, "id"], message: "duplicate interactable id in area" });
+        if (globalInteractableIds.has(item.id)) ctx.addIssue({ code: "custom", path: ["areas", ai, "interactables", ii, "id"], message: "interactable ids must be globally unique" });
+        globalInteractableIds.add(item.id);
+        if (item.eventId !== null) {
+          if (globalEventIds.has(item.eventId)) ctx.addIssue({ code: "custom", path: ["areas", ai, "interactables", ii, "eventId"], message: "event ids must be globally unique" });
+          globalEventIds.add(item.eventId);
+        }
+        if (!inside(area, item.position)) ctx.addIssue({ code: "custom", path: ["areas", ai, "interactables", ii, "position"], message: "interactable outside area" });
+        if (item.moveWhenFlag && !inside(area, item.moveWhenFlag.position)) ctx.addIssue({ code: "custom", path: ["areas", ai, "interactables", ii, "moveWhenFlag"], message: "moved interactable outside area" });
+        if (item.assetId !== null && !assetIds.has(item.assetId)) ctx.addIssue({ code: "custom", path: ["areas", ai, "interactables", ii, "assetId"], message: "unknown asset id" });
+        if (item.assetWhenFlag !== null && !assetIds.has(item.assetWhenFlag.assetId)) ctx.addIssue({ code: "custom", path: ["areas", ai, "interactables", ii, "assetWhenFlag", "assetId"], message: "unknown variant asset id" });
+        if (item.encounterId !== null && !encounterIds.has(item.encounterId)) ctx.addIssue({ code: "custom", path: ["areas", ai, "interactables", ii, "encounterId"], message: "unknown encounter id" });
+        if (item.connectionId !== null && !connectionIds.has(item.connectionId)) ctx.addIssue({ code: "custom", path: ["areas", ai, "interactables", ii, "connectionId"], message: "unknown connection id" });
+        interactableIds.add(item.id);
+      });
+      area.npcs.forEach((npc, ni) => {
+        if (!assetIds.has(npc.assetId)) ctx.addIssue({ code: "custom", path: ["areas", ai, "npcs", ni, "assetId"], message: "unknown npc asset id" });
+        if (!inside(area, npc.position) || (npc.moveWhenFlag && !inside(area, npc.moveWhenFlag.position))) ctx.addIssue({ code: "custom", path: ["areas", ai, "npcs", ni, "position"], message: "npc outside area" });
+      });
+      for (const [layerName, layer] of Object.entries({ ground: area.layers.ground, objects: area.layers.objects, foreground: area.layers.foreground })) {
+        for (const assetId of Object.values(layer.legend)) {
+          if (!assetIds.has(assetId)) ctx.addIssue({ code: "custom", path: ["areas", ai, "layers", layerName, "legend"], message: `unknown asset id ${assetId}` });
+        }
+      }
+    }
+    const entryArea = areas.get(w.entry.areaId);
+    if (!entryArea || !entryArea.spawns.some((s) => s.id === w.entry.spawnId)) ctx.addIssue({ code: "custom", path: ["entry"], message: "entry area/spawn does not exist" });
+    w.connections.forEach((connection, ci) => {
+      const from = areas.get(connection.from.areaId);
+      const to = areas.get(connection.to.areaId);
+      if (!from || !inside(from, connection.from.position)) ctx.addIssue({ code: "custom", path: ["connections", ci, "from"], message: "connection source does not exist" });
+      else if (blocked(from, connection.from.position)) ctx.addIssue({ code: "custom", path: ["connections", ci, "from", "position"], message: "connection source is blocked" });
+      if (!to || !to.spawns.some((s) => s.id === connection.to.spawnId)) ctx.addIssue({ code: "custom", path: ["connections", ci, "to"], message: "connection destination does not exist" });
+      if (from && connection.from.trigger === "action") {
+        const door = from.interactables.find((item) => item.kind === "door" && item.connectionId === connection.id);
+        if (!door || door.position.x !== connection.from.position.x || door.position.y !== connection.from.position.y) {
+          ctx.addIssue({ code: "custom", path: ["connections", ci, "from"], message: "action connection requires a door at its source tile" });
+        }
+      }
+      if (from && connection.from.trigger === "edge" && connection.from.position.x !== 0 && connection.from.position.y !== 0 && connection.from.position.x !== from.width - 1 && connection.from.position.y !== from.height - 1) {
+        ctx.addIssue({ code: "custom", path: ["connections", ci, "from", "position"], message: "edge connection must be on a map edge" });
+      }
+    });
+    for (const [ai, area] of w.areas.entries()) {
+      const start = area.spawns[0]!.position;
+      if (blocked(area, start)) continue;
+      const reached = new Set<string>([start.x + "," + start.y]);
+      const queue = [start];
+      while (queue.length) {
+        const current = queue.shift()!;
+        for (const next of [{ x: current.x + 1, y: current.y }, { x: current.x - 1, y: current.y }, { x: current.x, y: current.y + 1 }, { x: current.x, y: current.y - 1 }]) {
+          const key = next.x + "," + next.y;
+          if (!inside(area, next) || blocked(area, next) || reached.has(key)) continue;
+          reached.add(key);
+          queue.push(next);
+        }
+      }
+      const targets = [
+        ...area.spawns.map((spawn) => ({ label: "spawn " + spawn.id, position: spawn.position })),
+        ...w.connections.filter((connection) => connection.from.areaId === area.id).map((connection) => ({ label: "connection " + connection.id, position: connection.from.position })),
+      ];
+      targets.forEach((target) => {
+        if (!blocked(area, target.position) && !reached.has(target.position.x + "," + target.position.y)) {
+          ctx.addIssue({ code: "custom", path: ["areas", ai, "layers", "collision"], message: target.label + " is unreachable from the area's first spawn" });
+        }
+      });
+    }
+    if (entryArea) {
+      const reached = new Set([w.entry.areaId]);
+      let changed = true;
+      while (changed) {
+        changed = false;
+        for (const c of w.connections) {
+          if (reached.has(c.from.areaId) && !reached.has(c.to.areaId)) { reached.add(c.to.areaId); changed = true; }
+        }
+      }
+      if (reached.size !== w.areas.length) ctx.addIssue({ code: "custom", path: ["connections"], message: "every area must be reachable from entry (locked routes still count)" });
+    }
+  });
+export type WorldDefinition = z.infer<typeof WorldDefinition>;

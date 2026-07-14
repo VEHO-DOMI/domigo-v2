@@ -14,7 +14,11 @@
     "build": "pnpm --filter web run build",
     "check:bundle": "node scripts/check-game-bundle.mjs",
     "content": "node packages/content-pipeline/src/content.ts",
-    "audit:blind-solve": "node scripts/audit/blind-solve.ts"
+    "audit:blind-solve": "node scripts/audit/blind-solve.ts",
+    "sandbox:migrate": "pnpm --filter @domigo/db run db:push",
+    "sandbox:seed": "pnpm --filter @domigo/db exec node src/seed-sandbox.ts",
+    "sandbox:dev": "pnpm --filter web exec next dev --port 3210",
+    "sandbox:verify": "pnpm typecheck && pnpm test && pnpm build && pnpm check:bundle"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.110.0",

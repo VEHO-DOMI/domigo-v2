@@ -11,9 +11,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { Cast, GameMap, StoryFlags, TrapRegistry, GrammarFile, GrammarStructuresFile, ListeningFile, Story, StoryComprehensionFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
+import { Cast, GameMap, StoryFlags, TrapRegistry, GrammarFile, GrammarStructuresFile, ListeningFile, Story, StoryComprehensionFile, TestFile, VocabFile, WordBank, WorldDefinition } from "@domigo/content-schema";
 import type { GrammarItem, GrammarStructure, VocabItem } from "@domigo/content-schema";
-import type { Cast as CastT, GameMap as GameMapT, Story as StoryT, StoryComprehensionFile as StoryComprehensionFileT, StoryFlags as StoryFlagsT, TrapRegistry as TrapRegistryT } from "@domigo/content-schema";
+import type { Cast as CastT, GameMap as GameMapT, Story as StoryT, StoryComprehensionFile as StoryComprehensionFileT, StoryFlags as StoryFlagsT, TrapRegistry as TrapRegistryT, WorldDefinition as WorldDefinitionT } from "@domigo/content-schema";
 
 /**
  * Repo root. The pipeline derives it from the module path (paths.ts:22), but a
@@ -186,6 +186,14 @@ export function loadGameMap(storyId: string): GameMapT | null {
   if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
   const raw = readJson<unknown>(path.join(STORIES_DIR, storyId, "map.json"));
   return raw === null ? null : GameMap.parse(raw);
+}
+
+/** world@1 connected rooms inside one map@1 zone. Null preserves the legacy room renderer. */
+export function loadWorld(storyId: string, zoneId: string): WorldDefinitionT | null {
+  if (!STORY_ID.test(storyId)) throw new Error(`content-loader: bad story id "${storyId}"`);
+  if (!/^z\d{2}$/.test(zoneId)) throw new Error(`content-loader: bad world zone "${zoneId}"`);
+  const raw = readJson<unknown>(path.join(STORIES_DIR, storyId, "worlds", `${zoneId}.json`));
+  return raw === null ? null : WorldDefinition.parse(raw);
 }
 
 /**
