@@ -6,11 +6,18 @@
  *  - COSMETIC saves → localStorage (instant resume) + a debounced PUT to
  *    /api/game-save (clientRev last-write-wins). The save carries no progression
  *    (XP/streak/unlocks derive from attempts) — losing it costs only position.
+ * W-1 WORLD-ALIVE: the save is the v2 WORLD container (per-zone progress that
+ * persists across doors); the scene reports one zone at a time and this layer
+ * merges. v1 flat saves migrate tolerantly on read (world.ts).
  */
 import dynamic from "next/dynamic";
-import { useEffect, useRef, useState } from "react";
-import type { Chapter } from "@domigo/content-schema";
+import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useRef, useState } from "react";
+import type { Chapter, ZoneLayout } from "@domigo/content-schema";
 import type { GameAttempt, GameSaveState, WorldCopy } from "@domigo/game-2d";
+// The pure world brain rides its own Phaser-free subpath: GameClient is SSR'd
+// (only the canvas is ssr:false), and the barrel would drag Phaser server-side.
+import { mergeZoneState, migrateSave, parseZoneLayout, zoneResume, zoneShort, type WorldSaveV2 } from "@domigo/game-2d/world";
 import type { ResolvedItem } from "@domigo/game-core";
 import { sendAttempt } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
@@ -20,7 +27,7 @@ const PhaserGame = dynamic(() => import("@domigo/game-2d").then((m) => m.PhaserG
   loading: () => <p style={{ textAlign: "center", padding: 40, color: "var(--muted)" }}>Loading the world…</p>,
 });
 
-interface SavePayload { clientRev: number; state: GameSaveState }
+interface SavePayload { clientRev: number; state: unknown }
 
 export default function GameClient(props: {
   seed: number;
@@ -40,12 +47,22 @@ export default function GameClient(props: {
   castNames: Record<string, string>;
   storyItems: Record<string, ResolvedItem>;
   serverSave: SavePayload | null;
+  /** W-1: the zone's data floor plan (null ⇒ legacy THEMES room). */
+  layout?: ZoneLayout | null;
+  /** W-1: the zone short the player walked in FROM (?from= — door spawn). */
+  from?: string | null;
+  /** W-1: zone shorts with released chapters (door seal decisions). */
+  unlockedZones?: string[];
 }) {
   useOutboxFlush();
+  const router = useRouter();
   const { gameMode, serverSave } = props;
   // L-1: the grade drives the story-language default + German chrome at grade 1.
   const grade = Number(/^game:g(\d)$/.exec(gameMode)?.[1] ?? 1);
   const lsKey = `domigo:gamesave:${gameMode}`;
+  // W-1: parse the floor plan ONCE (pure, unit-tested) — the scene renders it,
+  // spawnFor places door entries, and the door targets get prefetched below.
+  const parsed = useMemo(() => (props.layout ? parseZoneLayout(props.layout) : null), [props.layout]);
 
   // Resolve the resume state client-side (localStorage may be fresher than the
   // server copy after offline play). Gate the canvas until resolved so the scene
@@ -64,6 +81,12 @@ export default function GameClient(props: {
     } catch { /* ignore */ }
     return local && (!serverSave || local.clientRev > serverSave.clientRev) ? local : serverSave;
   });
+  // W-1: whatever shape arrived (v1 flat / v2 world / junk) → the v2 container.
+  const [initialWorld] = useState<WorldSaveV2 | null>(() => migrateSave(initial?.state ?? null));
+  const worldRef = useRef<WorldSaveV2 | null>(initialWorld);
+  // The slice THIS zone's scene boots from (position only if the player left
+  // from here; per-zone cleared progress survives doors and reloads).
+  const resume = useMemo(() => zoneResume(initialWorld, props.zoneId), [initialWorld, props.zoneId]);
   const revRef = useRef(initial?.clientRev ?? 0);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -72,17 +95,35 @@ export default function GameClient(props: {
       method: "PUT",
       headers: { "content-type": "application/json" },
       keepalive: true,
-      body: JSON.stringify({ gameMode, schemaVersion: 1, clientRev: payload.clientRev, state: payload.state }),
+      body: JSON.stringify({ gameMode, schemaVersion: 2, clientRev: payload.clientRev, state: payload.state }),
     }).catch(() => { /* cosmetic, best-effort */ });
   };
 
   const onSave = (state: GameSaveState) => {
+    // W-1: fold the zone report into the world container — other zones' progress rides along.
+    worldRef.current = mergeZoneState(worldRef.current, { zoneId: state.zoneId, pos: state.pos, cleared: state.cleared });
     revRef.current += 1;
-    const payload: SavePayload = { clientRev: revRef.current, state };
+    const payload: SavePayload = { clientRev: revRef.current, state: worldRef.current };
     try { localStorage.setItem(lsKey, JSON.stringify(payload)); } catch { /* quota/private mode */ }
     if (timer.current) clearTimeout(timer.current);
     timer.current = setTimeout(() => put(payload), 1500); // ≤90s checkpoint (Law 9), debounced
   };
+
+  // W-1 door travel: navigate to the neighbour zone; ?from= spawns us at its
+  // matching door. Prefetch every unlocked door target so the transition is a
+  // beat, not a wait.
+  const short = zoneShort(props.zoneId);
+  const onNavigate = (target: string) => {
+    router.push(`/play/${grade}/${target}?from=${short}`);
+  };
+  useEffect(() => {
+    if (!parsed) return;
+    const unlocked = new Set(props.unlockedZones ?? []);
+    for (const d of parsed.doors) {
+      if (unlocked.has(d.to)) router.prefetch(`/play/${grade}/${d.to}?from=${short}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [parsed]);
 
   // Flush a pending save when the tab is hidden/closed.
   useEffect(() => {
@@ -125,12 +166,16 @@ export default function GameClient(props: {
         zoneId={props.zoneId}
         generator={props.generator}
         tileArt={props.tileArt}
+        layout={parsed}
+        from={props.from}
+        unlockedZones={props.unlockedZones}
+        onNavigate={onNavigate}
         encounters={props.encounters}
         chapter={props.chapter}
         castNames={props.castNames}
         storyItems={props.storyItems}
         onAttempt={onAttempt}
-        initialSave={initial?.state ?? null}
+        initialSave={resume}
         onSave={onSave}
       />
     </main>
