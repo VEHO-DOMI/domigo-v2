@@ -10,3 +10,6 @@ export { rasterize } from "./rasterize.ts";
 // W-1 WORLD-ALIVE: the pure world brain (layout parsing, door spawns, save v2).
 export { cellCenterPx, cellKey, mergeZoneState, migrateSave, parseCellKey, parseZoneLayout, spawnFor, zoneResume, zoneShort, WORLD_TILE } from "./world.ts";
 export type { DoorCell, ParsedZone, WorldSaveV2, ZoneProgress } from "./world.ts";
+// KA-1: the arcade mock (Tintenlauf) — mounted via next/dynamic ssr:false only.
+export { ArcadeGame } from "./ArcadeGame.tsx";
+export type { ArcadeGameProps } from "./ArcadeGame.tsx";
