@@ -66,6 +66,14 @@ function bad(errors: string[], status = 400): Response {
   return NextResponse.json({ ok: false, error: "invalid", errors }, { status });
 }
 
+/** A DB write/read failed. Always log it server-side; surface the real reason to
+ *  the client ONLY on non-production (preview/dev) — never leak DB detail to prod. */
+function persistFailed(where: string, e: unknown, code = "persist_failed"): Response {
+  console.error(`[studio/drafts] ${where} ${code}:`, e);
+  const detail = process.env.VERCEL_ENV !== "production" ? [`${where}: ${String(e instanceof Error ? e.message : e).slice(0, 400)}`] : undefined;
+  return NextResponse.json({ ok: false, error: code, errors: detail }, { status: 500 });
+}
+
 export async function POST(req: Request): Promise<Response> {
   const teacher = await getTeacher(req);
   if (!teacher) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
@@ -102,8 +110,8 @@ export async function POST(req: Request): Promise<Response> {
 
     try {
       await saveDraft(getDb(), { itemId: body.itemId, unitSlug: body.unitSlug, kind, item, action: draftAction, updatedBy: teacher.userId });
-    } catch {
-      return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });
+    } catch (e) {
+      return persistFailed("save", e);
     }
     return NextResponse.json({ ok: true, status: "draft" });
   }
@@ -113,8 +121,8 @@ export async function POST(req: Request): Promise<Response> {
     let row;
     try {
       row = await loadDraft(getDb(), body.itemId);
-    } catch {
-      return NextResponse.json({ ok: false, error: "read_failed" }, { status: 500 });
+    } catch (e) {
+      return persistFailed("loadDraft", e, "read_failed");
     }
     if (!row) return bad(["nothing to publish (no draft saved)"]);
     const kind: ItemKind = row.kind === "grammar" ? "grammar" : "vocab";
@@ -125,8 +133,8 @@ export async function POST(req: Request): Promise<Response> {
       try {
         await recordCheck(getDb(), { draftId: row.id, checkKind: "zod", verdict: "remove", evidence: { note: "remove drafts skip the solve gate" } });
         await setDraftStatus(getDb(), body.itemId, "published");
-      } catch {
-        return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });
+      } catch (e) {
+        return persistFailed("remove-publish", e);
       }
       return NextResponse.json({ ok: true, status: "published" });
     }
@@ -137,8 +145,8 @@ export async function POST(req: Request): Promise<Response> {
     const pre = preGate(kind, item);
     try {
       await recordCheck(getDb(), { draftId: row.id, checkKind: "zod", verdict: pre.ok ? "pass" : "fail", evidence: { stage: pre.stage, errors: pre.errors, keyChecks: pre.keyChecks } });
-    } catch {
-      return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });
+    } catch (e) {
+      return persistFailed("record-check", e);
     }
     if (!pre.ok) {
       await setDraftStatus(getDb(), body.itemId, "check_failed").catch(() => {});
@@ -153,8 +161,8 @@ export async function POST(req: Request): Promise<Response> {
     let runId: string;
     try {
       runId = await createSolveRun(getDb(), { itemId: body.itemId, unitSlug: row.unitSlug, kind, model, triggeredBy: teacher.userId });
-    } catch {
-      return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });
+    } catch (e) {
+      return persistFailed("create-run", e);
     }
     try {
       await startSolveRun(runId); // startSolveRun marks the run failed on setup error
@@ -174,8 +182,8 @@ export async function POST(req: Request): Promise<Response> {
   // ── revert (discard the draft → back to canon) ──
   try {
     await deleteDraft(getDb(), body.itemId);
-  } catch {
-    return NextResponse.json({ ok: false, error: "persist_failed" }, { status: 500 });
+  } catch (e) {
+    return persistFailed("revert", e);
   }
   return NextResponse.json({ ok: true, status: "reverted" });
 }
