@@ -326,3 +326,94 @@ test("VS-18: a map whose id/grade disagrees with the story fails", () => {
   const res = validateStoryBundle(bundle({ map: m }), mkCorpus());
   assert.ok(res.errors.some((e) => e.includes("VS-18") && e.includes("does not match the story slug")), res.errors.join(" | "));
 });
+
+// ────────────────────────────── VS-18 W-1 WORLD-ALIVE floor-plan laws ────────
+
+/** A clean 15×11 layout: door '1' → z02 in the top wall, 2 E, the NPC, one P. */
+const GOOD_ROWS = [
+  "#######1#######",
+  "#.....E.......#",
+  "#.............#",
+  "#......P......#",
+  "#..........E..#",
+  "#......F......#",
+  "#.............#",
+  "#.............#",
+  "#.............#",
+  "#.............#",
+  "###############",
+];
+function zoneWith(layout: Record<string, unknown> | undefined, over: Record<string, unknown> = {}) {
+  return { id: "g1.map.lp.z01", unit: 1, titleEn: "A", titleDe: null, width: 15, height: 11, tileSize: 16, render: { generator: "school-room", seed: 101 }, layout, ...over };
+}
+const Z02 = { id: "g1.map.lp.z02", unit: 2, titleEn: "B", titleDe: null, width: 15, height: 11, tileSize: 16, render: null };
+const TWO_CHAPTERS = story([
+  { id: "g1.st.lp.ch01", unit: 1, titleEn: "T1", titleDe: null, scenes: [scene()] },
+  { id: "g1.st.lp.ch02", unit: 2, titleEn: "T2", titleDe: null, scenes: [scene({ id: "g1.st.lp.ch02.s001" })] },
+]);
+
+test("VS-18/W-1: a clean data floor plan passes (door to a legacy zone is exempt from reciprocity)", () => {
+  const m = mkMap([zoneWith({ rows: GOOD_ROWS, legend: { "1": { door: "z02" } }, encounters: 2 }), Z02]);
+  const res = validateStoryBundle(bundle({ story: TWO_CHAPTERS, map: m }), mkCorpus());
+  assert.deepEqual(res.errors, []);
+  assert.ok(res.infos.some((i) => i.includes("data floor plans: z01")));
+});
+
+test("VS-18/W-1: ragged rows, sub-viewport size, and dim-field mismatch all fail", () => {
+  // (a SHORT row is already rejected by the ZoneLayout schema's .min(15) — the
+  // validator law catches the case the schema can't: a row LONGER than the rest)
+  const ragged = mkMap([zoneWith({ rows: [...GOOD_ROWS.slice(0, 10), "#" .repeat(16)], legend: {} })]);
+  assert.ok(validateStoryBundle(bundle({ map: ragged }), mkCorpus()).errors.some((e) => e.includes("not rectangular")));
+  const dims = mkMap([zoneWith({ rows: GOOD_ROWS, legend: { "1": { door: "z02" } } }, { width: 28, height: 18 })]);
+  assert.ok(validateStoryBundle(bundle({ map: dims }), mkCorpus()).errors.some((e) => e.includes("do not match the layout")));
+});
+
+test("VS-18/W-1: an unknown glyph fails (every mark on the map means something)", () => {
+  const rows = GOOD_ROWS.map((r, i) => (i === 2 ? "#....?........#" : r));
+  const m = mkMap([zoneWith({ rows, legend: { "1": { door: "z02" } } })]);
+  assert.ok(validateStoryBundle(bundle({ map: m }), mkCorpus()).errors.some((e) => e.includes('glyph "?"')));
+});
+
+test("VS-18/W-1: doors must lead somewhere real — unknown zones and door-to-self fail", () => {
+  const unknown = mkMap([zoneWith({ rows: GOOD_ROWS, legend: { "1": { door: "z09" } } })]);
+  assert.ok(validateStoryBundle(bundle({ map: unknown }), mkCorpus()).errors.some((e) => e.includes('unknown zone "z09"')));
+  const self = mkMap([zoneWith({ rows: GOOD_ROWS, legend: { "1": { door: "z01" } } })]);
+  assert.ok(validateStoryBundle(bundle({ map: self }), mkCorpus()).errors.some((e) => e.includes("leads to itself")));
+});
+
+test("VS-18/W-1: a one-way world fails — layout targets need a door back", () => {
+  const z02rows = GOOD_ROWS.map((r, i) => (i === 0 ? "###############" : r)); // no door back
+  const m = mkMap([
+    zoneWith({ rows: GOOD_ROWS, legend: { "1": { door: "z02" } }, encounters: 2 }),
+    { ...Z02, layout: { rows: z02rows, legend: {}, encounters: 2 } },
+  ]);
+  const res = validateStoryBundle(bundle({ story: TWO_CHAPTERS, map: m }), mkCorpus());
+  assert.ok(res.errors.some((e) => e.includes("no door back")), res.errors.join(" | "));
+});
+
+test("VS-18/W-1: declaring more battles than E cells fails; two P starts fail", () => {
+  const greedy = mkMap([zoneWith({ rows: GOOD_ROWS, legend: { "1": { door: "z02" } }, encounters: 9 })]);
+  assert.ok(validateStoryBundle(bundle({ map: greedy }), mkCorpus()).errors.some((e) => e.includes("only 2 E cell(s)")));
+  const rows = GOOD_ROWS.map((r, i) => (i === 6 ? "#....P........#" : r));
+  const twoP = mkMap([zoneWith({ rows, legend: { "1": { door: "z02" } } })]);
+  assert.ok(validateStoryBundle(bundle({ map: twoP }), mkCorpus()).errors.some((e) => e.includes("exactly one P")));
+});
+
+test("VS-18/W-1: a walled-off E is unreachable and fails the BFS law", () => {
+  const rows = [
+    "#######1#######",
+    "#.....E....####",
+    "#..........#E##",
+    "#......P...####",
+    "#.............#",
+    "#......F......#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "#.............#",
+    "###############",
+  ];
+  const m = mkMap([zoneWith({ rows, legend: { "1": { door: "z02" } }, encounters: 2 })]);
+  const res = validateStoryBundle(bundle({ map: m }), mkCorpus());
+  assert.ok(res.errors.some((e) => e.includes("unreachable from P")), res.errors.join(" | "));
+});

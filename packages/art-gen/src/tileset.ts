@@ -13,7 +13,11 @@ import { mulberry32 } from "./rng.ts";
 
 export type TileKind =
   | "floor" | "wall" | "path" | "accent" | "accent2" | "encounter"
-  | "board" | "plant" | "barrel" | "rug" | "stage" | "note";
+  | "board" | "plant" | "barrel" | "rug" | "stage" | "note"
+  // W-1 WORLD-ALIVE: the connected-world vocabulary (doors, outdoor fabric,
+  // corridor props, encounter-node families). Procedural placeholders — Koki's
+  // generated sheets replace any of these per kind via the image-first path.
+  | "door" | "door-sealed" | "grass" | "tree" | "fence" | "gate" | "locker";
 /** The base tileset (what `paintTileset(seed)` paints by default). Props are opt-in via a theme. */
 export const TILE_KINDS: TileKind[] = ["floor", "wall", "path", "accent", "accent2", "encounter"];
 
@@ -222,6 +226,100 @@ function paintTile(kind: TileKind, seed: number, k: Record<string, number>): num
       disc(px, TILE, TILE, 20, 33, 8, 6, k.propDark!);        // head
       disc(px, TILE, TILE, 18, 31, 3, 2, k.propMetal!);       // gloss
       rect(px, TILE, TILE, 27, 8, 9, 3, k.propDark!);         // flag
+      break;
+    }
+    case "door": {
+      // W-1: a walkable doorway — stepping on it walks you into the next zone.
+      // Wooden frame + lit panel + handle, dark threshold gap at the base so it
+      // reads as an opening, not furniture. Sits in a wall row.
+      rect(px, TILE, TILE, 4, 2, 40, 44, k.woodDark!);        // frame
+      rect(px, TILE, TILE, 8, 5, 32, 39, k.propWood!);        // door panel
+      rect(px, TILE, TILE, 8, 5, 32, 3, k.woodHi!);           // lit top rail
+      rect(px, TILE, TILE, 12, 10, 24, 14, k.woodHi!);        // upper inset panel
+      rect(px, TILE, TILE, 12, 27, 24, 13, k.woodHi!);        // lower inset panel
+      rect(px, TILE, TILE, 13, 11, 22, 12, k.propWood!);
+      rect(px, TILE, TILE, 13, 28, 22, 11, k.propWood!);
+      disc(px, TILE, TILE, 33, 25, 2, 2, k.propMetal!);       // handle
+      rect(px, TILE, TILE, 8, 44, 32, 2, k.ink!);             // threshold gap
+      break;
+    }
+    case "door-sealed": {
+      // The Blank has sealed this door — an ink splat swallows the frame.
+      // Solid (bump), un-inks when the chapter releases.
+      rect(px, TILE, TILE, 4, 2, 40, 44, k.woodDark!);
+      rect(px, TILE, TILE, 8, 5, 32, 39, k.propWood!);
+      // the ink seal: a blobby splat + runners + stray dots
+      disc(px, TILE, TILE, 24, 24, 15, 13, k.ink!);
+      disc(px, TILE, TILE, 15, 16, 6, 5, k.ink!);
+      disc(px, TILE, TILE, 33, 33, 7, 6, k.ink!);
+      rect(px, TILE, TILE, 21, 34, 3, 10, k.ink!);            // drip
+      rect(px, TILE, TILE, 30, 38, 2, 7, k.ink!);
+      disc(px, TILE, TILE, 10, 36, 2, 2, k.ink!);
+      disc(px, TILE, TILE, 38, 14, 2, 2, k.ink!);
+      disc(px, TILE, TILE, 21, 20, 2, 2, k.white!);           // a wary glint in the ink
+      break;
+    }
+    case "grass": {
+      // WALKABLE tall grass (the FireRed tall-grass analog) — some tufts hide a
+      // stolen word. Triangular blade clusters over the ground.
+      for (const [bx, by] of [[6, 14], [24, 10], [38, 16], [12, 30], [30, 28], [20, 40], [40, 38]] as const) {
+        // each cluster: three blades (left shade, center lit, right base)
+        rect(px, TILE, TILE, bx, by + 4, 2, 6, k.leafLo!);
+        rect(px, TILE, TILE, bx + 3, by, 2, 10, k.propLeaf!);
+        rect(px, TILE, TILE, bx + 4, by, 1, 4, k.leafHi!);
+        rect(px, TILE, TILE, bx + 6, by + 3, 2, 7, k.propLeaf!);
+      }
+      break;
+    }
+    case "tree": {
+      // A full tree: big canopy + trunk + ground shadow. Solid.
+      groundShadow(px, k, 24, 43, 14, 4);
+      rect(px, TILE, TILE, 21, 32, 6, 11, k.propWood!);       // trunk
+      rect(px, TILE, TILE, 21, 32, 2, 11, k.woodHi!);
+      disc(px, TILE, TILE, 24, 18, 17, 15, k.leafLo!);        // canopy base (shade)
+      disc(px, TILE, TILE, 23, 16, 15, 13, k.propLeaf!);      // canopy
+      disc(px, TILE, TILE, 17, 11, 8, 7, k.leafHi!);          // lit crown lobe
+      disc(px, TILE, TILE, 30, 14, 6, 5, k.leafHi!);
+      fleck(px, rng, k.propLeaf!, k.leafLo!, 0.10);
+      break;
+    }
+    case "fence": {
+      // A wooden fence run: two rails + posts. Solid; floor shows through gaps.
+      groundShadow(px, k, 24, 44, 20, 3);
+      rect(px, TILE, TILE, 0, 18, TILE, 5, k.propWood!);      // top rail
+      hline(px, TILE, TILE, 0, 18, TILE, k.woodHi!);
+      rect(px, TILE, TILE, 0, 32, TILE, 5, k.propWood!);      // bottom rail
+      hline(px, TILE, TILE, 0, 32, TILE, k.woodHi!);
+      for (const x of [6, 38]) {                              // posts
+        rect(px, TILE, TILE, x, 10, 5, 33, k.propWood!);
+        rect(px, TILE, TILE, x, 10, 2, 33, k.woodHi!);
+        rect(px, TILE, TILE, x, 41, 5, 2, k.woodDark!);
+      }
+      break;
+    }
+    case "gate": {
+      // A fence OPENING (walkable): the two flanking posts, nothing between.
+      for (const x of [2, 41]) {
+        rect(px, TILE, TILE, x, 8, 5, 36, k.propWood!);
+        rect(px, TILE, TILE, x, 8, 2, 36, k.woodHi!);
+        rect(px, TILE, TILE, x - 1, 8, 7, 3, k.woodDark!);    // post cap
+        rect(px, TILE, TILE, x, 42, 5, 2, k.woodDark!);
+      }
+      break;
+    }
+    case "locker": {
+      // A tall metal school locker (corridor prop). Solid.
+      groundShadow(px, k, 24, 44, 15, 3);
+      rect(px, TILE, TILE, 8, 3, 32, 41, k.propMetal!);       // body
+      rect(px, TILE, TILE, 8, 3, 32, 2, k.metalHi!);          // lit top
+      rect(px, TILE, TILE, 23, 3, 2, 41, k.metalLo!);         // door split
+      for (const y of [8, 12] as const) {                     // vents
+        rect(px, TILE, TILE, 11, y, 10, 2, k.metalLo!);
+        rect(px, TILE, TILE, 27, y, 10, 2, k.metalLo!);
+      }
+      rect(px, TILE, TILE, 19, 22, 2, 5, k.propDark!);        // handles
+      rect(px, TILE, TILE, 27, 22, 2, 5, k.propDark!);
+      rect(px, TILE, TILE, 8, 42, 32, 2, k.metalLo!);         // base
       break;
     }
   }
