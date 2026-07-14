@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "exports": {
+    "./blind-solve": "./src/blind-solve.ts"
+  },
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "node --test \"src/test/*.test.ts\""

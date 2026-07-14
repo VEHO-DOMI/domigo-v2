@@ -11,8 +11,10 @@
     "test": "node --test \"lib/*.test.ts\""
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.110.0",
     "@domigo/art-gen": "workspace:*",
     "@domigo/content-loader": "workspace:*",
+    "@domigo/content-pipeline": "workspace:*",
     "@domigo/content-schema": "workspace:*",
     "@domigo/db": "workspace:*",
     "@domigo/engine": "workspace:*",
