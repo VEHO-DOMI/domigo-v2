@@ -5,6 +5,7 @@
 - Worktree: `/Users/veho/Code/domigo-v2-codex-rpg`
 - Branch: `codex/g1-rpg-sandbox`
 - Base: clean Word-Battle commit `002d31a`
+- Implementation checkpoint: `cde6d01`, backed up to `origin/codex/g1-rpg-sandbox`
 - Local URL: `http://localhost:3210/dev/game-preview`
 - Delivery rule: commit and back up this branch; do not open a Codex pull request during the comparison.
 

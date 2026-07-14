@@ -2,6 +2,7 @@
 
 Status: calibration build ready; visual review and isolated database proof pending.
 Updated: 2026-07-14 (Europe/Zagreb).
+Backup: implementation checkpoint `cde6d01` is on `origin/codex/g1-rpg-sandbox`; no pull request is open.
 
 ## Purpose
 
