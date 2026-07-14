@@ -514,7 +514,8 @@ a.dgh-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-elevate
   .dgf-pop-in, .dgf-sweep, .dgf-fall, .dgf-fade-up, .dgf-stamp, .dgf-pin-drop, .dgf-caret,
   .dg-encounter-veil, .dg-encounter-card,
   .dg-bs-swirl-blob, .dg-bs-smudge, .dg-bs-absorb, .dg-bs-dot, .dg-bs-letter,
-  .dg-bs-word-whole, .dg-bs-page, .dg-bs-card {
+  .dg-bs-word-whole, .dg-bs-page, .dg-bs-card,
+  .dg-qf-veil, .dg-qf-card, .dg-qf-ring, .dg-qf-verdict, .dg-qf-combo {
     animation: none !important;
   }
   .dg-tile, .dg-btn, .dg-btn-secondary, .dg-chip, .dg-mc-option, .xp-fill, .dgh-card {
@@ -537,7 +538,12 @@ a.dgh-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-elevate
 [data-motion="reduce"] .dg-bs-letter,
 [data-motion="reduce"] .dg-bs-word-whole,
 [data-motion="reduce"] .dg-bs-page,
-[data-motion="reduce"] .dg-bs-card {
+[data-motion="reduce"] .dg-bs-card,
+[data-motion="reduce"] .dg-qf-veil,
+[data-motion="reduce"] .dg-qf-card,
+[data-motion="reduce"] .dg-qf-ring,
+[data-motion="reduce"] .dg-qf-verdict,
+[data-motion="reduce"] .dg-qf-combo {
   animation: none !important;
 }
 /* G-A1: the BattleStage's own motion switch (set from JS — OS ∨ ?motion=reduce
@@ -652,3 +658,51 @@ a.dgh-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-elevate
 .dg-bs-page { animation: dg-bs-page-drift 7s ease-in-out infinite; }
 .dg-bs-page-b { animation-duration: 9s; animation-delay: 1.2s; }
 .dg-bs-page-c { animation-duration: 11s; animation-delay: 0.6s; }
+
+
+/* ── KA-1 · Tintenlauf quickfire (one word, three chips, one tap) ────────────
+   Listed in BOTH reduced-motion kill lists above; base styles are end-states
+   (the ring simply sits full when animations are off — the JS timeout is the
+   real clock). */
+@keyframes dg-qf-card-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.92); }
+}
+.dg-qf-veil { animation: dg-encounter-veil-in 140ms ease-out; }
+.dg-qf-card { animation: dg-qf-card-in 180ms cubic-bezier(0.2, 0.9, 0.25, 1.2); }
+.dg-qf-chip {
+  display: block;
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: 2px solid #8b7cf5;
+  background: rgba(30, 27, 52, 0.92);
+  color: #f3f1ff;
+  font-family: var(--font-body);
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.08s ease, background 0.08s ease;
+  touch-action: manipulation;
+}
+.dg-qf-chip:hover { background: rgba(64, 58, 110, 0.95); }
+.dg-qf-chip:active { transform: scale(0.96); }
+@keyframes dg-qf-ring-kf { from { width: 100%; } to { width: 0%; } }
+.dg-qf-ring {
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #8b7cf5, #ffe066);
+  margin: 0 auto 10px;
+  animation: dg-qf-ring-kf var(--qf-s, 6s) linear forwards;
+}
+@keyframes dg-qf-verdict-kf {
+  0% { opacity: 0; transform: scale(0.6); }
+  45% { opacity: 1; transform: scale(1.12); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.dg-qf-verdict { animation: dg-qf-verdict-kf 240ms cubic-bezier(0.2, 0.9, 0.25, 1.2); }
+@keyframes dg-qf-combo-kf {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.25) rotate(-3deg); }
+  100% { transform: scale(1); }
+}
+.dg-qf-combo { animation: dg-qf-combo-kf 300ms ease-out; }
