@@ -71,6 +71,13 @@
       "when": 1784047221432,
       "tag": "0009_blue_captain_stacy",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1784054016571,
+      "tag": "0010_rare_sentry",
+      "breakpoints": true
     }
   ]
 }

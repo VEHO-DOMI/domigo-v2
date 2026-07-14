@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
   transpilePackages: [
     "@domigo/content-schema",
     "@domigo/content-loader",
+    "@domigo/content-pipeline",
     "@domigo/db",
     "@domigo/engine",
     "@domigo/task-ui",

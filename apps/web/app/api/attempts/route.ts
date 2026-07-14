@@ -11,7 +11,8 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { ItemRef, ListeningRef, StoryComprehensionRef, TestRef } from "@domigo/content-schema";
 import type { GrammarItem } from "@domigo/content-schema";
-import { loadListening, loadStoryComprehension, loadTest, loadUnit, storyIdForGrade } from "@domigo/content-loader";
+import { loadListening, loadStoryComprehension, loadTest, storyIdForGrade } from "@domigo/content-loader";
+import { loadUnitWithOverrides } from "@/lib/content-service";
 import { classifyWrong, gradeGrammar, gradeVocab, vocabAnswers, xpForTier } from "@domigo/engine";
 import type { ClassifiableItem, GrammarInput, Tier } from "@domigo/engine";
 import { getDb, recordAttempt } from "@domigo/db";
@@ -91,7 +92,12 @@ export async function POST(req: Request): Promise<Response> {
       kind = ref.kind;
       unitSlug = ref.unitSlug;
       grade = ref.grade;
-      const unit = loadUnit(ref.unitSlug);
+      // Draft-aware: grade the SAME effective item the student was shown
+      // (canon + prose overlay + published full-item drafts) so created items
+      // are gradable and replaced items grade against their NEW keys. Prose
+      // overrides can't touch grading keys by construction, so this is safe;
+      // degrades to canon on any DB error.
+      const unit = await loadUnitWithOverrides(ref.unitSlug);
       if (ref.kind === "vocab") {
         const item = unit.vocab.find((v) => v.id === itemId);
         if (!item) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });

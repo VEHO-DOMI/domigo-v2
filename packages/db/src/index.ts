@@ -41,4 +41,5 @@ export * from "./auth.ts"; // v2→v1 dual-read identity lookups (lookupStudentF
 export * from "./class-service.ts"; // P-1b: teacher class CRUD (v2-native, authz by teacherId) + pure name/grade validation
 export * from "./roster-service.ts"; // P-2: roster import + student self-claim (journal-then-flip, authz by teacherId)
 export * from "./overrides.ts"; // S-1: Studio content overlay (journal-then-flip publish/revert/fold)
+export * from "./drafts.ts"; // S-2: Studio full-CRUD drafts (blind-solve gate; journal-then-flip)
 export * from "./bootstrap-teacher.ts"; // one-time v2-native teacher bootstrap (lock-out recovery; token + one-shot gated at /bootstrap)

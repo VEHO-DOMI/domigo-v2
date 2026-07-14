@@ -457,3 +457,64 @@ export const v2SiteCopy = v2.table(
     keyUnique: uniqueIndex("site_copy_key_unique").on(t.key),
   }),
 );
+
+// ---------------------------------------------------------------------------
+// S-2 · Studio full CRUD + automated blind-solve gate (migration 0010). A
+// teacher creates/replaces/removes a whole graded task; it is publishable ONLY
+// after `content_checks` records a blind-solve `verdict: correct` (the engine
+// grading an AI's key-less answer). Non-published drafts are structurally
+// unservable. `unit_meta` relabels a unit's title.
+// ---------------------------------------------------------------------------
+
+/** One draft per item. `item` is the full VocabItem/GrammarItem jsonb; `status`
+ *  gates serving — a draft only serves when 'published' (after the gate). */
+export const v2ContentDrafts = v2.table(
+  "content_drafts",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    itemId: text("item_id").notNull(), // new id for create; existing for replace/remove
+    unitSlug: text("unit_slug").notNull(),
+    kind: text("kind").notNull(), // 'vocab'|'grammar'
+    item: jsonb("item").notNull().default({}), // the full item (empty for a 'remove')
+    action: text("action").notNull(), // 'create'|'replace'|'remove'
+    status: text("status").notNull().default("draft"), // 'draft'|'checking'|'check_failed'|'published'
+    updatedBy: uuid("updated_by"),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    itemUnique: uniqueIndex("content_drafts_item_unique").on(t.itemId),
+    byStatus: index("content_drafts_status_idx").on(t.status),
+  }),
+);
+
+/** Append-only check journal — `evidence` holds the AI answer + engine tier +
+ *  model + costUsd for a blind_solve, or the zod result. */
+export const v2ContentChecks = v2.table(
+  "content_checks",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    draftId: uuid("draft_id").notNull(),
+    checkKind: text("check_kind").notNull(), // 'zod'|'blind_solve'
+    verdict: text("verdict").notNull(), // 'pass'|'fail' (zod) | engine tier (blind_solve)
+    evidence: jsonb("evidence").notNull().default({}),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    byDraft: index("content_checks_draft_idx").on(t.draftId, t.createdAt.desc()),
+  }),
+);
+
+/** Unit relabeling (teacher-facing title override), keyed by unit slug. */
+export const v2UnitMeta = v2.table(
+  "unit_meta",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    unitSlug: text("unit_slug").notNull(),
+    title: text("title").notNull(),
+    updatedBy: uuid("updated_by"),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    slugUnique: uniqueIndex("unit_meta_slug_unique").on(t.unitSlug),
+  }),
+);
