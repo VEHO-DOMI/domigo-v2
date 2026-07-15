@@ -38,7 +38,7 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
 
   const slug = `g${grade}-u01`;
   const unit = await loadUnitWithOverrides(slug);
-  const due = await getDueRefs(getDb(), acting.userId, { kind: "unit", slug }, 24).catch(() => []);
+  const due = await getDueRefs(getDb(), acting.userId, acting.classId, { kind: "unit", slug }, 24).catch(() => []);
   const enc = Encounter.parse({
     schema: "encounter@1",
     id: `g${grade}.enc.tintenlauf`,

@@ -17,12 +17,18 @@ function starsFor(correctEquiv: number, total: number): number {
   return acc >= 1 ? 3 : acc >= 0.8 ? 2 : 1;
 }
 
-export default function PathPracticeNode({ unitSlug, nodeId, isCheckpoint, items }: {
+export default function PathPracticeNode({ unitSlug, nodeId, isCheckpoint, items, attemptMode }: {
   unitSlug: string;
   nodeId: string;
   isCheckpoint: boolean;
   items: QueueItem[];
+  /** the attempt `mode` — legacy Study Path (default `study:<node>`) or, for a
+   *  J-1 journey node, `journey:<unit>:<node>`. A journey node DERIVES its progress
+   *  from these attempts, so it does NOT write the study_path_progress table (F3). */
+  attemptMode?: string;
 }) {
+  const mode = attemptMode ?? `study:${nodeId}`;
+  const isJourney = mode.startsWith("journey:");
   const [i, setI] = useState(0);
   const [answered, setAnswered] = useState(false);
   const [done, setDone] = useState(false);
@@ -43,7 +49,7 @@ export default function PathPracticeNode({ unitSlug, nodeId, isCheckpoint, items
     void sendAttempt({
       clientAttemptId: crypto.randomUUID(),
       itemId: detail.itemId,
-      mode: `study:${nodeId}`,
+      mode,
       input: detail.input,
       latencyMs: null,
       hintUsed: false,
@@ -58,7 +64,10 @@ export default function PathPracticeNode({ unitSlug, nodeId, isCheckpoint, items
     const total = all.length;
     const accuracy = total > 0 ? correctEquiv / total : 0;
     setStars(starsFor(correctEquiv, total));
-    // Best-effort node-completion (no outbox — cosmetic + keep-best heals a lost write).
+    // A journey node's progress is DERIVED from the attempts just posted — it must
+    // NOT write study_path_progress (F3: no separate path-state table for journeys).
+    if (isJourney) return;
+    // Legacy Study Path: best-effort node-completion (no outbox — cosmetic + keep-best heals a lost write).
     void fetch("/api/study-path", {
       method: "POST",
       headers: { "content-type": "application/json" },

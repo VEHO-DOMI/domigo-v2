@@ -1439,6 +1439,93 @@ export const ListeningFile = z
 export type ListeningFile = z.infer<typeof ListeningFile>;
 
 // ---------------------------------------------------------------------------
+// Journeys — journey@1 (J-1). A per-unit AUTHORED spine: ordered nodes a student
+// walks (lesson → practice → game → review → side-quest). Game nodes deep-link
+// into the grade campaign. Progress is DERIVED from the practice_attempts ledger
+// (mode='journey:<unit>:<node>') — there is NO journey-state table (no DDL).
+// Pools partition the unit's items; `mock` is a teacher's runtime, class-scoped
+// reserved vault (held out of self-study/review/games) and is NEVER authored here.
+// Runtime: packages/content-loader/src/pools.ts + packages/db/src/journey-progress.ts.
+// ---------------------------------------------------------------------------
+
+/** The five item pools. `mock` = reserved assessment items (runtime-only). */
+export const JOURNEY_POOLS = ["practice", "homework", "classwork", "mock", "arcade"] as const;
+export const JourneyPool = z.enum(JOURNEY_POOLS);
+export type JourneyPool = z.infer<typeof JourneyPool>;
+
+/** Pools a journey may AUTHOR an item into — `mock` excluded (it is reserved-only). */
+export const AuthorablePool = z.enum(["practice", "homework", "classwork", "arcade"]);
+export type AuthorablePool = z.infer<typeof AuthorablePool>;
+
+export const JOURNEY_NODE_KINDS = ["lesson", "practice", "game", "review", "side-quest"] as const;
+export const JourneyNodeKind = z.enum(JOURNEY_NODE_KINDS);
+export type JourneyNodeKind = z.infer<typeof JourneyNodeKind>;
+
+/** A node id — a lowercase slug (charset/shape guard). The real length bound is
+ *  the mode-length invariant in the superRefine below: `journey:<unit>:<node>`
+ *  must fit /api/attempts' 40-char `mode` cap. */
+export const JourneyNodeId = z.string().regex(/^[a-z0-9][a-z0-9-]{0,40}$/);
+
+/** A deep link into a grade campaign stop: the last dot-segment of a zone id
+ *  (`z07`, overworld) or chapter id (`ch03`, chapter games). The runtime maps it
+ *  to `/play/{grade}/{zoneOrChapter}`. */
+export const GamePointer = z.object({
+  grade: GradeZ,
+  zoneOrChapter: z.string().regex(/^(?:z\d{2}|ch\d{2})$/),
+});
+export type GamePointer = z.infer<typeof GamePointer>;
+
+export const JourneyNode = z.object({
+  id: JourneyNodeId,
+  kind: JourneyNodeKind,
+  titleDe: z.string().min(1),
+  titleEn: z.string().nullable(),
+  /** the pool this node draws its items from — practice/side-quest only (review
+   *  uses the live due set; lesson/game carry none). Never `mock`. */
+  itemPool: AuthorablePool.optional(),
+  /** only on game nodes — the campaign stop to deep-link into. */
+  gamePointer: GamePointer.optional(),
+});
+export type JourneyNode = z.infer<typeof JourneyNode>;
+
+/** journey@1 — the authored per-unit spine (a sibling file in the unit dir). */
+export const Journey = z
+  .object({
+    schema: z.literal("journey@1"),
+    grade: GradeZ,
+    unit: z.number().int().min(1).max(15),
+    slug: UnitSlug,
+    nodes: z.array(JourneyNode).min(1),
+    /** authored item→pool overrides for THIS unit (`mock` is not authorable). */
+    poolOverrides: z.record(z.string(), AuthorablePool).optional(),
+  })
+  .superRefine((j, ctx) => {
+    if (j.slug !== unitSlug(j.grade, j.unit)) {
+      ctx.addIssue({ code: "custom", path: ["slug"], message: `slug must be ${unitSlug(j.grade, j.unit)}` });
+    }
+    const seen = new Set<string>();
+    for (const [i, n] of j.nodes.entries()) {
+      if (seen.has(n.id)) ctx.addIssue({ code: "custom", path: ["nodes", i, "id"], message: `duplicate node id "${n.id}"` });
+      seen.add(n.id);
+      // the attempt `mode` string must fit /api/attempts' 40-char cap
+      const mode = `journey:${j.slug}:${n.id}`;
+      if (mode.length > 40) ctx.addIssue({ code: "custom", path: ["nodes", i, "id"], message: `node id too long: mode "${mode}" is ${mode.length} chars (max 40)` });
+      // gamePointer iff kind==='game', and its grade must match
+      if (n.kind === "game") {
+        if (!n.gamePointer) ctx.addIssue({ code: "custom", path: ["nodes", i, "gamePointer"], message: "a game node needs a gamePointer" });
+        else if (n.gamePointer.grade !== j.grade) ctx.addIssue({ code: "custom", path: ["nodes", i, "gamePointer", "grade"], message: "gamePointer grade must match the journey grade" });
+      } else if (n.gamePointer) {
+        ctx.addIssue({ code: "custom", path: ["nodes", i, "gamePointer"], message: `a ${n.kind} node must not carry a gamePointer` });
+      }
+      // itemPool only on practice/side-quest (review = live due set; lesson/game = none)
+      if (n.itemPool && n.kind !== "practice" && n.kind !== "side-quest") {
+        ctx.addIssue({ code: "custom", path: ["nodes", i, "itemPool"], message: `a ${n.kind} node must not carry an itemPool` });
+      }
+    }
+  });
+export type Journey = z.infer<typeof Journey>;
+
+// ---------------------------------------------------------------------------
 // Mock tests — test@1 (B2). A test = ordered sections. REFERENCE sections point
 // at existing vocab/grammar/listening ids (no content copy — story-schema rule).
 // READING + WRITING sections embed test-only content. Reading items are a sibling

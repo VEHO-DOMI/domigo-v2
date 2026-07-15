@@ -28,6 +28,7 @@ export * from "./streak.ts";
 export * from "./studypath.ts";
 export * from "./gamesave.ts"; // Track C cosmetic game saves (clientRev LWW)
 export * from "./game-progress.ts"; // Track C: solved-item derivation from the attempts ledger (Law 2)
+export * from "./journey-progress.ts"; // J-1: journey node status/stars derived from the attempts ledger (no path table)
 export * from "./assignments.ts"; // M-wave: pure mock-test scoring (Note math, DB-free)
 export * from "./assignment-draft.ts"; // M-2: pure draft shape + publish validation (DB-free)
 export * from "./assignment-service.ts"; // M-2: assignment CRUD + v1 class list (best-effort)

@@ -13,7 +13,7 @@ export default async function ReviewSessionPage() {
   if (session.user.role === "teacher") redirect("/admin");
 
   // Refs are soonest-due first across all of the student's units (a student only has their grade's items).
-  const refs = await getDueRefs(getDb(), session.user.id, { kind: "all" }, 20);
+  const refs = await getDueRefs(getDb(), session.user.id, session.user.classId ?? "", { kind: "all" }, 20);
 
   // Load each unique unit ONCE, WITH the Studio prose overlay applied. Cache a
   // miss so a stale/un-approved slug is attempted only once and never 500s.

@@ -112,7 +112,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
     const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
     // Phase 4: genuine spaced retrieval — resolve ONLY actually-due clues from this
     // unit (no scope-random filler), so the re-interview beat appears only when due.
-    const dueRefs = await getDueRefs(getDb(), acting.userId, { kind: "unit", slug }, 3).catch(() => []);
+    const dueRefs = await getDueRefs(getDb(), acting.userId, acting.classId, { kind: "unit", slug }, 3).catch(() => []);
     const reviewItems: ResolvedItem[] = dueRefs
       .map((ref): ResolvedItem | null => {
         const v = unit.vocab.find((x) => x.id === ref.itemId);
@@ -222,7 +222,7 @@ export default async function ZonePage({ params, searchParams }: { params: Promi
   const fromRaw = (await searchParams)?.from;
   const from = typeof fromRaw === "string" && /^z\d{2}$/.test(fromRaw) ? fromRaw : null;
 
-  const due = await getDueRefs(getDb(), acting.userId, { kind: "unit", slug }, Math.max(8, encounterCount * 2)).catch(() => []);
+  const due = await getDueRefs(getDb(), acting.userId, acting.classId, { kind: "unit", slug }, Math.max(8, encounterCount * 2)).catch(() => []);
   const enc = Encounter.parse({
     schema: "encounter@1",
     id: `g${grade}.enc.${storyId.split(".").pop()}-${zone}`,

@@ -16,7 +16,7 @@ export default async function HomePage() {
   let dueLabel = "Spaced review of past items";
   let dueBadge: string | null = null;
   try {
-    const c = await getDueCounts(getDb(), session.user.id);
+    const c = await getDueCounts(getDb(), session.user.id, session.user.classId ?? "");
     if (c.total > 0) { dueLabel = "Spaced review of past items"; dueBadge = `${c.total} due now`; }
   } catch {
     /* keep default */

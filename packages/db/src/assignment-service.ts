@@ -5,7 +5,7 @@
  * assignments.ts; pure draft validation in assignment-draft.ts — this file is
  * only the CRUD + the read-only v1 class list.
  */
-import { and, desc, eq, isNull } from "drizzle-orm";
+import { and, desc, eq, inArray, isNull } from "drizzle-orm";
 import type { Db } from "./index.ts";
 import { assignments, assignmentSections, reservedItems } from "./schema.ts";
 import { v1Classes } from "./v1.ts";
@@ -110,13 +110,34 @@ export async function createAssignment(db: Db, draft: AssignmentDraft, createdBy
   return assignmentId;
 }
 
-/** Active reserved item ids for a class (held out of assignments). */
+/** Active reserved item ids for a class (held out of assignments, self-study,
+ *  Smart Review + game encounters — the J-1 `mock` pool). */
 export async function listReservedForClass(db: Db, classId: string): Promise<Set<string>> {
   const rows = await db
     .select({ itemId: reservedItems.itemId })
     .from(reservedItems)
     .where(and(eq(reservedItems.classId, classId), eq(reservedItems.active, true)));
   return new Set(rows.map((r) => r.itemId));
+}
+
+/** Reserve items for a class → the `mock` pool (held out of practice/review/games
+ *  so a mock test can use them unseen). Idempotent: re-reserving re-activates a
+ *  released row. The teacher-facing UI is a later item; this is the DB primitive. */
+export async function reserveItems(db: Db, classId: string, itemIds: readonly string[]): Promise<void> {
+  if (itemIds.length === 0) return;
+  await db
+    .insert(reservedItems)
+    .values(itemIds.map((itemId) => ({ classId, itemId, active: true })))
+    .onConflictDoUpdate({ target: [reservedItems.classId, reservedItems.itemId], set: { active: true, releasedAt: null } });
+}
+
+/** Release reserved items back into the practice pool (active=false + releasedAt). */
+export async function releaseItems(db: Db, classId: string, itemIds: readonly string[]): Promise<void> {
+  if (itemIds.length === 0) return;
+  await db
+    .update(reservedItems)
+    .set({ active: false, releasedAt: new Date() })
+    .where(and(eq(reservedItems.classId, classId), inArray(reservedItems.itemId, [...itemIds])));
 }
 
 /** Soft-archive (assignments are never hard-deleted — a taken session must resolve). */
