@@ -83,11 +83,21 @@ export default async function AdminPage() {
       </section>
 
       <section className="dg-card" style={{ marginTop: 16 }}>
+        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Studio</h2>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
+          Edit a task’s wording (hints, definitions, example sentences), or create a brand-new task. A new task
+          goes live only after an AI has solved it correctly through the real grading engine — so a wrong answer
+          key can never reach a student.
+        </p>
+        <Link href="/admin/studio" className="dg-btn" style={{ display: "inline-block" }}>Open Studio →</Link>
+      </section>
+
+      <section className="dg-card" style={{ marginTop: 16 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Next for teachers</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: 0 }}>
           Landing through the summer program, in build order: the student runner + results for these assignments,
-          grading captured writing submissions, and native content editing with a student “report a problem”
-          inbox. Until each one ships, it doesn’t appear here — no dead buttons.
+          grading captured writing submissions, and a student “report a problem” inbox. Until each one ships, it
+          doesn’t appear here — no dead buttons.
         </p>
       </section>
 
