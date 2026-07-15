@@ -44,3 +44,4 @@ export * from "./overrides.ts"; // S-1: Studio content overlay (journal-then-fli
 export * from "./drafts.ts"; // S-2: Studio full-CRUD drafts (blind-solve gate; journal-then-flip)
 export * from "./solve-runs.ts"; // S-2b: async blind-solve runs (Vercel Sandbox orchestration)
 export * from "./bootstrap-teacher.ts"; // one-time v2-native teacher bootstrap (lock-out recovery; token + one-shot gated at /bootstrap)
+export * from "./teacher-identity.ts"; // WS-AUTH Phase A: teacher self-service PIN — promote v1→v2 (reuse id) + change PIN

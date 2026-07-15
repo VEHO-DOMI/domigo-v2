@@ -93,6 +93,14 @@ export default async function AdminPage() {
       </section>
 
       <section className="dg-card" style={{ marginTop: 16 }}>
+        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Account settings</h2>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
+          Change your PIN yourself — no more asking for a database edit.
+        </p>
+        <Link href="/admin/settings" className="dg-btn" style={{ display: "inline-block" }}>Account settings →</Link>
+      </section>
+
+      <section className="dg-card" style={{ marginTop: 16 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Next for teachers</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: 0 }}>
           Landing through the summer program, in build order: the student runner + results for these assignments,

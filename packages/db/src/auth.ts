@@ -156,6 +156,34 @@ export async function lookupTeacherForAuth(db: Db, nickname: string): Promise<Au
 }
 
 /**
+ * Teacher by id (uuid). Dual-read: the v2-native teacher first, then the v1
+ * mirror — the same precedence as the nickname lookup, but keyed on the stable
+ * user id. Returns the auth row INCLUDING the bcrypt hash so a caller (the
+ * self-service PIN change) can verify the CURRENT pin for the logged-in teacher,
+ * and read their displayName for a first-time v1→v2 promotion. Null if the id is
+ * a teacher in neither table.
+ */
+export async function lookupTeacherAuthById(db: Db, id: string): Promise<AuthUserRow | null> {
+  const v2Rows = await v2Safe(
+    () =>
+      db
+        .select(v2Cols)
+        .from(v2IdentityUsers)
+        .where(and(eq(v2IdentityUsers.role, "teacher"), eq(v2IdentityUsers.id, id)))
+        .limit(1),
+    [],
+  );
+  const v2Row = v2Rows[0] ?? null;
+  if (v2Row) return pickIdentity(v2Row, null);
+  const rows = await db
+    .select(cols)
+    .from(v1Users)
+    .where(and(eq(v1Users.role, "teacher"), eq(v1Users.id, id)))
+    .limit(1);
+  return pickIdentity(v2Row, rows[0] ?? null);
+}
+
+/**
  * Mint a class invite code that collides with NEITHER an existing v1 code NOR a
  * v2 one — both pools share the single code space a student types in. Reads every
  * code from both tables into one set (uppercased, since a generated code is always
