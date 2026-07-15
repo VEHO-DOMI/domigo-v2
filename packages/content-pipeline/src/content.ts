@@ -41,6 +41,7 @@ import { runAuditVariants } from "./audit-variants.ts";
 import { runValidateListening } from "./validate-listening.ts";
 import { runValidateStory } from "./validate-story.ts";
 import { runValidateTest } from "./validate-test.ts";
+import { runValidateJourneys } from "./validate-journeys.ts";
 import { runVerifyIngest, runVerifyPrepare } from "./verify-items.ts";
 import { runTrustedPatch } from "./trusted-patch.ts";
 import { runWordbank } from "./wordbank.ts";
@@ -168,12 +169,15 @@ switch (command) {
   case "validate-test":
     runValidateTest();
     break;
+  case "validate-journeys":
+    runValidateJourneys();
+    break;
   case "status":
     runStatus();
     break;
   default:
     console.error(
-      `unknown command: ${command ?? "(none)"}\nusage: pnpm content <extract|wordbank|v1-snapshot|gen|review-doc|ingest-review|story|validate|audit-variants|validate-listening|validate-story|validate-test|status> [flags]`,
+      `unknown command: ${command ?? "(none)"}\nusage: pnpm content <extract|wordbank|v1-snapshot|gen|review-doc|ingest-review|story|validate|audit-variants|validate-listening|validate-story|validate-test|validate-journeys|status> [flags]`,
     );
     process.exitCode = 2;
 }

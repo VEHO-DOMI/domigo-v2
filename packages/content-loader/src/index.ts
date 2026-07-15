@@ -17,7 +17,9 @@ export { applyStudioOverlay, fieldsChanged, normalizePatchColumn, validatePatch,
 export type { ItemKind, ItemPatch, VocabPatch, GrammarPatch, ValidationResult } from "./overrides.ts";
 export { validateFullItem, mergeDrafts } from "./drafts.ts";
 export type { FullValidation, DraftApply } from "./drafts.ts";
-import { Cast, GameMap, StoryFlags, TrapRegistry, GrammarFile, GrammarStructuresFile, ListeningFile, Story, StoryComprehensionFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
+// J-1: the pure item→pool partition (IO-free) — re-exported for the runtime + validator.
+export { assignPool, partitionUnit, itemsInPool } from "./pools.ts";
+import { Cast, GameMap, Journey, StoryFlags, TrapRegistry, GrammarFile, GrammarStructuresFile, ListeningFile, Story, StoryComprehensionFile, TestFile, VocabFile, WordBank } from "@domigo/content-schema";
 import type { GrammarItem, GrammarStructure, VocabItem } from "@domigo/content-schema";
 import type { Cast as CastT, GameMap as GameMapT, Story as StoryT, StoryComprehensionFile as StoryComprehensionFileT, StoryFlags as StoryFlagsT, TrapRegistry as TrapRegistryT } from "@domigo/content-schema";
 
@@ -140,6 +142,24 @@ export function loadTest(slug: string): TestFile | null {
   if (!UNIT_SLUG.test(slug)) throw new Error(`content-loader: bad unit slug "${slug}"`);
   const raw = readJson<unknown>(path.join(UNITS_DIR, slug, "test.json"));
   return raw === null ? null : TestFile.parse(raw);
+}
+
+/** Load + validate one unit's authored journey spine (J-1). Null if the unit has
+ *  none (most units, until J-2 authors them). Server-only. */
+export function loadJourney(slug: string): Journey | null {
+  if (!UNIT_SLUG.test(slug)) throw new Error(`content-loader: bad unit slug "${slug}"`);
+  const raw = readJson<unknown>(path.join(UNITS_DIR, slug, "journey.json"));
+  return raw === null ? null : Journey.parse(raw);
+}
+
+/** Unit slugs that have a journey.json (the journey "authored" signal), sorted. */
+export function listJourneyUnits(): string[] {
+  if (!fs.existsSync(UNITS_DIR)) return [];
+  return fs
+    .readdirSync(UNITS_DIR)
+    .filter((n) => UNIT_SLUG.test(n))
+    .filter((slug) => fs.existsSync(path.join(UNITS_DIR, slug, "journey.json")))
+    .sort();
 }
 
 // ── Track C story bundles (content/corpus/stories/<storyId>/) ─────────────────

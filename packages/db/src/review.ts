@@ -4,9 +4,10 @@
  * getDueRefs, getDueCounts) are the shared service that powers Smart Review AND
  * game encounters (10_game_layer Law 6).
  */
-import { and, asc, eq, lte, sql } from "drizzle-orm";
+import { and, asc, eq, lte, notInArray, sql } from "drizzle-orm";
 import type { Tier } from "@domigo/engine";
 import { reviewQueue } from "./schema.ts";
+import { listReservedForClass } from "./assignment-service.ts";
 import type { Db } from "./index.ts";
 
 export const LEITNER_MAX_BOX = 5;
@@ -103,17 +104,30 @@ export interface DueRef {
   dueAt: Date;
 }
 
-/** Due items for a user within a scope, soonest-due first. Returns refs, not items. */
+/**
+ * Due items for a user within a scope, soonest-due first. Returns refs, not items.
+ *
+ * `classId` is REQUIRED (J-1, F2): the class's active reserved items — the `mock`
+ * pool — are EXCLUDED here, so a teacher's held-out assessment items never surface
+ * in Smart Review OR in a game encounter (reserve integrity, platform-wide). The
+ * exclusion is resolved INTERNALLY (not an optional caller flag) so no call site
+ * can forget it. `recordAttempt` queues every attempt regardless of mode, so an
+ * item reserved AFTER being practiced is already in the queue — read-time
+ * exclusion is the only correct seam (Neon HTTP has no way to retro-purge).
+ */
 export async function getDueRefs(
   db: Db,
   userId: string,
+  classId: string,
   scope: DueScope,
   limit = 20,
   now: Date = new Date(),
 ): Promise<DueRef[]> {
+  const reserved = await listReservedForClass(db, classId);
   const where = [eq(reviewQueue.userId, userId), lte(reviewQueue.dueAt, now)];
   if (scope.kind === "unit") where.push(eq(reviewQueue.unitSlug, scope.slug));
   if (scope.kind === "grade") where.push(eq(reviewQueue.grade, scope.grade));
+  if (reserved.size > 0) where.push(notInArray(reviewQueue.itemId, [...reserved]));
   const rows = await db
     .select({
       itemId: reviewQueue.itemId,
@@ -137,12 +151,16 @@ export interface DueCounts {
   byGrade: Record<number, number>;
 }
 
-/** How many items are due now, bucketed by kind + grade. */
-export async function getDueCounts(db: Db, userId: string, now: Date = new Date()): Promise<DueCounts> {
+/** How many items are due now, bucketed by kind + grade. `classId` REQUIRED —
+ *  the class's reserved (`mock`) items are excluded, matching getDueRefs (F2). */
+export async function getDueCounts(db: Db, userId: string, classId: string, now: Date = new Date()): Promise<DueCounts> {
+  const reserved = await listReservedForClass(db, classId);
+  const where = [eq(reviewQueue.userId, userId), lte(reviewQueue.dueAt, now)];
+  if (reserved.size > 0) where.push(notInArray(reviewQueue.itemId, [...reserved]));
   const rows = await db
     .select({ kind: reviewQueue.kind, grade: reviewQueue.grade, n: sql<number>`count(*)::int` })
     .from(reviewQueue)
-    .where(and(eq(reviewQueue.userId, userId), lte(reviewQueue.dueAt, now)))
+    .where(and(...where))
     .groupBy(reviewQueue.kind, reviewQueue.grade);
   let vocab = 0;
   let grammar = 0;
