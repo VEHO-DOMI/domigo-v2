@@ -9,13 +9,22 @@
  */
 import { useRouter } from "next/navigation";
 import { useCallback, useState, type CSSProperties } from "react";
+import { VocabItemView } from "@domigo/task-ui";
+import type { VocabItem } from "@domigo/content-schema";
 import { buildVocabItem, idStem, type Difficulty } from "@/lib/studio-new-item";
 
 const inputStyle: CSSProperties = { width: "100%", fontSize: 14, padding: "8px 10px", borderRadius: 10, border: "1.5px solid var(--card-border)", background: "var(--bg-raised)", color: "var(--text)", fontFamily: "var(--font-body)", boxSizing: "border-box" };
 const labelStyle: CSSProperties = { fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--muted)", fontFamily: "var(--font-label)" };
 
 type Phase = "edit" | "saving" | "checking" | "published" | "blocked" | "failed";
-type ApiResult = { httpStatus: number; ok?: boolean; status?: string; runId?: string; kind?: string; note?: string; error?: string; errors?: string[] };
+type GateResult = { ok: boolean; stage?: string; errors?: string[]; keyChecks?: { answer: string; tier: string }[] };
+type ApiResult = { httpStatus: number; ok?: boolean; status?: string; runId?: string; kind?: string; note?: string; error?: string; errors?: string[] } & Partial<GateResult>;
+
+const STAGE_DE: Record<string, string> = {
+  schema: "Aufbau",
+  "un-gateable": "nicht automatisch prüfbar",
+  "key-defect": "Lösungsschlüssel",
+};
 
 function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
   return (
@@ -44,8 +53,16 @@ export function NewItemForm({ units }: { units: string[] }) {
   const [errors, setErrors] = useState<string[]>([]);
   const [note, setNote] = useState<string>("");
 
+  // WS-AUTH B · see-it-before-you-publish: a student-view snapshot + a free gate check.
+  const [preview, setPreview] = useState<VocabItem | null>(null);
+  const [previewKey, setPreviewKey] = useState(0);
+  const [gate, setGate] = useState<GateResult | null>(null);
+  const [gateBusy, setGateBusy] = useState(false);
+
   const itemId = slug.trim() ? `${idStem(unitSlug)}.w.${slug.trim()}` : "";
   const busy = phase === "saving" || phase === "checking";
+  // enough filled to render a meaningful student view (word + gapped sentence + answer)
+  const canPreview = w.trim() !== "" && s.trim() !== "" && sAnswer.trim() !== "";
 
   function build() {
     return buildVocabItem({ unitSlug, slug, w, g, d, s, sAnswer, distractors, hintDe, difficulty, gloss: [] });
@@ -68,6 +85,26 @@ export function NewItemForm({ units }: { units: string[] }) {
     return true;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [unitSlug, slug, w, g, d, s, sAnswer, distractors, hintDe, difficulty]);
+
+  // Snapshot the current form into the real student renderer — no save, no publish.
+  function showPreview() {
+    setPreview(build().item as VocabItem);
+    setPreviewKey((k) => k + 1);
+  }
+
+  // Run the FREE pre-gate (structure + is-the-key-solvable) without publishing.
+  const runGate = async () => {
+    setGateBusy(true);
+    setGate(null);
+    try {
+      const r = await callApi({ action: "pregate", kind: "vocab", item: build().item });
+      setGate({ ok: !!r.ok, stage: r.stage, errors: r.errors, keyChecks: r.keyChecks });
+    } catch {
+      setGate({ ok: false, errors: ["Netzwerkfehler — bitte nochmal versuchen."] });
+    } finally {
+      setGateBusy(false);
+    }
+  };
 
   async function poll(runId: string): Promise<void> {
     const r = await callApi({ action: "poll", runId });
@@ -204,6 +241,47 @@ export function NewItemForm({ units }: { units: string[] }) {
         <ul style={{ margin: "14px 0 0", paddingLeft: 18, color: "var(--incorrect)", fontSize: 13 }}>{errors.map((e, i) => <li key={i}>{e}</li>)}</ul>
       )}
       {note && errors.length === 0 ? <p style={{ fontSize: 13, color: "var(--correct)", marginTop: 12 }}>{note}</p> : null}
+
+      {/* WS-AUTH B · see it + check it before it goes live to real students */}
+      <div style={{ marginTop: 18, borderTop: "1px solid var(--card-border)", paddingTop: 14 }}>
+        <div style={{ ...labelStyle, marginBottom: 8 }}>Vor dem Veröffentlichen</div>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <button type="button" className="dg-btn-secondary" disabled={busy || !canPreview} onClick={showPreview} style={{ opacity: busy || !canPreview ? 0.5 : 1 }} title={canPreview ? "" : "Fülle Wort, Beispielsatz und Antwort aus"}>👀 Vorschau (wie ein Kind)</button>
+          <button type="button" className="dg-btn-secondary" disabled={busy || gateBusy} onClick={runGate} style={{ opacity: busy || gateBusy ? 0.5 : 1 }}>{gateBusy ? "Prüfe…" : "✓ Aufgabe prüfen"}</button>
+        </div>
+
+        {gate && (
+          <div style={{ marginTop: 12, padding: "10px 12px", borderRadius: 10, border: `1px solid ${gate.ok ? "var(--correct)" : "var(--incorrect)"}`, background: "var(--bg-sunken)" }}>
+            {gate.ok ? (
+              <div style={{ color: "var(--correct)", fontWeight: 700 }}>✓ Sieht gut aus — sauber aufgebaut und dein Lösungsschlüssel ist lösbar.</div>
+            ) : (
+              <div>
+                <div style={{ color: "var(--incorrect)", fontWeight: 700 }}>✗ Noch nicht bereit{gate.stage ? ` (${STAGE_DE[gate.stage] ?? gate.stage})` : ""}:</div>
+                <ul style={{ margin: "6px 0 0", paddingLeft: 18, fontSize: 13, color: "var(--text-secondary)" }}>{(gate.errors ?? []).map((e, i) => <li key={i}>{e}</li>)}</ul>
+              </div>
+            )}
+            {gate.keyChecks && gate.keyChecks.length > 0 && (
+              <div style={{ marginTop: 6, fontSize: 12, color: "var(--muted)" }}>
+                Lösungsschlüssel: {gate.keyChecks.map((k, i) => <span key={i}>„{k.answer}“ → {k.tier === "correct" ? "richtig ✓" : `${k.tier} ✗`}{i < gate.keyChecks!.length - 1 ? " · " : ""}</span>)}
+              </div>
+            )}
+            <p style={{ margin: "8px 0 0", fontSize: 12, color: "var(--muted)", fontStyle: "italic" }}>Das ist die schnelle, kostenlose Prüfung. Beim „Veröffentlichen“ löst zusätzlich eine KI die Aufgabe blind.</p>
+          </div>
+        )}
+
+        {preview && (
+          <div style={{ marginTop: 12 }}>
+            <div style={{ ...labelStyle, marginBottom: 6, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span>So sieht es ein Kind</span>
+              <button type="button" onClick={showPreview} style={{ background: "none", border: "none", color: "var(--accent)", cursor: "pointer", fontSize: 12, fontWeight: 700, fontFamily: "var(--font-label)" }}>↻ Aktualisieren</button>
+            </div>
+            <div style={{ border: "1px solid var(--card-border)", borderRadius: 12, padding: 14, background: "var(--bg-sunken)" }}>
+              <VocabItemView key={previewKey} item={preview} pool="carrier" hideXp />
+            </div>
+            <p style={{ margin: "6px 0 0", fontSize: 12, color: "var(--muted)", fontStyle: "italic" }}>Antworten hier werden nicht gespeichert — nur zum Ausprobieren.</p>
+          </div>
+        )}
+      </div>
 
       <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
         <button type="button" className="dg-btn-secondary" disabled={busy} onClick={onSaveOnly} style={{ opacity: busy ? 0.5 : 1 }}>{phase === "saving" ? "…" : "Speichern"}</button>
