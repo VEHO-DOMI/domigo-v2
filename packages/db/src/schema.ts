@@ -518,3 +518,36 @@ export const v2UnitMeta = v2.table(
     slugUnique: uniqueIndex("unit_meta_slug_unique").on(t.unitSlug),
   }),
 );
+
+/** S-2b · async blind-solve runs (Vercel Sandbox + Claude Agent SDK, authed by
+ *  the operator's subscription OAuth token). One row per publish attempt: the
+ *  sandbox solves the item BLIND, then the platform grades the returned answer
+ *  through @domigo/engine (the sandbox never sees the key). status:
+ *  'running' (sandbox in flight) → 'passed' (top candidate graded correct →
+ *  draft published) | 'blocked' (graded not-correct → draft check_failed) |
+ *  'failed' (sandbox error/timeout). `answer` = the AI's candidates. */
+export const v2ContentSolveRuns = v2.table(
+  "content_solve_runs",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    itemId: text("item_id").notNull(),
+    unitSlug: text("unit_slug").notNull(),
+    kind: text("kind").notNull(),
+    model: text("model").notNull(),
+    status: text("status").notNull().default("running"),
+    sandboxId: text("sandbox_id"),
+    answer: jsonb("answer"),
+    gradedTier: text("graded_tier"),
+    errorMessage: text("error_message"),
+    costUsd: numeric("cost_usd", { precision: 10, scale: 6 }),
+    inputTokens: integer("input_tokens"),
+    outputTokens: integer("output_tokens"),
+    numTurns: integer("num_turns"),
+    triggeredBy: uuid("triggered_by"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    completedAt: timestamp("completed_at", { withTimezone: true }),
+  },
+  (t) => ({
+    byItem: index("content_solve_runs_item_idx").on(t.itemId, t.createdAt.desc()),
+  }),
+);

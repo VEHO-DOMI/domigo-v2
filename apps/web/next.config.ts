@@ -10,7 +10,10 @@ const nextConfig: NextConfig = {
   // prod). The glob is relative to this app dir; corpus + overlays cover every
   // runtime read; content/build is deliberately excluded (pipeline artifacts).
   outputFileTracingIncludes: {
-    "/**": ["../../content/corpus/**", "../../content/overlays/**"],
+    // corpus + overlays are read at runtime by content-loader (invisible to
+    // static tracing); the S-2b sandbox gate reads the skill + runner off disk
+    // and writes them into the Vercel Sandbox — trace those in too.
+    "/**": ["../../content/corpus/**", "../../content/overlays/**", "skills/**", "scripts/sandbox/**"],
   },
   // Workspace packages ship raw TS/TSX (exports → ./src/index.ts*); Next must transpile them.
   transpilePackages: [
