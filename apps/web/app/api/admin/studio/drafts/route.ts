@@ -43,7 +43,12 @@ const SaveBody = z.object({
 const PublishBody = z.object({ action: z.literal("publish"), itemId: z.string().min(1), model: z.string().optional() });
 const PollBody = z.object({ action: z.literal("poll"), runId: z.string().min(1) });
 const RevertBody = z.object({ action: z.literal("revert"), itemId: z.string().min(1) });
-const Body = z.discriminatedUnion("action", [SaveBody, PublishBody, PollBody, RevertBody]);
+// WS-AUTH B · Studio preview: run the FREE pre-gate (zod → frameability →
+// key-solvability) on an in-progress item WITHOUT saving or publishing, so a
+// teacher gets instant "is this sound + is my key solvable" feedback. Same
+// preGate the publish path runs (one brain); read-only, no DB.
+const PregateBody = z.object({ action: z.literal("pregate"), kind: z.enum(["vocab", "grammar"]), item: z.unknown() });
+const Body = z.discriminatedUnion("action", [SaveBody, PublishBody, PollBody, RevertBody, PregateBody]);
 
 /** "g2u03.w.foo" / "g2u03.gi.key.mc.001" → "g2-u03" (the unit slug). */
 function unitOfId(itemId: string): string | null {
@@ -81,6 +86,15 @@ export async function POST(req: Request): Promise<Response> {
   const parsed = Body.safeParse(await req.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
   const body = parsed.data;
+
+  // ── pregate (dry run) · WS-AUTH B ──
+  // The FREE pre-gate on an in-progress item — no save, no publish, no DB. Lets a
+  // teacher confirm the task is structurally sound and the answer key is solvable
+  // before the real (slower, AI) publish gate. Identical preGate the publish runs.
+  if (body.action === "pregate") {
+    const pre = preGate(body.kind as ItemKind, body.item);
+    return NextResponse.json({ ok: pre.ok, stage: pre.stage, errors: pre.errors, keyChecks: pre.keyChecks });
+  }
 
   // ── save draft ──
   if (body.action === "save") {
