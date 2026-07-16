@@ -8,16 +8,19 @@ order, one image per card. Do not skip, reorder, merge, or reinterpret cards.
 STYLE (strict): 1991 EGA pixel art in the exact visual language of Commander Keen 4. Use ONLY these 16 colors: #000000 #0000a8 #00a800 #00a8a8 #a80000 #a800a8 #a85400 #a8a8a8 #545454 #5454fc #54fc54 #54fcfc #fc5454 #fc54fc #fcfc54 #fcfcfc. Chunky pixels on a 16px-tile logical grid (render large, but every "pixel" is a crisp square — no anti-aliasing, no smooth gradients, no soft shading). Texture and gradients ONLY as 1-pixel checkerboard dithering between two palette colors. Foreground objects get bold black contour outlines and black interior detail lines; background surfaces stay outline-free. Two tones per material (base + bright of the same hue) with black as the dark shade. Friendly storybook mood — this is a children's English-learning game set INSIDE a book: ink, paper, letters. Never scary: no monsters, no horror, big readable eyes on creatures, melancholy-comic not menacing.
 
 ## WORKING RULES
-0. YOU HAVE NO FILE OR REPOSITORY ACCESS AND NEED NONE. Output every image in
-   the chat only. Never read, write, create, modify, move, or delete any file,
-   folder, or repository content — even if you believe you have such tools.
-   The user downloads your images; a separate pipeline handles everything else.
+0. YOUR ONE AND ONLY WRITE LOCATION IS THE SANDBOX FOLDER:
+   `~/Code/codex-art-lab/batch-s/`  — create it (and its subfolders) if missing.
+   Save every image there under the exact SAVE TO path its card names.
+   NEVER write, modify, move, or delete ANYTHING anywhere else — no git
+   repository, no other folder, no existing file. Everywhere else you are
+   strictly read-only. A separate pipeline (not you) later QA-checks, slices,
+   and imports your images into the game.
 1. CARD 1 IS THE STYLE KEY. Generate it first. Every later image must match it
    in palette, pixel density, outline weight and mood — treat it as the anchor
    and compare your result to it before moving on.
 2. Before each image, print exactly: `NOW GENERATING: <filename>` — then
-   generate. The user saves each image under that exact filename, so the label
-   must be unambiguous and appear immediately above the image.
+   generate, then SAVE it yourself to the card's SAVE TO path (rule 0) and
+   print `SAVED: <full path>` as confirmation.
 3. AFTER each image, run this self-check and print PASS/FAIL per line — if any
    line fails, regenerate the image ONCE with the failure named in the prompt,
    before moving to the next card:
@@ -38,6 +41,7 @@ STYLE (strict): 1991 EGA pixel art in the exact visual language of Commander Kee
 ## THE CARDS
 ---
 CARD 1 · filename: _style_key.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/_style_key.png
 SIZE: 1024×640
 FORMAT: full-bleed PNG
 USED FOR: The cohesion reference — synced but never rendered. Every later generation should be checked against it by eye.
@@ -46,6 +50,7 @@ SUBJECT: a single wide reference scene that establishes this game's world: the i
 
 ---
 CARD 2 · filename: prologue_classroom.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/beats/prologue_classroom.png
 SIZE: 1536×864
 FORMAT: full-bleed PNG
 USED FOR: Prologue s001 — the classroom, the new English book glowing at the seams.
@@ -54,6 +59,7 @@ SUBJECT: a warm Austrian classroom from a student's seat: wooden desks, a blackb
 
 ---
 CARD 3 · filename: prologue_pull.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/beats/prologue_pull.png
 SIZE: 1536×864
 FORMAT: full-bleed PNG
 USED FOR: Prologue s002 — the book bursts open and pulls the player in.
@@ -62,6 +68,7 @@ SUBJECT: the same textbook now WIDE OPEN, pages fanning, a swirling vortex of wh
 
 ---
 CARD 4 · filename: prologue_landing.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/beats/prologue_landing.png
 SIZE: 1536×864
 FORMAT: full-bleed PNG
 USED FOR: Prologue s003 — first sight of the book's world; Finn and Pixel greet you.
@@ -70,6 +77,7 @@ SUBJECT: looking out over the book's world from a gentle rise: a walkable storyb
 
 ---
 CARD 5 · filename: portrait_finn.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/cast/portrait_finn.png
 SIZE: 512×512
 FORMAT: PNG with TRUE alpha transparency
 USED FOR: Speech-bubble portrait for finn (dialogue beats).
@@ -78,6 +86,7 @@ SUBJECT: a bust/head-and-shoulders PORTRAIT for a dialogue box: FINN, the book-g
 
 ---
 CARD 6 · filename: portrait_pixel.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/cast/portrait_pixel.png
 SIZE: 512×512
 FORMAT: PNG with TRUE alpha transparency
 USED FOR: Speech-bubble portrait for pixel (dialogue beats).
@@ -86,6 +95,7 @@ SUBJECT: a bust/head-and-shoulders PORTRAIT for a dialogue box: PIXEL, the book-
 
 ---
 CARD 7 · filename: portrait_berger.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/cast/portrait_berger.png
 SIZE: 512×512
 FORMAT: PNG with TRUE alpha transparency
 USED FOR: Speech-bubble portrait for berger (dialogue beats).
@@ -94,6 +104,7 @@ SUBJECT: a bust/head-and-shoulders PORTRAIT for a dialogue box: FRAU BERGER, the
 
 ---
 CARD 8 · filename: portrait_tintengeist.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/cast/portrait_tintengeist.png
 SIZE: 512×512
 FORMAT: PNG with TRUE alpha transparency
 USED FOR: Speech-bubble portrait for tintengeist (dialogue beats).
@@ -102,6 +113,7 @@ SUBJECT: a bust/head-and-shoulders PORTRAIT for a dialogue box: DER TINTENGEIST,
 
 ---
 CARD 9 · filename: portrait_jona.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/cast/portrait_jona.png
 SIZE: 512×512
 FORMAT: PNG with TRUE alpha transparency
 USED FOR: Speech-bubble portrait for jona (dialogue beats).
@@ -110,6 +122,7 @@ SUBJECT: a bust/head-and-shoulders PORTRAIT for a dialogue box: JONA: a tired bo
 
 ---
 CARD 10 · filename: hero_sheet.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/hero/hero_sheet.png
 SIZE: 1024×768 (4×3 grid, 256px cells)
 FORMAT: pose-sheet on SOLID magenta #FF00FF (no transparency)
 USED FOR: THE HERO (doc 28 §4): sliced into hero_stand/run1-4/jump/fall/pogo1-2/climb1-2/hang.
@@ -118,6 +131,7 @@ SUBJECT: a 4×3 pose sheet of THE SAME child hero, identical design in every cel
 
 ---
 CARD 11 · filename: acc_sheet.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/hero/acc_sheet.png
 SIZE: 512×256 (2×1 grid)
 FORMAT: pose-sheet on SOLID magenta #FF00FF (no transparency)
 USED FOR: Unlockable accessory overlays: acc_scarf (a blue variant scarf) + acc_cap (a green cap). Drawn to overlay the hero's stand pose alignment.
@@ -126,6 +140,7 @@ SUBJECT: a 2×1 sheet of ACCESSORY OVERLAYS for the hero above (same proportions
 
 ---
 CARD 12 · filename: page_underlay.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/map/page_underlay.png
 SIZE: 1024×1024, tileable
 FORMAT: full-bleed PNG
 USED FOR: The open book page BENEATH the world map (tiled).
@@ -134,6 +149,7 @@ SUBJECT: a seamless TILEABLE texture of aged storybook paper seen from above: wa
 
 ---
 CARD 13 · filename: building_ch01.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/map/building_ch01.png
 SIZE: 256×256
 FORMAT: PNG with TRUE alpha transparency
 USED FOR: Chapter 1's map building: the little schoolhouse (Zeit für die Schule).
@@ -142,6 +158,7 @@ SUBJECT: a small friendly one-room schoolhouse for a world map, 3/4 front view: 
 
 ---
 CARD 14 · filename: finn_map.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/map/finn_map.png
 SIZE: 128×128
 FORMAT: PNG with TRUE alpha transparency
 USED FOR: Finn's world-map sprite (floating book person).
@@ -150,6 +167,7 @@ SUBJECT: FINN as a tiny map sprite: a floating open paper book with two black do
 
 ---
 CARD 15 · filename: pixel_map.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/map/pixel_map.png
 SIZE: 128×128
 FORMAT: PNG with TRUE alpha transparency
 USED FOR: Pixel's world-map sprite (the book-cat).
@@ -158,6 +176,7 @@ SUBJECT: PIXEL as a tiny map sprite: a small black cat sitting, tail curled arou
 
 ---
 CARD 16 · filename: flag.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/map/flag.png
 SIZE: 128×128
 FORMAT: PNG with TRUE alpha transparency
 USED FOR: The restoration flag planted on beaten chapters (thrown-flag ceremony).
@@ -166,6 +185,7 @@ SUBJECT: a small triumphant pennant flag on a short wooden pole with a gold fini
 
 ---
 CARD 17 · filename: bg_far.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/ch01/bg_far.png
 SIZE: 1536×512, horizontally loopable
 FORMAT: full-bleed PNG
 USED FOR: ch01 far background layer (parallax) — the meadow horizon.
@@ -174,6 +194,7 @@ SUBJECT: a wide side-view BACKGROUND for a platformer level set on a storybook m
 
 ---
 CARD 18 · filename: bg_mid.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/ch01/bg_mid.png
 SIZE: 1536×256
 FORMAT: PNG with TRUE alpha transparency
 USED FOR: ch01 mid background strip (nearer silhouettes over bg_far).
@@ -182,6 +203,7 @@ SUBJECT: a TRANSPARENT horizontal strip of nearer background silhouettes for the
 
 ---
 CARD 19 · filename: walker_sheet.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/ch01/walker_sheet.png
 SIZE: 512×256 (2×1 grid)
 FORMAT: pose-sheet on SOLID magenta #FF00FF (no transparency)
 USED FOR: Level creature walker → sliced to walker-0.png / walker-1.png.
@@ -190,6 +212,7 @@ SUBJECT: a 2×1 animation sheet (two cells, same creature): TINTENKLECKS the wal
 
 ---
 CARD 20 · filename: hopper_sheet.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/ch01/hopper_sheet.png
 SIZE: 512×256 (2×1 grid)
 FORMAT: pose-sheet on SOLID magenta #FF00FF (no transparency)
 USED FOR: Level creature hopper → sliced to hopper-0.png / hopper-1.png.
@@ -198,6 +221,7 @@ SUBJECT: a 2×1 animation sheet (two cells, same creature): HÜPFER the spring-h
 
 ---
 CARD 21 · filename: flyer_sheet.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/ch01/flyer_sheet.png
 SIZE: 512×256 (2×1 grid)
 FORMAT: pose-sheet on SOLID magenta #FF00FF (no transparency)
 USED FOR: Level creature flyer → sliced to flyer-0.png / flyer-1.png.
@@ -206,6 +230,7 @@ SUBJECT: a 2×1 animation sheet (two cells, same creature): FLATTERER the posses
 
 ---
 CARD 22 · filename: thief_sheet.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/ch01/thief_sheet.png
 SIZE: 512×256 (2×1 grid)
 FORMAT: pose-sheet on SOLID magenta #FF00FF (no transparency)
 USED FOR: Level creature thief → sliced to thief-0.png / thief-1.png.
@@ -214,6 +239,7 @@ SUBJECT: a 2×1 animation sheet (two cells, same creature): WORTDIEB the word-th
 
 ---
 CARD 23 · filename: cushion_sheet.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/ch01/cushion_sheet.png
 SIZE: 512×256 (2×1 grid)
 FORMAT: pose-sheet on SOLID magenta #FF00FF (no transparency)
 USED FOR: Level creature cushion → sliced to cushion-0.png / cushion-1.png.
@@ -222,6 +248,7 @@ SUBJECT: a 2×1 animation sheet (two cells, same creature): SPRUNGKISSEN the bou
 
 ---
 CARD 24 · filename: cloud_sheet.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/ch01/cloud_sheet.png
 SIZE: 512×256 (2×1 grid)
 FORMAT: pose-sheet on SOLID magenta #FF00FF (no transparency)
 USED FOR: Level creature cloud → sliced to cloud-0.png / cloud-1.png.
@@ -230,6 +257,7 @@ SUBJECT: a 2×1 animation sheet (two cells, same creature): SCHATTENWOLKE the in
 
 ---
 CARD 25 · filename: boss_sheet.png
+SAVE TO: ~/Code/codex-art-lab/batch-s/ch01/boss_sheet.png
 SIZE: 1024×512 (2×2 grid... 4 cells)
 FORMAT: pose-sheet on SOLID magenta #FF00FF (no transparency)
 USED FOR: Der Stundenplan-Schlinger → boss_head_idle / boss_head_tell / boss_card / boss_burst.
