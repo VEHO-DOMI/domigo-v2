@@ -111,16 +111,19 @@ order, one image per card. Do not skip, reorder, merge, or reinterpret cards.
 ${STYLE}
 
 ## WORKING RULES
-0. YOU HAVE NO FILE OR REPOSITORY ACCESS AND NEED NONE. Output every image in
-   the chat only. Never read, write, create, modify, move, or delete any file,
-   folder, or repository content — even if you believe you have such tools.
-   The user downloads your images; a separate pipeline handles everything else.
+0. YOUR ONE AND ONLY WRITE LOCATION IS THE SANDBOX FOLDER:
+   \`~/Code/codex-art-lab/batch-s/\`  — create it (and its subfolders) if missing.
+   Save every image there under the exact SAVE TO path its card names.
+   NEVER write, modify, move, or delete ANYTHING anywhere else — no git
+   repository, no other folder, no existing file. Everywhere else you are
+   strictly read-only. A separate pipeline (not you) later QA-checks, slices,
+   and imports your images into the game.
 1. CARD 1 IS THE STYLE KEY. Generate it first. Every later image must match it
    in palette, pixel density, outline weight and mood — treat it as the anchor
    and compare your result to it before moving on.
 2. Before each image, print exactly: \`NOW GENERATING: <filename>\` — then
-   generate. The user saves each image under that exact filename, so the label
-   must be unambiguous and appear immediately above the image.
+   generate, then SAVE it yourself to the card's SAVE TO path (rule 0) and
+   print \`SAVED: <full path>\` as confirmation.
 3. AFTER each image, run this self-check and print PASS/FAIL per line — if any
    line fails, regenerate the image ONCE with the failure named in the prompt,
    before moving to the next card:
@@ -141,6 +144,7 @@ ${STYLE}
 ## THE CARDS
 ${sCards.map((c, i) => `---
 CARD ${i + 1} · filename: ${c.file}
+SAVE TO: ~/Code/codex-art-lab/batch-s/${c.folder === "root" ? "" : c.folder + "/"}${c.file}
 SIZE: ${c.size}
 FORMAT: ${c.format === "sheet" ? "pose-sheet on SOLID magenta #FF00FF (no transparency)" : c.format === "transparent" ? "PNG with TRUE alpha transparency" : "full-bleed PNG"}
 USED FOR: ${c.usage}
