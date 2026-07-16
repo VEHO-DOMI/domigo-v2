@@ -95,3 +95,57 @@ ${futureSections.map((s) => `<div class="card"><div class="head"><code>${s.title
 
 fs.writeFileSync(path.join(HERE, "CODEX_COMMISSION.html"), html);
 console.log(`CODEX_COMMISSION.html written (${(html.length / 1024).toFixed(0)} KB, ${refs.length} embedded references)`);
+
+// ── THE MASTER PROMPT (autonomous mode): one paste → Codex produces the whole
+// batch itself, self-checking every image. Generated from the same data so it
+// can never drift from the HTML commission. ──
+const sCards = cards.filter((c) => c.batch === "S");
+const stripStyle = (p) => p.replace(STYLE, "").replace(/^\s*\n/, "");
+const master = `# MISSION: produce the complete image set for "DomiGo — Batch S" (${sCards.length} images)
+
+You are a senior pixel artist executing a fixed commission for a children's
+English-learning game. Work AUTONOMOUSLY through the numbered cards below, in
+order, one image per card. Do not skip, reorder, merge, or reinterpret cards.
+
+## THE STYLE CONTRACT (re-read this before EVERY single image)
+${STYLE}
+
+## WORKING RULES
+1. CARD 1 IS THE STYLE KEY. Generate it first. Every later image must match it
+   in palette, pixel density, outline weight and mood — treat it as the anchor
+   and compare your result to it before moving on.
+2. Before each image, print exactly: \`NOW GENERATING: <filename>\` — then
+   generate. The user saves each image under that exact filename, so the label
+   must be unambiguous and appear immediately above the image.
+3. AFTER each image, run this self-check and print PASS/FAIL per line — if any
+   line fails, regenerate the image ONCE with the failure named in the prompt,
+   before moving to the next card:
+   - PALETTE: only the 16 contract colors (no off-palette hues, no gradients)
+   - PIXELS: crisp squares, zero anti-aliasing or soft blur
+   - FORMAT: matches the card (true-alpha transparent / solid #FF00FF magenta
+     sheet with a clean grid / full-bleed) — for transparent cards: REAL alpha,
+     never a painted checkerboard
+   - SUBJECT: every element the card names is present and readable at game size
+   - MOOD: friendly storybook, big readable eyes, nothing scary
+4. SHEETS: equal-sized grid cells, nothing touching cell borders, the SAME
+   character/design in every cell (only the pose changes).
+5. If you hit a session or generation limit, print exactly:
+   \`CONTINUE AT CARD <n>\` — the user will restart you with this same document
+   plus the instruction "continue at card <n>", and you resume from there.
+6. Never invent extra images, text watermarks, signatures, or borders.
+
+## THE CARDS
+${sCards.map((c, i) => `---
+CARD ${i + 1} · filename: ${c.file}
+SIZE: ${c.size}
+FORMAT: ${c.format === "sheet" ? "pose-sheet on SOLID magenta #FF00FF (no transparency)" : c.format === "transparent" ? "PNG with TRUE alpha transparency" : "full-bleed PNG"}
+USED FOR: ${c.usage}
+SUBJECT BRIEF:
+${stripStyle(c.prompt)}`).join("\n\n")}
+
+---
+END OF COMMISSION. After the final card, print a manifest of every filename you
+produced, in order, marked DONE or REGENERATED.
+`;
+fs.writeFileSync(path.join(HERE, "CODEX_MASTER_PROMPT.md"), master);
+console.log(`CODEX_MASTER_PROMPT.md written (${(master.length / 1024).toFixed(0)} KB, ${sCards.length} cards)`);
