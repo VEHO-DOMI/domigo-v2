@@ -160,7 +160,11 @@ under-built. Glyphs/fields: `|` pole · `1`–`4` door pairs (exactly two cells 
 4. **Facade-as-level** (Pyramid of the Moons): the chapter's building exterior is terrain —
    terraced steps up the face, the roof as a deck, interiors behind doors.
 5. **Rolling ground**: the verticality law (≥4 elevation changes/screen) is checked
-   machine-side; author mounds/dips/steps, never a flat run.
+   machine-side; author mounds/dips/steps, never a flat run. **v2.3 adds SLOPES**
+   (`/` rises rightward, `\` falls, steep 1:1): ramp the rolls instead of stair-stepping
+   them — the cell under a slope's LOW edge must be solid (no hanging wedges); flanking
+   solids auto-drop their slope-side wall. Physics + full rules:
+   `docs/study/keen/keen-feel-and-look.md` §1/§5.
 6. **Goal communication (Koki's law: "take the student by the hand")**: every level SAYS
    its goal — `goalDe` names the wings in student German ("eines im Klassenzimmer, eines
    auf dem Dachboden"); the objective chip counts seals then flips to →Zur Tür; once the

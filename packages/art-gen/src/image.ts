@@ -61,6 +61,16 @@ export function disc(px: number[], width: number, height: number, cx: number, cy
   }
 }
 
+/** Thick line between two points (limbs for posed sprites). `t` = thickness. */
+export function line(px: number[], width: number, height: number, x0: number, y0: number, x1: number, y1: number, t: number, idx: number): void {
+  const steps = Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0), 1);
+  for (let i = 0; i <= steps; i++) {
+    const x = Math.round(x0 + ((x1 - x0) * i) / steps);
+    const y = Math.round(y0 + ((y1 - y0) * i) / steps);
+    rect(px, width, height, x - (t >> 1), y - (t >> 1), t, t, idx);
+  }
+}
+
 /** Wrap the drawn silhouette in a 1px dark outline: every TRANSPARENT pixel that
  *  touches a drawn one becomes `idx`. Gives sprites the crisp GBA edge. */
 export function outline(px: number[], width: number, height: number, idx: number): void {

@@ -13,7 +13,7 @@
  * of timetable cards — knots remaining ARE its body.
  */
 import Phaser from "phaser";
-import { paintPlayerSprite } from "@domigo/art-gen";
+import { paintHero } from "@domigo/art-gen";
 import { rasterize } from "./rasterize.ts";
 import { playSfx } from "@domigo/game-feel";
 import { TILE_PX, type Tier } from "./arcade.ts";
@@ -89,9 +89,9 @@ export class BossScene extends Phaser.Scene {
     this.laneFlash = this.add.rectangle(LANE_X[1]!, VIEW_H / 2, TILE_PX * 3.2, VIEW_H, 0xffffff, 0).setDepth(2);
 
     // the player
-    const sprite = paintPlayerSprite(this.cfg.playerSeed ?? this.cfg.seed);
-    if (!this.textures.exists("p-right")) this.textures.addCanvas("p-right", rasterize(sprite.frames[3]!, 1));
-    this.player = this.add.image(LANE_X[1]!, FLOOR_R * TILE_PX - 30, "p-right").setDisplaySize(44, 56).setDepth(5);
+    const hero = paintHero(this.cfg.playerSeed ?? this.cfg.seed);
+    if (!this.textures.exists("h-stand")) this.textures.addCanvas("h-stand", rasterize(hero.frames.stand, 1));
+    this.player = this.add.image(LANE_X[1]!, FLOOR_R * TILE_PX - 30, "h-stand").setDisplaySize(48, 48).setDepth(5);
 
     // the guardian: head + knot segments (timetable cards)
     this.segments = [];
