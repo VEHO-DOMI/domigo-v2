@@ -85,6 +85,13 @@
       "when": 1784058986489,
       "tag": "0011_blue_winter_soldier",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1784201261811,
+      "tag": "0012_hint_sparks",
+      "breakpoints": true
     }
   ]
 }

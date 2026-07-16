@@ -27,6 +27,7 @@ export * from "./persist.ts";
 export * from "./streak.ts";
 export * from "./studypath.ts";
 export * from "./gamesave.ts"; // Track C cosmetic game saves (clientRev LWW)
+export * from "./sparks.ts"; // Keen: Hinweis-Funken hint currency (server-authoritative, clamped ≥0, degrades in-band)
 export * from "./game-progress.ts"; // Track C: solved-item derivation from the attempts ledger (Law 2)
 export * from "./journey-progress.ts"; // J-1: journey node status/stars derived from the attempts ledger (no path table)
 export * from "./assignments.ts"; // M-wave: pure mock-test scoring (Note math, DB-free)

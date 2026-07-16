@@ -1,0 +1,1 @@
+ALTER TABLE "domigo_v2"."user_progress" ADD COLUMN IF NOT EXISTS "hint_sparks" integer NOT NULL DEFAULT 0;

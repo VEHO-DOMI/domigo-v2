@@ -252,6 +252,11 @@ export interface ArcadeHeader {
   placements: Placement[];
   seals: Seal[];
   helpers: HelperPlatform[];
+  /** v2.1 (bible 27 §6.1): palette family for the level's look (procedural
+   *  until art lands). Absent = the ink default. */
+  theme?: string;
+  /** v2.1: the story chapter this level belongs to ("ch01"). */
+  chapter?: string;
 }
 
 export interface ArcadeLevel {
@@ -265,7 +270,14 @@ export interface ArcadeLevel {
   letters: Array<{ c: number; r: number }>;
   checkpoints: Array<{ c: number; r: number }>;
   start: { c: number; r: number };
+  /** legacy exit (K-3 levels): the artifact pedestal. */
   pedestal: { c: number; r: number };
+  /** v2.1 exit (bible §2b): the guardian's door — seals unseal it; entering
+   *  starts the boss duel. A level has exactly one of pedestal ('A') or
+   *  bossDoor ('B'). */
+  bossDoor: { c: number; r: number } | null;
+  /** v2.1: Glühwörter — the collectible that becomes Hinweis-Funken (§5.2). */
+  gluehwoerter: Array<{ c: number; r: number }>;
 }
 
 const TIER_RANK: Record<Tier, number> = { E: 0, M: 1, S: 2 };
@@ -280,14 +292,17 @@ export function helpersFor(header: ArcadeHeader, tier: Tier): HelperPlatform[] {
   return header.helpers.filter((h) => TIER_RANK[tier] <= TIER_RANK[h.maxTier]);
 }
 
-/** Parse a level. Throws on authoring mistakes (loud beats tolerant). */
+/** Parse a level. Throws on authoring mistakes (loud beats tolerant).
+ *  v2.1 glyphs: 'G' Glühwort · 'B' boss door (the v2.1 exit; exactly one of
+ *  'A' or 'B' per level — bible 27 §2b). */
 export function parseArcadeLevel(header: ArcadeHeader, rows: string[]): ArcadeLevel {
   const h = rows.length;
   const w = rows[0]?.length ?? 0;
   if (rows.some((r) => r.length !== w)) throw new Error(`${header.id}: rows must be rectangular`);
-  const level: ArcadeLevel = { header, w, h, rows, solids: [], oneWays: [], hazards: [], letters: [], checkpoints: [], start: { c: 1, r: 1 }, pedestal: { c: w - 2, r: 1 } };
+  const level: ArcadeLevel = { header, w, h, rows, solids: [], oneWays: [], hazards: [], letters: [], checkpoints: [], start: { c: 1, r: 1 }, pedestal: { c: w - 2, r: 1 }, bossDoor: null, gluehwoerter: [] };
   let sawStart = 0;
   let sawPedestal = 0;
+  let sawBoss = 0;
   for (let r = 0; r < h; r += 1) {
     for (let c = 0; c < w; c += 1) {
       const ch = rows[r]![c]!;
@@ -295,13 +310,16 @@ export function parseArcadeLevel(header: ArcadeHeader, rows: string[]): ArcadeLe
       else if (ch === "=") level.oneWays.push({ c, r });
       else if (ch === "^") level.hazards.push({ c, r });
       else if (ch === "L") level.letters.push({ c, r });
+      else if (ch === "G") level.gluehwoerter.push({ c, r });
       else if (ch === "C") level.checkpoints.push({ c, r });
       else if (ch === "S") { level.start = { c, r }; sawStart += 1; }
       else if (ch === "A") { level.pedestal = { c, r }; sawPedestal += 1; }
+      else if (ch === "B") { level.bossDoor = { c, r }; sawBoss += 1; }
       else if (ch !== ".") throw new Error(`${header.id}: unknown glyph "${ch}" at ${c},${r}`);
     }
   }
-  if (sawStart !== 1 || sawPedestal !== 1) throw new Error(`${header.id}: needs exactly one S and one A (got ${sawStart}/${sawPedestal})`);
+  if (sawStart !== 1) throw new Error(`${header.id}: needs exactly one S (got ${sawStart})`);
+  if (sawPedestal + sawBoss !== 1) throw new Error(`${header.id}: needs exactly one exit — one A or one B (got A=${sawPedestal}, B=${sawBoss})`);
   for (const p of header.placements) {
     if (p.c < 0 || p.c >= w || p.r < 0 || p.r >= h) throw new Error(`${header.id}: placement out of bounds at ${p.c},${p.r}`);
   }
@@ -390,8 +408,9 @@ export function checkLevelLaws(level: ArcadeLevel): LawReport {
     }
   }
 
+  const exit = level.bossDoor ?? level.pedestal;
   const mustReach: Array<[string, { c: number; r: number }]> = [
-    ["pedestal", level.pedestal],
+    [level.bossDoor ? "boss door" : "pedestal", exit],
     ...level.checkpoints.map((cp, i) => [`checkpoint ${i}`, cp] as [string, { c: number; r: number }]),
   ];
   for (const [name, cell] of mustReach) {
@@ -399,9 +418,13 @@ export function checkLevelLaws(level: ArcadeLevel): LawReport {
     const near = [[0, 0], [0, 1], [-1, 0], [1, 0], [0, -1]].some(([dc, dr]) => seen.has(`${cell.c + dc!},${cell.r + dr!}`));
     if (!near) errors.push(`${name} at ${cell.c},${cell.r} unreachable from start`);
   }
-  for (const l of level.letters) {
-    const near = [[0, 1], [0, 0], [-1, 1], [1, 1], [0, 2]].some(([dc, dr]) => seen.has(`${l.c + dc!},${l.r + dr!}`));
-    if (!near) errors.push(`letter at ${l.c},${l.r} unreachable`);
+  // pickups (letters + Glühwörter): reachable at tier E — the Glühwort law
+  // (bible 27 §6.6): every collectible must be earnable on the easy population
+  for (const [what, list] of [["letter", level.letters], ["Glühwort", level.gluehwoerter]] as const) {
+    for (const l of list) {
+      const near = [[0, 1], [0, 0], [-1, 1], [1, 1], [0, 2]].some(([dc, dr]) => seen.has(`${l.c + dc!},${l.r + dr!}`));
+      if (!near) errors.push(`${what} at ${l.c},${l.r} unreachable`);
+    }
   }
 
   // gap law: interior columns with NO standable footing at all (bottomless
