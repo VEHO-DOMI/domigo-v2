@@ -23,6 +23,9 @@ const WALK_SPEED = 200;
 export interface MapEntrance { chapter: string; c: number; r: number; label: string }
 
 export interface MapConfig {
+  /** doc 28 §5: generated map art (page_underlay, building_chNN, finn_map,
+   *  pixel_map, flag); missing stems keep the procedural painters. */
+  art?: Record<string, string>;
   /** world.json layout.rows */
   rows: string[];
   legend: Record<string, { enter?: string; label?: string; prop?: string; solid?: boolean; clearedBy?: string }>;
@@ -221,6 +224,13 @@ export class MapScene extends Phaser.Scene {
     return { width: Math.min(cols, VIEW_TILES_W) * TILE, height: Math.min(rows.length, VIEW_TILES_H) * TILE };
   }
 
+  preload(): void {
+    // image-first (doc 28 §5); a failed load keeps the procedural painter
+    for (const [stem, url] of Object.entries(this.cfg.art ?? {})) {
+      this.load.image(`img-${stem}`, url);
+    }
+  }
+
   create(): void {
     const { rows, legend, buildings } = this.cfg;
     const motion = this.cfg.reducedMotion !== true;
@@ -261,7 +271,14 @@ export class MapScene extends Phaser.Scene {
       for (let c = 0; c < row.length; c += 1) gg.drawImage(row[c] === "#" ? wallCv : floorCv, c * TILE, r * TILE, TILE, TILE);
     });
     addCanvas(tex("ground"), ground);
-    this.add.image(0, 0, tex("ground")).setOrigin(0).setDepth(0);
+    // the open book page beneath everything (doc 28 §6b) — the map walks ON
+    // a page; the procedural ground blit sits over it (its own alpha shows it)
+    if (this.textures.exists("img-page_underlay")) {
+      this.add.tileSprite(0, 0, worldW, worldH, "img-page_underlay").setOrigin(0).setDepth(0).setAlpha(0.95);
+      this.add.image(0, 0, tex("ground")).setOrigin(0).setDepth(0).setAlpha(0.88);
+    } else {
+      this.add.image(0, 0, tex("ground")).setOrigin(0).setDepth(0);
+    }
 
     // ── solids + props from the layout glyphs ──
     const solids = this.physics.add.staticGroup();
@@ -287,9 +304,11 @@ export class MapScene extends Phaser.Scene {
           addSolid(c, r);
         } else if (entry.prop === "npc:finn" || entry.prop === "npc:pixel") {
           const finn = entry.prop === "npc:finn";
-          const img = this.add.image(x, y, tex(finn ? "finn" : "pixel")).setDepth(3);
+          const npcStem = finn ? "finn_map" : "pixel_map";
+          const hasNpcImg = this.textures.exists(`img-${npcStem}`);
+          const img = this.add.image(x, y, hasNpcImg ? `img-${npcStem}` : tex(finn ? "finn" : "pixel")).setDepth(3);
           if (finn && motion) this.tweens.add({ targets: img, y: y - 5, duration: 1100, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
-          if (!finn) {
+          if (!finn && !hasNpcImg) {
             const tail = this.add.image(x - 12, y + 6, tex("pixeltail")).setOrigin(0.8, 0.9).setDepth(3);
             if (motion) this.tweens.add({ targets: tail, angle: { from: -10, to: 8 }, duration: 900, yoyo: true, repeat: -1, ease: "Sine.easeInOut", delay: 300 });
           }
@@ -359,7 +378,12 @@ export class MapScene extends Phaser.Scene {
       const warm = done || this.unlockedSet.has(b.chapter);
       const x = b.cell.c * TILE + TILE / 2;
       const bottom = b.cell.r * TILE + TILE;
-      const img = this.add.image(x, bottom, tex(warm ? "house" : "house-dark")).setOrigin(0.5, 1).setDepth(2);
+      // generated building sprite when present (building_chNN); grey/silhouette
+      // for un-restored chapters comes from a tint over the same image
+      const bStem = `building_${b.chapter}`;
+      const hasImg = this.textures.exists(`img-${bStem}`);
+      const img = this.add.image(x, bottom, hasImg ? `img-${bStem}` : tex(warm ? "house" : "house-dark")).setOrigin(0.5, 1).setDepth(2);
+      if (hasImg && !warm) img.setTint(0x8a8798).setAlpha(0.9); // drained-grey read
       if (!warm) img.setAlpha(0.8);
       this.add.text(x, bottom + 2, b.label, { fontFamily: "system-ui, sans-serif", fontSize: "10px", color: "#c9c4e4" }).setOrigin(0.5, 0).setDepth(2);
       if (!done) {
@@ -372,7 +396,7 @@ export class MapScene extends Phaser.Scene {
       // the flag over a beaten building (keen-metagame §1.6)
       const fx = x;
       const fy = (b.cell.r - 1) * TILE + TILE / 2;
-      const flag = this.add.image(fx, fy, tex("flag")).setDepth(4);
+      const flag = this.add.image(fx, fy, this.textures.exists("img-flag") ? "img-flag" : tex("flag")).setDepth(4);
       const wave = (): void => {
         if (motion) this.tweens.add({ targets: flag, angle: { from: -4, to: 4 }, duration: 900, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
       };

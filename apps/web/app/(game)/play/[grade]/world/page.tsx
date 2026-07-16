@@ -14,6 +14,7 @@ import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { getActingUserForPage } from "@/lib/identity";
 import { loadKeenWorld } from "@/lib/keen-content";
+import { resolveKeenArt } from "@/lib/keen-art";
 import { worldCopyFor } from "@/lib/world-copy";
 import WorldClient from "./WorldClient";
 
@@ -73,9 +74,16 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
   if (!chapter) redirect("/play/1");
 
   const unit = await loadUnitWithOverrides("g1-u01");
-  const storyItems = storyItemsFor(chapter, unit, loadStoryComprehension(storyId)?.items ?? []);
+  // the prologue (ch00, doc 28 §3) shares g1-u01 — its items merge in
+  const prologue = story?.chapters.find((c) => c.id.endsWith("ch00")) ?? null;
+  const comp = loadStoryComprehension(storyId)?.items ?? [];
+  const storyItems = {
+    ...storyItemsFor(chapter, unit, comp),
+    ...(prologue ? storyItemsFor(prologue, unit, comp) : {}),
+  };
   const cast = loadStoryCast(storyId);
   const castNames = Object.fromEntries((cast?.members ?? []).map((m) => [m.id, m.nameEn]));
+  const keenArt = resolveKeenArt(1);
   const saved = await getGameSave(getDb(), acting.userId, "game:g1:keen").catch(() => null);
 
   // keen-content's shape gate strips buildings.cell (its zod object doesn't
@@ -126,8 +134,12 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
       }}
       beats={world.beats}
       chapter={chapter}
+      prologue={prologue}
       castNames={castNames}
       storyItems={storyItems}
+      castArt={keenArt.cast}
+      beatArt={keenArt.beats}
+      mapArt={keenArt.map}
       serverSave={saved ? { clientRev: saved.clientRev, state: saved.state as unknown } : null}
       done={typeof done === "string" ? done : undefined}
     />

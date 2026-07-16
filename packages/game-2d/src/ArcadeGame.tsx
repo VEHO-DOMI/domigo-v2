@@ -38,6 +38,9 @@ export interface ArcadeGameProps {
   /** where the done overlay links (defaults to hubHref) — the world map
    *  passes ?done=chNN to trigger the restoration beat. */
   doneHref?: string;
+  /** doc 28 §5: generated-art stem→URL map (chapter + hero + accessories);
+   *  every missing stem keeps its procedural fallback. */
+  art?: Record<string, string>;
   /** fires ONCE when the run ends — the client banks Glühwörter → Funken. */
   onDone?: (stats: { gluehwoerter: number; letters: number; seals: number; deaths: number; bossWon: boolean }) => void;
 }
@@ -85,6 +88,17 @@ export function ArcadeGame(props: ArcadeGameProps) {
   // v2.2: the goal card — every level opens by SAYING what to do (the
   // "take the student by the hand" law); the world stands still behind it
   const [goalOpen, setGoalOpen] = useState(true);
+  // dev-only: a silent runtime crash renders as a readable banner, never a
+  // black canvas (the boss-handoff hunt of 2026-07-16 cost a day of guessing)
+  const [fatal, setFatal] = useState<string | null>(null);
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") return;
+    const onErr = (e: ErrorEvent) => setFatal(`${e.message} @ ${e.filename?.split("/").pop()}:${e.lineno}`);
+    const onRej = (e: PromiseRejectionEvent) => setFatal(String(e.reason));
+    window.addEventListener("error", onErr);
+    window.addEventListener("unhandledrejection", onRej);
+    return () => { window.removeEventListener("error", onErr); window.removeEventListener("unhandledrejection", onRej); };
+  }, []);
   const entry = LEVELS[props.levelId ?? DEFAULT_LEVEL_ID] ?? LEVELS[DEFAULT_LEVEL_ID]!;
   const level = props.level ?? entry.level;
   const tier: Tier = props.tier ?? entry.defaultTier;
@@ -119,6 +133,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
     bossAtRef.current = 0;
     const boss = new BossScene({
       script,
+      art: props.art,
       tier,
       hearts: carry.hearts,
       seed: props.seed,
@@ -165,6 +180,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
       seed: props.seed,
       playerSeed: props.playerSeed,
       reducedMotion: reduced,
+      art: props.art,
       startFrozen: true, // the goal card releases the world
       pad: padRef.current,
       onQuickfire: (contactIdx) => {
@@ -218,6 +234,9 @@ export function ArcadeGame(props: ArcadeGameProps) {
       (window as unknown as Record<string, unknown>)["__domigoArcade"] = {
         state: () => (bossActiveRef.current && bossRef.current ? bossRef.current.debugState() : scene.debugState()),
         press: (p: Partial<ArcadePad>) => Object.assign(padRef.current, p),
+        // playtest-only: open the seal gate so the boss handoff is drivable
+        unseal: () => scene.debugUnseal(),
+        warp: (c: number, r: number) => scene.debugWarp(c, r),
         // playtest-only: step the active scene when the tab is hidden and
         // Phaser has slept the loop (P-37b) — no OS focus needed.
         step: (ms: number) => {
@@ -397,12 +416,23 @@ export function ArcadeGame(props: ArcadeGameProps) {
           </div>
         </div>
 
+        {/* dev-only crash banner — a broken game must never be a silent black box */}
+        {fatal !== null && (
+          <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", zIndex: 40, background: "#7f1d1d", color: "#fff", borderRadius: 10, padding: "8px 14px", fontSize: 13, maxWidth: "92%", fontFamily: "monospace" }}>
+            ⚠ Spielfehler: {fatal}
+          </div>
+        )}
+
         {/* v2.2 GOAL CARD — the level SAYS what to do before it starts */}
         {goalOpen && phase.kind === "run" && (
           <div style={{ position: "absolute", inset: 0, zIndex: 11, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(15,13,26,0.82)", padding: 14 }}>
             <div style={{ width: "min(460px, 96%)", background: "var(--card, #1b1930)", color: "var(--text, #f3f1ff)", borderRadius: 20, padding: "20px 22px", border: "2px solid #8b7cf5", textAlign: "center" }}>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#8b7cf5" }}>Dein Auftrag</div>
               <div style={{ fontSize: 24, fontWeight: 800, fontFamily: "var(--font-display)", margin: "4px 0 8px" }}>{level.header.name}</div>
+              {level.header.whyDe !== undefined && (
+                // the CLT Warum-Zeile (doc 28 §1.2): WHY this matters, before the what
+                <p style={{ fontSize: 15, lineHeight: 1.45, margin: "0 0 8px", color: "var(--muted, #c9c4e4)", fontStyle: "italic" }}>{level.header.whyDe}</p>
+              )}
               <p style={{ fontSize: 16, lineHeight: 1.45, margin: "0 0 12px" }}>
                 {level.header.goalDe ?? `Befreie die ${seals[1]} Siegel von ihren Wächtern – dann öffnet sich die Tür des Kapitelwächters!`}
               </p>

@@ -1,0 +1,238 @@
+{
+ "library": "keen-batch-s",
+ "note": "Batch S (doc 28 §8 R3): prologue + ch01 + globals. Allowlist for prep/sync; dest = public/art/<dest>/. Commission cards: docs/art/CODEX_COMMISSION.html.",
+ "dropFolder": "docs/art/drop",
+ "count": 46,
+ "stems": [
+  {
+   "stem": "_style_key",
+   "class": "reference",
+   "dest": "g1/keen"
+  },
+  {
+   "stem": "prologue_classroom",
+   "class": "illustration",
+   "dest": "g1/keen/beats"
+  },
+  {
+   "stem": "prologue_pull",
+   "class": "illustration",
+   "dest": "g1/keen/beats"
+  },
+  {
+   "stem": "prologue_landing",
+   "class": "illustration",
+   "dest": "g1/keen/beats"
+  },
+  {
+   "stem": "portrait_finn",
+   "class": "portrait",
+   "dest": "g1/keen/cast"
+  },
+  {
+   "stem": "portrait_pixel",
+   "class": "portrait",
+   "dest": "g1/keen/cast"
+  },
+  {
+   "stem": "portrait_berger",
+   "class": "portrait",
+   "dest": "g1/keen/cast"
+  },
+  {
+   "stem": "portrait_tintengeist",
+   "class": "portrait",
+   "dest": "g1/keen/cast"
+  },
+  {
+   "stem": "portrait_jona",
+   "class": "portrait",
+   "dest": "g1/keen/cast"
+  },
+  {
+   "stem": "hero_stand",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "hero_run1",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "hero_run2",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "hero_run3",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "hero_run4",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "hero_jump",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "hero_fall",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "hero_pogo1",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "hero_pogo2",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "hero_climb1",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "hero_climb2",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "hero_hang",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "acc_scarf",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "acc_cap",
+   "class": "sprite",
+   "dest": "g1/keen/hero"
+  },
+  {
+   "stem": "page_underlay",
+   "class": "background",
+   "dest": "g1/keen/map"
+  },
+  {
+   "stem": "building_ch01",
+   "class": "sprite",
+   "dest": "g1/keen/map"
+  },
+  {
+   "stem": "finn_map",
+   "class": "sprite",
+   "dest": "g1/keen/map"
+  },
+  {
+   "stem": "pixel_map",
+   "class": "sprite",
+   "dest": "g1/keen/map"
+  },
+  {
+   "stem": "flag",
+   "class": "sprite",
+   "dest": "g1/keen/map"
+  },
+  {
+   "stem": "bg_far",
+   "class": "background",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "bg_mid",
+   "class": "background",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "walker-0",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "walker-1",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "hopper-0",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "hopper-1",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "flyer-0",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "flyer-1",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "thief-0",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "thief-1",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "cushion-0",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "cushion-1",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "cloud-0",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "cloud-1",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "boss_head_idle",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "boss_head_tell",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "boss_card",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  },
+  {
+   "stem": "boss_burst",
+   "class": "sprite",
+   "dest": "g1/keen/ch01"
+  }
+ ]
+}

@@ -87,6 +87,8 @@ const KeenLevelHeader = z.object({
   // v2.2 (zod strips unknown keys — every new header field MUST be added here)
   movers: z.array(z.object({ c1: z.number().int(), r1: z.number().int(), c2: z.number().int(), r2: z.number().int(), w: z.number().int(), periodMs: z.number().int() })).optional(),
   goalDe: z.string().optional(),
+  /** doc 28 §1.2: the CLT Warum-Zeile — why this level matters, in-story. */
+  whyDe: z.string().optional(),
 });
 
 const KeenLevelFile = z.object({

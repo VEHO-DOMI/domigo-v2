@@ -8,6 +8,112 @@
  },
  "chapters": [
   {
+   "id": "g1.st.lost-pages.ch00",
+   "unit": 1,
+   "titleEn": "The Pull",
+   "titleDe": "Der Sog",
+   "scenes": [
+    {
+     "id": "g1.st.lost-pages.ch00.s001",
+     "speaker": "berger",
+     "textEn": "Look! Our English book! Open it.",
+     "scaffoldDe": "Schau! Unser Englisch-Buch! Öffne es.",
+     "glosses": [
+      {
+       "word": "book",
+       "de": "das Buch",
+       "scope": "word"
+      },
+      {
+       "word": "open",
+       "de": "öffnen",
+       "scope": "word"
+      }
+     ],
+     "audio": null,
+     "image": "prologue_classroom",
+     "taskSlots": [],
+     "next": "g1.st.lost-pages.ch00.s002"
+    },
+    {
+     "id": "g1.st.lost-pages.ch00.s002",
+     "speaker": "finn",
+     "textEn": "Help! The pages! Hold on tight!",
+     "scaffoldDe": "Hilfe! Die Seiten! Halt dich gut fest!",
+     "glosses": [
+      {
+       "word": "help",
+       "de": "Hilfe",
+       "scope": "word"
+      },
+      {
+       "word": "pages",
+       "de": "die Seiten",
+       "scope": "word"
+      },
+      {
+       "word": "hold on tight",
+       "de": "halt dich fest",
+       "scope": "phrase"
+      }
+     ],
+     "audio": null,
+     "image": "prologue_pull",
+     "taskSlots": [],
+     "next": "g1.st.lost-pages.ch00.s003"
+    },
+    {
+     "id": "g1.st.lost-pages.ch00.s003",
+     "speaker": "finn",
+     "textEn": "You are IN the book now. I am Finn — this is Pixel.",
+     "scaffoldDe": "Du bist jetzt IM Buch. Ich bin Finn — das ist Pixel.",
+     "glosses": [
+      {
+       "word": "in",
+       "de": "in",
+       "scope": "word"
+      }
+     ],
+     "audio": null,
+     "image": "prologue_landing",
+     "taskSlots": [
+      {
+       "slot": "name-it",
+       "itemId": "g1u01.w.book",
+       "variantKey": null
+      }
+     ],
+     "next": "g1.st.lost-pages.ch00.s004"
+    },
+    {
+     "id": "g1.st.lost-pages.ch00.s004",
+     "speaker": "finn",
+     "textEn": "Our words are lost. Can you help us?",
+     "scaffoldDe": "Unsere Wörter sind verloren. Kannst du uns helfen?",
+     "glosses": [
+      {
+       "word": "words",
+       "de": "die Wörter",
+       "scope": "word"
+      },
+      {
+       "word": "lost",
+       "de": "verloren",
+       "scope": "word"
+      },
+      {
+       "word": "help",
+       "de": "helfen",
+       "scope": "word"
+      }
+     ],
+     "audio": null,
+     "taskSlots": [],
+     "next": null
+    }
+   ]
+  },
+  {
    "id": "g1.st.lost-pages.ch01",
    "unit": 1,
    "titleEn": "Time for School",

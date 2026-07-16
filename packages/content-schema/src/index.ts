@@ -1076,6 +1076,9 @@ export const Scene = z.object({
   scaffoldDe: z.string().nullable(),
   glosses: z.array(Gloss),
   audio: AudioRef.nullable(), // reserved
+  /** Optional illustration stem (doc 28 §6.4 delta): resolved against the
+   *  keen-art `beats` map at render time; missing art = text-only beat. */
+  image: z.string().regex(/^[a-z0-9_]+$/).optional(),
   taskSlots: z.array(TaskSlot),
   /** Linear next scene, a branch (≥2 choices), or null = chapter end. */
   next: z.union([SceneId, z.array(Choice).min(2), FlagGate, z.null()]),
