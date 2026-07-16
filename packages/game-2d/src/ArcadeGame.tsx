@@ -85,6 +85,17 @@ export function ArcadeGame(props: ArcadeGameProps) {
   // v2.2: the goal card — every level opens by SAYING what to do (the
   // "take the student by the hand" law); the world stands still behind it
   const [goalOpen, setGoalOpen] = useState(true);
+  // dev-only: a silent runtime crash renders as a readable banner, never a
+  // black canvas (the boss-handoff hunt of 2026-07-16 cost a day of guessing)
+  const [fatal, setFatal] = useState<string | null>(null);
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") return;
+    const onErr = (e: ErrorEvent) => setFatal(`${e.message} @ ${e.filename?.split("/").pop()}:${e.lineno}`);
+    const onRej = (e: PromiseRejectionEvent) => setFatal(String(e.reason));
+    window.addEventListener("error", onErr);
+    window.addEventListener("unhandledrejection", onRej);
+    return () => { window.removeEventListener("error", onErr); window.removeEventListener("unhandledrejection", onRej); };
+  }, []);
   const entry = LEVELS[props.levelId ?? DEFAULT_LEVEL_ID] ?? LEVELS[DEFAULT_LEVEL_ID]!;
   const level = props.level ?? entry.level;
   const tier: Tier = props.tier ?? entry.defaultTier;
@@ -399,6 +410,13 @@ export function ArcadeGame(props: ArcadeGameProps) {
             )}
           </div>
         </div>
+
+        {/* dev-only crash banner — a broken game must never be a silent black box */}
+        {fatal !== null && (
+          <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", zIndex: 40, background: "#7f1d1d", color: "#fff", borderRadius: 10, padding: "8px 14px", fontSize: 13, maxWidth: "92%", fontFamily: "monospace" }}>
+            ⚠ Spielfehler: {fatal}
+          </div>
+        )}
 
         {/* v2.2 GOAL CARD — the level SAYS what to do before it starts */}
         {goalOpen && phase.kind === "run" && (
