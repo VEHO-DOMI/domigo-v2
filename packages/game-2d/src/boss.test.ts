@@ -145,7 +145,50 @@ describe("level format v2.1", () => {
 // ---------------------------------------------------------------------------
 // v2.2: poles, in-level door pairs, movers (the calibration round)
 // ---------------------------------------------------------------------------
-import { checkLevelLaws } from "./arcade.ts";
+import { airVx, checkLevelLaws, slopeSurfaceY } from "./arcade.ts";
+
+// ---------------------------------------------------------------------------
+// v2.3: slopes + Keen-audit physics (the look-and-feel round)
+// ---------------------------------------------------------------------------
+describe("level format v2.3 — slopes", () => {
+  it("parses '/' and '\\' into slope cells with directions", () => {
+    const lvl = parseArcadeLevel(HEADER, [
+      "S../\\..B",
+      "###--###".replace(/-/g, "#"),
+    ]);
+    expect(lvl.slopes).toEqual([
+      { c: 3, r: 0, dir: 1 },
+      { c: 4, r: 0, dir: -1 },
+    ]);
+  });
+
+  it("slopeSurfaceY: '/' rises rightward, '\\' mirrors, both span the cell", () => {
+    const up = { c: 2, r: 3, dir: 1 as const };
+    expect(slopeSurfaceY(up, 0)).toBe(4 * 48); // left edge = cell bottom
+    expect(slopeSurfaceY(up, 1)).toBe(3 * 48); // right edge = cell top
+    expect(slopeSurfaceY(up, 0.5)).toBe(3.5 * 48);
+    const down = { c: 2, r: 3, dir: -1 as const };
+    expect(slopeSurfaceY(down, 0)).toBe(3 * 48);
+    expect(slopeSurfaceY(down, 1)).toBe(4 * 48);
+  });
+
+  it("laws: slope cells are their own footing (a slope mound stays reachable)", () => {
+    const lvl = parseArcadeLevel(HEADER, [
+      "..........",
+      "....L.....",
+      ".../#\\....",
+      "S./###\\..B",
+      "##########",
+    ]);
+    const report = checkLevelLaws(lvl);
+    expect(report.errors).toEqual([]);
+  });
+
+  it("pogo COASTING: stick-neutral keeps velX exactly (plain jumps still bleed)", () => {
+    expect(airVx(250, 0, true, 16.7)).toBe(250);
+    expect(Math.abs(airVx(250, 0, false, 16.7))).toBeLessThan(250);
+  });
+});
 
 describe("level format v2.2", () => {
   it("parses poles and door pairs; a door glyph needs exactly two cells", () => {

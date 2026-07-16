@@ -38,20 +38,22 @@ export const ARCADE = {
   tickMs: 1000 / 60,
   maxTicksPerFrame: 4,
 
-  runSpeed: 288, // px/s = 6 tiles/s — DIGITAL on ground
+  // Source-exact where kind (Keen 4 via Omnispeak, ck_keen.c/ck_phys.c/ACTION.CK4;
+  // conversion: 1 unit/tic = 13.125 of-our-px/s, 1 unit/tic² = 918.75 px/s²).
+  runSpeed: 315, // 24 u/tic exact (ACTION.CK4 run actions) = 6.56 tiles/s
   firstStepScale: 0.25, // Keen's ¼-strength step out of standing
-  airAccel: 820, // px/s² toward held direction (analog air)
-  airFriction: 410, // px/s² bleed when nothing held mid-air
-  jumpRunCarry: 0.6, // takeoff keeps 60% of run speed; air accel closes it
+  airAccel: 919, // 1 u/tic² exact (CK_PhysAccelHorz ±2 on odd tics)
+  airFriction: 459, // 0.5 u/tic² exact (CK_PhysDampHorz)
+  jumpRunCarry: 0.667, // takeoff velX = 16 u/tic of the 24 run (ck_keen.c:733)
 
-  gravity: 2200, // px/s²
-  gravityEasyScale: 0.88, // tier E: Keen's weak-gravity dial
-  maxFall: 900, // px/s terminal
+  gravity: 1840, // 2 u/tic² exact (CK_PhysGravityHigh +4 on odd tics)
+  gravityEasyScale: 0.75, // Keen's REAL easy dial: GravityMid 3 vs High 4
+  maxFall: 900, // 70 u/tic ≈ 919 px/s terminal (kept a hair kinder)
 
-  jumpThrust: -440, // px/s held during the fuel window
-  jumpFuelMs: 240, // ≈ Keen's 18 tics @70Hz (tuned in-browser: hold ≈ 3.2 tiles)
-  pogoThrust: -500,
-  pogoFuelMs: 280, // ≈ 24 tics (pogo ≈ 4.3 tiles; hold-trick ≈ 6)
+  jumpThrust: -525, // -40 u/tic exact — with 255ms fuel: max ≈ 4.3 tiles, tap ≈ 1.9
+  jumpFuelMs: 255, // Keen's 18 tics @70Hz
+  pogoThrust: -560, // above the jump's -525 (Keen: 48 vs 40 u/tic, same ordering)
+  pogoFuelMs: 280, // ≈ 24 tics (base bounce ≈ 5 tiles at g=1840; hold-trick higher)
   pogoSteerScale: 0.5, // half-authority air control on the stick
   pogoHoldGravityScale: 0.4, // the "impossible pogo": hold jump → tiny gravity
 
@@ -61,14 +63,11 @@ export const ARCADE = {
   pullUpMs: 260, // the scripted 4-step pull-up, condensed
 
   // poles (v2.2, Keen's climb/slide split: up is deliberate, down is a ride).
-  // Exit impulses must clear a full tile (48px): rise = v²/2g ≈ 66px at -430.
   // Authoring law: a ledge served by a pole sits ≤1 row above the pole's top.
-  poleClimbVy: 150,
-  poleSlideVy: 300,
-  poleExitVy: -380, // the jump-off hop (≈1.1 tiles)
-  poleTopVy: -520, // top-out pop (≈2 tiles — MUST clear a hatch one row above
-  // the pole's top cell: exit fires ~half a tile into the empty row, so the
-  // rise has to cover that half tile plus the player's own half height)
+  poleClimbVy: 150, // Keen's 105 is authentic but tedious — kept kinder (flagged)
+  poleSlideVy: 315, // 24 u/tic exact — the slide IS run speed
+  poleExitVy: -450, // jump-off: rise v²/2g ≈ 55px ≈ 1.15 tiles (Keen's hop ≈ 1.17)
+  poleTopVy: -520, // top-out pop ≈ 73px ≈ 1.5 tiles — clears a '=' hatch one row up
 
   knockbackX: 240,
   knockbackY: -420,
@@ -80,8 +79,19 @@ export const ARCADE = {
   camBandRight: 9,
   camRestY: 0.62, // player sits 62% down the view when grounded
   camLerp: 0.12,
-  lookTiles: 2,
+  // Keen's look is asymmetric (up ≈1.7 tiles, down ≈51% of the view!) — the
+  // verb exists so kids can SCOUT A DROP before committing (ck_play.c:2087)
+  lookUpTiles: 2,
+  lookDownTiles: 4,
   lookDelayMs: 350, // hold up/down this long before the camera commits
+  // mid-air safety clamp (ck_play.c:2176): even airborne, feet never pass
+  // these view fractions — long falls CHASE the player, no blind drops
+  camAirClampLo: 0.8,
+  camAirClampHi: 0.12,
+
+  // slopes ('/' and '\' — Keen's steep 1:1 pair; ck_phys.c slope table type 4/7):
+  // running downhill gets a push, uphill a drag (±8 u/tic = 105 px/s ours)
+  slopePush: 105,
 
   // creatures
   walkerSpeed: 70,
@@ -143,6 +153,9 @@ export function canJump(now: number, lastGroundedAt: number, pressedAt: number):
 
 /** Air-control acceleration for one tick (analog air; pogo halves authority). */
 export function airVx(vx: number, dir: -1 | 0 | 1, onPogo: boolean, dtMs: number): number {
+  // pogo COASTING (ck_keen.c:1380): stick neutral → velX is kept EXACTLY —
+  // the pogo holds its line over gaps. Friction only applies to plain jumps.
+  if (onPogo && dir === 0) return vx;
   const target = dir * ARCADE.runSpeed;
   const rate = (dir === 0 ? ARCADE.airFriction : ARCADE.airAccel) * (onPogo ? ARCADE.pogoSteerScale : 1);
   const dv = (rate * dtMs) / 1000;
@@ -203,7 +216,8 @@ export function cameraTargetX(camX: number, playerX: number, viewW: number): num
 /** Vertical target — ONLY meaningful when anchored (grounded or hanging);
  *  the scene holds Y still mid-air (Keen gates vertical follow to ground). */
 export function cameraTargetY(playerY: number, viewH: number, lookDir: -1 | 0 | 1): number {
-  return playerY - viewH * ARCADE.camRestY + lookDir * ARCADE.lookTiles * TILE_PX;
+  const tiles = lookDir === 1 ? ARCADE.lookDownTiles : ARCADE.lookUpTiles;
+  return playerY - viewH * ARCADE.camRestY + lookDir * tiles * TILE_PX;
 }
 
 // ---------------------------------------------------------------------------
@@ -311,6 +325,19 @@ export interface ArcadeLevel {
   /** v2.2: in-level door PAIRS ('1'–'4', two cells each) — Keen's interiors:
    *  disconnected sub-rooms on one canvas, linked by walk-in doors. */
   doors: Array<{ id: string; a: { c: number; r: number }; b: { c: number; r: number } }>;
+  /** v2.3: sloped ground — '/' rises rightward (dir 1), '\' falls rightward
+   *  (dir -1). Keen's steep 1:1 pair (ck_phys.c slope types 4/7); the scene
+   *  ground-follows via slopeSurfaceY, no AABB body. */
+  slopes: Array<{ c: number; r: number; dir: 1 | -1 }>;
+}
+
+/** The walkable surface height of a slope cell at in-cell x fraction fx∈[0,1]:
+ *  y in px from the LEVEL top. '/' (dir 1): left edge = cell bottom, right
+ *  edge = cell top. '\' (dir -1): mirrored. */
+export function slopeSurfaceY(cell: { c: number; r: number; dir: 1 | -1 }, fx: number): number {
+  const t = Math.min(Math.max(fx, 0), 1);
+  const rise = cell.dir === 1 ? t : 1 - t;
+  return (cell.r + 1) * TILE_PX - rise * TILE_PX;
 }
 
 const TIER_RANK: Record<Tier, number> = { E: 0, M: 1, S: 2 };
@@ -332,7 +359,7 @@ export function parseArcadeLevel(header: ArcadeHeader, rows: string[]): ArcadeLe
   const h = rows.length;
   const w = rows[0]?.length ?? 0;
   if (rows.some((r) => r.length !== w)) throw new Error(`${header.id}: rows must be rectangular`);
-  const level: ArcadeLevel = { header, w, h, rows, solids: [], oneWays: [], hazards: [], letters: [], checkpoints: [], start: { c: 1, r: 1 }, pedestal: { c: w - 2, r: 1 }, bossDoor: null, gluehwoerter: [], poles: [], doors: [] };
+  const level: ArcadeLevel = { header, w, h, rows, solids: [], oneWays: [], hazards: [], letters: [], checkpoints: [], start: { c: 1, r: 1 }, pedestal: { c: w - 2, r: 1 }, bossDoor: null, gluehwoerter: [], poles: [], doors: [], slopes: [] };
   const doorCells = new Map<string, Array<{ c: number; r: number }>>();
   let sawStart = 0;
   let sawPedestal = 0;
@@ -350,6 +377,7 @@ export function parseArcadeLevel(header: ArcadeHeader, rows: string[]): ArcadeLe
       else if (ch === "A") { level.pedestal = { c, r }; sawPedestal += 1; }
       else if (ch === "B") { level.bossDoor = { c, r }; sawBoss += 1; }
       else if (ch === "|") level.poles.push({ c, r });
+      else if (ch === "/" || ch === "\\") level.slopes.push({ c, r, dir: ch === "/" ? 1 : -1 });
       else if (ch >= "1" && ch <= "4") {
         const arr = doorCells.get(ch) ?? [];
         arr.push({ c, r });
@@ -407,6 +435,8 @@ function standables(level: ArcadeLevel): Set<string> {
       if (ch !== "#" && ch !== "^" && groundAt(level, c, r + 1)) out.add(`${c},${r}`);
     }
   }
+  // v2.3: a slope cell IS its own footing (the surface lives inside the cell)
+  for (const s of level.slopes) out.add(`${s.c},${s.r}`);
   return out;
 }
 

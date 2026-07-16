@@ -9,3 +9,4 @@ export * from "./rng.ts";
 export * from "./tileset.ts";
 export * from "./theme.ts";
 export * from "./sprite.ts";
+export * from "./platform.ts";

@@ -157,11 +157,12 @@ describe("camera", () => {
     expect(cameraTargetX(0, beyond, viewW)).toBeCloseTo(50, 5);
   });
 
-  it("vertical rest sits the player low; look shifts ±2 tiles", () => {
+  it("vertical rest sits the player low; look is ASYMMETRIC (Keen: down reveals more)", () => {
     const viewH = 11 * TILE_PX;
     const rest = cameraTargetY(500, viewH, 0);
-    expect(cameraTargetY(500, viewH, -1)).toBe(rest - ARCADE.lookTiles * TILE_PX);
-    expect(cameraTargetY(500, viewH, 1)).toBe(rest + ARCADE.lookTiles * TILE_PX);
+    expect(cameraTargetY(500, viewH, -1)).toBe(rest - ARCADE.lookUpTiles * TILE_PX);
+    expect(cameraTargetY(500, viewH, 1)).toBe(rest + ARCADE.lookDownTiles * TILE_PX);
+    expect(ARCADE.lookDownTiles).toBeGreaterThan(ARCADE.lookUpTiles);
   });
 });
 

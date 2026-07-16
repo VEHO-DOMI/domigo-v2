@@ -16,7 +16,7 @@
  * ink bolts); losing the last one hands React the Rettungsaufgabe.
  */
 import Phaser from "phaser";
-import { paintPlayerSprite, paintTileset, resolveZoneTheme, DOMIGO_GREEN, TILE_KINDS } from "@domigo/art-gen";
+import { paintCreatures, paintHero, paintMoverBook, paintPlatformProp, paintSkyline, paintTerrain, resolvePlatformTheme, terrainMask, type HeroPose } from "@domigo/art-gen";
 import { playSfx } from "@domigo/game-feel";
 import {
   airVx,
@@ -37,6 +37,7 @@ import {
   startJump,
   stepCloud,
   stepFuel,
+  slopeSurfaceY,
   thiefTarget,
   TASKABLE,
   TILE_PX as TILE,
@@ -119,159 +120,15 @@ type PlayerState =
   | { kind: "climb"; poleC: number } // v2.2: on a pole (up climbs, down slides)
   | { kind: "dying" };
 
-function paintSmudge(kind: CreatureKind): HTMLCanvasElement {
-  const c = document.createElement("canvas");
-  c.width = 44;
-  c.height = 38;
-  const g = c.getContext("2d")!;
-  const body = () => {
-    g.beginPath();
-    if (kind === "walker") g.ellipse(22, 25, 18, 11, 0, 0, Math.PI * 2);
-    else if (kind === "hopper") g.ellipse(22, 21, 13, 15, 0, 0, Math.PI * 2);
-    else if (kind === "thief") { g.ellipse(22, 22, 14, 12, 0, 0, Math.PI * 2); g.ellipse(30, 12, 6, 4, 0.6, 0, Math.PI * 2); }
-    else if (kind === "cushion") g.ellipse(22, 26, 20, 10, 0, 0, Math.PI * 2);
-    else if (kind === "cloud") { g.ellipse(22, 20, 19, 10, 0, 0, Math.PI * 2); g.ellipse(11, 16, 8, 6, 0, 0, Math.PI * 2); g.ellipse(33, 16, 8, 6, 0, 0, Math.PI * 2); }
-    else { g.ellipse(22, 18, 15, 10, 0, 0, Math.PI * 2); g.ellipse(9, 12, 5, 3, -0.5, 0, Math.PI * 2); g.ellipse(35, 12, 5, 3, 0.5, 0, Math.PI * 2); }
-  };
-  const fills: Record<CreatureKind, string> = { walker: "#37325c", hopper: "#37325c", flyer: "#453a78", thief: "#4a3560", cushion: "#2f4a6b", cloud: "#26233f" };
-  g.fillStyle = fills[kind];
-  body();
-  g.fill();
-  g.strokeStyle = kind === "cushion" ? "#7cc4f5" : "#8b7cf5";
-  g.lineWidth = 2;
-  body();
-  g.stroke();
-  if (kind !== "cloud") {
-    g.fillStyle = "#f6f5ff";
-    g.beginPath(); g.ellipse(16, 18, 4.5, 5.5, 0, 0, Math.PI * 2); g.ellipse(28, 18, 4.5, 5.5, 0, 0, Math.PI * 2); g.fill();
-    g.fillStyle = "#0c0b14";
-    g.beginPath(); g.arc(17, 20, 2.2, 0, Math.PI * 2); g.arc(29, 20, 2.2, 0, Math.PI * 2); g.fill();
-  } else {
-    // the cloud sleeps — lidded eyes
-    g.strokeStyle = "#b7aef7"; g.lineWidth = 2;
-    g.beginPath(); g.moveTo(13, 20); g.lineTo(19, 20); g.moveTo(26, 20); g.lineTo(32, 20); g.stroke();
-  }
-  return c;
-}
 
-function paintSpikes(): HTMLCanvasElement {
-  const c = document.createElement("canvas");
-  c.width = TILE;
-  c.height = TILE;
-  const g = c.getContext("2d")!;
-  g.fillStyle = "#191726";
-  for (const x of [4, 20, 36] as const) {
-    g.beginPath();
-    g.moveTo(x, TILE);
-    g.lineTo(x + 4, TILE - 22);
-    g.lineTo(x + 8, TILE);
-    g.closePath();
-    g.fill();
-  }
-  g.fillStyle = "#2c2a44";
-  g.fillRect(0, TILE - 6, TILE, 6);
-  return c;
-}
 
 /** The artifact pedestal (inactive → glowing) — the torn page fragment. */
-function paintPedestal(active: boolean): HTMLCanvasElement {
-  const c = document.createElement("canvas");
-  c.width = TILE;
-  c.height = TILE * 2;
-  const g = c.getContext("2d")!;
-  g.fillStyle = "#4a3520";
-  g.fillRect(14, 60, 20, 34);
-  g.fillRect(8, 88, 32, 8);
-  // the page fragment
-  g.save();
-  g.translate(24, 34);
-  g.rotate(-0.08);
-  g.fillStyle = active ? "#f6f2e4" : "#8d8a7e";
-  g.beginPath();
-  g.moveTo(-14, -18); g.lineTo(12, -20); g.lineTo(15, 6); g.lineTo(4, 10); g.lineTo(-2, 6); g.lineTo(-12, 12);
-  g.closePath();
-  g.fill();
-  g.strokeStyle = active ? "#b7aef7" : "#5c5a6e";
-  g.lineWidth = 2;
-  g.stroke();
-  g.strokeStyle = active ? "#6b6880" : "#75727f";
-  g.lineWidth = 1.4;
-  for (const y of [-10, -4, 2] as const) { g.beginPath(); g.moveTo(-9, y); g.lineTo(9, y); g.stroke(); }
-  g.restore();
-  if (active) {
-    g.fillStyle = "rgba(183,174,247,0.25)";
-    g.beginPath(); g.ellipse(24, 34, 22, 26, 0, 0, Math.PI * 2); g.fill();
-  }
-  return c;
-}
 
 /** The guardian's door (v2.1 'B' exit) — sealed dark until the seals open it. */
-function paintBossDoor(active: boolean): HTMLCanvasElement {
-  const c = document.createElement("canvas");
-  c.width = TILE;
-  c.height = TILE * 2;
-  const g = c.getContext("2d")!;
-  g.fillStyle = active ? "#3a3654" : "#221f36";
-  g.beginPath();
-  g.moveTo(6, TILE * 2); g.lineTo(6, 26); g.quadraticCurveTo(TILE / 2, 2, TILE - 6, 26); g.lineTo(TILE - 6, TILE * 2);
-  g.closePath();
-  g.fill();
-  g.strokeStyle = active ? "#8b7cf5" : "#4a4668";
-  g.lineWidth = 3;
-  g.stroke();
-  // the ink knot across the door while sealed; a glowing gap when open
-  if (!active) {
-    g.strokeStyle = "#141221";
-    g.lineWidth = 7;
-    g.beginPath(); g.moveTo(10, 46); g.bezierCurveTo(24, 60, 24, 34, 38, 52); g.stroke();
-    g.beginPath(); g.moveTo(10, 70); g.bezierCurveTo(26, 58, 22, 84, 38, 70); g.stroke();
-  } else {
-    g.fillStyle = "rgba(183,174,247,0.35)";
-    g.beginPath(); g.ellipse(TILE / 2, 62, 12, 26, 0, 0, Math.PI * 2); g.fill();
-  }
-  return c;
-}
 
 /** A Glühwort — a word Jona never managed to erase, still glowing (§5.2). */
-function paintGluehwort(): HTMLCanvasElement {
-  const c = document.createElement("canvas");
-  c.width = 36;
-  c.height = 26;
-  const g = c.getContext("2d")!;
-  g.fillStyle = "rgba(255,224,130,0.28)";
-  g.beginPath(); g.ellipse(18, 13, 17, 12, 0, 0, Math.PI * 2); g.fill();
-  g.fillStyle = "#ffe082";
-  g.beginPath();
-  const r = 6;
-  g.roundRect(5, 6, 26, 14, r);
-  g.fill();
-  g.strokeStyle = "#fff7db";
-  g.lineWidth = 1.6;
-  g.stroke();
-  g.strokeStyle = "#8a6d1f";
-  g.lineWidth = 1.6;
-  for (const y of [10, 13, 16] as const) { g.beginPath(); g.moveTo(9, y); g.lineTo(27, y); g.stroke(); }
-  return c;
-}
 
 /** A Tintensiegel (ink seal) — the gem-socket key, re-themed. */
-function paintSeal(): HTMLCanvasElement {
-  const c = document.createElement("canvas");
-  c.width = 30;
-  c.height = 30;
-  const g = c.getContext("2d")!;
-  g.fillStyle = "#8b7cf5";
-  g.beginPath();
-  g.moveTo(15, 2); g.lineTo(27, 15); g.lineTo(15, 28); g.lineTo(3, 15);
-  g.closePath();
-  g.fill();
-  g.strokeStyle = "#cfc7ff";
-  g.lineWidth = 2;
-  g.stroke();
-  g.fillStyle = "#141221";
-  g.beginPath(); g.arc(15, 15, 4.5, 0, Math.PI * 2); g.fill();
-  return c;
-}
 
 /** In-level door (v2.2): an arched frame with a pair-colored gem, so kids can
  *  SEE which two doors connect before ever stepping through one. */
@@ -305,42 +162,8 @@ function paintLevelDoor(id: string): HTMLCanvasElement {
 }
 
 /** Floating platform slab (v2.2 movers) — glowing underside marks it as alive. */
-function paintMover(wTiles: number): HTMLCanvasElement {
-  const c = document.createElement("canvas");
-  c.width = wTiles * TILE;
-  c.height = 20;
-  const g = c.getContext("2d")!;
-  g.fillStyle = "#3a3560";
-  g.beginPath();
-  g.roundRect(1, 1, c.width - 2, 14, 6);
-  g.fill();
-  g.strokeStyle = "#8b7cf5";
-  g.lineWidth = 2;
-  g.stroke();
-  g.fillStyle = "rgba(139,124,245,0.55)";
-  for (let i = 0; i < wTiles * 2; i += 1) {
-    g.beginPath(); g.arc(12 + i * (TILE / 2), 18, 2.4, 0, Math.PI * 2); g.fill();
-  }
-  g.fillStyle = "rgba(246,245,255,0.25)";
-  g.fillRect(4, 3, c.width - 8, 3);
-  return c;
-}
 
 /** Climbing pole tile (v2.2) — a rune-etched rod with a rung. */
-function paintPole(): HTMLCanvasElement {
-  const c = document.createElement("canvas");
-  c.width = 48;
-  c.height = 48;
-  const g = c.getContext("2d")!;
-  g.fillStyle = "#4a4370";
-  g.fillRect(21, 0, 6, 48);
-  g.fillStyle = "#8b7cf5";
-  g.fillRect(23, 0, 2, 48);
-  g.strokeStyle = "#5c5490";
-  g.lineWidth = 3;
-  g.beginPath(); g.moveTo(13, 24); g.lineTo(35, 24); g.stroke();
-  return c;
-}
 
 export class ArcadeScene extends Phaser.Scene {
   private cfg: ArcadeConfig;
@@ -398,6 +221,11 @@ export class ArcadeScene extends Phaser.Scene {
   private doorCooldownUntil = 0;
   private spaceHeld = false;
   private goalArrow: Phaser.GameObjects.Triangle | null = null;
+  // v2.3 feel (source audit 2026-07-16)
+  private slopeCells: Array<{ c: number; r: number; dir: 1 | -1 }> = [];
+  private onSlope: { c: number; r: number; dir: 1 | -1 } | null = null;
+  private spaceAirPress = false; // Keen's latch: held press fires on landing
+  private lastPogoBounceAt = -9999;
 
   constructor(cfg: ArcadeConfig) {
     super("arcade");
@@ -411,35 +239,32 @@ export class ArcadeScene extends Phaser.Scene {
   create(): void {
     const { level, tier } = this.cfg;
     const motion = this.cfg.reducedMotion !== true;
-    const theme = resolveZoneTheme("classroom");
-    const tileset = paintTileset(this.cfg.seed, { palette: theme.palette, accent: DOMIGO_GREEN, kinds: [...TILE_KINDS] });
+    // v3 look: the platformer's OWN side-view art (auto-tiled terrain, posed
+    // hero, themed cast) — resolved from the level's theme, never hardcoded
+    const ptheme = resolvePlatformTheme(level.header.theme);
+    const terrain = paintTerrain(this.cfg.seed, ptheme);
+    const cast = paintCreatures(ptheme);
+    const hero = paintHero(this.cfg.playerSeed ?? this.cfg.seed);
     const tex = (k: string): string => `ka-${k}`;
     const addCanvas = (key: string, cv: HTMLCanvasElement): void => {
       if (!this.textures.exists(key)) this.textures.addCanvas(key, cv);
     };
-    for (const [key, img] of Object.entries(tileset.tiles)) {
-      addCanvas(tex(key), rasterize(img, 1));
+    for (const [key, img] of Object.entries(terrain.tiles)) addCanvas(tex(key), rasterize(img, 1));
+    for (const [key, img] of Object.entries(cast.frames)) addCanvas(tex(key), rasterize(img, 1));
+    for (const [pose, img] of Object.entries(hero.frames)) addCanvas(`h-${pose}`, rasterize(img, 1));
+    for (const prop of ["pole", "seal", "gluehwort", "checkpoint", "checkpoint-lit", "pedestal", "pedestal-lit"] as const) {
+      addCanvas(tex(prop), rasterize(paintPlatformProp(prop, ptheme, this.cfg.seed), 1));
     }
-    for (const kind of ["walker", "hopper", "flyer", "thief", "cushion", "cloud"] as const) addCanvas(tex(kind), paintSmudge(kind));
-    addCanvas(tex("spikes"), paintSpikes());
-    addCanvas(tex("pedestal"), paintPedestal(false));
-    addCanvas(tex("pedestal-on"), paintPedestal(true));
-    addCanvas(tex("bossdoor"), paintBossDoor(false));
-    addCanvas(tex("bossdoor-on"), paintBossDoor(true));
-    addCanvas(tex("gluehwort"), paintGluehwort());
-    addCanvas(tex("seal"), paintSeal());
-    const sprite = paintPlayerSprite(this.cfg.playerSeed ?? this.cfg.seed);
-    if (!this.textures.exists("p-right")) {
-      this.textures.addCanvas("p-right", rasterize(sprite.frames[3]!, 1));
-      sprite.walk.right.forEach((img, s) => addCanvas(`p-right-${s + 1}`, rasterize(img, 1)));
-    }
+    addCanvas(tex("bossdoor"), rasterize(paintPlatformProp("bossdoor", ptheme, this.cfg.seed), 1));
+    addCanvas(tex("bossdoor-on"), rasterize(paintPlatformProp("bossdoor-open", ptheme, this.cfg.seed), 1));
 
-    // parallax ink backdrop
+    // backdrop: sky gradient + the far page-hills silhouette (soft parallax —
+    // a sanctioned deviation: Keen 4 has none, but our canvas can afford it)
     const bg = document.createElement("canvas");
     bg.width = 256; bg.height = 24 * TILE;
     const bgg = bg.getContext("2d")!;
     const grad = bgg.createLinearGradient(0, 0, 0, bg.height);
-    grad.addColorStop(0, "#232136"); grad.addColorStop(0.7, "#1b1930"); grad.addColorStop(1, "#141221");
+    grad.addColorStop(0, ptheme.sky[0]); grad.addColorStop(0.7, ptheme.sky[1]); grad.addColorStop(1, ptheme.sky[2]);
     bgg.fillStyle = grad; bgg.fillRect(0, 0, 256, bg.height);
     bgg.fillStyle = "rgba(120,110,200,0.08)";
     for (const [x, y, r] of [[40, 90, 26], [150, 60, 18], [210, 160, 30], [90, 230, 22], [30, 330, 16], [180, 300, 28], [120, 420, 20], [200, 520, 24], [60, 620, 18]] as const) {
@@ -447,16 +272,34 @@ export class ArcadeScene extends Phaser.Scene {
     }
     addCanvas("ka-bg", bg);
     this.add.tileSprite(0, 0, level.w * TILE, level.h * TILE, "ka-bg").setOrigin(0).setScrollFactor(0.35, 0.7);
+    addCanvas("ka-skyline", rasterize(paintSkyline(this.cfg.seed, ptheme), 1));
+    // the silhouette band ends where the level's base ground begins
+    const horizonY = level.h * TILE - TILE * 5 - 120;
+    this.add.tileSprite(0, horizonY, level.w * TILE * 2, 120, "ka-skyline").setOrigin(0).setScrollFactor(0.5, 0.85).setAlpha(0.9);
 
-    // ── the world ──
+    // ── the world (auto-tiled terrain: variants by edge exposure) ──
+    const solidHere = new Set(level.solids.map((s) => `${s.c},${s.r}`));
+    const slopeHere = new Map(level.slopes.map((s) => [`${s.c},${s.r}`, s] as const));
+    const covered = (c: number, r: number): boolean => solidHere.has(`${c},${r}`) || slopeHere.has(`${c},${r}`);
     const solids = this.physics.add.staticGroup();
     for (const s of level.solids) {
-      const b = solids.create(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, tex("wall")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+      const mask = terrainMask(!covered(s.c, s.r - 1), !covered(s.c, s.r + 1), !covered(s.c - 1, s.r), !covered(s.c + 1, s.r));
+      const b = solids.create(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, tex(`earth-${mask}`)) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       b.setDisplaySize(TILE, TILE).refreshBody();
+      const sb = b.body as Phaser.Physics.Arcade.StaticBody;
+      // a solid flanking a slope must not WALL the ramp (Keen skips the feet
+      // row on slopes, ck_phys.c:316) — drop collision on the slope-facing side
+      if (slopeHere.has(`${s.c - 1},${s.r}`)) sb.checkCollision.left = false;
+      if (slopeHere.has(`${s.c + 1},${s.r}`)) sb.checkCollision.right = false;
+    }
+    // slopes render as wedges; NO arcade body — update() ground-follows them
+    for (const s of level.slopes) {
+      this.slopeCells.push(s);
+      this.add.image(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, tex(`slope-${s.dir}`));
     }
     const oneWays = this.physics.add.staticGroup();
     const addOneWay = (c: number, r: number, helper: boolean): void => {
-      const b = oneWays.create(c * TILE + TILE / 2, r * TILE + TILE / 2 - 14, tex("path")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+      const b = oneWays.create(c * TILE + TILE / 2, r * TILE + TILE / 2 - 14, tex("oneway")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       b.setDisplaySize(TILE, 20).refreshBody();
       if (helper) b.setTint(0x9fd8a4); // easy-mode scaffolding reads as such
       const body = b.body as Phaser.Physics.Arcade.StaticBody;
@@ -476,7 +319,6 @@ export class ArcadeScene extends Phaser.Scene {
     }
 
     // ── v2.2: poles (the vertical switchboard — climb up, slide down) ──
-    if (level.poles.length > 0) addCanvas(tex("pole"), paintPole());
     for (const p of level.poles) {
       this.poleCells.add(`${p.c},${p.r}`);
       this.add.image(p.c * TILE + TILE / 2, p.r * TILE + TILE / 2, tex("pole")).setDepth(1);
@@ -489,9 +331,10 @@ export class ArcadeScene extends Phaser.Scene {
       const aPx = px(d.a);
       const bPx = px(d.b);
       for (const at of [aPx, bPx]) {
-        // the arch is 1.5 tiles tall; its base sits on the cell's floor line
-        this.add.image(at.x, at.y + TILE / 2 - 36, tex(`door-${d.id}`)).setDepth(1);
-        const hint = this.add.text(at.x, at.y - TILE * 0.9, "↑", { fontFamily: "system-ui, sans-serif", fontSize: "16px", fontStyle: "bold", color: "#cfc7ff" }).setOrigin(0.5).setDepth(6).setAlpha(0.85);
+        // the arch is FORE-FOREGROUND (Keen's z-sandwich, id_rf.c:781): drawn
+        // OVER the player, so walking in reads as stepping INTO the doorway
+        this.add.image(at.x, at.y + TILE / 2 - 36, tex(`door-${d.id}`)).setDepth(6);
+        const hint = this.add.text(at.x, at.y - TILE * 0.9, "↑", { fontFamily: "system-ui, sans-serif", fontSize: "16px", fontStyle: "bold", color: "#cfc7ff" }).setOrigin(0.5).setDepth(7).setAlpha(0.85);
         if (motion) this.tweens.add({ targets: hint, y: hint.y - 5, duration: 900, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
       }
       this.doorPairs.push({ id: d.id, aPx, bPx });
@@ -500,13 +343,15 @@ export class ArcadeScene extends Phaser.Scene {
     // ── v2.2: movers (patrolling platforms; one-way — ride on top) ──
     const moverGroup = this.physics.add.group({ allowGravity: false, immovable: true });
     for (const m of level.header.movers ?? []) {
-      addCanvas(tex(`mover-${m.w}`), paintMover(m.w));
+      addCanvas(tex(`mover-${m.w}`), rasterize(paintMoverBook(m.w, ptheme), 1));
       const ax = m.c1 * TILE + (m.w * TILE) / 2;
       const ay = m.r1 * TILE + 10;
       const bx = m.c2 * TILE + (m.w * TILE) / 2;
       const by = m.r2 * TILE + 10;
       const s = moverGroup.create(ax, ay, tex(`mover-${m.w}`)) as Phaser.Types.Physics.Arcade.ImageWithDynamicBody;
       s.setDepth(2);
+      s.body.setSize(m.w * TILE, 12); // ride the book's COVER; pages hang below
+      s.body.setOffset(0, 2);
       s.body.checkCollision.down = false;
       s.body.checkCollision.left = false;
       s.body.checkCollision.right = false;
@@ -547,16 +392,15 @@ export class ArcadeScene extends Phaser.Scene {
     });
     // (the pickup overlap registers AFTER the player exists — see below)
 
-    // checkpoints — small banner poles
+    // checkpoints — banner poles (grey until reached, the chapter color after)
     const cpGroup = this.physics.add.staticGroup();
     for (const cp of level.checkpoints) {
       const x = cp.c * TILE + TILE / 2;
       const y = cp.r * TILE + TILE / 2;
-      const pole = this.add.rectangle(x - 6, y + 6, 4, 36, 0x6b6880);
-      const flag = this.add.triangle(x + 4, y - 8, 0, 0, 22, 7, 0, 14, 0x5c5a6e).setOrigin(0.5);
+      const img = this.add.image(x, y, tex("checkpoint")).setDepth(1);
       const zone = cpGroup.create(x, y, undefined as unknown as string) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       zone.setVisible(false).setDisplaySize(TILE, TILE * 1.5).refreshBody();
-      zone.setData("bits", { pole, flag });
+      zone.setData("img", img);
     }
 
     // seals + pedestal (the gem-socket grammar)
@@ -575,8 +419,9 @@ export class ArcadeScene extends Phaser.Scene {
     const startPx = { x: level.start.c * TILE + TILE / 2, y: level.start.r * TILE + TILE / 2 };
     this.safePos = { ...startPx };
     this.checkpoint = { ...startPx };
-    this.player = this.physics.add.sprite(startPx.x, startPx.y, "p-right");
+    this.player = this.physics.add.sprite(startPx.x, startPx.y, "h-stand");
     this.player.setDisplaySize(TILE, TILE);
+    this.player.setDepth(4); // Keen's z-ladder: terrain 0 · props 1-2 · items 3 · player 4 · fore-foreground 6
     this.baseScale = this.player.scaleY;
     this.player.body.setSize(20, 40).setOffset(14, 6);
     this.player.body.setMaxVelocityY(ARCADE.maxFall);
@@ -619,9 +464,10 @@ export class ArcadeScene extends Phaser.Scene {
       this.hurt("bolt");
     });
     placementsFor(level.header, tier).forEach((e, i) => {
-      const s = this.physics.add.sprite(e.c * TILE + TILE / 2, e.r * TILE + TILE / 2 + 5, tex(e.kind));
-      s.setDisplaySize(44, 38);
-      s.body.setSize(30, 26).setOffset(7, 6);
+      const s = this.physics.add.sprite(e.c * TILE + TILE / 2, e.r * TILE + TILE / 2 + 5, tex(`${e.kind}-0`));
+      s.setDisplaySize(TILE, TILE);
+      s.setDepth(4);
+      s.body.setSize(30, 26).setOffset(9, 12);
       if (e.kind === "flyer" || e.kind === "cloud" || e.kind === "thief") s.body.setAllowGravity(false);
       else this.physics.add.collider(s, solids);
       const creature: Creature = { kind: e.kind, sprite: s, dir: i % 2 === 0 ? 1 : -1, homeY: s.y, nextHopAt: 800 + i * 400, stunned: false, escaped: false, idx: i, cloud: { kind: "sleep" }, stars: null };
@@ -663,6 +509,15 @@ export class ArcadeScene extends Phaser.Scene {
     this.frozen = !running;
   }
 
+  /** Swap the hero pose texture (48×48 frames share one display size). */
+  private setPose(pose: HeroPose): void {
+    const key = `h-${pose}`;
+    if (this.player.texture.key !== key && this.textures.exists(key)) {
+      this.player.setTexture(key);
+      this.player.setDisplaySize(TILE, TILE);
+    }
+  }
+
   /** Read-only snapshot for the `__domigoArcade` machine-playtest harness. */
   debugState(): Record<string, number | boolean | string> {
     return {
@@ -692,6 +547,7 @@ export class ArcadeScene extends Phaser.Scene {
       lookDir: this.lookDir,
       // v2.2: mover positions ("x,y|x,y") — playtest harnesses assert patrol
       movers: this.moverPlatforms.map((m) => `${Math.round(m.s.x)},${Math.round(m.s.y)}`).join("|"),
+      onSlope: this.onSlope !== null,
     };
   }
 
@@ -714,12 +570,12 @@ export class ArcadeScene extends Phaser.Scene {
     if (zone.getData("done") === true) return;
     zone.setData("done", true);
     this.checkpoint = { x: zone.x, y: zone.y };
-    const bits = zone.getData("bits") as { pole: Phaser.GameObjects.Rectangle; flag: Phaser.GameObjects.Triangle };
-    bits.flag.setFillStyle(0x8b7cf5);
+    const img = zone.getData("img") as Phaser.GameObjects.Image;
+    img.setTexture("ka-checkpoint-lit");
     playSfx("chime-correct");
     if (this.cfg.reducedMotion !== true) {
       this.burst?.explode(10, zone.x, zone.y - 10);
-      this.tweens.add({ targets: bits.flag, angle: { from: -12, to: 0 }, duration: 400, ease: "Back.easeOut" });
+      this.tweens.add({ targets: img, angle: { from: -8, to: 0 }, duration: 400, ease: "Back.easeOut" });
     }
   }
 
@@ -862,7 +718,7 @@ export class ArcadeScene extends Phaser.Scene {
 
   private activatePedestal(): void {
     this.pedestalActive = true;
-    this.pedestal.setTexture(this.cfg.level.bossDoor ? "ka-bossdoor-on" : "ka-pedestal-on");
+    this.pedestal.setTexture(this.cfg.level.bossDoor ? "ka-bossdoor-on" : "ka-pedestal-lit");
     playSfx("whoosh");
     if (this.cfg.reducedMotion !== true) {
       this.burst?.explode(18, this.pedestal.x, this.pedestal.y);
@@ -996,6 +852,7 @@ export class ArcadeScene extends Phaser.Scene {
         this.pstate = { kind: "normal" };
         this.regrabLockUntil = now + ARCADE.regrabLockMs;
       }
+      this.setPose("hang");
       this.stepMovers(); // platforms keep patrolling while we hang
       return; // hanging: no other verbs
     }
@@ -1010,6 +867,7 @@ export class ArcadeScene extends Phaser.Scene {
         body.setAllowGravity(true);
         this.pstate = { kind: "normal" };
       }
+      this.setPose("climb2"); // the scramble-up read
       this.stepMovers();
       return;
     }
@@ -1042,6 +900,8 @@ export class ArcadeScene extends Phaser.Scene {
       this.spaceHeld = spaceDown;
       this.jumpHeld = jumpDown;
       this.jumpPressedAt = -9999;
+      // frame alternates by DISTANCE climbed (Keen's 8-tic ladder rhythm)
+      this.setPose(Math.floor(this.player.y / 26) % 2 === 0 ? "climb1" : "climb2");
       this.player.setAlpha(now < this.invulnUntil ? (Math.floor(now / 90) % 2 === 0 ? 0.45 : 1) : 1);
       this.stepMovers();
       this.updateCamera(true); // the pole IS an anchor — the camera rides along
@@ -1049,7 +909,16 @@ export class ArcadeScene extends Phaser.Scene {
       return;
     }
 
-    const grounded = body.blocked.down || body.touching.down; // touching = riding a mover
+    const grounded = body.blocked.down || body.touching.down || this.onSlope !== null; // mover ride + slope footing count
+
+    // Keen's input latch (ck_play.c:1326): a jump pressed MID-AIR and still
+    // held fires the instant you land — kids hold buttons; reward it.
+    if (spaceDown && !this.spaceHeld && !grounded) this.spaceAirPress = true;
+    if (!spaceDown) this.spaceAirPress = false;
+    if (grounded && this.spaceAirPress) {
+      this.jumpPressedAt = now;
+      this.spaceAirPress = false;
+    }
 
     // ── v2.2 door pairs: fresh UP in front of a door walks through it ──
     if (grounded && upDown && !this.jumpHeld && now >= this.doorCooldownUntil) {
@@ -1085,7 +954,9 @@ export class ArcadeScene extends Phaser.Scene {
 
     // ── ground: DIGITAL · air: ANALOG (the signature split, §2.1) ──
     if (grounded && !this.onPogo) {
-      const target = heldDir * ARCADE.runSpeed;
+      let target = heldDir * ARCADE.runSpeed;
+      // slope coupling (ck_keen.c:757): downhill pushes, uphill drags
+      if (heldDir !== 0 && this.onSlope) target += -this.onSlope.dir * ARCADE.slopePush;
       // Keen's ¼-strength first step out of standing
       const firstStep = target !== 0 && Math.abs(body.velocity.x) < 4 && this.wasMovingBeforeStand === false;
       body.setVelocityX(firstStep ? target * ARCADE.firstStepScale : target);
@@ -1121,6 +992,7 @@ export class ArcadeScene extends Phaser.Scene {
       // auto-rebounce every landing — hands-free, forever (Keen doctrine)
       if (grounded && this.fuel === null && body.velocity.y >= -1) {
         this.fuel = startJump("pogo");
+        this.lastPogoBounceAt = now;
         playSfx("tick");
         if (this.cfg.reducedMotion !== true) {
           this.squashStretch(0.8, 1.15);
@@ -1172,6 +1044,28 @@ export class ArcadeScene extends Phaser.Scene {
       }
     }
 
+    // ── v2.3 SLOPES: single-point ground-follow (Keen's mid-column sample,
+    // ck_phys.c:268 — snap the feet to the diagonal, bounded by what this
+    // frame's motion could plausibly have crossed) ──
+    this.onSlope = null;
+    if (body.velocity.y >= -1 && !this.onPogo) {
+      const c = Math.floor(this.player.x / TILE);
+      const fx = (this.player.x - c * TILE) / TILE;
+      const feetY = this.player.y + 20;
+      const dt = 1 / 60;
+      for (const s of this.slopeCells) {
+        if (s.c !== c) continue;
+        const surf = slopeSurfaceY(s, fx);
+        const crossBound = Math.max(30, (Math.abs(body.velocity.x) + Math.max(body.velocity.y, 0)) * dt + 10);
+        if (feetY >= surf - 8 && feetY <= surf + crossBound) {
+          this.player.y = surf - 20;
+          body.setVelocityY(0);
+          this.onSlope = s;
+          break;
+        }
+      }
+    }
+
     // ── look up / down (held while standing still → camera peek, §2.6) ──
     // GM-A1: up doubles as jump, so look-up gates on the press being STALE —
     // held past the input buffer without a fresh jump press. (The previous
@@ -1218,13 +1112,18 @@ export class ArcadeScene extends Phaser.Scene {
     if (!grounded) this.landingVy = body.velocity.y;
     this.wasGrounded = grounded;
 
-    // frames + i-frame blink
+    // pose machine (Keen's action grammar: velocity picks the pose, the run
+    // cycles 4 frames at 86ms — ACTION.CK4 run actions, 6 tics/frame)
     const moving = Math.abs(body.velocity.x) > 30 && grounded;
-    const frame = this.onPogo ? "p-right-1" : !grounded ? "p-right-1" : moving ? (Math.floor(now / 130) % 2 === 0 ? "p-right-1" : "p-right-2") : "p-right";
-    if (this.player.texture.key !== frame && this.textures.exists(frame)) {
-      this.player.setTexture(frame);
-      this.player.setDisplaySize(TILE, TILE);
-    }
+    this.setPose(
+      this.onPogo
+        ? (now - this.lastPogoBounceAt < 200 ? "pogo2" : "pogo1")
+        : !grounded
+          ? (body.velocity.y < -40 ? "jump" : "fall")
+          : moving
+            ? (["run1", "run2", "run3", "run4"] as const)[Math.floor(now / 86) % 4]!
+            : "stand",
+    );
     this.player.setAlpha(now < this.invulnUntil ? (Math.floor(now / 90) % 2 === 0 ? 0.45 : 1) : 1);
 
     // ── creatures ──
@@ -1232,6 +1131,13 @@ export class ArcadeScene extends Phaser.Scene {
       if (e.stunned) { e.stars?.setPosition(e.sprite.x, e.sprite.y - 26); continue; }
       if (e.escaped) continue;
       const s = e.sprite;
+      // 2-frame life at ~320ms, phase-offset per creature (Keen's item shimmer
+      // doctrine — never a lockstep cast)
+      const animKey = `ka-${e.kind}-${Math.floor((now + e.idx * 137) / 320) % 2}`;
+      if (s.texture.key !== animKey) {
+        s.setTexture(animKey);
+        s.setDisplaySize(TILE, TILE);
+      }
       if (e.kind === "walker") {
         const c = Math.floor(s.x / TILE);
         const rr = Math.floor(s.y / TILE);
@@ -1342,7 +1248,9 @@ export class ArcadeScene extends Phaser.Scene {
         m.s.body.setVelocity((dx / dist) * m.speed, (dy / dist) * m.speed);
       }
       if (pb.touching.down && m.s.body.touching.up) {
-        pb.velocity.x += m.s.body.velocity.x;
+        // Keen's EXACT carry (ck_keen.c:627): inherit the platform's frame
+        // delta as position, not velocity — riders never drift or slide off
+        this.player.x += m.s.body.velocity.x / 60;
       }
     }
   }
@@ -1365,6 +1273,18 @@ export class ArcadeScene extends Phaser.Scene {
         Phaser.Math.Linear(cam.scrollX, targetX, ARCADE.camLerp),
         Phaser.Math.Linear(cam.scrollY, this.camY, ARCADE.camLerp),
       );
+    }
+    // Keen's MID-AIR safety clamp (ck_play.c:2176): even airborne, the feet
+    // never leave the view band — long falls chase the player, no blind drops
+    if (!anchored) {
+      const feetY = this.player.y + 20;
+      const lo = feetY - VIEW_H * ARCADE.camAirClampLo;
+      const hi = feetY - VIEW_H * ARCADE.camAirClampHi;
+      const clamped = Phaser.Math.Clamp(cam.scrollY, lo, hi);
+      if (clamped !== cam.scrollY) {
+        cam.setScroll(cam.scrollX, Phaser.Math.Clamp(clamped, 0, Math.max(maxY, 0)));
+        this.camY = cam.scrollY; // keep the grounded target in sync — no snap on landing
+      }
     }
   }
 
