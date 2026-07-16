@@ -63,7 +63,7 @@ the point: the template must prove the whole loop, or the waves replicate a brok
 
 | id | item | owner | gate | state |
 |---|---|---|---|---|
-| GM-W3a | Act 1 wave: ch02–05 (buildings/grounds · levels · guardians per bible §3 tables · beats staged) | Opus, from the frozen slice template | per-chapter: laws green + machine playtest + wave stats; **Koki act gate: plays one chapter per act** | PLANNED |
+| GM-W3a | Act 1 wave: ch02–05 (buildings/grounds · levels · guardians per bible §3 tables · beats staged). **Level authoring follows `docs/study/keen/level-design-cookbook.md`** (study round 2, 2026-07-16: sizes/shapes, seal-loop grammar, density, secret conventions, per-chapter archetypes, the wave checklist) — the cookbook is the level-design half of every W3 brief. Ch01 resizes to cookbook §1 in this wave (the slice's known deviation) | Opus, from the frozen slice template + the cookbook | per-chapter: cookbook checklist + laws green + machine playtest + wave stats; **Koki act gate: plays one chapter per act** | PLANNED |
 | GM-W3b | Act 2 wave: ch06–11 (incl. the Radierer + Rotstift + Flatterbuchstaben creature builds — doc 25 §3 grammar) | Opus | as W3a + new-creature law tests | PLANNED |
 | GM-W3c | Act 3 wave: ch12–14 + **ch15 the rescue duel (Fable-authored — the inversion is the campaign's soul)** | Opus + Fable (ch15) | as W3a; ch15 additionally: hearts-cannot-lose tamper test | PLANNED |
 | GM-W3d | **Year-1 RELEASE** (replaces the live G1 top-down; holiday rebuild — no migration machinery, Koki 2026-07-16): release.json act-staged or full, journeys deep-links re-targeted, old G1 surfaces removed | Fable assembles; **Koki: full playthrough + the physical-device pass** | standing release law | PLANNED |
