@@ -20,6 +20,8 @@ export interface MapGameProps {
   chaptersDone: string[];
   justDone?: string;
   startPos?: { c: number; r: number } | null;
+  /** doc 28 §5: generated map art (stem→URL); missing = procedural. */
+  art?: Record<string, string>;
   seed: number;
   playerSeed?: number;
   onEnter: (chapter: string) => void;
@@ -50,6 +52,7 @@ export function MapGame(props: MapGameProps) {
       legend: props.world.legend,
       buildings: props.world.buildings,
       notes: props.world.notes,
+      art: props.art,
       chaptersDone: props.chaptersDone,
       justDone: props.justDone,
       startPos: props.startPos ?? null,

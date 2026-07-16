@@ -29,6 +29,9 @@ const CARD_WORDS = ["MATHE", "ENGLISCH", "SPORT", "KUNST", "MUSIK", "PAUSE", "DE
 
 export interface BossConfig {
   script: BossScript;
+  /** doc 28 §5: generated-art URL map (boss_head_idle, boss_head_tell,
+   *  boss_card, hero_stand…); missing stems keep the procedural pieces. */
+  art?: Record<string, string>;
   tier: Tier;
   /** hearts carried in from the level (§2b: one pool) */
   hearts: number;
@@ -72,6 +75,13 @@ export class BossScene extends Phaser.Scene {
     return { width: VIEW_W, height: VIEW_H };
   }
 
+  preload(): void {
+    // image-first (doc 28 §5); failed loads keep the procedural pieces
+    for (const [stem, url] of Object.entries(this.cfg.art ?? {})) {
+      this.load.image(`img-${stem}`, url);
+    }
+  }
+
   create(): void {
     const motion = this.cfg.reducedMotion !== true;
     // backdrop: the level's ink dark, floor strip
@@ -91,7 +101,7 @@ export class BossScene extends Phaser.Scene {
     // the player
     const hero = paintHero(this.cfg.playerSeed ?? this.cfg.seed);
     if (!this.textures.exists("h-stand")) this.textures.addCanvas("h-stand", rasterize(hero.frames.stand, 1));
-    this.player = this.add.image(LANE_X[1]!, FLOOR_R * TILE_PX - 30, "h-stand").setDisplaySize(48, 48).setDepth(5);
+    this.player = this.add.image(LANE_X[1]!, FLOOR_R * TILE_PX - 30, this.textures.exists("img-hero_stand") ? "img-hero_stand" : "h-stand").setDisplaySize(48, 48).setDepth(5);
 
     // the guardian: head + knot segments (timetable cards)
     this.segments = [];
@@ -111,15 +121,27 @@ export class BossScene extends Phaser.Scene {
   }
 
   private makeCard(word: string, i: number): Phaser.GameObjects.Container {
-    const g = this.add.graphics();
-    g.fillStyle(0x2c2a44, 1).fillRoundedRect(-30, -20, 60, 40, 8);
-    g.lineStyle(2, 0x8b7cf5, 0.8).strokeRoundedRect(-30, -20, 60, 40, 8);
-    const label = this.add.text(0, 0, word, { fontFamily: "monospace", fontSize: "10px", color: "#e8e6f5", fontStyle: "bold" }).setOrigin(0.5);
-    const c = this.add.container(VIEW_W / 2 + i * 40, TILE_PX * 2, [g, label]).setDepth(4);
+    const parts: Phaser.GameObjects.GameObject[] = [];
+    if (this.textures.exists("img-boss_card")) {
+      parts.push(this.add.image(0, 0, "img-boss_card").setDisplaySize(64, 44));
+    } else {
+      const g = this.add.graphics();
+      g.fillStyle(0x2c2a44, 1).fillRoundedRect(-30, -20, 60, 40, 8);
+      g.lineStyle(2, 0x8b7cf5, 0.8).strokeRoundedRect(-30, -20, 60, 40, 8);
+      parts.push(g);
+    }
+    parts.push(this.add.text(0, 0, word, { fontFamily: "monospace", fontSize: "10px", color: "#e8e6f5", fontStyle: "bold" }).setOrigin(0.5));
+    const c = this.add.container(VIEW_W / 2 + i * 40, TILE_PX * 2, parts).setDepth(4);
     return c;
   }
 
   private makeHead(): Phaser.GameObjects.Container {
+    // generated guardian head when present (idle; the telegraph tint still
+    // signals the tell — the dedicated tell frame swaps in at PR-4 wiring)
+    if (this.textures.exists("img-boss_head_idle")) {
+      const img = this.add.image(0, 0, "img-boss_head_idle").setDisplaySize(84, 84);
+      return this.add.container(VIEW_W / 2, TILE_PX * 2, [img]).setDepth(5);
+    }
     const g = this.add.graphics();
     g.fillStyle(0x1b1930, 1).fillCircle(0, 0, 34);
     g.lineStyle(3, 0x8b7cf5, 0.9).strokeCircle(0, 0, 34);

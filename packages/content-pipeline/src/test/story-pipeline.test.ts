@@ -298,7 +298,7 @@ test("VS-18: zone count != chapter count fails", () => {
     { id: "g1.map.lp.z02", unit: 2, titleEn: "B", titleDe: null, width: 15, height: 11, tileSize: 16, render: { generator: "school-room", seed: 102 } },
   ]);
   const res = validateStoryBundle(bundle({ map: m }), mkCorpus());
-  assert.ok(res.errors.some((e) => e.includes("VS-18") && e.includes("2 zone(s) but 1 chapter(s)")), res.errors.join(" | "));
+  assert.ok(res.errors.some((e) => e.includes("VS-18") && e.includes("2 zone(s) but 1 mappable chapter(s)")), res.errors.join(" | "));
 });
 
 test("VS-18: an unregistered render.generator fails; render:null is info-only (art deferred)", () => {

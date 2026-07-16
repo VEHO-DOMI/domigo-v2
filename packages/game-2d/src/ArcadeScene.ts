@@ -69,6 +69,10 @@ export interface ArcadeConfig {
   seed: number;
   playerSeed?: number;
   reducedMotion?: boolean;
+  /** doc 28 §5: generated-art URL map (stem → /art/g1/keen/...). Only-present
+   *  law: any missing stem keeps its procedural fallback. Chapter stems
+   *  (bg_far, bg_mid, walker-0…) + hero_<pose> + acc_<id>. */
+  art?: Record<string, string>;
   /** v2.2: boot with the world held — the goal card is showing. */
   startFrozen?: boolean;
   pad?: ArcadePad;
@@ -227,6 +231,7 @@ export class ArcadeScene extends Phaser.Scene {
   private spaceAirPress = false; // Keen's latch: held press fires on landing
   private lastPogoBounceAt = -9999;
   private sealedHintUntil = 0;
+  private accessory: Phaser.GameObjects.Image | null = null;
 
   constructor(cfg: ArcadeConfig) {
     super("arcade");
@@ -235,6 +240,20 @@ export class ArcadeScene extends Phaser.Scene {
 
   static dimensions(): { width: number; height: number } {
     return { width: VIEW_W, height: VIEW_H };
+  }
+
+  /** Image-first (doc 28 §5): load every provided stem; a failed load simply
+   *  leaves the procedural fallback in place (the OverworldScene doctrine). */
+  preload(): void {
+    for (const [stem, url] of Object.entries(this.cfg.art ?? {})) {
+      this.load.image(`img-${stem}`, url);
+    }
+  }
+
+  /** Image-over-procedural texture pick. */
+  private itex(stem: string, fallback: string): string {
+    const key = `img-${stem}`;
+    return this.textures.exists(key) ? key : fallback;
   }
 
   create(): void {
@@ -272,11 +291,24 @@ export class ArcadeScene extends Phaser.Scene {
       bgg.beginPath(); bgg.arc(x, y, r, 0, Math.PI * 2); bgg.fill();
     }
     addCanvas("ka-bg", bg);
-    this.add.tileSprite(0, 0, level.w * TILE, level.h * TILE, "ka-bg").setOrigin(0).setScrollFactor(0.35, 0.7);
-    addCanvas("ka-skyline", rasterize(paintSkyline(this.cfg.seed, ptheme), 1));
-    // the silhouette band ends where the level's base ground begins
+    // generated backdrop when present (bg_far full-bleed, bg_mid silhouette
+    // strip); the procedural gradient+skyline otherwise
+    if (this.textures.exists("img-bg_far")) {
+      const src = this.textures.get("img-bg_far").getSourceImage() as HTMLImageElement;
+      const scale = (level.h * TILE) / src.height;
+      this.add.tileSprite(0, 0, (level.w * TILE) / scale, src.height, "img-bg_far").setOrigin(0).setScrollFactor(0.35, 0.7).setScale(scale);
+    } else {
+      this.add.tileSprite(0, 0, level.w * TILE, level.h * TILE, "ka-bg").setOrigin(0).setScrollFactor(0.35, 0.7);
+    }
     const horizonY = level.h * TILE - TILE * 5 - 120;
-    this.add.tileSprite(0, horizonY, level.w * TILE * 2, 120, "ka-skyline").setOrigin(0).setScrollFactor(0.5, 0.85).setAlpha(0.9);
+    if (this.textures.exists("img-bg_mid")) {
+      const src = this.textures.get("img-bg_mid").getSourceImage() as HTMLImageElement;
+      this.add.tileSprite(0, level.h * TILE - TILE * 5 - src.height, level.w * TILE * 2, src.height, "img-bg_mid").setOrigin(0).setScrollFactor(0.5, 0.85);
+    } else {
+      addCanvas("ka-skyline", rasterize(paintSkyline(this.cfg.seed, ptheme), 1));
+      // the silhouette band ends where the level's base ground begins
+      this.add.tileSprite(0, horizonY, level.w * TILE * 2, 120, "ka-skyline").setOrigin(0).setScrollFactor(0.5, 0.85).setAlpha(0.9);
+    }
 
     // ── the world (auto-tiled terrain: variants by edge exposure) ──
     const solidHere = new Set(level.solids.map((s) => `${s.c},${s.r}`));
@@ -423,6 +455,11 @@ export class ArcadeScene extends Phaser.Scene {
     this.player = this.physics.add.sprite(startPx.x, startPx.y, "h-stand");
     this.player.setDisplaySize(TILE, TILE);
     this.player.setDepth(4); // Keen's z-ladder: terrain 0 · props 1-2 · items 3 · player 4 · fore-foreground 6
+    // doc 28 §4: the first provided accessory overlay (unlockables wave adds selection)
+    const accStem = Object.keys(this.cfg.art ?? {}).find((s) => s.startsWith("acc_"));
+    if (accStem !== undefined && this.textures.exists(`img-${accStem}`)) {
+      this.accessory = this.add.image(startPx.x, startPx.y, `img-${accStem}`).setDepth(5).setDisplaySize(TILE, TILE);
+    }
     this.baseScale = this.player.scaleY;
     this.player.body.setSize(20, 40).setOffset(14, 6);
     this.player.body.setMaxVelocityY(ARCADE.maxFall);
@@ -465,7 +502,7 @@ export class ArcadeScene extends Phaser.Scene {
       this.hurt("bolt");
     });
     placementsFor(level.header, tier).forEach((e, i) => {
-      const s = this.physics.add.sprite(e.c * TILE + TILE / 2, e.r * TILE + TILE / 2 + 5, tex(`${e.kind}-0`));
+      const s = this.physics.add.sprite(e.c * TILE + TILE / 2, e.r * TILE + TILE / 2 + 5, this.itex(`${e.kind}-0`, tex(`${e.kind}-0`)));
       s.setDisplaySize(TILE, TILE);
       s.setDepth(4);
       s.body.setSize(30, 26).setOffset(9, 12);
@@ -525,12 +562,19 @@ export class ArcadeScene extends Phaser.Scene {
     if (!this.pedestalActive) this.activatePedestal();
   }
 
-  /** Swap the hero pose texture (48×48 frames share one display size). */
+  /** Swap the hero pose texture (48×48 frames share one display size).
+   *  Generated hero (doc 28 §4: `hero_<pose>` stems) wins over procedural. */
   private setPose(pose: HeroPose): void {
-    const key = `h-${pose}`;
+    const key = this.itex(`hero_${pose}`, `h-${pose}`);
     if (this.player.texture.key !== key && this.textures.exists(key)) {
       this.player.setTexture(key);
       this.player.setDisplaySize(TILE, TILE);
+    }
+    // doc 28 §4: the unlockable accessory rides every pose (overlay sprite)
+    if (this.accessory) {
+      this.accessory.setPosition(this.player.x, this.player.y);
+      this.accessory.setFlipX(this.player.flipX);
+      this.accessory.setAlpha(this.player.alpha);
     }
   }
 
@@ -1165,8 +1209,9 @@ export class ArcadeScene extends Phaser.Scene {
       if (e.escaped) continue;
       const s = e.sprite;
       // 2-frame life at ~320ms, phase-offset per creature (Keen's item shimmer
-      // doctrine — never a lockstep cast)
-      const animKey = `ka-${e.kind}-${Math.floor((now + e.idx * 137) / 320) % 2}`;
+      // doctrine — never a lockstep cast); generated frames win when present
+      const frame = `${e.kind}-${Math.floor((now + e.idx * 137) / 320) % 2}`;
+      const animKey = this.itex(frame, `ka-${frame}`);
       if (s.texture.key !== animKey) {
         s.setTexture(animKey);
         s.setDisplaySize(TILE, TILE);

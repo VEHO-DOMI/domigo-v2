@@ -38,6 +38,9 @@ export interface ArcadeGameProps {
   /** where the done overlay links (defaults to hubHref) — the world map
    *  passes ?done=chNN to trigger the restoration beat. */
   doneHref?: string;
+  /** doc 28 §5: generated-art stem→URL map (chapter + hero + accessories);
+   *  every missing stem keeps its procedural fallback. */
+  art?: Record<string, string>;
   /** fires ONCE when the run ends — the client banks Glühwörter → Funken. */
   onDone?: (stats: { gluehwoerter: number; letters: number; seals: number; deaths: number; bossWon: boolean }) => void;
 }
@@ -130,6 +133,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
     bossAtRef.current = 0;
     const boss = new BossScene({
       script,
+      art: props.art,
       tier,
       hearts: carry.hearts,
       seed: props.seed,
@@ -176,6 +180,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
       seed: props.seed,
       playerSeed: props.playerSeed,
       reducedMotion: reduced,
+      art: props.art,
       startFrozen: true, // the goal card releases the world
       pad: padRef.current,
       onQuickfire: (contactIdx) => {
@@ -424,6 +429,10 @@ export function ArcadeGame(props: ArcadeGameProps) {
             <div style={{ width: "min(460px, 96%)", background: "var(--card, #1b1930)", color: "var(--text, #f3f1ff)", borderRadius: 20, padding: "20px 22px", border: "2px solid #8b7cf5", textAlign: "center" }}>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#8b7cf5" }}>Dein Auftrag</div>
               <div style={{ fontSize: 24, fontWeight: 800, fontFamily: "var(--font-display)", margin: "4px 0 8px" }}>{level.header.name}</div>
+              {level.header.whyDe !== undefined && (
+                // the CLT Warum-Zeile (doc 28 §1.2): WHY this matters, before the what
+                <p style={{ fontSize: 15, lineHeight: 1.45, margin: "0 0 8px", color: "var(--muted, #c9c4e4)", fontStyle: "italic" }}>{level.header.whyDe}</p>
+              )}
               <p style={{ fontSize: 16, lineHeight: 1.45, margin: "0 0 12px" }}>
                 {level.header.goalDe ?? `Befreie die ${seals[1]} Siegel von ihren Wächtern – dann öffnet sich die Tür des Kapitelwächters!`}
               </p>

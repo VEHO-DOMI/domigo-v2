@@ -15,6 +15,7 @@ import { parseArcadeLevel, type ArcadeLevel } from "@domigo/game-2d/arcade";
 import type { BossScript } from "@domigo/game-2d/boss";
 import { getActingUserForPage } from "@/lib/identity";
 import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
+import { resolveKeenArt } from "@/lib/keen-art";
 import ArcadeClient from "./ArcadeClient";
 
 /** Stable per-student sprite seed (the zone page's fnv1a32, same constants). */
@@ -44,6 +45,7 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
   const keenMatch = /^g1-(ch\d{2})$/.exec(levelId ?? "");
   let keenLevel: ArcadeLevel | undefined;
   let keenBoss: BossScript | undefined;
+  let keenArt: Record<string, string> | undefined;
   let chapterNo = 1;
   if (keenMatch && grade === 1) {
     const ch = keenMatch[1]!;
@@ -51,6 +53,8 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
     const lvl = await loadKeenLevel("g1.st.lost-pages", ch);
     keenLevel = parseArcadeLevel(lvl.header as ArcadeLevel["header"], lvl.rows);
     keenBoss = (await loadKeenBoss("g1.st.lost-pages", ch)) as BossScript;
+    const ka = resolveKeenArt(1);
+    keenArt = { ...(ka.chapters[ch] ?? {}), ...ka.hero };
   }
 
   const slug = `g${grade}-u${String(chapterNo).padStart(2, "0")}`;
@@ -77,6 +81,7 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
       levelId={keenLevel ? undefined : levelId}
       level={keenLevel}
       boss={keenBoss}
+      art={keenArt}
       doneHref={keenLevel ? `/play/${grade}/world?done=${keenMatch![1]}` : undefined}
       tier={tier === "E" || tier === "M" || tier === "S" ? tier : undefined}
     />

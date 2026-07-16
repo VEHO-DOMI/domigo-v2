@@ -87,8 +87,14 @@ function TaskCardInline({ item, mode, onAttempt, onDone, continueLabel }: { item
   );
 }
 
-export function DialogueOverlay({ grade, mode: attemptMode, copy, chapter, castNames, storyItems, onAttempt, onClose }: {
+export function DialogueOverlay({ grade, mode: attemptMode, copy, chapter, castNames, storyItems, onAttempt, onClose, castArt, beatArt, cinematic }: {
   grade: number; mode: string; copy: WorldCopy; chapter: Chapter; castNames: Record<string, string>; storyItems: Record<string, ResolvedItem>; onAttempt: AttemptFn; onClose: () => void;
+  /** doc 28 §6.4: speaker id → portrait URL (only-present stems; missing = name-only). */
+  castArt?: Record<string, string>;
+  /** scene.image stem → illustration URL. Missing = text-only beat. */
+  beatArt?: Record<string, string>;
+  /** Prologue mode: full-bleed illustrations, darker veil (doc 28 §3). */
+  cinematic?: boolean;
 }) {
   // L-1: the story language follows the device toggle (grade 1 defaults German-
   // first — meaning first, English on demand). Chrome strings come from the
@@ -110,11 +116,27 @@ export function DialogueOverlay({ grade, mode: attemptMode, copy, chapter, castN
 
   const go = (nextId: string | null) => { setTaskDone(false); if (nextId === null) onClose(); else setSceneId(nextId); };
 
+  const illustration = scene.image !== undefined ? beatArt?.[scene.image] : undefined;
+  const portrait = castArt?.[scene.speaker];
+
   return (
-    <div style={card}>
-      <div style={panel}>
+    <div style={cinematic ? { ...card, background: "rgba(10,9,18,0.92)" } : card}>
+      <div style={cinematic ? { ...panel, maxWidth: 720 } : panel}>
+        {illustration !== undefined && (
+          // the illustration slot (doc 28 §6.4): full-bleed in cinematic mode
+          <img
+            src={illustration}
+            alt=""
+            style={{ width: cinematic ? "calc(100% + 44px)" : "100%", margin: cinematic ? "-20px -22px 12px" : "0 0 10px", borderRadius: cinematic ? "20px 20px 0 0" : 12, display: "block", imageRendering: "pixelated" }}
+          />
+        )}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-          <div style={{ fontSize: 14, fontWeight: 700, color: "var(--accent)", fontFamily: "var(--font-display)" }}>{castNames[scene.speaker] ?? scene.speaker}</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            {portrait !== undefined && (
+              <img src={portrait} alt="" style={{ width: 40, height: 40, borderRadius: 12, imageRendering: "pixelated", border: "1px solid var(--card-border)" }} />
+            )}
+            <div style={{ fontSize: 14, fontWeight: 700, color: "var(--accent)", fontFamily: "var(--font-display)" }}>{castNames[scene.speaker] ?? scene.speaker}</div>
+          </div>
           <LangToggle grade={grade} />
         </div>
         <p style={{ fontSize: 18, margin: "6px 0 4px", color: "var(--text)" }}>{primaryLine(mode, scene.textEn, scene.scaffoldDe)}</p>

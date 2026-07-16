@@ -288,6 +288,9 @@ export interface ArcadeHeader {
   /** v2.2: the level's GOAL line, shown on the start card + objective chip
    *  (Koki: "the goal should be laid out — take the student by the hand"). */
   goalDe?: string;
+  /** doc 28 §1.2: the CLT Warum-Zeile — why this level matters, in-story;
+   *  shown on the goal card above the mission text. */
+  whyDe?: string;
 }
 
 /** A patrolling platform (both anchors in cells; w in tiles). */

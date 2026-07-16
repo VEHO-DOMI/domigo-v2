@@ -80,8 +80,15 @@ export default function WorldClient(props: {
   /** per-chapter beat anchors from world.json (door/restore scene keys). */
   beats: Record<string, { door: string; restore: string }>;
   chapter: Chapter;
+  /** doc 28 §3: the ch00 cold-open — plays ONCE (save.beats.ch00) before the map. */
+  prologue?: Chapter | null;
   castNames: Record<string, string>;
   storyItems: Record<string, ResolvedItem>;
+  /** doc 28 §6.4: speaker→portrait + illustration-stem→URL (only-present law). */
+  castArt?: Record<string, string>;
+  beatArt?: Record<string, string>;
+  /** doc 28 §5: the world map's generated art (page_underlay, buildings…). */
+  mapArt?: Record<string, string>;
   serverSave: SavePayload | null;
   /** ?done=chNN — the level's doneHref triggers the restoration flow. */
   done?: string;
@@ -158,6 +165,16 @@ export default function WorldClient(props: {
     return () => window.clearTimeout(t);
   }, [restoring]);
 
+  // ── the PROLOGUE (doc 28 §3): the cold-open plays ONCE, before everything ──
+  const [prologueOpen, setPrologueOpen] = useState(
+    () => props.prologue != null && at.beats["ch00"]?.door !== true,
+  );
+  const closePrologue = () => {
+    saveRef.current.beats["ch00"] = { ...(saveRef.current.beats["ch00"] ?? {}), door: true };
+    persist();
+    setPrologueOpen(false);
+  };
+
   // ── the door beat: plays over the map on first arrival ──
   const [doorOpen, setDoorOpen] = useState(() => at.beats[ch]?.door !== true);
 
@@ -175,7 +192,7 @@ export default function WorldClient(props: {
   const mapChaptersDone = restoring ? [...new Set([...chaptersDone, ch])] : chaptersDone;
 
   const [note, setNote] = useState<string | null>(null);
-  const dialogueOpen = (doorOpen && !restoring && doorChapter !== null) || (showRestore && restoreChapter !== null);
+  const dialogueOpen = prologueOpen || (doorOpen && !restoring && doorChapter !== null) || (showRestore && restoreChapter !== null);
   // MapScene captures callbacks at mount — route them through a ref so an open
   // overlay reliably blocks door entry even from the stale closure. Synced in
   // an effect (never assigned during render — React's no-ref-in-render rule).
@@ -237,6 +254,7 @@ export default function WorldClient(props: {
           chaptersDone={mapChaptersDone}
           justDone={restoring ? ch : undefined}
           startPos={at.pos ?? null}
+          art={props.mapArt}
           seed={props.seed}
           playerSeed={props.playerSeed}
           onEnter={onEnter}
@@ -264,6 +282,8 @@ export default function WorldClient(props: {
             chapter={doorChapter}
             castNames={props.castNames}
             storyItems={props.storyItems}
+            castArt={props.castArt}
+            beatArt={props.beatArt}
             onAttempt={onAttempt}
             onClose={closeDoor}
           />
@@ -278,8 +298,27 @@ export default function WorldClient(props: {
             chapter={restoreChapter}
             castNames={props.castNames}
             storyItems={props.storyItems}
+            castArt={props.castArt}
+            beatArt={props.beatArt}
             onAttempt={onAttempt}
             onClose={closeRestore}
+          />
+        )}
+
+        {/* THE PROLOGUE (doc 28 §3) — the cold-open, cinematic, once ever */}
+        {prologueOpen && props.prologue != null && (
+          <DialogueOverlay
+            grade={1}
+            mode={props.mode}
+            copy={props.copy}
+            chapter={props.prologue}
+            castNames={props.castNames}
+            storyItems={props.storyItems}
+            castArt={props.castArt}
+            beatArt={props.beatArt}
+            cinematic
+            onAttempt={onAttempt}
+            onClose={closePrologue}
           />
         )}
       </div>

@@ -374,14 +374,18 @@ export function mapIntegrityErrors(
   const mapSlug = map.id.split(".map.")[1];
   if (storySlug !== mapSlug) errors.push(`${story.id}: VS-18 — map id "${map.id}" does not match the story slug`);
 
+  // Prologue chapters (chNN < 01, i.e. ch00) are SURFACE-ONLY beats (doc 28
+  // §3): they never map to a zone/building — excluded from the 1:1 laws.
+  const mapChapters = story.chapters.filter((c) => !c.id.endsWith(".ch00"));
+
   // zone count == chapter count
-  if (map.zones.length !== story.chapters.length) {
-    errors.push(`${story.id}: VS-18 — ${map.zones.length} zone(s) but ${story.chapters.length} chapter(s) (must match 1:1)`);
+  if (map.zones.length !== mapChapters.length) {
+    errors.push(`${story.id}: VS-18 — ${map.zones.length} zone(s) but ${mapChapters.length} mappable chapter(s) (must match 1:1)`);
   }
 
   // unit bijection: every zone.unit names exactly one chapter.unit and vice versa
   const chapterUnits = new Map<number, number>();
-  for (const c of story.chapters) chapterUnits.set(c.unit, (chapterUnits.get(c.unit) ?? 0) + 1);
+  for (const c of mapChapters) chapterUnits.set(c.unit, (chapterUnits.get(c.unit) ?? 0) + 1);
   const zoneUnits = new Map<number, number>();
   for (const z of map.zones) zoneUnits.set(z.unit, (zoneUnits.get(z.unit) ?? 0) + 1);
   for (const [unit, n] of zoneUnits) {
