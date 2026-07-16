@@ -1,0 +1,18 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 2,
+ "rows": 1,
+ "cells": [
+  {
+   "stem": "cloud-0",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "cloud-1",
+   "col": 1,
+   "row": 0
+  }
+ ]
+}

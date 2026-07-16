@@ -291,20 +291,19 @@ export class ArcadeScene extends Phaser.Scene {
       bgg.beginPath(); bgg.arc(x, y, r, 0, Math.PI * 2); bgg.fill();
     }
     addCanvas("ka-bg", bg);
-    // generated backdrop when present (bg_far full-bleed, bg_mid silhouette
-    // strip); the procedural gradient+skyline otherwise
+    // the ink gradient ALWAYS paints the sky; generated layers sit on the
+    // horizon as BANDS (the art is horizon-strip art, never full-bleed)
+    this.add.tileSprite(0, 0, level.w * TILE, level.h * TILE, "ka-bg").setOrigin(0).setScrollFactor(0.35, 0.7);
+    const horizonY = level.h * TILE - TILE * 5 - 120;
+    const groundY = level.h * TILE - TILE * 5;
     if (this.textures.exists("img-bg_far")) {
       const src = this.textures.get("img-bg_far").getSourceImage() as HTMLImageElement;
-      const scale = (level.h * TILE) / src.height;
-      this.add.tileSprite(0, 0, (level.w * TILE) / scale, src.height, "img-bg_far").setOrigin(0).setScrollFactor(0.35, 0.7).setScale(scale);
-    } else {
-      this.add.tileSprite(0, 0, level.w * TILE, level.h * TILE, "ka-bg").setOrigin(0).setScrollFactor(0.35, 0.7);
+      this.add.tileSprite(0, groundY - src.height, level.w * TILE * 2, src.height, "img-bg_far").setOrigin(0).setScrollFactor(0.35, 0.7).setAlpha(0.95);
     }
-    const horizonY = level.h * TILE - TILE * 5 - 120;
     if (this.textures.exists("img-bg_mid")) {
       const src = this.textures.get("img-bg_mid").getSourceImage() as HTMLImageElement;
-      this.add.tileSprite(0, level.h * TILE - TILE * 5 - src.height, level.w * TILE * 2, src.height, "img-bg_mid").setOrigin(0).setScrollFactor(0.5, 0.85);
-    } else {
+      this.add.tileSprite(0, groundY - src.height, level.w * TILE * 2, src.height, "img-bg_mid").setOrigin(0).setScrollFactor(0.5, 0.85);
+    } else if (!this.textures.exists("img-bg_far")) {
       addCanvas("ka-skyline", rasterize(paintSkyline(this.cfg.seed, ptheme), 1));
       // the silhouette band ends where the level's base ground begins
       this.add.tileSprite(0, horizonY, level.w * TILE * 2, 120, "ka-skyline").setOrigin(0).setScrollFactor(0.5, 0.85).setAlpha(0.9);
@@ -569,6 +568,9 @@ export class ArcadeScene extends Phaser.Scene {
     if (this.player.texture.key !== key && this.textures.exists(key)) {
       this.player.setTexture(key);
       this.player.setDisplaySize(TILE, TILE);
+      // texture sizes differ (procedural 48px vs generated 256px) — baseScale
+      // must follow the CURRENT texture or squashStretch restores a giant
+      this.baseScale = this.player.scaleY;
     }
     // doc 28 §4: the unlockable accessory rides every pose (overlay sprite)
     if (this.accessory) {
@@ -608,6 +610,13 @@ export class ArcadeScene extends Phaser.Scene {
       // v2.2: mover positions ("x,y|x,y") — playtest harnesses assert patrol
       movers: this.moverPlatforms.map((m) => `${Math.round(m.s.x)},${Math.round(m.s.y)}`).join("|"),
       onSlope: this.onSlope !== null,
+      tex: this.player.texture.key,
+      dispW: Math.round(this.player.displayWidth),
+      accW: this.accessory ? Math.round(this.accessory.displayWidth) : -1,
+      heroObjs: this.children.list
+        .filter((o) => "texture" in o && /hero|h-/.test((o as Phaser.GameObjects.Image).texture?.key ?? ""))
+        .map((o) => `${(o as Phaser.GameObjects.Image).texture.key}:${Math.round((o as Phaser.GameObjects.Image).displayWidth)}@${Math.round((o as Phaser.GameObjects.Image).x)},${Math.round((o as Phaser.GameObjects.Image).y)}`)
+        .join(" | "),
     };
   }
 
