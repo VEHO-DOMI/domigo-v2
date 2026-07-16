@@ -226,6 +226,7 @@ export class ArcadeScene extends Phaser.Scene {
   private onSlope: { c: number; r: number; dir: 1 | -1 } | null = null;
   private spaceAirPress = false; // Keen's latch: held press fires on landing
   private lastPogoBounceAt = -9999;
+  private sealedHintUntil = 0;
 
   constructor(cfg: ArcadeConfig) {
     super("arcade");
@@ -509,6 +510,21 @@ export class ArcadeScene extends Phaser.Scene {
     this.frozen = !running;
   }
 
+  /** Dev-harness only: teleport to a cell — headless playtests can't air-steer
+   *  (P-37b), so route setup needs a warp. */
+  debugWarp(c: number, r: number): void {
+    this.player.setPosition(c * TILE + TILE / 2, r * TILE + TILE / 2);
+    this.player.body.setVelocity(0, 0);
+  }
+
+  /** Dev-harness only: force the seal gate open so the boss-door handoff is
+   *  drivable headless (earning both seals needs real quickfire play). */
+  debugUnseal(): void {
+    this.sealsCollected = this.cfg.level.header.seals.length;
+    this.cfg.onSeals(this.sealsCollected, this.sealsCollected);
+    if (!this.pedestalActive) this.activatePedestal();
+  }
+
   /** Swap the hero pose texture (48×48 frames share one display size). */
   private setPose(pose: HeroPose): void {
     const key = `h-${pose}`;
@@ -727,7 +743,24 @@ export class ArcadeScene extends Phaser.Scene {
   }
 
   private tryComplete(): void {
-    if (!this.pedestalActive || this.over) return;
+    if (!this.pedestalActive) {
+      // the sealed door TALKS (goal-clarity law): silence here read as a bug
+      if (!this.over && this.time.now >= this.sealedHintUntil) {
+        this.sealedHintUntil = this.time.now + 2500;
+        playSfx("thud");
+        const missing = this.cfg.level.header.seals.length - this.sealsCollected;
+        const t = this.add
+          .text(this.pedestal.x, this.pedestal.y - 60, `Noch versiegelt!\n⬧ ${missing} Siegel fehl${missing === 1 ? "t" : "en"}`, {
+            fontFamily: "system-ui, sans-serif", fontSize: "15px", fontStyle: "bold", color: "#ffe082", align: "center",
+            stroke: "#191624", strokeThickness: 4,
+          })
+          .setOrigin(0.5, 1)
+          .setDepth(30);
+        this.tweens.add({ targets: t, y: t.y - 14, alpha: { from: 1, to: 0 }, duration: this.cfg.reducedMotion === true ? 600 : 1900, ease: "Sine.easeIn", onComplete: () => t.destroy() });
+      }
+      return;
+    }
+    if (this.over) return;
     this.over = true;
     this.player.setVelocity(0, 0);
     playSfx("chime-correct");

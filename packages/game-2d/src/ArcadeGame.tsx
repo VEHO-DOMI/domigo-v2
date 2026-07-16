@@ -218,6 +218,9 @@ export function ArcadeGame(props: ArcadeGameProps) {
       (window as unknown as Record<string, unknown>)["__domigoArcade"] = {
         state: () => (bossActiveRef.current && bossRef.current ? bossRef.current.debugState() : scene.debugState()),
         press: (p: Partial<ArcadePad>) => Object.assign(padRef.current, p),
+        // playtest-only: open the seal gate so the boss handoff is drivable
+        unseal: () => scene.debugUnseal(),
+        warp: (c: number, r: number) => scene.debugWarp(c, r),
         // playtest-only: step the active scene when the tab is hidden and
         // Phaser has slept the loop (P-37b) — no OS focus needed.
         step: (ms: number) => {
