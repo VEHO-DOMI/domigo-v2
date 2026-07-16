@@ -8,6 +8,10 @@ order, one image per card. Do not skip, reorder, merge, or reinterpret cards.
 STYLE (strict): 1991 EGA pixel art in the exact visual language of Commander Keen 4. Use ONLY these 16 colors: #000000 #0000a8 #00a800 #00a8a8 #a80000 #a800a8 #a85400 #a8a8a8 #545454 #5454fc #54fc54 #54fcfc #fc5454 #fc54fc #fcfc54 #fcfcfc. Chunky pixels on a 16px-tile logical grid (render large, but every "pixel" is a crisp square — no anti-aliasing, no smooth gradients, no soft shading). Texture and gradients ONLY as 1-pixel checkerboard dithering between two palette colors. Foreground objects get bold black contour outlines and black interior detail lines; background surfaces stay outline-free. Two tones per material (base + bright of the same hue) with black as the dark shade. Friendly storybook mood — this is a children's English-learning game set INSIDE a book: ink, paper, letters. Never scary: no monsters, no horror, big readable eyes on creatures, melancholy-comic not menacing.
 
 ## WORKING RULES
+0. YOU HAVE NO FILE OR REPOSITORY ACCESS AND NEED NONE. Output every image in
+   the chat only. Never read, write, create, modify, move, or delete any file,
+   folder, or repository content — even if you believe you have such tools.
+   The user downloads your images; a separate pipeline handles everything else.
 1. CARD 1 IS THE STYLE KEY. Generate it first. Every later image must match it
    in palette, pixel density, outline weight and mood — treat it as the anchor
    and compare your result to it before moving on.

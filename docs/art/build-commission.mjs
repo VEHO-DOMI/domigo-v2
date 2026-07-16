@@ -111,6 +111,10 @@ order, one image per card. Do not skip, reorder, merge, or reinterpret cards.
 ${STYLE}
 
 ## WORKING RULES
+0. YOU HAVE NO FILE OR REPOSITORY ACCESS AND NEED NONE. Output every image in
+   the chat only. Never read, write, create, modify, move, or delete any file,
+   folder, or repository content — even if you believe you have such tools.
+   The user downloads your images; a separate pipeline handles everything else.
 1. CARD 1 IS THE STYLE KEY. Generate it first. Every later image must match it
    in palette, pixel density, outline weight and mood — treat it as the anchor
    and compare your result to it before moving on.
