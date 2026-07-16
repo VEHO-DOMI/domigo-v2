@@ -60,6 +60,16 @@ export const ARCADE = {
   regrabLockMs: 280, // after releasing a ledge (Keen's 19-tic pole lockout)
   pullUpMs: 260, // the scripted 4-step pull-up, condensed
 
+  // poles (v2.2, Keen's climb/slide split: up is deliberate, down is a ride).
+  // Exit impulses must clear a full tile (48px): rise = v²/2g ≈ 66px at -430.
+  // Authoring law: a ledge served by a pole sits ≤1 row above the pole's top.
+  poleClimbVy: 150,
+  poleSlideVy: 300,
+  poleExitVy: -380, // the jump-off hop (≈1.1 tiles)
+  poleTopVy: -520, // top-out pop (≈2 tiles — MUST clear a hatch one row above
+  // the pole's top cell: exit fires ~half a tile into the empty row, so the
+  // rise has to cover that half tile plus the player's own half height)
+
   knockbackX: 240,
   knockbackY: -420,
   iframesMs: 1200,
@@ -257,6 +267,23 @@ export interface ArcadeHeader {
   theme?: string;
   /** v2.1: the story chapter this level belongs to ("ch01"). */
   chapter?: string;
+  /** v2.2 (the calibration round, corpus-studied): patrolling platforms —
+   *  Keen's thruster platforms. Kinematic, player-carrying, ping-pong between
+   *  the two cell anchors over `periodMs`. */
+  movers?: Mover[];
+  /** v2.2: the level's GOAL line, shown on the start card + objective chip
+   *  (Koki: "the goal should be laid out — take the student by the hand"). */
+  goalDe?: string;
+}
+
+/** A patrolling platform (both anchors in cells; w in tiles). */
+export interface Mover {
+  c1: number;
+  r1: number;
+  c2: number;
+  r2: number;
+  w: number;
+  periodMs: number;
 }
 
 export interface ArcadeLevel {
@@ -278,6 +305,12 @@ export interface ArcadeLevel {
   bossDoor: { c: number; r: number } | null;
   /** v2.1: Glühwörter — the collectible that becomes Hinweis-Funken (§5.2). */
   gluehwoerter: Array<{ c: number; r: number }>;
+  /** v2.2: climbable poles ('|') — Keen's vertical connective tissue
+   *  (climb up/down, slide fast, jump off; threads floor holes). */
+  poles: Array<{ c: number; r: number }>;
+  /** v2.2: in-level door PAIRS ('1'–'4', two cells each) — Keen's interiors:
+   *  disconnected sub-rooms on one canvas, linked by walk-in doors. */
+  doors: Array<{ id: string; a: { c: number; r: number }; b: { c: number; r: number } }>;
 }
 
 const TIER_RANK: Record<Tier, number> = { E: 0, M: 1, S: 2 };
@@ -299,7 +332,8 @@ export function parseArcadeLevel(header: ArcadeHeader, rows: string[]): ArcadeLe
   const h = rows.length;
   const w = rows[0]?.length ?? 0;
   if (rows.some((r) => r.length !== w)) throw new Error(`${header.id}: rows must be rectangular`);
-  const level: ArcadeLevel = { header, w, h, rows, solids: [], oneWays: [], hazards: [], letters: [], checkpoints: [], start: { c: 1, r: 1 }, pedestal: { c: w - 2, r: 1 }, bossDoor: null, gluehwoerter: [] };
+  const level: ArcadeLevel = { header, w, h, rows, solids: [], oneWays: [], hazards: [], letters: [], checkpoints: [], start: { c: 1, r: 1 }, pedestal: { c: w - 2, r: 1 }, bossDoor: null, gluehwoerter: [], poles: [], doors: [] };
+  const doorCells = new Map<string, Array<{ c: number; r: number }>>();
   let sawStart = 0;
   let sawPedestal = 0;
   let sawBoss = 0;
@@ -315,11 +349,27 @@ export function parseArcadeLevel(header: ArcadeHeader, rows: string[]): ArcadeLe
       else if (ch === "S") { level.start = { c, r }; sawStart += 1; }
       else if (ch === "A") { level.pedestal = { c, r }; sawPedestal += 1; }
       else if (ch === "B") { level.bossDoor = { c, r }; sawBoss += 1; }
+      else if (ch === "|") level.poles.push({ c, r });
+      else if (ch >= "1" && ch <= "4") {
+        const arr = doorCells.get(ch) ?? [];
+        arr.push({ c, r });
+        doorCells.set(ch, arr);
+      }
       else if (ch !== ".") throw new Error(`${header.id}: unknown glyph "${ch}" at ${c},${r}`);
     }
   }
   if (sawStart !== 1) throw new Error(`${header.id}: needs exactly one S (got ${sawStart})`);
   if (sawPedestal + sawBoss !== 1) throw new Error(`${header.id}: needs exactly one exit — one A or one B (got A=${sawPedestal}, B=${sawBoss})`);
+  for (const [id, cells] of doorCells) {
+    if (cells.length !== 2) throw new Error(`${header.id}: door '${id}' needs exactly two cells (got ${cells.length})`);
+    level.doors.push({ id, a: cells[0]!, b: cells[1]! });
+  }
+  for (const m of header.movers ?? []) {
+    for (const [c, r] of [[m.c1, m.r1], [m.c2, m.r2]] as const) {
+      if (c < 0 || c + m.w > w || r < 0 || r >= h) throw new Error(`${header.id}: mover anchor out of bounds at ${c},${r}`);
+    }
+    if (m.w < 1 || m.periodMs < 800) throw new Error(`${header.id}: mover needs w ≥ 1 and periodMs ≥ 800`);
+  }
   for (const p of header.placements) {
     if (p.c < 0 || p.c >= w || p.r < 0 || p.r >= h) throw new Error(`${header.id}: placement out of bounds at ${p.c},${p.r}`);
   }
@@ -373,6 +423,24 @@ export function checkLevelLaws(level: ArcadeLevel): LawReport {
   const patched: ArcadeLevel = { ...level, rows: rows.map((r) => r.join("")) };
 
   const stand = standables(patched);
+  // v2.2: poles are climbable cells; a mover's top at BOTH anchors is a
+  // standable platform; both extend the envelope (corpus-studied verbs)
+  const poleKeys = new Set(level.poles.map((p) => `${p.c},${p.r}`));
+  for (const k of poleKeys) stand.add(k);
+  const moverTops = new Map<string, string[]>(); // top-cell key → the OTHER anchor's top cells
+  for (const m of level.header.movers ?? []) {
+    const tops = (c0: number, r0: number) => Array.from({ length: m.w }, (_, i) => `${c0 + i},${r0 - 1}`);
+    const a = tops(m.c1, m.r1);
+    const b = tops(m.c2, m.r2);
+    for (const k of [...a, ...b]) stand.add(k);
+    for (const k of a) moverTops.set(k, b);
+    for (const k of b) moverTops.set(k, a);
+  }
+  const doorAt = new Map<string, { c: number; r: number }>();
+  for (const d of level.doors) {
+    doorAt.set(`${d.a.c},${d.a.r}`, d.b);
+    doorAt.set(`${d.b.c},${d.b.r}`, d.a);
+  }
   const startKey = `${level.start.c},${level.start.r}`;
   if (!stand.has(startKey)) errors.push(`start ${startKey} is not standable`);
 
@@ -385,6 +453,14 @@ export function checkLevelLaws(level: ArcadeLevel): LawReport {
   };
   while (queue.length > 0) {
     const [c, r] = queue.shift()!;
+    const key = `${c},${r}`;
+    // v2.2 edges: a pole reaches its whole column (+ step-offs happen via
+    // the normal moves from each pole cell); a door reaches its pair; a
+    // mover top reaches the other anchor's top (the ride)
+    if (poleKeys.has(key)) { tryVisit(c, r - 1); tryVisit(c, r + 1); }
+    const pair = doorAt.get(key);
+    if (pair) tryVisit(pair.c, pair.r);
+    for (const k of moverTops.get(key) ?? []) { const [mc, mr] = k.split(",").map(Number); tryVisit(mc!, mr!); }
     // walk
     tryVisit(c - 1, r);
     tryVisit(c + 1, r);

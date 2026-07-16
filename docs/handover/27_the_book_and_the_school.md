@@ -93,6 +93,7 @@ and a row exists here, THIS table wins; where no row exists, doc 25 wins.
 | difficulty | populations + timers + tier-E gravity easing (§6) | as doc 25 §6 — this bible's earlier "never stats" summary is corrected: populations first, plus task-timer and tier-E gravity easing exactly as specced |
 | ch15 / inversion windows | §5.4 stamina punishes wrong-window answers | inversion mode: hearts cannot be lost and the boss takes no damage number; a WRONG answer (or guess-mash) simply CLOSES the window and the pattern repeats — ch15 cannot be failed, only prolonged; guessing wastes windows (anti-guessing preserved by patience, not punishment) |
 | boss data shape | — | per chapter TWO files: `level.json` (`modality:"level"`) + `boss.json` (`modality:"boss"`, carries the guardian's script table) — §6.1 and §7 name the same thing |
+| level verbs + goal clarity (v2.2, Koki's slice verdict 2026-07-16) | run/jump/pogo/ledge/drop-through (§2.8) | ADDED as level vocabulary: poles (`\|` — climb/SLIDE/hop-off), in-level door pairs (`1`–`4` — sub-room wings), mover platforms (`header.movers`); and the GOAL LAW: every level opens with a goal card (`header.goalDe`, world held until dismissed), the HUD objective chip counts seals then flips to →Zur Tür, and an edge arrow points to the unsealed door whenever it's off-screen. Authoring rules live in the cookbook §7b |
 
 ## §3 · Year 1 — DIE VERLORENEN SEITEN, Keen-shaped
 

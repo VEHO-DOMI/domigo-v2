@@ -82,6 +82,9 @@ export function ArcadeGame(props: ArcadeGameProps) {
   const [seals, setSeals] = useState<[number, number]>([0, 0]);
   const [knots, setKnots] = useState<[number, number] | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
+  // v2.2: the goal card — every level opens by SAYING what to do (the
+  // "take the student by the hand" law); the world stands still behind it
+  const [goalOpen, setGoalOpen] = useState(true);
   const entry = LEVELS[props.levelId ?? DEFAULT_LEVEL_ID] ?? LEVELS[DEFAULT_LEVEL_ID]!;
   const level = props.level ?? entry.level;
   const tier: Tier = props.tier ?? entry.defaultTier;
@@ -162,6 +165,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
       seed: props.seed,
       playerSeed: props.playerSeed,
       reducedMotion: reduced,
+      startFrozen: true, // the goal card releases the world
       pad: padRef.current,
       onQuickfire: (contactIdx) => {
         const qf = quickfireFor(props.items, contactIdx);
@@ -353,7 +357,21 @@ export function ArcadeGame(props: ArcadeGameProps) {
     }
   };
 
+  // v2.2: dismiss the goal card (button or any key) → the world starts
+  const startRun = (): void => {
+    setGoalOpen(false);
+    sceneRef.current?.setRunning(true);
+  };
+  useEffect(() => {
+    if (!goalOpen) return;
+    const onKey = (): void => startRun();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [goalOpen]);
+
   const hudChip: CSSProperties = { background: "rgba(20,18,33,0.82)", color: "#e8e6f5", borderRadius: 999, padding: "6px 12px", fontSize: 14, fontWeight: 700, fontFamily: "var(--font-label)" };
+  const sealsDone = seals[1] > 0 && seals[0] >= seals[1];
 
   return (
     <div style={{ position: "relative", width: "100%", maxWidth: 720, margin: "0 auto" }}>
@@ -371,11 +389,33 @@ export function ArcadeGame(props: ArcadeGameProps) {
             {combo >= 2 && <span className="dg-qf-combo" style={{ ...hudChip, background: "#8b7cf5", color: "#141221" }}>×{combo}</span>}
             {knots !== null ? (
               <span style={hudChip}>Knoten {knots[0]}/{knots[1]}</span>
+            ) : sealsDone ? (
+              <span className="dg-qf-combo" style={{ ...hudChip, background: "#ffe066", color: "#141221" }}>→ Zur Tür!</span>
             ) : (
-              <span style={hudChip}>⬧ {seals[0]}/{seals[1]}</span>
+              <span style={hudChip}>⬧ Siegel {seals[0]}/{seals[1]}</span>
             )}
           </div>
         </div>
+
+        {/* v2.2 GOAL CARD — the level SAYS what to do before it starts */}
+        {goalOpen && phase.kind === "run" && (
+          <div style={{ position: "absolute", inset: 0, zIndex: 11, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(15,13,26,0.82)", padding: 14 }}>
+            <div style={{ width: "min(460px, 96%)", background: "var(--card, #1b1930)", color: "var(--text, #f3f1ff)", borderRadius: 20, padding: "20px 22px", border: "2px solid #8b7cf5", textAlign: "center" }}>
+              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#8b7cf5" }}>Dein Auftrag</div>
+              <div style={{ fontSize: 24, fontWeight: 800, fontFamily: "var(--font-display)", margin: "4px 0 8px" }}>{level.header.name}</div>
+              <p style={{ fontSize: 16, lineHeight: 1.45, margin: "0 0 12px" }}>
+                {level.header.goalDe ?? `Befreie die ${seals[1]} Siegel von ihren Wächtern – dann öffnet sich die Tür des Kapitelwächters!`}
+              </p>
+              <div style={{ display: "grid", gap: 6, justifyContent: "center", fontSize: 13.5, color: "var(--muted, #c9c4e4)", textAlign: "left", marginBottom: 14 }}>
+                <span>⬧ Siegel — stell dich den Wesen, die sie bewachen</span>
+                {level.letters.length > 0 && <span>✦ Buchstaben — einsammeln, sie zählen für dich</span>}
+                {level.gluehwoerter.length > 0 && <span style={{ color: "#ffe082" }}>✺ Glühwörter — versteckt! Jedes schenkt dir einen Gratis-Hinweis</span>}
+              </div>
+              <button type="button" className="dg-btn" onClick={startRun} data-testid="goal-start">Los geht&apos;s!</button>
+              <p style={{ fontSize: 12, color: "var(--muted, #8f8ab0)", margin: "8px 0 0" }}>… oder drück eine Taste</p>
+            </div>
+          </div>
+        )}
 
         {/* the guardian arrives — the duel's intro card */}
         {phase.kind === "bossIntro" && props.boss && (
@@ -532,10 +572,10 @@ export function ArcadeGame(props: ArcadeGameProps) {
           </div>
         )}
 
-        <TouchControls pad={padRef.current} hidden={phase.kind !== "run"} />
+        <TouchControls pad={padRef.current} hidden={phase.kind !== "run" || goalOpen} />
       </div>
       <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", marginTop: 6 }}>
-        Pfeiltasten laufen · ↑/Leertaste springen (halten = höher) · X = Federstab · ↓+Sprung fällt durch Plattformen · Kante im Fallen festhalten = Griff
+        Pfeiltasten laufen · ↑/Leertaste springen (halten = höher) · X = Federstab · ↓+Sprung fällt durch Plattformen · ↑ an Stange/Tür = klettern/durchgehen
       </p>
     </div>
   );

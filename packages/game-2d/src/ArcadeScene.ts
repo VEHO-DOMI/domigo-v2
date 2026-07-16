@@ -68,6 +68,8 @@ export interface ArcadeConfig {
   seed: number;
   playerSeed?: number;
   reducedMotion?: boolean;
+  /** v2.2: boot with the world held — the goal card is showing. */
+  startFrozen?: boolean;
   pad?: ArcadePad;
   onQuickfire: (contactIdx: number) => void;
   onLetters: (count: number) => void;
@@ -108,7 +110,14 @@ interface LetterEntry {
   zone: Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
 }
 
-type PlayerState = { kind: "normal" } | { kind: "hang"; spot: HangSpot; side: -1 | 1 } | { kind: "pullup" } | { kind: "dying" };
+type PlayerState =
+  | { kind: "normal" }
+  | { kind: "hang"; spot: HangSpot; side: -1 | 1 }
+  // pull-up advances on the fixed update tick, NOT a tween — state-carrying
+  // motion must survive asleep-loop stepping (the tween system doesn't)
+  | { kind: "pullup"; fromX: number; fromY: number; toX: number; toY: number; p: number }
+  | { kind: "climb"; poleC: number } // v2.2: on a pole (up climbs, down slides)
+  | { kind: "dying" };
 
 function paintSmudge(kind: CreatureKind): HTMLCanvasElement {
   const c = document.createElement("canvas");
@@ -264,6 +273,75 @@ function paintSeal(): HTMLCanvasElement {
   return c;
 }
 
+/** In-level door (v2.2): an arched frame with a pair-colored gem, so kids can
+ *  SEE which two doors connect before ever stepping through one. */
+const DOOR_GEMS: Record<string, string> = { "1": "#ffc857", "2": "#5fd4c4", "3": "#f28ab2", "4": "#a88bfa" };
+function paintLevelDoor(id: string): HTMLCanvasElement {
+  const c = document.createElement("canvas");
+  c.width = 48;
+  c.height = 72;
+  const g = c.getContext("2d")!;
+  g.fillStyle = "#2b2742";
+  g.beginPath();
+  g.moveTo(6, 72); g.lineTo(6, 26); g.quadraticCurveTo(24, 2, 42, 26); g.lineTo(42, 72);
+  g.closePath();
+  g.fill();
+  g.fillStyle = "#171429";
+  g.beginPath();
+  g.moveTo(12, 72); g.lineTo(12, 30); g.quadraticCurveTo(24, 12, 36, 30); g.lineTo(36, 72);
+  g.closePath();
+  g.fill();
+  g.strokeStyle = "#8b7cf5";
+  g.lineWidth = 2;
+  g.beginPath();
+  g.moveTo(6, 72); g.lineTo(6, 26); g.quadraticCurveTo(24, 2, 42, 26); g.lineTo(42, 72);
+  g.stroke();
+  g.fillStyle = DOOR_GEMS[id] ?? "#ffc857";
+  g.beginPath(); g.arc(24, 22, 5, 0, Math.PI * 2); g.fill();
+  g.strokeStyle = "#f6f5ff";
+  g.lineWidth = 1.5;
+  g.stroke();
+  return c;
+}
+
+/** Floating platform slab (v2.2 movers) — glowing underside marks it as alive. */
+function paintMover(wTiles: number): HTMLCanvasElement {
+  const c = document.createElement("canvas");
+  c.width = wTiles * TILE;
+  c.height = 20;
+  const g = c.getContext("2d")!;
+  g.fillStyle = "#3a3560";
+  g.beginPath();
+  g.roundRect(1, 1, c.width - 2, 14, 6);
+  g.fill();
+  g.strokeStyle = "#8b7cf5";
+  g.lineWidth = 2;
+  g.stroke();
+  g.fillStyle = "rgba(139,124,245,0.55)";
+  for (let i = 0; i < wTiles * 2; i += 1) {
+    g.beginPath(); g.arc(12 + i * (TILE / 2), 18, 2.4, 0, Math.PI * 2); g.fill();
+  }
+  g.fillStyle = "rgba(246,245,255,0.25)";
+  g.fillRect(4, 3, c.width - 8, 3);
+  return c;
+}
+
+/** Climbing pole tile (v2.2) — a rune-etched rod with a rung. */
+function paintPole(): HTMLCanvasElement {
+  const c = document.createElement("canvas");
+  c.width = 48;
+  c.height = 48;
+  const g = c.getContext("2d")!;
+  g.fillStyle = "#4a4370";
+  g.fillRect(21, 0, 6, 48);
+  g.fillStyle = "#8b7cf5";
+  g.fillRect(23, 0, 2, 48);
+  g.strokeStyle = "#5c5490";
+  g.lineWidth = 3;
+  g.beginPath(); g.moveTo(13, 24); g.lineTo(35, 24); g.stroke();
+  return c;
+}
+
 export class ArcadeScene extends Phaser.Scene {
   private cfg: ArcadeConfig;
   private player!: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
@@ -313,6 +391,13 @@ export class ArcadeScene extends Phaser.Scene {
   private camY = 0;
   private worldGravity: number = ARCADE.gravity;
   private bolts!: Phaser.Physics.Arcade.Group;
+  // v2.2 verbs
+  private poleCells = new Set<string>();
+  private doorPairs: Array<{ id: string; aPx: { x: number; y: number }; bPx: { x: number; y: number } }> = [];
+  private moverPlatforms: Array<{ s: Phaser.Types.Physics.Arcade.ImageWithDynamicBody; ax: number; ay: number; bx: number; by: number; toB: boolean; speed: number }> = [];
+  private doorCooldownUntil = 0;
+  private spaceHeld = false;
+  private goalArrow: Phaser.GameObjects.Triangle | null = null;
 
   constructor(cfg: ArcadeConfig) {
     super("arcade");
@@ -390,6 +475,45 @@ export class ArcadeScene extends Phaser.Scene {
       (b.body as Phaser.Physics.Arcade.StaticBody).setSize(TILE - 12, 22).setOffset(6, TILE - 22);
     }
 
+    // ── v2.2: poles (the vertical switchboard — climb up, slide down) ──
+    if (level.poles.length > 0) addCanvas(tex("pole"), paintPole());
+    for (const p of level.poles) {
+      this.poleCells.add(`${p.c},${p.r}`);
+      this.add.image(p.c * TILE + TILE / 2, p.r * TILE + TILE / 2, tex("pole")).setDepth(1);
+    }
+
+    // ── v2.2: in-level door pairs (sub-rooms on one canvas, Keen 4 grammar) ──
+    for (const d of level.doors) {
+      addCanvas(tex(`door-${d.id}`), paintLevelDoor(d.id));
+      const px = (cell: { c: number; r: number }): { x: number; y: number } => ({ x: cell.c * TILE + TILE / 2, y: cell.r * TILE + TILE / 2 });
+      const aPx = px(d.a);
+      const bPx = px(d.b);
+      for (const at of [aPx, bPx]) {
+        // the arch is 1.5 tiles tall; its base sits on the cell's floor line
+        this.add.image(at.x, at.y + TILE / 2 - 36, tex(`door-${d.id}`)).setDepth(1);
+        const hint = this.add.text(at.x, at.y - TILE * 0.9, "↑", { fontFamily: "system-ui, sans-serif", fontSize: "16px", fontStyle: "bold", color: "#cfc7ff" }).setOrigin(0.5).setDepth(6).setAlpha(0.85);
+        if (motion) this.tweens.add({ targets: hint, y: hint.y - 5, duration: 900, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+      }
+      this.doorPairs.push({ id: d.id, aPx, bPx });
+    }
+
+    // ── v2.2: movers (patrolling platforms; one-way — ride on top) ──
+    const moverGroup = this.physics.add.group({ allowGravity: false, immovable: true });
+    for (const m of level.header.movers ?? []) {
+      addCanvas(tex(`mover-${m.w}`), paintMover(m.w));
+      const ax = m.c1 * TILE + (m.w * TILE) / 2;
+      const ay = m.r1 * TILE + 10;
+      const bx = m.c2 * TILE + (m.w * TILE) / 2;
+      const by = m.r2 * TILE + 10;
+      const s = moverGroup.create(ax, ay, tex(`mover-${m.w}`)) as Phaser.Types.Physics.Arcade.ImageWithDynamicBody;
+      s.setDepth(2);
+      s.body.checkCollision.down = false;
+      s.body.checkCollision.left = false;
+      s.body.checkCollision.right = false;
+      const dist = Math.hypot(bx - ax, by - ay);
+      this.moverPlatforms.push({ s, ax, ay, bx, by, toB: true, speed: (dist / (m.periodMs / 2)) * 1000 });
+    }
+
     // letters — real glyphs being rescued
     const letterGroup = this.physics.add.staticGroup();
     const GLYPHS = "TINTENWORT";
@@ -462,9 +586,11 @@ export class ArcadeScene extends Phaser.Scene {
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, solids);
     this.oneWayCollider = this.physics.add.collider(this.player, oneWays, undefined, () => {
-      // drop-through: the collider stands down while passing (look-down + jump)
-      return this.time.now >= this.dropThroughUntil && this.player.body.velocity.y >= 0;
+      // drop-through: the collider stands down while passing (look-down + jump);
+      // pole rides pass straight through platforms too (v2.2)
+      return this.time.now >= this.dropThroughUntil && this.player.body.velocity.y >= 0 && this.pstate.kind !== "climb";
     });
+    this.physics.add.collider(this.player, moverGroup);
     this.physics.add.overlap(this.player, spikes, () => this.hurt("spikes"));
     this.physics.add.overlap(this.player, letterGroup, (_p, zone) => this.collectLetter((zone as Phaser.Types.Physics.Arcade.SpriteWithStaticBody).getData("entry") as LetterEntry));
     this.physics.add.overlap(this.player, gluehGroup, (_p, z) => {
@@ -528,6 +654,13 @@ export class ArcadeScene extends Phaser.Scene {
     this.cameras.main.setScroll(Phaser.Math.Clamp(this.player.x - VIEW_W / 2, 0, level.w * TILE - VIEW_W), this.camY);
     if (motion) this.cameras.main.fadeIn(240, 20, 18, 33);
     this.startedAt = this.time.now;
+    this.frozen = this.cfg.startFrozen === true; // the goal card releases it
+  }
+
+  /** v2.2: the goal card holds the world until the student says go. Only
+   *  valid before first contact (quickfire owns `frozen` after that). */
+  setRunning(running: boolean): void {
+    this.frozen = !running;
   }
 
   /** Read-only snapshot for the `__domigoArcade` machine-playtest harness. */
@@ -557,6 +690,8 @@ export class ArcadeScene extends Phaser.Scene {
       fps: Math.round(this.game.loop.actualFps),
       camY: Math.round(this.cameras.main.scrollY),
       lookDir: this.lookDir,
+      // v2.2: mover positions ("x,y|x,y") — playtest harnesses assert patrol
+      movers: this.moverPlatforms.map((m) => `${Math.round(m.s.x)},${Math.round(m.s.y)}`).join("|"),
     };
   }
 
@@ -841,7 +976,8 @@ export class ArcadeScene extends Phaser.Scene {
     const right = this.cursors?.right.isDown === true || this.wasd?.D.isDown === true || pad?.right === true;
     const upDown = this.cursors?.up.isDown === true || this.wasd?.W.isDown === true || pad?.up === true;
     const downDown = this.cursors?.down.isDown === true || this.wasd?.S.isDown === true || pad?.down === true;
-    const jumpDown = this.cursors?.space?.isDown === true || upDown || pad?.jump === true;
+    const spaceDown = this.cursors?.space?.isDown === true || pad?.jump === true;
+    const jumpDown = spaceDown || upDown;
     const pogoDown = this.pogoKey?.isDown === true || pad?.pogo === true;
     const heldDir: -1 | 0 | 1 = left === right ? 0 : left ? -1 : 1;
 
@@ -852,30 +988,100 @@ export class ArcadeScene extends Phaser.Scene {
       body.setAllowGravity(false);
       const toward = heldDir === side;
       if (upDown || toward) {
-        this.pstate = { kind: "pullup" };
         const target = pullUpPx(spot);
         playSfx("tick");
-        this.tweens.add({
-          targets: this.player,
-          x: target.x,
-          y: target.y,
-          duration: this.cfg.reducedMotion === true ? 0 : ARCADE.pullUpMs,
-          ease: "Sine.easeInOut",
-          onComplete: () => {
-            body.setAllowGravity(true);
-            this.pstate = { kind: "normal" };
-          },
-        });
+        this.pstate = { kind: "pullup", fromX: this.player.x, fromY: this.player.y, toX: target.x, toY: target.y, p: this.cfg.reducedMotion === true ? 1 : 0 };
       } else if (downDown || (heldDir !== 0 && !toward)) {
         body.setAllowGravity(true);
         this.pstate = { kind: "normal" };
         this.regrabLockUntil = now + ARCADE.regrabLockMs;
       }
+      this.stepMovers(); // platforms keep patrolling while we hang
       return; // hanging: no other verbs
     }
-    if (this.pstate.kind === "pullup") return; // scripted — inputs wait
+    if (this.pstate.kind === "pullup") {
+      // scripted 4-step pull-up, advanced on the fixed tick — inputs wait
+      const ps = this.pstate;
+      ps.p = Math.min(1, ps.p + 16.7 / ARCADE.pullUpMs);
+      const e = ps.p < 0.5 ? 2 * ps.p * ps.p : 1 - 2 * (1 - ps.p) * (1 - ps.p); // easeInOutQuad
+      this.player.setPosition(ps.fromX + (ps.toX - ps.fromX) * e, ps.fromY + (ps.toY - ps.fromY) * e);
+      body.setVelocity(0, 0);
+      if (ps.p >= 1) {
+        body.setAllowGravity(true);
+        this.pstate = { kind: "normal" };
+      }
+      this.stepMovers();
+      return;
+    }
 
-    const grounded = body.blocked.down;
+    // ── CLIMB state (v2.2): up climbs, down SLIDES, jump-key hops off ──
+    if (this.pstate.kind === "climb") {
+      const { poleC } = this.pstate;
+      body.setAllowGravity(false);
+      this.player.x = poleC * TILE + TILE / 2;
+      const rr = Math.floor(this.player.y / TILE);
+      const exitClimb = (vy: number, vx: number): void => {
+        body.setAllowGravity(true);
+        body.setVelocity(vx, vy);
+        this.pstate = { kind: "normal" };
+        this.regrabLockUntil = now + ARCADE.regrabLockMs;
+      };
+      if (spaceDown && !this.spaceHeld) {
+        // the dedicated jump key hops off (up must stay free for climbing)
+        exitClimb(ARCADE.poleExitVy, heldDir * 160);
+        playSfx("tick");
+      } else if (!this.poleCells.has(`${poleC},${rr}`)) {
+        // ran off an end: top → courtesy hop (onto the ledge the pole serves);
+        // bottom → just fall
+        exitClimb(body.velocity.y < 0 ? ARCADE.poleTopVy : 0, 0);
+      } else if (body.blocked.down && downDown) {
+        exitClimb(0, 0); // feet on the floor — step off
+      } else {
+        body.setVelocity(0, upDown ? -ARCADE.poleClimbVy : downDown ? ARCADE.poleSlideVy : 0);
+      }
+      this.spaceHeld = spaceDown;
+      this.jumpHeld = jumpDown;
+      this.jumpPressedAt = -9999;
+      this.player.setAlpha(now < this.invulnUntil ? (Math.floor(now / 90) % 2 === 0 ? 0.45 : 1) : 1);
+      this.stepMovers();
+      this.updateCamera(true); // the pole IS an anchor — the camera rides along
+      this.updateGoalArrow();
+      return;
+    }
+
+    const grounded = body.blocked.down || body.touching.down; // touching = riding a mover
+
+    // ── v2.2 door pairs: fresh UP in front of a door walks through it ──
+    if (grounded && upDown && !this.jumpHeld && now >= this.doorCooldownUntil) {
+      for (const d of this.doorPairs) {
+        const near = (p: { x: number; y: number }): boolean => Math.abs(p.x - this.player.x) < 22 && Math.abs(p.y - this.player.y) < 34;
+        const from = near(d.aPx) ? d.aPx : near(d.bPx) ? d.bPx : null;
+        if (!from) continue;
+        this.travelDoor(from === d.aPx ? d.bPx : d.aPx);
+        return;
+      }
+    }
+
+    // ── v2.2 pole grab: up at a pole (or down onto one below) latches on ──
+    if (!this.onPogo && now >= this.regrabLockUntil && this.pstate.kind === "normal") {
+      const pc = Math.floor(this.player.x / TILE);
+      const pr = Math.floor(this.player.y / TILE);
+      const poleAt = (c: number, r: number): boolean => this.poleCells.has(`${c},${r}`);
+      const grabUp = upDown && !this.jumpHeld && (poleAt(pc, pr) || poleAt(pc, pr - 1));
+      const grabDown = downDown && !grounded && poleAt(pc, pr);
+      const grabHole = downDown && grounded && poleAt(pc, pr + 1); // pole through a floor hole
+      if (grabUp || grabDown || grabHole) {
+        this.pstate = { kind: "climb", poleC: pc };
+        if (grabHole) this.player.y += TILE * 0.6; // dip into the hole so the slide starts
+        body.setVelocity(0, 0);
+        body.setAllowGravity(false);
+        this.fuel = null;
+        this.jumpPressedAt = -9999;
+        this.spaceHeld = spaceDown;
+        playSfx("pop");
+        return;
+      }
+    }
 
     // ── ground: DIGITAL · air: ANALOG (the signature split, §2.1) ──
     if (grounded && !this.onPogo) {
@@ -890,6 +1096,9 @@ export class ArcadeScene extends Phaser.Scene {
     }
     if (heldDir !== 0) this.facing = heldDir;
     this.player.setFlipX(this.facing === -1);
+
+    // v2.2 movers patrol + carry their rider (arcade has no platform friction)
+    this.stepMovers();
 
     // ── the pogo toggle (§2.4) ──
     if (pogoDown && !this.pogoHeld) {
@@ -939,6 +1148,7 @@ export class ArcadeScene extends Phaser.Scene {
     const scale = pogoGravityScale(this.onPogo, body.velocity.y < 0, jumpDown);
     body.setGravityY(scale === 1 ? 0 : -this.worldGravity * (1 - scale));
     this.jumpHeld = jumpDown;
+    this.spaceHeld = spaceDown;
 
     // ── drop-through (look down + jump on a one-way, §2.6) ──
     if (grounded && downDown && jumpDown && !body.blocked.none) {
@@ -990,8 +1200,9 @@ export class ArcadeScene extends Phaser.Scene {
       }
     }
 
-    // safe footing memory (grounded, not over spikes)
-    if (grounded && now >= this.invulnUntil) {
+    // safe footing memory (REAL ground only — a mover's midair position must
+    // never become the spike-respawn point)
+    if (body.blocked.down && now >= this.invulnUntil) {
       const c = Math.floor(this.player.x / TILE);
       const rr = Math.floor(this.player.y / TILE);
       if (level.rows[rr + 1]?.[c] !== "^" && level.rows[rr]?.[c] !== "^") {
@@ -1089,12 +1300,62 @@ export class ArcadeScene extends Phaser.Scene {
     }
 
     // ── the Keen camera (manual, §2.6) ──
+    this.updateCamera(grounded || this.pstate.kind === "hang");
+    this.updateGoalArrow();
+  }
+
+  /** v2.2: step through an in-level door pair — a CUT, not a pan. */
+  private travelDoor(to: { x: number; y: number }): void {
+    this.doorCooldownUntil = this.time.now + 700;
+    this.jumpPressedAt = -9999;
+    this.jumpHeld = true; // the up press was spent on the door, not a jump
+    this.player.body.setVelocity(0, 0);
+    playSfx("whoosh");
+    if (this.cfg.reducedMotion !== true) this.dust?.explode(8, this.player.x, this.player.y);
+    this.player.setPosition(to.x, to.y - 4);
+    this.safePos = { x: to.x, y: to.y - 4 };
+    const level = this.cfg.level;
+    this.camY = Phaser.Math.Clamp(cameraTargetY(this.player.y, VIEW_H, 0), 0, Math.max(level.h * TILE - VIEW_H, 0));
+    this.cameras.main.setScroll(
+      Phaser.Math.Clamp(this.player.x - VIEW_W / 2, 0, Math.max(level.w * TILE - VIEW_W, 0)),
+      this.camY,
+    );
+    if (this.cfg.reducedMotion !== true) {
+      this.dust?.explode(8, to.x, to.y);
+      this.cameras.main.flash(140, 20, 18, 33);
+    }
+  }
+
+  /** v2.2: patrol the mover platforms and hand-carry whoever rides them. */
+  private stepMovers(): void {
+    const pb = this.player.body;
+    for (const m of this.moverPlatforms) {
+      const tx = m.toB ? m.bx : m.ax;
+      const ty = m.toB ? m.by : m.ay;
+      const dx = tx - m.s.x;
+      const dy = ty - m.s.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist < 6) {
+        m.toB = !m.toB;
+        m.s.body.setVelocity(0, 0);
+      } else {
+        m.s.body.setVelocity((dx / dist) * m.speed, (dy / dist) * m.speed);
+      }
+      if (pb.touching.down && m.s.body.touching.up) {
+        pb.velocity.x += m.s.body.velocity.x;
+      }
+    }
+  }
+
+  /** Manual Keen camera. `anchored` = vertical is allowed to re-target
+   *  (grounded, hanging, or climbing a pole — v2.2). */
+  private updateCamera(anchored: boolean): void {
+    const level = this.cfg.level;
     const cam = this.cameras.main;
     const maxX = level.w * TILE - VIEW_W;
     const maxY = level.h * TILE - VIEW_H;
     const targetX = Phaser.Math.Clamp(cameraTargetX(cam.scrollX, this.player.x, VIEW_W), 0, Math.max(maxX, 0));
-    // vertical: only re-target while anchored (grounded or hanging)
-    if (grounded || this.pstate.kind === "hang") {
+    if (anchored) {
       this.camY = Phaser.Math.Clamp(cameraTargetY(this.player.y, VIEW_H, this.lookDir), 0, Math.max(maxY, 0));
     }
     if (this.cfg.reducedMotion === true) {
@@ -1105,5 +1366,35 @@ export class ArcadeScene extends Phaser.Scene {
         Phaser.Math.Linear(cam.scrollY, this.camY, ARCADE.camLerp),
       );
     }
+  }
+
+  /** Once the exit is unsealed, an edge arrow points the way whenever the
+   *  door is off-screen — the "take the student by the hand" law (v2.2). */
+  private updateGoalArrow(): void {
+    if (!this.pedestalActive || this.over) {
+      this.goalArrow?.setVisible(false);
+      return;
+    }
+    const cam = this.cameras.main;
+    const ex = this.pedestal.x;
+    const ey = this.pedestal.y;
+    const onScreen = ex >= cam.scrollX - 20 && ex <= cam.scrollX + VIEW_W + 20 && ey >= cam.scrollY - 20 && ey <= cam.scrollY + VIEW_H + 20;
+    if (onScreen) {
+      this.goalArrow?.setVisible(false);
+      return;
+    }
+    if (!this.goalArrow) {
+      this.goalArrow = this.add.triangle(0, 0, 0, 0, 26, 9, 0, 18, 0xffe066).setScrollFactor(0).setDepth(30).setAlpha(0.9);
+      if (this.cfg.reducedMotion !== true) {
+        this.tweens.add({ targets: this.goalArrow, alpha: { from: 0.9, to: 0.5 }, duration: 520, yoyo: true, repeat: -1 });
+      }
+    }
+    const dx = ex - (cam.scrollX + VIEW_W / 2);
+    const dy = ey - (cam.scrollY + VIEW_H / 2);
+    const ang = Math.atan2(dy, dx);
+    const margin = 34;
+    const px = Phaser.Math.Clamp(VIEW_W / 2 + Math.cos(ang) * VIEW_W, margin, VIEW_W - margin);
+    const py = Phaser.Math.Clamp(VIEW_H / 2 + Math.sin(ang) * VIEW_H, margin, VIEW_H - margin);
+    this.goalArrow.setVisible(true).setPosition(px, py).setRotation(ang);
   }
 }
