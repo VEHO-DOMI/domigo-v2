@@ -3,8 +3,9 @@
  * <PhaserGame> via next/dynamic({ssr:false}); per-grade content arrives as props
  * (it never imports content-loader or another game package).
  */
-export { PhaserGame } from "./PhaserGame.tsx";
+export { PhaserGame, DialogueOverlay } from "./PhaserGame.tsx";
 export type { PhaserGameProps, GameAttempt, AttemptFn, GameSaveState, WorldCopy } from "./PhaserGame.tsx";
+export type { BossScript } from "./boss.ts";
 export { OverworldScene } from "./OverworldScene.ts";
 export { rasterize } from "./rasterize.ts";
 // W-1 WORLD-ALIVE: the pure world brain (layout parsing, door spawns, save v2).
@@ -13,3 +14,6 @@ export type { DoorCell, ParsedZone, WorldSaveV2, ZoneProgress } from "./world.ts
 // K-3: the arcade (Tintenlauf, rebuilt to the bible) — next/dynamic ssr:false only.
 export { ArcadeGame } from "./ArcadeGame.tsx";
 export type { ArcadeGameProps } from "./ArcadeGame.tsx";
+// VS: the book's world map (Keen hub, bible 27 §2–§3) — next/dynamic ssr:false only.
+export { MapGame } from "./MapGame.tsx";
+export type { MapGameProps } from "./MapGame.tsx";

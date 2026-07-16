@@ -6,7 +6,10 @@
   "exports": {
     ".": "./src/index.tsx",
     "./board": "./src/zone-board.tsx",
-    "./world": "./src/world.ts"
+    "./world": "./src/world.ts",
+    "./arcade": "./src/arcade.ts",
+    "./boss": "./src/boss.ts",
+    "./dialogue": "./src/dialogue.tsx"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

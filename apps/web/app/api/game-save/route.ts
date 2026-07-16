@@ -16,8 +16,9 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 // B-2: `:bonus` = a grade's extra released story's COSMETIC slot (the detective
-// game after the school overworld takes `game:g2`). Attempt modes are unaffected.
-const GameMode = z.string().regex(/^game:g[1-4](:bonus)?$/);
+// game after the school overworld takes `game:g2`); `:keen` = the Keen world's
+// save slot. Attempt modes are unaffected.
+const GameMode = z.string().regex(/^game:g[1-4](:bonus|:keen)?$/);
 
 const PutBody = z.object({
   gameMode: GameMode,

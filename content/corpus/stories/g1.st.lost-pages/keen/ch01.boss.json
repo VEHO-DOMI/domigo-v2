@@ -1,0 +1,12 @@
+{
+  "id": "g1-ch01-boss",
+  "name": "Der Stundenplan-Schlinger",
+  "intro": "Ein Stundenplan, zu einem Knoten verheddert. Er will die erste Stunde nicht hergeben.",
+  "outro": "Der Knoten löst sich — und die Stunde kommt zurück. Die Seite atmet auf.",
+  "knots": 4,
+  "pattern": [1, 0, 2, 1, 2, 0],
+  "telegraphMs": { "E": 950, "M": 780, "S": 620 },
+  "attackMs": 430,
+  "windowSeconds": { "E": 25, "M": 20, "S": 15 },
+  "taunts": ["Meine Stunde!", "Nicht hersagen!", "Verheddert bleibt verheddert."]
+}

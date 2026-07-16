@@ -76,7 +76,12 @@ export interface ArcadeConfig {
   onSeals: (collected: number, total: number) => void;
   /** the last heart is gone → React runs the Rettungsaufgabe (§5.3) */
   onRescue: (deathCount: number) => void;
-  onComplete: (stats: { ms: number; maxCombo: number; letters: number; words: number; seals: number; deaths: number }) => void;
+  onComplete: (stats: { ms: number; maxCombo: number; letters: number; words: number; seals: number; deaths: number; gluehwoerter: number }) => void;
+  /** v2.1 (bible 27 §5.2): a Glühwort was collected (count so far). */
+  onGluehwoerter?: (count: number) => void;
+  /** v2.1 (bible 27 §2b): the player entered the UNSEALED boss door —
+   *  React swaps to the duel. Only fires on 'B' levels with all seals. */
+  onBossDoor?: (carry: { hearts: number; letters: number; gluehwoerter: number; words: number; maxCombo: number; seals: number; deaths: number; ms: number }) => void;
 }
 
 interface Creature {
@@ -191,6 +196,55 @@ function paintPedestal(active: boolean): HTMLCanvasElement {
   return c;
 }
 
+/** The guardian's door (v2.1 'B' exit) — sealed dark until the seals open it. */
+function paintBossDoor(active: boolean): HTMLCanvasElement {
+  const c = document.createElement("canvas");
+  c.width = TILE;
+  c.height = TILE * 2;
+  const g = c.getContext("2d")!;
+  g.fillStyle = active ? "#3a3654" : "#221f36";
+  g.beginPath();
+  g.moveTo(6, TILE * 2); g.lineTo(6, 26); g.quadraticCurveTo(TILE / 2, 2, TILE - 6, 26); g.lineTo(TILE - 6, TILE * 2);
+  g.closePath();
+  g.fill();
+  g.strokeStyle = active ? "#8b7cf5" : "#4a4668";
+  g.lineWidth = 3;
+  g.stroke();
+  // the ink knot across the door while sealed; a glowing gap when open
+  if (!active) {
+    g.strokeStyle = "#141221";
+    g.lineWidth = 7;
+    g.beginPath(); g.moveTo(10, 46); g.bezierCurveTo(24, 60, 24, 34, 38, 52); g.stroke();
+    g.beginPath(); g.moveTo(10, 70); g.bezierCurveTo(26, 58, 22, 84, 38, 70); g.stroke();
+  } else {
+    g.fillStyle = "rgba(183,174,247,0.35)";
+    g.beginPath(); g.ellipse(TILE / 2, 62, 12, 26, 0, 0, Math.PI * 2); g.fill();
+  }
+  return c;
+}
+
+/** A Glühwort — a word Jona never managed to erase, still glowing (§5.2). */
+function paintGluehwort(): HTMLCanvasElement {
+  const c = document.createElement("canvas");
+  c.width = 36;
+  c.height = 26;
+  const g = c.getContext("2d")!;
+  g.fillStyle = "rgba(255,224,130,0.28)";
+  g.beginPath(); g.ellipse(18, 13, 17, 12, 0, 0, Math.PI * 2); g.fill();
+  g.fillStyle = "#ffe082";
+  g.beginPath();
+  const r = 6;
+  g.roundRect(5, 6, 26, 14, r);
+  g.fill();
+  g.strokeStyle = "#fff7db";
+  g.lineWidth = 1.6;
+  g.stroke();
+  g.strokeStyle = "#8a6d1f";
+  g.lineWidth = 1.6;
+  for (const y of [10, 13, 16] as const) { g.beginPath(); g.moveTo(9, y); g.lineTo(27, y); g.stroke(); }
+  return c;
+}
+
 /** A Tintensiegel (ink seal) — the gem-socket key, re-themed. */
 function paintSeal(): HTMLCanvasElement {
   const c = document.createElement("canvas");
@@ -235,12 +289,14 @@ export class ArcadeScene extends Phaser.Scene {
   private fuel: FuelState | null = null;
   private regrabLockUntil = 0;
   private lookHeldSince = 0;
+  private lookWant: -1 | 0 | 1 = 0;
   private lookDir: -1 | 0 | 1 = 0;
   private invulnUntil = 0;
   private wasMovingBeforeStand = false;
   private safePos = { x: 0, y: 0 };
   private checkpoint = { x: 0, y: 0 };
   private hearts = 3;
+  private gluehwoerter = 0;
   private letters = 0;
   private words = 0;
   private combo = 0;
@@ -283,6 +339,9 @@ export class ArcadeScene extends Phaser.Scene {
     addCanvas(tex("spikes"), paintSpikes());
     addCanvas(tex("pedestal"), paintPedestal(false));
     addCanvas(tex("pedestal-on"), paintPedestal(true));
+    addCanvas(tex("bossdoor"), paintBossDoor(false));
+    addCanvas(tex("bossdoor-on"), paintBossDoor(true));
+    addCanvas(tex("gluehwort"), paintGluehwort());
     addCanvas(tex("seal"), paintSeal());
     const sprite = paintPlayerSprite(this.cfg.playerSeed ?? this.cfg.seed);
     if (!this.textures.exists("p-right")) {
@@ -347,6 +406,23 @@ export class ArcadeScene extends Phaser.Scene {
       if (motion) this.tweens.add({ targets: [disc, t], y: y - 4, duration: 900 + (i % 3) * 120, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
     });
 
+    // Glühwörter — words Jona never erased, still glowing (bible 27 §5.2);
+    // off the beaten path by authoring, free-hint sparks by economy
+    const gluehGroup = this.physics.add.staticGroup();
+    level.gluehwoerter.forEach((gw, i) => {
+      const x = gw.c * TILE + TILE / 2;
+      const y = gw.r * TILE + TILE / 2;
+      const img = this.add.image(x, y, tex("gluehwort")).setDepth(3);
+      const zone = gluehGroup.create(x, y, undefined as unknown as string) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+      zone.setVisible(false).setDisplaySize(34, 30).refreshBody();
+      zone.setData("img", img).setData("taken", false);
+      if (motion) {
+        this.tweens.add({ targets: img, y: y - 5, duration: 1000 + (i % 3) * 140, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+        this.tweens.add({ targets: img, alpha: { from: 1, to: 0.65 }, duration: 760, yoyo: true, repeat: -1 });
+      }
+    });
+    // (the pickup overlap registers AFTER the player exists — see below)
+
     // checkpoints — small banner poles
     const cpGroup = this.physics.add.staticGroup();
     for (const cp of level.checkpoints) {
@@ -366,7 +442,9 @@ export class ArcadeScene extends Phaser.Scene {
       this.sealSprites.push({ img, taken: false, guard: s.guard, idx: i });
     });
     this.cfg.onSeals(0, level.header.seals.length);
-    this.pedestal = this.physics.add.staticGroup().create(level.pedestal.c * TILE + TILE / 2, level.pedestal.r * TILE, tex("pedestal")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+    // the exit: legacy pedestal ('A') or the guardian's sealed door ('B')
+    const exitCell = level.bossDoor ?? level.pedestal;
+    this.pedestal = this.physics.add.staticGroup().create(exitCell.c * TILE + TILE / 2, exitCell.r * TILE, tex(level.bossDoor ? "bossdoor" : "pedestal")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
     this.pedestal.setDisplaySize(TILE, TILE * 2).refreshBody();
 
     // ── the player ──
@@ -389,6 +467,22 @@ export class ArcadeScene extends Phaser.Scene {
     });
     this.physics.add.overlap(this.player, spikes, () => this.hurt("spikes"));
     this.physics.add.overlap(this.player, letterGroup, (_p, zone) => this.collectLetter((zone as Phaser.Types.Physics.Arcade.SpriteWithStaticBody).getData("entry") as LetterEntry));
+    this.physics.add.overlap(this.player, gluehGroup, (_p, z) => {
+      const zone = z as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+      if (zone.getData("taken") === true) return;
+      zone.setData("taken", true);
+      zone.disableBody(true, false);
+      const img = zone.getData("img") as Phaser.GameObjects.Image;
+      this.gluehwoerter += 1;
+      this.cfg.onGluehwoerter?.(this.gluehwoerter);
+      playSfx("chime-close");
+      this.tweens.killTweensOf(img);
+      if (this.cfg.reducedMotion === true) img.setVisible(false);
+      else {
+        this.burst?.explode(10, img.x, img.y);
+        this.tweens.add({ targets: img, y: img.y - 50, alpha: 0, scale: 1.5, duration: 560, ease: "Back.easeIn", onComplete: () => img.setVisible(false) });
+      }
+    });
     this.physics.add.overlap(this.player, cpGroup, (_p, zone) => this.reachCheckpoint(zone as Phaser.Types.Physics.Arcade.SpriteWithStaticBody));
     this.physics.add.overlap(this.player, this.pedestal, () => this.tryComplete());
 
@@ -449,6 +543,7 @@ export class ArcadeScene extends Phaser.Scene {
       fuelMs: Math.round(this.fuel?.fuelMs ?? 0),
       hearts: this.hearts,
       letters: this.letters,
+      gluehwoerter: this.gluehwoerter,
       words: this.words,
       combo: this.combo,
       seals: this.sealsCollected,
@@ -632,7 +727,7 @@ export class ArcadeScene extends Phaser.Scene {
 
   private activatePedestal(): void {
     this.pedestalActive = true;
-    this.pedestal.setTexture("ka-pedestal-on");
+    this.pedestal.setTexture(this.cfg.level.bossDoor ? "ka-bossdoor-on" : "ka-pedestal-on");
     playSfx("whoosh");
     if (this.cfg.reducedMotion !== true) {
       this.burst?.explode(18, this.pedestal.x, this.pedestal.y);
@@ -649,7 +744,13 @@ export class ArcadeScene extends Phaser.Scene {
       this.burst?.explode(24, this.pedestal.x, this.pedestal.y - 30);
       this.cameras.main.fadeOut(500, 20, 18, 33);
     }
-    this.cfg.onComplete({ ms: this.time.now - this.startedAt, maxCombo: this.maxCombo, letters: this.letters, words: this.words, seals: this.sealsCollected, deaths: this.deaths });
+    // v2.1 boss-door levels hand over to the duel instead of completing —
+    // the stats CARRY (one pool, one run; bible 27 §2b)
+    if (this.cfg.level.bossDoor !== null && this.cfg.onBossDoor) {
+      this.cfg.onBossDoor({ hearts: this.hearts, letters: this.letters, gluehwoerter: this.gluehwoerter, words: this.words, maxCombo: this.maxCombo, seals: this.sealsCollected, deaths: this.deaths, ms: this.time.now - this.startedAt });
+      return;
+    }
+    this.cfg.onComplete({ ms: this.time.now - this.startedAt, maxCombo: this.maxCombo, letters: this.letters, words: this.words, seals: this.sealsCollected, deaths: this.deaths, gluehwoerter: this.gluehwoerter });
   }
 
   private hurt(source: "spikes" | "bolt"): void {
@@ -862,18 +963,23 @@ export class ArcadeScene extends Phaser.Scene {
     }
 
     // ── look up / down (held while standing still → camera peek, §2.6) ──
-    const standingStill = grounded && heldDir === 0 && !this.onPogo;
-    const wantLook: -1 | 0 | 1 = standingStill && upDown && !jumpDown ? -1 : standingStill && downDown ? 1 : 0;
+    // GM-A1: up doubles as jump, so look-up gates on the press being STALE —
+    // held past the input buffer without a fresh jump press. (The previous
+    // `upDown && !jumpDown` was a contradiction: upDown implies jumpDown.)
+    const upStale = upDown && now - this.jumpPressedAt > ARCADE.bufferMs;
+    const standingStill = grounded && heldDir === 0 && !this.onPogo && this.fuel === null;
+    const wantLook: -1 | 0 | 1 = standingStill && upStale ? -1 : standingStill && downDown && !jumpDown ? 1 : 0;
     if (wantLook !== 0) {
-      if (this.lookHeldSince === 0) this.lookHeldSince = now;
+      if (this.lookHeldSince === 0 || this.lookWant !== wantLook) this.lookHeldSince = now;
+      this.lookWant = wantLook;
       if (now - this.lookHeldSince >= ARCADE.lookDelayMs) this.lookDir = wantLook;
     } else {
       this.lookHeldSince = 0;
+      this.lookWant = 0;
       this.lookDir = 0;
     }
-    // NOTE: up doubles as jump — looking up only engages when the jump didn't
-    // (standing still, no fresh press). Kids discover it by pausing, which is
-    // exactly the "scout before you commit" behavior the verb exists for.
+    // Kids discover the peek by pausing — exactly the "scout before you
+    // commit" behavior the verb exists for (§2.6).
 
     // free seals (guard null — authored free, or dropped by an escaped guard)
     // are touch-pickups; a walk-by collects them (never blocked, §4.3)

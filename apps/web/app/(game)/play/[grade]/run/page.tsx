@@ -11,7 +11,10 @@ import { Encounter } from "@domigo/content-schema";
 import { loadUnitWithOverrides } from "@/lib/content-service";
 import { getDb, getDueRefs } from "@domigo/db";
 import { resolveEncounterTasks } from "@domigo/game-core";
+import { parseArcadeLevel, type ArcadeLevel } from "@domigo/game-2d/arcade";
+import type { BossScript } from "@domigo/game-2d/boss";
 import { getActingUserForPage } from "@/lib/identity";
+import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
 import ArcadeClient from "./ArcadeClient";
 
 /** Stable per-student sprite seed (the zone page's fnv1a32, same constants). */
@@ -36,7 +39,21 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
 
-  const slug = `g${grade}-u01`;
+  // v2.1 (bible 27): `level=g1-chNN` loads a content-authored chapter level +
+  // its guardian; the unit follows the CHAPTER (task content = that unit).
+  const keenMatch = /^g1-(ch\d{2})$/.exec(levelId ?? "");
+  let keenLevel: ArcadeLevel | undefined;
+  let keenBoss: BossScript | undefined;
+  let chapterNo = 1;
+  if (keenMatch && grade === 1) {
+    const ch = keenMatch[1]!;
+    chapterNo = Number(ch.slice(2));
+    const lvl = await loadKeenLevel("g1.st.lost-pages", ch);
+    keenLevel = parseArcadeLevel(lvl.header as ArcadeLevel["header"], lvl.rows);
+    keenBoss = (await loadKeenBoss("g1.st.lost-pages", ch)) as BossScript;
+  }
+
+  const slug = `g${grade}-u${String(chapterNo).padStart(2, "0")}`;
   const unit = await loadUnitWithOverrides(slug);
   const due = await getDueRefs(getDb(), acting.userId, acting.classId, { kind: "unit", slug }, 24).catch(() => []);
   const enc = Encounter.parse({
@@ -55,9 +72,12 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
       playerSeed={fnv1a32(acting.userId)}
       mode={`game:g${grade}`}
       items={items}
-      hubHref={`/play/${grade}`}
-      title="Tintenlauf"
-      levelId={levelId}
+      hubHref={keenLevel ? `/play/${grade}/world` : `/play/${grade}`}
+      title={keenLevel ? keenLevel.header.name : "Tintenlauf"}
+      levelId={keenLevel ? undefined : levelId}
+      level={keenLevel}
+      boss={keenBoss}
+      doneHref={keenLevel ? `/play/${grade}/world?done=${keenMatch![1]}` : undefined}
       tier={tier === "E" || tier === "M" || tier === "S" ? tier : undefined}
     />
   );

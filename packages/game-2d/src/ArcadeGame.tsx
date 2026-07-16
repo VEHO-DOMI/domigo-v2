@@ -13,14 +13,16 @@ import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { gradeGrammar, gradeVocab } from "@domigo/engine";
 import type { ResolvedItem } from "@domigo/game-core";
 import { ArcadeScene, type ArcadePad } from "./ArcadeScene.ts";
-import { ARCADE, quickfireFor, rescuePlan, rescueScaffold, type Quickfire, type RescueTask, type Tier } from "./arcade.ts";
+import { ARCADE, quickfireFor, rescuePlan, rescueScaffold, type ArcadeLevel, type Quickfire, type RescueTask, type Tier } from "./arcade.ts";
+import { BossScene } from "./BossScene.ts";
+import { bossPlan, type BossScript } from "./boss.ts";
 import { DEFAULT_LEVEL_ID, LEVELS } from "./levels.ts";
 import type { AttemptFn } from "./PhaserGame.tsx";
 
 export interface ArcadeGameProps {
   seed: number;
   playerSeed?: number;
-  /** Attempt mode ("game:g2") — quickfire + rescue answers are REAL attempts. */
+  /** Attempt mode ("game:g1") — quickfire + rescue answers are REAL attempts. */
   mode: string;
   items: ResolvedItem[];
   onAttempt: AttemptFn;
@@ -28,6 +30,16 @@ export interface ArcadeGameProps {
   /** Level + tier (dev knobs; production picks per SRS mastery later). */
   levelId?: string;
   tier?: Tier;
+  /** v2.1: a content-loaded level overrides the built-in LEVELS registry. */
+  level?: ArcadeLevel;
+  /** v2.1: the chapter guardian — present ⇒ the level's 'B' door hands over
+   *  to the duel (bible 27 §2b). */
+  boss?: BossScript;
+  /** where the done overlay links (defaults to hubHref) — the world map
+   *  passes ?done=chNN to trigger the restoration beat. */
+  doneHref?: string;
+  /** fires ONCE when the run ends — the client banks Glühwörter → Funken. */
+  onDone?: (stats: { gluehwoerter: number; letters: number; seals: number; deaths: number; bossWon: boolean }) => void;
 }
 
 type RescueState = {
@@ -39,29 +51,104 @@ type RescueState = {
   verdict: "none" | "right" | "wrong";
 };
 
+type DoneStats = { ms: number; maxCombo: number; letters: number; words: number; seals: number; deaths: number; gluehwoerter: number; bossWon: boolean };
+
 type Phase =
   | { kind: "run" }
   | { kind: "quickfire"; qf: Quickfire; deadline: number }
   | { kind: "verdict"; correct: boolean; answer: string }
   | { kind: "rescue"; rescue: RescueState }
-  | { kind: "done"; stats: { ms: number; maxCombo: number; letters: number; words: number; seals: number; deaths: number } };
+  | { kind: "bossIntro" }
+  | { kind: "bossWindow"; task: RescueTask; deadline: number; value: string; verdict: "none" | "right" | "wrong" }
+  | { kind: "done"; stats: DoneStats };
 
 export function ArcadeGame(props: ArcadeGameProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<ArcadeScene | null>(null);
+  const bossRef = useRef<BossScene | null>(null);
+  const gameRef = useRef<Phaser.Game | null>(null);
+  const bossActiveRef = useRef(false);
+  const bossTasksRef = useRef<RescueTask[]>([]);
+  const bossAtRef = useRef(0);
+  const bossDeathsRef = useRef(0);
+  const carryRef = useRef<{ hearts: number; letters: number; gluehwoerter: number; words: number; maxCombo: number; seals: number; deaths: number; ms: number } | null>(null);
+  const doneSentRef = useRef(false);
   const padRef = useRef<ArcadePad>({ left: false, right: false, up: false, down: false, jump: false, pogo: false });
   const [phase, setPhase] = useState<Phase>({ kind: "run" });
   const [hearts, setHearts] = useState(3);
   const [letters, setLetters] = useState(0);
+  const [gluehwoerter, setGluehwoerter] = useState(0);
   const [combo, setCombo] = useState(0);
   const [seals, setSeals] = useState<[number, number]>([0, 0]);
+  const [knots, setKnots] = useState<[number, number] | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
   const entry = LEVELS[props.levelId ?? DEFAULT_LEVEL_ID] ?? LEVELS[DEFAULT_LEVEL_ID]!;
-  const level = entry.level;
+  const level = props.level ?? entry.level;
   const tier: Tier = props.tier ?? entry.defaultTier;
   const qfSeconds = ARCADE.quickfireSeconds[tier];
   const timerRef = useRef<number | null>(null);
   const fragment = level.header.fragment;
+
+  const finish = (stats: DoneStats): void => {
+    setPhase({ kind: "done", stats });
+    if (!doneSentRef.current) {
+      doneSentRef.current = true;
+      props.onDone?.({ gluehwoerter: stats.gluehwoerter, letters: stats.letters, seals: stats.seals, deaths: stats.deaths, bossWon: stats.bossWon });
+    }
+  };
+
+  /** The next unsolved counter-window task (retries stay in place, §2b). */
+  const currentBossTask = (): RescueTask => {
+    const t = bossTasksRef.current[bossAtRef.current];
+    if (t) return t;
+    bossAtRef.current = 0; // more windows than tasks: wrap (thin pools)
+    return bossTasksRef.current[0]!;
+  };
+
+  /** The 'B' door opened — swap the level scene for the duel arena. */
+  const enterBoss = (carry: NonNullable<typeof carryRef.current>): void => {
+    const script = props.boss;
+    const game = gameRef.current;
+    if (!script || !game) return;
+    carryRef.current = carry;
+    bossActiveRef.current = true;
+    bossTasksRef.current = bossPlan(props.items, script.knots, props.seed);
+    bossAtRef.current = 0;
+    const boss = new BossScene({
+      script,
+      tier,
+      hearts: carry.hearts,
+      seed: props.seed,
+      playerSeed: props.playerSeed,
+      reducedMotion,
+      pad: padRef.current,
+      onHearts: setHearts,
+      onKnots: (left, total) => setKnots([left, total]),
+      onWindow: () => {
+        const task = currentBossTask();
+        setPhase({ kind: "bossWindow", task, deadline: Date.now() + script.windowSeconds[tier] * 1000, value: "", verdict: "none" });
+      },
+      onRescue: () => {
+        bossDeathsRef.current += 1;
+        const tasks = rescuePlan(props.items, bossDeathsRef.current + (carryRef.current?.deaths ?? 0));
+        if (tasks.length === 0) {
+          bossRef.current?.resetDuel();
+          return;
+        }
+        setPhase({ kind: "rescue", rescue: { tasks, at: 0, solved: 0, value: "", verdict: "none" } });
+      },
+      onBeaten: () => {
+        const c = carryRef.current!;
+        finish({ ms: c.ms, maxCombo: c.maxCombo, letters: c.letters, words: c.words, seals: c.seals, deaths: c.deaths + bossDeathsRef.current, gluehwoerter: c.gluehwoerter, bossWon: true });
+      },
+    });
+    bossRef.current = boss;
+    game.scene.add("boss", boss, false);
+    game.scene.stop("arcade");
+    game.scene.start("boss");
+    setPhase({ kind: "bossIntro" });
+    window.setTimeout(() => setPhase((p) => (p.kind === "bossIntro" ? { kind: "run" } : p)), reducedMotion ? 900 : 2400);
+  };
 
   useEffect(() => {
     const { width, height } = ArcadeScene.dimensions();
@@ -103,7 +190,9 @@ export function ArcadeGame(props: ArcadeGameProps) {
         }
         setPhase({ kind: "rescue", rescue: { tasks, at: 0, solved: 0, value: "", verdict: "none" } });
       },
-      onComplete: (stats) => setPhase({ kind: "done", stats }),
+      onGluehwoerter: setGluehwoerter,
+      onBossDoor: (carry) => enterBoss(carry),
+      onComplete: (stats) => finish({ ...stats, bossWon: false }),
     });
     sceneRef.current = scene;
     const game = new Phaser.Game({
@@ -120,10 +209,18 @@ export function ArcadeGame(props: ArcadeGameProps) {
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
       scene,
     });
+    gameRef.current = game;
     if (process.env.NODE_ENV !== "production") {
       (window as unknown as Record<string, unknown>)["__domigoArcade"] = {
-        state: () => scene.debugState(),
+        state: () => (bossActiveRef.current && bossRef.current ? bossRef.current.debugState() : scene.debugState()),
         press: (p: Partial<ArcadePad>) => Object.assign(padRef.current, p),
+        // playtest-only: step the active scene when the tab is hidden and
+        // Phaser has slept the loop (P-37b) — no OS focus needed.
+        step: (ms: number) => {
+          game.loop.wake();
+          const active = bossActiveRef.current && bossRef.current ? bossRef.current : scene;
+          active.sys.step(performance.now(), ms);
+        },
       };
     }
     return () => {
@@ -146,6 +243,47 @@ export function ArcadeGame(props: ArcadeGameProps) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
+
+  // boss counter-window countdown — timing out just closes the window; the
+  // pattern repeats and the SAME task returns on the next dodge (§2b)
+  useEffect(() => {
+    if (phase.kind !== "bossWindow") return;
+    const t = window.setTimeout(() => answerBossWindow(null), Math.max(phase.deadline - Date.now(), 0));
+    return () => window.clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase.kind === "bossWindow" ? phase.deadline : 0]);
+
+  /** The counter window: one brain grades, the FSM resumes. Wrong answers
+   *  scaffold the SAME task down (typed → chips) for the next window. */
+  const answerBossWindow = (input: string | null): void => {
+    if (phase.kind !== "bossWindow") return;
+    const task = phase.task;
+    let correct = false;
+    if (input !== null) {
+      const item = props.items.find((r) => r.item.id === task.itemId);
+      if (item) {
+        if (task.kind === "vocab") {
+          correct = gradeVocab(item.item as VocabItem, input, task.pool ?? "carrier").tier !== "wrong";
+          void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: task.itemId, mode: props.mode, input: { kind: "vocab", value: input, pool: task.pool ?? "carrier" }, latencyMs: null, hintUsed: false });
+        } else {
+          correct = gradeGrammar(item.item as GrammarItem, { kind: "choice", value: input }).tier !== "wrong";
+          void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: task.itemId, mode: props.mode, input: { kind: "choice", value: input }, latencyMs: null, hintUsed: false });
+        }
+      }
+    }
+    if (correct) {
+      bossAtRef.current += 1;
+      setPhase({ ...phase, verdict: "right" });
+    } else if (input !== null) {
+      // scaffold down in place for the next window
+      bossTasksRef.current[bossAtRef.current] = rescueScaffold(task, props.items);
+      setPhase({ ...phase, value: "", verdict: "wrong" });
+    }
+    window.setTimeout(() => {
+      bossRef.current?.resolveWindow(correct);
+      setPhase({ kind: "run" });
+    }, correct ? (reducedMotion ? 300 : 650) : input === null ? 0 : (reducedMotion ? 400 : 800));
+  };
 
   /** ONE brain: grade through the engine, post the attempt, resume. */
   const answerQuickfire = (chip: string | null) => {
@@ -192,7 +330,10 @@ export function ArcadeGame(props: ArcadeGameProps) {
       if (solved >= rescue.tasks.length) {
         setPhase({ kind: "rescue", rescue: { ...rescue, solved, verdict: "right" } });
         window.setTimeout(() => {
-          sceneRef.current?.respawn();
+          // in the duel the rescue restarts the fight at the door (§2b);
+          // in the level it returns to the last checkpoint flag
+          if (bossActiveRef.current) bossRef.current?.resetDuel();
+          else sceneRef.current?.respawn();
           setPhase({ kind: "run" });
         }, reducedMotion ? 400 : 700);
       } else {
@@ -224,12 +365,70 @@ export function ArcadeGame(props: ArcadeGameProps) {
           <div style={{ display: "flex", gap: 6 }}>
             <span style={hudChip}>{"❤".repeat(Math.max(hearts, 0))}{"♡".repeat(Math.max(3 - hearts, 0))}</span>
             <span style={hudChip}>✦ {letters}</span>
+            {gluehwoerter > 0 && <span style={{ ...hudChip, color: "#ffe082" }}>✺ {gluehwoerter}</span>}
           </div>
           <div style={{ display: "flex", gap: 6 }}>
             {combo >= 2 && <span className="dg-qf-combo" style={{ ...hudChip, background: "#8b7cf5", color: "#141221" }}>×{combo}</span>}
-            <span style={hudChip}>⬧ {seals[0]}/{seals[1]}</span>
+            {knots !== null ? (
+              <span style={hudChip}>Knoten {knots[0]}/{knots[1]}</span>
+            ) : (
+              <span style={hudChip}>⬧ {seals[0]}/{seals[1]}</span>
+            )}
           </div>
         </div>
+
+        {/* the guardian arrives — the duel's intro card */}
+        {phase.kind === "bossIntro" && props.boss && (
+          <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(15,13,26,0.72)", padding: 14, pointerEvents: "none" }}>
+            <div style={{ textAlign: "center" }}>
+              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#8b7cf5" }}>Der Kapitelwächter</div>
+              <div style={{ fontSize: 30, fontWeight: 800, fontFamily: "var(--font-display)", color: "#f3f1ff", margin: "6px 0" }}>{props.boss.name}</div>
+              <p style={{ fontSize: 15, color: "#c9c4e4", margin: 0, maxWidth: 420 }}>{props.boss.intro}</p>
+              <p style={{ fontSize: 13, color: "#8f8ab0", marginTop: 10 }}>Weich aus — und wenn er sich verheddert: schreib!</p>
+            </div>
+          </div>
+        )}
+
+        {/* the COUNTER WINDOW — dodge earned it; production answers unravel a knot */}
+        {phase.kind === "bossWindow" && props.boss && (
+          <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(15,13,26,0.9)", padding: 14 }}>
+            <div className="dg-qf-card" style={{ width: "min(520px, 96%)", textAlign: "center" }}>
+              <div className="dg-qf-ring" style={{ ["--qf-s" as string]: `${props.boss.windowSeconds[tier]}s` }} aria-hidden="true" />
+              <div style={{ fontSize: 22, fontWeight: 800, fontFamily: "var(--font-display)", marginBottom: 2, color: "#f3f1ff" }}>Er verheddert sich — jetzt!</div>
+              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#8b7cf5", margin: "8px 0 6px" }}>{phase.task.ask}</div>
+              <div style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.4, marginBottom: 14, color: "#f3f1ff" }}>{phase.task.prompt}</div>
+              {phase.task.presentation === "typed" ? (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (phase.value.trim() !== "") answerBossWindow(phase.value.trim());
+                  }}
+                  style={{ display: "flex", gap: 8, justifyContent: "center" }}
+                >
+                  <input
+                    autoFocus
+                    value={phase.value}
+                    onChange={(e) => setPhase({ ...phase, value: e.target.value })}
+                    placeholder="Schreib die Antwort …"
+                    data-testid="boss-input"
+                    style={{ flex: 1, maxWidth: 280, fontSize: 18, padding: "10px 14px", borderRadius: 12, border: "2px solid #3a3654", background: "#1b1930", color: "#f3f1ff" }}
+                  />
+                  <button type="submit" className="dg-btn">Konter!</button>
+                </form>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {(phase.task.chips ?? []).map((chip) => (
+                    <button key={chip} type="button" className="dg-qf-chip" onClick={() => answerBossWindow(chip)}>
+                      {chip}
+                    </button>
+                  ))}
+                </div>
+              )}
+              {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Er windet sich frei! Gleich kommt die nächste Chance — dann mit Auswahl.</p>}
+              {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Ein Knoten löst sich! ✶</p>}
+            </div>
+          </div>
+        )}
 
         {/* QUICKFIRE — one word, three chips, one tap */}
         {phase.kind === "quickfire" && (
@@ -313,16 +512,21 @@ export function ArcadeGame(props: ArcadeGameProps) {
         {phase.kind === "done" && (
           <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(20,18,33,0.9)", padding: 16 }}>
             <div style={{ background: "var(--card)", color: "var(--text)", borderRadius: 20, padding: "22px 26px", textAlign: "center", maxWidth: 400, width: "100%", border: "2px solid #8b7cf5" }}>
-              <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: "#8b7cf5" }}>Fragment gefunden</div>
+              <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: "#8b7cf5" }}>
+                {phase.stats.bossWon ? "Kapitel wiederhergestellt" : "Fragment gefunden"}
+              </div>
               <div style={{ fontSize: 24, fontWeight: 800, fontFamily: "var(--font-display)", margin: "6px 0 2px" }}>{fragment}</div>
+              {phase.stats.bossWon && props.boss && <p style={{ fontSize: 14, color: "var(--muted)", margin: "2px 0 6px" }}>{props.boss.outro}</p>}
               <p style={{ fontSize: 15, margin: "10px 0 4px" }}>
-                ⬧ {phase.stats.seals} Siegel · ✦ {phase.stats.letters} Buchstaben · {phase.stats.words} Wörter · beste Serie ×{phase.stats.maxCombo}
+                ⬧ {phase.stats.seals} Siegel · ✦ {phase.stats.letters} Buchstaben{phase.stats.gluehwoerter > 0 ? ` · ✺ ${phase.stats.gluehwoerter} Glühwörter` : ""} · beste Serie ×{phase.stats.maxCombo}
               </p>
               <p style={{ fontSize: 13, color: "var(--muted)", margin: 0 }}>
                 {Math.round(phase.stats.ms / 1000)}s{phase.stats.deaths > 0 ? ` · ${phase.stats.deaths}× gerettet` : " · ohne Rettung!"}
               </p>
               <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 16 }}>
-                <a className="dg-btn-secondary" href={props.hubHref} style={{ textDecoration: "none" }}>Zur Schule →</a>
+                <a className="dg-btn-secondary" href={props.doneHref ?? props.hubHref} style={{ textDecoration: "none" }}>
+                  {phase.stats.bossWon ? "Zurück ins Buch →" : "Zur Schule →"}
+                </a>
               </div>
             </div>
           </div>

@@ -171,7 +171,7 @@ describe("level v2", () => {
   it("rejects ragged rows, unknown glyphs, wrong S/A counts", () => {
     expect(() => parseArcadeLevel(BARE, ["..", "..."])).toThrow(/rectangular/);
     expect(() => parseArcadeLevel(BARE, ["SQ", ".A"])).toThrow(/unknown glyph/);
-    expect(() => parseArcadeLevel(BARE, ["S.", ".."])).toThrow(/one S and one A/);
+    expect(() => parseArcadeLevel(BARE, ["S.", ".."])).toThrow(/one exit/);
   });
 
   it("tier populations are cumulative (E ⊂ M ⊂ S)", () => {

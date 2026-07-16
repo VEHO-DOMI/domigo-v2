@@ -104,6 +104,10 @@ export const userProgress = v2.table("user_progress", {
   // compare (see streak.ts). Both additive — see drizzle/0001.
   streak: integer("streak").notNull().default(0),
   lastSessionDate: text("last_session_date"),
+  // Hinweis-Funken — the Keen game's hint currency (Glühwörter collected →
+  // sparks; sparks buy hints). Server-authoritative so a wiped cosmetic save
+  // never loses it; clamped ≥0 in sparks.ts. Additive — see drizzle/0012.
+  hintSparks: integer("hint_sparks").notNull().default(0),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
