@@ -84,6 +84,9 @@ const KeenLevelHeader = z.object({
   placements: z.array(z.object({ kind: z.string(), c: z.number().int(), r: z.number().int(), tier: KeenTier })),
   seals: z.array(z.object({ c: z.number().int(), r: z.number().int(), guard: z.number().int().nullable() })),
   helpers: z.array(z.object({ c: z.number().int(), r: z.number().int(), w: z.number().int(), maxTier: KeenTier })),
+  // v2.2 (zod strips unknown keys — every new header field MUST be added here)
+  movers: z.array(z.object({ c1: z.number().int(), r1: z.number().int(), c2: z.number().int(), r2: z.number().int(), w: z.number().int(), periodMs: z.number().int() })).optional(),
+  goalDe: z.string().optional(),
 });
 
 const KeenLevelFile = z.object({

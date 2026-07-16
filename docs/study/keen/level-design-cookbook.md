@@ -135,12 +135,43 @@ mass varies 10× between levels; the biggest treasures are hidden LIVES, never r
 | 14 Lieblings- | showcase traverse | ~90×26 | color-return set-pieces mid-level · every earlier motif cameos once |
 | 15 Finale | multi-floor arena approach | ~45×40 | quiet climb (sparse, no letters — the Well-of-Wishes hush) → the rescue duel |
 
-(Ch01 shipped at 48×16 in the slice; it gets RESIZED to ~70×24 in the first W3 wave to meet
-§1 — noted as the template's one known deviation.)
+(Ch01 was rebuilt to 72×24 in the calibration round of 2026-07-16 — the §1 deviation is
+CLOSED; ch01 is now the shape exemplar the archetypes above replicate from.)
+
+## §7b · The v2.2 verb vocabulary (from Koki's slice verdict + the visual map study)
+
+The calibration round (2026-07-16) added the structural devices the Keen 4 maps use, and
+they are now REQUIRED vocabulary — a chapter that is one connected outdoor strip is
+under-built. Glyphs/fields: `|` pole · `1`–`4` door pairs (exactly two cells each) ·
+`header.movers` (anchor-to-anchor patrol platforms) · `header.goalDe` (the goal card text).
+
+1. **Sub-rooms on one canvas** (Border Village grammar): box off interior rooms in unused
+   sky, link them with door pairs. Doors are the SEAL WINGS of §2 — one wing, one door,
+   one guard. Walk-in: stand + fresh ↑. Pair gems are color-coded by id so kids can read
+   which two doors connect.
+2. **Poles** (Perilous Pit switchboard): climb up slow, SLIDE down fast, jump-key hops off.
+   Authoring law: a ledge served by a pole sits AT or ≤1 row above the pole's top cell —
+   the top-out pop clears ~2 tiles (`poleTopVy`), never more. A pole may thread a `=`
+   hatch: top out THROUGH it (one-ways pass from below).
+3. **Movers**: 1–2 per chapter, each with a JOB (a lift crossing a fall-recovery shaft; a
+   ferry to a seal island). Period ≥ 2.6s so the ride is readable. The laws treat both
+   anchor tops as standable and the ride as an edge — collectibles go on anchor LINES,
+   never mid-path (BFS can't see a moving floor).
+4. **Facade-as-level** (Pyramid of the Moons): the chapter's building exterior is terrain —
+   terraced steps up the face, the roof as a deck, interiors behind doors.
+5. **Rolling ground**: the verticality law (≥4 elevation changes/screen) is checked
+   machine-side; author mounds/dips/steps, never a flat run.
+6. **Goal communication (Koki's law: "take the student by the hand")**: every level SAYS
+   its goal — `goalDe` names the wings in student German ("eines im Klassenzimmer, eines
+   auf dem Dachboden"); the objective chip counts seals then flips to →Zur Tür; once the
+   door unseals, an edge arrow points to it whenever it's off-screen. A student who stops
+   knowing what to do next is an authoring bug, not a player failure.
 
 ## §8 · The wave checklist (append to every W3 brief)
 
 - [ ] Size/shape per §7; shape differs from the previous chapter
+- [ ] §7b vocabulary used with intent: ≥1 door-pair wing · ≥1 pole with a job · movers
+      only where they have one · `goalDe` names the wings in student German
 - [ ] `checkLevelLaws` green (reachability incl. Glühwörter — machine-checked)
 - [ ] Seals: one per designed wing; no shared paths (§2)
 - [ ] Density 0.75–1.25/screen tier E; ONE signature sending on the three-beat grammar (§3)

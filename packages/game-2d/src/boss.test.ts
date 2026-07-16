@@ -141,3 +141,54 @@ describe("level format v2.1", () => {
     expect(lvl.pedestal).toEqual({ c: 5, r: 0 });
   });
 });
+
+// ---------------------------------------------------------------------------
+// v2.2: poles, in-level door pairs, movers (the calibration round)
+// ---------------------------------------------------------------------------
+import { checkLevelLaws } from "./arcade.ts";
+
+describe("level format v2.2", () => {
+  it("parses poles and door pairs; a door glyph needs exactly two cells", () => {
+    const lvl = parseArcadeLevel(HEADER, [
+      ".1..|...1.B.",
+      "....|.......",
+      "S...|.......",
+      "############",
+    ]);
+    expect(lvl.poles.length).toBe(3);
+    expect(lvl.doors).toEqual([{ id: "1", a: { c: 1, r: 0 }, b: { c: 8, r: 0 } }]);
+    expect(() => parseArcadeLevel(HEADER, ["S.1..B", "######"])).toThrow(/door '1'/);
+  });
+
+  it("laws: poles, doors and movers extend reachability", () => {
+    // the letter sits on an island reachable ONLY through the door pair;
+    // the Glühwort only via the mover ride; the high checkpoint via the pole
+    const header = { ...HEADER, movers: [{ c1: 2, r1: 6, c2: 8, r2: 6, w: 2, periodMs: 2600 }] };
+    const lvl = parseArcadeLevel(header, [
+      "............##L#",
+      "............#..#",
+      "..C.........#1.#",
+      "..|.........####",
+      "..|....G........",
+      "..|.............",
+      "................",
+      "S..1........B...",
+      "################",
+    ]);
+    const report = checkLevelLaws(lvl);
+    expect(report.errors).toEqual([]);
+    // tamper: remove the door pair → the island letter becomes unreachable
+    const cut = parseArcadeLevel(HEADER, [
+      "............##L#",
+      "............#..#",
+      "............#..#",
+      "............####",
+      "................",
+      "................",
+      "................",
+      "S...........B...",
+      "################",
+    ]);
+    expect(checkLevelLaws(cut).errors.some((e) => e.includes("letter"))).toBe(true);
+  });
+});
