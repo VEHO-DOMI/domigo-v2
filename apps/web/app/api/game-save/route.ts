@@ -10,7 +10,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { MAX_GAME_SAVE_BYTES, gameSaveStateBytes, getDb, getGameSave, upsertGameSave } from "@domigo/db";
-import { getActingUser } from "@/lib/identity";
+import { getActingPlayer } from "@/lib/identity";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -28,7 +28,7 @@ const PutBody = z.object({
 });
 
 export async function GET(req: Request): Promise<Response> {
-  const acting = await getActingUser(req);
+  const acting = await getActingPlayer(req); // student OR teacher (preview law)
   if (!acting) return NextResponse.json({ ok: false, error: "no_identity" }, { status: 401 });
 
   const mode = new URL(req.url).searchParams.get("mode") ?? "";
@@ -45,7 +45,7 @@ export async function GET(req: Request): Promise<Response> {
 }
 
 export async function PUT(req: Request): Promise<Response> {
-  const acting = await getActingUser(req);
+  const acting = await getActingPlayer(req); // student OR teacher (preview law)
   if (!acting) return NextResponse.json({ ok: false, error: "no_identity" }, { status: 401 });
 
   const parsed = PutBody.safeParse(await req.json().catch(() => null));

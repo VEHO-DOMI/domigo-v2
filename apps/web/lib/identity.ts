@@ -64,3 +64,26 @@ export async function getTeacherForPage(): Promise<ActingTeacher | null> {
   if (!userId) return null;
   return { userId, name: process.env.DEV_TEACHER_NAME ?? "Dev Teacher" };
 }
+
+/**
+ * Player identity for the GAME surfaces (world map / level runner / save
+ * endpoint): a student session first — real progress, real class stats. A
+ * TEACHER session may also PLAY (the pre-release preview, Koki 2026-07-17):
+ * their userId doubles as the denormalized classId on the save row (no FK on
+ * game_saves), while /api/attempts keeps rejecting teachers — teacher play
+ * never lands in class mastery.
+ */
+export async function getPlayerForPage(): Promise<ActingUser | null> {
+  const acting = await getActingUserForPage();
+  if (acting) return acting;
+  const teacher = await getTeacherForPage();
+  return teacher ? { userId: teacher.userId, classId: teacher.userId } : null;
+}
+
+/** Route-handler variant of getPlayerForPage (game-save GET/PUT). */
+export async function getActingPlayer(req: Request): Promise<ActingUser | null> {
+  const acting = await getActingUser(req);
+  if (acting) return acting;
+  const teacher = await getTeacherForPage();
+  return teacher ? { userId: teacher.userId, classId: teacher.userId } : null;
+}

@@ -13,7 +13,7 @@ import { getDb, getDueRefs } from "@domigo/db";
 import { resolveEncounterTasks } from "@domigo/game-core";
 import { parseArcadeLevel, type ArcadeLevel } from "@domigo/game-2d/arcade";
 import type { BossScript } from "@domigo/game-2d/boss";
-import { getActingUserForPage, getTeacherForPage } from "@/lib/identity";
+import { getPlayerForPage, getTeacherForPage } from "@/lib/identity";
 import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
 import { resolveKeenArt } from "@/lib/keen-art";
 import ArcadeClient from "./ArcadeClient";
@@ -38,7 +38,7 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
   // Pre-release gate with a teacher door (see world/page.tsx).
   if (process.env.VERCEL_ENV === "production" && (await getTeacherForPage()) === null) redirect(`/play/${grade}`);
 
-  const acting = await getActingUserForPage();
+  const acting = await getPlayerForPage(); // student OR teacher (preview law)
   if (!acting) redirect("/signin");
 
   // v2.1 (bible 27): `level=g1-chNN` loads a content-authored chapter level +
