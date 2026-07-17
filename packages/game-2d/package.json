@@ -10,7 +10,8 @@
     "./arcade": "./src/arcade.ts",
     "./boss": "./src/boss.ts",
     "./dialogue": "./src/dialogue.tsx",
-    "./cutscene": "./src/cutscene.tsx"
+    "./cutscene": "./src/cutscene.tsx",
+    "./fullscreen": "./src/fullscreen.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

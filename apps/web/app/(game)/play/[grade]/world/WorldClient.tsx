@@ -16,6 +16,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { Chapter, Scene } from "@domigo/content-schema";
 import { type WorldCopy } from "@domigo/game-2d/dialogue";
 import { CutscenePlayer } from "@domigo/game-2d/cutscene";
+import { toggleGameFullscreen } from "@domigo/game-2d/fullscreen";
 import type { MapGameProps } from "@domigo/game-2d";
 import type { ResolvedItem } from "@domigo/game-core";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
@@ -31,7 +32,7 @@ const LS_KEY = `domigo:gamesave:${GAME_MODE}`;
 interface SaveV3 {
   v: 3;
   chapters: Record<string, { done: boolean }>;
-  beats: Record<string, { door?: boolean; restore?: boolean }>;
+  beats: Record<string, { door?: boolean; restore?: boolean; door2?: boolean }>;
   pos?: { c: number; r: number };
 }
 interface SavePayload { clientRev: number; state: unknown }
@@ -166,11 +167,13 @@ export default function WorldClient(props: {
   }, [restoring]);
 
   // ── the PROLOGUE (doc 28 §3): the cold-open plays ONCE, before everything ──
+  // v4 W0: the key is VERSIONED (`door2`) — saves that closed the old 4-shot
+  // prologue replay the rebuilt 13-shot one once (Koki's prod save never saw it)
   const [prologueOpen, setPrologueOpen] = useState(
-    () => props.prologue != null && at.beats["ch00"]?.door !== true,
+    () => props.prologue != null && at.beats["ch00"]?.door2 !== true,
   );
   const closePrologue = () => {
-    saveRef.current.beats["ch00"] = { ...(saveRef.current.beats["ch00"] ?? {}), door: true };
+    saveRef.current.beats["ch00"] = { ...(saveRef.current.beats["ch00"] ?? {}), door2: true };
     persist();
     setPrologueOpen(false);
   };
@@ -242,7 +245,15 @@ export default function WorldClient(props: {
         <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>Die verlorenen Seiten — Weltkarte</h1>
         <div style={{ display: "flex", gap: 12, alignItems: "baseline" }}>
           {sparks !== null && <span style={{ fontSize: 14, fontWeight: 700, color: "#b8962e" }}>✺ {sparks} Funken</span>}
-          <Link href="/play/1" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Alle Räume</Link>
+          <span style={{ display: "inline-flex", gap: 14, alignItems: "center" }}>
+            <Link href="/play/1" style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>← Alle Räume</Link>
+            <button type="button" onClick={() => toggleGameFullscreen()} title="Vollbild" style={{ fontSize: 15, color: "var(--accent)", background: "none", border: "none", cursor: "pointer", padding: 0 }}>⛶</button>
+            {props.prologue != null && (
+              <button type="button" onClick={() => setPrologueOpen(true)} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600, background: "none", border: "none", cursor: "pointer", padding: 0 }}>
+                📖 Prolog
+              </button>
+            )}
+          </span>
         </div>
       </div>
 
