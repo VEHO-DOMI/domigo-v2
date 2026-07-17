@@ -73,3 +73,6 @@ and imports your images; nothing you write reaches the game directly.
   readable in half a second at game size — test by squinting.
 - CP-7 No text, watermarks, signatures, or borders — letterforms only where
   a card explicitly asks for them.
+- CP-8 The generator accepts at most FIVE reference files per call: attach
+  hero-v1 + four representative ref_keen_* crops to generations; ALL refs stay
+  the visual review standard regardless (learned in the Batch V run).
