@@ -297,10 +297,15 @@ export class MapScene extends Phaser.Scene {
         if (entry.prop === "bramble") {
           // topological unlock (§1.8): beaten chapter ⇒ the tangle is GONE
           if (entry.clearedBy !== undefined && cleared.has(entry.clearedBy)) continue;
-          this.add.image(x, y, tex("bramble")).setDepth(3);
+          {
+            const bKey = this.textures.exists("img-mdec_bush") ? "img-mdec_bush" : tex("bramble");
+            const bImg = this.add.image(x, y, bKey).setDepth(3);
+            if (bKey !== tex("bramble")) bImg.setDisplaySize(TILE * 1.05, TILE * 1.05);
+          }
           addSolid(c, r);
         } else if (entry.prop === "tree") {
-          this.add.image(x, y, tex("tree")).setDisplaySize(TILE, TILE).setDepth(3);
+          const treeKey = this.textures.exists("img-mdec_tree") ? "img-mdec_tree" : tex("tree");
+          this.add.image(x, y, treeKey).setDisplaySize(TILE * 1.15, TILE * 1.15).setDepth(3);
           addSolid(c, r);
         } else if (entry.prop === "npc:finn" || entry.prop === "npc:pixel") {
           const finn = entry.prop === "npc:finn";
@@ -473,7 +478,16 @@ export class MapScene extends Phaser.Scene {
     if (dx !== 0) this.facing = dx > 0 ? 1 : -1;
     this.player.setFlipX(this.facing === -1);
     const moving = dx !== 0 || dy !== 0;
-    const frame = moving ? (Math.floor(now / 130) % 2 === 0 ? "p-right-1" : "p-right-2") : "p-right";
+    // batch-U generated map hero: side pair while moving horizontally, down
+    // pair otherwise; procedural p-right frames stay the fallback
+    const gen = this.textures.exists("img-maphero_down1");
+    let frame: string;
+    if (gen) {
+      const step = Math.floor(now / 130) % 2 === 0 ? 1 : 2;
+      frame = !moving ? "img-maphero_down1" : dx !== 0 ? `img-maphero_side${step}` : `img-maphero_down${step}`;
+    } else {
+      frame = moving ? (Math.floor(now / 130) % 2 === 0 ? "p-right-1" : "p-right-2") : "p-right";
+    }
     if (this.player.texture.key !== frame && this.textures.exists(frame)) {
       this.player.setTexture(frame);
       this.player.setDisplaySize(TILE, TILE);

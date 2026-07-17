@@ -1,0 +1,48 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 4,
+ "rows": 2,
+ "cells": [
+  {
+   "stem": "mdec_tree",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "mdec_bush",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "mdec_fence",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "mdec_sign",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "stem": "mdec_bridge",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "mdec_rock",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "mdec_flowers",
+   "col": 2,
+   "row": 1
+  },
+  {
+   "stem": "mdec_inkpool",
+   "col": 3,
+   "row": 1
+  }
+ ]
+}

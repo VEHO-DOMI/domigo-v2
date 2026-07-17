@@ -1,0 +1,68 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 4,
+ "rows": 3,
+ "cells": [
+  {
+   "stem": "walker2-0",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "walker2-1",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "hopper2-0",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "hopper2-1",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "stem": "flyer2-0",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "flyer2-1",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "thief2-0",
+   "col": 2,
+   "row": 1
+  },
+  {
+   "stem": "thief2-1",
+   "col": 3,
+   "row": 1
+  },
+  {
+   "stem": "cushion2-0",
+   "col": 0,
+   "row": 2
+  },
+  {
+   "stem": "cushion2-1",
+   "col": 1,
+   "row": 2
+  },
+  {
+   "stem": "cloud2-0",
+   "col": 2,
+   "row": 2
+  },
+  {
+   "stem": "cloud2-1",
+   "col": 3,
+   "row": 2
+  }
+ ]
+}

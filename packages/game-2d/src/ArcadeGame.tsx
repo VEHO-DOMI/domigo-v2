@@ -541,7 +541,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
               <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#8b7cf5" }}>Der Kapitelwächter</div>
               <div style={{ fontSize: 30, fontWeight: 800, fontFamily: "var(--font-display)", color: "#f3f1ff", margin: "6px 0" }}>{props.boss.name}</div>
               <p style={{ fontSize: 15, color: "#c9c4e4", margin: 0, maxWidth: 420 }}>{props.boss.intro}</p>
-              <p style={{ fontSize: 13, color: "#8f8ab0", marginTop: 10 }}>Weich aus — und wenn er sich verheddert: schreib!</p>
+              <p style={{ fontSize: 13, color: "#8f8ab0", marginTop: 10 }}>Weich aus — und wenn er sich verknotet: schreib!</p>
             </div>
           </div>
         )}
@@ -551,7 +551,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
           <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(15,13,26,0.9)", padding: 14 }}>
             <div className="dg-qf-card" style={{ width: "min(520px, 96%)", textAlign: "center" }}>
               <div className="dg-qf-ring" style={{ ["--qf-s" as string]: `${props.boss.windowSeconds[tier]}s` }} aria-hidden="true" />
-              <div style={{ fontSize: 22, fontWeight: 800, fontFamily: "var(--font-display)", marginBottom: 2, color: "#f3f1ff" }}>Er verheddert sich — jetzt!</div>
+              <div style={{ fontSize: 22, fontWeight: 800, fontFamily: "var(--font-display)", marginBottom: 2, color: "#f3f1ff" }}>Er verknotet sich — jetzt!</div>
               <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#8b7cf5", margin: "8px 0 6px" }}>{phase.task.ask}</div>
               <div style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.4, marginBottom: 14, color: "#f3f1ff" }}>{phase.task.prompt}</div>
               {phase.task.presentation === "typed" ? (

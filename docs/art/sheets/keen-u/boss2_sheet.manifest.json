@@ -1,0 +1,28 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 2,
+ "rows": 2,
+ "cells": [
+  {
+   "stem": "boss2_head_idle",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "boss2_head_tell",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "boss2_card",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "boss2_burst",
+   "col": 1,
+   "row": 1
+  }
+ ]
+}
