@@ -1,0 +1,563 @@
+{
+  "library": "keen-batch-w",
+  "note": "Batch W — the HD-pixel shift (game v5, STYLE_PIXEL_V3). Slice per docs/art/sheets/keen-w manifests (tolerance 40); defringe edge-erosion; terrain3 tiles are 48px edge-tileable. Gate-only cards (_style_key_pixel3, hero3_calib_sheet, st_calib_sheet) are eyeballed, never sliced. Missing stems keep procedural/earlier-batch fallbacks.",
+  "dropFolder": "docs/art/drop-w",
+  "count": 111,
+  "stems": [
+    {
+      "stem": "earth3_a",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "earth3_b",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "earth3_c",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "grass3_top",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "grass3_tl",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "grass3_tr",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "edge3_l",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "edge3_r",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "slope3_up",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "slope3_down",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "earth3_inner",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "ledge3",
+      "class": "tile",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "hero3_stand",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_run1",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_run2",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_run3",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_run4",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_jump",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_fall",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_pogo1",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_pogo2",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_climb1",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_climb2",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_hang",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_idle",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_lookup",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_lookdown",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero3_sit",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "st_pencil3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pencil3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pen3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pen3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_rubber3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_rubber3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_ruler3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_ruler3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_scissors3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_scissors3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_glue_stick3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_glue_stick3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pencil_case3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pencil_case3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_exercise_book3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_exercise_book3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_watercolours3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_watercolours3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_paintbrush3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_paintbrush3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pencil_sharpener3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pencil_sharpener3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_book3_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_book3_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "boss3_head_idle",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "boss3_head_tell",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "boss3_card",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "boss3_burst",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs3_sing",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs3_stand",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs3_write",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs3_window",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs3_speak",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs3_books",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs3_friendly",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs3_sad",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit3_orb",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit3_glow",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cloud3_a",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cloud3_b",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cloud3_c",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cloud3_d",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "swirl3_a",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "swirl3_b",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_chair3_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_chair3_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_desk3_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_desk3_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_board3_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_board3_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_door3_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_door3_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_window3_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_window3_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_school_bag3_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_school_bag3_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "bld3_ch01_sad",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld3_ch01_alive",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld3_ch02_sad",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld3_ch02_alive",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld3_ch03_sad",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld3_ch03_alive",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld3_ch04_sad",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld3_ch04_alive",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld3_ch05_sad",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld3_ch05_alive",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld3_locked",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld3_spare",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "prop_pole3",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_gluehwort3",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_seal3",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_spikes3",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "dec_fence3",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "dec_tree3",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "dec_bush3",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_door3",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "p3_finn",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    },
+    {
+      "stem": "p3_pixel",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    },
+    {
+      "stem": "p3_berger",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    },
+    {
+      "stem": "p3_tintengeist",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    },
+    {
+      "stem": "p3_jona",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    },
+    {
+      "stem": "p3_ghost",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    },
+    {
+      "stem": "worldmap_painted",
+      "class": "background",
+      "dest": "g1/keen/map"
+    }
+  ]
+}

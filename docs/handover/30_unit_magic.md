@@ -45,12 +45,46 @@ yellow, blue, orange, green, brown, pink, white, black, grey — the pencil case
 "I hate pink!"). Ch01's colorless-classroom set-piece is the book's own fiction, animated.
 Every unit sheet hunts for this: the unit's own illustrations are the level's art brief.
 
+### §2.1 · THE ART BAR — STYLE_PIXEL_V3 (Koki's #199 verdict, 2026-07-17 late) — GOVERNS
+
+Koki's full-art replay: *"we're past the Keen-4 starting point — too pixelated, too ugly,
+especially the brown ground. HD pixel art: sharper, variety, beautiful — but still pixel art."*
+He chose the **Modern-Indie HD-Pixel bar (Owlboy / Eastward)**. This RETIRES the EGA-16 /
+Keen-4 gameplay contract (STYLE_PIXEL_V2) for all NEW art:
+- **Freed palette** — an extended, curated, harmonious palette (5–7 tones/material), not EGA-16,
+  not photographic. Warm storybook key + one accent per unit (ch01 = green).
+- **★ THE ANTI-NOISE LAW** — the load-bearing inversion of V2. NO speckle, NO random 1-pixel
+  scatter, NO checkerboard noise fill (that grain is exactly what made the ground read ugly).
+  Shade with clean smooth tonal bands; soft dithering ONLY to ease a two-tone boundary;
+  material reads through a few hand-placed, intentional accents with generous clean space.
+- Native res (~40px sprites, 48px tiles), integer scaling only; organic silhouettes, cohesive
+  top-left light, selective interior AA on curves, crisp outer edge; 2–3 gentle variants so no
+  tiled surface reads as an obvious repeat.
+- **The WORLD MAP is PAINTED, not pixel** (class CUTSCENE) — the engine composites pixel
+  buildings/hero/NPCs onto the painted clearings.
+- Canonical spec = `docs/art/commission-w.mjs` (`STYLE_PIXEL_V3`). Batch W regenerates the
+  ch01 cast + terrain + map at this bar; the two-class law survives (painted cutscenes vs
+  HD-pixel gameplay). **Calibrate-first: the style key + a small cluster are gated by Koki
+  before the ~90-image regen runs.**
+
 ## §3 · THE MODALITY KIT (built once in ch01, reused ONLY where a unit's language calls for it)
 
 | modality | what happens | ch01 use |
 |---|---|---|
 | **object-battle** | a bewitched vocabulary object attacks; its generated character art IS the prompt; name it (typed w/ hint ladder, or chips) → it is freed (happy variant) | the 11 school things |
 | **swarm barrier** | a swirl of items blocks a passage; a rapid chain (5–8 items, one at a time, both directions, big buttons; misses recycle to the end) clears it | numbers 1–25 ↔ number words |
+
+**Two laws on these encounters (v5 W0, Koki's #199 verdict — binding):**
+1. **NAMING IS THE ONLY WAY TO FREE.** The Federstab swing NEVER frees or removes a creature —
+   it only SHOOS (short knockback + daze so the student can slip past). The bewitched object is
+   freed exclusively by naming it in the encounter card.
+2. **THE TWO-SKIN LAW — freed things STAY.** A correctly-named object turns friendly and
+   REMAINS in the level (its `_free` art, a content little hop) — it never vanishes. Both skins
+   (`_wild`, `_free`) are drawn for exactly this; a freed creature that disappears is a defect.
+
+**On the swarm:** it reads as a big DRIFTING CLOUD filling the passage (unavoidable, alive),
+not a thin static string. Chip options are seed-shuffled (the answer is never fixed at one
+position — the authored JSON lists it first; every display surface shuffles).
 | **restoration room** | a sub-room rendered drained; each object: name it → it lights up → pick its color ("What colour is …?") → colored variant pops in; room restored → exit opens, color floods | the midnight classroom |
 | **command duel** | a misbehaving figure cycles action poses; per action a 3-choice imperative card; right command = it stops; 4–6 rounds → friendly | the ghost-student, Unit-1 imperatives |
 | **dialogue finale** | a chat-style Q&A wrap-up (asking + answering, workbook-style) — the unit's communicative function, always LAST | meeting & greeting the freed student |
