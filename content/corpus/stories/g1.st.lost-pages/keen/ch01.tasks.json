@@ -10,9 +10,16 @@
       "kind": "choice",
       "storyDe": "Ein verknotetes Wort zappelt vor dir — welches ist es?",
       "promptEn": "You write with it.",
-      "options": ["pencil", "chair", "window"],
+      "options": [
+        "pencil",
+        "chair",
+        "window"
+      ],
       "answer": "pencil",
-      "hints": { "deDesc": "Du schreibst und zeichnest damit.", "deWord": "der Bleistift" },
+      "hints": {
+        "deDesc": "Du schreibst und zeichnest damit.",
+        "deWord": "der Bleistift"
+      },
       "grounding": "SB p.12 school things; WB p.13 'to write — Write the numbers.'"
     },
     {
@@ -21,9 +28,16 @@
       "kind": "choice",
       "storyDe": "Das nächste Wort will zurück ins Klassenzimmer!",
       "promptEn": "You sit on it.",
-      "options": ["chair", "board", "ruler"],
+      "options": [
+        "chair",
+        "board",
+        "ruler"
+      ],
       "answer": "chair",
-      "hints": { "deDesc": "Du sitzt darauf.", "deWord": "der Stuhl" },
+      "hints": {
+        "deDesc": "Du sitzt darauf.",
+        "deWord": "der Stuhl"
+      },
       "grounding": "SB p.14 classroom objects; WB p.13 'to sit down'"
     },
     {
@@ -32,9 +46,16 @@
       "kind": "choice",
       "storyDe": "Dieses Wort gehört zum Klassenzimmer — hörst du es klappern?",
       "promptEn": "You open it and go in.",
-      "options": ["door", "floor", "desk"],
+      "options": [
+        "door",
+        "floor",
+        "desk"
+      ],
       "answer": "door",
-      "hints": { "deDesc": "Du machst sie auf und gehst hinein.", "deWord": "die Tür" },
+      "hints": {
+        "deDesc": "Du machst sie auf und gehst hinein.",
+        "deWord": "die Tür"
+      },
       "grounding": "SB p.14 classroom objects; WB p.13 'to open — Open the window.'"
     },
     {
@@ -43,9 +64,16 @@
       "kind": "choice",
       "storyDe": "Ein helles Wort flattert vorbei!",
       "promptEn": "You look out of it.",
-      "options": ["window", "book", "school bag"],
+      "options": [
+        "window",
+        "book",
+        "school bag"
+      ],
       "answer": "window",
-      "hints": { "deDesc": "Du schaust hindurch nach draußen.", "deWord": "das Fenster" },
+      "hints": {
+        "deDesc": "Du schaust hindurch nach draußen.",
+        "deWord": "das Fenster"
+      },
       "grounding": "SB p.14 classroom objects; WB p.13 'to look — Look at the animals.'"
     },
     {
@@ -54,9 +82,16 @@
       "kind": "choice",
       "storyDe": "Dieses Wort trägt schwer — was ist es?",
       "promptEn": "Your books and pens are in it.",
-      "options": ["school bag", "floor", "projector"],
+      "options": [
+        "school bag",
+        "floor",
+        "projector"
+      ],
       "answer": "school bag",
-      "hints": { "deDesc": "Du trägst darin deine Sachen zur Schule.", "deWord": "die Schultasche" },
+      "hints": {
+        "deDesc": "Du trägst darin deine Sachen zur Schule.",
+        "deWord": "die Schultasche"
+      },
       "grounding": "SB p.14 classroom objects"
     },
     {
@@ -65,10 +100,23 @@
       "kind": "choice",
       "storyDe": "Ein großes, flaches Wort lehnt an der Wand.",
       "promptEn": "The teacher writes on it.",
-      "glosses": [{ "word": "teacher", "de": "die Lehrerin / der Lehrer", "scope": "word" }],
-      "options": ["board", "chair", "tablet"],
+      "glosses": [
+        {
+          "word": "teacher",
+          "de": "die Lehrerin / der Lehrer",
+          "scope": "word"
+        }
+      ],
+      "options": [
+        "board",
+        "chair",
+        "tablet"
+      ],
       "answer": "board",
-      "hints": { "deDesc": "Die Lehrerin schreibt darauf.", "deWord": "die Tafel" },
+      "hints": {
+        "deDesc": "Die Lehrerin schreibt darauf.",
+        "deWord": "die Tafel"
+      },
       "grounding": "SB p.14 classroom objects; WB p.13 'to clean — Clean the board.'"
     },
     {
@@ -77,9 +125,16 @@
       "kind": "choice",
       "storyDe": "Zwei gleiche Wörter tanzen umeinander — wie heißen sie ZUSAMMEN?",
       "promptEn": "One book, two ...?",
-      "options": ["books", "bookes", "boks"],
+      "options": [
+        "books",
+        "bookes",
+        "boks"
+      ],
       "answer": "books",
-      "hints": { "deDesc": "Die Mehrzahl: einfach ein -s anhängen.", "deWord": "die Bücher" },
+      "hints": {
+        "deDesc": "Die Mehrzahl: einfach ein -s anhängen.",
+        "deWord": "die Bücher"
+      },
       "grounding": "SB p.15 grammar plurals 'a dog – 4 dogs'"
     },
     {
@@ -88,9 +143,16 @@
       "kind": "choice",
       "storyDe": "Diese Wörter-Familie ist besonders — pass auf!",
       "promptEn": "One child, two ...?",
-      "options": ["children", "childs", "childes"],
+      "options": [
+        "children",
+        "childs",
+        "childes"
+      ],
       "answer": "children",
-      "hints": { "deDesc": "Eine Ausnahme! KEIN -s.", "deWord": "die Kinder" },
+      "hints": {
+        "deDesc": "Eine Ausnahme! KEIN -s.",
+        "deWord": "die Kinder"
+      },
       "grounding": "SB p.15 grammar 'a child – five children'"
     },
     {
@@ -100,7 +162,12 @@
       "storyDe": "Das erste Siegel hält ein Wort fest: das Ding auf deinem Tisch, in dem deine Stifte wohnen. Sag es — dann ist es frei!",
       "promptEn": "My pens are in my ______.",
       "answer": "pencil case",
-      "hints": { "firstLetter": "p", "length": 10, "deDesc": "Deine Stifte wohnen darin.", "deWord": "das Federpennal" },
+      "hints": {
+        "firstLetter": "p",
+        "length": 10,
+        "deDesc": "Deine Stifte wohnen darin.",
+        "deWord": "das Federpennal"
+      },
       "grounding": "SB p.12 school things; WB p.4 'Colour the pencil case green, red and yellow.'"
     },
     {
@@ -110,7 +177,12 @@
       "storyDe": "Das zweite Siegel zittert im kalten Wind vom Dachboden. Gib den Befehl — dann ist die Stunde sicher!",
       "promptEn": "______ the door, please. Brrr!",
       "answer": "Close",
-      "hints": { "firstLetter": "C", "length": 5, "deDesc": "Der Befehl: zumachen!", "deWord": "schließen (Mach zu!)" },
+      "hints": {
+        "firstLetter": "C",
+        "length": 5,
+        "deDesc": "Der Befehl: zumachen!",
+        "deWord": "schließen (Mach zu!)"
+      },
       "grounding": "WB p.13 'to close — Close the door.'"
     },
     {
@@ -120,7 +192,12 @@
       "storyDe": "Der Stundenplan-Schlinger brüllt Befehle durcheinander — sag den richtigen!",
       "promptEn": "Don't ______ up! Sit down!",
       "answer": "stand",
-      "hints": { "firstLetter": "s", "length": 5, "deDesc": "Das Gegenteil von sich hinsetzen.", "deWord": "aufstehen" },
+      "hints": {
+        "firstLetter": "s",
+        "length": 5,
+        "deDesc": "Das Gegenteil von sich hinsetzen.",
+        "deWord": "aufstehen"
+      },
       "grounding": "SB p.15 imperatives 'Don't stand up!'"
     },
     {
@@ -130,7 +207,12 @@
       "storyDe": "Ein Knoten löst sich — schnell, der nächste Befehl!",
       "promptEn": "______ out your books!",
       "answer": "Take",
-      "hints": { "firstLetter": "T", "length": 4, "deDesc": "Der Befehl: herausnehmen!", "deWord": "herausnehmen" },
+      "hints": {
+        "firstLetter": "T",
+        "length": 4,
+        "deDesc": "Der Befehl: herausnehmen!",
+        "deWord": "herausnehmen"
+      },
       "grounding": "SB p.15 imperatives 'Take out your books!'"
     },
     {
@@ -138,10 +220,17 @@
       "use": "boss",
       "kind": "typed",
       "storyDe": "Der Schlinger will die Wörter-Familie verschlucken — rette sie!",
-      "promptEn": "One baby, two ______.",
-      "answer": "babies",
-      "hints": { "firstLetter": "b", "length": 6, "deDesc": "Die besondere Mehrzahl: y wird zu -ies.", "deWord": "die Babys" },
-      "grounding": "SB p.15 grammar 'a baby – 8 babies (y → ies)'"
+      "promptEn": "One fish, two ______.",
+      "answer": "fish",
+      "identityAnswer": true,
+      "identityNote": "The answer appearing in the prompt IS the pedagogy: the student must decide that the irregular plural of fish does not change (Koki 2026-07-17 — a giveaway is an UNINTENDED reveal, never the task's own point).",
+      "hints": {
+        "firstLetter": "f",
+        "length": 4,
+        "deDesc": "Eine Ausnahme: die Mehrzahl bleibt GLEICH wie die Einzahl.",
+        "deWord": "die Fische"
+      },
+      "grounding": "SB p.15 grammar 'a fish – three fish'"
     },
     {
       "id": "g1.game.ch01.b4",
@@ -150,8 +239,28 @@
       "storyDe": "Der letzte Knoten! Gib den Befehl — dann ist die Stunde frei!",
       "promptEn": "______ on your tablets!",
       "answer": "Switch",
-      "hints": { "firstLetter": "S", "length": 6, "deDesc": "Der Befehl: einschalten!", "deWord": "einschalten" },
+      "hints": {
+        "firstLetter": "S",
+        "length": 6,
+        "deDesc": "Der Befehl: einschalten!",
+        "deWord": "einschalten"
+      },
       "grounding": "SB p.14 'Switch on your tablets.'"
+    },
+    {
+      "id": "g1.game.ch01.b5",
+      "use": "boss",
+      "kind": "typed",
+      "storyDe": "Noch eine Wörter-Familie zappelt im Knoten!",
+      "promptEn": "One baby, two ______.",
+      "answer": "babies",
+      "hints": {
+        "firstLetter": "b",
+        "length": 6,
+        "deDesc": "Die besondere Mehrzahl: y wird zu -ies.",
+        "deWord": "die Babys"
+      },
+      "grounding": "SB p.15 grammar 'a baby – 8 babies (y → ies)'"
     },
     {
       "id": "g1.game.ch01.r1",
@@ -159,9 +268,16 @@
       "kind": "choice",
       "storyDe": "Der Tintengeist hält dich fest! Antworte ruhig — dann lässt er los.",
       "promptEn": "How are you?",
-      "options": ["I'm fine, thanks.", "I'm ten.", "I must go."],
+      "options": [
+        "I'm fine, thanks.",
+        "I'm ten.",
+        "I must go."
+      ],
       "answer": "I'm fine, thanks.",
-      "hints": { "deDesc": "Die freundliche Antwort auf 'Wie geht es dir?'", "deWord": "Mir geht es gut, danke." },
+      "hints": {
+        "deDesc": "Die freundliche Antwort auf 'Wie geht es dir?'",
+        "deWord": "Mir geht es gut, danke."
+      },
       "grounding": "SB p.15 questions 'How are you? – I'm fine, thanks.'"
     },
     {
@@ -170,9 +286,16 @@
       "kind": "choice",
       "storyDe": "Noch eine ruhige Antwort — du schaffst das.",
       "promptEn": "Nice to ______ you!",
-      "options": ["meet", "eat", "go"],
+      "options": [
+        "meet",
+        "eat",
+        "go"
+      ],
       "answer": "meet",
-      "hints": { "deDesc": "kennenlernen", "deWord": "kennenlernen" },
+      "hints": {
+        "deDesc": "kennenlernen",
+        "deWord": "kennenlernen"
+      },
       "grounding": "WB p.13 'to meet — Nice to meet you!'"
     }
   ]

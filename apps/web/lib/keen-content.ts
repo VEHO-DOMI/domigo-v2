@@ -170,6 +170,10 @@ const GameTaskZ = z.object({
   promptEn: z.string(),
   options: z.array(z.string()).optional(),
   answer: z.string(),
+  /** §4.3 nuance: the answer-in-prompt repetition IS the pedagogy (identity
+   *  plurals) — declared, noted, and policed by check-story-grounding. */
+  identityAnswer: z.boolean().optional(),
+  identityNote: z.string().optional(),
   hints: GameTaskHintsZ,
 });
 const GameTasksFileZ = z.object({
