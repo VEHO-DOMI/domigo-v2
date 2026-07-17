@@ -5,8 +5,8 @@
     "fragment": "Seite 1 · „Zeit für die Schule“",
     "theme": "schoolhouse",
     "chapter": "ch01",
-    "goalDe": "Der Tintengeist hat die Schulstunde verhext! Die Schulsachen sind wild geworden, das Alphabet ist verstreut, und das Klassenzimmer hat keine Farben mehr. Bring alles zurück — dann kann die Klasse wieder lernen!",
-    "whyDe": "Die erste Schulstunde ist verhext — ohne ihre Wörter kann niemand im Buch zur Schule gehen. Bring sie zurück!",
+    "goalDe": "Beruhige die wilden Schulsachen, sammle das ganze ABC ein und gib dem Klassenzimmer seine Farben zurück — dann bekommt die Klasse ihre Stunde wieder!",
+    "whyDe": "Die erste Schulstunde ist verhext — ohne ihre Wörter kann niemand im Buch zur Schule gehen.",
     "placements": [
       {
         "kind": "walker",
@@ -106,7 +106,7 @@
         "c": 62,
         "r": 3,
         "w": 2,
-        "h": 5
+        "h": 7
       }
     ],
     "restoreRoom": {
@@ -150,11 +150,11 @@
       "seal": 1
     },
     "hintsDe": [
-      "Wilde Schulsachen: Sag ihren Namen, dann beruhigen sie sich.",
-      "Sammle die verstreuten Buchstaben vom Alphabet ein.",
-      "Im Klassenzimmer: Benenne die grauen Dinge und gib ihnen ihre Farbe zurück.",
-      "Auf dem Dachboden wartet ein verzauberter Schüler — die richtigen Befehle helfen ihm.",
-      "Glühbuchstaben schenken dir einen Gratis-Hinweis."
+      "Wilde Schulsachen: Sag ihren Namen — dann werden sie freundlich und bleiben bei dir.",
+      "Das ABC ist verstreut: Sammle alle 26 Buchstaben ein.",
+      "Im Klassenzimmer links oben: Benenne die grauen Dinge und gib ihnen ihre Farbe zurück.",
+      "Auf dem Dachboden rechts oben wartet ein verzauberter Schüler — die richtigen Befehle helfen ihm.",
+      "✺ Glühbuchstaben leuchten gelb: Jeder schenkt dir einen Extra-Tipp."
     ],
     "sealNounDe": "Stundenseiten"
   },
@@ -162,20 +162,20 @@
     ".#################..##################..................................",
     ".#...............#..#................#..................................",
     ".#.............G.#..#............===.#..................................",
-    ".#........L...==.#..#....L...L.......#..................................",
-    ".#....L...==.....#..#................#..................................",
+    ".#........L...==.#..#....L...L...L...#..................................",
+    ".#....L.L.==.....#..#................#..................................",
     ".#....==.........#..#.2..............#..................................",
     ".#.1.............#..##################..................................",
     ".#################................................................B.....",
-    ".....................................L..L.......L...............########",
+    "..................................L..L..L..L....L......L........########",
     ".................................C.2.........^......|..C........########",
     "..............................L.###############.....|######==###########",
     "................................###############.....|######|....########",
-    "...................|.L..........###############.....|######|....########",
-    "...................|===.....L.#################.....|######|....########",
+    "...................|LL..........###############.....|######|....########",
+    "...................|===.....L.#################.....|######|.L..########",
     "....G..............|..........#################.....|######|G.L.########",
     "...................|.........C#################.....|######|....########",
-    "...===.LL..........|........###################.....|###################",
+    "...===.LL..L.......|....L.L.###################.....|###################",
     "......L..L........C|..1.....###################.L...|###################",
     "................/##############################.....|###################",
     "..S../####\\..##################################.....|###################",

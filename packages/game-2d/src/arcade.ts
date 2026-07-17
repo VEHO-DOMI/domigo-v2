@@ -705,6 +705,15 @@ export interface Quickfire {
 
 const QF_POOLS: readonly VocabPool[] = ["deToEn", "enToDe", "definition"];
 
+/** v5 W0 SHUFFLE LAW (Koki's verdict round): authored task JSON lists the
+ *  answer FIRST (that's the content format's contract) — so every card
+ *  SURFACE must shuffle its chips before display, seeded by task id: stable
+ *  across re-renders of the same card, different across tasks. */
+export function displayChips(chips: readonly string[] | null | undefined, seed: string): string[] {
+  if (!chips || chips.length === 0) return [];
+  return seededPick([...chips], `${seed}#display`, chips.length);
+}
+
 function seededPick<T>(arr: T[], seed: string, n: number): T[] {
   const s = [...arr];
   let h = hash32(seed) || 1;

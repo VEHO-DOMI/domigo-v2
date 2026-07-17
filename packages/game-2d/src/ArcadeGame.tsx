@@ -13,7 +13,7 @@ import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { gradeGrammar, gradeVocab } from "@domigo/engine";
 import type { ResolvedItem } from "@domigo/game-core";
 import { ArcadeScene, type ArcadePad } from "./ArcadeScene.ts";
-import { ARCADE, gradeStoryAnswer, quickfireFor, rescuePlan, rescueScaffold, type ArcadeLevel, type GameTaskHints, type Quickfire, type RescueTask, type StoryTaskPack, type Tier } from "./arcade.ts";
+import { ARCADE, displayChips, gradeStoryAnswer, quickfireFor, rescuePlan, rescueScaffold, type ArcadeLevel, type GameTaskHints, type Quickfire, type RescueTask, type StoryTaskPack, type Tier } from "./arcade.ts";
 import { bindTypingGuard } from "./typing-guard.ts";
 import { requestGameFullscreen } from "./fullscreen.ts";
 import { BossScene } from "./BossScene.ts";
@@ -86,7 +86,7 @@ function storyScaffold(task: RescueTask, siblings: RescueTask[]): RescueTask {
 /** THE HINT LADDER (WS-HINT, doc 29 §4.5): staged reveals — typed tasks walk
  *  first letter → length → German description → German word; choice tasks the
  *  last two. Rendered only on story tasks (they carry `hints`). */
-function HintLadder({ hints, typed }: { hints: GameTaskHints; typed: boolean }) {
+function HintLadder({ hints, typed, sparks, onSpendSpark }: { hints: GameTaskHints; typed: boolean; sparks?: number; onSpendSpark?: () => void }) {
   const [step, setStep] = useState(0);
   const steps: string[] = typed
     ? [
@@ -101,11 +101,16 @@ function HintLadder({ hints, typed }: { hints: GameTaskHints; typed: boolean }) 
       {steps.slice(0, step).map((s, i) => (
         <div key={i} style={{ fontSize: 14, color: "var(--text-secondary)", margin: "3px 0" }}>💡 {s}</div>
       ))}
-      {step < steps.length && (
-        <button type="button" className="dg-btn-secondary" style={{ fontSize: 13, padding: "4px 12px" }} onClick={() => setStep(step + 1)}>
-          Tipp {step + 1}/{steps.length}
-        </button>
-      )}
+      {step < steps.length && (() => {
+        // v5 W0: the first tip is free; every further one SPENDS a collected
+        // Glühbuchstabe when there is one (never blocks — pedagogy first)
+        const willSpend = step >= 1 && (sparks ?? 0) > 0 && onSpendSpark !== undefined;
+        return (
+          <button type="button" className="dg-btn-secondary" style={{ fontSize: 13, padding: "4px 12px" }} onClick={() => { if (willSpend) onSpendSpark(); setStep(step + 1); }}>
+            Tipp {step + 1}/{steps.length}{willSpend ? " · ✺" : ""}
+          </button>
+        );
+      })()}
     </div>
   );
 }
@@ -128,6 +133,13 @@ export function ArcadeGame(props: ArcadeGameProps) {
   const [hearts, setHearts] = useState(3);
   const [letters, setLetters] = useState(0);
   const [gluehwoerter, setGluehwoerter] = useState(0);
+  // v5 W0: "+1 Gratis-Tipp" toast — the pickup must SAY what it just gave
+  const [tipToastAt, setTipToastAt] = useState<number | null>(null);
+  useEffect(() => {
+    if (tipToastAt === null) return;
+    const t = window.setTimeout(() => setTipToastAt(null), 1900);
+    return () => window.clearTimeout(t);
+  }, [tipToastAt]);
   const [combo, setCombo] = useState(0);
   const [seals, setSeals] = useState<[number, number]>([0, 0]);
   const [knots, setKnots] = useState<[number, number] | null>(null);
@@ -327,7 +339,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
         }
         setPhase({ kind: "rescue", rescue: { tasks, at: 0, solved: 0, value: "", verdict: "none" } });
       },
-      onGluehwoerter: setGluehwoerter,
+      onGluehwoerter: (n: number) => setGluehwoerter((prev) => { if (n > prev) setTipToastAt(Date.now()); return n; }),
       onBossDoor: (carry) => enterBoss(carry),
       battleSkins: (props.storyTasks?.battle ?? []).map((b) => (b.art ?? "").replace(/^st_/, "")),
       onComplete: (stats) => finish({ ...stats, bossWon: false }),
@@ -666,6 +678,13 @@ export function ArcadeGame(props: ArcadeGameProps) {
           </div>
         </div>
 
+        {/* v5 W0: the Glühbuchstaben pickup announces its gift */}
+        {tipToastAt !== null && (
+          <div key={tipToastAt} className="dg-qf-verdict" style={{ position: "absolute", top: 52, left: "50%", transform: "translateX(-50%)", zIndex: 6, pointerEvents: "none", background: "rgba(20,18,33,0.9)", color: "#ffe082", borderRadius: 999, padding: "6px 16px", fontSize: 14, fontWeight: 800 }}>
+            ✺ Glühbuchstabe! +1 Gratis-Tipp
+          </div>
+        )}
+
         {/* dev-only crash banner — a broken game must never be a silent black box */}
         {fatal !== null && (
           <div style={{ position: "absolute", top: 8, left: "50%", transform: "translateX(-50%)", zIndex: 40, background: "#7f1d1d", color: "#fff", borderRadius: 10, padding: "8px 14px", fontSize: 13, maxWidth: "92%", fontFamily: "monospace" }}>
@@ -694,7 +713,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                   <>
                     <span>⬧ {sealNoun} — hol sie zurück, dann öffnet sich die große Tür</span>
                     {level.letters.length > 0 && <span>✦ Buchstaben — einsammeln, sie zählen für dich</span>}
-                    {level.gluehwoerter.length > 0 && <span style={{ color: "#ffe082" }}>✺ Jeder Fund schenkt dir einen Gratis-Hinweis</span>}
+                    {level.gluehwoerter.length > 0 && <span style={{ color: "#ffe082" }}>✺ Glühbuchstaben leuchten gelb — jeder schenkt dir einen Extra-Tipp</span>}
                   </>
                 )}
               </div>
@@ -747,7 +766,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                 </form>
               ) : (
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {(phase.task.chips ?? []).map((chip) => (
+                  {displayChips(phase.task.chips, phase.task.itemId).map((chip) => (
                     <button key={chip} type="button" className="dg-qf-chip" onClick={() => answerBossWindow(chip)}>
                       {chip}
                     </button>
@@ -769,13 +788,13 @@ export function ArcadeGame(props: ArcadeGameProps) {
               <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#8b7cf5", marginBottom: 4 }}>{phase.qf.ask || "Schnell!"}</div>
               <div style={{ fontSize: phase.qf.prompt.length > 26 ? 20 : 30, fontWeight: 800, color: "#f3f1ff", fontFamily: "var(--font-display)", marginBottom: 14, lineHeight: 1.25 }}>{phase.qf.prompt}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {phase.qf.chips.map((chip) => (
+                {displayChips(phase.qf.chips, phase.qf.itemId).map((chip) => (
                   <button key={chip} type="button" className="dg-qf-chip" onClick={() => answerQuickfire(chip)}>
                     {chip}
                   </button>
                 ))}
               </div>
-              {phase.qf.hints !== undefined && <HintLadder hints={phase.qf.hints} typed={false} />}
+              {phase.qf.hints !== undefined && <HintLadder hints={phase.qf.hints} typed={false} sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} />}
             </div>
           </div>
         )}
@@ -801,7 +820,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                 />
                 <button type="submit" className="dg-btn">Befreien!</button>
               </form>
-              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed />}
+              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} />}
               {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Noch nicht — nimm einen Tipp und versuch es gleich nochmal!</p>}
               {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Die Seite ist frei! ✶</p>}
               <div style={{ marginTop: 12 }}>
@@ -828,12 +847,12 @@ export function ArcadeGame(props: ArcadeGameProps) {
                 </form>
               ) : (
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {(phase.task.chips ?? []).map((chip) => (
+                  {displayChips(phase.task.chips, phase.task.itemId).map((chip) => (
                     <button key={chip} type="button" className="dg-qf-chip" onClick={() => answerBattle(chip)}>{chip}</button>
                   ))}
                 </div>
               )}
-              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed={!phase.scaffolded} />}
+              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed={!phase.scaffolded} sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} />}
               {phase.verdict === "wrong" && !phase.scaffolded && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Fast! Jetzt mit Auswahl:</p>}
               {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Befreit! ✶</p>}
             </div>
@@ -847,7 +866,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
               <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#8b7cf5", marginBottom: 4 }}>{phase.chain[phase.at]?.ask} · {phase.solved}/{phase.chain.length}</div>
               <div style={{ fontSize: 44, fontWeight: 800, color: "#f3f1ff", fontFamily: "var(--font-display)", marginBottom: 12, lineHeight: 1.1 }}>{phase.chain[phase.at]?.prompt}</div>
               <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
-                {(phase.chain[phase.at]?.chips ?? []).map((chip) => (
+                {displayChips(phase.chain[phase.at]?.chips, phase.chain[phase.at]?.itemId ?? String(phase.at)).map((chip) => (
                   <button key={chip} type="button" className="dg-qf-chip" style={{ fontSize: 22, minWidth: 90 }} onClick={() => answerSwarm(chip)}>{chip}</button>
                 ))}
               </div>
@@ -873,12 +892,12 @@ export function ArcadeGame(props: ArcadeGameProps) {
                 </form>
               ) : (
                 <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
-                  {(phase.task.colour?.options ?? []).map((chip) => (
+                  {displayChips(phase.task.colour?.options, `${phase.task.itemId}#colour`).map((chip) => (
                     <button key={chip} type="button" className="dg-qf-chip" style={{ minWidth: 100 }} onClick={() => answerColorroom(chip)}>{chip}</button>
                   ))}
                 </div>
               )}
-              {phase.task.hints !== undefined && phase.stage === "name" && <HintLadder hints={phase.task.hints} typed />}
+              {phase.task.hints !== undefined && phase.stage === "name" && <HintLadder hints={phase.task.hints} typed sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} />}
               {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Noch nicht — probier's nochmal!</p>}
               {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Es leuchtet wieder! ✶</p>}
               <div style={{ marginTop: 12 }}>
@@ -903,7 +922,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                 <p style={{ fontSize: 16, color: "var(--text-secondary)", margin: "0 0 8px" }}>{task.ask}</p>
                 <div style={{ fontSize: 20, fontWeight: 800, color: "#f3f1ff", fontFamily: "var(--font-display)", marginBottom: 12 }}>{task.prompt}</div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {(task.chips ?? []).map((chip) => (
+                  {displayChips(task.chips, task.itemId).map((chip) => (
                     <button key={chip} type="button" className="dg-qf-chip" onClick={() => answerDuel(chip)}>{chip}</button>
                   ))}
                 </div>
@@ -935,7 +954,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                 </div>
                 <div style={{ background: "#1b1930", borderRadius: "14px 14px 14px 4px", padding: "10px 14px", fontSize: 19, fontWeight: 700, color: "#f3f1ff", marginBottom: 12 }}>{task.prompt}</div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {(task.chips ?? []).map((chip) => (
+                  {displayChips(task.chips, task.itemId).map((chip) => (
                     <button key={chip} type="button" className="dg-qf-chip" style={{ textAlign: "right" }} onClick={() => answerFinale(chip)}>{chip}</button>
                   ))}
                 </div>
@@ -962,10 +981,11 @@ export function ArcadeGame(props: ArcadeGameProps) {
           return (
             <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(15,13,26,0.94)", padding: 14 }}>
               <div style={{ width: "min(520px, 96%)", background: "var(--card)", color: "var(--text)", borderRadius: 20, padding: "22px 24px", border: "2px solid #8b7cf5", textAlign: "center" }}>
-                <div style={{ fontSize: 22, fontWeight: 800, fontFamily: "var(--font-display)", marginBottom: 2 }}>Der Tintengeist hält dich fest!</div>
-                <div style={{ fontSize: 14, color: "var(--text-secondary)", marginBottom: 2 }}>Antworte ruhig — dann lässt er los.</div>
-                <p style={{ fontSize: 14, color: "var(--muted)", margin: "0 0 14px" }}>
-                  Löse {n} Aufgaben in Ruhe — dann bringt er dich zur letzten Fahne zurück. ({Math.min(phase.rescue.solved + 1, n)}/{n})
+                {/* v5 W0 copy law: ONE kid-clear frame, nothing doubled — who
+                    grabbed you, what to do, what happens after. */}
+                <div style={{ fontSize: 22, fontWeight: 800, fontFamily: "var(--font-display)", marginBottom: 2 }}>Der Tintengeist hat dich erwischt!</div>
+                <p style={{ fontSize: 14, color: "var(--muted)", margin: "2px 0 14px" }}>
+                  Keine Angst: Antworte ruhig, dann muss er dich loslassen — und du stehst wieder an deiner Fahne. Aufgabe {Math.min(phase.rescue.solved + 1, n)} von {n}.
                 </p>
                 <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#8b7cf5", marginBottom: 6 }}>{task.ask}</div>
                 <div style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.4, marginBottom: 14 }}>{task.prompt}</div>
@@ -989,14 +1009,14 @@ export function ArcadeGame(props: ArcadeGameProps) {
                   </form>
                 ) : (
                   <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                    {(task.chips ?? []).map((chip) => (
+                    {displayChips(task.chips, task.itemId).map((chip) => (
                       <button key={chip} type="button" className="dg-qf-chip" onClick={() => answerRescue(chip)}>
                         {chip}
                       </button>
                     ))}
                   </div>
                 )}
-                {(() => { const rt = phase.rescue.tasks[phase.rescue.at]; return rt?.hints !== undefined ? <HintLadder key={rt.itemId + phase.rescue.at} hints={rt.hints} typed={rt.presentation === "typed"} /> : null; })()}
+                {(() => { const rt = phase.rescue.tasks[phase.rescue.at]; return rt?.hints !== undefined ? <HintLadder key={rt.itemId + phase.rescue.at} hints={rt.hints} typed={rt.presentation === "typed"} sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} /> : null; })()}
                 {phase.rescue.verdict === "wrong" && (
                   <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Fast! Probier's gleich nochmal — jetzt mit Auswahl.</p>
                 )}
@@ -1035,7 +1055,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
         <TouchControls pad={padRef.current} hidden={phase.kind !== "run" || goalOpen} />
       </div>
       <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", marginTop: 6 }}>
-        Pfeiltasten laufen · ↑/Leertaste springen (halten = höher) · X = Federstab-Schwung (befreit Wörter) · C = Pogo · ↓+Sprung fällt durch Plattformen · ↑ an Stange/Tür = klettern/durchgehen
+        Pfeiltasten laufen · ↑/Leertaste springen (halten = höher) · X = Federstab-Schwung (verscheucht kurz) · C = Pogo · ↓+Sprung fällt durch Plattformen · ↑ an Stange/Tür = klettern/durchgehen
       </p>
     </div>
   );
