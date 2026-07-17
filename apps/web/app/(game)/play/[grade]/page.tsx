@@ -16,7 +16,7 @@ import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
 import { JournalBoard, tripCopyFor, type DayProgress } from "@domigo/game-trip";
 import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
 import { FLOOR_PLANS } from "@/lib/floor-plan";
-import { getActingUserForPage } from "@/lib/identity";
+import { getActingUserForPage, getTeacherForPage } from "@/lib/identity";
 import { DEFAULT_STORY_UI, HUB_SKIN, STORY_UI } from "@/lib/stories";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 import { devReleasedChapters, devStoryOverride } from "@/lib/story-dev";
@@ -30,6 +30,9 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
 
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
+  // the Keen story-mode preview is teacher-only until the year-1 release —
+  // this card is its ONLY navigation entry (students never see it)
+  const teacher = grade === 1 ? await getTeacherForPage() : null;
 
   // One released story per grade, derived from the corpus (no stale hand-maintained
   // maps). Non-prod: DEV_STORY_G<grade> previews an unreleased bundle (story-dev.ts).
@@ -252,6 +255,19 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
       {days.length > 0 && tripCopy && (
         <section style={{ marginTop: 28 }}>
           <JournalBoard days={days} label={tripCopy.boardLabel} dayNoun={tripCopy.hubNoun} stampedWord={tripCopy.boardStampedWord} />
+        </section>
+      )}
+
+      {teacher !== null && (
+        <section style={{ marginTop: 20 }}>
+          <a
+            href="/play/1/world"
+            style={{ display: "block", background: "linear-gradient(135deg, #1b1930, #2c2a44)", color: "#f3f1ff", borderRadius: 16, padding: "16px 20px", textDecoration: "none", border: "2px solid #8b7cf5" }}
+          >
+            <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#8b7cf5" }}>Nur für dich sichtbar · Lehrer-Vorschau</div>
+            <div style={{ fontSize: 20, fontWeight: 800, fontFamily: "var(--font-display)", margin: "4px 0 2px" }}>🖋 Story-Modus — Die verlorenen Seiten (Keen)</div>
+            <div style={{ fontSize: 14, color: "#c9c4e4" }}>Prolog → Weltkarte → Kapitel 1 in voller Grafik. Spielen →</div>
+          </a>
         </section>
       )}
 
