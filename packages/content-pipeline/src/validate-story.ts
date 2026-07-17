@@ -79,6 +79,10 @@ export interface StoryBundle {
   flags?: import("@domigo/content-schema").StoryFlags | null;
   /** map@1 (B-2 overworld bundles); absent/null = a DOM-game story, no VS-18. */
   map?: GameMap | null;
+  /** keen/world.json beat anchors (chapter short-id → beat → scene short-id).
+   *  Beat scenes are ENTRY POINTS: the world map stages them directly, so
+   *  VS-5 treats them as reachability roots alongside scene[0]. */
+  beats?: Record<string, Record<string, string>> | null;
 }
 
 // ── du-form + meta-talk (mirrors validate-items V-12/V-13, story carriers) ────
@@ -136,16 +140,17 @@ function scaffolds(scene: Scene): string[] {
   return out;
 }
 
-/** VS-5: from scene[0], every scene reachable AND able to reach a terminal. */
-function reachabilityErrors(chapter: Chapter): string[] {
+/** VS-5: from scene[0] (+ any beat-anchor roots — the world map enters those
+ *  scenes directly), every scene reachable AND able to reach a terminal. */
+function reachabilityErrors(chapter: Chapter, extraRoots: string[] = []): string[] {
   const errors: string[] = [];
   const byId = new Map(chapter.scenes.map((s) => [s.id, s]));
   const start = chapter.scenes[0];
   if (start === undefined) return errors;
 
-  // forward reachability from the start
+  // forward reachability from the start + beat roots
   const reach = new Set<string>();
-  const stack = [start.id];
+  const stack = [start.id, ...extraRoots.filter((r) => byId.has(r))];
   while (stack.length > 0) {
     const id = stack.pop()!;
     if (reach.has(id)) continue;
@@ -610,8 +615,10 @@ export function validateStoryBundle(bundle: StoryBundle, corpus: StoryCorpus): {
       // (the pure layer never touches disk); informational until art/TTS lands.
     }
 
-    // VS-5 reachability / no dead ends
-    errors.push(...reachabilityErrors(chapter));
+    // VS-5 reachability / no dead ends (beat anchors are roots — the map enters them)
+    const chShort = chapter.id.split(".").pop() ?? "";
+    const beatRoots = Object.values(bundle.beats?.[chShort] ?? {}).map((sid) => `${chapter.id}.${sid}`);
+    errors.push(...reachabilityErrors(chapter, beatRoots));
   }
 
   // VS-10 storyItems carriers pass the level gate at their narrative-lock unit
@@ -761,6 +768,7 @@ export function runValidateStory(): void {
     const compRaw = readJsonIfExists<unknown>(path.join(dir, "comprehension.json"));
     const comprehension = compRaw === null ? null : StoryComprehensionFile.safeParse(compRaw);
     if (comprehension && !comprehension.success) { errors.push(`${id}: comprehension.json schema — ${comprehension.error.issues[0]?.message ?? "?"}`); continue; }
+    const keenWorld = readJsonIfExists<{ beats?: Record<string, Record<string, string>> }>(path.join(dir, "keen", "world.json"));
     const mapRaw = readJsonIfExists<unknown>(path.join(dir, "map.json"));
     const map = mapRaw === null ? null : GameMap.safeParse(mapRaw);
     if (map && !map.success) { errors.push(`${id}: map.json schema — ${map.error.issues[0]?.message ?? "?"} at ${map.error.issues[0]?.path.join(".") ?? "?"}`); continue; }
@@ -775,6 +783,7 @@ export function runValidateStory(): void {
         comprehension: comprehension ? comprehension.data : null,
         release,
         map: map ? map.data : null,
+        beats: keenWorld?.beats ?? null,
       },
       corpus,
     );

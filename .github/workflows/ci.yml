@@ -52,6 +52,9 @@ jobs:
         with: { node-version: 24, cache: pnpm }
       - run: pnpm install --frozen-lockfile
       - run: pnpm content validate
+      - run: pnpm content validate-story
+      - run: node scripts/check-story-grounding.mjs
+      - run: node scripts/check-design-sheets.mjs
 
   build:
     runs-on: ubuntu-latest
