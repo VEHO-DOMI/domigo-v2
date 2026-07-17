@@ -1,0 +1,28 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 2,
+ "rows": 2,
+ "cells": [
+  {
+   "stem": "maphero_down1",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "maphero_down2",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "maphero_side1",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "maphero_side2",
+   "col": 1,
+   "row": 1
+  }
+ ]
+}

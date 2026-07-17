@@ -57,6 +57,11 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
     keenBoss = (await loadKeenBoss("g1.st.lost-pages", ch)) as BossScript;
     const ka = resolveKeenArt(1);
     keenArt = { ...(ka.chapters[ch] ?? {}), ...ka.hero };
+    // batch-T painted backdrops feed the scene's bg_far/bg_mid slots (theme-named stems)
+    const far = ka.chapters[ch]?.[`bgp_schoolhouse_far`];
+    const mid = ka.chapters[ch]?.[`bgp_schoolhouse_mid`];
+    if (far !== undefined) keenArt["bg_far"] = far;
+    if (mid !== undefined) keenArt["bg_mid"] = mid;
     // THE STORY-TASK LAW (doc 29 §4): the story mode plays its hand-authored
     // set — mapped into the game's native shapes; the unit pools stay for the
     // practice surfaces only.

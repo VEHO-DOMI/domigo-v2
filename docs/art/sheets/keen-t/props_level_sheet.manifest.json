@@ -1,0 +1,58 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 5,
+ "rows": 2,
+ "cells": [
+  {
+   "stem": "prop_plank",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "prop_oneway",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "prop_spikes",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "prop_pole",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "stem": "prop_flag",
+   "col": 4,
+   "row": 0
+  },
+  {
+   "stem": "prop_sealpost",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "prop_sealpost_free",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "prop_door_sealed",
+   "col": 2,
+   "row": 1
+  },
+  {
+   "stem": "prop_door_open",
+   "col": 3,
+   "row": 1
+  },
+  {
+   "stem": "prop_gluehwort",
+   "col": 4,
+   "row": 1
+  }
+ ]
+}
