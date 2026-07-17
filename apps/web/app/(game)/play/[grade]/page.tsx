@@ -8,6 +8,7 @@
  * (the Blank took them; the board itself tells the story).
  */
 /* eslint-disable @next/next/no-img-element -- decorative ligne-claire banners served from synced public/art assets; next/image adds no value for these */
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { loadGameMap, loadReleasedChapters, loadStory, storyIdForGrade } from "@domigo/content-loader";
 import { getDb, getSolvedGameItemIds } from "@domigo/db";
@@ -260,14 +261,14 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
 
       {teacher !== null && (
         <section style={{ marginTop: 20 }}>
-          <a
+          <Link
             href="/play/1/world"
             style={{ display: "block", background: "linear-gradient(135deg, #1b1930, #2c2a44)", color: "#f3f1ff", borderRadius: 16, padding: "16px 20px", textDecoration: "none", border: "2px solid #8b7cf5" }}
           >
             <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#8b7cf5" }}>Nur für dich sichtbar · Lehrer-Vorschau</div>
             <div style={{ fontSize: 20, fontWeight: 800, fontFamily: "var(--font-display)", margin: "4px 0 2px" }}>🖋 Story-Modus — Die verlorenen Seiten (Keen)</div>
             <div style={{ fontSize: 14, color: "#c9c4e4" }}>Prolog → Weltkarte → Kapitel 1 in voller Grafik. Spielen →</div>
-          </a>
+          </Link>
         </section>
       )}
 
