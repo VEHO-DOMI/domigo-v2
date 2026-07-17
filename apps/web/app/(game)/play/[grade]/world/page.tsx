@@ -125,6 +125,7 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
   );
 
   return (
+    <>
     <WorldClient
       seed={1007}
       playerSeed={fnv1a32(acting.userId)}
@@ -168,5 +169,10 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
       serverSave={saved ? { clientRev: saved.clientRev, state: saved.state as unknown } : null}
       done={typeof done === "string" ? done : undefined}
     />
+    {/* v5 W0 deploy-truth stamp — twin of run/page.tsx */}
+    <p style={{ textAlign: "center", fontSize: 11, opacity: 0.55, margin: "4px 0 0" }}>
+      Build {(process.env.VERCEL_GIT_COMMIT_SHA ?? "dev").slice(0, 7)}
+    </p>
+    </>
   );
 }

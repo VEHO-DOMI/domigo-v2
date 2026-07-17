@@ -9,6 +9,7 @@ import {
   canJump,
   checkLevelLaws,
   comboPoints,
+  displayChips,
   flyerOffset,
   flyerPhase,
   gravityFor,
@@ -339,5 +340,40 @@ describe("groundAt", () => {
     expect(groundAt(lvl, 0, 1)).toBe(true); // '#'
     expect(groundAt(lvl, 2, 1)).toBe(false); // '^'
     expect(groundAt(lvl, 3, 1)).toBe(false); // 'L'
+  });
+});
+
+// ── v5 W0 SHUFFLE LAW (Koki's verdict round): authored JSON lists the answer
+//    FIRST; the display MUST shuffle so the correct chip is not always leftmost.
+describe("displayChips (v5 shuffle law)", () => {
+  it("keeps every chip (a permutation, nothing dropped or added)", () => {
+    const chips = ["pencil", "chair", "window"];
+    const out = displayChips(chips, "g1.game.ch01.ob01");
+    expect([...out].sort()).toEqual([...chips].sort());
+  });
+
+  it("is STABLE for the same seed (a card never reshuffles under the player)", () => {
+    const chips = ["one", "two", "three"];
+    const a = displayChips(chips, "g1.game.ch01.sw03");
+    const b = displayChips(chips, "g1.game.ch01.sw03");
+    expect(a).toEqual(b);
+  });
+
+  it("does NOT leave the answer always first across many tasks", () => {
+    // the authored answer is chips[0]; over many distinct task ids the
+    // shuffled answer must land off position 0 a meaningful share of the time
+    const chips = ["pencil", "chair", "window"];
+    const answer = chips[0]!;
+    const ids = Array.from({ length: 60 }, (_, i) => `g1.game.ch01.t${i}`);
+    const positions = ids.map((id) => displayChips(chips, id).indexOf(answer));
+    const firstCount = positions.filter((p) => p === 0).length;
+    expect(firstCount).toBeLessThan(ids.length); // not always first
+    expect(new Set(positions).size).toBeGreaterThan(1); // answer moves around
+  });
+
+  it("returns [] for empty / missing chips (no crash on typed tasks)", () => {
+    expect(displayChips(null, "x")).toEqual([]);
+    expect(displayChips(undefined, "x")).toEqual([]);
+    expect(displayChips([], "x")).toEqual([]);
   });
 });

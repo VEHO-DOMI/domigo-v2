@@ -99,20 +99,27 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
   const items = resolveEncounterTasks(enc, { due, pool: { vocab: unit.vocab, grammar: unit.grammar } });
 
   return (
-    <ArcadeClient
-      seed={grade * 1000 + 7}
-      playerSeed={fnv1a32(acting.userId)}
-      mode={`game:g${grade}`}
-      items={items}
-      storyTasks={storyTasks}
-      hubHref={keenLevel ? `/play/${grade}/world` : `/play/${grade}`}
-      title={keenLevel ? keenLevel.header.name : "Tintenlauf"}
-      levelId={keenLevel ? undefined : levelId}
-      level={keenLevel}
-      boss={keenBoss}
-      art={keenArt}
-      doneHref={keenLevel ? `/play/${grade}/world?done=${keenMatch![1]}` : undefined}
-      tier={tier === "E" || tier === "M" || tier === "S" ? tier : undefined}
-    />
+    <>
+      <ArcadeClient
+        seed={grade * 1000 + 7}
+        playerSeed={fnv1a32(acting.userId)}
+        mode={`game:g${grade}`}
+        items={items}
+        storyTasks={storyTasks}
+        hubHref={keenLevel ? `/play/${grade}/world` : `/play/${grade}`}
+        title={keenLevel ? keenLevel.header.name : "Tintenlauf"}
+        levelId={keenLevel ? undefined : levelId}
+        level={keenLevel}
+        boss={keenBoss}
+        art={keenArt}
+        doneHref={keenLevel ? `/play/${grade}/world?done=${keenMatch![1]}` : undefined}
+        tier={tier === "E" || tier === "M" || tier === "S" ? tier : undefined}
+      />
+      {/* v5 W0 deploy-truth stamp: a stale prod build must be visible at a
+          glance (Koki's 18:55 run happened on a pre-deploy build unnoticed) */}
+      <p style={{ textAlign: "center", fontSize: 11, opacity: 0.55, margin: "4px 0 0" }}>
+        Build {(process.env.VERCEL_GIT_COMMIT_SHA ?? "dev").slice(0, 7)}
+      </p>
+    </>
   );
 }

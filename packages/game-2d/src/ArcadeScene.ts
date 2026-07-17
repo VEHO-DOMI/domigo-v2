@@ -120,6 +120,11 @@ interface Creature {
   stunned: boolean;
   /** escaped = slunk away after a wrong answer */
   escaped: boolean;
+  /** v5 freed = named and calmed — STAYS in the level as a friendly hopper
+   *  (Koki's two-skin law: the free art must live on screen, never vanish) */
+  freed: boolean;
+  /** v5 Federstab law: shooed until this timestamp — no AI, no contact */
+  dazedUntil: number;
   idx: number;
   cloud: CloudState;
   stars: Phaser.GameObjects.Text | null;
@@ -238,7 +243,8 @@ export class ArcadeScene extends Phaser.Scene {
   private swingHeld = false;
   private swingUntil = 0;
   private swingCooldownUntil = 0;
-  private freedBySwing = 0;
+  /** kept for freed-creature colliders added after create() (flyer/thief kinds) */
+  private solidsGroup: Phaser.Physics.Arcade.StaticGroup | null = null;
   private swarmWalls: Array<{ body: Phaser.Types.Physics.Arcade.SpriteWithStaticBody; bits: Phaser.GameObjects.GameObject[]; cleared: boolean; engaged: boolean }> = [];
   private roomObjects: Array<{ img: Phaser.GameObjects.Image; stem: string; restored: boolean; c: number; r: number }> = [];
   private duelGhost: Phaser.GameObjects.Image | null = null;
@@ -421,9 +427,11 @@ export class ArcadeScene extends Phaser.Scene {
       const ay = m.r1 * TILE + 10;
       const bx = m.c2 * TILE + (m.w * TILE) / 2;
       const by = m.r2 * TILE + 10;
-      const s = moverGroup.create(ax, ay, this.itex("prop_plank", tex(`mover-${m.w}`))) as Phaser.Types.Physics.Arcade.ImageWithDynamicBody;
+      // v5 W0: ALWAYS the purpose-painted book (exact mover size at scale 1).
+      // The generic batch plank (197×59) squashed non-integer to w×18 was
+      // Koki's "garbled yellow strips with stray rows" — never squash art.
+      const s = moverGroup.create(ax, ay, tex(`mover-${m.w}`)) as Phaser.Types.Physics.Arcade.ImageWithDynamicBody;
       s.setDepth(2);
-      if (this.textures.exists("img-prop_plank")) s.setDisplaySize(m.w * TILE, 18);
       s.body.setSize(m.w * TILE, 12); // ride the book's COVER; pages hang below
       s.body.setOffset(0, 2);
       s.body.checkCollision.down = false;
@@ -464,14 +472,18 @@ export class ArcadeScene extends Phaser.Scene {
     level.gluehwoerter.forEach((gw, i) => {
       const x = gw.c * TILE + TILE / 2;
       const y = gw.r * TILE + TILE / 2;
+      // v5 W0 (Koki: "was Glühbuchstaben sind, ist nicht erkennlich"):
+      // a warm halo makes the glow READ as glow — visibly not a normal letter
+      const halo = this.add.circle(x, y, TILE * 0.55, 0xffe082, 0.22).setDepth(2);
       const img = this.add.image(x, y, this.itex("prop_gluehwort", tex("gluehwort"))).setDepth(3);
       if (this.textures.exists("img-prop_gluehwort")) img.setDisplaySize(TILE * 0.8, TILE * 0.8);
       const zone = gluehGroup.create(x, y, undefined as unknown as string) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       zone.setVisible(false).setDisplaySize(64, 56).refreshBody(); // W3: forgiving pickup
-      zone.setData("img", img).setData("taken", false);
+      zone.setData("img", img).setData("halo", halo).setData("taken", false);
       if (motion) {
-        this.tweens.add({ targets: img, y: y - 5, duration: 1000 + (i % 3) * 140, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+        this.tweens.add({ targets: [img, halo], y: y - 5, duration: 1000 + (i % 3) * 140, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
         this.tweens.add({ targets: img, alpha: { from: 1, to: 0.65 }, duration: 760, yoyo: true, repeat: -1 });
+        this.tweens.add({ targets: halo, scale: { from: 1, to: 1.25 }, alpha: { from: 0.22, to: 0.1 }, duration: 900, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
       }
     });
     // (the pickup overlap registers AFTER the player exists — see below)
@@ -524,6 +536,7 @@ export class ArcadeScene extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, level.w * TILE, level.h * TILE);
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, solids);
+    this.solidsGroup = solids;
 
     // ── v4 (doc 30 §3): the NUMBER-SWARM barriers ──
     for (const sw of level.header.swarms ?? []) {
@@ -595,10 +608,12 @@ export class ArcadeScene extends Phaser.Scene {
       zone.setData("taken", true);
       zone.disableBody(true, false);
       const img = zone.getData("img") as Phaser.GameObjects.Image;
+      const halo = zone.getData("halo") as Phaser.GameObjects.Arc | undefined;
       this.gluehwoerter += 1;
       this.cfg.onGluehwoerter?.(this.gluehwoerter);
       playSfx("chime-close");
       this.tweens.killTweensOf(img);
+      if (halo) { this.tweens.killTweensOf(halo); halo.setVisible(false); }
       if (this.cfg.reducedMotion === true) img.setVisible(false);
       else {
         this.burst?.explode(10, img.x, img.y);
@@ -632,7 +647,7 @@ export class ArcadeScene extends Phaser.Scene {
       }
       if (e.kind === "flyer" || e.kind === "cloud" || e.kind === "thief") s.body.setAllowGravity(false);
       else this.physics.add.collider(s, solids);
-      const creature: Creature = { kind: e.kind, sprite: s, dir: i % 2 === 0 ? 1 : -1, homeY: s.y, nextHopAt: 800 + i * 400, stunned: false, escaped: false, idx: i, cloud: { kind: "sleep" }, stars: null };
+      const creature: Creature = { kind: e.kind, sprite: s, dir: i % 2 === 0 ? 1 : -1, homeY: s.y, nextHopAt: 800 + i * 400, stunned: false, escaped: false, freed: false, dazedUntil: 0, idx: i, cloud: { kind: "sleep" }, stars: null };
       this.creatures.push(creature);
       this.physics.add.overlap(this.player, s, () => this.contact(creature));
       if (motion && e.kind !== "flyer" && e.kind !== "cloud") {
@@ -688,10 +703,20 @@ export class ArcadeScene extends Phaser.Scene {
     if (!this.pedestalActive) this.activatePedestal();
   }
 
-  /** The Federstab swing (doc 29 combat verb): a short quill sweep that
-   *  UNKNOTS one nearby creature — the word is freed, never killed. Contact
-   *  task-duels (quickfire) stay for creatures you touch; the swing is the
-   *  fight verb Koki asked for, kid-safe by fiction. */
+  /** v5 W0: the Tipp economy made real — an extra tip consumes one collected
+   *  Glühbuchstabe when available. Never blocks (pedagogy first): the ladder
+   *  stays free when the pouch is empty; this just makes the glow SPEND. */
+  spendGluehwort(): boolean {
+    if (this.gluehwoerter <= 0) return false;
+    this.gluehwoerter -= 1;
+    this.cfg.onGluehwoerter?.(this.gluehwoerter);
+    return true;
+  }
+
+  /** The Federstab swing (doc 29 combat verb, amended v5 W0 — Koki's law):
+   *  the swing NEVER frees or removes a creature. Naming it in the battle
+   *  card is the only way. The swing just SHOOS: a short knockback + daze so
+   *  the student can slip past without triggering the encounter. */
   private doSwing(now: number): void {
     if (now < this.swingCooldownUntil || this.frozen || this.over) return;
     if (this.pstate.kind !== "normal" || this.onPogo) return;
@@ -710,21 +735,24 @@ export class ArcadeScene extends Phaser.Scene {
     const ax = this.player.x + dir * TILE * 0.9;
     this.burst?.explode(10, ax, this.player.y - 4);
     for (const c of this.creatures) {
-      if (c.stunned || c.escaped) continue;
+      if (c.stunned || c.escaped || c.freed) continue;
       if (Math.abs(c.sprite.x - ax) < TILE * 0.8 && Math.abs(c.sprite.y - this.player.y) < TILE * 0.75) {
-        this.freeCreature(c);
-        break; // one word per swing
+        this.shoveCreature(c, dir);
+        break; // one shoo per swing
       }
     }
   }
 
-  /** Unknot: the creature dissolves into freed letters (kid-safe defeat). */
-  private freeCreature(c: Creature): void {
-    c.escaped = true; // reuses every existing "gone" guard (contact, counters)
-    this.freedBySwing += 1;
-    this.burst?.explode(14, c.sprite.x, c.sprite.y);
-    c.stars?.destroy();
-    this.tweens.add({ targets: c.sprite, alpha: 0, y: c.sprite.y - 26, duration: 300, onComplete: () => c.sprite.destroy() });
+  /** v5 Federstab law: knockback + daze — the creature stays, unnamed. */
+  private shoveCreature(c: Creature, dir: 1 | -1): void {
+    c.dazedUntil = this.time.now + 1100;
+    const s = c.sprite;
+    if (s.body.enable) s.setVelocity(dir * 240, s.body.allowGravity ? -140 : 0);
+    playSfx("whoosh");
+    if (this.cfg.reducedMotion !== true) {
+      this.dust?.explode(8, s.x, s.y);
+      this.tweens.add({ targets: s, angle: { from: dir * 12, to: 0 }, duration: 340, ease: "Sine.easeOut" });
+    }
   }
 
   /** Texture swap + display size + baseScale + body resync in one move. */
@@ -793,8 +821,8 @@ export class ArcadeScene extends Phaser.Scene {
       pedestalActive: this.pedestalActive,
       frozen: this.frozen,
       over: this.over,
-      creaturesLeft: this.creatures.filter((e) => !e.stunned && !e.escaped).length,
-      freedBySwing: this.freedBySwing,
+      creaturesLeft: this.creatures.filter((e) => !e.stunned && !e.escaped && !e.freed).length,
+      creaturesFreed: this.creatures.filter((e) => e.freed).length,
       swarmsCleared: this.swarmWalls.filter((s) => s.cleared).length,
       roomRestored: this.roomObjects.filter((o) => o.restored).length,
       duelWon: this.duelWonFlag,
@@ -848,7 +876,8 @@ export class ArcadeScene extends Phaser.Scene {
 
   /** Contact with a creature: taskable → freeze + quickfire; cushion → bounce. */
   private contact(creature: Creature): void {
-    if (creature.stunned || creature.escaped || this.frozen || this.over || this.pstate.kind === "dying") return;
+    if (creature.stunned || creature.escaped || creature.freed || this.frozen || this.over || this.pstate.kind === "dying") return;
+    if (this.time.now < creature.dazedUntil) return; // just shooed — let the student pass
     if (creature.kind === "cushion") {
       // Sprungkissen: land on top → a pogo-grade launch (harmless rideable)
       if (this.player.body.velocity.y > 40 && this.player.y < creature.sprite.y - 8) {
@@ -933,7 +962,9 @@ export class ArcadeScene extends Phaser.Scene {
     if (seal) this.doReleaseSeal(seal, seal.img.x, seal.img.y);
   }
 
-  /** v4: battle verdict — freed (art swap wild→free, then off) or escaped. */
+  /** v4 battle verdict, amended v5 W0 (Koki's two-skin law): named correctly →
+   *  the school thing turns FRIENDLY and STAYS in the level, hopping happily —
+   *  it never vanishes. Wrong → it escapes (unchanged). */
   resolveBattle(correct: boolean): void {
     const creature = this.creatures.find((e) => e.sprite.getData("engaged") === true);
     this.frozen = false;
@@ -945,18 +976,28 @@ export class ArcadeScene extends Phaser.Scene {
     creature.sprite.setData("engaged", false);
     const skin = creature.sprite.getData("battleSkin") as string | undefined;
     if (correct) {
-      creature.escaped = true; // gone from play — freed, never killed
+      creature.freed = true;
       this.combo += 1;
       this.maxCombo = Math.max(this.maxCombo, this.combo);
       this.cfg.onCombo(this.combo, comboPoints(this.combo));
       playSfx("chime-correct");
+      const s = creature.sprite;
       if (skin !== undefined && this.textures.exists(`img-st_${skin}_free`)) {
-        creature.sprite.setTexture(`img-st_${skin}_free`);
-        creature.sprite.setDisplaySize(TILE, TILE);
-      }
+        s.setTexture(`img-st_${skin}_free`);
+        s.setDisplaySize(TILE, TILE);
+      } else s.setAlpha(0.95);
       creature.stars?.destroy();
-      this.burst?.explode(14, creature.sprite.x, creature.sprite.y);
-      this.tweens.add({ targets: creature.sprite, y: creature.sprite.y - 30, alpha: 0, duration: 900, delay: 500, onComplete: () => creature.sprite.destroy() });
+      this.tweens.killTweensOf(s);
+      this.burst?.explode(14, s.x, s.y);
+      // ground it so the friendly hop works for every original kind
+      s.body.enable = true;
+      s.body.setAllowGravity(true);
+      if ((creature.kind === "flyer" || creature.kind === "cloud" || creature.kind === "thief") && this.solidsGroup !== null) {
+        this.physics.add.collider(s, this.solidsGroup);
+      }
+      if (this.cfg.reducedMotion !== true) {
+        this.tweens.add({ targets: s, scaleY: { from: s.scaleY * 0.8, to: s.scaleY }, duration: 320, ease: "Back.easeOut" });
+      }
     } else {
       this.combo = 0;
       this.cfg.onCombo(0, 0);
@@ -1608,6 +1649,26 @@ export class ArcadeScene extends Phaser.Scene {
       if (e.stunned) { e.stars?.setPosition(e.sprite.x, e.sprite.y - 26); continue; }
       if (e.escaped) continue;
       const s = e.sprite;
+      // v5: a freed school thing stays — a content little hop on the spot
+      if (e.freed) {
+        const freeKey = e.sprite.getData("battleSkin") !== undefined ? `img-st_${e.sprite.getData("battleSkin") as string}_free` : null;
+        if (freeKey !== null && this.textures.exists(freeKey) && s.texture.key !== freeKey) {
+          s.setTexture(freeKey);
+          s.setDisplaySize(TILE, TILE);
+        }
+        if (s.body.blocked.down) {
+          s.setVelocityX(0);
+          if (now >= e.nextHopAt) {
+            e.dir = e.dir === 1 ? -1 : 1;
+            s.setVelocity(e.dir * 42, -185);
+            s.setFlipX(e.dir === -1);
+            e.nextHopAt = now + 1500 + e.idx * 120;
+          }
+        }
+        continue;
+      }
+      // v5 Federstab law: shooed — keep the knockback, skip AI + steering
+      if (now < e.dazedUntil) continue;
       // 2-frame life at ~320ms, phase-offset per creature (Keen's item shimmer
       // doctrine — never a lockstep cast); generated frames win when present
       const n2 = Math.floor((now + e.idx * 137) / 320) % 2;

@@ -266,7 +266,7 @@
       "id": "g1.game.ch01.r1",
       "use": "rescue",
       "kind": "choice",
-      "storyDe": "Der Tintengeist hält dich fest! Antworte ruhig — dann lässt er los.",
+      "storyDe": "Er flüstert eine Frage — antworte ihm freundlich.",
       "promptEn": "How are you?",
       "options": [
         "I'm fine, thanks.",
