@@ -65,7 +65,16 @@ export default async function AdminPage() {
         );
       })}
 
-      <section className="dg-card" style={{ marginTop: 24 }}>
+      <section className="dg-card" style={{ marginTop: 24, border: "2px solid #8b7cf5" }}>
+        <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>🖋 Story-Modus (Lehrer-Vorschau)</h2>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
+          The new Keen-style game — prologue, world map, chapter 1 at full art. Unreleased: students are
+          redirected until the year-1 launch; only teacher sessions get in.
+        </p>
+        <Link href="/play/1/world" className="dg-btn" style={{ display: "inline-block" }}>Play the story mode →</Link>
+      </section>
+
+      <section className="dg-card" style={{ marginTop: 16 }}>
         <h2 style={{ fontSize: 17, margin: "0 0 10px", fontFamily: "var(--font-display)", color: "var(--ink)" }}>Your classes</h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, margin: "0 0 12px" }}>
           Create a class, share its invite code for students to join, and keep an eye on the roster.
