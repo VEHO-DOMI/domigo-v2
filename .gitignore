@@ -29,4 +29,6 @@ content/build/audit/blind-solve/cache.json
 # Codex image drops: an AIRLOCK, never committed raw — only
 # prep-art/sync-art (run by us) move QA'd files into public/art/
 docs/art/drop/**
-!docs/art/drop/**/.gitkeep
+docs/art/drop-t/**
+!docs/art/drop/**
+docs/art/drop-t/**/.gitkeep
