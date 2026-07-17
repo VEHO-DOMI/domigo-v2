@@ -13,7 +13,7 @@ import { getDb, getDueRefs } from "@domigo/db";
 import { resolveEncounterTasks } from "@domigo/game-core";
 import { parseArcadeLevel, type ArcadeLevel } from "@domigo/game-2d/arcade";
 import type { BossScript } from "@domigo/game-2d/boss";
-import { getActingUserForPage } from "@/lib/identity";
+import { getActingUserForPage, getTeacherForPage } from "@/lib/identity";
 import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
 import { resolveKeenArt } from "@/lib/keen-art";
 import ArcadeClient from "./ArcadeClient";
@@ -35,7 +35,8 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
   if (![1, 2, 3, 4].includes(grade)) redirect("/home");
   // gate: a mock never reaches students (release.json rules don't cover it,
   // so the environment does — same posture as the DEV story overrides)
-  if (process.env.VERCEL_ENV === "production") redirect(`/play/${grade}`);
+  // Pre-release gate with a teacher door (see world/page.tsx).
+  if (process.env.VERCEL_ENV === "production" && (await getTeacherForPage()) === null) redirect(`/play/${grade}`);
 
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
