@@ -17,7 +17,7 @@ import { SeasonBoard, type EpisodeProgress } from "@domigo/game-novel";
 import { JournalBoard, tripCopyFor, type DayProgress } from "@domigo/game-trip";
 import { ZoneBoard, type ZoneProgress } from "@domigo/game-2d/board";
 import { FLOOR_PLANS } from "@/lib/floor-plan";
-import { getActingUserForPage, getTeacherForPage } from "@/lib/identity";
+import { getPlayerForPage, getTeacherForPage } from "@/lib/identity";
 import { DEFAULT_STORY_UI, HUB_SKIN, STORY_UI } from "@/lib/stories";
 import { resolveHubArt, resolveEvidenceArt } from "@/lib/story-art";
 import { devReleasedChapters, devStoryOverride } from "@/lib/story-dev";
@@ -29,7 +29,9 @@ export default async function HubPage({ params }: { params: Promise<{ grade: str
   const grade = Number(gradeStr);
   if (![1, 2, 3, 4].includes(grade)) redirect("/home");
 
-  const acting = await getActingUserForPage();
+  // W0: student OR teacher (preview law) — the hub was the LAST student-only
+  // game surface, bouncing teachers to /signin from every "Alle Räume" link.
+  const acting = await getPlayerForPage();
   if (!acting) redirect("/signin");
   // the Keen story-mode preview is teacher-only until the year-1 release —
   // this card is its ONLY navigation entry (students never see it)

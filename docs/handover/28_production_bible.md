@@ -195,6 +195,27 @@ ABSENCE (unpainted paper, not a creature) — its style spec extends §2 when au
 
 Ch15 (the rescue duel) and every year-2 care climax stay Fable-authored — the campaign's soul.
 
+## §8b · THE ACCESS-MAP LAW (W0, Koki 2026-07-17: "this doesn't happen again")
+
+Every game surface is listed here with WHO can reach it and WHERE its visible entry point
+lives. **Standing rule: a PR that adds or moves a surface must add/update its entry point AND
+this table row in the same PR.** A surface without a visible entry point for its audience is
+a defect (the Story-Modus launch shipped reachable only by typed URL — never again).
+
+| Route | Audience (prod) | Visible entry point |
+| --- | --- | --- |
+| `/play/1` (hub, old build) | students + teachers | student home; admin "Play the story mode" chain; every "← Alle Räume" |
+| `/play/1/z01…` (old zones) | students + teachers | hub page cards |
+| `/play/1/world` (Keen world map) | **teachers only** until year-1 release | admin dashboard card + `/play/1` hub card (teacher-only render) |
+| `/play/1/run?level=…` (Keen levels) | **teachers only** until year-1 release | world-map buildings (never direct) |
+| `/admin` | teachers | teacher sign-in landing |
+| `/signin` | everyone | public root |
+
+Identity contract behind the table: `getPlayerForPage()`/`getActingPlayer()` (student first,
+teacher fallback) on EVERY game surface + the game-save route; `/api/attempts` stays
+student-only by design (teacher play never lands in class mastery). The pre-release gate on
+world/run is `VERCEL_ENV === "production" && teacher === null → redirect`.
+
 ## §9 · Truth pointers
 
 Sheets: `docs/design/g1/` · commission: `docs/art/CODEX_COMMISSION.html` (+ its data/builder) ·
