@@ -182,6 +182,16 @@ export class BossScene extends Phaser.Scene {
   }
 
   /** React resolves the open counter window (one brain answered). */
+  /** dev-only (the step-harness cannot dodge in real time, P-37b family):
+   *  jump straight to the beaten state — used ONLY to prove the win→finale
+   *  transition; never reachable from gameplay. */
+  debugWin(): void {
+    if (process.env.NODE_ENV === "production") return;
+    this.knotsLeft = 0;
+    this.cfg.onKnots(0, this.cfg.script.knots);
+    this.beaten();
+  }
+
   resolveWindow(correct: boolean): void {
     if (this.phaseState.kind !== "window") return;
     const r = windowResolved(correct, this.knotsLeft, this.time.now);

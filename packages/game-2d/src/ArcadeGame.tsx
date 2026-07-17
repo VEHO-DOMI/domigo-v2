@@ -123,6 +123,8 @@ export function ArcadeGame(props: ArcadeGameProps) {
   const doneSentRef = useRef(false);
   const padRef = useRef<ArcadePad>({ left: false, right: false, up: false, down: false, jump: false, pogo: false, swing: false });
   const [phase, setPhase] = useState<Phase>({ kind: "run" });
+  const phaseRef = useRef<Phase>({ kind: "run" });
+  useEffect(() => { phaseRef.current = phase; }, [phase]);
   const [hearts, setHearts] = useState(3);
   const [letters, setLetters] = useState(0);
   const [gluehwoerter, setGluehwoerter] = useState(0);
@@ -149,6 +151,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
   const tier: Tier = props.tier ?? entry.defaultTier;
   const qfSeconds = ARCADE.quickfireSeconds[tier];
   const artUrl = (stem?: string): string | undefined => (stem !== undefined ? props.art?.[stem] : undefined);
+  const sealNoun = level.header.sealNounDe ?? "Siegel"; // per-unit lock naming (doc 30 §5)
   const timerRef = useRef<number | null>(null);
   const fragment = level.header.fragment;
 
@@ -350,6 +353,9 @@ export function ArcadeGame(props: ArcadeGameProps) {
     if (process.env.NODE_ENV !== "production") {
       (window as unknown as Record<string, unknown>)["__domigoArcade"] = {
         game, // dev-only: typing-guard probes
+        bossPeek: () => ({ at: bossAtRef.current, answers: bossTasksRef.current.map((x) => x.answer) }), // dev-only: full-run harness
+        winBoss: () => bossRef.current?.debugWin(), // dev-only: proves the win→finale transition
+        phasePeek: () => phaseRef.current?.kind, // dev-only
         state: () => (bossActiveRef.current && bossRef.current ? bossRef.current.debugState() : scene.debugState()),
         press: (p: Partial<ArcadePad>) => Object.assign(padRef.current, p),
         // playtest-only: open the seal gate so the boss handoff is drivable
@@ -655,7 +661,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
             ) : sealsDone ? (
               <span className="dg-qf-combo" style={{ ...hudChip, background: "#ffe066", color: "#141221" }}>→ Zur Tür!</span>
             ) : (
-              <span style={hudChip}>⬧ Siegel {seals[0]}/{seals[1]}</span>
+              <span style={hudChip}>⬧ {sealNoun} {seals[0]}/{seals[1]}</span>
             )}
           </div>
         </div>
@@ -681,9 +687,16 @@ export function ArcadeGame(props: ArcadeGameProps) {
                 {level.header.goalDe ?? `Befreie die ${seals[1]} Siegel von ihren Wächtern – dann öffnet sich die Tür des Kapitelwächters!`}
               </p>
               <div style={{ display: "grid", gap: 6, justifyContent: "center", fontSize: 13.5, color: "var(--muted, #c9c4e4)", textAlign: "left", marginBottom: 14 }}>
-                <span>⬧ Siegel — stell dich den Wesen, die sie bewachen</span>
-                {level.letters.length > 0 && <span>✦ Buchstaben — einsammeln, sie zählen für dich</span>}
-                {level.gluehwoerter.length > 0 && <span style={{ color: "#ffe082" }}>✺ Glühwörter — versteckt! Jedes schenkt dir einen Gratis-Hinweis</span>}
+                {level.header.hintsDe !== undefined ? (
+                  // doc 30 §1.2: the explainer speaks THIS unit's fiction
+                  level.header.hintsDe.map((h) => <span key={h}>{h}</span>)
+                ) : (
+                  <>
+                    <span>⬧ {sealNoun} — hol sie zurück, dann öffnet sich die große Tür</span>
+                    {level.letters.length > 0 && <span>✦ Buchstaben — einsammeln, sie zählen für dich</span>}
+                    {level.gluehwoerter.length > 0 && <span style={{ color: "#ffe082" }}>✺ Jeder Fund schenkt dir einen Gratis-Hinweis</span>}
+                  </>
+                )}
               </div>
               <button type="button" className="dg-btn" onClick={startRun} data-testid="goal-start">Los geht&apos;s!</button>
               <p style={{ fontSize: 12, color: "var(--muted, #8f8ab0)", margin: "8px 0 0" }}>… oder drück eine Taste</p>
@@ -771,7 +784,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
         {phase.kind === "sealTask" && (
           <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "radial-gradient(ellipse 75% 65% at 50% 45%, rgba(20,18,33,0.6) 0%, rgba(20,18,33,0.9) 80%)", padding: 12 }}>
             <div className="dg-qf-card" style={{ width: "min(520px, 96%)", textAlign: "center" }}>
-              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#ffe066", marginBottom: 6 }}>✶ Ein Siegel!</div>
+              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#ffe066", marginBottom: 6 }}>✶ Eine verknotete Seite!</div>
               <p style={{ fontSize: 16, color: "var(--text-secondary)", margin: "0 0 10px", lineHeight: 1.45 }}>{phase.task.ask}</p>
               <div style={{ fontSize: 24, fontWeight: 800, color: "#f3f1ff", fontFamily: "var(--font-display)", marginBottom: 12, lineHeight: 1.3 }}>{phase.task.prompt}</div>
               <form
@@ -790,7 +803,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
               </form>
               {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed />}
               {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Noch nicht — nimm einen Tipp und versuch es gleich nochmal!</p>}
-              {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Das Siegel löst sich! ✶</p>}
+              {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Die Seite ist frei! ✶</p>}
               <div style={{ marginTop: 12 }}>
                 <button type="button" className="dg-btn-secondary" style={{ fontSize: 13 }} onClick={() => { phase.cancel(); setPhase({ kind: "run" }); }}>Später</button>
               </div>
@@ -1005,7 +1018,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
               <div style={{ fontSize: 24, fontWeight: 800, fontFamily: "var(--font-display)", margin: "6px 0 2px" }}>{fragment}</div>
               {phase.stats.bossWon && props.boss && <p style={{ fontSize: 14, color: "var(--muted)", margin: "2px 0 6px" }}>{props.boss.outro}</p>}
               <p style={{ fontSize: 15, margin: "10px 0 4px" }}>
-                ⬧ {phase.stats.seals} Siegel · ✦ {phase.stats.letters} Buchstaben{phase.stats.gluehwoerter > 0 ? ` · ✺ ${phase.stats.gluehwoerter} Glühwörter` : ""} · beste Serie ×{phase.stats.maxCombo}
+                ⬧ {phase.stats.seals} {sealNoun} · ✦ {phase.stats.letters} Buchstaben{phase.stats.gluehwoerter > 0 ? ` · ✺ ${phase.stats.gluehwoerter} Glühbuchstaben` : ""} · beste Serie ×{phase.stats.maxCombo}
               </p>
               <p style={{ fontSize: 13, color: "var(--muted)", margin: 0 }}>
                 {Math.round(phase.stats.ms / 1000)}s{phase.stats.deaths > 0 ? ` · ${phase.stats.deaths}× gerettet` : " · ohne Rettung!"}

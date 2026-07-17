@@ -89,6 +89,8 @@ const KeenLevelHeader = z.object({
   swarms: z.array(z.object({ c: z.number().int(), r: z.number().int(), w: z.number().int(), h: z.number().int() })).optional(),
   restoreRoom: z.object({ objects: z.array(z.object({ c: z.number().int(), r: z.number().int(), stem: z.string() })), seal: z.number().int() }).optional(),
   duel: z.object({ c: z.number().int(), r: z.number().int(), seal: z.number().int() }).optional(),
+  hintsDe: z.array(z.string()).optional(),
+  sealNounDe: z.string().optional(),
   goalDe: z.string().optional(),
   /** doc 28 §1.2: the CLT Warum-Zeile — why this level matters, in-story. */
   whyDe: z.string().optional(),

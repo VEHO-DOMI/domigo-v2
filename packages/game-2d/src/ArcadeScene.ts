@@ -243,6 +243,8 @@ export class ArcadeScene extends Phaser.Scene {
   private roomObjects: Array<{ img: Phaser.GameObjects.Image; stem: string; restored: boolean; c: number; r: number }> = [];
   private duelGhost: Phaser.GameObjects.Image | null = null;
   private duelWonFlag = false;
+  /** v4: seals owned by a set-piece — ONLY the set-piece releases them. */
+  private setPieceSeals = new Set<number>();
   private camY = 0;
   private worldGravity: number = ARCADE.gravity;
   private bolts!: Phaser.Physics.Arcade.Group;
@@ -433,7 +435,8 @@ export class ArcadeScene extends Phaser.Scene {
 
     // letters — real glyphs being rescued
     const letterGroup = this.physics.add.staticGroup();
-    const GLYPHS = "TINTENWORT";
+    // v4 (doc 30 §1.3): the collectible IS the alphabet — letters run A, B, C …
+    const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     level.letters.forEach((l, i) => {
       const x = l.c * TILE + TILE / 2;
       const y = l.r * TILE + TILE / 2;
@@ -493,6 +496,8 @@ export class ArcadeScene extends Phaser.Scene {
       this.sealSprites.push({ img, taken: false, guard: s.guard, idx: i });
     });
     this.cfg.onSeals(0, level.header.seals.length);
+    if (level.header.restoreRoom) this.setPieceSeals.add(level.header.restoreRoom.seal);
+    if (level.header.duel) this.setPieceSeals.add(level.header.duel.seal);
 
     // the exit: legacy pedestal ('A') or the guardian's sealed door ('B')
     const exitCell = level.bossDoor ?? level.pedestal;
@@ -1006,7 +1011,7 @@ export class ArcadeScene extends Phaser.Scene {
     // a stunned thief returns everything it stole
     if (creature.kind === "thief") this.restoreStolen(creature.idx);
     // seal release: this creature guarded one → it flies free
-    const seal = this.sealSprites.find((x) => !x.taken && x.guard !== null && this.creatures[x.guard]?.idx === creature.idx);
+    const seal = this.sealSprites.find((x) => !x.taken && x.guard !== null && !this.setPieceSeals.has(x.idx) && this.creatures[x.guard]?.idx === creature.idx);
     if (seal) this.releaseSeal(seal, s.x, s.y);
   }
 
@@ -1111,7 +1116,7 @@ export class ArcadeScene extends Phaser.Scene {
         playSfx("thud");
         const missing = this.cfg.level.header.seals.length - this.sealsCollected;
         const t = this.add
-          .text(this.pedestal.x, this.pedestal.y - 60, `Noch versiegelt!\n⬧ ${missing} Siegel fehl${missing === 1 ? "t" : "en"}`, {
+          .text(this.pedestal.x, this.pedestal.y - 60, `Noch verknotet!\n⬧ ${missing} Seite${missing === 1 ? " fehlt" : "n fehlen"}`, {
             fontFamily: "system-ui, sans-serif", fontSize: "15px", fontStyle: "bold", color: "#ffe082", align: "center",
             stroke: "#191624", strokeThickness: 4,
           })
@@ -1368,7 +1373,7 @@ export class ArcadeScene extends Phaser.Scene {
     // the retry after "Später", and the discoverable interaction Koki missed ──
     if (grounded && upDown && !this.jumpHeld && now >= this.doorCooldownUntil) {
       for (const seal of this.sealSprites) {
-        if (seal.taken || seal.pending === true) continue;
+        if (seal.taken || seal.pending === true || this.setPieceSeals.has(seal.idx)) continue;
         const guard = seal.guard !== null ? this.creatures[seal.guard] : null;
         if (guard && !guard.stunned && !guard.escaped) continue; // its keeper still holds it
         // generous vertical reach: the post often towers over the walkway —
@@ -1557,7 +1562,7 @@ export class ArcadeScene extends Phaser.Scene {
     // free seals (guard null — authored free, or dropped by an escaped guard)
     // are touch-pickups; a walk-by collects them (never blocked, §4.3)
     for (const seal of this.sealSprites) {
-      if (seal.taken || seal.guard !== null) continue;
+      if (seal.taken || seal.guard !== null || this.setPieceSeals.has(seal.idx)) continue;
       if (Math.abs(seal.img.x - this.player.x) < 30 && Math.abs(seal.img.y - this.player.y) < 34) {
         this.releaseSeal(seal, seal.img.x, seal.img.y);
       }
