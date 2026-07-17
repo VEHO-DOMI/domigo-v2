@@ -1,0 +1,38 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 3,
+ "rows": 2,
+ "cells": [
+  {
+   "stem": "mh_down1",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "mh_down2",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "mh_up1",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "mh_up2",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "mh_side1",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "mh_side2",
+   "col": 2,
+   "row": 1
+  }
+ ]
+}

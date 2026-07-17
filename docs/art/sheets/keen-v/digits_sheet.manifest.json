@@ -1,0 +1,68 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 4,
+ "rows": 3,
+ "cells": [
+  {
+   "stem": "digit_0",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "digit_1",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "digit_2",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "digit_3",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "stem": "digit_4",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "digit_5",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "digit_6",
+   "col": 2,
+   "row": 1
+  },
+  {
+   "stem": "digit_7",
+   "col": 3,
+   "row": 1
+  },
+  {
+   "stem": "digit_8",
+   "col": 0,
+   "row": 2
+  },
+  {
+   "stem": "digit_9",
+   "col": 1,
+   "row": 2
+  },
+  {
+   "stem": "swirl_a",
+   "col": 2,
+   "row": 2
+  },
+  {
+   "stem": "swirl_b",
+   "col": 3,
+   "row": 2
+  }
+ ]
+}

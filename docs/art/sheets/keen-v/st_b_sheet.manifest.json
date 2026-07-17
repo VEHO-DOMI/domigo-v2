@@ -1,0 +1,58 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 5,
+ "rows": 2,
+ "cells": [
+  {
+   "stem": "st_pencil_case_wild",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "st_pencil_case_free",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "st_exercise_book_wild",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "st_exercise_book_free",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "stem": "st_watercolours_wild",
+   "col": 4,
+   "row": 0
+  },
+  {
+   "stem": "st_watercolours_free",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "st_paintbrush_wild",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "st_paintbrush_free",
+   "col": 2,
+   "row": 1
+  },
+  {
+   "stem": "st_pencil_sharpener_wild",
+   "col": 3,
+   "row": 1
+  },
+  {
+   "stem": "st_pencil_sharpener_free",
+   "col": 4,
+   "row": 1
+  }
+ ]
+}
