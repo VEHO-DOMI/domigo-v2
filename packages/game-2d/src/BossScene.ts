@@ -122,8 +122,8 @@ export class BossScene extends Phaser.Scene {
 
   private makeCard(word: string, i: number): Phaser.GameObjects.Container {
     const parts: Phaser.GameObjects.GameObject[] = [];
-    if (this.textures.exists("img-boss_card")) {
-      parts.push(this.add.image(0, 0, "img-boss_card").setDisplaySize(64, 44));
+    if (this.textures.exists("img-boss2_card") || this.textures.exists("img-boss_card")) {
+      parts.push(this.add.image(0, 0, this.textures.exists("img-boss2_card") ? "img-boss2_card" : "img-boss_card").setDisplaySize(64, 44));
     } else {
       const g = this.add.graphics();
       g.fillStyle(0x2c2a44, 1).fillRoundedRect(-30, -20, 60, 40, 8);
@@ -135,11 +135,15 @@ export class BossScene extends Phaser.Scene {
     return c;
   }
 
+  private headImg: Phaser.GameObjects.Image | null = null;
+
   private makeHead(): Phaser.GameObjects.Container {
     // generated guardian head when present (idle; the telegraph tint still
     // signals the tell — the dedicated tell frame swaps in at PR-4 wiring)
-    if (this.textures.exists("img-boss_head_idle")) {
-      const img = this.add.image(0, 0, "img-boss_head_idle").setDisplaySize(84, 84);
+    if (this.textures.exists("img-boss2_head_idle") || this.textures.exists("img-boss_head_idle")) {
+      const v2 = this.textures.exists("img-boss2_head_idle");
+      const img = this.add.image(0, 0, v2 ? "img-boss2_head_idle" : "img-boss_head_idle").setDisplaySize(v2 ? 150 : 84, v2 ? 78 : 84);
+      this.headImg = img; // the tell frame swaps on telegraph (batch U)
       return this.add.container(VIEW_W / 2, TILE_PX * 2, [img]).setDepth(5);
     }
     const g = this.add.graphics();
@@ -241,6 +245,8 @@ export class BossScene extends Phaser.Scene {
     if (events.tell && next.kind === "telegraph") {
       this.attackIdx += 1;
       playSfx("tick");
+      // the dedicated tell frame (batch U): mouth open, threads taut
+      if (this.headImg && this.textures.exists("img-boss2_head_tell")) this.headImg.setTexture("img-boss2_head_tell").setDisplaySize(150, 78);
       const lane = next.lane;
       // the head rears above the lane; the lane strip flashes its color
       this.tweens.add({ targets: this.head, x: LANE_X[lane]!, y: TILE_PX * 1.4, duration: Math.min(this.cfg.script.telegraphMs[this.cfg.tier] * 0.7, 500), ease: "Sine.easeOut" });
@@ -248,6 +254,9 @@ export class BossScene extends Phaser.Scene {
       this.laneFlash.fillColor = LANE_TINT[lane]!;
       this.laneFlash.setAlpha(0);
       this.tweens.add({ targets: this.laneFlash, alpha: 0.22, yoyo: true, repeat: 2, duration: this.cfg.script.telegraphMs[this.cfg.tier] / 6 });
+    }
+    if (before.kind === "attack" && next.kind !== "attack" && this.headImg && this.textures.exists("img-boss2_head_idle")) {
+      this.headImg.setTexture("img-boss2_head_idle").setDisplaySize(150, 78);
     }
     if (before.kind === "telegraph" && next.kind === "attack") {
       // the sweep: head dives down the lane and returns

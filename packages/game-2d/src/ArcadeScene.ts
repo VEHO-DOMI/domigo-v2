@@ -522,7 +522,7 @@ export class ArcadeScene extends Phaser.Scene {
       this.hurt("bolt");
     });
     placementsFor(level.header, tier).forEach((e, i) => {
-      const s = this.physics.add.sprite(e.c * TILE + TILE / 2, e.r * TILE + TILE / 2 + 5, this.itex(`${e.kind}-0`, tex(`${e.kind}-0`)));
+      const s = this.physics.add.sprite(e.c * TILE + TILE / 2, e.r * TILE + TILE / 2 + 5, this.itex(`${e.kind}2-0`, this.itex(`${e.kind}-0`, tex(`${e.kind}-0`))));
       s.setDisplaySize(TILE, TILE);
       s.setDepth(4);
       // alignment law: 30×26 DISPLAY px, feet 10px above the drawn bottom —
@@ -1368,8 +1368,9 @@ export class ArcadeScene extends Phaser.Scene {
       const s = e.sprite;
       // 2-frame life at ~320ms, phase-offset per creature (Keen's item shimmer
       // doctrine — never a lockstep cast); generated frames win when present
-      const frame = `${e.kind}-${Math.floor((now + e.idx * 137) / 320) % 2}`;
-      const animKey = this.itex(frame, `ka-${frame}`);
+      const n2 = Math.floor((now + e.idx * 137) / 320) % 2;
+      // batch-U craft-bar creatures win, then batch S, then procedural
+      const animKey = this.itex(`${e.kind}2-${n2}`, this.itex(`${e.kind}-${n2}`, `ka-${e.kind}-${n2}`));
       if (s.texture.key !== animKey) {
         s.setTexture(animKey);
         s.setDisplaySize(TILE, TILE);
