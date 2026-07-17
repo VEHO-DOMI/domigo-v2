@@ -31,6 +31,8 @@ content/build/audit/blind-solve/cache.json
 docs/art/drop/**
 docs/art/drop-t/**
 docs/art/drop-u/**
+docs/art/drop-v/**
 !docs/art/drop/**
 docs/art/drop-t/**
-docs/art/drop-u/**/.gitkeep
+docs/art/drop-u/**
+docs/art/drop-v/**/.gitkeep
