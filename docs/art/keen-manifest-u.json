@@ -1,0 +1,133 @@
+{
+  "library": "keen-batch-u",
+  "note": "Batch U (round 2 cohesion pass at the v2 craft bar; refs MANDATORY). Slice per docs/art/sheets/keen-u manifests, tolerance 40; defringe edge-erosion; missing stems keep fallbacks.",
+  "dropFolder": "docs/art/drop-u",
+  "count": 25,
+  "stems": [
+    {
+      "stem": "_style_key_pixel2",
+      "class": "reference",
+      "dest": "g1/keen"
+    },
+    {
+      "stem": "walker2-0",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "walker2-1",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "hopper2-0",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "hopper2-1",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "flyer2-0",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "flyer2-1",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "thief2-0",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "thief2-1",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cushion2-0",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cushion2-1",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cloud2-0",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cloud2-1",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "boss2_head_idle",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "boss2_head_tell",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "boss2_card",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "boss2_burst",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "mdec_tree",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mdec_bush",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mdec_fence",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mdec_sign",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mdec_bridge",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mdec_rock",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mdec_flowers",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mdec_inkpool",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    }
+  ]
+}
