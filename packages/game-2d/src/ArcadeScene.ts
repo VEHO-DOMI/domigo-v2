@@ -248,6 +248,9 @@ export class ArcadeScene extends Phaser.Scene {
   private swarmWalls: Array<{ body: Phaser.Types.Physics.Arcade.SpriteWithStaticBody; bits: Phaser.GameObjects.GameObject[]; cleared: boolean; engaged: boolean }> = [];
   private roomObjects: Array<{ img: Phaser.GameObjects.Image; stem: string; restored: boolean; c: number; r: number }> = [];
   private duelGhost: Phaser.GameObjects.Image | null = null;
+  /** v5 W2 set-piece signposts — dismissed when their piece completes */
+  private roomLabel: Phaser.GameObjects.Container | null = null;
+  private duelLabel: Phaser.GameObjects.Container | null = null;
   private duelWonFlag = false;
   /** v4: seals owned by a set-piece — ONLY the set-piece releases them. */
   private setPieceSeals = new Set<number>();
@@ -290,6 +293,17 @@ export class ArcadeScene extends Phaser.Scene {
   private itex(stem: string, fallback: string): string {
     const key = `img-${stem}`;
     return this.textures.exists(key) ? key : fallback;
+  }
+
+  /** v5 W2: a soft in-level label pill (set-piece signposting, doc 30 §1.2 —
+   *  the set-pieces must be impossible to miss). German, kid-concrete. */
+  private makeSignpost(x: number, y: number, textDe: string): Phaser.GameObjects.Container {
+    const label = this.add.text(0, 0, textDe, { fontFamily: "system-ui, sans-serif", fontSize: "13px", fontStyle: "bold", color: "#f3f1ff" }).setOrigin(0.5);
+    const pad = 8;
+    const bg = this.add.rectangle(0, 0, label.width + pad * 2, label.height + pad, 0x141221, 0.78).setStrokeStyle(1, 0x8b7cf5, 0.9);
+    const c = this.add.container(x, y, [bg, label]).setDepth(7);
+    if (this.cfg.reducedMotion !== true) this.tweens.add({ targets: c, y: y - 5, duration: 1100, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+    return c;
   }
 
   create(): void {
@@ -350,9 +364,33 @@ export class ArcadeScene extends Phaser.Scene {
     const slopeHere = new Map(level.slopes.map((s) => [`${s.c},${s.r}`, s] as const));
     const covered = (c: number, r: number): boolean => solidHere.has(`${c},${r}`) || slopeHere.has(`${c},${r}`);
     const solids = this.physics.add.staticGroup();
+    // v5 W2 TERRAIN v3 (STYLE_PIXEL_V3, doc 30 §2.1): when the HD tile set is
+    // present, pick by edge exposure with gentle interior variants (Koki's
+    // "beautiful ground"); the batch-T mask set + procedural earth stay as the
+    // fallback chain. Tiles are 48px native → displayed 1:1 (integer law).
+    const v3 = this.textures.exists("img-earth3_a") && this.textures.exists("img-grass3_top");
+    const pickV3 = (c: number, r: number, upE: boolean, leftE: boolean, rightE: boolean): string => {
+      if (upE && leftE && this.textures.exists("img-grass3_tl")) return "img-grass3_tl";
+      if (upE && rightE && this.textures.exists("img-grass3_tr")) return "img-grass3_tr";
+      if (upE) return "img-grass3_top";
+      if (leftE && this.textures.exists("img-edge3_l")) return "img-edge3_l";
+      if (rightE && this.textures.exists("img-edge3_r")) return "img-edge3_r";
+      // depth read (Keen doctrine): the accented variants live only in the
+      // band right under the surface; two rows down the earth goes quiet and
+      // dark — otherwise every tile carries a pebble/letter and it wallpapers
+      const deep = covered(c, r - 1) && covered(c, r - 2) && this.textures.exists("img-earth3_inner");
+      if (deep) return "img-earth3_inner";
+      // shallow interior: 3 gentle variants, deterministic per cell
+      const v = ["a", "b", "c"][((c * 7 + r * 13) >>> 0) % 3]!;
+      return this.textures.exists(`img-earth3_${v}`) ? `img-earth3_${v}` : "img-earth3_a";
+    };
     for (const s of level.solids) {
-      const mask = terrainMask(!covered(s.c, s.r - 1), !covered(s.c, s.r + 1), !covered(s.c - 1, s.r), !covered(s.c + 1, s.r));
-      const b = solids.create(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, this.itex(`tile_sh_m${mask}`, tex(`earth-${mask}`))) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+      const upE = !covered(s.c, s.r - 1);
+      const leftE = !covered(s.c - 1, s.r);
+      const rightE = !covered(s.c + 1, s.r);
+      const mask = terrainMask(upE, !covered(s.c, s.r + 1), leftE, rightE);
+      const key = v3 ? pickV3(s.c, s.r, upE, leftE, rightE) : this.itex(`tile_sh_m${mask}`, tex(`earth-${mask}`));
+      const b = solids.create(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, key) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       b.setDisplaySize(TILE, TILE).refreshBody();
       const sb = b.body as Phaser.Physics.Arcade.StaticBody;
       // a solid flanking a slope must not WALL the ramp (Keen skips the feet
@@ -364,15 +402,32 @@ export class ArcadeScene extends Phaser.Scene {
     for (const s of level.slopes) {
       this.slopeCells.push(s);
       {
+        // v5: HD slope skins win, then batch V, then procedural wedges
         const vStem = s.dir === 1 ? "slope_up" : "slope_down"; // dir 1 = / rises rightward
-        const sk = this.itex(vStem, tex(`slope-${s.dir}`));
+        const v3Stem = s.dir === 1 ? "slope3_up" : "slope3_down";
+        const sk = this.itex(v3Stem, this.itex(vStem, tex(`slope-${s.dir}`)));
         const sImg = this.add.image(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, sk);
         if (sk.startsWith("img-")) sImg.setDisplaySize(TILE, TILE);
       }
     }
     const oneWays = this.physics.add.staticGroup();
+    // v5 W2: at the HD bar the squashed batch one-way strip read as "garbled
+    // yellow residue" (Koki). With terrain3 present, paint a CLEAN plank once:
+    // smooth 3-tone wood, dark contour, zero speckle (the anti-noise law).
+    if (v3 && !this.textures.exists("oneway-hd")) {
+      const cv = document.createElement("canvas");
+      cv.width = TILE; cv.height = 20;
+      const g2 = cv.getContext("2d")!;
+      g2.fillStyle = "#5d3a1a"; g2.fillRect(0, 0, TILE, 20);            // contour
+      g2.fillStyle = "#a8702f"; g2.fillRect(1, 1, TILE - 2, 18);        // base wood
+      g2.fillStyle = "#c98f45"; g2.fillRect(1, 1, TILE - 2, 6);         // top light
+      g2.fillStyle = "#8a5a26"; g2.fillRect(1, 14, TILE - 2, 5);        // under shade
+      g2.fillStyle = "#7a4e20"; g2.fillRect(10, 4, 2, 12); g2.fillRect(34, 4, 2, 12); // pegs
+      this.textures.addCanvas("oneway-hd", cv);
+    }
     const addOneWay = (c: number, r: number, helper: boolean): void => {
-      const b = oneWays.create(c * TILE + TILE / 2, r * TILE + TILE / 2 - 14, this.itex("prop_oneway", tex("oneway"))) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+      const owKey = this.textures.exists("oneway-hd") ? "oneway-hd" : this.itex("prop_oneway", tex("oneway"));
+      const b = oneWays.create(c * TILE + TILE / 2, r * TILE + TILE / 2 - 14, owKey) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       b.setDisplaySize(TILE, 20).refreshBody();
       if (helper) b.setTint(0x9fd8a4); // easy-mode scaffolding reads as such
       const body = b.body as Phaser.Physics.Arcade.StaticBody;
@@ -538,25 +593,66 @@ export class ArcadeScene extends Phaser.Scene {
     this.physics.add.collider(this.player, solids);
     this.solidsGroup = solids;
 
-    // ── v4 (doc 30 §3): the NUMBER-SWARM barriers ──
+    // ── v4 (doc 30 §3), rebuilt v5 W2: the NUMBER-SWARM as a DRIFTING CLOUD ──
+    // Koki's verdict: "a huge cloud you can't avoid, floating around" — the
+    // barrier fills its whole rect with slowly-circling wisps + number orbs
+    // (batch W cloud3_*/digit3_orb), not a thin static string. The invisible
+    // static body is unchanged (the collider IS the encounter trigger).
     for (const sw of level.header.swarms ?? []) {
       const cx = sw.c * TILE + (sw.w * TILE) / 2;
       const cy = sw.r * TILE + (sw.h * TILE) / 2;
       const bits: Phaser.GameObjects.GameObject[] = [];
-      for (let i = 0; i < 3; i += 1) {
-        const sk = this.textures.exists(`img-swirl_${i % 2 === 0 ? "a" : "b"}`) ? `img-swirl_${i % 2 === 0 ? "a" : "b"}` : null;
-        const ox = (i - 1) * TILE * 0.5;
-        const oy = ((i % 2) - 0.5) * TILE * 0.6;
-        const b = sk ? this.add.image(cx + ox, cy + oy, sk).setDisplaySize(TILE * 1.1, TILE * 1.1).setDepth(3) : (this.add.circle(cx + ox, cy + oy, 18, 0x2b2950, 0.7).setDepth(3) as unknown as Phaser.GameObjects.Image);
-        if (motion) this.tweens.add({ targets: b, y: (b as Phaser.GameObjects.Image).y - 8, angle: { from: -8, to: 8 }, duration: 900 + i * 160, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
-        bits.push(b);
-      }
-      for (let i = 0; i < 2; i += 1) {
-        const d = Math.floor(Math.abs(Math.sin(sw.c * 7 + i * 13)) * 10);
-        if (this.textures.exists(`img-digit_${d}`)) {
-          const im = this.add.image(cx + (i === 0 ? -14 : 18), cy + (i === 0 ? 10 : -12), `img-digit_${d}`).setDisplaySize(TILE * 0.6, TILE * 0.6).setDepth(4);
-          if (motion) this.tweens.add({ targets: im, y: im.y - 6, duration: 760 + i * 120, yoyo: true, repeat: -1 });
+      const hasCloud = this.textures.exists("img-cloud3_a");
+      if (hasCloud) {
+        // wisps seeded over the whole rect, each on its own slow circular drift
+        const n = Math.max(6, Math.round(sw.w * sw.h * 0.9));
+        for (let i = 0; i < n; i += 1) {
+          const wk = `img-cloud3_${["a", "b", "c", "d"][i % 4]}`;
+          const px = sw.c * TILE + ((i * 37 + 11) % (sw.w * 48));
+          const py = sw.r * TILE + ((i * 53 + 23) % (sw.h * 48));
+          const im = this.add.image(px, py, wk).setDisplaySize(TILE * (1.1 + (i % 3) * 0.25), TILE * (0.8 + (i % 2) * 0.3)).setDepth(3).setAlpha(0.9);
+          if (motion) {
+            this.tweens.add({ targets: im, x: px + 10 + (i % 3) * 8, y: py - 8 - (i % 2) * 6, angle: { from: -6, to: 6 }, duration: 1400 + (i % 5) * 260, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+          }
           bits.push(im);
+        }
+        // number orbs drifting through the cloud (the fiction: the unit's
+        // numbers, swirled out of order)
+        for (let i = 0; i < 4; i += 1) {
+          const d = (sw.c * 7 + i * 5) % 10;
+          const ox = sw.c * TILE + 12 + ((i * 61 + 9) % Math.max(1, sw.w * 48 - 30));
+          const oy = sw.r * TILE + 12 + ((i * 83 + 31) % Math.max(1, sw.h * 48 - 30));
+          const orb = this.add.image(ox, oy, this.itex(i % 2 === 0 ? "digit3_orb" : "digit3_glow", "img-cloud3_a")).setDisplaySize(TILE * 0.85, TILE * 0.85).setDepth(4);
+          const num = this.add.text(ox, oy, String(d), { fontFamily: "system-ui, sans-serif", fontSize: "19px", fontStyle: "bold", color: "#2b2950" }).setOrigin(0.5).setDepth(5);
+          if (motion) {
+            this.tweens.add({ targets: [orb, num], y: oy - 10 - (i % 3) * 4, x: ox + (i % 2 === 0 ? 8 : -8), duration: 1100 + i * 210, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+          }
+          bits.push(orb, num);
+        }
+        // twin swirl streaks give the cloud its rotation read
+        for (let i = 0; i < 2; i += 1) {
+          if (!this.textures.exists(`img-swirl3_${i === 0 ? "a" : "b"}`)) continue;
+          const s3 = this.add.image(cx + (i === 0 ? -14 : 16), cy + (i === 0 ? 12 : -14), `img-swirl3_${i === 0 ? "a" : "b"}`).setDisplaySize(TILE * 1.5, TILE * 1.5).setDepth(3).setAlpha(0.85);
+          if (motion) this.tweens.add({ targets: s3, angle: 360, duration: 6000 + i * 900, repeat: -1 });
+          bits.push(s3);
+        }
+      } else {
+        // fallback: the v4 swirl bits (batch V) / procedural circles
+        for (let i = 0; i < 3; i += 1) {
+          const sk = this.textures.exists(`img-swirl_${i % 2 === 0 ? "a" : "b"}`) ? `img-swirl_${i % 2 === 0 ? "a" : "b"}` : null;
+          const ox = (i - 1) * TILE * 0.5;
+          const oy = ((i % 2) - 0.5) * TILE * 0.6;
+          const b = sk ? this.add.image(cx + ox, cy + oy, sk).setDisplaySize(TILE * 1.1, TILE * 1.1).setDepth(3) : (this.add.circle(cx + ox, cy + oy, 18, 0x2b2950, 0.7).setDepth(3) as unknown as Phaser.GameObjects.Image);
+          if (motion) this.tweens.add({ targets: b, y: (b as Phaser.GameObjects.Image).y - 8, angle: { from: -8, to: 8 }, duration: 900 + i * 160, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+          bits.push(b);
+        }
+        for (let i = 0; i < 2; i += 1) {
+          const d = Math.floor(Math.abs(Math.sin(sw.c * 7 + i * 13)) * 10);
+          if (this.textures.exists(`img-digit_${d}`)) {
+            const im = this.add.image(cx + (i === 0 ? -14 : 18), cy + (i === 0 ? 10 : -12), `img-digit_${d}`).setDisplaySize(TILE * 0.6, TILE * 0.6).setDepth(4);
+            if (motion) this.tweens.add({ targets: im, y: im.y - 6, duration: 760 + i * 120, yoyo: true, repeat: -1 });
+            bits.push(im);
+          }
         }
       }
       const wall = this.physics.add.staticGroup().create(cx, cy, undefined as unknown as string) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
@@ -584,6 +680,15 @@ export class ArcadeScene extends Phaser.Scene {
       img.setDisplaySize(TILE * 0.95, TILE * 0.95);
       this.roomObjects.push({ img, stem: o.stem, restored: false, c: o.c, r: o.r });
     }
+    // v5 W2 signposting (Koki: "nicht ersichtlich, wie das passiert"): the two
+    // set-pieces announce themselves in-level with a soft label pill + the ↑
+    // interaction hint; both go dark once their piece is done.
+    if (this.roomObjects.length > 0) {
+      const xs = this.roomObjects.map((o) => o.img.x);
+      const cxm = (Math.min(...xs) + Math.max(...xs)) / 2;
+      const cym = Math.min(...this.roomObjects.map((o) => o.img.y)) - TILE * 1.35;
+      this.roomLabel = this.makeSignpost(cxm, cym, "✏ Das graue Klassenzimmer — ↑ benennen");
+    }
 
     // ── v4: the COMMAND-DUEL post (the ghost-student) ──
     if (level.header.duel) {
@@ -592,6 +697,8 @@ export class ArcadeScene extends Phaser.Scene {
       this.duelGhost = this.add.image(d.c * TILE + TILE / 2, d.r * TILE + TILE / 2, key).setDepth(3);
       this.duelGhost.setDisplaySize(TILE * 1.1, TILE * 1.1);
       if (motion) this.tweens.add({ targets: this.duelGhost, y: this.duelGhost.y - 5, duration: 1200, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+      // v5 W2 signpost — dismissed in winDuel()
+      this.duelLabel = this.makeSignpost(this.duelGhost.x, this.duelGhost.y - TILE * 1.5, "👻 Der verzauberte Schüler — ↑ helfen");
     }
 
     this.oneWayCollider = this.physics.add.collider(this.player, oneWays, undefined, () => {
@@ -940,6 +1047,8 @@ export class ArcadeScene extends Phaser.Scene {
     this.burst?.explode(12, obj.img.x, obj.img.y);
     playSfx("chime-correct");
     if (this.roomObjects.every((o) => o.restored)) {
+      this.roomLabel?.destroy();
+      this.roomLabel = null;
       const sealIdx = this.cfg.level.header.restoreRoom?.seal ?? 0;
       const seal = this.sealSprites.find((s) => !s.taken && s.idx === sealIdx);
       if (seal) this.doReleaseSeal(seal, seal.img.x, seal.img.y);
@@ -949,6 +1058,8 @@ export class ArcadeScene extends Phaser.Scene {
   /** v4: the duel is won — the ghost turns friendly; its seal releases. */
   private winDuel(): void {
     this.duelWonFlag = true;
+    this.duelLabel?.destroy();
+    this.duelLabel = null;
     if (this.duelGhost) {
       if (this.textures.exists("img-gs_friendly")) {
         this.duelGhost.setTexture("img-gs_friendly");
