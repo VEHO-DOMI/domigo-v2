@@ -12,7 +12,7 @@ import { loadStory, loadStoryCast, loadStoryComprehension } from "@domigo/conten
 import { getDb, getGameSave } from "@domigo/db";
 import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { loadUnitWithOverrides } from "@/lib/content-service";
-import { getActingUserForPage } from "@/lib/identity";
+import { getActingUserForPage, getTeacherForPage } from "@/lib/identity";
 import { loadKeenWorld } from "@/lib/keen-content";
 import { resolveKeenArt } from "@/lib/keen-art";
 import { worldCopyFor } from "@/lib/world-copy";
@@ -62,7 +62,9 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
   const { grade: gradeStr } = await params;
   const { done } = await searchParams;
   if (gradeStr !== "1") redirect("/play/1/world"); // the slice is G1-only
-  if (process.env.VERCEL_ENV === "production") redirect("/play/1");
+  // Pre-release gate: students never see the Keen build on prod, but the
+  // TEACHER plays it live anywhere (Koki 2026-07-17 — no dev server needed).
+  if (process.env.VERCEL_ENV === "production" && (await getTeacherForPage()) === null) redirect("/play/1");
 
   const acting = await getActingUserForPage();
   if (!acting) redirect("/signin");
