@@ -86,6 +86,9 @@ const KeenLevelHeader = z.object({
   helpers: z.array(z.object({ c: z.number().int(), r: z.number().int(), w: z.number().int(), maxTier: KeenTier })),
   // v2.2 (zod strips unknown keys — every new header field MUST be added here)
   movers: z.array(z.object({ c1: z.number().int(), r1: z.number().int(), c2: z.number().int(), r2: z.number().int(), w: z.number().int(), periodMs: z.number().int() })).optional(),
+  swarms: z.array(z.object({ c: z.number().int(), r: z.number().int(), w: z.number().int(), h: z.number().int() })).optional(),
+  restoreRoom: z.object({ objects: z.array(z.object({ c: z.number().int(), r: z.number().int(), stem: z.string() })), seal: z.number().int() }).optional(),
+  duel: z.object({ c: z.number().int(), r: z.number().int(), seal: z.number().int() }).optional(),
   goalDe: z.string().optional(),
   /** doc 28 §1.2: the CLT Warum-Zeile — why this level matters, in-story. */
   whyDe: z.string().optional(),

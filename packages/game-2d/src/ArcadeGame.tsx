@@ -65,6 +65,11 @@ type Phase =
   | { kind: "run" }
   | { kind: "quickfire"; qf: Quickfire; deadline: number }
   | { kind: "sealTask"; task: RescueTask; value: string; verdict: "none" | "wrong" | "right"; solve: () => void; cancel: () => void }
+  | { kind: "battle"; task: RescueTask; value: string; verdict: "none" | "wrong" | "right"; scaffolded: boolean }
+  | { kind: "swarm"; chain: Quickfire[]; at: number; solved: number; verdict: "none" | "wrong" | "right"; solve: () => void }
+  | { kind: "colorroom"; task: RescueTask; stage: "name" | "colour"; value: string; verdict: "none" | "wrong" | "right"; solve: () => void; cancel: () => void }
+  | { kind: "duelRound"; at: number; verdict: "none" | "wrong" | "right"; solve: () => void; cancel: () => void }
+  | { kind: "finale"; at: number; verdict: "none" | "wrong" | "right"; stats: DoneStats }
   | { kind: "verdict"; correct: boolean; answer: string }
   | { kind: "rescue"; rescue: RescueState }
   | { kind: "bossIntro" }
@@ -143,11 +148,18 @@ export function ArcadeGame(props: ArcadeGameProps) {
   const level = props.level ?? entry.level;
   const tier: Tier = props.tier ?? entry.defaultTier;
   const qfSeconds = ARCADE.quickfireSeconds[tier];
+  const artUrl = (stem?: string): string | undefined => (stem !== undefined ? props.art?.[stem] : undefined);
   const timerRef = useRef<number | null>(null);
   const fragment = level.header.fragment;
 
   const finish = (stats: DoneStats): void => {
-    setPhase({ kind: "done", stats });
+    // v4 (doc 30 §3): the dialogue finale is the unit's communicative wrap-up —
+    // it plays between the won duel and the done overlay
+    if (stats.bossWon && (props.storyTasks?.finale.length ?? 0) > 0) {
+      setPhase({ kind: "finale", at: 0, verdict: "none", stats });
+    } else {
+      setPhase({ kind: "done", stats });
+    }
     if (!doneSentRef.current) {
       doneSentRef.current = true;
       props.onDone?.({ gluehwoerter: stats.gluehwoerter, letters: stats.letters, seals: stats.seals, deaths: stats.deaths, bossWon: stats.bossWon });
@@ -170,9 +182,26 @@ export function ArcadeGame(props: ArcadeGameProps) {
     carryRef.current = carry;
     bossActiveRef.current = true;
     const st = props.storyTasks;
-    bossTasksRef.current = st && st.boss.length > 0
-      ? Array.from({ length: script.knots * 2 }, (_, i) => st.boss[i % st.boss.length]!)
-      : bossPlan(props.items, script.knots, props.seed);
+    if (st && (st.battle.length + st.swarm.length + st.colorroom.length + st.duel.length) > 0) {
+      // v4 COMPOSITION (doc 30 §3): each counter-window plays a DIFFERENT
+      // modality of the level — battle name, swarm pair, colour, command
+      const comp: RescueTask[] = [];
+      const toChips = (qf: Quickfire): RescueTask => ({ itemId: qf.itemId, kind: "vocab", presentation: "chips", ask: qf.ask, prompt: qf.prompt, pool: null, chips: qf.chips, answer: qf.answer, hints: qf.hints, art: qf.art });
+      const colourAsk = (r: RescueTask): RescueTask => r.colour ? { ...r, presentation: "chips", prompt: r.colour.promptEn, chips: r.colour.options, answer: r.colour.answer, art: r.art !== undefined ? `${r.art}_color` : undefined } : r;
+      for (let i = 0; i < script.knots * 2; i += 1) {
+        const lane = i % 4;
+        if (lane === 0 && st.battle.length > 0) { const b = st.battle[(i >> 2) % st.battle.length]!; comp.push({ ...b, art: b.art !== undefined ? `${b.art}_wild` : undefined }); }
+        else if (lane === 1 && st.swarm.length > 0) comp.push(toChips(st.swarm[(i >> 2) % st.swarm.length]!));
+        else if (lane === 2 && st.colorroom.length > 0) comp.push(colourAsk(st.colorroom[(i >> 2) % st.colorroom.length]!));
+        else if (st.duel.length > 0) comp.push(st.duel[(i >> 2) % st.duel.length]!);
+        else if (st.boss.length > 0) comp.push(st.boss[i % st.boss.length]!);
+      }
+      bossTasksRef.current = comp.length > 0 ? comp : (st.boss.length > 0 ? Array.from({ length: script.knots * 2 }, (_, i) => st.boss[i % st.boss.length]!) : bossPlan(props.items, script.knots, props.seed));
+    } else {
+      bossTasksRef.current = st && st.boss.length > 0
+        ? Array.from({ length: script.knots * 2 }, (_, i) => st.boss[i % st.boss.length]!)
+        : bossPlan(props.items, script.knots, props.seed);
+    }
     bossAtRef.current = 0;
     const boss = new BossScene({
       script,
@@ -253,6 +282,33 @@ export function ArcadeGame(props: ArcadeGameProps) {
         setPhase({ kind: "sealTask", task, value: "", verdict: "none", solve, cancel });
         return true;
       },
+      // ── v4 modality callbacks (doc 30 §3) ──
+      onBattle: (battleIdx) => {
+        const pool = props.storyTasks?.battle ?? [];
+        if (pool.length === 0) return false;
+        setPhase({ kind: "battle", task: pool[battleIdx % pool.length]!, value: "", verdict: "none", scaffolded: false });
+        return true;
+      },
+      onSwarm: (_swarmIdx, solve) => {
+        const pool = props.storyTasks?.swarm ?? [];
+        if (pool.length === 0) return false;
+        const chain = Array.from({ length: Math.min(6, pool.length) }, (_, i) => pool[i]!);
+        setPhase({ kind: "swarm", chain, at: 0, solved: 0, verdict: "none", solve });
+        return true;
+      },
+      onRestoreObject: (_objIdx, stem, solve, cancel) => {
+        const pool = props.storyTasks?.colorroom ?? [];
+        const task = pool.find((x) => x.itemId.includes(stem.replace(/_/g, ""))) ?? pool.find((x) => x.art === `cr_${stem}`) ?? null;
+        if (!task) return false;
+        setPhase({ kind: "colorroom", task, stage: "name", value: "", verdict: "none", solve, cancel });
+        return true;
+      },
+      onDuel: (solve, cancel) => {
+        const pool = props.storyTasks?.duel ?? [];
+        if (pool.length === 0) return false;
+        setPhase({ kind: "duelRound", at: 0, verdict: "none", solve, cancel });
+        return true;
+      },
       onRescue: (deathCount) => {
         const st = props.storyTasks;
         const tasks = st && st.rescue.length > 0
@@ -270,6 +326,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
       },
       onGluehwoerter: setGluehwoerter,
       onBossDoor: (carry) => enterBoss(carry),
+      battleSkins: (props.storyTasks?.battle ?? []).map((b) => (b.art ?? "").replace(/^st_/, "")),
       onComplete: (stats) => finish({ ...stats, bossWon: false }),
     });
     sceneRef.current = scene;
@@ -401,6 +458,102 @@ export function ArcadeGame(props: ArcadeGameProps) {
       sceneRef.current?.resolveQuickfire(correct);
       setPhase((p) => (p.kind === "verdict" ? { kind: "run" } : p));
     }, reducedMotion ? 500 : 750);
+  };
+
+  /** v4 object-battle: name the bewitched thing; wrong scaffolds typed→chips. */
+  const answerBattle = (input: string): void => {
+    if (phase.kind !== "battle") return;
+    const correct = gradeStoryAnswer(phase.task.answer, input);
+    void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: phase.task.itemId, mode: props.mode, input: { kind: "choice", value: input }, latencyMs: null, hintUsed: false });
+    if (correct) {
+      setPhase({ ...phase, verdict: "right" });
+      window.setTimeout(() => { sceneRef.current?.resolveBattle(true); setPhase((p) => (p.kind === "battle" ? { kind: "run" } : p)); }, reducedMotion ? 400 : 700);
+    } else if (!phase.scaffolded) {
+      setPhase({ ...phase, value: "", verdict: "wrong", scaffolded: true }); // typed → chips
+    } else {
+      setPhase({ ...phase, verdict: "wrong" });
+      window.setTimeout(() => { sceneRef.current?.resolveBattle(false); setPhase((p) => (p.kind === "battle" ? { kind: "run" } : p)); }, reducedMotion ? 400 : 700);
+    }
+  };
+
+  /** v4 swarm chain: rapid answers; a miss recycles the item to the chain's end. */
+  const answerSwarm = (choice: string): void => {
+    if (phase.kind !== "swarm") return;
+    const qf = phase.chain[phase.at]!;
+    const correct = gradeStoryAnswer(qf.answer, choice);
+    void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: qf.itemId, mode: props.mode, input: { kind: "choice", value: choice }, latencyMs: null, hintUsed: false });
+    if (correct) {
+      const solved = phase.solved + 1;
+      if (solved >= phase.chain.length) {
+        setPhase({ ...phase, solved, verdict: "right" });
+        window.setTimeout(() => { phase.solve(); setPhase((p) => (p.kind === "swarm" ? { kind: "run" } : p)); }, reducedMotion ? 350 : 600);
+      } else {
+        setPhase({ ...phase, at: phase.at + 1, solved, verdict: "none" });
+      }
+    } else {
+      // recycle to the end (doc 30 §3) — the chain only clears when every number sits right
+      const chain = [...phase.chain];
+      const missed = chain.splice(phase.at, 1)[0]!;
+      chain.push(missed);
+      setPhase({ ...phase, chain, verdict: "wrong" });
+      window.setTimeout(() => setPhase((p) => (p.kind === "swarm" ? { ...p, verdict: "none" } : p)), 450);
+    }
+  };
+
+  /** v4 colorroom: stage 1 name (typed), stage 2 colour (chips). */
+  const answerColorroom = (input: string): void => {
+    if (phase.kind !== "colorroom") return;
+    if (phase.stage === "name") {
+      const correct = gradeStoryAnswer(phase.task.answer, input);
+      void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: phase.task.itemId, mode: props.mode, input: { kind: "choice", value: input }, latencyMs: null, hintUsed: false });
+      if (correct) setPhase({ ...phase, stage: "colour", value: "", verdict: "none" });
+      else setPhase({ ...phase, value: "", verdict: "wrong" });
+      return;
+    }
+    const col = phase.task.colour;
+    const correct = col !== undefined && gradeStoryAnswer(col.answer, input);
+    if (correct) {
+      setPhase({ ...phase, verdict: "right" });
+      window.setTimeout(() => { phase.solve(); setPhase((p) => (p.kind === "colorroom" ? { kind: "run" } : p)); }, reducedMotion ? 350 : 650);
+    } else setPhase({ ...phase, verdict: "wrong" });
+  };
+
+  /** v4 command duel: right command = next antic; all rounds → friendly. */
+  const answerDuel = (choice: string): void => {
+    if (phase.kind !== "duelRound") return;
+    const pool = props.storyTasks?.duel ?? [];
+    const task = pool[phase.at]!;
+    const correct = gradeStoryAnswer(task.answer, choice);
+    void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: task.itemId, mode: props.mode, input: { kind: "choice", value: choice }, latencyMs: null, hintUsed: false });
+    if (correct) {
+      if (phase.at + 1 >= pool.length) {
+        setPhase({ ...phase, verdict: "right" });
+        window.setTimeout(() => { phase.solve(); setPhase((p) => (p.kind === "duelRound" ? { kind: "run" } : p)); }, reducedMotion ? 400 : 800);
+      } else {
+        setPhase({ ...phase, at: phase.at + 1, verdict: "none" });
+      }
+    } else {
+      setPhase({ ...phase, verdict: "wrong" });
+      window.setTimeout(() => setPhase((p) => (p.kind === "duelRound" ? { ...p, verdict: "none" } : p)), 500);
+    }
+  };
+
+  /** v4 dialogue finale: the freed student's Q&A; then the done overlay. */
+  const answerFinale = (choice: string): void => {
+    if (phase.kind !== "finale") return;
+    const pool = props.storyTasks?.finale ?? [];
+    const task = pool[phase.at]!;
+    const correct = gradeStoryAnswer(task.answer, choice);
+    void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: task.itemId, mode: props.mode, input: { kind: "choice", value: choice }, latencyMs: null, hintUsed: false });
+    if (correct) {
+      if (phase.at + 1 >= pool.length) {
+        setPhase({ ...phase, verdict: "right" });
+        window.setTimeout(() => setPhase({ kind: "done", stats: phase.stats }), reducedMotion ? 400 : 800);
+      } else setPhase({ ...phase, at: phase.at + 1, verdict: "none" });
+    } else {
+      setPhase({ ...phase, verdict: "wrong" });
+      window.setTimeout(() => setPhase((p) => (p.kind === "finale" ? { ...p, verdict: "none" } : p)), 500);
+    }
   };
 
   /** Seal post (doc 29 §4): a typed task with the full hint ladder, no timer.
@@ -556,6 +709,9 @@ export function ArcadeGame(props: ArcadeGameProps) {
             <div className="dg-qf-card" style={{ width: "min(520px, 96%)", textAlign: "center" }}>
               <div className="dg-qf-ring" style={{ ["--qf-s" as string]: `${props.boss.windowSeconds[tier]}s` }} aria-hidden="true" />
               <div style={{ fontSize: 22, fontWeight: 800, fontFamily: "var(--font-display)", marginBottom: 2, color: "#f3f1ff" }}>Er verknotet sich — jetzt!</div>
+              {artUrl(phase.task.art) !== undefined && (
+                <img src={artUrl(phase.task.art)} alt="" style={{ width: 88, height: 88, imageRendering: "pixelated", margin: "4px auto", display: "block" }} />
+              )}
               <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#8b7cf5", margin: "8px 0 6px" }}>{phase.task.ask}</div>
               <div style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.4, marginBottom: 14, color: "#f3f1ff" }}>{phase.task.prompt}</div>
               {phase.task.presentation === "typed" ? (
@@ -641,6 +797,141 @@ export function ArcadeGame(props: ArcadeGameProps) {
             </div>
           </div>
         )}
+
+
+        {/* v4 OBJECT-BATTLE (doc 30 §3) — the bewitched school thing's art IS the prompt */}
+        {phase.kind === "battle" && (
+          <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "radial-gradient(ellipse 75% 65% at 50% 45%, rgba(20,18,33,0.6) 0%, rgba(20,18,33,0.9) 80%)", padding: 12 }}>
+            <div className="dg-qf-card" style={{ width: "min(500px, 96%)", textAlign: "center" }}>
+              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#8b7cf5", marginBottom: 6 }}>{phase.task.ask}</div>
+              {artUrl(`${phase.task.art}_wild`) !== undefined && (
+                <img src={artUrl(`${phase.task.art}_wild`)} alt="" style={{ width: 120, height: 120, imageRendering: "pixelated", margin: "0 auto 8px", display: "block" }} />
+              )}
+              <div style={{ fontSize: 22, fontWeight: 800, color: "#f3f1ff", fontFamily: "var(--font-display)", marginBottom: 12 }}>{phase.task.prompt}</div>
+              {!phase.scaffolded ? (
+                <form style={{ display: "flex", gap: 8, justifyContent: "center" }} onSubmit={(e) => { e.preventDefault(); if (phase.value.trim() !== "") answerBattle(phase.value.trim()); }}>
+                  <input autoFocus value={phase.value} onChange={(e) => setPhase({ ...phase, value: e.target.value })} placeholder="Schreib das Wort …" data-testid="battle-input" style={{ flex: 1, maxWidth: 260, fontSize: 18, padding: "10px 14px", borderRadius: 12, border: "2px solid #3a3654", background: "#1b1930", color: "#f3f1ff" }} />
+                  <button type="submit" className="dg-btn">Befreien!</button>
+                </form>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {(phase.task.chips ?? []).map((chip) => (
+                    <button key={chip} type="button" className="dg-qf-chip" onClick={() => answerBattle(chip)}>{chip}</button>
+                  ))}
+                </div>
+              )}
+              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed={!phase.scaffolded} />}
+              {phase.verdict === "wrong" && !phase.scaffolded && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Fast! Jetzt mit Auswahl:</p>}
+              {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Befreit! ✶</p>}
+            </div>
+          </div>
+        )}
+
+        {/* v4 NUMBER-SWARM chain — rapid, misses recycle */}
+        {phase.kind === "swarm" && (
+          <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "radial-gradient(ellipse 75% 65% at 50% 45%, rgba(20,18,33,0.6) 0%, rgba(20,18,33,0.9) 80%)", padding: 12 }}>
+            <div className="dg-qf-card" style={{ width: "min(460px, 96%)", textAlign: "center", borderColor: phase.verdict === "wrong" ? "#fca5a5" : undefined }}>
+              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#8b7cf5", marginBottom: 4 }}>{phase.chain[phase.at]?.ask} · {phase.solved}/{phase.chain.length}</div>
+              <div style={{ fontSize: 44, fontWeight: 800, color: "#f3f1ff", fontFamily: "var(--font-display)", marginBottom: 12, lineHeight: 1.1 }}>{phase.chain[phase.at]?.prompt}</div>
+              <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
+                {(phase.chain[phase.at]?.chips ?? []).map((chip) => (
+                  <button key={chip} type="button" className="dg-qf-chip" style={{ fontSize: 22, minWidth: 90 }} onClick={() => answerSwarm(chip)}>{chip}</button>
+                ))}
+              </div>
+              {phase.verdict === "wrong" && <p style={{ fontSize: 13, color: "#fca5a5", margin: "10px 0 0" }}>Die Zahl wirbelt zurück in den Schwarm!</p>}
+              {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "10px 0 0" }}>Der Schwarm ordnet sich! ✶</p>}
+            </div>
+          </div>
+        )}
+
+        {/* v4 RESTORATION ROOM — name it, then give its colour back */}
+        {phase.kind === "colorroom" && (
+          <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "radial-gradient(ellipse 75% 65% at 50% 45%, rgba(20,18,33,0.6) 0%, rgba(20,18,33,0.9) 80%)", padding: 12 }}>
+            <div className="dg-qf-card" style={{ width: "min(500px, 96%)", textAlign: "center" }}>
+              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#8b7cf5", marginBottom: 6 }}>{phase.task.ask}</div>
+              {artUrl(`${phase.task.art}_${phase.stage === "name" ? "grey" : "color"}`) !== undefined && (
+                <img src={artUrl(`${phase.task.art}_${phase.stage === "name" ? "grey" : "color"}`)} alt="" style={{ width: 120, height: 120, imageRendering: "pixelated", margin: "0 auto 8px", display: "block" }} />
+              )}
+              <div style={{ fontSize: 22, fontWeight: 800, color: "#f3f1ff", fontFamily: "var(--font-display)", marginBottom: 12 }}>{phase.stage === "name" ? phase.task.prompt : phase.task.colour?.promptEn}</div>
+              {phase.stage === "name" ? (
+                <form style={{ display: "flex", gap: 8, justifyContent: "center" }} onSubmit={(e) => { e.preventDefault(); if (phase.value.trim() !== "") answerColorroom(phase.value.trim()); }}>
+                  <input autoFocus value={phase.value} onChange={(e) => setPhase({ ...phase, value: e.target.value })} placeholder="Schreib das Wort …" data-testid="colorroom-input" style={{ flex: 1, maxWidth: 260, fontSize: 18, padding: "10px 14px", borderRadius: 12, border: "2px solid #3a3654", background: "#1b1930", color: "#f3f1ff" }} />
+                  <button type="submit" className="dg-btn">Benennen!</button>
+                </form>
+              ) : (
+                <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
+                  {(phase.task.colour?.options ?? []).map((chip) => (
+                    <button key={chip} type="button" className="dg-qf-chip" style={{ minWidth: 100 }} onClick={() => answerColorroom(chip)}>{chip}</button>
+                  ))}
+                </div>
+              )}
+              {phase.task.hints !== undefined && phase.stage === "name" && <HintLadder hints={phase.task.hints} typed />}
+              {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Noch nicht — probier's nochmal!</p>}
+              {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Es leuchtet wieder! ✶</p>}
+              <div style={{ marginTop: 12 }}>
+                <button type="button" className="dg-btn-secondary" style={{ fontSize: 13 }} onClick={() => { phase.cancel(); setPhase({ kind: "run" }); }}>Später</button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* v4 COMMAND DUEL — the ghost-student's antic IS the prompt */}
+        {phase.kind === "duelRound" && (() => {
+          const pool = props.storyTasks?.duel ?? [];
+          const task = pool[phase.at];
+          if (!task) return null;
+          return (
+            <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "radial-gradient(ellipse 75% 65% at 50% 45%, rgba(20,18,33,0.6) 0%, rgba(20,18,33,0.9) 80%)", padding: 12 }}>
+              <div className="dg-qf-card" style={{ width: "min(520px, 96%)", textAlign: "center" }}>
+                <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#8b7cf5", marginBottom: 4 }}>Runde {phase.at + 1}/{pool.length}</div>
+                {artUrl(task.art) !== undefined && (
+                  <img src={artUrl(task.art)} alt="" style={{ width: 130, height: 130, imageRendering: "pixelated", margin: "0 auto 6px", display: "block" }} />
+                )}
+                <p style={{ fontSize: 16, color: "var(--text-secondary)", margin: "0 0 8px" }}>{task.ask}</p>
+                <div style={{ fontSize: 20, fontWeight: 800, color: "#f3f1ff", fontFamily: "var(--font-display)", marginBottom: 12 }}>{task.prompt}</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {(task.chips ?? []).map((chip) => (
+                    <button key={chip} type="button" className="dg-qf-chip" onClick={() => answerDuel(chip)}>{chip}</button>
+                  ))}
+                </div>
+                {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Er macht weiter … welcher Befehl stoppt DAS?</p>}
+                {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Er hört auf dich! ✶</p>}
+                <div style={{ marginTop: 12 }}>
+                  <button type="button" className="dg-btn-secondary" style={{ fontSize: 13 }} onClick={() => { phase.cancel(); setPhase({ kind: "run" }); }}>Später</button>
+                </div>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* v4 DIALOGUE FINALE — the freed student, meeting & greeting */}
+        {phase.kind === "finale" && (() => {
+          const pool = props.storyTasks?.finale ?? [];
+          const task = pool[phase.at];
+          if (!task) return null;
+          return (
+            <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(12,10,22,0.92)", padding: 12 }}>
+              <div className="dg-qf-card" style={{ width: "min(520px, 96%)", textAlign: "left" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                  {artUrl("p2_ghost") !== undefined && <img src={artUrl("p2_ghost")} alt="" style={{ width: 44, height: 44, borderRadius: 12, imageRendering: "pixelated" }} />}
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#8b7cf5" }}>Der befreite Schüler</div>
+                    <div style={{ fontSize: 12, color: "var(--text-secondary)" }}>{task.ask}</div>
+                  </div>
+                  <span style={{ marginLeft: "auto", fontSize: 12, color: "#6f6a8e" }}>{phase.at + 1} / {pool.length}</span>
+                </div>
+                <div style={{ background: "#1b1930", borderRadius: "14px 14px 14px 4px", padding: "10px 14px", fontSize: 19, fontWeight: 700, color: "#f3f1ff", marginBottom: 12 }}>{task.prompt}</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {(task.chips ?? []).map((chip) => (
+                    <button key={chip} type="button" className="dg-qf-chip" style={{ textAlign: "right" }} onClick={() => answerFinale(chip)}>{chip}</button>
+                  ))}
+                </div>
+                {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Hm, das passt nicht … was sagt man da?</p>}
+                {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Ihr versteht euch! ✶</p>}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* verdict flash */}
         {phase.kind === "verdict" && (

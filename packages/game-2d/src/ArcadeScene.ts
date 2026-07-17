@@ -88,6 +88,18 @@ export interface ArcadeConfig {
   /** doc 29 §4: seal posts hold typed story tasks. Return true to take over —
    *  the scene freezes; `solve` releases the seal, `cancel` walks away. */
   onSealTask?: (sealIdx: number, solve: () => void, cancel: () => void) => boolean;
+  /** v4 (doc 30 §3) object-battle: creature contact with a battle skin. Return
+   *  true to take over (scene freezes); resolve via resolveBattle(). */
+  onBattle?: (battleIdx: number) => boolean;
+  /** v4 swarm barrier: touched — the chain overlay runs; solve clears it. */
+  onSwarm?: (swarmIdx: number, solve: () => void) => boolean;
+  /** v4 restoration room: ↑ at a drained object. solve = restored (art swap here). */
+  onRestoreObject?: (objIdx: number, stem: string, solve: () => void, cancel: () => void) => boolean;
+  /** v4 command duel: ↑ at the ghost. solve = duel won (friendly + seal). */
+  onDuel?: (solve: () => void, cancel: () => void) => boolean;
+  /** v4: battle skins — st_* stems per creature placement idx (doc 30: the
+   *  enemies ARE the unit's objects). Missing/short array = default skins. */
+  battleSkins?: string[];
   /** the last heart is gone → React runs the Rettungsaufgabe (§5.3) */
   onRescue: (deathCount: number) => void;
   onComplete: (stats: { ms: number; maxCombo: number; letters: number; words: number; seals: number; deaths: number; gluehwoerter: number }) => void;
@@ -227,6 +239,10 @@ export class ArcadeScene extends Phaser.Scene {
   private swingUntil = 0;
   private swingCooldownUntil = 0;
   private freedBySwing = 0;
+  private swarmWalls: Array<{ body: Phaser.Types.Physics.Arcade.SpriteWithStaticBody; bits: Phaser.GameObjects.GameObject[]; cleared: boolean; engaged: boolean }> = [];
+  private roomObjects: Array<{ img: Phaser.GameObjects.Image; stem: string; restored: boolean; c: number; r: number }> = [];
+  private duelGhost: Phaser.GameObjects.Image | null = null;
+  private duelWonFlag = false;
   private camY = 0;
   private worldGravity: number = ARCADE.gravity;
   private bolts!: Phaser.Physics.Arcade.Group;
@@ -477,6 +493,7 @@ export class ArcadeScene extends Phaser.Scene {
       this.sealSprites.push({ img, taken: false, guard: s.guard, idx: i });
     });
     this.cfg.onSeals(0, level.header.seals.length);
+
     // the exit: legacy pedestal ('A') or the guardian's sealed door ('B')
     const exitCell = level.bossDoor ?? level.pedestal;
     this.pedestal = this.physics.add.staticGroup().create(exitCell.c * TILE + TILE / 2, exitCell.r * TILE, level.bossDoor ? this.itex("prop_door_sealed", tex("bossdoor")) : tex("pedestal")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
@@ -502,6 +519,63 @@ export class ArcadeScene extends Phaser.Scene {
     this.physics.world.setBounds(0, 0, level.w * TILE, level.h * TILE);
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.player, solids);
+
+    // ── v4 (doc 30 §3): the NUMBER-SWARM barriers ──
+    for (const sw of level.header.swarms ?? []) {
+      const cx = sw.c * TILE + (sw.w * TILE) / 2;
+      const cy = sw.r * TILE + (sw.h * TILE) / 2;
+      const bits: Phaser.GameObjects.GameObject[] = [];
+      for (let i = 0; i < 3; i += 1) {
+        const sk = this.textures.exists(`img-swirl_${i % 2 === 0 ? "a" : "b"}`) ? `img-swirl_${i % 2 === 0 ? "a" : "b"}` : null;
+        const ox = (i - 1) * TILE * 0.5;
+        const oy = ((i % 2) - 0.5) * TILE * 0.6;
+        const b = sk ? this.add.image(cx + ox, cy + oy, sk).setDisplaySize(TILE * 1.1, TILE * 1.1).setDepth(3) : (this.add.circle(cx + ox, cy + oy, 18, 0x2b2950, 0.7).setDepth(3) as unknown as Phaser.GameObjects.Image);
+        if (motion) this.tweens.add({ targets: b, y: (b as Phaser.GameObjects.Image).y - 8, angle: { from: -8, to: 8 }, duration: 900 + i * 160, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+        bits.push(b);
+      }
+      for (let i = 0; i < 2; i += 1) {
+        const d = Math.floor(Math.abs(Math.sin(sw.c * 7 + i * 13)) * 10);
+        if (this.textures.exists(`img-digit_${d}`)) {
+          const im = this.add.image(cx + (i === 0 ? -14 : 18), cy + (i === 0 ? 10 : -12), `img-digit_${d}`).setDisplaySize(TILE * 0.6, TILE * 0.6).setDepth(4);
+          if (motion) this.tweens.add({ targets: im, y: im.y - 6, duration: 760 + i * 120, yoyo: true, repeat: -1 });
+          bits.push(im);
+        }
+      }
+      const wall = this.physics.add.staticGroup().create(cx, cy, undefined as unknown as string) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+      wall.setVisible(false).setDisplaySize(sw.w * TILE, sw.h * TILE).refreshBody();
+      const entry = { body: wall, bits, cleared: false, engaged: false };
+      this.swarmWalls.push(entry);
+      this.physics.add.collider(this.player, wall, () => {
+        if (entry.cleared || entry.engaged || this.frozen || this.over) return;
+        if (this.cfg.onSwarm) {
+          entry.engaged = true;
+          this.frozen = true;
+          this.physics.world.pause();
+          const handled = this.cfg.onSwarm(this.swarmWalls.indexOf(entry), () => this.clearSwarm(entry));
+          if (!handled) { entry.engaged = false; this.frozen = false; this.physics.world.resume(); }
+        }
+      });
+    }
+
+    // ── v4: the RESTORATION ROOM's drained objects ──
+    for (const o of level.header.restoreRoom?.objects ?? []) {
+      const x = o.c * TILE + TILE / 2;
+      const y = o.r * TILE + TILE / 2;
+      const key = this.textures.exists(`img-cr_${o.stem}_grey`) ? `img-cr_${o.stem}_grey` : tex("gluehwort");
+      const img = this.add.image(x, y, key).setDepth(2);
+      img.setDisplaySize(TILE * 0.95, TILE * 0.95);
+      this.roomObjects.push({ img, stem: o.stem, restored: false, c: o.c, r: o.r });
+    }
+
+    // ── v4: the COMMAND-DUEL post (the ghost-student) ──
+    if (level.header.duel) {
+      const d = level.header.duel;
+      const key = this.textures.exists("img-gs_sad") ? "img-gs_sad" : tex("gluehwort");
+      this.duelGhost = this.add.image(d.c * TILE + TILE / 2, d.r * TILE + TILE / 2, key).setDepth(3);
+      this.duelGhost.setDisplaySize(TILE * 1.1, TILE * 1.1);
+      if (motion) this.tweens.add({ targets: this.duelGhost, y: this.duelGhost.y - 5, duration: 1200, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+    }
+
     this.oneWayCollider = this.physics.add.collider(this.player, oneWays, undefined, () => {
       // drop-through: the collider stands down while passing (look-down + jump);
       // pole rides pass straight through platforms too (v2.2)
@@ -536,7 +610,10 @@ export class ArcadeScene extends Phaser.Scene {
       this.hurt("bolt");
     });
     placementsFor(level.header, tier).forEach((e, i) => {
-      const s = this.physics.add.sprite(e.c * TILE + TILE / 2, e.r * TILE + TILE / 2 + 5, this.itex(`${e.kind}2-0`, this.itex(`${e.kind}-0`, tex(`${e.kind}-0`))));
+      const skin = this.cfg.battleSkins?.[i];
+      const skinKey = skin !== undefined && this.textures.exists(`img-st_${skin}_wild`) ? `img-st_${skin}_wild` : null;
+      const s = this.physics.add.sprite(e.c * TILE + TILE / 2, e.r * TILE + TILE / 2 + 5, skinKey ?? this.itex(`${e.kind}2-0`, this.itex(`${e.kind}-0`, tex(`${e.kind}-0`))));
+      if (skinKey) s.setData("battleSkin", skin);
       s.setDisplaySize(TILE, TILE);
       s.setDepth(4);
       // alignment law: 30×26 DISPLAY px, feet 10px above the drawn bottom —
@@ -713,6 +790,9 @@ export class ArcadeScene extends Phaser.Scene {
       over: this.over,
       creaturesLeft: this.creatures.filter((e) => !e.stunned && !e.escaped).length,
       freedBySwing: this.freedBySwing,
+      swarmsCleared: this.swarmWalls.filter((s) => s.cleared).length,
+      roomRestored: this.roomObjects.filter((o) => o.restored).length,
+      duelWon: this.duelWonFlag,
       // alignment-law probes: the drawn feet and the physics feet must agree
       drawnFeetY: Math.round(this.player ? this.player.y + this.player.displayHeight / 2 : 0),
       bodyFeetY: Math.round(this.player?.body ? this.player.body.y + this.player.body.height : 0),
@@ -784,8 +864,99 @@ export class ArcadeScene extends Phaser.Scene {
     creature.sprite.setData("engaged", true);
     if (this.cfg.reducedMotion !== true) this.cameras.main.zoomTo(1.18, 160, "Sine.easeOut");
     playSfx("pop");
+    const skin = creature.sprite.getData("battleSkin") as string | undefined;
+    if (skin !== undefined && this.cfg.onBattle) {
+      // v4 object-battle: the bewitched school thing IS the encounter (doc 30 §3)
+      const idx = this.cfg.battleSkins?.indexOf(skin) ?? -1;
+      if (this.cfg.onBattle(idx >= 0 ? idx : this.contactIdx)) { this.contactIdx += 1; return; }
+    }
     this.cfg.onQuickfire(this.contactIdx);
     this.contactIdx += 1;
+  }
+
+  /** v4: the swarm chain is done — the barrier dissolves. */
+  private clearSwarm(entry: { body: Phaser.Types.Physics.Arcade.SpriteWithStaticBody; bits: Phaser.GameObjects.GameObject[]; cleared: boolean; engaged: boolean }): void {
+    entry.cleared = true;
+    entry.engaged = false;
+    this.frozen = false;
+    this.physics.world.resume();
+    entry.body.disableBody(true, false);
+    playSfx("streak");
+    this.burst?.explode(20, entry.body.x, entry.body.y);
+    for (const b of entry.bits) {
+      this.tweens.killTweensOf(b);
+      this.tweens.add({ targets: b, alpha: 0, y: (b as unknown as { y: number }).y - 40, duration: 500, onComplete: () => b.destroy() });
+    }
+  }
+
+  /** v4: cancel a swarm engagement (walked away / Später). */
+  cancelSwarm(): void {
+    for (const e of this.swarmWalls) if (e.engaged && !e.cleared) e.engaged = false;
+    this.frozen = false;
+    this.physics.world.resume();
+  }
+
+  /** v4: one room object restored — grey→color art, glow; all done → the seal. */
+  private restoreObject(obj: { img: Phaser.GameObjects.Image; stem: string; restored: boolean }): void {
+    obj.restored = true;
+    if (this.textures.exists(`img-cr_${obj.stem}_color`)) {
+      obj.img.setTexture(`img-cr_${obj.stem}_color`);
+      obj.img.setDisplaySize(TILE * 0.95, TILE * 0.95);
+    } else obj.img.setTint(0x54fc54);
+    this.burst?.explode(12, obj.img.x, obj.img.y);
+    playSfx("chime-correct");
+    if (this.roomObjects.every((o) => o.restored)) {
+      const sealIdx = this.cfg.level.header.restoreRoom?.seal ?? 0;
+      const seal = this.sealSprites.find((s) => !s.taken && s.idx === sealIdx);
+      if (seal) this.doReleaseSeal(seal, seal.img.x, seal.img.y);
+    }
+  }
+
+  /** v4: the duel is won — the ghost turns friendly; its seal releases. */
+  private winDuel(): void {
+    this.duelWonFlag = true;
+    if (this.duelGhost) {
+      if (this.textures.exists("img-gs_friendly")) {
+        this.duelGhost.setTexture("img-gs_friendly");
+        this.duelGhost.setDisplaySize(TILE * 1.1, TILE * 1.1);
+      } else this.duelGhost.clearTint();
+      this.burst?.explode(16, this.duelGhost.x, this.duelGhost.y);
+    }
+    playSfx("streak");
+    const sealIdx = this.cfg.level.header.duel?.seal ?? 1;
+    const seal = this.sealSprites.find((s) => !s.taken && s.idx === sealIdx);
+    if (seal) this.doReleaseSeal(seal, seal.img.x, seal.img.y);
+  }
+
+  /** v4: battle verdict — freed (art swap wild→free, then off) or escaped. */
+  resolveBattle(correct: boolean): void {
+    const creature = this.creatures.find((e) => e.sprite.getData("engaged") === true);
+    this.frozen = false;
+    this.physics.world.resume();
+    this.tweens.timeScale = 1;
+    if (this.cfg.reducedMotion !== true) this.cameras.main.zoomTo(1, 180, "Sine.easeOut");
+    this.words += 1;
+    if (!creature) return;
+    creature.sprite.setData("engaged", false);
+    const skin = creature.sprite.getData("battleSkin") as string | undefined;
+    if (correct) {
+      creature.escaped = true; // gone from play — freed, never killed
+      this.combo += 1;
+      this.maxCombo = Math.max(this.maxCombo, this.combo);
+      this.cfg.onCombo(this.combo, comboPoints(this.combo));
+      playSfx("chime-correct");
+      if (skin !== undefined && this.textures.exists(`img-st_${skin}_free`)) {
+        creature.sprite.setTexture(`img-st_${skin}_free`);
+        creature.sprite.setDisplaySize(TILE, TILE);
+      }
+      creature.stars?.destroy();
+      this.burst?.explode(14, creature.sprite.x, creature.sprite.y);
+      this.tweens.add({ targets: creature.sprite, y: creature.sprite.y - 30, alpha: 0, duration: 900, delay: 500, onComplete: () => creature.sprite.destroy() });
+    } else {
+      this.combo = 0;
+      this.cfg.onCombo(0, 0);
+      this.escapeCreature(creature);
+    }
   }
 
   /** React reports the verdict. Correct → STUN (dizzy stars, seal released).
@@ -1160,6 +1331,39 @@ export class ArcadeScene extends Phaser.Scene {
       }
     }
 
+    // ── v4: ↑ at a drained room object → name + colour it ──
+    if (grounded && upDown && !this.jumpHeld && now >= this.doorCooldownUntil && this.cfg.onRestoreObject) {
+      for (const obj of this.roomObjects) {
+        if (obj.restored) continue;
+        if (Math.abs(obj.img.x - this.player.x) < 34 && Math.abs(obj.img.y - this.player.y) < TILE * 1.4) {
+          this.doorCooldownUntil = now + 400;
+          const idx = this.roomObjects.indexOf(obj);
+          this.frozen = true;
+          this.physics.world.pause();
+          const handled = this.cfg.onRestoreObject(idx, obj.stem, () => {
+            this.frozen = false; this.physics.world.resume(); this.restoreObject(obj);
+          }, () => { this.frozen = false; this.physics.world.resume(); });
+          if (!handled) { this.frozen = false; this.physics.world.resume(); }
+          return;
+        }
+      }
+    }
+
+    // ── v4: ↑ at the ghost-student → the command duel ──
+    if (grounded && upDown && !this.jumpHeld && now >= this.doorCooldownUntil && this.duelGhost && !this.duelWonFlag && this.cfg.onDuel) {
+      if (Math.abs(this.duelGhost.x - this.player.x) < 44 && Math.abs(this.duelGhost.y - this.player.y) < TILE * 1.5) {
+        this.doorCooldownUntil = now + 400;
+        this.frozen = true;
+        this.physics.world.pause();
+        const handled = this.cfg.onDuel(
+          () => { this.frozen = false; this.physics.world.resume(); this.winDuel(); },
+          () => { this.frozen = false; this.physics.world.resume(); },
+        );
+        if (!handled) { this.frozen = false; this.physics.world.resume(); }
+        return;
+      }
+    }
+
     // ── v4 W0: ↑ at a seal post (guard freed or none) opens/reopens its task —
     // the retry after "Später", and the discoverable interaction Koki missed ──
     if (grounded && upDown && !this.jumpHeld && now >= this.doorCooldownUntil) {
@@ -1403,7 +1607,9 @@ export class ArcadeScene extends Phaser.Scene {
       // doctrine — never a lockstep cast); generated frames win when present
       const n2 = Math.floor((now + e.idx * 137) / 320) % 2;
       // batch-U craft-bar creatures win, then batch S, then procedural
-      const animKey = this.itex(`${e.kind}2-${n2}`, this.itex(`${e.kind}-${n2}`, `ka-${e.kind}-${n2}`));
+      const skinStem = e.sprite.getData("battleSkin") as string | undefined;
+      // battle-skinned creatures hold their character art (the wobble tween is their life)
+      const animKey = skinStem !== undefined ? `img-st_${skinStem}_wild` : this.itex(`${e.kind}2-${n2}`, this.itex(`${e.kind}-${n2}`, `ka-${e.kind}-${n2}`));
       if (s.texture.key !== animKey) {
         s.setTexture(animKey);
         s.setDisplaySize(TILE, TILE);

@@ -69,11 +69,18 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
     if (gt) {
       const toQf = (x: KeenGameTask) => ({ itemId: x.id, kind: "vocab" as const, pool: null, ask: x.storyDe, prompt: x.promptEn, chips: x.options ?? [], answer: x.answer, hints: x.hints });
       const toR = (x: KeenGameTask, typed: boolean) => ({ itemId: x.id, kind: "vocab" as const, presentation: typed ? ("typed" as const) : ("chips" as const), ask: x.storyDe, prompt: x.promptEn, pool: null, chips: x.options ?? null, answer: x.answer, hints: x.hints });
+      const withExtras = (r: ReturnType<typeof toR>, x: KeenGameTask) => ({ ...r, art: x.art, colour: x.colour });
       storyTasks = {
         quickfire: gt.filter((x) => x.use === "quickfire").map(toQf),
         rescue: gt.filter((x) => x.use === "rescue").map((x) => toR(x, false)),
         boss: gt.filter((x) => x.use === "boss").map((x) => toR(x, true)),
         seal: gt.filter((x) => x.use === "seal").map((x) => toR(x, true)),
+        // v4 modality pools (doc 30 §3)
+        battle: gt.filter((x) => x.use === "battle").map((x) => withExtras(toR(x, true), x)),
+        swarm: gt.filter((x) => x.use === "swarm").map((x) => ({ ...toQf(x), art: x.art })),
+        colorroom: gt.filter((x) => x.use === "colorroom").map((x) => withExtras(toR(x, true), x)),
+        duel: gt.filter((x) => x.use === "duel").map((x) => withExtras(toR(x, false), x)),
+        finale: gt.filter((x) => x.use === "finale").map((x) => toR(x, false)),
       };
     }
   }
