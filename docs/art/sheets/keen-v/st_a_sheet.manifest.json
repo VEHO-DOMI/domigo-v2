@@ -1,0 +1,68 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 4,
+ "rows": 3,
+ "cells": [
+  {
+   "stem": "st_pencil_wild",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "st_pencil_free",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "st_pen_wild",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "st_pen_free",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "stem": "st_rubber_wild",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "st_rubber_free",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "st_ruler_wild",
+   "col": 2,
+   "row": 1
+  },
+  {
+   "stem": "st_ruler_free",
+   "col": 3,
+   "row": 1
+  },
+  {
+   "stem": "st_scissors_wild",
+   "col": 0,
+   "row": 2
+  },
+  {
+   "stem": "st_scissors_free",
+   "col": 1,
+   "row": 2
+  },
+  {
+   "stem": "st_glue_stick_wild",
+   "col": 2,
+   "row": 2
+  },
+  {
+   "stem": "st_glue_stick_free",
+   "col": 3,
+   "row": 2
+  }
+ ]
+}

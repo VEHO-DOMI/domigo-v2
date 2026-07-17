@@ -1,0 +1,38 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 3,
+ "rows": 2,
+ "cells": [
+  {
+   "stem": "p2_finn",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "p2_pixel",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "p2_berger",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "p2_tintengeist",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "p2_jona",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "p2_ghost",
+   "col": 2,
+   "row": 1
+  }
+ ]
+}

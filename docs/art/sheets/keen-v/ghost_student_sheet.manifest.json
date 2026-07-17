@@ -1,0 +1,48 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 4,
+ "rows": 2,
+ "cells": [
+  {
+   "stem": "gs_sing",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "gs_stand",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "gs_write",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "gs_window",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "stem": "gs_speak",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "gs_books",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "gs_friendly",
+   "col": 2,
+   "row": 1
+  },
+  {
+   "stem": "gs_sad",
+   "col": 3,
+   "row": 1
+  }
+ ]
+}

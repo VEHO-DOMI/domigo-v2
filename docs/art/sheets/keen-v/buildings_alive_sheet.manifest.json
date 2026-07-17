@@ -1,0 +1,33 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 3,
+ "rows": 2,
+ "cells": [
+  {
+   "stem": "bldx_ch01",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "bldx_ch02",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "bldx_ch03",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "bldx_ch04",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "bldx_ch05",
+   "col": 1,
+   "row": 1
+  }
+ ]
+}

@@ -1,0 +1,88 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 4,
+ "rows": 4,
+ "cells": [
+  {
+   "stem": "hero2_stand",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "hero2_run1",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "hero2_run2",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "hero2_run3",
+   "col": 3,
+   "row": 0
+  },
+  {
+   "stem": "hero2_run4",
+   "col": 0,
+   "row": 1
+  },
+  {
+   "stem": "hero2_jump",
+   "col": 1,
+   "row": 1
+  },
+  {
+   "stem": "hero2_fall",
+   "col": 2,
+   "row": 1
+  },
+  {
+   "stem": "hero2_pogo1",
+   "col": 3,
+   "row": 1
+  },
+  {
+   "stem": "hero2_pogo2",
+   "col": 0,
+   "row": 2
+  },
+  {
+   "stem": "hero2_climb1",
+   "col": 1,
+   "row": 2
+  },
+  {
+   "stem": "hero2_climb2",
+   "col": 2,
+   "row": 2
+  },
+  {
+   "stem": "hero2_hang",
+   "col": 3,
+   "row": 2
+  },
+  {
+   "stem": "hero2_idle",
+   "col": 0,
+   "row": 3
+  },
+  {
+   "stem": "hero2_lookup",
+   "col": 1,
+   "row": 3
+  },
+  {
+   "stem": "hero2_lookdown",
+   "col": 2,
+   "row": 3
+  },
+  {
+   "stem": "hero2_sit",
+   "col": 3,
+   "row": 3
+  }
+ ]
+}

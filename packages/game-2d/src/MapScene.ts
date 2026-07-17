@@ -273,7 +273,15 @@ export class MapScene extends Phaser.Scene {
     addCanvas(tex("ground"), ground);
     // the open book page beneath everything (doc 28 §6b) — the map walks ON
     // a page; the procedural ground blit sits over it (its own alpha shows it)
-    if (this.textures.exists("img-page_underlay")) {
+    if (this.textures.exists("img-worldmap_book")) {
+      // batch V (doc 30): the whole book-world as ONE artwork — the base layer;
+      // walkability/buildings/NPCs composite on top (full map rebuild = PR-I)
+      const wm = this.add.image(worldW / 2, worldH / 2, "img-worldmap_book").setDepth(0);
+      // COVER scale (no stretch smear) — centered; edges crop, never distort
+      const s = Math.max(worldW / wm.width, worldH / wm.height);
+      wm.setScale(s);
+      this.add.image(0, 0, tex("ground")).setOrigin(0).setDepth(0).setAlpha(0.15); // whisper of the wall/floor read
+    } else if (this.textures.exists("img-page_underlay")) {
       this.add.tileSprite(0, 0, worldW, worldH, "img-page_underlay").setOrigin(0).setDepth(0).setAlpha(0.95);
       this.add.image(0, 0, tex("ground")).setOrigin(0).setDepth(0).setAlpha(0.88);
     } else {
@@ -304,8 +312,11 @@ export class MapScene extends Phaser.Scene {
           }
           addSolid(c, r);
         } else if (entry.prop === "tree") {
-          const treeKey = this.textures.exists("img-mdec_tree") ? "img-mdec_tree" : tex("tree");
-          this.add.image(x, y, treeKey).setDisplaySize(TILE * 1.15, TILE * 1.15).setDepth(3);
+          // the one-artwork map paints its own trees — props would double them
+          if (!this.textures.exists("img-worldmap_book")) {
+            const treeKey = this.textures.exists("img-mdec_tree") ? "img-mdec_tree" : tex("tree");
+            this.add.image(x, y, treeKey).setDisplaySize(TILE * 1.15, TILE * 1.15).setDepth(3);
+          }
           addSolid(c, r);
         } else if (entry.prop === "npc:finn" || entry.prop === "npc:pixel") {
           const finn = entry.prop === "npc:finn";
@@ -386,7 +397,9 @@ export class MapScene extends Phaser.Scene {
       const bottom = b.cell.r * TILE + TILE;
       // generated building sprite when present (building_chNN); grey/silhouette
       // for un-restored chapters comes from a tint over the same image
-      const bStem = `building_${b.chapter}`;
+      const aliveStem = `bldx_${b.chapter}`;
+      const useAlive = done && this.textures.exists(`img-${aliveStem}`); // batch V two-state (crossfade = PR-I)
+      const bStem = useAlive ? aliveStem : `building_${b.chapter}`;
       const hasImg = this.textures.exists(`img-${bStem}`);
       const img = this.add.image(x, bottom, hasImg ? `img-${bStem}` : tex(warm ? "house" : "house-dark")).setOrigin(0.5, 1).setDepth(2);
       if (hasImg) img.setDisplaySize(TILE * 2.6, TILE * 1.3); // fit the plot; sheet cells are 512×256
@@ -480,9 +493,13 @@ export class MapScene extends Phaser.Scene {
     const moving = dx !== 0 || dy !== 0;
     // batch-U generated map hero: side pair while moving horizontally, down
     // pair otherwise; procedural p-right frames stay the fallback
-    const gen = this.textures.exists("img-maphero_down1");
+    const genV = this.textures.exists("img-mh_down1");
+    const gen = genV || this.textures.exists("img-maphero_down1");
     let frame: string;
-    if (gen) {
+    if (genV) {
+      const step = Math.floor(now / 130) % 2 === 0 ? 1 : 2;
+      frame = !moving ? "img-mh_down1" : dx !== 0 ? `img-mh_side${step}` : dy < 0 ? `img-mh_up${step}` : `img-mh_down${step}`;
+    } else if (gen) {
       const step = Math.floor(now / 130) % 2 === 0 ? 1 : 2;
       frame = !moving ? "img-maphero_down1" : dx !== 0 ? `img-maphero_side${step}` : `img-maphero_down${step}`;
     } else {

@@ -339,7 +339,12 @@ export class ArcadeScene extends Phaser.Scene {
     // slopes render as wedges; NO arcade body — update() ground-follows them
     for (const s of level.slopes) {
       this.slopeCells.push(s);
-      this.add.image(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, tex(`slope-${s.dir}`));
+      {
+        const vStem = s.dir === 1 ? "slope_up" : "slope_down"; // dir 1 = / rises rightward
+        const sk = this.itex(vStem, tex(`slope-${s.dir}`));
+        const sImg = this.add.image(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, sk);
+        if (sk.startsWith("img-")) sImg.setDisplaySize(TILE, TILE);
+      }
     }
     const oneWays = this.physics.add.staticGroup();
     const addOneWay = (c: number, r: number, helper: boolean): void => {
@@ -416,8 +421,16 @@ export class ArcadeScene extends Phaser.Scene {
     level.letters.forEach((l, i) => {
       const x = l.c * TILE + TILE / 2;
       const y = l.r * TILE + TILE / 2;
-      const disc = this.add.circle(x, y, 14, 0x8b7cf5, 0.28);
-      const t = this.add.text(x, y, GLYPHS[i % GLYPHS.length]!, { fontFamily: "system-ui, sans-serif", fontSize: "20px", fontStyle: "bold", color: "#e8e6f5" }).setOrigin(0.5);
+      const glyph = GLYPHS[i % GLYPHS.length]!;
+      const aStem = `alpha_${glyph.toLowerCase()}`;
+      const hasAlpha = this.textures.exists(`img-${aStem}`);
+      // batch V: the scattered-alphabet chips (doc 30 §1.3) win over the discs
+      const disc = hasAlpha
+        ? (this.add.image(x, y, `img-${aStem}`).setDisplaySize(TILE * 0.75, TILE * 0.75) as unknown as Phaser.GameObjects.Arc)
+        : this.add.circle(x, y, 14, 0x8b7cf5, 0.28);
+      const t = hasAlpha
+        ? (this.add.text(x, y, "", { fontSize: "1px" }).setVisible(false))
+        : this.add.text(x, y, glyph, { fontFamily: "system-ui, sans-serif", fontSize: "20px", fontStyle: "bold", color: "#e8e6f5" }).setOrigin(0.5);
       const zone = letterGroup.create(x, y, undefined as unknown as string) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       zone.setVisible(false).setDisplaySize(64, 64).refreshBody(); // W3: forgiving pickup
       const entry: LetterEntry = { c: l.c, r: l.r, taken: false, stolenBy: null, bits: [disc, t], zone };
@@ -659,7 +672,7 @@ export class ArcadeScene extends Phaser.Scene {
   /** Swap the hero pose texture (48×48 frames share one display size).
    *  Generated hero (doc 28 §4: `hero_<pose>` stems) wins over procedural. */
   private setPose(pose: HeroPose): void {
-    const key = this.itex(`hero_${pose}`, `h-${pose}`);
+    const key = this.itex(`hero2_${pose}`, this.itex(`hero_${pose}`, `h-${pose}`));
     if (this.player.texture.key !== key && this.textures.exists(key)) {
       this.player.setTexture(key);
       this.player.setDisplaySize(TILE, TILE);

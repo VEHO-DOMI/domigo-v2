@@ -141,12 +141,24 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
       prologue={prologue}
       castNames={castNames}
       storyItems={storyItems}
-      castArt={keenArt.cast}
+      castArt={{
+        ...keenArt.cast,
+        // batch V portraits v2 win per member (p2_finn → finn …)
+        ...Object.fromEntries(
+          Object.entries(keenArt.cast)
+            .filter(([k]) => k.startsWith("p2_"))
+            .map(([k, v]) => [k.slice(3), v]),
+        ),
+      }}
       beatArt={keenArt.beats}
       mapArt={{
         ...keenArt.map,
         // batch-T map stems feed MapScene's existing slots
         ...(keenArt.map["mtile_page"] !== undefined ? { page_underlay: keenArt.map["mtile_page"] } : {}),
+        // batch V map NPCs v2
+        ...(keenArt.map["finn_map2"] !== undefined ? { finn_map: keenArt.map["finn_map2"] } : {}),
+        ...(keenArt.map["pixel_map2"] !== undefined ? { pixel_map: keenArt.map["pixel_map2"] } : {}),
+        ...(keenArt.map["flag2"] !== undefined ? { flag: keenArt.map["flag2"] } : {}),
         ...Object.fromEntries(
           Object.entries(keenArt.map)
             .filter(([k]) => k.startsWith("bld_ch"))

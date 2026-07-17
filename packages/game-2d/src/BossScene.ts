@@ -83,6 +83,13 @@ export class BossScene extends Phaser.Scene {
   }
 
   create(): void {
+    // batch V: the painted attic arena behind the duel (procedural veil stays on top)
+    if (this.textures.exists("img-bgp_schoolhouse_arena")) {
+      const bg = this.add.image(0, 0, "img-bgp_schoolhouse_arena").setOrigin(0).setDepth(0);
+      bg.setDisplaySize(Math.max(bg.width, VIEW_W), Math.max((bg.height * VIEW_W) / bg.width, VIEW_H));
+      bg.setDisplaySize(VIEW_W, VIEW_H * 1.05);
+      bg.setAlpha(0.92);
+    }
     const motion = this.cfg.reducedMotion !== true;
     // backdrop: the level's ink dark, floor strip
     this.add.rectangle(0, 0, VIEW_W, VIEW_H, 0x141221).setOrigin(0);

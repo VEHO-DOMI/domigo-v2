@@ -1,0 +1,28 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 4,
+ "rows": 1,
+ "cells": [
+  {
+   "stem": "finn_map2",
+   "col": 0,
+   "row": 0
+  },
+  {
+   "stem": "pixel_map2",
+   "col": 1,
+   "row": 0
+  },
+  {
+   "stem": "flag2",
+   "col": 2,
+   "row": 0
+  },
+  {
+   "stem": "note2",
+   "col": 3,
+   "row": 0
+  }
+ ]
+}
