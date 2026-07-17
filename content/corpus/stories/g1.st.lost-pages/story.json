@@ -558,7 +558,7 @@
           "id": "g1.st.lost-pages.ch01.s011",
           "speaker": "finn",
           "textEn": "Time for school! But look at the school!",
-          "scaffoldDe": "Da vorne ist das Schulhaus — aber die Stunde ist verknotet! Der Tintengeist hat zwei Wörter-Siegel versteckt: eines im Klassenzimmer, eines auf dem Dachboden.",
+          "scaffoldDe": "Da vorne ist das Schulhaus! Der Tintengeist hat die Stunde verhext: Die Schulsachen sind wild geworden, und das Alphabet ist über den Schulhof verstreut.",
           "glosses": [
             {
               "word": "time for school",
@@ -579,27 +579,27 @@
         {
           "id": "g1.st.lost-pages.ch01.s012",
           "speaker": "finn",
-          "textEn": "Can you find the two Siegel? The Glühwörter help you.",
-          "scaffoldDe": "Jona hat zwei Wächter gebaut — sie passen auf die Siegel auf. Und sammle unterwegs die Glühwörter: Sie geben dir Hinweise, wenn du Hilfe brauchst.",
+          "textEn": "Say their names — and find the letters!",
+          "scaffoldDe": "Sag den wilden Schulsachen einfach ihren Namen, dann beruhigen sie sich. Und sammle die verstreuten Buchstaben ein! Im Klassenzimmer fehlen alle Farben, und auf dem Dachboden wartet ein verzauberter Schüler.",
           "glosses": [
+            {
+              "word": "say",
+              "de": "sag",
+              "scope": "word"
+            },
+            {
+              "word": "names",
+              "de": "die Namen",
+              "scope": "word"
+            },
             {
               "word": "find",
               "de": "finden",
               "scope": "word"
             },
             {
-              "word": "Siegel",
-              "de": "das Siegel — es hält ein Wort fest",
-              "scope": "word"
-            },
-            {
-              "word": "Glühwörter",
-              "de": "die Glühwörter — leuchtende Hinweis-Wörter",
-              "scope": "word"
-            },
-            {
-              "word": "help",
-              "de": "helfen",
+              "word": "letters",
+              "de": "die Buchstaben",
               "scope": "word"
             }
           ],
@@ -611,7 +611,7 @@
           "id": "g1.st.lost-pages.ch01.s013",
           "speaker": "finn",
           "textEn": "Open the door — up there. Let's go!",
-          "scaffoldDe": "Befreie beide Siegel — dann öffnet sich die Wächter-Tür oben rechts. Ich warte dort auf dich!",
+          "scaffoldDe": "Wenn alles wieder da ist, öffnet sich die große Tür oben rechts. Ich warte dort auf dich!",
           "glosses": [
             {
               "word": "open",
@@ -637,7 +637,7 @@
           "id": "g1.st.lost-pages.ch01.s014",
           "speaker": "finn",
           "textEn": "Yes! The words are back!",
-          "scaffoldDe": "Du hast es geschafft! Die Wörter sind zurück auf Seite eins.",
+          "scaffoldDe": "Du hast es geschafft! Die Schulsachen sind ruhig, das Alphabet ist wieder ganz, und das Klassenzimmer hat seine Farben zurück.",
           "glosses": [
             {
               "word": "words",
@@ -659,7 +659,7 @@
           "id": "g1.st.lost-pages.ch01.s015",
           "speaker": "finn",
           "textEn": "Look — the page is OK now. Come on!",
-          "scaffoldDe": "Schau, wie bunt die Seite wieder ist! Die Klasse kann wieder zur Schule gehen — weiter zur nächsten Seite!",
+          "scaffoldDe": "Schau, wie bunt die Seite wieder ist! Die Klasse kann wieder lernen — weiter zur nächsten Seite!",
           "glosses": [
             {
               "word": "page",

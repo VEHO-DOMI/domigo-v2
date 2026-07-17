@@ -5,8 +5,8 @@
     "fragment": "Seite 1 · „Zeit für die Schule“",
     "theme": "schoolhouse",
     "chapter": "ch01",
-    "goalDe": "Befreie die zwei Siegel: eines im Klassenzimmer, eines auf dem Dachboden. Dann öffnet sich die Wächter-Tür oben rechts!",
-    "whyDe": "Die erste Schulstunde ist verknotet — ohne ihre Wörter kann niemand im Buch zur Schule gehen. Hol sie zurück!",
+    "goalDe": "Der Tintengeist hat die Schulstunde verhext! Die Schulsachen sind wild geworden, das Alphabet ist verstreut, und das Klassenzimmer hat keine Farben mehr. Bring alles zurück — dann kann die Klasse wieder lernen!",
+    "whyDe": "Die erste Schulstunde ist verhext — ohne ihre Wörter kann niemand im Buch zur Schule gehen. Bring sie zurück!",
     "placements": [
       {
         "kind": "walker",
@@ -59,14 +59,14 @@
     ],
     "seals": [
       {
-        "c": 12,
-        "r": 2,
-        "guard": 3
+        "c": 10,
+        "r": 4,
+        "guard": null
       },
       {
-        "c": 34,
-        "r": 1,
-        "guard": 4
+        "c": 32,
+        "r": 3,
+        "guard": null
       }
     ],
     "helpers": [
@@ -104,9 +104,9 @@
     "swarms": [
       {
         "c": 62,
-        "r": 5,
+        "r": 3,
         "w": 2,
-        "h": 3
+        "h": 5
       }
     ],
     "restoreRoom": {
@@ -148,7 +148,15 @@
       "c": 30,
       "r": 5,
       "seal": 1
-    }
+    },
+    "hintsDe": [
+      "Wilde Schulsachen: Sag ihren Namen, dann beruhigen sie sich.",
+      "Sammle die verstreuten Buchstaben vom Alphabet ein.",
+      "Im Klassenzimmer: Benenne die grauen Dinge und gib ihnen ihre Farbe zurück.",
+      "Auf dem Dachboden wartet ein verzauberter Schüler — die richtigen Befehle helfen ihm.",
+      "Glühbuchstaben schenken dir einen Gratis-Hinweis."
+    ],
+    "sealNounDe": "Stundenseiten"
   },
   "rows": [
     ".#################..##################..................................",

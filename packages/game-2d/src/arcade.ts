@@ -299,6 +299,11 @@ export interface ArcadeHeader {
   restoreRoom?: { objects: Array<{ c: number; r: number; stem: string }>; seal: number };
   /** v4: the command-duel post (the ghost-student). Winning releases `seal`. */
   duel?: { c: number; r: number; seal: number };
+  /** v4 (doc 30 §1.2): per-unit goal-card explainer bullets — the chrome
+   *  speaks THIS unit's fiction, never a cross-unit formula. */
+  hintsDe?: string[];
+  /** v4: the per-unit name of the level's locks (HUD chip; ch01 = Stundenseiten). */
+  sealNounDe?: string;
 }
 
 /** A patrolling platform (both anchors in cells; w in tiles). */
