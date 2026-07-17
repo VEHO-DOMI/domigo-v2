@@ -77,7 +77,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
   const bossDeathsRef = useRef(0);
   const carryRef = useRef<{ hearts: number; letters: number; gluehwoerter: number; words: number; maxCombo: number; seals: number; deaths: number; ms: number } | null>(null);
   const doneSentRef = useRef(false);
-  const padRef = useRef<ArcadePad>({ left: false, right: false, up: false, down: false, jump: false, pogo: false });
+  const padRef = useRef<ArcadePad>({ left: false, right: false, up: false, down: false, jump: false, pogo: false, swing: false });
   const [phase, setPhase] = useState<Phase>({ kind: "run" });
   const [hearts, setHearts] = useState(3);
   const [letters, setLetters] = useState(0);
@@ -610,7 +610,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
         <TouchControls pad={padRef.current} hidden={phase.kind !== "run" || goalOpen} />
       </div>
       <p style={{ fontSize: 12, color: "var(--muted)", textAlign: "center", marginTop: 6 }}>
-        Pfeiltasten laufen · ↑/Leertaste springen (halten = höher) · X = Federstab · ↓+Sprung fällt durch Plattformen · ↑ an Stange/Tür = klettern/durchgehen
+        Pfeiltasten laufen · ↑/Leertaste springen (halten = höher) · X = Federstab-Schwung (befreit Wörter) · C = Pogo · ↓+Sprung fällt durch Plattformen · ↑ an Stange/Tür = klettern/durchgehen
       </p>
     </div>
   );
@@ -647,6 +647,7 @@ function TouchControls({ pad, hidden }: { pad: ArcadePad; hidden: boolean }) {
       </div>
       <div style={{ position: "absolute", right: 10, bottom: 10, display: "flex", gap: 8, zIndex: 6, touchAction: "none" }}>
         {btn("Pogo", "⟠", "pogo", {})}
+        {btn("Federstab", "✒", "swing", {})}
         {btn("Jump", "⤒", "jump", {})}
       </div>
     </>

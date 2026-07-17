@@ -51,8 +51,9 @@ import {
 } from "./arcade.ts";
 import { rasterize } from "./rasterize.ts";
 
-const VIEW_W = 15 * TILE;
-const VIEW_H = 11 * TILE;
+// refoundation W3: 12×9 tiles (was 15×11) — Koki's zoom verdict; FIT upscales
+const VIEW_W = 12 * TILE;
+const VIEW_H = 9 * TILE;
 
 export interface ArcadePad {
   left: boolean;
@@ -61,6 +62,8 @@ export interface ArcadePad {
   down: boolean;
   jump: boolean;
   pogo: boolean;
+  /** the Federstab swing (doc 29 combat verb) */
+  swing: boolean;
 }
 
 export interface ArcadeConfig {
@@ -215,6 +218,11 @@ export class ArcadeScene extends Phaser.Scene {
   private wasGrounded = false;
   private landingVy = 0;
   private baseScale = 1;
+  private swingKey: Phaser.Input.Keyboard.Key | null = null;
+  private swingHeld = false;
+  private swingUntil = 0;
+  private swingCooldownUntil = 0;
+  private freedBySwing = 0;
   private camY = 0;
   private worldGravity: number = ARCADE.gravity;
   private bolts!: Phaser.Physics.Arcade.Group;
@@ -363,9 +371,9 @@ export class ArcadeScene extends Phaser.Scene {
       const aPx = px(d.a);
       const bPx = px(d.b);
       for (const at of [aPx, bPx]) {
-        // the arch is FORE-FOREGROUND (Keen's z-sandwich, id_rf.c:781): drawn
-        // OVER the player, so walking in reads as stepping INTO the doorway
-        this.add.image(at.x, at.y + TILE / 2 - 36, tex(`door-${d.id}`)).setDepth(6);
+        // refoundation W3 (Koki): the hero renders IN FRONT of the arch —
+        // the over-player sandwich read as "I'm stuck behind the door"
+        this.add.image(at.x, at.y + TILE / 2 - 36, tex(`door-${d.id}`)).setDepth(3);
         const hint = this.add.text(at.x, at.y - TILE * 0.9, "↑", { fontFamily: "system-ui, sans-serif", fontSize: "16px", fontStyle: "bold", color: "#cfc7ff" }).setOrigin(0.5).setDepth(7).setAlpha(0.85);
         if (motion) this.tweens.add({ targets: hint, y: hint.y - 5, duration: 900, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
       }
@@ -400,7 +408,7 @@ export class ArcadeScene extends Phaser.Scene {
       const disc = this.add.circle(x, y, 14, 0x8b7cf5, 0.28);
       const t = this.add.text(x, y, GLYPHS[i % GLYPHS.length]!, { fontFamily: "system-ui, sans-serif", fontSize: "20px", fontStyle: "bold", color: "#e8e6f5" }).setOrigin(0.5);
       const zone = letterGroup.create(x, y, undefined as unknown as string) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
-      zone.setVisible(false).setDisplaySize(30, 30).refreshBody();
+      zone.setVisible(false).setDisplaySize(64, 64).refreshBody(); // W3: forgiving pickup
       const entry: LetterEntry = { c: l.c, r: l.r, taken: false, stolenBy: null, bits: [disc, t], zone };
       zone.setData("entry", entry);
       this.letterEntries.push(entry);
@@ -415,7 +423,7 @@ export class ArcadeScene extends Phaser.Scene {
       const y = gw.r * TILE + TILE / 2;
       const img = this.add.image(x, y, tex("gluehwort")).setDepth(3);
       const zone = gluehGroup.create(x, y, undefined as unknown as string) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
-      zone.setVisible(false).setDisplaySize(34, 30).refreshBody();
+      zone.setVisible(false).setDisplaySize(64, 56).refreshBody(); // W3: forgiving pickup
       zone.setData("img", img).setData("taken", false);
       if (motion) {
         this.tweens.add({ targets: img, y: y - 5, duration: 1000 + (i % 3) * 140, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
@@ -460,7 +468,7 @@ export class ArcadeScene extends Phaser.Scene {
       this.accessory = this.add.image(startPx.x, startPx.y, `img-${accStem}`).setDepth(5).setDisplaySize(TILE, TILE);
     }
     this.baseScale = this.player.scaleY;
-    this.player.body.setSize(20, 40).setOffset(14, 6);
+    this.syncHeroBody();
     this.player.body.setMaxVelocityY(ARCADE.maxFall);
     this.worldGravity = gravityFor(tier);
     this.physics.world.gravity.y = this.worldGravity;
@@ -504,7 +512,15 @@ export class ArcadeScene extends Phaser.Scene {
       const s = this.physics.add.sprite(e.c * TILE + TILE / 2, e.r * TILE + TILE / 2 + 5, this.itex(`${e.kind}-0`, tex(`${e.kind}-0`)));
       s.setDisplaySize(TILE, TILE);
       s.setDepth(4);
-      s.body.setSize(30, 26).setOffset(9, 12);
+      // alignment law: 30×26 DISPLAY px, feet 10px above the drawn bottom —
+      // converted per texture (generated 256px frames shrank the old fixed body)
+      {
+        const csx = Math.abs(s.scaleX) || 1;
+        const csy = Math.abs(s.scaleY) || 1;
+        const cw = 30 / csx;
+        const chh = 26 / csy;
+        s.body.setSize(cw, chh).setOffset((s.frame.realWidth - cw) / 2, s.frame.realHeight - chh - 10 / csy);
+      }
       if (e.kind === "flyer" || e.kind === "cloud" || e.kind === "thief") s.body.setAllowGravity(false);
       else this.physics.add.collider(s, solids);
       const creature: Creature = { kind: e.kind, sprite: s, dir: i % 2 === 0 ? 1 : -1, homeY: s.y, nextHopAt: 800 + i * 400, stunned: false, escaped: false, idx: i, cloud: { kind: "sleep" }, stars: null };
@@ -528,7 +544,9 @@ export class ArcadeScene extends Phaser.Scene {
     if (kb) {
       this.cursors = kb.createCursorKeys();
       this.wasd = kb.addKeys("W,A,S,D") as typeof this.wasd;
-      this.pogoKey = kb.addKey(Phaser.Input.Keyboard.KeyCodes.X);
+      // refoundation W3: X = Federstab swing (the combat verb), C = pogo
+      this.swingKey = kb.addKey(Phaser.Input.Keyboard.KeyCodes.X);
+      this.pogoKey = kb.addKey(Phaser.Input.Keyboard.KeyCodes.C);
     }
 
     // Keen camera: MANUAL — dead-band horizontal, grounded-gated vertical
@@ -561,6 +579,69 @@ export class ArcadeScene extends Phaser.Scene {
     if (!this.pedestalActive) this.activatePedestal();
   }
 
+  /** The Federstab swing (doc 29 combat verb): a short quill sweep that
+   *  UNKNOTS one nearby creature — the word is freed, never killed. Contact
+   *  task-duels (quickfire) stay for creatures you touch; the swing is the
+   *  fight verb Koki asked for, kid-safe by fiction. */
+  private doSwing(now: number): void {
+    if (now < this.swingCooldownUntil || this.frozen || this.over) return;
+    if (this.pstate.kind !== "normal" || this.onPogo) return;
+    this.swingCooldownUntil = now + 450;
+    this.swingUntil = now + 240;
+    const dir: 1 | -1 = this.player.flipX ? -1 : 1;
+    // visual: generated swing frames when present (batch T), else squash + arc
+    if (this.textures.exists("img-hero_swing1")) {
+      this.swapHeroTexture("img-hero_swing1");
+      this.time.delayedCall(120, () => {
+        if (this.textures.exists("img-hero_swing2") && this.time.now < this.swingUntil + 80) this.swapHeroTexture("img-hero_swing2");
+      });
+    } else if (this.cfg.reducedMotion !== true) {
+      this.squashStretch(1.06, 1.14);
+    }
+    const ax = this.player.x + dir * TILE * 0.9;
+    this.burst?.explode(10, ax, this.player.y - 4);
+    for (const c of this.creatures) {
+      if (c.stunned || c.escaped) continue;
+      if (Math.abs(c.sprite.x - ax) < TILE * 0.8 && Math.abs(c.sprite.y - this.player.y) < TILE * 0.75) {
+        this.freeCreature(c);
+        break; // one word per swing
+      }
+    }
+  }
+
+  /** Unknot: the creature dissolves into freed letters (kid-safe defeat). */
+  private freeCreature(c: Creature): void {
+    c.escaped = true; // reuses every existing "gone" guard (contact, counters)
+    this.freedBySwing += 1;
+    this.burst?.explode(14, c.sprite.x, c.sprite.y);
+    c.stars?.destroy();
+    this.tweens.add({ targets: c.sprite, alpha: 0, y: c.sprite.y - 26, duration: 300, onComplete: () => c.sprite.destroy() });
+  }
+
+  /** Texture swap + display size + baseScale + body resync in one move. */
+  private swapHeroTexture(key: string): void {
+    this.player.setTexture(key);
+    this.player.setDisplaySize(TILE, TILE);
+    this.baseScale = this.player.scaleY;
+    this.syncHeroBody();
+  }
+
+  /** THE ALIGNMENT LAW (refoundation W3): the hero's body is authored in
+   *  DISPLAY pixels (20×40, feet 2px above the drawn bottom) and re-derived in
+   *  texture units for the CURRENT texture. Without this, a 256px generated
+   *  frame at scale ~0.19 shrank the once-set 20×40 texture-unit body to
+   *  ~4×8px — the drawn hero hung below the physics feet and read as standing
+   *  UNDER platforms and BEHIND doors (Koki's playthrough verdict). */
+  private syncHeroBody(): void {
+    const sx = Math.abs(this.player.scaleX) || 1;
+    const sy = Math.abs(this.player.scaleY) || 1;
+    const fw = this.player.frame.realWidth;
+    const fh = this.player.frame.realHeight;
+    const bw = 20 / sx;
+    const bh = 40 / sy;
+    this.player.body.setSize(bw, bh).setOffset((fw - bw) / 2, fh - bh - 2 / sy);
+  }
+
   /** Swap the hero pose texture (48×48 frames share one display size).
    *  Generated hero (doc 28 §4: `hero_<pose>` stems) wins over procedural. */
   private setPose(pose: HeroPose): void {
@@ -571,6 +652,7 @@ export class ArcadeScene extends Phaser.Scene {
       // texture sizes differ (procedural 48px vs generated 256px) — baseScale
       // must follow the CURRENT texture or squashStretch restores a giant
       this.baseScale = this.player.scaleY;
+      this.syncHeroBody(); // alignment law: the body follows the texture too
     }
     // doc 28 §4: the unlockable accessory rides every pose (overlay sprite)
     if (this.accessory) {
@@ -603,6 +685,10 @@ export class ArcadeScene extends Phaser.Scene {
       frozen: this.frozen,
       over: this.over,
       creaturesLeft: this.creatures.filter((e) => !e.stunned && !e.escaped).length,
+      freedBySwing: this.freedBySwing,
+      // alignment-law probes: the drawn feet and the physics feet must agree
+      drawnFeetY: Math.round(this.player ? this.player.y + this.player.displayHeight / 2 : 0),
+      bodyFeetY: Math.round(this.player?.body ? this.player.body.y + this.player.body.height : 0),
       tier: this.cfg.tier,
       fps: Math.round(this.game.loop.actualFps),
       camY: Math.round(this.cameras.main.scrollY),
@@ -921,7 +1007,11 @@ export class ArcadeScene extends Phaser.Scene {
     const spaceDown = this.cursors?.space?.isDown === true || pad?.jump === true;
     const jumpDown = spaceDown || upDown;
     const pogoDown = this.pogoKey?.isDown === true || pad?.pogo === true;
+    const swingDown = this.swingKey?.isDown === true || pad?.swing === true;
     const heldDir: -1 | 0 | 1 = left === right ? 0 : left ? -1 : 1;
+    // Federstab swing (doc 29): fresh press, on the ground or in the air
+    if (swingDown && !this.swingHeld) this.doSwing(now);
+    this.swingHeld = swingDown;
 
     // ── HANG state (bible §2.5): up/toward = pull up · down/away = drop ──
     if (this.pstate.kind === "hang") {
@@ -1009,7 +1099,9 @@ export class ArcadeScene extends Phaser.Scene {
     // ── v2.2 door pairs: fresh UP in front of a door walks through it ──
     if (grounded && upDown && !this.jumpHeld && now >= this.doorCooldownUntil) {
       for (const d of this.doorPairs) {
-        const near = (p: { x: number; y: number }): boolean => Math.abs(p.x - this.player.x) < 22 && Math.abs(p.y - this.player.y) < 34;
+        // generous zone (refoundation W3): overlapping the arch is enough —
+        // never "standing perfectly" (the old 22px window felt broken)
+        const near = (p: { x: number; y: number }): boolean => Math.abs(p.x - this.player.x) < 34 && Math.abs(p.y - this.player.y) < 46;
         const from = near(d.aPx) ? d.aPx : near(d.bPx) ? d.bPx : null;
         if (!from) continue;
         this.travelDoor(from === d.aPx ? d.bPx : d.aPx);
@@ -1171,6 +1263,23 @@ export class ArcadeScene extends Phaser.Scene {
     // Kids discover the peek by pausing — exactly the "scout before you
     // commit" behavior the verb exists for (§2.6).
 
+    // W3 pickup forgiveness: nearby letters drift to the hero and collect —
+    // Koki: "I'm jumping on them and there's only a small field that gets them"
+    for (const e of this.letterEntries) {
+      if (e.taken || e.stolenBy !== null) continue;
+      const bx = (e.bits[0] as unknown as { x: number; y: number }).x;
+      const by = (e.bits[0] as unknown as { x: number; y: number }).y;
+      const d = Math.hypot(this.player.x - bx, this.player.y - by);
+      if (d < TILE * 1.6) {
+        for (const bit of e.bits) {
+          const b = bit as unknown as { x: number; y: number };
+          b.x += (this.player.x - b.x) * 0.22;
+          b.y += (this.player.y - b.y) * 0.22;
+        }
+        if (d < 30) this.collectLetter(e);
+      }
+    }
+
     // free seals (guard null — authored free, or dropped by an escaped guard)
     // are touch-pickups; a walk-by collects them (never blocked, §4.3)
     for (const seal of this.sealSprites) {
@@ -1201,6 +1310,9 @@ export class ArcadeScene extends Phaser.Scene {
     // pose machine (Keen's action grammar: velocity picks the pose, the run
     // cycles 4 frames at 86ms — ACTION.CK4 run actions, 6 tics/frame)
     const moving = Math.abs(body.velocity.x) > 30 && grounded;
+    if (now < this.swingUntil && this.textures.exists("img-hero_swing1")) {
+      // hold the swing frames for their moment (the pose machine would swap back)
+    } else
     this.setPose(
       this.onPogo
         ? (now - this.lastPogoBounceAt < 200 ? "pogo2" : "pogo1")
