@@ -530,6 +530,27 @@
       "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
     },
     {
+      "id": "g1.game.ch01.ob12",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_book",
+      "options": [
+        "book",
+        "exercise book",
+        "pencil case"
+      ],
+      "answer": "book",
+      "hints": {
+        "firstLetter": "b",
+        "length": 4,
+        "deDesc": "Darin liest du Geschichten.",
+        "deWord": "das Buch"
+      },
+      "grounding": "SB p.11 'take out your English book' — the book as a school thing"
+    },
+    {
       "id": "g1.game.ch01.sw01",
       "use": "swarm",
       "kind": "choice",
