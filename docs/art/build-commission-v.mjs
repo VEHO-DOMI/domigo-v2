@@ -120,6 +120,10 @@ ${STYLE_CUTSCENE}
 ${STYLE_PIXEL_V2}
 
 ## WORKING RULES
+0b. READ THE METHOD FIRST: \`~/Code/codex-art-lab/CODEX_METHOD.md\` is the
+   standing working method of this lab (ground truth, calibration, hostile
+   self-review, the sandbox law, the pitfall registry CP-1..CP-7). Read it
+   fully before card 1. If it is missing, say so and continue.
 0a. STUDY THE REFERENCES FIRST: the user has placed reference images at
    \`~/Code/codex-art-lab/refs-t/\` — open and study EVERY one before card 1.
    The \`ref_keen_*\` crops are the CRAFT BAR for all GAMEPLAY cards: match
