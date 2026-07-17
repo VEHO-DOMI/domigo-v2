@@ -9,10 +9,19 @@ below, in order, one image per card. Do not skip, reorder, merge, or reinterpret
 ### CLASS CUTSCENE / BACKDROP (painted)
 STYLE (strict, class CUTSCENE): a warmly PAINTED children's storybook illustration — NOT pixel art. Soft painterly brushwork, gentle gradients, clean shapes, professional picture-book quality (think modern illustrated children's novels). PALETTE: build every scene from the mood of this EGA-derived family — deep ink blues/blacks, warm paper cream, mustard yellow #fcfc54, warm brown #a85400, fresh green #00a800, sky cyan #54fcfc, accent red #fc5454 — painted freely (shades and gradients allowed), so the painted scenes and the in-game pixel world read as ONE world. RECURRING CAST (identical design every time they appear): THE HERO — a schoolkid of about 10, mid-brown messy hair, mustard-yellow shirt, dark trousers, small brown cross-body satchel, red scarf, a giant white quill pen (gold nib) strapped on the back. FINN — a floating open paper book AS a person: cream pages like wings, dark ink spine, two big friendly black dot-eyes on the left page, tiny ink eyebrows. PIXEL — a small black cat with huge amber-yellow eyes, one ear tipped. FRAU BERGER — a warm Austrian primary-school teacher, cardigan, reading glasses on a cord. DER TINTENGEIST — a soft rounded spirit of dark blue-black ink, calm white eyes, never menacing. Mood: warm, curious, a little wistful where the world is grey — NEVER scary (no horror, no sharp teeth, no darkness-as-threat; this is for 10-year-olds learning English). No text, no watermarks, no borders.
 
-### CLASS GAMEPLAY (pixel)
-STYLE (strict): 1991 EGA pixel art in the exact visual language of Commander Keen 4. Use ONLY these 16 colors: #000000 #0000a8 #00a800 #00a8a8 #a80000 #a800a8 #a85400 #a8a8a8 #545454 #5454fc #54fc54 #54fcfc #fc5454 #fc54fc #fcfc54 #fcfcfc. Chunky pixels on a 16px-tile logical grid (render large, but every "pixel" is a crisp square — no anti-aliasing, no smooth gradients, no soft shading). Texture and gradients ONLY as 1-pixel checkerboard dithering between two palette colors. Foreground objects get bold black contour outlines and black interior detail lines; background surfaces stay outline-free. Two tones per material (base + bright of the same hue) with black as the dark shade. Friendly storybook mood — this is a children's English-learning game set INSIDE a book: ink, paper, letters. Never scary: no monsters, no horror, big readable eyes on creatures, melancholy-comic not menacing.
+### CLASS GAMEPLAY (pixel — the Keen 4 craft bar)
+STYLE (strict, class GAMEPLAY — the Commander Keen 4 craft bar): 1991 EGA pixel art AT THE CRAFT LEVEL OF COMMANDER KEEN 4. Study the provided reference crops FIRST — your output must sit next to them without looking simpler. Use ONLY these 16 colors: #000000 #0000a8 #00a800 #00a8a8 #a80000 #a800a8 #a85400 #a8a8a8 #545454 #5454fc #54fc54 #54fcfc #fc5454 #fc54fc #fcfc54 #fcfcfc. Crisp square pixels, zero anti-aliasing, zero smooth gradients. THE ANTI-FLAT LAW: no large flat single-color area anywhere — every surface carries pixel-level texture the way Keen 4's do: dense 1-pixel dithering (checkerboard AND irregular scatter) between neighboring tones, plus material patterns drawn INTO the surface (rock strata and pebble clusters, wood-grain strokes, leaf veins, paper fibre and faint ruled lines for our book-world earth). TONE RAMPS: 3-4 tones per material (dark shade — often black or the hue's dark EGA partner — then base, bright, and a small highlight), light from the top-left, shade to the bottom-right. SILHOUETTES: rounded and ORGANIC — grass lips overhang their earth band with irregular tufts, rock edges chip, trunks bulge at the roots; ruler-straight edges belong only to man-made objects (planks, doors, rulers). Background-wall areas inside a tile read as darker, lower-contrast dithered masses so the walk surface pops. SPRITES: bold black contour with interior detail lines, a real light source (specular dot on round forms), big readable eyes, poses readable in half a second. Friendly storybook mood — this is a children's English-learning game set INSIDE a book: ink, paper, letters. Never scary: no monsters, no horror; melancholy-comic, not menacing.
 
 ## WORKING RULES
+0a. STUDY THE REFERENCES FIRST: the user has placed reference images at
+   `~/Code/codex-art-lab/refs-t/` — open and study EVERY one before card 1.
+   The `ref_keen_*` crops are the CRAFT BAR for all GAMEPLAY cards: match
+   their dithering density, 3-4-tone material ramps, organic silhouettes and
+   zero-flat-surface texture — an output that looks simpler than these crops
+   is a FAIL. `hero-v1.png` fixes the hero's canonical DESIGN (costume,
+   proportions) — render it at the Keen craft level, not at its simpler v1
+   rendering. If the folder is missing, say so, then continue on the written
+   contract alone.
 0. YOUR ONE AND ONLY WRITE LOCATION IS THE SANDBOX FOLDER:
    `~/Code/codex-art-lab/batch-t/` — create it (and its subfolders) if missing.
    Save every image there under the exact SAVE TO path its card names.
@@ -38,6 +47,8 @@ STYLE (strict): 1991 EGA pixel art in the exact visual language of Commander Kee
    GAMEPLAY cards:
    - PALETTE: only the 16 contract colors (no off-palette hues, no gradients)
    - PIXELS: crisp squares, zero anti-aliasing
+   - CRAFT: no flat single-color areas — dithered texture + 3-4-tone ramps +
+     organic silhouettes at the density of the ref_keen_* crops
    - FORMAT: as carded — solid #FF00FF magenta pose-sheet with clean grid /
      TRUE-alpha transparency / grid-cut sheet filled edge-to-edge with NO magenta
    - SUBJECT: every element present and readable at game size

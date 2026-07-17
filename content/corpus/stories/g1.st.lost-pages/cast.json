@@ -123,7 +123,7 @@
     },
     {
       "id": "voice",
-      "nameEn": "A voice",
+      "nameEn": "Eine Stimme",
       "descriptionDe": "Eine Stimme aus dem Buch",
       "voice": null,
       "art": null

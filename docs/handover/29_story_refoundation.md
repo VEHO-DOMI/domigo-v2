@@ -77,7 +77,12 @@ note (glossed) / You can / Come on / this is our / let's go* — all Unit-1 or g
 2. **A story reason on every task** (`storyDe`): the in-fiction frame line the student reads
    WITH the task. A task without a story reason doesn't ship.
 3. **No giveaways**: the answer word never appears in the task's own prompt, its storyDe, or
-   the beat lines around its placement (machine-checked, §6).
+   the beat lines around its placement (machine-checked, §6). **Nuance (Koki 2026-07-17): a
+   giveaway is an UNINTENDED reveal — when the repetition IS the pedagogy (identity plurals:
+   "One fish, two ______" → *fish*, the student must decide the form doesn't change), the task
+   declares `identityAnswer: true` + an `identityNote`, and the checker polices the declaration
+   instead of flagging it. Never fix a flagged giveaway mechanically; ask first whether the
+   surface pattern is the task's own point.**
 4. **No meta chrome** in story surfaces: no combo-reset copy, no XP framing, no
    "Vocab Gapfill Level 1" labels. The task card speaks in-fiction ("Das Wort zappelt —
    sag es richtig, dann ist es frei!").

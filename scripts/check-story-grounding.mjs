@@ -79,9 +79,19 @@ for (const f of fs.readdirSync(`${BASE}/keen`).filter((x) => x.endsWith(".tasks.
     // forms (morphology tasks: "bookes"/"boks"); real-word distractors are the
     // author's call, the answer is the language students internalize.
     checkEn(where, it.answer, it.glosses);
-    // giveaway law: exact answer tokens vs prompt + storyDe
+    // giveaway law (§4.3): a giveaway is an UNINTENDED reveal. When the
+    // repetition IS the pedagogy (identity plurals: "One fish, two fish"),
+    // the author DECLARES it — identityAnswer: true + identityNote. The
+    // declaration is policed: it only holds when the answer token really
+    // appears in the prompt (no lazy blanket exemptions). (Koki 2026-07-17)
     const ansToks = new Set(tokens(it.answer));
-    for (const t of tokens(it.promptEn)) if (ansToks.has(t)) fail(where, `giveaway: answer token "${t}" appears in promptEn`);
+    const inPrompt = tokens(it.promptEn).some((t) => ansToks.has(t));
+    if (it.identityAnswer === true) {
+      if (!inPrompt) fail(where, "identityAnswer declared but the answer never appears in the prompt — remove the flag");
+      if (!it.identityNote) fail(where, "identityAnswer needs an identityNote (say WHY the repetition is the task)");
+    } else {
+      for (const t of tokens(it.promptEn)) if (ansToks.has(t)) fail(where, `giveaway: answer token "${t}" appears in promptEn (if the repetition IS the task, declare identityAnswer + identityNote)`);
+    }
     for (const t of tokens(it.storyDe)) if (ansToks.has(t)) fail(where, `giveaway: answer token "${t}" appears in storyDe`);
     // hint ladder completeness (doc 29 §4.5)
     if (it.kind === "typed" && !(it.hints?.firstLetter && it.hints?.length && it.hints?.deDesc && it.hints?.deWord)) {

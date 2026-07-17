@@ -13,7 +13,7 @@ import type { GrammarItem, VocabItem } from "@domigo/content-schema";
 import { gradeGrammar, gradeVocab } from "@domigo/engine";
 import type { ResolvedItem } from "@domigo/game-core";
 import { ArcadeScene, type ArcadePad } from "./ArcadeScene.ts";
-import { ARCADE, quickfireFor, rescuePlan, rescueScaffold, type ArcadeLevel, type Quickfire, type RescueTask, type Tier } from "./arcade.ts";
+import { ARCADE, gradeStoryAnswer, quickfireFor, rescuePlan, rescueScaffold, type ArcadeLevel, type GameTaskHints, type Quickfire, type RescueTask, type StoryTaskPack, type Tier } from "./arcade.ts";
 import { bindTypingGuard } from "./typing-guard.ts";
 import { BossScene } from "./BossScene.ts";
 import { bossPlan, type BossScript } from "./boss.ts";
@@ -26,6 +26,9 @@ export interface ArcadeGameProps {
   /** Attempt mode ("game:g1") — quickfire + rescue answers are REAL attempts. */
   mode: string;
   items: ResolvedItem[];
+  /** THE STORY-TASK LAW (doc 29 §4): when present, ALL in-run tasks come from
+   *  this hand-authored pack — the imported unit pool is never touched. */
+  storyTasks?: StoryTaskPack;
   onAttempt: AttemptFn;
   hubHref: string;
   /** Level + tier (dev knobs; production picks per SRS mastery later). */
@@ -60,11 +63,46 @@ type DoneStats = { ms: number; maxCombo: number; letters: number; words: number;
 type Phase =
   | { kind: "run" }
   | { kind: "quickfire"; qf: Quickfire; deadline: number }
+  | { kind: "sealTask"; task: RescueTask; value: string; verdict: "none" | "wrong" | "right"; solve: () => void; cancel: () => void }
   | { kind: "verdict"; correct: boolean; answer: string }
   | { kind: "rescue"; rescue: RescueState }
   | { kind: "bossIntro" }
   | { kind: "bossWindow"; task: RescueTask; deadline: number; value: string; verdict: "none" | "right" | "wrong" }
   | { kind: "done"; stats: DoneStats };
+
+/** Story-task scaffold-down: typed → chips built from sibling answers. */
+function storyScaffold(task: RescueTask, siblings: RescueTask[]): RescueTask {
+  const others = siblings.map((s) => s.answer).filter((a) => a !== task.answer).slice(0, 2);
+  const chips = [task.answer, ...others].sort((a, b) => (a + task.itemId < b + task.itemId ? -1 : 1));
+  return { ...task, presentation: "chips", chips };
+}
+
+/** THE HINT LADDER (WS-HINT, doc 29 §4.5): staged reveals — typed tasks walk
+ *  first letter → length → German description → German word; choice tasks the
+ *  last two. Rendered only on story tasks (they carry `hints`). */
+function HintLadder({ hints, typed }: { hints: GameTaskHints; typed: boolean }) {
+  const [step, setStep] = useState(0);
+  const steps: string[] = typed
+    ? [
+        hints.firstLetter !== undefined ? `Erster Buchstabe: ${hints.firstLetter}` : hints.deDesc,
+        hints.length !== undefined ? `${Array.from({ length: hints.length }, () => "_").join(" ")}  (${hints.length} Buchstaben)` : hints.deDesc,
+        hints.deDesc,
+        `Auf Deutsch: ${hints.deWord}`,
+      ]
+    : [hints.deDesc, `Auf Deutsch: ${hints.deWord}`];
+  return (
+    <div style={{ marginTop: 10 }}>
+      {steps.slice(0, step).map((s, i) => (
+        <div key={i} style={{ fontSize: 14, color: "var(--text-secondary)", margin: "3px 0" }}>💡 {s}</div>
+      ))}
+      {step < steps.length && (
+        <button type="button" className="dg-btn-secondary" style={{ fontSize: 13, padding: "4px 12px" }} onClick={() => setStep(step + 1)}>
+          Tipp {step + 1}/{steps.length}
+        </button>
+      )}
+    </div>
+  );
+}
 
 export function ArcadeGame(props: ArcadeGameProps) {
   const hostRef = useRef<HTMLDivElement>(null);
@@ -130,7 +168,10 @@ export function ArcadeGame(props: ArcadeGameProps) {
     if (!script || !game) return;
     carryRef.current = carry;
     bossActiveRef.current = true;
-    bossTasksRef.current = bossPlan(props.items, script.knots, props.seed);
+    const st = props.storyTasks;
+    bossTasksRef.current = st && st.boss.length > 0
+      ? Array.from({ length: script.knots * 2 }, (_, i) => st.boss[i % st.boss.length]!)
+      : bossPlan(props.items, script.knots, props.seed);
     bossAtRef.current = 0;
     const boss = new BossScene({
       script,
@@ -185,7 +226,10 @@ export function ArcadeGame(props: ArcadeGameProps) {
       startFrozen: true, // the goal card releases the world
       pad: padRef.current,
       onQuickfire: (contactIdx) => {
-        const qf = quickfireFor(props.items, contactIdx);
+        const st = props.storyTasks;
+        const qf = st && st.quickfire.length > 0
+          ? st.quickfire[contactIdx % st.quickfire.length]!
+          : quickfireFor(props.items, contactIdx);
         if (!qf) {
           scene.resolveQuickfire(true); // thin pool: the creature just freezes
           return;
@@ -199,8 +243,20 @@ export function ArcadeGame(props: ArcadeGameProps) {
       onHearts: setHearts,
       onCombo: (streak) => setCombo(streak),
       onSeals: (got, total) => setSeals([got, total]),
+      // doc 29 §4: the seal posts hold TYPED tasks with the hint ladder —
+      // the scene freezes, this card resolves, then the seal releases
+      onSealTask: (sealIdx, solve, cancel) => {
+        const st = props.storyTasks;
+        if (!st || st.seal.length === 0) return false;
+        const task = st.seal[sealIdx % st.seal.length]!;
+        setPhase({ kind: "sealTask", task, value: "", verdict: "none", solve, cancel });
+        return true;
+      },
       onRescue: (deathCount) => {
-        const tasks = rescuePlan(props.items, deathCount - 1);
+        const st = props.storyTasks;
+        const tasks = st && st.rescue.length > 0
+          ? [st.rescue[(deathCount - 1) % st.rescue.length]!, st.rescue[deathCount % st.rescue.length]!]
+          : rescuePlan(props.items, deathCount - 1);
         if (tasks.length === 0) {
           // no rescuable pool → straight respawn (never a locked door)
           scene.respawn();
@@ -287,7 +343,11 @@ export function ArcadeGame(props: ArcadeGameProps) {
     if (phase.kind !== "bossWindow") return;
     const task = phase.task;
     let correct = false;
-    if (input !== null) {
+    if (input !== null && task.itemId.startsWith("g1.game.")) {
+      // story task: grade locally against the authored answer (doc 29 §4)
+      correct = gradeStoryAnswer(task.answer, input);
+      void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: task.itemId, mode: props.mode, input: { kind: "choice", value: input }, latencyMs: null, hintUsed: false });
+    } else if (input !== null) {
       const item = props.items.find((r) => r.item.id === task.itemId);
       if (item) {
         if (task.kind === "vocab") {
@@ -304,7 +364,9 @@ export function ArcadeGame(props: ArcadeGameProps) {
       setPhase({ ...phase, verdict: "right" });
     } else if (input !== null) {
       // scaffold down in place for the next window
-      bossTasksRef.current[bossAtRef.current] = rescueScaffold(task, props.items);
+      bossTasksRef.current[bossAtRef.current] = task.itemId.startsWith("g1.game.")
+        ? storyScaffold(task, props.storyTasks?.boss ?? [])
+        : rescueScaffold(task, props.items);
       setPhase({ ...phase, value: "", verdict: "wrong" });
     }
     window.setTimeout(() => {
@@ -319,7 +381,10 @@ export function ArcadeGame(props: ArcadeGameProps) {
     const { qf } = phase;
     const item = props.items.find((r) => r.item.id === qf.itemId);
     let correct = false;
-    if (chip !== null && item) {
+    if (chip !== null && qf.itemId.startsWith("g1.game.")) {
+      correct = gradeStoryAnswer(qf.answer, chip);
+      void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: qf.itemId, mode: props.mode, input: { kind: "choice", value: chip }, latencyMs: null, hintUsed: false });
+    } else if (chip !== null && item) {
       if (qf.kind === "vocab") {
         correct = gradeVocab(item.item as VocabItem, chip, qf.pool ?? "carrier").tier !== "wrong";
         void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: qf.itemId, mode: props.mode, input: { kind: "vocab", value: chip, pool: qf.pool ?? "carrier" }, latencyMs: null, hintUsed: false });
@@ -335,6 +400,20 @@ export function ArcadeGame(props: ArcadeGameProps) {
     }, reducedMotion ? 500 : 750);
   };
 
+  /** Seal post (doc 29 §4): a typed task with the full hint ladder, no timer.
+   *  Right → the seal releases; "Später" walks away (retry any time). */
+  const answerSealTask = (input: string): void => {
+    if (phase.kind !== "sealTask") return;
+    const correct = gradeStoryAnswer(phase.task.answer, input);
+    void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: phase.task.itemId, mode: props.mode, input: { kind: "choice", value: input }, latencyMs: null, hintUsed: false });
+    if (correct) {
+      setPhase({ ...phase, verdict: "right" });
+      window.setTimeout(() => { phase.solve(); setPhase({ kind: "run" }); }, reducedMotion ? 300 : 650);
+    } else {
+      setPhase({ ...phase, value: "", verdict: "wrong" });
+    }
+  };
+
   /** The rescue: grade the current task; right → next/respawn; wrong on a
    *  typed task → the SAME item scaffolds down to chips (§5.3 — the loop
    *  always exits upward; failure recycles into practice, never a wall). */
@@ -344,7 +423,10 @@ export function ArcadeGame(props: ArcadeGameProps) {
     const task = rescue.tasks[rescue.at]!;
     const item = props.items.find((r) => r.item.id === task.itemId);
     let correct = false;
-    if (item) {
+    if (task.itemId.startsWith("g1.game.")) {
+      correct = gradeStoryAnswer(task.answer, input);
+      void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: task.itemId, mode: props.mode, input: { kind: "choice", value: input }, latencyMs: null, hintUsed: false });
+    } else if (item) {
       if (task.kind === "vocab") {
         correct = gradeVocab(item.item as VocabItem, input, task.pool ?? "carrier").tier !== "wrong";
         void props.onAttempt({ clientAttemptId: crypto.randomUUID(), itemId: task.itemId, mode: props.mode, input: { kind: "vocab", value: input, pool: task.pool ?? "carrier" }, latencyMs: null, hintUsed: false });
@@ -499,6 +581,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                   ))}
                 </div>
               )}
+              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed={phase.task.presentation === "typed"} />}
               {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Er windet sich frei! Gleich kommt die nächste Chance — dann mit Auswahl.</p>}
               {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Ein Knoten löst sich! ✶</p>}
             </div>
@@ -518,6 +601,38 @@ export function ArcadeGame(props: ArcadeGameProps) {
                     {chip}
                   </button>
                 ))}
+              </div>
+              {phase.qf.hints !== undefined && <HintLadder hints={phase.qf.hints} typed={false} />}
+            </div>
+          </div>
+        )}
+
+        {/* SEAL POST (doc 29 §4) — typed, laddered, no timer; "Später" walks away */}
+        {phase.kind === "sealTask" && (
+          <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "radial-gradient(ellipse 75% 65% at 50% 45%, rgba(20,18,33,0.6) 0%, rgba(20,18,33,0.9) 80%)", padding: 12 }}>
+            <div className="dg-qf-card" style={{ width: "min(520px, 96%)", textAlign: "center" }}>
+              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#ffe066", marginBottom: 6 }}>✶ Ein Siegel!</div>
+              <p style={{ fontSize: 16, color: "var(--text-secondary)", margin: "0 0 10px", lineHeight: 1.45 }}>{phase.task.ask}</p>
+              <div style={{ fontSize: 24, fontWeight: 800, color: "#f3f1ff", fontFamily: "var(--font-display)", marginBottom: 12, lineHeight: 1.3 }}>{phase.task.prompt}</div>
+              <form
+                style={{ display: "flex", gap: 8, justifyContent: "center" }}
+                onSubmit={(e) => { e.preventDefault(); if (phase.value.trim() !== "") answerSealTask(phase.value.trim()); }}
+              >
+                <input
+                  autoFocus
+                  value={phase.value}
+                  onChange={(e) => setPhase({ ...phase, value: e.target.value })}
+                  placeholder="Schreib das Wort …"
+                  data-testid="seal-input"
+                  style={{ flex: 1, maxWidth: 280, fontSize: 18, padding: "10px 14px", borderRadius: 12, border: "2px solid #3a3654", background: "#1b1930", color: "#f3f1ff" }}
+                />
+                <button type="submit" className="dg-btn">Befreien!</button>
+              </form>
+              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed />}
+              {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Noch nicht — nimm einen Tipp und versuch es gleich nochmal!</p>}
+              {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Das Siegel löst sich! ✶</p>}
+              <div style={{ marginTop: 12 }}>
+                <button type="button" className="dg-btn-secondary" style={{ fontSize: 13 }} onClick={() => { phase.cancel(); setPhase({ kind: "run" }); }}>Später</button>
               </div>
             </div>
           </div>
@@ -539,7 +654,8 @@ export function ArcadeGame(props: ArcadeGameProps) {
           return (
             <div style={{ position: "absolute", inset: 0, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(15,13,26,0.94)", padding: 14 }}>
               <div style={{ width: "min(520px, 96%)", background: "var(--card)", color: "var(--text)", borderRadius: 20, padding: "22px 24px", border: "2px solid #8b7cf5", textAlign: "center" }}>
-                <div style={{ fontSize: 22, fontWeight: 800, fontFamily: "var(--font-display)", marginBottom: 2 }}>Der Tintengeist hält dich fest …</div>
+                <div style={{ fontSize: 22, fontWeight: 800, fontFamily: "var(--font-display)", marginBottom: 2 }}>Der Tintengeist hält dich fest!</div>
+                <div style={{ fontSize: 14, color: "var(--text-secondary)", marginBottom: 2 }}>Antworte ruhig — dann lässt er los.</div>
                 <p style={{ fontSize: 14, color: "var(--muted)", margin: "0 0 14px" }}>
                   Löse {n} Aufgaben in Ruhe — dann bringt er dich zur letzten Fahne zurück. ({Math.min(phase.rescue.solved + 1, n)}/{n})
                 </p>
@@ -572,6 +688,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                     ))}
                   </div>
                 )}
+                {(() => { const rt = phase.rescue.tasks[phase.rescue.at]; return rt?.hints !== undefined ? <HintLadder key={rt.itemId + phase.rescue.at} hints={rt.hints} typed={rt.presentation === "typed"} /> : null; })()}
                 {phase.rescue.verdict === "wrong" && (
                   <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Fast! Probier's gleich nochmal — jetzt mit Auswahl.</p>
                 )}

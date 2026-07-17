@@ -14,10 +14,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Chapter, Scene } from "@domigo/content-schema";
-import { DialogueOverlay, type GameAttempt, type WorldCopy } from "@domigo/game-2d/dialogue";
+import { type WorldCopy } from "@domigo/game-2d/dialogue";
+import { CutscenePlayer } from "@domigo/game-2d/cutscene";
 import type { MapGameProps } from "@domigo/game-2d";
 import type { ResolvedItem } from "@domigo/game-core";
-import { sendAttempt } from "@/lib/attempt-outbox";
 import { useOutboxFlush } from "@/lib/useOutboxFlush";
 
 const MapGame = dynamic(() => import("@domigo/game-2d").then((m) => m.MapGame), {
@@ -199,8 +199,7 @@ export default function WorldClient(props: {
   const dialogueOpenRef = useRef(dialogueOpen);
   useEffect(() => { dialogueOpenRef.current = dialogueOpen; }, [dialogueOpen]);
 
-  const onAttempt = (a: GameAttempt) =>
-    sendAttempt({ clientAttemptId: a.clientAttemptId, itemId: a.itemId, mode: a.mode, input: a.input, latencyMs: a.latencyMs, hintUsed: a.hintUsed });
+  // (beat task attempts are gone with the no-task-in-cutscene law, doc 29 §2)
   const onEnter = (chapter: string) => {
     if (dialogueOpenRef.current) return;
     router.push(`/play/1/run?level=g1-${chapter}&from=world`);
@@ -274,50 +273,38 @@ export default function WorldClient(props: {
         )}
 
         {/* the DOOR beat — the chapter's opening scenes, at the building door */}
-        {doorOpen && !restoring && doorChapter !== null && (
-          <DialogueOverlay
+        {/* the door beat waits for the prologue (one stage at a time) */}
+        {doorOpen && !prologueOpen && !restoring && doorChapter !== null && (
+          <CutscenePlayer
             grade={1}
-            mode={props.mode}
-            copy={props.copy}
             chapter={doorChapter}
             castNames={props.castNames}
-            storyItems={props.storyItems}
-            castArt={props.castArt}
             beatArt={props.beatArt}
-            onAttempt={onAttempt}
+            canSkip={process.env.NODE_ENV !== "production"}
             onClose={closeDoor}
           />
         )}
 
         {/* the RESTORE beat — after the thrown flag lands (~1.8s under it) */}
         {showRestore && restoreChapter !== null && (
-          <DialogueOverlay
+          <CutscenePlayer
             grade={1}
-            mode={props.mode}
-            copy={props.copy}
             chapter={restoreChapter}
             castNames={props.castNames}
-            storyItems={props.storyItems}
-            castArt={props.castArt}
             beatArt={props.beatArt}
-            onAttempt={onAttempt}
+            canSkip={process.env.NODE_ENV !== "production"}
             onClose={closeRestore}
           />
         )}
 
         {/* THE PROLOGUE (doc 28 §3) — the cold-open, cinematic, once ever */}
         {prologueOpen && props.prologue != null && (
-          <DialogueOverlay
+          <CutscenePlayer
             grade={1}
-            mode={props.mode}
-            copy={props.copy}
             chapter={props.prologue}
             castNames={props.castNames}
-            storyItems={props.storyItems}
-            castArt={props.castArt}
             beatArt={props.beatArt}
-            cinematic
-            onAttempt={onAttempt}
+            canSkip={process.env.NODE_ENV !== "production"}
             onClose={closePrologue}
           />
         )}

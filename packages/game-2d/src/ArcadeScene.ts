@@ -84,6 +84,9 @@ export interface ArcadeConfig {
   onHearts: (hearts: number) => void;
   onCombo: (streak: number, points: number) => void;
   onSeals: (collected: number, total: number) => void;
+  /** doc 29 §4: seal posts hold typed story tasks. Return true to take over —
+   *  the scene freezes; `solve` releases the seal, `cancel` walks away. */
+  onSealTask?: (sealIdx: number, solve: () => void, cancel: () => void) => boolean;
   /** the last heart is gone → React runs the Rettungsaufgabe (§5.3) */
   onRescue: (deathCount: number) => void;
   onComplete: (stats: { ms: number; maxCombo: number; letters: number; words: number; seals: number; deaths: number; gluehwoerter: number }) => void;
@@ -181,7 +184,7 @@ export class ArcadeScene extends Phaser.Scene {
   private pogoKey: Phaser.Input.Keyboard.Key | null = null;
   private creatures: Creature[] = [];
   private letterEntries: LetterEntry[] = [];
-  private sealSprites: Array<{ img: Phaser.GameObjects.Image; taken: boolean; guard: number | null; idx: number }> = [];
+  private sealSprites: Array<{ img: Phaser.GameObjects.Image; taken: boolean; guard: number | null; idx: number; pending?: boolean }> = [];
   private pedestal!: Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
   private pedestalActive = false;
   private oneWayCollider: Phaser.Physics.Arcade.Collider | null = null;
@@ -855,7 +858,26 @@ export class ArcadeScene extends Phaser.Scene {
     }
   }
 
-  private releaseSeal(seal: { img: Phaser.GameObjects.Image; taken: boolean; idx: number }, fromX: number, fromY: number): void {
+  /** The seal gate (doc 29 §4): with a story-task pack, releasing a seal first
+   *  asks its TYPED task (hint ladder, no timer) — the scene freezes while the
+   *  DOM card resolves; without a pack, release is immediate (unchanged). */
+  private releaseSeal(seal: { img: Phaser.GameObjects.Image; taken: boolean; idx: number; pending?: boolean }, fromX: number, fromY: number): void {
+    if (seal.taken || seal.pending === true) return;
+    const gate = this.cfg.onSealTask;
+    if (gate) {
+      seal.pending = true;
+      const handled = gate(
+        seal.idx,
+        () => { seal.pending = false; this.frozen = false; this.doReleaseSeal(seal, fromX, fromY); },
+        () => { seal.pending = false; this.frozen = false; },
+      );
+      if (handled) { this.frozen = true; return; }
+      seal.pending = false;
+    }
+    this.doReleaseSeal(seal, fromX, fromY);
+  }
+
+  private doReleaseSeal(seal: { img: Phaser.GameObjects.Image; taken: boolean; idx: number }, fromX: number, fromY: number): void {
     seal.taken = true;
     this.sealsCollected += 1;
     this.cfg.onSeals(this.sealsCollected, this.cfg.level.header.seals.length);

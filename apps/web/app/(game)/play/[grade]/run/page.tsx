@@ -14,7 +14,7 @@ import { resolveEncounterTasks } from "@domigo/game-core";
 import { parseArcadeLevel, type ArcadeLevel } from "@domigo/game-2d/arcade";
 import type { BossScript } from "@domigo/game-2d/boss";
 import { getPlayerForPage, getTeacherForPage } from "@/lib/identity";
-import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
+import { loadKeenBoss, loadKeenLevel, loadKeenTasks, type KeenGameTask } from "@/lib/keen-content";
 import { resolveKeenArt } from "@/lib/keen-art";
 import ArcadeClient from "./ArcadeClient";
 
@@ -47,6 +47,7 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
   let keenLevel: ArcadeLevel | undefined;
   let keenBoss: BossScript | undefined;
   let keenArt: Record<string, string> | undefined;
+  let storyTasks: import("@domigo/game-2d/arcade").StoryTaskPack | undefined;
   let chapterNo = 1;
   if (keenMatch && grade === 1) {
     const ch = keenMatch[1]!;
@@ -56,6 +57,20 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
     keenBoss = (await loadKeenBoss("g1.st.lost-pages", ch)) as BossScript;
     const ka = resolveKeenArt(1);
     keenArt = { ...(ka.chapters[ch] ?? {}), ...ka.hero };
+    // THE STORY-TASK LAW (doc 29 §4): the story mode plays its hand-authored
+    // set — mapped into the game's native shapes; the unit pools stay for the
+    // practice surfaces only.
+    const gt = loadKeenTasks("g1.st.lost-pages", ch);
+    if (gt) {
+      const toQf = (x: KeenGameTask) => ({ itemId: x.id, kind: "vocab" as const, pool: null, ask: x.storyDe, prompt: x.promptEn, chips: x.options ?? [], answer: x.answer, hints: x.hints });
+      const toR = (x: KeenGameTask, typed: boolean) => ({ itemId: x.id, kind: "vocab" as const, presentation: typed ? ("typed" as const) : ("chips" as const), ask: x.storyDe, prompt: x.promptEn, pool: null, chips: x.options ?? null, answer: x.answer, hints: x.hints });
+      storyTasks = {
+        quickfire: gt.filter((x) => x.use === "quickfire").map(toQf),
+        rescue: gt.filter((x) => x.use === "rescue").map((x) => toR(x, false)),
+        boss: gt.filter((x) => x.use === "boss").map((x) => toR(x, true)),
+        seal: gt.filter((x) => x.use === "seal").map((x) => toR(x, true)),
+      };
+    }
   }
 
   const slug = `g${grade}-u${String(chapterNo).padStart(2, "0")}`;
@@ -77,6 +92,7 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
       playerSeed={fnv1a32(acting.userId)}
       mode={`game:g${grade}`}
       items={items}
+      storyTasks={storyTasks}
       hubHref={keenLevel ? `/play/${grade}/world` : `/play/${grade}`}
       title={keenLevel ? keenLevel.header.name : "Tintenlauf"}
       levelId={keenLevel ? undefined : levelId}
