@@ -291,6 +291,14 @@ export interface ArcadeHeader {
   /** doc 28 §1.2: the CLT Warum-Zeile — why this level matters, in-story;
    *  shown on the goal card above the mission text. */
   whyDe?: string;
+  /** v4 (doc 30 §3): number-swarm barriers — a rect of swirling digits that
+   *  blocks passage until its rapid chain is cleared. */
+  swarms?: Array<{ c: number; r: number; w: number; h: number }>;
+  /** v4: the restoration room's drained objects (↑ to name + colour each;
+   *  all restored → the room's seal releases). stem = cr_<stem> art pair. */
+  restoreRoom?: { objects: Array<{ c: number; r: number; stem: string }>; seal: number };
+  /** v4: the command-duel post (the ghost-student). Winning releases `seal`. */
+  duel?: { c: number; r: number; seal: number };
 }
 
 /** A patrolling platform (both anchors in cells; w in tiles). */
@@ -686,6 +694,8 @@ export interface Quickfire {
   answer: string;
   /** present on story tasks only — renders the hint ladder */
   hints?: GameTaskHints;
+  /** v4: optional art stem for the prompt display. */
+  art?: string;
 }
 
 const QF_POOLS: readonly VocabPool[] = ["deToEn", "enToDe", "definition"];
@@ -781,6 +791,10 @@ export interface RescueTask {
   answer: string;
   /** present on story tasks only — renders the hint ladder */
   hints?: GameTaskHints;
+  /** v4: the character/antic art stem whose image IS the prompt. */
+  art?: string;
+  /** v4 colorroom: the second stage (colour pick). */
+  colour?: { promptEn: string; answer: string; options: string[] };
 }
 
 export function rescuePlan(items: ResolvedItem[], deathCount: number, count = 2): RescueTask[] {
@@ -853,6 +867,12 @@ export interface StoryTaskPack {
   rescue: RescueTask[];
   boss: RescueTask[];
   seal: RescueTask[];
+  /** v4 modality pools (doc 30 §3) — empty arrays when the chapter has none. */
+  battle: RescueTask[];
+  swarm: Quickfire[];
+  colorroom: RescueTask[];
+  duel: RescueTask[];
+  finale: RescueTask[];
 }
 
 /** Story tasks grade locally against their authored answer (their g1.game.*
