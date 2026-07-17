@@ -33,7 +33,7 @@ const hudChip: CSSProperties = { background: "rgba(20,18,33,0.82)", color: "#e8e
 
 export function MapGame(props: MapGameProps) {
   const hostRef = useRef<HTMLDivElement>(null);
-  const padRef = useRef<ArcadePad>({ left: false, right: false, up: false, down: false, jump: false, pogo: false });
+  const padRef = useRef<ArcadePad>({ left: false, right: false, up: false, down: false, jump: false, pogo: false, swing: false });
   const [prompt, setPrompt] = useState<MapEntrance | null>(null);
   const { width, height } = MapScene.dimensions(props.world.rows);
 
