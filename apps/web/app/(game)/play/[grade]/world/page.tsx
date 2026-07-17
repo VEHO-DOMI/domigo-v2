@@ -12,7 +12,7 @@ import { loadStory, loadStoryCast, loadStoryComprehension } from "@domigo/conten
 import { getDb, getGameSave } from "@domigo/db";
 import { storyItemKey, type ResolvedItem } from "@domigo/game-core";
 import { loadUnitWithOverrides } from "@/lib/content-service";
-import { getActingUserForPage, getTeacherForPage } from "@/lib/identity";
+import { getPlayerForPage, getTeacherForPage } from "@/lib/identity";
 import { loadKeenWorld } from "@/lib/keen-content";
 import { resolveKeenArt } from "@/lib/keen-art";
 import { worldCopyFor } from "@/lib/world-copy";
@@ -66,7 +66,9 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
   // TEACHER plays it live anywhere (Koki 2026-07-17 — no dev server needed).
   if (process.env.VERCEL_ENV === "production" && (await getTeacherForPage()) === null) redirect("/play/1");
 
-  const acting = await getActingUserForPage();
+  // getPlayerForPage: student OR teacher — a teacher session plays the
+  // preview with their own identity (progress saves; attempts stay unrecorded).
+  const acting = await getPlayerForPage();
   if (!acting) redirect("/signin");
 
   const storyId = "g1.st.lost-pages";
