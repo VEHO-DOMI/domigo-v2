@@ -1,0 +1,308 @@
+{
+  "library": "keen-batch-t",
+  "note": "Batch T allowlist (refoundation v3, two-class law doc 28/29). CUTSCENE/backdrop images sync full-size (no chroma); pixel sheets slice per docs/art/sheets/keen-t manifests (tolerance 40 — P: default 90 eats EGA magenta). Missing stems always leave procedural fallback in place.",
+  "dropFolder": "docs/art/drop-t",
+  "count": 60,
+  "stems": [
+    {
+      "stem": "_style_key_cutscene",
+      "class": "reference",
+      "dest": "g1/keen"
+    },
+    {
+      "stem": "pv_classroom",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_book_cover",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_book_glow",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_spill",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_pull",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_landing",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_meet_finn",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_meet_pixel",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_grey_world",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_tintengeist",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_jona_note",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_mission",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "pv_map_reveal",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "bt_ch01_door",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "bt_ch01_restore",
+      "class": "illustration",
+      "dest": "g1/keen/beats"
+    },
+    {
+      "stem": "bgp_schoolhouse_far",
+      "class": "background",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "bgp_schoolhouse_mid",
+      "class": "background",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "hero_swing1",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero_swing2",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "maphero_down1",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "maphero_down2",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "maphero_side1",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "maphero_side2",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "tile_sh_m0",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m1",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m2",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m3",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m4",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m5",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m6",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m7",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m8",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m9",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m10",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m11",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m12",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m13",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m14",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "tile_sh_m15",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_plank",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_oneway",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_spikes",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_pole",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_flag",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_sealpost",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_sealpost_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_door_sealed",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_door_open",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "prop_gluehwort",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "mtile_page",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mtile_path",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mtile_grass",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mtile_edge",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld_ch01",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld_ch02",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld_ch03",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld_ch04",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld_ch05",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bld_locked",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    }
+  ]
+}
