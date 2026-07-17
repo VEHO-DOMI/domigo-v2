@@ -154,3 +154,37 @@ export function loadKeenLevel(storyId: string, chapter: string): KeenLevelFile {
 export function loadKeenBoss(storyId: string, chapter: string): KeenBoss {
   return loadKeenJson(storyId, chapterFile(chapter, "boss"), (raw) => KeenBoss.parse(raw));
 }
+
+// ── THE STORY-TASK LAW (doc 29 §4): hand-authored per-chapter game tasks ──
+const GameTaskHintsZ = z.object({
+  firstLetter: z.string().optional(),
+  length: z.number().int().optional(),
+  deDesc: z.string(),
+  deWord: z.string(),
+});
+const GameTaskZ = z.object({
+  id: z.string().regex(/^g1\.game\.ch\d{2}\.[a-z0-9]+$/),
+  use: z.enum(["quickfire", "seal", "boss", "rescue"]),
+  kind: z.enum(["choice", "typed"]),
+  storyDe: z.string(),
+  promptEn: z.string(),
+  options: z.array(z.string()).optional(),
+  answer: z.string(),
+  hints: GameTaskHintsZ,
+});
+const GameTasksFileZ = z.object({
+  schema: z.literal("gameTasks@1"),
+  chapter: z.string(),
+  items: z.array(GameTaskZ),
+});
+export type KeenGameTask = z.infer<typeof GameTaskZ>;
+
+/** Load keen/<ch>.tasks.json (null when the chapter has no authored set —
+ *  callers must then run WITHOUT tasksless features, never the unit pools). */
+export function loadKeenTasks(storyId: string, ch: string): KeenGameTask[] | null {
+  const p = path.join(REPO_ROOT, "content", "corpus", "stories", storyId, "keen", `${ch}.tasks.json`);
+  if (!fs.existsSync(p)) return null;
+  const parsed = GameTasksFileZ.safeParse(JSON.parse(fs.readFileSync(p, "utf8")));
+  if (!parsed.success) throw new Error(`${ch}.tasks.json: ${parsed.error.issues[0]?.message ?? "invalid"}`);
+  return parsed.data.items;
+}

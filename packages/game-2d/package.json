@@ -9,7 +9,8 @@
     "./world": "./src/world.ts",
     "./arcade": "./src/arcade.ts",
     "./boss": "./src/boss.ts",
-    "./dialogue": "./src/dialogue.tsx"
+    "./dialogue": "./src/dialogue.tsx",
+    "./cutscene": "./src/cutscene.tsx"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

@@ -668,6 +668,14 @@ export function stepCloud(
 // Wrong/timeout now costs a LETTER (the creature escapes with it), never a
 // heart — hearts belong to the physical world.
 // ---------------------------------------------------------------------------
+/** The WS-HINT ladder carried by hand-authored story tasks (doc 29 §4.5). */
+export interface GameTaskHints {
+  firstLetter?: string;
+  length?: number;
+  deDesc: string;
+  deWord: string;
+}
+
 export interface Quickfire {
   itemId: string;
   kind: "vocab" | "grammar";
@@ -676,6 +684,8 @@ export interface Quickfire {
   prompt: string;
   chips: string[];
   answer: string;
+  /** present on story tasks only — renders the hint ladder */
+  hints?: GameTaskHints;
 }
 
 const QF_POOLS: readonly VocabPool[] = ["deToEn", "enToDe", "definition"];
@@ -769,6 +779,8 @@ export interface RescueTask {
   pool: VocabPool | null;
   chips: string[] | null;
   answer: string;
+  /** present on story tasks only — renders the hint ladder */
+  hints?: GameTaskHints;
 }
 
 export function rescuePlan(items: ResolvedItem[], deathCount: number, count = 2): RescueTask[] {
@@ -831,4 +843,39 @@ export function rescueScaffold(task: RescueTask, items: ResolvedItem[]): RescueT
     decoys.push(d);
   }
   return { ...task, presentation: "chips", chips: seededPick([task.answer, ...decoys], `${task.itemId}#scaffold`, Math.min(3, 1 + decoys.length)) };
+}
+
+/** THE STORY-TASK PACK (doc 29 §4): hand-authored per-chapter tasks, mapped by
+ *  the page into the game's native task shapes. When present, the game NEVER
+ *  falls back to the imported unit pools (the story-task law). */
+export interface StoryTaskPack {
+  quickfire: Quickfire[];
+  rescue: RescueTask[];
+  boss: RescueTask[];
+  seal: RescueTask[];
+}
+
+/** Story tasks grade locally against their authored answer (their g1.game.*
+ *  ids are not unit-corpus items). Tolerant: case/space-insensitive, one typo
+ *  forgiven on words of 4+ letters (the "knapp" spirit). */
+export function gradeStoryAnswer(answer: string, input: string): boolean {
+  const norm = (s: string): string => s.toLowerCase().trim().replace(/\s+/g, " ");
+  const a = norm(answer);
+  const b = norm(input);
+  if (a === b) return true;
+  if (a.length < 4 || b.length < 3) return false;
+  // ≤1 edit (insert/delete/replace)
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0;
+  let j = 0;
+  let edits = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) { i += 1; j += 1; continue; }
+    edits += 1;
+    if (edits > 1) return false;
+    if (a.length > b.length) i += 1;
+    else if (b.length > a.length) j += 1;
+    else { i += 1; j += 1; }
+  }
+  return edits + (a.length - i) + (b.length - j) <= 1;
 }

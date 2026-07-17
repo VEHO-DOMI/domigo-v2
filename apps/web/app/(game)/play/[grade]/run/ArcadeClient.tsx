@@ -21,6 +21,7 @@ export default function ArcadeClient(props: {
   playerSeed?: number;
   mode: string;
   items: ResolvedItem[];
+  storyTasks?: import("@domigo/game-2d/arcade").StoryTaskPack;
   hubHref: string;
   title: string;
   levelId?: string;
@@ -48,7 +49,7 @@ export default function ArcadeClient(props: {
         <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{props.title}</h1>
         <a href={props.hubHref} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{props.level ? "← Zur Weltkarte" : "← Alle Räume"}</a>
       </div>
-      <ArcadeGame seed={props.seed} playerSeed={props.playerSeed} mode={props.mode} items={props.items} onAttempt={onAttempt} hubHref={props.hubHref} levelId={props.levelId} tier={props.tier} level={props.level} boss={props.boss} art={props.art} doneHref={props.doneHref} onDone={onDone} />
+      <ArcadeGame seed={props.seed} playerSeed={props.playerSeed} mode={props.mode} items={props.items} storyTasks={props.storyTasks} onAttempt={onAttempt} hubHref={props.hubHref} levelId={props.levelId} tier={props.tier} level={props.level} boss={props.boss} art={props.art} doneHref={props.doneHref} onDone={onDone} />
     </main>
   );
 }
