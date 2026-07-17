@@ -164,12 +164,16 @@ const GameTaskHintsZ = z.object({
 });
 const GameTaskZ = z.object({
   id: z.string().regex(/^g1\.game\.ch\d{2}\.[a-z0-9]+$/),
-  use: z.enum(["quickfire", "seal", "boss", "rescue"]),
+  use: z.enum(["quickfire", "seal", "boss", "rescue", "battle", "swarm", "colorroom", "duel", "finale"]),
   kind: z.enum(["choice", "typed"]),
   storyDe: z.string(),
   promptEn: z.string(),
   options: z.array(z.string()).optional(),
   answer: z.string(),
+  /** unit-magic modality fields (doc 30 §3): the character/antic art stem that
+   *  IS the prompt, and the restoration room's second stage (colour pick). */
+  art: z.string().optional(),
+  colour: z.object({ promptEn: z.string(), answer: z.string(), options: z.array(z.string()) }).optional(),
   /** §4.3 nuance: the answer-in-prompt repetition IS the pedagogy (identity
    *  plurals) — declared, noted, and policed by check-story-grounding. */
   identityAnswer: z.boolean().optional(),

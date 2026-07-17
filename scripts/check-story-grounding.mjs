@@ -32,7 +32,7 @@ function grounded(tokRaw, extra) {
 }
 const tokens = (en) => (en.toLowerCase().match(/[a-zäöüß'-]+/gi) ?? []).filter((t) => t.length > 0);
 // interjections + closed-class function words carry no lexical load — allowed at any level
-const FREE = new Set(["oh", "ssh", "psst", "brrr", "puh", "miaow", "wow", "hey", "but", "now"]);
+const FREE = new Set(["oh", "ssh", "psst", "brrr", "puh", "miaow", "wow", "hey", "but", "now", "do", "too"]);
 function checkEn(where, en, glosses) {
   const extra = new Set();
   for (const gl of glosses ?? []) for (const t of tokens(gl.word)) extra.add(t);
@@ -75,6 +75,12 @@ for (const f of fs.readdirSync(`${BASE}/keen`).filter((x) => x.endsWith(".tasks.
     if (!it.storyDe) fail(where, "story-task law: missing storyDe (a task without a story reason doesn't ship)");
     checkDe(where, it.storyDe);
     checkEn(where, it.promptEn, it.glosses);
+    // the restoration room's colour stage grounds like any prompt (doc 30 §3)
+    if (it.colour !== undefined) {
+      checkEn(where, it.colour.promptEn, it.glosses);
+      checkEn(where, it.colour.answer, it.glosses);
+      if (!it.colour.options.includes(it.colour.answer)) fail(where, "colour answer not among colour options");
+    }
     // only the ANSWER needs grounding — distractors may be deliberately malformed
     // forms (morphology tasks: "bookes"/"boks"); real-word distractors are the
     // author's call, the answer is the language students internalize.
