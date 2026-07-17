@@ -1,0 +1,618 @@
+{
+  "library": "keen-batch-v",
+  "note": "Batch V — the unit-magic library (doc 30). Slice per docs/art/sheets/keen-v manifests (tolerance 40); defringe edge-erosion; alpha/slope/padding cells per card notes. Missing stems keep fallbacks.",
+  "dropFolder": "docs/art/drop-v",
+  "count": 122,
+  "stems": [
+    {
+      "stem": "worldmap_book",
+      "class": "background",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bgp_schoolhouse_arena",
+      "class": "background",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "hero2_stand",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_run1",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_run2",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_run3",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_run4",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_jump",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_fall",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_pogo1",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_pogo2",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_climb1",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_climb2",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_hang",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_idle",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_lookup",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_lookdown",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "hero2_sit",
+      "class": "sprite",
+      "dest": "g1/keen/hero"
+    },
+    {
+      "stem": "st_pencil_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pencil_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pen_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pen_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_rubber_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_rubber_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_ruler_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_ruler_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_scissors_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_scissors_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_glue_stick_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_glue_stick_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pencil_case_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pencil_case_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_exercise_book_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_exercise_book_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_watercolours_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_watercolours_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_paintbrush_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_paintbrush_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pencil_sharpener_wild",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "st_pencil_sharpener_free",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs_sing",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs_stand",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs_write",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs_window",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs_speak",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs_books",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs_friendly",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "gs_sad",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit_0",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit_1",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit_2",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit_3",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit_4",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit_5",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit_6",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit_7",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit_8",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "digit_9",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "swirl_a",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "swirl_b",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_chair_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_chair_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_desk_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_desk_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_board_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_board_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_door_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_door_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_window_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_window_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_school_bag_grey",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "cr_school_bag_color",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_a",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_b",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_c",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_d",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_e",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_f",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_g",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_h",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_i",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_j",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_k",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_l",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_m",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_n",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_o",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_p",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_q",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_r",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_s",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_t",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_u",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_v",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_w",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_x",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_y",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "alpha_z",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "slope_up",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "slope_down",
+      "class": "sprite",
+      "dest": "g1/keen/ch01"
+    },
+    {
+      "stem": "mh_down1",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mh_down2",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mh_up1",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mh_up2",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mh_side1",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "mh_side2",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "finn_map2",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "pixel_map2",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "flag2",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "note2",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bldx_ch01",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bldx_ch02",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bldx_ch03",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bldx_ch04",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bldx_ch05",
+      "class": "sprite",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "bldx_spare",
+      "class": "sprite-HOLD",
+      "dest": "g1/keen/map"
+    },
+    {
+      "stem": "p2_finn",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    },
+    {
+      "stem": "p2_pixel",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    },
+    {
+      "stem": "p2_berger",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    },
+    {
+      "stem": "p2_tintengeist",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    },
+    {
+      "stem": "p2_jona",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    },
+    {
+      "stem": "p2_ghost",
+      "class": "portrait",
+      "dest": "g1/keen/cast"
+    }
+  ]
+}

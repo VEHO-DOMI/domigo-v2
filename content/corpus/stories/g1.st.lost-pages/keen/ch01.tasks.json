@@ -2,7 +2,7 @@
   "schema": "gameTasks@1",
   "chapter": "ch01",
   "unit": "g1-u01",
-  "note": "THE STORY-TASK LAW (doc 29 §4): hand-authored for the story moment, never imported from the unit library. Grounded in MORE! 1 SB/WB Unit 1 (refs = SB/WB page). Hints = the WS-HINT ladder: typed tasks carry all 4 steps, choice tasks carry steps 3-4 only. PR-D wires these into the quickfire/seal/boss/rescue pools.",
+  "note": "THE STORY-TASK LAW (doc 29 §4): hand-authored for the story moment, never imported from the unit library. Grounded in MORE! 1 SB/WB Unit 1 (refs = SB/WB page). Hints = the WS-HINT ladder: typed tasks carry all 4 steps, choice tasks carry steps 3-4 only. PR-D wires these into the quickfire/seal/boss/rescue pools. v2 (unit-magic, doc 30): + battle/swarm/colorroom/duel/finale sets — wired by the v4 modality engine; quickfire/seal/boss/rescue stay live for the shipped level.",
   "items": [
     {
       "id": "g1.game.ch01.q01",
@@ -297,6 +297,803 @@
         "deWord": "kennenlernen"
       },
       "grounding": "WB p.13 'to meet — Nice to meet you!'"
+    },
+    {
+      "id": "g1.game.ch01.ob01",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_pencil",
+      "options": [
+        "pencil",
+        "pen",
+        "ruler"
+      ],
+      "answer": "pencil",
+      "hints": {
+        "firstLetter": "p",
+        "length": 6,
+        "deDesc": "Du schreibst und zeichnest damit.",
+        "deWord": "der Bleistift"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
+    },
+    {
+      "id": "g1.game.ch01.ob02",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_pen",
+      "options": [
+        "pen",
+        "pencil",
+        "paintbrush"
+      ],
+      "answer": "pen",
+      "hints": {
+        "firstLetter": "p",
+        "length": 3,
+        "deDesc": "Du schreibst damit — mit Tinte.",
+        "deWord": "der Kugelschreiber"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
+    },
+    {
+      "id": "g1.game.ch01.ob03",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_rubber",
+      "options": [
+        "rubber",
+        "ruler",
+        "glue stick"
+      ],
+      "answer": "rubber",
+      "hints": {
+        "firstLetter": "r",
+        "length": 6,
+        "deDesc": "Du radierst damit weg, was falsch ist.",
+        "deWord": "der Radiergummi"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
+    },
+    {
+      "id": "g1.game.ch01.ob04",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_ruler",
+      "options": [
+        "ruler",
+        "rubber",
+        "scissors"
+      ],
+      "answer": "ruler",
+      "hints": {
+        "firstLetter": "r",
+        "length": 5,
+        "deDesc": "Du ziehst damit gerade Linien.",
+        "deWord": "das Lineal"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
+    },
+    {
+      "id": "g1.game.ch01.ob05",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_scissors",
+      "options": [
+        "scissors",
+        "sharpener",
+        "pen"
+      ],
+      "answer": "scissors",
+      "hints": {
+        "firstLetter": "s",
+        "length": 8,
+        "deDesc": "Du schneidest damit Papier.",
+        "deWord": "die Schere"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
+    },
+    {
+      "id": "g1.game.ch01.ob06",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_glue_stick",
+      "options": [
+        "glue stick",
+        "pencil case",
+        "rubber"
+      ],
+      "answer": "glue stick",
+      "hints": {
+        "firstLetter": "g",
+        "length": 9,
+        "deDesc": "Du klebst damit Papier zusammen.",
+        "deWord": "der Klebestift"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
+    },
+    {
+      "id": "g1.game.ch01.ob07",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_pencil_case",
+      "options": [
+        "pencil case",
+        "exercise book",
+        "school bag"
+      ],
+      "answer": "pencil case",
+      "hints": {
+        "firstLetter": "p",
+        "length": 10,
+        "deDesc": "Deine Stifte wohnen darin.",
+        "deWord": "das Federpennal"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
+    },
+    {
+      "id": "g1.game.ch01.ob08",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_exercise_book",
+      "options": [
+        "exercise book",
+        "pencil case",
+        "watercolours"
+      ],
+      "answer": "exercise book",
+      "hints": {
+        "firstLetter": "e",
+        "length": 12,
+        "deDesc": "Du schreibst deine Übungen hinein.",
+        "deWord": "das Heft"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
+    },
+    {
+      "id": "g1.game.ch01.ob09",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_watercolours",
+      "options": [
+        "watercolours",
+        "paintbrush",
+        "glue stick"
+      ],
+      "answer": "watercolours",
+      "hints": {
+        "firstLetter": "w",
+        "length": 12,
+        "deDesc": "Damit malst du bunte Bilder.",
+        "deWord": "die Wasserfarben"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
+    },
+    {
+      "id": "g1.game.ch01.ob10",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_paintbrush",
+      "options": [
+        "paintbrush",
+        "watercolours",
+        "pencil"
+      ],
+      "answer": "paintbrush",
+      "hints": {
+        "firstLetter": "p",
+        "length": 10,
+        "deDesc": "Damit trägst du die Farben auf.",
+        "deWord": "der Pinsel"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
+    },
+    {
+      "id": "g1.game.ch01.ob11",
+      "use": "battle",
+      "kind": "typed",
+      "storyDe": "Eine verhexte Schulsache greift an — sag ihren Namen, dann beruhigt sie sich!",
+      "promptEn": "What is it? Say its name!",
+      "art": "st_pencil_sharpener",
+      "options": [
+        "pencil sharpener",
+        "rubber",
+        "scissors"
+      ],
+      "answer": "pencil sharpener",
+      "hints": {
+        "firstLetter": "p",
+        "length": 15,
+        "deDesc": "Damit machst du den Bleistift wieder spitz.",
+        "deWord": "der Spitzer"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects)"
+    },
+    {
+      "id": "g1.game.ch01.sw01",
+      "use": "swarm",
+      "kind": "choice",
+      "storyDe": "Die Zahlen wirbeln durcheinander — fang die richtige!",
+      "promptEn": "3",
+      "options": [
+        "three",
+        "seven",
+        "twelve"
+      ],
+      "answer": "three",
+      "hints": {
+        "deDesc": "Wie heißt diese Zahl auf Englisch?",
+        "deWord": "die Zahl 3"
+      },
+      "grounding": "SB p.10 numbers 1-25"
+    },
+    {
+      "id": "g1.game.ch01.sw02",
+      "use": "swarm",
+      "kind": "choice",
+      "storyDe": "Und zurück — welche Zahl ist das?",
+      "promptEn": "three",
+      "options": [
+        "3",
+        "7",
+        "12"
+      ],
+      "answer": "3",
+      "hints": {
+        "deDesc": "Welche Ziffer passt zum Wort?",
+        "deWord": "die Zahl 3"
+      },
+      "grounding": "SB p.10 numbers 1-25"
+    },
+    {
+      "id": "g1.game.ch01.sw03",
+      "use": "swarm",
+      "kind": "choice",
+      "storyDe": "Die Zahlen wirbeln durcheinander — fang die richtige!",
+      "promptEn": "7",
+      "options": [
+        "seven",
+        "three",
+        "twelve"
+      ],
+      "answer": "seven",
+      "hints": {
+        "deDesc": "Wie heißt diese Zahl auf Englisch?",
+        "deWord": "die Zahl 7"
+      },
+      "grounding": "SB p.10 numbers 1-25"
+    },
+    {
+      "id": "g1.game.ch01.sw04",
+      "use": "swarm",
+      "kind": "choice",
+      "storyDe": "Und zurück — welche Zahl ist das?",
+      "promptEn": "seven",
+      "options": [
+        "7",
+        "3",
+        "12"
+      ],
+      "answer": "7",
+      "hints": {
+        "deDesc": "Welche Ziffer passt zum Wort?",
+        "deWord": "die Zahl 7"
+      },
+      "grounding": "SB p.10 numbers 1-25"
+    },
+    {
+      "id": "g1.game.ch01.sw05",
+      "use": "swarm",
+      "kind": "choice",
+      "storyDe": "Die Zahlen wirbeln durcheinander — fang die richtige!",
+      "promptEn": "12",
+      "options": [
+        "twelve",
+        "three",
+        "seven"
+      ],
+      "answer": "twelve",
+      "hints": {
+        "deDesc": "Wie heißt diese Zahl auf Englisch?",
+        "deWord": "die Zahl 12"
+      },
+      "grounding": "SB p.10 numbers 1-25"
+    },
+    {
+      "id": "g1.game.ch01.sw06",
+      "use": "swarm",
+      "kind": "choice",
+      "storyDe": "Und zurück — welche Zahl ist das?",
+      "promptEn": "twelve",
+      "options": [
+        "12",
+        "3",
+        "7"
+      ],
+      "answer": "12",
+      "hints": {
+        "deDesc": "Welche Ziffer passt zum Wort?",
+        "deWord": "die Zahl 12"
+      },
+      "grounding": "SB p.10 numbers 1-25"
+    },
+    {
+      "id": "g1.game.ch01.sw07",
+      "use": "swarm",
+      "kind": "choice",
+      "storyDe": "Die Zahlen wirbeln durcheinander — fang die richtige!",
+      "promptEn": "15",
+      "options": [
+        "fifteen",
+        "three",
+        "seven"
+      ],
+      "answer": "fifteen",
+      "hints": {
+        "deDesc": "Wie heißt diese Zahl auf Englisch?",
+        "deWord": "die Zahl 15"
+      },
+      "grounding": "SB p.10 numbers 1-25"
+    },
+    {
+      "id": "g1.game.ch01.sw08",
+      "use": "swarm",
+      "kind": "choice",
+      "storyDe": "Und zurück — welche Zahl ist das?",
+      "promptEn": "fifteen",
+      "options": [
+        "15",
+        "3",
+        "7"
+      ],
+      "answer": "15",
+      "hints": {
+        "deDesc": "Welche Ziffer passt zum Wort?",
+        "deWord": "die Zahl 15"
+      },
+      "grounding": "SB p.10 numbers 1-25"
+    },
+    {
+      "id": "g1.game.ch01.sw09",
+      "use": "swarm",
+      "kind": "choice",
+      "storyDe": "Die Zahlen wirbeln durcheinander — fang die richtige!",
+      "promptEn": "22",
+      "options": [
+        "twenty-two",
+        "three",
+        "seven"
+      ],
+      "answer": "twenty-two",
+      "hints": {
+        "deDesc": "Wie heißt diese Zahl auf Englisch?",
+        "deWord": "die Zahl 22"
+      },
+      "grounding": "SB p.10 numbers 1-25"
+    },
+    {
+      "id": "g1.game.ch01.sw10",
+      "use": "swarm",
+      "kind": "choice",
+      "storyDe": "Und zurück — welche Zahl ist das?",
+      "promptEn": "twenty-two",
+      "options": [
+        "22",
+        "3",
+        "7"
+      ],
+      "answer": "22",
+      "hints": {
+        "deDesc": "Welche Ziffer passt zum Wort?",
+        "deWord": "die Zahl 22"
+      },
+      "grounding": "SB p.10 numbers 1-25"
+    },
+    {
+      "id": "g1.game.ch01.cr01",
+      "use": "colorroom",
+      "kind": "typed",
+      "storyDe": "Alles ist grau und still. Sag, was das ist — dann leuchtet es auf!",
+      "promptEn": "What is it?",
+      "art": "cr_chair",
+      "options": [
+        "chair",
+        "desk",
+        "door"
+      ],
+      "answer": "chair",
+      "colour": {
+        "promptEn": "What colour is the chair?",
+        "answer": "brown",
+        "options": [
+          "brown",
+          "blue",
+          "pink"
+        ]
+      },
+      "hints": {
+        "firstLetter": "c",
+        "length": 5,
+        "deDesc": "Auf Deutsch: der Stuhl.",
+        "deWord": "der Stuhl"
+      },
+      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects"
+    },
+    {
+      "id": "g1.game.ch01.cr02",
+      "use": "colorroom",
+      "kind": "typed",
+      "storyDe": "Alles ist grau und still. Sag, was das ist — dann leuchtet es auf!",
+      "promptEn": "What is it?",
+      "art": "cr_desk",
+      "options": [
+        "desk",
+        "chair",
+        "board"
+      ],
+      "answer": "desk",
+      "colour": {
+        "promptEn": "What colour is the desk?",
+        "answer": "green",
+        "options": [
+          "green",
+          "grey",
+          "red"
+        ]
+      },
+      "hints": {
+        "firstLetter": "d",
+        "length": 4,
+        "deDesc": "Auf Deutsch: der Tisch.",
+        "deWord": "der Tisch"
+      },
+      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects"
+    },
+    {
+      "id": "g1.game.ch01.cr03",
+      "use": "colorroom",
+      "kind": "typed",
+      "storyDe": "Alles ist grau und still. Sag, was das ist — dann leuchtet es auf!",
+      "promptEn": "What is it?",
+      "art": "cr_board",
+      "options": [
+        "board",
+        "window",
+        "door"
+      ],
+      "answer": "board",
+      "colour": {
+        "promptEn": "What colour is the board?",
+        "answer": "white",
+        "options": [
+          "white",
+          "black",
+          "yellow"
+        ]
+      },
+      "hints": {
+        "firstLetter": "b",
+        "length": 5,
+        "deDesc": "Auf Deutsch: die Tafel.",
+        "deWord": "die Tafel"
+      },
+      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects"
+    },
+    {
+      "id": "g1.game.ch01.cr04",
+      "use": "colorroom",
+      "kind": "typed",
+      "storyDe": "Alles ist grau und still. Sag, was das ist — dann leuchtet es auf!",
+      "promptEn": "What is it?",
+      "art": "cr_door",
+      "options": [
+        "door",
+        "window",
+        "floor"
+      ],
+      "answer": "door",
+      "colour": {
+        "promptEn": "What colour is the door?",
+        "answer": "blue",
+        "options": [
+          "blue",
+          "orange",
+          "brown"
+        ]
+      },
+      "hints": {
+        "firstLetter": "d",
+        "length": 4,
+        "deDesc": "Auf Deutsch: die Tür.",
+        "deWord": "die Tür"
+      },
+      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects"
+    },
+    {
+      "id": "g1.game.ch01.cr05",
+      "use": "colorroom",
+      "kind": "typed",
+      "storyDe": "Alles ist grau und still. Sag, was das ist — dann leuchtet es auf!",
+      "promptEn": "What is it?",
+      "art": "cr_window",
+      "options": [
+        "window",
+        "door",
+        "board"
+      ],
+      "answer": "window",
+      "colour": {
+        "promptEn": "What colour is the window?",
+        "answer": "yellow",
+        "options": [
+          "yellow",
+          "green",
+          "grey"
+        ]
+      },
+      "hints": {
+        "firstLetter": "w",
+        "length": 6,
+        "deDesc": "Auf Deutsch: das Fenster.",
+        "deWord": "das Fenster"
+      },
+      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects"
+    },
+    {
+      "id": "g1.game.ch01.cr06",
+      "use": "colorroom",
+      "kind": "typed",
+      "storyDe": "Alles ist grau und still. Sag, was das ist — dann leuchtet es auf!",
+      "promptEn": "What is it?",
+      "art": "cr_school_bag",
+      "options": [
+        "school bag",
+        "pencil case",
+        "exercise book"
+      ],
+      "answer": "school bag",
+      "colour": {
+        "promptEn": "What colour is the school bag?",
+        "answer": "red",
+        "options": [
+          "red",
+          "pink",
+          "black"
+        ]
+      },
+      "hints": {
+        "firstLetter": "s",
+        "length": 9,
+        "deDesc": "Auf Deutsch: die Schultasche.",
+        "deWord": "die Schultasche"
+      },
+      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects"
+    },
+    {
+      "id": "g1.game.ch01.cd01",
+      "use": "duel",
+      "kind": "choice",
+      "storyDe": "Er singt mitten in der Stunde!",
+      "promptEn": "Oh no! What do you say?",
+      "art": "gs_sing",
+      "options": [
+        "Don't sing!",
+        "Open the window!",
+        "Sit down!"
+      ],
+      "answer": "Don't sing!",
+      "hints": {
+        "deDesc": "Welcher Befehl stoppt genau DAS?",
+        "deWord": "die Befehlsform (Imperativ)"
+      },
+      "grounding": "SB p.14 instructions + WB p.7 imperatives"
+    },
+    {
+      "id": "g1.game.ch01.cd02",
+      "use": "duel",
+      "kind": "choice",
+      "storyDe": "Er springt auf und turnt auf dem Tisch!",
+      "promptEn": "Oh no! What do you say?",
+      "art": "gs_stand",
+      "options": [
+        "Don't stand up!",
+        "Close the door!",
+        "Don't speak!"
+      ],
+      "answer": "Don't stand up!",
+      "hints": {
+        "deDesc": "Welcher Befehl stoppt genau DAS?",
+        "deWord": "die Befehlsform (Imperativ)"
+      },
+      "grounding": "SB p.14 instructions + WB p.7 imperatives"
+    },
+    {
+      "id": "g1.game.ch01.cd03",
+      "use": "duel",
+      "kind": "choice",
+      "storyDe": "Er kritzelt auf den Tisch!",
+      "promptEn": "Oh no! What do you say?",
+      "art": "gs_write",
+      "options": [
+        "Don't write on the desk!",
+        "Take out your books!",
+        "Don't sing!"
+      ],
+      "answer": "Don't write on the desk!",
+      "hints": {
+        "deDesc": "Welcher Befehl stoppt genau DAS?",
+        "deWord": "die Befehlsform (Imperativ)"
+      },
+      "grounding": "SB p.14 instructions + WB p.7 imperatives"
+    },
+    {
+      "id": "g1.game.ch01.cd04",
+      "use": "duel",
+      "kind": "choice",
+      "storyDe": "Brrr — er reißt das Fenster auf!",
+      "promptEn": "Oh no! What do you say?",
+      "art": "gs_window",
+      "options": [
+        "Close the window!",
+        "Open your books!",
+        "Stand up!"
+      ],
+      "answer": "Close the window!",
+      "hints": {
+        "deDesc": "Welcher Befehl stoppt genau DAS?",
+        "deWord": "die Befehlsform (Imperativ)"
+      },
+      "grounding": "SB p.14 instructions + WB p.7 imperatives"
+    },
+    {
+      "id": "g1.game.ch01.cd05",
+      "use": "duel",
+      "kind": "choice",
+      "storyDe": "Er quatscht und quatscht dazwischen!",
+      "promptEn": "Oh no! What do you say?",
+      "art": "gs_speak",
+      "options": [
+        "Don't speak!",
+        "Take out your scissors!",
+        "Close the door!"
+      ],
+      "answer": "Don't speak!",
+      "hints": {
+        "deDesc": "Welcher Befehl stoppt genau DAS?",
+        "deWord": "die Befehlsform (Imperativ)"
+      },
+      "grounding": "SB p.14 instructions + WB p.7 imperatives"
+    },
+    {
+      "id": "g1.game.ch01.cd06",
+      "use": "duel",
+      "kind": "choice",
+      "storyDe": "Seine Bücher liegen alle auf dem Boden!",
+      "promptEn": "Oh no! What do you say?",
+      "art": "gs_books",
+      "options": [
+        "Take out your books!",
+        "Don't stand up!",
+        "Close the window!"
+      ],
+      "answer": "Take out your books!",
+      "hints": {
+        "deDesc": "Welcher Befehl stoppt genau DAS?",
+        "deWord": "die Befehlsform (Imperativ)"
+      },
+      "grounding": "SB p.14 instructions + WB p.7 imperatives"
+    },
+    {
+      "id": "g1.game.ch01.fd01",
+      "use": "finale",
+      "kind": "choice",
+      "storyDe": "Der befreite Schüler ist wieder freundlich — lernt euch kennen!",
+      "promptEn": "Hello! What's your name?",
+      "options": [
+        "I'm Anna.",
+        "I'm fine.",
+        "Bye-bye!"
+      ],
+      "answer": "I'm Anna.",
+      "hints": {
+        "deDesc": "Sag deinen Namen!",
+        "deWord": "Ich bin/heiße …"
+      },
+      "grounding": "SB p.9 dialogues + p.15 questions; WB p.10 meeting people"
+    },
+    {
+      "id": "g1.game.ch01.fd02",
+      "use": "finale",
+      "kind": "choice",
+      "storyDe": "Der befreite Schüler ist wieder freundlich — lernt euch kennen!",
+      "promptEn": "How are you?",
+      "options": [
+        "I'm fine, thanks.",
+        "I'm ten.",
+        "I must go."
+      ],
+      "answer": "I'm fine, thanks.",
+      "hints": {
+        "deDesc": "Die freundliche Antwort auf 'Wie geht's?'",
+        "deWord": "Mir geht es gut, danke."
+      },
+      "grounding": "SB p.9 dialogues + p.15 questions; WB p.10 meeting people"
+    },
+    {
+      "id": "g1.game.ch01.fd03",
+      "use": "finale",
+      "kind": "choice",
+      "storyDe": "Der befreite Schüler ist wieder freundlich — lernt euch kennen!",
+      "promptEn": "Nice to meet you!",
+      "options": [
+        "Nice to meet you too.",
+        "I'm fine, thanks.",
+        "Bye-bye!"
+      ],
+      "answer": "Nice to meet you too.",
+      "hints": {
+        "deDesc": "Gib den Gruß zurück!",
+        "deWord": "Freut mich auch!"
+      },
+      "grounding": "SB p.9 dialogues + p.15 questions; WB p.10 meeting people",
+      "identityAnswer": true,
+      "identityNote": "Dialogue echo IS the pattern being taught: returning the greeting ('Nice to meet you too.') — the repetition is the communicative point, not a giveaway."
+    },
+    {
+      "id": "g1.game.ch01.fd04",
+      "use": "finale",
+      "kind": "choice",
+      "storyDe": "Der befreite Schüler ist wieder freundlich — lernt euch kennen!",
+      "promptEn": "What's your email address?",
+      "options": [
+        "It's noah11@zpin.com.",
+        "I'm Noah.",
+        "It's blue."
+      ],
+      "answer": "It's noah11@zpin.com.",
+      "hints": {
+        "deDesc": "Die E-Mail-Adresse — wie im Buch!",
+        "deWord": "die E-Mail-Adresse"
+      },
+      "grounding": "SB p.9 dialogues + p.15 questions; WB p.10 meeting people"
+    },
+    {
+      "id": "g1.game.ch01.fd05",
+      "use": "finale",
+      "kind": "choice",
+      "storyDe": "Der befreite Schüler ist wieder freundlich — lernt euch kennen!",
+      "promptEn": "I must go. Bye!",
+      "options": [
+        "Bye-bye!",
+        "Hello!",
+        "I'm fine, thanks."
+      ],
+      "answer": "Bye-bye!",
+      "hints": {
+        "deDesc": "Verabschiede dich!",
+        "deWord": "Tschüss!"
+      },
+      "grounding": "SB p.9 dialogues + p.15 questions; WB p.10 meeting people"
     }
   ]
 }
