@@ -17,6 +17,7 @@ import type { ResolvedItem } from "@domigo/game-core";
 import { battlePlan } from "./battle.ts";
 import { BattleStage } from "./BattleStage.tsx";
 import { OverworldScene, type OverworldState, type PadState } from "./OverworldScene.ts";
+import { bindTypingGuard } from "./typing-guard.ts";
 import { cellCenterPx, spawnFor, type ParsedZone } from "./world.ts";
 
 /** ONE zone's cosmetic state as the scene reports it (position + cleared node
@@ -228,6 +229,7 @@ export function PhaserGame(props: PhaserGameProps) {
     // visibilitychange hook — not re-done here. Listener owned + cleaned up here.
     const onVisibility = () => scene.setBlurred(document.visibilityState === "hidden");
     document.addEventListener("visibilitychange", onVisibility);
+    const unbindTyping = bindTypingGuard(game); // W0 typing-mode law
 
     // Non-prod machine-playtest harness: `tap` calls the EXACT pointer code path;
     // `state` is a read-only snapshot. Setters are permanently out of scope —
@@ -243,6 +245,7 @@ export function PhaserGame(props: PhaserGameProps) {
       if (process.env.NODE_ENV !== "production") {
         delete (window as unknown as Record<string, unknown>)["__domigo"];
       }
+      unbindTyping();
       game.destroy(true);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

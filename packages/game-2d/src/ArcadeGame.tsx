@@ -14,6 +14,7 @@ import { gradeGrammar, gradeVocab } from "@domigo/engine";
 import type { ResolvedItem } from "@domigo/game-core";
 import { ArcadeScene, type ArcadePad } from "./ArcadeScene.ts";
 import { ARCADE, quickfireFor, rescuePlan, rescueScaffold, type ArcadeLevel, type Quickfire, type RescueTask, type Tier } from "./arcade.ts";
+import { bindTypingGuard } from "./typing-guard.ts";
 import { BossScene } from "./BossScene.ts";
 import { bossPlan, type BossScript } from "./boss.ts";
 import { DEFAULT_LEVEL_ID, LEVELS } from "./levels.ts";
@@ -230,8 +231,11 @@ export function ArcadeGame(props: ArcadeGameProps) {
       scene,
     });
     gameRef.current = game;
+    // W0 typing-mode law: DOM text focus releases the game keyboard entirely
+    const unbindTyping = bindTypingGuard(game);
     if (process.env.NODE_ENV !== "production") {
       (window as unknown as Record<string, unknown>)["__domigoArcade"] = {
+        game, // dev-only: typing-guard probes
         state: () => (bossActiveRef.current && bossRef.current ? bossRef.current.debugState() : scene.debugState()),
         press: (p: Partial<ArcadePad>) => Object.assign(padRef.current, p),
         // playtest-only: open the seal gate so the boss handoff is drivable
@@ -252,6 +256,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
         delete (window as unknown as Record<string, unknown>)["__domigoArcadeQf"];
         delete (window as unknown as Record<string, unknown>)["__domigoArcadeRescue"];
       }
+      unbindTyping();
       game.destroy(true);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

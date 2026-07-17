@@ -9,6 +9,7 @@ import Phaser from "phaser";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { ArcadePad } from "./ArcadeScene.ts";
 import { MapScene, type MapConfig, type MapEntrance } from "./MapScene.ts";
+import { bindTypingGuard } from "./typing-guard.ts";
 
 export interface MapGameProps {
   world: {
@@ -88,10 +89,12 @@ export function MapGame(props: MapGameProps) {
         step: (ms: number) => { game.loop.wake(); scene.sys.step(performance.now(), ms); },
       };
     }
+    const unbindTyping = bindTypingGuard(game); // W0 typing-mode law
     return () => {
       if (process.env.NODE_ENV !== "production") {
         delete (window as unknown as Record<string, unknown>)["__domigoMap"];
       }
+      unbindTyping();
       game.destroy(true);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
