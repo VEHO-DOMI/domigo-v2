@@ -1,4 +1,5 @@
 "use client";
+import { toggleGameFullscreen } from "@domigo/game-2d/fullscreen";
 /**
  * KA-1 · client boundary for the Tintenlauf arcade mock. Quickfire answers are
  * REAL graded attempts: they ride the A4 offline outbox with the grade's game
@@ -47,7 +48,10 @@ export default function ArcadeClient(props: {
     <main style={{ padding: "16px 12px", fontFamily: "var(--font-body)", color: "var(--text)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", maxWidth: 720, margin: "0 auto 10px" }}>
         <h1 style={{ fontSize: 21, margin: 0, fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--ink)" }}>{props.title}</h1>
-        <a href={props.hubHref} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{props.level ? "← Zur Weltkarte" : "← Alle Räume"}</a>
+        <span style={{ display: "inline-flex", gap: 14, alignItems: "center" }}>
+          <a href={props.hubHref} style={{ fontSize: 14, color: "var(--accent)", fontWeight: 600 }}>{props.level ? "← Zur Weltkarte" : "← Alle Räume"}</a>
+          <button type="button" onClick={() => toggleGameFullscreen()} title="Vollbild" style={{ fontSize: 15, color: "var(--accent)", background: "none", border: "none", cursor: "pointer", padding: 0 }}>⛶</button>
+        </span>
       </div>
       <ArcadeGame seed={props.seed} playerSeed={props.playerSeed} mode={props.mode} items={props.items} storyTasks={props.storyTasks} onAttempt={onAttempt} hubHref={props.hubHref} levelId={props.levelId} tier={props.tier} level={props.level} boss={props.boss} art={props.art} doneHref={props.doneHref} onDone={onDone} />
     </main>

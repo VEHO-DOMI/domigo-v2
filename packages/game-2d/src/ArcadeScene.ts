@@ -51,9 +51,10 @@ import {
 } from "./arcade.ts";
 import { rasterize } from "./rasterize.ts";
 
-// refoundation W3: 12×9 tiles (was 15×11) — Koki's zoom verdict; FIT upscales
-const VIEW_W = 12 * TILE;
-const VIEW_H = 9 * TILE;
+// v4 W0: 10×6.5 tiles — the KEEN bar (Koki's own Keen captures: hero ≈16% of
+// screen height; 12×9 left him at 11%). FIT upscales to the container.
+const VIEW_W = 10 * TILE;
+const VIEW_H = 6.5 * TILE;
 
 export interface ArcadePad {
   left: boolean;
@@ -1143,6 +1144,25 @@ export class ArcadeScene extends Phaser.Scene {
         if (!from) continue;
         this.travelDoor(from === d.aPx ? d.bPx : d.aPx);
         return;
+      }
+    }
+
+    // ── v4 W0: ↑ at a seal post (guard freed or none) opens/reopens its task —
+    // the retry after "Später", and the discoverable interaction Koki missed ──
+    if (grounded && upDown && !this.jumpHeld && now >= this.doorCooldownUntil) {
+      for (const seal of this.sealSprites) {
+        if (seal.taken || seal.pending === true) continue;
+        const guard = seal.guard !== null ? this.creatures[seal.guard] : null;
+        if (guard && !guard.stunned && !guard.escaped) continue; // its keeper still holds it
+        // generous vertical reach: the post often towers over the walkway —
+        // standing UNDER it and pressing UP is the natural read (Koki stood
+        // exactly there with no way in)
+        const sdy = seal.img.y - this.player.y;
+        if (Math.abs(seal.img.x - this.player.x) < 44 && sdy > -TILE * 4.5 && sdy < TILE * 1.6) {
+          this.doorCooldownUntil = now + 400;
+          this.releaseSeal(seal, seal.img.x, seal.img.y);
+          return;
+        }
       }
     }
 

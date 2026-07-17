@@ -15,6 +15,7 @@ import type { ResolvedItem } from "@domigo/game-core";
 import { ArcadeScene, type ArcadePad } from "./ArcadeScene.ts";
 import { ARCADE, gradeStoryAnswer, quickfireFor, rescuePlan, rescueScaffold, type ArcadeLevel, type GameTaskHints, type Quickfire, type RescueTask, type StoryTaskPack, type Tier } from "./arcade.ts";
 import { bindTypingGuard } from "./typing-guard.ts";
+import { requestGameFullscreen } from "./fullscreen.ts";
 import { BossScene } from "./BossScene.ts";
 import { bossPlan, type BossScript } from "./boss.ts";
 import { DEFAULT_LEVEL_ID, LEVELS } from "./levels.ts";
@@ -371,7 +372,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
     }
     window.setTimeout(() => {
       bossRef.current?.resolveWindow(correct);
-      setPhase({ kind: "run" });
+      setPhase((p) => (p.kind === "bossWindow" ? { kind: "run" } : p));
     }, correct ? (reducedMotion ? 300 : 650) : input === null ? 0 : (reducedMotion ? 400 : 800));
   };
 
@@ -395,8 +396,10 @@ export function ArcadeGame(props: ArcadeGameProps) {
     }
     setPhase({ kind: "verdict", correct, answer: qf.answer });
     window.setTimeout(() => {
+      // resolveQuickfire may OPEN a new phase (a stunned guard releases its
+      // seal → the sealTask card) — never stomp it (Koki's softlock 2026-07-17)
       sceneRef.current?.resolveQuickfire(correct);
-      setPhase({ kind: "run" });
+      setPhase((p) => (p.kind === "verdict" ? { kind: "run" } : p));
     }, reducedMotion ? 500 : 750);
   };
 
@@ -444,7 +447,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
           // in the level it returns to the last checkpoint flag
           if (bossActiveRef.current) bossRef.current?.resetDuel();
           else sceneRef.current?.respawn();
-          setPhase({ kind: "run" });
+          setPhase((p) => (p.kind === "rescue" ? { kind: "run" } : p));
         }, reducedMotion ? 400 : 700);
       } else {
         setPhase({ kind: "rescue", rescue: { ...rescue, at: rescue.at + 1, solved, value: "", verdict: "right" } });
@@ -467,6 +470,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
   const startRun = (): void => {
     setGoalOpen(false);
     sceneRef.current?.setRunning(true);
+    requestGameFullscreen(); // v4 W0: immersion — the goal-card click is the gesture
   };
   useEffect(() => {
     if (!goalOpen) return;
