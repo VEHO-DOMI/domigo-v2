@@ -1,0 +1,32 @@
+{
+ "keyColor": "#FF00FF",
+ "tolerance": 40,
+ "cols": 4,
+ "rows": 1,
+ "cells": [
+  {
+   "stem": "mtile_page",
+   "col": 0,
+   "row": 0,
+   "opaque": true
+  },
+  {
+   "stem": "mtile_path",
+   "col": 1,
+   "row": 0,
+   "opaque": true
+  },
+  {
+   "stem": "mtile_grass",
+   "col": 2,
+   "row": 0,
+   "opaque": true
+  },
+  {
+   "stem": "mtile_edge",
+   "col": 3,
+   "row": 0,
+   "opaque": true
+  }
+ ]
+}

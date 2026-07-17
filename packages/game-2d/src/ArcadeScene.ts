@@ -327,7 +327,7 @@ export class ArcadeScene extends Phaser.Scene {
     const solids = this.physics.add.staticGroup();
     for (const s of level.solids) {
       const mask = terrainMask(!covered(s.c, s.r - 1), !covered(s.c, s.r + 1), !covered(s.c - 1, s.r), !covered(s.c + 1, s.r));
-      const b = solids.create(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, tex(`earth-${mask}`)) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+      const b = solids.create(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, this.itex(`tile_sh_m${mask}`, tex(`earth-${mask}`))) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       b.setDisplaySize(TILE, TILE).refreshBody();
       const sb = b.body as Phaser.Physics.Arcade.StaticBody;
       // a solid flanking a slope must not WALL the ramp (Keen skips the feet
@@ -342,7 +342,7 @@ export class ArcadeScene extends Phaser.Scene {
     }
     const oneWays = this.physics.add.staticGroup();
     const addOneWay = (c: number, r: number, helper: boolean): void => {
-      const b = oneWays.create(c * TILE + TILE / 2, r * TILE + TILE / 2 - 14, tex("oneway")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+      const b = oneWays.create(c * TILE + TILE / 2, r * TILE + TILE / 2 - 14, this.itex("prop_oneway", tex("oneway"))) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       b.setDisplaySize(TILE, 20).refreshBody();
       if (helper) b.setTint(0x9fd8a4); // easy-mode scaffolding reads as such
       const body = b.body as Phaser.Physics.Arcade.StaticBody;
@@ -356,15 +356,18 @@ export class ArcadeScene extends Phaser.Scene {
     }
     const spikes = this.physics.add.staticGroup();
     for (const hz of level.hazards) {
-      const b = spikes.create(hz.c * TILE + TILE / 2, hz.r * TILE + TILE / 2, tex("spikes")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
-      b.setDisplaySize(TILE, TILE).refreshBody();
-      (b.body as Phaser.Physics.Arcade.StaticBody).setSize(TILE - 12, 22).setOffset(6, TILE - 22);
+      const gen = this.textures.exists("img-prop_spikes");
+      const b = spikes.create(hz.c * TILE + TILE / 2, hz.r * TILE + TILE / 2 + (gen ? TILE / 2 - 11 : 0), this.itex("prop_spikes", tex("spikes"))) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+      if (gen) b.setDisplaySize(TILE, 22).refreshBody(); // trimmed nib strip sits ON the floor
+      else b.setDisplaySize(TILE, TILE).refreshBody();
+      if (gen) (b.body as Phaser.Physics.Arcade.StaticBody).setSize(TILE - 12, 18).setOffset(6, 4);
+      else (b.body as Phaser.Physics.Arcade.StaticBody).setSize(TILE - 12, 22).setOffset(6, TILE - 22);
     }
 
     // ── v2.2: poles (the vertical switchboard — climb up, slide down) ──
     for (const p of level.poles) {
       this.poleCells.add(`${p.c},${p.r}`);
-      this.add.image(p.c * TILE + TILE / 2, p.r * TILE + TILE / 2, tex("pole")).setDepth(1);
+      this.add.image(p.c * TILE + TILE / 2, p.r * TILE + TILE / 2, this.itex("prop_pole", tex("pole"))).setDepth(1).setDisplaySize(TILE, TILE);
     }
 
     // ── v2.2: in-level door pairs (sub-rooms on one canvas, Keen 4 grammar) ──
@@ -376,7 +379,10 @@ export class ArcadeScene extends Phaser.Scene {
       for (const at of [aPx, bPx]) {
         // refoundation W3 (Koki): the hero renders IN FRONT of the arch —
         // the over-player sandwich read as "I'm stuck behind the door"
-        this.add.image(at.x, at.y + TILE / 2 - 36, tex(`door-${d.id}`)).setDepth(3);
+        {
+          const arch = this.add.image(at.x, at.y + TILE / 2 - 36, this.itex("prop_door_open", tex(`door-${d.id}`))).setDepth(3);
+          if (this.textures.exists("img-prop_door_open")) arch.setDisplaySize(TILE * 1.2, TILE * 1.6);
+        }
         const hint = this.add.text(at.x, at.y - TILE * 0.9, "↑", { fontFamily: "system-ui, sans-serif", fontSize: "16px", fontStyle: "bold", color: "#cfc7ff" }).setOrigin(0.5).setDepth(7).setAlpha(0.85);
         if (motion) this.tweens.add({ targets: hint, y: hint.y - 5, duration: 900, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
       }
@@ -391,8 +397,9 @@ export class ArcadeScene extends Phaser.Scene {
       const ay = m.r1 * TILE + 10;
       const bx = m.c2 * TILE + (m.w * TILE) / 2;
       const by = m.r2 * TILE + 10;
-      const s = moverGroup.create(ax, ay, tex(`mover-${m.w}`)) as Phaser.Types.Physics.Arcade.ImageWithDynamicBody;
+      const s = moverGroup.create(ax, ay, this.itex("prop_plank", tex(`mover-${m.w}`))) as Phaser.Types.Physics.Arcade.ImageWithDynamicBody;
       s.setDepth(2);
+      if (this.textures.exists("img-prop_plank")) s.setDisplaySize(m.w * TILE, 18);
       s.body.setSize(m.w * TILE, 12); // ride the book's COVER; pages hang below
       s.body.setOffset(0, 2);
       s.body.checkCollision.down = false;
@@ -424,7 +431,8 @@ export class ArcadeScene extends Phaser.Scene {
     level.gluehwoerter.forEach((gw, i) => {
       const x = gw.c * TILE + TILE / 2;
       const y = gw.r * TILE + TILE / 2;
-      const img = this.add.image(x, y, tex("gluehwort")).setDepth(3);
+      const img = this.add.image(x, y, this.itex("prop_gluehwort", tex("gluehwort"))).setDepth(3);
+      if (this.textures.exists("img-prop_gluehwort")) img.setDisplaySize(TILE * 0.8, TILE * 0.8);
       const zone = gluehGroup.create(x, y, undefined as unknown as string) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       zone.setVisible(false).setDisplaySize(64, 56).refreshBody(); // W3: forgiving pickup
       zone.setData("img", img).setData("taken", false);
@@ -440,7 +448,8 @@ export class ArcadeScene extends Phaser.Scene {
     for (const cp of level.checkpoints) {
       const x = cp.c * TILE + TILE / 2;
       const y = cp.r * TILE + TILE / 2;
-      const img = this.add.image(x, y, tex("checkpoint")).setDepth(1);
+      const img = this.add.image(x, y, this.itex("prop_flag", tex("checkpoint"))).setDepth(1);
+      if (this.textures.exists("img-prop_flag")) img.setDisplaySize(TILE, TILE * 1.4);
       const zone = cpGroup.create(x, y, undefined as unknown as string) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       zone.setVisible(false).setDisplaySize(TILE, TILE * 1.5).refreshBody();
       zone.setData("img", img);
@@ -448,14 +457,15 @@ export class ArcadeScene extends Phaser.Scene {
 
     // seals + pedestal (the gem-socket grammar)
     level.header.seals.forEach((s, i) => {
-      const img = this.add.image(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, tex("seal")).setDepth(5);
+      const img = this.add.image(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, this.itex("prop_sealpost", tex("seal"))).setDepth(5);
+      if (this.textures.exists("img-prop_sealpost")) img.setDisplaySize(TILE * 1.1, TILE * 1.4);
       if (motion) this.tweens.add({ targets: img, y: img.y - 5, duration: 1100 + i * 150, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
       this.sealSprites.push({ img, taken: false, guard: s.guard, idx: i });
     });
     this.cfg.onSeals(0, level.header.seals.length);
     // the exit: legacy pedestal ('A') or the guardian's sealed door ('B')
     const exitCell = level.bossDoor ?? level.pedestal;
-    this.pedestal = this.physics.add.staticGroup().create(exitCell.c * TILE + TILE / 2, exitCell.r * TILE, tex(level.bossDoor ? "bossdoor" : "pedestal")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+    this.pedestal = this.physics.add.staticGroup().create(exitCell.c * TILE + TILE / 2, exitCell.r * TILE, level.bossDoor ? this.itex("prop_door_sealed", tex("bossdoor")) : tex("pedestal")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
     this.pedestal.setDisplaySize(TILE, TILE * 2).refreshBody();
 
     // ── the player ──
@@ -895,7 +905,12 @@ export class ArcadeScene extends Phaser.Scene {
 
   private activatePedestal(): void {
     this.pedestalActive = true;
-    this.pedestal.setTexture(this.cfg.level.bossDoor ? "ka-bossdoor-on" : "ka-pedestal-lit");
+    this.pedestal.setTexture(
+      this.cfg.level.bossDoor
+        ? (this.textures.exists("img-prop_door_open") ? "img-prop_door_open" : "ka-bossdoor-on")
+        : "ka-pedestal-lit",
+    );
+    this.pedestal.setDisplaySize(TILE, TILE * 2);
     playSfx("whoosh");
     if (this.cfg.reducedMotion !== true) {
       this.burst?.explode(18, this.pedestal.x, this.pedestal.y);

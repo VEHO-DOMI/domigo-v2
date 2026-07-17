@@ -307,6 +307,7 @@ export class MapScene extends Phaser.Scene {
           const npcStem = finn ? "finn_map" : "pixel_map";
           const hasNpcImg = this.textures.exists(`img-${npcStem}`);
           const img = this.add.image(x, y, hasNpcImg ? `img-${npcStem}` : tex(finn ? "finn" : "pixel")).setDepth(3);
+          if (hasNpcImg) img.setDisplaySize(TILE * 0.95, TILE * 0.95); // map scale — generated cells are 256px
           if (finn && motion) this.tweens.add({ targets: img, y: y - 5, duration: 1100, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
           if (!finn && !hasNpcImg) {
             const tail = this.add.image(x - 12, y + 6, tex("pixeltail")).setOrigin(0.8, 0.9).setDepth(3);
@@ -383,6 +384,7 @@ export class MapScene extends Phaser.Scene {
       const bStem = `building_${b.chapter}`;
       const hasImg = this.textures.exists(`img-${bStem}`);
       const img = this.add.image(x, bottom, hasImg ? `img-${bStem}` : tex(warm ? "house" : "house-dark")).setOrigin(0.5, 1).setDepth(2);
+      if (hasImg) img.setDisplaySize(TILE * 2.6, TILE * 1.3); // fit the plot; sheet cells are 512×256
       if (hasImg && !warm) img.setTint(0x8a8798).setAlpha(0.9); // drained-grey read
       if (!warm) img.setAlpha(0.8);
       this.add.text(x, bottom + 2, b.label, { fontFamily: "system-ui, sans-serif", fontSize: "10px", color: "#c9c4e4" }).setOrigin(0.5, 0).setDepth(2);

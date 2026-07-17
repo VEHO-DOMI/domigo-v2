@@ -30,5 +30,7 @@ content/build/audit/blind-solve/cache.json
 # prep-art/sync-art (run by us) move QA'd files into public/art/
 docs/art/drop/**
 docs/art/drop-t/**
+docs/art/drop-u/**
 !docs/art/drop/**
-docs/art/drop-t/**/.gitkeep
+docs/art/drop-t/**
+docs/art/drop-u/**/.gitkeep

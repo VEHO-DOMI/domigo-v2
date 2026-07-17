@@ -143,7 +143,16 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
       storyItems={storyItems}
       castArt={keenArt.cast}
       beatArt={keenArt.beats}
-      mapArt={keenArt.map}
+      mapArt={{
+        ...keenArt.map,
+        // batch-T map stems feed MapScene's existing slots
+        ...(keenArt.map["mtile_page"] !== undefined ? { page_underlay: keenArt.map["mtile_page"] } : {}),
+        ...Object.fromEntries(
+          Object.entries(keenArt.map)
+            .filter(([k]) => k.startsWith("bld_ch"))
+            .map(([k, v]) => [`building_${k.slice(4)}`, v]),
+        ),
+      }}
       serverSave={saved ? { clientRev: saved.clientRev, state: saved.state as unknown } : null}
       done={typeof done === "string" ? done : undefined}
     />

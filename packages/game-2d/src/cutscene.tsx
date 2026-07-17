@@ -76,7 +76,8 @@ export function CutscenePlayer({ grade, chapter, castNames, beatArt, canSkip, on
   return (
     <div style={frame} onClick={advance} role="button" tabIndex={0} aria-label="Weiter">
       {/* the shot */}
-      <div style={{ flex: 1, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", opacity: fading ? 0 : 1, transition: `opacity ${FADE_MS}ms ease` }}>
+      {/* the picture-book law: the illustration OWNS the frame — text never crowds it */}
+      <div style={{ flex: 1, minHeight: "48vh", width: "100%", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", opacity: fading ? 0 : 1, transition: `opacity ${FADE_MS}ms ease` }}>
         {img !== undefined ? (
           <img src={img} alt="" style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }} />
         ) : (
@@ -85,7 +86,7 @@ export function CutscenePlayer({ grade, chapter, castNames, beatArt, canSkip, on
         )}
       </div>
       {/* the line */}
-      <div style={{ width: "min(860px, 94vw)", padding: "14px 18px 22px", opacity: fading ? 0 : 1, transition: `opacity ${FADE_MS}ms ease` }} onClick={(e) => e.stopPropagation()}>
+      <div style={{ width: "min(860px, 94vw)", maxHeight: "42vh", overflowY: "auto", padding: "10px 18px 18px", opacity: fading ? 0 : 1, transition: `opacity ${FADE_MS}ms ease` }} onClick={(e) => e.stopPropagation()}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
           <div style={{ fontSize: 14, fontWeight: 700, color: "#8b7cf5", fontFamily: "var(--font-display)" }}>{castNames[scene.speaker] ?? scene.speaker}</div>
           <LangToggle grade={grade} />
