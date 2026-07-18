@@ -246,11 +246,12 @@ export class ArcadeScene extends Phaser.Scene {
   /** kept for freed-creature colliders added after create() (flyer/thief kinds) */
   private solidsGroup: Phaser.Physics.Arcade.StaticGroup | null = null;
   private swarmWalls: Array<{ body: Phaser.Types.Physics.Arcade.SpriteWithStaticBody; bits: Phaser.GameObjects.GameObject[]; cleared: boolean; engaged: boolean }> = [];
-  private roomObjects: Array<{ img: Phaser.GameObjects.Image; stem: string; restored: boolean; c: number; r: number }> = [];
+  private roomObjects: Array<{ img: Phaser.GameObjects.Image; stem: string; restored: boolean; c: number; r: number; cue?: Phaser.GameObjects.Text }> = [];
   private duelGhost: Phaser.GameObjects.Image | null = null;
   /** v5 W2 set-piece signposts — dismissed when their piece completes */
   private roomLabel: Phaser.GameObjects.Container | null = null;
   private duelLabel: Phaser.GameObjects.Container | null = null;
+  private duelCue: Phaser.GameObjects.Text | null = null;
   private duelWonFlag = false;
   /** v4: seals owned by a set-piece — ONLY the set-piece releases them. */
   private setPieceSeals = new Set<number>();
@@ -295,6 +296,19 @@ export class ArcadeScene extends Phaser.Scene {
     return this.textures.exists(key) ? key : fallback;
   }
 
+  /** v5.1 THE FILTER LAW (Koki's zoom: "way too pixelated"): the HD batch art
+   *  is authored ~170px in 256px cells but displayed at ~48px — the game's
+   *  pixelArt:true default (NEAREST) decimates it into crunch. HD textures get
+   *  LINEAR minification (smooth, Owlboy-soft); only the NATIVE-RES tile set
+   *  (48px terrain, displayed 1:1) keeps NEAREST for the crisp pixel read. */
+  private applyHdFilters(): void {
+    const keepNearest = /^img-(earth3_|grass3_|edge3_|slope3_|slope_|ledge3$|prop_pole$|prop_oneway$)/;
+    for (const key of Object.keys(this.textures.list)) {
+      if (!key.startsWith("img-") || keepNearest.test(key)) continue;
+      this.textures.get(key).setFilter(Phaser.Textures.FilterMode.LINEAR);
+    }
+  }
+
   /** v5 W2: a soft in-level label pill (set-piece signposting, doc 30 §1.2 —
    *  the set-pieces must be impossible to miss). German, kid-concrete. */
   private makeSignpost(x: number, y: number, textDe: string): Phaser.GameObjects.Container {
@@ -307,6 +321,7 @@ export class ArcadeScene extends Phaser.Scene {
   }
 
   create(): void {
+    this.applyHdFilters(); // v5.1: HD sprites minify LINEAR, native tiles stay NEAREST
     const { level, tier } = this.cfg;
     const motion = this.cfg.reducedMotion !== true;
     // v3 look: the platformer's OWN side-view art (auto-tiled terrain, posed
@@ -393,6 +408,10 @@ export class ArcadeScene extends Phaser.Scene {
       const b = solids.create(s.c * TILE + TILE / 2, s.r * TILE + TILE / 2, key) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       b.setDisplaySize(TILE, TILE).refreshBody();
       const sb = b.body as Phaser.Physics.Arcade.StaticBody;
+      // v5.1 FEET-SINK (Koki: "he is levitating"): the grass lip's drawn deck
+      // sits ~5px below the tile's physics top, so feet hovered on tuft tips.
+      // Grass-topped solids drop their walk surface 5px — feet plant IN the lip.
+      if (upE && key.startsWith("img-grass3_")) sb.setSize(TILE, TILE - 5).setOffset(0, 5);
       // a solid flanking a slope must not WALL the ramp (Keen skips the feet
       // row on slopes, ck_phys.c:316) — drop collision on the slope-facing side
       if (slopeHere.has(`${s.c - 1},${s.r}`)) sb.checkCollision.left = false;
@@ -494,6 +513,13 @@ export class ArcadeScene extends Phaser.Scene {
       s.body.checkCollision.right = false;
       const dist = Math.hypot(bx - ax, by - ay);
       this.moverPlatforms.push({ s, ax, ay, bx, by, toB: true, speed: (dist / (m.periodMs / 2)) * 1000 });
+      // v5.1: a VERTICAL mover is an ELEVATOR — say so (Koki looked down the
+      // shaft and found "no way of entering": the ride was illegible)
+      if (m.c1 === m.c2) {
+        const hy = Math.min(ay, by) - TILE * 0.6;
+        const hint = this.add.text(ax, hy, "↕ Aufzug", { fontFamily: "system-ui, sans-serif", fontSize: "13px", fontStyle: "bold", color: "#cfc7ff" }).setOrigin(0.5).setDepth(7).setAlpha(0.9);
+        if (motion) this.tweens.add({ targets: hint, y: hy - 5, duration: 1000, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+      }
     }
 
     // letters — real glyphs being rescued
@@ -549,7 +575,10 @@ export class ArcadeScene extends Phaser.Scene {
       const x = cp.c * TILE + TILE / 2;
       const y = cp.r * TILE + TILE / 2;
       const img = this.add.image(x, y, this.itex("prop_flag", tex("checkpoint"))).setDepth(1);
-      if (this.textures.exists("img-prop_flag")) img.setDisplaySize(TILE, TILE * 1.4);
+      if (this.textures.exists("img-prop_flag")) {
+        // v5.1: bottom-anchor the banner ON the grass deck — it floated
+        img.setOrigin(0.5, 1).setPosition(x, (cp.r + 1) * TILE + 5).setDisplaySize(TILE, TILE * 1.4);
+      }
       const zone = cpGroup.create(x, y, undefined as unknown as string) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
       zone.setVisible(false).setDisplaySize(TILE, TILE * 1.5).refreshBody();
       zone.setData("img", img);
@@ -568,7 +597,9 @@ export class ArcadeScene extends Phaser.Scene {
 
     // the exit: legacy pedestal ('A') or the guardian's sealed door ('B')
     const exitCell = level.bossDoor ?? level.pedestal;
-    this.pedestal = this.physics.add.staticGroup().create(exitCell.c * TILE + TILE / 2, exitCell.r * TILE, level.bossDoor ? this.itex("prop_door_sealed", tex("bossdoor")) : tex("pedestal")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
+    // v5.1: +5px grounds the door on the SUNKEN grass deck (feet-sink law) —
+    // it hovered above the lip in Koki's screenshots
+    this.pedestal = this.physics.add.staticGroup().create(exitCell.c * TILE + TILE / 2, exitCell.r * TILE + 5, level.bossDoor ? this.itex("prop_door_sealed", tex("bossdoor")) : tex("pedestal")) as Phaser.Types.Physics.Arcade.SpriteWithStaticBody;
     this.pedestal.setDisplaySize(TILE, TILE * 2).refreshBody();
 
     // ── the player ──
@@ -579,7 +610,10 @@ export class ArcadeScene extends Phaser.Scene {
     this.player.setDisplaySize(TILE, TILE);
     this.player.setDepth(4); // Keen's z-ladder: terrain 0 · props 1-2 · items 3 · player 4 · fore-foreground 6
     // doc 28 §4: the first provided accessory overlay (unlockables wave adds selection)
-    const accStem = Object.keys(this.cfg.art ?? {}).find((s) => s.startsWith("acc_"));
+    // v5.1: the batch-S accessories were drawn for the OLD hero's proportions —
+    // over the HD hero they rendered as a green blob across his face (Koki's
+    // zoom). Hidden until Batch X redraws them on the hero3 rig.
+    const accStem = this.textures.exists("img-hero2_stand") ? undefined : Object.keys(this.cfg.art ?? {}).find((s) => s.startsWith("acc_"));
     if (accStem !== undefined && this.textures.exists(`img-${accStem}`)) {
       this.accessory = this.add.image(startPx.x, startPx.y, `img-${accStem}`).setDepth(5).setDisplaySize(TILE, TILE);
     }
@@ -678,7 +712,11 @@ export class ArcadeScene extends Phaser.Scene {
       const key = this.textures.exists(`img-cr_${o.stem}_grey`) ? `img-cr_${o.stem}_grey` : tex("gluehwort");
       const img = this.add.image(x, y, key).setDepth(2);
       img.setDisplaySize(TILE * 0.95, TILE * 0.95);
-      this.roomObjects.push({ img, stem: o.stem, restored: false, c: o.c, r: o.r });
+      // v5.1: every unrestored object carries its own ↑ cue (the pill alone
+      // didn't say WHERE to stand — Koki couldn't trigger the room)
+      const cue = this.add.text(x, y - TILE * 0.75, "↑", { fontFamily: "system-ui, sans-serif", fontSize: "16px", fontStyle: "bold", color: "#cfc7ff" }).setOrigin(0.5).setDepth(7).setAlpha(0.9);
+      if (motion) this.tweens.add({ targets: cue, y: cue.y - 5, duration: 900, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
+      this.roomObjects.push({ img, stem: o.stem, restored: false, c: o.c, r: o.r, cue });
     }
     // v5 W2 signposting (Koki: "nicht ersichtlich, wie das passiert"): the two
     // set-pieces announce themselves in-level with a soft label pill + the ↑
@@ -698,7 +736,11 @@ export class ArcadeScene extends Phaser.Scene {
       this.duelGhost.setDisplaySize(TILE * 1.1, TILE * 1.1);
       if (motion) this.tweens.add({ targets: this.duelGhost, y: this.duelGhost.y - 5, duration: 1200, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
       // v5 W2 signpost — dismissed in winDuel()
-      this.duelLabel = this.makeSignpost(this.duelGhost.x, this.duelGhost.y - TILE * 1.5, "👻 Der verzauberte Schüler — ↑ helfen");
+      this.duelLabel = this.makeSignpost(this.duelGhost.x, this.duelGhost.y - TILE * 1.9, "👻 Der verzauberte Schüler — ↑ helfen");
+      // v5.1: the ↑ cue sits ON the ghost (the pill floats too far up to
+      // read as "stand HERE") — destroyed with the label in winDuel()
+      this.duelCue = this.add.text(this.duelGhost.x, this.duelGhost.y - TILE * 0.95, "↑", { fontFamily: "system-ui, sans-serif", fontSize: "18px", fontStyle: "bold", color: "#cfc7ff" }).setOrigin(0.5).setDepth(7);
+      if (motion) this.tweens.add({ targets: this.duelCue, y: this.duelCue.y - 5, duration: 900, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
     }
 
     this.oneWayCollider = this.physics.add.collider(this.player, oneWays, undefined, () => {
@@ -1038,8 +1080,10 @@ export class ArcadeScene extends Phaser.Scene {
   }
 
   /** v4: one room object restored — grey→color art, glow; all done → the seal. */
-  private restoreObject(obj: { img: Phaser.GameObjects.Image; stem: string; restored: boolean }): void {
+  private restoreObject(obj: { img: Phaser.GameObjects.Image; stem: string; restored: boolean; cue?: Phaser.GameObjects.Text }): void {
     obj.restored = true;
+    obj.cue?.destroy();
+    obj.cue = undefined;
     if (this.textures.exists(`img-cr_${obj.stem}_color`)) {
       obj.img.setTexture(`img-cr_${obj.stem}_color`);
       obj.img.setDisplaySize(TILE * 0.95, TILE * 0.95);
@@ -1060,6 +1104,8 @@ export class ArcadeScene extends Phaser.Scene {
     this.duelWonFlag = true;
     this.duelLabel?.destroy();
     this.duelLabel = null;
+    this.duelCue?.destroy();
+    this.duelCue = null;
     if (this.duelGhost) {
       if (this.textures.exists("img-gs_friendly")) {
         this.duelGhost.setTexture("img-gs_friendly");
@@ -1492,7 +1538,8 @@ export class ArcadeScene extends Phaser.Scene {
     if (grounded && upDown && !this.jumpHeld && now >= this.doorCooldownUntil && this.cfg.onRestoreObject) {
       for (const obj of this.roomObjects) {
         if (obj.restored) continue;
-        if (Math.abs(obj.img.x - this.player.x) < 34 && Math.abs(obj.img.y - this.player.y) < TILE * 1.4) {
+        // v5.1: reach widened 34→42 (Koki stood beside objects and got nothing)
+        if (Math.abs(obj.img.x - this.player.x) < 42 && Math.abs(obj.img.y - this.player.y) < TILE * 1.5) {
           this.doorCooldownUntil = now + 400;
           const idx = this.roomObjects.indexOf(obj);
           this.frozen = true;
@@ -1508,7 +1555,9 @@ export class ArcadeScene extends Phaser.Scene {
 
     // ── v4: ↑ at the ghost-student → the command duel ──
     if (grounded && upDown && !this.jumpHeld && now >= this.doorCooldownUntil && this.duelGhost && !this.duelWonFlag && this.cfg.onDuel) {
-      if (Math.abs(this.duelGhost.x - this.player.x) < 44 && Math.abs(this.duelGhost.y - this.player.y) < TILE * 1.5) {
+      // v5.1: reach widened 44→60 / 1.5→1.8 tiles (the ghost bobs — a real
+      // player standing "next to him" was often just outside the old box)
+      if (Math.abs(this.duelGhost.x - this.player.x) < 60 && Math.abs(this.duelGhost.y - this.player.y) < TILE * 1.8) {
         this.doorCooldownUntil = now + 400;
         this.frozen = true;
         this.physics.world.pause();

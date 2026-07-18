@@ -232,6 +232,12 @@ export class MapScene extends Phaser.Scene {
   }
 
   create(): void {
+    // v5.1 filter law: every batch image on the map (painting, buildings,
+    // NPCs, hero) minifies LINEAR — pixelArt-NEAREST decimated them (Koki:
+    // "way too small, way too pixelated")
+    for (const key of Object.keys(this.textures.list)) {
+      if (key.startsWith("img-")) this.textures.get(key).setFilter(Phaser.Textures.FilterMode.LINEAR);
+    }
     const { rows, legend, buildings } = this.cfg;
     const motion = this.cfg.reducedMotion !== true;
     const cleared = new Set(this.cfg.chaptersDone);

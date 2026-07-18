@@ -101,6 +101,63 @@ function despill(png) {
   return png;
 }
 
+/** v5.1 RING DESPILL (Koki's zoom screenshot): the HD art's anti-aliased
+ *  edges blended with the magenta sheet — after keying, a ring of purple
+ *  crumbs survives (tinted, not near-magenta, so defringe spared them).
+ *  Treat ONLY pixels touching transparency: suppress the magenta cast
+ *  (pull r and b toward g). Interior pixels (the eraser's real pink) are
+ *  untouched. */
+function ringDespill(png, passes = 2) {
+  const { width: W, height: H, data } = png;
+  for (let p = 0; p < passes; p++) {
+    for (let y = 0; y < H; y++) {
+      for (let x = 0; x < W; x++) {
+        const i = (y * W + x) * 4;
+        if (data[i + 3] === 0) continue;
+        let edge = false;
+        for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]]) {
+          const nx = x + dx, ny = y + dy;
+          if (nx < 0 || ny < 0 || nx >= W || ny >= H || data[(ny * W + nx) * 4 + 3] === 0) { edge = true; break; }
+        }
+        if (!edge) continue;
+        const r = data[i], g = data[i + 1], b = data[i + 2];
+        if (r > g + 24 && b > g + 24) {
+          // strong magenta cast on an edge pixel = spill crumb — kill it
+          data[i + 3] = 0;
+        } else if (r > g + 8 && b > g + 8) {
+          data[i] = g + Math.round((r - g) * 0.35);
+          data[i + 2] = g + Math.round((b - g) * 0.35);
+        }
+      }
+    }
+  }
+  return png;
+}
+
+/** v5.1 TILE DE-BORDER (Koki: the ground reads as stacked "boulders"): the
+ *  terrain fills came back with a dark contour frame baked into every cell,
+ *  so tiled earth shows a grid. Strip an N-px band on the tile's INTERIOR
+ *  faces and clamp-extend the adjacent interior rows/cols into it — organic
+ *  strata survive, the grid dies. `faces` names which sides are interior. */
+function deborder(png, faces, band = 3) {
+  const { width: W, height: H, data } = png;
+  const copyPx = (sx, sy, dx, dy) => {
+    const si = (sy * W + sx) * 4, di = (dy * W + dx) * 4;
+    data[di] = data[si]; data[di + 1] = data[si + 1]; data[di + 2] = data[si + 2]; data[di + 3] = data[si + 3];
+  };
+  if (faces.includes("l")) for (let y = 0; y < H; y++) for (let x = 0; x < band; x++) copyPx(band, y, x, y);
+  if (faces.includes("r")) for (let y = 0; y < H; y++) for (let x = W - band; x < W; x++) copyPx(W - band - 1, y, x, y);
+  if (faces.includes("t")) for (let x = 0; x < W; x++) for (let y = 0; y < band; y++) copyPx(x, band, x, y);
+  if (faces.includes("b")) for (let x = 0; x < W; x++) for (let y = H - band; y < H; y++) copyPx(x, H - band - 1, x, y);
+  return png;
+}
+
+// interior faces per terrain stem (exposed/art faces keep their contour)
+const DEBORDER_FACES = {
+  earth3_a: "lrtb", earth3_b: "lrtb", earth3_c: "lrtb", earth3_inner: "lrtb",
+  grass3_top: "lrb", grass3_tl: "rb", grass3_tr: "lb", edge3_l: "trb", edge3_r: "tlb",
+};
+
 /** Content-trim to the opaque bbox + pad (props only — sprites keep full cells). */
 function trim(png, pad = 2) {
   const { width: W, height: H, data } = png;
@@ -161,6 +218,7 @@ for (const sheet of SHEETS) {
     let cell = crop(src, col * cw, row * ch, cw, ch);
     chromaKey(cell);
     defringe(cell);
+    ringDespill(cell); // v5.1: kill the purple edge crumbs on every sprite
     if (DESPILL_STEMS.has(stem)) despill(cell);
     if (sheet.kind === "prop") cell = trim(cell);
     write(path.join(OUT, sheet.dest, `${stem}.png`), cell);
@@ -174,6 +232,7 @@ for (const sheet of SHEETS) {
     const col = i % 4, row = Math.floor(i / 4);
     const cell = chromaKey(crop(src, TERRAIN.x0 + col * TERRAIN.pitch, TERRAIN.y0 + row * TERRAIN.pitch, TERRAIN.size, TERRAIN.size));
     defringe(cell);
+    if (DEBORDER_FACES[stem]) deborder(cell, DEBORDER_FACES[stem]); // v5.1: no boulder grid
     write(path.join(OUT, TERRAIN.dest, `${stem}.png`), cell);
     produced.push(`${TERRAIN.dest}/${stem}`);
   });
