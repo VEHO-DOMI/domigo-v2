@@ -369,7 +369,11 @@ export function ArcadeGame(props: ArcadeGameProps) {
         winBoss: () => bossRef.current?.debugWin(), // dev-only: proves the win→finale transition
         phasePeek: () => phaseRef.current?.kind, // dev-only
         state: () => (bossActiveRef.current && bossRef.current ? bossRef.current.debugState() : scene.debugState()),
-        press: (p: Partial<ArcadePad>) => Object.assign(padRef.current, p),
+        // v5 W3: REPLACE semantics — press({}) releases everything. The old
+        // Object.assign(current, p) merge never released keys, which latched
+        // jumpHeld and silently blocked every ↑-interaction in harness runs
+        // (the whole P-46 pitfall class was this one line).
+        press: (p: Partial<ArcadePad>) => Object.assign(padRef.current, { left: false, right: false, up: false, down: false, jump: false, pogo: false, swing: false }, p),
         // playtest-only: open the seal gate so the boss handoff is drivable
         unseal: () => scene.debugUnseal(),
         warp: (c: number, r: number) => scene.debugWarp(c, r),
