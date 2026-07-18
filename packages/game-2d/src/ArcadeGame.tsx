@@ -312,17 +312,32 @@ export function ArcadeGame(props: ArcadeGameProps) {
       },
     });
     bossRef.current = boss;
-    // v5.2 THE BLACK-SCREEN ROOT (Koki's report): the boss lays out at its own
-    // 720×528 view, but since the v4 zoom shrank the shared canvas to 480×312
-    // the floor, the player and lane 3 rendered OFF-CANVAS — an empty dark
-    // frame. The canvas must match the boss's stage for the duel.
-    {
+    // v5.2.2 THE REAL BLACK-SCREEN ROOT (P-49): the door overlap fires
+    // MID-FRAME. While the SceneManager is processing a frame, add() parks the
+    // new scene in its _pending "holding pattern" and returns null — start()
+    // then warns "Scene key not found" and does NOTHING. The arcade had
+    // already faded to black and been stopped: a silent, eternal black
+    // screen on every real-RAF browser. (The step-harness drives
+    // scene.sys.step() directly, so isProcessing was never set — dev runs
+    // never showed it.) The whole switch must happen OUTSIDE the frame.
+    window.setTimeout(() => {
+      if (gameRef.current !== game) return; // page unmounted meanwhile
+      // v5.2: the boss lays out at its own 720×528 stage; the shared canvas
+      // must match it or floor/player/lane 3 render off-canvas (the crop).
       const bd = BossScene.dimensions();
       game.scale.resize(bd.width, bd.height);
-    }
-    game.scene.add("boss", boss, false);
-    game.scene.stop("arcade");
-    game.scene.start("boss");
+      game.scene.add("boss", boss, false);
+      game.scene.stop("arcade");
+      game.scene.start("boss");
+      // the watchdog: a failed handoff must never be silent again — surface
+      // it in the fatal banner instead of a black screen
+      window.setTimeout(() => {
+        if (gameRef.current !== game) return;
+        const sys = bossRef.current?.sys;
+        const alive = sys !== undefined && sys.settings.status >= Phaser.Scenes.START && sys.settings.status <= Phaser.Scenes.RUNNING;
+        if (!alive) setFatal("Boss-Übergang fehlgeschlagen (Szene nicht gestartet) — bitte neu laden und Koki den Screenshot schicken");
+      }, 2500);
+    }, 0);
     setPhase({ kind: "bossIntro" });
     window.setTimeout(() => setPhase((p) => (p.kind === "bossIntro" ? { kind: "run" } : p)), reducedMotion ? 900 : 2400);
   };
