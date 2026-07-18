@@ -16,7 +16,8 @@ import Phaser from "phaser";
 import { paintHero } from "@domigo/art-gen";
 import { rasterize } from "./rasterize.ts";
 import { playSfx } from "@domigo/game-feel";
-import { TILE_PX, type Tier } from "./arcade.ts";
+import { RENDER_SCALE, TILE_PX, type Tier } from "./arcade.ts";
+import { sharpenTextFactory } from "./sharpText.ts";
 import { BOSS_TIMING, LANES, stepBoss, windowResolved, type BossPhase, type BossScript } from "./boss.ts";
 import type { ArcadePad } from "./ArcadeScene.ts";
 
@@ -72,7 +73,8 @@ export class BossScene extends Phaser.Scene {
   }
 
   static dimensions(): { width: number; height: number } {
-    return { width: VIEW_W, height: VIEW_H };
+    // v5.2 sharpness: canvas at ×RENDER_SCALE, camera zoomed to match
+    return { width: VIEW_W * RENDER_SCALE, height: VIEW_H * RENDER_SCALE };
   }
 
   preload(): void {
@@ -83,20 +85,33 @@ export class BossScene extends Phaser.Scene {
   }
 
   create(): void {
-    // v5.1 filter law: HD boss/backdrop art minifies LINEAR (see ArcadeScene)
-    for (const key of Object.keys(this.textures.list)) {
-      if (key.startsWith("img-")) this.textures.get(key).setFilter(Phaser.Textures.FilterMode.LINEAR);
-    }
-    // batch V: the painted attic arena behind the duel (procedural veil stays on top)
-    if (this.textures.exists("img-bgp_schoolhouse_arena")) {
-      const bg = this.add.image(0, 0, "img-bgp_schoolhouse_arena").setOrigin(0).setDepth(0);
-      bg.setDisplaySize(Math.max(bg.width, VIEW_W), Math.max((bg.height * VIEW_W) / bg.width, VIEW_H));
-      bg.setDisplaySize(VIEW_W, VIEW_H * 1.05);
-      bg.setAlpha(0.92);
-    }
+    // v5.2: the knots HUD flips FIRST — if anything below ever dies, the HUD
+    // still shows "Knoten n/n" instead of a stale level chip (Koki's black-
+    // screen session gave us zero signal; never again).
+    this.cfg.onKnots(this.knotsLeft, this.cfg.script.knots);
+    // v5.2 sharpness: static stage — zoom ×2 and center the 720×528 world
+    this.cameras.main.setZoom(RENDER_SCALE).centerOn(VIEW_W / 2, VIEW_H / 2);
+    sharpenTextFactory(this);
+    // v5.1 filter law: HD boss/backdrop art minifies LINEAR (see ArcadeScene).
+    // v5.2: belt-and-braces try/catch — cosmetic passes must never kill create.
+    try {
+      for (const key of Object.keys(this.textures.list)) {
+        if (key.startsWith("img-")) this.textures.get(key).setFilter(Phaser.Textures.FilterMode.LINEAR);
+      }
+    } catch (e) { console.error("boss filter pass failed", e); }
+    // batch V: the painted attic arena behind the duel
+    let hasArena = false;
+    try {
+      if (this.textures.exists("img-bgp_schoolhouse_arena")) {
+        const bg = this.add.image(0, 0, "img-bgp_schoolhouse_arena").setOrigin(0).setDepth(0);
+        bg.setDisplaySize(VIEW_W, VIEW_H * 1.05);
+        hasArena = true;
+      }
+    } catch (e) { console.error("boss arena backdrop failed", e); }
     const motion = this.cfg.reducedMotion !== true;
-    // backdrop: the level's ink dark, floor strip
-    this.add.rectangle(0, 0, VIEW_W, VIEW_H, 0x141221).setOrigin(0);
+    // the ink veil — v5.2: TRANSLUCENT over the painted arena (the old opaque
+    // rect was added after the backdrop and simply buried it)
+    this.add.rectangle(0, 0, VIEW_W, VIEW_H, 0x141221, hasArena ? 0.42 : 1).setOrigin(0);
     for (let i = 0; i < 7; i += 1) {
       const x = (this.cfg.seed * 37 + i * 149) % VIEW_W;
       const y = 40 + ((this.cfg.seed * 91 + i * 211) % (FLOOR_R * TILE_PX - 120));

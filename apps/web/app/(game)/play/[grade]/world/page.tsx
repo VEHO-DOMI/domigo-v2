@@ -107,7 +107,7 @@ export default async function WorldMapPage({ params, searchParams }: { params: P
     Object.entries(world.buildings).map(([key, b]) => {
       const cell = cellByChapter.get(b.chapter);
       if (!cell) throw new Error(`world.json: no layout entrance glyph for ${b.chapter}`);
-      return [key, { chapter: b.chapter, cell, label: b.label, ground: b.ground }];
+      return [key, { chapter: b.chapter, cell, label: b.label, ground: b.ground, ...(b.plotW !== undefined ? { plotW: b.plotW } : {}) }];
     }),
   );
   // Normalize the legend union to the map contract's optional-field shape

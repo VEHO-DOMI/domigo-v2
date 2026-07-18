@@ -13,7 +13,8 @@ import Phaser from "phaser";
 import { paintPlayerSprite, paintTileset, resolveZoneTheme, DOMIGO_GREEN, TILE_KINDS } from "@domigo/art-gen";
 import { playSfx } from "@domigo/game-feel";
 import type { ArcadePad } from "./ArcadeScene.ts";
-import { TILE_PX as TILE } from "./arcade.ts";
+import { RENDER_SCALE, TILE_PX as TILE } from "./arcade.ts";
+import { sharpenTextFactory } from "./sharpText.ts";
 import { rasterize } from "./rasterize.ts";
 
 const VIEW_TILES_W = 15;
@@ -29,7 +30,7 @@ export interface MapConfig {
   /** world.json layout.rows */
   rows: string[];
   legend: Record<string, { enter?: string; label?: string; prop?: string; solid?: boolean; clearedBy?: string }>;
-  buildings: Record<string, { chapter: string; cell: { c: number; r: number }; label: string; ground: { c: number; r: number; w: number; h: number } }>;
+  buildings: Record<string, { chapter: string; cell: { c: number; r: number }; label: string; ground: { c: number; r: number; w: number; h: number }; plotW?: number }>;
   notes: Array<{ c: number; r: number; text: string }>;
   /** e.g. ["ch01"] — cleared brambles, warm buildings, flags */
   chaptersDone: string[];
@@ -221,7 +222,8 @@ export class MapScene extends Phaser.Scene {
    *  canvas aspect from this, the ArcadeScene.dimensions() pattern. */
   static dimensions(rows: string[]): { width: number; height: number } {
     const cols = rows[0]?.length ?? VIEW_TILES_W;
-    return { width: Math.min(cols, VIEW_TILES_W) * TILE, height: Math.min(rows.length, VIEW_TILES_H) * TILE };
+    // v5.2 sharpness: canvas at ×RENDER_SCALE, camera zoomed to match
+    return { width: Math.min(cols, VIEW_TILES_W) * TILE * RENDER_SCALE, height: Math.min(rows.length, VIEW_TILES_H) * TILE * RENDER_SCALE };
   }
 
   preload(): void {
@@ -232,6 +234,7 @@ export class MapScene extends Phaser.Scene {
   }
 
   create(): void {
+    sharpenTextFactory(this); // v5.2: labels rasterize at the ×2 camera density
     // v5.1 filter law: every batch image on the map (painting, buildings,
     // NPCs, hero) minifies LINEAR — pixelArt-NEAREST decimated them (Koki:
     // "way too small, way too pixelated")
@@ -423,7 +426,9 @@ export class MapScene extends Phaser.Scene {
         // fit the plot, honoring the art's own aspect (batch W cells are square
         // 256×256; batch V sheets were 512×256 — never squash either)
         const srcImg = this.textures.get(`img-${bStem}`).getSourceImage() as { width: number; height: number };
-        const w = TILE * 2.2;
+        // v5.2 (Koki, with the Prolog reveal as reference): the building FILLS
+        // its painted clearing — per-building footprint from world.json
+        const w = TILE * (b.plotW ?? 3.2);
         img.setDisplaySize(w, w * (srcImg.height / srcImg.width));
       }
       // the drained state: with two-state art the SAD painting carries it —
@@ -505,6 +510,7 @@ export class MapScene extends Phaser.Scene {
       ];
     }
     this.cameras.main.setBounds(0, 0, worldW, worldH);
+    this.cameras.main.setZoom(RENDER_SCALE); // v5.2: ×2 texel density, same view
     this.cameras.main.startFollow(this.player, false, 0.12, 0.12);
     if (motion) this.cameras.main.fadeIn(240, 20, 18, 33);
   }

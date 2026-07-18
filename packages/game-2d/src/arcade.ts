@@ -230,6 +230,13 @@ export function cameraTargetY(playerY: number, viewH: number, lookDir: -1 | 0 | 
 // ---------------------------------------------------------------------------
 export const TILE_PX = 48;
 
+// v5.2 sharpness law: the canvas renders at ×2 while the WORLD keeps its
+// coordinates — camera zoom bridges the two. A 480px-wide view painted into a
+// 480px canvas then CSS-stretched to ~900px decimated the HD art (Koki: "still
+// super pixelated"); at ×2 the art rasterizes at ~2× the texels before CSS
+// touches it. Physics, level data and every world coordinate stay untouched.
+export const RENDER_SCALE = 2;
+
 export type CreatureKind = "walker" | "hopper" | "flyer" | "thief" | "cushion" | "cloud";
 
 /** Which creatures can trigger a quickfire on contact (the rest are hazards,

@@ -40,6 +40,7 @@ import {
   slopeSurfaceY,
   thiefTarget,
   TASKABLE,
+  RENDER_SCALE,
   TILE_PX as TILE,
   walkerShouldTurn,
   type ArcadeLevel,
@@ -50,11 +51,18 @@ import {
   type Tier,
 } from "./arcade.ts";
 import { rasterize } from "./rasterize.ts";
+import { sharpenTextFactory } from "./sharpText.ts";
 
 // v4 W0: 10×6.5 tiles — the KEEN bar (Koki's own Keen captures: hero ≈16% of
 // screen height; 12×9 left him at 11%). FIT upscales to the container.
 const VIEW_W = 10 * TILE;
 const VIEW_H = 6.5 * TILE;
+// v5.2 sharpness: the canvas is VIEW×RENDER_SCALE and the camera zooms by the
+// same factor. Phaser zooms around the canvas MIDPOINT, so raw scrollX/scrollY
+// are shifted by these constants versus the view's left/top edge — every
+// camera read/write below goes through viewLeft()/viewTop()/setViewScroll().
+const CAM_OX = (VIEW_W * (RENDER_SCALE - 1)) / 2;
+const CAM_OY = (VIEW_H * (RENDER_SCALE - 1)) / 2;
 
 export interface ArcadePad {
   left: boolean;
@@ -279,7 +287,21 @@ export class ArcadeScene extends Phaser.Scene {
   }
 
   static dimensions(): { width: number; height: number } {
-    return { width: VIEW_W, height: VIEW_H };
+    return { width: VIEW_W * RENDER_SCALE, height: VIEW_H * RENDER_SCALE };
+  }
+
+  /** The view's left/top edge in world coords (zoom shifts raw scroll). */
+  private viewLeft(): number {
+    return this.cameras.main.scrollX + CAM_OX;
+  }
+
+  private viewTop(): number {
+    return this.cameras.main.scrollY + CAM_OY;
+  }
+
+  /** Scroll so the view's left/top edge lands at (x, y) — the pre-×2 semantics. */
+  private setViewScroll(x: number, y: number): void {
+    this.cameras.main.setScroll(x - CAM_OX, y - CAM_OY);
   }
 
   /** Image-first (doc 28 §5): load every provided stem; a failed load simply
@@ -322,6 +344,7 @@ export class ArcadeScene extends Phaser.Scene {
 
   create(): void {
     this.applyHdFilters(); // v5.1: HD sprites minify LINEAR, native tiles stay NEAREST
+    sharpenTextFactory(this); // v5.2: labels rasterize at the ×2 camera density
     const { level, tier } = this.cfg;
     const motion = this.cfg.reducedMotion !== true;
     // v3 look: the platformer's OWN side-view art (auto-tiled terrain, posed
@@ -358,20 +381,26 @@ export class ArcadeScene extends Phaser.Scene {
     addCanvas("ka-bg", bg);
     // the ink gradient ALWAYS paints the sky; generated layers sit on the
     // horizon as BANDS (the art is horizon-strip art, never full-bleed)
-    this.add.tileSprite(0, 0, level.w * TILE, level.h * TILE, "ka-bg").setOrigin(0).setScrollFactor(0.35, 0.7);
+    // parallax under zoom: a layer with scroll factor f picks up a constant
+    // screen shift of CAM_O*(f−1)·zoom — the position offset below cancels it
+    // exactly, so every band sits where it did at ×1
+    const par = (fx: number, fy: number): { dx: number; dy: number } => ({ dx: CAM_OX * (1 - fx), dy: CAM_OY * (1 - fy) });
+    const pFar = par(0.35, 0.7);
+    const pMid = par(0.5, 0.85);
+    this.add.tileSprite(pFar.dx, pFar.dy, level.w * TILE, level.h * TILE, "ka-bg").setOrigin(0).setScrollFactor(0.35, 0.7);
     const horizonY = level.h * TILE - TILE * 5 - 120;
     const groundY = level.h * TILE - TILE * 5;
     if (this.textures.exists("img-bg_far")) {
       const src = this.textures.get("img-bg_far").getSourceImage() as HTMLImageElement;
-      this.add.tileSprite(0, groundY - src.height, level.w * TILE * 2, src.height, "img-bg_far").setOrigin(0).setScrollFactor(0.35, 0.7).setAlpha(0.95);
+      this.add.tileSprite(pFar.dx, groundY - src.height + pFar.dy, level.w * TILE * 2, src.height, "img-bg_far").setOrigin(0).setScrollFactor(0.35, 0.7).setAlpha(0.95);
     }
     if (this.textures.exists("img-bg_mid")) {
       const src = this.textures.get("img-bg_mid").getSourceImage() as HTMLImageElement;
-      this.add.tileSprite(0, groundY - src.height, level.w * TILE * 2, src.height, "img-bg_mid").setOrigin(0).setScrollFactor(0.5, 0.85);
+      this.add.tileSprite(pMid.dx, groundY - src.height + pMid.dy, level.w * TILE * 2, src.height, "img-bg_mid").setOrigin(0).setScrollFactor(0.5, 0.85);
     } else if (!this.textures.exists("img-bg_far")) {
       addCanvas("ka-skyline", rasterize(paintSkyline(this.cfg.seed, ptheme), 1));
       // the silhouette band ends where the level's base ground begins
-      this.add.tileSprite(0, horizonY, level.w * TILE * 2, 120, "ka-skyline").setOrigin(0).setScrollFactor(0.5, 0.85).setAlpha(0.9);
+      this.add.tileSprite(pMid.dx, horizonY + pMid.dy, level.w * TILE * 2, 120, "ka-skyline").setOrigin(0).setScrollFactor(0.5, 0.85).setAlpha(0.9);
     }
 
     // ── the world (auto-tiled terrain: variants by edge exposure) ──
@@ -610,10 +639,11 @@ export class ArcadeScene extends Phaser.Scene {
     this.player.setDisplaySize(TILE, TILE);
     this.player.setDepth(4); // Keen's z-ladder: terrain 0 · props 1-2 · items 3 · player 4 · fore-foreground 6
     // doc 28 §4: the first provided accessory overlay (unlockables wave adds selection)
-    // v5.1: the batch-S accessories were drawn for the OLD hero's proportions —
-    // over the HD hero they rendered as a green blob across his face (Koki's
-    // zoom). Hidden until Batch X redraws them on the hero3 rig.
-    const accStem = this.textures.exists("img-hero2_stand") ? undefined : Object.keys(this.cfg.art ?? {}).find((s) => s.startsWith("acc_"));
+    // v5.2: Batch X redrew the accessories ON the hero3 rig (same 256px cell,
+    // head/neck positions matched to hero3_stand) — the overlay composites 1:1
+    // with the player's cell scaling again. (v5.1 had hidden the batch-S ones:
+    // old-rig art rendered as a blob across the HD hero's face.)
+    const accStem = Object.keys(this.cfg.art ?? {}).find((s) => s.startsWith("acc_"));
     if (accStem !== undefined && this.textures.exists(`img-${accStem}`)) {
       this.accessory = this.add.image(startPx.x, startPx.y, `img-${accStem}`).setDepth(5).setDisplaySize(TILE, TILE);
     }
@@ -824,8 +854,9 @@ export class ArcadeScene extends Phaser.Scene {
 
     // Keen camera: MANUAL — dead-band horizontal, grounded-gated vertical
     this.cameras.main.setBounds(0, 0, level.w * TILE, level.h * TILE);
+    this.cameras.main.setZoom(RENDER_SCALE); // v5.2: same view, ×2 texel density
     this.camY = Phaser.Math.Clamp(cameraTargetY(this.player.y, VIEW_H, 0), 0, level.h * TILE - VIEW_H);
-    this.cameras.main.setScroll(Phaser.Math.Clamp(this.player.x - VIEW_W / 2, 0, level.w * TILE - VIEW_W), this.camY);
+    this.setViewScroll(Phaser.Math.Clamp(this.player.x - VIEW_W / 2, 0, level.w * TILE - VIEW_W), this.camY);
     if (motion) this.cameras.main.fadeIn(240, 20, 18, 33);
     this.startedAt = this.time.now;
     this.frozen = this.cfg.startFrozen === true; // the goal card releases it
@@ -980,7 +1011,7 @@ export class ArcadeScene extends Phaser.Scene {
       bodyFeetY: Math.round(this.player?.body ? this.player.body.y + this.player.body.height : 0),
       tier: this.cfg.tier,
       fps: Math.round(this.game.loop.actualFps),
-      camY: Math.round(this.cameras.main.scrollY),
+      camY: Math.round(this.viewTop()),
       lookDir: this.lookDir,
       // v2.2: mover positions ("x,y|x,y") — playtest harnesses assert patrol
       movers: this.moverPlatforms.map((m) => `${Math.round(m.s.x)},${Math.round(m.s.y)}`).join("|"),
@@ -1045,7 +1076,7 @@ export class ArcadeScene extends Phaser.Scene {
     this.physics.world.pause();
     this.tweens.timeScale = 0.0001;
     creature.sprite.setData("engaged", true);
-    if (this.cfg.reducedMotion !== true) this.cameras.main.zoomTo(1.18, 160, "Sine.easeOut");
+    if (this.cfg.reducedMotion !== true) this.cameras.main.zoomTo(RENDER_SCALE * 1.18, 160, "Sine.easeOut");
     playSfx("pop");
     const skin = creature.sprite.getData("battleSkin") as string | undefined;
     if (skin !== undefined && this.cfg.onBattle) {
@@ -1127,7 +1158,7 @@ export class ArcadeScene extends Phaser.Scene {
     this.frozen = false;
     this.physics.world.resume();
     this.tweens.timeScale = 1;
-    if (this.cfg.reducedMotion !== true) this.cameras.main.zoomTo(1, 180, "Sine.easeOut");
+    if (this.cfg.reducedMotion !== true) this.cameras.main.zoomTo(RENDER_SCALE, 180, "Sine.easeOut");
     this.words += 1;
     if (!creature) return;
     creature.sprite.setData("engaged", false);
@@ -1169,7 +1200,7 @@ export class ArcadeScene extends Phaser.Scene {
     this.frozen = false;
     this.physics.world.resume();
     this.tweens.timeScale = 1;
-    if (this.cfg.reducedMotion !== true) this.cameras.main.zoomTo(1, 180, "Sine.easeOut");
+    if (this.cfg.reducedMotion !== true) this.cameras.main.zoomTo(RENDER_SCALE, 180, "Sine.easeOut");
     this.words += 1;
     if (creature) {
       creature.sprite.setData("engaged", false);
@@ -1924,7 +1955,7 @@ export class ArcadeScene extends Phaser.Scene {
     this.safePos = { x: to.x, y: to.y - 4 };
     const level = this.cfg.level;
     this.camY = Phaser.Math.Clamp(cameraTargetY(this.player.y, VIEW_H, 0), 0, Math.max(level.h * TILE - VIEW_H, 0));
-    this.cameras.main.setScroll(
+    this.setViewScroll(
       Phaser.Math.Clamp(this.player.x - VIEW_W / 2, 0, Math.max(level.w * TILE - VIEW_W, 0)),
       this.camY,
     );
@@ -1964,16 +1995,16 @@ export class ArcadeScene extends Phaser.Scene {
     const cam = this.cameras.main;
     const maxX = level.w * TILE - VIEW_W;
     const maxY = level.h * TILE - VIEW_H;
-    const targetX = Phaser.Math.Clamp(cameraTargetX(cam.scrollX, this.player.x, VIEW_W), 0, Math.max(maxX, 0));
+    const targetX = Phaser.Math.Clamp(cameraTargetX(this.viewLeft(), this.player.x, VIEW_W), 0, Math.max(maxX, 0));
     if (anchored) {
       this.camY = Phaser.Math.Clamp(cameraTargetY(this.player.y, VIEW_H, this.lookDir), 0, Math.max(maxY, 0));
     }
     if (this.cfg.reducedMotion === true) {
-      cam.setScroll(targetX, this.camY);
+      this.setViewScroll(targetX, this.camY);
     } else {
-      cam.setScroll(
-        Phaser.Math.Linear(cam.scrollX, targetX, ARCADE.camLerp),
-        Phaser.Math.Linear(cam.scrollY, this.camY, ARCADE.camLerp),
+      this.setViewScroll(
+        Phaser.Math.Linear(this.viewLeft(), targetX, ARCADE.camLerp),
+        Phaser.Math.Linear(this.viewTop(), this.camY, ARCADE.camLerp),
       );
     }
     // Keen's MID-AIR safety clamp (ck_play.c:2176): even airborne, the feet
@@ -1982,10 +2013,10 @@ export class ArcadeScene extends Phaser.Scene {
       const feetY = this.player.y + 20;
       const lo = feetY - VIEW_H * ARCADE.camAirClampLo;
       const hi = feetY - VIEW_H * ARCADE.camAirClampHi;
-      const clamped = Phaser.Math.Clamp(cam.scrollY, lo, hi);
-      if (clamped !== cam.scrollY) {
-        cam.setScroll(cam.scrollX, Phaser.Math.Clamp(clamped, 0, Math.max(maxY, 0)));
-        this.camY = cam.scrollY; // keep the grounded target in sync — no snap on landing
+      const clamped = Phaser.Math.Clamp(this.viewTop(), lo, hi);
+      if (clamped !== this.viewTop()) {
+        this.setViewScroll(this.viewLeft(), Phaser.Math.Clamp(clamped, 0, Math.max(maxY, 0)));
+        this.camY = this.viewTop(); // keep the grounded target in sync — no snap on landing
       }
     }
   }
@@ -1997,10 +2028,11 @@ export class ArcadeScene extends Phaser.Scene {
       this.goalArrow?.setVisible(false);
       return;
     }
-    const cam = this.cameras.main;
+    const vl = this.viewLeft();
+    const vt = this.viewTop();
     const ex = this.pedestal.x;
     const ey = this.pedestal.y;
-    const onScreen = ex >= cam.scrollX - 20 && ex <= cam.scrollX + VIEW_W + 20 && ey >= cam.scrollY - 20 && ey <= cam.scrollY + VIEW_H + 20;
+    const onScreen = ex >= vl - 20 && ex <= vl + VIEW_W + 20 && ey >= vt - 20 && ey <= vt + VIEW_H + 20;
     if (onScreen) {
       this.goalArrow?.setVisible(false);
       return;
@@ -2011,12 +2043,14 @@ export class ArcadeScene extends Phaser.Scene {
         this.tweens.add({ targets: this.goalArrow, alpha: { from: 0.9, to: 0.5 }, duration: 520, yoyo: true, repeat: -1 });
       }
     }
-    const dx = ex - (cam.scrollX + VIEW_W / 2);
-    const dy = ey - (cam.scrollY + VIEW_H / 2);
+    const dx = ex - (vl + VIEW_W / 2);
+    const dy = ey - (vt + VIEW_H / 2);
     const ang = Math.atan2(dy, dx);
     const margin = 34;
-    const px = Phaser.Math.Clamp(VIEW_W / 2 + Math.cos(ang) * VIEW_W, margin, VIEW_W - margin);
-    const py = Phaser.Math.Clamp(VIEW_H / 2 + Math.sin(ang) * VIEW_H, margin, VIEW_H - margin);
+    // scroll-factor-0 objects also zoom around the midpoint — the CAM_O shift
+    // maps view coords onto that screen space
+    const px = Phaser.Math.Clamp(VIEW_W / 2 + Math.cos(ang) * VIEW_W, margin, VIEW_W - margin) + CAM_OX;
+    const py = Phaser.Math.Clamp(VIEW_H / 2 + Math.sin(ang) * VIEW_H, margin, VIEW_H - margin) + CAM_OY;
     this.goalArrow.setVisible(true).setPosition(px, py).setRotation(ang);
   }
 }

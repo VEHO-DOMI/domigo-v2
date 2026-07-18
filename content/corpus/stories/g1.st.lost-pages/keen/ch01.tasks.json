@@ -775,11 +775,11 @@
       "answer": "desk",
       "colour": {
         "promptEn": "What colour is the desk?",
-        "answer": "green",
+        "answer": "brown",
         "options": [
+          "brown",
           "green",
-          "grey",
-          "red"
+          "grey"
         ]
       },
       "hints": {
@@ -788,7 +788,7 @@
         "deDesc": "Auf Deutsch: der Tisch.",
         "deWord": "der Tisch"
       },
-      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects"
+      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects · INTERIM v5.2: colour keyed to the Batch-W art (Batch Y repaints to the book palette, then this reverts)"
     },
     {
       "id": "g1.game.ch01.cr03",
@@ -805,10 +805,10 @@
       "answer": "board",
       "colour": {
         "promptEn": "What colour is the board?",
-        "answer": "white",
+        "answer": "green",
         "options": [
+          "green",
           "white",
-          "black",
           "yellow"
         ]
       },
@@ -818,7 +818,7 @@
         "deDesc": "Auf Deutsch: die Tafel.",
         "deWord": "die Tafel"
       },
-      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects"
+      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects · INTERIM v5.2: colour keyed to the Batch-W art (Batch Y repaints to the book palette, then this reverts)"
     },
     {
       "id": "g1.game.ch01.cr04",
@@ -835,11 +835,11 @@
       "answer": "door",
       "colour": {
         "promptEn": "What colour is the door?",
-        "answer": "blue",
+        "answer": "brown",
         "options": [
+          "brown",
           "blue",
-          "orange",
-          "brown"
+          "orange"
         ]
       },
       "hints": {
@@ -848,7 +848,7 @@
         "deDesc": "Auf Deutsch: die Tür.",
         "deWord": "die Tür"
       },
-      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects"
+      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects · INTERIM v5.2: colour keyed to the Batch-W art (Batch Y repaints to the book palette, then this reverts)"
     },
     {
       "id": "g1.game.ch01.cr05",
