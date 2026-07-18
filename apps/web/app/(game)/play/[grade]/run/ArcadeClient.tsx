@@ -33,6 +33,8 @@ export default function ArcadeClient(props: {
   /** doc 28 §5: generated-art stem→URL map (chapter + hero). */
   art?: Record<string, string>;
   doneHref?: string;
+  /** v5.3 teacher preview: boot straight into the guardian duel. */
+  bossOnly?: boolean;
 }) {
   useOutboxFlush();
   const onAttempt = (a: GameAttempt) =>
@@ -53,7 +55,7 @@ export default function ArcadeClient(props: {
           <button type="button" onClick={() => toggleGameFullscreen()} title="Vollbild" style={{ fontSize: 15, color: "var(--accent)", background: "none", border: "none", cursor: "pointer", padding: 0 }}>⛶</button>
         </span>
       </div>
-      <ArcadeGame seed={props.seed} playerSeed={props.playerSeed} mode={props.mode} items={props.items} storyTasks={props.storyTasks} onAttempt={onAttempt} hubHref={props.hubHref} levelId={props.levelId} tier={props.tier} level={props.level} boss={props.boss} art={props.art} doneHref={props.doneHref} onDone={onDone} />
+      <ArcadeGame seed={props.seed} playerSeed={props.playerSeed} mode={props.mode} items={props.items} storyTasks={props.storyTasks} onAttempt={onAttempt} hubHref={props.hubHref} levelId={props.levelId} tier={props.tier} level={props.level} boss={props.boss} art={props.art} doneHref={props.doneHref} onDone={onDone} bossOnly={props.bossOnly} />
     </main>
   );
 }

@@ -43,6 +43,9 @@ export interface ArcadeGameProps {
   /** where the done overlay links (defaults to hubHref) — the world map
    *  passes ?done=chNN to trigger the restoration beat. */
   doneHref?: string;
+  /** v5.3 teacher preview: boot straight into the guardian duel — the page
+   *  only sets this for TEACHER sessions (never reachable by students). */
+  bossOnly?: boolean;
   /** doc 28 §5: generated-art stem→URL map (chapter + hero + accessories);
    *  every missing stem keeps its procedural fallback. */
   art?: Record<string, string>;
@@ -479,7 +482,20 @@ export function ArcadeGame(props: ArcadeGameProps) {
         },
       };
     }
+    // v5.3 teacher preview: skip the level entirely and walk straight into
+    // the guardian duel once the arcade scene has finished create() (the
+    // enterBoss handoff stops it a frame later — P-49-safe, outside the step).
+    let bossOnlyIv: number | null = null;
+    if (props.bossOnly === true && props.boss) {
+      bossOnlyIv = window.setInterval(() => {
+        if (gameRef.current !== game) { if (bossOnlyIv !== null) window.clearInterval(bossOnlyIv); return; }
+        if (!game.scene.isActive("arcade")) return;
+        if (bossOnlyIv !== null) window.clearInterval(bossOnlyIv);
+        enterBoss({ hearts: 3, letters: 0, gluehwoerter: 2, words: 0, maxCombo: 0, seals: 0, deaths: 0, ms: 0 });
+      }, 150);
+    }
     return () => {
+      if (bossOnlyIv !== null) window.clearInterval(bossOnlyIv);
       if (process.env.NODE_ENV !== "production") {
         delete (window as unknown as Record<string, unknown>)["__domigoArcade"];
         delete (window as unknown as Record<string, unknown>)["__domigoArcadeQf"];

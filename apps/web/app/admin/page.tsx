@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { listReleasedStories } from "@domigo/content-loader";
+import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
 import { getDb, getUnitMastery } from "@domigo/db";
 import { auth, signOut } from "@/auth";
 
@@ -10,6 +11,20 @@ export default async function AdminPage() {
   const session = await auth();
   if (!session) redirect("/admin/signin");
   if (session.user.role !== "teacher") redirect("/home");
+
+  // v5.3: every chapter that HAS a guardian gets a direct boss door below —
+  // probing the corpus keeps the list in lockstep with authored content
+  const bossChapters: string[] = [];
+  for (let i = 1; i <= 15; i += 1) {
+    const ch = `ch${String(i).padStart(2, "0")}`;
+    try {
+      loadKeenLevel("g1.st.lost-pages", ch);
+      loadKeenBoss("g1.st.lost-pages", ch);
+      bossChapters.push(ch);
+    } catch {
+      // chapter not authored yet — no door
+    }
+  }
 
   async function doSignOut() {
     "use server";
@@ -72,6 +87,18 @@ export default async function AdminPage() {
           redirected until the year-1 launch; only teacher sessions get in.
         </p>
         <Link href="/play/1/world" className="dg-btn" style={{ display: "inline-block" }}>Play the story mode →</Link>
+        {/* v5.3 (Koki): direct boss doors — test a guardian duel without
+            playing its level; the list grows with every authored chapter */}
+        {bossChapters.length > 0 && (
+          <div style={{ marginTop: 12, display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "var(--text-secondary)" }}>⚔ Boss direkt:</span>
+            {bossChapters.map((ch) => (
+              <Link key={ch} href={`/play/1/run?level=g1-${ch}&boss=1`} className="dg-btn" style={{ display: "inline-block", fontSize: 13, padding: "6px 12px" }}>
+                Kap. {Number(ch.slice(2))} →
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="dg-card" style={{ marginTop: 16 }}>
