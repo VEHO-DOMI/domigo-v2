@@ -271,9 +271,19 @@ export class MapScene extends Phaser.Scene {
       for (let c = 0; c < row.length; c += 1) gg.drawImage(row[c] === "#" ? wallCv : floorCv, c * TILE, r * TILE, TILE, TILE);
     });
     addCanvas(tex("ground"), ground);
+    // one-artwork base? (painted v5 wins over the pixel worldmap) — several
+    // layers below key off this: prop trees, clearing patches, ground whisper
+    const artworkMap = this.textures.exists("img-worldmap_painted") || this.textures.exists("img-worldmap_book");
     // the open book page beneath everything (doc 28 §6b) — the map walks ON
     // a page; the procedural ground blit sits over it (its own alpha shows it)
-    if (this.textures.exists("img-worldmap_book")) {
+    if (this.textures.exists("img-worldmap_painted")) {
+      // v5 W2 (Koki: "the background should be DRAWN, not pixel"): the PAINTED
+      // book-world is the entire base — no ground whisper, no tile floor, no
+      // dark patches. Pixel buildings/hero/NPCs composite on top.
+      const wm = this.add.image(worldW / 2, worldH / 2, "img-worldmap_painted").setDepth(0);
+      const s = Math.max(worldW / wm.width, worldH / wm.height); // COVER, never stretch
+      wm.setScale(s);
+    } else if (this.textures.exists("img-worldmap_book")) {
       // batch V (doc 30): the whole book-world as ONE artwork — the base layer;
       // walkability/buildings/NPCs composite on top (full map rebuild = PR-I)
       const wm = this.add.image(worldW / 2, worldH / 2, "img-worldmap_book").setDepth(0);
@@ -313,7 +323,7 @@ export class MapScene extends Phaser.Scene {
           addSolid(c, r);
         } else if (entry.prop === "tree") {
           // the one-artwork map paints its own trees — props would double them
-          if (!this.textures.exists("img-worldmap_book")) {
+          if (!artworkMap) {
             const treeKey = this.textures.exists("img-mdec_tree") ? "img-mdec_tree" : tex("tree");
             this.add.image(x, y, treeKey).setDisplaySize(TILE * 1.15, TILE * 1.15).setDepth(3);
           }
@@ -398,16 +408,44 @@ export class MapScene extends Phaser.Scene {
       // generated building sprite when present (building_chNN); grey/silhouette
       // for un-restored chapters comes from a tint over the same image
       const aliveStem = `bldx_${b.chapter}`;
-      const useAlive = done && this.textures.exists(`img-${aliveStem}`); // batch V two-state (crossfade = PR-I)
+      const twoState = this.textures.exists(`img-${aliveStem}`); // batch W: DRAINED + ALIVE are separate paintings
+      const useAlive = done && twoState;
       const bStem = useAlive ? aliveStem : `building_${b.chapter}`;
       const hasImg = this.textures.exists(`img-${bStem}`);
       const img = this.add.image(x, bottom, hasImg ? `img-${bStem}` : tex(warm ? "house" : "house-dark")).setOrigin(0.5, 1).setDepth(2);
-      if (hasImg) img.setDisplaySize(TILE * 2.6, TILE * 1.3); // fit the plot; sheet cells are 512×256
-      if (hasImg && !warm) img.setTint(0x8a8798).setAlpha(0.9); // drained-grey read
-      if (!warm) img.setAlpha(0.8);
-      this.add.text(x, bottom + 2, b.label, { fontFamily: "system-ui, sans-serif", fontSize: "10px", color: "#c9c4e4" }).setOrigin(0.5, 0).setDepth(2);
-      if (!done) {
-        // restoration grey: the drained ground patch, above tiles, below sprites
+      if (hasImg) {
+        // fit the plot, honoring the art's own aspect (batch W cells are square
+        // 256×256; batch V sheets were 512×256 — never squash either)
+        const srcImg = this.textures.get(`img-${bStem}`).getSourceImage() as { width: number; height: number };
+        const w = TILE * 2.2;
+        img.setDisplaySize(w, w * (srcImg.height / srcImg.width));
+      }
+      // the drained state: with two-state art the SAD painting carries it —
+      // no tint (a grey tint over painted-grey doubles into mud); without,
+      // the old tint read stays as the fallback
+      if (hasImg && !warm && !twoState) img.setTint(0x8a8798).setAlpha(0.9);
+      if (!warm && !twoState) img.setAlpha(0.8);
+      // v5 W2 THE RESTORATION MOMENT (doc 30 §1.6): coming back from a beaten
+      // chapter, the building visibly BURSTS alive — drained painting crossfades
+      // to the lit one under a little sparkle shower
+      if (useAlive && this.cfg.justDone === b.chapter && motion && this.textures.exists(`img-building_${b.chapter}`)) {
+        const sad = this.add.image(x, bottom, `img-building_${b.chapter}`).setOrigin(0.5, 1).setDepth(2.1);
+        sad.setDisplaySize(img.displayWidth, img.displayHeight);
+        this.tweens.add({ targets: sad, alpha: 0, duration: 1000, delay: 400, ease: "Sine.easeIn", onComplete: () => sad.destroy() });
+        for (let i = 0; i < 10; i += 1) {
+          const star = this.add.text(x, bottom - img.displayHeight / 2, "✦", { fontFamily: "system-ui, sans-serif", fontSize: `${10 + (i % 3) * 4}px`, color: i % 2 === 0 ? "#ffe066" : "#fff7d0" }).setOrigin(0.5).setDepth(5);
+          const ang = (i / 10) * Math.PI * 2;
+          this.tweens.add({ targets: star, x: x + Math.cos(ang) * (30 + (i % 4) * 14), y: bottom - img.displayHeight / 2 + Math.sin(ang) * (24 + (i % 3) * 12), alpha: 0, duration: 900 + i * 60, delay: 350, ease: "Sine.easeOut", onComplete: () => star.destroy() });
+        }
+      }
+      // v5 W2 label pill (Koki: the plain grey text read as debris on the painting)
+      {
+        const lt = this.add.text(x, bottom + 8, b.label, { fontFamily: "system-ui, sans-serif", fontSize: "10.5px", fontStyle: "bold", color: "#f3f1ff" }).setOrigin(0.5, 0.5).setDepth(3);
+        this.add.rectangle(x, bottom + 8, lt.width + 12, lt.height + 6, 0x141221, 0.72).setOrigin(0.5, 0.5).setDepth(2.9);
+      }
+      if (!done && !artworkMap) {
+        // restoration grey: the drained ground patch — only over the TILE floor;
+        // on a one-artwork map it read as Koki's "black boxes" and is gone
         this.add.rectangle(b.ground.c * TILE, b.ground.r * TILE, b.ground.w * TILE, b.ground.h * TILE, 0x141221, 0.45).setOrigin(0).setDepth(1);
       }
       this.entrances.push({ chapter: b.chapter, c: b.cell.c, r: b.cell.r, label: b.label });
