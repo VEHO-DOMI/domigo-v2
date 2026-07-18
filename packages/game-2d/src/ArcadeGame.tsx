@@ -86,27 +86,34 @@ function storyScaffold(task: RescueTask, siblings: RescueTask[]): RescueTask {
 /** THE HINT LADDER (WS-HINT, doc 29 §4.5): staged reveals — typed tasks walk
  *  first letter → length → German description → German word; choice tasks the
  *  last two. Rendered only on story tasks (they carry `hints`). */
-function HintLadder({ hints, typed, sparks, onSpendSpark }: { hints: GameTaskHints; typed: boolean; sparks?: number; onSpendSpark?: () => void }) {
+function HintLadder({ hints, typed, sparks, onSpendSpark, onPrefill }: { hints: GameTaskHints; typed: boolean; sparks?: number; onSpendSpark?: () => void; onPrefill?: (v: string) => void }) {
   const [step, setStep] = useState(0);
-  const steps: string[] = typed
+  // v5.2 (Koki's spec): tip 1 on a TYPED task puts the first letter INTO the
+  // input field and shows one BIG readable pattern line ("s _ _ _ _") — the
+  // old cramped "S the book"-style lines were unreadable.
+  const pattern = typed && hints.firstLetter !== undefined && hints.length !== undefined
+    ? `${hints.firstLetter} ${Array.from({ length: Math.max(0, hints.length - 1) }, () => "_").join(" ")}`
+    : null;
+  const steps: Array<{ text: string; big?: boolean; act?: () => void }> = typed
     ? [
-        hints.firstLetter !== undefined ? `Erster Buchstabe: ${hints.firstLetter}` : hints.deDesc,
-        hints.length !== undefined ? `${Array.from({ length: hints.length }, () => "_").join(" ")}  (${hints.length} Buchstaben)` : hints.deDesc,
-        hints.deDesc,
-        `Auf Deutsch: ${hints.deWord}`,
+        { text: pattern ?? hints.deDesc, big: pattern !== null, act: () => { if (hints.firstLetter !== undefined) onPrefill?.(hints.firstLetter); } },
+        { text: hints.deDesc },
+        { text: `Auf Deutsch: ${hints.deWord}` },
       ]
-    : [hints.deDesc, `Auf Deutsch: ${hints.deWord}`];
+    : [{ text: hints.deDesc }, { text: `Auf Deutsch: ${hints.deWord}` }];
   return (
     <div style={{ marginTop: 10 }}>
       {steps.slice(0, step).map((s, i) => (
-        <div key={i} style={{ fontSize: 14, color: "var(--text-secondary)", margin: "3px 0" }}>💡 {s}</div>
+        s.big === true
+          ? <div key={i} style={{ fontFamily: "ui-monospace, monospace", fontSize: 24, fontWeight: 800, letterSpacing: "0.2em", color: "#ffe082", margin: "6px 0" }}>{s.text}</div>
+          : <div key={i} style={{ fontSize: 14, color: "var(--text-secondary)", margin: "3px 0" }}>💡 {s.text}</div>
       ))}
       {step < steps.length && (() => {
         // v5 W0: the first tip is free; every further one SPENDS a collected
         // Glühbuchstabe when there is one (never blocks — pedagogy first)
         const willSpend = step >= 1 && (sparks ?? 0) > 0 && onSpendSpark !== undefined;
         return (
-          <button type="button" className="dg-btn-secondary" style={{ fontSize: 13, padding: "4px 12px" }} onClick={() => { if (willSpend) onSpendSpark(); setStep(step + 1); }}>
+          <button type="button" className="dg-btn-secondary" style={{ fontSize: 13, padding: "4px 12px" }} onClick={() => { if (willSpend) onSpendSpark(); steps[step]?.act?.(); setStep(step + 1); }}>
             Tipp {step + 1}/{steps.length}{willSpend ? " · ✺" : ""}
           </button>
         );
@@ -203,11 +210,12 @@ export function ArcadeGame(props: ArcadeGameProps) {
   // v2.2: the goal card — every level opens by SAYING what to do (the
   // "take the student by the hand" law); the world stands still behind it
   const [goalOpen, setGoalOpen] = useState(true);
-  // dev-only: a silent runtime crash renders as a readable banner, never a
-  // black canvas (the boss-handoff hunt of 2026-07-16 cost a day of guessing)
+  // v5.2: ALWAYS-ON crash banner — Koki's prod boss-handoff black screen gave
+  // ZERO signal because this was dev-gated. A visible one-line error beats a
+  // silent black canvas on every surface, prod included (teacher-preview only
+  // reaches this route pre-release anyway).
   const [fatal, setFatal] = useState<string | null>(null);
   useEffect(() => {
-    if (process.env.NODE_ENV === "production") return;
     const onErr = (e: ErrorEvent) => setFatal(`${e.message} @ ${e.filename?.split("/").pop()}:${e.lineno}`);
     const onRej = (e: PromiseRejectionEvent) => setFatal(String(e.reason));
     window.addEventListener("error", onErr);
@@ -304,6 +312,14 @@ export function ArcadeGame(props: ArcadeGameProps) {
       },
     });
     bossRef.current = boss;
+    // v5.2 THE BLACK-SCREEN ROOT (Koki's report): the boss lays out at its own
+    // 720×528 view, but since the v4 zoom shrank the shared canvas to 480×312
+    // the floor, the player and lane 3 rendered OFF-CANVAS — an empty dark
+    // frame. The canvas must match the boss's stage for the duel.
+    {
+      const bd = BossScene.dimensions();
+      game.scale.resize(bd.width, bd.height);
+    }
     game.scene.add("boss", boss, false);
     game.scene.stop("arcade");
     game.scene.start("boss");
@@ -833,7 +849,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                   ))}
                 </div>
               )}
-              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed={phase.task.presentation === "typed"} />}
+              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed={phase.task.presentation === "typed"} onPrefill={(v) => setPhase({ ...phase, value: v })} />}
               {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Er windet sich frei! Gleich kommt die nächste Chance — dann mit Auswahl.</p>}
               {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Ein Knoten löst sich! ✶</p>}
             </div>
@@ -880,7 +896,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                 />
                 <button type="submit" className="dg-btn">Befreien!</button>
               </form>
-              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} />}
+              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} onPrefill={(v) => setPhase({ ...phase, value: v })} />}
               {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Noch nicht — nimm einen Tipp und versuch es gleich nochmal!</p>}
               {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Die Seite ist frei! ✶</p>}
               <div style={{ marginTop: 12 }}>
@@ -912,7 +928,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                   ))}
                 </div>
               )}
-              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed={!phase.scaffolded} sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} />}
+              {phase.task.hints !== undefined && <HintLadder hints={phase.task.hints} typed={!phase.scaffolded} sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} onPrefill={(v) => setPhase({ ...phase, value: v })} />}
               {phase.verdict === "wrong" && !phase.scaffolded && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Fast! Jetzt mit Auswahl:</p>}
               {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Befreit! ✶</p>}
             </div>
@@ -972,7 +988,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                   ))}
                 </div>
               )}
-              {phase.task.hints !== undefined && phase.stage === "name" && <HintLadder hints={phase.task.hints} typed sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} />}
+              {phase.task.hints !== undefined && phase.stage === "name" && <HintLadder hints={phase.task.hints} typed sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} onPrefill={(v) => setPhase({ ...phase, value: v })} />}
               {phase.verdict === "wrong" && <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Noch nicht — probier's nochmal!</p>}
               {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "12px 0 0" }}>Es leuchtet wieder! ✶</p>}
               <div style={{ marginTop: 12 }}>
@@ -1091,7 +1107,7 @@ export function ArcadeGame(props: ArcadeGameProps) {
                     ))}
                   </div>
                 )}
-                {(() => { const rt = phase.rescue.tasks[phase.rescue.at]; return rt?.hints !== undefined ? <HintLadder key={rt.itemId + phase.rescue.at} hints={rt.hints} typed={rt.presentation === "typed"} sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} /> : null; })()}
+                {(() => { const rt = phase.rescue.tasks[phase.rescue.at]; return rt?.hints !== undefined ? <HintLadder key={rt.itemId + phase.rescue.at} hints={rt.hints} typed={rt.presentation === "typed"} sparks={gluehwoerter} onSpendSpark={() => void sceneRef.current?.spendGluehwort()} onPrefill={(v) => setPhase({ kind: "rescue", rescue: { ...phase.rescue, value: v } })} /> : null; })()}
                 {phase.rescue.verdict === "wrong" && (
                   <p style={{ fontSize: 14, color: "#fca5a5", margin: "12px 0 0" }}>Fast! Probier's gleich nochmal — jetzt mit Auswahl.</p>
                 )}

@@ -54,6 +54,9 @@ const KeenWorld = z.object({
       label: z.string(),
       labelEn: z.string().optional(),
       ground: KeenGround,
+      // v5.2: building footprint on the painted map, in tiles (Koki: each
+      // building fills its clearing; ch01's clearing is the biggest)
+      plotW: z.number().positive().optional(),
     }),
   ),
   beats: z.record(z.string(), z.object({ door: z.string(), restore: z.string() })),
