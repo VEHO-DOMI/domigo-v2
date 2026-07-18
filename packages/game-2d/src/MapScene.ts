@@ -232,6 +232,12 @@ export class MapScene extends Phaser.Scene {
   }
 
   create(): void {
+    // v5.1 filter law: every batch image on the map (painting, buildings,
+    // NPCs, hero) minifies LINEAR — pixelArt-NEAREST decimated them (Koki:
+    // "way too small, way too pixelated")
+    for (const key of Object.keys(this.textures.list)) {
+      if (key.startsWith("img-")) this.textures.get(key).setFilter(Phaser.Textures.FilterMode.LINEAR);
+    }
     const { rows, legend, buildings } = this.cfg;
     const motion = this.cfg.reducedMotion !== true;
     const cleared = new Set(this.cfg.chaptersDone);
@@ -379,7 +385,7 @@ export class MapScene extends Phaser.Scene {
       sprite.walk.right.forEach((img, s) => addCanvas(`p-right-${s + 1}`, rasterize(img, 1)));
     }
     this.player = this.physics.add.sprite(spawn.x, spawn.y, "p-right");
-    this.player.setDisplaySize(TILE, TILE).setDepth(6);
+    this.player.setDisplaySize(TILE * 1.35, TILE * 1.35).setDepth(6); // v5.1 map-hero scale
     this.player.body.setSize(24, 30).setOffset(12, 14);
     this.physics.world.setBounds(0, 0, worldW, worldH);
     this.player.setCollideWorldBounds(true);
@@ -548,7 +554,8 @@ export class MapScene extends Phaser.Scene {
     }
     if (this.player.texture.key !== frame && this.textures.exists(frame)) {
       this.player.setTexture(frame);
-      this.player.setDisplaySize(TILE, TILE);
+      // v5.1 (Koki: "the character is way too small" on the painted map)
+      this.player.setDisplaySize(TILE * 1.35, TILE * 1.35);
     }
 
     // ── tile change → onMove (the save cursor) ──

@@ -83,6 +83,10 @@ export class BossScene extends Phaser.Scene {
   }
 
   create(): void {
+    // v5.1 filter law: HD boss/backdrop art minifies LINEAR (see ArcadeScene)
+    for (const key of Object.keys(this.textures.list)) {
+      if (key.startsWith("img-")) this.textures.get(key).setFilter(Phaser.Textures.FilterMode.LINEAR);
+    }
     // batch V: the painted attic arena behind the duel (procedural veil stays on top)
     if (this.textures.exists("img-bgp_schoolhouse_arena")) {
       const bg = this.add.image(0, 0, "img-bgp_schoolhouse_arena").setOrigin(0).setDepth(0);
