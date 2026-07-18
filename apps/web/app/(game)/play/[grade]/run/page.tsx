@@ -28,9 +28,9 @@ function fnv1a32(s: string): number {
   return h >>> 0;
 }
 
-export default async function ArcadeRunPage({ params, searchParams }: { params: Promise<{ grade: string }>; searchParams: Promise<{ level?: string; tier?: string }> }) {
+export default async function ArcadeRunPage({ params, searchParams }: { params: Promise<{ grade: string }>; searchParams: Promise<{ level?: string; tier?: string; boss?: string }> }) {
   const { grade: gradeStr } = await params;
-  const { level: levelId, tier } = await searchParams;
+  const { level: levelId, tier, boss: bossParam } = await searchParams;
   const grade = Number(gradeStr);
   if (![1, 2, 3, 4].includes(grade)) redirect("/home");
   // gate: a mock never reaches students (release.json rules don't cover it,
@@ -40,6 +40,10 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
 
   const acting = await getPlayerForPage(); // student OR teacher (preview law)
   if (!acting) redirect("/signin");
+  // v5.3: `boss=1` boots straight into the guardian duel — a TEACHER-ONLY
+  // preview door (Koki: "don't make me play the level for every boss test");
+  // for students the flag is silently ignored.
+  const bossOnly = bossParam === "1" && (await getTeacherForPage()) !== null;
 
   // v2.1 (bible 27): `level=g1-chNN` loads a content-authored chapter level +
   // its guardian; the unit follows the CHAPTER (task content = that unit).
@@ -117,6 +121,7 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
         art={keenArt}
         doneHref={keenLevel ? `/play/${grade}/world?done=${keenMatch![1]}` : undefined}
         tier={tier === "E" || tier === "M" || tier === "S" ? tier : undefined}
+        bossOnly={bossOnly && keenBoss !== undefined ? true : undefined}
       />
       {/* v5 W0 deploy-truth stamp: a stale prod build must be visible at a
           glance (Koki's 18:55 run happened on a pre-deploy build unnoticed) */}
