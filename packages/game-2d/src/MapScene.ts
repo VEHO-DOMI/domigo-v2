@@ -455,6 +455,9 @@ export class MapScene extends Phaser.Scene {
       const fx = x;
       const fy = (b.cell.r - 1) * TILE + TILE / 2;
       const flag = this.add.image(fx, fy, this.textures.exists("img-flag") ? "img-flag" : tex("flag")).setDepth(4);
+      // v5 W3: the batch flag cell is 256px — pin it to map scale (it rendered
+      // as a building-sized banner over the schoolhouse without this)
+      if (this.textures.exists("img-flag")) flag.setDisplaySize(TILE * 0.95, TILE * 0.95);
       const wave = (): void => {
         if (motion) this.tweens.add({ targets: flag, angle: { from: -4, to: 4 }, duration: 900, yoyo: true, repeat: -1, ease: "Sine.easeInOut" });
       };
