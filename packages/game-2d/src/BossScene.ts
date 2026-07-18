@@ -124,10 +124,16 @@ export class BossScene extends Phaser.Scene {
     for (const x of LANE_X) this.add.rectangle(x, FLOOR_R * TILE_PX - 2, TILE_PX * 2.4, 4, 0xffffff, 0.06);
     this.laneFlash = this.add.rectangle(LANE_X[1]!, VIEW_H / 2, TILE_PX * 3.2, VIEW_H, 0xffffff, 0).setDepth(2);
 
-    // the player
-    const hero = paintHero(this.cfg.playerSeed ?? this.cfg.seed);
-    if (!this.textures.exists("h-stand")) this.textures.addCanvas("h-stand", rasterize(hero.frames.stand, 1));
-    this.player = this.add.image(LANE_X[1]!, FLOOR_R * TILE_PX - 30, this.textures.exists("img-hero_stand") ? "img-hero_stand" : "h-stand").setDisplaySize(48, 48).setDepth(5);
+    // the player — v5.3 (Koki): the HD hero (hero2, Batch W rig) fights the
+    // duel too; the old batch/procedural hero only remains as the fallback.
+    // hero2 cells are full 256px with ~18% empty under the feet — display a
+    // touch larger and sink the anchor so the feet meet the floor line.
+    const hd = this.textures.exists("img-hero2_stand");
+    if (!hd) {
+      const hero = paintHero(this.cfg.playerSeed ?? this.cfg.seed);
+      if (!this.textures.exists("h-stand")) this.textures.addCanvas("h-stand", rasterize(hero.frames.stand, 1));
+    }
+    this.player = this.add.image(LANE_X[1]!, FLOOR_R * TILE_PX - (hd ? 18 : 30), hd ? "img-hero2_stand" : (this.textures.exists("img-hero_stand") ? "img-hero_stand" : "h-stand")).setDisplaySize(hd ? 56 : 48, hd ? 56 : 48).setDepth(5);
 
     // the guardian: head + knot segments (timetable cards)
     this.segments = [];

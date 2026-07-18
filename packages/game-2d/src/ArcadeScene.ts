@@ -638,15 +638,10 @@ export class ArcadeScene extends Phaser.Scene {
     this.player = this.physics.add.sprite(startPx.x, startPx.y, "h-stand");
     this.player.setDisplaySize(TILE, TILE);
     this.player.setDepth(4); // Keen's z-ladder: terrain 0 · props 1-2 · items 3 · player 4 · fore-foreground 6
-    // doc 28 §4: the first provided accessory overlay (unlockables wave adds selection)
-    // v5.2: Batch X redrew the accessories ON the hero3 rig (same 256px cell,
-    // head/neck positions matched to hero3_stand) — the overlay composites 1:1
-    // with the player's cell scaling again. (v5.1 had hidden the batch-S ones:
-    // old-rig art rendered as a blob across the HD hero's face.)
-    const accStem = Object.keys(this.cfg.art ?? {}).find((s) => s.startsWith("acc_"));
-    if (accStem !== undefined && this.textures.exists(`img-${accStem}`)) {
-      this.accessory = this.add.image(startPx.x, startPx.y, `img-${accStem}`).setDepth(5).setDisplaySize(TILE, TILE);
-    }
+    // doc 28 §4 accessories — v5.3 (Koki): REMOVED. The Batch X overlays still
+    // didn't sit right on the moving poses ("the cap doesn't work"), and a
+    // wrong hat is worse than no hat. The unlockables wave brings them back
+    // only as art BAKED into full pose sheets, never as a floating overlay.
     this.baseScale = this.player.scaleY;
     this.syncHeroBody();
     this.player.body.setMaxVelocityY(ARCADE.maxFall);

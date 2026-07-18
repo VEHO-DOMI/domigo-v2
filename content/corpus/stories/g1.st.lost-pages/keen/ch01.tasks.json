@@ -186,34 +186,71 @@
       "grounding": "WB p.13 'to close — Close the door.'"
     },
     {
-      "id": "g1.game.ch01.b1",
+      "id": "g1.game.ch01.bk1",
       "use": "boss",
       "kind": "typed",
-      "storyDe": "Der Stundenplan-Schlinger brüllt Befehle durcheinander — sag den richtigen!",
-      "promptEn": "Don't ______ up! Sit down!",
-      "answer": "stand",
+      "storyDe": "Der Schlinger hat ein Wort zum Knäuel verknotet — zieh es gerade und tipp es richtig ein!",
+      "promptEn": "l — o — o — h — c — s = ?",
+      "answer": "school",
       "hints": {
         "firstLetter": "s",
-        "length": 5,
-        "deDesc": "Das Gegenteil von sich hinsetzen.",
-        "deWord": "aufstehen"
+        "length": 6,
+        "deDesc": "Auf Deutsch: die Schule.",
+        "deWord": "die Schule"
       },
-      "grounding": "SB p.15 imperatives 'Don't stand up!'"
+      "grounding": "SB p.8 opener 'you know the alphabet' + p.12 school things · boss format: letter knot (unscramble)"
     },
     {
-      "id": "g1.game.ch01.b2",
+      "id": "g1.game.ch01.bk2",
+      "use": "boss",
+      "kind": "choice",
+      "storyDe": "Der Schlinger zischt: „Das ist ein Bleistift!“ — er LÜGT. Schau auf das Bild!",
+      "promptEn": "A pencil? No! What is it?",
+      "art": "st_ruler_wild",
+      "options": [
+        "ruler",
+        "pencil",
+        "pen"
+      ],
+      "answer": "ruler",
+      "hints": {
+        "deDesc": "Auf Deutsch: das Lineal — schau auf das Bild, nicht auf sein Zischen!",
+        "deWord": "das Lineal"
+      },
+      "grounding": "SB p.12 school things (the 'Midnight in the classroom' living objects) · boss format: the Schlinger's lie — the picture tells the truth"
+    },
+    {
+      "id": "g1.game.ch01.bk3",
+      "use": "boss",
+      "kind": "choice",
+      "storyDe": "Er hat das ABC angeknabbert — welcher Buchstabe kommt als Nächstes?",
+      "promptEn": "J, K, L, ?",
+      "options": [
+        "M",
+        "N",
+        "I"
+      ],
+      "answer": "M",
+      "hints": {
+        "deDesc": "Sag das ABC der Reihe nach: J, K, L und dann?",
+        "deWord": "das ABC"
+      },
+      "grounding": "SB p.8 opener 'you know the alphabet' (the level's scattered-letter collect, doc 30 §1.3) · boss format: alphabet gap"
+    },
+    {
+      "id": "g1.game.ch01.bk4",
       "use": "boss",
       "kind": "typed",
-      "storyDe": "Ein Knoten löst sich — schnell, der nächste Befehl!",
-      "promptEn": "______ out your books!",
-      "answer": "Take",
+      "storyDe": "Die Zahlen zappeln im Knoten — tipp die fehlende Zahl als Wort ein!",
+      "promptEn": "eleven, twelve, ?, fourteen",
+      "answer": "thirteen",
       "hints": {
-        "firstLetter": "T",
-        "length": 4,
-        "deDesc": "Der Befehl: herausnehmen!",
-        "deWord": "herausnehmen"
+        "firstLetter": "t",
+        "length": 8,
+        "deDesc": "Auf Deutsch: dreizehn.",
+        "deWord": "dreizehn"
       },
-      "grounding": "SB p.15 imperatives 'Take out your books!'"
+      "grounding": "SB p.10 numbers 1-25 · boss format: number knot (gap in the row)"
     },
     {
       "id": "g1.game.ch01.b3",
@@ -233,19 +270,41 @@
       "grounding": "SB p.15 grammar 'a fish – three fish'"
     },
     {
-      "id": "g1.game.ch01.b4",
+      "id": "g1.game.ch01.bk5",
       "use": "boss",
-      "kind": "typed",
-      "storyDe": "Der letzte Knoten! Gib den Befehl — dann ist die Stunde frei!",
-      "promptEn": "______ on your tablets!",
-      "answer": "Switch",
+      "kind": "choice",
+      "storyDe": "Er faucht: „Die Tür ist PINK!“ — Lüge! Schau auf das Bild und sag die echte Farbe!",
+      "promptEn": "Pink? What colour is the door?",
+      "art": "cr_door_color",
+      "options": [
+        "blue",
+        "pink",
+        "grey"
+      ],
+      "answer": "blue",
       "hints": {
-        "firstLetter": "S",
-        "length": 6,
-        "deDesc": "Der Befehl: einschalten!",
-        "deWord": "einschalten"
+        "deDesc": "Auf Deutsch: blau — schau auf die Tür im Bild!",
+        "deWord": "blau"
       },
-      "grounding": "SB p.14 'Switch on your tablets.'"
+      "grounding": "SB p.12 'Midnight in the classroom' (Listen and colour) + p.14 classroom objects · Batch Y art on the book key (blue door) · boss format: colour lie"
+    },
+    {
+      "id": "g1.game.ch01.bk6",
+      "use": "boss",
+      "kind": "choice",
+      "storyDe": "Er schmuggelt Unsinn in die Schultasche — ein Ding gehört da NICHT hinein!",
+      "promptEn": "What is not in the school bag?",
+      "options": [
+        "window",
+        "book",
+        "pencil case"
+      ],
+      "answer": "window",
+      "hints": {
+        "deDesc": "Das Ding steckt in der Wand, nicht in der Tasche.",
+        "deWord": "das Fenster"
+      },
+      "grounding": "SB p.12 school things + p.14 classroom objects · boss format: odd one out"
     },
     {
       "id": "g1.game.ch01.b5",

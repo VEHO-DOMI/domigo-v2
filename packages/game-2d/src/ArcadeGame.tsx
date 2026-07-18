@@ -261,7 +261,13 @@ export function ArcadeGame(props: ArcadeGameProps) {
     carryRef.current = carry;
     bossActiveRef.current = true;
     const st = props.storyTasks;
-    if (st && (st.battle.length + st.swarm.length + st.colorroom.length + st.duel.length) > 0) {
+    if (st && st.boss.length > 0) {
+      // v5.3 (Koki's verdict): boss windows are NEVER carbon copies of the
+      // level pools — the hand-authored boss set (the Schlinger's own knots,
+      // lies and gaps) is the PRIMARY source, in authored order. The modality
+      // composition below stays as the fallback for chapters without one.
+      bossTasksRef.current = Array.from({ length: script.knots * 2 }, (_, i) => st.boss[i % st.boss.length]!);
+    } else if (st && (st.battle.length + st.swarm.length + st.colorroom.length + st.duel.length) > 0) {
       // v4 COMPOSITION (doc 30 §3): each counter-window plays a DIFFERENT
       // modality of the level — battle name, swarm pair, colour, command
       const comp: RescueTask[] = [];

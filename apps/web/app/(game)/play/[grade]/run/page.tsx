@@ -73,7 +73,10 @@ export default async function ArcadeRunPage({ params, searchParams }: { params: 
       storyTasks = {
         quickfire: gt.filter((x) => x.use === "quickfire").map(toQf),
         rescue: gt.filter((x) => x.use === "rescue").map((x) => toR(x, false)),
-        boss: gt.filter((x) => x.use === "boss").map((x) => toR(x, true)),
+        // v5.3 (Koki): the guardian speaks in his OWN riddle formats — chips
+        // and typed both occur, and the lie-formats carry art (the picture
+        // tells the truth), so the boss pool maps with full extras
+        boss: gt.filter((x) => x.use === "boss").map((x) => withExtras(toR(x, x.kind === "typed"), x)),
         seal: gt.filter((x) => x.use === "seal").map((x) => toR(x, true)),
         // v4 modality pools (doc 30 §3)
         battle: gt.filter((x) => x.use === "battle").map((x) => withExtras(toR(x, true), x)),
