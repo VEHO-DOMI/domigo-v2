@@ -115,6 +115,62 @@ function HintLadder({ hints, typed, sparks, onSpendSpark }: { hints: GameTaskHin
   );
 }
 
+/** v5.1 DAS ZAHLEN-RAD (Koki's spec: the iPhone-alarm dial) — the swarm's
+ *  answer is picked by SCROLLING a wheel of all the unit's numbers (digits or
+ *  words, matching what the task asks for) and locking it in. The right
+ *  answer sits at its natural position on the dial, never at a fixed slot. */
+const WHEEL_WORDS = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five"];
+const WHEEL_ITEM_H = 44;
+
+function NumberWheel({ options, onLock }: { options: string[]; onLock: (v: string) => void }) {
+  const listRef = useRef<HTMLDivElement>(null);
+  const idxRef = useRef(Math.floor(options.length / 2));
+  // The highlight is IMPERATIVE (native scroll listener + direct styles):
+  // React's synthetic onScroll proved unreliable inside the game overlay, and
+  // fast dial-spinning shouldn't re-render React 25× a second anyway.
+  useEffect(() => {
+    const el = listRef.current;
+    if (!el) return;
+    const paint = (): void => {
+      const i = Math.max(0, Math.min(options.length - 1, Math.round(el.scrollTop / WHEEL_ITEM_H)));
+      idxRef.current = i;
+      for (let k = 0; k < el.children.length; k += 1) {
+        const d = el.children[k] as HTMLElement;
+        d.style.fontSize = k === i ? "27px" : "18px";
+        d.style.color = k === i ? "#ffe066" : "#8f8ab0";
+      }
+    };
+    el.scrollTop = idxRef.current * WHEEL_ITEM_H;
+    paint();
+    el.addEventListener("scroll", paint, { passive: true });
+    return () => el.removeEventListener("scroll", paint);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+      <div style={{ position: "relative", height: WHEEL_ITEM_H * 5, width: 230, overflow: "hidden", borderRadius: 14, background: "#141221", border: "2px solid #3a3654" }}>
+        <div ref={listRef} data-testid="number-wheel" style={{ height: "100%", overflowY: "scroll", scrollSnapType: "y mandatory", paddingTop: WHEEL_ITEM_H * 2, paddingBottom: WHEEL_ITEM_H * 2, scrollbarWidth: "none" }}>
+          {options.map((o, i) => (
+            <div
+              key={o}
+              onClick={() => listRef.current?.scrollTo({ top: i * WHEEL_ITEM_H, behavior: "smooth" })}
+              style={{ height: WHEEL_ITEM_H, display: "flex", alignItems: "center", justifyContent: "center", scrollSnapAlign: "center", cursor: "pointer", fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 18, color: "#8f8ab0", transition: "font-size 120ms, color 120ms" }}
+            >
+              {o}
+            </div>
+          ))}
+        </div>
+        <div style={{ position: "absolute", top: WHEEL_ITEM_H * 2, left: 8, right: 8, height: WHEEL_ITEM_H, border: "2px solid #8b7cf5", borderRadius: 10, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: WHEEL_ITEM_H * 1.6, background: "linear-gradient(#141221, transparent)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: WHEEL_ITEM_H * 1.6, background: "linear-gradient(transparent, #141221)", pointerEvents: "none" }} />
+      </div>
+      <button type="button" className="dg-btn" data-testid="wheel-lock" onClick={() => { const v = options[idxRef.current]; if (v !== undefined) onLock(v); }}>
+        Einloggen!
+      </button>
+    </div>
+  );
+}
+
 export function ArcadeGame(props: ArcadeGameProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<ArcadeScene | null>(null);
@@ -869,11 +925,26 @@ export function ArcadeGame(props: ArcadeGameProps) {
             <div className="dg-qf-card" style={{ width: "min(460px, 96%)", textAlign: "center", borderColor: phase.verdict === "wrong" ? "#fca5a5" : undefined }}>
               <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase", color: "#8b7cf5", marginBottom: 4 }}>{phase.chain[phase.at]?.ask} · {phase.solved}/{phase.chain.length}</div>
               <div style={{ fontSize: 44, fontWeight: 800, color: "#f3f1ff", fontFamily: "var(--font-display)", marginBottom: 12, lineHeight: 1.1 }}>{phase.chain[phase.at]?.prompt}</div>
-              <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
-                {displayChips(phase.chain[phase.at]?.chips, phase.chain[phase.at]?.itemId ?? String(phase.at)).map((chip) => (
-                  <button key={chip} type="button" className="dg-qf-chip" style={{ fontSize: 22, minWidth: 90 }} onClick={() => answerSwarm(chip)}>{chip}</button>
-                ))}
-              </div>
+              {(() => {
+                // v5.1 (Koki's spec): the swarm answers on the ZAHLEN-RAD —
+                // scroll the full 1–25 dial (digits or words, whichever the
+                // task asks for) and lock in. Chips stay as the fallback for
+                // non-numeric answers.
+                const answer = phase.chain[phase.at]?.answer ?? "";
+                const isDigit = /^\d+$/.test(answer);
+                const isWord = WHEEL_WORDS.includes(answer.toLowerCase());
+                if (isDigit || isWord) {
+                  const options = isDigit ? Array.from({ length: 25 }, (_, i) => String(i + 1)) : WHEEL_WORDS;
+                  return <NumberWheel key={`${phase.chain[phase.at]?.itemId}-${phase.at}`} options={options} onLock={answerSwarm} />;
+                }
+                return (
+                  <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
+                    {displayChips(phase.chain[phase.at]?.chips, phase.chain[phase.at]?.itemId ?? String(phase.at)).map((chip) => (
+                      <button key={chip} type="button" className="dg-qf-chip" style={{ fontSize: 22, minWidth: 90 }} onClick={() => answerSwarm(chip)}>{chip}</button>
+                    ))}
+                  </div>
+                );
+              })()}
               {phase.verdict === "wrong" && <p style={{ fontSize: 13, color: "#fca5a5", margin: "10px 0 0" }}>Die Zahl wirbelt zurück in den Schwarm!</p>}
               {phase.verdict === "right" && <p style={{ fontSize: 14, color: "#86efac", margin: "10px 0 0" }}>Der Schwarm ordnet sich! ✶</p>}
             </div>
