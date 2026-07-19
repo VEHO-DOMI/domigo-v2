@@ -47,6 +47,9 @@ importers:
       '@domigo/game-novel':
         specifier: workspace:*
         version: link:../../packages/game-novel
+      '@domigo/game-paint':
+        specifier: workspace:*
+        version: link:../../packages/game-paint
       '@domigo/game-trip':
         specifier: workspace:*
         version: link:../../packages/game-trip

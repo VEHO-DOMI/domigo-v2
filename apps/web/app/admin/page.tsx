@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { listReleasedStories } from "@domigo/content-loader";
 import { loadKeenBoss, loadKeenLevel } from "@/lib/keen-content";
+import { listPaintChapters } from "@/lib/paint-content";
 import { getDb, getUnitMastery } from "@domigo/db";
 import { auth, signOut } from "@/auth";
 
@@ -25,6 +26,8 @@ export default async function AdminPage() {
       // chapter not authored yet — no door
     }
   }
+  // doc 31: the painted-book preview list grows the same corpus-probing way
+  const paintChapters = listPaintChapters("g1.st.lost-pages");
 
   async function doSignOut() {
     "use server";
@@ -94,6 +97,16 @@ export default async function AdminPage() {
             <span style={{ fontSize: 13, fontWeight: 700, color: "var(--text-secondary)" }}>⚔ Boss direkt:</span>
             {bossChapters.map((ch) => (
               <Link key={ch} href={`/play/1/run?level=g1-${ch}&boss=1`} className="dg-btn" style={{ display: "inline-block", fontSize: 13, padding: "6px 12px" }}>
+                Kap. {Number(ch.slice(2))} →
+              </Link>
+            ))}
+          </div>
+        )}
+        {paintChapters.length > 0 && (
+          <div style={{ marginTop: 10, display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+            <span style={{ fontSize: 13, fontWeight: 700 }}>🖌 Das gemalte Buch (Vorschau):</span>
+            {paintChapters.map((ch) => (
+              <Link key={ch} href="/play/1/buch" className="dg-btn" style={{ display: "inline-block", fontSize: 13, padding: "6px 12px" }}>
                 Kap. {Number(ch.slice(2))} →
               </Link>
             ))}

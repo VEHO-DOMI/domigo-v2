@@ -6,7 +6,9 @@
   "exports": {
     ".": "./src/index.ts",
     "./paint": "./src/paint.ts",
-    "./collide": "./src/collide.ts"
+    "./collide": "./src/collide.ts",
+    "./level": "./src/level.ts",
+    "./game": "./src/PaintGame.tsx"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
