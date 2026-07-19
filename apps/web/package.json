@@ -21,6 +21,7 @@
     "@domigo/game-core": "workspace:*",
     "@domigo/game-detective": "workspace:*",
     "@domigo/game-novel": "workspace:*",
+    "@domigo/game-paint": "workspace:*",
     "@domigo/game-trip": "workspace:*",
     "@domigo/task-ui": "workspace:*",
     "@vercel/sandbox": "^1.10.2",
