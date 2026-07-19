@@ -179,8 +179,9 @@ joy, and the finale gate (ALL cages) makes it count.
   they are named after book- and print-words (§6), zero collision by construction. **Proposed
   default class (Koki confirms):** boys **Fenn · Veit · Piet · Tammo · Quirin · Lenz** · girls
   **Merle · Ilvy · Enna · Juno · Smilla · Edda** (spares: Falk, Wim, Janto · Fritzi, Cleo,
-  Tove). Default names ship with the game; a later teacher setting can rename them with the
-  class's real FIRST names (names only, never likenesses — Koki's decision 2026-07-19).
+  Tove). **Slate approved by Koki 2026-07-19 (M0 merge).** Default names ship with the game; a
+  later teacher setting can rename them with the class's real FIRST names (names only, never
+  likenesses — Koki's decision 2026-07-19).
 - **Cage math:** one person-cage per chapter (on-path, findable by everyone — the chapter's
   emotional beat), five hidden cages holding the unit's own bewitched beings (their freeing IS
   visible restoration, doc 30 §1.6). Twelve kids across fifteen chapters: the teacher and a
@@ -200,9 +201,8 @@ joy, and the finale gate (ALL cages) makes it count.
 **The concept (Koki-locked):** a former student, trapped in the book for years, re-bewitched it
 so the next class to open it would be pulled in — he didn't want to be alone anymore. Freeing
 AND forgiving him is the finale. The name **"Jona" retires from the fiction** (Koki, same
-session). **Name shortlist for Koki at this gate — under the naming law (§5): uncommon,
-German-English blend, checked against his real class lists: lead OSWIN; alternates CORVIN,
-ALWIN.** (Doc uses OSWIN below; find-replace on the verdict.)
+session). **The name: OSWIN — approved by Koki 2026-07-19 (M0 merge; naming law §5;
+alternates Corvin/Alwin stay banked).**
 
 - **The cloak rule (production law):** all year, the bewitcher appears only as a cloaked ink
   silhouette — a readable child outline inside a drifting ink mantle: a figure at the map's
