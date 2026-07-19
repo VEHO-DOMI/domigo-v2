@@ -1,0 +1,32 @@
+{
+  "name": "@domigo/game-paint",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./paint": "./src/paint.ts",
+    "./collide": "./src/collide.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@domigo/content-schema": "workspace:*",
+    "@domigo/engine": "workspace:*",
+    "@domigo/game-core": "workspace:*",
+    "@domigo/game-feel": "workspace:*",
+    "@domigo/task-ui": "workspace:*",
+    "phaser": "^3.90.0"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "typescript": "^5",
+    "vitest": "^3"
+  }
+}
