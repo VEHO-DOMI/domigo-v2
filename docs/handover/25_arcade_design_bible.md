@@ -1,5 +1,9 @@
 # 25 · The Arcade Design Bible — Tintenlauf and the arcade layer, designed from the ground truth
 
+> **2026-07-19 — PARTLY SUPERSEDED by doc 31 (THE PAINTED BOOK pivot):** the doctrine here
+> (study boundary, nothing-dies, difficulty-by-population) stays reference; the Keen verb set,
+> creature vocabulary, and goal grammar retire with the Keen shape. Doc 31 governs.
+
 **Status: DOCUMENT (this file) — the K-2 gate artifact. Koki reads this before any K-3 code is written; his verdict shapes the rebuild.**
 
 *Fable-authored 2026-07-14, synthesized from a complete source study: all ~44k lines of the

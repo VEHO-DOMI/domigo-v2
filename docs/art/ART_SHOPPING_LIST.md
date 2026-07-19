@@ -1,5 +1,9 @@
 # THE ART SHOPPING LIST v2 — re-cut for the Keen shape (2026-07-16)
 
+> **2026-07-19 — Keen-era (v2), superseded in register by doc 31 §2 (STYLE_PAINT_V1):** v3 is
+> authored with Batch Z; the pipeline laws (style-key first, one image proven end-to-end,
+> manifests as allowlists) carry unchanged.
+
 *Fable 5. Status: DOCUMENT — S2's input, superseding v1 (same day; the Keen-shape pivot, bible
 = `docs/handover/27_the_book_and_the_school.md`). Pipeline laws unchanged: generate → drop
 folder → `prep-art.mjs` QA → `sync-art.mjs` → `public/art/<ns>/`; manifests are allowlists;

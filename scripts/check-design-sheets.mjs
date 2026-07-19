@@ -15,7 +15,8 @@ const chapters = new Map(story.chapters.map((c) => [c.id.split(".").pop(), c]));
 let failures = 0;
 const fail = (file, msg) => { failures += 1; console.error(`✗ ${file}: ${msg}`); };
 
-for (const f of fs.readdirSync(sheetsDir).filter((x) => x.endsWith(".md"))) {
+const isSheet = (x) => /^ch\d+\.md$/.test(x); // chapter sheets only — templates/notes in this dir are not sheets
+for (const f of fs.readdirSync(sheetsDir).filter(isSheet)) {
   const chId = f.replace(".md", "");
   const text = fs.readFileSync(`${sheetsDir}/${f}`, "utf8");
   const ch = chapters.get(chId);
@@ -68,5 +69,5 @@ for (const f of fs.readdirSync(sheetsDir).filter((x) => x.endsWith(".md"))) {
   }
 }
 
-if (failures === 0) console.log(`check-design-sheets: OK — ${fs.readdirSync(sheetsDir).filter((x) => x.endsWith(".md")).length} sheets, all corpus ids + sections + register green`);
+if (failures === 0) console.log(`check-design-sheets: OK — ${fs.readdirSync(sheetsDir).filter(isSheet).length} sheets, all corpus ids + sections + register green`);
 else { console.error(`check-design-sheets: ${failures} failure(s)`); process.exit(1); }
