@@ -15,7 +15,7 @@ review small, chain by the sign. Boss set-pieces are tuned to ONE screen.
 
 - **Encounters:** ~0.5–0.75 per screen-width. Breathing room is a feature — traversal stretches
   with no encounter at all are legal and good.
-- **Checkpoints:** ≤1 Pixel-sketch per phase, placed BEFORE the risk spike, never after it.
+- **Checkpoints:** ≤1 sketch checkpoint per phase, placed BEFORE the risk spike, never after it.
 - **Currency:** trails are sentences, not confetti — a run of 5–8 leading somewhere (a cage, a
   ring line, an alcove); never scatter without intent (doc 30: no collectible without a reason).
 - **Verticality:** at least one optional vertical excursion per phase once hover exists.

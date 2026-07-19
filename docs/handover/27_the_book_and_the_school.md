@@ -1,8 +1,8 @@
 # 27 · THE BOOK AND THE SCHOOL — the game bible (story × gameplay as one)
 
 > **2026-07-19 — AMENDED by doc 31 (THE PAINTED BOOK pivot):** the Keen shape of §1–§3 is
-> superseded; the guardian identities, the map/beat/restoration loop, and §5's economy carry
-> as inputs; the name "Jona" retires from the fiction (doc 31 §6).
+> superseded; everything here is IDEA-MINE only under doc 31 §1.6's fresh-eyes law (nothing
+> inherited by default); the name "Jona" retires from the fiction (doc 31 §6).
 
 *Fable 5, 2026-07-16. Status: **gate pack for Koki** — reading this document IS the gate; the
 vertical slice (§9) is the gate after that. Commissioned by Koki's pivot directive (2026-07-16,

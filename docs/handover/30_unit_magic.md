@@ -1,8 +1,8 @@
 # 30 · THE UNIT-MAGIC LAW — every level is its unit, bewitched
 
 > **2026-07-19 — doc 31 (THE PAINTED BOOK pivot):** §1 CARRIES load-bearing; §2.1
-> (STYLE_PIXEL_V3) SUPERSEDED by doc 31 §2 (STYLE_PAINT_V1); §3's modality kit carries
-> re-keyed; §6's process evolves into doc 31 §7.
+> (STYLE_PIXEL_V3) SUPERSEDED by doc 31 §2 (STYLE_PAINT_V1); §3's modality kit = IDEA-MINE
+> only (encounter surfaces designed fresh — doc 31 §1.6); §6's process evolves into doc 31 §7.
 
 **Status: GOVERNING for all game design (2026-07-17 evening). Amends 27/28/29 (which stay
 canon for mechanics, pipeline, and story/register). Born from Koki's full-art playthrough:
