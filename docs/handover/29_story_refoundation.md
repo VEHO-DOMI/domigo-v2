@@ -1,5 +1,9 @@
 # 29 · THE STORY REFOUNDATION — laws, the prologue v2 script, story tasks
 
+> **2026-07-19 — CARRIES IN FULL under doc 31 (THE PAINTED BOOK pivot):** register, cutscene,
+> story-task, and grounding laws unchanged; §2's prologue is pattern canon, its fiction
+> superseded by doc 31 §1/§6 (the whole class falls in; "Jona" renamed).
+
 **Status: GOVERNING for all story-mode content (2026-07-17). Amends bibles 27/28 (which stay
 canon for mechanics + pipeline). Born from Koki's full playthrough verdict: the mechanics core
 is right, the storytelling and task fabric around it was a Frankenstein of imported parts.**

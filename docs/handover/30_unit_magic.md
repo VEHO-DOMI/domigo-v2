@@ -1,5 +1,9 @@
 # 30 · THE UNIT-MAGIC LAW — every level is its unit, bewitched
 
+> **2026-07-19 — doc 31 (THE PAINTED BOOK pivot):** §1 CARRIES load-bearing; §2.1
+> (STYLE_PIXEL_V3) SUPERSEDED by doc 31 §2 (STYLE_PAINT_V1); §3's modality kit carries
+> re-keyed; §6's process evolves into doc 31 §7.
+
 **Status: GOVERNING for all game design (2026-07-17 evening). Amends 27/28/29 (which stay
 canon for mechanics, pipeline, and story/register). Born from Koki's full-art playthrough:
 "nothing in this build may ever be generic — we think through every single step case by case."**
@@ -45,7 +49,7 @@ yellow, blue, orange, green, brown, pink, white, black, grey — the pencil case
 "I hate pink!"). Ch01's colorless-classroom set-piece is the book's own fiction, animated.
 Every unit sheet hunts for this: the unit's own illustrations are the level's art brief.
 
-### §2.1 · THE ART BAR — STYLE_PIXEL_V3 (Koki's #199 verdict, 2026-07-17 late) — GOVERNS
+### §2.1 · THE ART BAR — STYLE_PIXEL_V3 (Koki's #199 verdict, 2026-07-17 late) — SUPERSEDED 2026-07-19 by doc 31 §2 (STYLE_PAINT_V1)
 
 Koki's full-art replay: *"we're past the Keen-4 starting point — too pixelated, too ugly,
 especially the brown ground. HD pixel art: sharper, variety, beautiful — but still pixel art."*

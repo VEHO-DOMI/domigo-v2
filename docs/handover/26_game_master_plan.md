@@ -1,5 +1,8 @@
 # 26 · THE GAME MASTER PLAN v3 — sequencing the Keen-shape build
 
+> **2026-07-19 — SUPERSEDED ENTIRELY by doc 31 §8 (THE PAINTED BOOK pivot).** This file is
+> history; nothing here sequences current work.
+
 *Fable 5, 2026-07-16 (v3 — supersedes v2 of the same day; Koki's pivot directive arrived after
 #174 merged, and evidence-based pivots are the method). Status: DOCUMENT. **The design canon is
 `docs/handover/27_the_book_and_the_school.md` (the game bible)** — this file only sequences it:

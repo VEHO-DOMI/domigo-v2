@@ -8,6 +8,14 @@ _Written 2026-07-10 by Claude Fable 5. Status: **FINAL — approved by Koki 2026
 
 ## Part 0 — Canonical state & the Wave-2 decision ledger
 
+> **Ledger addendum 2026-07-19 (Koki, in-session — THE PAINTED BOOK pivot):** the G1 game's
+> FORM is now the painted-platformer shape governed by `docs/handover/31_the_painted_book.md`
+> (supersedes the Keen-shape directive of 2026-07-16). Ledger line 2's duology premise deepens,
+> not breaks: the trapped former student IS the renamed lonely bewitcher (doc 31 §6, name
+> Koki-gated), redeemed in the G1 finale, deuteragonist in G2. New module `@domigo/game-paint`
+> at 22×14 logical tiles, art contract RS-2 (doc 31 §2); the Keen build stays teacher-preview
+> reference; no live-player constraint (the holiday-rebuild clause carries).
+
 **Canonical state (verified 2026-07-10 against `main` + `gh`):**
 - `VEHO-DOMI/domigo-v2`: **103 PRs, ALL merged, 0 open.** HEAD = #102 (overworld art overhaul — the passover's "#102 open" note is stale). `docs/STATUS_AND_ROADMAP.md` was ~22 PRs behind; reconciled by T-1 (rides this blueprint's PR).
 - Corpus: **5,898 approved items** (2,446 vocab + 3,452 grammar) across **57 units** (g1: 15 · g2: 15 · g3: 14 · g4: 13 — MORE! 4's "Talking turkeys" Extra Unit is NOT in the corpus and stays out by decision). Git overlay `content/overlays/item-fixes.json` (17 patches) is the only override mechanism today.

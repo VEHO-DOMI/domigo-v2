@@ -1,5 +1,9 @@
 # 28 · THE PRODUCTION BIBLE — from design canon to shipped chapters
 
+> **2026-07-19 — doc 31 (THE PAINTED BOOK pivot):** §1 CLT law, §5 protocol skeleton, and §8b
+> access-map CARRY; the §2 visual-spec chain extends EGA-16 → PIXEL_V3 → **PAINT_V1** (doc 31
+> §2 governs); §6's sheet format is AMENDED → v4 (`docs/design/g1/SHEET_TEMPLATE_V4.md`).
+
 *Fable 5, 2026-07-16. Status: GOVERNING for all year-1 production. Sits ON TOP of the design
 canon — doc 27 (the game bible) says WHAT the game is; this doc + `docs/design/g1/chNN.md`
 (the 15 production sheets) say exactly HOW each chapter gets built, by whom, with which tasks,
@@ -208,6 +212,7 @@ a defect (the Story-Modus launch shipped reachable only by typed URL — never a
 | `/play/1/z01…` (old zones) | students + teachers | hub page cards |
 | `/play/1/world` (Keen world map) | **teachers only** until year-1 release | admin dashboard card + `/play/1` hub card (teacher-only render) |
 | `/play/1/run?level=…` (Keen levels) | **teachers only** until year-1 release | world-map buildings (never direct) |
+| `/play/1/buch` (The Painted Book, doc 31) | **teachers only** until year-1 release | admin dashboard auto-list (from M2); world-map slot at release |
 | `/admin` | teachers | teacher sign-in landing |
 | `/signin` | everyone | public root |
 

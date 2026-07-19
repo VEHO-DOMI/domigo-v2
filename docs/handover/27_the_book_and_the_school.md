@@ -1,5 +1,9 @@
 # 27 · THE BOOK AND THE SCHOOL — the game bible (story × gameplay as one)
 
+> **2026-07-19 — AMENDED by doc 31 (THE PAINTED BOOK pivot):** the Keen shape of §1–§3 is
+> superseded; the guardian identities, the map/beat/restoration loop, and §5's economy carry
+> as inputs; the name "Jona" retires from the fiction (doc 31 §6).
+
 *Fable 5, 2026-07-16. Status: **gate pack for Koki** — reading this document IS the gate; the
 vertical slice (§9) is the gate after that. Commissioned by Koki's pivot directive (2026-07-16,
 post-#174, transcripts preserved): the game's form is the Commander Keen 4 shape — a world map

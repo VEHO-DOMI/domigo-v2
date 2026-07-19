@@ -76,3 +76,23 @@ and imports your images; nothing you write reaches the game directly.
 - CP-8 The generator accepts at most FIVE reference files per call: attach
   hero-v1 + four representative ref_keen_* crops to generations; ALL refs stay
   the visual review standard regardless (learned in the Batch V run).
+- CP-9 (PAINT) Painterly soft edges feather into the magenta key: sheets keep
+  HARD-EDGED silhouettes (the outline law makes this natural); soft glow and
+  smoke go on TRUE-ALPHA cards, never magenta sheets.
+- CP-10 (PAINT) Generators regress to pixel/vector style when prompts smell
+  like "game asset": say "storybook gouache illustration", never "sprite
+  sheet" or "pixel"; every batch gets a pixelation scan vs the style key.
+- CP-11 (PAINT) Generators miss exact plate aspects: commission plates at the
+  2048-class and let the import normalize to contract size — never hand-crop.
+- CP-12 (PAINT) Loopable strips need matched ends: name "left and right edges
+  must continue each other" in the prompt; the import seam check is machine-run
+  and hard-fails.
+- CP-13 (PAINT) Outline weight scales with the SUBJECT (~2.5% of sprite
+  height), never a fixed pixel width — a guardian and a coin can't wear the
+  same line.
+- CP-14 (PAINT) Palette drift across a batch: the unit's palette card is
+  embedded in EVERY commission card, not once per batch.
+- CP-15 (IP, all batches) No Ubisoft names, designs, or words in prompts,
+  reference folders, filenames, or any surface. For paint batches, references
+  are OUR OWN art only (style key + hero parts + unit far plate) — the
+  ref_keen_* attachment rule of CP-8 is retired for the paint register.
