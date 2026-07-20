@@ -104,20 +104,23 @@ describe("coyote + buffer (OUR forgiveness — T)", () => {
   });
 });
 
-describe("the hover (quill-rotor — D: 50 ticks, +1px/t cap)", () => {
-  it("glides exactly 50 ticks past the apex while jump is held", () => {
+describe("the hover (quill-rotor — R5: unlimited while held, +1px/t cap)", () => {
+  it("glides all the way to the ground while jump stays held — no fuel", () => {
     let s = settle(FLAT, 32, 176);
     let hoverTicks = 0;
     let sawStart = 0;
-    for (let t = 0; t < 140; t++) {
+    let lastAirborneHovering = false;
+    for (let t = 0; t < 400; t++) {
       s = tick(s, FLAT, pad({ jump: true }), { canHover: true });
+      if (!s.st.grounded) lastAirborneHovering = s.st.hovering;
       if (s.st.hovering) hoverTicks++;
       sawStart = s.events.filter((e) => e.type === "hoverStart").length;
       if (t > 20 && s.st.grounded) break;
     }
-    expect(hoverTicks).toBe(PAINT.hoverTicks);
+    expect(s.st.grounded).toBe(true);
+    expect(hoverTicks).toBeGreaterThan(50); // beyond the old 50-tick fuel
+    expect(lastAirborneHovering).toBe(true); // never ran out mid-air
     expect(sawStart).toBe(1);
-    expect(s.st.hoverLeft).toBe(PAINT.hoverTicks); // refilled on landing
   });
 
   it("caps fall at +1px/t while hovering (vs +4 free fall)", () => {

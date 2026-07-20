@@ -67,6 +67,7 @@ export class PaintScene extends Phaser.Scene {
   private parts = new Map<RigPartName, Phaser.GameObjects.Image>();
   private rigRoot!: Phaser.GameObjects.Container;
   private fistImg!: Phaser.GameObjects.Image;
+  private ropeG!: Phaser.GameObjects.Graphics;
   private letterImgs = new Map<string, Phaser.GameObjects.Image>();
   private ringImgs: Array<{ img: Phaser.GameObjects.Image; baseY: number }> = [];
   private rings: Array<{ x: number; y: number }> = [];
@@ -99,6 +100,7 @@ export class PaintScene extends Phaser.Scene {
     this.buildProps();
     this.buildRig();
     this.fistImg = this.add.image(0, 0, this.tex("hand_fist")).setScale(RIG_SRC_SCALE).setDepth(11).setVisible(false);
+    this.ropeG = this.add.graphics().setDepth(9);
 
     const start = findGlyph(this.grid, "S") ?? { c: 2, r: 2 };
     this.player = spawnPlayer(start.c * TILE + TILE / 2, (start.r + 1) * TILE);
@@ -289,9 +291,10 @@ export class PaintScene extends Phaser.Scene {
 
     this.parts.get("head")?.setTexture(this.tex(faceFor(this.player.pose, this.tickCount, false)));
     this.parts.get("body")?.setTexture(this.tex(bodyStemFor(this.player.pose)));
-    const hand = this.tex(handStemFor(this.player.pose));
-    this.parts.get("handF")?.setTexture(hand);
-    this.parts.get("handB")?.setTexture(hand);
+    const hand = handStemFor(this.player.pose);
+    this.parts.get("handF")?.setTexture(this.tex(hand));
+    // R2a: the back hand never opens — twin open palms is the jazz-hands read
+    this.parts.get("handB")?.setTexture(this.tex(hand === "hand_open" ? "hand_fist" : hand));
     const shoe = this.tex(shoeStemFor(this.player.pose));
     this.parts.get("footF")?.setTexture(shoe);
     this.parts.get("footB")?.setTexture(shoe);
@@ -301,6 +304,17 @@ export class PaintScene extends Phaser.Scene {
       this.fistImg.setVisible(true).setPosition(fromSubs(this.fist.x), fromSubs(this.fist.y)).setFlipX(this.fist.dir < 0);
     } else {
       this.fistImg.setVisible(false);
+    }
+
+    // R7: the rope — without it the pendulum's arc extreme reads as floating
+    this.ropeG.clear();
+    if (this.player.swing) {
+      const ax = fromSubs(this.player.swing.anchorX);
+      const ay = fromSubs(this.player.swing.anchorY);
+      const hx = fromSubs(this.player.x);
+      const hy = fromSubs(this.player.y) - 29;
+      this.ropeG.lineStyle(1.6, 0x243048, 0.9).lineBetween(ax, ay, hx, hy);
+      this.ropeG.fillStyle(0x243048).fillCircle(ax, ay, 2.2);
     }
 
     for (const ring of this.ringImgs) {
@@ -357,10 +371,20 @@ export class PaintScene extends Phaser.Scene {
     skyG.fillGradientStyle(0xf9edd2, 0xf9edd2, 0xf3ddb0, 0xf3ddb0, 1);
     skyG.fillRect(-LOGICAL_W, -LOGICAL_H, LOGICAL_W * 3, LOGICAL_H * 3);
 
+    // a parallax plate must span viewport + (scroll range × its lag) or its
+    // edge shows as a seam; +10% margin
+    const plateCover = (img: Phaser.GameObjects.Image, sfX: number, sfY: number): void => {
+      const needW = LOGICAL_W + Math.max(0, this.worldWpx - LOGICAL_W) * (1 - sfX);
+      const needH = LOGICAL_H + Math.max(0, this.worldHpx - LOGICAL_H) * (1 - sfY);
+      img.setScale(Math.max((needW * 1.1) / img.width, (needH * 1.1) / img.height));
+    };
     if (this.textures.exists("pb-plate_far")) {
       const far = this.add.image(this.worldWpx / 2, this.worldHpx / 2 - 8, "pb-plate_far").setDepth(-11).setScrollFactor(0.12, 0.06);
-      const sc = Math.max((LOGICAL_W * 1.5) / far.width, (LOGICAL_H * 1.35) / far.height);
-      far.setScale(sc);
+      plateCover(far, 0.12, 0.06);
+    }
+    if (this.textures.exists("pb-plate_sky")) {
+      const sky = this.add.image(this.worldWpx / 2, this.worldHpx / 2 - 30, "pb-plate_sky").setDepth(-11.5).setScrollFactor(0.05, 0.02);
+      plateCover(sky, 0.05, 0.02);
     }
     if (this.textures.exists("pb-strip_mid_loop")) {
       const src = this.textures.get("pb-strip_mid_loop").getSourceImage() as HTMLImageElement;
@@ -373,6 +397,17 @@ export class PaintScene extends Phaser.Scene {
         .setAlpha(0.92);
       mid.setTileScale(dispH / src.height);
       mid.x = -LOGICAL_W;
+    }
+    if (this.textures.exists("pb-plate_near_loop")) {
+      const src = this.textures.get("pb-plate_near_loop").getSourceImage() as HTMLImageElement;
+      const dh = 62;
+      const near = this.add
+        .tileSprite(-LOGICAL_W, this.worldHpx - dh - 22, this.worldWpx + LOGICAL_W * 2, dh, "pb-plate_near_loop")
+        .setOrigin(0, 0)
+        .setDepth(0)
+        .setAlpha(0.95)
+        .setScrollFactor(0.8, 0.97);
+      near.setTileScale(dh / src.height);
     }
   }
 
@@ -388,19 +423,23 @@ export class PaintScene extends Phaser.Scene {
         if (isCanopy) {
           fill.fillStyle(CANOPY);
           fill.fillRect(c * TILE, r * TILE, TILE, TILE);
-          if (!isSolid(glyphAt(this.grid, c, r + 1))) {
-            fill.fillCircle(c * TILE + 4, (r + 1) * TILE, 4); // leafy fringe
+          if (!isSolid(glyphAt(this.grid, c, r + 1)) && !this.textures.exists("pb-canopy_fringe_loop")) {
+            fill.fillCircle(c * TILE + 4, (r + 1) * TILE, 4); // fallback fringe
             fill.fillCircle(c * TILE + 11, (r + 1) * TILE + 2, 5);
           }
         } else if (isSolid(g)) {
           fill.fillStyle(g === "~" ? ICE : isSolid(glyphAt(this.grid, c, r - 1)) ? EARTH_DARK : EARTH);
           fill.fillRect(c * TILE, r * TILE, TILE, TILE);
         } else if (g === "=") {
-          fill.fillStyle(0xc9a36a);
-          fill.fillRoundedRect(c * TILE, r * TILE + 1, TILE, 5, 2);
+          if (!this.textures.exists("pb-plank_loop")) {
+            fill.fillStyle(0xc9a36a);
+            fill.fillRoundedRect(c * TILE, r * TILE + 1, TILE, 5, 2);
+          }
         } else if (g === "^") {
-          fill.fillStyle(INK);
-          fill.fillTriangle(c * TILE + 1, (r + 1) * TILE, c * TILE + 8, r * TILE + 4, c * TILE + 15, (r + 1) * TILE);
+          if (!this.textures.exists("pb-spikes_nibs_loop")) {
+            fill.fillStyle(INK);
+            fill.fillTriangle(c * TILE + 1, (r + 1) * TILE, c * TILE + 8, r * TILE + 4, c * TILE + 15, (r + 1) * TILE);
+          }
         } else if (g === "w") {
           fill.fillStyle(0x2c3a58, 0.92);
           fill.fillRect(c * TILE, r * TILE + 3, TILE, TILE - 3);
@@ -419,8 +458,77 @@ export class PaintScene extends Phaser.Scene {
           fill.lineStyle(2, GRASS);
           if (g === "/") fill.lineBetween(x, y + TILE, x + TILE, y);
           if (g === "\\") fill.lineBetween(x, y, x + TILE, y + TILE);
+          // AA2: the painted bank wedge sits over the fill (30° pairs draw
+          // once at their first tile, spanning both)
+          const slopeStem = g === "/" ? "slope45_up" : g === "\\" ? "slope45_down" : g === "1" ? "slope30_up" : g === "3" ? "slope30_down" : null;
+          if (slopeStem !== null && this.textures.exists(`pb-${slopeStem}`)) {
+            const wpx = g === "1" || g === "3" ? TILE * 2 : TILE;
+            this.add.image(x, y - 2, `pb-${slopeStem}`).setOrigin(0, 0).setDisplaySize(wpx, TILE + 2).setDepth(2);
+          }
         }
       }
+    }
+
+    // AA2 run-based dressing: canopy fringe, planks, spikes, pool, pit soil
+    const runs = (pred: (c: number, r: number) => boolean, draw: (c0: number, c1: number, r: number) => void): void => {
+      for (let r = 0; r < h; r++) {
+        let c = 0;
+        while (c < w) {
+          if (!pred(c, r)) { c++; continue; }
+          let c1 = c;
+          while (c1 + 1 < w && pred(c1 + 1, r)) c1++;
+          draw(c, c1, r);
+          c = c1 + 1;
+        }
+      }
+    };
+    const srcH = (stem: string): number => (this.textures.get(`pb-${stem}`).getSourceImage() as HTMLImageElement).height;
+    if (this.textures.exists("pb-canopy_fringe_loop")) {
+      const dh = 26;
+      const ts = dh / srcH("canopy_fringe_loop");
+      runs(
+        (c, r) => r <= 1 && isSolid(glyphAt(this.grid, c, r)) && !isSolid(glyphAt(this.grid, c, r + 1)),
+        (c0, c1, r) => { this.add.tileSprite(c0 * TILE, (r + 1) * TILE - 4, (c1 - c0 + 1) * TILE, dh, "pb-canopy_fringe_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts); },
+      );
+    }
+    if (this.textures.exists("pb-plank_loop")) {
+      const dh = 9;
+      const ts = dh / srcH("plank_loop");
+      runs(
+        (c, r) => glyphAt(this.grid, c, r) === "=",
+        (c0, c1, r) => {
+          this.add.tileSprite(c0 * TILE, r * TILE - 2, (c1 - c0 + 1) * TILE, dh, "pb-plank_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
+          if (this.textures.exists("pb-plank_cap_l")) this.add.image(c0 * TILE + 1, r * TILE - 2, "pb-plank_cap_l").setOrigin(1, 0).setScale(ts).setDepth(2);
+          if (this.textures.exists("pb-plank_cap_r")) this.add.image((c1 + 1) * TILE - 1, r * TILE - 2, "pb-plank_cap_r").setOrigin(0, 0).setScale(ts).setDepth(2);
+        },
+      );
+    }
+    if (this.textures.exists("pb-spikes_nibs_loop")) {
+      const dh = 15;
+      const ts = dh / srcH("spikes_nibs_loop");
+      runs(
+        (c, r) => glyphAt(this.grid, c, r) === "^",
+        (c0, c1, r) => { this.add.tileSprite(c0 * TILE, (r + 1) * TILE - dh, (c1 - c0 + 1) * TILE, dh, "pb-spikes_nibs_loop").setOrigin(0, 0).setDepth(3).setTileScale(ts); },
+      );
+    }
+    if (this.textures.exists("pb-pool_ink_loop")) {
+      const dh = 16;
+      const ts = dh / srcH("pool_ink_loop");
+      runs(
+        (c, r) => glyphAt(this.grid, c, r) === "w" && glyphAt(this.grid, c, r - 1) !== "w",
+        (c0, c1, r) => { this.add.tileSprite(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, dh, "pb-pool_ink_loop").setOrigin(0, 0).setDepth(3).setTileScale(ts); },
+      );
+    }
+    if (this.textures.exists("pb-pit_inner_tile")) {
+      const scale = 0.055; // ~56px world pattern from the 1024 source
+      runs(
+        (c, r) => r > 1 && isSolid(glyphAt(this.grid, c, r)) && isSolid(glyphAt(this.grid, c, r - 1)) && glyphAt(this.grid, c, r) !== "~",
+        (c0, c1, r) => {
+          const t = this.add.tileSprite(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, TILE, "pb-pit_inner_tile").setOrigin(0, 0).setDepth(1).setTileScale(scale);
+          t.tilePositionX = (c0 * TILE) / scale;
+          t.tilePositionY = (r * TILE) / scale;
+        },
+      );
     }
 
     // painted strips along every exposed surface run (strips-over-tiles)
@@ -434,7 +542,10 @@ export class PaintScene extends Phaser.Scene {
           const surface = (cc: number): boolean => {
             if (r <= 2) return false; // canopy rows carry fringe, never ground strips
             const g = glyphAt(this.grid, cc, r);
-            return isSolid(g) && g !== "~" && !isSolid(glyphAt(this.grid, cc, r - 1)) && !isSlope(glyphAt(this.grid, cc, r - 1));
+            if (!isSolid(g) || g === "~") return false;
+            // R6: a lip under a near ceiling reads as a double strip — suppress
+            for (let k = 1; k <= 3; k++) if (isSolid(glyphAt(this.grid, cc, r - k))) return false;
+            return !isSlope(glyphAt(this.grid, cc, r - 1));
           };
           if (!surface(c)) { c++; continue; }
           let c1 = c;
@@ -451,6 +562,22 @@ export class PaintScene extends Phaser.Scene {
           if (this.textures.exists("pb-strip_cap_r") && c1 < w - 1) {
             this.add.image((c1 + 1) * TILE - 2, r * TILE - 7, "pb-strip_cap_r").setOrigin(0, 0).setScale(tileScale).setDepth(2);
           }
+          c = c1 + 1;
+        }
+      }
+    }
+    if (this.textures.exists("pb-strip_ice_loop")) {
+      const src = this.textures.get("pb-strip_ice_loop").getSourceImage() as HTMLImageElement;
+      const dispH = 30;
+      const ts = dispH / src.height;
+      for (let r = 3; r < h; r++) {
+        let c = 0;
+        const icy = (cc: number): boolean => glyphAt(this.grid, cc, r) === "~" && !isSolid(glyphAt(this.grid, cc, r - 1));
+        while (c < w) {
+          if (!icy(c)) { c++; continue; }
+          let c1 = c;
+          while (c1 + 1 < w && icy(c1 + 1)) c1++;
+          this.add.tileSprite(c * TILE, r * TILE - 7, (c1 - c + 1) * TILE, dispH, "pb-strip_ice_loop").setOrigin(0, 0).setDepth(2).setTileScale(ts);
           c = c1 + 1;
         }
       }
@@ -485,9 +612,14 @@ export class PaintScene extends Phaser.Scene {
           const img = this.add.image(cx, cy, this.tex("prop_vine")).setDepth(3);
           img.setScale(TILE / img.height);
         } else if (g === "C") {
-          const flag = this.add.graphics().setDepth(3);
-          flag.fillStyle(0x8a6140).fillRect(cx - 1, cy - 10, 2, 26);
-          flag.fillStyle(0xf0c040).fillTriangle(cx + 1, cy - 10, cx + 12, cy - 6, cx + 1, cy - 2);
+          if (this.textures.exists("pb-checkpoint_easel")) {
+            const img = this.add.image(cx, (r + 1) * TILE, "pb-checkpoint_easel").setOrigin(0.5, 1).setDepth(3);
+            img.setScale(24 / img.height);
+          } else {
+            const flag = this.add.graphics().setDepth(3);
+            flag.fillStyle(0x8a6140).fillRect(cx - 1, cy - 10, 2, 26);
+            flag.fillStyle(0xf0c040).fillTriangle(cx + 1, cy - 10, cx + 12, cy - 6, cx + 1, cy - 2);
+          }
         }
       }
     }
@@ -502,9 +634,12 @@ export class PaintScene extends Phaser.Scene {
         : name === "head" ? "head_neutral"
         : name === "hair" ? "hair_still"
         : name === "rotor" ? "rotor_a"
-        : name.startsWith("hand") ? "hand_open"
+        : name.startsWith("hand") ? "hand_fist"
         : "shoe_neutral";
-      const img = this.add.image(0, 0, this.tex(stem)).setScale(RIG_SRC_SCALE);
+      // R2a: hands read oversized at full part scale — they draw at 0.8×
+      const partScale = name.startsWith("hand") ? RIG_SRC_SCALE * 0.8 : RIG_SRC_SCALE;
+      const img = this.add.image(0, 0, this.tex(stem)).setScale(partScale);
+      if (name === "handB") img.setFlipX(true);
       if (name === "rotor") img.setVisible(false);
       this.parts.set(name, img);
       this.rigRoot.add(img);

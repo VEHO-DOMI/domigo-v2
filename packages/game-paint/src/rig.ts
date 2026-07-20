@@ -93,8 +93,8 @@ export const rigPose = (input: RigInput): RigPose => {
     scaleY: 1,
     body: P(0, 0),
     head: P(0, -14),
-    handF: P(6, -1),
-    handB: P(-6, -1),
+    handF: P(5, 2),
+    handB: P(-4, 3),
     footF: P(4, 12),
     footB: P(-4, 12),
     hair: P(1, -20),
@@ -161,8 +161,10 @@ export const rigPose = (input: RigInput): RigPose => {
       break;
     }
     case "fall": {
-      pose.handF = P(11, -8, 0.5);
-      pose.handB = P(-11, -8, -0.5);
+      // R2a: a low asymmetric reach — the old symmetric double-spread at
+      // shoulder height was Koki's "jazz hands"
+      pose.handF = P(9, -5, 0.35);
+      pose.handB = P(-6, 1, -0.15);
       const dangle = rm ? 0 : Math.sin((input.tick % 14) / 14 * TAU) * 1.2;
       pose.footF = P(4 + dangle, 13);
       pose.footB = P(-4 - dangle, 13);

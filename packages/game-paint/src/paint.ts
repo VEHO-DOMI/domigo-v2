@@ -45,7 +45,8 @@ export const PAINT = {
   riseCap: -10 * 256, // D: rise clamp −10 px/t
 
   // ── hover (the quill-rotor) ────────────────────────────────────────────────
-  hoverTicks: 50, // D: hold jump in air → 50-tick glide
+  // R5 (Koki 2026-07-20): the glide is UNLIMITED while held — a deliberate
+  // deviation from the studied 50-tick fuel (kid-friendlier; his call).
   hoverFallCap: 256, // D: slow fall capped at +1 px/t while hovering
 
   // ── forgiveness (OURS — the studied game had none; players are 10) ────────

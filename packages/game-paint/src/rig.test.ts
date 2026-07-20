@@ -60,7 +60,7 @@ describe("the rig (animation principles as tick math)", () => {
     const slow = rigPose(input({ pose: "charge", charge: 0, tick: 3 }));
     const fast = rigPose(input({ pose: "charge", charge: PAINT.chargeMax, tick: 3 }));
     // both orbit off the rest position; the fast orbit has moved further round
-    expect(slow.handF.dx).not.toBe(9);
+    expect(slow.handF.dx).not.toBe(5); // 5 = the rest dx
     expect(fast.handF).not.toEqual(slow.handF);
   });
 
