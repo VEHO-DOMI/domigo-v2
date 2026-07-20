@@ -28,11 +28,11 @@ export const PAINT = {
   walkMax: 320, // T: 1.25 px/t (studied top speeds are data-driven — tune by feel)
   runMax: 576, // T: 2.25 px/t
   groundAccel: 32, // T: 0.125 px/t²
-  airControlPct: 50, // T: % of ground accel while airborne
+  airControlPct: 50, // T: retired from steering by R3-M2 (air snaps); kept for tuning surfaces
   runEngage: 448, // T: momentum ≥ 1.75 px/t engages run state…
   runDrop: 384, // T: …and drops below 1.5 px/t (hysteresis)
-  frictionNormal: 6, // D: ground decel scale, normal worlds
-  frictionSlippery: 3, // D: slippery worlds decay HALF as fast (3 < 6)
+  frictionNormal: 6, // T (R3-M5): the source's 6/3 is a slope additive, not friction —
+  frictionSlippery: 3, // T: our halved-decay ice is a shipped simplification of its slow-turn state
   frictionBase: 8, // T: decel = friction × base subs/tick (48 normal / 24 slippery)
 
   // ── jump & gravity (vy in subs/tick; gravity in subs/tick²) ───────────────
@@ -40,7 +40,8 @@ export const PAINT = {
   hangJumpVy: -5 * 256, // D (round-2 corrected): the hang-jump is a FULL jump — you clear the ledge by jumping up-and-over; Rayman 1 has no pull-up
   jumpHoldTicks: 12, // D: gravity suppressed while the button is held, ≤12 ticks
   lateNudgeTick: 23, // D: one extra gravity unit fires at jump-tick 23
-  gravity: 256, // D: +1 px/t per tick
+  gravity: 256, // D: +1 px/t — applied on the clock below, never every tick
+  gravityEveryTicks: 3, // D: the mod-3 airborne counter (R3-M1) — the float lives here
   fallCap: 4 * 256, // D: terminal fall +4 px/t
   riseCap: -10 * 256, // D: rise clamp −10 px/t
 
@@ -59,7 +60,7 @@ export const PAINT = {
   airCharge: 32, // D: an air throw uses a fixed charge
   fistTier1Max: 20, // T: charge < 21 → speed tier 1
   fistTier2Max: 41, // T: charge < 42 → speed tier 2
-  fistSpeeds: [5 * 256, 8 * 256, 11 * 256], // D: px/t by charge tier
+  fistSpeeds: [5 * 256, 8 * 256, 11 * 256], // D values; the CHARGE-tiering is ours (source tiers by upgrade level — R3-M4)
   fistRunBoostCap: 16 * 256, // D: total launch speed cap with run boost
   fistTravelBaseTiles: 4, // T: travel = base + charge/8 tiles, then U-turn
   fistReturnAccel: 128, // T: +0.5 px/t per tick accelerating home

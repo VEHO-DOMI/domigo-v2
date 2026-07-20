@@ -29,12 +29,16 @@ export const faceFor = (pose: PlayerPose, tick: number, celebrating: boolean): s
 export const bodyStemFor = (pose: PlayerPose): string =>
   pose === "charge" ? "body_crouch" : pose === "run" || pose === "walk" ? "body_lean" : "body_idle";
 
-// R2a: the relaxed FIST is the default hand — open palms read as jazz hands
-// at rest; they belong to falling (spread) only. Grips for holds.
-export const handStemFor = (pose: PlayerPose): string =>
-  pose === "hang" || pose === "swing" || pose === "vine" ? "hand_grip"
-  : pose === "fall" ? "hand_open"
-  : "hand_fist";
+// The study dossier's hand language (level-anatomy.md): fist = doing (the
+// neutral mitt), open = feeling/effort, grip = holds. At most ONE hand opens
+// in any locomotion pose — twin open palms was the jazz-hands read; the run
+// pairs a closed lead with an open trail, the fall the inverse.
+export const handStemsFor = (pose: PlayerPose): { front: string; back: string } =>
+  pose === "hang" || pose === "swing" || pose === "vine" ? { front: "hand_grip", back: "hand_grip" }
+  : pose === "fall" || pose === "hit" ? { front: "hand_open", back: "hand_fist" }
+  : pose === "run" ? { front: "hand_fist", back: "hand_open" }
+  : pose === "hover" ? { front: "hand_open", back: "hand_open" }
+  : { front: "hand_fist", back: "hand_fist" };
 
 export const shoeStemFor = (pose: PlayerPose): string =>
   pose === "jump" || pose === "hover" ? "shoe_tucked" : "shoe_neutral";

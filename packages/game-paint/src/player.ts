@@ -41,6 +41,7 @@ export interface PlayerState {
   onIce: boolean;
   // jump machinery
   jumpTicks: number; // −1 = not in a jump arc
+  airTicks: number; // ticks since leaving the ground (drives the gravity clock)
   holdLeft: number; // gravity-suppression ticks remaining
   coyote: number;
   buffer: number;
@@ -51,6 +52,7 @@ export interface PlayerState {
   // grabs
   hangAt: { c: number; r: number } | null;
   climbing: boolean;
+  vineCooldown: number; // R3-M7: 10-tick no-regrab window after a vine exit
   swing: SwingState | null;
   // recovery
   iframes: number;
@@ -84,7 +86,11 @@ export interface StepOpts {
 
 const HANG_DROP_PX = 26; // T: feet hang this far below a grabbed ledge top
 const HAND_ROW_PX = 24; // T: grab probe height above the feet
-const CLIMB_V = Math.round(1.5 * SUBS); // T: vine climb speed 1.5 px/t
+const CLIMB_V = Math.round(1.5 * SUBS); // T: vine climb speed 1.5 px/t (source ±1 reads slow at our body size)
+const AIR_SNAP_MIN = 2 * SUBS; // D: Reset_air_speed normal-air table = 2 px/t toward input
+const AIR_SNAP_MAX = 7 * SUBS; // D: launch momentum carried into the air, capped at 7 px/t
+const VINE_JUMP_VY = -3 * SUBS; // D: ray_jump main_etat 4 → speed_y = −3
+const VINE_REGRAB_TICKS = 10; // D: the 10-tick no-regrab timer after a vine exit
 const SPRING_VY = -8 * SUBS; // T: spring bounce −8 px/t
 const RING_REACH_PX = 14; // T: ring grab radius
 
@@ -98,6 +104,7 @@ export const spawnPlayer = (xPx: number, feetYPx: number): PlayerState => ({
   pose: "fall",
   onIce: false,
   jumpTicks: -1,
+  airTicks: 0,
   holdLeft: 0,
   coyote: 0,
   buffer: 0,
@@ -105,6 +112,7 @@ export const spawnPlayer = (xPx: number, feetYPx: number): PlayerState => ({
   charge: -1,
   hangAt: null,
   climbing: false,
+  vineCooldown: 0,
   swing: null,
   iframes: 0,
   stun: 0,
@@ -202,10 +210,17 @@ export const stepPlayer = (
   const slippery = opts.slippery === true || s.onIce;
   if (!controlsLocked && dirInput !== 0) {
     s.facing = dirInput as 1 | -1;
-    const target = (opts.canRun ? PAINT.runMax : PAINT.walkMax) * dirInput;
-    const accel = s.grounded ? PAINT.groundAccel : Math.round((PAINT.groundAccel * PAINT.airControlPct) / 100);
-    if (s.vx < target) s.vx = Math.min(s.vx + accel, target);
-    else if (s.vx > target) s.vx = Math.max(s.vx - accel, target);
+    if (s.grounded) {
+      const target = (opts.canRun ? PAINT.runMax : PAINT.walkMax) * dirInput;
+      if (s.vx < target) s.vx = Math.min(s.vx + PAINT.groundAccel, target);
+      else if (s.vx > target) s.vx = Math.max(s.vx - PAINT.groundAccel, target);
+    } else {
+      // R3-M2: canonical air control SNAPS — a direction press re-derives the
+      // air speed from the state table (±2 px/t base, launch momentum kept up
+      // to 7). The old half-second inertial ramp was our invention.
+      const mag = Math.min(Math.max(Math.abs(s.vx), AIR_SNAP_MIN), AIR_SNAP_MAX);
+      s.vx = mag * dirInput;
+    }
   } else if (s.grounded) {
     s.vx = groundDecay(s.vx, slippery);
   }
@@ -214,7 +229,8 @@ export const stepPlayer = (
   const centerCol = Math.floor(s.x / SUBS / TILE);
   const midRow = Math.floor((s.y / SUBS - BODY_H / 2) / TILE);
   const vineHere = isVine(glyphAt(grid, centerCol, midRow));
-  if (!s.climbing && vineHere && (pad.up || pad.down) && !s.grounded) {
+  if (s.vineCooldown > 0) s.vineCooldown--;
+  if (!s.climbing && vineHere && (pad.up || pad.down) && !s.grounded && s.vineCooldown === 0) {
     s.climbing = true;
     s.x = (centerCol * TILE + TILE / 2) * SUBS; // snap to the column
     s.vx = 0;
@@ -223,9 +239,11 @@ export const stepPlayer = (
     if (!vineHere) s.climbing = false;
     else if (jumpPressed) {
       s.climbing = false;
-      s.vy = PAINT.jumpVy;
+      s.vy = VINE_JUMP_VY; // R3-M7: the vine jump is the weak −3, not the ground −5
       s.jumpTicks = 0;
+      s.airTicks = 0;
       s.holdLeft = PAINT.jumpHoldTicks;
+      s.vineCooldown = VINE_REGRAB_TICKS;
       events.push({ type: "jumped" });
     } else {
       s.vy = pad.up ? -CLIMB_V : pad.down ? CLIMB_V : 0;
@@ -254,6 +272,7 @@ export const stepPlayer = (
   if (!controlsLocked && wantsJump && (s.grounded || s.coyote > 0)) {
     s.vy = PAINT.jumpVy;
     s.jumpTicks = 0;
+    s.airTicks = 0;
     s.holdLeft = PAINT.jumpHoldTicks;
     s.grounded = false;
     s.coyote = 0;
@@ -271,9 +290,17 @@ export const stepPlayer = (
     const inHoldWindow = s.jumpTicks >= 0 && s.holdLeft > 0 && pad.jump;
     if (inHoldWindow) {
       s.holdLeft--;
+      s.airTicks = 0; // the decay clock starts when the hold releases
     } else {
-      s.vy += PAINT.gravity;
+      // R3-M1: the canonical gravity CLOCK — +1 px/t only every 3rd decaying
+      // tick (the mod-3 counter in the source's air state). The famous float
+      // lives here: a held jump apexes exactly 105 px, a tap 45.
+      // rising, the current step dwells its full 3 ticks before the first +1
+      // (the post-hold float); falling, the clock bites immediately
+      const due = s.vy < 0 ? s.airTicks > 0 && s.airTicks % PAINT.gravityEveryTicks === 0 : s.airTicks % PAINT.gravityEveryTicks === 0;
+      if (due) s.vy += PAINT.gravity;
       if (s.jumpTicks === PAINT.lateNudgeTick) s.vy += PAINT.gravity; // the studied late nudge
+      s.airTicks++;
     }
     if (s.jumpTicks >= 0) s.jumpTicks++;
 
@@ -312,7 +339,8 @@ export const stepPlayer = (
   // ── the ledge grab ──
   if (
     opts.canHang === true && !controlsLocked && !s.grounded && s.vy > 0 && !s.hovering &&
-    dirInput !== 0 && dirInput === s.facing
+    dirInput !== 0 && dirInput === s.facing &&
+    (s.jumpTicks === -1 || s.jumpTicks > 8) // R3-M10: no instant regrab of the ledge you just left
   ) {
     const handY = s.y / SUBS - HAND_ROW_PX;
     const c = Math.floor((s.x / SUBS + s.facing * (BODY_W / 2 + 2)) / TILE);
@@ -346,11 +374,17 @@ export const stepPlayer = (
   s.grounded = moved.grounded;
   s.onIce = moved.onIce;
 
+  if (s.grounded && !wasGrounded && s.jumpTicks >= 0 && s.jumpTicks < 3) {
+    // R3-M10: launch frames overlapping the floor may not re-land instantly
+    s.grounded = false;
+  }
   if (s.grounded && !wasGrounded) {
     s.landedAgo = 0;
     s.jumpTicks = -1;
+    s.airTicks = 0;
     s.holdLeft = 0;
     s.hovering = false;
+    s.iframes = Math.min(s.iframes, 90); // R3-M9: landing clamps hit-flicker to 90
     events.push({ type: "landed", impact: fallSpeedPx });
   }
   if (!s.grounded && wasGrounded && s.jumpTicks === -1) {
@@ -363,7 +397,8 @@ export const stepPlayer = (
   if (moved.onSpring && s.grounded && !controlsLocked) {
     s.vy = SPRING_VY;
     s.grounded = false;
-    s.jumpTicks = 0;
+    s.jumpTicks = 12; // R3-M8: IS_ON_RESSORT_BLOC sets jump_time = 12
+    s.airTicks = 0;
     s.holdLeft = 0;
     events.push({ type: "sprung" });
   }

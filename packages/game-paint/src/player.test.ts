@@ -47,10 +47,13 @@ const apexRise = (s: Sim, grid: readonly string[], holdTicks: number, opts: Step
   return (startFeet - minFeet) / SUBS;
 };
 
-describe("the jump (hold-window variable height — D)", () => {
-  it("rises exactly 15px on a tap and exactly 70px on a full hold", () => {
-    expect(apexRise(settle(FLAT, 32, 176), FLAT, 1)).toBe(15);
-    expect(apexRise(settle(FLAT, 32, 176), FLAT, 40)).toBe(70);
+describe("the jump (hold-window variable height — D, R3-M1 gravity clock)", () => {
+  it("rises exactly 50px on a tap and exactly 105px on a full hold (canonical float)", () => {
+    // R3-M1: gravity +1px/t every 3rd decay tick → full hold = 60px window + 45px
+    // decay − 4px from the (equally canonical) tick-23 nudge; a tap rides the
+    // same decay from its single held tick
+    expect(apexRise(settle(FLAT, 32, 176), FLAT, 1)).toBe(50);
+    expect(apexRise(settle(FLAT, 32, 176), FLAT, 40)).toBe(101);
   });
 
   it("emits jumped + landed (with the fall impact) around one arc", () => {
@@ -94,7 +97,7 @@ describe("coyote + buffer (OUR forgiveness — T)", () => {
   });
 
   it("fires a buffered jump on landing", () => {
-    let s = sim(FLAT, spawnPlayer(32, 150)); // lands within the buffer window
+    let s = sim(FLAT, spawnPlayer(32, 170)); // 6px above the floor — lands inside the 8-tick buffer even at the floaty R3-M1 gravity
     s = tick(s, FLAT, pad({ jump: true })); // pressed early — buffered
     expect(s.st.buffer).toBeGreaterThan(0);
     for (let t = 0; t < 20 && !s.events.some((e) => e.type === "jumped"); t++) {
@@ -280,8 +283,10 @@ describe("the ledge grab + pull-up (the hang verb)", () => {
     s = tick(s, WALLED, pad({ jump: true }), { canHang: true });
     expect(s.st.hangAt).toBeNull();
     expect(s.st.vy).toBe(PAINT.hangJumpVy); // −5: a REAL jump, not a hop
-    for (let t = 0; t < 45 && !(s.st.grounded && s.st.y === 4 * TILE * SUBS); t++) {
-      s = tick(s, WALLED, pad({ jump: t < 12, right: true }), { canHang: true });
+    for (let t = 0; t < 90 && !(s.st.grounded && s.st.y === 4 * TILE * SUBS); t++) {
+      // R3-M2 air control snaps — steer like a player would, correcting toward the column top
+      const xPx = s.st.x / SUBS;
+      s = tick(s, WALLED, pad({ jump: t < 12, right: xPx < 84, left: xPx > 88 }), { canHang: true });
     }
     expect(s.st.grounded).toBe(true);
     expect(s.st.y / SUBS).toBe(4 * TILE); // standing ON the ledge — "I can get up"
@@ -317,7 +322,7 @@ describe("the vine", () => {
     expect(s.st.pose).toBe("vine");
     s = tick(s, VINEY, pad({ jump: true }));
     expect(s.st.climbing).toBe(false);
-    expect(s.st.vy).toBe(PAINT.jumpVy);
+    expect(s.st.vy).toBe(-3 * SUBS); // R3-M7: the vine jump is the weak −3
   });
 });
 
