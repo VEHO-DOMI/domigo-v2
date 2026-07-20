@@ -125,22 +125,82 @@ export const moveBody = (
 ): MoveResult => {
   const halfW = (BODY_W / 2) * SUBS;
   let hitWall: -1 | 0 | 1 = 0;
+  let hitCeiling = false;
   let vx = vxSubs;
   let vy = vySubs;
+  let x = xSubs;
+  let y = ySubs;
+  let grounded = false;
+  let freshLanding = false;
+  let surfaceGlyph: string | null = null;
 
-  // ── horizontal ──
-  let nx = xSubs + vx;
+  // ── VERTICAL FIRST, at the current x (the canonical order — resolving X
+  // first let a diagonal fall step off the edge column before the floor
+  // check ran there: the feel-gate clip-through) ──
+  if (wasGrounded && vy >= 0) {
+    const feetPx = y / SUBS;
+    const fromRow = Math.floor((feetPx - GROUND_SNAP_PX) / TILE);
+    const found = groundSurfaceAt(grid, x / SUBS, fromRow, 3);
+    if (found && Math.abs(found.yPx - feetPx) <= GROUND_SNAP_PX + Math.abs(vx) / SUBS) {
+      y = Math.round(found.yPx * SUBS);
+      vy = 0;
+      grounded = true;
+      surfaceGlyph = found.glyph;
+    }
+  }
+  if (!grounded) {
+    const ny = y + vy;
+    if (vy > 0) {
+      const oldFeet = y / SUBS;
+      const newFeet = ny / SUBS;
+      const xPx = x / SUBS;
+      const fromRow = Math.floor(oldFeet / TILE) - 1;
+      const rowsToScan = Math.floor(newFeet / TILE) - fromRow + 2;
+      let landed = false;
+      for (let r = Math.max(fromRow, 0); r < Math.min(fromRow + rowsToScan, grid.length); r++) {
+        const c = Math.floor(xPx / TILE);
+        const g = glyphAt(grid, c, r);
+        let surfY: number | null = null;
+        if (isSlope(g)) surfY = slopeSurfaceYPx(g, c, r, xPx);
+        else if (isSolid(g)) surfY = r * TILE;
+        else if (isOneWay(g)) surfY = oldFeet <= r * TILE ? r * TILE : null; // from above only
+        if (surfY !== null && oldFeet <= surfY && newFeet >= surfY) {
+          y = Math.round(surfY * SUBS);
+          vy = 0;
+          grounded = true;
+          freshLanding = true;
+          surfaceGlyph = g;
+          landed = true;
+          break;
+        }
+      }
+      if (!landed) y = ny;
+    } else if (vy < 0) {
+      const headPx = ny / SUBS - BODY_H;
+      const r = Math.floor(headPx / TILE);
+      const c = Math.floor(x / SUBS / TILE);
+      if (isSolid(glyphAt(grid, c, r))) {
+        y = Math.round(((r + 1) * TILE + BODY_H) * SUBS);
+        vy = 0;
+        hitCeiling = true;
+      } else {
+        y = ny;
+      }
+    }
+  }
+
+  // ── HORIZONTAL SECOND, at the resolved y ──
+  let nx = x + vx;
   if (vx !== 0) {
     const dir = vx > 0 ? 1 : -1;
     const edgeSubs = nx + dir * halfW;
     const edgePx = edgeSubs / SUBS;
     const c = Math.floor((dir > 0 ? Math.ceil(edgePx) - 0.001 : Math.floor(edgePx)) / TILE);
-    const feetPx = ySubs / SUBS;
+    const feetPx = y / SUBS;
     const headRow = Math.floor((feetPx - BODY_H + 1) / TILE);
-    // Grounded movers get a step-up allowance: a surface whose top sits within
-    // snap range of the feet is a STEP (surface-follow will climb it), not a
-    // wall — without this, walking up a slope onto a shelf reads as a crash.
-    const feetProbePx = wasGrounded ? feetPx - GROUND_SNAP_PX - 1 : feetPx - 1;
+    // Grounded movers keep the step-up allowance (a surface top within snap
+    // range is a STEP for the follow pass, never a wall).
+    const feetProbePx = (wasGrounded || grounded) ? feetPx - GROUND_SNAP_PX - 1 : feetPx - 1;
     const feetRow = Math.floor(feetProbePx / TILE);
     for (let r = headRow; r <= feetRow; r++) {
       if (isWall(glyphAt(grid, c, r))) {
@@ -153,63 +213,36 @@ export const moveBody = (
     }
   }
 
-  // ── vertical ──
-  let ny = ySubs;
-  let grounded = false;
-  let surfaceGlyph: string | null = null;
-
-  if (wasGrounded && vy >= 0) {
-    // grounded surface-follow: snap to the surface under the new x
-    const feetPx = ySubs / SUBS;
-    const fromRow = Math.floor((feetPx - GROUND_SNAP_PX) / TILE);
-    const found = groundSurfaceAt(grid, nx / SUBS, fromRow, 3);
-    if (found && Math.abs(found.yPx - feetPx) <= GROUND_SNAP_PX + Math.abs(vx) / SUBS) {
-      ny = Math.round(found.yPx * SUBS);
-      vy = 0;
-      grounded = true;
+  // continuing ground movement re-follows the surface at the new x (slopes,
+  // steps, walk-offs). A FRESH landing this tick keeps its grounded state —
+  // the next tick's follow decides about the edge (that beat is what feeds
+  // the coyote window instead of a phantom slide-past).
+  if (grounded && !freshLanding) {
+    const feetPx = y / SUBS;
+    const found = groundSurfaceAt(grid, nx / SUBS, Math.floor((feetPx - GROUND_SNAP_PX) / TILE), 3);
+    if (found && Math.abs(found.yPx - feetPx) <= GROUND_SNAP_PX + Math.abs(vxSubs) / SUBS) {
+      y = Math.round(found.yPx * SUBS);
       surfaceGlyph = found.glyph;
-    }
-    // else: walked off — airborne from here (coyote is the player brain's job)
-  }
-
-  if (!grounded) {
-    ny = ySubs + vy;
-    if (vy > 0) {
-      // falling: land on the first surface whose Y the feet crossed
-      const oldFeet = ySubs / SUBS;
-      const newFeet = ny / SUBS;
-      const xPx = nx / SUBS;
-      const fromRow = Math.floor(oldFeet / TILE) - 1;
-      const rowsToScan = Math.floor(newFeet / TILE) - fromRow + 2;
-      for (let r = Math.max(fromRow, 0); r < Math.min(fromRow + rowsToScan, grid.length); r++) {
-        const c = Math.floor(xPx / TILE);
-        const g = glyphAt(grid, c, r);
-        let surfY: number | null = null;
-        if (isSlope(g)) surfY = slopeSurfaceYPx(g, c, r, xPx);
-        else if (isSolid(g)) surfY = r * TILE;
-        else if (isOneWay(g)) surfY = oldFeet <= r * TILE ? r * TILE : null; // from above only
-        if (surfY !== null && oldFeet <= surfY && newFeet >= surfY) {
-          ny = Math.round(surfY * SUBS);
-          vy = 0;
-          grounded = true;
-          surfaceGlyph = g;
-          break;
-        }
-      }
-    } else if (vy < 0) {
-      // rising: clamp under solid ceilings (one-ways/slopes never block ascent)
-      const headPx = ny / SUBS - BODY_H;
-      const r = Math.floor(headPx / TILE);
-      const c = Math.floor(nx / SUBS / TILE);
-      if (isSolid(glyphAt(grid, c, r))) {
-        ny = Math.round(((r + 1) * TILE + BODY_H) * SUBS);
-        vy = 0;
-        return finish(grid, nx, ny, vx, vy, false, null, hitWall, true);
-      }
+    } else {
+      grounded = false;
+      surfaceGlyph = null;
     }
   }
 
-  return finish(grid, nx, ny, vx, vy, grounded, surfaceGlyph, hitWall, false);
+  // ── THE EJECT INVARIANT (the original's recale/expel law): a body may
+  // never END a tick inside a solid — snap up to the offending tile's top ──
+  for (let tries = 0; tries < 3; tries++) {
+    const feetPx = y / SUBS;
+    const c = Math.floor(nx / SUBS / TILE);
+    const r = Math.floor((feetPx - 1) / TILE);
+    if (!isSolid(glyphAt(grid, c, r))) break;
+    y = r * TILE * SUBS;
+    vy = 0;
+    grounded = true;
+    surfaceGlyph = glyphAt(grid, c, r + 1) !== "." ? glyphAt(grid, c, r) : surfaceGlyph;
+  }
+
+  return finish(grid, nx, y, vx, vy, grounded, surfaceGlyph, hitWall, hitCeiling);
 };
 
 const toFlush = (flushPx: number, dir: number, halfW: number): number =>

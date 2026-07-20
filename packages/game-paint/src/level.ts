@@ -141,6 +141,17 @@ export const standable = (grid: Grid, c: number, r: number): boolean =>
   supportAt(grid, c, r) && headroom(grid, c, r);
 
 export const reachableCells = (rows: readonly string[], abilities: readonly Ability[]): Set<string> => {
+  const start = findGlyph(rows, "S");
+  if (!start) return new Set();
+  return reachFrom(rows, abilities, start);
+};
+
+/** Reachability from an arbitrary cell (settled onto its supporting node). */
+export const reachFrom = (
+  rows: readonly string[],
+  abilities: readonly Ability[],
+  from: { c: number; r: number },
+): Set<string> => {
   const grid = rows;
   const h = rows.length;
   const w = rows[0]?.length ?? 0;
@@ -148,9 +159,8 @@ export const reachableCells = (rows: readonly string[], abilities: readonly Abil
   const crossDx = hover ? HOVER_DX : JUMP_DX;
   const key = (c: number, r: number): string => `${c},${r}`;
 
-  const start = findGlyph(rows, "S");
-  if (!start) return new Set();
-  // the start marker floats where the player spawns; settle to its node
+  const start = from;
+  // settle to the supporting node under the cell
   let sr = start.r;
   while (sr < h - 1 && !supportAt(grid, start.c, sr)) sr++;
 
@@ -246,6 +256,16 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
   }
 
   for (const ph of level.phases) {
+    // W0-F8: worlds must be tall enough for the camera to breathe, and
+    // W0-F7: the top row is authored solid — the world is CLOSED (no
+    // reachable-looking painted "outside" above the playfield).
+    if (ph.rows.length < 20) {
+      failures.push({ phase: ph.id, law: "min-height", detail: `worlds are ≥20 rows (has ${ph.rows.length})` });
+    }
+    if (!(ph.rows[0] ?? "").split("").every((g) => g === "#")) {
+      failures.push({ phase: ph.id, law: "closed-top", detail: "row 0 must be fully solid (the canopy)" });
+    }
+
     const reach = reachableCells(ph.rows, level.abilities);
     const has = (c: number, r: number): boolean => reach.has(`${c},${r}`);
     const nearReachable = (c: number, r: number, dc: number, drUp: number, drDown: number): boolean => {
@@ -268,6 +288,31 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     for (const e of ph.entities) {
       if ((e.role === "cage" || e.role === "powerup") && !nearReachable(e.c, e.r, 2, 2, 4)) {
         failures.push({ phase: ph.id, law: "entity-reachable", detail: `${e.role} ${e.id} at (${e.c},${e.r}) unreachable` });
+      }
+    }
+
+    // W0-F3 · THE TRAP-POCKET LAW: from every node the player can reach, the
+    // exit must REMAIN reachable — no enterable pocket without an exit path.
+    if (exitCell) {
+      // Deliberately un-memoized: "reachable FROM a good node" does not imply
+      // "can reach the exit" (falling into a pit is one-way). Worlds are small;
+      // honesty beats cleverness here.
+      for (const k of reach) {
+        const parts = k.split(",").map(Number);
+        const c = parts[0] ?? 0;
+        const r = parts[1] ?? 0;
+        if (!standable(ph.rows, c, r)) continue;
+        const sub = reachFrom(ph.rows, level.abilities, { c, r });
+        let exitOk = false;
+        for (let dr = -1; dr <= 3 && !exitOk; dr++) {
+          for (let d = -1; d <= 1 && !exitOk; d++) {
+            if (sub.has(`${exitCell.c + d},${exitCell.r + dr}`)) exitOk = true;
+          }
+        }
+        if (!exitOk) {
+          failures.push({ phase: ph.id, law: "trap-pocket", detail: `standing at (${c},${r}) the exit is no longer reachable (softlock)` });
+          break; // one report per phase is enough to fail the gate
+        }
       }
     }
   }
