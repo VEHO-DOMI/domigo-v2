@@ -69,5 +69,41 @@ for (const f of fs.readdirSync(sheetsDir).filter(isSheet)) {
   }
 }
 
-if (failures === 0) console.log(`check-design-sheets: OK — ${fs.readdirSync(sheetsDir).filter(isSheet).length} sheets, all corpus ids + sections + register green`);
+// ── PAINT sheets (docs/design/g1/paint/chNN.md, sheet v4) ────────────────────
+// Same corpus-id truth + register law; NO scene anchors (Keen-story artifacts)
+// and the v4 section skeleton instead of the Keen one.
+const paintDir = `${sheetsDir}/paint`;
+if (fs.existsSync(paintDir)) {
+  for (const f of fs.readdirSync(paintDir).filter(isSheet)) {
+    const chId = f.replace(".md", "");
+    const text = fs.readFileSync(`${paintDir}/${f}`, "utf8");
+    const ch = chapters.get(chId);
+    if (!ch) { fail(`paint/${f}`, `no story chapter ${chId}`); continue; }
+    const unitNum = String(ch.unit).padStart(2, "0");
+    const unitDir = `${R}/content/corpus/units/g1-u${unitNum}`;
+    let ids = new Set();
+    try {
+      const g = JSON.parse(fs.readFileSync(`${unitDir}/grammar.json`));
+      for (const it of g.items) { ids.add(it.structureId); ids.add(it.id); }
+      const v = JSON.parse(fs.readFileSync(`${unitDir}/vocab.json`));
+      for (const it of v.items) ids.add(it.id);
+    } catch { fail(`paint/${f}`, `unit corpus missing at ${unitDir}`); continue; }
+    try {
+      const c = JSON.parse(fs.readFileSync(`${unitDir}/comprehension.json`));
+      for (const it of c.items ?? []) ids.add(it.id);
+    } catch { /* optional */ }
+    for (const m of text.matchAll(/`(g1u\d{2}\.[a-z]+\.[A-Za-z0-9.\-]+)`/g)) {
+      if (![...ids].some((k) => k === m[1] || k.startsWith(m[1]) || m[1].startsWith(k))) fail(`paint/${f}`, `corpus id not found: ${m[1]}`);
+    }
+    for (const sec of ["## §1 · Identity + palette card", "## §2 · Unit audit", "## §3 · Bewitchment concept", "## §4 · Role casting table", "## §5 · Phase-chain layout", "## §6 · Guardian", "## §7 · Task set", "## §8 · Asset list + gates", "goalDe", "whyDe"]) {
+      if (!text.includes(sec)) fail(`paint/${f}`, `missing v4 section marker "${sec}"`);
+    }
+    for (const banned of ["Monster", "Geist", "Blut", "böse", "Bösewicht", "schrei", "sterben", "tot "]) {
+      if (text.includes(banned)) fail(`paint/${f}`, `register-law violation: "${banned}"`);
+    }
+  }
+}
+
+const paintCount = fs.existsSync(paintDir) ? fs.readdirSync(paintDir).filter(isSheet).length : 0;
+if (failures === 0) console.log(`check-design-sheets: OK — ${fs.readdirSync(sheetsDir).filter(isSheet).length} keen + ${paintCount} paint sheets, all corpus ids + sections + register green`);
 else { console.error(`check-design-sheets: ${failures} failure(s)`); process.exit(1); }
