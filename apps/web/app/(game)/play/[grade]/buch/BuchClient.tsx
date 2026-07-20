@@ -12,6 +12,12 @@ const PaintGame = dynamic(() => import("@domigo/game-paint/game"), {
 export default function BuchClient(props: {
   level: PaintLevel;
   art: Record<string, string>;
+  tasks: Array<{
+    id: string; use: string; kind: "choice" | "typed"; storyDe: string; promptEn: string;
+    options?: string[]; answer: string;
+    hints: { deDesc?: string; deWord?: string; firstLetter?: string; length?: number };
+    grounding?: string;
+  }>;
   hubHref: string;
   buildSha?: string;
   startPhase?: string;

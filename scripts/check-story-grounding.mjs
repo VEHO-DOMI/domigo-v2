@@ -108,5 +108,39 @@ for (const f of fs.readdirSync(`${BASE}/keen`).filter((x) => x.endsWith(".tasks.
   }
 }
 
+// ── D) THE PAINTED BOOK: paint/ch01.tasks.json + paint level German fields ──
+try {
+  const paintTasks = JSON.parse(fs.readFileSync(`${BASE}/paint/ch01.tasks.json`, "utf8"));
+  for (const t of paintTasks.items) {
+    checkEn(`paint:${t.id}.promptEn`, t.promptEn, []);
+    for (const opt of t.options ?? []) checkEn(`paint:${t.id}.option`, opt, []);
+    checkEn(`paint:${t.id}.answer`, t.answer, []);
+    checkDe(`paint:${t.id}.storyDe`, t.storyDe);
+    // giveaway law, refined for phrase answers: closed-class tokens carry no
+    // lexical load, and for CHOICE items a token shared with a distractor
+    // cannot discriminate — only a DISTINCTIVE answer token leaking into the
+    // prompt spoils the task. Typed answers stay strict.
+    const CLOSED = new Set(["the", "a", "an", "is", "are", "it", "you", "your", "my", "to", "in", "on", "at", "and", "what", "i'm", "i"]);
+    const distractorToks = new Set((t.options ?? []).filter((o) => o !== t.answer).flatMap((o) => tokens(o)));
+    const ansToks = new Set(tokens(t.answer).filter((tk) => !CLOSED.has(tk)));
+    for (const tk of tokens(t.promptEn)) {
+      if (!ansToks.has(tk)) continue;
+      if (t.kind === "choice" && distractorToks.has(tk)) continue; // shared with a distractor: non-spoiling
+      fail(`paint:${t.id}`, `giveaway: answer token "${tk}" in promptEn`);
+    }
+    if (t.kind === "typed") {
+      for (const tk of tokens(t.storyDe)) {
+        if (ansToks.has(tk) && tk.length > 2) fail(`paint:${t.id}`, `giveaway: answer token "${tk}" in storyDe`);
+      }
+    }
+  }
+  const paintLevel = JSON.parse(fs.readFileSync(`${BASE}/paint/ch01.level.json`, "utf8"));
+  checkDe("paint:level.goalDe", paintLevel.goalDe);
+  checkDe("paint:level.whyDe", paintLevel.whyDe);
+  for (const h of paintLevel.hintsDe) checkDe("paint:level.hintsDe", h);
+} catch (e) {
+  fail("paint", `paint bundle unreadable: ${e.message}`);
+}
+
 if (failures === 0) console.log("check-story-grounding: OK — prologue, beat scenes, headers, boss and game tasks all grounded, giveaway-free, in register");
 else { console.error(`check-story-grounding: ${failures} failure(s)`); process.exit(1); }

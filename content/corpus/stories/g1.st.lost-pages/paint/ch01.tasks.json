@@ -1,0 +1,992 @@
+{
+ "schema": "gameTasks@1",
+ "chapter": "ch01",
+ "unit": "g1-u01",
+ "note": "THE PAINTED BOOK ch01 — authored fresh 2026-07-20",
+ "items": [
+  {
+   "id": "g1.paint.ch01.q01",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Eine Zahlen-Motte mit einer 3 auf den Flügeln flattert dir um die Nase — ruf ihren Namen, dann setzt sie sich brav auf die Lampe!",
+   "promptEn": "3",
+   "options": [
+    "three",
+    "two",
+    "ten"
+   ],
+   "answer": "three",
+   "hints": {
+    "deDesc": "Wie heißt die Zahl 3 auf Englisch?",
+    "deWord": "die Zahl 3 (drei)"
+   },
+   "grounding": "u01: numbers 1–25 (three)"
+  },
+  {
+   "id": "g1.paint.ch01.q02",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Die nächste Zahlen-Motte trägt eine 9 — schnell, wie heißt sie?",
+   "promptEn": "9",
+   "options": [
+    "nine",
+    "five",
+    "one"
+   ],
+   "answer": "nine",
+   "hints": {
+    "deDesc": "Wie heißt die Zahl 9 auf Englisch?",
+    "deWord": "die Zahl 9 (neun)"
+   },
+   "grounding": "u01: numbers 1–25 (nine)"
+  },
+  {
+   "id": "g1.paint.ch01.q03",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Eine Motte summt ihr Zahlwort — aber auf welchem Lampenschirm mit Ziffer will sie landen?",
+   "promptEn": "twenty",
+   "options": [
+    "20",
+    "12",
+    "2"
+   ],
+   "answer": "20",
+   "hints": {
+    "deDesc": "Welche Ziffer passt zu diesem Zahlwort?",
+    "deWord": "die Zahl 20 (zwanzig)"
+   },
+   "grounding": "u01: numbers 1–25 (twenty)"
+  },
+  {
+   "id": "g1.paint.ch01.q04",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Die Motte mit der 16 wirbelt im Kreis — sag ihr Wort, dann wird sie ruhig!",
+   "promptEn": "16",
+   "options": [
+    "sixteen",
+    "six",
+    "seven"
+   ],
+   "answer": "sixteen",
+   "hints": {
+    "deDesc": "Wie heißt die Zahl 16 auf Englisch? Pass auf: nicht die 6!",
+    "deWord": "die Zahl 16 (sechzehn)"
+   },
+   "grounding": "u01: numbers 1–25 (sixteen vs six)"
+  },
+  {
+   "id": "g1.paint.ch01.q05",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Der Wasserfarben-Kasten wirft einen ROTEN Klecks nach dir — ruf seine Farbe, dann zerplatzt er zu Blütenblättern!",
+   "promptEn": "What colour is it?",
+   "options": [
+    "red",
+    "green",
+    "blue"
+   ],
+   "answer": "red",
+   "hints": {
+    "deDesc": "Der Klecks ist rot — wie heißt das auf Englisch?",
+    "deWord": "rot"
+   },
+   "grounding": "u01: colours (red); what colour is it"
+  },
+  {
+   "id": "g1.paint.ch01.q06",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Jetzt saust ein BLAUER Klecks heran — schnell, seine Farbe!",
+   "promptEn": "What colour is it?",
+   "options": [
+    "blue",
+    "black",
+    "brown"
+   ],
+   "answer": "blue",
+   "hints": {
+    "deDesc": "Der Klecks ist blau — wie heißt das auf Englisch?",
+    "deWord": "blau"
+   },
+   "grounding": "u01: colours (blue); what colour is it"
+  },
+  {
+   "id": "g1.paint.ch01.q07",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Ein GRÜNER Klecks hüpft über die Wiese — ruf seine Farbe!",
+   "promptEn": "What colour is it?",
+   "options": [
+    "green",
+    "grey",
+    "yellow"
+   ],
+   "answer": "green",
+   "hints": {
+    "deDesc": "Der Klecks ist grün wie die Wiese — wie heißt das auf Englisch?",
+    "deWord": "grün"
+   },
+   "grounding": "u01: colours (green); what colour is it"
+  },
+  {
+   "id": "g1.paint.ch01.q08",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Ein ORANGER Klecks kullert die Treppe herunter — seine Farbe, los!",
+   "promptEn": "What colour is it?",
+   "options": [
+    "orange",
+    "pink",
+    "white"
+   ],
+   "answer": "orange",
+   "hints": {
+    "deDesc": "Der Klecks ist orange — das Wort klingt fast wie auf Deutsch!",
+    "deWord": "orange"
+   },
+   "grounding": "u01: colours (orange); what colour is it"
+  },
+  {
+   "id": "g1.paint.ch01.q09",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Der Bleistift-Läufer saust vorbei und ruft sein Rätsel über die Schulter!",
+   "promptEn": "You write with it.",
+   "options": [
+    "pencil",
+    "chair",
+    "door"
+   ],
+   "answer": "pencil",
+   "hints": {
+    "deDesc": "Du schreibst und zeichnest damit.",
+    "deWord": "der Bleistift"
+   },
+   "grounding": "u01: school things (pencil); write"
+  },
+  {
+   "id": "g1.paint.ch01.q10",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Ein kleines Möbel-Wesen wackelt mit seinen vier Beinen und stellt dir sein Rätsel!",
+   "promptEn": "You sit on it.",
+   "options": [
+    "chair",
+    "board",
+    "window"
+   ],
+   "answer": "chair",
+   "hints": {
+    "deDesc": "Du sitzt darauf.",
+    "deWord": "der Stuhl"
+   },
+   "grounding": "u01: classroom objects (chair); sit"
+  },
+  {
+   "id": "g1.paint.ch01.q11",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Etwas raschelt mit seinen Seiten und will erraten werden!",
+   "promptEn": "You read it.",
+   "options": [
+    "book",
+    "hat",
+    "ball"
+   ],
+   "answer": "book",
+   "hints": {
+    "deDesc": "Du liest darin Geschichten.",
+    "deWord": "das Buch"
+   },
+   "grounding": "u01: school things (book); read"
+  },
+  {
+   "id": "g1.paint.ch01.q12",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Ein großes, flaches Wesen lehnt an der Wand des Klassenzimmers und knarzt sein Rätsel!",
+   "promptEn": "The teacher can write on it.",
+   "options": [
+    "board",
+    "chair",
+    "hat"
+   ],
+   "answer": "board",
+   "hints": {
+    "deDesc": "Die Lehrerin schreibt mit Kreide darauf.",
+    "deWord": "die Tafel"
+   },
+   "grounding": "u01: classroom objects (board, teacher); can + write"
+  },
+  {
+   "id": "g1.paint.ch01.q13",
+   "use": "quickfire",
+   "kind": "choice",
+   "storyDe": "Zwei Bücher-Wesen tanzen Hand in Hand — wie heißen sie ZUSAMMEN?",
+   "promptEn": "One book, two ...?",
+   "options": [
+    "books",
+    "book",
+    "children"
+   ],
+   "answer": "books",
+   "hints": {
+    "deDesc": "Die Mehrzahl: einfach ein -s anhängen.",
+    "deWord": "die Bücher"
+   },
+   "grounding": "u01: plurals (book → books)"
+  },
+  {
+   "id": "g1.paint.ch01.q14",
+   "use": "quickfire",
+   "kind": "typed",
+   "storyDe": "Drei Zahlen-Motten fliegen in einer Reihe — die vierte versteckt sich! Tipp ihr Wort, dann traut sie sich hervor.",
+   "promptEn": "Count! four, five, ...?",
+   "answer": "six",
+   "hints": {
+    "firstLetter": "s",
+    "length": 3,
+    "deDesc": "Zähl weiter: vier, fünf und dann?",
+    "deWord": "sechs"
+   },
+   "grounding": "u01: numbers 1–25 (four, five, six); count"
+  },
+  {
+   "id": "g1.paint.ch01.q15",
+   "use": "quickfire",
+   "kind": "typed",
+   "storyDe": "Drei goldene Buchstaben schweben in einer Reihe — der vierte ist von der Tafel gefallen und wartet auf seinen Ruf!",
+   "promptEn": "a, b, c, ...?",
+   "answer": "d",
+   "hints": {
+    "firstLetter": "d",
+    "length": 1,
+    "deDesc": "Sag das ABC der Reihe nach: a, b, c und dann?",
+    "deWord": "der Buchstabe d"
+   },
+   "grounding": "u01: alphabet (a–d)"
+  },
+  {
+   "id": "g1.paint.ch01.q16",
+   "use": "quickfire",
+   "kind": "typed",
+   "storyDe": "Ein GELBER Klecks leuchtet wie ein kleines Sonnenlicht — tipp seine Farbe, dann fliegt er zurück in den Kasten!",
+   "promptEn": "What colour is it?",
+   "answer": "yellow",
+   "hints": {
+    "firstLetter": "y",
+    "length": 6,
+    "deDesc": "Der Klecks ist gelb wie die Sonne — wie heißt das auf Englisch?",
+    "deWord": "gelb"
+   },
+   "grounding": "u01: colours (yellow); what colour is it"
+  },
+  {
+   "id": "g1.paint.ch01.e01",
+   "use": "encounter",
+   "kind": "choice",
+   "storyDe": "Der Bleistift-Läufer bleibt plötzlich stehen. Ganz leise flüstert er: Ihn hat noch nie jemand gefragt, wie es ihm geht. Jetzt fragt ER dich — antworte freundlich!",
+   "promptEn": "How are you?",
+   "options": [
+    "I'm fine, thanks.",
+    "I must go.",
+    "It's a pencil."
+   ],
+   "answer": "I'm fine, thanks.",
+   "hints": {
+    "deDesc": "Die freundliche Antwort auf die Frage: Wie geht es dir?",
+    "deWord": "Mir geht es gut, danke."
+   },
+   "grounding": "u01: greetings (how are you / I'm fine, thanks)"
+  },
+  {
+   "id": "g1.paint.ch01.e02",
+   "use": "encounter",
+   "kind": "choice",
+   "storyDe": "Der Schulranzen-Stampfer hört auf zu stampfen und klappt neugierig seinen Deckel auf: Er will wissen, mit wem er es zu tun hat. Stell dich vor!",
+   "promptEn": "Hello! What's your name?",
+   "options": [
+    "I'm Anna.",
+    "I'm fine, thanks.",
+    "Yes, please."
+   ],
+   "answer": "I'm Anna.",
+   "hints": {
+    "deDesc": "Sag deinen Namen: Ich bin ...",
+    "deWord": "Ich bin Anna."
+   },
+   "grounding": "u01: greetings (what's your name / I'm ...)"
+  },
+  {
+   "id": "g1.paint.ch01.e03",
+   "use": "encounter",
+   "kind": "choice",
+   "storyDe": "Der Heft-Flatterer landet vor dir und wartet mit großen Augen auf den freundlichen Satz. Vervollständige ihn — dann klappt er glücklich seine Seiten-Flügel zusammen!",
+   "promptEn": "Nice to ... you!",
+   "options": [
+    "meet",
+    "look",
+    "eat"
+   ],
+   "answer": "meet",
+   "hints": {
+    "deDesc": "Der Satz heißt: Schön, dich kennenzulernen!",
+    "deWord": "kennenlernen"
+   },
+   "grounding": "u01: greetings (nice to meet you)"
+  },
+  {
+   "id": "g1.paint.ch01.e04",
+   "use": "encounter",
+   "kind": "typed",
+   "storyDe": "Der Radiergummi-Hüpfer schmollt: Alle vergessen immer seinen Namen! Vor lauter Kummer radiert er kleine Löcher in die Wiese. Sag ihm, was er ist — dann strahlt er wieder.",
+   "promptEn": "It can clean your exercise book. What is it?",
+   "answer": "rubber",
+   "hints": {
+    "firstLetter": "r",
+    "length": 6,
+    "deDesc": "Du radierst damit weg, was nicht stimmt.",
+    "deWord": "der Radiergummi"
+   },
+   "grounding": "u01: school things (rubber, exercise book); can + clean"
+  },
+  {
+   "id": "g1.paint.ch01.e05",
+   "use": "encounter",
+   "kind": "choice",
+   "storyDe": "Der Wasserfarben-Kasten klappert traurig mit dem Deckel: Er hat alle Farben der Welt in sich — aber niemand sagt seinen Namen. Sag ihn!",
+   "promptEn": "Red, yellow and blue are in it. What is it?",
+   "answer": "watercolours",
+   "hints": {
+    "deDesc": "Der Kasten mit den bunten Farben zum Malen.",
+    "deWord": "die Wasserfarben"
+   },
+   "grounding": "u01: school things (watercolours); colours (red, yellow, blue); colour (verb)",
+   "options": [
+    "watercolours",
+    "rubber",
+    "pen"
+   ]
+  },
+  {
+   "id": "g1.paint.ch01.e06",
+   "use": "encounter",
+   "kind": "typed",
+   "storyDe": "Der Schulranzen-Stampfer trägt so schwer! Er möchte nur einmal hören, dass jemand weiß, wie er heißt. Tipp seinen Namen — dann setzt er sich zufrieden hin.",
+   "promptEn": "Your books are in it. What is it?",
+   "answer": "school bag",
+   "hints": {
+    "firstLetter": "s",
+    "length": 10,
+    "deDesc": "Du trägst darin deine Sachen zur Schule.",
+    "deWord": "die Schultasche"
+   },
+   "grounding": "u01: school things (school bag, books)"
+  },
+  {
+   "id": "g1.paint.ch01.e07",
+   "use": "encounter",
+   "kind": "choice",
+   "storyDe": "Das Heft flattert müde auf einen Tisch und fragt leise: Weißt du überhaupt, was ich bin? Ein Heft ist nämlich KEIN Buch!",
+   "promptEn": "What is it?",
+   "options": [
+    "exercise book",
+    "book",
+    "pencil case"
+   ],
+   "answer": "exercise book",
+   "hints": {
+    "deDesc": "Du schreibst deine Übungen hinein — das Heft, nicht das Buch!",
+    "deWord": "das Heft"
+   },
+   "grounding": "u01: school things (exercise book vs book)"
+  },
+  {
+   "id": "g1.paint.ch01.e08",
+   "use": "encounter",
+   "kind": "choice",
+   "storyDe": "Der Wasserfarben-Kasten hat den weitmäuligen Frosch ganz weiß gelassen! Der Frosch quakt empört: Er will seine richtige Farbe zurück — grün wie die Wiese!",
+   "promptEn": "The frog isn't white! What colour is it?",
+   "options": [
+    "green",
+    "pink",
+    "blue"
+   ],
+   "answer": "green",
+   "hints": {
+    "deDesc": "Die richtige Farbe für einen Frosch: grün!",
+    "deWord": "grün"
+   },
+   "grounding": "u01: colours (green, white); wide-mouthed frog; what colour is it"
+  },
+  {
+   "id": "g1.paint.ch01.e09",
+   "use": "encounter",
+   "kind": "choice",
+   "storyDe": "Der Füller-Springer ist wieder ganz froh — aber jetzt muss er heim in sein Federpennal. Er winkt dir zu. Verabschiede dich richtig!",
+   "promptEn": "I must go. Bye!",
+   "options": [
+    "Bye-bye!",
+    "Come in!",
+    "How are you?"
+   ],
+   "answer": "Bye-bye!",
+   "hints": {
+    "deDesc": "Wink zurück und verabschiede dich!",
+    "deWord": "Tschüss!"
+   },
+   "grounding": "u01: greetings (I must go / bye / bye-bye)"
+  },
+  {
+   "id": "g1.paint.ch01.e10",
+   "use": "encounter",
+   "kind": "typed",
+   "storyDe": "Der zweite Läufer tippt dir sachte ans Knie. Seine Nase ist eine Stiftspitze aus Holz — kein Tintenherz wie beim Füller! Sag, was er ist.",
+   "promptEn": "You can write with it. It isn't a pen. What is it?",
+   "answer": "pencil",
+   "hints": {
+    "firstLetter": "p",
+    "length": 6,
+    "deDesc": "Der Stift aus Holz zum Schreiben und Zeichnen — nicht der Füller!",
+    "deWord": "der Bleistift"
+   },
+   "grounding": "u01: school things (pencil vs pen); write"
+  },
+  {
+   "id": "g1.paint.ch01.d01",
+   "use": "door",
+   "kind": "choice",
+   "storyDe": "Die gemalte Schulhaus-Tür ist zu und wartet geduldig auf ihren Lieblings-Befehl. Sag ihn — dann schwingt sie mit einem fröhlichen Quietschen auf!",
+   "promptEn": "You want to go in. What must you say?",
+   "options": [
+    "Open the door!",
+    "Close the door!",
+    "Stand up!"
+   ],
+   "answer": "Open the door!",
+   "hints": {
+    "deDesc": "Der Befehl zum Aufmachen der Tür.",
+    "deWord": "Mach die Tür auf!"
+   },
+   "grounding": "u01: imperatives (open the door); want"
+  },
+  {
+   "id": "g1.paint.ch01.d02",
+   "use": "door",
+   "kind": "choice",
+   "storyDe": "Die Tür steht schon offen und wippt einladend hin und her: Sie möchte ihr allerliebstes Willkommens-Wort hören, bevor du hindurchgehst!",
+   "promptEn": "The door is open for you. What is the nice word?",
+   "options": [
+    "Come in!",
+    "Go out!",
+    "Sit down!"
+   ],
+   "answer": "Come in!",
+   "hints": {
+    "deDesc": "Das freundliche Wort, mit dem man jemanden hereinbittet.",
+    "deWord": "Komm herein!"
+   },
+   "grounding": "u01: imperatives (come in); door"
+  },
+  {
+   "id": "g1.paint.ch01.d03",
+   "use": "door",
+   "kind": "choice",
+   "storyDe": "Der Weg führt hinaus in den Schulhof-Garten — aber das große Fenster ist zu. Es wartet auf den richtigen Befehl!",
+   "promptEn": "You want to go out. What must you say?",
+   "options": [
+    "Open the window!",
+    "Close the window!",
+    "Look at the board!"
+   ],
+   "answer": "Open the window!",
+   "hints": {
+    "deDesc": "Der Befehl zum Aufmachen des Fensters.",
+    "deWord": "Mach das Fenster auf!"
+   },
+   "grounding": "u01: imperatives (open the window); want"
+  },
+  {
+   "id": "g1.paint.ch01.d04",
+   "use": "door",
+   "kind": "choice",
+   "storyDe": "Brrr! Ein eisiger Nachtwind pfeift durch das offene Fenster herein, und die kleinen Farbkleckse zittern. Gib dem Fenster den richtigen Befehl!",
+   "promptEn": "The window is open! What must you say?",
+   "options": [
+    "Close the window!",
+    "Open the window!",
+    "Sing!"
+   ],
+   "answer": "Close the window!",
+   "hints": {
+    "deDesc": "Der Befehl zum Zumachen — damit der kalte Wind draußen bleibt.",
+    "deWord": "Mach das Fenster zu!"
+   },
+   "grounding": "u01: imperatives (close the window)"
+  },
+  {
+   "id": "g1.paint.ch01.d05",
+   "use": "door",
+   "kind": "choice",
+   "storyDe": "Hinter dieser Tür ist es stockdunkel — aber über dir hängt eine kleine gemalte Lampe und wartet nur auf ihren Befehl!",
+   "promptEn": "It is dark here. What must you say?",
+   "options": [
+    "Switch on the light!",
+    "Switch off the light!",
+    "Close the door!"
+   ],
+   "answer": "Switch on the light!",
+   "hints": {
+    "deDesc": "Der Befehl zum Anmachen des Lichts.",
+    "deWord": "Mach das Licht an!"
+   },
+   "grounding": "u01: imperatives (switch on the light); dark"
+  },
+  {
+   "id": "g1.paint.ch01.d06",
+   "use": "door",
+   "kind": "choice",
+   "storyDe": "Hinter dieser Tür schlafen die kleinen Farbkleckse in ihren Näpfen — aber die Lampe brennt noch und stört sie beim Träumen. Es ist Nacht!",
+   "promptEn": "It is night. What must you say?",
+   "options": [
+    "Switch off the light!",
+    "Switch on the light!",
+    "Come in!"
+   ],
+   "answer": "Switch off the light!",
+   "hints": {
+    "deDesc": "Der Befehl zum Ausmachen des Lichts — die Kleckse wollen schlafen.",
+    "deWord": "Mach das Licht aus!"
+   },
+   "grounding": "u01: imperatives (switch off the light); night"
+  },
+  {
+   "id": "g1.paint.ch01.d07",
+   "use": "door",
+   "kind": "choice",
+   "storyDe": "Die Stuhl-Tür lässt nur sitzende Kinder durch! Vor ihr steht ein kleiner gemalter Stuhl und rückt sich erwartungsvoll zurecht. Sag den passenden Befehl!",
+   "promptEn": "The chair is here for you. What must you say?",
+   "options": [
+    "Sit down!",
+    "Stand up!",
+    "Go out!"
+   ],
+   "answer": "Sit down!",
+   "hints": {
+    "deDesc": "Der Befehl zum Hinsetzen.",
+    "deWord": "Setz dich!"
+   },
+   "grounding": "u01: imperatives (sit down); chair"
+  },
+  {
+   "id": "g1.paint.ch01.d08",
+   "use": "door",
+   "kind": "choice",
+   "storyDe": "Die letzte Tür ist ein Bücherregal — und es rückt erst zur Seite, wenn dein Buch nicht mehr in der Schultasche steckt. Sag den Befehl!",
+   "promptEn": "It is in the school bag. What must you say?",
+   "options": [
+    "Take out your book!",
+    "Close the door!",
+    "Don't sing!"
+   ],
+   "answer": "Take out your book!",
+   "hints": {
+    "deDesc": "Der Befehl zum Herausnehmen des Buches.",
+    "deWord": "Nimm dein Buch heraus!"
+   },
+   "grounding": "u01: imperatives (take out your book); school bag"
+  },
+  {
+   "id": "g1.paint.ch01.r01",
+   "use": "rescue",
+   "kind": "choice",
+   "storyDe": "Im ersten verknoteten Ranzen sitzt ein kleiner Frosch und lugt heraus: Er heißt Ben und möchte hören, dass du seinen Namen buchstabieren kannst — dann löst sich der Knoten!",
+   "promptEn": "Ben? Can you spell it?",
+   "options": [
+    "b, e, n",
+    "b, n, e",
+    "n, e, b"
+   ],
+   "answer": "b, e, n",
+   "hints": {
+    "deDesc": "Buchstabiere den Namen der Reihe nach.",
+    "deWord": "b, e, n (buchstabieren)"
+   },
+   "grounding": "u01: alphabet; can you spell it; Ben"
+  },
+  {
+   "id": "g1.paint.ch01.r02",
+   "use": "rescue",
+   "kind": "choice",
+   "storyDe": "Im zweiten Ranzen kauert ein kleines Bären-Wesen. Ganz leise fragt es, wie es dir geht — antworte warm, dann rutscht der Knoten auf!",
+   "promptEn": "How are you?",
+   "options": [
+    "I'm fine, thanks.",
+    "Yes, please.",
+    "Sorry!"
+   ],
+   "answer": "I'm fine, thanks.",
+   "hints": {
+    "deDesc": "Die freundliche Antwort auf: Wie geht es dir?",
+    "deWord": "Mir geht es gut, danke."
+   },
+   "grounding": "u01: greetings (how are you / I'm fine, thanks)"
+  },
+  {
+   "id": "g1.paint.ch01.r03",
+   "use": "rescue",
+   "kind": "choice",
+   "storyDe": "Der Knoten springt auf — und das kleine Wesen hält dir strahlend einen gemalten Apfel hin. Ein Geschenk! Was sagst du?",
+   "promptEn": "The apple is for you! What must you say?",
+   "options": [
+    "Thank you!",
+    "Sorry!",
+    "Come on!"
+   ],
+   "answer": "Thank you!",
+   "hints": {
+    "deDesc": "Das höfliche Wort, wenn dir jemand etwas schenkt.",
+    "deWord": "Danke!"
+   },
+   "grounding": "u01: thank you; apple"
+  },
+  {
+   "id": "g1.paint.ch01.r04",
+   "use": "rescue",
+   "kind": "choice",
+   "storyDe": "Drei kleine Fische purzeln aus dem Ranzen und blubbern fröhlich um dich herum. Zähl sie laut — dann finden sie den Weg zum Brunnen!",
+   "promptEn": "How many fish? Count: one, two, ...?",
+   "options": [
+    "three",
+    "four",
+    "ten"
+   ],
+   "answer": "three",
+   "hints": {
+    "deDesc": "Zähl weiter: eins, zwei und dann?",
+    "deWord": "drei"
+   },
+   "grounding": "u01: how many; count; numbers (three); fish"
+  },
+  {
+   "id": "g1.paint.ch01.r05",
+   "use": "rescue",
+   "kind": "choice",
+   "storyDe": "Im letzten Ranzen schnurrt eine kleine ROSA Katze — und sie ist mächtig stolz auf ihre Farbe! Sag sie laut, dann hüpft sie glücklich heraus.",
+   "promptEn": "What colour is the cat?",
+   "options": [
+    "pink",
+    "grey",
+    "black"
+   ],
+   "answer": "pink",
+   "hints": {
+    "deDesc": "Die Katze ist rosa — wie heißt das auf Englisch?",
+    "deWord": "rosa"
+   },
+   "grounding": "u01: colours (pink); cat; what colour"
+  },
+  {
+   "id": "g1.paint.ch01.r06",
+   "use": "rescue",
+   "kind": "choice",
+   "storyDe": "Die Federtasche auf dem Lehrertisch wackelt und ruckelt — Merle steckt darin! Der Reißverschluss klemmt. Ruf ihr die richtigen Worte zu, dann springt er auf!",
+   "promptEn": "You find the pencil case. What must you say?",
+   "options": [
+    "Come out, please!",
+    "Close the pencil case!",
+    "Sit down, please!"
+   ],
+   "answer": "Come out, please!",
+   "hints": {
+    "deDesc": "Ruf ihr zu, dass sie herauskommen soll — mit einem Bitte!",
+    "deWord": "Komm heraus, bitte!"
+   },
+   "grounding": "u01: imperatives (come out, please); pencil case; find"
+  },
+  {
+   "id": "g1.paint.ch01.b01",
+   "use": "boss",
+   "kind": "choice",
+   "storyDe": "Die erwachte Schultafel krakelt trotzig: Sie sei PINK! Dabei ist sie doch schwarz wie die Nacht draußen. Sag ihr die echte Farbe!",
+   "promptEn": "Pink? No! What colour is the board?",
+   "options": [
+    "black",
+    "pink",
+    "red"
+   ],
+   "answer": "black",
+   "hints": {
+    "deDesc": "Die Tafel ist schwarz wie die Nacht.",
+    "deWord": "schwarz"
+   },
+   "grounding": "u01: colours (black); board; what colour"
+  },
+  {
+   "id": "g1.paint.ch01.b02",
+   "use": "boss",
+   "kind": "choice",
+   "storyDe": "Die Tafel krakelt: Honig ist GRÜN! Der kleine Honigbär schüttelt entsetzt den Kopf — Honig ist doch gelb wie die Sonne! Wisch den Fehler weg!",
+   "promptEn": "Green? No! What colour is honey?",
+   "options": [
+    "yellow",
+    "green",
+    "red"
+   ],
+   "answer": "yellow",
+   "hints": {
+    "deDesc": "Honig ist gelb — das weiß doch jeder Bär!",
+    "deWord": "gelb"
+   },
+   "grounding": "u01: colours (yellow); honey; what colour"
+  },
+  {
+   "id": "g1.paint.ch01.b03",
+   "use": "boss",
+   "kind": "choice",
+   "storyDe": "Die Tafel hat ein Loch ins ABC gekritzelt! Nach dem d fehlt ein Buchstabe — welcher gehört dorthin?",
+   "promptEn": "b, c, d, ...?",
+   "options": [
+    "e",
+    "f",
+    "a"
+   ],
+   "answer": "e",
+   "hints": {
+    "deDesc": "Sag das ABC der Reihe nach: b, c, d und dann?",
+    "deWord": "der Buchstabe e"
+   },
+   "grounding": "u01: alphabet (b–e)"
+  },
+  {
+   "id": "g1.paint.ch01.b04",
+   "use": "boss",
+   "kind": "choice",
+   "storyDe": "Noch ein Loch im ABC! Die Kreide quietscht schadenfroh — aber du kennst den Buchstaben, der nach dem o kommt!",
+   "promptEn": "m, n, o, ...?",
+   "options": [
+    "p",
+    "q",
+    "l"
+   ],
+   "answer": "p",
+   "hints": {
+    "deDesc": "Sag das ABC der Reihe nach: m, n, o und dann?",
+    "deWord": "der Buchstabe p"
+   },
+   "grounding": "u01: alphabet (m–p)"
+  },
+  {
+   "id": "g1.paint.ch01.b05",
+   "use": "boss",
+   "kind": "typed",
+   "storyDe": "Die Tafel malt in großen Kreidebuchstaben: two book. Das stimmt nicht — bei zwei fehlt der Mehrzahl-Schwanz! Tipp das richtige Wort.",
+   "promptEn": "No, board! One book, two ...?",
+   "answer": "books",
+   "hints": {
+    "firstLetter": "b",
+    "length": 5,
+    "deDesc": "Die Mehrzahl: einfach ein -s anhängen.",
+    "deWord": "die Bücher"
+   },
+   "grounding": "u01: plurals (book → books)"
+  },
+  {
+   "id": "g1.paint.ch01.b06",
+   "use": "boss",
+   "kind": "choice",
+   "storyDe": "Jetzt kritzelt die Tafel Quatsch über die Kinder-Familie! Das ist eine Ausnahme-Familie — ihre Mehrzahl hat KEIN -s. Tipp das richtige Wort!",
+   "promptEn": "One child, two ...?",
+   "answer": "children",
+   "hints": {
+    "deDesc": "Die besondere Mehrzahl von child — eine Ausnahme ohne -s!",
+    "deWord": "die Kinder"
+   },
+   "grounding": "u01: plurals (child → children, irregular)",
+   "options": [
+    "children",
+    "child",
+    "books"
+   ]
+  },
+  {
+   "id": "g1.paint.ch01.b07",
+   "use": "boss",
+   "kind": "choice",
+   "storyDe": "Die Tafel ist von oben bis unten vollgekritzelt — und eigentlich schämt sie sich dafür. Sie will wieder sauber sein! Gib den passenden Befehl.",
+   "promptEn": "Oh no! What must you say?",
+   "options": [
+    "Clean the board!",
+    "Sit down!",
+    "Open the door!"
+   ],
+   "answer": "Clean the board!",
+   "hints": {
+    "deDesc": "Der Befehl zum Sauberwischen der Tafel.",
+    "deWord": "Wisch die Tafel sauber!"
+   },
+   "grounding": "u01: imperatives (clean the board)"
+  },
+  {
+   "id": "g1.paint.ch01.b08",
+   "use": "boss",
+   "kind": "typed",
+   "storyDe": "Die Tafel krakelt die Zahlenreihe falsch weiter! Nach sixteen und seventeen steht nur Gekritzel. Tipp die richtige nächste Zahl als Wort!",
+   "promptEn": "No, board! sixteen, seventeen, ...?",
+   "answer": "eighteen",
+   "hints": {
+    "firstLetter": "e",
+    "length": 8,
+    "deDesc": "Zähl weiter: sechzehn, siebzehn und dann?",
+    "deWord": "achtzehn"
+   },
+   "grounding": "u01: numbers 1–25 (sixteen, seventeen, eighteen)"
+  },
+  {
+   "id": "g1.paint.ch01.k01",
+   "use": "bonus",
+   "kind": "choice",
+   "storyDe": "Klecks ruft: Schnell, schnell! Welcher goldene Buchstabe kommt als Nächster?",
+   "promptEn": "e, f, ...?",
+   "options": [
+    "g",
+    "h",
+    "j"
+   ],
+   "answer": "g",
+   "hints": {
+    "deDesc": "Sag das ABC: e, f und dann?",
+    "deWord": "der Buchstabe g"
+   },
+   "grounding": "u01: alphabet (e–g)"
+  },
+  {
+   "id": "g1.paint.ch01.k02",
+   "use": "bonus",
+   "kind": "choice",
+   "storyDe": "Fast am Ende des ABC — Klecks kichert: Welcher Buchstabe macht den Schluss?",
+   "promptEn": "x, y, ...?",
+   "options": [
+    "z",
+    "a",
+    "u"
+   ],
+   "answer": "z",
+   "hints": {
+    "deDesc": "Der allerletzte Buchstabe im ABC!",
+    "deWord": "der Buchstabe z"
+   },
+   "grounding": "u01: alphabet (x–z)"
+  },
+  {
+   "id": "g1.paint.ch01.k03",
+   "use": "bonus",
+   "kind": "choice",
+   "storyDe": "Eine goldene 5 blitzt auf — schnapp dir ihr Wort!",
+   "promptEn": "5",
+   "options": [
+    "five",
+    "four",
+    "nine"
+   ],
+   "answer": "five",
+   "hints": {
+    "deDesc": "Wie heißt die Zahl 5 auf Englisch?",
+    "deWord": "die Zahl 5 (fünf)"
+   },
+   "grounding": "u01: numbers 1–25 (five)"
+  },
+  {
+   "id": "g1.paint.ch01.k04",
+   "use": "bonus",
+   "kind": "choice",
+   "storyDe": "Eine goldene 10 wirbelt vorbei — ihr Wort, los!",
+   "promptEn": "10",
+   "options": [
+    "ten",
+    "two",
+    "twelve"
+   ],
+   "answer": "ten",
+   "hints": {
+    "deDesc": "Wie heißt die Zahl 10 auf Englisch?",
+    "deWord": "die Zahl 10 (zehn)"
+   },
+   "grounding": "u01: numbers 1–25 (ten)"
+  },
+  {
+   "id": "g1.paint.ch01.k05",
+   "use": "bonus",
+   "kind": "choice",
+   "storyDe": "Klecks wirft dir sein Lieblings-Zahlwort zu — auf welcher Ziffern-Kachel landet es?",
+   "promptEn": "twenty-five",
+   "options": [
+    "25",
+    "15",
+    "5"
+   ],
+   "answer": "25",
+   "hints": {
+    "deDesc": "Welche Ziffer passt zu diesem Zahlwort?",
+    "deWord": "die Zahl 25 (fünfundzwanzig)"
+   },
+   "grounding": "u01: numbers 1–25 (twenty-five)"
+  },
+  {
+   "id": "g1.paint.ch01.k06",
+   "use": "bonus",
+   "kind": "choice",
+   "storyDe": "Ein WEISSER Blitz-Klecks saust durch die Kleckskammer — seine Farbe, schnell!",
+   "promptEn": "What colour is it?",
+   "options": [
+    "white",
+    "grey",
+    "yellow"
+   ],
+   "answer": "white",
+   "hints": {
+    "deDesc": "Der Klecks ist weiß — wie heißt das auf Englisch?",
+    "deWord": "weiß"
+   },
+   "grounding": "u01: colours (white); what colour is it"
+  },
+  {
+   "id": "g1.paint.ch01.k07",
+   "use": "bonus",
+   "kind": "choice",
+   "storyDe": "Ein BRAUNER Klecks kullert wie ein Honigtropfen vorbei — seine Farbe!",
+   "promptEn": "What colour is it?",
+   "options": [
+    "brown",
+    "black",
+    "orange"
+   ],
+   "answer": "brown",
+   "hints": {
+    "deDesc": "Der Klecks ist braun — wie heißt das auf Englisch?",
+    "deWord": "braun"
+   },
+   "grounding": "u01: colours (brown); what colour is it"
+  },
+  {
+   "id": "g1.paint.ch01.k08",
+   "use": "bonus",
+   "kind": "choice",
+   "storyDe": "Ein GRAUER Nebel-Klecks schwebt vorbei — ruf seine Farbe, dann glitzert er golden!",
+   "promptEn": "What colour is it?",
+   "options": [
+    "grey",
+    "white",
+    "blue"
+   ],
+   "answer": "grey",
+   "hints": {
+    "deDesc": "Der Klecks ist grau — wie heißt das auf Englisch?",
+    "deWord": "grau"
+   },
+   "grounding": "u01: colours (grey); what colour is it"
+  }
+ ]
+}
