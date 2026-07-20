@@ -287,6 +287,14 @@ Per unit, in order:
 (The cross-project registry tops out at P-33; these two are registered there in the same
 session — numbering reconciled, gap P-34…43 noted as project-log history.)
 
+**§8 status note (2026-07-20):** M0–M2 delivered and merged (#212–#217); Koki's feel-gate
+verdicts drove two extra waves before M3: **W0** the fix round (#218) · **PB-A** the AA2
+painted kit + polish (#219) · **PB-B** = W1 complete (the 148-image anatomy study, the
+source audit r3 with canonical physics adopted — the gravity clock and air-snap — and the
+final hand choreography, #220). **W2** = the five paint design sheets
+(`docs/design/g1/paint/ch01–05.md` + README gate pack) → ★ Koki's ~40-min design gate →
+M3 builds ch01 on the frozen sheets.
+
 ## §9 · SUPERSESSION TABLE + truth pointers
 
 | Doc | Status after this doc |
