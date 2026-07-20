@@ -44,8 +44,7 @@ export interface PlayerState {
   holdLeft: number; // gravity-suppression ticks remaining
   coyote: number;
   buffer: number;
-  // hover (the quill-rotor)
-  hoverLeft: number;
+  // hover (the quill-rotor; unlimited while held — R5)
   hovering: boolean;
   // fist charge (the flying fist itself lives in fist.ts)
   charge: number; // −1 = not charging
@@ -102,7 +101,6 @@ export const spawnPlayer = (xPx: number, feetYPx: number): PlayerState => ({
   holdLeft: 0,
   coyote: 0,
   buffer: 0,
-  hoverLeft: PAINT.hoverTicks,
   hovering: false,
   charge: -1,
   hangAt: null,
@@ -280,11 +278,10 @@ export const stepPlayer = (
     if (s.jumpTicks >= 0) s.jumpTicks++;
 
     // hover: past the apex, jump held, fuel left, verb unlocked
-    const wantsHover = opts.canHover === true && pad.jump && !inHoldWindow && s.vy >= 0 && s.hoverLeft > 0 && !controlsLocked;
+    const wantsHover = opts.canHover === true && pad.jump && !inHoldWindow && s.vy >= 0 && !controlsLocked;
     if (wantsHover) {
       if (!s.hovering) events.push({ type: "hoverStart" });
       s.hovering = true;
-      s.hoverLeft--;
       if (s.vy > PAINT.hoverFallCap) s.vy = PAINT.hoverFallCap;
     } else {
       s.hovering = false;
@@ -354,7 +351,6 @@ export const stepPlayer = (
     s.jumpTicks = -1;
     s.holdLeft = 0;
     s.hovering = false;
-    s.hoverLeft = PAINT.hoverTicks;
     events.push({ type: "landed", impact: fallSpeedPx });
   }
   if (!s.grounded && wasGrounded && s.jumpTicks === -1) {

@@ -31,7 +31,8 @@ describe("the D-value lock (dossier constants — drift here must be deliberate)
     expect(PAINT.gravity).toBe(256);
     expect(PAINT.fallCap).toBe(4 * 256);
     expect(PAINT.riseCap).toBe(-10 * 256);
-    expect(PAINT.hoverTicks).toBe(50);
+    // R5 (Koki): hover fuel removed — the glide is unlimited while held
+    expect("hoverTicks" in PAINT).toBe(false);
     expect(PAINT.hoverFallCap).toBe(256);
     expect(PAINT.chargeMax).toBe(63);
     expect(PAINT.airCharge).toBe(32);

@@ -3,7 +3,7 @@
   "id": "g1-ch01",
   "chapter": "ch01",
   "draft": true,
-  "name": "Erste Schritte im gemalten Buch (Bewegungs-Wiese, ENTWURF)",
+  "name": "Vor dem Schulhaus (Bewegungs-Spielwiese, ENTWURF)",
   "goalDe": "Lauf, spring und schwebe einmal quer über die Wiese!",
   "whyDe": "Hier probierst du alle Bewegungen aus, bevor das Abenteuer beginnt.",
   "hintsDe": [
@@ -23,7 +23,7 @@
   "phases": [
     {
       "id": "p1",
-      "nameDe": "Die Schulwiese",
+      "nameDe": "Vor dem Schulhaus",
       "surface": "normal",
       "plates": {
         "far": "plate_far",
@@ -61,7 +61,7 @@
     },
     {
       "id": "p2",
-      "nameDe": "Der vereiste Pfad",
+      "nameDe": "Der verzauberte Schulweg",
       "surface": "normal",
       "plates": {
         "far": "plate_far",
