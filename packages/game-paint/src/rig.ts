@@ -93,8 +93,8 @@ export const rigPose = (input: RigInput): RigPose => {
     scaleY: 1,
     body: P(0, 0),
     head: P(0, -14),
-    handF: P(9, -2),
-    handB: P(-9, -2),
+    handF: P(6, -1),
+    handB: P(-6, -1),
     footF: P(4, 12),
     footB: P(-4, 12),
     hair: P(1, -20),
@@ -115,9 +115,12 @@ export const rigPose = (input: RigInput): RigPose => {
       const a = phase * TAU;
       const stride = RIG.footStridePx * (0.5 + speedT * 0.5);
       // feet: opposite phases on a cycloid — lifted only on the forward half
-      pose.footF.dx = 4 + Math.cos(a) * stride;
+      // W0-F4: the LIFTED foot must sweep back→front (−cos); the planted
+      // foot then travels backward relative to the body — anything else reads
+      // as running backwards (the feel-gate verdict).
+      pose.footF.dx = 4 - Math.cos(a) * stride;
       pose.footF.dy = 12 - Math.max(Math.sin(a), 0) * RIG.footLiftPx;
-      pose.footB.dx = -4 + Math.cos(a + Math.PI) * stride;
+      pose.footB.dx = -4 - Math.cos(a + Math.PI) * stride;
       pose.footB.dy = 12 - Math.max(Math.sin(a + Math.PI), 0) * RIG.footLiftPx;
       // body: double-frequency bob + speed lean
       pose.body.dy = rm ? 0 : -Math.abs(Math.sin(a)) * RIG.bodyBobPx;
@@ -192,11 +195,19 @@ export const rigPose = (input: RigInput): RigPose => {
       break;
     }
     case "hang": {
-      pose.handF = P(5, -22);
-      pose.handB = P(-2, -22);
-      pose.footF = P(2, 14);
-      pose.footB = P(-3, 15);
-      pose.body.dy = 2;
+      // W0-F6: the mittens grip ON the painted lip (feet hang 26px below the
+      // grabbed top, so dy −24/−25 puts the hands right at the edge)
+      pose.handF.dx = 7;
+      pose.handF.dy = -24;
+      pose.handB.dx = 3;
+      pose.handB.dy = -25;
+      pose.body.dy = -12;
+      pose.head.dy = -22;
+      pose.footF.dx = 1;
+      pose.footF.dy = 10;
+      pose.footB.dx = -3;
+      pose.footB.dy = 11;
+      pose.body.rot = rm ? 0.06 : 0.06 + Math.sin(((input.tick % 48) / 48) * TAU) * 0.03;
       break;
     }
     case "vine": {
@@ -227,6 +238,7 @@ export const rigPose = (input: RigInput): RigPose => {
     }
   }
 
+  pose.hair.hidden = true; // W0-F5: heads carry hair; the tuft double-drew
   return pose;
 };
 

@@ -278,3 +278,25 @@ describe("groundSurfaceAt", () => {
     expect(onFloor).toEqual({ yPx: 32, glyph: "#" });
   });
 });
+
+describe("W0 repros — the feel-gate collision defects (red before the fix)", () => {
+  // his bug: fell THROUGH the floor at an edge and vanished
+  it("F2a: a diagonal fall onto a floor edge lands ON the lip, never slides past it", () => {
+    const edge = ["......", "......", "......", "#####.", "......", "......", "######"];
+    // over the last floor column, falling fast while moving right across the edge
+    let st = moveBody(edge, px(78), px(44), px(3), px(4), false);
+    for (let t = 0; t < 3 && !st.grounded; t++) {
+      st = moveBody(edge, st.xSubs, st.ySubs, px(3), px(4), st.grounded);
+    }
+    expect(st.grounded).toBe(true);
+    expect(st.ySubs).toBe(px(48)); // ON the lip — not beside/below it
+  });
+
+  it("F2b: a body that ends up inside a solid is EJECTED to the surface", () => {
+    const floor = ["....", "....", "....", "####"];
+    // force the illegal state: feet 4px inside the floor
+    const st = moveBody(floor, px(32), px(52), 0, 0, false);
+    expect(st.ySubs).toBeLessThanOrEqual(px(48)); // pushed out, never inside
+    expect(st.grounded).toBe(true);
+  });
+});

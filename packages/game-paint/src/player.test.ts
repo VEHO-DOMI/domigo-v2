@@ -265,20 +265,24 @@ describe("the ledge grab + pull-up (the hang verb)", () => {
     expect(s.events.map((e) => e.type)).toContain("grabbedLedge");
   });
 
-  it("pulls up onto the ledge with UP", () => {
+  it("UP does nothing at the hang (canonical: the grip is static, W0-F1)", () => {
     let s = fallIntoGrab();
     s = tick(s, WALLED, pad({ up: true }), { canHang: true });
-    expect(s.st.hangAt).toBeNull();
-    expect(s.st.grounded).toBe(true);
-    expect(s.st.y / SUBS).toBe(4 * TILE); // feet on the ledge top
-    expect(s.events.map((e) => e.type)).toContain("pulledUp");
+    expect(s.st.hangAt).not.toBeNull();
+    expect(s.st.pose).toBe("hang");
   });
 
-  it("jumps out of the hang at the studied −3", () => {
+  it("clears the ledge by JUMPING up-and-over (full strength + hold)", () => {
     let s = fallIntoGrab();
     s = tick(s, WALLED, pad({ jump: true }), { canHang: true });
     expect(s.st.hangAt).toBeNull();
-    expect(s.st.vy).toBe(PAINT.hangJumpVy);
+    expect(s.st.vy).toBe(PAINT.hangJumpVy); // −5: a REAL jump, not a hop
+    for (let t = 0; t < 45 && !(s.st.grounded && s.st.y === 4 * TILE * SUBS); t++) {
+      s = tick(s, WALLED, pad({ jump: t < 12, right: true }), { canHang: true });
+    }
+    expect(s.st.grounded).toBe(true);
+    expect(s.st.y / SUBS).toBe(4 * TILE); // standing ON the ledge — "I can get up"
+    expect(s.st.x / SUBS).toBeGreaterThan(80); // …on top of the wall column
   });
 
   it("never grabs without the verb", () => {

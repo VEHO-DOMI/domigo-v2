@@ -25,7 +25,7 @@ describe("the D-value lock (dossier constants — drift here must be deliberate)
     expect(TILE).toBe(16);
     expect(SUBS).toBe(256);
     expect(PAINT.jumpVy).toBe(-5 * 256);
-    expect(PAINT.hangJumpVy).toBe(-3 * 256);
+    expect(PAINT.hangJumpVy).toBe(-5 * 256); // round-2 source read: full jump from the hang
     expect(PAINT.jumpHoldTicks).toBe(12);
     expect(PAINT.lateNudgeTick).toBe(23);
     expect(PAINT.gravity).toBe(256);

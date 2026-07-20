@@ -129,7 +129,23 @@ export class PaintScene extends Phaser.Scene {
   }
 
   warp(c: number, r: number): void {
-    this.player = { ...this.player, x: (c * TILE + TILE / 2) * SUBS, y: (r + 1) * TILE * SUBS, vx: 0, vy: 0, grounded: false };
+    // a warp always detaches — swing/hang/vine would otherwise override it —
+    // and SNAPS the camera (the screen-space clamp would otherwise drag the
+    // player back toward the stale view while the camera slowly chased)
+    this.player = {
+      ...this.player,
+      x: (c * TILE + TILE / 2) * SUBS,
+      y: (r + 1) * TILE * SUBS,
+      vx: 0,
+      vy: 0,
+      grounded: false,
+      swing: null,
+      hangAt: null,
+      climbing: false,
+      hovering: false,
+    };
+    this.camX = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
+    this.camY = clampScroll(this.player.y - Math.round(LOGICAL_H * 0.57) * SUBS, this.worldHpx, LOGICAL_H);
   }
 
   update(_time: number, delta: number): void {
@@ -157,6 +173,12 @@ export class PaintScene extends Phaser.Scene {
       ringAt: this.cfg.level.abilities.includes("swing") ? near : null,
     });
     this.player = out.st;
+    // W0-F7 (canonical): the player is boxed inside the visible screen —
+    // he can never reach the raw edge of the view (scout 2's border law).
+    const minX = this.camX + 20 * SUBS;
+    const maxX = this.camX + (LOGICAL_W - 36) * SUBS;
+    if (this.player.x < minX) this.player = { ...this.player, x: minX, vx: Math.max(this.player.vx, 0) };
+    if (this.player.x > maxX) this.player = { ...this.player, x: maxX, vx: Math.min(this.player.vx, 0) };
     this.prevPad = { ...pad };
     for (const ev of out.events) this.onEvent(ev);
 
@@ -190,7 +212,7 @@ export class PaintScene extends Phaser.Scene {
       right: t.right || down("RIGHT") || down("D"),
       up: t.up || down("UP") || down("W"),
       down: t.down || down("DOWN") || down("S"),
-      jump: t.jump || down("SPACE") || down("W") || down("UP"),
+      jump: t.jump || down("SPACE"), // W0-F1: jump is its OWN button — UP/W never jump
       punch: t.punch || down("X") || down("J"),
     };
   }
@@ -258,7 +280,7 @@ export class PaintScene extends Phaser.Scene {
     };
     apply("body", pose.body.dx, pose.body.dy, pose.body.rot, false);
     apply("head", pose.head.dx, pose.head.dy, pose.head.rot, false);
-    apply("hair", pose.hair.dx, pose.hair.dy, pose.hair.rot, false);
+    apply("hair", pose.hair.dx, pose.hair.dy, pose.hair.rot, pose.hair.hidden === true);
     apply("handF", pose.handF.dx, pose.handF.dy, pose.handF.rot, pose.handF.hidden === true);
     apply("handB", pose.handB.dx, pose.handB.dy, pose.handB.rot, pose.handB.hidden === true);
     apply("footF", pose.footF.dx, pose.footF.dy, pose.footF.rot, false);
@@ -358,10 +380,19 @@ export class PaintScene extends Phaser.Scene {
     const fill = this.add.graphics().setDepth(1);
     const h = this.grid.length;
     const w = this.grid[0]?.length ?? 0;
+    const CANOPY = 0x2e4d33;
     for (let r = 0; r < h; r++) {
       for (let c = 0; c < w; c++) {
         const g = glyphAt(this.grid, c, r);
-        if (isSolid(g)) {
+        const isCanopy = isSolid(g) && r <= 1; // the closed top (W0-F7)
+        if (isCanopy) {
+          fill.fillStyle(CANOPY);
+          fill.fillRect(c * TILE, r * TILE, TILE, TILE);
+          if (!isSolid(glyphAt(this.grid, c, r + 1))) {
+            fill.fillCircle(c * TILE + 4, (r + 1) * TILE, 4); // leafy fringe
+            fill.fillCircle(c * TILE + 11, (r + 1) * TILE + 2, 5);
+          }
+        } else if (isSolid(g)) {
           fill.fillStyle(g === "~" ? ICE : isSolid(glyphAt(this.grid, c, r - 1)) ? EARTH_DARK : EARTH);
           fill.fillRect(c * TILE, r * TILE, TILE, TILE);
         } else if (g === "=") {
@@ -401,6 +432,7 @@ export class PaintScene extends Phaser.Scene {
         let c = 0;
         while (c < w) {
           const surface = (cc: number): boolean => {
+            if (r <= 2) return false; // canopy rows carry fringe, never ground strips
             const g = glyphAt(this.grid, cc, r);
             return isSolid(g) && g !== "~" && !isSolid(glyphAt(this.grid, cc, r - 1)) && !isSlope(glyphAt(this.grid, cc, r - 1));
           };

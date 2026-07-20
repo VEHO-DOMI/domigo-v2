@@ -35,14 +35,12 @@ const level = (rows: string[], over: Partial<PaintLevel> = {}): PaintLevel => ({
   ...over,
 });
 
+// a LAWFUL minimal world: ≥20 rows, closed top, floor, exit on the path
 const OK_ROWS = [
-  "............",
-  "............",
-  "............",
-  "............",
-  "............",
-  "............",
+  "############",
+  ...Array.from({ length: 16 }, () => "............"),
   "..S....*..X.",
+  "############",
   "############",
 ];
 
@@ -65,7 +63,7 @@ describe("parsePaintLevel (loud semantics)", () => {
 
   it("demands exactly one start and one exit per phase", () => {
     const noStart = [...OK_ROWS];
-    noStart[6] = ".......*..X.";
+    noStart[17] = ".......*..X.";
     expect(() => parsePaintLevel(level(noStart))).toThrow(/exactly one start/);
     const twoExits = [...OK_ROWS];
     twoExits[5] = "X...........";
@@ -165,21 +163,20 @@ describe("checkLevelLaws", () => {
   it("passes the draft toy shape and fails a floating exit (tamper)", () => {
     expect(checkLevelLaws(parsePaintLevel(level(OK_ROWS)))).toEqual([]);
     const gutted = [...OK_ROWS];
-    gutted[6] = "..S....*...."; // exit moved unreachably high
-    gutted[1] = "..........X.";
+    gutted[17] = "..S....*...."; // exit moved unreachably high
+    gutted[5] = "..........X.";
     const fails = checkLevelLaws(parsePaintLevel(level([...gutted])));
     expect(fails.some((f) => f.law === "exit-reachable")).toBe(true);
   });
 
   it("flags unreachable letters", () => {
     const rows = [
-      "............",
+      "############",
+      ...Array.from({ length: 7 }, () => "............"),
       "*...........",
-      "............",
-      "............",
-      "............",
-      "............",
+      ...Array.from({ length: 8 }, () => "............"),
       "..S.......X.",
+      "############",
       "############",
     ];
     const fails = checkLevelLaws(parsePaintLevel(level(rows)));
@@ -194,8 +191,32 @@ describe("checkLevelLaws", () => {
     expect(fails.some((f) => f.law === "person-cage")).toBe(true);
   });
 
+  it("W0-F3: flags a trap pocket (enterable, no way back to the exit)", () => {
+    const F = "############";
+    const W = "####....####"; // pit walls
+    const deck = "..S......X..";
+    const air = (n: number) => Array.from({ length: n }, () => "............");
+    // a 7-deep pit: falling in = softlock (jump-out is 4 rows max)
+    const trapped = [F, ...air(10), deck, W, W, W, W, W, W, W, F, F];
+    const fails = checkLevelLaws(parsePaintLevel(level(trapped)));
+    expect(fails.some((f) => f.law === "trap-pocket")).toBe(true);
+    // a 3-deep pit is jump-out-able — lawful
+    const shallow = [F, ...air(10), deck, W, W, W, F, F, F, F, F, F];
+    const okFails = checkLevelLaws(parsePaintLevel(level(shallow)));
+    expect(okFails.some((f) => f.law === "trap-pocket")).toBe(false);
+  });
+
+  it("W0-F7/F8: enforces the closed top and the minimum height", () => {
+    const open = [...OK_ROWS];
+    open[0] = "............";
+    expect(checkLevelLaws(parsePaintLevel(level(open))).some((f) => f.law === "closed-top")).toBe(true);
+    const short = OK_ROWS.slice(0, 8).concat(["..S....*..X.", "############"]);
+    short[0] = "############";
+    expect(checkLevelLaws(parsePaintLevel(level([...short]))).some((f) => f.law === "min-height")).toBe(true);
+  });
+
   it("findGlyph locates markers", () => {
-    expect(findGlyph(OK_ROWS, "S")).toEqual({ c: 2, r: 6 });
+    expect(findGlyph(OK_ROWS, "S")).toEqual({ c: 2, r: 17 });
     expect(findGlyph(OK_ROWS, "B")).toBeNull();
   });
 });

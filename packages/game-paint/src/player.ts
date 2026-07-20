@@ -71,7 +71,6 @@ export type PlayerEvent =
   | { type: "fistThrown"; charge: number; speedSubs: number }
   | { type: "encounter"; hazard: string }
   | { type: "grabbedLedge" }
-  | { type: "pulledUp" }
   | { type: "swingStart" };
 
 export interface StepOpts {
@@ -175,31 +174,23 @@ export const stepPlayer = (
     return { st: s, events };
   }
 
-  // ── the hang ──
+  // ── the hang (canonical: a static grip — NO pull-up exists; you clear the
+  // ledge by JUMPING up-and-over at full strength; W0-F1) ──
   if (s.hangAt) {
     s.vx = 0;
     s.vy = 0;
     if (jumpPressed) {
       s.hangAt = null;
-      s.vy = PAINT.hangJumpVy;
+      s.vy = PAINT.hangJumpVy; // full −5 + the hold window: ~70px, clears any lip
       s.jumpTicks = 0;
-      s.holdLeft = 0;
+      s.holdLeft = PAINT.jumpHoldTicks;
       s.pose = "jump";
       events.push({ type: "jumped" });
-    } else if (pad.up) {
-      // pull-up: feet onto the grabbed ledge top
-      const top = s.hangAt.r * TILE;
-      s.y = top * SUBS;
-      s.x = s.x + s.facing * ((BODY_W / 2 + 2) * SUBS);
-      s.hangAt = null;
-      s.grounded = true;
-      s.pose = "stand";
-      events.push({ type: "pulledUp" });
     } else if (pad.down) {
       s.hangAt = null;
       s.pose = "fall";
     } else {
-      s.pose = "hang";
+      s.pose = "hang"; // UP intentionally does nothing here (camera-look later)
       return { st: s, events };
     }
     return { st: s, events };

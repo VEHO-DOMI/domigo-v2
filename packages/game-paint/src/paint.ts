@@ -37,7 +37,7 @@ export const PAINT = {
 
   // ── jump & gravity (vy in subs/tick; gravity in subs/tick²) ───────────────
   jumpVy: -5 * 256, // D: initial jump velocity −5 px/t
-  hangJumpVy: -3 * 256, // D: jump from the hang state −3 px/t
+  hangJumpVy: -5 * 256, // D (round-2 corrected): the hang-jump is a FULL jump — you clear the ledge by jumping up-and-over; Rayman 1 has no pull-up
   jumpHoldTicks: 12, // D: gravity suppressed while the button is held, ≤12 ticks
   lateNudgeTick: 23, // D: one extra gravity unit fires at jump-tick 23
   gravity: 256, // D: +1 px/t per tick
