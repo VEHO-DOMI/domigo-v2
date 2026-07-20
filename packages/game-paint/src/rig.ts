@@ -71,6 +71,7 @@ export interface RigInput {
   vySubs: number;
   charge: number; // −1 when not charging
   landedAgo: number;
+  swingLean?: number; // −1..1 — horizontal lean toward the swing anchor (scene-fed)
   reducedMotion?: boolean;
 }
 
@@ -126,11 +127,13 @@ export const rigPose = (input: RigInput): RigPose => {
       pose.body.dy = rm ? 0 : -Math.abs(Math.sin(a)) * RIG.bodyBobPx;
       pose.body.rot = rm ? 0 : RIG.bodyLeanMaxRad * speedT;
       pose.head.dy = -14 + pose.body.dy * 0.7;
-      // hands: trailing, tracing small ARCS (never straight lines)
-      pose.handF.dx = 9 - RIG.handTrailPx * speedT + (rm ? 0 : Math.cos(a + Math.PI) * RIG.handArcXPx);
-      pose.handF.dy = -2 + (rm ? 0 : Math.sin(a + Math.PI) * RIG.handArcYPx);
-      pose.handB.dx = -9 - RIG.handTrailPx * speedT + (rm ? 0 : Math.cos(a) * RIG.handArcXPx);
-      pose.handB.dy = -2 + (rm ? 0 : Math.sin(a) * RIG.handArcYPx);
+      // hands (dossier): the sprinter pump — the lead hand rides closed at
+      // chest height ahead of and OVERLAPPING the torso; the trail hand swings
+      // open behind at hip height; both trace small arcs (never straight lines)
+      pose.handF.dx = 5 + speedT * 4 + (rm ? 0 : Math.cos(a + Math.PI) * RIG.handArcXPx);
+      pose.handF.dy = -1 - speedT * 5 + (rm ? 0 : Math.sin(a + Math.PI) * RIG.handArcYPx);
+      pose.handB.dx = -7 - RIG.handTrailPx * speedT + (rm ? 0 : Math.cos(a) * RIG.handArcXPx);
+      pose.handB.dy = 2 + (rm ? 0 : Math.sin(a) * RIG.handArcYPx);
       // hair: lags the body's bob by a few ticks — the secondary motion
       if (!rm) {
         const lag = ((input.walkTime - RIG.hairLagTicks) % RIG.runCycleTicks) / RIG.runCycleTicks;
@@ -153,18 +156,20 @@ export const rigPose = (input: RigInput): RigPose => {
         pose.scaleX = RIG.jumpStretch.sx;
         pose.scaleY = RIG.jumpStretch.sy;
       }
-      pose.handF = P(7, -12, -0.4);
-      pose.handB = P(-7, -12, 0.4);
+      // dossier: in ballistic rise the hands stop talking — tucked compact
+      // into the silhouette; hair, scarf and split feet carry the arc
+      pose.handF = P(5, -4, -0.2);
+      pose.handB = P(-4, 0, 0.2);
       pose.footF = P(4, 8);
-      pose.footB = P(-4, 10);
+      pose.footB = P(-4, 11);
       pose.hair.rot = rm ? 0 : -0.12;
       break;
     }
     case "fall": {
       // R2a: a low asymmetric reach — the old symmetric double-spread at
       // shoulder height was Koki's "jazz hands"
-      pose.handF = P(9, -5, 0.35);
-      pose.handB = P(-6, 1, -0.15);
+      pose.handF = P(8, -7, 0.3); // the loose counter-drift above the drop
+      pose.handB = P(-5, 1, -0.15); // the anchor fist stays at the hip
       const dangle = rm ? 0 : Math.sin((input.tick % 14) / 14 * TAU) * 1.2;
       pose.footF = P(4 + dangle, 13);
       pose.footB = P(-4 - dangle, 13);
@@ -180,8 +185,10 @@ export const rigPose = (input: RigInput): RigPose => {
       pose.head.dy = -14 + sway * RIG.hoverBobPx * 0.6;
       pose.footF = P(3, 9); // tucked
       pose.footB = P(-3, 9);
-      pose.handF = P(8, -4, -0.2);
-      pose.handB = P(-8, -4, 0.2);
+      // dossier: the glide balances like a tightrope walk — both hands out
+      // at the sides, palms down (strong rotation turns the open glove flat)
+      pose.handF = P(11, -5, -1.15 + sway * 0.08);
+      pose.handB = P(-11, -5, 1.15 - sway * 0.08);
       break;
     }
     case "charge": {
@@ -189,8 +196,13 @@ export const rigPose = (input: RigInput): RigPose => {
       const chargeT = Math.max(input.charge, 0) / PAINT.chargeMax;
       const period = RIG.chargeOrbitMaxTicks - (RIG.chargeOrbitMaxTicks - RIG.chargeOrbitMinTicks) * chargeT;
       const a = rm ? 0 : ((input.tick % Math.max(Math.round(period), 1)) / Math.max(Math.round(period), 1)) * TAU;
-      pose.handF.dx = 6 + Math.cos(a) * RIG.chargeOrbitPx;
-      pose.handF.dy = -4 + Math.sin(a) * RIG.chargeOrbitPx;
+      // dossier: the charge winds the fist BEHIND the hip (sparkling), body
+      // coiled forward — the tremble tightens as the charge grows
+      const tremble = 2 + chargeT * 2;
+      pose.handF.dx = -8 + Math.cos(a) * tremble;
+      pose.handF.dy = 2 + Math.sin(a) * tremble;
+      pose.handB.dx = 6; // the guard hand covers the chest line
+      pose.handB.dy = -3;
       pose.body.rot = rm ? 0 : -0.06; // coiled
       pose.footF = P(5, 12);
       pose.footB = P(-6, 12);
@@ -199,33 +211,45 @@ export const rigPose = (input: RigInput): RigPose => {
     case "hang": {
       // W0-F6: the mittens grip ON the painted lip (feet hang 26px below the
       // grabbed top, so dy −24/−25 puts the hands right at the edge)
-      pose.handF.dx = 7;
+      pose.handF.dx = 9; // both grips sit ON the lip corner (the wall side)
       pose.handF.dy = -24;
-      pose.handB.dx = 3;
-      pose.handB.dy = -25;
+      pose.handB.dx = 5;
+      pose.handB.dy = -26;
+      pose.body.dx = -2; // the body hangs slightly off the grip axis
       pose.body.dy = -12;
       pose.head.dy = -22;
-      pose.footF.dx = 1;
-      pose.footF.dy = 10;
-      pose.footB.dx = -3;
-      pose.footB.dy = 11;
+      pose.footF.dx = 3; // feet tuck right under the raised torso — no floating gap
+      pose.footF.dy = 0;
+      pose.footB.dx = -1;
+      pose.footB.dy = 2;
       pose.body.rot = rm ? 0.06 : 0.06 + Math.sin(((input.tick % 48) / 48) * TAU) * 0.03;
       break;
     }
     case "vine": {
       const a = rm ? 0 : ((input.walkTime % 20) / 20) * TAU;
-      pose.handF = P(3, -20 + Math.sin(a) * 2);
-      pose.handB = P(-3, -20 - Math.sin(a) * 2);
-      pose.footF = P(2, 12 - Math.sin(a) * 2);
-      pose.footB = P(-2, 12 + Math.sin(a) * 2);
+      // dossier: the reaching hand leads above the head; hands alternate on
+      // the vine line while the BODY hangs beside it (the vine must never
+      // bisect the face)
+      pose.handF = P(-3, -26 + Math.sin(a) * 3);
+      pose.handB = P(-5, -18 - Math.sin(a) * 3);
+      pose.body.dx = 4;
+      pose.head.dx = 4;
+      pose.hair.dx = 5;
+      pose.footF = P(0, 12 - Math.sin(a) * 2);
+      pose.footB = P(-2, 13 + Math.sin(a) * 2);
       break;
     }
     case "swing": {
-      pose.handF = P(4, -24);
-      pose.handB = P(-4, -24);
-      pose.footF = P(5, 13);
-      pose.footB = P(-1, 15);
-      pose.hair.rot = rm ? 0 : 0.14;
+      // the grip pair shifts toward the anchor and the body tilts with the
+      // pendulum — the rope, hands and lean read as ONE line (scene feeds lean)
+      const lean = input.swingLean ?? 0;
+      pose.handF = P(2 + lean * 7, -25, -lean * 0.3);
+      pose.handB = P(-2 + lean * 7, -27, -lean * 0.3);
+      pose.body.rot = -lean * 0.22;
+      pose.head.rot = -lean * 0.12;
+      pose.footF = P(5 - lean * 3, 13);
+      pose.footB = P(-1 - lean * 3, 15);
+      pose.hair.rot = rm ? 0 : 0.14 - lean * 0.2;
       break;
     }
     case "hit": {

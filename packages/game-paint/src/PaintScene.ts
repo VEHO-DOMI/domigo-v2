@@ -22,7 +22,7 @@ import {
   ROTOR_STEMS,
   bodyStemFor,
   faceFor,
-  handStemFor,
+  handStemsFor,
   hairStemFor,
   shoeStemFor,
 } from "./rigSpec.ts";
@@ -265,6 +265,9 @@ export class PaintScene extends Phaser.Scene {
       vySubs: this.player.vy,
       charge: this.player.charge,
       landedAgo: this.player.landedAgo,
+      swingLean: this.player.swing
+        ? Math.max(-1, Math.min(1, (fromSubs(this.player.swing.anchorX) - fromSubs(this.player.x)) / 48)) * this.player.facing
+        : 0,
       reducedMotion: this.cfg.reducedMotion,
     });
     const pose = this.fist ? withFistAway(pose0) : pose0;
@@ -291,10 +294,9 @@ export class PaintScene extends Phaser.Scene {
 
     this.parts.get("head")?.setTexture(this.tex(faceFor(this.player.pose, this.tickCount, false)));
     this.parts.get("body")?.setTexture(this.tex(bodyStemFor(this.player.pose)));
-    const hand = handStemFor(this.player.pose);
-    this.parts.get("handF")?.setTexture(this.tex(hand));
-    // R2a: the back hand never opens — twin open palms is the jazz-hands read
-    this.parts.get("handB")?.setTexture(this.tex(hand === "hand_open" ? "hand_fist" : hand));
+    const hands = handStemsFor(this.player.pose);
+    this.parts.get("handF")?.setTexture(this.tex(hands.front));
+    this.parts.get("handB")?.setTexture(this.tex(hands.back));
     const shoe = this.tex(shoeStemFor(this.player.pose));
     this.parts.get("footF")?.setTexture(shoe);
     this.parts.get("footB")?.setTexture(shoe);
@@ -636,10 +638,11 @@ export class PaintScene extends Phaser.Scene {
         : name === "rotor" ? "rotor_a"
         : name.startsWith("hand") ? "hand_fist"
         : "shoe_neutral";
-      // R2a: hands read oversized at full part scale — they draw at 0.8×
-      const partScale = name.startsWith("hand") ? RIG_SRC_SCALE * 0.8 : RIG_SRC_SCALE;
+      // dossier: sprite-scale hands are ~half a head — 0.62× part scale
+      const partScale = name.startsWith("hand") ? RIG_SRC_SCALE * 0.62 : RIG_SRC_SCALE;
       const img = this.add.image(0, 0, this.tex(stem)).setScale(partScale);
-      if (name === "handB") img.setFlipX(true);
+      if (name === "handB") img.setFlipX(true).setTint(0xd9cfc2); // the far hand sits a step darker — it welds to the body's light
+
       if (name === "rotor") img.setVisible(false);
       this.parts.set(name, img);
       this.rigRoot.add(img);

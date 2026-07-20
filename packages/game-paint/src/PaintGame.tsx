@@ -165,7 +165,7 @@ export default function PaintGame({ level, art, hubHref, buildSha, startPhase }:
       )}
       {coarse && !done && <TouchPad pad={padRef.current} />}
       <p style={{ fontSize: 12, color: "#8a8066", textAlign: "center", marginTop: 6 }}>
-        ←→ laufen · SPACE springen (halten = höher, in der Luft = schweben) · X Faust (halten = laden) · ↑ hochziehen
+        ←→ laufen · SPACE springen (halten = höher, in der Luft = schweben; am Griff = hochspringen) · X Faust (halten = laden) · ↑↓ klettern
         {buildSha ? ` · Build ${buildSha.slice(0, 7)}` : ""}
       </p>
     </div>
