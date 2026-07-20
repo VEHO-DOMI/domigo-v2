@@ -8,11 +8,21 @@
 
 import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
-import { findGlyph, type PaintLevel, type PhaseSpec } from "./level.ts";
+import { allPhases, findGlyph, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, PAINT, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
 import { clampScroll, cameraTargetX, stepCameraAxis, stepCameraY } from "./camera.ts";
 import { type FistState, stepFist, throwFist } from "./fist.ts";
-import { IDLE_PAD, type Pad, type PlayerEvent, type PlayerState, spawnPlayer, stepPlayer } from "./player.ts";
+import { IDLE_PAD, applyKnockback, type Pad, type PlayerEvent, type PlayerState, spawnPlayer, stepPlayer } from "./player.ts";
+import {
+  applyLinks,
+  guardianKnotSolved,
+  redeemEntity,
+  rideAttachCheck,
+  spawnEntities,
+  stepEntities,
+  type EntityEvent,
+  type EntityWorld,
+} from "./entities.ts";
 import { rigPose, withFistAway } from "./rig.ts";
 import {
   RIG_CELL,
@@ -27,10 +37,24 @@ import {
   shoeStemFor,
 } from "./rigSpec.ts";
 
+/** What the scene asks React to put on screen (the overlay owns pacing). */
+export interface TaskRequest {
+  use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay";
+  ctx:
+    | { type: "entity"; id: string; skin: string }
+    | { type: "cage"; id: string; skin: string; classmate?: string }
+    | { type: "door"; id: string; kind: string }
+    | { type: "guardian"; id: string }
+    | { type: "hazard"; hazard: string };
+}
+
 export interface PaintCallbacks {
   onExit: (next: string) => void;
   onLetters: (got: number, total: number) => void;
-  onEncounter: (hazard: string) => void;
+  onTask: (req: TaskRequest) => void;
+  onPowerup: (grants: string) => void;
+  onCageFreed: (id: string, skin: string, classmate: string | undefined, freedCount: number) => void;
+  onGuardianDown: () => void;
 }
 
 export interface PaintSceneCfg {
@@ -40,6 +64,11 @@ export interface PaintSceneCfg {
   pad: Pad; // the SHARED mutable pad (touch/harness write here)
   callbacks: PaintCallbacks;
   reducedMotion: boolean;
+  /** Abilities live in React (they persist across phase mounts — the Fibel
+   *  grant must survive into p3); the scene reads, never owns. */
+  grantedAbilities: () => readonly string[];
+  /** Cages already freed in earlier mounts (ids) — they stay burst. */
+  freedCageIds: () => readonly string[];
 }
 
 const EARTH = 0xa8794f;
@@ -58,6 +87,17 @@ export class PaintScene extends Phaser.Scene {
   private player!: PlayerState;
   private prevPad: Pad = { ...IDLE_PAD };
   private fist: FistState | null = null;
+  private world!: EntityWorld;
+  private entityImgs = new Map<string, Phaser.GameObjects.Image>();
+  private projG!: Phaser.GameObjects.Graphics;
+  private overlayOpen = false;
+  private doorSolved = new Set<string>();
+  private guardianDefeated = false;
+  private ridingId: string | null = null;
+  private respawnCell: { c: number; r: number } | null = null;
+  private pendingPoolRespawn = false;
+  private bonusLeftTicks = -1; // ≥0 only in the Kleckskammer
+  private gateToastCooldown = 0;
   private acc = 0;
   private tickCount = 0;
   private exitFired = false;
@@ -77,7 +117,7 @@ export class PaintScene extends Phaser.Scene {
   constructor(cfg: PaintSceneCfg) {
     super({ key: "paint" });
     this.cfg = cfg;
-    const phase = cfg.level.phases.find((p) => p.id === cfg.phaseId);
+    const phase = allPhases(cfg.level).find((p) => p.id === cfg.phaseId);
     if (!phase) throw new Error(`PaintScene: unknown phase ${cfg.phaseId}`);
     this.phase = phase;
     this.grid = phase.rows;
@@ -104,6 +144,16 @@ export class PaintScene extends Phaser.Scene {
 
     const start = findGlyph(this.grid, "S") ?? { c: 2, r: 2 };
     this.player = spawnPlayer(start.c * TILE + TILE / 2, (start.r + 1) * TILE);
+    this.respawnCell = start;
+
+    this.world = spawnEntities(this.phase.entities, this.phase.links);
+    for (const id of this.cfg.freedCageIds()) {
+      const e = this.world.entities.find((x) => x.id === id);
+      if (e) { e.redeemed = true; e.state = "burst"; }
+    }
+    this.buildEntityImgs();
+    this.projG = this.add.graphics().setDepth(8);
+    if (this.cfg.phaseId === "p9") this.bonusLeftTicks = 35 * 60 + 120; // G1: budget + 2s grace
 
     const kb = this.input.keyboard;
     this.keys = kb
@@ -116,7 +166,14 @@ export class PaintScene extends Phaser.Scene {
   }
 
   /** The harness + HUD read through this (never Phaser internals). */
-  getState(): { x: number; y: number; vx: number; vy: number; pose: string; grounded: boolean; phase: string; letters: number; hovering: boolean } {
+  getState(): {
+    x: number; y: number; vx: number; vy: number; pose: string; grounded: boolean;
+    phase: string; letters: number; hovering: boolean; overlay: boolean;
+    knots: number; guardianDown: boolean; bonusLeft: number;
+    entities: Array<{ id: string; role: string; state: string; redeemed: boolean; x: number; y: number }>;
+    projectiles: Array<{ kind: string; x: number; y: number; deflected: boolean }>;
+  } | null {
+    if (!this.player) return null; // boot-safe: the HUD poll may fire pre-create
     return {
       x: fromSubs(this.player.x),
       y: fromSubs(this.player.y),
@@ -127,6 +184,12 @@ export class PaintScene extends Phaser.Scene {
       phase: this.cfg.phaseId,
       letters: this.lettersGot,
       hovering: this.player.hovering,
+      overlay: this.overlayOpen,
+      knots: this.world?.guardianKnots ?? -1,
+      guardianDown: this.guardianDefeated,
+      bonusLeft: this.bonusLeftTicks,
+      entities: (this.world?.entities ?? []).map((e) => ({ id: e.id, role: e.role, state: e.state, redeemed: e.redeemed, x: fromSubs(e.x), y: fromSubs(e.y) })),
+      projectiles: (this.world?.projectiles ?? []).map((p) => ({ kind: p.kind, x: fromSubs(p.x), y: fromSubs(p.y), deflected: p.deflected })),
     };
   }
 
@@ -162,17 +225,23 @@ export class PaintScene extends Phaser.Scene {
   }
 
   private stepOnce(): void {
+    if (this.overlayOpen) return; // the world holds its breath during a task
     this.tickCount++;
+    if (this.gateToastCooldown > 0) this.gateToastCooldown--;
+    if (this.bonusLeftTicks > 0) {
+      this.bonusLeftTicks--;
+      if (this.bonusLeftTicks === 0) { this.cfg.callbacks.onExit("bonus-timeout"); return; }
+    }
     const pad = this.readPad();
     const near = this.nearestRing();
     const out = stepPlayer(this.player, pad, this.prevPad, this.grid, {
       slippery: this.phase.surface === "slippery",
-      canRun: this.cfg.level.abilities.includes("run"),
-      canHover: this.cfg.level.abilities.includes("hover"),
-      canPunch: this.cfg.level.abilities.includes("punch"),
-      canHang: this.cfg.level.abilities.includes("hang"),
+      canRun: this.cfg.grantedAbilities().includes("run"),
+      canHover: this.cfg.grantedAbilities().includes("hover"),
+      canPunch: this.cfg.grantedAbilities().includes("punch"),
+      canHang: this.cfg.grantedAbilities().includes("hang"),
       fistBusy: this.fist !== null,
-      ringAt: this.cfg.level.abilities.includes("swing") ? near : null,
+      ringAt: this.cfg.grantedAbilities().includes("swing") ? near : null,
     });
     this.player = out.st;
     // W0-F7 (canonical): the player is boxed inside the visible screen —
@@ -192,16 +261,163 @@ export class PaintScene extends Phaser.Scene {
       this.fist = res.caught || !res.fist.active ? null : res.fist;
     }
 
+    this.stepEntityWorld();
+    this.touchCheckpoints();
     this.collectLetters();
     this.checkExit();
+  }
+
+  private stepEntityWorld(): void {
+    const evs = stepEntities(this.world, this.grid, {
+      playerX: this.player.x,
+      playerY: this.player.y,
+      playerIframes: this.player.iframes,
+      playerOverlayOpen: this.overlayOpen,
+      fist: this.fist ? { active: true, x: this.fist.x, y: this.fist.y } : null,
+    });
+    for (const ev of evs) this.onEntityEvent(ev);
+
+    // ── the G3 ride contract: stand on a moving platform, inherit its motion ──
+    if (this.ridingId !== null) {
+      const e = this.world.entities.find((x) => x.id === this.ridingId);
+      const gone = !e || e.state === "gone" || Math.abs((e?.x ?? 0) - this.player.x) / SUBS > 24 || this.player.vy < 0;
+      if (gone) this.ridingId = null;
+      else if (e) {
+        this.player.x += e.vx;
+        this.player.y = e.y - 6 * SUBS;
+        this.player.vy = 0;
+        this.player.grounded = true;
+      }
+    }
+    if (this.ridingId === null && !this.player.grounded) {
+      for (const e of this.world.entities) {
+        if (e.hidden || e.redeemed || !rideAttachCheck(e, this.player.y, this.player.x, this.player.vy)) continue;
+        this.ridingId = e.id;
+        if (e.role === "platform.fall" && e.state === "carry") { e.state = "armed"; e.timer = 0; }
+        this.player.y = e.y - 6 * SUBS;
+        this.player.vy = 0;
+        this.player.grounded = true;
+        break;
+      }
+    }
+  }
+
+  private onEntityEvent(ev: EntityEvent): void {
+    const cb = this.cfg.callbacks;
+    switch (ev.type) {
+      case "encounter": {
+        const src = this.world.entities.find((e) => e.id === ev.id);
+        applyKnockback(this.player, this.player.x < (src?.x ?? this.player.x) ? -1 : 1, false);
+        this.player.iframes = PAINT.iframeTicks;
+        this.overlayOpen = true;
+        cb.onTask({ use: ev.role === "swarm" ? "quickfire" : "encounter", ctx: { type: "entity", id: ev.id, skin: ev.skin } });
+        break;
+      }
+      case "cageBurst": {
+        const e = this.world.entities.find((x) => x.id === ev.id);
+        this.overlayOpen = true;
+        cb.onTask({ use: "rescue", ctx: { type: "cage", id: ev.id, skin: ev.skin, classmate: e?.params.classmate as string | undefined } });
+        break;
+      }
+      case "cageHit": this.toast("Er wackelt!"); break;
+      case "doorTouched": {
+        const e = this.world.entities.find((x) => x.id === ev.id);
+        if (this.doorSolved.has(ev.id)) break;
+        this.overlayOpen = true;
+        if (ev.kind === "bonus") cb.onTask({ use: "bonuspay", ctx: { type: "door", id: ev.id, kind: ev.kind } });
+        else cb.onTask({ use: "door", ctx: { type: "door", id: ev.id, kind: String(e?.params.kind ?? "exit") } });
+        break;
+      }
+      case "powerupTaken": {
+        this.overlayOpen = true;
+        cb.onPowerup(ev.grants);
+        break;
+      }
+      case "guardianStagger": {
+        const g = this.world.entities.find((x) => x.id === ev.id);
+        if (g) g.state = "window";
+        this.overlayOpen = true;
+        cb.onTask({ use: "boss", ctx: { type: "guardian", id: ev.id } });
+        break;
+      }
+      case "shooed": this.toast("Husch!"); break;
+      default: break;
+    }
+  }
+
+  // ── the React contract: the overlay resolves tasks through these ──────────
+
+  setOverlay(open: boolean): void {
+    this.overlayOpen = open;
+  }
+
+  /** Called by React when the task for `ctx` is SOLVED. */
+  resolveTask(ctx: TaskRequest["ctx"]): void {
+    if (ctx.type === "entity") {
+      const e = this.world.entities.find((x) => x.id === ctx.id);
+      if (e?.role === "guardian") {
+        // a chalk hit opened this task — solving it steadies you, but the
+        // guardian only unknots through its COUNTER-WINDOW (never a stray hit)
+        this.toast("Weiter!");
+      } else {
+        redeemEntity(this.world, ctx.id);
+        applyLinks(this.world, "redeemed", ctx.id);
+        this.toast("Danke!");
+      }
+    } else if (ctx.type === "cage") {
+      const freed = this.cfg.freedCageIds().length + 1;
+      this.cfg.callbacks.onCageFreed(ctx.id, ctx.skin, ctx.classmate, freed);
+      applyLinks(this.world, "opened", ctx.id);
+    } else if (ctx.type === "door") {
+      this.doorSolved.add(ctx.id);
+      applyLinks(this.world, "opened", ctx.id);
+      this.toast("Die Tür freut sich!");
+    } else if (ctx.type === "guardian") {
+      const out = guardianKnotSolved(this.world, ctx.id);
+      for (const ev of out) {
+        if (ev.type === "guardianDown") {
+          this.guardianDefeated = true;
+          this.cfg.callbacks.onGuardianDown();
+        } else if (ev.type === "guardianKnot") {
+          this.toast(`Noch ${ev.knotsLeft} Knoten!`);
+        }
+      }
+    } else if (ctx.type === "hazard") {
+      if (this.pendingPoolRespawn && this.respawnCell) {
+        this.warp(this.respawnCell.c, this.respawnCell.r - 1);
+        this.pendingPoolRespawn = false;
+      }
+    }
+    this.overlayOpen = false;
+  }
+
+  spendLetters(n: number): boolean {
+    if (this.lettersGot < n) return false;
+    this.lettersGot -= n;
+    this.cfg.callbacks.onLetters(this.lettersGot, this.lettersTotal);
+    return true;
+  }
+
+  bonusState(): { leftTicks: number; got: number; total: number } {
+    return { leftTicks: this.bonusLeftTicks, got: this.lettersGot, total: this.lettersTotal };
+  }
+
+  private touchCheckpoints(): void {
+    const c = Math.floor(fromSubs(this.player.x) / TILE);
+    const r = Math.floor((fromSubs(this.player.y) - 1) / TILE);
+    if (glyphAt(this.grid, c, r) === "C" || glyphAt(this.grid, c, r + 1) === "C") {
+      if (this.respawnCell?.c !== c) { this.respawnCell = { c, r: Math.max(r, 1) }; this.toast("Krakel skizziert dich!"); }
+    }
   }
 
   private onEvent(ev: PlayerEvent): void {
     if (ev.type === "fistThrown") {
       this.fist = throwFist(this.player.x, this.player.y, this.player.facing, ev.charge, ev.speedSubs);
     } else if (ev.type === "encounter") {
-      this.cfg.callbacks.onEncounter(ev.hazard);
       this.toast(ev.hazard === "^" ? "Autsch!" : "Platsch!");
+      if (ev.hazard === "w") this.pendingPoolRespawn = true;
+      this.overlayOpen = true;
+      this.cfg.callbacks.onTask({ use: "quickfire", ctx: { type: "hazard", hazard: ev.hazard } });
     }
   }
 
@@ -248,9 +464,84 @@ export class PaintScene extends Phaser.Scene {
     const py = fromSubs(this.player.y);
     const cx = this.exitCell.c * TILE + TILE / 2;
     const cy = (this.exitCell.r + 1) * TILE;
-    if (Math.abs(px - cx) < 10 && Math.abs(py - cy) < 22) {
+    // 18px: the screen-space clamp (right−36) can hold the body ~12px short
+    // of a border-adjacent exit cell — the trigger must reach past the clamp
+    if (Math.abs(px - cx) < 18 && Math.abs(py - cy) < 22) {
+      // exit doors gate the X until their word is said (ch01 imperative law)
+      const gate = this.phase.entities.find((e) => e.role === "door.trigger" && e.params?.kind === "exit");
+      if (gate && !this.doorSolved.has(gate.id)) {
+        if (this.gateToastCooldown === 0) { this.toast("Die Tür wartet auf ihr Wort!"); this.gateToastCooldown = 120; }
+        return;
+      }
+      if (this.phase.entities.some((e) => e.role === "guardian") && !this.guardianDefeated) {
+        if (this.gateToastCooldown === 0) { this.toast("Die Tafel möchte noch reden!"); this.gateToastCooldown = 120; }
+        return;
+      }
       this.exitFired = true;
       this.cfg.callbacks.onExit(this.phase.exit.to); // React owns the handoff (P-49)
+    }
+  }
+
+  // ── entities: images + per-state texture chooser ──────────────────────────
+
+  private buildEntityImgs(): void {
+    for (const e of this.world.entities) {
+      const img = this.add.image(fromSubs(e.x), fromSubs(e.y), this.entTex(e.skin, "a")).setDepth(7).setOrigin(0.5, 1);
+      img.setVisible(!e.hidden);
+      this.entityImgs.set(e.id, img);
+    }
+  }
+
+  /** pb-<skin>_<state> → pb-<skin>_a → fb-ent-<skin> (the only-present law). */
+  private entTex(skin: string, state: string): string {
+    for (const k of [`pb-${skin}_${state}`, `pb-${skin}_a`, `fb-ent-${skin}`]) {
+      if (this.textures.exists(k)) return k;
+    }
+    return "fb-ent-generic";
+  }
+
+  private entStateCell(e: { role: string; state: string; timer: number; redeemed: boolean }): string {
+    if (e.redeemed || e.state === "dazed" || e.state === "consoled" || e.state === "shooed") return "dazed";
+    if (e.state === "telegraph") return "telegraph";
+    if (e.state === "act") return "act";
+    if (e.state === "burst") return "burst";
+    if (e.state === "shaking") return "shake";
+    return (Math.floor(e.timer / 12) % 2 === 0) ? "a" : "b";
+  }
+
+  /** world-space display heights per role — painted cells arrive at 512px native */
+  private entTargetH(e: { role: string; skin: string }): number {
+    if (e.role === "guardian") return 52;
+    if (e.role === "swarm") return 34;
+    if (e.role === "crusher") return 30;
+    if (e.role === "door.trigger") return e.skin === "klecksdoor" ? 30 : 34;
+    if (e.role === "cage") return e.skin === "pencilcase" ? 24 : 22;
+    if (e.role === "powerup") return 26;
+    if (e.role.startsWith("platform")) return 10;
+    return 24; // chasers, gunners, flyers, bouncers
+  }
+
+  private renderEntities(): void {
+    for (const e of this.world.entities) {
+      const img = this.entityImgs.get(e.id);
+      if (!img) continue;
+      img.setVisible(!e.hidden && !(e.role === "cage" && false));
+      img.setPosition(fromSubs(e.x), fromSubs(e.y));
+      img.setTexture(this.entTex(e.skin, this.entStateCell(e)));
+      const targetH = this.entTargetH(e);
+      const frameH = img.frame.height || 1;
+      if (e.role.startsWith("platform")) img.setDisplaySize(40, targetH);
+      else img.setScale(targetH / frameH);
+      img.setFlipX(e.dir > 0);
+      if (e.redeemed && !e.role.startsWith("platform")) img.setAlpha(0.85);
+      if (e.state === "telegraph") img.setTint(0xfff2b0);
+      else img.clearTint();
+    }
+    this.projG.clear();
+    for (const pr of this.world.projectiles) {
+      this.projG.fillStyle(pr.kind === "chalk" ? 0xf6f2e8 : 0x4f86c6, 1);
+      this.projG.fillCircle(fromSubs(pr.x), fromSubs(pr.y) - 4, pr.kind === "chalk" ? 3 : 4);
+      this.projG.lineStyle(1, 0x243048, 0.6).strokeCircle(fromSubs(pr.x), fromSubs(pr.y) - 4, pr.kind === "chalk" ? 3 : 4);
     }
   }
 
@@ -319,6 +610,8 @@ export class PaintScene extends Phaser.Scene {
       this.ropeG.fillStyle(0x243048).fillCircle(ax, ay, 2.2);
     }
 
+    this.renderEntities();
+
     for (const ring of this.ringImgs) {
       ring.img.y = ring.baseY + (this.cfg.reducedMotion ? 0 : Math.sin(this.tickCount / 22) * 1.5);
     }
@@ -355,6 +648,25 @@ export class PaintScene extends Phaser.Scene {
       make(`fb-${s}`, () => { g.fillStyle(0xf2c58f); g.fillCircle(cell / 2, cell / 2, 140); g.fillStyle(0x6b4a2a); g.fillEllipse(cell / 2, cell / 2 - 70, 260, 130); }, cell, cell);
     }
     for (const s of ["hand_open", "hand_fist", "hand_grip"]) make(`fb-${s}`, () => { g.fillStyle(0xf6e7c8); g.fillCircle(cell / 2, cell / 2, 55); }, cell, cell);
+
+    // entity fallbacks: readable painted blobs until Batch AB lands (only-present law)
+    const ENT_COLORS: Record<string, number> = {
+      pencil: 0xd9a441, pen: 0x3b5ea8, paintbox: 0xb2543a, heft: 0x7a9e6b,
+      eraser: 0x6fa8dc, ranzen: 0x8a5a3b, moths: 0xe8c34a, satchel: 0x9a7148,
+      pencilcase: 0xc4657a, fibel: 0x4f7d4f, klecksdoor: 0x243048, door: 0x8a6140,
+      satchelswing: 0xa8794f, ruler: 0xc9a36a, tafel: 0x3d4f3d, generic: 0x888888,
+    };
+    for (const [skin, color] of Object.entries(ENT_COLORS)) {
+      make(`fb-ent-${skin}`, () => {
+        const wpx = skin === "tafel" ? 44 : skin === "ruler" || skin === "satchelswing" ? 40 : 22;
+        const hpx = skin === "tafel" ? 40 : skin === "ruler" || skin === "satchelswing" ? 8 : 24;
+        g.fillStyle(color, 1);
+        g.fillRoundedRect(2, 2, wpx - 4, hpx - 4, 4);
+        g.lineStyle(2, 0x243048, 0.9);
+        g.strokeRoundedRect(2, 2, wpx - 4, hpx - 4, 4);
+        if (hpx > 12) { g.fillStyle(0x243048, 1); g.fillCircle(wpx * 0.35, hpx * 0.35, 1.6); g.fillCircle(wpx * 0.62, hpx * 0.35, 1.6); }
+      }, skin === "tafel" ? 44 : skin === "ruler" || skin === "satchelswing" ? 40 : 22, skin === "tafel" ? 40 : skin === "ruler" || skin === "satchelswing" ? 8 : 24);
+    }
     for (const s of ["shoe_neutral", "shoe_tucked"]) make(`fb-${s}`, () => { g.fillStyle(0x9c3f2c); g.fillEllipse(cell / 2, cell / 2, 130, 75); }, cell, cell);
     for (const s of ["hair_still", "hair_wind"]) make(`fb-${s}`, () => { g.fillStyle(0x6b4a2a); g.fillEllipse(cell / 2, cell / 2, 150, 80); }, cell, cell);
     for (const s of ["rotor_a", "rotor_b", "rotor_c"]) make(`fb-${s}`, () => { g.fillStyle(0xfdf7e6, 0.9); g.fillEllipse(cell / 2, cell / 2, 260, 60); }, cell, cell);
@@ -380,8 +692,9 @@ export class PaintScene extends Phaser.Scene {
       const needH = LOGICAL_H + Math.max(0, this.worldHpx - LOGICAL_H) * (1 - sfY);
       img.setScale(Math.max((needW * 1.1) / img.width, (needH * 1.1) / img.height));
     };
-    if (this.textures.exists("pb-plate_far")) {
-      const far = this.add.image(this.worldWpx / 2, this.worldHpx / 2 - 8, "pb-plate_far").setDepth(-11).setScrollFactor(0.12, 0.06);
+    const farStem = this.phase.plates.far && this.textures.exists(`pb-${this.phase.plates.far}`) ? `pb-${this.phase.plates.far}` : "pb-plate_far";
+    if (this.textures.exists(farStem)) {
+      const far = this.add.image(this.worldWpx / 2, this.worldHpx / 2 - 8, farStem).setDepth(-11).setScrollFactor(0.12, 0.06);
       plateCover(far, 0.12, 0.06);
     }
     if (this.textures.exists("pb-plate_sky")) {

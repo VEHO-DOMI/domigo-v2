@@ -24,7 +24,7 @@ const PaintEntity = z.object({
   role: z.enum([
     "chaser", "gunner", "flyer", "bouncer", "crusher", "swarm",
     "platform.move", "platform.fall", "platform.swing",
-    "cage", "powerup", "door.trigger",
+    "cage", "powerup", "door.trigger", "guardian",
   ]),
   skin: z.string().min(1),
   c: z.number().int().nonnegative(),
@@ -71,6 +71,8 @@ const PaintLevelFile = z.object({
   collectNounDe: z.string().min(1),
   abilities: z.array(z.enum(["jump", "punch", "hang", "swing", "hover", "run"])),
   phases: z.array(PaintPhase).min(1),
+  arena: PaintPhase.optional(),
+  bonus: PaintPhase.optional(),
 });
 
 export type PaintLevelFileT = z.infer<typeof PaintLevelFile>;
@@ -92,6 +94,51 @@ export const loadPaintLevel = (storyId: string, chapter: string): PaintLevelFile
   const parsed = PaintLevelFile.parse(JSON.parse(fs.readFileSync(file, "utf8")));
   levelCache.set(cacheKey, parsed);
   return parsed;
+};
+
+const GameTask = z.object({
+  id: z.string().min(1),
+  use: z.enum(["quickfire", "encounter", "door", "rescue", "boss", "bonus"]),
+  kind: z.enum(["choice", "typed"]),
+  storyDe: z.string().min(1),
+  promptEn: z.string().min(1),
+  options: z.array(z.string().min(1)).length(3).optional(),
+  answer: z.string().min(1),
+  hints: z.object({
+    deDesc: z.string().optional(),
+    deWord: z.string().optional(),
+    firstLetter: z.string().optional(),
+    length: z.number().int().optional(),
+  }),
+  grounding: z.string().optional(),
+});
+
+const GameTasksFile = z.object({
+  schema: z.literal("gameTasks@1"),
+  chapter: z.string().regex(CHAPTER_ID),
+  unit: z.string().min(1),
+  note: z.string().optional(),
+  items: z.array(GameTask).min(1),
+});
+
+export type GameTaskT = z.infer<typeof GameTask>;
+
+const tasksCache = new Map<string, GameTaskT[]>();
+
+/** Loud loader for the chapter task set (choice items must carry the answer). */
+export const loadPaintTasks = (storyId: string, chapter: string): GameTaskT[] => {
+  const cacheKey = `${storyId}/${chapter}/tasks`;
+  const hit = tasksCache.get(cacheKey);
+  if (hit) return hit;
+  const file = path.join(paintDir(storyId), `${chapter}.tasks.json`);
+  const parsed = GameTasksFile.parse(JSON.parse(fs.readFileSync(file, "utf8")));
+  for (const t of parsed.items) {
+    if (t.kind === "choice" && !(t.options ?? []).includes(t.answer)) {
+      throw new Error(`paint-content: ${t.id} answer not among its options`);
+    }
+  }
+  tasksCache.set(cacheKey, parsed.items);
+  return parsed.items;
 };
 
 /** Which chapters have an authored paint level (the admin auto-list probe). */

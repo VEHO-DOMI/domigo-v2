@@ -8,7 +8,7 @@
 import { redirect } from "next/navigation";
 import { checkLevelLaws, parsePaintLevel, type PaintLevel } from "@domigo/game-paint/level";
 import { getPlayerForPage, getTeacherForPage } from "@/lib/identity";
-import { loadPaintLevel } from "@/lib/paint-content";
+import { loadPaintLevel, loadPaintTasks } from "@/lib/paint-content";
 import { resolvePaintArt } from "@/lib/paint-art";
 import BuchClient from "./BuchClient";
 
@@ -35,6 +35,7 @@ export default async function BuchPage({
     throw new Error(`paint level laws violated: ${failures.map((f) => `${f.phase}/${f.law}`).join(", ")}`);
   }
   const art = resolvePaintArt();
+  const tasks = loadPaintTasks("g1.st.lost-pages", "ch01");
   const startPhase = teacher !== null && phase !== undefined ? phase : undefined; // teacher debug door
 
   return (
@@ -42,6 +43,7 @@ export default async function BuchPage({
       <BuchClient
         level={level}
         art={art}
+        tasks={tasks}
         hubHref={`/play/${gradeStr}`}
         buildSha={process.env.VERCEL_GIT_COMMIT_SHA}
         startPhase={startPhase}

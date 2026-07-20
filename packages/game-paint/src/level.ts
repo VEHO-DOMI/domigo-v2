@@ -16,7 +16,7 @@ const LEGAL_GLYPHS = new Set([".", "#", "=", "/", "\\", "1", "2", "3", "4", "~",
 export type EntityRole =
   | "chaser" | "gunner" | "flyer" | "bouncer" | "crusher" | "swarm"
   | "platform.move" | "platform.fall" | "platform.swing"
-  | "cage" | "powerup" | "door.trigger";
+  | "cage" | "powerup" | "door.trigger" | "guardian";
 
 export interface EntitySpec {
   id: string;
@@ -53,6 +53,12 @@ export interface PaintLevel {
   id: string;
   chapter: string;
   draft?: boolean; // drafts skip the chapter-shape laws (phase/cage counts)
+  /** The one-screen guardian arena (sheet law: 3 phases + arena — the arena is
+   *  NOT one of the 3; it rides beside them). Same shape as a phase. */
+  arena?: PhaseSpec;
+  /** Klecks' bonus room (one per chapter): entered via a door.trigger, timed
+   *  scene-side, exits back to its source phase. */
+  bonus?: PhaseSpec;
   name: string;
   goalDe: string;
   whyDe: string;
@@ -67,11 +73,18 @@ const fail = (msg: string): never => {
 };
 
 /** Semantic validation — the shape is already zod-checked app-side. */
+/** phases + arena + bonus, flattened for validation and law passes. */
+export const allPhases = (level: PaintLevel): PhaseSpec[] => [
+  ...level.phases,
+  ...(level.arena ? [level.arena] : []),
+  ...(level.bonus ? [level.bonus] : []),
+];
+
 export const parsePaintLevel = (level: PaintLevel): PaintLevel => {
   if (level.schema !== LEVEL_SCHEMA) fail(`schema must be ${LEVEL_SCHEMA}`);
   if (level.phases.length === 0) fail("no phases");
   const ids = new Set<string>();
-  for (const ph of level.phases) {
+  for (const ph of allPhases(level)) {
     if (ids.has(ph.id)) fail(`duplicate phase id ${ph.id}`);
     ids.add(ph.id);
     const w = ph.rows[0]?.length ?? 0;
@@ -255,7 +268,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     }
   }
 
-  for (const ph of level.phases) {
+  for (const ph of allPhases(level)) {
     // W0-F8: worlds must be tall enough for the camera to breathe, and
     // W0-F7: the top row is authored solid — the world is CLOSED (no
     // reachable-looking painted "outside" above the playfield).
