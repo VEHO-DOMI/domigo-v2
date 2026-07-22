@@ -1,5 +1,7 @@
 # Level anatomy — the 148-image study + the screenshot dispositions (2026-07-20)
 
+> **Companion (2026-07-22):** 16 per-level VIDEO-chapter design dossiers (frame-annotated, incl. boss attack patterns) live at `docs/Rayman X DomiGo Screenshots/July 22nd Rayman Game/NN-*/00_DESIGN.md` (git-ignored). Signpost: `docs/handover/32_rayman_video_study.md`.
+
 **Status: STUDY (W1). Companion to `level-cookbook-v2.md` (whose §8–§10 carry the
 transcript laws) and `source-audit-r3.md` (the code-level audit).** Method: every
 image in the local wiki library (`~/Code/rayman-study/wiki/`, 148 files across 7
