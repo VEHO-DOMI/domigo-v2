@@ -36,3 +36,11 @@ docs/art/drop-v/**
 docs/art/drop-t/**
 docs/art/drop-u/**
 docs/art/drop-v/**/.gitkeep
+
+# Heavy Rayman video-study media — reference only, never shipped (screenshot task 2026-07-22)
+docs/*.mp4
+docs/Rayman X DomiGo Screenshots/**/_raw-frames/**
+docs/Rayman X DomiGo Screenshots/**/_contact/**
+
+# CP-15: all Rayman screenshot/physics ASSETS stay local (never committed). Our-words docs live in docs/study + docs/handover.
+docs/Rayman X DomiGo Screenshots/

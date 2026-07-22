@@ -1,5 +1,7 @@
 # DISCREPANCY AUDIT — game-paint vs. the canonical 1995 decompilation
 
+> **Companion (2026-07-22):** a frame-by-frame VIDEO physics capture — 60 fps = 1 game tick, so frame-counts validate these tick-constants (M1/M2/M5 especially) — lives at `docs/Rayman X DomiGo Screenshots/Rayman Movement Physics/PHYSICS-CAPTURE.md` (git-ignored). Signpost: `docs/handover/32_rayman_video_study.md`.
+
 Sources read (actual C, this session, not prior-round summaries):
 `~/Code/rayman-study/src/rayverse/src/` — `ray.c` (all 2,834 lines), `moteur.c`
 (engine loop, gravity, mover, camera, activation), `blocs.c` (slope/floor
