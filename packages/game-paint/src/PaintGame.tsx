@@ -8,6 +8,7 @@
  */
 import React, { useEffect, useRef, useState } from "react";
 import Phaser from "phaser";
+import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { PaintScene, type TaskRequest } from "./PaintScene.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
 import { LOGICAL_H, LOGICAL_W, RENDER_SCALE } from "./paint.ts";
@@ -44,6 +45,8 @@ interface HarnessApi {
   warp: (c: number, r: number) => void;
   task: () => { id: string; answer: string } | null;
   solveTask: () => boolean;
+  /** dev-only: typing-guard probes (the game-2d harness precedent) */
+  game: Phaser.Game;
 }
 
 declare global {
@@ -142,6 +145,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
     });
     gameRef.current = game;
+    // THE TYPING-MODE LAW (shared, game-feel): while a task card's input has
+    // focus, Phaser's window-level key capture is released so W/A/S/D/SPACE
+    // reach the field instead of steering the hero (the "school book" softlock)
+    const unbindTyping = bindTypingGuard(game);
 
     const mountPhase = (pid: string): void => {
       mountPhaseRef.current = mountPhase;
@@ -230,6 +237,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 
     if (process.env.NODE_ENV !== "production") {
       window.__domigoPaint = {
+        game, // dev-only: typing-guard probes
         press: (p) => {
           const pad = padRef.current;
           pad.left = p.left === true;
@@ -268,6 +276,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     return () => {
       if (process.env.NODE_ENV !== "production") delete window.__domigoPaint;
       window.clearInterval(poll);
+      unbindTyping();
       game.destroy(true);
       gameRef.current = null;
       sceneRef.current = null;
@@ -284,9 +293,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   };
 
   const dismissCard = (o: OverlayState): void => {
-    if (o.card === "bonuspay") {
-      sceneRef.current?.setOverlay(false);
+    if (o.card === "task") {
+      // the anti-softlock law (PB-T1): every task card can be put down —
+      // dismissal resumes the world with no reward and no redeem
       setOverlay(null);
+      sceneRef.current?.dismissTask(o.req.ctx);
       return;
     }
     sceneRef.current?.setOverlay(false);
@@ -490,6 +501,12 @@ function Overlay({
           )}
         </p>
       )}
+      <button
+        style={{ ...btn, marginTop: 14, fontSize: 13, background: "transparent", border: "1px solid #d8c9a0", color: "#8a7a58" }}
+        onClick={() => onDismiss(o)}
+      >
+        Später ↩
+      </button>
     </div></div>
   );
 }

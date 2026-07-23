@@ -279,6 +279,39 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       failures.push({ phase: ph.id, law: "closed-top", detail: "row 0 must be fully solid (the canopy)" });
     }
 
+    // PB-T1 · THE SLOPE LAWS: ramps are carved INTO mass, never free-standing
+    // wedges — the "looks standable, isn't solid" playtest class. Every slope
+    // cell is backed by solid directly below; 30° halves come as adjacent
+    // pairs (a lone half-ramp is meaningless geometry).
+    for (const [r, row] of ph.rows.entries()) {
+      for (let c = 0; c < row.length; c++) {
+        const g = row[c] ?? ".";
+        if (!isSlope(g)) continue;
+        if (!isSolid(glyphAt(ph.rows, c, r + 1))) {
+          failures.push({ phase: ph.id, law: "slope-backing", detail: `slope '${g}' at (${c},${r}) has no solid below — free wedges are banned` });
+        }
+        if (g === "1" && glyphAt(ph.rows, c + 1, r) !== "2") {
+          failures.push({ phase: ph.id, law: "slope-pairing", detail: `'1' at (${c},${r}) is missing its '2' to the right` });
+        }
+        if (g === "2" && glyphAt(ph.rows, c - 1, r) !== "1") {
+          failures.push({ phase: ph.id, law: "slope-pairing", detail: `'2' at (${c},${r}) is missing its '1' to the left` });
+        }
+        if (g === "3" && glyphAt(ph.rows, c + 1, r) !== "4") {
+          failures.push({ phase: ph.id, law: "slope-pairing", detail: `'3' at (${c},${r}) is missing its '4' to the right` });
+        }
+        if (g === "4" && glyphAt(ph.rows, c - 1, r) !== "3") {
+          failures.push({ phase: ph.id, law: "slope-pairing", detail: `'4' at (${c},${r}) is missing its '3' to the left` });
+        }
+      }
+    }
+    // PB-T1 · walkers spawn standing on solid (the entity ground contract's
+    // authoring side — a mid-air or slope spawn is a placement defect)
+    for (const e of ph.entities) {
+      if ((e.role === "chaser" || e.role === "bouncer") && !isSolid(glyphAt(ph.rows, e.c, e.r + 1))) {
+        failures.push({ phase: ph.id, law: "spawn-standable", detail: `${e.role} ${e.id} at (${e.c},${e.r}) must stand on solid ground` });
+      }
+    }
+
     const reach = reachableCells(ph.rows, level.abilities);
     const has = (c: number, r: number): boolean => reach.has(`${c},${r}`);
     const nearReachable = (c: number, r: number, dc: number, drUp: number, drDown: number): boolean => {

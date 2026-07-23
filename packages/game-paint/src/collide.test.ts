@@ -36,6 +36,7 @@ const run = (
     hazard: null,
     inVine: false,
     onSpring: false,
+    ejected: false,
   };
   const vx = px(start.vx);
   const vy = px(start.vy);
@@ -298,5 +299,133 @@ describe("W0 repros — the feel-gate collision defects (red before the fix)", (
     const st = moveBody(floor, px(32), px(52), 0, 0, false);
     expect(st.ySubs).toBeLessThanOrEqual(px(48)); // pushed out, never inside
     expect(st.grounded).toBe(true);
+  });
+});
+
+// ── PB-T1 · the trust round: body-box eject + body-width landings ────────────
+// Red-first tamper block: every test here FAILED against the v1 mover
+// (single-cell eject, center-column landing) before the fix landed.
+
+/** True iff any SOLID cell overlaps the body box (the eject invariant). */
+const overlapsSolid = (grid: readonly string[], st: MoveResult): boolean => {
+  const xPx = st.xSubs / SUBS;
+  const feetPx = st.ySubs / SUBS;
+  const c0 = Math.floor((xPx - 6) / TILE);
+  const c1 = Math.floor((xPx + 6 - 0.001) / TILE);
+  const r0 = Math.floor((feetPx - 30 + 1) / TILE);
+  const r1 = Math.floor((feetPx - 1) / TILE);
+  for (let r = r0; r <= r1; r++) {
+    for (let c = c0; c <= c1; c++) if (isSolid(glyphAt(grid, c, r))) return true;
+  }
+  return false;
+};
+
+describe("PB-T1 · eject invariant v2 (body-box, not center-cell)", () => {
+  // 8 columns × 8 rows of air over a floor, one solid pillar at c=4, r∈[2..6]
+  const pillar = [
+    "........",
+    "........",
+    "....#...",
+    "....#...",
+    "....#...",
+    "....#...",
+    "....#...",
+    "########",
+  ];
+
+  it("ejects a corner overlap the v1 center-cell probe never saw", () => {
+    // center column c=3 (air), right body edge inside the pillar at mid-height:
+    // v1 checked only (center, feet-1) → clean → body RESTED inside the wall
+    const x = 4 * TILE - 3; // right edge reaches 3px into the pillar column
+    const st = moveBody(pillar, px(x), px(5 * TILE), 0, 0, false);
+    expect(overlapsSolid(pillar, st)).toBe(false);
+    expect(st.ejected).toBe(true);
+    expect(st.xSubs).toBeLessThan(px(x)); // pushed out the near (left) side
+  });
+
+  it("pushes toward the smaller penetration", () => {
+    const xRight = 5 * TILE + 3; // left edge 3px into the pillar from the right
+    const st = moveBody(pillar, px(xRight), px(5 * TILE), 0, 0, false);
+    expect(overlapsSolid(pillar, st)).toBe(false);
+    expect(st.xSubs).toBeGreaterThan(px(xRight)); // pushed out the right side
+  });
+
+  it("keeps the support snap for a shallow feet overlap (v1 behavior)", () => {
+    const floor = ["........", "........", "........", "........", "........", "........", "........", "########"];
+    const st = moveBody(floor, px(32), px(7 * TILE + 5), 0, 0, false); // feet 5px into the floor
+    expect(st.ySubs).toBe(px(7 * TILE));
+    expect(st.grounded).toBe(true);
+  });
+
+  it("never ends a tick overlapping a solid under a deterministic sweep", () => {
+    // seeded LCG sweep over positions/velocities — the post-condition IS the law
+    let seed = 42;
+    const rnd = () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 2 ** 32;
+    for (let i = 0; i < 400; i++) {
+      const x = 8 + rnd() * (8 * TILE - 16);
+      const y = 16 + rnd() * (6 * TILE);
+      const vx = (rnd() - 0.5) * 6;
+      const vy = (rnd() - 0.5) * 8;
+      const st = moveBody(pillar, px(x), px(y), px(vx), px(vy), rnd() > 0.5);
+      expect(overlapsSolid(pillar, st)).toBe(false);
+    }
+  });
+});
+
+describe("PB-T1 · body-width landings (edges land, not just the center)", () => {
+  // platform ####.... : the right edge of the platform is at x=64
+  const shelf = [
+    "........",
+    "........",
+    "........",
+    "........",
+    "####....",
+    "........",
+    "........",
+    "########",
+  ];
+
+  it("lands when the center is past the lip but a body edge is still over it", () => {
+    // center x=67 (air column c=4), left edge x=61 over the shelf → must land
+    const st = run(shelf, { x: 67, y: 3 * TILE + 2, vx: 0, vy: 3, grounded: false }, 6);
+    expect(st.grounded).toBe(true);
+    expect(st.ySubs).toBe(px(4 * TILE));
+  });
+
+  it("still falls clean when NO part of the body is over the shelf", () => {
+    const st = run(shelf, { x: 4 * TILE + 8, y: 3 * TILE + 2, vx: 0, vy: 3, grounded: false }, 8);
+    expect(st.ySubs).toBeGreaterThan(px(4 * TILE)); // fell past the shelf row
+  });
+
+  // ramp carved into mass, base meeting the approach floor: floor top = 80px
+  // (r5), the `/` at (c4, r4) rises 80→64, solid continues at r4 from c5
+  const ramp = [
+    "........",
+    "........",
+    "........",
+    "........",
+    "..../###",
+    "########",
+    "########",
+    "########",
+  ];
+
+  it("a jump-landing onto a backed ramp sticks (regression: center on ramp)", () => {
+    const st = run(ramp, { x: 4 * TILE + 8, y: 2 * TILE, vx: 0, vy: 3, grounded: false }, 16);
+    expect(st.grounded).toBe(true);
+    expect(st.surfaceGlyph).toBe("/");
+  });
+
+  it("a jump-landing with only the body EDGE over the ramp sticks (was red)", () => {
+    // center in the air column left of the ramp; right edge over the `/` base
+    const st = run(ramp, { x: 4 * TILE - 4, y: 2 * TILE, vx: 0, vy: 3, grounded: false }, 16);
+    expect(st.grounded).toBe(true);
+  });
+
+  it("walking up a ramp into its solid continuation stays smooth (regression)", () => {
+    const st = run(ramp, { x: 3 * TILE, y: 5 * TILE, vx: 1.5, vy: 0, grounded: true }, 30);
+    expect(st.grounded).toBe(true);
+    expect(overlapsSolid(ramp, st)).toBe(false);
+    expect(st.ySubs).toBeLessThanOrEqual(px(4 * TILE)); // climbed onto the top run
   });
 });

@@ -105,9 +105,61 @@ export interface MoveResult {
   hazard: string | null;
   inVine: boolean;
   onSpring: boolean;
+  /** PB-T1: true iff the eject invariant had to correct this tick (telemetry
+   *  for tests/harness — a shipped level should never need corrections). */
+  ejected: boolean;
 }
 
+/**
+ * PB-T1 · THE ENTITY GROUND CONTRACT: what a walking creature sees one probe
+ * ahead. Unlike groundSurfaceAt (the player's forgiving snap probe), this is
+ * strict about edges: a drop deeper than `maxDropTiles`, a rise taller than
+ * one step, a slope, or a one-way reads as "no ground" unless the role opts
+ * in — pencils patrol table-tops; they do not wander down ramps or off
+ * cliffs (the playtest's "walking off where he was standing" class).
+ */
+export const walkSurfaceAhead = (
+  grid: Grid,
+  xPx: number,
+  feetPx: number,
+  opts: { maxDropTiles?: number; acceptSlopes?: boolean; acceptOneWays?: boolean } = {},
+): { yPx: number; glyph: string } | null => {
+  const maxDrop = opts.maxDropTiles ?? 1;
+  const fromRow = Math.max(Math.floor(feetPx / TILE) - 1, 0);
+  const s = groundSurfaceAt(grid, xPx, fromRow, maxDrop + 2);
+  if (s === null) return null;
+  if (!opts.acceptSlopes && isSlope(s.glyph)) return null;
+  if (!opts.acceptOneWays && isOneWay(s.glyph)) return null;
+  if (s.yPx - feetPx > maxDrop * TILE) return null; // cliff ahead
+  if (feetPx - s.yPx > TILE) return null; // wall ahead (≥2-tile rise)
+  return s;
+};
+
 const GROUND_SNAP_PX = 6; // T: grounded surface-follow snap range (slopes, steps)
+
+/** PB-T1: the BODY-WIDTH ground probe — the surface under any of the three
+ *  foot samples (left edge, center, right edge), highest wins. A body whose
+ *  center is past a lip but whose edge is still on the shelf IS standing
+ *  (the v1 center-only probe un-grounded it: the "looks like standing but
+ *  isn't solid" playtest class). */
+const bodyGroundSurfaceAt = (
+  grid: Grid,
+  xPx: number,
+  fromRow: number,
+  maxRows: number,
+): { yPx: number; glyph: string } | null => {
+  // center wins when present (slope fidelity: feet track the ramp under the
+  // hips, not the leading edge); the edge samples only RESCUE a body whose
+  // center is past a lip while a foot is still on the shelf
+  const center = groundSurfaceAt(grid, xPx, fromRow, maxRows);
+  if (center !== null) return center;
+  let best: { yPx: number; glyph: string } | null = null;
+  for (const sx of [xPx - BODY_W / 2, xPx + BODY_W / 2 - 0.001]) {
+    const s = groundSurfaceAt(grid, sx, fromRow, maxRows);
+    if (s !== null && (best === null || s.yPx < best.yPx)) best = s;
+  }
+  return best;
+};
 
 /**
  * Advance a feet-anchored body one tick through the grid.
@@ -140,7 +192,7 @@ export const moveBody = (
   if (wasGrounded && vy >= 0) {
     const feetPx = y / SUBS;
     const fromRow = Math.floor((feetPx - GROUND_SNAP_PX) / TILE);
-    const found = groundSurfaceAt(grid, x / SUBS, fromRow, 3);
+    const found = bodyGroundSurfaceAt(grid, x / SUBS, fromRow, 3);
     if (found && Math.abs(found.yPx - feetPx) <= GROUND_SNAP_PX + Math.abs(vx) / SUBS) {
       y = Math.round(found.yPx * SUBS);
       vy = 0;
@@ -154,38 +206,57 @@ export const moveBody = (
       const oldFeet = y / SUBS;
       const newFeet = ny / SUBS;
       const xPx = x / SUBS;
+      // PB-T1: sample the BODY WIDTH, not just the center column — a landing
+      // where only an edge is over the shelf/ramp must still stick (the v1
+      // center-only scan let straddling bodies fall through the lip). The
+      // HIGHEST surface crossed in the swept band wins.
+      const sampleXs = [xPx - BODY_W / 2, xPx, xPx + BODY_W / 2 - 0.001];
       const fromRow = Math.floor(oldFeet / TILE) - 1;
       const rowsToScan = Math.floor(newFeet / TILE) - fromRow + 2;
-      let landed = false;
+      let best: { yPx: number; glyph: string } | null = null;
       for (let r = Math.max(fromRow, 0); r < Math.min(fromRow + rowsToScan, grid.length); r++) {
-        const c = Math.floor(xPx / TILE);
-        const g = glyphAt(grid, c, r);
-        let surfY: number | null = null;
-        if (isSlope(g)) surfY = slopeSurfaceYPx(g, c, r, xPx);
-        else if (isSolid(g)) surfY = r * TILE;
-        else if (isOneWay(g)) surfY = oldFeet <= r * TILE ? r * TILE : null; // from above only
-        if (surfY !== null && oldFeet <= surfY && newFeet >= surfY) {
-          y = Math.round(surfY * SUBS);
-          vy = 0;
-          grounded = true;
-          freshLanding = true;
-          surfaceGlyph = g;
-          landed = true;
-          break;
+        for (const sx of sampleXs) {
+          const c = Math.floor(sx / TILE);
+          const g = glyphAt(grid, c, r);
+          let surfY: number | null = null;
+          if (isSlope(g)) surfY = slopeSurfaceYPx(g, c, r, sx);
+          else if (isSolid(g)) surfY = r * TILE;
+          else if (isOneWay(g)) surfY = oldFeet <= r * TILE ? r * TILE : null; // from above only
+          if (surfY !== null && oldFeet <= surfY && newFeet >= surfY && (best === null || surfY < best.yPx)) {
+            best = { yPx: surfY, glyph: g };
+          }
         }
       }
-      if (!landed) y = ny;
-    } else if (vy < 0) {
-      const headPx = ny / SUBS - BODY_H;
-      const r = Math.floor(headPx / TILE);
-      const c = Math.floor(x / SUBS / TILE);
-      if (isSolid(glyphAt(grid, c, r))) {
-        y = Math.round(((r + 1) * TILE + BODY_H) * SUBS);
+      if (best !== null) {
+        y = Math.round(best.yPx * SUBS);
         vy = 0;
-        hitCeiling = true;
+        grounded = true;
+        freshLanding = true;
+        surfaceGlyph = best.glyph;
       } else {
         y = ny;
       }
+    } else if (vy < 0) {
+      // clamp at the FIRST solid the head actually crosses while rising (the
+      // old target-row-only check tunneled past intermediate rows). A body
+      // whose head STARTS inside a solid is an embedding, not a ceiling —
+      // rise freely and let the eject invariant resolve it.
+      const oldHeadRow = Math.floor((y / SUBS - BODY_H) / TILE);
+      const newHeadRow = Math.floor((ny / SUBS - BODY_H) / TILE);
+      const c = Math.floor(x / SUBS / TILE);
+      let clamped = false;
+      if (!isSolid(glyphAt(grid, c, oldHeadRow))) {
+        for (let r = oldHeadRow; r >= newHeadRow; r--) {
+          if (isSolid(glyphAt(grid, c, r))) {
+            y = Math.round(((r + 1) * TILE + BODY_H) * SUBS);
+            vy = 0;
+            hitCeiling = true;
+            clamped = true;
+            break;
+          }
+        }
+      }
+      if (!clamped) y = ny;
     }
   }
 
@@ -219,7 +290,7 @@ export const moveBody = (
   // the coyote window instead of a phantom slide-past).
   if (grounded && !freshLanding) {
     const feetPx = y / SUBS;
-    const found = groundSurfaceAt(grid, nx / SUBS, Math.floor((feetPx - GROUND_SNAP_PX) / TILE), 3);
+    const found = bodyGroundSurfaceAt(grid, nx / SUBS, Math.floor((feetPx - GROUND_SNAP_PX) / TILE), 3);
     if (found && Math.abs(found.yPx - feetPx) <= GROUND_SNAP_PX + Math.abs(vxSubs) / SUBS) {
       y = Math.round(found.yPx * SUBS);
       surfaceGlyph = found.glyph;
@@ -229,20 +300,83 @@ export const moveBody = (
     }
   }
 
-  // ── THE EJECT INVARIANT (the original's recale/expel law): a body may
-  // never END a tick inside a solid — snap up to the offending tile's top ──
-  for (let tries = 0; tries < 3; tries++) {
+  // ── THE EJECT INVARIANT v2 (PB-T1, the original's recale/expel law made
+  // body-honest): a body may never END a tick overlapping a solid ANYWHERE in
+  // its box — v1 sampled one cell under the feet-center and let corner
+  // overlaps rest inside walls. Per pass: support (feet in a floor ≤ half a
+  // tile → snap up) → ceiling (head in a solid ≤ half a tile → snap down) →
+  // horizontal (push along the smaller penetration). Grounded bodies keep the
+  // step-up allowance: the bottom GROUND_SNAP_PX+1 px belong to the follow
+  // pass (soft step region), never to the eject. Slopes get the same support
+  // backstop (feet sunk below the surface snap up) without becoming walls. ──
+  let ejected = false;
+  for (let tries = 0; tries < 4; tries++) {
     const feetPx = y / SUBS;
-    const c = Math.floor(nx / SUBS / TILE);
-    const r = Math.floor((feetPx - 1) / TILE);
-    if (!isSolid(glyphAt(grid, c, r))) break;
-    y = r * TILE * SUBS;
-    vy = 0;
-    grounded = true;
-    surfaceGlyph = glyphAt(grid, c, r + 1) !== "." ? glyphAt(grid, c, r) : surfaceGlyph;
+    const xPx = nx / SUBS;
+    const left = xPx - BODY_W / 2;
+    const right = xPx + BODY_W / 2 - 0.001;
+    const bottomPx = grounded ? feetPx - GROUND_SNAP_PX - 1 : feetPx - 1;
+    const topPx = feetPx - BODY_H + 1;
+    const c0 = Math.floor(left / TILE);
+    const c1 = Math.floor(right / TILE);
+    const r0 = Math.floor(topPx / TILE);
+    const r1 = Math.floor(bottomPx / TILE);
+    let hit: { c: number; r: number } | null = null;
+    for (let r = r0; r <= r1 && !hit; r++) {
+      for (let c = c0; c <= c1; c++) {
+        if (isSolid(glyphAt(grid, c, r))) { hit = { c, r }; break; }
+      }
+    }
+    if (!hit) {
+      // slope support backstop: feet sunk below the slope surface in its tile
+      const fc = Math.floor(xPx / TILE);
+      const fr = Math.floor((feetPx - 0.001) / TILE);
+      const fg = glyphAt(grid, fc, fr);
+      if (isSlope(fg)) {
+        const surf = slopeSurfaceYPx(fg, fc, fr, xPx);
+        if (feetPx - surf > 0.5 && feetPx - surf <= TILE / 2) {
+          y = Math.round(surf * SUBS);
+          if (vy > 0) vy = 0;
+          grounded = true;
+          surfaceGlyph = fg;
+          ejected = true;
+          continue;
+        }
+      }
+      break; // clean box — the invariant holds
+    }
+    ejected = true;
+    const tileTop = hit.r * TILE;
+    const tileBot = (hit.r + 1) * TILE;
+    const feetPen = feetPx - tileTop;
+    const headPen = tileBot - (feetPx - BODY_H);
+    // ceiling push-down is only legal when the space below is verifiably
+    // clear — otherwise it digs an embedded body DEEPER (the pillar class);
+    // everything unresolved falls through to the horizontal push.
+    const belowRow = Math.floor(tileBot / TILE);
+    const belowClear = !isSolid(glyphAt(grid, c0, belowRow)) && !isSolid(glyphAt(grid, c1, belowRow));
+    if (hit.r === r1 && feetPen > 0 && feetPen <= TILE / 2) {
+      y = Math.round(tileTop * SUBS); // support: stand on the tile
+      if (vy > 0) vy = 0;
+      grounded = true;
+      surfaceGlyph = glyphAt(grid, hit.c, hit.r);
+    } else if (hit.r === r0 && !grounded && headPen > 0 && belowClear) {
+      y = Math.round((tileBot + BODY_H) * SUBS); // ceiling: clamp below
+      if (vy < 0) vy = 0;
+      hitCeiling = true;
+    } else {
+      // horizontal: push out the nearer face of the offending tile
+      const penLeft = right - hit.c * TILE; // distance to clear moving left
+      const penRight = (hit.c + 1) * TILE - left; // distance to clear moving right
+      const dir: -1 | 1 = penLeft <= penRight ? -1 : 1;
+      const shift = (dir === -1 ? penLeft : penRight) + 0.001;
+      nx = Math.round((xPx + dir * shift) * SUBS);
+      vx = 0;
+      hitWall = dir;
+    }
   }
 
-  return finish(grid, nx, y, vx, vy, grounded, surfaceGlyph, hitWall, hitCeiling);
+  return finish(grid, nx, y, vx, vy, grounded, surfaceGlyph, hitWall, hitCeiling, ejected);
 };
 
 const toFlush = (flushPx: number, dir: number, halfW: number): number =>
@@ -258,6 +392,7 @@ const finish = (
   surfaceGlyph: string | null,
   hitWall: -1 | 0 | 1,
   hitCeiling: boolean,
+  ejected: boolean,
 ): MoveResult => {
   // contact scan over the body rect (hazards, vines, springs)
   const xPx = xSubs / SUBS;
@@ -290,5 +425,6 @@ const finish = (
     hazard,
     inVine,
     onSpring,
+    ejected,
   };
 };

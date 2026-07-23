@@ -391,6 +391,18 @@ export class PaintScene extends Phaser.Scene {
     this.overlayOpen = false;
   }
 
+  /** Called by React when a task card is DISMISSED („Später") — the anti-
+   *  softlock exit: no redeem, no reward, the world just resumes. The trigger's
+   *  iframes give the child time to walk away; an armed ink-pool respawn still
+   *  lifts them out (dismissal must never leave them sunk in the pool). */
+  dismissTask(ctx: TaskRequest["ctx"]): void {
+    if (ctx.type === "hazard" && this.pendingPoolRespawn && this.respawnCell) {
+      this.warp(this.respawnCell.c, this.respawnCell.r - 1);
+      this.pendingPoolRespawn = false;
+    }
+    this.overlayOpen = false;
+  }
+
   spendLetters(n: number): boolean {
     if (this.lettersGot < n) return false;
     this.lettersGot -= n;

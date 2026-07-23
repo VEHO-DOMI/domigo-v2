@@ -14,7 +14,7 @@ import { gradeGrammar, gradeVocab } from "@domigo/engine";
 import type { ResolvedItem } from "@domigo/game-core";
 import { ArcadeScene, type ArcadePad } from "./ArcadeScene.ts";
 import { ARCADE, displayChips, gradeStoryAnswer, quickfireFor, rescuePlan, rescueScaffold, type ArcadeLevel, type GameTaskHints, type Quickfire, type RescueTask, type StoryTaskPack, type Tier } from "./arcade.ts";
-import { bindTypingGuard } from "./typing-guard.ts";
+import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { requestGameFullscreen } from "./fullscreen.ts";
 import { BossScene } from "./BossScene.ts";
 import { bossPlan, type BossScript } from "./boss.ts";
