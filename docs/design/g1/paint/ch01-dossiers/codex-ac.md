@@ -1,4 +1,4 @@
-# MISSION: THE ch01 WORLD KIT — 26 production cards for "DomiGo — Batch AC" (Topic-Material rebuild)
+# MISSION: THE ch01 WORLD KIT — 31 production cards for "DomiGo — Batch AC" (Topic-Material rebuild, gate-verdict v2)
 
 You are a senior children's-book illustrator painting PRODUCTION assets for the approved
 painted-book platformer. The look was gated at Batch Z: attach
@@ -36,9 +36,10 @@ faint ruled exercise-book lines + paper grain allowed in grounds.
 
 ---
 ## GROUP 1 · FAR PLATES (full-bleed 2048×1260, one each)
-1. `plates/plate_p1_titlepage.png` — the sunny "title page" landscape: paper-cut hills,
-   the painted SCHOOLHOUSE on the horizon (the chapter's visible goal), honey hue-shift
-   with distance, NEVER desaturated.
+1. `plates/plate_p1_entrancehall.png` — the school ENTRANCE HALL interior (the chapter
+   now begins INSIDE the school — owner's order; no outdoors, no meadow): tall windows
+   with warm morning light, a row of coat hooks, a flight of doors receding down the
+   corridor, honey hue-shift with depth, NEVER desaturated.
 2. `plates/plate_p2_nightwall.png` — the classroom back wall at night: shelf/poster/
    blackboard silhouettes in saturated blue-violet values (value ramp, full saturation),
    two moonlight shafts from windows.
@@ -48,7 +49,8 @@ faint ruled exercise-book lines + paper grain allowed in grounds.
    two colors + ink; deliberately NOT a world (a between-space).
 
 ## GROUP 2 · MID SILHOUETTE BANDS (2048×384, LOOP, magenta)
-5. `bands/band_p1_bookhills.png` — paper/book-hill silhouettes, pine-green accent.
+5. `bands/band_p1_hallway.png` — locker and coat-bench silhouettes with a lamp chain,
+   pine-green accent.
 6. `bands/band_p2_furniture.png` — desks/chairs/globe silhouettes, night register.
 7. `bands/band_p3_playground.png` — climbing frame, benches, planters (pencil-pot
    planters — topic!).
@@ -56,10 +58,12 @@ faint ruled exercise-book lines + paper grain allowed in grounds.
    missing class — story told by absence).
 
 ## GROUP 3 · TERRAIN KITS (strict 512px-cell sheets, magenta; cells listed left→right)
-9. `terrain/kit_p1_books.png` 2048×512, 4 cells: [book-mass loop tile: spines as body,
-   pale page-edge as the walk-top] [left cap] [right cap] [book-stack plateau tile].
+9. `terrain/kit_p1_hall.png` 2048×512, 4 cells: [floorboard-crust-over-book-body mass
+   loop tile (the hall floor: wooden boards on top, book spines as the body below)]
+   [left cap] [right cap] [book-stack plateau tile].
 10. `terrain/kit_p1_steps.png` 2048×512, 4 cells: [book-cover stair piece rising right]
-    [same falling right] [eraser step block] [paper platform with washi-tape edges].
+    [same falling right] [coat-bench platform (a wooden cloakroom bench)] [paper platform
+    with washi-tape edges].
 11. `terrain/kit_p2_floor.png` 2048×512, 4 cells: [classroom floorboard loop] [floorboard
     left cap] [right cap] [windowsill ledge strip].
 12. `terrain/kit_p2_furniture.png` 2048×512, 4 cells: [desk-top platform tile] [book-pile
@@ -76,12 +80,14 @@ faint ruled exercise-book lines + paper grain allowed in grounds.
     holder rail (hazard furniture!)] [feather-fence piece].
 
 ## GROUP 4 · PROPS (2048×512 sheets, magenta, content-trimmed on import)
-17. `props/props_p1.png` 4 cells: [pencil fence loop piece] [Fibel signpost (painted arrow
-    to the schoolhouse, no letters)] [pencil-case bench] [alcove shelf board].
+17. `props/props_p1.png` 4 cells: [locker-alley tile (tall lockers, one ajar)] [notice
+    board with a loose chalk ARROW scribble] [cellar-stair pit mouth with a small ink
+    puddle] [alcove shelf board above the lockers].
 18. `props/props_p1b.png` 4 cells: [paper plane glide] [paper plane banked] [pencil-
-    shaving blossoms scatter (verb-debris flowers!)] [school gate CLOSED].
-19. `props/props_gates.png` 4 cells: [school gate OPEN] [arena door (stage door with
-    knocker)] [exit window sleepy-eyed (p2)] [Klecks door on blackboard-back].
+    shaving + chalk-crumb debris scatter] [the CLASSROOM DOOR closed — friendly waiting
+    eyes (this is p1's visible goal at the corridor's end)].
+19. `props/props_gates.png` 4 cells: [the classroom door OPEN] [arena door (stage door
+    with knocker)] [exit window sleepy-eyed (p2)] [Klecks door on blackboard-back].
 20. `props/props_p2.png` 4 cells: [hanging lamp + warm light cone] [satchel barricade]
     [ink jar sealed] [ink jar burst-open].
 21. `props/props_p3.png` 4 cells: [chalk hopscotch decal (loose chalk numbers as drawing)]
@@ -103,7 +109,29 @@ faint ruled exercise-book lines + paper grain allowed in grounds.
     with a clean BLANK chalk-slate patch on the wing]. The engine writes each moth's
     number onto the blank patch at runtime — paint the patch empty.
 
-## GROUP 6 · TASK-STIMULUS CARDS (1536×512, 3×512 cells, magenta)
-26. `tasks/stimulus_objects.png`: [a pen] [a ruler] [a school bag] — painted singles on
-    nothing, storybook-warm; these appear INSIDE task cards as match/choice images, so
-    they must read at ~120px.
+## GROUP 6 · THE FULL UNIT-VOCABULARY OBJECT SET (magenta sheets; owner's order: EVERY
+   object the unit names exists as an asset, in every facet the level needs — these serve
+   as task-card images AND as placeable props)
+26. `tasks/vocab_objects_a.png` 2048×512, 4 cells: [pen] [pencil] [rubber] [ruler].
+27. `tasks/vocab_objects_b.png` 2048×512, 4 cells: [book] [exercise book] [pencil case]
+    [pencil sharpener].
+28. `tasks/vocab_objects_c.png` 2048×512, 4 cells: [glue stick] [school bag] [desk]
+    [chair]. (board/door/window exist as level props in groups 3–4 — same painterly
+    voice so cards and world match.)
+    All: painted singles on magenta, storybook-warm, readable at ~120px.
+
+## GROUP 7 · STORY & BOSS MOTION (gate-verdict additions)
+29. `story/prolog_triptych.png` 3072×1024, 3×1024 cells, magenta-free full-paint panels:
+    [panel 1: the open schoolbook SWALLOWS a child in a swirl of ink and letters]
+    [panel 2: the bewitched ENSEMBLE — pencil-runner, eraser-bouncer, paint-box, moths,
+    satchel-stomper, heft-flyer grouped mid-mischief, and BEHIND them a tall unknown
+    HOODED silhouette, face fully hidden (never named, never shown)] [panel 3: the caged
+    classmates — several small cages with sad-hopeful kids, one reaching out]. These are
+    the in-game prologue pictures; paint them as storybook plates.
+30. `entities/ent_tafel_motion.png` 2048×512, 4 cells (the boss must MOVE — owner's
+    order; matches the existing tafel_* cells' look): [the blackboard rolling on its
+    castor frame, leaning into motion] [wind-up lean-back before a chalk throw] [stagger
+    wobble, sponge and chalk flying] [victory smile with warm chalk sun drawn on her].
+31. `story/name_console.png` 1024×512, 2 cells: [the blackboard close-up framed for
+    WRITING, empty warm surface inviting chalk] [same with a blank chalk LINE ready —
+    the player's own name gets typed here at the finale and carried through the game].
