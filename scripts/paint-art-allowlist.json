@@ -1,0 +1,12 @@
+[
+  {
+    "stem": "satchelswing_a",
+    "reason": "swing-platform art ships with Codex batch AC (the world rework, PR PB-T4) — until then the procedural bar renders in the teacher-gated build only",
+    "until": "2026-08-10"
+  },
+  {
+    "stem": "ruler_a",
+    "reason": "ruler-slider art ships with Codex batch AC (the world rework, PR PB-T4) — until then the procedural bar renders in the teacher-gated build only",
+    "until": "2026-08-10"
+  }
+]

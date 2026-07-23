@@ -55,6 +55,7 @@ jobs:
       - run: pnpm content validate-story
       - run: node scripts/check-story-grounding.mjs
       - run: node scripts/check-design-sheets.mjs
+      - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: no silent placeholder art
 
   build:
     runs-on: ubuntu-latest

@@ -139,6 +139,39 @@ const groundAt = (grid: readonly string[], xSubs: number, ySubs: number): number
   return s === null ? null : s.yPx * SUBS;
 };
 
+/** PB-T2 · the kinematic platform path — ONE source of truth for the runtime
+ *  step (above), the reachability validator (level.ts BFS sees the platform's
+ *  swept cells through this), and any renderer. Pure function of (home, params,
+ *  tick): platform.move rides a triangle wave; platform.swing a pendulum. */
+export const platformPathAt = (
+  role: "platform.move" | "platform.swing",
+  homeX: number,
+  homeY: number,
+  params: Record<string, unknown>,
+  tick: number,
+): { x: number; y: number; period: number } => {
+  if (role === "platform.move") {
+    const dxT = Number(params.dxTiles ?? 4);
+    const dyT = Number(params.dyTiles ?? 0);
+    const period = Number(params.periodTicks ?? 240);
+    const ph = (tick % period) / period;
+    const wave = ph < 0.5 ? ph * 2 : 2 - ph * 2; // triangle 0→1→0
+    return {
+      x: homeX + Math.round(dxT * TILE * SUBS * wave),
+      y: homeY + Math.round(dyT * TILE * SUBS * wave),
+      period,
+    };
+  }
+  const rope = Number(params.ropePx ?? 48);
+  const period = Number(params.periodTicks ?? 180);
+  const a = Math.sin((tick % period) / period * Math.PI * 2) * 0.9;
+  return {
+    x: homeX + Math.round(Math.sin(a) * rope * SUBS),
+    y: homeY + Math.round((Math.cos(a) - 1) * -rope * SUBS * 0.25) + rope * SUBS,
+    period,
+  };
+};
+
 /** PB-T1 · the walker's AHEAD probe (the entity ground contract): strict about
  *  edges — a drop deeper than one tile, a tall rise, a slope, or a one-way
  *  reads as "no ground" and the walker TURNS, unless the role opts in via
@@ -255,25 +288,15 @@ export const stepEntities = (
         break;
       }
       case "platform.move": {
-        const dxT = Number(e.params.dxTiles ?? 4);
-        const dyT = Number(e.params.dyTiles ?? 0);
-        const period = Number(e.params.periodTicks ?? 240);
-        const ph = (e.timer % period) / period;
-        const wave = ph < 0.5 ? ph * 2 : 2 - ph * 2; // triangle 0→1→0
-        const nx = e.homeX + Math.round(dxT * TILE * SUBS * wave);
-        const ny = e.homeY + Math.round(dyT * TILE * SUBS * wave);
-        e.vx = nx - e.x; e.vy = ny - e.y; // per-tick delta for the ride contract
-        e.x = nx; e.y = ny;
+        const p = platformPathAt("platform.move", e.homeX, e.homeY, e.params, e.timer);
+        e.vx = p.x - e.x; e.vy = p.y - e.y; // per-tick delta for the ride contract
+        e.x = p.x; e.y = p.y;
         break;
       }
       case "platform.swing": {
-        const rope = Number(e.params.ropePx ?? 48);
-        const period = Number(e.params.periodTicks ?? 180);
-        const a = Math.sin((e.timer % period) / period * Math.PI * 2) * 0.9;
-        const nx = e.homeX + Math.round(Math.sin(a) * rope * SUBS);
-        const ny = e.homeY + Math.round((Math.cos(a) - 1) * -rope * SUBS * 0.25) + rope * SUBS;
-        e.vx = nx - e.x; e.vy = ny - e.y;
-        e.x = nx; e.y = ny;
+        const p = platformPathAt("platform.swing", e.homeX, e.homeY, e.params, e.timer);
+        e.vx = p.x - e.x; e.vy = p.y - e.y;
+        e.x = p.x; e.y = p.y;
         break;
       }
       case "platform.fall": {

@@ -8,21 +8,12 @@
 
 import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
-import { allPhases, findGlyph, type PaintLevel, type PhaseSpec } from "./level.ts";
-import { LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, PAINT, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
-import { clampScroll, cameraTargetX, stepCameraAxis, stepCameraY } from "./camera.ts";
-import { type FistState, stepFist, throwFist } from "./fist.ts";
-import { IDLE_PAD, applyKnockback, type Pad, type PlayerEvent, type PlayerState, spawnPlayer, stepPlayer } from "./player.ts";
-import {
-  applyLinks,
-  guardianKnotSolved,
-  redeemEntity,
-  rideAttachCheck,
-  spawnEntities,
-  stepEntities,
-  type EntityEvent,
-  type EntityWorld,
-} from "./entities.ts";
+import { type PaintLevel, type PhaseSpec } from "./level.ts";
+import { LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
+import { type FistState } from "./fist.ts";
+import { type Pad, type PlayerState } from "./player.ts";
+import { type EntityWorld } from "./entities.ts";
+import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { rigPose, withFistAway } from "./rig.ts";
 import {
   RIG_CELL,
@@ -37,16 +28,9 @@ import {
   shoeStemFor,
 } from "./rigSpec.ts";
 
-/** What the scene asks React to put on screen (the overlay owns pacing). */
-export interface TaskRequest {
-  use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay";
-  ctx:
-    | { type: "entity"; id: string; skin: string }
-    | { type: "cage"; id: string; skin: string; classmate?: string }
-    | { type: "door"; id: string; kind: string }
-    | { type: "guardian"; id: string }
-    | { type: "hazard"; hazard: string };
-}
+/** What the scene asks React to put on screen — lives in sim.ts now (PB-T2);
+ *  re-exported so PaintGame's import path stays stable. */
+export { type TaskRequest } from "./sim.ts";
 
 export interface PaintCallbacks {
   onExit: (next: string) => void;
@@ -79,30 +63,31 @@ const GRASS = 0x59a83c;
 
 export class PaintScene extends Phaser.Scene {
   private cfg: PaintSceneCfg;
-  private phase: PhaseSpec;
-  private grid: readonly string[];
-  private worldWpx: number;
-  private worldHpx: number;
+  /** PB-T2: ALL gameplay lives in the headless sim — the scene draws and
+   *  routes events. The proof-tape replayer runs the same Sim in CI, so the
+   *  scene may never grow gameplay logic of its own again. */
+  private sim: Sim;
 
-  private player!: PlayerState;
-  private prevPad: Pad = { ...IDLE_PAD };
-  private fist: FistState | null = null;
-  private world!: EntityWorld;
+  // sim views (render + legacy call sites read through these)
+  private get phase(): PhaseSpec { return this.sim.phase; }
+  private get grid(): readonly string[] { return this.sim.grid; }
+  private get worldWpx(): number { return this.sim.worldWpx; }
+  private get worldHpx(): number { return this.sim.worldHpx; }
+  private get player(): PlayerState { return this.sim.player; }
+  private get fist(): FistState | null { return this.sim.fist; }
+  private get world(): EntityWorld { return this.sim.world; }
+  private get overlayOpen(): boolean { return this.sim.overlayOpen; }
+  private get guardianDefeated(): boolean { return this.sim.guardianDefeated; }
+  private get bonusLeftTicks(): number { return this.sim.bonusLeftTicks; }
+  private get tickCount(): number { return this.sim.tickCount; }
+  private get lettersGot(): number { return this.sim.lettersGot; }
+  private get lettersTotal(): number { return this.sim.lettersTotal; }
+  private get camX(): number { return this.sim.camX; }
+  private get camY(): number { return this.sim.camY; }
+
   private entityImgs = new Map<string, Phaser.GameObjects.Image>();
   private projG!: Phaser.GameObjects.Graphics;
-  private overlayOpen = false;
-  private doorSolved = new Set<string>();
-  private guardianDefeated = false;
-  private ridingId: string | null = null;
-  private respawnCell: { c: number; r: number } | null = null;
-  private pendingPoolRespawn = false;
-  private bonusLeftTicks = -1; // ≥0 only in the Kleckskammer
-  private gateToastCooldown = 0;
   private acc = 0;
-  private tickCount = 0;
-  private exitFired = false;
-  private lettersTotal = 0;
-  private lettersGot = 0;
 
   private parts = new Map<RigPartName, Phaser.GameObjects.Image>();
   private rigRoot!: Phaser.GameObjects.Container;
@@ -110,21 +95,17 @@ export class PaintScene extends Phaser.Scene {
   private ropeG!: Phaser.GameObjects.Graphics;
   private letterImgs = new Map<string, Phaser.GameObjects.Image>();
   private ringImgs: Array<{ img: Phaser.GameObjects.Image; baseY: number }> = [];
-  private rings: Array<{ x: number; y: number }> = [];
-  private exitCell: { c: number; r: number };
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
 
   constructor(cfg: PaintSceneCfg) {
     super({ key: "paint" });
     this.cfg = cfg;
-    const phase = allPhases(cfg.level).find((p) => p.id === cfg.phaseId);
-    if (!phase) throw new Error(`PaintScene: unknown phase ${cfg.phaseId}`);
-    this.phase = phase;
-    this.grid = phase.rows;
-    this.worldWpx = (phase.rows[0]?.length ?? 0) * TILE;
-    this.worldHpx = phase.rows.length * TILE;
-    const exit = findGlyph(phase.rows, "X") ?? findGlyph(phase.rows, "B");
-    this.exitCell = exit ?? { c: 0, r: 0 };
+    this.sim = new Sim({
+      level: cfg.level,
+      phaseId: cfg.phaseId,
+      grantedAbilities: cfg.grantedAbilities,
+      freedCageIds: cfg.freedCageIds,
+    });
   }
 
   preload(): void {
@@ -142,18 +123,9 @@ export class PaintScene extends Phaser.Scene {
     this.fistImg = this.add.image(0, 0, this.tex("hand_fist")).setScale(RIG_SRC_SCALE).setDepth(11).setVisible(false);
     this.ropeG = this.add.graphics().setDepth(9);
 
-    const start = findGlyph(this.grid, "S") ?? { c: 2, r: 2 };
-    this.player = spawnPlayer(start.c * TILE + TILE / 2, (start.r + 1) * TILE);
-    this.respawnCell = start;
-
-    this.world = spawnEntities(this.phase.entities, this.phase.links);
-    for (const id of this.cfg.freedCageIds()) {
-      const e = this.world.entities.find((x) => x.id === id);
-      if (e) { e.redeemed = true; e.state = "burst"; }
-    }
+    // player/world/letters/bonus clock all spawned by the Sim in the constructor
     this.buildEntityImgs();
     this.projG = this.add.graphics().setDepth(8);
-    if (this.cfg.phaseId === "p9") this.bonusLeftTicks = 35 * 60 + 120; // G1: budget + 2s grace
 
     const kb = this.input.keyboard;
     this.keys = kb
@@ -194,23 +166,7 @@ export class PaintScene extends Phaser.Scene {
   }
 
   warp(c: number, r: number): void {
-    // a warp always detaches — swing/hang/vine would otherwise override it —
-    // and SNAPS the camera (the screen-space clamp would otherwise drag the
-    // player back toward the stale view while the camera slowly chased)
-    this.player = {
-      ...this.player,
-      x: (c * TILE + TILE / 2) * SUBS,
-      y: (r + 1) * TILE * SUBS,
-      vx: 0,
-      vy: 0,
-      grounded: false,
-      swing: null,
-      hangAt: null,
-      climbing: false,
-      hovering: false,
-    };
-    this.camX = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
-    this.camY = clampScroll(this.player.y - Math.round(LOGICAL_H * 0.57) * SUBS, this.worldHpx, LOGICAL_H);
+    this.sim.warp(c, r);
   }
 
   update(_time: number, delta: number): void {
@@ -219,218 +175,60 @@ export class PaintScene extends Phaser.Scene {
     while (this.acc >= TICK_MS && ticks < MAX_TICKS_PER_FRAME) {
       this.acc -= TICK_MS;
       ticks++;
-      this.stepOnce();
+      this.handleSimEvents(this.sim.step(this.readPad()));
     }
     this.render();
   }
 
-  private stepOnce(): void {
-    if (this.overlayOpen) return; // the world holds its breath during a task
-    this.tickCount++;
-    if (this.gateToastCooldown > 0) this.gateToastCooldown--;
-    if (this.bonusLeftTicks > 0) {
-      this.bonusLeftTicks--;
-      if (this.bonusLeftTicks === 0) { this.cfg.callbacks.onExit("bonus-timeout"); return; }
-    }
-    const pad = this.readPad();
-    const near = this.nearestRing();
-    const out = stepPlayer(this.player, pad, this.prevPad, this.grid, {
-      slippery: this.phase.surface === "slippery",
-      canRun: this.cfg.grantedAbilities().includes("run"),
-      canHover: this.cfg.grantedAbilities().includes("hover"),
-      canPunch: this.cfg.grantedAbilities().includes("punch"),
-      canHang: this.cfg.grantedAbilities().includes("hang"),
-      fistBusy: this.fist !== null,
-      ringAt: this.cfg.grantedAbilities().includes("swing") ? near : null,
-    });
-    this.player = out.st;
-    // W0-F7 (canonical): the player is boxed inside the visible screen —
-    // he can never reach the raw edge of the view (scout 2's border law).
-    const minX = this.camX + 20 * SUBS;
-    const maxX = this.camX + (LOGICAL_W - 36) * SUBS;
-    if (this.player.x < minX) this.player = { ...this.player, x: minX, vx: Math.max(this.player.vx, 0) };
-    if (this.player.x > maxX) this.player = { ...this.player, x: maxX, vx: Math.min(this.player.vx, 0) };
-    this.prevPad = { ...pad };
-    for (const ev of out.events) this.onEvent(ev);
-
-    if (this.fist) {
-      const tipC = Math.floor(fromSubs(this.fist.x + this.fist.dir * 8 * SUBS) / TILE);
-      const tipR = Math.floor(fromSubs(this.fist.y) / TILE);
-      const bounced = isSolid(glyphAt(this.grid, tipC, tipR));
-      const res = stepFist(this.fist, this.player.x, this.player.y, bounced);
-      this.fist = res.caught || !res.fist.active ? null : res.fist;
-    }
-
-    this.stepEntityWorld();
-    this.touchCheckpoints();
-    this.collectLetters();
-    this.checkExit();
-  }
-
-  private stepEntityWorld(): void {
-    const evs = stepEntities(this.world, this.grid, {
-      playerX: this.player.x,
-      playerY: this.player.y,
-      playerIframes: this.player.iframes,
-      playerOverlayOpen: this.overlayOpen,
-      fist: this.fist ? { active: true, x: this.fist.x, y: this.fist.y } : null,
-    });
-    for (const ev of evs) this.onEntityEvent(ev);
-
-    // ── the G3 ride contract: stand on a moving platform, inherit its motion ──
-    if (this.ridingId !== null) {
-      const e = this.world.entities.find((x) => x.id === this.ridingId);
-      const gone = !e || e.state === "gone" || Math.abs((e?.x ?? 0) - this.player.x) / SUBS > 24 || this.player.vy < 0;
-      if (gone) this.ridingId = null;
-      else if (e) {
-        this.player.x += e.vx;
-        this.player.y = e.y - 6 * SUBS;
-        this.player.vy = 0;
-        this.player.grounded = true;
-      }
-    }
-    if (this.ridingId === null && !this.player.grounded) {
-      for (const e of this.world.entities) {
-        if (e.hidden || e.redeemed || !rideAttachCheck(e, this.player.y, this.player.x, this.player.vy)) continue;
-        this.ridingId = e.id;
-        if (e.role === "platform.fall" && e.state === "carry") { e.state = "armed"; e.timer = 0; }
-        this.player.y = e.y - 6 * SUBS;
-        this.player.vy = 0;
-        this.player.grounded = true;
-        break;
-      }
-    }
-  }
-
-  private onEntityEvent(ev: EntityEvent): void {
+  /** Route the sim's events to Phaser/React — the only gameplay-adjacent
+   *  code the scene keeps, and it must stay a dumb switch. */
+  private handleSimEvents(evs: SimEvent[]): void {
     const cb = this.cfg.callbacks;
-    switch (ev.type) {
-      case "encounter": {
-        const src = this.world.entities.find((e) => e.id === ev.id);
-        applyKnockback(this.player, this.player.x < (src?.x ?? this.player.x) ? -1 : 1, false);
-        this.player.iframes = PAINT.iframeTicks;
-        this.overlayOpen = true;
-        cb.onTask({ use: ev.role === "swarm" ? "quickfire" : "encounter", ctx: { type: "entity", id: ev.id, skin: ev.skin } });
-        break;
+    for (const ev of evs) {
+      switch (ev.type) {
+        case "toast": this.toast(ev.msg); break;
+        case "task": cb.onTask(ev.req); break;
+        case "powerup": cb.onPowerup(ev.grants); break;
+        case "cageFreed": cb.onCageFreed(ev.id, ev.skin, ev.classmate, ev.count); break;
+        case "guardianDown": cb.onGuardianDown(); break;
+        case "letters": cb.onLetters(ev.got, ev.total); break;
+        case "letterTaken": {
+          const img = this.letterImgs.get(`${ev.c},${ev.r}`);
+          img?.destroy();
+          this.letterImgs.delete(`${ev.c},${ev.r}`);
+          break;
+        }
+        case "exit": cb.onExit(ev.to); break;
+        default: break;
       }
-      case "cageBurst": {
-        const e = this.world.entities.find((x) => x.id === ev.id);
-        this.overlayOpen = true;
-        cb.onTask({ use: "rescue", ctx: { type: "cage", id: ev.id, skin: ev.skin, classmate: e?.params.classmate as string | undefined } });
-        break;
-      }
-      case "cageHit": this.toast("Er wackelt!"); break;
-      case "doorTouched": {
-        const e = this.world.entities.find((x) => x.id === ev.id);
-        if (this.doorSolved.has(ev.id)) break;
-        this.overlayOpen = true;
-        if (ev.kind === "bonus") cb.onTask({ use: "bonuspay", ctx: { type: "door", id: ev.id, kind: ev.kind } });
-        else cb.onTask({ use: "door", ctx: { type: "door", id: ev.id, kind: String(e?.params.kind ?? "exit") } });
-        break;
-      }
-      case "powerupTaken": {
-        this.overlayOpen = true;
-        cb.onPowerup(ev.grants);
-        break;
-      }
-      case "guardianStagger": {
-        const g = this.world.entities.find((x) => x.id === ev.id);
-        if (g) g.state = "window";
-        this.overlayOpen = true;
-        cb.onTask({ use: "boss", ctx: { type: "guardian", id: ev.id } });
-        break;
-      }
-      case "shooed": this.toast("Husch!"); break;
-      default: break;
     }
   }
 
   // ── the React contract: the overlay resolves tasks through these ──────────
 
   setOverlay(open: boolean): void {
-    this.overlayOpen = open;
+    this.sim.setOverlay(open);
   }
 
   /** Called by React when the task for `ctx` is SOLVED. */
   resolveTask(ctx: TaskRequest["ctx"]): void {
-    if (ctx.type === "entity") {
-      const e = this.world.entities.find((x) => x.id === ctx.id);
-      if (e?.role === "guardian") {
-        // a chalk hit opened this task — solving it steadies you, but the
-        // guardian only unknots through its COUNTER-WINDOW (never a stray hit)
-        this.toast("Weiter!");
-      } else {
-        redeemEntity(this.world, ctx.id);
-        applyLinks(this.world, "redeemed", ctx.id);
-        this.toast("Danke!");
-      }
-    } else if (ctx.type === "cage") {
-      const freed = this.cfg.freedCageIds().length + 1;
-      this.cfg.callbacks.onCageFreed(ctx.id, ctx.skin, ctx.classmate, freed);
-      applyLinks(this.world, "opened", ctx.id);
-    } else if (ctx.type === "door") {
-      this.doorSolved.add(ctx.id);
-      applyLinks(this.world, "opened", ctx.id);
-      this.toast("Die Tür freut sich!");
-    } else if (ctx.type === "guardian") {
-      const out = guardianKnotSolved(this.world, ctx.id);
-      for (const ev of out) {
-        if (ev.type === "guardianDown") {
-          this.guardianDefeated = true;
-          this.cfg.callbacks.onGuardianDown();
-        } else if (ev.type === "guardianKnot") {
-          this.toast(`Noch ${ev.knotsLeft} Knoten!`);
-        }
-      }
-    } else if (ctx.type === "hazard") {
-      if (this.pendingPoolRespawn && this.respawnCell) {
-        this.warp(this.respawnCell.c, this.respawnCell.r - 1);
-        this.pendingPoolRespawn = false;
-      }
-    }
-    this.overlayOpen = false;
+    this.handleSimEvents(this.sim.solveTask(ctx));
   }
 
   /** Called by React when a task card is DISMISSED („Später") — the anti-
-   *  softlock exit: no redeem, no reward, the world just resumes. The trigger's
-   *  iframes give the child time to walk away; an armed ink-pool respawn still
-   *  lifts them out (dismissal must never leave them sunk in the pool). */
+   *  softlock exit: no redeem, no reward, the world just resumes. */
   dismissTask(ctx: TaskRequest["ctx"]): void {
-    if (ctx.type === "hazard" && this.pendingPoolRespawn && this.respawnCell) {
-      this.warp(this.respawnCell.c, this.respawnCell.r - 1);
-      this.pendingPoolRespawn = false;
-    }
-    this.overlayOpen = false;
+    this.sim.dismissTask(ctx);
   }
 
   spendLetters(n: number): boolean {
-    if (this.lettersGot < n) return false;
-    this.lettersGot -= n;
-    this.cfg.callbacks.onLetters(this.lettersGot, this.lettersTotal);
-    return true;
+    const ok = this.sim.spendLetters(n);
+    if (ok) this.cfg.callbacks.onLetters(this.sim.lettersGot, this.sim.lettersTotal);
+    return ok;
   }
 
   bonusState(): { leftTicks: number; got: number; total: number } {
-    return { leftTicks: this.bonusLeftTicks, got: this.lettersGot, total: this.lettersTotal };
-  }
-
-  private touchCheckpoints(): void {
-    const c = Math.floor(fromSubs(this.player.x) / TILE);
-    const r = Math.floor((fromSubs(this.player.y) - 1) / TILE);
-    if (glyphAt(this.grid, c, r) === "C" || glyphAt(this.grid, c, r + 1) === "C") {
-      if (this.respawnCell?.c !== c) { this.respawnCell = { c, r: Math.max(r, 1) }; this.toast("Krakel skizziert dich!"); }
-    }
-  }
-
-  private onEvent(ev: PlayerEvent): void {
-    if (ev.type === "fistThrown") {
-      this.fist = throwFist(this.player.x, this.player.y, this.player.facing, ev.charge, ev.speedSubs);
-    } else if (ev.type === "encounter") {
-      this.toast(ev.hazard === "^" ? "Autsch!" : "Platsch!");
-      if (ev.hazard === "w") this.pendingPoolRespawn = true;
-      this.overlayOpen = true;
-      this.cfg.callbacks.onTask({ use: "quickfire", ctx: { type: "hazard", hazard: ev.hazard } });
-    }
+    return { leftTicks: this.sim.bonusLeftTicks, got: this.sim.lettersGot, total: this.sim.lettersTotal };
   }
 
   private readPad(): Pad {
@@ -446,55 +244,6 @@ export class PaintScene extends Phaser.Scene {
       punch: t.punch || down("X") || down("J"),
     };
   }
-
-  private nearestRing(): { x: number; y: number } | null {
-    for (const g of this.rings) {
-      if (Math.abs(g.x - this.player.x) <= 14 * SUBS && Math.abs(g.y - (this.player.y - 30 * SUBS)) <= 28 * SUBS) return g;
-    }
-    return null;
-  }
-
-  private collectLetters(): void {
-    const px = fromSubs(this.player.x);
-    const py = fromSubs(this.player.y);
-    for (const [key, img] of this.letterImgs) {
-      const [c, r] = key.split(",").map(Number) as [number, number];
-      const cx = c * TILE + TILE / 2;
-      const cy = r * TILE + TILE / 2;
-      if (Math.abs(px - cx) < 11 && Math.abs(py - 10 - cy) < 16) {
-        img.destroy();
-        this.letterImgs.delete(key);
-        this.lettersGot++;
-        this.cfg.callbacks.onLetters(this.lettersGot, this.lettersTotal);
-      }
-    }
-  }
-
-  private checkExit(): void {
-    if (this.exitFired) return;
-    const px = fromSubs(this.player.x);
-    const py = fromSubs(this.player.y);
-    const cx = this.exitCell.c * TILE + TILE / 2;
-    const cy = (this.exitCell.r + 1) * TILE;
-    // 18px: the screen-space clamp (right−36) can hold the body ~12px short
-    // of a border-adjacent exit cell — the trigger must reach past the clamp
-    if (Math.abs(px - cx) < 18 && Math.abs(py - cy) < 22) {
-      // exit doors gate the X until their word is said (ch01 imperative law)
-      const gate = this.phase.entities.find((e) => e.role === "door.trigger" && e.params?.kind === "exit");
-      if (gate && !this.doorSolved.has(gate.id)) {
-        if (this.gateToastCooldown === 0) { this.toast("Die Tür wartet auf ihr Wort!"); this.gateToastCooldown = 120; }
-        return;
-      }
-      if (this.phase.entities.some((e) => e.role === "guardian") && !this.guardianDefeated) {
-        if (this.gateToastCooldown === 0) { this.toast("Die Tafel möchte noch reden!"); this.gateToastCooldown = 120; }
-        return;
-      }
-      this.exitFired = true;
-      this.cfg.callbacks.onExit(this.phase.exit.to); // React owns the handoff (P-49)
-    }
-  }
-
-  // ── entities: images + per-state texture chooser ──────────────────────────
 
   private buildEntityImgs(): void {
     for (const e of this.world.entities) {
@@ -628,15 +377,10 @@ export class PaintScene extends Phaser.Scene {
       ring.img.y = ring.baseY + (this.cfg.reducedMotion ? 0 : Math.sin(this.tickCount / 22) * 1.5);
     }
 
-    // the camera brain drives the view (centerOn handles the zoom math)
-    const tx = cameraTargetX(this.player.x, this.player.facing);
-    this.camX = clampScroll(stepCameraAxis(this.camX, tx), this.worldWpx, LOGICAL_W);
-    this.camY = clampScroll(stepCameraY(this.camY, this.player.y), this.worldHpx, LOGICAL_H);
+    // the camera brain now ticks inside the Sim (deterministic — the screen
+    // clamp is gameplay); the render just points the view at it
     this.cameras.main.centerOn(fromSubs(this.camX) + LOGICAL_W / 2, fromSubs(this.camY) + LOGICAL_H / 2);
   }
-
-  private camX = 0;
-  private camY = 0;
 
   // ── builders ───────────────────────────────────────────────────────────────
 
@@ -922,13 +666,11 @@ export class PaintScene extends Phaser.Scene {
         if (g === "o") {
           const img = this.add.image(cx, cy, this.tex("prop_ring")).setDepth(3);
           img.setScale(15 / img.height);
-          this.ringImgs.push({ img, baseY: cy });
-          this.rings.push({ x: cx * SUBS, y: cy * SUBS });
+          this.ringImgs.push({ img, baseY: cy }); // positions live in the Sim
         } else if (g === "*") {
           const img = this.add.image(cx, cy, this.tex("prop_letter")).setDepth(4);
           img.setScale(10 / img.height);
-          this.letterImgs.set(`${c},${r}`, img);
-          this.lettersTotal++;
+          this.letterImgs.set(`${c},${r}`, img); // count lives in the Sim
         } else if (g === "X" || g === "B") {
           const img = this.add.image(cx, (r + 1) * TILE, this.tex("prop_exit")).setOrigin(0.5, 1).setDepth(3);
           img.setScale(24 / img.height);

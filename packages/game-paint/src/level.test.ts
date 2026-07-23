@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  REACH_ENVELOPE,
   checkLevelLaws,
   findGlyph,
   type PaintLevel,
@@ -7,6 +8,8 @@ import {
   reachableCells,
   standable,
 } from "./level.ts";
+import { IDLE_PAD, type Pad, spawnPlayer, stepPlayer } from "./player.ts";
+import { SUBS, TILE } from "./paint.ts";
 
 const phase = (rows: string[], over: Record<string, unknown> = {}) => ({
   id: "p1",
@@ -269,5 +272,103 @@ describe("PB-T1 · slope laws", () => {
       }) as PaintLevel["phases"][number]],
     });
     expect(checkLevelLaws(parsePaintLevel(good)).some((x) => x.law === "spawn-standable")).toBe(false);
+  });
+});
+
+// ── PB-T2 · THE ENVELOPE LAW: the model may never out-promise the engine ─────
+// The reachability constants are an UNDER-approximation of real physics: a
+// too-small envelope only annoys authors; a too-big one blesses unreachable
+// exits (the p3 class). These tests DERIVE the physics from the real player
+// machine and assert the direction. A feel change that shrinks the engine
+// below the model turns this red — exactly when the model must be retuned.
+
+describe("PB-T2 · envelope law (derived from stepPlayer)", () => {
+  const W = 60;
+  const room = (floorRow: number, h = 30): string[] => [
+    "#".repeat(W),
+    ...Array.from({ length: floorRow - 1 }, () => ".".repeat(W)),
+    "#".repeat(W),
+    ...Array.from({ length: h - floorRow - 1 }, () => "#".repeat(W)),
+  ];
+  const pad = (over: Partial<Pad>): Pad => ({ ...IDLE_PAD, ...over });
+  const opts = { canRun: true, canHover: false, canPunch: false, canHang: false, fistBusy: false, ringAt: null } as const;
+
+  it("hold-jump rise ≥ JUMP_UP rows", () => {
+    const grid = room(25);
+    let st = spawnPlayer(20 * TILE, 25 * TILE);
+    let prev = pad({});
+    let minY = st.y;
+    for (let t = 0; t < 120; t++) {
+      const p = pad({ jump: true });
+      st = stepPlayer(st, p, prev, grid, opts).st;
+      prev = p;
+      minY = Math.min(minY, st.y);
+    }
+    const riseRows = Math.floor((25 * TILE * SUBS - minY) / SUBS / TILE);
+    expect(riseRows).toBeGreaterThanOrEqual(REACH_ENVELOPE.JUMP_UP);
+  });
+
+  it("running jump crosses ≥ JUMP_DX columns on the flat", () => {
+    const grid = room(25);
+    let st = spawnPlayer(10 * TILE, 25 * TILE);
+    let prev = pad({});
+    // build run momentum, then jump
+    for (let t = 0; t < 40; t++) { const p = pad({ right: true }); st = stepPlayer(st, p, prev, grid, opts).st; prev = p; }
+    const x0 = st.x;
+    let airborne = false;
+    for (let t = 0; t < 200; t++) {
+      const p = pad({ right: true, jump: true });
+      st = stepPlayer(st, p, prev, grid, opts).st;
+      prev = p;
+      if (!st.grounded) airborne = true;
+      if (airborne && st.grounded) break;
+    }
+    const cols = Math.floor((st.x - x0) / SUBS / TILE);
+    expect(cols).toBeGreaterThanOrEqual(REACH_ENVELOPE.JUMP_DX);
+  });
+
+  it("run-off fall drift ≥ the model's fallDx at each depth", () => {
+    for (const depth of [2, 4, 6, 8]) {
+      // a shelf ending mid-room, floor `depth` rows below its top
+      const shelfRow = 12;
+      const floorRow = shelfRow + depth;
+      const grid = [
+        "#".repeat(W),
+        ...Array.from({ length: shelfRow - 1 }, () => ".".repeat(W)),
+        "#".repeat(20) + ".".repeat(W - 20), // shelf ends at c19
+        ...Array.from({ length: floorRow - shelfRow - 1 }, () => ".".repeat(W)),
+        "#".repeat(W),
+        "#".repeat(W),
+      ];
+      let st = spawnPlayer(10 * TILE, shelfRow * TILE);
+      let prev = pad({});
+      const lipX = 20 * TILE * SUBS;
+      for (let t = 0; t < 600 && !(st.grounded && st.y >= floorRow * TILE * SUBS - SUBS); t++) {
+        const p = pad({ right: true });
+        st = stepPlayer(st, p, prev, grid, opts).st;
+        prev = p;
+      }
+      const driftCols = Math.floor((st.x - lipX) / SUBS / TILE);
+      const modelDx = Math.min(REACH_ENVELOPE.FALL_DX_CAP, 1 + Math.floor(depth * REACH_ENVELOPE.FALL_DRIFT_PER_ROW));
+      expect(driftCols, `depth ${depth}: engine drifted ${driftCols} cols < model ${modelDx}`).toBeGreaterThanOrEqual(modelDx);
+    }
+  });
+
+  it("hover crossing ≥ HOVER_DX columns", () => {
+    const grid = room(25);
+    let st = spawnPlayer(5 * TILE, 25 * TILE);
+    let prev = pad({});
+    for (let t = 0; t < 30; t++) { const p = pad({ right: true }); st = stepPlayer(st, p, prev, grid, { ...opts, canHover: true }).st; prev = p; }
+    const x0 = st.x;
+    let airborne = false;
+    for (let t = 0; t < 600; t++) {
+      const p = pad({ right: true, jump: true }); // hold = hover glide
+      st = stepPlayer(st, p, prev, grid, { ...opts, canHover: true }).st;
+      prev = p;
+      if (!st.grounded) airborne = true;
+      if (airborne && st.grounded) break;
+    }
+    const cols = Math.floor((st.x - x0) / SUBS / TILE);
+    expect(cols).toBeGreaterThanOrEqual(REACH_ENVELOPE.HOVER_DX);
   });
 });
