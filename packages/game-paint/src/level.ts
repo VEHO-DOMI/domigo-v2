@@ -7,6 +7,8 @@
 // reach is a defect, not a secret).
 
 import { type Grid, glyphAt, isOneWay, isSlope, isSolid } from "./collide.ts";
+import { SUBS, TILE } from "./paint.ts";
+import { platformPathAt } from "./entities.ts";
 
 export const LEVEL_SCHEMA = "paintLevel@1";
 
@@ -129,18 +131,34 @@ export const findGlyph = (rows: readonly string[], glyph: string): { c: number; 
   return null;
 };
 
-// ── REACHABILITY (the honest, coarse model of the PR-② physics) ─────────────
+// ── REACHABILITY v2 (PB-T2: the honest UNDER-approximation of the physics) ──
 // A node (c,r) = feet standing ON TOP of row r+1 at column c. Edges follow the
 // real movement envelope: walk ±1 (with 1-tile step-up), jump ≤4 rows up and
-// ≤3 columns across (the 70px hold-jump), hover stretches crossings to ≤7
-// columns, falls go any depth ≤4 columns across, vines climb their column,
-// rings bridge ≤8 columns, springs add ≤2 rows.
+// ≤3 columns across, hover stretches crossings to ≤7 columns, falls drift
+// PROPORTIONALLY to depth (≈0.6 cols/row — v1's "any depth, 4 across" was the
+// exact overshoot that green-lit the unreachable p3 exit), vines climb their
+// column, rings bridge ≤8 columns, springs add ≤2 rows, and MOVING PLATFORMS
+// are visible: their swept top cells (via entities.platformPathAt — the same
+// formula the runtime rides) are boardable nodes with disembark envelopes.
+//
+// THE ENVELOPE LAW: every constant here must be ≤ what the real engine can do
+// (level.test.ts derives the physics from stepPlayer and asserts the direction)
+// — the BFS may miss a truly-reachable spot (author friction, safe) but must
+// never bless an unreachable one. The PROOF of true reachability is the tape
+// (proof-tapes.test.ts), never this model.
 
-const JUMP_UP = 4;
-const JUMP_DX = 3;
-const HOVER_DX = 7;
-const FALL_DX = 4;
-const RING_DX = 8;
+export const REACH_ENVELOPE = {
+  JUMP_UP: 4,
+  JUMP_DX: 3,
+  HOVER_DX: 7,
+  FALL_DRIFT_PER_ROW: 0.5, // cols of air-steer per row fallen (cap below; floor'd)
+  FALL_DX_CAP: 4,
+  RING_DX: 8,
+} as const;
+
+const { JUMP_UP, JUMP_DX, HOVER_DX, RING_DX } = REACH_ENVELOPE;
+const fallDx = (depth: number, hover: boolean): number =>
+  hover ? HOVER_DX : Math.min(REACH_ENVELOPE.FALL_DX_CAP, 1 + Math.floor(depth * REACH_ENVELOPE.FALL_DRIFT_PER_ROW));
 
 const supportAt = (grid: Grid, c: number, r: number): boolean => {
   const below = glyphAt(grid, c, r + 1);
@@ -153,10 +171,34 @@ const headroom = (grid: Grid, c: number, r: number): boolean =>
 export const standable = (grid: Grid, c: number, r: number): boolean =>
   supportAt(grid, c, r) && headroom(grid, c, r);
 
-export const reachableCells = (rows: readonly string[], abilities: readonly Ability[]): Set<string> => {
+export const reachableCells = (
+  rows: readonly string[],
+  abilities: readonly Ability[],
+  entities: readonly EntitySpec[] = [],
+): Set<string> => {
   const start = findGlyph(rows, "S");
   if (!start) return new Set();
-  return reachFrom(rows, abilities, start);
+  return reachFrom(rows, abilities, start, entities);
+};
+
+/** The swept top cells of a kinematic platform over one full period, sampled
+ *  through the SAME path formula the runtime rides (platformPathAt). */
+const platformSweepCells = (spec: EntitySpec): Array<{ c: number; r: number }> => {
+  const homeX = (spec.c * TILE + TILE / 2) * SUBS;
+  const homeY = (spec.r + 1) * TILE * SUBS;
+  const params = spec.params ?? {};
+  const cells = new Set<string>();
+  const period = Number(params.periodTicks ?? (spec.role === "platform.move" ? 240 : 180));
+  for (let t = 0; t < period; t += 4) {
+    const p = platformPathAt(spec.role as "platform.move" | "platform.swing", homeX, homeY, params, t);
+    const cc = Math.floor(p.x / SUBS / TILE);
+    const rr = Math.floor((p.y / SUBS - 1) / TILE);
+    for (let dc = -1; dc <= 1; dc++) cells.add(`${cc + dc},${rr}`); // the 40px top spans ~3 cells
+  }
+  return [...cells].map((k) => {
+    const [c, r] = k.split(",").map(Number) as [number, number];
+    return { c, r };
+  });
 };
 
 /** Reachability from an arbitrary cell (settled onto its supporting node). */
@@ -164,6 +206,7 @@ export const reachFrom = (
   rows: readonly string[],
   abilities: readonly Ability[],
   from: { c: number; r: number },
+  entities: readonly EntitySpec[] = [],
 ): Set<string> => {
   const grid = rows;
   const h = rows.length;
@@ -171,6 +214,9 @@ export const reachFrom = (
   const hover = abilities.includes("hover");
   const crossDx = hover ? HOVER_DX : JUMP_DX;
   const key = (c: number, r: number): string => `${c},${r}`;
+  const platforms = entities
+    .filter((e) => e.role === "platform.move" || e.role === "platform.swing")
+    .map((e) => ({ id: e.id, sweep: platformSweepCells(e), boarded: false }));
 
   const start = from;
   // settle to the supporting node under the cell
@@ -200,9 +246,7 @@ export const reachFrom = (
     queue.push({ c, r });
   };
 
-  while (queue.length > 0) {
-    const n = queue.shift();
-    if (!n) break;
+  const visit = (n: { c: number; r: number }): void => {
     // walk + step-up + step-down
     for (const dc of [-1, 1]) {
       push(n.c + dc, n.r);
@@ -213,9 +257,10 @@ export const reachFrom = (
     for (let dr = -JUMP_UP; dr <= 0; dr++) {
       for (let dc = -JUMP_DX; dc <= JUMP_DX; dc++) push(n.c + dc, n.r + dr);
     }
-    // cross/fall: any depth below within the crossing envelope
+    // fall: drift grows with depth (never v1's flat "4 across at any depth")
     for (let dr = 1; dr <= h; dr++) {
-      for (let dc = -Math.max(crossDx, FALL_DX); dc <= Math.max(crossDx, FALL_DX); dc++) push(n.c + dc, n.r + dr);
+      const dx = fallDx(dr, hover);
+      for (let dc = -dx; dc <= dx; dc++) push(n.c + dc, n.r + dr);
     }
     // hover crossing at level height
     for (let dc = -crossDx; dc <= crossDx; dc++) push(n.c + dc, n.r);
@@ -239,6 +284,33 @@ export const reachFrom = (
         for (let dc = -2; dc <= 2; dc++) for (let dr = -3; dr <= 0; dr++) push(sp.c + dc, sp.r + dr);
       }
     }
+  };
+
+  // drain-and-board: BFS over static nodes, then unlock any kinematic platform
+  // whose swept path is boardable from a seen node, disembarking the jump
+  // envelope from EVERY swept cell; repeat until nothing new unlocks
+  for (;;) {
+    while (queue.length > 0) {
+      const n = queue.shift();
+      if (!n) break;
+      visit(n);
+    }
+    let unlocked = false;
+    for (const p of platforms) {
+      if (p.boarded) continue;
+      const boardable = p.sweep.some((s) => {
+        for (const k of seen) {
+          const [c, r] = k.split(",").map(Number) as [number, number];
+          if (Math.abs(s.c - c) <= JUMP_DX && s.r - r >= -JUMP_UP && s.r - r <= 6) return true;
+        }
+        return false;
+      });
+      if (!boardable) continue;
+      p.boarded = true;
+      unlocked = true;
+      for (const s of p.sweep) visit({ c: s.c, r: s.r }); // ride + disembark anywhere along the sweep
+    }
+    if (!unlocked && queue.length === 0) break;
   }
   return seen;
 };
@@ -312,7 +384,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       }
     }
 
-    const reach = reachableCells(ph.rows, level.abilities);
+    const reach = reachableCells(ph.rows, level.abilities, ph.entities);
     const has = (c: number, r: number): boolean => reach.has(`${c},${r}`);
     const nearReachable = (c: number, r: number, dc: number, drUp: number, drDown: number): boolean => {
       for (let dr = -drUp; dr <= drDown; dr++) {
@@ -348,7 +420,7 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         const c = parts[0] ?? 0;
         const r = parts[1] ?? 0;
         if (!standable(ph.rows, c, r)) continue;
-        const sub = reachFrom(ph.rows, level.abilities, { c, r });
+        const sub = reachFrom(ph.rows, level.abilities, { c, r }, ph.entities);
         let exitOk = false;
         for (let dr = -1; dr <= 3 && !exitOk; dr++) {
           for (let d = -1; d <= 1 && !exitOk; d++) {
