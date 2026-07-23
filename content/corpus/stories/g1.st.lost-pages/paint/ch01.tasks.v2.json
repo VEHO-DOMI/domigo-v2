@@ -2,104 +2,952 @@
   "schema": "gameTasks@2",
   "chapter": "ch01",
   "unit": "g1-u01",
-  "note": "CALIBRATION EXEMPLARS (PB-T6) — one per ch01 kind, the bar Koki signed off at the dossier gate (G1–G13). The full 43-card set (tasks.md §4) is authored to THIS bar in Build-D, then two-layer verified (self-solve sweep + 2 blind-solve agents + devil's advocate). Not yet wired to the live loader.",
+  "note": "ch01 task set (43 cards, PB-T9) — authored to the calibration exemplars' bar (the first card of each kind is the Koki-signed exemplar) per tasks.md §4 mengen-gerüst + the dossier §7 beat plans. Every English token ∈ u01; distractors are CURATED confusables (F16); giveaway-free; stimulus from the fiction (G10). Verified: check-game-tasks + machine autoSolve parity + two independent blind-solve agents + devil's advocate.",
   "items": [
     {
-      "id": "g1.paint.ch01.w01",
+      "id": "g1.paint.ch01.qf.w01",
       "use": "quickfire",
       "kind": "wheel",
       "variant": "digit-to-word",
-      "stimulus": { "type": "entity", "showsDe": "Ein Zahlen-Falter flattert dir mit einer 13 auf dem Flügel um die Nase" },
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Zahlen-Falter flattert dir mit einer 13 auf dem Flügel um die Nase"
+      },
       "storyDe": "Ruf seinen Namen, dann setzt er sich brav auf die Lampe!",
       "shown": "13",
-      "values": ["eleven", "twelve", "thirteen", "fourteen", "sixteen"],
+      "values": [
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "sixteen"
+      ],
       "answer": "thirteen",
-      "hints": { "deDesc": "Eine Zahl zwischen zwölf und vierzehn.", "deWord": "Auf Deutsch: dreizehn." },
-      "grounding": "u01 numbers 11–20; the -teen confusables are the curated distractors"
+      "hints": {
+        "deDesc": "Eine Zahl zwischen zwölf und vierzehn.",
+        "deWord": "Auf Deutsch: dreizehn."
+      },
+      "grounding": "u01 numbers; -teen confusables"
     },
     {
-      "id": "g1.paint.ch01.s01",
+      "id": "g1.paint.ch01.qf.w02",
+      "use": "quickfire",
+      "kind": "wheel",
+      "variant": "digit-to-word",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Falter zeigt dir eine 7 auf dem Flügel"
+      },
+      "storyDe": "Wie heißt diese Zahl? Dreh und tipp!",
+      "shown": "7",
+      "values": [
+        "six",
+        "seven",
+        "eleven",
+        "ten",
+        "seventeen"
+      ],
+      "answer": "seven",
+      "hints": {
+        "deDesc": "Nicht siebzehn — die kleine Schwester.",
+        "deWord": "Auf Deutsch: sieben."
+      },
+      "grounding": "u01 numbers; seven/seventeen confusable"
+    },
+    {
+      "id": "g1.paint.ch01.qf.w03",
+      "use": "quickfire",
+      "kind": "wheel",
+      "variant": "word-to-digit",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Auf dem Flügel steht in Buchstaben: eighteen"
+      },
+      "storyDe": "Welche Ziffer ist das? Dreh das Rad!",
+      "shown": "eighteen",
+      "values": [
+        "8",
+        "18",
+        "80",
+        "19",
+        "17"
+      ],
+      "answer": "18",
+      "hints": {
+        "deDesc": "Nicht acht, nicht achtzig.",
+        "deWord": "Auf Deutsch: achtzehn."
+      },
+      "grounding": "u01 numbers; eight/eighteen/eighty"
+    },
+    {
+      "id": "g1.paint.ch01.qf.w04",
+      "use": "quickfire",
+      "kind": "wheel",
+      "variant": "digit-to-word",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Falter trägt eine 15 auf dem Flügel"
+      },
+      "storyDe": "Sag seinen Namen auf Englisch!",
+      "shown": "15",
+      "values": [
+        "five",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen"
+      ],
+      "answer": "fifteen",
+      "hints": {
+        "deDesc": "Nicht fünf, nicht fünfzig.",
+        "deWord": "Auf Deutsch: fünfzehn."
+      },
+      "grounding": "u01 numbers; five/fifty/fifteen"
+    },
+    {
+      "id": "g1.paint.ch01.qf.w05",
+      "use": "quickfire",
+      "kind": "wheel",
+      "variant": "word-to-digit",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Auf dem Flügel steht: twenty"
+      },
+      "storyDe": "Welche Ziffer ist gemeint? Dreh und tipp!",
+      "shown": "twenty",
+      "values": [
+        "12",
+        "20",
+        "2",
+        "10",
+        "21"
+      ],
+      "answer": "20",
+      "hints": {
+        "deDesc": "Nicht zwölf, nicht zwei.",
+        "deWord": "Auf Deutsch: zwanzig."
+      },
+      "grounding": "u01 numbers; twelve/twenty/two"
+    },
+    {
+      "id": "g1.paint.ch01.qf.s01",
       "use": "quickfire",
       "kind": "spell",
-      "stimulus": { "type": "entity", "showsDe": "Der Stift-Läufer bleibt stehen und verbeugt sich vor dir" },
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Kugelschreiber-Wesen mit blauer Tinten-Spitze verbeugt sich vor dir"
+      },
       "storyDe": "Sag ihm freundlich, was er ist — dann strahlt er!",
       "promptEn": "What is it?",
       "answer": "pen",
-      "extraLetters": "ta",
-      "hints": { "deDesc": "Damit schreibst du mit blauer Tinte.", "deWord": "Auf Deutsch: der Kugelschreiber." },
+      "extraLetters": "bc",
+      "hints": {
+        "deDesc": "Damit schreibst du mit blauer Tinte.",
+        "deWord": "Auf Deutsch: der Kugelschreiber."
+      },
       "grounding": "u01 object: pen"
     },
     {
-      "id": "g1.paint.ch01.d01",
-      "use": "door",
+      "id": "g1.paint.ch01.qf.s02",
+      "use": "quickfire",
+      "kind": "spell",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein aufgeschlagenes Buch-Wesen klappt seine Seiten zu und wartet"
+      },
+      "storyDe": "Sag ihm, was es ist!",
+      "promptEn": "What is it?",
+      "answer": "book",
+      "extraLetters": "cd",
+      "hints": {
+        "deDesc": "Darin liest du Geschichten.",
+        "deWord": "Auf Deutsch: das Buch."
+      },
+      "grounding": "u01 object: book"
+    },
+    {
+      "id": "g1.paint.ch01.qf.s03",
+      "use": "quickfire",
+      "kind": "spell",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein wackeliges Pult-Wesen stampft heran"
+      },
+      "storyDe": "Beruhige es — sag, was es ist!",
+      "promptEn": "What is it?",
+      "answer": "desk",
+      "extraLetters": "bc",
+      "hints": {
+        "deDesc": "Daran sitzt und schreibst du in der Schule.",
+        "deWord": "Auf Deutsch: das Pult / der Schreibtisch."
+      },
+      "grounding": "u01 object: desk"
+    },
+    {
+      "id": "g1.paint.ch01.qf.s04",
+      "use": "quickfire",
+      "kind": "spell",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Stuhl-Wesen stapft mit vier Beinen auf dich zu"
+      },
+      "storyDe": "Beruhige es — buchstabiere, was es ist!",
+      "promptEn": "What is it?",
+      "answer": "chair",
+      "extraLetters": "to",
+      "hints": {
+        "deDesc": "Darauf sitzt du.",
+        "deWord": "Auf Deutsch: der Stuhl."
+      },
+      "grounding": "u01 object: chair"
+    },
+    {
+      "id": "g1.paint.ch01.qf.s05",
+      "use": "quickfire",
+      "kind": "spell",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein quietschendes Tür-Wesen klappert mit der Klinke"
+      },
+      "storyDe": "Sag, was das ist!",
+      "promptEn": "What is it?",
+      "answer": "door",
+      "extraLetters": "bc",
+      "hints": {
+        "deDesc": "Dadurch gehst du ins Klassenzimmer.",
+        "deWord": "Auf Deutsch: die Tür."
+      },
+      "grounding": "u01 object: door"
+    },
+    {
+      "id": "g1.paint.ch01.qf.c01",
+      "use": "quickfire",
       "kind": "choice",
-      "stimulus": { "type": "text" },
-      "storyDe": "Die Klassenzimmer-Tür wartet auf ihr Wort. Was sagst du?",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein freundliches Radiergummi-Wesen winkt dir zu und fragt etwas"
+      },
+      "storyDe": "Es möchte wissen, wie es dir geht. Antworte freundlich!",
+      "promptEn": "How are you?",
+      "options": [
+        "I'm fine, thanks.",
+        "Sit down!",
+        "It's a book."
+      ],
+      "answer": "I'm fine, thanks.",
+      "hints": {
+        "deDesc": "Man antwortet, dass es einem GUT geht."
+      },
+      "grounding": "u01 phrase: I'm fine, thanks"
+    },
+    {
+      "id": "g1.paint.ch01.qf.c02",
+      "use": "quickfire",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Zwei Stift-Wesen stehen nebeneinander: ein dünnes blaues und ein graues mit Spitze"
+      },
+      "storyDe": "Das GRAUE, das man mit dem Radiergummi wieder wegmachen kann — welches Wort passt?",
+      "options": [
+        "a pencil",
+        "a pen",
+        "a ruler"
+      ],
+      "answer": "a pencil",
+      "hints": {
+        "deDesc": "Grau, mit Spitze, man kann es wegradieren.",
+        "deWord": "Auf Deutsch: der Bleistift."
+      },
+      "grounding": "u01 pen/pencil"
+    },
+    {
+      "id": "g1.paint.ch01.qf.c03",
+      "use": "quickfire",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Falter zeigt drei Punkte: • • •"
+      },
+      "storyDe": "Zähl die Punkte — wie viele sind es?",
+      "promptEn": "How many?",
+      "options": [
+        "three",
+        "thirteen",
+        "two"
+      ],
+      "answer": "three",
+      "hints": {
+        "deDesc": "So viele Punkte siehst du.",
+        "deWord": "Auf Deutsch: drei."
+      },
+      "grounding": "u01 numbers; three/thirteen"
+    },
+    {
+      "id": "g1.paint.ch01.qf.c04",
+      "use": "quickfire",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein höfliches Feder-Wesen reicht dir dein Buch zurück"
+      },
+      "storyDe": "Es gibt dir dein Buch. Was sagst du?",
+      "options": [
+        "Thank you!",
+        "Stand up!",
+        "Sorry!"
+      ],
+      "answer": "Thank you!",
+      "hints": {
+        "deDesc": "Man bedankt sich höflich."
+      },
+      "grounding": "u01 polite: thank you"
+    },
+    {
+      "id": "g1.paint.ch01.enc.c01",
+      "use": "encounter",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Radiergummi-Hüpfer versperrt dir hüpfend den Weg"
+      },
+      "storyDe": "Sag ihm, was er ist — dann hüpft er beiseite!",
+      "promptEn": "What is it?",
+      "options": [
+        "a rubber",
+        "a ruler",
+        "a pen"
+      ],
+      "answer": "a rubber",
+      "hints": {
+        "deDesc": "Damit machst du Bleistift-Striche weg.",
+        "deWord": "Auf Deutsch: der Radiergummi."
+      },
+      "grounding": "u01 rubber/ruler confusable"
+    },
+    {
+      "id": "g1.paint.ch01.enc.c02",
+      "use": "encounter",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Lineal-Wesen liegt lang und gerade quer im Weg"
+      },
+      "storyDe": "Sag, was es ist — dann rollt es zur Seite!",
+      "promptEn": "What is it?",
+      "options": [
+        "a ruler",
+        "a rubber",
+        "a book"
+      ],
+      "answer": "a ruler",
+      "hints": {
+        "deDesc": "Lang und gerade — damit ziehst du Striche.",
+        "deWord": "Auf Deutsch: das Lineal."
+      },
+      "grounding": "u01 ruler/rubber confusable"
+    },
+    {
+      "id": "g1.paint.ch01.enc.c03",
+      "use": "encounter",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Stuhl-Wesen stapft mit vier Beinen auf dich zu"
+      },
+      "storyDe": "Beruhige es — sag, was es ist!",
+      "promptEn": "What is it?",
+      "options": [
+        "a chair",
+        "a desk",
+        "a door"
+      ],
+      "answer": "a chair",
+      "hints": {
+        "deDesc": "Darauf sitzt du.",
+        "deWord": "Auf Deutsch: der Stuhl."
+      },
+      "grounding": "u01 chair/desk"
+    },
+    {
+      "id": "g1.paint.ch01.enc.c04",
+      "use": "encounter",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Heft-Flatterer flattert dir mit karierten Seiten entgegen"
+      },
+      "storyDe": "Welches Heft ist das — das zum Rechnen und Schreiben?",
+      "options": [
+        "exercise book",
+        "English book",
+        "school bag"
+      ],
+      "answer": "exercise book",
+      "hints": {
+        "deDesc": "Das Übungsheft mit den Kästchen.",
+        "deWord": "Auf Deutsch: das Übungsheft."
+      },
+      "grounding": "u01 phrases: exercise book / English book"
+    },
+    {
+      "id": "g1.paint.ch01.enc.c05",
+      "use": "encounter",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Farbkasten-Schütze klappert mit dem Deckel und will begrüßt werden"
+      },
+      "storyDe": "Begrüße es freundlich, dann hört es auf zu spritzen!",
       "promptEn": "What do you say?",
-      "options": ["Come in!", "Sit down!", "Thank you!"],
-      "answer": "Come in!",
-      "hints": { "deDesc": "Man bittet jemanden HEREIN.", "deWord": "Herein / komm rein." },
-      "grounding": "u01 classroom commands; the command series opener (G11)"
+      "options": [
+        "Hello!",
+        "Thank you!",
+        "Sorry!"
+      ],
+      "answer": "Hello!",
+      "hints": {
+        "deDesc": "Der Gruß, wenn man jemanden trifft."
+      },
+      "grounding": "u01 greeting: hello"
     },
     {
-      "id": "g1.paint.ch01.o01",
-      "use": "rescue",
-      "kind": "order",
-      "stimulus": { "type": "text" },
-      "storyDe": "Der Käfig springt nur auf, wenn der Satz stimmt. Bau ihn richtig!",
-      "orderedChips": ["This", "is", "my", "book", "."],
-      "hints": { "deDesc": "Fang mit „This\" an.", "deWord": "This is my book." },
-      "grounding": "u01 sentence frame: This is my …"
+      "id": "g1.paint.ch01.enc.c06",
+      "use": "encounter",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Zahlen-Falter zeigt dir seine Punkte: • • • • • • • •"
+      },
+      "storyDe": "Zähl die Punkte nach — wie viele sind es?",
+      "promptEn": "How many?",
+      "options": [
+        "eight",
+        "eighteen",
+        "nine"
+      ],
+      "answer": "eight",
+      "hints": {
+        "deDesc": "Nicht achtzehn, nicht achtzig.",
+        "deWord": "Auf Deutsch: acht."
+      },
+      "grounding": "u01 numbers; eight/eighteen/eighty"
     },
     {
-      "id": "g1.paint.ch01.q01",
+      "id": "g1.paint.ch01.enc.q01",
       "use": "encounter",
       "kind": "oddone",
       "select": "odd",
-      "stimulus": { "type": "text" },
+      "stimulus": {
+        "type": "text"
+      },
       "storyDe": "Der Ranzen-Stampfer hat alles falsch einsortiert. Was gehört NICHT in die Federtasche?",
-      "items": ["pen", "pencil", "rubber", "chair"],
-      "correct": ["chair"],
-      "hints": { "deDesc": "Drei Dinge sind zum Schreiben da. Eines ist ein Möbelstück." },
-      "grounding": "u01 objects; category = things in a pencil case"
+      "items": [
+        "pen",
+        "pencil",
+        "rubber",
+        "chair"
+      ],
+      "correct": [
+        "chair"
+      ],
+      "hints": {
+        "deDesc": "Drei Dinge sind zum Schreiben da. Eines ist ein Möbelstück."
+      },
+      "grounding": "u01 objects; pencil-case category"
     },
     {
-      "id": "g1.paint.ch01.b01",
+      "id": "g1.paint.ch01.enc.q02",
+      "use": "encounter",
+      "kind": "oddone",
+      "select": "odd",
+      "stimulus": {
+        "type": "text"
+      },
+      "storyDe": "Der Stampfer wirft Zahlen durcheinander. Welche ist KEINE Zahl?",
+      "items": [
+        "seven",
+        "ten",
+        "book",
+        "twelve"
+      ],
+      "correct": [
+        "book"
+      ],
+      "hints": {
+        "deDesc": "Drei sind Zahlen. Eines liest du."
+      },
+      "grounding": "u01 numbers vs object"
+    },
+    {
+      "id": "g1.paint.ch01.enc.q03",
+      "use": "encounter",
+      "kind": "oddone",
+      "select": "odd",
+      "stimulus": {
+        "type": "text"
+      },
+      "storyDe": "Drei davon sagt man zur Begrüßung oder Höflichkeit. Welches NICHT?",
+      "items": [
+        "hello",
+        "please",
+        "thanks",
+        "desk"
+      ],
+      "correct": [
+        "desk"
+      ],
+      "hints": {
+        "deDesc": "Drei sind höfliche Wörter. Eines ist ein Möbelstück."
+      },
+      "grounding": "u01 polite words vs object"
+    },
+    {
+      "id": "g1.paint.ch01.enc.m01",
+      "use": "encounter",
+      "kind": "mistake",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Farbkasten-Schütze hält ein LINEAL hoch, während die Tafel etwas schreibt"
+      },
+      "storyDe": "Die Tafel schreibt einen Satz — aber schau, was das Wesen hält! Tipp das falsche Wort an.",
+      "sentence": [
+        "This",
+        "is",
+        "a",
+        "rubber",
+        "."
+      ],
+      "errorIndex": 3,
+      "fix": {
+        "mode": "replace",
+        "correction": "ruler"
+      },
+      "correctionOptions": [
+        "ruler",
+        "pen",
+        "book"
+      ],
+      "hints": {
+        "deDesc": "Was hält das Wesen WIRKLICH in der Hand?"
+      },
+      "grounding": "u01 objects; rubber vs ruler"
+    },
+    {
+      "id": "g1.paint.ch01.door.d01",
+      "use": "door",
+      "kind": "choice",
+      "stimulus": {
+        "type": "text"
+      },
+      "storyDe": "Die Klassenzimmer-Tür wartet auf ihr Wort. Was sagst du?",
+      "promptEn": "What do you say?",
+      "options": [
+        "Come in!",
+        "Sit down!",
+        "Thank you!"
+      ],
+      "answer": "Come in!",
+      "hints": {
+        "deDesc": "Man bittet jemanden HEREIN.",
+        "deWord": "Herein / komm rein."
+      },
+      "grounding": "u01 commands; series opener (G11)"
+    },
+    {
+      "id": "g1.paint.ch01.door.d02",
+      "use": "door",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Spind-Türchen klemmt fest zu und wackelt"
+      },
+      "storyDe": "Sag ihm, es soll AUFGEHEN!",
+      "options": [
+        "Open!",
+        "Close!",
+        "Sit down!"
+      ],
+      "answer": "Open!",
+      "hints": {
+        "deDesc": "Das Gegenteil von zumachen."
+      },
+      "grounding": "u01 commands; open/close"
+    },
+    {
+      "id": "g1.paint.ch01.door.d03",
+      "use": "door",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Fenster-Wesen steht weit offen und lässt kalte Zugluft herein"
+      },
+      "storyDe": "Sag ihm, es soll ZUGEHEN!",
+      "options": [
+        "Close!",
+        "Open!",
+        "Come in!"
+      ],
+      "answer": "Close!",
+      "hints": {
+        "deDesc": "Das Gegenteil von aufmachen."
+      },
+      "grounding": "u01 commands; open/close"
+    },
+    {
+      "id": "g1.paint.ch01.door.d04",
+      "use": "door",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Stuhl-Wächter steht im Weg und will ein Kommando hören"
+      },
+      "storyDe": "Er möchte, dass du dich SETZT. Sag es ihm!",
+      "promptEn": "What do you say?",
+      "options": [
+        "Sit down!",
+        "Stand up!",
+        "Look!"
+      ],
+      "answer": "Sit down!",
+      "hints": {
+        "deDesc": "Man setzt sich hin."
+      },
+      "grounding": "u01 commands; sit down / stand up"
+    },
+    {
+      "id": "g1.paint.ch01.door.d05",
+      "use": "door",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein liegendes Bank-Wesen will aufgeweckt und aufgerichtet werden"
+      },
+      "storyDe": "Sag ihm, es soll AUFSTEHEN!",
+      "promptEn": "What do you say?",
+      "options": [
+        "Stand up!",
+        "Sit down!",
+        "Close!"
+      ],
+      "answer": "Stand up!",
+      "hints": {
+        "deDesc": "Das Gegenteil von sich hinsetzen."
+      },
+      "grounding": "u01 commands; stand up / sit down"
+    },
+    {
+      "id": "g1.paint.ch01.door.d06",
+      "use": "door",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Ohr-förmiges Lautsprecher-Wesen dreht sich zu dir und wartet"
+      },
+      "storyDe": "Es will, dass alle ZUHÖREN. Welches Kommando passt?",
+      "promptEn": "What do you say?",
+      "options": [
+        "Listen!",
+        "Look!",
+        "Stand up!"
+      ],
+      "answer": "Listen!",
+      "hints": {
+        "deDesc": "Mit den Ohren aufpassen."
+      },
+      "grounding": "u01 commands; listen / look"
+    },
+    {
+      "id": "g1.paint.ch01.door.d07",
+      "use": "door",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Ein Wegweiser-Wesen mit einem großen Auge zeigt auf die Tafel"
+      },
+      "storyDe": "Es will, dass alle zur Tafel SCHAUEN. Welches Kommando?",
+      "promptEn": "What do you say?",
+      "options": [
+        "Look!",
+        "Listen!",
+        "Sit down!"
+      ],
+      "answer": "Look!",
+      "hints": {
+        "deDesc": "Mit den Augen hinschauen."
+      },
+      "grounding": "u01 commands; look / listen"
+    },
+    {
+      "id": "g1.paint.ch01.door.dt1",
+      "use": "door",
+      "kind": "choice",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Die letzte klemmende Tür zittert und wartet auf das richtige Kommando"
+      },
+      "storyDe": "Das letzte klemmende Türchen wartet auf sein Wort. Sag ihm, es soll AUFGEHEN!",
+      "answer": "Open!",
+      "hints": {
+        "deDesc": "Das Gegenteil von zumachen.",
+        "deWord": "Auf Deutsch: öffne / mach auf."
+      },
+      "grounding": "u01 command: open",
+      "options": [
+        "Open!",
+        "Close!",
+        "Sit down!"
+      ]
+    },
+    {
+      "id": "g1.paint.ch01.res.s01",
+      "use": "rescue",
+      "kind": "spell",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Im Käfig sitzt ein Klassenkamerad neben einem Lineal-Wesen"
+      },
+      "storyDe": "Buchstabiere, was neben ihm liegt — dann springt der Käfig auf!",
+      "promptEn": "What is it?",
+      "answer": "ruler",
+      "extraLetters": "cf",
+      "hints": {
+        "deDesc": "Lang und gerade, für Striche.",
+        "deWord": "Auf Deutsch: das Lineal."
+      },
+      "grounding": "u01 object: ruler"
+    },
+    {
+      "id": "g1.paint.ch01.res.s02",
+      "use": "rescue",
+      "kind": "spell",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Käfig hängt an einem Tafel-Wesen mit grüner Kreide"
+      },
+      "storyDe": "Buchstabiere, worauf man mit Kreide schreibt!",
+      "promptEn": "What is it?",
+      "answer": "board",
+      "extraLetters": "ti",
+      "hints": {
+        "deDesc": "Vorne im Klassenzimmer, grün, mit Kreide.",
+        "deWord": "Auf Deutsch: die Tafel."
+      },
+      "grounding": "u01 object: board"
+    },
+    {
+      "id": "g1.paint.ch01.res.s03",
+      "use": "rescue",
+      "kind": "spell",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Der Käfig steht mitten auf dem Klassenzimmer-Dielenboden"
+      },
+      "storyDe": "Buchstabiere, worauf der Käfig steht!",
+      "promptEn": "What is it?",
+      "answer": "floor",
+      "extraLetters": "ts",
+      "hints": {
+        "deDesc": "Der Boden, auf dem du gehst.",
+        "deWord": "Auf Deutsch: der Boden."
+      },
+      "grounding": "u01 object: floor"
+    },
+    {
+      "id": "g1.paint.ch01.res.o01",
+      "use": "rescue",
+      "kind": "order",
+      "stimulus": {
+        "type": "text"
+      },
+      "storyDe": "Der Käfig springt nur auf, wenn der Satz stimmt. Bau ihn richtig!",
+      "orderedChips": [
+        "This",
+        "is",
+        "my",
+        "book",
+        "."
+      ],
+      "hints": {
+        "deDesc": "Fang mit „This\" an.",
+        "deWord": "This is my book."
+      },
+      "grounding": "u01 frame: This is my …"
+    },
+    {
+      "id": "g1.paint.ch01.res.o02",
+      "use": "rescue",
+      "kind": "order",
+      "stimulus": {
+        "type": "text"
+      },
+      "storyDe": "Bau die freundliche Frage, dann öffnet sich der Käfig!",
+      "orderedChips": [
+        "What",
+        "is",
+        "your",
+        "name",
+        "?"
+      ],
+      "hints": {
+        "deDesc": "Fang mit „What\" an.",
+        "deWord": "What is your name?"
+      },
+      "grounding": "u01 phrase: what's your name"
+    },
+    {
+      "id": "g1.paint.ch01.boss.m01",
       "use": "boss",
       "kind": "mistake",
-      "stimulus": { "type": "image", "stem": "vocab_ruler", "altDe": "ein Lineal" },
-      "storyDe": "Die Tafel schreibt einen Satz — aber schau auf das Bild! Tipp das falsche Wort an.",
-      "sentence": ["This", "is", "a", "rubber", "."],
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Die Tafel hält als Beweis einen grauen BLEISTIFT bereit, schreibt aber etwas anderes"
+      },
+      "storyDe": "Die Tafel schreibt einen Satz — aber schau auf ihren Beweis! Tipp das falsche Wort an.",
+      "sentence": [
+        "This",
+        "is",
+        "a",
+        "pen",
+        "."
+      ],
       "errorIndex": 3,
-      "fix": { "mode": "replace", "correction": "ruler" },
-      "correctionOptions": ["ruler", "pen", "book"],
-      "hints": { "deDesc": "Was zeigt das Bild WIRKLICH?" },
-      "grounding": "u01 objects; the image is the disambiguator (rubber vs ruler)"
+      "fix": {
+        "mode": "replace",
+        "correction": "pencil"
+      },
+      "correctionOptions": [
+        "pencil",
+        "book",
+        "ruler"
+      ],
+      "hints": {
+        "deDesc": "Grau, mit Spitze — was hält die Tafel WIRKLICH?"
+      },
+      "grounding": "u01 pen vs pencil"
     },
     {
-      "id": "g1.paint.ch01.b02",
+      "id": "g1.paint.ch01.boss.m02",
+      "use": "boss",
+      "kind": "mistake",
+      "stimulus": {
+        "type": "entity",
+        "showsDe": "Die Tafel hält ein stämmiges PULT bereit, schreibt aber etwas anderes"
+      },
+      "storyDe": "Die Tafel schreibt einen Satz — aber schau auf ihren Beweis! Tipp das falsche Wort an.",
+      "sentence": [
+        "This",
+        "is",
+        "a",
+        "chair",
+        "."
+      ],
+      "errorIndex": 3,
+      "fix": {
+        "mode": "replace",
+        "correction": "desk"
+      },
+      "correctionOptions": [
+        "desk",
+        "door",
+        "board"
+      ],
+      "hints": {
+        "deDesc": "Woran sitzt und schreibst du — was hält die Tafel bereit?"
+      },
+      "grounding": "u01 desk vs chair"
+    },
+    {
+      "id": "g1.paint.ch01.boss.o01",
+      "use": "boss",
+      "kind": "order",
+      "stimulus": {
+        "type": "text"
+      },
+      "storyDe": "Die Tafel will einen ganzen Satz sehen. Bau ihn!",
+      "orderedChips": [
+        "This",
+        "is",
+        "a",
+        "pencil",
+        "."
+      ],
+      "hints": {
+        "deDesc": "Fang mit „This\" an.",
+        "deWord": "This is a pencil."
+      },
+      "grounding": "u01 frame: This is a …"
+    },
+    {
+      "id": "g1.paint.ch01.boss.o02",
+      "use": "boss",
+      "kind": "order",
+      "stimulus": {
+        "type": "text"
+      },
+      "storyDe": "Bau der Tafel den höflichen Satz zum Kennenlernen!",
+      "orderedChips": [
+        "Nice",
+        "to",
+        "meet",
+        "you",
+        "."
+      ],
+      "hints": {
+        "deDesc": "Fang mit „Nice\" an.",
+        "deWord": "Nice to meet you."
+      },
+      "grounding": "u01 phrase: nice to meet you"
+    },
+    {
+      "id": "g1.paint.ch01.boss.me1",
       "use": "boss",
       "kind": "memory",
-      "stimulus": { "type": "text" },
+      "stimulus": {
+        "type": "text"
+      },
       "storyDe": "Klecks hat die Zahlen-Karten verwirbelt. Finde die Paare: Ziffer und englisches Wort!",
       "pairs": [
-        { "a": "3", "b": "three" },
-        { "a": "7", "b": "seven" },
-        { "a": "9", "b": "nine" },
-        { "a": "12", "b": "twelve" }
+        {
+          "a": "3",
+          "b": "three"
+        },
+        {
+          "a": "7",
+          "b": "seven"
+        },
+        {
+          "a": "9",
+          "b": "nine"
+        },
+        {
+          "a": "12",
+          "b": "twelve"
+        }
       ],
-      "hints": { "deDesc": "Zähl nach: jede Ziffer hat ihr englisches Wort." },
+      "hints": {
+        "deDesc": "Zähl nach: jede Ziffer hat ihr englisches Wort."
+      },
       "grounding": "u01 numbers 1–12; digit ↔ word"
     },
     {
-      "id": "g1.paint.ch01.b03",
+      "id": "g1.paint.ch01.boss.t1",
       "use": "boss",
       "kind": "typed",
-      "stimulus": { "type": "text" },
+      "stimulus": {
+        "type": "text"
+      },
       "storyDe": "Die Tafel ist erlöst und schaut dich freundlich an. Grüße sie — auf Englisch!",
       "answer": "hello",
-      "accept": ["hello!", "hi"],
-      "hints": { "deDesc": "Der freundliche Gruß, wenn man jemanden trifft.", "deWord": "Auf Deutsch: Hallo." },
+      "accept": [
+        "hello!",
+        "hi",
+        "hi!"
+      ],
+      "hints": {
+        "deDesc": "Der freundliche Gruß, wenn man jemanden trifft.",
+        "deWord": "Auf Deutsch: Hallo."
+      },
       "grounding": "u01 greeting: hello"
     }
   ]

@@ -144,3 +144,45 @@ overlay and resumed the world; ZERO console errors throughout.
   (spell/order render via the same proven tray-tap path; typed's input + the typing-guard are
   proven from PB-T1; all 8 kinds pass machine parity in the 175 tests). They trigger only on
   boss/quickfire beats that are fiddly to script here; Koki's playtest exercises them naturally.
+
+### Build-D1 (PB-T9) — ✅ DONE (PR pending) — the full 43-card ch01 task set, blind-solve-hardened
+The content half of the resequenced Build-D: the complete Unit-1 task set that the card kit
+serves, authored to gameTasks@2 and put through the two-layer intelligence pass. (The phase-grid
+rebuild + batch-AC art + tapes are the other half — Build-D2+, still ahead.)
+
+**Delivered — 43 cards across the five ch01 pools** (`ch01.tasks.v2.json`):
+- quickfire 14 (wheel×5 · spell×5 · choice×4) · encounter 10 (choice×6 · oddone×3 · mistake×1) ·
+  door 8 (choice×8) · rescue 5 (spell×3 · order×2) · boss 6 (mistake×2 · order×2 · memory×1 · typed×1).
+- **F17 (typing not predominant): typed is 1/43 = 2%** — every other prompt is tap/spell/pick.
+- All eight kinds represented; complex kinds (memory) confined to boss, per F20.
+
+**Two-layer intelligence pass (fable-method loop 5):**
+- (a) **Deterministic:** machine `autoSolve` parity over all 43 — every card's winning path grades
+  `correct` (57 spell/machine tests green).
+- (b) **Independent:** 2 blind-solve agents (fresh context, student-view projection only) →
+  unanimous 43/43 = provably solvable; a devil's-advocate agent found **6 real key-narrowness /
+  ambiguity problems**. All six fixed as CLASSES, not instances:
+  1. **Spell article-form ("a pen" longer than "pen")** → skin now shows EXACTLY answer-length
+     slots and caps taps at that length, so the article form is *physically unbuildable*. Extracted
+     the two decisions to pure helpers `spellSlots` / `spellTrayDisabled` (machines.ts) so the rule
+     is unit-tested and can never drift from the skin.
+  2. **Spell decoy collisions** (a tray that also spells another Unit-1 word of the same length,
+     e.g. pen-tray→"ten"/"red") → systematic same-length-collision audit; every tray's decoys chosen
+     so NO other Unit-1 word of the answer's length can be submitted (short words can't — the slots
+     force full length). All 8 spell trays proven collision-free.
+  3. **dt1 free-typed command ("open" vs "open the door") ambiguous** → converted typed→choice
+     (Open!/Close!/Sit down!); stimulus reworded off "GESCHRIEBEN" to match a spoken-command card.
+  4. **boss greeting typed accept too narrow** → accept-list broadened to hello!/hi/hi!.
+  5. **c02 muddled pencil clue** → reworded to the accurate erasable-grey clue; leaking English
+     prompt dropped.
+  6. **enc.c06 pre-given count ("acht Punkte")** → removed so the child actually counts the 8 dots.
+- **Re-verification of the 10 changed cards:** regenerated the student-view projections, diffed to
+  isolate exactly the 10 touched, ran a fresh blind-solve agent on them → **10/10 unanimous with the
+  key**, every tray sufficient, zero ambiguity flags; dot-count invariant (enc.c06 = 8) confirmed.
+
+**Verified — full CI-parity gate set green:** typecheck · test (211, +1 new spell-view guard) ·
+story-grounding · design-sheets · paint-art · game-tasks (43) · web build · bundle (Phaser 1×310 KB).
+**Browser boot proven** (/play/1/buch, dev): server parsed the real 43-card file (200), Phaser canvas
+mounted, harness live, phase p1, ZERO console errors. (Learning banked: the teacher debug-door phase
+ids are p1/p2/p3 — arena/bonus are schema blocks *within* a phase, not mountable ids; `?phase=arena`
+throws `Sim: unknown phase` by design, not a regression.)
