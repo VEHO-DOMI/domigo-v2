@@ -14,6 +14,7 @@ import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 import { z } from "zod";
+import { GameTasksFileV2, type GameTaskV2 } from "@domigo/content-schema";
 import { REPO_ROOT } from "@domigo/content-loader";
 
 const STORY_ID = /^g[1-4]\.st\.[a-z0-9-]+$/;
@@ -138,6 +139,21 @@ export const loadPaintTasks = (storyId: string, chapter: string): GameTaskT[] =>
     }
   }
   tasksCache.set(cacheKey, parsed.items);
+  return parsed.items;
+};
+
+// ── gameTasks@2 (PB-T8): the card-kit task set; validated by the shared schema ──
+const tasksV2Cache = new Map<string, GameTaskV2[]>();
+
+/** Loud loader for the chNN.tasks.v2.json set (schema + cross-field invariants
+ *  run in GameTasksFileV2). Falls the page on any shape/law error. */
+export const loadPaintTasksV2 = (storyId: string, chapter: string): GameTaskV2[] => {
+  const cacheKey = `${storyId}/${chapter}/v2`;
+  const hit = tasksV2Cache.get(cacheKey);
+  if (hit) return hit;
+  const file = path.join(paintDir(storyId), `${chapter}.tasks.v2.json`);
+  const parsed = GameTasksFileV2.parse(JSON.parse(fs.readFileSync(file, "utf8")));
+  tasksV2Cache.set(cacheKey, parsed.items);
   return parsed.items;
 };
 
