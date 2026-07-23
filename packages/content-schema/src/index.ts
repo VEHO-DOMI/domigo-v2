@@ -1878,3 +1878,6 @@ export const Quest = z
     }
   });
 export type Quest = z.infer<typeof Quest>;
+
+// ── gameTasks@2 — the Painted-Book in-game task contract (PB-T6) ─────────────
+export * from "./game-tasks.ts";
