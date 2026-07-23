@@ -111,3 +111,36 @@ Decisions (opus-tuning §9, recorded):
 **Full gate set green:** game-paint 175/175 · tsc 0 · story-grounding · game-tasks (8) ·
 design-sheets · paint-art · web build 0 · bundle 1×Phaser. (Note to self, 3rd time: never
 pipe a gate through grep for its exit code — grep's exit masks tsc's. Run raw.)
+
+### Build-B (skins) — ✅ DONE (PR pending) — the painted card faces, wired + browser-proven
+Decisions (recorded):
+- **All 8 kinds are tap-first** (spell/order = tap the tray in sequence, wheel = ▲▼ + tap-to-lock,
+  mistake = tap word → tap fix, memory = tap to flip). Drag is a later polish, NOT a blocker —
+  so this step delivers a complete, solvable card system by tap.
+- **Full-stack wiring:** server `loadPaintTasksV2` (validates via GameTasksFileV2) → page.tsx →
+  BuchClient (GameTaskV2[]) → PaintGame. `pickTask` replaced by cards/routing `nextTask`. The
+  inline choice/typed Overlay branch replaced by `<CardHost key={task.id}>`. The live game now
+  runs the v2 card kit on the 8 calibration exemplars (Build-D swaps in the full 43).
+- **Bundle tradeoff (measured):** the card kit pulls zod into the lazy game chunk (largest
+  non-Phaser 69→92 KB gz). Guard passes (Phaser still isolated, under budget). If it ever
+  matters, split content-schema's pure helpers (seededShuffle/deriveGapHints) from the zod
+  schemas — noted, not done (measure-first, it's fine).
+
+**Delivered:**
+- `cards/CardShell.tsx` (painted frame: stimulus + story + prompt + F18 hint ladder + „Später"),
+  `cards/skins.tsx` (8 tap-first skins), `cards/CardHost.tsx` (machine glue: fold dispatched
+  actions → grade → resolve/escalate; array-dispatch for single-tap-commit kinds).
+- Wiring: `paint-content.ts` (loadPaintTasksV2), `page.tsx`, `BuchClient.tsx`, `PaintGame.tsx`
+  (GameTaskV2, routing, CardHost, harness task() → {id,kind}).
+
+**Verified — full gate set green:** game-paint 175/175 · game-paint + web tsc 0 · web build 0 ·
+bundle 1×Phaser (310 KB). **BROWSER-PROVEN in the real game** (/play/1/buch, dev): three
+distinct interaction models rendered + solved + resolved end-to-end — **choice** (button-tap,
+door beat), **wheel** (G9 rotate → tap-to-lock, swarm→quickfire), **oddone** (multi-select
+atomic array-dispatch, chaser→encounter). The v2 loader + routing served the correct card per
+beat; every card showed the painted frame + stimulus + „Später"; correct answers closed the
+overlay and resumed the world; ZERO console errors throughout.
+- **Honest coverage note:** spell · order · mistake · memory · typed are NOT yet browser-clicked
+  (spell/order render via the same proven tray-tap path; typed's input + the typing-guard are
+  proven from PB-T1; all 8 kinds pass machine parity in the 175 tests). They trigger only on
+  boss/quickfire beats that are fiddly to script here; Koki's playtest exercises them naturally.

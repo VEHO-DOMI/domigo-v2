@@ -13,19 +13,13 @@ import { PaintScene, type TaskRequest } from "./PaintScene.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
 import { LOGICAL_H, LOGICAL_W, RENDER_SCALE } from "./paint.ts";
 import type { PaintLevel, PhaseSpec } from "./level.ts";
+import type { GameTaskV2 } from "@domigo/content-schema";
+import { CardHost } from "./cards/CardHost.tsx";
+import { initRoute, nextTask, type RouteState } from "./cards/routing.ts";
 
-/** gameTasks@1 item (the proven shape; content lives in chNN.tasks.json). */
-export interface GameTaskItem {
-  id: string;
-  use: string;
-  kind: "choice" | "typed";
-  storyDe: string;
-  promptEn: string;
-  options?: string[];
-  answer: string;
-  hints: { deDesc?: string; deWord?: string; firstLetter?: string; length?: number };
-  grounding?: string;
-}
+/** The in-game task item — gameTasks@2 (the card kit). Content lives in
+ *  chNN.tasks.v2.json; the card renderer is packages/game-paint/src/cards. */
+export type GameTaskItem = GameTaskV2;
 
 export interface PaintGameProps {
   level: PaintLevel;
@@ -43,7 +37,7 @@ interface HarnessApi {
   state: () => unknown;
   phase: () => string;
   warp: (c: number, r: number) => void;
-  task: () => { id: string; answer: string } | null;
+  task: () => { id: string; kind: string } | null;
   solveTask: () => boolean;
   /** dev-only: typing-guard probes (the game-2d harness precedent) */
   game: Phaser.Game;
@@ -70,19 +64,6 @@ const allPhasesOf = (level: PaintLevel): PhaseSpec[] => [
   ...(level.arena ? [level.arena] : []),
   ...(level.bonus ? [level.bonus] : []),
 ];
-
-/** deterministic option shuffle (no Math.random — the repo law). */
-const shuffled = (opts: string[], seed: string): string[] => {
-  let h = 0x811c9dc5;
-  for (let i = 0; i < seed.length; i++) { h ^= seed.charCodeAt(i); h = Math.imul(h, 0x01000193); }
-  const out = [...opts];
-  for (let i = out.length - 1; i > 0; i--) {
-    h = (Math.imul(h, 1664525) + 1013904223) >>> 0;
-    const j = h % (i + 1);
-    [out[i], out[j]] = [out[j]!, out[i]!];
-  }
-  return out;
-};
 
 export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase }: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
@@ -116,14 +97,13 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   overlayRef.current = overlay;
   const mountPhaseRef = useRef<((pid: string) => void) | null>(null);
 
-  // ── task pools with per-use rotation (no immediate repeats) ──
-  const poolIdx = useRef<Record<string, number>>({});
+  // ── task routing (deterministic playlists + no-repeat-kind; cards/routing) ──
+  const routeRef = useRef<RouteState>(initRoute());
   const pickTask = (use: string): GameTaskItem | null => {
-    const pool = tasks.filter((t) => t.use === use);
-    if (pool.length === 0) return null;
-    const i = poolIdx.current[use] ?? 0;
-    poolIdx.current[use] = i + 1;
-    return pool[i % pool.length]!;
+    let r = nextTask(tasks, use, routeRef.current);
+    if (!r.task) r = nextTask(tasks, "quickfire", routeRef.current); // empty pool → generic
+    routeRef.current = r.next;
+    return r.task;
   };
 
   useEffect(() => {
@@ -169,7 +149,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
               setOverlay({ req, item: null, card: "bonuspay", attempts: 0, typed: "" });
               return;
             }
-            const item = pickTask(req.use) ?? pickTask("quickfire");
+            const item = pickTask(req.use); // routing handles the quickfire fallback
             if (!item) { sceneRef.current?.resolveTask(req.ctx); return; } // no pool: never softlock
             setOverlay({ req, item, card: "task", attempts: 0, typed: "" });
           },
@@ -259,7 +239,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         warp: (c, r) => sceneRef.current?.warp(c, r),
         task: () => {
           const o = overlayRef.current;
-          return o?.item ? { id: o.item.id, answer: o.item.answer } : null;
+          return o?.item ? { id: o.item.id, kind: o.item.kind } : null;
         },
         solveTask: () => {
           const o = overlayRef.current;
@@ -319,23 +299,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     }, 0);
   };
 
-  const submitChoice = (o: OverlayState, choice: string): void => {
-    if (!o.item) return;
-    if (choice === o.item.answer) resolveCorrect(o);
-    else setOverlay({ ...o, attempts: o.attempts + 1 });
-  };
-
-  // the blind-solve class fix: a child typing "schoolbag" or "a pencil" is
-  // RIGHT — normalize articles and spacing on both sides before comparing
-  const normTyped = (v: string): string =>
-    v.trim().toLowerCase().replace(/^(a|an|the)\s+/, "").replace(/\s+/g, "");
-
-  const submitTyped = (o: OverlayState): void => {
-    if (!o.item) return;
-    if (normTyped(o.typed) === normTyped(o.item.answer)) resolveCorrect(o);
-    else setOverlay({ ...o, attempts: o.attempts + 1, typed: "" });
-  };
-
+  // task grading now lives in the card machines (cards/) — CardHost calls
+  // resolveCorrect on a correct answer and dismissCard on „Später".
   const restart = (): void => window.location.reload();
   const inBonus = level.bonus !== undefined && phaseId === level.bonus.id;
 
@@ -355,7 +320,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       )}
       <div style={{ position: "relative" }}>
         <div ref={hostRef} style={{ borderRadius: 10, overflow: "hidden", boxShadow: "0 2px 14px rgba(30,20,10,0.25)" }} />
-        {overlay && <Overlay o={overlay} onChoice={submitChoice} onTyped={submitTyped} onType={(v) => setOverlay({ ...overlay, typed: v })} onDismiss={dismissCard} onPay={payBonus} letters={letters.got} />}
+        {overlay && <Overlay o={overlay} onResolve={resolveCorrect} onDismiss={dismissCard} onPay={payBonus} letters={letters.got} />}
       </div>
       {done && (
         <div style={{ background: "#fdf7e6", border: "2px solid #e0a92a", borderRadius: 10, padding: 14, marginTop: 8, textAlign: "center" }}>
@@ -378,12 +343,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 // ── the overlay card ──────────────────────────────────────────────────────────
 
 function Overlay({
-  o, onChoice, onTyped, onType, onDismiss, onPay, letters,
+  o, onResolve, onDismiss, onPay, letters,
 }: {
   o: OverlayState;
-  onChoice: (o: OverlayState, choice: string) => void;
-  onTyped: (o: OverlayState) => void;
-  onType: (v: string) => void;
+  onResolve: (o: OverlayState) => void;
   onDismiss: (o: OverlayState) => void;
   onPay: () => void;
   letters: number;
@@ -465,50 +428,9 @@ function Overlay({
     );
   }
 
-  // ── the task card ──
-  const item = o.item!;
-  const showDesc = o.attempts >= 1 && item.hints.deDesc;
-  const showWord = o.attempts >= 2 && item.hints.deWord;
-  return (
-    <div style={wrap}><div style={card}>
-      <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 6px" }}>{item.storyDe}</p>
-      <p style={{ fontSize: 19, fontWeight: 700, margin: "0 0 12px" }}>{item.promptEn}</p>
-      {item.kind === "choice" ? (
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {shuffled(item.options ?? [], item.id).map((opt) => (
-            <button key={opt} style={{ ...btn, fontSize: 16 }} onClick={() => onChoice(o, opt)}>{opt}</button>
-          ))}
-        </div>
-      ) : (
-        <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
-          <input
-            autoFocus
-            value={o.typed}
-            onChange={(e) => onType(e.target.value)}
-            onKeyDown={(e) => { if (e.key === "Enter") onTyped(o); }}
-            style={{ fontSize: 16, padding: "8px 10px", borderRadius: 8, border: "1px solid #c9a36a", width: 180 }}
-            placeholder={item.hints.firstLetter ? `${item.hints.firstLetter}…` : "…"}
-          />
-          <button style={btn} onClick={() => onTyped(o)}>OK</button>
-        </div>
-      )}
-      {o.attempts > 0 && (
-        <p style={{ fontSize: 13, color: "#8a5a2b", margin: "10px 0 0" }}>
-          {showDesc && <>💡 {item.hints.deDesc}<br /></>}
-          {showWord && <>📖 {item.hints.deWord}</>}
-          {item.kind === "typed" && o.attempts >= 2 && item.hints.length !== undefined && (
-            <> · {item.hints.firstLetter?.toUpperCase()}… ({item.hints.length} Buchstaben)</>
-          )}
-        </p>
-      )}
-      <button
-        style={{ ...btn, marginTop: 14, fontSize: 13, background: "transparent", border: "1px solid #d8c9a0", color: "#8a7a58" }}
-        onClick={() => onDismiss(o)}
-      >
-        Später ↩
-      </button>
-    </div></div>
-  );
+  // ── the task card — the v2 card kit (machines + painted skins) ──
+  // key by task id so CardHost re-mounts (fresh machine state) per task.
+  return <CardHost key={o.item!.id} task={o.item!} onResolve={() => onResolve(o)} onDismiss={() => onDismiss(o)} />;
 }
 
 const btn: React.CSSProperties = {
