@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { GameTasksFileV2 } from "@domigo/content-schema";
 import {
-  MACHINES, autoSolve, normText,
+  MACHINES, autoSolve, normText, spellSlots, spellTrayDisabled,
   choiceMachine, typedMachine, spellMachine, orderMachine,
   oddMachine, wheelMachine, mistakeMachine, memoryMachine,
 } from "./machines.ts";
@@ -33,14 +33,15 @@ describe("choice", () => {
 
 // ── typed ─────────────────────────────────────────────────────────────────────
 describe("typed", () => {
-  const t = byKind("typed"); // answer "hello", accept ["hello!","hi"]
+  const t = byKind("typed"); // derive from the actual first typed card (robust to content order)
   const run = (v: string) => { let s = typedMachine.init(t); s = typedMachine.act(s, { input: v }); return typedMachine.grade(typedMachine.act(s, { submit: true })); };
-  it("pending before submit", () => expect(typedMachine.grade(typedMachine.act(typedMachine.init(t), { input: "hello" }))).toBe("pending"));
+  it("pending before submit", () => expect(typedMachine.grade(typedMachine.act(typedMachine.init(t), { input: t.answer }))).toBe("pending"));
   it("accepts the answer + declared variants, lenient on case/punctuation", () => {
-    expect(run("hello")).toBe("correct");
-    expect(run("Hello!")).toBe("correct");
-    expect(run("hi")).toBe("correct");
-    expect(run("goodbye")).toBe("wrong");
+    expect(run(t.answer)).toBe("correct");
+    expect(run(t.answer.toUpperCase())).toBe("correct"); // case-lenient
+    expect(run(t.answer + "!")).toBe("correct"); // punctuation-lenient
+    for (const a of t.accept) expect(run(a)).toBe("correct"); // declared variants
+    expect(run("zznotaword")).toBe("wrong");
   });
 });
 
@@ -64,6 +65,22 @@ describe("spell", () => {
     s = spellMachine.act(s, { tapTray: 0 });
     s = spellMachine.act(s, { tapTray: 0 });
     expect(s.used).toEqual([0]);
+  });
+  it("view: exactly answer-length slots, empty→filled, tap capped at word length (a longer form is unbuildable)", () => {
+    const s0 = spellMachine.init(t);
+    expect(spellSlots(s0).length).toBe(t.answer.length);          // N gaps, not tray length
+    expect(spellSlots(s0).every((c) => c === null)).toBe(true);   // all empty at first sight
+    expect(spellTrayDisabled(s0, 0)).toBe(false);                 // tray is tappable while gaps remain
+    // mid-build: the used letter greys out; others stay open
+    const mid = spellMachine.act(s0, { tapTray: 0 });
+    expect(spellTrayDisabled(mid, 0)).toBe(true);
+    if (t.answer.length > 1) expect(spellTrayDisabled(mid, 1)).toBe(false);
+    // full word (from a fresh state so solve's indices don't collide with a manual tap)
+    let full = spellMachine.init(t);
+    for (const a of spellMachine.solve(full)) full = spellMachine.act(full, a);
+    expect(full.used.length).toBe(t.answer.length);
+    expect(spellSlots(full).every((c) => c !== null)).toBe(true); // every gap now shows a letter
+    for (let i = 0; i < full.tray.length; i++) expect(spellTrayDisabled(full, i)).toBe(true); // cap: no (N+1)th letter
   });
 });
 

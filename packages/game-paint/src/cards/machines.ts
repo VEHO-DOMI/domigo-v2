@@ -88,6 +88,17 @@ export const spellMachine: CardMachine<SpellState, SpellAction> = {
     return out;
   },
 };
+// ── spell VIEW-logic (pure; consumed by the skin AND its tests) ────────────────
+// The skin shows EXACTLY answer-length slots and stops accepting taps once they
+// are full, so a longer form ("a pen" over "pen") is physically unbuildable — the
+// devil's-advocate fix. Kept here, next to the machine, so it is unit-testable in
+// the node test env (no DOM) and can never silently drift from the skin.
+export const spellSlots = (s: SpellState): (string | null)[] => {
+  const built = s.used.map((i) => s.tray[i]!);
+  return Array.from({ length: s.answer.length }, (_, i) => built[i] ?? null);
+};
+export const spellTrayDisabled = (s: SpellState, i: number): boolean =>
+  s.used.includes(i) || s.used.length >= s.answer.length;
 
 // ── order (tap chips into sequence) ──────────────────────────────────────────
 export type OrderState = { kind: "order"; tray: string[]; target: string[]; seq: number[] };

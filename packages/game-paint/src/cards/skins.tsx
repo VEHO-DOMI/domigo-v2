@@ -5,6 +5,7 @@
 // array (single-tap-commit kinds fold atomically — no React stale closure).
 import React from "react";
 import { cardBtn } from "./CardShell.tsx";
+import { spellSlots, spellTrayDisabled } from "./machines.ts";
 import type {
   ChoiceState, ChoiceAction, TypedState, TypedAction, SpellState, SpellAction,
   OrderState, OrderAction, OddState, OddAction, WheelState, WheelAction,
@@ -46,18 +47,26 @@ export function TypedCard({ state, dispatch }: { state: TypedState; dispatch: Di
 }
 
 export function SpellCard({ state, dispatch }: { state: SpellState; dispatch: Dispatch<SpellAction> }): React.ReactElement {
-  const built = state.used.map((i) => state.tray[i]);
+  // EXACTLY answer-length slots (so the child knows how many letters to place; the
+  // tray carries decoys) + a tap-cap once the slots are full — the article form
+  // ("a pen" over "pen") stays physically unbuildable. Both are pure helpers in
+  // machines.ts so the rule is unit-tested and never drifts from this skin.
+  const slots = spellSlots(state);
   return (
     <div style={col}>
-      <div style={{ minHeight: 34 }}>
-        {built.length === 0 ? <span style={{ color: "#b7a980" }}>tippe die Buchstaben …</span>
-          : built.map((c, i) => <span key={i} style={slot}>{c?.toUpperCase()}</span>)}
+      <div style={{ minHeight: 40, ...rowWrap }}>
+        {slots.map((c, i) => (
+          <span key={i} style={{ ...slot, color: c ? "#243048" : "#c9a36a" }}>{c ? c.toUpperCase() : "_"}</span>
+        ))}
       </div>
       <div style={rowWrap}>
-        {state.tray.map((c, i) => (
-          <button key={i} disabled={state.used.includes(i)} style={state.used.includes(i) ? used : tile}
-            onClick={() => dispatch({ tapTray: i })}>{c.toUpperCase()}</button>
-        ))}
+        {state.tray.map((c, i) => {
+          const disabled = spellTrayDisabled(state, i);
+          return (
+            <button key={i} disabled={disabled} style={disabled ? used : tile}
+              onClick={() => dispatch({ tapTray: i })}>{c.toUpperCase()}</button>
+          );
+        })}
       </div>
       <button style={{ ...cardBtn, alignSelf: "center", fontSize: 13 }} disabled={state.used.length === 0}
         onClick={() => dispatch({ undo: true })}>⌫ zurück</button>
