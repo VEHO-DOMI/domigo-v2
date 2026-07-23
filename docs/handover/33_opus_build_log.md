@@ -83,3 +83,31 @@ dup-id law. Caught by the red-first test failing as it should.
 the framing line and ADDS `stimulus` beside it (not a replacement) — `storyDe` stays the
 always-present DE instruction; `stimulus` declares the on-screen carrier. `promptEn` optional.
 The name-console (G6) is NOT a task kind — it's a boss story-beat for the card kit (Build-C).
+
+### Build-B (logic core) — ✅ DONE (PR pending) — the card kit's brains
+Decisions (opus-tuning §9, recorded):
+- **Split Build-B in two:** this PR = the PURE logic (state machines + hint ladder + routing),
+  headless + fully tested, imported by NOTHING but its tests → zero live-game risk. The
+  painted React skins + CardShell + drag hook + PaintGame wiring + loader v1→v2 migration are
+  the NEXT sub-step (B-skins), which touches live rendering and gets a browser proof.
+- **Uniform machine interface:** `init(task,seed) → state · act(state,action) → state ·
+  grade(state) → pending|correct|wrong · solve(state) → winning actions` — solve() reads the
+  ALREADY-shuffled state so parity tests drive the real solution against the real tray.
+
+**Delivered + verified:**
+- `cards/machines.ts` — 8 pure state machines (choice · typed · spell · order · oddone ·
+  wheel · mistake · memory) + `MACHINES` registry + `autoSolve` + `normText`. Wheel models
+  G9 (rotate then lock). Mistake is two-phase (find → fix, remove-mode = find IS the fix).
+  Memory is forgiving (pending until all matched, mismatch clears on next flip).
+- `cards/hint.ts` — the F18 hint ladder: `renderGapHint(answer, level)` (0 nothing · 1 first
+  letter "P…" · 2 exact slots + count "P _ _ · 3 Buchstaben") + `gapSlots`.
+- `cards/routing.ts` — deterministic playlists: `nextTask(items, use, state)` round-robins the
+  pool in file order with a single no-repeat-kind skip. No RNG.
+- Tests: +31 (game-paint 144 → 175). PARITY: all 8 exemplars auto-solve to correct against
+  their real shuffled trays; per-kind wrong-path + behaviour cases (undo, reuse-guard, wheel
+  wrap, memory mismatch-clear, mistake wrong-word/remove-mode); hint goldens; routing order +
+  skip + per-use cursors.
+
+**Full gate set green:** game-paint 175/175 · tsc 0 · story-grounding · game-tasks (8) ·
+design-sheets · paint-art · web build 0 · bundle 1×Phaser. (Note to self, 3rd time: never
+pipe a gate through grep for its exit code — grep's exit masks tsc's. Run raw.)
