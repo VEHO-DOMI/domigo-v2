@@ -38,6 +38,11 @@ Zahlen (in p2 an der Tür) → Kammer: EINE flüssige Sprung-Kette entlang der B
 → knapp-schaffbar bei sauberem Flow → PERFEKT-Sticker ODER „Komm wieder!" → zurück nach p2
 (Rückkehr-Punkt = die Tür).
 
+## Task-Note (→ tasks.md)
+
+Die Kleckskammer hat KEINE Aufgaben-Karten (reine Bewegungs-Freude auf Zeit — F20:
+der Dopamin-Raum bleibt karten-frei; bezahlt wird an der Tür in p2).
+
 ## 5 · Bild-Behandlung + Kunst-Bedarf (→ Batch AC, Auszug p9)
 
 Klecks-Wirbel-Hintergrund (voll-flächig, 2 Farben + Tinte) · Buchstaben-Glimmer stärker als

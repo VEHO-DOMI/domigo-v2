@@ -39,13 +39,35 @@ Zwanzig Anti-Gesetze aus dem Cookbook); **(6) Kunst-Bedarf** — was Codex malen
 - **p9 Kleckskammer** ([bonus.md](bonus.md)): der Dopamin-Raum — 12 Buchstaben in EINER
   Fluss-Linie, 35 s + Gnade, Scheitern kostet nichts (Fahrgeld zurück), PERFEKT = Sticker.
 
-## Was DU entscheidest (die eigentlichen Gate-Fragen)
+## ★ Deine drei Amendments sind eingearbeitet (2026-07-23)
 
-1. **Tragen die Zweck-Tabellen?** Wenn ein Element dich nicht überzeugt: streichen oder
-   ersetzen — die Tabelle ist der Vertrag für den Bau.
-2. **p1-Streichungen okay?** (Motten → p2, Sprungbrett weg.)
+- **Themen-Material-Gesetz (VL 1.2b, neu im Kanon):** ch01s Gelände besteht aus SCHUL-
+  Material — Buch-Massen mit Seiten-Schnitt-Oberkante, Buchdeckel-Treppen, Papier-Podeste,
+  Dielen, Hof-Pflaster mit Kreide-Zeichnungen, Tafel-Brett-Rutsche mit Kreidestaub-Glanz.
+  Gras-, Erd- und „Eis"-Flächen sind für ch01 VERBOTEN und aus allen Kunst-Listen entfernt;
+  jedes spätere Kapitel leitet seine „Geologie" aus SEINER Unit ab (steht so im Kanon).
+- **Full-Stack-Aufgaben ([tasks.md](tasks.md)):** die Aufgaben sind jetzt Teil dieses Gates
+  UND des Neuaufbau-Durchlaufs — Arten-Verteilung je Beat (Zahlen-Rad an den Falter-Flügeln,
+  Buchstaben-Tippen, Satz-Bauen, Falsch-Wort-Finden…), Mengen-Gerüst 41 Karten (≤5 %
+  getippt), 10 Exemplare als Kalibrier-Latte, Zwei-Schichten-Verifikation. Jedes Phasen-
+  Dossier hat dazu einen §7-Beat-Plan. Bau-Folge: Aufgaben-Fundament VOR dem Level-Neubau,
+  damit dein Review-Durchlauf beides zusammen zeigt.
+- **Die Codex-Level-Anweisung liegt bei ([codex-ac.md](codex-ac.md)):** 26 Produktions-
+  Karten, wortgleich aus den §6-Listen, mit dem Themen-Material-Gesetz als Rückgrat
+  (Paste-Kopie: `~/Code/codex-art-lab/CODEX_MASTER_PROMPT_AC_WORLD.md`). Sie wird erst
+  NACH deinem Gate gepastet, damit deine Amendments noch einfließen.
+
+## Was DU entscheidest (die Gate-Fragen)
+
+1. **Tragen die Zweck-Tabellen?** Streichen/ersetzen, was dich nicht überzeugt — die
+   Tabelle ist der Bau-Vertrag.
+2. **p1-Streichungen okay?** (Motten → p2-Lampe, Sprungbrett weg.)
 3. **Der Arena-Schluss als „HELLO :)"-Wiederherstellung** — Ton richtig?
-4. **Die Kunst-Listen** (§6 je Dossier) werden nach deinem Go wortgleich zum
-   Codex-AC-Master-Prompt — fehlt dir dort etwas?
+4. **Das Themen-Material konkret:** Buch-Massen (p1), Dielen+Möbel (p2), Pflaster+Kreide
+   (p3) — trifft das deinen Geschmack? (Hier entscheidet Taste, sag es ruhig hart.)
+5. **Das Aufgaben-Gerüst** (41 Karten, Arten-Mix, ≤5 % getippt) — trägt es?
+6. **Die 10 Aufgaben-Exemplare** in tasks.md §5 — ist das die Latte? Dein Sign-off
+   kalibriert die volle Autoren-Runde.
+7. **Die 26 Codex-Karten** (codex-ac.md) — fehlt etwas, ist etwas zu viel?
 
-Amendments einfach als Kommentar im PR oder mündlich — ich arbeite sie ein, DANN wird gebaut.
+Amendments als PR-Kommentar oder mündlich — ich arbeite sie ein, DANN wird gebaut.

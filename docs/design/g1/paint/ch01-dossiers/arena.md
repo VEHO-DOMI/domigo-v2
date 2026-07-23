@@ -55,5 +55,16 @@ warmes Licht, Käfig #6, ✕-Schild → done (Kapitel-Abschluss-Karte).
 
 ## 6 · Kunst-Bedarf (→ Batch AC, Auszug p4)
 
-Vorhang/Proszenium-Rahmen · Stuhl-Silhouetten-Fern-Band · Bühnen-Brett-Boden-Streifen ·
-Podest-Zellen · Tafel-Sieg-Lächeln-Zelle (falls `tafel_*` nicht reicht) · warmes Licht-Overlay.
+★ VL 1.2b erfüllt die Bühne von selbst: Boden = BÜHNEN-BRETTER, Podeste = umgedrehte
+KREIDE-KISTEN (Thema!), Rahmen = Vorhang. Vorhang/Proszenium-Rahmen · Stuhl-Silhouetten-
+Fern-Band · Bühnen-Brett-Boden-Streifen · **Kreide-Kisten-Podest-Zellen** ·
+Tafel-Sieg-Lächeln-Zelle (falls `tafel_*` nicht reicht) · warmes Licht-Overlay.
+
+## 7 · Task-Beats (→ tasks.md)
+
+| Beat | Pool | Art | Skizze |
+|---|---|---|---|
+| Konter-Fenster 1 | boss | mistake | die Tafel-Vorschrift korrigieren (Exemplar) |
+| Konter-Fenster 2 | boss | order | Satz für die Tafel bauen |
+| Konter-Fenster 3 | boss | typed | „Say hello!" → `hello` (Exemplar) |
+| Klecks-Zusatz (optional nach Sieg) | boss | memory | Zahl↔Wort-Paare |

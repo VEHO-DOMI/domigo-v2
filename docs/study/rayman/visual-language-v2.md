@@ -74,6 +74,28 @@ unless marked (wiki) or (footage-only).
 - **Undersides are gravity-marked** (noduled, dripping) so up-vs-down of any platform reads
   instantly (`06`, `07` [CoS]; drip fringes forest-wide).
 
+### 1.2b ★ THE TOPIC-MATERIAL LAW (Koki, dossier-gate amendment 2026-07-23 — BINDING)
+
+**A chapter's terrain vocabulary is built FROM the unit's topic material — never from
+generic nature surfaces.** The studied game does exactly this: the music world's ground is
+drums, cymbals and staves (`04/01`, `05/07`); the stationery world's ground is erasers, ink
+blocks and pencils (`01`–`02` picture-city); the food world's ground is cake and icing
+(`01` candy). Nowhere does a themed world fall back to "earth with grass" — the THEME is
+the geology. For us:
+
+- **ch01 (school things):** masses = stacked books/cardboard, platforms = paper sheets and
+  ruler beams, ramps = leaning book covers, slide = chalk dust on a board edge, pits = ink.
+  Grass/earth/ice crusts are BANNED in ch01 — the old grass-crust + earth-fill + "icy"
+  chalk vocabulary is retired with the rebuild.
+- **Every later chapter re-derives its geology from ITS unit** (zoo → enclosure timber,
+  straw bales, pawprint flagstones; pirates → planks, rigging, sailcloth; feelings →
+  see the chapter sheet; band → the music-world steal becomes nearly literal).
+- The painted BOOK page (cream ground, ruled lines, paper grain) stays the universal
+  BACKDROP substrate — the law governs what terrain is MADE OF, not the page behind it.
+- Cross-law: affordance casting (1.3) still governs BEHAVIOR (soft=stand, sharp=hurt);
+  this law governs MATERIAL. Together: every surface is topic-material AND behaves like
+  what it is.
+
 ### 1.3 AFFORDANCE CASTING — the anti-"random placement" law (fullest treatment)
 The stationery world is the premise's closest cousin: **every solid object's game role
 restates the real object's property as a child knows it.** Soft = stand (erasers),
