@@ -56,6 +56,7 @@ jobs:
       - run: node scripts/check-story-grounding.mjs
       - run: node scripts/check-design-sheets.mjs
       - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: no silent placeholder art
+      - run: node --experimental-strip-types scripts/check-game-tasks.mjs # PB-T6: gameTasks@2 schema + grounding + giveaway
 
   build:
     runs-on: ubuntu-latest

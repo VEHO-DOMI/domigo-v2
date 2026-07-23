@@ -45,9 +45,11 @@ function checkEn(where, en, glosses) {
 }
 
 // ── register bans (German story fields) ──
-const BANNED_DE = ["verhedder", "Monster", "Blut", "böse", "Bösewicht", "schrei", "sterben", "tot "];
+// "schrei" is boundary-aware (schrei NOT followed by b): catches schreien/Schrei
+// (scream) but never schreib*/Schreiber (to write / writer) — core school words.
+const BANNED_DE = [/verhedder/, /Monster/, /Blut/, /böse/, /Bösewicht/, /schrei(?!b)/, /sterben/, /tot /];
 function checkDe(where, de) {
-  for (const b of BANNED_DE) if ((de ?? "").includes(b)) fail(where, `register-law violation: "${b}" in "${de}"`);
+  for (const re of BANNED_DE) if (re.test(de ?? "")) fail(where, `register-law violation: ${re} in "${de}"`);
 }
 
 // ── A+C on prologue + new ch01 beat scenes ──

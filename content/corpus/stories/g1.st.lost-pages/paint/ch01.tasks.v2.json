@@ -1,0 +1,106 @@
+{
+  "schema": "gameTasks@2",
+  "chapter": "ch01",
+  "unit": "g1-u01",
+  "note": "CALIBRATION EXEMPLARS (PB-T6) — one per ch01 kind, the bar Koki signed off at the dossier gate (G1–G13). The full 43-card set (tasks.md §4) is authored to THIS bar in Build-D, then two-layer verified (self-solve sweep + 2 blind-solve agents + devil's advocate). Not yet wired to the live loader.",
+  "items": [
+    {
+      "id": "g1.paint.ch01.w01",
+      "use": "quickfire",
+      "kind": "wheel",
+      "variant": "digit-to-word",
+      "stimulus": { "type": "entity", "showsDe": "Ein Zahlen-Falter flattert dir mit einer 13 auf dem Flügel um die Nase" },
+      "storyDe": "Ruf seinen Namen, dann setzt er sich brav auf die Lampe!",
+      "shown": "13",
+      "values": ["eleven", "twelve", "thirteen", "fourteen", "sixteen"],
+      "answer": "thirteen",
+      "hints": { "deDesc": "Eine Zahl zwischen zwölf und vierzehn.", "deWord": "Auf Deutsch: dreizehn." },
+      "grounding": "u01 numbers 11–20; the -teen confusables are the curated distractors"
+    },
+    {
+      "id": "g1.paint.ch01.s01",
+      "use": "quickfire",
+      "kind": "spell",
+      "stimulus": { "type": "entity", "showsDe": "Der Stift-Läufer bleibt stehen und verbeugt sich vor dir" },
+      "storyDe": "Sag ihm freundlich, was er ist — dann strahlt er!",
+      "promptEn": "What is it?",
+      "answer": "pen",
+      "extraLetters": "ta",
+      "hints": { "deDesc": "Damit schreibst du mit blauer Tinte.", "deWord": "Auf Deutsch: der Kugelschreiber." },
+      "grounding": "u01 object: pen"
+    },
+    {
+      "id": "g1.paint.ch01.d01",
+      "use": "door",
+      "kind": "choice",
+      "stimulus": { "type": "text" },
+      "storyDe": "Die Klassenzimmer-Tür wartet auf ihr Wort. Was sagst du?",
+      "promptEn": "What do you say?",
+      "options": ["Come in!", "Sit down!", "Thank you!"],
+      "answer": "Come in!",
+      "hints": { "deDesc": "Man bittet jemanden HEREIN.", "deWord": "Herein / komm rein." },
+      "grounding": "u01 classroom commands; the command series opener (G11)"
+    },
+    {
+      "id": "g1.paint.ch01.o01",
+      "use": "rescue",
+      "kind": "order",
+      "stimulus": { "type": "text" },
+      "storyDe": "Der Käfig springt nur auf, wenn der Satz stimmt. Bau ihn richtig!",
+      "orderedChips": ["This", "is", "my", "book", "."],
+      "hints": { "deDesc": "Fang mit „This\" an.", "deWord": "This is my book." },
+      "grounding": "u01 sentence frame: This is my …"
+    },
+    {
+      "id": "g1.paint.ch01.q01",
+      "use": "encounter",
+      "kind": "oddone",
+      "select": "odd",
+      "stimulus": { "type": "text" },
+      "storyDe": "Der Ranzen-Stampfer hat alles falsch einsortiert. Was gehört NICHT in die Federtasche?",
+      "items": ["pen", "pencil", "rubber", "chair"],
+      "correct": ["chair"],
+      "hints": { "deDesc": "Drei Dinge sind zum Schreiben da. Eines ist ein Möbelstück." },
+      "grounding": "u01 objects; category = things in a pencil case"
+    },
+    {
+      "id": "g1.paint.ch01.b01",
+      "use": "boss",
+      "kind": "mistake",
+      "stimulus": { "type": "image", "stem": "vocab_ruler", "altDe": "ein Lineal" },
+      "storyDe": "Die Tafel schreibt einen Satz — aber schau auf das Bild! Tipp das falsche Wort an.",
+      "sentence": ["This", "is", "a", "rubber", "."],
+      "errorIndex": 3,
+      "fix": { "mode": "replace", "correction": "ruler" },
+      "correctionOptions": ["ruler", "pen", "book"],
+      "hints": { "deDesc": "Was zeigt das Bild WIRKLICH?" },
+      "grounding": "u01 objects; the image is the disambiguator (rubber vs ruler)"
+    },
+    {
+      "id": "g1.paint.ch01.b02",
+      "use": "boss",
+      "kind": "memory",
+      "stimulus": { "type": "text" },
+      "storyDe": "Klecks hat die Zahlen-Karten verwirbelt. Finde die Paare: Ziffer und englisches Wort!",
+      "pairs": [
+        { "a": "3", "b": "three" },
+        { "a": "7", "b": "seven" },
+        { "a": "9", "b": "nine" },
+        { "a": "12", "b": "twelve" }
+      ],
+      "hints": { "deDesc": "Zähl nach: jede Ziffer hat ihr englisches Wort." },
+      "grounding": "u01 numbers 1–12; digit ↔ word"
+    },
+    {
+      "id": "g1.paint.ch01.b03",
+      "use": "boss",
+      "kind": "typed",
+      "stimulus": { "type": "text" },
+      "storyDe": "Die Tafel ist erlöst und schaut dich freundlich an. Grüße sie — auf Englisch!",
+      "answer": "hello",
+      "accept": ["hello!", "hi"],
+      "hints": { "deDesc": "Der freundliche Gruß, wenn man jemanden trifft.", "deWord": "Auf Deutsch: Hallo." },
+      "grounding": "u01 greeting: hello"
+    }
+  ]
+}
