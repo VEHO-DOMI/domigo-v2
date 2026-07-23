@@ -13,23 +13,24 @@ mit Pflicht-`stimulus`, dann das Karten-Kit mit den neuen Interaktions-Arten), D
 Level-Neuaufbau, dessen Beweis-Bänder durch die NEUEN Karten laufen. Kein separater
 „Aufgaben kommen später"-Durchlauf.
 
-## 2 · Die Interaktions-Arten und WO sie wohnen (Vielfalts-Gesetz F20)
+## 2 · Die Interaktions-Arten und WO sie wohnen (Vielfalts-Gesetz F20; ★ Gate-Verdikt G12)
 
 Tipp-zuerst überall (F17: Tippen nie dominant — Ziel ≤ 20 % getippte Antworten im Kapitel).
+**★ G12 (Koki): ch01 spielt NICHT alle Arten — `match` und `sort` sind auf ch02+
+verschoben** (Arten-Vorrat für spätere Kapitel; ch02-Zoo bekommt match [Wort↔Tier-Bild],
+ch03 bekommt sort). ch01-Arten: choice · wheel · spell · order · oddone · memory · typed.
 
 | Art | Interaktion | ch01-Heimat (Beat) | u01-Stoff |
 |-----|-------------|--------------------|-----------|
-| `choice` (3 Optionen) | Tap | Begegnungen überall; Tür-Imperative | Grüße, Objekte, Imperative |
-| `wheel` (Rad rastet ein, kein OK-Knopf) | Drag/Tap-Schritte | **Zahlen-Motten an der p2-Lampe** (die Motte trägt ihre Zahl — das Rad ruft ihren Namen) | Zahlen 1–19, digit→word & word→digit |
+| `choice` (3 Optionen) | Tap | Begegnungen überall; Tür-/Wegsteher-Serie (G11) | Grüße, Objekte, **alle Unit-Kommandos + Fragen + Verneinungen über die Tor-Serie** |
+| `wheel` (★ G9: Rad drehen, dann die Zahl ANTIPPEN = einloggen — kein Auto-Lock, kein OK-Knopf) | Drag/Flick + Tap | **Zahlen-Falter an der p2-Lampe** (der Falter trägt seine Zahl auf dem Flügel-Schild) | **NUR Unit-Zahlen (1–20, alle belegt — geprüft)**; digit→word & word→digit; Formen-Varianten (Rad mit Ziffern / Rad mit Wörtern) |
 | `spell` (Buchstaben-Tippen in Reihenfolge) | Tap | p1-Quickfire (kurze Nomen), Käfig-Rettungen | pen, book, desk, bag, ruler |
-| `order` (Satz bauen) | Tap + Drag | p2 nach dem Faust-Geschenk (Sätze „bauen" passt zur neuen Kraft) | This is my…, Is it a…? |
-| `match` (links↔rechts) | Tap-Paare | p3-Quickfire (Wort ↔ Objekt-Bild) | Schulsachen ↔ Bilder |
-| `oddone` (was gehört nicht?) | Tap | p3-Stampfer-Zone (der Ranzen sortiert falsch ein!) | Kategorien Schulsachen/Zahlen |
-| `sort` (2 Gruppen) | Tap/Drag | p2-Regal (Bücher einräumen: in die Tasche / aufs Pult) | school bag vs. desk |
-| `mistake` (falsches Wort antippen + fixen) | Tap→Tap | p2/p3 fortgeschritten (die Tafel schreibt VOR — mit Fehler) | This is a pencil. (× rubber) |
-| `typed` (+`accept`-Varianten) | Tastatur | SPARSAM: 1–2 Tür-Wörter, 1 Boss-Konter | imperativ „open", „hello" |
-| `memory` (Paare aufdecken) | Tap | NUR Boss/Klecks-Zusatz (F20: komplex = Boss-Beat) | Zahl↔Wort-Paare |
-| `slider` | Drag/Tap | ch01: NICHT (kein Skalen-Stoff in u01 — erst ch04-Gefühle) | — |
+| `order` (Satz bauen) | Tap + Drag | p2 nach dem Faust-Geschenk | This is my…, Is it a…? |
+| `oddone` (was gehört nicht?) | Tap | p3-Stampfer-Zone | Kategorien Schulsachen/Zahlen |
+| `mistake` (falsches Wort antippen + fixen) | Tap→Tap | Boss (die Tafel schreibt vor — mit Fehler) | This is a pencil. (× rubber) |
+| `typed` (+`accept`) | Tastatur | 1 Tür-Wort, 1 Boss-Konter, ★ + die NAMENS-Konsole (G6: „Write your name!" — der Name wird gespeichert und trägt durchs Spiel) | „open", „hello", Eigenname |
+| `memory` (Paare aufdecken) | Tap | NUR Boss/Klecks-Zusatz | Zahl↔Wort-Paare |
+| ~~`match`~~ / ~~`sort`~~ / ~~`slider`~~ | — | **ch01: NICHT (G12)** — match→ch02, sort→ch03, slider→ch04 | — |
 
 ## 3 · Die Gesetze je Karte (F16/F22, unverhandelbar)
 
@@ -48,41 +49,49 @@ Tipp-zuerst überall (F17: Tippen nie dominant — Ziel ≤ 20 % getippte Antwor
    ECHTEN Karten-Maschinen + 2 unabhängige Blind-Löser + Devil's Advocate auf der
    Text-Projektion — Einstimmigkeit oder Redesign.
 
-## 4 · Mengen-Gerüst ch01 (ersetzt die 56 Alt-Karten)
+## 4 · Mengen-Gerüst ch01 v2 (G12-Arten; ersetzt die 56 Alt-Karten)
 
 | Pool | Stück | Arten-Mix |
 |------|-------|-----------|
-| quickfire | 14 | wheel ×4 · spell ×4 · choice ×4 · match ×2 |
-| encounter | 10 | choice ×5 · oddone ×2 · sort ×2 · mistake ×1 |
-| door | 6 | choice (Imperativ) ×5 · typed ×1 („open") |
+| quickfire | 14 | wheel ×5 (Ziffern↔Wörter beide Richtungen) · spell ×5 · choice ×4 |
+| encounter | 10 | choice ×6 · oddone ×3 · mistake ×1 |
+| door | 8 | ★ die KOMMANDO-SERIE (G11): choice ×7 über Türen/Wegweiser/Wegsteher — zusammen decken sie die Unit-Kommandos (open/close/sit/stand/come/listen/look) + 1 Frage-/Verneinungs-Karte ab · typed ×1 („open") |
 | rescue | 5 | spell ×3 · order ×2 |
-| boss | 6 | mistake ×2 · order ×2 · memory ×1 · typed ×1 |
-| **gesamt** | **41** | getippt: 2/41 ≈ 5 % ✓ |
+| boss | 6 | mistake ×2 · order ×2 · memory ×1 · typed ×1 (+ die Namens-Konsole als Story-Beat, zählt nicht als Aufgabe) |
+| **gesamt** | **43** | getippt: 2/43 < 5 % ✓ |
 
-(Weniger als 56, dafür jede Karte mit Beat-Zweck — Klasse statt Masse; die Rotation je
-Pool bleibt deterministische Playlist mit No-Repeat-Art-Regel.)
+(Jede Karte mit Beat-Zweck; Rotation = deterministische Playlist mit No-Repeat-Art-Regel.
+★ G10-Gesetz: jede Karte MUSS ihren Stimulus aus der Spiel-Fiktion beziehen — das Wesen,
+das Bild, die Tafel-Schrift — und der Prolog hat vorher erklärt, WARUM diese Wesen reden.)
 
 ## 5 · Exemplare (je Art eines — DRAFT, dein Sign-off = die Kalibrier-Latte)
 
-- **wheel** (p2-Motte): Stimulus = die Motte mit „13" auf den Flügeln. DE: „Ruf ihren
-  Namen, dann setzt sie sich!" EN: —. Rad: eleven · twelve · **thirteen** · fourteen ·
-  sixteen. (Distraktor-Kern: -teen-Verwechsler.)
-- **spell** (p1-Quickfire): Bild: der Stift-Läufer verbeugt sich. DE: „Sag ihm, was er
-  ist!" EN: „What is it?" Buchstaben: P E N + Ablenker C A T → `pen`.
-- **choice** (Tür p1): DE: „Die Schultür wartet auf ihr Wort!" EN: „What do you say?"
-  → **Come in!** / Sit down! / Thank you!
-- **order** (p2): DE: „Bau der Tafel einen Satz!" EN: Chips: [is] [This] [book] [my] [.]
+- **wheel** (p2-Falter): Stimulus = der Falter mit „13" auf dem Flügel-Schild (13 ist
+  in der Unit — geprüft; NUR Unit-Zahlen erlaubt). DE: „Ruf seinen Namen, dann setzt er
+  sich!" Rad: eleven · twelve · **thirteen** · fourteen · sixteen (-teen-Verwechsler).
+  ★ G9-Interaktion: Rad drehen (Drag/Flick oder Tap-Schritte), dann die gewählte Zahl
+  ANTIPPEN = einloggen — kein Auto-Lock, kein OK-Knopf. Formen-Variante: Rad zeigt
+  Wörter, der Falter die Ziffer — und umgekehrt.
+- **spell** (p1-Quickfire): Bild: der Stift-Läufer verbeugt sich (Prolog hat erklärt,
+  warum er redet — G10). DE: „Sag ihm, was er ist!" EN: „What is it?" Buchstaben:
+  P E N + Ablenker C A T → `pen`.
+- **choice/Kommando-Serie** (Tür p1, G11-Auftakt): DE: „Die Klassenzimmer-Tür wartet
+  auf ihr Wort!" EN: „What do you say?" → **Come in!** / Sit down! / Thank you!
+  (Die weiteren Serien-Karten decken open/close/sit/stand/listen/look + eine Frage-
+  und eine Verneinungs-Form ab — jede an ihrem eigenen Tor/Wegsteher.)
+- **order** (p2): DE: „Bau der Tafel einen Satz!" Chips: [is] [This] [book] [my] [.]
   → This is my book.
-- **match** (p3): links pen/ruler/bag ↔ rechts 3 gemalte Objekte (Batch-AC-Bilder).
 - **oddone** (p3-Stampfer): „Was gehört NICHT in die Federtasche?" pen · pencil ·
   rubber · **chair**.
-- **sort** (p2-Regal): 4 Chips in 2 Gruppen: school bag {pen, exercise book} /
-  desk {board?nein—} … final kuratiert am echten Regal-Bild.
 - **mistake** (Boss): Die Tafel schreibt: „This is a **rubber**." (Bild: ein Lineal.)
   → Tipp aufs falsche Wort → 3 Fix-Optionen.
 - **memory** (Boss/Klecks): 4 Paare Zahl↔Wort (3/three, 7/seven, 12/twelve, 9/nine).
 - **typed** (Boss-Konter): DE: „Schreib der Tafel dein Wort!" EN: „Say hello!" →
   `hello` (accept: „hello!").
+- ★ **Die Namens-Konsole** (Boss-Finale, G6 — Story-Beat, keine gewertete Aufgabe):
+  „Write your name!" → freie Eingabe, wird gespeichert und trägt durchs Spiel
+  (Merle ruft den Namen, HUD-Grüße nutzen ihn).
+- (~~match~~/~~sort~~-Exemplare: verschoben auf ch02/ch03 — G12.)
 
 ## 6 · Was DU am Gate entscheidest (Zusatz-Fragen zu den vieren im README)
 

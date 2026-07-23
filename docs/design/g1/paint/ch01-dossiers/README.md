@@ -1,5 +1,23 @@
 # ch01 Zweck-Dossiers — DEIN Design-Gate (PB-W3, 2026-07-23)
 
+> **★ GATE BESTANDEN MIT AMENDMENTS (Kokis Verdikt, 2026-07-23 abend — eingearbeitet):**
+> **G1** Kapitel beginnt IM Schulgebäude (p1 = „Die Eingangshalle"; kein Draußen, keine
+> Wiese; jedes Kapitel = eigene Welt, man springt zwischen Welten) · **G2** Zweck-Tabellen
+> tragen (finale Bewertung am spielbaren Build) · **G3** Prioritäten: genug Codex-Assets,
+> saubere Programmierung, Charakter-Animationen richtig, Level-GRÖSSEN-Kalibrierung an der
+> Studien-Vorlage · **G4** die Tafel ist BEWEGLICH (rollt, lehnt, wackelt — nie statisch;
+> Animation reichhaltig) · **G5** p1-Streichungen ok · **G6** Arena: mehr Unit-Phrasen im
+> Kampf + ★ die NAMENS-KONSOLE (Spieler tippt seinen Namen an die Tafel; Name trägt durchs
+> Spiel) · **G7** Themen-Material ok (Urteil am Build) · **G8** 41er-Gerüst ok (Umsetzung
+> entscheidet; Responsiveness!) · **G9** Wheel: NUR Unit-Zahlen (1–20 alle belegt),
+> Rad drehen DANN Zahl antippen = Lock (kein Auto-Lock), Formen-Varianten · **G10**
+> Story-Einstieg VISUELL (Prolog-Bilderfolge: Verschlingen → verhextes Ensemble + Kapuzen-
+> Gestalt → gefangene Klasse; vor Level-Start klar, was zu tun ist) · **G11** Tür-/
+> Wegsteher-Serie spielt ALLE Unit-Kommandos + Fragen + Verneinungen durch · **G12**
+> ch01-Arten verschlankt: match→ch02, sort→ch03, slider→ch04 · **G13** Codex-AC v2:
+> ALLE Unit-Objekte als Assets in allen nötigen Facetten (Gruppen 6–7 neu). „Lass uns
+> loslegen." — der Bau beginnt.
+
 **Koki: das hier ist der Gate-Rundgang (~25–30 min).** Erst wenn du diese fünf Dossiers
 freigibst (oder amendierst), wird EINE Zeile Level-Grid programmiert — das ist das
 Zweck-Gesetz aus deinem Plan-Review. Danach: Codex-Batch AC (die Kunst-Listen unten in
