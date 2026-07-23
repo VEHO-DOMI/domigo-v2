@@ -220,3 +220,54 @@ describe("checkLevelLaws", () => {
     expect(findGlyph(OK_ROWS, "B")).toBeNull();
   });
 });
+
+// ── PB-T1 · the slope laws + spawn law (red-first tamper block) ──────────────
+
+describe("PB-T1 · slope laws", () => {
+  const withRow = (r: number, row: string): string[] => {
+    const rows = [...OK_ROWS];
+    rows[r] = row;
+    return rows;
+  };
+
+  it("a free-standing wedge fails slope-backing", () => {
+    // `/` floating mid-air (nothing solid below it) — the escape-ramp class
+    const rows = withRow(10, "..../.......");
+    const f = checkLevelLaws(parsePaintLevel(level(rows)));
+    expect(f.some((x) => x.law === "slope-backing")).toBe(true);
+  });
+
+  it("a ramp carved into mass passes", () => {
+    const rows = withRow(16, "..../#######");
+    rows[17] = "..S#####*.X.";
+    const f = checkLevelLaws(parsePaintLevel(level(rows)));
+    expect(f.some((x) => x.law === "slope-backing")).toBe(false);
+    expect(f.some((x) => x.law === "slope-pairing")).toBe(false);
+  });
+
+  it("30° halves must come as adjacent pairs", () => {
+    const rows = withRow(16, "....1.......");
+    rows[17] = "..S.#..*..X.";
+    const f = checkLevelLaws(parsePaintLevel(level(rows)));
+    expect(f.some((x) => x.law === "slope-pairing")).toBe(true);
+    const paired = withRow(16, "....12......");
+    paired[17] = "..S.##.*..X.";
+    const f2 = checkLevelLaws(parsePaintLevel(level(paired)));
+    expect(f2.some((x) => x.law === "slope-pairing")).toBe(false);
+  });
+
+  it("walkers must spawn standing on solid", () => {
+    const bad = level(OK_ROWS, {
+      phases: [phase(OK_ROWS, {
+        entities: [{ id: "e1", role: "chaser", skin: "pencil", c: 5, r: 8, tier: "E" }], // mid-air
+      }) as PaintLevel["phases"][number]],
+    });
+    expect(checkLevelLaws(parsePaintLevel(bad)).some((x) => x.law === "spawn-standable")).toBe(true);
+    const good = level(OK_ROWS, {
+      phases: [phase(OK_ROWS, {
+        entities: [{ id: "e1", role: "chaser", skin: "pencil", c: 5, r: 17, tier: "E" }], // on the floor
+      }) as PaintLevel["phases"][number]],
+    });
+    expect(checkLevelLaws(parsePaintLevel(good)).some((x) => x.law === "spawn-standable")).toBe(false);
+  });
+});

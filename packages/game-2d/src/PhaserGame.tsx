@@ -17,7 +17,7 @@ import type { ResolvedItem } from "@domigo/game-core";
 import { battlePlan } from "./battle.ts";
 import { BattleStage } from "./BattleStage.tsx";
 import { OverworldScene, type OverworldState, type PadState } from "./OverworldScene.ts";
-import { bindTypingGuard } from "./typing-guard.ts";
+import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { cellCenterPx, spawnFor, type ParsedZone } from "./world.ts";
 
 /** ONE zone's cosmetic state as the scene reports it (position + cleared node

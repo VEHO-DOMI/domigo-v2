@@ -206,3 +206,67 @@ describe("redeem + shoo", () => {
     expect(evs2.some((v) => v.type === "encounter")).toBe(false);
   });
 });
+
+// ── PB-T1 · the entity ground contract (walkers respect edges) ───────────────
+// Red-first: the pencil "walking off where he was standing… down this ledge"
+// playtest class. v1's groundAt scanned 4 rows down and counted slopes as
+// ground, so walkers strolled down ramps and off 2–3-tile ledges.
+
+describe("PB-T1 · walker edge contract", () => {
+  // a ledge at r8 (c20–26) descending via a backed `\` ramp (c27, solid under
+  // it) onto a lower shelf (c28–32 at r9); floor at r12 — honest thick masses
+  const RAMP_GRID: string[] = [
+    ...Array.from({ length: 8 }, () => "........................................"),
+    "....................#######\\............", // r8: ledge + `\` at c27
+    "...........................######.......", // r9: ramp backing + lower shelf
+    "........................................",
+    "........................................",
+    "########################################",
+    "########################################",
+  ];
+
+  it("a patrolling pencil turns at a ramp-top instead of walking down it", () => {
+    const w = spawnEntities([spec({ c: 22, r: 7 })], []);
+    const e = w.entities[0]!;
+    let maxX = e.x;
+    let maxY = e.y;
+    for (let t = 0; t < 900; t++) {
+      stepEntities(w, RAMP_GRID, idleInput());
+      maxX = Math.max(maxX, e.x);
+      maxY = Math.max(maxY, e.y);
+    }
+    // never descends the ramp: x stays on the flat ledge run, y never drops
+    expect(maxX).toBeLessThan(27 * TILE * SUBS);
+    expect(maxY).toBeLessThanOrEqual(8 * TILE * SUBS);
+  });
+
+  it("a pencil turns at a 2-tile drop (v1's 4-row scan walked off)", () => {
+    // shelf at r10 next to the floor at r12: a 2-tile drop off the right end
+    const DROP_GRID: string[] = [
+      ...Array.from({ length: 10 }, () => "........................................"),
+      "....................########............", // shelf r10, ends at c27
+      "........................................",
+      "########################################",
+      "########################################",
+    ];
+    const w = spawnEntities([spec({ c: 22, r: 9 })], []);
+    const e = w.entities[0]!;
+    let maxY = e.y;
+    for (let t = 0; t < 900; t++) {
+      stepEntities(w, DROP_GRID, idleInput());
+      maxY = Math.max(maxY, e.y);
+    }
+    expect(maxY).toBeLessThanOrEqual(10 * TILE * SUBS); // never fell off
+  });
+
+  it("a role can OPT IN to ramp-walking (walkSlopes param)", () => {
+    const w = spawnEntities([spec({ c: 22, r: 7, params: { walkSlopes: true } })], []);
+    const e = w.entities[0]!;
+    let reachedRamp = false;
+    for (let t = 0; t < 900; t++) {
+      stepEntities(w, RAMP_GRID, idleInput());
+      if (e.x > 27 * TILE * SUBS) reachedRamp = true;
+    }
+    expect(reachedRamp).toBe(true); // walked onto/past the ramp deliberately
+  });
+});

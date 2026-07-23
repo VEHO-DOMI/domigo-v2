@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { applyTyping, isEditableTarget, type TypingGuardGame } from "./typing-guard.ts";
+import { applyTyping, isEditableTarget, type TypingGuardGame } from "../typing-guard.ts";
 
 function stubGame(): { game: TypingGuardGame; kb: { enabled: boolean; resets: number }; mgr: { enabled: boolean } } {
   const kb = { enabled: true, resets: 0, resetKeys() { this.resets += 1; } };

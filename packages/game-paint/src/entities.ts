@@ -14,7 +14,7 @@
  * guardian machine here.
  */
 import { PAINT, SUBS, TILE } from "./paint.ts";
-import { groundSurfaceAt } from "./collide.ts";
+import { groundSurfaceAt, walkSurfaceAhead } from "./collide.ts";
 import type { EntitySpec, LinkSpec } from "./level.ts";
 
 export interface EntityState {
@@ -139,6 +139,17 @@ const groundAt = (grid: readonly string[], xSubs: number, ySubs: number): number
   return s === null ? null : s.yPx * SUBS;
 };
 
+/** PB-T1 · the walker's AHEAD probe (the entity ground contract): strict about
+ *  edges — a drop deeper than one tile, a tall rise, a slope, or a one-way
+ *  reads as "no ground" and the walker TURNS, unless the role opts in via
+ *  `params.walkSlopes` (v1's forgiving 4-row probe sent pencils strolling
+ *  down ramps and off ledges — the playtest's "random walking" class). */
+const walkAheadAt = (grid: readonly string[], e: EntityState, xSubs: number): number | null => {
+  const opts = e.params?.walkSlopes === true ? { maxDropTiles: 1, acceptSlopes: true, acceptOneWays: true } : { maxDropTiles: 1 };
+  const s = walkSurfaceAhead(grid, xSubs / SUBS, e.y / SUBS, opts);
+  return s === null ? null : s.yPx * SUBS;
+};
+
 export const stepEntities = (
   w: EntityWorld,
   grid: readonly string[],
@@ -155,8 +166,8 @@ export const stepEntities = (
         if (e.state === "patrol") {
           e.vx = ENEMY_WALK * e.dir;
           const aheadX = e.x + e.vx * 8;
-          const g = groundAt(grid, aheadX, e.y);
-          if (g === null) { e.dir = (e.dir * -1) as 1 | -1; e.vx = 0; } // ledge turn
+          const g = walkAheadAt(grid, e, aheadX);
+          if (g === null) { e.dir = (e.dir * -1) as 1 | -1; e.vx = 0; } // edge/ramp turn
           else {
             e.x += e.vx;
             const snap = groundAt(grid, e.x, e.y);
@@ -167,7 +178,7 @@ export const stepEntities = (
         } else if (e.state === "telegraph") {
           if (e.timer > 24) { e.state = "act"; e.timer = 0; e.dir = (inp.playerX >= e.x ? 1 : -1) as 1 | -1; }
         } else if (e.state === "act") {
-          const g = groundAt(grid, e.x + ENEMY_LUNGE * e.dir * 4, e.y);
+          const g = walkAheadAt(grid, e, e.x + ENEMY_LUNGE * e.dir * 4);
           if (g !== null) { e.x += ENEMY_LUNGE * e.dir; const s2 = groundAt(grid, e.x, e.y); if (s2 !== null) e.y = s2; }
           if (e.timer > 40 || g === null) { e.state = "patrol"; e.timer = 0; }
         }
@@ -213,7 +224,7 @@ export const stepEntities = (
         if (g !== null && e.y >= g && e.vy > 0) {
           e.y = g;
           e.vy = -Math.round(3.2 * SUBS);
-          const aheadG = groundAt(grid, e.x + 20 * SUBS * e.dir, e.y);
+          const aheadG = walkAheadAt(grid, e, e.x + 20 * SUBS * e.dir);
           if (aheadG === null) e.dir = (e.dir * -1) as 1 | -1;
         }
         e.x += Math.round(0.5 * SUBS) * e.dir;

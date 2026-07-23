@@ -9,7 +9,7 @@ import Phaser from "phaser";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { ArcadePad } from "./ArcadeScene.ts";
 import { MapScene, type MapConfig, type MapEntrance } from "./MapScene.ts";
-import { bindTypingGuard } from "./typing-guard.ts";
+import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 
 export interface MapGameProps {
   world: {
