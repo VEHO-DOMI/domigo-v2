@@ -186,3 +186,60 @@ story-grounding · design-sheets · paint-art · game-tasks (43) · web build ·
 mounted, harness live, phase p1, ZERO console errors. (Learning banked: the teacher debug-door phase
 ids are p1/p2/p3 — arena/bonus are schema blocks *within* a phase, not mountable ids; `?phase=arena`
 throws `Sim: unknown phase` by design, not a regression.)
+
+### The Batch-AC art-review arc + Build-D2 grids (2026-07-23, Opus 4.8) — for Fable
+
+This session, after #232 merged, ran the art-verification + level-authoring half of Build-D.
+Full detail so you can audit the judgment calls.
+
+**Batch AC review (31-sheet ch01 world kit).** Verified independently, never trusting Codex's
+self-report. My own image-by-image pass + a re-run of every machine check in PIL (magenta
+purity, loop-edge diff=0, cell-border margins, plate opacity — all clean) + TWO adversarial
+critic subagents (a coverage/topic-material auditor and a quality flaw-hunter). Coverage 31/31
+cell-by-cell; topic-material law 100% (no grass/earth/ice); F6/F9/G4/G10 all resolved (rich
+painterly plates, readable checkpoint, moving Tafel, faceless-hooded prologue = CP-15 held).
+- The flaw-hunt critic returned REDO for "style bimodality" (half glossy, half painterly). I did
+  NOT rubber-stamp it: compared the flagged characters to the ALREADY-SHIPPED batch-AB enemies
+  (AB-vs-AC image proof) — the new characters MATCH the shipped look, and the style key itself
+  draws crisp characters on soft grounds, so character-vs-background finish difference is the
+  established look, not a defect. Mined the critic for its REAL findings instead: a genuine pink
+  ghost-scarf artifact on the kit_p1_steps coat-bench (verified: non-#FF00FF pink, would ship
+  visible), and enemy-continuity drift in ent_states_a (pencil yellow/free vs shipped grey/roped;
+  eraser palette). **Lesson banked: an adversarial critic's FINDINGS are gold, its VERDICT can
+  overreach — decompose to findings, verify each, never gummistempel the verdict.**
+- Art = Koki's taste authority → surfaced the finish call to him with the evidence. His verdict:
+  unify the finish anyway. Wrote `CODEX_MASTER_PROMPT_AC2_FINISH.md` (12 sheets softened to the
+  accepted exemplars + the 3 fixes; 19 accepted sheets untouched; continuity refs staged in
+  batch-ac2/_refs/). Koki ran it.
+
+**Batch AC2 review.** Same rigor. Folder ground-truth (all 12 present, dims ok) + PIL machine
+audit (clean) + own pass + one flaw-hunt critic. Result: **30/31 accepted** — finish unified,
+all 3 fixes confirmed (coat-bench ghost gone; enemies now match shipped grey/roped pencil +
+blue-cream eraser + green heft, AB-vs-AC2 proof; chalk sticks legible). ONE holdout: ent_platforms
+still glossy — verified directly (same ruler matte in vocab_a, glossy here). Wrote a one-sheet
+re-run `CODEX_MASTER_PROMPT_AC3_PLATFORMS.md` (Koki running it); its 2 stems stay allowlisted so
+it doesn't block wiring.
+
+**Build-D2 — five ch01 phase grids, authored + verified.** Re-authored all five FROM SCRATCH
+against the approved dossiers (nuke-not-patch): p1 Eingangshalle 64x22, p2 Klassenzimmer-Nacht
+72x24, p3 Schulhof 64x26 (swing+ruler moving-platform crossing), p4 Tafel-Buehne arena 36x20,
+p9 Kleckskammer bonus 44x20. Each verified GREEN against the REAL checkLevelLaws + reachability;
+assembled = parse OK + ALL laws green (3 phases, 6 cages, 1 person-cage, closed-top, slopes,
+spawn-standable, reachability, no trap-pockets).
+- Built a reusable dev harness `scripts/check-level-candidate.mjs` (splices a candidate phase
+  into the level, runs the real laws + a reachability map). Tamper-checked RED first (floated a
+  cage → caught). It even caught a bug in ITSELF (I'd used one reach envelope for all cells;
+  the real laws use (1,1,3) for letters/exit vs (2,2,4) for cages — fixed).
+- **Design lesson banked**: checkLevelLaws is a conservative UNDER-approximation — a letter must
+  sit <=1 row above a standable cell, so letter "arcs" are ascending platform staircases with
+  letters atop; DOWN-and-across gaps fail (fall-drift is narrow at shallow depth) → chains go up,
+  then fall back to the floor.
+- Staged on branch `pb-d2-grids` under `docs/design/g1/paint/grids-v2/` (level.json UNTOUCHED so
+  the old tapes stay green — the branch is fully green).
+
+**Wiring scoped, not yet built.** Dug into the renderer and found the wiring is 4 deliberate
+engine additions (entStateCell pose hook, per-phase bands, terrain-strip mapping, the p3
+slippery-slide decision), not a blind copy — each needs a browser check. Full executable plan
+with the cell->stem map, the 4 decisions, W1-W7 phases (each with CHECK+LOOP), and escalation
+triggers is in **`docs/handover/34_build_d_wiring_plan.md`**. That is where the next session
+picks up.
