@@ -22,12 +22,12 @@
   scripts/check-level-candidate.mjs docs/design/g1/paint/grids-v2/p1.json`.
 - **Art** (`~/Code/codex-art-lab/`): `batch-ac/` = 31 sheets, **19 accepted as-is** (all 4 plates,
   6 props, checkpoint, ent_tafel_motion, ent_falter, 4 bands, kit_p3_paving, prolog_triptych,
-  name_console). `batch-ac2/` = 12 finish-unified re-runs, **11 accepted**; **`ent_platforms`
-  is being re-run as AC3** (`CODEX_MASTER_PROMPT_AC3_PLATFORMS.md`, in flight). So the import
-  source per sheet is: **ac2 for the 11 re-run sheets, ac for the other 19, ac2/ent_platforms
-  once AC3 lands** (until then its 2 stems stay allowlisted).
-- **Allowlist** (`scripts/paint-art-allowlist.json`): currently `satchelswing_a`, `ruler_a`
-  pending (the ent_platforms stems). The 8 plate/band entries added earlier were REVERTED when
+  name_console). `batch-ac2/` = 12 finish-unified re-runs — **ALL 12 ACCEPTED**. `ent_platforms` AC3 regen
+  landed 2026-07-23, verified matte (satchel sheen + ruler gloss gone, matches the vocab-a ruler)
+  + format-clean (2048×512, magenta pure, borderBad 0.000) → **31/31 art accepted, nothing
+  pending**. Import source per sheet: **ac2 for the 12 re-run sheets, ac for the other 19**.
+- **Allowlist** (`scripts/paint-art-allowlist.json`): `satchelswing_a` / `ruler_a` (ent_platforms)
+  now IMPORT from ac2 at W1 → REMOVE those two entries once the stems are written. The 8 plate/band entries added earlier were REVERTED when
   level.json was reverted — they come back when the grids are wired (W5).
 - **Manifest auto-scans**: `resolvePaintArt()` reads every `*.png` under
   `apps/web/public/art/g1/paint/ch01/` → `{stem: url}`; the scene loads each as `pb-<stem>`.
@@ -92,7 +92,7 @@
 | file | src | [0] | [1] | [2] | [3] |
 |---|---|---|---|---|---|
 | ent_states_a ⚠ | ac2 | `pencil_run` | `eraser_squash` | `ranzen_stomp` | `heft_bank` |
-| ent_platforms | ac2 (AC3) | `satchelswing_a` | `satchelswing_b` | `ruler_a` | `ruler_b` |
+| ent_platforms | ac2 | `satchelswing_a` | `satchelswing_b` | `ruler_a` | `ruler_b` |
 | ent_falter ⚠ | ac | `moths_a` (overwrite) | `moths_b` (overwrite) | `moths_rest` | `moths_slate` |
 | ent_tafel_motion ⚠ | ac | `tafel_roll` | `tafel_windup` | `tafel_stagger` | `tafel_win` |
 
@@ -177,11 +177,11 @@
 ## 4 · IMPLEMENTATION PHASES (each: author → CHECK → LOOP; one small commit per phase)
 
 **W1 · Import script** — write `docs/art/import-batch-ac.mjs` from the ab pattern + the §2 map
-(ac2 for the 11, ac for the 19, skip ent_platforms until AC3). Plates copied as-is; everything
+(ac2 for the 12, ac for the 19). Plates copied as-is; everything
 else cropped/keyed/defringed/trimmed/alpha-audited.
 - CHECK: run it; every written stem passes the ≥1% alpha audit; count == expected; spot-open 3
   stems (a plate, a terrain strip, an enemy pose) in Preview. `check-paint-art` green (add the
-  still-pending stems — ent_platforms, and any prop/decor deliberately deferred — to the
+  still-pending stems (any prop/decor deliberately deferred) — to the
   allowlist with reason+until).
 - LOOP: any empty/mis-cropped stem → fix the cell bounds/trim and re-run.
 
@@ -202,7 +202,7 @@ else cropped/keyed/defringed/trimmed/alpha-audited.
 
 **W5 · Grids into level.json + moving-platform + guardian art** — copy the 5 verified grids from
 `docs/design/g1/paint/grids-v2/` into `content/.../ch01.level.json`; wire ent_platforms
-(satchelswing/ruler) once AC3 lands; wire the tafel motion states in the arena.
+(satchelswing/ruler, AC3 landed); wire the tafel motion states in the arena.
 - CHECK: `checkLevelLaws` green (it is — already assembled-verified); `check-paint-art` green
   (re-add the plate/band allowlist entries only if any stem still absent); browser boot each phase.
 - LOOP: a law fails → the harness pinpoints it; re-author that spot (nuke-not-patch).
@@ -240,6 +240,6 @@ replays (P-44). Update doc 33, MC, PLATFORM MASTER, memory.
 ---
 
 ## 6 · WHAT KOKI DOES (gates only)
-1. Run the AC3 `ent_platforms` re-run (in flight) → drop `batch-ac2/entities/ent_platforms.png`.
+1. ✓ DONE — AC3 `ent_platforms` re-run landed + verified (31/31 art accepted).
 2. If §3.4 or §5 asks for new Codex art → paste the prompt, drop the output.
 3. Merge the one Build-D PR → **replay the whole reworked ch01** (the real gate).

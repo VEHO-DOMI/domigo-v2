@@ -243,3 +243,23 @@ slippery-slide decision), not a blind copy — each needs a browser check. Full 
 with the cell->stem map, the 4 decisions, W1-W7 phases (each with CHECK+LOOP), and escalation
 triggers is in **`docs/handover/34_build_d_wiring_plan.md`**. That is where the next session
 picks up.
+
+### AC3 landed (31/31) + Fable's ch02 (AE) prompt review (2026-07-23)
+
+- **AC3 `ent_platforms` re-run landed + verified** → the satchel-swing + ruler-glider are now matte
+  (sheen/gloss gone, ruler matches the vocab-a matte ruler), format-clean (2048×512, magenta pure,
+  borderBad 0.000). **All 31 ch01 world sheets accepted.** doc 34 §0/§2/§4/§6 updated; the
+  `satchelswing_a`/`ruler_a` allowlist entries now import from ac2 at W1 (remove after write).
+- **Reviewed Fable's `CODEX_MASTER_PROMPT_AE_CH02.md`** (the ch02 zoo world kit, 31 cards) against
+  our principles + doc 34's engine needs. Verdict: STRONG + principle-faithful (topic-material law,
+  affordance-casting as the explicit anti-random law, format contract, story-by-absence, AE2 finish
+  anticipation) AND vocab-accurate — cross-checked all 12 vocab objects against the REAL `g1-u02`
+  wordbank; all present (incl. "stone"/"car"), animal set matches the unit exactly. Plates/phases/
+  guardian align with the ch02 dossier. **Adapted the prompt (2 additions):** (1) a MASS-FILL LAW on
+  the terrain group — the ground kits' body must tile vertically as a deep-interior fill (the ch01
+  `pit_inner_tile` role) or ch02 deep floors show the F13 brown fallback; (2) a BUILD-ALIGNMENT NOTES
+  appendix (marked "not for Codex") documenting the 3 NEW engine capabilities the ch02 art implies —
+  vertical entity stacking (the giraffe tower), the mini-scene show-pen mechanic, the lying-signs
+  composer — plus the sharpened §3.3 per-phase-ground dependency, the vertical-loop import path, and
+  the story-entry-deferral confirmation. So the ch02 art commission is complete-and-correct; the
+  engine work it implies is now written down for the ch02 build.
