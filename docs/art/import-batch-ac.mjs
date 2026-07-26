@@ -36,6 +36,16 @@
  *   · kit_p3_paving[3] — §2 names no stem for it ("corner (prop)").
  *   · kit_p3_air[1] — §2 says "ruler→entity (skip)"; the ruler ships as an
  *     entity from ent_platforms.
+ *   · kit_p1_hall[3] — §2 maps it to `pit_inner_tile`, but that stem is used as
+ *     a DEEP-INTERIOR MASS FILL: the renderer tiles it under every solid that
+ *     has a solid above it, over a brown EARTH fillRect. The batch-AB tile it
+ *     would replace is 1024x1024 and 100 % opaque; this cell is 512x512 and
+ *     only 27.7 % opaque — a book-stack motif with fully empty bands top and
+ *     bottom — so tiling it lets the brown show through in stripes, i.e. it
+ *     re-opens the exact F13 class W3 exists to close (browser-verified before
+ *     this line was written). Keeping the proven AB tile; the motif stays in
+ *     the lab until ch01 gets a real mass-fill cell. This is the ch02 prompt's
+ *     MASS-FILL LAW (doc 33) arriving one batch too late for ch01.
  *   · the three cells §2 all labels `plank_loop` (kit_p1_steps[3],
  *     kit_p2_furniture[3], kit_p3_air[2]). One name, three sheets: writing any
  *     of them silently clobbers the shipped batch-AB plank, and `plank_loop`
@@ -161,7 +171,7 @@ const SHEETS = [
   { file: "bands/band_p4_audience.png", src: "ac", mode: "keep", stems: ["band_p4_audience"] },
 
   // Terrain — the canonical ground kit + slopes + hazards + placeable props
-  { file: "terrain/kit_p1_hall.png", src: "ac2", mode: "keep", stems: ["strip_ground_loop", "strip_cap_l", "strip_cap_r", "pit_inner_tile"] },
+  { file: "terrain/kit_p1_hall.png", src: "ac2", mode: "keep", stems: ["strip_ground_loop", "strip_cap_l", "strip_cap_r", null] },
   { file: "terrain/kit_p1_steps.png", src: "ac2", mode: "keep", stems: ["slope45_up", "slope45_down", ["plat_coatbench", "sprite"], null] },
   { file: "terrain/kit_p2_furniture.png", src: "ac2", mode: "sprite", stems: ["plat_desk", "plat_bookpile_s", "plat_bookpile_l", null] },
   { file: "terrain/kit_p3_air.png", src: "ac2", mode: "keep", stems: ["strip_ice_loop", null, null, ["plat_roofarrow", "sprite"]] },

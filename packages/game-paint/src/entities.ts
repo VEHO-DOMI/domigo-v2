@@ -82,8 +82,17 @@ export interface EntityWorld {
 
 const BODY_HALF_PX = 8;
 const AGGRO_X_PX = 72;
-const ENEMY_WALK = Math.round(0.6 * SUBS);
+/** Patrol speed of a walking enemy. Exported because the RENDERER derives its
+ *  run-pose threshold from it (anim.entPoseCell) — one source of truth, so the
+ *  pose can never silently drift out of step with the walk it depicts. */
+export const ENEMY_WALK = Math.round(0.6 * SUBS);
 const ENEMY_LUNGE = Math.round(1.6 * SUBS);
+/** A bouncer's upward impulse at ground contact (same reason as ENEMY_WALK:
+ *  the squash pose keys off it). */
+export const BOUNCE_UP = Math.round(3.2 * SUBS);
+/** Half-width, in px, of a flyer's sine patrol around its home — the bank pose
+ *  fires near the extremes, where the flyer rolls into its turn. */
+export const FLYER_SWEEP_PX = 40;
 const GRAVITY = PAINT.gravity;
 
 /** Per-tier guardian script (sheet §6: telegraph/window shrink E→S, knots ≤5). */
@@ -235,7 +244,7 @@ export const stepEntities = (
         // sine patrol around home altitude; dive when the player is below
         const t = e.timer;
         if (e.state === "patrol") {
-          e.x = e.homeX + Math.round(Math.sin(t / 40) * 40 * SUBS);
+          e.x = e.homeX + Math.round(Math.sin(t / 40) * FLYER_SWEEP_PX * SUBS);
           e.y = e.homeY + Math.round(Math.sin(t / 23) * 6 * SUBS);
           const below = inp.playerY > e.y && Math.abs(e.x - inp.playerX) / SUBS < 24;
           if (below && t > 90) { e.state = "telegraph"; e.timer = 0; }
@@ -256,7 +265,7 @@ export const stepEntities = (
         const g = groundAt(grid, e.x, e.y);
         if (g !== null && e.y >= g && e.vy > 0) {
           e.y = g;
-          e.vy = -Math.round(3.2 * SUBS);
+          e.vy = -BOUNCE_UP;
           const aheadG = walkAheadAt(grid, e, e.x + 20 * SUBS * e.dir);
           if (aheadG === null) e.dir = (e.dir * -1) as 1 | -1;
         }

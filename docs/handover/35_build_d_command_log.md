@@ -23,8 +23,8 @@ Groundwork already committed by Fable (2026-07-26, `8faa9bc`):
 
 | Packet | Scope | State |
 |---|---|---|
-| PK-1 | W1 — batch AC/AC2 import script + run, allowlist −2 | **DONE** — 65 stems, allowlist 2→0, art dir 82→133 |
-| PK-2 | W2+W3+W4 — per-phase plates/bands · terrain strips (+`z` slide art) · enemy pose hook (+A-4 tafel study) | **PENDING** |
+| PK-1 | W1 — batch AC/AC2 import script + run, allowlist −2 | **DONE** — 65 stems, allowlist 2→0, art dir 82→133 (PK-2's browser pass then deferred `pit_inner_tile`: **64** stems, 132 PNGs) |
+| PK-2 | W2+W3+W4 — per-phase plates/bands · terrain strips (+`z` slide art) · enemy pose hook (+A-4 tafel study) | **DONE** — 221 tests, tapes green, F13 mass-fill regression caught in-browser and reverted |
 | PK-3 | W5+W6 — grids-v2 splice (machine-diff fidelity) + all five proof tapes (p3 rides the slide) | **PENDING** |
 | W7 | full gate set + browser proofs + the ONE Build-D PR | **PENDING** |
 
@@ -132,9 +132,121 @@ well on screen (see finding F-3), that per-phase bands land at the right horizon
 
 **Commit.** `Build-D W1: batch AC/AC2 import — 31 sheets → 65 stems, allowlist cleared`
 
-<!-- PK-2 log entry goes here -->
+## PK-2 · W2+W3+W4 — the engine wiring (DONE)
 
-<!-- PK-2 log entry goes here -->
+**What.** Three deliverables in `PaintScene.ts` plus one pure helper, and one PK-1 import
+reverted on browser evidence.
+
+**1 · Per-phase plates/bands (§3.2).** `buildBackdrop` now reads `phase.plates.mid` /
+`.near` through one small resolver and falls back to the fixed `strip_mid_loop` /
+`plate_near_loop` names. `PhaseSpec.plates` already typed `mid`/`near`, so no schema change.
+A phase that names no band renders byte-identically to before.
+
+**2 · Terrain strips + the `z` slide art (§3.3 MVP, A-6).** The `z` glyph was rendering as
+*nothing*: `isSlope("z")` is true, so it entered the slope branch, but no shape arm matched it
+and `slopeStem` resolved to `null`. It now draws the same 45°-down wedge as `\`, resolves to
+`slope45_down`, and joins the ice-strip run predicate so `strip_ice_loop` (the blackboard
+slide) paints down it exactly like a `~` run — one strip per cell down the diagonal, which is
+how p3's slide is laid out (one `z` per row, cols 10→15).
+
+**3 · Enemy pose hook (§3.1).** New pure `entPoseCell` in `anim.ts` — the package's documented
+home for deterministic frame selection — and `PaintScene.entStateCell` now delegates to it.
+Putting it there is what makes the brief's "unit test with a tamper case" possible at all:
+`PaintScene.ts` imports Phaser, so logic living inside it cannot be tested headlessly. The
+`entTex` fallback chain is **untouched**, so a missing `_run`/`_squash`/`_stomp`/`_bank` stem
+still lands on `_a` and can never break a render.
+
+Every threshold is *derived from the sim constant it depicts*, imported rather than re-typed,
+so tuning the sim moves the pose with it. That meant naming three literals in `entities.ts`
+(`ENEMY_WALK` now exported, plus new `BOUNCE_UP` and `FLYER_SWEEP_PX` replacing inline
+`3.2 * SUBS` / `40`) — value-identical, and `proof-tapes.test.ts` stayed green, which is the
+proof the sim itself did not move.
+
+| pose | signal | why that signal |
+|---|---|---|
+| `run` | `\|vx\| >= ENEMY_WALK/2`, non-platform | a chaser's vx is ±ENEMY_WALK while walking and 0 at an edge turn; platforms carry a ride delta in vx that is not a gait |
+| `squash` | bouncer, `\|vy\| >= 0.8 x BOUNCE_UP` | the fast part of the arc = the bottom. The art shows the body flattened wide, which is contact, not apex |
+| `stomp` | crusher in `act` | a crusher's `act` **is** its slam |
+| `bank` | flyer, `\|x - homeX\| >= 0.8 x sweep` | the art shows the whole body rolled over — that is a turn, so it belongs at the sweep extremes, not mid-sweep. Uses x/homeX, so it never couples to the sine's period |
+
+I opened the four cells next to their idle counterparts before choosing signals; the art, not
+the doc, decided `bank` (a roll) and `squash` (contact, not apex).
+
+**Gates (unpiped, real exit codes).**
+
+| command | exit | result |
+|---|---|---|
+| `pnpm --filter @domigo/game-paint exec vitest run` | **0** | **221 passed** (214 + 7 new), incl. `proof-tapes.test.ts` and `slide.test.ts` |
+| `pnpm --filter @domigo/game-paint exec tsc --noEmit` | **0** | |
+| `pnpm --filter web exec tsc --noEmit` | **0** | |
+| `pnpm --filter web build` | **0** | |
+| `node scripts/check-game-bundle.mjs` | **0** | 37 chunks · **Phaser in exactly 1 chunk, 310 KB gz** · no shared-chunk leak |
+| `node scripts/check-paint-art.mjs` | **0** | 51 required stems present |
+| TAMPER: invert `>= RUN_VX` to `< RUN_VX` | **1** | 5 of 7 pose tests went RED, then restored (the 2 that stayed green are the FSM-precedence and platform-guard cases, which is correct — they never touch vx) |
+| browser: `/play/1/buch` p1 and p2 | — | scene active, **0 console errors**, 152/152 textures, screenshots taken |
+
+**★ The browser found a real regression in PK-1 — reverted here.** p1's first screenshot showed
+the deep floor in horizontal brown stripes. Cause, machine-proven: doc 34 §2 maps
+`kit_p1_hall[3]` to `pit_inner_tile`, but that stem is used as a **deep-interior mass fill** —
+the renderer tiles it under every solid-under-solid cell, over a brown `EARTH` fillRect. The
+batch-AB tile it replaced is **1024x1024 and 100 % opaque**; the AC2 cell is **512x512 and only
+27.7 % opaque**, a book-stack motif whose top 5/16 and bottom 4/16 are *empty*. Tiling it let
+the brown through in bands — re-opening the exact F13 class W3 exists to close. So
+`kit_p1_hall[3]` is now deferred, the proven AB tile is restored, and the import writes
+**64** stems, not 65. Re-screenshotted: the deep floor is a solid mass again.
+
+I checked the whole class rather than the one instance — old-vs-new alpha coverage on all 14
+overwritten stems. **`pit_inner_tile` is the only mass-fill loss.** The other shifts
+(`strip_ground_loop` 78 %→27 %, `pool_ink_loop` 91 %→22 %, …) are just the 2048x384 strip sheet
+becoming a 512-square cell with more empty margin; they are tileSprites scaled by source height
+and the screenshot confirms they paint their runs correctly. This is the **MASS-FILL LAW** that
+doc 33 already wrote into the ch02 (AE) prompt — ch01's kit predates it, so ch01 still has no
+mass-fill cell of its own. Logged as F-4.
+
+**A-4 answer (the tafel study — reported, not implemented, per the amendment).**
+The guardian FSM is `idle` to `telegraph` to (throw) back to `idle`, plus `stagger` (after a
+deflect), `window` and `consoled` (both scene-driven), and `redeemed`+`dazed` on
+`guardianDown`. **It is NOT 1:1 — the hook needs three changes and one cell has no sim state
+at all:**
+
+| cell | sim state | verdict |
+|---|---|---|
+| `tafel_windup` | `telegraph` | **override needed.** `telegraph` already resolves to the shipped `tafel_telegraph`; both stems exist, so something must choose. Trivial once decided. |
+| `tafel_stagger` | `stagger` | **new branch needed.** `stagger` currently falls through to the a/b default and renders `tafel_a` — the stagger, i.e. the counter-window's own tell, is invisible today. |
+| `tafel_win` | `consoled` | **new branch needed.** `consoled` is collapsed into the `dazed` arm, so the redeemed-friend pose can never show. This is the console beat's payoff (doc 31 §3). |
+| `tafel_roll` | **none** | **gap.** The guardian never changes `x` — the FSM has no locomotion whatsoever. The dossier's *bewegliche* Tafel needs either a new sim state (a roll/reposition phase in `GUARDIAN_SCRIPT`) or content-side wiring. PK-3 must decide which; it is the one item here that is not a two-line renderer change. |
+
+**Honesty clause — what is NOT proven yet.** The per-phase band code and the `z` slide art are
+**wired but not visually proven**: the live `ch01.level.json` is still the OLD level, which sets
+no `plates.mid`/`.near` on any phase (so both bands took the fallback path in every screenshot)
+and contains no `z` cell at all. Both prove out in PK-3, after the splice. What p1/p2 *do*
+prove: the new terrain art paints the current level, the far plates differ per phase, the scene
+boots clean, and the mass-fill regression is gone. The look itself is Fable's and Koki's call.
+
+**Harness learning (cost ~20 minutes; belongs in the registry).** The boot pump dance is **not
+a fixed count** — the loader finishes on real wall-clock, and the ch01 art set just grew from
+101 to 152 files. Two pump+wait cycles now leave it stalled at **128/152** with `list=24`,
+`inflight=0`, the scene still `active:false` — and a screenshot taken there shows *missing
+ground art*, which reads exactly like a bug you just introduced. Wait on the condition, not on
+a count:
+
+    for (let i=0; i<6 && (L.isLoading() || !sc.scene.isActive()); i++) {
+      P.rafStep(30); await new Promise(r => setTimeout(r, 1500));
+    }
+
+Also banked: `game.canvas` cannot be pixel-read back (WebGL without `preserveDrawingBuffer`) —
+a `drawImage` copy returns all-black, so "0 brown pixels found" from a canvas readback is a
+**false negative**. Measure the source PNGs instead.
+
+**Findings.**
+- **F-4 · ch01 has no deep-interior mass-fill cell.** See above. Options for Fable: commission
+  one ch01 mass-fill cell (the AE prompt's MASS-FILL LAW, applied retroactively), keep the AB
+  tile indefinitely, or repaint the interior fill colour so any show-through reads as book
+  rather than mud. Not my call — the evidence is above, the decision is a taste one.
+- **F-5 · `tafel_roll` has no home** (see the A-4 table) — the only new art cell in the batch
+  with no state to bind to.
+
+**Commit.** `Build-D W2–W4: per-phase plates/bands + terrain strips (+z slide art) + enemy pose hook`
 
 <!-- PK-3 log entry goes here -->
 
