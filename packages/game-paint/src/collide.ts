@@ -20,7 +20,7 @@ import { BODY_H, BODY_W, SUBS, TILE } from "./paint.ts";
 export type Grid = readonly string[];
 
 const SOLID = new Set(["#", "~"]);
-const SLOPES = new Set(["/", "\\", "1", "2", "3", "4"]);
+const SLOPES = new Set(["/", "\\", "1", "2", "3", "4", "z"]);
 const HAZARDS = new Set(["^", "w"]);
 
 export const glyphAt = (grid: Grid, c: number, r: number): string => {
@@ -51,6 +51,7 @@ export const slopeSurfaceYPx = (g: string, c: number, r: number, xPx: number): n
   switch (g) {
     case "/": return bottom - xin; // rises to the right
     case "\\": return top + xin; // falls to the right
+    case "z": return top + xin; // slippery slide, falls to the right (spike D1)
     case "1": return bottom - xin / 2; // rise, lower half (16→8)
     case "2": return bottom - TILE / 2 - xin / 2; // rise, upper half (8→0)
     case "3": return top + xin / 2; // fall, upper half (0→8)

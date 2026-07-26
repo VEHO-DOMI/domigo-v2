@@ -14,6 +14,7 @@ import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
 import { type EntityWorld } from "./entities.ts";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
+import { type EntPoseInput, entPoseCell } from "./anim.ts";
 import { rigPose, withFistAway } from "./rig.ts";
 import {
   RIG_CELL,
@@ -140,6 +141,7 @@ export class PaintScene extends Phaser.Scene {
   /** The harness + HUD read through this (never Phaser internals). */
   getState(): {
     x: number; y: number; vx: number; vy: number; pose: string; grounded: boolean;
+    onSlide: boolean;
     phase: string; letters: number; hovering: boolean; overlay: boolean;
     knots: number; guardianDown: boolean; bonusLeft: number;
     entities: Array<{ id: string; role: string; state: string; redeemed: boolean; x: number; y: number }>;
@@ -153,6 +155,7 @@ export class PaintScene extends Phaser.Scene {
       vy: this.player.vy,
       pose: this.player.pose,
       grounded: this.player.grounded,
+      onSlide: this.player.onSlide, // D1 spike visibility
       phase: this.cfg.phaseId,
       letters: this.lettersGot,
       hovering: this.player.hovering,
@@ -261,13 +264,9 @@ export class PaintScene extends Phaser.Scene {
     return "fb-ent-generic";
   }
 
-  private entStateCell(e: { role: string; state: string; timer: number; redeemed: boolean }): string {
-    if (e.redeemed || e.state === "dazed" || e.state === "consoled" || e.state === "shooed") return "dazed";
-    if (e.state === "telegraph") return "telegraph";
-    if (e.state === "act") return "act";
-    if (e.state === "burst") return "burst";
-    if (e.state === "shaking") return "shake";
-    return (Math.floor(e.timer / 12) % 2 === 0) ? "a" : "b";
+  /** W4: delegated to the pure hook in anim.ts (unit-tested there). */
+  private entStateCell(e: EntPoseInput): string {
+    return entPoseCell(e);
   }
 
   /** world-space display heights per role — painted cells arrive at 512px native */
@@ -457,11 +456,19 @@ export class PaintScene extends Phaser.Scene {
       const sky = this.add.image(this.worldWpx / 2, this.worldHpx / 2 - 30, "pb-plate_sky").setDepth(-11.5).setScrollFactor(0.05, 0.02);
       plateCover(sky, 0.05, 0.02);
     }
-    if (this.textures.exists("pb-strip_mid_loop")) {
-      const src = this.textures.get("pb-strip_mid_loop").getSourceImage() as HTMLImageElement;
+    // W2: per-phase parallax bands — the phase names its own mid/near band
+    // (grids-v2 sets plates.mid per phase); the fixed stems stay the fallback,
+    // so a phase that names nothing renders exactly as before.
+    const bandStem = (named: string | undefined, fixed: string): string | null => {
+      if (named && this.textures.exists(`pb-${named}`)) return `pb-${named}`;
+      return this.textures.exists(`pb-${fixed}`) ? `pb-${fixed}` : null;
+    };
+    const midStem = bandStem(this.phase.plates.mid, "strip_mid_loop");
+    if (midStem !== null) {
+      const src = this.textures.get(midStem).getSourceImage() as HTMLImageElement;
       const dispH = 86; // sits at the horizon; the far plate + sky stay visible above
       const mid = this.add
-        .tileSprite(0, this.worldHpx - dispH - 34, this.worldWpx + LOGICAL_W * 2, dispH, "pb-strip_mid_loop")
+        .tileSprite(0, this.worldHpx - dispH - 34, this.worldWpx + LOGICAL_W * 2, dispH, midStem)
         .setOrigin(0, 0)
         .setDepth(-9)
         .setScrollFactor(0.5, 0.9)
@@ -469,11 +476,12 @@ export class PaintScene extends Phaser.Scene {
       mid.setTileScale(dispH / src.height);
       mid.x = -LOGICAL_W;
     }
-    if (this.textures.exists("pb-plate_near_loop")) {
-      const src = this.textures.get("pb-plate_near_loop").getSourceImage() as HTMLImageElement;
+    const nearStem = bandStem(this.phase.plates.near, "plate_near_loop");
+    if (nearStem !== null) {
+      const src = this.textures.get(nearStem).getSourceImage() as HTMLImageElement;
       const dh = 62;
       const near = this.add
-        .tileSprite(-LOGICAL_W, this.worldHpx - dh - 22, this.worldWpx + LOGICAL_W * 2, dh, "pb-plate_near_loop")
+        .tileSprite(-LOGICAL_W, this.worldHpx - dh - 22, this.worldWpx + LOGICAL_W * 2, dh, nearStem)
         .setOrigin(0, 0)
         .setDepth(0)
         .setAlpha(0.95)
@@ -521,17 +529,18 @@ export class PaintScene extends Phaser.Scene {
           const x = c * TILE;
           const y = r * TILE;
           if (g === "/") fill.fillTriangle(x, y + TILE, x + TILE, y + TILE, x + TILE, y);
-          else if (g === "\\") fill.fillTriangle(x, y, x, y + TILE, x + TILE, y + TILE);
+          // D1: `z` is the slippery slide — same 45°-down wedge as `\`
+          else if (g === "\\" || g === "z") fill.fillTriangle(x, y, x, y + TILE, x + TILE, y + TILE);
           else if (g === "1") fill.fillTriangle(x, y + TILE, x + TILE, y + TILE, x + TILE, y + TILE / 2);
           else if (g === "2") { fill.fillTriangle(x, y + TILE, x + TILE, y + TILE, x + TILE, y); fill.fillRect(x, y + TILE / 2, TILE, TILE / 2); }
           else if (g === "3") { fill.fillTriangle(x, y, x, y + TILE, x + TILE, y + TILE); fill.fillRect(x, y + TILE / 2, TILE, TILE / 2); }
           else if (g === "4") fill.fillTriangle(x, y + TILE / 2, x, y + TILE, x + TILE, y + TILE);
           fill.lineStyle(2, GRASS);
           if (g === "/") fill.lineBetween(x, y + TILE, x + TILE, y);
-          if (g === "\\") fill.lineBetween(x, y, x + TILE, y + TILE);
+          if (g === "\\" || g === "z") fill.lineBetween(x, y, x + TILE, y + TILE);
           // AA2: the painted bank wedge sits over the fill (30° pairs draw
           // once at their first tile, spanning both)
-          const slopeStem = g === "/" ? "slope45_up" : g === "\\" ? "slope45_down" : g === "1" ? "slope30_up" : g === "3" ? "slope30_down" : null;
+          const slopeStem = g === "/" ? "slope45_up" : g === "\\" || g === "z" ? "slope45_down" : g === "1" ? "slope30_up" : g === "3" ? "slope30_down" : null;
           if (slopeStem !== null && this.textures.exists(`pb-${slopeStem}`)) {
             const wpx = g === "1" || g === "3" ? TILE * 2 : TILE;
             this.add.image(x, y - 2, `pb-${slopeStem}`).setOrigin(0, 0).setDisplaySize(wpx, TILE + 2).setDepth(2);
@@ -643,7 +652,12 @@ export class PaintScene extends Phaser.Scene {
       const ts = dispH / src.height;
       for (let r = 3; r < h; r++) {
         let c = 0;
-        const icy = (cc: number): boolean => glyphAt(this.grid, cc, r) === "~" && !isSolid(glyphAt(this.grid, cc, r - 1));
+        // A-6: the `z` slide wears the same blackboard art as a flat `~` run —
+        // one strip per cell down the diagonal, over the slope45_down wedge.
+        const icy = (cc: number): boolean => {
+          const g = glyphAt(this.grid, cc, r);
+          return (g === "~" || g === "z") && !isSolid(glyphAt(this.grid, cc, r - 1));
+        };
         while (c < w) {
           if (!icy(c)) { c++; continue; }
           let c1 = c;

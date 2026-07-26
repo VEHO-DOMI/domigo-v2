@@ -39,6 +39,7 @@ export interface PlayerState {
   grounded: boolean;
   pose: PlayerPose;
   onIce: boolean;
+  onSlide: boolean; // D1 spike: standing on a z slide glyph
   // jump machinery
   jumpTicks: number; // −1 = not in a jump arc
   airTicks: number; // ticks since leaving the ground (drives the gravity clock)
@@ -103,6 +104,7 @@ export const spawnPlayer = (xPx: number, feetYPx: number): PlayerState => ({
   grounded: false,
   pose: "fall",
   onIce: false,
+  onSlide: false,
   jumpTicks: -1,
   airTicks: 0,
   holdLeft: 0,
@@ -208,7 +210,17 @@ export const stepPlayer = (
 
   // ── horizontal control ──
   const slippery = opts.slippery === true || s.onIce;
-  if (!controlsLocked && dirInput !== 0) {
+  // D1 spike — slippery slide (glyph z): the slide OWNS the grounded control
+  // while active (downhill push toward SLIDE_MAX); holding back (uphill) is a
+  // brake and returns control to the normal branch. Capture modality 15: the
+  // original's slide is a slope ADDITIVE, not friction.
+  const SLIDE_MAX = 6 * 256; // px/t * SUBS — target downhill speed
+  const SLIDE_RAMP = 48; // subs/tick ramp-in
+  const slideActive = !controlsLocked && s.grounded && s.onSlide && dirInput >= 0;
+  if (slideActive) {
+    s.facing = 1;
+    if (s.vx < SLIDE_MAX) s.vx = Math.min(s.vx + SLIDE_RAMP, SLIDE_MAX);
+  } else if (!controlsLocked && dirInput !== 0) {
     s.facing = dirInput as 1 | -1;
     if (s.grounded) {
       const target = (opts.canRun ? PAINT.runMax : PAINT.walkMax) * dirInput;
@@ -373,6 +385,7 @@ export const stepPlayer = (
   s.vy = moved.vySubs;
   s.grounded = moved.grounded;
   s.onIce = moved.onIce;
+  s.onSlide = moved.grounded && moved.surfaceGlyph === "z";
 
   if (s.grounded && !wasGrounded && s.jumpTicks >= 0 && s.jumpTicks < 3) {
     // R3-M10: launch frames overlapping the floor may not re-land instantly

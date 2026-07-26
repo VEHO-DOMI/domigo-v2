@@ -92,6 +92,30 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
       }
     } else if (op === "settle") {
       for (let i = 0; i < 240; i++) { if (sim.player.grounded && Math.abs(sim.player.vx) < 8) break; if (!tick(pad({}))) break; }
+    } else if (op === "waitPlatformAt") {
+      // A-3 · ["waitPlatformAt", entityId, col, tol?, timeout?] — CLOSED LOOP on
+      // the sim's own entity position. Boarding a moving platform on a tick
+      // count is brittle (the phase depends on every tick spent upstream);
+      // waiting on where the platform actually IS is not.
+      const [pid, col, tol = 0.6, timeout = 900] = args;
+      const colOf = () => {
+        const e = sim.world.entities.find((x) => x.id === pid);
+        return e ? e.x / SUBS / TILE : null;
+      };
+      for (let i = 0; i < timeout; i++) {
+        const c = colOf();
+        if (c === null || Math.abs(c - col) <= tol) break;
+        if (!tick(pad({}))) break;
+      }
+    } else if (op === "rideUntil") {
+      // ["rideUntil", entityId, col, tol?, timeout?] — stand still on the
+      // platform until IT has carried us to the column (also closed loop).
+      const [pid, col, tol = 0.6, timeout = 900] = args;
+      for (let i = 0; i < timeout; i++) {
+        const e = sim.world.entities.find((x) => x.id === pid);
+        if (!e || Math.abs(e.x / SUBS / TILE - col) <= tol) break;
+        if (!tick(pad({}))) break;
+      }
     }
     if (trace) console.log(`  after ${op}${JSON.stringify(args)}: cell ${JSON.stringify(cellOf(sim))} grounded=${sim.player.grounded} letters=${sim.lettersGot}`);
   }
@@ -100,72 +124,73 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
   return { masks, exited, exitTo, sim, abilities };
 };
 
-// ── the pilots (tuned against the printed traces) ────────────────────────────
+// ── the pilots (grids-v2 layouts; tuned against the printed traces) ─────────
 const PILOTS = {
-  // p1 „Vor dem Schulhaus": meadow left→right, plateau, pit with the carved
-  // staircase, right block, exit door at (61,17)
+  // p1 „Die Eingangshalle": the hall floor runs flat from the spawn to the
+  // exit; the one real obstacle is the ink gap at c41-42 (row 18 opens, ink
+  // beneath at rows 20-21). Jump it, walk up the little ramp at c44, done.
   p1: {
     abilities: ["jump", "run"],
     program: [
-      ["walkTo", 20], ["settle", 0],
-      ["walkTo", 29], ["jump", { dir: "right", hold: 14 }], ["settle"],
-      ["walkTo", 36], ["settle"], // up the carved staircase
-      ["jump", { dir: "right", hold: 14 }], ["settle"], // hop onto the block
-      ["walkTo", 45], ["jump", { dir: "right", hold: 14 }], ["settle"],
-      ["walkTo", 52], ["jump", { dir: "right", hold: 14 }], ["settle"],
-      ["walkTo", 61], ["settle"], ["wait", 30],
+      ["walkTo", 20], ["settle"],
+      ["walkTo", 34], ["settle"],
+      ["walkTo", 39], ["settle"],
+      ["jump", { dir: "right", hold: 16 }], ["settle"], // over the ink gap c41-42
+      ["walkTo", 52], ["settle"],
+      ["walkTo", 61], ["settle"], ["wait", 40],
     ],
   },
-  // p2 „Das Klassenzimmer bei Nacht": desk staircase up-left to FIBEL (the
-  // fist grant), back down, over the nib spikes + the paper platform across
-  // the ink pool, desk hop, exit at (70,19)
+  // p2 „Das Klassenzimmer bei Nacht": the classroom floor is flat the whole
+  // way; the obstacles are the nib spikes at c38-39 and the ink pool at
+  // c50-53 (row 20 opens). Both are cleared by jumps from the floor.
   p2: {
     abilities: ["jump", "run"],
     program: [
-      ["walkTo", 9], ["jump", { dir: "right", hold: 14 }], ["settle"], // onto desk r17
-      ["walkTo", 12], ["jump", { dir: "right", hold: 14 }], ["settle"], // r14 c16-22
-      ["walkTo", 19], ["jump", { dir: "right", hold: 14 }], ["settle"], // r11 c24-30
-      ["walkTo", 28], ["settle"], ["wait", 20], // FIBEL grant at (28,10)
-      ["walkTo", 30], ["hold", { right: true }, 30], ["settle"], // drop off right
-      ["walkTo", 24], ["settle"],
-      ["walkTo", 25], ["jump", { dir: "right", hold: 14 }], ["settle"], // over the nib row
-      ["jump", { dir: "right", hold: 14 }], ["settle"],
-      ["walkTo", 37], ["jump", { dir: "right", hold: 14 }], ["settle"], // onto the paper platform r16
-      ["walkTo", 44], ["hold", { right: true }, 40], ["settle"], // across + drop past the pool
-      ["walkTo", 48], ["jump", { dir: "right", hold: 14 }], ["settle"], // desk c46-47
-      ["walkTo", 52], ["jump", { dir: "right", hold: 14 }], ["settle"], // desk c50-56
-      ["walkTo", 56], ["hold", { right: true }, 30], ["settle"], // drop off
-      ["walkTo", 70], ["settle"], ["wait", 30],
+      ["walkTo", 20], ["settle"],
+      ["walkTo", 36], ["settle"],
+      ["jump", { dir: "right", hold: 16 }], ["settle"], // over the nib spikes c38-39
+      ["walkTo", 48], ["settle"],
+      ["jump", { dir: "right", hold: 18 }], ["settle"], // over the ink pool c50-53
+      ["walkTo", 62], ["settle"],
+      ["walkTo", 68], ["settle"], ["wait", 40],
     ],
   },
-  // p3 „Der Schulhof-Garten": ice run, down the ramp, the one-way chain over
-  // the ink pit (r15 → r13 → r15), onto the right block, drop into the notch
-  // to the exit door at (62,21)
+  // p3 „Der Schulhof-Garten": RIDE THE SLIDE (the z run from c10,r15 down to
+  // c15,r20 — expect ~6 px/t on the descent, not the 2.25 walk), then the ink
+  // pond at c30-40 which is crossed on the ruler platform (p3-ruler sweeps
+  // c33→c39 at r17). Boarding is CLOSED LOOP on the ruler's own position
+  // (A-3), never a tick count — the platform's phase depends on every tick
+  // spent upstream, so a counted wait would be brittle by construction.
   p3: {
     abilities: ["jump", "run", "punch"],
     program: [
-      ["walkTo", 8], ["jump", { dir: "right", hold: 14 }], ["settle"], // onto the ice ledge
-      ["walkTo", 19], ["settle"], // stop BEFORE the ledge lip
-      ["jump", { dir: "right", hold: 16 }], ["settle"], // momentum jump → one-way r15 c24-28
-      ["walkTo", 27], ["jump", { dir: "right", hold: 14 }], ["settle"], // → one-way r13 c31-35
-      ["walkTo", 34], ["jump", { dir: "right", hold: 10 }], ["settle"], // → one-way r15 c38-42
-      ["walkTo", 41], ["jump", { dir: "right", hold: 14 }], ["settle"], // → the right block r17
-      ["walkTo", 55], ["settle"],
-      ["jump", { dir: "right", hold: 10 }], ["settle"], // up onto the shelf roof
-      ["walkTo", 60], ["settle"],
-      ["hold", { right: true }, 60], ["settle"], // through the drop-slot into the notch
-      ["walkTo", 62], ["settle"], ["wait", 60],
+      ["walkTo", 9], ["settle"], // to the lip of the chalk slide
+      ["hold", { right: true }, 90], ["settle"], // ride it down to c15,r20
+      ["walkTo", 29], ["settle"], // along the yard floor to the pond edge
+      ["waitPlatformAt", "p3-ruler", 33.0, 0.5], // let the ruler come to us
+      ["jump", { dir: "right", hold: 18 }], ["settle"], // board it
+      ["rideUntil", "p3-ruler", 38.5, 0.5], // ride across the ink
+      ["jump", { dir: "right", hold: 18 }], ["settle"], // off onto the far bank
+      ["walkTo", 52], ["settle"],
+      ["walkTo", 60], ["settle"], ["wait", 60],
     ],
   },
   // p4 „Die Tafel-Bühne": the guardian fight — stand mid-arena, tap the fist
   // on a rhythm to deflect chalk; staggers open the counter-window tasks
-  // (auto-solved), three knots untie, the exit sign appears at (33,15)
+  // (auto-solved), three knots untie, the exit sign appears at (33,15).
+  // NOTE the two chalk-crate podiums (row 14, c5-7 and c25-27): they are only
+  // one tile high, but the hero is ~2 tiles, so at floor level they block the
+  // HEAD — each has to be jumped, not walked past.
   p4: {
     abilities: ["jump", "run", "punch"],
     program: [
-      ["walkTo", 17], ["settle"],
+      ["walkTo", 4], ["settle"],
+      ["jump", { dir: "right", hold: 16 }], ["settle"], // over the left podium
+      ["walkTo", 14], ["settle"],
       ["punchEvery", 12, 2400],
       ["punchEvery", 9, 2400],
+      ["walkTo", 24], ["settle"],
+      ["jump", { dir: "right", hold: 16 }], ["settle"], // over the right podium
       ["walkTo", 33], ["settle"], ["wait", 40],
     ],
   },
@@ -174,7 +199,7 @@ const PILOTS = {
   p9: {
     abilities: ["jump", "run", "punch"],
     program: [
-      ["walkTo", 43], ["settle"], ["wait", 30],
+      ["walkTo", 42], ["settle"], ["wait", 40],
     ],
   },
 };

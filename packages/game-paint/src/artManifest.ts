@@ -10,6 +10,7 @@ export const GLYPH_STEMS: Record<string, string[]> = {
   "#": ["strip_ground_loop", "strip_cap_l", "strip_cap_r", "pit_inner_tile"],
   "=": ["plank_loop", "plank_cap_l", "plank_cap_r"],
   "~": ["strip_ice_loop"],
+  "z": ["strip_ice_loop", "slope45_down"], // D1: the slippery slide wears the blackboard art on a 45° fall
   "^": ["spikes_nibs_loop"],
   "w": ["pool_ink_loop"],
   "o": ["prop_ring"],
