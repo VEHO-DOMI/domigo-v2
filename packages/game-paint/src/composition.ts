@@ -42,6 +42,9 @@ export interface ShellSpec {
   alpha?: number;
   /** true = tileSprite (a seamless loop band); false = discrete segment images. */
   loop?: boolean;
+  /** true = this plane is sized by the COVER LAW (doc 36 §3) instead of by its
+   *  declared height/bottom — the far shell must never run out mid-travel. */
+  cover?: boolean;
 }
 
 /** L3 — the carved terrain mass (doc 36 §2). One kit per phase. */
@@ -147,6 +150,7 @@ const shell = (phase: string, parallax: number): ShellSpec => ({
   segments: [`${PLACEHOLDER_PREFIX}l1_${phase}_a`, `${PLACEHOLDER_PREFIX}l1_${phase}_b`],
   height: "world",
   bottom: "floor",
+  cover: true,
   parallax,
   parallaxY: 0.12,
 });

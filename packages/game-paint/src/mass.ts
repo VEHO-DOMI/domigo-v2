@@ -246,11 +246,15 @@ export const planMass = (grid: readonly string[], kit: MassKit | null): MassPiec
       if (airR) out.push({ kind: "edgeR", stem: kit.edgeR, c, r, x: x + TILE + EDGE_OUT - EDGE_W, y, w: EDGE_W, h: TILE, depth: DEPTH.trim });
       if (airL && airD) out.push({ kind: "cornerBL", stem: kit.cornerBL, c, r, x: x - EDGE_OUT, y: y + TILE - CORNER + EDGE_OUT, w: CORNER, h: CORNER, depth: DEPTH.trim });
       if (airR && airD) out.push({ kind: "cornerBR", stem: kit.cornerBR, c, r, x: x + TILE + EDGE_OUT - CORNER, y: y + TILE - CORNER + EDGE_OUT, w: CORNER, h: CORNER, depth: DEPTH.trim });
-      // inner corners: where a wall rises out of the floor beside this cell
-      if (airU && isMass(glyphAt(grid, c - 1, r - 1))) {
+      // inner corners: where a wall rises out of the floor beside this cell.
+      // glyphAt reports OUTSIDE the grid as solid, so the diagonal probe has to
+      // be bounds-checked or every ground run grows a phantom corner against
+      // the world edge (seen in the p1 browser proof before this guard).
+      const inGrid = (cc: number, rr: number): boolean => cc >= 0 && cc < w && rr >= 0 && rr < h;
+      if (airU && inGrid(c - 1, r - 1) && isMass(glyphAt(grid, c - 1, r - 1))) {
         out.push({ kind: "inCornerL", stem: kit.inCornerL, c, r, x, y: y - CORNER + EDGE_OUT, w: CORNER, h: CORNER, depth: DEPTH.trim });
       }
-      if (airU && isMass(glyphAt(grid, c + 1, r - 1))) {
+      if (airU && inGrid(c + 1, r - 1) && isMass(glyphAt(grid, c + 1, r - 1))) {
         out.push({ kind: "inCornerR", stem: kit.inCornerR, c, r, x: x + TILE - CORNER, y: y - CORNER + EDGE_OUT, w: CORNER, h: CORNER, depth: DEPTH.trim });
       }
     }

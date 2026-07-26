@@ -6,7 +6,7 @@
 // verified by arithmetic over the plan, not by sampling the screen.
 import { describe, expect, it } from "vitest";
 import { CH01_COMPOSITION, type MassKit, compositionFor, compositionStems } from "./composition.ts";
-import { coverFit, coversAxis, planLayers, planeCovers, travelBox } from "./layers.ts";
+import { K_X, K_Y, coverFit, coversAxis, planLayers, planeCovers, travelBox, visibleWindow } from "./layers.ts";
 import { CRUST_H, CRUST_LIP, MAX_PLATFORM_CELLS, floatingPlatformRuns, nakedFills, planMass, slideRuns } from "./mass.ts";
 import { letterGlyphs } from "./letters.ts";
 import { LOGICAL_H, LOGICAL_W, TILE } from "./paint.ts";
@@ -33,20 +33,29 @@ const kit: MassKit = {
 const src512 = (): { w: number; h: number } => ({ w: 512, h: 512 });
 
 describe("cover-fit (doc 36 §3) — the p4 cream-void law", () => {
-  it("covers the camera's travel box at BOTH extremes", () => {
+  it("models the RENDERER's parallax window, not an invented one", () => {
+    // measured in the browser on p1: camX 0 → Phaser scrollX −352, so the far
+    // shell at 0.25 sees [264, 616] — NOT [0, 352]. A model that assumes the
+    // naive window passes its own audit while the page shows through.
+    expect(K_X).toBe(LOGICAL_W); // RENDER_SCALE 3
+    expect(visibleWindow(0, 0.25, LOGICAL_W, K_X)).toEqual({ lo: 264, hi: 616 });
+    expect(visibleWindow(0, 1, LOGICAL_W, K_X)).toEqual({ lo: 0, hi: LOGICAL_W });
+  });
+
+  it("covers the camera's window at BOTH extremes", () => {
     // p4's shape: 36 tiles wide, 20 tall — the level that showed the void
     const worldW = 36 * TILE;
     const worldH = 20 * TILE;
     const box = coverFit({ w: 2048, h: 1152 }, worldW, worldH, 0.12, 0.06);
     const { maxCamX, maxCamY } = travelBox(worldW, worldH);
-    expect(coversAxis(box.x, box.x + box.w, 0.12, LOGICAL_W, maxCamX)).toBe(true);
-    expect(coversAxis(box.y, box.y + box.h, 0.06, LOGICAL_H, maxCamY)).toBe(true);
+    expect(coversAxis(box.x, box.x + box.w, 0.12, LOGICAL_W, maxCamX, K_X)).toBe(true);
+    expect(coversAxis(box.y, box.y + box.h, 0.06, LOGICAL_H, maxCamY, K_Y)).toBe(true);
   });
 
-  it("anchors on the world floor, never letterboxed above it", () => {
+  it("anchors on the bottom and reaches at least the world floor", () => {
     const worldH = 20 * TILE;
     const box = coverFit({ w: 2048, h: 1152 }, 36 * TILE, worldH, 0.12, 0.06);
-    expect(box.y + box.h).toBeCloseTo(worldH, 5);
+    expect(box.y + box.h).toBeGreaterThanOrEqual(worldH);
     expect(box.y).toBeLessThanOrEqual(0);
   });
 
@@ -57,10 +66,10 @@ describe("cover-fit (doc 36 §3) — the p4 cream-void law", () => {
       const worldW = cols * TILE;
       const worldH = rows * TILE;
       const { maxCamX, maxCamY } = travelBox(worldW, worldH);
-      for (const p of [0.05, 0.12, 0.25, 0.5]) {
+      for (const p of [0.05, 0.12, 0.25, 0.5, 1.2]) {
         const box = coverFit({ w: 2048, h: 1152 }, worldW, worldH, p, p / 2);
-        expect(coversAxis(box.x, box.x + box.w, p, LOGICAL_W, maxCamX), `${cols}×${rows} @${p} x`).toBe(true);
-        expect(coversAxis(box.y, box.y + box.h, p / 2, LOGICAL_H, maxCamY), `${cols}×${rows} @${p} y`).toBe(true);
+        expect(coversAxis(box.x, box.x + box.w, p, LOGICAL_W, maxCamX, K_X), `${cols}×${rows} @${p} x`).toBe(true);
+        expect(coversAxis(box.y, box.y + box.h, p / 2, LOGICAL_H, maxCamY, K_Y), `${cols}×${rows} @${p} y`).toBe(true);
       }
     }
   });
@@ -68,7 +77,7 @@ describe("cover-fit (doc 36 §3) — the p4 cream-void law", () => {
   it("scales UP a source too small to cover, never letterboxes it", () => {
     const box = coverFit({ w: 320, h: 180 }, 64 * TILE, 22 * TILE, 0.25, 0.12);
     expect(box.w).toBeGreaterThan(320);
-    expect(coversAxis(box.x, box.x + box.w, 0.25, LOGICAL_W, travelBox(64 * TILE, 22 * TILE).maxCamX)).toBe(true);
+    expect(coversAxis(box.x, box.x + box.w, 0.25, LOGICAL_W, travelBox(64 * TILE, 22 * TILE).maxCamX, K_X)).toBe(true);
   });
 });
 
@@ -188,6 +197,11 @@ describe("the carved mass (doc 36 §2)", () => {
     const p = planMass(grid, kit);
     expect(p.some((q) => q.kind === "cornerBR" && q.r === 6)).toBe(false);
     expect(p.some((q) => q.kind === "edgeL" && q.c === 0)).toBe(false);
+    // the browser caught this one: glyphAt() calls outside-the-grid SOLID, so
+    // an unguarded diagonal probe grew a phantom inner corner on every ground
+    // run that starts at column 0
+    expect(p.some((q) => q.kind === "inCornerL" && q.c === 0)).toBe(false);
+    expect(p.some((q) => q.kind === "inCornerR" && q.c === 19)).toBe(false);
   });
 
   it("draws a floating platform as ONE complete object, never crust-on-fill", () => {
