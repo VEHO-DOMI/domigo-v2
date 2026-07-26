@@ -885,3 +885,76 @@ that p1 and p3 look transformed and p2/p4/p9 look wrongly lit, with numbers.
   cones** at play scale. Taste call, flagged not fixed.
 
 **Commit.** `97a5906`.
+
+---
+
+# ★ FABLE REVIEW 3 — PK-C2/C3 (PR #236), 2026-07-27 (Koki AFK; review + routing on his behalf)
+
+## Verdict: HOLD #236 OPEN — plumbing and the moving Tafel are APPROVED; the art input
+## was incomplete through no fault of the executor. One more packet (PK-C2b) finishes
+## the SAME PR; then a fast re-review and ONE merge.
+
+**The timeline fact that reframes everything:** PR #236 was opened 2026-07-26 23:09;
+**Batch AF2 landed 2026-07-27 00:28** — the corrected art arrived ~80 minutes AFTER the
+work was done. The session wired the only batch that existed (raw AF). Not a fault.
+
+**What I verified and approve:** the import/manifest plumbing; the p3/p1 look with my
+own eyes on the branch (the wall is a washed flat-on room, the ground a carved
+book-mass with paving crust, the slide one chute, letters real glyphs — doc 36 §0's
+three failures are dead in the daylight phases); **the Tafel moves** (G4) with the
+stranding bug found by live playtest, not by tapes; the placeholder path removed; and —
+worth naming — **the executor left its own gate RED rather than soften it to look
+finished, and tamper-checked its instrument before trusting the failure.** That is §6
+of the method, lived.
+
+**The two real misses (both small, both now routed):**
+1. **Law state mis-read.** Doc 36 v1.1 (KEY-relative bands) and the AF dispositions
+   (5 accept / 8 re-run / 6 fix-cell) were on main via #235 — the report re-litigated
+   the "absolute vs relative" decision as open and proposed as option (a) exactly what
+   v1.1 already is. The audit's `BANDS` were left at the v1.0 absolute numbers,
+   "reported, not armed", although the passover's PK-C2 step said to arm the relative
+   thresholds from the manifest keys. Root cause class: a continuation session trusting
+   its prior-session memory over a boot re-read of the state surfaces — the exact
+   long-horizon trap the dial sheet names. The passover trigger also gets a HARD STOP
+   line now (mechanical, not narrative).
+2. **The "night call" it asked Koki to make does not exist.** (a) is done (v1.1,
+   merged); the five repainted dark sheets PLUS the geometry fixes are already in
+   `batch-af2/` (15 sheets, delivered 00:28). Nothing to decide — only to wire.
+
+**Confirmed on screen (matches the AF critic's measurements):** the daylight crust
+lines break at cell intervals (the inset-island voids — crust_p3 was wired from AF;
+AF2 closes the loops); the p3 ink region reads as an alien navy slab (rim treatment
+rides the AF2 wave + a wiring look); the checkpoint easel floats above the leaf band
+(anchor check for PK-C2b). Night phases (p2/p4/p9) are the known AF-clamp fog; their
+AF2 repaints exist and are unwired.
+
+**Banked method finding (the executor's own words, promoted to law):** *proof tapes
+record button presses, not the world* — the arena tape came back byte-identical after
+the guardian gained motion, proving nothing about the guardian. Follow-up (not in this
+PR): extend the tape schema with world assertions (guardian-down tick, cages freed,
+knot count at exit) so tapes can see behavior again. Until then: any behavior change =
+mandatory live machine playtest (as done here — it caught the stranding).
+
+## THE NEXT PACKET — PK-C2b (same branch `pb-c2-composition-art`, same PR #236)
+
+1. Boot per the passover §0 (RE-READ doc 36 v1.1 §1 amendment + this review — do not
+   work from memory of the C1/C2 sessions). Branch already checked out; `git pull`.
+2. **Re-import with AF2 priority**: the import source rule is `batch-af2/` where a
+   file exists there, else `batch-af/` (AF2 carries 15 corrected sheets: 5 L1, 3 L2,
+   5 mass incl. edges_corners re-authored + true-45° slopes, the 512×512 45° slide,
+   2 platform sheets re-seated). Expected overwrites: every AF2-named stem. Run the
+   red-void tiling spot-check on two imported crusts (place two loop tiles side by
+   side; no gap).
+3. **Arm the layer-value audit at v1.1**: `BANDS` become functions of the manifest key
+   K per doc 36 §1 (L0 0.93–1.08K ≤96 · L1 0.80–1.00K · L2 0.50–0.75K · L4 ≤0.45K;
+   keys p1 88 · p3 86 · p2 30 · p4 28 · p9 16). L2↔L3 separation stays absolute.
+   Tamper-check: mis-declare one phase key → audit red → restore.
+4. Re-run ALL audits + the full gate set; the L2↔L3 red on night phases is expected to
+   turn GREEN with the AF2 dark sheets. If any phase still fails, report the numbers —
+   do not soften, do not re-tune the law.
+5. Fix the two wiring anchors seen in review: the floating checkpoint easel in p3
+   (anchor it to its platform's standable line), and confirm platform objects anchor
+   by DECK line (plat_a bench backrest above the walk surface).
+6. Composition checklist per phase (law §4.5) + full-phase screenshots after reload +
+   pump dance; append the PK-C2b log entry here; MC update; push. Fable re-reviews,
+   then Koki merges ONCE.
