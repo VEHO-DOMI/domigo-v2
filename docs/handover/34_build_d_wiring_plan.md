@@ -10,6 +10,63 @@
 
 ---
 
+## 0a · AMENDMENTS (2026-07-26, Fable — binding; they override the text below where they conflict)
+
+Execution model: this plan is executed by **Opus 5** in its own session as three packets +
+closeout — **PK-1 = W1** (also the dial-sheet calibration probe) · **PK-2 = W2+W3+W4** (one
+owner of `PaintScene.ts` — the three edits share the file, so they ship as one packet) ·
+**PK-3 = W5+W6** · **W7 = gates + ONE Build-D PR**. The governing brief is the frozen passover
+in `PLATFORM MASTER/SESSION-PROMPTS/PASSOVER_PB_BUILD_D_2026-07-26.md`; the running log is
+doc 35. Amendments:
+
+- **A-1 (resolves §2's vocab ⚠).** The 43-card set (`ch01.tasks.v2.json`) uses ONLY
+  `entity` (33) and `text` (10) stimuli — **no card uses `type:"image"` today** (verified by
+  jq over the live file, 2026-07-26). Per this section's own rule the 12 vocab cells are
+  therefore **placeable-prop stems**; the §2 `obj_*` names are FINAL as written. No alignment
+  step remains.
+- **A-2 (corrects W1's CHECK).** Do **NOT** add deferred prop/decor stems to
+  `scripts/paint-art-allowlist.json` — the checker FAILS allowlist entries that nothing
+  references ("needed by nothing"), so following the old W1 text breaks the gate it protects.
+  Instead: import deferred cells as correctly-named PNGs (present-but-unrequired is legal;
+  the manifest auto-scans) OR skip them and list every skipped cell in the packet report.
+  The only allowlist change in W1 is REMOVING `satchelswing_a` / `ruler_a`.
+- **A-3 (authorizes the W6 macro extension).** The recorder's macro vocabulary has no
+  "board a moving platform" primitive. PK-3 MAY extend `scripts/record-paint-tape.mjs` with a
+  closed-loop wait op that reads the sim's entity positions (e.g. wait-until-platform-at) —
+  preferred over brittle tick-count `wait`s. Determinism law unchanged (no wall-clock, no
+  randomness; record==replay must stay green).
+- **A-4 (§3.1 side-study).** While inside `entStateCell`, PK-2 STUDIES AND REPORTS (does not
+  implement) how the arena guardian machine's states map onto `tafel_roll/windup/stagger/win`
+  — 1:1, or does the hook need an extension? The report lands in doc 35; PK-3 wires content-side.
+- **A-5 (scopes §5's prologue/name-console).** Prologue triptych + name-console plumbing are
+  **OUT of Build-D** — a follow-up PR after Koki's replay. Import their stems in W1 (they are
+  cheap PNGs); wire nothing. Keeps the one-PR replay gate scoped.
+- **A-6 (§3.4 ownership) — DECIDED 2026-07-26, option (c), ALREADY IMPLEMENTED.** Fable
+  prototyped the slippery slide in-browser and committed it on this branch: new glyph **`z`**
+  (slippery 45°-down slope; legality in `level.ts`, slope membership + surface in
+  `collide.ts`, control in `player.ts`: the slide OWNS grounded control while
+  `onSlide && dirInput >= 0` — push toward **SLIDE_MAX 6 px/t** at **SLIDE_RAMP 48 subs/tick**;
+  holding back brakes to a full stop ON the slide; jumps work and carry momentum into the air
+  — capture modality 15's "slope additive, not friction", scaled to our constants). Proven:
+  browser traces (ramp 2.25→6.0, brake to 0, jump at 4.5 keeping 4.69 airborne),
+  `slide.test.ts` (3 tests incl. a `\` tamper control), all 214 game-paint tests green,
+  p3 grids-v2 re-verified vs the real `checkLevelLaws` with the 6 slide cells as `z`
+  ("Law failures: NONE"). **PK-2/PK-3 consequences:** the engine part is DONE — do not
+  re-implement; PK-3 splices the (already-z-patched) grids and wires `strip_ice_loop`
+  (= kit_p3_air[0], the blackboard-slide art) onto `z` runs in the renderer (same placement
+  path as `~`); the p3 proof tape must ride the slide (expect ~6 px/t on the descent).
+
+- **A-7 (purpose-law audit fix).** The chapter-wide traceability audit (2026-07-26) found
+  exactly ONE entity without a dossier purpose row: `p1-swarm` (moths in p1 — the Koki-gated
+  p1 dossier stages twelve purposes, none of them a swarm; the moths' staged DEBUT is p2, where
+  the dossier names them seven times). Resolution per the purpose law: **`p1-swarm` removed
+  from grids-v2** (p1.json + assembled; laws re-verified NONE-failures). Every other entity in
+  every phase traces to its dossier row; all 43 cards route to the five `use` pools that the
+  game requests (quickfire 14 · encounter 10 · door 8 · rescue 5 · boss 6); the only art
+  stems missing for the cast are `satchelswing_a`/`ruler_a`, which W1 imports.
+
+---
+
 ## 0 · STATE SNAPSHOT (ground truth at checkpoint)
 
 - **Branch `pb-d2-grids`** (pushed). Contains: the 5 verified phase grids staged under

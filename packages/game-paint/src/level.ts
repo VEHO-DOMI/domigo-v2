@@ -13,7 +13,7 @@ import { platformPathAt } from "./entities.ts";
 export const LEVEL_SCHEMA = "paintLevel@1";
 
 // Geometry + marker glyphs (doc 31 §5). Anything with params is an ENTITY.
-const LEGAL_GLYPHS = new Set([".", "#", "=", "/", "\\", "1", "2", "3", "4", "~", "^", "w", "V", "s", "U", "o", "*", "S", "C", "X", "B"]);
+const LEGAL_GLYPHS = new Set([".", "#", "=", "/", "\\", "1", "2", "3", "4", "~", "^", "w", "V", "s", "U", "o", "*", "S", "C", "X", "B", "z"]);
 
 export type EntityRole =
   | "chaser" | "gunner" | "flyer" | "bouncer" | "crusher" | "swarm"

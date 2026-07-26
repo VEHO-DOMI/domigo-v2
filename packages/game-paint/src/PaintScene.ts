@@ -140,6 +140,7 @@ export class PaintScene extends Phaser.Scene {
   /** The harness + HUD read through this (never Phaser internals). */
   getState(): {
     x: number; y: number; vx: number; vy: number; pose: string; grounded: boolean;
+    onSlide: boolean;
     phase: string; letters: number; hovering: boolean; overlay: boolean;
     knots: number; guardianDown: boolean; bonusLeft: number;
     entities: Array<{ id: string; role: string; state: string; redeemed: boolean; x: number; y: number }>;
@@ -153,6 +154,7 @@ export class PaintScene extends Phaser.Scene {
       vy: this.player.vy,
       pose: this.player.pose,
       grounded: this.player.grounded,
+      onSlide: this.player.onSlide, // D1 spike visibility
       phase: this.cfg.phaseId,
       letters: this.lettersGot,
       hovering: this.player.hovering,
