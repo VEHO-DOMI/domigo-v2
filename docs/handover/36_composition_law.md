@@ -32,13 +32,30 @@ phases. The three failures, named:
 The reference stack (our own study, VL 1.1): a painted world is planes of
 world-scaled architecture separated by a value ramp, never one backdrop image.
 
-| Plane | Content | Scale law | Value band (of pure white) | Sat cap | Parallax |
+> **v1.1 AMENDMENT (2026-07-26, Fable — resolves the PK-C1 escalation).** The v1.0 value
+> bands below were ABSOLUTE numbers calibrated on the daylight phases — a contradiction
+> for the commissioned night/dusk/ink rooms (a night sky cannot sit at 82 % lightness;
+> the executor was right to refuse to arm them). The bands are now **RELATIVE to the
+> phase's declared KEY (K)** — the luminance of the phase's air, stated in its
+> composition manifest. The multiplicative form reproduces v1.0 exactly at the daylight
+> key and compresses naturally for dark rooms:
+>
+> **L0 ∈ [0.93·K, min(1.08·K, 96 %)] · L1 ∈ [0.80·K, 1.00·K] · L2 ∈ [0.50·K, 0.75·K] ·
+> L4 ≤ 0.45·K · L3 exempt from K (always full range — lit figures against a dark room
+> are the point).** Check at K=88 %: L0 82–95, L1 70–88, L2 44–66, L4 ≤40 — v1.0's
+> numbers exactly. **ch01 keys: p1 K=88 · p3 K=86 · p2 K=30 · p4 K=28 · p9 K=16.**
+> Saturation caps stay absolute as tabled. Separation laws: **L2↔L3 stays ABSOLUTE**
+> (≥12 % luminance or ≥25 % saturation — readability never scales down); L1↔L2 gap
+> becomes relative (≥0.10·K — atmospheric dark phases may separate by silhouette).
+> The §4 layer-value audit arms THESE bands, computed from the manifest's K.
+
+| Plane | Content | Scale law | Value band (v1.1: relative to K) | Sat cap | Parallax |
 |---|---|---|---|---|---|
-| **L0 AIR** | a soft vertical wash (2–3 colors per phase: the room's light) | — | 82–95 % | ≤ 20 % | 0.05 |
-| **L1 FAR SHELL** | the room's architecture: wall fields, windows, door frames, high shelf lines — REPEATABLE segments + one anchor motif per phase | elements 3–6 H* | 70–88 % | ≤ 35 % | 0.25 |
-| **L2 MID FURNITURE** | simplified furniture/prop silhouettes (lockers, desks, yard rails) — shape-first, minimal interior detail, NO black outlines, soft top rim-light | 1.5–3 H | 45–65 % | ≤ 50 % | 0.5 |
-| **L3 PLAY** | terrain masses (§2), entities, interactive props — the ONLY full-contrast plane, crisp STYLE_PAINT_V1 outlines | 1 H reference | full range | full | 1.0 |
-| **L4 FOREGROUND** | sparse occluders: plant fringes, beam shadows, lamp chains | 0.5–2 H | 15–40 % | ≤ 45 % | 1.15–1.3 |
+| **L0 AIR** | a soft vertical wash (2–3 colors per phase: the room's light) | — | 0.93–1.08 · K (≤96 %) | ≤ 20 % | 0.05 |
+| **L1 FAR SHELL** | the room's architecture: wall fields, windows, door frames, high shelf lines — REPEATABLE segments + one anchor motif per phase | elements 3–6 H* | 0.80–1.00 · K | ≤ 35 % | 0.25 |
+| **L2 MID FURNITURE** | simplified furniture/prop silhouettes (lockers, desks, yard rails) — shape-first, minimal interior detail, NO black outlines, soft top rim-light | 1.5–3 H | 0.50–0.75 · K | ≤ 50 % | 0.5 |
+| **L3 PLAY** | terrain masses (§2), entities, interactive props — the ONLY full-contrast plane, crisp STYLE_PAINT_V1 outlines | 1 H reference | full range (K-exempt) | full | 1.0 |
+| **L4 FOREGROUND** | sparse occluders: plant fringes, beam shadows, lamp chains | 0.5–2 H | ≤ 0.45 · K | ≤ 45 % | 1.15–1.3 |
 
 *H = one player height. Every commissioned piece states its size in H.*
 
