@@ -631,3 +631,83 @@ magenta trim floating at the left edge of p1. Bounds-checked; regression test ad
   A→Z. Filling `words` needs a grid re-lay, which is content, not wiring.
 
 **Commits.** `5325b56` the composition engine · `fb3fe0e` the two browser-caught defects.
+
+---
+
+# ★ FABLE REVIEW 2 — PB-C1 (PR #235) + Batch AF, 2026-07-26
+
+## PR #235 — VERDICT: APPROVE (merge after the v1.1 law commit riding on this branch)
+
+Re-verified independently: 255/255 tests · tsc both packages · check-paint-art (106
+required / 205 on disk) · **check-composition: 4 audits green** and — the tamper test —
+removing one placeholder plane piece turns it RED loudly ("art missing — cannot
+measure"), restore → green · **sim files untouched** (diff vs main: zero sim-path
+files) · **tapes byte-identical to main** (the "logic untouched" claim machine-proven)
+· scope scan of all 64 files: nothing outside the expected areas. Browser (own eyes,
+placeholder mode): the p3 slide is ONE continuous ramp with distinct letter glyphs
+B/C/D/E on the trail; the arena's far-right camera stop shows planes to the very edge
+(the cream void is dead); five planes visibly separate even in flat tones.
+The self-caught camera-model defect (a checker inventing its own arithmetic model
+confirms its own fiction) is a lesson worth keeping — the fix (derive audit maths from
+the game's own numbers) is the right class.
+
+**The escalated contradiction was REAL and is RESOLVED as doc 36 v1.1** (committed on
+this branch, `24275c8`): value bands are now MULTIPLICATIVE in the phase's declared key
+K (daylight numbers reproduce exactly; night rooms lawful; the L2↔L3 separation law
+stays absolute). PK-C2 arms the audit's relative thresholds from the manifest keys:
+p1 88 · p3 86 · p2 30 · p4 28 · p9 16.
+
+## Batch AF (19 sheets) — machine audit + Fable eye pass
+
+Machine audit (`~/Code/codex-art-lab/audit-batch-af.py`): **14/19 clean.** All five
+findings are the SAME class — the dark phases painted bright (l1_p2 L71 % vs band
+24–30 · l1_p4 L70 % vs 22–28 · l1_p9 L82 % vs 13–16 · l2_p2 L36 % vs 15–22 · l2_p4
+L37 % + S57 % vs 14–21/≤50): the pre-v1.1 contradiction made pixels, not a craft
+failure. Eye pass highlights: `mass_body` = the carved-book law exactly (strata, fade,
+ink sediment — the soil is dead); `plat_a` = complete objects with drawn undersides and
+brackets; `l1_p1_hall` = correct washed atmosphere, flat-on window (blue coat a touch
+saturated — minor). **One BLOCKER that is a Fable spec error, not a Codex error:** the
+slide sheet's modules were commissioned at 1024×512 — a full-width diagonal in a 2:1
+box is ~27°, and the level's `z` diagonal is 45°; the painted modules cannot tile along
+it. Also two floating chalk-dust puffs (minor halos).
+
+**FINAL DISPOSITIONS (machine + Fable eyes + adversarial critic, reconciled):
+ACCEPT 5 · RE-RUN 8 · FIX-CELL 6** — all corrections commissioned as
+`CODEX_MASTER_PROMPT_AF2_FIXES.md` (15 sheets into `batch-af2/`, which SUPERSEDES
+same-named AF files; the 5 accepted anchors: l1_p3*, l2_p1, l2_p3*, mass_body,
+crust_p1 — *conditional fixes ride in AF2 as light re-runs).
+
+The adversarial critic's pass (full table:
+scratchpad study/af-critic-review.md, 19/19 sheets) caught four classes my machine
+audit could not see — each now encoded in AF2's global laws:
+1. **Tiles painted as inset portraits** (4 of 5 crusts + all edges/corners: 9–26 px
+   key margins → a hole in the floor every cell; seam checkers see pure-key columns
+   as "equal"). AF2 law 2 + the red-background tiling self-check.
+2. **The clamp root cause**: Codex applied the value bands as HISTOGRAM CLAMPS, not
+   mean targets (every L1 hard-clamped to [70.0, 87.8] — even the passing daylight
+   sheets lost their wainscot/hook-rail legibility; l1_p4's range crushed to 20 levels
+   = unrecoverable). AF2 law 1 ("bands are MEAN targets, paint real contrast around
+   them"); the old prompt's group headers are de-poisoned and the file marked
+   superseded.
+3. **Stretch-smear seam gutters** on all five L1 sheets (8–71 px blurred scars
+   repeating every 1024 px). AF2 law 3 (painted continuity).
+4. **Angle mismatches**: slide 29°, slope cells 36° vs the game's 45° — partly MY
+   commission bug (1024×512 modules cannot hold 45°); AF2 groups C/D fix the spec
+   (square modules, true-45 slope cells, edges re-authored as stackable tiles in a
+   neutral parchment register).
+Also resolved: three affordance hits were MY commissioned content (drainpipe, climbing
+dome, p4 shelf courses) — quarantine mitigations now explicit in AF2; l2_p2's
+near-white globe ring (machine-invisible value spike) removed; l2_p4 repainted in the
+house medium (the one style-alien sheet). Positive: zero soil/earth anywhere in the
+batch; mass_body + crust_p1 + plat undersides = the law fulfilled.
+
+## Wiring notes for PK-C2 (read before importing)
+
+- **Platform anchoring:** `plat_a`'s bench has a backrest ABOVE the walk deck — the
+  renderer must anchor platform sprites by their STANDABLE LINE (deck), not the sprite
+  top. Add per-object anchor offsets to the import metadata; verify by standing the
+  player on every platform object in the browser.
+- The slide's under-strut is a wooden apparatus (accepted design): slide modules sit ON
+  body-mass; the strut mediates. Place struts under every mid module.
+- Group-4 file is `slide/chalk_slide.png` (the AF prompt forgot to name it — Codex's
+  choice adopted; AF2 keeps it).
