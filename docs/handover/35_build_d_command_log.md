@@ -470,3 +470,244 @@ engine passover: `PLATFORM MASTER/SESSION-PROMPTS/PASSOVER_PB_COMPOSITION_2026-0
 · art commission: `~/Code/codex-art-lab/CODEX_MASTER_PROMPT_AF_COMPOSITION.md`.
 Koki's replay gate MOVES to after the rework (playing the current look would only
 re-confirm the screenshots).
+
+---
+
+# ★ PK-C1 · THE COMPOSITION ENGINE (doc 36 §1–§4) — DONE
+
+**Branch `pb-c1-composition`, two commits, art-independent.** The governing brief is
+`PLATFORM MASTER/SESSION-PROMPTS/PASSOVER_PB_COMPOSITION_2026-07-26.md`; the law is
+[doc 36](36_composition_law.md). Build-D (#234) merged first as the mechanical
+foundation (`e4aa356`), exactly as the passover requires.
+
+## What was built
+
+**1 · The layer compositor (§1).** The plate+band backdrop is replaced by five planes:
+L0 air (an engine-drawn 3-stop wash, parallax 0.05) · L1 far shell (tiling segments,
+0.25) · L2 mid furniture (0.5) · L3 play (the existing world, 1.0) · L4 foreground
+(1.2, now drawn IN FRONT of the player at depth 12, where the pre-C1 "near" band sat
+at depth 0 *behind* the terrain). Driven by a per-phase **composition manifest**.
+
+**The manifest location — decided, and why.** A sidecar TS map
+(`packages/game-paint/src/composition.ts`), NOT a level-schema block. The live level
+JSON is kept deep-equal to `docs/design/g1/paint/grids-v2/` ("edit the grid,
+re-splice"), so art direction there would have to be authored twice and zod-typed a
+third time, for data no level law reads. TS also buys types, headless unit tests, and
+CI importability — `check-paint-art.mjs` now imports it, so **a phase's composition
+DEMANDS its own art** (required stems 54 → 106).
+
+**2 · The mass renderer (§2).** `mass.ts` plans crust runs with **flush** end caps,
+edge trims, outer/inner corners, seamless body → fade → sediment by depth, drawn ramp
+masses, the `z` slide as ONE chute, and floating platforms (≤4 cells, air above and
+below) as **complete objects** covered widest-first from a palette — never stretched,
+never crust-on-fill. The pre-C1 strip path survives untouched as the no-kit fallback,
+and a phase whose kit art has not landed falls back to it automatically.
+
+**3 · The placeholder kit.** `scripts/gen-placeholder-kit.mjs` emits **53 labelled
+flat-tone PNGs** (235 KB total, byte-deterministic — `--check` re-verifies) at the
+EXACT Batch-AF geometry contract (1024×1260 L1 segments, 2048×384 keyed bands, 512
+mass cells, 1024×512 slide modules), each stamped with its own stem name and the word
+PLACEHOLDER. Two properties beyond "coloured boxes": a screenshot answers "is the cap
+flush?" by *reading the picture*, and every piece is generated **at its law-mandated
+value band**, which is what let the audits arm for real instead of waiting for paint.
+
+**4 · Cover-fit (§3)** — see the defect section; **5 · letter glyphs (§3)**:
+`prop_letter` is a painted capital **A**, so it could only ever spell A. Retired from
+the letter face (and from `GLYPH_STEMS`); the engine now draws the real character into
+a per-character canvas texture in that stem's key (warm gold gradient, amber contour,
+soft shadow). Characters come from the manifest's `words`, else a deterministic A→Z
+walk in traversal order.
+
+**6 · The four audits** — `scripts/check-composition.mjs`, one command, four named
+audits, **each seen RED by deliberate tamper before being trusted**:
+
+| audit | tamper | result |
+|---|---|---|
+| layer-value (ramp) | point p1's L1 at an L2-band piece | **exit 1** — "no depth ramp — L1 (54.4%) must be lifted above L2 (54.4%)" |
+| layer-value (separation) | point L2 at the mass body | **exit 1** — "separation 1.6% lum / 0.1% sat — the law needs ≥12% or ≥25%" |
+| coverage | shrink L1's height to 40 px | **exit 1** — "does NOT cover the camera travel box" |
+| no-naked-fill | make the planner skip the fade band | **exit 1** — "62 solid cell(s) with NO mass covering them, first at (0,21)" |
+| glyph | give p1 `words: ["A"]` | **exit 1** — "all 8 letters render the SAME character" |
+| art gate: placeholder deadline | set `PLACEHOLDER_UNTIL` to a past date | **exit 1** — "53 PLACEHOLDER stems are still wired" |
+| art gate: composition stem | delete `ph_slide_mid.png` | **exit 1** — "missing stem … needed by ch01.level.json p3 composition" |
+
+All restored; `git diff --stat` clean after every tamper.
+
+**Why the audits measure SOURCE PIXELS and PLAN ARITHMETIC, never a canvas.** PK-2
+banked it: a WebGL canvas without `preserveDrawingBuffer` reads back all-black, so
+canvas sampling yields confident false negatives. Composition/mass/letters are pure
+planners; the scene only places what they return. That is also what made the tampers
+meaningful.
+
+## ★ Two defects the BROWSER caught — one of which every audit was blind to
+
+**D-1 · the parallax window was modelled wrong, and the audit was green anyway.**
+The first p1 screenshot showed the far shell stopping at 87.5 % of the viewport with a
+cream strip beyond it — while coverage was green. Cause: `PaintScene.render` points
+the camera with `centerOn()`, and Phaser's `centerOn` divides by the camera's **pixel**
+width (1056) while `scrollX` is in **world** units; under zoom 3 that leaves a constant
+offset, `scrollX = camX − 352`. Measured live: camX 0 → scrollX −352 → the 0.25 plane's
+window is **[264, 616], not [0, 352]**. So the requirement is not `view + maxCam·p`;
+it is `(maxCam − K)·p + K + view` with `K = LOGICAL_W·(RENDER_SCALE−1)/2`. L1 spanned
+572 px where it needed 784. Fixed by deriving the window from the scene's own constants
+(`K_X`/`K_Y`, `visibleWindow`, `coverBox`) and sizing the far shell by the cover law
+itself; L1 now spans 1064 px, and `visibleWindow(0, 0.25) === [264, 616]` is pinned by
+test. **This is the lesson worth keeping: a pure-geometry audit that invents its own
+model of the renderer will certify its own fiction (P-18 again, one layer down).**
+
+**D-2 · phantom inner corners at the world edge.** `glyphAt()` reports outside-the-grid
+as SOLID, so the inner-corner probe fired on every ground run starting at column 0 — a
+magenta trim floating at the left edge of p1. Bounds-checked; regression test added.
+
+## Gates (unpiped, real exit codes, final tree)
+
+| # | command | exit |
+|---|---|---|
+| 1 | `pnpm --filter @domigo/game-paint exec vitest run` | **0** — **255 passed** (224 + 31 new) |
+| 2 | `pnpm --filter @domigo/game-paint exec tsc --noEmit` | **0** |
+| 3 | `pnpm --filter web exec tsc --noEmit` | **0** |
+| 4 | `node scripts/check-story-grounding.mjs` | **0** |
+| 5 | `node scripts/check-design-sheets.mjs` | **0** |
+| 6 | `node scripts/check-paint-art.mjs` | **0** — 106 required stems (was 54) |
+| 7 | `node scripts/check-game-tasks.mjs` | **0** |
+| 8 | `pnpm --filter web build` | **0** |
+| 9 | `node scripts/check-game-bundle.mjs` | **0** — Phaser in **exactly 1 chunk, 310 KB gz** |
+| 10 | `node --experimental-strip-types scripts/record-paint-tape.mjs` | **0** — ALL GREEN, `git status content/` **empty** afterwards |
+| 11 | `node scripts/check-composition.mjs` (NEW) | **0** — 4 audits over 5 phases |
+| 12 | `node scripts/gen-placeholder-kit.mjs --check` (NEW) | **0** — 53 pieces byte-identical |
+
+**THE SIM DID NOT MOVE.** Gate 10 re-recorded all five tapes from scratch and
+`content/` came back clean — byte-identical proof file, same pilots, same masks.
+
+## Browser proof (nuked `.next`, reload + pump dance per phase, 0 console errors)
+
+- **p1** — five planes visible and value-ramped; crust course with caps; body/fade/
+  sediment mass below; complete platform objects; letters **A B C D** as distinct gold
+  characters. L1 span [0, 1064] ≥ the 784 required.
+- **p4 at camX = maxCamX (224)** — the exact F-6 condition. **Covered edge to edge; the
+  cream void is gone.** L1 window [320, 672] inside its [0, 703] span.
+- **p3** — the slide renders as **ONE unbroken 45° chute**: `slide_top` (160,240) →
+  `slide_mid` (192,272) → `slide_foot` (224,304), each 45 px long × 32 px thick (the
+  law's "2 cells wide") at rot 0.785 rad, over **6** under-struts. Not stepped blocks.
+- **p2** — furniture band with rim-light behind the play line, platform objects, A/B/C.
+- **p9** — **twelve letters D…K, all distinct**, every floating platform a complete
+  object with a drawn underside; no L2 band, which is A-8's stated design.
+
+## Honesty clause — what I did NOT verify, and what is NOT mine to judge
+
+- **Nothing here is painted art.** Every plane and every mass piece on screen is a
+  stamped placeholder. Whether the composition is *beautiful* is Fable's and Koki's
+  call; PK-C2 replaces the art and re-runs the §4.5 checklist against it.
+- **The absolute §1 value bands are printed, not armed** — see F-7 below. Armed
+  instead: the ramp direction and the L2↔L3 separation law, both key-independent.
+- **No human has played this.** The tapes prove the sim is unchanged, not that the new
+  look plays well.
+- The L4 foreground plane exists and is proven, but AF commissions **no L4 art**, so it
+  wears a generic fringe placeholder (F-9).
+
+## Findings — reported, not silently fixed
+
+- **F-7 · doc 36 §1's L0 band contradicts the AF palette card.** The law puts L0 AIR at
+  82–95 % lightness; the AF prompt commissions p2 as "deep blue-violet air", p4 as
+  "stage-dusk" and p9 as "indigo-black". Measured now: p1 90.4 % · p3 85.8 % (in band)
+  vs **p2 28.1 % · p4 26.5 % · p9 15.0 %**. No measure rescues a night room into that
+  band — the bands describe a day-lit key. **Codex is about to paint 19 sheets against
+  this law**, so it is worth resolving before the batch, not after. Recommendation:
+  restate §1's bands as offsets from each phase's own key, keeping the widths.
+- **F-8 · the mid/foreground bands anchor to the GRID BOTTOM, not the ground line.**
+  On tall phases (p3 is 26 rows) that parks the furniture band well below the play
+  surface. The manifest has a `lift` field; the honest fix is a per-phase horizon value
+  in PK-C2, once real bands exist to place.
+- **F-9 · Batch AF commissions no L4 art** (19 files: 5 L1 · 4 L2 · 7 mass · 1 slide ·
+  2 platform). The foreground plane is built and proven but has nothing to wear.
+- **F-10 · the AF prompt's group 4 names no FILE for the slide sheet**, and group 5's
+  "wall shelf … 1.5 cells centered in a 2-cell span" at cell index [2] of a 4-cell sheet
+  is ambiguous. Both need one line each before the batch is commissioned.
+- **F-11 · the ch01 letter trails were never laid out for the trail-word law.** The
+  design sheet says each breadcrumb run spells a real u01 word held at its end; the
+  live grids place p1 7+1 · p2 5+3 · p3 1+3+1+1+1 · p9 12 loose breadcrumbs, and no
+  `obj_*` vocab prop is placed at any trail's end. Only p2 happens to fit (RULER + PEN).
+  I did NOT invent words — the engine takes them from the manifest and falls back to
+  A→Z. Filling `words` needs a grid re-lay, which is content, not wiring.
+
+**Commits.** `5325b56` the composition engine · `fb3fe0e` the two browser-caught defects.
+
+---
+
+# ★ FABLE REVIEW 2 — PB-C1 (PR #235) + Batch AF, 2026-07-26
+
+## PR #235 — VERDICT: APPROVE (merge after the v1.1 law commit riding on this branch)
+
+Re-verified independently: 255/255 tests · tsc both packages · check-paint-art (106
+required / 205 on disk) · **check-composition: 4 audits green** and — the tamper test —
+removing one placeholder plane piece turns it RED loudly ("art missing — cannot
+measure"), restore → green · **sim files untouched** (diff vs main: zero sim-path
+files) · **tapes byte-identical to main** (the "logic untouched" claim machine-proven)
+· scope scan of all 64 files: nothing outside the expected areas. Browser (own eyes,
+placeholder mode): the p3 slide is ONE continuous ramp with distinct letter glyphs
+B/C/D/E on the trail; the arena's far-right camera stop shows planes to the very edge
+(the cream void is dead); five planes visibly separate even in flat tones.
+The self-caught camera-model defect (a checker inventing its own arithmetic model
+confirms its own fiction) is a lesson worth keeping — the fix (derive audit maths from
+the game's own numbers) is the right class.
+
+**The escalated contradiction was REAL and is RESOLVED as doc 36 v1.1** (committed on
+this branch, `24275c8`): value bands are now MULTIPLICATIVE in the phase's declared key
+K (daylight numbers reproduce exactly; night rooms lawful; the L2↔L3 separation law
+stays absolute). PK-C2 arms the audit's relative thresholds from the manifest keys:
+p1 88 · p3 86 · p2 30 · p4 28 · p9 16.
+
+## Batch AF (19 sheets) — machine audit + Fable eye pass
+
+Machine audit (`~/Code/codex-art-lab/audit-batch-af.py`): **14/19 clean.** All five
+findings are the SAME class — the dark phases painted bright (l1_p2 L71 % vs band
+24–30 · l1_p4 L70 % vs 22–28 · l1_p9 L82 % vs 13–16 · l2_p2 L36 % vs 15–22 · l2_p4
+L37 % + S57 % vs 14–21/≤50): the pre-v1.1 contradiction made pixels, not a craft
+failure. Eye pass highlights: `mass_body` = the carved-book law exactly (strata, fade,
+ink sediment — the soil is dead); `plat_a` = complete objects with drawn undersides and
+brackets; `l1_p1_hall` = correct washed atmosphere, flat-on window (blue coat a touch
+saturated — minor). **One BLOCKER that is a Fable spec error, not a Codex error:** the
+slide sheet's modules were commissioned at 1024×512 — a full-width diagonal in a 2:1
+box is ~27°, and the level's `z` diagonal is 45°; the painted modules cannot tile along
+it. Also two floating chalk-dust puffs (minor halos).
+
+**FINAL DISPOSITIONS (machine + Fable eyes + adversarial critic, reconciled):
+ACCEPT 5 · RE-RUN 8 · FIX-CELL 6** — all corrections commissioned as
+`CODEX_MASTER_PROMPT_AF2_FIXES.md` (15 sheets into `batch-af2/`, which SUPERSEDES
+same-named AF files; the 5 accepted anchors: l1_p3*, l2_p1, l2_p3*, mass_body,
+crust_p1 — *conditional fixes ride in AF2 as light re-runs).
+
+The adversarial critic's pass (full table:
+scratchpad study/af-critic-review.md, 19/19 sheets) caught four classes my machine
+audit could not see — each now encoded in AF2's global laws:
+1. **Tiles painted as inset portraits** (4 of 5 crusts + all edges/corners: 9–26 px
+   key margins → a hole in the floor every cell; seam checkers see pure-key columns
+   as "equal"). AF2 law 2 + the red-background tiling self-check.
+2. **The clamp root cause**: Codex applied the value bands as HISTOGRAM CLAMPS, not
+   mean targets (every L1 hard-clamped to [70.0, 87.8] — even the passing daylight
+   sheets lost their wainscot/hook-rail legibility; l1_p4's range crushed to 20 levels
+   = unrecoverable). AF2 law 1 ("bands are MEAN targets, paint real contrast around
+   them"); the old prompt's group headers are de-poisoned and the file marked
+   superseded.
+3. **Stretch-smear seam gutters** on all five L1 sheets (8–71 px blurred scars
+   repeating every 1024 px). AF2 law 3 (painted continuity).
+4. **Angle mismatches**: slide 29°, slope cells 36° vs the game's 45° — partly MY
+   commission bug (1024×512 modules cannot hold 45°); AF2 groups C/D fix the spec
+   (square modules, true-45 slope cells, edges re-authored as stackable tiles in a
+   neutral parchment register).
+Also resolved: three affordance hits were MY commissioned content (drainpipe, climbing
+dome, p4 shelf courses) — quarantine mitigations now explicit in AF2; l2_p2's
+near-white globe ring (machine-invisible value spike) removed; l2_p4 repainted in the
+house medium (the one style-alien sheet). Positive: zero soil/earth anywhere in the
+batch; mass_body + crust_p1 + plat undersides = the law fulfilled.
+
+## Wiring notes for PK-C2 (read before importing)
+
+- **Platform anchoring:** `plat_a`'s bench has a backrest ABOVE the walk deck — the
+  renderer must anchor platform sprites by their STANDABLE LINE (deck), not the sprite
+  top. Add per-object anchor offsets to the import metadata; verify by standing the
+  player on every platform object in the browser.
+- The slide's under-strut is a wooden apparatus (accepted design): slide modules sit ON
+  body-mass; the strut mediates. Place struts under every mid module.
+- Group-4 file is `slide/chalk_slide.png` (the AF prompt forgot to name it — Codex's
+  choice adopted; AF2 keeps it).
