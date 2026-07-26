@@ -1,13 +1,22 @@
 // THE PAINTED BOOK — the phase scene: a THIN renderer over the pure brains.
 // One instance renders ONE phase. All simulation runs on the fixed 60Hz
 // accumulator (never wall-clock); the rig compositor applies rig.ts poses to
-// the sliced parts; terrain is strips-over-tiles (painted strips along the
-// surface runs, warm fills beneath, procedural fallbacks when art is absent —
-// the only-present law). P-49 LAW: this scene NEVER starts/stops scenes —
-// phase handoffs go through the React shell's handoff() (PaintGame.tsx).
+// the sliced parts. P-49 LAW: this scene NEVER starts/stops scenes — phase
+// handoffs go through the React shell's handoff() (PaintGame.tsx).
+//
+// PB-C1 · COMPOSITION (doc 36). The backdrop is no longer one painting behind
+// the play space and terrain is no longer strips-over-fill: a phase with a
+// composition manifest renders FIVE PLANES (layers.ts) over a CARVED MASS
+// (mass.ts), both planned by pure functions this scene merely places. A phase
+// with no manifest — or whose kit art has not landed — renders exactly as it
+// did before (the fallback law), so nothing breaks while art is pending.
 
 import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
+import { type CompositionSpec, type MassKit, compositionFor } from "./composition.ts";
+import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
+import { type MassPiece, planMass } from "./mass.ts";
+import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { type PaintLevel, type PhaseSpec } from "./level.ts";
 import { LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
 import { type FistState } from "./fist.ts";
@@ -97,10 +106,13 @@ export class PaintScene extends Phaser.Scene {
   private letterImgs = new Map<string, Phaser.GameObjects.Image>();
   private ringImgs: Array<{ img: Phaser.GameObjects.Image; baseY: number }> = [];
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
+  /** PB-C1: this phase's art direction, or null ⇒ the pre-C1 render path. */
+  private comp: CompositionSpec | null;
 
   constructor(cfg: PaintSceneCfg) {
     super({ key: "paint" });
     this.cfg = cfg;
+    this.comp = compositionFor(cfg.level.chapter, cfg.phaseId);
     this.sim = new Sim({
       level: cfg.level,
       phaseId: cfg.phaseId,
@@ -435,25 +447,83 @@ export class PaintScene extends Phaser.Scene {
     g.destroy();
   }
 
+  /** Source pixel size of a stem, or null when the texture never loaded. */
+  private srcSize(stem: string): { w: number; h: number } | null {
+    const key = `pb-${stem}`;
+    if (!this.textures.exists(key)) return null;
+    const src = this.textures.get(key).getSourceImage() as HTMLImageElement;
+    return src.width > 0 && src.height > 0 ? { w: src.width, h: src.height } : null;
+  }
+
+  /** Place one planned plane piece (doc 36 §1). */
+  private placeLayerPiece(p: LayerPiece): void {
+    const pY = p.parallaxY;
+    if (p.kind === "wash") {
+      // L0 AIR: the room's light, engine-drawn — 2–3 stops top→bottom
+      const cols = p.colors ?? [0xffffff, 0xffffff];
+      const a = cols[0] ?? 0xffffff;
+      const b = cols[1] ?? a;
+      const c = cols[2] ?? b;
+      const g = this.add.graphics().setDepth(p.depth).setScrollFactor(p.parallax, pY);
+      const half = p.h / 2;
+      g.fillGradientStyle(a, a, b, b, 1);
+      g.fillRect(p.x, p.y, p.w, half);
+      g.fillGradientStyle(b, b, c, c, 1);
+      g.fillRect(p.x, p.y + half, p.w, p.h - half);
+      return;
+    }
+    const stem = p.stem;
+    if (stem === undefined) return;
+    const key = `pb-${stem}`;
+    if (!this.textures.exists(key)) return; // only-present law
+    if (p.kind === "loop") {
+      const src = this.textures.get(key).getSourceImage() as HTMLImageElement;
+      const t = this.add.tileSprite(p.x, p.y, p.w, p.h, key).setOrigin(0, 0).setDepth(p.depth).setScrollFactor(p.parallax, pY);
+      t.setTileScale(p.h / src.height);
+      if (p.alpha !== undefined) t.setAlpha(p.alpha);
+      if (p.tint !== undefined) t.setTint(p.tint);
+      return;
+    }
+    const img = this.add.image(p.x, p.y, key).setOrigin(0, 0).setDepth(p.depth).setScrollFactor(p.parallax, pY);
+    img.setDisplaySize(p.w, p.h);
+    if (p.alpha !== undefined) img.setAlpha(p.alpha);
+    if (p.tint !== undefined) img.setTint(p.tint);
+  }
+
   private buildBackdrop(): void {
+    if (this.comp !== null) {
+      for (const piece of planLayers(this.comp, this.worldWpx, this.worldHpx, (s) => this.srcSize(s))) {
+        this.placeLayerPiece(piece);
+      }
+      return;
+    }
+    this.buildBackdropLegacy();
+  }
+
+  /** The pre-C1 backdrop: one far plate + two fixed bands. Kept as the
+   *  fallback for any phase without a composition manifest. */
+  private buildBackdropLegacy(): void {
     const skyG = this.add.graphics().setScrollFactor(0).setDepth(-12);
     skyG.fillGradientStyle(0xf9edd2, 0xf9edd2, 0xf3ddb0, 0xf3ddb0, 1);
     skyG.fillRect(-LOGICAL_W, -LOGICAL_H, LOGICAL_W * 3, LOGICAL_H * 3);
 
-    // a parallax plate must span viewport + (scroll range × its lag) or its
-    // edge shows as a seam; +10% margin
+    // THE COVER LAW (doc 36 §3, PB-C1): a full-bleed piece is scaled to cover
+    // the camera's TRAVEL BOX and anchored on the world floor. The pre-C1
+    // version used (1 − parallax) and centred the image on the world, so on a
+    // short level its left edge drifted right of the camera and the page
+    // showed through — Build-D's F-6 (the p4 cream void). Fixed here too, so
+    // the fallback path obeys the same law as the compositor.
     const plateCover = (img: Phaser.GameObjects.Image, sfX: number, sfY: number): void => {
-      const needW = LOGICAL_W + Math.max(0, this.worldWpx - LOGICAL_W) * (1 - sfX);
-      const needH = LOGICAL_H + Math.max(0, this.worldHpx - LOGICAL_H) * (1 - sfY);
-      img.setScale(Math.max((needW * 1.1) / img.width, (needH * 1.1) / img.height));
+      const box = coverFit({ w: img.width, h: img.height }, this.worldWpx, this.worldHpx, sfX, sfY);
+      img.setOrigin(0, 0).setPosition(box.x, box.y).setDisplaySize(box.w, box.h);
     };
     const farStem = this.phase.plates.far && this.textures.exists(`pb-${this.phase.plates.far}`) ? `pb-${this.phase.plates.far}` : "pb-plate_far";
     if (this.textures.exists(farStem)) {
-      const far = this.add.image(this.worldWpx / 2, this.worldHpx / 2 - 8, farStem).setDepth(-11).setScrollFactor(0.12, 0.06);
+      const far = this.add.image(0, 0, farStem).setDepth(-11).setScrollFactor(0.12, 0.06);
       plateCover(far, 0.12, 0.06);
     }
     if (this.textures.exists("pb-plate_sky")) {
-      const sky = this.add.image(this.worldWpx / 2, this.worldHpx / 2 - 30, "pb-plate_sky").setDepth(-11.5).setScrollFactor(0.05, 0.02);
+      const sky = this.add.image(0, 0, "pb-plate_sky").setDepth(-11.5).setScrollFactor(0.05, 0.02);
       plateCover(sky, 0.05, 0.02);
     }
     // W2: per-phase parallax bands — the phase names its own mid/near band
@@ -490,7 +560,41 @@ export class PaintScene extends Phaser.Scene {
     }
   }
 
+  /** The phase's mass kit — but ONLY if its core art actually loaded. A kit
+   *  whose crust/body/fade/sediment are missing would place empty textures, so
+   *  it falls back to the pre-C1 strips-over-fill path instead. */
+  private massKit(): MassKit | null {
+    const kit = this.comp?.mass;
+    if (kit === undefined) return null;
+    const core = [kit.crust[0], kit.body[0], kit.fade, kit.sediment];
+    for (const stem of core) {
+      if (stem === undefined || !this.textures.exists(`pb-${stem}`)) return null;
+    }
+    return kit;
+  }
+
+  /** Place one planned mass piece (doc 36 §2). */
+  private placeMassPiece(p: MassPiece): void {
+    if (p.stem === null) return; // fallbackFill — the graphics pass drew it
+    const key = `pb-${p.stem}`;
+    if (!this.textures.exists(key)) return; // only-present law
+    if (p.tile === true) {
+      const src = this.textures.get(key).getSourceImage() as HTMLImageElement;
+      const scale = p.h / src.height;
+      const t = this.add.tileSprite(p.x, p.y, p.w, p.h, key).setOrigin(0, 0).setDepth(p.depth);
+      t.setTileScale(scale);
+      // anchor the pattern in WORLD space so neighbouring runs stay seamless
+      t.tilePositionX = p.x / scale;
+      t.tilePositionY = p.y / scale;
+      return;
+    }
+    const img = this.add.image(p.x, p.y, key).setOrigin(p.originX ?? 0, p.originY ?? 0).setDepth(p.depth);
+    img.setDisplaySize(p.w, p.h);
+    if (p.rot !== undefined) img.setRotation(p.rot);
+  }
+
   private buildTerrain(): void {
+    const kit = this.massKit();
     const fill = this.add.graphics().setDepth(1);
     const h = this.grid.length;
     const w = this.grid[0]?.length ?? 0;
@@ -498,7 +602,10 @@ export class PaintScene extends Phaser.Scene {
     for (let r = 0; r < h; r++) {
       for (let c = 0; c < w; c++) {
         const g = glyphAt(this.grid, c, r);
-        const isCanopy = isSolid(g) && r <= 1; // the closed top (W0-F7)
+        // with a kit present the carved mass owns every solid and every slope;
+        // the graphics pass keeps only the hazard/one-way fallbacks below
+        const isCanopy = kit === null && isSolid(g) && r <= 1; // the closed top (W0-F7)
+        if (kit !== null && (isSolid(g) || isSlope(g))) continue;
         if (isCanopy) {
           fill.fillStyle(CANOPY);
           fill.fillRect(c * TILE, r * TILE, TILE, TILE);
@@ -599,7 +706,9 @@ export class PaintScene extends Phaser.Scene {
         (c0, c1, r) => { this.add.tileSprite(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, dh, "pb-pool_ink_loop").setOrigin(0, 0).setDepth(3).setTileScale(ts); },
       );
     }
-    if (this.textures.exists("pb-pit_inner_tile")) {
+    // the interior fill + the surface strips are the RETIRED model — with a
+    // kit present the carved mass draws body/fade/sediment and crust instead
+    if (kit === null && this.textures.exists("pb-pit_inner_tile")) {
       const scale = 0.055; // ~56px world pattern from the 1024 source
       runs(
         (c, r) => r > 1 && isSolid(glyphAt(this.grid, c, r)) && isSolid(glyphAt(this.grid, c, r - 1)) && glyphAt(this.grid, c, r) !== "~",
@@ -612,7 +721,7 @@ export class PaintScene extends Phaser.Scene {
     }
 
     // painted strips along every exposed surface run (strips-over-tiles)
-    if (this.textures.exists("pb-strip_ground_loop")) {
+    if (kit === null && this.textures.exists("pb-strip_ground_loop")) {
       const src = this.textures.get("pb-strip_ground_loop").getSourceImage() as HTMLImageElement;
       const dispH = 30;
       const tileScale = dispH / src.height;
@@ -652,11 +761,12 @@ export class PaintScene extends Phaser.Scene {
       const ts = dispH / src.height;
       for (let r = 3; r < h; r++) {
         let c = 0;
-        // A-6: the `z` slide wears the same blackboard art as a flat `~` run —
-        // one strip per cell down the diagonal, over the slope45_down wedge.
+        // A-6 (pre-C1): the `z` slide wore the same blackboard art as a flat
+        // `~` run. With a kit the slide is its OWN object (mass.ts, doc 36 §2),
+        // so `z` leaves this path entirely.
         const icy = (cc: number): boolean => {
           const g = glyphAt(this.grid, cc, r);
-          return (g === "~" || g === "z") && !isSolid(glyphAt(this.grid, cc, r - 1));
+          return (g === "~" || (kit === null && g === "z")) && !isSolid(glyphAt(this.grid, cc, r - 1));
         };
         while (c < w) {
           if (!icy(c)) { c++; continue; }
@@ -667,11 +777,57 @@ export class PaintScene extends Phaser.Scene {
         }
       }
     }
+
+    // ── the carved mass (doc 36 §2) — crust + caps + trims + corners + body
+    // + fade + sediment, ramps, the slide, and complete platform objects ─────
+    if (kit !== null) {
+      for (const piece of planMass(this.grid, kit)) this.placeMassPiece(piece);
+    }
+  }
+
+  /** World-px size of a drawn trail letter (matches the retired `prop_letter`). */
+  private static readonly LETTER_PX = 14;
+
+  /**
+   * PB-C1 · a texture per CHARACTER, drawn in the painted stem's own key
+   * (warm gold gradient, amber contour, soft shadow). `prop_letter` is a
+   * painted capital A, so it can only ever spell A — it is retired from the
+   * letter face and the engine draws the real glyph instead (doc 36 §3).
+   */
+  private letterTex(char: string): string {
+    const key = `pb-glyph-${char}`;
+    if (this.textures.exists(key)) return key;
+    const S = 128;
+    const tex = this.textures.createCanvas(key, S, S);
+    if (!tex) return this.tex("prop_letter"); // headless/canvas-less safety
+    const ctx = tex.getContext();
+    ctx.clearRect(0, 0, S, S);
+    ctx.font = LETTER_STYLE.font;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.shadowColor = LETTER_STYLE.shadow;
+    ctx.shadowBlur = 7;
+    ctx.shadowOffsetY = 4;
+    ctx.lineJoin = "round";
+    ctx.lineWidth = LETTER_STYLE.strokeWidth * 2;
+    ctx.strokeStyle = LETTER_STYLE.stroke;
+    ctx.strokeText(char, S / 2, S / 2 + 3);
+    ctx.shadowColor = "transparent";
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetY = 0;
+    const grad = ctx.createLinearGradient(0, S * 0.18, 0, S * 0.86);
+    grad.addColorStop(0, LETTER_STYLE.fill);
+    grad.addColorStop(1, LETTER_STYLE.fillDeep);
+    ctx.fillStyle = grad;
+    ctx.fillText(char, S / 2, S / 2 + 3);
+    tex.refresh();
+    return key;
   }
 
   private buildProps(): void {
     const h = this.grid.length;
     const w = this.grid[0]?.length ?? 0;
+    const glyphs = new Map(letterGlyphs(this.grid, this.comp?.words).map((g) => [`${g.c},${g.r}`, g.char]));
     for (let r = 0; r < h; r++) {
       for (let c = 0; c < w; c++) {
         const g = glyphAt(this.grid, c, r);
@@ -682,8 +838,9 @@ export class PaintScene extends Phaser.Scene {
           img.setScale(15 / img.height);
           this.ringImgs.push({ img, baseY: cy }); // positions live in the Sim
         } else if (g === "*") {
-          const img = this.add.image(cx, cy, this.tex("prop_letter")).setDepth(4);
-          img.setScale(10 / img.height);
+          const char = glyphs.get(`${c},${r}`) ?? "A";
+          const img = this.add.image(cx, cy, this.letterTex(char)).setDepth(4);
+          img.setDisplaySize(PaintScene.LETTER_PX, PaintScene.LETTER_PX);
           this.letterImgs.set(`${c},${r}`, img); // count lives in the Sim
         } else if (g === "X" || g === "B") {
           const img = this.add.image(cx, (r + 1) * TILE, this.tex("prop_exit")).setOrigin(0.5, 1).setDepth(3);

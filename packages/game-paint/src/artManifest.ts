@@ -14,7 +14,9 @@ export const GLYPH_STEMS: Record<string, string[]> = {
   "^": ["spikes_nibs_loop"],
   "w": ["pool_ink_loop"],
   "o": ["prop_ring"],
-  "*": ["prop_letter"],
+  // PB-C1: `*` no longer needs `prop_letter` — that stem is a painted capital
+  // A, so it could only ever spell A. Trail letters are engine-drawn in its
+  // key now (letters.ts + PaintScene.letterTex), one texture per character.
   "X": ["prop_exit"],
   "B": ["prop_exit"],
   "s": ["prop_spring"],

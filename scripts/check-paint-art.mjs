@@ -11,6 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { GLYPH_STEMS, HERO_STEMS, entitySkinStems } from "../packages/game-paint/src/artManifest.ts";
+import { COMPOSITION, PLACEHOLDER_UNTIL, compositionStems, isPlaceholderStem } from "../packages/game-paint/src/composition.ts";
 
 const R = process.cwd();
 const ART_ROOT = path.join(R, "apps/web/public/art/g1/paint");
@@ -50,6 +51,10 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
       for (const g of glyphs) for (const stem of GLYPH_STEMS[g] ?? []) need(stem, `${f} ${ph.id} glyph '${g}'`);
       for (const e of ph.entities) for (const stem of entitySkinStems(e.skin)) need(stem, `${f} ${ph.id} entity ${e.id}`);
       for (const plate of Object.values(ph.plates ?? {})) need(String(plate), `${f} ${ph.id} plate`);
+      // PB-C1: a phase's composition manifest DEMANDS its own kit — the five
+      // planes and the carved mass are as load-bearing as any glyph stem
+      const spec = COMPOSITION[level.chapter]?.[ph.id];
+      if (spec) for (const stem of compositionStems(spec)) need(stem, `${f} ${ph.id} composition`);
     }
     for (const stem of HERO_STEMS) need(stem, "hero rig");
   }
@@ -67,6 +72,20 @@ for (const [stem, where] of required) {
 }
 for (const a of allow) {
   if (!required.has(a.stem) && !present.has(a.stem)) fail(`allowlist entry ${a.stem} is needed by nothing — remove it`);
+}
+
+// PB-C1 · THE PLACEHOLDER GUARD. The composition kit currently points at
+// generated flat-tone stand-ins so the geometry laws could be proven before
+// Batch AF exists. They are stamped PLACEHOLDER on the piece and they must not
+// outlive the art: past the deadline this HARD-FAILS, so "we'll swap it later"
+// cannot quietly become "we shipped it".
+const placeholders = [...required.keys()].filter(isPlaceholderStem);
+if (placeholders.length > 0) {
+  if (today > PLACEHOLDER_UNTIL) {
+    fail(`${placeholders.length} PLACEHOLDER stems are still wired (deadline ${PLACEHOLDER_UNTIL} passed) — land Batch AF and re-point the composition manifest`);
+  } else {
+    console.warn(`check-paint-art: ⚠ ${placeholders.length} placeholder stems wired (PK-C2 replaces them; hard deadline ${PLACEHOLDER_UNTIL})`);
+  }
 }
 
 if (failures === 0) {
