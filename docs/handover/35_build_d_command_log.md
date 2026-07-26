@@ -436,3 +436,37 @@ Nothing here has been played by a human. Fable's review checklists (passover §6
 chapter-1 replay are the remaining gates, and the three open findings — F-4 (ch01 has no
 mass-fill art cell), F-5 (`tafel_roll` has no sim state), F-6 (the arena far plate does not
 span p4) — are decisions for them, not silent fixes for me.
+
+---
+
+# ★ FABLE REVIEW — Build-D (PR #234), 2026-07-26
+
+**Verdict: MECHANICALLY SOUND → MERGE as the foundation. VISUALLY: fails the
+composition standard → the next campaign (doc 36) reworks the look on top of it.**
+
+Re-verified independently (all on my machine, this session): 224/224 tests · tsc both
+packages · check-paint-art (54 required / 152 on disk) · game-tasks · grounding ·
+design-sheets · allowlist = [] · **splice machine-diff vs the assembled source: ZERO
+field deviations** across all five blocks · invariants re-counted (7 cages, exactly one
+person-cage = Merle, p1 = 6 entities per A-7) · thin-renderer greps clean · **the tape
+gate proven red-capable** (zeroing a jump run in the p3 tape → red; restore → green).
+One instructive false alarm, recorded for the method: zeroing the LONGEST movement run
+did NOT go red — because that run rides the slide, where input is redundant BY DESIGN
+(the z-push works uninputted). A tamper that tampers nothing proves nothing; check the
+check, in both directions.
+
+Executor calibration (dial-sheet log): scope discipline excellent (three taste items
+correctly flagged-not-fixed; deferrals per A-8; no silent expansions), honesty
+excellent (self-disclosed two false measurements + own defect classes), report shape
+per template. The visual failure is NOT an executor failure — the packet delivered the
+commissioned model faithfully; the MODEL was wrong, and that is a commissioning
+(Fable-side) defect. Answered here: the three open decisions from the wrap-up — (1)
+deep filler → replaced by the §2 mass model (Batch AF); (2) `tafel_roll` unused → the
+guardian GAINS motion in PK-C3 (gate verdict G4 demands a MOVING Tafel); (3) the p4
+plate edge → the §3 cover-fit law (PK-C1).
+
+**Next campaign: THE COMPOSITION REWORK** — law: [doc 36](36_composition_law.md) ·
+engine passover: `PLATFORM MASTER/SESSION-PROMPTS/PASSOVER_PB_COMPOSITION_2026-07-26.md`
+· art commission: `~/Code/codex-art-lab/CODEX_MASTER_PROMPT_AF_COMPOSITION.md`.
+Koki's replay gate MOVES to after the rework (playing the current look would only
+re-confirm the screenshots).
