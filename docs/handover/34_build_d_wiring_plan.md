@@ -56,6 +56,16 @@ doc 35. Amendments:
   (= kit_p3_air[0], the blackboard-slide art) onto `z` runs in the renderer (same placement
   path as `~`); the p3 proof tape must ride the slide (expect ~6 px/t on the descent).
 
+- **A-8 (boot-test resolutions, 2026-07-26 — closes §2's three `?` rows).** The per-phase
+  ground-strip cells are **DEFERRED** by name: `kit_p2_floor[0..2]`, `kit_p3_paving[0..2]`,
+  `kit_p4_stage[0..2]` (the would-be `strip_ground_p2/p3/p4` + their caps) are NOT imported
+  in W1 — importing their caps as `strip_cap_l/r` would clobber `kit_p1_hall`'s canonical
+  caps. `kit_p1_hall` is the ONE canonical ground kit (§3.3 MVP); the per-phase looks are
+  the logged fast-follow. So PK-1's frozen import set = **doc 34 §2 minus those 9 cells**,
+  and `.work/` + `_refs/` folders in the art lab are never imported. Also:
+  `artManifest.ts` now maps `z → [strip_ice_loop, slope45_down]` (so the slide's art is
+  DEMANDED by the checker the moment the z-grids go live — both stems ship/import, no gate
+  breakage); p9 sets no `plates.mid` by design (the fixed fallback band is correct there).
 - **A-7 (purpose-law audit fix).** The chapter-wide traceability audit (2026-07-26) found
   exactly ONE entity without a dossier purpose row: `p1-swarm` (moths in p1 — the Koki-gated
   p1 dossier stages twelve purposes, none of them a swarm; the moths' staged DEBUT is p2, where
