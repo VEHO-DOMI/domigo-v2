@@ -26,7 +26,7 @@ Groundwork already committed by Fable (2026-07-26, `8faa9bc`):
 | PK-1 | W1 — batch AC/AC2 import script + run, allowlist −2 | **DONE** — 65 stems, allowlist 2→0, art dir 82→133 (PK-2's browser pass then deferred `pit_inner_tile`: **64** stems, 132 PNGs) |
 | PK-2 | W2+W3+W4 — per-phase plates/bands · terrain strips (+`z` slide art) · enemy pose hook (+A-4 tafel study) | **DONE** — 221 tests, tapes green, F13 mass-fill regression caught in-browser and reverted |
 | PK-3 | W5+W6 — grids-v2 splice (machine-diff fidelity) + all five proof tapes (p3 rides the slide) | **DONE** — splice IDENTICAL to source of truth, 5/5 tapes ALL GREEN, slide ridden at 6.00 px/t |
-| W7 | full gate set + browser proofs + the ONE Build-D PR | **PENDING** |
+| W7 | full gate set + browser proofs + the ONE Build-D PR | **DONE** — 10/10 gates exit 0 (gate 2 caught a type error under 224 green tests), tapes byte-identical on re-record, PR open |
 
 Logging law (Koki's condition): every packet ends with its section HERE **and** a Mission
 Control update (`data/domigo.json` → sync → push). A packet without both is not finished.
@@ -372,4 +372,67 @@ caught them):
 
 **Commit.** `Build-D W5–W6: grids-v2 live in ch01 + all five proof tapes re-recorded (z slide ridden)`
 
-<!-- W7 log entry + PR link go here -->
+## W7 · the full gate set + the ONE Build-D PR (DONE)
+
+**The complete CI-parity set, every command unpiped with its exit echoed.** Run on the final
+tree, in this order:
+
+| # | command | exit | result |
+|---|---|---|---|
+| 1 | `pnpm --filter @domigo/game-paint exec vitest run` | **0** | 224 passed / 15 files |
+| 2 | `pnpm --filter @domigo/game-paint exec tsc --noEmit` | **0** | (see the catch below) |
+| 3 | `pnpm --filter web exec tsc --noEmit` | **0** | |
+| 4 | `node scripts/check-story-grounding.mjs` | **0** | prologue, beats, headers, boss, game tasks grounded + in register |
+| 5 | `node scripts/check-design-sheets.mjs` | **0** | 5 paint sheets, corpus ids + sections + register green |
+| 6 | `node scripts/check-paint-art.mjs` | **0** | 54 required stems present, **allowlist at ZERO** |
+| 7 | `node scripts/check-game-tasks.mjs` | **0** | 43 tasks: schema, grounding, giveaway, register green |
+| 8 | `pnpm --filter web build` | **0** | |
+| 9 | `node scripts/check-game-bundle.mjs` | **0** | 37 chunks · **Phaser in EXACTLY 1 chunk, 310 KB gz** · largest non-Phaser 93 KB · no shared-chunk leak |
+| 10 | `node --experimental-strip-types scripts/record-paint-tape.mjs` | **0** | **ALL GREEN**, 5/5 exits |
+
+**Gate 2 caught a real defect that the tests could not.** The first W7 run failed typecheck:
+`pose.test.ts(62,80): error TS2353 — 'skin' does not exist in type 'Partial<EntPoseInput>'`. My
+guardian test helper passed a `skin` field the pose hook does not take. Vitest does not
+typecheck, so all 224 tests were green over a type error. Fixed by dropping the field (the hook
+is skin-blind by design — it returns the *state* cell and `entTex` resolves it against whatever
+skin the entity wears), and gates 1 and 2 re-run clean. Worth keeping in mind: on this package,
+green tests are not evidence of a green typecheck.
+
+**Determinism, proven rather than assumed.** Gate 10 re-recorded all five tapes from scratch;
+`git status content/` came back **empty** afterwards — the regenerated proof file is
+byte-identical to the committed one. Same pilots, same masks, same bytes.
+
+**Browser proof.** All five phases booted by id after a full reload on a nuked `.next`, each
+with **0 console errors**: p1 Die Eingangshalle · p2 Das Klassenzimmer bei Nacht · p3 Der
+Schulhof-Garten (slide art confirmed at all six `z` cells) · p4 Die Tafel-Bühne · p9 Die
+Kleckskammer. Screenshots are in the PR body's evidence list.
+
+**Docs updated.** `docs/design/g1/paint/grids-v2/README.md`'s "Still pending" section was stale
+the moment PK-3 landed — rewritten to say what actually shipped, to record that the design file
+and the live level are kept deep-equal (edit the grid, re-splice; never edit the live level
+directly), and to carry F-4/F-5/F-6 forward.
+
+**PR.** `pb-d2-grids` → `main`, opened, **not merged** — the merge is Koki's.
+
+---
+
+## Closing summary — what Build-D actually delivered
+
+Three packets, four commits, every gate green, and **three defects caught by evidence rather
+than by assumption**:
+
+1. **PK-1's `pit_inner_tile` overwrite re-opened F13.** Caught by looking at the first p1
+   screenshot, diagnosed by measuring the art (1024² @ 100 % opaque → 512² @ 27.7 % with empty
+   bands), fixed by deferring the cell, and generalised by checking all 14 overwritten stems for
+   the same class (it was the only one).
+2. **A type error hiding under 224 green tests** (W7 gate 2).
+3. **Two of my own measurements were confidently wrong** before I checked them: a WebGL canvas
+   read back all-black (so "0 brown pixels" was a false negative), and TileSprites carry UUID
+   texture keys (so "0 ice strips" was too — they were all six there, confirmed by geometry).
+   Both are banked as pitfalls in the PK-2/PK-3 entries.
+
+The one thing this session did **not** do is judge whether any of it looks or feels right.
+Nothing here has been played by a human. Fable's review checklists (passover §6) and Koki's
+chapter-1 replay are the remaining gates, and the three open findings — F-4 (ch01 has no
+mass-fill art cell), F-5 (`tafel_roll` has no sim state), F-6 (the arena far plate does not
+span p4) — are decisions for them, not silent fixes for me.

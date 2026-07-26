@@ -59,7 +59,9 @@ describe("entPoseCell — the four motion poses", () => {
 });
 
 describe("entPoseCell — the arena guardian's motion cells (A-4)", () => {
-  const tafel = (state: string): string => entPoseCell(ent({ role: "guardian", skin: "tafel", state }));
+  // the pose hook is skin-blind by design — it returns the STATE cell and
+  // entTex resolves it against whatever skin the entity wears (here: tafel)
+  const tafel = (state: string): string => entPoseCell(ent({ role: "guardian", state }));
 
   it("maps the guardian's own states onto the ent_tafel_motion cells", () => {
     expect(tafel("telegraph")).toBe("windup"); // the wind-up before the throw
