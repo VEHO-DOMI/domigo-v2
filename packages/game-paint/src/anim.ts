@@ -46,6 +46,15 @@ export interface EntPoseInput {
 }
 
 export const entPoseCell = (e: EntPoseInput): string => {
+  // W5/A-4: the arena guardian's own motion cells. `consoled` is its TERMINAL
+  // victory state (guardianKnotSolved sets it on the last knot and never sets
+  // `redeemed`), so it must be read before the dazed catch-all — otherwise the
+  // console beat's payoff, the blackboard as a friend, can never show.
+  if (e.role === "guardian") {
+    if (e.state === "consoled") return "win";
+    if (e.state === "stagger") return "stagger";
+    if (e.state === "telegraph") return "windup";
+  }
   if (e.redeemed || e.state === "dazed" || e.state === "consoled" || e.state === "shooed") return "dazed";
   if (e.state === "telegraph") return "telegraph";
   // a crusher's `act` IS its slam — the stomp cell is that moment

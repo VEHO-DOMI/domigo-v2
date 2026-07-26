@@ -58,6 +58,33 @@ describe("entPoseCell — the four motion poses", () => {
   });
 });
 
+describe("entPoseCell — the arena guardian's motion cells (A-4)", () => {
+  const tafel = (state: string): string => entPoseCell(ent({ role: "guardian", skin: "tafel", state }));
+
+  it("maps the guardian's own states onto the ent_tafel_motion cells", () => {
+    expect(tafel("telegraph")).toBe("windup"); // the wind-up before the throw
+    expect(tafel("stagger")).toBe("stagger"); // the counter-window's tell
+    expect(tafel("consoled")).toBe("win"); // the friend, after the console beat
+    expect(tafel("idle")).toBe("a");
+  });
+
+  it("reads `consoled` BEFORE the dazed catch-all, or the win pose is unreachable", () => {
+    // guardianKnotSolved sets state="consoled" on the last knot and leaves
+    // redeemed false — the win cell is the payoff of doc 31 §3's console beat
+    expect(tafel("consoled")).not.toBe("dazed");
+    // a defeated NON-guardian still dazes, and a redeemed guardian still dazes
+    expect(entPoseCell(ent({ role: "chaser", state: "consoled" }))).toBe("dazed");
+    expect(entPoseCell(ent({ role: "guardian", state: "dazed" }))).toBe("dazed");
+    expect(entPoseCell(ent({ role: "guardian", state: "idle", redeemed: true }))).toBe("dazed");
+  });
+
+  it("leaves every non-guardian role's telegraph alone (TAMPER)", () => {
+    expect(entPoseCell(ent({ role: "chaser", state: "telegraph" }))).toBe("telegraph");
+    expect(entPoseCell(ent({ role: "gunner", state: "telegraph" }))).toBe("telegraph");
+    expect(entPoseCell(ent({ role: "crusher", state: "telegraph" }))).toBe("telegraph");
+  });
+});
+
 describe("entPoseCell — the old behaviour it must not disturb", () => {
   it("keeps the FSM cells ahead of any motion pose", () => {
     expect(entPoseCell(ent({ state: "telegraph", vx: ENEMY_WALK }))).toBe("telegraph");

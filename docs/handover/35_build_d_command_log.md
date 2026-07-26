@@ -25,7 +25,7 @@ Groundwork already committed by Fable (2026-07-26, `8faa9bc`):
 |---|---|---|
 | PK-1 | W1 — batch AC/AC2 import script + run, allowlist −2 | **DONE** — 65 stems, allowlist 2→0, art dir 82→133 (PK-2's browser pass then deferred `pit_inner_tile`: **64** stems, 132 PNGs) |
 | PK-2 | W2+W3+W4 — per-phase plates/bands · terrain strips (+`z` slide art) · enemy pose hook (+A-4 tafel study) | **DONE** — 221 tests, tapes green, F13 mass-fill regression caught in-browser and reverted |
-| PK-3 | W5+W6 — grids-v2 splice (machine-diff fidelity) + all five proof tapes (p3 rides the slide) | **PENDING** |
+| PK-3 | W5+W6 — grids-v2 splice (machine-diff fidelity) + all five proof tapes (p3 rides the slide) | **DONE** — splice IDENTICAL to source of truth, 5/5 tapes ALL GREEN, slide ridden at 6.00 px/t |
 | W7 | full gate set + browser proofs + the ONE Build-D PR | **PENDING** |
 
 Logging law (Koki's condition): every packet ends with its section HERE **and** a Mission
@@ -248,6 +248,128 @@ a `drawImage` copy returns all-black, so "0 brown pixels found" from a canvas re
 
 **Commit.** `Build-D W2–W4: per-phase plates/bands + terrain strips (+z slide art) + enemy pose hook`
 
-<!-- PK-3 log entry goes here -->
+## PK-3 · W5+W6 — the content splice + the five proof tapes (DONE)
+
+**W5 · the splice, and how fidelity was proven.** Before copying anything I diffed the two
+files: every top-level field (`schema`, `id`, `chapter`, `name`, `goalDe`, `whyDe`, `hintsDe`,
+`collectNounDe`, `abilities`) was already **byte-identical**, and both use the same 2-space
+formatting — the files differed *only* in the five phase blocks. So the faithful splice is the
+assembled file itself, and the fidelity proof is the strongest one available: **live vs
+assembled deep-compare → IDENTICAL**, re-run after every later edit. The only byte I added is
+the trailing newline the repo's copy carries and the design copy does not. Nothing was
+"improved" in the copy step.
+
+Invariants re-counted from the LIVE file afterwards: 3 phases + arena `p4` + bonus `p9` ·
+7 cage entities = `cage1`–`cage6` plus `cage-merle` (the person cage, `params.classmate:
+"merle"`) · glyphs now live `#*./BCSX^owz` — note `z` present and `=` absent, which is why PK-1
+deferring the three `plank_loop` cells cost nothing.
+
+**W6 · the tapes, and the A-3 macro extension.** The old pilots were stale on the new layouts
+exactly as the plan predicted (2 phases red before re-recording). I added two closed-loop ops
+to `scripts/record-paint-tape.mjs` under A-3 — `waitPlatformAt` and `rideUntil`, both reading
+the sim's own entity position — because boarding a moving platform on a tick count is brittle
+*by construction*: the platform's phase depends on every tick spent upstream, so any edit
+earlier in the pilot silently desynchronises the boarding. Waiting on where the ruler actually
+*is* cannot drift.
+
+**Four of five pilots were green on the first attempt** (p1, p2, p3, p9). Only p4 needed a
+retune — 1 of the 3 strikes. Its cause is worth banking: the pilot walked into the chalk-crate
+podium at row 14 and stopped dead at c4.6. The podiums are only **one tile high, but the hero
+is ~2 tiles**, so at floor level they block the *head*, not the feet — they must be jumped, not
+walked past. Both podiums (c5–7, c25–27) now get a jump.
+
+| phase | result | ticks | tasks auto-solved |
+|---|---|---|---|
+| p1 Die Eingangshalle | exit → p2 | 486 | 3 |
+| p2 Das Klassenzimmer bei Nacht | exit → p3 | 558 | 5 |
+| p3 Der Schulhof-Garten | exit → boss | 826 | 3 |
+| p4 Die Tafel-Bühne | exit → done | 5076 | 3 (= the three knots) |
+| p9 Die Kleckskammer | exit → p2 | 277 | 0 |
+
+Recorder printed **ALL GREEN** — and note what that line means here: each tape is verified
+OPEN-LOOP through `replayPhaseTape` (the same function CI runs) *before* it is saved, so
+record == replay is proven at record time, not assumed.
+
+**★ The p3 slide is ridden, measured, not asserted.** The passover's own tripwire is "if the
+tape walks down at 2.25, the wiring regressed". I replayed the recorded p3 tape and logged the
+player's speed while `onSlide`:
+
+    ticks with player.onSlide === true : 55
+    peak horizontal speed on the slide : 6.00 px/tick   (walk = 2.25, SLIDE_MAX = 6)
+    t=43  cell (10, 15)   0.38 px/t     <- the lip
+    t=59  cell (12, 17)   3.38 px/t
+    t=67  cell (14.1, 19.1)  4.88 px/t
+    t=71  cell (15.4, 20.4)  5.63 px/t  <- the foot of the slide
+
+That is D1's acceleration curve (SLIDE_RAMP) resolving to exactly SLIDE_MAX down exactly the
+six `z` cells. The physics and the tape prove each other.
+
+**Gates (unpiped, real exit codes).**
+
+| command | exit | result |
+|---|---|---|
+| splice machine-diff (live vs assembled) | **0** | **IDENTICAL** |
+| `pnpm --filter @domigo/game-paint exec vitest run` | **0** | **224 passed** (221 + 3 guardian pose tests) |
+| `content-levels.test.ts` (the real `checkLevelLaws`) | **0** | the spliced level parses and passes every law |
+| `node --experimental-strip-types scripts/record-paint-tape.mjs` | **0** | **ALL GREEN**, 5/5 exits |
+| `node scripts/check-paint-art.mjs` | **0** | **54** required stems (up from 51 — the new grids demand the plates and bands), allowlist at **ZERO** |
+| TAMPER: blank p1's 119-tick walk run | **1** | p1 RED: *"tape ended after 486 ticks without the exit firing — the level changed; re-record"*; restored byte-identically, green again |
+| browser: all five phases | — | each boots by its own id, **0 console errors** |
+
+**A-4 wired (the tafel motion states).** Per my PK-2 study, three states now resolve to the new
+cells — guardian `telegraph` → `windup`, `stagger` → `stagger`, `consoled` → `win` — with
+`consoled` deliberately read *before* the dazed catch-all, because `guardianKnotSolved` sets
+`state = "consoled"` on the last knot and never sets `redeemed`; read in the old order the
+console beat's payoff (doc 31 §3, the blackboard as a friend) is literally unreachable. Three
+tests pin this, including that non-guardian roles keep their plain `telegraph`.
+**`tafel_roll` stays unwired** — the guardian FSM still has no locomotion at all, so there is
+nothing honest to bind it to (F-5). I did not invent a sim state for it; that is a gameplay
+decision, not a wiring one.
+
+**Browser evidence — what the five screenshots actually prove.** Both PK-2 gaps are now closed:
+- **Per-phase bands, proven:** p1 a locker row, p2 purple desks and chairs, p3 the climbing
+  frame and planters, p4 rows of empty audience chairs — four visibly distinct mid bands. p9
+  correctly shows the **fallback** band, which is A-8's stated design ("p9 sets no `plates.mid`
+  by design"), not an omission.
+- **Per-phase far plates, proven:** the painted entrance hall, the night blackboard wall, the
+  yard wall, the ink-dream.
+- **The `z` slide, proven twice over:** `slope45_down` is placed as an Image at all six z cells
+  (x = 160,176,192,208,224,240), and `strip_ice_loop` is placed as a 16x30 tileSprite at depth 2
+  at all six (x,y = 160,233 / 176,249 / 192,265 / 208,281 / 224,297 / 240,313) — after the
+  ground strips, so it draws on top.
+- **F13 stays dead:** the deep floor is the restored mass fill; the ground reads as
+  floorboard-over-books across every phase.
+
+**Honesty clause.** Everything above is mechanical proof — the level is faithful, the laws hold,
+the tapes reach every exit through the real engine, the art is placed where it should be. What I
+have **not** judged, and will not: whether any of it *looks* right. The 512-cell terrain art
+tiles at a much shorter period than the 2048-wide sheets it replaced (a ~30 px pattern where it
+used to be ~160 px), which is a real change in texture density that only Fable and Koki can
+accept or reject. The p3 slide is proven mechanically at 6 px/t; whether it *feels* like a slide
+is Koki's replay gate. Nothing here has been played by a human.
+
+**Findings.**
+- **F-6 · the arena's far plate does not span the arena (pre-existing, not from this change).**
+  On p4 the right ~20 % of the screen falls back to the cream sky. `plateCover` sizes the plate
+  from the scroll range but then centres it at `worldWpx / 2`, so with `scrollFactor 0.12` the
+  plate's apparent span slides ~197 px left when the camera reaches the right edge — the widened
+  image no longer covers where the camera looks. Visible on short levels (p4 is 36 tiles); the
+  wide phases hide it. I did not touch the far-plate path (W2 was mid/near only), so this
+  predates Build-D — but Koki will see it in the replay, so it should not go unmentioned.
+- Still open from PK-2: **F-4** (ch01 has no deep-interior mass-fill cell) and **F-5**
+  (`tafel_roll` has no sim state).
+
+**Measurement pitfalls banked this packet** (both produced confident FALSE readings before I
+caught them):
+- Phaser **TileSprites carry auto-generated UUID texture keys**, so counting by
+  `obj.texture.key` reports **zero** for art that is plainly on screen. Identify them by
+  geometry (x/y/width/height/depth) instead — that is how the six ice strips were confirmed.
+- A **tamper that changes nothing is not a passing guard.** My first tape tamper edited
+  `pads[3]`, which was `[12,0]` — and the encoding is `[count, mask]`, so I had blanked the mask
+  of an *idle* run and the suite stayed green. A real tamper (blanking the 119-tick walk) turns
+  it red immediately. Always tamper a load-bearing element and confirm the failure message names
+  the right thing.
+
+**Commit.** `Build-D W5–W6: grids-v2 live in ch01 + all five proof tapes re-recorded (z slide ridden)`
 
 <!-- W7 log entry + PR link go here -->
