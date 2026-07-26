@@ -80,7 +80,18 @@ export const coversAxis = (a0: number, a1: number, p: number, view: number, maxC
   return a0 <= at0.lo + EPS && a1 >= atMax.hi - EPS;
 };
 
-/** The exact world box a full-bleed piece must occupy on a given plane. */
+/**
+ * The EXACT world box a plane is ever seen through — its visible envelope,
+ * from the first camera position to the last.
+ *
+ * It must be exact, not merely sufficient. A slow plane's window barely moves
+ * (the far shell's vertical window shifts ~11 px across a whole level), so a
+ * box padded out to the world's own bounds makes the plane far taller than it
+ * is ever seen — and since a segment's WIDTH is derived from its height, the
+ * art then renders oversized with its painted content pushed out of frame.
+ * PK-C2 hit exactly that: p1's commissioned window bay and coat rail sat above
+ * the top of the screen and the wall read as empty plaster.
+ */
 export const coverBox = (
   worldWpx: number,
   worldHpx: number,
@@ -88,12 +99,10 @@ export const coverBox = (
   pY: number,
 ): { x: number; y: number; w: number; h: number } => {
   const { maxCamX, maxCamY } = travelBox(worldWpx, worldHpx);
-  const x0 = Math.min(0, visibleWindow(0, p, LOGICAL_W, K_X).lo);
-  const x1 = Math.max(worldWpx, visibleWindow(maxCamX, p, LOGICAL_W, K_X).hi);
-  const y0 = Math.min(0, visibleWindow(0, pY, LOGICAL_H, K_Y).lo);
-  // bottom-anchored on the world floor, then extended down to whatever this
-  // plane's own window demands (that region is always behind terrain)
-  const y1 = Math.max(worldHpx, visibleWindow(maxCamY, pY, LOGICAL_H, K_Y).hi);
+  const x0 = visibleWindow(0, p, LOGICAL_W, K_X).lo;
+  const x1 = visibleWindow(maxCamX, p, LOGICAL_W, K_X).hi;
+  const y0 = visibleWindow(0, pY, LOGICAL_H, K_Y).lo;
+  const y1 = visibleWindow(maxCamY, pY, LOGICAL_H, K_Y).hi;
   return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 };
 };
 

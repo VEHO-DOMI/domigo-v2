@@ -17,9 +17,10 @@ import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { TILE } from "./paint.ts";
 
 // ── the anatomy's dimensions (world px) ──────────────────────────────────────
-/** the walk course: 5 px of lip above the standing line, 9 px into the mass */
-export const CRUST_H = 14;
-export const CRUST_LIP = 5;
+/** doc 36 §1's scale law: "a crust course ~0.5 H thick". H ≈ 34 px drawn. */
+export const CRUST_H = 17;
+/** the painted board surface IS the standing line, so the lip is only a hint */
+export const CRUST_LIP = 2;
 /** carved side trim: mostly inside the mass, 2 px proud of it */
 export const EDGE_W = 8;
 export const EDGE_OUT = 2;
@@ -40,6 +41,9 @@ export type MassKind =
   | "ramp" | "platform"
   | "slideUnder" | "slideTop" | "slideMid" | "slideFoot"
   | "fallbackFill";
+
+/** Source pixel size of a stem — the plan reads real art geometry through this. */
+export type SrcSizeLookup = (stem: string) => { w: number; h: number } | null;
 
 export interface MassPiece {
   kind: MassKind;
@@ -129,17 +133,26 @@ export const slideRuns = (grid: readonly string[]): Array<{ c: number; r: number
   return runs;
 };
 
-/** Cover a run of `cells` with COMPLETE objects, widest first (never stretched). */
+/**
+ * Cover a run of `cells` with COMPLETE objects, widest first (never stretched).
+ * Where the palette offers several objects of the same width, `seed` picks
+ * between them deterministically, so a level of 2-cell ledges is not a level
+ * of identical benches.
+ */
 const coverWithObjects = (
   cells: number,
   palette: readonly { stem: string; cells: number }[],
+  seed: number,
 ): Array<{ stem: string; cells: number }> => {
-  const sorted = [...palette].sort((a, b) => b.cells - a.cells).filter((p) => p.cells >= 1);
+  const sorted = [...palette].filter((p) => p.cells >= 1).sort((a, b) => b.cells - a.cells);
   const out: Array<{ stem: string; cells: number }> = [];
   let left = cells;
   let guard = 0;
   while (left > 0 && guard++ < 32) {
-    const pick = sorted.find((p) => p.cells <= left) ?? sorted[sorted.length - 1];
+    const widest = sorted.find((p) => p.cells <= left)?.cells ?? sorted[sorted.length - 1]?.cells;
+    if (widest === undefined) break;
+    const sameWidth = sorted.filter((p) => p.cells === widest);
+    const pick = sameWidth[(seed + out.length) % sameWidth.length];
     if (pick === undefined) break;
     out.push(pick);
     left -= pick.cells;
@@ -152,23 +165,36 @@ const coverWithObjects = (
  * carved trim; every exposed top gets a crust RUN with flush end caps.
  * A null kit reproduces the old behaviour as `fallbackFill` pieces.
  */
-export const planMass = (grid: readonly string[], kit: MassKit | null): MassPiece[] => {
+export const planMass = (
+  grid: readonly string[],
+  kit: MassKit | null,
+  srcSize?: SrcSizeLookup,
+): MassPiece[] => {
   const { w, h } = gridSize(grid);
   const out: MassPiece[] = [];
   const claimed = new Set<string>(); // cells owned by a platform object
+  /** width ÷ height of a stem's art, 1 when the art is not (yet) resolvable */
+  const aspect = (stem: string): number => {
+    const s = srcSize?.(stem) ?? null;
+    return s !== null && s.h > 0 ? s.w / s.h : 1;
+  };
 
   // ── 1 · floating platforms (they own their cells outright) ─────────────────
   if (kit !== null) {
     for (const run of floatingPlatformRuns(grid)) {
       const width = run.c1 - run.c0 + 1;
       let x = run.c0 * TILE;
-      for (const obj of coverWithObjects(width, kit.platObjects)) {
+      for (const obj of coverWithObjects(width, kit.platObjects, run.c0 + run.r)) {
+        // sized by the span it fills; the height follows the PAINTED aspect so
+        // a bench stays a bench instead of being stretched to the cell box
+        const objW = obj.cells * TILE;
+        const objH = Math.min(objW / Math.max(aspect(obj.stem), 0.05), TILE * 2);
         out.push({
           kind: "platform", stem: obj.stem, c: Math.floor(x / TILE), r: run.r,
-          x, y: run.r * TILE - CRUST_LIP, w: obj.cells * TILE, h: TILE + CRUST_LIP,
+          x, y: run.r * TILE - CRUST_LIP, w: objW, h: objH,
           depth: DEPTH.platform,
         });
-        x += obj.cells * TILE;
+        x += objW;
       }
       for (let k = run.c0; k <= run.c1; k++) claimed.add(`${k},${run.r}`);
     }
@@ -224,10 +250,20 @@ export const planMass = (grid: readonly string[], kit: MassKit | null): MassPiec
       const y = r * TILE - CRUST_LIP;
       const stem = kit.crust[(c + r) % kit.crust.length] ?? kit.crust[0] ?? "";
       out.push({ kind: "crust", stem, c, r, x, y, w: runW, h: CRUST_H, tile: true, depth: DEPTH.crust });
-      // caps CONNECT flush: right edge of capL == left edge of the run, and
-      // vice versa. No cap where the run runs into the world edge.
-      if (c > 0) out.push({ kind: "capL", stem: kit.crustCapL, c, r, x: x - CRUST_H, y, w: CRUST_H, h: CRUST_H, depth: DEPTH.cap });
-      if (c1 < w - 1) out.push({ kind: "capR", stem: kit.crustCapR, c: c1, r, x: x + runW, y, w: CRUST_H, h: CRUST_H, depth: DEPTH.cap });
+      // CAPS OVERLAP INWARD. The AF caps are painted as SEGMENT ENDS — a
+      // rounded end followed by a stretch of the same course — not as outboard
+      // bookends. So a cap is laid ON the run's last stretch with its outer
+      // edge exactly at the run's outer edge: the rounded end lands on the
+      // terrain boundary and the rest blends into the identical loop beneath.
+      // (Hanging them outside is what made Build-D's caps read as floating.)
+      const capW = CRUST_H * Math.max(aspect(kit.crustCapL), 0.2);
+      const capsFit = runW >= 2 * capW; // a stub run gets edge trims instead
+      if (capsFit && c > 0) {
+        out.push({ kind: "capL", stem: kit.crustCapL, c, r, x, y, w: capW, h: CRUST_H, depth: DEPTH.cap });
+      }
+      if (capsFit && c1 < w - 1) {
+        out.push({ kind: "capR", stem: kit.crustCapR, c: c1, r, x: x + runW - capW, y, w: capW, h: CRUST_H, depth: DEPTH.cap });
+      }
       c = c1 + 1;
     }
   }

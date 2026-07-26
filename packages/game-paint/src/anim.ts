@@ -54,6 +54,7 @@ export const entPoseCell = (e: EntPoseInput): string => {
     if (e.state === "consoled") return "win";
     if (e.state === "stagger") return "stagger";
     if (e.state === "telegraph") return "windup";
+    if (e.state === "roll") return "roll"; // PK-C3/G4: the Tafel crosses the stage
   }
   if (e.redeemed || e.state === "dazed" || e.state === "consoled" || e.state === "shooed") return "dazed";
   if (e.state === "telegraph") return "telegraph";

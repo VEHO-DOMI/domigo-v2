@@ -270,3 +270,61 @@ describe("PB-T1 · walker edge contract", () => {
     expect(reachedRamp).toBe(true); // walked onto/past the ramp deliberately
   });
 });
+
+// ── PK-C3 · the guardian's locomotion (gate verdict G4: the Tafel MOVES) ─────
+describe("the arena guardian rolls between stations", () => {
+  const arena = (): EntityWorld =>
+    spawnEntities([spec({ id: "tafel", role: "guardian", skin: "tafel", c: 17, r: 11, tier: "E", params: { knots: 3 } })], []);
+  const far = (): WorldInput => idleInput({ playerX: 30 * TILE * SUBS });
+
+  it("leaves the throw in a ROLL, not standing still", () => {
+    const w = arena();
+    const g = w.entities[0]!;
+    for (let t = 0; t < 400 && g.state !== "roll"; t++) stepEntities(w, GRID, far());
+    expect(g.state).toBe("roll");
+  });
+
+  it("crosses to the far station and settles there", () => {
+    const w = arena();
+    const g = w.entities[0]!;
+    const home = g.homeX;
+    for (let t = 0; t < 900 && !(g.state === "idle" && g.x !== home); t++) stepEntities(w, GRID, far());
+    expect(g.x).not.toBe(home);
+    expect(Math.abs(g.x - home) / SUBS).toBeCloseTo(GUARDIAN_SCRIPT.E.rollRangeTiles * TILE, 0);
+  });
+
+  it("alternates stations — it never rolls off one side forever", () => {
+    const w = arena();
+    const g = w.entities[0]!;
+    const seen = new Set<number>();
+    for (let t = 0; t < 4000; t++) { stepEntities(w, GRID, far()); if (g.state === "idle") seen.add(g.x); }
+    expect(seen.size).toBeGreaterThanOrEqual(2);
+    for (const x of seen) {
+      expect(Math.abs(x - g.homeX) / SUBS).toBeLessThanOrEqual(GUARDIAN_SCRIPT.E.rollRangeTiles * TILE + 1);
+    }
+  });
+
+  it("completes a FULL station-to-station crossing without timing out", () => {
+    // the safety-net cap must clear 2 x range, or the Tafel strands mid-stage
+    // (the live playtest found it settling at 246 instead of its 216 station)
+    const w = arena();
+    const g = w.entities[0]!;
+    const home = g.homeX;
+    const range = GUARDIAN_SCRIPT.E.rollRangeTiles * TILE * SUBS;
+    const stations = new Set<number>();
+    for (let t = 0; t < 6000; t++) { stepEntities(w, GRID, far()); if (g.state === "idle") stations.add(g.x); }
+    // home appears too: that is where it stands before the first throw
+    expect([...stations].sort((a, b) => a - b)).toEqual([home - range, home, home + range]);
+  });
+
+  it("is DETERMINISTIC — two identical runs land on the same tick trace", () => {
+    const trace = (): string => {
+      const w = arena();
+      const g = w.entities[0]!;
+      const out: string[] = [];
+      for (let t = 0; t < 1200; t++) { stepEntities(w, GRID, far()); out.push(`${g.state}:${g.x}`); }
+      return out.join("|");
+    };
+    expect(trace()).toBe(trace());
+  });
+});

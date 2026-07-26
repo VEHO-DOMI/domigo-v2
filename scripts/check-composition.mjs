@@ -110,12 +110,15 @@ if (withSpec.length === 0) fail("setup", "no phase carries a composition manifes
 
 // ── 1 · LAYER-VALUE ──────────────────────────────────────────────────────────
 console.log("1 · layer-value audit (doc 36 §1)");
-for (const { label, spec } of withSpec) {
+for (const { label, ph, spec } of withSpec) {
+  // L3 per the law's own definition: "terrain masses, entities, interactive
+  // props — the ONLY full-contrast plane". Terrain alone would understate it.
+  const entityStems = [...new Set(ph.entities.map((e) => `${e.skin}_a`))].filter((s) => artFiles.has(s));
   const planes = {
     L0: measureColors([...spec.wash.colors]),
     L1: measureStems(spec.far.segments),
     L2: spec.mid ? measureStems(spec.mid.segments) : null,
-    L3: measureStems([...spec.mass.crust, ...spec.mass.body, spec.mass.fade, spec.mass.sediment]),
+    L3: measureStems([...spec.mass.crust, ...spec.mass.body, spec.mass.fade, spec.mass.sediment, ...entityStems]),
     L4: spec.fg ? measureStems(spec.fg.segments) : null,
   };
   for (const [name, m] of Object.entries(planes)) {
@@ -137,7 +140,7 @@ for (const { label, spec } of withSpec) {
     const dLum = Math.abs(planes.L2.lum - planes.L3.lum);
     const dSat = Math.abs(planes.L2.sat - planes.L3.sat);
     if (dLum < 12 && dSat < 25) {
-      fail("layer-value", `${label}: L2↔L3 separation ${dLum.toFixed(1)}% lum / ${dSat.toFixed(1)}% sat — the law needs ≥12% or ≥25%`);
+      fail("layer-value", `${label}: L2↔L3 separation ${dLum.toFixed(1)}% lum / ${dSat.toFixed(1)}% sat — the law needs ≥12% or ≥25%. The furniture band and the play plane sit at the same value AND the same saturation, which is the camouflage class doc 36 §0.2 exists to kill. NOTE (PK-C2): this fails only on the NIGHT/DUSK phases, and the executor's own on-screen pop test found the enemies still separating by outline and hue — law vs. delivered art, a Fable call.`);
     } else {
       note(`${label} L2↔L3 separation: ${dLum.toFixed(1)}% lum · ${dSat.toFixed(1)}% sat — PASS`);
     }
@@ -165,7 +168,7 @@ console.log("3 · no-naked-fill audit (doc 36 §4.3)");
 for (const { label, ph, spec } of withSpec) {
   const missing = [...spec.mass.crust.slice(0, 1), spec.mass.body[0], spec.mass.fade, spec.mass.sediment].filter((s) => !artFiles.has(s));
   if (missing.length > 0) { fail("no-naked-fill", `${label}: mass kit art missing (${missing.join(", ")}) — the phase would fall back to flat fills`); continue; }
-  const plan = planMass(ph.rows, spec.mass);
+  const plan = planMass(ph.rows, spec.mass, srcSize);
   const naked = nakedFills(plan);
   const holes = uncoveredSolids(ph.rows, plan);
   if (naked.length > 0) fail("no-naked-fill", `${label}: ${naked.length} naked fill cell(s), first at (${naked[0].c},${naked[0].r})`);
