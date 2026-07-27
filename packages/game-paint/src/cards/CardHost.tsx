@@ -6,7 +6,7 @@
 import React, { useState } from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { MACHINES } from "./machines.ts";
-import { CardShell } from "./CardShell.tsx";
+import { CardShell, type CardAlign } from "./CardShell.tsx";
 import {
   ChoiceCard, TypedCard, SpellCard, OrderCard, OddCard, WheelCard, MistakeCard, MemoryCard, type Dispatch,
 } from "./skins.tsx";
@@ -17,11 +17,13 @@ import type {
 } from "./machines.ts";
 
 export function CardHost({
-  task, onResolve, onDismiss,
+  task, onResolve, onDismiss, align = "center",
 }: {
   task: GameTaskV2;
   onResolve: () => void;
   onDismiss: () => void;
+  /** which side of the canvas to sit on (PB-F1/F2-20) */
+  align?: CardAlign;
 }): React.ReactElement {
   const m = MACHINES[task.kind];
   const [state, setState] = useState<unknown>(() => m.init(task));
@@ -38,7 +40,7 @@ export function CardHost({
   };
 
   return (
-    <CardShell task={task} attempts={attempts} onDismiss={onDismiss}>
+    <CardShell task={task} attempts={attempts} onDismiss={onDismiss} align={align}>
       <Skin task={task} state={state} dispatch={dispatch} />
     </CardShell>
   );

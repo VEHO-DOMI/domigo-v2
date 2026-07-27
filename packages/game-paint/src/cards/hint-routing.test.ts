@@ -13,15 +13,17 @@ describe("hint ladder (F18)", () => {
   it("singular Buchstabe", () => expect(renderGapHint("a", 2)).toBe("A  ·  1 Buchstabe"));
 });
 
-describe("routing v2 (deterministic playlists)", () => {
-  // structural fixtures — nextTask only reads id/use/kind
-  const mk = (id: string, use: string, kind: string) => ({ id, use, kind }) as unknown as GameTaskV2;
+describe("routing v3 (deterministic playlists, bound to the world)", () => {
+  // structural fixtures — nextTask only reads id/use/kind/skins/phases
+  const mk = (id: string, use: string, kind: string, skins?: string[], phases?: string[]) =>
+    ({ id, use, kind, ...(skins ? { skins } : {}), ...(phases ? { phases } : {}) }) as unknown as GameTaskV2;
+  const anywhere = { phase: "p1" };
   const pool = [mk("a", "quickfire", "wheel"), mk("b", "quickfire", "spell"), mk("c", "quickfire", "choice")];
 
   it("serves the pool in file order, cycling", () => {
     let st: RouteState = initRoute();
     const got: string[] = [];
-    for (let i = 0; i < 5; i++) { const r = nextTask(pool, "quickfire", st); got.push(r.task!.id); st = r.next; }
+    for (let i = 0; i < 5; i++) { const r = nextTask(pool, "quickfire", anywhere, st); got.push(r.task!.id); st = r.next; }
     expect(got).toEqual(["a", "b", "c", "a", "b"]);
   });
 
@@ -29,22 +31,72 @@ describe("routing v2 (deterministic playlists)", () => {
     // two wheels adjacent: a(wheel), a2(wheel), b(spell)
     const p = [mk("w1", "quickfire", "wheel"), mk("w2", "quickfire", "wheel"), mk("s", "quickfire", "spell")];
     let st = initRoute();
-    let r = nextTask(p, "quickfire", st); // w1 (wheel)
+    let r = nextTask(p, "quickfire", anywhere, st); // w1 (wheel)
     expect(r.task!.id).toBe("w1"); st = r.next;
-    r = nextTask(p, "quickfire", st); // next would be w2 (wheel==last) → skip to s
+    r = nextTask(p, "quickfire", anywhere, st); // next would be w2 (wheel==last) → skip to s
     expect(r.task!.id).toBe("s"); st = r.next;
     expect(st.lastKind).toBe("spell");
   });
 
   it("returns null for an empty pool", () => {
-    expect(nextTask(pool, "boss", initRoute()).task).toBeNull();
+    expect(nextTask(pool, "boss", anywhere, initRoute()).task).toBeNull();
   });
 
   it("keeps independent cursors per use", () => {
     const mixed = [mk("q1", "quickfire", "choice"), mk("d1", "door", "choice"), mk("q2", "quickfire", "spell")];
     let st = initRoute();
-    let r = nextTask(mixed, "quickfire", st); expect(r.task!.id).toBe("q1"); st = r.next;
-    r = nextTask(mixed, "door", st); expect(r.task!.id).toBe("d1"); st = r.next;
-    r = nextTask(mixed, "quickfire", st); expect(r.task!.id).toBe("q2"); st = r.next;
+    let r = nextTask(mixed, "quickfire", anywhere, st); expect(r.task!.id).toBe("q1"); st = r.next;
+    r = nextTask(mixed, "door", anywhere, st); expect(r.task!.id).toBe("d1"); st = r.next;
+    r = nextTask(mixed, "quickfire", anywhere, st); expect(r.task!.id).toBe("q2"); st = r.next;
+  });
+
+  // ── the F2-1 fix: a card is served for the being that triggered it ────────
+  const bound = [
+    mk("pencil1", "encounter", "choice", ["pencil"], ["p1"]),
+    mk("pencil2", "encounter", "spell", ["pencil"], ["p1"]),
+    mk("eraser1", "encounter", "choice", ["eraser"], ["p1", "p3"]),
+    mk("free1", "encounter", "oddone"),
+  ];
+
+  it("serves only the attacker's own cards, every time (F2-1)", () => {
+    let st = initRoute();
+    const got: string[] = [];
+    for (let i = 0; i < 4; i++) {
+      const r = nextTask(bound, "encounter", { phase: "p1", skin: "pencil" }, st);
+      got.push(r.task!.id); st = r.next;
+    }
+    expect(got).toEqual(["pencil1", "pencil2", "pencil1", "pencil2"]);
+  });
+
+  it("falls back to the unbound pool for a being with no cards of its own", () => {
+    const r = nextTask(bound, "encounter", { phase: "p1", skin: "moths" }, initRoute());
+    expect(r.task!.id).toBe("free1");
+  });
+
+  it("a hazard (no being) draws from the unbound pool only", () => {
+    const r = nextTask(bound, "encounter", { phase: "p1" }, initRoute());
+    expect(r.task!.id).toBe("free1");
+  });
+
+  it("phase scope keeps one phase's cards out of another (F2-21)", () => {
+    // the eraser lives in p1 and p3; the pencil cards are p1-only
+    expect(nextTask(bound, "encounter", { phase: "p3", skin: "eraser" }, initRoute()).task!.id).toBe("eraser1");
+    // in the arena the pencil cards are out of scope entirely → unbound fallback
+    expect(nextTask(bound, "encounter", { phase: "p4", skin: "pencil" }, initRoute()).task!.id).toBe("free1");
+  });
+
+  it("one being's progress never eats another's (per-pool cursors)", () => {
+    let st = initRoute();
+    let r = nextTask(bound, "encounter", { phase: "p1", skin: "pencil" }, st); // pencil1
+    expect(r.task!.id).toBe("pencil1"); st = r.next;
+    r = nextTask(bound, "encounter", { phase: "p1", skin: "eraser" }, st); // eraser1
+    expect(r.task!.id).toBe("eraser1"); st = r.next;
+    r = nextTask(bound, "encounter", { phase: "p1", skin: "pencil" }, st); // pencil2, not pencil1
+    expect(r.task!.id).toBe("pencil2");
+  });
+
+  it("an empty scope resolves to null rather than serving a stranger's card", () => {
+    const only = [mk("p3only", "encounter", "choice", ["ranzen"], ["p3"])];
+    expect(nextTask(only, "encounter", { phase: "p4", skin: "tafel" }, initRoute()).task).toBeNull();
   });
 });

@@ -38,7 +38,19 @@ export const TaskHints = z.object({
 });
 export type TaskHints = z.infer<typeof TaskHints>;
 
-export const TASK_USES = ["quickfire", "encounter", "door", "rescue", "boss", "bonus"] as const;
+export const TASK_USES = ["quickfire", "encounter", "door", "rescue", "boss", "finale", "bonus"] as const;
+
+// ── THE BINDING (PB-F1 / F2-1) ───────────────────────────────────────────────
+// A card is SERVED for a being. `skins` names the entity skins this card may
+// answer (the pencil creature's card must say "pencil"); `phases` scopes it to
+// the phases where that being lives, so p3 cards can never leak into the arena
+// (F2-21). Both optional: a card with NO skins is the deliberate UNBOUND
+// fallback pool — and, by the binding law below, may not claim a being on
+// screen. The router (game-paint/src/cards/routing.ts) is the only consumer.
+const Binding = {
+  skins: z.array(z.string().min(1)).min(1).optional(),
+  phases: z.array(z.string().min(1)).min(1).optional(),
+};
 
 // fields shared by every kind (spread into each member — discriminatedUnion needs
 // plain object members, so cross-field checks live in taskInvariantErrors, not here)
@@ -50,6 +62,7 @@ const base = {
   promptEn: z.string().optional(), // the English question, when the task asks one
   hints: TaskHints.optional(),
   grounding: z.string().optional(), // author note (which unit item this exercises)
+  ...Binding,
 };
 
 // ── the kinds ────────────────────────────────────────────────────────────────
@@ -127,6 +140,21 @@ export const GameTaskV2 = GameTaskUnion.superRefine((t, ctx) => {
 export function taskInvariantErrors(t: GameTaskV2): string[] {
   const errs: string[] = [];
   const dup = (a: readonly string[]): boolean => new Set(a).size !== a.length;
+  // ── THE BINDING LAW (PB-F1, from Koki's REPLAY 1 verdict F2-1) ────────────
+  // An `entity` stimulus is a CLAIM that a being is on screen carrying the
+  // answer. A card that makes that claim must say WHICH being (skins), or the
+  // router can serve it for anything — which is exactly how a pencil came to
+  // ask about a rubber. Conversely an unbound card lives in the fallback pool
+  // and may fire at a spike or an unmatched being, so it may not claim a
+  // being at all. Structural, so no future card can regress it.
+  if (t.stimulus.type === "entity" && t.skins === undefined) {
+    errs.push("binding: an entity stimulus must declare skins (it claims a being is on screen)");
+  }
+  if (t.stimulus.type !== "entity" && t.skins !== undefined) {
+    errs.push("binding: skins are declared but the stimulus is not an entity (bind the card to what it shows)");
+  }
+  if (t.skins && dup(t.skins)) errs.push("duplicate skin");
+  if (t.phases && dup(t.phases)) errs.push("duplicate phase");
   switch (t.kind) {
     case "choice":
       if (!t.options.includes(t.answer)) errs.push("answer is not among the 3 options");

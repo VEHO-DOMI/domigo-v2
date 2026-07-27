@@ -54,11 +54,12 @@ describe("spell", () => {
     expect(spellMachine.grade(s)).toBe("pending");
     const popped = spellMachine.act(s, { undo: true });
     expect(popped.used.length).toBe(0);
-    // fill the first 3 distinct tray slots in fixed order — a full-length non-"pen" word ⇒ wrong (unless it happens to spell pen)
+    // fill the first answer-length tray slots in fixed order — a FULL word that
+    // is not the answer ⇒ wrong (length read off the exemplar, not assumed)
     let f = spellMachine.init(t);
-    for (const i of [0, 1, 2]) f = spellMachine.act(f, { tapTray: i });
+    for (let i = 0; i < t.answer.length; i++) f = spellMachine.act(f, { tapTray: i });
     const word = f.used.map((x) => f.tray[x]).join("").toLowerCase();
-    expect(spellMachine.grade(f)).toBe(word === "pen" ? "correct" : "wrong");
+    expect(spellMachine.grade(f)).toBe(word === t.answer.toLowerCase() ? "correct" : "wrong");
   });
   it("cannot reuse a tray slot", () => {
     let s = spellMachine.init(t);

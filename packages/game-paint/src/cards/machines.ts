@@ -153,13 +153,15 @@ export const oddMachine: CardMachine<OddState, OddAction> = {
 };
 
 // ── wheel (rotate to a value, then lock by tapping it — G9) ───────────────────
-export type WheelState = { kind: "wheel"; values: string[]; answer: string; index: number; locked: boolean };
+export type WheelState = { kind: "wheel"; shown: string; values: string[]; answer: string; index: number; locked: boolean };
 export type WheelAction = { rotate: number } | { lock: true };
 export const wheelMachine: CardMachine<WheelState, WheelAction> = {
   init(task) {
     // the wheel keeps AUTHORED order (a number ring is meaningful) — no shuffle
     const t = task as Of<"wheel">;
-    return { kind: "wheel", values: t.values, answer: t.answer, index: 0, locked: false };
+    // `shown` rides in state so the SKIN can draw the datum (F2-22: the moth
+    // never had the number painted on its wing, so the card must carry it)
+    return { kind: "wheel", shown: t.shown, values: t.values, answer: t.answer, index: 0, locked: false };
   },
   act(s, a) {
     if ("lock" in a) return { ...s, locked: true };
