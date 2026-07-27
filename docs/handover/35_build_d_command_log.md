@@ -1215,3 +1215,100 @@ needs REAL time: ~15 % of the queue lands per `wait ~10 s` + `rafStep ×300`. Re
 - Two blocking findings for PK-F2 are recorded in doc 37 (rings unreachable without
   the `swing` ability; p1's two cages unopenable because the fist is granted in p2)
   and were NOT fixed here — they are level design, outside this brief's wall.
+
+---
+
+# ★ PK-F2 · FEEL & FUNCTION — the world answers back
+
+**Branch `pb-f2-feel-and-function`, from the merged main `a4f303a` (#237).** Brief: the
+F2 passover's PK-F2 section **plus the section that appeared on it at 18:48 —
+"PK-F1 REVIEWED & APPROVED, rulings for PK-F2"**. Re-reading the passover file rather
+than working from the copy in session memory is what surfaced those three rulings; the
+mechanical hard-stop earns its place again.
+
+## The rulings, executed
+
+1. **`?phase=` keeps its entrance, loses its sign.** `history.replaceState` strips the
+   param once the game has mounted. Verified live: navigating to
+   `/play/1/buch?phase=p1` lands in „Die Eingangshalle" with the address bar reading
+   `/play/1/buch`. (`?air=` is left alone — it is a dev knob that should survive a
+   reload.)
+2. **The rings leave ch01.** Three `o` glyphs in p3 (34,9 · 29,10 · 39,10) removed:
+   swinging is gated on the `swing` ability and `ch01.level.json` grants only
+   `jump, run, punch`, so they were an affordance without its verb. Level laws re-run
+   green; the tapes never touched them.
+3. **The two pre-fist cages.** `cage2` stays exactly where the p1 dossier put it (item
+   8: the „rüttelt nur" beat) but now renders at **alpha 0.45** — the transparency
+   grammar this ruling names, written into the renderer as a rule: *solid = you can act
+   on this now, transparent = not yet*. It solidifies the moment the fist is granted.
+   `cage5` leaves p1 for **p3 (54,17)**, standing on the platform at cols 53–55 with
+   the fist long since in hand. The p1 dossier's item 9 (the „Spind-Alkoven" tease)
+   is thereby amended — the tease role now belongs to cage2 alone.
+
+## F2-4 — the "small-ledge glitch" had one cause, and it is now a law
+
+The stub in his 12.57.28 frame is a **single `/` ramp tile at p1 (44,17)**, two tiles
+right of the ink gap, with floor at the same height on both sides: an 8-px bump that
+led nowhere, stood the hero's feet on a diagonal and put his torso at an odd offset —
+exactly what the screenshot review measured. Removed. The CLASS became a level law,
+`slope-purpose`: *a ramp must change the walk height*. Scoped to the full ramps `/`
+and `\` (the 30° halves have their own pairing law; `z` is the slide, diagonal by
+design). **Tamper-checked** by writing the tile back: the law goes red on that exact
+cell and green again when it is removed.
+
+## F2-9 letters and F2-5 the invisible wall — measured, and honestly reported
+
+Both were investigated with a headless sweep over the REAL sim. Two instruments had to
+be corrected before either result could be believed: the first letter check was
+stricter than the law's own tolerance (it called every letter unreachable), and the
+first wall sweep counted **encounter freezes as walls** — the world stopping because a
+card opened is the game working.
+
+- **F2-9 · the letter counter is honest.** placed = HUD total = reachable, in all five
+  phases (p1 8/8 · p2 8/8 · p3 7/7 · p4 0/0 · p9 12/12), with the abilities actually
+  granted at each phase rather than all of them. So "I feel I collected all" is not a
+  counting bug — it points at **F2-31** (a letter that reads as backdrop), which is
+  PK-F3's readability work.
+- **F2-5 · NOT REPRODUCIBLE.** Ground-walk sweeps in BOTH directions over every
+  standable column of all five phases find no invisible wall except the intended
+  world-edge box at col 1. Two specific hypotheses were tested and refuted by
+  measurement: the screen-box clamp never bites (the box edge stays 186–204 px away
+  at run speed 2.25 px/t AND at slide speed 6.00 px/t), and no solid-but-undrawn tile
+  exists. **This needs his exact spot** — the evidence file has no frame of it either.
+
+## F2-3 — three candidates, measured, and NOT chosen
+
+Measured cause: airborne with no direction held, `vx` is never touched, so the launch
+speed rides all the way down; the landing then needs ~12 px of ground friction to stop.
+And the air-snap floor (2 px/t) sits ABOVE walk speed (1.25 px/t), so **a walking hop
+travels almost as far as a running leap** — which is why precise near-ledge jumps
+overshoot. Traces from the real engine on a flat floor, canonical 12-tick hold:
+
+| model | run + hold | run + release at apex | walk + hold | height / air |
+|---|---|---|---|---|
+| **current** (shipped) | 128.3 + 12.4 = **140.6 px** (8.8 tiles) | 140.6 px (8.8) | 113.3 px (7.7) | 101 px / 56 t |
+| **airbrake** — no-input air decay | 140.6 px | **104.6 px (6.5)** | 113.3 px | 101 px / 56 t |
+| **landdamp** — 50 % cut on landing | 140.6 px | 131.1 px (8.2) | 113.3 px | 101 px / 56 t |
+| **softsnap** — snap floor = walk speed | 140.6 px | 140.6 px | **71.3 px (4.7)** | 101 px / 56 t |
+
+Height and air-time are identical in every row: the vertical arc is canon and untouched.
+`airbrake` gives the child mid-air aim; `landdamp` only removes the extra steps after
+landing; `softsnap` is the one that restores a genuine short hop. **The default stays
+`current`** — which of these FEELS right is Fable's and Koki's call. Switch in dev with
+`?air=airbrake|landdamp|softsnap`; the pick is then a one-line change to
+`DEFAULT_AIR_MODEL`.
+
+## Tapes now see the world
+
+`paintProof@1` tapes gained `expect`: the end-state a run must produce — letters got,
+letters total, where the exit led, cages freed, and **`guardianDown` for p4**. That
+closes the hole this program's own report named ("tapes see buttons, not the world" —
+the arena tape came back byte-identical after the guardian gained motion). The recorder
+stamps the block from the open-loop replay, so CI and the recorder cannot drift, and
+all five tapes were re-recorded through it. **Tamper-checked:** flipping p4's
+`guardianDown` to `false` fails the suite with the exact mismatch; restored, green.
+
+**A gap named rather than hidden:** every recorded pilot frees zero cages, so
+`cagesFreed` asserts 0 everywhere. The assertion will catch a cage-count regression on
+a route that frees one, but no current tape takes such a route. A cage-freeing pilot is
+the natural next tape.

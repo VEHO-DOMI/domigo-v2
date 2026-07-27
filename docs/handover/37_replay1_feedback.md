@@ -130,3 +130,22 @@ observation is quoted; where it was mechanical, the gate is named. Taste verdict
 - **p1's two satchel cages can never be opened.** They need the fist; the fist is granted by Fibel in p2; the exit chain runs forward only. So 2 of the 6 cages are unreachable on a normal run — and the level-law reachability sweep cannot see it, because it sweeps with `level.abilities` (all of them) rather than the abilities granted at that phase. This is the other half of F2-34 and belongs with it in PK-F2.
 - **The boss fight is reachable** (`p4` proof tape: exits `done`, 3 tasks solved) but I could not land a chalk deflect through the dev harness in 136 throws; the finale was reached by calling the scene's own `resolveTask` for each knot. A live-hands deflect is still unproven by me.
 - **`?phase=` does not track the phase you are in** (F2-21's second half): it is the teacher's START door, so the header is authoritative and the URL keeps the value you entered with. Cosmetic — but it misread as a bug on film. **Question for Fable:** drop the param from the URL after boot, or leave it? Not a silent call.
+
+---
+
+# ★ CLOSED by PK-F2 (2026-07-27) — feel, function, and the rulings
+
+| F-item | Verdict | Evidence |
+|---|---|---|
+| **F2-4 small-ledge glitch** | **CLOSED** | One `/` ramp tile at p1 (44,17) between two floors of the SAME height — an 8-px bump leading nowhere that stood the feet on a diagonal. Removed, and the class is now the `slope-purpose` level law (tamper-checked by writing the tile back). |
+| **F2-13/14 rings + fist latch** | **CLOSED by removal** (Fable ruling 2) | Swinging is gated on the `swing` ability; ch01 grants only jump/run/punch, so no ring in the chapter could ever be grabbed. The three p3 ring glyphs are gone — the rings debut in the chapter that teaches the verb. |
+| **F2-26 rings read as jewellery** | **MOOT** | The rings are no longer in ch01. |
+| **F2-9 letter counter** | **CLOSED — the counter was honest** | Machine sweep over the real sim: placed = HUD total = reachable in every phase (8/8 · 8/8 · 7/7 · 0/0 · 12/12), using the abilities actually granted at each phase. "I felt I collected all" points at **F2-31** (a letter that reads as backdrop) → PK-F3. |
+| **F2-34 the fist arrives late** | **HALF-CLOSED** (Fable ruling 3) | The two p1 cages no longer contradict the grant: cage2 is drawn GHOSTED (transparent = not yet) so „it only rattles" reads as designed, and cage5 moved to p3 where the fist is in hand. The control hint bar still lists the fist before it is granted — a smaller readability item, left for PK-F3. |
+| **F2-21 `?phase=` drift** | **CLOSED** (Fable ruling 1) | The teacher's start door keeps its entrance; the param is stripped after boot, so the address can never contradict the header again. |
+| **F2-3 jump forward-glide** | **MEASURED, NOT DECIDED** | Cause found: with no direction held there is no air decay at all, and the air-snap floor (2 px/t) sits above walk speed (1.25), so a walking hop travels nearly as far as a running leap. Three candidates are implemented and traced (`airbrake`, `landdamp`, `softsnap`); the shipped default is unchanged because the feel verdict is Fable's and Koki's. Numbers in doc 35's PK-F2 entry. |
+| **F2-5 p3 invisible wall** | **NOT REPRODUCIBLE — needs his spot** | Ground-walk sweeps in both directions over every standable column of all five phases show no wall but the intended world-edge box. The screen-box clamp was tested and refuted (it stays 186–204 px away at run speed AND at slide speed). No frame in the evidence set shows it either. |
+
+**Also this packet:** proof tapes gained WORLD ASSERTIONS (`expect`: letters, exit,
+cages freed, and `guardianDown` for the arena), closing the "tapes see buttons, not the
+world" hole — tamper-checked by flipping the arena's assertion.
