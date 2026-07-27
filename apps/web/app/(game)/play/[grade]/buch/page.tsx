@@ -6,7 +6,7 @@
  * that breaks its own laws fails the page, never serves.
  */
 import { redirect } from "next/navigation";
-import { checkLevelLaws, parsePaintLevel, type PaintLevel } from "@domigo/game-paint/level";
+import { allPhases, checkLevelLaws, parsePaintLevel, type PaintLevel } from "@domigo/game-paint/level";
 import { getPlayerForPage, getTeacherForPage } from "@/lib/identity";
 import { loadPaintLevel, loadPaintTasksV2 } from "@/lib/paint-content";
 import { resolvePaintArt } from "@/lib/paint-art";
@@ -36,7 +36,12 @@ export default async function BuchPage({
   }
   const art = resolvePaintArt();
   const tasks = loadPaintTasksV2("g1.st.lost-pages", "ch01"); // PB-T8: the card-kit v2 set
-  const startPhase = teacher !== null && phase !== undefined ? phase : undefined; // teacher debug door
+  // teacher debug door — VALIDATED against the level's own phase ids. An
+  // unknown value used to reach the Sim constructor and throw ("unknown phase
+  // p1\""), white-screening the page: a stray character in a pasted URL took
+  // the whole game down instead of just starting at phase one.
+  const known = new Set(allPhases(level).map((p) => p.id));
+  const startPhase = teacher !== null && phase !== undefined && known.has(phase) ? phase : undefined;
 
   return (
     <main style={{ padding: "12px 8px", background: "#f3ead6", minHeight: "100vh" }}>

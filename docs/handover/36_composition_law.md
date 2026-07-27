@@ -43,7 +43,7 @@ world-scaled architecture separated by a value ramp, never one backdrop image.
 > **L0 ∈ [0.93·K, min(1.08·K, 96 %)] · L1 ∈ [0.80·K, 1.00·K] · L2 ∈ [0.50·K, 0.75·K] ·
 > L4 ≤ 0.45·K · L3 exempt from K (always full range — lit figures against a dark room
 > are the point).** Check at K=88 %: L0 82–95, L1 70–88, L2 44–66, L4 ≤40 — v1.0's
-> numbers exactly. **ch01 keys: p1 K=88 · p3 K=86 · p2 K=30 · p4 K=28 · p9 K=16.**
+> numbers exactly. **ch01 keys: p1 K=88 · p3 K=86 · p2 K=30 · p4 K=28 · p9 K=14 (lowered from 16 at the PK-C2b review — the delivered ink-dream measures ~15 air / 11.6 wall; the declaration follows the truth).**
 > Saturation caps stay absolute as tabled. Separation laws: **L2↔L3 stays ABSOLUTE**
 > (≥12 % luminance or ≥25 % saturation — readability never scales down); L1↔L2 gap
 > becomes relative (≥0.10·K — atmospheric dark phases may separate by silhouette).

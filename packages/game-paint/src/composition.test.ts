@@ -6,7 +6,7 @@
 // verified by arithmetic over the plan, not by sampling the screen.
 import { describe, expect, it } from "vitest";
 import { CH01_COMPOSITION, type MassKit, compositionFor, compositionStems } from "./composition.ts";
-import { K_X, K_Y, coverFit, coversAxis, planLayers, planeCovers, travelBox, visibleWindow } from "./layers.ts";
+import { K_X, K_Y, coverBox, coverFit, coversAxis, planLayers, planeCovers, travelBox, visibleWindow } from "./layers.ts";
 import { CRUST_H, CRUST_LIP, MAX_PLATFORM_CELLS, floatingPlatformRuns, nakedFills, planMass, slideRuns } from "./mass.ts";
 import { letterGlyphs } from "./letters.ts";
 import { LOGICAL_H, LOGICAL_W, TILE } from "./paint.ts";
@@ -31,6 +31,9 @@ const kit: MassKit = {
 };
 
 const src512 = (): { w: number; h: number } => ({ w: 512, h: 512 });
+/** the AF cap aspect: a 512×212 band cell — caps are 2.4× as wide as tall */
+const afSrc = (stem: string): { w: number; h: number } | null =>
+  stem.startsWith("cap") ? { w: 512, h: 212 } : { w: 512, h: 512 };
 
 describe("cover-fit (doc 36 §3) — the p4 cream-void law", () => {
   it("models the RENDERER's parallax window, not an invented one", () => {
@@ -52,11 +55,22 @@ describe("cover-fit (doc 36 §3) — the p4 cream-void law", () => {
     expect(coversAxis(box.y, box.y + box.h, 0.06, LOGICAL_H, maxCamY, K_Y)).toBe(true);
   });
 
-  it("anchors on the bottom and reaches at least the world floor", () => {
-    const worldH = 20 * TILE;
-    const box = coverFit({ w: 2048, h: 1152 }, 36 * TILE, worldH, 0.12, 0.06);
-    expect(box.y + box.h).toBeGreaterThanOrEqual(worldH);
-    expect(box.y).toBeLessThanOrEqual(0);
+  it("fits the plane's VISIBLE ENVELOPE, not the world's bounds", () => {
+    // a slow plane is only ever seen through a narrow band; sizing it to the
+    // world instead makes it oversized and pushes its painted content out of
+    // frame (PK-C2 found p1's window bay above the top of the screen)
+    const worldW = 64 * TILE;
+    const worldH = 26 * TILE;
+    const { maxCamY } = travelBox(worldW, worldH);
+    const box = coverBox(worldW, worldH, 0.25, 0.12);
+    const seen = visibleWindow(maxCamY, 0.12, LOGICAL_H, K_Y).hi - visibleWindow(0, 0.12, LOGICAL_H, K_Y).lo;
+    expect(box.h).toBeLessThan(worldH); // NOT stretched to the world box
+    expect(box.h).toBeCloseTo(seen, 5); // exactly the window it is seen through
+    // and the far shell's pieces inherit that height, so the painted segment
+    // maps its full artwork into the band the camera actually shows
+    const l1 = planLayers(CH01_COMPOSITION.p3!, worldW, worldH, () => ({ w: 1024, h: 1260 }))
+      .filter((q) => q.plane === "L1");
+    expect(l1[0]!.h).toBeCloseTo(box.h, 5);
   });
 
   it("holds for every real ch01 phase geometry, at every plane's parallax", () => {
@@ -85,21 +99,33 @@ describe("the five planes (doc 36 §1)", () => {
   const worldW = 64 * TILE;
   const worldH = 22 * TILE;
 
-  it("plans L0 + L1 + L2 + L4 for a manifest phase", () => {
+  it("plans L0 + L1 + L2 for a manifest phase", () => {
     const pieces = planLayers(CH01_COMPOSITION.p1!, worldW, worldH, src512);
     expect(pieces.filter((p) => p.plane === "L0")).toHaveLength(1);
     expect(pieces.filter((p) => p.plane === "L1").length).toBeGreaterThan(0);
     expect(pieces.filter((p) => p.plane === "L2")).toHaveLength(1);
-    expect(pieces.filter((p) => p.plane === "L4")).toHaveLength(1);
+    // L4 is BUILT but unwired: Batch AF commissions no foreground art (F-9),
+    // and shipping a stamped placeholder in front of the player is worse than
+    // shipping no foreground at all.
+    expect(pieces.filter((p) => p.plane === "L4")).toHaveLength(0);
   });
 
-  it("holds the parallax ramp 0.05 → 0.25 → 0.5 → 1 → 1.15+", () => {
+  it("holds the parallax ramp 0.05 → 0.25 → 0.5 → 1", () => {
     const pieces = planLayers(CH01_COMPOSITION.p1!, worldW, worldH, src512);
     const of = (plane: string): number => pieces.find((p) => p.plane === plane)?.parallax ?? -1;
     expect(of("L0")).toBeCloseTo(0.05);
     expect(of("L1")).toBeCloseTo(0.25);
     expect(of("L2")).toBeCloseTo(0.5);
-    expect(of("L4")).toBeGreaterThanOrEqual(1.15);
+  });
+
+  it("still PLANS a foreground plane the moment one is declared", () => {
+    const withFg = {
+      ...CH01_COMPOSITION.p1!,
+      fg: { segments: ["fg"], loop: true, height: 26, bottom: "floor" as const, lift: 22, parallax: 1.2, parallaxY: 1.02 },
+    };
+    const fg = planLayers(withFg, worldW, worldH, src512).filter((p) => p.plane === "L4");
+    expect(fg).toHaveLength(1);
+    expect(fg[0]!.parallax).toBeGreaterThanOrEqual(1.15);
   });
 
   it("L0 and L1 cover the travel box — no page may show through", () => {
@@ -148,21 +174,44 @@ describe("the carved mass (doc 36 §2)", () => {
     "######........######",
   ];
 
-  it("puts a crust with FLUSH caps on every exposed top", () => {
-    const p = planMass(grid, kit);
+  it("puts a crust on every exposed top, one course thick", () => {
+    const p = planMass(grid, kit, afSrc);
     const crusts = p.filter((q) => q.kind === "crust");
     expect(crusts.length).toBe(2); // the two ground runs
     const left = crusts.find((q) => q.c === 0)!;
-    const capR = p.find((q) => q.kind === "capR" && q.r === left.r)!;
-    expect(capR.x).toBeCloseTo(left.x + left.w, 5); // flush: no floating bookend
     expect(left.y).toBeCloseTo(3 * TILE - CRUST_LIP, 5);
     expect(left.h).toBe(CRUST_H);
   });
 
+  it("laps the caps INWARD so the painted end lands on the run's own edge", () => {
+    // the AF caps are painted as SEGMENT ENDS (a rounded end plus a stretch of
+    // the same course), not outboard bookends: the cap's OUTER edge must sit
+    // exactly on the run's outer edge, with the rest overlapping the loop.
+    const p = planMass(grid, kit, afSrc);
+    // the LEFT run touches the world edge, so only its right end is capped;
+    // the RIGHT run is the mirror case
+    const left = p.find((q) => q.kind === "crust" && q.c === 0)!;
+    const right = p.find((q) => q.kind === "crust" && q.c === 14)!;
+    const capR = p.find((q) => q.kind === "capR")!;
+    const capL = p.find((q) => q.kind === "capL")!;
+    expect(capR.x + capR.w).toBeCloseTo(left.x + left.w, 5);
+    expect(capL.x).toBeCloseTo(right.x, 5);
+    expect(capL.w).toBeCloseTo(CRUST_H * (512 / 212), 3); // aspect-preserved
+    expect(capL.depth).toBeGreaterThan(right.depth); // drawn over the loop
+  });
+
   it("suppresses caps where a run runs into the world edge", () => {
-    const p = planMass(grid, kit);
+    const p = planMass(grid, kit, afSrc);
     expect(p.some((q) => q.kind === "capL" && q.c === 0)).toBe(false);
     expect(p.some((q) => q.kind === "capR" && q.c === 19)).toBe(false);
+  });
+
+  it("omits caps entirely on a run too short to hold two of them", () => {
+    // a 3-cell ledge (48 px) cannot carry two 41 px caps — it gets edge trims
+    const stub = ["..........", "..........", "..###.....", "..###....."];
+    const p = planMass(stub, kit, afSrc);
+    expect(p.some((q) => q.kind === "crust")).toBe(true);
+    expect(p.some((q) => q.kind === "capL" || q.kind === "capR")).toBe(false);
   });
 
   it("ramps the interior body → fade → sediment with depth", () => {
@@ -236,18 +285,24 @@ describe("the carved mass (doc 36 §2)", () => {
     expect(floatingPlatformRuns(wide)).toHaveLength(0);
   });
 
-  it("draws the z run as ONE chute: top → mid → foot, plus its under-structure", () => {
+  it("assembles the z run from TRUE-45° cells: top, mids, foot, each on its own wedge", () => {
+    // AF2 re-authored the slide as per-cell modules drawn corner-to-corner, so
+    // the grid assembles the chute — no rotation, no along-diagonal stepping
     const slideGrid = ["......", ".z....", "..z...", "...z..", "....z.", "######"];
     expect(slideRuns(slideGrid)).toEqual([{ c: 1, r: 1, n: 4 }]);
-    const p = planMass(slideGrid, kit);
+    const p = planMass(slideGrid, kit, afSrc);
     expect(p.filter((q) => q.kind === "slideUnder")).toHaveLength(4);
     const surface = p.filter((q) => q.kind.startsWith("slide") && q.kind !== "slideUnder");
-    expect(surface[0]!.kind).toBe("slideTop");
-    expect(surface[surface.length - 1]!.kind).toBe("slideFoot");
-    // the modules butt up along the diagonal — one unbroken slide
-    for (const m of surface) expect(m.rot).toBeCloseTo(Math.PI / 4, 5);
-    const travelled = surface.reduce((s, m) => s + m.w, 0);
-    expect(travelled).toBeCloseTo(Math.hypot(4 * TILE, 4 * TILE), 4);
+    expect(surface.map((q) => q.kind)).toEqual(["slideTop", "slideMid", "slideMid", "slideFoot"]);
+    for (const m of surface) {
+      expect(m.rot).toBeUndefined(); // the art carries the 45°, not a transform
+      expect(m.w).toBe(TILE);
+      expect(m.h).toBe(TILE);
+      expect(m.x).toBe(m.c * TILE); // cell-exact, so the run cannot drift
+      expect(m.y).toBe(m.r * TILE);
+    }
+    // every module sits on its own cell of the diagonal
+    expect(surface.map((q) => `${q.c},${q.r}`)).toEqual(["1,1", "2,2", "3,3", "4,4"]);
   });
 
   it("NO NAKED FILL anywhere once a kit is present", () => {
@@ -282,7 +337,7 @@ describe("the letter trail (doc 36 §3)", () => {
 describe("the manifest", () => {
   it("names every stem the kit needs, deduplicated", () => {
     const stems = compositionStems(CH01_COMPOSITION.p3!);
-    for (const want of ["ph_crust_p3_a", "ph_mass_body_a", "ph_mass_sediment", "ph_slide_mid", "ph_plat_2", "ph_l1_p3_a", "ph_l2_p3"]) {
+    for (const want of ["crust_p3_a", "mass_body_a", "mass_sediment", "slide_mid", "plat_bench_2", "l1_p3_a", "l2_p3"]) {
       expect(stems, want).toContain(want);
     }
     expect(new Set(stems).size).toBe(stems.length);

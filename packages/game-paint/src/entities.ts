@@ -96,10 +96,24 @@ export const FLYER_SWEEP_PX = 40;
 const GRAVITY = PAINT.gravity;
 
 /** Per-tier guardian script (sheet §6: telegraph/window shrink E→S, knots ≤5). */
+// PK-C3 (gate verdict G4): the Tafel MOVES. Until now the guardian had no
+// locomotion at all — it threw chalk from one spot for the whole fight, and
+// the painted `tafel_roll` cell had no state to bind to (Build-D's F-5). After
+// every throw it now ROLLS to the opposite station and settles, so the arena
+// is a chase across the stage rather than a shooting gallery.
+// Deterministic by construction: the direction comes from which side of home
+// it currently stands on, never from a random roll — the proof tapes depend
+// on this being reproducible tick for tick.
+// `rollTicks` is a SAFETY NET, not the pacing knob — it must comfortably
+// exceed a full station-to-station crossing (2 × range ÷ speed ≈ 205 ticks at
+// every tier), or the roll times out halfway and the Tafel drifts to a
+// meaningless spot. The live playtest caught exactly that: it settled at 246
+// instead of its 216 station because a 260-tick cap could not cover 128 px at
+// 0.375 px/tick.
 export const GUARDIAN_SCRIPT = {
-  E: { knots: 3, telegraphTicks: 60, throwEvery: 150, staggerTicks: 90 },
-  M: { knots: 4, telegraphTicks: 45, throwEvery: 120, staggerTicks: 75 },
-  S: { knots: 5, telegraphTicks: 32, throwEvery: 96, staggerTicks: 60 },
+  E: { knots: 3, telegraphTicks: 60, throwEvery: 150, staggerTicks: 90, rollSpeed: 160, rollRangeTiles: 4, rollTicks: 320 },
+  M: { knots: 4, telegraphTicks: 45, throwEvery: 120, staggerTicks: 75, rollSpeed: 200, rollRangeTiles: 5, rollTicks: 320 },
+  S: { knots: 5, telegraphTicks: 32, throwEvery: 96, staggerTicks: 60, rollSpeed: 240, rollRangeTiles: 6, rollTicks: 320 },
 } as const;
 
 export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWorld => ({
@@ -347,14 +361,25 @@ export const stepEntities = (
           if (e.timer > script.throwEvery) { e.state = "telegraph"; e.timer = 0; }
         } else if (e.state === "telegraph") {
           if (e.timer > script.telegraphTicks) {
-            e.state = "idle"; e.timer = 0;
             const dir = inp.playerX >= e.x ? 1 : -1;
             w.projectiles.push({
               id: w.nextProjectileId++, kind: "chalk", x: e.x + 14 * SUBS * dir, y: e.y - 24 * SUBS,
               vx: Math.round(2.5 * SUBS) * dir, vy: -3 * SUBS, deflected: false, fromId: e.id, dead: false,
             });
+            // …and then roll to the OTHER station (G4)
+            e.state = "roll"; e.timer = 0;
+            e.dir = e.x <= e.homeX ? 1 : -1;
+          }
+        } else if (e.state === "roll") {
+          const target = e.homeX + e.dir * script.rollRangeTiles * TILE * SUBS;
+          e.x += e.dir * script.rollSpeed;
+          const arrived = e.dir > 0 ? e.x >= target : e.x <= target;
+          if (arrived || e.timer > script.rollTicks) {
+            if (arrived) e.x = target;
+            e.state = "idle"; e.timer = 0;
           }
         } else if (e.state === "stagger") {
+          // a deflect stops the roll dead — the stagger is the counter-window
           if (e.timer > script.staggerTicks) { e.state = "idle"; e.timer = 0; }
         }
         // "window" (the counter-task) and "consoled" are scene-driven states.

@@ -824,6 +824,21 @@ export class PaintScene extends Phaser.Scene {
     return key;
   }
 
+  /**
+   * The world-y a ground-standing prop rests on: the TOP of the first solid
+   * cell at or below the marker, not the marker cell's own bottom edge.
+   * PK-C2b: p3's second checkpoint is marked at row 18 with ground only at row
+   * 22, so the easel hung three cells up in the air. Every other marker in
+   * ch01 sits directly on its surface, so this is behaviour-neutral for them —
+   * it just stops the class from recurring whenever a marker drifts.
+   */
+  private standLineBelow(c: number, r: number): number {
+    for (let k = r + 1; k < this.grid.length; k++) {
+      if (isSolid(glyphAt(this.grid, c, k))) return k * TILE;
+    }
+    return (r + 1) * TILE;
+  }
+
   private buildProps(): void {
     const h = this.grid.length;
     const w = this.grid[0]?.length ?? 0;
@@ -843,17 +858,17 @@ export class PaintScene extends Phaser.Scene {
           img.setDisplaySize(PaintScene.LETTER_PX, PaintScene.LETTER_PX);
           this.letterImgs.set(`${c},${r}`, img); // count lives in the Sim
         } else if (g === "X" || g === "B") {
-          const img = this.add.image(cx, (r + 1) * TILE, this.tex("prop_exit")).setOrigin(0.5, 1).setDepth(3);
+          const img = this.add.image(cx, this.standLineBelow(c, r), this.tex("prop_exit")).setOrigin(0.5, 1).setDepth(3);
           img.setScale(24 / img.height);
         } else if (g === "s") {
-          const img = this.add.image(cx, (r + 1) * TILE, this.tex("prop_spring")).setOrigin(0.5, 1).setDepth(3);
+          const img = this.add.image(cx, this.standLineBelow(c, r), this.tex("prop_spring")).setOrigin(0.5, 1).setDepth(3);
           img.setScale(13 / img.height);
         } else if (g === "V") {
           const img = this.add.image(cx, cy, this.tex("prop_vine")).setDepth(3);
           img.setScale(TILE / img.height);
         } else if (g === "C") {
           if (this.textures.exists("pb-checkpoint_easel")) {
-            const img = this.add.image(cx, (r + 1) * TILE, "pb-checkpoint_easel").setOrigin(0.5, 1).setDepth(3);
+            const img = this.add.image(cx, this.standLineBelow(c, r), "pb-checkpoint_easel").setOrigin(0.5, 1).setDepth(3);
             img.setScale(24 / img.height);
           } else {
             const flag = this.add.graphics().setDepth(3);
