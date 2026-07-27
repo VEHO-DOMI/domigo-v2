@@ -117,6 +117,13 @@ export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Di
   const next = state.values[(state.index + 1) % n];
   return (
     <div style={{ ...col, alignItems: "center", gap: 4 }}>
+      {/* the slate the being carries — F2-22: the datum was only ever named in
+          the German line and never drawn, so the wheel could not be solved by
+          looking. It is now ON the card, big enough to read across the room. */}
+      <div style={{
+        background: "#2f3f4a", color: "#f6f2e8", borderRadius: 8, border: "2px solid #8a7a58",
+        padding: "4px 18px", fontSize: 26, fontWeight: 800, letterSpacing: 1, marginBottom: 4,
+      }}>{state.shown}</div>
       <button style={{ ...cardBtn, fontSize: 20, border: "none", background: "transparent" }} onClick={() => dispatch({ rotate: -1 })}>▲</button>
       <div style={{ color: "#c3b892", fontSize: 14 }}>{prev}</div>
       <button style={{ ...cardBtn, fontSize: 22, fontWeight: 800, padding: "10px 28px" }} onClick={() => dispatch({ lock: true })}>

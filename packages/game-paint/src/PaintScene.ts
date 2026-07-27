@@ -48,7 +48,7 @@ export interface PaintCallbacks {
   onTask: (req: TaskRequest) => void;
   onPowerup: (grants: string) => void;
   onCageFreed: (id: string, skin: string, classmate: string | undefined, freedCount: number) => void;
-  onGuardianDown: () => void;
+  onGuardianDown: (id: string, skin: string) => void;
 }
 
 export interface PaintSceneCfg {
@@ -156,7 +156,8 @@ export class PaintScene extends Phaser.Scene {
     onSlide: boolean;
     phase: string; letters: number; hovering: boolean; overlay: boolean;
     knots: number; guardianDown: boolean; bonusLeft: number;
-    entities: Array<{ id: string; role: string; state: string; redeemed: boolean; x: number; y: number }>;
+    camX: number;
+    entities: Array<{ id: string; role: string; skin: string; state: string; redeemed: boolean; x: number; y: number }>;
     projectiles: Array<{ kind: string; x: number; y: number; deflected: boolean }>;
   } | null {
     if (!this.player) return null; // boot-safe: the HUD poll may fire pre-create
@@ -175,13 +176,23 @@ export class PaintScene extends Phaser.Scene {
       knots: this.world?.guardianKnots ?? -1,
       guardianDown: this.guardianDefeated,
       bonusLeft: this.bonusLeftTicks,
-      entities: (this.world?.entities ?? []).map((e) => ({ id: e.id, role: e.role, state: e.state, redeemed: e.redeemed, x: fromSubs(e.x), y: fromSubs(e.y) })),
+      camX: fromSubs(this.camX),
+      entities: (this.world?.entities ?? []).map((e) => ({ id: e.id, role: e.role, skin: e.skin, state: e.state, redeemed: e.redeemed, x: fromSubs(e.x), y: fromSubs(e.y) })),
       projectiles: (this.world?.projectiles ?? []).map((p) => ({ kind: p.kind, x: fromSubs(p.x), y: fromSubs(p.y), deflected: p.deflected })),
     };
   }
 
   warp(c: number, r: number): void {
     this.sim.warp(c, r);
+  }
+
+  /** Where a being sits across the view, 0 (left edge) … 1 (right edge), or
+   *  null if it is not in this phase. PB-F1/F2-20: the task card docks to the
+   *  OPPOSITE side, so a card that says „schau sie an" never covers her. */
+  screenFracOf(id: string): number | null {
+    const e = this.world?.entities.find((x) => x.id === id);
+    if (!e) return null;
+    return (fromSubs(e.x) - fromSubs(this.camX)) / LOGICAL_W;
   }
 
   update(_time: number, delta: number): void {
@@ -205,7 +216,7 @@ export class PaintScene extends Phaser.Scene {
         case "task": cb.onTask(ev.req); break;
         case "powerup": cb.onPowerup(ev.grants); break;
         case "cageFreed": cb.onCageFreed(ev.id, ev.skin, ev.classmate, ev.count); break;
-        case "guardianDown": cb.onGuardianDown(); break;
+        case "guardianDown": cb.onGuardianDown(ev.id, ev.skin); break;
         case "letters": cb.onLetters(ev.got, ev.total); break;
         case "letterTaken": {
           const img = this.letterImgs.get(`${ev.c},${ev.r}`);

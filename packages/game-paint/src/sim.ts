@@ -30,13 +30,17 @@ import {
 import { cameraTargetX, clampScroll, stepCameraAxis, stepCameraY } from "./camera.ts";
 import { type Ability, type PaintLevel, type PhaseSpec, allPhases, findGlyph } from "./level.ts";
 
+/** Every world-triggered card carries the SKIN of the being that triggered it
+ *  (PB-F1): the router binds the served card to that being, so a card can never
+ *  again answer a creature that is not on screen. A hazard (spikes, ink) has no
+ *  being, and therefore no skin — it draws from the unbound pool. */
 export interface TaskRequest {
   use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay";
   ctx:
     | { type: "entity"; id: string; skin: string }
     | { type: "cage"; id: string; skin: string; classmate?: string }
-    | { type: "door"; id: string; kind: string }
-    | { type: "guardian"; id: string }
+    | { type: "door"; id: string; kind: string; skin: string }
+    | { type: "guardian"; id: string; skin: string }
     | { type: "hazard"; hazard: string };
 }
 
@@ -45,7 +49,7 @@ export type SimEvent =
   | { type: "task"; req: TaskRequest }
   | { type: "powerup"; grants: string }
   | { type: "cageFreed"; id: string; skin: string; classmate: string | undefined; count: number }
-  | { type: "guardianDown" }
+  | { type: "guardianDown"; id: string; skin: string }
   | { type: "letters"; got: number; total: number }
   | { type: "letterTaken"; c: number; r: number }
   | { type: "exit"; to: string };
@@ -202,7 +206,8 @@ export class Sim {
       for (const ev of out) {
         if (ev.type === "guardianDown") {
           this.guardianDefeated = true;
-          events.push({ type: "guardianDown" });
+          const g = this.world.entities.find((x) => x.id === ev.id);
+          events.push({ type: "guardianDown", id: ev.id, skin: g?.skin ?? "" });
         } else if (ev.type === "guardianKnot") {
           events.push({ type: "toast", msg: `Noch ${ev.knotsLeft} Knoten!` });
         }
@@ -320,8 +325,9 @@ export class Sim {
         const e = this.world.entities.find((x) => x.id === ev.id);
         if (this.doorSolved.has(ev.id)) break;
         this.overlayOpen = true;
-        if (ev.kind === "bonus") events.push({ type: "task", req: { use: "bonuspay", ctx: { type: "door", id: ev.id, kind: ev.kind } } });
-        else events.push({ type: "task", req: { use: "door", ctx: { type: "door", id: ev.id, kind: String(e?.params.kind ?? "exit") } } });
+        const doorSkin = e?.skin ?? "door";
+        if (ev.kind === "bonus") events.push({ type: "task", req: { use: "bonuspay", ctx: { type: "door", id: ev.id, kind: ev.kind, skin: doorSkin } } });
+        else events.push({ type: "task", req: { use: "door", ctx: { type: "door", id: ev.id, kind: String(e?.params.kind ?? "exit"), skin: doorSkin } } });
         break;
       }
       case "powerupTaken":
@@ -332,7 +338,7 @@ export class Sim {
         const g = this.world.entities.find((x) => x.id === ev.id);
         if (g) g.state = "window";
         this.overlayOpen = true;
-        events.push({ type: "task", req: { use: "boss", ctx: { type: "guardian", id: ev.id } } });
+        events.push({ type: "task", req: { use: "boss", ctx: { type: "guardian", id: ev.id, skin: g?.skin ?? "" } } });
         break;
       }
       case "shooed":

@@ -17,7 +17,7 @@ function red(result: { success: boolean }, msg: string): void {
 
 // a valid task per kind (spread `over` to mutate for red cases)
 const CH = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "quickfire", stimulus: { type: "text" }, storyDe: "Frag.", kind: "choice", options: ["a", "b", "c"], answer: "a", ...over });
-const WH = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "quickfire", stimulus: { type: "entity", showsDe: "zeigt 3" }, storyDe: "Ruf.", kind: "wheel", variant: "digit-to-word", shown: "3", values: ["two", "three", "four"], answer: "three", ...over });
+const WH = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "quickfire", stimulus: { type: "entity", showsDe: "zeigt 3" }, skins: ["moths"], storyDe: "Ruf.", kind: "wheel", variant: "digit-to-word", shown: "3", values: ["two", "three", "four"], answer: "three", ...over });
 const SP = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "quickfire", stimulus: { type: "text" }, storyDe: "Buchstabiere.", kind: "spell", answer: "pen", extraLetters: "ta", ...over });
 const OR = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "rescue", stimulus: { type: "text" }, storyDe: "Bau.", kind: "order", orderedChips: ["This", "is", "my", "book"], ...over });
 const OD = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "encounter", stimulus: { type: "text" }, storyDe: "Was passt nicht?", kind: "oddone", select: "odd", items: ["pen", "pencil", "chair"], correct: ["chair"], ...over });
@@ -46,6 +46,21 @@ test("gameTasks@2 — cross-field invariants fire (red-first tamper block)", () 
   red(GameTaskV2.safeParse(MI({ fix: { mode: "replace" } })), "mistake replace without correction");
   red(GameTaskV2.safeParse(MI({ fix: { mode: "remove", correction: "x" } })), "mistake remove with a stray correction");
   red(GameTaskV2.safeParse(ME({ pairs: [{ a: "3", b: "three" }, { a: "3", b: "seven" }, { a: "9", b: "nine" }] })), "memory duplicate on a");
+});
+
+test("gameTasks@2 — THE BINDING LAW (PB-F1): a card that claims a being must name it", () => {
+  // an entity stimulus without skins is how a pencil came to ask about a rubber
+  const unbound = WH();
+  delete (unbound as Record<string, unknown>).skins;
+  red(GameTaskV2.safeParse(unbound), "entity stimulus without skins");
+  // …and the converse: a fallback card may not be bound to a being it never shows
+  red(GameTaskV2.safeParse(CH({ skins: ["pencil"] })), "skins on a text stimulus");
+  red(GameTaskV2.safeParse(WH({ skins: ["moths", "moths"] })), "duplicate skin");
+  red(GameTaskV2.safeParse(WH({ phases: ["p1", "p1"] })), "duplicate phase");
+  red(GameTaskV2.safeParse(WH({ skins: [] })), "empty skins list");
+  // the bound shape parses, with and without a phase scope
+  assert.equal(GameTaskV2.safeParse(WH({ skins: ["moths"], phases: ["p2"] })).success, true);
+  assert.equal(GameTaskV2.safeParse(WH()).success, true);
 });
 
 test("gameTasks@2 — a missing stimulus is rejected (F22/G10 law)", () => {

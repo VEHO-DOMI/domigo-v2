@@ -1,11 +1,17 @@
 # 37 · REPLAY 1 — Koki's playthrough verdict (2026-07-27), decomposed
 
 **Source: Koki's verbal feedback + screenshots in `docs/Rayman X DomiGo Screenshots/
-July 27th Gameplay DomiGo/` (git-ignored, on disk). Status: F-items routed; the
-screenshot review + full spec = the next FABLE session's first job (each F-item below
-must be re-verified against its screenshot before speccing). Overall verdict in his
-words: "a huge improvement above what we had before … but still carrying some of the
-old issues … not fully thought through from start to finish, but much, much better."**
+July 27 Gameplay DomiGo/` (git-ignored, on disk; the folder is `July 27 …`, not
+`July 27th …` as this doc first said). Status: F-items routed; the screenshot review
+is DONE — a reviewer mapped all 46 shots to their F-items and found 17 more
+(F2-19…F2-35): `scratchpad/study/f2-screenshot-evidence.md`, quoted in the F2
+passover's EVIDENCE ADDENDUM. Overall verdict in his words: "a huge improvement above
+what we had before … but still carrying some of the old issues … not fully thought
+through from start to finish, but much, much better."**
+
+**Round state (PK-F1, 2026-07-27):** the binding flagship is built — see the CLOSED
+block at the end of this file for what is verified done, and doc 35's PK-F1 entry for
+how. PK-F2 (feel & function) and PK-F3 (readability & world) still stand.
 
 ## THE TOP CLASS — tasks don't match the world
 
@@ -82,3 +88,45 @@ the door word-task ("fine as it is") · overall look ("much more beautiful now")
    content+engine packet · F2-2/15 card curation · F2-3 feel-tuning with browser
    proofs · the world/readability batch). Opus 5 executes per packet; PR discipline
    as always (one at a time on the open queue).
+
+---
+
+# ★ CLOSED by PK-F1 (2026-07-27) — verified, not assumed
+
+Every line below was checked this session on the merged main (`9d04376`) plus the
+PK-F1 branch, in the browser at `/play/1/buch`. Where the check was live, the
+observation is quoted; where it was mechanical, the gate is named. Taste verdicts
+(is it beautiful?) are NOT claimed here — they stay with Fable and Koki.
+
+## The five LIKELY-CLOSED art items — re-verified on main, no re-work
+
+| F-item | Verdict | What is on screen now (this session, dev build) |
+|---|---|---|
+| **F2-11 slide look** | **CLOSED** | p3's slide is ONE continuous 45° chute: book-mass modules under an unbroken rail edge, corner to corner. The raw-AF stair segments and the teal "spine" strip are gone. |
+| **F2-17 night fog** | **CLOSED** | p2 is a painted night, not a wash: deep blue-violet room, real chalkboard with ghost chalk-writing, a moonlit map with a light shaft, warm lantern pools, purple globe. No daylight art shining through, no bright ivy band. |
+| **F2-6 easel float** | **CLOSED** | The p3 checkpoint easel stands ON the bridge deck, feet on the paving (it hung ≈140 px above its floor before). The identity half of F2-6 (it must read as KRAKEL) stays OPEN → PK-F3. |
+| **floor seams** | **CLOSED** | p1/p3 floors are a carved book-stack mass with per-tile variation; the hard 64-px repeat is gone. |
+| **F2-12 ink field** | **IMPROVED, verdict up** | The p3 ink now sits in a framed basin: the walkway ends in stone caps left and right, a rim of ink smears runs along the top, navy bands below. It reads as a sunken pool, not a wall on the same plane. Whether the painted rim + depth grammar is *enough* is Fable's call, not mine. |
+
+## The binding round — closed on film
+
+| F-item | Verdict | Evidence |
+|---|---|---|
+| **F2-1 task↔entity mismatch** | **CLOSED** | The same pencil creature in p1 was touched repeatedly: it served `enc.pencil.c1` → `enc.pencil.m1` → `enc.pencil.c1` (its pool cycling in file order), every card about a pencil. Never a rubber, never a chair. |
+| **F2-21 arena pool leak** | **CLOSED** | A chalk hit inside the Tafel arena served `enc.tafel.c1` („Die Tafel wirft mit Kreide nach dir" → a board), then `enc.tafel.s1`. Root cause found in code: an undeflected projectile raises an ordinary encounter (`entities.ts:440`) carrying the thrower's skin — the router now scopes by phase and binds by skin. |
+| **F2-20 card covers the boss** | **CLOSED** | The card docks to the side away from the being it addresses. Screenshot: the Tafel fully visible left, card right. |
+| **F2-24 narrated climax** | **CLOSED** | The last knot now opens a FINALE card the child writes on (`fin.t1`, typed „hello"); only then does the Tafel bloom and the console beat read „Jetzt steht dein Wort da". Walked end to end in the browser. |
+| **F2-23 Klecks named in the arena** | **CLOSED** | The memory card now names the Tafel; every boss card refers only to the Tafel or to things drawn in the arena. |
+| **F2-19 stale noun across boss steps** | **CLOSED** | Root cause was pool sequencing, not a within-card bug: knot 1 served the PULT card, knot 2 served an unrelated "This is a pencil." Every boss card is now self-contained, so no order can produce a stale noun. |
+| **F2-33 meaningless arena HUD** | **CLOSED** | The counter is labelled („🪢 Knoten: 3") and a counter with nothing to count is not drawn — „Buchstaben: 0/0" is gone from the arena. |
+| **F2-2 card copy too long** | **CLOSED (machine-held)** | Every card body is ≤56 characters for the on-screen line and ≤56 for the ask; the gate fails the build otherwise. Longest in the shipped set: 52 / 48. |
+| **F2-18 was task authoring part of the build?** | **ANSWERED** | Yes — and this round rebuilt the set: 49 cards, each bound to the being it is about. |
+| **F2-22 number card vs dial** | **CLOSED, different cause** | "thirteen" WAS on the wheel, so the item was solvable — but the datum ("13") was never drawn anywhere: the moth carries no number and `WheelCard` never rendered `shown`. The card now displays the datum on a slate. (Dead art found on the way: `moths_slate.png` is never rendered by any state — a finding for PK-F3.) |
+| **F2-35 counter drops during modals** | **NOT A DEFECT** | The number is the knot counter, and each solved boss card removes one knot. It looked unexplained because it was unlabelled; the label closes it. |
+
+## Findings raised while working — routed, not silently fixed
+
+- **The rings can never be grabbed in ch01.** Swinging is gated on the `swing` ability; `ch01.level.json` grants only `jump`, `run`, `punch`. That is F2-13/14's root cause, and it means the PK-F2 choice is binary: grant `swing` or remove the rings.
+- **p1's two satchel cages can never be opened.** They need the fist; the fist is granted by Fibel in p2; the exit chain runs forward only. So 2 of the 6 cages are unreachable on a normal run — and the level-law reachability sweep cannot see it, because it sweeps with `level.abilities` (all of them) rather than the abilities granted at that phase. This is the other half of F2-34 and belongs with it in PK-F2.
+- **The boss fight is reachable** (`p4` proof tape: exits `done`, 3 tasks solved) but I could not land a chalk deflect through the dev harness in 136 throws; the finale was reached by calling the scene's own `resolveTask` for each knot. A live-hands deflect is still unproven by me.
+- **`?phase=` does not track the phase you are in** (F2-21's second half): it is the teacher's START door, so the header is authoritative and the URL keeps the value you entered with. Cosmetic — but it misread as a bug on film. **Question for Fable:** drop the param from the URL after boot, or leave it? Not a silent call.

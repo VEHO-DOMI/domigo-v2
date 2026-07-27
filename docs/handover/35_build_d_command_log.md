@@ -1074,3 +1074,144 @@ screenshotted after reload + pump dance. Whether the composition is beautiful st
 Fable's and Koki's call.
 
 **Commit.** `e4e03e3`.
+
+---
+
+# ★ PK-F1 · TASKS BOUND TO THE WORLD (the F2 round's flagship) — DONE
+
+**Branch `pb-f1-task-binding`.** Brief: `PLATFORM MASTER/SESSION-PROMPTS/
+PASSOVER_PB_F2_2026-07-27.md` (PK-F1 + the EVIDENCE ADDENDUM), doc 37, and the
+46-screenshot evidence file. Boot: fable-method + dial sheet §1, doc 37, the evidence
+file, doc 35's three reviews, doc 36 v1.1 — all re-read from the files, none from
+session memory (REVIEW 3's miss #1, not repeated).
+
+## The three root causes, code-verified before any change
+
+1. **A card was never told who asked for it.** `sim.ts:307` has emitted
+   `ctx {type:"entity", id, skin}` on every encounter since Build-B; `routing.ts`
+   `nextTask(items, use, st)` never received it and served each `use` as one blind
+   playlist. That is F2-1 in one line.
+2. **The arena leak has a specific mechanism.** `entities.ts:435-441` — an
+   *undeflected projectile* that touches the player raises `encounter` with the
+   THROWER's role and skin. The Tafel throws chalk; the chalk hits; the arena asked
+   the ordinary encounter pool for a card and got p3's ruler.
+3. **The boss was a different drawing while its card was up.** `entPoseCell` had no
+   case for `window` (the counter-task state), so the guardian fell through to the
+   a/b idle cells — `tafel_a`, the green board on an easel — while charging uses the
+   wheeled `tafel_roll` body. Two boss designs, swapped exactly when the card said
+   „schau sie an".
+
+## What was built
+
+- **Schema (`content-schema/game-tasks.ts`).** Cards carry `skins?: string[]` and
+  `phases?: string[]`, plus a `finale` use. THE BINDING LAW lives in
+  `taskInvariantErrors`, so it holds in the loader, the CLI gate and the tests at
+  once: *an `entity` stimulus must declare skins; a card with no skins may not use an
+  entity stimulus.* An unbound card is the deliberate fallback pool and therefore may
+  not claim a being on screen.
+- **Router v3 (`cards/routing.ts`).** `nextTask(items, use, ctx, st)` with
+  `ctx {phase, skin?}`: use → phase scope → skin-bound → unbound fallback. Cursors
+  are per POOL (`use|phase|skin`), so one being's progress cannot eat another's. No
+  RNG, the no-repeat-kind skip is unchanged, and an empty pool still resolves rather
+  than softlocks. `resolvePool` is exported so a gate can ask "what can this being
+  ever be answered with?".
+- **Sim.** Every world-triggered card now carries its being's skin — doors and the
+  guardian gained `skin` on their ctx; `guardianDown` carries `id` + `skin`.
+- **Content — 49 cards, re-authored.** Every entity stimulus names a being that is
+  actually drawn (checked against the sheets, not from memory). ≥3 cards per hostile
+  being; the Tafel gained its own encounter cards, so a chalk hit is answered by the
+  Tafel. Copy cut to one clause + the ask (≤56 chars each; longest shipped 52/48).
+  The boss set refers only to the Tafel and to things drawn in the arena — no
+  invisible „Beweis", no Klecks, no stale noun between rounds.
+- **The finale is played (F2-24).** The last knot serves `fin.t1` — the child types
+  the greeting — and only then does the console beat run, now reading „Jetzt steht
+  dein Wort da" instead of writing it for them. No finale card in the set ⇒ straight
+  to the console, so the beat cannot softlock.
+- **The card sits beside the being (F2-20).** `PaintScene.screenFracOf(id)` gives the
+  being's position across the view; the overlay docks to the far side (46 % width,
+  same 460 px cap as before — a shift, not a shrink). Hazard and text cards stay
+  centred.
+- **HUD (F2-33).** „🪢 Knoten: 3", „🔓 Befreit: n/6", and a counter with nothing to
+  count is not drawn. („Fieberstärke" appears nowhere in the codebase — grep is
+  empty; what Koki saw was this unlabelled knot counter.)
+- **The wheel shows its datum (F2-22).** `WheelCard` never rendered `shown`, and the
+  moth carries no painted number, so the wheel could not be solved by looking. The
+  datum now sits on a slate on the card.
+- **Guardian identity.** `window` maps to the `stagger` cell: the same wheeled body,
+  reeling — the boss no longer changes design when its card opens.
+
+## The gate, extended and TAMPER-CHECKED (8 laws, each seen red)
+
+`check-game-tasks.mjs` now also reads the sibling `*.level.json`: declared skins must
+exist as beings; a card scoped to a phase its being never enters is dead and fails;
+every hostile skin needs ≥2 cards in the pool ITS events serve (swarm→quickfire, the
+rest→encounter), a guardian needs ≥2 encounter + ≥2 boss + ≥1 finale, every cage a
+rescue card, every non-bonus door a door card; an unbound quickfire card must exist
+for hazards; and both card lines are length-linted. Each of the eight was broken on
+purpose, seen to exit 1 with its own message, and restored — the restore verified by
+sha256, not by assumption (the PK-C2b lesson: a restore is not restored until re-read).
+
+## Blind-solve — the round that changed the content
+
+Two fresh-context agents, frames only (`renderTaskText`, never the keys, never the
+repo). **They were right and I was wrong on two cards of my own making:** a paintbox
+creature whose spell answer was "floor", and a card asking the child to COUNT the
+paint pans on a 22-px sprite — the same "claims something you cannot read" class this
+packet exists to kill. Unanimous findings acted on: both paintbox cards, the Heft
+colour card, the satchel rope-colour card and the Tafel frame-colour card removed or
+replaced (visual-property questions depend on reading a sprite at 22 px); the
+ambiguous Heft mistake card became an `order` card ("This is my exercise book.") so
+"a exercise book" can never be built; three wheel cards whose German said "say it"
+now say "turn the wheel"; „Ziffer" → „Zahl" for a two-digit number; the desk and
+chair spell cards no longer read as the same question; the door card no longer asks
+the child to invite a door inside; Merle's card no longer repeats the satchel's
+sentence; the finale asks for a named word instead of any greeting. Single-vote
+flags were judged, not auto-applied: the bare imperatives „Open!/Close!" stay — the
+u01 lexicon is the source and it teaches them.
+
+**Three rounds, and the trend is the point.** Round 1: 12 + 20 flags. Round 2 (after
+the fixes): 3 + 20 — the second reader's list was almost entirely *pattern* criticism
+(twins, repeated frames, Germany-German for an Austrian child), which became the
+TWIN LAW in the gate. Round 3, one reader on the final set: 8 — and **five of those
+eight were defects my round-2 edits had introduced** (an odd-one-out sharing its
+answer word with another card, an order card rebuilding a sentence another card
+displays, a door pointing at note text that is never shown, one surviving „Ranzen",
+a boss card building what its own mistake card produces). All six real ones fixed;
+the two held are documented above. That is the drift alarm working exactly as loop 3
+promises — a fix wave is itself a draft, and it needs the same reader.
+
+## Gates (unpiped, real exit codes)
+
+vitest **275 game-paint / all packages green** · typecheck (15 packages + web) ·
+lint · grounding · design-sheets · paint-art (108 stems) · game-tasks (49 cards, 7
+layers) · build · bundle (Phaser 1 chunk, 310 KB gz) · composition (4 audits green
+over 5 phases — the two marginal reds from #236 are gone on main) · proof tapes: all
+five replay to their exits (p4 `done`, 3 tasks solved).
+
+## Browser proof (dev server on :3010, own instance)
+
+Same pencil, three touches: `enc.pencil.c1` → `enc.pencil.m1` → `enc.pencil.c1` — its
+own pool, cycling. Ink hazard → the unbound pool (`qf.free.c1`), correct: a hazard has
+no being. Arena chalk hit → `enc.tafel.c1`, then `enc.tafel.s1`. Finale walked: typed
+„hello" → the Tafel blooms (`tafel_win`) and the console card reads „Jetzt steht dein
+Wort da". Screenshots taken for p1, p2, p3 and the arena.
+
+**Harness law banked:** while the browser pane is hidden the Phaser LOADER STALLS —
+`status 3 (LOADING)`, `inflight 0`, progress frozen — and `step()` does nothing,
+because `update()` never runs until `create()` has. The pump dance is the cure and it
+needs REAL time: ~15 % of the queue lands per `wait ~10 s` + `rafStep ×300`. Read
+`load.progress` and only drive the game at `status 5`. This is why an earlier attempt
+"moved" the player 0 px for 300 ticks with no error anywhere.
+
+## Honesty clause — what I did NOT verify
+
+- **Nobody has PLAYED this with hands.** The pencil/arena/finale walks were driven
+  through the dev harness.
+- **I never landed a chalk deflect** (136 fist throws): the stagger → boss-card path
+  was reached by calling the scene's own `resolveTask` per knot. The path is proven
+  reachable by the p4 proof tape, not by my hands.
+- **The look stays Fable's and Koki's call** — I report what is on screen and hand the
+  verdict up.
+- Two blocking findings for PK-F2 are recorded in doc 37 (rings unreachable without
+  the `swing` ability; p1's two cages unopenable because the fist is granted in p2)
+  and were NOT fixed here — they are level design, outside this brief's wall.

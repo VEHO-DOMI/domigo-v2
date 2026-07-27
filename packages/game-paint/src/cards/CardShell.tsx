@@ -7,10 +7,19 @@ import React from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { renderGapHint } from "./hint.ts";
 
-export const cardWrap: React.CSSProperties = {
-  position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
+/** Which side of the canvas a card sits on. PB-F1/F2-20: a card is always put
+ *  DOWN AWAY from the being it talks about, because the boss card says „schau
+ *  auf ihre Tafel" and the centred panel used to cover exactly that. */
+export type CardAlign = "left" | "center" | "right";
+
+export const alignedWrap = (align: CardAlign): React.CSSProperties => ({
+  position: "absolute", inset: 0, display: "flex", alignItems: "center",
+  justifyContent: align === "center" ? "center" : align === "left" ? "flex-start" : "flex-end",
+  padding: align === "center" ? 0 : "0 14px",
   background: "rgba(30, 24, 12, 0.35)", zIndex: 10,
-};
+});
+
+export const cardWrap: React.CSSProperties = alignedWrap("center");
 export const cardBox: React.CSSProperties = {
   background: "#fdf7e6", border: "2px solid #c9a36a", borderRadius: 14, padding: "18px 22px",
   maxWidth: 460, width: "90%", boxShadow: "0 6px 30px rgba(30,20,10,0.35)", textAlign: "center",
@@ -24,11 +33,12 @@ const hasAnswer = (t: GameTaskV2): t is Extract<GameTaskV2, { kind: "typed" | "s
   t.kind === "typed" || t.kind === "spell";
 
 export function CardShell({
-  task, attempts, onDismiss, children,
+  task, attempts, onDismiss, align = "center", children,
 }: {
   task: GameTaskV2;
   attempts: number;
   onDismiss: () => void;
+  align?: CardAlign;
   children: React.ReactNode;
 }): React.ReactElement {
   const showDesc = attempts >= 1 && task.hints?.deDesc;
@@ -37,8 +47,8 @@ export function CardShell({
   const gap = hasAnswer(task) ? renderGapHint(task.answer, attempts) : "";
 
   return (
-    <div style={cardWrap}>
-      <div style={cardBox}>
+    <div style={alignedWrap(align)}>
+      <div style={{ ...cardBox, width: align === "center" ? "90%" : "46%", minWidth: 300 }}>
         {task.stimulus.type === "image" && (
           <p style={{ fontSize: 13, color: "#8a7a58", margin: "0 0 6px", fontStyle: "italic" }}>🖼 {task.stimulus.altDe}</p>
         )}

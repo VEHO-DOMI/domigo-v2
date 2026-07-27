@@ -52,7 +52,11 @@ export const entPoseCell = (e: EntPoseInput): string => {
   // console beat's payoff, the blackboard as a friend, can never show.
   if (e.role === "guardian") {
     if (e.state === "consoled") return "win";
-    if (e.state === "stagger") return "stagger";
+    // PB-F1/F2-25: `window` IS the counter-task moment. It used to fall through
+    // to the a/b idle cells, so the boss silently swapped to a DIFFERENT drawing
+    // of itself for exactly as long as the card asking you to look at it was up.
+    // The stagger cell (same wheeled body, reeling) holds the identity.
+    if (e.state === "stagger" || e.state === "window") return "stagger";
     if (e.state === "telegraph") return "windup";
     if (e.state === "roll") return "roll"; // PK-C3/G4: the Tafel crosses the stage
   }
