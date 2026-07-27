@@ -228,8 +228,18 @@ for (const phaseId of phases) {
     allGreen = false;
     continue;
   }
+  // PB-F2: a tape carries the WORLD it produced, not just the buttons. Stamped
+  // from the open-loop replay, so what CI asserts is what the recorder saw.
+  tape.expect = {
+    lettersGot: verdict.world.lettersGot,
+    lettersTotal: verdict.world.lettersTotal,
+    exitTo: verdict.world.exitTo,
+    cagesFreed: verdict.world.cagesFreed,
+    guardianDown: verdict.world.guardianDown,
+    tasksSolved: verdict.world.tasksSolved,
+  };
   proof.phases[phaseId] = tape;
-  console.log(`✓ ${phaseId}: exit → ${verdict.exitTo} in ${verdict.ticksUsed} ticks, ${verdict.tasksSolved} tasks auto-solved, runs=${tape.pads.length}`);
+  console.log(`✓ ${phaseId}: exit → ${verdict.exitTo} in ${verdict.ticksUsed} ticks, ${verdict.tasksSolved} tasks auto-solved, runs=${tape.pads.length}, world=${JSON.stringify(tape.expect)}`);
 }
 
 fs.writeFileSync(PROOF_PATH, JSON.stringify(proof, null, 2) + "\n");

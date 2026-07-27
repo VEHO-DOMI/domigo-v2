@@ -60,7 +60,15 @@
           1,
           0
         ]
-      ]
+      ],
+      "expect": {
+        "lettersGot": 1,
+        "lettersTotal": 8,
+        "exitTo": "p2",
+        "cagesFreed": 0,
+        "guardianDown": false,
+        "tasksSolved": 3
+      }
     },
     "p2": {
       "abilities": [
@@ -132,7 +140,15 @@
           1,
           0
         ]
-      ]
+      ],
+      "expect": {
+        "lettersGot": 2,
+        "lettersTotal": 8,
+        "exitTo": "p3",
+        "cagesFreed": 0,
+        "guardianDown": false,
+        "tasksSolved": 5
+      }
     },
     "p3": {
       "abilities": [
@@ -205,7 +221,15 @@
           1,
           0
         ]
-      ]
+      ],
+      "expect": {
+        "lettersGot": 4,
+        "lettersTotal": 7,
+        "exitTo": "boss",
+        "cagesFreed": 0,
+        "guardianDown": false,
+        "tasksSolved": 3
+      }
     },
     "p4": {
       "abilities": [
@@ -4002,7 +4026,15 @@
           14,
           2
         ]
-      ]
+      ],
+      "expect": {
+        "lettersGot": 0,
+        "lettersTotal": 0,
+        "exitTo": "done",
+        "cagesFreed": 0,
+        "guardianDown": true,
+        "tasksSolved": 3
+      }
     },
     "p9": {
       "abilities": [
@@ -4015,7 +4047,15 @@
           277,
           2
         ]
-      ]
+      ],
+      "expect": {
+        "lettersGot": 0,
+        "lettersTotal": 12,
+        "exitTo": "p2",
+        "cagesFreed": 0,
+        "guardianDown": false,
+        "tasksSolved": 0
+      }
     }
   }
 }

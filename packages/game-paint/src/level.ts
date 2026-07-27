@@ -374,6 +374,22 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         if (g === "4" && glyphAt(ph.rows, c - 1, r) !== "3") {
           failures.push({ phase: ph.id, law: "slope-pairing", detail: `'4' at (${c},${r}) is missing its '3' to the left` });
         }
+        // PB-F2 · THE PURPOSE LAW FOR RAMPS (from Koki's F2-4 "small-ledge
+        // glitch"): a 45° ramp exists to JOIN TWO WALK HEIGHTS. p1 carried a
+        // single '/' between two stretches of floor at the same height — an
+        // 8-px bump that led nowhere, put the hero's feet on a diagonal and
+        // read on film as a glitched ledge. Scoped to the FULL ramps '/' and
+        // '\': the 30° halves have their own pairing law above, and 'z' is the
+        // slide — a long chute whose whole body is diagonal by design.
+        if (g === "/" || g === "\\") {
+          const walkTop = (col: number): number => {
+            for (let rr = 0; rr < ph.rows.length; rr++) if (isSolid(glyphAt(ph.rows, col, rr)) || isSlope(glyphAt(ph.rows, col, rr))) return rr;
+            return ph.rows.length;
+          };
+          if (walkTop(c - 1) === walkTop(c + 1)) {
+            failures.push({ phase: ph.id, law: "slope-purpose", detail: `ramp '${g}' at (${c},${r}) joins two floors of the SAME height — a ramp must change the walk height` });
+          }
+        }
       }
     }
     // PB-T1 · walkers spawn standing on solid (the entity ground contract's

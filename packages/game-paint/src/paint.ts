@@ -124,6 +124,34 @@ export const fistLaunchSpeed = (charge: number, runVxSubs: number): number => {
 export const fistTravelPx = (charge: number): number =>
   Math.round((PAINT.fistTravelBaseTiles + charge / 8) * TILE);
 
+// ── PB-F2 · THE JUMP-FEEL CANDIDATES (F2-3) ──────────────────────────────────
+// Koki, REPLAY 1: "precise near-ledge jumps overshoot… the landing walks extra
+// steps forward… you tend to fall off right away because you still have this
+// forward momentum." Measured cause: airborne with NO direction held, `vx` is
+// never touched — the launch speed rides all the way to the ground — and the
+// landing then needs ~15 px of ground friction to stop.
+//
+// Three prototypes sit beside today's model. The DEFAULT stays `current`,
+// because which one FEELS right is Fable's and Koki's call, not the executor's
+// (dial sheet: taste stays up). Switch in dev with `?air=<name>`; the traces
+// that compare them live in doc 35's PK-F2 entry.
+export const AIR_MODELS = {
+  /** today, unchanged: full launch momentum to the floor, then ground friction */
+  current: { airDecay: 0, landDampPct: 0, snapMinSubs: 2 * SUBS },
+  /** let go in the air and you bleed speed — the child can AIM a landing */
+  airbrake: { airDecay: 12, landDampPct: 0, snapMinSubs: 2 * SUBS },
+  /** touch down with no direction held and half the momentum is gone at once */
+  landdamp: { airDecay: 0, landDampPct: 50, snapMinSubs: 2 * SUBS },
+  /** a walker stays a walker in the air (the snap floor was above walk speed) */
+  softsnap: { airDecay: 0, landDampPct: 0, snapMinSubs: 320 },
+} as const;
+export type AirModelName = keyof typeof AIR_MODELS;
+export type AirModel = (typeof AIR_MODELS)[AirModelName];
+/** The shipped feel. Changing this is a TASTE ruling, never an executor's call. */
+export const DEFAULT_AIR_MODEL: AirModelName = "current";
+export const airModelByName = (n: string | undefined | null): AirModel =>
+  (n !== null && n !== undefined && n in AIR_MODELS ? AIR_MODELS[n as AirModelName] : AIR_MODELS[DEFAULT_AIR_MODEL]);
+
 /** Ground momentum decay for one input-less tick (D law shape, T base). */
 export const groundDecay = (vxSubs: number, slippery: boolean): number => {
   const friction = slippery ? PAINT.frictionSlippery : PAINT.frictionNormal;
