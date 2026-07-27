@@ -39,6 +39,7 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
       else if (ev.type === "powerup") { if (!abilities.includes(ev.grants)) abilities.push(ev.grants); sim.setOverlay(false); }
       else if (ev.type === "cageFreed") { freed.push(ev.id); sim.setOverlay(false); }
       else if (ev.type === "guardianDown") sim.setOverlay(false);
+      else if (ev.type === "cageHint") sim.setOverlay(false); // PB-F3: the one-time hint
       else if (ev.type === "exit") { exited = true; exitTo = ev.to; }
     }
   };

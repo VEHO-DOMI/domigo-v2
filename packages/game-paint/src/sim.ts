@@ -50,6 +50,8 @@ export type SimEvent =
   | { type: "powerup"; grants: string }
   | { type: "cageFreed"; id: string; skin: string; classmate: string | undefined; count: number }
   | { type: "guardianDown"; id: string; skin: string }
+  /** PB-F3 · F2-8: the child is standing next to a cage the fist can open */
+  | { type: "cageHint" }
   | { type: "letters"; got: number; total: number }
   | { type: "letterTaken"; c: number; r: number }
   | { type: "exit"; to: string };
@@ -85,6 +87,8 @@ export class Sim {
   pendingPoolRespawn = false;
   bonusLeftTicks = -1; // ≥0 only in the Kleckskammer
   gateToastCooldown = 0;
+  /** PB-F3: the cage hint is once per phase mount, never a nag. */
+  cageHintFired = false;
   tickCount = 0;
   exitFired = false;
   lettersTotal = 0;
@@ -170,6 +174,7 @@ export class Sim {
     }
 
     this.stepEntityWorld(events);
+    this.nearOpenableCage(events);
     this.touchCheckpoints(events);
     this.collectLetters(events);
     this.checkExit(events);
@@ -357,6 +362,24 @@ export class Sim {
       if (Math.abs(g.x - this.player.x) <= 14 * SUBS && Math.abs(g.y - (this.player.y - 30 * SUBS)) <= 28 * SUBS) return g;
     }
     return null;
+  }
+
+  /** PB-F3 · F2-8: fire ONCE per phase when the player comes within reach of a
+   *  cage the fist could open — the shell turns the first one into a hint card
+   *  and ignores the rest. Reach is the fist's own travel, not a guess. */
+  private nearOpenableCage(events: SimEvent[]): void {
+    if (this.cageHintFired || !this.cfg.grantedAbilities().includes("punch")) return;
+    for (const e of this.world.entities) {
+      if (e.role !== "cage" || e.redeemed || e.hidden) continue;
+      const dx = Math.abs(fromSubs(e.x) - fromSubs(this.player.x));
+      const dy = Math.abs(fromSubs(e.y) - fromSubs(this.player.y));
+      if (dx <= 48 && dy <= 40) {
+        this.cageHintFired = true;
+        this.overlayOpen = true; // the hint is a card: the world waits for it
+        events.push({ type: "cageHint" });
+        return;
+      }
+    }
   }
 
   private touchCheckpoints(events: SimEvent[]): void {

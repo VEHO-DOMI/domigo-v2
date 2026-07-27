@@ -49,6 +49,8 @@ export interface PaintCallbacks {
   onPowerup: (grants: string) => void;
   onCageFreed: (id: string, skin: string, classmate: string | undefined, freedCount: number) => void;
   onGuardianDown: (id: string, skin: string) => void;
+  /** PB-F3 · F2-8: the first cage the fist can open, once per phase. */
+  onCageHint: () => void;
 }
 
 export interface PaintSceneCfg {
@@ -106,6 +108,8 @@ export class PaintScene extends Phaser.Scene {
   private fistImg!: Phaser.GameObjects.Image;
   private ropeG!: Phaser.GameObjects.Graphics;
   private letterImgs = new Map<string, Phaser.GameObjects.Image>();
+  /** PB-F3: checkpoint art by column, so the ACTIVE one can light up. */
+  private checkpointImgs = new Map<string, Phaser.GameObjects.Image>();
   private ringImgs: Array<{ img: Phaser.GameObjects.Image; baseY: number }> = [];
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
   /** PB-C1: this phase's art direction, or null ⇒ the pre-C1 render path. */
@@ -220,6 +224,7 @@ export class PaintScene extends Phaser.Scene {
         case "powerup": cb.onPowerup(ev.grants); break;
         case "cageFreed": cb.onCageFreed(ev.id, ev.skin, ev.classmate, ev.count); break;
         case "guardianDown": cb.onGuardianDown(ev.id, ev.skin); break;
+        case "cageHint": cb.onCageHint(); break;
         case "letters": cb.onLetters(ev.got, ev.total); break;
         case "letterTaken": {
           const img = this.letterImgs.get(`${ev.c},${ev.r}`);
@@ -342,6 +347,7 @@ export class PaintScene extends Phaser.Scene {
   // ── rendering ──────────────────────────────────────────────────────────────
 
   private render(): void {
+    this.renderReadability();
     const pose0 = rigPose({
       pose: this.player.pose,
       walkTime: this.player.walkTime,
@@ -816,6 +822,57 @@ export class PaintScene extends Phaser.Scene {
    * painted capital A, so it can only ever spell A — it is retired from the
    * letter face and the engine draws the real glyph instead (doc 36 §3).
    */
+  /** PB-F3 · THE READABILITY PASS (F2-6 · F2-8/16 · F2-31). Three things a
+   *  six-year-old must be able to SEE, all drawn from state the sim already
+   *  owns — no new art, no gameplay change:
+   *  · the checkpoint you have actually reached is the LIT Krakel, the others
+   *    are the waiting one, so „Krakel skizziert dich!" has a picture;
+   *  · trail letters breathe and glint, because a static gold glyph on a warm
+   *    wall reads as wallpaper (his „I felt I collected all", F2-31);
+   *  · a cage you can open NOW rocks when you come close — the fist has a
+   *    target, instead of scenery you walk past (F2-8/16). */
+  private renderReadability(): void {
+    const t = this.tickCount;
+    // ── the active checkpoint ──
+    const activeCol = this.sim.respawnCell?.c;
+    if (this.checkpointImgs.size > 0 && this.textures.exists("pb-krakel_active")) {
+      for (const [col, img] of this.checkpointImgs) {
+        const lit = Number(col) === activeCol;
+        const want = lit ? "pb-krakel_active" : "pb-krakel_a";
+        if (img.texture.key !== want) {
+          const h = img.displayHeight;
+          img.setTexture(want);
+          img.setScale(h / (img.frame.height || 1));
+        }
+        // the lit one breathes; the waiting ones sit still
+        img.setAlpha(lit && !this.cfg.reducedMotion ? 0.92 + Math.sin(t / 14) * 0.08 : 1);
+      }
+    }
+    // ── the letters ──
+    if (!this.cfg.reducedMotion) {
+      for (const [key, img] of this.letterImgs) {
+        const parts = key.split(",");
+        const phase = (Number(parts[0]) + Number(parts[1])) * 0.7; // per-letter offset
+        const baseY = img.getData("baseY") as number | undefined;
+        if (baseY === undefined) continue;
+        img.y = baseY + Math.sin(t / 18 + phase) * 1.6;
+        const glint = 0.9 + Math.abs(Math.sin(t / 26 + phase)) * 0.1;
+        img.setScale((PaintScene.LETTER_PX / (img.frame.width || 1)) * glint);
+      }
+    }
+    // ── the cages that can be opened NOW ──
+    const canPunch = this.cfg.grantedAbilities().includes("punch");
+    if (canPunch && !this.cfg.reducedMotion) {
+      for (const e of this.world?.entities ?? []) {
+        if (e.role !== "cage" || e.redeemed) continue;
+        const img = this.entityImgs.get(e.id);
+        if (!img) continue;
+        const near = Math.abs(fromSubs(e.x) - fromSubs(this.player.x)) < 42 && Math.abs(fromSubs(e.y) - fromSubs(this.player.y)) < 40;
+        img.setRotation(near ? Math.sin(t / 5) * 0.07 : 0);
+      }
+    }
+  }
+
   private letterTex(char: string): string {
     const key = `pb-glyph-${char}`;
     if (this.textures.exists(key)) return key;
@@ -878,6 +935,7 @@ export class PaintScene extends Phaser.Scene {
           const char = glyphs.get(`${c},${r}`) ?? "A";
           const img = this.add.image(cx, cy, this.letterTex(char)).setDepth(4);
           img.setDisplaySize(PaintScene.LETTER_PX, PaintScene.LETTER_PX);
+          img.setData("baseY", cy); // PB-F3: the rest line its bob returns to
           this.letterImgs.set(`${c},${r}`, img); // count lives in the Sim
         } else if (g === "X" || g === "B") {
           const img = this.add.image(cx, this.standLineBelow(c, r), this.tex("prop_exit")).setOrigin(0.5, 1).setDepth(3);
@@ -889,7 +947,16 @@ export class PaintScene extends Phaser.Scene {
           const img = this.add.image(cx, cy, this.tex("prop_vine")).setDepth(3);
           img.setScale(TILE / img.height);
         } else if (g === "C") {
-          if (this.textures.exists("pb-checkpoint_easel")) {
+          // PB-F3 · F2-6: KRAKEL, not a nameless easel. `krakel_a` is the easel
+          // WITH him standing beside it waving; `krakel_active` is the same
+          // scene with his sketch lit warm gold. The game has always said
+          // „Krakel skizziert dich!" — now the sentence has someone in it.
+          const krakelStem = this.textures.exists("pb-krakel_a") ? "pb-krakel_a" : "pb-checkpoint_easel";
+          if (this.textures.exists(krakelStem)) {
+            const img = this.add.image(cx, this.standLineBelow(c, r), krakelStem).setOrigin(0.5, 1).setDepth(3);
+            img.setScale(26 / img.height);
+            this.checkpointImgs.set(`${c}`, img);
+          } else if (this.textures.exists("pb-checkpoint_easel")) {
             const img = this.add.image(cx, this.standLineBelow(c, r), "pb-checkpoint_easel").setOrigin(0.5, 1).setDepth(3);
             img.setScale(24 / img.height);
           } else {
