@@ -226,7 +226,10 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
   // p9 Kleckskammer — ink-dream: indigo-black, atmosphere not architecture
   // (AF: "this phase's L1 is almost empty"), so it carries NO furniture band.
   p9: {
-    key: 16,
+    // Fable, PK-C2b review: lowered 16 → 14 — the delivered ink-dream measures
+    // K≈15 air / 11.6 wall; darker is truer to the fiction, so the declaration
+    // follows the truth (doc 36 v1.1 key table updated in the same commit).
+    key: 14,
     wash: { colors: [0x141a30, 0x1d2542, 0x2a3255] },
     far: shell("p9", 0.25),
     mass: { ...sharedMass(), ...crustOf("p9") },

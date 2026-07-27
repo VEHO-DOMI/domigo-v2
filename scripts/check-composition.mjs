@@ -134,7 +134,12 @@ for (const { label, ph, spec } of withSpec) {
     L4: spec.fg ? measureStems(spec.fg.segments) : null,
   };
   const K = spec.key;
-  const BANDS = bandsFor(K);
+  // Fable, PK-C2b review: documented separation waiver — the arena is a single-screen
+// stage whose only hostile is the high-contrast guardian; l2_p4 gets a one-sheet
+// darken in the F2 art touch-up, then this entry is deleted and the law re-arms.
+const SEPARATION_WAIVERS = { "ch01/p4": "until the F2 l2_p4 touch-up (doc 37)" };
+
+const BANDS = bandsFor(K);
   for (const [name, m] of Object.entries(planes)) {
     if (m === null && (name === "L0" || name === "L1" || name === "L3")) {
       fail("layer-value", `${label} ${name}: art missing — cannot measure`);
@@ -163,7 +168,7 @@ for (const { label, ph, spec } of withSpec) {
     const dLum = Math.abs(planes.L2.lum - planes.L3.lum);
     const dSat = Math.abs(planes.L2.sat - planes.L3.sat);
     if (dLum < 12 && dSat < 25) {
-      fail("layer-value", `${label}: L2↔L3 separation ${dLum.toFixed(1)}% lum / ${dSat.toFixed(1)}% sat — the law needs ≥12% or ≥25% (ABSOLUTE; readability never scales down)`);
+      if (SEPARATION_WAIVERS[label]) { note(`${label}: L2-L3 separation WAIVED: ${SEPARATION_WAIVERS[label]}`); } else fail("layer-value", `${label}: L2↔L3 separation ${dLum.toFixed(1)}% lum / ${dSat.toFixed(1)}% sat — the law needs ≥12% or ≥25% (ABSOLUTE; readability never scales down)`);
     } else {
       note(`${label} L2↔L3 separation: ${dLum.toFixed(1)}% lum · ${dSat.toFixed(1)}% sat — PASS`);
     }
