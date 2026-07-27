@@ -60,7 +60,15 @@
           1,
           0
         ]
-      ]
+      ],
+      "expect": {
+        "lettersGot": 1,
+        "lettersTotal": 8,
+        "exitTo": "p2",
+        "cagesFreed": 0,
+        "guardianDown": false,
+        "tasksSolved": 3
+      }
     },
     "p2": {
       "abilities": [
@@ -113,11 +121,11 @@
           2
         ],
         [
-          28,
+          24,
           0
         ],
         [
-          51,
+          56,
           2
         ],
         [
@@ -132,7 +140,15 @@
           1,
           0
         ]
-      ]
+      ],
+      "expect": {
+        "lettersGot": 2,
+        "lettersTotal": 8,
+        "exitTo": "p3",
+        "cagesFreed": 0,
+        "guardianDown": false,
+        "tasksSolved": 5
+      }
     },
     "p3": {
       "abilities": [
@@ -146,7 +162,7 @@
           2
         ],
         [
-          84,
+          82,
           0
         ],
         [
@@ -154,15 +170,15 @@
           2
         ],
         [
-          28,
+          33,
           0
         ],
         [
-          25,
+          31,
           2
         ],
         [
-          260,
+          251,
           0
         ],
         [
@@ -190,7 +206,7 @@
           0
         ],
         [
-          58,
+          57,
           2
         ],
         [
@@ -205,7 +221,15 @@
           1,
           0
         ]
-      ]
+      ],
+      "expect": {
+        "lettersGot": 4,
+        "lettersTotal": 7,
+        "exitTo": "boss",
+        "cagesFreed": 0,
+        "guardianDown": false,
+        "tasksSolved": 3
+      }
     },
     "p4": {
       "abilities": [
@@ -235,7 +259,7 @@
           0
         ],
         [
-          27,
+          28,
           2
         ],
         [
@@ -3979,7 +4003,7 @@
           0
         ],
         [
-          75,
+          74,
           2
         ],
         [
@@ -4002,7 +4026,15 @@
           14,
           2
         ]
-      ]
+      ],
+      "expect": {
+        "lettersGot": 0,
+        "lettersTotal": 0,
+        "exitTo": "done",
+        "cagesFreed": 0,
+        "guardianDown": true,
+        "tasksSolved": 3
+      }
     },
     "p9": {
       "abilities": [
@@ -4015,7 +4047,15 @@
           277,
           2
         ]
-      ]
+      ],
+      "expect": {
+        "lettersGot": 0,
+        "lettersTotal": 12,
+        "exitTo": "p2",
+        "cagesFreed": 0,
+        "guardianDown": false,
+        "tasksSolved": 0
+      }
     }
   }
 }

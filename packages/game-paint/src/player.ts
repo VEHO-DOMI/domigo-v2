@@ -12,7 +12,7 @@ import {
   ledgeGrabAt,
   moveBody,
 } from "./collide.ts";
-import { BODY_H, BODY_W, PAINT, SUBS, TILE, fistLaunchSpeed, groundDecay } from "./paint.ts";
+import { AIR_MODELS, type AirModel, BODY_H, BODY_W, DEFAULT_AIR_MODEL, PAINT, SUBS, TILE, fistLaunchSpeed, groundDecay } from "./paint.ts";
 import { attachSwing, releaseSwing, stepSwing, type SwingState } from "./swing.ts";
 
 export interface Pad {
@@ -83,12 +83,13 @@ export interface StepOpts {
   canHang?: boolean; // the ledge verb (ch02 unlock)
   fistBusy?: boolean; // one fist in flight at a time
   ringAt?: { x: number; y: number } | null; // nearest grabbable ring anchor (subs)
+  /** PB-F2: which air model to run (paint.ts AIR_MODELS). Omitted = the shipped one. */
+  airModel?: AirModel;
 }
 
 const HANG_DROP_PX = 26; // T: feet hang this far below a grabbed ledge top
 const HAND_ROW_PX = 24; // T: grab probe height above the feet
 const CLIMB_V = Math.round(1.5 * SUBS); // T: vine climb speed 1.5 px/t (source ±1 reads slow at our body size)
-const AIR_SNAP_MIN = 2 * SUBS; // D: Reset_air_speed normal-air table = 2 px/t toward input
 const AIR_SNAP_MAX = 7 * SUBS; // D: launch momentum carried into the air, capped at 7 px/t
 const VINE_JUMP_VY = -3 * SUBS; // D: ray_jump main_etat 4 → speed_y = −3
 const VINE_REGRAB_TICKS = 10; // D: the 10-tick no-regrab timer after a vine exit
@@ -204,6 +205,10 @@ export const stepPlayer = (
     return { st: s, events };
   }
 
+  // PB-F2: the air model in force this tick (the shipped one unless a dev
+  // session asked for a candidate) — see paint.ts AIR_MODELS.
+  const air = opts.airModel ?? AIR_MODELS[DEFAULT_AIR_MODEL];
+
   // ── hit-stun: physics only, controls locked ──
   const controlsLocked = s.stun > 0;
   if (s.stun > 0) s.stun--;
@@ -230,11 +235,15 @@ export const stepPlayer = (
       // R3-M2: canonical air control SNAPS — a direction press re-derives the
       // air speed from the state table (±2 px/t base, launch momentum kept up
       // to 7). The old half-second inertial ramp was our invention.
-      const mag = Math.min(Math.max(Math.abs(s.vx), AIR_SNAP_MIN), AIR_SNAP_MAX);
+      const mag = Math.min(Math.max(Math.abs(s.vx), air.snapMinSubs), AIR_SNAP_MAX);
       s.vx = mag * dirInput;
     }
   } else if (s.grounded) {
     s.vx = groundDecay(s.vx, slippery);
+  } else if (air.airDecay > 0) {
+    // PB-F2 candidate `airbrake`: no direction held in the air ⇒ bleed toward 0,
+    // so releasing the stick mid-flight is how you aim a landing.
+    s.vx = s.vx > 0 ? Math.max(s.vx - air.airDecay, 0) : s.vx < 0 ? Math.min(s.vx + air.airDecay, 0) : 0;
   }
 
   // ── vine climb ──
@@ -392,6 +401,9 @@ export const stepPlayer = (
     s.grounded = false;
   }
   if (s.grounded && !wasGrounded) {
+    // PB-F2 candidate `landdamp`: touching down with no direction held cuts the
+    // carried momentum at once, instead of sliding it off over ~15 px.
+    if (air.landDampPct > 0 && dirInput === 0) s.vx = Math.trunc((s.vx * (100 - air.landDampPct)) / 100);
     s.landedAgo = 0;
     s.jumpTicks = -1;
     s.airTicks = 0;

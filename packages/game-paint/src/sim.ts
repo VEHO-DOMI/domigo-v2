@@ -14,7 +14,7 @@
 // solveTask()/dismissTask()/setOverlay() — the same contract React had.
 
 import { glyphAt, isSolid } from "./collide.ts";
-import { LOGICAL_H, LOGICAL_W, PAINT, SUBS, TILE } from "./paint.ts";
+import { type AirModel, LOGICAL_H, LOGICAL_W, PAINT, SUBS, TILE } from "./paint.ts";
 import { IDLE_PAD, type Pad, type PlayerEvent, type PlayerState, applyKnockback, spawnPlayer, stepPlayer } from "./player.ts";
 import { type FistState, stepFist, throwFist } from "./fist.ts";
 import {
@@ -59,6 +59,8 @@ export interface SimCfg {
   phaseId: string;
   grantedAbilities: () => readonly string[];
   freedCageIds: () => readonly string[];
+  /** PB-F2: which jump-feel candidate to run (dev only; ships as `current`). */
+  airModel?: AirModel;
 }
 
 const fromSubs = (v: number): number => v / SUBS;
@@ -147,6 +149,7 @@ export class Sim {
       canPunch: abilities.includes("punch"),
       canHang: abilities.includes("hang"),
       fistBusy: this.fist !== null,
+      airModel: this.cfg.airModel,
       ringAt: abilities.includes("swing") ? near : null,
     });
     this.player = out.st;

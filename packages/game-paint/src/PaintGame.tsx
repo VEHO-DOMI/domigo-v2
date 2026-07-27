@@ -11,7 +11,7 @@ import Phaser from "phaser";
 import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { PaintScene, type TaskRequest } from "./PaintScene.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
-import { LOGICAL_H, LOGICAL_W, RENDER_SCALE } from "./paint.ts";
+import { LOGICAL_H, LOGICAL_W, RENDER_SCALE, airModelByName } from "./paint.ts";
 import type { PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
@@ -163,6 +163,22 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setCoarse(window.matchMedia("(pointer: coarse)").matches || new URLSearchParams(window.location.search).has("dpad"));
 
+    // PB-F2 (Fable ruling 1): `?phase=` is the teacher's START door, not a
+    // position. Leaving it in the bar made the address contradict the header on
+    // film and invited mid-chapter bookmarks that always restart that phase.
+    // Keep the entrance, drop the sign once you are through it.
+    // PB-F2 (dev only): `?air=<candidate>` runs a jump-feel prototype so the
+    // traces in doc 35 can be reproduced by hand. Read BEFORE the param strip.
+    const airModel = process.env.NODE_ENV !== "production"
+      ? airModelByName(new URLSearchParams(window.location.search).get("air"))
+      : undefined;
+
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("phase")) {
+      url.searchParams.delete("phase");
+      window.history.replaceState(null, "", url.pathname + (url.search || "") + url.hash);
+    }
+
     const game = new Phaser.Game({
       type: Phaser.AUTO,
       parent: host,
@@ -192,6 +208,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         reducedMotion,
         grantedAbilities: () => abilitiesRef.current,
         freedCageIds: () => freedRef.current,
+        airModel,
         callbacks: {
           onExit: (next) => handoff(next),
           onLetters: (got, total) => setLetters({ got, total }),

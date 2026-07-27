@@ -18,7 +18,7 @@ import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { type MassPiece, planMass } from "./mass.ts";
 import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { type PaintLevel, type PhaseSpec } from "./level.ts";
-import { LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
+import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
 import { type EntityWorld } from "./entities.ts";
@@ -63,6 +63,8 @@ export interface PaintSceneCfg {
   grantedAbilities: () => readonly string[];
   /** Cages already freed in earlier mounts (ids) — they stay burst. */
   freedCageIds: () => readonly string[];
+  /** PB-F2 jump-feel candidate (dev only; undefined = the shipped model). */
+  airModel?: AirModel;
 }
 
 const EARTH = 0xa8794f;
@@ -118,6 +120,7 @@ export class PaintScene extends Phaser.Scene {
       phaseId: cfg.phaseId,
       grantedAbilities: cfg.grantedAbilities,
       freedCageIds: cfg.freedCageIds,
+      airModel: cfg.airModel,
     });
   }
 
@@ -316,7 +319,15 @@ export class PaintScene extends Phaser.Scene {
       if (e.role.startsWith("platform")) img.setDisplaySize(40, targetH);
       else img.setScale(targetH / frameH);
       img.setFlipX(e.dir > 0);
-      if (e.redeemed && !e.role.startsWith("platform")) img.setAlpha(0.85);
+      // THE TRANSPARENCY GRAMMAR (PB-F2, Fable's PK-F1 review ruling 3):
+      // SOLID = you can act on this now · TRANSPARENT = not yet. A cage whose
+      // opening verb has not been granted is a promise, not a puzzle — it is
+      // drawn ghosted so „it only rattles" reads as intended rather than as a
+      // broken pickup. It solidifies the moment the fist is yours.
+      const ghosted = e.role === "cage" && !e.redeemed && !this.cfg.grantedAbilities().includes("punch");
+      if (ghosted) img.setAlpha(0.45);
+      else if (e.redeemed && !e.role.startsWith("platform")) img.setAlpha(0.85);
+      else img.setAlpha(1);
       if (e.state === "telegraph") img.setTint(0xfff2b0);
       else img.clearTint();
     }

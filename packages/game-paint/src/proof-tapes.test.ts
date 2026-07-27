@@ -7,7 +7,7 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { PROOF_SCHEMA, type ProofFile, replayPhaseTape } from "./tape.ts";
+import { PROOF_SCHEMA, type ProofFile, replayPhaseTape, worldAssertionErrors } from "./tape.ts";
 import { allPhases, type PaintLevel } from "./level.ts";
 
 const CONTENT = path.resolve(__dirname, "../../../content/corpus/stories");
@@ -50,12 +50,18 @@ describe("proof tapes (the playability law)", () => {
     for (const ph of allPhases(level)) {
       const tape = proof.phases[ph.id];
       if (!tape) continue;
-      it(`${name} · ${ph.id}: the tape reaches the exit through the real engine`, () => {
+      it(`${name} · ${ph.id}: the tape reaches the exit AND the world it promises`, () => {
         const res = replayPhaseTape(level, ph.id, tape);
         expect(res.exited, `tape ended after ${res.ticksUsed} ticks without the exit firing — the level changed; re-record`).toBe(true);
         // the exit must lead where the level says it leads (bonus timeout is
         // the sanctioned early return of the Kleckskammer)
         expect([ph.exit.to, "bonus-timeout"]).toContain(res.exitTo);
+        // PB-F2 · THE WORLD ASSERTIONS: buttons reaching an exit is not proof
+        // that the world did what it should. A tape carries the end-state it
+        // must land in; a guardian that stops going down fails here, where the
+        // pad stream alone stayed byte-identical and green.
+        const drift = worldAssertionErrors(tape.expect, res.world);
+        expect(drift, `world assertions failed for ${ph.id}:\n  ${drift.join("\n  ")}`).toEqual([]);
       });
     }
 
