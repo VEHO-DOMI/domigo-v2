@@ -23,9 +23,10 @@ export const RIG = {
   footStridePx: 5,
   bodyBobPx: 1.6,
   bodyLeanMaxRad: 0.16,
-  handTrailPx: 3.5,
+  handTrailPx: 2, // PB-F3/F2-7: was 3.5 — the trail hand cleared the silhouette by more than half a body width and read as dropped
   handArcXPx: 2.5,
   handArcYPx: 1.8,
+  handLagTicks: 3, // PB-F3/F2-7: the trailing hand FOLLOWS the body — arms lag, they are not placed
   hairLagTicks: 3, // the secondary-motion phase lag
   hairSwayRad: 0.22,
   idleBreathTicks: 52,
@@ -132,8 +133,17 @@ export const rigPose = (input: RigInput): RigPose => {
       // open behind at hip height; both trace small arcs (never straight lines)
       pose.handF.dx = 5 + speedT * 4 + (rm ? 0 : Math.cos(a + Math.PI) * RIG.handArcXPx);
       pose.handF.dy = -1 - speedT * 5 + (rm ? 0 : Math.sin(a + Math.PI) * RIG.handArcYPx);
-      pose.handB.dx = -7 - RIG.handTrailPx * speedT + (rm ? 0 : Math.cos(a) * RIG.handArcXPx);
-      pose.handB.dy = 2 + (rm ? 0 : Math.sin(a) * RIG.handArcYPx);
+      // PB-F3 · F2-7: the back hand was an open palm hanging at shoe height,
+      // a body-width clear of the torso and moving in exact lockstep with the
+      // feet — "one dropped glove plus one held ball" on film. It now swings on
+      // a LAGGED phase (secondary motion, like the hair), closer in and higher,
+      // so the pair reads as a pump. MEASURED across the cycle at full speed:
+      // vertical spread 4.4–11.6 px → 3.6–9.4 px, and the hand clears the
+      // 12-px body by at most 4.3 px instead of 7 — twice per cycle it now
+      // tucks just inside the silhouette instead of always floating clear.
+      const aBack = rm ? 0 : ((input.walkTime - RIG.handLagTicks) % RIG.runCycleTicks) / RIG.runCycleTicks * TAU;
+      pose.handB.dx = -6 - RIG.handTrailPx * speedT + (rm ? 0 : Math.cos(aBack) * RIG.handArcXPx);
+      pose.handB.dy = 0.5 + (rm ? 0 : Math.sin(aBack) * RIG.handArcYPx);
       // hair: lags the body's bob by a few ticks — the secondary motion
       if (!rm) {
         const lag = ((input.walkTime - RIG.hairLagTicks) % RIG.runCycleTicks) / RIG.runCycleTicks;
