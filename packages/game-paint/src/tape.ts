@@ -135,6 +135,8 @@ export const replayPhaseTape = (
         sim.setOverlay(false); // the ceremony card dismissed
       } else if (ev.type === "guardianDown") {
         sim.setOverlay(false); // the console card closes scene-side
+      } else if (ev.type === "cageHint") {
+        sim.setOverlay(false); // PB-F3: the one-time cage hint, dismissed
       } else if (ev.type === "exit" && !exited) {
         exited = true;
         exitTo = ev.to;

@@ -21,7 +21,9 @@ export const GLYPH_STEMS: Record<string, string[]> = {
   "B": ["prop_exit"],
   "s": ["prop_spring"],
   "V": ["prop_vine"],
-  "C": ["checkpoint_easel"],
+  // PB-F3: the checkpoint is KRAKEL at his easel — the being whose name the
+  // game already says ("Krakel skizziert dich!") but whose art was never wired.
+  "C": ["krakel_a", "krakel_active"],
 };
 
 /** Every entity skin needs at least its `_a` state cell (per-state renderer:

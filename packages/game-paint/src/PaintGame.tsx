@@ -53,7 +53,7 @@ declare global {
 interface OverlayState {
   req: TaskRequest;
   item: GameTaskItem | null; // null = a card without a task (powerup/pay/ceremony)
-  card: "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend";
+  card: "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend" | "cagehint";
   attempts: number;
   typed: string;
   /** PB-F1/F2-20: which side of the canvas the card sits on — always AWAY from
@@ -101,6 +101,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   );
   const freedRef = useRef<string[]>([]);
   const bonusReturnRef = useRef<string | null>(null);
+  /** PB-F3: the cage hint is a once-per-chapter teacher, not a nag. */
+  const cageHintShownRef = useRef(false);
   const [freedCount, setFreedCount] = useState(0);
   const overlayRef = useRef<OverlayState | null>(null);
   overlayRef.current = overlay;
@@ -226,6 +228,13 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           onPowerup: (grants) => {
             if (!abilitiesRef.current.includes(grants)) abilitiesRef.current = [...abilitiesRef.current, grants];
             setOverlay({ req: { use: "quickfire", ctx: { type: "hazard", hazard: "grant" } }, item: null, card: "grant", attempts: 0, typed: "", align: "center" });
+          },
+          onCageHint: () => {
+            // PB-F3 · F2-8: the first time the child stands next to a cage the
+            // fist can open, say so — once per chapter, never again.
+            if (cageHintShownRef.current) return;
+            cageHintShownRef.current = true;
+            setOverlay({ req: { use: "quickfire", ctx: { type: "hazard", hazard: "cagehint" } }, item: null, card: "cagehint", attempts: 0, typed: "", align: "center" });
           },
           onCageFreed: (id, skin, classmate, count) => {
             freedRef.current = [...freedRef.current, id];
@@ -392,8 +401,12 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         </div>
       )}
       {coarse && !done && <TouchPad pad={padRef.current} />}
+      {/* PB-F3 (the rest of F2-34): the bar only offers verbs you actually have —
+          advertising the fist before Fibel gives it is what made the rattling
+          cage in the entrance hall read as broken instead of as a promise. */}
       <p style={{ fontSize: 12, color: "#8a8066", textAlign: "center", marginTop: 6 }}>
-        ←→ laufen · SPACE springen (halten = höher) · X Faust (halten = laden) · ↑↓ klettern
+        ←→ laufen · SPACE springen (halten = höher)
+        {abilitiesRef.current.includes("punch") ? " · X Faust (halten = laden)" : ""} · ↑↓ klettern
         {buildSha ? ` · Build ${buildSha.slice(0, 7)}` : ""}
       </p>
     </div>
@@ -425,6 +438,16 @@ function Overlay({
         <p style={{ fontSize: 17, margin: "0 0 4px" }}><strong>Fibel</strong> schenkt dir die <strong>FAUST</strong>!</p>
         <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Halte <strong>X</strong> zum Laden — wirf sie auf Knoten und Kreide!</p>
         <button style={btn} onClick={() => onDismiss(o)}>Weiter</button>
+      </div></div>
+    );
+  }
+  if (o.card === "cagehint") {
+    return (
+      <div style={wrap}><div style={card}>
+        <p style={{ fontSize: 26, margin: "0 0 6px" }}>🎒✊</p>
+        <p style={{ fontSize: 17, margin: "0 0 4px" }}>Da steckt jemand fest!</p>
+        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Wirf die <strong>Faust</strong> (X) auf den Knoten — dann geht die Tasche auf.</p>
+        <button style={btn} onClick={() => onDismiss(o)}>Alles klar!</button>
       </div></div>
     );
   }

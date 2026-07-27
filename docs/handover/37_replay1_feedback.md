@@ -149,3 +149,19 @@ observation is quoted; where it was mechanical, the gate is named. Taste verdict
 **Also this packet:** proof tapes gained WORLD ASSERTIONS (`expect`: letters, exit,
 cages freed, and `guardianDown` for the arena), closing the "tapes see buttons, not the
 world" hole — tamper-checked by flipping the arena's assertion.
+
+---
+
+# ★ CLOSED by PK-F3 (2026-07-27) — readability & world
+
+| F-item | Verdict | Evidence |
+|---|---|---|
+| **F2-6 checkpoint identity** | **CLOSED** | `krakel_a` / `krakel_b` / `krakel_active` were on disk and wired NOWHERE — the `C` glyph drew a nameless easel while the game already said „Krakel skizziert dich!". Krakel is now at his easel, and the checkpoint you have reached lights up (`krakel_active`, his sketch warm gold) and breathes. The float half of F2-6 closed in PK-F1. |
+| **F2-31 letters read as backdrop** | **CLOSED** | Letters were drawn once and never touched: static gold on a warm wall. They now bob and glint per-letter. Engine-drawn, no new art. |
+| **F2-9 letter counter** | **fully answered** | PK-F2 proved the counter honest; PK-F3 fixed the reason it *felt* wrong. |
+| **F2-8 satchel cages don't read as collectible** | **CLOSED in behaviour, OPEN in art** | A cage the fist can open rocks on approach, and the first one raises a one-time hint naming the verb. The silhouette still says "bag" at 22 px — that part is in doc 38 for the art batch. |
+| **F2-16 Merle's cage has no interaction path** | **CLOSED in behaviour, OPEN in art** | Same telegraph + hint. **Correction to the evidence addendum:** it asks for a collision fix because the cage is "standable" — entities are never grid-solid; what the film shows is the platform at p2 r16 cols 58–62 beneath her. Recorded so no sheet is commissioned against a wrong premise. |
+| **F2-34 the fist arrives late** | **CLOSED** | With PK-F2's ghosted cage, the control bar now also stops offering „X Faust" before Fibel grants it. |
+| **F2-7 walk-cycle back hand** | **CLOSED** | Measured first: the hands sat 4.4–11.6 px apart vertically and the open back hand cleared the 12-px body by up to 7 px, in lockstep with the feet. Now on a lagged phase, closer and higher: 3.6–9.4 px spread, ≤4.3 px clearance. |
+| **F2-25 · F2-28 · F2-30 · F2-32 · l2_p4 waiver** | **OPEN — evidence filed** | `docs/handover/38_f3_art_evidence.md` measures each one for the Codex mini-batch, whose prompt the brief reserves for Fable at review time. It also lists **seven sheets painted and never shown** (`tafel_chalk`, `tafel_hand`, `tafel_sad`, `moths_slate`, `moths_rest`, `door_open`, `fibel_gift`). |
+| **F2-10 p3 left ledge reads no-return** | **OPEN** | Not a trap: the level's own trap-pocket law proves the exit stays reachable from every reachable node. It is a legibility problem, and with the rings gone (PK-F2) that half of p3 is emptier — filed with F2-30 in doc 38 as a level-design decision before an art one. |

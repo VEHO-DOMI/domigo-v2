@@ -1312,3 +1312,63 @@ all five tapes were re-recorded through it. **Tamper-checked:** flipping p4's
 `cagesFreed` asserts 0 everywhere. The assertion will catch a cage-count regression on
 a route that frees one, but no current tape takes such a route. A cage-freeing pilot is
 the natural next tape.
+
+---
+
+# ★ PK-F3 · READABILITY & WORLD — the world says who it is
+
+**Branch `pb-f3-readability-and-world`, from main `a56e285` (#238 merged).** Brief: the
+F2 passover's PK-F3 section + the evidence addendum's item 3. Boot check: the passover
+file was re-read from disk and is unchanged since 18:48 (no new ruling section this
+time); #237 and #238 both merged; no open PRs.
+
+## The finding that shaped the packet: Krakel was already drawn
+
+`krakel_a`, `krakel_b` and `krakel_active` have been on disk since the art batch and are
+referenced **nowhere in the code**. The `C` glyph drew `checkpoint_easel` — a nameless
+easel — while `touchCheckpoints` has always emitted „Krakel skizziert dich!". So F2-6's
+"not really clear what it is, who is there" was not missing art at all; it was unwired
+art. The glyph now draws Krakel at his easel, and the checkpoint you have ACTUALLY
+reached switches to `krakel_active` (his sketch lit warm gold) and breathes, so the
+sentence has someone in it and the active one is distinguishable from the others.
+
+## The readability pass (one render method, no gameplay change)
+
+- **F2-31 → F2-9.** Trail letters were `add.image` and never touched again: static warm
+  gold on a warm wall reads as wallpaper, which is why he "felt he collected all" while
+  the counter was honest (PK-F2 proved the counter). They now bob and glint on a
+  per-letter phase offset, engine-drawn as before.
+- **F2-8/16.** A cage the fist can open ROCKS when the child comes within reach
+  (48 × 40 px, the fist's own travel), and the FIRST such cage raises a one-time hint
+  card that names the verb. The sim fires it once per phase mount and freezes the world
+  for it like any other card. Both the CI replayer and the recorder dismiss it, so tapes
+  stay green — all five re-recorded through the recorder.
+- **rest of F2-34.** The control bar no longer advertises „X Faust" before Fibel grants
+  it. With PK-F2's ghosted cage, „rüttelt nur" now reads as a promise, not a defect.
+
+## F2-7 — measured, changed, re-measured
+
+Before touching a number: across the run cycle at full speed the two hands sat
+**4.4–11.6 px apart vertically** on a 30-px body, and the open trailing hand cleared the
+12-px silhouette by **up to 7 px**, moving in exact lockstep with the feet. That is the
+"one dropped glove plus one held ball" of his 12.59.30 frame. The trailing hand now
+swings on a **lagged phase** (`handLagTicks: 3`, the same secondary-motion trick the
+hair already used), pulled in (`handTrailPx` 3.5 → 2, base dx −7 → −6) and lifted
+(base dy 2 → 0.5). After: spread **3.6–9.4 px**, clearance **≤4.3 px**, and twice per
+cycle the hand tucks just inside the silhouette instead of always floating clear.
+
+*(A comment in that commit first carried numbers I had predicted rather than measured.
+Caught on re-read and corrected to the measured values before commit — a claim in a
+comment is still a claim.)*
+
+## The Codex mini-batch is NOT commissioned here — its evidence is
+
+The brief reserves that prompt for Fable at review time. `docs/handover/38_f3_art_evidence.md`
+is the input: the exact p4 numbers the `l2_p4` waiver rests on (L2 saturation **69.6 %**
+against a 50 % cap, while p1/p2/p3 separate cleanly at 21.9/12.9/14.6 % lum); **seven
+sheets that were painted and are shown by no state at all** (`tafel_chalk`, `tafel_hand`,
+`tafel_sad`, `moths_slate`, `moths_rest`, `door_open`, `fibel_gift`); the cage-silhouette
+ask at play size; and one CORRECTION to the addendum — it asks for a collision fix on
+Merle's standable cage, but entities are never grid-solid (`collide.ts` knows only
+glyphs). What the film shows is the platform at p2 r16 cols 58–62 that the cage stands
+on. Better to find that before a sheet is commissioned against a wrong premise.
