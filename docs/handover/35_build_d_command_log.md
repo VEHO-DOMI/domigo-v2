@@ -958,3 +958,119 @@ mandatory live machine playtest (as done here — it caught the stranding).
 6. Composition checklist per phase (law §4.5) + full-phase screenshots after reload +
    pump dance; append the PK-C2b log entry here; MC update; push. Fable re-reviews,
    then Koki merges ONCE.
+
+---
+
+# ★ PK-C2b · THE FINISHING PACKET (Batch AF2 wired) — DONE, 2 marginal failures reported
+
+**Same branch `pb-c2-composition-art`, same PR #236** (no new PR, per REVIEW 3).
+Brief: doc 35 § FABLE REVIEW 3 items 1–6 + doc 36 §1 **v1.1**, both re-read FROM THE
+FILES. The passover itself had been amended at 01:28 with a CONTINUATION NOTE I had
+not seen — re-reading it rather than trusting session memory is what surfaced this
+entire packet. That is miss #1 from REVIEW 3, not repeated.
+
+## HARD STOP checks (the new mechanical rule) — both PASS, one discrepancy logged
+
+1. **Batch folders vs the commission's file list.** `batch-af2/` holds exactly the
+   enumerated set: 5 L1 (p1,p2,p3,p4,p9) · 3 L2 (p2,p3,p4) · 5 mass (crust_p2/p3/p4/p9
+   + edges_corners) · 1 slide · 2 platforms. **Note:** the prose says "15 sheets" but
+   the enumeration sums to **16**, and the folder matches the ENUMERATION 1:1;
+   likewise "4 AF originals import unchanged" is actually **3** (l2_p1_hall, mass_body,
+   crust_p1 — l1_p3/l2_p3 both exist in AF2, so AF2 wins). Prose count typos; the RULE
+   (af2 where present, else af) is unambiguous and mechanical, so the check passes.
+2. **Disposition.** REVIEW 3 names the exact accepted/superseded split and approves
+   wiring. PASS.
+
+Result of the rule: **46 stems from AF2, 9 from AF** (55 total — two AF-only platform
+stems retired, see below).
+
+## Two sheets changed CONTRACT — both caught by measuring cells BEFORE wiring
+
+- **The slide is now TRUE-45° CELLS.** AF authored four 1024×512 modules to be laid
+  along one diagonal; AF2 authored four **512×512** modules in the sheet's left half,
+  each drawn corner-to-corner so **one module IS one `z` cell** and the under-strut is
+  that cell's triangular wedge. Wiring AF's layout to AF2's sheet keyed two cells to
+  nothing (caught by the importer's own alpha audit, exit 1). The renderer now places
+  one module per cell — no rotation, no along-diagonal stepping, no seams to chase —
+  and the importer carries a **per-batch layout override** so both contracts work.
+  Live: 6 modules on p3's 6 `z` cells, each 16×16 at rot 0.
+- **plat_a was RE-SEATED.** Column-occupancy measurement shows AF2 has only **two**
+  objects (bench x 39–984, shelf x 1107–1963 — 2 cells each), not AF's bench+shelf+
+  column. The old table would have **split the shelf down the middle and shipped two
+  half-shelves as separate platforms.** New stem `plat_shelf_2`; `plat_shelf_1` and
+  `plat_column_1` retired.
+
+## The two anchors from REVIEW 3
+
+- **Platform objects anchor by DECK line, not by their top edge.** Measured deck
+  fractions off the AF2 sheets: bench **0.10** (backrest + armrests above the seat),
+  shelf/plank 0, column 0.01, bundle 0.02. Top-anchoring sank the seat below the
+  standable line and buried the backrest in the floor. Confirmed on screen in p2: the
+  bench rails now rise above the walk surface.
+- **The floating checkpoint easel.** Ground-standing props now seat on the first solid
+  surface BELOW their marker instead of on the marker cell's own edge. Cause, measured:
+  p3's second checkpoint is marked at **row 18 with ground only at row 22** — a 3-cell
+  drop. Every other marker in ch01 sits at gap 0, so this is behaviour-neutral for them
+  and simply stops the class recurring. Live: the easel moved from y 304 to **y 352**.
+
+## The audit, ARMED at v1.1
+
+`BANDS` are now functions of each phase's declared **key** (new `key` field in the
+manifest: p1 88 · p3 86 · p2 30 · p4 28 · p9 16): L0 0.93–1.08 K (≤96) · L1 0.80–1.00 K
+· L2 0.50–0.75 K · L4 ≤0.45 K · **L3 K-exempt**. The **L1↔L2 gap** is relative (≥0.10 K);
+the **L2↔L3 separation stays ABSOLUTE**. Saturation caps measured and reported.
+
+**Tamper-checked:** mis-declaring p1's key (88 → 30) turned its L0/L1/L2 red instantly;
+restored. *(The first restore silently failed — my backup directory did not exist, and
+`cp` said so while the tamper stayed in the file. Caught by re-printing every key
+before moving on. Banked: a restore is not restored until it is re-read.)*
+
+## What AF2 fixed, measured
+
+| | AF (PK-C2) | AF2 (now) |
+|---|---|---|
+| p2 L2↔L3 separation | **4.0 %** FAIL | **12.9 %** PASS |
+| p2 L1 luminance | 71.2 % (daylit fog) | **27.0 %** — in band at K=30 |
+| p4 L1 luminance | 69.6 % | **25.0 %** — in band at K=28 |
+| p9 L1 luminance | 82.2 % | 11.6 % |
+| crust_p3 seam mismatch | inset-island voids | **0.0 % — closed loop** |
+
+Red-void tiling spot-check (two loop tiles side by side): `crust_p3_a/b` **0.0 %** seam
+mismatch — the review's named defect is gone. `crust_p1_a/b` 0.0 %, `crust_p9_a` 0.0 %.
+Residuals: `crust_p2_a` 2.4 %, `crust_p4_a` 0.8 %, `l2_p3` 0.3 % of content rows — a
+handful of rows at an anti-aliased tile edge, sub-pixel at the 17 px display height.
+Reported as measurements, not claimed as defects.
+
+## Gates — 11 of 12 green, the 12th honestly red
+
+vitest **263** · tsc ×2 · grounding · sheets · paint-art · game-tasks · build · bundle
+(1 Phaser chunk) · tapes **ALL GREEN with `content/` clean** · import re-run byte-stable.
+**check-composition exits 1** on two MARGINAL failures, reported and NOT softened:
+
+- **p4 L2↔L3 separation 9.2 % lum / 13.8 % sat** (needs ≥12 % or ≥25 %). Improved from
+  9.8 % but still short: the audience band and the stage play plane sit close in value.
+- **p9 L1 luminance 11.6 %** against a floor of 12.8 % (0.80 × K=16). Short by **1.2
+  points** — either the ink wall wants a touch more light, or p9's key is 15 rather
+  than 16. That is a law/art call, not a wiring one.
+
+## Composition checklist (law §4.5), self-run
+
+| | p1 | p2 | p3 | p4 | p9 |
+|---|---|---|---|---|---|
+| scale statement | ✓ | ✓ | ✓ | ✓ | ✓ |
+| silhouette pop (on screen) | ✓ | ✓ | ✓ | ✓ | — |
+| caps flush | ✓ | ✓ | ✓ | ✓ | ✓ |
+| slide reads as a slide | — | — | ✓ | — | — |
+| no naked fill | ✓ | ✓ | ✓ | ✓ | ✓ |
+| cover-fit everywhere | ✓ | ✓ | ✓ | ✓ | ✓ |
+| value key correct | ✓ | ✓ | ✓ | ✓ | **✗ (L1 1.2 pts low)** |
+
+## Honesty clause
+
+Nobody has PLAYED this. The tapes prove the level is still completable with the same
+inputs; they cannot see the guardian (banked in REVIEW 3). p9 was verified by
+measurement and by its audit line, not by a fresh screenshot this packet — p1/p2/p3 were
+screenshotted after reload + pump dance. Whether the composition is beautiful stays
+Fable's and Koki's call.
+
+**Commit.** `e4e03e3`.
