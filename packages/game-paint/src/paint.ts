@@ -148,7 +148,7 @@ export const AIR_MODELS = {
 export type AirModelName = keyof typeof AIR_MODELS;
 export type AirModel = (typeof AIR_MODELS)[AirModelName];
 /** The shipped feel. Changing this is a TASTE ruling, never an executor's call. */
-export const DEFAULT_AIR_MODEL: AirModelName = "current";
+export const DEFAULT_AIR_MODEL: AirModelName = "airbrake"; // Fable ruling 2026-07-27: release-to-aim (Koki: close-ledge precision); B/landdamp shelved unless the replay still shows skid
 export const airModelByName = (n: string | undefined | null): AirModel =>
   (n !== null && n !== undefined && n in AIR_MODELS ? AIR_MODELS[n as AirModelName] : AIR_MODELS[DEFAULT_AIR_MODEL]);
 
