@@ -1169,6 +1169,17 @@ sentence; the finale asks for a named word instead of any greeting. Single-vote
 flags were judged, not auto-applied: the bare imperatives „Open!/Close!" stay — the
 u01 lexicon is the source and it teaches them.
 
+**Three rounds, and the trend is the point.** Round 1: 12 + 20 flags. Round 2 (after
+the fixes): 3 + 20 — the second reader's list was almost entirely *pattern* criticism
+(twins, repeated frames, Germany-German for an Austrian child), which became the
+TWIN LAW in the gate. Round 3, one reader on the final set: 8 — and **five of those
+eight were defects my round-2 edits had introduced** (an odd-one-out sharing its
+answer word with another card, an order card rebuilding a sentence another card
+displays, a door pointing at note text that is never shown, one surviving „Ranzen",
+a boss card building what its own mistake card produces). All six real ones fixed;
+the two held are documented above. That is the drift alarm working exactly as loop 3
+promises — a fix wave is itself a draft, and it needs the same reader.
+
 ## Gates (unpiped, real exit codes)
 
 vitest **275 game-paint / all packages green** · typecheck (15 packages + web) ·

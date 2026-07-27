@@ -334,10 +334,10 @@
         "watercolours",
         "paintbrush",
         "picture",
-        "chair"
+        "door"
       ],
       "correct": [
-        "chair"
+        "door"
       ],
       "skins": [
         "paintbox"
@@ -346,7 +346,7 @@
         "p2"
       ],
       "hints": {
-        "deDesc": "Drei Dinge gehören zum Malen. Auf einem sitzt du."
+        "deDesc": "Drei Dinge gehören zum Malen. Durch eines gehst du."
       },
       "grounding": "u01 art words vs furniture"
     },
@@ -746,14 +746,14 @@
       "stimulus": {
         "type": "text"
       },
-      "storyDe": "Daran sitzt du in der Klasse. Buchstabiere es!",
-      "answer": "desk",
-      "extraLetters": "bc",
+      "storyDe": "Worauf gehst du? Buchstabiere es!",
+      "answer": "floor",
+      "extraLetters": "ts",
       "hints": {
-        "deDesc": "Ein Tisch zum Schreiben.",
-        "deWord": "Auf Deutsch: das Pult."
+        "deDesc": "Der Boden unter deinen Schuhen.",
+        "deWord": "Auf Deutsch: der Boden."
       },
-      "grounding": "u01 object: desk"
+      "grounding": "u01 object: floor"
     },
     {
       "id": "g1.paint.ch01.qf.free.c2",
@@ -844,18 +844,19 @@
       "stimulus": {
         "type": "text"
       },
-      "storyDe": "Bau die freundliche Antwort!",
+      "storyDe": "Bau den Satz — dann geht es weiter!",
       "orderedChips": [
-        "I'm",
-        "fine,",
-        "thanks",
+        "Look",
+        "at",
+        "my",
+        "book",
         "."
       ],
       "hints": {
-        "deDesc": "Fang mit „I'm\" an.",
-        "deWord": "I'm fine, thanks."
+        "deDesc": "Fang mit „Look\" an.",
+        "deWord": "Look at my book."
       },
-      "grounding": "u01 phrase: I'm fine, thanks"
+      "grounding": "u01 phrase: look at + book"
     },
     {
       "id": "g1.paint.ch01.door.d1",
@@ -886,9 +887,9 @@
       "kind": "choice",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Auf dem Zettel an der Tür steht ein Wort für Gäste"
+        "showsDe": "Die Tür ist zu — du klopfst an"
       },
-      "storyDe": "Welches Wort lässt jemanden herein?",
+      "storyDe": "Was ruft die Lehrerin dann?",
       "promptEn": "What do you say?",
       "options": [
         "Come in!",
@@ -1050,7 +1051,7 @@
       "kind": "order",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Im Ranzen wartet jemand auf den richtigen Satz"
+        "showsDe": "In der Schultasche wartet jemand auf den Satz"
       },
       "storyDe": "Bau ihn — dann springt der Knoten auf!",
       "orderedChips": [
@@ -1198,10 +1199,10 @@
         "green",
         "red",
         "brown",
-        "book"
+        "window"
       ],
       "correct": [
-        "book"
+        "window"
       ],
       "skins": [
         "tafel"
@@ -1210,7 +1211,7 @@
         "p4"
       ],
       "hints": {
-        "deDesc": "Drei sind Farben. Eines liest du."
+        "deDesc": "Drei sind Farben. Durch eines schaust du hinaus."
       },
       "grounding": "u01 colours vs object"
     },
@@ -1220,15 +1221,14 @@
       "kind": "order",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Die Tafel will, dass alle zu ihr schauen"
+        "showsDe": "Die Tafel möchte wissen, wie es dir geht"
       },
-      "storyDe": "Bau ihren Satz!",
+      "storyDe": "Bau ihre Frage!",
       "orderedChips": [
-        "Look",
-        "at",
-        "the",
-        "board",
-        "."
+        "How",
+        "are",
+        "you",
+        "?"
       ],
       "skins": [
         "tafel"
@@ -1237,10 +1237,10 @@
         "p4"
       ],
       "hints": {
-        "deDesc": "Fang mit „Look\" an.",
-        "deWord": "Look at the board."
+        "deDesc": "Fang mit „How\" an.",
+        "deWord": "How are you?"
       },
-      "grounding": "u01 phrase: look at + board"
+      "grounding": "u01 phrase: how are you"
     },
     {
       "id": "g1.paint.ch01.boss.me1",
