@@ -189,7 +189,7 @@
       "options": [
         "a pen",
         "a pencil",
-        "a ruler"
+        "a rubber"
       ],
       "answer": "a pen",
       "skins": [
@@ -278,7 +278,7 @@
       "options": [
         "Hello!",
         "Thank you!",
-        "Sorry!"
+        "Please!"
       ],
       "answer": "Hello!",
       "skins": [
@@ -298,9 +298,9 @@
       "kind": "choice",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Ein Holzkasten voller Farbnäpfchen steht offen da"
+        "showsDe": "Der Farbkasten zeigt dir seine bunten Farben"
       },
-      "storyDe": "Sag, was das ist — dann klappt er zu!",
+      "storyDe": "Sag, wie die Farben zum Malen heißen!",
       "promptEn": "What is it?",
       "options": [
         "watercolours",
@@ -334,10 +334,10 @@
         "watercolours",
         "paintbrush",
         "picture",
-        "desk"
+        "chair"
       ],
       "correct": [
-        "desk"
+        "chair"
       ],
       "skins": [
         "paintbox"
@@ -346,7 +346,7 @@
         "p2"
       ],
       "hints": {
-        "deDesc": "Drei Dinge brauchst du zum Malen. Eines steht im Klassenzimmer."
+        "deDesc": "Drei Dinge gehören zum Malen. Auf einem sitzt du."
       },
       "grounding": "u01 art words vs furniture"
     },
@@ -356,16 +356,16 @@
       "kind": "choice",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Ein brauner Schulranzen stampft auf dich zu"
+        "showsDe": "Eine braune Schultasche stampft auf dich zu"
       },
-      "storyDe": "Sag, was er ist — dann hüpft er weg!",
-      "promptEn": "What is it?",
+      "storyDe": "Sag ihr, sie soll sich SETZEN!",
+      "promptEn": "What do you say?",
       "options": [
-        "school bag",
-        "pencil case",
-        "exercise book"
+        "Sit down!",
+        "Stand up!",
+        "Listen!"
       ],
-      "answer": "school bag",
+      "answer": "Sit down!",
       "skins": [
         "ranzen"
       ],
@@ -373,10 +373,9 @@
         "p3"
       ],
       "hints": {
-        "deDesc": "Den trägst du auf dem Rücken zur Schule.",
-        "deWord": "Auf Deutsch: die Schultasche."
+        "deDesc": "Man setzt sich hin."
       },
-      "grounding": "u01 phrase: school bag"
+      "grounding": "u01 commands; sit down / stand up"
     },
     {
       "id": "g1.paint.ch01.enc.ranzen.q1",
@@ -384,7 +383,7 @@
       "kind": "oddone",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Ranzen hat alles falsch einsortiert"
+        "showsDe": "Die Schultasche hat alles falsch einsortiert"
       },
       "storyDe": "Was gehört NICHT in die Federtasche?",
       "select": "odd",
@@ -414,7 +413,7 @@
       "kind": "oddone",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der Ranzen wirft seine Karten durcheinander"
+        "showsDe": "Die Schultasche wirft ihre Karten durcheinander"
       },
       "storyDe": "Welches Wort ist KEINE Zahl?",
       "select": "odd",
@@ -645,7 +644,7 @@
         "type": "entity",
         "showsDe": "Der Falter setzt sich kurz auf deine Schulter"
       },
-      "storyDe": "Dreh das Rad auf die Zahl vom Flügel!",
+      "storyDe": "Dreh das Rad auf seine Zahl!",
       "variant": "digit-to-word",
       "shown": "7",
       "values": [
@@ -747,7 +746,7 @@
       "stimulus": {
         "type": "text"
       },
-      "storyDe": "Der Tisch in der Schule — buchstabiere ihn!",
+      "storyDe": "Daran sitzt du in der Klasse. Buchstabiere es!",
       "answer": "desk",
       "extraLetters": "bc",
       "hints": {
@@ -845,19 +844,18 @@
       "stimulus": {
         "type": "text"
       },
-      "storyDe": "Bau den Satz — dann geht es weiter!",
+      "storyDe": "Bau die freundliche Antwort!",
       "orderedChips": [
-        "This",
-        "is",
-        "my",
-        "book",
+        "I'm",
+        "fine,",
+        "thanks",
         "."
       ],
       "hints": {
-        "deDesc": "Fang mit „This\" an.",
-        "deWord": "This is my book."
+        "deDesc": "Fang mit „I'm\" an.",
+        "deWord": "I'm fine, thanks."
       },
-      "grounding": "u01 frame: This is my …"
+      "grounding": "u01 phrase: I'm fine, thanks"
     },
     {
       "id": "g1.paint.ch01.door.d1",
@@ -914,7 +912,7 @@
         "type": "entity",
         "showsDe": "Vor dir steht eine Tür aus Holz mit goldenem Knauf"
       },
-      "storyDe": "Buchstabiere, was da steht!",
+      "storyDe": "Buchstabiere, wovor du gerade stehst!",
       "promptEn": "What is it?",
       "answer": "door",
       "extraLetters": "bc",
@@ -933,7 +931,7 @@
       "kind": "choice",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Der goldene Knauf rührt sich keinen Millimeter"
+        "showsDe": "Der goldene Knauf geht nicht auf"
       },
       "storyDe": "Sag das Zauberwort!",
       "options": [
@@ -956,24 +954,23 @@
       "kind": "order",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Die Tür will erst einen ganzen Satz hören"
+        "showsDe": "Die Tür will erst einen höflichen Satz hören"
       },
       "storyDe": "Bau ihn — dann schwingt sie auf!",
       "orderedChips": [
-        "This",
-        "is",
-        "a",
-        "door",
+        "Come",
+        "in,",
+        "please",
         "."
       ],
       "skins": [
         "door"
       ],
       "hints": {
-        "deDesc": "Fang mit „This\" an.",
-        "deWord": "This is a door."
+        "deDesc": "Fang mit „Come\" an.",
+        "deWord": "Come in, please."
       },
-      "grounding": "u01 frame: This is a … + door"
+      "grounding": "u01 commands + please"
     },
     {
       "id": "g1.paint.ch01.door.d6",
@@ -1028,22 +1025,24 @@
       "kind": "choice",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Ein Ranzen hängt fest verschnürt an einem Seil"
+        "showsDe": "An einem Seil hängt eine zugeschnürte Schultasche"
       },
-      "storyDe": "Sag das Wort, das den Knoten aufgehen lässt!",
+      "storyDe": "Sag, was da hängt — dann geht der Knoten auf!",
+      "promptEn": "What is it?",
       "options": [
-        "Open!",
-        "Close!",
-        "Sit down!"
+        "school bag",
+        "pencil case",
+        "English book"
       ],
-      "answer": "Open!",
+      "answer": "school bag",
       "skins": [
         "satchel"
       ],
       "hints": {
-        "deDesc": "Das Gegenteil von zumachen."
+        "deDesc": "Die trägst du auf dem Rücken zur Schule.",
+        "deWord": "Auf Deutsch: die Schultasche."
       },
-      "grounding": "u01 commands; open/close"
+      "grounding": "u01 phrase: school bag"
     },
     {
       "id": "g1.paint.ch01.res.satchel.o1",
@@ -1082,8 +1081,8 @@
       "promptEn": "What is it?",
       "options": [
         "pencil case",
-        "school bag",
-        "exercise book"
+        "exercise book",
+        "watercolours"
       ],
       "answer": "pencil case",
       "skins": [
@@ -1130,9 +1129,9 @@
       },
       "storyDe": "Ein Wort stimmt nicht — tipp es an!",
       "sentence": [
-        "This",
-        "is",
-        "a",
+        "Look",
+        "at",
+        "the",
         "door",
         "."
       ],
@@ -1143,7 +1142,7 @@
       },
       "correctionOptions": [
         "board",
-        "desk",
+        "floor",
         "chair"
       ],
       "skins": [
@@ -1193,16 +1192,16 @@
         "type": "entity",
         "showsDe": "Die Tafel kritzelt vier Wörter auf sich"
       },
-      "storyDe": "Was siehst du hier NICHT?",
+      "storyDe": "Welches Wort ist KEINE Farbe?",
       "select": "odd",
       "items": [
-        "board",
-        "door",
-        "floor",
-        "fish"
+        "green",
+        "red",
+        "brown",
+        "book"
       ],
       "correct": [
-        "fish"
+        "book"
       ],
       "skins": [
         "tafel"
@@ -1211,9 +1210,9 @@
         "p4"
       ],
       "hints": {
-        "deDesc": "Drei Dinge siehst du hier. Eines schwimmt im Wasser."
+        "deDesc": "Drei sind Farben. Eines liest du."
       },
-      "grounding": "u01 objects vs animal; every other item is drawn in the arena"
+      "grounding": "u01 colours vs object"
     },
     {
       "id": "g1.paint.ch01.boss.o2",
@@ -1221,14 +1220,14 @@
       "kind": "order",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Die Tafel möchte dich richtig kennenlernen"
+        "showsDe": "Die Tafel will, dass alle zu ihr schauen"
       },
-      "storyDe": "Bau den höflichen Satz!",
+      "storyDe": "Bau ihren Satz!",
       "orderedChips": [
-        "Nice",
-        "to",
-        "meet",
-        "you",
+        "Look",
+        "at",
+        "the",
+        "board",
         "."
       ],
       "skins": [
@@ -1238,10 +1237,10 @@
         "p4"
       ],
       "hints": {
-        "deDesc": "Fang mit „Nice\" an.",
-        "deWord": "Nice to meet you."
+        "deDesc": "Fang mit „Look\" an.",
+        "deWord": "Look at the board."
       },
-      "grounding": "u01 phrase: nice to meet you"
+      "grounding": "u01 phrase: look at + board"
     },
     {
       "id": "g1.paint.ch01.boss.me1",

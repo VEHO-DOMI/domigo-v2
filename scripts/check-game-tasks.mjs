@@ -1,7 +1,7 @@
 // PB-T6 · THE gameTasks@2 AUTHORING GATE (run: node --experimental-strip-types
 // scripts/check-game-tasks.mjs; exit 1 on any violation; CI-runnable).
 //
-// Six layers over every content/corpus/stories/*/paint/*.tasks.v2.json:
+// Seven layers over every content/corpus/stories/*/paint/*.tasks.v2.json:
 //   1. SCHEMA + cross-field invariants — GameTasksFileV2 (content-schema),
 //      which now also carries the BINDING LAW (entity stimulus ⟺ skins).
 //   2. GROUNDING — every student-visible English token is in the unit lexicon.
@@ -14,6 +14,7 @@
 //      to a creature standing right there (Koki's REPLAY 1, F2-1).
 //   6. LENGTH (PB-F1/F2-2) — one short clause + the ask, read-aloud-able by a
 //      six-year-old in about five seconds.
+//   7. TWINS (PB-F1) — no two cards present the same answerable surface.
 // The grounding/register helpers mirror scripts/check-story-grounding.mjs
 // (same lexicon, same law) — kept compact and local on purpose.
 import fs from "node:fs";
@@ -166,6 +167,29 @@ function checkAgainstLevel(file, level, items) {
   if (freeQuickfire.length === 0) fail(w, "coverage: no unbound quickfire card — spikes and ink would have nothing to serve");
 }
 
+/** 7 · NO TWO CARDS ARE THE SAME ITEM (PB-F1, from the blind-solve round). A
+ *  child who meets the same three options or builds the same sentence twice is
+ *  practising recall of the card, not of the language — and it reads as a bug.
+ *  Same-shape is judged on the ANSWERABLE surface, not on the flavour text. */
+function checkNoTwins(file, items) {
+  const w = path.basename(file);
+  const shapes = new Map(); // signature → first id that used it
+  const sig = (t) => {
+    if (t.kind === "choice") return `choice:${[...t.options].sort().join("|")}`;
+    if (t.kind === "order") return `order:${t.orderedChips.join("|")}`;
+    if (t.kind === "mistake") return `mistake:${t.sentence.join("|")}`;
+    if (t.kind === "oddone") return `oddone:${[...t.items].sort().join("|")}`;
+    return null;
+  };
+  for (const t of items) {
+    const s = sig(t);
+    if (s === null) continue;
+    const first = shapes.get(s);
+    if (first !== undefined) fail(`${w}:${t.id}`, `twin: same ${t.kind} surface as ${first} — a child meets the identical item twice`);
+    else shapes.set(s, t.id);
+  }
+}
+
 // ── walk every *.tasks.v2.json ──
 const files = [];
 if (fs.existsSync(STORIES)) {
@@ -193,7 +217,8 @@ for (const file of files) {
     continue;
   }
   checkAgainstLevel(file, JSON.parse(fs.readFileSync(levelFile, "utf8")), parsed.data.items);
+  checkNoTwins(file, parsed.data.items);
 }
 
-if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length all green`);
+if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins all green`);
 else { console.error(`check-game-tasks: ${failures} failure(s)`); process.exit(1); }
