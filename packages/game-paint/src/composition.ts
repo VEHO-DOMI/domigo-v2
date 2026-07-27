@@ -67,13 +67,27 @@ export interface MassKit {
   /** drawn ramp masses for the 45°/30° slope glyphs. */
   rampUp: string;
   rampDown: string;
-  /** floating platforms are COMPLETE OBJECTS — a palette, widest first. */
-  platObjects: readonly { stem: string; cells: number }[];
+  /**
+   * Floating platforms are COMPLETE OBJECTS — a palette, widest first.
+   * `deck` is where the WALK SURFACE sits inside the art, as a fraction of its
+   * height: the AF2 bench carries a backrest over its seat (deck 0.10), so
+   * anchoring it by its top edge would sink the seat below the standable line
+   * and bury the backrest in the floor. 0 = the art's top edge IS the deck.
+   */
+  platObjects: readonly { stem: string; cells: number; deck?: number }[];
   /** the chalk slide (`z` runs): top / repeatable mid / run-out foot + strut. */
   slide?: { top: string; mid: string; foot: string; under: string };
 }
 
 export interface CompositionSpec {
+  /**
+   * THE PHASE KEY (doc 36 §1 v1.1) — the luminance of this room's air, in %.
+   * Every value band except L3's is expressed as a multiple of it, so one law
+   * governs a sunlit hall and an ink-black dream: L0 ∈ [0.93K, min(1.08K, 96)]
+   * · L1 ∈ [0.80K, 1.00K] · L2 ∈ [0.50K, 0.75K] · L4 ≤ 0.45K. L3 is exempt —
+   * lit figures against a dark room are the entire point.
+   */
+  key: number;
   wash: WashSpec;
   far: ShellSpec;
   mid?: ShellSpec;
@@ -135,13 +149,13 @@ const sharedMass = (): Omit<MassKit, "crust" | "crustCapL" | "crustCapR" | "slid
   // AF group 5 ships 1- and 2-cell objects. Wider runs are covered by laying
   // COMPLETE objects side by side, never by stretching one; two objects per
   // width give the planner something to alternate between.
+  // deck fractions measured off the AF2 sheets, not guessed
   platObjects: [
-    { stem: "plat_bench_2", cells: 2 },
-    { stem: "plat_plank_2", cells: 2 },
-    { stem: "plat_column_1", cells: 1 },
-    { stem: "plat_column2_1", cells: 1 },
-    { stem: "plat_shelf_1", cells: 1 },
-    { stem: "plat_bundle_1", cells: 1 },
+    { stem: "plat_bench_2", cells: 2, deck: 0.10 }, // backrest + armrests above the seat
+    { stem: "plat_plank_2", cells: 2, deck: 0 },
+    { stem: "plat_shelf_2", cells: 2, deck: 0 },
+    { stem: "plat_column2_1", cells: 1, deck: 0.01 },
+    { stem: "plat_bundle_1", cells: 1, deck: 0.02 },
   ],
 });
 
@@ -174,6 +188,7 @@ const midBand = (phase: string, height = 86): ShellSpec => ({
 export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
   // p1 Eingangshalle — morning-warm: honey light over cream walls.
   p1: {
+    key: 88,
     wash: { colors: [0xfcf4e2, 0xf4e7cb, 0xe6d7b4] }, // measured 90.4 % lum / 16.3 % sat — inside the §1 L0 band
     far: shell("p1", 0.25),
     mid: midBand("p1"),
@@ -181,6 +196,7 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
   },
   // p2 Klassenzimmer bei Nacht — moon-cool: deep blue-violet air.
   p2: {
+    key: 30,
     wash: { colors: [0x2b3358, 0x3d4470, 0x565b8a] },
     far: shell("p2", 0.25),
     mid: midBand("p2"),
@@ -189,6 +205,7 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
   // p3 Schulhof-Garten — afternoon-soft: sand plaster and chalk pastel.
   // The one phase with the chalk slide (`z` runs, AF group 4).
   p3: {
+    key: 86,
     wash: { colors: [0xf3ecd9, 0xe6dcc0, 0xd2c9a6] },
     far: shell("p3", 0.25),
     mid: midBand("p3"),
@@ -200,6 +217,7 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
   },
   // p4 Tafel-Bühne — stage-dusk: dark wood shell, audience in dusk blue.
   p4: {
+    key: 28,
     wash: { colors: [0x3a3348, 0x4a3f4e, 0x5d4f52] },
     far: shell("p4", 0.25),
     mid: midBand("p4", 96),
@@ -208,6 +226,7 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
   // p9 Kleckskammer — ink-dream: indigo-black, atmosphere not architecture
   // (AF: "this phase's L1 is almost empty"), so it carries NO furniture band.
   p9: {
+    key: 16,
     wash: { colors: [0x141a30, 0x1d2542, 0x2a3255] },
     far: shell("p9", 0.25),
     mass: { ...sharedMass(), ...crustOf("p9") },

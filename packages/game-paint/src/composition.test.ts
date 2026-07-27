@@ -285,18 +285,24 @@ describe("the carved mass (doc 36 §2)", () => {
     expect(floatingPlatformRuns(wide)).toHaveLength(0);
   });
 
-  it("draws the z run as ONE chute: top → mid → foot, plus its under-structure", () => {
+  it("assembles the z run from TRUE-45° cells: top, mids, foot, each on its own wedge", () => {
+    // AF2 re-authored the slide as per-cell modules drawn corner-to-corner, so
+    // the grid assembles the chute — no rotation, no along-diagonal stepping
     const slideGrid = ["......", ".z....", "..z...", "...z..", "....z.", "######"];
     expect(slideRuns(slideGrid)).toEqual([{ c: 1, r: 1, n: 4 }]);
-    const p = planMass(slideGrid, kit);
+    const p = planMass(slideGrid, kit, afSrc);
     expect(p.filter((q) => q.kind === "slideUnder")).toHaveLength(4);
     const surface = p.filter((q) => q.kind.startsWith("slide") && q.kind !== "slideUnder");
-    expect(surface[0]!.kind).toBe("slideTop");
-    expect(surface[surface.length - 1]!.kind).toBe("slideFoot");
-    // the modules butt up along the diagonal — one unbroken slide
-    for (const m of surface) expect(m.rot).toBeCloseTo(Math.PI / 4, 5);
-    const travelled = surface.reduce((s, m) => s + m.w, 0);
-    expect(travelled).toBeCloseTo(Math.hypot(4 * TILE, 4 * TILE), 4);
+    expect(surface.map((q) => q.kind)).toEqual(["slideTop", "slideMid", "slideMid", "slideFoot"]);
+    for (const m of surface) {
+      expect(m.rot).toBeUndefined(); // the art carries the 45°, not a transform
+      expect(m.w).toBe(TILE);
+      expect(m.h).toBe(TILE);
+      expect(m.x).toBe(m.c * TILE); // cell-exact, so the run cannot drift
+      expect(m.y).toBe(m.r * TILE);
+    }
+    // every module sits on its own cell of the diagonal
+    expect(surface.map((q) => `${q.c},${q.r}`)).toEqual(["1,1", "2,2", "3,3", "4,4"]);
   });
 
   it("NO NAKED FILL anywhere once a kit is present", () => {

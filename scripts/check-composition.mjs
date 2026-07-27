@@ -87,8 +87,20 @@ const measureColors = (colors) => {
   return { lum: lum * 100, sat: sat * 100, samples: colors.length };
 };
 
-/** doc 36 §1 — REPORTED, not armed: see the day/night note at the bottom. */
-const BANDS = { L0: [82, 95, 20], L1: [70, 88, 35], L2: [45, 65, 50], L4: [15, 40, 45] };
+/**
+ * doc 36 §1 **v1.1** — ARMED. The bands are multiples of the phase's declared
+ * KEY (the luminance of its air), so one law governs a sunlit hall and an
+ * ink-black dream; at K=88 they reproduce v1.0's absolute numbers exactly.
+ * L3 is K-exempt (lit figures against a dark room are the point), and the
+ * L2↔L3 separation stays ABSOLUTE — readability never scales down.
+ * Saturation caps stay absolute as tabled.
+ */
+const bandsFor = (K) => ({
+  L0: [0.93 * K, Math.min(1.08 * K, 96), 20],
+  L1: [0.80 * K, 1.00 * K, 35],
+  L2: [0.50 * K, 0.75 * K, 50],
+  L4: [0, 0.45 * K, 45],
+});
 
 // ── the levels under audit ───────────────────────────────────────────────────
 const phases = [];
@@ -121,6 +133,8 @@ for (const { label, ph, spec } of withSpec) {
     L3: measureStems([...spec.mass.crust, ...spec.mass.body, spec.mass.fade, spec.mass.sediment, ...entityStems]),
     L4: spec.fg ? measureStems(spec.fg.segments) : null,
   };
+  const K = spec.key;
+  const BANDS = bandsFor(K);
   for (const [name, m] of Object.entries(planes)) {
     if (m === null && (name === "L0" || name === "L1" || name === "L3")) {
       fail("layer-value", `${label} ${name}: art missing — cannot measure`);
@@ -128,19 +142,28 @@ for (const { label, ph, spec } of withSpec) {
     }
     if (m === null) continue;
     const band = BANDS[name];
-    const inBand = band ? m.lum >= band[0] && m.lum <= band[1] && m.sat <= band[2] : true;
-    note(`${label} ${name}: lum ${m.lum.toFixed(1)}% · sat ${m.sat.toFixed(1)}%${band ? `  [law ${band[0]}–${band[1]}%, sat ≤${band[2]}%] ${inBand ? "in band" : "OUT OF BAND (reported, not armed — see note)"}` : ""}`);
+    if (!band) { note(`${label} ${name}: lum ${m.lum.toFixed(1)}% · sat ${m.sat.toFixed(1)}%  [K-exempt]`); continue; }
+    const [lo, hi, satCap] = band;
+    const lumOk = m.lum >= lo - 0.05 && m.lum <= hi + 0.05;
+    const satOk = m.sat <= satCap + 0.05;
+    const tag = `[v1.1 @K=${K}: ${lo.toFixed(1)}–${hi.toFixed(1)}%, sat ≤${satCap}%]`;
+    if (!lumOk) fail("layer-value", `${label} ${name}: lum ${m.lum.toFixed(1)}% is OUTSIDE its band ${tag}`);
+    else note(`${label} ${name}: lum ${m.lum.toFixed(1)}% · sat ${m.sat.toFixed(1)}%  ${tag} lum in band${satOk ? "" : " — SATURATION OVER CAP (reported)"}`);
   }
-  // ARMED: the depth ramp direction — the far shell is lifted above the mid
-  if (planes.L1 && planes.L2 && planes.L1.lum <= planes.L2.lum) {
-    fail("layer-value", `${label}: no depth ramp — L1 (${planes.L1.lum.toFixed(1)}%) must be lifted above L2 (${planes.L2.lum.toFixed(1)}%)`);
+  // ARMED: the depth ramp — v1.1 makes the L1↔L2 gap relative to the key,
+  // because atmospheric dark phases may separate by silhouette instead
+  if (planes.L1 && planes.L2) {
+    const gap = planes.L1.lum - planes.L2.lum;
+    if (gap < 0.10 * K) {
+      fail("layer-value", `${label}: L1↔L2 gap ${gap.toFixed(1)}% < the law's 0.10·K (${(0.10 * K).toFixed(1)}%) — the far shell must stay lifted above the furniture`);
+    }
   }
-  // ARMED: the separation law — enemies must never camouflage against furniture
+  // ARMED and ABSOLUTE: enemies must never camouflage against furniture
   if (planes.L2 && planes.L3) {
     const dLum = Math.abs(planes.L2.lum - planes.L3.lum);
     const dSat = Math.abs(planes.L2.sat - planes.L3.sat);
     if (dLum < 12 && dSat < 25) {
-      fail("layer-value", `${label}: L2↔L3 separation ${dLum.toFixed(1)}% lum / ${dSat.toFixed(1)}% sat — the law needs ≥12% or ≥25%. The furniture band and the play plane sit at the same value AND the same saturation, which is the camouflage class doc 36 §0.2 exists to kill. NOTE (PK-C2): this fails only on the NIGHT/DUSK phases, and the executor's own on-screen pop test found the enemies still separating by outline and hue — law vs. delivered art, a Fable call.`);
+      fail("layer-value", `${label}: L2↔L3 separation ${dLum.toFixed(1)}% lum / ${dSat.toFixed(1)}% sat — the law needs ≥12% or ≥25% (ABSOLUTE; readability never scales down)`);
     } else {
       note(`${label} L2↔L3 separation: ${dLum.toFixed(1)}% lum · ${dSat.toFixed(1)}% sat — PASS`);
     }
@@ -195,11 +218,8 @@ for (const { label, ph, spec } of withSpec) {
 
 // ── verdict ──────────────────────────────────────────────────────────────────
 console.log(
-  "\nNOTE (PK-C1, for Fable): the doc 36 §1 ABSOLUTE value bands are printed but NOT armed.\n"
-  + "They describe a day-lit room, and the AF palette card commissions p2 as \"deep blue-violet air\",\n"
-  + "p4 as \"stage-dusk\" and p9 as \"indigo-black\" — no night phase can sit at 82–95% lightness.\n"
-  + "Armed instead: the ramp direction (L1 lifted above L2) and the L2↔L3 separation law, both of\n"
-  + "which are key-independent. Deciding how the bands read for a night key is a law call, not mine.",
+  "\nBands ARMED at doc 36 §1 v1.1 (relative to each phase's declared key). L3 is K-exempt;\n"
+  + "the L2\u2194L3 separation stays absolute. Saturation caps are measured and reported.",
 );
 if (failures === 0) {
   console.log(`\ncheck-composition: OK — 4 audits green over ${withSpec.length} phase(s)`);

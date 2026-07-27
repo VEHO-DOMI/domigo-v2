@@ -139,13 +139,14 @@ export const slideRuns = (grid: readonly string[]): Array<{ c: number; r: number
  * between them deterministically, so a level of 2-cell ledges is not a level
  * of identical benches.
  */
+type PlatObject = { stem: string; cells: number; deck?: number };
 const coverWithObjects = (
   cells: number,
-  palette: readonly { stem: string; cells: number }[],
+  palette: readonly PlatObject[],
   seed: number,
-): Array<{ stem: string; cells: number }> => {
+): PlatObject[] => {
   const sorted = [...palette].filter((p) => p.cells >= 1).sort((a, b) => b.cells - a.cells);
-  const out: Array<{ stem: string; cells: number }> = [];
+  const out: PlatObject[] = [];
   let left = cells;
   let guard = 0;
   while (left > 0 && guard++ < 32) {
@@ -189,9 +190,12 @@ export const planMass = (
         // a bench stays a bench instead of being stretched to the cell box
         const objW = obj.cells * TILE;
         const objH = Math.min(objW / Math.max(aspect(obj.stem), 0.05), TILE * 2);
+        // anchored by its DECK, not its top edge: whatever the art draws above
+        // the walk surface (the bench's backrest) rises above the standable
+        // line instead of being buried in the floor
         out.push({
           kind: "platform", stem: obj.stem, c: Math.floor(x / TILE), r: run.r,
-          x, y: run.r * TILE - CRUST_LIP, w: objW, h: objH,
+          x, y: run.r * TILE - (obj.deck ?? 0) * objH, w: objW, h: objH,
           depth: DEPTH.platform,
         });
         x += objW;
@@ -311,34 +315,29 @@ export const planMass = (
     }
   }
 
-  // ── 6 · the chalk slide: under-structure + a continuous surface band ───────
+  // ── 6 · the chalk slide: ONE module per `z` cell ───────────────────────────
+  // Batch AF2 re-authored the slide as TRUE-45° CELLS — each module is drawn
+  // corner-to-corner inside a 512² cell, and the under-strut is that cell's
+  // triangular wedge. So the chute is assembled by the grid itself: no
+  // rotation, no along-diagonal stepping, no seams to chase. (AF's earlier
+  // sheet wanted a rotated band laid along the run; the art changed contract,
+  // and the renderer follows the art.)
   if (kit.slide) {
     const slide = kit.slide;
     for (const run of slideRuns(grid)) {
       for (let k = 0; k < run.n; k++) {
+        const c = run.c + k;
+        const r = run.r + k;
         out.push({
-          kind: "slideUnder", stem: slide.under, c: run.c + k, r: run.r + k,
-          x: (run.c + k) * TILE, y: (run.r + k) * TILE, w: TILE, h: TILE, depth: DEPTH.ramp,
+          kind: "slideUnder", stem: slide.under, c, r,
+          x: c * TILE, y: r * TILE, w: TILE, h: TILE, depth: DEPTH.ramp,
         });
-      }
-      // the surface rides the diagonal from the run's top-left corner to the
-      // last cell's bottom-right corner — ONE unbroken chute, never per-cell steps
-      const len = Math.hypot(run.n * TILE, run.n * TILE);
-      const modules = Math.max(2, Math.ceil(len / (SLIDE_BAND_PX * 2)));
-      const step = len / modules;
-      const rot = Math.PI / 4; // 45° down-right
-      for (let i = 0; i < modules; i++) {
-        const along = i * step;
-        const x = run.c * TILE + (along * Math.SQRT1_2);
-        const y = run.r * TILE + (along * Math.SQRT1_2);
-        const stem = i === 0 ? slide.top : i === modules - 1 ? slide.foot : slide.mid;
-        const kind = i === 0 ? "slideTop" : i === modules - 1 ? "slideFoot" : "slideMid";
-        // anchored ON the travel line: the band straddles it, a lip above and
-        // the rest sunk into the wedge below (rotation is around this anchor)
+        const first = k === 0;
+        const last = k === run.n - 1;
         out.push({
-          kind, stem, c: run.c + Math.floor(along * Math.SQRT1_2 / TILE), r: run.r + Math.floor(along * Math.SQRT1_2 / TILE),
-          x, y, w: step, h: SLIDE_BAND_PX,
-          rot, originX: 0, originY: SLIDE_ABOVE_FRAC, depth: DEPTH.slide,
+          kind: first ? "slideTop" : last ? "slideFoot" : "slideMid",
+          stem: first ? slide.top : last ? slide.foot : slide.mid,
+          c, r, x: c * TILE, y: r * TILE, w: TILE, h: TILE, depth: DEPTH.slide,
         });
       }
     }

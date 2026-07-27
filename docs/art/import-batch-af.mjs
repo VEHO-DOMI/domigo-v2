@@ -37,8 +37,21 @@ import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
 
-const LAB = "/Users/veho/Code/codex-art-lab/batch-af";
+// PK-C2b · AF2 PRIORITY. Batch AF2 (16 corrected sheets — dark-phase repaints at
+// their v1.1 keys, painted seams, flush tile geometry, true-45° slide and slope
+// cells, re-seated platform objects) landed ~80 minutes after PR #236 opened.
+// The import source rule is mechanical: **af2 where a file exists there, af
+// otherwise**. Three AF originals survive untouched because AF2 does not
+// re-issue them: l2_p1_hall, mass_body, crust_p1.
+const LAB2 = "/Users/veho/Code/codex-art-lab/batch-af2";
+const LAB1 = "/Users/veho/Code/codex-art-lab/batch-af";
 const OUT = path.join(process.cwd(), "apps/web/public/art/g1/paint/ch01");
+
+/** af2 wins where present; returns [absolutePath, whichBatch]. */
+const resolveSheet = (rel) => {
+  const p2 = path.join(LAB2, rel);
+  return fs.existsSync(p2) ? [p2, "af2"] : [path.join(LAB1, rel), "af"];
+};
 
 const TOL = 40;
 const read = (p) => PNG.sync.read(fs.readFileSync(p));
@@ -151,16 +164,33 @@ const SHEETS = [
     ],
   },
 
-  // GROUP 4 · the chalk slide: four 1024×512 modules (2 cols × 2 rows)
+  // GROUP 4 · the chalk slide.
+  // AF authored it as four 1024×512 modules meant to be laid along one diagonal.
+  // AF2 RE-AUTHORED it as TRUE-45° CELLS: four 512×512 modules in the sheet's
+  // left half, each drawn corner-to-corner so one module IS one `z` grid cell
+  // (and the under-strut is that cell's triangular wedge). Different contract,
+  // so the layout is declared per batch — verified by measuring both sheets.
+  // `keep` mode: keyed but NOT trimmed, because a per-cell module's position
+  // inside its cell IS the geometry.
   {
     file: "slide/chalk_slide.png", cols: 2, rows: 2, mode: "band",
     pieces: [[0, 1, "slide_top"], [1, 2, "slide_mid"], [2, 3, "slide_foot"], [3, 4, "slide_under", "sprite"]],
+    af2: {
+      cols: 4, rows: 2, mode: "keep",
+      pieces: [[0, 1, "slide_top"], [1, 2, "slide_mid"], [4, 5, "slide_foot"], [5, 6, "slide_under"]],
+    },
   },
 
   // GROUP 5 · floating platform OBJECTS (the 2-cell ones are painted 2 wide)
   {
+    // AF seated three objects here (bench 2 cells, shelf 1, column 1). AF2
+    // RE-SEATED them: measuring column occupancy shows only TWO objects —
+    // the bench at x 39–984 and the shelf at x 1107–1963, i.e. 2 cells each.
+    // Keeping AF's split would have cut the shelf in half and shipped two
+    // half-shelves as separate platforms.
     file: "platforms/plat_a.png", cols: 4, rows: 1, mode: "sprite",
     pieces: [[0, 2, "plat_bench_2"], [2, 3, "plat_shelf_1"], [3, 4, "plat_column_1"]],
+    af2: { cols: 4, rows: 1, mode: "sprite", pieces: [[0, 2, "plat_bench_2"], [2, 4, "plat_shelf_2"]] },
   },
   {
     file: "platforms/plat_b.png", cols: 4, rows: 1, mode: "sprite",
@@ -168,15 +198,17 @@ const SHEETS = [
   },
 ];
 
-const MIN_ALPHA = { plate: 0.5, band: 0.2, sprite: 0.08 };
+const MIN_ALPHA = { plate: 0.5, band: 0.2, sprite: 0.08, keep: 0.08 };
 
 // ── run ──────────────────────────────────────────────────────────────────────
 fs.mkdirSync(OUT, { recursive: true });
 const written = [];
 
-for (const sheet of SHEETS) {
-  const src = path.join(LAB, sheet.file);
-  if (!fs.existsSync(src)) { failures.push(`source sheet MISSING: ${sheet.file}`); continue; }
+for (const base of SHEETS) {
+  const [src, batch] = resolveSheet(base.file);
+  if (!fs.existsSync(src)) { failures.push(`source sheet MISSING: ${base.file}`); continue; }
+  // a batch may re-author a sheet's cell grid entirely (AF2's true-45° slide)
+  const sheet = batch === "af2" && base.af2 ? { ...base, ...base.af2 } : base;
   const png = read(src);
   const cw = png.width / sheet.cols;
   const ch = png.height / sheet.rows;
@@ -194,6 +226,8 @@ for (const sheet of SHEETS) {
     const col = from % sheet.cols;
     let img = crop(png, col * cw, row * ch, (to - from) * cw, ch);
     if (mode !== "plate") { chromaKey(img); defringe(img); }
+    // "keep" is keyed but never cropped — the piece's place inside its cell is
+    // the contract (per-cell slide modules would otherwise lose their offset)
     cut.push({ stem, mode, img });
   }
 
@@ -223,17 +257,18 @@ for (const sheet of SHEETS) {
       continue;
     }
     fs.writeFileSync(path.join(OUT, `${c.stem}.png`), PNG.sync.write(c.img));
-    written.push({ stem: c.stem, mode: c.mode, w: c.img.width, h: c.img.height, alpha: share, from: sheet.file });
+    written.push({ stem: c.stem, mode: c.mode, w: c.img.width, h: c.img.height, alpha: share, from: sheet.file, batch });
   }
 }
 
 // ── report ───────────────────────────────────────────────────────────────────
 for (const w of written) {
-  console.log(`  ${w.stem.padEnd(20)} ${String(w.w).padStart(5)}×${String(w.h).padEnd(5)} ${w.mode.padEnd(7)} alpha ${(w.alpha * 100).toFixed(1).padStart(5)}%  ← ${w.from}`);
+  console.log(`  ${w.batch.toUpperCase().padEnd(3)} ${w.stem.padEnd(20)} ${String(w.w).padStart(5)}×${String(w.h).padEnd(5)} ${w.mode.padEnd(7)} alpha ${(w.alpha * 100).toFixed(1).padStart(5)}%  ← ${w.from}`);
 }
 if (failures.length > 0) {
   console.error(`\nimport-batch-af: ${failures.length} FAILURE(S)`);
   for (const f of failures) console.error(`  ✗ ${f}`);
   process.exit(1);
 }
-console.log(`\nimport-batch-af: OK — ${written.length} stems written from ${SHEETS.length} sheets`);
+const fromAf2 = written.filter((w) => w.batch === "af2").length;
+console.log(`\nimport-batch-af: OK — ${written.length} stems from ${SHEETS.length} sheets (${fromAf2} from AF2, ${written.length - fromAf2} from AF)`);
