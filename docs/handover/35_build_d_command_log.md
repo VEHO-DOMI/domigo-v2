@@ -1293,10 +1293,20 @@ overshoot. Traces from the real engine on a flat floor, canonical 12-tick hold:
 
 Height and air-time are identical in every row: the vertical arc is canon and untouched.
 `airbrake` gives the child mid-air aim; `landdamp` only removes the extra steps after
-landing; `softsnap` is the one that restores a genuine short hop. **The default stays
-`current`** — which of these FEELS right is Fable's and Koki's call. Switch in dev with
+landing; `softsnap` is the one that restores a genuine short hop. ~~**The default stays
+`current`** — which of these FEELS right is Fable's and Koki's call.~~ Switch in dev with
 `?air=airbrake|landdamp|softsnap`; the pick is then a one-line change to
 `DEFAULT_AIR_MODEL`.
+
+**CORRECTION — PK-R1, 2026-07-28.** The struck sentence stopped being true the moment
+the feel verdict landed. The shipped default is **`airbrake`**, not `current`
+(`packages/game-paint/src/paint.ts:151`, `DEFAULT_AIR_MODEL` — Fable ruling 2026-07-27:
+release-to-aim, for the close-ledge precision Koki asked for; `landdamp` shelved unless
+a replay still shows skid). Koki's Replay 2 provisionally passed it (doc 39, „airbrake
+feel provisionally passed"). It survived four PRs because it reads as a PLAN, and plans
+are not re-read against the code — but a sentence about what ships is a claim about the
+code from the moment the decision lands. Same correction applied in doc 37's F2-3 row,
+which carried the identical stale claim in different words.
 
 ## Tapes now see the world
 

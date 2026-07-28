@@ -20,6 +20,24 @@ import { REPO_ROOT } from "@domigo/content-loader";
 const STORY_ID = /^g[1-4]\.st\.[a-z0-9-]+$/;
 const CHAPTER_ID = /^ch\d{2}$/;
 
+// Entity params stay OPEN — every role brings its own knobs — but the fields the
+// level laws read are shape-checked here, mirroring game-paint's EntityParams.
+// PB-R1: `price` (R3-2, the letter economy) and `essential` (R3-3, the pickup
+// gate) both drive machine laws AND rendered card copy; a string "8" or a
+// truthy "false" would slip past an open record and reach a child's screen.
+const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
+  const p = ctx.value;
+  if ("price" in p && (typeof p.price !== "number" || !Number.isInteger(p.price) || p.price <= 0)) {
+    ctx.issues.push({ code: "custom", input: p, path: ["price"], message: "params.price must be a whole number ≥ 1" });
+  }
+  if ("essential" in p && typeof p.essential !== "boolean") {
+    ctx.issues.push({ code: "custom", input: p, path: ["essential"], message: "params.essential must be a boolean" });
+  }
+  if ("grants" in p && typeof p.grants !== "string") {
+    ctx.issues.push({ code: "custom", input: p, path: ["grants"], message: "params.grants must be a string" });
+  }
+});
+
 const PaintEntity = z.object({
   id: z.string().min(1),
   role: z.enum([
@@ -31,7 +49,7 @@ const PaintEntity = z.object({
   c: z.number().int().nonnegative(),
   r: z.number().int().nonnegative(),
   tier: z.enum(["E", "M", "S"]),
-  params: z.record(z.string(), z.unknown()).optional(),
+  params: PaintParams.optional(),
 });
 
 const PaintLink = z.object({

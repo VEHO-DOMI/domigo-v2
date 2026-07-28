@@ -65,6 +65,9 @@ export interface PaintSceneCfg {
   grantedAbilities: () => readonly string[];
   /** Cages already freed in earlier mounts (ids) — they stay burst. */
   freedCageIds: () => readonly string[];
+  /** PB-R1 · R3-1: chapter state again — has the fist hint already been taught?
+   *  The sim must not freeze the world for a card the shell will not open. */
+  cageHintShown?: () => boolean;
   /** PB-F2 jump-feel candidate (dev only; undefined = the shipped model). */
   airModel?: AirModel;
 }
@@ -124,6 +127,7 @@ export class PaintScene extends Phaser.Scene {
       phaseId: cfg.phaseId,
       grantedAbilities: cfg.grantedAbilities,
       freedCageIds: cfg.freedCageIds,
+      cageHintShown: cfg.cageHintShown,
       airModel: cfg.airModel,
     });
   }
