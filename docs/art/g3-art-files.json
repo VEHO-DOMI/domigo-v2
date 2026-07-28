@@ -438,8 +438,7 @@
       "file": "beat_ch01_s009.png",
       "section": "D · ch01",
       "class": "beat",
-      "maxPx": 1280,
-      "legacy": "g3-ch01-scene-completion"
+      "maxPx": 1280
     },
     {
       "stem": "beat_ch01_s010",
@@ -589,7 +588,8 @@
       "file": "beat_ch03_s009.png",
       "section": "D · ch03",
       "class": "beat",
-      "maxPx": 1280
+      "maxPx": 1280,
+      "legacy": "g3-ch02-scene-completion"
     },
     {
       "stem": "beat_ch03_s010",
@@ -645,7 +645,8 @@
       "file": "beat_ch04_s007.png",
       "section": "D · ch04",
       "class": "beat",
-      "maxPx": 1280
+      "maxPx": 1280,
+      "legacy": "g3-ch04-social-sara-like"
     },
     {
       "stem": "beat_ch04_s008",
@@ -873,7 +874,8 @@
       "file": "beat_ch07_s009.png",
       "section": "D · ch07",
       "class": "beat",
-      "maxPx": 1280
+      "maxPx": 1280,
+      "legacy": "g3-ch07-scene-completion"
     },
     {
       "stem": "beat_ch07_s010",
@@ -937,7 +939,8 @@
       "file": "beat_ch08_s008.png",
       "section": "D · ch08",
       "class": "beat",
-      "maxPx": 1280
+      "maxPx": 1280,
+      "legacy": "g3-ch08-social-comment"
     },
     {
       "stem": "beat_ch08_s009",
@@ -1197,7 +1200,8 @@
       "file": "beat_ch12_s004.png",
       "section": "D · ch12",
       "class": "beat",
-      "maxPx": 1280
+      "maxPx": 1280,
+      "legacy": "g3-ch12-social-ben-phone"
     },
     {
       "stem": "beat_ch12_s005",
@@ -1383,14 +1387,15 @@
       "section": "D · ch14",
       "class": "beat",
       "maxPx": 1280,
-      "legacy": "g3-ch14-scene-completion"
+      "legacy": "g3-ch14-social-youtube-live"
     },
     {
       "stem": "beat_ch14_s010",
       "file": "beat_ch14_s010.png",
       "section": "D · ch14",
       "class": "beat",
-      "maxPx": 1280
+      "maxPx": 1280,
+      "legacy": "g3-ch14-scene-completion"
     },
     {
       "stem": "panel_ch10_script_mc",

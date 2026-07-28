@@ -20,7 +20,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
-  STYLE, NEG, SCREEN, CH, STATE, W, F, arcOf,
+  STYLE, NEG, SCREEN, CH, STATE, W, F, arcOf, textClause,
   FRAMES, PORTRAITS, BACKDROPS, BEATS, PANELS,
 } from "./g3-fourteen-data.mjs";
 
@@ -50,6 +50,7 @@ function compose(e) {
     ...chars,
     e.world ? W[e.world] : "",
     e.screen ? SCREEN : "",
+    e.text ? textClause(e.text) : "",
     arcOf(e.chapter),
     NEG,
   ].filter(Boolean).join(" ").replace(/\s+/g, " ").trim();
@@ -74,14 +75,14 @@ for (const [n, world, scene] of BACKDROPS) {
     section: "C · Backdrops", label: `ch${n} — the place itself`,
   });
 }
-for (const [key, [scene, charStr, world, opts]] of Object.entries(BEATS)) {
+for (const [key, [scene, charStr, world, opts, text]] of Object.entries(BEATS)) {
   const [ch, sc] = key.split(".");
   const states = {};
   for (const m of (opts ?? "").matchAll(/state:(\w+)=(\w+)/g)) states[m[1]] = m[2];
   entries.push({
     stem: `beat_${ch}_${sc}`, cls: "beat", chapter: Number(ch.slice(2)), scene,
     chars: charStr ? charStr.split(/\s+/) : [], states, world,
-    screen: (opts ?? "").includes("screen"),
+    screen: (opts ?? "").includes("screen"), text,
     section: `D · ${ch}`, label: key, sceneKey: key,
   });
 }
@@ -97,6 +98,10 @@ const fail = [];
 const bad = (m) => fail.push(m);
 
 // Real brands, platforms, landmarks and people the STORY names but the PICTURES must not.
+// Real brands, platforms, landmarks and people the STORY names but the PICTURES must not.
+// NOTE: readable TEXT is deliberately NOT banned (Koki's ruling, 2026-07-28) — in a story
+// about a channel the words on a screen are half the plot. Only real IDENTITIES are barred,
+// because an image generator refuses them and because CP-15 (the clean-room rule) stands.
 const BANNED = /\b(youtube|tiktok|instagram|whatsapp|snapchat|twitter|facebook|iphone|android|ikea|nike|adidas|converse|netflix|spotify|titanic|tesla|big ben|thames|globe theatre|tower bridge|london)\b/i;
 
 const seen = new Map();
@@ -117,7 +122,8 @@ for (const e of entries) {
   }
   const hit = p.match(BANNED);                                                                  // 6
   if (hit) bad(`${e.label}: names a real brand, place or person — "${hit[0]}"`);
-  if (!p.includes(NEG)) bad(`${e.label}: the no-readable-text rule is missing`);                 // 7
+  if (!p.includes(NEG)) bad(`${e.label}: the closing negative is missing`);                       // 7
+  if (e.text && !p.includes(textClause(e.text))) bad(`${e.label}: has story text but the prompt never asks for it`);
   if (!(e.chapter >= 1 && e.chapter <= 14)) bad(`${e.label}: chapter ${e.chapter} out of range`);
   if (!p.includes(arcOf(e.chapter))) bad(`${e.label}: colour grade does not match its chapter's place in the arc`); // 8
   if (e.world && !W[e.world]) bad(`${e.label}: unknown world '${e.world}'`);
@@ -145,8 +151,14 @@ for (const ch of story.chapters) {
     const beat = BEATS[key];
     if (beat && s.speaker !== "narrator") {                                                     // 11
       const who = (beat[1] ?? "").split(/\s+/).filter(Boolean);
-      if (who.length && !who.includes(s.speaker)) {
+      // `message` = the line is DELIVERED as a message, so the picture shows the message
+      // rather than the speaker's face. That is the line, not a substitute for it.
+      const asMessage = (beat[3] ?? "").includes("message");
+      if (who.length && !who.includes(s.speaker) && !asMessage) {
         bad(`${key}: this is ${s.speaker}'s line, but its picture shows ${who.join(" + ")}`);
+      }
+      if (asMessage && !beat[4]) {
+        bad(`${key}: marked as delivered by message, but the picture never says what the message reads`);
       }
     }
     for (const t of s.taskSlots) {
@@ -158,6 +170,31 @@ for (const ch of story.chapters) {
 }
 for (const k of panelKeys) {                                                                    // 12
   if (!storySlotKeys.has(k)) bad(`panel key ${k} points at a task slot that does not exist in the story`);
+}
+
+// 13b · A PICTURE MAY NOT ARGUE WITH THE RUNNING APP. Now that text is allowed, a baked-in
+// view or subscriber count is a factual claim — and the app prints its own from SUBSCRIBERS
+// in novel-copy.ts. (This is exactly why one legacy image was dropped: it showed 89,000
+// views for a chapter the app says is 11,000.)
+const subsSrc = readFileSync(join(REPO, "packages/game-novel/src/novel-copy.ts"), "utf8");
+const SUBS = Object.fromEntries(
+  [...subsSrc.matchAll(/"g3\.st\.fourteen\.ch(\d\d)":\s*"([\d,]+)"/g)].map((m) => [Number(m[1]), m[2]]));
+for (const [key, v] of Object.entries(BEATS)) {
+  const txt = v[4];
+  if (!txt) continue;
+  const n = Number(key.slice(2, 4));
+  for (const m of txt.matchAll(/([\d,]+)\s+(views|subscribers)\b/gi)) {
+    const shown = m[1];
+    const app = SUBS[n];
+    if (!app) {
+      bad(`${key}: shows "${shown} ${m[2]}", but the app prints no count for ch${n} — `
+        + `ch09 has none on purpose (the backlash episode), and ch11-14 have none because a `
+        + `triumphant count after the reckoning would be obscene.`);
+    } else if (shown !== app) {
+      bad(`${key}: shows "${shown} ${m[2]}" but the app prints "${app}" for that chapter — `
+        + `the picture would contradict the screen next to it.`);
+    }
+  }
 }
 
 // 13 · NO DEAD STEMS. This is the gate the old `av_leah`…`av_you` prompts needed: five

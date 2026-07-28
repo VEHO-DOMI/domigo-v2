@@ -85,3 +85,44 @@ the manifest and the library in agreement.
 - `19_g4n_fourteen_live.md` — the G4 continuation §3 confirms
 - `31_the_painted_book.md` §1 — OSWIN's canon, the grade-1 end state
 - `docs/art/g3-fourteen-data.mjs` — the G3 picture library referenced in §4
+
+## §6 · ⚠ RULING: readable text in artwork is welcome (Koki, 2026-07-28)
+
+Overturns a standing convention, not a one-off. Every art-prompt builder in this repo
+carried a blanket ban — `build-g1-prompts.mjs`, `build-g2-prompts.mjs`,
+`build-g4-prompts.mjs` all say *"No readable text, letters, numbers, logos or watermarks
+anywhere in the image"*, and the new G3 library inherited it.
+
+Koki's ruling: **"we can and should totally have written text in the images if it adds to
+the story, and that shouldn't be avoided at all."** He is right, and in G3 it is not a
+close call: the story is *about* a channel. A phone reading *"No cameras. No scripts.
+Just us."* is the beat. A counter reading *47 views* is the joke of episode one. Six of
+the strongest images in the existing Grade-3 library are nothing but a screen with words
+on it, and the ban had them queued for deletion.
+
+**The rule as it now stands** (implemented in `docs/art/g3-fourteen-data.mjs`; the other
+grades still carry the old ban and are listed below as a to-do):
+
+> Readable text is welcome wherever it serves the story or the teaching. Two exceptions
+> survive, and neither is about language — both are mechanical:
+> 1. **Never bake in text the app itself renders live and variably.** The comment section
+>    changes with how well the player protected Ben; task cards get their sentences from
+>    the corpus; a subscriber count must not contradict `SUBSCRIBERS` in `novel-copy.ts`.
+>    A picture that argues with the running app is a defect.
+> 2. **Real brand marks, platform logos and real people stay out** — an image generator
+>    refuses them, and CP-15's clean-room rule stands. Generic app chrome is fine.
+>
+> For Grade 1 the same shape applies with one addition from the composition law: the far
+> shell and furniture band (L1/L2) keep their signage soft and unreadable, because crisp
+> lettering back there competes with the play plane. Props, plates and play-plane objects
+> may carry real words — and in a town unit they *should*, since environmental print is
+> free vocabulary.
+
+**Two machine gates now enforce the narrow part** (`build-g3-prompts.mjs`): a beat that
+states a view or subscriber count is checked against the app's own `SUBSCRIBERS` map, and
+a beat whose line arrives *as a message* must actually say what the message reads.
+
+**Open, not done:** `build-g1-prompts.mjs`, `build-g2-prompts.mjs` and
+`build-g4-prompts.mjs` still carry the blanket ban in their own `NEG` strings. Those are
+separate libraries with their own art already generated against the old rule, so sweeping
+them is its own small piece of work — flagged here rather than done in passing.

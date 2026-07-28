@@ -12,11 +12,20 @@
 //  1. Self-contained. A prompt is pasted into a generator alone, so the style block, the
 //     character locks, the world, the colour grade and the negative are all repeated in
 //     every single one. Nothing here says "as before".
-//  2. No readable text, anywhere. This is a language-learning app: baked-in English in a
-//     picture would be un-translatable and un-editable. Screens are drawn with the SCREEN
-//     block — abstract ink strokes, no letterforms. It reads perfectly; it says nothing.
+//  2. TEXT IS WELCOME where the text IS the story (Koki's ruling, 2026-07-28). This is a
+//     story about a channel: a message that reads "No cameras. No scripts. Just us." is
+//     the beat, not decoration, and a view counter that says 47 is the whole joke of
+//     episode one. Entries that want words carry a `text:` field with the exact wording,
+//     and the prompt asks for it spelled correctly.
+//     THE ONE EXCEPTION IS NARROW AND MECHANICAL: never bake in text the APP itself
+//     renders live and variably — the comment section (its comments change with how well
+//     the player protected Ben), the task cards (their sentences come from the corpus),
+//     and any subscriber count that would contradict `SUBSCRIBERS` in novel-copy.ts. A
+//     picture that argues with the running app is a defect; a picture that says something
+//     the app never says is a gift.
 //  3. No real brands, platforms, landmarks or people. The story names a famous liner, a
-//     famous inventor and London landmarks; the pictures name none of them.
+//     famous inventor and London landmarks; the pictures name none of them. Interface
+//     chrome stays generic — a plausible unbranded messaging app, not a named one.
 //  4. The costume rules ARE the arc. Ben's vest opens, then zips shut like armour, then
 //     hangs open, then zips comfortable. Leah's glasses come off. Leo's hair goes back.
 //     A reader who never read a word should be able to feel the story from the busts.
@@ -29,17 +38,26 @@ export const STYLE =
 
 // ── The negative: closes every prompt, verbatim ──────────────────────────────
 export const NEG =
-  "No readable text, letters, numbers, logos, brand marks or watermarks anywhere in the image. " +
-  "No real people, no recognisable public figures, no real place names, no famous landmarks.";
+  "No real brand marks, no platform logos or wordmarks, no watermarks. No real people, no " +
+  "recognisable public figures, no real place names, no famous landmarks. Any lettering that " +
+  "is not explicitly requested above stays out of the frame — incidental signage, posters and " +
+  "labels are decorative and illegible.";
 
-// ── Screens: how a phone or laptop is drawn without a word on it ─────────────
-// Proven in Koki's own existing library (the midnight-phone-reading scene): a screen full
-// of abstract grey strokes reads unmistakably as comments, and breaks no rule.
+// ── Screens ─────────────────────────────────────────────────────────────────
+// Screens in this story are not props — they are where half the plot happens. So a screen
+// shows real, legible content, and the words it shows are named per entry in `text:`.
+// Only the CHROME stays generic (this app cannot show a real platform's logo).
 export const SCREEN =
-  "Any screen content is rendered as abstract grey ink strokes and soft blocks suggesting " +
-  "lines of text — no letterforms, no numerals, no glyphs of any kind. Interface chrome is " +
-  "generic and unbranded: plain rounded rectangles, a circle avatar, a small triangle, a bare " +
-  "heart outline. No platform logo, no wordmark, no recognisable app identity.";
+  "The screen is shown clearly and legibly, at a readable size and angle. Its interface " +
+  "chrome is a plausible but generic, unbranded app: plain rounded message bubbles or cards, " +
+  "a circle avatar, a simple play triangle, a bare heart outline — no platform logo, no " +
+  "wordmark, no recognisable app identity.";
+
+/** How a requested piece of on-screen or in-world lettering is asked for. */
+export const textClause = (s) =>
+  `Text shown in the image, in English, spelled exactly like this and clearly legible: ${s} ` +
+  `Render it as neat, natural lettering that belongs to the surface it sits on. No other ` +
+  `lettering anywhere in the frame.`;
 
 // ── Character visual-locks: embedded wherever a character appears ────────────
 export const CH = {
@@ -221,7 +239,8 @@ export const BEATS = {
   "ch01.s006": ["A hand slides the script across the desk toward YOU; two heads over one page.", "you leah", "studio", ""],
   "ch01.s007": ["The ring light snaps on in a dark room and everything inside its circle goes bright — the first take of the channel's life.", "", "studio", ""],
   "ch01.s008": ["Ben framed INSIDE the phone's viewfinder on the tripod, mid-word, lit and happy; the room dark around the little bright rectangle.", "ben leo", "studio", "state:ben=presenting"],
-  "ch01.s009": ["Four faces crowded around one phone in the dark, all lit from below by it, delighted at a number none of them can quite believe.", "leah leo ben you", "studio", "screen"],
+  "ch01.s009": ["Four faces crowded around one phone in the dark, all lit from below by it, delighted at a number none of them can quite believe.", "leah leo ben you", "studio", "screen",
+      "\"47 views\" on the counter under the video."],
   "ch01.s010": ["Ben alone after the others have turned away, asking the room a question in a smaller voice than he used on camera.", "ben", "studio", "state:ben=uncertain"],
   "ch01.s011": ["YOU from behind in the doorway, looking back at the lit studio as the others pack up — the last frame of a completely innocent evening.", "you", "studio", ""],
 
@@ -232,7 +251,8 @@ export const BEATS = {
   "ch02.s004": ["A closer view of the same page: a blank ruled gap where a word should be, pen tip hovering over it.", "you", "studio", ""],
   "ch02.s005": ["The tripod phone in the foreground, sharply focused; Ben beyond it soft and waiting for the nod.", "ben leo", "studio", ""],
   "ch02.s006": ["Ben inside the viewfinder rectangle mid-line, animated and completely unaware, the red record dot bright in the corner.", "ben", "studio", "state:ben=presenting"],
-  "ch02.s007": ["Leah's face lit hard by her phone in a dark room at midnight, watching a number she cannot stop refreshing.", "leah", "desk", "screen state:leah=excited"],
+  "ch02.s007": ["Leah's face lit hard by her phone in a dark room at midnight, watching a number she cannot stop refreshing.", "leah", "desk", "screen state:leah=excited",
+      "\"3,200 views\" on the counter, and one comment row reading \"haha his English is so cute\"."],
   "ch02.s008": ["Leah turns to the others with the phone still in her hand and says the quiet part out loud; Leo's smile has not caught up yet.", "leah leo", "studio", "state:leah=scheming"],
   "ch02.s009": ["Ben holding the phone himself for once, reading his own comments, proud of the wrong thing.", "ben", "studio", "screen state:ben=proud"],
   "ch02.s010": ["YOU from behind at the desk after everyone has gone, one line written in a notebook, pen stopped.", "you", "desk", "state:you=desk"],
@@ -244,9 +264,11 @@ export const BEATS = {
   "ch03.s004": ["YOU in side profile over the script page, face turned away, looking at a whole clause struck through and rewritten longer and harder in Leah's different pen.", "you leah", "studio", ""],
   "ch03.s005": ["Ben settles into the filming chair and squares up to the camera, cheerful, cracking his knuckles.", "ben", "studio", ""],
   "ch03.s006": ["Ben mid-line in the viewfinder, tripping over a sentence, laughing at himself; the record dot burning.", "ben", "studio", "state:ben=presenting"],
-  "ch03.s007": ["A laptop screen on the studio floor showing a view-count line climbing steeply, the graph drawn as a bare ascending stroke, faces lit by it.", "leah leo", "studio", "screen"],
+  "ch03.s007": ["A laptop screen on the studio floor showing a view-count line climbing steeply, the graph drawn as a bare ascending stroke, faces lit by it.", "leah leo", "studio", "screen",
+      "\"11,000 views\" beside a rising line."],
   "ch03.s008": ["Leah, pen in hand, deliberately rewriting a line on Ben's script to make it harder — the single most important gesture in the whole story.", "leah", "studio", "state:leah=scheming"],
-  "ch03.s009": ["The room after the decision: three people not looking at each other, the ring light still humming.", "leah leo you", "studio", ""],
+  "ch03.s009": ["A phone held low, showing the group's planning chat — the messages agreeing to make the video funnier by cutting the boring parts and not showing the whole group. YOU are holding it; nobody meant you to be reading this.", "you", "studio", "screen",
+      "the chat titled \"Strategy\", with messages reading \"We should make the video really funny.\", \"Yeah, and cut out all the boring parts.\", \"Let's make sure to edit it carefully.\" and \"And no need to show the whole group.\""],
   "ch03.s010": ["YOU from behind at the window, the town outside, saying nothing — the silence that makes you part of it.", "you", "studio", ""],
 
   // ch04 · Beautiful Danger — warm, and Ben starts to notice.
@@ -256,7 +278,8 @@ export const BEATS = {
   "ch04.s004": ["A blank gap in the middle of a difficult sentence, pen tip poised over it, the paper slightly creased.", "you", "studio", ""],
   "ch04.s005": ["Ben in the chair reading ahead silently, mouth moving, a first small frown.", "ben", "studio", "state:ben=uncertain"],
   "ch04.s006": ["Ben inside the viewfinder, stopped mid-sentence, genuinely confused; Leo's hand on the phone pushing the zoom closer to his face.", "ben leo", "studio", "state:ben=uncertain"],
-  "ch04.s007": ["Leah showing Leo her phone with delight — a stranger's approval, held up like a trophy.", "leah leo", "studio", "screen state:leah=excited"],
+  "ch04.s007": ["Leah showing Leo her phone with delight — a stranger's approval, held up like a trophy.", "leah leo", "studio", "screen state:leah=excited",
+      "\"28,000 views\", and one liked-by row reading \"sara.k liked this\"."],
   "ch04.s008": ["Ben asks his question in the quiet after filming, script still in his hand, looking at Leah and not at the camera.", "ben leah", "studio", "state:ben=uncertain"],
   "ch04.s009": ["Leah's answer lands: she is smiling and it is kind and it is a lie, and Ben believes it.", "leah ben", "studio", ""],
   "ch04.s010": ["Ben smiling at nothing in particular as he winds a cable; YOU from behind in the foreground, watching him do it.", "ben you", "studio", ""],
@@ -268,7 +291,8 @@ export const BEATS = {
   "ch05.s004": ["A conditional sentence on the page with its second half missing, the gap ruled and waiting.", "you", "studio", ""],
   "ch05.s005": ["Ben in the chair with the ring light in his eyes, taking a breath before the take.", "ben", "studio", ""],
   "ch05.s006": ["Ben mid-line inside the viewfinder, hitting the sentence wrong, and this time noticing that he has.", "ben", "studio", "state:ben=uncertain"],
-  "ch05.s007": ["The whole group's faces lit blue-white by one phone held between them, the reactions scrolling past as abstract strokes; Ben leaning in last.", "leah leo ben", "studio", "screen"],
+  "ch05.s007": ["The whole group's faces lit blue-white by one phone held between them, the reactions scrolling past as abstract strokes; Ben leaning in last.", "leah leo ben", "studio", "screen",
+      "\"45,000 views\"."],
   "ch05.s008": ["Ben, alone in the frame, asking the question the entire story rests on — do they like ME, or just my mistakes?", "ben", "studio", "state:ben=uncertain"],
   "ch05.s009": ["Leah answers yes; her eyes are already going back down to her phone as she says it.", "leah ben", "studio", ""],
   "ch05.s010": ["YOU from behind, watching Leah's face lit by the screen instead of watching Ben — the moment you saw it and did nothing.", "you leah", "studio", "screen"],
@@ -280,7 +304,8 @@ export const BEATS = {
   "ch06.s004": ["The same notebook closer: a sentence with a hole in it, a pen held against the wind.", "you", "street", ""],
   "ch06.s005": ["Ben set up against the river with the phone on its tripod, reading from a card, the wind in his hair.", "ben leo", "street", ""],
   "ch06.s006": ["Ben inside the viewfinder against the grey water, mid-fact, cheerful and wrong.", "ben", "street", "state:ben=presenting"],
-  "ch06.s007": ["A phone face-up on a hostel bed in the dark, a message notification glowing on it, nobody holding it yet.", "", "desk", "screen"],
+  "ch06.s007": ["A phone face-up on a hostel bed in the dark, a message notification glowing on it, nobody holding it yet.", "", "desk", "screen",
+      "a single message-notification preview reading \"Sara: can I ask you something?\"."],
   "ch06.s008": ["Sara in a school corridor, direct and unhurried, asking her question of someone off-frame.", "sara", "school", "state:sara=serious"],
   "ch06.s009": ["Sara further down the emptying corridor, saying the harder half of it — the warning, not the question — with nobody else left to overhear.", "sara", "school", "state:sara=serious"],
   "ch06.s010": ["YOU from behind putting the phone face-down on the bed and not moving — the decision to say nothing.", "you", "desk", ""],
@@ -294,7 +319,8 @@ export const BEATS = {
   "ch07.s006": ["Ben inside the viewfinder, warm and open, getting the sentence wrong while meaning every word of it.", "ben", "studio", "state:ben=presenting"],
   "ch07.s007": ["YOU, in side profile with the face turned away, asking Leah something quietly in a corridor doorway.", "you leah", "studio", ""],
   "ch07.s008": ["Leah refuses, chin up, arms folded — and underneath the refusal is fear of being nobody again.", "leah", "studio", "state:leah=defensive"],
-  "ch07.s009": ["Ben celebrating the episode, arms up, genuinely proud of his English for the first time.", "ben", "studio", "state:ben=proud"],
+  "ch07.s009": ["A phone held in one hand showing Ben's message to the group chat — unguarded, delighted, thanking them for something they are doing to him. Below it, three thumbs-up replies and nothing else.", "", "studio", "screen message",
+      "Ben's message reading \"Best episode yet!! I really need to practise for and since haha. But honestly I think the channel is helping my English. Thanks guys. Love this team.\", with three thumbs-up replies under it"],
   "ch07.s010": ["A notebook page on a desk in lamplight with one short line written on it and the pen laid across the page.", "you", "desk", ""],
 
   // ch08 · Game Changers — the cruel comment arrives.
@@ -304,8 +330,10 @@ export const BEATS = {
   "ch08.s004": ["A gap in a sentence about something someone has seen, the paper shadowed by a hand.", "you", "studio", ""],
   "ch08.s005": ["Ben in the chair with a small model in his hands, turning it over, rehearsing under his breath.", "ben", "studio", ""],
   "ch08.s006": ["Ben inside the viewfinder mid-line about an inventor, holding the model up to the lens, delighted.", "ben", "studio", "state:ben=presenting"],
-  "ch08.s007": ["A laptop on the studio floor at night, its comment column drawn as rows of abstract strokes — and one row noticeably darker and heavier than the rest.", "", "desk", "screen"],
-  "ch08.s008": ["A thumb hovering over that one darker row, not scrolling past it — the first comment that tells the truth.", "you", "desk", "screen"],
+  "ch08.s007": ["A laptop on the studio floor at night, its comment column drawn as rows of abstract strokes — and one row noticeably darker and heavier than the rest.", "", "desk", "screen",
+      "a column of comment rows, the darker one among them reading \"this is not teaching, it is bullying\"."],
+  "ch08.s008": ["A thumb hovering over that one darker row, not scrolling past it — the first comment that tells the truth.", "you", "desk", "screen",
+      "the one comment under the hovering thumb reading \"this is not teaching, it is bullying\"."],
   "ch08.s009": ["Leah swipes the screen away, jaw set, already talking about something else.", "leah", "studio", "screen state:leah=defensive"],
   "ch08.s010": ["YOU in side profile at the desk in the dark, saving that one comment to a folder, face turned away from the light.", "you", "desk", "screen state:you=desk"],
 
@@ -341,15 +369,18 @@ export const BEATS = {
   "ch11.s005": ["Ben in the chair, obedient, waiting for the nod — the performance is a habit now.", "ben", "studio", ""],
   "ch11.s006": ["Ben inside the viewfinder mid-line, and for the first time the framing itself feels cruel: the rectangle, the record dot, his face too close.", "ben", "studio", ""],
   "ch11.s007": ["A phone screen in the dark showing two thumbnail rows, the crueller row visibly bigger and brighter than the kind one.", "", "desk", "screen"],
-  "ch11.s008": ["A hand-written tally on a notebook page, stroke after stroke after stroke — someone has been counting Ben's mistakes for a very long time.", "", "desk", ""],
-  "ch11.s009": ["A phone in the dark showing a grid of six small thumbnails, all of them the same boy's face pulled into the same wince — a compilation made from their own clips.", "", "desk", "screen"],
+  "ch11.s008": ["A hand-written tally on a notebook page, stroke after stroke after stroke — someone has been counting Ben's mistakes for a very long time.", "", "desk", "",
+      "a handwritten heading \"Ben - episode 1\" above rows of pencil tally marks, and lower down \"episode 11\"."],
+  "ch11.s009": ["A phone in the dark showing a grid of six small thumbnails, all of them the same boy's face pulled into the same wince — a compilation made from their own clips.", "", "desk", "screen",
+      "the video title \"Ben's Best Fails\" above the grid of thumbnails."],
   "ch11.s010": ["YOU from behind holding the phone, hands visibly unsteady, shoulders tight, the grid still glowing.", "you", "desk", "screen state:you=shaken"],
 
   // ch12 · When It All Falls Apart — Ben's passive-voice reckoning.
   "ch12.s001": ["The studio with the filming chair empty and the ring light unlit, an episode that was going to be recorded and now will not be.", "", "studio", ""],
   "ch12.s002": ["A school report page on a desk, handwritten in even lines, nothing like a script — a different kind of writing entirely.", "you", "school", ""],
   "ch12.s003": ["The same page closer: one sentence left unfinished, the pen laid down beside it.", "you", "school", ""],
-  "ch12.s004": ["A phone lying on a made bed in a lit room, the compilation still open on it, its owner nowhere in the frame.", "", "home", "screen"],
+  "ch12.s004": ["A phone lying on a rumpled dark bed, a video of Ben's own face paused on it mid-wince, a message floating over it. Nobody is holding it.", "", "home", "screen",
+      "a view counter reading \"200,000\" and a single message reading \"Is this you?\""],
   "ch12.s005": ["Ben walking up a school corridor toward the group, unhurried, vest hanging open, everyone else frozen where they stand.", "ben leah leo", "school", "state:ben=confront"],
   "ch12.s006": ["Ben close, quiet, level — saying what was done to him rather than what he feels, which is worse.", "ben", "school", "state:ben=confront"],
   "ch12.s007": ["Over Ben's shoulder in the foreground: Leah and Leo taking it, neither able to look at him, Leo's hair pushed back off his face for the first time.", "ben leah leo", "school", "state:ben=confront state:leah=hollow state:leo=exposed"],
@@ -367,7 +398,8 @@ export const BEATS = {
   "ch13.s007": ["The circle listening — the first moment since the reckoning that anyone is actually talking to anyone.", "sara leah leo you", "studio", ""],
   "ch13.s008": ["Leah with her glasses off in her hand, crying and past crying; Leo looking at the floor beside her.", "leah leo", "studio", "state:leah=guilty state:leo=exposed"],
   "ch13.s009": ["Sara's hand resting flat on the floorboards between them — you cannot undo it, but you can choose what comes next.", "sara", "studio", "state:sara=warm"],
-  "ch13.s010": ["YOU from behind picking up a phone — not to check anything, but to make a call.", "you", "studio", ""],
+  "ch13.s010": ["YOU from behind holding up a phone, the message thread open and readable on it — not checking anything, reaching out.", "you", "studio", "screen",
+      "the message thread reading \"Can we come over after school? All three of us. We want to talk. No cameras. No scripts. Just us.\" and, below it, the single reply \"Okay.\""],
 
   // ch14 · For Real This Time — honest.
   "ch14.s001": ["Four people standing on an ordinary front doorstep with nothing in their hands, waiting for someone to open the door.", "leah leo you", "home", ""],
@@ -378,8 +410,9 @@ export const BEATS = {
   "ch14.s006": ["A blank page and a pen pushed across a coffee table toward Ben — his line, his words, for the first time.", "you ben", "home", ""],
   "ch14.s007": ["Ben writing his own sentence, everyone else leaning in to help rather than to watch.", "ben leah leo you", "home", "state:ben=brave"],
   "ch14.s008": ["Two hands over one page, one of them Ben's, finishing a line together.", "you ben", "home", ""],
-  "ch14.s009": ["The five of them crowded into a living-room shot going live, no ring light, no white sheet, one small red dot glowing — messy and honest.", "ben leah leo you", "home", ""],
-  "ch14.s010": ["The living room after, phone still propped up and streaming, everyone talking over each other, nobody watching the numbers.", "ben leah leo you", "home", ""],
+  "ch14.s009": ["A phone screen carrying the honest broadcast: the five of them crowded into frame, no ring light and no white sheet, with the live chat running down the side.", "ben leah leo you", "home", "screen",
+      "a \"LIVE\" badge, \"12,000 watching now\", and chat messages reading \"We're sorry Ben\" and \"This is real\""],
+  "ch14.s010": ["The room after: the five of them together on and around a sofa, the phone still propped and streaming, everyone talking over each other and nobody watching the numbers.", "ben leah leo you", "home", ""],
 };
 
 // ── E · Panels: the picture beside a task, 42 stems over 53 slot keys ───────
@@ -390,8 +423,8 @@ const panel = (stem, keys, scene, chapter, world = "studio") =>
   PANELS.push({ stem, keys, scene, chapter, world, cls: "panel" });
 
 const SCRIPT_MC = {
-  "01": "A fresh script page on the studio desk under warm lamp light, the handwriting drawn as illegible ink strokes, one line ringed in pen.",
-  "02": "A script page with an old book open beside it, both drawn without readable text, a pen laid across the join.",
+  "01": "A fresh script page on the studio desk under warm lamp light, one line ringed in pen. The handwriting stays loose and unreadable — the app prints the actual sentence over this picture, so any words baked in here would argue with it.",
+  "02": "A script page with an old cloth-bound book open beside it, a pen laid across the join. Handwriting loose and unreadable — the app prints the sentence itself.",
   "03": "A script page half-covered by a hand-drawn map of nowhere, the writing abstract strokes, a pen resting on it.",
   "04": "A script page beside a row of small plastic animal figures, the writing abstract, one line ringed hard in a second colour.",
   "05": "A script page with a paper cut-out garland casting shapes across it, writing abstract, pen across the corner.",

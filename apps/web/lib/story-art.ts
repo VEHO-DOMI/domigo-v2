@@ -58,7 +58,11 @@ export function resolveDetectiveArt(storyId: string, grade: number, chapter: Cha
   const beats: Record<string, string> = {};
   const clues: Record<string, string> = {};
   for (const sc of chapter.scenes) {
-    const pu = url(art.portraits[sc.id] ?? `${sc.speaker}_neutral`);
+    // Try the scene's own emotional portrait, then fall back to the character's neutral.
+    // Chaining matters while the library fills in: 48 scenes name a state-specific bust,
+    // and before those are drawn an un-chained lookup would suppress the neutral bust that
+    // IS on disk — making a half-finished library look more broken than an empty one.
+    const pu = url(art.portraits[sc.id]) ?? url(`${sc.speaker}_neutral`);
     if (pu) portraits[sc.id] = pu;
     const bu = url(art.beats[sc.id]);
     if (bu) beats[sc.id] = bu;
@@ -92,7 +96,11 @@ export function resolveNovelArt(storyId: string, grade: number, chapter: Chapter
   const beats: Record<string, string> = {};
   const panels: Record<string, string> = {};
   for (const sc of chapter.scenes) {
-    const pu = url(art.portraits[sc.id] ?? `${sc.speaker}_neutral`);
+    // Try the scene's own emotional portrait, then fall back to the character's neutral.
+    // Chaining matters while the library fills in: 48 scenes name a state-specific bust,
+    // and before those are drawn an un-chained lookup would suppress the neutral bust that
+    // IS on disk — making a half-finished library look more broken than an empty one.
+    const pu = url(art.portraits[sc.id]) ?? url(`${sc.speaker}_neutral`);
     if (pu) portraits[sc.id] = pu;
     const bu = url(art.beats[sc.id]);
     if (bu) beats[sc.id] = bu;

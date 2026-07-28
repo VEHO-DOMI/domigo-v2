@@ -11,9 +11,11 @@
 // here. sync-art.mjs is left untouched and remains the tool for FUTURE drops, where the
 // files are saved under the exact stem the prompt page tells you to use.
 //
-// Compression is not optional: the source folder is ~133 MB for 98 files (~1.4 MB each),
-// and comparable committed art in this repo is around 100 KB. Each class has a width
-// ceiling from the prompt library (`maxPx`), and everything is re-encoded as JPEG.
+// Compression is not optional: the source folder is ~133 MB for 98 files (~1.4 MB each).
+// The ceiling below is calibrated against what this repo already ships — the G1 paint art
+// is 93 MB across 207 files with single plates over 4 MB — so 400 KB per story image is
+// comfortably conservative, not stingy. Each class has a width ceiling from the prompt
+// library (`maxPx`), everything is re-encoded as JPEG, and wide slots are cropped to 16:9.
 import { execFileSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { dirname, join, basename } from "node:path";
@@ -27,11 +29,20 @@ const DEST = join(REPO, "apps", "web", "public", "art", "g3");
 const SRC_ROOT = join(homedir(),
   "Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/Claude/Grammar trainer Grades 1 to 4/CAMPAIGN-IMAGES/grade 3");
 const SUBFOLDERS = ["Already implemented", "to be added to grade 3"];
-const MAX_BYTES = 220_000;
+const MAX_BYTES = 400_000;
 
 const { map, drop } = JSON.parse(readFileSync(join(HERE, "g3-legacy-map.json"), "utf8"));
 const lib = JSON.parse(readFileSync(join(HERE, "g3-art-files.json"), "utf8"));
 const maxPx = new Map(lib.stems.map((s) => [s.stem, s.maxPx]));
+const clsOf = new Map(lib.stems.map((s) => [s.stem, s.class]));
+
+/** Pixel dimensions of an image, via sips. */
+function dims(file) {
+  const out = execFileSync("sips", ["-g", "pixelWidth", "-g", "pixelHeight", file], { encoding: "utf8" });
+  const w = Number(out.match(/pixelWidth:\s*(\d+)/)?.[1]);
+  const h = Number(out.match(/pixelHeight:\s*(\d+)/)?.[1]);
+  return [w, h];
+}
 
 if (!existsSync(SRC_ROOT)) {
   console.error(`✗ source folder not found (iCloud may have evicted it — open it in Finder once):\n  ${SRC_ROOT}`);
@@ -63,7 +74,7 @@ for (const [stem, token] of Object.entries(map)) {
     missing.push(`${stem}: source "${token}" not found in the iCloud folder`);
     continue;
   }
-  plan.push({ stem, token, src, width: maxPx.get(stem) });
+  plan.push({ stem, token, src, width: maxPx.get(stem), cls: clsOf.get(stem) });
 }
 
 console.log(`── import-g3-legacy ──`);
@@ -93,9 +104,17 @@ for (const p of plan) {
   bytesIn += statSync(p.src).size;
   copyFileSync(p.src, out);
   try {
-    // `sips` ships with macOS; -Z scales the LONGEST side, preserving aspect.
-    execFileSync("sips", ["-Z", String(p.width), "-s", "format", "jpeg",
-      "-s", "formatOptions", "72", out, "--out", out], { stdio: "pipe" });
+    // The old library was generated SQUARE, but every wide slot renders in a 16:9 box
+    // with `object-fit: cover` — so the browser throws that extra height away on every
+    // paint anyway. Cropping to 16:9 here is visually identical and cuts ~40% of the
+    // bytes. Portraits stay square: they are shown as circles.
+    const args = ["-s", "format", "jpeg", "-s", "formatOptions", "72"];
+    if (p.cls !== "portrait") {
+      const [w, h] = dims(p.src);
+      if (w / h < 16 / 9) args.unshift("-c", String(Math.round(w * 9 / 16)), String(w));
+    }
+    // `sips` -Z scales the LONGEST side, preserving aspect.
+    execFileSync("sips", [...args, "-Z", String(p.width), out, "--out", out], { stdio: "pipe" });
   } catch (e) {
     console.warn(`  ⚠ ${p.stem}: could not compress (${e.message.split("\n")[0]}) — copied at full size`);
   }
