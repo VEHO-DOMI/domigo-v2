@@ -97,7 +97,7 @@ export const PAINT_OVERLAY_CSS = `
   /* END STATE: full. With animations off the chalk simply sits there and the
      card has no clock at all (the timer is skipped in the same breath). */
   width: 100%;
-  animation: pb-ring-erase var(--pb-ring-s, 20s) linear forwards;
+  animation: pb-ring-erase var(--pb-ring-s, ${QUICKFIRE_MS / 1000}s) linear forwards;
 }
 
 /* ── the verdict beat ──────────────────────────────────────────────────── */
