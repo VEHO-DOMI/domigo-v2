@@ -25,8 +25,16 @@
 /** How long the chalk-erase ring takes to run out on a quickfire card. Read as
  *  a CSS custom property so the ring and the timer that closes the card can
  *  never disagree about the clock (a ring that empties early would be a
- *  countdown to nothing — the exact class of lie this program hunts). */
-export const QUICKFIRE_MS = 20_000;
+ *  countdown to nothing — the exact class of lie this program hunts).
+ *
+ *  FABLE REVIEW AMENDMENT (2026-07-28, PR #243): 20 s closed a card mid-read
+ *  on an ADULT — for a 6–7-year-old first-reader the mid-read close is the
+ *  wrong class entirely. Raised to 45 s so the clock can no longer bite a
+ *  reading child; whether it survives AT ALL is Koki's Replay-3 call, and the
+ *  pedagogically right inversion (reward FAST answers — streak sparkle —
+ *  never punish slow reading; time pressure stays bonus-room-only) is filed
+ *  as an R3b design note. */
+export const QUICKFIRE_MS = 45_000;
 /** The verdict beat: how long a solved card is allowed to say „richtig" before
  *  the world comes back. Short — it is a nod, not a ceremony. */
 export const VERDICT_MS = 420;
