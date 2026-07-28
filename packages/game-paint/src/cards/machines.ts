@@ -175,6 +175,46 @@ export const wheelMachine: CardMachine<WheelState, WheelAction> = {
   },
 };
 
+// ── wheel VIEW-logic (pure; consumed by the skin AND its tests) ──────────────
+// PK-R3a · R3-9 — THE SCROLL-DIAL (doc 42 §2, mined from Keen's NumberWheel).
+// The old skin was a three-row ▲▼ ring: to reach „thirteen" from „one" a child
+// pressed ▼ twelve times. The mined mechanism puts the FULL value scale in one
+// scroll-snap column, so the answer sits at its natural place on the dial and a
+// thumb-flick reaches it — the thing Koki called „actually responsive". Only the
+// SKIN changes: `wheelMachine` is untouched, and the lock is still `act(lock)`.
+//
+// The skin scrolls IMPERATIVELY (a dial spun at 25 frames a second must not
+// re-render React), so these helpers are the whole contract between the DOM's
+// scrollTop and the machine's index, and they are unit-tested in the node env
+// exactly like spellSlots — the spell-card precedent.
+
+/** Row height of the dial in CSS px (five rows are visible: 2 · lens · 2). */
+export const WHEEL_ITEM_H = 44;
+/** How long the column must hold still before a drag counts as SETTLED. This
+ *  is the auto-lock clock — the one thing the mined wheel was missing (doc 42
+ *  §2: „snap settles ⇒ value locks; no Einloggen press"). */
+export const WHEEL_SETTLE_MS = 180;
+
+/** The value the lens holds at this scroll position. Clamped, so a rubber-band
+ *  overscroll on iOS can never index off either end of the ring. */
+export const wheelIndexAt = (scrollTop: number, n: number, itemH: number = WHEEL_ITEM_H): number =>
+  Math.max(0, Math.min(n - 1, Math.round(scrollTop / itemH)));
+
+/** Where the column must sit for `index` to be under the lens. */
+export const wheelScrollFor = (index: number, itemH: number = WHEEL_ITEM_H): number => index * itemH;
+
+/** One index step, clamped to the ends of the scale — the ▲▼ fallback path.
+ *  The dial does NOT wrap: a scroll column has a top and a bottom, and a child
+ *  who drags to the end must see that they are at the end. */
+export const wheelStep = (index: number, delta: number, n: number): number =>
+  Math.max(0, Math.min(n - 1, index + delta));
+
+/** The atomic dispatch that catches the machine up to where the child left the
+ *  dial and locks it in. `rotate` is relative (the machine's own contract), so
+ *  this is the only place the DOM's index and the machine's index must agree. */
+export const wheelLockActions = (s: WheelState, target: number): WheelAction[] =>
+  [{ rotate: target - s.index }, { lock: true }];
+
 // ── mistake (tap the wrong word, then fix it) ────────────────────────────────
 export type MistakeState = {
   kind: "mistake"; sentence: string[]; errorIndex: number;

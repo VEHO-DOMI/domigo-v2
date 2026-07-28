@@ -23,6 +23,7 @@ import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
 import { type EntityWorld } from "./entities.ts";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
+import { FOCUS_MS, focusView } from "./camera.ts";
 import { type EntPoseInput, entPoseCell } from "./anim.ts";
 import { rigPose, withFistAway } from "./rig.ts";
 import {
@@ -136,6 +137,13 @@ export class PaintScene extends Phaser.Scene {
   private evidenceFull = "";
   private evidenceTick = 0;
   private acc = 0;
+  /** R3-8: which being the book is leaning in on, and how far in (0…1). The
+   *  lean runs on WALL-CLOCK ms, not sim ticks, because the sim is deliberately
+   *  frozen for the whole time the card is up. */
+  private focusId: string | null = null;
+  private focusAt: { x: number; y: number } | null = null;
+  private focusT = 0;
+  private frameMs = 0;
 
   private parts = new Map<RigPartName, Phaser.GameObjects.Image>();
   private rigRoot!: Phaser.GameObjects.Container;
@@ -240,6 +248,7 @@ export class PaintScene extends Phaser.Scene {
   }
 
   update(_time: number, delta: number): void {
+    this.frameMs = Math.min(delta, 100);
     this.acc += Math.min(delta, 100);
     let ticks = 0;
     while (this.acc >= TICK_MS && ticks < MAX_TICKS_PER_FRAME) {
@@ -579,8 +588,44 @@ export class PaintScene extends Phaser.Scene {
     }
 
     // the camera brain now ticks inside the Sim (deterministic — the screen
-    // clamp is gameplay); the render just points the view at it
+    // clamp is gameplay); the render just points the view at it …
+    //
+    // … and, when a card is up, LEANS IN on whoever is asking (R3-8, doc 42
+    // §1). The lean is presentation only: it never touches camX/camY, so the
+    // proof tapes and the headless replayer see exactly the same world they
+    // always did.
+    const asker = this.focusId === null ? undefined : this.world?.entities.find((e) => e.id === this.focusId);
+    // the asker's place is REMEMBERED, so the lean has somewhere to ease back
+    // FROM after the card closes (and after a redeemed being wanders off)
+    if (asker) this.focusAt = { x: fromSubs(asker.x), y: fromSubs(asker.y) };
+    const stepT = this.cfg.reducedMotion ? 1 : this.frameMs / FOCUS_MS;
+    this.focusT = Math.min(1, Math.max(0, this.focusT + (asker ? stepT : -stepT)));
+    if (this.focusT > 0 && this.focusAt !== null) {
+      const v = focusView(
+        fromSubs(this.camX), fromSubs(this.camY),
+        this.focusAt.x, this.focusAt.y,
+        this.focusT,
+        this.worldWpx, this.worldHpx,
+      );
+      this.cameras.main.setZoom(RENDER_SCALE * v.zoom);
+      this.cameras.main.centerOn(v.cx, v.cy);
+      return;
+    }
+    this.focusAt = null;
+    this.cameras.main.setZoom(RENDER_SCALE);
     this.cameras.main.centerOn(fromSubs(this.camX) + LOGICAL_W / 2, fromSubs(this.camY) + LOGICAL_H / 2);
+  }
+
+  // ── R3-8 · the battle framing, as the React shell drives it ────────────────
+
+  /** A card is opening for this being: lean in on it (doc 42 §1). */
+  focusOn(id: string): void {
+    this.focusId = id;
+  }
+
+  /** The card is gone: ease back out to the plain follow shot. */
+  clearFocus(): void {
+    this.focusId = null;
   }
 
   // ── builders ───────────────────────────────────────────────────────────────
