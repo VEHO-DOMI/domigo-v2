@@ -44,6 +44,11 @@ export function CardHost({
   const endedRef = React.useRef(false);
   const cbRef = React.useRef({ onResolve, onDismiss });
   cbRef.current = { onResolve, onDismiss };
+  /** the verdict beat's timer, cleared on unmount. PK-R1's whole root cause was
+   *  a rule with two clocks and a timer nobody owned; this packet does not add
+   *  another one that can fire into a torn-down tree. */
+  const beatRef = React.useRef<number | null>(null);
+  React.useEffect(() => () => { if (beatRef.current !== null) window.clearTimeout(beatRef.current); }, []);
 
   const clockMs = task.use === "quickfire" && !prefersReducedMotion() ? QUICKFIRE_MS : 0;
 
@@ -67,7 +72,7 @@ export function CardHost({
       endedRef.current = true;
       if (prefersReducedMotion()) { cbRef.current.onResolve(); return; }
       setVerdict(true);
-      window.setTimeout(() => cbRef.current.onResolve(), VERDICT_MS);
+      beatRef.current = window.setTimeout(() => { beatRef.current = null; cbRef.current.onResolve(); }, VERDICT_MS);
       return;
     }
     if (g === "wrong") { setAttempts((x) => x + 1); setState(m.init(task)); return; }
