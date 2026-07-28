@@ -7,6 +7,8 @@ import {
   spawnEntities,
   stepEntities,
   GUARDIAN_SCRIPT,
+  JOY_TICKS,
+  SAD_TICKS,
   type EntityWorld,
   type WorldInput,
 } from "./entities.ts";
@@ -166,7 +168,52 @@ describe("the guardian machine (G11 grammar)", () => {
     expect(guardianKnotSolved(w, "g").some((v) => v.type === "guardianKnot")).toBe(true);
     expect(guardianKnotSolved(w, "g").some((v) => v.type === "guardianKnot")).toBe(true);
     expect(guardianKnotSolved(w, "g").some((v) => v.type === "guardianDown")).toBe(true);
+    // R3-5 · the last knot no longer jumps to the victory cell: the board CRIES
+    // first (`tafel_sad`, painted and shown by nothing until now), and only then
+    // is it consoled. doc 38 named this the cheapest win on the board.
+    expect(g.state).toBe("sad");
+    for (let t = 0; t <= SAD_TICKS + 1; t++) stepEntities(w, GRID, inp);
     expect(g.state).toBe("consoled");
+  });
+
+  it("R3-4: it turns to FACE the player before throwing, and the chalk leaves on that side", () => {
+    for (const playerSide of [-1, 1] as const) {
+      const w = spawnEntities([spec({ id: "g", role: "guardian", skin: "tafel", c: 30, r: 11, tier: "E" })], []);
+      const g = w.entities.find((e) => e.id === "g")!;
+      const inp = idleInput({ playerX: (30 + playerSide * 6) * TILE * SUBS, playerY: 12 * TILE * SUBS });
+      g.dir = -playerSide as 1 | -1; // start it turned AWAY — Koki's 11.50.09
+      let sawTurn = false;
+      let chalk = null;
+      for (let t = 0; t < 400 && !chalk; t++) {
+        stepEntities(w, GRID, inp);
+        if (g.state === "turn") sawTurn = true;
+        chalk = w.projectiles.find((p) => p.kind === "chalk") ?? null;
+      }
+      expect(sawTurn, "a guardian facing away must spend the turn beat first").toBe(true);
+      expect(chalk).not.toBeNull();
+      // the spawn side and the travel direction are BOTH the facing — this is
+      // the assertion that kills the "projectile appears behind you" class
+      expect(Math.sign(chalk!.x - g.homeX)).toBe(playerSide);
+      expect(Math.sign(chalk!.vx)).toBe(playerSide);
+    }
+  });
+
+  it("R3-5: a redeemed being flies its lap of joy and then settles AT HOME, never gone", () => {
+    const w = spawnEntities([spec({ id: "m", role: "swarm", skin: "moths", c: 20, r: 10, tier: "E" })], []);
+    const e = w.entities.find((x) => x.id === "m")!;
+    const inp = idleInput({ playerX: 0, playerY: 0 });
+    for (let t = 0; t < 40; t++) stepEntities(w, GRID, inp); // it drifts while cross
+    redeemEntity(w, "m");
+    expect(e.state).toBe("joy");
+    let movedDuringJoy = false;
+    const at = e.x;
+    for (let t = 0; t < JOY_TICKS; t++) { stepEntities(w, GRID, inp); if (e.x !== at) movedDuringJoy = true; }
+    expect(movedDuringJoy, "the Freudenrunde is a LAP — it has to move").toBe(true);
+    for (let t = 0; t < 400; t++) stepEntities(w, GRID, inp);
+    expect(e.state).toBe("rest");
+    expect(e.x).toBe(e.homeX); // settled at home, not drifted off the page
+    expect(e.y).toBe(e.homeY);
+    expect(e.hidden).toBe(false); // presence is never removed (doc 31's kindness economy)
   });
 });
 

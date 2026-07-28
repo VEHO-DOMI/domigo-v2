@@ -255,6 +255,7 @@ for (const phaseId of phases) {
     cagesFreed: verdict.world.cagesFreed,
     guardianDown: verdict.world.guardianDown,
     tasksSolved: verdict.world.tasksSolved,
+    redeemedPresent: verdict.world.redeemedPresent, // PK-R2 · R3-5
   };
   proof.phases[phaseId] = tape;
   console.log(`✓ ${phaseId}: exit → ${verdict.exitTo} in ${verdict.ticksUsed} ticks, ${verdict.tasksSolved} tasks auto-solved, runs=${tape.pads.length}, world=${JSON.stringify(tape.expect)}`);

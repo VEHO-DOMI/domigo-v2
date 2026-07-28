@@ -14,6 +14,9 @@ import {
 function red(result: { success: boolean }, msg: string): void {
   assert.equal(result.success, false, msg);
 }
+function ok(result: { success: boolean }, msg: string): void {
+  assert.equal(result.success, true, msg);
+}
 
 // a valid task per kind (spread `over` to mutate for red cases)
 const CH = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "quickfire", stimulus: { type: "text" }, storyDe: "Frag.", kind: "choice", options: ["a", "b", "c"], answer: "a", ...over });
@@ -21,8 +24,8 @@ const WH = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "quickfire"
 const SP = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "quickfire", stimulus: { type: "text" }, storyDe: "Buchstabiere.", kind: "spell", answer: "pen", extraLetters: "ta", ...over });
 const OR = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "rescue", stimulus: { type: "text" }, storyDe: "Bau.", kind: "order", orderedChips: ["This", "is", "my", "book"], ...over });
 const OD = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "encounter", stimulus: { type: "text" }, storyDe: "Was passt nicht?", kind: "oddone", select: "odd", items: ["pen", "pencil", "chair"], correct: ["chair"], ...over });
-const MI = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "boss", stimulus: { type: "image", stem: "vocab_ruler", altDe: "ein Lineal" }, storyDe: "Fehler?", kind: "mistake", sentence: ["This", "is", "a", "rubber"], errorIndex: 3, fix: { mode: "replace", correction: "ruler" }, correctionOptions: ["ruler", "pen", "book"], ...over });
-const ME = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "boss", stimulus: { type: "text" }, storyDe: "Paare.", kind: "memory", pairs: [{ a: "3", b: "three" }, { a: "7", b: "seven" }, { a: "9", b: "nine" }], ...over });
+const MI = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "boss", stimulus: { type: "entity", showsDe: "schreibt einen Satz" }, skins: ["tafel"], evidence: ["This is a rubber"], storyDe: "Fehler?", kind: "mistake", sentence: ["This", "is", "a", "rubber"], errorIndex: 3, fix: { mode: "replace", correction: "ruler" }, correctionOptions: ["ruler", "pen", "book"], ...over });
+const ME = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "boss", stimulus: { type: "entity", showsDe: "schreibt drei Zahlen" }, skins: ["tafel"], evidence: ["3", "7", "9"], storyDe: "Paare.", kind: "memory", pairs: [{ a: "3", b: "three" }, { a: "7", b: "seven" }, { a: "9", b: "nine" }], ...over });
 const TY = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "boss", stimulus: { type: "text" }, storyDe: "Grüße.", kind: "typed", answer: "hello", ...over });
 
 test("gameTasks@2 — every kind's valid shape parses", () => {
@@ -46,6 +49,22 @@ test("gameTasks@2 — cross-field invariants fire (red-first tamper block)", () 
   red(GameTaskV2.safeParse(MI({ fix: { mode: "replace" } })), "mistake replace without correction");
   red(GameTaskV2.safeParse(MI({ fix: { mode: "remove", correction: "x" } })), "mistake remove with a stray correction");
   red(GameTaskV2.safeParse(ME({ pairs: [{ a: "3", b: "three" }, { a: "3", b: "seven" }, { a: "9", b: "nine" }] })), "memory duplicate on a");
+});
+
+test("gameTasks@2 — THE BOSS-EVIDENCE LAW (R3-12): the card asks about the world", () => {
+  // Koki's 11.48.59 / 11.50.26: the card said the Tafel had scribbled four words
+  // and the board was blank. A boss card of an evidence kind must put its
+  // material ON the guardian, and must ask about nothing else.
+  const noEvidence = MI();
+  delete (noEvidence as Record<string, unknown>).evidence;
+  red(GameTaskV2.safeParse(noEvidence), "boss mistake card without evidence");
+  red(GameTaskV2.safeParse(ME({ evidence: ["3", "7"] })), "evidence missing a number the card pairs");
+  red(GameTaskV2.safeParse(MI({ evidence: ["Something else entirely"] })), "evidence that does not show the sentence");
+  red(GameTaskV2.safeParse(CH({ evidence: ["a"] })), "a kind that asks about no written material");
+  // an evidence kind OFF the boss needs none — the law is about the guardian
+  ok(GameTaskV2.safeParse(OD()), "an encounter oddone needs no board");
+  // …and the typed console card is exempt by kind, boss or not (passover W4)
+  ok(GameTaskV2.safeParse(TY()), "the typed finale card carries no evidence");
 });
 
 test("gameTasks@2 — THE BINDING LAW (PB-F1): a card that claims a being must name it", () => {
@@ -98,7 +117,9 @@ test("renderTaskText — the projection shows the student's surface, per kind", 
   assert.match(renderTaskText(GameTaskV2.parse(ME())), /Paare/);
   assert.match(renderTaskText(GameTaskV2.parse(TY())), /Grüße\./);
   // stimulus surfaces in the projection
-  assert.match(renderTaskText(GameTaskV2.parse(MI())), /\[Bild: ein Lineal\]/);
+  assert.match(renderTaskText(GameTaskV2.parse(MI())), /\[schreibt einen Satz\]/);
+  // R3-12: the guardian's board is part of the student's surface
+  assert.match(renderTaskText(GameTaskV2.parse(MI())), /\[auf der Tafel steht: This is a rubber\]/);
   assert.match(renderTaskText(GameTaskV2.parse(WH())), /\[zeigt 3\]/);
 });
 

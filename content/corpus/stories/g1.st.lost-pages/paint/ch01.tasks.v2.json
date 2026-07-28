@@ -1130,9 +1130,9 @@
       },
       "storyDe": "Ein Wort stimmt nicht — tipp es an!",
       "sentence": [
-        "Look",
-        "at",
-        "the",
+        "This",
+        "is",
+        "a",
         "door",
         "."
       ],
@@ -1153,9 +1153,12 @@
         "p4"
       ],
       "hints": {
-        "deDesc": "Schau sie an: darauf schreibt man mit Kreide."
+        "deDesc": "Schau sie genau an: Was ist sie wirklich?"
       },
-      "grounding": "u01 board; the referent is the guardian itself"
+      "grounding": "u01 board; the guardian writes a false sentence about HERSELF — the world refutes every distractor",
+      "evidence": [
+        "This is a door."
+      ]
     },
     {
       "id": "g1.paint.ch01.boss.o1",
@@ -1163,9 +1166,9 @@
       "kind": "order",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Die Tafel wischt sich sauber und wartet"
+        "showsDe": "Die Tafel kritzelt ihre Wörter wild durcheinander"
       },
-      "storyDe": "Bau ihr den Satz über sie selbst!",
+      "storyDe": "Bring ihre Wörter in die richtige Reihenfolge!",
       "orderedChips": [
         "This",
         "is",
@@ -1183,7 +1186,14 @@
         "deDesc": "Fang mit „This\" an.",
         "deWord": "This is a board."
       },
-      "grounding": "u01 frame: This is a … + board"
+      "grounding": "u01 frame: This is a … + board",
+      "evidence": [
+        "board",
+        "a",
+        "This",
+        "is",
+        "."
+      ]
     },
     {
       "id": "g1.paint.ch01.boss.q1",
@@ -1213,7 +1223,13 @@
       "hints": {
         "deDesc": "Drei sind Farben. Durch eines schaust du hinaus."
       },
-      "grounding": "u01 colours vs object"
+      "grounding": "u01 colours vs object",
+      "evidence": [
+        "green",
+        "red",
+        "brown",
+        "window"
+      ]
     },
     {
       "id": "g1.paint.ch01.boss.o2",
@@ -1221,9 +1237,9 @@
       "kind": "order",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Die Tafel möchte wissen, wie es dir geht"
+        "showsDe": "Die Tafel kritzelt ihre Frage durcheinander"
       },
-      "storyDe": "Bau ihre Frage!",
+      "storyDe": "Bring ihre Frage in die richtige Reihenfolge!",
       "orderedChips": [
         "How",
         "are",
@@ -1240,7 +1256,13 @@
         "deDesc": "Fang mit „How\" an.",
         "deWord": "How are you?"
       },
-      "grounding": "u01 phrase: how are you"
+      "grounding": "u01 phrase: how are you",
+      "evidence": [
+        "you",
+        "How",
+        "?",
+        "are"
+      ]
     },
     {
       "id": "g1.paint.ch01.boss.me1",
@@ -1248,9 +1270,9 @@
       "kind": "memory",
       "stimulus": {
         "type": "entity",
-        "showsDe": "Die Tafel hat ihre Zahlen-Karten verwischt"
+        "showsDe": "Die Tafel schreibt vier Zahlen auf sich"
       },
-      "storyDe": "Finde die Paare: Ziffer und englisches Wort!",
+      "storyDe": "Finde zu jeder Zahl das englische Wort!",
       "pairs": [
         {
           "a": "3",
@@ -1278,7 +1300,13 @@
       "hints": {
         "deDesc": "Zähl nach: jede Ziffer hat ihr englisches Wort."
       },
-      "grounding": "u01 numbers 1–12; digit ↔ word"
+      "grounding": "u01 numbers 1–12; digit ↔ word",
+      "evidence": [
+        "3",
+        "7",
+        "9",
+        "12"
+      ]
     },
     {
       "id": "g1.paint.ch01.fin.t1",

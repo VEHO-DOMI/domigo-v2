@@ -1536,3 +1536,148 @@ by hand through `game.step()` so the scene queue drains (P-49), after the boot p
 - `scripts/record-paint-tape.mjs` still models the cage hint with its own inline shell
   (fresh per recording, so it matches the default) rather than importing
   `ChapterShellState`. Correct today; one more place the two shells could drift.
+
+---
+
+# PK-R2 · COMBAT & PRESENCE (2026-07-28, Opus 5, `pb-r2-combat`)
+
+Boot gate verified: PK-R1 merged as #241 (`786ff7d`), the passover's PK-R2 stamp reads
+BOOT-READY, doc-41 §8 banked by the silence rule, no amendments to this packet's laws.
+Governing canon: doc 40 §2 (timing) + §4 (anti-stranding) + doc 41 §4.
+
+## R3-4 — the duel: it was throwing over its own shoulder
+
+The roll ends with `e.dir` pointing at the guardian's home station; the throw took its
+direction from the PLAYER's position. So facing and aim were two different numbers, and
+Koki filmed the result (11.50.09). Three changes, one cause:
+
+1. **The turn state — doc 40 §2's "biggest missing beat", implemented first here.**
+   `idle → turn → telegraph` when the facing is wrong, 18 t, and the flip lands at the
+   MIDPOINT (`TURN_FLIP_AT`), never on tick 1. The throw now reads `e.dir`, so the spawn
+   side IS the facing. Live trace from the arena:
+   `idle → turn → telegraph → roll → idle → telegraph → roll → idle → turn → telegraph → roll`
+   — the turn fires only when the roll left it facing away, which is the point.
+2. **The projectile is chalk.** `tafel_chalk` (painted, drawn by nothing — doc 38 §2) is
+   now the sprite, tumbling along its arc; `tafel_hand` shows on the windup. Measured
+   live over three throw cycles: hand visible 183 ticks (≈3 × the 60 t telegraph), chalk
+   sprite visible 87 ticks, and **3/3 spawns on the player's side**.
+3. **A miss shatters.** Chalk that lands puffs into dust, and a deflected piece now flies
+   on a `CHALK_LIFE_TICKS` leash instead of sailing off as a lingering orb.
+
+Also doc 40 §2, same pass: flyer telegraph 20 → 30 t, chaser 24 → 30 t, and the turn
+state for ground walkers (bouncers are exempt — doc 40 §3 gives them no turn family).
+
+**Named art debt:** no `tafel_turn` cells exist, and the turn must NOT fall back to `_a`
+— that is the green easel form, and swapping bodies mid-duel is the identity bug PB-F1
+removed. `roll` (the wheeled body in motion) holds the turn until 2–3 turn cells are
+painted.
+
+## R3-5 — presence: redemption stopped the world for the freed
+
+`redeemEntity` parked a being in a terminal `dazed`, and `stepEntities` then SKIPPED
+every redeemed entity. That is the whole explanation for Koki's three notes: the moth
+never flew its Freudenrunde, the book "flew off as if nothing happened", the eraser left
+the level rightward for good. Redemption is now a state PAIR — **joy** (a lap around its
+home) → **rest** (settled AT home) — and redeemed beings keep stepping. The settle is
+what brings a wanderer back: whatever it drifted to, it eases home and stays.
+
+The guardian gets its own beat: the last knot enters **`sad`** (`tafel_sad`, the third
+painted-unused sheet) for 48 t before `consoled`. doc 38 called this the cheapest win on
+the board.
+
+**Proven in the browser end to end:** moth encounter → solved → state `joy`, orbiting
+(x 449 vs home 440) → state **`rest`**, rendering **`pb-moths_rest`**, `visible: true`.
+That sheet had never been on screen before this packet.
+
+**The tapes learned it.** `TapeExpect.redeemedPresent` — did the run end with a freed
+being still present in joy/rest? All five tapes re-recorded; p1/p2/p3 stamp `true`, the
+arena and the bonus room `false` (neither holds a redeemable creature — the tapes stamp
+what happened, not what we hoped). Tamper: revert `redeemEntity` to terminal `dazed` and
+three phases go red; restored, green.
+
+## R3-6 — the fist connects
+
+Any solid contact answers back: a chalk-dust puff plus a two-tick hit-pause
+(`HIT_PAUSE_TICKS`), on hostiles, cages, terrain (rising edge only — a fist held against
+a wall puffs once, not every tick) and the stomper's own landing, which had been silent.
+The `puff` event is a sim event carrying world coordinates, so the sim still knows
+nothing about particles.
+
+**The block's PURPOSE is left to PK-R4 as the passover directs.** Wiring made the slam
+land and the hit read; whether a crusher on a ledge the child rarely passes beneath earns
+its place is p3 level design (R3-20), not a wiring question.
+
+## R3-12 — the boss evidence renders ON the guardian
+
+Schema: `evidence` on the base task shape, plus a law with teeth — for the four evidence
+kinds, **every token a card asks about must appear in what the guardian writes**
+(`evidenceTokensOf`), evidence implies an entity stimulus, and a boss card of an evidence
+kind may not go without it. `renderTaskText` prints the board, so a blind solver sees the
+same surface the child does (P-18).
+
+Engine: `GUARDIAN_BOARDS` — each guardian SKIN declares its writing surface; a skin
+without one simply has no beat, never a blank. The chalk appears stroke by stroke and the
+card opens only when the writing finishes. Measured live: **600 ms = 36 t**, inside doc
+41 §4's 30–45 t band, revealing `g → green → green red → green red brown → …window`.
+
+**The two-layer gate found a real defect, and it was mine.** Machine autoSolve is green
+for all 49 cards (machines.test.ts runs every exemplar). Two blind solvers then agreed on
+all five keys — but one attacked card m1: *"Look at the door."* is a perfectly good
+sentence, and the arena HAS a floor and chairs, so board/floor/chair were three defensible
+answers and the card taught guessing. Rewritten: the Tafel now writes **"This is a door."**
+about HERSELF, so looking at her refutes every distractor. A fresh blind re-check
+confirmed it: answerable by looking, both distractors indefensible.
+
+The same reviewer suggested a shape-plausible distractor (`wall`) to make the card harder.
+`check-game-tasks` **refused it** — not in MORE! 1 Unit 1's wordbank. The guardrail is
+right and the note is recorded: ch01's vocabulary ceiling caps distractor quality, and
+that suggestion only becomes available from ch02 on.
+
+## Gates (unpiped, real exit codes)
+
+`pnpm typecheck` 0 · `pnpm lint` 0 · `pnpm test` 0 (game-paint **280**, content-schema
+**41**) · `pnpm -F web build` 0 · `pnpm check:bundle` 0 · `check-game-tasks` 0 (49 tasks,
+all eight checks). Tamper checks red-then-restored: `redeemedPresent`, plus the new
+schema law's own red block (boss card without evidence · evidence missing a token the
+card pairs · evidence that does not show the sentence · an evidence field on a kind that
+asks about nothing written).
+
+## Browser playtest (dev server :3010, hand-pumped loop)
+
+Everything above marked "live" was measured in the running arena. One harness lesson
+worth banking: **in a hidden pane `setTimeout` is throttled to ~1 s, so an `await` every
+20 ticks starves the loop to a standstill** — two observation runs died that way before
+the cadence went to one yield per 150 ticks. This is P-52's cousin: the pane is not the
+user's browser, and it lies about time as well as about visibility.
+
+A live tuning fix came straight out of the playtest: the first evidence render overflowed
+the slate ("window" hung over the wooden frame). Measured against the sprite at its 52 px
+display height — the writing face is ~26 world px across — and the wrap width went 36 → 24
+with the font 7 → 6 px. Re-shot: all four words inside the board.
+
+## Honesty clause — what only Koki's replay can judge
+
+- **The FEEL of the duel is his call.** I can prove the turn fires, the hand shows, the
+  chalk is chalk and the spawn side is right; whether 18 t reads as a decision rather than
+  a stumble, and whether the fight now has a rhythm, is a verdict and not a measurement.
+- **The two-tick hit-pause on TERRAIN contact is a deliberate reading of "any solid
+  contact" and may be too much.** A fist bounced off a wall now stops the world for two
+  ticks. It is one constant (`HIT_PAUSE_TICKS`) if he wants it gone for walls.
+- **The joy lap renders on the idle cell.** No skin has painted `joy` cells yet; doc 40 §3
+  makes them mandatory for every future commission, and the ch01 retrofit is a later wave.
+  `rest` is real art and is on screen; `joy` currently reads as the being bobbing home.
+- **I did not drive a full legitimate three-knot fight to the finale in this packet.** The
+  arena tape proves the fight mechanically in CI (`guardianDown: true`) and PK-R1's
+  browser run proved the finale chain; here I proved the duel BEATS and the evidence beat.
+- The two Tafel forms (F2-25) are unchanged: at rest in the arena she is still the green
+  easel. The evidence lands correctly on that form's slate, and the screenshots show it.
+
+## Findings filed, not acted on
+
+- **`renderTaskText` leaks a memory card's key**: the projection prints
+  `Paare (verdeckt): 3↔three | …`, i.e. the pairs a student cannot see on a face-down
+  board. Both blind solvers noticed the mechanic; neither could be tested honestly on it.
+  P-18 says frames mirror the renderer — this one does not. Belongs with the card-kit work.
+- ch01's wordbank has no shape-plausible distractor for „board" (see R3-12 above).
+- The crusher's `recover` state has no pose cell and falls to the idle bob while the bag
+  climbs back; harmless, and a candidate for the ch01 rig retrofit wave.

@@ -72,6 +72,28 @@ export interface PaintSceneCfg {
   airModel?: AirModel;
 }
 
+// ── R3-12 · THE GUARDIAN'S WRITING SURFACE (doc 41 §4) ───────────────────────
+// Each guardian SKIN declares where on its body chalk appears, in world px
+// relative to the sprite's feet (its origin is bottom-centre). A skin with no
+// entry has no board, and its cards simply open without a writing beat — the
+// only-present law again, so a new guardian can never render text into thin air.
+// Measured against the shipped sprite at its 52 px display height in the live
+// arena: the writing face is ~26 world px across, centred 33 px above the feet.
+// The wrap width sits just inside that so a six-letter word („window") stays on
+// the slate instead of hanging over its wooden frame.
+export const GUARDIAN_BOARDS: Record<string, { dy: number; w: number; h: number }> = {
+  tafel: { dy: -33, w: 24, h: 22 },
+};
+/** How long the guardian spends writing before its card opens (doc 41 §4 asks
+ *  for a 30–45 t readability telegraph). */
+export const EVIDENCE_BEAT_TICKS = 36;
+
+/** Display heights in world px for the duel's two newly-wired sheets (R3-4). */
+const CHALK_DISPLAY_H = 9;
+const HAND_DISPLAY_H = 18;
+const HAND_OFFSET_X = 15;
+const HAND_OFFSET_Y = 30;
+
 const EARTH = 0xa8794f;
 const EARTH_DARK = 0x8a6140;
 const ICE = 0xd7e9f2;
@@ -104,6 +126,15 @@ export class PaintScene extends Phaser.Scene {
 
   private entityImgs = new Map<string, Phaser.GameObjects.Image>();
   private projG!: Phaser.GameObjects.Graphics;
+  /** R3-4: pooled chalk sprites (one per live projectile, reused per frame). */
+  private projImgs: Phaser.GameObjects.Image[] = [];
+  /** R3-4: the guardian's throwing hand, shown only during its windup. */
+  private handImg!: Phaser.GameObjects.Image;
+  /** R3-12: chalk on the guardian's own board — the card's evidence. */
+  private evidenceText: Phaser.GameObjects.Text | null = null;
+  private evidenceOwner: string | null = null;
+  private evidenceFull = "";
+  private evidenceTick = 0;
   private acc = 0;
 
   private parts = new Map<RigPartName, Phaser.GameObjects.Image>();
@@ -150,6 +181,8 @@ export class PaintScene extends Phaser.Scene {
     // player/world/letters/bonus clock all spawned by the Sim in the constructor
     this.buildEntityImgs();
     this.projG = this.add.graphics().setDepth(8);
+    // R3-4: the guardian's throwing hand — built once, shown only on the windup
+    this.handImg = this.add.image(0, 0, "fb-ent-generic").setDepth(9).setOrigin(0.5, 0.5).setVisible(false);
 
     const kb = this.input.keyboard;
     this.keys = kb
@@ -236,6 +269,7 @@ export class PaintScene extends Phaser.Scene {
           this.letterImgs.delete(`${ev.c},${ev.r}`);
           break;
         }
+        case "puff": this.puff(fromSubs(ev.x), fromSubs(ev.y), ev.kind); break;
         case "exit": cb.onExit(ev.to); break;
         default: break;
       }
@@ -299,6 +333,24 @@ export class PaintScene extends Phaser.Scene {
     return "fb-ent-generic";
   }
 
+  /** doc 40 §4 · how many painted idle cells a skin actually owns. Counted from
+   *  the loaded textures (the only-present law), memoised per skin, so a sheet
+   *  that later gains `_c/_d` enriches the idle with no code change — and one
+   *  that never does keeps exactly today's two-cell cadence. */
+  private idleFrameCache = new Map<string, number>();
+  private idleFramesOf(skin: string): number {
+    const hit = this.idleFrameCache.get(skin);
+    if (hit !== undefined) return hit;
+    let n = 1;
+    for (const c of ["b", "c", "d"]) {
+      if (!this.textures.exists(`pb-${skin}_${c}`)) break;
+      n++;
+    }
+    const frames = Math.max(n, 1);
+    this.idleFrameCache.set(skin, frames);
+    return frames;
+  }
+
   /** W4: delegated to the pure hook in anim.ts (unit-tested there). */
   private entStateCell(e: EntPoseInput): string {
     return entPoseCell(e);
@@ -322,7 +374,7 @@ export class PaintScene extends Phaser.Scene {
       if (!img) continue;
       img.setVisible(!e.hidden && !(e.role === "cage" && false));
       img.setPosition(fromSubs(e.x), fromSubs(e.y));
-      img.setTexture(this.entTex(e.skin, this.entStateCell(e)));
+      img.setTexture(this.entTex(e.skin, this.entStateCell({ ...e, idleFrames: this.idleFramesOf(e.skin) })));
       const targetH = this.entTargetH(e);
       const frameH = img.frame.height || 1;
       if (e.role.startsWith("platform")) img.setDisplaySize(40, targetH);
@@ -340,11 +392,116 @@ export class PaintScene extends Phaser.Scene {
       if (e.state === "telegraph") img.setTint(0xfff2b0);
       else img.clearTint();
     }
+    // R3-4 · THE PROJECTILE IS CHALK, not a white ball. `tafel_chalk` was
+    // painted and drawn by nothing (doc 38 §2) while the duel threw a circle;
+    // it now flies as the stick it is, tumbling so the arc reads.
     this.projG.clear();
+    let used = 0;
     for (const pr of this.world.projectiles) {
+      const thrower = this.world.entities.find((e) => e.id === pr.fromId);
+      const key = thrower ? `pb-${thrower.skin}_chalk` : "";
+      if (pr.kind === "chalk" && key !== "" && this.textures.exists(key)) {
+        let img = this.projImgs[used];
+        if (!img) {
+          img = this.add.image(0, 0, key).setDepth(8).setOrigin(0.5, 0.5);
+          this.projImgs[used] = img;
+        }
+        used++;
+        img.setVisible(true).setTexture(key).setPosition(fromSubs(pr.x), fromSubs(pr.y) - 4);
+        img.setScale(CHALK_DISPLAY_H / (img.frame.height || 1));
+        img.setRotation(this.cfg.reducedMotion ? 0 : (pr.deflected ? -1 : 1) * pr.age * 0.14);
+        continue;
+      }
+      // the ink blob keeps its dot (no painted sheet — the only-present law)
       this.projG.fillStyle(pr.kind === "chalk" ? 0xf6f2e8 : 0x4f86c6, 1);
       this.projG.fillCircle(fromSubs(pr.x), fromSubs(pr.y) - 4, pr.kind === "chalk" ? 3 : 4);
       this.projG.lineStyle(1, 0x243048, 0.6).strokeCircle(fromSubs(pr.x), fromSubs(pr.y) - 4, pr.kind === "chalk" ? 3 : 4);
+    }
+    for (let i = used; i < this.projImgs.length; i++) this.projImgs[i]?.setVisible(false);
+
+    // R3-4 · the WINDUP shows the hand that throws (`tafel_hand`, also painted
+    // and never shown). It appears only while the guardian is telegraphing, on
+    // the side it is facing — so the tell and the aim are the same picture.
+    const winding = this.world.entities.find((e) => e.role === "guardian" && e.state === "telegraph" && !e.redeemed);
+    const handKey = winding ? `pb-${winding.skin}_hand` : "";
+    if (winding && handKey !== "" && this.textures.exists(handKey)) {
+      this.handImg.setVisible(true).setTexture(handKey);
+      this.handImg.setPosition(fromSubs(winding.x) + winding.dir * HAND_OFFSET_X, fromSubs(winding.y) - HAND_OFFSET_Y);
+      this.handImg.setScale(HAND_DISPLAY_H / (this.handImg.frame.height || 1));
+      this.handImg.setFlipX(winding.dir > 0);
+    } else {
+      this.handImg.setVisible(false);
+    }
+  }
+
+  // ── R3-12 · the boss-evidence beat (doc 41 §4) ────────────────────────────
+  /**
+   * Write a card's evidence onto the guardian's own board, and report how long
+   * (ms) the card must wait before opening. Returns 0 when this skin declares no
+   * writing surface, in which case the card opens at once — a guardian without a
+   * board is a design choice, never a silent blank.
+   */
+  writeEvidence(entityId: string, lines: readonly string[]): number {
+    const e = this.world?.entities.find((x) => x.id === entityId);
+    const board = e ? GUARDIAN_BOARDS[e.skin] : undefined;
+    if (!e || !board) return 0;
+    this.clearEvidence();
+    this.evidenceOwner = entityId;
+    this.evidenceFull = lines.join("  ");
+    this.evidenceTick = 0;
+    this.evidenceText = this.add
+      .text(fromSubs(e.x), fromSubs(e.y) + board.dy, "", {
+        fontFamily: "system-ui, sans-serif",
+        fontSize: "6px",
+        color: "#f6f2e8", // chalk on slate
+        align: "center",
+        wordWrap: { width: board.w },
+      })
+      .setOrigin(0.5, 0.5)
+      .setDepth(8)
+      .setResolution(RENDER_SCALE * 2);
+    return EVIDENCE_BEAT_TICKS * TICK_MS;
+  }
+
+  /** The board wipes itself once its card is answered or put down. */
+  clearEvidence(): void {
+    this.evidenceText?.destroy();
+    this.evidenceText = null;
+    this.evidenceOwner = null;
+    this.evidenceFull = "";
+    this.evidenceTick = 0;
+  }
+
+  /** The chalk appears as it is WRITTEN — that stroke-by-stroke beat is the
+   *  readability telegraph the card waits for. Driven from render, not the sim
+   *  clock, because the world is deliberately frozen while a card is pending. */
+  private renderEvidence(): void {
+    const t = this.evidenceText;
+    if (!t || this.evidenceOwner === null) return;
+    const e = this.world?.entities.find((x) => x.id === this.evidenceOwner);
+    const board = e ? GUARDIAN_BOARDS[e.skin] : undefined;
+    if (!e || !board) return;
+    t.setPosition(fromSubs(e.x), fromSubs(e.y) + board.dy);
+    this.evidenceTick++;
+    const shown = this.cfg.reducedMotion
+      ? this.evidenceFull.length
+      : Math.ceil((this.evidenceFull.length * Math.min(this.evidenceTick, EVIDENCE_BEAT_TICKS)) / EVIDENCE_BEAT_TICKS);
+    t.setText(this.evidenceFull.slice(0, shown));
+  }
+
+  /** R3-4/R3-6 · a puff of chalk dust at an impact. Pure decoration with a
+   *  lifetime — under reduced motion it still appears, it just does not drift. */
+  private puff(xPx: number, yPx: number, kind: "chalk" | "hit"): void {
+    const colour = kind === "chalk" ? 0xf6f2e8 : 0xe8dcc0;
+    for (let i = 0; i < 5; i++) {
+      const g = this.add.circle(xPx, yPx - 4, 1.6 + (i % 3) * 0.5, colour, 0.9).setDepth(9);
+      const dx = (i - 2) * 3.5;
+      const dy = -3 - (i % 2) * 3;
+      if (this.cfg.reducedMotion) {
+        this.time.delayedCall(220, () => g.destroy());
+      } else {
+        this.tweens.add({ targets: g, x: xPx + dx, y: yPx - 4 + dy, alpha: 0, scale: 0.4, duration: 260, onComplete: () => g.destroy() });
+      }
     }
   }
 
@@ -415,6 +572,7 @@ export class PaintScene extends Phaser.Scene {
     }
 
     this.renderEntities();
+    this.renderEvidence();
 
     for (const ring of this.ringImgs) {
       ring.img.y = ring.baseY + (this.cfg.reducedMotion ? 0 : Math.sin(this.tickCount / 22) * 1.5);

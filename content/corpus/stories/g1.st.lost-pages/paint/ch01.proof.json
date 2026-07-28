@@ -67,7 +67,8 @@
         "exitTo": "p2",
         "cagesFreed": 0,
         "guardianDown": false,
-        "tasksSolved": 3
+        "tasksSolved": 3,
+        "redeemedPresent": true
       }
     },
     "p2": {
@@ -235,7 +236,8 @@
         "exitTo": "p3",
         "cagesFreed": 0,
         "guardianDown": false,
-        "tasksSolved": 5
+        "tasksSolved": 5,
+        "redeemedPresent": true
       }
     },
     "p3": {
@@ -316,7 +318,8 @@
         "exitTo": "boss",
         "cagesFreed": 0,
         "guardianDown": false,
-        "tasksSolved": 3
+        "tasksSolved": 3,
+        "redeemedPresent": true
       }
     },
     "p4": {
@@ -4121,7 +4124,8 @@
         "exitTo": "done",
         "cagesFreed": 0,
         "guardianDown": true,
-        "tasksSolved": 3
+        "tasksSolved": 3,
+        "redeemedPresent": false
       }
     },
     "p9": {
@@ -4142,7 +4146,8 @@
         "exitTo": "p2",
         "cagesFreed": 0,
         "guardianDown": false,
-        "tasksSolved": 0
+        "tasksSolved": 0,
+        "redeemedPresent": false
       }
     }
   }
