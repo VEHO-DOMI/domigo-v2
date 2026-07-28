@@ -36,6 +36,14 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
   if ("grants" in p && typeof p.grants !== "string") {
     ctx.issues.push({ code: "custom", input: p, path: ["grants"], message: "params.grants must be a string" });
   }
+  // PK-R3b · R3-16: a Regel-Seite's payload is RENDERED to a six-year-old, so
+  // its two authored strings are shape-checked here for the same reason `price`
+  // is — a number or a stray null would reach the page as the rule itself.
+  for (const k of ["topicDe", "merksatzDe"] as const) {
+    if (k in p && (typeof p[k] !== "string" || p[k].trim() === "")) {
+      ctx.issues.push({ code: "custom", input: p, path: [k], message: `params.${k} must be a non-empty string` });
+    }
+  }
 });
 
 const PaintEntity = z.object({
@@ -44,6 +52,7 @@ const PaintEntity = z.object({
     "chaser", "gunner", "flyer", "bouncer", "crusher", "swarm",
     "platform.move", "platform.fall", "platform.swing",
     "cage", "powerup", "door.trigger", "guardian",
+    "tip", "book", // PK-R3b · R3-16: the two static-state collectibles
   ]),
   skin: z.string().min(1),
   c: z.number().int().nonnegative(),
@@ -88,6 +97,9 @@ const PaintLevelFile = z.object({
   whyDe: z.string().min(1),
   hintsDe: z.array(z.string().min(1)),
   collectNounDe: z.string().min(1),
+  /** PK-R3b · R3-16: how many Regel-Seiten the chapter hides (doc 41 §5). The
+   *  `tip-honesty` law proves this against what the phases actually place. */
+  tipsTotal: z.number().int().positive().optional(),
   abilities: z.array(z.enum(["jump", "punch", "hang", "swing", "hover", "run"])),
   phases: z.array(PaintPhase).min(1),
   arena: PaintPhase.optional(),

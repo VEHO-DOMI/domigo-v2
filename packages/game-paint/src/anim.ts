@@ -56,6 +56,13 @@ export const WASH_ALPHA = 0.72;
  *  Freudenrunde are one beat rather than two. */
 export const COLOUR_FLOOD_TICKS = 36;
 
+/** Which beings OSWIN's rain reached. The creatures, plus the CAGES: a knotted
+ *  school bag is a redeemable being too, and two of ch01's restore cards are
+ *  about exactly those bags — a card that says „ganz grau geworden" over a
+ *  full-colour satchel would be the same lie R3-12 took off the boss. Doors,
+ *  grants and platforms are furniture and were never drained. */
+export const WASHED_ROLES = new Set<string>([...JOY_ROLES, "cage"]);
+
 /** How opaque the grey wash over this being is right now, 0 … WASH_ALPHA.
  *  Pure: `timer` is the sim's own counter, which `redeemEntity` resets to 0 at
  *  the moment of redemption, so the flood starts exactly when the card is
@@ -65,7 +72,7 @@ export const washAlphaFor = (
   e: { role: string; redeemed: boolean; timer: number },
   reducedMotion = false,
 ): number => {
-  if (!JOY_ROLES.has(e.role)) return 0; // static-state beings were never drained
+  if (!WASHED_ROLES.has(e.role)) return 0; // furniture was never drained
   if (!e.redeemed) return WASH_ALPHA;
   if (reducedMotion) return 0;
   const left = 1 - Math.min(Math.max(e.timer, 0), COLOUR_FLOOD_TICKS) / COLOUR_FLOOD_TICKS;

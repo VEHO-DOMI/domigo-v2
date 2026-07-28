@@ -61,7 +61,7 @@ interface OverlayState {
   /** PB-F1/F2-20: which side of the canvas the card sits on — always AWAY from
    *  the being it is about, so „schau sie an" is physically possible. */
   align: CardAlign;
-  ceremony?: { skin: string; classmate?: string };
+  ceremony?: { skin: string; classmate?: string; first: boolean };
   bonusend?: { got: number; total: number; timeout: boolean };
   /** bonuspay: what THIS door costs, read from its own params (PB-R1 · R3-2). */
   price?: number;
@@ -364,7 +364,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           onCageFreed: (id, skin, classmate, count) => {
             freedRef.current = [...freedRef.current, id];
             setFreedCount(count);
-            setOverlay({ req: { use: "rescue", ctx: { type: "cage", id, skin, classmate } }, item: null, card: "ceremony", attempts: 0, typed: "", align: "center", ceremony: { skin, classmate } });
+            setOverlay({ req: { use: "rescue", ctx: { type: "cage", id, skin, classmate } }, item: null, card: "ceremony", attempts: 0, typed: "", align: "center", ceremony: { skin, classmate, first: count === 1 } });
           },
           onGuardianDown: (id, skin) => {
             // F2-24: the chapter's climax is PLAYED, not narrated. The finale
@@ -751,6 +751,13 @@ function Overlay({
     );
   }
   if (o.card === "ceremony") {
+    // W6 · R3-14 · CONTEXTUALIZATION (doc 41). Two fixes from Koki's replay:
+    //  · Merle is a classmate the child already KNOWS. „Nice to meet you" was
+    //    the wrong frame for a rescue, so that card is gone from the set (it is
+    //    a restore card now) and she simply greets a friend here.
+    //  · „Richtung Lager" was said as if the camp had ever been introduced. The
+    //    FIRST rescue now names it — after that the phrase has a referent, and
+    //    every „zum Lager" in the chapter reads.
     const merle = o.ceremony?.classmate === "merle";
     return (
       <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
@@ -758,11 +765,16 @@ function Overlay({
         {merle ? (
           <>
             <p style={{ fontSize: 17, margin: "0 0 2px" }}><strong>Merle</strong> hüpft aus der Federtasche!</p>
-            <p style={{ fontSize: 16, margin: "0 0 2px" }}>„Hello! I'm Merle. Thanks!"</p>
-            <p style={{ fontSize: 13, color: "#6b6250", margin: "0 0 10px" }}>(Hallo! Ich bin Merle. Danke!) — Sie läuft schon Richtung Lager.</p>
+            <p style={{ fontSize: 16, margin: "0 0 2px" }}>„Hello! I'm Merle. Thanks!“</p>
+            <p style={{ fontSize: 13, color: "#6b6250", margin: "0 0 10px" }}>(Hallo! Ich bin Merle. Danke!) — Sie kennt den Weg und läuft schon zum Lager.</p>
           </>
         ) : (
           <p style={{ fontSize: 16, margin: "0 0 10px" }}>Ein Buchstaben-Wesen flattert frei und dreht eine Freudenrunde! ✨</p>
+        )}
+        {o.ceremony?.first === true && (
+          <p style={{ fontSize: 14, color: "#7a6a4a", fontStyle: "italic", margin: "0 0 10px", lineHeight: 1.45 }}>
+            Das Buch flüstert: „Bring alle, die du befreist, zum <strong>Lager am Rand der Seite</strong> — dort wartet die Klasse.“
+          </p>
         )}
         <button style={btn} onClick={() => onDismiss(o)}>Weiter</button>
       </div></div>

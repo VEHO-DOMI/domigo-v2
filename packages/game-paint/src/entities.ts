@@ -136,8 +136,13 @@ const joyRadiusPx = (role: string): { rx: number; ry: number; lift: number } =>
 
 /** The post-redeem step: a lap of joy, then home to stay. */
 const stepRedeemed = (e: EntityState): void => {
-  if (!JOY_ROLES.has(e.role)) return; // static-state beings hold their cell
+  // R3-15: the timer runs for EVERY redeemed being, not only the ones that fly a
+  // lap — the colour flood (anim.washAlphaFor) is driven by it, and a knotted
+  // school bag gets its colour back exactly like a moth does even though it
+  // stays put. Before this the timer froze at redemption and a cage would have
+  // been left half-drained forever.
   e.timer += 1;
+  if (!JOY_ROLES.has(e.role)) return; // static-state beings hold their cell
   const { rx, ry, lift } = joyRadiusPx(e.role);
   if (e.state === "joy") {
     const t = e.timer;
@@ -406,7 +411,7 @@ export const stepEntities = (
         if (e.state === "closed" && fistHits(e, inp.fist, 16)) {
           e.hp -= 1;
           events.push({ type: "puff", x: inp.fist?.x ?? e.x, y: inp.fist?.y ?? e.y, kind: "hit" }); // R3-6
-          if (e.hp <= 0) { e.state = "burst"; e.redeemed = true; events.push({ type: "cageBurst", id: e.id, skin: e.skin }); }
+          if (e.hp <= 0) { e.state = "burst"; e.redeemed = true; e.timer = 0; events.push({ type: "cageBurst", id: e.id, skin: e.skin }); }
           else { e.state = "shaking"; e.timer = 0; events.push({ type: "cageHit", id: e.id, hpLeft: e.hp }); }
         } else if (e.state === "shaking" && e.timer > 30) e.state = "closed";
         break;

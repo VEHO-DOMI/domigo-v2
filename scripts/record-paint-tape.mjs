@@ -40,6 +40,10 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
       else if (ev.type === "cageFreed") { freed.push(ev.id); sim.setOverlay(false); }
       else if (ev.type === "guardianDown") sim.setOverlay(false);
       else if (ev.type === "cageHint") sim.setOverlay(false); // PB-F3: the one-time hint
+      // PK-R3b · R3-16: a Regel-Seite freezes the world so it can be read, so
+      // the pilot must put it down again — the cagehint lesson, applied to the
+      // new one-time card before it can strand anyone.
+      else if (ev.type === "tip") sim.setOverlay(false);
       else if (ev.type === "exit") { exited = true; exitTo = ev.to; }
     }
   };
@@ -256,6 +260,9 @@ for (const phaseId of phases) {
     guardianDown: verdict.world.guardianDown,
     tasksSolved: verdict.world.tasksSolved,
     redeemedPresent: verdict.world.redeemedPresent, // PK-R2 · R3-5
+    tipsGot: verdict.world.tipsGot, // PK-R3b · R3-16
+    booksGot: verdict.world.booksGot,
+    scorePageShown: verdict.world.scorePageShown, // PK-R3b · M-B
   };
   proof.phases[phaseId] = tape;
   console.log(`✓ ${phaseId}: exit → ${verdict.exitTo} in ${verdict.ticksUsed} ticks, ${verdict.tasksSolved} tasks auto-solved, runs=${tape.pads.length}, world=${JSON.stringify(tape.expect)}`);

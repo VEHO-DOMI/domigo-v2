@@ -24,7 +24,7 @@ import { type Pad, type PlayerState } from "./player.ts";
 import { type EntityWorld } from "./entities.ts";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
-import { type EntPoseInput, entPoseCell, washAlphaFor } from "./anim.ts";
+import { type EntPoseInput, WASHED_ROLES, entPoseCell, washAlphaFor } from "./anim.ts";
 import { rigPose, withFistAway } from "./rig.ts";
 import {
   RIG_CELL,
@@ -358,7 +358,7 @@ export class PaintScene extends Phaser.Scene {
       // R3-15 · the grey wash sits a hair in front of its being, wearing the
       // SAME texture every frame — so it drains whatever cell the being is
       // showing, including cells and skins that do not exist yet.
-      if (washAlphaFor({ role: e.role, redeemed: false, timer: 0 }) > 0) {
+      if (WASHED_ROLES.has(e.role)) {
         const wash = this.add.image(fromSubs(e.x), fromSubs(e.y), img.texture.key).setDepth(7.01).setOrigin(0.5, 1);
         wash.setTint(COLOUR_DRAINED);
         wash.setVisible(!e.hidden);
