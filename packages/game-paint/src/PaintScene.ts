@@ -77,8 +77,12 @@ export interface PaintSceneCfg {
 // relative to the sprite's feet (its origin is bottom-centre). A skin with no
 // entry has no board, and its cards simply open without a writing beat — the
 // only-present law again, so a new guardian can never render text into thin air.
+// Measured against the shipped sprite at its 52 px display height in the live
+// arena: the writing face is ~26 world px across, centred 33 px above the feet.
+// The wrap width sits just inside that so a six-letter word („window") stays on
+// the slate instead of hanging over its wooden frame.
 export const GUARDIAN_BOARDS: Record<string, { dy: number; w: number; h: number }> = {
-  tafel: { dy: -33, w: 36, h: 22 },
+  tafel: { dy: -33, w: 24, h: 22 },
 };
 /** How long the guardian spends writing before its card opens (doc 41 §4 asks
  *  for a 30–45 t readability telegraph). */
@@ -448,7 +452,7 @@ export class PaintScene extends Phaser.Scene {
     this.evidenceText = this.add
       .text(fromSubs(e.x), fromSubs(e.y) + board.dy, "", {
         fontFamily: "system-ui, sans-serif",
-        fontSize: "7px",
+        fontSize: "6px",
         color: "#f6f2e8", // chalk on slate
         align: "center",
         wordWrap: { width: board.w },
