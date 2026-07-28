@@ -57,6 +57,7 @@ jobs:
       - run: node scripts/check-design-sheets.mjs
       - run: node --experimental-strip-types scripts/check-paint-art.mjs # PB-T2: no silent placeholder art
       - run: node --experimental-strip-types scripts/check-game-tasks.mjs # PB-T6: gameTasks@2 schema + grounding + giveaway
+      - run: node scripts/check-story-art.mjs # the story-art manifest and the prompt library agree, both ways
 
   build:
     runs-on: ubuntu-latest

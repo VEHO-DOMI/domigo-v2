@@ -86,8 +86,8 @@ function speak(text: string): void {
   window.speechSynthesis.speak(u);
 }
 
-function TaskTake({ item, prompt, onAttempt, onContinue, onScored, hideHint }: {
-  item: ResolvedItem; prompt: string; onAttempt: AttemptFn; onContinue: () => void; onScored: (tier: Tier) => void; hideHint?: boolean;
+function TaskTake({ item, prompt, panelUrl, onAttempt, onContinue, onScored, hideHint }: {
+  item: ResolvedItem; prompt: string; panelUrl?: string; onAttempt: AttemptFn; onContinue: () => void; onScored: (tier: Tier) => void; hideHint?: boolean;
 }) {
   const [res, setRes] = useState<{ tier: Tier; views: number } | null>(null);
   const onResult = (tier: Tier, detail: ResultDetail) => {
@@ -100,6 +100,7 @@ function TaskTake({ item, prompt, onAttempt, onContinue, onScored, hideHint }: {
   return (
     <div style={{ marginTop: 14, borderTop: "1px dashed var(--card-border)", paddingTop: 12 }}>
       <div style={{ fontSize: 12, color: "var(--accent)", fontWeight: 700, marginBottom: 6, fontFamily: "var(--font-label)", letterSpacing: "0.02em" }}>{prompt}</div>
+      {panelUrl && <img src={panelUrl} alt="" style={{ width: "100%", aspectRatio: "16 / 9", objectFit: "cover", borderRadius: 12, marginBottom: 10, border: "1px solid var(--card-border)" }} />}
       {item.kind === "grammar"
         ? <GrammarItemView key={item.item.id} item={item.item as GrammarItem} onResult={onResult} hideXp hideHint={hideHint} />
         : <VocabItemView key={item.item.id} item={item.item as VocabItem} onResult={onResult} hideXp hideHint={hideHint} />}
@@ -220,6 +221,7 @@ export function NovelGame(props: NovelGameProps) {
       <TaskTake
         item={slotItem}
         prompt={slotPrompt(slot.slot)}
+        panelUrl={art?.panels[slot.slot]}
         onAttempt={onAttempt}
         onScored={(tier) => { onScored(tier); if (fix) setFixTiers((p) => [...p, tier]); }}
         onContinue={() => { addTake(slot.slot); setTaskDone(true); if (fix) setShowComments(true); }}
@@ -260,7 +262,9 @@ export function NovelGame(props: NovelGameProps) {
         </div>
       </div>
 
-      {topImg && <img src={topImg} alt="" style={{ width: "100%", maxHeight: 220, objectFit: "cover", borderRadius: 16, marginBottom: 12, border: "1px solid var(--card-border)" }} />}
+      {/* 16:9 box, not a fixed 220px crop: the library is commissioned at 16:9, and a
+          height clamp on a 640px column cropped away a third of every beat's height. */}
+      {topImg && <img src={topImg} alt="" style={{ width: "100%", aspectRatio: "16 / 9", objectFit: "cover", borderRadius: 16, marginBottom: 12, border: "1px solid var(--card-border)" }} />}
 
       {isNarrator ? (
         <section style={{ ...panel, background: "var(--accent-soft)", color: "var(--ink-soft)" }}>
