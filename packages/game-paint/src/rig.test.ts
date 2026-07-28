@@ -111,8 +111,14 @@ describe("sheet frames (deterministic walk-time animation)", () => {
     expect(sheetFrame(31, 4, 8)).toBe(3);
     expect(sheetFrame(32, 4, 8)).toBe(0);
     expect(sheetFrame(100, 1, 8)).toBe(0);
+    // doc 40 §2: the idle CYCLE is 400 ms (24 t) whatever the cell count —
+    // 2 cells dwell 12 t, 4 cells dwell 6 t, and both wrap on the same beat.
     expect(bobFrame(0)).toBe(0);
-    expect(bobFrame(24)).toBe(1);
-    expect(bobFrame(48)).toBe(0);
+    expect(bobFrame(12)).toBe(1);
+    expect(bobFrame(24)).toBe(0);
+    expect(bobFrame(0, 4)).toBe(0);
+    expect(bobFrame(6, 4)).toBe(1);
+    expect(bobFrame(18, 4)).toBe(3);
+    expect(bobFrame(24, 4)).toBe(0); // same 24-tick wrap as the 2-cell idle
   });
 });

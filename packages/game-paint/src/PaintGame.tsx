@@ -151,6 +151,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     // close FIRST: resolveTask may open a follow-up card (ceremony/console)
     // synchronously — a trailing setOverlay(null) would clobber it
     setOverlay(null);
+    sceneRef.current?.clearEvidence(); // R3-12: the board wipes itself
     sceneRef.current?.resolveTask(o.req.ctx);
     // the finale is the last ACT of the chapter: writing HELLO is what earns
     // the console beat, so that card opens only once the child has done it
@@ -167,6 +168,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       // the anti-softlock law (PB-T1): every task card can be put down —
       // dismissal resumes the world with no reward and no redeem
       setOverlay(null);
+      sceneRef.current?.clearEvidence(); // R3-12
       sceneRef.current?.dismissTask(o.req.ctx);
       return;
     }
@@ -239,6 +241,18 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             // the serve context: this phase, and the being that triggered it
             const item = pickTask(req.use, { phase: pid, skin: skinOfCtx(req.ctx) });
             if (!item) { sceneRef.current?.resolveTask(req.ctx); return; } // no pool: never softlock
+            // R3-12 · THE BOSS-EVIDENCE BEAT (doc 41 §4): a card that asks about
+            // written material may not open before that material is ON the being.
+            // Koki's 11.48.59 and 11.50.26 asked about a blank board; now the
+            // guardian writes first and the card follows a beat later.
+            const askerId = idOfCtx(req.ctx);
+            const beatMs = item.evidence && askerId !== null
+              ? (sceneRef.current?.writeEvidence(askerId, item.evidence) ?? 0)
+              : 0;
+            if (beatMs > 0) {
+              window.setTimeout(() => setOverlay({ req, item, card: "task", attempts: 0, typed: "", align }), beatMs);
+              return;
+            }
             setOverlay({ req, item, card: "task", attempts: 0, typed: "", align });
           },
           onPowerup: (grants) => {

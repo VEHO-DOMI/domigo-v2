@@ -62,6 +62,13 @@ const base = {
   promptEn: z.string().optional(), // the English question, when the task asks one
   hints: TaskHints.optional(),
   grounding: z.string().optional(), // author note (which unit item this exercises)
+  // ── THE BOSS-EVIDENCE FIELD (doc 41 §4, R3-12) ────────────────────────────
+  // The exact strings the guardian WRITES on its own board before the card
+  // opens. Koki's 11.48.59 and 11.50.26 were unanswerable by looking: the card
+  // said „die Tafel kritzelt vier Wörter auf sich" and the board was blank, so
+  // the question referred to something that did not exist. A boss card of an
+  // evidence kind must now put its material in the world first.
+  evidence: z.array(z.string().min(1)).min(1).optional(),
   ...Binding,
 };
 
@@ -135,6 +142,23 @@ export const GameTaskV2 = GameTaskUnion.superRefine((t, ctx) => {
 });
 
 // ── the cross-field content laws (ONE source of truth) ───────────────────────
+/** The kinds whose question is ABOUT written material, and which therefore owe
+ *  the world that material (doc 41 §4). `choice`/`wheel`/`spell`/`typed` ask
+ *  about the being itself or a spoken word — they need no board. */
+export const EVIDENCE_KINDS = new Set<TaskKind>(["mistake", "oddone", "order", "memory"]);
+
+/** Every token a card's question depends on — what the guardian must have
+ *  written for the card to be answerable by LOOKING. */
+export function evidenceTokensOf(t: GameTaskV2): string[] {
+  switch (t.kind) {
+    case "mistake": return t.sentence;
+    case "oddone": return t.items;
+    case "order": return t.orderedChips;
+    case "memory": return t.pairs.map((p) => p.a);
+    default: return [];
+  }
+}
+
 /** Semantic invariants zod's shape check can't express. Returns human-readable
  *  error strings (empty = clean). Called by the file superRefine AND the CLI. */
 export function taskInvariantErrors(t: GameTaskV2): string[] {
@@ -155,6 +179,27 @@ export function taskInvariantErrors(t: GameTaskV2): string[] {
   }
   if (t.skins && dup(t.skins)) errs.push("duplicate skin");
   if (t.phases && dup(t.phases)) errs.push("duplicate phase");
+  // ── THE BOSS-EVIDENCE LAW (doc 41 §4, R3-12) ──────────────────────────────
+  // A boss card whose kind asks about MATERIAL (a sentence, four words, a set of
+  // chips, a row of numbers) must render that material on the guardian — and
+  // every token it asks about has to be in what the guardian writes. That is
+  // the machine form of "the card asks about the world, never about itself".
+  if (EVIDENCE_KINDS.has(t.kind)) {
+    if (t.use === "boss" && t.evidence === undefined) {
+      errs.push(`boss card of kind ${t.kind} must carry evidence (the guardian has to show what the card asks about)`);
+    }
+    if (t.evidence) {
+      const written = t.evidence.join(" ");
+      for (const token of evidenceTokensOf(t)) {
+        if (!written.includes(token)) errs.push(`evidence does not show "${token}" — the card asks about something the guardian never writes`);
+      }
+    }
+  } else if (t.evidence !== undefined) {
+    errs.push(`kind ${t.kind} carries evidence but asks about no written material`);
+  }
+  if (t.evidence !== undefined && t.stimulus.type !== "entity") {
+    errs.push("evidence is written ON a being — the stimulus must be an entity");
+  }
   switch (t.kind) {
     case "choice":
       if (!t.options.includes(t.answer)) errs.push("answer is not among the 3 options");
@@ -250,6 +295,10 @@ export function renderTaskText(t: GameTaskV2): string {
   const lines: string[] = [];
   if (t.stimulus.type === "image") lines.push(`[Bild: ${t.stimulus.altDe}]`);
   else if (t.stimulus.type === "entity") lines.push(`[${t.stimulus.showsDe}]`);
+  // R3-12: the guardian's board is part of what the student SEES — a blind
+  // solver that cannot read it is not seeing the card (P-18: frames mirror the
+  // renderer, never a paraphrase of it).
+  if (t.evidence) lines.push(`[auf der Tafel steht: ${t.evidence.join(" ")}]`);
   lines.push(t.storyDe);
   if (t.promptEn) lines.push(t.promptEn);
   switch (t.kind) {

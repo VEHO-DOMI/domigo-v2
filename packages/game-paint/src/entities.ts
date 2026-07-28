@@ -50,6 +50,8 @@ export interface ProjectileState {
   deflected: boolean;
   fromId: string;
   dead: boolean;
+  /** ticks alive — a deflected piece that hits nothing shatters on this (R3-4). */
+  age: number;
 }
 
 export type EntityEvent =
@@ -62,6 +64,10 @@ export type EntityEvent =
   | { type: "guardianKnot"; id: string; knotsLeft: number }
   | { type: "guardianDown"; id: string }
   | { type: "projectileDeflected"; id: number }
+  /** R3-4/R3-6 · a puff of chalk dust in world px — the ONLY way impact becomes
+   *  visible without the sim knowing what a particle is. `chalk` = a piece
+   *  shattering, `hit` = the fist landing on something solid. */
+  | { type: "puff"; x: number; y: number; kind: "chalk" | "hit" }
   | { type: "shooed"; id: string };
 
 export interface WorldInput {
@@ -94,6 +100,54 @@ export const BOUNCE_UP = Math.round(3.2 * SUBS);
  *  fires near the extremes, where the flyer rolls into its turn. */
 export const FLYER_SWEEP_PX = 40;
 const GRAVITY = PAINT.gravity;
+
+/** doc 40 §2 · THE TURN STATE — the study's "biggest missing beat". A creature
+ *  that reverses used to flip on tick 1, which reads as a glitch rather than a
+ *  decision; it now spends 18 t (300 ms) turning and the flip lands at the
+ *  MIDPOINT. Exported because anim.ts derives its pose thresholds from the sim
+ *  constants they depict, never from re-typed numbers. */
+export const TURN_TICKS = 18;
+export const TURN_FLIP_AT = Math.floor(TURN_TICKS / 2);
+/** doc 40 §4 · the chalk a guardian throws lives on a leash: a deflected piece
+ *  that hits nothing must SHATTER rather than sail on as a lingering orb. */
+export const CHALK_LIFE_TICKS = 180;
+
+// ── R3-5 · REDEMPTION CHANGES STATE, NEVER PRESENCE (doc 40 §3) ──────────────
+// Redeeming used to park a being in a terminal `dazed` and stop stepping it:
+// the freed moth never flew its Freudenrunde, the book drifted off as if
+// nothing had happened, and the eraser wandered out of the level for good.
+// doc 31's kindness economy demands the friend STAYS. So redemption now enters
+// a state PAIR — `joy` (a lap around its home) → `rest` (settled AT home) —
+// and the settle is what brings a wanderer back rather than letting it leave.
+/** How long the Freudenrunde runs before the friend settles. */
+export const JOY_TICKS = 150;
+/** How long the Tafel cries before the console beat answers it (R3-5). */
+export const SAD_TICKS = 48;
+/** Which roles are redeemable creatures. Cages, doors and powerups also carry
+ *  `redeemed`, but they are doc 40 §3 STATIC-STATE — no rig, no orbit. */
+export const JOY_ROLES = new Set(["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm"]);
+/** Airborne roles loop wide; ground roles bob in place so joy never reads as
+ *  levitation. */
+const joyRadiusPx = (role: string): { rx: number; ry: number; lift: number } =>
+  role === "flyer" || role === "swarm" ? { rx: 26, ry: 12, lift: 10 } : { rx: 11, ry: 5, lift: 4 };
+
+/** The post-redeem step: a lap of joy, then home to stay. */
+const stepRedeemed = (e: EntityState): void => {
+  if (!JOY_ROLES.has(e.role)) return; // static-state beings hold their cell
+  e.timer += 1;
+  const { rx, ry, lift } = joyRadiusPx(e.role);
+  if (e.state === "joy") {
+    const t = e.timer;
+    e.x = e.homeX + Math.round(Math.sin(t / 11) * rx * SUBS);
+    e.y = e.homeY - Math.round(lift * SUBS) + Math.round(Math.sin(t / 7) * ry * SUBS);
+    if (t > JOY_TICKS) { e.state = "rest"; e.timer = 0; }
+  } else if (e.state === "rest") {
+    // ease home and STAY there — this is what stops the eraser leaving (11.47.39)
+    e.x += Math.round((e.homeX - e.x) / 8);
+    e.y += Math.round((e.homeY - e.y) / 8);
+    if (Math.abs(e.homeX - e.x) < SUBS && Math.abs(e.homeY - e.y) < SUBS) { e.x = e.homeX; e.y = e.homeY; }
+  }
+};
 
 /** Per-tier guardian script (sheet §6: telegraph/window shrink E→S, knots ≤5). */
 // PK-C3 (gate verdict G4): the Tafel MOVES. Until now the guardian had no
@@ -215,7 +269,9 @@ export const stepEntities = (
   if (inp.playerOverlayOpen) return events; // the world holds its breath during a task
 
   for (const e of w.entities) {
-    if (e.redeemed || e.hidden) continue;
+    if (e.hidden) continue;
+    // R3-5: a freed friend keeps LIVING (joy → rest); it is no longer skipped
+    if (e.redeemed) { stepRedeemed(e); continue; }
     e.timer += 1;
     switch (e.role) {
       case "chaser": {
@@ -223,7 +279,9 @@ export const stepEntities = (
           e.vx = ENEMY_WALK * e.dir;
           const aheadX = e.x + e.vx * 8;
           const g = walkAheadAt(grid, e, aheadX);
-          if (g === null) { e.dir = (e.dir * -1) as 1 | -1; e.vx = 0; } // edge/ramp turn
+          // doc 40 §2 · the turn is its OWN beat now (18 t, flip at midpoint) —
+          // a walker that reversed in one tick read as a glitch, not a decision
+          if (g === null) { e.state = "turn"; e.timer = 0; e.vx = 0; } // edge/ramp turn
           else {
             e.x += e.vx;
             const snap = groundAt(grid, e.x, e.y);
@@ -231,8 +289,12 @@ export const stepEntities = (
           }
           const sameBand = Math.abs(e.y - inp.playerY) / SUBS < 24;
           if (sameBand && Math.abs(e.x - inp.playerX) / SUBS < AGGRO_X_PX) { e.state = "telegraph"; e.timer = 0; }
+        } else if (e.state === "turn") {
+          if (e.timer === TURN_FLIP_AT) e.dir = (e.dir * -1) as 1 | -1;
+          if (e.timer > TURN_TICKS) { e.state = "patrol"; e.timer = 0; }
         } else if (e.state === "telegraph") {
-          if (e.timer > 24) { e.state = "act"; e.timer = 0; e.dir = (inp.playerX >= e.x ? 1 : -1) as 1 | -1; }
+          // doc 40 §2: 24 → 30 t (both were under the study's shortest telegraph)
+          if (e.timer > 30) { e.state = "act"; e.timer = 0; e.dir = (inp.playerX >= e.x ? 1 : -1) as 1 | -1; }
         } else if (e.state === "act") {
           const g = walkAheadAt(grid, e, e.x + ENEMY_LUNGE * e.dir * 4);
           if (g !== null) { e.x += ENEMY_LUNGE * e.dir; const s2 = groundAt(grid, e.x, e.y); if (s2 !== null) e.y = s2; }
@@ -249,7 +311,7 @@ export const stepEntities = (
           const dir = inp.playerX >= e.x ? 1 : -1;
           w.projectiles.push({
             id: w.nextProjectileId++, kind: "blob", x: e.x, y: e.y - 10 * SUBS,
-            vx: Math.round(1.4 * SUBS) * dir, vy: -Math.round(2.2 * SUBS), deflected: false, fromId: e.id, dead: false,
+            vx: Math.round(1.4 * SUBS) * dir, vy: -Math.round(2.2 * SUBS), deflected: false, fromId: e.id, dead: false, age: 0,
           });
         }
         break;
@@ -263,7 +325,7 @@ export const stepEntities = (
           const below = inp.playerY > e.y && Math.abs(e.x - inp.playerX) / SUBS < 24;
           if (below && t > 90) { e.state = "telegraph"; e.timer = 0; }
         } else if (e.state === "telegraph") {
-          if (e.timer > 20) { e.state = "act"; e.timer = 0; }
+          if (e.timer > 30) { e.state = "act"; e.timer = 0; } // doc 40 §2: 20 → 30 t
         } else if (e.state === "act") {
           e.y += Math.round(2.2 * SUBS);
           if (e.y >= inp.playerY || e.timer > 40) { e.state = "recover"; e.timer = 0; }
@@ -296,7 +358,12 @@ export const stepEntities = (
         } else if (e.state === "act") {
           e.y += Math.round(4 * SUBS);
           const g = groundAt(grid, e.x, e.y);
-          if (g !== null && e.y >= g) { e.y = g; e.state = "recover"; e.timer = 0; }
+          if (g !== null && e.y >= g) {
+            e.y = g; e.state = "recover"; e.timer = 0;
+            // R3-6: a slam that lands silently reads as scenery. The dust is what
+            // says „this thing DROPS" — the stomper's purpose, shown not stated.
+            events.push({ type: "puff", x: e.x, y: e.y, kind: "chalk" });
+          }
         } else if (e.state === "recover") {
           if (e.timer > 45) { e.y -= SUBS; if (e.y <= e.homeY) { e.y = e.homeY; e.state = "patrol"; } }
         }
@@ -335,6 +402,7 @@ export const stepEntities = (
       case "cage": {
         if (e.state === "closed" && fistHits(e, inp.fist, 16)) {
           e.hp -= 1;
+          events.push({ type: "puff", x: inp.fist?.x ?? e.x, y: inp.fist?.y ?? e.y, kind: "hit" }); // R3-6
           if (e.hp <= 0) { e.state = "burst"; e.redeemed = true; events.push({ type: "cageBurst", id: e.id, skin: e.skin }); }
           else { e.state = "shaking"; e.timer = 0; events.push({ type: "cageHit", id: e.id, hpLeft: e.hp }); }
         } else if (e.state === "shaking" && e.timer > 30) e.state = "closed";
@@ -358,13 +426,25 @@ export const stepEntities = (
         const script = GUARDIAN_SCRIPT[e.tier];
         if (w.guardianKnots < 0) w.guardianKnots = script.knots;
         if (e.state === "idle") {
-          if (e.timer > script.throwEvery) { e.state = "telegraph"; e.timer = 0; }
+          if (e.timer > script.throwEvery) {
+            // R3-4 · THE FACING LAW: it may never throw at a back it is turned
+            // to. Koki filmed exactly that (11.50.09) — the roll left `dir`
+            // pointing at its home station while the throw aimed at the player,
+            // so the board hurled chalk over its own shoulder. Turning is now
+            // its own beat, and the throw reads the FACING, not the player.
+            e.state = e.dir !== (inp.playerX >= e.x ? 1 : -1) ? "turn" : "telegraph";
+            e.timer = 0;
+          }
+        } else if (e.state === "turn") {
+          // doc 40 §2: 18 t, and the flip lands at the MIDPOINT — never tick 1
+          if (e.timer === TURN_FLIP_AT) e.dir = (inp.playerX >= e.x ? 1 : -1) as 1 | -1;
+          if (e.timer > TURN_TICKS) { e.state = "telegraph"; e.timer = 0; }
         } else if (e.state === "telegraph") {
           if (e.timer > script.telegraphTicks) {
-            const dir = inp.playerX >= e.x ? 1 : -1;
+            const dir = e.dir; // the SPAWN SIDE IS THE FACING (R3-4, unit-tested)
             w.projectiles.push({
               id: w.nextProjectileId++, kind: "chalk", x: e.x + 14 * SUBS * dir, y: e.y - 24 * SUBS,
-              vx: Math.round(2.5 * SUBS) * dir, vy: -3 * SUBS, deflected: false, fromId: e.id, dead: false,
+              vx: Math.round(2.5 * SUBS) * dir, vy: -3 * SUBS, deflected: false, fromId: e.id, dead: false, age: 0,
             });
             // …and then roll to the OTHER station (G4)
             e.state = "roll"; e.timer = 0;
@@ -381,6 +461,11 @@ export const stepEntities = (
         } else if (e.state === "stagger") {
           // a deflect stops the roll dead — the stagger is the counter-window
           if (e.timer > script.staggerTicks) { e.state = "idle"; e.timer = 0; }
+        } else if (e.state === "sad") {
+          // R3-5 · doc 38's named cheap win: `tafel_sad` was painted and shown by
+          // nothing, because the last knot jumped straight to the victory cell.
+          // The board now CRIES first, and the console beat answers that.
+          if (e.timer > SAD_TICKS) { e.state = "consoled"; e.timer = 0; }
         }
         // "window" (the counter-task) and "consoled" are scene-driven states.
         break;
@@ -396,7 +481,13 @@ export const stepEntities = (
     }
     // the fist SHOOS hostiles (turn + brief daze), never redeems (§3)
     if (hostile && fistHits(e, inp.fist)) {
-      if (e.state !== "shooed") { e.state = "shooed"; e.timer = 0; e.dir = (e.dir * -1) as 1 | -1; events.push({ type: "shooed", id: e.id }); }
+      if (e.state !== "shooed") {
+        e.state = "shooed"; e.timer = 0; e.dir = (e.dir * -1) as 1 | -1;
+        // R3-6: the punch used to pass THROUGH with nothing but a toast to show
+        // for it (11.45.43). Contact is now visible where it happens.
+        events.push({ type: "puff", x: inp.fist?.x ?? e.x, y: inp.fist?.y ?? e.y, kind: "hit" });
+        events.push({ type: "shooed", id: e.id });
+      }
     }
     if (e.state === "shooed" && e.timer > 40) e.state = "patrol";
   }
@@ -404,12 +495,23 @@ export const stepEntities = (
   // ── projectiles ──
   for (const p of w.projectiles) {
     if (p.dead) continue;
+    p.age++;
     // chalk floats on a long readable arc (the deflect window); blobs drop fast
     p.vy += Math.round(GRAVITY / (p.kind === "chalk" ? 4 : 2));
     p.x += p.vx;
     p.y += p.vy;
     const g = groundAt(grid, p.x, p.y);
-    if (g !== null && p.y >= g && !p.deflected) p.dead = true; // a deflected piece flies home over the floor
+    // R3-4 · A MISS SHATTERS. Chalk that lands is dust, not a resting orb; a
+    // deflected piece keeps its floor pass (it must fly home over the ground)
+    // but only on a leash — past that it shatters too, so nothing lingers.
+    if (g !== null && p.y >= g && !p.deflected) {
+      p.dead = true;
+      if (p.kind === "chalk") events.push({ type: "puff", x: p.x, y: p.y, kind: "chalk" });
+    }
+    if (p.deflected && p.kind === "chalk" && p.age > CHALK_LIFE_TICKS) {
+      p.dead = true;
+      events.push({ type: "puff", x: p.x, y: p.y, kind: "chalk" });
+    }
     if (Math.abs(p.x) / SUBS > 4096 || p.y / SUBS > 4096) p.dead = true;
     // deflect: the fist bats a chalk piece back (§6 the deflect law)
     if (!p.deflected && inp.fist?.active && Math.abs(p.x - inp.fist.x) / SUBS < 20 && Math.abs(p.y - 8 * SUBS - inp.fist.y) / SUBS < 26) {
@@ -425,6 +527,7 @@ export const stepEntities = (
       const g0 = w.entities.find((e) => e.id === p.fromId && e.role === "guardian" && !e.redeemed);
       if (g0 && Math.abs(p.x - g0.x) / SUBS < 30 && Math.abs(p.y - (g0.y - 20 * SUBS)) / SUBS < 40) {
         p.dead = true;
+        events.push({ type: "puff", x: p.x, y: p.y, kind: "chalk" }); // it breaks ON the board
         if (g0.state !== "stagger" && g0.state !== "window") {
           g0.state = "stagger";
           g0.timer = 0;
@@ -455,7 +558,8 @@ export const guardianKnotSolved = (w: EntityWorld, id: string): EntityEvent[] =>
   g.hp -= 1;
   w.guardianKnots = g.hp;
   if (g.hp <= 0) {
-    g.state = "consoled";
+    g.state = "sad"; // R3-5: the crying beat comes BEFORE the victory cell
+    g.timer = 0;
     return [{ type: "guardianDown", id }];
   }
   g.state = "idle";
@@ -463,10 +567,14 @@ export const guardianKnotSolved = (w: EntityWorld, id: string): EntityEvent[] =>
   return [{ type: "guardianKnot", id, knotsLeft: g.hp }];
 };
 
-/** Redeem after a solved encounter task: cross → dazed-happy, out of play. */
+/** Redeem after a solved encounter task. R3-5: cross → JOY → settled at home,
+ *  never "out of play" — the friend you made stays on the page. */
 export const redeemEntity = (w: EntityWorld, id: string): void => {
   const e = w.entities.find((x) => x.id === id);
-  if (e) { e.redeemed = true; e.state = "dazed"; }
+  if (!e) return;
+  e.redeemed = true;
+  e.timer = 0;
+  e.state = JOY_ROLES.has(e.role) ? "joy" : "dazed";
 };
 
 /** Fire link actions when a trigger event lands (spawn/open/reveal → unhide). */

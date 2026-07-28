@@ -6,8 +6,19 @@
 export const sheetFrame = (ticks: number, frameCount: number, ticksPerFrame: number): number =>
   frameCount <= 1 ? 0 : Math.floor(ticks / Math.max(ticksPerFrame, 1)) % frameCount;
 
-/** A two-state bob (wild/calm entity idle): frame 0/1 on a gentle cycle. */
-export const bobFrame = (ticks: number, ticksPerFrame = 24): number => sheetFrame(ticks, 2, ticksPerFrame);
+/** doc 40 §2 · THE IDLE CYCLE stays 400 ms however many cells the art spends on
+ *  it — 2 cells dwell 12 t each, 4 cells dwell 6 t (10 fps). Keeping the CYCLE
+ *  constant and dividing it is what lets a richer idle sheet drop in without
+ *  re-timing the world. */
+export const IDLE_CYCLE_TICKS = 24;
+
+/** The entity idle bob. `frameCount` is the number of painted idle cells the
+ *  skin actually has (doc 40 §4's `bobFrame(frameCount)` upgrade). */
+export const bobFrame = (ticks: number, frameCount = 2, ticksPerFrame = Math.max(1, Math.round(IDLE_CYCLE_TICKS / frameCount))): number =>
+  sheetFrame(ticks, frameCount, ticksPerFrame);
+
+/** Idle cell names in index order — `_a _b _c _d` (doc 40 §3's stem grammar). */
+const IDLE_CELLS = ["a", "b", "c", "d"] as const;
 
 // ── W4 · the entity POSE hook (batch AC's motion cells) ────────────────────
 // Which sheet cell an entity shows this tick. Pure and Phaser-free so it is
@@ -43,6 +54,10 @@ export interface EntPoseInput {
   vy: number;
   x: number;
   homeX: number;
+  /** How many painted idle cells this SKIN has on disk (doc 40 §4). The scene
+   *  counts them; the hook stays pure. Defaults to the shipped 2, so a skin
+   *  that never gains `_c/_d` keeps exactly today's cadence. */
+  idleFrames?: number;
 }
 
 export const entPoseCell = (e: EntPoseInput): string => {
@@ -52,6 +67,14 @@ export const entPoseCell = (e: EntPoseInput): string => {
   // console beat's payoff, the blackboard as a friend, can never show.
   if (e.role === "guardian") {
     if (e.state === "consoled") return "win";
+    // R3-5: the crying beat, at last given a state (doc 38's painted-unused sheet)
+    if (e.state === "sad") return "sad";
+    // R3-4: the turn has no painted cell yet (doc 40 §7 keeps PK-R2 to art that
+    // exists). It must NOT fall through to `_a` — that is the GREEN easel form,
+    // and swapping bodies mid-duel is the identity bug PB-F1 removed. The
+    // wheeled body in motion is what a turn IS, so `roll` holds it. Art debt is
+    // named in doc 35: 2–3 painted `tafel_turn` cells retire this line.
+    if (e.state === "turn") return "roll";
     // PB-F1/F2-25: `window` IS the counter-task moment. It used to fall through
     // to the a/b idle cells, so the boss silently swapped to a DIFFERENT drawing
     // of itself for exactly as long as the card asking you to look at it was up.
@@ -60,7 +83,14 @@ export const entPoseCell = (e: EntPoseInput): string => {
     if (e.state === "telegraph") return "windup";
     if (e.state === "roll") return "roll"; // PK-C3/G4: the Tafel crosses the stage
   }
+  // R3-5 · THE REDEEMED-PRESENCE PAIR (doc 40 §3). Read BEFORE the dazed
+  // catch-all: a freed friend is not a dazed enemy, and `moths_rest` — painted,
+  // shown by nothing (doc 38 §2) — is exactly the settled cell this asks for.
+  if (e.state === "joy") return "joy";
+  if (e.state === "rest") return "rest";
   if (e.redeemed || e.state === "dazed" || e.state === "consoled" || e.state === "shooed") return "dazed";
+  // doc 40 §2 · the turn state, for every role that patrols
+  if (e.state === "turn") return "turn";
   if (e.state === "telegraph") return "telegraph";
   // a crusher's `act` IS its slam — the stomp cell is that moment
   if (e.state === "act") return e.role === "crusher" ? "stomp" : "act";
@@ -70,5 +100,6 @@ export const entPoseCell = (e: EntPoseInput): string => {
   if (e.role === "flyer" && Math.abs(e.x - e.homeX) >= BANK_X) return "bank";
   // platforms carry a per-tick ride delta in vx that is not a gait
   if (!e.role.startsWith("platform") && Math.abs(e.vx) >= RUN_VX) return "run";
-  return Math.floor(e.timer / 12) % 2 === 0 ? "a" : "b";
+  const frames = Math.min(Math.max(e.idleFrames ?? 2, 1), IDLE_CELLS.length);
+  return IDLE_CELLS[bobFrame(e.timer, frames)] ?? "a";
 };

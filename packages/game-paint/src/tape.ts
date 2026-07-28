@@ -33,6 +33,12 @@ export interface TapeExpect {
   cagesFreed?: number;
   guardianDown?: boolean;
   tasksSolved?: number;
+  /** PK-R2 · R3-5: did a redeemed being finish the run STILL PRESENT, in the
+   *  joy/rest pair? Before this packet a freed friend was parked in a terminal
+   *  `dazed` and forgotten, which is what made Koki's moth and book read as
+   *  "nothing happened". A tape that ends with no present friend has lost the
+   *  kindness economy, and that is now a failure the suite can see. */
+  redeemedPresent?: boolean;
 }
 
 export interface PhaseTape {
@@ -178,6 +184,7 @@ export const replayPhaseTape = (
     cagesFreed: freed.length - freedCages.length,
     guardianDown: sim.guardianDefeated,
     tasksSolved,
+    redeemedPresent: sim.world.entities.some((e) => e.redeemed && (e.state === "joy" || e.state === "rest")),
   };
   return { exited, exitTo, ticksUsed: t, tasksSolved, grantsPicked, world };
 };
@@ -220,6 +227,7 @@ export const worldAssertionErrors = (expect: TapeExpect | undefined, world: Repl
   cmp("cagesFreed", world.cagesFreed);
   cmp("guardianDown", world.guardianDown);
   cmp("tasksSolved", world.tasksSolved);
+  cmp("redeemedPresent", world.redeemedPresent);
   return errs;
 };
 

@@ -54,6 +54,9 @@ export type SimEvent =
   | { type: "cageHint" }
   | { type: "letters"; got: number; total: number }
   | { type: "letterTaken"; c: number; r: number }
+  /** R3-4/R3-6 · impact made visible: chalk dust where something broke or the
+   *  fist landed. Coordinates are subs; the scene owns what a particle looks like. */
+  | { type: "puff"; x: number; y: number; kind: "chalk" | "hit" }
   | { type: "exit"; to: string };
 
 export interface SimCfg {
@@ -72,6 +75,10 @@ export interface SimCfg {
 }
 
 const fromSubs = (v: number): number => v / SUBS;
+
+/** R3-6 · the impact freeze. Two ticks is the arcade convention: long enough to
+ *  read as weight, short enough that control never feels taken away. */
+export const HIT_PAUSE_TICKS = 2;
 
 export class Sim {
   readonly phase: PhaseSpec;
@@ -93,6 +100,10 @@ export class Sim {
   pendingPoolRespawn = false;
   bonusLeftTicks = -1; // ≥0 only in the Kleckskammer
   gateToastCooldown = 0;
+  /** R3-6: ticks the world holds still after an impact (see HIT_PAUSE_TICKS). */
+  hitPauseTicks = 0;
+  /** R3-6: was the fist already touching solid last tick? (edge-detect the puff) */
+  fistOnSolid = false;
   /** PB-F3: the cage hint is once per phase mount, never a nag. */
   cageHintFired = false;
   tickCount = 0;
@@ -143,6 +154,7 @@ export class Sim {
   step(pad: Pad): SimEvent[] {
     const events: SimEvent[] = [];
     if (this.overlayOpen) return events; // the world holds its breath during a task
+    if (this.hitPauseTicks > 0) { this.hitPauseTicks--; return events; } // R3-6: impact freeze
     this.tickCount++;
     if (this.gateToastCooldown > 0) this.gateToastCooldown--;
     if (this.bonusLeftTicks > 0) {
@@ -175,8 +187,16 @@ export class Sim {
       const tipC = Math.floor(fromSubs(this.fist.x + this.fist.dir * 8 * SUBS) / TILE);
       const tipR = Math.floor(fromSubs(this.fist.y) / TILE);
       const bounced = isSolid(glyphAt(this.grid, tipC, tipR));
+      // R3-6: ANY solid contact answers back. Rising edge only — a fist held
+      // against a wall must puff once, not every tick it spends there.
+      if (bounced && !this.fistOnSolid) {
+        events.push({ type: "puff", x: this.fist.x, y: this.fist.y, kind: "hit" });
+        this.hitPauseTicks = HIT_PAUSE_TICKS;
+      }
+      this.fistOnSolid = bounced;
       const res = stepFist(this.fist, this.player.x, this.player.y, bounced);
       this.fist = res.caught || !res.fist.active ? null : res.fist;
+      if (this.fist === null) this.fistOnSolid = false;
     }
 
     this.stepEntityWorld(events);
@@ -357,6 +377,13 @@ export class Sim {
       }
       case "shooed":
         events.push({ type: "toast", msg: "Husch!" });
+        break;
+      case "puff":
+        events.push({ type: "puff", x: ev.x, y: ev.y, kind: ev.kind });
+        // R3-6 · THE HIT-PAUSE: two ticks of held breath on contact. Koki's
+        // 11.45.43 shows the fist going through a school bag with nothing to
+        // feel; weight is what makes a punch land, and weight is a pause.
+        if (ev.kind === "hit") this.hitPauseTicks = HIT_PAUSE_TICKS;
         break;
       default:
         break;
