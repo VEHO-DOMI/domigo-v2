@@ -146,17 +146,44 @@ const boundCards = (items, use, skin, phase) =>
   items.filter((t) => t.use === use && t.skins?.includes(skin) === true
     && (t.phases === undefined || t.phases.includes(phase)));
 
+// ── 10 · THE DESATURATION LAW (doc 41 §2, R3-15) ─────────────────────────────
+// A being OSWIN drained renders GREY until the child gives its colour back. So
+// a card about such a being may not tell them it is „weiß" or „bunt" — the
+// screen says otherwise, and a card that describes a colour the world does not
+// show is the same defect R3-12 took off the boss, one layer down.
+//
+// Found by sweeping the shipped set after the wash landed: three cards written
+// long before this mechanic existed („Ein weißer Radiergummi", „seine bunten
+// Farben", „Eine braune Schultasche") became wrong the moment the grammar
+// shipped. Grey/blass are of course allowed — that IS the state.
+const WASHED_ROLES_MJS = ["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm", "cage"];
+const COLOUR_WORDS_DE = /\b(wei(ß|ss)|rot|blau|grün|gelb|braun|schwarz|rosa|orange|bunt|golden|silbern)\w*/i;
+
+function checkDesaturation(w, items, washedSkins) {
+  for (const t of items) {
+    if (t.stimulus?.type !== "entity") continue;
+    if (!(t.skins ?? []).some((s) => washedSkins.has(s))) continue;
+    const m = COLOUR_WORDS_DE.exec(t.stimulus.showsDe);
+    if (m) {
+      fail(`${w}:${t.id}`, `desaturation: showsDe calls a drained being „${m[0]}", but it renders GREY until it is restored (doc 41 §2) — describe its shape, not a colour it has lost`);
+    }
+  }
+}
+
 function checkAgainstLevel(file, level, items) {
   const w = path.basename(file);
   const phases = allPhasesOf(level);
   const phaseIds = new Set(phases.map((p) => p.id));
   const skinPhases = new Map(); // skin → Set(phase ids it lives in)
+  const washedSkins = new Set(); // R3-15: the skins the colour wash covers
   for (const ph of phases) {
     for (const e of ph.entities ?? []) {
       if (!skinPhases.has(e.skin)) skinPhases.set(e.skin, new Set());
       skinPhases.get(e.skin).add(ph.id);
+      if (WASHED_ROLES_MJS.includes(e.role)) washedSkins.add(e.skin);
     }
   }
+  checkDesaturation(w, items, washedSkins);
 
   // 4 · every declared binding points at something that exists
   for (const t of items) {

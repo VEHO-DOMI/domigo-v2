@@ -33,29 +33,21 @@
    "grounding": "u01 object: pencil (pen/pencil confusable)"
   },
   {
-   "id": "g1.paint.ch01.enc.pencil.r1",
+   "id": "g1.paint.ch01.enc.pencil.c2",
    "use": "encounter",
-   "kind": "restore",
+   "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Bleistift ist ganz grau geworden"
+    "showsDe": "Der Bleistift fuchtelt mit seiner Spitze"
    },
-   "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
-   "promptEn": "What is it?",
-   "nameOptions": [
-    "pencil",
-    "pen",
-    "ruler",
-    "rubber"
+   "storyDe": "Was kann er? Sag es ihm!",
+   "promptEn": "What can it do?",
+   "options": [
+    "write",
+    "read",
+    "sing"
    ],
-   "name": "pencil",
-   "colourAskDe": "„Mein Sonnen-Ton fehlt mir!“, sagt er.",
-   "colourOptions": [
-    "yellow",
-    "blue",
-    "green"
-   ],
-   "colour": "yellow",
+   "answer": "write",
    "skins": [
     "pencil"
    ],
@@ -63,10 +55,10 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Grau, mit Spitze.",
-    "deWord": "Auf Deutsch: der Bleistift — und Gelb."
+    "deDesc": "Er macht Wörter aufs Papier — lesen tust DU.",
+    "deWord": "Auf Deutsch: schreiben."
    },
-   "grounding": "u01 object: pencil + colour: yellow (R3-15 restore exemplar)"
+   "grounding": "u01 verb: write"
   },
   {
    "id": "g1.paint.ch01.enc.pencil.q1",
@@ -76,16 +68,16 @@
     "type": "entity",
     "showsDe": "Der Bleistift hält dir vier Wörter hin"
    },
-   "storyDe": "Womit schreibst du NICHT?",
+   "storyDe": "Drei Sachen liegen im Klassenzimmer. Welche nicht?",
    "select": "odd",
    "items": [
     "pencil",
     "pen",
     "tablet",
-    "cat"
+    "crocodile"
    ],
    "correct": [
-    "cat"
+    "crocodile"
    ],
    "skins": [
     "pencil"
@@ -94,9 +86,9 @@
     "p1"
    ],
    "hints": {
-    "deDesc": "Drei davon nimmst du in die Hand und schreibst."
+    "deDesc": "Eines davon lebt im Fluss, nicht in der Schule."
    },
-   "grounding": "u01 school objects vs an animal"
+   "grounding": "u01 classroom objects vs an animal"
   },
   {
    "id": "g1.paint.ch01.enc.eraser.c1",
@@ -104,7 +96,7 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein weißer Radiergummi hüpft dir in den Weg"
+    "showsDe": "Ein blasser Radiergummi hüpft dir in den Weg"
    },
    "storyDe": "Sag, was er ist — dann hüpft er beiseite!",
    "promptEn": "What is it?",
@@ -133,21 +125,20 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Radiergummi hüpft grau vor dir auf"
+    "showsDe": "Der Radiergummi ist ganz grau geworden"
    },
    "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
-   "promptEn": "What is it?",
    "nameOptions": [
     "rubber",
-    "ball",
-    "apple",
-    "book"
+    "ruler",
+    "book",
+    "apple"
    ],
    "name": "rubber",
-   "colourAskDe": "„Ich war so blass wie der Himmel!“, ruft er.",
+   "colourAskDe": "„Ich war blau wie das Meer!“, ruft er.",
    "colourOptions": [
     "blue",
-    "pink",
+    "green",
     "brown"
    ],
    "colour": "blue",
@@ -162,7 +153,7 @@
     "deDesc": "Er macht Bleistift-Striche weg.",
     "deWord": "Auf Deutsch: der Radiergummi — und Blau."
    },
-   "grounding": "u01 object: rubber + colour: blue"
+   "grounding": "u01 object: rubber + colour: blue (matches the painted sheet, hue 214°)"
   },
   {
    "id": "g1.paint.ch01.enc.eraser.q1",
@@ -172,16 +163,16 @@
     "type": "entity",
     "showsDe": "Der Radiergummi legt vier Sachen aus"
    },
-   "storyDe": "Drei Sachen sind aus der Federtasche. Welche nicht?",
+   "storyDe": "Drei Sachen sind IN der Federtasche. Welche nicht?",
    "select": "odd",
    "items": [
     "rubber",
     "glue stick",
     "pencil sharpener",
-    "ball"
+    "chair"
    ],
    "correct": [
-    "ball"
+    "chair"
    ],
    "skins": [
     "eraser"
@@ -191,9 +182,9 @@
     "p3"
    ],
    "hints": {
-    "deDesc": "Womit spielst du draußen?"
+    "deDesc": "Worauf setzt du dich?"
    },
-   "grounding": "u01 pencil-case contents vs a toy"
+   "grounding": "u01 pencil-case contents vs classroom furniture"
   },
   {
    "id": "g1.paint.ch01.enc.pen.c1",
@@ -201,7 +192,7 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Füller mit goldener Spitze verbeugt sich"
+    "showsDe": "Ein Füller mit feiner Spitze verbeugt sich"
    },
    "storyDe": "Sag ihm freundlich, was er ist!",
    "promptEn": "What is it?",
@@ -229,10 +220,9 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Füller steht grau da, die Spitze leer"
+    "showsDe": "Der Füller steht grau da, die Spitze blass"
    },
    "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
-   "promptEn": "What is it?",
    "nameOptions": [
     "pen",
     "pencil",
@@ -240,13 +230,13 @@
     "paintbrush"
    ],
    "name": "pen",
-   "colourAskDe": "„Meine Tinte war dunkel wie die Nacht!“",
+   "colourAskDe": "„Ich war gelb wie die Sonne!“, sagt er.",
    "colourOptions": [
+    "yellow",
     "black",
-    "orange",
     "white"
    ],
-   "colour": "black",
+   "colour": "yellow",
    "skins": [
     "pen"
    ],
@@ -255,9 +245,9 @@
    ],
    "hints": {
     "deDesc": "Damit schreibst du mit Tinte.",
-    "deWord": "Auf Deutsch: der Füller — und Schwarz."
+    "deWord": "Auf Deutsch: der Füller — und Gelb."
    },
-   "grounding": "u01 object: pen + colour: black"
+   "grounding": "u01 object: pen + colour: yellow (the sheet's golden body, hue 48°)"
   },
   {
    "id": "g1.paint.ch01.enc.pen.q1",
@@ -267,16 +257,16 @@
     "type": "entity",
     "showsDe": "Der Füller tropft vier Wörter auf das Blatt"
    },
-   "storyDe": "Welches Wort ist KEINE Schulsache?",
+   "storyDe": "Drei Sachen sind aus Papier. Welche nicht?",
    "select": "odd",
    "items": [
-    "pen",
-    "ruler",
-    "scissors",
-    "honey"
+    "exercise book",
+    "picture",
+    "English book",
+    "scissors"
    ],
    "correct": [
-    "honey"
+    "scissors"
    ],
    "skins": [
     "pen"
@@ -285,9 +275,9 @@
     "p2"
    ],
    "hints": {
-    "deDesc": "Drei liegen im Klassenzimmer. Eines schmeckt süß."
+    "deDesc": "Womit schneidest du?"
    },
-   "grounding": "u01 school objects vs food"
+   "grounding": "u01 paper things vs a tool (a within-category split)"
   },
   {
    "id": "g1.paint.ch01.enc.paintbox.c1",
@@ -322,7 +312,7 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Farbkasten zeigt dir seine bunten Farben"
+    "showsDe": "Der Farbkasten klappt seine Näpfchen auf"
    },
    "storyDe": "Sag, wie die Farben zum Malen heißen!",
    "promptEn": "What is it?",
@@ -380,7 +370,7 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Eine braune Schultasche stampft auf dich zu"
+    "showsDe": "Eine schwere Schultasche stampft auf dich zu"
    },
    "storyDe": "Sag ihr, sie soll sich SETZEN!",
    "promptEn": "What do you say?",
@@ -498,19 +488,18 @@
     "showsDe": "Das Heft flattert grau und blass vorbei"
    },
    "storyDe": "Sag, wer es ist — dann gib ihm die Farbe!",
-   "promptEn": "What is it?",
    "nameOptions": [
     "exercise book",
-    "English book",
+    "ruler",
     "tablet",
     "picture"
    ],
    "name": "exercise book",
-   "colourAskDe": "„Ich war so bunt wie das Gras!“, flüstert es.",
+   "colourAskDe": "„Ich war grün wie das Gras!“, flüstert es.",
    "colourOptions": [
     "green",
     "red",
-    "grey"
+    "blue"
    ],
    "colour": "green",
    "skins": [
@@ -523,7 +512,7 @@
     "deDesc": "Da rechnest und schreibst du hinein.",
     "deWord": "Auf Deutsch: das Heft — und Grün."
    },
-   "grounding": "u01 phrase: exercise book + colour: green"
+   "grounding": "u01 phrase: exercise book + colour: green (matches the sheet)"
   },
   {
    "id": "g1.paint.ch01.enc.heft.q1",
@@ -591,7 +580,7 @@
     "type": "entity",
     "showsDe": "Die Tafel rollt heran und wartet auf dein Wort"
    },
-   "storyDe": "Niemand redet je mit ihr. Sag ihr etwas Nettes!",
+   "storyDe": "Niemand redet mit ihr. Begrüße sie freundlich!",
    "promptEn": "What do you say?",
    "options": [
     "Hello!",
@@ -782,16 +771,16 @@
    "stimulus": {
     "type": "text"
    },
-   "storyDe": "Worauf gehst du gerade?",
+   "storyDe": "Der Boden unter deinen Schuhen — wie heißt er?",
    "promptEn": "What is it?",
    "options": [
     "the floor",
-    "the door",
+    "the window",
     "the desk"
    ],
    "answer": "the floor",
    "hints": {
-    "deDesc": "Unter deinen Schuhen.",
+    "deDesc": "Darauf stehen die Tische und die Stühle.",
     "deWord": "Auf Deutsch: der Boden."
    },
    "grounding": "u01 object: floor"
@@ -869,7 +858,7 @@
    "stimulus": {
     "type": "text"
    },
-   "storyDe": "Worauf sitzt du im Klassenzimmer?",
+   "storyDe": "Vier Beine — und du sitzt darauf. Wie heißt das?",
    "promptEn": "What is it?",
    "options": [
     "a chair",
@@ -878,7 +867,7 @@
    ],
    "answer": "a chair",
    "hints": {
-    "deDesc": "Es hat vier Beine und eine Lehne.",
+    "deDesc": "Darauf setzt du dich.",
     "deWord": "Auf Deutsch: der Stuhl."
    },
    "grounding": "u01 object: chair"
@@ -890,7 +879,7 @@
    "stimulus": {
     "type": "text"
    },
-   "storyDe": "Was trägst du NICHT an?",
+   "storyDe": "Was ziehst du NICHT an?",
    "select": "odd",
    "items": [
     "tie",
@@ -959,7 +948,7 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Vor dir steht eine Tür aus Holz mit goldenem Knauf"
+    "showsDe": "Vor dir steht etwas Hohes aus Holz mit einem Griff"
    },
    "storyDe": "Sag, wovor du gerade stehst!",
    "promptEn": "What is it?",
@@ -1009,21 +998,21 @@
     "type": "entity",
     "showsDe": "Die Tür wartet auf das Wort der Lehrerin"
    },
-   "storyDe": "Die Tür will Ruhe, bevor sie aufgeht. Sag es!",
+   "storyDe": "Alle sollen gut ZUHÖREN. Sag es ihnen!",
    "promptEn": "What do you say?",
    "options": [
     "Listen!",
-    "Speak!",
-    "Count!"
+    "Stand up!",
+    "Open!"
    ],
    "answer": "Listen!",
+   "hints": {
+    "deDesc": "Ohren auf!",
+    "deWord": "Auf Deutsch: Hört zu!"
+   },
    "skins": [
     "door"
    ],
-   "hints": {
-    "deDesc": "Alle sollen ganz leise sein und zuhören.",
-    "deWord": "Auf Deutsch: Hört zu!"
-   },
    "grounding": "u01 classroom imperatives (M-E door series)"
   },
   {
@@ -1104,10 +1093,9 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Knoten ist auf — die Tasche ist grau"
+    "showsDe": "Der Knoten ist auf — die Schultasche ist grau"
    },
    "storyDe": "Sag, wer sie ist — dann gib ihr die Farbe!",
-   "promptEn": "What is it?",
    "nameOptions": [
     "school bag",
     "pencil case",
@@ -1115,7 +1103,7 @@
     "blazer"
    ],
    "name": "school bag",
-   "colourAskDe": "„Ich war warm wie ein Kastanien-Ton!“",
+   "colourAskDe": "„Ich war braun wie eine Kastanie!“",
    "colourOptions": [
     "brown",
     "blue",
@@ -1129,7 +1117,7 @@
     "deDesc": "Die trägst du auf dem Rücken zur Schule.",
     "deWord": "Auf Deutsch: die Schultasche — und Braun."
    },
-   "grounding": "u01 phrase: school bag + colour: brown"
+   "grounding": "u01 phrase: school bag + colour: brown (matches the sheet)"
   },
   {
    "id": "g1.paint.ch01.res.case.c1",
@@ -1165,7 +1153,6 @@
     "showsDe": "Der Zipp ist auf — die Federtasche ist grau"
    },
    "storyDe": "Sag, wer sie ist — dann gib ihr die Farbe!",
-   "promptEn": "What is it?",
    "nameOptions": [
     "pencil case",
     "school bag",
@@ -1173,21 +1160,21 @@
     "hairband"
    ],
    "name": "pencil case",
-   "colourAskDe": "„Ich war so hell wie ein Apfel-Blüten-Ton!“",
+   "colourAskDe": "„Ich war grün wie ein Blatt!“",
    "colourOptions": [
-    "pink",
     "green",
+    "red",
     "black"
    ],
-   "colour": "pink",
+   "colour": "green",
    "skins": [
     "pencilcase"
    ],
    "hints": {
     "deDesc": "Darin stecken Stifte und der Radiergummi.",
-    "deWord": "Auf Deutsch: die Federtasche — und Rosa."
+    "deWord": "Auf Deutsch: die Federtasche — und Grün."
    },
-   "grounding": "u01 phrase: pencil case + colour: pink"
+   "grounding": "u01 phrase: pencil case + colour: green (matches the sheet)"
   },
   {
    "id": "g1.paint.ch01.boss.m1",

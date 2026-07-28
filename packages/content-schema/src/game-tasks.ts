@@ -269,6 +269,15 @@ export function taskInvariantErrors(t: GameTaskV2): string[] {
       if (dup(t.nameOptions)) errs.push("duplicate name option");
       if (!t.colourOptions.includes(t.colour)) errs.push("colour is not among the colour options");
       if (dup(t.colourOptions)) errs.push("duplicate colour option");
+      // GREY IS THE WOUND, NOT A CURE. A restore card exists because OSWIN
+      // rained the colour OUT of the being — grey is the state on screen while
+      // the card is open, so offering it back as an answer reads to a literal
+      // six-year-old as „leave it as it is". Found by a blind verifier on the
+      // first authored set (the exercise book was offered grey); made
+      // structural here so no future chapter can re-author it.
+      if (t.colourOptions.some((c) => /^gr[ea]y$/i.test(c.trim()))) {
+        errs.push("restore may not offer grey — grey is the drained state the card undoes, not a colour to give back");
+      }
       break;
     case "typed":
       break;
@@ -402,8 +411,13 @@ export function renderTaskText(t: GameTaskV2): string {
       // BEING says it on the card — without it the colour would be unanswerable,
       // and a projection that hides it would test a solver on a card no child
       // could solve either.
-      lines.push("Schritt 1 — wer bist du? " + seededShuffle(t.nameOptions, t.id).join(" · "));
-      lines.push(`Schritt 2 — ${t.colourAskDe}`);
+      // P-18 again, caught by a blind verifier reading this very projection: an
+      // earlier version printed „Schritt 1 — wer bist du?", a line the skin
+      // never renders. The card shows a two-dot breadcrumb and a row of names,
+      // then the being's German line and a row of colour swatches — so that is
+      // what this prints. A projection may not invent a question.
+      lines.push("Schritt 1 · der Name — " + seededShuffle(t.nameOptions, t.id).join(" · "));
+      lines.push(`Schritt 2 · die Farbe — ${t.colourAskDe}`);
       lines.push("Farben: " + seededShuffle(t.colourOptions, `${t.id}:colour`).join(" · "));
       break;
   }
