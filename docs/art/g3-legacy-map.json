@@ -1,0 +1,97 @@
+{
+  "schema": "legacy-art-map@1",
+  "note": "Maps the Grade-3 images generated for the OLD single-file app onto this app's stems. The old app had a 3-beats-per-level model (storyA / storyB / completion) and let each level roam to a second location; this app's 10-scene spine is anchored in the bedroom studio and only leaves it three times. Where the old picture shows a place or a moment this script never visits, it is dropped with its reason rather than forced into a slot it does not fit.",
+  "source": "iCloud: Domi Gym/Claude/Grammar trainer Grades 1 to 4/CAMPAIGN-IMAGES/grade 3",
+  "map": {
+    "leah_neutral": "g3-char-leah-avatar",
+    "leo_neutral": "g3-char-leo-avatar",
+    "sara_neutral": "g3-char-sara-avatar",
+
+    "beat_ch01_s001": "g3-prologue-03",
+    "beat_ch01_s002": "g3-prologue-02",
+    "beat_ch01_s003": "g3-prologue-04",
+    "beat_ch01_s004": "g3-char-ben-happy",
+    "beat_ch01_s007": "g3-ch01-scene-storyA",
+    "beat_ch01_s008": "g3-char-ben-presenting",
+    "beat_ch01_s009": "g3-ch01-scene-completion",
+    "beat_ch01_s011": "g3-char-you-backview",
+
+    "beat_ch02_s002": "g3-ch02-scene-storyA",
+    "beat_ch02_s007": "g3-char-leah-excited",
+
+    "beat_ch05_s008": "g3-ch05-scene-storyB",
+
+    "beat_ch06_s002": "g3-char-leo-filming",
+    "beat_ch06_s008": "g3-char-sara-distant",
+
+    "beat_ch07_s001": "g3-ch07-scene-storyA",
+
+    "beat_ch08_s001": "g3-ch08-scene-storyA",
+
+    "beat_ch09_s002": "g3-ch09-scene-storyA",
+    "beat_ch09_s007": "g3-ch09-scene-storyB",
+    "beat_ch09_s009": "g3-char-you-sideprofile",
+
+    "beat_ch10_s007": "g3-ch10-scene-storyB",
+    "beat_ch10_s008": "g3-char-sara-serious",
+    "beat_ch10_s010": "g3-ch10-scene-completion",
+
+    "beat_ch11_s002": "g3-ch11-scene-storyA",
+
+    "beat_ch12_s001": "g3-ch12-scene-storyA",
+    "beat_ch12_s005": "g3-ch12-scene-storyB",
+    "beat_ch12_s006": "g3-char-ben-confrontation",
+    "beat_ch12_s010": "g3-ch12-scene-completion",
+
+    "beat_ch13_s002": "g3-ch13-scene-storyA",
+    "beat_ch13_s003": "g3-char-leo-guilty",
+    "beat_ch13_s005": "g3-ch13-scene-storyB",
+    "beat_ch13_s008": "g3-char-leah-guilty",
+    "beat_ch13_s010": "g3-ch13-scene-completion",
+
+    "beat_ch14_s001": "g3-ch14-scene-storyA",
+    "beat_ch14_s005": "g3-char-ben-brave",
+    "beat_ch14_s009": "g3-ch14-scene-completion"
+  },
+  "drop": {
+    "g3-ch01-scene-storyB": "shows a real band by name — the pictures name no real people or groups",
+    "g3-ch06-scene-storyA": "a real, instantly recognisable landmark; this app's own ch06 prompt deliberately says 'an anonymous tall old clock tower'",
+    "g3-ch03-scene-storyA": "cycling in the countryside — ch03 in this app never leaves the studio",
+    "g3-ch03-scene-storyB": "sheltering under a bridge — same; no such scene exists here",
+    "g3-ch03-scene-completion": "shows 89,000 views; this app's ch03 is 11,000, and the number is readable text either way",
+    "g3-ch04-scene-storyA": "an art room; this app's ch04 script scenes are at the studio desk",
+    "g3-ch04-scene-storyB": "a biology lab; no lab in this app's ch04",
+    "g3-ch05-scene-storyA": "a drama room; this app's ch05 films in the studio",
+    "g3-ch10-scene-storyA": "a library; this app's ch10 films in the studio",
+    "g3-ch02-scene-completion": "a chat mockup with readable English baked into it",
+    "g3-ch04-scene-completion": "no scene in this app's ch04 matches it",
+    "g3-ch05-scene-completion": "no scene in this app's ch05 matches it",
+    "g3-ch06-scene-completion": "Ben asleep on a bus; no bus in this app's ch06",
+    "g3-ch07-scene-completion": "a group-chat message mockup with readable English",
+    "g3-ch07-scene-storyB": "a hallway confrontation between Leo and YOU; the matching scene here is between YOU and Leah",
+    "g3-ch08-scene-completion": "its subject does not match any scene in this app's ch08",
+    "g3-ch11-scene-completion": "three characters against a wall; the matching scene here is YOU alone",
+    "g3-ch12-scene-storyB": "mapped to beat_ch12_s005 instead of s009 — the approach, not the walking away",
+    "g3-ch14-scene-storyB": "was never generated",
+    "g3-char-leah-neutral": "full-body, so it crops to her jacket at 46px, and no scene matches it as a beat",
+    "g3-char-leo-neutral": "full-body; no scene matches it as a beat",
+    "g3-char-ben-hurt": "beat_ch09_s007 uses the fuller scene version of the same moment",
+    "g3-char-sara-warm": "beat_ch13_s005 uses the fuller scene version of the same moment",
+    "g3-prologue-01": "no matching scene",
+    "g3-prologue-05": "beat_ch01_s004 uses the character pose instead",
+    "g3-prologue-06": "its slot is taken by the Leah intro",
+    "g3-prologue-07": "no matching scene",
+    "g3-prologue-08": "no matching scene",
+    "g3-ch01-social-youtube-upload": "readable English and platform interface chrome",
+    "g3-ch02-social-youtube-comments": "readable English — and a static comment list contradicts the live comment section, whose comments change with how well the player protected Ben",
+    "g3-ch04-social-sara-like": "readable English and platform chrome",
+    "g3-ch08-social-comment": "readable English",
+    "g3-ch11-social-tiktok": "readable English and platform chrome",
+    "g3-ch12-social-ben-phone": "readable English",
+    "g3-ch14-social-youtube-about": "readable English and platform chrome",
+    "g3-ch14-social-youtube-live": "readable English and platform chrome",
+    "social-media-templates": "all 10 placeholder templates carry bracketed placeholder text meant to be replaced by readable English",
+    "stats-wall": "all 14 have subscriber counts and video titles baked in as readable text; this app has no stats wall — the episode-end screen prints its numbers as live text",
+    "download (10)": "an accidental save with no reference anywhere"
+  }
+}

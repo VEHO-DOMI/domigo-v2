@@ -1,0 +1,113 @@
+// One-shot importer for the Grade-3 images generated for the OLD single-file app.
+//
+//   node docs/art/import-g3-legacy.mjs            → dry run, reports exactly what it would do
+//   node docs/art/import-g3-legacy.mjs --write    → copies + compresses into public/art/g3/
+//
+// Why this exists instead of sync-art.mjs: that tool matches a file to a stem by the stem
+// appearing at the END of the filename. These filenames defeat it twice over — they carry
+// the OLD app's names, not this one's ("g3-ch09-scene-storyB"), and they trail off into
+// prose ("… g3-ch01-social-youtube-upload.jpg -- alongside Story B or Completion.png").
+// The mapping is semantic, so it is written out by hand in g3-legacy-map.json and applied
+// here. sync-art.mjs is left untouched and remains the tool for FUTURE drops, where the
+// files are saved under the exact stem the prompt page tells you to use.
+//
+// Compression is not optional: the source folder is ~133 MB for 98 files (~1.4 MB each),
+// and comparable committed art in this repo is around 100 KB. Each class has a width
+// ceiling from the prompt library (`maxPx`), and everything is re-encoded as JPEG.
+import { execFileSync } from "node:child_process";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync } from "node:fs";
+import { dirname, join, basename } from "node:path";
+import { fileURLToPath } from "node:url";
+import { homedir } from "node:os";
+
+const HERE = dirname(fileURLToPath(import.meta.url));
+const REPO = join(HERE, "..", "..");
+const WRITE = process.argv.includes("--write");
+const DEST = join(REPO, "apps", "web", "public", "art", "g3");
+const SRC_ROOT = join(homedir(),
+  "Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/Claude/Grammar trainer Grades 1 to 4/CAMPAIGN-IMAGES/grade 3");
+const SUBFOLDERS = ["Already implemented", "to be added to grade 3"];
+const MAX_BYTES = 220_000;
+
+const { map, drop } = JSON.parse(readFileSync(join(HERE, "g3-legacy-map.json"), "utf8"));
+const lib = JSON.parse(readFileSync(join(HERE, "g3-art-files.json"), "utf8"));
+const maxPx = new Map(lib.stems.map((s) => [s.stem, s.maxPx]));
+
+if (!existsSync(SRC_ROOT)) {
+  console.error(`✗ source folder not found (iCloud may have evicted it — open it in Finder once):\n  ${SRC_ROOT}`);
+  process.exit(1);
+}
+
+// token → the file that carries it. The token is the old app's name, embedded anywhere in
+// the filename; note the capital A/B of storyA/storyB, which a lowercase-only match loses.
+const byToken = new Map();
+for (const sub of SUBFOLDERS) {
+  const dir = join(SRC_ROOT, sub);
+  if (!existsSync(dir)) continue;
+  for (const f of readdirSync(dir)) {
+    if (f.startsWith(".") || !/\.(png|jpe?g|webp)$/i.test(f)) continue;
+    const m = f.match(/g3-[a-zA-Z0-9-]+/);
+    if (m) byToken.set(m[0], join(dir, f));
+  }
+}
+
+const plan = [];
+const missing = [];
+for (const [stem, token] of Object.entries(map)) {
+  if (!maxPx.has(stem)) {
+    missing.push(`${stem}: not a stem in the prompt library (renamed or removed?)`);
+    continue;
+  }
+  const src = byToken.get(token);
+  if (!src) {
+    missing.push(`${stem}: source "${token}" not found in the iCloud folder`);
+    continue;
+  }
+  plan.push({ stem, token, src, width: maxPx.get(stem) });
+}
+
+console.log(`── import-g3-legacy ──`);
+console.log(`source: ${SRC_ROOT}`);
+console.log(`dest:   ${DEST}`);
+console.log(`mapped: ${plan.length} · dropped by design: ${Object.keys(drop).length}`);
+
+if (missing.length) {
+  console.error(`\n✗ ${missing.length} mapping(s) could not be resolved — the map is out of date:`);
+  for (const m of missing) console.error("  - " + m);
+  process.exit(1);
+}
+
+if (!WRITE) {
+  for (const p of plan) {
+    const kb = Math.round(statSync(p.src).size / 1024);
+    console.log(`  ${p.stem.padEnd(22)} ← ${p.token.padEnd(30)} (${kb} KB → ≤${p.width}px, ≤${MAX_BYTES / 1000} KB)`);
+  }
+  console.log(`\nDry run. Re-run with --write to import ${plan.length} image(s).`);
+  process.exit(0);
+}
+
+mkdirSync(DEST, { recursive: true });
+let bytesIn = 0, bytesOut = 0, oversize = 0;
+for (const p of plan) {
+  const out = join(DEST, `${p.stem}.jpg`);
+  bytesIn += statSync(p.src).size;
+  copyFileSync(p.src, out);
+  try {
+    // `sips` ships with macOS; -Z scales the LONGEST side, preserving aspect.
+    execFileSync("sips", ["-Z", String(p.width), "-s", "format", "jpeg",
+      "-s", "formatOptions", "72", out, "--out", out], { stdio: "pipe" });
+  } catch (e) {
+    console.warn(`  ⚠ ${p.stem}: could not compress (${e.message.split("\n")[0]}) — copied at full size`);
+  }
+  const size = statSync(out).size;
+  bytesOut += size;
+  if (size > MAX_BYTES) {
+    oversize++;
+    console.warn(`  ⚠ ${p.stem}: still ${Math.round(size / 1024)} KB after compression`);
+  }
+  console.log(`  ✓ ${basename(out)}  ${Math.round(size / 1024)} KB`);
+}
+console.log(`\n✓ imported ${plan.length} image(s): ${Math.round(bytesIn / 1e6)} MB in → `
+  + `${Math.round(bytesOut / 1e6 * 10) / 10} MB out`);
+if (oversize) console.warn(`⚠ ${oversize} file(s) are over ${MAX_BYTES / 1000} KB — check before committing.`);
+console.log(`Reload /play/3/ch01 — the resolver re-reads this folder on every request, so no rebuild is needed.`);

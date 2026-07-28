@@ -1,0 +1,1690 @@
+{
+  "schema": "art-files@1",
+  "grade": 3,
+  "storyId": "g3.st.fourteen",
+  "count": 235,
+  "stems": [
+    {
+      "stem": "cover_title",
+      "file": "cover_title.png",
+      "section": "A · Frames",
+      "class": "hero",
+      "maxPx": 1600
+    },
+    {
+      "stem": "end_episode",
+      "file": "end_episode.png",
+      "section": "A · Frames",
+      "class": "hero",
+      "maxPx": 1600
+    },
+    {
+      "stem": "card_ch01",
+      "file": "card_ch01.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch02",
+      "file": "card_ch02.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch03",
+      "file": "card_ch03.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch04",
+      "file": "card_ch04.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch05",
+      "file": "card_ch05.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch06",
+      "file": "card_ch06.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch07",
+      "file": "card_ch07.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch08",
+      "file": "card_ch08.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch09",
+      "file": "card_ch09.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch10",
+      "file": "card_ch10.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch11",
+      "file": "card_ch11.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch12",
+      "file": "card_ch12.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch13",
+      "file": "card_ch13.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "card_ch14",
+      "file": "card_ch14.png",
+      "section": "A · Frames",
+      "class": "card",
+      "maxPx": 1280
+    },
+    {
+      "stem": "ben_neutral",
+      "file": "ben_neutral.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "ben_presenting",
+      "file": "ben_presenting.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "ben_uncertain",
+      "file": "ben_uncertain.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "ben_proud",
+      "file": "ben_proud.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "ben_hurt",
+      "file": "ben_hurt.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "ben_confront",
+      "file": "ben_confront.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "ben_brave",
+      "file": "ben_brave.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "leah_neutral",
+      "file": "leah_neutral.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512,
+      "legacy": "g3-char-leah-avatar"
+    },
+    {
+      "stem": "leah_excited",
+      "file": "leah_excited.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "leah_scheming",
+      "file": "leah_scheming.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "leah_defensive",
+      "file": "leah_defensive.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "leah_honest",
+      "file": "leah_honest.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "leo_neutral",
+      "file": "leo_neutral.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512,
+      "legacy": "g3-char-leo-avatar"
+    },
+    {
+      "stem": "leo_filming",
+      "file": "leo_filming.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "leo_uneasy",
+      "file": "leo_uneasy.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "leo_exposed",
+      "file": "leo_exposed.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "sara_neutral",
+      "file": "sara_neutral.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512,
+      "legacy": "g3-char-sara-avatar"
+    },
+    {
+      "stem": "sara_serious",
+      "file": "sara_serious.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "sara_warm",
+      "file": "sara_warm.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "you_neutral",
+      "file": "you_neutral.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "you_desk",
+      "file": "you_desk.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "you_shaken",
+      "file": "you_shaken.png",
+      "section": "B · Portraits",
+      "class": "portrait",
+      "maxPx": 512
+    },
+    {
+      "stem": "bg_ch01",
+      "file": "bg_ch01.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch02",
+      "file": "bg_ch02.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch03",
+      "file": "bg_ch03.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch04",
+      "file": "bg_ch04.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch05",
+      "file": "bg_ch05.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch06",
+      "file": "bg_ch06.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch07",
+      "file": "bg_ch07.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch08",
+      "file": "bg_ch08.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch09",
+      "file": "bg_ch09.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch10",
+      "file": "bg_ch10.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch11",
+      "file": "bg_ch11.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch12",
+      "file": "bg_ch12.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch13",
+      "file": "bg_ch13.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "bg_ch14",
+      "file": "bg_ch14.png",
+      "section": "C · Backdrops",
+      "class": "backdrop",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch01_s001",
+      "file": "beat_ch01_s001.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-prologue-03"
+    },
+    {
+      "stem": "beat_ch01_s002",
+      "file": "beat_ch01_s002.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-prologue-02"
+    },
+    {
+      "stem": "beat_ch01_s003",
+      "file": "beat_ch01_s003.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-prologue-04"
+    },
+    {
+      "stem": "beat_ch01_s004",
+      "file": "beat_ch01_s004.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-ben-happy"
+    },
+    {
+      "stem": "beat_ch01_s005",
+      "file": "beat_ch01_s005.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch01_s006",
+      "file": "beat_ch01_s006.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch01_s007",
+      "file": "beat_ch01_s007.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch01-scene-storyA"
+    },
+    {
+      "stem": "beat_ch01_s008",
+      "file": "beat_ch01_s008.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-ben-presenting"
+    },
+    {
+      "stem": "beat_ch01_s009",
+      "file": "beat_ch01_s009.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch01-scene-completion"
+    },
+    {
+      "stem": "beat_ch01_s010",
+      "file": "beat_ch01_s010.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch01_s011",
+      "file": "beat_ch01_s011.png",
+      "section": "D · ch01",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-you-backview"
+    },
+    {
+      "stem": "beat_ch02_s001",
+      "file": "beat_ch02_s001.png",
+      "section": "D · ch02",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch02_s002",
+      "file": "beat_ch02_s002.png",
+      "section": "D · ch02",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch02-scene-storyA"
+    },
+    {
+      "stem": "beat_ch02_s003",
+      "file": "beat_ch02_s003.png",
+      "section": "D · ch02",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch02_s004",
+      "file": "beat_ch02_s004.png",
+      "section": "D · ch02",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch02_s005",
+      "file": "beat_ch02_s005.png",
+      "section": "D · ch02",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch02_s006",
+      "file": "beat_ch02_s006.png",
+      "section": "D · ch02",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch02_s007",
+      "file": "beat_ch02_s007.png",
+      "section": "D · ch02",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-leah-excited"
+    },
+    {
+      "stem": "beat_ch02_s008",
+      "file": "beat_ch02_s008.png",
+      "section": "D · ch02",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch02_s009",
+      "file": "beat_ch02_s009.png",
+      "section": "D · ch02",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch02_s010",
+      "file": "beat_ch02_s010.png",
+      "section": "D · ch02",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch03_s001",
+      "file": "beat_ch03_s001.png",
+      "section": "D · ch03",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch03_s002",
+      "file": "beat_ch03_s002.png",
+      "section": "D · ch03",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch03_s003",
+      "file": "beat_ch03_s003.png",
+      "section": "D · ch03",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch03_s004",
+      "file": "beat_ch03_s004.png",
+      "section": "D · ch03",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch03_s005",
+      "file": "beat_ch03_s005.png",
+      "section": "D · ch03",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch03_s006",
+      "file": "beat_ch03_s006.png",
+      "section": "D · ch03",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch03_s007",
+      "file": "beat_ch03_s007.png",
+      "section": "D · ch03",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch03_s008",
+      "file": "beat_ch03_s008.png",
+      "section": "D · ch03",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch03_s009",
+      "file": "beat_ch03_s009.png",
+      "section": "D · ch03",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch03_s010",
+      "file": "beat_ch03_s010.png",
+      "section": "D · ch03",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch04_s001",
+      "file": "beat_ch04_s001.png",
+      "section": "D · ch04",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch04_s002",
+      "file": "beat_ch04_s002.png",
+      "section": "D · ch04",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch04_s003",
+      "file": "beat_ch04_s003.png",
+      "section": "D · ch04",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch04_s004",
+      "file": "beat_ch04_s004.png",
+      "section": "D · ch04",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch04_s005",
+      "file": "beat_ch04_s005.png",
+      "section": "D · ch04",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch04_s006",
+      "file": "beat_ch04_s006.png",
+      "section": "D · ch04",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch04_s007",
+      "file": "beat_ch04_s007.png",
+      "section": "D · ch04",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch04_s008",
+      "file": "beat_ch04_s008.png",
+      "section": "D · ch04",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch04_s009",
+      "file": "beat_ch04_s009.png",
+      "section": "D · ch04",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch04_s010",
+      "file": "beat_ch04_s010.png",
+      "section": "D · ch04",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch05_s001",
+      "file": "beat_ch05_s001.png",
+      "section": "D · ch05",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch05_s002",
+      "file": "beat_ch05_s002.png",
+      "section": "D · ch05",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch05_s003",
+      "file": "beat_ch05_s003.png",
+      "section": "D · ch05",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch05_s004",
+      "file": "beat_ch05_s004.png",
+      "section": "D · ch05",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch05_s005",
+      "file": "beat_ch05_s005.png",
+      "section": "D · ch05",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch05_s006",
+      "file": "beat_ch05_s006.png",
+      "section": "D · ch05",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch05_s007",
+      "file": "beat_ch05_s007.png",
+      "section": "D · ch05",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch05_s008",
+      "file": "beat_ch05_s008.png",
+      "section": "D · ch05",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch05-scene-storyB"
+    },
+    {
+      "stem": "beat_ch05_s009",
+      "file": "beat_ch05_s009.png",
+      "section": "D · ch05",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch05_s010",
+      "file": "beat_ch05_s010.png",
+      "section": "D · ch05",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch06_s001",
+      "file": "beat_ch06_s001.png",
+      "section": "D · ch06",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch06_s002",
+      "file": "beat_ch06_s002.png",
+      "section": "D · ch06",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-leo-filming"
+    },
+    {
+      "stem": "beat_ch06_s003",
+      "file": "beat_ch06_s003.png",
+      "section": "D · ch06",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch06_s004",
+      "file": "beat_ch06_s004.png",
+      "section": "D · ch06",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch06_s005",
+      "file": "beat_ch06_s005.png",
+      "section": "D · ch06",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch06_s006",
+      "file": "beat_ch06_s006.png",
+      "section": "D · ch06",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch06_s007",
+      "file": "beat_ch06_s007.png",
+      "section": "D · ch06",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch06_s008",
+      "file": "beat_ch06_s008.png",
+      "section": "D · ch06",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-sara-distant"
+    },
+    {
+      "stem": "beat_ch06_s009",
+      "file": "beat_ch06_s009.png",
+      "section": "D · ch06",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch06_s010",
+      "file": "beat_ch06_s010.png",
+      "section": "D · ch06",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch07_s001",
+      "file": "beat_ch07_s001.png",
+      "section": "D · ch07",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch07-scene-storyA"
+    },
+    {
+      "stem": "beat_ch07_s002",
+      "file": "beat_ch07_s002.png",
+      "section": "D · ch07",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch07_s003",
+      "file": "beat_ch07_s003.png",
+      "section": "D · ch07",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch07_s004",
+      "file": "beat_ch07_s004.png",
+      "section": "D · ch07",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch07_s005",
+      "file": "beat_ch07_s005.png",
+      "section": "D · ch07",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch07_s006",
+      "file": "beat_ch07_s006.png",
+      "section": "D · ch07",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch07_s007",
+      "file": "beat_ch07_s007.png",
+      "section": "D · ch07",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch07_s008",
+      "file": "beat_ch07_s008.png",
+      "section": "D · ch07",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch07_s009",
+      "file": "beat_ch07_s009.png",
+      "section": "D · ch07",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch07_s010",
+      "file": "beat_ch07_s010.png",
+      "section": "D · ch07",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch08_s001",
+      "file": "beat_ch08_s001.png",
+      "section": "D · ch08",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch08-scene-storyA"
+    },
+    {
+      "stem": "beat_ch08_s002",
+      "file": "beat_ch08_s002.png",
+      "section": "D · ch08",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch08_s003",
+      "file": "beat_ch08_s003.png",
+      "section": "D · ch08",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch08_s004",
+      "file": "beat_ch08_s004.png",
+      "section": "D · ch08",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch08_s005",
+      "file": "beat_ch08_s005.png",
+      "section": "D · ch08",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch08_s006",
+      "file": "beat_ch08_s006.png",
+      "section": "D · ch08",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch08_s007",
+      "file": "beat_ch08_s007.png",
+      "section": "D · ch08",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch08_s008",
+      "file": "beat_ch08_s008.png",
+      "section": "D · ch08",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch08_s009",
+      "file": "beat_ch08_s009.png",
+      "section": "D · ch08",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch08_s010",
+      "file": "beat_ch08_s010.png",
+      "section": "D · ch08",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch09_s001",
+      "file": "beat_ch09_s001.png",
+      "section": "D · ch09",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch09_s002",
+      "file": "beat_ch09_s002.png",
+      "section": "D · ch09",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch09-scene-storyA"
+    },
+    {
+      "stem": "beat_ch09_s003",
+      "file": "beat_ch09_s003.png",
+      "section": "D · ch09",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch09_s004",
+      "file": "beat_ch09_s004.png",
+      "section": "D · ch09",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch09_s005",
+      "file": "beat_ch09_s005.png",
+      "section": "D · ch09",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch09_s006",
+      "file": "beat_ch09_s006.png",
+      "section": "D · ch09",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch09_s007",
+      "file": "beat_ch09_s007.png",
+      "section": "D · ch09",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch09-scene-storyB"
+    },
+    {
+      "stem": "beat_ch09_s008",
+      "file": "beat_ch09_s008.png",
+      "section": "D · ch09",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch09_s009",
+      "file": "beat_ch09_s009.png",
+      "section": "D · ch09",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-you-sideprofile"
+    },
+    {
+      "stem": "beat_ch09_s010",
+      "file": "beat_ch09_s010.png",
+      "section": "D · ch09",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch10_s001",
+      "file": "beat_ch10_s001.png",
+      "section": "D · ch10",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch10_s002",
+      "file": "beat_ch10_s002.png",
+      "section": "D · ch10",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch10_s003",
+      "file": "beat_ch10_s003.png",
+      "section": "D · ch10",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch10_s004",
+      "file": "beat_ch10_s004.png",
+      "section": "D · ch10",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch10_s005",
+      "file": "beat_ch10_s005.png",
+      "section": "D · ch10",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch10_s006",
+      "file": "beat_ch10_s006.png",
+      "section": "D · ch10",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch10_s007",
+      "file": "beat_ch10_s007.png",
+      "section": "D · ch10",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch10-scene-storyB"
+    },
+    {
+      "stem": "beat_ch10_s008",
+      "file": "beat_ch10_s008.png",
+      "section": "D · ch10",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-sara-serious"
+    },
+    {
+      "stem": "beat_ch10_s009",
+      "file": "beat_ch10_s009.png",
+      "section": "D · ch10",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch10_s010",
+      "file": "beat_ch10_s010.png",
+      "section": "D · ch10",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch10-scene-completion"
+    },
+    {
+      "stem": "beat_ch11_s001",
+      "file": "beat_ch11_s001.png",
+      "section": "D · ch11",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch11_s002",
+      "file": "beat_ch11_s002.png",
+      "section": "D · ch11",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch11-scene-storyA"
+    },
+    {
+      "stem": "beat_ch11_s003",
+      "file": "beat_ch11_s003.png",
+      "section": "D · ch11",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch11_s004",
+      "file": "beat_ch11_s004.png",
+      "section": "D · ch11",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch11_s005",
+      "file": "beat_ch11_s005.png",
+      "section": "D · ch11",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch11_s006",
+      "file": "beat_ch11_s006.png",
+      "section": "D · ch11",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch11_s007",
+      "file": "beat_ch11_s007.png",
+      "section": "D · ch11",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch11_s008",
+      "file": "beat_ch11_s008.png",
+      "section": "D · ch11",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch11_s009",
+      "file": "beat_ch11_s009.png",
+      "section": "D · ch11",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch11_s010",
+      "file": "beat_ch11_s010.png",
+      "section": "D · ch11",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch12_s001",
+      "file": "beat_ch12_s001.png",
+      "section": "D · ch12",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch12-scene-storyA"
+    },
+    {
+      "stem": "beat_ch12_s002",
+      "file": "beat_ch12_s002.png",
+      "section": "D · ch12",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch12_s003",
+      "file": "beat_ch12_s003.png",
+      "section": "D · ch12",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch12_s004",
+      "file": "beat_ch12_s004.png",
+      "section": "D · ch12",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch12_s005",
+      "file": "beat_ch12_s005.png",
+      "section": "D · ch12",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch12-scene-storyB"
+    },
+    {
+      "stem": "beat_ch12_s006",
+      "file": "beat_ch12_s006.png",
+      "section": "D · ch12",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-ben-confrontation"
+    },
+    {
+      "stem": "beat_ch12_s007",
+      "file": "beat_ch12_s007.png",
+      "section": "D · ch12",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch12_s008",
+      "file": "beat_ch12_s008.png",
+      "section": "D · ch12",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch12_s009",
+      "file": "beat_ch12_s009.png",
+      "section": "D · ch12",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch12_s010",
+      "file": "beat_ch12_s010.png",
+      "section": "D · ch12",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch12-scene-completion"
+    },
+    {
+      "stem": "beat_ch13_s001",
+      "file": "beat_ch13_s001.png",
+      "section": "D · ch13",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch13_s002",
+      "file": "beat_ch13_s002.png",
+      "section": "D · ch13",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch13-scene-storyA"
+    },
+    {
+      "stem": "beat_ch13_s003",
+      "file": "beat_ch13_s003.png",
+      "section": "D · ch13",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-leo-guilty"
+    },
+    {
+      "stem": "beat_ch13_s004",
+      "file": "beat_ch13_s004.png",
+      "section": "D · ch13",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch13_s005",
+      "file": "beat_ch13_s005.png",
+      "section": "D · ch13",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch13-scene-storyB"
+    },
+    {
+      "stem": "beat_ch13_s006",
+      "file": "beat_ch13_s006.png",
+      "section": "D · ch13",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch13_s007",
+      "file": "beat_ch13_s007.png",
+      "section": "D · ch13",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch13_s008",
+      "file": "beat_ch13_s008.png",
+      "section": "D · ch13",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-leah-guilty"
+    },
+    {
+      "stem": "beat_ch13_s009",
+      "file": "beat_ch13_s009.png",
+      "section": "D · ch13",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch13_s010",
+      "file": "beat_ch13_s010.png",
+      "section": "D · ch13",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch13-scene-completion"
+    },
+    {
+      "stem": "beat_ch14_s001",
+      "file": "beat_ch14_s001.png",
+      "section": "D · ch14",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch14-scene-storyA"
+    },
+    {
+      "stem": "beat_ch14_s002",
+      "file": "beat_ch14_s002.png",
+      "section": "D · ch14",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch14_s003",
+      "file": "beat_ch14_s003.png",
+      "section": "D · ch14",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch14_s004",
+      "file": "beat_ch14_s004.png",
+      "section": "D · ch14",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch14_s005",
+      "file": "beat_ch14_s005.png",
+      "section": "D · ch14",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-char-ben-brave"
+    },
+    {
+      "stem": "beat_ch14_s006",
+      "file": "beat_ch14_s006.png",
+      "section": "D · ch14",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch14_s007",
+      "file": "beat_ch14_s007.png",
+      "section": "D · ch14",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch14_s008",
+      "file": "beat_ch14_s008.png",
+      "section": "D · ch14",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "beat_ch14_s009",
+      "file": "beat_ch14_s009.png",
+      "section": "D · ch14",
+      "class": "beat",
+      "maxPx": 1280,
+      "legacy": "g3-ch14-scene-completion"
+    },
+    {
+      "stem": "beat_ch14_s010",
+      "file": "beat_ch14_s010.png",
+      "section": "D · ch14",
+      "class": "beat",
+      "maxPx": 1280
+    },
+    {
+      "stem": "panel_ch10_script_mc",
+      "file": "panel_ch10_script_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch10_script_gap",
+      "file": "panel_ch10_script_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch10_fix",
+      "file": "panel_ch10_fix.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch11_script_mc",
+      "file": "panel_ch11_script_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch11_script_gap",
+      "file": "panel_ch11_script_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch11_fix",
+      "file": "panel_ch11_fix.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch01_script_mc",
+      "file": "panel_ch01_script_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch01_script_gap",
+      "file": "panel_ch01_script_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch01_fix",
+      "file": "panel_ch01_fix.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch02_script_mc",
+      "file": "panel_ch02_script_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch02_script_gap",
+      "file": "panel_ch02_script_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch02_fix",
+      "file": "panel_ch02_fix.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch03_script_mc",
+      "file": "panel_ch03_script_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch03_script_gap",
+      "file": "panel_ch03_script_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch03_fix",
+      "file": "panel_ch03_fix.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch04_script_mc",
+      "file": "panel_ch04_script_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch04_script_gap",
+      "file": "panel_ch04_script_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch04_fix",
+      "file": "panel_ch04_fix.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch05_script_mc",
+      "file": "panel_ch05_script_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch05_script_gap",
+      "file": "panel_ch05_script_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch05_fix",
+      "file": "panel_ch05_fix.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch06_script_mc",
+      "file": "panel_ch06_script_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch06_script_gap",
+      "file": "panel_ch06_script_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch06_fix",
+      "file": "panel_ch06_fix.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch07_script_mc",
+      "file": "panel_ch07_script_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch07_script_gap",
+      "file": "panel_ch07_script_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch07_fix",
+      "file": "panel_ch07_fix.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch08_script_mc",
+      "file": "panel_ch08_script_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch08_script_gap",
+      "file": "panel_ch08_script_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch08_fix",
+      "file": "panel_ch08_fix.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch09_script_mc",
+      "file": "panel_ch09_script_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch09_script_gap",
+      "file": "panel_ch09_script_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch09_fix",
+      "file": "panel_ch09_fix.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch12_truth_mc",
+      "file": "panel_ch12_truth_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch12_truth_gap",
+      "file": "panel_ch12_truth_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch13_regret_gap",
+      "file": "panel_ch13_regret_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch13_regret_mc",
+      "file": "panel_ch13_regret_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch14_promise_mc",
+      "file": "panel_ch14_promise_mc.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_ch14_promise_gap",
+      "file": "panel_ch14_promise_gap.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_recap_warm",
+      "file": "panel_recap_warm.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_recap_tense",
+      "file": "panel_recap_tense.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    },
+    {
+      "stem": "panel_recap_honest",
+      "file": "panel_recap_honest.png",
+      "section": "E · Task panels",
+      "class": "panel",
+      "maxPx": 1024
+    }
+  ]
+}
