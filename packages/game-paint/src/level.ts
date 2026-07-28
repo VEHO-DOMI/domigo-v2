@@ -20,6 +20,32 @@ export type EntityRole =
   | "platform.move" | "platform.fall" | "platform.swing"
   | "cage" | "powerup" | "door.trigger" | "guardian";
 
+/**
+ * Per-entity tuning. Open by design — every role brings its own knobs — but the
+ * fields THE LAWS read are typed here, so a misspelt `pricee` is a compile error
+ * instead of a level that ships with a door nobody can pay.
+ */
+export interface EntityParams {
+  /** door.trigger: which door this is — "exit" | "bonus" | "seal". */
+  kind?: string;
+  /** door.trigger: what the door COSTS in letters. PB-R1 · R3-2 — Klecks' price
+   *  was hardcoded at 10 in three places while p2 carries 8 reachable letters,
+   *  so the door could be read and never paid. The `door-price` law now proves
+   *  every price against the letters the child can actually hold on arrival. */
+  price?: number;
+  /** powerup: the ability this grant hands over. */
+  grants?: string;
+  /** powerup: this grant is REQUIRED later in the chapter. PB-R1 · R3-3 — the
+   *  phase exit LOCKS until it has been collected; there is no backtracking
+   *  between phases, so a missed essential is a dead run. */
+  essential?: boolean;
+  /** cage: the classmate inside (exactly one per chapter). */
+  classmate?: string;
+  /** spawned hidden, revealed by a link. */
+  hidden?: boolean;
+  [key: string]: unknown;
+}
+
 export interface EntitySpec {
   id: string;
   role: EntityRole;
@@ -27,7 +53,7 @@ export interface EntitySpec {
   c: number;
   r: number;
   tier: "E" | "M" | "S";
-  params?: Record<string, unknown>;
+  params?: EntityParams;
 }
 
 export interface LinkSpec {
@@ -321,6 +347,42 @@ export interface LawFailure {
   detail: string;
 }
 
+/** "Close enough to a reachable node to count" — the same tolerance every
+ *  reachability law uses, lifted out so the staged sweeps can share it. */
+const nearIn = (set: ReadonlySet<string>, c: number, r: number, dc: number, drUp: number, drDown: number): boolean => {
+  for (let dr = -drUp; dr <= drDown; dr++) {
+    for (let d = -dc; d <= dc; d++) if (set.has(`${c + d},${r + dr}`)) return true;
+  }
+  return false;
+};
+
+/** Every `*` cell of a phase. */
+const letterCellsOf = (rows: readonly string[]): Array<{ c: number; r: number }> => {
+  const out: Array<{ c: number; r: number }> = [];
+  for (const [r, row] of rows.entries()) {
+    for (let c = 0; c < row.length; c++) if (row[c] === "*") out.push({ c, r });
+  }
+  return out;
+};
+
+/**
+ * PB-R1 · R3-3 · THE ABILITY LADDER. What the child holds ENTERING each phase:
+ * the chapter's abilities minus every grant still ahead of them. PaintGame does
+ * the same subtraction at chapter mount (grantSet from `params.grants`) and then
+ * accumulates grants as they are taken, so a grant from an earlier phase is
+ * already in hand and a grant from THIS phase is not.
+ */
+const abilitiesEnteringPhase = (level: PaintLevel, phaseId: string): Ability[] => {
+  const order = allPhases(level).map((p) => p.id);
+  const from = order.indexOf(phaseId);
+  const stillAhead = new Set(
+    allPhases(level)
+      .filter((_, i) => i >= from)
+      .flatMap((p) => p.entities.filter((e) => e.role === "powerup").map((e) => String(e.params?.grants ?? ""))),
+  );
+  return level.abilities.filter((a) => !stillAhead.has(a));
+};
+
 /** The machine gate. Strict for real chapters; drafts skip the shape laws. */
 export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
   const failures: LawFailure[] = [];
@@ -402,12 +464,8 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
 
     const reach = reachableCells(ph.rows, level.abilities, ph.entities);
     const has = (c: number, r: number): boolean => reach.has(`${c},${r}`);
-    const nearReachable = (c: number, r: number, dc: number, drUp: number, drDown: number): boolean => {
-      for (let dr = -drUp; dr <= drDown; dr++) {
-        for (let d = -dc; d <= dc; d++) if (has(c + d, r + dr)) return true;
-      }
-      return false;
-    };
+    const nearReachable = (c: number, r: number, dc: number, drUp: number, drDown: number): boolean =>
+      nearIn(reach, c, r, dc, drUp, drDown);
     const exitCell = findGlyph(ph.rows, "X") ?? findGlyph(ph.rows, "B");
     if (exitCell && !nearReachable(exitCell.c, exitCell.r, 1, 1, 3)) {
       failures.push({ phase: ph.id, law: "exit-reachable", detail: `the exit at (${exitCell.c},${exitCell.r}) cannot be reached` });
@@ -422,6 +480,82 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     for (const e of ph.entities) {
       if ((e.role === "cage" || e.role === "powerup") && !nearReachable(e.c, e.r, 2, 2, 4)) {
         failures.push({ phase: ph.id, law: "entity-reachable", detail: `${e.role} ${e.id} at (${e.c},${e.r}) unreachable` });
+      }
+    }
+
+    const startCell = findGlyph(ph.rows, "S");
+    const letters = letterCellsOf(ph.rows);
+
+    // PB-R1 · R3-2 · THE LETTER ECONOMY LAW. A priced door may never ask for
+    // more letters than the child can be holding when they meet it. Klecks'
+    // door asked for 10 in a phase carrying 8 — readable, unpayable, and no
+    // backtracking to fetch the rest. Letters are counted PER PHASE because the
+    // sim counts them per phase: every phase mount builds a new Sim starting at
+    // zero, so p1's letters buy nothing in p2.
+    //
+    // "Before the door" = reachable without ever standing on the door's cell.
+    // For a door on open floor that cut removes almost nothing (the child can
+    // hop over one cell), and the law then reduces to „price ≤ the letters this
+    // phase actually offers" — which is the defect class Koki hit. Where a door
+    // genuinely gates a corridor, the cut bites harder. It can only ever make
+    // the law stricter, never more permissive.
+    for (const e of ph.entities) {
+      if (e.role !== "door.trigger") continue;
+      const price = e.params?.price;
+      if (e.params?.kind === "bonus" && price === undefined) {
+        failures.push({ phase: ph.id, law: "door-price", detail: `bonus door ${e.id} must declare a price (the card renders it — copy may never state a number the data does not)` });
+        continue;
+      }
+      if (price === undefined) continue;
+      if (typeof price !== "number" || !Number.isInteger(price) || price <= 0) {
+        failures.push({ phase: ph.id, law: "door-price", detail: `door ${e.id}: price must be a whole number ≥ 1 (is ${JSON.stringify(price)})` });
+        continue;
+      }
+      if (!startCell) continue; // parse already failed on a phase without S
+      const sealed = ph.rows.map((row, r) => (r === e.r ? row.slice(0, e.c) + "#" + row.slice(e.c + 1) : row));
+      const before = reachFrom(sealed, level.abilities, startCell, ph.entities);
+      const affordable = letters.filter((l) => nearIn(before, l.c, l.r, 1, 1, 3)).length;
+      if (price > affordable) {
+        failures.push({
+          phase: ph.id,
+          law: "door-price",
+          detail: `door ${e.id} at (${e.c},${e.r}) costs ${price} but only ${affordable} ${level.collectNounDe} can be collected before it — the price is unpayable`,
+        });
+      }
+    }
+
+    // PB-R1 · R3-3 · THE ESSENTIAL-GRANT LAW (the authoring half; the runtime
+    // half locks the exit in Sim.checkExit). A grant the chapter later REQUIRES
+    // must be collectable before this phase's exit, under the abilities the
+    // child can actually hold at that point — the staged double sweep: reach the
+    // grant WITHOUT it, then reach the exit WITH it. Fibel's fist is the case:
+    // the arena guardian can only be staggered by a deflected chalk piece, and
+    // deflecting needs the fist, so leaving p2 fistless was a dead run.
+    const essentials = ph.entities.filter((e) => e.role === "powerup" && e.params?.essential === true);
+    if (essentials.length > 0 && startCell) {
+      const entryAbilities = abilitiesEnteringPhase(level, ph.id);
+      const preGrant = reachFrom(ph.rows, entryAbilities, startCell, ph.entities);
+      for (const e of essentials) {
+        if (!nearIn(preGrant, e.c, e.r, 2, 2, 4)) {
+          failures.push({
+            phase: ph.id,
+            law: "essential-reachable",
+            detail: `essential grant ${e.id} at (${e.c},${e.r}) cannot be reached with the abilities the child holds entering ${ph.id} (${entryAbilities.join("+") || "none"})`,
+          });
+          continue;
+        }
+        if (!exitCell) continue;
+        const withGrant = [...new Set([...entryAbilities, String(e.params?.grants ?? "")])].filter((a): a is Ability =>
+          (["jump", "punch", "hang", "swing", "hover", "run"] as string[]).includes(a),
+        );
+        const afterGrant = reachFrom(ph.rows, withGrant, { c: e.c, r: e.r }, ph.entities);
+        if (!nearIn(afterGrant, exitCell.c, exitCell.r, 1, 1, 3)) {
+          failures.push({
+            phase: ph.id,
+            law: "essential-reachable",
+            detail: `from essential grant ${e.id} at (${e.c},${e.r}) the exit at (${exitCell.c},${exitCell.r}) is no longer reachable — collecting it must not strand the child`,
+          });
+        }
       }
     }
 

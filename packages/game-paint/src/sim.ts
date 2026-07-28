@@ -61,6 +61,12 @@ export interface SimCfg {
   phaseId: string;
   grantedAbilities: () => readonly string[];
   freedCageIds: () => readonly string[];
+  /** PB-R1 · R3-1: chapter state, like the two above — has the fist hint already
+   *  been taught in THIS chapter? The sim freezes the world for a card, so it may
+   *  only freeze for a card that will actually open; the shell owns the answer
+   *  because the shell owns the state that outlives a phase mount. Defaults to
+   *  „not yet" so a bare Sim (tests, tools) behaves as before. */
+  cageHintShown?: () => boolean;
   /** PB-F2: which jump-feel candidate to run (dev only; ships as `current`). */
   airModel?: AirModel;
 }
@@ -365,10 +371,19 @@ export class Sim {
   }
 
   /** PB-F3 · F2-8: fire ONCE per phase when the player comes within reach of a
-   *  cage the fist could open — the shell turns the first one into a hint card
-   *  and ignores the rest. Reach is the fist's own travel, not a guess. */
+   *  cage the fist could open — the shell turns the first one into a hint card.
+   *  Reach is the fist's own travel, not a guess.
+   *
+   *  PB-R1 · R3-1 — THE FREEZE PAIRING LAW. `cageHintFired` is per phase; the
+   *  shell's „already taught" flag is per CHAPTER. When they disagreed, this
+   *  method froze the world (`overlayOpen = true`) for a card the shell then
+   *  declined to open — and nothing ever un-froze it: from p3 on, ch01 stopped
+   *  dead on a stuck frame with no card on screen. The scopes no longer
+   *  disagree: the shell is asked BEFORE the world is frozen, so the sim can
+   *  only ever freeze for a card that will open. */
   private nearOpenableCage(events: SimEvent[]): void {
-    if (this.cageHintFired || !this.cfg.grantedAbilities().includes("punch")) return;
+    if (this.cageHintFired || this.cfg.cageHintShown?.() === true) return;
+    if (!this.cfg.grantedAbilities().includes("punch")) return;
     for (const e of this.world.entities) {
       if (e.role !== "cage" || e.redeemed || e.hidden) continue;
       const dx = Math.abs(fromSubs(e.x) - fromSubs(this.player.x));
@@ -418,6 +433,17 @@ export class Sim {
     // 18px: the screen-space clamp (right−36) can hold the body ~12px short
     // of a border-adjacent exit cell — the trigger must reach past the clamp
     if (Math.abs(px - cx) < 18 && Math.abs(py - cy) < 22) {
+      // PB-R1 · R3-3 · THE ESSENTIAL-PICKUP GATE. A grant the chapter later
+      // REQUIRES locks this phase's exit until it has been taken. There is no
+      // way back once a phase is left, so walking past Fibel's fist used to end
+      // the run in the arena: the guardian can only be staggered by a deflected
+      // chalk piece, and deflecting needs the fist. Checked FIRST — it is the
+      // one blocker whose answer lies back in the level rather than underfoot.
+      const missing = this.world.entities.find((e) => e.role === "powerup" && e.params.essential === true && !e.redeemed);
+      if (missing) {
+        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Du hast noch etwas Wichtiges vergessen!" }); this.gateToastCooldown = 120; }
+        return;
+      }
       // exit doors gate the X until their word is said (ch01 imperative law)
       const gate = this.phase.entities.find((e) => e.role === "door.trigger" && e.params?.kind === "exit");
       if (gate && !this.doorSolved.has(gate.id)) {

@@ -1293,10 +1293,20 @@ overshoot. Traces from the real engine on a flat floor, canonical 12-tick hold:
 
 Height and air-time are identical in every row: the vertical arc is canon and untouched.
 `airbrake` gives the child mid-air aim; `landdamp` only removes the extra steps after
-landing; `softsnap` is the one that restores a genuine short hop. **The default stays
-`current`** — which of these FEELS right is Fable's and Koki's call. Switch in dev with
+landing; `softsnap` is the one that restores a genuine short hop. ~~**The default stays
+`current`** — which of these FEELS right is Fable's and Koki's call.~~ Switch in dev with
 `?air=airbrake|landdamp|softsnap`; the pick is then a one-line change to
 `DEFAULT_AIR_MODEL`.
+
+**CORRECTION — PK-R1, 2026-07-28.** The struck sentence stopped being true the moment
+the feel verdict landed. The shipped default is **`airbrake`**, not `current`
+(`packages/game-paint/src/paint.ts:151`, `DEFAULT_AIR_MODEL` — Fable ruling 2026-07-27:
+release-to-aim, for the close-ledge precision Koki asked for; `landdamp` shelved unless
+a replay still shows skid). Koki's Replay 2 provisionally passed it (doc 39, „airbrake
+feel provisionally passed"). It survived four PRs because it reads as a PLAN, and plans
+are not re-read against the code — but a sentence about what ships is a claim about the
+code from the moment the decision lands. Same correction applied in doc 37's F2-3 row,
+which carried the identical stale claim in different words.
 
 ## Tapes now see the world
 
@@ -1372,3 +1382,157 @@ ask at play size; and one CORRECTION to the addendum — it asks for a collision
 Merle's standable cage, but entities are never grid-solid (`collide.ts` knows only
 glyphs). What the film shows is the platform at p2 r16 cols 58–62 that the cage stands
 on. Better to find that before a sheet is commissioned against a wrong premise.
+
+---
+
+# PK-R1 · THE CORRECTNESS PACKET (2026-07-28, Opus 5, `pb-r1-correctness`)
+
+Governing brief: `PLATFORM MASTER/SESSION-PROMPTS/PASSOVER_PB_R3_2026-07-28.md`, packet
+PK-R1; canon doc 39 (R3-1/2/3 + amendments). Boot gate verified before any work: the
+docs PR #240 (`pb-r3-design`) is on main at `0648185`.
+
+## R3-1 — the crash: it was never at the level resolution
+
+**The stuck frame had no exception behind it.** Both evidence frames (11.46.06 in p3,
+11.50.51 in the arena) show the hero frozen MID-AIR with no card on screen and a clean
+console — a logic deadlock, not a throw. The passover's mapped code path
+(`checkExit` → `handleSimEvents` → `handoff`, the `Overlay`'s `o.item!`) is intact; the
+root cause lies off it.
+
+**Root cause — the freeze pairing law, broken by a scope mismatch.** The cage hint's
+„already shown" flag exists twice, at two different lifetimes:
+
+| side | flag | lifetime |
+|---|---|---|
+| sim | `Sim.cageHintFired` (sim.ts) | per PHASE — a new Sim per phase mount |
+| shell | `PaintGame.cageHintShownRef` | per CHAPTER — a ref that outlives mounts |
+
+`Sim.nearOpenableCage` set `overlayOpen = true` and emitted `cageHint`; `PaintGame`
+returned early on every hint after the first, opening no card **and never calling
+`setOverlay(false)`**. `Sim.step` returns immediately while `overlayOpen`, so from the
+second cage-hint phase onward the world simply stopped — no card, no error, the last
+frame held forever. In ch01: punch arrives in p2, so hint #1 lands there; **p3 and the
+arena are the two phases that freeze — exactly the two Koki filmed.**
+
+**Why every gate was green.** `replayPhaseTape` dismissed EVERY hint unconditionally
+(tape.ts, „the same shell contract PaintGame implements" — it was not), and
+proof-tapes.test.ts replays each phase with a FRESH shell. No tape could ever see a
+chapter-scoped shell bug.
+
+**The fix, in three layers.**
+1. *Root, by construction:* `SimCfg.cageHintShown?: () => boolean` — the same accessor
+   pattern as `grantedAbilities`/`freedCageIds`. The sim asks the shell BEFORE it
+   freezes, so it can only ever freeze for a card that will open.
+2. *Belt and braces:* `PaintGame.onCageHint`'s early return now un-freezes. A shell that
+   declines a card always resumes the world.
+3. *The class guard:* the replay shell models the chapter-scoped rule verbatim, and a new
+   **chapter replay** (`replayChapterTapes` + `ChapterShellState`) drives every phase
+   through ONE shell.
+
+**Red before, green after** (the guard has teeth): with the replayer fixed and the sim
+NOT yet fixed, `the whole chapter replays through ONE shell` failed with
+„phase p4 never reached its exit after 5076 ticks" — the arena, on the pilot's own path
+to the exit, i.e. the 11.50.51 frame reproduced deterministically in CI. After the sim
+fix: green. Tamper (guard clause removed): red again, while all five per-phase tapes
+stayed green throughout — the blind spot, demonstrated.
+
+## R3-2 — the letter economy
+
+Measured first, with the real engine: **p2 carries 8 letters, all 8 reachable before
+Klecks' door at (56,19); the door asked 10.** Doors now carry `price` (typed in the new
+`EntityParams`, shape-checked in the zod mirror). The three hardcoded 10s are gone —
+`spendLetters`, the `can` check, and the card copy, which now renders the door's own
+price AND the bonus room's own letter count (counted from its grid; a card may not state
+a number the data does not — P-14). New law `door-price`: a price may never exceed the
+letters reachable before the door (the door's cell sealed), plus a bonus door must
+declare a price at all, plus the value must be a whole number ≥ 1. `p2-klecks` = **8**.
+
+## R3-3 — the essential-pickup gate
+
+Confirmed the soft-lock at the source: the guardian can be staggered ONLY by a deflected
+chalk piece (entities.ts), deflecting needs the fist, and p2's exit was reachable without
+it. `essential: true` on powerup params (Fibel has it). `Sim.checkExit` blocks the exit on
+any uncollected essential grant, FIRST among the gates — it is the one blocker whose
+answer lies back in the level — with the toast „Du hast noch etwas Wichtiges vergessen!".
+Authoring law `essential-reachable`: the ability-staged double sweep (reach the grant
+WITHOUT it, reach the exit WITH it), where the entry ability set is the chapter's
+abilities minus every grant still ahead — the same subtraction PaintGame does at mount.
+
+**The finding the packet did not expect.** The passover said „p2's pilot already collects
+the fist — verify, don't assume." It does not. p2's tape exited with `[jump, run]` while
+p3's tape DECLARED `[jump, run, punch]` at entry: **R3-3's soft-lock was written into the
+proof data itself**, invisible because each phase replayed alone. p2 re-recorded via the
+left ledge staircase (floor → r17 → r14 → r11 → the r9 shelf); it now collects Fibel and
+5 of 8 letters instead of 2. New permanent guard: *every phase enters with the abilities
+the chapter actually granted*, walking the exit chain and accumulating real `grantsPicked`.
+Two pilot attempts failed first — a run-up drives the hero UNDER a ledge and the jump hits
+its underside; standstill hops from beside a ledge clear it. Measured, not guessed.
+
+## W4 — the stale-docs correction
+
+doc 35's „The default stays `current`" struck + dated-corrected (the code ships
+`airbrake`, paint.ts:151). The sweep found the **same stale claim in doc 37's F2-3 row**
+in different words; corrected there too. Nothing else touched.
+
+## Gates (unpiped, real exit codes)
+
+`pnpm typecheck` 0 · `pnpm lint` 0 · `pnpm test` 0 (game-paint **278** tests, 16 files) ·
+`pnpm -F web build` 0 · `pnpm check:bundle` 0 (Phaser isolated, 310 KB gz) ·
+`check-game-tasks` 0 (49 tasks, all eight checks green).
+
+**Tamper checks, all red-then-restored:** the cage-hint guard clause · the runtime
+essential gate · the ability-ladder guard · plus four law candidates through
+`check-level-candidate.mjs` (price 10 → „costs 10 but only 8 … can be collected before
+it"; price `"8"` → type failure; bonus door with no price; Fibel placed unreachable →
+`essential-reachable` naming the entry set „jump+run"). The essential-gate test proves
+BOTH directions in one test, so it cannot go vacuously green.
+
+## Browser proof (dev server :3010, own instance)
+
+The pane runs `visibilityState: hidden`, so rAF never fires (P-52) — the loop was pumped
+by hand through `game.step()` so the scene queue drains (P-49), after the boot pump-dance
+(207/207 assets, 0 failed).
+
+- **The crash scenario, end to end:** p3 → hint #1 shown and dismissed → world resumes →
+  p3→boss handoff → standing ON cage6 in the arena with the hint spent: **no card,
+  `overlay: false`, and the hero still walks (x 504→540)**. That is the 11.50.51 spot.
+- **The finale chain:** guardian down → boss card → finale card („Die Tafel weint
+  Kreide-Tränen… Schreib ihr ein liebes…") → console card („Niemand hat je etwas Nettes
+  auf sie geschrieben…") → **done panel** („🎉 Kapitel 1 geschafft!"). No watchdog banner.
+- **Console: zero errors, zero warnings** (React DevTools info, HMR, Phaser banner only).
+- **R3-3 both ways:** on the p2 exit with the fist still on the shelf, the phase does NOT
+  change and the rendered Phaser text reads „Du hast noch etwas Wichtiges vergessen!";
+  with the fist taken and the door's word said, the same walk transitions **p2 → p3**.
+- **R3-2:** the card renders „**8** Buchstaben… Drinnen warten **12**" and „sammle erst
+  **8**!", against a HUD reading 0/8.
+
+## Honesty clause — what I did NOT verify
+
+- **The guardian's three knots were untied through the dev harness, not by real deflects.**
+  Blind-rhythm punching never connected; the harness's `solveTask` advanced the fight. The
+  fight's MECHANICS are proven by the p4 proof tape in CI (`guardianDown: true`), and what
+  the browser proves here is the REACT chain and the handoff — which is what R3-1 is about.
+  Traversal in three places used the harness's `warp` (cells); the exit triggers, the phase
+  handoffs and every card were real.
+- **The done panel's on-screen position is UNVERIFIED.** The pane reports a 0×0 viewport,
+  so no layout measurement from it is trustworthy. Worth a look in PK-R3 W5: in Koki's own
+  11.50.51 frame the canvas fills the window, and this panel renders BELOW it — a chapter
+  that ends in a frozen canvas with its „geschafft" line under the fold would read as a
+  hang even with the freeze fixed. Stated as an observation, not a diagnosis.
+- No feel/look verdicts: taste belongs to Fable's review and Koki's replay.
+- Reduced-motion, touch/coarse pointer and the bonus room were not exercised.
+
+## Findings filed, not acted on (outside the four work items)
+
+- **`reachFrom` blesses ring bridges without the `swing` ability** (level.ts: rings are
+  unconditional in the BFS while `Sim` gates them on `abilities.includes("swing")`). The
+  model is meant to UNDER-approximate; here it over-approximates. Consequence today: the
+  new staged sweeps are a no-op for grants that do not change the movement envelope —
+  only `hover` does — so `essential-reachable` is trivially satisfied for a `punch` grant.
+  It bites for movement grants and for placement errors, which is what it caught in tamper.
+- `essential-reachable`'s second sweep overlaps the existing `trap-pocket` law for the
+  full-ability case; they differ only in the staged ability set. Kept, as the passover
+  specifies the double sweep.
+- `scripts/record-paint-tape.mjs` still models the cage hint with its own inline shell
+  (fresh per recording, so it matches the default) rather than importing
+  `ChapterShellState`. Correct today; one more place the two shells could drift.

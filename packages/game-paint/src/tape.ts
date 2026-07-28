@@ -96,6 +96,19 @@ export interface ReplayResult {
   world: Required<Omit<TapeExpect, "exitTo">> & { exitTo: string | null };
 }
 
+// PB-R1 · R3-1 · THE CHAPTER SHELL. Some cards are once per CHAPTER, not once
+// per phase — PaintGame keeps that state in refs that outlive a phase mount.
+// A replay shell that forgets it cannot see a chapter-scoped bug, and for the
+// ch01 freeze it did not: every phase tape replayed with a FRESH shell, so the
+// second cage hint — the one PaintGame silently declines — never happened in
+// CI. This object is that memory, threaded through a whole chapter's tapes.
+export interface ChapterShellState {
+  /** PaintGame.cageHintShownRef: the fist hint teaches once, then never again. */
+  cageHintShown: boolean;
+}
+
+export const newChapterShell = (): ChapterShellState => ({ cageHintShown: false });
+
 /**
  * Replay a phase tape through the REAL Sim — the same shell contract
  * PaintGame implements: tasks auto-solve the moment they open (the tape
@@ -107,6 +120,7 @@ export const replayPhaseTape = (
   phaseId: string,
   tape: PhaseTape,
   freedCages: readonly string[] = [],
+  shell: ChapterShellState = newChapterShell(),
 ): ReplayResult => {
   const abilities: string[] = [...tape.abilities];
   const freed: string[] = [...freedCages];
@@ -115,6 +129,7 @@ export const replayPhaseTape = (
     phaseId,
     grantedAbilities: () => abilities,
     freedCageIds: () => freed,
+    cageHintShown: () => shell.cageHintShown,
   });
   let exited = false;
   let exitTo: string | null = null;
@@ -136,7 +151,14 @@ export const replayPhaseTape = (
       } else if (ev.type === "guardianDown") {
         sim.setOverlay(false); // the console card closes scene-side
       } else if (ev.type === "cageHint") {
-        sim.setOverlay(false); // PB-F3: the one-time cage hint, dismissed
+        // PB-F3: the one-time cage hint. PB-R1 · R3-1: „one-time" means once per
+        // CHAPTER — on every later hint PaintGame returns without opening a card,
+        // and therefore without dismissing one. Model that return EXACTLY: a
+        // shell that always dismisses cannot see the freeze it caused.
+        if (!shell.cageHintShown) {
+          shell.cageHintShown = true;
+          sim.setOverlay(false); // the hint card shown, then dismissed
+        }
       } else if (ev.type === "exit" && !exited) {
         exited = true;
         exitTo = ev.to;
@@ -158,6 +180,28 @@ export const replayPhaseTape = (
     tasksSolved,
   };
   return { exited, exitTo, ticksUsed: t, tasksSolved, grantsPicked, world };
+};
+
+/**
+ * PB-R1 · R3-1 · THE CHAPTER REPLAY: every phase tape of one chapter, in order,
+ * through ONE shell. Per-phase replays each start with a blank shell and so can
+ * only ever prove a phase playable IN ISOLATION; a child plays the chapter, and
+ * the once-per-chapter cards are exactly where the two diverge. This is the
+ * guard that turns a chapter-scoped shell bug red.
+ */
+export const replayChapterTapes = (
+  level: PaintLevel,
+  phases: Record<string, PhaseTape>,
+  order: readonly string[],
+): Array<{ phaseId: string; result: ReplayResult }> => {
+  const shell = newChapterShell();
+  const out: Array<{ phaseId: string; result: ReplayResult }> = [];
+  for (const phaseId of order) {
+    const tape = phases[phaseId];
+    if (!tape) continue;
+    out.push({ phaseId, result: replayPhaseTape(level, phaseId, tape, [], shell) });
+  }
+  return out;
 };
 
 /** The world assertions, as human-readable mismatches (empty = the run ended

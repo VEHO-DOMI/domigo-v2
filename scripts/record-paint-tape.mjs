@@ -144,11 +144,28 @@ const PILOTS = {
   // p2 „Das Klassenzimmer bei Nacht": the classroom floor is flat the whole
   // way; the obstacles are the nib spikes at c38-39 and the ink pool at
   // c50-53 (row 20 opens). Both are cleared by jumps from the floor.
+  //
+  // PB-R1 · R3-3: the pilot now CLIMBS TO FIBEL first. The old floor-level run
+  // walked straight past the fist and out of the phase — and p3's tape then
+  // declared `punch` at entry, an ability nobody in the proof set had earned.
+  // That gap was exactly R3-3's soft-lock, sitting inside the proof data where
+  // per-phase replays could never see it. The route up is the ledge staircase
+  // on the left: floor → r17 (c10-13) → r14 (c15-18) → r11 (c20-23) → the long
+  // r9 shelf (c24-34) where Fibel, cage3 and the seal door live.
   p2: {
     abilities: ["jump", "run"],
     program: [
-      ["walkTo", 20], ["settle"],
-      ["walkTo", 36], ["settle"],
+      ["walkTo", 7], ["settle"], // BESIDE the first ledge, never under it
+      ["jump", { dir: "right", hold: 16 }], ["settle"], // up onto the r17 ledge
+      ["walkTo", 12], ["settle"],
+      ["jump", { dir: "right", hold: 16 }], ["settle"], // up onto the r14 ledge
+      ["walkTo", 17], ["settle"],
+      ["jump", { dir: "right", hold: 16 }], ["settle"], // up onto the r11 ledge
+      ["walkTo", 22], ["settle"],
+      ["jump", { dir: "right", hold: 16 }], ["settle"], // up onto the r9 shelf
+      ["walkTo", 31], ["settle"], // FIBEL — the fist (essential grant)
+      ["walkTo", 34], ["settle"], // on past the seal door at the shelf's end
+      ["walkTo", 36], ["settle"], // step off; fall back to the classroom floor
       ["jump", { dir: "right", hold: 16 }], ["settle"], // over the nib spikes c38-39
       ["walkTo", 48], ["settle"],
       ["jump", { dir: "right", hold: 18 }], ["settle"], // over the ink pool c50-53

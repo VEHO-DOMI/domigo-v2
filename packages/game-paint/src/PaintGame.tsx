@@ -61,6 +61,8 @@ interface OverlayState {
   align: CardAlign;
   ceremony?: { skin: string; classmate?: string };
   bonusend?: { got: number; total: number; timeout: boolean };
+  /** bonuspay: what THIS door costs, read from its own params (PB-R1 · R3-2). */
+  price?: number;
 }
 
 /** The skin of the being a request is about (a hazard is about no being). */
@@ -73,6 +75,19 @@ const allPhasesOf = (level: PaintLevel): PhaseSpec[] => [
   ...(level.arena ? [level.arena] : []),
   ...(level.bonus ? [level.bonus] : []),
 ];
+
+/** PB-R1 · R3-2: what a door costs, from the DOOR — never a constant. The
+ *  `door-price` law guarantees every bonus door declares a payable price. */
+const priceOfDoor = (level: PaintLevel, id: string | null): number => {
+  if (id === null) return 0;
+  const e = allPhasesOf(level).flatMap((p) => p.entities).find((x) => x.id === id);
+  return Number(e?.params?.price ?? 0);
+};
+
+/** How many letters the bonus room actually holds — counted from its grid, so
+ *  the card can never promise a number the level does not contain (P-14). */
+const bonusLetterTotal = (level: PaintLevel): number =>
+  level.bonus ? level.bonus.rows.join("").split("*").length - 1 : 0;
 
 export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase }: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
@@ -210,6 +225,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         reducedMotion,
         grantedAbilities: () => abilitiesRef.current,
         freedCageIds: () => freedRef.current,
+        cageHintShown: () => cageHintShownRef.current,
         airModel,
         callbacks: {
           onExit: (next) => handoff(next),
@@ -217,7 +233,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           onTask: (req) => {
             const align = alignAwayFrom(idOfCtx(req.ctx));
             if (req.use === "bonuspay") {
-              setOverlay({ req, item: null, card: "bonuspay", attempts: 0, typed: "", align });
+              setOverlay({ req, item: null, card: "bonuspay", attempts: 0, typed: "", align, price: priceOfDoor(level, idOfCtx(req.ctx)) });
               return;
             }
             // the serve context: this phase, and the being that triggered it
@@ -232,7 +248,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           onCageHint: () => {
             // PB-F3 · F2-8: the first time the child stands next to a cage the
             // fist can open, say so — once per chapter, never again.
-            if (cageHintShownRef.current) return;
+            // PB-R1 · R3-1: the sim now asks before it freezes (cageHintShown),
+            // so this branch should be unreachable. It stays as the second half
+            // of the freeze pairing law: a shell that declines a card ALWAYS
+            // resumes the world. Declining silently is what froze ch01.
+            if (cageHintShownRef.current) { sceneRef.current?.setOverlay(false); return; }
             cageHintShownRef.current = true;
             setOverlay({ req: { use: "quickfire", ctx: { type: "hazard", hazard: "cagehint" } }, item: null, card: "cagehint", attempts: 0, typed: "", align: "center" });
           },
@@ -351,11 +371,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     // eslint-disable-next-line react-hooks/exhaustive-deps -- one game per mount
   }, []);
 
-  const payBonus = (): void => {
+  const payBonus = (price: number): void => {
     const scene = sceneRef.current;
     const game = gameRef.current;
     if (!scene || !game || !level.bonus) return;
-    if (!scene.spendLetters(10)) return;
+    if (!scene.spendLetters(price)) return;
     bonusReturnRef.current = phaseId;
     setOverlay(null);
     // P-49: enter the Kleckskammer through the same deferred swap as any handoff
@@ -389,7 +409,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       )}
       <div style={{ position: "relative" }}>
         <div ref={hostRef} style={{ borderRadius: 10, overflow: "hidden", boxShadow: "0 2px 14px rgba(30,20,10,0.25)" }} />
-        {overlay && <Overlay o={overlay} onResolve={resolveCorrect} onDismiss={dismissCard} onPay={payBonus} letters={letters.got} />}
+        {overlay && <Overlay o={overlay} onResolve={resolveCorrect} onDismiss={dismissCard} onPay={payBonus} letters={letters.got} bonusTotal={bonusLetterTotal(level)} />}
       </div>
       {done && (
         <div style={{ background: "#fdf7e6", border: "2px solid #e0a92a", borderRadius: 10, padding: 14, marginTop: 8, textAlign: "center" }}>
@@ -416,13 +436,14 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 // ── the overlay card ──────────────────────────────────────────────────────────
 
 function Overlay({
-  o, onResolve, onDismiss, onPay, letters,
+  o, onResolve, onDismiss, onPay, letters, bonusTotal,
 }: {
   o: OverlayState;
   onResolve: (o: OverlayState) => void;
   onDismiss: (o: OverlayState) => void;
-  onPay: () => void;
+  onPay: (price: number) => void;
   letters: number;
+  bonusTotal: number;
 }): React.ReactElement {
   const wrap: React.CSSProperties = { ...alignedWrap(o.align), background: "rgba(30, 24, 12, 0.35)" };
   const card: React.CSSProperties = {
@@ -452,13 +473,17 @@ function Overlay({
     );
   }
   if (o.card === "bonuspay") {
-    const can = letters >= 10;
+    // PB-R1 · R3-2: every number here is READ — the door's own price and the
+    // bonus room's own letter count. A card may never state a number the data
+    // does not: „10" against a phase carrying 8 is how Klecks became unpayable.
+    const price = o.price ?? 0;
+    const can = letters >= price;
     return (
       <div style={wrap}><div style={card}>
         <p style={{ fontSize: 26, margin: "0 0 6px" }}>🖤</p>
-        <p style={{ fontSize: 16, margin: "0 0 4px" }}><strong>Klecks</strong> grinst: „10 Buchstaben, und die Tür ist deine. Drinnen warten 12 — schaffst du alle, bevor die Tinte trocknet?"</p>
-        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Du hast {letters} ✨ — {can ? "bezahlen?" : "sammle erst 10!"}</p>
-        {can && <button style={btn} onClick={onPay}>10 zahlen & rein</button>}
+        <p style={{ fontSize: 16, margin: "0 0 4px" }}><strong>Klecks</strong> grinst: „{price} Buchstaben, und die Tür ist deine. Drinnen warten {bonusTotal} — schaffst du alle, bevor die Tinte trocknet?"</p>
+        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Du hast {letters} ✨ — {can ? "bezahlen?" : `sammle erst ${price}!`}</p>
+        {can && <button style={btn} onClick={() => onPay(price)}>{price} zahlen & rein</button>}
         <button style={{ ...btn, marginLeft: can ? 10 : 0 }} onClick={() => onDismiss(o)}>Später</button>
       </div></div>
     );

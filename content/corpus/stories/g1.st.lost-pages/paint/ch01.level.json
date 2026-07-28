@@ -146,7 +146,8 @@
           "r": 8,
           "tier": "E",
           "params": {
-            "grants": "punch"
+            "grants": "punch",
+            "essential": true
           }
         },
         {
@@ -213,7 +214,8 @@
           "r": 19,
           "tier": "E",
           "params": {
-            "kind": "bonus"
+            "kind": "bonus",
+            "price": 8
           }
         },
         {
