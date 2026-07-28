@@ -15,6 +15,9 @@
 //   6. LENGTH (PB-F1/F2-2) — one short clause + the ask, read-aloud-able by a
 //      six-year-old in about five seconds.
 //   7. TWINS (PB-F1) — no two cards present the same answerable surface.
+//   8. SPEAKER LAW (doc 41 §3, R3-11) — every card's `use` is raised by a
+//      visible asker that really stands in this chapter; a pool nobody can
+//      raise is dead content (and hazards raise nothing at all any more).
 // The grounding/register helpers mirror scripts/check-story-grounding.mjs
 // (same lexicon, same law) — kept compact and local on purpose.
 import fs from "node:fs";
@@ -162,9 +165,31 @@ function checkAgainstLevel(file, level, items) {
     }
   }
 
-  // the last-resort pool must exist: a hazard has no being to bind to
-  const freeQuickfire = items.filter((t) => t.use === "quickfire" && t.skins === undefined);
-  if (freeQuickfire.length === 0) fail(w, "coverage: no unbound quickfire card — spikes and ink would have nothing to serve");
+  // 8 · THE SPEAKER LAW (doc 41 §3, R3-11) — every card is asked by someone the
+  // child can SEE. This check used to say the opposite: it DEMANDED an unbound
+  // quickfire card "because spikes and ink would have nothing to serve". Spikes
+  // and ink no longer serve anything (sim.ts dropped the hazard TaskRequest and
+  // the ctx union has no `hazard` member), so the law inverts — a card sitting
+  // in a pool no visible asker can raise is dead content, and dead content is
+  // exactly where an un-reviewed card hides.
+  const raisedUses = new Set();
+  for (const ph of phases) {
+    for (const e of ph.entities ?? []) {
+      if (HOSTILE_ROLES.includes(e.role)) raisedUses.add(encounterUseFor(e.role));
+      else if (e.role === "guardian") { raisedUses.add("encounter"); raisedUses.add("boss"); raisedUses.add("finale"); }
+      else if (e.role === "cage") raisedUses.add("rescue");
+      else if (e.role === "door.trigger") raisedUses.add(String(e.params?.kind ?? "exit") === "bonus" ? "bonuspay" : "door");
+    }
+  }
+  // the shell's universal fallback: when a being's own pool runs dry it is
+  // answered from the unbound quickfire cards — still a seeable asker, so
+  // quickfire stays reachable wherever any being can raise a card at all.
+  if (raisedUses.size > 0) raisedUses.add("quickfire");
+  for (const t of items) {
+    if (!raisedUses.has(t.use)) {
+      fail(`${w}:${t.id}`, `speaker-law: use "${t.use}" is raised by no visible asker in this chapter — the card can only ever be served by nobody`);
+    }
+  }
 }
 
 /** 7 · NO TWO CARDS ARE THE SAME ITEM (PB-F1, from the blind-solve round). A

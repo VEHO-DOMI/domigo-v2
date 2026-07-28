@@ -5,7 +5,11 @@
 // array (single-tap-commit kinds fold atomically — no React stale closure).
 import React from "react";
 import { cardBtn } from "./CardShell.tsx";
-import { spellSlots, spellTrayDisabled } from "./machines.ts";
+import { scrollBehavior } from "./motion.ts";
+import {
+  WHEEL_ITEM_H, WHEEL_SETTLE_MS, spellSlots, spellTrayDisabled,
+  wheelIndexAt, wheelLockActions, wheelScrollFor, wheelStep,
+} from "./machines.ts";
 import type {
   ChoiceState, ChoiceAction, TypedState, TypedAction, SpellState, SpellAction,
   OrderState, OrderAction, OddState, OddAction, WheelState, WheelAction,
@@ -111,30 +115,187 @@ export function OddCard({ state, dispatch }: { state: OddState; dispatch: Dispat
   );
 }
 
+// ── R3-9 · DAS KREIDE-RAD — the scroll dial (doc 42 §2, re-skinned) ──────────
+// Mechanism mined from Keen's NumberWheel: the FULL value scale in one
+// scroll-snap column, five rows visible, a lens over the middle one, gradient
+// masks top and bottom, and the highlight painted by a NATIVE scroll listener
+// (React's synthetic onScroll was unreliable inside a game overlay, and a dial
+// spun by a thumb must not re-render React 25× a second).
+//
+// What Keen missed and this adds: AUTO-LOCK on settle. Releasing the dial IS
+// the answer — no „Einloggen" press. A programmatic move (▲▼) deliberately does
+// NOT auto-lock, so the fallback path stays a browse, with its own ✓ commit.
+//
+// STYLE_PAINT_V1 re-skin: slate face, chalk numerals, and the lens is Fibel's
+// magnifier rather than Keen's neon rectangle.
+const SLATE = "#2f3f4a";
+const CHALK = "#f6f2e8";
+const CHALK_DIM = "#93a3ad";
+
+/**
+ * The row height as RENDERED, never as declared — found in the browser during
+ * PK-R3a. The card springs in with `transform: scale(0.94)`, and a child can
+ * start dragging the dial while that is still true (page zoom does the same
+ * thing permanently). Rows then measure ~41 px while the code believes 44, and
+ * `round(scrollTop / 44)` drifts by a whole row once the scale is long enough —
+ * the dial would lock in a number the child never put under the lens. Measuring
+ * costs one layout read per scroll and removes the class.
+ */
+const rowHeightOf = (el: HTMLElement): number =>
+  (el.children[0] as HTMLElement | undefined)?.getBoundingClientRect().height || WHEEL_ITEM_H;
+
 export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Dispatch<WheelAction> }): React.ReactElement {
+  const listRef = React.useRef<HTMLDivElement | null>(null);
+  /** where the DIAL is (the DOM is the truth between renders) */
+  const idxRef = React.useRef(0);
+  /** did a HUMAN cause the scroll that is settling? only then do we lock. */
+  const userRef = React.useRef(false);
+  const settleRef = React.useRef<number | null>(null);
+  /** the scroll listener is bound once; it must always see the CURRENT machine
+   *  state and dispatch, so both ride in a ref that every render refreshes. */
+  const liveRef = React.useRef({ state, dispatch });
+  liveRef.current = { state, dispatch };
+  /** the imperative highlighter, exposed so every render can re-apply it */
+  const paintRef = React.useRef<(() => void) | null>(null);
+
   const n = state.values.length;
-  const prev = state.values[(state.index - 1 + n) % n];
-  const next = state.values[(state.index + 1) % n];
+
+  React.useEffect(() => {
+    const el = listRef.current;
+    if (!el) return;
+    const paint = (): void => {
+      const i = wheelIndexAt(el.scrollTop, n, rowHeightOf(el));
+      idxRef.current = i;
+      for (let k = 0; k < el.children.length; k++) {
+        const d = el.children[k] as HTMLElement;
+        d.style.fontSize = k === i ? "26px" : "17px";
+        d.style.color = k === i ? CHALK : CHALK_DIM;
+        d.style.opacity = k === i ? "1" : "0.72";
+      }
+    };
+    const onScroll = (): void => {
+      paint();
+      if (settleRef.current !== null) window.clearTimeout(settleRef.current);
+      settleRef.current = window.setTimeout(() => {
+        settleRef.current = null;
+        if (!userRef.current) return; // a ▲▼ step is a browse, not an answer
+        userRef.current = false;
+        const live = liveRef.current;
+        live.dispatch(wheelLockActions(live.state, idxRef.current));
+      }, WHEEL_SETTLE_MS);
+    };
+    const arm = (): void => { userRef.current = true; };
+    paintRef.current = paint;
+    el.scrollTop = wheelScrollFor(idxRef.current, rowHeightOf(el));
+    paint();
+    el.addEventListener("scroll", onScroll, { passive: true });
+    el.addEventListener("pointerdown", arm, { passive: true });
+    el.addEventListener("touchstart", arm, { passive: true });
+    el.addEventListener("wheel", arm, { passive: true });
+    return () => {
+      if (settleRef.current !== null) window.clearTimeout(settleRef.current);
+      el.removeEventListener("scroll", onScroll);
+      el.removeEventListener("pointerdown", arm);
+      el.removeEventListener("touchstart", arm);
+      el.removeEventListener("wheel", arm);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- one dial per card
+  }, []);
+
+  // React owns the rows' declared styles; the LENS highlight is imperative, so
+  // any re-render restores the flat JSX styles and the dial goes blank under the
+  // magnifier. That happens on a real beat — a wrong lock escalates the hint
+  // ladder, which re-renders — so the highlight is re-applied after every render.
+  // (Found in the browser during PK-R3a, alongside the row-height defect.)
+  React.useEffect(() => { paintRef.current?.(); });
+
+  /** Move the dial without answering (the ▲▼ fallback). */
+  const step = (delta: number): void => {
+    const el = listRef.current;
+    if (!el) return;
+    userRef.current = false;
+    el.scrollTo({ top: wheelScrollFor(wheelStep(idxRef.current, delta, n), rowHeightOf(el)), behavior: scrollBehavior() });
+  };
+  /** Tapping a row brings it under the lens AND answers with it — one tap, the
+   *  same commitment a release carries. */
+  const pickRow = (i: number): void => {
+    const el = listRef.current;
+    if (!el) return;
+    userRef.current = true;
+    el.scrollTo({ top: wheelScrollFor(i, rowHeightOf(el)), behavior: scrollBehavior() });
+  };
+  const lockNow = (): void => dispatch(wheelLockActions(liveRef.current.state, idxRef.current));
+
   return (
-    <div style={{ ...col, alignItems: "center", gap: 4 }}>
+    <div style={{ ...col, alignItems: "center", gap: 6 }}>
       {/* the slate the being carries — F2-22: the datum was only ever named in
           the German line and never drawn, so the wheel could not be solved by
           looking. It is now ON the card, big enough to read across the room. */}
       <div style={{
-        background: "#2f3f4a", color: "#f6f2e8", borderRadius: 8, border: "2px solid #8a7a58",
-        padding: "4px 18px", fontSize: 26, fontWeight: 800, letterSpacing: 1, marginBottom: 4,
+        background: SLATE, color: CHALK, borderRadius: 8, border: "2px solid #8a7a58",
+        padding: "4px 18px", fontSize: 26, fontWeight: 800, letterSpacing: 1,
+        fontFamily: "var(--font-display, inherit)",
       }}>{state.shown}</div>
-      <button style={{ ...cardBtn, fontSize: 20, border: "none", background: "transparent" }} onClick={() => dispatch({ rotate: -1 })}>▲</button>
-      <div style={{ color: "#c3b892", fontSize: 14 }}>{prev}</div>
-      <button style={{ ...cardBtn, fontSize: 22, fontWeight: 800, padding: "10px 28px" }} onClick={() => dispatch({ lock: true })}>
-        {state.values[state.index]}
-      </button>
-      <div style={{ color: "#c3b892", fontSize: 14 }}>{next}</div>
-      <button style={{ ...cardBtn, fontSize: 20, border: "none", background: "transparent" }} onClick={() => dispatch({ rotate: 1 })}>▼</button>
-      <div style={{ fontSize: 12, color: "#8a7a58" }}>dreh & tipp die Zahl an</div>
+
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <button aria-label="eins hoch" style={dialBtn} onClick={() => step(-1)}>▲</button>
+          <button aria-label="eins runter" style={dialBtn} onClick={() => step(1)}>▼</button>
+        </div>
+
+        <div style={{
+          position: "relative", height: WHEEL_ITEM_H * 5, width: 190, overflow: "hidden",
+          borderRadius: 12, background: SLATE, border: "3px solid #8a7a58",
+          boxShadow: "inset 0 2px 10px rgba(0,0,0,0.35)",
+        }}>
+          <div
+            ref={listRef}
+            data-testid="chalk-wheel"
+            role="listbox"
+            aria-label="Zahlenrad"
+            style={{
+              height: "100%", overflowY: "scroll", scrollSnapType: "y mandatory",
+              paddingTop: WHEEL_ITEM_H * 2, paddingBottom: WHEEL_ITEM_H * 2,
+              scrollbarWidth: "none", touchAction: "pan-y",
+            }}
+          >
+            {state.values.map((v, i) => (
+              <div
+                key={v}
+                role="option"
+                aria-selected={state.values[state.index] === v}
+                onClick={() => pickRow(i)}
+                style={{
+                  height: WHEEL_ITEM_H, display: "flex", alignItems: "center", justifyContent: "center",
+                  scrollSnapAlign: "center", cursor: "pointer", color: CHALK_DIM, fontSize: 17,
+                  fontWeight: 700, fontFamily: "var(--font-display, inherit)", letterSpacing: 0.5,
+                  transition: "font-size 120ms, color 120ms, opacity 120ms",
+                }}
+              >
+                {v}
+              </div>
+            ))}
+          </div>
+          {/* Fibel's magnifier: a chalk ring drawn over the middle row */}
+          <div style={{
+            position: "absolute", top: WHEEL_ITEM_H * 2, left: 10, right: 10, height: WHEEL_ITEM_H,
+            border: `2px solid ${CHALK}`, borderRadius: 22, pointerEvents: "none", opacity: 0.85,
+          }} />
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: WHEEL_ITEM_H * 1.6, background: `linear-gradient(${SLATE}, transparent)`, pointerEvents: "none" }} />
+          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: WHEEL_ITEM_H * 1.6, background: `linear-gradient(transparent, ${SLATE})`, pointerEvents: "none" }} />
+        </div>
+      </div>
+
+      {/* the fallback commit: the ▲▼ path browses, this answers */}
+      <button style={{ ...cardBtn, fontSize: 14, padding: "6px 14px" }} onClick={lockNow}>✓ Das ist es!</button>
+      <div style={{ fontSize: 12, color: "#8a7a58", fontFamily: "var(--font-label, inherit)" }}>zieh am Rad — oder tipp eine Zahl an</div>
     </div>
   );
 }
+
+const dialBtn: React.CSSProperties = {
+  ...cardBtn, fontSize: 15, padding: "2px 8px", lineHeight: 1.1, minWidth: 32,
+};
 
 export function MistakeCard({ state, dispatch }: { state: MistakeState; dispatch: Dispatch<MistakeAction> }): React.ReactElement {
   if (state.phase === "fix") {

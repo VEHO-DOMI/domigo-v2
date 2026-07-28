@@ -1681,3 +1681,190 @@ with the font 7 → 6 px. Re-shot: all four words inside the board.
 - ch01's wordbank has no shape-plausible distractor for „board" (see R3-12 above).
 - The crusher's `recover` state has no pose cell and falls to the idle bob while the bag
   climbs back; harmless, and a candidate for the ch01 rig retrofit wave.
+
+---
+
+# PK-R3a · OVERLAYS, WHEEL & THE SPEAKER LAW (2026-07-28, Opus 5, `pb-r3a-overlays`)
+
+Boot gate verified: PK-R2 merged as #242 (`0149bc9`), doc-41 §8 banked by the silence
+rule, working tree clean on main. Governing canon: doc 41 §3 + doc 42 §§1–3, §5.
+
+**THE SPLIT WAS TAKEN.** The passover's own rule — „if this packet outgrows one
+reviewable PR, split at the marked seam: R3a = W1–W3, R3b = W4–W6, two branches,
+serial, R3a first" — applies. W1 alone is a whole presentation layer; W4 is a new task
+kind plus a re-curation of every ch01 field card behind a blind-solve gate. This PR is
+**R3a = W1 · W2 · W3**. R3b (the colour mechanic, the re-curation, W4b's riders,
+Regel-Seiten/HUD/chapter-end, contextualization) is untouched and boots next.
+
+## R3-11 — the speaker law: the spikes were asking English questions
+
+Doc 41 §3 says a task spawns only from an asker the child can SEE. The hole was
+structural, so the fix is: **the `hazard` member is GONE from the `TaskRequest` ctx
+union.** There is no longer a type a spike could be served through. What replaced it:
+
+- `console` — a first-class ctx for the Namens-Konsole. It was always a visible asker,
+  only ever mis-filed as `hazard:"console"` (doc 41 §3's own words).
+- `ceremony` — the shell's own beats (`goal` · `grant` · `cagehint` · `bonus`). A
+  ceremony carries no task and never touches a card pool; it is a panel, not a question.
+
+Hazard CONTACT is now what doc 41 §3 says it is: knockback (the no-death setback) plus,
+for ink, the checkpoint return — applied **on contact** instead of waiting for a card
+that no longer exists. `pendingPoolRespawn` is deleted with the card that needed it.
+R3-18 (PK-R4) gives this beat its visual grammar; the mechanic lands with the law.
+
+**The serve guard, built so it cannot deadlock.** `ask()` freezes the world only when
+`canServe(ctx)` is true; otherwise the request is PARKED in `pendingAsk` and the world
+keeps running. `servePending()` delivers it the moment the asker enters the view, and
+drops it if that asker leaves the phase. The freeze happens at DELIVERY, never at
+request — which is precisely the pairing that froze ch01 in PK-R1 (a sim that froze for
+a card the shell then declined). Note honestly: every ch01 card-raiser fires on CONTACT,
+and the screen clamp boxes the player inside the view, so a being touching the child is
+on screen by construction. The parking branch is a WALL for asker classes still to come,
+not a live branch today — `speaker.test.ts` says so in a comment rather than implying
+coverage it does not have.
+
+**The authoring gate INVERTED.** `check-game-tasks` used to *demand* an unbound quickfire
+card, with the reason written into the failure text: „spikes and ink would have nothing
+to serve". Spikes and ink now serve nothing at all, so the law is the other way round:
+every card's `use` must be raised by a visible asker that really stands in this chapter.
+A pool nobody can raise is dead content, and dead content is where an un-reviewed card
+hides.
+
+**Proof data moved, which is the point.** Re-recording p2/p3 changed exactly one number:
+p3's `tasksSolved` 3 → **2**. That missing task is the hazard card the law removed —
+the pilot used to be asked an English question by a spike strip, and now is not.
+
+## R3-9/R3-10 — the dial, and the line that said everything twice
+
+The wheel is Keen's scroll-dial (doc 42 §2) re-skinned to slate and chalk, with Fibel's
+magnifier as the lens: the full value scale in one scroll-snap column, five rows, the
+highlight painted by a native scroll listener. `wheelMachine` is untouched — the skin
+still answers with `act(rotate)` + `act(lock)`, folded atomically so the DOM's index and
+the machine's index meet in one dispatch.
+
+**Auto-lock is the addition doc 42 §2 asks for**, bound to the DRAG: a settled release
+IS the answer, no „Einloggen" press. A ▲▼ step is deliberately a BROWSE (no auto-lock)
+and keeps its own „✓ Das ist es!" commit — the accessible path stays a path.
+
+R3-10: a spell card's ladder now stops at the first letter. Its level-2 rung drew
+„P _ _ · 3 Buchstaben" — a second row of underscores three centimetres under the card's
+own slot row, leaving a six-year-old to work out that the two rows are one word. The
+rule lives in `gapLevelFor` beside the ladder it caps, so CardShell and its test read the
+same rule (a test that re-states a rule proves only that it can copy).
+
+## R3-8 — the overlays became game UI
+
+Mined and re-skinned per doc 42 §1/§3/§5: the ink-wash veil, the ink bloom that wipes the
+world, the card springing in a beat later (Lost-Pages' choreography), the verdict beat
+before the world comes back, the chalk-erase countdown on quickfire cards, the GOAL-CARD
+boot ceremony over a frozen world, and the three loaded faces into every card surface.
+
+**The battle framing is Keen's, verbatim** (1.18× over 160 ms toward the asker) and pure:
+`focusView` in camera.ts takes scroll, asker, progress and the world box, and returns
+where to look and how close. It never touches `camX/camY`, so the tapes and the headless
+replayer see exactly the world they always did. `t = 0` reproduces the plain follow shot
+exactly, so there is one code path, not two.
+
+The freeze and the lean are ONE effect in PaintGame: a card can never freeze without
+focusing or focus without freezing. A scene born under an open card (the boot ceremony,
+or a phase remounted while a panel is up) asserts the freeze at the moment it exists.
+
+## Browser proof (dev server :3000, own instance, 0 console errors)
+
+| what | measured |
+|---|---|
+| boot ceremony freezes before the first tick | `overlay: true` on a scene that has never stepped |
+| „Los geht's!" resumes + fades the world up | `overlay: false`, `.pb-veil` gone, `.pb-world-in` on the canvas |
+| the lean-in | zoom **3 → 3.113 → 3.282 → 3.54** over ~10 frames (≈167 ms ≈ FOCUS_MS), and symmetrically back to 3 |
+| end to end through React | the pencil encounter reached **3.54** = RENDER_SCALE × 1.18 |
+| veil · bloom · card | all three in the DOM on card open, card docked away from the being |
+| verdict beat | `.pb-verdict` with `pb-verdict-in`, „✓", **`frozen: true`** — the world is still held while it plays |
+| quickfire chalk clock | ring rendered on the wheel card; the card closed itself on expiry with no penalty |
+| wheel AUTO-LOCK | dragged to „thirteen", **`commitPressed: false`**, verdict fired — the dial answered on settle |
+| a WRONG auto-lock | card stayed open, hint ladder escalated (💡), world still frozen |
+| R3-10 | after two wrong spell attempts: „P…" only — no second slot row, no „3 Buchstaben" |
+
+**Two defects the browser found, both fixed here:**
+
+1. **The dial measured the wrong row.** Rows render at **41.36 px**, not the declared 44:
+   the card springs in at `scale(0.94)`, and a child can drag while that is still true
+   (page zoom does it permanently). `round(scrollTop / 44)` drifts a whole row once the
+   scale is long enough — the dial would lock a number the child never put under the
+   lens. The skin now MEASURES the row (`rowHeightOf`); `machines.test.ts` proves the
+   drift and the fix side by side at 20 values.
+2. **A re-render flattened the lens.** The highlight is imperative; React restores the
+   declared styles on any re-render — and a wrong lock re-renders (the ladder escalates).
+   The highlight is now re-applied after every render.
+
+**Harness lessons banked** (both cost real time here):
+- The pane never dispatches **scroll events** — `visibilityState` stays `hidden` even
+  after `tabs_select`. The auto-lock proof therefore supplies the one event the harness
+  withholds (`dispatchEvent(new Event('scroll'))`) and drives the real handler, real
+  `scrollTop`, real settle timer, real machine. Stated here rather than implied.
+- **`getComputedStyle` lies in the pane for transitioned properties.** The lens row read
+  `17px` computed while its inline style said `26px` — the CSS transition never advances
+  without a paint. Read the INLINE style; screenshots (which force a paint) agree with it.
+- Phaser's `loop.step(t)` needs a MONOTONIC t across tool calls: a fresh
+  `performance.now()` after a long pumped run is BEHIND the loop's internal clock and
+  every subsequent step is a no-op. Keep the pump clock on `window`.
+
+## Gates
+
+| gate | result |
+|---|---|
+| `pnpm typecheck` | all packages Done |
+| `pnpm lint` | Done |
+| `pnpm test` | **312 passed** in game-paint (18 files), whole monorepo exit 0 |
+| `pnpm -F web build` | exit 0 |
+| `pnpm check:bundle` | OK — Phaser isolated, 310 KB gz |
+| `node scripts/check-game-tasks.mjs` | OK — 49 tasks, all eight layers green |
+| tapes | p2 + p3 re-recorded (the hazard mechanic changed), all five phases green |
+
+**Tampers (each seen RED, then restored GREEN):**
+- speaker law, authoring: a card moved into a pool no asker raises →
+  `speaker-law: use "bonus" is raised by no visible asker in this chapter`.
+- speaker law, runtime: `onScreen()` forced to `true` → 3 of 7 `speaker.test.ts` cases red.
+- end-states law: one class dropped from the reduced-motion kill list →
+  `not in the reduced-motion kill list: pb-world-in`.
+
+## Honesty clause — what I did NOT verify
+
+- **The reduced-motion RUNTIME pass was not exercised.** This harness cannot emulate
+  `prefers-reduced-motion: reduce` (it reports `no-preference` and offers no override).
+  It is covered instead by a machine check that parses the stylesheet and proves every
+  animated class is killed and nothing stale is (tamper-proven above), plus the JS half
+  reading `matchMedia` at call time. A real reduced-motion run is a checklist item for
+  Koki: system setting on, open a card — the card must look FINISHED, and a quickfire
+  card must show a full chalk line and never close itself.
+- **The FEEL of all of this is his call**, not a measurement: whether the 160 ms lean
+  reads as attention or as a lurch, whether the ink bloom is too much on every single
+  card, whether the verdict beat is a nod or a delay.
+- **The 20-second quickfire clock is the one deliberate feel decision in this packet and
+  the most likely to be overruled.** A ring that counts down to nothing would be a lie,
+  so it has a real clock; running out is „Später" (no penalty, no redeem, world resumes).
+  It bit me during the playtest — the card closed while I was reading it. One constant:
+  `QUICKFIRE_MS` in `cards/overlay-css.ts`. Raise it, or say the word and the ring comes
+  off the quickfire cards entirely.
+- **I did not replay a full chapter end to end.** p1's encounter chain, p2's swarm/wheel
+  and the spell ladder were driven by hand; the arena and the finale were not re-driven
+  in this packet (PK-R1 and PK-R2 proved those chains, and nothing here touches them —
+  but „nothing here touches them" is an argument, not a run).
+- The goal card fires once per CHAPTER MOUNT, which means a phase reload via the teacher
+  `?phase=` door shows it again. That is correct for a boot ceremony and worth knowing.
+
+## Findings filed, not acted on
+
+- **`applyKnockback`'s return value is discarded at the entity-encounter site**
+  (`sim.ts`, `onEntityEvent` case `"encounter"`): the function is pure, so creatures have
+  never actually knocked the child back — only the iframes landed. My hazard branch
+  assigns the result, because doc 41 §3 specifies knockback for hazard contact; I did NOT
+  change the entity site, because doing so alters FEEL and would force another tape
+  re-record, and neither is in this packet's brief. It is a one-line fix whenever the
+  feel call is made.
+- **`ch01.level.json`'s `hintsDe[2]` reads „Kreuzige Schulsachen? …"** — „kreuzige"
+  means *crucify*. Almost certainly a typo for „Kreuzende" (crossing). No surface renders
+  `hintsDe` today, and the goal card deliberately follows doc 42 §3's grammar (Auftrag →
+  name → Warum → legend), which does not include hints — so nothing puts this word in
+  front of a six-year-old. It must be fixed before any surface does.
+- The W4b riders (`renderTaskText` leaking a memory card's hidden pairs; ch01's missing
+  shape-plausible distractor for „board") are R3b's, untouched here.

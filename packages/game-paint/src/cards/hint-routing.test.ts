@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { GameTaskV2 } from "@domigo/content-schema";
-import { gapSlots, renderGapHint } from "./hint.ts";
+import { gapLevelFor, gapSlots, renderGapHint } from "./hint.ts";
 import { initRoute, nextTask, type RouteState } from "./routing.ts";
 
 describe("hint ladder (F18)", () => {
@@ -73,7 +73,10 @@ describe("routing v3 (deterministic playlists, bound to the world)", () => {
     expect(r.task!.id).toBe("free1");
   });
 
-  it("a hazard (no being) draws from the unbound pool only", () => {
+  // R3-11 · the speaker law: a hazard no longer serves anything at all, so the
+  // skin-less serve is now only the shell's own fallback path (a ceremony, or a
+  // request whose being carries no skin) — it still resolves to the unbound pool.
+  it("a skin-less serve draws from the unbound pool only", () => {
     const r = nextTask(bound, "encounter", { phase: "p1" }, initRoute());
     expect(r.task!.id).toBe("free1");
   });
@@ -98,5 +101,26 @@ describe("routing v3 (deterministic playlists, bound to the world)", () => {
   it("an empty scope resolves to null rather than serving a stranger's card", () => {
     const only = [mk("p3only", "encounter", "choice", ["ranzen"], ["p3"])];
     expect(nextTask(only, "encounter", { phase: "p4", skin: "tafel" }, initRoute()).task).toBeNull();
+  });
+});
+
+// ── R3-10 · the spelling card's duplicated line ──────────────────────────────
+// gapLevelFor is the RULE CardShell calls, imported here rather than restated —
+// a test that re-writes the rule proves only that it can copy.
+describe("R3-10 · a spell card's ladder never re-draws its own letter row", () => {
+  it("a typed card keeps both rungs (it has no slots of its own)", () => {
+    expect(renderGapHint("pen", gapLevelFor("typed", 1))).toBe("P…");
+    expect(renderGapHint("pen", gapLevelFor("typed", 2))).toBe("P _ _  ·  3 Buchstaben");
+  });
+
+  it("a spell card stops at the first letter — its own slots already show the shape", () => {
+    expect(renderGapHint("pen", gapLevelFor("spell", 1))).toBe("P…");
+    expect(renderGapHint("pen", gapLevelFor("spell", 2))).toBe("P…");
+    expect(renderGapHint("pen", gapLevelFor("spell", 5))).toBe("P…");
+  });
+
+  it("level 0 is still silent for every kind", () => {
+    expect(renderGapHint("pen", gapLevelFor("spell", 0))).toBe("");
+    expect(renderGapHint("pen", gapLevelFor("typed", 0))).toBe("");
   });
 });

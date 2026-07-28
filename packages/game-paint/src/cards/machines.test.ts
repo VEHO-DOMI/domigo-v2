@@ -6,6 +6,7 @@ import {
   MACHINES, autoSolve, normText, spellSlots, spellTrayDisabled,
   choiceMachine, typedMachine, spellMachine, orderMachine,
   oddMachine, wheelMachine, mistakeMachine, memoryMachine,
+  WHEEL_ITEM_H, wheelIndexAt, wheelLockActions, wheelScrollFor, wheelStep,
 } from "./machines.ts";
 
 const exemplars = GameTasksFileV2.parse(
@@ -126,6 +127,83 @@ describe("wheel", () => {
     let w = wheelMachine.init(t);
     w = wheelMachine.act(w, { rotate: wrongIdx - w.index });
     expect(wheelMachine.grade(wheelMachine.act(w, { lock: true }))).toBe("wrong");
+  });
+
+  // ── R3-9 · the scroll-dial's view logic (the whole DOM↔machine contract) ──
+  describe("scroll-dial view logic (R3-9)", () => {
+    const n = t.values.length;
+
+    it("maps a scroll position to the value under the lens, rounding to the row", () => {
+      expect(wheelIndexAt(0, n)).toBe(0);
+      expect(wheelIndexAt(WHEEL_ITEM_H * 2, n)).toBe(2);
+      expect(wheelIndexAt(WHEEL_ITEM_H * 2 + 21, n)).toBe(2); // still that row
+      expect(wheelIndexAt(WHEEL_ITEM_H * 2 + 23, n)).toBe(3); // past the halfway
+    });
+
+    it("clamps an overscroll to the ends of the scale — never off the ring", () => {
+      expect(wheelIndexAt(-400, n)).toBe(0);
+      expect(wheelIndexAt(WHEEL_ITEM_H * (n + 9), n)).toBe(n - 1);
+    });
+
+    it("round-trips index → scrollTop → index", () => {
+      for (let i = 0; i < n; i++) expect(wheelIndexAt(wheelScrollFor(i), n)).toBe(i);
+    });
+
+    // FOUND IN THE BROWSER (PK-R3a): the card springs in at `scale(0.94)`, so
+    // while that transform is live the rows measure ~41.4 px, not the declared
+    // 44. With the declared height hard-coded, `round(scrollTop / 44)` drifts by
+    // a whole row once the scale is long enough — the dial would lock a number
+    // the child never put under the lens. The skin now MEASURES the row; these
+    // cases prove the helpers are honest at any rendered height.
+    it("resolves the right row at a SCALED render height, all the way down a long scale", () => {
+      const scaled = 44 * 0.94; // the spring-in transform, mid-flight
+      for (let i = 0; i < 20; i++) {
+        expect(wheelIndexAt(wheelScrollFor(i, scaled), 20, scaled)).toBe(i);
+      }
+    });
+
+    it("the hard-coded height is what drifts — the measured one does not", () => {
+      const scaled = 44 * 0.94;
+      // row 19 sits at 786 px when rendered scaled; read against the DECLARED
+      // 44 px that is row 18 — one whole row of silent wrongness.
+      expect(wheelIndexAt(wheelScrollFor(19, scaled), 20)).toBe(18);
+      expect(wheelIndexAt(wheelScrollFor(19, scaled), 20, scaled)).toBe(19);
+    });
+
+    it("the ▲▼ step stops at the ends (a column has a top and a bottom)", () => {
+      expect(wheelStep(0, -1, n)).toBe(0);
+      expect(wheelStep(n - 1, 1, n)).toBe(n - 1);
+      expect(wheelStep(2, 1, n)).toBe(3);
+    });
+
+    it("locking at the dial's index grades the SAME as the machine's own solve", () => {
+      const s = wheelMachine.init(t);
+      const target = s.values.indexOf(s.answer);
+      let after = s;
+      for (const a of wheelLockActions(s, target)) after = wheelMachine.act(after, a);
+      expect(wheelMachine.grade(after)).toBe("correct");
+    });
+
+    it("locking at any OTHER row grades wrong — the dial cannot flatter the child", () => {
+      const s = wheelMachine.init(t);
+      const target = s.values.indexOf(s.answer);
+      for (let i = 0; i < n; i++) {
+        if (i === target) continue;
+        let after = s;
+        for (const a of wheelLockActions(s, i)) after = wheelMachine.act(after, a);
+        expect(wheelMachine.grade(after)).toBe("wrong");
+      }
+    });
+
+    it("catches the machine up from a stale index (a wrong attempt reset it to 0)", () => {
+      // the DOM keeps the dial where the child left it; the machine restarts at
+      // 0 after a wrong answer. `rotate` is relative, so the two must still meet.
+      const fresh = wheelMachine.init(t); // index 0
+      const target = fresh.values.indexOf(fresh.answer);
+      let after = fresh;
+      for (const a of wheelLockActions(fresh, target)) after = wheelMachine.act(after, a);
+      expect(after.values[after.index]).toBe(fresh.answer);
+    });
   });
 });
 

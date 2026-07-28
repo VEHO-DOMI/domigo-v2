@@ -32,8 +32,22 @@ import { type Ability, type PaintLevel, type PhaseSpec, allPhases, findGlyph } f
 
 /** Every world-triggered card carries the SKIN of the being that triggered it
  *  (PB-F1): the router binds the served card to that being, so a card can never
- *  again answer a creature that is not on screen. A hazard (spikes, ink) has no
- *  being, and therefore no skin — it draws from the unbound pool. */
+ *  again answer a creature that is not on screen.
+ *
+ *  PK-R3a · R3-11 — THE SPEAKER LAW (doc 41 §3). A task spawns only from an
+ *  asker the child can SEE. The old `hazard` ctx was the hole in that law: a
+ *  spike strip and an ink pool have no face, no name and no reason to ask an
+ *  English question, and yet they served cards from the unbound pool. It is
+ *  GONE from this union — the guard is structural, not a rule in a doc, so no
+ *  future call site can quietly re-open it. What is left:
+ *   - four world askers (entity · cage · door · guardian), each with an id the
+ *     serve guard can look up on screen,
+ *   - `console`, the chapter's visible Namens-Konsole: always a seeable asker,
+ *     only ever mis-filed as a hazard (doc 41 §3),
+ *   - `ceremony`, the shell's own beats (the chapter's goal card, the Fibel
+ *     grant, the one-time cage hint, the bonus-room result). A ceremony carries
+ *     NO task and never touches a card pool — it is a panel the shell opens
+ *     and closes. */
 export interface TaskRequest {
   use: "quickfire" | "encounter" | "door" | "rescue" | "boss" | "bonus" | "bonuspay";
   ctx:
@@ -41,8 +55,17 @@ export interface TaskRequest {
     | { type: "cage"; id: string; skin: string; classmate?: string }
     | { type: "door"; id: string; kind: string; skin: string }
     | { type: "guardian"; id: string; skin: string }
-    | { type: "hazard"; hazard: string };
+    | { type: "console"; id: string; skin: string }
+    | { type: "ceremony"; beat: "goal" | "grant" | "cagehint" | "bonus" };
 }
+
+/** The being a request is ABOUT, or null for a shell ceremony (nobody asks). */
+export const askerIdOf = (ctx: TaskRequest["ctx"]): string | null =>
+  ctx.type === "ceremony" ? null : ctx.id;
+
+/** How far outside the view an asker may sit and still count as seen — half a
+ *  tile, so a being whose sprite is half over the edge still qualifies. */
+export const SPEAKER_MARGIN_PX = 8;
 
 export type SimEvent =
   | { type: "toast"; msg: string }
@@ -97,7 +120,11 @@ export class Sim {
   guardianDefeated = false;
   ridingId: string | null = null;
   respawnCell: { c: number; r: number } | null = null;
-  pendingPoolRespawn = false;
+  /** R3-11: a request whose asker was off screen when it was raised. The world
+   *  KEEPS RUNNING while it waits (the freeze happens at delivery, never at
+   *  request), so a waiting card can never deadlock the chapter the way the
+   *  cage hint once did. */
+  pendingAsk: TaskRequest | null = null;
   bonusLeftTicks = -1; // ≥0 only in the Kleckskammer
   gateToastCooldown = 0;
   /** R3-6: ticks the world holds still after an impact (see HIT_PAUSE_TICKS). */
@@ -209,7 +236,56 @@ export class Sim {
     const tx = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
     this.camX = clampScroll(stepCameraAxis(this.camX, tx), this.worldWpx, LOGICAL_W);
     this.camY = clampScroll(stepCameraY(this.camY, this.player.y), this.worldHpx, LOGICAL_H);
+    // R3-11: LAST, on the fresh camera — a waiting asker is served the moment
+    // the view actually contains it.
+    this.servePending(events);
     return events;
+  }
+
+  // ── R3-11 · the speaker law (doc 41 §3) ────────────────────────────────────
+
+  /** Is this being inside the view right now? The screen clamp already boxes
+   *  the player on screen, so anything in CONTACT with them is visible by
+   *  construction — this guard exists so a future asker class (a distant
+   *  console, a scripted call-out) cannot regress the law silently. */
+  onScreen(id: string): boolean {
+    const e = this.world.entities.find((x) => x.id === id);
+    if (!e || e.hidden) return false;
+    const x = fromSubs(e.x) - fromSubs(this.camX);
+    const y = fromSubs(e.y) - fromSubs(this.camY);
+    return (
+      x >= -SPEAKER_MARGIN_PX && x <= LOGICAL_W + SPEAKER_MARGIN_PX
+      && y >= -SPEAKER_MARGIN_PX && y <= LOGICAL_H + SPEAKER_MARGIN_PX
+    );
+  }
+
+  /** May this request be served RIGHT NOW? A shell ceremony always may (nobody
+   *  asks it); a world card only while its asker is in view. */
+  canServe(ctx: TaskRequest["ctx"]): boolean {
+    const id = askerIdOf(ctx);
+    return id === null || this.onScreen(id);
+  }
+
+  /** Raise a card FOR an asker: served now if the child can see them, parked
+   *  until they can otherwise. Only a served request freezes the world. */
+  private ask(req: TaskRequest, events: SimEvent[]): void {
+    if (!this.canServe(req.ctx)) { this.pendingAsk = req; return; }
+    this.overlayOpen = true;
+    events.push({ type: "task", req });
+  }
+
+  /** Deliver a parked request once its asker is on screen — and drop it if
+   *  that asker has left the phase, because a card with no speaker is a card
+   *  nobody asks. */
+  private servePending(events: SimEvent[]): void {
+    const req = this.pendingAsk;
+    if (!req) return;
+    const id = askerIdOf(req.ctx);
+    if (id !== null && !this.world.entities.some((e) => e.id === id)) { this.pendingAsk = null; return; }
+    if (id !== null && !this.onScreen(id)) return;
+    this.pendingAsk = null;
+    this.overlayOpen = true;
+    events.push({ type: "task", req });
   }
 
   setOverlay(open: boolean): void {
@@ -246,22 +322,15 @@ export class Sim {
           events.push({ type: "toast", msg: `Noch ${ev.knotsLeft} Knoten!` });
         }
       }
-    } else if (ctx.type === "hazard") {
-      if (this.pendingPoolRespawn && this.respawnCell) {
-        this.warp(this.respawnCell.c, this.respawnCell.r - 1);
-        this.pendingPoolRespawn = false;
-      }
     }
+    // `console` and `ceremony` carry no world change — the beat IS the payoff,
+    // and answering it simply gives the world back.
     this.overlayOpen = false;
     return events;
   }
 
   /** The shell reports the task DISMISSED („Später") — no reward, no redeem. */
-  dismissTask(ctx: TaskRequest["ctx"]): void {
-    if (ctx.type === "hazard" && this.pendingPoolRespawn && this.respawnCell) {
-      this.warp(this.respawnCell.c, this.respawnCell.r - 1);
-      this.pendingPoolRespawn = false;
-    }
+  dismissTask(_ctx: TaskRequest["ctx"]): void {
     this.overlayOpen = false;
   }
 
@@ -294,10 +363,16 @@ export class Sim {
     if (ev.type === "fistThrown") {
       this.fist = throwFist(this.player.x, this.player.y, this.player.facing, ev.charge, ev.speedSubs);
     } else if (ev.type === "encounter") {
+      // R3-11 · THE SPEAKER LAW (doc 41 §3): ENVIRONMENTAL HAZARDS NEVER ASK.
+      // Spikes and ink have no face and no name, and a floating „Jemand fragt
+      // dich…" from nobody is exactly the un-grounded card Koki's replay found.
+      // Contact is now what doc 41 says it is: knockback (the no-death setback)
+      // and, for ink, the checkpoint return — applied HERE, on contact, instead
+      // of waiting on a card that no longer exists. R3-18 (PK-R4) gives this
+      // beat its visual grammar; the mechanic lands with the law.
       events.push({ type: "toast", msg: ev.hazard === "^" ? "Autsch!" : "Platsch!" });
-      if (ev.hazard === "w") this.pendingPoolRespawn = true;
-      this.overlayOpen = true;
-      events.push({ type: "task", req: { use: "quickfire", ctx: { type: "hazard", hazard: ev.hazard } } });
+      this.player = applyKnockback(this.player, this.player.facing, false);
+      if (ev.hazard === "w" && this.respawnCell) this.warp(this.respawnCell.c, this.respawnCell.r - 1);
     }
   }
 
@@ -342,14 +417,12 @@ export class Sim {
         const src = this.world.entities.find((e) => e.id === ev.id);
         applyKnockback(this.player, this.player.x < (src?.x ?? this.player.x) ? -1 : 1, false);
         this.player.iframes = PAINT.iframeTicks;
-        this.overlayOpen = true;
-        events.push({ type: "task", req: { use: ev.role === "swarm" ? "quickfire" : "encounter", ctx: { type: "entity", id: ev.id, skin: ev.skin } } });
+        this.ask({ use: ev.role === "swarm" ? "quickfire" : "encounter", ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
         break;
       }
       case "cageBurst": {
         const e = this.world.entities.find((x) => x.id === ev.id);
-        this.overlayOpen = true;
-        events.push({ type: "task", req: { use: "rescue", ctx: { type: "cage", id: ev.id, skin: ev.skin, classmate: e?.params.classmate as string | undefined } } });
+        this.ask({ use: "rescue", ctx: { type: "cage", id: ev.id, skin: ev.skin, classmate: e?.params.classmate as string | undefined } }, events);
         break;
       }
       case "cageHit":
@@ -358,10 +431,9 @@ export class Sim {
       case "doorTouched": {
         const e = this.world.entities.find((x) => x.id === ev.id);
         if (this.doorSolved.has(ev.id)) break;
-        this.overlayOpen = true;
         const doorSkin = e?.skin ?? "door";
-        if (ev.kind === "bonus") events.push({ type: "task", req: { use: "bonuspay", ctx: { type: "door", id: ev.id, kind: ev.kind, skin: doorSkin } } });
-        else events.push({ type: "task", req: { use: "door", ctx: { type: "door", id: ev.id, kind: String(e?.params.kind ?? "exit"), skin: doorSkin } } });
+        if (ev.kind === "bonus") this.ask({ use: "bonuspay", ctx: { type: "door", id: ev.id, kind: ev.kind, skin: doorSkin } }, events);
+        else this.ask({ use: "door", ctx: { type: "door", id: ev.id, kind: String(e?.params.kind ?? "exit"), skin: doorSkin } }, events);
         break;
       }
       case "powerupTaken":
@@ -371,8 +443,7 @@ export class Sim {
       case "guardianStagger": {
         const g = this.world.entities.find((x) => x.id === ev.id);
         if (g) g.state = "window";
-        this.overlayOpen = true;
-        events.push({ type: "task", req: { use: "boss", ctx: { type: "guardian", id: ev.id, skin: g?.skin ?? "" } } });
+        this.ask({ use: "boss", ctx: { type: "guardian", id: ev.id, skin: g?.skin ?? "" } }, events);
         break;
       }
       case "shooed":

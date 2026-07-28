@@ -15,7 +15,8 @@ import { LOGICAL_H, LOGICAL_W, RENDER_SCALE, airModelByName } from "./paint.ts";
 import type { PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
-import { type CardAlign, alignedWrap } from "./cards/CardShell.tsx";
+import { InkWipe, type CardAlign, alignedWrap } from "./cards/CardShell.tsx";
+import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { initRoute, nextTask, type RouteState, type ServeCtx } from "./cards/routing.ts";
 
 /** The in-game task item — gameTasks@2 (the card kit). Content lives in
@@ -53,7 +54,7 @@ declare global {
 interface OverlayState {
   req: TaskRequest;
   item: GameTaskItem | null; // null = a card without a task (powerup/pay/ceremony)
-  card: "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend" | "cagehint";
+  card: "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend" | "cagehint" | "goal";
   attempts: number;
   typed: string;
   /** PB-F1/F2-20: which side of the canvas the card sits on — always AWAY from
@@ -65,10 +66,10 @@ interface OverlayState {
   price?: number;
 }
 
-/** The skin of the being a request is about (a hazard is about no being). */
-const skinOfCtx = (ctx: TaskRequest["ctx"]): string | undefined => (ctx.type === "hazard" ? undefined : ctx.skin);
+/** The skin of the being a request is about (a shell ceremony is about none). */
+const skinOfCtx = (ctx: TaskRequest["ctx"]): string | undefined => (ctx.type === "ceremony" ? undefined : ctx.skin);
 /** The entity id a request is about, when it has one. */
-const idOfCtx = (ctx: TaskRequest["ctx"]): string | null => (ctx.type === "hazard" ? null : ctx.id);
+const idOfCtx = (ctx: TaskRequest["ctx"]): string | null => (ctx.type === "ceremony" ? null : ctx.id);
 
 const allPhasesOf = (level: PaintLevel): PhaseSpec[] => [
   ...level.phases,
@@ -101,7 +102,16 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const [done, setDone] = useState(false);
   const [fatal, setFatal] = useState<string | null>(null);
   const [coarse, setCoarse] = useState(false);
-  const [overlay, setOverlay] = useState<OverlayState | null>(null);
+  // R3-8 · THE BOOT CEREMONY (doc 42 §3). The child never spawns mid-noise:
+  // the chapter opens on a painted book page that names the Auftrag, the
+  // chapter, the *Warum* and what there is to collect, over a frozen world.
+  // It is the FIRST thing rendered, so the freeze exists before the first tick.
+  const [overlay, setOverlay] = useState<OverlayState | null>({
+    req: { use: "quickfire", ctx: { type: "ceremony", beat: "goal" } },
+    item: null, card: "goal", attempts: 0, typed: "", align: "center",
+  });
+  /** has the goal card been put down? (the world fades up once, at that beat) */
+  const [booted, setBooted] = useState(false);
   const [bonusLeft, setBonusLeft] = useState(-1);
   const [knots, setKnots] = useState(-1);
 
@@ -172,9 +182,24 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       sceneRef.current?.dismissTask(o.req.ctx);
       return;
     }
+    if (o.card === "goal") setBooted(true);
     sceneRef.current?.setOverlay(false);
     setOverlay(null);
   };
+
+  // R3-8 · THE BATTLE FRAMING (doc 42 §1). A card up ⇒ the world freezes AND
+  // the book leans in on whoever is asking; a card gone ⇒ it eases back out.
+  // One effect owns both halves, so a card can never freeze without focusing or
+  // focus without freezing — the pairing that broke ch01 once already.
+  useEffect(() => {
+    const scene = sceneRef.current;
+    if (!scene) return;
+    if (overlay === null) { scene.clearFocus(); return; }
+    scene.setOverlay(true);
+    const id = idOfCtx(overlay.req.ctx);
+    if (id !== null) scene.focusOn(id);
+    else scene.clearFocus();
+  }, [overlay]);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -257,7 +282,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           },
           onPowerup: (grants) => {
             if (!abilitiesRef.current.includes(grants)) abilitiesRef.current = [...abilitiesRef.current, grants];
-            setOverlay({ req: { use: "quickfire", ctx: { type: "hazard", hazard: "grant" } }, item: null, card: "grant", attempts: 0, typed: "", align: "center" });
+            setOverlay({ req: { use: "quickfire", ctx: { type: "ceremony", beat: "grant" } }, item: null, card: "grant", attempts: 0, typed: "", align: "center" });
           },
           onCageHint: () => {
             // PB-F3 · F2-8: the first time the child stands next to a cage the
@@ -268,7 +293,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             // resumes the world. Declining silently is what froze ch01.
             if (cageHintShownRef.current) { sceneRef.current?.setOverlay(false); return; }
             cageHintShownRef.current = true;
-            setOverlay({ req: { use: "quickfire", ctx: { type: "hazard", hazard: "cagehint" } }, item: null, card: "cagehint", attempts: 0, typed: "", align: "center" });
+            setOverlay({ req: { use: "quickfire", ctx: { type: "ceremony", beat: "cagehint" } }, item: null, card: "cagehint", attempts: 0, typed: "", align: "center" });
           },
           onCageFreed: (id, skin, classmate, count) => {
             freedRef.current = [...freedRef.current, id];
@@ -280,7 +305,9 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             // card (the child writes HELLO on the board) runs first; its
             // resolution opens the console beat. No finale card in the set ⇒
             // straight to the console — the beat can never softlock.
-            const consoleReq: TaskRequest = { use: "boss", ctx: { type: "hazard", hazard: "console" } };
+            // R3-11: the Namens-Konsole is a SEEABLE asker (doc 41 §3) and is
+            // typed as one now; it was only ever mis-filed as a hazard.
+            const consoleReq: TaskRequest = { use: "boss", ctx: { type: "console", id, skin } };
             const align = alignAwayFrom(id);
             const item = pickTask("finale", { phase: pid, skin });
             if (!item) { setOverlay({ req: consoleReq, item: null, card: "console", attempts: 0, typed: "", align }); return; }
@@ -289,6 +316,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         },
       });
       sceneRef.current = scene;
+      // R3-8: a scene born UNDER an open card starts frozen (the boot ceremony
+      // is on screen before the first tick, and a phase can be remounted while
+      // a panel is up). The focus effect only sees LATER changes to `overlay`,
+      // so the freeze is asserted here, at the moment the scene exists.
+      if (overlayRef.current !== null) scene.setOverlay(true);
       const name = phase?.nameDe ?? pid;
       setPhaseName(name);
       setPhaseId(pid);
@@ -304,7 +336,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           // leaving the Kleckskammer (timeout or its exit): show the end card, return
           const bs = sceneRef.current?.bonusState();
           setOverlay({
-            req: { use: "bonus", ctx: { type: "hazard", hazard: "bonus" } }, item: null, card: "bonusend",
+            req: { use: "bonus", ctx: { type: "ceremony", beat: "bonus" } }, item: null, card: "bonusend",
             attempts: 0, typed: "", align: "center", bonusend: { got: bs?.got ?? 0, total: bs?.total ?? 12, timeout: next === "bonus-timeout" },
           });
           target = bonusReturnRef.current ?? level.phases[0]!.id;
@@ -406,12 +438,18 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const inBonus = level.bonus !== undefined && phaseId === level.bonus.id;
 
   return (
-    <div style={{ maxWidth: LOGICAL_W * RENDER_SCALE, margin: "0 auto", fontFamily: "system-ui, sans-serif", position: "relative" }}>
+    <div style={{ maxWidth: LOGICAL_W * RENDER_SCALE, margin: "0 auto", fontFamily: "var(--font-body, system-ui, sans-serif)", position: "relative" }}>
+      {/* R3-8: the overlay stylesheet. game-paint ships raw TS/TSX with no CSS
+          build step, so the painted layer's animations ride in with the game
+          they belong to — and travel with the package, not the app. */}
+      <style>{PAINT_OVERLAY_CSS}</style>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", padding: "6px 2px" }}>
-        <strong style={{ fontSize: 15 }}>🖌 {phaseName}</strong>
+        <strong style={{ fontSize: 15, fontFamily: "var(--font-display, inherit)" }}>🖌 {phaseName}</strong>
         {/* F2-33: every number on this bar says what it counts, and a counter
-            with nothing to count (the arena collects no letters) is not shown */}
-        <span style={{ fontSize: 14 }}>
+            with nothing to count (the arena collects no letters) is not shown.
+            doc 42 §5: the chips wear the label face (the painted chips
+            themselves are PK-R3b's R3-17 work). */}
+        <span style={{ fontSize: 14, fontFamily: "var(--font-label, inherit)", fontWeight: 600 }}>
           {freedCount > 0 && <span style={{ marginRight: 12 }}>🔓 Befreit: {freedCount}/6</span>}
           {knots > 0 && <span style={{ marginRight: 12 }}>🪢 Knoten: {knots}</span>}
           {inBonus && bonusLeft >= 0 && <span style={{ marginRight: 12 }}>⏱ {Math.ceil(bonusLeft / 60)}s</span>}
@@ -422,8 +460,17 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         <div style={{ background: "#c0392b", color: "#fff", padding: "8px 12px", borderRadius: 8, marginBottom: 6 }}>⚠ {fatal}</div>
       )}
       <div style={{ position: "relative" }}>
-        <div ref={hostRef} style={{ borderRadius: 10, overflow: "hidden", boxShadow: "0 2px 14px rgba(30,20,10,0.25)" }} />
-        {overlay && <Overlay o={overlay} onResolve={resolveCorrect} onDismiss={dismissCard} onPay={payBonus} letters={letters.got} bonusTotal={bonusLetterTotal(level)} />}
+        <div
+          ref={hostRef}
+          className={booted ? "pb-world-in" : undefined}
+          style={{ borderRadius: 10, overflow: "hidden", boxShadow: "0 2px 14px rgba(30,20,10,0.25)" }}
+        />
+        {overlay && (
+          <Overlay
+            o={overlay} level={level} onResolve={resolveCorrect} onDismiss={dismissCard} onPay={payBonus}
+            letters={letters.got} bonusTotal={bonusLetterTotal(level)}
+          />
+        )}
       </div>
       {done && (
         <div style={{ background: "#fdf7e6", border: "2px solid #e0a92a", borderRadius: 10, padding: 14, marginTop: 8, textAlign: "center" }}>
@@ -450,9 +497,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 // ── the overlay card ──────────────────────────────────────────────────────────
 
 function Overlay({
-  o, onResolve, onDismiss, onPay, letters, bonusTotal,
+  o, level, onResolve, onDismiss, onPay, letters, bonusTotal,
 }: {
   o: OverlayState;
+  level: PaintLevel;
   onResolve: (o: OverlayState) => void;
   onDismiss: (o: OverlayState) => void;
   onPay: (price: number) => void;
@@ -464,11 +512,43 @@ function Overlay({
     background: "#fdf7e6", border: "2px solid #c9a36a", borderRadius: 14, padding: "18px 22px",
     maxWidth: 440, width: o.align === "center" ? "88%" : "46%", minWidth: 300,
     boxShadow: "0 6px 30px rgba(30,20,10,0.35)", textAlign: "center",
+    fontFamily: "var(--font-body, system-ui, sans-serif)",
   };
+  /** R3-8: every panel wears the same painted staging as a task card — the veil
+   *  washes in, the ink bloom wipes, the panel lands a beat later. */
+  const staged = (children: React.ReactNode, extraClass = ""): React.ReactElement => (
+    <div className="pb-veil" style={wrap}>
+      <InkWipe />
+      <div className={`pb-card ${extraClass}`.trim()} style={card}>{children}</div>
+    </div>
+  );
 
+  if (o.card === "goal") {
+    // THE GOAL CARD (doc 42 §3, re-skinned as a page of the book): „Dein
+    // Auftrag" → the chapter's name → the *Warum* line → what there is to
+    // collect → „Los geht's!". Every line is READ from the level, so this page
+    // can never promise a chapter the data does not describe.
+    return staged(
+      <div style={{ textAlign: "left" }}>
+        <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 2px", fontFamily: "var(--font-label, inherit)" }}>
+          Dein Auftrag
+        </p>
+        <h2 style={{ fontSize: 21, lineHeight: 1.15, margin: "0 0 8px", color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>
+          {level.name}
+        </h2>
+        <p style={{ fontSize: 15, margin: "0 0 8px", color: "#4a4030" }}>{level.goalDe}</p>
+        <p style={{ fontSize: 14, margin: "0 0 12px", color: "#7a6a4a", fontStyle: "italic" }}>{level.whyDe}</p>
+        <p style={{ fontSize: 14, margin: "0 0 14px", color: "#4a4030" }}>
+          ✨ <strong>{level.collectNounDe}</strong> sammeln · 🔓 <strong>Klassenkinder</strong> befreien
+        </p>
+        <button style={{ ...btn, fontSize: 16 }} onClick={() => onDismiss(o)}>Los geht's!</button>
+      </div>,
+      "pb-page",
+    );
+  }
   if (o.card === "grant") {
     return (
-      <div style={wrap}><div style={card}>
+      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
         <p style={{ fontSize: 26, margin: "0 0 6px" }}>📖✨</p>
         <p style={{ fontSize: 17, margin: "0 0 4px" }}><strong>Fibel</strong> schenkt dir die <strong>FAUST</strong>!</p>
         <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Halte <strong>X</strong> zum Laden — wirf sie auf Knoten und Kreide!</p>
@@ -478,7 +558,7 @@ function Overlay({
   }
   if (o.card === "cagehint") {
     return (
-      <div style={wrap}><div style={card}>
+      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
         <p style={{ fontSize: 26, margin: "0 0 6px" }}>🎒✊</p>
         <p style={{ fontSize: 17, margin: "0 0 4px" }}>Da steckt jemand fest!</p>
         <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Wirf die <strong>Faust</strong> (X) auf den Knoten — dann geht die Tasche auf.</p>
@@ -493,7 +573,7 @@ function Overlay({
     const price = o.price ?? 0;
     const can = letters >= price;
     return (
-      <div style={wrap}><div style={card}>
+      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
         <p style={{ fontSize: 26, margin: "0 0 6px" }}>🖤</p>
         <p style={{ fontSize: 16, margin: "0 0 4px" }}><strong>Klecks</strong> grinst: „{price} Buchstaben, und die Tür ist deine. Drinnen warten {bonusTotal} — schaffst du alle, bevor die Tinte trocknet?"</p>
         <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Du hast {letters} ✨ — {can ? "bezahlen?" : `sammle erst ${price}!`}</p>
@@ -505,7 +585,7 @@ function Overlay({
   if (o.card === "ceremony") {
     const merle = o.ceremony?.classmate === "merle";
     return (
-      <div style={wrap}><div style={card}>
+      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
         <p style={{ fontSize: 26, margin: "0 0 6px" }}>{merle ? "🎒" : "🔤"}</p>
         {merle ? (
           <>
@@ -522,7 +602,7 @@ function Overlay({
   }
   if (o.card === "console") {
     return (
-      <div style={wrap}><div style={card}>
+      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
         <p style={{ fontSize: 26, margin: "0 0 6px" }}>🖼</p>
         {/* F2-24: the child WROTE the word on the finale card — this beat now
             answers that act instead of narrating it in their place */}
@@ -536,7 +616,7 @@ function Overlay({
     const b = o.bonusend!;
     const perfect = b.got >= b.total;
     return (
-      <div style={wrap}><div style={card}>
+      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
         <p style={{ fontSize: 26, margin: "0 0 6px" }}>{perfect ? "🏵" : "🖤"}</p>
         <p style={{ fontSize: 16, margin: "0 0 10px" }}>
           {perfect
@@ -562,6 +642,8 @@ const btn: React.CSSProperties = {
   border: "1px solid #c9a36a",
   background: "#fff",
   cursor: "pointer",
+  fontFamily: "var(--font-label, inherit)",
+  fontWeight: 600,
 };
 
 /** Pointer-capture touch buttons writing straight into the shared pad. */
