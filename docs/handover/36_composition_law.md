@@ -105,6 +105,17 @@ Terrain is a CARVED MASS with painted anatomy. The kit per material family:
   surface (top module / mid module ×n / foot module with run-out curve) mounted on a
   drawn under-structure, 2 cells wide of visual surface so the `z` line reads as a real
   slide, chalk-dust verb-debris at the foot.
+- **★ v1.2 AMENDMENT (2026-07-28, Fable — resolves R3-19): SET-PIECE MASSES.** Where a
+  formation is SPECIAL — the slide with its run-out zone, a landmark block cluster, an
+  arena podest group — it is commissioned and imported as **ONE drawn piece**: a single
+  full painting sized rows×cols of 512-px cells, its mass anatomy (crust, edges,
+  sediment) painted INSIDE the piece, anchored at a declared top-left grid cell. The
+  glyph grid keeps collision authority unchanged — a set-piece is visual mass only.
+  Tiled assembly for such formations is RETIRED (it is what produced the residue edges
+  and unattached end pieces of 11.45.43 / 11.43.59). The p3 slide sub-clause above is
+  this category's founding precedent, promoted. Engine seam: a `setpiece` mass kind
+  with per-piece stem + span (wired in PK-R4 when its art lands); commissioning shape
+  lives in the chapter prompts.
 - **The renderer places anatomy, not rectangles**: crust + caps on every exposed top,
   edge trims on every exposed side, corners at every convex/concave turn, body fill
   from the tile, fade band at depth. A visible flat-color fill pixel with the kit
@@ -133,7 +144,8 @@ box, bottom-anchored, never letterboxed against the page.
 4. **Glyph audit**: every letter entity renders its own character.
 5. **The composition checklist** (executor-run, every visual packet): scale statement
    obeyed per plane · silhouette pop test at 3 enemy positions · caps flush · slide
-   reads as slide · screenshots of every phase attached. Mechanical honesty is not
+   reads as slide · set-pieces show NO tile residue at their borders (v1.2) ·
+   screenshots of every phase attached. Mechanical honesty is not
    enough; the checklist answers "does it LOOK like one world?" — and the executor
    self-bounces before handing over anything that fails it.
 
@@ -142,4 +154,6 @@ box, bottom-anchored, never letterboxed against the page.
 Consumers of this law: `CODEX_MASTER_PROMPT_AF_COMPOSITION.md` (the art commission
 implementing §1–§3 as sheets) · `PASSOVER_PB_COMPOSITION_2026-07-26.md` (the engine
 rework: layer compositor, mass renderer, audits) · the ch02–05 sheets at their build
-time (every future world is commissioned per THIS law, never per the retired model).
+time (every future world is commissioned per THIS law, never per the retired model) ·
+**v1.2:** `41_r3_design_pass.md` §6 (the design ruling) + PK-R4 of
+`PASSOVER_PB_R3_2026-07-28.md` (the `setpiece` engine wiring when its art lands).
