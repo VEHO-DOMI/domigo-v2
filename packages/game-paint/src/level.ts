@@ -6,6 +6,7 @@
 // an ability-parameterized reachability sweep (a cage or letter no child can
 // reach is a defect, not a secret).
 
+import { registerErrorsDe } from "@domigo/content-schema";
 import { type Grid, glyphAt, isOneWay, isSlope, isSolid } from "./collide.ts";
 import { SUBS, TILE } from "./paint.ts";
 import { platformPathAt } from "./entities.ts";
@@ -18,7 +19,16 @@ const LEGAL_GLYPHS = new Set([".", "#", "=", "/", "\\", "1", "2", "3", "4", "~",
 export type EntityRole =
   | "chaser" | "gunner" | "flyer" | "bouncer" | "crusher" | "swarm"
   | "platform.move" | "platform.fall" | "platform.swing"
-  | "cage" | "powerup" | "door.trigger" | "guardian";
+  | "cage" | "powerup" | "door.trigger" | "guardian"
+  // PK-R3b · R3-16 (doc 41 §5): the two static-state collectibles. `tip` is a
+  // Regel-Seite — a rule page OSWIN tore out of the book, which shows its
+  // Merksatz when picked up; `book` is a Bonus-Buch, the no-death adaptation of
+  // an extra life, worth points and nothing else. Both are doc 40 §3
+  // static-state: no rig, no orbit, no brain — they sit and wait.
+  | "tip" | "book";
+
+/** The pickups that are simply TAKEN on contact (no card, no fight). */
+export const PICKUP_ROLES = new Set<EntityRole>(["tip", "book"]);
 
 /**
  * Per-entity tuning. Open by design — every role brings its own knobs — but the
@@ -41,6 +51,13 @@ export interface EntityParams {
   essential?: boolean;
   /** cage: the classmate inside (exactly one per chapter). */
   classmate?: string;
+  /** tip: which of the unit's grammar topics this Regel-Seite carries. Unique
+   *  per chapter — two pages of the same rule are one page and a duplicate. */
+  topicDe?: string;
+  /** tip: the rule itself, kid-worded. Rendered verbatim on the pickup card, so
+   *  it is authored content and passes the same register + length laws every
+   *  other line a six-year-old reads does (the `tip-honesty` law). */
+  merksatzDe?: string;
   /** spawned hidden, revealed by a link. */
   hidden?: boolean;
   [key: string]: unknown;
@@ -92,6 +109,12 @@ export interface PaintLevel {
   whyDe: string;
   hintsDe: string[];
   collectNounDe: string;
+  /** PK-R3b · R3-16 (doc 41 §5): how many Regel-Seiten this chapter hides — one
+   *  per grammar topic of its unit. DECLARED here and PLACED in the phases, and
+   *  the `tip-honesty` law proves the two agree; the HUD and the score page then
+   *  read this one number, so „y von N" can never promise a page the world does
+   *  not contain (the letter-honesty pattern, doc 41 §7). */
+  tipsTotal?: number;
   abilities: Ability[];
   phases: PhaseSpec[];
 }
@@ -347,6 +370,12 @@ export interface LawFailure {
   detail: string;
 }
 
+/** How long a Regel-Seite's Merksatz may be. Longer than a card's 56-char line
+ *  (MAX_LINE_DE) because a rule page is something a child STOPS at and reads,
+ *  not a framing clause they skim on the way to the ask — but still one
+ *  sentence, out loud, in one breath. */
+export const MAX_MERKSATZ = 78;
+
 /** "Close enough to a reachable node to count" — the same tolerance every
  *  reachability law uses, lifted out so the staged sweeps can share it. */
 const nearIn = (set: ReadonlySet<string>, c: number, r: number, dc: number, drUp: number, drDown: number): boolean => {
@@ -399,6 +428,38 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     const person = cages.filter((e) => e.params?.classmate !== undefined);
     if (person.length !== 1) {
       failures.push({ phase: "*", law: "person-cage", detail: `exactly one cage holds a person (has ${person.length})` });
+    }
+  }
+
+  // PK-R3b · R3-16 · THE REGEL-SEITEN HONESTY LAW (doc 41 §5, §7). The same
+  // shape as the letter-honesty law: DECLARED = PLACED = REACHABLE, plus the
+  // copy laws, because a Regel-Seite is the one collectible whose payload a
+  // child READS. A page that is promised and not placed, placed and not
+  // reachable, or reachable and blank, is a broken promise in the HUD.
+  if (level.tipsTotal !== undefined) {
+    const tips = level.phases.flatMap((p) => p.entities.filter((e) => e.role === "tip"));
+    if (tips.length !== level.tipsTotal) {
+      failures.push({ phase: "*", law: "tip-honesty", detail: `the chapter declares ${level.tipsTotal} Regel-Seiten but places ${tips.length} — the HUD would count to a page nobody can find` });
+    }
+    const topics = new Set<string>();
+    for (const t of tips) {
+      const topic = t.params?.topicDe;
+      const satz = t.params?.merksatzDe;
+      if (topic === undefined || topic.trim() === "") {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} names no grammar topic` });
+      } else if (topics.has(topic)) {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `two Regel-Seiten carry the topic „${topic}" — one rule, one page` });
+      } else topics.add(topic);
+      if (satz === undefined || satz.trim() === "") {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id} has no Merksatz — the pickup would show an empty page` });
+        continue;
+      }
+      // A Merksatz is READ, not skimmed past like a card's framing line, so it
+      // gets its own (roomier) cap rather than the card lines' 56.
+      if (satz.length > MAX_MERKSATZ) {
+        failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: Merksatz is ${satz.length} chars (max ${MAX_MERKSATZ}) — „${satz}"` });
+      }
+      for (const err of registerErrorsDe(satz)) failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: ${err}` });
     }
   }
 
@@ -478,7 +539,12 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       }
     }
     for (const e of ph.entities) {
-      if ((e.role === "cage" || e.role === "powerup") && !nearReachable(e.c, e.r, 2, 2, 4)) {
+      // PK-R3b: the two new pickups join this law rather than getting one of
+      // their own — a Regel-Seite or a Bonus-Buch nobody can reach is exactly
+      // the same defect as an unreachable cage, and „hidden" never means
+      // „impossible" (doc 31's law: a collectible no child can reach is a
+      // defect, not a secret).
+      if ((e.role === "cage" || e.role === "powerup" || PICKUP_ROLES.has(e.role)) && !nearReachable(e.c, e.r, 2, 2, 4)) {
         failures.push({ phase: ph.id, law: "entity-reachable", detail: `${e.role} ${e.id} at (${e.c},${e.r}) unreachable` });
       }
     }

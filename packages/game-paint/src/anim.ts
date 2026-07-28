@@ -32,8 +32,52 @@ const IDLE_CELLS = ["a", "b", "c", "d"] as const;
 // Every threshold is DERIVED from the sim constant it depicts (imported, never
 // re-typed), so a tuning change to the sim moves the pose with it.
 
-import { BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX } from "./entities.ts";
+import { BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX, JOY_ROLES } from "./entities.ts";
 import { SUBS } from "./paint.ts";
+
+// ── PK-R3b · R3-15 · THE DESATURATION GRAMMAR (doc 41 §2) ────────────────────
+// OSWIN rained the colour out of the beings he bewitched, so a being you have
+// not yet befriended renders GREY-WASHED and floods back to full colour the
+// moment it is redeemed. That flood is the `restore` card's payoff made
+// visible — the child's answer changes the picture, which is the whole reason
+// the mechanic is worth a new task kind.
+//
+// It costs NO new art: the wash is a grey copy of the being's own sheet laid
+// over it at this alpha, so every existing and future skin is covered by
+// construction. (Phaser's `setTint` multiplies, which darkens rather than
+// desaturates — an overlay is what actually drains colour.)
+
+/** How much grey sits over an un-redeemed being. Enough that „the colour is
+ *  gone" reads at 24 px, little enough that its SHAPE still names it — step 1
+ *  of a restore card must stay answerable by looking. */
+export const WASH_ALPHA = 0.72;
+/** How long the colour takes to flood back in, in ticks (≈0.6 s at 60 Hz) —
+ *  comfortably inside the joy lap (JOY_TICKS), so the flood and the
+ *  Freudenrunde are one beat rather than two. */
+export const COLOUR_FLOOD_TICKS = 36;
+
+/** Which beings OSWIN's rain reached. The creatures, plus the CAGES: a knotted
+ *  school bag is a redeemable being too, and two of ch01's restore cards are
+ *  about exactly those bags — a card that says „ganz grau geworden" over a
+ *  full-colour satchel would be the same lie R3-12 took off the boss. Doors,
+ *  grants and platforms are furniture and were never drained. */
+export const WASHED_ROLES = new Set<string>([...JOY_ROLES, "cage"]);
+
+/** How opaque the grey wash over this being is right now, 0 … WASH_ALPHA.
+ *  Pure: `timer` is the sim's own counter, which `redeemEntity` resets to 0 at
+ *  the moment of redemption, so the flood starts exactly when the card is
+ *  answered. Under reduced motion a redeemed being is simply already in
+ *  colour — the end-states law, applied to the world instead of to CSS. */
+export const washAlphaFor = (
+  e: { role: string; redeemed: boolean; timer: number },
+  reducedMotion = false,
+): number => {
+  if (!WASHED_ROLES.has(e.role)) return 0; // furniture was never drained
+  if (!e.redeemed) return WASH_ALPHA;
+  if (reducedMotion) return 0;
+  const left = 1 - Math.min(Math.max(e.timer, 0), COLOUR_FLOOD_TICKS) / COLOUR_FLOOD_TICKS;
+  return WASH_ALPHA * left;
+};
 
 /** Half the patrol speed: a chaser's vx is ±ENEMY_WALK while walking and 0 at
  *  an edge turn, so this cleanly separates "striding" from "stopped". */

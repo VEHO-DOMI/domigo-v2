@@ -60,6 +60,9 @@ export type EntityEvent =
   | { type: "cageBurst"; id: string; skin: string }
   | { type: "doorTouched"; id: string; kind: string }
   | { type: "powerupTaken"; id: string; grants: string }
+  /** PK-R3b · R3-16: a static-state collectible was walked into — a Regel-Seite
+   *  (which stops the world to show its rule) or a Bonus-Buch (which does not). */
+  | { type: "pickupTaken"; id: string; role: "tip" | "book"; skin: string }
   | { type: "guardianStagger"; id: string }
   | { type: "guardianKnot"; id: string; knotsLeft: number }
   | { type: "guardianDown"; id: string }
@@ -133,8 +136,13 @@ const joyRadiusPx = (role: string): { rx: number; ry: number; lift: number } =>
 
 /** The post-redeem step: a lap of joy, then home to stay. */
 const stepRedeemed = (e: EntityState): void => {
-  if (!JOY_ROLES.has(e.role)) return; // static-state beings hold their cell
+  // R3-15: the timer runs for EVERY redeemed being, not only the ones that fly a
+  // lap — the colour flood (anim.washAlphaFor) is driven by it, and a knotted
+  // school bag gets its colour back exactly like a moth does even though it
+  // stays put. Before this the timer froze at redemption and a cage would have
+  // been left half-drained forever.
   e.timer += 1;
+  if (!JOY_ROLES.has(e.role)) return; // static-state beings hold their cell
   const { rx, ry, lift } = joyRadiusPx(e.role);
   if (e.state === "joy") {
     const t = e.timer;
@@ -403,7 +411,7 @@ export const stepEntities = (
         if (e.state === "closed" && fistHits(e, inp.fist, 16)) {
           e.hp -= 1;
           events.push({ type: "puff", x: inp.fist?.x ?? e.x, y: inp.fist?.y ?? e.y, kind: "hit" }); // R3-6
-          if (e.hp <= 0) { e.state = "burst"; e.redeemed = true; events.push({ type: "cageBurst", id: e.id, skin: e.skin }); }
+          if (e.hp <= 0) { e.state = "burst"; e.redeemed = true; e.timer = 0; events.push({ type: "cageBurst", id: e.id, skin: e.skin }); }
           else { e.state = "shaking"; e.timer = 0; events.push({ type: "cageHit", id: e.id, hpLeft: e.hp }); }
         } else if (e.state === "shaking" && e.timer > 30) e.state = "closed";
         break;
@@ -412,6 +420,20 @@ export const stepEntities = (
         if (overlapsPlayer(e, inp, 14, 20)) {
           e.redeemed = true;
           events.push({ type: "powerupTaken", id: e.id, grants: String(e.params.grants ?? "punch") });
+        }
+        break;
+      }
+      // PK-R3b · R3-16 · the static-state collectibles (doc 41 §5). No brain at
+      // all: they sit where they were placed and are TAKEN on contact. The
+      // generous 18×24 box is deliberate — a rule page a child brushes past and
+      // does not get is the „only a small field gets them" complaint the letter
+      // magnet exists to answer, and it applies here twice over.
+      case "tip":
+      case "book": {
+        if (overlapsPlayer(e, inp, 18, 24)) {
+          e.redeemed = true;
+          e.timer = 0;
+          events.push({ type: "pickupTaken", id: e.id, role: e.role, skin: e.skin });
         }
         break;
       }

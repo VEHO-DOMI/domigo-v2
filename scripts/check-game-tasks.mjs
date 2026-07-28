@@ -18,11 +18,14 @@
 //   8. SPEAKER LAW (doc 41 §3, R3-11) — every card's `use` is raised by a
 //      visible asker that really stands in this chapter; a pool nobody can
 //      raise is dead content (and hazards raise nothing at all any more).
+//   9. DISTRIBUTION MAP (doc 41 §1, R3-13) — a chapter's FIELD may only serve
+//      the kinds its palette allows, so ch01 stays a tutorial; and the
+//      non-repetition floor is what the phase actually spawns, not a flat 2.
 // The grounding/register helpers mirror scripts/check-story-grounding.mjs
 // (same lexicon, same law) — kept compact and local on purpose.
 import fs from "node:fs";
 import path from "node:path";
-import { GameTasksFileV2 } from "../packages/content-schema/src/game-tasks.ts";
+import { GameTasksFileV2, MAX_LINE_DE, registerErrorsDe } from "../packages/content-schema/src/game-tasks.ts";
 
 const STORIES = "content/corpus/stories";
 const lex = JSON.parse(fs.readFileSync("docs/design/g1/grounding/u01-lexicon.json", "utf8"));
@@ -51,12 +54,11 @@ function checkEn(where, en) {
   for (const p of phrases) if (enLow.includes(p)) for (const t of tokens(p)) extra.add(t);
   for (const t of tokens(en)) if (!FREE.has(t) && !grounded(t, extra)) fail(where, `EN token not in MORE! 1 Unit 1: "${t}" (in "${en}")`);
 }
-// register bans as patterns — "schrei" is boundary-aware so it catches
-// schreien/Schrei (scream) but NOT schreib*/Schreiber (to write / writer),
-// which are core school vocabulary (the naive-substring pitfall).
-const BANNED_DE = [/Monster/, /Blut/, /böse/, /Bösewicht/, /schrei(?!b)/, /sterben/, /tot /];
+// PK-R3b: the ban list moved into content-schema (registerErrorsDe) so the LEVEL
+// laws can apply the identical rule to the Regel-Seiten' authored German — a
+// register law with a second copy is a register law with one enforced copy.
 function checkDe(where, de) {
-  for (const re of BANNED_DE) if (re.test(de ?? "")) fail(where, `register-law: ${re} in "${de}"`);
+  for (const msg of registerErrorsDe(de)) fail(where, msg);
 }
 // giveaway: a content answer-token must not appear in the task's own prompt/story
 function checkGiveaway(where, answer, ...deenFields) {
@@ -77,6 +79,11 @@ function checkItem(chId, t) {
   checkDe(w, t.hints?.deWord);
   if (t.stimulus?.type === "image") checkDe(w, t.stimulus.altDe);
   if (t.stimulus?.type === "entity") checkDe(w, t.stimulus.showsDe);
+  // 9 · the distribution map: is this kind allowed out in this chapter's field?
+  const palette = CHAPTER_FIELD_KINDS[chId];
+  if (palette && FIELD_USES.has(t.use) && !palette.has(t.kind)) {
+    fail(w, `palette: ${chId}'s field is [${[...palette].join(" · ")}] — a "${t.kind}" card cannot be served as "${t.use}" here (doc 41 §1)`);
+  }
   // English surface + giveaway, per kind
   checkEn(w, t.promptEn);
   switch (t.kind) {
@@ -88,6 +95,19 @@ function checkItem(chId, t) {
     case "oddone": t.items.forEach((i) => checkEn(w, i)); break;
     case "mistake": t.sentence.forEach((s) => checkEn(w, s)); checkEn(w, t.fix.correction); (t.correctionOptions ?? []).forEach((o) => checkEn(w, o)); break;
     case "memory": t.pairs.forEach((p) => checkEn(w, p.b)); break;
+    case "restore":
+      t.nameOptions.forEach((o) => checkEn(w, o));
+      t.colourOptions.forEach((o) => checkEn(w, o));
+      // step 2's German ask is a rendered line like any other
+      checkDe(w, t.colourAskDe);
+      if (t.colourAskDe.length > MAX_LINE) fail(w, `length: colourAskDe is ${t.colourAskDe.length} chars (max ${MAX_LINE}) — "${t.colourAskDe}"`);
+      // BOTH answers must be earned. The colour ask is German and the answer is
+      // English, so a naive token compare would never catch „gib mir mein Gelb"
+      // next to „yellow" — but it does catch the real leak, an English colour
+      // word written into the very line that asks for it.
+      checkGiveaway(w, t.name, t.promptEn, t.storyDe, t.colourAskDe);
+      checkGiveaway(w, t.colour, t.promptEn, t.storyDe, t.colourAskDe);
+      break;
   }
 }
 
@@ -96,7 +116,23 @@ function checkItem(chId, t) {
 // packages/game-paint/src/sim.ts and must move with it.
 const HOSTILE_ROLES = ["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm"];
 const encounterUseFor = (role) => (role === "swarm" ? "quickfire" : "encounter");
-const MAX_LINE = 56; // the kurzweilig law (F2-2)
+const MAX_LINE = MAX_LINE_DE; // the kurzweilig law (F2-2), shared with the level laws
+
+// ── 9 · THE DISTRIBUTION MAP (doc 41 §1, R3-13) ──────────────────────────────
+// Koki's principle: ch01 is the TUTORIAL — it must not hand a six-year-old the
+// whole card kit in their first twenty minutes. Each chapter therefore gets a
+// small FIELD palette (the kinds beings ask out in the world), +1–2 kinds debut
+// per chapter, and anything complex premieres in an ARENA before it reaches the
+// field. The boss ritual is exempt by design (doc 41 §1): its scripted
+// mistake/order/memory/typed set at the Tafel is intentional G-era design, and
+// R3-12 fixed what was actually wrong with it (unanswerable, not too complex).
+/** The uses a being raises OUT IN THE WORLD — where the palette applies. */
+const FIELD_USES = new Set(["encounter", "quickfire", "door", "rescue"]);
+/** chapter → the kinds its FIELD may serve. A chapter with no entry is not yet
+ *  ruled on and is left alone, so this table can grow one chapter at a time. */
+const CHAPTER_FIELD_KINDS = {
+  ch01: new Set(["choice", "wheel", "restore", "oddone"]),
+};
 
 const allPhasesOf = (level) => [
   ...(level.phases ?? []),
@@ -110,17 +146,44 @@ const boundCards = (items, use, skin, phase) =>
   items.filter((t) => t.use === use && t.skins?.includes(skin) === true
     && (t.phases === undefined || t.phases.includes(phase)));
 
+// ── 10 · THE DESATURATION LAW (doc 41 §2, R3-15) ─────────────────────────────
+// A being OSWIN drained renders GREY until the child gives its colour back. So
+// a card about such a being may not tell them it is „weiß" or „bunt" — the
+// screen says otherwise, and a card that describes a colour the world does not
+// show is the same defect R3-12 took off the boss, one layer down.
+//
+// Found by sweeping the shipped set after the wash landed: three cards written
+// long before this mechanic existed („Ein weißer Radiergummi", „seine bunten
+// Farben", „Eine braune Schultasche") became wrong the moment the grammar
+// shipped. Grey/blass are of course allowed — that IS the state.
+const WASHED_ROLES_MJS = ["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm", "cage"];
+const COLOUR_WORDS_DE = /\b(wei(ß|ss)|rot|blau|grün|gelb|braun|schwarz|rosa|orange|bunt|golden|silbern)\w*/i;
+
+function checkDesaturation(w, items, washedSkins) {
+  for (const t of items) {
+    if (t.stimulus?.type !== "entity") continue;
+    if (!(t.skins ?? []).some((s) => washedSkins.has(s))) continue;
+    const m = COLOUR_WORDS_DE.exec(t.stimulus.showsDe);
+    if (m) {
+      fail(`${w}:${t.id}`, `desaturation: showsDe calls a drained being „${m[0]}", but it renders GREY until it is restored (doc 41 §2) — describe its shape, not a colour it has lost`);
+    }
+  }
+}
+
 function checkAgainstLevel(file, level, items) {
   const w = path.basename(file);
   const phases = allPhasesOf(level);
   const phaseIds = new Set(phases.map((p) => p.id));
   const skinPhases = new Map(); // skin → Set(phase ids it lives in)
+  const washedSkins = new Set(); // R3-15: the skins the colour wash covers
   for (const ph of phases) {
     for (const e of ph.entities ?? []) {
       if (!skinPhases.has(e.skin)) skinPhases.set(e.skin, new Set());
       skinPhases.get(e.skin).add(ph.id);
+      if (WASHED_ROLES_MJS.includes(e.role)) washedSkins.add(e.skin);
     }
   }
+  checkDesaturation(w, items, washedSkins);
 
   // 4 · every declared binding points at something that exists
   for (const t of items) {
@@ -142,12 +205,24 @@ function checkAgainstLevel(file, level, items) {
 
   // 5 · every being that can raise a card has cards of its own
   for (const ph of phases) {
+    // 5b · NON-REPETITION (doc 41 §1, from the charter: „two pencils = two
+    // distinct cards minimum"). The check used to demand a flat ≥2 for every
+    // hostile skin — but p1 stands TWO pencils on the same screen, and a child
+    // who meets both and is asked the identical thing twice is practising the
+    // card, not the language. So the floor is now what the phase actually
+    // spawns: count the same-skin beings that can be on screen together and
+    // demand at least that many distinct cards for them.
+    const simultaneous = new Map(); // skin → how many of it this phase holds
+    for (const e of ph.entities ?? []) {
+      if (HOSTILE_ROLES.includes(e.role)) simultaneous.set(e.skin, (simultaneous.get(e.skin) ?? 0) + 1);
+    }
     for (const e of ph.entities ?? []) {
       const at = `${w}:${ph.id}/${e.id}`;
       if (HOSTILE_ROLES.includes(e.role)) {
         const use = encounterUseFor(e.role);
+        const need = Math.max(2, simultaneous.get(e.skin) ?? 1);
         const n = boundCards(items, use, e.skin, ph.id).length;
-        if (n < 2) fail(at, `coverage: hostile skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥2`);
+        if (n < need) fail(at, `coverage: hostile skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${need} (${simultaneous.get(e.skin)} of them stand in ${ph.id} at once)`);
       } else if (e.role === "guardian") {
         // a guardian raises three different pools: chalk hits (encounter),
         // knot windows (boss) and the chapter's last act (finale)
@@ -204,6 +279,9 @@ function checkNoTwins(file, items) {
     if (t.kind === "order") return `order:${t.orderedChips.join("|")}`;
     if (t.kind === "mistake") return `mistake:${t.sentence.join("|")}`;
     if (t.kind === "oddone") return `oddone:${[...t.items].sort().join("|")}`;
+    // R3-15: two restore cards offering the same four names ARE the same item —
+    // the colour step is a second question about the same choice, not a new one.
+    if (t.kind === "restore") return `restore:${[...t.nameOptions].sort().join("|")}`;
     return null;
   };
   for (const t of items) {

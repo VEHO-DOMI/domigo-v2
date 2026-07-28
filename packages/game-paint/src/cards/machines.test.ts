@@ -2,22 +2,50 @@ import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import { GameTasksFileV2 } from "@domigo/content-schema";
+import type { GameTaskV2 } from "@domigo/content-schema";
 import {
   MACHINES, autoSolve, normText, spellSlots, spellTrayDisabled,
   choiceMachine, typedMachine, spellMachine, orderMachine,
-  oddMachine, wheelMachine, mistakeMachine, memoryMachine,
+  oddMachine, wheelMachine, mistakeMachine, memoryMachine, restoreMachine,
   WHEEL_ITEM_H, wheelIndexAt, wheelLockActions, wheelScrollFor, wheelStep,
 } from "./machines.ts";
 
-const exemplars = GameTasksFileV2.parse(
+const shipped = GameTasksFileV2.parse(
   JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../../../content/corpus/stories/g1.st.lost-pages/paint/ch01.tasks.v2.json"), "utf8")),
 ).items;
-const byKind = <K extends (typeof exemplars)[number]["kind"]>(k: K) =>
-  exemplars.find((t) => t.kind === k)! as Extract<(typeof exemplars)[number], { kind: K }>;
+
+// PK-R3b · R3-13 — THE PARITY SUITE AFTER THE DISTRIBUTION MAP.
+// This suite used to derive its exemplars purely from ch01, and asserted that
+// they covered all eight kinds. Then doc 41 §1 shrank ch01's field palette and
+// the chapter stopped shipping a `spell` card at all — so a machine the engine
+// still owns (ch02 debuts spell in its own field) lost its only proof.
+//
+// The fix keeps content as the source of truth and makes the GAP explicit: a
+// kind no shipped chapter uses is covered by a declared fixture, and the suite
+// fails if a fixture ever shadows a kind the content DOES ship. Coverage of the
+// machine registry stays total either way — which is the actual law.
+const FIXTURES: Partial<Record<GameTaskV2["kind"], GameTaskV2>> = {
+  spell: {
+    id: "fixture.spell", use: "encounter", kind: "spell",
+    stimulus: { type: "entity", showsDe: "Ein Stift wartet auf sein Wort" },
+    storyDe: "Buchstabiere ihn!", answer: "pen", extraLetters: "bc", skins: ["pen"],
+  },
+};
+const exemplars: GameTaskV2[] = [...shipped, ...Object.values(FIXTURES)];
+const byKind = <K extends GameTaskV2["kind"]>(k: K) =>
+  exemplars.find((t) => t.kind === k)! as Extract<GameTaskV2, { kind: K }>;
 
 // ── PARITY: the winning path grades correct for EVERY exemplar ────────────────
 describe("card machines · parity — every exemplar auto-solves to correct", () => {
-  it("covers all 8 kinds", () => expect(new Set(exemplars.map((t) => t.kind)).size).toBe(8));
+  it("every machine in the registry has an exemplar", () => {
+    expect([...new Set(exemplars.map((t) => t.kind))].sort()).toEqual(Object.keys(MACHINES).sort());
+  });
+  it("no fixture shadows a kind the shipped content actually carries", () => {
+    const live = new Set(shipped.map((t) => t.kind));
+    for (const k of Object.keys(FIXTURES)) {
+      expect(live.has(k as GameTaskV2["kind"]), `${k} is shipped in ch01 — delete its fixture and test the real card`).toBe(false);
+    }
+  });
   for (const t of exemplars) it(`${t.id} (${t.kind}) → correct`, () => expect(autoSolve(t)).toBe("correct"));
 });
 
@@ -251,6 +279,44 @@ describe("normText", () => {
   });
 });
 
-it("MACHINES covers exactly the 8 kinds", () => {
-  expect(Object.keys(MACHINES).sort()).toEqual(["choice", "memory", "mistake", "oddone", "order", "spell", "typed", "wheel"]);
+// ── restore (PK-R3b · R3-15) ──────────────────────────────────────────────────
+describe("restore — name it, then give the colour back", () => {
+  const t = byKind("restore");
+  it("pending until BOTH steps are answered", () => {
+    const s0 = restoreMachine.init(t);
+    expect(restoreMachine.grade(s0)).toBe("pending");
+    const named = restoreMachine.act(s0, { pickName: t.name });
+    expect(named.step).toBe("colour");
+    expect(restoreMachine.grade(named)).toBe("pending"); // half-restored is not restored
+    expect(restoreMachine.grade(restoreMachine.act(named, { pickColour: t.colour }))).toBe("correct");
+  });
+  it("a wrong NAME ends the card wrong — the colour step is never reached", () => {
+    const s0 = restoreMachine.init(t);
+    const bad = s0.nameOptions.find((o) => o !== t.name)!;
+    const after = restoreMachine.act(s0, { pickName: bad });
+    expect(after.step).toBe("done");
+    expect(restoreMachine.grade(after)).toBe("wrong");
+  });
+  it("a wrong COLOUR after the right name is still wrong", () => {
+    const named = restoreMachine.act(restoreMachine.init(t), { pickName: t.name });
+    const bad = named.colourOptions.find((o) => o !== t.colour)!;
+    expect(restoreMachine.grade(restoreMachine.act(named, { pickColour: bad }))).toBe("wrong");
+  });
+  it("the two rows shuffle INDEPENDENTLY — the colour cannot be read off the name", () => {
+    // both rows seeded from the same task id would move in lockstep, so a child
+    // who learned „the answer is the second one" would be right twice.
+    const many = shipped.filter((x) => x.kind === "restore");
+    expect(many.length).toBeGreaterThan(1);
+    const nameAt = many.map((x) => restoreMachine.init(x).nameOptions.indexOf(x.name));
+    const colourAt = many.map((x) => restoreMachine.init(x).colourOptions.indexOf(x.colour));
+    expect(nameAt).not.toEqual(colourAt);
+  });
+  it("an action for the wrong step is ignored, not mis-graded", () => {
+    const s0 = restoreMachine.init(t);
+    expect(restoreMachine.act(s0, { pickColour: t.colour })).toEqual(s0);
+  });
+});
+
+it("MACHINES covers exactly the 9 kinds", () => {
+  expect(Object.keys(MACHINES).sort()).toEqual(["choice", "memory", "mistake", "oddone", "order", "restore", "spell", "typed", "wheel"]);
 });

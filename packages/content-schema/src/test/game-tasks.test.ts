@@ -130,9 +130,18 @@ test("gameTasks@2 — the ch01 calibration exemplars all parse + cover every kin
   assert.equal(r.success, true, `exemplars must parse: ${r.success ? "" : JSON.stringify(r.error.issues)}`);
   if (!r.success) return;
   const kinds = new Set(r.data.items.map((i) => i.kind));
-  for (const k of ["choice", "wheel", "spell", "order", "oddone", "mistake", "memory", "typed"]) {
-    assert.ok(kinds.has(k as never), `exemplar set must include a ${k}`);
-  }
+  // PK-R3b · R3-13 — the DISTRIBUTION MAP (doc 41 §1) decides what ch01 carries,
+  // so this list is the law rather than an inventory. ch01 is the tutorial: its
+  // FIELD serves choice · wheel · restore · oddone, the boss keeps its scripted
+  // ritual (mistake · order · memory) and the finale its typed word.
+  // `spell` deliberately LEFT the chapter — it debuts in ch02's field — which is
+  // why this assertion is written as an exact set: a kind quietly reappearing in
+  // ch01 is as much a regression as one quietly vanishing.
+  assert.deepEqual(
+    [...kinds].sort(),
+    ["choice", "memory", "mistake", "oddone", "order", "restore", "typed", "wheel"],
+    "ch01 carries exactly the kinds doc 41 §1 allows it",
+  );
   // every exemplar is invariant-clean (belt and braces beside the superRefine)
   for (const it of r.data.items) assert.deepEqual(taskInvariantErrors(it), [], `${it.id} invariants`);
 });

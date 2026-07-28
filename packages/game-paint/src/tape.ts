@@ -39,6 +39,19 @@ export interface TapeExpect {
    *  "nothing happened". A tape that ends with no present friend has lost the
    *  kindness economy, and that is now a failure the suite can see. */
   redeemedPresent?: boolean;
+  /** PK-R3b · R3-16: Regel-Seiten and Bonus-Bücher this run walked into. A
+   *  collectible the pilot never touches is not proof it is takeable — and a
+   *  page that stops being takeable after a grid edit is exactly the silent
+   *  regression the letter counts already guard against. */
+  tipsGot?: number;
+  booksGot?: number;
+  /** PK-R3b · M-B: did this run end the CHAPTER — i.e. did the shell's
+   *  chapter-end sequence (score page → door out) actually fire? The sequence
+   *  lives in React, but its trigger is a sim event, and this is that trigger
+   *  modelled exactly as PaintGame models it: an exit whose destination is
+   *  „done". A phase that stops resolving to the end of the chapter now fails
+   *  here rather than in a playtest. */
+  scorePageShown?: boolean;
 }
 
 export interface PhaseTape {
@@ -111,9 +124,12 @@ export interface ReplayResult {
 export interface ChapterShellState {
   /** PaintGame.cageHintShownRef: the fist hint teaches once, then never again. */
   cageHintShown: boolean;
+  /** PK-R3b · R3-16 — PaintGame's tipsTakenRef/booksTakenRef: a Regel-Seite
+   *  taken before the Kleckskammer is still taken when the phase remounts. */
+  pickedUp: string[];
 }
 
-export const newChapterShell = (): ChapterShellState => ({ cageHintShown: false });
+export const newChapterShell = (): ChapterShellState => ({ cageHintShown: false, pickedUp: [] });
 
 /**
  * Replay a phase tape through the REAL Sim — the same shell contract
@@ -136,10 +152,13 @@ export const replayPhaseTape = (
     grantedAbilities: () => abilities,
     freedCageIds: () => freed,
     cageHintShown: () => shell.cageHintShown,
+    collectedPickupIds: () => shell.pickedUp,
   });
   let exited = false;
   let exitTo: string | null = null;
   let tasksSolved = 0;
+  let tipsGot = 0;
+  let booksGot = 0;
   const grantsPicked: string[] = [];
 
   const handle = (evs: SimEvent[]): void => {
@@ -165,6 +184,17 @@ export const replayPhaseTape = (
           shell.cageHintShown = true;
           sim.setOverlay(false); // the hint card shown, then dismissed
         }
+      } else if (ev.type === "tip") {
+        // PK-R3b · R3-16: a rule page FREEZES the world (it is there to be read),
+        // so the shell owes it a dismissal — exactly like the grant card. Without
+        // this branch a pilot who walks over a Regel-Seite stops for good, and
+        // every tape in the chapter would fail on a card nobody can see.
+        tipsGot++;
+        if (!shell.pickedUp.includes(ev.id)) shell.pickedUp.push(ev.id);
+        sim.setOverlay(false);
+      } else if (ev.type === "book") {
+        booksGot++;
+        if (!shell.pickedUp.includes(ev.id)) shell.pickedUp.push(ev.id);
       } else if (ev.type === "exit" && !exited) {
         exited = true;
         exitTo = ev.to;
@@ -185,6 +215,11 @@ export const replayPhaseTape = (
     guardianDown: sim.guardianDefeated,
     tasksSolved,
     redeemedPresent: sim.world.entities.some((e) => e.redeemed && (e.state === "joy" || e.state === "rest")),
+    tipsGot,
+    booksGot,
+    // M-B: PaintGame opens the score page on exactly this condition — an exit
+    // whose destination is the end of the chapter (PaintGame.handoff).
+    scorePageShown: exitTo === "done",
   };
   return { exited, exitTo, ticksUsed: t, tasksSolved, grantsPicked, world };
 };
@@ -228,6 +263,9 @@ export const worldAssertionErrors = (expect: TapeExpect | undefined, world: Repl
   cmp("guardianDown", world.guardianDown);
   cmp("tasksSolved", world.tasksSolved);
   cmp("redeemedPresent", world.redeemedPresent);
+  cmp("tipsGot", world.tipsGot);
+  cmp("booksGot", world.booksGot);
+  cmp("scorePageShown", world.scorePageShown);
   return errs;
 };
 

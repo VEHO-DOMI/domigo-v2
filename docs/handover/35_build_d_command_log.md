@@ -1868,3 +1868,190 @@ or a phase remounted while a panel is up) asserts the freeze at the moment it ex
   front of a six-year-old. It must be fixed before any surface does.
 - The W4b riders (`renderTaskText` leaking a memory card's hidden pairs; ch01's missing
   shape-plausible distractor for „board") are R3b's, untouched here.
+
+---
+
+# PK-R3b · DIE FARBE KEHRT ZURÜCK (R3-15/16/17 · M-A · M-B · R3-14)
+
+Branch `pb-r3b-color`, based on `881601c`. The second half of the R3-8/…/R3-17
+packet, after PK-R3a took the overlays/wheel/speaker seam.
+
+## R3-15 · the colour mechanic (doc 41 §2)
+
+`restore` is a NEW task kind, two steps on the `mistake` machine's proven shape:
+NAME the greyed being (four options) → GIVE ITS COLOUR BACK (three, with paint
+swatches). The card carries `colourAskDe`, the German line the being says at
+step 2, and it is a REQUIRED field for a reason: nothing on a grey sprite can
+tell a six-year-old what colour it used to be, so without it the second step
+would be unanswerable — the exact class R3-12 removed from the boss.
+
+**The desaturation grammar costs no new art.** A drained being is drawn twice:
+its own sheet, and a grey-tinted copy of *the same cell* over it at α 0.72.
+Every existing and future skin is covered by construction, and the grey follows
+whatever pose the being is in. Redeem ⇒ the wash lerps to 0 over 36 t, inside
+R3-5's joy lap, so the flood and the Freudenrunde are one beat.
+
+Measured in the browser (own dev instance, p1):
+
+| what | measured |
+|---|---|
+| beings drained in p1 | **4** — two pencils, the eraser, the cage. Door, Regel-Seite and Bonus-Buch untouched |
+| the wash tracks its being | same texture cell, same x/y, same flip, every frame |
+| ghosting × wash compose | cage reads **0.324** = 0.72 × 0.45 — the transparency grammar survives intact |
+| the colour flood | 0.72 → 0.459 → 0.306 → 0.153 → 0 over 36 t, then `visible: false` |
+| a restore card end to end | step 1 four names → step 2 the German line + three swatches → verdict beat, world still frozen |
+
+## R3-16/17 · Regel-Seiten, Bonus-Bücher, the HUD, the magnet (doc 41 §5, doc 42 §4)
+
+Two static-state roles (`tip`, `book`). ch01 hides **3 Regel-Seiten** — placed in
+the two regions doc 38 §5 records as EMPTY (p1's upper wall, p3's left
+page-half) plus the classroom — and **3 Bonus-Bücher**. The `tip-honesty` law is
+the letter-honesty pattern applied to them: DECLARED = PLACED = REACHABLE, plus
+a Merksatz that is non-empty, unique per topic, register-clean and ≤78 chars.
+
+**The magnet lives in the SIM, not the renderer.** A letter inside 1.6 tiles
+closes 22 % of the gap per tick and is tested for pickup AT ITS NEW PLACE. Keen's
+numbers come over as ratios of THIS world's tile — a literal pixel port of a
+48-px-tile game would have made the field five tiles wide here. Putting the
+drift in the renderer instead would have meant a letter visibly flying into the
+child and not counting until their body reached its original cell, which is the
+class of lie this program exists to remove.
+
+`lettersCollected` is a new monotone counter: the Bilanz reports what was FOUND,
+so paying Klecks no longer counts letters back off a child's score.
+
+## M-B · the chapter-end sequence (doc 41 §5, and the PK-R1 rider)
+
+Beat 1 restoration (unchanged) → beat 2 **the score page**, where the book turns
+a page and writes the Bilanz itself → beat 3 the door out. Both new beats render
+INSIDE the canvas. The old „Kapitel 1 geschafft!" panel rendered *below* it, and
+in Koki's window the game fills the viewport — so a chapter that ended put its
+own congratulation under the fold and read as a hang, the very frame R3-1 spent
+a packet on.
+
+Every number on that page is COUNTED, never authored — and counting them found a
+live defect: **the HUD said „/6" while the chapter holds SEVEN cages** (the
+arena's is the seventh, and it is punchable). The denominator now comes from the
+world it describes. Flagged for Koki in the PR: doc 41 §5 writes „x/6", and if
+six is the intended fiction then the arena cage wants a different role, not a
+different label.
+
+## W6 · R3-14 contextualization
+
+The „Nice to meet you" rescue card is gone — Merle is a classmate the child
+already knows, so a rescue is no first meeting (the slot is a restore card now).
+The gathering place is NAMED at the FIRST rescue, so every later „zum Lager"
+has a referent.
+
+## THE BLIND GATE — what it cost and what it caught
+
+Two independent verifiers, given only `renderTaskText` output, then a third on
+the repaired set. **This is the most valuable thing in the packet.** Round 1
+returned three BLOCKERS and a systemic register failure, all mine:
+
+- „Apfel-Blüten-Ton" for *pink* with **green** in the option row — *Apfelgrün* is
+  a standard German colour word, so the strongest cue pointed at the distractor.
+- „Sag ihr etwas Nettes!" with **Sorry!** on offer — two defensible answers.
+- „Worauf gehst du gerade?" with **the desk** on offer, in a platformer where the
+  rejected answer can be literally true at the moment of asking.
+- „bunt wie das Gras" (bunt = multi-coloured; grass is not), „Was trägst du nicht
+  **an**?" (not German), and the „…-Ton" compounds — adult art vocabulary in a
+  card for six-year-olds.
+
+**The structural lesson, applied to the class rather than the instances:** the
+first pass hid each answer behind an invented metaphor to dodge the giveaway
+checker. The card's actual job is the unit's colour vocabulary DE→EN, so the
+being now simply says the German colour word — and the giveaway checker never
+fired on it, because it compares tokens and *blau* is not *blue*. I had been
+defending against a check that was never going to complain.
+
+**And the colours are now the ones the ART restores**, measured off the shipped
+sheets rather than assumed: eraser blue (hue 214°), exercise book and pencil
+case green, school bag brown, pen gold. The **pencil lost its restore card
+entirely** — its sheet is grey wood, so there was no colour to give back and the
+card would have promised a yellow the world never floods in.
+
+Round 2 cleared every round-1 blocker and raised smaller ones, all fixed: „vier
+Beine" also describes a desk; `English book` vs `exercise book` is a coin flip on
+a grey sprite; two of four odd-one-outs were the same animal joke (one is now a
+within-category split); and one bracket still named its own answer („eine Tür").
+
+## Two verifier findings promoted to MACHINE CHECKS
+
+A reviewer's finding is a specification for a guard rail, not a patch:
+
+1. **`restore` may not offer grey.** Grey is the state the card undoes; offering
+   it back reads to a literal child as „leave it as it is". Structural, in
+   `taskInvariantErrors`.
+2. **THE DESATURATION LAW** (`check-game-tasks` layer 10): a card bound to a
+   drained skin may not call it „weiß"/„bunt"/„golden" — the screen says grey.
+   Written after the wash landed, it immediately turned **four** pre-existing
+   cards red, one of which my own hand-grep had missed. Guardrail beat vigilance
+   inside ten minutes.
+
+Also fixed here: `renderTaskText` printed „Schritt 1 — wer bist du?", a line the
+skin never renders (**P-18 again, in the projection I had just written**), and
+the W4b rider — the memory projection printed „Paare (verdeckt): 3↔three | …",
+i.e. the answer key dressed as the student's view. Every blind verdict ever
+returned on a memory card was worthless. It now prints the face-down board,
+which honestly means a memory card cannot be blind-solved at all.
+
+## Gates
+
+| gate | result |
+|---|---|
+| `pnpm typecheck` | 0 errors |
+| `pnpm lint` | 0 errors |
+| `pnpm test` | **340 passed** in game-paint (19 files), whole monorepo exit 0 |
+| `pnpm -F web build` | Compiled successfully |
+| `pnpm check:bundle` | OK — Phaser isolated, 310 KB gz |
+| `node scripts/check-game-tasks.mjs` | OK — 49 tasks, all ten layers green |
+| tapes | all five re-recorded; p2 collects **5 → 7** letters — exactly what the magnet predicts, and nothing else moved |
+
+**Tampers (each seen RED, then restored GREEN):** the palette allowlist · the
+`tip-honesty` law (deleted ⇒ 4 guards die) · the restore two-step (a wrong name
+let through ⇒ 1 red) · the colour wash (nothing drained ⇒ 2 red) · the no-grey
+law · the desaturation law.
+
+## Honesty clause — what I did NOT verify
+
+- **The combat half of the chapter end was skipped.** I took the guardian down
+  through `solveTask` per knot rather than by deflecting chalk, so what is proven
+  here is the finale → console → score page → door chain, not the duel (PK-R2
+  proved that, and nothing here touches it).
+- **No layout claim comes from the browser pane.** Its viewport reports 0×0, so
+  „inside the canvas" is proven STRUCTURALLY (the panels share the canvas host's
+  positioned wrapper; the old below-canvas panel is gone from the tree) and
+  visually by screenshot, which forces a real paint. Not by measurement.
+- **The pane wedges Phaser's loader** (143 files parked on the list, nothing in
+  flight). Forcing `load.loadComplete()` unsticks it but leaves those stems on
+  the procedural fallbacks — so the screenshots show placeholder scenery. The
+  cards, chips, wash and panels are real; the world art in them is not.
+- **Reduced motion was not exercised at runtime**, same as PK-R3a: this harness
+  reports `no-preference` and offers no override. `washAlphaFor` has the
+  end-state path unit-tested; a real pass is a checklist item for Koki.
+- **The FEEL is Koki's call:** whether the grey reads as sad or as broken art,
+  whether the two-step restore is a beat or a chore, whether the score page earns
+  its page turn.
+- **The blind gate covered the 15 changed cards, not all 49.** The 34 untouched
+  cards carry their earlier verdicts, except where the new desaturation law
+  reached them.
+
+## Findings filed, NOT acted on
+
+- **A verifier's deepest critique is a DESIGN question, not a bug:** much of ch01
+  is answerable with no English at all, because every `showsDe` names the being
+  in German before the card asks for it (`[Der Bleistift …]` → „a pencil"). That
+  bracket exists BY LAW — the F22/G10 stimulus rule says every card must state
+  what on screen carries the answer. Overturning it is Fable's call, not this
+  packet's. It is the single highest-value open question in the ch01 card set.
+- The colour step is a cognate match in four of five cards (blau/blue,
+  grün/green, braun/brown). That is a property of German, and the alternative —
+  picking a non-cognate colour — would mean promising a colour the art does not
+  restore. The trade was taken deliberately.
+- `applyKnockback`'s discarded return value (filed in PK-R3a) is still open; it
+  is PK-R4's by the passover's own rider.
+- The `{trigger: "tafel", on: "redeemed"}` link in the arena **never fires**:
+  `solveTask` routes a guardian through `guardianKnotSolved`, which does not call
+  `applyLinks("redeemed")`. cage6 is not `hidden`, so nothing is lost today — but
+  the link is dead code that reads as live design.

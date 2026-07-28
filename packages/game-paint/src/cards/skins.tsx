@@ -13,7 +13,7 @@ import {
 import type {
   ChoiceState, ChoiceAction, TypedState, TypedAction, SpellState, SpellAction,
   OrderState, OrderAction, OddState, OddAction, WheelState, WheelAction,
-  MistakeState, MistakeAction, MemoryState, MemoryAction,
+  MistakeState, MistakeAction, MemoryState, MemoryAction, RestoreState, RestoreAction,
 } from "./machines.ts";
 
 export type Dispatch<A> = (a: A | A[]) => void;
@@ -315,6 +315,75 @@ export function MistakeCard({ state, dispatch }: { state: MistakeState; dispatch
       {state.sentence.map((w, i) => (
         <button key={i} style={{ ...tile, textTransform: "none" }} onClick={() => dispatch({ tapWord: i })}>{w}</button>
       ))}
+    </div>
+  );
+}
+
+// ── PK-R3b · R3-15 · DIE FARBKARTE — ch01's core mechanic (doc 41 §2) ────────
+// Two steps on one card, with the step you are on shown as a painted
+// breadcrumb: the child always knows there is a second half coming, so the
+// colour row does not arrive as a surprise second question.
+//
+// Step 2's swatches are the honest part. A colour word is the one bit of
+// vocabulary a card can SHOW rather than describe, so each option carries its
+// own paint blob — a child who cannot yet read „yellow" can still match the
+// word to the colour the being asked for in German, which is exactly the
+// A1 bridge the unit is teaching.
+const SWATCHES: Record<string, string> = {
+  red: "#c4402f", yellow: "#e8b93a", blue: "#3b5ea8", green: "#59a83c",
+  orange: "#d97a2b", brown: "#8a5a3b", pink: "#d97a9a", white: "#fbf7ec",
+  black: "#243048", grey: "#9a958c",
+};
+
+const stepDot = (on: boolean): React.CSSProperties => ({
+  width: 9, height: 9, borderRadius: "50%", display: "inline-block",
+  background: on ? "#8a5a2b" : "transparent", border: "1.5px solid #c9a36a",
+});
+
+export function RestoreCard({ state, dispatch }: { state: RestoreState; dispatch: Dispatch<RestoreAction> }): React.ReactElement {
+  const onColour = state.step === "colour";
+  return (
+    <div style={{ ...col, alignItems: "stretch" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 6, justifyContent: "center", marginBottom: 2 }}>
+        <span style={stepDot(true)} />
+        <span style={stepDot(onColour)} />
+        <span style={{ fontSize: 12, color: "#8a7a58", fontFamily: "var(--font-label, inherit)", marginLeft: 4 }}>
+          {onColour ? "2 · die Farbe" : "1 · der Name"}
+        </span>
+      </div>
+
+      {!onColour && (
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+          {state.nameOptions.map((o) => (
+            <button key={o} style={{ ...cardBtn }} onClick={() => dispatch({ pickName: o })}>{o}</button>
+          ))}
+        </div>
+      )}
+
+      {onColour && (
+        <>
+          <p style={{ fontSize: 15, color: "#4a4030", margin: "0 0 8px" }}>{state.colourAskDe}</p>
+          <div style={rowWrap}>
+            {state.colourOptions.map((o) => (
+              <button
+                key={o}
+                style={{ ...cardBtn, display: "flex", alignItems: "center", gap: 7 }}
+                onClick={() => dispatch({ pickColour: o })}
+              >
+                <span
+                  aria-hidden
+                  style={{
+                    width: 16, height: 16, borderRadius: "50%",
+                    background: SWATCHES[o] ?? "#c9a36a", border: "1.5px solid #8a7a58",
+                    display: "inline-block", flex: "0 0 auto",
+                  }}
+                />
+                {o}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

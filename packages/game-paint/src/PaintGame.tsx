@@ -54,16 +54,31 @@ declare global {
 interface OverlayState {
   req: TaskRequest;
   item: GameTaskItem | null; // null = a card without a task (powerup/pay/ceremony)
-  card: "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend" | "cagehint" | "goal";
+  card: "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend" | "cagehint" | "goal"
+    | "tip" | "score" | "out";
   attempts: number;
   typed: string;
   /** PB-F1/F2-20: which side of the canvas the card sits on — always AWAY from
    *  the being it is about, so „schau sie an" is physically possible. */
   align: CardAlign;
-  ceremony?: { skin: string; classmate?: string };
+  ceremony?: { skin: string; classmate?: string; first: boolean };
   bonusend?: { got: number; total: number; timeout: boolean };
   /** bonuspay: what THIS door costs, read from its own params (PB-R1 · R3-2). */
   price?: number;
+  /** tip: the Regel-Seite's own rule, carried from the level (PK-R3b · R3-16). */
+  tip?: { topicDe: string; merksatzDe: string };
+}
+
+/** PK-R3b · M-B · THE CHAPTER'S BILANZ (doc 41 §5, beat 2). Every number the
+ *  score page writes, gathered in one place — and every one of them COUNTED
+ *  from the level or the run, never authored. The score page is the last thing
+ *  a child reads about their own play, so a wrong number there is the most
+ *  expensive wrong number in the chapter. */
+interface Bilanz {
+  freed: number; freedTotal: number;
+  tips: number; tipsTotal: number;
+  letters: number; lettersTotal: number;
+  books: number; booksTotal: number;
 }
 
 /** The skin of the being a request is about (a shell ceremony is about none). */
@@ -89,6 +104,20 @@ const priceOfDoor = (level: PaintLevel, id: string | null): number => {
  *  the card can never promise a number the level does not contain (P-14). */
 const bonusLetterTotal = (level: PaintLevel): number =>
   level.bonus ? level.bonus.rows.join("").split("*").length - 1 : 0;
+
+/** PK-R3b · M-B: the CHAPTER's letter total — the three phases plus the arena,
+ *  deliberately NOT the Kleckskammer. Klecks' room has its own end card with its
+ *  own count, and folding its twelve letters into the chapter's line would tell
+ *  a child who never paid the door that they missed twelve of them. */
+const chapterLetterTotal = (level: PaintLevel): number =>
+  [...level.phases, ...(level.arena ? [level.arena] : [])]
+    .reduce((n, p) => n + p.rows.join("").split("*").length - 1, 0);
+
+/** How many beings of a role the chapter holds, counted across every phase the
+ *  child plays (the bonus room excluded, for the reason above). */
+const chapterRoleCount = (level: PaintLevel, role: string): number =>
+  [...level.phases, ...(level.arena ? [level.arena] : [])]
+    .reduce((n, p) => n + p.entities.filter((e) => e.role === role).length, 0);
 
 export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase }: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
@@ -129,6 +158,18 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   /** PB-F3: the cage hint is a once-per-chapter teacher, not a nag. */
   const cageHintShownRef = useRef(false);
   const [freedCount, setFreedCount] = useState(0);
+  // ── PK-R3b · R3-16/17 · the collectibles that OUTLIVE a phase mount ────────
+  // Coming back from the Kleckskammer remounts the phase you left, so anything
+  // the chapter counts has to be remembered out here — exactly like freed cages.
+  /** ids taken this chapter, kept apart because the HUD counts them apart. */
+  const tipsTakenRef = useRef<string[]>([]);
+  const booksTakenRef = useRef<string[]>([]);
+  const [tipsCount, setTipsCount] = useState(0);
+  const [booksCount, setBooksCount] = useState(0);
+  /** letters FOUND this chapter: banked from finished phases + this phase's own
+   *  running count. Found, not held — see Sim.lettersCollected. */
+  const bankedLettersRef = useRef(0);
+  const phaseLettersRef = useRef(0);
   const overlayRef = useRef<OverlayState | null>(null);
   overlayRef.current = overlay;
   const mountPhaseRef = useRef<((pid: string) => void) | null>(null);
@@ -183,6 +224,12 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       return;
     }
     if (o.card === "goal") setBooted(true);
+    // M-B beat 2 → beat 3: the score page taps forward to the door out. Both
+    // live inside the canvas, so the chapter never ends off screen.
+    if (o.card === "score") {
+      setOverlay({ ...o, card: "out", req: { use: "quickfire", ctx: { type: "ceremony", beat: "out" } } });
+      return;
+    }
     sceneRef.current?.setOverlay(false);
     setOverlay(null);
   };
@@ -253,10 +300,29 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         grantedAbilities: () => abilitiesRef.current,
         freedCageIds: () => freedRef.current,
         cageHintShown: () => cageHintShownRef.current,
+        collectedPickupIds: () => [...tipsTakenRef.current, ...booksTakenRef.current],
         airModel,
         callbacks: {
           onExit: (next) => handoff(next),
-          onLetters: (got, total) => setLetters({ got, total }),
+          onLetters: (got, total) => {
+            setLetters({ got, total });
+            // the Bilanz counts what was FOUND, so it reads the monotone counter
+            // rather than this purse (paying Klecks must not un-find letters)
+            phaseLettersRef.current = sceneRef.current?.getState()?.lettersCollected ?? 0;
+          },
+          onTip: (id, topicDe, merksatzDe) => {
+            if (!tipsTakenRef.current.includes(id)) tipsTakenRef.current = [...tipsTakenRef.current, id];
+            setTipsCount(tipsTakenRef.current.length);
+            setOverlay({
+              req: { use: "quickfire", ctx: { type: "ceremony", beat: "tip" } },
+              item: null, card: "tip", attempts: 0, typed: "", align: "center",
+              tip: { topicDe, merksatzDe },
+            });
+          },
+          onBook: (id) => {
+            if (!booksTakenRef.current.includes(id)) booksTakenRef.current = [...booksTakenRef.current, id];
+            setBooksCount(booksTakenRef.current.length);
+          },
           onTask: (req) => {
             const align = alignAwayFrom(idOfCtx(req.ctx));
             if (req.use === "bonuspay") {
@@ -298,7 +364,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           onCageFreed: (id, skin, classmate, count) => {
             freedRef.current = [...freedRef.current, id];
             setFreedCount(count);
-            setOverlay({ req: { use: "rescue", ctx: { type: "cage", id, skin, classmate } }, item: null, card: "ceremony", attempts: 0, typed: "", align: "center", ceremony: { skin, classmate } });
+            setOverlay({ req: { use: "rescue", ctx: { type: "cage", id, skin, classmate } }, item: null, card: "ceremony", attempts: 0, typed: "", align: "center", ceremony: { skin, classmate, first: count === 1 } });
           },
           onGuardianDown: (id, skin) => {
             // F2-24: the chapter's climax is PLAYED, not narrated. The finale
@@ -331,6 +397,13 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       // P-49: NEVER from inside a step — defer, swap, and watchdog the swap.
       window.setTimeout(() => {
         let target = next;
+        // PK-R3b · M-B: bank the phase we are LEAVING before its Sim is thrown
+        // away. The Kleckskammer is excluded on purpose (chapterLetterTotal),
+        // so a bonus run neither adds to the Bilanz nor is missed from it.
+        if (level.bonus === undefined || sceneRef.current?.getState()?.phase !== level.bonus.id) {
+          bankedLettersRef.current += phaseLettersRef.current;
+        }
+        phaseLettersRef.current = 0;
         if (next === "boss") target = level.arena?.id ?? "done";
         if (next === "bonus-timeout" || (level.bonus && next === level.bonus.exit.to && sceneRef.current?.getState()?.phase === level.bonus.id)) {
           // leaving the Kleckskammer (timeout or its exit): show the end card, return
@@ -343,8 +416,19 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           bonusReturnRef.current = null;
         }
         if (target === "done") {
+          // PK-R3b · M-B · THE CHAPTER-END SEQUENCE (doc 41 §5, beat 2 → 3).
+          // The congratulation used to render UNDER the canvas. In Koki's window
+          // the game fills the viewport, so a chapter that ended put its payoff
+          // below the fold and read as a hang — the exact frame R3-1 spent a
+          // packet on. The sequence now resolves INSIDE the canvas, over the
+          // last frame of the world the child just finished, which is where it
+          // belonged anyway: the book writes the Bilanz on its own page.
           game.scene.stop("paint");
           setDone(true);
+          setOverlay({
+            req: { use: "quickfire", ctx: { type: "ceremony", beat: "score" } },
+            item: null, card: "score", attempts: 0, typed: "", align: "center",
+          });
           return;
         }
         game.scene.stop("paint");
@@ -436,6 +520,20 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   // resolveCorrect on a correct answer and dismissCard on „Später".
   const restart = (): void => window.location.reload();
   const inBonus = level.bonus !== undefined && phaseId === level.bonus.id;
+  // R3-16/17 · every denominator on screen is COUNTED from the level, never
+  // typed into the copy. The HUD said „/6" while the chapter actually holds
+  // seven cages (the arena's is the seventh), which is precisely the class of
+  // drift the letter-honesty law exists to stop — so the number now comes from
+  // the world it describes and cannot go stale again.
+  const cageTotal = chapterRoleCount(level, "cage");
+  const tipTotal = level.tipsTotal ?? chapterRoleCount(level, "tip");
+  const bilanz: Bilanz = {
+    freed: freedCount, freedTotal: cageTotal,
+    tips: tipsCount, tipsTotal: tipTotal,
+    letters: bankedLettersRef.current + phaseLettersRef.current,
+    lettersTotal: chapterLetterTotal(level),
+    books: booksCount, booksTotal: chapterRoleCount(level, "book"),
+  };
 
   return (
     <div style={{ maxWidth: LOGICAL_W * RENDER_SCALE, margin: "0 auto", fontFamily: "var(--font-body, system-ui, sans-serif)", position: "relative" }}>
@@ -443,17 +541,23 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           build step, so the painted layer's animations ride in with the game
           they belong to — and travel with the package, not the app. */}
       <style>{PAINT_OVERLAY_CSS}</style>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", padding: "6px 2px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 2px", gap: 8 }}>
         <strong style={{ fontSize: 15, fontFamily: "var(--font-display, inherit)" }}>🖌 {phaseName}</strong>
-        {/* F2-33: every number on this bar says what it counts, and a counter
-            with nothing to count (the arena collects no letters) is not shown.
-            doc 42 §5: the chips wear the label face (the painted chips
-            themselves are PK-R3b's R3-17 work). */}
-        <span style={{ fontSize: 14, fontFamily: "var(--font-label, inherit)", fontWeight: 600 }}>
-          {freedCount > 0 && <span style={{ marginRight: 12 }}>🔓 Befreit: {freedCount}/6</span>}
-          {knots > 0 && <span style={{ marginRight: 12 }}>🪢 Knoten: {knots}</span>}
-          {inBonus && bonusLeft >= 0 && <span style={{ marginRight: 12 }}>⏱ {Math.ceil(bonusLeft / 60)}s</span>}
-          {letters.total > 0 && <span>✨ {level.collectNounDe}: {letters.got}/{letters.total}</span>}
+        {/* R3-17 · THE PAINTED CHIPS (doc 41 §5, presentation mined per doc 42
+            §5). The bar used to be a run of plain text on the page background;
+            each counter is now a chip in the book's own materials — gouache
+            cream, an amber contour, the label face — so the HUD belongs to the
+            game rather than to the web page around it.
+            F2-33 stands unchanged: every chip says what it counts, and a chip
+            with nothing to count is not drawn (the arena collects no letters,
+            and the Regel-Seiten chip waits until the chapter hides some). */}
+        <span style={{ display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "flex-end" }}>
+          {freedCount > 0 && <Chip icon="🔓" label="Befreit" value={`${freedCount}/${cageTotal}`} />}
+          {tipTotal > 0 && <Chip icon="📜" label="Regel-Seiten" value={`${tipsCount}/${tipTotal}`} />}
+          {booksCount > 0 && <Chip icon="📕" label="Bonus-Bücher" value={`${booksCount}`} />}
+          {knots > 0 && <Chip icon="🪢" label="Knoten" value={`${knots}`} />}
+          {inBonus && bonusLeft >= 0 && <Chip icon="⏱" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} />}
+          {letters.total > 0 && <Chip icon="✨" label={level.collectNounDe} value={`${letters.got}/${letters.total}`} />}
         </span>
       </div>
       {fatal !== null && (
@@ -469,18 +573,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           <Overlay
             o={overlay} level={level} onResolve={resolveCorrect} onDismiss={dismissCard} onPay={payBonus}
             letters={letters.got} bonusTotal={bonusLetterTotal(level)}
+            bilanz={bilanz} hubHref={hubHref} onRestart={restart}
           />
         )}
       </div>
-      {done && (
-        <div style={{ background: "#fdf7e6", border: "2px solid #e0a92a", borderRadius: 10, padding: 14, marginTop: 8, textAlign: "center" }}>
-          <p style={{ fontSize: 17, margin: "2px 0 8px" }}>
-            🎉 Kapitel 1 geschafft! Die Buchstaben fliegen zurück auf die Tafel — und {freedCount} von 6 Käfigen sind offen.
-          </p>
-          <button onClick={restart} style={btn}>↻ Noch einmal</button>
-          <a href={hubHref} style={{ ...btn, marginLeft: 10, textDecoration: "none", display: "inline-block" }}>← Zurück</a>
-        </div>
-      )}
       {coarse && !done && <TouchPad pad={padRef.current} />}
       {/* PB-F3 (the rest of F2-34): the bar only offers verbs you actually have —
           advertising the fist before Fibel gives it is what made the rattling
@@ -497,7 +593,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 // ── the overlay card ──────────────────────────────────────────────────────────
 
 function Overlay({
-  o, level, onResolve, onDismiss, onPay, letters, bonusTotal,
+  o, level, onResolve, onDismiss, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
 }: {
   o: OverlayState;
   level: PaintLevel;
@@ -506,6 +602,9 @@ function Overlay({
   onPay: (price: number) => void;
   letters: number;
   bonusTotal: number;
+  bilanz: Bilanz;
+  hubHref: string;
+  onRestart: () => void;
 }): React.ReactElement {
   const wrap: React.CSSProperties = { ...alignedWrap(o.align), background: "rgba(30, 24, 12, 0.35)" };
   const card: React.CSSProperties = {
@@ -546,6 +645,75 @@ function Overlay({
       "pb-page",
     );
   }
+  if (o.card === "tip") {
+    // R3-16 · A REGEL-SEITE (doc 41 §5). OSWIN tore the unit's rule pages out of
+    // the book and scattered them; finding one puts it back. The page shows the
+    // rule and nothing else — no question, no score, no „weiter so": it is the
+    // one moment in the chapter that is purely a gift.
+    return staged(
+      <div style={{ textAlign: "left" }}>
+        <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 2px", fontFamily: "var(--font-label, inherit)" }}>
+          Regel-Seite gefunden
+        </p>
+        <h2 style={{ fontSize: 19, lineHeight: 1.15, margin: "0 0 10px", color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>
+          📜 {o.tip?.topicDe}
+        </h2>
+        <p style={{ fontSize: 16, lineHeight: 1.45, margin: "0 0 14px", color: "#4a4030" }}>{o.tip?.merksatzDe}</p>
+        <button style={btn} onClick={() => onDismiss(o)}>Ins Buch kleben</button>
+      </div>,
+      "pb-page",
+    );
+  }
+  if (o.card === "score") {
+    // M-B · beat 2 — THE SCORE PAGE (doc 41 §5). The book turns a page and
+    // writes the chapter's Bilanz itself: no HUD panel, no stars, no grade. Every
+    // number is counted from the level and the run (see Bilanz), and the warm
+    // line is the freed friends' — the chapter is closed by the people in it.
+    const row = (icon: string, labelDe: string, got: number, total: number | null): React.ReactElement => (
+      <div key={labelDe} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", padding: "5px 0", borderBottom: "1px dashed #e0d3ae" }}>
+        <span style={{ fontSize: 15, color: "#4a4030" }}>{icon} {labelDe}</span>
+        <strong style={{ fontSize: 17, color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>
+          {total === null ? got : `${got} von ${total}`}
+        </strong>
+      </div>
+    );
+    const alle = bilanz.freed >= bilanz.freedTotal;
+    return staged(
+      <div style={{ textAlign: "left" }}>
+        <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 2px", fontFamily: "var(--font-label, inherit)" }}>
+          Das Buch schreibt mit
+        </p>
+        <h2 style={{ fontSize: 21, lineHeight: 1.15, margin: "0 0 10px", color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>
+          {level.name}
+        </h2>
+        {row("🔓", "Klassenkinder befreit", bilanz.freed, bilanz.freedTotal)}
+        {bilanz.tipsTotal > 0 && row("📜", "Regel-Seiten gefunden", bilanz.tips, bilanz.tipsTotal)}
+        {row("✨", level.collectNounDe + " gesammelt", bilanz.letters, bilanz.lettersTotal)}
+        {bilanz.booksTotal > 0 && row("📕", "Bonus-Bücher", bilanz.books, bilanz.booksTotal)}
+        <p style={{ fontSize: 15, margin: "14px 0 14px", color: "#7a6a4a", fontStyle: "italic", lineHeight: 1.45 }}>
+          {alle
+            ? "»Du hast uns alle gefunden!«, sagt Fibel. »Die Seite ist wieder voll.«"
+            : "»Danke!«, ruft die Klasse aus dem Lager. »Ein paar von uns warten noch.«"}
+        </p>
+        <button style={{ ...btn, fontSize: 16 }} onClick={() => onDismiss(o)}>Seite umblättern</button>
+      </div>,
+      "pb-page",
+    );
+  }
+  if (o.card === "out") {
+    // M-B · beat 3 — THE DOOR OUT. Inside the canvas, like the two beats before
+    // it: the chapter's last frame is never below the fold (the PK-R1 rider).
+    return staged(
+      <>
+        <p style={{ fontSize: 26, margin: "0 0 6px" }}>🚪✨</p>
+        <p style={{ fontSize: 17, margin: "0 0 10px" }}>
+          Die Buchstaben fliegen zurück auf die Tafel — und die Tür zum nächsten Kapitel geht auf.
+        </p>
+        <button onClick={onRestart} style={btn}>↻ Noch einmal</button>
+        <a href={hubHref} style={{ ...btn, marginLeft: 10, textDecoration: "none", display: "inline-block" }}>← Zurück</a>
+      </>,
+    );
+  }
   if (o.card === "grant") {
     return (
       <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
@@ -583,6 +751,13 @@ function Overlay({
     );
   }
   if (o.card === "ceremony") {
+    // W6 · R3-14 · CONTEXTUALIZATION (doc 41). Two fixes from Koki's replay:
+    //  · Merle is a classmate the child already KNOWS. „Nice to meet you" was
+    //    the wrong frame for a rescue, so that card is gone from the set (it is
+    //    a restore card now) and she simply greets a friend here.
+    //  · „Richtung Lager" was said as if the camp had ever been introduced. The
+    //    FIRST rescue now names it — after that the phrase has a referent, and
+    //    every „zum Lager" in the chapter reads.
     const merle = o.ceremony?.classmate === "merle";
     return (
       <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
@@ -590,11 +765,16 @@ function Overlay({
         {merle ? (
           <>
             <p style={{ fontSize: 17, margin: "0 0 2px" }}><strong>Merle</strong> hüpft aus der Federtasche!</p>
-            <p style={{ fontSize: 16, margin: "0 0 2px" }}>„Hello! I'm Merle. Thanks!"</p>
-            <p style={{ fontSize: 13, color: "#6b6250", margin: "0 0 10px" }}>(Hallo! Ich bin Merle. Danke!) — Sie läuft schon Richtung Lager.</p>
+            <p style={{ fontSize: 16, margin: "0 0 2px" }}>„Hello! I'm Merle. Thanks!“</p>
+            <p style={{ fontSize: 13, color: "#6b6250", margin: "0 0 10px" }}>(Hallo! Ich bin Merle. Danke!) — Sie kennt den Weg und läuft schon zum Lager.</p>
           </>
         ) : (
           <p style={{ fontSize: 16, margin: "0 0 10px" }}>Ein Buchstaben-Wesen flattert frei und dreht eine Freudenrunde! ✨</p>
+        )}
+        {o.ceremony?.first === true && (
+          <p style={{ fontSize: 14, color: "#7a6a4a", fontStyle: "italic", margin: "0 0 10px", lineHeight: 1.45 }}>
+            Das Buch flüstert: „Bring alle, die du befreist, zum <strong>Lager am Rand der Seite</strong> — dort wartet die Klasse.“
+          </p>
         )}
         <button style={btn} onClick={() => onDismiss(o)}>Weiter</button>
       </div></div>
@@ -633,6 +813,28 @@ function Overlay({
   // ── the task card — the v2 card kit (machines + painted skins) ──
   // key by task id so CardHost re-mounts (fresh machine state) per task.
   return <CardHost key={o.item!.id} task={o.item!} align={o.align} onResolve={() => onResolve(o)} onDismiss={() => onDismiss(o)} />;
+}
+
+/** PK-R3b · R3-17 · ONE HUD CHIP (doc 41 §5, presentation per doc 42 §5). A
+ *  counter painted in the book's own materials rather than typed onto the page:
+ *  gouache cream, an amber contour, the label face. The label is spelled out —
+ *  F2-33's law that every number says what it counts survives the re-skin. */
+function Chip({ icon, label, value }: { icon: string; label: string; value: string }): React.ReactElement {
+  return (
+    <span
+      style={{
+        display: "inline-flex", alignItems: "baseline", gap: 5,
+        background: "#fdf7e6", border: "1.5px solid #c9a36a", borderRadius: 999,
+        padding: "3px 11px", boxShadow: "0 1px 3px rgba(30,20,10,0.18)",
+        fontFamily: "var(--font-label, inherit)", fontSize: 13, color: "#6b6250",
+        whiteSpace: "nowrap",
+      }}
+    >
+      <span aria-hidden>{icon}</span>
+      {label}
+      <strong style={{ fontSize: 15, color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>{value}</strong>
+    </span>
+  );
 }
 
 const btn: React.CSSProperties = {

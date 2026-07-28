@@ -68,7 +68,10 @@
         "cagesFreed": 0,
         "guardianDown": false,
         "tasksSolved": 3,
-        "redeemedPresent": true
+        "redeemedPresent": true,
+        "tipsGot": 0,
+        "booksGot": 0,
+        "scorePageShown": false
       }
     },
     "p2": {
@@ -231,13 +234,16 @@
         ]
       ],
       "expect": {
-        "lettersGot": 5,
+        "lettersGot": 7,
         "lettersTotal": 8,
         "exitTo": "p3",
         "cagesFreed": 0,
         "guardianDown": false,
         "tasksSolved": 5,
-        "redeemedPresent": true
+        "redeemedPresent": true,
+        "tipsGot": 1,
+        "booksGot": 1,
+        "scorePageShown": false
       }
     },
     "p3": {
@@ -319,7 +325,10 @@
         "cagesFreed": 0,
         "guardianDown": false,
         "tasksSolved": 2,
-        "redeemedPresent": true
+        "redeemedPresent": true,
+        "tipsGot": 1,
+        "booksGot": 0,
+        "scorePageShown": false
       }
     },
     "p4": {
@@ -4125,7 +4134,10 @@
         "cagesFreed": 0,
         "guardianDown": true,
         "tasksSolved": 3,
-        "redeemedPresent": false
+        "redeemedPresent": false,
+        "tipsGot": 0,
+        "booksGot": 0,
+        "scorePageShown": true
       }
     },
     "p9": {
@@ -4147,7 +4159,10 @@
         "cagesFreed": 0,
         "guardianDown": false,
         "tasksSolved": 0,
-        "redeemedPresent": false
+        "redeemedPresent": false,
+        "tipsGot": 0,
+        "booksGot": 0,
+        "scorePageShown": false
       }
     }
   }
