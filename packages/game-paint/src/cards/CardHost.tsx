@@ -18,12 +18,13 @@ import { CardShell, type CardAlign } from "./CardShell.tsx";
 import { QUICKFIRE_MS, VERDICT_MS } from "./overlay-css.ts";
 import { prefersReducedMotion } from "./motion.ts";
 import {
-  ChoiceCard, TypedCard, SpellCard, OrderCard, OddCard, WheelCard, MistakeCard, MemoryCard, type Dispatch,
+  ChoiceCard, TypedCard, SpellCard, OrderCard, OddCard, WheelCard, MistakeCard, MemoryCard,
+  RestoreCard, type Dispatch,
 } from "./skins.tsx";
 import type {
   ChoiceState, ChoiceAction, TypedState, TypedAction, SpellState, SpellAction,
   OrderState, OrderAction, OddState, OddAction, WheelState, WheelAction,
-  MistakeState, MistakeAction, MemoryState, MemoryAction,
+  MistakeState, MistakeAction, MemoryState, MemoryAction, RestoreState, RestoreAction,
 } from "./machines.ts";
 
 export function CardHost({
@@ -103,5 +104,6 @@ function Skin({ task, state, dispatch }: { task: GameTaskV2; state: unknown; dis
     case "wheel": return <WheelCard state={state as WheelState} dispatch={d as Dispatch<WheelAction>} />;
     case "mistake": return <MistakeCard state={state as MistakeState} dispatch={d as Dispatch<MistakeAction>} />;
     case "memory": return <MemoryCard state={state as MemoryState} dispatch={d as Dispatch<MemoryAction>} />;
+    case "restore": return <RestoreCard state={state as RestoreState} dispatch={d as Dispatch<RestoreAction>} />;
   }
 }

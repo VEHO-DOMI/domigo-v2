@@ -60,6 +60,9 @@ export type EntityEvent =
   | { type: "cageBurst"; id: string; skin: string }
   | { type: "doorTouched"; id: string; kind: string }
   | { type: "powerupTaken"; id: string; grants: string }
+  /** PK-R3b · R3-16: a static-state collectible was walked into — a Regel-Seite
+   *  (which stops the world to show its rule) or a Bonus-Buch (which does not). */
+  | { type: "pickupTaken"; id: string; role: "tip" | "book"; skin: string }
   | { type: "guardianStagger"; id: string }
   | { type: "guardianKnot"; id: string; knotsLeft: number }
   | { type: "guardianDown"; id: string }
@@ -412,6 +415,20 @@ export const stepEntities = (
         if (overlapsPlayer(e, inp, 14, 20)) {
           e.redeemed = true;
           events.push({ type: "powerupTaken", id: e.id, grants: String(e.params.grants ?? "punch") });
+        }
+        break;
+      }
+      // PK-R3b · R3-16 · the static-state collectibles (doc 41 §5). No brain at
+      // all: they sit where they were placed and are TAKEN on contact. The
+      // generous 18×24 box is deliberate — a rule page a child brushes past and
+      // does not get is the „only a small field gets them" complaint the letter
+      // magnet exists to answer, and it applies here twice over.
+      case "tip":
+      case "book": {
+        if (overlapsPlayer(e, inp, 18, 24)) {
+          e.redeemed = true;
+          e.timer = 0;
+          events.push({ type: "pickupTaken", id: e.id, role: e.role, skin: e.skin });
         }
         break;
       }

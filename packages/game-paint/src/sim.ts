@@ -56,7 +56,7 @@ export interface TaskRequest {
     | { type: "door"; id: string; kind: string; skin: string }
     | { type: "guardian"; id: string; skin: string }
     | { type: "console"; id: string; skin: string }
-    | { type: "ceremony"; beat: "goal" | "grant" | "cagehint" | "bonus" };
+    | { type: "ceremony"; beat: "goal" | "grant" | "cagehint" | "bonus" | "tip" | "score" | "out" };
 }
 
 /** The being a request is ABOUT, or null for a shell ceremony (nobody asks). */
@@ -77,6 +77,13 @@ export type SimEvent =
   | { type: "cageHint" }
   | { type: "letters"; got: number; total: number }
   | { type: "letterTaken"; c: number; r: number }
+  /** PK-R3b · R3-16: a Regel-Seite was picked up. It carries its own rule, so
+   *  the shell can render the page without looking anything up — and the world
+   *  is frozen for it, because a rule you are meant to READ may not scroll past
+   *  while a moth is chasing you. */
+  | { type: "tip"; id: string; topicDe: string; merksatzDe: string; got: number }
+  /** PK-R3b · R3-16: a Bonus-Buch. Score only — no card, no freeze. */
+  | { type: "book"; id: string; got: number }
   /** R3-4/R3-6 · impact made visible: chalk dust where something broke or the
    *  fist landed. Coordinates are subs; the scene owns what a particle looks like. */
   | { type: "puff"; x: number; y: number; kind: "chalk" | "hit" }
@@ -93,9 +100,32 @@ export interface SimCfg {
    *  because the shell owns the state that outlives a phase mount. Defaults to
    *  „not yet" so a bare Sim (tests, tools) behaves as before. */
   cageHintShown?: () => boolean;
+  /** PK-R3b · R3-16: Regel-Seiten and Bonus-Bücher already taken in EARLIER
+   *  mounts of this chapter (ids). A phase is remounted whenever the child comes
+   *  back from the Kleckskammer, and a rule page that respawns there is a page
+   *  the HUD counts twice. Same contract as freedCageIds. */
+  collectedPickupIds?: () => readonly string[];
   /** PB-F2: which jump-feel candidate to run (dev only; ships as `current`). */
   airModel?: AirModel;
 }
+
+// ── PK-R3b · R3-16 · THE COLLECTIBLE MAGNET (doc 42 §4, mined from Keen) ─────
+// Koki on the letters: „I'm jumping on them and there's only a small field that
+// gets them." Keen's answer, which he liked, was a magnet: a letter inside a
+// small field drifts toward the hero every tick and is taken when it arrives.
+//
+// The numbers come over as Keen wrote them — a field of 1.6 TILES and a lerp of
+// 22 % per tick — but expressed in THIS world's tile, not Keen's 48 px one; a
+// literal pixel port would have made the field five tiles wide here. The drift
+// lives in the SIM rather than the renderer on purpose: a letter that visibly
+// flies into the child and is not collected until their body reaches its
+// original cell would be exactly the kind of lie this program hunts.
+/** How close a letter must be before it starts drifting toward the child. */
+export const MAGNET_FIELD_PX = TILE * 1.6;
+/** How much of the remaining gap a drifting letter closes each tick. */
+export const MAGNET_LERP = 0.22;
+/** The child's collect anchor sits at chest height, not at their feet. */
+const COLLECT_ANCHOR_PX = 10;
 
 const fromSubs = (v: number): number => v / SUBS;
 
@@ -137,8 +167,21 @@ export class Sim {
   exitFired = false;
   lettersTotal = 0;
   lettersGot = 0;
+  /** PK-R3b · M-B: how many letters were ever PICKED UP in this phase. Distinct
+   *  from `lettersGot`, which is a purse and goes down when Klecks is paid. The
+   *  chapter's Bilanz reports what the child FOUND, so a child who spent their
+   *  letters on the bonus room is not told at the end that they collected
+   *  fewer. Never decremented — that is the whole point of it existing. */
+  lettersCollected = 0;
   /** letter cells still uncollected, "c,r" keys (render mirrors this) */
   letterCells = new Set<string>();
+  /** R3-16 · where each uncollected letter IS right now, in subs — its cell
+   *  centre until the magnet starts pulling it. The scene draws from this, so
+   *  the picture and the pickup can never disagree. */
+  letterPos = new Map<string, { x: number; y: number }>();
+  /** R3-16: Regel-Seiten and Bonus-Bücher taken in THIS phase mount. */
+  tipsGot = 0;
+  booksGot = 0;
   camX = 0;
   camY = 0;
 
@@ -158,7 +201,11 @@ export class Sim {
     for (const [r, row] of phase.rows.entries()) {
       for (let c = 0; c < row.length; c++) {
         if (row[c] === "o") this.rings.push({ x: (c * TILE + TILE / 2) * SUBS, y: (r * TILE + TILE / 2) * SUBS });
-        if (row[c] === "*") { this.letterCells.add(`${c},${r}`); this.lettersTotal++; }
+        if (row[c] === "*") {
+          this.letterCells.add(`${c},${r}`);
+          this.letterPos.set(`${c},${r}`, { x: (c * TILE + TILE / 2) * SUBS, y: (r * TILE + TILE / 2) * SUBS });
+          this.lettersTotal++;
+        }
       }
     }
 
@@ -170,6 +217,11 @@ export class Sim {
     for (const id of cfg.freedCageIds()) {
       const e = this.world.entities.find((x) => x.id === id);
       if (e) { e.redeemed = true; e.state = "burst"; }
+    }
+    // R3-16: a Regel-Seite taken before the Kleckskammer stays taken after it
+    for (const id of cfg.collectedPickupIds?.() ?? []) {
+      const e = this.world.entities.find((x) => x.id === id);
+      if (e) e.redeemed = true;
     }
     if (cfg.phaseId === "p9") this.bonusLeftTicks = 35 * 60 + 120; // G1: budget + 2s grace
 
@@ -440,6 +492,27 @@ export class Sim {
         this.overlayOpen = true;
         events.push({ type: "powerup", grants: ev.grants });
         break;
+      case "pickupTaken": {
+        const e = this.world.entities.find((x) => x.id === ev.id);
+        if (ev.role === "book") {
+          this.booksGot++;
+          events.push({ type: "book", id: ev.id, got: this.booksGot });
+          events.push({ type: "puff", x: e?.x ?? this.player.x, y: e?.y ?? this.player.y, kind: "chalk" });
+          break;
+        }
+        this.tipsGot++;
+        // a rule page STOPS the world — it is the one collectible whose payload
+        // has to be read, and reading is not something you do mid-chase
+        this.overlayOpen = true;
+        events.push({
+          type: "tip",
+          id: ev.id,
+          topicDe: String(e?.params.topicDe ?? ""),
+          merksatzDe: String(e?.params.merksatzDe ?? ""),
+          got: this.tipsGot,
+        });
+        break;
+      }
       case "guardianStagger": {
         const g = this.world.entities.find((x) => x.id === ev.id);
         if (g) g.state = "window";
@@ -506,16 +579,32 @@ export class Sim {
     }
   }
 
+  /** R3-16 · the magnet + the pickup, in that order. A letter inside the field
+   *  closes 22 % of the gap this tick and is then tested for pickup AT ITS NEW
+   *  PLACE — so the letter that visibly leaps into the child's hands is the same
+   *  letter the counter goes up for, on the same tick. The pickup box itself is
+   *  unchanged (11 × 16 px around the chest anchor); the magnet is what makes it
+   *  easy to hit, exactly as Koki asked. */
   private collectLetters(events: SimEvent[]): void {
     const px = fromSubs(this.player.x);
-    const py = fromSubs(this.player.y);
+    const py = fromSubs(this.player.y) - COLLECT_ANCHOR_PX;
     for (const key of this.letterCells) {
-      const [c, r] = key.split(",").map(Number) as [number, number];
-      const cx = c * TILE + TILE / 2;
-      const cy = r * TILE + TILE / 2;
-      if (Math.abs(px - cx) < 11 && Math.abs(py - 10 - cy) < 16) {
+      const p = this.letterPos.get(key);
+      if (!p) continue;
+      const dx = px - fromSubs(p.x);
+      const dy = py - fromSubs(p.y);
+      if (Math.hypot(dx, dy) < MAGNET_FIELD_PX) {
+        // integer subs (the arcade law) — a rounded lerp settles instead of
+        // chasing a fractional tail forever
+        p.x += Math.round(dx * SUBS * MAGNET_LERP);
+        p.y += Math.round(dy * SUBS * MAGNET_LERP);
+      }
+      if (Math.abs(px - fromSubs(p.x)) < 11 && Math.abs(py - fromSubs(p.y)) < 16) {
+        const [c, r] = key.split(",").map(Number) as [number, number];
         this.letterCells.delete(key);
+        this.letterPos.delete(key);
         this.lettersGot++;
+        this.lettersCollected++;
         events.push({ type: "letterTaken", c, r });
         events.push({ type: "letters", got: this.lettersGot, total: this.lettersTotal });
       }

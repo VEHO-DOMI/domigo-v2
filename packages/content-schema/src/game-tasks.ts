@@ -9,8 +9,11 @@
  *
  * Design (frozen: docs/design/g1/paint/ch01-dossiers/tasks.md + README G1–G13):
  *  - kind is a DISCRIMINATED UNION. ch01 uses: choice · wheel · spell · order ·
- *    oddone · mistake · typed · memory. match/sort/slider are deferred to
- *    ch02/03/04 (G12) and join the union when those chapters build.
+ *    oddone · mistake · typed · memory · restore. match/sort/slider are deferred
+ *    to ch02/03/04 (G12) and join the union when those chapters build.
+ *  - PK-R3b · R3-15: `restore` is ch01's CORE mechanic (doc 41 §2) — the
+ *    two-step colour card. Which chapter may serve which kinds IN THE FIELD is
+ *    the distribution map (doc 41 §1), enforced by scripts/check-game-tasks.mjs.
  *  - stimulus is REQUIRED (F22/G10): every card must state what on screen carries
  *    the answer — a story line, a painted image, or the encountered creature.
  *  - firstLetter/length are DERIVED from answer at render (deriveGapHints), never
@@ -128,9 +131,33 @@ const MemoryTask = z.object({
   kind: z.literal("memory"),
   pairs: z.array(z.object({ a: z.string().min(1), b: z.string().min(1) })).min(3).max(8),
 });
+// ── PK-R3b · R3-15 · RESTORE — ch01's core mechanic (doc 41 §2) ──────────────
+// OSWIN rained the colour out of every being he bewitched: a grey creature has
+// lost its NAME and its COLOUR, and the child gives both back. Two steps on the
+// `mistake` machine's proven pattern:
+//
+//   step 1  NAME it   — four names, one of them the being standing there.
+//                       Answerable by LOOKING: greyed art still has its shape.
+//   step 2  COLOUR it — the being says IN GERMAN which colour it lost
+//                       (`colourAskDe`), and the child gives that colour in
+//                       ENGLISH. This is why the German ask is a REQUIRED field
+//                       rather than flavour: without it the second step would be
+//                       unanswerable by looking — nothing on a grey sprite can
+//                       tell a six-year-old what colour it used to be, and an
+//                       unanswerable card is exactly the class R3-12 removed
+//                       from the boss.
+const RestoreTask = z.object({
+  ...base,
+  kind: z.literal("restore"),
+  nameOptions: z.array(z.string().min(1)).length(4), // doc 41 §2: „among 4"
+  name: z.string().min(1), // ∈ nameOptions
+  colourAskDe: z.string().min(1), // the German line the being says at step 2
+  colourOptions: z.array(z.string().min(1)).length(3), // the unit's colour words
+  colour: z.string().min(1), // ∈ colourOptions
+});
 
 const GameTaskUnion = z.discriminatedUnion("kind", [
-  ChoiceTask, TypedTask, SpellTask, OrderTask, OddOneTask, MistakeTask, WheelTask, MemoryTask,
+  ChoiceTask, TypedTask, SpellTask, OrderTask, OddOneTask, MistakeTask, WheelTask, MemoryTask, RestoreTask,
 ]);
 export type GameTaskV2 = z.infer<typeof GameTaskUnion>;
 export type TaskKind = GameTaskV2["kind"];
@@ -233,11 +260,44 @@ export function taskInvariantErrors(t: GameTaskV2): string[] {
       if (dup(as) || dup(bs)) errs.push("memory pairs must be unique on both sides");
       break;
     }
+    case "restore":
+      // A restore card GIVES A BEING back what OSWIN took, so it must be bound
+      // to that being — the binding law above then forces `skins` too. An
+      // unbound restore card would be a colour handed to nobody.
+      if (t.stimulus.type !== "entity") errs.push("restore is about a being on screen — the stimulus must be an entity");
+      if (!t.nameOptions.includes(t.name)) errs.push("name is not among the 4 name options");
+      if (dup(t.nameOptions)) errs.push("duplicate name option");
+      if (!t.colourOptions.includes(t.colour)) errs.push("colour is not among the colour options");
+      if (dup(t.colourOptions)) errs.push("duplicate colour option");
+      break;
     case "typed":
       break;
   }
   return errs;
 }
+
+// ── the German REGISTER LAW (one list, three call sites) ─────────────────────
+/** Words a chapter for six-year-olds does not use. „schrei" is boundary-aware so
+ *  it catches schreien/Schrei (scream) but NOT „schreiben"/„Schreiber" (to write
+ *  / writer), which are core school vocabulary — the naive-substring pitfall.
+ *
+ *  PK-R3b: this list used to live only in scripts/check-game-tasks.mjs, which
+ *  reads task files. The Regel-Seiten (doc 41 §5) put authored German in the
+ *  LEVEL file, where that checker never looks, so the list moved here — the one
+ *  place both the task gate and game-paint's level laws can import it. A rule
+ *  with two copies is a rule with one enforced copy. */
+export const BANNED_DE: readonly RegExp[] = [/Monster/, /Blut/, /böse/, /Bösewicht/, /schrei(?!b)/, /sterben/, /tot /];
+
+/** Register violations in a German string (empty = clean). */
+export function registerErrorsDe(text: string | undefined): string[] {
+  if (text === undefined) return [];
+  return BANNED_DE.filter((re) => re.test(text)).map((re) => `register-law: ${re} in "${text}"`);
+}
+
+/** The kurzweilig law (F2-2): a card line is one short clause + the ask,
+ *  read-aloud-able by a six-year-old in about five seconds. Shared with the
+ *  Regel-Seiten Merksatz law, which is read aloud in exactly the same breath. */
+export const MAX_LINE_DE = 56;
 
 // ── the file wrapper ─────────────────────────────────────────────────────────
 export const GameTasksFileV2 = z
@@ -326,7 +386,25 @@ export function renderTaskText(t: GameTaskV2): string {
       lines.push(`Rad zeigt „${t.shown}" → dreh auf: ` + t.values.join(" · "));
       break;
     case "memory":
-      lines.push("Paare (verdeckt): " + t.pairs.map((p) => `${p.a}↔${p.b}`).join(" | "));
+      // PK-R3b · W4b · P-18 — THE PROJECTION MUST MIRROR THE RENDERER.
+      // This line used to print „Paare (verdeckt): 3↔three | …" — the answer
+      // key, dressed as the student's view. Every blind solver ever pointed at a
+      // memory card was therefore handed the solution, and the unanimity that
+      // came back proved nothing at all. What the child actually sees is a board
+      // of face-down cards: a count, and nothing else. That is what this prints
+      // now, and it is why a memory card can no longer be blind-solved — which
+      // is the honest outcome for a recall game, not a defect to paper over.
+      lines.push(`Spielfeld: ${t.pairs.length * 2} verdeckte Karten (${t.pairs.length} Paare)`);
+      break;
+    case "restore":
+      // Both steps, in the order the card reveals them (the skin shows step 2
+      // only after step 1 is right). Step 2's German ask is printed because the
+      // BEING says it on the card — without it the colour would be unanswerable,
+      // and a projection that hides it would test a solver on a card no child
+      // could solve either.
+      lines.push("Schritt 1 — wer bist du? " + seededShuffle(t.nameOptions, t.id).join(" · "));
+      lines.push(`Schritt 2 — ${t.colourAskDe}`);
+      lines.push("Farben: " + seededShuffle(t.colourOptions, `${t.id}:colour`).join(" · "));
       break;
   }
   return lines.join("\n");

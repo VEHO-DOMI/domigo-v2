@@ -281,11 +281,53 @@ export const memoryMachine: CardMachine<MemoryState, MemoryAction> = {
   },
 };
 
+// ── restore (PK-R3b · R3-15: name it, then give the colour back) ─────────────
+// ch01's core mechanic (doc 41 §2). Deliberately the `mistake` machine's
+// two-phase shape rather than a new one: a wrong tap at EITHER step ends the
+// card wrong, CardHost escalates the hint ladder and re-inits — so the child
+// always re-meets the being from the top, never half-restored.
+export type RestoreState = {
+  kind: "restore";
+  nameOptions: string[]; name: string;
+  colourAskDe: string; colourOptions: string[]; colour: string;
+  step: "name" | "colour" | "done"; result: Grade;
+};
+export type RestoreAction = { pickName: string } | { pickColour: string };
+export const restoreMachine: CardMachine<RestoreState, RestoreAction> = {
+  init(task, seed = task.id) {
+    const t = task as Of<"restore">;
+    return {
+      kind: "restore",
+      nameOptions: seededShuffle(t.nameOptions, seed),
+      name: t.name,
+      colourAskDe: t.colourAskDe,
+      // a DIFFERENT seed suffix than the names, or the two rows of the same card
+      // would shuffle in lockstep and the colour's place could be read off the
+      // name's. The projection (renderTaskText) uses the same two seeds.
+      colourOptions: seededShuffle(t.colourOptions, `${seed}:colour`),
+      colour: t.colour,
+      step: "name", result: "pending",
+    };
+  },
+  act(s, a) {
+    if (s.step === "name" && "pickName" in a) {
+      return a.pickName === s.name ? { ...s, step: "colour" } : { ...s, step: "done", result: "wrong" };
+    }
+    if (s.step === "colour" && "pickColour" in a) {
+      return { ...s, step: "done", result: a.pickColour === s.colour ? "correct" : "wrong" };
+    }
+    return s;
+  },
+  grade: (s) => (s.step === "done" ? s.result : "pending"),
+  solve: (s) => [{ pickName: s.name }, { pickColour: s.colour }],
+};
+
 // ── the registry ─────────────────────────────────────────────────────────────
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const MACHINES: Record<GameTaskV2["kind"], CardMachine<any, any>> = {
   choice: choiceMachine, typed: typedMachine, spell: spellMachine, order: orderMachine,
   oddone: oddMachine, mistake: mistakeMachine, wheel: wheelMachine, memory: memoryMachine,
+  restore: restoreMachine,
 };
 
 /** Drive a task from init to a graded end via its own solution — the harness +

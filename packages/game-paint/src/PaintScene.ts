@@ -17,14 +17,14 @@ import { type CompositionSpec, type MassKit, compositionFor } from "./compositio
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { type MassPiece, planMass } from "./mass.ts";
 import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
-import { type PaintLevel, type PhaseSpec } from "./level.ts";
+import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
 import { type EntityWorld } from "./entities.ts";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
-import { type EntPoseInput, entPoseCell } from "./anim.ts";
+import { type EntPoseInput, entPoseCell, washAlphaFor } from "./anim.ts";
 import { rigPose, withFistAway } from "./rig.ts";
 import {
   RIG_CELL,
@@ -52,6 +52,10 @@ export interface PaintCallbacks {
   onGuardianDown: (id: string, skin: string) => void;
   /** PB-F3 · F2-8: the first cage the fist can open, once per phase. */
   onCageHint: () => void;
+  /** PK-R3b · R3-16: a Regel-Seite was found — the shell shows its rule page. */
+  onTip: (id: string, topicDe: string, merksatzDe: string) => void;
+  /** PK-R3b · R3-16: a Bonus-Buch was found — score only, no card. */
+  onBook: (id: string, got: number) => void;
 }
 
 export interface PaintSceneCfg {
@@ -69,6 +73,8 @@ export interface PaintSceneCfg {
   /** PB-R1 · R3-1: chapter state again — has the fist hint already been taught?
    *  The sim must not freeze the world for a card the shell will not open. */
   cageHintShown?: () => boolean;
+  /** PK-R3b · R3-16: Regel-Seiten / Bonus-Bücher already taken this chapter. */
+  collectedPickupIds?: () => readonly string[];
   /** PB-F2 jump-feel candidate (dev only; undefined = the shipped model). */
   airModel?: AirModel;
 }
@@ -94,6 +100,10 @@ const CHALK_DISPLAY_H = 9;
 const HAND_DISPLAY_H = 18;
 const HAND_OFFSET_X = 15;
 const HAND_OFFSET_Y = 30;
+
+/** R3-15 · the colour OSWIN's rain leaves behind: warm paper-grey, so a drained
+ *  being still belongs to the painted book rather than turning to concrete. */
+const COLOUR_DRAINED = 0x9a958c;
 
 const EARTH = 0xa8794f;
 const EARTH_DARK = 0x8a6140;
@@ -126,6 +136,9 @@ export class PaintScene extends Phaser.Scene {
   private get camY(): number { return this.sim.camY; }
 
   private entityImgs = new Map<string, Phaser.GameObjects.Image>();
+  /** R3-15: the grey wash laid OVER a being OSWIN drained (doc 41 §2). One per
+   *  redeemable creature, built beside its sprite and driven by washAlphaFor. */
+  private washImgs = new Map<string, Phaser.GameObjects.Image>();
   private projG!: Phaser.GameObjects.Graphics;
   /** R3-4: pooled chalk sprites (one per live projectile, reused per frame). */
   private projImgs: Phaser.GameObjects.Image[] = [];
@@ -167,6 +180,7 @@ export class PaintScene extends Phaser.Scene {
       grantedAbilities: cfg.grantedAbilities,
       freedCageIds: cfg.freedCageIds,
       cageHintShown: cfg.cageHintShown,
+      collectedPickupIds: cfg.collectedPickupIds,
       airModel: cfg.airModel,
     });
   }
@@ -207,6 +221,8 @@ export class PaintScene extends Phaser.Scene {
     x: number; y: number; vx: number; vy: number; pose: string; grounded: boolean;
     onSlide: boolean;
     phase: string; letters: number; hovering: boolean; overlay: boolean;
+    /** R3-16/M-B: what the Bilanz reads from — found, not held (see Sim). */
+    lettersCollected: number; tips: number; books: number;
     knots: number; guardianDown: boolean; bonusLeft: number;
     camX: number;
     entities: Array<{ id: string; role: string; skin: string; state: string; redeemed: boolean; x: number; y: number }>;
@@ -223,6 +239,9 @@ export class PaintScene extends Phaser.Scene {
       onSlide: this.player.onSlide, // D1 spike visibility
       phase: this.cfg.phaseId,
       letters: this.lettersGot,
+      lettersCollected: this.sim.lettersCollected,
+      tips: this.sim.tipsGot,
+      books: this.sim.booksGot,
       hovering: this.player.hovering,
       overlay: this.overlayOpen,
       knots: this.world?.guardianKnots ?? -1,
@@ -274,10 +293,15 @@ export class PaintScene extends Phaser.Scene {
         case "letters": cb.onLetters(ev.got, ev.total); break;
         case "letterTaken": {
           const img = this.letterImgs.get(`${ev.c},${ev.r}`);
-          img?.destroy();
+          // R3-16 · the collect beat (doc 42 §4, numbers verbatim): a burst of
+          // chalk dust, then the letter rises away and fades — the letter has
+          // gone INTO the tally rather than merely vanished.
+          if (img) this.collectBurst(img);
           this.letterImgs.delete(`${ev.c},${ev.r}`);
           break;
         }
+        case "tip": cb.onTip(ev.id, ev.topicDe, ev.merksatzDe); break;
+        case "book": cb.onBook(ev.id, ev.got); break;
         case "puff": this.puff(fromSubs(ev.x), fromSubs(ev.y), ev.kind); break;
         case "exit": cb.onExit(ev.to); break;
         default: break;
@@ -331,6 +355,15 @@ export class PaintScene extends Phaser.Scene {
       const img = this.add.image(fromSubs(e.x), fromSubs(e.y), this.entTex(e.skin, "a")).setDepth(7).setOrigin(0.5, 1);
       img.setVisible(!e.hidden);
       this.entityImgs.set(e.id, img);
+      // R3-15 · the grey wash sits a hair in front of its being, wearing the
+      // SAME texture every frame — so it drains whatever cell the being is
+      // showing, including cells and skins that do not exist yet.
+      if (washAlphaFor({ role: e.role, redeemed: false, timer: 0 }) > 0) {
+        const wash = this.add.image(fromSubs(e.x), fromSubs(e.y), img.texture.key).setDepth(7.01).setOrigin(0.5, 1);
+        wash.setTint(COLOUR_DRAINED);
+        wash.setVisible(!e.hidden);
+        this.washImgs.set(e.id, wash);
+      }
     }
   }
 
@@ -373,6 +406,8 @@ export class PaintScene extends Phaser.Scene {
     if (e.role === "door.trigger") return e.skin === "klecksdoor" ? 30 : 34;
     if (e.role === "cage") return e.skin === "pencilcase" ? 24 : 22;
     if (e.role === "powerup") return 26;
+    if (e.role === "tip") return 18; // R3-16: a torn page, smaller than a being
+    if (e.role === "book") return 15;
     if (e.role.startsWith("platform")) return 10;
     return 24; // chasers, gunners, flyers, bouncers
   }
@@ -381,7 +416,8 @@ export class PaintScene extends Phaser.Scene {
     for (const e of this.world.entities) {
       const img = this.entityImgs.get(e.id);
       if (!img) continue;
-      img.setVisible(!e.hidden && !(e.role === "cage" && false));
+      // R3-16: a taken Regel-Seite / Bonus-Buch is GONE — it went into the tally
+      img.setVisible(!e.hidden && !(PICKUP_ROLES.has(e.role) && e.redeemed));
       img.setPosition(fromSubs(e.x), fromSubs(e.y));
       img.setTexture(this.entTex(e.skin, this.entStateCell({ ...e, idleFrames: this.idleFramesOf(e.skin) })));
       const targetH = this.entTargetH(e);
@@ -400,6 +436,22 @@ export class PaintScene extends Phaser.Scene {
       else img.setAlpha(1);
       if (e.state === "telegraph") img.setTint(0xfff2b0);
       else img.clearTint();
+      // R3-15 · THE DESATURATION GRAMMAR (doc 41 §2): the wash mirrors its
+      // being exactly — same cell, same place, same flip, same size — and only
+      // its opacity moves. Redeem = the colour floods back in, which is the
+      // restore card's answer showing up in the world.
+      const wash = this.washImgs.get(e.id);
+      if (wash) {
+        const a = washAlphaFor(e, this.cfg.reducedMotion);
+        wash.setVisible(!e.hidden && a > 0);
+        if (a > 0) {
+          wash.setTexture(img.texture.key);
+          wash.setPosition(img.x, img.y);
+          wash.setScale(img.scaleX, img.scaleY);
+          wash.setFlipX(img.flipX);
+          wash.setAlpha(a * img.alpha);
+        }
+      }
     }
     // R3-4 · THE PROJECTILE IS CHALK, not a white ball. `tafel_chalk` was
     // painted and drawn by nothing (doc 38 §2) while the duel threw a circle;
@@ -496,6 +548,18 @@ export class PaintScene extends Phaser.Scene {
       ? this.evidenceFull.length
       : Math.ceil((this.evidenceFull.length * Math.min(this.evidenceTick, EVIDENCE_BEAT_TICKS)) / EVIDENCE_BEAT_TICKS);
     t.setText(this.evidenceFull.slice(0, shown));
+  }
+
+  /** R3-16 · the collect beat (doc 42 §4): rise away 26 px over 320 ms on
+   *  `Back.easeIn` while fading, with the puff underneath it. Reduced motion
+   *  keeps the puff (it is a still picture) and simply removes the letter. */
+  private collectBurst(img: Phaser.GameObjects.Image): void {
+    this.puff(img.x, img.y + 4, "chalk");
+    if (this.cfg.reducedMotion) { img.destroy(); return; }
+    this.tweens.add({
+      targets: img, y: img.y - 26, alpha: 0, ease: "Back.easeIn", duration: 320,
+      onComplete: () => img.destroy(),
+    });
   }
 
   /** R3-4/R3-6 · a puff of chalk dust at an impact. Pure decoration with a
@@ -669,6 +733,30 @@ export class PaintScene extends Phaser.Scene {
         if (hpx > 12) { g.fillStyle(0x243048, 1); g.fillCircle(wpx * 0.35, hpx * 0.35, 1.6); g.fillCircle(wpx * 0.62, hpx * 0.35, 1.6); }
       }, skin === "tafel" ? 44 : skin === "ruler" || skin === "satchelswing" ? 40 : 22, skin === "tafel" ? 40 : skin === "ruler" || skin === "satchelswing" ? 8 : 24);
     }
+    // R3-16 · the two new collectibles, engine-drawn until their sheets land.
+    // A Regel-Seite reads as a TORN page (a ragged left edge + ruled lines) and
+    // a Bonus-Buch as a small closed book with a spine — both distinguishable
+    // from a letter at 15–18 px, which is the whole job of a fallback.
+    make("fb-ent-regelseite", () => {
+      g.fillStyle(0xfdf7e6, 1);
+      g.fillRoundedRect(2, 1, 18, 22, 2);
+      g.fillStyle(0xe6d6ae, 1);
+      for (let i = 0; i < 4; i++) g.fillTriangle(2, 2 + i * 5, 5, 4 + i * 5, 2, 7 + i * 5); // the tear
+      g.lineStyle(1, 0x8a7a58, 0.85);
+      g.strokeRoundedRect(2, 1, 18, 22, 2);
+      g.fillStyle(0xa8926a, 1);
+      for (let i = 0; i < 4; i++) g.fillRect(6, 6 + i * 4, 11, 1); // ruled lines
+    }, 22, 24);
+    make("fb-ent-bonusbuch", () => {
+      g.fillStyle(0x8a5a3b, 1);
+      g.fillRoundedRect(2, 4, 18, 15, 2);
+      g.fillStyle(0xc9a36a, 1);
+      g.fillRect(4, 4, 3, 15); // the spine
+      g.lineStyle(1, 0x243048, 0.85);
+      g.strokeRoundedRect(2, 4, 18, 15, 2);
+      g.fillStyle(0xf0c040, 1);
+      g.fillCircle(14, 11, 2.4); // the seal
+    }, 22, 24);
     for (const s of ["shoe_neutral", "shoe_tucked"]) make(`fb-${s}`, () => { g.fillStyle(0x9c3f2c); g.fillEllipse(cell / 2, cell / 2, 130, 75); }, cell, cell);
     for (const s of ["hair_still", "hair_wind"]) make(`fb-${s}`, () => { g.fillStyle(0x6b4a2a); g.fillEllipse(cell / 2, cell / 2, 150, 80); }, cell, cell);
     for (const s of ["rotor_a", "rotor_b", "rotor_c"]) make(`fb-${s}`, () => { g.fillStyle(0xfdf7e6, 0.9); g.fillEllipse(cell / 2, cell / 2, 260, 60); }, cell, cell);
@@ -1056,16 +1144,18 @@ export class PaintScene extends Phaser.Scene {
       }
     }
     // ── the letters ──
-    if (!this.cfg.reducedMotion) {
-      for (const [key, img] of this.letterImgs) {
-        const parts = key.split(",");
-        const phase = (Number(parts[0]) + Number(parts[1])) * 0.7; // per-letter offset
-        const baseY = img.getData("baseY") as number | undefined;
-        if (baseY === undefined) continue;
-        img.y = baseY + Math.sin(t / 18 + phase) * 1.6;
-        const glint = 0.9 + Math.abs(Math.sin(t / 26 + phase)) * 0.1;
-        img.setScale((PaintScene.LETTER_PX / (img.frame.width || 1)) * glint);
-      }
+    // R3-16 · the magnet lives in the SIM, so the letter is DRAWN wherever the
+    // sim says it is — the drift and the pickup are the same number. The bob and
+    // glint ride on top of that place, never instead of it.
+    for (const [key, img] of this.letterImgs) {
+      const p = this.sim.letterPos.get(key);
+      if (!p) continue;
+      const parts = key.split(",");
+      const phase = (Number(parts[0]) + Number(parts[1])) * 0.7; // per-letter offset
+      img.x = fromSubs(p.x);
+      img.y = fromSubs(p.y) + (this.cfg.reducedMotion ? 0 : Math.sin(t / 18 + phase) * 1.6);
+      const glint = this.cfg.reducedMotion ? 1 : 0.9 + Math.abs(Math.sin(t / 26 + phase)) * 0.1;
+      img.setScale((PaintScene.LETTER_PX / (img.frame.width || 1)) * glint);
     }
     // ── the cages that can be opened NOW ──
     const canPunch = this.cfg.grantedAbilities().includes("punch");
