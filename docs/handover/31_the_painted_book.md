@@ -1,5 +1,13 @@
 # 31 · THE PAINTED BOOK — the class, the cages, the kindness
 
+**⚠ AMENDED by doc 44 (2026-07-29, the R4 "Variety Round" master plan — Koki's full-game
+brain dump + decision round). Doc 44 §1/§2 amend this doc in place: 15 classmates (not 12) ·
+the teacher = the hidden finale cage · the cage law (one person-cage per chapter; §1.4's
+"six cages" retires) · OSWIN's origin backstory + the AMBIGUOUS ending (the §1.5/§6 "frees
+AND forgives" softens — no on-screen redemption) · the Variety Law (no chapter repeats a
+formula) · palette variation inside STYLE_PAINT_V1 · the ability arc's ch01 fist grant moves
+to ch02. Everything not named there stands as written here.**
+
 **Status: GOVERNING for all game design (2026-07-19). Supersedes the Keen SHAPE (docs 25 §Keen-grammar,
 26 entirely, 27 §1–§3 as amended below); carries doc 29 (story/register/task laws) and doc 30 §1
 (the UNIT-MAGIC LAW) in full force. Born from Koki's pivot directive (2026-07-19, in-session,
