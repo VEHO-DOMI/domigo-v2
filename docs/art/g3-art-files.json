@@ -438,7 +438,8 @@
       "file": "beat_ch01_s009.png",
       "section": "D · ch01",
       "class": "beat",
-      "maxPx": 1280
+      "maxPx": 1280,
+      "legacy": "g3-ch01-social-youtube-upload"
     },
     {
       "stem": "beat_ch01_s010",
@@ -745,7 +746,8 @@
       "file": "beat_ch06_s001.png",
       "section": "D · ch06",
       "class": "beat",
-      "maxPx": 1280
+      "maxPx": 1280,
+      "legacy": "g3-ch06-scene-storyA"
     },
     {
       "stem": "beat_ch06_s002",

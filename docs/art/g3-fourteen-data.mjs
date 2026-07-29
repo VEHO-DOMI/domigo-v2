@@ -8,133 +8,247 @@
 //   42 task panels         — the picture beside a task (53 slot keys; the 14 recaps share 3)
 //   16 frames              — the cover, the end card, and the 14 episode cards
 //
-// FOUR RULES EVERY ENTRY OBEYS
-//  1. Self-contained. A prompt is pasted into a generator alone, so the style block, the
-//     character locks, the world, the colour grade and the negative are all repeated in
-//     every single one. Nothing here says "as before".
-//  2. TEXT IS WELCOME where the text IS the story (Koki's ruling, 2026-07-28). This is a
-//     story about a channel: a message that reads "No cameras. No scripts. Just us." is
-//     the beat, not decoration, and a view counter that says 47 is the whole joke of
-//     episode one. Entries that want words carry a `text:` field with the exact wording,
-//     and the prompt asks for it spelled correctly.
-//     THE ONE EXCEPTION IS NARROW AND MECHANICAL: never bake in text the APP itself
-//     renders live and variably — the comment section (its comments change with how well
-//     the player protected Ben), the task cards (their sentences come from the corpus),
-//     and any subscriber count that would contradict `SUBSCRIBERS` in novel-copy.ts. A
-//     picture that argues with the running app is a defect; a picture that says something
-//     the app never says is a gift.
-//  3. No real brands, platforms, landmarks or people. The story names a famous liner, a
-//     famous inventor and London landmarks; the pictures name none of them. Interface
-//     chrome stays generic — a plausible unbranded messaging app, not a named one.
-//  4. The costume rules ARE the arc. Ben's vest opens, then zips shut like armour, then
+// FIVE RULES EVERY ENTRY OBEYS  (rewritten 2026-07-29 after Koki reviewed the first
+// generated batch — three of these exist because that batch showed what breaks)
+//
+//  1. SELF-CONTAINED, AND THAT INCLUDES THE PEOPLE. A prompt is pasted into a generator
+//     that has never heard of this story. Naming "Ben" tells it nothing. So every prompt
+//     in which a character appears carries that character's FULL physical description,
+//     verbatim, every time — build-g3-prompts.mjs refuses to emit a prompt that names a
+//     cast member without their lock attached.
+//  2. IT IS A DRAWING, NOT A PHOTOGRAPH. The first batch came back photoreal for every
+//     backdrop and for the ch10/ch11 panels: those prompts had no characters in them, so
+//     nothing was holding the illustration, and words like "semi-realistic", "believable"
+//     and "cinematic" did the rest. STYLE is now written as a drawing technique and every
+//     prompt closes on an explicit anti-photography clause.
+//  3. TEXT IS WELCOME (Koki, 2026-07-28) — especially on screens, interfaces and paper.
+//     One mechanical exception: never bake in text the APP renders live and variably (the
+//     comment section changes with the player's accuracy; task sentences come from the
+//     corpus; a count must not contradict SUBSCRIBERS in novel-copy.ts).
+//  4. REAL PLACES ARE FINE (Koki, 2026-07-29). Real cities, rivers, bridges, landmarks,
+//     buildings, shops, products, platforms and interfaces may all be named and drawn.
+//     ONLY REAL PEOPLE are off-limits — no actors, musicians, athletes or public figures
+//     by name or likeness. If a real person must be evoked, describe the impression in
+//     words instead.
+//  5. THE COSTUME RULES ARE THE ARC. Ben's vest opens, then zips shut like armour, then
 //     hangs open, then zips comfortable. Leah's glasses come off. Leo's hair goes back.
-//     A reader who never read a word should be able to feel the story from the busts.
 
 // ── The style block: opens every prompt, verbatim ────────────────────────────
+// THE SPINE IS THE ORIGINAL TOOL'S OWN STYLE STRING, verbatim — the one that produced
+// the campaign art Koki approved (`Grammar trainer Grades 1 to 4/DOCS/
+// CAMPAIGN_IMAGE_PROMPTS_GRADE3_TOOL.html`). Two things are ADDED, both because the first
+// v2 batch failed without them:
+//   · the medium is stated harder ("watercolour wash", "visible paper texture" now carry
+//     an explicit ink-contour clause) — my earlier rewrite had weakened this to "subtle
+//     ink wash textures" and every character-free image came back a photograph;
+//   · the NOT-list lives INSIDE the style block, where the original had it, instead of at
+//     the far end of the prompt behind the colour grade.
+// Note "semi-realistic" and "realistic proportions" are KEPT: in the original they are
+// about anatomy (no anime eyes, real teenage bodies), not about rendering, and they sit
+// directly beside the ink-and-wash clause that holds the drawing.
 export const STYLE =
-  "Semi-realistic young graphic novel illustration. Modern European teen drama aesthetic. " +
-  "Clean confident linework with subtle ink wash textures. Natural proportions, expressive faces, " +
-  "believable contemporary clothing. Rich but grounded colour palette. Aged 12-13 characters.";
+  "Semi-realistic European graphic novel illustration. Clean confident ink linework with " +
+  "warm watercolour wash and visible paper texture — every object, edge and figure carries " +
+  "a drawn ink contour of slightly varying weight, and colour sits inside those lines as " +
+  "soft, slightly uneven washes with gentle bleed at the edges. Realistic proportions — " +
+  "normal-sized eyes, natural faces, real teenage bodies. NOT anime, NOT manga, NOT chibi, " +
+  "NOT cartoon, NOT 3D. Warm ink-wash skin rendering with subtle colour variation. Hair " +
+  "with natural weight and individual strands. Clothing with realistic folds and fabric " +
+  "texture. Shading is two or three flat tonal steps, never a smooth photographic gradient; " +
+  "light is PAINTED, so a lamp glows as a soft wash bloom on the paper rather than as a " +
+  "lens effect. A contemporary Austrian school world, unless the scene names somewhere " +
+  "else. All characters aged 12-15 must look their real age.";
 
-// ── The negative: closes every prompt, verbatim ──────────────────────────────
+// ── The anti-photograph clause: closes every prompt, verbatim ────────────────
+// New in v2. The original tool never needed it because every one of its prompts had people
+// in it; this library adds backdrops and object panels, and those are exactly the ones that
+// came back as photographs.
+export const NOT_PHOTO =
+  "THIS IS A DRAWING, NOT A PHOTOGRAPH. No photorealism, no camera depth-of-field or " +
+  "bokeh, no lens flare, no film grain, no HDR, no cinematic colour grading, no 3D render. " +
+  "If it could be mistaken for a photo or a film still it is wrong — the ink lines and the " +
+  "paper texture stay visible everywhere, including in empty rooms and object close-ups.";
+
+// ── What may not appear ─────────────────────────────────────────────────────
+// Real places, landmarks, streets, shops, products, platforms and interfaces ARE allowed
+// and are often exactly what a scene needs (Koki, 2026-07-29). Only real PEOPLE are barred.
 export const NEG =
-  "No real brand marks, no platform logos or wordmarks, no watermarks. No real people, no " +
-  "recognisable public figures, no real place names, no famous landmarks. Any lettering that " +
-  "is not explicitly requested above stays out of the frame — incidental signage, posters and " +
-  "labels are decorative and illegible.";
+  "Do not depict or name any real person — no actors, musicians, athletes or other public " +
+  "figures, and no recognisable likeness; describe an impression instead if one must be " +
+  "evoked. Every person shown is a fictional character described above. No watermarks.";
 
 // ── Screens ─────────────────────────────────────────────────────────────────
-// Screens in this story are not props — they are where half the plot happens. So a screen
-// shows real, legible content, and the words it shows are named per entry in `text:`.
-// Only the CHROME stays generic (this app cannot show a real platform's logo).
 export const SCREEN =
-  "The screen is shown clearly and legibly, at a readable size and angle. Its interface " +
-  "chrome is a plausible but generic, unbranded app: plain rounded message bubbles or cards, " +
-  "a circle avatar, a simple play triangle, a bare heart outline — no platform logo, no " +
-  "wordmark, no recognisable app identity.";
+  "The screen is drawn clearly and legibly at a readable size and angle, in the same " +
+  "ink-and-watercolour style as the rest — the interface is DRAWN, not pasted in: its " +
+  "bubbles, icons and avatars carry the same ink contour and wash. An ordinary, real " +
+  "social-media or messaging interface is welcome here.";
 
 /** How a requested piece of on-screen or in-world lettering is asked for. */
 export const textClause = (s) =>
-  `Text shown in the image, in English, spelled exactly like this and clearly legible: ${s} ` +
-  `Render it as neat, natural lettering that belongs to the surface it sits on. No other ` +
-  `lettering anywhere in the frame.`;
+  `TEXT IN THE IMAGE — render this in English, spelled exactly as written and clearly ` +
+  `legible, hand-lettered in keeping with the drawing: ${s} Keep it neat and correctly ` +
+  `spelled; it is part of the picture, not a caption laid over it.`;
 
-// ── Character visual-locks: embedded wherever a character appears ────────────
+// ── Character locks ─────────────────────────────────────────────────────────
+// THE ORIGINAL TOOL'S CHARACTER CONSTANTS, verbatim, each extended with the few details
+// the arc needs (height, face, how the hair behaves). Embedded in EVERY prompt the
+// character appears in — the build script refuses to emit a prompt that names one of them
+// without the description attached, because a generator that has never heard of this story
+// will otherwise invent a different child every time.
+//
+// ⚠ YOU wears a DARK GREEN hoodie, not grey. My first v2 pass wrote "grey" from memory and
+// it contradicted both the original spec and every image already generated.
 export const CH = {
-  leah: "LEAH (13, host): dark curly hair in a high messy bun with a neon-green scrunchie; oversized round tortoiseshell glasses with amber frames; cropped medium-wash denim jacket; red worn high-top sneakers; a phone always visible; olive skin, sharp jawline, intense dark brown eyes.",
-  leo: "LEO (13, editor): straight jet-black hair falling over his LEFT eye with the right eye visible; thin silver chain necklace; oversized charcoal-black hoodie with sleeves pushed to the elbows; matte-black over-ear headphones (on his head or around his neck); pale skin, angular quiet face.",
-  ben: "BEN (13, the heart): messy sandy-blond wavy hair sticking up in all directions; freckles across his nose and cheeks; a small gap between his front teeth when he smiles; a bright orange puffer vest over clashing bright colours; slightly shorter than the others; warm brown eyes, round open face.",
-  sara: "SARA (15, the moral compass): long straight dark hair with a single silver-blonde streak on the left from the temple; one small gold hoop in the left ear; a minimalist monochrome black/white/grey outfit; tall and composed; light brown skin, high cheekbones.",
-  // The player is a projection: the face is never clearly shown. Side profile with the
-  // face turned away is allowed (the image bible's own wording) — it keeps the projection
-  // intact while letting a scene show what YOU are looking at.
-  you: "YOU (13, the writer): ALWAYS seen from behind, over the shoulder, or in side profile with the face turned away or obscured — a clear frontal face is never shown. A plain grey hoodie, dark hair; a notebook or phone in hand.",
+  leah: "LEAH — a 13-year-old girl with dark curly hair in a high messy bun held by a " +
+    "colourful scrunchie (NEON GREEN as default), loose corkscrew curls escaping at her " +
+    "temples. She wears OVERSIZED ROUND TORTOISESHELL GLASSES with amber frames. Cropped " +
+    "medium-wash DENIM JACKET over rotating graphic tees, with small pins on the lapel. " +
+    "Dark jeans. RED canvas high-tops, well-worn. Phone always visible. Olive skin, sharp " +
+    "jawline, intense dark brown eyes, strong straight brows. 163 cm, slim and athletic. " +
+    "Confident posture — leaning in, weight on one hip, gesturing as she talks.",
+  leo: "LEO — a 13-year-old boy, tall and slim, 168 cm. Realistic teenage proportions, NOT " +
+    "anime bishonen. Straight JET-BLACK hair falls naturally over his LEFT eye in a " +
+    "side-swept fringe with real hair weight (not an anime curtain) — only his RIGHT eye is " +
+    "visible, grey-green and observant, NORMAL sized. Thin SILVER CHAIN NECKLACE. Oversized " +
+    "BLACK HOODIE with the sleeves pushed up past the elbows, revealing a single braided " +
+    "leather bracelet on the left wrist. MATTE-BLACK OVER-EAR HEADPHONES (on his head when " +
+    "editing, around his neck otherwise). Pale skin with ink-wash rendering, emerging " +
+    "angular cheekbones, thin lips. Beat-up brown leather messenger bag with band stickers. " +
+    "Drawn in exactly the same semi-realistic style as the others.",
+  ben: "BEN — a 13-year-old boy, average height, the warmest of the group. SANDY-BLOND wavy " +
+    "hair, thick and tousled, casually messy and never styled. A few FRECKLES across the " +
+    "bridge of his nose. Lean build, relaxed posture. BRIGHT ORANGE quilted PUFFER VEST " +
+    "(colour #FF6B35, a solid single orange — never striped, rainbow or patterned) worn " +
+    "over graphic tees or plain bright colours. Jeans and worn white trainers. Warm brown " +
+    "eyes, round open face, easy grin showing a small gap between his two front teeth. He " +
+    "looks like a regular teenager — friendly, approachable, not trying too hard.",
+  sara: "SARA — a 15-year-old girl, two school years above the others, tall (172 cm), " +
+    "composed posture. Long straight DARK hair falling past her shoulders with ONE STREAK " +
+    "of SILVER-BLONDE starting at the left temple and running down its length. One small " +
+    "GOLD HOOP EARRING in the LEFT ear only. Minimalist MONOCHROME clothing — black, white " +
+    "and grey ONLY, nothing bright, nothing patterned. Light brown skin, high cheekbones, " +
+    "subtle lipgloss. Sleek black tote bag. Dark calm eyes, steady expression.",
+  you: "YOU — the story's writer and the player's stand-in, a teenager seen ONLY from " +
+    "behind, in side profile, or with the face partially obscured; a clear frontal view of " +
+    "this face must never appear. DARK GREEN zip-up hoodie, jeans, white trainers. NAVY " +
+    "BLUE school backpack worn on one strap. Medium-length brown hair, no distinctive " +
+    "style. Average height, average build — deliberately unremarkable, so that a reader can " +
+    "imagine themselves into the figure.",
 };
 
 // ── Emotional / costume states: the arc, made visible ────────────────────────
-// Appended after a character's lock when a scene calls for it. Every one of these is a
-// change a reader can SEE at 46 pixels; that is the test each had to pass.
+// Appended after a character's lock when a scene calls for it. Every one is a change a
+// reader can SEE at 46 pixels; that is the test each had to pass.
 export const STATE = {
   ben: {
-    presenting: "He is mid-presentation, arms open, completely unguarded, gap-toothed grin at its widest; vest open.",
-    uncertain: "His smile is holding on but his eyes have gone searching, asking a question he has not said out loud; vest open.",
-    proud: "He is genuinely, uncomplicatedly proud — chin up, delighted with himself; vest open.",
-    hurt: "His orange puffer vest is ZIPPED UP TIGHT, like armour; arms crossed; no gap-toothed smile at all; the freckles read against a pale set face.",
-    confront: "His vest hangs UNZIPPED and open like something broken; eyes red-rimmed but dry; jaw set; he is quiet, not shouting.",
-    brave: "His vest is zipped comfortably, not defensively; shoulders down, breathing; a small real smile that is nothing like the old performing one.",
+    presenting: "In this image he is mid-presentation, arms open, completely unguarded, the gap-toothed grin at its widest; the orange vest hangs open.",
+    uncertain: "In this image the grin is still holding on but his eyes have gone searching — he is asking a question he has not said out loud; the vest hangs open.",
+    proud: "In this image he is uncomplicatedly proud — chin up, delighted with himself; the vest hangs open.",
+    hurt: "In this image the orange vest is ZIPPED UP TIGHT to his throat like armour, his arms are crossed over it, and there is no gap-toothed smile at all — the freckles read hard against a pale, set face.",
+    confront: "In this image the vest hangs UNZIPPED and wide open like something broken, his eyes are red-rimmed but dry, his jaw is set; he is quiet, not shouting.",
+    brave: "In this image the vest is zipped up comfortably rather than defensively, his shoulders are down and easy, and he wears a small real smile that is nothing like the old performing grin.",
   },
   leah: {
-    excited: "She is lit up, leaning in, phone raised, absolutely certain this is going to work.",
-    scheming: "She is not smiling with her eyes — pen or phone in hand, calculating, already a step ahead of everyone in the room.",
-    defensive: "Her jaw is set and her chin is up, arms folded; she is defending a decision she knows is bad.",
-    hollow: "The certainty has drained out; she is looking past whoever is in front of her, phone loose in her hand.",
-    guilty: "Her oversized round glasses are OFF, held loosely in one hand; her dark eyes are raw and exposed; she has been crying and has stopped.",
-    honest: "Glasses back on, hands open, nothing performed left in her at all — she is saying a true thing and letting it cost her.",
+    excited: "In this image she is lit up and leaning in, phone raised, absolutely certain this is going to work.",
+    scheming: "In this image she is not smiling with her eyes — a pen or phone in hand, calculating, already a step ahead of everyone else in the room.",
+    defensive: "In this image her jaw is set and her chin is up, arms folded; she is defending a decision she knows is wrong.",
+    hollow: "In this image the certainty has drained out of her; she is looking past whoever is in front of her, the phone loose in her hand.",
+    guilty: "In this image her oversized round glasses are OFF, held loosely in one hand, and her dark eyes are raw and exposed; she has been crying and has stopped.",
+    honest: "In this image her glasses are back on and her hands are open — nothing performed is left in her; she is saying a true thing and letting it cost her.",
   },
   leo: {
-    filming: "He is behind a phone on a tripod, one eye on the frame, entirely absorbed in the shot.",
-    uneasy: "He has stopped watching the frame and started watching the room; a small frown he is not aware of.",
-    exposed: "For the first time his black hair is pushed BACK off his face — both eyes visible, red-rimmed and hollow.",
+    filming: "In this image he is behind a phone on a tripod, one eye on the frame, entirely absorbed in the shot.",
+    uneasy: "In this image he has stopped watching the frame and started watching the room, with a small frown he is not aware of.",
+    exposed: "In this image his black fringe is pushed BACK off his face for the first time — BOTH eyes are visible, red-rimmed and hollow.",
   },
   sara: {
-    serious: "She is direct and unhurried, looking straight at whoever she is speaking to; nothing performed.",
-    warm: "Her composure has softened into something genuinely kind; the first real smile she has given anyone.",
+    serious: "In this image she is direct and unhurried, looking straight at whoever she is speaking to; nothing performed.",
+    warm: "In this image her composure has softened into something genuinely kind — the first real smile she has given anyone.",
   },
   you: {
-    desk: "Seen in side profile at a desk, face turned away and lit only by a screen; shoulders forward.",
-    shaken: "Seen from behind, hands visibly unsteady, shoulders tight.",
+    desk: "In this image the figure is seen in side profile at a desk, face turned away and lit only by a screen, shoulders forward.",
+    shaken: "In this image the figure is seen from behind with visibly unsteady hands and tight shoulders.",
   },
 };
 
 // ── World anchors ────────────────────────────────────────────────────────────
 export const W = {
-  studio: "Setting: a teenager's bedroom turned into a tiny filming studio — a ring light on a stand, a phone clamped on a small tripod, fairy lights, plain flat-pack furniture, posters with no readable text.",
+  studio: "Setting: a teenager's bedroom turned into a tiny filming studio — a ring light on a stand, a phone clamped on a small tripod, fairy lights, plain flat-pack furniture, band and film posters on the walls.",
   school: "Setting: a realistic Austrian secondary-school interior — lockers, fluorescent lighting, scuffed floors.",
-  street: "Setting: a generic European old-town street with anonymous stone buildings and a wide grey river; no brand signage, no recognisable landmark, no readable text.",
+  street: "Setting: LONDON on a school trip — the Thames running wide and grey under an overcast sky, Victorian stone embankment walls, black iron lamp posts, red buses and black cabs on the road behind. Real London landmarks may be drawn and named where the scene calls for them.",
   park: "Setting: a quiet park at dusk, a wooden bench, bare trees, cool blue light.",
   home: "Setting: an ordinary family living room — a worn sofa, a cluttered shelf, a hall door standing open behind.",
   desk: "Setting: a dark bedroom at night, lit only by a laptop or phone screen; the rest of the room falling away into shadow.",
 };
 
 // ── Format presets by class ──────────────────────────────────────────────────
-// The banner and the task panel both render in a 16:9 box, so every wide class states
-// the same central-band rule and nothing important sits near an edge.
-const BAND = "Keep the key subject in the middle third vertically, with generous room above and below.";
+// The banner and the task panel both render in a 16:9 box, so every wide class repeats
+// the same central-band rule and nothing important sits near an edge. Each class also
+// re-states that it is a drawing — the first batch proved that a class with no people in
+// it will drift straight to photography unless the class itself says otherwise.
+const BAND = "Keep the key subject in the middle third vertically, with room above and below.";
+const DRAWN = "Drawn, not photographed: visible ink contours on every surface, flat " +
+  "watercolour washes inside them, warm paper grain showing through.";
 export const F = {
-  portrait: `Composition: a 1:1 close-up portrait bust — head and shoulders filling the frame, eyes on the upper third, warm key light from the left, simple soft out-of-focus background. It will be shown as a small circle, so nothing outside the head and shoulders matters.`,
-  beat: `Composition: a 16:9 story frame, cinematic and specific to this exact moment. ${BAND}`,
-  backdrop: `Composition: a 16:9 establishing frame of the place itself, no characters in focus — it sits behind many different moments, so it must not tell one. ${BAND}`,
-  panel: `Composition: a 16:9 frame of an object or a pair of hands, shallow depth of field, no faces. ${BAND}`,
-  card: `Composition: a 16:9 establishing key-art frame, cinematic, room to breathe.`,
-  hero: `Composition: a 16:9 hero/title key-art frame, the group as an ensemble, a soft glow of light as the focal point (never an actual symbol).`,
+  portrait: `Composition: a 1:1 close-up portrait bust — head and shoulders filling the ` +
+    `frame, eyes on the upper third, a plain background of two or three soft washes with no ` +
+    `objects in it. It will be displayed small and circular, so the face must read at a ` +
+    `glance: features drawn with clear confident ink lines, a strong silhouette from the ` +
+    `hair and shoulders, a warm flat skin wash with one soft shadow side, and no fine detail ` +
+    `that would vanish at thumbnail size. The expression is carried by the drawn line of the ` +
+    `brows and mouth rather than by rendering. ${DRAWN}`,
+  beat: `Composition: a 16:9 story panel from a graphic novel, showing this exact moment. ` +
+    `${BAND}`,
+  backdrop: `Composition: a 16:9 establishing panel of the place itself, drawn as the ` +
+    `opening frame of a comic page. No people in it. THIS IS THE CLASS MOST LIKELY TO DRIFT ` +
+    `INTO PHOTOGRAPHY, because there is no face in it to hold the drawing, so hold the ` +
+    `technique deliberately: build the room OUT OF INK LINES — every wall edge, skirting ` +
+    `board, shelf, cable, poster corner, curtain fold, chair leg and floorboard carries its ` +
+    `own drawn contour, the way an architect who inks comics would lay a room in. Lay colour ` +
+    `inside those contours as flat, slightly uneven watercolour washes, letting the warm ` +
+    `paper grain show through the lighter areas and letting the wash pool a little darker ` +
+    `where two planes meet. Depth comes from the VALUE of the wash and from overlapping ` +
+    `line, never from blur: distant things are drawn just as crisply as near ones, only ` +
+    `paler. Keep the perspective simple and slightly flattened, one clear vanishing ` +
+    `direction, as a comic artist would. Small hand-drawn details are welcome — a crooked ` +
+    `poster, a mug left on a shelf, a trailing cable — because they read as observed and ` +
+    `hand-made. ${BAND} ${DRAWN}`,
+  panel: `Composition: a 16:9 close study of an object or a pair of hands, no faces — an ` +
+    `inset panel from a comic album. Like the backdrop class this one has no face to anchor ` +
+    `it, so the drawing must be held on purpose: the object is INKED CRISPLY with a clear ` +
+    `contour plus interior detail lines (the grain of a desk, the rings of a spiral binding, ` +
+    `the seam of a phone case), then washed in warm watercolour inside those lines. Hands, ` +
+    `where present, are drawn with simple confident contours and a flat skin wash — knuckles ` +
+    `and nails suggested by line, never modelled with soft shading. The room behind the ` +
+    `object is simplified to a few soft washes but is still LINE-DRAWN, never blurred out: ` +
+    `reduce it by leaving detail out, not by defocusing it. ${BAND} ${DRAWN}`,
+  card: `Composition: a 16:9 establishing key-art panel for the episode, cinematic in ` +
+    `framing but comic-book in execution — inked contours throughout, flat washes inside ` +
+    `them. ${DRAWN}`,
+  hero: `Composition: a 16:9 hero/title panel, the group as an ensemble, a soft painted glow ` +
+    `of light as the focal point (a wash on the paper, never a lens effect). ${DRAWN}`,
 };
 
 // ── Colour grade by arc position ─────────────────────────────────────────────
+// Rewritten as PAINT instructions with a legibility floor. The first batch's grades were
+// written as photographic lighting ("desaturated", "almost colourless, heavy shadows") and
+// they produced dark photographs: ch10–ch13 backdrops and panels came back nearly black,
+// with the ink line gone. A watercolour picture gets sadder by losing SATURATION and
+// warmth, not by losing light.
+const FLOOR = "Keep the image clearly readable: the paper stays light enough for the ink " +
+  "lines to show everywhere, and no area collapses into flat black.";
 export const GRADE = {
-  warm: "Colour grade: warm, bright, optimistic — golden lamp light.",
-  cool: "Colour grade: cooler, more muted, slightly tense — desaturated blues creeping in.",
-  grey: "Colour grade: grey, stripped, cold — almost colourless, heavy shadows.",
-  honest: "Colour grade: warmth returning but softer and real, a single live-red dot the only saturated colour.",
+  warm: `Colour: warm and full — golden lamp light washed over cream paper, ochres and soft ` +
+    `reds, the washes generous. ${FLOOR}`,
+  cool: `Colour: the warmth pulls back. Cooler washes, more blue-grey in the shadows, the reds ` +
+    `and yellows thinner and further apart — the same paper, painted with a more careful hand. ` +
+    `${FLOOR}`,
+  grey: `Colour: nearly drained. The washes go thin and grey-brown, almost a wash drawing, with ` +
+    `only one or two small places where any colour survives. The INK LINE STAYS FULLY BLACK AND ` +
+    `VISIBLE — this is a picture that lost its colour, not its light. ${FLOOR}`,
+  honest: `Colour: warmth returning, but softer and less staged than at the start — gentle ` +
+    `washes, one small saturated red accent as the only strong colour in the frame. ${FLOOR}`,
 };
 
 /** The chapter's grade — derived, so no entry can hand-set an off-arc colour. */
@@ -161,7 +275,7 @@ card("02", "Ben reads from a script to the camera, animated and happy; Leo films
 card("03", "Leah leans over a script, pen in hand, quietly marking Ben's lines harder; Ben, oblivious, gives a thumbs-up.", ["leah", "ben"], "studio");
 card("04", "Ben on camera looking confused mid-line; Leo zooms the phone in on his face; Leah grins and gives a thumbs-up from behind the camera.", ["ben", "leo", "leah"], "studio");
 card("05", "The group watches the glowing phone screen full of reactions; Ben's smile is uncertain, the others fixed on the numbers.", ["ben", "leah", "leo"], "studio");
-card("06", "A school-trip group photo in front of a tall anonymous old clock tower and a wide grey river, overcast; YOU stand slightly apart, looking at a phone.", ["leah", "leo", "ben", "you"], "street");
+card("06", "A school-trip group photo in front of the Elizabeth Tower and the Houses of Parliament on the Thames embankment, overcast; YOU stand slightly apart, looking at a phone.", ["leah", "leo", "ben", "you"], "street");
 card("07", "The group films a cheerful 'friendship' episode, all smiles for the camera — but YOU, from behind, stand stiff and uneasy at the edge.", ["leah", "leo", "ben", "you"], "studio");
 card("08", "A laptop screen crowded with comment bubbles, one of them harsher than the rest highlighted; Leah's hand reaches to swipe it away, her jaw set.", ["leah"], "studio");
 card("09", "Ben stands up out of the filming chair, finally pushing back; the others freeze, caught; Leah looks away.", ["ben", "leah", "leo"], "studio");
@@ -214,7 +328,7 @@ export const BACKDROPS = [
   ["03", "studio", "The studio desk from above: scripts, pens, a cold mug, cables — the working surface of a channel that is starting to take itself seriously."],
   ["04", "studio", "The studio seen past the ring light's ring, the lamp itself in the foreground out of focus, the empty presenting spot beyond it."],
   ["05", "studio", "The studio at dusk with the window blue behind the warm lamp — two light temperatures fighting, nobody in the room."],
-  ["06", "street", "A wide grey river under an overcast sky, an anonymous stone bridge and tall old buildings along the far bank; a school-trip city seen from a walkway."],
+  ["06", "street", "The Thames under an overcast London sky seen from the embankment walkway: the Houses of Parliament and the Elizabeth Tower along the far bank, a red bus crossing Westminster Bridge, black iron lamp posts and plane trees in the near ground. No people in focus."],
   ["07", "studio", "The studio dressed for a friendly episode — fairy lights up, cushions arranged, everything a little too staged."],
   ["08", "studio", "The studio corner at night with a laptop open on the floor, its glow the only light, cables trailing away into the dark."],
   ["09", "studio", "The studio with the filming chair pushed back and empty, the ring light still on, the room suddenly too quiet."],
@@ -246,8 +360,8 @@ export const BEATS = {
 
   // ch02 · No Way! — warm. Leah names the mechanism out loud.
   "ch02.s001": ["YOU, from behind, chalk an episode number on a small board propped against the ring light — the channel has a routine now.", "you", "studio", ""],
-  "ch02.s002": ["Leah holds open an old cloth-bound book at a page of engraved illustrations of a great ocean liner, delighted by the coincidence she has found.", "leah", "studio", ""],
-  "ch02.s003": ["YOU from behind at the desk over a script page, one of Ben's lines circled in front of you and Leah's pen still resting on the circle.", "you leah", "studio", ""],
+  "ch02.s002": ["Leah holds open an old cloth-bound book at a page of engraved illustrations of the Titanic, delighted by the coincidence she has found.", "leah", "studio", ""],
+  "ch02.s003": ["YOU from behind at the desk over a script page, one of the lines for tonight's take circled in front of you and Leah's pen still resting on the circle.", "you leah", "studio", ""],
   "ch02.s004": ["A closer view of the same page: a blank ruled gap where a word should be, pen tip hovering over it.", "you", "studio", ""],
   "ch02.s005": ["The tripod phone in the foreground, sharply focused; Ben beyond it soft and waiting for the nod.", "ben leo", "studio", ""],
   "ch02.s006": ["Ben inside the viewfinder rectangle mid-line, animated and completely unaware, the red record dot bright in the corner.", "ben", "studio", "state:ben=presenting"],
@@ -266,7 +380,7 @@ export const BEATS = {
   "ch03.s006": ["Ben mid-line in the viewfinder, tripping over a sentence, laughing at himself; the record dot burning.", "ben", "studio", "state:ben=presenting"],
   "ch03.s007": ["A laptop screen on the studio floor showing a view-count line climbing steeply, the graph drawn as a bare ascending stroke, faces lit by it.", "leah leo", "studio", "screen",
       "\"11,000 views\" beside a rising line."],
-  "ch03.s008": ["Leah, pen in hand, deliberately rewriting a line on Ben's script to make it harder — the single most important gesture in the whole story.", "leah", "studio", "state:leah=scheming"],
+  "ch03.s008": ["Leah, pen in hand, deliberately rewriting a line on the script to make it harder for whoever has to read it — the single most important gesture in the whole story.", "leah", "studio", "state:leah=scheming"],
   "ch03.s009": ["A phone held low, showing the group's planning chat — the messages agreeing to make the video funnier by cutting the boring parts and not showing the whole group. YOU are holding it; nobody meant you to be reading this.", "you", "studio", "screen",
       "the chat titled \"Strategy\", with messages reading \"We should make the video really funny.\", \"Yeah, and cut out all the boring parts.\", \"Let's make sure to edit it carefully.\" and \"And no need to show the whole group.\""],
   "ch03.s010": ["YOU from behind at the window, the town outside, saying nothing — the silence that makes you part of it.", "you", "studio", ""],
@@ -295,15 +409,15 @@ export const BEATS = {
       "\"45,000 views\"."],
   "ch05.s008": ["Ben, alone in the frame, asking the question the entire story rests on — do they like ME, or just my mistakes?", "ben", "studio", "state:ben=uncertain"],
   "ch05.s009": ["Leah answers yes; her eyes are already going back down to her phone as she says it.", "leah ben", "studio", ""],
-  "ch05.s010": ["YOU from behind, watching Leah's face lit by the screen instead of watching Ben — the moment you saw it and did nothing.", "you leah", "studio", "screen"],
+  "ch05.s010": ["YOU from behind, watching Leah's face lit by the screen instead of watching the boy she is talking about — the moment you saw it and did nothing.", "you leah", "studio", "screen"],
 
   // ch06 · London Calling — the band turns cool. Sara's warning.
-  "ch06.s001": ["The four of them on a bridge walkway over a wide grey river, coats and rucksacks, a school trip in overcast light.", "leah leo ben you", "street", ""],
-  "ch06.s002": ["Leo frames a shot of an anonymous tall old clock tower with his phone, excited about the footage for once.", "leo", "street", "state:leo=filming"],
+  "ch06.s001": ["The four of them on Westminster Bridge over the Thames, coats and rucksacks, the Houses of Parliament and the Elizabeth Tower clock face rising behind them in overcast light — a school trip photo moment.", "leah leo ben you", "street", ""],
+  "ch06.s002": ["Leo frames a shot of the Elizabeth Tower and Big Ben's clock face with his phone, excited about the footage for once.", "leo", "street", "state:leo=filming"],
   "ch06.s003": ["A notebook open on a low stone wall, wind lifting the page, two heads bent over it.", "you leah", "street", ""],
   "ch06.s004": ["The same notebook closer: a sentence with a hole in it, a pen held against the wind.", "you", "street", ""],
-  "ch06.s005": ["Ben set up against the river with the phone on its tripod, reading from a card, the wind in his hair.", "ben leo", "street", ""],
-  "ch06.s006": ["Ben inside the viewfinder against the grey water, mid-fact, cheerful and wrong.", "ben", "street", "state:ben=presenting"],
+  "ch06.s005": ["Ben set up against the Thames with the phone on its tripod, Tower Bridge visible downriver behind him, reading from a card with the wind in his hair.", "ben leo", "street", ""],
+  "ch06.s006": ["Ben inside the viewfinder against the grey Thames, mid-fact about the river, cheerful and wrong.", "ben", "street", "state:ben=presenting"],
   "ch06.s007": ["A phone face-up on a hostel bed in the dark, a message notification glowing on it, nobody holding it yet.", "", "desk", "screen",
       "a single message-notification preview reading \"Sara: can I ask you something?\"."],
   "ch06.s008": ["Sara in a school corridor, direct and unhurried, asking her question of someone off-frame.", "sara", "school", "state:sara=serious"],
@@ -319,7 +433,7 @@ export const BEATS = {
   "ch07.s006": ["Ben inside the viewfinder, warm and open, getting the sentence wrong while meaning every word of it.", "ben", "studio", "state:ben=presenting"],
   "ch07.s007": ["YOU, in side profile with the face turned away, asking Leah something quietly in a corridor doorway.", "you leah", "studio", ""],
   "ch07.s008": ["Leah refuses, chin up, arms folded — and underneath the refusal is fear of being nobody again.", "leah", "studio", "state:leah=defensive"],
-  "ch07.s009": ["A phone held in one hand showing Ben's message to the group chat — unguarded, delighted, thanking them for something they are doing to him. Below it, three thumbs-up replies and nothing else.", "", "studio", "screen message",
+  "ch07.s009": ["A phone held in one hand showing a message that has just arrived in the group chat — unguarded, delighted, thanking them for something they are doing to him. Below it, three thumbs-up replies and nothing else.", "", "studio", "screen message",
       "Ben's message reading \"Best episode yet!! I really need to practise for and since haha. But honestly I think the channel is helping my English. Thanks guys. Love this team.\", with three thumbs-up replies under it"],
   "ch07.s010": ["A notebook page on a desk in lamplight with one short line written on it and the pen laid across the page.", "you", "desk", ""],
 
@@ -329,7 +443,7 @@ export const BEATS = {
   "ch08.s003": ["The script page under the desk lamp, a technical sentence marked up in two colours of pen.", "you leah", "studio", ""],
   "ch08.s004": ["A gap in a sentence about something someone has seen, the paper shadowed by a hand.", "you", "studio", ""],
   "ch08.s005": ["Ben in the chair with a small model in his hands, turning it over, rehearsing under his breath.", "ben", "studio", ""],
-  "ch08.s006": ["Ben inside the viewfinder mid-line about an inventor, holding the model up to the lens, delighted.", "ben", "studio", "state:ben=presenting"],
+  "ch08.s006": ["Ben inside the viewfinder mid-line about Nikola Tesla, holding a small model coil up to the lens, delighted.", "ben", "studio", "state:ben=presenting"],
   "ch08.s007": ["A laptop on the studio floor at night, its comment column drawn as rows of abstract strokes — and one row noticeably darker and heavier than the rest.", "", "desk", "screen",
       "a column of comment rows, the darker one among them reading \"this is not teaching, it is bullying\"."],
   "ch08.s008": ["A thumb hovering over that one darker row, not scrolling past it — the first comment that tells the truth.", "you", "desk", "screen",
@@ -369,7 +483,7 @@ export const BEATS = {
   "ch11.s005": ["Ben in the chair, obedient, waiting for the nod — the performance is a habit now.", "ben", "studio", ""],
   "ch11.s006": ["Ben inside the viewfinder mid-line, and for the first time the framing itself feels cruel: the rectangle, the record dot, his face too close.", "ben", "studio", ""],
   "ch11.s007": ["A phone screen in the dark showing two thumbnail rows, the crueller row visibly bigger and brighter than the kind one.", "", "desk", "screen"],
-  "ch11.s008": ["A hand-written tally on a notebook page, stroke after stroke after stroke — someone has been counting Ben's mistakes for a very long time.", "", "desk", "",
+  "ch11.s008": ["A hand-written tally on a notebook page, stroke after stroke after stroke — someone has been counting one boy's mistakes for a very long time.", "", "desk", "",
       "a handwritten heading \"Ben - episode 1\" above rows of pencil tally marks, and lower down \"episode 11\"."],
   "ch11.s009": ["A phone in the dark showing a grid of six small thumbnails, all of them the same boy's face pulled into the same wince — a compilation made from their own clips.", "", "desk", "screen",
       "the video title \"Ben's Best Fails\" above the grid of thumbnails."],
@@ -379,7 +493,7 @@ export const BEATS = {
   "ch12.s001": ["The studio with the filming chair empty and the ring light unlit, an episode that was going to be recorded and now will not be.", "", "studio", ""],
   "ch12.s002": ["A school report page on a desk, handwritten in even lines, nothing like a script — a different kind of writing entirely.", "you", "school", ""],
   "ch12.s003": ["The same page closer: one sentence left unfinished, the pen laid down beside it.", "you", "school", ""],
-  "ch12.s004": ["A phone lying on a rumpled dark bed, a video of Ben's own face paused on it mid-wince, a message floating over it. Nobody is holding it.", "", "home", "screen",
+  "ch12.s004": ["A phone lying on a rumpled dark bed, a paused video filling its screen: Ben's own face caught mid-wince, drawn small but unmistakable, with a message floating over it. Nobody is holding the phone.", "ben", "home", "screen",
       "a view counter reading \"200,000\" and a single message reading \"Is this you?\""],
   "ch12.s005": ["Ben walking up a school corridor toward the group, unhurried, vest hanging open, everyone else frozen where they stand.", "ben leah leo", "school", "state:ben=confront"],
   "ch12.s006": ["Ben close, quiet, level — saying what was done to him rather than what he feels, which is worse.", "ben", "school", "state:ben=confront"],
@@ -410,8 +524,8 @@ export const BEATS = {
   "ch14.s006": ["A blank page and a pen pushed across a coffee table toward Ben — his line, his words, for the first time.", "you ben", "home", ""],
   "ch14.s007": ["Ben writing his own sentence, everyone else leaning in to help rather than to watch.", "ben leah leo you", "home", "state:ben=brave"],
   "ch14.s008": ["Two hands over one page, one of them Ben's, finishing a line together.", "you ben", "home", ""],
-  "ch14.s009": ["A phone screen carrying the honest broadcast: the five of them crowded into frame, no ring light and no white sheet, with the live chat running down the side.", "ben leah leo you", "home", "screen",
-      "a \"LIVE\" badge, \"12,000 watching now\", and chat messages reading \"We're sorry Ben\" and \"This is real\""],
+  "ch14.s009": ["A phone screen carrying the honest broadcast: the five of them crowded into frame, no ring light and no white sheet, the live chat running down the side.", "ben leah leo you", "home", "screen",
+      "a \"LIVE\" badge, \"12,000 watching now\", and two chat messages, \"We're sorry Ben\" and \"This is real\""],
   "ch14.s010": ["The room after: the five of them together on and around a sofa, the phone still propped and streaming, everyone talking over each other and nobody watching the numbers.", "ben leah leo you", "home", ""],
 };
 
@@ -428,7 +542,7 @@ const SCRIPT_MC = {
   "03": "A script page half-covered by a hand-drawn map of nowhere, the writing abstract strokes, a pen resting on it.",
   "04": "A script page beside a row of small plastic animal figures, the writing abstract, one line ringed hard in a second colour.",
   "05": "A script page with a paper cut-out garland casting shapes across it, writing abstract, pen across the corner.",
-  "06": "A notebook on a low stone wall outdoors, wind lifting the page, the writing abstract strokes, a pen held down against it.",
+  "06": "A notebook open on the Thames embankment wall, wind lifting the page, London stone and river behind it, a pen held down against the paper.",
   "07": "A script page on a cushion, fairy-light bokeh behind it, the writing abstract, everything a little too cosy.",
   "08": "A script page on a workbench between a coil of wire and a small model, writing abstract, under a hard work lamp.",
   "09": "A script page propped against a chalkboard prop, the writing abstract strokes, the chalk tray empty.",
@@ -441,7 +555,7 @@ const SCRIPT_GAP = {
   "03": "A ruled line with a gap where a joining word should be, a struck-through clause visible above it.",
   "04": "A ruled line with a gap inside a long difficult sentence, the paper creased from being held too hard.",
   "05": "A conditional sentence on ruled paper with its second half missing, the gap waiting under a low desk lamp.",
-  "06": "A notebook line with a gap in it, outdoors, the page held flat by a thumb against the wind.",
+  "06": "A notebook line with a gap in it, held flat by a thumb against the river wind, the blurred grey of the Thames beyond the page edge.",
   "07": "A ruled line with a gap in a sentence about time passing, the page resting on a cushion.",
   "08": "A ruled line with a gap, shadowed by a hand reaching across the page.",
   "09": "A ruled line with a gap in a sentence about what is allowed, the pen tapping beside it.",
@@ -454,7 +568,7 @@ const FIX = {
   "03": "The viewfinder rectangle with the boy inside it laughing at himself mid-sentence; a hand at the edge of frame adjusting the zoom.",
   "04": "The viewfinder rectangle pushed in tight on the boy's confused face; a thumb on the screen edge pushing it tighter still.",
   "05": "The viewfinder rectangle with the boy inside it hesitating, the ring light reflected as two rings in his eyes.",
-  "06": "A phone on a tripod outdoors against a wide grey river, the boy framed inside the rectangle with wind in his hair.",
+  "06": "A phone on a tripod on the Thames embankment, the boy framed inside the bright rectangle with London stone and river behind him, wind in his hair.",
   "07": "The viewfinder rectangle, warm and cushioned, the boy inside it talking about friends and meaning it.",
   "08": "The viewfinder rectangle with the boy holding a small model up to the lens, delighted; the work lamp flaring at the edge.",
   "09": "The viewfinder rectangle with the boy inside it flat and tired, the framing suddenly unkind.",

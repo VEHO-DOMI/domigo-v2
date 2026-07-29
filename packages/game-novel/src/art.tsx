@@ -6,7 +6,7 @@
  * these inline avatars only render where an image isn't on disk yet, so the cast
  * stays recognisable from day one. The look-locks mirror the FOURTEEN image bible
  * (Ben = sandy hair + orange vest; Leah = glasses; Leo = headphones; Sara = silver
- * streak; You = seen-from-behind grey hoodie) so silhouettes read at a glance.
+ * streak; You = seen-from-behind dark-green hoodie) so silhouettes read at a glance.
  */
 import { useId } from "react";
 import type { Comment } from "./novel-copy.ts";
@@ -36,7 +36,7 @@ const CAST: Record<string, Look> = {
   leah: { skin: "#e0ac69", hair: "#171717", shirt: "#1e3a8a", acc: "glasses" }, // bun + round glasses + denim
   leo: { skin: "#f1c27d", hair: "#171717", shirt: "#27272a", acc: "headphones" }, // headphones + black hoodie
   sara: { skin: "#c68642", hair: "#3f3f46", shirt: "#52525b", acc: "streak" }, // monochrome + silver streak
-  you: { skin: "#e0ac69", hair: "#3b3b3b", shirt: "#64748b", acc: "back" }, // grey hoodie, seen from behind
+  you: { skin: "#e0ac69", hair: "#5b4636", shirt: "#3f5f43", acc: "back" }, // dark-green hoodie, brown hair, seen from behind
 };
 
 export function castLook(charKey: string): Look {
