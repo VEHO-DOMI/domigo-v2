@@ -1,6 +1,6 @@
 {
   "schema": "legacy-art-map@1",
-  "note": "Maps the Grade-3 images generated for the OLD single-file app onto this app's stems. Two things decide whether an old picture survives. (1) Does its SUBJECT match a scene this script actually plays? The old app had a 3-beats-per-level model and let each level roam to a second location; this app's 10-scene spine is anchored in the bedroom studio and only leaves it three times. (2) Does it argue with the running app — a view count the app contradicts, a real brand mark, or the word the story is built on hiding? READABLE TEXT IS NOT A REASON TO DROP ANYTHING (Koki's ruling, 2026-07-28): in a story about a channel, the words on the screen ARE the beat, and several of the strongest images here are nothing but a phone with a message on it.",
+  "note": "Maps the Grade-3 images generated for the OLD single-file app onto this app's stems. An old picture survives if its SUBJECT matches a scene this script actually plays, and if it does not argue with the running app. NEITHER READABLE TEXT NOR REAL PLACES IS A REASON TO DROP ANYTHING (Koki, 2026-07-28 and 2026-07-29): in a story about a channel the words on a screen ARE the beat, and real cities, rivers, bridges, landmarks, shops and platforms may all be drawn and named. The only person-level rule is that no REAL person appears.",
   "source": "iCloud: Domi Gym/Claude/Grammar trainer Grades 1 to 4/CAMPAIGN-IMAGES/grade 3",
   "map": {
     "leah_neutral": "g3-char-leah-avatar",
@@ -44,11 +44,12 @@
     "beat_ch12_s004": "g3-ch12-social-ben-phone",
     "beat_ch03_s009": "g3-ch02-scene-completion",
     "beat_ch07_s009": "g3-ch07-scene-completion",
-    "beat_ch14_s010": "g3-ch14-scene-completion"
+    "beat_ch14_s010": "g3-ch14-scene-completion",
+    "beat_ch06_s001": "g3-ch06-scene-storyA",
+    "beat_ch01_s009": "g3-ch01-social-youtube-upload"
   },
   "drop": {
     "g3-ch01-scene-storyB": "shows a real band by name — the pictures name no real people or groups",
-    "g3-ch06-scene-storyA": "a real, instantly recognisable landmark; this app's own ch06 prompt deliberately says 'an anonymous tall old clock tower'",
     "g3-ch03-scene-storyA": "cycling in the countryside — ch03 in this app never leaves the studio",
     "g3-ch03-scene-storyB": "sheltering under a bridge — same; no such scene exists here",
     "g3-ch03-scene-completion": "shows 89,000 views where the app prints 11,000 for that chapter. A picture may not contradict the screen next to it — there is now a gate for exactly this.",
@@ -73,13 +74,12 @@
     "g3-prologue-06": "its slot is taken by the Leah intro",
     "g3-prologue-07": "no matching scene",
     "g3-prologue-08": "no matching scene",
-    "g3-ch01-social-youtube-upload": "carries a real platform's wordmark and logo. Its content is right and its view count (47) matches the app — regenerate it with generic app chrome and it is a keeper.",
     "g3-ch02-social-youtube-comments": "a fixed list of comments. This is the ONE narrow case where baked-in text really does hurt: the app renders its own comment section whose comments change with how well the player protected Ben, so a frozen list beside it would contradict the game's signature mechanic.",
     "g3-ch11-social-tiktok": "its title reads \"Ben's BEST Grammar Fails\". The word 'grammar' is the one word this story keeps off every student-visible surface (the whole conceit is that Ben never learns his grammar is the joke — repo rule VS-8), and the app's own title for it is \"Ben's Best Fails\". Regenerate with that title and it is a keeper.",
     "g3-ch14-social-youtube-about": "no scene in this app matches a channel about-page.",
     "social-media-templates": "all 10 are placeholder templates with bracketed [PLACEHOLDER] markers meant to be filled in, so they are half-finished by design rather than finished pictures.",
     "stats-wall": "this app has no stats wall — the episode-end screen prints its numbers as live text. A structural mismatch, not a text one.",
     "download (10)": "an accidental save with no reference anywhere",
-    "g3-ch01-scene-completion": "a cast introduction with the characters' names and ages labelled on them, not the 47-views moment this slot needs. Nothing wrong with the labels — it is simply a different picture."
+    "g3-ch01-scene-completion": "a cast introduction with the characters' names and ages labelled on them — a fine picture, but a different one from the 47-views moment this slot needs."
   }
 }

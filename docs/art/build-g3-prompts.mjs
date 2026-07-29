@@ -20,7 +20,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
-  STYLE, NEG, SCREEN, CH, STATE, W, F, arcOf, textClause,
+  STYLE, NEG, NOT_PHOTO, SCREEN, CH, STATE, W, F, arcOf, textClause,
   FRAMES, PORTRAITS, BACKDROPS, BEATS, PANELS,
 } from "./g3-fourteen-data.mjs";
 
@@ -36,8 +36,15 @@ const pad = (n) => String(n).padStart(2, "0");
 const shortId = (id) => id.split(".").slice(-2).join(".");    // "…ch07.s006" → "ch07.s006"
 
 // ── Compose ─────────────────────────────────────────────────────────────────
-/** One entry → one complete, self-contained prompt. The order is fixed and gated. */
-function compose(e) {
+/** One entry → one complete, self-contained prompt. The order is fixed and gated.
+ *
+ *  `dropWorld` is the pressure valve. Character descriptions are long on purpose and a
+ *  four-person scene that also shows a screen and carries lettering can pass 5000. The
+ *  first thing to go is the world anchor, because the scene sentence already names the
+ *  place — losing "Setting: a teenager's bedroom turned into a tiny filming studio…" from
+ *  a prompt that opens "The four friends crowd around a phone on the ring-light desk"
+ *  costs nothing. The character locks are never trimmed. */
+function compose(e, drop = {}) {
   const states = e.states ?? {};
   const chars = (e.chars ?? []).map((c) => {
     const st = states[c];
@@ -48,11 +55,12 @@ function compose(e) {
     F[e.cls],
     e.scene,
     ...chars,
-    e.world ? W[e.world] : "",
-    e.screen ? SCREEN : "",
+    e.world && !drop.world ? W[e.world] : "",
+    e.screen && !drop.screen ? SCREEN : "",
     e.text ? textClause(e.text) : "",
     arcOf(e.chapter),
     NEG,
+    NOT_PHOTO,
   ].filter(Boolean).join(" ").replace(/\s+/g, " ").trim();
 }
 
@@ -97,16 +105,31 @@ for (const p of PANELS) {
 const fail = [];
 const bad = (m) => fail.push(m);
 
-// Real brands, platforms, landmarks and people the STORY names but the PICTURES must not.
-// Real brands, platforms, landmarks and people the STORY names but the PICTURES must not.
-// NOTE: readable TEXT is deliberately NOT banned (Koki's ruling, 2026-07-28) — in a story
-// about a channel the words on a screen are half the plot. Only real IDENTITIES are barred,
-// because an image generator refuses them and because CP-15 (the clean-room rule) stands.
-const BANNED = /\b(youtube|tiktok|instagram|whatsapp|snapchat|twitter|facebook|iphone|android|ikea|nike|adidas|converse|netflix|spotify|titanic|tesla|big ben|thames|globe theatre|tower bridge|london)\b/i;
+// Real places, streets, rivers, bridges, landmarks, shops, products, platforms and
+// interfaces ARE allowed — Koki's ruling, 2026-07-29: "we can for sure reference real
+// places, real sites, any location, any building, any item". The one thing that stays
+// barred is a real PERSON, and no word list can catch that reliably, so it is stated as
+// an instruction in NEG (checked below) rather than pattern-matched here. What IS worth
+// pattern-matching is the small set of names that would put a living public figure in
+// frame — those are the only entries this list carries.
+const BANNED = /\b(taylor swift|mrbeast|ronaldo|messi|elon musk|zendaya|billie eilish)\b/i;
 
 const seen = new Map();
+const tightened = [];
 for (const e of entries) {
+  // The ceiling is 5000 characters. Character locks are NEVER trimmed to fit — they are
+  // the whole point. Instead a fixed ladder sheds the most redundant blocks first, and
+  // whatever it sheds is reported, so nothing is silently lost.
   e.prompt = compose(e);
+  for (const [why, drop] of [["world anchor", { world: true }],
+                             ["world anchor + screen note", { world: true, screen: true }]]) {
+    if (e.prompt.length <= 5000) break;
+    const lean = compose(e, drop);
+    if (lean.length <= 5000) {
+      e.prompt = lean;
+      tightened.push(`${e.label} (${why})`);
+    }
+  }
   const p = e.prompt;
 
   if (!p.startsWith(STYLE)) bad(`${e.label}: the style block is not first`);                    // 1
@@ -121,13 +144,38 @@ for (const e of entries) {
     else if (!STATE[c]?.[st]) bad(`${e.label}: '${c}' has no state '${st}'`);
   }
   const hit = p.match(BANNED);                                                                  // 6
-  if (hit) bad(`${e.label}: names a real brand, place or person — "${hit[0]}"`);
+  if (hit) bad(`${e.label}: names a real living person — "${hit[0]}"`);
   if (!p.includes(NEG)) bad(`${e.label}: the closing negative is missing`);                       // 7
+  if (!p.includes(NOT_PHOTO)) bad(`${e.label}: the anti-photograph clause is missing`);          // 7b
+
+  // 7c · NO NAME WITHOUT ITS DESCRIPTION. A generator has never heard of this story, so
+  // "Ben" on its own means nothing and it will invent a boy. If a cast member's name
+  // appears ANYWHERE in the composed prompt — in the scene, in the requested text, in a
+  // state clause — their full lock must be in the same prompt. This is the check that
+  // would have caught the first batch's backdrops and ch10/ch11 panels.
+  // Only what gets DRAWN counts: the scene and its state clauses. A name inside requested
+  // lettering ("Sara: can I ask you something?" on a screen) is text, not a depiction.
+  const drawn = [e.scene, ...Object.entries(e.states ?? {}).map(([c, s]) => STATE[c]?.[s] ?? "")].join(" ");
+  for (const [key, lock] of Object.entries(CH)) {
+    const name = key === "you" ? null : key[0].toUpperCase() + key.slice(1);
+    if (!name) continue;
+    // "Big Ben" is a clock tower, not our Ben — real London landmarks are allowed now,
+    // and this was the first thing the check tripped over when they arrived.
+    const named = new RegExp(`(?<!\\bBig )\\b${name}\\b`).test(drawn);
+    if (named && !p.includes(lock)) {
+      bad(`${e.label}: names '${name}' but does not carry ${name}'s description — a `
+        + `generator would invent a different child. Add '${key}' to this entry's chars.`);
+    }
+  }
   if (e.text && !p.includes(textClause(e.text))) bad(`${e.label}: has story text but the prompt never asks for it`);
   if (!(e.chapter >= 1 && e.chapter <= 14)) bad(`${e.label}: chapter ${e.chapter} out of range`);
   if (!p.includes(arcOf(e.chapter))) bad(`${e.label}: colour grade does not match its chapter's place in the arc`); // 8
   if (e.world && !W[e.world]) bad(`${e.label}: unknown world '${e.world}'`);
-  if (e.screen && !p.includes(SCREEN)) bad(`${e.label}: marked as showing a screen but carries no screen rule`);
+  // (the length ladder may shed the screen note on a very crowded prompt; that is
+  // reported, not silent, so it is not also an error here)
+  if (e.screen && !p.includes(SCREEN) && !tightened.some((x) => x.startsWith(e.label))) {
+    bad(`${e.label}: marked as showing a screen but carries no screen rule`);
+  }
 }
 
 // 9 · coverage · 10 · portrait reachability · 11 · speaker agreement — against the story.
@@ -228,6 +276,13 @@ if (fail.length) {
 const byClass = entries.reduce((a, e) => ((a[e.cls] = (a[e.cls] ?? 0) + 1), a), {});
 console.log(`✓ gates clean — ${entries.length} prompts covering all ${scenes} scenes and all ${storySlotKeys.size} task slots`);
 console.log(`  ${Object.entries(byClass).map(([k, v]) => `${k} ${v}`).join(" · ")}`);
+const lens = entries.map((e) => e.prompt.length);
+console.log(`  prompt length: ${Math.min(...lens)}–${Math.max(...lens)} chars `
+  + `(avg ${Math.round(lens.reduce((a, b) => a + b, 0) / lens.length)}, ceiling 5000)`);
+if (tightened.length) {
+  console.log(`  ${tightened.length} crowded prompt(s) dropped the world anchor to fit: `
+    + tightened.join(", "));
+}
 if (CHECK_ONLY) process.exit(0);
 
 // ── The stem library (drives sync-art.mjs and prep-art.mjs) ─────────────────
