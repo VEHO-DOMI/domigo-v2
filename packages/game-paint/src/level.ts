@@ -49,7 +49,10 @@ export interface EntityParams {
    *  phase exit LOCKS until it has been collected; there is no backtracking
    *  between phases, so a missed essential is a dead run. */
   essential?: boolean;
-  /** cage: the classmate inside (exactly one per chapter). */
+  /** cage: WHO is inside — the classmate's name. Its presence is what makes a
+   *  cage the chapter's one person-cage (doc 44 §2.3's `captive:"classmate"` is
+   *  this field; the shipped data has carried the name itself since ch01, and a
+   *  name says strictly more than a type tag). Exactly one per chapter. */
   classmate?: string;
   /** tip: which of the unit's grammar topics this Regel-Seite carries. Unique
    *  per chapter — two pages of the same rule are one page and a duplicate. */
@@ -421,13 +424,58 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     if (level.phases.length !== 3) {
       failures.push({ phase: "*", law: "phase-count", detail: `chapters are 3 phases + arena (has ${level.phases.length})` });
     }
-    const cages = level.phases.flatMap((p) => p.entities.filter((e) => e.role === "cage"));
-    if (cages.length !== 6) {
-      failures.push({ phase: "*", law: "six-cages", detail: `chapters hide exactly 6 cages (has ${cages.length})` });
+    // R4 · doc 44 §2.3 · THE CAGE LAW (replaces PB's „six-cages"). Cages are for
+    // CLASSMATES: exactly ONE per chapter, and every child must meet it. The
+    // unit's OTHER bewitched beings are freed in whatever form their fiction
+    // asks — bound, drained, tangled, frozen — so a cage COUNT is not a law any
+    // more; it was a number the design could only break by getting better, and
+    // a law a good chapter fails is a broken law.
+    //
+    // What replaces the count is the letter-honesty shape (doc 41 §7): the WORLD
+    // is the source of every number. Nothing here declares how many cages a
+    // chapter has, and nothing downstream may either — the HUD's „Befreit y/N"
+    // and the Bilanz both count N off the level itself (PaintGame's
+    // chapterRoleCount), which is what closed the /6-vs-7 drift: the old law
+    // counted the three field phases while the world also held the arena's cage,
+    // so the HUD and the law disagreed about the same chapter by one.
+    //
+    // Counted over allPhases for that same reason — the arena and the
+    // Kleckskammer are part of the world. A second classmate parked in either of
+    // them was invisible to the old count, which looked at level.phases alone.
+    const cages = allPhases(level).flatMap((p) => p.entities.filter((e) => e.role === "cage"));
+    if (cages.length === 0) {
+      failures.push({ phase: "*", law: "cage-law", detail: "a chapter frees at least one caged being (has none)" });
     }
-    const person = cages.filter((e) => e.params?.classmate !== undefined);
-    if (person.length !== 1) {
-      failures.push({ phase: "*", law: "person-cage", detail: `exactly one cage holds a person (has ${person.length})` });
+    const classmates = cages.filter((e) => e.params?.classmate !== undefined);
+    if (classmates.length !== 1) {
+      const who = classmates.map((e) => e.id).join(", ");
+      failures.push({
+        phase: "*",
+        law: "classmate-cage",
+        detail: `exactly one cage holds a classmate (has ${classmates.length}${who === "" ? "" : `: ${who}`})`,
+      });
+    }
+    // „on-path and findable by everyone" (§2.3) — the two ways a level can break
+    // that promise which no reachability sweep would catch, because both leave
+    // the cage perfectly reachable. Being reachable AT ALL is the
+    // `entity-reachable` law's job further down, and it covers every cage.
+    const bonusId = level.bonus?.id;
+    for (const e of classmates) {
+      if (e.params?.hidden === true) {
+        failures.push({
+          phase: "*",
+          law: "classmate-cage",
+          detail: `the classmate cage ${e.id} spawns hidden — the one cage every child must find may not wait behind a link`,
+        });
+      }
+      const where = allPhases(level).find((p) => p.entities.includes(e));
+      if (where !== undefined && bonusId !== undefined && where.id === bonusId) {
+        failures.push({
+          phase: where.id,
+          law: "classmate-cage",
+          detail: `the classmate cage ${e.id} sits in the bonus room — a door the child pays for is not „findable by everyone"`,
+        });
+      }
     }
   }
 
