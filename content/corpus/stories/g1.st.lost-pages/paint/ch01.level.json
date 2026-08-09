@@ -69,6 +69,15 @@
      "params": {}
     },
     {
+     "id": "p1-moths",
+     "role": "swarm",
+     "skin": "moths",
+     "c": 20,
+     "r": 11,
+     "tier": "E",
+     "params": {}
+    },
+    {
      "id": "p1-eraser",
      "role": "bouncer",
      "skin": "eraser",

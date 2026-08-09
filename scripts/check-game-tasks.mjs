@@ -113,7 +113,13 @@ function checkItem(chId, t) {
     case "choice": t.options.forEach((o) => checkEn(w, o)); checkEn(w, t.answer); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
     case "typed": checkEn(w, t.answer); (t.accept ?? []).forEach((a) => checkEn(w, a)); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
     case "spell": checkEn(w, t.answer); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
-    case "wheel": t.values.forEach((v) => checkEn(w, v)); checkEn(w, t.answer); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
+    // PK-R6 · F: `shown` is grounded too. On a word-to-digit wheel the ring is
+    // digits, so `values` and `answer` carry NO English at all — the datum the
+    // skin draws (skins.tsx renders `state.shown`) is then the only English on
+    // the card, and until now it was the one student-visible string layer 2
+    // never read. An out-of-unit number word could have shipped through a green
+    // grounding check.
+    case "wheel": t.values.forEach((v) => checkEn(w, v)); checkEn(w, t.answer); checkEn(w, t.shown); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
     case "order": t.orderedChips.forEach((c) => checkEn(w, c)); break;
     case "oddone": t.items.forEach((i) => checkEn(w, i)); break;
     case "mistake": t.sentence.forEach((s) => checkEn(w, s)); checkEn(w, t.fix.correction); (t.correctionOptions ?? []).forEach((o) => checkEn(w, o)); break;
@@ -249,9 +255,18 @@ function checkAgainstLevel(file, level, items) {
         const n = boundCards(items, use, e.skin, ph.id).length;
         if (n < need) fail(at, `coverage: hostile skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${need} (${simultaneous.get(e.skin)} of them stand in ${ph.id} at once)`);
       } else if (e.role === "guardian") {
-        // a guardian raises three different pools: chalk hits (encounter),
-        // knot windows (boss) and the chapter's last act (finale)
-        for (const [use, min] of [["encounter", 2], ["boss", 2], ["finale", 1]]) {
+        // PK-R6 · F · A GUARDIAN RAISES TWO POOLS, NOT THREE. This row used to
+        // demand ≥2 `encounter` cards as well, from the era when a chalk hit
+        // was an ordinary field encounter. Stage E changed that: sim.ts's
+        // encounter handler reads `src?.role === "guardian" ? "boss" : …`, and
+        // both chalk paths (entities.ts 939 · 1014) raise the event with
+        // `id: p.fromId` — the guardian herself. So EVERY guardian-raised
+        // encounter resolves to the boss battery, and an `encounter` card bound
+        // to her skin can never be served by anything. The gate was requiring
+        // three cards the engine had no path to; ch01 duly shipped three, and
+        // they sat unreachable behind a green check. Knot windows (boss) and
+        // the chapter's last act (finale) are the two real pools.
+        for (const [use, min] of [["boss", 2], ["finale", 1]]) {
           const n = boundCards(items, use, e.skin, ph.id).length;
           if (n < min) fail(at, `coverage: guardian skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${min}`);
         }
@@ -316,7 +331,9 @@ function checkAgainstLevel(file, level, items) {
       // PK-R6 · C1: a drained object is a visible asker too — it raises its own
       // card on the ↑ press (sim.ts `engaged` → use "encounter").
       else if (e.role === "drained") raisedUses.add("encounter");
-      else if (e.role === "guardian") { raisedUses.add("encounter"); raisedUses.add("boss"); raisedUses.add("finale"); }
+      // PK-R6 · F: NOT "encounter" — sim.ts routes her chalk hits to the boss
+      // battery (see the coverage row above), so she raises boss and finale.
+      else if (e.role === "guardian") { raisedUses.add("boss"); raisedUses.add("finale"); }
       else if (e.role === "cage") raisedUses.add("rescue");
       // PK-R6 · D: the classmate raises the same pool her cage did — she is the
       // asker of every round after the latch (sim.ts `askRound`).
