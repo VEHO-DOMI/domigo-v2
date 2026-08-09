@@ -174,13 +174,30 @@ describe("the carved mass (doc 36 §2)", () => {
     "######........######",
   ];
 
-  it("puts a crust on every exposed top, one course thick", () => {
+  it("puts a crust on every exposed top, one course thick, with no gap and no overlap", () => {
+    // PK-R6 · H1: a run is now laid in ALTERNATING SEGMENTS (CRUST_SEGMENT_CELLS)
+    // so the floor stops looping one 41-px course under the player for a whole
+    // level. Counting pieces would therefore only test the segment table; what
+    // the law actually says is that the exposed tops are COVERED — exactly once,
+    // edge to edge — so that is what this asserts.
     const p = planMass(grid, kit, afSrc);
     const crusts = p.filter((q) => q.kind === "crust");
-    expect(crusts.length).toBe(2); // the two ground runs
-    const left = crusts.find((q) => q.c === 0)!;
-    expect(left.y).toBeCloseTo(3 * TILE - CRUST_LIP, 5);
-    expect(left.h).toBe(CRUST_H);
+    expect(crusts.length).toBeGreaterThanOrEqual(2); // at least the two ground runs
+    for (const q of crusts) {
+      expect(q.y).toBeCloseTo(3 * TILE - CRUST_LIP, 5);
+      expect(q.h).toBe(CRUST_H);
+    }
+    // every exposed-top cell is crusted once and only once
+    const cover = new Map<number, number>();
+    for (const q of crusts) {
+      for (let k = 0; k < Math.round(q.w / TILE); k++) cover.set(q.c + k, (cover.get(q.c + k) ?? 0) + 1);
+    }
+    for (let c = 0; c < 20; c++) {
+      const exposed = c < 6 || c >= 14; // the two ground runs of this fixture
+      expect(cover.get(c) ?? 0, `column ${c}`).toBe(exposed ? 1 : 0);
+    }
+    // …and the segments actually alternate the painted variants
+    expect(new Set(crusts.map((q) => q.stem)).size).toBe(kit.crust.length);
   });
 
   it("laps the caps INWARD so the painted end lands on the run's own edge", () => {
@@ -189,15 +206,18 @@ describe("the carved mass (doc 36 §2)", () => {
     // exactly on the run's outer edge, with the rest overlapping the loop.
     const p = planMass(grid, kit, afSrc);
     // the LEFT run touches the world edge, so only its right end is capped;
-    // the RIGHT run is the mirror case
-    const left = p.find((q) => q.kind === "crust" && q.c === 0)!;
-    const right = p.find((q) => q.kind === "crust" && q.c === 14)!;
+    // the RIGHT run is the mirror case. PK-R6 · H1: a run is now several crust
+    // SEGMENTS, so the run's extent is read off all of them — a cap belongs to
+    // the RUN, never to whichever segment happens to end it.
+    const crusts = p.filter((q) => q.kind === "crust");
+    const leftEnd = Math.max(...crusts.filter((q) => q.c < 6).map((q) => q.x + q.w));
+    const rightStart = Math.min(...crusts.filter((q) => q.c >= 14).map((q) => q.x));
     const capR = p.find((q) => q.kind === "capR")!;
     const capL = p.find((q) => q.kind === "capL")!;
-    expect(capR.x + capR.w).toBeCloseTo(left.x + left.w, 5);
-    expect(capL.x).toBeCloseTo(right.x, 5);
+    expect(capR.x + capR.w).toBeCloseTo(leftEnd, 5);
+    expect(capL.x).toBeCloseTo(rightStart, 5);
     expect(capL.w).toBeCloseTo(CRUST_H * (512 / 212), 3); // aspect-preserved
-    expect(capL.depth).toBeGreaterThan(right.depth); // drawn over the loop
+    expect(capL.depth).toBeGreaterThan(crusts[0]!.depth); // drawn over the loop
   });
 
   it("suppresses caps where a run runs into the world edge", () => {

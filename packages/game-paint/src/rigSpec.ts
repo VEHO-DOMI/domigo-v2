@@ -33,11 +33,15 @@ export const bodyStemFor = (pose: PlayerPose): string =>
 // neutral mitt), open = feeling/effort, grip = holds. At most ONE hand opens
 // in any locomotion pose — twin open palms was the jazz-hands read; the run
 // pairs a closed lead with an open trail, the fall the inverse.
+// PK-R6 · H1: …and the LEAP is the dossier's one sanctioned symmetric flare
+// („both hands rise above shoulder line, OPEN, fingers spread wide"), which is
+// what stops the jump from wearing the idle's two closed mitts. The fall keeps
+// its asymmetry, so the two air states differ in hand SHAPE as well as place.
 export const handStemsFor = (pose: PlayerPose): { front: string; back: string } =>
   pose === "hang" || pose === "swing" || pose === "vine" ? { front: "hand_grip", back: "hand_grip" }
   : pose === "fall" || pose === "hit" ? { front: "hand_open", back: "hand_fist" }
   : pose === "run" ? { front: "hand_fist", back: "hand_open" }
-  : pose === "hover" ? { front: "hand_open", back: "hand_open" }
+  : pose === "hover" || pose === "jump" ? { front: "hand_open", back: "hand_open" }
   : { front: "hand_fist", back: "hand_fist" };
 
 export const shoeStemFor = (pose: PlayerPose): string =>

@@ -112,6 +112,26 @@ export const PLACEHOLDER_UNTIL = "2026-09-30";
 
 export const isPlaceholderStem = (stem: string): boolean => stem.startsWith(PLACEHOLDER_PREFIX);
 
+/**
+ * PK-R6 · H1 · THE TRAVERSAL SURFACES: every stem `planMass` can lay down —
+ * the walk course, its caps and trims, the interior bands, the ramps, the
+ * slide, and the floating platform objects. This is the art the child's feet
+ * are ON for a whole chapter, and it is the only art that TILES, so a one-pixel
+ * defect on its outer skin is reprinted at every loop of the floor.
+ *
+ * Exported (rather than inlined into `compositionStems`) because two things now
+ * need exactly this list and may never drift apart: the fringe repair tool
+ * (scripts/strip-key-fringe.mjs) and the gate that keeps it repaired
+ * (scripts/check-paint-art.mjs).
+ */
+export const massStems = (m: MassKit): string[] => {
+  const out = [...m.crust, m.crustCapL, m.crustCapR, ...m.body, m.fade, m.sediment];
+  out.push(m.edgeL, m.edgeR, m.cornerBL, m.cornerBR, m.inCornerL, m.inCornerR, m.rampUp, m.rampDown);
+  out.push(...m.platObjects.map((p) => p.stem));
+  if (m.slide) out.push(m.slide.top, m.slide.mid, m.slide.foot, m.slide.under);
+  return [...new Set(out)];
+};
+
 /** Every stem a spec references — the art gate's requirement list. */
 export const compositionStems = (spec: CompositionSpec): string[] => {
   const out: string[] = [];
@@ -120,11 +140,7 @@ export const compositionStems = (spec: CompositionSpec): string[] => {
     out.push(...plane.segments);
     if (plane.anchor) out.push(plane.anchor.stem);
   }
-  const m = spec.mass;
-  out.push(...m.crust, m.crustCapL, m.crustCapR, ...m.body, m.fade, m.sediment);
-  out.push(m.edgeL, m.edgeR, m.cornerBL, m.cornerBR, m.inCornerL, m.inCornerR, m.rampUp, m.rampDown);
-  out.push(...m.platObjects.map((p) => p.stem));
-  if (m.slide) out.push(m.slide.top, m.slide.mid, m.slide.foot, m.slide.under);
+  out.push(...massStems(spec.mass));
   return [...new Set(out)];
 };
 

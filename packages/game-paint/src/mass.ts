@@ -34,6 +34,30 @@ export const SEDIMENT_DEPTH = 4;
 /** floating platform = an isolated run this wide or narrower with air below */
 export const MAX_PLATFORM_CELLS = 4;
 
+/**
+ * PK-R6 · H1 · THE COURSE-VARIATION LAW (round-1 critique, finding 1).
+ *
+ * A crust run used to be ONE tileSprite carrying ONE painted variant, so the
+ * ch01 hall floor looped a single 41-px course about twenty-six times across the
+ * screen and hundreds of times across the level — a metronome under the child's
+ * feet for the whole traversal band, which is what the critique called
+ * „mechanically obvious". The kit has always shipped two painted variants of
+ * every course; only one was ever reaching the floor.
+ *
+ * So a run is now laid as SEGMENTS that alternate the variants. The lengths are
+ * coprime-ish and irregular on purpose: a fixed segment length would just move
+ * the metronome up one level (A-B-A-B every 2n cells), whereas walking this
+ * table shifts the boundaries as the run goes on. Everything is derived from the
+ * run's own cell coordinates, so it is deterministic — the same level always
+ * paints the same floor, and the audits can assert it without a browser.
+ *
+ * The segments share the WORLD-space tile anchor (PaintScene.placeMassPiece), so
+ * two neighbouring segments of the same variant are seamless and a change of
+ * variant lands exactly on a cell boundary, where the course already draws a
+ * plank joint.
+ */
+export const CRUST_SEGMENT_CELLS = [5, 3, 7, 4, 6] as const;
+
 export type MassKind =
   | "body" | "fade" | "sediment"
   | "crust" | "capL" | "capR"
@@ -252,8 +276,18 @@ export const planMass = (
       const x = c * TILE;
       const runW = (c1 - c + 1) * TILE;
       const y = r * TILE - CRUST_LIP;
-      const stem = kit.crust[(c + r) % kit.crust.length] ?? kit.crust[0] ?? "";
-      out.push({ kind: "crust", stem, c, r, x, y, w: runW, h: CRUST_H, tile: true, depth: DEPTH.crust });
+      // the course, laid in alternating segments (CRUST_SEGMENT_CELLS)
+      let seg = c;
+      for (let k = 0; seg <= c1; k++) {
+        const want = CRUST_SEGMENT_CELLS[(c + r + k) % CRUST_SEGMENT_CELLS.length] ?? 4;
+        const segEnd = Math.min(seg + want - 1, c1);
+        const stem = kit.crust[(c + r + k) % kit.crust.length] ?? kit.crust[0] ?? "";
+        out.push({
+          kind: "crust", stem, c: seg, r, x: seg * TILE, y,
+          w: (segEnd - seg + 1) * TILE, h: CRUST_H, tile: true, depth: DEPTH.crust,
+        });
+        seg = segEnd + 1;
+      }
       // CAPS OVERLAP INWARD. The AF caps are painted as SEGMENT ENDS — a
       // rounded end followed by a stretch of the same course — not as outboard
       // bookends. So a cap is laid ON the run's last stretch with its outer

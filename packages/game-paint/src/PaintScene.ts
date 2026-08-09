@@ -22,10 +22,10 @@ import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE,
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
 import { type EntityWorld, SHARD_TICKS, engageTargetId } from "./entities.ts";
-import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
+import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import { CELL_IS_DIRECTIONAL, type EntPoseInput, WASHED_ROLES, entPoseCell, poseStateOf, washAlphaFor } from "./anim.ts";
-import { rigPose, withFistAway } from "./rig.ts";
+import { RIG, rigPose, withFistAway } from "./rig.ts";
 import {
   RIG_CELL,
   RIG_PART_ORDER,
@@ -46,6 +46,25 @@ export { type TaskRequest } from "./sim.ts";
 /** PK-R6 · C · how many particles the contact burst throws (doc 44 §3.1.1 —
  *  the v0 build's `this.burst?.explode(22, node.x, node.y)`, verbatim). */
 export const SPARK_COUNT = 22;
+
+// ── PK-R6 · H1 · THE HERO'S OWN SHADOW (round-1 critique, finding 3) ──────────
+/** The ink the cast shadow is tinted with, and how much of it shows. Dark enough
+ *  to be a value STEP against the palest wall in the book (p1's key is 88), light
+ *  enough that it never reads as a second boy. */
+export const HERO_SHADOW_TINT = 0x2a2333;
+export const HERO_SHADOW_ALPHA = 0.34;
+/** …and where it falls: down and BEHIND, so the light stays where every phase's
+ *  wash already puts it (top-left) and the shadow never crosses his own face. */
+export const HERO_SHADOW_DX = 3;
+export const HERO_SHADOW_DY = 3;
+
+// ── PK-R6 · H1 · CONTACT + FOOTFALL (findings 4 and 6) ───────────────────────
+/** A landing throws dust from this fall speed up (px/tick). Below it the boy
+ *  stepped down off a kerb and dust would be noise. */
+export const LAND_DUST_VY = 3;
+/** The run throws a step-puff at each footfall — but only once he is actually
+ *  running, so a shuffle along a ledge does not smoke. In subs/tick. */
+export const STEP_DUST_VX = 300;
 
 export interface PaintCallbacks {
   onExit: (next: string) => void;
@@ -147,6 +166,17 @@ const TRAIL_ANCHOR_Y = 26;
  *  telegraph holds station and a dip is a deliberate descent — a tail on either
  *  would say „still moving" while the picture says „about to throw". */
 const TRAIL_STATES: ReadonlySet<string> = new Set(["fly", "throw"]);
+// PK-R6 · H1 · the MAGNET's pull streak (round-1 critique, finding 5): the same
+// device, aimed at the collectible instead of at the boss, and short — a letter
+// crosses the field in a handful of ticks, so a long tail would still be drawn
+// after it had been swallowed.
+/** How many wisps the pull tail is drawn from, and how far it reaches back. */
+const PULL_TRAIL_POINTS = 7;
+const PULL_TAIL_PX = 16;
+/** The letters' own warm gold and their amber contour (letters.ts LETTER_STYLE),
+ *  as numbers — the streak is made of the collectible, not of a new colour. */
+const PULL_COLOUR = 0xf7c93f;
+const PULL_EDGE = 0xa2560f;
 /** Deterministic ±1.5 px shimmer keyed on the sample's OWN tick (not its index
  *  in the buffer, which shifts every sample and would make the whole tail
  *  crawl). Knuth's multiplicative hash — the same trick the legacy build uses
@@ -218,6 +248,17 @@ export class PaintScene extends Phaser.Scene {
 
   private parts = new Map<RigPartName, Phaser.GameObjects.Image>();
   private rigRoot!: Phaser.GameObjects.Container;
+  /** PK-R6 · H1 · the hero's own cast shadow — the same parts again, inked and
+   *  offset, drawn UNDER him (see buildRig). */
+  private shadowParts = new Map<RigPartName, Phaser.GameObjects.Image>();
+  private rigShadow!: Phaser.GameObjects.Container;
+  /** PK-R6 · H1 · the contact ellipse + the magnet's pull streaks. */
+  private groundG!: Phaser.GameObjects.Graphics;
+  private pullG!: Phaser.GameObjects.Graphics;
+  /** PK-R6 · H1 · the walk-cycle phase at the previous tick, so a footfall is
+   *  detected as a CROSSING rather than tested for equality (which a variable
+   *  tick budget would skip straight past). */
+  private lastStridePhase = 0;
   private fistImg!: Phaser.GameObjects.Image;
   private ropeG!: Phaser.GameObjects.Graphics;
   private letterImgs = new Map<string, Phaser.GameObjects.Image>();
@@ -336,7 +377,11 @@ export class PaintScene extends Phaser.Scene {
     while (this.acc >= TICK_MS && ticks < MAX_TICKS_PER_FRAME) {
       this.acc -= TICK_MS;
       ticks++;
+      // PK-R6 · H1: the fall speed the tick is ABOUT to cancel — after the step
+      // a landed player reads vy 0, so „how hard did that land" only exists here
+      const fallVy = this.player.grounded ? 0 : fromSubs(this.player.vy);
       this.handleSimEvents(this.sim.step(this.readPad()));
+      this.footwork(fallVy);
     }
     this.render();
   }
@@ -804,6 +849,45 @@ export class PaintScene extends Phaser.Scene {
     return state;
   }
 
+  /**
+   * PK-R6 · H1 · WHAT THE FEET DO (round-1 critique, findings 4 and 6).
+   *
+   * Two things the capture set caught us not doing: the frame the harness named
+   * „landing-squash" had no dust, no impact mark, nothing — and the pencil enemy
+   * walking past the hero threw step-puffs he never got, so the background NPC
+   * read as more alive than the child's own character.
+   *
+   * Both are drawn from state the sim already owns, on numbered ticks, so a
+   * replayed tape throws the same dust in the same places. Called once per sim
+   * tick with the fall speed that tick was carrying before the floor took it.
+   */
+  private footwork(fallVy: number): void {
+    const p = this.player;
+    const feetY = fromSubs(p.y);
+    const x = fromSubs(p.x);
+    // ── the landing ──
+    if (p.landedAgo === 0 && fallVy >= LAND_DUST_VY) {
+      this.puff(x, feetY + 2, "chalk");
+      // …and a wider skirt for a real drop, so a long fall lands harder than a
+      // hop off a shelf — the impact is graded, not a switch
+      if (fallVy >= LAND_DUST_VY * 2) {
+        this.puff(x - 5, feetY + 2, "chalk");
+        this.puff(x + 5, feetY + 2, "chalk");
+      }
+    }
+    // ── the footfalls ──
+    // The rig plants a foot at each half of the run cycle (rig.ts: the feet ride
+    // opposite phases of one cycloid), so a puff belongs at each CROSSING of a
+    // half — tested as a crossing because a frame that swallows several ticks
+    // would step straight over an equality test and drop the puff.
+    const phase = (p.walkTime % RIG.runCycleTicks) / RIG.runCycleTicks;
+    const half = (v: number): number => Math.floor(v * 2);
+    if (p.grounded && Math.abs(p.vx) >= STEP_DUST_VX && half(phase) !== half(this.lastStridePhase)) {
+      this.puff(x - Math.sign(p.vx) * 4, feetY + 1, "chalk");
+    }
+    this.lastStridePhase = phase;
+  }
+
   /** R3-4/R3-6 · a puff of chalk dust at an impact. Pure decoration with a
    *  lifetime — under reduced motion it still appears, it just does not drift. */
   private puff(xPx: number, yPx: number, kind: "chalk" | "hit"): void {
@@ -867,6 +951,7 @@ export class PaintScene extends Phaser.Scene {
   private render(): void {
     this.renderReadability();
     this.renderTrail();
+    this.renderPull();
     const pose0 = rigPose({
       pose: this.player.pose,
       walkTime: this.player.walkTime,
@@ -878,6 +963,7 @@ export class PaintScene extends Phaser.Scene {
       swingLean: this.player.swing
         ? Math.max(-1, Math.min(1, (fromSubs(this.player.swing.anchorX) - fromSubs(this.player.x)) / 48)) * this.player.facing
         : 0,
+      reach: this.reachT(),
       reducedMotion: this.cfg.reducedMotion,
     });
     const pose = this.fist ? withFistAway(pose0) : pose0;
@@ -886,12 +972,20 @@ export class PaintScene extends Phaser.Scene {
     this.rigRoot.setScale(this.player.facing * pose.scaleX, pose.scaleY);
     const flicker = this.player.iframes > 0 && this.player.iframes % 8 < 4;
     this.rigRoot.setAlpha(flicker ? 0.45 : 1);
+    // the cast shadow rides the same pose, offset behind the light
+    this.rigShadow.setPosition(
+      fromSubs(this.player.x) - this.player.facing * HERO_SHADOW_DX,
+      fromSubs(this.player.y) - 15 + HERO_SHADOW_DY,
+    );
+    this.rigShadow.setScale(this.player.facing * pose.scaleX, pose.scaleY);
+    this.rigShadow.setAlpha(flicker ? 0 : HERO_SHADOW_ALPHA);
 
     const apply = (name: RigPartName, dx: number, dy: number, rot: number, hidden: boolean, frame?: number): void => {
-      const img = this.parts.get(name);
-      if (!img) return;
-      img.setPosition(dx, dy).setRotation(rot).setVisible(!hidden);
-      if (name === "rotor" && frame !== undefined) img.setTexture(this.tex(ROTOR_STEMS[frame] ?? "rotor_a"));
+      for (const img of [this.parts.get(name), this.shadowParts.get(name)]) {
+        if (!img) continue;
+        img.setPosition(dx, dy).setRotation(rot).setVisible(!hidden);
+        if (name === "rotor" && frame !== undefined) img.setTexture(this.tex(ROTOR_STEMS[frame] ?? "rotor_a"));
+      }
     };
     apply("body", pose.body.dx, pose.body.dy, pose.body.rot, false);
     apply("head", pose.head.dx, pose.head.dy, pose.head.rot, false);
@@ -902,15 +996,21 @@ export class PaintScene extends Phaser.Scene {
     apply("footB", pose.footB.dx, pose.footB.dy, pose.footB.rot, false);
     apply("rotor", pose.rotor.dx, pose.rotor.dy, pose.rotor.rot, pose.rotor.hidden === true, pose.rotor.frame);
 
-    this.parts.get("head")?.setTexture(this.tex(faceFor(this.player.pose, this.tickCount, false)));
-    this.parts.get("body")?.setTexture(this.tex(bodyStemFor(this.player.pose)));
-    const hands = handStemsFor(this.player.pose);
-    this.parts.get("handF")?.setTexture(this.tex(hands.front));
-    this.parts.get("handB")?.setTexture(this.tex(hands.back));
-    const shoe = this.tex(shoeStemFor(this.player.pose));
-    this.parts.get("footF")?.setTexture(shoe);
-    this.parts.get("footB")?.setTexture(shoe);
-    this.parts.get("hair")?.setTexture(this.tex(hairStemFor(this.player.pose, this.player.vx)));
+    const skin: Array<[RigPartName, string]> = [
+      ["head", faceFor(this.player.pose, this.tickCount, false)],
+      ["body", bodyStemFor(this.player.pose)],
+      ["handF", handStemsFor(this.player.pose).front],
+      ["handB", handStemsFor(this.player.pose).back],
+      ["footF", shoeStemFor(this.player.pose)],
+      ["footB", shoeStemFor(this.player.pose)],
+      ["hair", hairStemFor(this.player.pose, this.player.vx)],
+    ];
+    for (const [name, stem] of skin) {
+      const key = this.tex(stem);
+      this.parts.get(name)?.setTexture(key);
+      this.shadowParts.get(name)?.setTexture(key);
+    }
+    this.renderContact();
 
     if (this.fist) {
       this.fistImg.setVisible(true).setPosition(fromSubs(this.fist.x), fromSubs(this.fist.y)).setFlipX(this.fist.dir < 0);
@@ -1456,6 +1556,103 @@ export class PaintScene extends Phaser.Scene {
     }
   }
 
+  /**
+   * PK-R6 · H1 · THE CONTACT ELLIPSE. The cast shadow gives the hero an edge
+   * against the wall; this gives him WEIGHT on the floor. Without it the boy and
+   * his shadow both float, which is the same „is he standing on that?" question
+   * the value critique was really asking.
+   *
+   * Drawn only while he is on something: a shadow under a boy in mid-air would
+   * have to be cast on a floor this renderer has not looked for, and inventing
+   * one is how a platformer starts lying about where the ground is.
+   */
+  private renderContact(): void {
+    this.groundG.clear();
+    if (!this.player.grounded) return;
+    const x = fromSubs(this.player.x);
+    const y = fromSubs(this.player.y);
+    // it spreads with the landing squash and pulls in as he settles — one more
+    // read on „he just hit the floor" for a child who missed the six-tick pose
+    const spread = this.player.landedAgo < RIG.landStanceTicks ? 1 + 0.5 * (1 - this.player.landedAgo / RIG.landStanceTicks) : 1;
+    this.groundG.fillStyle(HERO_SHADOW_TINT, 0.34);
+    this.groundG.fillEllipse(x, y - 1, 18 * spread, 5);
+  }
+
+  /**
+   * PK-R6 · H1 · HOW HARD THE MAGNET IS PULLING, 0…1 (round-1 critique,
+   * finding 5) — the nearest letter inside the field, measured against the field
+   * itself, so the reach grows as the letter closes. Read off the SIM's own
+   * positions, which are the positions the letter is actually drawn at, so the
+   * gesture can never point somewhere the letter is not.
+   */
+  private reachT(): number {
+    if (this.letterImgs.size === 0) return 0;
+    const px = fromSubs(this.player.x);
+    const py = fromSubs(this.player.y) - COLLECT_ANCHOR_PX;
+    let best = 0;
+    for (const key of this.letterImgs.keys()) {
+      const p = this.sim.letterPos.get(key);
+      if (!p) continue;
+      const d = Math.hypot(px - fromSubs(p.x), py - fromSubs(p.y));
+      if (d >= MAGNET_FIELD_PX) continue;
+      best = Math.max(best, 1 - d / MAGNET_FIELD_PX);
+    }
+    return best;
+  }
+
+  /**
+   * PK-R6 · H1 · THE PULL STREAK. „The collectible letter sits static beside the
+   * player with no streak, trail, glow-pull or reaching animation connecting it
+   * to the character — the mechanic the filename promises is illegible from the
+   * image." So a letter the magnet has hold of now trails a comet tail.
+   *
+   * The tail is drawn along the PULL DIRECTION rather than along the path the
+   * letter has actually flown, and that is a deliberate choice: the field is only
+   * 1.6 tiles wide and the sim closes 22 % of the gap every tick, so a letter's
+   * whole journey is a handful of pixels — a historical tail would be shorter
+   * than the glyph sitting on top of it and would be invisible in exactly the
+   * still frame the critique was reading. The direction is what the child needs
+   * („that one is coming to ME"), and the direction is honest: it is the vector
+   * the sim itself moves the letter along this tick.
+   *
+   * Every number comes from sim state on a numbered tick, so a replayed tape
+   * draws the same streaks; and it fades in with the pull, so a letter still
+   * sitting in its cell draws nothing at all.
+   */
+  private renderPull(): void {
+    this.pullG.clear();
+    if (this.cfg.reducedMotion) return; // it depicts nothing but motion (the end-states law)
+    const px = fromSubs(this.player.x);
+    const py = fromSubs(this.player.y) - COLLECT_ANCHOR_PX;
+    for (const key of this.letterImgs.keys()) {
+      const p = this.sim.letterPos.get(key);
+      if (!p) continue;
+      const lx = fromSubs(p.x);
+      const ly = fromSubs(p.y);
+      const gap = Math.hypot(px - lx, py - ly);
+      if (gap >= MAGNET_FIELD_PX || gap < 1) continue;
+      const t = 1 - gap / MAGNET_FIELD_PX; // 0 at the field's rim, 1 in his hands
+      const ux = (lx - px) / gap; // the way it CAME, i.e. where the tail lies
+      const uy = (ly - py) / gap;
+      for (let i = 1; i <= PULL_TRAIL_POINTS; i++) {
+        const k = i / PULL_TRAIL_POINTS; // 0 at the letter → 1 at the tail's end
+        const d = 2 + k * PULL_TAIL_PX;
+        const x = lx + ux * d;
+        const y = ly + uy * d;
+        const r = 2.8 * (1 - k) + 0.5;
+        // Each wisp is the letter's own two colours, contour under fill. The
+        // amber is not decoration: a gold streak alone vanished into p1's honey
+        // wall in the very frame this cue exists for, and the book also has to
+        // play this in a night classroom and an ink dream — one dark edge plus
+        // one bright core reads on all three without a per-phase palette.
+        this.pullG.fillStyle(PULL_EDGE, 0.6 * t * (1 - k));
+        this.pullG.fillCircle(x, y, r + 0.9);
+        this.pullG.fillStyle(PULL_COLOUR, 0.85 * t * (1 - k) * (1 - k));
+        this.pullG.fillCircle(x, y, r);
+      }
+    }
+  }
+
   private letterTex(char: string): string {
     const key = `pb-glyph-${char}`;
     if (this.textures.exists(key)) return key;
@@ -1554,6 +1751,20 @@ export class PaintScene extends Phaser.Scene {
   }
 
   private buildRig(): void {
+    // PK-R6 · H1 · THE VALUE ISLAND (round-1 critique, finding 3). Squinted down
+    // to a thumbnail, the hall reduced to one flat pale-yellow wash with the boy
+    // an almost invisible speck in it — no value zones, nothing for the eye to
+    // land on. The reference frame the critique held us against separates its
+    // hero the way painters do: he carries his own darker shape.
+    //
+    // So the rig is drawn TWICE — once inked near-black at low alpha and offset
+    // down-and-back as a cast shadow, once as himself. That gives him a dark
+    // edge against any wall, at any brightness, without repainting a single
+    // background (which belongs to the composition lane, not this one), and it
+    // costs no art: the shadow wears the same textures the same tick.
+    this.rigShadow = this.add.container(0, 0).setDepth(9).setAlpha(HERO_SHADOW_ALPHA);
+    this.groundG = this.add.graphics().setDepth(8);
+    this.pullG = this.add.graphics().setDepth(9.5);
     this.rigRoot = this.add.container(0, 0).setDepth(10);
     for (const name of RIG_PART_ORDER) {
       const stem =
@@ -1565,6 +1776,12 @@ export class PaintScene extends Phaser.Scene {
         : "shoe_neutral";
       // dossier: sprite-scale hands are ~half a head — 0.62× part scale
       const partScale = name.startsWith("hand") ? RIG_SRC_SCALE * 0.62 : RIG_SRC_SCALE;
+      const shade = this.add.image(0, 0, this.tex(stem)).setScale(partScale).setTint(HERO_SHADOW_TINT);
+      if (name === "handB") shade.setFlipX(true);
+      if (name === "rotor") shade.setVisible(false);
+      this.shadowParts.set(name, shade);
+      this.rigShadow.add(shade);
+
       const img = this.add.image(0, 0, this.tex(stem)).setScale(partScale);
       if (name === "handB") img.setFlipX(true).setTint(0xd9cfc2); // the far hand sits a step darker — it welds to the body's light
 

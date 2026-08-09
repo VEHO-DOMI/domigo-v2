@@ -137,7 +137,7 @@ export const MAGNET_FIELD_PX = TILE * 1.6;
 /** How much of the remaining gap a drifting letter closes each tick. */
 export const MAGNET_LERP = 0.22;
 /** The child's collect anchor sits at chest height, not at their feet. */
-const COLLECT_ANCHOR_PX = 10;
+export const COLLECT_ANCHOR_PX = 10;
 
 const fromSubs = (v: number): number => v / SUBS;
 

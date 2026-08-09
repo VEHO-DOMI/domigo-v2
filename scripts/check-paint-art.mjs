@@ -11,7 +11,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { GLYPH_STEMS, HERO_STEMS, entitySkinStems, guardianSkinStems } from "../packages/game-paint/src/artManifest.ts";
-import { COMPOSITION, PLACEHOLDER_UNTIL, compositionStems, isPlaceholderStem } from "../packages/game-paint/src/composition.ts";
+import { COMPOSITION, PLACEHOLDER_UNTIL, compositionStems, isPlaceholderStem, massStems } from "../packages/game-paint/src/composition.ts";
+import { keyFringe, readPng } from "./key-fringe.mjs";
 
 const R = process.cwd();
 const ART_ROOT = path.join(R, "apps/web/public/art/g1/paint");
@@ -20,11 +21,15 @@ const CONTENT = path.join(R, "content/corpus/stories");
 
 // gather every present stem (any depth under the paint art root)
 const present = new Set();
+const fileOf = new Map(); // stem → absolute path, for the pixel checks below
 const walk = (dir) => {
   if (!fs.existsSync(dir)) return;
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
     if (e.isDirectory()) walk(path.join(dir, e.name));
-    else if (e.name.endsWith(".png")) present.add(e.name.replace(/\.png$/, ""));
+    else if (e.name.endsWith(".png")) {
+      present.add(e.name.replace(/\.png$/, ""));
+      fileOf.set(e.name.replace(/\.png$/, ""), path.join(dir, e.name));
+    }
   }
 };
 walk(ART_ROOT);
@@ -97,8 +102,31 @@ if (placeholders.length > 0) {
   }
 }
 
+// PK-R6 · H1 · THE TILED-SURFACE FRINGE GATE. Batch AF was delivered over a
+// magenta colour key and cut out against it, leaving a one-pixel skin of the key
+// on every alpha boundary. On a prop that is invisible; on the TRAVERSAL
+// SURFACES it is a defect the child stares at, because those stems TILE — eleven
+// stray pixels in the ch01 crust's top row printed a magenta dot every 41 px
+// along the walkable band, in every frame of the round-1 capture set.
+// Repaired by scripts/strip-key-fringe.mjs; kept repaired here, so a re-import
+// that brings the key back fails CI instead of shipping.
+const fringeStems = new Set();
+for (const phases of Object.values(COMPOSITION)) {
+  for (const spec of Object.values(phases)) for (const stem of massStems(spec.mass)) fringeStems.add(stem);
+}
+let fringeTotal = 0;
+for (const stem of [...fringeStems].sort()) {
+  const file = fileOf.get(stem);
+  if (!file) continue; // "missing" is the presence gate's business, above
+  const hits = keyFringe(readPng(file));
+  if (hits.length === 0) continue;
+  fringeTotal += hits.length;
+  const at = hits[0];
+  fail(`colour-key fringe on tiled surface "${stem}": ${hits.length} magenta px on its cut edge (first at ${at.x},${at.y}) — run: node --experimental-strip-types scripts/strip-key-fringe.mjs`);
+}
+
 if (failures === 0) {
-  console.log(`check-paint-art: OK — ${required.size} required stems all present or explicitly allowlisted (${present.size} painted stems on disk)`);
+  console.log(`check-paint-art: OK — ${required.size} required stems all present or explicitly allowlisted (${present.size} painted stems on disk); ${fringeStems.size} traversal stems clean of colour-key fringe`);
 } else {
   console.error(`check-paint-art: ${failures} failure(s)`);
   process.exit(1);
