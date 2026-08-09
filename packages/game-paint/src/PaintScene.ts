@@ -13,7 +13,7 @@
 
 import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
-import { type CompositionSpec, type MassKit, compositionFor } from "./composition.ts";
+import { type CompositionSpec, type MassKit, compositionFor, nearPlaneTint } from "./composition.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, type AirPiece, planHaze, planMotes, planShafts, vignetteBands } from "./air.ts";
 import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass } from "./mass.ts";
@@ -25,7 +25,11 @@ import { type Pad, type PlayerState } from "./player.ts";
 import { type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
-import { CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, WASHED_ROLES, entPoseCell, floodBloomFor, greyLuma, guardianPitchRad, poseStateOf, washAlphaFor } from "./anim.ts";
+import {
+  AWAKEN_ROOM_MS, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, RESTORE_SPARKLE_MS, WASHED_ROLES,
+  awakenRoomBloom, awakenRoomSweep, entPoseCell, floodBloomFor, greyLuma, guardianPitchRad, poseStateOf, washAlphaFor,
+} from "./anim.ts";
+import { CUE_CHALK, CUE_HALO, chalkArrow } from "./cue.ts";
 import { RIG, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
 import {
   BURST_CORE, BURST_HOT, BURST_INK, BURST_SPIKES,
@@ -414,6 +418,14 @@ export const mixRGB = (a: number, b: number, k: number): number => {
   return (ch(16) << 16) | (ch(8) << 8) | ch(0);
 };
 
+/** Two MULTIPLY tints stacked — which is what a multiply IS, per channel. Used
+ *  where a piece already carries one tint and the renderer owes it another. */
+export const mixMultiply = (a: number, b: number): number => {
+  const ch = (shift: number): number =>
+    Math.round((((a >> shift) & 0xff) * ((b >> shift) & 0xff)) / 255) & 0xff;
+  return (ch(16) << 16) | (ch(8) << 8) | ch(0);
+};
+
 /** R3-15 · the colour OSWIN's rain leaves behind: warm paper-grey, so a drained
  *  being still belongs to the painted book rather than turning to concrete. */
 const COLOUR_DRAINED = 0x9a958c;
@@ -421,6 +433,11 @@ const COLOUR_DRAINED = 0x9a958c;
  *  Amber rather than white: the book's own light is the classroom's afternoon
  *  sun, and a white flash would read as a camera rather than as a spell lifting. */
 const COLOUR_RETURNING = 0xffd98f;
+/** PK-R6 · H2 · the room's own light when a classmate comes back (finding 3).
+ *  The same sunflower the arriving colour rides in on, one stop paler at its
+ *  core — this is the spell letting go of a whole room, not a second lamp. */
+const AWAKEN_ROOM_WARM = 0xffd08a;
+const AWAKEN_ROOM_CORE = 0xfff2cf;
 /** PK-R6 · H1 · the two materials every painted surface the SCENE draws is made
  *  of — the same cream and the same brown ink the overlay's parchment uses, so a
  *  bubble the world speaks and a card the book opens are one book. */
@@ -548,6 +565,16 @@ export class PaintScene extends Phaser.Scene {
    *  presentation clock. Set when a being is freed; the world is frozen for the
    *  card at that moment, so a sim-tick clock would never move. */
   private cheerMs = Number.POSITIVE_INFINITY;
+  /** PK-R6 · H2 (round-2 finding 3): how long ago the sixth answer landed, on the
+   *  same presentation clock — the world is frozen for the ceremony card at that
+   *  moment, so a sim-tick clock would leave the payoff stopped on frame one.
+   *  Infinity = no reawakening has been completed, i.e. nothing to light. */
+  private awakenRoomMs = Number.POSITIVE_INFINITY;
+  /** …and where in the world she was standing when it landed, so the light has a
+   *  source instead of being a screen-wide tint. */
+  private awakenRoomAt: { x: number; y: number } | null = null;
+  /** The room's own light: camera-space, over everything, for one beat only. */
+  private awakenRoomG!: Phaser.GameObjects.Graphics;
   private projG!: Phaser.GameObjects.Graphics;
   /** PK-R6 · E: the code-drawn golden tail behind the flying guardian. */
   private trailG!: Phaser.GameObjects.Graphics;
@@ -704,6 +731,12 @@ export class PaintScene extends Phaser.Scene {
     // drawings merge still has a hard line through it.
     this.burstBackG = this.add.graphics().setDepth(6.9);
     this.burstG = this.add.graphics().setDepth(10.4);
+    // PK-R6 · H2 · the room's own light when a classmate comes back (finding 3).
+    // Over everything, because that is where light is: it falls ON the picture,
+    // it is not a layer inside it. Depth 12 clears the hero's rig (10) and his
+    // fist (11); it is redrawn in the camera's own rect every frame, the same
+    // convention the vignette follows (see renderAwakenRoom).
+    this.awakenRoomG = this.add.graphics().setDepth(12).setBlendMode(Phaser.BlendModes.ADD);
 
     const kb = this.input.keyboard;
     this.keys = kb
@@ -886,7 +919,12 @@ export class PaintScene extends Phaser.Scene {
       // rim … to separate it from the window glare" the critique asked for, and
       // it works for a flying moth as well as for a walking eraser, which a
       // shadow drawn on the FLOOR could not (there is no floor under a moth).
-      if (JOY_ROLES.has(e.role)) {
+      // PK-R6 · H2 (round-2 finding 4): …and a CAGE gets one too. The night
+      // classroom is dark green furniture against dark blue air, and the one
+      // shape the chapter teaches was the only large object in it carrying no
+      // edge at all — which is most of why the opened case read as „an
+      // amorphous green blob". Same device, same numbers, one more role.
+      if (JOY_ROLES.has(e.role) || e.role === "cage") {
         const shade = this.add.image(fromSubs(e.x), fromSubs(e.y), img.texture.key).setDepth(6.95).setOrigin(0.5, 1);
         shade.setTint(HERO_SHADOW_TINT);
         shade.setVisible(!e.hidden);
@@ -1024,12 +1062,24 @@ export class PaintScene extends Phaser.Scene {
   }
 
   /** world-space display heights per role — painted cells arrive at 512px native */
-  private entTargetH(e: { role: string; skin: string }): number {
+  private entTargetH(e: { role: string; skin: string; params?: Record<string, unknown> }): number {
     if (e.role === "guardian") return 52;
     if (e.role === "swarm") return 34;
     if (e.role === "crusher") return 30;
     if (e.role === "door.trigger") return e.skin === "klecksdoor" ? 30 : 34;
-    if (e.role === "cage") return e.skin === "pencilcase" ? 24 : 22;
+    // PK-R6 · H2 (round-2 finding 4: „the object the characters are draped over
+    // and celebrating on is an amorphous green quilted blob with no bars, hinge,
+    // door or face"). The art is none of those things — `pencilcase_burst` is a
+    // painted case with its lid thrown wide, its zip flying off and a dark well
+    // where somebody was. It was being drawn 24 px tall. At that size a 413-px
+    // sheet keeps its outline and loses everything inside it, and what survives
+    // is a green shape.
+    //
+    // A PERSON-CAGE is therefore sized like what it is: the one container in the
+    // chapter big enough to have held the girl standing next to it (she renders
+    // 30). The other cages are unchanged — they hold a moth, and a pencil case
+    // the size of a desk would be the opposite lie.
+    if (e.role === "cage") return this.holdsAPerson(e) ? 34 : e.skin === "pencilcase" ? 24 : 22;
     // PK-R6 · C1: a drained object is FURNITURE-SIZED, and the six of them are
     // not one size — a desk the height of a pencil would read as a toy. Heights
     // are per skin, chosen against each sheet's own aspect (the tall-thin
@@ -1048,6 +1098,13 @@ export class PaintScene extends Phaser.Scene {
     return 24; // chasers, gunners, flyers, bouncers
   }
 
+  /** Does this cage hold a classmate? The level's own pointer answers — the
+   *  `classmate-pair` law proves it exists before ship — so the renderer never
+   *  has to know that ch01's person-cage happens to be a pencil case. */
+  private holdsAPerson(e: { role: string; params?: Record<string, unknown> }): boolean {
+    return e.role === "cage" && typeof e.params?.classmate === "string";
+  }
+
   /**
    * PK-R6 · C1 · THE ↑ CUE (doc 44 §4 ch01: „each stands grey in the world with
    * an ↑ cue"). A chalk arrow bobbing over the ONE being a press would reach.
@@ -1056,6 +1113,13 @@ export class PaintScene extends Phaser.Scene {
    * before it opens a card — so the arrow can never point at something a press
    * would miss. That is the letter-magnet rule applied to an affordance: the
    * picture and the mechanic read from one answer.
+   *
+   * PK-R6 · H2 (round-2 finding 1): …and it is DRAWN BY HAND now. The shape it
+   * fills comes from `cue.chalkArrow` — a soft-edged, wavering, dust-shedding
+   * chalk mark instead of the four straight machine edges this method used to
+   * put down. The geometry is pure and unit-tested; what lives here is only the
+   * filling of it, and the seed is the being's own name so the mark over the
+   * schoolbag is not the identical twin of the mark over the desk.
    */
   private renderEngageCue(): void {
     const id = engageTargetId(this.world, this.player.x, this.player.y);
@@ -1065,15 +1129,25 @@ export class PaintScene extends Phaser.Scene {
     const x = fromSubs(e.x);
     const bob = this.cfg.reducedMotion ? 0 : Math.sin(this.tickCount / 9) * 1.6;
     const y = fromSubs(e.y) - this.entTargetH(e) - 7 + bob;
-    // a stubby chalk arrow: shaft + head, in the Tafel's own chalk white with
-    // the book's ink contour, so it belongs to this world rather than to a UI
+    const seed = e.id.length * 37 + (e.id.charCodeAt(0) | 0) * 7 + (e.id.charCodeAt(e.id.length - 1) | 0);
+    const cue = chalkArrow(x, y, 11, seed);
     const g = this.engageCueG;
-    g.fillStyle(0xf6f2e8, 0.95);
-    g.lineStyle(1, 0x243048, 0.65);
-    g.fillTriangle(x, y - 5, x - 4.5, y + 1, x + 4.5, y + 1);
-    g.strokeTriangle(x, y - 5, x - 4.5, y + 1, x + 4.5, y + 1);
-    g.fillRect(x - 1.6, y + 1, 3.2, 4);
-    g.strokeRect(x - 1.6, y + 1, 3.2, 4);
+    // the gilded light first, behind everything: the same glow the collectible
+    // letters wear, so an affordance is an affordance wherever the child meets it
+    for (const ring of cue.halo) {
+      g.fillStyle(CUE_HALO, ring.alpha);
+      g.fillCircle(x, y, ring.r);
+    }
+    // …then the mark itself, widest and faintest first — the stack IS the edge
+    for (const band of cue.bands) {
+      g.fillStyle(band.colour, band.alpha);
+      g.fillPoints(band.pts.map((p) => new Phaser.Geom.Point(p.x, p.y)), true);
+    }
+    // …and the powder it shed putting itself down
+    for (const d of cue.dust) {
+      g.fillStyle(CUE_CHALK, d.alpha);
+      g.fillCircle(d.x, d.y, d.r);
+    }
   }
 
   private renderEntities(): void {
@@ -1144,7 +1218,13 @@ export class PaintScene extends Phaser.Scene {
       // above and stays for the beings it was written for; a person the child
       // just spent a whole ceremony bringing back is the one being that has to
       // read as completely there (doc 44 §1).
-      if (e.redeemed && !e.role.startsWith("platform") && e.role !== "classmate") img.setAlpha(0.85);
+      // PK-R6 · H2 (round-2 finding 4): …and the OPENED CAGE with her. The same
+      // 0.85 sat on the object at the centre of the climax — the thing the two
+      // of them are celebrating on — so the frame that has to say „this opened"
+      // was showing the room through it. Every other freed being keeps the fade
+      // that means „you already did this"; the cage is the shape the chapter is
+      // teaching, and a shape you can see through is the illegibility itself.
+      if (e.redeemed && !e.role.startsWith("platform") && e.role !== "classmate" && e.role !== "cage") img.setAlpha(0.85);
       else img.setAlpha(1);
       // PK-R6 · H1 (round-1 critique, finding 1): the bloom outranks the windup
       // tint, because by the time it runs she is not winding up any more — and
@@ -1224,6 +1304,14 @@ export class PaintScene extends Phaser.Scene {
         // throws further — the same flourish, scaled by what the child paid for
         // it. Every other being keeps exactly the beat it already had.
         this.redeemFlourish(img.x, img.y - this.entTargetH(e) * 0.5, e.role === "classmate" ? 1.9 : 1);
+        // PK-R6 · H2 (round-2 finding 3): …and when the being is a PERSON, the
+        // ROOM answers. Six rounds end here and nothing outside her own 30-px
+        // silhouette used to change, so the payoff frame and the progress frame
+        // before it were the same picture. Fires once, on the sixth answer only.
+        if (e.role === "classmate") {
+          this.awakenRoomMs = 0;
+          this.awakenRoomAt = { x: img.x, y: img.y - this.entTargetH(e) * 0.55 };
+        }
         // PK-R6 · H2 (round-2 finding 4): …and the CHILD celebrates too. The
         // flourish on the freed thing was the whole payoff, and the one person on
         // screen who had just done the work stood at attention through it.
@@ -1715,8 +1803,38 @@ export class PaintScene extends Phaser.Scene {
    * motion the same picture is drawn STILL, at the positions the motion would
    * have reached, and cleared a beat later — a finished celebration rather than a
    * frozen one (the end-states law, applied to the world).
+   *
+   * PK-R6 · H2 (round-2 finding 5: „the ‚shine' cue is two soft-edged flat white
+   * ellipses … with no radiating rays or sparkle flecks"). Two things were true
+   * at once: the fan above DID exist, and it was over in 520 ms — long gone by
+   * the frame a still capture calls „restored" — leaving only the ADD bloom's
+   * two blown-out buckle plates as the entire light. So the flourish now (a)
+   * out-lives the colour flood (anim.RESTORE_SPARKLE_MS) and (b) is built out of
+   * the two things a flat ellipse cannot fake: a SOFT OUTWARD LIGHT that keeps
+   * spreading, and THIN STAR FLECKS with a direction — drawn in the gilded key
+   * the collectible letters already wear, so the light of this book is one light.
    */
   private redeemFlourish(xPx: number, yPx: number, size = 1): void {
+    const life = RESTORE_SPARKLE_MS;
+    // ── the soft outward light: four rings, faintest outermost, expanding past
+    // the thing they lit. Behind the being (6.94) — a glow drawn in front is a
+    // veil over what it reveals, the same rule the boss's halo follows.
+    const glow = this.add.graphics().setDepth(6.94);
+    for (let i = 0; i < 4; i++) {
+      const k = 1 - i / 4;
+      glow.fillStyle(LETTER_HALO_COLOUR, 0.16 * k * k);
+      glow.fillCircle(xPx, yPx, (11 + i * 7) * size);
+    }
+    if (this.cfg.reducedMotion) {
+      this.time.delayedCall(420, () => glow.destroy());
+    } else {
+      glow.setScale(0.4);
+      this.tweens.add({
+        targets: glow, scale: 1.7, alpha: 0, duration: life,
+        ease: "Sine.easeOut", onComplete: () => glow.destroy(),
+      });
+    }
+
     const RAYS = 8;
     const rays = this.add.graphics().setDepth(6.95);
     rays.fillStyle(0xffe3a4, 0.5);
@@ -1734,8 +1852,37 @@ export class PaintScene extends Phaser.Scene {
     } else {
       rays.setScale(0.35);
       this.tweens.add({
-        targets: rays, scale: 1.35, alpha: 0, angle: 14, duration: 520,
+        targets: rays, scale: 1.35, alpha: 0, angle: 14, duration: life * 0.62,
         ease: "Cubic.easeOut", onComplete: () => rays.destroy(),
+      });
+    }
+
+    // ── the star flecks: five thin four-pointed sparks that travel outward and
+    // turn as they go. `starPoints` with a small inner radius is what makes a
+    // spark THIN — a fat star is a blob, which is the shape this beat was
+    // filed for. Each is placed by its own index, so a replayed tape sparkles
+    // identically (repo law: no Math.random anywhere in the game).
+    const STARS = 5;
+    for (let i = 0; i < STARS; i++) {
+      const ang = (i / STARS) * Math.PI * 2 + 0.4;
+      const reach = (20 + (i % 3) * 9) * size;
+      const r = (2.6 + (i % 2) * 1.1) * size;
+      const s = this.add.graphics().setDepth(9.15);
+      s.fillStyle(i % 2 === 0 ? LETTER_HALO_COLOUR : 0xfffdf6, 0.95);
+      s.fillPoints(starPoints(0, 0, 4, r, r * 0.16, i * 0.3).map((p) => new Phaser.Geom.Point(p.x, p.y)), true);
+      s.setPosition(xPx, yPx);
+      if (this.cfg.reducedMotion) {
+        s.setPosition(xPx + Math.cos(ang) * reach, yPx + Math.sin(ang) * reach - 5);
+        this.time.delayedCall(420, () => s.destroy());
+        continue;
+      }
+      this.tweens.add({
+        targets: s,
+        x: xPx + Math.cos(ang) * reach,
+        y: yPx + Math.sin(ang) * reach - 5,
+        alpha: 0, scale: 0.35, angle: 90 + i * 18,
+        delay: (i % 3) * 70, duration: life - (i % 3) * 120,
+        ease: "Quad.easeOut", onComplete: () => s.destroy(),
       });
     }
 
@@ -1754,7 +1901,7 @@ export class PaintScene extends Phaser.Scene {
       }
       this.tweens.add({
         targets: g, x: xPx + dx, y: yPx + dy, alpha: 0, scale: 0.3,
-        delay: (i % 4) * 45, duration: 520 + (i % 3) * 90,
+        delay: (i % 4) * 45, duration: life * 0.8 + (i % 3) * 90,
         ease: "Quad.easeOut", onComplete: () => g.destroy(),
       });
     }
@@ -2094,6 +2241,8 @@ export class PaintScene extends Phaser.Scene {
     // of indices, so a replayed tape draws them identically.
     this.burstMs += this.frameMs;
     this.cheerMs += this.frameMs;
+    this.awakenRoomMs += this.frameMs;
+    this.renderAwakenRoom();
     this.renderReadability();
     this.renderAir();
     this.renderLetterFx();
@@ -2529,6 +2678,14 @@ export class PaintScene extends Phaser.Scene {
     if (p.stem === null) return; // fallbackFill — the graphics pass drew it
     const key = `pb-${p.stem}`;
     if (!this.textures.exists(key)) return; // only-present law
+    // PK-R6 · H2 (round-2 finding 7): the nearest standable plane is laid in its
+    // own light — see composition.nearPlaneTint for the measurements and for why
+    // the push is scaled by the room's key rather than fixed. Combined with
+    // whatever the plan already asked for, so the no-metronome value jitter on a
+    // tiled run survives being pushed forward.
+    if (p.kind === "platform") {
+      p = { ...p, tint: mixMultiply(p.tint ?? 0xffffff, nearPlaneTint(this.comp?.key ?? 88)) };
+    }
     if (p.tile === true) {
       const src = this.textures.get(key).getSourceImage() as HTMLImageElement;
       const scale = p.h / src.height;
@@ -3065,6 +3222,62 @@ export class PaintScene extends Phaser.Scene {
         this.hostileG.fillStyle(colour, HOSTILE_HALO_ALPHA * k * k * beat);
         this.hostileG.fillCircle(cx, cy, r0 * spread);
       }
+    }
+  }
+
+  /**
+   * PK-R6 · H2 · THE ROOM ANSWERS (round-2 finding 3: „06 midwash, 07 final
+   * flood and 08 joy share the same dim navy-purple room, the same lighting, and
+   * no added glow/particle/bloom layer — flipping between the labeled ‚midwash'
+   * and ‚final flood' frames shows no discernible difference in intensity").
+   *
+   * Every light the ceremony owned was drawn ON A BEING — `floodBloomFor` is a
+   * copy of Merle's own 30-px silhouette in a 384-px-wide room, which is a
+   * change roughly three percent of the frame wide. Six rounds of work ended in
+   * a picture indistinguishable from the round before it.
+   *
+   * This is the beat's own light, and it belongs to the ROOM: a warm bloom born
+   * at her, sweeping outward past the frame (`awakenRoomSweep`), over an ADD
+   * wash that warms the whole palette for as long as it lasts. It is drawn in
+   * CAMERA space so it covers whatever the child can see, and it fires on the
+   * sixth answer only — the five rounds before it are progress, and a beat that
+   * marks everything marks nothing.
+   *
+   * Scaled by the room's own key: light reads against darkness, so the night
+   * classroom (K=30) takes nearly all of it and a sunlit hall would take a third.
+   * Reduced motion draws none of it — a bloom is nothing but a change over time,
+   * and the end-states law asks for the finished picture, which is the room
+   * afterwards (the same rule `floodBloomFor` follows).
+   */
+  private renderAwakenRoom(): void {
+    this.awakenRoomG.clear();
+    const at = this.awakenRoomAt;
+    if (!at || this.cfg.reducedMotion) return;
+    // the beat is retired by its own CLOCK, never by „it is drawing nothing
+    // right now": the light is legitimately 0 on the frame it is fired (the rise
+    // starts from nothing), and a single zero-delta frame there would otherwise
+    // cancel the chapter's payoff before it had drawn once
+    if (this.awakenRoomMs >= AWAKEN_ROOM_MS) { this.awakenRoomAt = null; return; }
+    const a = awakenRoomBloom(this.awakenRoomMs);
+    if (a <= 0) return;
+    // how much light this room can take before it stops reading as light
+    const key = this.comp?.key ?? 88;
+    const room = 1 - Math.min(key, 100) / 140;
+    // drawn in WORLD coordinates at the camera's own rect, exactly as the
+    // vignette is: the camera carries a zoom (RENDER_SCALE, and more during a
+    // focus lean), and a scroll-factor-0 rectangle would be scaled about the
+    // camera's centre instead of covering the frame
+    const camX = fromSubs(this.camX);
+    const camY = fromSubs(this.camY);
+    // ── the palette warms, everywhere at once
+    this.awakenRoomG.fillStyle(AWAKEN_ROOM_WARM, a * room * 0.46);
+    this.awakenRoomG.fillRect(camX, camY, LOGICAL_W, LOGICAL_H);
+    // ── …and the light itself travels out of her
+    const sweep = awakenRoomSweep(this.awakenRoomMs);
+    for (let i = 0; i < 5; i++) {
+      const k = 1 - i / 5; // 1 at the core, 0 at the front
+      this.awakenRoomG.fillStyle(i === 0 ? AWAKEN_ROOM_CORE : AWAKEN_ROOM_WARM, a * room * 0.34 * k * k);
+      this.awakenRoomG.fillCircle(at.x, at.y, (10 + i * 26) * sweep);
     }
   }
 

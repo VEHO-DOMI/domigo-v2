@@ -168,6 +168,43 @@ export interface CompositionSpec {
 // built against placeholders cannot quietly ship on them either
 // (check-paint-art.mjs hard-fails past the date).
 
+// ── PK-R6 · H2 · THE NEAREST PLANE (round-2 finding 7) ───────────────────────
+// „Bookshelf-platform (foreground), locker band, and blurred foliage (midground)
+// all sit within a narrow warm-midtone band; compare to the reference forest
+// frame, which holds a true dark-silhouette-to-pale-sky value spread."
+//
+// Measured on the shipped ch01 hall: the floating platform objects average 49.3 %
+// luminance and the L2 furniture band behind them 54.5 % — a 5-point step, which
+// is nothing under a squint. The hall's depth was therefore being carried almost
+// entirely by outline overlap, exactly as the critique read it.
+//
+// The fix is a value, not a new asset: the nearest standable plane is laid in its
+// own light — darker, and cooler, because near-shade in a warm room goes blue.
+// Measured after: 31.0 % against the same 54.5 %, i.e. the step grows from 5.2 to
+// 23.5 points and the foreground becomes the frame's dark anchor.
+//
+// And it is SCALED BY THE ROOM'S OWN KEY, which is the whole reason this is a
+// function rather than a constant. Separation is the law (doc 36 §1 v1.1's
+// L2↔L3 rule), not darkness: in the night classroom (K=30) the platforms already
+// read by being LIGHTER than a 19 %-luminance room, and pushing them down would
+// erase the very separation it is meant to build. At K=88 the push is its full
+// 0.36; at K=30 it is 0.12 and the night room keeps its own contrast (measured:
+// 45.5 % → 39.7 % against L2 at 19.1 %).
+
+/** How far down the near plane is pushed at the brightest room the law allows. */
+export const NEAR_PLANE_PUSH = 0.36;
+
+/** The MULTIPLY tint the nearest standable plane wears in a room of this key.
+ *  Cooler than it is dark: red loses the most, blue the least, which is what
+ *  turns „darker" into „further forward in a warm room" instead of „dirtier". */
+export const nearPlaneTint = (key: number): number => {
+  const d = Math.min(NEAR_PLANE_PUSH, Math.max(0.1, NEAR_PLANE_PUSH * (key / 88)));
+  const r = Math.round(255 * (1 - d * 1.15));
+  const g = Math.round(255 * (1 - d));
+  const b = Math.round(255 * (1 - d * 0.6));
+  return (r << 16) | (g << 8) | b;
+};
+
 export const PLACEHOLDER_PREFIX = "ph_";
 /** Hard stop: placeholder slots FAIL the art gate after this date. */
 export const PLACEHOLDER_UNTIL = "2026-09-30";

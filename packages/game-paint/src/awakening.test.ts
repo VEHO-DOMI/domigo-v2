@@ -23,8 +23,9 @@ import { RESTORE_HOLD_MS } from "./cards/resolution.ts";
 import { VERDICT_MS } from "./cards/overlay-css.ts";
 import { AWAKEN_ROUNDS, JOY_TICKS, SETTLE_TICKS, WAVE_EVERY_TICKS } from "./entities.ts";
 import {
-  AWAKEN_FLOOD_WASH, AWAKEN_STEP_WASH, CAGE_OPEN_TICKS, COLOUR_FLOOD_TICKS, FLOOD_BLOOM_PEAK, FLOOD_BLOOM_PEAK_AT,
-  GHOST_WASH, WASH_ALPHA, awakenWash, classmateCell,
+  AWAKEN_FLOOD_WASH, AWAKEN_ROOM_MS, AWAKEN_ROOM_PEAK, AWAKEN_ROOM_RISE_MS, AWAKEN_STEP_WASH,
+  CAGE_OPEN_TICKS, COLOUR_FLOOD_TICKS, FLOOD_BLOOM_PEAK, FLOOD_BLOOM_PEAK_AT,
+  GHOST_WASH, RESTORE_SPARKLE_MS, WASH_ALPHA, awakenRoomBloom, awakenRoomSweep, awakenWash, classmateCell,
   entPoseCell, floodBloomFor, greyLuma, poseStateOf, washAlphaFor,
 } from "./anim.ts";
 
@@ -509,5 +510,74 @@ describe("the arriving-colour light (doc 44 · PK-R6 · H1)", () => {
     const at = Math.round(COLOUR_FLOOD_TICKS * FLOOD_BLOOM_PEAK_AT);
     expect(floodBloomFor(bag(at), true)).toBe(0);
     expect(washAlphaFor({ role: "cage", redeemed: true, timer: at }, true)).toBe(0); // …because this already is
+  });
+});
+
+// ── PK-R6 · H2 · THE ROOM ANSWERS (round-2 finding 3) ────────────────────────
+// „06-merle-round4-midwash, 07-merle-final-flood and 08-merle-joy-open-cage
+// share the same dim navy-purple room, the same lighting, and no added
+// glow/particle/bloom layer — flipping between the labeled ‚midwash' and ‚final
+// flood' frames shows no discernible difference in intensity."
+//
+// The escalation is now arithmetic, so it can be checked without a screenshot:
+// a progress round has NO room light by construction (the beat fires on the
+// sixth answer only), the payoff frame has one at nearly full strength, and the
+// joy frame after it is still lit — and lit WIDER, because the light travels.
+describe("PK-R6 · H2 · the room's own light on the sixth answer", () => {
+  it("is nothing before the beat and nothing after it", () => {
+    expect(awakenRoomBloom(-1)).toBe(0);
+    expect(awakenRoomBloom(AWAKEN_ROOM_MS)).toBe(0);
+    expect(awakenRoomBloom(AWAKEN_ROOM_MS * 3)).toBe(0);
+    expect(awakenRoomBloom(Number.POSITIVE_INFINITY)).toBe(0); // the „no ceremony yet" clock
+  });
+
+  it("makes the payoff frame unmistakably brighter than the progress frame", () => {
+    // a progress round (rounds 1…5) never starts this clock — its room light is
+    // the Infinity case above, i.e. exactly zero. The payoff frame is the peak.
+    const progress = awakenRoomBloom(Number.POSITIVE_INFINITY);
+    const payoff = awakenRoomBloom(AWAKEN_ROOM_RISE_MS);
+    expect(payoff).toBeCloseTo(AWAKEN_ROOM_PEAK, 5);
+    // …and against an ABSOLUTE floor, not only against its own constant: a peak
+    // tuned down to nothing would satisfy „payoff === PEAK" and re-ship exactly
+    // the defect this beat exists to answer
+    expect(payoff).toBeGreaterThan(0.35);
+    expect(payoff - progress).toBeGreaterThan(0.35);
+  });
+
+  it("snaps up and falls slowly — a spell breaking, not a lamp fading in", () => {
+    expect(awakenRoomBloom(AWAKEN_ROOM_RISE_MS / 2)).toBeCloseTo(AWAKEN_ROOM_PEAK / 2, 5);
+    // …and it is still lighting the room while the child is being handed it back
+    expect(awakenRoomBloom(RESTORE_HOLD_MS)).toBeGreaterThan(AWAKEN_ROOM_PEAK * 0.2);
+    // …and it only ever falls after the peak (one rise, one fall, no flicker)
+    let prev = AWAKEN_ROOM_PEAK;
+    for (let ms = AWAKEN_ROOM_RISE_MS; ms < AWAKEN_ROOM_MS; ms += 25) {
+      const now = awakenRoomBloom(ms);
+      expect(now).toBeLessThanOrEqual(prev + 1e-9);
+      prev = now;
+    }
+  });
+
+  it("keeps travelling after its peak, so the late frame is WIDER, not just dimmer", () => {
+    // this is what makes it a light crossing a room instead of a tint over one —
+    // and it is why the joy frame does not read as a weaker copy of the flood
+    for (let ms = 0; ms < AWAKEN_ROOM_MS; ms += 50) {
+      expect(awakenRoomSweep(ms + 50)).toBeGreaterThan(awakenRoomSweep(ms));
+    }
+    expect(awakenRoomSweep(0)).toBeCloseTo(1, 5);
+    expect(awakenRoomSweep(AWAKEN_ROOM_MS)).toBeGreaterThan(3);
+  });
+});
+
+// ── PK-R6 · H2 · THE RESTORE SPARKLE (round-2 finding 5) ────────────────────
+// „The ‚shine' cue is two soft-edged flat white ellipses overlapping the
+// leather, with no radiating rays or sparkle flecks."
+describe("PK-R6 · H2 · the freeing sparkle out-lives the colour flood", () => {
+  it("is still going when the colour has already landed", () => {
+    // the frame a still capture calls „restored" is the frame AFTER the flood,
+    // and until now every light this beat owned was over by then — leaving the
+    // ADD bloom's blown-out highlights as the only „shine" in the picture
+    expect(RESTORE_SPARKLE_MS).toBeGreaterThan(COLOUR_FLOOD_TICKS * TICK_MS);
+    // …and it is over before the next thing can happen, so it never stacks
+    expect(RESTORE_SPARKLE_MS).toBeLessThan(JOY_TICKS * TICK_MS);
   });
 });

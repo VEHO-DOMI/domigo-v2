@@ -11,7 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { GLYPH_STEMS, HERO_STEMS, entitySkinStems, guardianSkinStems } from "../packages/game-paint/src/artManifest.ts";
-import { COMPOSITION, PLACEHOLDER_UNTIL, compositionStems, isPlaceholderStem, massStems } from "../packages/game-paint/src/composition.ts";
+import { COMPOSITION, PLACEHOLDER_UNTIL, compositionStems, isPlaceholderStem } from "../packages/game-paint/src/composition.ts";
 import { CHALK_PROJECTILE_STEMS } from "../packages/game-paint/src/entities.ts";
 import { keyFringe, readPng } from "./key-fringe.mjs";
 
@@ -111,16 +111,21 @@ if (placeholders.length > 0) {
 // along the walkable band, in every frame of the round-1 capture set.
 // Repaired by scripts/strip-key-fringe.mjs; kept repaired here, so a re-import
 // that brings the key back fails CI instead of shipping.
-const fringeStems = new Set();
-for (const phases of Object.values(COMPOSITION)) {
-  for (const spec of Object.values(phases)) for (const stem of massStems(spec.mass)) fringeStems.add(stem);
-}
-// PK-R6 · H1 (round-1 critique, finding 5): …and the CHALK. It does not tile,
-// but it is the prop the boss contract stands on — a telegraph the child can
-// read is worth nothing if the threat it announces cannot be seen — and the
-// same delivery left the same key on it (measured at 6× in the running game:
-// a magenta comma along the flying stick's lower edge).
-for (const stem of CHALK_PROJECTILE_STEMS) fringeStems.add(stem);
+//
+// PK-R6 · H2 · …AND IT WAS NEVER ONLY THE FLOOR (round-2 finding 2: „visible
+// magenta cutout-fringe halos around the foliage/window-post edges in the
+// ‚restored' shot"). H1 scoped this gate to the stems that TILE, on the argument
+// that a repeated defect is the one a child stares at. The argument was right
+// and the scope was wrong: the key was on the whole delivery, so the moment a
+// still frame put a leaf or a window mullion in front of a bright wall, the same
+// pink skin was there to be seen — and a critic saw it. Measured when this scope
+// was widened: 179 of the shipped sheets carried fringe, the hall band alone
+// 14 065 px.
+//
+// The gate is therefore the CLASS, not the instance: every PNG under the paint
+// art root, tiling or not, prop or hero cell. There is no stem in this kit whose
+// cut edge is allowed to keep the colour it was cut against.
+const fringeStems = new Set(present);
 let fringeTotal = 0;
 for (const stem of [...fringeStems].sort()) {
   const file = fileOf.get(stem);
@@ -133,7 +138,7 @@ for (const stem of [...fringeStems].sort()) {
 }
 
 if (failures === 0) {
-  console.log(`check-paint-art: OK — ${required.size} required stems all present or explicitly allowlisted (${present.size} painted stems on disk); ${fringeStems.size} traversal + projectile stems clean of colour-key fringe`);
+  console.log(`check-paint-art: OK — ${required.size} required stems all present or explicitly allowlisted (${present.size} painted stems on disk); all ${fringeStems.size} painted stems clean of colour-key fringe`);
 } else {
   console.error(`check-paint-art: ${failures} failure(s)`);
   process.exit(1);

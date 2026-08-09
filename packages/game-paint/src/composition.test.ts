@@ -5,7 +5,7 @@
 // cannot be read back (Build-D banked that false negative), so composition is
 // verified by arithmetic over the plan, not by sampling the screen.
 import { describe, expect, it } from "vitest";
-import { CH01_COMPOSITION, type MassKit, compositionFor, compositionStems } from "./composition.ts";
+import { CH01_COMPOSITION, type MassKit, compositionFor, compositionStems, nearPlaneTint } from "./composition.ts";
 import { K_X, K_Y, coverBox, coverFit, coversAxis, planLayers, planeCovers, travelBox, visibleWindow } from "./layers.ts";
 import {
   CRUST_H,
@@ -598,6 +598,53 @@ describe("the manifest", () => {
   it("gives the slide to p3 and to nobody else", () => {
     for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
       expect(spec.mass.slide !== undefined, id).toBe(id === "p3");
+    }
+  });
+});
+
+// ── PK-R6 · H2 · THE NEAREST PLANE (round-2 finding 7) ──────────────────────
+// „Bookshelf-platform (foreground), locker band, and blurred foliage (midground)
+// all sit within a narrow warm-midtone band … compare to the reference forest
+// frame, which holds a true dark-silhouette-to-pale-sky value spread."
+//
+// Measured on the shipped hall: the floating platform objects average 49.3 %
+// luminance against the L2 furniture band's 54.5 % — a 5-point step, which is
+// nothing under a squint. The near plane is now laid in its own light. What is
+// checkable here is the LAW rather than the pixels: it darkens, it cools, and it
+// backs off in a dark room, because separation is the law and not darkness.
+describe("PK-R6 · H2 · the near plane's own light", () => {
+  const ch = (t: number, shift: number): number => (t >> shift) & 0xff;
+
+  it("darkens the nearest standable plane — it is a multiply, never a lift", () => {
+    for (const key of [88, 86, 30, 28]) {
+      const t = nearPlaneTint(key);
+      for (const shift of [16, 8, 0]) expect(ch(t, shift), `K=${key}`).toBeLessThan(255);
+    }
+  });
+
+  it("cools it: red loses the most, blue the least", () => {
+    // „further forward in a warm room" is a cool shadow; an even darkening would
+    // only read as dirt on the paint
+    const t = nearPlaneTint(88);
+    expect(ch(t, 16)).toBeLessThan(ch(t, 8)); // r < g
+    expect(ch(t, 8)).toBeLessThan(ch(t, 0)); // g < b
+  });
+
+  it("backs off in a dark room, because the law is SEPARATION, not darkness", () => {
+    // the night classroom's platforms already read by being LIGHTER than a
+    // 19 %-luminance room; pushing them down would erase the very separation
+    // this exists to build (doc 36 §1 v1.1's L2↔L3 rule)
+    const bright = nearPlaneTint(88);
+    const dark = nearPlaneTint(30);
+    for (const shift of [16, 8, 0]) expect(ch(dark, shift)).toBeGreaterThan(ch(bright, shift));
+    expect(ch(dark, 8)).toBeGreaterThan(210); // …and barely touched at all
+  });
+
+  it("is bounded at both ends — no room gets a black plane or an untouched one", () => {
+    for (const key of [0, 1, 30, 88, 100, 400]) {
+      const t = nearPlaneTint(key);
+      expect(ch(t, 16), `K=${key}`).toBeGreaterThan(120);
+      expect(ch(t, 0), `K=${key}`).toBeLessThan(250);
     }
   });
 });

@@ -118,6 +118,36 @@ export const PAINT_OVERLAY_CSS = `
   animation: pb-veil-in 300ms ease-out;
 }
 
+/* ── the world behind the card, out of focus ───────────────────────────────
+   PK-R6 · H2 (round-2 finding 6): „the card sits right-of-center, cutting a
+   floating shelf/platform in half at the frame edge behind it" — the strip of
+   world left showing beside the card read as a framing mistake rather than as a
+   backdrop.
+   The card may NOT be centred to fix that: it is put down AWAY from the being it
+   talks about (PB-F1/F2-20), and centring it would park it over the very thing
+   step 1 asks the child to look at. So the fixDirection's other half is taken —
+   the exposed strip is pushed out of focus, which is what turns a cut-off
+   classroom into a background.
+   It is its own layer and not a filter on the veil, because the CARD is a child
+   of the veil: a mask there would eat the card with the world.
+   And the mask is the whole care in it — the blur is absent over »--pb-focus«
+   and full at the frame's edges, so the being the card is about stays sharp.
+   The restore-hold exists precisely so the child can WATCH the colour come back
+   to that being; a blur over it would undo the payoff this whole beat was built
+   for. Where a browser has neither backdrop-filter nor masks, nothing is drawn
+   and the veil's ink does exactly what it did before. */
+.pb-defocus {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  backdrop-filter: blur(2.6px) saturate(0.86);
+  -webkit-backdrop-filter: blur(2.6px) saturate(0.86);
+  mask-image: radial-gradient(46% 52% at var(--pb-focus, 50%) 48%,
+    rgba(0,0,0,0) 0 30%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,1) 100%);
+  -webkit-mask-image: radial-gradient(46% 52% at var(--pb-focus, 50%) 48%,
+    rgba(0,0,0,0) 0 30%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,1) 100%);
+}
+
 /* ── THE INK IRIS that wipes the world before the card lands ───────────────
    doc 44 §3.1.1, ported from the v0 build's »dg-bs-swirl« with its timings
    verbatim: the blob's own curve (0 → 42 % → 58 % → 100 %, rotating 0/16/20/−12°),

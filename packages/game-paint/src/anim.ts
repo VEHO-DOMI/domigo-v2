@@ -217,6 +217,83 @@ export const floodBloomFor = (
   return FLOOD_BLOOM_PEAK * shape;
 };
 
+// ── PK-R6 · H2 · THE RESTORE SPARKLE (round-2 finding 5) ────────────────────
+// „The ‚shine' cue is two soft-edged flat white ellipses overlapping the
+// leather, with no radiating rays or sparkle flecks."
+//
+// Measured against the code, the ONE light this beat owns is `floodBloomFor`
+// above: an ADD-blended copy of the being's own cell, already amber-tinted at
+// creation. ADD still walks a bright pixel toward 255 in every channel, so the
+// satchel's two brass buckle plates — its brightest paint by a wide margin —
+// clip to near-white soft ovals at the bloom's peak while the leather around
+// them only warms. That is the pair of ellipses, and it is what „a light" looks
+// like when nothing else in the frame says light: no rays, no flecks, nothing
+// with a direction.
+//
+// The bloom is left exactly as it is (it is the reason the colour change reads
+// at all — H1's finding 8). What it gains is a COMPANY: a gilded flourish that
+// out-lives it, so the frame after the flood still shows sparks travelling
+// outward rather than a flat patch sitting still. Its length is here, with the
+// flood's own numbers, so the claim „the sparkle is still going when the colour
+// has landed" is arithmetic rather than a screenshot.
+
+/** How long the freeing sparkle lasts, in ms. Longer than the flood itself
+ *  (COLOUR_FLOOD_TICKS ≈ 600 ms) on purpose: the payoff frame a still capture
+ *  lands on is usually the one AFTER the colour arrived. */
+export const RESTORE_SPARKLE_MS = 1050;
+
+// ── PK-R6 · H2 · THE ROOM ANSWERS (round-2 finding 3) ────────────────────────
+// „06-merle-round4-midwash, 07-merle-final-flood and 08-merle-joy-open-cage
+// share the same dim navy-purple room, the same lighting, and no added
+// glow/particle/bloom layer — flipping between the labeled ‚midwash' and ‚final
+// flood' frames shows no discernible difference in intensity."
+//
+// Measured against the grammar above the charge is exactly right, and the cause
+// is that every light this ceremony owns is drawn ON A BEING. `floodBloomFor` is
+// a copy of Merle's own 30-px silhouette: against a whole night classroom that
+// is a change roughly 3 % of the frame wide, and the frames before and after it
+// are therefore the same picture. The sixth answer is the moment six rounds of
+// work pay off — it has to be the moment the ROOM changes, not the moment one
+// small figure does.
+//
+// So the flood carries a light that belongs to the room: a warm bloom centred on
+// her that sweeps outward past the frame, over a wash that warms the whole
+// palette for as long as it lasts. It fires ONCE per reawakening, on the sixth
+// answer only — a beat marks a change, and the five rounds before it are
+// progress, not payoff.
+//
+// Pure and exported so „the payoff frame is brighter than the progress frame"
+// is a table rather than a screenshot.
+
+/** How long the room's own light lasts, in ms. Long enough to still be lit when
+ *  the restore-hold hands the world back (RESTORE_HOLD_MS ≈ 900) and the joy lap
+ *  starts, so the two frames a critic flips between are both inside it. */
+export const AWAKEN_ROOM_MS = 1500;
+/** How fast it arrives. Fast: light from a spell breaking is a snap, not a fade
+ *  in — and a slow rise would put the peak after the frame that names it. */
+export const AWAKEN_ROOM_RISE_MS = 110;
+/** How strong the room's light gets over the whole frame at its peak (0…1). */
+export const AWAKEN_ROOM_PEAK = 0.62;
+
+/** The room light's strength at `ms` after the sixth answer, 0…AWAKEN_ROOM_PEAK.
+ *  Snap up, then a long soft fall — the shape a light has when something opens
+ *  and the room keeps glowing after. */
+export const awakenRoomBloom = (ms: number): number => {
+  if (!(ms >= 0) || ms >= AWAKEN_ROOM_MS) return 0;
+  if (ms <= AWAKEN_ROOM_RISE_MS) return AWAKEN_ROOM_PEAK * (ms / AWAKEN_ROOM_RISE_MS);
+  const u = (ms - AWAKEN_ROOM_RISE_MS) / (AWAKEN_ROOM_MS - AWAKEN_ROOM_RISE_MS);
+  return AWAKEN_ROOM_PEAK * (1 - u) ** 1.6;
+};
+
+/** How far the bloom's own front has swept from her, as a multiple of its start
+ *  radius. The sweep is what makes it a light crossing the room rather than a
+ *  lamp switching on — and it keeps travelling after the peak, so the late frame
+ *  is a WIDER glow rather than a dimmer copy of the early one. */
+export const awakenRoomSweep = (ms: number): number => {
+  const t = Math.min(Math.max(ms, 0), AWAKEN_ROOM_MS) / AWAKEN_ROOM_MS;
+  return 1 + 2.6 * (1 - (1 - t) ** 2);
+};
+
 /** Half the patrol speed: a chaser's vx is ±ENEMY_WALK while walking and 0 at
  *  an edge turn, so this cleanly separates "striding" from "stopped". */
 export const RUN_VX = ENEMY_WALK / 2;

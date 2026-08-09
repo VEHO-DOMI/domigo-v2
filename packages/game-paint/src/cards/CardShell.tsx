@@ -403,6 +403,11 @@ export function CardShell({
 
   return (
     <div className={`pb-veil${doff ? " pb-doff" : ""}`} style={alignedWrap(align)}>
+      {/* PK-R6 · H2 (round-2 finding 6): the world beside the card, pushed out
+          of focus so its cut-off edges read as a backdrop rather than as a
+          framing mistake — sharp over the being the card is about. Listed FIRST
+          so the card, its wipe and everything else paint over it. */}
+      <div className="pb-defocus" aria-hidden />
       <InkWipe />
       <div className="pb-card" style={{ ...cardBox, width: align === "center" ? "90%" : "46%", minWidth: 300 }}>
         <Tether align={align} />

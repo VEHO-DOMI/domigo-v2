@@ -287,3 +287,39 @@ describe("the end-states law (doc 42 §1)", () => {
     expect(baseRule(PAINT_OVERLAY_CSS, "pb-doff")).toMatch(/opacity:\s*0/);
   });
 });
+
+// ── PK-R6 · H2 · THE WORLD BESIDE THE CARD (round-2 finding 6) ──────────────
+// „The card sits right-of-center, cutting a floating shelf/platform in half at
+// the frame edge behind it" — the exposed strip read as a framing mistake.
+describe("PK-R6 · H2 · the world behind the card is out of focus, except its subject", () => {
+  const defocus = (): string => baseRule(PAINT_OVERLAY_CSS, "pb-defocus");
+
+  it("pushes the exposed world out of focus", () => {
+    expect(defocus(), "the defocus layer is gone").not.toBe("");
+    expect(defocus()).toMatch(/(^|[\s;{])backdrop-filter:\s*blur/m);
+    expect(defocus()).toMatch(/(^|[\s;{])-webkit-backdrop-filter:\s*blur/m); // …in Safari too
+  });
+
+  it("keeps the BEING the card is about sharp — masked on the card's own focus", () => {
+    // the restore-hold exists so the child can watch the colour come back to
+    // that being; blurring it would undo the payoff the whole beat was built for
+    // anchored, because »-webkit-mask-image« CONTAINS »mask-image«: a loose
+    // match here passed a tamper that had deleted the standard property
+    // outright, which is the whole reason this file tamper-checks itself
+    expect(defocus()).toMatch(/(^|[\s;{])mask-image:\s*radial-gradient/m);
+    expect(defocus()).toMatch(/(^|[\s;{])-webkit-mask-image:\s*radial-gradient/m);
+    expect(defocus()).toContain("var(--pb-focus");
+    // …and the mask is TRANSPARENT at its centre (no blur on the subject) and
+    // opaque at the frame's edge (full blur where the card cuts the world)
+    const stops = [...defocus().matchAll(/rgba\(0,0,0,([01](?:\.\d+)?)\)/g)].map((m) => Number(m[1]));
+    expect(stops[0]).toBe(0);
+    expect(Math.max(...stops)).toBe(1);
+  });
+
+  it("never eats the card with the world", () => {
+    // the card is a CHILD of .pb-veil, so this had to be its own layer: a mask
+    // on the veil would have made the card itself semi-transparent
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-veil")).not.toMatch(/mask-image/);
+    expect(defocus()).toMatch(/pointer-events:\s*none/);
+  });
+});
