@@ -221,6 +221,92 @@ const PaintedSeal = ({ size = 96 }: { size?: number }): React.ReactElement => (
   </svg>
 );
 
+/** PK-R6 · H1 · THE PAINTED CAGE (round-1 critique, finding 4 — „a player has no
+ *  way to recognize this shape as ‚something caged is here', which fails the
+ *  telegraph-fairness bar for a stated core mechanic").
+ *
+ *  This is the ONE card in the chapter that teaches what a cage is, and it was
+ *  teaching it with „🎒↑" — a system emoji, in the reader's own font, over
+ *  painted art. So the teaching moment now shows the thing: a woven vessel with
+ *  BARS across its mouth, a latch on the front, and a warm light behind the bars
+ *  that is the someone inside. The ↑ the copy asks for is drawn rising out of
+ *  it, so the shape and the verb arrive as one picture.
+ *
+ *  One inline SVG — no asset, no glyph — under doc 44 B14's „full-code
+ *  animation is legitimate" clause, the same clause the seal above rides. It
+ *  carries the book's palette by construction and needs no commission to ship.
+ */
+export const PaintedCage = ({ size = 128 }: { size?: number }): React.ReactElement => (
+  <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label="ein Käfig mit jemandem darin">
+    <defs>
+      <radialGradient id="pb-cage-halo" cx="50%" cy="62%" r="50%">
+        <stop offset="0%" stopColor="#ffdd93" stopOpacity="0.55" />
+        <stop offset="100%" stopColor="#ffdd93" stopOpacity="0" />
+      </radialGradient>
+      <radialGradient id="pb-cage-glow" cx="50%" cy="46%" r="62%">
+        <stop offset="0%" stopColor="#fff4d2" stopOpacity="0.98" />
+        <stop offset="46%" stopColor="#ffd98d" stopOpacity="0.82" />
+        <stop offset="100%" stopColor="#e8a94b" stopOpacity="0.12" />
+      </radialGradient>
+      <linearGradient id="pb-cage-body" x1="18%" y1="10%" x2="82%" y2="96%">
+        <stop offset="0%" stopColor="#a8c46a" />
+        <stop offset="52%" stopColor="#7d9f4a" />
+        <stop offset="100%" stopColor="#5a7734" />
+      </linearGradient>
+      {/* everything „inside" is clipped to the vessel, so the light and the
+          captive can only ever be seen THROUGH the bars */}
+      <clipPath id="pb-cage-inside">
+        <path d="M18 46 C17 40 24 36 32 35 C42 34 60 34 70 36 C78 37 84 41 83 47 L79 76 C78 84 70 89 60 90 L42 90 C31 89 23 84 22 76 Z" />
+      </clipPath>
+    </defs>
+    {/* the soft painterly halo: warmth leaking out of a shut thing */}
+    <ellipse cx="50" cy="62" rx="42" ry="34" fill="url(#pb-cage-halo)" />
+    <g transform="rotate(-4 50 60)">
+      {/* the vessel — no two sides the same, the way a painted thing never is */}
+      <path
+        d="M18 46 C17 40 24 36 32 35 C42 34 60 34 70 36 C78 37 84 41 83 47 L79 76 C78 84 70 89 60 90 L42 90 C31 89 23 84 22 76 Z"
+        fill="url(#pb-cage-body)"
+        stroke="#3d5220"
+        strokeWidth="3"
+        strokeLinejoin="round"
+      />
+      {/* SOMEBODY IS IN THERE — drawn inside the vessel, under the bars: a lit
+          hollow and a small head-and-shoulders against it. Not a face: a captive
+          you can read the expression of is a captive who is already out, and
+          this card comes before the child has met her. */}
+      <g clipPath="url(#pb-cage-inside)">
+        <ellipse cx="50" cy="63" rx="29" ry="23" fill="url(#pb-cage-glow)" />
+        <path
+          d="M50 47 C55 47 58.5 50.5 58.5 55 C58.5 58 57 60.4 54.6 61.8 C61 63.6 65 68 66 74 L66 90 L34 90 L34 74 C35 68 39 63.6 45.4 61.8 C43 60.4 41.5 58 41.5 55 C41.5 50.5 45 47 50 47 Z"
+          fill="#8a6534"
+          opacity="0.62"
+        />
+      </g>
+      {/* THE BARS — the one feature that makes the shape a cage */}
+      <g stroke="#f3ead2" strokeWidth="3.1" strokeLinecap="round" opacity="0.94">
+        <path d="M33 40 L31 86" />
+        <path d="M43 38.5 L42 88" />
+        <path d="M53 38 L53 89" />
+        <path d="M63 38.5 L65 88" />
+        <path d="M72 40 L75 84" />
+      </g>
+      <path d="M20 50 C38 46 64 46 82 50" fill="none" stroke="#f3ead2" strokeWidth="3.1" strokeLinecap="round" opacity="0.9" />
+      <path d="M22 72 C40 68 62 68 80 72" fill="none" stroke="#f3ead2" strokeWidth="2.8" strokeLinecap="round" opacity="0.82" />
+      {/* the latch: shut, and the only thing between the child and the friend.
+          It hangs on the vessel's FRONT, below the captive's head — a padlock
+          across somebody's face reads as a mask rather than as a lock */}
+      <rect x="43.5" y="70" width="14" height="11" rx="2.5" fill="#e7b357" stroke="#8a5f1f" strokeWidth="2.2" />
+      <path d="M47.2 70 L47.2 65.5 C47.2 62 53.8 62 53.8 65.5 L53.8 70" fill="none" stroke="#8a5f1f" strokeWidth="2.4" strokeLinecap="round" />
+      {/* the gouache sheen the book leaves in every top-left */}
+      <path d="M24 44 C33 39 44 37 55 37" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="2.6" strokeLinecap="round" />
+    </g>
+    {/* the verb, rising out of the thing it acts on */}
+    <g transform="translate(50 17)">
+      <path d="M0 -11 L10 4 L4 4 L4 14 L-4 14 L-4 4 L-10 4 Z" fill="#f6f2e8" stroke="#243048" strokeWidth="2" strokeLinejoin="round" />
+    </g>
+  </svg>
+);
+
 /** PK-R6 · H1 · THE MOTES (finding 7 — „no confetti, particles, light, screen
  *  response or character reaction"). Ten of them thrown off the seal along a
  *  ring the index alone decides: no randomness anywhere, so the celebration a

@@ -55,6 +55,17 @@ export interface EntityState {
    *  means "hits left" in one file and "colour restored" in another is the
    *  drift class the pose thresholds were derived to avoid. */
   awakenStep: number;
+  /** PK-R6 · H1 · ticks since this being was FREED — the colour flood's own
+   *  clock, and the reason it is not `timer`.
+   *
+   *  Found by the hold (round-1 critique, finding 5) and older than it: the
+   *  flood was read off `timer`, which every state change resets. A freed moth
+   *  therefore re-drained and re-flooded when its joy lap ended (150 t), and a
+   *  freed classmate did it again at every settle → joy → rest → wave, i.e. she
+   *  went grey for half a second every seven seconds for the rest of the
+   *  chapter. Invisible while the flood was a 0.12 shimmer, and a lie the moment
+   *  the flood became the ceremony's payoff. This counter only ever counts up. */
+  freedTick: number;
   /** PK-R6 · E · guardians only: ticks spent ON THE PATH. It advances only while
    *  she is flying — she holds station to telegraph — so the shape is not cut
    *  short and restarted by every throw, which is what `timer` (reset per state)
@@ -210,11 +221,14 @@ const joyRadiusPx = (role: string): { rx: number; ry: number; lift: number } =>
 /** The post-redeem step: a lap of joy, then home to stay. */
 const stepRedeemed = (e: EntityState): void => {
   // R3-15: the timer runs for EVERY redeemed being, not only the ones that fly a
-  // lap — the colour flood (anim.washAlphaFor) is driven by it, and a knotted
-  // school bag gets its colour back exactly like a moth does even though it
-  // stays put. Before this the timer froze at redemption and a cage would have
-  // been left half-drained forever.
+  // lap — a knotted school bag gets its afterlife exactly like a moth does even
+  // though it stays put. Before this the timer froze at redemption and a cage
+  // would have been left half-drained forever.
   e.timer += 1;
+  // PK-R6 · H1: …and the FLOOD runs on its own clock beside it (see freedTick),
+  // because every branch below resets `timer` and a reset used to send the
+  // colour back out of a being the child had already got it back into.
+  e.freedTick += 1;
   // PK-R6 · D · THE FREED CLASSMATE'S OWN AFTERLIFE. She does not fly a lap
   // (she is a person, not a moth) and she may not be parked either: doc 44 §1
   // makes presence the point of freeing someone. So her states are her painted
@@ -239,6 +253,31 @@ const stepRedeemed = (e: EntityState): void => {
     e.x += Math.round((e.homeX - e.x) / 8);
     e.y += Math.round((e.homeY - e.y) / 8);
     if (Math.abs(e.homeX - e.x) < SUBS && Math.abs(e.homeY - e.y) < SUBS) { e.x = e.homeX; e.y = e.homeY; }
+  }
+};
+
+/**
+ * PK-R6 · H1 · THE WORLD KEEPS ITS PROMISE WHILE THE CHILD WATCHES IT (round-1
+ * critique, finding 5: „the reawakening the whole sequence is building toward
+ * never actually lands on screen").
+ *
+ * The restore-hold (doc 44 §3.1.7) exists so the card gets out of the way and
+ * the child WATCHES their answer change the world. It was holding a world that
+ * had stopped: the shell froze the sim for the hold, `stepEntities` returns on
+ * the first line when the overlay is open, and the colour flood is driven by
+ * the very timer that freeze stops. The harness measured exactly that and it was
+ * read as a timing artefact — „hold start: wash 0.72 … hold end: wash 0.72".
+ *
+ * So a hold now steps the REDEEMED beings and nothing else: the flood floods,
+ * the friend settles and takes her joy lap, a burst cage plays its opening —
+ * while the child, the enemies and every encounter stay exactly as frozen as
+ * the freeze intends. It raises no events by construction (`stepRedeemed`
+ * cannot), so a cinematic beat can never open a card behind its own card.
+ */
+export const stepRedeemedOnly = (w: EntityWorld): void => {
+  for (const e of w.entities) {
+    if (e.hidden || !e.redeemed) continue;
+    stepRedeemed(e);
   }
 };
 
@@ -391,6 +430,7 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     throws: 0,
     flightTick: 0,
     awakenStep: 0,
+    freedTick: 0,
     params: s.params ?? {},
   })),
   projectiles: [],
@@ -718,12 +758,12 @@ export const stepEntities = (
         // weight, hit it again), and it stays exactly that for the chapters that
         // grant one. There is nothing to wind up about a hand on a latch.
         if (e.state !== "burst" && e.id === engageId) {
-          e.state = "burst"; e.redeemed = true; e.timer = 0;
+          e.state = "burst"; e.redeemed = true; e.timer = 0; e.freedTick = 0;
           events.push({ type: "cageBurst", id: e.id, skin: e.skin });
         } else if (e.state === "closed" && fistHits(e, inp.fist, 16)) {
           e.hp -= 1;
           events.push({ type: "puff", x: inp.fist?.x ?? e.x, y: inp.fist?.y ?? e.y, kind: "hit" }); // R3-6
-          if (e.hp <= 0) { e.state = "burst"; e.redeemed = true; e.timer = 0; events.push({ type: "cageBurst", id: e.id, skin: e.skin }); }
+          if (e.hp <= 0) { e.state = "burst"; e.redeemed = true; e.timer = 0; e.freedTick = 0; events.push({ type: "cageBurst", id: e.id, skin: e.skin }); }
           else { e.state = "shaking"; e.timer = 0; events.push({ type: "cageHit", id: e.id, hpLeft: e.hp }); }
         } else if (e.state === "shaking" && e.timer > 30) e.state = "closed";
         break;
@@ -1086,6 +1126,7 @@ export const awakenClassmate = (w: EntityWorld, id: string): boolean => {
   }
   e.redeemed = true;
   e.state = "settle";
+  e.freedTick = 0; // the flood starts HERE, on its own clock (see freedTick)
   return true;
 };
 
@@ -1094,12 +1135,25 @@ export const awakenClassmate = (w: EntityWorld, id: string): boolean => {
  *  cage is remembered in `freedCageIds`; she has to be remembered with it, or a
  *  child who buys Klecks' door after freeing her comes back to a friend sitting
  *  grey in a cage they already opened. */
-export const restoreFreedClassmate = (e: EntityState): void => {
+export const restoreFreedClassmate = (e: EntityState, floodTicks = 0): void => {
   e.hidden = false;
   e.redeemed = true;
   e.awakenStep = AWAKEN_ROUNDS;
   e.state = "rest";
   e.timer = 0;
+  // PK-R6 · H1: her flood clock starts PAST the flood, not at 0. A remounted
+  // phase used to re-play the last degree of the spell letting go — a friend the
+  // child freed ten minutes ago fading back in as if it were happening now.
+  // Harmless while that degree was 0.12, and a lie the moment the flood became
+  // the ceremony's payoff (0.40). Same rule as the once-per-freeing flourish: a
+  // beat marks a CHANGE, and nothing changed here.
+  //
+  // The length is PASSED rather than imported: the flood belongs to the
+  // renderer's wash grammar (anim.COLOUR_FLOOD_TICKS) and this file is what
+  // that grammar reads FROM, so importing it back would close a module cycle
+  // whose evaluation order the top-level constants here would then depend on.
+  // The sim hands it in; `awakening.test.ts` pins that it hands in the real one.
+  e.freedTick = Math.max(floodTicks, 0);
 };
 
 /** Redeem after a solved encounter task. R3-5: cross → JOY → settled at home,
@@ -1109,6 +1163,7 @@ export const redeemEntity = (w: EntityWorld, id: string): void => {
   if (!e) return;
   e.redeemed = true;
   e.timer = 0;
+  e.freedTick = 0;
   e.state = JOY_ROLES.has(e.role) ? "joy" : "dazed";
 };
 

@@ -24,7 +24,7 @@ import { type Pad, type PlayerState } from "./player.ts";
 import { type EntityWorld, SHARD_TICKS, engageTargetId } from "./entities.ts";
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
-import { CELL_IS_DIRECTIONAL, type EntPoseInput, WASHED_ROLES, entPoseCell, floodBloomFor, poseStateOf, washAlphaFor } from "./anim.ts";
+import { CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, WASHED_ROLES, entPoseCell, floodBloomFor, greyLuma, poseStateOf, washAlphaFor } from "./anim.ts";
 import { RIG, rigPose, withFistAway } from "./rig.ts";
 import {
   RIG_CELL,
@@ -454,6 +454,13 @@ export class PaintScene extends Phaser.Scene {
     this.sim.setOverlay(open);
   }
 
+  /** PK-R6 · H1 · the restore-hold (doc 44 §3.1.7): the child stays frozen, the
+   *  beings they just freed keep living, so the change is watched happening
+   *  rather than found already finished. */
+  setHold(open: boolean): void {
+    this.sim.setHold(open);
+  }
+
   /** Called by React when the task for `ctx` is SOLVED. */
   resolveTask(ctx: TaskRequest["ctx"]): void {
     this.handleSimEvents(this.sim.solveTask(ctx));
@@ -504,8 +511,13 @@ export class PaintScene extends Phaser.Scene {
       // SAME texture every frame — so it drains whatever cell the being is
       // showing, including cells and skins that do not exist yet.
       if (WASHED_ROLES.has(e.role)) {
-        const wash = this.add.image(fromSubs(e.x), fromSubs(e.y), img.texture.key).setDepth(7.01).setOrigin(0.5, 1);
-        wash.setTint(COLOUR_DRAINED);
+        const greyKey = this.greyTexOf(img.texture.key);
+        const wash = this.add.image(fromSubs(e.x), fromSubs(e.y), greyKey).setDepth(7.01).setOrigin(0.5, 1);
+        // PK-R6 · H1: only a copy the canvas could NOT grey still wears the old
+        // multiply — see greyTexOf. A real grey copy is drawn as it is, because
+        // tinting it again would put the being's colours back into the very
+        // layer that exists to take them out.
+        if (greyKey === img.texture.key) wash.setTint(COLOUR_DRAINED);
         wash.setVisible(!e.hidden);
         this.washImgs.set(e.id, wash);
         // PK-R6 · H1 · and the light the colour arrives on, a hair in front of
@@ -517,6 +529,62 @@ export class PaintScene extends Phaser.Scene {
         bloom.setVisible(false);
         this.bloomImgs.set(e.id, bloom);
       }
+    }
+  }
+
+  /**
+   * PK-R6 · H1 · THE DRAINED COPY (round-1 critique, findings 1 and 2) — the
+   * being's own cell with every pixel replaced by its LUMINANCE and its alpha
+   * left alone, cached under `<key>__grey` and built at most once per cell.
+   *
+   * This is the fix for the pair of critical findings, and they were one defect:
+   * the wash overlay was a copy of the coloured sheet with `setTint` on it, and
+   * a tint MULTIPLIES — so the „grey" copy kept every hue it existed to remove
+   * and only darkened it. Nothing downstream could recover from that: the bag
+   * measured 0.371 chroma drained against 0.440 restored (brown either way) and
+   * Merle moved 0.252 → 0.259 across half her six-round ceremony.
+   *
+   * Laid over the original at alpha `a`, a true grey copy composites to
+   * `(1-a)·colour + a·luma` — which is exactly what `grayscale(a)` does to the
+   * portrait inside the card (CardShell.Portrait). The world and the card are
+   * now the same transform rather than two recipes that were meant to match.
+   *
+   * Returns the ORIGINAL key when a canvas cannot be had (headless, a
+   * cross-origin frame, a texture with no source image). That is deliberately
+   * behaviour-preserving rather than fail-loud: a chapter must still render, and
+   * `washTintFor` below keeps the old darkening as the visible fallback.
+   */
+  private greyTexOf(key: string): string {
+    const greyKey = `${key}__grey`;
+    if (this.textures.exists(greyKey)) return greyKey;
+    if (!this.textures.exists(key)) return key;
+    const src = this.textures.get(key).getSourceImage() as HTMLImageElement | HTMLCanvasElement;
+    const w = Math.round(src?.width ?? 0);
+    const h = Math.round(src?.height ?? 0);
+    if (w <= 0 || h <= 0) return key;
+    const tex = this.textures.createCanvas(greyKey, w, h);
+    if (!tex) return key; // headless/canvas-less safety, exactly like letterTex
+    try {
+      const ctx = tex.getContext();
+      ctx.clearRect(0, 0, w, h);
+      ctx.drawImage(src as CanvasImageSource, 0, 0, w, h);
+      const img = ctx.getImageData(0, 0, w, h);
+      const d = img.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const lum = greyLuma(d[i] ?? 0, d[i + 1] ?? 0, d[i + 2] ?? 0);
+        d[i] = lum;
+        d[i + 1] = lum;
+        d[i + 2] = lum;
+        // d[i + 3] — the alpha is the being's own silhouette and is never touched
+      }
+      ctx.putImageData(img, 0, 0);
+      tex.refresh();
+      return greyKey;
+    } catch {
+      // a tainted canvas (art served cross-origin) throws on getImageData; drop
+      // the half-built texture so a later attempt is not handed an empty one
+      this.textures.remove(greyKey);
+      return key;
     }
   }
 
@@ -645,7 +713,18 @@ export class PaintScene extends Phaser.Scene {
       // rear stops rearing. So a guardian is scaled by ONE factor taken from her
       // idle cell, and the sheet's own proportions survive to the screen.
       else if (e.role === "guardian") img.setScale(targetH / (this.refFrameHOf(e.skin) || frameH));
-      else img.setScale(targetH / frameH);
+      else {
+        // PK-R6 · H1 · THE OPENING POP (round-1 critique, finding 4): a cage that
+        // has just burst throws itself wide and settles, so the one shape the
+        // chapter teaches is a thing that HAPPENS rather than a texture that was
+        // swapped between two frames. Folded into the scale the renderer sets
+        // anyway — see cagePopT for why a tween cannot live here.
+        const pop = this.cagePopT(e);
+        const k = targetH / frameH;
+        img.setScale(k * (1 + 0.18 * pop), k * (1 - 0.16 * pop));
+        if (pop > 0) img.setRotation(0.13 * pop);
+        else if (e.role === "cage" && e.redeemed) img.setRotation(0);
+      }
       // …and a cell that already faces a direction is never mirrored: flipping a
       // right-bank cell would draw a LEFT bank while she flies right (the facing
       // law, R3-4, applied to art that carries its own facing).
@@ -680,7 +759,14 @@ export class PaintScene extends Phaser.Scene {
         const a = washAlphaFor(e, this.cfg.reducedMotion);
         wash.setVisible(!e.hidden && a > 0);
         if (a > 0) {
-          wash.setTexture(img.texture.key);
+          // the DRAINED copy of whatever cell the being is showing this tick —
+          // built once per cell, so a being that changes pose mid-wash (Merle
+          // acting out a round) is greyed by its own drawing rather than by the
+          // last one (greyTexOf)
+          const greyKey = this.greyTexOf(img.texture.key);
+          wash.setTexture(greyKey);
+          if (greyKey === img.texture.key) wash.setTint(COLOUR_DRAINED);
+          else wash.clearTint();
           wash.setPosition(img.x, img.y);
           wash.setScale(img.scaleX, img.scaleY);
           wash.setFlipX(img.flipX);
@@ -707,7 +793,15 @@ export class PaintScene extends Phaser.Scene {
       // …and the once-per-freeing flourish behind it (finding 7).
       if (e.redeemed && !this.cheered.has(e.id)) {
         this.cheered.add(e.id);
-        this.redeemFlourish(img.x, img.y - this.entTargetH(e) * 0.5);
+        // PK-R6 · H1 (round-1 critique, finding 5): a PERSON's freeing is not a
+        // moth's. Six rounds of a ceremony end here, so hers opens wider and
+        // throws further — the same flourish, scaled by what the child paid for
+        // it. Every other being keeps exactly the beat it already had.
+        this.redeemFlourish(img.x, img.y - this.entTargetH(e) * 0.5, e.role === "classmate" ? 1.9 : 1);
+        // …and the cage she was in plays its OPENING rather than swapping to a
+        // picture of an open one (finding 4: the cage has to be a thing that
+        // HAPPENS, or a six-year-old never learns what the shape meant).
+        if (e.role === "cage") this.cageOpens(img);
       }
     }
     // R3-4 · THE PROJECTILE IS CHALK, not a white ball. `tafel_chalk` was
@@ -944,7 +1038,7 @@ export class PaintScene extends Phaser.Scene {
    * have reached, and cleared a beat later — a finished celebration rather than a
    * frozen one (the end-states law, applied to the world).
    */
-  private redeemFlourish(xPx: number, yPx: number): void {
+  private redeemFlourish(xPx: number, yPx: number, size = 1): void {
     const RAYS = 8;
     const rays = this.add.graphics().setDepth(6.95);
     rays.fillStyle(0xffe3a4, 0.5);
@@ -953,8 +1047,8 @@ export class PaintScene extends Phaser.Scene {
       const w = 0.14;
       rays.fillTriangle(
         xPx, yPx,
-        xPx + Math.cos(a - w) * 34, yPx + Math.sin(a - w) * 34,
-        xPx + Math.cos(a + w) * 34, yPx + Math.sin(a + w) * 34,
+        xPx + Math.cos(a - w) * 34 * size, yPx + Math.sin(a - w) * 34 * size,
+        xPx + Math.cos(a + w) * 34 * size, yPx + Math.sin(a + w) * 34 * size,
       );
     }
     if (this.cfg.reducedMotion) {
@@ -970,7 +1064,7 @@ export class PaintScene extends Phaser.Scene {
     const MOTES = 12;
     for (let i = 0; i < MOTES; i++) {
       const ang = (i / MOTES) * Math.PI * 2 + (i % 4) * 0.16;
-      const dist = 16 + (i % 5) * 5;
+      const dist = (16 + (i % 5) * 5) * size;
       const colour = i % 2 === 0 ? 0xf6f2e8 : 0xffd98f;
       const dx = Math.cos(ang) * dist;
       const dy = Math.sin(ang) * dist - 6; // the lift: joy goes up
@@ -986,6 +1080,42 @@ export class PaintScene extends Phaser.Scene {
         ease: "Quad.easeOut", onComplete: () => g.destroy(),
       });
     }
+  }
+
+  /**
+   * PK-R6 · H1 · THE CAGE OPENS (round-1 critique, finding 4). `pencilcase_burst`
+   * is a painted OPEN case with its zip flying off — and it arrived as a texture
+   * swap, one frame, no event. So the moment a chapter's core mechanic pays off
+   * („one cage per chapter") had nothing in it a child could catch, and the
+   * shape they were supposed to learn to recognise never did anything.
+   *
+   * It is a movement now: the case throws itself open with the same overshoot
+   * the seal stamps with, and settles. Under reduced motion it simply arrives
+   * open and level — the end-states law: that child gets the finished picture,
+   * never a frozen halfway one. The rotation reset is the second half of the
+   * breathing telegraph above (`renderReadability`), which stops looking at a
+   * cage the moment it is freed and would otherwise leave it tilted forever.
+   */
+  private cageOpens(img: Phaser.GameObjects.Image): void {
+    this.puff(img.x, img.y - img.displayHeight * 0.4, "chalk");
+  }
+
+  /**
+   * How far through its opening pop a cage is — 1 at the burst, 0 once it has
+   * settled. Squared, so the throw is fast and the settle is soft.
+   *
+   * It is a function of the cage's OWN freed clock rather than a tween, and that
+   * is not a style choice: `renderEntities` sets every entity's scale from its
+   * target height on every single frame, so a tween on the same property is
+   * overwritten before it is ever composited (which is exactly what the first
+   * version of this beat did — invisibly). Driving it from `freedTick` also
+   * makes it deterministic: a replayed tape opens the cage identically.
+   */
+  private cagePopT(e: { role: string; redeemed: boolean; freedTick: number }): number {
+    if (this.cfg.reducedMotion || e.role !== "cage" || !e.redeemed) return 0;
+    if (e.freedTick >= CAGE_OPEN_TICKS) return 0;
+    const left = 1 - Math.max(e.freedTick, 0) / CAGE_OPEN_TICKS;
+    return left * left;
   }
 
   /** PK-R6 · C · how grey this being renders RIGHT NOW (anim.washAlphaFor). The
@@ -1714,14 +1844,28 @@ export class PaintScene extends Phaser.Scene {
       img.setScale((PaintScene.LETTER_PX / (img.frame.width || 1)) * glint);
     }
     // ── the cages that can be opened NOW ──
-    const canPunch = this.cfg.grantedAbilities().includes("punch");
-    if (canPunch && !this.cfg.reducedMotion) {
+    // PK-R6 · H1 · SOMETHING IS IN THERE (round-1 critique, finding 4: „a player
+    // has no way to recognize this shape as ‚something caged is here'").
+    //
+    // The rock was gated on the FIST — and stage C2 made ↑ the verb that opens a
+    // cage precisely because ch01 grants no fist. So the one telegraph the
+    // chapter's one mandatory cage had was unreachable in the chapter that needs
+    // it: a child walked up to the thing holding their classmate and it sat
+    // there like scenery. The gate is now the same question the cue and the sim
+    // ask (ENGAGEABLE_ROLES: a press opens a cage in every chapter, granted fist
+    // or not), so the picture and the mechanic agree by construction.
+    if (!this.cfg.reducedMotion) {
       for (const e of this.world?.entities ?? []) {
-        if (e.role !== "cage" || e.redeemed) continue;
+        if (e.role !== "cage" || e.redeemed || e.hidden) continue;
         const img = this.entityImgs.get(e.id);
         if (!img) continue;
         const near = Math.abs(fromSubs(e.x) - fromSubs(this.player.x)) < 42 && Math.abs(fromSubs(e.y) - fromSubs(this.player.y)) < 40;
-        img.setRotation(near ? Math.sin(t / 5) * 0.07 : 0);
+        // …and it BREATHES even out of reach, because „someone is in here" is a
+        // fact about the cage, not about where the child is standing. Small
+        // enough to read as a captive shifting, and it settles the moment the
+        // cage is opened (the loop skips a redeemed one, so its rotation is left
+        // exactly where the burst put it: still).
+        img.setRotation(near ? Math.sin(t / 5) * 0.07 : Math.sin(t / 26) * 0.022);
       }
     }
   }

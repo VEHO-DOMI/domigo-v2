@@ -18,11 +18,14 @@ import { describe, expect, it } from "vitest";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import type { PaintLevel, PhaseSpec } from "./level.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
-import { SUBS, TILE } from "./paint.ts";
+import { SUBS, TICK_MS, TILE } from "./paint.ts";
+import { RESTORE_HOLD_MS } from "./cards/resolution.ts";
+import { VERDICT_MS } from "./cards/overlay-css.ts";
 import { AWAKEN_ROUNDS, JOY_TICKS, SETTLE_TICKS, WAVE_EVERY_TICKS } from "./entities.ts";
 import {
-  COLOUR_FLOOD_TICKS, FLOOD_BLOOM_PEAK, FLOOD_BLOOM_PEAK_AT, WASH_ALPHA, awakenWash, classmateCell,
-  entPoseCell, floodBloomFor, poseStateOf, washAlphaFor,
+  AWAKEN_FLOOD_WASH, AWAKEN_STEP_WASH, CAGE_OPEN_TICKS, COLOUR_FLOOD_TICKS, FLOOD_BLOOM_PEAK, FLOOD_BLOOM_PEAK_AT,
+  GHOST_WASH, WASH_ALPHA, awakenWash, classmateCell,
+  entPoseCell, floodBloomFor, greyLuma, poseStateOf, washAlphaFor,
 } from "./anim.ts";
 
 // a flat room: floor at row 12, the cage and the girl side by side on row 11
@@ -133,11 +136,11 @@ describe("PK-R6 · D · the reawakening sequence", () => {
     // THE SIX DEGREES, read off the world after every answer. Rounds 1–5 each
     // take an equal bite out of the ghost-wash INSTANTLY — the world is frozen
     // for the card, so a fade with no clock running would be a change no child
-    // ever sees. Round 6 does not step: it hands the last degree to the colour
+    // ever sees. Round 6 does not step: it hands what is LEFT to the colour
     // FLOOD, whose starting value is what stands here at timer 0 and whose end
     // (0 — full colour) the next test walks the clock to.
     expect(washes).toEqual([awakenWash(0), awakenWash(1), awakenWash(2), awakenWash(3), awakenWash(4), awakenWash(5), awakenWash(5)]);
-    expect(washes[0]).toBe(WASH_ALPHA); // full ghost-wash before round 1
+    expect(washes[0]).toBe(GHOST_WASH); // full ghost-wash before round 1
     expect(washes.slice(0, 6).every((w, i) => i === 0 || w < washes[i - 1]!)).toBe(true); // strictly lighter, rounds 1–5
     expect(merleOf(sim).redeemed).toBe(true); // and round 6 is the one that redeems her
   });
@@ -161,7 +164,9 @@ describe("PK-R6 · D · the reawakening sequence", () => {
     expect(merle.state).toBe("settle");
     // the flood is the existing choreography, running off her own timer
     expect(washAlphaFor(merle)).toBeCloseTo(awakenWash(AWAKEN_ROUNDS - 1), 6);
-    merle.timer = COLOUR_FLOOD_TICKS;
+    // PK-R6 · H1: the flood rides `freedTick`, not the state timer — see
+    // entities.freedTick for the re-draining defect that moved it
+    merle.freedTick = COLOUR_FLOOD_TICKS;
     expect(washAlphaFor(merle)).toBe(0); // full colour
     expect(washAlphaFor(merle, true)).toBe(0); // reduced motion: already finished
   });
@@ -249,14 +254,185 @@ describe("PK-R6 · D · the reawakening sequence", () => {
 
   it("her wash is a pure function of the step — the claim is a table, not a screenshot", () => {
     const at = (step: number): number => washAlphaFor({ role: "classmate", redeemed: false, timer: 0, awakenStep: step });
-    const want = [6, 5, 4, 3, 2, 1, 0].map((n) => WASH_ALPHA * n / 6);
+    const want = [0, 1, 2, 3, 4, 5].map((n) => GHOST_WASH - AWAKEN_STEP_WASH * n);
     for (const [step, w] of want.entries()) expect(at(step)).toBeCloseTo(w, 9);
+    expect(at(AWAKEN_ROUNDS)).toBe(0); // every round in ⇒ full colour
     // the steps are EQUAL: identical work by the child, identical payment
     const gaps = [1, 2, 3, 4, 5].map((n) => at(n - 1) - at(n));
     expect(gaps.every((g) => Math.abs(g - gaps[0]!) < 1e-9)).toBe(true);
     // and out-of-range steps clamp rather than invert the picture
-    expect(at(-3)).toBe(WASH_ALPHA);
+    expect(at(-3)).toBe(GHOST_WASH);
     expect(at(99)).toBe(0);
+  });
+
+  // ── PK-R6 · H1 · THE LADDER IS SHAPED SO THE LAST BEAT IS A FLOOD ──────────
+  // Round-1 critique, finding 5: „the climactic beats are narrated in a text box
+  // rather than staged … the reawakening never actually lands on screen". Part
+  // of that was the ladder itself: six identical degrees meant the sixth answer
+  // moved her 0.12 while a card announced „Die Farbe strömt zurück". doc 44 §3.3
+  // pays its two beats differently in one sentence — „regains one degree …
+  // final round → full colour" — and this is that sentence as arithmetic.
+  it("the final round is the BIGGEST single change of the whole ceremony", () => {
+    const at = (step: number): number => washAlphaFor({ role: "classmate", redeemed: false, timer: 0, awakenStep: step });
+    const flood = at(AWAKEN_ROUNDS - 1); // what the sixth answer hands to the flood
+    expect(flood).toBeCloseTo(AWAKEN_FLOOD_WASH, 9);
+    expect(flood).toBeGreaterThan(AWAKEN_STEP_WASH * 2); // …and not merely bigger by a hair
+    // she begins as a GHOST: doc 44 §3.3's own word, and now a value the picture
+    // can hold (the wash is a real greyscale copy — see anim.greyLuma)
+    expect(at(0)).toBe(1);
+    // the earlier rounds still pay, visibly and equally
+    expect(AWAKEN_STEP_WASH).toBeGreaterThan(0.08);
+  });
+
+  // ── PK-R6 · H1 · THE GREY IS ACTUALLY GREY (findings 1 + 2) ────────────────
+  // The wash used to be a `setTint` copy of the coloured sheet, i.e. a MULTIPLY,
+  // which keeps every hue it exists to remove. `greyLuma` is what the scene now
+  // bakes into the wash texture, and it is the same Rec. 709 matrix the CSS
+  // `grayscale()` on the card's portrait uses — so world and card are one
+  // transform rather than two recipes that were only meant to match.
+  it("greyLuma removes chroma completely and matches the CSS grayscale matrix", () => {
+    // a colour is drained to ONE value: no channel keeps a hue
+    for (const [r, g, b] of [[160, 112, 60], [40, 200, 90], [12, 12, 200]] as const) {
+      const l = greyLuma(r, g, b);
+      expect(l).toBe(Math.round(0.2126 * r + 0.7152 * g + 0.0722 * b));
+      expect(l).toBeGreaterThanOrEqual(0);
+      expect(l).toBeLessThanOrEqual(255);
+    }
+    // a grey stays itself (the transform is idempotent on the drained)
+    for (const v of [0, 37, 128, 255]) expect(greyLuma(v, v, v)).toBe(v);
+    // …and the composite the scene draws IS grayscale(a): (1-a)·colour + a·luma.
+    // Measured against the defect this replaced: the shipped multiply-tint left
+    // the bag at 0.371 mean chroma while „drained" (0.440 restored). At the
+    // general WASH_ALPHA the same brown now keeps a fraction of its chroma.
+    const [r, g, b] = [160, 112, 60];
+    const l = greyLuma(r, g, b);
+    const mix = (c: number): number => (1 - WASH_ALPHA) * c + WASH_ALPHA * l;
+    const chromaBefore = (Math.max(r, g, b) - Math.min(r, g, b)) / 255;
+    const chromaAfter = (Math.max(mix(r), mix(g), mix(b)) - Math.min(mix(r), mix(g), mix(b))) / 255;
+    expect(chromaAfter).toBeCloseTo(chromaBefore * (1 - WASH_ALPHA), 9);
+    expect(chromaAfter).toBeLessThan(chromaBefore / 3);
+  });
+
+  // ── PK-R6 · H1 · THE RESTORE-HOLD RUNS THE WORLD IT HOLDS ─────────────────
+  // Round-1 critique, finding 5. The hold (doc 44 §3.1.7) doffs the card so the
+  // child WATCHES their answer change the world — and the shell froze the sim
+  // for it, which stops the very timers the change is made of. The harness had
+  // the proof and it was read as a timing artefact: „hold start: wash 0.72 …
+  // hold end: wash 0.72". These two tests are that log turned into a gate.
+  it("the world was FROZEN through the beat that exists to be watched (the defect)", () => {
+    const sim = newSim();
+    let req = taskOf(openTheCage(sim))!;
+    for (let i = 0; i < AWAKEN_ROUNDS; i++) {
+      const evs = sim.solveTask(req.ctx);
+      const next = taskOf(evs);
+      if (next) req = next;
+    }
+    // the burst's own short cinematic (holdTicks) is a DIFFERENT beat and would
+    // mask this one; handing the world back once clears it through the real API
+    sim.setOverlay(false);
+    sim.setOverlay(true); // …exactly what applyWorldChange does for the hold
+    const before = washAlphaFor(merleOf(sim));
+    for (let t = 0; t < COLOUR_FLOOD_TICKS; t++) sim.step(pad());
+    expect(washAlphaFor(merleOf(sim))).toBe(before); // nothing moves without the hold
+    expect(before).toBeCloseTo(AWAKEN_FLOOD_WASH, 9);
+  });
+
+  it("…and the hold now plays the flood, the settle and the joy lap while it holds", () => {
+    const sim = newSim();
+    let req = taskOf(openTheCage(sim))!;
+    for (let i = 0; i < AWAKEN_ROUNDS; i++) {
+      const evs = sim.solveTask(req.ctx);
+      const next = taskOf(evs);
+      if (next) req = next;
+    }
+    sim.setOverlay(false);
+    sim.setOverlay(true);
+    sim.setHold(true);
+    const homeX = merleOf(sim).homeX;
+    const tickAtHold = sim.tickCount;
+    const seen = new Set<string>([merleOf(sim).state]);
+    const washes: number[] = [washAlphaFor(merleOf(sim))];
+    for (let t = 0; t < SETTLE_TICKS + 20; t++) {
+      const evs = sim.step(pad({ right: true, jump: true })); // …and the CHILD stays put
+      expect(evs).toEqual([]); // a cinematic beat may never raise a card behind its own card
+      seen.add(merleOf(sim).state);
+      washes.push(washAlphaFor(merleOf(sim)));
+    }
+    // the colour arrives, all the way, inside the beat
+    expect(washes[0]).toBeCloseTo(AWAKEN_FLOOD_WASH, 9);
+    expect(washes[COLOUR_FLOOD_TICKS]).toBe(0);
+    expect(washes.every((w, i) => i === 0 || w <= washes[i - 1]!)).toBe(true); // never backwards
+    // …and she comes back to herself and cheers, which is the pose the payoff
+    // is supposed to be looked at in
+    expect([...seen].sort()).toEqual(["joy", "settle"]);
+    expect(merleOf(sim).x).toBe(homeX);
+    // the child is frozen: the hold is a cinematic, not a resumed world
+    expect(sim.player.vx).toBe(0);
+    expect(sim.tickCount).toBe(tickAtHold);
+  });
+
+  // ── PK-R6 · H1 · THE POSE THE PAYOFF IS LOOKED AT IN ──────────────────────
+  // Round-1 critique, finding 5 asked for „a distinct celebratory pose … at the
+  // payoff moment". She has one (`merle_joy`, arms up, painted) and it arrives
+  // after her settle — so whether the child SEES it at the payoff is a race
+  // between two clocks that nobody was holding: her settle, and the card beats
+  // that decide when the ceremony panel lands over her. This is that race,
+  // decided by arithmetic instead of by luck.
+  it("she is CHEERING, not still settling, by the time the ceremony card lands", () => {
+    const settleMs = SETTLE_TICKS * TICK_MS;
+    const cardLandsMs = RESTORE_HOLD_MS + VERDICT_MS; // doff → hold → cheer → card
+    expect(settleMs).toBeLessThan(cardLandsMs);
+    // …and she is still IN the joy lap then, not already back at rest
+    expect(settleMs + JOY_TICKS * TICK_MS).toBeGreaterThan(cardLandsMs);
+  });
+
+  // ── PK-R6 · H1 · THE CAGE IS SEEN OPENING (finding 4) ─────────────────────
+  // The burst raises the round-1 card on the same tick, and a card freezes the
+  // world — so the opening had nowhere to play and the cage stood frozen at the
+  // first frame of its own pop. `holdTicks` is that beat, and it ends by itself.
+  it("a burst cage gets a bounded cinematic of its own, and it closes itself", () => {
+    const sim = newSim();
+    openTheCage(sim);
+    const cage = sim.world.entities.find((e) => e.id === "cage-merle")!;
+    expect(cage.state).toBe("burst");
+    expect(sim.overlayOpen).toBe(true); // round 1 is already up
+    expect(sim.holdTicks).toBe(CAGE_OPEN_TICKS);
+    const before = cage.freedTick;
+    for (let t = 0; t < CAGE_OPEN_TICKS * 3; t++) sim.step(pad());
+    // it ran for exactly the beat, then stopped — a frozen world stays frozen
+    expect(cage.freedTick - before).toBe(CAGE_OPEN_TICKS);
+    expect(sim.holdTicks).toBe(0);
+    // …and it never let the CHILD move while the card was up
+    expect(sim.tickCount).toBe(3);
+  });
+
+  // …and the defect the flood clock was moved off `timer` for (entities.freedTick)
+  it("a freed friend never goes grey again when her state changes", () => {
+    const sim = newSim();
+    let req = taskOf(openTheCage(sim))!;
+    for (let i = 0; i < AWAKEN_ROUNDS; i++) {
+      const evs = sim.solveTask(req.ctx);
+      const next = taskOf(evs);
+      if (next) req = next;
+    }
+    sim.setOverlay(false); // the ceremony card is put down; the world runs on
+    let worst = 0;
+    // long enough to cross settle → joy → rest → wave → rest, i.e. every reset
+    for (let t = 0; t < SETTLE_TICKS + JOY_TICKS + WAVE_EVERY_TICKS + 200; t++) {
+      sim.step(pad());
+      if (t > COLOUR_FLOOD_TICKS) worst = Math.max(worst, washAlphaFor(merleOf(sim)));
+    }
+    expect(worst).toBe(0); // she is in colour, and stays in colour
+  });
+
+  it("a remount does NOT re-play a flood the child already watched", () => {
+    // the Kleckskammer round trip rebuilds the Sim: she must come back already
+    // in colour, not fade in again as if she were being freed a second time
+    const sim = newSim(["cage-merle"]);
+    const merle = merleOf(sim);
+    expect(merle.redeemed).toBe(true);
+    expect(washAlphaFor(merle)).toBe(0);
+    expect(floodBloomFor(merle)).toBe(0); // …and no light announcing it either
   });
 
   it("a plain cage (no classmate) keeps its one-beat rescue — the change is scoped", () => {

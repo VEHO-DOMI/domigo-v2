@@ -15,7 +15,7 @@ import { LOGICAL_H, LOGICAL_W, RENDER_SCALE, airModelByName } from "./paint.ts";
 import type { PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
-import { InkWipe, type CardAlign, alignedWrap } from "./cards/CardShell.tsx";
+import { InkWipe, PaintedCage, type CardAlign, alignedWrap } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { initRoute, nextTask, orderedTask, type RouteState, type ServeCtx } from "./cards/routing.ts";
 
@@ -264,6 +264,13 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     // needs it held ONE BEAT LONGER, or the child walks away mid-colour-flood
     // from the change their own answer just made.
     sceneRef.current?.setOverlay(true);
+    // PK-R6 · H1 (round-1 critique, finding 5) · …and the world it holds has to
+    // BE RUNNING. `setOverlay(true)` stops the sim on its first line, and the
+    // colour flood, the settle and the joy lap are all driven by the timers that
+    // stop with it — so the beat that exists to be watched was 600 ms of a still
+    // frame, and the payoff was only ever the card's text. The hold now runs the
+    // freed beings and nothing else (Sim.setHold).
+    sceneRef.current?.setHold(true);
     // the finale is the last ACT of the chapter: writing HELLO is what earns
     // the console beat, so that card opens only once the child has done it
     if (o.card === "finale") queuedRef.current = { ...o, item: null, card: "console" };
@@ -274,6 +281,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     applyWorldChange(o); // idempotent — a path that skipped the beat still changes the world
     holdRef.current = false;
     changedRef.current = false;
+    sceneRef.current?.setHold(false);
     const queued = queuedRef.current;
     queuedRef.current = null;
     if (queued) { setOverlay(queued); return; }
@@ -289,6 +297,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     // makes that reasoning unnecessary.)
     holdRef.current = false;
     changedRef.current = false;
+    sceneRef.current?.setHold(false);
     if (o.card === "finale") {
       // „Später" on the finale must not eat the chapter's payoff
       setOverlay({ ...o, item: null, card: "console" });
@@ -918,9 +927,13 @@ function Overlay({
     // every child must open. ↑ is the true instruction in EVERY chapter (a
     // press opens a cage whether or not a fist was granted), so it is what the
     // one teaching moment says.
+    // PK-R6 · H1 (round-1 critique, finding 4): …and it was teaching it with a
+    // system emoji. The one card that says „this shape means somebody is caged"
+    // now SHOWS the shape — bars, a shut latch, a warm light behind them — so
+    // the child learns the silhouette they then have to spot in the world.
     return (
       <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
-        <p style={{ fontSize: 26, margin: "0 0 6px" }}>🎒↑</p>
+        <div style={{ display: "flex", justifyContent: "center", margin: "0 0 2px" }}><PaintedCage /></div>
         <p style={{ fontSize: 17, margin: "0 0 4px" }}>Da steckt jemand fest!</p>
         <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Stell dich davor und drück <strong>↑</strong> — dann geht sie auf.</p>
         <button style={btn} onClick={() => onDismiss(o)}>Alles klar!</button>

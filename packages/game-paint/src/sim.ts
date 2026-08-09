@@ -31,7 +31,9 @@ import {
   rideAttachCheck,
   spawnEntities,
   stepEntities,
+  stepRedeemedOnly,
 } from "./entities.ts";
+import { CAGE_OPEN_TICKS, COLOUR_FLOOD_TICKS } from "./anim.ts";
 import { cameraTargetX, clampScroll, stepCameraAxis, stepCameraY } from "./camera.ts";
 import { type Ability, type PaintLevel, type PhaseSpec, allPhases, findGlyph } from "./level.ts";
 
@@ -158,6 +160,21 @@ export class Sim {
   fist: FistState | null = null;
   world: EntityWorld;
   overlayOpen = false;
+  /** PK-R6 · H1 · THE RESTORE-HOLD IS A CINEMATIC, NOT A PAUSE (round-1
+   *  critique, finding 5). While this is true the world is still frozen for the
+   *  CHILD — no input, no walking, no encounter can fire — but the beings the
+   *  child just freed keep living, so the colour flood, the settle, the joy lap
+   *  and a cage's opening play in the window the hold opened for exactly them.
+   *  See `stepRedeemedOnly`. */
+  holdOpen = false;
+  /** PK-R6 · H1 · a SELF-TERMINATING hold, in ticks: the world runs its freed
+   *  beings for this many more ticks even under a card, then stops on its own.
+   *  The burst cage uses it (anim.CAGE_OPEN_TICKS) — its opening has to be seen,
+   *  and the round-1 card lands on the same tick as the burst, behind an ink
+   *  iris that is still wiping. Bounded rather than a flag, because the thing it
+   *  runs the world for is one short beat and „who turns it off again" is the
+   *  question that froze this chapter once already (PB-R1 · R3-1). */
+  holdTicks = 0;
   doorSolved = new Set<string>();
   guardianDefeated = false;
   ridingId: string | null = null;
@@ -237,7 +254,7 @@ export class Sim {
       // a friend un-freed by a shopping trip, and six rounds of ceremony
       // silently owed a second time.
       const mate = classmateOfCage(this.world, id);
-      if (mate) restoreFreedClassmate(mate);
+      if (mate) restoreFreedClassmate(mate, COLOUR_FLOOD_TICKS);
     }
     // R3-16: a Regel-Seite taken before the Kleckskammer stays taken after it
     for (const id of cfg.collectedPickupIds?.() ?? []) {
@@ -253,7 +270,17 @@ export class Sim {
   /** Advance ONE 60Hz tick. Returns the events the shell must react to. */
   step(pad: Pad): SimEvent[] {
     const events: SimEvent[] = [];
-    if (this.overlayOpen) return events; // the world holds its breath during a task
+    if (this.overlayOpen) {
+      // …except during a restore-hold, where the whole point is that the change
+      // the child just made is ON SCREEN and being watched (doc 44 §3.1.7). The
+      // freed beings step; nothing else does, and nothing here can raise an
+      // event — see entities.stepRedeemedOnly.
+      if (this.holdOpen || this.holdTicks > 0) {
+        if (this.holdTicks > 0) this.holdTicks--;
+        stepRedeemedOnly(this.world);
+      }
+      return events; // the world holds its breath during a task
+    }
     if (this.hitPauseTicks > 0) { this.hitPauseTicks--; return events; } // R3-6: impact freeze
     this.tickCount++;
     if (this.gateToastCooldown > 0) this.gateToastCooldown--;
@@ -377,6 +404,16 @@ export class Sim {
 
   setOverlay(open: boolean): void {
     this.overlayOpen = open;
+    // a world handed back is never mid-cinematic: closing the overlay closes
+    // BOTH holds with it, so neither can survive the beat that set it (the
+    // freeze-pairing law, PB-R1 · R3-1, applied to the holds' own flags).
+    if (!open) { this.holdOpen = false; this.holdTicks = 0; }
+  }
+
+  /** PK-R6 · H1: enter/leave the restore-hold — the world stays frozen for the
+   *  child and keeps running for the beings they just freed. */
+  setHold(open: boolean): void {
+    this.holdOpen = open;
   }
 
   /** The shell reports the task for `ctx` SOLVED. */
@@ -562,6 +599,11 @@ export class Sim {
       }
       case "cageBurst": {
         const e = this.world.entities.find((x) => x.id === ev.id);
+        // PK-R6 · H1 (round-1 critique, finding 4): the chapter's core shape has
+        // to be seen OPENING. Whatever card this burst raises lands behind a
+        // 700 ms ink iris, so these ticks cost the child nothing and buy the one
+        // moment the mechanic is legible in.
+        this.holdTicks = CAGE_OPEN_TICKS;
         // PK-R6 · D · THE PERSON-CAGE OPENS ONTO A PERSON (doc 44 §3.3). The
         // latch is not the rescue: the child opens it, Merle steps out
         // ghost-pale, and the SIX ROUNDS are what free her. So a cage that has

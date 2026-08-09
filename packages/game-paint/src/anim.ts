@@ -46,11 +46,47 @@ import { SUBS } from "./paint.ts";
 // over it at this alpha, so every existing and future skin is covered by
 // construction. (Phaser's `setTint` multiplies, which darkens rather than
 // desaturates — an overlay is what actually drains colour.)
+//
+// ── PK-R6 · H1 · WHAT „A GREY COPY" HAD TO MEAN (round-1 critique, findings 1
+// and 2: „the school bag is already full brown before AND after", „Merle's
+// portrait shows zero visible progression"). Both were ONE defect, and the
+// paragraph above already named it without noticing: the overlay WAS built by
+// calling `setTint` on a copy of the being's own coloured sheet — which is a
+// multiply, so the copy kept every hue it was supposed to be draining and only
+// darkened it. Measured on the shipped frames: the drained bag carried 0.371
+// mean chroma against 0.440 restored (a brown bag either way), and Merle went
+// 0.252 → 0.259 across half her ceremony, i.e. nothing.
+//
+// The wash is now a REAL greyscale copy — the being's own cell with every pixel
+// replaced by its luminance and its alpha untouched (`greyLuma` below, baked
+// into a texture by the scene). Laid over the original at alpha `a`, that
+// composites to exactly `(1-a)·colour + a·luma`, which IS the CSS
+// `grayscale(a)` the card's own portrait applies. One transform, two surfaces:
+// the face in the card and the being in the world are drained by the same
+// arithmetic rather than by two lookalike recipes free to drift.
 
 /** How much grey sits over an un-redeemed being. Enough that „the colour is
  *  gone" reads at 24 px, little enough that its SHAPE still names it — step 1
  *  of a restore card must stay answerable by looking. */
 export const WASH_ALPHA = 0.72;
+
+/** PK-R6 · H1 · how long a burst cage throws itself open, in ticks (≈270 ms at
+ *  the 60 Hz contract). ONE number with two readers: the renderer shapes the pop
+ *  from it (PaintScene.cagePopT) and the sim keeps the world running for exactly
+ *  that long after a burst (Sim.holdTicks), so the beat can never be drawn for
+ *  longer than it is played — which is precisely what happened when the two were
+ *  separate: the card froze the world on the burst tick and the cage stood
+ *  squashed and tilted behind it, forever. */
+export const CAGE_OPEN_TICKS = 16;
+
+/** THE LUMINANCE a drained pixel keeps, Rec. 709 — the same coefficients the
+ *  CSS `grayscale()` filter matrix uses, which is the whole point: the world's
+ *  wash and the card portrait's filter must be the same transform, not two
+ *  transforms that happen to look alike. Pure and exported so „the world greys
+ *  exactly like the card" is a table rather than a screenshot. */
+export const greyLuma = (r: number, g: number, b: number): number =>
+  Math.round(0.2126 * r + 0.7152 * g + 0.0722 * b);
+
 /** How long the colour takes to flood back in, in ticks (≈0.6 s at 60 Hz) —
  *  comfortably inside the joy lap (JOY_TICKS), so the flood and the
  *  Freudenrunde are one beat rather than two. */
@@ -74,28 +110,48 @@ export const COLOUR_FLOOD_TICKS = 36;
 export const WASHED_ROLES = new Set<string>([...JOY_ROLES, "cage", "drained", "classmate"]);
 
 // ── PK-R6 · D · THE SIX DEGREES (doc 44 §3.3) ────────────────────────────────
-/** How grey a classmate still is after `step` of AWAKEN_ROUNDS rounds: the full
- *  ghost-wash divided into equal degrees, so every correct command takes a
- *  visible, equal bite out of the spell.
- *
- *  Why equal steps and not a curve: the rounds are equal work for the child, so
- *  a curve would pay two identical answers differently and the picture would
- *  stop being a progress bar the child can read. The LAST degree is the one the
- *  colour flood animates (washAlphaFor below), which is what makes the sixth
- *  round land as the flood doc 44 promises rather than as a seventh step.
- *
- *  Pure and exported so the stepping is unit-testable without a scene: the
- *  claim „she visibly lightens each round" is then a table, not a screenshot. */
-export const awakenWash = (step: number, rounds: number = AWAKEN_ROUNDS): number =>
-  WASH_ALPHA * (1 - Math.min(Math.max(step, 0), rounds) / Math.max(rounds, 1));
+/** How grey a classmate is before her first round: COMPLETELY. doc 44 §3.3's
+ *  own word for her is „ghost-pale", and with a real greyscale wash (above)
+ *  that is a value the picture can actually hold — she stands in the world as
+ *  the pencil sketch of herself, which is what makes the six rounds a thing to
+ *  watch rather than a counter to read. The general grammar's 0.72 is unchanged
+ *  for every other drained being: a desk still has to be nameable by looking,
+ *  and a person under a full spell is the one being whose whole ceremony is
+ *  about getting her colour back. */
+export const GHOST_WASH = 1;
+/** How much of the spell the LAST round takes off, all at once. doc 44 §3.3
+ *  distinguishes its two payments in one sentence — „the classmate regains one
+ *  degree … final round → full colour" — and the shipped ladder paid all six in
+ *  identical degrees, so the sixth answer moved her 0.12 and the ceremony card
+ *  („Die Farbe strömt zurück") narrated a change nobody could see (round-1
+ *  critique, finding 5). This is the flood that sentence promises, and it is
+ *  the biggest single change in the ceremony by construction. */
+export const AWAKEN_FLOOD_WASH = 0.4;
+/** What each of the EARLIER rounds takes — the rest of the spell divided into
+ *  equal degrees. Equal, not a curve: the rounds are equal work for the child,
+ *  so a curve would pay two identical answers differently and the picture would
+ *  stop being a progress bar they can read. */
+export const AWAKEN_STEP_WASH = (GHOST_WASH - AWAKEN_FLOOD_WASH) / Math.max(AWAKEN_ROUNDS - 1, 1);
 
-/** How opaque the grey wash over this being is right now, 0 … WASH_ALPHA.
- *  Pure: `timer` is the sim's own counter, which `redeemEntity` resets to 0 at
- *  the moment of redemption, so the flood starts exactly when the card is
- *  answered. Under reduced motion a redeemed being is simply already in
+/** How grey a classmate still is after `step` of `rounds` rounds: the ghost
+ *  walked down one equal degree per answer to the flood floor, and 0 once every
+ *  round is in. Pure and exported so the stepping is unit-testable without a
+ *  scene — the claim „she visibly lightens each round, and the last round is a
+ *  flood" is then a table, not a screenshot. */
+export const awakenWash = (step: number, rounds: number = AWAKEN_ROUNDS): number => {
+  const s = Math.min(Math.max(step, 0), rounds);
+  if (s >= rounds) return 0; // every round in: she is in full colour
+  const stepWash = (GHOST_WASH - AWAKEN_FLOOD_WASH) / Math.max(rounds - 1, 1);
+  return GHOST_WASH - stepWash * s;
+};
+
+/** How opaque the grey wash over this being is right now, 0 … GHOST_WASH.
+ *  Pure: `freedTick` is the sim's own counter, which every redemption path
+ *  resets to 0 at the moment of freeing, so the flood starts exactly when the
+ *  card is answered. Under reduced motion a redeemed being is simply already in
  *  colour — the end-states law, applied to the world instead of to CSS. */
 export const washAlphaFor = (
-  e: { role: string; redeemed: boolean; timer: number; awakenStep?: number },
+  e: { role: string; redeemed: boolean; timer: number; awakenStep?: number; freedTick?: number },
   reducedMotion = false,
 ): number => {
   if (!WASHED_ROLES.has(e.role)) return 0; // furniture was never drained
@@ -108,9 +164,19 @@ export const washAlphaFor = (
   const full = e.role === "classmate" ? awakenWash(Math.max((e.awakenStep ?? 0) - (e.redeemed ? 1 : 0), 0)) : WASH_ALPHA;
   if (!e.redeemed) return full;
   if (reducedMotion) return 0;
-  const left = 1 - Math.min(Math.max(e.timer, 0), COLOUR_FLOOD_TICKS) / COLOUR_FLOOD_TICKS;
-  return full * left;
+  return full * (1 - floodT(e));
 };
+
+/** How far through its colour flood a freed being is, 0…1.
+ *
+ *  PK-R6 · H1 · IT READS `freedTick`, NOT `timer` (entities.freedTick). The
+ *  flood used to ride the state timer, which every transition resets — so a
+ *  freed moth re-drained when its joy lap ended and a freed classmate went grey
+ *  again at every wave, for the rest of the chapter. `timer` remains the
+ *  fallback for the plain `{role, redeemed, timer}` shapes the pure tests and
+ *  the card layer hand in, so nothing that only knows about a timer breaks. */
+const floodT = (e: { timer: number; freedTick?: number }): number =>
+  Math.min(Math.max(e.freedTick ?? e.timer, 0), COLOUR_FLOOD_TICKS) / COLOUR_FLOOD_TICKS;
 
 // ── PK-R6 · H1 · THE COLOUR ARRIVING (round-1 critique, finding 8) ───────────
 // „The world-change colour shift on the bag (brown to olive) is too subtle to
@@ -140,11 +206,11 @@ export const FLOOD_BLOOM_PEAK_AT = 0.22;
  *  colour (washAlphaFor short-circuits), so a flash would announce a change
  *  that already happened — the end-states law applied to the world. */
 export const floodBloomFor = (
-  e: { role: string; redeemed: boolean; timer: number },
+  e: { role: string; redeemed: boolean; timer: number; freedTick?: number },
   reducedMotion = false,
 ): number => {
   if (reducedMotion || !e.redeemed || !WASHED_ROLES.has(e.role)) return 0;
-  const t = Math.min(Math.max(e.timer, 0), COLOUR_FLOOD_TICKS) / COLOUR_FLOOD_TICKS;
+  const t = floodT(e);
   const shape = t <= FLOOD_BLOOM_PEAK_AT
     ? t / FLOOD_BLOOM_PEAK_AT
     : Math.max(0, 1 - (t - FLOOD_BLOOM_PEAK_AT) / (1 - FLOOD_BLOOM_PEAK_AT));
