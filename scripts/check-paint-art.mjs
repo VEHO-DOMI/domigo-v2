@@ -10,7 +10,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { GLYPH_STEMS, HERO_STEMS, entitySkinStems } from "../packages/game-paint/src/artManifest.ts";
+import { GLYPH_STEMS, HERO_STEMS, entitySkinStems, guardianSkinStems } from "../packages/game-paint/src/artManifest.ts";
 import { COMPOSITION, PLACEHOLDER_UNTIL, compositionStems, isPlaceholderStem } from "../packages/game-paint/src/composition.ts";
 
 const R = process.cwd();
@@ -53,7 +53,12 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
     for (const ph of phases) {
       const glyphs = new Set(ph.rows.join(""));
       for (const g of glyphs) for (const stem of GLYPH_STEMS[g] ?? []) need(stem, `${f} ${ph.id} glyph '${g}'`);
-      for (const e of ph.entities) for (const stem of entitySkinStems(e.skin)) need(stem, `${f} ${ph.id} entity ${e.id}`);
+      // PK-R6 · E: a guardian owes her WHOLE flight rig, not just an idle cell —
+      // see GUARDIAN_RIG_CELLS. Everything else keeps the one-cell floor.
+      for (const e of ph.entities) {
+        const stems = e.role === "guardian" ? guardianSkinStems(e.skin) : entitySkinStems(e.skin);
+        for (const stem of stems) need(stem, `${f} ${ph.id} ${e.role} ${e.id}`);
+      }
       for (const plate of Object.values(ph.plates ?? {})) need(String(plate), `${f} ${ph.id} plate`);
       // PB-C1: a phase's composition manifest DEMANDS its own kit — the five
       // planes and the carved mass are as load-bearing as any glyph stem

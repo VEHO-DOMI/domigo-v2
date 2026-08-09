@@ -30,6 +30,26 @@ export const GLYPH_STEMS: Record<string, string[]> = {
  *  pb-<skin>_<state> → pb-<skin>_a → procedural blob). */
 export const entitySkinStems = (skin: string): string[] => [`${skin}_a`];
 
+// ── PK-R6 · E · THE GUARDIAN FLIGHT RIG (doc 44 §3.2 · §4 ch01 C4) ───────────
+// A boss is the one being whose missing cell does NOT read as a missing cell:
+// the only-present fallback chain quietly lands on `_a`, so a deleted `spiral2`
+// or `land0` would show a hovering board where the fight wants a barrel roll or
+// a sinking wobble — and every gate would stay green. This list is exactly the
+// set `anim.entPoseCell` can resolve to for a flying guardian, so the rig is
+// required rather than hoped for.
+export const GUARDIAN_RIG_CELLS = [
+  "a", "b", "c", "d", // the hover idle
+  "roll", "bank_l1", "bank_r0", "bank_r1", // the banked pairs (roll = bank_l0)
+  "spiral0", "spiral1", "spiral2", "spiral3", // rolling through a turn
+  "windup0", "windup1", "windup", "throw", // the ≥500 ms tell, and the release
+  "land0", "land1", // the dip, the counter-window, the sinking
+  "rest", "win", // beaten and resting · consoled (doc 40's `rest`/`joy` pair)
+] as const;
+
+/** What a GUARDIAN skin owes, as full stems. */
+export const guardianSkinStems = (skin: string): string[] =>
+  GUARDIAN_RIG_CELLS.map((c) => `${skin}_${c}`);
+
 /** The hero rig (rigSpec contract, 19 stems). */
 export const HERO_STEMS = [
   "head_neutral", "head_blink", "head_determined", "head_hurt", "head_celebrate",

@@ -539,7 +539,16 @@ export class Sim {
         const src = this.world.entities.find((e) => e.id === ev.id);
         applyKnockback(this.player, this.player.x < (src?.x ?? this.player.x) ? -1 : 1, false);
         this.player.iframes = PAINT.iframeTicks;
-        this.ask({ use: ev.role === "swarm" ? "quickfire" : "encounter", ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
+        // PK-R6 · E · HIT = TASK, NEVER DEATH (doc 44 §4 ch01 C4: „a chalk hit =
+        // knockback + a boss-window task"). Chalk that catches the child — in
+        // the air or lying on the boards as a shard — asks out of the BOSS
+        // battery, not the field's encounter pool: the fiction on screen is the
+        // fight, and the timer policy (doc 44 §2.9) gives a boss window its
+        // clock. It stays an `entity` ctx on purpose — solving it says „Weiter!"
+        // and unties NOTHING. Knots are earned in the counter-window, so being
+        // hit can never be a shortcut through the fight.
+        const use = src?.role === "guardian" ? "boss" : ev.role === "swarm" ? "quickfire" : "encounter";
+        this.ask({ use, ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
         break;
       }
       // PK-R6 · C1: a drained object was engaged with ↑. It raises the SAME

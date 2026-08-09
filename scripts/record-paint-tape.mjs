@@ -307,6 +307,12 @@ for (const phaseId of phases) {
     tipsGot: verdict.world.tipsGot, // PK-R3b · R3-16
     booksGot: verdict.world.booksGot,
     scorePageShown: verdict.world.scorePageShown, // PK-R3b · M-B
+    // PK-R6 · E · the flight fight's choreography (doc 44 §4 ch01 C4)
+    guardianPathsFlown: verdict.world.guardianPathsFlown,
+    guardianTelegraphs: verdict.world.guardianTelegraphs,
+    guardianWindows: verdict.world.guardianWindows,
+    guardianWroteLow: verdict.world.guardianWroteLow,
+    guardianConsoled: verdict.world.guardianConsoled,
   };
   proof.phases[phaseId] = tape;
   console.log(`✓ ${phaseId}: exit → ${verdict.exitTo} in ${verdict.ticksUsed} ticks, ${verdict.tasksSolved} tasks auto-solved, runs=${tape.pads.length}, world=${JSON.stringify(tape.expect)}`);

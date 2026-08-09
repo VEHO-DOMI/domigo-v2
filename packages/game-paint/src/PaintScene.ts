@@ -21,10 +21,10 @@ import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
-import { type EntityWorld, engageTargetId } from "./entities.ts";
+import { type EntityWorld, SHARD_TICKS, engageTargetId } from "./entities.ts";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
-import { type EntPoseInput, WASHED_ROLES, entPoseCell, poseStateOf, washAlphaFor } from "./anim.ts";
+import { CELL_IS_DIRECTIONAL, type EntPoseInput, WASHED_ROLES, entPoseCell, poseStateOf, washAlphaFor } from "./anim.ts";
 import { rigPose, withFistAway } from "./rig.ts";
 import {
   RIG_CELL,
@@ -84,16 +84,20 @@ export interface PaintSceneCfg {
 }
 
 // ── R3-12 · THE GUARDIAN'S WRITING SURFACE (doc 41 §4) ───────────────────────
-// Each guardian SKIN declares where on its body chalk appears, in world px
-// relative to the sprite's feet (its origin is bottom-centre). A skin with no
+// Each guardian SKIN declares where on its body chalk appears. A skin with no
 // entry has no board, and its cards simply open without a writing beat — the
 // only-present law again, so a new guardian can never render text into thin air.
-// Measured against the shipped sprite at its 52 px display height in the live
-// arena: the writing face is ~26 world px across, centred 33 px above the feet.
-// The wrap width sits just inside that so a six-letter word („window") stays on
-// the slate instead of hanging over its wooden frame.
-export const GUARDIAN_BOARDS: Record<string, { dy: number; w: number; h: number }> = {
-  tafel: { dy: -33, w: 24, h: 22 },
+//
+// PK-R6 · E: the offsets are FRACTIONS of the sprite as drawn, not world px.
+// Two things moved under the old pixel numbers. The Tafel was repainted as a
+// flying board — the retired easel carried its slate high on legs (63 % of the
+// body up), the flying board IS the slate (its centre measures at 47 % of the
+// cell height above the feet, and it spans 67–99 % of the cell's width). And
+// the rig is now drawn at ONE scale taken from its idle cell, so cell heights
+// deliberately differ (the rear-up is 11 % taller) — a fixed px offset would
+// slide off the slate exactly when she rears. Fractions track both.
+export const GUARDIAN_BOARDS: Record<string, { dyFrac: number; wFrac: number }> = {
+  tafel: { dyFrac: -0.47, wFrac: 0.62 },
 };
 /** How long the guardian spends writing before its card opens (doc 41 §4 asks
  *  for a 30–45 t readability telegraph). */
@@ -116,6 +120,38 @@ const CHALK_DISPLAY_H = 9;
 const HAND_DISPLAY_H = 18;
 const HAND_OFFSET_X = 15;
 const HAND_OFFSET_Y = 30;
+/** PK-R6 · E: a lying shard is smaller than the stick it came off. */
+const SHARD_DISPLAY_H = 6;
+
+// ── PK-R6 · E · THE GOLDEN TRAIL, IN CODE (doc 44 B14 · the art review's
+// ruling) ────────────────────────────────────────────────────────────────────
+// The painted flight cells carry trail wisps baked into the pixels. They are
+// pretty, but they cannot be the motion read: they are fixed to the cell, so
+// they point wherever the painter pointed them rather than wherever she is
+// actually going, and (measured on the shipped sheet) their tips still carry
+// chroma-key pink. So the trail that has to be RIGHT is drawn here, from the
+// sim's own positions.
+//
+// Deterministic by construction: every point is a position the sim produced on
+// a numbered tick, and the only wobble is a hash of that tick — no `Math.random`
+// anywhere, so a replayed tape draws the same trail it drew when it recorded.
+/** How many ticks apart the trail samples her. */
+const TRAIL_SAMPLE_TICKS = 3;
+/** How many samples the tail holds — 14 × 3 t ≈ 0.7 s of path behind her. */
+const TRAIL_POINTS = 14;
+/** Chalk-gold, the colour of her own wisps. */
+const TRAIL_COLOUR = 0xf2c85b;
+/** How far above her feet the tail streams from (she is ~52 px tall). */
+const TRAIL_ANCHOR_Y = 26;
+/** The states that leave a trail: the ones where she is actually flying. A
+ *  telegraph holds station and a dip is a deliberate descent — a tail on either
+ *  would say „still moving" while the picture says „about to throw". */
+const TRAIL_STATES: ReadonlySet<string> = new Set(["fly", "throw"]);
+/** Deterministic ±1.5 px shimmer keyed on the sample's OWN tick (not its index
+ *  in the buffer, which shifts every sample and would make the whole tail
+ *  crawl). Knuth's multiplicative hash — the same trick the legacy build uses
+ *  for its seeded picks, minus the RNG. */
+const trailWobble = (tick: number): number => ((Math.imul(tick, 2654435761) >>> 28) - 7.5) * 0.2;
 
 /** R3-15 · the colour OSWIN's rain leaves behind: warm paper-grey, so a drained
  *  being still belongs to the painted book rather than turning to concrete. */
@@ -156,6 +192,10 @@ export class PaintScene extends Phaser.Scene {
    *  redeemable creature, built beside its sprite and driven by washAlphaFor. */
   private washImgs = new Map<string, Phaser.GameObjects.Image>();
   private projG!: Phaser.GameObjects.Graphics;
+  /** PK-R6 · E: the code-drawn golden tail behind the flying guardian. */
+  private trailG!: Phaser.GameObjects.Graphics;
+  private trail: Array<{ x: number; y: number; t: number }> = [];
+  private trailAt = -1;
   /** PK-R6 · C1: the ↑ cue over the being a press would engage. */
   private engageCueG!: Phaser.GameObjects.Graphics;
   /** R3-4: pooled chalk sprites (one per live projectile, reused per frame). */
@@ -221,6 +261,8 @@ export class PaintScene extends Phaser.Scene {
     // player/world/letters/bonus clock all spawned by the Sim in the constructor
     this.buildEntityImgs();
     this.projG = this.add.graphics().setDepth(8);
+    // behind her (entities sit at 7) — a tail drawn in front reads as confetti
+    this.trailG = this.add.graphics().setDepth(6.9);
     // PK-R6 · C1: the ↑ cue rides ABOVE the beings it points at (depth 7) and
     // below the hero (11), so it never hides the thing it is advertising.
     this.engageCueG = this.add.graphics().setDepth(9.5);
@@ -419,6 +461,25 @@ export class PaintScene extends Phaser.Scene {
     return entPoseCell(e);
   }
 
+  /** PK-R6 · E: the native height of a skin's REFERENCE cell (its idle, `_a`) —
+   *  the one scale a whole rig is drawn at, so its painted extremes keep their
+   *  relative sizes. Memoised; falls back to the drawn frame when the skin has
+   *  no `_a` on disk (the only-present law: a missing reference must never make
+   *  a being render at zero). */
+  private refFrameCache = new Map<string, number>();
+  private refFrameHOf(skin: string): number {
+    const hit = this.refFrameCache.get(skin);
+    if (hit !== undefined) return hit;
+    const key = `pb-${skin}_a`;
+    // 0 means „no reference" — the caller then fits this cell on its own, which
+    // is exactly today's behaviour for a rig whose idle has not landed yet.
+    const h = this.textures.exists(key)
+      ? ((this.textures.get(key).getSourceImage() as HTMLImageElement).height || 0)
+      : 0;
+    this.refFrameCache.set(skin, h);
+    return h;
+  }
+
   /** world-space display heights per role — painted cells arrive at 512px native */
   private entTargetH(e: { role: string; skin: string }): number {
     if (e.role === "guardian") return 52;
@@ -479,12 +540,26 @@ export class PaintScene extends Phaser.Scene {
       // R3-16: a taken Regel-Seite / Bonus-Buch is GONE — it went into the tally
       img.setVisible(!e.hidden && !(PICKUP_ROLES.has(e.role) && e.redeemed));
       img.setPosition(fromSubs(e.x), fromSubs(e.y));
-      img.setTexture(this.entTex(e.skin, this.entStateCell({ ...e, idleFrames: this.idleFramesOf(e.skin) })));
+      const cell = this.entStateCell({ ...e, idleFrames: this.idleFramesOf(e.skin) });
+      img.setTexture(this.entTex(e.skin, cell));
       const targetH = this.entTargetH(e);
       const frameH = img.frame.height || 1;
       if (e.role.startsWith("platform")) img.setDisplaySize(40, targetH);
+      // PK-R6 · E · ONE SCALE FOR THE WHOLE FLIGHT SHEET. Fitting every cell to
+      // the same display height is right for a walker (whose cells are all the
+      // same creature standing up) and wrong for a rig that PAINTS its extremes:
+      // measured on the shipped sheet, the rear-up (`_windup`, 440 px native) is
+      // 11 % taller than the hover (397 px) and the edge-on spiral (328 px) is
+      // 17 % shorter — exactly the sizes the painter chose. Per-cell fitting
+      // scales all three back to identical heights and throws that away: the
+      // rear stops rearing. So a guardian is scaled by ONE factor taken from her
+      // idle cell, and the sheet's own proportions survive to the screen.
+      else if (e.role === "guardian") img.setScale(targetH / (this.refFrameHOf(e.skin) || frameH));
       else img.setScale(targetH / frameH);
-      img.setFlipX(e.dir > 0);
+      // …and a cell that already faces a direction is never mirrored: flipping a
+      // right-bank cell would draw a LEFT bank while she flies right (the facing
+      // law, R3-4, applied to art that carries its own facing).
+      img.setFlipX(CELL_IS_DIRECTIONAL(cell) ? false : e.dir > 0);
       // THE TRANSPARENCY GRAMMAR (PB-F2, Fable's PK-F1 review ruling 3):
       // SOLID = you can act on this now · TRANSPARENT = not yet.
       // AMENDED (PK-R6 · C2). The rule said SOLID =
@@ -530,23 +605,36 @@ export class PaintScene extends Phaser.Scene {
     let used = 0;
     for (const pr of this.world.projectiles) {
       const thrower = this.world.entities.find((e) => e.id === pr.fromId);
-      const key = thrower ? `pb-${thrower.skin}_chalk` : "";
-      if (pr.kind === "chalk" && key !== "" && this.textures.exists(key)) {
+      // PK-R6 · E · THE SIX PAINTED STICKS. The colour rides on the piece
+      // (entities.CHALK_COLOURS, cycled by throw index), so the stick that flies
+      // is the stick that shatters and the stick its shard is made of. The old
+      // single `tafel_chalk` stem stays the fallback for any guardian whose
+      // chapter has no coloured set — the only-present law, unchanged.
+      const shard = pr.kind === "shard";
+      const coloured = pr.colour !== "" ? `pb-chalk_${pr.colour}` : "";
+      // the two painted splinters, chosen by id so a shard never flickers
+      const shardKey = `pb-chalk_shard_${pr.id % 2 === 0 ? "a" : "b"}`;
+      const key = [shard ? shardKey : "", shard ? "" : coloured, thrower ? `pb-${thrower.skin}_chalk` : ""]
+        .find((k) => k !== "" && this.textures.exists(k)) ?? "";
+      if ((pr.kind === "chalk" || shard) && key !== "") {
         let img = this.projImgs[used];
         if (!img) {
           img = this.add.image(0, 0, key).setDepth(8).setOrigin(0.5, 0.5);
           this.projImgs[used] = img;
         }
         used++;
-        img.setVisible(true).setTexture(key).setPosition(fromSubs(pr.x), fromSubs(pr.y) - 4);
-        img.setScale(CHALK_DISPLAY_H / (img.frame.height || 1));
-        img.setRotation(this.cfg.reducedMotion ? 0 : (pr.deflected ? -1 : 1) * pr.age * 0.14);
+        img.setVisible(true).setTexture(key).setPosition(fromSubs(pr.x), fromSubs(pr.y) - (shard ? 2 : 4));
+        img.setScale((shard ? SHARD_DISPLAY_H : CHALK_DISPLAY_H) / (img.frame.height || 1));
+        // a lying splinter does not tumble; it FADES as its second runs out, so
+        // „this is about to stop being dangerous" is readable without a HUD.
+        img.setRotation(shard || this.cfg.reducedMotion ? 0 : (pr.deflected ? -1 : 1) * pr.age * 0.14);
+        img.setAlpha(shard ? Math.max(0.35, 1 - pr.age / SHARD_TICKS) : 1);
         continue;
       }
       // the ink blob keeps its dot (no painted sheet — the only-present law)
-      this.projG.fillStyle(pr.kind === "chalk" ? 0xf6f2e8 : 0x4f86c6, 1);
-      this.projG.fillCircle(fromSubs(pr.x), fromSubs(pr.y) - 4, pr.kind === "chalk" ? 3 : 4);
-      this.projG.lineStyle(1, 0x243048, 0.6).strokeCircle(fromSubs(pr.x), fromSubs(pr.y) - 4, pr.kind === "chalk" ? 3 : 4);
+      this.projG.fillStyle(pr.kind === "blob" ? 0x4f86c6 : 0xf6f2e8, 1);
+      this.projG.fillCircle(fromSubs(pr.x), fromSubs(pr.y) - 4, pr.kind === "blob" ? 4 : 3);
+      this.projG.lineStyle(1, 0x243048, 0.6).strokeCircle(fromSubs(pr.x), fromSubs(pr.y) - 4, pr.kind === "blob" ? 4 : 3);
     }
     for (let i = used; i < this.projImgs.length; i++) this.projImgs[i]?.setVisible(false);
 
@@ -572,21 +660,34 @@ export class PaintScene extends Phaser.Scene {
    * writing surface, in which case the card opens at once — a guardian without a
    * board is a design choice, never a silent blank.
    */
-  writeEvidence(entityId: string, lines: readonly string[]): number {
+  /** Where the chalk lands on THIS guardian right now, in world px — read off
+   *  the sprite as it is actually drawn, so the writing follows the cell she is
+   *  wearing rather than a number measured once against a retired one. */
+  private boardAnchor(entityId: string): { y: number; w: number } | null {
     const e = this.world?.entities.find((x) => x.id === entityId);
     const board = e ? GUARDIAN_BOARDS[e.skin] : undefined;
-    if (!e || !board) return 0;
+    if (!e || !board) return null;
+    const img = this.entityImgs.get(entityId);
+    const h = img?.displayHeight || this.entTargetH(e);
+    const w = img?.displayWidth || h;
+    return { y: fromSubs(e.y) + board.dyFrac * h, w: Math.max(w * board.wFrac, 8) };
+  }
+
+  writeEvidence(entityId: string, lines: readonly string[]): number {
+    const e = this.world?.entities.find((x) => x.id === entityId);
+    const anchor = this.boardAnchor(entityId);
+    if (!e || !anchor) return 0;
     this.clearEvidence();
     this.evidenceOwner = entityId;
     this.evidenceFull = lines.join("  ");
     this.evidenceTick = 0;
     this.evidenceText = this.add
-      .text(fromSubs(e.x), fromSubs(e.y) + board.dy, "", {
+      .text(fromSubs(e.x), anchor.y, "", {
         fontFamily: "system-ui, sans-serif",
         fontSize: "6px",
         color: "#f6f2e8", // chalk on slate
         align: "center",
-        wordWrap: { width: board.w },
+        wordWrap: { width: anchor.w },
       })
       .setOrigin(0.5, 0.5)
       .setDepth(8)
@@ -610,9 +711,9 @@ export class PaintScene extends Phaser.Scene {
     const t = this.evidenceText;
     if (!t || this.evidenceOwner === null) return;
     const e = this.world?.entities.find((x) => x.id === this.evidenceOwner);
-    const board = e ? GUARDIAN_BOARDS[e.skin] : undefined;
-    if (!e || !board) return;
-    t.setPosition(fromSubs(e.x), fromSubs(e.y) + board.dy);
+    const anchor = this.boardAnchor(this.evidenceOwner);
+    if (!e || !anchor) return;
+    t.setPosition(fromSubs(e.x), anchor.y);
     this.evidenceTick++;
     const shown = this.cfg.reducedMotion
       ? this.evidenceFull.length
@@ -721,8 +822,51 @@ export class PaintScene extends Phaser.Scene {
 
   // ── rendering ──────────────────────────────────────────────────────────────
 
+  /**
+   * PK-R6 · E · THE GOLDEN TRAIL (doc 44 B14: „full-code animation is
+   * legitimate"). Her path is the thing the child has to learn, so the path is
+   * what gets drawn: a fading tail of chalk-gold sampled off the sim's own
+   * positions, brightest and fattest where she just was.
+   *
+   * Deterministic: points are sim positions on numbered ticks and the only
+   * jitter is a hash of the tick, so a replayed tape draws an identical tail.
+   * Under reduced motion it is not drawn at all — it depicts nothing BUT motion,
+   * and the end-states law asks for a finished picture, not a frozen smear.
+   */
+  private renderTrail(): void {
+    const g = this.world?.entities.find(
+      (e) => e.role === "guardian" && !e.redeemed && TRAIL_STATES.has(e.state),
+    );
+    if (!g) this.trail.length = 0;
+    else if (this.tickCount !== this.trailAt && this.tickCount % TRAIL_SAMPLE_TICKS === 0) {
+      const x = fromSubs(g.x);
+      const y = fromSubs(g.y) - TRAIL_ANCHOR_Y;
+      const last = this.trail[this.trail.length - 1];
+      // …only where she actually WENT. Found in the live arena: a card freezes
+      // the world while the renderer keeps drawing, so a tail that samples on
+      // the clock alone stacked fourteen identical dots into one bright blob
+      // under a motionless boss — a trail that says „moving" about a boss who
+      // is holding still for a question.
+      if (!last || last.x !== x || last.y !== y) {
+        this.trailAt = this.tickCount;
+        this.trail.push({ x, y, t: this.tickCount });
+        while (this.trail.length > TRAIL_POINTS) this.trail.shift();
+      }
+    }
+    this.trailG.clear();
+    if (this.cfg.reducedMotion) return;
+    for (let i = 0; i < this.trail.length; i++) {
+      const p = this.trail[i];
+      if (!p) continue;
+      const k = (i + 1) / this.trail.length; // 0 = the oldest wisp, 1 = the newest
+      this.trailG.fillStyle(TRAIL_COLOUR, 0.55 * k * k);
+      this.trailG.fillCircle(p.x + trailWobble(p.t), p.y + trailWobble(p.t * 3), 0.9 + 2.3 * k);
+    }
+  }
+
   private render(): void {
     this.renderReadability();
+    this.renderTrail();
     const pose0 = rigPose({
       pose: this.player.pose,
       walkTime: this.player.walkTime,

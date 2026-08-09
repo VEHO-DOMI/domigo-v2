@@ -72,7 +72,12 @@
         "classmatesAwake": 0,
         "tipsGot": 0,
         "booksGot": 0,
-        "scorePageShown": false
+        "scorePageShown": false,
+        "guardianPathsFlown": 0,
+        "guardianTelegraphs": 0,
+        "guardianWindows": 0,
+        "guardianWroteLow": false,
+        "guardianConsoled": false
       }
     },
     "p2": {
@@ -261,7 +266,12 @@
         "classmatesAwake": 1,
         "tipsGot": 1,
         "booksGot": 1,
-        "scorePageShown": false
+        "scorePageShown": false,
+        "guardianPathsFlown": 0,
+        "guardianTelegraphs": 0,
+        "guardianWindows": 0,
+        "guardianWroteLow": false,
+        "guardianConsoled": false
       }
     },
     "p3": {
@@ -346,7 +356,12 @@
         "classmatesAwake": 0,
         "tipsGot": 1,
         "booksGot": 0,
-        "scorePageShown": false
+        "scorePageShown": false,
+        "guardianPathsFlown": 0,
+        "guardianTelegraphs": 0,
+        "guardianWindows": 0,
+        "guardianWroteLow": false,
+        "guardianConsoled": false
       }
     },
     "p4": {
@@ -596,147 +611,15 @@
           2
         ],
         [
-          40,
+          18,
           1
         ],
         [
-          40,
+          42,
           2
         ],
         [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          40,
-          1
-        ],
-        [
-          40,
-          2
-        ],
-        [
-          9,
-          1
-        ],
-        [
-          6,
+          4,
           0
         ],
         [
@@ -782,12 +665,17 @@
         "exitTo": "done",
         "cagesFreed": 0,
         "guardianDown": true,
-        "tasksSolved": 3,
+        "tasksSolved": 12,
         "redeemedPresent": false,
         "classmatesAwake": 0,
         "tipsGot": 0,
         "booksGot": 0,
-        "scorePageShown": true
+        "scorePageShown": true,
+        "guardianPathsFlown": 2,
+        "guardianTelegraphs": 11,
+        "guardianWindows": 3,
+        "guardianWroteLow": true,
+        "guardianConsoled": true
       }
     },
     "p9": {
@@ -812,7 +700,12 @@
         "classmatesAwake": 0,
         "tipsGot": 0,
         "booksGot": 0,
-        "scorePageShown": false
+        "scorePageShown": false,
+        "guardianPathsFlown": 0,
+        "guardianTelegraphs": 0,
+        "guardianWindows": 0,
+        "guardianWroteLow": false,
+        "guardianConsoled": false
       }
     }
   }

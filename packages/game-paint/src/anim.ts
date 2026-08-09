@@ -122,6 +122,78 @@ export const SQUASH_VY = BOUNCE_UP * 0.8;
  *  art shows the whole body banked over, which is a turn, not a straight run. */
 export const BANK_X = FLYER_SWEEP_PX * SUBS * 0.8;
 
+// ── PK-R6 · E · THE FLIGHT RIG vs THE RETIRED EASEL (doc 44 §4 ch01 C4) ──────
+// The Tafel was REPAINTED as a flying board (stage G's `tafel_flight` sheet:
+// hover ×4, banks, spirals, windups, throw, lands, rest, win). Four stems from
+// her older sheet survived on disk and still show the GROUNDED EASEL — a
+// different body on legs. Any mid-air state that resolved to one of them would
+// swap the boss's body in the middle of her own fight: that is the PB-F1
+// identity defect, the one this rig exists to end.
+//
+// So the retired cells are NAMED here, and `guardian-flight.test.ts` drives the
+// real FSM across every tier and every knot, collects every state it can
+// actually reach, and fails if any of them lands in this set. The list cannot
+// rot, because the machine itself supplies the states.
+export const GUARDIAN_GROUNDED_CELLS: ReadonlySet<string> = new Set(["sad", "dazed", "stagger", "telegraph"]);
+
+/** The landed cells of the FLIGHT sheet (`rest0`/`rest1` in the AM contract).
+ *  Grounded is CORRECT here and only here: she is beaten and has come down. */
+export const GUARDIAN_LANDED_CELLS: ReadonlySet<string> = new Set(["rest", "win"]);
+
+/** Her banked pairs, left and right. These cells carry their OWN direction, so
+ *  the renderer must not also mirror them — see `CELL_IS_DIRECTIONAL`. (`roll`
+ *  is the sheet's `bank_l0`; stage G mapped it to the name the turn state was
+ *  already resolving to.) */
+const BANK_L = ["roll", "bank_l1"] as const;
+const BANK_R = ["bank_r0", "bank_r1"] as const;
+/** The barrel-roll cells she wears through a turn. */
+const SPIRAL_CELLS = ["spiral0", "spiral1", "spiral2", "spiral3"] as const;
+/** The sinking wobble: the two `land` cells, alternating. */
+const LAND_CELLS = ["land0", "land1"] as const;
+
+/** Cells whose art already faces a direction. `PaintScene` suppresses `flipX`
+ *  for these — mirroring a right-bank cell would draw a left bank while the
+ *  guardian flies right, which is the same „picture disagrees with the world"
+ *  class the facing law (R3-4) was written for. */
+export const CELL_IS_DIRECTIONAL = (cell: string): boolean =>
+  (BANK_L as readonly string[]).includes(cell) || (BANK_R as readonly string[]).includes(cell);
+
+/** How fast she has to be travelling sideways before a bank reads as a bank,
+ *  in subs/tick. TASTE, but bounded: below it she is nearly hovering, and a
+ *  banked board that is not going anywhere reads as a glitch. */
+export const FLIGHT_BANK_VX = Math.round(0.35 * SUBS);
+
+/**
+ * Which cell the flying Tafel wears this tick, from her own per-tick travel.
+ * Pure, and derived from VELOCITY rather than from the path's name — so the
+ * rule generalises to every path she will ever fly and the picture can never
+ * disagree with the motion:
+ *
+ *   · climbing or diving faster than she is crossing → she is rolling through a
+ *     turn: the `spiral` cells (the extremes of the spiral, the crossings of the
+ *     figure-eight, the corners of a zigzag).
+ *   · crossing at speed → the banked pair for the way she is going.
+ *   · neither → she hovers (`_a.._d`).
+ */
+export const guardianFlightCell = (vx: number, vy: number, flightTick: number): string => {
+  if (Math.abs(vy) > Math.abs(vx)) return SPIRAL_CELLS[bobFrame(flightTick, 4)] ?? "spiral0";
+  if (Math.abs(vx) >= FLIGHT_BANK_VX) {
+    const pair = vx > 0 ? BANK_R : BANK_L;
+    return pair[bobFrame(flightTick, 2)] ?? pair[0];
+  }
+  return IDLE_CELLS[bobFrame(flightTick, 4)] ?? "a";
+};
+
+/** THE TELL, in three cells (doc 44 §4 ch01 C4: „she dips and rears"). The dwell
+ *  is fixed rather than a fraction of the telegraph, so the REAR (`_windup`, the
+ *  tallest cell on the sheet) is what holds right up to the release however long
+ *  the tier and the knot make the tell — the last thing the child sees before
+ *  the chalk leaves is always the same picture. TELEGRAPH_FLOOR_TICKS (30)
+ *  guarantees all three get their turn. */
+export const WINDUP_DWELL_TICKS = 10;
+const windupCell = (timer: number): string =>
+  timer < WINDUP_DWELL_TICKS ? "windup0" : timer < WINDUP_DWELL_TICKS * 2 ? "windup1" : "windup";
+
 export interface EntPoseInput {
   role: string;
   state: string;
@@ -131,6 +203,9 @@ export interface EntPoseInput {
   vy: number;
   x: number;
   homeX: number;
+  /** PK-R6 · E · guardians only: ticks on the path, for the flight cell cycles.
+   *  Defaulted so every existing caller (and every non-guardian) is unchanged. */
+  flightTick?: number;
   /** How many painted idle cells this SKIN has on disk (doc 40 §4). The scene
    *  counts them; the hook stays pure. Defaults to the shipped 2, so a skin
    *  that never gains `_c/_d` keeps exactly today's cadence. */
@@ -193,27 +268,37 @@ export const entPoseCell = (e: EntPoseInput): string => {
     if (e.state === "burst" || e.redeemed) return "burst";
     if (e.state === "shaking") return "shake";
   }
-  // W5/A-4: the arena guardian's own motion cells. `consoled` is its TERMINAL
-  // victory state (guardianKnotSolved sets it on the last knot and never sets
-  // `redeemed`), so it must be read before the dazed catch-all — otherwise the
-  // console beat's payoff, the blackboard as a friend, can never show.
+  // ── PK-R6 · E · THE FLYING GUARDIAN'S CELLS (doc 44 §4 ch01 C4) ────────────
+  // Read before every generic rule below, and answering ONLY out of the flight
+  // sheet until she is beaten. The two terminal cells (`rest`, `win`) are the
+  // flight sheet's own landed pair — she has come down, which is the one moment
+  // grounded is right. Nothing here can reach `sad`/`dazed`/`stagger`/
+  // `telegraph`: those are the retired easel (GUARDIAN_GROUNDED_CELLS).
   if (e.role === "guardian") {
+    // the console beat's payoff — the blackboard as a friend. Read first: it is
+    // TERMINAL (guardianKnotSolved never sets `redeemed`), so the dazed
+    // catch-all below would otherwise eat it.
     if (e.state === "consoled") return "win";
-    // R3-5: the crying beat, at last given a state (doc 38's painted-unused sheet)
-    if (e.state === "sad") return "sad";
-    // R3-4: the turn has no painted cell yet (doc 40 §7 keeps PK-R2 to art that
-    // exists). It must NOT fall through to `_a` — that is the GREEN easel form,
-    // and swapping bodies mid-duel is the identity bug PB-F1 removed. The
-    // wheeled body in motion is what a turn IS, so `roll` holds it. Art debt is
-    // named in doc 35: 2–3 painted `tafel_turn` cells retire this line.
-    if (e.state === "turn") return "roll";
-    // PB-F1/F2-25: `window` IS the counter-task moment. It used to fall through
-    // to the a/b idle cells, so the boss silently swapped to a DIFFERENT drawing
-    // of itself for exactly as long as the card asking you to look at it was up.
-    // The stagger cell (same wheeled body, reeling) holds the identity.
-    if (e.state === "stagger" || e.state === "window") return "stagger";
-    if (e.state === "telegraph") return "windup";
-    if (e.state === "roll") return "roll"; // PK-C3/G4: the Tafel crosses the stage
+    // R3-5 kept, doc 44 §2.2 re-aimed: the beaten board reacts before the
+    // victory cell — she RESTS, exhausted, on the boards she just fell onto.
+    if (e.state === "sad") return "rest";
+    // she is still coming down: the sinking wobble
+    if (e.state === "sink" || e.state === "dip") return LAND_CELLS[bobFrame(e.timer, 2)] ?? "land0";
+    // PB-F1/F2-25: `window` IS the counter-task moment — the card asks the child
+    // to LOOK at her, so she may not swap to a different drawing of herself
+    // while it is up, and she may not keep wobbling either: the four chalked
+    // words have to sit still to be read. She holds the settled land cell.
+    if (e.state === "window") return "land1";
+    // the fist path (chapters that grant one) reels her in the air
+    if (e.state === "stagger") return LAND_CELLS[bobFrame(e.timer, 2)] ?? "land0";
+    if (e.state === "telegraph") return windupCell(e.timer);
+    if (e.state === "throw") return "throw";
+    if (e.state === "fly") return guardianFlightCell(e.vx, e.vy, e.flightTick ?? e.timer);
+    // R3-4's turn state, kept for any chapter whose guardian still walks
+    if (e.state === "turn" || e.state === "roll") return "roll";
+    // the catch-alls, pointed at the flight sheet rather than the easel
+    if (e.redeemed || e.state === "dazed") return "land1";
+    return IDLE_CELLS[bobFrame(e.timer, 4)] ?? "a"; // she hovers
   }
   // R3-5 · THE REDEEMED-PRESENCE PAIR (doc 40 §3). Read BEFORE the dazed
   // catch-all: a freed friend is not a dazed enemy, and `moths_rest` — painted,

@@ -1395,7 +1395,7 @@
    "stimulus": {
     "type": "entity",
     "showsDe": "Die Tafel kritzelt ihre Wörter wild durcheinander",
-    "art": "tafel_telegraph"
+    "art": "tafel_windup1"
    },
    "storyDe": "Bring ihre Wörter in die richtige Reihenfolge!",
    "orderedChips": [

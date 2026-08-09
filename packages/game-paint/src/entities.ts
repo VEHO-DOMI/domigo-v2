@@ -15,6 +15,7 @@
  */
 import { PAINT, SUBS, TILE } from "./paint.ts";
 import { groundSurfaceAt, walkSurfaceAhead } from "./collide.ts";
+import { flightUnitAt, knotIndex, pathForKnot } from "./flight.ts";
 import type { EntitySpec, LinkSpec } from "./level.ts";
 
 export interface EntityState {
@@ -29,7 +30,8 @@ export interface EntityState {
   vy: number;
   dir: 1 | -1;
   /** role FSM: patrol|telegraph|act|recover|dazed — cages: closed|shaking|burst
-   *  — guardian: idle|telegraph|throw|stagger|window|consoled. */
+   *  — guardian (PK-R6 · E, airborne): fly|telegraph|throw|dip|stagger|window|
+   *  sink|sad|consoled. */
   state: string;
   timer: number;
   hp: number;
@@ -41,6 +43,11 @@ export interface EntityState {
    *  the last counter-window. See DODGES_PER_WINDOW — this is the fist-less
    *  road into the fight. */
   dodges: number;
+  /** PK-R6 · E · guardians only: how many pieces of chalk she has thrown this
+   *  fight. It is the DETERMINISTIC cursor into the six painted chalk sticks
+   *  (CHALK_COLOURS) — a count the replay reproduces exactly, where a random
+   *  pick would give the proof tape a different-coloured arena every run. */
+  throws: number;
   /** PK-R6 · D · classmates only: how many reawakening rounds she has been
    *  given back, 0 … AWAKEN_ROUNDS (doc 44 §3.3). It is a COUNT rather than a
    *  reuse of `hp`, because it is read by the renderer as well as the sim —
@@ -48,12 +55,21 @@ export interface EntityState {
    *  means "hits left" in one file and "colour restored" in another is the
    *  drift class the pose thresholds were derived to avoid. */
   awakenStep: number;
+  /** PK-R6 · E · guardians only: ticks spent ON THE PATH. It advances only while
+   *  she is flying — she holds station to telegraph — so the shape is not cut
+   *  short and restarted by every throw, which is what `timer` (reset per state)
+   *  would have done. It is also what makes „she flew a whole path" a countable
+   *  claim rather than a screenshot. */
+  flightTick: number;
   params: Record<string, unknown>;
 }
 
 export interface ProjectileState {
   id: number;
-  kind: "chalk" | "blob";
+  /** PK-R6 · E: `shard` is the piece a landed chalk leaves behind — it does not
+   *  fly, it LIES there for SHARD_TICKS as a floor hazard (doc 44 §4 ch01 C4:
+   *  „chalk shards linger 1 s as floor hazards"). */
+  kind: "chalk" | "blob" | "shard";
   x: number;
   y: number;
   vx: number;
@@ -63,6 +79,10 @@ export interface ProjectileState {
   dead: boolean;
   /** ticks alive — a deflected piece that hits nothing shatters on this (R3-4). */
   age: number;
+  /** PK-R6 · E · which of the six painted sticks this is (`chalk_red` …). Carried
+   *  on the piece rather than recomputed by the renderer, so the stick that
+   *  shatters is the stick that flew, and its shard inherits the same colour. */
+  colour: string;
 }
 
 export type EntityEvent =
@@ -223,25 +243,123 @@ const stepRedeemed = (e: EntityState): void => {
 };
 
 /** Per-tier guardian script (sheet §6: telegraph/window shrink E→S, knots ≤5). */
-// PK-C3 (gate verdict G4): the Tafel MOVES. Until now the guardian had no
-// locomotion at all — it threw chalk from one spot for the whole fight, and
-// the painted `tafel_roll` cell had no state to bind to (Build-D's F-5). After
-// every throw it now ROLLS to the opposite station and settles, so the arena
-// is a chase across the stage rather than a shooting gallery.
-// Deterministic by construction: the direction comes from which side of home
-// it currently stands on, never from a random roll — the proof tapes depend
-// on this being reproducible tick for tick.
-// `rollTicks` is a SAFETY NET, not the pacing knob — it must comfortably
-// exceed a full station-to-station crossing (2 × range ÷ speed ≈ 205 ticks at
-// every tier), or the roll times out halfway and the Tafel drifts to a
-// meaningless spot. The live playtest caught exactly that: it settled at 246
-// instead of its 216 station because a 260-tick cap could not cover 128 px at
-// 0.375 px/tick.
+// PK-R6 · E (doc 44 §4 ch01 C4): the Tafel FLIES. PK-C3's ground roll between
+// two stations retires with the R4 canon — „Doc 41's grounded ‚erwachte
+// Schultafel' … retire as mechanics; the board now flies" — and the rollSpeed/
+// rollRangeTiles/rollTicks dials retire with it. What survives verbatim is the
+// per-tier shape the sheet fixed: knots, and a telegraph and throw clock that
+// tighten E→S.
 export const GUARDIAN_SCRIPT = {
-  E: { knots: 3, telegraphTicks: 60, throwEvery: 150, staggerTicks: 90, rollSpeed: 160, rollRangeTiles: 4, rollTicks: 320 },
-  M: { knots: 4, telegraphTicks: 45, throwEvery: 120, staggerTicks: 75, rollSpeed: 200, rollRangeTiles: 5, rollTicks: 320 },
-  S: { knots: 5, telegraphTicks: 32, throwEvery: 96, staggerTicks: 60, rollSpeed: 240, rollRangeTiles: 6, rollTicks: 320 },
+  E: { knots: 3, telegraphTicks: 60, throwEvery: 150, staggerTicks: 90 },
+  M: { knots: 4, telegraphTicks: 45, throwEvery: 120, staggerTicks: 75 },
+  S: { knots: 5, telegraphTicks: 32, throwEvery: 96, staggerTicks: 60 },
 } as const;
+
+// ── PK-R6 · E · THE FLYING TAFEL (doc 44 §4 ch01 C4 + §3.2 boss primitives) ──
+// Every number here is either DERIVED from the arena and the camera (and locked
+// by a test that recomputes the derivation), MINED verbatim from the shipped
+// build, or marked `TASTE:` — the three kinds a reviewer has to judge
+// differently. Nothing in this block is a number somebody once typed.
+
+/** THE FAIRNESS FLOOR. doc 44 §4 ch01 C4 asks for a telegraph of „≥500 ms"
+ *  before every throw; 30 ticks at the 60 Hz contract IS 500 ms. It is a floor
+ *  rather than a value because the per-knot escalation below SHORTENS the
+ *  telegraph, and at tier S the third knot would otherwise reach 23 t (383 ms) —
+ *  a tell too short to answer, which is the one thing a no-death boss may never
+ *  do. The mined Keen boss holds the same line from the other side (its own
+ *  suite asserts `telegraphMs[tier] >= 500` on every tier); ours is the floor
+ *  that law becomes once the telegraph is allowed to move. */
+export const TELEGRAPH_FLOOR_TICKS = 30;
+
+/** How high she flies, as a half-height around her spawn row, in px. DERIVED:
+ *  the arena is 20 rows (320 px) and the view is LOGICAL_H (224 px), so with the
+ *  child on the arena floor the vertical scroll clamps to 96 and the visible
+ *  band is y 96…320. Her spawn row (r11 → feet at 192) plus this band keeps her
+ *  feet in 166…218 and her 52-px body in 114…218: inside the visible band with
+ *  margin, above the child's head (226) and clear of the row-14 podium tops
+ *  (224). `flight.test.ts` recomputes all of that from camera.ts and the level
+ *  file and fails if any knot's path leaves the band — a readable path the child
+ *  cannot SEE is not a readable path. */
+export const FLIGHT_BAND_PX = 26;
+/** How wide each knot's shape is, in px either side of her flight centre.
+ *  Escalating: the arena gets bigger as she gets angrier. Bounded by the arena
+ *  itself — see FLIGHT_MARGIN_PX. */
+export const KNOT_SPAN_PX = [78, 92, 104] as const;
+/** How long one full pass of a knot's path takes, in ticks (5.0 s / 4.3 s /
+ *  3.7 s at 60 Hz). TASTE: the absolute values are feel; what is NOT taste is
+ *  that they shorten — doc 44 asks for „three knots, escalating", and a path
+ *  the child has already learned has to arrive faster to stay a fight. */
+export const KNOT_PERIOD_TICKS = [300, 260, 220] as const;
+/** How much faster her CLOCKS run per knot (throw rate and telegraph alike),
+ *  as a multiplier on the tier script. The telegraph is clamped by
+ *  TELEGRAPH_FLOOR_TICKS afterwards, so this can never buy speed with fairness.
+ *  TASTE: 15 % then 28 % — one step the child feels, one they brace for. */
+export const KNOT_RATE = [1, 0.85, 0.72] as const;
+/** How close to the arena's edge her flight centre may drift, in px. Keeps a
+ *  full-span path inside the stage instead of half-off it. */
+export const FLIGHT_MARGIN_PX = 24;
+/** How fast the flight CENTRE tracks the child, as an ease divisor and a cap in
+ *  subs/tick. Mined in shape from the legacy `cloud` brain, which drifts toward
+ *  the player's column before it fires — the reason is the fairness law again:
+ *  a telegraph thrown from off screen cannot be answered, so she has to stay
+ *  where the child can see her. Slow on purpose (TASTE: /48, ≤0.6 px/tick) —
+ *  the PATH must dominate the drift, or the shape stops being learnable. */
+export const CENTRE_EASE_DIV = 48;
+export const CENTRE_MAX_STEP = Math.round(0.6 * SUBS);
+
+/** The release beat: how long `tafel_throw` shows after the chalk leaves her
+ *  hand. TASTE: 12 t (200 ms) — long enough to read as a throw, short enough
+ *  that she is flying again before the chalk lands. */
+export const THROW_TICKS = 12;
+/** How long the chalk stays in the air, in ticks. The arc is SOLVED for this
+ *  time (see the throw below), so it is the child's actual dodge window: 48 t =
+ *  800 ms on top of a ≥500 ms telegraph. TASTE within the fairness envelope. */
+export const CHALK_FLIGHT_TICKS = 44;
+/** THE ARMING DELAY — the second half of the fairness law, found by test.
+ *  A telegraph only buys the child time if the thing it announces then has to
+ *  TRAVEL. She tracks the child (so her tell is on screen), which means she can
+ *  end up nearly on top of them — and a piece of chalk aimed at their feet from
+ *  20 px away entered the contact box on its FIRST tick, i.e. an unavoidable hit
+ *  behind a perfectly fair 1-second tell. Chalk is therefore inert for its first
+ *  10 ticks (167 ms): it always visibly leaves her hand before it can bite.
+ *  Costs nothing at normal range — the arc is 44 ticks long. */
+export const CHALK_ARM_TICKS = 10;
+/** Per-tick fall on a piece of chalk, in subs. Kept VERBATIM from the shipped
+ *  duel (`GRAVITY / 4`, R3-4's „long readable arc") — the arc the playtest
+ *  already accepted, now aimed rather than lobbed straight ahead. */
+export const CHALK_GRAVITY = Math.round(PAINT.gravity / 4);
+/** How long a shattered piece lies on the floor as a hazard, in ticks. doc 44
+ *  §4 ch01 C4: „chalk shards linger 1 s" — 60 t IS 1 s at the 60 Hz contract. */
+export const SHARD_TICKS = 60;
+/** How close the child has to come to a lying shard for it to bite, in px.
+ *  DERIVED from the hero's own body rather than guessed: BODY_HALF_PX (8) plus
+ *  a splinter's width. Deliberately SMALLER than the flying piece's box — a
+ *  hazard you can see lying still has to be avoidable by looking, and a
+ *  six-year-old walking a floor should not be caught by something beside them. */
+export const SHARD_REACH_X_PX = 9;
+export const SHARD_REACH_Y_PX = 12;
+/** The six painted sticks (`chalk_white` … `chalk_orange`), cycled by throw
+ *  index so the colour is a function of the tick stream and nothing else. */
+export const CHALK_COLOURS = ["white", "red", "blue", "green", "yellow", "orange"] as const;
+
+/** THE COUNTER-WINDOW DIP (doc 44 §4 ch01 C4: „she writes her lie ON the
+ *  board"). She leaves the flight band and comes down to the child — which is
+ *  what makes four chalked words readable at 1×, and what guarantees the card's
+ *  asker is on screen when it opens (the speaker law, doc 41 §3: a card whose
+ *  asker has left the viewport WAITS, and a boss frozen off screen mid-window
+ *  would wait forever). */
+export const DIP_Y_PX = 236;
+/** How far short of the child she stops, in px — she dips in FRONT of them, not
+ *  on top of them. TASTE. */
+export const DIP_STANDOFF_PX = 34;
+/** How long the dip takes. Matched to the evidence beat (PaintScene's
+ *  EVIDENCE_BEAT_TICKS, 36 t) so the coming-down and the writing read as one
+ *  movement rather than two. */
+export const DIP_TICKS = 36;
+/** How fast she settles the last stretch onto the ground when she is beaten, in
+ *  subs/tick. TASTE: 1.1 px/tick — heavier than she flies, which is the whole
+ *  point of the beat. */
+export const SINK_SPEED = Math.round(1.1 * SUBS);
 
 export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWorld => ({
   entities: specs.map((s) => ({
@@ -258,8 +376,11 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     // still under the spell (`merle_caged0/1`, eyes down, hands limp). It is
     // what the child sees in the beat between the cage bursting and the first
     // round's pose, and it is what she falls back to if a round is deferred.
+    // PK-R6 · E: a guardian is AIRBORNE from her first tick — there is no
+    // grounded idle to fall out of, which is what keeps the old easel cells
+    // (`tafel_sad`/`_dazed`/`_stagger`) unreachable while she flies.
     state: s.role === "cage" ? "closed" : s.role === "classmate" ? "caged"
-      : s.role.startsWith("platform") ? "carry" : s.role === "guardian" ? "idle" : "patrol",
+      : s.role.startsWith("platform") ? "carry" : s.role === "guardian" ? "fly" : "patrol",
     timer: 0,
     hp: s.role === "cage" ? 2 : s.role === "guardian" ? GUARDIAN_SCRIPT[s.tier].knots : 1,
     homeX: (s.c * TILE + TILE / 2) * SUBS,
@@ -267,6 +388,8 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     redeemed: false,
     hidden: s.params?.hidden === true,
     dodges: 0,
+    throws: 0,
+    flightTick: 0,
     awakenStep: 0,
     params: s.params ?? {},
   })),
@@ -385,6 +508,41 @@ const walkAheadAt = (grid: readonly string[], e: EntityState, xSubs: number): nu
   return s === null ? null : s.yPx * SUBS;
 };
 
+// ── PK-R6 · E · the flight, as PURE FUNCTIONS (so the fight is a table) ──────
+
+/** How long this knot's telegraph runs, in ticks — the tier script tightened by
+ *  the knot's rate and then held at the fairness floor. THE floor is the point:
+ *  every caller goes through here, so there is no path by which a shorter tell
+ *  can reach a child. */
+export const telegraphTicksFor = (tier: "E" | "M" | "S", hp: number, knots: number): number =>
+  Math.max(TELEGRAPH_FLOOR_TICKS, Math.round(GUARDIAN_SCRIPT[tier].telegraphTicks * (KNOT_RATE[knotIndex(hp, knots)] ?? 1)));
+
+/** How long she flies between throws, in ticks (same escalation, no floor — a
+ *  faster rhythm is fair as long as each throw is still announced). */
+export const throwEveryFor = (tier: "E" | "M" | "S", hp: number, knots: number): number =>
+  Math.round(GUARDIAN_SCRIPT[tier].throwEvery * (KNOT_RATE[knotIndex(hp, knots)] ?? 1));
+
+/** Where on her path she is, in SUBS, given her flight centre and her path tick.
+ *  Exported because the flight-band test recomputes the whole traversal from
+ *  here — the claim „her body never leaves the visible band" is then checked
+ *  against the function the sim actually flies, not against a copy of it. */
+export const flightPointAt = (
+  centreXSubs: number,
+  centreYSubs: number,
+  hp: number,
+  knots: number,
+  flightTick: number,
+): { x: number; y: number } => {
+  const ki = knotIndex(hp, knots);
+  const period = KNOT_PERIOD_TICKS[ki] ?? 300;
+  const span = KNOT_SPAN_PX[ki] ?? 78;
+  const { fx, fy } = flightUnitAt(pathForKnot(hp, knots), flightTick / period);
+  return {
+    x: centreXSubs + Math.round(fx * span * SUBS),
+    y: centreYSubs + Math.round(fy * FLIGHT_BAND_PX * SUBS),
+  };
+};
+
 export const stepEntities = (
   w: EntityWorld,
   grid: readonly string[],
@@ -442,7 +600,7 @@ export const stepEntities = (
           const dir = inp.playerX >= e.x ? 1 : -1;
           w.projectiles.push({
             id: w.nextProjectileId++, kind: "blob", x: e.x, y: e.y - 10 * SUBS,
-            vx: Math.round(1.4 * SUBS) * dir, vy: -Math.round(2.2 * SUBS), deflected: false, fromId: e.id, dead: false, age: 0,
+            vx: Math.round(1.4 * SUBS) * dir, vy: -Math.round(2.2 * SUBS), deflected: false, fromId: e.id, dead: false, age: 0, colour: "",
           });
         }
         break;
@@ -601,67 +759,134 @@ export const stepEntities = (
       case "guardian": {
         const script = GUARDIAN_SCRIPT[e.tier];
         if (w.guardianKnots < 0) w.guardianKnots = script.knots;
-        // ── PK-R6 · C2 · THE DODGE WINDOW (doc 44 §4 ch01: „dodging N throws
-        // opens the counter-window") ────────────────────────────────────────
-        // The fist-less road into the fight. Chalk that lands on the boards
-        // instead of on the child is counted where it shatters; the window
-        // opens HERE, the moment she is standing still enough to be caught
-        // over-reaching. Never mid-roll: a stagger during a crossing drops her
-        // wherever the slide had got to and she then idles off-station — the
-        // „settling at 246 instead of its 216" defect from the live playtest.
-        // Waiting costs the child nothing (she stands far longer than she
-        // rolls) and keeps the deflect path below exactly as it was for every
-        // chapter that does grant a fist.
-        if (e.dodges >= DODGES_PER_WINDOW && e.state !== "roll" && e.state !== "stagger" && e.state !== "window") {
-          e.dodges = 0;
-          e.state = "stagger";
-          e.timer = 0;
-          eventsPushStagger(events, e.id);
+        // ── PK-R6 · E · THE FLYING TAFEL (doc 44 §4 ch01 C4) ────────────────
+        // „She hovers above the arena tracing readable paths — spirals,
+        // figure-eights, zigzags … telegraph: she dips and rears, ≥500 ms …
+        // throws colored chalk that arcs down and shatters."
+        //
+        // The whole machine is airborne: there is no grounded state left to
+        // reach until she is BEATEN, which is the mechanical half of the
+        // identity law (PB-F1). The grounded cells (`tafel_sad`/`_dazed`/
+        // `_stagger`) belong to the retired easel and anim.ts now refuses to
+        // resolve to them for any state this machine can be in mid-flight.
+
+        // THE TERMINAL BEATS — she is down, and she comes to rest (doc 44 §4
+        // ch01 C4: „she sinks to the ground, exhausted").
+        if (e.state === "sink") {
+          const floor = groundAt(grid, e.x, e.y);
+          const floorY = floor ?? e.y;
+          e.vx = 0;
+          e.y = Math.min(e.y + SINK_SPEED, floorY);
+          if (e.y >= floorY) { e.y = floorY; e.state = "sad"; e.timer = 0; }
           break;
         }
-        if (e.state === "idle") {
-          if (e.timer > script.throwEvery) {
-            // R3-4 · THE FACING LAW: it may never throw at a back it is turned
-            // to. Koki filmed exactly that (11.50.09) — the roll left `dir`
-            // pointing at its home station while the throw aimed at the player,
-            // so the board hurled chalk over its own shoulder. Turning is now
-            // its own beat, and the throw reads the FACING, not the player.
-            e.state = e.dir !== (inp.playerX >= e.x ? 1 : -1) ? "turn" : "telegraph";
+        if (e.state === "sad") {
+          // R3-5 kept: the board reacts BEFORE the victory cell. What changed is
+          // the reaction — doc 44 §2.2 flexibilised the signature beat („the
+          // Tafel slumps exhausted"), so she rests rather than cries.
+          if (e.timer > SAD_TICKS) { e.state = "consoled"; e.timer = 0; }
+          break;
+        }
+        // `window` (the counter-task) and `consoled` are scene-driven states.
+        if (e.state === "window" || e.state === "consoled") break;
+
+        // THE DIP — three dodged throws over-reach her and she comes DOWN to
+        // the child to write (doc 44 §4 ch01 C4 + the boss-evidence law, doc 41
+        // §4). Coming down is not decoration: four chalked words have to be
+        // readable at 1×, and the card's asker has to be ON SCREEN or the
+        // speaker law parks the request against a boss who is no longer moving.
+        if (e.state === "dip") {
+          const side: 1 | -1 = e.x <= inp.playerX ? -1 : 1;
+          const tx = inp.playerX + side * DIP_STANDOFF_PX * SUBS;
+          const step = Math.round((tx - e.x) / 6);
+          e.vx = step;
+          e.x += step;
+          e.y += Math.round((DIP_Y_PX * SUBS - e.y) / 6);
+          e.dir = (inp.playerX >= e.x ? 1 : -1) as 1 | -1;
+          if (e.timer > DIP_TICKS) {
+            e.state = "stagger";
+            e.timer = 0;
+            e.vx = 0; // she has ARRIVED — a window that still carries travel
+            e.vy = 0; // would drift her out from under her own chalked words
+            eventsPushStagger(events, e.id);
+          }
+          break;
+        }
+        if (e.state === "stagger") {
+          // the FIST path (every chapter that grants one): a deflected piece
+          // reels her without the dip. She hangs there until her card opens;
+          // the timeout is the no-card fallback that keeps her from freezing.
+          e.vx = 0;
+          if (e.timer > script.staggerTicks) { e.state = "fly"; e.timer = 0; }
+          break;
+        }
+
+        // THE COUNTER-WINDOW OPENS — but only out of level flight. Interrupting
+        // a windup would drop a telegraph the child has already started reading
+        // and leave a throw that never comes; this is the „never mid-crossing"
+        // rule of PK-C3 carried over to an aerial boss.
+        if (e.dodges >= DODGES_PER_WINDOW && e.state === "fly") {
+          e.dodges = 0;
+          e.state = "dip";
+          e.timer = 0;
+          break;
+        }
+
+        // THE FLIGHT CENTRE follows the child — slowly, and clamped inside the
+        // stage. Mined in shape from the legacy `cloud` brain (drift toward the
+        // player's column, THEN telegraph, THEN fire): a tell thrown from off
+        // screen is not a tell.
+        const ki = knotIndex(e.hp, script.knots);
+        const span = KNOT_SPAN_PX[ki] ?? 78;
+        const worldWSubs = (grid[0]?.length ?? 0) * TILE * SUBS;
+        const loC = (FLIGHT_MARGIN_PX + span) * SUBS;
+        const hiC = Math.max(loC, worldWSubs - (FLIGHT_MARGIN_PX + span) * SUBS);
+        const wantC = Math.min(Math.max(inp.playerX, loC), hiC);
+        const dC = wantC - e.homeX;
+        e.homeX += Math.max(-CENTRE_MAX_STEP, Math.min(CENTRE_MAX_STEP, Math.trunc(dC / CENTRE_EASE_DIV)));
+
+        if (e.state === "fly") {
+          e.flightTick += 1;
+          const p = flightPointAt(e.homeX, e.homeY, e.hp, script.knots, e.flightTick);
+          e.vx = p.x - e.x; // the per-tick travel: what the bank cells depict
+          e.vy = p.y - e.y;
+          e.x = p.x;
+          e.y = p.y;
+          // she faces the way she flies, so a banked cell and its direction of
+          // travel can never disagree (R3-4's facing law, moved into the air)
+          if (Math.abs(e.vx) > SUBS / 4) e.dir = (e.vx > 0 ? 1 : -1) as 1 | -1;
+          if (e.timer > throwEveryFor(e.tier, e.hp, script.knots)) { e.state = "telegraph"; e.timer = 0; }
+        } else if (e.state === "telegraph") {
+          // THE TELL: she holds station and rears (windup0 → windup1 → windup).
+          // Holding is what makes the shape readable — a boss that keeps tracing
+          // its path while winding up gives the child two things to read at once.
+          e.vx = 0;
+          e.vy = 0;
+          e.dir = (inp.playerX >= e.x ? 1 : -1) as 1 | -1;
+          if (e.timer > telegraphTicksFor(e.tier, e.hp, script.knots)) {
+            // THE ARC (doc 44 §3.2: the cloud-bolt brain „generalized to thrown
+            // chalk"). The legacy bolt was a straight vertical line; chalk falls.
+            // So the throw SOLVES its own arc: with `vy += g` applied before the
+            // step, after n ticks y = y0 + n·vy0 + g·n(n+1)/2 — invert that for
+            // the child's feet at exactly CHALK_FLIGHT_TICKS and both axes fall
+            // out. Aimed at where they STAND, which is why moving is the answer.
+            const colour = CHALK_COLOURS[e.throws % CHALK_COLOURS.length] ?? "white";
+            e.throws += 1;
+            const x0 = e.x + 10 * SUBS * e.dir;
+            const y0 = e.y - 22 * SUBS;
+            const T = CHALK_FLIGHT_TICKS;
+            w.projectiles.push({
+              id: w.nextProjectileId++, kind: "chalk", x: x0, y: y0,
+              vx: Math.round((inp.playerX - x0) / T),
+              vy: Math.round((inp.playerY - y0 - (CHALK_GRAVITY * T * (T + 1)) / 2) / T),
+              deflected: false, fromId: e.id, dead: false, age: 0, colour,
+            });
+            e.state = "throw";
             e.timer = 0;
           }
-        } else if (e.state === "turn") {
-          // doc 40 §2: 18 t, and the flip lands at the MIDPOINT — never tick 1
-          if (e.timer === TURN_FLIP_AT) e.dir = (inp.playerX >= e.x ? 1 : -1) as 1 | -1;
-          if (e.timer > TURN_TICKS) { e.state = "telegraph"; e.timer = 0; }
-        } else if (e.state === "telegraph") {
-          if (e.timer > script.telegraphTicks) {
-            const dir = e.dir; // the SPAWN SIDE IS THE FACING (R3-4, unit-tested)
-            w.projectiles.push({
-              id: w.nextProjectileId++, kind: "chalk", x: e.x + 14 * SUBS * dir, y: e.y - 24 * SUBS,
-              vx: Math.round(2.5 * SUBS) * dir, vy: -3 * SUBS, deflected: false, fromId: e.id, dead: false, age: 0,
-            });
-            // …and then roll to the OTHER station (G4)
-            e.state = "roll"; e.timer = 0;
-            e.dir = e.x <= e.homeX ? 1 : -1;
-          }
-        } else if (e.state === "roll") {
-          const target = e.homeX + e.dir * script.rollRangeTiles * TILE * SUBS;
-          e.x += e.dir * script.rollSpeed;
-          const arrived = e.dir > 0 ? e.x >= target : e.x <= target;
-          if (arrived || e.timer > script.rollTicks) {
-            if (arrived) e.x = target;
-            e.state = "idle"; e.timer = 0;
-          }
-        } else if (e.state === "stagger") {
-          // a deflect stops the roll dead — the stagger is the counter-window
-          if (e.timer > script.staggerTicks) { e.state = "idle"; e.timer = 0; }
-        } else if (e.state === "sad") {
-          // R3-5 · doc 38's named cheap win: `tafel_sad` was painted and shown by
-          // nothing, because the last knot jumped straight to the victory cell.
-          // The board now CRIES first, and the console beat answers that.
-          if (e.timer > SAD_TICKS) { e.state = "consoled"; e.timer = 0; }
+        } else if (e.state === "throw") {
+          if (e.timer > THROW_TICKS) { e.state = "fly"; e.timer = 0; }
         }
-        // "window" (the counter-task) and "consoled" are scene-driven states.
         break;
       }
       default:
@@ -687,11 +912,37 @@ export const stepEntities = (
   }
 
   // ── projectiles ──
+  // PK-R6 · E: shards are BORN here (a landed piece leaves one), so they are
+  // collected and appended AFTER the sweep — a shard pushed into the array
+  // mid-`for…of` would be stepped on the tick it was created and lose a frame
+  // of its 1-second life to the throw that made it.
+  const born: ProjectileState[] = [];
   for (const p of w.projectiles) {
     if (p.dead) continue;
+    // ── PK-R6 · E · THE LINGERING SHARD (doc 44 §4 ch01 C4) ─────────────────
+    // „chalk shards linger 1 s as floor hazards". It does not move, it cannot be
+    // deflected, and it is NOT a dodge — the dodge was already paid for by the
+    // piece that made it. What it is, is a reason not to stand where the last
+    // throw landed, which is what turns dodging from a reflex into a place.
+    if (p.kind === "shard") {
+      p.age++;
+      if (p.age > SHARD_TICKS) {
+        p.dead = true;
+        events.push({ type: "puff", x: p.x, y: p.y, kind: "chalk" });
+      } else if (
+        inp.playerIframes === 0
+        && Math.abs(p.x - inp.playerX) / SUBS < SHARD_REACH_X_PX
+        && Math.abs(p.y - inp.playerY) / SUBS < SHARD_REACH_Y_PX
+      ) {
+        p.dead = true;
+        const src = w.entities.find((e) => e.id === p.fromId);
+        events.push({ type: "encounter", id: p.fromId, role: src?.role ?? "guardian", skin: src?.skin ?? "tafel" });
+      }
+      continue;
+    }
     p.age++;
     // chalk floats on a long readable arc (the deflect window); blobs drop fast
-    p.vy += Math.round(GRAVITY / (p.kind === "chalk" ? 4 : 2));
+    p.vy += p.kind === "chalk" ? CHALK_GRAVITY : Math.round(GRAVITY / 2);
     p.x += p.vx;
     p.y += p.vy;
     const g = groundAt(grid, p.x, p.y);
@@ -710,12 +961,17 @@ export const stepEntities = (
       // arena would be unwinnable the moment the fist moved to ch02.
       if (p.kind === "chalk") {
         // Counting only. WHEN the tally becomes a counter-window is the
-        // guardian's own decision, taken in its machine below — by the time a
-        // piece of chalk reaches the floor its thrower has already left the
-        // throw in a roll, so opening the window from here would only ever
-        // interrupt a crossing and strand her off-station.
+        // guardian's own decision, taken in its machine above — by the time a
+        // piece of chalk reaches the floor its thrower is already back on her
+        // path, so opening the window from here would only ever interrupt a
+        // telegraph the child had started reading.
         const src = w.entities.find((e) => e.id === p.fromId && e.role === "guardian" && !e.redeemed);
-        if (src && src.state !== "stagger" && src.state !== "window") src.dodges += 1;
+        if (src && src.state !== "stagger" && src.state !== "window" && src.state !== "dip") src.dodges += 1;
+        // …and it leaves its splinter on the boards (doc 44 §4 ch01 C4)
+        born.push({
+          id: w.nextProjectileId++, kind: "shard", x: p.x, y: g,
+          vx: 0, vy: 0, deflected: false, fromId: p.fromId, dead: false, age: 0, colour: p.colour,
+        });
       }
     }
     if (p.deflected && p.kind === "chalk" && p.age > CHALK_LIFE_TICKS) {
@@ -738,15 +994,20 @@ export const stepEntities = (
       if (g0 && Math.abs(p.x - g0.x) / SUBS < 30 && Math.abs(p.y - (g0.y - 20 * SUBS)) / SUBS < 40) {
         p.dead = true;
         events.push({ type: "puff", x: p.x, y: p.y, kind: "chalk" }); // it breaks ON the board
-        if (g0.state !== "stagger" && g0.state !== "window") {
+        // PK-R6 · E: `dip` joins the two states a deflect may not interrupt —
+        // she is already on her way down to open a window, and a second one
+        // opened on top of it would ask two cards for one over-reach.
+        if (g0.state !== "stagger" && g0.state !== "window" && g0.state !== "dip") {
           g0.state = "stagger";
           g0.timer = 0;
           eventsPushStagger(events, g0.id);
         }
       }
     }
-    // an undeflected projectile touching the player = encounter (no death)
-    if (!p.deflected && inp.playerIframes === 0 &&
+    // an undeflected projectile touching the player = encounter (no death).
+    // PK-R6 · E: …once it is ARMED. See CHALK_ARM_TICKS — a piece that can bite
+    // on the tick it is thrown makes its own telegraph a lie.
+    if (!p.deflected && inp.playerIframes === 0 && (p.kind !== "chalk" || p.age > CHALK_ARM_TICKS) &&
       Math.abs(p.x - inp.playerX) / SUBS < 10 && Math.abs(p.y - (inp.playerY - 15 * SUBS)) / SUBS < 16) {
       p.dead = true;
       const src = w.entities.find((e) => e.id === p.fromId);
@@ -754,6 +1015,7 @@ export const stepEntities = (
     }
   }
   w.projectiles = w.projectiles.filter((p) => !p.dead);
+  for (const s of born) w.projectiles.push(s);
 
   return events;
 };
@@ -768,12 +1030,22 @@ export const guardianKnotSolved = (w: EntityWorld, id: string): EntityEvent[] =>
   g.hp -= 1;
   w.guardianKnots = g.hp;
   if (g.hp <= 0) {
-    g.state = "sad"; // R3-5: the crying beat comes BEFORE the victory cell
+    // PK-R6 · E · THE CONSOLATION (doc 44 §4 ch01 C4: „she sinks to the ground,
+    // exhausted"). R3-5's law is untouched — a reaction still comes BEFORE the
+    // victory cell — but the reaction is now the landing: `sink` settles her out
+    // of the air onto the boards, `sad` is her resting there, and only then does
+    // the console beat's `consoled` brighten her. She has already dipped low for
+    // the window, so this is a short last fall, not a plummet.
+    g.state = "sink";
     g.timer = 0;
     return [{ type: "guardianDown", id }];
   }
-  g.state = "idle";
+  // …and back into the air, on the NEXT knot's path from its own phase 0, so a
+  // new shape starts cleanly instead of halfway through itself.
+  g.state = "fly";
   g.timer = 0;
+  g.flightTick = 0;
+  g.dodges = 0;
   return [{ type: "guardianKnot", id, knotsLeft: g.hp }];
 };
 
