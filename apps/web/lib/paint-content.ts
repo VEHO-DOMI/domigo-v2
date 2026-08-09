@@ -53,6 +53,13 @@ const PaintEntity = z.object({
     "platform.move", "platform.fall", "platform.swing",
     "cage", "powerup", "door.trigger", "guardian",
     "tip", "book", // PK-R3b · R3-16: the two static-state collectibles
+    // PK-R6 · C: `drained` — the grey classroom object stage B spread across
+    // the field. It was added to game-paint's own level contract but not to
+    // THIS one, and the two are separate copies: the level parsed by the engine
+    // and failed at the door, so /play/1/buch answered 500 on the shipped
+    // chapter. (Filed: the two copies should become one — the loader ought to
+    // import the role list rather than restate it.)
+    "drained",
   ]),
   skin: z.string().min(1),
   c: z.number().int().nonnegative(),
@@ -93,6 +100,11 @@ const PaintLevelFile = z.object({
   chapter: z.string().regex(CHAPTER_ID),
   draft: z.boolean().optional(),
   name: z.string().min(1),
+  /** PK-R6 · C (doc 44 §2.6): the objective screen's painted title plate. It
+   *  must be listed HERE too — this schema strips what it does not name, so an
+   *  unlisted field would reach the client as `undefined` and the goal card
+   *  would silently fall back to its plain page with nothing to show for it. */
+  goalPlate: z.string().min(1).optional(),
   goalDe: z.string().min(1),
   whyDe: z.string().min(1),
   hintsDe: z.array(z.string().min(1)),

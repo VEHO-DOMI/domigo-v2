@@ -45,6 +45,10 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
   for (const f of fs.readdirSync(paintDir).filter((x) => x.endsWith(".level.json"))) {
     const level = JSON.parse(fs.readFileSync(path.join(paintDir, f), "utf8"));
     if (level.draft === true) continue;
+    // PK-R6 · C: the objective screen's painted title plate (doc 44 §2.6). It
+    // is named in the level rather than derived, so it is required exactly like
+    // a phase plate — a chapter may not promise a plate the disk does not hold.
+    if (level.goalPlate !== undefined) need(String(level.goalPlate), `${f} goalPlate`);
     const phases = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
     for (const ph of phases) {
       const glyphs = new Set(ph.rows.join(""));

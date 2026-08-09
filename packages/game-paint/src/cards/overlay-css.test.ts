@@ -8,7 +8,11 @@
 // other — every animated class is killed, and nothing is killed that is not
 // animated (a stale entry is how a kill list quietly stops meaning anything).
 import { describe, expect, it } from "vitest";
-import { CARD_ENTER_DELAY_MS, PAINT_OVERLAY_CSS, QUICKFIRE_MS } from "./overlay-css.ts";
+import {
+  CARD_ENTER_DELAY_MS, CARD_ENTER_MS, IRIS_B_DELAY_MS, IRIS_B_MS, IRIS_MS,
+  PAINT_OVERLAY_CSS, QUICKFIRE_MS,
+} from "./overlay-css.ts";
+import { LETTER_FLY_MS } from "./resolution.ts";
 
 /** Every `.pb-…` class whose rule declares an `animation:` shorthand. */
 const animatedClasses = (css: string): Set<string> => {
@@ -78,5 +82,42 @@ describe("the end-states law (doc 42 §1)", () => {
     // a ring that empties before (or after) the card closes is a countdown to
     // nothing — the exact class of lie the door-price law was written for
     expect(baseRule(PAINT_OVERLAY_CSS, "pb-ring")).toContain(`--pb-ring-s, ${QUICKFIRE_MS / 1000}s`);
+  });
+
+  // ── PK-R6 · C · THE MINED TIMINGS, LOCKED (doc 44 §3.1.1, doc 42's law) ────
+  // „Timings from the mined builds are used verbatim" is a claim, and a claim
+  // with no check is how PK-R3a's iris quietly became 640 ms and its card 240 ms
+  // with nobody able to say when. These assert the v0 numbers against the
+  // stylesheet that ships, so the next re-tune has to be deliberate.
+  it("the ink iris runs the v0 dg-bs-swirl's 700 ms", () => {
+    expect(IRIS_MS).toBe(700);
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-wipe")).toMatch(/animation:\s*pb-wipe 700ms cubic-bezier\(0\.6, 0, 0\.4, 1\)/);
+  });
+
+  it("the SECOND blob is 60 ms behind it over 640 ms (v0 dg-bs-swirl-blob-b)", () => {
+    expect([IRIS_B_DELAY_MS, IRIS_B_MS]).toEqual([60, 640]);
+    const b = baseRule(PAINT_OVERLAY_CSS, "pb-wipe-b");
+    expect(b).toContain("animation-delay: 60ms");
+    expect(b).toContain("animation-duration: 640ms");
+    // it must NOT declare its own animation shorthand: it rides .pb-wipe's, and
+    // that is what keeps one kill-list entry covering both blobs
+    expect(b).not.toMatch(/(^|\s|;)animation:/);
+  });
+
+  it("the card lands 260 ms late over 420 ms (v0 dg-bs-card-in)", () => {
+    expect([CARD_ENTER_DELAY_MS, CARD_ENTER_MS]).toEqual([260, 420]);
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-card")).toMatch(/animation:\s*pb-card-in 420ms 260ms/);
+  });
+
+  it("a letter's flight is the v0 dg-bs-letter-fly's 460 ms", () => {
+    expect(LETTER_FLY_MS).toBe(460);
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-letter")).toMatch(/animation:\s*pb-letter-fly 460ms/);
+  });
+
+  it("the doff's BASE state is out of the way, so a still world is watchable", () => {
+    // the restore-hold's whole job is to let the world's change be SEEN; with
+    // animations killed the card must already be gone, not sitting at full
+    // opacity over the change it was supposed to reveal
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-doff")).toMatch(/opacity:\s*0/);
   });
 });

@@ -21,14 +21,34 @@
 //   9. DISTRIBUTION MAP (doc 41 §1, R3-13) — a chapter's FIELD may only serve
 //      the kinds its palette allows, so ch01 stays a tutorial; and the
 //      non-repetition floor is what the phase actually spawns, not a flat 2.
+//  11. PORTRAIT LAW (doc 44 §3.1.5, PK-R6 · C) — a card whose asker has been
+//      PAINTED must declare which of its cells is talking; the declared stem
+//      must exist and must belong to that being.
+//  12. TIMER POLICY (doc 44 §2.9, PK-R6 · C) — the content may not contradict
+//      the chalk clock's own map (game-paint/src/cards/timer.ts, imported).
 // The grounding/register helpers mirror scripts/check-story-grounding.mjs
 // (same lexicon, same law) — kept compact and local on purpose.
 import fs from "node:fs";
 import path from "node:path";
 import { GameTasksFileV2, MAX_LINE_DE, registerErrorsDe } from "../packages/content-schema/src/game-tasks.ts";
+import { CALM_DE, TIMED_USES, URGENCY_DE, spokenDeOf, timerClassFor } from "../packages/game-paint/src/cards/timer.ts";
 
 const STORIES = "content/corpus/stories";
 const lex = JSON.parse(fs.readFileSync("docs/design/g1/grounding/u01-lexicon.json", "utf8"));
+
+// ── the painted stems that exist on disk (mirrors check-paint-art's walk) ────
+// Layer 11 needs to know what has been COMMISSIONED, which is a fact about the
+// art tree, not about the content — so it is read from the tree.
+const PAINT_ART_ROOT = "apps/web/public/art/g1/paint";
+const paintedStems = new Set();
+const walkArt = (dir) => {
+  if (!fs.existsSync(dir)) return;
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (e.isDirectory()) walkArt(path.join(dir, e.name));
+    else if (e.name.endsWith(".png")) paintedStems.add(e.name.replace(/\.png$/, ""));
+  }
+};
+walkArt(PAINT_ART_ROOT);
 
 let failures = 0;
 const fail = (where, msg) => { failures += 1; console.error(`✗ ${where}: ${msg}`); };
@@ -283,6 +303,79 @@ function checkAgainstLevel(file, level, items) {
   }
 }
 
+// ── 11 · THE PORTRAIT LAW (doc 44 §3.1.5, PK-R6 · C) ─────────────────────────
+// „A card whose asker has a commissioned portrait must declare it — no silent
+// text fallbacks where art exists." The fallback is a real and permanent
+// feature (art lands batch by batch, and a card must render before its being is
+// painted), which is exactly why it needs a gate: a fallback that is allowed to
+// stand in for LANDED art is how a chapter ships text placeholders over 66
+// painted stems and nobody notices. So the law is conditional on the disk:
+// the moment `<skin>_a` exists, the card owes a declaration.
+//
+// Three failures, all of them a wrong FACE rather than a missing one:
+//   a · art exists for the asker and the card declares none  → silent fallback
+//   b · the declared stem is not on disk                     → a broken portrait
+//   c · the declared stem is not a cell of any declared skin → someone else's face
+function checkPortraits(file, items) {
+  const w = path.basename(file);
+  for (const t of items) {
+    if (t.stimulus?.type !== "entity") continue; // no asker, no portrait
+    const skins = t.skins ?? [];
+    const painted = skins.filter((s) => paintedStems.has(`${s}_a`));
+    const stem = t.stimulus.art;
+    if (stem === undefined) {
+      if (painted.length > 0) {
+        fail(`${w}:${t.id}`, `portrait: [${painted.join(", ")}] is painted (${painted[0]}_a exists) but this card declares no stimulus.art — it would render the text placeholder over commissioned art (doc 44 §3.1.5)`);
+      }
+      continue;
+    }
+    if (!paintedStems.has(stem)) {
+      fail(`${w}:${t.id}`, `portrait: declares art "${stem}", which is not painted — the card would fall back silently to text`);
+      continue;
+    }
+    if (!skins.some((s) => stem === s || stem.startsWith(`${s}_`))) {
+      fail(`${w}:${t.id}`, `portrait: art "${stem}" is not a cell of [${skins.join(", ")}] — the card would wear another being's face`);
+    }
+    // one card, one face: a card bound to two painted beings can only be right
+    // about one of them, and the portrait would lie to whichever one asked
+    if (painted.length > 1) {
+      fail(`${w}:${t.id}`, `portrait: bound to ${painted.length} painted beings [${painted.join(", ")}] but a card wears ONE face — bind it to the being it shows`);
+    }
+  }
+}
+
+// ── 12 · THE TIMER POLICY (doc 44 §2.9, Decision ④, PK-R6 · C) ───────────────
+// The chalk clock survives only where urgency is the fiction. The map itself
+// lives in game-paint/src/cards/timer.ts and is IMPORTED here, not restated, so
+// the gate and the runtime can never drift apart — the whole reason the policy
+// became a module. This layer checks the content against it:
+//   a · a calm KIND authored into a timed pool. A restore card is calm by law,
+//       so a quickfire restore is a card whose pool says „hurry" and whose
+//       machine says „take your time" — one of the two is lying to the child.
+//   b · German that PROMISES a clock on a card that will never have one — the
+//       countdown-to-nothing lie, pointed the other way (a child told to hurry
+//       with no ring on screen has been told something untrue).
+//   c · German that promises calm on a card that IS timed.
+function checkTimerPolicy(file, items) {
+  const w = path.basename(file);
+  for (const t of items) {
+    const cls = timerClassFor(t.use, t.kind);
+    if (cls === "calm" && TIMED_USES.has(t.use)) {
+      fail(`${w}:${t.id}`, `timer-policy: kind "${t.kind}" is a calm class (doc 44 §2.9) but the card is authored into the timed pool "${t.use}" — the pool would tell the child to hurry through a card that is never clocked`);
+    }
+    for (const de of spokenDeOf(t)) {
+      const urgent = URGENCY_DE.exec(de);
+      if (urgent && cls === "calm") {
+        fail(`${w}:${t.id}`, `timer-policy: says „${urgent[0]}" but this card carries no clock (${t.use}/${t.kind} is calm, doc 44 §2.9) — hurry with nothing to hurry against`);
+      }
+      const calm = CALM_DE.exec(de);
+      if (calm && cls === "timed") {
+        fail(`${w}:${t.id}`, `timer-policy: says „${calm[0]}" on a card the chalk clock runs out on (${t.use}/${t.kind} is timed) — the line and the ring contradict each other`);
+      }
+    }
+  }
+}
+
 /** 7 · NO TWO CARDS ARE THE SAME ITEM (PB-F1, from the blind-solve round). A
  *  child who meets the same three options or builds the same sentence twice is
  *  practising recall of the card, not of the language — and it reads as a bug.
@@ -337,7 +430,9 @@ for (const file of files) {
   }
   checkAgainstLevel(file, JSON.parse(fs.readFileSync(levelFile, "utf8")), parsed.data.items);
   checkNoTwins(file, parsed.data.items);
+  checkPortraits(file, parsed.data.items);
+  checkTimerPolicy(file, parsed.data.items);
 }
 
-if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins all green`);
+if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy all green`);
 else { console.error(`check-game-tasks: ${failures} failure(s)`); process.exit(1); }

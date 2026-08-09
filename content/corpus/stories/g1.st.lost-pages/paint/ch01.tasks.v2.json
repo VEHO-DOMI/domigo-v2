@@ -10,7 +10,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein grauer Bleistift stellt sich dir in den Weg"
+    "showsDe": "Ein grauer Bleistift stellt sich dir in den Weg",
+    "art": "pencil_a"
    },
    "storyDe": "Sag, was er ist — dann macht er Platz!",
    "promptEn": "What is it?",
@@ -38,7 +39,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Bleistift fuchtelt mit seiner Spitze"
+    "showsDe": "Der Bleistift fuchtelt mit seiner Spitze",
+    "art": "pencil_act"
    },
    "storyDe": "Was kann er? Sag es ihm!",
    "promptEn": "What can it do?",
@@ -66,7 +68,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Bleistift hält dir vier Wörter hin"
+    "showsDe": "Der Bleistift hält dir vier Wörter hin",
+    "art": "pencil_b"
    },
    "storyDe": "Drei Sachen liegen im Klassenzimmer. Welche nicht?",
    "select": "odd",
@@ -96,7 +99,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein blasser Radiergummi hüpft dir in den Weg"
+    "showsDe": "Ein blasser Radiergummi hüpft dir in den Weg",
+    "art": "eraser_squash"
    },
    "storyDe": "Sag, was er ist — dann hüpft er beiseite!",
    "promptEn": "What is it?",
@@ -125,7 +129,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Radiergummi ist ganz grau geworden"
+    "showsDe": "Der Radiergummi ist ganz grau geworden",
+    "art": "eraser_a"
    },
    "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
    "nameOptions": [
@@ -161,7 +166,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Radiergummi legt vier Sachen aus"
+    "showsDe": "Der Radiergummi legt vier Sachen aus",
+    "art": "eraser_act"
    },
    "storyDe": "Drei Sachen sind IN der Federtasche. Welche nicht?",
    "select": "odd",
@@ -192,7 +198,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Füller mit feiner Spitze verbeugt sich"
+    "showsDe": "Ein Füller mit feiner Spitze verbeugt sich",
+    "art": "pen_act"
    },
    "storyDe": "Sag ihm freundlich, was er ist!",
    "promptEn": "What is it?",
@@ -220,7 +227,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Füller steht grau da, die Spitze blass"
+    "showsDe": "Der Füller steht grau da, die Spitze blass",
+    "art": "pen_a"
    },
    "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
    "nameOptions": [
@@ -255,7 +263,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Füller tropft vier Wörter auf das Blatt"
+    "showsDe": "Der Füller tropft vier Wörter auf das Blatt",
+    "art": "pen_b"
    },
    "storyDe": "Drei Sachen sind aus Papier. Welche nicht?",
    "select": "odd",
@@ -285,7 +294,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Farbkasten klappert wütend mit dem Deckel"
+    "showsDe": "Ein Farbkasten klappert wütend mit dem Deckel",
+    "art": "paintbox_telegraph"
    },
    "storyDe": "Begrüße ihn — dann hört er auf zu spritzen!",
    "promptEn": "What do you say?",
@@ -312,7 +322,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Farbkasten klappt seine Näpfchen auf"
+    "showsDe": "Der Farbkasten klappt seine Näpfchen auf",
+    "art": "paintbox_act"
    },
    "storyDe": "Sag, wie die Farben zum Malen heißen!",
    "promptEn": "What is it?",
@@ -340,7 +351,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Farbkasten hat vier Wörter auf den Deckel gemalt"
+    "showsDe": "Der Farbkasten hat vier Wörter auf den Deckel gemalt",
+    "art": "paintbox_a"
    },
    "storyDe": "Was gehört NICHT zum Malen?",
    "select": "odd",
@@ -370,7 +382,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Eine schwere Schultasche stampft auf dich zu"
+    "showsDe": "Eine schwere Schultasche stampft auf dich zu",
+    "art": "ranzen_stomp"
    },
    "storyDe": "Sag ihr, sie soll sich SETZEN!",
    "promptEn": "What do you say?",
@@ -397,7 +410,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Schultasche hat alles falsch einsortiert"
+    "showsDe": "Die Schultasche hat alles falsch einsortiert",
+    "art": "ranzen_a"
    },
    "storyDe": "Was gehört NICHT in die Federtasche?",
    "select": "odd",
@@ -427,7 +441,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Schultasche wirft ihre Karten durcheinander"
+    "showsDe": "Die Schultasche wirft ihre Karten durcheinander",
+    "art": "ranzen_act"
    },
    "storyDe": "Welches Wort ist KEINE Zahl?",
    "select": "odd",
@@ -457,7 +472,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Heft flattert mit offenen Seiten heran"
+    "showsDe": "Ein Heft flattert mit offenen Seiten heran",
+    "art": "heft_act"
    },
    "storyDe": "Zum Rechnen und Schreiben — was ist das?",
    "promptEn": "What is it?",
@@ -485,7 +501,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Das Heft flattert grau und blass vorbei"
+    "showsDe": "Das Heft flattert grau und blass vorbei",
+    "art": "heft_a"
    },
    "storyDe": "Sag, wer es ist — dann gib ihm die Farbe!",
    "nameOptions": [
@@ -520,7 +537,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Das Heft schlägt eine Seite mit vier Wörtern auf"
+    "showsDe": "Das Heft schlägt eine Seite mit vier Wörtern auf",
+    "art": "heft_b"
    },
    "storyDe": "Was gehört NICHT in die Schultasche?",
    "select": "odd",
@@ -550,7 +568,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel wirft mit Kreide nach dir"
+    "showsDe": "Die Tafel wirft mit Kreide nach dir",
+    "art": "tafel_throw"
    },
    "storyDe": "Sag, was sie ist — dann hält sie inne!",
    "promptEn": "What is it?",
@@ -578,7 +597,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel rollt heran und wartet auf dein Wort"
+    "showsDe": "Die Tafel rollt heran und wartet auf dein Wort",
+    "art": "tafel_roll"
    },
    "storyDe": "Niemand redet mit ihr. Begrüße sie freundlich!",
    "promptEn": "What do you say?",
@@ -606,7 +626,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel kritzelt vier Wörter auf sich selbst"
+    "showsDe": "Die Tafel kritzelt vier Wörter auf sich selbst",
+    "art": "tafel_a"
    },
    "storyDe": "Was gehört NICHT ins Klassenzimmer?",
    "select": "odd",
@@ -636,7 +657,8 @@
    "kind": "wheel",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Zahlen-Falter surrt dir um die Nase"
+    "showsDe": "Ein Zahlen-Falter surrt dir um die Nase",
+    "art": "moths_a"
    },
    "storyDe": "Dreh das Rad auf seine Zahl!",
    "variant": "digit-to-word",
@@ -687,7 +709,8 @@
    "kind": "wheel",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Falter setzt sich kurz auf deine Schulter"
+    "showsDe": "Der Falter setzt sich kurz auf deine Schulter",
+    "art": "moths_rest"
    },
    "storyDe": "Dreh das Rad auf seine Zahl!",
    "variant": "digit-to-word",
@@ -738,7 +761,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Falter zeigt dir seine Punkte: • • •"
+    "showsDe": "Der Falter zeigt dir seine Punkte: • • •",
+    "art": "moths_b"
    },
    "storyDe": "Zähl sie — wie viele sind es?",
    "promptEn": "How many?",
@@ -981,7 +1005,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür klemmt fest und wackelt"
+    "showsDe": "Die Tür klemmt fest und wackelt",
+    "art": "door_a"
    },
    "storyDe": "Sag ihr, sie soll AUFGEHEN!",
    "options": [
@@ -1004,7 +1029,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür ist zu — du klopfst an"
+    "showsDe": "Die Tür ist zu — du klopfst an",
+    "art": "door_a"
    },
    "storyDe": "Was ruft die Lehrerin dann?",
    "promptEn": "What do you say?",
@@ -1028,7 +1054,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Vor dir steht etwas Hohes aus Holz mit einem Griff"
+    "showsDe": "Vor dir steht etwas Hohes aus Holz mit einem Griff",
+    "art": "door_a"
    },
    "storyDe": "Sag, wovor du gerade stehst!",
    "promptEn": "What is it?",
@@ -1053,7 +1080,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der goldene Knauf geht nicht auf"
+    "showsDe": "Der goldene Knauf geht nicht auf",
+    "art": "door_a"
    },
    "storyDe": "Sag das Zauberwort!",
    "options": [
@@ -1076,7 +1104,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür wartet auf das Wort der Lehrerin"
+    "showsDe": "Die Tür wartet auf das Wort der Lehrerin",
+    "art": "door_a"
    },
    "storyDe": "Alle sollen gut ZUHÖREN. Sag es ihnen!",
    "promptEn": "What do you say?",
@@ -1101,7 +1130,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Auf dem Zettel an der Tür ist etwas gemalt"
+    "showsDe": "Auf dem Zettel an der Tür ist etwas gemalt",
+    "art": "door_a"
    },
    "storyDe": "Alle sollen HINSCHAUEN. Welches Kommando?",
    "promptEn": "What do you say?",
@@ -1125,7 +1155,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür steht offen, es zieht eiskalt herein"
+    "showsDe": "Die Tür steht offen, es zieht eiskalt herein",
+    "art": "door_open"
    },
    "storyDe": "Sag ihr, sie soll ZUGEHEN!",
    "options": [
@@ -1148,7 +1179,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "In der Federtasche blinzelt jemand durchs Gitter"
+    "showsDe": "In der Federtasche blinzelt jemand durchs Gitter",
+    "art": "pencilcase_shake"
    },
    "storyDe": "Sag, was das ist — dann geht der Zipp auf!",
    "promptEn": "What is it?",
@@ -1173,7 +1205,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Zipp ist auf — die Federtasche ist grau"
+    "showsDe": "Der Zipp ist auf — die Federtasche ist grau",
+    "art": "pencilcase_burst"
    },
    "storyDe": "Sag, wer sie ist — dann gib ihr die Farbe!",
    "nameOptions": [
@@ -1205,7 +1238,8 @@
    "kind": "mistake",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel schreibt einen Satz über sich selbst"
+    "showsDe": "Die Tafel schreibt einen Satz über sich selbst",
+    "art": "tafel_a"
    },
    "storyDe": "Ein Wort stimmt nicht — tipp es an!",
    "sentence": [
@@ -1245,7 +1279,8 @@
    "kind": "order",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel kritzelt ihre Wörter wild durcheinander"
+    "showsDe": "Die Tafel kritzelt ihre Wörter wild durcheinander",
+    "art": "tafel_telegraph"
    },
    "storyDe": "Bring ihre Wörter in die richtige Reihenfolge!",
    "orderedChips": [
@@ -1280,7 +1315,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel kritzelt vier Wörter auf sich"
+    "showsDe": "Die Tafel kritzelt vier Wörter auf sich",
+    "art": "tafel_b"
    },
    "storyDe": "Welches Wort ist KEINE Farbe?",
    "select": "odd",
@@ -1316,7 +1352,8 @@
    "kind": "order",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel kritzelt ihre Frage durcheinander"
+    "showsDe": "Die Tafel kritzelt ihre Frage durcheinander",
+    "art": "tafel_c"
    },
    "storyDe": "Bring ihre Frage in die richtige Reihenfolge!",
    "orderedChips": [
@@ -1349,7 +1386,8 @@
    "kind": "memory",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel schreibt vier Zahlen auf sich"
+    "showsDe": "Die Tafel schreibt vier Zahlen auf sich",
+    "art": "tafel_d"
    },
    "storyDe": "Finde zu jeder Zahl das englische Wort!",
    "pairs": [
@@ -1393,7 +1431,8 @@
    "kind": "typed",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel weint Kreide-Tränen und schaut dich an"
+    "showsDe": "Die Tafel weint Kreide-Tränen und schaut dich an",
+    "art": "tafel_sad"
    },
    "storyDe": "Schreib ihr ein liebes Wort: Hallo auf Englisch!",
    "answer": "hello",
@@ -1420,7 +1459,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Eine Schultasche steht grau in der Halle"
+    "showsDe": "Eine Schultasche steht grau in der Halle",
+    "art": "obj_schoolbag_a"
    },
    "storyDe": "Sag, wer sie ist — dann gib ihr die Farbe!",
    "nameOptions": [
@@ -1455,7 +1495,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein dickes Buch lehnt blass an der Wand"
+    "showsDe": "Ein dickes Buch lehnt blass an der Wand",
+    "art": "obj_book_a"
    },
    "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
    "nameOptions": [
@@ -1490,7 +1531,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Tisch steht grau im dunklen Klassenzimmer"
+    "showsDe": "Ein Tisch steht grau im dunklen Klassenzimmer",
+    "art": "obj_desk_a"
    },
    "storyDe": "Sag, was er ist — dann gib ihm die Farbe!",
    "nameOptions": [
@@ -1525,7 +1567,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein langer Stift liegt grau auf dem Boden"
+    "showsDe": "Ein langer Stift liegt grau auf dem Boden",
+    "art": "obj_pencil_a"
    },
    "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
    "nameOptions": [
@@ -1560,7 +1603,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein kleiner Stift steht grau im Gras"
+    "showsDe": "Ein kleiner Stift steht grau im Gras",
+    "art": "obj_gluestick_a"
    },
    "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
    "nameOptions": [
@@ -1595,7 +1639,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein kleiner Kasten liegt grau im Hof"
+    "showsDe": "Ein kleiner Kasten liegt grau im Hof",
+    "art": "obj_sharpener_a"
    },
    "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
    "nameOptions": [

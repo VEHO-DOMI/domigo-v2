@@ -3,8 +3,9 @@
  "id": "g1.paint.ch01",
  "chapter": "ch01",
  "name": "Zeit für die Schule — Das bemalte Schulhaus",
- "goalDe": "Sammle die verstreuten Buchstaben und sag den Schulsachen die freundlichen Wörter — dann findet die Klasse den Weg.",
- "whyDe": "Jeder Buchstabe, den du rettest, macht die Tafel wieder heller.",
+ "goalPlate": "plate_ch01_goal",
+ "goalDe": "OSWINs Tinte hat dem Schulhaus die Farben genommen: Die Dinge stehen grau herum und die Schulsachen sind bockig — sag jedem, wer es ist, dann kommt seine Farbe zurück.",
+ "whyDe": "Was du auf Englisch benennen kannst, kann das Buch wieder malen.",
  "hintsDe": [
   "Springen: SPACE — halten für höher!",
   "Etwas steht grau da? Stell dich davor und drück ↑!",

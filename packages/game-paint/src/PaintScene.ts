@@ -43,6 +43,10 @@ import {
  *  re-exported so PaintGame's import path stays stable. */
 export { type TaskRequest } from "./sim.ts";
 
+/** PK-R6 · C · how many particles the contact burst throws (doc 44 §3.1.1 —
+ *  the v0 build's `this.burst?.explode(22, node.x, node.y)`, verbatim). */
+export const SPARK_COUNT = 22;
+
 export interface PaintCallbacks {
   onExit: (next: string) => void;
   onLetters: (got: number, total: number) => void;
@@ -614,6 +618,56 @@ export class PaintScene extends Phaser.Scene {
       targets: img, y: img.y - 26, alpha: 0, ease: "Back.easeIn", duration: 320,
       onComplete: () => img.destroy(),
     });
+  }
+
+  /** PK-R6 · C · THE CONTACT SPARK (doc 44 §3.1.1, v0 `tryEncounter`) — the
+   *  first beat of the entry choreography: the being BURSTS at the touch point,
+   *  and the ink iris wipes over that burst a moment later. 22 particles, and
+   *  their lifespans (260–520 ms) are the v0 emitter's verbatim; the SPEEDS are
+   *  the same emitter's 60–220 px/s re-expressed in this world's units, because
+   *  a paint tile is 16 px against the mined build's 48 and a verbatim velocity
+   *  would fling the burst three screens wide. Re-skinned per the mining law:
+   *  ink flecks off the page rather than Keen's warm sparks.
+   *
+   *  Code-drawn circles, zero image assets (B14) — and deterministic (repo law:
+   *  no Math.random anywhere in the game): angle and speed come from the
+   *  particle's own index, so the burst is identical in a harness replay. */
+  contactSpark(id: string): void {
+    if (this.cfg.reducedMotion) return; // the world simply freezes; nothing flies
+    const e = this.world?.entities.find((x) => x.id === id);
+    if (!e) return;
+    const xPx = fromSubs(e.x);
+    const yPx = fromSubs(e.y);
+    const SCALE = TILE / 48; // this world's px per the mined world's px
+    for (let i = 0; i < SPARK_COUNT; i++) {
+      const ang = (i / SPARK_COUNT) * Math.PI * 2 + (i % 3) * 0.21; // 360°, un-banded
+      const speed = (60 + (i % 5) * 40) * SCALE; // v0 60…220 px/s, in paint px
+      const life = 260 + (i % 6) * 52; // v0 lifespan 260…520 ms, verbatim
+      const colour = i % 2 === 0 ? 0x3a2f1c : 0xf6f2e8; // ink fleck · chalk mote
+      const g = this.add.circle(xPx, yPx, 1.3 + (i % 3) * 0.4, colour, 0.95).setDepth(9);
+      const dist = (speed * life) / 1000;
+      this.tweens.add({
+        targets: g,
+        x: xPx + Math.cos(ang) * dist,
+        // gravityY 70 px/s² (v0), in paint px over this particle's own lifetime
+        y: yPx + Math.sin(ang) * dist + 0.5 * 70 * SCALE * (life / 1000) ** 2,
+        alpha: 0,
+        scale: 0,
+        duration: life,
+        ease: "Quad.easeOut",
+        onComplete: () => g.destroy(),
+      });
+    }
+  }
+
+  /** PK-R6 · C · how grey this being renders RIGHT NOW (anim.washAlphaFor). The
+   *  card's portrait asks, so the painted face inside the card can be exactly as
+   *  drained as the being standing in the world — a full-colour portrait over a
+   *  grey desk would be the desaturation law's own defect in pixels, and on a
+   *  restore card it would hand the child step 2's answer for free. */
+  washOf(id: string): number {
+    const e = this.world?.entities.find((x) => x.id === id);
+    return e ? washAlphaFor(e, this.cfg.reducedMotion) : 0;
   }
 
   /** R3-4/R3-6 · a puff of chalk dust at an impact. Pure decoration with a

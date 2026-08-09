@@ -120,6 +120,15 @@ export interface PaintLevel {
   whyDe: string;
   hintsDe: string[];
   collectNounDe: string;
+  /** PK-R6 · C · THE OBJECTIVE SCREEN'S TITLE PLATE (doc 44 §2.6 / §3.4). The
+   *  painted stem the goal card wears as its header — the chapter's own picture,
+   *  with the chapter name set into the plate's lower band. DECLARED in the
+   *  level rather than derived from the chapter id, because the plate is a
+   *  commissioned piece with a name of its own; scripts/check-paint-art.mjs
+   *  requires whatever is named here, so a level cannot promise a plate the
+   *  disk does not hold. Optional: a chapter without one falls back to the
+   *  plain painted page the goal card has always been. */
+  goalPlate?: string;
   /** PK-R3b · R3-16 (doc 41 §5): how many Regel-Seiten this chapter hides — one
    *  per grammar topic of its unit. DECLARED here and PLACED in the phases, and
    *  the `tip-honesty` law proves the two agree; the HUD and the score page then
