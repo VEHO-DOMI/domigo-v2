@@ -466,6 +466,118 @@ export const PAINT_OVERLAY_CSS = `
   animation: pb-spark-out 640ms cubic-bezier(0.18, 0.7, 0.3, 1) forwards;
 }
 
+/* ── PK-R6 · H1 · THE CEREMONY SURFACES (round-1 critique, the ceremonies set)
+   Five findings, one root: the goal card, the score page and the door out are
+   the three moments the chapter STOPS for, and all three were dressed as web
+   modals over a painting. What follows is their paint. The task card is not
+   touched — it has its own packet and its own critic. ────────────────────── */
+
+/* THE SCRIM (finding 7: „hooks, towels, idle character and props remain sharp
+   and high-contrast behind the modal"). The task card's veil deliberately keeps
+   the world bright where the BEING is, because the card is talking about that
+   being. A ceremony talks to the CHILD: there is nothing behind it to look at,
+   and doc 44 §3.1.2's own words are „radial veil to near-black, world faintly
+   visible". At 0.06 alpha in the middle the world was neither. So a ceremony
+   wears a deeper wash and pushes the world out of focus behind it — the blur is
+   what turns a busy classroom wall into a backdrop, and where a browser has no
+   backdrop-filter the wash alone still does the job. */
+.pb-veil.pb-veil-deep {
+  background:
+    radial-gradient(125% 95% at 50% 46%, rgba(26,19,9,0.5), rgba(20,15,7,0.85)) !important;
+  backdrop-filter: blur(3px) saturate(0.82);
+  -webkit-backdrop-filter: blur(3px) saturate(0.82);
+}
+
+/* THE ACTION HIERARCHY (finding 8: „every ceremony button uses identical
+   styling regardless of action weight"). „Los geht's!" starts the chapter and
+   „← Zurück" leaves it, and they were the same white pill. The primary action
+   is now the warm one — amber paper, a deeper lip, the ink edge a shade
+   stronger — and the way out is the quiet one. Both keep the painted chip
+   underneath (they are the same object, differently lit), so this is a
+   hierarchy inside the book's materials rather than two unrelated buttons. */
+.pb-card button.pb-btn-primary, .pb-card a.pb-btn-primary {
+  background-color: #f0c473;
+  background-image:
+    radial-gradient(120% 100% at 26% 0%, rgba(255,248,224,0.92), rgba(255,248,224,0) 66%),
+    radial-gradient(80% 70% at 86% 100%, rgba(150,104,38,0.3), rgba(150,104,38,0) 72%),
+    repeating-linear-gradient(97deg, rgba(122,86,34,0.05) 0 1px, rgba(122,86,34,0) 1px 17px);
+  border-color: #9a6a28;
+  color: #402d10;
+  box-shadow:
+    0 3px 0 rgba(122,86,34,0.5),
+    0 5px 14px rgba(52,34,10,0.26),
+    inset 0 1px 0 rgba(255,252,236,0.85);
+}
+.pb-card button.pb-btn-primary:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 rgba(122,86,34,0.5), 0 1px 5px rgba(52,34,10,0.22), inset 0 1px 4px rgba(120,80,26,0.3);
+}
+.pb-card .pb-btn-ghost {
+  background-color: rgba(253,246,228,0.62);
+  background-image: none;
+  border-color: rgba(160,124,70,0.5);
+  color: #6b5c40;
+  box-shadow: inset 0 0 0 1px rgba(255,253,244,0.55);
+}
+
+/* THE TALLY (finding 4's count-up half). Digits that change every frame must
+   not shove the line around while they do it — a number that jitters as it
+   counts reads as a glitch, not as a fanfare. */
+.pb-count { font-variant-numeric: tabular-nums; }
+
+/* …and the line each tally is written on: a brush stroke that thins out at both
+   ends, not the 1 px dashed border a form uses to separate its fields. */
+.pb-score-row { position: relative; }
+.pb-score-row::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 0;
+  height: 1.6px;
+  border-radius: 2px;
+  background: linear-gradient(90deg,
+    rgba(150,116,64,0) 0%, rgba(150,116,64,0.5) 7%, rgba(150,116,64,0.26) 48%,
+    rgba(150,116,64,0.46) 86%, rgba(150,116,64,0) 100%);
+  pointer-events: none;
+}
+
+/* THE CHILD ARRIVES (findings 4 + 6: „character idle in the corner, no effects"
+   / „consistently tiny and pushed to a frame corner"). He comes UP onto the
+   page — a hop that overshoots and settles, so the score card opens on somebody
+   jumping rather than on a checklist. END STATE: standing on the page in his
+   cheer, which is the finished picture this beat exists to show. */
+@keyframes pb-hero-in {
+  0%   { opacity: 0; transform: translateY(30px) scale(0.84); }
+  58%  { opacity: 1; transform: translateY(-7px) scale(1.05); }
+}
+.pb-hero-in { animation: pb-hero-in 520ms 300ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+
+/* THE HUD CHIPS (finding 1: „plain cream rounded-rect … sitting directly on top
+   of gorgeous watercolor"). The counters live OUTSIDE the canvas, on the page,
+   which is exactly why they were the flattest thing on screen: a 999 px pill
+   with a hairline border is a web badge. They now wear the card's own paper,
+   its ink edge and its four different corners — the bar belongs to the book. */
+.pb-hud-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px 4px;
+  white-space: nowrap;
+  color: #5f5334;
+  background-color: #fbf3dd;
+  background-image:
+    radial-gradient(120% 100% at 22% 0%, rgba(255,255,255,0.9), rgba(255,255,255,0) 64%),
+    radial-gradient(70% 60% at 88% 100%, rgba(176,142,88,0.2), rgba(176,142,88,0) 70%),
+    repeating-linear-gradient(97deg, rgba(146,114,64,0.04) 0 1px, rgba(146,114,64,0) 1px 19px);
+  border: 1.5px solid #b78d51;
+  border-radius: 12px 8px 13px 9px / 9px 13px 8px 12px;
+  box-shadow:
+    0 2px 0 rgba(150,116,64,0.3),
+    0 3px 8px rgba(40,28,12,0.16),
+    inset 0 1px 0 rgba(255,253,244,0.9);
+}
+
 /* ── the boot ceremony: a page of the book turning toward the reader ───── */
 @keyframes pb-page-in {
   from { opacity: 0; transform: perspective(900px) rotateY(-26deg) translateX(-16px); }
@@ -482,7 +594,7 @@ export const PAINT_OVERLAY_CSS = `
 /* ── THE END-STATES LAW: every animated class above, killed ─────────────── */
 @media (prefers-reduced-motion: reduce) {
   .pb-veil, .pb-wipe, .pb-card, .pb-ring, .pb-verdict, .pb-page, .pb-world-in,
-  .pb-letter, .pb-word, .pb-doff, .pb-tether, .pb-rays, .pb-spark {
+  .pb-letter, .pb-word, .pb-doff, .pb-tether, .pb-rays, .pb-spark, .pb-hero-in {
     animation: none !important;
   }
 }

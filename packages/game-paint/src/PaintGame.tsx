@@ -18,6 +18,9 @@ import { CardHost } from "./cards/CardHost.tsx";
 import { answerTextOf } from "./cards/resolution.ts";
 import { InkWipe, PaintedCage, type CardAlign, alignedWrap } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
+import { PaintedIcon, type PaintedIconName } from "./cards/PaintedIcons.tsx";
+import { CeremonyBurst, PaintedHero, useCeremonyClock } from "./cards/CeremonyStage.tsx";
+import { countUpAt, countUpTotalMs, heroArtPresent, runCompletion } from "./cards/ceremony.ts";
 import { initRoute, nextTask, orderedTask, type RouteState, type ServeCtx } from "./cards/routing.ts";
 
 /** The in-game task item — gameTasks@2 (the card kit). Content lives in
@@ -689,7 +692,12 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           they belong to — and travel with the package, not the app. */}
       <style>{PAINT_OVERLAY_CSS}</style>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 2px", gap: 8 }}>
-        <strong style={{ fontSize: 15, fontFamily: "var(--font-display, inherit)" }}>🖌 {phaseName}</strong>
+        <strong style={{ fontSize: 15, fontFamily: "var(--font-display, inherit)", display: "inline-flex", alignItems: "center", gap: 7 }}>
+          {/* PK-R6 · H1: the bar's own mark was 🖌 — a platform emoji at the top
+              of a hand-painted game. It is the book's brush now, with paint on it. */}
+          <PaintedIcon name="brush" size={19} />
+          {phaseName}
+        </strong>
         {/* R3-17 · THE PAINTED CHIPS (doc 41 §5, presentation mined per doc 42
             §5). The bar used to be a run of plain text on the page background;
             each counter is now a chip in the book's own materials — gouache
@@ -699,12 +707,12 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             with nothing to count is not drawn (the arena collects no letters,
             and the Regel-Seiten chip waits until the chapter hides some). */}
         <span style={{ display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "flex-end" }}>
-          {freedCount > 0 && <Chip icon="🔓" label="Befreit" value={`${freedCount}/${cageTotal}`} />}
-          {tipTotal > 0 && <Chip icon="📜" label="Regel-Seiten" value={`${tipsCount}/${tipTotal}`} />}
-          {booksCount > 0 && <Chip icon="📕" label="Bonus-Bücher" value={`${booksCount}`} />}
-          {knots > 0 && <Chip icon="🪢" label="Knoten" value={`${knots}`} />}
-          {inBonus && bonusLeft >= 0 && <Chip icon="⏱" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} />}
-          {letters.total > 0 && <Chip icon="✨" label={level.collectNounDe} value={`${letters.got}/${letters.total}`} />}
+          {freedCount > 0 && <Chip icon="cage" label="Befreit" value={`${freedCount}/${cageTotal}`} />}
+          {tipTotal > 0 && <Chip icon="rule" label="Regel-Seiten" value={`${tipsCount}/${tipTotal}`} />}
+          {booksCount > 0 && <Chip icon="book" label="Bonus-Bücher" value={`${booksCount}`} />}
+          {knots > 0 && <Chip icon="knot" label="Knoten" value={`${knots}`} />}
+          {inBonus && bonusLeft >= 0 && <Chip icon="inkwell" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} />}
+          {letters.total > 0 && <Chip icon="spark" label={level.collectNounDe} value={`${letters.got}/${letters.total}`} />}
         </span>
       </div>
       {fatal !== null && (
@@ -765,9 +773,19 @@ function Overlay({
   // „pb-card" rule (overlay-css), and what stays here is this panel's size.
   const card: React.CSSProperties = { maxWidth: 440, width: o.align === "center" ? "88%" : "46%", minWidth: 300 };
   /** R3-8: every panel wears the same painted staging as a task card — the veil
-   *  washes in, the ink bloom wipes, the panel lands a beat later. */
+   *  washes in, the ink bloom wipes, the panel lands a beat later.
+   *
+   *  PK-R6 · H1 (round-1 critique, ceremonies findings 1 + 7): TWO changes.
+   *  · The veil is the DEEP one. A task card's veil keeps the world bright where
+   *    the being is, because the card is about that being; a ceremony is about
+   *    the child, so the world recedes properly behind it (doc 44 §3.1.2's
+   *    „radial veil to near-black, world faintly visible" — at 0.06 alpha in the
+   *    middle the classroom wall was neither).
+   *  · Every ceremony panel now comes through HERE. Six of them used to inline
+   *    their own copy of this markup, which is how a fix like the one above
+   *    lands on four cards out of ten and the critic finds the other six. */
   const staged = (children: React.ReactNode, extraClass = ""): React.ReactElement => (
-    <div className="pb-veil" style={wrap}>
+    <div className="pb-veil pb-veil-deep" style={wrap}>
       <InkWipe />
       <div className={`pb-card ${extraClass}`.trim()} style={card}>{children}</div>
     </div>
@@ -789,25 +807,33 @@ function Overlay({
     const plate = level.goalPlate !== undefined ? art[level.goalPlate] : undefined;
     const drained = chapterRoleCount(level, "drained");
     const legend: React.ReactElement[] = [];
+    // PK-R6 · H1 (round-1 critique, ceremonies finding 2): these four lines were
+    // marked with ✨ 🎨 🔓 📜 — the reader's own operating-system emoji, drawn by
+    // a font nobody in this project chose, on the chapter's opening page. They
+    // are painted now (cards/PaintedIcons), and the row is a hanging indent so a
+    // line that wraps no longer runs back under its own picture.
+    const item = (key: string, icon: PaintedIconName, text: React.ReactNode): React.ReactElement => (
+      <span key={key} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+        <span style={{ display: "flex", marginTop: 1 }}><PaintedIcon name={icon} size={19} /></span>
+        <span>{text}</span>
+      </span>
+    );
     if (bilanz.lettersTotal > 0) {
-      legend.push(
-        <span key="letters">✨ <strong>{bilanz.lettersTotal} {level.collectNounDe}</strong> liegen verstreut — sammle sie ein</span>,
-      );
+      legend.push(item("letters", "spark", <><strong>{bilanz.lettersTotal} {level.collectNounDe}</strong> liegen verstreut — sammle sie ein</>));
     }
     if (drained > 0) {
-      legend.push(
-        <span key="drained">🎨 <strong>{drained} graue Dinge</strong> warten — sag, was sie sind, dann kommt die Farbe zurück</span>,
-      );
+      legend.push(item("drained", "palette", <><strong>{drained} graue Dinge</strong> warten — sag, was sie sind, dann kommt die Farbe zurück</>));
     }
     if (bilanz.kidsTotal > 0) {
-      legend.push(
-        <span key="kids">🔓 <strong>{bilanz.kidsTotal === 1 ? "Ein Klassenkind" : `${bilanz.kidsTotal} Klassenkinder`}</strong> steckt fest — finde {bilanz.kidsTotal === 1 ? "es" : "sie"}</span>,
-      );
+      legend.push(item("kids", "cage", (
+        <>
+          <strong>{bilanz.kidsTotal === 1 ? "Ein Klassenkind" : `${bilanz.kidsTotal} Klassenkinder`}</strong>
+          {" "}steckt fest — finde {bilanz.kidsTotal === 1 ? "es" : "sie"}
+        </>
+      )));
     }
     if (bilanz.tipsTotal > 0) {
-      legend.push(
-        <span key="tips">📜 <strong>{bilanz.tipsTotal} Regel-Seiten</strong> sind aus dem Buch gerissen</span>,
-      );
+      legend.push(item("tips", "rule", <><strong>{bilanz.tipsTotal} Regel-Seiten</strong> sind aus dem Buch gerissen</>));
     }
     return staged(
       <div style={{ textAlign: "left" }}>
@@ -821,8 +847,15 @@ function Overlay({
           <div
             style={{
               position: "relative", width: "100%", aspectRatio: "2048 / 1260",
-              borderRadius: 10, overflow: "hidden", border: "2px solid #c9a36a",
-              margin: "0 0 10px", boxShadow: "inset 0 1px 8px rgba(120, 96, 52, 0.25)",
+              // PK-R6 · H1: the plate sat in a 10-px-radius rectangle with a
+              // hairline — a photo frame from a web page. It is mounted in the
+              // book's own materials now: four corners that disagree, the amber
+              // contour every painted surface here wears, and the sheen the
+              // light leaves along its top edge.
+              borderRadius: "15px 10px 16px 11px / 11px 16px 10px 15px",
+              overflow: "hidden", border: "2px solid #b78d51",
+              margin: "0 0 10px",
+              boxShadow: "inset 0 1px 8px rgba(120, 96, 52, 0.25), inset 0 0 0 1px rgba(255,251,238,0.6), 0 2px 10px rgba(40,28,12,0.18)",
             }}
           >
             <img src={plate} alt="" aria-hidden style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
@@ -846,7 +879,10 @@ function Overlay({
         <div style={{ display: "grid", gap: 5, fontSize: 13.5, color: "#4a4030", margin: "0 0 14px", lineHeight: 1.35 }}>
           {legend}
         </div>
-        <button style={{ ...btn, fontSize: 16 }} onClick={() => onDismiss(o)}>Los geht's!</button>
+        {/* PK-R6 · H1 (finding 8): starting the chapter is the one thing this
+            page wants — it is the warm button now, not a white pill like every
+            other control in the game. */}
+        <button className="pb-btn-primary" style={{ ...btn, fontSize: 16 }} onClick={() => onDismiss(o)}>Los geht's!</button>
       </div>,
       "pb-page",
     );
@@ -861,80 +897,60 @@ function Overlay({
         <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 2px", fontFamily: "var(--font-label, inherit)" }}>
           Regel-Seite gefunden
         </p>
-        <h2 style={{ fontSize: 19, lineHeight: 1.15, margin: "0 0 10px", color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>
-          📜 {o.tip?.topicDe}
+        <h2 style={{ fontSize: 19, lineHeight: 1.15, margin: "0 0 10px", color: "#3a2f1c", fontFamily: "var(--font-display, inherit)", display: "flex", gap: 9, alignItems: "center" }}>
+          {/* the torn page itself, painted — it was an emoji scroll, which is
+              the one picture a card about a page out of THIS book may not use */}
+          <PaintedIcon name="rule" size={26} />
+          <span>{o.tip?.topicDe}</span>
         </h2>
         <p style={{ fontSize: 16, lineHeight: 1.45, margin: "0 0 14px", color: "#4a4030" }}>{o.tip?.merksatzDe}</p>
-        <button style={btn} onClick={() => onDismiss(o)}>Ins Buch kleben</button>
+        <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Ins Buch kleben</button>
       </div>,
       "pb-page",
     );
   }
   if (o.card === "score") {
-    // M-B · beat 2 — THE SCORE PAGE (doc 41 §5). The book turns a page and
-    // writes the chapter's Bilanz itself: no HUD panel, no stars, no grade. Every
-    // number is counted from the level and the run (see Bilanz), and the warm
-    // line is the freed friends' — the chapter is closed by the people in it.
-    const row = (icon: string, labelDe: string, got: number, total: number | null): React.ReactElement => (
-      <div key={labelDe} style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", padding: "5px 0", borderBottom: "1px dashed #e0d3ae" }}>
-        <span style={{ fontSize: 15, color: "#4a4030" }}>{icon} {labelDe}</span>
-        <strong style={{ fontSize: 17, color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>
-          {total === null ? got : `${got} von ${total}`}
-        </strong>
-      </div>
-    );
-    const alle = bilanz.freed >= bilanz.freedTotal;
-    return staged(
-      <div style={{ textAlign: "left" }}>
-        <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 2px", fontFamily: "var(--font-label, inherit)" }}>
-          Das Buch schreibt mit
-        </p>
-        <h2 style={{ fontSize: 21, lineHeight: 1.15, margin: "0 0 10px", color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>
-          {level.name}
-        </h2>
-        {/* PK-R6 · C: the classmates line counts CLASSMATES. It used to count
-            every cage under that label — true only while every cage held one,
-            which the new cage law (doc 44 §2.3) ends. Beings freed from the
-            unit's other cages get their own line, and it is not drawn when the
-            chapter has none (the same rule the Regel-Seiten chip obeys). */}
-        {row("🔓", "Klassenkinder befreit", bilanz.kids, bilanz.kidsTotal)}
-        {bilanz.freedTotal > bilanz.kidsTotal
-          && row("🕊️", "Wesen befreit", bilanz.freed - bilanz.kids, bilanz.freedTotal - bilanz.kidsTotal)}
-        {bilanz.tipsTotal > 0 && row("📜", "Regel-Seiten gefunden", bilanz.tips, bilanz.tipsTotal)}
-        {row("✨", level.collectNounDe + " gesammelt", bilanz.letters, bilanz.lettersTotal)}
-        {bilanz.booksTotal > 0 && row("📕", "Bonus-Bücher", bilanz.books, bilanz.booksTotal)}
-        <p style={{ fontSize: 15, margin: "14px 0 14px", color: "#7a6a4a", fontStyle: "italic", lineHeight: 1.45 }}>
-          {alle
-            ? "»Du hast uns alle gefunden!«, sagt Fibel. »Die Seite ist wieder voll.«"
-            : "»Danke!«, ruft die Klasse aus dem Lager. »Ein paar von uns warten noch.«"}
-        </p>
-        <button style={{ ...btn, fontSize: 16 }} onClick={() => onDismiss(o)}>Seite umblättern</button>
-      </div>,
-      "pb-page",
-    );
+    // M-B · beat 2 — THE SCORE PAGE (doc 41 §5), and the beat the round-1 critic
+    // called „the clearest juice failure". Its own component, because the
+    // celebration needs a clock and a hook may not live behind an `if`.
+    return staged(<ScorePage level={level} art={art} bilanz={bilanz} onNext={() => onDismiss(o)} />, "pb-page");
   }
   if (o.card === "out") {
     // M-B · beat 3 — THE DOOR OUT. Inside the canvas, like the two beats before
     // it: the chapter's last frame is never below the fold (the PK-R1 rider).
+    //
+    // PK-R6 · H1 (findings 2, 6, 8): „🚪✨" was two platform emoji — on Koki's
+    // Mac the door renders as a flat brown slab a child reads as a book. It is a
+    // painted door standing ajar now, with the boy beside it looking at the way
+    // out, and the two buttons stopped being twins: the way ONWARD is the map
+    // (this is beat 3 of the chapter-end sequence — „the door out / map return"),
+    // so „Zurück" carries the warm treatment and „Noch einmal", which is a
+    // retry, is the quiet one. The critic's own hierarchy rule, applied.
     return staged(
       <>
-        <p style={{ fontSize: 26, margin: "0 0 6px" }}>🚪✨</p>
-        <p style={{ fontSize: 17, margin: "0 0 10px" }}>
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 4, margin: "0 0 8px", minHeight: 88 }}>
+          <PaintedHero art={art} height={84} pose="stand" />
+          <PaintedIcon name="door" size={76} />
+        </div>
+        <p style={{ fontSize: 17, margin: "0 0 12px" }}>
           Die Buchstaben fliegen zurück auf die Tafel — und die Tür zum nächsten Kapitel geht auf.
         </p>
-        <button onClick={onRestart} style={btn}>↻ Noch einmal</button>
-        <a href={hubHref} className="pb-chip" style={{ ...btn, marginLeft: 10, textDecoration: "none", display: "inline-block" }}>← Zurück</a>
+        <a href={hubHref} className="pb-chip pb-btn-primary" style={{ ...btn, textDecoration: "none", display: "inline-block" }}>← Zurück</a>
+        <button onClick={onRestart} className="pb-btn-ghost" style={{ ...btn, marginLeft: 10 }}>↻ Noch einmal</button>
       </>,
     );
   }
   if (o.card === "grant") {
-    return (
-      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
-        <p style={{ fontSize: 26, margin: "0 0 6px" }}>📖✨</p>
+    return staged(
+      <>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 2, margin: "0 0 6px" }}>
+          <PaintedIcon name="book" size={40} />
+          <PaintedIcon name="spark" size={26} />
+        </div>
         <p style={{ fontSize: 17, margin: "0 0 4px" }}><strong>Fibel</strong> schenkt dir die <strong>FAUST</strong>!</p>
         <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Halte <strong>X</strong> zum Laden — wirf sie auf Knoten und Kreide!</p>
-        <button style={btn} onClick={() => onDismiss(o)}>Weiter</button>
-      </div></div>
+        <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Weiter</button>
+      </>,
     );
   }
   if (o.card === "cagehint") {
@@ -950,13 +966,13 @@ function Overlay({
     // system emoji. The one card that says „this shape means somebody is caged"
     // now SHOWS the shape — bars, a shut latch, a warm light behind them — so
     // the child learns the silhouette they then have to spot in the world.
-    return (
-      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
+    return staged(
+      <>
         <div style={{ display: "flex", justifyContent: "center", margin: "0 0 2px" }}><PaintedCage /></div>
         <p style={{ fontSize: 17, margin: "0 0 4px" }}>Da steckt jemand fest!</p>
         <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Stell dich davor und drück <strong>↑</strong> — dann geht sie auf.</p>
-        <button style={btn} onClick={() => onDismiss(o)}>Alles klar!</button>
-      </div></div>
+        <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Alles klar!</button>
+      </>,
     );
   }
   if (o.card === "bonuspay") {
@@ -965,14 +981,18 @@ function Overlay({
     // does not: „10" against a phase carrying 8 is how Klecks became unpayable.
     const price = o.price ?? 0;
     const can = letters >= price;
-    return (
-      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
-        <p style={{ fontSize: 26, margin: "0 0 6px" }}>🖤</p>
+    return staged(
+      <>
+        {/* Klecks himself, painted: the emoji here was 🖤 — a black heart, which
+            is not an ink imp in any font on any machine */}
+        <div style={{ display: "flex", justifyContent: "center", margin: "0 0 6px" }}><PaintedIcon name="blot" size={38} /></div>
         <p style={{ fontSize: 16, margin: "0 0 4px" }}><strong>Klecks</strong> grinst: „{price} Buchstaben, und die Tür ist deine. Drinnen warten {bonusTotal} — schaffst du alle, bevor die Tinte trocknet?"</p>
-        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Du hast {letters} ✨ — {can ? "bezahlen?" : `sammle erst ${price}!`}</p>
-        {can && <button style={btn} onClick={() => onPay(price)}>{price} zahlen & rein</button>}
-        <button style={{ ...btn, marginLeft: can ? 10 : 0 }} onClick={() => onDismiss(o)}>Später</button>
-      </div></div>
+        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>
+          Du hast {letters} <PaintedIcon name="spark" size={16} /> — {can ? "bezahlen?" : `sammle erst ${price}!`}
+        </p>
+        {can && <button className="pb-btn-primary" style={btn} onClick={() => onPay(price)}>{price} zahlen &amp; rein</button>}
+        <button className="pb-btn-ghost" style={{ ...btn, marginLeft: can ? 10 : 0 }} onClick={() => onDismiss(o)}>Später</button>
+      </>,
     );
   }
   if (o.card === "ceremony") {
@@ -984,9 +1004,11 @@ function Overlay({
     //    FIRST rescue now names it — after that the phrase has a referent, and
     //    every „zum Lager" in the chapter reads.
     const merle = o.ceremony?.classmate === "merle";
-    return (
-      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
-        <p style={{ fontSize: 26, margin: "0 0 6px" }}>{merle ? "🎨" : "🔤"}</p>
+    return staged(
+      <>
+        <div style={{ display: "flex", justifyContent: "center", margin: "0 0 6px" }}>
+          <PaintedIcon name={merle ? "palette" : "wisp"} size={38} />
+        </div>
         {merle ? (
           // PK-R6 · D: this beat comes at the END of the six rounds now, not at
           // the latch — so the copy says what the child just watched happen
@@ -1001,21 +1023,23 @@ function Overlay({
             <p style={{ fontSize: 13, color: "#6b6250", margin: "0 0 10px" }}>(Hallo! Ich bin Merle. Danke!) — Sie bleibt in der Klasse und winkt dir zu.</p>
           </>
         ) : (
-          <p style={{ fontSize: 16, margin: "0 0 10px" }}>Ein Buchstaben-Wesen flattert frei und dreht eine Freudenrunde! ✨</p>
+          <p style={{ fontSize: 16, margin: "0 0 10px" }}>
+            Ein Buchstaben-Wesen flattert frei und dreht eine Freudenrunde! <PaintedIcon name="spark" size={17} />
+          </p>
         )}
         {o.ceremony?.first === true && (
           <p style={{ fontSize: 14, color: "#7a6a4a", fontStyle: "italic", margin: "0 0 10px", lineHeight: 1.45 }}>
             Das Buch flüstert: „Bring alle, die du befreist, zum <strong>Lager am Rand der Seite</strong> — dort wartet die Klasse.“
           </p>
         )}
-        <button style={btn} onClick={() => onDismiss(o)}>Weiter</button>
-      </div></div>
+        <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Weiter</button>
+      </>,
     );
   }
   if (o.card === "console") {
-    return (
-      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
-        <p style={{ fontSize: 26, margin: "0 0 6px" }}>🖼</p>
+    return staged(
+      <>
+        <div style={{ display: "flex", justifyContent: "center", margin: "0 0 6px" }}><PaintedIcon name="slate" size={40} /></div>
         {/* F2-24: the child WROTE the word on the finale card — this beat now
             answers that act instead of narrating it in their place */}
         <p style={{ fontSize: 16, margin: "0 0 4px" }}>Niemand hat je etwas <em>Nettes</em> auf sie geschrieben.</p>
@@ -1031,16 +1055,18 @@ function Overlay({
         ) : (
           <p style={{ fontSize: 16, margin: "0 0 10px" }}>Sie ist müde und ganz still. Sie kommt trotzdem mit ins Lager!</p>
         )}
-        <button style={btn} onClick={() => onDismiss(o)}>Weiter</button>
-      </div></div>
+        <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Weiter</button>
+      </>,
     );
   }
   if (o.card === "bonusend") {
     const b = o.bonusend!;
     const perfect = b.got >= b.total;
-    return (
-      <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
-        <p style={{ fontSize: 26, margin: "0 0 6px" }}>{perfect ? "🏵" : "🖤"}</p>
+    return staged(
+      <>
+        <div style={{ display: "flex", justifyContent: "center", margin: "0 0 6px" }}>
+          <PaintedIcon name={perfect ? "rosette" : "blot"} size={40} />
+        </div>
         <p style={{ fontSize: 16, margin: "0 0 10px" }}>
           {perfect
             ? `PERFEKT! Alle ${b.total} Buchstaben — Klecks stempelt dir einen Sticker auf die Karte!`
@@ -1048,8 +1074,8 @@ function Overlay({
               ? `Die Tinte ist getrocknet — ${b.got} von ${b.total}. Klecks zwinkert: „Komm wieder!"`
               : `${b.got} von ${b.total} — Klecks zwinkert: „Fast! Komm wieder!"`}
         </p>
-        <button style={btn} onClick={() => onDismiss(o)}>Weiter</button>
-      </div></div>
+        <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Weiter</button>
+      </>,
     );
   }
 
@@ -1072,22 +1098,118 @@ function Overlay({
   );
 }
 
+/** PK-R6 · H1 · M-B beat 2 — THE SCORE PAGE, WITH ITS FANFARE.
+ *
+ *  THE ROUND-1 VERDICT, verbatim: „a chapter-completion moment rendered as a
+ *  static ‚0 von X' checklist with no count-up, no particles, no character
+ *  reaction — the emotional payoff Rayman-tier games always sell with a fanfare
+ *  beat is simply absent here." Three things were missing and all three are
+ *  here now, in the order a child meets them:
+ *
+ *   1 THE CHILD. He hops up onto the page in the leap pose — the one whose own
+ *     dossier note is „both hands rise above shoulder line, open, fingers spread
+ *     wide — the silhouette FLARES" — wearing `head_celebrate`, a painted face
+ *     that had been sitting on disk unused since the rig landed. Not a new
+ *     drawing: the SHIPPED rig, composed by cards/ceremony's pure layout, so the
+ *     figure celebrating is the boy the child has been playing.
+ *   2 THE BURST, thrown around him, as big as the run earned (never nothing —
+ *     reaching this page IS the chapter; never full unless everything was found,
+ *     because confetti over a 0/32 run is mockery).
+ *   3 THE TALLIES, counting themselves up line by line instead of appearing
+ *     already finished. Every number still comes from the run (see Bilanz) and
+ *     the count-up provably never overshoots it (cards/ceremony.test).
+ *
+ *  Reduced motion gets all three as finished pictures: the clock starts at
+ *  Infinity, so every line reads its final number on the first frame and the
+ *  CSS kills the hop and the motes (the end-states law).
+ */
+function ScorePage({
+  level, art, bilanz, onNext,
+}: {
+  level: PaintLevel;
+  art: Record<string, string>;
+  bilanz: Bilanz;
+  onNext: () => void;
+}): React.ReactElement {
+  // PK-R6 · C: the classmates line counts CLASSMATES. It used to count every
+  // cage under that label — true only while every cage held one, which the new
+  // cage law (doc 44 §2.3) ends. Beings freed from the unit's other cages get
+  // their own line, and it is not drawn when the chapter has none (the same
+  // rule the Regel-Seiten chip obeys).
+  const rows: Array<{ icon: PaintedIconName; labelDe: string; got: number; total: number }> = [
+    { icon: "cage", labelDe: "Klassenkinder befreit", got: bilanz.kids, total: bilanz.kidsTotal },
+  ];
+  if (bilanz.freedTotal > bilanz.kidsTotal) {
+    rows.push({ icon: "wisp", labelDe: "Wesen befreit", got: bilanz.freed - bilanz.kids, total: bilanz.freedTotal - bilanz.kidsTotal });
+  }
+  if (bilanz.tipsTotal > 0) rows.push({ icon: "rule", labelDe: "Regel-Seiten gefunden", got: bilanz.tips, total: bilanz.tipsTotal });
+  rows.push({ icon: "spark", labelDe: `${level.collectNounDe} gesammelt`, got: bilanz.letters, total: bilanz.lettersTotal });
+  if (bilanz.booksTotal > 0) rows.push({ icon: "book", labelDe: "Bonus-Bücher", got: bilanz.books, total: bilanz.booksTotal });
+
+  const ms = useCeremonyClock(countUpTotalMs(rows.length));
+  const completion = runCompletion(rows);
+  const hero = heroArtPresent(art);
+  const alle = bilanz.freed >= bilanz.freedTotal;
+
+  return (
+    <div style={{ textAlign: "left" }}>
+      <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 2px", fontFamily: "var(--font-label, inherit)" }}>
+        Das Buch schreibt mit
+      </p>
+      {/* the stage is AUTO height on purpose: the rig's cells carry generous
+          transparent margins, so a fixed box either crops his flare or leaves a
+          hole under his shoes. The negative margins pull the label and the title
+          back in against that transparent padding. */}
+      <div style={{
+        position: "relative", display: "flex", justifyContent: "center",
+        margin: hero ? "-14px 0 -18px" : "0 0 2px", minHeight: hero ? 0 : 30,
+      }}>
+        <CeremonyBurst completion={completion} />
+        <PaintedHero art={art} height={104} className="pb-hero-in" />
+      </div>
+      <h2 style={{ fontSize: 21, lineHeight: 1.15, margin: "0 0 8px", color: "#3a2f1c", fontFamily: "var(--font-display, inherit)", textAlign: "center" }}>
+        {level.name}
+      </h2>
+      {rows.map((r, i) => (
+        <div
+          key={r.labelDe}
+          className="pb-score-row"
+          style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, padding: "6px 0" }}
+        >
+          <span style={{ fontSize: 15, color: "#4a4030", display: "inline-flex", alignItems: "center", gap: 8 }}>
+            <PaintedIcon name={r.icon} size={20} />
+            {r.labelDe}
+          </span>
+          <strong className="pb-count" style={{ fontSize: 17, color: "#3a2f1c", fontFamily: "var(--font-display, inherit)", whiteSpace: "nowrap" }}>
+            {countUpAt(r.got, ms, i)} von {r.total}
+          </strong>
+        </div>
+      ))}
+      <p style={{ fontSize: 15, margin: "14px 0 14px", color: "#7a6a4a", fontStyle: "italic", lineHeight: 1.45 }}>
+        {alle
+          ? "»Du hast uns alle gefunden!«, sagt Fibel. »Die Seite ist wieder voll.«"
+          : "»Danke!«, ruft die Klasse aus dem Lager. »Ein paar von uns warten noch.«"}
+      </p>
+      <button className="pb-btn-primary" style={{ ...btn, fontSize: 16 }} onClick={onNext}>Seite umblättern</button>
+    </div>
+  );
+}
+
 /** PK-R3b · R3-17 · ONE HUD CHIP (doc 41 §5, presentation per doc 42 §5). A
  *  counter painted in the book's own materials rather than typed onto the page:
  *  gouache cream, an amber contour, the label face. The label is spelled out —
- *  F2-33's law that every number says what it counts survives the re-skin. */
-function Chip({ icon, label, value }: { icon: string; label: string; value: string }): React.ReactElement {
+ *  F2-33's law that every number says what it counts survives the re-skin.
+ *
+ *  PK-R6 · H1 (round-1 critique, ceremonies findings 1 + 2): it was not painted,
+ *  it was a WEB BADGE — a flat fill, a 999 px pill, one hairline, and a platform
+ *  emoji for a picture. The chips sit above the canvas on the page, which is
+ *  precisely why they were the flattest surface in the frame. The paper, the ink
+ *  edge and the four disagreeing corners are now the `pb-hud-chip` rule, and the
+ *  picture is painted (cards/PaintedIcons) — so the bar belongs to the book. */
+function Chip({ icon, label, value }: { icon: PaintedIconName; label: string; value: string }): React.ReactElement {
   return (
-    <span
-      style={{
-        display: "inline-flex", alignItems: "baseline", gap: 5,
-        background: "#fdf7e6", border: "1.5px solid #c9a36a", borderRadius: 999,
-        padding: "3px 11px", boxShadow: "0 1px 3px rgba(30,20,10,0.18)",
-        fontFamily: "var(--font-label, inherit)", fontSize: 13, color: "#6b6250",
-        whiteSpace: "nowrap",
-      }}
-    >
-      <span aria-hidden>{icon}</span>
+    <span className="pb-hud-chip" style={{ fontFamily: "var(--font-label, inherit)", fontSize: 13 }}>
+      <PaintedIcon name={icon} size={17} />
       {label}
       <strong style={{ fontSize: 15, color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>{value}</strong>
     </span>

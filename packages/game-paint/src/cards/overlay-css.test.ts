@@ -167,6 +167,62 @@ describe("the end-states law (doc 42 §1)", () => {
     expect(at).toBeLessThanOrEqual(45);
   });
 
+  // ── PK-R6 · H1 · THE CEREMONY SURFACES, LOCKED ────────────────────────────
+  // The goal card, the score page and the door out were dressed as web modals
+  // over a painting. Each fix below is one line of CSS away from being undone by
+  // a tidy-up, and none of them would fail a typecheck.
+  it("a ceremony's scrim is DEEP — the world recedes instead of competing", () => {
+    // finding 7: „hooks, towels, idle character and props remain sharp and
+    // high-contrast behind the modal". doc 44 §3.1.2 asks for „near-black, world
+    // faintly visible"; the task card's veil is 0.06 in the middle by design
+    // (its light sits on the being), so the ceremony needs its own, deeper wash.
+    const deep = PAINT_OVERLAY_CSS.match(/\.pb-veil\.pb-veil-deep\s*\{([^}]*)\}/)?.[1] ?? "";
+    expect(deep, "the ceremony veil rule is gone").not.toBe("");
+    const alphas = [...deep.matchAll(/rgba\([^)]*,\s*(0?\.\d+)\)/g)].map((m) => Number(m[1]));
+    expect(Math.min(...alphas)).toBeGreaterThan(0.3); // even its lightest point
+    expect(Math.max(...alphas)).toBeGreaterThan(0.7); // …and its edge is near-black
+    expect(deep).toMatch(/backdrop-filter:\s*blur/); // …and the detail goes soft
+    // it must still be DEEPER than the card veil it overrides, or it is decoration
+    const base = baseRule(PAINT_OVERLAY_CSS, "pb-veil");
+    const baseAlphas = [...base.matchAll(/rgba\([^)]*,\s*(0?\.\d+)\)/g)].map((m) => Number(m[1]));
+    expect(Math.min(...alphas)).toBeGreaterThan(Math.min(...baseAlphas));
+  });
+
+  it("the primary and secondary actions are not the same button", () => {
+    // finding 8: „every ceremony button uses identical styling regardless of
+    // action weight (start level, dismiss, retry, back)"
+    const primary = PAINT_OVERLAY_CSS.match(/\.pb-card button\.pb-btn-primary[^{]*\{([^}]*)\}/)?.[1] ?? "";
+    const ghost = PAINT_OVERLAY_CSS.match(/\.pb-card \.pb-btn-ghost\s*\{([^}]*)\}/)?.[1] ?? "";
+    expect(primary).toMatch(/background-color:\s*#[0-9a-f]{6}/i);
+    expect(ghost).toMatch(/background-color:/);
+    expect(primary.match(/background-color:\s*(#[0-9a-f]{6})/i)?.[1])
+      .not.toBe(ghost.match(/background-color:\s*(#[0-9a-f]{6})/i)?.[1]);
+    // the anchor form matters: the way out of a chapter is a link, not a button
+    expect(PAINT_OVERLAY_CSS).toContain(".pb-card a.pb-btn-primary");
+    // and both must come AFTER the generic chip rule, or the ghost (which has
+    // the same specificity) loses to it and quietly stops being lighter
+    expect(PAINT_OVERLAY_CSS.indexOf(".pb-card .pb-btn-ghost"))
+      .toBeGreaterThan(PAINT_OVERLAY_CSS.indexOf(".pb-card button, .pb-card .pb-chip"));
+  });
+
+  it("the HUD chip is painted paper, not a pill", () => {
+    // finding 1: the counters sit on the page ABOVE the canvas, which is why a
+    // 999 px radius and a flat fill made them the flattest thing in the frame
+    const chip = baseRule(PAINT_OVERLAY_CSS, "pb-hud-chip");
+    expect(chip).not.toMatch(/border-radius:\s*999px/);
+    expect(chip).toMatch(/border-radius:[^;]*\//); // four corners that disagree
+    expect(chip).toMatch(/repeating-linear-gradient/); // the paper's own fibre
+  });
+
+  it("the child's hop ENDS standing in his cheer", () => {
+    // finding 4's character half: with animations killed the score page must
+    // still show a boy mid-celebration, never one frozen half-arrived
+    const frames = PAINT_OVERLAY_CSS.match(/@keyframes pb-hero-in\s*\{[^]*?\n\}/)?.[0] ?? "";
+    expect(frames).toMatch(/0%\s*\{\s*opacity:\s*0/);
+    expect(frames).not.toMatch(/100%|\bto\b/); // no end frame: the base IS the end
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-hero-in")).toMatch(/animation:\s*pb-hero-in/);
+  });
+
   it("the doff's BASE state is out of the way, so a still world is watchable", () => {
     // the restore-hold's whole job is to let the world's change be SEEN; with
     // animations killed the card must already be gone, not sitting at full
