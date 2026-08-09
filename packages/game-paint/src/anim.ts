@@ -59,9 +59,14 @@ export const COLOUR_FLOOD_TICKS = 36;
 /** Which beings OSWIN's rain reached. The creatures, plus the CAGES: a knotted
  *  school bag is a redeemable being too, and two of ch01's restore cards are
  *  about exactly those bags — a card that says „ganz grau geworden" over a
- *  full-colour satchel would be the same lie R3-12 took off the boss. Doors,
- *  grants and platforms are furniture and were never drained. */
-export const WASHED_ROLES = new Set<string>([...JOY_ROLES, "cage"]);
+ *  full-colour satchel would be the same lie R3-12 took off the boss.
+ *
+ *  PK-R6 · C1: and the DRAINED objects, which is the role the whole grammar
+ *  was built for — ch01's field is now the grey classroom spread across the
+ *  level, and „grey until you name it" is what makes it read as bewitched
+ *  rather than as scenery. Doors, grants and platforms are furniture and were
+ *  never drained. */
+export const WASHED_ROLES = new Set<string>([...JOY_ROLES, "cage", "drained"]);
 
 /** How opaque the grey wash over this being is right now, 0 … WASH_ALPHA.
  *  Pure: `timer` is the sim's own counter, which `redeemEntity` resets to 0 at

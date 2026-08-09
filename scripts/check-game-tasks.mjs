@@ -156,7 +156,9 @@ const boundCards = (items, use, skin, phase) =>
 // long before this mechanic existed („Ein weißer Radiergummi", „seine bunten
 // Farben", „Eine braune Schultasche") became wrong the moment the grammar
 // shipped. Grey/blass are of course allowed — that IS the state.
-const WASHED_ROLES_MJS = ["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm", "cage"];
+// PK-R6 · C1: `drained` is the role this law was really written for — mirrors
+// game-paint/src/anim.ts WASHED_ROLES, which is the renderer's own list.
+const WASHED_ROLES_MJS = ["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm", "cage", "drained"];
 const COLOUR_WORDS_DE = /\b(wei(ß|ss)|rot|blau|grün|gelb|braun|schwarz|rosa|orange|bunt|golden|silbern)\w*/i;
 
 function checkDesaturation(w, items, washedSkins) {
@@ -233,6 +235,17 @@ function checkAgainstLevel(file, level, items) {
       } else if (e.role === "cage") {
         const n = boundCards(items, "rescue", e.skin, ph.id).length;
         if (n < 1) fail(at, `coverage: cage skin "${e.skin}" has no rescue card here`);
+      } else if (e.role === "drained") {
+        // PK-R6 · C1 · THE RESTORE-PAIR LAW. A drained object is a promise
+        // rendered in grey: the child walks up, presses ↑, and the world owes
+        // them the two-step card that gives its name and its colour back. With
+        // no bound card the router falls through to the unbound quickfire pool
+        // and a drained desk asks a number question — the exact "answered by a
+        // card about somebody else" defect the binding law (PB-F1) exists to
+        // stop, and it would ship silently because nothing else looks here.
+        const n = boundCards(items, "encounter", e.skin, ph.id)
+          .filter((t) => t.kind === "restore").length;
+        if (n < 1) fail(at, `coverage: drained object "${e.skin}" has no restore card in ${ph.id} — a grey thing with no way to give its colour back`);
       } else if (e.role === "door.trigger" && String(e.params?.kind ?? "exit") !== "bonus") {
         const n = boundCards(items, "door", e.skin, ph.id).length;
         if (n < 1) fail(at, `coverage: door skin "${e.skin}" has no door card here`);
@@ -251,6 +264,9 @@ function checkAgainstLevel(file, level, items) {
   for (const ph of phases) {
     for (const e of ph.entities ?? []) {
       if (HOSTILE_ROLES.includes(e.role)) raisedUses.add(encounterUseFor(e.role));
+      // PK-R6 · C1: a drained object is a visible asker too — it raises its own
+      // card on the ↑ press (sim.ts `engaged` → use "encounter").
+      else if (e.role === "drained") raisedUses.add("encounter");
       else if (e.role === "guardian") { raisedUses.add("encounter"); raisedUses.add("boss"); raisedUses.add("finale"); }
       else if (e.role === "cage") raisedUses.add("rescue");
       else if (e.role === "door.trigger") raisedUses.add(String(e.params?.kind ?? "exit") === "bonus" ? "bonuspay" : "door");

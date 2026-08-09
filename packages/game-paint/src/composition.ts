@@ -193,6 +193,12 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     far: shell("p1", 0.25),
     mid: midBand("p1"),
     mass: { ...sharedMass(), ...crustOf("p1") },
+    // PK-R6 · B: the trail now spells the DRAINED OBJECTS this phase holds —
+    // the ch01 sheet's currency law („each breadcrumb run spells a REAL u01
+    // word … the trail's end holds that thing"), which only became true when
+    // the objects arrived in the field. Until now every phase fell back to the
+    // A→Z walk, so a child collected ABCDEFGH and read nothing.
+    words: ["school", "bag", "book"],
   },
   // p2 Klassenzimmer bei Nacht — moon-cool: deep blue-violet air.
   p2: {
@@ -201,6 +207,7 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     far: shell("p2", 0.25),
     mid: midBand("p2"),
     mass: { ...sharedMass(), ...crustOf("p2") },
+    words: ["desk", "pencil"], // the two drained objects of the night classroom
   },
   // p3 Schulhof-Garten — afternoon-soft: sand plaster and chalk pastel.
   // The one phase with the chalk slide (`z` runs, AF group 4).
@@ -214,6 +221,7 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
       ...crustOf("p3"),
       slide: { top: "slide_top", mid: "slide_mid", foot: "slide_foot", under: "slide_under" },
     },
+    words: ["glue", "stick"], // the u01 phrase „glue stick", split over the yard
   },
   // p4 Tafel-Bühne — stage-dusk: dark wood shell, audience in dusk blue.
   p4: {

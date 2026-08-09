@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   applyLinks,
+  engageTargetId,
   guardianKnotSolved,
   redeemEntity,
   rideAttachCheck,
@@ -44,6 +45,88 @@ const run = (w: EntityWorld, inp: WorldInput, ticks: number) => {
   for (let t = 0; t < ticks; t++) all.push(...stepEntities(w, GRID, inp));
   return all;
 };
+
+// ── PK-R6 · C1/C2 · the drained object and the ↑ engage (doc 44 §4 ch01) ─────
+describe("drained objects + the ↑ engage", () => {
+  /** the player standing AT an entity spawned at (c,r) */
+  const atEntity = (c: number, r: number, over: Partial<WorldInput> = {}): WorldInput =>
+    idleInput({ playerX: (c * TILE + TILE / 2) * SUBS, playerY: (r + 1) * TILE * SUBS, ...over });
+
+  const drained = (over: Partial<EntitySpec> = {}): EntitySpec =>
+    spec({ id: "obj1", role: "drained", skin: "obj_desk", c: 10, r: 11, ...over });
+
+  it("does NOTHING on contact — a desk is not an ambush", () => {
+    const w = spawnEntities([drained()], []);
+    // stand on it for two seconds without pressing anything
+    expect(run(w, atEntity(10, 11), 120)).toEqual([]);
+  });
+
+  it("raises `engaged` on the ↑ PRESS, and only for the tick of the press", () => {
+    const w = spawnEntities([drained()], []);
+    const evs = stepEntities(w, GRID, atEntity(10, 11, { playerEngage: true }));
+    expect(evs.filter((e) => e.type === "engaged").map((e) => e.id)).toEqual(["obj1"]);
+    // the sim hands in an EDGE, so a held ↑ is not a second engage
+    expect(run(w, atEntity(10, 11), 60).filter((e) => e.type === "engaged")).toEqual([]);
+  });
+
+  it("is out of reach from across the room", () => {
+    const w = spawnEntities([drained()], []);
+    const far = idleInput({ playerX: 30 * TILE * SUBS, playerY: 12 * TILE * SUBS, playerEngage: true });
+    expect(stepEntities(w, GRID, far).filter((e) => e.type === "engaged")).toEqual([]);
+  });
+
+  it("ONE press engages ONE being — the nearest — never both at once", () => {
+    const w = spawnEntities([drained({ id: "near", c: 10 }), drained({ id: "far", c: 11 })], []);
+    const evs = stepEntities(w, GRID, atEntity(10, 11, { playerEngage: true }));
+    expect(evs.filter((e) => e.type === "engaged").map((e) => e.id)).toEqual(["near"]);
+  });
+
+  it("engageTargetId names exactly what a press would reach (the cue reads from it)", () => {
+    const w = spawnEntities([drained()], []);
+    const px = (10 * TILE + TILE / 2) * SUBS;
+    const py = 12 * TILE * SUBS;
+    expect(engageTargetId(w, px, py)).toBe("obj1");
+    expect(engageTargetId(w, 30 * TILE * SUBS, py)).toBeNull();
+    // a restored object no longer advertises itself
+    redeemEntity(w, "obj1");
+    expect(engageTargetId(w, px, py)).toBeNull();
+  });
+
+  it("↑ opens a CAGE — the fist-less chapter can still free its classmate", () => {
+    // PK-R6 · C2: ch01 grants no fist (doc 44 §4), and cages used to answer to
+    // nothing else. Without this the chapter's one classmate cage would be
+    // unopenable and the chapter uncompletable.
+    const w = spawnEntities([spec({ id: "cage-merle", role: "cage", skin: "pencilcase", c: 10, r: 11 })], []);
+    const evs = stepEntities(w, GRID, atEntity(10, 11, { playerEngage: true }));
+    expect(evs.filter((e) => e.type === "cageBurst").map((e) => e.id)).toEqual(["cage-merle"]);
+    expect(w.entities[0]!.redeemed).toBe(true);
+  });
+});
+
+describe("the fist-less dodge window (PK-R6 · C2)", () => {
+  it("opens a counter-window after DODGES_PER_WINDOW chalks reach the floor", () => {
+    const w = spawnEntities([spec({ id: "tafel", role: "guardian", skin: "tafel", c: 17, r: 11, tier: "E" })], []);
+    const g = w.entities[0]!;
+    // the child keeps their distance, which is what turns a throw into a dodge
+    const far = idleInput({ playerX: 34 * TILE * SUBS });
+    let staggers = 0;
+    for (let t = 0; t < 2000 && staggers === 0; t++) {
+      for (const ev of stepEntities(w, GRID, far)) if (ev.type === "guardianStagger") staggers++;
+    }
+    expect(staggers).toBe(1);
+    expect(g.dodges).toBe(0); // the tally resets when it is spent
+  });
+
+  it("never opens mid-crossing — a stagger there strands her off-station", () => {
+    const w = spawnEntities([spec({ id: "tafel", role: "guardian", skin: "tafel", c: 17, r: 11, tier: "E" })], []);
+    const g = w.entities[0]!;
+    const far = idleInput({ playerX: 34 * TILE * SUBS });
+    for (let t = 0; t < 4000; t++) {
+      stepEntities(w, GRID, far);
+      expect(g.state === "stagger" && g.vx !== 0).toBe(false);
+    }
+  });
+});
 
 describe("chaser", () => {
   it("patrols and turns at a ledge instead of walking off", () => {

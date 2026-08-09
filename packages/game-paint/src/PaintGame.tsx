@@ -577,13 +577,13 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           />
         )}
       </div>
-      {coarse && !done && <TouchPad pad={padRef.current} />}
+      {coarse && !done && <TouchPad pad={padRef.current} canPunch={abilitiesRef.current.includes("punch")} />}
       {/* PB-F3 (the rest of F2-34): the bar only offers verbs you actually have —
           advertising the fist before Fibel gives it is what made the rattling
           cage in the entrance hall read as broken instead of as a promise. */}
       <p style={{ fontSize: 12, color: "#8a8066", textAlign: "center", marginTop: 6 }}>
         ←→ laufen · SPACE springen (halten = höher)
-        {abilitiesRef.current.includes("punch") ? " · X Faust (halten = laden)" : ""} · ↑↓ klettern
+        {abilitiesRef.current.includes("punch") ? " · X Faust (halten = laden)" : ""} · ↑ hingehen &amp; klettern
         {buildSha ? ` · Build ${buildSha.slice(0, 7)}` : ""}
       </p>
     </div>
@@ -848,8 +848,15 @@ const btn: React.CSSProperties = {
   fontWeight: 600,
 };
 
-/** Pointer-capture touch buttons writing straight into the shared pad. */
-function TouchPad({ pad }: { pad: Pad }): React.ReactElement {
+/** Pointer-capture touch buttons writing straight into the shared pad.
+ *
+ *  PK-R6 · C2: the touch pad now obeys the same law the keyboard bar below it
+ *  has obeyed since PB-F3 — it only offers verbs the child actually has. ch01
+ *  grants no fist at all (doc 44 §4), so a permanent ✊ that does nothing would
+ *  be exactly the „reads as broken" defect F2-34 removed from the hint line,
+ *  and worse on a tablet, where the button is the only thing telling a
+ *  six-year-old what they can do. */
+function TouchPad({ pad, canPunch }: { pad: Pad; canPunch: boolean }): React.ReactElement {
   const bind = (key: keyof Pad) => ({
     onPointerDown: (e: React.PointerEvent<HTMLButtonElement>) => {
       pad[key] = true;
@@ -883,8 +890,11 @@ function TouchPad({ pad }: { pad: Pad }): React.ReactElement {
         <button aria-label="rechts" style={zone} {...bind("right")}>→</button>
       </div>
       <div style={{ display: "flex", gap: 10 }}>
-        <button aria-label="klettern" style={zone} {...bind("up")}>↑</button>
-        <button aria-label="Faust" style={zone} {...bind("punch")}>✊</button>
+        {/* PK-R6 · C1: ↑ is no longer only a climb — it is the verb that
+            reaches a drained thing (entities.ENGAGEABLE_ROLES), which is what
+            the ↑ cue in the world is pointing at. */}
+        <button aria-label="hingehen und klettern" style={zone} {...bind("up")}>↑</button>
+        {canPunch && <button aria-label="Faust" style={zone} {...bind("punch")}>✊</button>}
         <button aria-label="springen" style={{ ...zone, width: 84 }} {...bind("jump")}>⤒</button>
       </div>
     </div>

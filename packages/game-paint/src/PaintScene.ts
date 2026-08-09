@@ -21,7 +21,7 @@ import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
-import { type EntityWorld } from "./entities.ts";
+import { type EntityWorld, engageTargetId } from "./entities.ts";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import { type EntPoseInput, WASHED_ROLES, entPoseCell, washAlphaFor } from "./anim.ts";
@@ -96,6 +96,18 @@ export const GUARDIAN_BOARDS: Record<string, { dy: number; w: number; h: number 
 export const EVIDENCE_BEAT_TICKS = 36;
 
 /** Display heights in world px for the duel's two newly-wired sheets (R3-4). */
+/** PK-R6 · C1 · display height per drained-object skin, in world px (TILE=16).
+ *  Measured against each Batch-AC sheet's aspect so the six read as one set of
+ *  classroom things at one scale rather than six unrelated stickers. */
+const DRAINED_H: Record<string, number> = {
+  obj_desk: 28, // 368×353 — the biggest thing in the room
+  obj_schoolbag: 26, // 378×341
+  obj_book: 24, // 268×358
+  obj_sharpener: 22, // 254×353
+  obj_pencil: 30, // 69×393 — tall and thin; height is what makes it legible
+  obj_gluestick: 28, // 124×396
+};
+
 const CHALK_DISPLAY_H = 9;
 const HAND_DISPLAY_H = 18;
 const HAND_OFFSET_X = 15;
@@ -140,6 +152,8 @@ export class PaintScene extends Phaser.Scene {
    *  redeemable creature, built beside its sprite and driven by washAlphaFor. */
   private washImgs = new Map<string, Phaser.GameObjects.Image>();
   private projG!: Phaser.GameObjects.Graphics;
+  /** PK-R6 · C1: the ↑ cue over the being a press would engage. */
+  private engageCueG!: Phaser.GameObjects.Graphics;
   /** R3-4: pooled chalk sprites (one per live projectile, reused per frame). */
   private projImgs: Phaser.GameObjects.Image[] = [];
   /** R3-4: the guardian's throwing hand, shown only during its windup. */
@@ -203,6 +217,9 @@ export class PaintScene extends Phaser.Scene {
     // player/world/letters/bonus clock all spawned by the Sim in the constructor
     this.buildEntityImgs();
     this.projG = this.add.graphics().setDepth(8);
+    // PK-R6 · C1: the ↑ cue rides ABOVE the beings it points at (depth 7) and
+    // below the hero (11), so it never hides the thing it is advertising.
+    this.engageCueG = this.add.graphics().setDepth(9.5);
     // R3-4: the guardian's throwing hand — built once, shown only on the windup
     this.handImg = this.add.image(0, 0, "fb-ent-generic").setDepth(9).setOrigin(0.5, 0.5).setVisible(false);
 
@@ -405,11 +422,45 @@ export class PaintScene extends Phaser.Scene {
     if (e.role === "crusher") return 30;
     if (e.role === "door.trigger") return e.skin === "klecksdoor" ? 30 : 34;
     if (e.role === "cage") return e.skin === "pencilcase" ? 24 : 22;
+    // PK-R6 · C1: a drained object is FURNITURE-SIZED, and the six of them are
+    // not one size — a desk the height of a pencil would read as a toy. Heights
+    // are per skin, chosen against each sheet's own aspect (the tall-thin
+    // stationery gets a few px more so its silhouette still names it at 1×,
+    // which is what step 1 of its restore card asks the child to do).
+    if (e.role === "drained") return DRAINED_H[e.skin] ?? 26;
     if (e.role === "powerup") return 26;
     if (e.role === "tip") return 18; // R3-16: a torn page, smaller than a being
     if (e.role === "book") return 15;
     if (e.role.startsWith("platform")) return 10;
     return 24; // chasers, gunners, flyers, bouncers
+  }
+
+  /**
+   * PK-R6 · C1 · THE ↑ CUE (doc 44 §4 ch01: „each stands grey in the world with
+   * an ↑ cue"). A chalk arrow bobbing over the ONE being a press would reach.
+   *
+   * It is drawn from `engageTargetId` — the same pure function the sim asks
+   * before it opens a card — so the arrow can never point at something a press
+   * would miss. That is the letter-magnet rule applied to an affordance: the
+   * picture and the mechanic read from one answer.
+   */
+  private renderEngageCue(): void {
+    const id = engageTargetId(this.world, this.player.x, this.player.y);
+    const e = id === null ? null : this.world.entities.find((x) => x.id === id);
+    this.engageCueG.clear();
+    if (!e) return;
+    const x = fromSubs(e.x);
+    const bob = this.cfg.reducedMotion ? 0 : Math.sin(this.tickCount / 9) * 1.6;
+    const y = fromSubs(e.y) - this.entTargetH(e) - 7 + bob;
+    // a stubby chalk arrow: shaft + head, in the Tafel's own chalk white with
+    // the book's ink contour, so it belongs to this world rather than to a UI
+    const g = this.engageCueG;
+    g.fillStyle(0xf6f2e8, 0.95);
+    g.lineStyle(1, 0x243048, 0.65);
+    g.fillTriangle(x, y - 5, x - 4.5, y + 1, x + 4.5, y + 1);
+    g.strokeTriangle(x, y - 5, x - 4.5, y + 1, x + 4.5, y + 1);
+    g.fillRect(x - 1.6, y + 1, 3.2, 4);
+    g.strokeRect(x - 1.6, y + 1, 3.2, 4);
   }
 
   private renderEntities(): void {
@@ -426,13 +477,16 @@ export class PaintScene extends Phaser.Scene {
       else img.setScale(targetH / frameH);
       img.setFlipX(e.dir > 0);
       // THE TRANSPARENCY GRAMMAR (PB-F2, Fable's PK-F1 review ruling 3):
-      // SOLID = you can act on this now · TRANSPARENT = not yet. A cage whose
-      // opening verb has not been granted is a promise, not a puzzle — it is
-      // drawn ghosted so „it only rattles" reads as intended rather than as a
-      // broken pickup. It solidifies the moment the fist is yours.
-      const ghosted = e.role === "cage" && !e.redeemed && !this.cfg.grantedAbilities().includes("punch");
-      if (ghosted) img.setAlpha(0.45);
-      else if (e.redeemed && !e.role.startsWith("platform")) img.setAlpha(0.85);
+      // SOLID = you can act on this now · TRANSPARENT = not yet.
+      // AMENDED (PK-R6 · C2). The rule said SOLID =
+      // actionable now · TRANSPARENT = not yet, and the only "not yet" the
+      // chapter had was a cage before the fist. ↑ now opens a cage
+      // (entities.ENGAGEABLE_ROLES) in every chapter, with no grant to wait
+      // for, so there is no longer a state in which a cage is visible and
+      // unactionable — the ghosting is retired rather than left as a condition
+      // that can no longer be true. The grammar itself is untouched and still
+      // available the moment a chapter reintroduces a gated verb.
+      if (e.redeemed && !e.role.startsWith("platform")) img.setAlpha(0.85);
       else img.setAlpha(1);
       if (e.state === "telegraph") img.setTint(0xfff2b0);
       else img.clearTint();
@@ -645,6 +699,7 @@ export class PaintScene extends Phaser.Scene {
     }
 
     this.renderEntities();
+    this.renderEngageCue();
     this.renderEvidence();
 
     for (const ring of this.ringImgs) {

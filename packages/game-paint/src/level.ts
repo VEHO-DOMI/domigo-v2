@@ -20,6 +20,14 @@ export type EntityRole =
   | "chaser" | "gunner" | "flyer" | "bouncer" | "crusher" | "swarm"
   | "platform.move" | "platform.fall" | "platform.swing"
   | "cage" | "powerup" | "door.trigger" | "guardian"
+  // PK-R6 · C1 (doc 44 §4 ch01): a DRAINED classroom object — one of the things
+  // OSWIN rained the colour out of, standing grey where it fell. It has no
+  // brain and no menace: it waits, wearing an ↑ cue, until the child steps up
+  // and says what it is. The two-step `restore` card then gives it back its
+  // name and its colour and the world keeps that colour. This is the ch01
+  // rebuild's field identity — restoration spread across the whole level
+  // instead of six anonymous cages in one room.
+  | "drained"
   // PK-R3b · R3-16 (doc 41 §5): the two static-state collectibles. `tip` is a
   // Regel-Seite — a rule page OSWIN tore out of the book, which shows its
   // Merksatz when picked up; `book` is a Bonus-Buch, the no-death adaptation of
@@ -566,7 +574,10 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     // PB-T1 · walkers spawn standing on solid (the entity ground contract's
     // authoring side — a mid-air or slope spawn is a placement defect)
     for (const e of ph.entities) {
-      if ((e.role === "chaser" || e.role === "bouncer") && !isSolid(glyphAt(ph.rows, e.c, e.r + 1))) {
+      // PK-R6 · C1: `drained` joins this law — a desk hovering an inch off the
+      // floor is the same authoring defect as a mid-air chaser, and it is the
+      // one the eye catches first because furniture is EXPECTED to rest.
+      if ((e.role === "chaser" || e.role === "bouncer" || e.role === "drained") && !isSolid(glyphAt(ph.rows, e.c, e.r + 1))) {
         failures.push({ phase: ph.id, law: "spawn-standable", detail: `${e.role} ${e.id} at (${e.c},${e.r}) must stand on solid ground` });
       }
     }
@@ -592,7 +603,11 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       // the same defect as an unreachable cage, and „hidden" never means
       // „impossible" (doc 31's law: a collectible no child can reach is a
       // defect, not a secret).
-      if ((e.role === "cage" || e.role === "powerup" || PICKUP_ROLES.has(e.role)) && !nearReachable(e.c, e.r, 2, 2, 4)) {
+      // PK-R6 · C1: a drained object joins this law for the same reason a cage
+      // does — it is a being the chapter PROMISES the child can free, and the
+      // HUD counts it. One standing on a ledge nobody can climb is a broken
+      // promise, not a secret.
+      if ((e.role === "cage" || e.role === "powerup" || e.role === "drained" || PICKUP_ROLES.has(e.role)) && !nearReachable(e.c, e.r, 2, 2, 4)) {
         failures.push({ phase: ph.id, law: "entity-reachable", detail: `${e.role} ${e.id} at (${e.c},${e.r}) unreachable` });
       }
     }

@@ -37,6 +37,10 @@ export interface EntityState {
   homeY: number;
   redeemed: boolean;
   hidden: boolean; // revealed via links
+  /** PK-R6 · C2 · guardians only: chalk thrown at this child that MISSED since
+   *  the last counter-window. See DODGES_PER_WINDOW — this is the fist-less
+   *  road into the fight. */
+  dodges: number;
   params: Record<string, unknown>;
 }
 
@@ -56,6 +60,10 @@ export interface ProjectileState {
 
 export type EntityEvent =
   | { type: "encounter"; id: string; role: string; skin: string }
+  /** PK-R6 · C1: the child stepped up to a drained object and pressed ↑. The
+   *  sim turns this into the being's `restore` card; solving it redeems the
+   *  object and the colour floods back (anim.washAlphaFor). */
+  | { type: "engaged"; id: string; role: string; skin: string }
   | { type: "cageHit"; id: string; hpLeft: number }
   | { type: "cageBurst"; id: string; skin: string }
   | { type: "doorTouched"; id: string; kind: string }
@@ -79,6 +87,13 @@ export interface WorldInput {
   playerIframes: number;
   playerOverlayOpen: boolean; // world frozen while a task is up
   fist: { active: boolean; x: number; y: number } | null;
+  /** PK-R6 · C1/C2 · THE ENGAGE PRESS. ch01 grants no fist (doc 44 §4: the
+   *  ability arc starts bare), so the verb that reaches a bewitched thing can
+   *  no longer be a punch. It is ↑ — the same key that already climbs a vine —
+   *  pressed while standing at the thing. RISING EDGE only: the sim hands this
+   *  in as an edge, never as "up is held", so walking up a vine past a drained
+   *  desk cannot fire its card. */
+  playerEngage?: boolean;
 }
 
 export interface EntityWorld {
@@ -114,6 +129,12 @@ export const TURN_FLIP_AT = Math.floor(TURN_TICKS / 2);
 /** doc 40 §4 · the chalk a guardian throws lives on a leash: a deflected piece
  *  that hits nothing must SHATTER rather than sail on as a lingering orb. */
 export const CHALK_LIFE_TICKS = 180;
+/** PK-R6 · C2 · how many thrown pieces the child must let fall before the
+ *  guardian over-reaches and opens a counter-window. Three is the arcade
+ *  read — long enough that the window feels earned, short enough that a
+ *  six-year-old who is only dodging still gets into the fight (the guardian
+ *  throws every 150 t at tier E, so a window opens roughly every 7.5 s). */
+export const DODGES_PER_WINDOW = 3;
 
 // ── R3-5 · REDEMPTION CHANGES STATE, NEVER PRESENCE (doc 40 §3) ──────────────
 // Redeeming used to park a being in a terminal `dazed` and stop stepping it:
@@ -196,6 +217,7 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     homeY: (s.r + 1) * TILE * SUBS,
     redeemed: false,
     hidden: s.params?.hidden === true,
+    dodges: 0,
     params: s.params ?? {},
   })),
   projectiles: [],
@@ -215,6 +237,46 @@ const overlapsPlayer = (e: EntityState, inp: WorldInput, wPx = 14, hPx = 26): bo
 const fistHits = (e: EntityState, fist: WorldInput["fist"], wPx = 14): boolean => {
   if (!fist || !fist.active) return false;
   return Math.abs(e.x - fist.x) / SUBS < wPx && Math.abs(e.y - SUBS * 14 - fist.y) / SUBS < 18;
+};
+
+// ── PK-R6 · C1/C2 · THE ENGAGE REACH (doc 44 §4 ch01) ───────────────────────
+// „each stands grey in the world with an ↑ cue". The cue and the reach are ONE
+// number: the arrow appears over exactly the thing a press would engage, so a
+// child never presses ↑ at something the game silently considers out of range.
+// Generous on purpose (the letter-magnet lesson, R3-16): a six-year-old parks
+// their mascot roughly next to a desk, not on its centre pixel.
+export const ENGAGE_REACH_PX = 22;
+export const ENGAGE_REACH_Y_PX = 34;
+
+/** The roles a ↑ press can reach. Cages are here because ch01 grants NO FIST
+ *  (doc 44 §4 ability amendment) and a cage that only a punch can open would
+ *  make the chapter's one classmate unrescuable — the fist path below stays
+ *  exactly as it was for every chapter that does grant it. */
+export const ENGAGEABLE_ROLES = new Set<string>(["drained", "cage"]);
+
+const inEngageReach = (e: EntityState, playerX: number, playerY: number): boolean =>
+  Math.abs(e.x - playerX) / SUBS < ENGAGE_REACH_PX
+  && Math.abs(e.y - playerY) / SUBS < ENGAGE_REACH_Y_PX;
+
+/**
+ * Which being a ↑ press would engage right now, or null. PURE and exported so
+ * the RENDERER draws the cue from the same answer the sim acts on — the „the
+ * picture and the pickup can never disagree" rule the letter magnet already
+ * follows. Nearest wins when two things stand close.
+ */
+export const engageTargetId = (
+  w: EntityWorld,
+  playerX: number,
+  playerY: number,
+): string | null => {
+  let best: { id: string; d: number } | null = null;
+  for (const e of w.entities) {
+    if (e.hidden || e.redeemed || !ENGAGEABLE_ROLES.has(e.role)) continue;
+    if (!inEngageReach(e, playerX, playerY)) continue;
+    const d = Math.abs(e.x - playerX);
+    if (best === null || d < best.d) best = { id: e.id, d };
+  }
+  return best?.id ?? null;
 };
 
 /** Ground snap for walking enemies (thin wrapper over the mover's surface probe). */
@@ -275,6 +337,12 @@ export const stepEntities = (
 ): EntityEvent[] => {
   const events: EntityEvent[] = [];
   if (inp.playerOverlayOpen) return events; // the world holds its breath during a task
+
+  // PK-R6 · C1: resolve the ↑ press ONCE, to ONE being. Asking each entity
+  // "am I in reach?" independently would open two cards for one press where a
+  // desk and a cage stand together — and the second would be a card about a
+  // being the child never chose.
+  const engageId = inp.playerEngage === true ? engageTargetId(w, inp.playerX, inp.playerY) : null;
 
   for (const e of w.entities) {
     if (e.hidden) continue;
@@ -407,8 +475,29 @@ export const stepEntities = (
         }
         break;
       }
+      // PK-R6 · C1 · THE DRAINED CLASSROOM OBJECT (doc 44 §4 ch01 field
+      // restage). No brain, no menace, no contact damage: it stands where it
+      // fell and waits. The child walks up and presses ↑; the sim turns the
+      // event into its two-step `restore` card. Contact alone does NOTHING on
+      // purpose — a desk that ambushed you with a vocabulary question every
+      // time you brushed past would make the calm tutorial chapter hostile.
+      case "drained": {
+        if (e.id === engageId) {
+          e.state = "shaking";
+          e.timer = 0;
+          events.push({ type: "engaged", id: e.id, role: e.role, skin: e.skin });
+        } else if (e.state === "shaking" && e.timer > 30) e.state = "patrol";
+        break;
+      }
       case "cage": {
-        if (e.state === "closed" && fistHits(e, inp.fist, 16)) {
+        // PK-R6 · C2: ↑ opens a cage in a chapter with no fist. One press frees
+        // it — the two-hit rattle below is the FIST's grammar (wind up, feel the
+        // weight, hit it again), and it stays exactly that for the chapters that
+        // grant one. There is nothing to wind up about a hand on a latch.
+        if (e.state !== "burst" && e.id === engageId) {
+          e.state = "burst"; e.redeemed = true; e.timer = 0;
+          events.push({ type: "cageBurst", id: e.id, skin: e.skin });
+        } else if (e.state === "closed" && fistHits(e, inp.fist, 16)) {
           e.hp -= 1;
           events.push({ type: "puff", x: inp.fist?.x ?? e.x, y: inp.fist?.y ?? e.y, kind: "hit" }); // R3-6
           if (e.hp <= 0) { e.state = "burst"; e.redeemed = true; e.timer = 0; events.push({ type: "cageBurst", id: e.id, skin: e.skin }); }
@@ -447,6 +536,24 @@ export const stepEntities = (
       case "guardian": {
         const script = GUARDIAN_SCRIPT[e.tier];
         if (w.guardianKnots < 0) w.guardianKnots = script.knots;
+        // ── PK-R6 · C2 · THE DODGE WINDOW (doc 44 §4 ch01: „dodging N throws
+        // opens the counter-window") ────────────────────────────────────────
+        // The fist-less road into the fight. Chalk that lands on the boards
+        // instead of on the child is counted where it shatters; the window
+        // opens HERE, the moment she is standing still enough to be caught
+        // over-reaching. Never mid-roll: a stagger during a crossing drops her
+        // wherever the slide had got to and she then idles off-station — the
+        // „settling at 246 instead of its 216" defect from the live playtest.
+        // Waiting costs the child nothing (she stands far longer than she
+        // rolls) and keeps the deflect path below exactly as it was for every
+        // chapter that does grant a fist.
+        if (e.dodges >= DODGES_PER_WINDOW && e.state !== "roll" && e.state !== "stagger" && e.state !== "window") {
+          e.dodges = 0;
+          e.state = "stagger";
+          e.timer = 0;
+          eventsPushStagger(events, e.id);
+          break;
+        }
         if (e.state === "idle") {
           if (e.timer > script.throwEvery) {
             // R3-4 · THE FACING LAW: it may never throw at a back it is turned
@@ -529,6 +636,22 @@ export const stepEntities = (
     if (g !== null && p.y >= g && !p.deflected) {
       p.dead = true;
       if (p.kind === "chalk") events.push({ type: "puff", x: p.x, y: p.y, kind: "chalk" });
+      // ── PK-R6 · C2 · THE DODGE WINDOW (doc 44 §4 ch01: „dodging N throws
+      // opens the counter-window") ──────────────────────────────────────────
+      // A piece of chalk that reaches the floor is a piece the child got out of
+      // the way of. Count it. This is the road into the fight that a chapter
+      // with NO FIST has to have: the deflect path below still works and is
+      // still the fast one, but it can no longer be the ONLY one, or ch01's
+      // arena would be unwinnable the moment the fist moved to ch02.
+      if (p.kind === "chalk") {
+        // Counting only. WHEN the tally becomes a counter-window is the
+        // guardian's own decision, taken in its machine below — by the time a
+        // piece of chalk reaches the floor its thrower has already left the
+        // throw in a roll, so opening the window from here would only ever
+        // interrupt a crossing and strand her off-station.
+        const src = w.entities.find((e) => e.id === p.fromId && e.role === "guardian" && !e.redeemed);
+        if (src && src.state !== "stagger" && src.state !== "window") src.dodges += 1;
+      }
     }
     if (p.deflected && p.kind === "chalk" && p.age > CHALK_LIFE_TICKS) {
       p.dead = true;

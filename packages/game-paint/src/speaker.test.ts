@@ -177,3 +177,39 @@ describe("R3-11 · a card is served only by an asker the child can see", () => {
     expect(sim.overlayOpen).toBe(false);
   });
 });
+
+// ── PK-R6 · C1 · the drained object is a SEEABLE ASKER ──────────────────────
+describe("PK-R6 · a drained object asks on the ↑ press", () => {
+  const withObject = (): Sim => {
+    const rows = corridor();
+    const obj: EntitySpec = { id: "p1-obj-desk", role: "drained", skin: "obj_desk", c: 8, r: 17, tier: "E", params: {} };
+    return new Sim({ level: level(rows, [obj]), phaseId: "p1", grantedAbilities: () => ["jump", "run"], freedCageIds: () => [] });
+  };
+
+  it("walking past it raises nothing; ↑ at it raises ITS OWN encounter card", () => {
+    const sim = withObject();
+    sim.warp(8, 17); // stand ON it (the corridor is wider than the view)
+    // just standing there must stay silent — a desk is not an ambush
+    const standing = runUntil(sim, idle(), () => false, 120);
+    expect(standing.some((e) => e.type === "task")).toBe(false);
+
+    const pressed = runUntil(sim, idle({ up: true }), (e) => e.some((x) => x.type === "task"), 30);
+    const task = pressed.find((e) => e.type === "task");
+    expect(task).toBeDefined();
+    // bound to the being that asked — the binding law (PB-F1), so the router
+    // can only ever answer it with obj_desk's own restore card
+    expect(task?.type === "task" && task.req.use).toBe("encounter");
+    expect(task?.type === "task" && task.req.ctx.type === "entity" && task.req.ctx.id).toBe("p1-obj-desk");
+    expect(task?.type === "task" && task.req.ctx.type === "entity" && task.req.ctx.skin).toBe("obj_desk");
+    expect(sim.overlayOpen).toBe(true); // the world waits for the card
+  });
+
+  it("solving it redeems the object — the colour floods back into the world", () => {
+    const sim = withObject();
+    sim.warp(8, 17);
+    runUntil(sim, idle(), () => false, 5);
+    runUntil(sim, idle({ up: true }), (e) => e.some((x) => x.type === "task"), 30);
+    sim.solveTask({ type: "entity", id: "p1-obj-desk", skin: "obj_desk" });
+    expect(sim.world.entities.find((e) => e.id === "p1-obj-desk")?.redeemed).toBe(true);
+  });
+});

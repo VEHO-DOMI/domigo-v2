@@ -642,11 +642,31 @@
    "variant": "digit-to-word",
    "shown": "13",
    "values": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
     "eleven",
     "twelve",
     "thirteen",
     "fourteen",
-    "sixteen"
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+    "twenty-one",
+    "twenty-two",
+    "twenty-three",
+    "twenty-four",
+    "twenty-five"
    ],
    "answer": "thirteen",
    "skins": [
@@ -673,11 +693,31 @@
    "variant": "digit-to-word",
    "shown": "7",
    "values": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
     "six",
     "seven",
-    "eleven",
+    "eight",
+    "nine",
     "ten",
-    "seventeen"
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+    "twenty-one",
+    "twenty-two",
+    "twenty-three",
+    "twenty-four",
+    "twenty-five"
    ],
    "answer": "seven",
    "skins": [
@@ -731,11 +771,31 @@
    "variant": "word-to-digit",
    "shown": "eighteen",
    "values": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
     "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
     "18",
-    "80",
     "19",
-    "17"
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25"
    ],
    "answer": "18",
    "hints": {
@@ -815,11 +875,31 @@
    "variant": "digit-to-word",
    "shown": "15",
    "values": [
+    "one",
+    "two",
+    "three",
+    "four",
     "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
     "thirteen",
     "fourteen",
     "fifteen",
-    "sixteen"
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+    "twenty-one",
+    "twenty-two",
+    "twenty-three",
+    "twenty-four",
+    "twenty-five"
    ],
    "answer": "fifteen",
    "hints": {
@@ -1061,63 +1141,6 @@
     "deDesc": "Das Gegenteil von aufmachen."
    },
    "grounding": "u01 commands; open/close"
-  },
-  {
-   "id": "g1.paint.ch01.res.satchel.c1",
-   "use": "rescue",
-   "kind": "choice",
-   "stimulus": {
-    "type": "entity",
-    "showsDe": "An einem Seil hängt eine zugeschnürte Schultasche"
-   },
-   "storyDe": "Sag, was da hängt — dann geht der Knoten auf!",
-   "promptEn": "What is it?",
-   "options": [
-    "school bag",
-    "pencil case",
-    "English book"
-   ],
-   "answer": "school bag",
-   "skins": [
-    "satchel"
-   ],
-   "hints": {
-    "deDesc": "Die trägst du auf dem Rücken zur Schule.",
-    "deWord": "Auf Deutsch: die Schultasche."
-   },
-   "grounding": "u01 phrase: school bag"
-  },
-  {
-   "id": "g1.paint.ch01.res.satchel.r1",
-   "use": "rescue",
-   "kind": "restore",
-   "stimulus": {
-    "type": "entity",
-    "showsDe": "Der Knoten ist auf — die Schultasche ist grau"
-   },
-   "storyDe": "Sag, wer sie ist — dann gib ihr die Farbe!",
-   "nameOptions": [
-    "school bag",
-    "pencil case",
-    "uniform",
-    "blazer"
-   ],
-   "name": "school bag",
-   "colourAskDe": "„Ich war braun wie eine Kastanie!“",
-   "colourOptions": [
-    "brown",
-    "blue",
-    "yellow"
-   ],
-   "colour": "brown",
-   "skins": [
-    "satchel"
-   ],
-   "hints": {
-    "deDesc": "Die trägst du auf dem Rücken zur Schule.",
-    "deWord": "Auf Deutsch: die Schultasche — und Braun."
-   },
-   "grounding": "u01 phrase: school bag + colour: brown (matches the sheet)"
   },
   {
    "id": "g1.paint.ch01.res.case.c1",
@@ -1390,6 +1413,216 @@
     "deWord": "Auf Deutsch: Hallo."
    },
    "grounding": "u01 greeting: hello — the chapter's climax, played not narrated"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-schoolbag.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Eine Schultasche steht grau in der Halle"
+   },
+   "storyDe": "Sag, wer sie ist — dann gib ihr die Farbe!",
+   "nameOptions": [
+    "school bag",
+    "pencil case",
+    "book",
+    "hat"
+   ],
+   "name": "school bag",
+   "colourAskDe": "„Ich war braun wie eine Nuss!“, seufzt sie.",
+   "colourOptions": [
+    "brown",
+    "blue",
+    "green"
+   ],
+   "colour": "brown",
+   "skins": [
+    "obj_schoolbag"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Die trägst du auf dem Rücken zur Schule.",
+    "deWord": "Auf Deutsch: die Schultasche — und Braun."
+   },
+   "grounding": "u01 phrase: school bag + colour: brown (obj_schoolbag_a measures hue 31°, lum 0.33 — tan leather with gold buckles)"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-book.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein dickes Buch lehnt blass an der Wand"
+   },
+   "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "book",
+    "exercise book",
+    "tablet",
+    "note"
+   ],
+   "name": "book",
+   "colourAskDe": "„Ich war blau wie der Abendhimmel!“",
+   "colourOptions": [
+    "blue",
+    "red",
+    "brown"
+   ],
+   "colour": "blue",
+   "skins": [
+    "obj_book"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Da stehen Geschichten drin, Seite für Seite.",
+    "deWord": "Auf Deutsch: das Buch — und Blau."
+   },
+   "grounding": "u01 word: book + colour: blue (obj_book_a measures hue 208° over 72% of the body — blue cover, gold corners)"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-desk.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein Tisch steht grau im dunklen Klassenzimmer"
+   },
+   "storyDe": "Sag, was er ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "desk",
+    "chair",
+    "floor",
+    "window"
+   ],
+   "name": "desk",
+   "colourAskDe": "„Ich war braun wie warmes Holz!“, brummt er.",
+   "colourOptions": [
+    "brown",
+    "pink",
+    "blue"
+   ],
+   "colour": "brown",
+   "skins": [
+    "obj_desk"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Daran sitzt du und schreibst.",
+    "deWord": "Auf Deutsch: der Tisch — und Braun."
+   },
+   "grounding": "u01 word: desk + colour: brown (obj_desk_a measures hue 33°, lum 0.34 on the legs and frame — a wooden school desk)"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-pencil.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein langer Stift liegt grau auf dem Boden"
+   },
+   "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "pencil",
+    "pen",
+    "rubber",
+    "scissors"
+   ],
+   "name": "pencil",
+   "colourAskDe": "„Ich war gelb wie eine Biene!“, piepst er.",
+   "colourOptions": [
+    "yellow",
+    "green",
+    "black"
+   ],
+   "colour": "yellow",
+   "skins": [
+    "obj_pencil"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Damit malst du — und der Radiergummi macht es weg.",
+    "deWord": "Auf Deutsch: der Bleistift — und Gelb."
+   },
+   "grounding": "u01 word: pencil + colour: yellow (obj_pencil_a measures hue 43°, sat 0.95 — the classic yellow barrel)"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-gluestick.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein kleiner Stift steht grau im Gras"
+   },
+   "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "glue stick",
+    "paintbrush",
+    "pencil sharpener",
+    "rubber"
+   ],
+   "name": "glue stick",
+   "colourAskDe": "„Ich war grün wie ein junges Blatt!“",
+   "colourOptions": [
+    "green",
+    "orange",
+    "white"
+   ],
+   "colour": "green",
+   "skins": [
+    "obj_gluestick"
+   ],
+   "phases": [
+    "p3"
+   ],
+   "hints": {
+    "deDesc": "Damit klebst du Bilder ins Heft.",
+    "deWord": "Auf Deutsch: der Klebestift — und Grün."
+   },
+   "grounding": "u01 phrase: glue stick + colour: green (obj_gluestick_a measures hue 84° over the barrel; the cap is cream)"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-sharpener.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein kleiner Kasten liegt grau im Hof"
+   },
+   "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "pencil sharpener",
+    "glue stick",
+    "pencil case",
+    "rubber"
+   ],
+   "name": "pencil sharpener",
+   "colourAskDe": "„Ich war gelb wie der Honig!“, klappert er.",
+   "colourOptions": [
+    "yellow",
+    "blue",
+    "pink"
+   ],
+   "colour": "yellow",
+   "skins": [
+    "obj_sharpener"
+   ],
+   "phases": [
+    "p3"
+   ],
+   "hints": {
+    "deDesc": "Damit wird der Bleistift wieder spitz.",
+    "deWord": "Auf Deutsch: der Spitzer — und Gelb."
+   },
+   "grounding": "u01 phrase: pencil sharpener + colour: yellow (obj_sharpener_a measures hue 43° over 63% of the body — a golden metal sharpener)"
   }
  ]
 }

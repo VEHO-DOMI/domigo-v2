@@ -95,6 +95,29 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
       for (let i = 0; i < total; i++) {
         if (!tick(pad(i % interval === 0 ? { punch: true } : {}))) break;
       }
+    } else if (op === "paceUntilDown") {
+      // ["paceUntilDown", halfPeriod, timeout] — pace until the guardian is
+      // actually DOWN, CLOSED LOOP on the sim's own flag (the A-3 principle
+      // this file already applies to platforms: never a tick count, because the
+      // number of throws it takes depends on every tick spent upstream).
+      const [half, timeout = 6000] = args;
+      for (let i = 0; i < timeout; i++) {
+        if (sim.guardianDefeated) break;
+        const right = Math.floor(i / half) % 2 === 0;
+        if (!tick(pad(right ? { right: true } : { left: true }))) break;
+      }
+    } else if (op === "pace") {
+      // PK-R6 · C2 · ["pace", halfPeriod, totalTicks] — the FIST-LESS arena
+      // rhythm. ch01 grants no fist (doc 44 §4), so the way into the fight is
+      // no longer deflecting chalk but getting out of its way: every piece that
+      // reaches the floor is a dodge, and DODGES_PER_WINDOW of them open the
+      // counter-window. Walking a steady line back and forth is exactly what a
+      // child does under a thrower, and it is what the pilot does here.
+      const [half, total] = args;
+      for (let i = 0; i < total; i++) {
+        const right = Math.floor(i / half) % 2 === 0;
+        if (!tick(pad(right ? { right: true } : { left: true }))) break;
+      }
     } else if (op === "settle") {
       for (let i = 0; i < 240; i++) { if (sim.player.grounded && Math.abs(sim.player.vx) < 8) break; if (!tick(pad({}))) break; }
     } else if (op === "waitPlatformAt") {
@@ -184,7 +207,7 @@ const PILOTS = {
   // (A-3), never a tick count — the platform's phase depends on every tick
   // spent upstream, so a counted wait would be brittle by construction.
   p3: {
-    abilities: ["jump", "run", "punch"],
+    abilities: ["jump", "run"],
     program: [
       ["walkTo", 9], ["settle"], // to the lip of the chalk slide
       ["hold", { right: true }, 90], ["settle"], // ride it down to c15,r20
@@ -197,20 +220,29 @@ const PILOTS = {
       ["walkTo", 60], ["settle"], ["wait", 60],
     ],
   },
-  // p4 „Die Tafel-Bühne": the guardian fight — stand mid-arena, tap the fist
-  // on a rhythm to deflect chalk; staggers open the counter-window tasks
-  // (auto-solved), three knots untie, the exit sign appears at (33,15).
+  // p4 „Die Tafel-Bühne": the guardian fight, FIST-LESS (PK-R6 · C2). The old
+  // pilot tapped the fist to deflect chalk back at the Tafel; ch01 grants no
+  // fist any more (doc 44 §4), so the pilot does what the chapter now asks of
+  // a child — it keeps MOVING. Every piece of chalk that lands on the boards
+  // instead of on the hero is a dodge, and three of them over-reach her into
+  // the counter-window (entities.DODGES_PER_WINDOW). Three knots, three
+  // windows, then the exit sign at (33,15).
   // NOTE the two chalk-crate podiums (row 14, c5-7 and c25-27): they are only
   // one tile high, but the hero is ~2 tiles, so at floor level they block the
   // HEAD — each has to be jumped, not walked past.
   p4: {
-    abilities: ["jump", "run", "punch"],
+    abilities: ["jump", "run"],
     program: [
+      // Dodge from the LEFT of the stage, not from under her. Chalk aimed at a
+      // hero standing at her feet arrives before it can fall, so it lands on
+      // the CHILD (an encounter) instead of on the boards — pacing at c15 next
+      // to a Tafel at c17 produced zero dodges and a fight that never opened.
+      // Distance is what turns a throw into a dodge, which is the lesson the
+      // chapter is teaching with no fist to answer back.
+      ["walkTo", 3], ["settle"],
+      ["paceUntilDown", 40],
       ["walkTo", 4], ["settle"],
       ["jump", { dir: "right", hold: 16 }], ["settle"], // over the left podium
-      ["walkTo", 14], ["settle"],
-      ["punchEvery", 12, 2400],
-      ["punchEvery", 9, 2400],
       ["walkTo", 24], ["settle"],
       ["jump", { dir: "right", hold: 16 }], ["settle"], // over the right podium
       ["walkTo", 33], ["settle"], ["wait", 40],
@@ -219,7 +251,7 @@ const PILOTS = {
   // p9 „Die Kleckskammer": the bonus room — the tape proves the room itself
   // is traversable to its own exit (letters are the timed bonus, not the path)
   p9: {
-    abilities: ["jump", "run", "punch"],
+    abilities: ["jump", "run"],
     program: [
       ["walkTo", 42], ["settle"], ["wait", 40],
     ],

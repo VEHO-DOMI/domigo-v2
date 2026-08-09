@@ -163,6 +163,8 @@ export class Sim {
   fistOnSolid = false;
   /** PB-F3: the cage hint is once per phase mount, never a nag. */
   cageHintFired = false;
+  /** PK-R6 · C1: was ↑ pressed THIS tick (rising edge)? Recomputed every step. */
+  engagePressed = false;
   tickCount = 0;
   exitFired = false;
   lettersTotal = 0;
@@ -240,6 +242,9 @@ export class Sim {
       this.bonusLeftTicks--;
       if (this.bonusLeftTicks === 0) { events.push({ type: "exit", to: "bonus-timeout" }); return events; }
     }
+
+    // PK-R6 · C1: the engage edge, read BEFORE prevPad is overwritten below.
+    this.engagePressed = pad.up && !this.prevPad.up;
 
     const near = this.nearestRing();
     const abilities = this.cfg.grantedAbilities();
@@ -435,6 +440,10 @@ export class Sim {
       playerIframes: this.player.iframes,
       playerOverlayOpen: this.overlayOpen,
       fist: this.fist ? { active: true, x: this.fist.x, y: this.fist.y } : null,
+      // PK-R6 · C1: the RISING EDGE of ↑. Held-up climbs vines (player.ts owns
+      // that); only the press engages, so riding a vine past a drained object
+      // cannot fire its card, and holding ↑ at one cannot fire it twice.
+      playerEngage: this.engagePressed,
     });
     for (const ev of evs) this.onEntityEvent(ev, events);
 
@@ -470,6 +479,15 @@ export class Sim {
         applyKnockback(this.player, this.player.x < (src?.x ?? this.player.x) ? -1 : 1, false);
         this.player.iframes = PAINT.iframeTicks;
         this.ask({ use: ev.role === "swarm" ? "quickfire" : "encounter", ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
+        break;
+      }
+      // PK-R6 · C1: a drained object was engaged with ↑. It raises the SAME
+      // `encounter` pool a creature does — it is a being on screen being asked
+      // about, which is exactly what the speaker law (R3-11) wants — and ch01's
+      // field palette (check-game-tasks §9) is what keeps that pool to
+      // restore/choice/wheel/oddone in the tutorial chapter.
+      case "engaged": {
+        this.ask({ use: "encounter", ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
         break;
       }
       case "cageBurst": {
@@ -554,7 +572,12 @@ export class Sim {
    *  only ever freeze for a card that will open. */
   private nearOpenableCage(events: SimEvent[]): void {
     if (this.cageHintFired || this.cfg.cageHintShown?.() === true) return;
-    if (!this.cfg.grantedAbilities().includes("punch")) return;
+    // PK-R6 · C2: the hint used to be gated on the FIST, because the fist was
+    // the only thing that opened a cage. ch01 grants no fist any more (doc 44
+    // §4) and ↑ opens it instead — so the gate is now „can this child open it
+    // AT ALL", which is true in every chapter and was true in none where the
+    // grant had not landed yet. Without this the one teaching moment for the
+    // chapter's one cage would simply never fire.
     for (const e of this.world.entities) {
       if (e.role !== "cage" || e.redeemed || e.hidden) continue;
       const dx = Math.abs(fromSubs(e.x) - fromSubs(this.player.x));
