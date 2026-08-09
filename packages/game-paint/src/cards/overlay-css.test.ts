@@ -167,6 +167,63 @@ describe("the end-states law (doc 42 §1)", () => {
     expect(at).toBeLessThanOrEqual(45);
   });
 
+  // ── PK-R6 · H2 · THE ROUND-2 CRITIQUE, LOCKED ─────────────────────────────
+  it("the iris edge is INKED, not a Gaussian — the blot has drips", () => {
+    // finding 5: „a perfectly smooth radial blur with no irregular or brushed
+    // boundary — a generic digital spotlight rather than part of the painted
+    // world". One radial-gradient has exactly one perfectly circular, perfectly
+    // even edge; ink does not. Both blobs must carry extra layers at their own
+    // centres (the drips and spatters that bite into the opening), and the
+    // aperture's own falloff must be STEPPED rather than a two-stop ramp.
+    for (const cls of ["pb-wipe", "pb-wipe-b"]) {
+      const w = baseRule(PAINT_OVERLAY_CSS, cls);
+      const layers = [...w.matchAll(/radial-gradient\(/g)].length;
+      expect(layers, `${cls} has only ${layers} ink layer(s)`).toBeGreaterThanOrEqual(5);
+      // the drips sit at their OWN centres — a stack of layers all at 50% 47%
+      // is one edge drawn several times, which is the smooth edge again
+      const centres = new Set([...w.matchAll(/at\s+([\d.]+%\s+[\d.]+%)/g)].map((m) => m[1]));
+      expect(centres.size, `${cls} draws every layer at the same centre`).toBeGreaterThanOrEqual(4);
+      // …and they are listed BEFORE the field: CSS paints background layers
+      // front to back, so a drip after the field is hidden behind it
+      const field = w.indexOf("radial-gradient(ellipse 8%") >= 0
+        ? w.indexOf("radial-gradient(ellipse 8%")
+        : w.indexOf("radial-gradient(ellipse 9%");
+      expect(w.indexOf("radial-gradient(")).toBeLessThan(field);
+      // the aperture's own falloff: ≥4 stops, so the wash pools instead of ramping
+      const aperture = w.slice(field);
+      const stops = [...aperture.matchAll(/\d+%\s*[,)]/g)].length;
+      expect(stops, `${cls}'s aperture ramps in ${stops} stops`).toBeGreaterThanOrEqual(4);
+    }
+  });
+
+  it("a flying letter never fully clears the ghost it is landing into", () => {
+    // finding 3: „a second, smaller, misaligned »w« floats above the word". The
+    // glyph and its ghost are the same character in the same slot, so the moment
+    // the flight lifts the glyph clear of its own body the word carries that
+    // letter twice. The type is 26 px, so the arc has to stay well inside that.
+    const frames = PAINT_OVERLAY_CSS.match(/@keyframes pb-letter-fly\s*\{[^]*?\n\}/)?.[0] ?? "";
+    const lift = Math.abs(Number(frames.match(/translateY\((-?[\d.]+)px\)/)?.[1] ?? 99));
+    expect(lift, `the letter lifts ${lift}px clear of its ghost`).toBeLessThan(13);
+    const scale = Number(frames.match(/scale\((0?\.\d+)\)/)?.[1] ?? 0);
+    expect(scale, "the flying glyph is a different SIZE from its ghost").toBeGreaterThan(0.8);
+  });
+
+  it("the word lands in ONE ink: the ghost is the letter's own colour, weaker", () => {
+    // finding 3's second half: „the settled letters are three different colours
+    // (dark brown »br«, olive-green »o«, tan »wn«) instead of reading as one
+    // word". The three were settled ink, a mid-flight blend and a WARM-BROWN
+    // ghost; the ghost must be the same hue as the ink it precedes.
+    const ghost = baseRule(PAINT_OVERLAY_CSS, "pb-slot::before");
+    const rgb = ghost.match(/color:\s*rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)/);
+    expect(rgb, "the chalk ghost lost its colour declaration").not.toBeNull();
+    const [r, g, b] = [Number(rgb![1]), Number(rgb![2]), Number(rgb![3])];
+    // the settled ink is #33291a — the ghost must be that hue, not another one
+    const ink = [0x33, 0x29, 0x1a];
+    const hue = (c: number[]): number => (c[0]! - c[2]!) / Math.max(c[0]!, 1);
+    expect(Math.abs(hue([r, g, b]) - hue(ink))).toBeLessThan(0.08);
+    expect(Number(rgb![4])).toBeLessThan(0.5); // …and weaker, or it is not a ghost
+  });
+
   // ── PK-R6 · H1 · THE CEREMONY SURFACES, LOCKED ────────────────────────────
   // The goal card, the score page and the door out were dressed as web modals
   // over a painting. Each fix below is one line of CSS away from being undone by

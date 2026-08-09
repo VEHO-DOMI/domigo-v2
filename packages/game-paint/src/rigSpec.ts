@@ -51,10 +51,32 @@ export const HEAD_STEMS = ["head_neutral", "head_blink", "head_determined", "hea
  *     `fall` deliberately does not get it, so the two air halves differ in FACE
  *     as well as in hands.
  */
-export const faceFor = (pose: PlayerPose, tick: number, celebrating: boolean, landedAgo = 99): string => {
+/**
+ * PK-R6 · H2 · …AND ONE MORE BEAT GETS ITS OWN (round-2 finding 9: „the boy has
+ * an identical near-neutral face and idle stance while receiving an item, saying
+ * »Danke!« and winning — no beat gets its own expression").
+ *
+ * `attending` is true while a card is open: somebody in the world is asking him
+ * something and the whole screen is leaning in on them. He wears `head_determined`
+ * for it — the face he already wears when he is going at something — because it
+ * is the one commissioned cell that says „I am on this". It ranks BELOW the
+ * cheer (the answer landing outranks listening for it) and below a hurt or a
+ * touchdown, both of which are events happening TO him.
+ *
+ * The third expression the finding asks for — surprise at the moment of contact
+ * — is deliberately NOT invented here: the sheet has five faces, four of them
+ * are now spoken for, and the fifth (`head_hurt`) would tell a child that
+ * walking up to a school bag hurt him. A surprise cell is a commission, and
+ * inventing one out of `head_hurt` is the picture-disagrees-with-the-world
+ * class this rig exists to end.
+ */
+export const faceFor = (
+  pose: PlayerPose, tick: number, celebrating: boolean, landedAgo = 99, attending = false,
+): string => {
   if (celebrating) return "head_celebrate";
   if (pose === "hit") return "head_hurt";
   if (isLanding(pose, landedAgo)) return "head_blink";
+  if (attending) return "head_determined";
   if (pose === "jump") return "head_celebrate";
   if (pose === "run" || pose === "charge") return "head_determined";
   if (pose === "stand" && tick % 180 < 7) return "head_blink";
@@ -82,8 +104,13 @@ export const bodyStemFor = (pose: PlayerPose, landedAgo = 99): string =>
 // the brace, and the one-open-hand law kept intact. It is the run's pairing
 // inverted, which is exactly what it should be: he was running, he hit the
 // floor, and the hand that was pumping is now the hand taking his weight.
-export const handStemsFor = (pose: PlayerPose, landedAgo = 99): { front: string; back: string } =>
-  pose === "hang" || pose === "swing" || pose === "vine" ? { front: "hand_grip", back: "hand_grip" }
+// PK-R6 · H2: …and the CHEER is the second one, read first because it is a
+// whole-body event that outranks whatever locomotion he happens to be in — the
+// flare is only a flare with two open hands in it, and `withCheer` has already
+// put them above his shoulders.
+export const handStemsFor = (pose: PlayerPose, landedAgo = 99, cheering = false): { front: string; back: string } =>
+  cheering ? { front: "hand_open", back: "hand_open" }
+  : pose === "hang" || pose === "swing" || pose === "vine" ? { front: "hand_grip", back: "hand_grip" }
   : isLanding(pose, landedAgo) ? { front: "hand_open", back: "hand_fist" }
   : pose === "fall" || pose === "hit" ? { front: "hand_open", back: "hand_fist" }
   : pose === "run" ? { front: "hand_fist", back: "hand_open" }

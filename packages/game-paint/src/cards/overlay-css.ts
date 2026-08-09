@@ -143,6 +143,24 @@ export const PAINT_OVERLAY_CSS = `
   58%  { transform: translate(-50%, -50%) scale(1.06) rotate(20deg); }
   100% { transform: translate(-50%, -50%) scale(0)    rotate(-12deg); }
 }
+/* PK-R6 · H2 (round-2 finding 5 — „the iris edge is a perfectly smooth radial
+   Gaussian blur with no irregular or brushed boundary; it reads as a generic
+   digital spotlight rather than as part of the painted world"). Fair, and the
+   cause was one line: the aperture was ONE radial-gradient, and a radial
+   gradient's edge is a mathematically perfect circle with a perfectly even
+   falloff — the one boundary nothing in a painted book has.
+
+   It is now built the way ink actually behaves on paper, in three moves and
+   still with zero assets (B14):
+    · the falloff is STEPPED rather than smooth — five stops at uneven distances,
+      so the wash pools and breaks the way a brush leaves it instead of ramping
+      like a lens;
+    · four DRIPS bite into the rim from four different angles, each its own
+      squashed ellipse at its own distance, so the opening is nowhere circular;
+    · two SPATTERS sit outside it, because a blot that landed threw something.
+   The drips are listed BEFORE the field on purpose: CSS paints background
+   layers front to back, so a drip listed after the field would be hidden behind
+   the very ink it is supposed to be biting into. */
 .pb-wipe {
   position: absolute;
   left: var(--pb-focus, 50%);
@@ -150,12 +168,21 @@ export const PAINT_OVERLAY_CSS = `
   width: 165%;
   height: 165%;
   border-radius: 43% 57% 52% 48% / 46% 49% 51% 54%;
-  background: radial-gradient(ellipse 8% 8% at 50% 47%,
-    rgba(23,16,9,0) 0 54%,
-    rgba(23,16,9,0.5) 78%,
-    #17100a 100%,
-    #4a3a22 210%,
-    #2a2216 560%);
+  background:
+    radial-gradient(ellipse 2.6% 1.5% at 44.5% 41.5%, #17100a 0 62%, rgba(23,16,9,0) 100%),
+    radial-gradient(ellipse 1.7% 2.9% at 55.5% 44%, #17100a 0 58%, rgba(23,16,9,0) 100%),
+    radial-gradient(ellipse 3.1% 1.3% at 52% 53.5%, #1a120b 0 60%, rgba(26,18,11,0) 100%),
+    radial-gradient(ellipse 1.4% 2.2% at 46% 52%, #1a120b 0 56%, rgba(26,18,11,0) 100%),
+    radial-gradient(ellipse 0.7% 0.7% at 41% 47%, #17100a 0 70%, rgba(23,16,9,0) 100%),
+    radial-gradient(ellipse 0.5% 0.6% at 58% 51%, #17100a 0 70%, rgba(23,16,9,0) 100%),
+    radial-gradient(ellipse 8% 8% at 50% 47%,
+      rgba(23,16,9,0) 0 52%,
+      rgba(23,16,9,0.14) 61%,
+      rgba(23,16,9,0.2) 66%,
+      rgba(23,16,9,0.72) 79%,
+      #17100a 96%,
+      #4a3a22 210%,
+      #2a2216 560%);
   opacity: 0.9;
   pointer-events: none;
   /* END STATE: gone. With animations off there is no wipe at all. */
@@ -171,12 +198,19 @@ export const PAINT_OVERLAY_CSS = `
   left: calc(var(--pb-focus, 50%) + 2.6%);
   top: 53%;
   border-radius: 57% 43% 48% 52% / 51% 54% 46% 49%;
-  background: radial-gradient(ellipse 9% 8.4% at 50% 47%,
-    rgba(23,16,9,0) 0 52%,
-    rgba(23,16,9,0.46) 76%,
-    #1a120b 100%,
-    #3f3320 205%,
-    #241d13 540%);
+  background:
+    radial-gradient(ellipse 2.2% 1.4% at 56% 42.5%, #1a120b 0 60%, rgba(26,18,11,0) 100%),
+    radial-gradient(ellipse 1.3% 2.6% at 45% 46%, #1a120b 0 56%, rgba(26,18,11,0) 100%),
+    radial-gradient(ellipse 2.8% 1.2% at 49% 54%, #241d13 0 58%, rgba(36,29,19,0) 100%),
+    radial-gradient(ellipse 0.6% 0.7% at 60% 45%, #1a120b 0 70%, rgba(26,18,11,0) 100%),
+    radial-gradient(ellipse 9% 8.4% at 50% 47%,
+      rgba(23,16,9,0) 0 50%,
+      rgba(23,16,9,0.12) 60%,
+      rgba(23,16,9,0.18) 65%,
+      rgba(23,16,9,0.66) 78%,
+      #1a120b 96%,
+      #3f3320 205%,
+      #241d13 540%);
   opacity: 0.72;
   animation-delay: ${IRIS_B_DELAY_MS}ms;
   animation-duration: ${IRIS_B_MS}ms;
@@ -376,14 +410,31 @@ export const PAINT_OVERLAY_CSS = `
        back.
      · the letter reaches full ink by 38 % of its flight instead of 60 %, and
        travels a shorter, tighter arc, so it reads as one word arriving rather
-       than as loose glyphs drifting. */
+       than as loose glyphs drifting.
+
+   PK-R6 · H2, finding 3 („a second, smaller, misaligned »w« floats above the
+   word between the »o« and the real »wn«, and the settled letters are three
+   different colours"). Both halves were real and both were arithmetic:
+     · THE DOUBLE. H1's chalk ghost fixed the legibility, and the flight's own
+       −24 px / 0.58× arc then lifted the flying glyph completely CLEAR of the
+       ghost it was landing into — so through the first third of every letter's
+       flight the word carried that character twice, once pale in the line and
+       once small in the air above it. The arc is now short enough (−9 px,
+       0.86×) that a glyph always overlaps its own ghost: one letter, with a
+       tail, instead of two letters. The mined 460 ms and the 55 ms stagger are
+       untouched; only the distance inside them changed.
+     · THE THREE COLOURS. The ghost was a warm brown (rgba(122,96,52)) under an
+       ink-brown letter (#33291a), so a word mid-stagger showed settled ink,
+       half-inked blend and warm ghost — three hues, which is what the critic
+       counted. The ghost is now the SAME ink at a lower strength, so the word
+       is one colour filling in rather than three inks arriving. */
 @keyframes pb-letter-fly {
-  from { opacity: 0; transform: translateY(-24px) scale(0.58) rotate(-10deg); }
-  38%  { opacity: 1; }
-  64%  { transform: translateY(3px) scale(1.07) rotate(2deg); }
+  from { opacity: 0; transform: translateY(-6px) scale(0.9) rotate(-4deg); }
+  26%  { opacity: 1; }
+  64%  { transform: translateY(1.5px) scale(1.05) rotate(1deg); }
 }
 .pb-letter { animation: pb-letter-fly ${LETTER_FLY_MS}ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
-@keyframes pb-word-glide { from { opacity: 0; transform: translateY(-22px) scale(0.78); } 40% { opacity: 1; } }
+@keyframes pb-word-glide { from { opacity: 0; transform: translateY(-9px) scale(0.9); } 34% { opacity: 1; } }
 .pb-word { animation: pb-word-glide ${WORD_GLIDE_MS}ms ${WORD_GLIDE_DELAY_MS}ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
 /* the chalk ghost the flying letter lands into — the same character, drawn
    faintly underneath in the same slot. Unanimated: it is the still picture the
@@ -395,7 +446,7 @@ export const PAINT_OVERLAY_CSS = `
   position: absolute;
   left: 0;
   top: 0;
-  color: rgba(122, 96, 52, 0.32);
+  color: rgba(51, 41, 26, 0.28);
   pointer-events: none;
 }
 

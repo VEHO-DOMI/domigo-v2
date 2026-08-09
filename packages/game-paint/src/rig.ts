@@ -500,6 +500,60 @@ const BRACE_DROP_PX = 2.6;
 const BRACE_GUARD_PX = 3.4;
 const BRACE_LOOKUP_RAD = 0.16;
 
+// ── PK-R6 · H2 · THE CHEER (round-2 findings 4 and 9) ────────────────────────
+// „The correct-answer cheer has no juice: the only difference between the hold
+// frame and the cheer frame is a small checkmark badge fading in — the
+// character's pose and expression are identical." Measured against the code
+// rather than argued: the world's compositor called `faceFor(pose, tick, false)`
+// with `celebrating` HARD-CODED FALSE, so in the whole running game the boy
+// could never wear the celebrate face at all. Five faces were commissioned; the
+// world asked for four of them, and the missing one was the payoff face.
+//
+// So this is the pose half of that, and it is a MODIFIER for the same reason
+// `withBrace` is: a cheer has to compose with whatever he is already doing, and
+// the moment it plays he is standing beside a card that has just got out of the
+// way. Both hands go up and OPEN — the dossier's one sanctioned symmetric flare,
+// the same shape the leap already uses — and he lifts onto his toes rather than
+// leaving the ground, because the sim is frozen for the card and a hop that
+// moved him would be the picture disagreeing with the world.
+/** How far his hands come up at the top of the cheer, in px. Measured against
+ *  the parts: the head hangs at −14 and is ~11 px tall, so +11 puts the mitts at
+ *  ear height — clear of his face, above the shoulder line. */
+const CHEER_RAISE_PX = 11;
+/** How far apart they throw, in px — past the torso's own 9.5 px half-width, so
+ *  both mitts are outside the body and the flare reads at 35 px. */
+const CHEER_SPREAD_PX = 4;
+/** The lift onto his toes. Small: he is delighted, not launching. */
+const CHEER_LIFT_PX = 1.8;
+
+/**
+ * Fold a cheer into an already-built pose. `t` is 0 (not cheering) … 1 (full
+ * flare), so the same ramp that fades the beat in fades the pose in with it.
+ */
+export const withCheer = (pose: RigPose, t: number): RigPose => {
+  const k = Math.max(0, Math.min(1, t));
+  if (k === 0) return pose;
+  return {
+    ...pose,
+    scaleY: pose.scaleY * (1 + 0.05 * k), // up on the toes: he stretches
+    body: { ...pose.body, dy: pose.body.dy - CHEER_LIFT_PX * k },
+    head: { ...pose.head, dy: pose.head.dy - CHEER_LIFT_PX * k * 1.4, rot: pose.head.rot - 0.1 * k },
+    // BOTH hands, up and out — the one place the rig is allowed to be symmetric
+    handF: {
+      ...pose.handF,
+      dx: pose.handF.dx + CHEER_SPREAD_PX * k,
+      dy: pose.handF.dy - CHEER_RAISE_PX * k,
+      rot: pose.handF.rot + 0.5 * k,
+    },
+    handB: {
+      ...pose.handB,
+      dx: pose.handB.dx - CHEER_SPREAD_PX * k,
+      dy: pose.handB.dy - CHEER_RAISE_PX * k,
+      rot: pose.handB.rot - 0.5 * k,
+    },
+  };
+};
+
 /**
  * Fold a brace into an already-built pose. `t` is how far into it he is (0 = not
  * bracing, 1 = fully set), so the flinch can RAMP with the boss's own telegraph

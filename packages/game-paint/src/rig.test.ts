@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { bobFrame, sheetFrame } from "./anim.ts";
 import { PAINT, SUBS } from "./paint.ts";
-import { RIG, type RigInput, rigPose, withBrace, withFistAway } from "./rig.ts";
+import { RIG, type RigInput, rigPose, withBrace, withCheer, withFistAway } from "./rig.ts";
 import { LAND_SKIN_TICKS, bodyStemFor, faceFor, handStemsFor } from "./rigSpec.ts";
 import type { PlayerPose } from "./player.ts";
 
@@ -389,5 +389,69 @@ describe("the brace: the child answers the boss (finding 7)", () => {
     const both = withBrace(withFistAway(stand), 1);
     expect(both.handF.hidden).toBe(true); // the fist is still away …
     expect(both.body.dy).toBeGreaterThan(stand.body.dy); // … and he is still low
+  });
+});
+
+// ── PK-R6 · H2 · THE CHEER (round-2 findings 4 and 9) ────────────────────────
+// „The correct-answer cheer has no juice: the character's pose, expression and
+// everything else in the frame is pixel-identical [to the hold frame]." It was,
+// and the reason was one hard-coded argument: the world's compositor asked
+// `faceFor(pose, tick, false)`, so `head_celebrate` — a commissioned cell — was
+// unreachable in the running game. These lock both halves of the repair.
+describe("PK-R6 · H2 · the cheer", () => {
+  const stand = rigPose(input({ pose: "stand" }));
+
+  it("is nothing at all when he is not cheering (no cost to every other frame)", () => {
+    expect(withCheer(stand, 0)).toEqual(stand);
+    expect(withCheer(stand, -2)).toEqual(stand);
+  });
+
+  it("puts BOTH hands above the shoulder line — the sanctioned symmetric flare", () => {
+    const c = withCheer(stand, 1);
+    // the head hangs at −14 and is about 11 px tall, so „above the shoulders"
+    // means both mitts clear the top of the torso
+    expect(c.handF.dy).toBeLessThan(stand.handF.dy - 8);
+    expect(c.handB.dy).toBeLessThan(stand.handB.dy - 8);
+    // …and they throw APART, so the silhouette opens rather than closing up
+    expect(c.handF.dx).toBeGreaterThan(stand.handF.dx);
+    expect(c.handB.dx).toBeLessThan(stand.handB.dx);
+  });
+
+  it("lifts him without moving him: the sim is frozen for the card", () => {
+    const c = withCheer(stand, 1);
+    expect(c.body.dy).toBeLessThan(stand.body.dy); // up on his toes
+    expect(c.head.dy).toBeLessThan(c.body.dy); // …the head leads it
+    expect(c.scaleY).toBeGreaterThan(stand.scaleY); // he stretches, he does not squat
+    expect(c.footF).toEqual(stand.footF); // and his feet stay where they are
+    expect(c.footB).toEqual(stand.footB);
+  });
+
+  it("ramps and clamps, like every other modifier", () => {
+    const half = withCheer(stand, 0.5);
+    const full = withCheer(stand, 1);
+    expect(half.handF.dy).toBeGreaterThan(full.handF.dy);
+    expect(half.handF.dy).toBeLessThan(stand.handF.dy);
+    expect(withCheer(stand, 9)).toEqual(full);
+  });
+
+  it("reaches the celebrate FACE and two open hands — the payoff cells exist", () => {
+    // the shipped defect, as a table: with `celebrating` false the boy wears his
+    // near-neutral face at the one moment the game pays him for the work
+    expect(faceFor("stand", 0, false)).not.toBe("head_celebrate");
+    expect(faceFor("stand", 0, true)).toBe("head_celebrate");
+    expect(handStemsFor("stand", 99, true)).toEqual({ front: "hand_open", back: "hand_open" });
+    // …and nothing else changed: a non-cheering stand is exactly what it was
+    expect(handStemsFor("stand", 99)).toEqual({ front: "hand_fist", back: "hand_fist" });
+  });
+
+  it("gives the CARD beat its own face too, and ranks it under the cheer", () => {
+    // finding 9: „identical near-neutral face while receiving an item, saying
+    // »Danke!« and winning". Three beats, three readings — and the ordering
+    // matters: the answer landing outranks listening for it.
+    expect(faceFor("stand", 40, false, 99, false)).toBe("head_neutral");
+    expect(faceFor("stand", 40, false, 99, true)).toBe("head_determined");
+    expect(faceFor("stand", 40, true, 99, true)).toBe("head_celebrate");
+    // …and an event happening TO him still wins over both
+    expect(faceFor("hit", 40, false, 99, true)).toBe("head_hurt");
   });
 });

@@ -26,7 +26,11 @@ import { type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTarget
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import { CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, WASHED_ROLES, entPoseCell, floodBloomFor, greyLuma, guardianPitchRad, poseStateOf, washAlphaFor } from "./anim.ts";
-import { RIG, rigPose, withFistAway, withBrace } from "./rig.ts";
+import { RIG, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
+import {
+  BURST_CORE, BURST_HOT, BURST_INK, BURST_SPIKES,
+  SPARK_COUNT, burstShape, contactPoint, fleckOf, starPoints,
+} from "./burst.ts";
 import {
   RIG_CELL,
   RIG_PART_ORDER,
@@ -45,8 +49,40 @@ import {
 export { type TaskRequest } from "./sim.ts";
 
 /** PK-R6 · C · how many particles the contact burst throws (doc 44 §3.1.1 —
- *  the v0 build's `this.burst?.explode(22, node.x, node.y)`, verbatim). */
-export const SPARK_COUNT = 22;
+ *  the v0 build's `this.burst?.explode(22, node.x, node.y)`, verbatim).
+ *  PK-R6 · H2: the burst's arithmetic moved to `burst.ts` so it could be unit-
+ *  tested; the constant is re-exported here so every existing import path is
+ *  unchanged. */
+export { SPARK_COUNT };
+
+// ── PK-R6 · H2 · THE CONTACT FLASH LIGHTS THE HERO (round-2 findings 2 and 8) ─
+/** „Separate the two characters' silhouettes with a rim-light so the collision
+ *  pose stays legible even mid-merge." He already carries a cast-shadow copy of
+ *  his own rig (HERO_SHADOW_*), so the rim costs no new object: for the length
+ *  of the flash that copy is re-lit in the burst's own core colour and thrown to
+ *  the FAR side of the impact, which is what a bright flash beside a boy
+ *  actually does to his outline. */
+export const CONTACT_RIM_TINT = 0xfff3c8;
+export const CONTACT_RIM_ALPHA = 0.62;
+/** How tall the boy is drawn, in world px — READ OFF the compositor rather than
+ *  guessed: the rig root sits 15 px above his feet and his head part hangs at
+ *  −14 from that, so the drawing runs from y−29 to his soles. The one place that
+ *  number is needed is the touch point (burst.contactPoint), and a hero height
+ *  invented for it would put the burst at the wrong height on every contact. */
+export const HERO_DRAW_H = 30;
+/** PK-R6 · H2 · how long the child's own celebration runs, in ms (round-2
+ *  finding 4). Tied to the card's verdict beat rather than picked: the seal is
+ *  stamped over VERDICT_MS and the two are one moment, so a cheer that ended
+ *  first would leave a boy standing to attention under his own fanfare. */
+export const CHEER_MS = 720;
+/** How far the lit copy leans away from the impact, in px. SMALL: the light is
+ *  a direction, not a displacement, and a bright copy shifted far enough to see
+ *  as a shift is a second boy (measured — at 4 px his own hand drew twice). */
+export const CONTACT_RIM_PX = 1.2;
+/** How much bigger the lit copy is drawn. This, not the offset, is what makes
+ *  the rim a rim: scaled up around the same centre it shows ONLY past his own
+ *  silhouette, which is the outline the finding asks for. */
+export const CONTACT_RIM_SWELL = 0.14;
 
 // ── PK-R6 · H1 · THE HERO'S OWN SHADOW (round-1 critique, finding 3) ──────────
 /** The ink the cast shadow is tinted with, and how much of it shows. Dark enough
@@ -390,7 +426,50 @@ const COLOUR_RETURNING = 0xffd98f;
  *  bubble the world speaks and a card the book opens are one book. */
 const PARCHMENT = 0xf7edd5;
 const INK_LINE = 0x8a6a38;
+/** PK-R6 · H2 · …and where the wash POOLED while that paper dried (round-2
+ *  finding 6). The card's parchment rule already lays two of these in CSS; the
+ *  bubble the world speaks now carries the same two, in the same brown, so the
+ *  two surfaces are one material rather than two that merely share a hex. */
+const PARCHMENT_POOL = 0xe8d6ad;
 
+/**
+ * PK-R6 · H2 · THE HAND-DRAWN BUBBLE RIM (round-2 finding 6: „hard rounded-
+ * rectangle outline … standard messaging-app chrome").
+ *
+ * A superellipse rather than a rounded rectangle (four perfect arcs joined by
+ * four straight runs is the shape of a UI control and of nothing a brush has
+ * ever made), and every point on it is nudged twice: a slow wobble that gives
+ * the whole rim a lean, and a per-point jitter. Both come out of a hash of the
+ * SPOKEN WORD, so „Danke!" and „Autsch!" are visibly different bubbles, the same
+ * word always draws the same bubble, and no `Math.random` is anywhere near it
+ * (repo law) — a replayed tape speaks in identical bubbles.
+ *
+ * Points run clockwise from the right-hand side, which is what lets the sheen
+ * be a SLICE of the rim (the top-left run) rather than a straight bar laid
+ * across it.
+ */
+export const BUBBLE_RIM_POINTS = 46;
+export const paintedBubblePath = (
+  w: number, h: number, top: number, seed: number,
+): Array<{ x: number; y: number }> => {
+  const cy = top + h / 2;
+  const hw = w / 2;
+  const hh = h / 2;
+  const pts: Array<{ x: number; y: number }> = [];
+  for (let i = 0; i < BUBBLE_RIM_POINTS; i++) {
+    const a = (i / BUBBLE_RIM_POINTS) * Math.PI * 2;
+    const ca = Math.cos(a);
+    const sa = Math.sin(a);
+    // squircle: |cos|^(1/2) keeps the sides fairly flat and the corners round
+    const sx = Math.sign(ca) * Math.abs(ca) ** 0.62;
+    const sy = Math.sign(sa) * Math.abs(sa) ** 0.62;
+    const j = (((Math.imul(i + 1, 2246822519) ^ seed) >>> 24) & 0xff) / 255;
+    const wobble = 1 + 0.045 * Math.sin(a * 2 + (seed & 0xff) / 40);
+    const k = wobble + (j - 0.5) * 0.045;
+    pts.push({ x: sx * hw * k, y: cy + sy * hh * k });
+  }
+  return pts;
+};
 /** The book's display face as Phaser needs it: a family NAME, not a CSS variable.
  *  next/font mints the real family at build time and publishes it through
  *  »--font-fredoka« (apps/web/app/layout.tsx · globals.css, doc 42 §5 · B19), so
@@ -450,6 +529,25 @@ export class PaintScene extends Phaser.Scene {
   /** PK-R6 · H1: which beings have already had their freeing celebrated, so the
    *  flourish fires ONCE per redeem rather than every frame of the flood. */
   private cheered = new Set<string>();
+  // ── PK-R6 · H2 · THE CONTACT BURST (round-2 findings 1 and 2) ──────────────
+  /** Where the last contact happened, in world px — the TOUCH POINT between the
+   *  two bodies (burst.contactPoint), not either body's centre. */
+  private burstAt: { x: number; y: number } | null = null;
+  /** How old that burst is, in ms of REAL time. A presentation clock on purpose:
+   *  `Sim.tickCount` stops the instant a card opens, and this beat exists to
+   *  punctuate exactly that instant (see burst.ts's header). */
+  private burstMs = 0;
+  /** The burst's light, UNDER the two bodies — the backlight that gives the
+   *  being an edge (depth 6.9, below entities at 7). */
+  private burstBackG!: Phaser.GameObjects.Graphics;
+  /** …and its ink, OVER both of them (depth 10.4, above the hero's rig at 10),
+   *  because the one place the collision has to stay legible is where the two
+   *  drawings overlap. */
+  private burstG!: Phaser.GameObjects.Graphics;
+  /** PK-R6 · H2 · how long the hero has been cheering, in ms of the same
+   *  presentation clock. Set when a being is freed; the world is frozen for the
+   *  card at that moment, so a sim-tick clock would never move. */
+  private cheerMs = Number.POSITIVE_INFINITY;
   private projG!: Phaser.GameObjects.Graphics;
   /** PK-R6 · E: the code-drawn golden tail behind the flying guardian. */
   private trailG!: Phaser.GameObjects.Graphics;
@@ -600,6 +698,12 @@ export class PaintScene extends Phaser.Scene {
     this.letterFxG = this.add.graphics().setDepth(3.9);
     // the charge sits over her body (7) and under the throwing hand (9)
     this.chargeG = this.add.graphics().setDepth(8.6);
+    // PK-R6 · H2 · the contact burst, in two halves: its LIGHT under both bodies
+    // (6.9, below entities at 7) so the being gains an edge, and its INK over
+    // both of them (10.4, above the hero's rig at 10) so the frame where the two
+    // drawings merge still has a hard line through it.
+    this.burstBackG = this.add.graphics().setDepth(6.9);
+    this.burstG = this.add.graphics().setDepth(10.4);
 
     const kb = this.input.keyboard;
     this.keys = kb
@@ -723,12 +827,21 @@ export class PaintScene extends Phaser.Scene {
 
   /** Called by React when the task for `ctx` is SOLVED. */
   resolveTask(ctx: TaskRequest["ctx"]): void {
+    // PK-R6 · H2 · THE CONTACT BEAT IS OVER (round-2 finding 1). The burst
+    // punctuates the moment the card OPENS; by the time the child has answered
+    // it, it belongs to a scene that has ended. Its own clock already runs out
+    // 620 ms in — before the card has finished landing — but a clock is not a
+    // guarantee, and „the impact is still burning while the answer flies home"
+    // is exactly the frame the round-2 critic photographed five times. So the
+    // beat is ENDED by the event that ends it, not merely left to expire.
+    this.burstAt = null;
     this.handleSimEvents(this.sim.solveTask(ctx));
   }
 
   /** Called by React when a task card is DISMISSED („Später") — the anti-
    *  softlock exit: no redeem, no reward, the world just resumes. */
   dismissTask(ctx: TaskRequest["ctx"]): void {
+    this.burstAt = null;
     this.sim.dismissTask(ctx);
   }
 
@@ -1111,6 +1224,10 @@ export class PaintScene extends Phaser.Scene {
         // throws further — the same flourish, scaled by what the child paid for
         // it. Every other being keeps exactly the beat it already had.
         this.redeemFlourish(img.x, img.y - this.entTargetH(e) * 0.5, e.role === "classmate" ? 1.9 : 1);
+        // PK-R6 · H2 (round-2 finding 4): …and the CHILD celebrates too. The
+        // flourish on the freed thing was the whole payoff, and the one person on
+        // screen who had just done the work stood at attention through it.
+        this.cheerMs = 0;
         // …and the cage she was in plays its OPENING rather than swapping to a
         // picture of an open one (finding 4: the cage has to be a thing that
         // HAPPENS, or a six-year-old never learns what the shape meant).
@@ -1448,85 +1565,137 @@ export class PaintScene extends Phaser.Scene {
     });
   }
 
-  /** PK-R6 · C · THE CONTACT SPARK (doc 44 §3.1.1, v0 `tryEncounter`) — the
-   *  first beat of the entry choreography: the being BURSTS at the touch point,
-   *  and the ink iris wipes over that burst a moment later. 22 particles, and
-   *  their lifespans (260–520 ms) are the v0 emitter's verbatim; the SPEEDS are
-   *  the same emitter's 60–220 px/s re-expressed in this world's units, because
-   *  a paint tile is 16 px against the mined build's 48 and a verbatim velocity
-   *  would fling the burst three screens wide. Re-skinned per the mining law:
-   *  ink flecks off the page rather than Keen's warm sparks.
+  /**
+   * PK-R6 · C · THE CONTACT SPARK (doc 44 §3.1.1, v0 `tryEncounter`) — the first
+   * beat of the entry choreography: the world BURSTS at the touch point, and the
+   * ink iris wipes over that burst a moment later.
    *
-   *  Code-drawn circles, zero image assets (B14) — and deterministic (repo law:
-   *  no Math.random anywhere in the game): angle and speed come from the
-   *  particle's own index, so the burst is identical in a harness replay. */
+   * PK-R6 · H2 · IT IS NOW DRAWN, NOT SPAWNED (round-2 findings 1 and 2). The old
+   * version threw 26 tweened game objects and handed their lives to Phaser's
+   * tween manager. Measured in the running build, that is what the round-2 critic
+   * photographed as „an unexplained ghost icon fixed in screen space over the
+   * hero in every frame": with the capture harness parking the game loop between
+   * shots, no tween ever ticked, so the spawn frame survived into all five
+   * screenshots. (Live, the same probe counts 26 shapes at 180 ms and zero at
+   * 880 ms — the mechanism in the finding is refuted; the DEFECT under it is not.)
+   *
+   * This records two numbers. `renderContactBurst` draws the whole thing fresh
+   * every frame from `burst.ts`, so there is no object that can outlive its own
+   * clock — the same move H2 made one commit earlier when `puff()` became
+   * `renderImpact`, and for the same stated reason: an effect that belongs to the
+   * wall clock is a lottery in any given frame.
+   *
+   * The place is the TOUCH POINT the spec asks for, between the two bodies —
+   * the old code used the being's own centre, which put the burst on the hero's
+   * hips whenever he engaged something standing beside him.
+   */
   contactSpark(id: string): void {
     if (this.cfg.reducedMotion) return; // the world simply freezes; nothing flies
     const e = this.world?.entities.find((x) => x.id === id);
     if (!e) return;
-    const xPx = fromSubs(e.x);
-    const yPx = fromSubs(e.y);
-    const SCALE = TILE / 48; // this world's px per the mined world's px
+    this.burstAt = contactPoint(
+      { x: fromSubs(this.player.x), y: fromSubs(this.player.y), h: HERO_DRAW_H },
+      { x: fromSubs(e.x), y: fromSubs(e.y), h: this.entTargetH(e) },
+    );
+    this.burstMs = 0;
+  }
 
-    // ── PK-R6 · H1 · THE FLASH (round-1 critique, finding 1) ──────────────────
-    // „No spark, particle or flash — it reads as a flat translucent smudge."
-    // Two causes, and the count was neither of them: the flecks were 1.3–2.1 px
-    // in a world drawn at 16 px per tile, and the ink veil went up in the SAME
-    // frame the burst was thrown, so the whole impact happened underneath it.
-    // (The veil's ramp now holds the world legible for the burst's brightest
-    // moment — overlay-css, »pb-veil-in«.) What was missing on this side is a
-    // CORE: a contact reads as a contact because something goes bright at the
-    // point of contact, and nothing here ever did.
-    const flash = this.add.circle(xPx, yPx, 3, 0xfff6d8, 0.95).setDepth(9.3);
-    this.tweens.add({
-      targets: flash, scale: 5.2, alpha: 0, duration: 150, ease: "Quad.easeOut",
-      onComplete: () => flash.destroy(),
-    });
-    const halo = this.add.circle(xPx, yPx, 5, 0xffd98f, 0.6).setDepth(9.2);
-    this.tweens.add({
-      targets: halo, scale: 4.4, alpha: 0, duration: 260, ease: "Quad.easeOut",
-      onComplete: () => halo.destroy(),
-    });
-    // the shock the flash leaves: a thin ring opening off the touch point, which
-    // is what gives the frame a direction to read outward along
-    const ring = this.add.circle(xPx, yPx, 4, undefined, 0).setStrokeStyle(1.4, 0xfff0c4, 0.9).setDepth(9.2);
-    this.tweens.add({
-      targets: ring, scale: 5.5, alpha: 0, duration: 320, ease: "Cubic.easeOut",
-      onComplete: () => ring.destroy(),
-    });
-    // …and the mark it leaves ON the page, so a frame caught LATE still says
+  /**
+   * PK-R6 · H2 · THE BURST, drawn (round-2 finding 2: „the contact frame has the
+   * player, the enemy and the spark all sitting at the same washed-out
+   * beige-gray value, so the collision reads as a blur, not a hit").
+   *
+   * Three value bands, all of them already in this book's palette and every one
+   * of them a real step away from the warm classroom the hit happens in
+   * (burst.ts): a chalk-white CORE above the room, a saturated amber HOT band
+   * across it, and the book's own contour INK far below it. The ink is the band
+   * that was missing entirely — the old burst's „dark" fleck was 0x3a2f1c, a warm
+   * brown sitting inside the room's own value range.
+   *
+   * And it is drawn in two places on purpose: the light goes UNDER the two
+   * bodies (a backlight, so the being gets an edge), the ink and the keyline go
+   * OVER them (so the frame where the two drawings merge still has a hard line
+   * through it). That is the „separate the silhouettes so the collision pose
+   * stays legible mid-merge" half of the finding; the hero's own half is the rim
+   * light in `renderPlayer`.
+   */
+  private renderContactBurst(): void {
+    this.burstBackG.clear();
+    this.burstG.clear();
+    const at = this.burstAt;
+    if (!at) return;
+    const s = burstShape(this.burstMs);
+    if (!s.alive) { this.burstAt = null; return; }
+    const { x, y } = at;
+
+    // ── the light, behind everything: a soft backlight that lifts both bodies
+    // off the midground for as long as the flash lasts
+    if (s.flash > 0) {
+      for (let i = 0; i < 3; i++) {
+        const k = 1 - i / 3;
+        this.burstBackG.fillStyle(BURST_HOT, 0.26 * k * k * s.flash);
+        this.burstBackG.fillCircle(x, y, s.ringR * (1.1 + i * 0.9));
+      }
+    }
+    // …and the mark it leaves ON the page, so a frame caught late still says
     // „something hit here" instead of showing an empty patch of classroom
-    const splat = this.add.circle(xPx, yPx, 5.5, 0x2f2617, 0.34).setDepth(6.9);
-    this.tweens.add({
-      targets: splat, scale: 1.9, alpha: 0, duration: 620, ease: "Quad.easeIn",
-      onComplete: () => splat.destroy(),
-    });
+    this.burstBackG.fillStyle(BURST_INK, 0.26 * (1 - s.t) ** 2);
+    this.burstBackG.fillCircle(x, y, 3.5 + 4 * s.t);
 
+    // ── THE STAR: three spiked silhouettes stacked outward, one per band. This
+    // is the shape a hit has and a lens does not — the first rebuild drew two
+    // concentric rings here and the running game read them as a magnifier parked
+    // over the collision, which is the very „circular icon" the critic filed.
+    if (s.flash > 0) {
+      const star = (r: number, inner: number, colour: number, alpha: number): void => {
+        this.burstG.fillStyle(colour, alpha);
+        this.burstG.fillPoints(starPoints(x, y, BURST_SPIKES, r, inner, 0.31), true);
+      };
+      // the bands hold FULL strength through the first half of the flash and
+      // only let go at the tail: a band at half alpha is a tint, not a band, and
+      // a tint is exactly what the round-2 squint test failed on
+      const hold = Math.min(1, s.flash / 0.5);
+      star(s.spokeLen * 1.18, s.ringR * 0.62, BURST_INK, 0.9 * hold);
+      star(s.spokeLen * 0.9, s.ringR * 0.48, BURST_HOT, hold);
+      star(s.spokeLen * 0.44, s.ringR * 0.24, BURST_CORE, 0.6 + 0.4 * hold);
+    }
+    // ── the keyline: the ink edge the star leaves behind, so a frame caught
+    // after the flash still has one hard mark where the two bodies met. Drawn as
+    // an ARC pair rather than a closed ring — a full circle is the lens again.
+    const ka = 0.9 * (1 - s.t);
+    if (ka > 0.02) {
+      this.burstG.lineStyle(1.1 * s.flash + 0.5, BURST_INK, ka);
+      this.burstG.beginPath();
+      this.burstG.arc(x, y, s.keyR, 0.5, 2.5, false);
+      this.burstG.strokePath();
+      this.burstG.beginPath();
+      this.burstG.arc(x, y, s.keyR * 1.08, 3.5, 5.4, false);
+      this.burstG.strokePath();
+    }
+
+    // ── the flecks, thrown along their own headings and falling as they go
     for (let i = 0; i < SPARK_COUNT; i++) {
-      const ang = (i / SPARK_COUNT) * Math.PI * 2 + (i % 3) * 0.21; // 360°, un-banded
-      const speed = (60 + (i % 5) * 40) * SCALE; // v0 60…220 px/s, in paint px
-      const life = 260 + (i % 6) * 52; // v0 lifespan 260…520 ms, verbatim
-      const colour = i % 2 === 0 ? 0x3a2f1c : 0xf6f2e8; // ink fleck · chalk mote
-      const dist = (speed * life) / 1000;
-      // …and every third fleck flies as a STREAK rather than a dot: a rectangle
-      // laid along its own heading, which is how a still frame shows a path at
-      // all (the critique's „no motion path"). The dots keep the mined sizes ×2
-      // — the v0 emitter's particles were sized for a 48 px tile.
-      const streak = i % 3 === 0;
-      const g: Phaser.GameObjects.Shape = streak
-        ? this.add.rectangle(xPx, yPx, 5.5 + (i % 4), 1.6, colour, 0.95).setRotation(ang).setDepth(9)
-        : this.add.circle(xPx, yPx, 2.6 + (i % 3) * 0.8, colour, 0.95).setDepth(9);
-      this.tweens.add({
-        targets: g,
-        x: xPx + Math.cos(ang) * dist,
-        // gravityY 70 px/s² (v0), in paint px over this particle's own lifetime
-        y: yPx + Math.sin(ang) * dist + 0.5 * 70 * SCALE * (life / 1000) ** 2,
-        alpha: 0,
-        scale: 0,
-        duration: life,
-        ease: "Quad.easeOut",
-        onComplete: () => g.destroy(),
-      });
+      const f = fleckOf(i);
+      const life = Math.min(s.t / (0.45 + (i % 5) * 0.11), 1); // each has its own reach
+      if (life >= 1) continue;
+      const d = f.reach * life;
+      const fx = x + Math.cos(f.ang) * d;
+      const fy = y + Math.sin(f.ang) * d + 5 * life * life; // gravity, as the v0 emitter had
+      const a = (1 - life) * 0.95;
+      this.burstG.fillStyle(f.ink ? BURST_INK : BURST_CORE, a);
+      if (f.streak) {
+        // a streak is a wedge laid along its own heading — a still frame's only
+        // way of showing that this speck is travelling
+        const n = f.ang + Math.PI / 2;
+        const half = f.size * 0.55;
+        this.burstG.fillTriangle(
+          fx + Math.cos(f.ang) * f.size * 3.2, fy + Math.sin(f.ang) * f.size * 3.2,
+          fx + Math.cos(n) * half, fy + Math.sin(n) * half,
+          fx - Math.cos(n) * half, fy - Math.sin(n) * half,
+        );
+      } else {
+        this.burstG.fillCircle(fx, fy, f.size * (1 - 0.4 * life));
+      }
     }
   }
 
@@ -1795,6 +1964,35 @@ export class PaintScene extends Phaser.Scene {
    * Nothing to reset, nothing that can be left stuck on if a card interrupts —
    * if there is no guardian rearing, there is no brace.
    */
+  /**
+   * PK-R6 · H2 · HOW HARD THE CHILD IS CHEERING, 0…1 (round-2 finding 4).
+   *
+   * A ramp rather than a switch, and a shape rather than a fade: he snaps into
+   * the flare over the first sixth of the beat and comes down out of it over the
+   * rest, so a still caught anywhere in the first half of the celebration shows
+   * a boy with his arms up.
+   *
+   * Under reduced motion he is simply AT the flare for the whole beat and then
+   * standing again — the same treatment `redeemFlourish` gives its own motes
+   * (drawn still at the places the motion would have reached, cleared a beat
+   * later). That is what the end-states law asks for here: a finished
+   * celebration, never a half-raised arm frozen on its way up.
+   */
+  private cheerT(): number {
+    const t = this.cheerMs / CHEER_MS;
+    if (!(t >= 0) || t >= 1) return 0;
+    if (this.cfg.reducedMotion) return 1;
+    return t < 0.16 ? t / 0.16 : 1 - (t - 0.16) / 0.84;
+  }
+
+  /** PK-R6 · H2 · how lit the hero's rim is by the contact flash, 0…1 — the
+   *  burst's own flash curve, so the light on him and the light in the air can
+   *  never disagree about when the impact happened. */
+  private contactRimT(): number {
+    if (this.burstAt === null || this.cfg.reducedMotion) return 0;
+    return burstShape(this.burstMs).flash;
+  }
+
   private braceT(): number {
     const g = this.world?.entities.find(
       (e) => e.role === "guardian" && !e.redeemed && (e.state === "telegraph" || e.state === "throw"),
@@ -1886,6 +2084,16 @@ export class PaintScene extends Phaser.Scene {
   }
 
   private render(): void {
+    // PK-R6 · H2 · THE TWO PRESENTATION CLOCKS (round-2 findings 1, 2 and 4).
+    // Both beats they drive — the contact burst and the child's cheer — happen at
+    // moments the SIM is deliberately frozen for a card (`Sim.step` returns early
+    // and never increments `tickCount`), so a sim-tick clock would leave both of
+    // them stopped on their first frame. The camera lean already runs on exactly
+    // this clock for exactly this reason and, like the lean, neither of these
+    // touches a single byte of sim state: the shapes they draw are pure functions
+    // of indices, so a replayed tape draws them identically.
+    this.burstMs += this.frameMs;
+    this.cheerMs += this.frameMs;
     this.renderReadability();
     this.renderAir();
     this.renderLetterFx();
@@ -1911,19 +2119,43 @@ export class PaintScene extends Phaser.Scene {
     // rides the boss's own telegraph clock, so he sets himself as she rears and
     // is still low through the throw — in ch01 he has no fist, so his body is
     // the only reply he owns.
-    const pose = withBrace(pose1, this.braceT());
+    const pose2 = withBrace(pose1, this.braceT());
+    // PK-R6 · H2 (round-2 finding 4): …and he CHEERS when the answer lands. The
+    // beat runs on the presentation clock because the world is frozen for the
+    // card while it plays — see `cheerT`.
+    const cheer = this.cheerT();
+    const pose = withCheer(pose2, cheer);
 
     this.rigRoot.setPosition(fromSubs(this.player.x), fromSubs(this.player.y) - 15);
     this.rigRoot.setScale(this.player.facing * pose.scaleX, pose.scaleY);
     const flicker = this.player.iframes > 0 && this.player.iframes % 8 < 4;
     this.rigRoot.setAlpha(flicker ? 0.45 : 1);
+    // ── PK-R6 · H2 · THE CONTACT RIM (round-2 findings 2 and 8) ───────────────
+    // „Separate the two characters' silhouettes with a rim-light so the collision
+    // pose stays legible even mid-merge." He already carries a full copy of his
+    // own rig for the cast shadow, so the rim costs nothing new: for the length
+    // of the burst's flash that copy is re-lit in the burst's core colour and
+    // thrown to the far side of the impact — which is what a bright flash beside
+    // a boy actually does to his outline. It fades with the flash, so nothing can
+    // leave him permanently glowing.
+    const rim = this.contactRimT();
+    // …and it leans TOWARD the flash, not away from it: a light to his right
+    // lights his right edge, and his right edge is exactly where his drawing and
+    // the being's drawing overlap. The swell does most of the work (it rims him
+    // all round); this bias puts the thickest part of it at the merge.
+    const rimToward = this.burstAt !== null && this.burstAt.x >= fromSubs(this.player.x) ? 1 : -1;
     // the cast shadow rides the same pose, offset behind the light
     this.rigShadow.setPosition(
-      fromSubs(this.player.x) - this.player.facing * HERO_SHADOW_DX,
-      fromSubs(this.player.y) - 15 + HERO_SHADOW_DY,
+      fromSubs(this.player.x) + (-this.player.facing * HERO_SHADOW_DX) * (1 - rim) + rimToward * CONTACT_RIM_PX * rim,
+      fromSubs(this.player.y) - 15 + HERO_SHADOW_DY * (1 - rim) - 0.5 * rim,
     );
-    this.rigShadow.setScale(this.player.facing * pose.scaleX, pose.scaleY);
-    this.rigShadow.setAlpha(flicker ? 0 : HERO_SHADOW_ALPHA);
+    // …and it SWELLS rather than slides: a bright copy merely offset reads as a
+    // second boy standing behind him (measured in the running build — his own
+    // hand appeared twice). Scaled up a little around the same centre, the copy
+    // shows only past his edges, which is what an outline is.
+    const swell = 1 + CONTACT_RIM_SWELL * rim;
+    this.rigShadow.setScale(this.player.facing * pose.scaleX * swell, pose.scaleY * swell);
+    this.rigShadow.setAlpha(flicker ? 0 : HERO_SHADOW_ALPHA * (1 - rim) + CONTACT_RIM_ALPHA * rim);
 
     const apply = (name: RigPartName, dx: number, dy: number, rot: number, hidden: boolean, frame?: number): void => {
       for (const img of [this.parts.get(name), this.shadowParts.get(name)]) {
@@ -1946,9 +2178,13 @@ export class PaintScene extends Phaser.Scene {
     // torso, the shut eyes, the braced palm) asks `landedAgo` the same way the
     // rig's own absorb does.
     const landAgo = this.player.landedAgo;
-    const hands = handStemsFor(this.player.pose, landAgo);
+    const hands = handStemsFor(this.player.pose, landAgo, cheer > 0);
     const skin: Array<[RigPartName, string]> = [
-      ["head", faceFor(this.player.pose, this.tickCount, false, landAgo)],
+      // PK-R6 · H2 (round-2 findings 4 and 9): `celebrating` used to be a
+      // hard-coded `false` here, which is why the boy wore the same near-neutral
+      // face through „receiving", „Danke!" and „winning" — the commissioned
+      // celebrate cell was unreachable in the running game.
+      ["head", faceFor(this.player.pose, this.tickCount, cheer > 0, landAgo, this.focusId !== null)],
       ["body", bodyStemFor(this.player.pose, landAgo)],
       ["handF", hands.front],
       ["handB", hands.back],
@@ -1959,9 +2195,12 @@ export class PaintScene extends Phaser.Scene {
     for (const [name, stem] of skin) {
       const key = this.tex(stem);
       this.parts.get(name)?.setTexture(key);
-      this.shadowParts.get(name)?.setTexture(key);
+      const shade = this.shadowParts.get(name);
+      // the shadow copy is the RIM copy while a contact flash is on him
+      shade?.setTexture(key).setTint(rim > 0 ? CONTACT_RIM_TINT : HERO_SHADOW_TINT);
     }
     this.renderContact();
+    this.renderContactBurst();
 
     if (this.fist) {
       this.fistImg.setVisible(true).setPosition(fromSubs(this.fist.x), fromSubs(this.fist.y)).setFlipX(this.fist.dir < 0);
@@ -3075,22 +3314,57 @@ export class PaintScene extends Phaser.Scene {
     const bottom = -5;
     label.setPosition(0, top + h / 2);
 
+    // ── PK-R6 · H2 · THE BUBBLE IS PAINTED PAPER (round-2 finding 6) ─────────
+    // „A flat vector UI sticker pasted over painted art: hard rounded-rectangle
+    // outline, drop shadow, and a glossy top highlight bar — standard messaging-
+    // app chrome sitting directly on top of the softly painted bookshelf." Three
+    // named things, three causes, all of them here:
+    //   · the OUTLINE was `strokeRoundedRect`, which is four perfect arcs at one
+    //     even weight. It is now a hand-drawn closed path: every point along the
+    //     rim is nudged by a hash of the SPOKEN TEXT, so „Danke!" and „Autsch!"
+    //     are visibly different bubbles and neither is a rounded rectangle —
+    //     while the same word always draws the same bubble (deterministic, repo
+    //     law), so a replayed tape is identical.
+    //   · the GLOSSY BAR was a straight `lineBetween` across the top: the single
+    //     most app-like mark in the game. It is gone. What replaces it is the
+    //     gouache sheen every other painted surface in this book carries — a
+    //     brushed arc that follows the rim's own top-left curve and fades out.
+    //   · the FILL was one flat colour. It now carries the card's own paper:
+    //     two pools where the wash gathered and a warm bloom at the lit corner,
+    //     the same three moves the parchment `.pb-card` rule makes in CSS.
+    const seed = [...text].reduce((a, c) => Math.imul(a ^ c.charCodeAt(0), 16777619) >>> 0, 2166136261);
+    const rim = paintedBubblePath(w, h, top, seed);
     const g = this.add.graphics();
-    const radii = { tl: 7, tr: 4.5, bl: 4, br: 6.5 };
     g.fillStyle(PARCHMENT, 0.97);
-    g.fillRoundedRect(-w / 2, top, w, h, radii);
+    g.fillPoints(rim, true);
+    // the paper's own wash: two pools and a lit corner, under the ink line
+    g.fillStyle(PARCHMENT_POOL, 0.5);
+    g.fillEllipse(w * 0.16, top + h * 0.66, w * 0.42, h * 0.4);
+    g.fillEllipse(-w * 0.24, top + h * 0.38, w * 0.3, h * 0.34);
+    g.fillStyle(0xfffdf3, 0.55);
+    g.fillEllipse(-w * 0.2, top + h * 0.26, w * 0.44, h * 0.36);
+    // the tail, pointing at whoever is speaking
+    g.fillStyle(PARCHMENT, 0.97);
     g.fillTriangle(-3.6, bottom - 1, 3.4, bottom - 1, 0.6, bottom + 6);
-    g.lineStyle(1.2, INK_LINE, 0.92);
-    g.strokeRoundedRect(-w / 2, top, w, h, radii);
-    // the tail's own two edges, then the seam where the body's line crossed it
+    // ── the ink line: drawn TWICE, a soft wide pass under a fine one, which is
+    // what a brushed edge is and what a single even stroke can never be
+    g.lineStyle(2.1, INK_LINE, 0.22);
+    g.strokePoints(rim, true, true);
+    g.lineStyle(1.1, INK_LINE, 0.9);
+    g.strokePoints(rim, true, true);
     g.lineBetween(-3.6, bottom - 0.5, 0.6, bottom + 6);
     g.lineBetween(0.6, bottom + 6, 3.4, bottom - 0.5);
     g.fillStyle(PARCHMENT, 1);
     g.fillRect(-3.1, bottom - 1.4, 6.2, 2);
-    // the gouache sheen, top-left, where every painted surface in this book
-    // catches the classroom's afternoon light
-    g.lineStyle(1.3, 0xfffdf3, 0.7);
-    g.lineBetween(-w / 2 + 4, top + 2.4, w / 2 - 7, top + 2.4);
+    // …and the sheen: a brushed run along the rim's OWN top-left curve, pulled
+    // a hair inside it. The straight bar this replaces was the single most
+    // app-like mark in the game — light does not lie in a rectangle.
+    const cy = top + h / 2;
+    const lit = rim
+      .slice(Math.round(BUBBLE_RIM_POINTS * 0.55), Math.round(BUBBLE_RIM_POINTS * 0.87))
+      .map((p) => ({ x: p.x * 0.86, y: cy + (p.y - cy) * 0.8 }));
+    g.lineStyle(1.3, 0xfffdf3, 0.6);
+    g.strokePoints(lit, false, false);
 
     const bubble = this.add.container(x, y, [g, label]).setDepth(20);
     if (this.cfg.reducedMotion) {
