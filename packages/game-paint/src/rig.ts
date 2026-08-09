@@ -380,3 +380,54 @@ export const withFistAway = (pose: RigPose): RigPose => ({
   ...pose,
   handF: { ...pose.handF, hidden: true },
 });
+
+// ── PK-R6 · H1 · THE BRACE (round-1 critique, finding 7) ─────────────────────
+// „The boy is in the same static standing pose despite the boss winding up and
+// throwing" — he read as a cutout in his own boss fight. ch01 grants no fist
+// (doc 44 §4 ch01: „walk, jump, nothing else"), so his ONLY answer to a windup
+// is his body: he drops his weight, tucks his lead arm across himself and turns
+// his face up at the thing that is about to throw.
+//
+// A MODIFIER rather than a new PlayerPose, deliberately, and for the same reason
+// `withFistAway` is one: the reaction has to compose with whatever he is already
+// doing — a child braces while running, and a brace that replaced the run would
+// freeze him mid-stride in the one moment he most needs to be moving.
+/** How deep the brace crouches him at full strength, in px. */
+const BRACE_DROP_PX = 2.6;
+/** How far his lead hand comes across, and his head tips back to look up. */
+const BRACE_GUARD_PX = 3.4;
+const BRACE_LOOKUP_RAD = 0.16;
+
+/**
+ * Fold a brace into an already-built pose. `t` is how far into it he is (0 = not
+ * bracing, 1 = fully set), so the flinch can RAMP with the boss's own telegraph
+ * instead of snapping on — the tell and the reaction share one clock, which is
+ * what makes him look like he is reading her rather than reacting to a trigger.
+ */
+export const withBrace = (pose: RigPose, t: number): RigPose => {
+  const k = Math.max(0, Math.min(1, t));
+  if (k === 0) return pose;
+  return {
+    ...pose,
+    scaleY: pose.scaleY * (1 - 0.06 * k), // weight down
+    body: { ...pose.body, dy: pose.body.dy + BRACE_DROP_PX * k },
+    head: {
+      ...pose.head,
+      dy: pose.head.dy + BRACE_DROP_PX * k,
+      rot: pose.head.rot - BRACE_LOOKUP_RAD * k, // chin up at the board
+    },
+    // the lead hand comes UP and ACROSS — the universal „something is coming"
+    handF: {
+      ...pose.handF,
+      dx: pose.handF.dx - BRACE_GUARD_PX * k,
+      dy: pose.handF.dy - BRACE_GUARD_PX * k,
+      rot: pose.handF.rot - 0.4 * k,
+    },
+    // …and the trailing hand drops back for balance, so the two ends disagree
+    handB: {
+      ...pose.handB,
+      dx: pose.handB.dx - 1.6 * k,
+      dy: pose.handB.dy + 1.4 * k,
+    },
+  };
+};

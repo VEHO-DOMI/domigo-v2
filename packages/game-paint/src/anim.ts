@@ -289,6 +289,59 @@ export const guardianFlightCell = (vx: number, vy: number, flightTick: number): 
   return IDLE_CELLS[bobFrame(flightTick, 4)] ?? "a";
 };
 
+// ── PK-R6 · H1 · THE FLIGHT ATTITUDE (round-1 critique, finding 2) ───────────
+// The critique read the hover, the banked turn and the spiral loop as the same
+// picture. Measured against the real machine (one full pass per knot, cells
+// tallied from `guardianFlightCell` on the sim's own velocities) the charge is
+// half right, and the half that is right is the half that matters:
+//
+//   knot 0 · spiral  HOVER  3 %   BANK  74 %   SPIRAL 23 %
+//   knot 1 · eight   HOVER  0 %   BANK  74 %   SPIRAL 26 %
+//   knot 2 · zigzag  HOVER  0 %   BANK 100 %   SPIRAL  0 %
+//
+// She is wearing a bank cell nearly the whole fight, and the ZIGZAG — the one
+// path with actual corners — never rolls at all. The cause is arithmetic, not
+// taste: the zigzag's teeth are cut so that |vy| equals |vx| exactly (both
+// amplitudes are traversed over the same period), and `|vy| > |vx|` is false on
+// a tie. Every corner in the climax knot resolves to „crossing at speed".
+//
+// The cells cannot fix this alone — there are three painted bank frames and the
+// sheet has no cell for „diving" — so the attitude is DRAWN (doc 44 B14). Her
+// body pitches with her actual climb: nose down into a dive, nose up out of it.
+// The vertical amplitude is only 26 px against a 78–104 px span, so this is what
+// makes the small half of her path readable at all, and it is what gives each
+// named state its own silhouette — a hover sits level, a banked crossing tilts a
+// little, a zigzag tooth saws hard and REVERSES every time it turns.
+/** The steepest she ever pitches, in radians (~15°). TASTE, bounded: past ~20°
+ *  a board with legs reads as falling rather than flying. */
+export const FLIGHT_PITCH_MAX_RAD = 0.26;
+/** The vertical speed that pitches her fully over, in subs/tick. MEASURED off
+ *  the shipped paths (peak |vy| per knot: 0.54 · 1.26 · 1.89 px/tick), set at
+ *  1.2 px/tick so the gentle first knot stays gentle (it reaches ~45 % of full
+ *  pitch) and the last two saturate — the escalation the knots already promise,
+ *  now visible in her body. `guardian-flight.test.ts` re-derives those peaks
+ *  from `flightPointAt` and fails if the spread stops being readable. */
+export const FLIGHT_PITCH_REF_VY = Math.round(1.2 * SUBS);
+
+/**
+ * How far the flying guardian's body is tipped this tick, in radians.
+ *
+ * Pure and closed-form, from the same per-tick velocity the cells are chosen
+ * from — so the tilt can never disagree with the motion, and a replayed tape
+ * draws the identical angle. Screen y grows DOWNWARD, so a positive `vy` is a
+ * dive; the sign of travel decides which edge of her leads, which is what makes
+ * the pitch read as a heading rather than as a wobble.
+ *
+ * Returns 0 under reduced motion: it depicts nothing but movement, and the
+ * end-states law asks for a finished picture rather than a frozen tilt.
+ */
+export const guardianPitchRad = (vx: number, vy: number, dir: number, reducedMotion = false): number => {
+  if (reducedMotion) return 0;
+  const climb = Math.max(-1, Math.min(1, vy / FLIGHT_PITCH_REF_VY));
+  const lead = vx !== 0 ? Math.sign(vx) : Math.sign(dir) || 1;
+  return climb * lead * FLIGHT_PITCH_MAX_RAD;
+};
+
 /** THE TELL, in three cells (doc 44 §4 ch01 C4: „she dips and rears"). The dwell
  *  is fixed rather than a fraction of the telegraph, so the REAR (`_windup`, the
  *  tallest cell on the sheet) is what holds right up to the release however long

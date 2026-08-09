@@ -381,6 +381,23 @@ export const SHARD_REACH_Y_PX = 12;
  *  index so the colour is a function of the tick stream and nothing else. */
 export const CHALK_COLOURS = ["white", "red", "blue", "green", "yellow", "orange"] as const;
 
+/** PK-R6 · H1 · THE PROJECTILE ART, as stems (round-1 critique, finding 5).
+ *
+ *  The chalk is the one prop in the fight the child MUST see, and every one of
+ *  these sheets was delivered over the same magenta colour key as the terrain —
+ *  at 6× the flying stick carried a bright pink comma along its lower edge. The
+ *  traversal fringe gate already refuses that key on tiled surfaces; this is the
+ *  same class on the piece the whole boss contract depends on being readable.
+ *
+ *  Derived from CHALK_COLOURS rather than written out, so a seventh stick is
+ *  covered by the gate the day it is added. */
+export const CHALK_PROJECTILE_STEMS: readonly string[] = [
+  ...CHALK_COLOURS.map((c) => `chalk_${c}`),
+  "chalk_shard_a",
+  "chalk_shard_b",
+  "tafel_chalk",
+];
+
 /** THE COUNTER-WINDOW DIP (doc 44 §4 ch01 C4: „she writes her lie ON the
  *  board"). She leaves the flight band and comes down to the child — which is
  *  what makes four chalked words readable at 1×, and what guarantees the card's

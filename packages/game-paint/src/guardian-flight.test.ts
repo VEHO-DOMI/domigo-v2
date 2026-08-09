@@ -32,7 +32,7 @@ import {
   type EntityWorld,
   type WorldInput,
 } from "./entities.ts";
-import { GUARDIAN_GROUNDED_CELLS, GUARDIAN_LANDED_CELLS, entPoseCell } from "./anim.ts";
+import { FLIGHT_PITCH_MAX_RAD, FLIGHT_PITCH_REF_VY, GUARDIAN_GROUNDED_CELLS, GUARDIAN_LANDED_CELLS, entPoseCell, guardianPitchRad } from "./anim.ts";
 import { KNOT_PATHS, flightUnitAt, pathForKnot } from "./flight.ts";
 import { LOGICAL_H, SUBS, TICK_MS, TILE } from "./paint.ts";
 import { cameraTargetY, clampScroll } from "./camera.ts";
@@ -403,5 +403,112 @@ describe("the counter-window economy (doc 44 §4 ch01 C4)", () => {
     for (let t = 0; t < 2000; t++) stepEntities(w, GRID, input({ playerIframes: 0 }));
     expect(g.hp).toBe(hp0);
     expect(DODGES_PER_WINDOW).toBe(3); // stage B's economy, unchanged
+  });
+});
+
+// ── PK-R6 · H1 · THE FLIGHT ATTITUDE (round-1 critique, finding 2) ───────────
+// The critique read the hover, the banked turn and the spiral loop as one
+// picture. The painted cells alone cannot fix that — measured over a full pass
+// per knot she wears a BANK cell 74 %, 74 % and 100 % of the time, and the
+// zigzag (the only path with corners) never rolls at all, because its teeth are
+// cut so |vy| equals |vx| exactly and `|vy| > |vx|` is false on a tie.
+//
+// So the attitude is drawn (anim.guardianPitchRad). These are its laws, and the
+// first of them is the one the critique actually bought: each named state must
+// look different from the others.
+describe("she flies it — the drawn attitude (finding 2)", () => {
+  const SUBS_PX = SUBS;
+  /** One full pass of a knot's path, as per-tick velocities in subs. */
+  const passOf = (hp: number, knots = 3): Array<{ vx: number; vy: number }> => {
+    const ki = knots - hp;
+    const period = KNOT_PERIOD_TICKS[ki]!;
+    const c = { x: 400 * SUBS_PX, y: 200 * SUBS_PX };
+    const out: Array<{ vx: number; vy: number }> = [];
+    let prev = flightPointAt(c.x, c.y, hp, knots, 0);
+    for (let t = 1; t <= period; t++) {
+      const p = flightPointAt(c.x, c.y, hp, knots, t);
+      out.push({ vx: p.x - prev.x, vy: p.y - prev.y });
+      prev = p;
+    }
+    return out;
+  };
+  const pitches = (hp: number): number[] =>
+    passOf(hp).map((v) => guardianPitchRad(v.vx, v.vy, v.vx >= 0 ? 1 : -1));
+
+  it("THE ZIGZAG'S CORNERS READ: its pitch reverses, once per tooth (TAMPER)", () => {
+    // This is the defect the measurement found. The climax knot spends 100 % of
+    // its pass in a bank cell — every corner in the fight resolved to „crossing
+    // at speed". The body now says what the cells cannot: it saws.
+    // Counted against the last NON-ZERO sign: a tooth turns through a level
+    // sample (vy = 0 exactly at the apex), and a counter that compared only
+    // neighbours would score six of the eight reversals as „no change" — the
+    // measurement lying about the fix it exists to prove.
+    const reversals = (xs: readonly number[]): number => {
+      let last = 0;
+      let n = 0;
+      for (const x of xs) {
+        const s = Math.sign(x);
+        if (s === 0) continue;
+        if (last !== 0 && s !== last) n++;
+        last = s;
+      }
+      return n;
+    };
+    // SIX, and the six are derived rather than wished for: ZIG_TEETH = 4 gives
+    // eight vertical reversals per pass, the sweep's own turn at u = ½ flips the
+    // leading edge once more, and where a tooth boundary lands ON that turn the
+    // two flips cancel — twice, symmetrically. Measured: 6.
+    expect(reversals(pitches(1))).toBeGreaterThanOrEqual(6);
+    // …and the zigzag is the SAWING one: it reverses oftener than the gentle
+    // first knot does, which is what „the corners read" means comparatively.
+    expect(reversals(pitches(1))).toBeGreaterThan(reversals(pitches(3)));
+    // TAMPER: the state before this fix — no drawn attitude at all — reverses
+    // never, however many corners the path has.
+    expect(reversals(passOf(1).map(() => 0))).toBe(0);
+  });
+
+  it("the three knots pitch by visibly different amounts — the escalation is in her body", () => {
+    const peak = (hp: number): number => Math.max(...pitches(hp).map(Math.abs));
+    const [k0, k1, k2] = [peak(3), peak(2), peak(1)];
+    // the gentle first knot stays gentle, and the later two commit
+    expect(k0).toBeLessThan(k1);
+    expect(k1).toBeLessThanOrEqual(k2);
+    // …and the spread is big enough to SEE: the first knot tilts less than half
+    // as far as the last (measured peaks |vy| = 0.54 / 1.26 / 1.89 px per tick)
+    expect(k0).toBeLessThan(k2 * 0.6);
+    expect(k2).toBeCloseTo(FLIGHT_PITCH_MAX_RAD, 5); // the climax saturates
+  });
+
+  it("REF_VY is the real spread, not a guess — re-derived from the shipped paths", () => {
+    // The constant claims 1.2 px/tick sits between the gentle knot's peak and
+    // the angry ones'. If a path is ever retuned and that stops being true, the
+    // escalation silently flattens — so the claim is checked against the paths
+    // themselves rather than trusted.
+    const peakVy = (hp: number): number => Math.max(...passOf(hp).map((v) => Math.abs(v.vy)));
+    expect(peakVy(3)).toBeLessThan(FLIGHT_PITCH_REF_VY); // knot 0 never saturates
+    expect(peakVy(2)).toBeGreaterThan(FLIGHT_PITCH_REF_VY); // knots 1 and 2 do
+    expect(peakVy(1)).toBeGreaterThan(FLIGHT_PITCH_REF_VY);
+  });
+
+  it("a dive tips her nose toward where she is going, both ways round", () => {
+    const fast = FLIGHT_PITCH_REF_VY;
+    // flying right and descending (screen y grows downward) → she tips forward
+    expect(guardianPitchRad(fast, fast, 1)).toBeGreaterThan(0);
+    // flying LEFT and descending → the other edge leads, so the sign flips
+    expect(guardianPitchRad(-fast, fast, -1)).toBeLessThan(0);
+    // climbing is the mirror of diving
+    expect(guardianPitchRad(fast, -fast, 1)).toBeCloseTo(-guardianPitchRad(fast, fast, 1), 9);
+    // level flight is level, however fast she is crossing
+    expect(guardianPitchRad(fast * 4, 0, 1)).toBe(0);
+  });
+
+  it("reduced motion draws no tilt, and the tilt is bounded and deterministic", () => {
+    expect(guardianPitchRad(500, 900, 1, true)).toBe(0);
+    // bounded however hard the sim ever throws her
+    for (const vy of [-99999, -500, 0, 500, 99999]) {
+      expect(Math.abs(guardianPitchRad(300, vy, 1))).toBeLessThanOrEqual(FLIGHT_PITCH_MAX_RAD + 1e-9);
+    }
+    // pure: same input, same angle, every time (a replayed tape must match)
+    expect(guardianPitchRad(120, 200, 1)).toBe(guardianPitchRad(120, 200, 1));
   });
 });

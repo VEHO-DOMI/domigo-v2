@@ -15,6 +15,7 @@ import { LOGICAL_H, LOGICAL_W, RENDER_SCALE, airModelByName } from "./paint.ts";
 import type { PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
+import { answerTextOf } from "./cards/resolution.ts";
 import { InkWipe, PaintedCage, type CardAlign, alignedWrap } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { initRoute, nextTask, orderedTask, type RouteState, type ServeCtx } from "./cards/routing.ts";
@@ -254,12 +255,22 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   };
 
   /** Beat 2: the world changes, and is watched. */
-  const applyWorldChange = (o: OverlayState): void => {
+  const applyWorldChange = (o: OverlayState, written = ""): void => {
     if (changedRef.current) return;
     changedRef.current = true;
     holdRef.current = true;
     sceneRef.current?.clearEvidence(); // R3-12: the board wipes itself
     sceneRef.current?.resolveTask(o.req.ctx);
+    // PK-R6 · H1 (round-1 critique, finding 1) · THE PAYOFF IS PLAYED, NOT TOLD.
+    // The console beat that follows says „Jetzt steht dein Wort da — und die
+    // Tafel blüht sonnengelb auf", and until now nothing of the kind happened on
+    // the board: every frame after the finale showed a plain green slate. The
+    // child's own word is chalked onto her here — in beat 2, while the card is
+    // doffed and the world is being WATCHED — and it never wipes.
+    if (o.card === "finale") {
+      const id = idOfCtx(o.req.ctx);
+      if (id !== null) sceneRef.current?.chalkTheGift(id, written);
+    }
     // solveTask hands the world back the moment it resolves; the restore-hold
     // needs it held ONE BEAT LONGER, or the child walks away mid-colour-flood
     // from the change their own answer just made.
@@ -273,12 +284,20 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     sceneRef.current?.setHold(true);
     // the finale is the last ACT of the chapter: writing HELLO is what earns
     // the console beat, so that card opens only once the child has done it
-    if (o.card === "finale") queuedRef.current = { ...o, item: null, card: "console" };
+    // …and the console beat is told WHICH word went up, so its copy can name the
+    // thing that is now visibly on the board instead of promising it blind. A
+    // finale the child put down („Später") carries no word and gets copy that
+    // does not claim one.
+    if (o.card === "finale") queuedRef.current = { ...o, item: null, card: "console", typed: written };
   };
 
   /** Beat 3 is over: close, and hand on whatever the change raised. */
-  const resolveCorrect = (o: OverlayState): void => {
-    applyWorldChange(o); // idempotent — a path that skipped the beat still changes the world
+  const resolveCorrect = (o: OverlayState, written = ""): void => {
+    // idempotent — a path that skipped the beat still changes the world. The
+    // paths that come straight here (reduced motion, the dev harness) never saw
+    // the child type, so the answer key stands in for their word: it is the only
+    // text those paths can honestly claim was written.
+    applyWorldChange(o, written !== "" ? written : o.item ? answerTextOf(o.item) : "");
     holdRef.current = false;
     changedRef.current = false;
     sceneRef.current?.setHold(false);
@@ -730,7 +749,7 @@ function Overlay({
    *  goal card's painted title plate both read it */
   art: Record<string, string>;
   onResolve: (o: OverlayState) => void;
-  onWorldChange: (o: OverlayState) => void;
+  onWorldChange: (o: OverlayState, written?: string) => void;
   onDismiss: (o: OverlayState) => void;
   onPay: (price: number) => void;
   letters: number;
@@ -1000,7 +1019,18 @@ function Overlay({
         {/* F2-24: the child WROTE the word on the finale card — this beat now
             answers that act instead of narrating it in their place */}
         <p style={{ fontSize: 16, margin: "0 0 4px" }}>Niemand hat je etwas <em>Nettes</em> auf sie geschrieben.</p>
-        <p style={{ fontSize: 16, margin: "0 0 10px" }}>Jetzt steht dein Wort da — und die Tafel blüht sonnengelb auf. Sie kommt mit ins Lager!</p>
+        {/* PK-R6 · H1 (round-1 critique, finding 1): the copy points AT the
+            board, which now really does carry the child's word in chalk and
+            really does bloom (PaintScene.chalkTheGift). A finale that was put
+            down wrote nothing, so that line is not offered — the card never
+            describes a picture the child cannot see. */}
+        {o.typed.trim() !== "" ? (
+          <p style={{ fontSize: 16, margin: "0 0 10px" }}>
+            Schau auf die Tafel: Da steht dein <strong>{o.typed.trim()}</strong> in Kreide — und sie blüht sonnengelb auf. Sie kommt mit ins Lager!
+          </p>
+        ) : (
+          <p style={{ fontSize: 16, margin: "0 0 10px" }}>Sie ist müde und ganz still. Sie kommt trotzdem mit ins Lager!</p>
+        )}
         <button style={btn} onClick={() => onDismiss(o)}>Weiter</button>
       </div></div>
     );
@@ -1035,7 +1065,7 @@ function Overlay({
       round={o.round}
       // doc 44 §2.9: the timer class comes from the pool the WORLD asked for
       servedUse={o.req.use}
-      onWorldChange={() => onWorldChange(o)}
+      onWorldChange={(written) => onWorldChange(o, written)}
       onResolve={() => onResolve(o)}
       onDismiss={() => onDismiss(o)}
     />

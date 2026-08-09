@@ -12,6 +12,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { GLYPH_STEMS, HERO_STEMS, entitySkinStems, guardianSkinStems } from "../packages/game-paint/src/artManifest.ts";
 import { COMPOSITION, PLACEHOLDER_UNTIL, compositionStems, isPlaceholderStem, massStems } from "../packages/game-paint/src/composition.ts";
+import { CHALK_PROJECTILE_STEMS } from "../packages/game-paint/src/entities.ts";
 import { keyFringe, readPng } from "./key-fringe.mjs";
 
 const R = process.cwd();
@@ -114,6 +115,12 @@ const fringeStems = new Set();
 for (const phases of Object.values(COMPOSITION)) {
   for (const spec of Object.values(phases)) for (const stem of massStems(spec.mass)) fringeStems.add(stem);
 }
+// PK-R6 · H1 (round-1 critique, finding 5): …and the CHALK. It does not tile,
+// but it is the prop the boss contract stands on — a telegraph the child can
+// read is worth nothing if the threat it announces cannot be seen — and the
+// same delivery left the same key on it (measured at 6× in the running game:
+// a magenta comma along the flying stick's lower edge).
+for (const stem of CHALK_PROJECTILE_STEMS) fringeStems.add(stem);
 let fringeTotal = 0;
 for (const stem of [...fringeStems].sort()) {
   const file = fileOf.get(stem);
@@ -122,11 +129,11 @@ for (const stem of [...fringeStems].sort()) {
   if (hits.length === 0) continue;
   fringeTotal += hits.length;
   const at = hits[0];
-  fail(`colour-key fringe on tiled surface "${stem}": ${hits.length} magenta px on its cut edge (first at ${at.x},${at.y}) — run: node --experimental-strip-types scripts/strip-key-fringe.mjs`);
+  fail(`colour-key fringe on "${stem}": ${hits.length} magenta px on its cut edge (first at ${at.x},${at.y}) — run: node --experimental-strip-types scripts/strip-key-fringe.mjs`);
 }
 
 if (failures === 0) {
-  console.log(`check-paint-art: OK — ${required.size} required stems all present or explicitly allowlisted (${present.size} painted stems on disk); ${fringeStems.size} traversal stems clean of colour-key fringe`);
+  console.log(`check-paint-art: OK — ${required.size} required stems all present or explicitly allowlisted (${present.size} painted stems on disk); ${fringeStems.size} traversal + projectile stems clean of colour-key fringe`);
 } else {
   console.error(`check-paint-art: ${failures} failure(s)`);
   process.exit(1);

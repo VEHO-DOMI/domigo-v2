@@ -7,6 +7,7 @@
 import { describe, expect, it } from "vitest";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { COLOUR_FLOOD_TICKS } from "../anim.ts";
+import { writtenTextOf } from "./CardHost.tsx";
 import { TICK_MS } from "../paint.ts";
 import {
   LETTER_FLY_MS, LETTER_LEAD_MS, LETTER_MAX_CHARS, LETTER_STAGGER_MS, RESTORE_HOLD_MS,
@@ -93,5 +94,32 @@ describe("what comes home, per kind", () => {
     });
     expect(answerTextOf(card)).toBe("");
     expect(flightMs(answerTextOf(card))).toBe(0);
+  });
+});
+
+// ── PK-R6 · H1 · „DEIN WORT" MUST BE THE CHILD'S WORD (finding 1) ────────────
+// The ch01 finale accepts „hello", „hi" and their „!" forms, and the console
+// beat that follows now points AT the board and names what is written there. If
+// the board took the answer key instead of the child's own text, a child who
+// wrote „hi" would watch „hello" appear over a card telling them it was theirs.
+describe("what the world displays is what the child wrote", () => {
+  const typed = { ...base, kind: "typed" as const, answer: "hello", accept: ["hi", "hi!"] } as GameTaskV2;
+
+  it("takes the typed value over the answer key, trimmed", () => {
+    expect(writtenTextOf({ kind: "typed", value: "hi", answer: "hello" }, typed)).toBe("hi");
+    expect(writtenTextOf({ kind: "typed", value: "  Hi!  ", answer: "hello" }, typed)).toBe("Hi!");
+  });
+
+  it("falls back to the key when the child authored no text (TAMPER)", () => {
+    // a choice/order card has no text of the child's own — the key IS their pick
+    expect(writtenTextOf({ kind: "choice", picked: 1 }, typed)).toBe("hello");
+    // …and an empty or blank box never blanks the board
+    expect(writtenTextOf({ kind: "typed", value: "" }, typed)).toBe("hello");
+    expect(writtenTextOf({ kind: "typed", value: "   " }, typed)).toBe("hello");
+    expect(writtenTextOf(null, typed)).toBe("hello");
+    // TAMPER: the key and the child's word are genuinely different strings here,
+    // so a fallback that fired always would show up as „hello" above.
+    expect(answerTextOf(typed)).toBe("hello");
+    expect(writtenTextOf({ kind: "typed", value: "hi" }, typed)).not.toBe(answerTextOf(typed));
   });
 });

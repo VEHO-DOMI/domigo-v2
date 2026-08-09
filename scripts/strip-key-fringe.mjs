@@ -15,6 +15,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { COMPOSITION, massStems } from "../packages/game-paint/src/composition.ts";
+import { CHALK_PROJECTILE_STEMS } from "../packages/game-paint/src/entities.ts";
 import { keyFringe, readPng, stripKeyFringe, writePng } from "./key-fringe.mjs";
 
 const R = process.cwd();
@@ -35,6 +36,9 @@ const stems = new Set();
 for (const phases of Object.values(COMPOSITION)) {
   for (const spec of Object.values(phases)) for (const stem of massStems(spec.mass)) stems.add(stem);
 }
+// …and the chalk the boss throws (PK-R6 · H1, round-1 critique finding 5) —
+// same key, same repair, and the gate keeps both clean from here on.
+for (const stem of CHALK_PROJECTILE_STEMS) stems.add(stem);
 
 let touched = 0;
 let pixels = 0;

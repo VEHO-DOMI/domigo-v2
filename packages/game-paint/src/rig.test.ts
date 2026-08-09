@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { bobFrame, sheetFrame } from "./anim.ts";
 import { PAINT, SUBS } from "./paint.ts";
-import { RIG, type RigInput, rigPose, withFistAway } from "./rig.ts";
+import { RIG, type RigInput, rigPose, withBrace, withFistAway } from "./rig.ts";
 import type { PlayerPose } from "./player.ts";
 
 const input = (over: Partial<RigInput>): RigInput => ({
@@ -201,5 +201,55 @@ describe("sheet frames (deterministic walk-time animation)", () => {
     expect(bobFrame(6, 4)).toBe(1);
     expect(bobFrame(18, 4)).toBe(3);
     expect(bobFrame(24, 4)).toBe(0); // same 24-tick wrap as the 2-cell idle
+  });
+});
+
+// ── PK-R6 · H1 · THE BRACE (round-1 critique, finding 7) ─────────────────────
+// „The boy is in the same static standing pose despite the boss winding up and
+// throwing." ch01 grants no fist, so his body is his only answer — and a body
+// that never answers is a cutout standing in its own boss fight.
+describe("the brace: the child answers the boss (finding 7)", () => {
+  const stand = rigPose(input({ pose: "stand" }));
+
+  it("a full brace is a DIFFERENT picture from standing still (TAMPER)", () => {
+    const braced = withBrace(stand, 1);
+    expect(braced).not.toEqual(stand);
+    // he drops his weight …
+    expect(braced.body.dy).toBeGreaterThan(stand.body.dy);
+    expect(braced.scaleY).toBeLessThan(stand.scaleY);
+    // … brings the lead hand up and across …
+    expect(braced.handF.dx).toBeLessThan(stand.handF.dx);
+    expect(braced.handF.dy).toBeLessThan(stand.handF.dy);
+    // … and looks UP at the thing about to throw
+    expect(braced.head.rot).toBeLessThan(stand.head.rot);
+    // TAMPER: t = 0 must be the untouched pose, or the brace would be stuck on
+    // for the whole chapter (it is read off the boss every frame).
+    expect(withBrace(stand, 0)).toEqual(stand);
+  });
+
+  it("ramps with the telegraph rather than snapping on", () => {
+    const half = withBrace(stand, 0.5);
+    const full = withBrace(stand, 1);
+    expect(half.body.dy).toBeGreaterThan(stand.body.dy);
+    expect(half.body.dy).toBeLessThan(full.body.dy);
+    // clamped: a clock that overruns its telegraph must not fold him in half
+    expect(withBrace(stand, 4)).toEqual(full);
+    expect(withBrace(stand, -3)).toEqual(stand);
+  });
+
+  it("composes with the pose he is already in — he can brace while running", () => {
+    const run = rigPose(input({ pose: "run", walkTime: 5, vxSubs: PAINT.runMax }));
+    const braced = withBrace(run, 1);
+    // the run's own footwork survives: a brace that replaced it would freeze him
+    // mid-stride in the one moment he most needs to be moving
+    expect(braced.footF).toEqual(run.footF);
+    expect(braced.footB).toEqual(run.footB);
+    expect(braced.body.dy).toBeGreaterThan(run.body.dy);
+  });
+
+  it("stacks with withFistAway without either undoing the other", () => {
+    const both = withBrace(withFistAway(stand), 1);
+    expect(both.handF.hidden).toBe(true); // the fist is still away …
+    expect(both.body.dy).toBeGreaterThan(stand.body.dy); // … and he is still low
   });
 });

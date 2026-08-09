@@ -41,6 +41,26 @@ import type {
   MistakeState, MistakeAction, MemoryState, MemoryAction, RestoreState, RestoreAction,
 } from "./machines.ts";
 
+/**
+ * PK-R6 · H1 · WHAT THE CHILD ACTUALLY WROTE (round-1 critique, finding 1).
+ *
+ * `answerTextOf` reads the answer KEY, which is the right thing for the letter
+ * flight (the letters that come home are the word the book was missing). It is
+ * the wrong thing for a world change that displays the answer: the ch01 finale
+ * accepts „hello", „hi" and their „!" forms, and the console beat then promises
+ * „Jetzt steht DEIN Wort da". A child who typed „hi" and watched „hello" appear
+ * would be reading a card that lies about them.
+ *
+ * So: if the machine kept the child's own text (the typed and spell cards both
+ * hold it in `value`), that is what comes back. Every other kind has no text the
+ * child authored — a choice is a pick, an order is an arrangement — and falls
+ * back to the key, which for those kinds IS what the child chose.
+ */
+export function writtenTextOf(state: unknown, task: GameTaskV2): string {
+  const v = (state as { value?: unknown } | null)?.value;
+  return typeof v === "string" && v.trim() !== "" ? v.trim() : answerTextOf(task);
+}
+
 export function CardHost({
   task, onResolve, onWorldChange, onDismiss, align = "center", art, portraitWash, servedUse, round,
 }: {
@@ -49,8 +69,12 @@ export function CardHost({
   onResolve: () => void;
   /** the answer is home — CHANGE THE WORLD now, while the card is out of the
    *  way. Optional: a caller that has no world (a test, a story card) simply
-   *  gets the change folded into onResolve as before. */
-  onWorldChange?: () => void;
+   *  gets the change folded into onResolve as before.
+   *
+   *  PK-R6 · H1: it is handed WHAT THE CHILD WROTE (see `writtenTextOf`), so a
+   *  world change that puts the answer on screen can put the child's own words
+   *  there rather than the answer key's. */
+  onWorldChange?: (written: string) => void;
   onDismiss: () => void;
   /** which side of the canvas to sit on (PB-F1/F2-20) */
   align?: CardAlign;
@@ -111,8 +135,9 @@ export function CardHost({
       // reduced motion: every beat is already in its finished state, so the
       // world changes and the card closes at once (the end-states law applied
       // to time rather than to CSS — a beat you cannot see may not be waited on)
+      const written = writtenTextOf(next, task);
       if (prefersReducedMotion()) {
-        cbRef.current.onWorldChange?.();
+        cbRef.current.onWorldChange?.(written);
         cbRef.current.onResolve();
         return;
       }
@@ -122,7 +147,7 @@ export function CardHost({
       setBeat("letters");
       after(fly, () => {
         setBeat("hold");                    // the card doffs …
-        cbRef.current.onWorldChange?.();    // … and the world changes, watched
+        cbRef.current.onWorldChange?.(written); // … and the world changes, watched
         after(RESTORE_HOLD_MS, () => {
           setBeat("cheer");                 // only now does the card celebrate
           after(VERDICT_MS, () => cbRef.current.onResolve());
