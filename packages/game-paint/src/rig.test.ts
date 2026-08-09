@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { bobFrame, sheetFrame } from "./anim.ts";
 import { PAINT, SUBS } from "./paint.ts";
 import { RIG, type RigInput, rigPose, withBrace, withFistAway } from "./rig.ts";
+import { LAND_SKIN_TICKS, bodyStemFor, faceFor, handStemsFor } from "./rigSpec.ts";
 import type { PlayerPose } from "./player.ts";
 
 const input = (over: Partial<RigInput>): RigInput => ({
@@ -147,11 +148,103 @@ describe("the rig (animation principles as tick math)", () => {
     // feet apart and hands out at contact…
     expect(impact.footF.dx - impact.footB.dx).toBeGreaterThan(settled.footF.dx - settled.footB.dx + 6);
     expect(impact.handF.dx - impact.handB.dx).toBeGreaterThan(settled.handF.dx - settled.handB.dx + 6);
-    expect(impact.handF.dy).toBeLessThan(settled.handF.dy);
+    // PK-R6 · H2 · …and the hands go DOWN, not up. H1 threw them up, which is
+    // the LEAP's gesture (both hands above the shoulder line) — so the two ends
+    // of one jump wore one pose and round 2 read the landing as „nearly
+    // identical to idle". A landing is weight arriving: the brace is downward.
+    expect(impact.handF.dy).toBeGreaterThan(settled.handF.dy);
+    expect(impact.handB.dy).toBeGreaterThan(settled.handB.dy);
     // …and gone again once the absorb is over
     expect(settled.footF.dx).toBeCloseTo(rigPose(input({ pose: "stand", landedAgo: 99 })).footF.dx, 5);
     // reduced motion keeps the end state, not the absorb
     expect(rigPose(input({ pose: "stand", landedAgo: 0, reducedMotion: true })).footF.dx).toBe(4);
+  });
+
+  // ── PK-R6 · H2 · the round-2 findings, as laws ─────────────────────────────
+
+  it("SINKS on a landing: the centre of mass drops, not just the transform", () => {
+    // Round 2: „no compressed/widened stance". H1 squashed the SCALE and left
+    // the skeleton standing, and a painted torso hides a 16 % scale on its own.
+    const impact = rigPose(input({ pose: "stand", landedAgo: 0 }));
+    const settled = rigPose(input({ pose: "stand", landedAgo: RIG.landStanceTicks }));
+    expect(impact.body.dy).toBeGreaterThan(settled.body.dy + 2);
+    expect(impact.head.dy).toBeGreaterThan(settled.head.dy + 2);
+    // the head sinks FURTHER than the chest — the neck compresses too
+    expect(impact.head.dy - settled.head.dy).toBeGreaterThan(impact.body.dy - settled.body.dy);
+    // TAMPER: half way through the absorb it is half gone, so this is a curve
+    // and not a flag that could be stuck on for a whole chapter
+    const half = rigPose(input({ pose: "stand", landedAgo: Math.round(RIG.landStanceTicks / 2) }));
+    expect(half.body.dy).toBeLessThan(impact.body.dy);
+    expect(half.body.dy).toBeGreaterThan(settled.body.dy);
+    // …and it holds long enough to be SEEN: 16 ticks ≈ a quarter second, which
+    // is what „the screenshot caught nothing" measured as at 9
+    expect(RIG.landStanceTicks).toBeGreaterThanOrEqual(14);
+  });
+
+  it("counter-swings: the lead hand opposes the lead FOOT, all cycle long", () => {
+    // Round 2: „let the free arm counter-swing". The lead hand rode the same
+    // sign as the lead foot, so arm and leg went forward together — a wind-up
+    // toy. Sampled across the whole cycle, never at one lucky phase.
+    const cycle = Array.from({ length: RIG.runCycleTicks }, (_, t) =>
+      rigPose(input({ pose: "run", walkTime: t, vxSubs: PAINT.runMax })));
+    // the centre each limb swings about, taken from the poses themselves rather
+    // than re-derived from the formula (a second copy of a rule is a second rule)
+    const mean = (pick: (p: (typeof cycle)[number]) => number): number =>
+      cycle.reduce((s, p) => s + pick(p), 0) / cycle.length;
+    const handMid = mean((p) => p.handF.dx);
+    const footMid = mean((p) => p.footF.dx);
+    let opposed = 0;
+    cycle.forEach((p, t) => {
+      const foot = p.footF.dx - footMid;
+      const hand = p.handF.dx - handMid;
+      if (Math.abs(foot) < 0.5) return; // the crossing point: nothing to oppose
+      expect(hand * foot, `tick ${t}: hand and foot swing together`).toBeLessThan(0);
+      opposed++;
+    });
+    expect(opposed).toBeGreaterThan(RIG.runCycleTicks / 2); // most of the cycle, not one lucky phase
+  });
+
+  it("never draws the lead mitt into the middle of the torso (the »held ball«)", () => {
+    // Round 2's headline: „the character holds a white ball at chest height in
+    // idle, run, jump and landing". It was not a ball. It was his own hand,
+    // parked at dx 5 — the exact centre of a torso that measures 16 px and
+    // reaches 9.5 px to the lead side. Every grounded frame now clears it.
+    const grounded: RigInput[] = [
+      input({ pose: "stand", tick: 9 }),
+      input({ pose: "stand", landedAgo: 0 }),
+      input({ pose: "stand", landedAgo: 4 }),
+      ...Array.from({ length: RIG.runCycleTicks }, (_, t) => input({ pose: "run", walkTime: t, vxSubs: PAINT.runMax })),
+      ...Array.from({ length: RIG.runCycleTicks }, (_, t) => input({ pose: "walk", walkTime: t, vxSubs: PAINT.walkMax })),
+    ];
+    for (const inp of grounded) {
+      const p = rigPose(inp);
+      expect(
+        p.handF.dx,
+        `${inp.pose} @ ${inp.walkTime}/${inp.landedAgo}: the mitt is parked on the chest`,
+      ).toBeGreaterThanOrEqual(RIG.handClearPx - 0.001);
+    }
+    // TAMPER: the retired rest position fails this by 4.5 px, which is what the
+    // critique was looking at in all six frames.
+    expect(5).toBeLessThan(RIG.handClearPx);
+  });
+
+  it("splits the feet by a whole shoe at the widest part of the stride", () => {
+    // Round 2: „redraw the run mid-stride with real leg extension". A shoe is
+    // 11.3 logical px wide; at H1's 6.5-px stride the widest split was 21 px
+    // between two ANCHORS 11.3 px wide — the shoes still touched.
+    let widest = 0;
+    for (let t = 0; t < RIG.runCycleTicks; t++) {
+      const p = rigPose(input({ pose: "run", walkTime: t, vxSubs: PAINT.runMax }));
+      widest = Math.max(widest, p.footF.dx - p.footB.dx);
+    }
+    expect(widest).toBeGreaterThan(24);
+    // …and the shoes ANGLE: the reaching foot toe-up, the pushing foot toe-down,
+    // which is the only thing a legless rig can say about extension
+    const mid = rigPose(input({ pose: "run", walkTime: 0, vxSubs: PAINT.runMax }));
+    expect(Math.sign(mid.footF.rot)).toBe(-Math.sign(mid.footB.rot));
+    expect(Math.abs(mid.footF.rot)).toBeGreaterThan(0.2);
+    // a walk keeps its flat shuffle — the toe is scaled by speed
+    expect(Math.abs(rigPose(input({ pose: "run", walkTime: 0, vxSubs: 0 })).footF.rot)).toBe(0);
   });
 
   it("reaches the lead hand out for a letter the magnet is pulling in", () => {
@@ -182,6 +275,51 @@ describe("the rig (animation principles as tick math)", () => {
         expect(Number.isFinite(p.scaleY)).toBe(true);
       }
     }
+  });
+});
+
+// ── PK-R6 · H2 · THE SKIN, per state (round-2 findings 1, 3 and 4) ───────────
+// „The same wide-open mouth and eyebrow shape appears in the idle, run,
+// jump-apex and landing frames" — and the same torso, and the same two closed
+// mitts. Five faces, three torsos and three hands were commissioned; a landing
+// used none of them. The POSE moving is only half a state: the painted parts
+// have to move with it or the boy is a puppet in one costume.
+describe("the skin says which state he is in (findings 1, 3, 4)", () => {
+  const face = (pose: PlayerPose, landedAgo = 99, tick = 40): string => faceFor(pose, tick, false, landedAgo);
+
+  it("gives idle, run, the rise and the touchdown four different faces", () => {
+    const four = [face("stand"), face("run"), face("jump"), face("stand", 0)];
+    expect(new Set(four).size, `only ${new Set(four).size} faces across four states`).toBe(4);
+    expect(face("stand", 0)).toBe("head_blink"); // eyes shut on impact
+    expect(face("jump")).toBe("head_celebrate"); // the open-mouthed „whee"
+    expect(face("run")).toBe("head_determined");
+    expect(face("stand")).toBe("head_neutral");
+    // the fall is NOT the rise: the two air halves differ in face as well
+    expect(face("fall")).not.toBe(face("jump"));
+    // the ceremony still outranks everything (its portrait must not change)
+    expect(faceFor("stand", 0, true, 99)).toBe("head_celebrate");
+    // …and being hurt outranks a landing, or a hit taken on touchdown would
+    // read as a blink
+    expect(face("hit", 0)).toBe("head_hurt");
+  });
+
+  it("wears the crouched torso and a braced open palm on the touchdown (TAMPER)", () => {
+    expect(bodyStemFor("stand", 0)).toBe("body_crouch");
+    expect(handStemsFor("stand", 0)).toEqual({ front: "hand_open", back: "hand_fist" });
+    // …the run's pairing, inverted: the pumping hand becomes the bracing one
+    expect(handStemsFor("run", 99)).toEqual({ front: "hand_fist", back: "hand_open" });
+    // TAMPER: one tick past the window every one of them is back to standing —
+    // a landing skin stuck on would repaint the whole chapter
+    expect(bodyStemFor("stand", LAND_SKIN_TICKS)).toBe("body_idle");
+    expect(handStemsFor("stand", LAND_SKIN_TICKS)).toEqual({ front: "hand_fist", back: "hand_fist" });
+    expect(face("stand", LAND_SKIN_TICKS)).toBe("head_neutral");
+    // …and the skin settles BEFORE the stance does (extremities finish last)
+    expect(LAND_SKIN_TICKS).toBeLessThan(RIG.landStanceTicks);
+    // a landing is a GROUNDED event: falling past a wall is not a touchdown
+    expect(bodyStemFor("fall", 0)).toBe("body_idle");
+    expect(face("fall", 0)).toBe("head_neutral");
+    // …and a hand that is holding on never opens for one
+    expect(handStemsFor("hang", 0)).toEqual({ front: "hand_grip", back: "hand_grip" });
   });
 });
 

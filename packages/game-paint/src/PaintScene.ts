@@ -16,7 +16,7 @@ import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { type CompositionSpec, type MassKit, compositionFor } from "./composition.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, type AirPiece, planHaze, planMotes, planShafts, vignetteBands } from "./air.ts";
-import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, massGrain, planMass } from "./mass.ts";
+import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass } from "./mass.ts";
 import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
@@ -66,6 +66,15 @@ export const LAND_DUST_VY = 3;
 /** The run throws a step-puff at each footfall — but only once he is actually
  *  running, so a shuffle along a ledge does not smoke. In subs/tick. */
 export const STEP_DUST_VX = 300;
+
+// ── PK-R6 · H2 · THE IMPACT MARK (round-2 finding 1) ─────────────────────────
+/** How long the code-drawn landing mark lives, in sim ticks (≈0.3 s at 60). It
+ *  outlasts the rig's own absorb so the dust is still settling after the boy has
+ *  stood back up — which is the order those two things happen in. */
+export const IMPACT_MARK_TICKS = 18;
+/** The dust it throws, and the scuff it presses into the boards. */
+export const IMPACT_DUST = 0xf6f2e8;
+export const IMPACT_SCUFF = 0x2a2418;
 
 // ── PK-R6 · H1 · THE FLOOR'S GRAIN (round-1 critique, finding 1 — critical) ──
 // Where the marks go is planned (mass.crustGrain); what colour they are is
@@ -120,6 +129,13 @@ const LETTER_HALO_R = 8.5;
 /** Four sparks turning slowly around it — the „gentle bob + shimmer" of the
  *  critique's own fix direction, and the one thing on screen that ROTATES. */
 const LETTER_SPARKS = 4;
+// ── PK-R6 · H2 · the letters, embedded rather than pasted on (finding 8) ─────
+/** How many grain specks are stamped into each drawn glyph. */
+const LETTER_GRAIN_SPECKS = 130;
+/** …and the shadow it drops on whatever it is floating over: how far down that
+ *  surface may be before the letter is too high to cast anything readable. */
+const LETTER_SHADOW_REACH_PX = 26;
+const LETTER_SHADOW_TINT = 0x2a2333;
 
 export interface PaintCallbacks {
   onExit: (next: string) => void;
@@ -511,6 +527,11 @@ export class PaintScene extends Phaser.Scene {
    *  detected as a CROSSING rather than tested for equality (which a variable
    *  tick budget would skip straight past). */
   private lastStridePhase = 0;
+  /** PK-R6 · H2 · HOW HARD THE LAST LANDING WAS, 0…1 (round-2 finding 1). The
+   *  fall speed the floor took, remembered for as long as the impact mark is
+   *  drawn — the sim keeps `landedAgo` but not the speed that produced it, and
+   *  a mark that cannot tell a hop from a drop is a decal, not an impact. */
+  private landHardness = 0;
   private fistImg!: Phaser.GameObjects.Image;
   private ropeG!: Phaser.GameObjects.Graphics;
   private letterImgs = new Map<string, Phaser.GameObjects.Image>();
@@ -1654,6 +1675,10 @@ export class PaintScene extends Phaser.Scene {
     const feetY = fromSubs(p.y);
     const x = fromSubs(p.x);
     // ── the landing ──
+    // PK-R6 · H2: the hardness is remembered whatever it was, INCLUDING a step
+    // down too soft for dust — `renderContact` grades the mark by it, and a
+    // recorded 0 is what stops a gentle step from drawing a crater.
+    if (p.landedAgo === 0) this.landHardness = Math.min(fallVy / (LAND_DUST_VY * 3), 1);
     if (p.landedAgo === 0 && fallVy >= LAND_DUST_VY) {
       this.puff(x, feetY + 2, "chalk");
       // …and a wider skirt for a real drop, so a long fall lands harder than a
@@ -1916,11 +1941,17 @@ export class PaintScene extends Phaser.Scene {
     apply("footB", pose.footB.dx, pose.footB.dy, pose.footB.rot, false);
     apply("rotor", pose.rotor.dx, pose.rotor.dy, pose.rotor.rot, pose.rotor.hidden === true, pose.rotor.frame);
 
+    // PK-R6 · H2: the SKIN reads the touchdown clock too — a landing is not a
+    // pose the sim owns, so every part that must change on impact (the crouched
+    // torso, the shut eyes, the braced palm) asks `landedAgo` the same way the
+    // rig's own absorb does.
+    const landAgo = this.player.landedAgo;
+    const hands = handStemsFor(this.player.pose, landAgo);
     const skin: Array<[RigPartName, string]> = [
-      ["head", faceFor(this.player.pose, this.tickCount, false)],
-      ["body", bodyStemFor(this.player.pose)],
-      ["handF", handStemsFor(this.player.pose).front],
-      ["handB", handStemsFor(this.player.pose).back],
+      ["head", faceFor(this.player.pose, this.tickCount, false, landAgo)],
+      ["body", bodyStemFor(this.player.pose, landAgo)],
+      ["handF", hands.front],
+      ["handB", hands.back],
       ["footF", shoeStemFor(this.player.pose)],
       ["footB", shoeStemFor(this.player.pose)],
       ["hair", hairStemFor(this.player.pose, this.player.vx)],
@@ -2496,6 +2527,12 @@ export class PaintScene extends Phaser.Scene {
     // browser proof showed was still tiling: broader marks, far fainter, and
     // softly rounded so they read as damp and wear rather than as marks
     draw(massGrain(this.grid, claimed), MASS_MARK_DEPTH, 6);
+    // PK-R6 · H2 · …and the WEAR AT EVERY DROP (round-2 finding 5): the same two
+    // colours again, but placed where the floor is about to run out, so the edge
+    // announces itself a stride before the child reaches it. Drawn a hair above
+    // the ordinary grain — a warning that a random scuff can paint over is not a
+    // warning.
+    draw(ledgeGrain(this.grid, claimed), CRUST_MARK_DEPTH + 0.02, 1.2);
   }
 
   /** World-px size of a drawn trail letter (matches the retired `prop_letter`). */
@@ -2594,6 +2631,47 @@ export class PaintScene extends Phaser.Scene {
     const spread = this.player.landedAgo < RIG.landStanceTicks ? 1 + 0.5 * (1 - this.player.landedAgo / RIG.landStanceTicks) : 1;
     this.groundG.fillStyle(HERO_SHADOW_TINT, 0.34);
     this.groundG.fillEllipse(x, y - 1, 18 * spread, 5);
+    this.renderImpact(x, y);
+  }
+
+  /**
+   * PK-R6 · H2 · THE IMPACT MARK (round-2 finding 1: „no dust ring or impact
+   * mark under the feet").
+   *
+   * H1 answered the same complaint with `puff()` — five tweened circles that
+   * live 260 ms — and round 2 still found nothing, which is the lesson: a
+   * TWEEN-owned effect exists on the wall clock, so whether it is in a given
+   * frame is luck. This one is a pure function of `landedAgo` and the remembered
+   * hardness, so every frame of the absorb window draws it, a replayed tape
+   * draws it identically, and a screenshot cannot miss it. Doc 44 B14: code-
+   * built effects are first-class.
+   *
+   * Three ingredients, all falling out of the same clock: a ring opening away
+   * from the feet, a low skirt of dust sitting on the floor line, and a scuff
+   * pressed into the boards directly under him. Reduced motion keeps the scuff
+   * and the skirt — they are a finished picture of a landing — and drops the
+   * expanding ring, which depicts nothing but motion.
+   */
+  private renderImpact(x: number, y: number): void {
+    const ago = this.player.landedAgo;
+    if (ago >= IMPACT_MARK_TICKS || this.landHardness <= 0) return;
+    const t = ago / IMPACT_MARK_TICKS; // 0 at contact → 1 as it clears
+    const k = 1 - t;
+    const hard = this.landHardness;
+    // the scuff: a dark smear pressed into the floor, widest under the feet
+    this.groundG.fillStyle(IMPACT_SCUFF, 0.3 * k * hard);
+    this.groundG.fillEllipse(x, y - 0.5, 16 * (0.6 + 0.6 * hard), 2.6);
+    // the skirt: dust that has not lifted yet, lying low and wide
+    for (let i = -1; i <= 1; i += 2) {
+      const d = 5 + 9 * t * (0.5 + hard);
+      this.groundG.fillStyle(IMPACT_DUST, 0.5 * k * k * hard);
+      this.groundG.fillEllipse(x + i * d, y - 2 - 2 * t, 9 - 4 * t, 5 - 2 * t);
+    }
+    if (this.cfg.reducedMotion) return;
+    // the ring: chalk thrown outward, opening and thinning as it goes
+    const r = 6 + 16 * t * (0.6 + 0.4 * hard);
+    this.groundG.lineStyle(1.4 * k + 0.3, IMPACT_DUST, 0.75 * k * hard);
+    this.groundG.strokeEllipse(x, y - 2, r * 2, r * 0.72);
   }
 
   /**
@@ -2774,6 +2852,23 @@ export class PaintScene extends Phaser.Scene {
       const parts = key.split(",");
       const phase = (Number(parts[0]) + Number(parts[1])) * 0.7; // the bob's own offset
       const swell = 0.86 + 0.14 * (0.5 + 0.5 * Math.sin(t / 21 + phase));
+      // ── PK-R6 · H2 · THE CONTACT SHADOW (round-2 finding 8) ────────────────
+      // The hero got one in H1 for exactly this reason: a thing that casts
+      // nothing is a thing lying on the glass in front of the picture. The
+      // letter throws a soft ellipse onto the first surface below it, tighter
+      // and darker the closer it hovers — and nothing at all once that surface
+      // is out of reach, because a shadow invented for a floor nobody can see
+      // is the lie the hero's own shadow was careful not to tell.
+      // …measured under where the letter IS, not where it was placed: the magnet
+      // flies it across cells, and a shadow anchored to its birth column would
+      // slide off the thing it is supposed to be lying on
+      const surfaceY = this.standLineBelow(Math.floor(img.x / TILE), Math.floor(img.y / TILE));
+      const drop = surfaceY - img.y;
+      if (drop > 1 && drop < LETTER_SHADOW_REACH_PX) {
+        const near = 1 - drop / LETTER_SHADOW_REACH_PX;
+        this.letterFxG.fillStyle(LETTER_SHADOW_TINT, 0.06 + 0.16 * near);
+        this.letterFxG.fillEllipse(img.x, surfaceY - 1, 7 + 6 * (1 - near), 2.4 + 1.4 * (1 - near));
+      }
       for (let i = 0; i < LETTER_HALO_RINGS; i++) {
         const k = 1 - i / LETTER_HALO_RINGS;
         this.letterFxG.fillStyle(LETTER_HALO_COLOUR, LETTER_HALO_ALPHA * k * k * swell);
@@ -2814,6 +2909,29 @@ export class PaintScene extends Phaser.Scene {
     grad.addColorStop(1, LETTER_STYLE.fillDeep);
     ctx.fillStyle = grad;
     ctx.fillText(char, S / 2, S / 2 + 3);
+    // ── PK-R6 · H2 · THE PAPER UNDER THE GOLD (round-2 finding 8) ────────────
+    // „The gold letters have a smooth vector-embossed look, unlike the visible
+    // canvas/brush texture on the towels and wall behind them." True, and it is
+    // the one thing an engine-drawn glyph gets wrong for free: a gradient is
+    // perfectly smooth and nothing else in this book is. The tooth of the page
+    // is stamped INTO the glyph (`source-atop` clips it to the letter, so no
+    // halo appears around it) from a hash of the character and the speck index —
+    // repo law, no `Math.random`: the same letter draws the same paper twice.
+    ctx.globalCompositeOperation = "source-atop";
+    const seed = char.charCodeAt(0);
+    for (let i = 0; i < LETTER_GRAIN_SPECKS; i++) {
+      const hx = hash01(seed * 977 + i * 31);
+      const hy = hash01(seed * 613 + i * 71 + 5);
+      const hv = hash01(seed * 251 + i * 17 + 9);
+      const r = 0.9 + hv * 2.6;
+      // half the specks are the paper showing through, half are gold sitting
+      // in its dents — a tooth has both, and only having one reads as dirt
+      ctx.fillStyle = hv < 0.5 ? `rgba(255,246,214,${0.05 + hv * 0.16})` : `rgba(120,72,20,${0.04 + (hv - 0.5) * 0.18})`;
+      ctx.beginPath();
+      ctx.arc(hx * S, hy * S, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation = "source-over";
     tex.refresh();
     return key;
   }

@@ -342,6 +342,112 @@ export const crustGrain = (
   return out;
 };
 
+// ── PK-R6 · H2 · THE LEDGE (round-2 finding 5) ───────────────────────────────
+// „The book-spine floor band runs unbroken across the entire visible width with
+// no gap, drop-off, or edge marking near the character — the player gets no
+// visual cue before the ground runs out."
+//
+// The chapter's grids DO end their runs over air; what they never did was SAY
+// so. Every walkable run — the laid course and every floating platform object
+// alike — now declares its dangerous ends here, and the scene wears them as
+// wear: the boards nearest a drop are the boards a school's worth of feet have
+// scuffed pale, and the very lip catches the light. That is the classic edge
+// treatment (a value change that intensifies toward the danger), it is drawn
+// from the SAME grid the collision reads, and it costs the level design nothing.
+//
+// A drop is a drop, not a step: the neighbouring column must be open for
+// `LEDGE_MIN_DROP` cells before the edge counts. Otherwise every one-cell stair
+// in the chapter would light up like a cliff and the cue would mean nothing.
+
+/** How many open cells must hang below a run's end before it is a real drop. */
+export const LEDGE_MIN_DROP = 2;
+/** How far back from the lip the warning wear reaches, in cells. */
+export const LEDGE_WEAR_CELLS = 2;
+
+export interface LedgeLip {
+  /** the SURFACE cell the lip belongs to (the last solid one before the air) */
+  c: number;
+  r: number;
+  /** which way the floor runs out */
+  side: "l" | "r";
+}
+
+/** Is `(c, r)` standing over a genuine fall rather than a single step down? */
+const dropsAway = (grid: readonly string[], c: number, r: number): boolean => {
+  for (let d = 0; d < LEDGE_MIN_DROP; d++) {
+    if (isMass(glyphAt(grid, c, r + d)) || isSlope(glyphAt(grid, c, r + d))) return false;
+  }
+  return true;
+};
+
+/**
+ * Every walkable end that hangs over a fall — the course's runs and the floating
+ * platforms in one list, because the child's question („does the floor stop
+ * here?") does not care which of the two they are standing on.
+ */
+export const ledgeLips = (
+  grid: readonly string[],
+  claimed: ReadonlySet<string> = new Set(),
+): LedgeLip[] => {
+  const out: LedgeLip[] = [];
+  const push = (c: number, c1: number, r: number): void => {
+    if (dropsAway(grid, c - 1, r)) out.push({ c, r, side: "l" });
+    if (dropsAway(grid, c1 + 1, r)) out.push({ c: c1, r, side: "r" });
+  };
+  for (const run of crustRuns(grid, claimed)) push(run.c, run.c1, run.r);
+  for (const run of floatingPlatformRuns(grid)) push(run.c0, run.c1, run.r);
+  return out;
+};
+
+/**
+ * The wear that warns: pale, worn boards stepping toward the lip and brightest
+ * ON it. Deterministic (every number comes from the cell's own hash, as the
+ * grain's do) and expressed as ordinary `SurfaceMark`s, so the scene draws them
+ * with the phase's own scuff and shine colours and no new drawing path exists.
+ */
+export const ledgeGrain = (
+  grid: readonly string[],
+  claimed: ReadonlySet<string> = new Set(),
+): SurfaceMark[] => {
+  const out: SurfaceMark[] = [];
+  for (const lip of ledgeLips(grid, claimed)) {
+    // …stepping BACK from the lip, onto the boards the child is still standing
+    // on; the cell past the lip is the air they are about to walk into
+    const back = lip.side === "r" ? -1 : 1;
+    for (let step = 0; step < LEDGE_WEAR_CELLS; step++) {
+      const c = lip.c + back * step;
+      // …fading back from the lip, so the cue has a gradient to read, not a line
+      const near = 1 - step / LEDGE_WEAR_CELLS;
+      const len = TILE * (0.42 + 0.3 * near);
+      const x = lip.side === "r" ? (c + 1) * TILE - len - 1 : c * TILE + 1;
+      out.push({
+        kind: "shine",
+        c, r: lip.r,
+        x,
+        y: lip.r * TILE - CRUST_LIP + 1.6 + hash2(c, lip.r, 11) * 2,
+        w: len,
+        h: 1.5 + near,
+        // …a shade stronger than ordinary grain (which tops out at 0.2): this
+        // one is not texture, it is a warning, and it has to survive a wall the
+        // squint test says is the same value as the floor
+        alpha: 0.1 + 0.14 * near,
+      });
+      // …with the board's own dark line under the worn part, so the pale band
+      // reads as a raised, rubbed edge rather than as a smear of fog
+      out.push({
+        kind: "scuff",
+        c, r: lip.r,
+        x: x + 0.6,
+        y: lip.r * TILE - CRUST_LIP + 4.4 + hash2(c, lip.r, 12) * 2,
+        w: len * 0.82,
+        h: 1,
+        alpha: 0.08 + 0.09 * near,
+      });
+    }
+  }
+  return out;
+};
+
 /**
  * THE PATINA on the mass below the course — the second half of the same law, and
  * the one the browser proof said was missing. Softer, broader and fainter than

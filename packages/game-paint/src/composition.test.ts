@@ -13,9 +13,12 @@ import {
   CRUST_TINTS,
   MAX_PLATFORM_CELLS,
   NO_METRONOME_MIN_PERIOD,
+  claimedPlatformCells,
   crustGrain,
   crustRuns,
   floatingPlatformRuns,
+  ledgeGrain,
+  ledgeLips,
   massGrain,
   nakedFills,
   planMass,
@@ -460,6 +463,55 @@ describe("the no-metronome law (round-1 critique, finding 1 — critical)", () =
       }
     }
     expect(checked).toBeGreaterThan(40); // the battery has to actually draw marks
+  });
+
+  // ── PK-R6 · H2 · THE LEDGE (round-2 finding 5) ─────────────────────────────
+  // „The floor band runs unbroken with no gap, drop-off or edge marking near
+  // the character — no visual cue before the ground runs out."
+  it("marks every end that hangs over a real fall, and only those", () => {
+    //  0 ........
+    //  1 ....##..   a two-cell shelf, air all round it (a platform object)
+    //  2 ........
+    //  3 ###..###   the floor, with a pit in the middle
+    //  4 ###..###
+    const grid = ["........", "....##..", "........", "###..###", "###..###"];
+    const lips = ledgeLips(grid, claimedPlatformCells(grid));
+    const at = (c: number, r: number, side: "l" | "r"): boolean =>
+      lips.some((l) => l.c === c && l.r === r && l.side === side);
+    expect(at(2, 3, "r")).toBe(true); // the near side of the pit
+    expect(at(5, 3, "l")).toBe(true); // …and its far side
+    expect(at(4, 1, "l")).toBe(true); // the shelf, both ends
+    expect(at(5, 1, "r")).toBe(true);
+    // the world's own outer edges are not ledges: outside the grid is solid
+    expect(at(0, 3, "l")).toBe(false);
+    expect(at(7, 3, "r")).toBe(false);
+    // …and a single step down is NOT a drop, or every stair would cry wolf
+    const stair = ["........", "..###...", "#####..."];
+    expect(ledgeLips(stair).some((l) => l.r === 1 && l.side === "l")).toBe(false);
+    expect(ledgeLips(stair).some((l) => l.r === 1 && l.side === "r")).toBe(true); // …but this end really falls
+  });
+
+  it("wears the boards pale toward a drop, brightest ON the lip", () => {
+    const grid = ["........", "###..###", "###..###"];
+    const marks = ledgeGrain(grid);
+    expect(marks.length).toBeGreaterThan(4);
+    expect(ledgeGrain(grid)).toEqual(marks); // deterministic: no Math.random
+    const shine = marks.filter((m) => m.kind === "shine");
+    // every mark sits on a surface row, inside the course's own band
+    for (const m of marks) {
+      expect(m.r).toBe(1);
+      expect(m.y).toBeGreaterThanOrEqual(m.r * TILE - CRUST_LIP);
+      expect(m.y + m.h).toBeLessThanOrEqual(m.r * TILE - CRUST_LIP + CRUST_H + 0.001);
+      expect(m.alpha).toBeLessThan(0.3); // wear, never paint
+    }
+    // the cue GRADES: the board at the lip is brighter than the one behind it
+    const lipMark = shine.find((m) => m.c === 2);
+    const backMark = shine.find((m) => m.c === 1);
+    expect(lipMark).toBeDefined();
+    expect(backMark).toBeDefined();
+    expect(lipMark!.alpha).toBeGreaterThan(backMark!.alpha);
+    // TAMPER: a floor with nothing to fall off wears nothing at all
+    expect(ledgeGrain(["........", "########", "########"])).toEqual([]);
   });
 
   it("never grains a platform's own top — the object draws its own", () => {

@@ -19,11 +19,22 @@ import { PAINT, SUBS } from "./paint.ts";
 // T: the rig dial sheet — the motion feel-tune session diffs exactly these.
 export const RIG = {
   runCycleTicks: 16, // one full stride at run speed
-  footLiftPx: 4,
+  // PK-R6 · H2: 4 → 6. Round 2 measured the whole gait as „a slight heel lift".
+  footLiftPx: 6,
   // PK-R6 · H1: 5 → 6.5. The critique read every locomotion frame as the same
   // picture; the study dossier's run is „feet split in a LONG stride" (Part C),
   // and a 5-px split at a 35-px hero is not a split anybody sees.
-  footStridePx: 6.5,
+  // PK-R6 · H2: 6.5 → 8.5. Measured against the art rather than guessed: a shoe
+  // is 11.3 logical px wide, so at 6.5 the two shoes still OVERLAP through most
+  // of the cycle and the stride can only ever read as a shuffle. At 8.5 the
+  // widest split clears a full shoe of daylight between the feet.
+  footStridePx: 8.5,
+  /** PK-R6 · H2 · THE TOE. The legs are not drawn, so the only thing that can
+   *  say „this foot is reaching and that one is pushing off" is the angle of the
+   *  shoe: the leading shoe tips toe-UP into its heel strike, the trailing shoe
+   *  tips toe-DOWN off its push. Rotation survives the 35-px scale where a
+   *  couple of px of extra travel does not. */
+  footToeRad: 0.34,
   bodyBobPx: 1.6,
   // PK-R6 · H1: 0.16 → 0.26 rad (≈15°). The dossier's run is „body tilts
   // forward" and the reference frame reads as a DIAGONAL at thumbnail size;
@@ -34,16 +45,31 @@ export const RIG = {
   // PK-R6 · H1: the pump amplitude, not the pump OFFSET, is what was missing —
   // F2-7 tuned the back hand IN for good reason and this leaves that where it
   // is, swinging it harder instead of hanging it further out.
-  handArcXPx: 3.2,
-  handArcYPx: 2.8,
+  // PK-R6 · H2: and harder again — 3.2 → 4.5 across, 2.8 → 3 up. A 3.2-px arc
+  // on a 9.4-px mitt is a twitch INSIDE the mitt's own width: nothing a still
+  // frame can show. The ceiling is the boy's own face — past about 5 px of rise
+  // the lead mitt starts drawing over his mouth at a quarter of the cycle.
+  handArcXPx: 4.5,
+  handArcYPx: 3,
+  /** PK-R6 · H2 · THE TORSO CLEARANCE. The painted torso measures 16.0 logical
+   *  px and hangs 9.5 px to the lead side of the rig origin; the closed mitt
+   *  measures 9.4 px and draws 2.5 px behind its own anchor. So an anchor at
+   *  dx 5 — which is where idle stood — puts the ENTIRE mitt inside the torso,
+   *  which is what round 2 read as „a white ball held at chest height in every
+   *  frame". Any grounded state now anchors the lead hand at or beyond this, so
+   *  at least half the mitt is outside the body it belongs to. */
+  handClearPx: 9,
   handLagTicks: 3, // PB-F3/F2-7: the trailing hand FOLLOWS the body — arms lag, they are not placed
   hairLagTicks: 3, // the secondary-motion phase lag
   hairSwayRad: 0.22,
   idleBreathTicks: 52,
   idleBreathPx: 0.8,
   jumpStretch: { sx: 0.94, sy: 1.08 },
-  landSquash: { sx: 1.14, sy: 0.84 },
-  landRecoverTicks: 6, // elastic ease back to 1.0
+  // PK-R6 · H2: 1.14/0.84 → 1.22/0.76. Round 2 could not see a squash at all in
+  // the frame named after it; 16 % of a 35-px hero is 5.6 px of compression, and
+  // the recovery now takes half again as long so a still has time to catch it.
+  landSquash: { sx: 1.22, sy: 0.76 },
+  landRecoverTicks: 9, // elastic ease back to 1.0
   hoverSwayRad: 0.07,
   hoverBobPx: 1.2,
   hoverBobTicks: 26,
@@ -58,10 +84,27 @@ export const RIG = {
   // is a whole-body event — the stance opens, the arms fly out for balance —
   // and it is DERIVED from landedAgo, which the rig already receives, so no
   // sim state and no new pose enum are involved.
-  landStanceTicks: 9, // the absorb outlasts the scale recovery: the arms settle after the body
-  landStancePx: 5, // how far each foot slides out from its standing place
-  landArmOutPx: 6, // …and each hand, sideways, to balance
-  landArmUpPx: 5,
+  // ── PK-R6 · H2 · …AND IT STILL DID NOT READ ────────────────────────────────
+  // Round 2, on the frame built by round 1: „the pose on touchdown is nearly
+  // identical to the idle/run carry pose — no compressed/widened stance, no
+  // dust ring, no impact mark." Three things were wrong and all three are here.
+  //
+  // 1 · IT WAS TOO SHORT TO SEE. Nine ticks is 150 ms; the arms were already
+  //     three-quarters settled by the time anything screenshots. 16 ticks holds
+  //     the shape for a quarter of a second, which is a beat, not a blur.
+  // 2 · IT WENT THE WRONG WAY. Arms UP is what the LEAP does (both hands above
+  //     the shoulder line). Doing it again on contact gave the two ends of the
+  //     same jump the same gesture. A landing is weight going DOWN: the hands
+  //     drop and brace outward, and the two halves of the arc finally disagree.
+  // 3 · NOTHING SANK. The rig squashed the drawing and left the skeleton where
+  //     it was, so the centre of mass never moved. The body and the head now
+  //     drop into the absorb — the compression is in the POSE, not only in a
+  //     scale transform that a painted torso hides.
+  landStanceTicks: 16, // the absorb outlasts the scale recovery: the arms settle after the body
+  landStancePx: 7, // how far each foot slides out from its standing place
+  landArmOutPx: 8, // …and each hand, sideways, to brace
+  landArmDownPx: 2.5, // …and DOWN, because the weight is going down (see 2 above)
+  landCrouchPx: 3, // how far the body sinks into its own knees (see 3 above)
 } as const;
 
 export interface PartPose {
@@ -107,6 +150,13 @@ export interface RigInput {
 const P = (dx = 0, dy = 0, rot = 0): PartPose => ({ dx, dy, rot });
 const TAU = Math.PI * 2;
 
+/** PK-R6 · H2 · The poses that have the floor under them — which is what makes
+ *  `landedAgo` mean anything. Exported because the SKIN has to ask the same
+ *  question the POSE does (rigSpec: which torso and which face a touchdown
+ *  wears), and two copies of that list would be two rules. */
+export const isGrounded = (pose: PlayerPose): boolean =>
+  pose === "stand" || pose === "walk" || pose === "run";
+
 /** Elastic-ish ease-out for the landing recovery (overshoot then settle). */
 const elasticOut = (t: number): number => {
   if (t >= 1) return 1;
@@ -118,13 +168,20 @@ export const rigPose = (input: RigInput): RigPose => {
   const speedT = Math.min(Math.abs(input.vxSubs) / PAINT.runMax, 1);
 
   // rest skeleton (offsets from the body center; the compositor mirrors on facing)
+  // PK-R6 · H2 · THE REST ARMS (round-2 findings 2 and 3). The lead mitt used to
+  // rest at dx 5 — measured against the painted parts, that is the middle of the
+  // torso, so the boy stood, ran, jumped and landed apparently holding a white
+  // ball against his chest. It now hangs at `handClearPx` beside the hip, half
+  // clear of the body, and the trailing mitt hangs far enough back to be SEEN
+  // past the torso it is drawn behind. Two visible hand-ends is what makes the
+  // upper body able to say anything at all about which state he is in.
   const pose: RigPose = {
     scaleX: 1,
     scaleY: 1,
     body: P(0, 0),
     head: P(0, -14),
-    handF: P(5, 2),
-    handB: P(-4, 3),
+    handF: P(RIG.handClearPx, 4),
+    handB: P(-7.5, 4),
     footF: P(4, 12),
     footB: P(-4, 12),
     hair: P(1, -20),
@@ -152,6 +209,15 @@ export const rigPose = (input: RigInput): RigPose => {
       pose.footF.dy = 12 - Math.max(Math.sin(a), 0) * RIG.footLiftPx;
       pose.footB.dx = -4 - Math.cos(a + Math.PI) * stride;
       pose.footB.dy = 12 - Math.max(Math.sin(a + Math.PI), 0) * RIG.footLiftPx;
+      // PK-R6 · H2 · the toe. There are no legs to extend, so the reach and the
+      // push-off have to be told by the SHOES: cos(a) is −1 exactly when a foot
+      // is at the front of its travel, so `toe = footToeRad · cos` tips the
+      // leading shoe up into its strike and the trailing shoe down off its push.
+      // Scaled by speed, so a slow walk keeps its flat-footed shuffle.
+      if (!rm) {
+        pose.footF.rot = RIG.footToeRad * Math.cos(a) * speedT;
+        pose.footB.rot = RIG.footToeRad * Math.cos(a + Math.PI) * speedT;
+      }
       // body: double-frequency bob + speed lean
       pose.body.dy = rm ? 0 : -Math.abs(Math.sin(a)) * RIG.bodyBobPx;
       // the lean survives reduced motion: it is not an oscillation, it is the
@@ -173,8 +239,27 @@ export const rigPose = (input: RigInput): RigPose => {
       // chest height AHEAD of the torso"). At 5+4 px it sat on the chest, which
       // is the dossier's crouch/brace pose — the one the critique read as
       // „arms-clutched-to-chest" in every single frame.
-      pose.handF.dx = 7 + speedT * 7 + (rm ? 0 : Math.cos(a + Math.PI) * RIG.handArcXPx);
-      pose.handF.dy = -3 - speedT * 3 + (rm ? 0 : Math.sin(a + Math.PI) * RIG.handArcYPx);
+      //
+      // PK-R6 · H2 · TWO CORRECTIONS, both measured off the parts.
+      //
+      // THE COUNTER-SWING. The lead hand rode `cos(a + π)`, which is the SAME
+      // sign the lead foot rides — hand and foot on one side went forward
+      // together, the gait of a wind-up toy, and round 2 read the arms as not
+      // swinging at all. Humans counter-rotate: the arm opposes the leg on its
+      // own side. The lead hand now rides `cos(a)`, so it is at its furthest
+      // BACK exactly when the lead foot is at its furthest forward.
+      //
+      // THE FACE. At dy −6…−9 the 9.4-px mitt covered the boy's mouth at a
+      // quarter of the cycle (the head is 16.5 px wide and sits at −14): the
+      // pump was drawn over the one part of him that carries expression. It now
+      // pumps at chest height and stays under the chin.
+      //
+      // THE SWING NEVER CARRIES IT BACK IN. The arc's own amplitude is added to
+      // the anchor, so the BACK of the pump lands exactly on the clearance line
+      // instead of swinging the mitt into the middle of the chest — which is
+      // what the frame the critique called „run-midstride" actually showed.
+      pose.handF.dx = RIG.handClearPx + RIG.handArcXPx + speedT * 3 + (rm ? 0 : Math.cos(a) * RIG.handArcXPx);
+      pose.handF.dy = 2 - speedT * 2 + (rm ? 0 : Math.sin(a) * RIG.handArcYPx);
       // PB-F3 · F2-7: the back hand was an open palm hanging at shoe height,
       // a body-width clear of the torso and moving in exact lockstep with the
       // feet — "one dropped glove plus one held ball" on film. It now swings on
@@ -189,9 +274,11 @@ export const rigPose = (input: RigInput): RigPose => {
       // trailing mitt is not visible in a single frame, which is most of why
       // every state looked like the same one-armed boy. Dropped to the hip it
       // clears the satchel and the pump finally has two ends.
+      // PK-R6 · H2: the sign flips here too, so the two mitts still oppose each
+      // other (they always did) while each now also opposes its own foot.
       const aBack = rm ? 0 : ((input.walkTime - RIG.handLagTicks) % RIG.runCycleTicks) / RIG.runCycleTicks * TAU;
-      pose.handB.dx = -8 - RIG.handTrailPx * speedT + (rm ? 0 : Math.cos(aBack) * RIG.handArcXPx);
-      pose.handB.dy = 4 + (rm ? 0 : Math.sin(aBack) * RIG.handArcYPx);
+      pose.handB.dx = -8 - RIG.handTrailPx * speedT - (rm ? 0 : Math.cos(aBack) * RIG.handArcXPx);
+      pose.handB.dy = 4 - (rm ? 0 : Math.sin(aBack) * RIG.handArcYPx);
       // hair: lags the body's bob by a few ticks — the secondary motion
       if (!rm) {
         const lag = ((input.walkTime - RIG.hairLagTicks) % RIG.runCycleTicks) / RIG.runCycleTicks;
@@ -206,6 +293,13 @@ export const rigPose = (input: RigInput): RigPose => {
         pose.body.dy = b;
         pose.head.dy = -14 + b * 0.6;
         pose.hair.rot = Math.sin(((input.tick - RIG.hairLagTicks) % RIG.idleBreathTicks) / RIG.idleBreathTicks * TAU) * 0.05;
+        // PK-R6 · H2 · the arms hang off the breath rather than being welded to
+        // it: the mitts lag the chest and drift a little further out on the
+        // out-breath, which is the difference between a boy standing and a
+        // cardboard boy standing.
+        pose.handF.dy += b * 1.4;
+        pose.handB.dy += b * 1.1;
+        pose.handF.rot = b * 0.05;
       }
       break;
     }
@@ -342,18 +436,26 @@ export const rigPose = (input: RigInput): RigPose => {
   // `landedAgo` is the clock that says so. Eases out on the same elastic curve
   // the scale recovery uses, so the stance opening and the body decompressing
   // are one movement rather than two.
-  const grounded = input.pose === "stand" || input.pose === "walk" || input.pose === "run";
+  const grounded = isGrounded(input.pose);
   if (!rm && grounded && input.landedAgo < RIG.landStanceTicks) {
     const k = 1 - elasticOut(input.landedAgo / RIG.landStanceTicks); // 1 at contact → 0 settled
     pose.footF.dx += RIG.landStancePx * k;
     pose.footB.dx -= RIG.landStancePx * k;
+    pose.footF.rot *= 1 - k; // the toe flattens out: both shoes take the floor
+    pose.footB.rot *= 1 - k;
+    // …and the hands brace DOWN and OUT (H2 · correction 2): the leap threw them
+    // up, so the touchdown may not, or the two ends of one jump wear one gesture
     pose.handF.dx += RIG.landArmOutPx * k;
-    pose.handF.dy -= RIG.landArmUpPx * k;
-    pose.handF.rot -= 0.35 * k;
+    pose.handF.dy += RIG.landArmDownPx * k;
+    pose.handF.rot += 0.45 * k; // palms turn down over the floor coming at him
     pose.handB.dx -= RIG.landArmOutPx * k;
-    pose.handB.dy -= RIG.landArmUpPx * k;
-    pose.handB.rot += 0.35 * k;
-    pose.head.dy += 1.5 * k; // the head sinks into the absorb
+    pose.handB.dy += RIG.landArmDownPx * k;
+    pose.handB.rot -= 0.45 * k;
+    // …and he SINKS (H2 · correction 3): the whole skeleton drops into the
+    // absorb, head a shade further than chest, so the neck compresses too
+    pose.body.dy += RIG.landCrouchPx * k;
+    pose.head.dy += RIG.landCrouchPx * 1.25 * k;
+    pose.hair.dy += RIG.landCrouchPx * 1.25 * k;
     pose.body.rot *= 1 - k; // whatever lean the gait had, the landing straightens
   }
 
