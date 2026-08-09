@@ -7,7 +7,22 @@
 import { describe, expect, it } from "vitest";
 import { CH01_COMPOSITION, type MassKit, compositionFor, compositionStems } from "./composition.ts";
 import { K_X, K_Y, coverBox, coverFit, coversAxis, planLayers, planeCovers, travelBox, visibleWindow } from "./layers.ts";
-import { CRUST_H, CRUST_LIP, MAX_PLATFORM_CELLS, floatingPlatformRuns, nakedFills, planMass, slideRuns } from "./mass.ts";
+import {
+  CRUST_H,
+  CRUST_LIP,
+  CRUST_TINTS,
+  MAX_PLATFORM_CELLS,
+  NO_METRONOME_MIN_PERIOD,
+  crustGrain,
+  crustRuns,
+  floatingPlatformRuns,
+  massGrain,
+  nakedFills,
+  planMass,
+  shortestPeriod,
+  surfaceSignature,
+  slideRuns,
+} from "./mass.ts";
 import { letterGlyphs } from "./letters.ts";
 import { LOGICAL_H, LOGICAL_W, TILE } from "./paint.ts";
 
@@ -333,6 +348,167 @@ describe("the carved mass (doc 36 §2)", () => {
     const fills = nakedFills(planMass(grid, null));
     expect(fills.length).toBeGreaterThan(0);
     expect(fills.every((f) => f.stem === null)).toBe(true);
+  });
+});
+
+describe("the no-metronome law (round-1 critique, finding 1 — critical)", () => {
+  /** one long, uninterrupted hall floor — the shape the critique was reading.
+   *  Deliberately longer than the retired model's own repeat (50 cells), or the
+   *  „why" test below could not see the beat it is about. */
+  const hall = ["".padEnd(120, "."), "".padEnd(120, "."), "".padEnd(120, "#")];
+
+  /** the fingerprints of one surface of the hall, as the audit reads them */
+  const sigOf = (kinds: Parameters<typeof surfaceSignature>[1], grain: ReturnType<typeof crustGrain>): string[] =>
+    surfaceSignature(planMass(hall, kit, afSrc), kinds, grain).get("0,2") ?? [];
+
+  it("lays a long run APERIODICALLY: value and grain, not just two variants", () => {
+    const sig = sigOf(["crust"], crustGrain(hall));
+    expect(sig).toHaveLength(120);
+    expect(shortestPeriod(sig)).toBe(120); // never repeats at all, at any period
+  });
+
+  it("gives the MASS below the course the same treatment", () => {
+    // the browser proof of p1: the walk course was already varying while the
+    // mass under it — four times as much of the frame — was ONE tileSprite
+    // 656 px wide carrying one variant. That was the wallpaper.
+    const sig = sigOf(["body", "fade", "sediment"], massGrain(hall));
+    expect(sig).toHaveLength(120);
+    expect(shortestPeriod(sig)).toBeGreaterThan(NO_METRONOME_MIN_PERIOD);
+    expect(new Set(sig).size).toBeGreaterThanOrEqual(Math.ceil(120 / 5));
+    // …and the two surfaces change segment on DIFFERENT columns, or their seams
+    // would stack into one visible joint through the whole floor
+    const seamAt = (s: string[]): number[] => s.map((v, i) => (v.split(":")[0] !== s[i - 1]?.split(":")[0] ? i : -1)).filter((i) => i > 0);
+    const course = seamAt(sigOf(["crust"], []));
+    const mass = seamAt(sig);
+    expect(course.filter((i) => mass.includes(i)).length).toBeLessThan(course.length);
+  });
+
+  it("shows WHY the segment table alone was not enough", () => {
+    // the retired state, reconstructed: variant alternation over the segment
+    // table and nothing else. Its cycle is exactly 50 cells — 10 segments, the
+    // point where the 5-long length table and the 2-long variant list line up
+    // again — i.e. 800 px, so a child walking a hall meets the same floor twice.
+    const sig = sigOf(["crust"], crustGrain(hall));
+    expect(shortestPeriod(sig.map((s) => s.split(":")[0] ?? ""))).toBe(50);
+    // value alone already breaks it, and grain breaks it independently
+    expect(shortestPeriod(sig.map((s) => s.split(":")[1] ?? ""))).toBe(120);
+    expect(shortestPeriod(sig.map((s) => s.split(":")[2] ?? ""))).toBeGreaterThan(NO_METRONOME_MIN_PERIOD);
+  });
+
+  it("gives every crust segment one of the declared lights, never a repaint", () => {
+    const crusts = planMass(hall, kit, afSrc).filter((q) => q.kind === "crust");
+    expect(crusts.length).toBeGreaterThan(4);
+    for (const q of crusts) {
+      expect(CRUST_TINTS, `${q.c},${q.r}`).toContain(q.tint);
+      // near-white by law: these MULTIPLY the painted course, so a strong tint
+      // would repaint the material instead of relighting it
+      const r = ((q.tint ?? 0) >> 16) & 255;
+      const g = ((q.tint ?? 0) >> 8) & 255;
+      const b = (q.tint ?? 0) & 255;
+      expect(Math.min(r, g, b)).toBeGreaterThanOrEqual(0xd0);
+    }
+    expect(new Set(crusts.map((q) => q.tint)).size).toBeGreaterThan(1);
+  });
+
+  it("scatters grain along the walk course and nowhere else", () => {
+    const marks = crustGrain(hall);
+    expect(marks.length).toBeGreaterThan(8);
+    const surface = new Set(crustRuns(hall).map((r) => r.r));
+    for (const m of marks) {
+      expect(surface.has(m.r), `mark at row ${m.r}`).toBe(true);
+      expect(m.x).toBeGreaterThanOrEqual(m.c * TILE - 0.001);
+      expect(m.x + m.w).toBeLessThanOrEqual((m.c + 1) * TILE + 0.001);
+      expect(m.y).toBeGreaterThanOrEqual(m.r * TILE - CRUST_LIP);
+      expect(m.y + m.h).toBeLessThanOrEqual(m.r * TILE - CRUST_LIP + CRUST_H + 0.001);
+      expect(m.alpha).toBeLessThan(0.2); // grain, never gravel
+    }
+    expect(crustGrain(hall)).toEqual(marks); // deterministic: no Math.random
+  });
+
+  it("keeps the mass patina inside the mass — never a smudge hanging in the air", () => {
+    // A battery of shapes, not one: a single fixture proves nothing here, because
+    // whether a mark exists in a boundary cell at all is decided by that cell's
+    // own hash. (Found by tampering: with the spill guard removed, the first
+    // fixture tried still passed — its edge cells happened to carry no mark.)
+    const shapes = [
+      ["........", ".#####..", ".#####..", "########"],
+      ["........", "..##....", "........", "########"],
+      ["#.......", "#.......", "#....#..", "########"],
+      ["........", ".#......", ".#......", ".#......"],
+      ["..####..", "..####..", "..#..#..", "..#..#.."],
+      ["........", "#......#", "#......#", "########"],
+      ["...#....", "...#....", "########", "########"],
+      ["########", "########", "########", "########"],
+    ];
+    let checked = 0;
+    for (const grid of shapes) {
+      const cells = new Set<string>();
+      for (let r = 0; r < grid.length; r++) {
+        for (let c = 0; c < (grid[0]?.length ?? 0); c++) if (grid[r]![c] === "#") cells.add(`${c},${r}`);
+      }
+      for (const m of massGrain(grid)) {
+        checked++;
+        const c0 = Math.floor(m.x / TILE);
+        const c1 = Math.floor((m.x + m.w - 0.001) / TILE);
+        const r0 = Math.floor(m.y / TILE);
+        const r1 = Math.floor((m.y + m.h - 0.001) / TILE);
+        for (let c = c0; c <= c1; c++) {
+          for (let r = r0; r <= r1; r++) {
+            expect(cells.has(`${c},${r}`), `mark from ${m.c},${m.r} touches open air at ${c},${r}`).toBe(true);
+          }
+        }
+      }
+    }
+    expect(checked).toBeGreaterThan(40); // the battery has to actually draw marks
+  });
+
+  it("never grains a platform's own top — the object draws its own", () => {
+    const withLedge = ["........", "..##....", "........", "########"];
+    const claimed = new Set(["2,1", "3,1"]);
+    expect(crustGrain(withLedge, claimed).some((m) => m.r === 1)).toBe(false);
+    expect(crustRuns(withLedge, claimed).some((r) => r.r === 1)).toBe(false);
+  });
+
+  it("calls a metronome a metronome (the audit's own tamper)", () => {
+    expect(shortestPeriod(["a", "b", "a", "b", "a", "b"])).toBe(2);
+    expect(shortestPeriod(["a", "b", "c", "d", "e"])).toBe(5); // no period at all
+  });
+});
+
+describe("the per-zone platform palettes (round-1 critique, finding 8)", () => {
+  it("gives every zone a palette that can cover 1-, 2-, 3- and 4-cell runs", () => {
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      const widths = new Set(spec.mass.platObjects.map((p) => p.cells));
+      expect(widths.has(1), `${id} has no 1-cell object (a 3-cell run is 2+1)`).toBe(true);
+      expect(widths.has(2), `${id} has no 2-cell object`).toBe(true);
+    }
+  });
+
+  it("furnishes no two rooms out of the same box", () => {
+    const seen = new Map<string, string>();
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      const fingerprint = [...spec.mass.platObjects.map((p) => p.stem)].sort().join("|");
+      const twin = seen.get(fingerprint);
+      expect(twin, `${id} and ${twin} draw the identical platform set`).toBeUndefined();
+      seen.set(fingerprint, id);
+    }
+  });
+
+  it("anchors every object by a deck inside its own art", () => {
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      for (const p of spec.mass.platObjects) {
+        expect(p.deck ?? 0, `${id}/${p.stem}`).toBeGreaterThanOrEqual(0);
+        expect(p.deck ?? 0, `${id}/${p.stem}`).toBeLessThan(1);
+      }
+    }
+  });
+
+  it("keeps two objects at a width where a phase's ledges are all that width", () => {
+    // p9's twelve ledges are every one of them 2 cells wide: with a single
+    // 2-cell object the seeded pick has nothing to alternate between and the
+    // dream draws the same plank twelve times.
+    const twoCell = CH01_COMPOSITION.p9!.mass.platObjects.filter((p) => p.cells === 2);
+    expect(twoCell.length).toBeGreaterThanOrEqual(2);
   });
 });
 

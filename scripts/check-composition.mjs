@@ -6,6 +6,11 @@
 //   2 COVERAGE      L0 + L1 cover the camera's travel box at BOTH extremes
 //   3 NO-NAKED-FILL a kit-present phase renders zero engine fill rectangles
 //   4 GLYPH         every trail letter renders its OWN character
+//   5 AIR           every phase declares atmosphere, its haze covers the travel
+//                   box, and nothing atmospheric enters the gameplay band
+//   6 NO-METRONOME  no walk-course run repeats on a short cycle
+//   7 ZONE PALETTE  every room is furnished out of its own box, and that box can
+//                   cover the ledge widths the room's own grid demands
 //
 // Everything is measured from the SOURCE PNGs and the pure planners, never
 // from a rendered canvas: a WebGL canvas without preserveDrawingBuffer reads
@@ -20,7 +25,19 @@ import path from "node:path";
 import { PNG } from "pngjs";
 import { COMPOSITION } from "../packages/game-paint/src/composition.ts";
 import { planLayers, planeCovers } from "../packages/game-paint/src/layers.ts";
-import { nakedFills, planMass, uncoveredSolids } from "../packages/game-paint/src/mass.ts";
+import {
+  NO_METRONOME_MIN_PERIOD,
+  claimedPlatformCells,
+  crustGrain,
+  floatingPlatformRuns,
+  massGrain,
+  nakedFills,
+  planMass,
+  shortestPeriod,
+  surfaceSignature,
+  uncoveredSolids,
+} from "../packages/game-paint/src/mass.ts";
+import { airFloor, hazeCovers, planHaze, planMotes, planShafts } from "../packages/game-paint/src/air.ts";
 import { letterGlyphs } from "../packages/game-paint/src/letters.ts";
 import { TILE } from "../packages/game-paint/src/paint.ts";
 
@@ -221,13 +238,133 @@ for (const { label, ph, spec } of withSpec) {
   else note(`${label}: ${cells} letters, ${distinct} distinct characters (${glyphs.map((g) => g.char).join("")})`);
 }
 
+// ── 5 · AIR (PK-R6 · H1, round-1 critique findings 2 · 4 · 5) ────────────────
+// The engine-drawn depth between the painted planes (air.ts). Three things can
+// go wrong and all three are silent in a screenshot: a phase forgets to declare
+// any atmosphere at all and reads flat again; the haze is sized to one screen
+// and draws a vertical seam down the wall halfway through the level (Build-D's
+// F-6, one plane over); or a beam or a mote drifts down into the gameplay band
+// and sits on top of a hostile — which turns a readability fix into a
+// readability defect.
+console.log("5 · air audit (doc 36 §1 + doc 44 B14)");
+/** a full mote drift cycle, sampled — a clamp that only holds at tick 0 is no clamp */
+const AIR_TICKS = [0, 31, 63, 95, 127, 159, 189, 601];
+for (const { label, ph, spec } of withSpec) {
+  const worldW = (ph.rows[0]?.length ?? 0) * TILE;
+  const worldH = ph.rows.length * TILE;
+  if (!spec.air) { fail("air", `${label}: declares no atmosphere — the phase reads as one flat plane (doc 36 §1)`); continue; }
+  const air = spec.air;
+  const haze = planHaze(air, worldW, worldH);
+  if (!hazeCovers(haze, worldW, worldH)) {
+    fail("air", `${label}: the haze does NOT cover the camera's travel box — it would draw a seam down the wall`);
+  }
+  const floor = airFloor(air, worldH);
+  if (!(floor > 0 && floor < worldH)) fail("air", `${label}: air band ${air.band} is not a fraction of the world`);
+  let below = 0;
+  for (const s of planShafts(air, worldW, worldH)) {
+    for (const [, y] of s.points) if (y > floor + 0.001) below++;
+  }
+  let moteCount = 0;
+  for (const t of AIR_TICKS) {
+    for (const m of planMotes(air, worldW, worldH, t)) {
+      moteCount++;
+      if (m.y > floor + 0.001) below++;
+    }
+  }
+  if (below > 0) fail("air", `${label}: ${below} atmospheric point(s) reach INTO the gameplay band (below y=${floor.toFixed(0)})`);
+  if (air.vignette > 0.5) fail("air", `${label}: vignette ${air.vignette} closes more than half the frame`);
+  const shafts = planShafts(air, worldW, worldH).length;
+  note(`${label}: haze ${(air.haze * 100).toFixed(0)}% · ${shafts} shaft(s) · ${moteCount / AIR_TICKS.length} motes · vignette ${(air.vignette * 100).toFixed(0)}% — all above y=${floor.toFixed(0)} of ${worldH}`);
+}
+
+// ── 6 · NO-METRONOME (round-1 critique, finding 1 — CRITICAL) ────────────────
+// „The 'stacked books' floor strip repeats identically with a hard seam every
+// few units, reading as a wallpaper tile rather than hand-painted ground."
+//
+// Measured over the REAL grids, in two questions, because either one alone can
+// be satisfied by a floor that still reads as wallpaper:
+//   · CYCLE — does the run's per-cell fingerprint (painted variant · value ·
+//     grain) repeat on a cycle short enough to see? This catches the original
+//     defect, where one tileSprite printed one identical cell forever (period 1).
+//   · VARIETY — how many DIFFERENT cells does the run actually hold? This is the
+//     question the cycle test cannot answer on a short run: alternating two
+//     variants over a 41-cell hall never repeats exactly, and still gives the eye
+//     only two things to look at. A run must offer roughly one new look every
+//     five cells, and never fewer than three in total.
+//
+// Both surfaces are audited, not just the walkable one. The browser proof of p1
+// is why: the COURSE was already varying while the mass below it — four times as
+// much of the frame — was a single 656-px tileSprite of one variant. An audit
+// that only looked where the fix had been applied would have called that green.
+console.log("6 · no-metronome audit (mass.ts NO_METRONOME_MIN_PERIOD)");
+for (const { label, ph, spec } of withSpec) {
+  const claimed = claimedPlatformCells(ph.rows);
+  const plan = planMass(ph.rows, spec.mass);
+  const surfaces = [
+    ["course", surfaceSignature(plan, ["crust"], crustGrain(ph.rows, claimed))],
+    ["mass", surfaceSignature(plan, ["body", "fade", "sediment"], massGrain(ph.rows, claimed))],
+  ];
+  for (const [what, sigs] of surfaces) {
+    let worst = Infinity;
+    let worstAt = "";
+    let leanest = Infinity;
+    let audited = 0;
+    for (const [at, sig] of sigs) {
+      if (sig.length <= NO_METRONOME_MIN_PERIOD) continue; // too short to hold a beat
+      audited++;
+      const p = shortestPeriod(sig);
+      if (p < worst) { worst = p; worstAt = `${at} (${sig.length} cells)`; }
+      if (p <= NO_METRONOME_MIN_PERIOD) {
+        fail("no-metronome", `${label}: the ${what} at ${at} repeats every ${p} cell(s) — that is wallpaper, not ground`);
+      }
+      const distinct = new Set(sig).size;
+      const want = Math.max(3, Math.ceil(sig.length / 5));
+      leanest = Math.min(leanest, distinct - want);
+      if (distinct < want) {
+        fail("no-metronome", `${label}: the ${what} at ${at} draws only ${distinct} different cell(s) over ${sig.length} — the eye needs ≥ ${want}`);
+      }
+    }
+    if (audited === 0) note(`${label} ${what}: no run long enough to hold a beat`);
+    else note(`${label} ${what}: ${audited} long run(s) · shortest repeat cycle ${worst} cells at ${worstAt} (law: > ${NO_METRONOME_MIN_PERIOD}) · leanest variety +${leanest}`);
+  }
+}
+
+// ── 7 · ZONE PALETTE (round-1 critique, finding 8) ───────────────────────────
+// „The same book-stack shelf silhouette and proportions appear in both the
+// entrance hall and classroom." Two questions, both checkable: does each room
+// draw its own set, and can that set actually cover the ledge widths its own
+// grid asks for? (A palette missing a 1-cell object turns every 3-cell ledge
+// into an object hanging a cell over the edge.)
+console.log("7 · zone-palette audit (doc 36 §2 · complete objects)");
+const paletteSeen = new Map();
+for (const { label, ph, spec } of withSpec) {
+  const widths = new Set(spec.mass.platObjects.map((p) => p.cells));
+  const runWidths = new Set(floatingPlatformRuns(ph.rows).map((r) => r.c1 - r.c0 + 1));
+  for (const need of runWidths) {
+    // widest-first cover: a run is coverable iff every remainder can be met
+    let left = need;
+    let guard = 0;
+    while (left > 0 && guard++ < 32) {
+      const pick = [...widths].filter((x) => x <= left).sort((a, b) => b - a)[0];
+      if (pick === undefined) break;
+      left -= pick;
+    }
+    if (left !== 0) fail("zone-palette", `${label}: its palette cannot cover a ${need}-cell ledge exactly (widths ${[...widths].join("/")})`);
+  }
+  const fingerprint = [...spec.mass.platObjects.map((p) => p.stem)].sort().join("|");
+  const twin = paletteSeen.get(fingerprint);
+  if (twin !== undefined) fail("zone-palette", `${label} and ${twin} are furnished out of the identical box — each space must read as designed for what happens in it`);
+  else paletteSeen.set(fingerprint, label);
+  note(`${label}: ${spec.mass.platObjects.length} object(s) for ledge widths ${[...runWidths].sort().join("/") || "none"}`);
+}
+
 // ── verdict ──────────────────────────────────────────────────────────────────
 console.log(
   "\nBands ARMED at doc 36 §1 v1.1 (relative to each phase's declared key). L3 is K-exempt;\n"
   + "the L2\u2194L3 separation stays absolute. Saturation caps are measured and reported.",
 );
 if (failures === 0) {
-  console.log(`\ncheck-composition: OK — 4 audits green over ${withSpec.length} phase(s)`);
+  console.log(`\ncheck-composition: OK — 7 audits green over ${withSpec.length} phase(s)`);
 } else {
   console.error(`\ncheck-composition: ${failures} failure(s)`);
   process.exit(1);

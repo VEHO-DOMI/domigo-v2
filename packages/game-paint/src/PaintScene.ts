@@ -15,13 +15,14 @@ import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { type CompositionSpec, type MassKit, compositionFor } from "./composition.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
-import { type MassPiece, planMass } from "./mass.ts";
+import { AIR_DEPTH, type AirPiece, planHaze, planMotes, planShafts, vignetteBands } from "./air.ts";
+import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, massGrain, planMass } from "./mass.ts";
 import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
-import { type EntityWorld, GUARDIAN_SCRIPT, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
+import { type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import { CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, WASHED_ROLES, entPoseCell, floodBloomFor, greyLuma, guardianPitchRad, poseStateOf, washAlphaFor } from "./anim.ts";
@@ -65,6 +66,60 @@ export const LAND_DUST_VY = 3;
 /** The run throws a step-puff at each footfall — but only once he is actually
  *  running, so a shuffle along a ledge does not smoke. In subs/tick. */
 export const STEP_DUST_VX = 300;
+
+// ── PK-R6 · H1 · THE FLOOR'S GRAIN (round-1 critique, finding 1 — critical) ──
+// Where the marks go is planned (mass.crustGrain); what colour they are is
+// decided here, because it depends on the ROOM. A scuff is the room's own shadow
+// and a shine is its own light, so both are taken from the phase's declared key:
+// in a bright hall the scuff carries the read and in the night classroom the
+// shine does. One pair of numbers, both rooms.
+const GRAIN_SCUFF = 0x2a2418;
+const GRAIN_SHINE = 0xfff6e2;
+
+// ── PK-R6 · H1 · THE HOSTILE TELL (round-1 critique, finding 3) ──────────────
+// „The bee sits against bright window backlight with almost no silhouette
+// contrast, and the small grey spool-shaped ground creature has no eyes or
+// warning coloring to mark it as a hazard."
+//
+// Half of that is answered here and half of it is REFUSED, on purpose. The
+// silhouette half is a real fairness defect and it is fixed: every hostile now
+// carries the same two devices the boss got — a halo that separates it from
+// whatever is behind it, and a contact shadow that puts it ON the floor.
+//
+// The „warning hue (red/orange)" half is not built, and the reason is doc 41 §2:
+// OSWIN rained the COLOUR out of the beings he bewitched, and the child gives it
+// back by naming them. Painting a hostile warning-orange before that would spend
+// the chapter's core mechanic on a legibility problem — and it would tell the
+// child the thing is angry when the fiction says it is enchanted. The separation
+// is therefore done in VALUE, which is what the pop test in doc 36 §1 asks for
+// anyway („≥12 % luminance OR ≥25 % saturation"), and the halo takes its colour
+// from the room: ink against a bright wall, chalk against a dark one.
+const HOSTILE_HALO_LIGHT = 0xfdf3dc;
+const HOSTILE_HALO_DARK = 0x241f2e;
+/** Above this phase key the room is bright, so the halo goes dark. */
+const HOSTILE_HALO_KEY_SPLIT = 50;
+const HOSTILE_HALO_ALPHA = 0.17;
+const HOSTILE_HALO_RINGS = 4;
+const HOSTILE_HALO_SPREAD = 1.5;
+/** How much of the halo breathes (the rest is constant, so a still frame — and
+ *  reduced motion — still shows a being with an edge). */
+const HOSTILE_HALO_PULSE = 0.22;
+const HOSTILE_SHADOW_ALPHA = 0.28;
+
+// ── PK-R6 · H1 · THE PICKUP SHIMMER (round-1 critique, finding 6) ────────────
+// „Letters 'S' and 'C' float directly among the gold book-stack platforms in the
+// same warm gold tone … their silhouette reads as 'platform' rather than
+// 'pickup'." True, and colour cannot fix it — the letters ARE gold and the
+// book platforms ARE gold, and both are right. So the difference is made in a
+// channel a platform can never use: a soft halo of light around the glyph that
+// no piece of furniture in this book carries.
+const LETTER_HALO_COLOUR = 0xfff4cf;
+const LETTER_HALO_ALPHA = 0.30;
+const LETTER_HALO_RINGS = 3;
+const LETTER_HALO_R = 8.5;
+/** Four sparks turning slowly around it — the „gentle bob + shimmer" of the
+ *  critique's own fix direction, and the one thing on screen that ROTATES. */
+const LETTER_SPARKS = 4;
 
 export interface PaintCallbacks {
   onExit: (next: string) => void;
@@ -368,6 +423,9 @@ export class PaintScene extends Phaser.Scene {
   /** R3-15: the grey wash laid OVER a being OSWIN drained (doc 41 §2). One per
    *  redeemable creature, built beside its sprite and driven by washAlphaFor. */
   private washImgs = new Map<string, Phaser.GameObjects.Image>();
+  /** PK-R6 · H1 · a hostile's own cast shadow — its cell, inked, one step behind
+   *  the light (finding 3). Mirrored every frame in renderEntities. */
+  private hostileShadeImgs = new Map<string, Phaser.GameObjects.Image>();
   /** PK-R6 · H1: the warm light the returning colour arrives on (anim.floodBloomFor,
    *  round-1 critique finding 8). Same sheet, same place, added rather than
    *  laid over — so the being brightens in its own shape instead of gaining a
@@ -441,6 +499,14 @@ export class PaintScene extends Phaser.Scene {
   /** PK-R6 · H1 · the contact ellipse + the magnet's pull streaks. */
   private groundG!: Phaser.GameObjects.Graphics;
   private pullG!: Phaser.GameObjects.Graphics;
+  /** PK-R6 · H1 · the air: motes drift and the vignette follows the camera, so
+   *  those two redraw; the haze, the beams and the floor's grain are placed once. */
+  private moteG!: Phaser.GameObjects.Graphics;
+  private vignetteG!: Phaser.GameObjects.Graphics;
+  /** the hostile separation halos + their contact shadows (finding 3) */
+  private hostileG!: Phaser.GameObjects.Graphics;
+  /** the shimmer that says „pickup, not platform" (finding 6) */
+  private letterFxG!: Phaser.GameObjects.Graphics;
   /** PK-R6 · H1 · the walk-cycle phase at the previous tick, so a footfall is
    *  detected as a CROSSING rather than tested for equality (which a variable
    *  tick budget would skip straight past). */
@@ -479,6 +545,7 @@ export class PaintScene extends Phaser.Scene {
   create(): void {
     this.buildFallbackTextures();
     this.buildBackdrop();
+    this.buildAir();
     this.buildTerrain();
     this.buildProps();
     this.buildRig();
@@ -501,6 +568,15 @@ export class PaintScene extends Phaser.Scene {
     this.bossGlowG = this.add.graphics().setDepth(6.8);
     this.giftHaloG = this.add.graphics().setDepth(6.85);
     this.dustG = this.add.graphics().setDepth(7.9);
+    // PK-R6 · H1 · the two halves of the air that cannot be placed once: motes
+    // move, and the vignette is drawn in the camera's own rect every frame.
+    this.moteG = this.add.graphics().setDepth(AIR_DEPTH.mote);
+    this.vignetteG = this.add.graphics().setDepth(AIR_DEPTH.vignette);
+    // behind every being (7) and behind the boss's own halo (6.8), so a hostile
+    // in front of the guardian never draws its edge over her
+    this.hostileG = this.add.graphics().setDepth(6.6);
+    // under the letters (4) — a shimmer drawn OVER a glyph is a smudge on it
+    this.letterFxG = this.add.graphics().setDepth(3.9);
     // the charge sits over her body (7) and under the throwing hand (9)
     this.chargeG = this.add.graphics().setDepth(8.6);
 
@@ -670,6 +746,18 @@ export class PaintScene extends Phaser.Scene {
       const img = this.add.image(fromSubs(e.x), fromSubs(e.y), this.entTex(e.skin, "a")).setDepth(7).setOrigin(0.5, 1);
       img.setVisible(!e.hidden);
       this.entityImgs.set(e.id, img);
+      // PK-R6 · H1 (round-1 critique, finding 3): a hostile casts its own shadow,
+      // exactly like the hero — the same sheet, inked, offset down-and-right
+      // because every phase's wash puts the light top-left. This is the „dark
+      // rim … to separate it from the window glare" the critique asked for, and
+      // it works for a flying moth as well as for a walking eraser, which a
+      // shadow drawn on the FLOOR could not (there is no floor under a moth).
+      if (JOY_ROLES.has(e.role)) {
+        const shade = this.add.image(fromSubs(e.x), fromSubs(e.y), img.texture.key).setDepth(6.95).setOrigin(0.5, 1);
+        shade.setTint(HERO_SHADOW_TINT);
+        shade.setVisible(!e.hidden);
+        this.hostileShadeImgs.set(e.id, shade);
+      }
       // R3-15 · the grey wash sits a hair in front of its being, wearing the
       // SAME texture every frame — so it drains whatever cell the being is
       // showing, including cells and skins that do not exist yet.
@@ -937,6 +1025,23 @@ export class PaintScene extends Phaser.Scene {
       // so the gold is a second, ADD-blended copy of her own cell, mirroring it
       // exactly (the same trick the colour flood uses, aimed at the payoff).
       if (e.role === "guardian") this.giftGlow(e.id, img, giftT);
+      // PK-R6 · H1 · the hostile's cast shadow, mirrored the same way the wash
+      // is: same cell, same size, same flip, same tilt — one step down-and-right
+      // of the being, so it reads as light falling past it rather than as a
+      // second creature. It survives redemption on purpose: a freed moth still
+      // stands in the same room and still casts a shadow; what ends at
+      // redemption is the halo, which is the warning (see renderHostiles).
+      const shade = this.hostileShadeImgs.get(e.id);
+      if (shade) {
+        shade.setVisible(img.visible);
+        if (img.visible) {
+          shade.setTexture(img.texture.key);
+          shade.setPosition(img.x + HERO_SHADOW_DX * 0.7, img.y + HERO_SHADOW_DY * 0.7);
+          shade.setScale(img.scaleX, img.scaleY);
+          shade.setFlipX(img.flipX).setRotation(img.rotation);
+          shade.setAlpha(HOSTILE_SHADOW_ALPHA * img.alpha);
+        }
+      }
       // R3-15 · THE DESATURATION GRAMMAR (doc 41 §2): the wash mirrors its
       // being exactly — same cell, same place, same flip, same size — and only
       // its opacity moves. Redeem = the colour floods back in, which is the
@@ -1757,6 +1862,8 @@ export class PaintScene extends Phaser.Scene {
 
   private render(): void {
     this.renderReadability();
+    this.renderAir();
+    this.renderLetterFx();
     this.renderBossGlow();
     this.renderTrail();
     this.renderPull();
@@ -1843,6 +1950,7 @@ export class PaintScene extends Phaser.Scene {
     }
 
     this.renderEntities();
+    this.renderHostiles();
     this.renderEngageCue();
     this.renderEvidence();
     this.renderGift();
@@ -2023,6 +2131,56 @@ export class PaintScene extends Phaser.Scene {
     this.buildBackdropLegacy();
   }
 
+  /**
+   * PK-R6 · H1 · THE AIR, placed (round-1 critique, findings 2 and 4).
+   *
+   * The static half: the haze that lifts the far shell away from the furniture,
+   * and the beams that give the empty upper band something to hold. Both are
+   * planned in air.ts and merely placed here — same contract as the planes and
+   * the mass, so the composition gate can audit them without a browser.
+   *
+   * A phase that declares no air renders exactly as it did before (the fallback
+   * law): nothing in this file may make an undeclared phase worse.
+   */
+  private buildAir(): void {
+    const air = this.comp?.air;
+    if (!air) return;
+    const haze = planHaze(air, this.worldWpx, this.worldHpx);
+    const g = this.add.graphics().setDepth(haze.depth).setScrollFactor(haze.parallax, haze.parallaxY);
+    // top-down falloff, in two stops: strongest where the room is farthest from
+    // the eye, gone by the time it reaches the floor the child stands on
+    const half = haze.h / 2;
+    g.fillGradientStyle(haze.colour, haze.colour, haze.colour, haze.colour, haze.alphaTop, haze.alphaTop, haze.alphaTop * 0.45, haze.alphaTop * 0.45);
+    g.fillRect(haze.x, haze.y, haze.w, half);
+    g.fillGradientStyle(haze.colour, haze.colour, haze.colour, haze.colour, haze.alphaTop * 0.45, haze.alphaTop * 0.45, 0, 0);
+    g.fillRect(haze.x, haze.y + half, haze.w, haze.h - half);
+
+    for (const shaft of planShafts(air, this.worldWpx, this.worldHpx)) {
+      const beam = this.add.graphics().setDepth(shaft.depth).setScrollFactor(shaft.parallax, shaft.parallaxY);
+      // a beam is drawn as three nested quads rather than one: light has a hot
+      // core and soft sides, and a single flat polygon reads as a paper cut-out
+      for (let i = 0; i < 3; i++) {
+        const k = 1 - i / 3; // 1 = the narrow core, 0 = the outermost skirt
+        const a = shaft.alphaTop * (0.34 + 0.66 * k * k);
+        const [tl, tr, fr, fl] = shaft.points;
+        if (!tl || !tr || !fr || !fl) break;
+        const mid = (p: readonly [number, number], q: readonly [number, number]): [number, number] =>
+          [p[0] + (q[0] - p[0]) * (0.5 - 0.5 * k), p[1] + (q[1] - p[1]) * (0.5 - 0.5 * k)];
+        const a0 = mid(tl, tr);
+        const a1 = mid(tr, tl);
+        const b0 = mid(fl, fr);
+        const b1 = mid(fr, fl);
+        beam.fillStyle(shaft.colour, a);
+        beam.fillPoints([
+          new Phaser.Geom.Point(a0[0], a0[1]),
+          new Phaser.Geom.Point(a1[0], a1[1]),
+          new Phaser.Geom.Point(b1[0], b1[1]),
+          new Phaser.Geom.Point(b0[0], b0[1]),
+        ], true);
+      }
+    }
+  }
+
   /** The pre-C1 backdrop: one far plate + two fixed bands. Kept as the
    *  fallback for any phase without a composition manifest. */
   private buildBackdropLegacy(): void {
@@ -2109,10 +2267,14 @@ export class PaintScene extends Phaser.Scene {
       // anchor the pattern in WORLD space so neighbouring runs stay seamless
       t.tilePositionX = p.x / scale;
       t.tilePositionY = p.y / scale;
+      // …and lay this segment in its OWN light (the no-metronome law): a MULTIPLY
+      // by a near-white, so the course changes value without changing material
+      if (p.tint !== undefined && p.tint !== 0xffffff) t.setTint(p.tint);
       return;
     }
     const img = this.add.image(p.x, p.y, key).setOrigin(p.originX ?? 0, p.originY ?? 0).setDepth(p.depth);
     img.setDisplaySize(p.w, p.h);
+    if (p.tint !== undefined && p.tint !== 0xffffff) img.setTint(p.tint);
     if (p.rot !== undefined) img.setRotation(p.rot);
   }
 
@@ -2305,7 +2467,35 @@ export class PaintScene extends Phaser.Scene {
     // + fade + sediment, ramps, the slide, and complete platform objects ─────
     if (kit !== null) {
       for (const piece of planMass(this.grid, kit)) this.placeMassPiece(piece);
+      this.buildGrain();
     }
+  }
+
+  /**
+   * PK-R6 · H1 · THE GRAIN ON THE WALK COURSE (round-1 critique, finding 1).
+   *
+   * Scuffs and shine along the floor, at intervals that owe the tile nothing —
+   * the ingredient that actually stops the eye locking onto the loop, because
+   * every other variation in the course is still a multiple of the course.
+   * Placed once at build time onto ONE Graphics: it never changes, and a static
+   * canvas is cheaper than several hundred sprites.
+   */
+  private buildGrain(): void {
+    const claimed = claimedPlatformCells(this.grid);
+    const draw = (marks: readonly SurfaceMark[], depth: number, round: number): void => {
+      if (marks.length === 0) return;
+      const g = this.add.graphics().setDepth(depth);
+      for (const m of marks) {
+        g.fillStyle(m.kind === "shine" ? GRAIN_SHINE : GRAIN_SCUFF, m.alpha);
+        // rounded, because a hard rectangle on a painted floor reads as a sticker
+        g.fillRoundedRect(m.x, m.y, m.w, m.h, Math.min(m.h / 2, round));
+      }
+    };
+    draw(crustGrain(this.grid, claimed), CRUST_MARK_DEPTH, 1.2);
+    // …and the patina on the mass below it, which is the surface the round-1
+    // browser proof showed was still tiling: broader marks, far fainter, and
+    // softly rounded so they read as damp and wear rather than as marks
+    draw(massGrain(this.grid, claimed), MASS_MARK_DEPTH, 6);
   }
 
   /** World-px size of a drawn trail letter (matches the retired `prop_letter`). */
@@ -2477,6 +2667,123 @@ export class PaintScene extends Phaser.Scene {
         this.pullG.fillCircle(x, y, r + 0.9);
         this.pullG.fillStyle(PULL_COLOUR, 0.85 * t * (1 - k) * (1 - k));
         this.pullG.fillCircle(x, y, r);
+      }
+    }
+  }
+
+  /**
+   * PK-R6 · H1 · THE AIR, per frame (round-1 critique, findings 2, 4 and 5).
+   *
+   * The two ingredients that cannot be placed once: the motes, which drift, and
+   * the vignette, which is drawn in the CAMERA's rect and therefore moves with
+   * it. Everything else about the air was placed in `buildAir`.
+   *
+   * Under reduced motion the motes are drawn at tick 0 rather than dropped — the
+   * end-states law (doc 44 §3.1.8): the base state of an animation is its
+   * finished state, and dust hanging in a shaft of light is a complete picture.
+   */
+  private renderAir(): void {
+    this.moteG.clear();
+    this.vignetteG.clear();
+    const air = this.comp?.air;
+    if (!air) return;
+    const tick = this.cfg.reducedMotion ? 0 : this.tickCount;
+    for (const m of planMotes(air, this.worldWpx, this.worldHpx, tick)) {
+      this.moteG.fillStyle(m.colour, m.alpha);
+      this.moteG.fillCircle(m.x, m.y, m.r);
+    }
+    // the room's own shadow closing the frame. Its colour is a near-black
+    // carrying a little of this room's wash, so the hall closes in honey-dark
+    // and the ink dream in blue-black — one device, five rooms.
+    const deep = this.comp?.wash.colors[2] ?? this.comp?.wash.colors[1] ?? 0x000000;
+    const colour = mixRGB(0x1a1626, deep, 0.3);
+    const camX = fromSubs(this.camX);
+    const camY = fromSubs(this.camY);
+    for (const b of vignetteBands(camX, camY, air.vignette)) {
+      const a = b.alpha;
+      const [tl, tr, bl, br] =
+        b.edge === "top" ? [a, a, 0, 0]
+        : b.edge === "bottom" ? [0, 0, a, a]
+        : b.edge === "left" ? [a, 0, a, 0]
+        : [0, a, 0, a];
+      this.vignetteG.fillGradientStyle(colour, colour, colour, colour, tl, tr, bl, br);
+      this.vignetteG.fillRect(b.x, b.y, b.w, b.h);
+    }
+  }
+
+  /**
+   * PK-R6 · H1 · THE HOSTILE TELL (round-1 critique, finding 3) — the halo half.
+   *
+   * One soft, room-coloured halo behind every hostile that has not been freed
+   * yet: ink behind a being in a bright room, chalk behind one in a dark room,
+   * because separation is a VALUE question and the phase already declares its
+   * own value in its key. It breathes a little, which is what makes „hazard"
+   * read faster than „scenery" — but only a fifth of it breathes, so a still
+   * frame (and reduced motion) still shows a being with an edge.
+   *
+   * It ends the moment the being is freed: at that point the child has named it,
+   * its colour is coming back, and it is not a threat any more. The cast shadow
+   * in `renderEntities` stays — that one is light, not warning.
+   */
+  private renderHostiles(): void {
+    this.hostileG.clear();
+    const colour = (this.comp?.key ?? 88) >= HOSTILE_HALO_KEY_SPLIT ? HOSTILE_HALO_DARK : HOSTILE_HALO_LIGHT;
+    for (const e of this.world?.entities ?? []) {
+      if (!JOY_ROLES.has(e.role) || e.redeemed || e.hidden) continue;
+      const img = this.entityImgs.get(e.id);
+      if (!img || !img.visible) continue;
+      const cx = img.x;
+      const cy = img.y - img.displayHeight * 0.5;
+      const r0 = Math.max(img.displayWidth, img.displayHeight) * 0.44;
+      // the beat's offset is the being's NAME, not its position: keying it to
+      // e.x would re-seed the phase every tick (x moves in subs) and the breath
+      // would come out as flicker
+      const seed = e.id.length * 37 + (e.id.charCodeAt(0) | 0) * 7 + (e.id.charCodeAt(e.id.length - 1) | 0);
+      const beat = this.cfg.reducedMotion
+        ? 1
+        : 1 - HOSTILE_HALO_PULSE + HOSTILE_HALO_PULSE * (0.5 + 0.5 * Math.sin(this.tickCount / 13 + hash01(seed) * Math.PI * 2));
+      for (let i = 0; i < HOSTILE_HALO_RINGS; i++) {
+        const k = 1 - i / HOSTILE_HALO_RINGS; // 1 at the core, 0 at the rim
+        const spread = 1 + (HOSTILE_HALO_SPREAD - 1) * (i / Math.max(HOSTILE_HALO_RINGS - 1, 1));
+        this.hostileG.fillStyle(colour, HOSTILE_HALO_ALPHA * k * k * beat);
+        this.hostileG.fillCircle(cx, cy, r0 * spread);
+      }
+    }
+  }
+
+  /**
+   * PK-R6 · H1 · THE PICKUP SHIMMER (round-1 critique, finding 6).
+   *
+   * „Letters 'S' and 'C' float directly among the gold book-stack platforms in
+   * the same warm gold tone." Colour cannot separate them — both are gold and
+   * both are right — so the separation is made in a channel no platform in this
+   * book uses: a halo of light around the glyph, with four sparks turning slowly
+   * around it. Nothing you can stand on shimmers.
+   *
+   * Drawn UNDER the letters (depth 3.9 against their 4), so the glyph stays the
+   * sharpest thing in its own halo, and clipped to the letters the sim still
+   * says are there — a collected letter leaves the map, so its shimmer leaves
+   * with it in the same frame.
+   */
+  private renderLetterFx(): void {
+    this.letterFxG.clear();
+    if (this.letterImgs.size === 0) return;
+    const t = this.cfg.reducedMotion ? 0 : this.tickCount;
+    for (const [key, img] of this.letterImgs) {
+      if (!img.visible) continue;
+      const parts = key.split(",");
+      const phase = (Number(parts[0]) + Number(parts[1])) * 0.7; // the bob's own offset
+      const swell = 0.86 + 0.14 * (0.5 + 0.5 * Math.sin(t / 21 + phase));
+      for (let i = 0; i < LETTER_HALO_RINGS; i++) {
+        const k = 1 - i / LETTER_HALO_RINGS;
+        this.letterFxG.fillStyle(LETTER_HALO_COLOUR, LETTER_HALO_ALPHA * k * k * swell);
+        this.letterFxG.fillCircle(img.x, img.y, LETTER_HALO_R * (0.42 + 0.58 * (i / Math.max(LETTER_HALO_RINGS - 1, 1))) * swell);
+      }
+      for (let i = 0; i < LETTER_SPARKS; i++) {
+        const ang = (i / LETTER_SPARKS) * Math.PI * 2 + t / 46 + phase;
+        const d = LETTER_HALO_R * 0.92;
+        this.letterFxG.fillStyle(LETTER_HALO_COLOUR, 0.55 * swell);
+        this.letterFxG.fillCircle(img.x + Math.cos(ang) * d, img.y + Math.sin(ang) * d * 0.8, 0.85);
       }
     }
   }
