@@ -19,6 +19,34 @@
 // class this file animates, and the classes are all `pb-` prefixed (a prefix
 // no other stylesheet in the app claims).
 //
+// ── PK-R6 · H1 · WHAT THE ROUND-1 CRITIC SAW (blind screenshot judging) ─────
+// Five of the ten findings were about THIS file, and they were all one defect
+// wearing five coats: the overlay was drawn as app UI laid over a painting
+// instead of as another painted surface, and its motion beats had no picture at
+// any single frame. Fixed here, finding by finding:
+//
+//  · „the ink iris shows no iris — just a uniform darken". True: the blob went
+//    opaque edge to edge at its peak, which is a dim, not a wipe. It now carries
+//    a real APERTURE — a clear ink-rimmed opening over the being the card is
+//    about — so a mid-wipe frame reads as an iris closing on that being.
+//  · „the quiz card and buttons are generic flat app UI". True: a cream
+//    rectangle with a 14 px radius. The card is now painted parchment with a
+//    deckled edge and a hand-inked inner rule (100 % code, zero assets — B14),
+//    and it lives HERE rather than in two inline copies, so the task card and
+//    the ceremony panels can no longer drift apart.
+//  · „the letter-fly frame is washed out and illegible". True: every letter was
+//    invisible until its own turn, so mid-stagger frames were fragments. Each
+//    letter now flies into a CHALK GHOST of itself — the word is legible from
+//    the first frame and the flight inks it in.
+//  · „the card landing shows no landing". True: it eased in and stopped. It now
+//    overshoots, settles, and blooms a contact shadow under itself.
+//  · „the panel floats on one edge with no link to what it interrupts". The
+//    panel may NOT move to the centre (PB-F1/F2-20: a card is put down away from
+//    the being it talks about, because the centred panel used to cover exactly
+//    the thing it says to look at) — so the LINK is built instead: the veil's
+//    light and the iris aperture both sit over the being, and an ink thread
+//    reaches from the card toward it.
+//
 // Delivered as a string rendered into a <style> tag by PaintOverlayStyles,
 // because game-paint ships raw TS/TSX with no CSS build step of its own.
 import { LETTER_FLY_MS, WORD_GLIDE_DELAY_MS, WORD_GLIDE_MS } from "./resolution.ts";
@@ -37,8 +65,12 @@ import { LETTER_FLY_MS, WORD_GLIDE_DELAY_MS, WORD_GLIDE_MS } from "./resolution.
  *  as an R3b design note. */
 export const QUICKFIRE_MS = 45_000;
 /** The verdict beat: how long a solved card is allowed to say „richtig" before
- *  the world comes back. Short — it is a nod, not a ceremony. */
-export const VERDICT_MS = 420;
+ *  the world comes back. Short — it is a nod, not a ceremony.
+ *
+ *  PK-R6 · H1: the beat now has to carry a seal being stamped, a ray flash and
+ *  a spark ring (finding 7 — „the celebration has no juice"), so it runs long
+ *  enough for that flourish to be SEEN. Still a nod: 720 ms is under a second. */
+export const VERDICT_MS = 720;
 /** The Lost-Pages choreography delay: the ink-iris goes first, the card lands
  *  after it (doc 42 §1 · doc 44 §3.1.1). VERBATIM from the v0 build:
  *  `.dg-bs-card { animation: dg-bs-card-in 420ms 260ms … }` — 260 ms late, over
@@ -55,15 +87,35 @@ export const IRIS_MS = 700;
 export const IRIS_B_DELAY_MS = 60;
 export const IRIS_B_MS = 640;
 
+/** PK-R6 · H1 · WHERE THE MOMENT IS, as a percentage of the canvas width.
+ *  The card is always put down AWAY from the being it talks about (PB-F1/F2-20),
+ *  so its `align` already names which side the being is on — and that is the one
+ *  fact the veil's light, the iris aperture and the ink thread all need. One
+ *  value, three readers, no chance of them disagreeing about where to look. */
+export const focusPctFor = (align: "left" | "center" | "right"): string =>
+  align === "right" ? "28%" : align === "left" ? "72%" : "50%";
+
 export const PAINT_OVERLAY_CSS = `
 /* ── the ink-wash veil ─────────────────────────────────────────────────── */
-@keyframes pb-veil-in { from { opacity: 0; } }
+/* PK-R6 · H1 (finding 9): the veil's LIGHT sits over the being the card is
+   about — »--pb-focus«, set by the shell from the card's own align. A dim
+   centred on the middle of the screen while the action is at the left edge is
+   a composition that ignores its own subject.
+   And it arrives in TWO STAGES on purpose (finding 1): the contact burst is
+   thrown into the world at the instant the card opens, so a veil that reached
+   full ink in one ramp buried the impact it was supposed to punctuate. The
+   world therefore stays legible for the first ~110 ms — the burst's brightest
+   moment — and the ink closes over it after. */
+@keyframes pb-veil-in {
+  from { opacity: 0; }
+  36%  { opacity: 0.3; }
+}
 .pb-veil {
   background:
-    radial-gradient(120% 90% at 50% 45%, rgba(30,24,12,0.10), rgba(30,24,12,0.52)) !important;
+    radial-gradient(120% 90% at var(--pb-focus, 50%) 45%, rgba(30,24,12,0.06), rgba(30,24,12,0.56)) !important;
   /* the bloom below is bigger than the canvas — clip it to the page */
   overflow: hidden;
-  animation: pb-veil-in 160ms ease-out;
+  animation: pb-veil-in 300ms ease-out;
 }
 
 /* ── THE INK IRIS that wipes the world before the card lands ───────────────
@@ -72,7 +124,19 @@ export const PAINT_OVERLAY_CSS = `
    its 700 ms on cubic-bezier(0.6, 0, 0.4, 1), and the SECOND blob 60 ms behind
    it over 640 ms with the mirrored border-radius. Two blobs is the whole trick:
    one border-radius blob swelling from the centre reads as a circle, two
-   offset ones read as ink running over the page. 100 % CSS, zero assets (B14). */
+   offset ones read as ink running over the page. 100 % CSS, zero assets (B14).
+
+   PK-R6 · H1 (finding 2 — „no iris shape at all, just a uniform darken"): the
+   blob was opaque from edge to edge at its peak, so its whole middle third of
+   a second was a flat screen-dim with a rotation nobody could see. It now
+   carries an APERTURE: a clear, ink-rimmed opening at the blob's own centre,
+   and the blob is centred on the BEING (»--pb-focus«) rather than on the
+   canvas. So the peak frame — the one the harness caught — is an ink iris
+   closed around the creature that just spoke, with the burst still visible
+   inside it. The two blobs' apertures sit a little apart, which is what keeps
+   the opening an ink blot rather than a lens flare.
+   The aperture rides the blob's own centre so the 20° swing rotates the ink
+   AROUND the opening instead of dragging the opening off the being. */
 @keyframes pb-wipe {
   0%   { transform: translate(-50%, -50%) scale(0)    rotate(0deg); }
   42%  { transform: translate(-50%, -50%) scale(1.06) rotate(16deg); }
@@ -81,12 +145,17 @@ export const PAINT_OVERLAY_CSS = `
 }
 .pb-wipe {
   position: absolute;
-  left: 50%;
+  left: var(--pb-focus, 50%);
   top: 50%;
   width: 165%;
   height: 165%;
   border-radius: 43% 57% 52% 48% / 46% 49% 51% 54%;
-  background: radial-gradient(circle at 42% 40%, #4a3a22, #2a2216 70%);
+  background: radial-gradient(ellipse 8% 8% at 50% 47%,
+    rgba(23,16,9,0) 0 54%,
+    rgba(23,16,9,0.5) 78%,
+    #17100a 100%,
+    #4a3a22 210%,
+    #2a2216 560%);
   opacity: 0.9;
   pointer-events: none;
   /* END STATE: gone. With animations off there is no wipe at all. */
@@ -96,18 +165,152 @@ export const PAINT_OVERLAY_CSS = `
 /* the second blob — same keyframes, mirrored radius, a beat behind (v0
    ».dg-bs-swirl-blob-b«, verbatim). It declares no »animation« shorthand of
    its own on purpose: it rides ».pb-wipe«'s, so the reduced-motion kill list
-   covers both by covering one. */
+   covers both by covering one. Its aperture sits a little down and across from
+   the first one — the offset IS the ink. */
 .pb-wipe-b {
+  left: calc(var(--pb-focus, 50%) + 2.6%);
+  top: 53%;
   border-radius: 57% 43% 48% 52% / 51% 54% 46% 49%;
-  background: radial-gradient(circle at 58% 46%, #3f3320, #241d13 70%);
+  background: radial-gradient(ellipse 9% 8.4% at 50% 47%,
+    rgba(23,16,9,0) 0 52%,
+    rgba(23,16,9,0.46) 76%,
+    #1a120b 100%,
+    #3f3320 205%,
+    #241d13 540%);
   opacity: 0.72;
   animation-delay: ${IRIS_B_DELAY_MS}ms;
   animation-duration: ${IRIS_B_MS}ms;
 }
 
-/* ── the card springs in a beat after the iris ─────────────────────────── */
-@keyframes pb-card-in { from { opacity: 0; transform: translateY(16px) scale(0.94); } }
-.pb-card { animation: pb-card-in ${CARD_ENTER_MS}ms ${CARD_ENTER_DELAY_MS}ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+/* ── the card is a PAGE OF THE BOOK, and it lands ──────────────────────────
+   PK-R6 · H1, findings 3 and 10. Two things were wrong and they had the same
+   root: the card was styled inline, twice (the task card and the ceremony
+   panels each carried their own copy of „cream box, 2 px amber, radius 14"),
+   and neither copy was painted. Both are now THIS rule — one painted surface
+   both surfaces wear, so the book's card can never again be two cards.
+
+   The paper is layered gradients, no image: a warm sheet, a lit top-left
+   corner, a shaded bottom-right, two faint blooms where the wash pooled, and
+   two crossing fibre grains. The edge is deckled (an irregular border-radius,
+   the way a torn book page is never a rounded rectangle), and the ::before rule
+   below draws the hand-inked border a printed page carries inside its trim.
+
+   THE LANDING (finding 10): it used to ease from 16 px below to rest, which
+   is an appearance, not an arrival. It now overshoots a hair past its size,
+   settles back, and blooms its contact shadow from nothing to deep and back —
+   so the frame the harness catches has weight in it. The mined 420 ms / 260 ms
+   are untouched; only the curve inside them is now a landing. */
+@keyframes pb-card-in {
+  0%   { opacity: 0; transform: translateY(18px) scale(0.93); box-shadow: 0 2px 7px rgba(26,17,8,0.12); }
+  62%  { opacity: 1; transform: translateY(-3px) scale(1.028); box-shadow: 0 26px 62px rgba(26,17,8,0.5); }
+}
+.pb-card {
+  position: relative;
+  padding: 18px 22px;
+  text-align: center;
+  color: #3b3122;
+  /* doc 42 §5 · B19: the three faces are already loaded app-wide — the overlays
+     simply start using them (prompts → body, headlines → display, chips → label) */
+  font-family: var(--font-body, system-ui, sans-serif);
+  background-color: #f7edd5;
+  background-image:
+    radial-gradient(120% 85% at 14% 4%, rgba(255,253,244,0.95), rgba(255,253,244,0) 58%),
+    radial-gradient(85% 70% at 92% 98%, rgba(186,152,96,0.34), rgba(186,152,96,0) 62%),
+    radial-gradient(34% 26% at 68% 30%, rgba(170,138,84,0.16), rgba(170,138,84,0) 74%),
+    radial-gradient(26% 34% at 22% 74%, rgba(170,138,84,0.13), rgba(170,138,84,0) 76%),
+    radial-gradient(18% 46% at 46% 58%, rgba(176,142,88,0.1), rgba(176,142,88,0) 78%),
+    radial-gradient(52% 16% at 76% 62%, rgba(255,253,244,0.5), rgba(255,253,244,0) 72%),
+    /* ONE fibre direction, long period, barely there. Two crossing grains at
+       7 px read as squared exercise paper rather than as a sheet — caught in
+       the render, which is why the render happens before the commit. */
+    repeating-linear-gradient(97deg, rgba(146,114,64,0.035) 0 1px, rgba(146,114,64,0) 1px 23px);
+  border: 2px solid #b78d51;
+  border-radius: 17px 23px 15px 21px / 21px 15px 23px 17px;
+  box-shadow:
+    0 12px 34px rgba(26,17,8,0.42),
+    inset 0 0 0 1px rgba(255,251,238,0.7),
+    inset 0 0 30px rgba(150,116,64,0.2);
+  animation: pb-card-in ${CARD_ENTER_MS}ms ${CARD_ENTER_DELAY_MS}ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+/* the hand-inked rule inside the trim — the mark that makes a sheet of paper
+   read as a PAGE. Pointer-transparent, so it never eats a tap. */
+.pb-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(140,106,58,0.4);
+  border-radius: 13px 18px 11px 16px / 16px 11px 18px 13px;
+  pointer-events: none;
+}
+
+/* ── every control on the card is a painted chip ───────────────────────────
+   Finding 3's second half: the answer buttons were web-form buttons — flat
+   fill, 9 px radius, one hairline. A chip now carries the same paper as the
+   card it sits on, an ink edge that is not quite straight, and a lifted lip
+   that presses in under the finger. The inline styles that build these buttons
+   keep only their LAYOUT, so this is the single place their look lives. */
+.pb-card button, .pb-card .pb-chip {
+  background-color: #fdf6e4;
+  background-image:
+    radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,0.9), rgba(255,255,255,0) 68%),
+    radial-gradient(70% 60% at 84% 100%, rgba(176,142,88,0.16), rgba(176,142,88,0) 70%),
+    repeating-linear-gradient(97deg, rgba(146,114,64,0.035) 0 1px, rgba(146,114,64,0) 1px 19px);
+  border: 1.5px solid #b78d51;
+  border-radius: 11px 8px 12px 9px / 9px 12px 8px 11px;
+  box-shadow:
+    0 2px 0 rgba(150,116,64,0.42),
+    0 3px 9px rgba(40,28,12,0.16),
+    inset 0 1px 0 rgba(255,253,244,0.9);
+  color: #3d3122;
+  transition: transform 90ms ease-out, box-shadow 90ms ease-out;
+}
+.pb-card button:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 rgba(150,116,64,0.42), 0 1px 4px rgba(40,28,12,0.18), inset 0 1px 3px rgba(120,92,50,0.28);
+}
+.pb-card button:disabled { opacity: 0.55; box-shadow: inset 0 1px 4px rgba(120,92,50,0.24); }
+
+/* ── the ink thread from the card to the being it interrupts ───────────────
+   PK-R6 · H1, finding 9. The panel may not move to the middle — PB-F1/F2-20
+   put it on this side precisely so it would stop covering the thing it tells
+   the child to look at. So instead of moving the card, the composition is
+   given the link it was missing: a brush stroke leaving the card's world-facing
+   edge, thinning as it goes, with a warm bead at its tip pointing at the being.
+   It arrives with the card and then simply IS the picture (no loop), so the
+   reduced-motion end state is a finished thread rather than a stub. */
+@keyframes pb-thread-in { from { opacity: 0; transform: scaleX(0.15); } }
+.pb-tether {
+  position: absolute;
+  top: 44%;
+  width: 108px;
+  height: 5px;
+  pointer-events: none;
+  border-radius: 5px;
+  filter: drop-shadow(0 0 6px rgba(226,186,110,0.45));
+  animation: pb-thread-in 460ms 300ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+.pb-tether::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,247,220,0.98), rgba(226,186,110,0.7) 48%, rgba(226,186,110,0) 100%);
+  box-shadow: 0 0 16px rgba(244,212,142,0.85);
+}
+.pb-tether-l {
+  right: 100%;
+  transform-origin: right center;
+  background: linear-gradient(to left, rgba(226,186,110,0.92) 0%, rgba(198,156,88,0.6) 40%, rgba(180,140,78,0.18) 76%, rgba(180,140,78,0) 100%);
+}
+.pb-tether-l::after { right: -6px; margin-top: -6.5px; }
+.pb-tether-r {
+  left: 100%;
+  transform-origin: left center;
+  background: linear-gradient(to right, rgba(226,186,110,0.92) 0%, rgba(198,156,88,0.6) 40%, rgba(180,140,78,0.18) 76%, rgba(180,140,78,0) 100%);
+}
+.pb-tether-r::after { left: -6px; margin-top: -6.5px; }
 
 /* ── the chalk-erase countdown (quickfire only) ────────────────────────── */
 @keyframes pb-ring-erase { from { width: 100%; } to { width: 0%; } }
@@ -142,8 +345,8 @@ export const PAINT_OVERLAY_CSS = `
   width: min(130px, 34%);
   min-width: 88px;
   aspect-ratio: 1 / 1;
-  border-radius: 12px;
-  border: 2px solid #c9a36a;
+  border-radius: 14px 11px 15px 12px / 12px 15px 11px 14px;
+  border: 2px solid #b78d51;
   background: #fffdf5 radial-gradient(120% 100% at 50% 12%, rgba(255, 255, 255, 0.9), rgba(233, 219, 186, 0.55));
   box-shadow: inset 0 1px 6px rgba(120, 96, 52, 0.22), 0 2px 8px rgba(30, 20, 10, 0.16);
   overflow: hidden;
@@ -160,19 +363,47 @@ export const PAINT_OVERLAY_CSS = `
 /* ── THE RESOLUTION BEAT · 1 · the answer flies home (doc 44 §3.1.7) ────────
    v0 »dg-bs-letter-fly«, verbatim: 460 ms per letter on the same curve, the
    per-char stagger applied inline (120 + i × 55 ms). Long answers glide back
-   whole instead — »dg-bs-word-glide«, 560 ms after 140 ms. */
+   whole instead — »dg-bs-word-glide«, 560 ms after 140 ms.
+
+   PK-R6 · H1, finding 4 („almost entirely washed out and illegible"). The
+   critic was right and the cause was structural, not a colour: every letter sat
+   at opacity 0 until its own delay elapsed, so at ANY instant mid-stagger the
+   word on screen was a fragment plus a few half-faded glyphs in the air. Two
+   fixes, both keeping the mined numbers:
+     · every letter flies into a CHALK GHOST of itself (»pb-slot«), so the whole
+       word is readable from the first frame and the flight INKS it in — which
+       is also the truer picture: the word was always there, the child gave it
+       back.
+     · the letter reaches full ink by 38 % of its flight instead of 60 %, and
+       travels a shorter, tighter arc, so it reads as one word arriving rather
+       than as loose glyphs drifting. */
 @keyframes pb-letter-fly {
-  from { opacity: 0; transform: translateY(-46px) scale(0.4) rotate(-18deg); }
-  60%  { opacity: 1; transform: translateY(4px) scale(1.08) rotate(3deg); }
+  from { opacity: 0; transform: translateY(-24px) scale(0.58) rotate(-10deg); }
+  38%  { opacity: 1; }
+  64%  { transform: translateY(3px) scale(1.07) rotate(2deg); }
 }
 .pb-letter { animation: pb-letter-fly ${LETTER_FLY_MS}ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
-@keyframes pb-word-glide { from { opacity: 0; transform: translateY(-30px) scale(0.7); } }
+@keyframes pb-word-glide { from { opacity: 0; transform: translateY(-22px) scale(0.78); } 40% { opacity: 1; } }
 .pb-word { animation: pb-word-glide ${WORD_GLIDE_MS}ms ${WORD_GLIDE_DELAY_MS}ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+/* the chalk ghost the flying letter lands into — the same character, drawn
+   faintly underneath in the same slot. Unanimated: it is the still picture the
+   flight arrives at, which is exactly what the end-states law asks a base
+   style to be. */
+.pb-slot { position: relative; display: inline-block; }
+.pb-slot::before {
+  content: attr(data-ch);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgba(122, 96, 52, 0.32);
+  pointer-events: none;
+}
 
 /* ── THE RESOLUTION BEAT · 2 · the card gets out of the way ─────────────────
    THE RESTORE-HOLD (doc 42 §3): the world's change is the thing to watch, so
    the veil and the card leave before it plays and the celebration waits until
-   it has finished. The fade takes the veil's own 160 ms, run backwards.
+   it has finished. The exit is quicker than the entrance on purpose — a card
+   taking its time to leave would compete with the change it is uncovering.
    END STATE: gone — with animations killed the world is simply visible, which
    is the finished picture of this beat, not a stuck one. */
 @keyframes pb-doff { from { opacity: 1; } }
@@ -184,11 +415,56 @@ export const PAINT_OVERLAY_CSS = `
 
 /* ── the verdict beat — now the LAST beat, after the world has changed ───── */
 @keyframes pb-verdict-in {
-  0%   { opacity: 0; transform: scale(0.6); }
-  45%  { opacity: 1; transform: scale(1.14); }
-  100% { opacity: 1; transform: scale(1); }
+  0%   { opacity: 0; transform: scale(0.6) rotate(-8deg); }
+  45%  { opacity: 1; transform: scale(1.14) rotate(3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 .pb-verdict { animation: pb-verdict-in 260ms cubic-bezier(0.2, 0.9, 0.25, 1.2); }
+
+/* ── THE FLOURISH the celebration was missing ──────────────────────────────
+   PK-R6 · H1, finding 7: „no confetti, particles, light, screen response or
+   character reaction — a static bubble and a flat checkmark". The world's own
+   half of this (sparks and a ray flash ON the freed thing) is in PaintScene;
+   this is the card's half, drawn in CSS with no assets (B14): a warm ray fan
+   opening behind the seal, and a ring of chalk-and-amber motes thrown outward.
+   Both END at nothing, which is what makes them safe to kill: a reduced-motion
+   child sees the seal alone, and the seal is the whole message. */
+@keyframes pb-rays-in {
+  from { opacity: 0; transform: scale(0.35) rotate(-16deg); }
+  45%  { opacity: 0.9; }
+  to   { opacity: 0; transform: scale(1.55) rotate(12deg); }
+}
+.pb-rays {
+  opacity: 0;
+  pointer-events: none;
+  /* soft and blurred on purpose: hard-edged wedges read as a pinwheel, which is
+     what the first render of this actually looked like — light has no edges */
+  background: conic-gradient(from 0deg,
+    rgba(255,236,178,0.55) 0deg 7deg, rgba(255,236,178,0) 7deg 45deg,
+    rgba(255,236,178,0.4) 45deg 51deg, rgba(255,236,178,0) 51deg 90deg,
+    rgba(255,236,178,0.55) 90deg 97deg, rgba(255,236,178,0) 97deg 135deg,
+    rgba(255,236,178,0.4) 135deg 141deg, rgba(255,236,178,0) 141deg 180deg,
+    rgba(255,236,178,0.55) 180deg 187deg, rgba(255,236,178,0) 187deg 225deg,
+    rgba(255,236,178,0.4) 225deg 231deg, rgba(255,236,178,0) 231deg 270deg,
+    rgba(255,236,178,0.55) 270deg 277deg, rgba(255,236,178,0) 277deg 315deg,
+    rgba(255,236,178,0.4) 315deg 321deg, rgba(255,236,178,0) 321deg 360deg);
+  filter: blur(3px);
+  mask-image: radial-gradient(circle, rgba(0,0,0,0.1) 22%, rgba(0,0,0,0.85) 44%, rgba(0,0,0,0) 72%);
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,0.1) 22%, rgba(0,0,0,0.85) 44%, rgba(0,0,0,0) 72%);
+  animation: pb-rays-in 620ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes pb-spark-out {
+  from { opacity: 0; transform: translate(0, 0) scale(0.2); }
+  28%  { opacity: 1; }
+  to   { opacity: 0; transform: translate(var(--pb-dx, 0px), var(--pb-dy, 0px)) scale(0.85); }
+}
+.pb-spark {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  animation: pb-spark-out 640ms cubic-bezier(0.18, 0.7, 0.3, 1) forwards;
+}
 
 /* ── the boot ceremony: a page of the book turning toward the reader ───── */
 @keyframes pb-page-in {
@@ -206,7 +482,7 @@ export const PAINT_OVERLAY_CSS = `
 /* ── THE END-STATES LAW: every animated class above, killed ─────────────── */
 @media (prefers-reduced-motion: reduce) {
   .pb-veil, .pb-wipe, .pb-card, .pb-ring, .pb-verdict, .pb-page, .pb-world-in,
-  .pb-letter, .pb-word, .pb-doff {
+  .pb-letter, .pb-word, .pb-doff, .pb-tether, .pb-rays, .pb-spark {
     animation: none !important;
   }
 }

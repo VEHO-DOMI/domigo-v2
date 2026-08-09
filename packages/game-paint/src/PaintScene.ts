@@ -24,7 +24,7 @@ import { type Pad, type PlayerState } from "./player.ts";
 import { type EntityWorld, SHARD_TICKS, engageTargetId } from "./entities.ts";
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
-import { CELL_IS_DIRECTIONAL, type EntPoseInput, WASHED_ROLES, entPoseCell, poseStateOf, washAlphaFor } from "./anim.ts";
+import { CELL_IS_DIRECTIONAL, type EntPoseInput, WASHED_ROLES, entPoseCell, floodBloomFor, poseStateOf, washAlphaFor } from "./anim.ts";
 import { RIG, rigPose, withFistAway } from "./rig.ts";
 import {
   RIG_CELL,
@@ -186,6 +186,29 @@ const trailWobble = (tick: number): number => ((Math.imul(tick, 2654435761) >>> 
 /** R3-15 · the colour OSWIN's rain leaves behind: warm paper-grey, so a drained
  *  being still belongs to the painted book rather than turning to concrete. */
 const COLOUR_DRAINED = 0x9a958c;
+/** PK-R6 · H1 · the warm light the returning colour rides in on (finding 8).
+ *  Amber rather than white: the book's own light is the classroom's afternoon
+ *  sun, and a white flash would read as a camera rather than as a spell lifting. */
+const COLOUR_RETURNING = 0xffd98f;
+/** PK-R6 · H1 · the two materials every painted surface the SCENE draws is made
+ *  of — the same cream and the same brown ink the overlay's parchment uses, so a
+ *  bubble the world speaks and a card the book opens are one book. */
+const PARCHMENT = 0xf7edd5;
+const INK_LINE = 0x8a6a38;
+
+/** The book's display face as Phaser needs it: a family NAME, not a CSS variable.
+ *  next/font mints the real family at build time and publishes it through
+ *  »--font-fredoka« (apps/web/app/layout.tsx · globals.css, doc 42 §5 · B19), so
+ *  it is read off the document rather than guessed — and „--font-display" is not
+ *  the one to read, because its value is a var() chain a canvas cannot resolve.
+ *  Falls back to the same stack the CSS declares, which is also what any
+ *  document-less environment (a test, a node harness) gets. */
+const DISPLAY_FALLBACK = "Fredoka, system-ui, sans-serif";
+const displayFace = (): string => {
+  if (typeof document === "undefined") return DISPLAY_FALLBACK;
+  const v = getComputedStyle(document.documentElement).getPropertyValue("--font-fredoka").trim();
+  return v.length > 0 ? `${v}, ${DISPLAY_FALLBACK}` : DISPLAY_FALLBACK;
+};
 
 const EARTH = 0xa8794f;
 const EARTH_DARK = 0x8a6140;
@@ -221,6 +244,14 @@ export class PaintScene extends Phaser.Scene {
   /** R3-15: the grey wash laid OVER a being OSWIN drained (doc 41 §2). One per
    *  redeemable creature, built beside its sprite and driven by washAlphaFor. */
   private washImgs = new Map<string, Phaser.GameObjects.Image>();
+  /** PK-R6 · H1: the warm light the returning colour arrives on (anim.floodBloomFor,
+   *  round-1 critique finding 8). Same sheet, same place, added rather than
+   *  laid over — so the being brightens in its own shape instead of gaining a
+   *  rectangle of glow. */
+  private bloomImgs = new Map<string, Phaser.GameObjects.Image>();
+  /** PK-R6 · H1: which beings have already had their freeing celebrated, so the
+   *  flourish fires ONCE per redeem rather than every frame of the flood. */
+  private cheered = new Set<string>();
   private projG!: Phaser.GameObjects.Graphics;
   /** PK-R6 · E: the code-drawn golden tail behind the flying guardian. */
   private trailG!: Phaser.GameObjects.Graphics;
@@ -460,6 +491,12 @@ export class PaintScene extends Phaser.Scene {
 
   private buildEntityImgs(): void {
     for (const e of this.world.entities) {
+      // PK-R6 · H1: a being that is ALREADY free when this phase builds was
+      // freed in an earlier visit (freedCageIds carries that across mounts), so
+      // it has had its celebration. Seeding the set here is what keeps walking
+      // back into p1 from throwing confetti at work the child finished ten
+      // minutes ago — the flourish marks a CHANGE, and nothing changed.
+      if (e.redeemed) this.cheered.add(e.id);
       const img = this.add.image(fromSubs(e.x), fromSubs(e.y), this.entTex(e.skin, "a")).setDepth(7).setOrigin(0.5, 1);
       img.setVisible(!e.hidden);
       this.entityImgs.set(e.id, img);
@@ -471,6 +508,14 @@ export class PaintScene extends Phaser.Scene {
         wash.setTint(COLOUR_DRAINED);
         wash.setVisible(!e.hidden);
         this.washImgs.set(e.id, wash);
+        // PK-R6 · H1 · and the light the colour arrives on, a hair in front of
+        // the wash: same sheet, ADD blend, so it reads as the being lighting up
+        // rather than as a lamp switched on beside it.
+        const bloom = this.add.image(fromSubs(e.x), fromSubs(e.y), img.texture.key).setDepth(7.02).setOrigin(0.5, 1);
+        bloom.setTint(COLOUR_RETURNING);
+        bloom.setBlendMode(Phaser.BlendModes.ADD);
+        bloom.setVisible(false);
+        this.bloomImgs.set(e.id, bloom);
       }
     }
   }
@@ -642,6 +687,28 @@ export class PaintScene extends Phaser.Scene {
           wash.setAlpha(a * img.alpha);
         }
       }
+      // PK-R6 · H1 · THE COLOUR ARRIVING (round-1 critique, finding 8). The same
+      // mirror trick as the wash, run the other way: a warm ADD-blended copy of
+      // the being's own cell whose alpha spikes as the grey lets go. Driven by
+      // anim.floodBloomFor off the sim's own timer, so the light is over before
+      // the flood is and the being is left holding nothing but its colour.
+      const bloom = this.bloomImgs.get(e.id);
+      if (bloom) {
+        const b = floodBloomFor(e, this.cfg.reducedMotion);
+        bloom.setVisible(!e.hidden && b > 0);
+        if (b > 0) {
+          bloom.setTexture(img.texture.key);
+          bloom.setPosition(img.x, img.y);
+          bloom.setScale(img.scaleX, img.scaleY);
+          bloom.setFlipX(img.flipX);
+          bloom.setAlpha(b * img.alpha);
+        }
+      }
+      // …and the once-per-freeing flourish behind it (finding 7).
+      if (e.redeemed && !this.cheered.has(e.id)) {
+        this.cheered.add(e.id);
+        this.redeemFlourish(img.x, img.y - this.entTargetH(e) * 0.5);
+      }
     }
     // R3-4 · THE PROJECTILE IS CHALK, not a white ball. `tafel_chalk` was
     // painted and drawn by nothing (doc 38 §2) while the duel threw a circle;
@@ -797,13 +864,55 @@ export class PaintScene extends Phaser.Scene {
     const xPx = fromSubs(e.x);
     const yPx = fromSubs(e.y);
     const SCALE = TILE / 48; // this world's px per the mined world's px
+
+    // ── PK-R6 · H1 · THE FLASH (round-1 critique, finding 1) ──────────────────
+    // „No spark, particle or flash — it reads as a flat translucent smudge."
+    // Two causes, and the count was neither of them: the flecks were 1.3–2.1 px
+    // in a world drawn at 16 px per tile, and the ink veil went up in the SAME
+    // frame the burst was thrown, so the whole impact happened underneath it.
+    // (The veil's ramp now holds the world legible for the burst's brightest
+    // moment — overlay-css, »pb-veil-in«.) What was missing on this side is a
+    // CORE: a contact reads as a contact because something goes bright at the
+    // point of contact, and nothing here ever did.
+    const flash = this.add.circle(xPx, yPx, 3, 0xfff6d8, 0.95).setDepth(9.3);
+    this.tweens.add({
+      targets: flash, scale: 5.2, alpha: 0, duration: 150, ease: "Quad.easeOut",
+      onComplete: () => flash.destroy(),
+    });
+    const halo = this.add.circle(xPx, yPx, 5, 0xffd98f, 0.6).setDepth(9.2);
+    this.tweens.add({
+      targets: halo, scale: 4.4, alpha: 0, duration: 260, ease: "Quad.easeOut",
+      onComplete: () => halo.destroy(),
+    });
+    // the shock the flash leaves: a thin ring opening off the touch point, which
+    // is what gives the frame a direction to read outward along
+    const ring = this.add.circle(xPx, yPx, 4, undefined, 0).setStrokeStyle(1.4, 0xfff0c4, 0.9).setDepth(9.2);
+    this.tweens.add({
+      targets: ring, scale: 5.5, alpha: 0, duration: 320, ease: "Cubic.easeOut",
+      onComplete: () => ring.destroy(),
+    });
+    // …and the mark it leaves ON the page, so a frame caught LATE still says
+    // „something hit here" instead of showing an empty patch of classroom
+    const splat = this.add.circle(xPx, yPx, 5.5, 0x2f2617, 0.34).setDepth(6.9);
+    this.tweens.add({
+      targets: splat, scale: 1.9, alpha: 0, duration: 620, ease: "Quad.easeIn",
+      onComplete: () => splat.destroy(),
+    });
+
     for (let i = 0; i < SPARK_COUNT; i++) {
       const ang = (i / SPARK_COUNT) * Math.PI * 2 + (i % 3) * 0.21; // 360°, un-banded
       const speed = (60 + (i % 5) * 40) * SCALE; // v0 60…220 px/s, in paint px
       const life = 260 + (i % 6) * 52; // v0 lifespan 260…520 ms, verbatim
       const colour = i % 2 === 0 ? 0x3a2f1c : 0xf6f2e8; // ink fleck · chalk mote
-      const g = this.add.circle(xPx, yPx, 1.3 + (i % 3) * 0.4, colour, 0.95).setDepth(9);
       const dist = (speed * life) / 1000;
+      // …and every third fleck flies as a STREAK rather than a dot: a rectangle
+      // laid along its own heading, which is how a still frame shows a path at
+      // all (the critique's „no motion path"). The dots keep the mined sizes ×2
+      // — the v0 emitter's particles were sized for a 48 px tile.
+      const streak = i % 3 === 0;
+      const g: Phaser.GameObjects.Shape = streak
+        ? this.add.rectangle(xPx, yPx, 5.5 + (i % 4), 1.6, colour, 0.95).setRotation(ang).setDepth(9)
+        : this.add.circle(xPx, yPx, 2.6 + (i % 3) * 0.8, colour, 0.95).setDepth(9);
       this.tweens.add({
         targets: g,
         x: xPx + Math.cos(ang) * dist,
@@ -814,6 +923,67 @@ export class PaintScene extends Phaser.Scene {
         duration: life,
         ease: "Quad.easeOut",
         onComplete: () => g.destroy(),
+      });
+    }
+  }
+
+  /**
+   * PK-R6 · H1 · THE FREEING IS CELEBRATED (round-1 critique, finding 7:
+   * „no confetti, particles, light, screen response or character reaction — the
+   * payoff reads as a static UI update").
+   *
+   * The card's half of this is the seal and its motes (CardShell.Cheer); this is
+   * the world's half, and the world's half matters more, because the restore-hold
+   * exists precisely so the child is LOOKING here when it plays. A ray fan opens
+   * behind the freed thing, twelve motes are thrown off it, and the arriving
+   * colour is already lighting it up underneath (floodBloomFor).
+   *
+   * Deterministic by construction: every angle, distance and delay comes from the
+   * mote's own index, so a replayed tape celebrates identically. Under reduced
+   * motion the same picture is drawn STILL, at the positions the motion would
+   * have reached, and cleared a beat later — a finished celebration rather than a
+   * frozen one (the end-states law, applied to the world).
+   */
+  private redeemFlourish(xPx: number, yPx: number): void {
+    const RAYS = 8;
+    const rays = this.add.graphics().setDepth(6.95);
+    rays.fillStyle(0xffe3a4, 0.5);
+    for (let i = 0; i < RAYS; i++) {
+      const a = (i / RAYS) * Math.PI * 2;
+      const w = 0.14;
+      rays.fillTriangle(
+        xPx, yPx,
+        xPx + Math.cos(a - w) * 34, yPx + Math.sin(a - w) * 34,
+        xPx + Math.cos(a + w) * 34, yPx + Math.sin(a + w) * 34,
+      );
+    }
+    if (this.cfg.reducedMotion) {
+      this.time.delayedCall(420, () => rays.destroy());
+    } else {
+      rays.setScale(0.35);
+      this.tweens.add({
+        targets: rays, scale: 1.35, alpha: 0, angle: 14, duration: 520,
+        ease: "Cubic.easeOut", onComplete: () => rays.destroy(),
+      });
+    }
+
+    const MOTES = 12;
+    for (let i = 0; i < MOTES; i++) {
+      const ang = (i / MOTES) * Math.PI * 2 + (i % 4) * 0.16;
+      const dist = 16 + (i % 5) * 5;
+      const colour = i % 2 === 0 ? 0xf6f2e8 : 0xffd98f;
+      const dx = Math.cos(ang) * dist;
+      const dy = Math.sin(ang) * dist - 6; // the lift: joy goes up
+      const g = this.add.circle(xPx, yPx, 1.4 + (i % 3) * 0.6, colour, 0.95).setDepth(9.1);
+      if (this.cfg.reducedMotion) {
+        g.setPosition(xPx + dx, yPx + dy);
+        this.time.delayedCall(420, () => g.destroy());
+        continue;
+      }
+      this.tweens.add({
+        targets: g, x: xPx + dx, y: yPx + dy, alpha: 0, scale: 0.3,
+        delay: (i % 4) * 45, duration: 520 + (i % 3) * 90,
+        ease: "Quad.easeOut", onComplete: () => g.destroy(),
       });
     }
   }
@@ -1791,18 +1961,65 @@ export class PaintScene extends Phaser.Scene {
     }
   }
 
+  /**
+   * PK-R6 · H1 · THE PAINTED SPEECH BUBBLE (round-1 critique, finding 6:
+   * „a plain vector rounded-rectangle with flat sans-serif text, breaking the
+   * painted-world illusion").
+   *
+   * It was worse than the critic could see from a screenshot: this was a Phaser
+   * `backgroundColor` — literally a filled rectangle behind a glyph run in
+   * system-ui — sitting on top of gouache. Every „Danke!", „Autsch!" and „Husch!"
+   * in the chapter wore it, which makes it the most-shown surface in the game.
+   *
+   * It is now drawn: a parchment bubble with an ink line that is not the same
+   * weight all the way round, four corners that are each a different radius (a
+   * painted bubble is never a rounded rectangle), a tail that points at whoever
+   * is speaking, and the sheen the book's light leaves in every top-left. The
+   * type is the book's display face — B19 binds the three-face system for the
+   * overlay, and a word the WORLD speaks has no business being the one thing on
+   * screen set in the operating system's font.
+   */
   private toast(text: string): void {
-    const t = this.add
-      .text(fromSubs(this.player.x), fromSubs(this.player.y) - 42, text, {
-        fontFamily: "system-ui, sans-serif",
-        fontSize: "10px",
-        color: "#243048",
-        backgroundColor: "#fdf7e6",
-        padding: { x: 4, y: 2 },
-      })
-      .setOrigin(0.5, 1)
-      .setDepth(20)
+    const x = fromSubs(this.player.x);
+    const y = fromSubs(this.player.y) - 40;
+    const label = this.add
+      .text(0, 0, text, { fontFamily: displayFace(), fontSize: "10px", color: "#33291a" })
+      .setOrigin(0.5, 0.5)
       .setResolution(RENDER_SCALE * 2);
-    this.time.delayedCall(900, () => t.destroy());
+    const w = Math.ceil(label.width) + 13;
+    const h = Math.ceil(label.height) + 8;
+    const top = -h - 5;
+    const bottom = -5;
+    label.setPosition(0, top + h / 2);
+
+    const g = this.add.graphics();
+    const radii = { tl: 7, tr: 4.5, bl: 4, br: 6.5 };
+    g.fillStyle(PARCHMENT, 0.97);
+    g.fillRoundedRect(-w / 2, top, w, h, radii);
+    g.fillTriangle(-3.6, bottom - 1, 3.4, bottom - 1, 0.6, bottom + 6);
+    g.lineStyle(1.2, INK_LINE, 0.92);
+    g.strokeRoundedRect(-w / 2, top, w, h, radii);
+    // the tail's own two edges, then the seam where the body's line crossed it
+    g.lineBetween(-3.6, bottom - 0.5, 0.6, bottom + 6);
+    g.lineBetween(0.6, bottom + 6, 3.4, bottom - 0.5);
+    g.fillStyle(PARCHMENT, 1);
+    g.fillRect(-3.1, bottom - 1.4, 6.2, 2);
+    // the gouache sheen, top-left, where every painted surface in this book
+    // catches the classroom's afternoon light
+    g.lineStyle(1.3, 0xfffdf3, 0.7);
+    g.lineBetween(-w / 2 + 4, top + 2.4, w / 2 - 7, top + 2.4);
+
+    const bubble = this.add.container(x, y, [g, label]).setDepth(20);
+    if (this.cfg.reducedMotion) {
+      this.time.delayedCall(900, () => bubble.destroy());
+      return;
+    }
+    bubble.setScale(0.7);
+    bubble.setAlpha(0);
+    this.tweens.add({ targets: bubble, scale: 1, alpha: 1, duration: 170, ease: "Back.easeOut" });
+    this.tweens.add({
+      targets: bubble, y: y - 5, alpha: 0, delay: 640, duration: 260, ease: "Quad.easeIn",
+      onComplete: () => bubble.destroy(),
+    });
   }
 }

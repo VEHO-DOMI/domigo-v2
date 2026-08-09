@@ -114,6 +114,59 @@ describe("the end-states law (doc 42 §1)", () => {
     expect(baseRule(PAINT_OVERLAY_CSS, "pb-letter")).toMatch(/animation:\s*pb-letter-fly 460ms/);
   });
 
+  // ── PK-R6 · H1 · THE ROUND-1 CRITIQUE, LOCKED ──────────────────────────────
+  // A blind critic judging screenshots of the running build named five defects
+  // in this stylesheet, and every one of them was a beat with no PICTURE at the
+  // frame the harness caught. Fixing that is easy to undo by accident — a
+  // re-tune that flattens the iris back into a dim, or a „simplification" that
+  // drops the chalk ghosts, looks like tidying and reads like the old defect.
+  // So each fix leaves a check behind.
+  it("the ink iris has an APERTURE — a mid-wipe frame is a hole, not a dim", () => {
+    // finding 2: „shows no iris shape at all — just a uniform darken/fade".
+    // The blob must be transparent at its own centre and inked at the rim; an
+    // opaque-from-edge-to-edge blob is a screen-dim wearing a rotation.
+    const w = baseRule(PAINT_OVERLAY_CSS, "pb-wipe");
+    expect(w).toMatch(/background:\s*radial-gradient\(ellipse/);
+    expect(w).toMatch(/rgba\(23,\s*16,\s*9,\s*0\)\s+0\s+\d/); // clear, from the centre out
+    expect(w).toContain("#17100a"); // …and the inked rim that makes it read as an edge
+  });
+
+  it("both iris blobs and the veil's light aim at the being, not at the screen", () => {
+    // finding 9: the panel is composed off to one side with no link to what it
+    // interrupts. It may not move (PB-F1/F2-20), so the world's light comes to
+    // it — one custom property, read by all three surfaces.
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-veil")).toContain("var(--pb-focus");
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-wipe")).toContain("var(--pb-focus");
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-wipe-b")).toContain("var(--pb-focus");
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-tether")).not.toBe("");
+  });
+
+  it("the veil holds the world legible long enough for the contact burst", () => {
+    // finding 1: the burst was thrown into the world in the same frame the veil
+    // went up, so the impact happened underneath the ink. The ramp must have a
+    // low-opacity waypoint — a single from-0-to-full fade buries it again.
+    const veilFrames = PAINT_OVERLAY_CSS.match(/@keyframes pb-veil-in\s*\{[^]*?\n\}/)?.[0] ?? "";
+    expect(veilFrames).toMatch(/\d+%\s*\{\s*opacity:\s*0\.[0-3]/);
+  });
+
+  it("the card LANDS: it overshoots past its size and blooms a contact shadow", () => {
+    // finding 10: „no squash/settle, no contact shadow bloom — a simple appear cut"
+    const frames = PAINT_OVERLAY_CSS.match(/@keyframes pb-card-in\s*\{[^]*?\n\}/)?.[0] ?? "";
+    expect(frames).toMatch(/scale\(1\.0[1-9]/); // past 1, then back to the base
+    expect(frames.match(/box-shadow/g)?.length ?? 0).toBeGreaterThanOrEqual(2);
+  });
+
+  it("every flying letter has a chalk ghost to land into", () => {
+    // finding 4: „almost entirely washed out and illegible". The word must be
+    // readable at EVERY frame of the stagger, which means the slot carries the
+    // character before the letter arrives in it.
+    expect(baseRule(PAINT_OVERLAY_CSS, "pb-slot::before")).toContain("content: attr(data-ch)");
+    // …and the ink must be up early, or mid-flight glyphs are half-there again
+    const frames = PAINT_OVERLAY_CSS.match(/@keyframes pb-letter-fly\s*\{[^]*?\n\}/)?.[0] ?? "";
+    const at = Number(frames.match(/(\d+)%\s*\{\s*opacity:\s*1/)?.[1] ?? 100);
+    expect(at).toBeLessThanOrEqual(45);
+  });
+
   it("the doff's BASE state is out of the way, so a still world is watchable", () => {
     // the restore-hold's whole job is to let the world's change be SEEN; with
     // animations killed the card must already be gone, not sitting at full

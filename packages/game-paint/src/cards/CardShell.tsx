@@ -21,7 +21,7 @@
 import React from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { gapLevelFor, renderGapHint } from "./hint.ts";
-import { QUICKFIRE_MS } from "./overlay-css.ts";
+import { QUICKFIRE_MS, focusPctFor } from "./overlay-css.ts";
 import { LETTER_LEAD_MS, LETTER_STAGGER_MS, lettersFor } from "./resolution.ts";
 
 /** Which side of the canvas a card sits on. PB-F1/F2-20: a card is always put
@@ -34,20 +34,27 @@ export const alignedWrap = (align: CardAlign): React.CSSProperties => ({
   justifyContent: align === "center" ? "center" : align === "left" ? "flex-start" : "flex-end",
   padding: align === "center" ? 0 : "0 14px",
   background: "rgba(30, 24, 12, 0.35)", zIndex: 10,
-});
+  // PK-R6 · H1 (round-1 critique, finding 9): the card's side already says
+  // where the being is — it was put down AWAY from it. Publishing that as one
+  // custom property here means the veil's light, the ink iris's aperture and
+  // the card's thread all point at the same place, because they all read the
+  // same value rather than each guessing.
+  ["--pb-focus" as string]: focusPctFor(align),
+} as React.CSSProperties);
 
 export const cardWrap: React.CSSProperties = alignedWrap("center");
-export const cardBox: React.CSSProperties = {
-  background: "#fdf7e6", border: "2px solid #c9a36a", borderRadius: 14, padding: "18px 22px",
-  maxWidth: 460, width: "90%", boxShadow: "0 6px 30px rgba(30,20,10,0.35)", textAlign: "center",
-  // doc 42 §5: the three faces are already loaded app-wide — the overlays
-  // simply start using them (prompts → body, headlines → display, chips → label)
-  fontFamily: "var(--font-body, system-ui, sans-serif)",
-  position: "relative",
-};
+/** PK-R6 · H1 (round-1 critique, finding 3): the card's LOOK moved out of here
+ *  and into the „pb-card" rule in overlay-css — painted parchment, deckled edge,
+ *  hand-inked inner rule. What is left is layout, because the look was written
+ *  twice (here and in PaintGame's ceremony panels) and two copies of a surface
+ *  are two surfaces waiting to disagree. */
+export const cardBox: React.CSSProperties = { maxWidth: 460, width: "90%" };
+/** …and the same for the controls: the paint is „pb-card button" in the
+ *  stylesheet, so every skin's chips wear one painted chip. Inline styles beat
+ *  a stylesheet, so anything the skins still need to vary (a picked tile's
+ *  colour) is set as `backgroundColor`, which leaves the paper grain intact. */
 export const cardBtn: React.CSSProperties = {
-  fontSize: 16, padding: "9px 16px", borderRadius: 9, border: "1px solid #c9a36a",
-  background: "#fffdf6", color: "#243048", cursor: "pointer",
+  fontSize: 16, padding: "9px 16px", cursor: "pointer",
   fontFamily: "var(--font-label, inherit)", fontWeight: 600,
 };
 
@@ -61,6 +68,19 @@ export const InkWipe = (): React.ReactElement => (
     <div className="pb-wipe pb-wipe-b" aria-hidden />
   </>
 );
+
+/** PK-R6 · H1 · THE INK THREAD (round-1 critique, finding 9: „composed off to
+ *  one side with no visual link to the character it interrupts").
+ *
+ *  The critic's own first suggestion — centre the panel — is the one move this
+ *  card may not make: PB-F1/F2-20 put it on this side precisely BECAUSE the
+ *  centred panel covered the thing the card tells the child to look at („schau
+ *  auf ihre Tafel" over a hidden Tafel). So the composition gets the link it was
+ *  actually missing instead: a brush stroke leaving the card's world-facing edge
+ *  with a warm bead at its tip, pointing back at the being. Null for a centred
+ *  card, which has no being to point at (a ceremony talks to the child). */
+const Tether = ({ align }: { align: CardAlign }): React.ReactElement | null =>
+  align === "center" ? null : <span className={`pb-tether pb-tether-${align === "right" ? "l" : "r"}`} aria-hidden />;
 
 /** The chalk-erase countdown — only where the timer policy allows a clock at
  *  all (cards/timer.ts, doc 44 §2.9); CardHost owns the timer behind it. */
@@ -89,7 +109,22 @@ const Portrait = ({ url, altDe, wash = 0 }: { url: string; altDe: string; wash?:
 
 /** PK-R6 · C · THE ANSWER COMES HOME (doc 44 §3.1.7). „Zurückgeholt!" over the
  *  child's own answer, flying in per character on the mined 55 ms stagger — or
- *  gliding back whole when it is too long to read as letters. */
+ *  gliding back whole when it is too long to read as letters.
+ *
+ *  PK-R6 · H1 (round-1 critique, finding 4 — „almost entirely washed out and
+ *  illegible"). Every character now sits in a SLOT that already carries a chalk
+ *  ghost of itself, and the flying letter inks that ghost in. Three things that
+ *  buys, none of them cosmetic:
+ *   · the word is legible in EVERY frame of the beat, including the first — the
+ *     old version showed nothing at all through the 120 ms lead and fragments
+ *     after, which is exactly the frame the harness photographed;
+ *   · the flight reads as one word arriving rather than as loose glyphs
+ *     drifting, because now the glyphs have visible destinations to arrive at;
+ *   · it is the truer picture of the fiction: the word was on the page all
+ *     along, drained like everything else OSWIN rained on, and the child's
+ *     answer is what puts the ink back into it.
+ *  The panel behind it is near-opaque parchment instead of a 0.92 wash, so the
+ *  ink has something solid to be dark against. */
 export const AnswerHome = ({ answer }: { answer: string }): React.ReactElement => {
   const l = lettersFor(answer);
   return (
@@ -98,47 +133,147 @@ export const AnswerHome = ({ answer }: { answer: string }): React.ReactElement =
       role="status"
       style={{
         position: "absolute", inset: 0, display: "flex", flexDirection: "column",
-        alignItems: "center", justifyContent: "center", gap: 4,
-        background: "rgba(253, 247, 230, 0.92)", borderRadius: 14, pointerEvents: "none", padding: "0 14px",
+        alignItems: "center", justifyContent: "center", gap: 6,
+        background: "#fbf3dd radial-gradient(120% 90% at 50% 8%, rgba(255,253,244,0.95), rgba(233,214,170,0.5))",
+        borderRadius: 15, pointerEvents: "none", padding: "0 14px",
       }}
     >
-      <span style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#4f7a34", fontFamily: "var(--font-label, inherit)" }}>
+      <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#3f6329", fontFamily: "var(--font-label, inherit)" }}>
         Zurückgeholt!
       </span>
-      <span style={{ fontSize: 26, fontWeight: 800, color: "#3a2f1c", fontFamily: "var(--font-display, inherit)", lineHeight: 1.2, textAlign: "center" }}>
+      <span
+        aria-hidden
+        style={{ width: 46, height: 2, borderRadius: 2, background: "linear-gradient(90deg, rgba(79,122,52,0), #4f7a34 40%, rgba(79,122,52,0))" }}
+      />
+      <span style={{ fontSize: 26, fontWeight: 800, color: "#33291a", fontFamily: "var(--font-display, inherit)", lineHeight: 1.2, textAlign: "center" }}>
         {l.kind === "letters"
           ? l.chars.map((ch, i) => (
-              <span
-                key={i}
-                className="pb-letter"
-                style={{ display: "inline-block", animationDelay: `${LETTER_LEAD_MS + i * LETTER_STAGGER_MS}ms` }}
-              >
-                {ch === " " ? " " : ch}
+              <span key={i} className="pb-slot" data-ch={ch === " " ? " " : ch}>
+                <span
+                  className="pb-letter"
+                  style={{ display: "inline-block", animationDelay: `${LETTER_LEAD_MS + i * LETTER_STAGGER_MS}ms` }}
+                >
+                  {ch === " " ? " " : ch}
+                </span>
               </span>
             ))
-          : <span className="pb-word" style={{ display: "inline-block" }}>{l.text}</span>}
+          : (
+            <span className="pb-slot" data-ch={l.text}>
+              <span className="pb-word" style={{ display: "inline-block" }}>{l.text}</span>
+            </span>
+          )}
       </span>
     </div>
   );
 };
 
+/** PK-R6 · H1 · THE PAINTED SEAL (round-1 critique, finding 5 — „a generic flat
+ *  white-circle Material icon dropped onto painted art"). The critic was exactly
+ *  right, and it was the worst place in the chapter to be right about: a ✓ glyph
+ *  in a white disc is an app's success toast, and it was the ONLY thing on
+ *  screen at the moment the game pays the child for the work.
+ *
+ *  The payoff is a SEAL now: a torn-edged parchment disc with a green ink ring
+ *  pressed into it and a brush-drawn check that is fat through the turn and
+ *  tapers off the tail, the way a nib empties. One inline SVG — no asset, no
+ *  font glyph — under the same „full-code animation is legitimate" clause the
+ *  ink creature rides (doc 44 B14), so it carries the book's palette by
+ *  construction and scales without a second file to commission. */
+const PaintedSeal = ({ size = 96 }: { size?: number }): React.ReactElement => (
+  <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label="richtig">
+    <defs>
+      <radialGradient id="pb-seal-face" cx="36%" cy="24%" r="80%">
+        <stop offset="0%" stopColor="#fffdf3" />
+        <stop offset="58%" stopColor="#f4e9cd" />
+        <stop offset="100%" stopColor="#e0cda1" />
+      </radialGradient>
+    </defs>
+    {/* pressed by a hand, so it does not sit square to the page */}
+    <g transform="rotate(-6 50 50)">
+      {/* the disc: no two quadrants the same, and no quadrant a true arc */}
+      <path
+        d="M50 3 C65 2 78 8 86 18 C95 28 98 41 96 53 C93 66 85 79 73 87 C62 94 48 97 36 93 C24 89 13 79 7 67 C2 55 3 39 11 27 C19 15 33 4 50 3 Z"
+        fill="url(#pb-seal-face)"
+        stroke="#b78d51"
+        strokeWidth="3.2"
+        strokeLinejoin="round"
+      />
+      {/* where the wash pooled while the paper dried */}
+      <ellipse cx="64" cy="70" rx="21" ry="13" fill="rgba(176,142,88,0.16)" />
+      <ellipse cx="33" cy="30" rx="16" ry="11" fill="rgba(255,253,244,0.5)" />
+      {/* the impressed ring, BROKEN — a stamp never bites the whole way round */}
+      <path d="M20 22 C29 13 40 10 52 11 C63 12 73 17 80 25" fill="none" stroke="rgba(79,122,52,0.4)" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M88 44 C89 57 84 69 74 78" fill="none" stroke="rgba(79,122,52,0.34)" strokeWidth="2.1" strokeLinecap="round" />
+      <path d="M46 88 C34 87 23 80 16 70" fill="none" stroke="rgba(79,122,52,0.3)" strokeWidth="1.9" strokeLinecap="round" />
+      {/* the brush check: thin off the tail, fat through the turn, lifting at
+          the tip — the shape a nib actually leaves, drawn as an outline rather
+          than as a stroked polyline, which is what made the old one an icon */}
+      <path
+        d="M21 52.5 C24 49.5 28.5 50 30.5 53 L45.5 69.5 L70 24.8 C71.2 22.6 74 22.8 74.6 25.2 C75 27 74.4 28.4 73.6 29.8 L50.6 75.2 C48.6 78.6 44.6 78.6 42.4 75.4 L23.6 55.6 C21.8 54.4 20.4 53.6 21 52.5 Z"
+        fill="#4f7a34"
+      />
+      {/* the flick the brush threw coming off the page */}
+      <circle cx="79" cy="20" r="1.7" fill="rgba(79,122,52,0.8)" />
+      <circle cx="83.5" cy="24" r="1" fill="rgba(79,122,52,0.55)" />
+      {/* the gouache sheen every painted surface in this book carries top-left */}
+      <path d="M19 24 C27 14 39 10 51 11" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="2.6" strokeLinecap="round" />
+    </g>
+  </svg>
+);
+
+/** PK-R6 · H1 · THE MOTES (finding 7 — „no confetti, particles, light, screen
+ *  response or character reaction"). Ten of them thrown off the seal along a
+ *  ring the index alone decides: no randomness anywhere, so the celebration a
+ *  replayed tape plays is the celebration the child saw. Chalk and amber
+ *  alternate — the book's own two-colour dust (PaintScene's puff). */
+const CHEER_MOTES = 10;
+const Motes = (): React.ReactElement => (
+  <>
+    {Array.from({ length: CHEER_MOTES }, (_, i) => {
+      const ang = (i / CHEER_MOTES) * Math.PI * 2 + (i % 3) * 0.19;
+      const dist = 54 + (i % 4) * 13;
+      // sized against the RENDER, not against a guess: at 2.4–4.6 px they read
+      // as dust on the lens rather than as a celebration
+      const r = 3.6 + (i % 3) * 1.5;
+      return (
+        <span
+          key={i}
+          className="pb-spark"
+          aria-hidden
+          style={{
+            width: r * 2, height: r * 2,
+            background: i % 2 === 0 ? "#f6f2e8" : "#e8c07a",
+            boxShadow: i % 2 === 0 ? "0 0 7px rgba(246,242,232,0.9)" : "0 0 9px rgba(232,192,122,0.85)",
+            animationDelay: `${60 + (i % 5) * 26}ms`,
+            ["--pb-dx" as string]: `${Math.round(Math.cos(ang) * dist)}px`,
+            ["--pb-dy" as string]: `${Math.round(Math.sin(ang) * dist)}px`,
+          } as React.CSSProperties}
+        />
+      );
+    })}
+  </>
+);
+
 /** PK-R6 · C · beat 3 of the resolution (doc 44 §3.1.7): the celebration, held
  *  until the world has visibly finished changing — and staged OVER that changed
  *  world rather than inside the card, because the card is what just got out of
  *  its way. This is the old in-card verdict beat, moved to where the order now
- *  puts it: last. */
+ *  puts it: last.
+ *
+ *  PK-R6 · H1 (finding 7): it is now a BEAT rather than an icon swap — a warm
+ *  ray fan opens behind the seal, ten motes are thrown outward, and the seal
+ *  itself stamps down with the verdict's own overshoot. The world's half of the
+ *  same flourish (sparks and a light flash ON the thing the child just freed)
+ *  is in PaintScene.redeemFlourish; this is the card's half, and the two play
+ *  together because both hang off the same restore-hold. */
 export const Cheer = ({ align = "center" }: { align?: CardAlign }): React.ReactElement => (
   <div style={{ ...alignedWrap(align), background: "transparent", pointerEvents: "none" }}>
-    <div
-      className="pb-verdict"
-      style={{
-        display: "flex", alignItems: "center", justifyContent: "center",
-        width: 84, height: 84, borderRadius: "50%",
-        background: "rgba(253, 247, 230, 0.94)", border: "2px solid #c9a36a",
-        boxShadow: "0 4px 18px rgba(30,20,10,0.28)",
-      }}
-    >
-      <span style={{ fontSize: 44, color: "#4f7a34" }} role="img" aria-label="richtig">✓</span>
+    <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", width: 96, height: 96 }}>
+      <div className="pb-rays" aria-hidden style={{ position: "absolute", width: 240, height: 240, borderRadius: "50%" }} />
+      <Motes />
+      <div className="pb-verdict" style={{ filter: "drop-shadow(0 4px 14px rgba(30,20,10,0.34))" }}>
+        <PaintedSeal />
+      </div>
     </div>
   </div>
 );
@@ -184,6 +319,7 @@ export function CardShell({
     <div className={`pb-veil${doff ? " pb-doff" : ""}`} style={alignedWrap(align)}>
       <InkWipe />
       <div className="pb-card" style={{ ...cardBox, width: align === "center" ? "90%" : "46%", minWidth: 300 }}>
+        <Tether align={align} />
         {(clockMs ?? 0) > 0 && <ChalkClock ms={clockMs ?? QUICKFIRE_MS} />}
 
         {/* PK-R6 · D · THE ROUND COUNTER (doc 44 §3.3, „6 rounds, Runde n/6").
@@ -230,7 +366,10 @@ export function CardShell({
         )}
 
         <button
-          style={{ ...cardBtn, marginTop: 16, fontSize: 13, background: "transparent", border: "1px solid #d8c9a0", color: "#8a7a58" }}
+          // the quiet way out: the same paper as every other chip, pressed flat
+          // — a secondary action should read as further back on the page, not
+          // as a different material (round-1 critique, finding 3)
+          style={{ ...cardBtn, marginTop: 16, fontSize: 13, backgroundColor: "rgba(247,237,213,0.5)", borderColor: "#cdb387", color: "#8a7a58", boxShadow: "none" }}
           onClick={onDismiss}
         >
           Später ↩

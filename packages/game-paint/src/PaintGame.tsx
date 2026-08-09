@@ -731,12 +731,11 @@ function Overlay({
   onRestart: () => void;
 }): React.ReactElement {
   const wrap: React.CSSProperties = { ...alignedWrap(o.align), background: "rgba(30, 24, 12, 0.35)" };
-  const card: React.CSSProperties = {
-    background: "#fdf7e6", border: "2px solid #c9a36a", borderRadius: 14, padding: "18px 22px",
-    maxWidth: 440, width: o.align === "center" ? "88%" : "46%", minWidth: 300,
-    boxShadow: "0 6px 30px rgba(30,20,10,0.35)", textAlign: "center",
-    fontFamily: "var(--font-body, system-ui, sans-serif)",
-  };
+  // PK-R6 · H1 (round-1 critique, finding 3): the ceremony panels used to carry
+  // their OWN copy of „cream box, 2 px amber, radius 14" — the same surface
+  // written twice, in two files, free to drift. The paint now lives once, in the
+  // „pb-card" rule (overlay-css), and what stays here is this panel's size.
+  const card: React.CSSProperties = { maxWidth: 440, width: o.align === "center" ? "88%" : "46%", minWidth: 300 };
   /** R3-8: every panel wears the same painted staging as a task card — the veil
    *  washes in, the ink bloom wipes, the panel lands a beat later. */
   const staged = (children: React.ReactNode, extraClass = ""): React.ReactElement => (
@@ -896,7 +895,7 @@ function Overlay({
           Die Buchstaben fliegen zurück auf die Tafel — und die Tür zum nächsten Kapitel geht auf.
         </p>
         <button onClick={onRestart} style={btn}>↻ Noch einmal</button>
-        <a href={hubHref} style={{ ...btn, marginLeft: 10, textDecoration: "none", display: "inline-block" }}>← Zurück</a>
+        <a href={hubHref} className="pb-chip" style={{ ...btn, marginLeft: 10, textDecoration: "none", display: "inline-block" }}>← Zurück</a>
       </>,
     );
   }
@@ -1052,12 +1051,14 @@ function Chip({ icon, label, value }: { icon: string; label: string; value: stri
   );
 }
 
+/** PK-R6 · H1 (round-1 critique, finding 3): a ceremony's chip was a WHITE
+ *  rectangle with an 8 px radius — the single flattest thing on a painted page,
+ *  and it sat on the objective screen the chapter opens with. Its paint is now
+ *  the „pb-card button" rule in overlay-css, the same one the task cards' chips
+ *  wear; what stays here is size and face. */
 const btn: React.CSSProperties = {
   fontSize: 15,
   padding: "8px 16px",
-  borderRadius: 8,
-  border: "1px solid #c9a36a",
-  background: "#fff",
   cursor: "pointer",
   fontFamily: "var(--font-label, inherit)",
   fontWeight: 600,

@@ -20,7 +20,10 @@ import type { PaintLevel, PhaseSpec } from "./level.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
 import { SUBS, TILE } from "./paint.ts";
 import { AWAKEN_ROUNDS, JOY_TICKS, SETTLE_TICKS, WAVE_EVERY_TICKS } from "./entities.ts";
-import { COLOUR_FLOOD_TICKS, WASH_ALPHA, awakenWash, classmateCell, entPoseCell, poseStateOf, washAlphaFor } from "./anim.ts";
+import {
+  COLOUR_FLOOD_TICKS, FLOOD_BLOOM_PEAK, FLOOD_BLOOM_PEAK_AT, WASH_ALPHA, awakenWash, classmateCell,
+  entPoseCell, floodBloomFor, poseStateOf, washAlphaFor,
+} from "./anim.ts";
 
 // a flat room: floor at row 12, the cage and the girl side by side on row 11
 const ROWS: string[] = [
@@ -279,5 +282,56 @@ describe("the fixture itself", () => {
     const cage = sim.world.entities.find((e) => e.id === "cage-merle")!;
     expect(cage.y / SUBS / TILE).toBe(12); // feet on the floor row
     expect(merleOf(sim).y / SUBS / TILE).toBe(12);
+  });
+});
+
+// ── PK-R6 · H1 · THE ARRIVING-COLOUR LIGHT (round-1 critique, finding 8) ──────
+// „The world-change colour shift on the bag (brown to olive) is too subtle to
+// register at a glance." The fix is a warm light riding the flood — and the
+// whole point of that light is WHEN it is bright, so the timing is pinned here
+// rather than eyeballed in a screenshot. Three claims, one table each:
+//   1. it is brightest EARLY (it announces the change, it does not trail it),
+//   2. it is completely gone by the time the flood ends (a light still burning
+//      over a finished change would be the world lying about being busy), and
+//   3. a reduced-motion child never sees it — their being is already in full
+//      colour, so a flash would announce a change that already happened.
+describe("the arriving-colour light (doc 44 · PK-R6 · H1)", () => {
+  const bag = (timer: number, redeemed = true) => ({ role: "cage", redeemed, timer });
+
+  it("peaks where the constant says, and nowhere else", () => {
+    // walked tick by tick rather than sampled at the constant: the flood is
+    // counted in whole ticks, so „the peak is at 22 %" is only true if the
+    // brightest TICK is there — which is the thing a child actually sees
+    const curve = Array.from({ length: COLOUR_FLOOD_TICKS + 1 }, (_, t) => floodBloomFor(bag(t)));
+    const top = Math.max(...curve);
+    expect(top).toBeCloseTo(FLOOD_BLOOM_PEAK, 2);
+    expect(curve.indexOf(top) / COLOUR_FLOOD_TICKS).toBeCloseTo(FLOOD_BLOOM_PEAK_AT, 1);
+    // and it is a single rise and fall, never a flicker
+    const brightest = curve.indexOf(top);
+    for (let t = 1; t <= brightest; t++) expect(curve[t]!).toBeGreaterThan(curve[t - 1]!);
+    for (let t = brightest + 1; t <= COLOUR_FLOOD_TICKS; t++) expect(curve[t]!).toBeLessThan(curve[t - 1]!);
+  });
+
+  it("is up before the flood is a third done — it announces, never trails", () => {
+    // the peak must land inside the first third, or the light arrives after the
+    // colour it was built to point at
+    expect(FLOOD_BLOOM_PEAK_AT).toBeLessThan(1 / 3);
+    expect(floodBloomFor(bag(0))).toBe(0); // …and starts from nothing
+  });
+
+  it("is gone by the end of the flood, and stays gone", () => {
+    expect(floodBloomFor(bag(COLOUR_FLOOD_TICKS))).toBe(0);
+    expect(floodBloomFor(bag(COLOUR_FLOOD_TICKS * 4))).toBe(0);
+  });
+
+  it("never lights a being that has not been freed, or furniture that was never drained", () => {
+    expect(floodBloomFor(bag(8, false))).toBe(0);
+    expect(floodBloomFor({ role: "door", redeemed: true, timer: 8 })).toBe(0);
+  });
+
+  it("is off entirely under reduced motion (the end-states law, in the world)", () => {
+    const at = Math.round(COLOUR_FLOOD_TICKS * FLOOD_BLOOM_PEAK_AT);
+    expect(floodBloomFor(bag(at), true)).toBe(0);
+    expect(washAlphaFor({ role: "cage", redeemed: true, timer: at }, true)).toBe(0); // …because this already is
   });
 });

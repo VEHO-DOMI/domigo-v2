@@ -112,6 +112,45 @@ export const washAlphaFor = (
   return full * left;
 };
 
+// ── PK-R6 · H1 · THE COLOUR ARRIVING (round-1 critique, finding 8) ───────────
+// „The world-change colour shift on the bag (brown to olive) is too subtle to
+// register at a glance." Measured against the grammar above, that is fair: the
+// change is a 0.72 grey letting go over 36 ticks, which is a real change across
+// the beat and a SMALL one in any single frame — and a single frame is all a
+// screenshot gets, and roughly all a six-year-old gives it while the card is
+// still leaving.
+//
+// So the flood carries a LIGHT with it: a warm copy of the being's own sheet,
+// laid over it additively, brightest exactly as the grey lets go and gone well
+// before the flood ends. The colour is still the payoff; the light is what makes
+// the payoff impossible to miss in the frame it happens.
+//
+// Derived from the SAME timer as the wash, so the two can never disagree about
+// when the change is happening, and pure so the claim „the light peaks early and
+// is gone by the end" is a table rather than a screenshot.
+
+/** How bright the arriving-colour light gets at its peak (0…1 alpha). */
+export const FLOOD_BLOOM_PEAK = 0.5;
+/** Where in the flood that peak sits — early, so the light announces the change
+ *  rather than trailing it. */
+export const FLOOD_BLOOM_PEAK_AT = 0.22;
+
+/** The arriving-colour light's alpha right now, 0 when there is no change to
+ *  announce. Reduced motion returns 0: that child's being is ALREADY in full
+ *  colour (washAlphaFor short-circuits), so a flash would announce a change
+ *  that already happened — the end-states law applied to the world. */
+export const floodBloomFor = (
+  e: { role: string; redeemed: boolean; timer: number },
+  reducedMotion = false,
+): number => {
+  if (reducedMotion || !e.redeemed || !WASHED_ROLES.has(e.role)) return 0;
+  const t = Math.min(Math.max(e.timer, 0), COLOUR_FLOOD_TICKS) / COLOUR_FLOOD_TICKS;
+  const shape = t <= FLOOD_BLOOM_PEAK_AT
+    ? t / FLOOD_BLOOM_PEAK_AT
+    : Math.max(0, 1 - (t - FLOOD_BLOOM_PEAK_AT) / (1 - FLOOD_BLOOM_PEAK_AT));
+  return FLOOD_BLOOM_PEAK * shape;
+};
+
 /** Half the patrol speed: a chaser's vx is ±ENEMY_WALK while walking and 0 at
  *  an edge turn, so this cleanly separates "striding" from "stopped". */
 export const RUN_VX = ENEMY_WALK / 2;
