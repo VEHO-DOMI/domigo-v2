@@ -17,7 +17,7 @@ import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
 import { InkWipe, type CardAlign, alignedWrap } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
-import { initRoute, nextTask, type RouteState, type ServeCtx } from "./cards/routing.ts";
+import { initRoute, nextTask, orderedTask, type RouteState, type ServeCtx } from "./cards/routing.ts";
 
 /** The in-game task item — gameTasks@2 (the card kit). Content lives in
  *  chNN.tasks.v2.json; the card renderer is packages/game-paint/src/cards. */
@@ -69,6 +69,10 @@ interface OverlayState {
   price?: number;
   /** tip: the Regel-Seite's own rule, carried from the level (PK-R3b · R3-16). */
   tip?: { topicDe: string; merksatzDe: string };
+  /** PK-R6 · D: which round of a reawakening this card is („Runde 3/6", doc 44
+   *  §3.3). Present only on the ceremony's own cards — an ordinary encounter
+   *  has no place in a sequence and must not pretend to. */
+  round?: { n: number; of: number };
   /** PK-R6 · C: how drained the ASKER is at the moment it asks (0…WASH_ALPHA),
    *  so the card's portrait is exactly as grey as the being in the world. */
   wash?: number;
@@ -402,6 +406,27 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             const align = alignAwayFrom(idOfCtx(req.ctx));
             if (req.use === "bonuspay") {
               openCard({ req, item: null, card: "bonuspay", attempts: 0, typed: "", align, price: priceOfDoor(level, idOfCtx(req.ctx)) });
+              return;
+            }
+            // ── PK-R6 · D · A REAWAKENING ROUND (doc 44 §3.3) ──────────────
+            // The one card the router may not pick: the ceremony is ORDERED, so
+            // the round comes out of the pool BY INDEX (cards/routing
+            // orderedTask), and the pose the card declares is struck by the
+            // being in the world before the card lands — the picture in the
+            // card and the girl standing next to the child are one declaration.
+            if (req.ctx.type === "classmate") {
+              const ctx = req.ctx;
+              const round = orderedTask(tasks, req.use, { phase: pid, skin: ctx.skin }, ctx.round - 1);
+              if (!round) { sceneRef.current?.resolveTask(ctx); return; } // never softlock
+              if (round.stimulus.type === "entity" && round.stimulus.art !== undefined) {
+                sceneRef.current?.setActingPose(ctx.id, round.stimulus.art);
+              }
+              sceneRef.current?.contactSpark(ctx.id);
+              openCard({
+                req, item: round, card: "task", attempts: 0, typed: "", align,
+                wash: sceneRef.current?.washOf(ctx.id) ?? 0,
+                round: { n: ctx.round, of: ctx.rounds },
+              });
               return;
             }
             // the serve context: this phase, and the being that triggered it
@@ -886,11 +911,19 @@ function Overlay({
     );
   }
   if (o.card === "cagehint") {
+    // PK-R6 · D — FOUND HERE, NOT LOOKED FOR: this card still taught the FIST.
+    // Stage C2 made ↑ the verb that opens a cage precisely because ch01 grants
+    // no fist any more (doc 44 §4), and the sim's hint gate was widened with
+    // it — but the card the gate opens kept telling a six-year-old to press X
+    // for a button this chapter never gives them, in front of the one cage
+    // every child must open. ↑ is the true instruction in EVERY chapter (a
+    // press opens a cage whether or not a fist was granted), so it is what the
+    // one teaching moment says.
     return (
       <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
-        <p style={{ fontSize: 26, margin: "0 0 6px" }}>🎒✊</p>
+        <p style={{ fontSize: 26, margin: "0 0 6px" }}>🎒↑</p>
         <p style={{ fontSize: 17, margin: "0 0 4px" }}>Da steckt jemand fest!</p>
-        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Wirf die <strong>Faust</strong> (X) auf den Knoten — dann geht die Tasche auf.</p>
+        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Stell dich davor und drück <strong>↑</strong> — dann geht sie auf.</p>
         <button style={btn} onClick={() => onDismiss(o)}>Alles klar!</button>
       </div></div>
     );
@@ -922,12 +955,19 @@ function Overlay({
     const merle = o.ceremony?.classmate === "merle";
     return (
       <div className="pb-veil" style={wrap}><InkWipe /><div className="pb-card" style={card}>
-        <p style={{ fontSize: 26, margin: "0 0 6px" }}>{merle ? "🎒" : "🔤"}</p>
+        <p style={{ fontSize: 26, margin: "0 0 6px" }}>{merle ? "🎨" : "🔤"}</p>
         {merle ? (
+          // PK-R6 · D: this beat comes at the END of the six rounds now, not at
+          // the latch — so the copy says what the child just watched happen
+          // (the colour flooding back) instead of announcing a hop out of a
+          // pencil case they saw six rounds ago. And she STAYS: doc 44 §1's
+          // „redemption changes state, never presence" was contradicted by the
+          // old line, which sent her off to the camp while the world kept her
+          // standing at her cage waving. The world was right; the card was not.
           <>
-            <p style={{ fontSize: 17, margin: "0 0 2px" }}><strong>Merle</strong> hüpft aus der Federtasche!</p>
+            <p style={{ fontSize: 17, margin: "0 0 2px" }}>Die Farbe strömt zurück — <strong>Merle</strong> ist wieder da!</p>
             <p style={{ fontSize: 16, margin: "0 0 2px" }}>„Hello! I'm Merle. Thanks!“</p>
-            <p style={{ fontSize: 13, color: "#6b6250", margin: "0 0 10px" }}>(Hallo! Ich bin Merle. Danke!) — Sie kennt den Weg und läuft schon zum Lager.</p>
+            <p style={{ fontSize: 13, color: "#6b6250", margin: "0 0 10px" }}>(Hallo! Ich bin Merle. Danke!) — Sie bleibt in der Klasse und winkt dir zu.</p>
           </>
         ) : (
           <p style={{ fontSize: 16, margin: "0 0 10px" }}>Ein Buchstaben-Wesen flattert frei und dreht eine Freudenrunde! ✨</p>
@@ -980,6 +1020,7 @@ function Overlay({
       align={o.align}
       art={art}
       portraitWash={o.wash}
+      round={o.round}
       // doc 44 §2.9: the timer class comes from the pool the WORLD asked for
       servedUse={o.req.use}
       onWorldChange={() => onWorldChange(o)}

@@ -32,6 +32,9 @@ import fs from "node:fs";
 import path from "node:path";
 import { GameTasksFileV2, MAX_LINE_DE, registerErrorsDe } from "../packages/content-schema/src/game-tasks.ts";
 import { CALM_DE, TIMED_USES, URGENCY_DE, spokenDeOf, timerClassFor } from "../packages/game-paint/src/cards/timer.ts";
+// PK-R6 · D: the reawakening's length is a LAW, not a number this file may
+// restate — imported from the engine that plays it (doc 44 §3.3's six rounds).
+import { AWAKEN_ROUNDS } from "../packages/game-paint/src/entities.ts";
 
 const STORIES = "content/corpus/stories";
 const lex = JSON.parse(fs.readFileSync("docs/design/g1/grounding/u01-lexicon.json", "utf8"));
@@ -178,7 +181,7 @@ const boundCards = (items, use, skin, phase) =>
 // shipped. Grey/blass are of course allowed — that IS the state.
 // PK-R6 · C1: `drained` is the role this law was really written for — mirrors
 // game-paint/src/anim.ts WASHED_ROLES, which is the renderer's own list.
-const WASHED_ROLES_MJS = ["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm", "cage", "drained"];
+const WASHED_ROLES_MJS = ["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm", "cage", "drained", "classmate"];
 const COLOUR_WORDS_DE = /\b(wei(ß|ss)|rot|blau|grün|gelb|braun|schwarz|rosa|orange|bunt|golden|silbern)\w*/i;
 
 function checkDesaturation(w, items, washedSkins) {
@@ -253,6 +256,32 @@ function checkAgainstLevel(file, level, items) {
           if (n < min) fail(at, `coverage: guardian skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${min}`);
         }
       } else if (e.role === "cage") {
+        // PK-R6 · D · WHOSE POOL A PERSON-CAGE OWNS (doc 44 §3.3). A cage that
+        // holds a CLASSMATE no longer asks anything itself: ↑ opens the latch,
+        // she steps out, and her six-round reawakening is the rescue. So the
+        // rescue cards that used to belong to the cage's skin belong to HERS —
+        // and the count is exact in both directions, because five rounds would
+        // leave her half-grey with the ceremony over and seven would author a
+        // round the sim can never raise.
+        if (e.params?.classmate !== undefined) {
+          const mate = (ph.entities ?? []).find((x) => x.role === "classmate" && x.params?.cage === e.id);
+          if (!mate) continue; // the level's own `classmate-pair` law owns this
+          const n = boundCards(items, "rescue", mate.skin, ph.id).length;
+          if (n !== AWAKEN_ROUNDS) {
+            fail(at, `coverage: the reawakening of "${mate.skin}" has ${n} rescue card(s) in ${ph.id} — doc 44 §3.3 runs exactly ${AWAKEN_ROUNDS} rounds`);
+          }
+          // the pose IS the prompt, so two rounds may not show the same pose:
+          // the child would be asked to read one picture twice and the second
+          // reading would be about a wrong action they already stopped.
+          const poses = boundCards(items, "rescue", mate.skin, ph.id).map((t) => t.stimulus?.art);
+          const seen = new Map();
+          for (const [i, p] of poses.entries()) {
+            if (p === undefined) continue; // the portrait law (11) owns that case
+            if (seen.has(p)) fail(at, `reawakening: rounds ${seen.get(p) + 1} and ${i + 1} both show "${p}" — each round is its own painted wrong action`);
+            else seen.set(p, i);
+          }
+          continue;
+        }
         const n = boundCards(items, "rescue", e.skin, ph.id).length;
         if (n < 1) fail(at, `coverage: cage skin "${e.skin}" has no rescue card here`);
       } else if (e.role === "drained") {
@@ -289,6 +318,9 @@ function checkAgainstLevel(file, level, items) {
       else if (e.role === "drained") raisedUses.add("encounter");
       else if (e.role === "guardian") { raisedUses.add("encounter"); raisedUses.add("boss"); raisedUses.add("finale"); }
       else if (e.role === "cage") raisedUses.add("rescue");
+      // PK-R6 · D: the classmate raises the same pool her cage did — she is the
+      // asker of every round after the latch (sim.ts `askRound`).
+      else if (e.role === "classmate") raisedUses.add("rescue");
       else if (e.role === "door.trigger") raisedUses.add(String(e.params?.kind ?? "exit") === "bonus" ? "bonuspay" : "door");
     }
   }

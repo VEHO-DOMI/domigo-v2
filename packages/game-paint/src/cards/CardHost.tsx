@@ -42,7 +42,7 @@ import type {
 } from "./machines.ts";
 
 export function CardHost({
-  task, onResolve, onWorldChange, onDismiss, align = "center", art, portraitWash, servedUse,
+  task, onResolve, onWorldChange, onDismiss, align = "center", art, portraitWash, servedUse, round,
 }: {
   task: GameTaskV2;
   /** the card is finished: close it (and hand on any beat it opened) */
@@ -61,6 +61,9 @@ export function CardHost({
   /** the pool the WORLD asked for, which is not always the card's authored
    *  `use` (the unbound-quickfire fallback). Drives the timer policy. */
   servedUse?: string;
+  /** PK-R6 · D: „Runde n/6" when this card is one beat of a reawakening
+   *  (doc 44 §3.3) — a ceremony a child can see the end of. */
+  round?: { n: number; of: number };
 }): React.ReactElement {
   const m = MACHINES[task.kind];
   const [state, setState] = useState<unknown>(() => m.init(task));
@@ -148,6 +151,7 @@ export function CardHost({
       clockMs={clockMs}
       art={art}
       portraitWash={portraitWash}
+      round={round}
       flight={beat === "letters" ? answerTextOf(task) : null}
       doff={beat === "hold"}
     >

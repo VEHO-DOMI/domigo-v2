@@ -28,6 +28,14 @@ export type EntityRole =
   // rebuild's field identity — restoration spread across the whole level
   // instead of six anonymous cages in one room.
   | "drained"
+  // PK-R6 · D (doc 44 §3.3): THE BEWITCHED CLASSMATE. The person inside the
+  // chapter's one person-cage, standing in the world as a being of her own the
+  // moment the cage opens. Opening the cage does not free her: she is ghost-pale
+  // and acts out the unit's wrong classroom actions round by round, and the
+  // child answers each with the command that stops or guides it (six rounds,
+  // §3.3). She is the only role whose redemption is EARNED IN STAGES — every
+  // other being is drained-or-restored, she is restored by degrees.
+  | "classmate"
   // PK-R3b · R3-16 (doc 41 §5): the two static-state collectibles. `tip` is a
   // Regel-Seite — a rule page OSWIN tore out of the book, which shows its
   // Merksatz when picked up; `book` is a Bonus-Buch, the no-death adaptation of
@@ -62,6 +70,12 @@ export interface EntityParams {
    *  this field; the shipped data has carried the name itself since ch01, and a
    *  name says strictly more than a type tag). Exactly one per chapter. */
   classmate?: string;
+  /** classmate: WHICH cage this person was locked in (PK-R6 · D). The pointer
+   *  runs from the person to the cage rather than the other way round because
+   *  the sim asks it in that direction — a cage bursts and has to find who
+   *  steps out of it — and because the `classmate-pair` law can then prove both
+   *  ends from one field. */
+  cage?: string;
   /** tip: which of the unit's grammar topics this Regel-Seite carries. Unique
    *  per chapter — two pages of the same rule are one page and a duplicate. */
   topicDe?: string;
@@ -494,6 +508,43 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         });
       }
     }
+    // ── PK-R6 · D · THE CLASSMATE PAIR (doc 44 §3.3) ───────────────────────
+    // A person-cage and the person in it are ONE thing in two entities: the
+    // cage the child opens, and the classmate who then stands there through
+    // six rounds of reawakening. The sim reveals her by walking from the
+    // burst cage to the `classmate` entity that points back at it — so a
+    // cage with nobody pointing at it opens onto an empty spot and the
+    // chapter's one rescue silently becomes a shrug. Proven from BOTH ends
+    // (a cage needs its person, a person needs her cage, and they share a
+    // phase), because either half alone is a level that loads and lies.
+    const mates = allPhases(level).flatMap((p) => p.entities.filter((e) => e.role === "classmate").map((e) => ({ e, p })));
+    for (const c of classmates) {
+      const mine = mates.filter((m) => m.e.params?.cage === c.id);
+      if (mine.length !== 1) {
+        failures.push({
+          phase: "*",
+          law: "classmate-pair",
+          detail: `the classmate cage ${c.id} needs exactly one \`classmate\` entity pointing at it (has ${mine.length}) — nobody would step out of it`,
+        });
+        continue;
+      }
+      const cagePhase = allPhases(level).find((p) => p.entities.includes(c));
+      if (mine[0]!.p.id !== cagePhase?.id) {
+        failures.push({
+          phase: mine[0]!.p.id,
+          law: "classmate-pair",
+          detail: `${mine[0]!.e.id} stands in ${mine[0]!.p.id} but her cage ${c.id} is in ${cagePhase?.id ?? "?"} — she can never step out of it`,
+        });
+      }
+    }
+    for (const m of mates) {
+      const cageId = m.e.params?.cage;
+      if (cageId === undefined) {
+        failures.push({ phase: m.p.id, law: "classmate-pair", detail: `classmate ${m.e.id} declares no cage — nothing can ever reveal her` });
+      } else if (!cages.some((c) => c.id === cageId && c.params?.classmate !== undefined)) {
+        failures.push({ phase: m.p.id, law: "classmate-pair", detail: `classmate ${m.e.id} points at "${cageId}", which is not a person-cage in this chapter` });
+      }
+    }
   }
 
   // PK-R3b · R3-16 · THE REGEL-SEITEN HONESTY LAW (doc 41 §5, §7). The same
@@ -586,7 +637,11 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       // PK-R6 · C1: `drained` joins this law — a desk hovering an inch off the
       // floor is the same authoring defect as a mid-air chaser, and it is the
       // one the eye catches first because furniture is EXPECTED to rest.
-      if ((e.role === "chaser" || e.role === "bouncer" || e.role === "drained") && !isSolid(glyphAt(ph.rows, e.c, e.r + 1))) {
+      // PK-R6 · D: and `classmate` — she stands where she stepped out of her
+      // cage and stays there for the rest of the chapter (doc 44 §1: freeing
+      // changes state, never presence), so a floating spawn is a friend
+      // hovering over the classroom floor for twenty minutes.
+      if ((e.role === "chaser" || e.role === "bouncer" || e.role === "drained" || e.role === "classmate") && !isSolid(glyphAt(ph.rows, e.c, e.r + 1))) {
         failures.push({ phase: ph.id, law: "spawn-standable", detail: `${e.role} ${e.id} at (${e.c},${e.r}) must stand on solid ground` });
       }
     }

@@ -24,7 +24,7 @@ import { type Pad, type PlayerState } from "./player.ts";
 import { type EntityWorld, engageTargetId } from "./entities.ts";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
-import { type EntPoseInput, WASHED_ROLES, entPoseCell, washAlphaFor } from "./anim.ts";
+import { type EntPoseInput, WASHED_ROLES, entPoseCell, poseStateOf, washAlphaFor } from "./anim.ts";
 import { rigPose, withFistAway } from "./rig.ts";
 import {
   RIG_CELL,
@@ -432,6 +432,11 @@ export class PaintScene extends Phaser.Scene {
     // stationery gets a few px more so its silhouette still names it at 1×,
     // which is what step 1 of its restore card asks the child to do).
     if (e.role === "drained") return DRAINED_H[e.skin] ?? 26;
+    // PK-R6 · D: a classmate is a CHILD — the same height class as the hero,
+    // not a creature. Her act cells carry props (a desk under her shoes, a
+    // window, books on the floor) inside the same 512 px frame, so they read at
+    // the same scale her idle does; the number is her standing height.
+    if (e.role === "classmate") return 30;
     if (e.role === "powerup") return 26;
     if (e.role === "tip") return 18; // R3-16: a torn page, smaller than a being
     if (e.role === "book") return 15;
@@ -490,7 +495,14 @@ export class PaintScene extends Phaser.Scene {
       // unactionable — the ghosting is retired rather than left as a condition
       // that can no longer be true. The grammar itself is untouched and still
       // available the moment a chapter reintroduces a gated verb.
-      if (e.redeemed && !e.role.startsWith("platform")) img.setAlpha(0.85);
+      // PK-R6 · D: …with the CLASSMATE exempt. Measured in the running game: a
+      // freed Merle rendered at 0.85 after the colour had finished flooding
+      // back, so the payoff of six rounds was a girl you could still see
+      // through. The 0.85 is a leftover of the „not yet" half of the grammar
+      // above and stays for the beings it was written for; a person the child
+      // just spent a whole ceremony bringing back is the one being that has to
+      // read as completely there (doc 44 §1).
+      if (e.redeemed && !e.role.startsWith("platform") && e.role !== "classmate") img.setAlpha(0.85);
       else img.setAlpha(1);
       if (e.state === "telegraph") img.setTint(0xfff2b0);
       else img.clearTint();
@@ -668,6 +680,27 @@ export class PaintScene extends Phaser.Scene {
   washOf(id: string): number {
     const e = this.world?.entities.find((x) => x.id === id);
     return e ? washAlphaFor(e, this.cfg.reducedMotion) : 0;
+  }
+
+  /** PK-R6 · D · THE POSE IS THE PROMPT (doc 44 §3.3). The reawakening round
+   *  that is opening declares which painted cell of the classmate it shows
+   *  (`stimulus.art`); the shell hands that stem here and the being in the
+   *  WORLD strikes the same pose, so the card is a picture OF what is standing
+   *  next to the child rather than a second, separate drawing of her.
+   *
+   *  One declaration, two readers — the alternative was a pose list in the
+   *  level beside an art binding in the tasks file, i.e. the same fact written
+   *  twice and free to drift. Returns the state actually set, or null when the
+   *  stem is not this being's cell (in which case she simply keeps the pose she
+   *  had: a mis-bound card must not dress her as somebody else). */
+  setActingPose(id: string, stem: string): string | null {
+    const e = this.world?.entities.find((x) => x.id === id);
+    if (!e || e.redeemed) return null;
+    const state = poseStateOf(stem, e.skin);
+    if (state === null) return null;
+    e.state = state;
+    e.timer = 0;
+    return state;
   }
 
   /** R3-4/R3-6 · a puff of chalk dust at an impact. Pure decoration with a

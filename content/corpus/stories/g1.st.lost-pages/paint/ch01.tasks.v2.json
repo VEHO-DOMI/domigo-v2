@@ -2,7 +2,7 @@
  "schema": "gameTasks@2",
  "chapter": "ch01",
  "unit": "g1-u01",
- "note": "gameTasks@2 · ch01. PK-R3b (doc 41 §1/§2): the FIELD palette is choice · wheel · restore · oddone; the boss ritual and the finale keep their scripted kinds. `restore` is the chapter's core mechanic — name the greyed being, then give its colour back.",
+ "note": "gameTasks@2 · ch01. PK-R3b (doc 41 §1/§2): the FIELD palette is choice · wheel · restore · oddone; the boss ritual and the finale keep their scripted kinds. `restore` is the chapter's core mechanic — name the greyed being, then give its colour back. PK-R6 · D (doc 44 §3.3): the `rescue` pool is Merle's REAWAKENING — six rounds in file order, one per painted wrong-action pose, all bound to skin `merle`.",
  "items": [
   {
    "id": "g1.paint.ch01.enc.pencil.c1",
@@ -1174,63 +1174,178 @@
    "grounding": "u01 commands; open/close"
   },
   {
-   "id": "g1.paint.ch01.res.case.c1",
+   "id": "g1.paint.ch01.awk.merle.r1",
    "use": "rescue",
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "In der Federtasche blinzelt jemand durchs Gitter",
-    "art": "pencilcase_shake"
+    "showsDe": "Merle steht da und reißt den Mund weit auf",
+    "art": "merle_act_sing1"
    },
-   "storyDe": "Sag, was das ist — dann geht der Zipp auf!",
-   "promptEn": "What is it?",
+   "storyDe": "Mitten in der Stunde wird Merle ganz laut.",
+   "promptEn": "What do you say?",
    "options": [
-    "pencil case",
-    "exercise book",
-    "watercolours"
+    "Don't sing!",
+    "Clean the board!",
+    "Open your books!"
    ],
-   "answer": "pencil case",
+   "answer": "Don't sing!",
    "skins": [
-    "pencilcase"
+    "merle"
+   ],
+   "phases": [
+    "p2"
    ],
    "hints": {
-    "deDesc": "Darin stecken Stifte und der Radiergummi.",
-    "deWord": "Auf Deutsch: die Federtasche."
+    "deDesc": "Sie soll damit aufhören — sag es mit Don't.",
+    "deWord": "Auf Deutsch: Sing nicht!"
    },
-   "grounding": "u01 phrase: pencil case"
+   "grounding": "u01 imperative (negative): Don't + Grundform (g1u01.s.imperatives, „Don't stand up!“) · sing: g1u01.w.let-s, SB „Let's sing a song!“"
   },
   {
-   "id": "g1.paint.ch01.res.case.r1",
+   "id": "g1.paint.ch01.awk.merle.r2",
    "use": "rescue",
-   "kind": "restore",
+   "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Zipp ist auf — die Federtasche ist grau",
-    "art": "pencilcase_burst"
+    "showsDe": "Merle steht mit beiden Schuhen oben auf dem Tisch",
+    "art": "merle_act_stand0"
    },
-   "storyDe": "Sag, wer sie ist — dann gib ihr die Farbe!",
-   "nameOptions": [
-    "pencil case",
-    "school bag",
-    "English book",
-    "hairband"
+   "storyDe": "Der Tisch ist kein Boden — sag es ihr!",
+   "promptEn": "What do you say?",
+   "options": [
+    "Sit down!",
+    "Stand up!",
+    "Close the door!"
    ],
-   "name": "pencil case",
-   "colourAskDe": "„Ich war grün wie ein Blatt!“",
-   "colourOptions": [
-    "green",
-    "red",
-    "black"
-   ],
-   "colour": "green",
+   "answer": "Sit down!",
    "skins": [
-    "pencilcase"
+    "merle"
+   ],
+   "phases": [
+    "p2"
    ],
    "hints": {
-    "deDesc": "Darin stecken Stifte und der Radiergummi.",
-    "deWord": "Auf Deutsch: die Federtasche — und Grün."
+    "deDesc": "Sie soll wieder auf den Stuhl.",
+    "deWord": "Auf Deutsch: Setz dich hin!"
    },
-   "grounding": "u01 phrase: pencil case + colour: green (matches the sheet)"
+   "grounding": "u01 wordbank g1u01.w.to-sit-down, SB „Sit down, children.“ · Gegenstück g1u01.w.to-stand-up („Don't stand up. Sit down.“)"
+  },
+  {
+   "id": "g1.paint.ch01.awk.merle.r3",
+   "use": "rescue",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Auf dem Tisch ringeln sich lauter Kreide-Kringel",
+    "art": "merle_act_scribble1"
+   },
+   "storyDe": "Merle hat den ganzen Tisch vollgemalt.",
+   "promptEn": "What do you say?",
+   "options": [
+    "Clean the desk!",
+    "Read the book!",
+    "Listen!"
+   ],
+   "answer": "Clean the desk!",
+   "skins": [
+    "merle"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Der Tisch muss wieder sauber werden.",
+    "deWord": "Auf Deutsch: Mach den Tisch sauber!"
+   },
+   "grounding": "u01 wordbank g1u01.w.to-clean, SB „Clean the board.“ — gleiche Form, Nomen aus g1u01.w.desk"
+  },
+  {
+   "id": "g1.paint.ch01.awk.merle.r4",
+   "use": "rescue",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Merle hat das Fenster weit aufgerissen",
+    "art": "merle_act_window1"
+   },
+   "storyDe": "Die Blätter fliegen von den Tischen — sag es ihr!",
+   "promptEn": "What do you say?",
+   "options": [
+    "Close the window!",
+    "Open the window!",
+    "Clean the board!"
+   ],
+   "answer": "Close the window!",
+   "skins": [
+    "merle"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Es soll wieder zu sein.",
+    "deWord": "Auf Deutsch: Mach das Fenster zu!"
+   },
+   "grounding": "u01 wordbank g1u01.w.to-close, SB „Close the door.“ · Nomen g1u01.w.window, dessen eigener Satz „Open the window.“ das Paar auf/zu stellt"
+  },
+  {
+   "id": "g1.paint.ch01.awk.merle.r5",
+   "use": "rescue",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Merles Bücher liegen verstreut auf dem Boden",
+    "art": "merle_act_books1"
+   },
+   "storyDe": "Die Stunde beginnt — sag ihr, was jetzt dran ist!",
+   "promptEn": "What do you say?",
+   "options": [
+    "Take out your books!",
+    "Close the door!",
+    "Listen!"
+   ],
+   "answer": "Take out your books!",
+   "skins": [
+    "merle"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Die Bücher gehören auf den Tisch, nicht auf den Boden.",
+    "deWord": "Auf Deutsch: Nimm deine Bücher heraus!"
+   },
+   "grounding": "u01 wordbank g1u01.w.to-take-out, SB „Take out your books.“ (wörtlich) — doc 44 §4 ch01 nennt genau diesen Befehl"
+  },
+  {
+   "id": "g1.paint.ch01.awk.merle.r6",
+   "use": "rescue",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Merle dreht sich um und geht zur Tür hinaus",
+    "art": "merle_act_leave0"
+   },
+   "storyDe": "Halt sie auf — die Stunde ist noch nicht vorbei!",
+   "promptEn": "What do you say?",
+   "options": [
+    "Don't go!",
+    "Read the book!",
+    "Clean the board!"
+   ],
+   "answer": "Don't go!",
+   "skins": [
+    "merle"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Sie soll bleiben — sag es mit Don't.",
+    "deWord": "Auf Deutsch: Geh nicht!"
+   },
+   "grounding": "u01 imperative (negative): Don't + Grundform (g1u01.s.imperatives) · go: g1u01.w.to-go, SB „I must go. Bye.“"
   },
   {
    "id": "g1.paint.ch01.boss.m1",

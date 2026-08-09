@@ -147,7 +147,7 @@ const hasAnswer = (t: GameTaskV2): t is Extract<GameTaskV2, { kind: "typed" | "s
   t.kind === "typed" || t.kind === "spell";
 
 export function CardShell({
-  task, attempts, onDismiss, align = "center", clockMs, art, portraitWash, flight, doff = false, children,
+  task, attempts, onDismiss, align = "center", clockMs, art, portraitWash, round, flight, doff = false, children,
 }: {
   task: GameTaskV2;
   attempts: number;
@@ -159,6 +159,8 @@ export function CardShell({
   art?: Record<string, string>;
   /** how drained the asker is right now (0…1) — the portrait matches the world */
   portraitWash?: number;
+  /** PK-R6 · D: the reawakening's own counter („Runde 3/6", doc 44 §3.3) */
+  round?: { n: number; of: number };
   /** the answer flying home, or null while the card is still being played */
   flight?: string | null;
   /** the restore-hold: the card steps out of the way so the world can be seen */
@@ -183,6 +185,18 @@ export function CardShell({
       <InkWipe />
       <div className="pb-card" style={{ ...cardBox, width: align === "center" ? "90%" : "46%", minWidth: 300 }}>
         {(clockMs ?? 0) > 0 && <ChalkClock ms={clockMs ?? QUICKFIRE_MS} />}
+
+        {/* PK-R6 · D · THE ROUND COUNTER (doc 44 §3.3, „6 rounds, Runde n/6").
+            A ceremony a six-year-old can see the end of: six is a long way to
+            be asked questions by a friend who is still grey, and the difference
+            between a rite and an interrogation is knowing how far it runs. It
+            is a LABEL, never a clock — the reawakening is calm by the timer
+            policy (doc 44 §2.9) and no chalk ring ever runs beside it. */}
+        {round !== undefined && (
+          <p style={{ fontSize: 11.5, letterSpacing: "0.16em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 6px", fontFamily: "var(--font-label, inherit)" }}>
+            Runde {round.n}/{round.of}
+          </p>
+        )}
 
         {task.stimulus.type === "image" && (
           <p style={{ fontSize: 13, color: "#8a7a58", margin: "0 0 6px", fontStyle: "italic" }}>🖼 {task.stimulus.altDe}</p>

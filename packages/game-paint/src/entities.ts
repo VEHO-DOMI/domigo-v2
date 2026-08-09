@@ -41,6 +41,13 @@ export interface EntityState {
    *  the last counter-window. See DODGES_PER_WINDOW — this is the fist-less
    *  road into the fight. */
   dodges: number;
+  /** PK-R6 · D · classmates only: how many reawakening rounds she has been
+   *  given back, 0 … AWAKEN_ROUNDS (doc 44 §3.3). It is a COUNT rather than a
+   *  reuse of `hp`, because it is read by the renderer as well as the sim —
+   *  anim.washAlphaFor turns it into how grey she still is, and a number that
+   *  means "hits left" in one file and "colour restored" in another is the
+   *  drift class the pose thresholds were derived to avoid. */
+  awakenStep: number;
   params: Record<string, unknown>;
 }
 
@@ -66,6 +73,11 @@ export type EntityEvent =
   | { type: "engaged"; id: string; role: string; skin: string }
   | { type: "cageHit"; id: string; hpLeft: number }
   | { type: "cageBurst"; id: string; skin: string }
+  /** PK-R6 · D: the child stepped up to a half-woken classmate and pressed ↑.
+   *  The ceremony resumes at the round she is on — this is the anti-softlock
+   *  half of the reawakening (PB-T1): „Später" on round 3 must not leave a
+   *  friend standing grey with no way back into her own rescue. */
+  | { type: "awakenAsk"; id: string; skin: string }
   | { type: "doorTouched"; id: string; kind: string }
   | { type: "powerupTaken"; id: string; grants: string }
   /** PK-R3b · R3-16: a static-state collectible was walked into — a Regel-Seite
@@ -145,6 +157,26 @@ export const DODGES_PER_WINDOW = 3;
 // and the settle is what brings a wanderer back rather than letting it leave.
 /** How long the Freudenrunde runs before the friend settles. */
 export const JOY_TICKS = 150;
+
+// ── PK-R6 · D · THE REAWAKENING (doc 44 §3.3) ────────────────────────────────
+// „The freed classmate stands ghost-pale and acts out the unit's wrong-actions
+// round by round — the pose IS the prompt … Correct → the classmate regains one
+// degree of motion/colour; final round → full colour, joy loop, the cage opens."
+/** How many rounds one reawakening runs. Six is doc 44 §3.3's own number
+ *  („6 rounds, `Runde n/6`"), and it is a LAW rather than a tuning knob: the
+ *  content gate (check-game-tasks layer 5) demands exactly this many bound
+ *  rescue cards, and the wash divides the ghost-grey into exactly this many
+ *  steps. One constant, three readers — a five-round chapter turns red. */
+export const AWAKEN_ROUNDS = 6;
+/** How long she stands in `settle` — eyes closing, hands coming together —
+ *  before the Freudenrunde. Her own painted beat (`merle_settle0/1`): the
+ *  moment of coming back to herself, which the joy would otherwise cut off. */
+export const SETTLE_TICKS = 54;
+/** Once settled at home a freed classmate WAVES now and then, so a friend who
+ *  stays for the rest of the chapter reads as present rather than parked
+ *  (doc 44 §1: redemption changes state, never presence). */
+export const WAVE_EVERY_TICKS = 420;
+export const WAVE_TICKS = 96;
 /** How long the Tafel cries before the console beat answers it (R3-5). */
 export const SAD_TICKS = 48;
 /** Which roles are redeemable creatures. Cages, doors and powerups also carry
@@ -163,6 +195,18 @@ const stepRedeemed = (e: EntityState): void => {
   // stays put. Before this the timer froze at redemption and a cage would have
   // been left half-drained forever.
   e.timer += 1;
+  // PK-R6 · D · THE FREED CLASSMATE'S OWN AFTERLIFE. She does not fly a lap
+  // (she is a person, not a moth) and she may not be parked either: doc 44 §1
+  // makes presence the point of freeing someone. So her states are her painted
+  // ones — settle (coming back to herself) → joy (the Freudenrunde, in place) →
+  // idle at her spot, waving now and then for the rest of the chapter.
+  if (e.role === "classmate") {
+    if (e.state === "settle" && e.timer > SETTLE_TICKS) { e.state = "joy"; e.timer = 0; }
+    else if (e.state === "joy" && e.timer > JOY_TICKS) { e.state = "rest"; e.timer = 0; }
+    else if (e.state === "rest" && e.timer > WAVE_EVERY_TICKS) { e.state = "wave"; e.timer = 0; }
+    else if (e.state === "wave" && e.timer > WAVE_TICKS) { e.state = "rest"; e.timer = 0; }
+    return;
+  }
   if (!JOY_ROLES.has(e.role)) return; // static-state beings hold their cell
   const { rx, ry, lift } = joyRadiusPx(e.role);
   if (e.state === "joy") {
@@ -210,7 +254,12 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     vx: 0,
     vy: 0,
     dir: -1,
-    state: s.role === "cage" ? "closed" : s.role.startsWith("platform") ? "carry" : s.role === "guardian" ? "idle" : "patrol",
+    // PK-R6 · D: a classmate starts `caged` — the painted cell of the person
+    // still under the spell (`merle_caged0/1`, eyes down, hands limp). It is
+    // what the child sees in the beat between the cage bursting and the first
+    // round's pose, and it is what she falls back to if a round is deferred.
+    state: s.role === "cage" ? "closed" : s.role === "classmate" ? "caged"
+      : s.role.startsWith("platform") ? "carry" : s.role === "guardian" ? "idle" : "patrol",
     timer: 0,
     hp: s.role === "cage" ? 2 : s.role === "guardian" ? GUARDIAN_SCRIPT[s.tier].knots : 1,
     homeX: (s.c * TILE + TILE / 2) * SUBS,
@@ -218,6 +267,7 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     redeemed: false,
     hidden: s.params?.hidden === true,
     dodges: 0,
+    awakenStep: 0,
     params: s.params ?? {},
   })),
   projectiles: [],
@@ -251,8 +301,13 @@ export const ENGAGE_REACH_Y_PX = 34;
 /** The roles a ↑ press can reach. Cages are here because ch01 grants NO FIST
  *  (doc 44 §4 ability amendment) and a cage that only a punch can open would
  *  make the chapter's one classmate unrescuable — the fist path below stays
- *  exactly as it was for every chapter that does grant it. */
-export const ENGAGEABLE_ROLES = new Set<string>(["drained", "cage"]);
+ *  exactly as it was for every chapter that does grant it.
+ *
+ *  PK-R6 · D: and a `classmate` mid-reawakening, which is the anti-softlock
+ *  law (PB-T1) applied to a six-round ceremony — putting round 3 down with
+ *  „Später" must leave a way back INTO it, and ↑ is the verb this chapter
+ *  already teaches for stepping up to a bewitched being. */
+export const ENGAGEABLE_ROLES = new Set<string>(["drained", "cage", "classmate"]);
 
 const inEngageReach = (e: EntityState, playerX: number, playerY: number): boolean =>
   Math.abs(e.x - playerX) / SUBS < ENGAGE_REACH_PX
@@ -489,6 +544,16 @@ export const stepEntities = (
         } else if (e.state === "shaking" && e.timer > 30) e.state = "patrol";
         break;
       }
+      // PK-R6 · D · THE BEWITCHED CLASSMATE (doc 44 §3.3). Like a drained
+      // object she has no brain and no menace — she stands where she stepped
+      // out of the cage, acting out whatever wrong action the open round asks
+      // for (the pose is set by the shell from the card's own art binding, so
+      // the picture in the card and the figure in the world are one
+      // declaration). Contact does nothing; only ↑ resumes a deferred round.
+      case "classmate": {
+        if (e.id === engageId) events.push({ type: "awakenAsk", id: e.id, skin: e.skin });
+        break;
+      }
       case "cage": {
         // PK-R6 · C2: ↑ opens a cage in a chapter with no fist. One press frees
         // it — the two-hit rattle below is the FIST's grammar (wind up, feel the
@@ -710,6 +775,59 @@ export const guardianKnotSolved = (w: EntityWorld, id: string): EntityEvent[] =>
   g.state = "idle";
   g.timer = 0;
   return [{ type: "guardianKnot", id, knotsLeft: g.hp }];
+};
+
+// ── PK-R6 · D · THE REAWAKENING MACHINE (doc 44 §3.3) ────────────────────────
+// Deliberately NOT a new card machine. A reawakening is six ORDINARY cards in a
+// row — the boss's knot battery is already exactly that shape (one world event
+// per window, the world counting the rounds, `guardianKnotSolved` advancing it)
+// and it is the shape that keeps the ceremony inside the shipped card kit
+// instead of forking it. So this is the classmate's `guardianKnotSolved`: the
+// world's counter, and nothing else.
+//
+// The one thing it does that no other redemption does is END IN STAGES. Every
+// other being is drained or restored; she comes back by degrees, which is why
+// the step is a number the renderer can read (anim.awakenWash) rather than a
+// boolean the renderer can only wait for.
+
+/** Which classmate stepped out of THIS cage, or null. The pointer runs from
+ *  the person to the cage (EntityParams.cage), so a burst cage can find her —
+ *  the `classmate-pair` level law proves the pointer exists before ship. */
+export const classmateOfCage = (w: EntityWorld, cageId: string): EntityState | null =>
+  w.entities.find((e) => e.role === "classmate" && e.params?.cage === cageId) ?? null;
+
+/** One round of the reawakening is answered: she regains a degree. Returns
+ *  `true` when THAT WAS THE LAST ONE — the caller (sim.solveTask) then plays the
+ *  colour flood, the settle, the joy lap and counts the cage freed. */
+export const awakenClassmate = (w: EntityWorld, id: string): boolean => {
+  const e = w.entities.find((x) => x.id === id && x.role === "classmate");
+  if (!e || e.redeemed) return false;
+  e.awakenStep = Math.min(e.awakenStep + 1, AWAKEN_ROUNDS);
+  e.timer = 0;
+  if (e.awakenStep < AWAKEN_ROUNDS) {
+    // between rounds she drops back to the caged cell: the spell has loosened
+    // by one degree (the wash says so) but she is not acting anything out until
+    // the next round's pose is set — a figure frozen in the LAST wrong action
+    // while the world runs would read as the answer not having landed.
+    e.state = "caged";
+    return false;
+  }
+  e.redeemed = true;
+  e.state = "settle";
+  return true;
+};
+
+/** Bring a classmate all the way home without playing the rounds — the phase
+ *  REMOUNT path (a chapter's Kleckskammer round trip rebuilds the Sim). Her
+ *  cage is remembered in `freedCageIds`; she has to be remembered with it, or a
+ *  child who buys Klecks' door after freeing her comes back to a friend sitting
+ *  grey in a cage they already opened. */
+export const restoreFreedClassmate = (e: EntityState): void => {
+  e.hidden = false;
+  e.redeemed = true;
+  e.awakenStep = AWAKEN_ROUNDS;
+  e.state = "rest";
+  e.timer = 0;
 };
 
 /** Redeem after a solved encounter task. R3-5: cross → JOY → settled at home,

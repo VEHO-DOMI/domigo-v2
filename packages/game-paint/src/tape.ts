@@ -39,6 +39,15 @@ export interface TapeExpect {
    *  "nothing happened". A tape that ends with no present friend has lost the
    *  kindness economy, and that is now a failure the suite can see. */
   redeemedPresent?: boolean;
+  /** PK-R6 · D · THE REAWAKENING'S END-STATE (doc 44 §3.3). How many classmates
+   *  this run left AWAKE — redeemed, and standing in one of her own painted
+   *  after-states (settle → joy → her spot, waving). It is deliberately not
+   *  covered by `redeemedPresent`, which is an OR over every being in the phase
+   *  and goes green on a freed moth while the chapter's one person sits grey in
+   *  a cage the pilot walked past. That is exactly what every ch01 tape did
+   *  until this packet: `cagesFreed: 0` on all five, and the one rescue in the
+   *  chapter proven by nothing. Six rounds have to be RUN for this to be 1. */
+  classmatesAwake?: number;
   /** PK-R3b · R3-16: Regel-Seiten and Bonus-Bücher this run walked into. A
    *  collectible the pilot never touches is not proof it is takeable — and a
    *  page that stops being takeable after a grid edit is exactly the silent
@@ -215,6 +224,12 @@ export const replayPhaseTape = (
     guardianDown: sim.guardianDefeated,
     tasksSolved,
     redeemedPresent: sim.world.entities.some((e) => e.redeemed && (e.state === "joy" || e.state === "rest")),
+    // PK-R6 · D: her own after-states — the settle, the Freudenrunde and the
+    // waving that follows it (entities.stepRedeemed). A classmate in any OTHER
+    // state at the end of a run is one the sequence did not finish.
+    classmatesAwake: sim.world.entities.filter(
+      (e) => e.role === "classmate" && e.redeemed && ["settle", "joy", "rest", "wave"].includes(e.state),
+    ).length,
     tipsGot,
     booksGot,
     // M-B: PaintGame opens the score page on exactly this condition — an exit
@@ -263,6 +278,7 @@ export const worldAssertionErrors = (expect: TapeExpect | undefined, world: Repl
   cmp("guardianDown", world.guardianDown);
   cmp("tasksSolved", world.tasksSolved);
   cmp("redeemedPresent", world.redeemedPresent);
+  cmp("classmatesAwake", world.classmatesAwake);
   cmp("tipsGot", world.tipsGot);
   cmp("booksGot", world.booksGot);
   cmp("scorePageShown", world.scorePageShown);

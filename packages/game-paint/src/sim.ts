@@ -18,11 +18,16 @@ import { type AirModel, LOGICAL_H, LOGICAL_W, PAINT, SUBS, TILE } from "./paint.
 import { IDLE_PAD, type Pad, type PlayerEvent, type PlayerState, applyKnockback, spawnPlayer, stepPlayer } from "./player.ts";
 import { type FistState, stepFist, throwFist } from "./fist.ts";
 import {
+  AWAKEN_ROUNDS,
   type EntityEvent,
+  type EntityState,
   type EntityWorld,
   applyLinks,
+  awakenClassmate,
+  classmateOfCage,
   guardianKnotSolved,
   redeemEntity,
+  restoreFreedClassmate,
   rideAttachCheck,
   spawnEntities,
   stepEntities,
@@ -53,6 +58,13 @@ export interface TaskRequest {
   ctx:
     | { type: "entity"; id: string; skin: string }
     | { type: "cage"; id: string; skin: string; classmate?: string }
+    /** PK-R6 · D · THE REAWAKENING ROUND (doc 44 §3.3). A fifth world asker,
+     *  and the only one that asks the SAME being more than once: the classmate
+     *  standing ghost-pale out of her cage, on round `round` of `rounds`. The
+     *  index rides in the request because the ceremony is ORDERED — round 3
+     *  shows the pose round 3 was authored for — which is the one thing the
+     *  shuffling playlist router (cards/routing) must not decide here. */
+    | { type: "classmate"; id: string; skin: string; round: number; rounds: number }
     | { type: "door"; id: string; kind: string; skin: string }
     | { type: "guardian"; id: string; skin: string }
     | { type: "console"; id: string; skin: string }
@@ -219,6 +231,13 @@ export class Sim {
     for (const id of cfg.freedCageIds()) {
       const e = this.world.entities.find((x) => x.id === id);
       if (e) { e.redeemed = true; e.state = "burst"; }
+      // PK-R6 · D: a freed cage's PERSON is freed too. A phase is remounted
+      // whenever the child comes back from the Kleckskammer, and without this
+      // Merle would be hidden again behind a cage that is already open —
+      // a friend un-freed by a shopping trip, and six rounds of ceremony
+      // silently owed a second time.
+      const mate = classmateOfCage(this.world, id);
+      if (mate) restoreFreedClassmate(mate);
     }
     // R3-16: a Regel-Seite taken before the Kleckskammer stays taken after it
     for (const id of cfg.collectedPickupIds?.() ?? []) {
@@ -345,6 +364,17 @@ export class Sim {
     events.push({ type: "task", req });
   }
 
+  /** PK-R6 · D: raise the round this classmate is standing on. One place, three
+   *  callers (the cage bursting, a deferred round re-engaged, and the round
+   *  before this one being answered), so „which round am I on" is read from her
+   *  own counter every time and can never be tracked twice. */
+  private askRound(mate: EntityState, events: SimEvent[]): void {
+    this.ask(
+      { use: "rescue", ctx: { type: "classmate", id: mate.id, skin: mate.skin, round: mate.awakenStep + 1, rounds: AWAKEN_ROUNDS } },
+      events,
+    );
+  }
+
   setOverlay(open: boolean): void {
     this.overlayOpen = open;
   }
@@ -364,6 +394,37 @@ export class Sim {
       const freed = this.cfg.freedCageIds().length + 1;
       events.push({ type: "cageFreed", id: ctx.id, skin: ctx.skin, classmate: ctx.classmate, count: freed });
       applyLinks(this.world, "opened", ctx.id);
+    } else if (ctx.type === "classmate") {
+      // ── PK-R6 · D · ONE ROUND OF THE REAWAKENING (doc 44 §3.3) ────────────
+      // The world is handed back FIRST and then, if rounds remain, taken again
+      // by the next one: `ask` sets the freeze itself, so releasing afterwards
+      // (as the shared tail below does) would drop the ceremony's own card on
+      // the floor and resume a world with an open round in it. Hence the early
+      // return — the one branch that owns its own overlay bookkeeping.
+      this.overlayOpen = false;
+      const mate = this.world.entities.find((x) => x.id === ctx.id);
+      const done = awakenClassmate(this.world, ctx.id);
+      if (!done) {
+        if (mate) this.askRound(mate, events);
+        return events;
+      }
+      // the sixth answer: she is in colour, and only NOW does the cage count as
+      // freed — the HUD chip, the classmate line on the score page and the
+      // ceremony card all hang off this one event, exactly as they did when a
+      // cage freed in one beat (doc 44 §2.3's „every HUD denominator counted
+      // from the world" is untouched; what moved is WHEN the numerator ticks).
+      const cageId = String(mate?.params.cage ?? "");
+      const cage = this.world.entities.find((x) => x.id === cageId);
+      const freed = this.cfg.freedCageIds().length + 1;
+      events.push({
+        type: "cageFreed",
+        id: cageId,
+        skin: cage?.skin ?? ctx.skin,
+        classmate: cage?.params.classmate as string | undefined,
+        count: freed,
+      });
+      applyLinks(this.world, "opened", cageId);
+      return events;
     } else if (ctx.type === "door") {
       this.doorSolved.add(ctx.id);
       applyLinks(this.world, "opened", ctx.id);
@@ -492,7 +553,27 @@ export class Sim {
       }
       case "cageBurst": {
         const e = this.world.entities.find((x) => x.id === ev.id);
+        // PK-R6 · D · THE PERSON-CAGE OPENS ONTO A PERSON (doc 44 §3.3). The
+        // latch is not the rescue: the child opens it, Merle steps out
+        // ghost-pale, and the SIX ROUNDS are what free her. So a cage that has
+        // a classmate reveals her here and hands over to her ceremony; a plain
+        // cage keeps exactly the one-card rescue it has always had.
+        const mate = classmateOfCage(this.world, ev.id);
+        if (mate) {
+          mate.hidden = false;
+          mate.state = "caged";
+          mate.timer = 0;
+          this.askRound(mate, events);
+          break;
+        }
         this.ask({ use: "rescue", ctx: { type: "cage", id: ev.id, skin: ev.skin, classmate: e?.params.classmate as string | undefined } }, events);
+        break;
+      }
+      // PK-R6 · D: ↑ at a half-woken classmate resumes her ceremony where it
+      // stopped (the „Später" road back — see ENGAGEABLE_ROLES).
+      case "awakenAsk": {
+        const mate = this.world.entities.find((x) => x.id === ev.id);
+        if (mate && !mate.redeemed) this.askRound(mate, events);
         break;
       }
       case "cageHit":

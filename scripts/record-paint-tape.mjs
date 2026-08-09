@@ -196,6 +196,17 @@ const PILOTS = {
       ["jump", { dir: "right", hold: 16 }], ["settle"], // over the nib spikes c38-39
       ["walkTo", 48], ["settle"],
       ["jump", { dir: "right", hold: 18 }], ["settle"], // over the ink pool c50-53
+      // PK-R6 · D · MERLE'S CAGE (c60). The pilot used to walk straight past
+      // the one cage every child must open — `cagesFreed: 0` on every tape in
+      // the chapter, which is how a rescue can be rebuilt from one card into a
+      // six-round ceremony with the whole proof set staying green and blind to
+      // it. It stops here and presses ↑: the cage bursts, Merle steps out
+      // ghost-pale, and the replay shell answers her six rounds exactly as it
+      // answers any other card. The tape's `tasksSolved` and `cagesFreed` are
+      // what then assert the sequence ran.
+      ["walkTo", 60], ["settle"],
+      ["hold", { up: true }, 8], // one rising edge — the chapter's own verb
+      ["wait", 30],
       ["walkTo", 62], ["settle"],
       ["walkTo", 68], ["settle"], ["wait", 40],
     ],
@@ -292,6 +303,7 @@ for (const phaseId of phases) {
     guardianDown: verdict.world.guardianDown,
     tasksSolved: verdict.world.tasksSolved,
     redeemedPresent: verdict.world.redeemedPresent, // PK-R2 · R3-5
+    classmatesAwake: verdict.world.classmatesAwake, // PK-R6 · D
     tipsGot: verdict.world.tipsGot, // PK-R3b · R3-16
     booksGot: verdict.world.booksGot,
     scorePageShown: verdict.world.scorePageShown, // PK-R3b · M-B

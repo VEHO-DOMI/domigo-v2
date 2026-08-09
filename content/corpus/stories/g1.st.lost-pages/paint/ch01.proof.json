@@ -69,6 +69,7 @@
         "guardianDown": false,
         "tasksSolved": 3,
         "redeemedPresent": true,
+        "classmatesAwake": 0,
         "tipsGot": 0,
         "booksGot": 0,
         "scorePageShown": false
@@ -217,7 +218,7 @@
           0
         ],
         [
-          56,
+          42,
           2
         ],
         [
@@ -225,7 +226,23 @@
           0
         ],
         [
-          46,
+          8,
+          4
+        ],
+        [
+          30,
+          0
+        ],
+        [
+          17,
+          2
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          47,
           2
         ],
         [
@@ -237,10 +254,11 @@
         "lettersGot": 7,
         "lettersTotal": 10,
         "exitTo": "p3",
-        "cagesFreed": 0,
+        "cagesFreed": 1,
         "guardianDown": false,
-        "tasksSolved": 5,
+        "tasksSolved": 11,
         "redeemedPresent": true,
+        "classmatesAwake": 1,
         "tipsGot": 1,
         "booksGot": 1,
         "scorePageShown": false
@@ -325,6 +343,7 @@
         "guardianDown": false,
         "tasksSolved": 2,
         "redeemedPresent": true,
+        "classmatesAwake": 0,
         "tipsGot": 1,
         "booksGot": 0,
         "scorePageShown": false
@@ -765,6 +784,7 @@
         "guardianDown": true,
         "tasksSolved": 3,
         "redeemedPresent": false,
+        "classmatesAwake": 0,
         "tipsGot": 0,
         "booksGot": 0,
         "scorePageShown": true
@@ -789,6 +809,7 @@
         "guardianDown": false,
         "tasksSolved": 0,
         "redeemedPresent": false,
+        "classmatesAwake": 0,
         "tipsGot": 0,
         "booksGot": 0,
         "scorePageShown": false

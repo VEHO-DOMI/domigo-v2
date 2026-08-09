@@ -32,7 +32,7 @@ const IDLE_CELLS = ["a", "b", "c", "d"] as const;
 // Every threshold is DERIVED from the sim constant it depicts (imported, never
 // re-typed), so a tuning change to the sim moves the pose with it.
 
-import { BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX, JOY_ROLES } from "./entities.ts";
+import { AWAKEN_ROUNDS, BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX, JOY_ROLES } from "./entities.ts";
 import { SUBS } from "./paint.ts";
 
 // ── PK-R3b · R3-15 · THE DESATURATION GRAMMAR (doc 41 §2) ────────────────────
@@ -65,8 +65,29 @@ export const COLOUR_FLOOD_TICKS = 36;
  *  was built for — ch01's field is now the grey classroom spread across the
  *  level, and „grey until you name it" is what makes it read as bewitched
  *  rather than as scenery. Doors, grants and platforms are furniture and were
- *  never drained. */
-export const WASHED_ROLES = new Set<string>([...JOY_ROLES, "cage", "drained"]);
+ *  never drained.
+ *
+ *  PK-R6 · D: and the CLASSMATE, the one being the wash leaves in STAGES
+ *  (awakenWash below) instead of all at once. doc 44 §3.3 asks for exactly
+ *  this — „the classmate regains one degree of motion/colour" per round — and
+ *  it costs no new grammar, only a step count where a boolean used to be. */
+export const WASHED_ROLES = new Set<string>([...JOY_ROLES, "cage", "drained", "classmate"]);
+
+// ── PK-R6 · D · THE SIX DEGREES (doc 44 §3.3) ────────────────────────────────
+/** How grey a classmate still is after `step` of AWAKEN_ROUNDS rounds: the full
+ *  ghost-wash divided into equal degrees, so every correct command takes a
+ *  visible, equal bite out of the spell.
+ *
+ *  Why equal steps and not a curve: the rounds are equal work for the child, so
+ *  a curve would pay two identical answers differently and the picture would
+ *  stop being a progress bar the child can read. The LAST degree is the one the
+ *  colour flood animates (washAlphaFor below), which is what makes the sixth
+ *  round land as the flood doc 44 promises rather than as a seventh step.
+ *
+ *  Pure and exported so the stepping is unit-testable without a scene: the
+ *  claim „she visibly lightens each round" is then a table, not a screenshot. */
+export const awakenWash = (step: number, rounds: number = AWAKEN_ROUNDS): number =>
+  WASH_ALPHA * (1 - Math.min(Math.max(step, 0), rounds) / Math.max(rounds, 1));
 
 /** How opaque the grey wash over this being is right now, 0 … WASH_ALPHA.
  *  Pure: `timer` is the sim's own counter, which `redeemEntity` resets to 0 at
@@ -74,14 +95,21 @@ export const WASHED_ROLES = new Set<string>([...JOY_ROLES, "cage", "drained"]);
  *  answered. Under reduced motion a redeemed being is simply already in
  *  colour — the end-states law, applied to the world instead of to CSS. */
 export const washAlphaFor = (
-  e: { role: string; redeemed: boolean; timer: number },
+  e: { role: string; redeemed: boolean; timer: number; awakenStep?: number },
   reducedMotion = false,
 ): number => {
   if (!WASHED_ROLES.has(e.role)) return 0; // furniture was never drained
-  if (!e.redeemed) return WASH_ALPHA;
+  // PK-R6 · D: a classmate is drained BY DEGREES. Un-redeemed she stands at the
+  // degree her rounds have earned (an instant step per round — the world is
+  // frozen for the card, so a fade nobody's clock is running would be a change
+  // the child never sees); redeemed, the flood animates the LAST degree away,
+  // which is the sixth round's payoff and the same choreography every restored
+  // being gets.
+  const full = e.role === "classmate" ? awakenWash(Math.max((e.awakenStep ?? 0) - (e.redeemed ? 1 : 0), 0)) : WASH_ALPHA;
+  if (!e.redeemed) return full;
   if (reducedMotion) return 0;
   const left = 1 - Math.min(Math.max(e.timer, 0), COLOUR_FLOOD_TICKS) / COLOUR_FLOOD_TICKS;
-  return WASH_ALPHA * left;
+  return full * left;
 };
 
 /** Half the patrol speed: a chaser's vx is ±ENEMY_WALK while walking and 0 at
@@ -109,7 +137,62 @@ export interface EntPoseInput {
   idleFrames?: number;
 }
 
+// ── PK-R6 · D · THE CLASSMATE'S CELLS (doc 44 §3.3, doc 40 §3 rig grammar) ───
+// Her sheet is PAIRED all the way through — `caged0/1`, `settle0/1`, `wave0/1`,
+// one pair per wrong action (`act_sing0/1` …) — except the joy cells, which the
+// AL2 contract names `_joy` and `_joy1`. So the pair is looked up by NAME here
+// rather than assembled from `${state}${n}`: a generic suffix would ask for
+// `joy0`, entTex would fall back to `merle_a`, and the Freudenrunde would play
+// as a girl standing still. One table, no arithmetic on cell names.
+const CLASSMATE_CELLS: Record<string, readonly [string, string]> = {
+  caged: ["caged0", "caged1"],
+  settle: ["settle0", "settle1"],
+  joy: ["joy", "joy1"],
+  wave: ["wave0", "wave1"],
+};
+
+/** The pose a card's art binding names, as a STATE — `merle_act_sing1` +
+ *  skin `merle` → `act_sing`. This is the whole reason the world and the card
+ *  cannot disagree about what she is doing: the round declares its pose ONCE,
+ *  in `stimulus.art` (which the portrait law already proves is a real cell of
+ *  hers), and the world reads its state off that same string. Returns null for
+ *  a stem that is not this being's, so a mis-bound card changes nothing rather
+ *  than posing her as somebody else. */
+export const poseStateOf = (stem: string, skin: string): string | null => {
+  if (!stem.startsWith(`${skin}_`)) return null;
+  const cell = stem.slice(skin.length + 1).replace(/\d+$/, "");
+  return cell.length > 0 ? cell : null;
+};
+
+/** Which cell a classmate shows, given her state and her own tick. A state that
+ *  begins `act_` is a WRONG-ACTION POSE the shell set from the open round's art
+ *  binding (`merle_act_sing1` → `act_sing`), so its pair is `<state>0/1`. */
+export const classmateCell = (state: string, timer: number): string => {
+  const named = CLASSMATE_CELLS[state];
+  if (named) return named[bobFrame(timer, 2)] ?? named[0];
+  if (state.startsWith("act_")) return `${state}${bobFrame(timer, 2)}`;
+  return IDLE_CELLS[bobFrame(timer, 4)] ?? "a"; // `rest` and anything unnamed: she idles
+};
+
 export const entPoseCell = (e: EntPoseInput): string => {
+  // PK-R6 · D: read FIRST, like the guardian's branch and for the same reason —
+  // every generic rule below (the `dazed` catch-all, the run threshold) would
+  // put a cell on her that her sheet does not have, and entTex would silently
+  // fall back to her idle. A person acting out a wrong action is not a dazed
+  // enemy, and a freed friend waving is not a dazed one either.
+  if (e.role === "classmate") return classmateCell(e.state, e.timer);
+  // PK-R6 · D · AN OPENED CAGE IS DRAWN OPEN. Read before the dazed catch-all,
+  // which is what a redeemed cage used to fall into: `pencilcase_dazed` does not
+  // exist, entTex dropped to `pencilcase_a` — and `_a` is the CLOSED case with
+  // the captive still behind its bars. Nobody noticed while the person in the
+  // art was the only person there was; the moment Merle steps out of it (§3.3)
+  // the frame shows her twice, once free and once still locked up. `_burst` is
+  // painted (an open, empty case, the zip flying off) and is what an opened cage
+  // has always meant.
+  if (e.role === "cage") {
+    if (e.state === "burst" || e.redeemed) return "burst";
+    if (e.state === "shaking") return "shake";
+  }
   // W5/A-4: the arena guardian's own motion cells. `consoled` is its TERMINAL
   // victory state (guardianKnotSolved sets it on the last knot and never sets
   // `redeemed`), so it must be read before the dazed catch-all — otherwise the

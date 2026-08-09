@@ -216,6 +216,18 @@
      }
     },
     {
+     "id": "merle",
+     "role": "classmate",
+     "skin": "merle",
+     "c": 61,
+     "r": 19,
+     "tier": "E",
+     "params": {
+      "cage": "cage-merle",
+      "hidden": true
+     }
+    },
+    {
      "id": "p2-klecks",
      "role": "door.trigger",
      "skin": "klecksdoor",

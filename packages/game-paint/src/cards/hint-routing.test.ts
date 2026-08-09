@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { gapLevelFor, gapSlots, renderGapHint } from "./hint.ts";
-import { initRoute, nextTask, type RouteState } from "./routing.ts";
+import { initRoute, nextTask, orderedTask, type RouteState } from "./routing.ts";
 
 describe("hint ladder (F18)", () => {
   it("level 0 reveals nothing", () => expect(renderGapHint("pen", 0)).toBe(""));
@@ -40,6 +40,39 @@ describe("routing v3 (deterministic playlists, bound to the world)", () => {
 
   it("returns null for an empty pool", () => {
     expect(nextTask(pool, "boss", anywhere, initRoute()).task).toBeNull();
+  });
+
+  // ── PK-R6 · D · THE ORDERED SERVE (doc 44 §3.3) ──────────────────────────
+  // A reawakening round must be THE card authored for that round, because its
+  // picture is the pose the classmate is striking in the world. The second test
+  // is the reason orderedTask exists at all: on a pool of six same-kind cards
+  // the playlist's anti-repetition skip serves 1, 3, 5, 1 … — every round after
+  // the first would show a picture the world is not showing.
+  describe("orderedTask — a ceremony is not a playlist", () => {
+    const rounds = Array.from({ length: 6 }, (_, i) => mk(`r${i + 1}`, "rescue", "choice", ["merle"], ["p2"]));
+    const here = { phase: "p2", skin: "merle" };
+
+    it("serves round n as the nth card of the bound pool", () => {
+      expect(rounds.map((_, i) => orderedTask(rounds, "rescue", here, i)!.id))
+        .toEqual(["r1", "r2", "r3", "r4", "r5", "r6"]);
+    });
+
+    it("is what the playlist could NOT do: nextTask skips through a same-kind pool", () => {
+      let st: RouteState = initRoute();
+      const got: string[] = [];
+      for (let i = 0; i < 4; i++) { const r = nextTask(rounds, "rescue", here, st); got.push(r.task!.id); st = r.next; }
+      expect(got).toEqual(["r1", "r3", "r5", "r1"]); // …which is why the rounds do not use it
+    });
+
+    it("returns null out of range instead of wrapping — the caller resolves, never softlocks", () => {
+      expect(orderedTask(rounds, "rescue", here, 6)).toBeNull();
+      expect(orderedTask(rounds, "rescue", here, -1)).toBeNull();
+    });
+
+    it("obeys the same binding scope every other card does", () => {
+      expect(orderedTask(rounds, "rescue", { phase: "p2", skin: "pencil" }, 0)).toBeNull();
+      expect(orderedTask(rounds, "rescue", { phase: "p1", skin: "merle" }, 0)).toBeNull();
+    });
   });
 
   it("keeps independent cursors per use", () => {

@@ -39,6 +39,12 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
   // PK-R3b · R3-16: a Regel-Seite's payload is RENDERED to a six-year-old, so
   // its two authored strings are shape-checked here for the same reason `price`
   // is — a number or a stray null would reach the page as the rule itself.
+  // PK-R6 · D: `cage` is the classmate's pointer at the cage she was locked in.
+  // The `classmate-pair` law resolves it by id, so a number or an empty string
+  // would leave the chapter's one rescue pointing at nobody.
+  if ("cage" in p && (typeof p.cage !== "string" || p.cage.trim() === "")) {
+    ctx.issues.push({ code: "custom", input: p, path: ["cage"], message: "params.cage must be a non-empty entity id" });
+  }
   for (const k of ["topicDe", "merksatzDe"] as const) {
     if (k in p && (typeof p[k] !== "string" || p[k].trim() === "")) {
       ctx.issues.push({ code: "custom", input: p, path: [k], message: `params.${k} must be a non-empty string` });
@@ -60,6 +66,12 @@ const PaintEntity = z.object({
     // chapter. (Filed: the two copies should become one — the loader ought to
     // import the role list rather than restate it.)
     "drained",
+    // PK-R6 · D: `classmate` — the bewitched person who steps out of the
+    // person-cage and is restored over six reawakening rounds (doc 44 §3.3).
+    // Added HERE in the same edit as game-paint's role list, on the standing
+    // lesson above: a role the engine knows and this copy does not is a 500 on
+    // the shipped chapter, not a type error.
+    "classmate",
   ]),
   skin: z.string().min(1),
   c: z.number().int().nonnegative(),

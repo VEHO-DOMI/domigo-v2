@@ -202,10 +202,17 @@ describe("checkLevelLaws", () => {
       const cage = (id: string, extra: Record<string, unknown> = {}) => ({
         id, role: "cage" as const, skin: "satchel", c: 3, r: 17, tier: "E" as const, ...extra,
       });
+      // PK-R6 · D: a person-cage is only half of the rescue — the `classmate`
+      // entity who steps out of it is the other half, and the `classmate-pair`
+      // law now demands both. So the lawful fixture carries both.
+      const mate = (id: string, cageId: string, extra: Record<string, unknown> = {}) => ({
+        id, role: "classmate" as const, skin: "merle", c: 4, r: 17, tier: "E" as const,
+        params: { cage: cageId, hidden: true }, ...extra,
+      });
       return level(OK_ROWS, {
         draft: false,
         phases: [
-          phase(OK_ROWS, { id: "p1", exit: { to: "p2" }, entities: [cage("merle", { params: { classmate: "merle" } })] }),
+          phase(OK_ROWS, { id: "p1", exit: { to: "p2" }, entities: [cage("merle", { params: { classmate: "merle" } }), mate("merle-kid", "merle")] }),
           phase(OK_ROWS, { id: "p2", exit: { to: "p3" } }),
           phase(OK_ROWS, { id: "p3", exit: { to: "boss" } }),
         ] as PaintLevel["phases"],
@@ -262,6 +269,54 @@ describe("checkLevelLaws", () => {
       });
       inBonus.phases[0]!.entities = []; // the ONLY classmate now sits behind Klecks' door
       expect(laws(inBonus)).toContain("classmate-cage");
+    });
+
+    // ── PK-R6 · D · THE CLASSMATE PAIR (doc 44 §3.3) ────────────────────────
+    // The cage and the person in it are one rescue in two entities. Every way
+    // the pair can be half-declared is a level that loads, renders and lies:
+    // the latch opens onto an empty spot, or a girl waits in a phase her cage
+    // is not in, and the chapter's one rescue silently becomes a shrug.
+    describe("the classmate pair", () => {
+      it("fails a person-cage with nobody to step out of it", () => {
+        const lonely = chapter();
+        lonely.phases[0]!.entities = lonely.phases[0]!.entities.filter((e) => e.role !== "classmate");
+        expect(laws(lonely)).toContain("classmate-pair");
+      });
+
+      it("fails TWO people pointing at the same cage", () => {
+        const crowd = chapter();
+        crowd.phases[0]!.entities.push({
+          id: "merle-twin", role: "classmate", skin: "merle", c: 6, r: 17, tier: "E",
+          params: { cage: "merle", hidden: true },
+        });
+        expect(laws(crowd)).toContain("classmate-pair");
+      });
+
+      it("fails a classmate who declares no cage, or one that is not a person-cage", () => {
+        const orphan = chapter();
+        orphan.phases[0]!.entities[1]!.params = { hidden: true };
+        expect(laws(orphan)).toContain("classmate-pair");
+
+        const wrong = chapter();
+        wrong.phases[0]!.entities[1]!.params = { cage: "nobody", hidden: true };
+        expect(laws(wrong)).toContain("classmate-pair");
+      });
+
+      it("fails a classmate standing in a different phase from her cage", () => {
+        const apart = chapter();
+        apart.phases[0]!.entities = [apart.phases[0]!.entities[0]!]; // cage stays in p1
+        apart.phases[1]!.entities = [{
+          id: "merle-kid", role: "classmate", skin: "merle", c: 4, r: 17, tier: "E",
+          params: { cage: "merle", hidden: true },
+        }];
+        expect(laws(apart)).toContain("classmate-pair");
+      });
+
+      it("fails a classmate spawned in mid-air — she stands there all chapter", () => {
+        const floating = chapter();
+        floating.phases[0]!.entities[1]!.r = 10;
+        expect(laws(floating)).toContain("spawn-standable");
+      });
     });
   });
 
