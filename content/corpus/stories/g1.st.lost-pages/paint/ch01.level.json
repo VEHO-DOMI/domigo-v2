@@ -543,5 +543,7 @@
    "to": "p2"
   }
  },
- "tipsTotal": 3
+ "tipsTotal": 3,
+ "doorPlate": "plate_ch01_door",
+ "scorePlate": "plate_ch01_score"
 }

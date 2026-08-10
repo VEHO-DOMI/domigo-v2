@@ -539,6 +539,11 @@ export interface EntPoseInput {
    *  counts them; the hook stays pure. Defaults to the shipped 2, so a skin
    *  that never gains `_c/_d` keeps exactly today's cadence. */
   idleFrames?: number;
+  /** PK-R6 · H3 · does this SKIN own an `_open0` cell on disk? The scene
+   *  checks the textures (only-present law); the hook stays pure. A settled
+   *  freed cage rests OPEN when the painting exists — the burst cell goes
+   *  back to being the throw-open BEAT rather than the permanent state. */
+  hasOpen?: boolean;
 }
 
 // ── PK-R6 · D · THE CLASSMATE'S CELLS (doc 44 §3.3, doc 40 §3 rig grammar) ───
@@ -594,6 +599,10 @@ export const entPoseCell = (e: EntPoseInput): string => {
   // painted (an open, empty case, the zip flying off) and is what an opened cage
   // has always meant.
   if (e.role === "cage") {
+    // PK-R6 · H3: the batch-ap climax painting gives the freed pencilcase a
+    // RESTING open state (lid up, bars sprung, calm) — the burst stays the
+    // throw-open beat, and a cage without open art keeps burst as before.
+    if (e.redeemed && e.state !== "burst" && e.hasOpen === true) return "open0";
     if (e.state === "burst" || e.redeemed) return "burst";
     if (e.state === "shaking") return "shake";
   }

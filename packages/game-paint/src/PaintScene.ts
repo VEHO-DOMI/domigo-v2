@@ -37,6 +37,8 @@ import {
   SPARK_COUNT, burstShape, contactPoint, fleckOf, shardOutline, starPoints,
 } from "./burst.ts";
 import {
+  HERO2_SRC_SCALE,
+  heroFullCell,
   RIG_CELL,
   RIG_PART_ORDER,
   RIG_SRC_SCALE,
@@ -822,6 +824,10 @@ export class PaintScene extends Phaser.Scene {
 
   private parts = new Map<RigPartName, Phaser.GameObjects.Image>();
   private rigRoot!: Phaser.GameObjects.Container;
+  /** PK-R6 · H3 · the full-pose override pair (hero v2) — one authored cell
+   *  drawn whole when rigSpec.heroFullCell speaks; the parts hide meanwhile. */
+  private heroFull!: Phaser.GameObjects.Image;
+  private heroFullShadow!: Phaser.GameObjects.Image;
   /** PK-R6 · H1 · the hero's own cast shadow — the same parts again, inked and
    *  offset, drawn UNDER him (see buildRig). */
   private shadowParts = new Map<RigPartName, Phaser.GameObjects.Image>();
@@ -1353,7 +1359,11 @@ export class PaintScene extends Phaser.Scene {
       // R3-16: a taken Regel-Seite / Bonus-Buch is GONE — it went into the tally
       img.setVisible(!e.hidden && !(PICKUP_ROLES.has(e.role) && e.redeemed));
       img.setPosition(fromSubs(e.x), fromSubs(e.y));
-      const cell = this.entStateCell({ ...e, idleFrames: this.idleFramesOf(e.skin) });
+      const cell = this.entStateCell({
+        ...e,
+        idleFrames: this.idleFramesOf(e.skin),
+        hasOpen: this.textures.exists(`pb-${e.skin}_open0`),
+      });
       img.setTexture(this.entTex(e.skin, cell));
       const targetH = this.entTargetH(e);
       const frameH = img.frame.height || 1;
@@ -2705,8 +2715,20 @@ export class PaintScene extends Phaser.Scene {
     const cheer = this.cheerT();
     const pose = withCheer(pose2, cheer);
 
+    // ── PK-R6 · H3 · THE FULL-POSE OVERRIDE ────────────────────────────────
+    // When a hero2 cell exists for this frame's state, the authored full-body
+    // painting replaces the composed parts whole (rigSpec.heroFullCell — the
+    // answer to two rounds of „run reads as idle / no squash / frozen face").
+    // The container keeps position + facing; the PROCEDURAL squash is dropped
+    // under the override because the landing cell carries its squash in paint —
+    // stacking both would over-squash the one frame that finally has it.
+    const fullCell = heroFullCell(
+      this.player.pose, this.player.walkTime, this.player.vy,
+      this.player.landedAgo, cheer > 0, this.heroAtEdge(), this.tickCount,
+    );
+    const full = fullCell !== null && this.textures.exists(this.tex(fullCell)) ? fullCell : null;
     this.rigRoot.setPosition(fromSubs(this.player.x), fromSubs(this.player.y) - 15);
-    this.rigRoot.setScale(this.player.facing * pose.scaleX, pose.scaleY);
+    this.rigRoot.setScale(this.player.facing * (full !== null ? 1 : pose.scaleX), full !== null ? 1 : pose.scaleY);
     const flicker = this.player.iframes > 0 && this.player.iframes % 8 < 4;
     this.rigRoot.setAlpha(flicker ? 0.45 : 1);
     // ── PK-R6 · H2 · THE CONTACT RIM (round-2 findings 2 and 8) ───────────────
@@ -2740,13 +2762,27 @@ export class PaintScene extends Phaser.Scene {
     // is the one device that survives a 25 % squint, because blurring a dark ring
     // leaves a dark ring while blurring a small dark figure leaves the wall.
     const swell = 1 + edge.swell + (CONTACT_RIM_SWELL - edge.swell) * rim;
-    this.rigShadow.setScale(this.player.facing * pose.scaleX * swell, pose.scaleY * swell);
+    this.rigShadow.setScale(
+      this.player.facing * (full !== null ? 1 : pose.scaleX) * swell,
+      (full !== null ? 1 : pose.scaleY) * swell,
+    );
     this.rigShadow.setAlpha(flicker ? 0 : edge.alpha * (1 - rim) + CONTACT_RIM_ALPHA * rim);
+
+    // the override sprite and its shadow twin follow the same texture; the
+    // composed parts hide while it speaks and return the frame it goes null
+    // (hang, swing, vine — the states the v2 sheet does not paint).
+    this.heroFull.setVisible(full !== null);
+    this.heroFullShadow.setVisible(full !== null);
+    if (full !== null) {
+      const key = this.tex(full);
+      this.heroFull.setTexture(key);
+      this.heroFullShadow.setTexture(key).setTint(rim > 0 ? CONTACT_RIM_TINT : edge.tint);
+    }
 
     const apply = (name: RigPartName, dx: number, dy: number, rot: number, hidden: boolean, frame?: number): void => {
       for (const img of [this.parts.get(name), this.shadowParts.get(name)]) {
         if (!img) continue;
-        img.setPosition(dx, dy).setRotation(rot).setVisible(!hidden);
+        img.setPosition(dx, dy).setRotation(rot).setVisible(!hidden && full === null);
         if (name === "rotor" && frame !== undefined) img.setTexture(this.tex(ROTOR_STEMS[frame] ?? "rotor_a"));
       }
     };
@@ -4096,6 +4132,29 @@ export class PaintScene extends Phaser.Scene {
       this.parts.set(name, img);
       this.rigRoot.add(img);
     }
+    // PK-R6 · H3: the full-pose override pair — one authored v2 cell drawn
+    // whole, in each container. Feet-anchored at the container's foot line
+    // (the rig root sits 15 px above the feet), so every cell — squashed
+    // landing, stretched leap — stands on the same ground.
+    this.heroFullShadow = this.add.image(0, 15, "__DEFAULT").setOrigin(0.5, 1)
+      .setScale(HERO2_SRC_SCALE).setVisible(false).setTint(edge.tint);
+    this.rigShadow.add(this.heroFullShadow);
+    this.heroFull = this.add.image(0, 15, "__DEFAULT").setOrigin(0.5, 1)
+      .setScale(HERO2_SRC_SCALE).setVisible(false);
+    this.rigRoot.add(this.heroFull);
+  }
+
+  /** PK-R6 · H3 · standing at a walkable edge? (the teeter's trigger). True
+   *  when he is grounded-standing and the tile ahead-below his leading foot
+   *  has no floor — the classic look-before-you-step probe, read from the
+   *  same grid the collider reads. Presentation-only: no sim state moves. */
+  private heroAtEdge(): boolean {
+    if (this.player.pose !== "stand" || !this.player.grounded) return false;
+    const c = Math.floor((fromSubs(this.player.x) + this.player.facing * (TILE * 0.6)) / TILE);
+    const r = Math.floor(fromSubs(this.player.y) / TILE);
+    const below = glyphAt(this.grid, c, r);
+    const below2 = glyphAt(this.grid, c, r + 1);
+    return !isSolid(below) && !isSlope(below) && !isSolid(below2);
   }
 
   /**

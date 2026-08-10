@@ -124,3 +124,69 @@ export const hairStemFor = (pose: PlayerPose, vxSubs: number): string =>
   Math.abs(vxSubs) > 300 || pose === "fall" || pose === "hover" ? "hair_wind" : "hair_still";
 
 export const ROTOR_STEMS = ["rotor_a", "rotor_b", "rotor_c"] as const;
+
+// ── PK-R6 · H3 · THE FULL-POSE OVERRIDE (hero v2) ────────────────────────────
+// Two rounds of blind critics judged the composed rig's locomotion silhouettes
+// and did not budge: „run cycle is nearly the same silhouette as idle",
+// „landing shows no squash", „facial expression frozen". The part rig CAN'T fix
+// that — its one body cell per state is the ceiling. batch-ap's hero_rig_v2
+// paints the answer as FULL-BODY cells: a four-frame run with real leg
+// extension, a jump arc ending in an authored landing squash, per-state faces,
+// and the ledge teeter. This override draws those cells whole for the core
+// locomotion states and hands everything else (hang, swing, vine, hover,
+// charge) back to the composed rig, which remains the identity source.
+
+/** v2 cells are authored ≈423 px tall at idle → the same ~35-logical-px read
+ *  as the composed rig. One dial, same law as RIG_SRC_SCALE. */
+export const HERO2_SRC_SCALE = 35 / 423;
+
+/** One run frame per this many ticks of the walk clock — four frames ≈ 600 ms
+ *  per full stride cycle at 60 Hz, the cadence the sim's run speed reads as. */
+export const HERO2_STRIDE_TICKS = 9;
+
+/** |vy| (subs/tick) under which a jump arc reads as its weightless apex. */
+export const HERO2_APEX_VY = 40;
+
+/** The teeter alternates its two cells at this period (presentation clock). */
+export const HERO2_TEETER_TICKS = 28;
+
+export const HERO2_STEMS = [
+  "hero2_run0", "hero2_run1", "hero2_run2", "hero2_run3",
+  "hero2_jump", "hero2_apex", "hero2_fall", "hero2_land",
+  "hero2_idle", "hero2_hit", "hero2_cheer",
+  "hero2_teeter0", "hero2_teeter1",
+] as const;
+// hero2_det is imported as a spare (the run cells already carry determination).
+
+/**
+ * Which v2 full-body cell this frame wears — or null, meaning „compose the
+ * part rig as before". Pure: same inputs, same cell, so a replayed tape draws
+ * the same hero. Priority mirrors the part rig's own event order: the cheer is
+ * a whole-body event, a hit is happening TO him, the touchdown is a real event,
+ * and only then does locomotion speak.
+ */
+export const heroFullCell = (
+  pose: PlayerPose,
+  walkTime: number,
+  vySubs: number,
+  landedAgo: number,
+  cheering: boolean,
+  atEdge: boolean,
+  tick: number,
+): string | null => {
+  if (cheering) return "hero2_cheer";
+  if (pose === "hit") return "hero2_hit";
+  if (isLanding(pose, landedAgo)) return "hero2_land";
+  if (pose === "jump" || pose === "fall") {
+    if (Math.abs(vySubs) < HERO2_APEX_VY) return "hero2_apex";
+    return pose === "jump" ? "hero2_jump" : "hero2_fall";
+  }
+  if (pose === "run" || pose === "walk") {
+    return `hero2_run${Math.floor(walkTime / HERO2_STRIDE_TICKS) % 4}`;
+  }
+  if (pose === "stand") {
+    if (atEdge) return `hero2_teeter${Math.floor(tick / HERO2_TEETER_TICKS) % 2}`;
+    return "hero2_idle";
+  }
+  return null; // hover, charge, hang, vine, swing — the composed rig's states
+};

@@ -10,7 +10,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { GLYPH_STEMS, HERO_STEMS, entitySkinStems, guardianSkinStems } from "../packages/game-paint/src/artManifest.ts";
+import { GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, entitySkinStems, guardianSkinStems } from "../packages/game-paint/src/artManifest.ts";
 import { COMPOSITION, PLACEHOLDER_UNTIL, compositionStems, isPlaceholderStem } from "../packages/game-paint/src/composition.ts";
 import { CHALK_PROJECTILE_STEMS } from "../packages/game-paint/src/entities.ts";
 import { keyFringe, readPng } from "./key-fringe.mjs";
@@ -74,6 +74,7 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
       if (spec) for (const stem of compositionStems(spec)) need(stem, `${f} ${ph.id} composition`);
     }
     for (const stem of HERO_STEMS) need(stem, "hero rig");
+    for (const stem of HERO2_STEMS) need(stem, "hero v2 override (PK-R6 H3)");
   }
 }
 

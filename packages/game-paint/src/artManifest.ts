@@ -50,6 +50,17 @@ export const GUARDIAN_RIG_CELLS = [
 export const guardianSkinStems = (skin: string): string[] =>
   GUARDIAN_RIG_CELLS.map((c) => `${skin}_${c}`);
 
+/** PK-R6 · H3 · the hero's FULL-POSE override cells (batch-ap hero_rig_v2,
+ *  consumed by rigSpec.heroFullCell). Required: the core locomotion states
+ *  read from these now, and a missing one would silently fall back to the
+ *  composed rig mid-run — one frame in another body. */
+export const HERO2_STEMS = [
+  "hero2_run0", "hero2_run1", "hero2_run2", "hero2_run3",
+  "hero2_jump", "hero2_apex", "hero2_fall", "hero2_land",
+  "hero2_idle", "hero2_hit", "hero2_cheer",
+  "hero2_teeter0", "hero2_teeter1",
+];
+
 /** The hero rig (rigSpec contract, 19 stems). */
 export const HERO_STEMS = [
   "head_neutral", "head_blink", "head_determined", "head_hurt", "head_celebrate",

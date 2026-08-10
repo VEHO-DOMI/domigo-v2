@@ -814,7 +814,7 @@ function Overlay({
     // line that wraps no longer runs back under its own picture.
     const item = (key: string, icon: PaintedIconName, text: React.ReactNode): React.ReactElement => (
       <span key={key} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-        <span style={{ display: "flex", marginTop: 1 }}><PaintedIcon name={icon} size={19} /></span>
+        <span style={{ display: "flex", marginTop: 1 }}><PaintedIcon name={icon} size={19} art={art} /></span>
         <span>{text}</span>
       </span>
     );
@@ -887,7 +887,7 @@ function Overlay({
         <h2 style={{ fontSize: 19, lineHeight: 1.15, margin: "0 0 10px", color: "#3a2f1c", fontFamily: "var(--font-display, inherit)", display: "flex", gap: 9, alignItems: "center" }}>
           {/* the torn page itself, painted — it was an emoji scroll, which is
               the one picture a card about a page out of THIS book may not use */}
-          <PaintedIcon name="rule" size={26} />
+          <PaintedIcon name="rule" size={26} art={art} />
           <span>{o.tip?.topicDe}</span>
         </h2>
         <p style={{ fontSize: 16, lineHeight: 1.45, margin: "0 0 14px", color: "#4a4030" }}>{o.tip?.merksatzDe}</p>
