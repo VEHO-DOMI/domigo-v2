@@ -276,3 +276,68 @@ it("the chapter's letter total is the three phases plus the arena, never the Kle
 it("the magnet field is Keen's 1.6 tiles, in THIS world's tile", () => {
   expect(MAGNET_FIELD_PX).toBe(TILE * 1.6);
 });
+
+// ── R5-A2 · the Kleckskammer round-trip (doc 45): the letter ledger ──────────
+describe("R5-A2 · spawnCell + letterLedger (the bonus trip loses nothing)", () => {
+  const collectAt = (sim: Sim, c: number, r: number, taken: string[]): void => {
+    sim.warp(c, r);
+    const before = sim.lettersGot;
+    for (let t = 0; t < 120 && sim.lettersGot === before; t++) {
+      for (const ev of sim.step(IDLE_PAD)) if (ev.type === "letterTaken") taken.push(`${ev.c},${ev.r}`);
+    }
+    expect(sim.lettersGot, `a letter near (${c},${r}) should have been magneted in`).toBe(before + 1);
+  };
+
+  it("taken cells stay taken, purse and found survive, the spawn is the door", () => {
+    // live run A: collect two letters on the real p1, pay Klecks one
+    const a = newSim("p1");
+    const taken: string[] = [];
+    collectAt(a, 7, 16, taken);
+    collectAt(a, 38, 16, taken);
+    expect(a.spendLetters(1)).toBe(true);
+    expect(a.lettersGot).toBe(1);
+    expect(a.lettersCollected).toBe(2); // found is monotone — paying un-finds nothing
+
+    // remount B with the ledger, returning AT the first letter's cell: if the
+    // consumed cell respawned, the magnet would re-collect it instantly
+    const b = new Sim({
+      level, phaseId: "p1",
+      grantedAbilities: () => [...level.abilities],
+      freedCageIds: () => [],
+      spawnCell: { c: 7, r: 16 },
+      letterLedger: () => ({ takenCells: taken, purse: a.lettersGot, found: a.lettersCollected }),
+    });
+    expect(b.player.x).toBe((7 * TILE + TILE / 2) * SUBS); // the door, not the S
+    expect(b.lettersGot).toBe(1);
+    expect(b.lettersCollected).toBe(2);
+    expect(b.lettersTotal).toBe(a.lettersTotal); // consumed cells still COUNT
+    let reTaken = 0;
+    for (let t = 0; t < 90; t++) for (const ev of b.step(IDLE_PAD)) if (ev.type === "letterTaken") reTaken++;
+    expect(reTaken, "a consumed letter cell must not be re-collectable").toBe(0);
+  });
+
+  it("spawning ON a door seeds its cooldown — and standing there NEVER re-fires it", () => {
+    const c = new Sim({
+      level, phaseId: "p1",
+      grantedAbilities: () => [...level.abilities],
+      freedCageIds: () => [],
+      spawnCell: { c: 61, r: 16 }, // p1-door stands at c61 on the floor
+      letterLedger: () => ({ takenCells: [], purse: 0, found: 0 }),
+    });
+    expect(c.world.entities.find((e) => e.id === "p1-door")!.state).toBe("cooling");
+    // R5 verify wave: the timer-only re-arm fired again at tick 92 with the
+    // child still standing on the door — held contact must never re-ask
+    const evs: string[] = [];
+    for (let t = 0; t < 300; t++) for (const ev of c.step(IDLE_PAD)) evs.push(ev.type);
+    expect(evs).not.toContain("doorTouched");
+    // …but stepping off and coming back asks again (the door still works)
+    c.warp(57, 16);
+    for (let t = 0; t < 5; t++) c.step(IDLE_PAD);
+    c.warp(61, 16);
+    const back: string[] = [];
+    for (let t = 0; t < 30; t++) for (const ev of c.step(IDLE_PAD)) back.push(ev.type);
+    // the exit door re-asks as its door-series TASK (doorTouched is consumed
+    // sim-internally there) — either event proves the door re-armed
+    expect(back.some((t) => t === "doorTouched" || t === "task")).toBe(true);
+  });
+});

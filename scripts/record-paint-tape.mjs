@@ -213,17 +213,23 @@ const PILOTS = {
   },
   // p3 „Der Schulhof-Garten": RIDE THE SLIDE (the z run from c10,r15 down to
   // c15,r20 — expect ~6 px/t on the descent, not the 2.25 walk), then the ink
-  // pond at c30-40 which is crossed on the ruler platform (p3-ruler sweeps
-  // c33→c39 at r17). Boarding is CLOSED LOOP on the ruler's own position
-  // (A-3), never a tick count — the platform's phase depends on every tick
-  // spent upstream, so a counted wait would be brittle by construction.
+  // pond at c30-40 which is crossed on the ruler platform (R5-A4: p3-ruler
+  // sweeps c31→c39 at r17, so both banks are in reach). Boarding is CLOSED
+  // LOOP on the ruler's own position (A-3), never a tick count — the
+  // platform's phase depends on every tick spent upstream, so a counted wait
+  // would be brittle by construction. R5: the wait targets the WEST
+  // TURNAROUND (c31) — any mid-sweep column is crossed in both directions,
+  // and boarding a west-bound ruler is a coin-flip into the ink.
   p3: {
     abilities: ["jump", "run"],
     program: [
       ["walkTo", 9], ["settle"], // to the lip of the chalk slide
       ["hold", { right: true }, 90], ["settle"], // ride it down to c15,r20
-      ["walkTo", 29], ["settle"], // along the yard floor to the pond edge
-      ["waitPlatformAt", "p3-ruler", 33.0, 0.5], // let the ruler come to us
+      // R5-A4: two columns further left than before — the ruler's west
+      // turnaround moved c33→c31, and the boarding arc is calibrated to meet
+      // it exactly there (from c30 the arc overflies it into the ink)
+      ["walkTo", 28], ["settle"],
+      ["waitPlatformAt", "p3-ruler", 31.0, 0.5], // its west turnaround
       ["jump", { dir: "right", hold: 18 }], ["settle"], // board it
       ["rideUntil", "p3-ruler", 38.5, 0.5], // ride across the ink
       ["jump", { dir: "right", hold: 18 }], ["settle"], // off onto the far bank

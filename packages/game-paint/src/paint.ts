@@ -77,16 +77,21 @@ export const PAINT = {
   knockFastVy: -6 * 256, // D
   iframeTicks: 120, // D: ~2s invulnerability after a hit
 
-  // ── the bouncer (plum-law) ─────────────────────────────────────────────────
-  bouncerVy: -5 * 256, // D: free bounce
-  bouncerRiddenVy: -3 * 256, // D: while the player rides it
-
   // ── camera ─────────────────────────────────────────────────────────────────
   camEaseDiv: 4, // D: scroll eases toward target by /4 per tick
   camMinSpeed: 3 * 256, // D: minimum follow speed once moving
   camAheadTiles: 4, // T: look-ahead — mover sits a third off-center
   camVertBandPct: 57, // D: vertical rest line ≈ 57% of view height
   camVertThresholdPx: TILE, // D: vertical follow engages past ±1 tile
+
+  // ── the screen box (W0-F7) ─────────────────────────────────────────────────
+  // The player is boxed inside the visible screen. ONE pair, two readers:
+  // sim.ts clamps the centre to [camX + left, camX + LOGICAL_W − right], and
+  // level.ts derives from it which world-edge columns a centre can never
+  // enter (R5-A7 — the reachability model must know the walls the camera
+  // builds, or it blesses cells only a ghost could stand in).
+  screenBoxLeftPx: 20,
+  screenBoxRightPx: 36,
 
   // ── entity activation ──────────────────────────────────────────────────────
   activationMarginPx: 60, // D: awake within ~1 screen + 60px hysteresis

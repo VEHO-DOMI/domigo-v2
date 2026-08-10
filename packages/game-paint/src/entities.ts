@@ -14,7 +14,7 @@
  * guardian machine here.
  */
 import { PAINT, SUBS, TILE } from "./paint.ts";
-import { groundSurfaceAt, walkSurfaceAhead } from "./collide.ts";
+import { glyphAt, groundSurfaceAt, isSolid, walkSurfaceAhead } from "./collide.ts";
 import { flightUnitAt, knotIndex, pathForKnot } from "./flight.ts";
 import type { EntitySpec, LinkSpec } from "./level.ts";
 
@@ -203,6 +203,13 @@ export const AWAKEN_ROUNDS = 6;
  *  before the Freudenrunde. Her own painted beat (`merle_settle0/1`): the
  *  moment of coming back to herself, which the joy would otherwise cut off. */
 export const SETTLE_TICKS = 54;
+/** How long a burst cage throws itself open, in ticks (≈270 ms at the 60 Hz
+ *  contract; formerly anim.ts, re-exported there). R5-A8: the burst is a BEAT,
+ *  not a resting state — its art shows the captive mid-escape, so after this
+ *  window stepRedeemed settles the cage into `open` (the captive-free resting
+ *  pair). The sim's post-burst hold (Sim.holdTicks) and the scene's pop
+ *  (PaintScene.cagePopT) read the same number, so drawn = played. */
+export const CAGE_OPEN_TICKS = 16;
 /** Once settled at home a freed classmate WAVES now and then, so a friend who
  *  stays for the rest of the chapter reads as present rather than parked
  *  (doc 44 §1: redemption changes state, never presence). */
@@ -241,6 +248,10 @@ const stepRedeemed = (e: EntityState): void => {
     else if (e.state === "wave" && e.timer > WAVE_TICKS) { e.state = "rest"; e.timer = 0; }
     return;
   }
+  // R5-A8: the burst is a BEAT — once the throw-open played, the cage rests
+  // `open` (anim keeps burst for skins without open art, and the remount
+  // spawns freed cages as `open` directly, so a bonus trip never replays it).
+  if (e.role === "cage" && e.state === "burst" && e.timer > CAGE_OPEN_TICKS) e.state = "open";
   if (!JOY_ROLES.has(e.role)) return; // static-state beings hold their cell
   const { rx, ry, lift } = joyRadiusPx(e.role);
   if (e.state === "joy") {
@@ -453,13 +464,22 @@ export const DIP_TICKS = 36;
 export const SINK_SPEED = Math.round(1.1 * SUBS);
 
 export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWorld => ({
-  entities: specs.map((s) => ({
+  entities: specs.map((s) => {
+    const cellX = (s.c * TILE + TILE / 2) * SUBS;
+    const cellY = (s.r + 1) * TILE * SUBS;
+    // R5-A4: a kinematic platform spawns ON its path. The swing's path hangs
+    // rope-length under the author cell — spawning at the cell popped the bob
+    // down 40 px in its first tick (and spiked the ride delta with it).
+    const p0 = s.role === "platform.move" || s.role === "platform.swing"
+      ? platformPathAt(s.role, cellX, cellY, s.params ?? {}, 0)
+      : null;
+    return {
     id: s.id,
     role: s.role,
     skin: s.skin,
     tier: s.tier,
-    x: (s.c * TILE + TILE / 2) * SUBS,
-    y: (s.r + 1) * TILE * SUBS,
+    x: p0 === null ? cellX : p0.x,
+    y: p0 === null ? cellY : p0.y,
     vx: 0,
     vy: 0,
     dir: -1,
@@ -474,8 +494,8 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
       : s.role.startsWith("platform") ? "carry" : s.role === "guardian" ? "fly" : "patrol",
     timer: 0,
     hp: s.role === "cage" ? 2 : s.role === "guardian" ? GUARDIAN_SCRIPT[s.tier].knots : 1,
-    homeX: (s.c * TILE + TILE / 2) * SUBS,
-    homeY: (s.r + 1) * TILE * SUBS,
+    homeX: cellX,
+    homeY: cellY,
     redeemed: false,
     hidden: s.params?.hidden === true,
     dodges: 0,
@@ -484,7 +504,8 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     awakenStep: 0,
     freedTick: 0,
     params: s.params ?? {},
-  })),
+    };
+  }),
   projectiles: [],
   links,
   nextProjectileId: 1,
@@ -582,9 +603,12 @@ export const platformPathAt = (
   const rope = Number(params.ropePx ?? 48);
   const period = Number(params.periodTicks ?? 180);
   const a = Math.sin((tick % period) / period * Math.PI * 2) * 0.9;
+  // R5-A4: a pendulum bob RISES toward its turn-points (cos flattens the
+  // rope). The old extra minus sign dipped it DOWN there instead — the
+  // visible end-of-arc jerk on p3's upper mover.
   return {
     x: homeX + Math.round(Math.sin(a) * rope * SUBS),
-    y: homeY + Math.round((Math.cos(a) - 1) * -rope * SUBS * 0.25) + rope * SUBS,
+    y: homeY + rope * SUBS + Math.round((Math.cos(a) - 1) * rope * SUBS * 0.25),
     period,
   };
 };
@@ -717,16 +741,31 @@ export const stepEntities = (
         break;
       }
       case "bouncer": {
+        // R5-A3 · the bouncer contract (doc 45): (1) land only by CROSSING a
+        // surface — the same law moveBody holds the player to. The forgiving
+        // probe scans from one row ABOVE the feet, so a sideways drift under a
+        // higher column used to SNAP him up onto it; along rising terrain that
+        // ratchet carried him off the top of the screen. (2) The horizontal
+        // step probes the wall ahead EVERY tick, air included — the arc used
+        // to be contract-free, so he drifted through columns and was then
+        // lifted on top of them.
+        const prevY = e.y;
         e.vy += GRAVITY;
         e.y += e.vy;
         const g = groundAt(grid, e.x, e.y);
-        if (g !== null && e.y >= g && e.vy > 0) {
+        if (g !== null && e.vy > 0 && prevY <= g && e.y >= g) {
           e.y = g;
           e.vy = -BOUNCE_UP;
           const aheadG = walkAheadAt(grid, e, e.x + 20 * SUBS * e.dir);
           if (aheadG === null) e.dir = (e.dir * -1) as 1 | -1;
         }
-        e.x += Math.round(0.5 * SUBS) * e.dir;
+        const step = Math.round(0.5 * SUBS) * e.dir;
+        const edgeC = Math.floor(((e.x + step) / SUBS + 10 * e.dir) / TILE);
+        const feetPx = e.y / SUBS;
+        const blocked = isSolid(glyphAt(grid, edgeC, Math.floor((feetPx - 4) / TILE))) ||
+          isSolid(glyphAt(grid, edgeC, Math.floor((feetPx - 14) / TILE)));
+        if (blocked) e.dir = (e.dir * -1) as 1 | -1;
+        else e.x += step;
         break;
       }
       case "crusher": {
@@ -845,7 +884,14 @@ export const stepEntities = (
         if (overlapsPlayer(e, inp, 12, 26) && e.state !== "cooling") {
           e.state = "cooling"; e.timer = 0;
           events.push({ type: "doorTouched", id: e.id, kind: String(e.params.kind ?? "exit") });
-        } else if (e.state === "cooling" && e.timer > 90) e.state = "patrol";
+        } else if (e.state === "cooling" && e.timer > 90 && !overlapsPlayer(e, inp, 12, 26)) {
+          // R5-A2 (critic finding): a door re-arms only once the child has
+          // STEPPED OFF it — returning from the Kleckskammer spawns ON the
+          // door, and a timer-only re-arm reopened the pay card every ~1.5 s
+          // over an empty purse. Same law as the ↑ rising edge (PK-R6 C1):
+          // held contact never re-asks.
+          e.state = "patrol";
+        }
         break;
       }
       case "guardian": {

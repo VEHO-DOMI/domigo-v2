@@ -147,10 +147,100 @@ describe("reachability (the honest movement envelope)", () => {
       "###..........###",
       "################",
     ];
-    const noRing = reachableCells(rows.map((r) => r.replace("o", ".")), ["jump", "hover"]);
-    expect(noRing.has("14,4")).toBe(false); // 10 columns > the hover envelope
-    const withRing = reachableCells(rows, ["jump", "hover"]);
-    expect(withRing.has("14,4")).toBe(true);
+    // R5-A7: col 13, not 14 — the screen box (sim W0-F7) walls off the last
+    // two columns, and the model now knows it. And the ring bridges only for
+    // a child who HOLDS the swing verb: sim.ts passes ringAt gated on the
+    // ability, so an ability-less model reach was a lie.
+    const noRing = reachableCells(rows.map((r) => r.replace("o", ".")), ["jump", "hover", "swing"]);
+    expect(noRing.has("13,4")).toBe(false); // 10 columns > the hover envelope
+    const withRing = reachableCells(rows, ["jump", "hover", "swing"]);
+    expect(withRing.has("13,4")).toBe(true);
+    const noVerb = reachableCells(rows, ["jump", "hover"]);
+    expect(noVerb.has("13,4")).toBe(false); // the ring is scenery without swing
+  });
+
+  it("R5-A7 · path-honest edges: no fall through backing, no jump through walls, no ghost columns", () => {
+    // a fully walled pocket under the start platform — the old fall edge
+    // tunnelled straight through the floor underfoot (the shipped-p3 class
+    // behind doc 45 A7's sealed G)
+    const pocket = [
+      "................",
+      "..S.............",
+      ".#####..........",
+      "..#..#..........",
+      "..#..#..........",
+      "..#..#..........",
+      "################",
+    ];
+    const sealed = reachableCells(pocket, ["jump"]);
+    expect(sealed.has("3,5"), "the pocket floor is sealed — reaching it means tunnelling").toBe(false);
+    expect(sealed.has("4,5")).toBe(false);
+
+    // a full-height wall between start and a shelf within jump range: the old
+    // jump edge tunnelled it
+    const walled = [
+      "....#...........",
+      "....#...........",
+      "..S.#...........",
+      "....#..##.......",
+      "....#...........",
+      "################",
+    ];
+    const w2 = reachableCells(walled, ["jump"]);
+    expect(w2.has("7,2"), "no jump through a full-height wall").toBe(false);
+    expect(w2.has("8,2")).toBe(false);
+
+    // column 0 and the last two columns: the screen box makes them
+    // physically unenterable — a treasure there is a ghost
+    const edges = [
+      "................",
+      "..S.............",
+      "################",
+    ];
+    const e2 = reachableCells(edges, ["jump"]);
+    expect(e2.has("0,1"), "column 0 is outside the screen box").toBe(false);
+    expect(e2.has("14,1"), "the second-to-last column too").toBe(false);
+    expect(e2.has("13,1")).toBe(true); // the box ends exactly there
+  });
+
+  it("R5-A7 (verify wave) · the fall sweeps a CONE — no horizontal tunnel, no head-slot", () => {
+    // a full-height wall right of the start; a chamber floor behind it —
+    // the old landing-column-only check let the drift tunnel THROUGH the wall
+    const walled = [
+      "................",
+      "..S..#..........",
+      ".....#..........",
+      ".....#..........",
+      ".....#..........",
+      ".....#..........",
+      "################",
+    ];
+    const w = reachableCells(walled, ["jump"]);
+    expect(w.has("7,5"), "no fall-drift through a full wall").toBe(false);
+    expect(w.has("9,5")).toBe(false);
+
+    // a 1-tile slot at standing height: the body is TWO tiles — the old
+    // foot-row-only crossing squeezed through it
+    const slot = [
+      "....##..........",
+      "..S.............",
+      "################",
+    ];
+    const s = reachableCells(slot, ["jump"]);
+    expect(s.has("6,1"), "no crossing through a one-tile head slot").toBe(false);
+
+    // …and drifting AROUND a ledge beside the drop stays legal (the cone
+    // opens with depth — author-generous, physics-honest)
+    const around = [
+      "................",
+      "..S.............",
+      "####............",
+      "................",
+      "................",
+      "################",
+    ];
+    const a = reachableCells(around, ["jump"]);
+    expect(a.has("2,4"), "dropping around one's own ledge is legal").toBe(true);
   });
 
   it("standable respects support and headroom (the world edge is solid)", () => {

@@ -230,6 +230,29 @@ describe("PK-R6 · D · the reawakening sequence", () => {
     expect(taskOf(stepAndSettleHint(sim, pad({ up: true })))).toBeNull();
   });
 
+  it("R5-A8 · a remounted freed cage rests `open` — the burst beat never replays", () => {
+    const sim = newSim(["cage-merle"]);
+    const cage = sim.world.entities.find((e) => e.id === "cage-merle")!;
+    expect(cage.redeemed).toBe(true);
+    expect(cage.state).toBe("open");
+    for (let t = 0; t < 40; t++) sim.step(pad());
+    expect(cage.state).toBe("open"); // and stays at rest
+  });
+
+  it("R5-A8 · the burst is a BEAT: it plays in full, then the cage settles open", () => {
+    const sim = newSim();
+    const req = taskOf(openTheCage(sim))!; // burst + the round-1 card
+    const cage = sim.world.entities.find((e) => e.id === "cage-merle")!;
+    expect(cage.state).toBe("burst");
+    // under the card, the hold runs the beat exactly to its end — drawn = played
+    for (let t = 0; t < CAGE_OPEN_TICKS * 2; t++) sim.step(pad());
+    expect(cage.state).toBe("burst");
+    // the first free-running ticks after the child puts the card down retire it
+    sim.dismissTask(req.ctx);
+    for (let t = 0; t < 3; t++) sim.step(pad());
+    expect(cage.state).toBe("open");
+  });
+
   it("the cage she stepped out of is drawn OPEN, never with her still in it", () => {
     // found in the running game: a redeemed cage fell through to the `dazed`
     // catch-all, which has no cell, which fell back to `pencilcase_a` — the
@@ -238,6 +261,12 @@ describe("PK-R6 · D · the reawakening sequence", () => {
     expect(entPoseCell({ role: "cage", state: "burst", timer: 0, redeemed: true, vx: 0, vy: 0, x: 0, homeX: 0 })).toBe("burst");
     expect(entPoseCell({ role: "cage", state: "closed", timer: 0, redeemed: false, vx: 0, vy: 0, x: 0, homeX: 0 })).toBe("a");
     expect(entPoseCell({ role: "cage", state: "shaking", timer: 0, redeemed: false, vx: 0, vy: 0, x: 0, homeX: 0 })).toBe("shake");
+    // R5-A8: the resting `open` state bobs over the captive-free pair…
+    const restCells = new Set(Array.from({ length: 120 }, (_, t) =>
+      entPoseCell({ role: "cage", state: "open", timer: t, redeemed: true, hasOpen: true, vx: 0, vy: 0, x: 0, homeX: 0 })));
+    expect(restCells).toEqual(new Set(["open0", "open1"]));
+    // …and a skin without the pair falls back to burst — never to the closed `_a`
+    expect(entPoseCell({ role: "cage", state: "open", timer: 0, redeemed: true, vx: 0, vy: 0, x: 0, homeX: 0 })).toBe("burst");
   });
 
   it("the pose the card declares is the state the world puts her in", () => {

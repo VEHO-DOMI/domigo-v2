@@ -71,13 +71,12 @@ import { SUBS } from "./paint.ts";
 export const WASH_ALPHA = 0.72;
 
 /** PK-R6 · H1 · how long a burst cage throws itself open, in ticks (≈270 ms at
- *  the 60 Hz contract). ONE number with two readers: the renderer shapes the pop
- *  from it (PaintScene.cagePopT) and the sim keeps the world running for exactly
- *  that long after a burst (Sim.holdTicks), so the beat can never be drawn for
- *  longer than it is played — which is precisely what happened when the two were
- *  separate: the card froze the world on the burst tick and the cage stood
- *  squashed and tilted behind it, forever. */
-export const CAGE_OPEN_TICKS = 16;
+ *  the 60 Hz contract). ONE number, now with three readers: the renderer shapes
+ *  the pop from it (PaintScene.cagePopT), the sim keeps the world running for
+ *  exactly that long after a burst (Sim.holdTicks), and stepRedeemed retires the
+ *  burst into the resting `open` state when the beat has played (R5-A8) — which
+ *  is why it now lives in entities.ts, where that transition runs. */
+export { CAGE_OPEN_TICKS } from "./entities.ts";
 
 /** THE LUMINANCE a drained pixel keeps, Rec. 709 — the same coefficients the
  *  CSS `grayscale()` filter matrix uses, which is the whole point: the world's
@@ -602,7 +601,11 @@ export const entPoseCell = (e: EntPoseInput): string => {
     // PK-R6 · H3: the batch-ap climax painting gives the freed pencilcase a
     // RESTING open state (lid up, bars sprung, calm) — the burst stays the
     // throw-open beat, and a cage without open art keeps burst as before.
-    if (e.redeemed && e.state !== "burst" && e.hasOpen === true) return "open0";
+    // R5-A8: the rest state is now reachable (stepRedeemed retires the burst
+    // after CAGE_OPEN_TICKS) and bobs over the open pair. `hasOpen` guarantees
+    // BOTH frames (PaintScene) — entTex falls back to `_a`, the closed cage
+    // with the captive, on any missing cell, which is the exact defect class.
+    if (e.redeemed && e.state === "open" && e.hasOpen === true) return `open${bobFrame(e.timer, 2)}`;
     if (e.state === "burst" || e.redeemed) return "burst";
     if (e.state === "shaking") return "shake";
   }

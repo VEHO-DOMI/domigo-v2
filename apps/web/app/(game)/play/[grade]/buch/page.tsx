@@ -17,10 +17,10 @@ export default async function BuchPage({
   searchParams,
 }: {
   params: Promise<{ grade: string }>;
-  searchParams: Promise<{ phase?: string }>;
+  searchParams: Promise<{ phase?: string; grid?: string }>;
 }) {
   const { grade: gradeStr } = await params;
-  const { phase } = await searchParams;
+  const { phase, grid } = await searchParams;
   if (gradeStr !== "1") redirect("/home");
   // pre-release gate with the teacher door (the run/world posture)
   const teacher = await getTeacherForPage();
@@ -42,6 +42,8 @@ export default async function BuchPage({
   // the whole game down instead of just starting at phase one.
   const known = new Set(allPhases(level).map((p) => p.id));
   const startPhase = teacher !== null && phase !== undefined && known.has(phase) ? phase : undefined;
+  // R5-A6: the picture-vs-grid instrument, gated exactly like the phase door
+  const debugGrid = teacher !== null && grid === "1";
 
   return (
     <main style={{ padding: "12px 8px", background: "#f3ead6", minHeight: "100vh" }}>
@@ -52,6 +54,7 @@ export default async function BuchPage({
         hubHref={`/play/${gradeStr}`}
         buildSha={process.env.VERCEL_GIT_COMMIT_SHA}
         startPhase={startPhase}
+        debugGrid={debugGrid}
       />
     </main>
   );

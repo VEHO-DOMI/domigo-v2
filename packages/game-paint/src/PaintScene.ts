@@ -219,6 +219,9 @@ const LETTER_SHADOW_TINT = 0x2a2333;
 export interface PaintCallbacks {
   onExit: (next: string) => void;
   onLetters: (got: number, total: number) => void;
+  /** R5-A2: a letter CELL was consumed — the shell's ledger records it so a
+   *  phase remount cannot respawn it. */
+  onLetterTaken?: (c: number, r: number) => void;
   onTask: (req: TaskRequest) => void;
   onPowerup: (grants: string) => void;
   onCageFreed: (id: string, skin: string, classmate: string | undefined, freedCount: number) => void;
@@ -248,6 +251,12 @@ export interface PaintSceneCfg {
   cageHintShown?: () => boolean;
   /** PK-R3b · R3-16: Regel-Seiten / Bonus-Bücher already taken this chapter. */
   collectedPickupIds?: () => readonly string[];
+  /** R5-A2: the Kleckskammer round-trip — spawn override + surviving letter
+   *  state (see SimCfg; the scene only forwards). */
+  spawnCell?: { c: number; r: number };
+  letterLedger?: () => { takenCells: readonly string[]; purse: number; found: number };
+  /** R5-A6: draw the collision grid over the world (teacher door, ?grid=1). */
+  debugGrid?: boolean;
   /** PB-F2 jump-feel candidate (dev only; undefined = the shipped model). */
   airModel?: AirModel;
 }
@@ -876,6 +885,8 @@ export class PaintScene extends Phaser.Scene {
       cageHintShown: cfg.cageHintShown,
       collectedPickupIds: cfg.collectedPickupIds,
       airModel: cfg.airModel,
+      spawnCell: cfg.spawnCell,
+      letterLedger: cfg.letterLedger,
     });
   }
 
@@ -892,6 +903,21 @@ export class PaintScene extends Phaser.Scene {
     this.buildTerrain();
     this.buildProps();
     this.buildRig();
+    // R5-A6 · the picture-vs-grid instrument (teacher door, ?grid=1): outline
+    // every cell the collision owns, in world space. A Schein-Lücke — drawn
+    // matter and claimed matter telling different stories — shows in one
+    // glance, without reading JSON against a screenshot.
+    if (this.cfg.debugGrid === true) {
+      const dbg = this.add.graphics().setDepth(90);
+      for (const [r, row] of this.sim.grid.entries()) {
+        for (let c = 0; c < row.length; c++) {
+          const g = row[c] ?? ".";
+          if (g === "." || g === "S") continue;
+          const colour = isSolid(g) ? 0xff3333 : isSlope(g) ? 0x3355ff : g === "w" ? 0x33ccff : 0xcc8800;
+          dbg.lineStyle(1, colour, 0.85).strokeRect(c * TILE, r * TILE, TILE, TILE);
+        }
+      }
+    }
     this.fistImg = this.add.image(0, 0, this.tex("hand_fist")).setScale(RIG_SRC_SCALE).setDepth(11).setVisible(false);
     this.ropeG = this.add.graphics().setDepth(9);
 
@@ -1030,6 +1056,7 @@ export class PaintScene extends Phaser.Scene {
         case "cageHint": cb.onCageHint(); break;
         case "letters": cb.onLetters(ev.got, ev.total); break;
         case "letterTaken": {
+          this.cfg.callbacks.onLetterTaken?.(ev.c, ev.r);
           const img = this.letterImgs.get(`${ev.c},${ev.r}`);
           // R3-16 · the collect beat (doc 42 §4, numbers verbatim): a burst of
           // chalk dust, then the letter rises away and fades — the letter has
@@ -1362,7 +1389,10 @@ export class PaintScene extends Phaser.Scene {
       const cell = this.entStateCell({
         ...e,
         idleFrames: this.idleFramesOf(e.skin),
-        hasOpen: this.textures.exists(`pb-${e.skin}_open0`),
+        // R5-A8: the resting open state BOBS over open0/open1 — `hasOpen`
+        // must vouch for the whole pair, because entTex falls back to `_a`
+        // (the closed cage, captive behind bars) on any missing cell.
+        hasOpen: this.textures.exists(`pb-${e.skin}_open0`) && this.textures.exists(`pb-${e.skin}_open1`),
       });
       img.setTexture(this.entTex(e.skin, cell));
       const targetH = this.entTargetH(e);
@@ -4077,7 +4107,9 @@ export class PaintScene extends Phaser.Scene {
         }
       }
     }
-    this.cfg.callbacks.onLetters(0, this.lettersTotal);
+    // R5-A2: seed the HUD from the sim, not from zero — a ledger remount
+    // starts with the purse the child left with (a fresh mount stays 0).
+    this.cfg.callbacks.onLetters(this.sim.lettersGot, this.sim.lettersTotal);
   }
 
   /** PK-R6 · H2 · the child's own edge, in THIS room (round-2 finding 1). A
