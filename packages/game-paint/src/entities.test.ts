@@ -350,6 +350,82 @@ describe("the guardian machine (G11 grammar)", () => {
   });
 });
 
+// ── R5-A3 · the bouncer contract (doc 45: "clips out of the top of the screen")
+// The forgiving groundAt probe scans from one row ABOVE the feet, so the old
+// bouncer, drifting sideways near a higher surface, was SNAPPED up onto it —
+// and his horizontal step was contract-free even in the air. Land only by
+// crossing; probe the wall ahead every tick.
+describe("R5-A3 · bouncer contract", () => {
+  const put = (base: string, at: number, glyph: string, len = 1): string =>
+    base.slice(0, at) + glyph.repeat(len) + base.slice(at + len);
+  const air = ".".repeat(40);
+  const floorRows = [air, "#".repeat(40), "#".repeat(40)];
+  const bouncer = (c: number, dir: 1 | -1 = 1) =>
+    spec({ role: "bouncer", c, r: 11, params: {}, ...(dir === -1 ? { } : {}) });
+  const FLOOR_TOP = 12 * TILE * SUBS; // feet resting on the r12 floor
+
+  it("a floating platform one tile up is a WALL, not an elevator (the up-ratchet)", () => {
+    // old code: drifting under the c12–13 shelf, the next landing snapped him
+    // THROUGH it onto its top — one rung of the ladder that carried him off-screen
+    const grid = [...Array.from({ length: 11 }, () => air), put(air, 12, "#", 2), ...floorRows.slice(1)];
+    const w = spawnEntities([bouncer(8)], []);
+    const e = w.entities[0]!;
+    let minFeet = e.y;
+    for (let t = 0; t < 2500; t++) { stepEntities(w, grid, idleInput()); minFeet = Math.min(minFeet, e.y); }
+    expect(minFeet, "never above the floor by more than his own hop").toBeGreaterThanOrEqual(FLOOR_TOP - 12 * SUBS);
+  });
+
+  it("a high bridge (3 tiles of clearance) is passed under, not turned at", () => {
+    const grid = [...Array.from({ length: 9 }, () => air), put(air, 12, "#", 2), air, air, ...floorRows.slice(1)];
+    const w = spawnEntities([bouncer(8)], []);
+    const e = w.entities[0]!;
+    let maxX = e.x;
+    for (let t = 0; t < 800; t++) { stepEntities(w, grid, idleInput()); maxX = Math.max(maxX, e.x); }
+    expect(maxX).toBeGreaterThan(15 * TILE * SUBS); // crossed beneath the bridge
+  });
+
+  it("corridor walls flip him — he never phases through solid columns", () => {
+    // walls at c5 and c15, full body height; old code walked straight through
+    const wall = (row: string): string => put(put(row, 5, "#"), 15, "#");
+    const grid = [...Array.from({ length: 8 }, () => air), wall(air), wall(air), wall(air), wall(air), ...floorRows.slice(1)];
+    const w = spawnEntities([bouncer(10)], []);
+    const e = w.entities[0]!;
+    let minX = e.x, maxX = e.x, flips = 0, lastDir = e.dir;
+    for (let t = 0; t < 3000; t++) {
+      stepEntities(w, grid, idleInput());
+      minX = Math.min(minX, e.x); maxX = Math.max(maxX, e.x);
+      if (e.dir !== lastDir) { flips++; lastDir = e.dir; }
+    }
+    expect(minX).toBeGreaterThan(5 * TILE * SUBS);
+    expect(maxX).toBeLessThan(16 * TILE * SUBS);
+    expect(flips).toBeGreaterThan(2); // it patrols the corridor, not a wall face
+  });
+
+  it("flat floor: he bounces in his lane — never sinks, never gains height", () => {
+    const grid = [...Array.from({ length: 12 }, () => air), ...floorRows.slice(1)];
+    const w = spawnEntities([bouncer(10)], []);
+    const e = w.entities[0]!;
+    for (let t = 0; t < 2000; t++) {
+      stepEntities(w, grid, idleInput());
+      expect(e.y).toBeLessThanOrEqual(FLOOR_TOP); // never inside the floor
+      expect(e.y).toBeGreaterThanOrEqual(FLOOR_TOP - TILE * SUBS); // never a tile above it
+    }
+  });
+
+  it("the ledge turn stays: he patrols his shelf and never hops off its edge", () => {
+    const shelf = put(air, 10, "#", 8); // c10–17 at r10
+    const grid = [...Array.from({ length: 10 }, () => air), shelf, ...Array.from({ length: 4 }, () => air), ...floorRows.slice(1)];
+    const w = spawnEntities([spec({ role: "bouncer", c: 13, r: 9, params: {} })], []);
+    const e = w.entities[0]!;
+    let minFeet = e.y;
+    for (let t = 0; t < 3000; t++) { stepEntities(w, grid, idleInput()); minFeet = Math.min(minFeet, e.y); }
+    expect(e.y).toBeLessThanOrEqual(10 * TILE * SUBS); // still on the shelf…
+    expect(e.x).toBeGreaterThan(10 * TILE * SUBS);
+    expect(e.x).toBeLessThan(18 * TILE * SUBS);
+    expect(minFeet).toBeGreaterThanOrEqual(10 * TILE * SUBS - TILE * SUBS); // …and never above it
+  });
+});
+
 describe("platforms + the G3 ride contract", () => {
   it("platform.move traces its waypoint triangle and exposes per-tick deltas", () => {
     const w = spawnEntities([spec({ role: "platform.move", skin: "ruler", c: 10, r: 10, params: { dxTiles: 4, periodTicks: 120 } })], []);

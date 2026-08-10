@@ -77,10 +77,6 @@ export const PAINT = {
   knockFastVy: -6 * 256, // D
   iframeTicks: 120, // D: ~2s invulnerability after a hit
 
-  // ── the bouncer (plum-law) ─────────────────────────────────────────────────
-  bouncerVy: -5 * 256, // D: free bounce
-  bouncerRiddenVy: -3 * 256, // D: while the player rides it
-
   // ── camera ─────────────────────────────────────────────────────────────────
   camEaseDiv: 4, // D: scroll eases toward target by /4 per tick
   camMinSpeed: 3 * 256, // D: minimum follow speed once moving

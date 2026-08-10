@@ -46,8 +46,6 @@ describe("the D-value lock (dossier constants — drift here must be deliberate)
     expect(PAINT.knockFastVx).toBe(5 * 256);
     expect(PAINT.knockFastVy).toBe(-6 * 256);
     expect(PAINT.iframeTicks).toBe(120);
-    expect(PAINT.bouncerVy).toBe(-5 * 256);
-    expect(PAINT.bouncerRiddenVy).toBe(-3 * 256);
     expect(PAINT.frictionNormal).toBe(6);
     expect(PAINT.frictionSlippery).toBe(3);
     expect(PAINT.camEaseDiv).toBe(4);

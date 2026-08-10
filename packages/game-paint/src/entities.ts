@@ -14,7 +14,7 @@
  * guardian machine here.
  */
 import { PAINT, SUBS, TILE } from "./paint.ts";
-import { groundSurfaceAt, walkSurfaceAhead } from "./collide.ts";
+import { glyphAt, groundSurfaceAt, isSolid, walkSurfaceAhead } from "./collide.ts";
 import { flightUnitAt, knotIndex, pathForKnot } from "./flight.ts";
 import type { EntitySpec, LinkSpec } from "./level.ts";
 
@@ -728,16 +728,31 @@ export const stepEntities = (
         break;
       }
       case "bouncer": {
+        // R5-A3 · the bouncer contract (doc 45): (1) land only by CROSSING a
+        // surface — the same law moveBody holds the player to. The forgiving
+        // probe scans from one row ABOVE the feet, so a sideways drift under a
+        // higher column used to SNAP him up onto it; along rising terrain that
+        // ratchet carried him off the top of the screen. (2) The horizontal
+        // step probes the wall ahead EVERY tick, air included — the arc used
+        // to be contract-free, so he drifted through columns and was then
+        // lifted on top of them.
+        const prevY = e.y;
         e.vy += GRAVITY;
         e.y += e.vy;
         const g = groundAt(grid, e.x, e.y);
-        if (g !== null && e.y >= g && e.vy > 0) {
+        if (g !== null && e.vy > 0 && prevY <= g && e.y >= g) {
           e.y = g;
           e.vy = -BOUNCE_UP;
           const aheadG = walkAheadAt(grid, e, e.x + 20 * SUBS * e.dir);
           if (aheadG === null) e.dir = (e.dir * -1) as 1 | -1;
         }
-        e.x += Math.round(0.5 * SUBS) * e.dir;
+        const step = Math.round(0.5 * SUBS) * e.dir;
+        const edgeC = Math.floor(((e.x + step) / SUBS + 10 * e.dir) / TILE);
+        const feetPx = e.y / SUBS;
+        const blocked = isSolid(glyphAt(grid, edgeC, Math.floor((feetPx - 4) / TILE))) ||
+          isSolid(glyphAt(grid, edgeC, Math.floor((feetPx - 14) / TILE)));
+        if (blocked) e.dir = (e.dir * -1) as 1 | -1;
+        else e.x += step;
         break;
       }
       case "crusher": {
