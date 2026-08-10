@@ -203,6 +203,13 @@ export const AWAKEN_ROUNDS = 6;
  *  before the Freudenrunde. Her own painted beat (`merle_settle0/1`): the
  *  moment of coming back to herself, which the joy would otherwise cut off. */
 export const SETTLE_TICKS = 54;
+/** How long a burst cage throws itself open, in ticks (≈270 ms at the 60 Hz
+ *  contract; formerly anim.ts, re-exported there). R5-A8: the burst is a BEAT,
+ *  not a resting state — its art shows the captive mid-escape, so after this
+ *  window stepRedeemed settles the cage into `open` (the captive-free resting
+ *  pair). The sim's post-burst hold (Sim.holdTicks) and the scene's pop
+ *  (PaintScene.cagePopT) read the same number, so drawn = played. */
+export const CAGE_OPEN_TICKS = 16;
 /** Once settled at home a freed classmate WAVES now and then, so a friend who
  *  stays for the rest of the chapter reads as present rather than parked
  *  (doc 44 §1: redemption changes state, never presence). */
@@ -241,6 +248,10 @@ const stepRedeemed = (e: EntityState): void => {
     else if (e.state === "wave" && e.timer > WAVE_TICKS) { e.state = "rest"; e.timer = 0; }
     return;
   }
+  // R5-A8: the burst is a BEAT — once the throw-open played, the cage rests
+  // `open` (anim keeps burst for skins without open art, and the remount
+  // spawns freed cages as `open` directly, so a bonus trip never replays it).
+  if (e.role === "cage" && e.state === "burst" && e.timer > CAGE_OPEN_TICKS) e.state = "open";
   if (!JOY_ROLES.has(e.role)) return; // static-state beings hold their cell
   const { rx, ry, lift } = joyRadiusPx(e.role);
   if (e.state === "joy") {

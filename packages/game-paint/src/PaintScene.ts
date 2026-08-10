@@ -1362,7 +1362,10 @@ export class PaintScene extends Phaser.Scene {
       const cell = this.entStateCell({
         ...e,
         idleFrames: this.idleFramesOf(e.skin),
-        hasOpen: this.textures.exists(`pb-${e.skin}_open0`),
+        // R5-A8: the resting open state BOBS over open0/open1 — `hasOpen`
+        // must vouch for the whole pair, because entTex falls back to `_a`
+        // (the closed cage, captive behind bars) on any missing cell.
+        hasOpen: this.textures.exists(`pb-${e.skin}_open0`) && this.textures.exists(`pb-${e.skin}_open1`),
       });
       img.setTexture(this.entTex(e.skin, cell));
       const targetH = this.entTargetH(e);

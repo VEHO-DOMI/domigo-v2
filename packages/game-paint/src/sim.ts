@@ -247,7 +247,10 @@ export class Sim {
     this.world = spawnEntities(this.phase.entities, this.phase.links);
     for (const id of cfg.freedCageIds()) {
       const e = this.world.entities.find((x) => x.id === id);
-      if (e) { e.redeemed = true; e.state = "burst"; }
+      // R5-A8: a remounted freed cage rests `open` — the burst is a beat that
+      // already played; replaying it after a Kleckskammer trip re-staged the
+      // captive art (the burst sheet still shows her mid-escape).
+      if (e) { e.redeemed = true; e.state = "open"; }
       // PK-R6 · D: a freed cage's PERSON is freed too. A phase is remounted
       // whenever the child comes back from the Kleckskammer, and without this
       // Merle would be hidden again behind a cage that is already open —
