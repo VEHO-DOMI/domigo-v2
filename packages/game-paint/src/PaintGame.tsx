@@ -184,7 +184,14 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const freedRef = useRef<string[]>([]);
   /** PK-R6 · C: of those, the ones that held a CLASSMATE (doc 44 §2.3). */
   const freedKidsRef = useRef<string[]>([]);
-  const bonusReturnRef = useRef<string | null>(null);
+  /** R5-A2: where the Kleckskammer trip left from — phase, door cell, purse
+   *  and found-count. The remount consumes it: the child returns to the spot
+   *  (and wallet) they left with, not to the phase start with an empty hand. */
+  const bonusReturnRef = useRef<{ phaseId: string; spawn: { c: number; r: number }; purse: number; found: number } | null>(null);
+  /** R5-A2: letter CELLS consumed per phase — a remount must not respawn them
+   *  into double-collectability. Same outlives-a-mount contract as the refs
+   *  below. */
+  const lettersTakenRef = useRef(new Map<string, string[]>());
   /** PB-F3: the cage hint is a once-per-chapter teacher, not a nag. */
   const cageHintShownRef = useRef(false);
   const [freedCount, setFreedCount] = useState(0);
@@ -401,6 +408,12 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     const mountPhase = (pid: string): void => {
       mountPhaseRef.current = mountPhase;
       const phase = allPhasesOf(level).find((p) => p.id === pid);
+      // R5-A2: consume the Kleckskammer return ticket — only the phase the
+      // trip left from spawns at the door with the saved wallet; every other
+      // mount is fresh (and the taken-cells ledger applies to ANY remount).
+      const ret = bonusReturnRef.current;
+      const fromBonus = ret !== null && ret.phaseId === pid;
+      if (fromBonus) bonusReturnRef.current = null;
       const scene = new PaintScene({
         level,
         phaseId: pid,
@@ -412,8 +425,19 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         cageHintShown: () => cageHintShownRef.current,
         collectedPickupIds: () => [...tipsTakenRef.current, ...booksTakenRef.current],
         airModel,
+        spawnCell: fromBonus ? ret.spawn : undefined,
+        letterLedger: () => ({
+          takenCells: lettersTakenRef.current.get(pid) ?? [],
+          purse: fromBonus ? ret.purse : 0,
+          found: fromBonus ? ret.found : 0,
+        }),
         callbacks: {
           onExit: (next) => handoff(next),
+          onLetterTaken: (c, r) => {
+            const cellKey = `${c},${r}`;
+            const cur = lettersTakenRef.current.get(pid) ?? [];
+            if (!cur.includes(cellKey)) lettersTakenRef.current.set(pid, [...cur, cellKey]);
+          },
           onLetters: (got, total) => {
             setLetters({ got, total });
             // the Bilanz counts what was FOUND, so it reads the monotone counter
@@ -544,10 +568,13 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         // PK-R3b · M-B: bank the phase we are LEAVING before its Sim is thrown
         // away. The Kleckskammer is excluded on purpose (chapterLetterTotal),
         // so a bonus run neither adds to the Bilanz nor is missed from it.
+        // R5-A2: the zeroing moved INSIDE the branch — leaving the bonus room
+        // neither banks nor zeroes; the host phase is still running and its
+        // found-count comes back through the letter ledger on the remount.
         if (level.bonus === undefined || sceneRef.current?.getState()?.phase !== level.bonus.id) {
           bankedLettersRef.current += phaseLettersRef.current;
+          phaseLettersRef.current = 0;
         }
-        phaseLettersRef.current = 0;
         if (next === "boss") target = level.arena?.id ?? "done";
         if (next === "bonus-timeout" || (level.bonus && next === level.bonus.exit.to && sceneRef.current?.getState()?.phase === level.bonus.id)) {
           // leaving the Kleckskammer (timeout or its exit): show the end card, return
@@ -556,8 +583,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             req: { use: "bonus", ctx: { type: "ceremony", beat: "bonus" } }, item: null, card: "bonusend",
             attempts: 0, typed: "", align: "center", bonusend: { got: bs?.got ?? 0, total: bs?.total ?? 12, timeout: next === "bonus-timeout" },
           });
-          target = bonusReturnRef.current ?? level.phases[0]!.id;
-          bonusReturnRef.current = null;
+          // R5-A2: mountPhase consumes the return ticket (spawn + wallet)
+          target = bonusReturnRef.current?.phaseId ?? level.phases[0]!.id;
         }
         if (target === "done") {
           // PK-R3b · M-B · THE CHAPTER-END SEQUENCE (doc 41 §5, beat 2 → 3).
@@ -654,7 +681,15 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     const game = gameRef.current;
     if (!scene || !game || !level.bonus) return;
     if (!scene.spendLetters(price)) return;
-    bonusReturnRef.current = phaseId;
+    // R5-A2: the return ticket — the door cell the child stands at (feet →
+    // cell), the purse AFTER paying, and the Bilanz found-count.
+    const st = scene.getState();
+    bonusReturnRef.current = {
+      phaseId,
+      spawn: { c: Math.round(((st?.x ?? 40) - 8) / 16), r: Math.round((st?.y ?? 48) / 16) - 1 },
+      purse: st?.letters ?? 0,
+      found: st?.lettersCollected ?? 0,
+    };
     setOverlay(null);
     // P-49: enter the Kleckskammer through the same deferred swap as any handoff
     window.setTimeout(() => {

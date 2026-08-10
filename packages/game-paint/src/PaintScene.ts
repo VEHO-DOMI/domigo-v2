@@ -219,6 +219,9 @@ const LETTER_SHADOW_TINT = 0x2a2333;
 export interface PaintCallbacks {
   onExit: (next: string) => void;
   onLetters: (got: number, total: number) => void;
+  /** R5-A2: a letter CELL was consumed — the shell's ledger records it so a
+   *  phase remount cannot respawn it. */
+  onLetterTaken?: (c: number, r: number) => void;
   onTask: (req: TaskRequest) => void;
   onPowerup: (grants: string) => void;
   onCageFreed: (id: string, skin: string, classmate: string | undefined, freedCount: number) => void;
@@ -248,6 +251,10 @@ export interface PaintSceneCfg {
   cageHintShown?: () => boolean;
   /** PK-R3b · R3-16: Regel-Seiten / Bonus-Bücher already taken this chapter. */
   collectedPickupIds?: () => readonly string[];
+  /** R5-A2: the Kleckskammer round-trip — spawn override + surviving letter
+   *  state (see SimCfg; the scene only forwards). */
+  spawnCell?: { c: number; r: number };
+  letterLedger?: () => { takenCells: readonly string[]; purse: number; found: number };
   /** PB-F2 jump-feel candidate (dev only; undefined = the shipped model). */
   airModel?: AirModel;
 }
@@ -876,6 +883,8 @@ export class PaintScene extends Phaser.Scene {
       cageHintShown: cfg.cageHintShown,
       collectedPickupIds: cfg.collectedPickupIds,
       airModel: cfg.airModel,
+      spawnCell: cfg.spawnCell,
+      letterLedger: cfg.letterLedger,
     });
   }
 
@@ -1030,6 +1039,7 @@ export class PaintScene extends Phaser.Scene {
         case "cageHint": cb.onCageHint(); break;
         case "letters": cb.onLetters(ev.got, ev.total); break;
         case "letterTaken": {
+          this.cfg.callbacks.onLetterTaken?.(ev.c, ev.r);
           const img = this.letterImgs.get(`${ev.c},${ev.r}`);
           // R3-16 · the collect beat (doc 42 §4, numbers verbatim): a burst of
           // chalk dust, then the letter rises away and fades — the letter has
@@ -4080,7 +4090,9 @@ export class PaintScene extends Phaser.Scene {
         }
       }
     }
-    this.cfg.callbacks.onLetters(0, this.lettersTotal);
+    // R5-A2: seed the HUD from the sim, not from zero — a ledger remount
+    // starts with the purse the child left with (a fresh mount stays 0).
+    this.cfg.callbacks.onLetters(this.sim.lettersGot, this.sim.lettersTotal);
   }
 
   /** PK-R6 · H2 · the child's own edge, in THIS room (round-2 finding 1). A

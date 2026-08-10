@@ -121,6 +121,15 @@ export interface SimCfg {
   collectedPickupIds?: () => readonly string[];
   /** PB-F2: which jump-feel candidate to run (dev only; ships as `current`). */
   airModel?: AirModel;
+  /** R5-A2 · the Kleckskammer round-trip, part 1: spawn HERE instead of at the
+   *  S glyph — the door the child left through, so a bonus trip returns to the
+   *  entry spot instead of the phase start. */
+  spawnCell?: { c: number; r: number };
+  /** R5-A2 · part 2: the letter state that survives a remount of THIS phase.
+   *  `takenCells` never respawn (they still count toward lettersTotal, exactly
+   *  like the live phase they were taken in); `purse`/`found` seed the wallet
+   *  and the Bilanz counter. Same contract as freedCageIds. */
+  letterLedger?: () => { takenCells: readonly string[]; purse: number; found: number };
 }
 
 // ── PK-R3b · R3-16 · THE COLLECTIBLE MAGNET (doc 42 §4, mined from Keen) ─────
@@ -229,18 +238,28 @@ export class Sim {
     const exit = findGlyph(phase.rows, "X") ?? findGlyph(phase.rows, "B");
     this.exitCell = exit ?? { c: 0, r: 0 };
 
+    // R5-A2: letters already taken in an earlier mount of this phase exist in
+    // the TALLY but not in the world — a Kleckskammer trip must not respawn
+    // them into double-collectability.
+    const ledger = cfg.letterLedger?.();
+    const takenCells = new Set(ledger?.takenCells ?? []);
     for (const [r, row] of phase.rows.entries()) {
       for (let c = 0; c < row.length; c++) {
         if (row[c] === "o") this.rings.push({ x: (c * TILE + TILE / 2) * SUBS, y: (r * TILE + TILE / 2) * SUBS });
         if (row[c] === "*") {
+          this.lettersTotal++;
+          if (takenCells.has(`${c},${r}`)) continue;
           this.letterCells.add(`${c},${r}`);
           this.letterPos.set(`${c},${r}`, { x: (c * TILE + TILE / 2) * SUBS, y: (r * TILE + TILE / 2) * SUBS });
-          this.lettersTotal++;
         }
       }
     }
+    if (ledger) {
+      this.lettersGot = ledger.purse;
+      this.lettersCollected = ledger.found;
+    }
 
-    const start = findGlyph(this.grid, "S") ?? { c: 2, r: 2 };
+    const start = cfg.spawnCell ?? findGlyph(this.grid, "S") ?? { c: 2, r: 2 };
     this.player = spawnPlayer(start.c * TILE + TILE / 2, (start.r + 1) * TILE);
     this.respawnCell = start;
 
@@ -263,6 +282,17 @@ export class Sim {
     for (const id of cfg.collectedPickupIds?.() ?? []) {
       const e = this.world.entities.find((x) => x.id === id);
       if (e) e.redeemed = true;
+    }
+    // R5-A2: spawning ON the door one just returned through must not re-fire
+    // it (the Klecks card would reopen in the arrival tick) — seed its
+    // cooldown, mirroring entities.overlapsPlayer's door box (12, 26).
+    if (cfg.spawnCell) {
+      for (const e of this.world.entities) {
+        if (e.role !== "door.trigger") continue;
+        const dx = Math.abs(e.x - this.player.x) / SUBS;
+        const vOverlap = e.y / SUBS > this.player.y / SUBS - 30 && this.player.y / SUBS > e.y / SUBS - 26;
+        if (dx < 12 && vOverlap) { e.state = "cooling"; e.timer = 0; }
+      }
     }
     if (cfg.phaseId === "p9") this.bonusLeftTicks = 35 * 60 + 120; // G1: budget + 2s grace
 
