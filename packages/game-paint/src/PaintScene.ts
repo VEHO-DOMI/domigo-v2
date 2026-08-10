@@ -255,6 +255,8 @@ export interface PaintSceneCfg {
    *  state (see SimCfg; the scene only forwards). */
   spawnCell?: { c: number; r: number };
   letterLedger?: () => { takenCells: readonly string[]; purse: number; found: number };
+  /** R5-A6: draw the collision grid over the world (teacher door, ?grid=1). */
+  debugGrid?: boolean;
   /** PB-F2 jump-feel candidate (dev only; undefined = the shipped model). */
   airModel?: AirModel;
 }
@@ -901,6 +903,21 @@ export class PaintScene extends Phaser.Scene {
     this.buildTerrain();
     this.buildProps();
     this.buildRig();
+    // R5-A6 · the picture-vs-grid instrument (teacher door, ?grid=1): outline
+    // every cell the collision owns, in world space. A Schein-Lücke — drawn
+    // matter and claimed matter telling different stories — shows in one
+    // glance, without reading JSON against a screenshot.
+    if (this.cfg.debugGrid === true) {
+      const dbg = this.add.graphics().setDepth(90);
+      for (const [r, row] of this.sim.grid.entries()) {
+        for (let c = 0; c < row.length; c++) {
+          const g = row[c] ?? ".";
+          if (g === "." || g === "S") continue;
+          const colour = isSolid(g) ? 0xff3333 : isSlope(g) ? 0x3355ff : g === "w" ? 0x33ccff : 0xcc8800;
+          dbg.lineStyle(1, colour, 0.85).strokeRect(c * TILE, r * TILE, TILE, TILE);
+        }
+      }
+    }
     this.fistImg = this.add.image(0, 0, this.tex("hand_fist")).setScale(RIG_SRC_SCALE).setDepth(11).setVisible(false);
     this.ropeG = this.add.graphics().setDepth(9);
 

@@ -17,6 +17,8 @@ export default function BuchClient(props: {
   hubHref: string;
   buildSha?: string;
   startPhase?: string;
+  /** R5-A6: draw the collision grid over the world (teacher door, ?grid=1). */
+  debugGrid?: boolean;
 }) {
   return <PaintGame {...props} />;
 }

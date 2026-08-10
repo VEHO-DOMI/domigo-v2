@@ -34,6 +34,8 @@ export interface PaintGameProps {
   hubHref: string;
   buildSha?: string;
   startPhase?: string;
+  /** R5-A6: draw the collision grid over the world (teacher door, ?grid=1). */
+  debugGrid?: boolean;
 }
 
 interface HarnessApi {
@@ -147,7 +149,7 @@ const chapterClassmateCount = (level: PaintLevel): number =>
   [...level.phases, ...(level.arena ? [level.arena] : [])]
     .reduce((n, p) => n + p.entities.filter((e) => e.role === "cage" && e.params?.classmate !== undefined).length, 0);
 
-export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase }: PaintGameProps): React.ReactElement {
+export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid }: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
   const sceneRef = useRef<PaintScene | null>(null);
@@ -426,6 +428,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         collectedPickupIds: () => [...tipsTakenRef.current, ...booksTakenRef.current],
         airModel,
         spawnCell: fromBonus ? ret.spawn : undefined,
+        debugGrid,
         letterLedger: () => ({
           takenCells: lettersTakenRef.current.get(pid) ?? [],
           purse: fromBonus ? ret.purse : 0,
