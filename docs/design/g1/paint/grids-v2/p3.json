@@ -69,12 +69,12 @@
       "id": "p3-ruler",
       "role": "platform.move",
       "skin": "ruler",
-      "c": 33,
+      "c": 31,
       "r": 17,
       "tier": "E",
       "params": {
-        "dxTiles": 6,
-        "periodTicks": 260
+        "dxTiles": 8,
+        "periodTicks": 347
       }
     },
     {

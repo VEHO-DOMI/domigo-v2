@@ -4,6 +4,7 @@ import {
   engageTargetId,
   guardianKnotSolved,
   redeemEntity,
+  platformPathAt,
   rideAttachCheck,
   spawnEntities,
   stepEntities,
@@ -435,6 +436,22 @@ describe("platforms + the G3 ride contract", () => {
     expect(e.x).toBeGreaterThan(x0);
     run(w, idleInput(), 60);
     expect(Math.abs(e.x - x0)).toBeLessThan(SUBS); // back home after a full period
+  });
+
+  it("R5-A4 · the pendulum RISES at its turn-points (screen-y shrinks)", () => {
+    const params = { ropePx: 40, periodTicks: 200 };
+    const mid = platformPathAt("platform.swing", 0, 0, params, 0).y;
+    const ext = platformPathAt("platform.swing", 0, 0, params, 50).y; // quarter period = the extreme
+    expect(ext).toBeLessThan(mid); // the old sign dipped the bob DOWN there
+  });
+
+  it("R5-A4 · a swing spawns ON its path — no first-tick rope-length teleport", () => {
+    const w = spawnEntities([spec({ role: "platform.swing", skin: "satchelswing", c: 10, r: 10, params: { ropePx: 40, periodTicks: 200 } })], []);
+    const e = w.entities[0]!;
+    const y0 = e.y;
+    stepEntities(w, GRID, idleInput());
+    expect(Math.abs(e.y - y0), "first step stays continuous").toBeLessThan(TILE * SUBS);
+    expect(Math.abs(e.vy), "the ride delta never spikes").toBeLessThan(TILE * SUBS);
   });
 
   it("rideAttachCheck follows the studied tolerance max(|vy|+2, 4)", () => {

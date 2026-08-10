@@ -464,13 +464,22 @@ export const DIP_TICKS = 36;
 export const SINK_SPEED = Math.round(1.1 * SUBS);
 
 export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWorld => ({
-  entities: specs.map((s) => ({
+  entities: specs.map((s) => {
+    const cellX = (s.c * TILE + TILE / 2) * SUBS;
+    const cellY = (s.r + 1) * TILE * SUBS;
+    // R5-A4: a kinematic platform spawns ON its path. The swing's path hangs
+    // rope-length under the author cell — spawning at the cell popped the bob
+    // down 40 px in its first tick (and spiked the ride delta with it).
+    const p0 = s.role === "platform.move" || s.role === "platform.swing"
+      ? platformPathAt(s.role, cellX, cellY, s.params ?? {}, 0)
+      : null;
+    return {
     id: s.id,
     role: s.role,
     skin: s.skin,
     tier: s.tier,
-    x: (s.c * TILE + TILE / 2) * SUBS,
-    y: (s.r + 1) * TILE * SUBS,
+    x: p0 === null ? cellX : p0.x,
+    y: p0 === null ? cellY : p0.y,
     vx: 0,
     vy: 0,
     dir: -1,
@@ -485,8 +494,8 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
       : s.role.startsWith("platform") ? "carry" : s.role === "guardian" ? "fly" : "patrol",
     timer: 0,
     hp: s.role === "cage" ? 2 : s.role === "guardian" ? GUARDIAN_SCRIPT[s.tier].knots : 1,
-    homeX: (s.c * TILE + TILE / 2) * SUBS,
-    homeY: (s.r + 1) * TILE * SUBS,
+    homeX: cellX,
+    homeY: cellY,
     redeemed: false,
     hidden: s.params?.hidden === true,
     dodges: 0,
@@ -495,7 +504,8 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     awakenStep: 0,
     freedTick: 0,
     params: s.params ?? {},
-  })),
+    };
+  }),
   projectiles: [],
   links,
   nextProjectileId: 1,
@@ -593,9 +603,12 @@ export const platformPathAt = (
   const rope = Number(params.ropePx ?? 48);
   const period = Number(params.periodTicks ?? 180);
   const a = Math.sin((tick % period) / period * Math.PI * 2) * 0.9;
+  // R5-A4: a pendulum bob RISES toward its turn-points (cos flattens the
+  // rope). The old extra minus sign dipped it DOWN there instead — the
+  // visible end-of-arc jerk on p3's upper mover.
   return {
     x: homeX + Math.round(Math.sin(a) * rope * SUBS),
-    y: homeY + Math.round((Math.cos(a) - 1) * -rope * SUBS * 0.25) + rope * SUBS,
+    y: homeY + rope * SUBS + Math.round((Math.cos(a) - 1) * rope * SUBS * 0.25),
     period,
   };
 };
