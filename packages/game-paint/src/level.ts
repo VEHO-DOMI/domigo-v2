@@ -8,7 +8,7 @@
 
 import { registerErrorsDe } from "@domigo/content-schema";
 import { type Grid, glyphAt, isOneWay, isSlope, isSolid } from "./collide.ts";
-import { SUBS, TILE } from "./paint.ts";
+import { PAINT, SUBS, TILE } from "./paint.ts";
 import { platformPathAt } from "./entities.ts";
 
 export const LEVEL_SCHEMA = "paintLevel@1";
@@ -324,16 +324,39 @@ export const reachFrom = (
     }
   }
 
+  // R5-A7 · THE SCREEN BOX IS PHYSICS (sim.ts W0-F7). With the camera at the
+  // world's edges the centre can never enter column 0 (camX ≥ 0 ⇒ min centre
+  // = screenBoxLeftPx) nor the last two columns (max centre = worldW −
+  // screenBoxRightPx); mid-world the box travels with the camera and only
+  // adds friction. Excluding the edge columns is the exact always-true subset.
+  const minCol = Math.floor(PAINT.screenBoxLeftPx / TILE);
+  const maxCol = Math.floor((w * TILE - PAINT.screenBoxRightPx) / TILE);
+
   const queue: Array<{ c: number; r: number }> = [{ c: start.c, r: sr }];
   const seen = new Set<string>([key(start.c, sr)]);
   const push = (c: number, r: number): void => {
-    if (c < 0 || c >= w || r < 0 || r >= h) return;
+    if (c < minCol || c > maxCol || r < 0 || r >= h) return;
     if (!standable(grid, c, r)) return;
     const k = key(c, r);
     if (seen.has(k)) return;
     seen.add(k);
     queue.push({ c, r });
   };
+
+  // R5-A7 · PATH-HONEST EDGES. An edge exists only if a tile-level corridor
+  // for it exists — the old edges tunnelled through backed slides, walls,
+  // even the floor underfoot (that one blessed p3's sealed G). Conservative
+  // by the envelope law: removing edges is the safe direction.
+  const colClear = (c: number, rA: number, rB: number): boolean => {
+    for (let r = Math.min(rA, rB); r <= Math.max(rA, rB); r++) if (isSolid(glyphAt(grid, c, r))) return false;
+    return true;
+  };
+  const rowClear = (r: number, cA: number, cB: number): boolean => {
+    for (let c = Math.min(cA, cB); c <= Math.max(cA, cB); c++) if (isSolid(glyphAt(grid, c, r))) return false;
+    return true;
+  };
+  const jumpPathClear = (c1: number, r1: number, c2: number, r2: number): boolean =>
+    (colClear(c1, r2, r1) && rowClear(r2, c1, c2)) || (rowClear(r1, c1, c2) && colClear(c2, r2, r1));
 
   const visit = (n: { c: number; r: number }): void => {
     // walk + step-up + step-down
@@ -342,29 +365,47 @@ export const reachFrom = (
       push(n.c + dc, n.r - 1);
       push(n.c + dc, n.r + 1);
     }
-    // jump: up to JUMP_UP rows up, JUMP_DX across
+    // jump: up to JUMP_UP rows up, JUMP_DX across — along at least one honest
+    // L-path (rise-then-cross or cross-then-rise)
     for (let dr = -JUMP_UP; dr <= 0; dr++) {
-      for (let dc = -JUMP_DX; dc <= JUMP_DX; dc++) push(n.c + dc, n.r + dr);
+      for (let dc = -JUMP_DX; dc <= JUMP_DX; dc++) {
+        if (jumpPathClear(n.c, n.r, n.c + dc, n.r + dr)) push(n.c + dc, n.r + dr);
+      }
     }
-    // fall: drift grows with depth (never v1's flat "4 across at any depth")
+    // fall: drift grows with depth (never v1's flat "4 across at any depth") —
+    // and the descent must be real: the landing column solid-free from the
+    // source down to the landing
     for (let dr = 1; dr <= h; dr++) {
       const dx = fallDx(dr, hover);
-      for (let dc = -dx; dc <= dx; dc++) push(n.c + dc, n.r + dr);
+      for (let dc = -dx; dc <= dx; dc++) {
+        const c2 = n.c + dc;
+        if (colClear(c2, n.r + 1, n.r + dr - 1)) push(c2, n.r + dr);
+      }
     }
-    // hover crossing at level height
-    for (let dc = -crossDx; dc <= crossDx; dc++) push(n.c + dc, n.r);
-    // vines: adjacency latches; the whole column then connects up + off the top
+    // hover crossing at level height — a wall ends the crossing
+    for (const dir of [-1, 1] as const) {
+      for (let d = 1; d <= crossDx; d++) {
+        const c2 = n.c + d * dir;
+        if (isSolid(glyphAt(grid, c2, n.r))) break;
+        push(c2, n.r);
+      }
+    }
+    // vines: adjacency latches (within the real jump rise); the whole column
+    // then connects up + off the top
     for (const v of vines) {
-      if (Math.abs(v.c - n.c) <= 2 && v.r >= n.r - 5 && v.r <= n.r + h) {
+      if (Math.abs(v.c - n.c) <= 2 && v.r >= n.r - JUMP_UP && v.r <= n.r + h) {
         for (const v2 of vines.filter((x) => x.c === v.c)) {
           for (let dc = -2; dc <= 2; dc++) for (let dr = -5; dr <= 2; dr++) push(v2.c + dc, v2.r + dr);
         }
       }
     }
-    // rings bridge wide gaps
-    for (const g of rings) {
-      if (Math.abs(g.c - n.c) <= RING_DX && Math.abs(g.r - n.r) <= 4) {
-        for (let dc = -RING_DX; dc <= RING_DX; dc++) for (let dr = -2; dr <= 6; dr++) push(g.c + dc, g.r + dr);
+    // rings bridge wide gaps — but only for a child who HOLDS the swing verb
+    // (sim.ts passes ringAt only with the ability; the model must match)
+    if (abilities.includes("swing")) {
+      for (const g of rings) {
+        if (Math.abs(g.c - n.c) <= RING_DX && Math.abs(g.r - n.r) <= 4) {
+          for (let dc = -RING_DX; dc <= RING_DX; dc++) for (let dr = -2; dr <= 6; dr++) push(g.c + dc, g.r + dr);
+        }
       }
     }
     // springs boost a couple of rows

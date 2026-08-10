@@ -309,8 +309,9 @@ export class Sim {
     });
     this.player = out.st;
     // W0-F7 (canonical): the player is boxed inside the visible screen
-    const minX = this.camX + 20 * SUBS;
-    const maxX = this.camX + (LOGICAL_W - 36) * SUBS;
+    // (constants shared with level.ts's reachability model — R5-A7)
+    const minX = this.camX + PAINT.screenBoxLeftPx * SUBS;
+    const maxX = this.camX + (LOGICAL_W - PAINT.screenBoxRightPx) * SUBS;
     if (this.player.x < minX) this.player = { ...this.player, x: minX, vx: Math.max(this.player.vx, 0) };
     if (this.player.x > maxX) this.player = { ...this.player, x: maxX, vx: Math.min(this.player.vx, 0) };
     this.prevPad = { ...pad };
