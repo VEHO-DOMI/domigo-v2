@@ -628,6 +628,29 @@ export const PAINT_OVERLAY_CSS = `
    page — a hop that overshoots and settles, so the score card opens on somebody
    jumping rather than on a checklist. END STATE: standing on the page in his
    cheer, which is the finished picture this beat exists to show. */
+/* PK-R6 · H2 · a score row ARRIVES — the page writes itself line by line
+   (round-2 ceremonies finding 6). Base styles are the finished state (the
+   reduced-motion law): the animation runs FROM the offset, and \`backwards\`
+   holds that offset through each row's stagger delay. */
+@keyframes pb-row-in {
+  from { opacity: 0; transform: translateY(7px); }
+}
+.pb-row-in { animation: pb-row-in 420ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }
+
+/* …and the light behind the door out: a painterly bloom, breathing — radial
+   falloff only, no edge anywhere (the beam law, applied to the UI). Its base
+   state is the lit resting glow, so killing the animation leaves warm light,
+   not darkness. */
+@keyframes pb-door-bloom {
+  50% { opacity: 0.85; transform: scale(1.045); }
+}
+.pb-door-bloom {
+  position: absolute; inset: -7% -9%;
+  background: radial-gradient(ellipse 60% 55% at 50% 46%, rgba(255, 232, 168, 0.55), rgba(255, 232, 168, 0.22) 55%, rgba(255, 232, 168, 0) 78%);
+  opacity: 0.65; pointer-events: none;
+  animation: pb-door-bloom 3600ms ease-in-out infinite;
+}
+
 @keyframes pb-hero-in {
   0%   { opacity: 0; transform: translateY(30px) scale(0.84); }
   58%  { opacity: 1; transform: translateY(-7px) scale(1.05); }
@@ -675,7 +698,8 @@ export const PAINT_OVERLAY_CSS = `
 /* ── THE END-STATES LAW: every animated class above, killed ─────────────── */
 @media (prefers-reduced-motion: reduce) {
   .pb-veil, .pb-wipe, .pb-card, .pb-ring, .pb-verdict, .pb-page, .pb-world-in,
-  .pb-letter, .pb-word, .pb-doff, .pb-tether, .pb-rays, .pb-spark, .pb-hero-in {
+  .pb-letter, .pb-word, .pb-doff, .pb-tether, .pb-rays, .pb-spark, .pb-hero-in,
+  .pb-row-in, .pb-door-bloom {
     animation: none !important;
   }
 }

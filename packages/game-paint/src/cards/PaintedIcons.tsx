@@ -254,7 +254,31 @@ export const PAINTED_ICON_NAMES = Object.keys(paths) as PaintedIconName[];
  * an icon that does not scale with the copy is the emoji problem in a second
  * costume).
  */
-export function PaintedIcon({ name, size = "1.25em" }: { name: PaintedIconName; size?: number | string }): React.ReactElement {
+export function PaintedIcon({ name, size = "1.25em", art }: {
+  name: PaintedIconName;
+  size?: number | string;
+  /** PK-R6 · H2 (round-2, ceremonies finding 5): the round-2 critic still read
+   *  these code-drawn icons as „clip-art" next to the real paint. The REAL
+   *  painted miniatures exist as a commissioned sheet (batch-ap
+   *  `hud_painted_set.png`); once imported they land in the art map under
+   *  `hud_<name>` and every icon wears its painted self. Until that stem
+   *  exists, the code drawing below stays the fallback — the same
+   *  buildable-before-the-art-lands rule the boss fight shipped under. */
+  art?: Record<string, string>;
+}): React.ReactElement {
+  const painted = art?.[`hud_${name}`];
+  if (painted !== undefined) {
+    return (
+      <img
+        src={painted}
+        alt=""
+        aria-hidden
+        width={size}
+        height={size}
+        style={{ display: "inline-block", verticalAlign: "-0.22em", flex: "0 0 auto", objectFit: "contain" }}
+      />
+    );
+  }
   return (
     <svg
       viewBox="0 0 24 24"

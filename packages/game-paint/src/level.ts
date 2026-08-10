@@ -143,6 +143,12 @@ export interface PaintLevel {
    *  disk does not hold. Optional: a chapter without one falls back to the
    *  plain painted page the goal card has always been. */
   goalPlate?: string;
+  /** PK-R6 · H2: the score page's own painted plate (round-2 finding: score and
+   *  door reused one staging). Declared only once the reviewed art is imported. */
+  scorePlate?: string;
+  /** …and the door-out ceremony's own plate — the chapter's biggest payoff
+   *  gets the biggest picture (batch-ap `ceremony_plates`). */
+  doorPlate?: string;
   /** PK-R3b · R3-16 (doc 41 §5): how many Regel-Seiten this chapter hides — one
    *  per grammar topic of its unit. DECLARED here and PLACED in the phases, and
    *  the `tip-honesty` law proves the two agree; the HUD and the score page then

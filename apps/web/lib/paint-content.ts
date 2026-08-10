@@ -117,6 +117,8 @@ const PaintLevelFile = z.object({
    *  unlisted field would reach the client as `undefined` and the goal card
    *  would silently fall back to its plain page with nothing to show for it. */
   goalPlate: z.string().min(1).optional(),
+  scorePlate: z.string().min(1).optional(),
+  doorPlate: z.string().min(1).optional(),
   goalDe: z.string().min(1),
   whyDe: z.string().min(1),
   hintsDe: z.array(z.string().min(1)),

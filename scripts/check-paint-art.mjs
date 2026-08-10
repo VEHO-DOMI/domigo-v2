@@ -55,6 +55,8 @@ for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
     // is named in the level rather than derived, so it is required exactly like
     // a phase plate — a chapter may not promise a plate the disk does not hold.
     if (level.goalPlate !== undefined) need(String(level.goalPlate), `${f} goalPlate`);
+    if (level.scorePlate !== undefined) need(String(level.scorePlate), `${f} scorePlate`);
+    if (level.doorPlate !== undefined) need(String(level.doorPlate), `${f} doorPlate`);
     const phases = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
     for (const ph of phases) {
       const glyphs = new Set(ph.rows.join(""));

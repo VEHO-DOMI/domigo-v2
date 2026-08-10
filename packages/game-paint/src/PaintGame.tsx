@@ -20,7 +20,7 @@ import { InkWipe, PaintedCage, type CardAlign, alignedWrap } from "./cards/CardS
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { PaintedIcon, type PaintedIconName } from "./cards/PaintedIcons.tsx";
 import { CeremonyBurst, PaintedHero, useCeremonyClock } from "./cards/CeremonyStage.tsx";
-import { countUpAt, countUpTotalMs, heroArtPresent, runCompletion } from "./cards/ceremony.ts";
+import { COUNT_UP_STAGGER_MS, countUpAt, countUpTotalMs, heroArtPresent, runCompletion } from "./cards/ceremony.ts";
 import { initRoute, nextTask, orderedTask, type RouteState, type ServeCtx } from "./cards/routing.ts";
 
 /** The in-game task item — gameTasks@2 (the card kit). Content lives in
@@ -707,12 +707,12 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             with nothing to count is not drawn (the arena collects no letters,
             and the Regel-Seiten chip waits until the chapter hides some). */}
         <span style={{ display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "flex-end" }}>
-          {freedCount > 0 && <Chip icon="cage" label="Befreit" value={`${freedCount}/${cageTotal}`} />}
-          {tipTotal > 0 && <Chip icon="rule" label="Regel-Seiten" value={`${tipsCount}/${tipTotal}`} />}
-          {booksCount > 0 && <Chip icon="book" label="Bonus-Bücher" value={`${booksCount}`} />}
-          {knots > 0 && <Chip icon="knot" label="Knoten" value={`${knots}`} />}
-          {inBonus && bonusLeft >= 0 && <Chip icon="inkwell" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} />}
-          {letters.total > 0 && <Chip icon="spark" label={level.collectNounDe} value={`${letters.got}/${letters.total}`} />}
+          {freedCount > 0 && <Chip icon="cage" label="Befreit" value={`${freedCount}/${cageTotal}`} art={art} />}
+          {tipTotal > 0 && <Chip icon="rule" label="Regel-Seiten" value={`${tipsCount}/${tipTotal}`} art={art} />}
+          {booksCount > 0 && <Chip icon="book" label="Bonus-Bücher" value={`${booksCount}`} art={art} />}
+          {knots > 0 && <Chip icon="knot" label="Knoten" value={`${knots}`} art={art} />}
+          {inBonus && bonusLeft >= 0 && <Chip icon="inkwell" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} art={art} />}
+          {letters.total > 0 && <Chip icon="spark" label={level.collectNounDe} value={`${letters.got}/${letters.total}`} art={art} />}
         </span>
       </div>
       {fatal !== null && (
@@ -844,20 +844,7 @@ function Overlay({
           // the painted plate IS the title: the piece is composed with an empty
           // lower band for exactly this, so the chapter's name is set INTO the
           // picture rather than typed above it
-          <div
-            style={{
-              position: "relative", width: "100%", aspectRatio: "2048 / 1260",
-              // PK-R6 · H1: the plate sat in a 10-px-radius rectangle with a
-              // hairline — a photo frame from a web page. It is mounted in the
-              // book's own materials now: four corners that disagree, the amber
-              // contour every painted surface here wears, and the sheen the
-              // light leaves along its top edge.
-              borderRadius: "15px 10px 16px 11px / 11px 16px 10px 15px",
-              overflow: "hidden", border: "2px solid #b78d51",
-              margin: "0 0 10px",
-              boxShadow: "inset 0 1px 8px rgba(120, 96, 52, 0.25), inset 0 0 0 1px rgba(255,251,238,0.6), 0 2px 10px rgba(40,28,12,0.18)",
-            }}
-          >
+          <div style={{ ...plateMount, aspectRatio: "2048 / 1260", margin: "0 0 10px" }}>
             <img src={plate} alt="" aria-hidden style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             <h2
               style={{
@@ -926,12 +913,32 @@ function Overlay({
     // (this is beat 3 of the chapter-end sequence — „the door out / map return"),
     // so „Zurück" carries the warm treatment and „Noch einmal", which is a
     // retry, is the quiet one. The critic's own hierarchy rule, applied.
+    // PK-R6 · H2 (round-2 findings 3 + 4): the door was 76 px of code-drawn icon
+    // sharing the score page's staging — „tiny, flat and inert for what should
+    // be the game's biggest payoff". The ceremony now has its OWN stage: when
+    // the chapter declares a doorPlate (the reviewed batch-ap painting — a full
+    // schoolhouse doorway with the light pouring through), the plate IS the
+    // scene, with a soft painterly bloom breathing behind it; the code-drawn
+    // pair below stays the fallback until the import lands the pixels.
+    const door = level.doorPlate !== undefined ? art[level.doorPlate] : undefined;
     return staged(
       <>
-        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 4, margin: "0 0 8px", minHeight: 88 }}>
-          <PaintedHero art={art} height={84} pose="stand" />
-          <PaintedIcon name="door" size={76} />
-        </div>
+        {door !== undefined ? (
+          <div style={{ position: "relative", margin: "0 0 10px" }}>
+            <div className="pb-door-bloom" aria-hidden />
+            <div style={{ ...plateMount, aspectRatio: "1024 / 768" }}>
+              <img src={door} alt="" aria-hidden style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            </div>
+            <div style={{ position: "absolute", left: "6%", bottom: "4%", display: "flex", alignItems: "flex-end" }}>
+              <PaintedHero art={art} height={72} pose="stand" />
+            </div>
+          </div>
+        ) : (
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 4, margin: "0 0 8px", minHeight: 88 }}>
+            <PaintedHero art={art} height={84} pose="stand" />
+            <PaintedIcon name="door" size={76} art={art} />
+          </div>
+        )}
         <p style={{ fontSize: 17, margin: "0 0 12px" }}>
           Die Buchstaben fliegen zurück auf die Tafel — und die Tür zum nächsten Kapitel geht auf.
         </p>
@@ -1151,11 +1158,20 @@ function ScorePage({
   const hero = heroArtPresent(art);
   const alle = bilanz.freed >= bilanz.freedTotal;
 
+  // PK-R6 · H2 (round-2 finding 3): the score page gets its OWN painted plate
+  // once the reviewed batch-ap treasures painting is imported and declared —
+  // until then the hero + burst carry the stage alone (the fallback proof).
+  const scorePlate = level.scorePlate !== undefined ? art[level.scorePlate] : undefined;
   return (
     <div style={{ textAlign: "left" }}>
       <p style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 2px", fontFamily: "var(--font-label, inherit)" }}>
         Das Buch schreibt mit
       </p>
+      {scorePlate !== undefined && (
+        <div style={{ ...plateMount, aspectRatio: "1024 / 768", margin: "0 0 8px" }}>
+          <img src={scorePlate} alt="" aria-hidden style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+        </div>
+      )}
       {/* the stage is AUTO height on purpose: the rig's cells carry generous
           transparent margins, so a fixed box either crops his flare or leaves a
           hole under his shoes. The negative margins pull the label and the title
@@ -1173,11 +1189,18 @@ function ScorePage({
       {rows.map((r, i) => (
         <div
           key={r.labelDe}
-          className="pb-score-row"
-          style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, padding: "6px 0" }}
+          className="pb-score-row pb-row-in"
+          style={{
+            display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, padding: "6px 0",
+            // PK-R6 · H2 (round-2 finding 6, „a static settings list"): the rows
+            // ENTER the page in sequence, each arriving just before its own
+            // count-up starts — the page writes itself line by line. The delay
+            // mirrors the count-up stagger so entrance and tally stay one beat.
+            animationDelay: `${i * COUNT_UP_STAGGER_MS}ms`,
+          }}
         >
           <span style={{ fontSize: 15, color: "#4a4030", display: "inline-flex", alignItems: "center", gap: 8 }}>
-            <PaintedIcon name={r.icon} size={20} />
+            <PaintedIcon name={r.icon} size={20} art={art} />
             {r.labelDe}
           </span>
           <strong className="pb-count" style={{ fontSize: 17, color: "#3a2f1c", fontFamily: "var(--font-display, inherit)", whiteSpace: "nowrap" }}>
@@ -1206,10 +1229,24 @@ function ScorePage({
  *  precisely why they were the flattest surface in the frame. The paper, the ink
  *  edge and the four disagreeing corners are now the `pb-hud-chip` rule, and the
  *  picture is painted (cards/PaintedIcons) — so the bar belongs to the book. */
-function Chip({ icon, label, value }: { icon: PaintedIconName; label: string; value: string }): React.ReactElement {
+/** PK-R6 · H2 · THE PLATE MOUNT, shared. H1 mounted the goal plate „in the
+ *  book's own materials" — but its crisp 1-px inner light ring is exactly what
+ *  the round-2 critic read as „a digital glow overlay over the painted door".
+ *  The ring is gone: the mount keeps the disagreeing corners, the amber
+ *  contour and a SOFT inset shade only — paper holds a picture with shadow,
+ *  not with rim light. One object, three ceremonies (goal · score · door),
+ *  so the next reviewer changes it in one place. */
+const plateMount: React.CSSProperties = {
+  position: "relative", width: "100%",
+  borderRadius: "15px 10px 16px 11px / 11px 16px 10px 15px",
+  overflow: "hidden", border: "2px solid #b78d51",
+  boxShadow: "inset 0 2px 10px rgba(120, 96, 52, 0.28), 0 2px 10px rgba(40,28,12,0.18)",
+};
+
+function Chip({ icon, label, value, art }: { icon: PaintedIconName; label: string; value: string; art?: Record<string, string> }): React.ReactElement {
   return (
     <span className="pb-hud-chip" style={{ fontFamily: "var(--font-label, inherit)", fontSize: 13 }}>
-      <PaintedIcon name={icon} size={17} />
+      <PaintedIcon name={icon} size={17} art={art} />
       {label}
       <strong style={{ fontSize: 15, color: "#3a2f1c", fontFamily: "var(--font-display, inherit)" }}>{value}</strong>
     </span>
