@@ -446,7 +446,12 @@ const derivePose = (s: PlayerState, locked: boolean): PlayerPose => {
   if (s.hangAt) return "hang";
   if (s.climbing) return "vine";
   if (s.hovering) return "hover";
-  if (!s.grounded) return s.vy < 0 ? "jump" : "fall";
+  // R5-A1: a live coyote window draws as ground contact. moveBody clears
+  // `grounded` for a tick at seams and on every ridden-mover tick (the ride
+  // re-grounds AFTER the pose ran); as long as the child may still jump like
+  // from ground, drawing ground is honest. A real jump (jumpTicks >= 0)
+  // shows jump/fall at once.
+  if (!s.grounded && (s.jumpTicks >= 0 || s.coyote === 0)) return s.vy < 0 ? "jump" : "fall";
   if (s.charge >= 0) return "charge";
   const speed = Math.abs(s.vx);
   if (speed >= PAINT.runEngage) return "run";

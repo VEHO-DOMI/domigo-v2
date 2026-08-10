@@ -107,6 +107,34 @@ describe("coyote + buffer (OUR forgiveness — T)", () => {
   });
 });
 
+describe("R5-A1 · the pose reads the coyote window as ground", () => {
+  const LEDGE = [
+    ...Array.from({ length: 8 }, () => "............"),
+    "####........",
+    ...Array.from({ length: 7 }, () => "............"),
+  ];
+
+  it("walking off an edge keeps the walk pose for the grace, then falls", () => {
+    let s = settle(LEDGE, 24, 128);
+    const airPoses: string[] = [];
+    for (let t = 0; t < 60 && airPoses.length < PAINT.coyoteTicks + 2; t++) {
+      s = tick(s, LEDGE, pad({ right: true }));
+      if (!s.st.grounded) airPoses.push(s.st.pose);
+    }
+    // air acceleration may cross runEngage — any GROUND-reading pose is the point
+    expect(airPoses.slice(0, PAINT.coyoteTicks).every((p) => p === "walk" || p === "run")).toBe(true);
+    expect(airPoses[PAINT.coyoteTicks]).toBe("fall");
+  });
+
+  it("a real jump shows the jump pose on its very first tick", () => {
+    let s = settle(FLAT, 32, 176);
+    s = tick(s, FLAT, pad({ jump: true }));
+    expect(s.st.grounded).toBe(false);
+    expect(s.st.pose).toBe("jump");
+  });
+
+});
+
 describe("the hover (quill-rotor — R5: unlimited while held, +1px/t cap)", () => {
   it("glides all the way to the ground while jump stays held — no fuel", () => {
     let s = settle(FLAT, 32, 176);

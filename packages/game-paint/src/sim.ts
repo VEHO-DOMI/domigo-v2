@@ -565,6 +565,13 @@ export class Sim {
         this.player.y = e.y - 6 * SUBS;
         this.player.vy = 0;
         this.player.grounded = true;
+        // R5-A1: attaching IS a landing. A jump-attach otherwise keeps
+        // jumpTicks >= 0 forever (the grid landing never fires on a mover),
+        // which starves the coyote refresh the ride pose depends on.
+        this.player.jumpTicks = -1;
+        this.player.airTicks = 0;
+        this.player.holdLeft = 0;
+        this.player.hovering = false;
         break;
       }
     }
