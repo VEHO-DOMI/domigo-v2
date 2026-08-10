@@ -10,10 +10,19 @@
 // world comes back (doc 42 §1, re-skinned). The animations live in overlay-css;
 // every base style here is the finished picture, so a reduced-motion child sees
 // a complete card (the end-states law).
+//
+// PK-R6 · C · OVERLAY 2.0 (doc 44 §3.1) closes two of the gap list's items here:
+//  · THE PORTRAIT (§3.1.5) — the asker's own painted art INSIDE the card, so a
+//    card is a being talking to you rather than a text box quoting one. Falls
+//    back to the shipped text placeholder wherever no art exists, because art
+//    lands batch by batch and a card must never break on a missing file.
+//  · THE RESOLUTION BEAT (§3.1.7) — the answer flies home letter by letter,
+//    then the card DOFFS so the world's change can be watched (the restore-hold).
 import React from "react";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { gapLevelFor, renderGapHint } from "./hint.ts";
-import { QUICKFIRE_MS } from "./overlay-css.ts";
+import { QUICKFIRE_MS, focusPctFor } from "./overlay-css.ts";
+import { LETTER_LEAD_MS, LETTER_STAGGER_MS, lettersFor } from "./resolution.ts";
 
 /** Which side of the canvas a card sits on. PB-F1/F2-20: a card is always put
  *  DOWN AWAY from the being it talks about, because the boss card says „schau
@@ -25,32 +34,333 @@ export const alignedWrap = (align: CardAlign): React.CSSProperties => ({
   justifyContent: align === "center" ? "center" : align === "left" ? "flex-start" : "flex-end",
   padding: align === "center" ? 0 : "0 14px",
   background: "rgba(30, 24, 12, 0.35)", zIndex: 10,
-});
+  // PK-R6 · H1 (round-1 critique, finding 9): the card's side already says
+  // where the being is — it was put down AWAY from it. Publishing that as one
+  // custom property here means the veil's light, the ink iris's aperture and
+  // the card's thread all point at the same place, because they all read the
+  // same value rather than each guessing.
+  ["--pb-focus" as string]: focusPctFor(align),
+} as React.CSSProperties);
 
 export const cardWrap: React.CSSProperties = alignedWrap("center");
-export const cardBox: React.CSSProperties = {
-  background: "#fdf7e6", border: "2px solid #c9a36a", borderRadius: 14, padding: "18px 22px",
-  maxWidth: 460, width: "90%", boxShadow: "0 6px 30px rgba(30,20,10,0.35)", textAlign: "center",
-  // doc 42 §5: the three faces are already loaded app-wide — the overlays
-  // simply start using them (prompts → body, headlines → display, chips → label)
-  fontFamily: "var(--font-body, system-ui, sans-serif)",
-  position: "relative",
-};
+/** PK-R6 · H1 (round-1 critique, finding 3): the card's LOOK moved out of here
+ *  and into the „pb-card" rule in overlay-css — painted parchment, deckled edge,
+ *  hand-inked inner rule. What is left is layout, because the look was written
+ *  twice (here and in PaintGame's ceremony panels) and two copies of a surface
+ *  are two surfaces waiting to disagree. */
+export const cardBox: React.CSSProperties = { maxWidth: 460, width: "90%" };
+/** …and the same for the controls: the paint is „pb-card button" in the
+ *  stylesheet, so every skin's chips wear one painted chip. Inline styles beat
+ *  a stylesheet, so anything the skins still need to vary (a picked tile's
+ *  colour) is set as `backgroundColor`, which leaves the paper grain intact. */
 export const cardBtn: React.CSSProperties = {
-  fontSize: 16, padding: "9px 16px", borderRadius: 9, border: "1px solid #c9a36a",
-  background: "#fffdf6", color: "#243048", cursor: "pointer",
+  fontSize: 16, padding: "9px 16px", cursor: "pointer",
   fontFamily: "var(--font-label, inherit)", fontWeight: 600,
 };
 
-/** The ink bloom that wipes the world before a card lands (doc 42 §1). One per
- *  card open; it animates itself away and leaves nothing behind. */
-export const InkWipe = (): React.ReactElement => <div className="pb-wipe" aria-hidden />;
+/** The ink iris that wipes the world before a card lands (doc 42 §1, doc 44
+ *  §3.1.1). TWO blobs: one border-radius blob swelling from the centre reads as
+ *  a circle, two offset ones read as ink running over the page. They animate
+ *  themselves away and leave nothing behind. */
+export const InkWipe = (): React.ReactElement => (
+  <>
+    <div className="pb-wipe" aria-hidden />
+    <div className="pb-wipe pb-wipe-b" aria-hidden />
+  </>
+);
 
-/** The chalk-erase countdown — quickfire only, and only when it has a real
- *  clock behind it (CardHost owns the timer; see QUICKFIRE_MS). */
+/** PK-R6 · H1 · THE INK THREAD (round-1 critique, finding 9: „composed off to
+ *  one side with no visual link to the character it interrupts").
+ *
+ *  The critic's own first suggestion — centre the panel — is the one move this
+ *  card may not make: PB-F1/F2-20 put it on this side precisely BECAUSE the
+ *  centred panel covered the thing the card tells the child to look at („schau
+ *  auf ihre Tafel" over a hidden Tafel). So the composition gets the link it was
+ *  actually missing instead: a brush stroke leaving the card's world-facing edge
+ *  with a warm bead at its tip, pointing back at the being. Null for a centred
+ *  card, which has no being to point at (a ceremony talks to the child). */
+const Tether = ({ align }: { align: CardAlign }): React.ReactElement | null =>
+  align === "center" ? null : <span className={`pb-tether pb-tether-${align === "right" ? "l" : "r"}`} aria-hidden />;
+
+/** The chalk-erase countdown — only where the timer policy allows a clock at
+ *  all (cards/timer.ts, doc 44 §2.9); CardHost owns the timer behind it. */
 export const ChalkClock = ({ ms }: { ms: number }): React.ReactElement => (
   <div className="pb-ring-track" aria-hidden>
     <div className="pb-ring" style={{ ["--pb-ring-s" as string]: `${ms}ms` } as React.CSSProperties} />
+  </div>
+);
+
+/** PK-R6 · C · THE PORTRAIT SLOT (doc 44 §3.1.5). The being that is asking,
+ *  painted, inside the card at 88–130 px in the book's own frame. `stem` is the
+ *  card's declared art binding and `art` the level's only-present resolver, so
+ *  a stem that has not landed yet simply yields nothing and the caller draws
+ *  the text placeholder instead — the keen-art law, unchanged. */
+const Portrait = ({ url, altDe, wash = 0 }: { url: string; altDe: string; wash?: number }): React.ReactElement => (
+  <div className="pb-portrait">
+    {/* THE DESATURATION LAW, one layer up (doc 41 §2). A being OSWIN drained
+        renders GREY in the world until the child gives its colour back — so its
+        portrait must be exactly as grey. A full-colour face over a grey desk
+        would be the very defect the law was written for, in pixels instead of
+        words, and on a restore card it would hand step 2's answer away for
+        free. `wash` is the being's live wash alpha, read from the scene. */}
+    <img src={url} alt={altDe} style={wash > 0 ? { filter: `grayscale(${wash})` } : undefined} />
+  </div>
+);
+
+/** PK-R6 · C · THE ANSWER COMES HOME (doc 44 §3.1.7). „Zurückgeholt!" over the
+ *  child's own answer, flying in per character on the mined 55 ms stagger — or
+ *  gliding back whole when it is too long to read as letters.
+ *
+ *  PK-R6 · H1 (round-1 critique, finding 4 — „almost entirely washed out and
+ *  illegible"). Every character now sits in a SLOT that already carries a chalk
+ *  ghost of itself, and the flying letter inks that ghost in. Three things that
+ *  buys, none of them cosmetic:
+ *   · the word is legible in EVERY frame of the beat, including the first — the
+ *     old version showed nothing at all through the 120 ms lead and fragments
+ *     after, which is exactly the frame the harness photographed;
+ *   · the flight reads as one word arriving rather than as loose glyphs
+ *     drifting, because now the glyphs have visible destinations to arrive at;
+ *   · it is the truer picture of the fiction: the word was on the page all
+ *     along, drained like everything else OSWIN rained on, and the child's
+ *     answer is what puts the ink back into it.
+ *  The panel behind it is near-opaque parchment instead of a 0.92 wash, so the
+ *  ink has something solid to be dark against. */
+export const AnswerHome = ({ answer }: { answer: string }): React.ReactElement => {
+  const l = lettersFor(answer);
+  return (
+    <div
+      className="pb-verdict"
+      role="status"
+      style={{
+        position: "absolute", inset: 0, display: "flex", flexDirection: "column",
+        alignItems: "center", justifyContent: "center", gap: 6,
+        background: "#fbf3dd radial-gradient(120% 90% at 50% 8%, rgba(255,253,244,0.95), rgba(233,214,170,0.5))",
+        borderRadius: 15, pointerEvents: "none", padding: "0 14px",
+      }}
+    >
+      <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", color: "#3f6329", fontFamily: "var(--font-label, inherit)" }}>
+        Zurückgeholt!
+      </span>
+      <span
+        aria-hidden
+        style={{ width: 46, height: 2, borderRadius: 2, background: "linear-gradient(90deg, rgba(79,122,52,0), #4f7a34 40%, rgba(79,122,52,0))" }}
+      />
+      <span style={{ fontSize: 26, fontWeight: 800, color: "#33291a", fontFamily: "var(--font-display, inherit)", lineHeight: 1.2, textAlign: "center" }}>
+        {l.kind === "letters"
+          ? l.chars.map((ch, i) => (
+              <span key={i} className="pb-slot" data-ch={ch === " " ? " " : ch}>
+                <span
+                  className="pb-letter"
+                  style={{ display: "inline-block", animationDelay: `${LETTER_LEAD_MS + i * LETTER_STAGGER_MS}ms` }}
+                >
+                  {ch === " " ? " " : ch}
+                </span>
+              </span>
+            ))
+          : (
+            <span className="pb-slot" data-ch={l.text}>
+              <span className="pb-word" style={{ display: "inline-block" }}>{l.text}</span>
+            </span>
+          )}
+      </span>
+    </div>
+  );
+};
+
+/** PK-R6 · H1 · THE PAINTED SEAL (round-1 critique, finding 5 — „a generic flat
+ *  white-circle Material icon dropped onto painted art"). The critic was exactly
+ *  right, and it was the worst place in the chapter to be right about: a ✓ glyph
+ *  in a white disc is an app's success toast, and it was the ONLY thing on
+ *  screen at the moment the game pays the child for the work.
+ *
+ *  The payoff is a SEAL now: a torn-edged parchment disc with a green ink ring
+ *  pressed into it and a brush-drawn check that is fat through the turn and
+ *  tapers off the tail, the way a nib empties. One inline SVG — no asset, no
+ *  font glyph — under the same „full-code animation is legitimate" clause the
+ *  ink creature rides (doc 44 B14), so it carries the book's palette by
+ *  construction and scales without a second file to commission. */
+const PaintedSeal = ({ size = 96 }: { size?: number }): React.ReactElement => (
+  <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label="richtig">
+    <defs>
+      <radialGradient id="pb-seal-face" cx="36%" cy="24%" r="80%">
+        <stop offset="0%" stopColor="#fffdf3" />
+        <stop offset="58%" stopColor="#f4e9cd" />
+        <stop offset="100%" stopColor="#e0cda1" />
+      </radialGradient>
+    </defs>
+    {/* pressed by a hand, so it does not sit square to the page */}
+    <g transform="rotate(-6 50 50)">
+      {/* the disc: no two quadrants the same, and no quadrant a true arc */}
+      <path
+        d="M50 3 C65 2 78 8 86 18 C95 28 98 41 96 53 C93 66 85 79 73 87 C62 94 48 97 36 93 C24 89 13 79 7 67 C2 55 3 39 11 27 C19 15 33 4 50 3 Z"
+        fill="url(#pb-seal-face)"
+        stroke="#b78d51"
+        strokeWidth="3.2"
+        strokeLinejoin="round"
+      />
+      {/* where the wash pooled while the paper dried */}
+      <ellipse cx="64" cy="70" rx="21" ry="13" fill="rgba(176,142,88,0.16)" />
+      <ellipse cx="33" cy="30" rx="16" ry="11" fill="rgba(255,253,244,0.5)" />
+      {/* the impressed ring, BROKEN — a stamp never bites the whole way round */}
+      <path d="M20 22 C29 13 40 10 52 11 C63 12 73 17 80 25" fill="none" stroke="rgba(79,122,52,0.4)" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M88 44 C89 57 84 69 74 78" fill="none" stroke="rgba(79,122,52,0.34)" strokeWidth="2.1" strokeLinecap="round" />
+      <path d="M46 88 C34 87 23 80 16 70" fill="none" stroke="rgba(79,122,52,0.3)" strokeWidth="1.9" strokeLinecap="round" />
+      {/* the brush check: thin off the tail, fat through the turn, lifting at
+          the tip — the shape a nib actually leaves, drawn as an outline rather
+          than as a stroked polyline, which is what made the old one an icon */}
+      <path
+        d="M21 52.5 C24 49.5 28.5 50 30.5 53 L45.5 69.5 L70 24.8 C71.2 22.6 74 22.8 74.6 25.2 C75 27 74.4 28.4 73.6 29.8 L50.6 75.2 C48.6 78.6 44.6 78.6 42.4 75.4 L23.6 55.6 C21.8 54.4 20.4 53.6 21 52.5 Z"
+        fill="#4f7a34"
+      />
+      {/* the flick the brush threw coming off the page */}
+      <circle cx="79" cy="20" r="1.7" fill="rgba(79,122,52,0.8)" />
+      <circle cx="83.5" cy="24" r="1" fill="rgba(79,122,52,0.55)" />
+      {/* the gouache sheen every painted surface in this book carries top-left */}
+      <path d="M19 24 C27 14 39 10 51 11" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="2.6" strokeLinecap="round" />
+    </g>
+  </svg>
+);
+
+/** PK-R6 · H1 · THE PAINTED CAGE (round-1 critique, finding 4 — „a player has no
+ *  way to recognize this shape as ‚something caged is here', which fails the
+ *  telegraph-fairness bar for a stated core mechanic").
+ *
+ *  This is the ONE card in the chapter that teaches what a cage is, and it was
+ *  teaching it with „🎒↑" — a system emoji, in the reader's own font, over
+ *  painted art. So the teaching moment now shows the thing: a woven vessel with
+ *  BARS across its mouth, a latch on the front, and a warm light behind the bars
+ *  that is the someone inside. The ↑ the copy asks for is drawn rising out of
+ *  it, so the shape and the verb arrive as one picture.
+ *
+ *  One inline SVG — no asset, no glyph — under doc 44 B14's „full-code
+ *  animation is legitimate" clause, the same clause the seal above rides. It
+ *  carries the book's palette by construction and needs no commission to ship.
+ */
+export const PaintedCage = ({ size = 128 }: { size?: number }): React.ReactElement => (
+  <svg width={size} height={size} viewBox="0 0 100 100" role="img" aria-label="ein Käfig mit jemandem darin">
+    <defs>
+      <radialGradient id="pb-cage-halo" cx="50%" cy="62%" r="50%">
+        <stop offset="0%" stopColor="#ffdd93" stopOpacity="0.55" />
+        <stop offset="100%" stopColor="#ffdd93" stopOpacity="0" />
+      </radialGradient>
+      <radialGradient id="pb-cage-glow" cx="50%" cy="46%" r="62%">
+        <stop offset="0%" stopColor="#fff4d2" stopOpacity="0.98" />
+        <stop offset="46%" stopColor="#ffd98d" stopOpacity="0.82" />
+        <stop offset="100%" stopColor="#e8a94b" stopOpacity="0.12" />
+      </radialGradient>
+      <linearGradient id="pb-cage-body" x1="18%" y1="10%" x2="82%" y2="96%">
+        <stop offset="0%" stopColor="#a8c46a" />
+        <stop offset="52%" stopColor="#7d9f4a" />
+        <stop offset="100%" stopColor="#5a7734" />
+      </linearGradient>
+      {/* everything „inside" is clipped to the vessel, so the light and the
+          captive can only ever be seen THROUGH the bars */}
+      <clipPath id="pb-cage-inside">
+        <path d="M18 46 C17 40 24 36 32 35 C42 34 60 34 70 36 C78 37 84 41 83 47 L79 76 C78 84 70 89 60 90 L42 90 C31 89 23 84 22 76 Z" />
+      </clipPath>
+    </defs>
+    {/* the soft painterly halo: warmth leaking out of a shut thing */}
+    <ellipse cx="50" cy="62" rx="42" ry="34" fill="url(#pb-cage-halo)" />
+    <g transform="rotate(-4 50 60)">
+      {/* the vessel — no two sides the same, the way a painted thing never is */}
+      <path
+        d="M18 46 C17 40 24 36 32 35 C42 34 60 34 70 36 C78 37 84 41 83 47 L79 76 C78 84 70 89 60 90 L42 90 C31 89 23 84 22 76 Z"
+        fill="url(#pb-cage-body)"
+        stroke="#3d5220"
+        strokeWidth="3"
+        strokeLinejoin="round"
+      />
+      {/* SOMEBODY IS IN THERE — drawn inside the vessel, under the bars: a lit
+          hollow and a small head-and-shoulders against it. Not a face: a captive
+          you can read the expression of is a captive who is already out, and
+          this card comes before the child has met her. */}
+      <g clipPath="url(#pb-cage-inside)">
+        <ellipse cx="50" cy="63" rx="29" ry="23" fill="url(#pb-cage-glow)" />
+        <path
+          d="M50 47 C55 47 58.5 50.5 58.5 55 C58.5 58 57 60.4 54.6 61.8 C61 63.6 65 68 66 74 L66 90 L34 90 L34 74 C35 68 39 63.6 45.4 61.8 C43 60.4 41.5 58 41.5 55 C41.5 50.5 45 47 50 47 Z"
+          fill="#8a6534"
+          opacity="0.62"
+        />
+      </g>
+      {/* THE BARS — the one feature that makes the shape a cage */}
+      <g stroke="#f3ead2" strokeWidth="3.1" strokeLinecap="round" opacity="0.94">
+        <path d="M33 40 L31 86" />
+        <path d="M43 38.5 L42 88" />
+        <path d="M53 38 L53 89" />
+        <path d="M63 38.5 L65 88" />
+        <path d="M72 40 L75 84" />
+      </g>
+      <path d="M20 50 C38 46 64 46 82 50" fill="none" stroke="#f3ead2" strokeWidth="3.1" strokeLinecap="round" opacity="0.9" />
+      <path d="M22 72 C40 68 62 68 80 72" fill="none" stroke="#f3ead2" strokeWidth="2.8" strokeLinecap="round" opacity="0.82" />
+      {/* the latch: shut, and the only thing between the child and the friend.
+          It hangs on the vessel's FRONT, below the captive's head — a padlock
+          across somebody's face reads as a mask rather than as a lock */}
+      <rect x="43.5" y="70" width="14" height="11" rx="2.5" fill="#e7b357" stroke="#8a5f1f" strokeWidth="2.2" />
+      <path d="M47.2 70 L47.2 65.5 C47.2 62 53.8 62 53.8 65.5 L53.8 70" fill="none" stroke="#8a5f1f" strokeWidth="2.4" strokeLinecap="round" />
+      {/* the gouache sheen the book leaves in every top-left */}
+      <path d="M24 44 C33 39 44 37 55 37" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="2.6" strokeLinecap="round" />
+    </g>
+    {/* the verb, rising out of the thing it acts on */}
+    <g transform="translate(50 17)">
+      <path d="M0 -11 L10 4 L4 4 L4 14 L-4 14 L-4 4 L-10 4 Z" fill="#f6f2e8" stroke="#243048" strokeWidth="2" strokeLinejoin="round" />
+    </g>
+  </svg>
+);
+
+/** PK-R6 · H1 · THE MOTES (finding 7 — „no confetti, particles, light, screen
+ *  response or character reaction"). Ten of them thrown off the seal along a
+ *  ring the index alone decides: no randomness anywhere, so the celebration a
+ *  replayed tape plays is the celebration the child saw. Chalk and amber
+ *  alternate — the book's own two-colour dust (PaintScene's puff). */
+const CHEER_MOTES = 10;
+const Motes = (): React.ReactElement => (
+  <>
+    {Array.from({ length: CHEER_MOTES }, (_, i) => {
+      const ang = (i / CHEER_MOTES) * Math.PI * 2 + (i % 3) * 0.19;
+      const dist = 54 + (i % 4) * 13;
+      // sized against the RENDER, not against a guess: at 2.4–4.6 px they read
+      // as dust on the lens rather than as a celebration
+      const r = 3.6 + (i % 3) * 1.5;
+      return (
+        <span
+          key={i}
+          className="pb-spark"
+          aria-hidden
+          style={{
+            width: r * 2, height: r * 2,
+            background: i % 2 === 0 ? "#f6f2e8" : "#e8c07a",
+            boxShadow: i % 2 === 0 ? "0 0 7px rgba(246,242,232,0.9)" : "0 0 9px rgba(232,192,122,0.85)",
+            animationDelay: `${60 + (i % 5) * 26}ms`,
+            ["--pb-dx" as string]: `${Math.round(Math.cos(ang) * dist)}px`,
+            ["--pb-dy" as string]: `${Math.round(Math.sin(ang) * dist)}px`,
+          } as React.CSSProperties}
+        />
+      );
+    })}
+  </>
+);
+
+/** PK-R6 · C · beat 3 of the resolution (doc 44 §3.1.7): the celebration, held
+ *  until the world has visibly finished changing — and staged OVER that changed
+ *  world rather than inside the card, because the card is what just got out of
+ *  its way. This is the old in-card verdict beat, moved to where the order now
+ *  puts it: last.
+ *
+ *  PK-R6 · H1 (finding 7): it is now a BEAT rather than an icon swap — a warm
+ *  ray fan opens behind the seal, ten motes are thrown outward, and the seal
+ *  itself stamps down with the verdict's own overshoot. The world's half of the
+ *  same flourish (sparks and a light flash ON the thing the child just freed)
+ *  is in PaintScene.redeemFlourish; this is the card's half, and the two play
+ *  together because both hang off the same restore-hold. */
+export const Cheer = ({ align = "center" }: { align?: CardAlign }): React.ReactElement => (
+  <div style={{ ...alignedWrap(align), background: "transparent", pointerEvents: "none" }}>
+    <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", width: 96, height: 96 }}>
+      <div className="pb-rays" aria-hidden style={{ position: "absolute", width: 240, height: 240, borderRadius: "50%" }} />
+      <Motes />
+      <div className="pb-verdict" style={{ filter: "drop-shadow(0 4px 14px rgba(30,20,10,0.34))" }}>
+        <PaintedSeal />
+      </div>
+    </div>
   </div>
 );
 
@@ -58,7 +368,7 @@ const hasAnswer = (t: GameTaskV2): t is Extract<GameTaskV2, { kind: "typed" | "s
   t.kind === "typed" || t.kind === "spell";
 
 export function CardShell({
-  task, attempts, onDismiss, align = "center", clockMs, verdict = false, children,
+  task, attempts, onDismiss, align = "center", clockMs, art, portraitWash, round, flight, doff = false, children,
 }: {
   task: GameTaskV2;
   attempts: number;
@@ -66,8 +376,16 @@ export function CardShell({
   align?: CardAlign;
   /** ms the chalk clock has to run, or 0 for no clock at all */
   clockMs?: number;
-  /** the solved beat is playing — the world comes back when it ends */
-  verdict?: boolean;
+  /** the level's only-present art map (stem → url), for the portrait slot */
+  art?: Record<string, string>;
+  /** how drained the asker is right now (0…1) — the portrait matches the world */
+  portraitWash?: number;
+  /** PK-R6 · D: the reawakening's own counter („Runde 3/6", doc 44 §3.3) */
+  round?: { n: number; of: number };
+  /** the answer flying home, or null while the card is still being played */
+  flight?: string | null;
+  /** the restore-hold: the card steps out of the way so the world can be seen */
+  doff?: boolean;
   children: React.ReactNode;
 }): React.ReactElement {
   const showDesc = attempts >= 1 && task.hints?.deDesc;
@@ -76,18 +394,50 @@ export function CardShell({
   // kind's own face leaves room for (R3-10: a spell card already draws its
   // letter row; see gapLevelFor).
   const gap = hasAnswer(task) ? renderGapHint(task.answer, gapLevelFor(task.kind, attempts)) : "";
+  // §3.1.5: the asker's painted face, when this card declares one AND it has
+  // actually landed. Both halves matter — the declaration is the author's
+  // (which cell of the being is talking), the presence is the disk's.
+  const portrait = task.stimulus.type === "entity" && task.stimulus.art !== undefined
+    ? art?.[task.stimulus.art]
+    : undefined;
 
   return (
-    <div className="pb-veil" style={alignedWrap(align)}>
+    <div className={`pb-veil${doff ? " pb-doff" : ""}`} style={alignedWrap(align)}>
+      {/* PK-R6 · H2 (round-2 finding 6): the world beside the card, pushed out
+          of focus so its cut-off edges read as a backdrop rather than as a
+          framing mistake — sharp over the being the card is about. Listed FIRST
+          so the card, its wipe and everything else paint over it. */}
+      <div className="pb-defocus" aria-hidden />
       <InkWipe />
       <div className="pb-card" style={{ ...cardBox, width: align === "center" ? "90%" : "46%", minWidth: 300 }}>
+        <Tether align={align} />
         {(clockMs ?? 0) > 0 && <ChalkClock ms={clockMs ?? QUICKFIRE_MS} />}
+
+        {/* PK-R6 · D · THE ROUND COUNTER (doc 44 §3.3, „6 rounds, Runde n/6").
+            A ceremony a six-year-old can see the end of: six is a long way to
+            be asked questions by a friend who is still grey, and the difference
+            between a rite and an interrogation is knowing how far it runs. It
+            is a LABEL, never a clock — the reawakening is calm by the timer
+            policy (doc 44 §2.9) and no chalk ring ever runs beside it. */}
+        {round !== undefined && (
+          <p style={{ fontSize: 11.5, letterSpacing: "0.16em", textTransform: "uppercase", color: "#a8926a", margin: "0 0 6px", fontFamily: "var(--font-label, inherit)" }}>
+            Runde {round.n}/{round.of}
+          </p>
+        )}
 
         {task.stimulus.type === "image" && (
           <p style={{ fontSize: 13, color: "#8a7a58", margin: "0 0 6px", fontStyle: "italic" }}>🖼 {task.stimulus.altDe}</p>
         )}
         {task.stimulus.type === "entity" && (
-          <p style={{ fontSize: 13, color: "#8a7a58", margin: "0 0 6px", fontStyle: "italic" }}>✨ {task.stimulus.showsDe}</p>
+          <>
+            {portrait !== undefined && <Portrait url={portrait} altDe={task.stimulus.showsDe} wash={portraitWash} />}
+            {/* the fiction line stays either way: with a portrait it is the
+                caption under the face, without one it IS the face (the ✨ is
+                the placeholder's own mark, so it goes when the art arrives) */}
+            <p style={{ fontSize: 13, color: "#8a7a58", margin: "0 0 6px", fontStyle: "italic" }}>
+              {portrait === undefined ? "✨ " : ""}{task.stimulus.showsDe}
+            </p>
+          </>
         )}
         <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 6px" }}>{task.storyDe}</p>
         {task.promptEn && (
@@ -107,24 +457,17 @@ export function CardShell({
         )}
 
         <button
-          style={{ ...cardBtn, marginTop: 16, fontSize: 13, background: "transparent", border: "1px solid #d8c9a0", color: "#8a7a58" }}
+          // the quiet way out: the same paper as every other chip, pressed flat
+          // — a secondary action should read as further back on the page, not
+          // as a different material (round-1 critique, finding 3)
+          style={{ ...cardBtn, marginTop: 16, fontSize: 13, backgroundColor: "rgba(247,237,213,0.5)", borderColor: "#cdb387", color: "#8a7a58", boxShadow: "none" }}
           onClick={onDismiss}
         >
           Später ↩
         </button>
 
-        {/* the verdict beat: the card answers back before the world resumes */}
-        {verdict && (
-          <div
-            className="pb-verdict"
-            style={{
-              position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
-              background: "rgba(253, 247, 230, 0.86)", borderRadius: 14, pointerEvents: "none",
-            }}
-          >
-            <span style={{ fontSize: 44, color: "#4f7a34" }} role="img" aria-label="richtig">✓</span>
-          </div>
-        )}
+        {/* beat 1 of the resolution: the answer flies home over the card face */}
+        {flight !== null && flight !== undefined && flight.length > 0 && <AnswerHome answer={flight} />}
       </div>
     </div>
   );

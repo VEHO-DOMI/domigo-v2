@@ -63,21 +63,31 @@ describe("entPoseCell — the arena guardian's motion cells (A-4)", () => {
   // entTex resolves it against whatever skin the entity wears (here: tafel)
   const tafel = (state: string): string => entPoseCell(ent({ role: "guardian", state }));
 
-  it("maps the guardian's own states onto the ent_tafel_motion cells", () => {
-    expect(tafel("telegraph")).toBe("windup"); // the wind-up before the throw
-    expect(tafel("stagger")).toBe("stagger"); // the counter-window's tell
+  it("maps the guardian's own states onto the FLIGHT sheet (PK-R6 · E)", () => {
+    // the tell is three cells: dip, gather, REAR — and the rear is what holds
+    // right up to the release, however long the tier and knot make the telegraph
+    expect(tafel("telegraph")).toBe("windup0");
+    expect(entPoseCell(ent({ role: "guardian", state: "telegraph", timer: 12 }))).toBe("windup1");
+    expect(entPoseCell(ent({ role: "guardian", state: "telegraph", timer: 29 }))).toBe("windup");
+    expect(tafel("throw")).toBe("throw");
+    // the counter-window: she has come down and holds STILL, because the card
+    // asks the child to read four chalked words off her
+    expect(tafel("window")).toBe("land1");
     expect(tafel("consoled")).toBe("win"); // the friend, after the console beat
-    expect(tafel("idle")).toBe("a");
+    expect(tafel("sad")).toBe("rest"); // beaten, resting on the boards
+    expect(tafel("fly")).toBe("a"); // hovering: no travel, no bank
   });
 
   it("reads `consoled` BEFORE the dazed catch-all, or the win pose is unreachable", () => {
     // guardianKnotSolved sets state="consoled" on the last knot and leaves
     // redeemed false — the win cell is the payoff of doc 31 §3's console beat
     expect(tafel("consoled")).not.toBe("dazed");
-    // a defeated NON-guardian still dazes, and a redeemed guardian still dazes
+    // a defeated NON-guardian still dazes …
     expect(entPoseCell(ent({ role: "chaser", state: "consoled" }))).toBe("dazed");
-    expect(entPoseCell(ent({ role: "guardian", state: "dazed" }))).toBe("dazed");
-    expect(entPoseCell(ent({ role: "guardian", state: "idle", redeemed: true }))).toBe("dazed");
+    // … but a GUARDIAN never may: `dazed` is a retired grounded-easel cell, and
+    // the flight rig answers with its landed cell instead (PK-R6 · E ruling).
+    expect(entPoseCell(ent({ role: "guardian", state: "dazed" }))).toBe("land1");
+    expect(entPoseCell(ent({ role: "guardian", state: "idle", redeemed: true }))).toBe("land1");
   });
 
   it("leaves every non-guardian role's telegraph alone (TAMPER)", () => {

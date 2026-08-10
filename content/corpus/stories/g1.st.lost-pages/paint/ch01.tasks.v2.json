@@ -2,7 +2,7 @@
  "schema": "gameTasks@2",
  "chapter": "ch01",
  "unit": "g1-u01",
- "note": "gameTasks@2 · ch01. PK-R3b (doc 41 §1/§2): the FIELD palette is choice · wheel · restore · oddone; the boss ritual and the finale keep their scripted kinds. `restore` is the chapter's core mechanic — name the greyed being, then give its colour back.",
+ "note": "gameTasks@2 · ch01. PK-R3b (doc 41 §1/§2): the FIELD palette is choice · wheel · restore · oddone; the boss ritual and the finale keep their scripted kinds. `restore` is the chapter's core mechanic — name the greyed being, then give its colour back. PK-R6 · D (doc 44 §3.3): the `rescue` pool is Merle's REAWAKENING — six rounds in file order, one per painted wrong-action pose, all bound to skin `merle`. PK-R6 · F: the set now belongs to the restaged world — the contraction class (doc 44 B20) is asked by a being that POINTS at a staged object, the number quickfires run on a moth swarm in every phase, the door series carries the unit's negations and its question, and the guardian's cards wear the cell she is actually in when they open (`tafel_land1` in the counter-window, `tafel_rest` when she is beaten).",
  "items": [
   {
    "id": "g1.paint.ch01.enc.pencil.c1",
@@ -10,7 +10,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein grauer Bleistift stellt sich dir in den Weg"
+    "showsDe": "Ein grauer Bleistift stellt sich dir in den Weg",
+    "art": "pencil_a"
    },
    "storyDe": "Sag, was er ist — dann macht er Platz!",
    "promptEn": "What is it?",
@@ -38,7 +39,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Bleistift fuchtelt mit seiner Spitze"
+    "showsDe": "Der Bleistift fuchtelt mit seiner Spitze",
+    "art": "pencil_act"
    },
    "storyDe": "Was kann er? Sag es ihm!",
    "promptEn": "What can it do?",
@@ -66,7 +68,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Bleistift hält dir vier Wörter hin"
+    "showsDe": "Der Bleistift hält dir vier Wörter hin",
+    "art": "pencil_b"
    },
    "storyDe": "Drei Sachen liegen im Klassenzimmer. Welche nicht?",
    "select": "odd",
@@ -96,7 +99,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein blasser Radiergummi hüpft dir in den Weg"
+    "showsDe": "Ein blasser Radiergummi hüpft dir in den Weg",
+    "art": "eraser_squash"
    },
    "storyDe": "Sag, was er ist — dann hüpft er beiseite!",
    "promptEn": "What is it?",
@@ -125,7 +129,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Radiergummi ist ganz grau geworden"
+    "showsDe": "Der Radiergummi ist ganz grau geworden",
+    "art": "eraser_a"
    },
    "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
    "nameOptions": [
@@ -161,7 +166,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Radiergummi legt vier Sachen aus"
+    "showsDe": "Der Radiergummi legt vier Sachen aus",
+    "art": "eraser_act"
    },
    "storyDe": "Drei Sachen sind IN der Federtasche. Welche nicht?",
    "select": "odd",
@@ -187,12 +193,42 @@
    "grounding": "u01 pencil-case contents vs classroom furniture"
   },
   {
+   "id": "g1.paint.ch01.enc.eraser.k1",
+   "use": "encounter",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Radiergummi hüpft und zeigt auf das Buch",
+    "art": "eraser_b"
+   },
+   "storyDe": "Nur ein Satz ist richtig. Welcher?",
+   "promptEn": "What is it?",
+   "options": [
+    "It's a book.",
+    "Its a book.",
+    "It a book."
+   ],
+   "answer": "It's a book.",
+   "skins": [
+    "eraser"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Zwei Wörter werden eins: it und is.",
+    "deWord": "Der Apostroph zeigt, wo ein Buchstabe fehlt."
+   },
+   "grounding": "u01 structure g1u01.s.contractions, Regel „contractions-apostrophe“ („A contraction joins two words into one. The apostrophe (') shows where letters are missing.“) + „contractions-its-vs-its“ („It's a nice day. (= It is)“) · Nomen g1u01.w.book · zeigt auf p1-obj-book (c=50, der Radiergummi steht c=46)"
+  },
+  {
    "id": "g1.paint.ch01.enc.pen.c1",
    "use": "encounter",
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Füller mit feiner Spitze verbeugt sich"
+    "showsDe": "Ein Füller mit feiner Spitze verbeugt sich",
+    "art": "pen_act"
    },
    "storyDe": "Sag ihm freundlich, was er ist!",
    "promptEn": "What is it?",
@@ -220,7 +256,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Füller steht grau da, die Spitze blass"
+    "showsDe": "Der Füller steht grau da, die Spitze blass",
+    "art": "pen_a"
    },
    "storyDe": "Sag, wer er ist — dann gib ihm die Farbe!",
    "nameOptions": [
@@ -255,7 +292,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Füller tropft vier Wörter auf das Blatt"
+    "showsDe": "Der Füller tropft vier Wörter auf das Blatt",
+    "art": "pen_b"
    },
    "storyDe": "Drei Sachen sind aus Papier. Welche nicht?",
    "select": "odd",
@@ -285,7 +323,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Farbkasten klappert wütend mit dem Deckel"
+    "showsDe": "Ein Farbkasten klappert wütend mit dem Deckel",
+    "art": "paintbox_telegraph"
    },
    "storyDe": "Begrüße ihn — dann hört er auf zu spritzen!",
    "promptEn": "What do you say?",
@@ -312,7 +351,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Farbkasten klappt seine Näpfchen auf"
+    "showsDe": "Der Farbkasten klappt seine Näpfchen auf",
+    "art": "paintbox_act"
    },
    "storyDe": "Sag, wie die Farben zum Malen heißen!",
    "promptEn": "What is it?",
@@ -340,7 +380,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Farbkasten hat vier Wörter auf den Deckel gemalt"
+    "showsDe": "Der Farbkasten hat vier Wörter auf den Deckel gemalt",
+    "art": "paintbox_a"
    },
    "storyDe": "Was gehört NICHT zum Malen?",
    "select": "odd",
@@ -365,12 +406,42 @@
    "grounding": "u01 art words vs furniture"
   },
   {
+   "id": "g1.paint.ch01.enc.paintbox.k1",
+   "use": "encounter",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Farbkasten zeigt auf den langen Stift am Boden",
+    "art": "paintbox_a"
+   },
+   "storyDe": "Nur ein Satz stimmt. Welcher ist es?",
+   "promptEn": "What is it?",
+   "options": [
+    "It's a pencil.",
+    "Is a pencil.",
+    "Its a pencil."
+   ],
+   "answer": "It's a pencil.",
+   "skins": [
+    "paintbox"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Ohne it fehlt dem Satz, wer gemeint ist.",
+    "deWord": "Der Apostroph zeigt, wo ein Buchstabe fehlt."
+   },
+   "grounding": "u01 structure g1u01.s.contractions, Regel „contractions-apostrophe“ („A contraction joins two words into one. The apostrophe (') shows where letters are missing.“) + „contractions-its-vs-its“ („It's a nice day. (= It is)“) · Nomen g1u01.w.pencil · zeigt auf p2-obj-pencil (c=48, der Farbkasten steht c=46)"
+  },
+  {
    "id": "g1.paint.ch01.enc.ranzen.c1",
    "use": "encounter",
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Eine schwere Schultasche stampft auf dich zu"
+    "showsDe": "Eine schwere Schultasche stampft auf dich zu",
+    "art": "ranzen_stomp"
    },
    "storyDe": "Sag ihr, sie soll sich SETZEN!",
    "promptEn": "What do you say?",
@@ -397,7 +468,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Schultasche hat alles falsch einsortiert"
+    "showsDe": "Die Schultasche hat alles falsch einsortiert",
+    "art": "ranzen_a"
    },
    "storyDe": "Was gehört NICHT in die Federtasche?",
    "select": "odd",
@@ -427,7 +499,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Schultasche wirft ihre Karten durcheinander"
+    "showsDe": "Die Schultasche wirft ihre Karten durcheinander",
+    "art": "ranzen_act"
    },
    "storyDe": "Welches Wort ist KEINE Zahl?",
    "select": "odd",
@@ -452,12 +525,42 @@
    "grounding": "u01 numbers vs object"
   },
   {
+   "id": "g1.paint.ch01.enc.ranzen.k1",
+   "use": "encounter",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Schultasche zeigt auf den kleinen Kasten",
+    "art": "ranzen_a"
+   },
+   "storyDe": "Ein Satz ist richtig — welcher?",
+   "promptEn": "What is it?",
+   "options": [
+    "It's a pencil sharpener.",
+    "It a pencil sharpener.",
+    "Is a pencil sharpener."
+   ],
+   "answer": "It's a pencil sharpener.",
+   "skins": [
+    "ranzen"
+   ],
+   "phases": [
+    "p3"
+   ],
+   "hints": {
+    "deDesc": "Ohne is sagt der Satz gar nichts aus.",
+    "deWord": "Der Apostroph zeigt, wo ein Buchstabe fehlt."
+   },
+   "grounding": "u01 structure g1u01.s.contractions, Regel „contractions-apostrophe“ („A contraction joins two words into one. The apostrophe (') shows where letters are missing.“) + „contractions-its-vs-its“ („It's a nice day. (= It is)“) · Nomen g1u01.w.pencil-sharpener (Lexikon-Phrase „pencil sharpener“) · zeigt auf p3-obj-sharpener (c=48, die Schultasche steht c=47)"
+  },
+  {
    "id": "g1.paint.ch01.enc.heft.c1",
    "use": "encounter",
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Heft flattert mit offenen Seiten heran"
+    "showsDe": "Ein Heft flattert mit offenen Seiten heran",
+    "art": "heft_act"
    },
    "storyDe": "Zum Rechnen und Schreiben — was ist das?",
    "promptEn": "What is it?",
@@ -485,7 +588,8 @@
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Das Heft flattert grau und blass vorbei"
+    "showsDe": "Das Heft flattert grau und blass vorbei",
+    "art": "heft_a"
    },
    "storyDe": "Sag, wer es ist — dann gib ihm die Farbe!",
    "nameOptions": [
@@ -520,7 +624,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Das Heft schlägt eine Seite mit vier Wörtern auf"
+    "showsDe": "Das Heft schlägt eine Seite mit vier Wörtern auf",
+    "art": "heft_b"
    },
    "storyDe": "Was gehört NICHT in die Schultasche?",
    "select": "odd",
@@ -545,90 +650,108 @@
    "grounding": "u01 school things vs animal"
   },
   {
-   "id": "g1.paint.ch01.enc.tafel.c1",
+   "id": "g1.paint.ch01.enc.heft.w1",
    "use": "encounter",
-   "kind": "choice",
+   "kind": "wheel",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel wirft mit Kreide nach dir"
+    "showsDe": "Das Heft schlägt eine Seite mit einem Wort auf",
+    "art": "heft_bank"
    },
-   "storyDe": "Sag, was sie ist — dann hält sie inne!",
-   "promptEn": "What is it?",
-   "options": [
-    "a board",
-    "a door",
-    "a desk"
+   "storyDe": "Dreh das Rad auf die Zahl aus dem Heft!",
+   "variant": "word-to-digit",
+   "shown": "twenty-five",
+   "values": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25"
    ],
-   "answer": "a board",
+   "answer": "25",
    "skins": [
-    "tafel"
+    "heft"
    ],
    "phases": [
-    "p4"
+    "p3"
    ],
    "hints": {
-    "deDesc": "Vorne im Klassenzimmer, man schreibt mit Kreide darauf.",
-    "deWord": "Auf Deutsch: die Tafel."
+    "deDesc": "Die höchste Zahl, die du kennst.",
+    "deWord": "Auf Deutsch: fünfundzwanzig."
    },
-   "grounding": "u01 object: board"
+   "grounding": "u01 numbers 1–25 (Lexikon „twenty-five“) · das Heft ist, wo man sie schreibt: g1u01.w.to-write, SB „Write the numbers.“"
   },
   {
-   "id": "g1.paint.ch01.enc.tafel.c2",
+   "id": "g1.paint.ch01.enc.heft.w2",
    "use": "encounter",
-   "kind": "choice",
+   "kind": "wheel",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel rollt heran und wartet auf dein Wort"
+    "showsDe": "Das Heft flattert und zeigt dir ein Wort",
+    "art": "heft_act"
    },
-   "storyDe": "Niemand redet mit ihr. Begrüße sie freundlich!",
-   "promptEn": "What do you say?",
-   "options": [
-    "Hello!",
-    "Sorry!",
-    "Close!"
+   "storyDe": "Lies das Wort — dreh das Rad darauf!",
+   "variant": "word-to-digit",
+   "shown": "eleven",
+   "values": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25"
    ],
-   "answer": "Hello!",
+   "answer": "11",
    "skins": [
-    "tafel"
+    "heft"
    ],
    "phases": [
-    "p4"
+    "p3"
    ],
    "hints": {
-    "deDesc": "Womit fängt jedes Gespräch an?",
-    "deWord": "Auf Deutsch: Hallo."
+    "deDesc": "Nach zehn kommt sie — und sie heißt nicht one-one.",
+    "deWord": "Auf Deutsch: elf."
    },
-   "grounding": "u01 greetings — and the seed of the finale word"
-  },
-  {
-   "id": "g1.paint.ch01.enc.tafel.q1",
-   "use": "encounter",
-   "kind": "oddone",
-   "stimulus": {
-    "type": "entity",
-    "showsDe": "Die Tafel kritzelt vier Wörter auf sich selbst"
-   },
-   "storyDe": "Was gehört NICHT ins Klassenzimmer?",
-   "select": "odd",
-   "items": [
-    "board",
-    "desk",
-    "chair",
-    "frog"
-   ],
-   "correct": [
-    "frog"
-   ],
-   "skins": [
-    "tafel"
-   ],
-   "phases": [
-    "p4"
-   ],
-   "hints": {
-    "deDesc": "Drei Dinge stehen im Klassenzimmer. Eines quakt."
-   },
-   "grounding": "u01 classroom things vs animal"
+   "grounding": "u01 numbers 1–25 (Lexikon „eleven“); die erste unregelmäßige Zahl nach ten · g1u01.w.to-write, SB „Write the numbers.“"
   },
   {
    "id": "g1.paint.ch01.qf.moths.w1",
@@ -636,17 +759,38 @@
    "kind": "wheel",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein Zahlen-Falter surrt dir um die Nase"
+    "showsDe": "Ein Zahlen-Falter surrt dir um die Nase",
+    "art": "moths_a"
    },
    "storyDe": "Dreh das Rad auf seine Zahl!",
    "variant": "digit-to-word",
    "shown": "13",
    "values": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
     "eleven",
     "twelve",
     "thirteen",
     "fourteen",
-    "sixteen"
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+    "twenty-one",
+    "twenty-two",
+    "twenty-three",
+    "twenty-four",
+    "twenty-five"
    ],
    "answer": "thirteen",
    "skins": [
@@ -667,17 +811,38 @@
    "kind": "wheel",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Falter setzt sich kurz auf deine Schulter"
+    "showsDe": "Der Falter setzt sich kurz auf deine Schulter",
+    "art": "moths_rest"
    },
    "storyDe": "Dreh das Rad auf seine Zahl!",
    "variant": "digit-to-word",
    "shown": "7",
    "values": [
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
     "six",
     "seven",
-    "eleven",
+    "eight",
+    "nine",
     "ten",
-    "seventeen"
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+    "twenty-one",
+    "twenty-two",
+    "twenty-three",
+    "twenty-four",
+    "twenty-five"
    ],
    "answer": "seven",
    "skins": [
@@ -698,7 +863,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Falter zeigt dir seine Punkte: • • •"
+    "showsDe": "Der Falter zeigt dir seine Punkte: • • •",
+    "art": "moths_b"
    },
    "storyDe": "Zähl sie — wie viele sind es?",
    "promptEn": "How many?",
@@ -721,6 +887,110 @@
    "grounding": "u01 numbers; three/thirteen"
   },
   {
+   "id": "g1.paint.ch01.qf.moths.p1w1",
+   "use": "quickfire",
+   "kind": "wheel",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein Zahlen-Falter trägt ein Wort auf dem Flügel",
+    "art": "moths_a"
+   },
+   "storyDe": "Dreh das Rad auf die Zahl zu seinem Wort!",
+   "variant": "word-to-digit",
+   "shown": "twenty-one",
+   "values": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25"
+   ],
+   "answer": "21",
+   "skins": [
+    "moths"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Erst die Zwanzig, dann die Eins.",
+    "deWord": "Auf Deutsch: einundzwanzig."
+   },
+   "grounding": "u01 numbers 1–25 (Lexikon „twenty-one“); die Zwanziger werden von hinten gebaut"
+  },
+  {
+   "id": "g1.paint.ch01.qf.moths.p1w2",
+   "use": "quickfire",
+   "kind": "wheel",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Falter hält dir sein Wort entgegen",
+    "art": "moths_b"
+   },
+   "storyDe": "Lies sein Wort — dreh das Rad darauf!",
+   "variant": "word-to-digit",
+   "shown": "four",
+   "values": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25"
+   ],
+   "answer": "4",
+   "skins": [
+    "moths"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Nicht vierzehn, nicht vierzig.",
+    "deWord": "Auf Deutsch: vier."
+   },
+   "grounding": "u01 numbers 1–25 (Lexikon „four“); four/fourteen/forty — das Englisch trägt, die Ziffer ist die Antwort"
+  },
+  {
    "id": "g1.paint.ch01.qf.free.w1",
    "use": "quickfire",
    "kind": "wheel",
@@ -731,11 +1001,31 @@
    "variant": "word-to-digit",
    "shown": "eighteen",
    "values": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
     "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
     "18",
-    "80",
     "19",
-    "17"
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25"
    ],
    "answer": "18",
    "hints": {
@@ -751,7 +1041,7 @@
    "stimulus": {
     "type": "text"
    },
-   "storyDe": "Jemand fragt dich, wie es dir geht. Antworte!",
+   "storyDe": "Antworte freundlich auf Englisch!",
    "promptEn": "How are you?",
    "options": [
     "I'm fine, thanks.",
@@ -792,7 +1082,7 @@
    "stimulus": {
     "type": "text"
    },
-   "storyDe": "Jemand gibt dir dein Buch zurück. Was sagst du?",
+   "storyDe": "Du bekommst dein Buch zurück. Was sagst du?",
    "options": [
     "Thank you!",
     "Stand up!",
@@ -815,11 +1105,31 @@
    "variant": "digit-to-word",
    "shown": "15",
    "values": [
+    "one",
+    "two",
+    "three",
+    "four",
     "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
     "thirteen",
     "fourteen",
     "fifteen",
-    "sixteen"
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+    "twenty-one",
+    "twenty-two",
+    "twenty-three",
+    "twenty-four",
+    "twenty-five"
    ],
    "answer": "fifteen",
    "hints": {
@@ -901,7 +1211,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür klemmt fest und wackelt"
+    "showsDe": "Die Tür klemmt fest und wackelt",
+    "art": "door_a"
    },
    "storyDe": "Sag ihr, sie soll AUFGEHEN!",
    "options": [
@@ -924,7 +1235,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür ist zu — du klopfst an"
+    "showsDe": "Die Tür ist zu — du klopfst an",
+    "art": "door_a"
    },
    "storyDe": "Was ruft die Lehrerin dann?",
    "promptEn": "What do you say?",
@@ -948,7 +1260,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Vor dir steht etwas Hohes aus Holz mit einem Griff"
+    "showsDe": "Vor dir steht etwas Hohes aus Holz mit einem Griff",
+    "art": "door_a"
    },
    "storyDe": "Sag, wovor du gerade stehst!",
    "promptEn": "What is it?",
@@ -973,7 +1286,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der goldene Knauf geht nicht auf"
+    "showsDe": "Der goldene Knauf geht nicht auf",
+    "art": "door_a"
    },
    "storyDe": "Sag das Zauberwort!",
    "options": [
@@ -996,7 +1310,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür wartet auf das Wort der Lehrerin"
+    "showsDe": "Die Tür wartet auf das Wort der Lehrerin",
+    "art": "door_a"
    },
    "storyDe": "Alle sollen gut ZUHÖREN. Sag es ihnen!",
    "promptEn": "What do you say?",
@@ -1021,7 +1336,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Auf dem Zettel an der Tür ist etwas gemalt"
+    "showsDe": "Auf dem Zettel an der Tür ist etwas gemalt",
+    "art": "door_a"
    },
    "storyDe": "Alle sollen HINSCHAUEN. Welches Kommando?",
    "promptEn": "What do you say?",
@@ -1045,7 +1361,8 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tür steht offen, es zieht eiskalt herein"
+    "showsDe": "Die Tür steht offen, es zieht eiskalt herein",
+    "art": "door_open"
    },
    "storyDe": "Sag ihr, sie soll ZUGEHEN!",
    "options": [
@@ -1063,118 +1380,256 @@
    "grounding": "u01 commands; open/close"
   },
   {
-   "id": "g1.paint.ch01.res.satchel.c1",
+   "id": "g1.paint.ch01.door.d8",
+   "use": "door",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür steht offen und schwingt langsam zu",
+    "art": "door_a"
+   },
+   "storyDe": "Halt sie auf — sag es ihr!",
+   "promptEn": "What do you say?",
+   "options": [
+    "Don't close!",
+    "Close!",
+    "Don't open!"
+   ],
+   "answer": "Don't close!",
+   "skins": [
+    "door"
+   ],
+   "hints": {
+    "deDesc": "Ein Befehl mit NICHT fängt anders an.",
+    "deWord": "Auf Deutsch: Mach nicht zu!"
+   },
+   "grounding": "u01 structure g1u01.s.imperatives, Regel „imperatives-negative“ (Don't + Grundform, „Don't stand up!“) · Verb g1u01.w.to-close, SB „Close the door.“"
+  },
+  {
+   "id": "g1.paint.ch01.door.d9",
+   "use": "door",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür malt ein Fragezeichen auf ihr Holz",
+    "art": "door_a"
+   },
+   "storyDe": "Du weißt nicht, wie sie heißt. Frag sie!",
+   "promptEn": "What do you ask?",
+   "options": [
+    "What's your name?",
+    "How are you?",
+    "What's this?"
+   ],
+   "answer": "What's your name?",
+   "skins": [
+    "door"
+   ],
+   "hints": {
+    "deDesc": "Drei Fragen — nur eine fragt nach dem Namen.",
+    "deWord": "Auf Deutsch: Wie heißt du?"
+   },
+   "grounding": "u01 structure g1u01.s.questions-personal-info, Regel „questions-name-email“ („What's your name? – I'm Sue.“) · Lexikon-Phrase „what's your name“"
+  },
+  {
+   "id": "g1.paint.ch01.door.d10",
+   "use": "door",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tür wackelt und wartet auf dein Wort",
+    "art": "door_a"
+   },
+   "storyDe": "Sie ist kein Fenster — sag es auf Englisch!",
+   "promptEn": "What do you say?",
+   "options": [
+    "It isn't a window.",
+    "It's a window.",
+    "It not a window."
+   ],
+   "answer": "It isn't a window.",
+   "skins": [
+    "door"
+   ],
+   "hints": {
+    "deDesc": "is und not werden zu einem Wort.",
+    "deWord": "Auf Deutsch: Sie ist kein Fenster."
+   },
+   "grounding": "u01 structure g1u01.s.contractions, Regel „contractions-apostrophe“ („is not → isn't“) · Nomen g1u01.w.window · die Verneinung, die dem Türreigen (M-E) noch fehlte"
+  },
+  {
+   "id": "g1.paint.ch01.awk.merle.r1",
    "use": "rescue",
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "An einem Seil hängt eine zugeschnürte Schultasche"
+    "showsDe": "Merle steht da und reißt den Mund weit auf",
+    "art": "merle_act_sing1"
    },
-   "storyDe": "Sag, was da hängt — dann geht der Knoten auf!",
-   "promptEn": "What is it?",
+   "storyDe": "Mitten in der Stunde wird Merle ganz laut.",
+   "promptEn": "What do you say?",
    "options": [
-    "school bag",
-    "pencil case",
-    "English book"
+    "Don't sing!",
+    "Clean the board!",
+    "Open your books!"
    ],
-   "answer": "school bag",
+   "answer": "Don't sing!",
    "skins": [
-    "satchel"
+    "merle"
+   ],
+   "phases": [
+    "p2"
    ],
    "hints": {
-    "deDesc": "Die trägst du auf dem Rücken zur Schule.",
-    "deWord": "Auf Deutsch: die Schultasche."
+    "deDesc": "Sie soll damit aufhören — sag es mit Don't.",
+    "deWord": "Auf Deutsch: Sing nicht!"
    },
-   "grounding": "u01 phrase: school bag"
+   "grounding": "u01 imperative (negative): Don't + Grundform (g1u01.s.imperatives, „Don't stand up!“) · sing: g1u01.w.let-s, SB „Let's sing a song!“"
   },
   {
-   "id": "g1.paint.ch01.res.satchel.r1",
-   "use": "rescue",
-   "kind": "restore",
-   "stimulus": {
-    "type": "entity",
-    "showsDe": "Der Knoten ist auf — die Schultasche ist grau"
-   },
-   "storyDe": "Sag, wer sie ist — dann gib ihr die Farbe!",
-   "nameOptions": [
-    "school bag",
-    "pencil case",
-    "uniform",
-    "blazer"
-   ],
-   "name": "school bag",
-   "colourAskDe": "„Ich war braun wie eine Kastanie!“",
-   "colourOptions": [
-    "brown",
-    "blue",
-    "yellow"
-   ],
-   "colour": "brown",
-   "skins": [
-    "satchel"
-   ],
-   "hints": {
-    "deDesc": "Die trägst du auf dem Rücken zur Schule.",
-    "deWord": "Auf Deutsch: die Schultasche — und Braun."
-   },
-   "grounding": "u01 phrase: school bag + colour: brown (matches the sheet)"
-  },
-  {
-   "id": "g1.paint.ch01.res.case.c1",
+   "id": "g1.paint.ch01.awk.merle.r2",
    "use": "rescue",
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "In der Federtasche blinzelt jemand durchs Gitter"
+    "showsDe": "Merle steht mit beiden Schuhen oben auf dem Tisch",
+    "art": "merle_act_stand0"
    },
-   "storyDe": "Sag, was das ist — dann geht der Zipp auf!",
-   "promptEn": "What is it?",
+   "storyDe": "Der Tisch ist kein Boden — sag es ihr!",
+   "promptEn": "What do you say?",
    "options": [
-    "pencil case",
-    "exercise book",
-    "watercolours"
+    "Sit down!",
+    "Stand up!",
+    "Close the door!"
    ],
-   "answer": "pencil case",
+   "answer": "Sit down!",
    "skins": [
-    "pencilcase"
+    "merle"
+   ],
+   "phases": [
+    "p2"
    ],
    "hints": {
-    "deDesc": "Darin stecken Stifte und der Radiergummi.",
-    "deWord": "Auf Deutsch: die Federtasche."
+    "deDesc": "Sie soll wieder auf den Stuhl.",
+    "deWord": "Auf Deutsch: Setz dich hin!"
    },
-   "grounding": "u01 phrase: pencil case"
+   "grounding": "u01 wordbank g1u01.w.to-sit-down, SB „Sit down, children.“ · Gegenstück g1u01.w.to-stand-up („Don't stand up. Sit down.“)"
   },
   {
-   "id": "g1.paint.ch01.res.case.r1",
+   "id": "g1.paint.ch01.awk.merle.r3",
    "use": "rescue",
-   "kind": "restore",
+   "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Zipp ist auf — die Federtasche ist grau"
+    "showsDe": "Auf dem Tisch ringeln sich lauter Kreide-Kringel",
+    "art": "merle_act_scribble1"
    },
-   "storyDe": "Sag, wer sie ist — dann gib ihr die Farbe!",
-   "nameOptions": [
-    "pencil case",
-    "school bag",
-    "English book",
-    "hairband"
+   "storyDe": "Merle hat den ganzen Tisch vollgemalt.",
+   "promptEn": "What do you say?",
+   "options": [
+    "Clean the desk!",
+    "Read the book!",
+    "Listen!"
    ],
-   "name": "pencil case",
-   "colourAskDe": "„Ich war grün wie ein Blatt!“",
-   "colourOptions": [
-    "green",
-    "red",
-    "black"
-   ],
-   "colour": "green",
+   "answer": "Clean the desk!",
    "skins": [
-    "pencilcase"
+    "merle"
+   ],
+   "phases": [
+    "p2"
    ],
    "hints": {
-    "deDesc": "Darin stecken Stifte und der Radiergummi.",
-    "deWord": "Auf Deutsch: die Federtasche — und Grün."
+    "deDesc": "Der Tisch muss wieder sauber werden.",
+    "deWord": "Auf Deutsch: Mach den Tisch sauber!"
    },
-   "grounding": "u01 phrase: pencil case + colour: green (matches the sheet)"
+   "grounding": "u01 wordbank g1u01.w.to-clean, SB „Clean the board.“ — gleiche Form, Nomen aus g1u01.w.desk"
+  },
+  {
+   "id": "g1.paint.ch01.awk.merle.r4",
+   "use": "rescue",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Merle hat das Fenster weit aufgerissen",
+    "art": "merle_act_window1"
+   },
+   "storyDe": "Die Blätter fliegen von den Tischen — sag es ihr!",
+   "promptEn": "What do you say?",
+   "options": [
+    "Close the window!",
+    "Open the window!",
+    "Clean the board!"
+   ],
+   "answer": "Close the window!",
+   "skins": [
+    "merle"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Es soll wieder zu sein.",
+    "deWord": "Auf Deutsch: Mach das Fenster zu!"
+   },
+   "grounding": "u01 wordbank g1u01.w.to-close, SB „Close the door.“ · Nomen g1u01.w.window, dessen eigener Satz „Open the window.“ das Paar auf/zu stellt"
+  },
+  {
+   "id": "g1.paint.ch01.awk.merle.r5",
+   "use": "rescue",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Merles Bücher liegen verstreut auf dem Boden",
+    "art": "merle_act_books1"
+   },
+   "storyDe": "Die Stunde beginnt — sag ihr, was jetzt dran ist!",
+   "promptEn": "What do you say?",
+   "options": [
+    "Take out your books!",
+    "Close the door!",
+    "Listen!"
+   ],
+   "answer": "Take out your books!",
+   "skins": [
+    "merle"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Die Bücher gehören auf den Tisch, nicht auf den Boden.",
+    "deWord": "Auf Deutsch: Nimm deine Bücher heraus!"
+   },
+   "grounding": "u01 wordbank g1u01.w.to-take-out, SB „Take out your books.“ (wörtlich) — doc 44 §4 ch01 nennt genau diesen Befehl"
+  },
+  {
+   "id": "g1.paint.ch01.awk.merle.r6",
+   "use": "rescue",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Merle dreht sich um und geht zur Tür hinaus",
+    "art": "merle_act_leave0"
+   },
+   "storyDe": "Halt sie auf — die Stunde ist noch nicht vorbei!",
+   "promptEn": "What do you say?",
+   "options": [
+    "Don't go!",
+    "Read the book!",
+    "Clean the board!"
+   ],
+   "answer": "Don't go!",
+   "skins": [
+    "merle"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Sie soll bleiben — sag es mit Don't.",
+    "deWord": "Auf Deutsch: Geh nicht!"
+   },
+   "grounding": "u01 imperative (negative): Don't + Grundform (g1u01.s.imperatives) · go: g1u01.w.to-go, SB „I must go. Bye.“"
   },
   {
    "id": "g1.paint.ch01.boss.m1",
@@ -1182,7 +1637,8 @@
    "kind": "mistake",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel schreibt einen Satz über sich selbst"
+    "showsDe": "Die Tafel schreibt einen Satz über sich selbst",
+    "art": "tafel_land1"
    },
    "storyDe": "Ein Wort stimmt nicht — tipp es an!",
    "sentence": [
@@ -1217,12 +1673,52 @@
    ]
   },
   {
+   "id": "g1.paint.ch01.boss.m2",
+   "use": "boss",
+   "kind": "mistake",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Die Tafel kritzelt einen Befehl auf sich",
+    "art": "tafel_land1"
+   },
+   "storyDe": "Der Befehl stimmt nicht — tipp das Wort an!",
+   "sentence": [
+    "Not",
+    "speak",
+    "!"
+   ],
+   "errorIndex": 0,
+   "fix": {
+    "mode": "replace",
+    "correction": "Don't"
+   },
+   "correctionOptions": [
+    "Don't",
+    "Do",
+    "No"
+   ],
+   "skins": [
+    "tafel"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Verneinte Befehle fangen anders an."
+   },
+   "grounding": "u01 structure g1u01.s.imperatives, commonError „Using not instead of don't for the negative“ (falsch „Not speak!“ → richtig „Don't speak!“) · Verb g1u01.w.to-speak, SB „Don't speak. Listen.“",
+   "evidence": [
+    "Not speak!"
+   ]
+  },
+  {
    "id": "g1.paint.ch01.boss.o1",
    "use": "boss",
    "kind": "order",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel kritzelt ihre Wörter wild durcheinander"
+    "showsDe": "Die Tafel kritzelt ihre Wörter wild durcheinander",
+    "art": "tafel_land1"
    },
    "storyDe": "Bring ihre Wörter in die richtige Reihenfolge!",
    "orderedChips": [
@@ -1239,7 +1735,7 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Fang mit „This\" an.",
+    "deDesc": "Fang mit „This“ an.",
     "deWord": "This is a board."
    },
    "grounding": "u01 frame: This is a … + board",
@@ -1257,7 +1753,8 @@
    "kind": "oddone",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel kritzelt vier Wörter auf sich"
+    "showsDe": "Die Tafel kritzelt vier Wörter auf sich",
+    "art": "tafel_land1"
    },
    "storyDe": "Welches Wort ist KEINE Farbe?",
    "select": "odd",
@@ -1293,7 +1790,8 @@
    "kind": "order",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel kritzelt ihre Frage durcheinander"
+    "showsDe": "Die Tafel kritzelt ihre Frage durcheinander",
+    "art": "tafel_land1"
    },
    "storyDe": "Bring ihre Frage in die richtige Reihenfolge!",
    "orderedChips": [
@@ -1309,7 +1807,7 @@
     "p4"
    ],
    "hints": {
-    "deDesc": "Fang mit „How\" an.",
+    "deDesc": "Fang mit „How“ an.",
     "deWord": "How are you?"
    },
    "grounding": "u01 phrase: how are you",
@@ -1326,7 +1824,8 @@
    "kind": "memory",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel schreibt vier Zahlen auf sich"
+    "showsDe": "Die Tafel schreibt vier Zahlen auf sich",
+    "art": "tafel_land1"
    },
    "storyDe": "Finde zu jeder Zahl das englische Wort!",
    "pairs": [
@@ -1370,7 +1869,8 @@
    "kind": "typed",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Die Tafel weint Kreide-Tränen und schaut dich an"
+    "showsDe": "Die Tafel weint Kreide-Tränen und schaut dich an",
+    "art": "tafel_rest"
    },
    "storyDe": "Schreib ihr ein liebes Wort: Hallo auf Englisch!",
    "answer": "hello",
@@ -1390,6 +1890,222 @@
     "deWord": "Auf Deutsch: Hallo."
    },
    "grounding": "u01 greeting: hello — the chapter's climax, played not narrated"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-schoolbag.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Eine Schultasche steht grau in der Halle",
+    "art": "obj_schoolbag_a"
+   },
+   "storyDe": "Sag, wer sie ist — dann gib ihr die Farbe!",
+   "nameOptions": [
+    "school bag",
+    "pencil case",
+    "book",
+    "hat"
+   ],
+   "name": "school bag",
+   "colourAskDe": "„Ich war braun wie eine Nuss!“, seufzt sie.",
+   "colourOptions": [
+    "brown",
+    "blue",
+    "green"
+   ],
+   "colour": "brown",
+   "skins": [
+    "obj_schoolbag"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Die trägst du auf dem Rücken zur Schule.",
+    "deWord": "Auf Deutsch: die Schultasche — und Braun."
+   },
+   "grounding": "u01 phrase: school bag + colour: brown (obj_schoolbag_a measures hue 31°, lum 0.33 — tan leather with gold buckles)"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-book.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein dickes Buch lehnt blass an der Wand",
+    "art": "obj_book_a"
+   },
+   "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "book",
+    "exercise book",
+    "tablet",
+    "note"
+   ],
+   "name": "book",
+   "colourAskDe": "„Ich war blau wie der Abendhimmel!“",
+   "colourOptions": [
+    "blue",
+    "red",
+    "brown"
+   ],
+   "colour": "blue",
+   "skins": [
+    "obj_book"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Da stehen Geschichten drin, Seite für Seite.",
+    "deWord": "Auf Deutsch: das Buch — und Blau."
+   },
+   "grounding": "u01 word: book + colour: blue (obj_book_a measures hue 208° over 72% of the body — blue cover, gold corners)"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-desk.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein Tisch steht grau im dunklen Klassenzimmer",
+    "art": "obj_desk_a"
+   },
+   "storyDe": "Sag, was er ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "desk",
+    "chair",
+    "floor",
+    "window"
+   ],
+   "name": "desk",
+   "colourAskDe": "„Ich war braun wie warmes Holz!“, brummt er.",
+   "colourOptions": [
+    "brown",
+    "pink",
+    "blue"
+   ],
+   "colour": "brown",
+   "skins": [
+    "obj_desk"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Daran sitzt du und schreibst.",
+    "deWord": "Auf Deutsch: der Tisch — und Braun."
+   },
+   "grounding": "u01 word: desk + colour: brown (obj_desk_a measures hue 33°, lum 0.34 on the legs and frame — a wooden school desk)"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-pencil.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein langer Stift liegt grau auf dem Boden",
+    "art": "obj_pencil_a"
+   },
+   "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "pencil",
+    "pen",
+    "rubber",
+    "scissors"
+   ],
+   "name": "pencil",
+   "colourAskDe": "„Ich war gelb wie eine Biene!“, piepst er.",
+   "colourOptions": [
+    "yellow",
+    "green",
+    "black"
+   ],
+   "colour": "yellow",
+   "skins": [
+    "obj_pencil"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Damit malst du — und der Radiergummi macht es weg.",
+    "deWord": "Auf Deutsch: der Bleistift — und Gelb."
+   },
+   "grounding": "u01 word: pencil + colour: yellow (obj_pencil_a measures hue 43°, sat 0.95 — the classic yellow barrel)"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-gluestick.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein kleiner Stift steht grau im Gras",
+    "art": "obj_gluestick_a"
+   },
+   "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "glue stick",
+    "paintbrush",
+    "pencil sharpener",
+    "rubber"
+   ],
+   "name": "glue stick",
+   "colourAskDe": "„Ich war grün wie ein junges Blatt!“",
+   "colourOptions": [
+    "green",
+    "orange",
+    "white"
+   ],
+   "colour": "green",
+   "skins": [
+    "obj_gluestick"
+   ],
+   "phases": [
+    "p3"
+   ],
+   "hints": {
+    "deDesc": "Damit klebst du Bilder ins Heft.",
+    "deWord": "Auf Deutsch: der Klebestift — und Grün."
+   },
+   "grounding": "u01 phrase: glue stick + colour: green (obj_gluestick_a measures hue 84° over the barrel; the cap is cream)"
+  },
+  {
+   "id": "g1.paint.ch01.enc.obj-sharpener.r1",
+   "use": "encounter",
+   "kind": "restore",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Ein kleiner Kasten liegt grau im Hof",
+    "art": "obj_sharpener_a"
+   },
+   "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
+   "nameOptions": [
+    "pencil sharpener",
+    "glue stick",
+    "pencil case",
+    "rubber"
+   ],
+   "name": "pencil sharpener",
+   "colourAskDe": "„Ich war gelb wie der Honig!“, klappert er.",
+   "colourOptions": [
+    "yellow",
+    "blue",
+    "pink"
+   ],
+   "colour": "yellow",
+   "skins": [
+    "obj_sharpener"
+   ],
+   "phases": [
+    "p3"
+   ],
+   "hints": {
+    "deDesc": "Damit wird der Bleistift wieder spitz.",
+    "deWord": "Auf Deutsch: der Spitzer — und Gelb."
+   },
+   "grounding": "u01 phrase: pencil sharpener + colour: yellow (obj_sharpener_a measures hue 43° over 63% of the body — a golden metal sharpener)"
   }
  ]
 }

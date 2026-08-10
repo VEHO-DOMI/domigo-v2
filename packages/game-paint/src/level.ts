@@ -20,6 +20,22 @@ export type EntityRole =
   | "chaser" | "gunner" | "flyer" | "bouncer" | "crusher" | "swarm"
   | "platform.move" | "platform.fall" | "platform.swing"
   | "cage" | "powerup" | "door.trigger" | "guardian"
+  // PK-R6 · C1 (doc 44 §4 ch01): a DRAINED classroom object — one of the things
+  // OSWIN rained the colour out of, standing grey where it fell. It has no
+  // brain and no menace: it waits, wearing an ↑ cue, until the child steps up
+  // and says what it is. The two-step `restore` card then gives it back its
+  // name and its colour and the world keeps that colour. This is the ch01
+  // rebuild's field identity — restoration spread across the whole level
+  // instead of six anonymous cages in one room.
+  | "drained"
+  // PK-R6 · D (doc 44 §3.3): THE BEWITCHED CLASSMATE. The person inside the
+  // chapter's one person-cage, standing in the world as a being of her own the
+  // moment the cage opens. Opening the cage does not free her: she is ghost-pale
+  // and acts out the unit's wrong classroom actions round by round, and the
+  // child answers each with the command that stops or guides it (six rounds,
+  // §3.3). She is the only role whose redemption is EARNED IN STAGES — every
+  // other being is drained-or-restored, she is restored by degrees.
+  | "classmate"
   // PK-R3b · R3-16 (doc 41 §5): the two static-state collectibles. `tip` is a
   // Regel-Seite — a rule page OSWIN tore out of the book, which shows its
   // Merksatz when picked up; `book` is a Bonus-Buch, the no-death adaptation of
@@ -49,8 +65,17 @@ export interface EntityParams {
    *  phase exit LOCKS until it has been collected; there is no backtracking
    *  between phases, so a missed essential is a dead run. */
   essential?: boolean;
-  /** cage: the classmate inside (exactly one per chapter). */
+  /** cage: WHO is inside — the classmate's name. Its presence is what makes a
+   *  cage the chapter's one person-cage (doc 44 §2.3's `captive:"classmate"` is
+   *  this field; the shipped data has carried the name itself since ch01, and a
+   *  name says strictly more than a type tag). Exactly one per chapter. */
   classmate?: string;
+  /** classmate: WHICH cage this person was locked in (PK-R6 · D). The pointer
+   *  runs from the person to the cage rather than the other way round because
+   *  the sim asks it in that direction — a cage bursts and has to find who
+   *  steps out of it — and because the `classmate-pair` law can then prove both
+   *  ends from one field. */
+  cage?: string;
   /** tip: which of the unit's grammar topics this Regel-Seite carries. Unique
    *  per chapter — two pages of the same rule are one page and a duplicate. */
   topicDe?: string;
@@ -109,6 +134,21 @@ export interface PaintLevel {
   whyDe: string;
   hintsDe: string[];
   collectNounDe: string;
+  /** PK-R6 · C · THE OBJECTIVE SCREEN'S TITLE PLATE (doc 44 §2.6 / §3.4). The
+   *  painted stem the goal card wears as its header — the chapter's own picture,
+   *  with the chapter name set into the plate's lower band. DECLARED in the
+   *  level rather than derived from the chapter id, because the plate is a
+   *  commissioned piece with a name of its own; scripts/check-paint-art.mjs
+   *  requires whatever is named here, so a level cannot promise a plate the
+   *  disk does not hold. Optional: a chapter without one falls back to the
+   *  plain painted page the goal card has always been. */
+  goalPlate?: string;
+  /** PK-R6 · H2: the score page's own painted plate (round-2 finding: score and
+   *  door reused one staging). Declared only once the reviewed art is imported. */
+  scorePlate?: string;
+  /** …and the door-out ceremony's own plate — the chapter's biggest payoff
+   *  gets the biggest picture (batch-ap `ceremony_plates`). */
+  doorPlate?: string;
   /** PK-R3b · R3-16 (doc 41 §5): how many Regel-Seiten this chapter hides — one
    *  per grammar topic of its unit. DECLARED here and PLACED in the phases, and
    *  the `tip-honesty` law proves the two agree; the HUD and the score page then
@@ -421,13 +461,95 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     if (level.phases.length !== 3) {
       failures.push({ phase: "*", law: "phase-count", detail: `chapters are 3 phases + arena (has ${level.phases.length})` });
     }
-    const cages = level.phases.flatMap((p) => p.entities.filter((e) => e.role === "cage"));
-    if (cages.length !== 6) {
-      failures.push({ phase: "*", law: "six-cages", detail: `chapters hide exactly 6 cages (has ${cages.length})` });
+    // R4 · doc 44 §2.3 · THE CAGE LAW (replaces PB's „six-cages"). Cages are for
+    // CLASSMATES: exactly ONE per chapter, and every child must meet it. The
+    // unit's OTHER bewitched beings are freed in whatever form their fiction
+    // asks — bound, drained, tangled, frozen — so a cage COUNT is not a law any
+    // more; it was a number the design could only break by getting better, and
+    // a law a good chapter fails is a broken law.
+    //
+    // What replaces the count is the letter-honesty shape (doc 41 §7): the WORLD
+    // is the source of every number. Nothing here declares how many cages a
+    // chapter has, and nothing downstream may either — the HUD's „Befreit y/N"
+    // and the Bilanz both count N off the level itself (PaintGame's
+    // chapterRoleCount), which is what closed the /6-vs-7 drift: the old law
+    // counted the three field phases while the world also held the arena's cage,
+    // so the HUD and the law disagreed about the same chapter by one.
+    //
+    // Counted over allPhases for that same reason — the arena and the
+    // Kleckskammer are part of the world. A second classmate parked in either of
+    // them was invisible to the old count, which looked at level.phases alone.
+    const cages = allPhases(level).flatMap((p) => p.entities.filter((e) => e.role === "cage"));
+    if (cages.length === 0) {
+      failures.push({ phase: "*", law: "cage-law", detail: "a chapter frees at least one caged being (has none)" });
     }
-    const person = cages.filter((e) => e.params?.classmate !== undefined);
-    if (person.length !== 1) {
-      failures.push({ phase: "*", law: "person-cage", detail: `exactly one cage holds a person (has ${person.length})` });
+    const classmates = cages.filter((e) => e.params?.classmate !== undefined);
+    if (classmates.length !== 1) {
+      const who = classmates.map((e) => e.id).join(", ");
+      failures.push({
+        phase: "*",
+        law: "classmate-cage",
+        detail: `exactly one cage holds a classmate (has ${classmates.length}${who === "" ? "" : `: ${who}`})`,
+      });
+    }
+    // „on-path and findable by everyone" (§2.3) — the two ways a level can break
+    // that promise which no reachability sweep would catch, because both leave
+    // the cage perfectly reachable. Being reachable AT ALL is the
+    // `entity-reachable` law's job further down, and it covers every cage.
+    const bonusId = level.bonus?.id;
+    for (const e of classmates) {
+      if (e.params?.hidden === true) {
+        failures.push({
+          phase: "*",
+          law: "classmate-cage",
+          detail: `the classmate cage ${e.id} spawns hidden — the one cage every child must find may not wait behind a link`,
+        });
+      }
+      const where = allPhases(level).find((p) => p.entities.includes(e));
+      if (where !== undefined && bonusId !== undefined && where.id === bonusId) {
+        failures.push({
+          phase: where.id,
+          law: "classmate-cage",
+          detail: `the classmate cage ${e.id} sits in the bonus room — a door the child pays for is not „findable by everyone"`,
+        });
+      }
+    }
+    // ── PK-R6 · D · THE CLASSMATE PAIR (doc 44 §3.3) ───────────────────────
+    // A person-cage and the person in it are ONE thing in two entities: the
+    // cage the child opens, and the classmate who then stands there through
+    // six rounds of reawakening. The sim reveals her by walking from the
+    // burst cage to the `classmate` entity that points back at it — so a
+    // cage with nobody pointing at it opens onto an empty spot and the
+    // chapter's one rescue silently becomes a shrug. Proven from BOTH ends
+    // (a cage needs its person, a person needs her cage, and they share a
+    // phase), because either half alone is a level that loads and lies.
+    const mates = allPhases(level).flatMap((p) => p.entities.filter((e) => e.role === "classmate").map((e) => ({ e, p })));
+    for (const c of classmates) {
+      const mine = mates.filter((m) => m.e.params?.cage === c.id);
+      if (mine.length !== 1) {
+        failures.push({
+          phase: "*",
+          law: "classmate-pair",
+          detail: `the classmate cage ${c.id} needs exactly one \`classmate\` entity pointing at it (has ${mine.length}) — nobody would step out of it`,
+        });
+        continue;
+      }
+      const cagePhase = allPhases(level).find((p) => p.entities.includes(c));
+      if (mine[0]!.p.id !== cagePhase?.id) {
+        failures.push({
+          phase: mine[0]!.p.id,
+          law: "classmate-pair",
+          detail: `${mine[0]!.e.id} stands in ${mine[0]!.p.id} but her cage ${c.id} is in ${cagePhase?.id ?? "?"} — she can never step out of it`,
+        });
+      }
+    }
+    for (const m of mates) {
+      const cageId = m.e.params?.cage;
+      if (cageId === undefined) {
+        failures.push({ phase: m.p.id, law: "classmate-pair", detail: `classmate ${m.e.id} declares no cage — nothing can ever reveal her` });
+      } else if (!cages.some((c) => c.id === cageId && c.params?.classmate !== undefined)) {
+        failures.push({ phase: m.p.id, law: "classmate-pair", detail: `classmate ${m.e.id} points at "${cageId}", which is not a person-cage in this chapter` });
+      }
     }
   }
 
@@ -518,7 +640,14 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
     // PB-T1 · walkers spawn standing on solid (the entity ground contract's
     // authoring side — a mid-air or slope spawn is a placement defect)
     for (const e of ph.entities) {
-      if ((e.role === "chaser" || e.role === "bouncer") && !isSolid(glyphAt(ph.rows, e.c, e.r + 1))) {
+      // PK-R6 · C1: `drained` joins this law — a desk hovering an inch off the
+      // floor is the same authoring defect as a mid-air chaser, and it is the
+      // one the eye catches first because furniture is EXPECTED to rest.
+      // PK-R6 · D: and `classmate` — she stands where she stepped out of her
+      // cage and stays there for the rest of the chapter (doc 44 §1: freeing
+      // changes state, never presence), so a floating spawn is a friend
+      // hovering over the classroom floor for twenty minutes.
+      if ((e.role === "chaser" || e.role === "bouncer" || e.role === "drained" || e.role === "classmate") && !isSolid(glyphAt(ph.rows, e.c, e.r + 1))) {
         failures.push({ phase: ph.id, law: "spawn-standable", detail: `${e.role} ${e.id} at (${e.c},${e.r}) must stand on solid ground` });
       }
     }
@@ -544,7 +673,11 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       // the same defect as an unreachable cage, and „hidden" never means
       // „impossible" (doc 31's law: a collectible no child can reach is a
       // defect, not a secret).
-      if ((e.role === "cage" || e.role === "powerup" || PICKUP_ROLES.has(e.role)) && !nearReachable(e.c, e.r, 2, 2, 4)) {
+      // PK-R6 · C1: a drained object joins this law for the same reason a cage
+      // does — it is a being the chapter PROMISES the child can free, and the
+      // HUD counts it. One standing on a ledge nobody can climb is a broken
+      // promise, not a secret.
+      if ((e.role === "cage" || e.role === "powerup" || e.role === "drained" || PICKUP_ROLES.has(e.role)) && !nearReachable(e.c, e.r, 2, 2, 4)) {
         failures.push({ phase: ph.id, law: "entity-reachable", detail: `${e.role} ${e.id} at (${e.c},${e.r}) unreachable` });
       }
     }

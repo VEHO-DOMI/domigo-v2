@@ -5,9 +5,29 @@
 // cannot be read back (Build-D banked that false negative), so composition is
 // verified by arithmetic over the plan, not by sampling the screen.
 import { describe, expect, it } from "vitest";
-import { CH01_COMPOSITION, type MassKit, compositionFor, compositionStems } from "./composition.ts";
-import { K_X, K_Y, coverBox, coverFit, coversAxis, planLayers, planeCovers, travelBox, visibleWindow } from "./layers.ts";
-import { CRUST_H, CRUST_LIP, MAX_PLATFORM_CELLS, floatingPlatformRuns, nakedFills, planMass, slideRuns } from "./mass.ts";
+import { CH01_COMPOSITION, HERO_EDGE_KEY_SPLIT, MID_FAR_ALPHA, type MassKit, compositionFor, compositionStems, heroEdgeFor, nearPlaneTint } from "./composition.ts";
+import { K_X, K_Y, PLANE_DEPTH, coverBox, coverFit, coversAxis, planLayers, planeCovers, travelBox, visibleWindow } from "./layers.ts";
+import {
+  CRUST_H,
+  CRUST_LIP,
+  CRUST_TINTS,
+  MAX_PLATFORM_CELLS,
+  NO_METRONOME_MIN_PERIOD,
+  claimedPlatformCells,
+  crustGrain,
+  crustRuns,
+  floatingPlatformRuns,
+  ledgeGrain,
+  ledgeLips,
+  massGrain,
+  nakedFills,
+  PLAT_SHADOW,
+  planMass,
+  planPlatformShadows,
+  shortestPeriod,
+  surfaceSignature,
+  slideRuns,
+} from "./mass.ts";
 import { letterGlyphs } from "./letters.ts";
 import { LOGICAL_H, LOGICAL_W, TILE } from "./paint.ts";
 
@@ -174,13 +194,30 @@ describe("the carved mass (doc 36 §2)", () => {
     "######........######",
   ];
 
-  it("puts a crust on every exposed top, one course thick", () => {
+  it("puts a crust on every exposed top, one course thick, with no gap and no overlap", () => {
+    // PK-R6 · H1: a run is now laid in ALTERNATING SEGMENTS (CRUST_SEGMENT_CELLS)
+    // so the floor stops looping one 41-px course under the player for a whole
+    // level. Counting pieces would therefore only test the segment table; what
+    // the law actually says is that the exposed tops are COVERED — exactly once,
+    // edge to edge — so that is what this asserts.
     const p = planMass(grid, kit, afSrc);
     const crusts = p.filter((q) => q.kind === "crust");
-    expect(crusts.length).toBe(2); // the two ground runs
-    const left = crusts.find((q) => q.c === 0)!;
-    expect(left.y).toBeCloseTo(3 * TILE - CRUST_LIP, 5);
-    expect(left.h).toBe(CRUST_H);
+    expect(crusts.length).toBeGreaterThanOrEqual(2); // at least the two ground runs
+    for (const q of crusts) {
+      expect(q.y).toBeCloseTo(3 * TILE - CRUST_LIP, 5);
+      expect(q.h).toBe(CRUST_H);
+    }
+    // every exposed-top cell is crusted once and only once
+    const cover = new Map<number, number>();
+    for (const q of crusts) {
+      for (let k = 0; k < Math.round(q.w / TILE); k++) cover.set(q.c + k, (cover.get(q.c + k) ?? 0) + 1);
+    }
+    for (let c = 0; c < 20; c++) {
+      const exposed = c < 6 || c >= 14; // the two ground runs of this fixture
+      expect(cover.get(c) ?? 0, `column ${c}`).toBe(exposed ? 1 : 0);
+    }
+    // …and the segments actually alternate the painted variants
+    expect(new Set(crusts.map((q) => q.stem)).size).toBe(kit.crust.length);
   });
 
   it("laps the caps INWARD so the painted end lands on the run's own edge", () => {
@@ -189,15 +226,18 @@ describe("the carved mass (doc 36 §2)", () => {
     // exactly on the run's outer edge, with the rest overlapping the loop.
     const p = planMass(grid, kit, afSrc);
     // the LEFT run touches the world edge, so only its right end is capped;
-    // the RIGHT run is the mirror case
-    const left = p.find((q) => q.kind === "crust" && q.c === 0)!;
-    const right = p.find((q) => q.kind === "crust" && q.c === 14)!;
+    // the RIGHT run is the mirror case. PK-R6 · H1: a run is now several crust
+    // SEGMENTS, so the run's extent is read off all of them — a cap belongs to
+    // the RUN, never to whichever segment happens to end it.
+    const crusts = p.filter((q) => q.kind === "crust");
+    const leftEnd = Math.max(...crusts.filter((q) => q.c < 6).map((q) => q.x + q.w));
+    const rightStart = Math.min(...crusts.filter((q) => q.c >= 14).map((q) => q.x));
     const capR = p.find((q) => q.kind === "capR")!;
     const capL = p.find((q) => q.kind === "capL")!;
-    expect(capR.x + capR.w).toBeCloseTo(left.x + left.w, 5);
-    expect(capL.x).toBeCloseTo(right.x, 5);
+    expect(capR.x + capR.w).toBeCloseTo(leftEnd, 5);
+    expect(capL.x).toBeCloseTo(rightStart, 5);
     expect(capL.w).toBeCloseTo(CRUST_H * (512 / 212), 3); // aspect-preserved
-    expect(capL.depth).toBeGreaterThan(right.depth); // drawn over the loop
+    expect(capL.depth).toBeGreaterThan(crusts[0]!.depth); // drawn over the loop
   });
 
   it("suppresses caps where a run runs into the world edge", () => {
@@ -316,6 +356,216 @@ describe("the carved mass (doc 36 §2)", () => {
   });
 });
 
+describe("the no-metronome law (round-1 critique, finding 1 — critical)", () => {
+  /** one long, uninterrupted hall floor — the shape the critique was reading.
+   *  Deliberately longer than the retired model's own repeat (50 cells), or the
+   *  „why" test below could not see the beat it is about. */
+  const hall = ["".padEnd(120, "."), "".padEnd(120, "."), "".padEnd(120, "#")];
+
+  /** the fingerprints of one surface of the hall, as the audit reads them */
+  const sigOf = (kinds: Parameters<typeof surfaceSignature>[1], grain: ReturnType<typeof crustGrain>): string[] =>
+    surfaceSignature(planMass(hall, kit, afSrc), kinds, grain).get("0,2") ?? [];
+
+  it("lays a long run APERIODICALLY: value and grain, not just two variants", () => {
+    const sig = sigOf(["crust"], crustGrain(hall));
+    expect(sig).toHaveLength(120);
+    expect(shortestPeriod(sig)).toBe(120); // never repeats at all, at any period
+  });
+
+  it("gives the MASS below the course the same treatment", () => {
+    // the browser proof of p1: the walk course was already varying while the
+    // mass under it — four times as much of the frame — was ONE tileSprite
+    // 656 px wide carrying one variant. That was the wallpaper.
+    const sig = sigOf(["body", "fade", "sediment"], massGrain(hall));
+    expect(sig).toHaveLength(120);
+    expect(shortestPeriod(sig)).toBeGreaterThan(NO_METRONOME_MIN_PERIOD);
+    expect(new Set(sig).size).toBeGreaterThanOrEqual(Math.ceil(120 / 5));
+    // …and the two surfaces change segment on DIFFERENT columns, or their seams
+    // would stack into one visible joint through the whole floor
+    const seamAt = (s: string[]): number[] => s.map((v, i) => (v.split(":")[0] !== s[i - 1]?.split(":")[0] ? i : -1)).filter((i) => i > 0);
+    const course = seamAt(sigOf(["crust"], []));
+    const mass = seamAt(sig);
+    expect(course.filter((i) => mass.includes(i)).length).toBeLessThan(course.length);
+  });
+
+  it("shows WHY the segment table alone was not enough", () => {
+    // the retired state, reconstructed: variant alternation over the segment
+    // table and nothing else. Its cycle is exactly 50 cells — 10 segments, the
+    // point where the 5-long length table and the 2-long variant list line up
+    // again — i.e. 800 px, so a child walking a hall meets the same floor twice.
+    const sig = sigOf(["crust"], crustGrain(hall));
+    expect(shortestPeriod(sig.map((s) => s.split(":")[0] ?? ""))).toBe(50);
+    // value alone already breaks it, and grain breaks it independently
+    expect(shortestPeriod(sig.map((s) => s.split(":")[1] ?? ""))).toBe(120);
+    expect(shortestPeriod(sig.map((s) => s.split(":")[2] ?? ""))).toBeGreaterThan(NO_METRONOME_MIN_PERIOD);
+  });
+
+  it("gives every crust segment one of the declared lights, never a repaint", () => {
+    const crusts = planMass(hall, kit, afSrc).filter((q) => q.kind === "crust");
+    expect(crusts.length).toBeGreaterThan(4);
+    for (const q of crusts) {
+      expect(CRUST_TINTS, `${q.c},${q.r}`).toContain(q.tint);
+      // near-white by law: these MULTIPLY the painted course, so a strong tint
+      // would repaint the material instead of relighting it
+      const r = ((q.tint ?? 0) >> 16) & 255;
+      const g = ((q.tint ?? 0) >> 8) & 255;
+      const b = (q.tint ?? 0) & 255;
+      expect(Math.min(r, g, b)).toBeGreaterThanOrEqual(0xd0);
+    }
+    expect(new Set(crusts.map((q) => q.tint)).size).toBeGreaterThan(1);
+  });
+
+  it("scatters grain along the walk course and nowhere else", () => {
+    const marks = crustGrain(hall);
+    expect(marks.length).toBeGreaterThan(8);
+    const surface = new Set(crustRuns(hall).map((r) => r.r));
+    for (const m of marks) {
+      expect(surface.has(m.r), `mark at row ${m.r}`).toBe(true);
+      expect(m.x).toBeGreaterThanOrEqual(m.c * TILE - 0.001);
+      expect(m.x + m.w).toBeLessThanOrEqual((m.c + 1) * TILE + 0.001);
+      expect(m.y).toBeGreaterThanOrEqual(m.r * TILE - CRUST_LIP);
+      expect(m.y + m.h).toBeLessThanOrEqual(m.r * TILE - CRUST_LIP + CRUST_H + 0.001);
+      expect(m.alpha).toBeLessThan(0.2); // grain, never gravel
+    }
+    expect(crustGrain(hall)).toEqual(marks); // deterministic: no Math.random
+  });
+
+  it("keeps the mass patina inside the mass — never a smudge hanging in the air", () => {
+    // A battery of shapes, not one: a single fixture proves nothing here, because
+    // whether a mark exists in a boundary cell at all is decided by that cell's
+    // own hash. (Found by tampering: with the spill guard removed, the first
+    // fixture tried still passed — its edge cells happened to carry no mark.)
+    const shapes = [
+      ["........", ".#####..", ".#####..", "########"],
+      ["........", "..##....", "........", "########"],
+      ["#.......", "#.......", "#....#..", "########"],
+      ["........", ".#......", ".#......", ".#......"],
+      ["..####..", "..####..", "..#..#..", "..#..#.."],
+      ["........", "#......#", "#......#", "########"],
+      ["...#....", "...#....", "########", "########"],
+      ["########", "########", "########", "########"],
+    ];
+    let checked = 0;
+    for (const grid of shapes) {
+      const cells = new Set<string>();
+      for (let r = 0; r < grid.length; r++) {
+        for (let c = 0; c < (grid[0]?.length ?? 0); c++) if (grid[r]![c] === "#") cells.add(`${c},${r}`);
+      }
+      for (const m of massGrain(grid)) {
+        checked++;
+        const c0 = Math.floor(m.x / TILE);
+        const c1 = Math.floor((m.x + m.w - 0.001) / TILE);
+        const r0 = Math.floor(m.y / TILE);
+        const r1 = Math.floor((m.y + m.h - 0.001) / TILE);
+        for (let c = c0; c <= c1; c++) {
+          for (let r = r0; r <= r1; r++) {
+            expect(cells.has(`${c},${r}`), `mark from ${m.c},${m.r} touches open air at ${c},${r}`).toBe(true);
+          }
+        }
+      }
+    }
+    expect(checked).toBeGreaterThan(40); // the battery has to actually draw marks
+  });
+
+  // ── PK-R6 · H2 · THE LEDGE (round-2 finding 5) ─────────────────────────────
+  // „The floor band runs unbroken with no gap, drop-off or edge marking near
+  // the character — no visual cue before the ground runs out."
+  it("marks every end that hangs over a real fall, and only those", () => {
+    //  0 ........
+    //  1 ....##..   a two-cell shelf, air all round it (a platform object)
+    //  2 ........
+    //  3 ###..###   the floor, with a pit in the middle
+    //  4 ###..###
+    const grid = ["........", "....##..", "........", "###..###", "###..###"];
+    const lips = ledgeLips(grid, claimedPlatformCells(grid));
+    const at = (c: number, r: number, side: "l" | "r"): boolean =>
+      lips.some((l) => l.c === c && l.r === r && l.side === side);
+    expect(at(2, 3, "r")).toBe(true); // the near side of the pit
+    expect(at(5, 3, "l")).toBe(true); // …and its far side
+    expect(at(4, 1, "l")).toBe(true); // the shelf, both ends
+    expect(at(5, 1, "r")).toBe(true);
+    // the world's own outer edges are not ledges: outside the grid is solid
+    expect(at(0, 3, "l")).toBe(false);
+    expect(at(7, 3, "r")).toBe(false);
+    // …and a single step down is NOT a drop, or every stair would cry wolf
+    const stair = ["........", "..###...", "#####..."];
+    expect(ledgeLips(stair).some((l) => l.r === 1 && l.side === "l")).toBe(false);
+    expect(ledgeLips(stair).some((l) => l.r === 1 && l.side === "r")).toBe(true); // …but this end really falls
+  });
+
+  it("wears the boards pale toward a drop, brightest ON the lip", () => {
+    const grid = ["........", "###..###", "###..###"];
+    const marks = ledgeGrain(grid);
+    expect(marks.length).toBeGreaterThan(4);
+    expect(ledgeGrain(grid)).toEqual(marks); // deterministic: no Math.random
+    const shine = marks.filter((m) => m.kind === "shine");
+    // every mark sits on a surface row, inside the course's own band
+    for (const m of marks) {
+      expect(m.r).toBe(1);
+      expect(m.y).toBeGreaterThanOrEqual(m.r * TILE - CRUST_LIP);
+      expect(m.y + m.h).toBeLessThanOrEqual(m.r * TILE - CRUST_LIP + CRUST_H + 0.001);
+      expect(m.alpha).toBeLessThan(0.3); // wear, never paint
+    }
+    // the cue GRADES: the board at the lip is brighter than the one behind it
+    const lipMark = shine.find((m) => m.c === 2);
+    const backMark = shine.find((m) => m.c === 1);
+    expect(lipMark).toBeDefined();
+    expect(backMark).toBeDefined();
+    expect(lipMark!.alpha).toBeGreaterThan(backMark!.alpha);
+    // TAMPER: a floor with nothing to fall off wears nothing at all
+    expect(ledgeGrain(["........", "########", "########"])).toEqual([]);
+  });
+
+  it("never grains a platform's own top — the object draws its own", () => {
+    const withLedge = ["........", "..##....", "........", "########"];
+    const claimed = new Set(["2,1", "3,1"]);
+    expect(crustGrain(withLedge, claimed).some((m) => m.r === 1)).toBe(false);
+    expect(crustRuns(withLedge, claimed).some((r) => r.r === 1)).toBe(false);
+  });
+
+  it("calls a metronome a metronome (the audit's own tamper)", () => {
+    expect(shortestPeriod(["a", "b", "a", "b", "a", "b"])).toBe(2);
+    expect(shortestPeriod(["a", "b", "c", "d", "e"])).toBe(5); // no period at all
+  });
+});
+
+describe("the per-zone platform palettes (round-1 critique, finding 8)", () => {
+  it("gives every zone a palette that can cover 1-, 2-, 3- and 4-cell runs", () => {
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      const widths = new Set(spec.mass.platObjects.map((p) => p.cells));
+      expect(widths.has(1), `${id} has no 1-cell object (a 3-cell run is 2+1)`).toBe(true);
+      expect(widths.has(2), `${id} has no 2-cell object`).toBe(true);
+    }
+  });
+
+  it("furnishes no two rooms out of the same box", () => {
+    const seen = new Map<string, string>();
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      const fingerprint = [...spec.mass.platObjects.map((p) => p.stem)].sort().join("|");
+      const twin = seen.get(fingerprint);
+      expect(twin, `${id} and ${twin} draw the identical platform set`).toBeUndefined();
+      seen.set(fingerprint, id);
+    }
+  });
+
+  it("anchors every object by a deck inside its own art", () => {
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      for (const p of spec.mass.platObjects) {
+        expect(p.deck ?? 0, `${id}/${p.stem}`).toBeGreaterThanOrEqual(0);
+        expect(p.deck ?? 0, `${id}/${p.stem}`).toBeLessThan(1);
+      }
+    }
+  });
+
+  it("keeps two objects at a width where a phase's ledges are all that width", () => {
+    // p9's twelve ledges are every one of them 2 cells wide: with a single
+    // 2-cell object the seeded pick has nothing to alternate between and the
+    // dream draws the same plank twelve times.
+    const twoCell = CH01_COMPOSITION.p9!.mass.platObjects.filter((p) => p.cells === 2);
+    expect(twoCell.length).toBeGreaterThanOrEqual(2);
+  });
+});
+
 describe("the letter trail (doc 36 §3)", () => {
   const rows = ["..*...*...", "......*...", "*........."];
 
@@ -337,7 +587,10 @@ describe("the letter trail (doc 36 §3)", () => {
 describe("the manifest", () => {
   it("names every stem the kit needs, deduplicated", () => {
     const stems = compositionStems(CH01_COMPOSITION.p3!);
-    for (const want of ["crust_p3_a", "mass_body_a", "mass_sediment", "slide_mid", "plat_bench_2", "l1_p3_a", "l2_p3"]) {
+    // PK-R6 · H2 (round-2 finding 12): the yard's bench went back to the hall it
+    // was borrowed from; the sill it kept is the one this phase's own painted
+    // wall implies (four arched windows), and it is what the kit names now.
+    for (const want of ["crust_p3_a", "mass_body_a", "mass_sediment", "slide_mid", "ledge_windowsill", "l1_p3_a", "l2_p3"]) {
       expect(stems, want).toContain(want);
     }
     expect(new Set(stems).size).toBe(stems.length);
@@ -350,6 +603,199 @@ describe("the manifest", () => {
   it("gives the slide to p3 and to nobody else", () => {
     for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
       expect(spec.mass.slide !== undefined, id).toBe(id === "p3");
+    }
+  });
+});
+
+// ── PK-R6 · H2 · THE NEAREST PLANE (round-2 finding 7) ──────────────────────
+// „Bookshelf-platform (foreground), locker band, and blurred foliage (midground)
+// all sit within a narrow warm-midtone band … compare to the reference forest
+// frame, which holds a true dark-silhouette-to-pale-sky value spread."
+//
+// Measured on the shipped hall: the floating platform objects average 49.3 %
+// luminance against the L2 furniture band's 54.5 % — a 5-point step, which is
+// nothing under a squint. The near plane is now laid in its own light. What is
+// checkable here is the LAW rather than the pixels: it darkens, it cools, and it
+// backs off in a dark room, because separation is the law and not darkness.
+describe("PK-R6 · H2 · the near plane's own light", () => {
+  const ch = (t: number, shift: number): number => (t >> shift) & 0xff;
+
+  it("darkens the nearest standable plane — it is a multiply, never a lift", () => {
+    for (const key of [88, 86, 30, 28]) {
+      const t = nearPlaneTint(key);
+      for (const shift of [16, 8, 0]) expect(ch(t, shift), `K=${key}`).toBeLessThan(255);
+    }
+  });
+
+  it("cools it: red loses the most, blue the least", () => {
+    // „further forward in a warm room" is a cool shadow; an even darkening would
+    // only read as dirt on the paint
+    const t = nearPlaneTint(88);
+    expect(ch(t, 16)).toBeLessThan(ch(t, 8)); // r < g
+    expect(ch(t, 8)).toBeLessThan(ch(t, 0)); // g < b
+  });
+
+  it("backs off in a dark room, because the law is SEPARATION, not darkness", () => {
+    // the night classroom's platforms already read by being LIGHTER than a
+    // 19 %-luminance room; pushing them down would erase the very separation
+    // this exists to build (doc 36 §1 v1.1's L2↔L3 rule)
+    const bright = nearPlaneTint(88);
+    const dark = nearPlaneTint(30);
+    for (const shift of [16, 8, 0]) expect(ch(dark, shift)).toBeGreaterThan(ch(bright, shift));
+    expect(ch(dark, 8)).toBeGreaterThan(210); // …and barely touched at all
+  });
+
+  it("is bounded at both ends — no room gets a black plane or an untouched one", () => {
+    for (const key of [0, 1, 30, 88, 100, 400]) {
+      const t = nearPlaneTint(key);
+      expect(ch(t, 16), `K=${key}`).toBeGreaterThan(120);
+      expect(ch(t, 0), `K=${key}`).toBeLessThan(250);
+    }
+  });
+});
+
+// ── PK-R6 · H2 · THE CHILD'S EDGE (round-2 finding 1, CRITICAL) ──────────────
+// The finding said his colour collapses into the wall; the measurement says his
+// value gap is 44 points and what collapses is his MASS at thumbnail size. These
+// lock the repair that follows from the measurement rather than from the guess.
+describe("the hero's own edge", () => {
+  it("is his shade in a lit room and his rim in a dark one", () => {
+    const hall = heroEdgeFor(88);
+    const night = heroEdgeFor(30);
+    // ink against a pale wall, warm light against a dark one
+    expect(hall.tint).toBeLessThan(0x808080);
+    expect(night.tint).toBeGreaterThan(0x808080);
+    // a shadow leans; a rim hugs
+    expect(hall.dx).toBeGreaterThan(night.dx);
+    expect(hall.dy).toBeGreaterThan(night.dy);
+  });
+
+  it("always SWELLS — that is the half a squint cannot average away", () => {
+    for (const key of [14, 28, 30, 86, 88]) {
+      const e = heroEdgeFor(key);
+      expect(e.swell).toBeGreaterThan(0.05);
+      expect(e.swell).toBeLessThan(0.2); // past this it is a second boy, not a rim
+      expect(e.alpha).toBeGreaterThan(0);
+      expect(e.alpha).toBeLessThan(0.6);
+    }
+  });
+
+  it("flips on the split, and no room in the book sits near the line", () => {
+    expect(heroEdgeFor(HERO_EDGE_KEY_SPLIT).tint).toBe(heroEdgeFor(100).tint);
+    expect(heroEdgeFor(HERO_EDGE_KEY_SPLIT - 1).tint).toBe(heroEdgeFor(0).tint);
+    for (const spec of Object.values(CH01_COMPOSITION)) {
+      expect(Math.abs(spec.key - HERO_EDGE_KEY_SPLIT)).toBeGreaterThan(15);
+    }
+  });
+});
+
+// ── PK-R6 · H2 · THE MIDDLE DISTANCE (round-2 finding 8) ─────────────────────
+describe("L2b — the same furniture, one room further back", () => {
+  it("recedes on every axis a further row must recede on", () => {
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      if (!spec.mid) { expect(spec.midFar).toBeUndefined(); continue; }
+      const far = spec.midFar!;
+      expect(far).toBeDefined();
+      expect(far.parallax).toBeGreaterThan(spec.far.parallax);
+      expect(far.parallax).toBeLessThan(spec.mid.parallax);
+      expect(Number(far.height)).toBeLessThan(Number(spec.mid.height));
+      expect(far.lift!).toBeGreaterThanOrEqual((spec.mid.lift ?? 0) + Number(spec.mid.height));
+      // GHOSTED — doc 36 §1's affordance quarantine is what licenses a second
+      // copy of operable-looking furniture at all, and the alpha IS the licence
+      expect(far.alpha!).toBeGreaterThan(0);
+      expect(far.alpha!).toBeLessThan(1);
+      expect(id).toBeTruthy();
+    }
+  });
+
+  it("is planned as its own plane, between the shell and the furniture", () => {
+    const spec = CH01_COMPOSITION.p1!;
+    const pieces = planLayers(spec, 64 * TILE, 22 * TILE, () => ({ w: 400, h: 200 }));
+    const l2b = pieces.filter((p) => p.plane === "L2b");
+    expect(l2b.length).toBeGreaterThan(0);
+    for (const p of l2b) {
+      expect(p.depth).toBeLessThan(PLANE_DEPTH.mid);
+      expect(p.depth).toBeGreaterThan(PLANE_DEPTH.far);
+      expect(p.alpha).toBe(MID_FAR_ALPHA);
+    }
+    // and it changes nothing about the two planes that owe the cover law
+    for (const plane of ["L0", "L1"] as const) {
+      expect(planeCovers(pieces.filter((p) => p.plane === plane), 64 * TILE, 22 * TILE, "both")).toBe(true);
+    }
+  });
+
+  it("costs no new art — the art gate asks for its stems all the same", () => {
+    const stems = compositionStems(CH01_COMPOSITION.p1!);
+    expect(stems).toContain("l2_p1");
+    // the further row quotes the near one, so the required list does not grow
+    expect(new Set(stems).size).toBe(stems.length);
+  });
+});
+
+// ── PK-R6 · H2 · WHAT THE FURNITURE THROWS (round-2 finding 9) ───────────────
+describe("the platform shadows", () => {
+  const KIT: MassKit = {
+    crust: ["c_a", "c_b"], crustCapL: "cl", crustCapR: "cr",
+    body: ["b_a"], fade: "f", sediment: "s",
+    edgeL: "el", edgeR: "er", cornerBL: "bl", cornerBR: "br",
+    inCornerL: "il", inCornerR: "ir", rampUp: "ru", rampDown: "rd",
+    platObjects: [{ stem: "o2", cells: 2 }, { stem: "o1", cells: 1 }],
+  };
+
+  it("draws ONE pool per ledge, not one per object", () => {
+    // a four-cell ledge is covered by two objects; two shadows with a seam
+    // between them is the wallpaper defect again, one layer down
+    const grid = [
+      "................",
+      "....####........",
+      "................",
+      "################",
+    ];
+    const plan = planMass(grid, KIT);
+    expect(plan.filter((p) => p.kind === "platform").length).toBe(2);
+    expect(planPlatformShadows(plan).length).toBe(1);
+  });
+
+  it("leans the way every phase's light says it should", () => {
+    const grid = ["........", "..##....", "........", "########"];
+    const plan = planMass(grid, KIT);
+    const obj = plan.find((p) => p.kind === "platform")!;
+    const [sh] = planPlatformShadows(plan);
+    expect(sh).toBeDefined();
+    // down and to the RIGHT: the wash puts the light top-left in every room, and
+    // the hero's own shadow has been thrown that way since H1
+    expect(sh!.x).toBeGreaterThan(obj.x);
+    expect(sh!.y).toBeGreaterThan(obj.y);
+    expect(sh!.w).toBeLessThan(obj.w + PLAT_SHADOW.dx);
+    expect(sh!.alpha).toBeGreaterThan(0);
+  });
+
+  it("is empty where there is nothing to cast one", () => {
+    expect(planPlatformShadows([])).toEqual([]);
+    expect(planPlatformShadows(planMass(["####", "####"], KIT))).toEqual([]);
+  });
+});
+
+// ── PK-R6 · H2 · ONE OBJECT, AT MOST TWO ROOMS (round-2 finding 12) ──────────
+describe("the zone palettes", () => {
+  it("lets a motif be quoted once and never twice", () => {
+    const rooms = new Map<string, string[]>();
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      for (const o of spec.mass.platObjects) {
+        rooms.set(o.stem, [...(rooms.get(o.stem) ?? []), id]);
+      }
+    }
+    for (const [stem, where] of rooms) {
+      expect(where.length, `${stem} furnishes ${where.join(", ")}`).toBeLessThanOrEqual(2);
+    }
+  });
+
+  it("leaves the outdoor room sharing nothing with either indoor one", () => {
+    const of = (id: string): Set<string> =>
+      new Set(CH01_COMPOSITION[id]!.mass.platObjects.map((o) => o.stem));
+    const yard = of("p3");
+    for (const indoor of ["p1", "p2"]) {
+      for (const stem of of(indoor)) expect(yard.has(stem)).toBe(false);
     }
   });
 });

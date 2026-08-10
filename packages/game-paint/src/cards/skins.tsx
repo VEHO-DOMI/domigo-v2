@@ -104,7 +104,7 @@ export function OddCard({ state, dispatch }: { state: OddState; dispatch: Dispat
     <div style={col}>
       <div style={rowWrap}>
         {state.items.map((item) => (
-          <button key={item} style={{ ...tile, background: state.selected.includes(item) ? "#f0e2b8" : "#fffdf6" }}
+          <button key={item} style={{ ...tile, backgroundColor: state.selected.includes(item) ? "#eddfb2" : undefined }}
             onClick={() => pick(item)}>{item}</button>
         ))}
       </div>
@@ -393,7 +393,7 @@ export function MemoryCard({ state, dispatch }: { state: MemoryState; dispatch: 
   return (
     <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(4, state.tray.length)}, 1fr)`, gap: 8 }}>
       {state.tray.map((c, i) => (
-        <button key={i} style={{ ...tile, minHeight: 44, background: state.matched.includes(i) ? "#dff0d8" : faceUp(i) ? "#f0e2b8" : "#e9dfc4" }}
+        <button key={i} style={{ ...tile, minHeight: 44, backgroundColor: state.matched.includes(i) ? "#d7e8c8" : faceUp(i) ? "#eddfb2" : "#e6dabc" }}
           onClick={() => dispatch({ flip: i })}>{faceUp(i) ? c.v : "❓"}</button>
       ))}
     </div>

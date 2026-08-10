@@ -15,12 +15,15 @@ import { type CompositionSpec, type ShellSpec, resolveMeasure } from "./composit
 import { LOGICAL_H, LOGICAL_W, RENDER_SCALE } from "./paint.ts";
 
 /** Render depths per plane (L3 play keeps 1..10; see PaintScene). */
-export const PLANE_DEPTH = { wash: -20, far: -18, mid: -9, fg: 12 } as const;
+// PK-R6 · H2: `midFar` (L2b) sits BEHIND the haze (-12) on purpose — aerial
+// perspective must fall over the middle distance as well as over the far shell,
+// or the new row reads as near furniture that happens to be small.
+export const PLANE_DEPTH = { wash: -20, far: -18, midFar: -13.5, mid: -9, fg: 12 } as const;
 
 export interface LayerPiece {
   /** wash = engine-drawn gradient · segment/anchor = Image · loop = tileSprite */
   kind: "wash" | "segment" | "anchor" | "loop";
-  plane: "L0" | "L1" | "L2" | "L4";
+  plane: "L0" | "L1" | "L2b" | "L2" | "L4";
   stem?: string;
   /** gradient stops, top→bottom (wash only) */
   colors?: readonly number[];
@@ -125,13 +128,15 @@ export const coverFit = (
   return { x: box.x, y: box.y + box.h - h, w, h };
 };
 
-const planeOf = (which: "far" | "mid" | "fg"): "L1" | "L2" | "L4" =>
-  which === "far" ? "L1" : which === "mid" ? "L2" : "L4";
+type Which = "far" | "midFar" | "mid" | "fg";
+
+const planeOf = (which: Which): "L1" | "L2b" | "L2" | "L4" =>
+  which === "far" ? "L1" : which === "midFar" ? "L2b" : which === "mid" ? "L2" : "L4";
 
 /** Lay one shell plane: repeat its segments left→right until the cover law holds. */
 const planShell = (
   shell: ShellSpec,
-  which: "far" | "mid" | "fg",
+  which: Which,
   worldWpx: number,
   worldHpx: number,
   srcSize: (stem: string) => SrcSize | null,
@@ -207,6 +212,7 @@ export const planLayers = (
 ): LayerPiece[] => [
   planWash(spec, worldWpx, worldHpx),
   ...planShell(spec.far, "far", worldWpx, worldHpx, srcSize),
+  ...(spec.midFar ? planShell(spec.midFar, "midFar", worldWpx, worldHpx, srcSize) : []),
   ...(spec.mid ? planShell(spec.mid, "mid", worldWpx, worldHpx, srcSize) : []),
   ...(spec.fg ? planShell(spec.fg, "fg", worldWpx, worldHpx, srcSize) : []),
 ];

@@ -19,6 +19,8 @@
 
 import { IDLE_PAD, type Pad } from "./player.ts";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
+import { DIP_Y_PX, KNOT_PERIOD_TICKS } from "./entities.ts";
+import { SUBS } from "./paint.ts";
 import type { Ability, PaintLevel } from "./level.ts";
 
 export const PROOF_SCHEMA = "paintProof@1";
@@ -39,6 +41,15 @@ export interface TapeExpect {
    *  "nothing happened". A tape that ends with no present friend has lost the
    *  kindness economy, and that is now a failure the suite can see. */
   redeemedPresent?: boolean;
+  /** PK-R6 · D · THE REAWAKENING'S END-STATE (doc 44 §3.3). How many classmates
+   *  this run left AWAKE — redeemed, and standing in one of her own painted
+   *  after-states (settle → joy → her spot, waving). It is deliberately not
+   *  covered by `redeemedPresent`, which is an OR over every being in the phase
+   *  and goes green on a freed moth while the chapter's one person sits grey in
+   *  a cage the pilot walked past. That is exactly what every ch01 tape did
+   *  until this packet: `cagesFreed: 0` on all five, and the one rescue in the
+   *  chapter proven by nothing. Six rounds have to be RUN for this to be 1. */
+  classmatesAwake?: number;
   /** PK-R3b · R3-16: Regel-Seiten and Bonus-Bücher this run walked into. A
    *  collectible the pilot never touches is not proof it is takeable — and a
    *  page that stops being takeable after a grid edit is exactly the silent
@@ -52,6 +63,27 @@ export interface TapeExpect {
    *  „done". A phase that stops resolving to the end of the chapter now fails
    *  here rather than in a playtest. */
   scorePageShown?: boolean;
+  // ── PK-R6 · E · THE FLIGHT FIGHT (doc 44 §4 ch01 C4) ──────────────────────
+  // `guardianDown` alone said only „the knots were untied" — it went green on
+  // the grounded duel and would go green on a boss who never moved. The rebuild
+  // is a CHOREOGRAPHY, so the tape pins the choreography: that she flew a whole
+  // readable shape, that every throw was announced, that the counter-window
+  // opened, that she came DOWN to write her lie where the child could read it,
+  // and that the consolation actually played.
+  /** Full passes of a knot's path she completed (KNOT_PERIOD_TICKS each). */
+  guardianPathsFlown?: number;
+  /** Throws that left her hand — each one preceded by its telegraph, which
+   *  `guardian-flight.test.ts` pins at ≥500 ms on every tier and knot. */
+  guardianTelegraphs?: number;
+  /** Counter-windows opened (the boss card's own beat). */
+  guardianWindows?: number;
+  /** Did she DIP to the writing altitude for a window — i.e. was the
+   *  boss-evidence beat staged where a child can read four chalked words?
+   *  This is the world half of doc 41 §4; the words themselves are rendered by
+   *  PaintScene.writeEvidence off the card's own `evidence` field. */
+  guardianWroteLow?: boolean;
+  /** Did the consolation reach its end — she sank, rested, and was consoled? */
+  guardianConsoled?: boolean;
 }
 
 export interface PhaseTape {
@@ -157,6 +189,14 @@ export const replayPhaseTape = (
   let exited = false;
   let exitTo: string | null = null;
   let tasksSolved = 0;
+  // PK-R6 · E · the flight fight's own tally (declared here because `handle`
+  // below writes to it — the counter-window is an EVENT, not a sampled state)
+  let telegraphs = 0;
+  let windows = 0;
+  let wroteLow = false;
+  let consoled = false;
+  let pathTicks = 0;
+  let prevState = "";
   let tipsGot = 0;
   let booksGot = 0;
   const grantsPicked: string[] = [];
@@ -165,6 +205,19 @@ export const replayPhaseTape = (
     for (const ev of evs) {
       if (ev.type === "task") {
         tasksSolved++;
+        // PK-R6 · E · THE COUNTER-WINDOW, caught where it actually happens. It
+        // is opened and (in a replay) answered inside ONE sim step, so a sampler
+        // that looks at the world after the step never sees the `window` state
+        // at all — it counted zero windows on a run that untied every knot.
+        // The card request IS the window: `boss` use, `guardian` ctx.
+        if (ev.req.use === "boss" && ev.req.ctx.type === "guardian") {
+          windows++;
+          const askerId = ev.req.ctx.id;
+          const g = sim.world.entities.find((e) => e.id === askerId);
+          // she must have come DOWN to write, or the four chalked words are
+          // rendered somewhere a child cannot read them (doc 41 §4)
+          if (g && g.y / SUBS >= DIP_Y_PX - 8) wroteLow = true;
+        }
         handle(sim.solveTask(ev.req.ctx)); // may emit cageFreed/guardianDown
       } else if (ev.type === "powerup") {
         if (!abilities.includes(ev.grants)) abilities.push(ev.grants);
@@ -202,10 +255,24 @@ export const replayPhaseTape = (
     }
   };
 
+  // PK-R6 · E: the two beats that ARE states rather than announcements — how
+  // much path she flew, and whether the consolation actually finished.
+  const watchGuardian = (): void => {
+    const g = sim.world.entities.find((e) => e.role === "guardian");
+    if (!g) return;
+    if (g.state !== prevState) {
+      if (g.state === "throw") telegraphs++; // only a finished telegraph throws
+      if (g.state === "consoled") consoled = true;
+      prevState = g.state;
+    }
+    pathTicks = Math.max(pathTicks, g.flightTick);
+  };
+
   const masks = decodePads(tape.pads);
   let t = 0;
   for (; t < masks.length && !exited; t++) {
     handle(sim.step(maskToPad(masks[t] ?? 0)));
+    watchGuardian();
   }
   const world = {
     lettersGot: sim.lettersGot,
@@ -215,11 +282,23 @@ export const replayPhaseTape = (
     guardianDown: sim.guardianDefeated,
     tasksSolved,
     redeemedPresent: sim.world.entities.some((e) => e.redeemed && (e.state === "joy" || e.state === "rest")),
+    // PK-R6 · D: her own after-states — the settle, the Freudenrunde and the
+    // waving that follows it (entities.stepRedeemed). A classmate in any OTHER
+    // state at the end of a run is one the sequence did not finish.
+    classmatesAwake: sim.world.entities.filter(
+      (e) => e.role === "classmate" && e.redeemed && ["settle", "joy", "rest", "wave"].includes(e.state),
+    ).length,
     tipsGot,
     booksGot,
     // M-B: PaintGame opens the score page on exactly this condition — an exit
     // whose destination is the end of the chapter (PaintGame.handoff).
     scorePageShown: exitTo === "done",
+    // PK-R6 · E · the flight fight's choreography, as countable world facts
+    guardianPathsFlown: Math.floor(pathTicks / KNOT_PERIOD_TICKS[0]),
+    guardianTelegraphs: telegraphs,
+    guardianWindows: windows,
+    guardianWroteLow: wroteLow,
+    guardianConsoled: consoled,
   };
   return { exited, exitTo, ticksUsed: t, tasksSolved, grantsPicked, world };
 };
@@ -263,9 +342,15 @@ export const worldAssertionErrors = (expect: TapeExpect | undefined, world: Repl
   cmp("guardianDown", world.guardianDown);
   cmp("tasksSolved", world.tasksSolved);
   cmp("redeemedPresent", world.redeemedPresent);
+  cmp("classmatesAwake", world.classmatesAwake);
   cmp("tipsGot", world.tipsGot);
   cmp("booksGot", world.booksGot);
   cmp("scorePageShown", world.scorePageShown);
+  cmp("guardianPathsFlown", world.guardianPathsFlown);
+  cmp("guardianTelegraphs", world.guardianTelegraphs);
+  cmp("guardianWindows", world.guardianWindows);
+  cmp("guardianWroteLow", world.guardianWroteLow);
+  cmp("guardianConsoled", world.guardianConsoled);
   return errs;
 };
 

@@ -39,6 +39,12 @@ const PaintParams = z.record(z.string(), z.unknown()).check((ctx) => {
   // PK-R3b · R3-16: a Regel-Seite's payload is RENDERED to a six-year-old, so
   // its two authored strings are shape-checked here for the same reason `price`
   // is — a number or a stray null would reach the page as the rule itself.
+  // PK-R6 · D: `cage` is the classmate's pointer at the cage she was locked in.
+  // The `classmate-pair` law resolves it by id, so a number or an empty string
+  // would leave the chapter's one rescue pointing at nobody.
+  if ("cage" in p && (typeof p.cage !== "string" || p.cage.trim() === "")) {
+    ctx.issues.push({ code: "custom", input: p, path: ["cage"], message: "params.cage must be a non-empty entity id" });
+  }
   for (const k of ["topicDe", "merksatzDe"] as const) {
     if (k in p && (typeof p[k] !== "string" || p[k].trim() === "")) {
       ctx.issues.push({ code: "custom", input: p, path: [k], message: `params.${k} must be a non-empty string` });
@@ -53,6 +59,19 @@ const PaintEntity = z.object({
     "platform.move", "platform.fall", "platform.swing",
     "cage", "powerup", "door.trigger", "guardian",
     "tip", "book", // PK-R3b · R3-16: the two static-state collectibles
+    // PK-R6 · C: `drained` — the grey classroom object stage B spread across
+    // the field. It was added to game-paint's own level contract but not to
+    // THIS one, and the two are separate copies: the level parsed by the engine
+    // and failed at the door, so /play/1/buch answered 500 on the shipped
+    // chapter. (Filed: the two copies should become one — the loader ought to
+    // import the role list rather than restate it.)
+    "drained",
+    // PK-R6 · D: `classmate` — the bewitched person who steps out of the
+    // person-cage and is restored over six reawakening rounds (doc 44 §3.3).
+    // Added HERE in the same edit as game-paint's role list, on the standing
+    // lesson above: a role the engine knows and this copy does not is a 500 on
+    // the shipped chapter, not a type error.
+    "classmate",
   ]),
   skin: z.string().min(1),
   c: z.number().int().nonnegative(),
@@ -93,6 +112,13 @@ const PaintLevelFile = z.object({
   chapter: z.string().regex(CHAPTER_ID),
   draft: z.boolean().optional(),
   name: z.string().min(1),
+  /** PK-R6 · C (doc 44 §2.6): the objective screen's painted title plate. It
+   *  must be listed HERE too — this schema strips what it does not name, so an
+   *  unlisted field would reach the client as `undefined` and the goal card
+   *  would silently fall back to its plain page with nothing to show for it. */
+  goalPlate: z.string().min(1).optional(),
+  scorePlate: z.string().min(1).optional(),
+  doorPlate: z.string().min(1).optional(),
   goalDe: z.string().min(1),
   whyDe: z.string().min(1),
   hintsDe: z.array(z.string().min(1)),

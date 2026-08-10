@@ -63,7 +63,10 @@ describe("the colour wash (R3-15, doc 41 §2)", () => {
     // that does not fly a lap of joy, which left every knotted school bag
     // half-drained for the rest of the chapter. Two of ch01's restore cards are
     // about exactly those bags, so this is load-bearing, not cosmetic.
-    const sim = newSim("p1");
+    // PK-R6 · B: p2 — the chapter's ONE cage is Merle's (doc 44 §2.3), and the
+    // field restage retired the five anonymous satchel cages that used to make
+    // any phase do here.
+    const sim = newSim("p2");
     const cage = sim.world.entities.find((e) => e.role === "cage")!;
     cage.redeemed = true;
     cage.state = "burst";
@@ -260,7 +263,12 @@ it("the chapter's letter total is the three phases plus the arena, never the Kle
   const main = [...level.phases, ...(level.arena ? [level.arena] : [])]
     .reduce((n, p) => n + p.rows.join("").split("*").length - 1, 0);
   const bonus = level.bonus ? level.bonus.rows.join("").split("*").length - 1 : 0;
-  expect(main).toBe(23);
+  // PK-R6 · B: 23 → 32. The R4 density clause (doc 44 §2.7) scatters
+  // collectibles GENEROUSLY along the intended line of play, and ch01's trails
+  // now spell the drained objects they lead to: SCHOOLBAGBOOK (13) · DESKPENCIL
+  // (10) · GLUESTICK (9). The number is asserted rather than derived on purpose
+  // — it is the one place a silent re-scatter would show up.
+  expect(main).toBe(32);
   expect(bonus).toBeGreaterThan(0);
   expect(main).not.toBe(main + bonus);
 });

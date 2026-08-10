@@ -1,13 +1,16 @@
 import { describe, expect, it } from "vitest";
 import {
   applyLinks,
+  engageTargetId,
   guardianKnotSolved,
   redeemEntity,
   rideAttachCheck,
   spawnEntities,
   stepEntities,
+  flightPointAt,
   GUARDIAN_SCRIPT,
   JOY_TICKS,
+  KNOT_PERIOD_TICKS,
   SAD_TICKS,
   type EntityWorld,
   type WorldInput,
@@ -44,6 +47,131 @@ const run = (w: EntityWorld, inp: WorldInput, ticks: number) => {
   for (let t = 0; t < ticks; t++) all.push(...stepEntities(w, GRID, inp));
   return all;
 };
+
+// ── PK-R6 · C1/C2 · the drained object and the ↑ engage (doc 44 §4 ch01) ─────
+describe("drained objects + the ↑ engage", () => {
+  /** the player standing AT an entity spawned at (c,r) */
+  const atEntity = (c: number, r: number, over: Partial<WorldInput> = {}): WorldInput =>
+    idleInput({ playerX: (c * TILE + TILE / 2) * SUBS, playerY: (r + 1) * TILE * SUBS, ...over });
+
+  const drained = (over: Partial<EntitySpec> = {}): EntitySpec =>
+    spec({ id: "obj1", role: "drained", skin: "obj_desk", c: 10, r: 11, ...over });
+
+  it("does NOTHING on contact — a desk is not an ambush", () => {
+    const w = spawnEntities([drained()], []);
+    // stand on it for two seconds without pressing anything
+    expect(run(w, atEntity(10, 11), 120)).toEqual([]);
+  });
+
+  it("raises `engaged` on the ↑ PRESS, and only for the tick of the press", () => {
+    const w = spawnEntities([drained()], []);
+    const evs = stepEntities(w, GRID, atEntity(10, 11, { playerEngage: true }));
+    expect(evs.filter((e) => e.type === "engaged").map((e) => e.id)).toEqual(["obj1"]);
+    // the sim hands in an EDGE, so a held ↑ is not a second engage
+    expect(run(w, atEntity(10, 11), 60).filter((e) => e.type === "engaged")).toEqual([]);
+  });
+
+  it("is out of reach from across the room", () => {
+    const w = spawnEntities([drained()], []);
+    const far = idleInput({ playerX: 30 * TILE * SUBS, playerY: 12 * TILE * SUBS, playerEngage: true });
+    expect(stepEntities(w, GRID, far).filter((e) => e.type === "engaged")).toEqual([]);
+  });
+
+  it("ONE press engages ONE being — the nearest — never both at once", () => {
+    const w = spawnEntities([drained({ id: "near", c: 10 }), drained({ id: "far", c: 11 })], []);
+    const evs = stepEntities(w, GRID, atEntity(10, 11, { playerEngage: true }));
+    expect(evs.filter((e) => e.type === "engaged").map((e) => e.id)).toEqual(["near"]);
+  });
+
+  it("engageTargetId names exactly what a press would reach (the cue reads from it)", () => {
+    const w = spawnEntities([drained()], []);
+    const px = (10 * TILE + TILE / 2) * SUBS;
+    const py = 12 * TILE * SUBS;
+    expect(engageTargetId(w, px, py)).toBe("obj1");
+    expect(engageTargetId(w, 30 * TILE * SUBS, py)).toBeNull();
+    // a restored object no longer advertises itself
+    redeemEntity(w, "obj1");
+    expect(engageTargetId(w, px, py)).toBeNull();
+  });
+
+  it("↑ opens a CAGE — the fist-less chapter can still free its classmate", () => {
+    // PK-R6 · C2: ch01 grants no fist (doc 44 §4), and cages used to answer to
+    // nothing else. Without this the chapter's one classmate cage would be
+    // unopenable and the chapter uncompletable.
+    const w = spawnEntities([spec({ id: "cage-merle", role: "cage", skin: "pencilcase", c: 10, r: 11 })], []);
+    const evs = stepEntities(w, GRID, atEntity(10, 11, { playerEngage: true }));
+    expect(evs.filter((e) => e.type === "cageBurst").map((e) => e.id)).toEqual(["cage-merle"]);
+    expect(w.entities[0]!.redeemed).toBe(true);
+  });
+});
+
+describe("the fist-less dodge window (PK-R6 · C2, flying under · E)", () => {
+  const tafel = (): EntityWorld =>
+    spawnEntities([spec({ id: "tafel", role: "guardian", skin: "tafel", c: 17, r: 11, tier: "E" })], []);
+  /** A child who PACES, which is what the chapter teaches and what the proof
+   *  tape's pilot does. The chalk is aimed at where they stand, so walking is
+   *  the whole answer — a stationary child is standing on the target. */
+  const pacing = (t: number): WorldInput =>
+    idleInput({ playerX: (16 + (Math.floor(t / 40) % 2 === 0 ? 8 : -8)) * TILE * SUBS });
+
+  it("opens a counter-window after DODGES_PER_WINDOW chalks reach the floor", () => {
+    const w = tafel();
+    const g = w.entities[0]!;
+    let staggers = 0;
+    for (let t = 0; t < 3000 && staggers === 0; t++) {
+      for (const ev of stepEntities(w, GRID, pacing(t))) if (ev.type === "guardianStagger") staggers++;
+    }
+    expect(staggers).toBe(1);
+    expect(g.dodges).toBe(0); // the tally resets when it is spent
+  });
+
+  it("never opens mid-telegraph — an interrupted tell is a throw that never comes", () => {
+    // PK-C3's rule („never mid-crossing", which stranded her off-station) has an
+    // aerial twin: the child has already begun READING a windup when the third
+    // dodge lands, and cutting it turns the fairness beat into a feint.
+    const w = tafel();
+    const g = w.entities[0]!;
+    const entriesIntoDip: string[] = [];
+    let dips = 0;
+    let prev = g.state;
+    for (let t = 0; t < 5000; t++) {
+      stepEntities(w, GRID, pacing(t));
+      if (g.state !== prev) {
+        if (g.state === "dip") { entriesIntoDip.push(prev); dips++; }
+        prev = g.state;
+      }
+      // a settled window never carries travel — she would drift out from under
+      // her own chalked words while the child is reading them
+      if (g.state === "stagger" || g.state === "window") expect(g.vx).toBe(0);
+    }
+    expect(dips).toBeGreaterThan(0); // the run actually exercised the beat
+    // EVERY entry into the dip came out of level flight — never out of a tell
+    expect([...new Set(entriesIntoDip)]).toEqual(["fly"]);
+  });
+
+  it("ANTI-SOFTLOCK: even a child who never moves gets into the fight", () => {
+    // A six-year-old who freezes is standing exactly where the chalk is aimed,
+    // so every piece would hit and no window could ever open — except that a hit
+    // grants i-frames, and chalk passes THROUGH an invulnerable child to the
+    // floor, where it counts as the dodge it effectively was. The fight
+    // therefore always progresses; this pins that it does.
+    const w = tafel();
+    const g = w.entities[0]!;
+    let iframes = 0;
+    let staggers = 0;
+    for (let t = 0; t < 4000 && staggers === 0; t++) {
+      const inp = idleInput({ playerX: 17 * TILE * SUBS, playerIframes: iframes });
+      const evs = stepEntities(w, GRID, inp);
+      if (iframes > 0) iframes--;
+      for (const ev of evs) {
+        if (ev.type === "encounter") iframes = 120; // PAINT.iframeTicks
+        if (ev.type === "guardianStagger") staggers++;
+      }
+    }
+    expect(staggers).toBe(1);
+    expect(g.state === "stagger" || g.state === "window").toBe(true);
+  });
+});
 
 describe("chaser", () => {
   it("patrols and turns at a ledge instead of walking off", () => {
@@ -168,32 +296,37 @@ describe("the guardian machine (G11 grammar)", () => {
     expect(guardianKnotSolved(w, "g").some((v) => v.type === "guardianKnot")).toBe(true);
     expect(guardianKnotSolved(w, "g").some((v) => v.type === "guardianKnot")).toBe(true);
     expect(guardianKnotSolved(w, "g").some((v) => v.type === "guardianDown")).toBe(true);
-    // R3-5 · the last knot no longer jumps to the victory cell: the board CRIES
-    // first (`tafel_sad`, painted and shown by nothing until now), and only then
-    // is it consoled. doc 38 named this the cheapest win on the board.
+    // R3-5 kept, PK-R6 · E re-staged: the last knot no longer jumps to the
+    // victory cell. She comes DOWN first (`sink` — the flight sheet's land
+    // cells), rests exhausted on the boards (`sad`), and only then is consoled.
+    expect(g.state).toBe("sink");
+    for (let t = 0; t < 400 && g.state === "sink"; t++) stepEntities(w, GRID, inp);
     expect(g.state).toBe("sad");
     for (let t = 0; t <= SAD_TICKS + 1; t++) stepEntities(w, GRID, inp);
     expect(g.state).toBe("consoled");
   });
 
-  it("R3-4: it turns to FACE the player before throwing, and the chalk leaves on that side", () => {
+  it("R3-4: it FACES the player to throw, and the chalk leaves on that side", () => {
     for (const playerSide of [-1, 1] as const) {
-      const w = spawnEntities([spec({ id: "g", role: "guardian", skin: "tafel", c: 30, r: 11, tier: "E" })], []);
+      const w = spawnEntities([spec({ id: "g", role: "guardian", skin: "tafel", c: 20, r: 11, tier: "E" })], []);
       const g = w.entities.find((e) => e.id === "g")!;
-      const inp = idleInput({ playerX: (30 + playerSide * 6) * TILE * SUBS, playerY: 12 * TILE * SUBS });
+      const inp = idleInput({ playerX: (20 + playerSide * 9) * TILE * SUBS, playerY: 12 * TILE * SUBS });
       g.dir = -playerSide as 1 | -1; // start it turned AWAY — Koki's 11.50.09
-      let sawTurn = false;
       let chalk = null;
-      for (let t = 0; t < 400 && !chalk; t++) {
+      let dirAtThrow = 0;
+      for (let t = 0; t < 600 && !chalk; t++) {
         stepEntities(w, GRID, inp);
-        if (g.state === "turn") sawTurn = true;
+        if (g.state === "telegraph") dirAtThrow = g.dir;
         chalk = w.projectiles.find((p) => p.kind === "chalk") ?? null;
       }
-      expect(sawTurn, "a guardian facing away must spend the turn beat first").toBe(true);
       expect(chalk).not.toBeNull();
-      // the spawn side and the travel direction are BOTH the facing — this is
-      // the assertion that kills the "projectile appears behind you" class
-      expect(Math.sign(chalk!.x - g.homeX)).toBe(playerSide);
+      // PK-R6 · E: the turn beat retires with the ground roll — a flying board
+      // has no wheels to swing round. The LAW it protected is untouched and is
+      // asserted here instead: by the time she releases, she is facing the
+      // child, and the chalk leaves on that side. This is what kills the
+      // „projectile appears behind you" class (Koki's 11.50.09).
+      expect(dirAtThrow).toBe(playerSide);
+      expect(Math.sign(chalk!.x - g.x)).toBe(playerSide);
       expect(Math.sign(chalk!.vx)).toBe(playerSide);
     }
   });
@@ -318,50 +451,49 @@ describe("PB-T1 · walker edge contract", () => {
   });
 });
 
-// ── PK-C3 · the guardian's locomotion (gate verdict G4: the Tafel MOVES) ─────
-describe("the arena guardian rolls between stations", () => {
+// ── PK-R6 · E · the guardian's locomotion (doc 44 §4 ch01 C4: the Tafel FLIES)
+// PK-C3's two-station ground roll retires with the R4 canon. What replaces it is
+// asserted here in the same spirit: she MOVES, the movement is a shape, and the
+// shape is the same shape every run.
+describe("the arena guardian flies her knot's path", () => {
   const arena = (): EntityWorld =>
     spawnEntities([spec({ id: "tafel", role: "guardian", skin: "tafel", c: 17, r: 11, tier: "E", params: { knots: 3 } })], []);
   const far = (): WorldInput => idleInput({ playerX: 30 * TILE * SUBS });
 
-  it("leaves the throw in a ROLL, not standing still", () => {
+  it("is airborne from the first tick and never touches the boards while it fights", () => {
     const w = arena();
     const g = w.entities[0]!;
-    for (let t = 0; t < 400 && g.state !== "roll"; t++) stepEntities(w, GRID, far());
-    expect(g.state).toBe("roll");
-  });
-
-  it("crosses to the far station and settles there", () => {
-    const w = arena();
-    const g = w.entities[0]!;
-    const home = g.homeX;
-    for (let t = 0; t < 900 && !(g.state === "idle" && g.x !== home); t++) stepEntities(w, GRID, far());
-    expect(g.x).not.toBe(home);
-    expect(Math.abs(g.x - home) / SUBS).toBeCloseTo(GUARDIAN_SCRIPT.E.rollRangeTiles * TILE, 0);
-  });
-
-  it("alternates stations — it never rolls off one side forever", () => {
-    const w = arena();
-    const g = w.entities[0]!;
-    const seen = new Set<number>();
-    for (let t = 0; t < 4000; t++) { stepEntities(w, GRID, far()); if (g.state === "idle") seen.add(g.x); }
-    expect(seen.size).toBeGreaterThanOrEqual(2);
-    for (const x of seen) {
-      expect(Math.abs(x - g.homeX) / SUBS).toBeLessThanOrEqual(GUARDIAN_SCRIPT.E.rollRangeTiles * TILE + 1);
+    expect(g.state).toBe("fly");
+    const floorY = 16 * TILE * SUBS; // the arena's walking surface
+    for (let t = 0; t < 3000; t++) {
+      stepEntities(w, GRID, far());
+      if (g.state === "sink" || g.state === "sad" || g.state === "consoled") break;
+      expect(g.y).toBeLessThan(floorY);
     }
   });
 
-  it("completes a FULL station-to-station crossing without timing out", () => {
-    // the safety-net cap must clear 2 x range, or the Tafel strands mid-stage
-    // (the live playtest found it settling at 246 instead of its 216 station)
+  it("traces a CLOSED shape — a full pass returns her to where it began", () => {
     const w = arena();
     const g = w.entities[0]!;
-    const home = g.homeX;
-    const range = GUARDIAN_SCRIPT.E.rollRangeTiles * TILE * SUBS;
-    const stations = new Set<number>();
-    for (let t = 0; t < 6000; t++) { stepEntities(w, GRID, far()); if (g.state === "idle") stations.add(g.x); }
-    // home appears too: that is where it stands before the first throw
-    expect([...stations].sort((a, b) => a - b)).toEqual([home - range, home, home + range]);
+    // drive the path directly: one period of flightTick, same centre
+    const a = flightPointAt(g.homeX, g.homeY, g.hp, 3, 0);
+    const b = flightPointAt(g.homeX, g.homeY, g.hp, 3, KNOT_PERIOD_TICKS[0]!);
+    expect(b.x).toBe(a.x);
+    expect(b.y).toBe(a.y);
+  });
+
+  it("actually leaves her centre — the shape has size on both axes", () => {
+    const w = arena();
+    const g = w.entities[0]!;
+    const xs = new Set<number>();
+    const ys = new Set<number>();
+    for (let t = 0; t < KNOT_PERIOD_TICKS[0]!; t++) {
+      const p = flightPointAt(g.homeX, g.homeY, g.hp, 3, t);
+      xs.add(p.x);
+      ys.add(p.y);
+    }
+    expect((Math.max(...xs) - Math.min(...xs)) / SUBS).toBeGreaterThan(60);
+    expect((Math.max(...ys) - Math.min(...ys)) / SUBS).toBeGreaterThan(20);
   });
 
   it("is DETERMINISTIC — two identical runs land on the same tick trace", () => {
@@ -369,7 +501,7 @@ describe("the arena guardian rolls between stations", () => {
       const w = arena();
       const g = w.entities[0]!;
       const out: string[] = [];
-      for (let t = 0; t < 1200; t++) { stepEntities(w, GRID, far()); out.push(`${g.state}:${g.x}`); }
+      for (let t = 0; t < 1200; t++) { stepEntities(w, GRID, far()); out.push(`${g.state}:${g.x}:${g.y}`); }
       return out.join("|");
     };
     expect(trace()).toBe(trace());

@@ -48,6 +48,29 @@ export function resolvePool(
   return { pool: scoped.filter((t) => t.skins === undefined), key: `${use}|${ctx.phase}|*` };
 }
 
+/**
+ * PK-R6 · D · THE ORDERED SERVE (doc 44 §3.3). A reawakening is not a playlist:
+ * round 3 must be the card authored as round 3, because its picture is the
+ * pose the classmate is striking in the world at that moment. `nextTask` cannot
+ * do this and must not be taught to — its cursor-plus-skip is what keeps a
+ * child from meeting the same KIND twice in a row, and on a pool of six choice
+ * cards that skip would serve rounds 1, 3, 5, 1, … So the ceremony asks for its
+ * round by INDEX, out of the same resolved pool every other card comes from,
+ * and the routing state is left untouched (an ordered serve has no cursor to
+ * advance — the world's own counter is the cursor).
+ *
+ * Out of range ⇒ null, and the caller resolves rather than softlocks.
+ */
+export function orderedTask(
+  items: readonly GameTaskV2[],
+  use: string,
+  ctx: ServeCtx,
+  index: number,
+): GameTaskV2 | null {
+  const { pool } = resolvePool(items, use, ctx);
+  return index >= 0 && index < pool.length ? pool[index]! : null;
+}
+
 /** The next task for a `use` in this context, and the advanced routing state.
  *  task is null only when the resolved pool is empty (the caller falls back to
  *  the generic pool or just resolves — never a softlock). */

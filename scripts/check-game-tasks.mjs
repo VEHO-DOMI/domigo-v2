@@ -21,14 +21,37 @@
 //   9. DISTRIBUTION MAP (doc 41 §1, R3-13) — a chapter's FIELD may only serve
 //      the kinds its palette allows, so ch01 stays a tutorial; and the
 //      non-repetition floor is what the phase actually spawns, not a flat 2.
+//  11. PORTRAIT LAW (doc 44 §3.1.5, PK-R6 · C) — a card whose asker has been
+//      PAINTED must declare which of its cells is talking; the declared stem
+//      must exist and must belong to that being.
+//  12. TIMER POLICY (doc 44 §2.9, PK-R6 · C) — the content may not contradict
+//      the chalk clock's own map (game-paint/src/cards/timer.ts, imported).
 // The grounding/register helpers mirror scripts/check-story-grounding.mjs
 // (same lexicon, same law) — kept compact and local on purpose.
 import fs from "node:fs";
 import path from "node:path";
 import { GameTasksFileV2, MAX_LINE_DE, registerErrorsDe } from "../packages/content-schema/src/game-tasks.ts";
+import { CALM_DE, TIMED_USES, URGENCY_DE, spokenDeOf, timerClassFor } from "../packages/game-paint/src/cards/timer.ts";
+// PK-R6 · D: the reawakening's length is a LAW, not a number this file may
+// restate — imported from the engine that plays it (doc 44 §3.3's six rounds).
+import { AWAKEN_ROUNDS } from "../packages/game-paint/src/entities.ts";
 
 const STORIES = "content/corpus/stories";
 const lex = JSON.parse(fs.readFileSync("docs/design/g1/grounding/u01-lexicon.json", "utf8"));
+
+// ── the painted stems that exist on disk (mirrors check-paint-art's walk) ────
+// Layer 11 needs to know what has been COMMISSIONED, which is a fact about the
+// art tree, not about the content — so it is read from the tree.
+const PAINT_ART_ROOT = "apps/web/public/art/g1/paint";
+const paintedStems = new Set();
+const walkArt = (dir) => {
+  if (!fs.existsSync(dir)) return;
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (e.isDirectory()) walkArt(path.join(dir, e.name));
+    else if (e.name.endsWith(".png")) paintedStems.add(e.name.replace(/\.png$/, ""));
+  }
+};
+walkArt(PAINT_ART_ROOT);
 
 let failures = 0;
 const fail = (where, msg) => { failures += 1; console.error(`✗ ${where}: ${msg}`); };
@@ -90,7 +113,13 @@ function checkItem(chId, t) {
     case "choice": t.options.forEach((o) => checkEn(w, o)); checkEn(w, t.answer); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
     case "typed": checkEn(w, t.answer); (t.accept ?? []).forEach((a) => checkEn(w, a)); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
     case "spell": checkEn(w, t.answer); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
-    case "wheel": t.values.forEach((v) => checkEn(w, v)); checkEn(w, t.answer); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
+    // PK-R6 · F: `shown` is grounded too. On a word-to-digit wheel the ring is
+    // digits, so `values` and `answer` carry NO English at all — the datum the
+    // skin draws (skins.tsx renders `state.shown`) is then the only English on
+    // the card, and until now it was the one student-visible string layer 2
+    // never read. An out-of-unit number word could have shipped through a green
+    // grounding check.
+    case "wheel": t.values.forEach((v) => checkEn(w, v)); checkEn(w, t.answer); checkEn(w, t.shown); checkGiveaway(w, t.answer, t.promptEn, t.storyDe); break;
     case "order": t.orderedChips.forEach((c) => checkEn(w, c)); break;
     case "oddone": t.items.forEach((i) => checkEn(w, i)); break;
     case "mistake": t.sentence.forEach((s) => checkEn(w, s)); checkEn(w, t.fix.correction); (t.correctionOptions ?? []).forEach((o) => checkEn(w, o)); break;
@@ -156,7 +185,9 @@ const boundCards = (items, use, skin, phase) =>
 // long before this mechanic existed („Ein weißer Radiergummi", „seine bunten
 // Farben", „Eine braune Schultasche") became wrong the moment the grammar
 // shipped. Grey/blass are of course allowed — that IS the state.
-const WASHED_ROLES_MJS = ["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm", "cage"];
+// PK-R6 · C1: `drained` is the role this law was really written for — mirrors
+// game-paint/src/anim.ts WASHED_ROLES, which is the renderer's own list.
+const WASHED_ROLES_MJS = ["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm", "cage", "drained", "classmate"];
 const COLOUR_WORDS_DE = /\b(wei(ß|ss)|rot|blau|grün|gelb|braun|schwarz|rosa|orange|bunt|golden|silbern)\w*/i;
 
 function checkDesaturation(w, items, washedSkins) {
@@ -224,15 +255,61 @@ function checkAgainstLevel(file, level, items) {
         const n = boundCards(items, use, e.skin, ph.id).length;
         if (n < need) fail(at, `coverage: hostile skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${need} (${simultaneous.get(e.skin)} of them stand in ${ph.id} at once)`);
       } else if (e.role === "guardian") {
-        // a guardian raises three different pools: chalk hits (encounter),
-        // knot windows (boss) and the chapter's last act (finale)
-        for (const [use, min] of [["encounter", 2], ["boss", 2], ["finale", 1]]) {
+        // PK-R6 · F · A GUARDIAN RAISES TWO POOLS, NOT THREE. This row used to
+        // demand ≥2 `encounter` cards as well, from the era when a chalk hit
+        // was an ordinary field encounter. Stage E changed that: sim.ts's
+        // encounter handler reads `src?.role === "guardian" ? "boss" : …`, and
+        // both chalk paths (entities.ts 939 · 1014) raise the event with
+        // `id: p.fromId` — the guardian herself. So EVERY guardian-raised
+        // encounter resolves to the boss battery, and an `encounter` card bound
+        // to her skin can never be served by anything. The gate was requiring
+        // three cards the engine had no path to; ch01 duly shipped three, and
+        // they sat unreachable behind a green check. Knot windows (boss) and
+        // the chapter's last act (finale) are the two real pools.
+        for (const [use, min] of [["boss", 2], ["finale", 1]]) {
           const n = boundCards(items, use, e.skin, ph.id).length;
           if (n < min) fail(at, `coverage: guardian skin "${e.skin}" has ${n} ${use} card(s) here — needs ≥${min}`);
         }
       } else if (e.role === "cage") {
+        // PK-R6 · D · WHOSE POOL A PERSON-CAGE OWNS (doc 44 §3.3). A cage that
+        // holds a CLASSMATE no longer asks anything itself: ↑ opens the latch,
+        // she steps out, and her six-round reawakening is the rescue. So the
+        // rescue cards that used to belong to the cage's skin belong to HERS —
+        // and the count is exact in both directions, because five rounds would
+        // leave her half-grey with the ceremony over and seven would author a
+        // round the sim can never raise.
+        if (e.params?.classmate !== undefined) {
+          const mate = (ph.entities ?? []).find((x) => x.role === "classmate" && x.params?.cage === e.id);
+          if (!mate) continue; // the level's own `classmate-pair` law owns this
+          const n = boundCards(items, "rescue", mate.skin, ph.id).length;
+          if (n !== AWAKEN_ROUNDS) {
+            fail(at, `coverage: the reawakening of "${mate.skin}" has ${n} rescue card(s) in ${ph.id} — doc 44 §3.3 runs exactly ${AWAKEN_ROUNDS} rounds`);
+          }
+          // the pose IS the prompt, so two rounds may not show the same pose:
+          // the child would be asked to read one picture twice and the second
+          // reading would be about a wrong action they already stopped.
+          const poses = boundCards(items, "rescue", mate.skin, ph.id).map((t) => t.stimulus?.art);
+          const seen = new Map();
+          for (const [i, p] of poses.entries()) {
+            if (p === undefined) continue; // the portrait law (11) owns that case
+            if (seen.has(p)) fail(at, `reawakening: rounds ${seen.get(p) + 1} and ${i + 1} both show "${p}" — each round is its own painted wrong action`);
+            else seen.set(p, i);
+          }
+          continue;
+        }
         const n = boundCards(items, "rescue", e.skin, ph.id).length;
         if (n < 1) fail(at, `coverage: cage skin "${e.skin}" has no rescue card here`);
+      } else if (e.role === "drained") {
+        // PK-R6 · C1 · THE RESTORE-PAIR LAW. A drained object is a promise
+        // rendered in grey: the child walks up, presses ↑, and the world owes
+        // them the two-step card that gives its name and its colour back. With
+        // no bound card the router falls through to the unbound quickfire pool
+        // and a drained desk asks a number question — the exact "answered by a
+        // card about somebody else" defect the binding law (PB-F1) exists to
+        // stop, and it would ship silently because nothing else looks here.
+        const n = boundCards(items, "encounter", e.skin, ph.id)
+          .filter((t) => t.kind === "restore").length;
+        if (n < 1) fail(at, `coverage: drained object "${e.skin}" has no restore card in ${ph.id} — a grey thing with no way to give its colour back`);
       } else if (e.role === "door.trigger" && String(e.params?.kind ?? "exit") !== "bonus") {
         const n = boundCards(items, "door", e.skin, ph.id).length;
         if (n < 1) fail(at, `coverage: door skin "${e.skin}" has no door card here`);
@@ -251,8 +328,16 @@ function checkAgainstLevel(file, level, items) {
   for (const ph of phases) {
     for (const e of ph.entities ?? []) {
       if (HOSTILE_ROLES.includes(e.role)) raisedUses.add(encounterUseFor(e.role));
-      else if (e.role === "guardian") { raisedUses.add("encounter"); raisedUses.add("boss"); raisedUses.add("finale"); }
+      // PK-R6 · C1: a drained object is a visible asker too — it raises its own
+      // card on the ↑ press (sim.ts `engaged` → use "encounter").
+      else if (e.role === "drained") raisedUses.add("encounter");
+      // PK-R6 · F: NOT "encounter" — sim.ts routes her chalk hits to the boss
+      // battery (see the coverage row above), so she raises boss and finale.
+      else if (e.role === "guardian") { raisedUses.add("boss"); raisedUses.add("finale"); }
       else if (e.role === "cage") raisedUses.add("rescue");
+      // PK-R6 · D: the classmate raises the same pool her cage did — she is the
+      // asker of every round after the latch (sim.ts `askRound`).
+      else if (e.role === "classmate") raisedUses.add("rescue");
       else if (e.role === "door.trigger") raisedUses.add(String(e.params?.kind ?? "exit") === "bonus" ? "bonuspay" : "door");
     }
   }
@@ -263,6 +348,79 @@ function checkAgainstLevel(file, level, items) {
   for (const t of items) {
     if (!raisedUses.has(t.use)) {
       fail(`${w}:${t.id}`, `speaker-law: use "${t.use}" is raised by no visible asker in this chapter — the card can only ever be served by nobody`);
+    }
+  }
+}
+
+// ── 11 · THE PORTRAIT LAW (doc 44 §3.1.5, PK-R6 · C) ─────────────────────────
+// „A card whose asker has a commissioned portrait must declare it — no silent
+// text fallbacks where art exists." The fallback is a real and permanent
+// feature (art lands batch by batch, and a card must render before its being is
+// painted), which is exactly why it needs a gate: a fallback that is allowed to
+// stand in for LANDED art is how a chapter ships text placeholders over 66
+// painted stems and nobody notices. So the law is conditional on the disk:
+// the moment `<skin>_a` exists, the card owes a declaration.
+//
+// Three failures, all of them a wrong FACE rather than a missing one:
+//   a · art exists for the asker and the card declares none  → silent fallback
+//   b · the declared stem is not on disk                     → a broken portrait
+//   c · the declared stem is not a cell of any declared skin → someone else's face
+function checkPortraits(file, items) {
+  const w = path.basename(file);
+  for (const t of items) {
+    if (t.stimulus?.type !== "entity") continue; // no asker, no portrait
+    const skins = t.skins ?? [];
+    const painted = skins.filter((s) => paintedStems.has(`${s}_a`));
+    const stem = t.stimulus.art;
+    if (stem === undefined) {
+      if (painted.length > 0) {
+        fail(`${w}:${t.id}`, `portrait: [${painted.join(", ")}] is painted (${painted[0]}_a exists) but this card declares no stimulus.art — it would render the text placeholder over commissioned art (doc 44 §3.1.5)`);
+      }
+      continue;
+    }
+    if (!paintedStems.has(stem)) {
+      fail(`${w}:${t.id}`, `portrait: declares art "${stem}", which is not painted — the card would fall back silently to text`);
+      continue;
+    }
+    if (!skins.some((s) => stem === s || stem.startsWith(`${s}_`))) {
+      fail(`${w}:${t.id}`, `portrait: art "${stem}" is not a cell of [${skins.join(", ")}] — the card would wear another being's face`);
+    }
+    // one card, one face: a card bound to two painted beings can only be right
+    // about one of them, and the portrait would lie to whichever one asked
+    if (painted.length > 1) {
+      fail(`${w}:${t.id}`, `portrait: bound to ${painted.length} painted beings [${painted.join(", ")}] but a card wears ONE face — bind it to the being it shows`);
+    }
+  }
+}
+
+// ── 12 · THE TIMER POLICY (doc 44 §2.9, Decision ④, PK-R6 · C) ───────────────
+// The chalk clock survives only where urgency is the fiction. The map itself
+// lives in game-paint/src/cards/timer.ts and is IMPORTED here, not restated, so
+// the gate and the runtime can never drift apart — the whole reason the policy
+// became a module. This layer checks the content against it:
+//   a · a calm KIND authored into a timed pool. A restore card is calm by law,
+//       so a quickfire restore is a card whose pool says „hurry" and whose
+//       machine says „take your time" — one of the two is lying to the child.
+//   b · German that PROMISES a clock on a card that will never have one — the
+//       countdown-to-nothing lie, pointed the other way (a child told to hurry
+//       with no ring on screen has been told something untrue).
+//   c · German that promises calm on a card that IS timed.
+function checkTimerPolicy(file, items) {
+  const w = path.basename(file);
+  for (const t of items) {
+    const cls = timerClassFor(t.use, t.kind);
+    if (cls === "calm" && TIMED_USES.has(t.use)) {
+      fail(`${w}:${t.id}`, `timer-policy: kind "${t.kind}" is a calm class (doc 44 §2.9) but the card is authored into the timed pool "${t.use}" — the pool would tell the child to hurry through a card that is never clocked`);
+    }
+    for (const de of spokenDeOf(t)) {
+      const urgent = URGENCY_DE.exec(de);
+      if (urgent && cls === "calm") {
+        fail(`${w}:${t.id}`, `timer-policy: says „${urgent[0]}" but this card carries no clock (${t.use}/${t.kind} is calm, doc 44 §2.9) — hurry with nothing to hurry against`);
+      }
+      const calm = CALM_DE.exec(de);
+      if (calm && cls === "timed") {
+        fail(`${w}:${t.id}`, `timer-policy: says „${calm[0]}" on a card the chalk clock runs out on (${t.use}/${t.kind} is timed) — the line and the ring contradict each other`);
+      }
     }
   }
 }
@@ -321,7 +479,9 @@ for (const file of files) {
   }
   checkAgainstLevel(file, JSON.parse(fs.readFileSync(levelFile, "utf8")), parsed.data.items);
   checkNoTwins(file, parsed.data.items);
+  checkPortraits(file, parsed.data.items);
+  checkTimerPolicy(file, parsed.data.items);
 }
 
-if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins all green`);
+if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy all green`);
 else { console.error(`check-game-tasks: ${failures} failure(s)`); process.exit(1); }

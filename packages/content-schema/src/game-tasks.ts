@@ -31,7 +31,16 @@ export const TaskStimulus = z.discriminatedUnion("type", [
   // for the blind-solve projection + accessibility)
   z.object({ type: z.literal("image"), stem: z.string().min(1), altDe: z.string().min(1) }),
   // the encountered creature displays a datum (e.g. the moth carrying its number)
-  z.object({ type: z.literal("entity"), showsDe: z.string().min(1) }),
+  //
+  // PK-R6 · C · THE PORTRAIT BINDING (doc 44 §3.1.5). `art` names the painted
+  // stem the card wears as the asker's face — WHICH CELL of the being is doing
+  // the talking, which is an authoring decision (the Tafel's telegraph pose asks
+  // a boss window; her idle asks an encounter), not something an engine may
+  // guess. It is optional in the SCHEMA because art lands batch by batch and a
+  // card must render before its being is painted; it is mandatory in the GATE
+  // (scripts/check-game-tasks.mjs layer 11) the moment the asker's art exists,
+  // so „silent text fallback where art exists" cannot ship.
+  z.object({ type: z.literal("entity"), showsDe: z.string().min(1), art: z.string().min(1).optional() }),
 ]);
 export type TaskStimulus = z.infer<typeof TaskStimulus>;
 

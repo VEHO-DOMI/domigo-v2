@@ -18,15 +18,22 @@ import { type AirModel, LOGICAL_H, LOGICAL_W, PAINT, SUBS, TILE } from "./paint.
 import { IDLE_PAD, type Pad, type PlayerEvent, type PlayerState, applyKnockback, spawnPlayer, stepPlayer } from "./player.ts";
 import { type FistState, stepFist, throwFist } from "./fist.ts";
 import {
+  AWAKEN_ROUNDS,
   type EntityEvent,
+  type EntityState,
   type EntityWorld,
   applyLinks,
+  awakenClassmate,
+  classmateOfCage,
   guardianKnotSolved,
   redeemEntity,
+  restoreFreedClassmate,
   rideAttachCheck,
   spawnEntities,
   stepEntities,
+  stepRedeemedOnly,
 } from "./entities.ts";
+import { CAGE_OPEN_TICKS, COLOUR_FLOOD_TICKS } from "./anim.ts";
 import { cameraTargetX, clampScroll, stepCameraAxis, stepCameraY } from "./camera.ts";
 import { type Ability, type PaintLevel, type PhaseSpec, allPhases, findGlyph } from "./level.ts";
 
@@ -53,6 +60,13 @@ export interface TaskRequest {
   ctx:
     | { type: "entity"; id: string; skin: string }
     | { type: "cage"; id: string; skin: string; classmate?: string }
+    /** PK-R6 · D · THE REAWAKENING ROUND (doc 44 §3.3). A fifth world asker,
+     *  and the only one that asks the SAME being more than once: the classmate
+     *  standing ghost-pale out of her cage, on round `round` of `rounds`. The
+     *  index rides in the request because the ceremony is ORDERED — round 3
+     *  shows the pose round 3 was authored for — which is the one thing the
+     *  shuffling playlist router (cards/routing) must not decide here. */
+    | { type: "classmate"; id: string; skin: string; round: number; rounds: number }
     | { type: "door"; id: string; kind: string; skin: string }
     | { type: "guardian"; id: string; skin: string }
     | { type: "console"; id: string; skin: string }
@@ -125,7 +139,7 @@ export const MAGNET_FIELD_PX = TILE * 1.6;
 /** How much of the remaining gap a drifting letter closes each tick. */
 export const MAGNET_LERP = 0.22;
 /** The child's collect anchor sits at chest height, not at their feet. */
-const COLLECT_ANCHOR_PX = 10;
+export const COLLECT_ANCHOR_PX = 10;
 
 const fromSubs = (v: number): number => v / SUBS;
 
@@ -146,6 +160,21 @@ export class Sim {
   fist: FistState | null = null;
   world: EntityWorld;
   overlayOpen = false;
+  /** PK-R6 · H1 · THE RESTORE-HOLD IS A CINEMATIC, NOT A PAUSE (round-1
+   *  critique, finding 5). While this is true the world is still frozen for the
+   *  CHILD — no input, no walking, no encounter can fire — but the beings the
+   *  child just freed keep living, so the colour flood, the settle, the joy lap
+   *  and a cage's opening play in the window the hold opened for exactly them.
+   *  See `stepRedeemedOnly`. */
+  holdOpen = false;
+  /** PK-R6 · H1 · a SELF-TERMINATING hold, in ticks: the world runs its freed
+   *  beings for this many more ticks even under a card, then stops on its own.
+   *  The burst cage uses it (anim.CAGE_OPEN_TICKS) — its opening has to be seen,
+   *  and the round-1 card lands on the same tick as the burst, behind an ink
+   *  iris that is still wiping. Bounded rather than a flag, because the thing it
+   *  runs the world for is one short beat and „who turns it off again" is the
+   *  question that froze this chapter once already (PB-R1 · R3-1). */
+  holdTicks = 0;
   doorSolved = new Set<string>();
   guardianDefeated = false;
   ridingId: string | null = null;
@@ -163,6 +192,8 @@ export class Sim {
   fistOnSolid = false;
   /** PB-F3: the cage hint is once per phase mount, never a nag. */
   cageHintFired = false;
+  /** PK-R6 · C1: was ↑ pressed THIS tick (rising edge)? Recomputed every step. */
+  engagePressed = false;
   tickCount = 0;
   exitFired = false;
   lettersTotal = 0;
@@ -217,6 +248,13 @@ export class Sim {
     for (const id of cfg.freedCageIds()) {
       const e = this.world.entities.find((x) => x.id === id);
       if (e) { e.redeemed = true; e.state = "burst"; }
+      // PK-R6 · D: a freed cage's PERSON is freed too. A phase is remounted
+      // whenever the child comes back from the Kleckskammer, and without this
+      // Merle would be hidden again behind a cage that is already open —
+      // a friend un-freed by a shopping trip, and six rounds of ceremony
+      // silently owed a second time.
+      const mate = classmateOfCage(this.world, id);
+      if (mate) restoreFreedClassmate(mate, COLOUR_FLOOD_TICKS);
     }
     // R3-16: a Regel-Seite taken before the Kleckskammer stays taken after it
     for (const id of cfg.collectedPickupIds?.() ?? []) {
@@ -232,7 +270,17 @@ export class Sim {
   /** Advance ONE 60Hz tick. Returns the events the shell must react to. */
   step(pad: Pad): SimEvent[] {
     const events: SimEvent[] = [];
-    if (this.overlayOpen) return events; // the world holds its breath during a task
+    if (this.overlayOpen) {
+      // …except during a restore-hold, where the whole point is that the change
+      // the child just made is ON SCREEN and being watched (doc 44 §3.1.7). The
+      // freed beings step; nothing else does, and nothing here can raise an
+      // event — see entities.stepRedeemedOnly.
+      if (this.holdOpen || this.holdTicks > 0) {
+        if (this.holdTicks > 0) this.holdTicks--;
+        stepRedeemedOnly(this.world);
+      }
+      return events; // the world holds its breath during a task
+    }
     if (this.hitPauseTicks > 0) { this.hitPauseTicks--; return events; } // R3-6: impact freeze
     this.tickCount++;
     if (this.gateToastCooldown > 0) this.gateToastCooldown--;
@@ -240,6 +288,9 @@ export class Sim {
       this.bonusLeftTicks--;
       if (this.bonusLeftTicks === 0) { events.push({ type: "exit", to: "bonus-timeout" }); return events; }
     }
+
+    // PK-R6 · C1: the engage edge, read BEFORE prevPad is overwritten below.
+    this.engagePressed = pad.up && !this.prevPad.up;
 
     const near = this.nearestRing();
     const abilities = this.cfg.grantedAbilities();
@@ -340,8 +391,29 @@ export class Sim {
     events.push({ type: "task", req });
   }
 
+  /** PK-R6 · D: raise the round this classmate is standing on. One place, three
+   *  callers (the cage bursting, a deferred round re-engaged, and the round
+   *  before this one being answered), so „which round am I on" is read from her
+   *  own counter every time and can never be tracked twice. */
+  private askRound(mate: EntityState, events: SimEvent[]): void {
+    this.ask(
+      { use: "rescue", ctx: { type: "classmate", id: mate.id, skin: mate.skin, round: mate.awakenStep + 1, rounds: AWAKEN_ROUNDS } },
+      events,
+    );
+  }
+
   setOverlay(open: boolean): void {
     this.overlayOpen = open;
+    // a world handed back is never mid-cinematic: closing the overlay closes
+    // BOTH holds with it, so neither can survive the beat that set it (the
+    // freeze-pairing law, PB-R1 · R3-1, applied to the holds' own flags).
+    if (!open) { this.holdOpen = false; this.holdTicks = 0; }
+  }
+
+  /** PK-R6 · H1: enter/leave the restore-hold — the world stays frozen for the
+   *  child and keeps running for the beings they just freed. */
+  setHold(open: boolean): void {
+    this.holdOpen = open;
   }
 
   /** The shell reports the task for `ctx` SOLVED. */
@@ -359,6 +431,37 @@ export class Sim {
       const freed = this.cfg.freedCageIds().length + 1;
       events.push({ type: "cageFreed", id: ctx.id, skin: ctx.skin, classmate: ctx.classmate, count: freed });
       applyLinks(this.world, "opened", ctx.id);
+    } else if (ctx.type === "classmate") {
+      // ── PK-R6 · D · ONE ROUND OF THE REAWAKENING (doc 44 §3.3) ────────────
+      // The world is handed back FIRST and then, if rounds remain, taken again
+      // by the next one: `ask` sets the freeze itself, so releasing afterwards
+      // (as the shared tail below does) would drop the ceremony's own card on
+      // the floor and resume a world with an open round in it. Hence the early
+      // return — the one branch that owns its own overlay bookkeeping.
+      this.overlayOpen = false;
+      const mate = this.world.entities.find((x) => x.id === ctx.id);
+      const done = awakenClassmate(this.world, ctx.id);
+      if (!done) {
+        if (mate) this.askRound(mate, events);
+        return events;
+      }
+      // the sixth answer: she is in colour, and only NOW does the cage count as
+      // freed — the HUD chip, the classmate line on the score page and the
+      // ceremony card all hang off this one event, exactly as they did when a
+      // cage freed in one beat (doc 44 §2.3's „every HUD denominator counted
+      // from the world" is untouched; what moved is WHEN the numerator ticks).
+      const cageId = String(mate?.params.cage ?? "");
+      const cage = this.world.entities.find((x) => x.id === cageId);
+      const freed = this.cfg.freedCageIds().length + 1;
+      events.push({
+        type: "cageFreed",
+        id: cageId,
+        skin: cage?.skin ?? ctx.skin,
+        classmate: cage?.params.classmate as string | undefined,
+        count: freed,
+      });
+      applyLinks(this.world, "opened", cageId);
+      return events;
     } else if (ctx.type === "door") {
       this.doorSolved.add(ctx.id);
       applyLinks(this.world, "opened", ctx.id);
@@ -435,6 +538,10 @@ export class Sim {
       playerIframes: this.player.iframes,
       playerOverlayOpen: this.overlayOpen,
       fist: this.fist ? { active: true, x: this.fist.x, y: this.fist.y } : null,
+      // PK-R6 · C1: the RISING EDGE of ↑. Held-up climbs vines (player.ts owns
+      // that); only the press engages, so riding a vine past a drained object
+      // cannot fire its card, and holding ↑ at one cannot fire it twice.
+      playerEngage: this.engagePressed,
     });
     for (const ev of evs) this.onEntityEvent(ev, events);
 
@@ -469,12 +576,55 @@ export class Sim {
         const src = this.world.entities.find((e) => e.id === ev.id);
         applyKnockback(this.player, this.player.x < (src?.x ?? this.player.x) ? -1 : 1, false);
         this.player.iframes = PAINT.iframeTicks;
-        this.ask({ use: ev.role === "swarm" ? "quickfire" : "encounter", ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
+        // PK-R6 · E · HIT = TASK, NEVER DEATH (doc 44 §4 ch01 C4: „a chalk hit =
+        // knockback + a boss-window task"). Chalk that catches the child — in
+        // the air or lying on the boards as a shard — asks out of the BOSS
+        // battery, not the field's encounter pool: the fiction on screen is the
+        // fight, and the timer policy (doc 44 §2.9) gives a boss window its
+        // clock. It stays an `entity` ctx on purpose — solving it says „Weiter!"
+        // and unties NOTHING. Knots are earned in the counter-window, so being
+        // hit can never be a shortcut through the fight.
+        const use = src?.role === "guardian" ? "boss" : ev.role === "swarm" ? "quickfire" : "encounter";
+        this.ask({ use, ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
+        break;
+      }
+      // PK-R6 · C1: a drained object was engaged with ↑. It raises the SAME
+      // `encounter` pool a creature does — it is a being on screen being asked
+      // about, which is exactly what the speaker law (R3-11) wants — and ch01's
+      // field palette (check-game-tasks §9) is what keeps that pool to
+      // restore/choice/wheel/oddone in the tutorial chapter.
+      case "engaged": {
+        this.ask({ use: "encounter", ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
         break;
       }
       case "cageBurst": {
         const e = this.world.entities.find((x) => x.id === ev.id);
+        // PK-R6 · H1 (round-1 critique, finding 4): the chapter's core shape has
+        // to be seen OPENING. Whatever card this burst raises lands behind a
+        // 700 ms ink iris, so these ticks cost the child nothing and buy the one
+        // moment the mechanic is legible in.
+        this.holdTicks = CAGE_OPEN_TICKS;
+        // PK-R6 · D · THE PERSON-CAGE OPENS ONTO A PERSON (doc 44 §3.3). The
+        // latch is not the rescue: the child opens it, Merle steps out
+        // ghost-pale, and the SIX ROUNDS are what free her. So a cage that has
+        // a classmate reveals her here and hands over to her ceremony; a plain
+        // cage keeps exactly the one-card rescue it has always had.
+        const mate = classmateOfCage(this.world, ev.id);
+        if (mate) {
+          mate.hidden = false;
+          mate.state = "caged";
+          mate.timer = 0;
+          this.askRound(mate, events);
+          break;
+        }
         this.ask({ use: "rescue", ctx: { type: "cage", id: ev.id, skin: ev.skin, classmate: e?.params.classmate as string | undefined } }, events);
+        break;
+      }
+      // PK-R6 · D: ↑ at a half-woken classmate resumes her ceremony where it
+      // stopped (the „Später" road back — see ENGAGEABLE_ROLES).
+      case "awakenAsk": {
+        const mate = this.world.entities.find((x) => x.id === ev.id);
+        if (mate && !mate.redeemed) this.askRound(mate, events);
         break;
       }
       case "cageHit":
@@ -554,7 +704,12 @@ export class Sim {
    *  only ever freeze for a card that will open. */
   private nearOpenableCage(events: SimEvent[]): void {
     if (this.cageHintFired || this.cfg.cageHintShown?.() === true) return;
-    if (!this.cfg.grantedAbilities().includes("punch")) return;
+    // PK-R6 · C2: the hint used to be gated on the FIST, because the fist was
+    // the only thing that opened a cage. ch01 grants no fist any more (doc 44
+    // §4) and ↑ opens it instead — so the gate is now „can this child open it
+    // AT ALL", which is true in every chapter and was true in none where the
+    // grant had not landed yet. Without this the one teaching moment for the
+    // chapter's one cage would simply never fire.
     for (const e of this.world.entities) {
       if (e.role !== "cage" || e.redeemed || e.hidden) continue;
       const dx = Math.abs(fromSubs(e.x) - fromSubs(this.player.x));

@@ -3,18 +3,18 @@
  "id": "g1.paint.ch01",
  "chapter": "ch01",
  "name": "Zeit für die Schule — Das bemalte Schulhaus",
- "goalDe": "Sammle die verstreuten Buchstaben und sag den Schulsachen die freundlichen Wörter — dann findet die Klasse den Weg.",
- "whyDe": "Jeder Buchstabe, den du rettest, macht die Tafel wieder heller.",
+ "goalPlate": "plate_ch01_goal",
+ "goalDe": "OSWINs Tinte hat dem Schulhaus die Farben genommen: Die Dinge stehen grau herum und die Schulsachen sind bockig — sag jedem, wer es ist, dann kommt seine Farbe zurück.",
+ "whyDe": "Was du auf Englisch benennen kannst, kann das Buch wieder malen.",
  "hintsDe": [
   "Springen: SPACE — halten für höher!",
-  "Die Faust bekommst du von Fibel im Klassenzimmer.",
+  "Etwas steht grau da? Stell dich davor und drück ↑!",
   "Eine Schulsache stellt sich dir in den Weg? Sag ihr die freundlichen Wörter!"
  ],
  "collectNounDe": "Buchstaben",
  "abilities": [
   "jump",
-  "run",
-  "punch"
+  "run"
  ],
  "phases": [
   {
@@ -40,9 +40,9 @@
     "................*..............*.....................###........",
     "....................####...*......###...........................",
     "...........*...####...........###...............................",
-    "..........................###.....................###...........",
+    "..........................###...................*.###...........",
     "..........####..................................................",
-    ".......*........................................................",
+    ".......*.................*............*.....*.......*...........",
     "...S..................................C.......................X.",
     "#########################################..#####################",
     "#########################################..#####################",
@@ -69,19 +69,19 @@
      "params": {}
     },
     {
-     "id": "p1-eraser",
-     "role": "bouncer",
-     "skin": "eraser",
-     "c": 46,
-     "r": 17,
+     "id": "p1-moths",
+     "role": "swarm",
+     "skin": "moths",
+     "c": 20,
+     "r": 11,
      "tier": "E",
      "params": {}
     },
     {
-     "id": "cage2",
-     "role": "cage",
-     "skin": "satchel",
-     "c": 58,
+     "id": "p1-eraser",
+     "role": "bouncer",
+     "skin": "eraser",
+     "c": 46,
      "r": 17,
      "tier": "E",
      "params": {}
@@ -115,6 +115,24 @@
      "skin": "bonusbuch",
      "c": 12,
      "r": 14,
+     "tier": "E",
+     "params": {}
+    },
+    {
+     "id": "p1-obj-schoolbag",
+     "role": "drained",
+     "skin": "obj_schoolbag",
+     "c": 30,
+     "r": 17,
+     "tier": "E",
+     "params": {}
+    },
+    {
+     "id": "p1-obj-book",
+     "role": "drained",
+     "skin": "obj_book",
+     "c": 50,
+     "r": 17,
      "tier": "E",
      "params": {}
     }
@@ -151,7 +169,7 @@
     "............*......................................*....................",
     "..........................................................#####.........",
     "..........####....................................####..................",
-    ".......*...................................#......................*.....",
+    ".......*.........................*.......*.#...*........................",
     "...S..................................^^...#....C....................X..",
     "##################################################wwww##################",
     "##################################################wwww##################",
@@ -159,18 +177,6 @@
     "##################################################wwww##################"
    ],
    "entities": [
-    {
-     "id": "fibel",
-     "role": "powerup",
-     "skin": "fibel",
-     "c": 31,
-     "r": 8,
-     "tier": "E",
-     "params": {
-      "grants": "punch",
-      "essential": true
-     }
-    },
     {
      "id": "p2-pen1",
      "role": "chaser",
@@ -212,20 +218,23 @@
      "role": "cage",
      "skin": "pencilcase",
      "c": 60,
-     "r": 15,
+     "r": 19,
      "tier": "E",
      "params": {
       "classmate": "merle"
      }
     },
     {
-     "id": "cage3",
-     "role": "cage",
-     "skin": "satchel",
-     "c": 25,
-     "r": 8,
+     "id": "merle",
+     "role": "classmate",
+     "skin": "merle",
+     "c": 61,
+     "r": 19,
      "tier": "E",
-     "params": {}
+     "params": {
+      "cage": "cage-merle",
+      "hidden": true
+     }
     },
     {
      "id": "p2-klecks",
@@ -281,6 +290,24 @@
      "r": 13,
      "tier": "E",
      "params": {}
+    },
+    {
+     "id": "p2-obj-desk",
+     "role": "drained",
+     "skin": "obj_desk",
+     "c": 30,
+     "r": 19,
+     "tier": "E",
+     "params": {}
+    },
+    {
+     "id": "p2-obj-pencil",
+     "role": "drained",
+     "skin": "obj_pencil",
+     "c": 48,
+     "r": 19,
+     "tier": "E",
+     "params": {}
     }
    ],
    "links": [],
@@ -318,7 +345,7 @@
     "............#z.............C.........................###........",
     "....*........#z*...........................####.................",
     "...####.......#z............*.............*.....................",
-    "...............#.............................................B..",
+    "...............#....*....*...................................B..",
     "##############################wwwwwwwwwww#######################",
     "##############################wwwwwwwwwww#######################",
     "##############################wwwwwwwwwww#######################",
@@ -377,24 +404,6 @@
      "params": {}
     },
     {
-     "id": "cage1",
-     "role": "cage",
-     "skin": "satchel",
-     "c": 4,
-     "r": 19,
-     "tier": "E",
-     "params": {}
-    },
-    {
-     "id": "cage4",
-     "role": "cage",
-     "skin": "satchel",
-     "c": 48,
-     "r": 9,
-     "tier": "E",
-     "params": {}
-    },
-    {
      "id": "p3-door",
      "role": "door.trigger",
      "skin": "door",
@@ -404,15 +413,6 @@
      "params": {
       "kind": "exit"
      }
-    },
-    {
-     "id": "cage5",
-     "role": "cage",
-     "skin": "satchel",
-     "c": 54,
-     "r": 17,
-     "tier": "E",
-     "params": {}
     },
     {
      "id": "p3-regel-zahlen",
@@ -432,6 +432,24 @@
      "skin": "bonusbuch",
      "c": 47,
      "r": 12,
+     "tier": "E",
+     "params": {}
+    },
+    {
+     "id": "p3-obj-gluestick",
+     "role": "drained",
+     "skin": "obj_gluestick",
+     "c": 22,
+     "r": 21,
+     "tier": "E",
+     "params": {}
+    },
+    {
+     "id": "p3-obj-sharpener",
+     "role": "drained",
+     "skin": "obj_sharpener",
+     "c": 48,
+     "r": 21,
      "tier": "E",
      "params": {}
     }
@@ -478,32 +496,14 @@
     "role": "guardian",
     "skin": "tafel",
     "c": 17,
-    "r": 15,
+    "r": 11,
     "tier": "E",
     "params": {
      "knots": 3
     }
-   },
-   {
-    "id": "cage6",
-    "role": "cage",
-    "skin": "satchel",
-    "c": 31,
-    "r": 15,
-    "tier": "E",
-    "params": {}
    }
   ],
-  "links": [
-   {
-    "trigger": "tafel",
-    "on": "redeemed",
-    "action": "open",
-    "targets": [
-     "cage6"
-    ]
-   }
-  ],
+  "links": [],
   "exit": {
    "to": "done"
   }
@@ -543,5 +543,7 @@
    "to": "p2"
   }
  },
- "tipsTotal": 3
+ "tipsTotal": 3,
+ "doorPlate": "plate_ch01_door",
+ "scorePlate": "plate_ch01_score"
 }
