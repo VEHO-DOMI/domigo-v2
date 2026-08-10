@@ -345,21 +345,52 @@ export const CELL_IS_DIRECTIONAL = (cell: string): boolean =>
  *  banked board that is not going anywhere reads as a glitch. */
 export const FLIGHT_BANK_VX = Math.round(0.35 * SUBS);
 
+/** The three things she can be doing in the air. ONE classifier, read by the
+ *  cell chooser AND by the attitude the renderer draws — so the frame, the tilt
+ *  and the roll can never name three different manoeuvres in the same tick. */
+export type GuardianManoeuvre = "hover" | "bank" | "spiral";
+
+/**
+ * PK-R6 · H2 (round-2 finding 3: „hover, banked turn and spiral loop are
+ * visually indistinguishable — the file names do work the poses don't").
+ *
+ * H1 measured why and fixed half of it. The other half is this line, and it was
+ * a `>`:
+ *
+ *   knot 2 · zigzag  HOVER 0 %   BANK 100 %   SPIRAL 0 %
+ *
+ * The zigzag's teeth are cut so that |vy| equals |vx| EXACTLY (both amplitudes
+ * are traversed over the same period — re-derived this round from
+ * `flightPointAt`: peak 1.89 px/t on both axes), and a strict `>` is false on a
+ * tie. So the climax knot — the only path in the fight with corners — resolved
+ * every single corner to „crossing at speed" and wore a bank cell from the first
+ * tick to the last. A 45° saw is not a crossing; it is the roll the `spiral`
+ * cells were painted for, and this comment block already said so („the corners
+ * of a zigzag"). The tie now goes where the cells were always meant to go.
+ */
+export const guardianManoeuvre = (vx: number, vy: number): GuardianManoeuvre => {
+  const ax = Math.abs(vx);
+  const ay = Math.abs(vy);
+  if (ay > 0 && ay >= ax) return "spiral";
+  return ax >= FLIGHT_BANK_VX ? "bank" : "hover";
+};
+
 /**
  * Which cell the flying Tafel wears this tick, from her own per-tick travel.
  * Pure, and derived from VELOCITY rather than from the path's name — so the
  * rule generalises to every path she will ever fly and the picture can never
  * disagree with the motion:
  *
- *   · climbing or diving faster than she is crossing → she is rolling through a
- *     turn: the `spiral` cells (the extremes of the spiral, the crossings of the
- *     figure-eight, the corners of a zigzag).
+ *   · climbing or diving at least as fast as she is crossing → she is rolling
+ *     through a turn: the `spiral` cells (the extremes of the spiral, the
+ *     crossings of the figure-eight, the corners of a zigzag).
  *   · crossing at speed → the banked pair for the way she is going.
  *   · neither → she hovers (`_a.._d`).
  */
 export const guardianFlightCell = (vx: number, vy: number, flightTick: number): string => {
-  if (Math.abs(vy) > Math.abs(vx)) return SPIRAL_CELLS[bobFrame(flightTick, 4)] ?? "spiral0";
-  if (Math.abs(vx) >= FLIGHT_BANK_VX) {
+  const m = guardianManoeuvre(vx, vy);
+  if (m === "spiral") return SPIRAL_CELLS[bobFrame(flightTick, 4)] ?? "spiral0";
+  if (m === "bank") {
     const pair = vx > 0 ? BANK_R : BANK_L;
     return pair[bobFrame(flightTick, 2)] ?? pair[0];
   }
@@ -417,6 +448,69 @@ export const guardianPitchRad = (vx: number, vy: number, dir: number, reducedMot
   const climb = Math.max(-1, Math.min(1, vy / FLIGHT_PITCH_REF_VY));
   const lead = vx !== 0 ? Math.sign(vx) : Math.sign(dir) || 1;
   return climb * lead * FLIGHT_PITCH_MAX_RAD;
+};
+
+// ── PK-R6 · H2 · THE ROLL AXIS (round-2 finding 3) ───────────────────────────
+// „Give each manoeuvre its own readable silhouette — a real roll axis for the
+// banked turn, a corkscrew rotation for the spiral loop — so the player can
+// identify the incoming move from POSE alone, not the filename."
+//
+// H1 gave her PITCH (rotation in the picture plane). Rotation alone cannot
+// separate the three, because all three rotate: a hover sits level, a bank
+// leans, a saw leans harder — one axis, three amounts of the same thing. A roll
+// is the axis rotation cannot draw: it turns the board's FACE away from the
+// camera, and a flat board seen edge-on is a completely different silhouette
+// from the same board seen square. So the second axis is drawn as horizontal
+// foreshortening (doc 44 B14 — the sheet has no roll cells and never will; the
+// painter delivered banks, not a turntable).
+//
+//   · hover  — square on. She is not going anywhere, so nothing is turned away.
+//   · bank   — her face turns INTO the turn, by how hard she is crossing. A
+//              steady lean, held for as long as the crossing lasts.
+//   · spiral — a CORKSCREW: she rolls through edge-on and back out, on her own
+//              flight tick, so the climax knot's every corner is a barrel roll
+//              and reads as one in a still frame.
+//
+// Pure, closed-form, no clock of its own — the same contract the pitch keeps, so
+// a replayed tape draws identical rolls.
+/** How narrow she gets at the middle of a barrel roll, as a fraction of her
+ *  square-on width. NOT 0: a board that vanishes reads as a dropped frame, and
+ *  the painted cell still has to say „blackboard" at its thinnest. */
+export const FLIGHT_ROLL_MIN = 0.22;
+/** Ticks for one full corkscrew — she passes edge-on twice per turn, so this is
+ *  an edge-on every 10 ticks (≈0.17 s) at the 60 Hz contract. DIVISIBLE BY FOUR
+ *  on purpose: the sim samples this at whole ticks, and a period of 18 never
+ *  lands on the quarter-turn at all — the roll's own extreme (FLIGHT_ROLL_MIN)
+ *  would then be a number that never reaches the screen. Measured, not assumed;
+ *  `guardian-flight.test.ts` asserts the sampled minimum IS the constant. */
+export const FLIGHT_ROLL_TICKS = 20;
+/** How far a full-speed bank turns her face away. MEASURED against the shipped
+ *  paths (peak |vx| per knot: 1.31 · 2.22 · 1.89 px/tick), so knot 1 reaches the
+ *  full lean and the gentle first knot only ever gets most of the way there. */
+export const FLIGHT_BANK_FACE = 0.68;
+export const FLIGHT_ROLL_REF_VX = Math.round(1.3 * SUBS);
+
+/**
+ * How wide the flying guardian is drawn this tick, as a multiple of her square-on
+ * width (1 = face to camera). Always POSITIVE: a negative scale would mirror the
+ * cell, and mirroring is already spoken for by the facing law (`CELL_IS_DIRECTIONAL`)
+ * — two mirrors in one frame is a bank drawn backwards.
+ *
+ * Returns 1 under reduced motion, for the same reason the pitch returns 0: a
+ * board frozen halfway through a barrel roll is not a finished picture.
+ */
+export const guardianRollScaleX = (
+  vx: number, vy: number, flightTick: number, reducedMotion = false,
+): number => {
+  if (reducedMotion) return 1;
+  const m = guardianManoeuvre(vx, vy);
+  if (m === "hover") return 1;
+  if (m === "bank") {
+    const k = Math.min(1, Math.abs(vx) / FLIGHT_ROLL_REF_VX);
+    return 1 - (1 - FLIGHT_BANK_FACE) * k;
+  }
+  const th = (flightTick / FLIGHT_ROLL_TICKS) * Math.PI * 2;
+  return FLIGHT_ROLL_MIN + (1 - FLIGHT_ROLL_MIN) * Math.abs(Math.cos(th));
 };
 
 /** THE TELL, in three cells (doc 44 §4 ch01 C4: „she dips and rears"). The dwell

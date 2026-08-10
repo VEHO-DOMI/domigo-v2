@@ -15,25 +15,26 @@ import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { type CompositionSpec, type MassKit, compositionFor, nearPlaneTint } from "./composition.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
-import { AIR_DEPTH, type AirPiece, planHaze, planMotes, planShafts, vignetteBands } from "./air.ts";
+import { AIR_DEPTH, type AirPiece, planHaze, planMotes, planShafts, planSources, vignetteBands } from "./air.ts";
 import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass } from "./mass.ts";
 import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
-import { type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
+import { CHALK_COLOURS, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import {
   AWAKEN_ROOM_MS, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, RESTORE_SPARKLE_MS, WASHED_ROLES,
-  awakenRoomBloom, awakenRoomSweep, entPoseCell, floodBloomFor, greyLuma, guardianPitchRad, poseStateOf, washAlphaFor,
+  awakenRoomBloom, awakenRoomSweep, entPoseCell, floodBloomFor, greyLuma, guardianManoeuvre, guardianPitchRad,
+  guardianRollScaleX, poseStateOf, washAlphaFor,
 } from "./anim.ts";
 import { CUE_CHALK, CUE_HALO, chalkArrow } from "./cue.ts";
 import { RIG, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
 import {
   BURST_CORE, BURST_HOT, BURST_INK, BURST_SPIKES,
-  SPARK_COUNT, burstShape, contactPoint, fleckOf, starPoints,
+  SPARK_COUNT, burstShape, contactPoint, fleckOf, shardOutline, starPoints,
 } from "./burst.ts";
 import {
   RIG_CELL,
@@ -246,12 +247,36 @@ const DRAINED_H: Record<string, number> = {
   obj_gluestick: 28, // 124×396
 };
 
-const CHALK_DISPLAY_H = 9;
-const HAND_DISPLAY_H = 18;
-const HAND_OFFSET_X = 15;
-const HAND_OFFSET_Y = 30;
+/** PK-R6 · H2 (round-2 finding 5): 9 → 12. Measured off the frame the critique
+ *  cited: at 9 px the stick is 27 screen px of a 1056-px picture, thinner than
+ *  the seam between two couch cushions behind it. */
+const CHALK_DISPLAY_H = 12;
 /** PK-R6 · E: a lying shard is smaller than the stick it came off. */
 const SHARD_DISPLAY_H = 6;
+
+// ── PK-R6 · H2 · HOW BIG A BOSS IS (round-2, the side-by-side verdict) ───────
+// „Mr. Sax fills 40 % of the frame … so scale alone tells you 'this is the boss'
+// before anything moves — DomiGo's Tafel is the same size as the player
+// character." Measured rather than argued: at 52 the sheet's ink box renders
+// 156 screen px against the boy's ~100 head-to-shoe, and 30 % of that is the
+// painted swoosh, so the BOARD — the part that reads as a body — came out at
+// 110 px. The same size as the child, in the frame where the fight happens.
+//
+// 68 puts the board at roughly one and a half children while keeping her whole
+// silhouette inside the room: her flight band tops out at world y 166, the
+// arena's camera is pinned at y 96 (a 20-row world under a 14-row view), so 70
+// is the ceiling and the tallest cell on the sheet (`windup`, 11 % over the idle
+// it is scaled from) is what spends the rest. See `guardianKeepIn` for the last
+// few px of that arithmetic.
+const GUARDIAN_DISPLAY_H = 68;
+/** How far past the top of the view her drawing may be pushed back down, in px.
+ *  Small on purpose: this is a framing clamp for the tallest cell at the top of
+ *  her band, not a second camera. */
+const GUARDIAN_KEEPIN_MAX = 6;
+/** PK-R6 · H2 (round-2 finding 8: „boss scale-up on key attack beats"). How much
+ *  bigger she gets at the top of a tell. Enough to be felt at a glance, small
+ *  enough that it reads as her rearing rather than as a zoom. */
+const BOSS_BEAT_SWELL = 0.13;
 
 // ── PK-R6 · E · THE GOLDEN TRAIL, IN CODE (doc 44 B14 · the art review's
 // ruling) ────────────────────────────────────────────────────────────────────
@@ -271,8 +296,9 @@ const TRAIL_SAMPLE_TICKS = 3;
 const TRAIL_POINTS = 14;
 /** Chalk-gold, the colour of her own wisps. */
 const TRAIL_COLOUR = 0xf2c85b;
-/** How far above her feet the tail streams from (she is ~52 px tall). */
-const TRAIL_ANCHOR_Y = 26;
+/** How far above her feet the tail streams from — half her drawn height, so it
+ *  leaves the middle of the board and follows her when she is re-scaled. */
+const TRAIL_ANCHOR_Y = GUARDIAN_DISPLAY_H * 0.5;
 /** The states that leave a trail: the ones where she is actually flying. A
  *  telegraph holds station and a dip is a deliberate descent — a tail on either
  *  would say „still moving" while the picture says „about to throw". */
@@ -295,30 +321,104 @@ const AIRBORNE_STATES: ReadonlySet<string> = new Set(["fly", "throw", "telegraph
 // bright enough to lift her off a dark shelf at a squint and far too diffuse to
 // read as a light source. She is the only lit thing in the room, which is also
 // what the fiction says she is.
+// PK-R6 · H2 · …AND WHAT SHAPE IT IS. Round 2, at 6×: the halo is a pale DISC.
+// Five concentric circles behind a rectangular board draw a soap bubble she is
+// sitting inside — visible as such in 01, 04 and 06 — and a circle is the one
+// shape in this book that no brush made. A separation halo has exactly one job,
+// which is to trace the edge of the thing it separates, so it is now HER OWN
+// SILHOUETTE: an ADD-blended copy of whatever cell she is wearing, blown up a
+// little and laid behind her (the same mirror device the colour flood and the
+// gift bloom already use). It cannot go out of register with her, it cannot be
+// the wrong shape, and it disappears the moment her outline does.
 /** The halo's colour — the stage's own candle-warm cream, not a new hue. */
 const BOSS_HALO_COLOUR = 0xffe9b8;
-/** How opaque the innermost ring is, and how many rings fade outward. Kept low:
- *  the halo must be felt as separation, never seen as a glow. */
-const BOSS_HALO_ALPHA = 0.15;
-const BOSS_HALO_RINGS = 5;
-/** How far past her own half-width the outermost ring reaches. */
-const BOSS_HALO_SPREAD = 1.55;
+/** How far past her own outline the blown-up copy reaches, and how strongly it
+ *  is added. Kept low: felt as separation, never seen as a glow. */
+const BOSS_HALO_SPREAD = 1.1;
+const BOSS_HALO_ADD = 0.4;
 
-// ── PK-R6 · H1 · THE WINDUP CHARGE (round-1 critique, finding 6) ─────────────
-// The painted flight cells carry a pink swoosh baked into the pixels — every
-// cell, including the windup — so the sheet itself cannot tell „about to move"
-// from „about to attack". The code half of that distinction is drawn here: a
-// charge that gathers at the chalk hand through the tell and is gone the instant
-// the chalk leaves. It is the only thing on screen that grows, so the growth IS
-// the message.
-// AMBER, not cream. The first build drew it in the same pale chalk-cream as the
-// wisps and it was invisible in every captured frame — because the thing it
-// gathers around is her painted MITT, which is pale cream itself. A tell drawn
-// in the colour of the thing it sits on is not a tell.
+// ── PK-R6 · H2 · THE TELL IS CHALK DUST (round-2 finding 1, critical) ────────
+// „The attack telegraph is a flat clip-art glove, not a painted object … a flat
+// white vector glove icon that doesn't belong to the painted world at all."
+//
+// It is worse than a style clash. `tafel_hand` is a cartoon MITTEN gripping a
+// stick — a hand, on a being that has no hands — drawn at a hard vector outline
+// over gouache, and (measured in the captured frame) pinned by a fixed 15/30 px
+// offset that at her size lands it squarely on her FACE. The one moment of the
+// fight the child must read was a white glove covering the boss's expression.
+//
+// The sheet already tells this beat: `windup0 → windup1 → windup` is a dip and a
+// rear with the chalk raised, painted by the person who painted her. What the
+// code owes is not a second hand — it is the DUST. She is a blackboard: what
+// gathers before she throws is chalk powder, pulled off her own tray, in the
+// colour of the stick that is about to fly. Soft edges, no outline, no icon.
+//
+// The glove is retired from the render path (its PNG stays on disk — deleting
+// art is the art lane's call, not this one's).
+/** The tell's fallback colour when no stick colour is known yet. */
 const CHARGE_COLOUR = 0xffb02e;
-/** The hot core inside it, and the ring that closes as the tell runs out. */
 const CHARGE_CORE = 0xfff0b0;
-const CHARGE_MAX_R = 9;
+/** How wide the gathering dust reaches at the top of the tell, in world px. */
+const CHARGE_MAX_R = 11;
+/** How many grains gather. Deterministic — index-hashed, never random. */
+const CHARGE_MOTES = 9;
+
+// ── PK-R6 · H2 · THE KNOT CORD (round-2 finding 4) ──────────────────────────
+// „No persistent boss-progress or threat indicator on screen … only a transient
+// text bubble." True as charged: the chapter counts the fight in KNOTS, and the
+// only place a knot was ever said out loud was a toast that lives 1.4 s, plus a
+// HUD chip on the page OUTSIDE the picture. So the count is now IN the world,
+// tied to the boss it measures: a chalk cord over her easel with one knot per
+// window, each one coming UNDONE as the child answers.
+// PK-R6 · H2 · …AND IT IS DRAWN IN CHALK, NOT IN UI. Measured in the running
+// arena (first build of this meter, captured at 5×): three perfectly round flat-
+// white discs joined by an even white bar — a barbell, and precisely the „flat
+// clip-art that doesn't belong to the painted world" this round's CRITICAL
+// finding is about. The repair is the one the bubble already banked: nothing
+// perfectly round, nothing filled pure white, every line laid twice (a soft wide
+// pass under a fine one), every point nudged by a hash so the same cord is drawn
+// the same way twice and no two knots are twins.
+/** The cord's chalk, the slate its shadow falls on, and the spent chalk an
+ *  untied knot leaves behind. */
+const KNOT_CHALK = 0xf1e4c2;
+const KNOT_CHALK_LIT = 0xfffaea;
+const KNOT_SHADOW = 0x241c2e;
+const KNOT_DONE = 0x8e8270;
+/** How far above her top edge the cord hangs, and how far apart the knots sit. */
+const KNOT_CORD_LIFT = 8;
+const KNOT_SPACING = 12;
+/** How big a tied knot's lump is, in world px. */
+const KNOT_R = 2.9;
+
+// ── PK-R6 · H2 · THE STAGE LAMP (round-2 finding 9) ─────────────────────────
+/** The fixture's iron, and the filament inside the lens. */
+const STAGE_LAMP_BODY = 0x2b2333;
+const STAGE_LAMP_CORE = 0xfff4dc;
+
+// ── PK-R6 · H2 · THE ROLL'S OWN BLUR (round-2 finding 3) ────────────────────
+/** How many of her recent cells stay on screen behind a corkscrew, and how
+ *  strongly the freshest one is drawn. Three: enough for the eye to read a turn,
+ *  few enough that she never becomes a smear of blackboards. */
+const GHOST_COUNT = 3;
+const GHOST_ALPHA = 0.3;
+
+/** PK-R6 · H2 · how long the fight's own push-in lasts, in ms (round-2 finding
+ *  8). Long enough to be felt, short enough that it never becomes the shot the
+ *  child is playing in. */
+const BOSS_PUSH_MS = 1150;
+
+/** Which stick she will throw NEXT, so the dust that gathers is the colour of
+ *  the piece that flies. Mirrors the sim's own cycle (`entities.stepEntities`)
+ *  by reading the same array and the same index — a second copy of the rule
+ *  would be a second thing to drift. */
+const nextChalkColourFor = (throws: number): string =>
+  CHALK_COLOURS[throws % CHALK_COLOURS.length] ?? CHALK_COLOURS[0];
+
+/** The splinter's outline as Phaser wants it — the shape itself is pure and
+ *  lives in `burst.ts` with the rest of the code-drawn FX, so its law can be
+ *  asserted without a canvas. */
+const shardPoints = (id: number, cx: number, cy: number): Phaser.Geom.Point[] =>
+  shardOutline(id, cx, cy, SHARD_R).map((p) => new Phaser.Geom.Point(p.x, p.y));
 
 // ── PK-R6 · H1 · THE CHALK YOU CAN SEE (round-1 critique, finding 5) ─────────
 // „The chalk projectile is a small cream fleck that nearly vanishes against both
@@ -336,21 +436,58 @@ const CHARGE_MAX_R = 9;
 /** The six painted sticks, as light. Keyed by `ProjectileState.colour` — the
  *  name the sim already carries — so the glow can never be a different colour
  *  from the stick it belongs to. */
+// PK-R6 · H2 (round-2 finding 5): the glows were PASTELS — `red` was 0xff8a7a,
+// a salmon, and the whole table sat at the same tint the couches do. The
+// reference the harness measured us against punches a saturated magenta note
+// against dark blue and is „unmissable in one glance"; a wash of the backdrop's
+// own value cannot be. Every entry is now the chroma of the stick it belongs to
+// rather than a pale memory of it, and the light is drawn hot at the core (see
+// the comet below) instead of only as a halo.
 const CHALK_LIGHT: Record<string, number> = {
-  white: 0xfff8e6, red: 0xff8a7a, blue: 0x8fc4ff, green: 0x9be6a0, yellow: 0xffe27a, orange: 0xffb066,
+  white: 0xfff8e6, red: 0xff3b5c, blue: 0x3d9bff, green: 0x3ed46a, yellow: 0xffd21e, orange: 0xff7a1e,
 };
 /** The fallback for a guardian whose chapter ships no coloured set. Warm cream
  *  reads against the dark shelf; plain white did not. */
 const CHALK_LIGHT_FALLBACK = 0xfff1cf;
 /** How big the glow is around a flying stick, and how strong at its core. */
-const CHALK_GLOW_R = 7.5;
-const CHALK_GLOW_ALPHA = 0.5;
-/** How many samples the chalk's comet holds, and how far apart in ticks. Short:
- *  the arc is 44 ticks long, and a tail that outlives the flight is litter. */
-const CHALK_TAIL_POINTS = 6;
+const CHALK_GLOW_R = 9;
+const CHALK_GLOW_ALPHA = 0.62;
+/** PK-R6 · H2 (round-2 finding 5): 6 → 11 samples. „With a visible motion trail
+ *  so it reads instantly against the mid-value couch backdrop, the way the
+ *  reference's glowing note does" — the reference's trail is roughly as long as
+ *  the note is far from the thrower; at 6 samples ours was two stick-lengths. */
+const CHALK_TAIL_POINTS = 11;
+/** …and the sparkles that ride it. The reference's note carries a sparkle trail,
+ *  not a smear; these are the specks that fall off a piece of chalk in flight. */
+const CHALK_SPARKS = 5;
 /** How dark a contour is drawn around the glow so it also reads on a PALE
  *  floor — a bright halo alone disappears into the honey-wood book tiles. */
 const CHALK_RIM = 0x3a2a12;
+
+// ── PK-R6 · H2 · A SHARD IS A SPLINTER (round-2 finding 6) ──────────────────
+// „'Shards on floor' are smooth round dust puffs, not broken chalk … redesign
+// the ground hazard as an actual jagged broken-chalk-fragment shape with its own
+// silhouette and drop shadow, distinct from the round ambient dust particles."
+//
+// The cause is measurable: `chalk_shard_a/b` are not shards, they are SPRAYS —
+// a 245×259 sheet holding ten separate chunks. Fitted to a 6-px display height
+// the whole spray becomes 6 px, so each chunk lands at well under one pixel and
+// what survives to the screen is a soft light blob. Ten shards drawn that way
+// are ten blobs, and the arena floor already carries the footstep dust, which is
+// round and pale — so the hazard and the ambience became the same mark.
+//
+// It is drawn now (doc 44 B14): one angular fragment per piece, its corners
+// hashed off the projectile's own id so a given shard always has a given shape
+// and no two neighbours share one. Painted the way every other surface in this
+// book is: a cast shadow first, then the body, then a lit facet and a shaded
+// one, then a contour laid twice — soft and wide under fine and dark.
+/** How big a lying splinter is, corner to corner, in world px. Its SHAPE (and
+ *  the law that keeps it from being round) is `burst.shardOutline`. */
+const SHARD_R = 4.6;
+/** The ink its contour and its shadow are drawn in, and the chalk its body is
+ *  made of — a broken stick is mostly pale, whatever colour it was dyed. */
+const SHARD_INK = 0x3a2a12;
+const SHARD_BODY = 0xf6ead0;
 
 // ── PK-R6 · H1 · THE GIFT ON THE BOARD (round-1 critique, finding 1 — critical)
 // ─────────────────────────────────────────────────────────────────────────────
@@ -602,8 +739,24 @@ export class PaintScene extends Phaser.Scene {
    *  (round-1 critique, finding 5 — „the landed chalk shard has no impact burst
    *  at all"). Ids are the sim's own projectile ids. */
   private burstShards = new Set<number>();
-  /** R3-4: the guardian's throwing hand, shown only during its windup. */
-  private handImg!: Phaser.GameObjects.Image;
+  /** PK-R6 · H2 · the boss's separation halo, as her OWN outline: one ADD-blended
+   *  copy of the cell she is wearing, blown up behind her (round-2 finding 1's
+   *  neighbour — the disc it replaces read as a bubble she was sitting in). */
+  private bossRimImgs = new Map<string, Phaser.GameObjects.Image>();
+  /** PK-R6 · H2 · the motion blur behind a barrel roll (round-2 finding 3): the
+   *  last few cells she wore, redrawn where she wore them. */
+  private ghostImgs: Phaser.GameObjects.Image[] = [];
+  private ghosts: Array<{ key: string; x: number; y: number; rot: number; sx: number; sy: number; flip: boolean }> = [];
+  /** PK-R6 · H2 · the knot cord over her easel (round-2 finding 4). */
+  private knotG!: Phaser.GameObjects.Graphics;
+  /** PK-R6 · H2 · the fight's own push-in (round-2 finding 8), in ms since the
+   *  beat that called for it. Wall-clock, like every other presentation clock in
+   *  this scene, and subordinate to the card lean — see the camera block. */
+  private bossPushMs = Number.POSITIVE_INFINITY;
+  private bossPushId: string | null = null;
+  /** which guardian beats have already spent their push, so a held state cannot
+   *  re-trigger one every tick. */
+  private pushedBeats = new Set<string>();
   /** R3-12: chalk on the guardian's own board — the card's evidence. */
   private evidenceText: Phaser.GameObjects.Text | null = null;
   private evidenceOwner: string | null = null;
@@ -706,12 +859,14 @@ export class PaintScene extends Phaser.Scene {
     // PK-R6 · C1: the ↑ cue rides ABOVE the beings it points at (depth 7) and
     // below the hero (11), so it never hides the thing it is advertising.
     this.engageCueG = this.add.graphics().setDepth(9.5);
-    // R3-4: the guardian's throwing hand — built once, shown only on the windup
-    this.handImg = this.add.image(0, 0, "fb-ent-generic").setDepth(9).setOrigin(0.5, 0.5).setVisible(false);
     // PK-R6 · H1: the boss's separation halo and the gift's bloom share one
     // canvas BEHIND her (entities sit at 7, her trail at 6.9) — a glow drawn in
     // front of a boss is a veil over the thing it was meant to reveal.
     this.bossGlowG = this.add.graphics().setDepth(6.8);
+    // PK-R6 · H2 · the knot cord (round-2 finding 4). Over her (7) and under the
+    // hero (10): the one thing on screen that must never be hidden by the boss
+    // it measures, and must never hide the child reading it.
+    this.knotG = this.add.graphics().setDepth(9.55);
     this.giftHaloG = this.add.graphics().setDepth(6.85);
     this.dustG = this.add.graphics().setDepth(7.9);
     // PK-R6 · H1 · the two halves of the air that cannot be placed once: motes
@@ -1063,7 +1218,7 @@ export class PaintScene extends Phaser.Scene {
 
   /** world-space display heights per role — painted cells arrive at 512px native */
   private entTargetH(e: { role: string; skin: string; params?: Record<string, unknown> }): number {
-    if (e.role === "guardian") return 52;
+    if (e.role === "guardian") return GUARDIAN_DISPLAY_H;
     if (e.role === "swarm") return 34;
     if (e.role === "crusher") return 30;
     if (e.role === "door.trigger") return e.skin === "klecksdoor" ? 30 : 34;
@@ -1172,7 +1327,22 @@ export class PaintScene extends Phaser.Scene {
       // rear stops rearing. So a guardian is scaled by ONE factor taken from her
       // idle cell, and the sheet's own proportions survive to the screen.
       else if (e.role === "guardian") {
-        img.setScale(targetH / (this.refFrameHOf(e.skin) || frameH));
+        const airborne = AIRBORNE_STATES.has(e.state);
+        const base = targetH / (this.refFrameHOf(e.skin) || frameH);
+        // PK-R6 · H2 · TWO MORE AXES ON THE SAME ONE SCALE (round-2 findings 3
+        // and 8). The one-factor law above is untouched — the sheet's own
+        // proportions still reach the screen — and both of these multiply it
+        // rather than replace it, so a rear is still 11 % taller than a hover
+        // whatever else is happening to her.
+        //  · ROLL: horizontal foreshortening, the axis rotation cannot draw. A
+        //    hover is square on, a bank turns its face into the turn, a spiral
+        //    corkscrews through edge-on (anim.guardianRollScaleX).
+        //  · BEAT: she swells through a tell and is at her biggest at the
+        //    release — „boss scale-up on key attack beats", and the moment the
+        //    child most needs to look at her.
+        const roll = airborne ? guardianRollScaleX(e.vx, e.vy, e.flightTick, this.cfg.reducedMotion) : 1;
+        const beat = 1 + BOSS_BEAT_SWELL * this.bossBeatT(e);
+        img.setScale(base * roll * beat, base * beat);
         // PK-R6 · H1 (round-1 critique, finding 2): …and she FLIES it. The sheet
         // paints banks and rolls but has no cell for a dive, and her vertical
         // amplitude (26 px) is a third of her horizontal one — so the half of
@@ -1180,10 +1350,12 @@ export class PaintScene extends Phaser.Scene {
         // her own velocity. Only while she is actually airborne: a sinking or
         // resting board that tilted would read as broken furniture.
         img.setRotation(
-          AIRBORNE_STATES.has(e.state)
-            ? guardianPitchRad(e.vx, e.vy, e.dir, this.cfg.reducedMotion)
-            : 0,
+          airborne ? guardianPitchRad(e.vx, e.vy, e.dir, this.cfg.reducedMotion) : 0,
         );
+        // …and the last few px of the size arithmetic: a boss cropped by the top
+        // of the frame is a worse picture than a boss one px lower (see
+        // GUARDIAN_DISPLAY_H).
+        img.y += this.guardianKeepIn(img);
       }
       else {
         // PK-R6 · H1 · THE OPENING POP (round-1 critique, finding 4): a cage that
@@ -1351,19 +1523,44 @@ export class PaintScene extends Phaser.Scene {
           this.chalkBreak(lx, ly, light);
         }
         if (shard) {
-          // a lying hazard: a slow breath, dimming with the second it has left
-          // Kept SMALLER than the splinter's own glow instinct wants: at 5 px it
-          // swallowed the painted shard and four of them read as soap bubbles
-          // lying on the floor (measured at 4× in the running game). The job is
-          // „you can still see the hazard", not „the hazard is a lamp".
+          // ── PK-R6 · H2 · A SPLINTER, DRAWN (round-2 finding 6) ────────────
+          // See SHARD_R for why the painted sheet cannot do this job at 6 px.
+          // The order is the order a brush would lay it: the shadow it casts
+          // (which is what puts it ON the floor rather than in front of it), the
+          // body, a lit facet and a shaded one, then a contour laid twice.
           const left = Math.max(0, 1 - pr.age / SHARD_TICKS);
-          const pulse = this.cfg.reducedMotion ? 0.7 : 0.6 + 0.4 * Math.sin(pr.age * 0.22);
-          this.projG.fillStyle(0x2a1d0c, 0.3 * left);
-          this.projG.fillEllipse(lx, ly + 2.6, 7, 2.6); // the shadow it casts, not a ring around it
-          this.projG.fillStyle(light, 0.3 * left * pulse);
-          this.projG.fillCircle(lx, ly, 3.4);
-          this.projG.fillStyle(light, 0.5 * left);
-          this.projG.fillCircle(lx, ly, 1.5);
+          const pulse = this.cfg.reducedMotion ? 0.85 : 0.78 + 0.22 * Math.sin(pr.age * 0.22);
+          const poly = shardPoints(pr.id, lx, ly);
+          // its shadow: an ellipse under the sliver, offset the way every other
+          // cast shadow in this book is — this is what puts it ON the floor
+          this.projG.fillStyle(SHARD_INK, 0.36 * left);
+          this.projG.fillEllipse(lx + 1, ly + SHARD_R * 0.62, SHARD_R * 2.3, SHARD_R * 0.72);
+          // THE BODY IS CHALK, not a coloured disc. A broken stick is mostly the
+          // pale stuff it is made of; the hue rides on the face that caught the
+          // light. Filling it with the saturated `light` was what made the first
+          // build read as three billiard balls in the running arena.
+          this.projG.fillStyle(SHARD_BODY, 0.96 * left);
+          this.projG.fillPoints(poly, true);
+          // the two facets: one face turned toward the room's light (in the
+          // stick's own colour, so a shard still names the piece it came off),
+          // one turned away from it
+          const p0 = poly[0] ?? { x: lx, y: ly };
+          const p1 = poly[1] ?? p0;
+          const p3 = poly[3] ?? p0;
+          const p4 = poly[4] ?? p0;
+          const p2 = poly[2] ?? p0;
+          this.projG.fillStyle(light, 0.72 * left * pulse);
+          this.projG.fillTriangle(p0.x, p0.y, p1.x, p1.y, lx, ly);
+          this.projG.fillTriangle(p1.x, p1.y, p2.x, p2.y, lx, ly);
+          this.projG.fillStyle(SHARD_INK, 0.24 * left);
+          this.projG.fillTriangle(p3.x, p3.y, p4.x, p4.y, lx, ly);
+          // the contour, laid twice — the brushed edge, and the thing that gives
+          // a 9-px prop a silhouette against a patterned floor. Kept LIGHT: at a
+          // 0.85-alpha fine pass the outline was heavier than the body and four
+          // shards read as dark blades lying on a bookshelf.
+          this.projG.lineStyle(1.7, SHARD_INK, 0.2 * left).strokePoints(poly, true, true);
+          this.projG.lineStyle(0.7, SHARD_INK, 0.6 * left).strokePoints(poly, true, true);
+          continue; // it is drawn: no sprite, no sheet, nothing to fit to 6 px
         } else {
           // In flight: a comet of its own colour. Sampled CLOSE together (1.3
           // ticks apart) on purpose — measured at 6× in the running game, wider
@@ -1373,8 +1570,26 @@ export class PaintScene extends Phaser.Scene {
             const tx = lx - (pr.vx / SUBS) * back;
             const ty = ly - (pr.vy / SUBS) * back;
             const k = 1 - i / (CHALK_TAIL_POINTS + 1);
-            this.projG.fillStyle(light, 0.46 * k * k);
-            this.projG.fillCircle(tx, ty, 0.9 + 2.2 * k);
+            this.projG.fillStyle(light, 0.5 * k * k);
+            this.projG.fillCircle(tx, ty, 0.9 + 2.6 * k);
+          }
+          // PK-R6 · H2 (round-2 finding 5): …and the SPARKLE the reference's note
+          // carries. Specks thrown off the tail, offset across the flight line
+          // rather than along it, so the trail has grain instead of being one
+          // smooth smear. Deterministic: hashed off the piece's id and its age.
+          if (!this.cfg.reducedMotion) {
+            const sp = Math.hypot(pr.vx, pr.vy) || 1;
+            const nx = -pr.vy / sp;
+            const ny = pr.vx / sp;
+            for (let i = 0; i < CHALK_SPARKS; i++) {
+              const back = 2 + i * 2.4;
+              const h = hash01(pr.id * 131 + i * 977 + Math.floor(pr.age / 3) * 17);
+              const off = (h - 0.5) * 5.2;
+              const tx = lx - (pr.vx / SUBS) * back + nx * off;
+              const ty = ly - (pr.vy / SUBS) * back + ny * off;
+              this.projG.fillStyle(0xfffdf3, 0.8 * (1 - i / CHALK_SPARKS));
+              this.projG.fillCircle(tx, ty, 0.55 + h * 0.7);
+            }
           }
           // the glow itself: three soft rings, no dark fill under them. A filled
           // dark disc was tried first and read as a mud blob at 6× — the stick
@@ -1384,28 +1599,29 @@ export class PaintScene extends Phaser.Scene {
             this.projG.fillStyle(light, CHALK_GLOW_ALPHA * k * k);
             this.projG.fillCircle(lx, ly, CHALK_GLOW_R * (0.34 + i * 0.33));
           }
+          // PK-R6 · H2 · …and a HOT CORE at full alpha. The rings alone are a
+          // wash: at 0.62 × k² the brightest pixel of a „saturated" projectile
+          // still sat below the couches' own value, which is the finding.
+          this.projG.fillStyle(light, 1);
+          this.projG.fillCircle(lx, ly, CHALK_GLOW_R * 0.3);
           // …and a thin dark contour at the glow's rim, which is what keeps the
           // piece readable on the PALE book floor where a halo alone vanishes.
           this.projG.lineStyle(0.9, CHALK_RIM, 0.38).strokeCircle(lx, ly, CHALK_GLOW_R * 0.72);
         }
       }
-      // the two painted splinters, chosen by id so a shard never flickers
-      const shardKey = `pb-chalk_shard_${pr.id % 2 === 0 ? "a" : "b"}`;
-      const key = [shard ? shardKey : "", shard ? "" : coloured, thrower ? `pb-${thrower.skin}_chalk` : ""]
+      const key = [shard ? "" : coloured, thrower ? `pb-${thrower.skin}_chalk` : ""]
         .find((k) => k !== "" && this.textures.exists(k)) ?? "";
-      if ((pr.kind === "chalk" || shard) && key !== "") {
+      if (pr.kind === "chalk" && key !== "") {
         let img = this.projImgs[used];
         if (!img) {
           img = this.add.image(0, 0, key).setDepth(8).setOrigin(0.5, 0.5);
           this.projImgs[used] = img;
         }
         used++;
-        img.setVisible(true).setTexture(key).setPosition(fromSubs(pr.x), fromSubs(pr.y) - (shard ? 2 : 4));
-        img.setScale((shard ? SHARD_DISPLAY_H : CHALK_DISPLAY_H) / (img.frame.height || 1));
-        // a lying splinter does not tumble; it FADES as its second runs out, so
-        // „this is about to stop being dangerous" is readable without a HUD.
-        img.setRotation(shard || this.cfg.reducedMotion ? 0 : (pr.deflected ? -1 : 1) * pr.age * 0.14);
-        img.setAlpha(shard ? Math.max(0.35, 1 - pr.age / SHARD_TICKS) : 1);
+        img.setVisible(true).setTexture(key).setPosition(fromSubs(pr.x), fromSubs(pr.y) - 4);
+        img.setScale(CHALK_DISPLAY_H / (img.frame.height || 1));
+        img.setRotation(this.cfg.reducedMotion ? 0 : (pr.deflected ? -1 : 1) * pr.age * 0.14);
+        img.setAlpha(1);
         continue;
       }
       // the ink blob keeps its dot (no painted sheet — the only-present law)
@@ -1414,20 +1630,9 @@ export class PaintScene extends Phaser.Scene {
       this.projG.lineStyle(1, 0x243048, 0.6).strokeCircle(fromSubs(pr.x), fromSubs(pr.y) - 4, pr.kind === "blob" ? 4 : 3);
     }
     for (let i = used; i < this.projImgs.length; i++) this.projImgs[i]?.setVisible(false);
-
-    // R3-4 · the WINDUP shows the hand that throws (`tafel_hand`, also painted
-    // and never shown). It appears only while the guardian is telegraphing, on
-    // the side it is facing — so the tell and the aim are the same picture.
-    const winding = this.world.entities.find((e) => e.role === "guardian" && e.state === "telegraph" && !e.redeemed);
-    const handKey = winding ? `pb-${winding.skin}_hand` : "";
-    if (winding && handKey !== "" && this.textures.exists(handKey)) {
-      this.handImg.setVisible(true).setTexture(handKey);
-      this.handImg.setPosition(fromSubs(winding.x) + winding.dir * HAND_OFFSET_X, fromSubs(winding.y) - HAND_OFFSET_Y);
-      this.handImg.setScale(HAND_DISPLAY_H / (this.handImg.frame.height || 1));
-      this.handImg.setFlipX(winding.dir > 0);
-    } else {
-      this.handImg.setVisible(false);
-    }
+    // R3-4's `tafel_hand` — a cartoon mitten holding a stick, drawn over her own
+    // face — is RETIRED from the render path (round-2 finding 1, critical). The
+    // tell it was doing is now `renderBossGlow`'s chalk dust and chalk sketch.
   }
 
   // ── R3-12 · the boss-evidence beat (doc 41 §4) ────────────────────────────
@@ -2150,52 +2355,243 @@ export class PaintScene extends Phaser.Scene {
     return Math.max(0, Math.min(1, g.timer / need));
   }
 
+  /** How far into an attack beat she is, 0…1 — the tell's own progress, held at
+   *  1 through the release. One read, used by her swell, by the child's brace and
+   *  by the tell's dust, so the three can never disagree about when „now" is. */
+  private bossBeatT(e: { role: string; state: string; timer: number; tier: "E" | "M" | "S"; hp: number }): number {
+    if (e.role !== "guardian") return 0;
+    if (e.state === "throw") return 1;
+    if (e.state !== "telegraph") return 0;
+    const need = Math.max(telegraphTicksFor(e.tier, e.hp, GUARDIAN_SCRIPT[e.tier].knots), 1);
+    return Math.max(0, Math.min(1, e.timer / need));
+  }
+
+  /** How far DOWN her drawing has to be nudged so the top of the frame does not
+   *  crop her, in px (0 almost always). A framing clamp, capped, presentation
+   *  only — it never touches a byte of sim state, exactly like the camera lean. */
+  private guardianKeepIn(img: Phaser.GameObjects.Image): number {
+    const top = img.y - img.displayHeight;
+    const camTop = fromSubs(this.camY) + 2;
+    return Math.min(GUARDIAN_KEEPIN_MAX, Math.max(0, camTop - top));
+  }
+
+  /**
+   * PK-R6 · H2 · HER OWN OUTLINE, LIT (round-2: the halo half of finding 1's
+   * neighbourhood). An ADD-blended copy of the cell she is wearing, blown up
+   * BOSS_HALO_SPREAD and laid behind her, so the separation is the shape of the
+   * thing it separates. Built lazily per guardian, exactly like `giftGlow`.
+   */
+  private bossRim(id: string, img: Phaser.GameObjects.Image): void {
+    let rim = this.bossRimImgs.get(id);
+    if (!rim) {
+      rim = this.add.image(img.x, img.y, img.texture.key).setOrigin(img.originX, img.originY).setDepth(6.8);
+      rim.setBlendMode(Phaser.BlendModes.ADD).setTint(BOSS_HALO_COLOUR);
+      this.bossRimImgs.set(id, rim);
+    }
+    rim.setVisible(img.visible).setTexture(img.texture.key);
+    rim.setPosition(img.x, img.y + img.displayHeight * (BOSS_HALO_SPREAD - 1) * 0.5);
+    rim.setScale(img.scaleX * BOSS_HALO_SPREAD, img.scaleY * BOSS_HALO_SPREAD);
+    rim.setFlipX(img.flipX).setRotation(img.rotation).setAlpha(BOSS_HALO_ADD * img.alpha);
+  }
+
   private renderBossGlow(): void {
     this.bossGlowG.clear();
     this.chargeG.clear();
     const g = this.world?.entities.find((e) => e.role === "guardian" && !e.redeemed);
+    if (!g) { for (const r of this.bossRimImgs.values()) r.setVisible(false); return; }
+    const img = this.entityImgs.get(g.id);
+    if (!img || !img.visible) return;
+
+    // ── the halo ──────────────────────────────────────────────────────────
+    // Drawn under reduced motion too: it is a still picture, and it is the only
+    // thing separating her from the shelf.
+    this.bossRim(g.id, img);
+
+    // ── the tell ──────────────────────────────────────────────────────────
+    // PK-R6 · H2 (round-2 finding 1, critical). Chalk dust, gathering off her own
+    // tray in the colour of the stick that is about to fly, plus the chalk
+    // SKETCH of the throw drawn beside it — the diegetic pair the finding asked
+    // for, in place of the vector glove.
+    if (g.state !== "telegraph" || this.cfg.reducedMotion) return;
+    const G = this.chargeG; // in FRONT of her body — see the field's own note
+    const t = this.bossBeatT(g); // 0 at the rear, 1 at release
+    // WHERE. On the chalk she is actually holding up — read off her drawing, not
+    // off two fixed offsets (15/30 px landed the old glove squarely on her face).
+    // The windup cells paint the raised stick near the TOP OUTSIDE corner of the
+    // sheet, and the sheet's own facing is what `flipX` follows, so the side is
+    // taken from the flip rather than from `dir`: measured in the running arena,
+    // taking it from `dir` put the dust on the empty side while the painted chalk
+    // sat on the other one.
+    const side = img.flipX ? -1 : 1;
+    const hx = img.x + side * img.displayWidth * 0.3;
+    const hy = img.y - img.displayHeight * 0.9;
+    const light = CHALK_LIGHT[nextChalkColourFor(g.throws)] ?? CHARGE_COLOUR;
+    // the powder itself: soft, edgeless, in the colour of the stick that is about
+    // to fly, drawn from the outside in as the tell runs out — so the cloud
+    // TIGHTENS, and is the one shape on screen that is closing.
+    const r = CHARGE_MAX_R * (1.05 - 0.4 * t);
+    for (let i = 2; i >= 0; i--) {
+      const k = 1 - i / 3;
+      G.fillStyle(light, (0.16 + 0.3 * t) * k * k);
+      G.fillCircle(hx, hy, r * (0.4 + i * 0.32));
+    }
+    G.fillStyle(CHARGE_CORE, 0.2 + 0.5 * t * t);
+    G.fillCircle(hx, hy, r * 0.3);
+    // the grains, pulled in along their own spokes. Angles are index-derived and
+    // the drift is the sim's tick — deterministic, repo law.
+    for (let i = 0; i < CHARGE_MOTES; i++) {
+      const ang = (i / CHARGE_MOTES) * Math.PI * 2 + this.tickCount * 0.05;
+      const d = r * (1.6 - 1.1 * t) * (0.7 + hash01(i * 977 + 13) * 0.6);
+      G.fillStyle(light, 0.3 + 0.6 * t);
+      G.fillCircle(hx + Math.cos(ang) * d, hy + Math.sin(ang) * d * 0.8, 0.6 + hash01(i * 31 + 5) * 0.8);
+    }
+    // …and the chalk SKETCH: three short strokes stepping out along the throw,
+    // hand-drawn (each one laid twice, a soft wide pass under a fine one — the
+    // same brushed edge the bubble's rim uses) and appearing one after another as
+    // the tell runs out. It is her own hand showing the child where the piece is
+    // going, in the piece's own colour, and it points at the CHILD (`dir`) rather
+    // than at whichever side the sheet happens to have painted the stick on.
+    for (let i = 0; i < 3; i++) {
+      const on = Math.max(0, Math.min(1, t * 3 - i));
+      if (on <= 0) break;
+      const step = (i + 1) * CHARGE_MAX_R * 0.9;
+      const sx = hx + g.dir * step;
+      const sy = hy + step * 0.5 + Math.sin(i * 1.7) * 1.4;
+      const len = 3.6 + i * 0.7;
+      G.lineStyle(2.4, light, 0.2 * on);
+      G.lineBetween(sx - g.dir * len * 0.5, sy - len * 0.24, sx + g.dir * len * 0.5, sy + len * 0.28);
+      G.lineStyle(1.05, CHARGE_CORE, 0.7 * on);
+      G.lineBetween(sx - g.dir * len * 0.5, sy - len * 0.24, sx + g.dir * len * 0.5, sy + len * 0.28);
+    }
+  }
+
+  /**
+   * PK-R6 · H2 · THE KNOT CORD (round-2 finding 4).
+   *
+   * „Anchor a persistent progress meter near the boss's easel so the player
+   * always sees how far into the fight they are." It is a cord, not a bar: the
+   * chapter's own unit for this fight is the KNOT (doc 44 §4 ch01 C4 — „three
+   * knots of 5 windows"), the toast already says „Noch 2 Knoten!", and a health
+   * bar would be the one piece of arcade furniture in a hand-painted book.
+   *
+   * Persistent whenever a live guardian is on screen, tied to her drawing so it
+   * travels with her, and clamped into the frame so it survives her flying to the
+   * top of her band. Read straight off `world.guardianKnots` — no second counter
+   * to drift out of step with the one the HUD chip and the toast already share.
+   */
+  private renderKnotCord(): void {
+    this.knotG.clear();
+    const g = this.world?.entities.find((e) => e.role === "guardian" && !e.redeemed);
     if (!g) return;
     const img = this.entityImgs.get(g.id);
     if (!img || !img.visible) return;
+    const total = GUARDIAN_SCRIPT[g.tier].knots;
+    const left = Math.max(0, Math.min(total, this.world?.guardianKnots ?? total));
+    if (total <= 0) return;
+    const G = this.knotG;
+    const w = (total - 1) * KNOT_SPACING;
     const cx = img.x;
-    const cy = img.y - img.displayHeight * 0.28; // her slate, not her legs
-    const r0 = Math.max(img.displayWidth, img.displayHeight) * 0.42;
-
-    // ── the halo ──────────────────────────────────────────────────────────
-    // Under reduced motion it is drawn too: it is a still picture and it is the
-    // only thing separating her from the shelf.
-    for (let i = 0; i < BOSS_HALO_RINGS; i++) {
-      const k = 1 - i / BOSS_HALO_RINGS; // 1 at the core, 0 at the rim
-      const spread = 1 + (BOSS_HALO_SPREAD - 1) * (i / Math.max(BOSS_HALO_RINGS - 1, 1));
-      this.bossGlowG.fillStyle(BOSS_HALO_COLOUR, BOSS_HALO_ALPHA * k * k);
-      this.bossGlowG.fillCircle(cx, cy, r0 * spread);
+    // above her top edge, and never above the top of the frame
+    const cy = Math.max(fromSubs(this.camY) + 8, img.y - img.displayHeight - KNOT_CORD_LIFT);
+    // THE CORD. It sags under its own weight, and every point on it is nudged by
+    // a hash of its index — a cord drawn with a compass is a UI rule with a bend
+    // in it. Deterministic: same index, same nudge, forever.
+    const SEG = 18;
+    const sag = (t: number): number =>
+      cy + Math.sin(t * Math.PI) * 2.4 + (hash01(Math.round(t * 100) * 733 + 17) - 0.5) * 0.7;
+    const pts: Phaser.Geom.Point[] = [];
+    for (let i = 0; i <= SEG; i++) {
+      const t = i / SEG;
+      pts.push(new Phaser.Geom.Point(cx - w / 2 - 3 + (w + 6) * t, sag(t)));
     }
+    // laid twice: the slate's shadow under a chalk line that is not the same
+    // weight all the way along (the brushed edge — see paintedBubblePath)
+    G.lineStyle(2.4, KNOT_SHADOW, 0.26).strokePoints(pts, false);
+    G.lineStyle(1.4, KNOT_CHALK, 0.5).strokePoints(pts, false);
+    G.lineStyle(0.7, KNOT_CHALK_LIT, 0.9).strokePoints(pts, false);
+    for (let i = 0; i < total; i++) {
+      const t = w <= 0 ? 0.5 : (i * KNOT_SPACING + 3) / (w + 6);
+      const x = cx - w / 2 - 3 + (w + 6) * t;
+      const y = sag(t);
+      const tied = i < left; // knots come undone from the LEFT as she loses them
+      const lean = (hash01(i * 977 + 31) - 0.5) * 0.9; // each knot sits its own way
+      if (tied) {
+        // A KNOT IS A LUMP, NOT A BEAD. The cord doubles back on itself: a fat
+        // short stroke across the line, a loop thrown over it, and the crease
+        // where the two bights bite. Nothing here is a circle and nothing is
+        // filled pure white.
+        G.lineStyle(2.9, KNOT_SHADOW, 0.28);
+        G.lineBetween(x - KNOT_R + 0.7, y + 1.2 + lean, x + KNOT_R + 0.7, y + 0.7 - lean);
+        G.lineStyle(2.7, KNOT_CHALK, 0.92);
+        G.lineBetween(x - KNOT_R, y + 0.5 + lean, x + KNOT_R, y - lean);
+        G.lineStyle(1.5, KNOT_CHALK_LIT, 0.75);
+        G.lineBetween(x - KNOT_R * 0.7, y - 0.5 + lean, x + KNOT_R * 0.55, y - 0.9 - lean);
+        // the bight thrown over the top, and the crease under it
+        G.lineStyle(1.2, KNOT_CHALK, 0.8);
+        G.beginPath();
+        G.arc(x, y - 0.2, KNOT_R * 0.86, Math.PI * 0.9, Math.PI * 2.2, false);
+        G.strokePath();
+        G.lineStyle(0.8, KNOT_SHADOW, 0.4);
+        G.lineBetween(x - 0.9, y + 0.9 + lean, x + 1.1, y + 0.4 - lean);
+      } else {
+        // UNDONE: the cord has gone slack here. An open bight that does not close,
+        // in spent chalk, with the loose end falling out of it — „you already did
+        // this", said in the material the cord is made of.
+        G.lineStyle(1.6, KNOT_SHADOW, 0.2);
+        G.beginPath();
+        G.arc(x + 0.6, y + 0.9, KNOT_R * 0.72, Math.PI * 1.15, Math.PI * 2.6, false);
+        G.strokePath();
+        G.lineStyle(1.1, KNOT_DONE, 0.85);
+        G.beginPath();
+        G.arc(x, y + 0.3, KNOT_R * 0.72, Math.PI * 1.15, Math.PI * 2.6, false);
+        G.strokePath();
+        G.lineStyle(0.9, KNOT_DONE, 0.5);
+        G.lineBetween(x + KNOT_R * 0.5, y + KNOT_R * 0.6, x + KNOT_R * 1.3, y + KNOT_R * 1.6);
+      }
+    }
+  }
 
-    // ── the charge ────────────────────────────────────────────────────────
-    if (g.state !== "telegraph" || this.cfg.reducedMotion) return;
-    const G = this.chargeG; // in FRONT of her body — see the field's own note
-    const need = Math.max(telegraphTicksFor(g.tier, g.hp, GUARDIAN_SCRIPT[g.tier].knots), 1);
-    const t = Math.max(0, Math.min(1, g.timer / need)); // 0 at the rear, 1 at release
-    const hx = cx + g.dir * HAND_OFFSET_X;
-    const hy = img.y - HAND_OFFSET_Y;
-    // it TIGHTENS as it fills: a charge that only got bigger would read as a
-    // puff, and the child has to see the moment it is about to go off
-    const r = CHARGE_MAX_R * (0.35 + 0.65 * t) * (1 - 0.18 * t * t);
-    // the amber body, then the hot core inside it
-    G.fillStyle(CHARGE_COLOUR, 0.3 + 0.5 * t * t);
-    G.fillCircle(hx, hy, r);
-    G.fillStyle(CHARGE_CORE, 0.35 + 0.5 * t);
-    G.fillCircle(hx, hy, r * 0.42);
-    // the ring that CLOSES as the tell runs out — the one shape on screen that
-    // is shrinking, which is what makes „now" readable without a number
-    G.lineStyle(1.4, CHARGE_CORE, 0.35 + 0.5 * t);
-    G.strokeCircle(hx, hy, r * (2.3 - 1.35 * t));
-    // …and the four sparks it pulls in, so the charge has a direction of travel
-    for (let i = 0; i < 4; i++) {
-      const ang = (i / 4) * Math.PI * 2 + this.tickCount * 0.11;
-      const d = r * (2.1 - 1.5 * t); // they close in with the ring
-      G.fillStyle(CHARGE_CORE, 0.6 * t);
-      G.fillCircle(hx + Math.cos(ang) * d, hy + Math.sin(ang) * d, 1.4);
+  /**
+   * PK-R6 · H2 · THE MOTION BLUR OF A BARREL ROLL (round-2 finding 3).
+   *
+   * „A corkscrew rotation with a motion-blur trail for the spiral loop." The
+   * golden tail says WHERE she has been; it cannot say what her body was doing on
+   * the way. So the ghosts are her, three cells back, drawn where she wore them
+   * and at the width she wore them — which is what makes a still frame of a roll
+   * show a roll rather than a board at an angle.
+   *
+   * Only while she is actually corkscrewing (the same classifier the cell and the
+   * roll read), and never under reduced motion: it is nothing but movement.
+   */
+  private renderGhosts(): void {
+    const g = this.world?.entities.find((e) => e.role === "guardian" && !e.redeemed);
+    const img = g ? this.entityImgs.get(g.id) : undefined;
+    const rolling = g !== undefined && img !== undefined && img.visible
+      && !this.cfg.reducedMotion
+      && AIRBORNE_STATES.has(g.state)
+      && guardianManoeuvre(g.vx, g.vy) === "spiral";
+    if (!rolling || !img) { this.ghosts.length = 0; for (const i of this.ghostImgs) i.setVisible(false); return; }
+    // sampled on the SIM's tick, so a card that freezes the world freezes the
+    // blur with it (the lesson `renderTrail` banked: a presentation clock keeps
+    // stacking copies under a boss who is holding still)
+    if (this.tickCount !== this.trailAt) {
+      this.ghosts.push({
+        key: img.texture.key, x: img.x, y: img.y, rot: img.rotation,
+        sx: img.scaleX, sy: img.scaleY, flip: img.flipX,
+      });
+      while (this.ghosts.length > GHOST_COUNT) this.ghosts.shift();
+    }
+    for (let i = 0; i < GHOST_COUNT; i++) {
+      const p = this.ghosts[this.ghosts.length - 1 - i];
+      let ghost = this.ghostImgs[i];
+      if (!ghost) {
+        ghost = this.add.image(0, 0, img.texture.key).setOrigin(0.5, 1).setDepth(6.93);
+        this.ghostImgs[i] = ghost;
+      }
+      if (!p) { ghost.setVisible(false); continue; }
+      ghost.setVisible(true).setTexture(p.key).setPosition(p.x, p.y).setRotation(p.rot);
+      ghost.setScale(p.sx, p.sy).setFlipX(p.flip);
+      ghost.setAlpha(GHOST_ALPHA * (1 - i / (GHOST_COUNT + 1)));
     }
   }
 
@@ -2246,7 +2642,7 @@ export class PaintScene extends Phaser.Scene {
     this.renderReadability();
     this.renderAir();
     this.renderLetterFx();
-    this.renderBossGlow();
+    this.bossPushMs += this.frameMs;
     this.renderTrail();
     this.renderPull();
     const pose0 = rigPose({
@@ -2369,10 +2765,18 @@ export class PaintScene extends Phaser.Scene {
     }
 
     this.renderEntities();
+    // PK-R6 · H2: the boss's halo, her roll-blur and her knot cord are all READ
+    // OFF her sprite as `renderEntities` has just left it (position, scale, roll,
+    // cell) — so they run after it. Before it they would have been drawing last
+    // frame's boss, which at the sizes and speeds this round introduces is a
+    // halo visibly lagging its own body.
+    this.renderBossGlow();
+    this.renderGhosts();
     this.renderHostiles();
     this.renderEngageCue();
     this.renderEvidence();
     this.renderGift();
+    this.renderKnotCord();
 
     for (const ring of this.ringImgs) {
       ring.img.y = ring.baseY + (this.cfg.reducedMotion ? 0 : Math.sin(this.tickCount / 22) * 1.5);
@@ -2385,12 +2789,44 @@ export class PaintScene extends Phaser.Scene {
     // §1). The lean is presentation only: it never touches camX/camY, so the
     // proof tapes and the headless replayer see exactly the same world they
     // always did.
+    // PK-R6 · H2 · THE FIGHT'S OWN PUSH-IN (round-2 finding 8: „add camera
+    // push-in at fight start … to create real depth and rising stakes").
+    //
+    // The same device as the card lean, on the same clock, through the same pure
+    // `focusView` — so it inherits the property that matters: the zoom only ever
+    // goes UP. That is not taste, it is the coverage law (doc 36 §4.2, audit 2 of
+    // check-composition): the painted planes are proven to cover the camera's
+    // travel box AT RENDER_SCALE, and a view that ever zoomed OUT would be
+    // showing world the backdrop was never sized for. A push-in cannot.
+    //
+    // It fires on the two beats the fight actually has — the child arriving in
+    // the arena with her already in the air, and each counter-window opening as
+    // she comes down — and each beat spends its push once (`pushedBeats`), so a
+    // held state cannot re-trigger it every tick.
+    this.pumpBossPush();
+    const push = this.bossPushT();
     const asker = this.focusId === null ? undefined : this.world?.entities.find((e) => e.id === this.focusId);
     // the asker's place is REMEMBERED, so the lean has somewhere to ease back
     // FROM after the card closes (and after a redeemed being wanders off)
     if (asker) this.focusAt = { x: fromSubs(asker.x), y: fromSubs(asker.y) };
     const stepT = this.cfg.reducedMotion ? 1 : this.frameMs / FOCUS_MS;
     this.focusT = Math.min(1, Math.max(0, this.focusT + (asker ? stepT : -stepT)));
+    // a card outranks the fight's own framing: when somebody is asking, the book
+    // leans on THEM (R3-8), and two leans at once would be a wrestle
+    if (this.focusT <= 0 && push > 0 && this.bossPushId !== null) {
+      const boss = this.world?.entities.find((e) => e.id === this.bossPushId);
+      if (boss) {
+        const v = focusView(
+          fromSubs(this.camX), fromSubs(this.camY),
+          fromSubs(boss.x), fromSubs(boss.y),
+          push,
+          this.worldWpx, this.worldHpx,
+        );
+        this.cameras.main.setZoom(RENDER_SCALE * v.zoom);
+        this.cameras.main.centerOn(v.cx, v.cy);
+        return;
+      }
+    }
     if (this.focusT > 0 && this.focusAt !== null) {
       const v = focusView(
         fromSubs(this.camX), fromSubs(this.camY),
@@ -2405,6 +2841,30 @@ export class PaintScene extends Phaser.Scene {
     this.focusAt = null;
     this.cameras.main.setZoom(RENDER_SCALE);
     this.cameras.main.centerOn(fromSubs(this.camX) + LOGICAL_W / 2, fromSubs(this.camY) + LOGICAL_H / 2);
+  }
+
+  /** Which boss beat, if any, wants the camera this frame — and starts its clock
+   *  the first time it is seen. Named beats, so a held state spends one push. */
+  private pumpBossPush(): void {
+    const g = this.world?.entities.find((e) => e.role === "guardian" && !e.redeemed);
+    if (!g) return;
+    // „the fight starts" = the first frame the child and the boss are in the same
+    // room with her in the air; „the window opens" = every dip.
+    const beat = g.state === "dip" ? `dip:${g.hp}` : this.bossPushId === null ? "enter" : "";
+    if (beat === "" || this.pushedBeats.has(beat)) return;
+    this.pushedBeats.add(beat);
+    this.bossPushId = g.id;
+    this.bossPushMs = 0;
+  }
+
+  /** How far the fight's push-in has pushed, 0…1 — in and back out over
+   *  BOSS_PUSH_MS. 0 under reduced motion: it is a camera move and nothing else. */
+  private bossPushT(): number {
+    if (this.cfg.reducedMotion) return 0;
+    const t = this.bossPushMs / BOSS_PUSH_MS;
+    if (!(t >= 0) || t >= 1) return 0;
+    // in over the first fifth, held, then out — the shape a stakes beat wants
+    return t < 0.2 ? t / 0.2 : t < 0.55 ? 1 : 1 - (t - 0.55) / 0.45;
   }
 
   // ── R3-8 · the battle framing, as the React shell drives it ────────────────
@@ -2597,6 +3057,38 @@ export class PaintScene extends Phaser.Scene {
           new Phaser.Geom.Point(b0[0], b0[1]),
         ], true);
       }
+    }
+
+    // ── PK-R6 · H2 · THE FIXTURE (round-2 finding 9) ────────────────────────
+    // The beam's own source, drawn where the beam starts. Three marks, in the
+    // order a painter would lay them: the housing (a dark trapezoid hanging
+    // mouth-down, so the shape reads as a lamp rather than as a blob), the hot
+    // lens across its mouth, and the bloom that spills past the rim. Placed
+    // once, on the beam's plane and at the beam's scroll factor — a lamp that
+    // parallaxed differently from its own light is the same defect one layer up.
+    for (const src of planSources(air, this.worldWpx, this.worldHpx)) {
+      const lamp = this.add.graphics().setDepth(src.depth - 0.01).setScrollFactor(src.parallax, src.parallaxY);
+      const hw = src.halfW;
+      const d = src.depthPx;
+      // the housing: narrow at the ceiling, open at the mouth
+      lamp.fillStyle(STAGE_LAMP_BODY, 0.9);
+      lamp.fillPoints([
+        new Phaser.Geom.Point(src.x - hw * 0.46, src.y - d),
+        new Phaser.Geom.Point(src.x + hw * 0.46, src.y - d),
+        new Phaser.Geom.Point(src.x + hw * 0.94, src.y),
+        new Phaser.Geom.Point(src.x - hw * 0.94, src.y),
+      ], true);
+      // the rim it hangs from — a bar of the same iron, so it is FITTED to the
+      // ceiling rather than floating in front of it
+      lamp.fillStyle(STAGE_LAMP_BODY, 0.75);
+      lamp.fillRect(src.x - hw * 0.16, src.y - d - 5, hw * 0.32, 5);
+      // the lens, and the bloom that spills past its rim
+      lamp.fillStyle(src.colour, src.alpha);
+      lamp.fillEllipse(src.x, src.y - 0.5, hw * 1.7, d * 0.42);
+      lamp.fillStyle(src.colour, src.alpha * 0.45);
+      lamp.fillEllipse(src.x, src.y, hw * 2.5, d * 0.8);
+      lamp.fillStyle(STAGE_LAMP_CORE, Math.min(1, src.alpha * 1.5));
+      lamp.fillEllipse(src.x, src.y - 1, hw * 0.85, d * 0.24);
     }
   }
 

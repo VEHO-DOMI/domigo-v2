@@ -32,7 +32,11 @@ import {
   type EntityWorld,
   type WorldInput,
 } from "./entities.ts";
-import { FLIGHT_PITCH_MAX_RAD, FLIGHT_PITCH_REF_VY, GUARDIAN_GROUNDED_CELLS, GUARDIAN_LANDED_CELLS, entPoseCell, guardianPitchRad } from "./anim.ts";
+import {
+  FLIGHT_BANK_FACE, FLIGHT_PITCH_MAX_RAD, FLIGHT_PITCH_REF_VY, FLIGHT_ROLL_MIN, FLIGHT_ROLL_REF_VX,
+  FLIGHT_ROLL_TICKS, GUARDIAN_GROUNDED_CELLS, GUARDIAN_LANDED_CELLS, entPoseCell, guardianManoeuvre,
+  guardianPitchRad, guardianRollScaleX,
+} from "./anim.ts";
 import { KNOT_PATHS, flightUnitAt, pathForKnot } from "./flight.ts";
 import { LOGICAL_H, SUBS, TICK_MS, TILE } from "./paint.ts";
 import { cameraTargetY, clampScroll } from "./camera.ts";
@@ -337,12 +341,13 @@ describe("the arced chalk and its shard (doc 44 §3.2 + §4 ch01 C4)", () => {
     expect(w.projectiles.some((p) => p.id === shard!.id && !p.dead)).toBe(false);
   });
 
-  it("cycles the six painted sticks deterministically — no RNG in the arena", () => {
+  it("cycles the painted sticks deterministically — no RNG in the arena", () => {
+    const n = CHALK_COLOURS.length;
     const colours = (): string[] => {
       const w = spawnEntities([guardianSpec("E")], []);
       const out: string[] = [];
       const seen = new Set<number>();
-      for (let t = 0; t < 4000 && out.length < 7; t++) {
+      for (let t = 0; t < 4000 && out.length < n + 1; t++) {
         stepEntities(w, GRID, pacing(t));
         for (const p of w.projectiles) {
           if (p.kind === "chalk" && !seen.has(p.id)) { seen.add(p.id); out.push(p.colour); }
@@ -351,10 +356,21 @@ describe("the arced chalk and its shard (doc 44 §3.2 + §4 ch01 C4)", () => {
       return out;
     };
     const a = colours();
-    expect(a.length).toBeGreaterThanOrEqual(6);
-    expect(a.slice(0, 6)).toEqual([...CHALK_COLOURS]);
-    expect(a[6]).toBe(CHALK_COLOURS[0]); // …and wraps
+    expect(a.length).toBeGreaterThanOrEqual(n);
+    expect(a.slice(0, n)).toEqual([...CHALK_COLOURS]);
+    expect(a[n]).toBe(CHALK_COLOURS[0]); // …and wraps
     expect(colours()).toEqual(a); // …identically, every run
+  });
+
+  // PK-R6 · H2 (round-2 finding 5): „the thrown chalk stick is a pale, thin
+  // sliver close in value to the couches behind it". The stick that carried that
+  // charge was `white`, and it opened the cycle — so the first piece of the fight
+  // was the one with no hue to separate by. This is the law that keeps it out,
+  // rather than a hope that nobody puts it back: a projectile the child must see
+  // owes chroma, and the arena's own backdrop is chalk-valued.
+  it("throws no white chalk — a projectile owes chroma (round-2 finding 5)", () => {
+    expect(CHALK_COLOURS).not.toContain("white");
+    expect(CHALK_COLOURS[0]).toBe("red"); // …and opens on the most saturated
   });
 });
 
@@ -510,5 +526,84 @@ describe("she flies it — the drawn attitude (finding 2)", () => {
     }
     // pure: same input, same angle, every time (a replayed tape must match)
     expect(guardianPitchRad(120, 200, 1)).toBe(guardianPitchRad(120, 200, 1));
+  });
+
+  // ── PK-R6 · H2 · THE SECOND AXIS (round-2 finding 3) ──────────────────────
+  // Round 2 still read the three manoeuvres as one picture, and it was right to:
+  // pitch is a rotation, and all three rotate — one axis, three amounts of the
+  // same thing. The roll is the axis rotation cannot draw (anim.guardianRollScaleX).
+  it("THE TIE GOES TO THE ROLL: the zigzag's corners are corkscrews (TAMPER)", () => {
+    const kinds = passOf(1).map((v) => guardianManoeuvre(v.vx, v.vy));
+    const spirals = kinds.filter((k) => k === "spiral").length;
+    // MEASURED, not wished for: 216 of the climax knot's 220 ticks are a 45° saw
+    // and roll. The other four are the apex of each tooth, where the tooth turns
+    // through vy = 0 exactly and she really IS crossing level for one tick — the
+    // classifier telling the truth, not an escape hatch.
+    expect(spirals / kinds.length).toBeGreaterThan(0.95);
+    expect(kinds.filter((k) => k === "hover").length).toBe(0);
+    // TAMPER: the rule this replaces (a strict `>`), on the same velocities,
+    // classifies the identical pass as 100 % bank — the measured defect, exactly
+    // as anim.ts's own tally recorded it in H1.
+    const strict = passOf(1).map((v) => (Math.abs(v.vy) > Math.abs(v.vx) ? "spiral" : "bank"));
+    expect(new Set(strict)).toEqual(new Set(["bank"]));
+  });
+
+  it("each manoeuvre owns a WIDTH, and the three do not overlap", () => {
+    // hover: square on. Nothing is turned away from a board going nowhere.
+    expect(guardianRollScaleX(0, 0, 0)).toBe(1);
+    // bank: a steady lean, deepening with the crossing, and never past its floor
+    const slow = guardianRollScaleX(FLIGHT_ROLL_REF_VX * 0.4, 0, 0);
+    const fast = guardianRollScaleX(FLIGHT_ROLL_REF_VX, 0, 0);
+    expect(slow).toBeLessThan(1);
+    expect(fast).toBeLessThan(slow);
+    expect(fast).toBeCloseTo(FLIGHT_BANK_FACE, 9);
+    // spiral: it passes right through edge-on, which is narrower than any bank
+    const rolls: number[] = [];
+    for (let t = 0; t < FLIGHT_ROLL_TICKS; t++) rolls.push(guardianRollScaleX(10, 400, t));
+    expect(Math.min(...rolls)).toBeCloseTo(FLIGHT_ROLL_MIN, 6);
+    expect(Math.max(...rolls)).toBeCloseTo(1, 6);
+    // …so the roll ALONE separates a corkscrew from the deepest bank there is
+    expect(Math.min(...rolls)).toBeLessThan(FLIGHT_BANK_FACE);
+  });
+
+  it("the width never mirrors her, never vanishes, and rests under reduced motion", () => {
+    for (const [vx, vy, t] of [[0, 0, 0], [9999, 0, 3], [0, 9999, 7], [-500, 500, 11], [3, -80, 41]] as const) {
+      const k = guardianRollScaleX(vx, vy, t);
+      // a negative scale would MIRROR the cell, and mirroring is already spoken
+      // for by the facing law — two mirrors in one frame is a bank drawn backwards
+      expect(k).toBeGreaterThan(0);
+      expect(k).toBeLessThanOrEqual(1 + 1e-9);
+      expect(k).toBeGreaterThanOrEqual(FLIGHT_ROLL_MIN - 1e-9);
+    }
+    expect(guardianRollScaleX(500, 900, 5, true)).toBe(1);
+    expect(guardianRollScaleX(120, 200, 9)).toBe(guardianRollScaleX(120, 200, 9));
+  });
+
+  it("the three PATHS now differ in width too, not only in tilt", () => {
+    // How much of a pass she spends rolling rather than leaning. NOT the range
+    // of widths — every path contains some roll, so the range saturates at the
+    // same number for all three and would prove nothing (found by this test,
+    // first draft). What separates them is how OFTEN.
+    const rollShare = (hp: number): number => {
+      const w = passOf(hp).map((v, i) => guardianRollScaleX(v.vx, v.vy, i));
+      return w.filter((k) => k < FLIGHT_BANK_FACE).length / w.length;
+    };
+    // MEASURED over one full pass each — 0.130 · 0.115 · 0.491. The first two
+    // paths lean their way round and dip into a roll at their turns; the CLIMAX
+    // is a corkscrew from end to end, and spends nearly four times as much of
+    // its pass past the deepest bank there is. That is the escalation this
+    // finding asked to be visible in the pose, and it is not a claim about knots
+    // 0 and 1 relative to each other — they fly comparable amounts of roll, and
+    // what separates THEM is the pitch (see the tests above).
+    expect(rollShare(1)).toBeGreaterThan(3 * rollShare(3));
+    expect(rollShare(1)).toBeGreaterThan(3 * rollShare(2));
+    // …and a leaning path still LEANS: its average width sits between edge-on
+    // and square-on rather than pinned at either
+    for (const hp of [3, 2, 1]) {
+      const w = passOf(hp).map((v, i) => guardianRollScaleX(v.vx, v.vy, i));
+      const mean = w.reduce((a, b) => a + b, 0) / w.length;
+      expect(mean).toBeGreaterThan(FLIGHT_ROLL_MIN);
+      expect(mean).toBeLessThan(1);
+    }
   });
 });

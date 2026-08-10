@@ -377,9 +377,26 @@ export const SHARD_TICKS = 60;
  *  six-year-old walking a floor should not be caught by something beside them. */
 export const SHARD_REACH_X_PX = 9;
 export const SHARD_REACH_Y_PX = 12;
-/** The six painted sticks (`chalk_white` … `chalk_orange`), cycled by throw
- *  index so the colour is a function of the tick stream and nothing else. */
-export const CHALK_COLOURS = ["white", "red", "blue", "green", "yellow", "orange"] as const;
+/**
+ * The painted sticks she actually throws, cycled by throw index so the colour is
+ * a function of the tick stream and nothing else.
+ *
+ * PK-R6 · H2 (round-2 finding 5: „the thrown chalk stick is a pale, thin sliver
+ * close in value to the couches behind it"). The cycle led with `white`, so the
+ * FIRST piece of the fight — the one the child is taught to read the whole boss
+ * by — was the one stick in the set that carries no chroma at all, thrown across
+ * a stage of cream upholstery and honey-wood book tiles. White chalk is right on
+ * a blackboard and wrong as a projectile: it is the only colour here that cannot
+ * separate from the p4 backdrop by hue, so it has nothing left to separate by but
+ * value, and the arena's whole midground sits at chalk value.
+ *
+ * It is dropped from the THROW set (its sheet is untouched and still shipped —
+ * see CHALK_PROJECTILE_STEMS) and the cycle now opens on the most saturated
+ * stick in the box. Warm first, cool last: the p4 stage is dusk-blue, so the two
+ * cool sticks are the ones that need the code-drawn light most and they arrive
+ * after the child has already learnt what a thrown piece looks like.
+ */
+export const CHALK_COLOURS = ["red", "orange", "yellow", "green", "blue"] as const;
 
 /** PK-R6 · H1 · THE PROJECTILE ART, as stems (round-1 critique, finding 5).
  *
@@ -393,6 +410,10 @@ export const CHALK_COLOURS = ["white", "red", "blue", "green", "yellow", "orange
  *  covered by the gate the day it is added. */
 export const CHALK_PROJECTILE_STEMS: readonly string[] = [
   ...CHALK_COLOURS.map((c) => `chalk_${c}`),
+  // named on its own now that it has left the throw cycle (round-2 finding 5):
+  // the sheet still ships, the gate still guards its fringe, and the day a
+  // chapter with a dark floor wants it back it is already clean.
+  "chalk_white",
   "chalk_shard_a",
   "chalk_shard_b",
   "tafel_chalk",
@@ -405,9 +426,23 @@ export const CHALK_PROJECTILE_STEMS: readonly string[] = [
  *  asker has left the viewport WAITS, and a boss frozen off screen mid-window
  *  would wait forever). */
 export const DIP_Y_PX = 236;
-/** How far short of the child she stops, in px — she dips in FRONT of them, not
- *  on top of them. TASTE. */
-export const DIP_STANDOFF_PX = 34;
+/**
+ * How far short of the child she stops, in px — she dips in FRONT of them, not
+ * on top of them.
+ *
+ * PK-R6 · H2 (round-2 finding 2: „Domi's sprite clips into the boss during the
+ * sink pose — it reads as a z-order bug, not a choreographed contact pose").
+ * 34 px was never a standoff: it is measured centre to centre, and half of HER
+ * alone is more than that, so „in FRONT of them" put her drawing straight
+ * through his. Now DERIVED rather than tasted, in the units both bodies are
+ * drawn in: half the boy (BODY_HALF_PX, 8) + half the board she actually is at
+ * the size PaintScene actually draws her (`entTargetH` for a guardian, 84 px
+ * tall × the sheet's 0.62 aspect ⇒ ≈26 wide at the frame, half ≈13… and the
+ * spread legs reach past it, so 25) + 12 px of daylight, so the contact pose
+ * reads as two beings facing each other rather than one drawing over another.
+ * Re-derive this the day either body is re-scaled.
+ */
+export const DIP_STANDOFF_PX = 45;
 /** How long the dip takes. Matched to the evidence beat (PaintScene's
  *  EVIDENCE_BEAT_TICKS, 36 t) so the coming-down and the writing read as one
  *  movement rather than two. */

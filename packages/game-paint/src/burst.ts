@@ -177,6 +177,68 @@ export const burstShape = (ms: number): {
  * the identical star, and unit-testable, so „it is spiky and it is not a circle"
  * is a table rather than a screenshot.
  */
+// ── PK-R6 · H2 · THE BROKEN PIECE (round-2 finding 6) ───────────────────────
+// „'Shards on floor' are smooth round dust puffs, not broken chalk … redesign
+// the ground hazard as an actual jagged broken-chalk-fragment shape with its own
+// silhouette, distinct from the round ambient dust particles."
+//
+// Pure and here rather than in the scene, for the reason every FX shape in this
+// file is here: the LAW („nothing about this outline may be round") has to be
+// assertable in a headless test, and a WebGL canvas cannot be read back.
+/** How many corners a splinter is cut with. Six, ALTERNATING far and near: a
+ *  ring of six evenly-far corners is a hexagon, which at 14 px is a circle. */
+export const SHARD_CORNERS = 6;
+/** The two families of corner. A splinter has points and it has flats, and the
+ *  gap between them is what the eye reads as „broken". */
+// Tempered against the running arena a second time: at tip 1.1 / cut 0.34 and a
+// 1.45:0.58 axis the pieces read as dark NEEDLES — a splinter of glass, not a
+// chunk of chalk. These numbers keep the spiky and long laws well clear of their
+// floors while leaving a piece you can still see is made of chalk.
+export const SHARD_TIP_MIN = 0.95;
+export const SHARD_TIP_SPAN = 0.32;
+export const SHARD_CUT_MIN = 0.44;
+export const SHARD_CUT_SPAN = 0.2;
+/** How much longer than it is wide a splinter lies. A piece snapped off a stick
+ *  of chalk is a SLIVER; the first cut of this shape came out round in the
+ *  running game precisely because it had no long axis. */
+export const SHARD_LONG = 1.3;
+export const SHARD_SHORT = 0.7;
+
+/**
+ * The outline of ONE broken piece of chalk: an angular sliver, cut with three
+ * points and three flats, stretched along a long axis and laid down at its own
+ * angle — every one of those numbers hashed off the projectile's id. So a given
+ * shard always has a given shape (a replayed tape draws the same floor twice),
+ * two shards lying next to each other are never twins, and no `Math.random` is
+ * anywhere near it.
+ *
+ * MEASURED, not guessed: the first version of this outline used six near-equal
+ * radii and no long axis, and rendered in the arena as three coloured BALLS —
+ * the round-puff defect this whole finding is about, reintroduced by the fix for
+ * it. `burst.test.ts` now holds both properties (spiky AND long) as law.
+ */
+export const shardOutline = (
+  id: number, cx: number, cy: number, r: number,
+): Array<{ x: number; y: number }> => {
+  const h = (n: number): number => ((Math.imul(n | 0, 2654435761) >>> 8) / 0x1000000);
+  const rot = (h(id * 8171 + 3) - 0.5) * 2.2; // the angle it came to rest at
+  const cs = Math.cos(rot);
+  const sn = Math.sin(rot);
+  const pts: Array<{ x: number; y: number }> = [];
+  for (let i = 0; i < SHARD_CORNERS; i++) {
+    // corners are not evenly spaced either: a regular polygon is a badge
+    const a = ((i + 0.55 * h(id * 31 + i * 7)) / SHARD_CORNERS) * Math.PI * 2;
+    const tip = i % 2 === 0;
+    const rr = r * (tip
+      ? SHARD_TIP_MIN + h(id * 2654 + i * 977 + 11) * SHARD_TIP_SPAN
+      : SHARD_CUT_MIN + h(id * 5381 + i * 131 + 7) * SHARD_CUT_SPAN);
+    const lx = Math.cos(a) * rr * SHARD_LONG;
+    const ly = Math.sin(a) * rr * SHARD_SHORT;
+    pts.push({ x: cx + lx * cs - ly * sn, y: cy + lx * sn + ly * cs });
+  }
+  return pts;
+};
+
 export const starPoints = (
   cx: number, cy: number, spikes: number, rOuter: number, rInner: number, phase = 0,
 ): Array<{ x: number; y: number }> => {

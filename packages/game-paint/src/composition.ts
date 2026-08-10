@@ -128,6 +128,11 @@ export interface AirSpec {
     tilt: number;
     /** the beam's width at its mouth, in world px. */
     width: number;
+    /** PK-R6 · H2 (round-2 finding 9): what the child can SEE throwing this
+     *  light. Absent = the source is off-frame and needs no fixture (a hall lit
+     *  by the day outside owes nobody a sun). Present = the fixture is part of
+     *  the set and is drawn at each beam's mouth (air.planSources). */
+    source?: "lamp";
   };
   /** What drifts in that light. Absent = still air. */
   motes?: { count: number; colour: number; alpha: number; radius: number };
@@ -438,11 +443,16 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     far: shell("p4", 0.25),
     mid: midBand("p4", 96),
     // two stage lamps, nearly vertical and wider than a window's beam — the one
-    // room in the chapter whose light is aimed rather than let in
+    // room in the chapter whose light is aimed rather than let in.
+    // PK-R6 · H2 (round-2 finding 9): …and the lamps are now DRAWN. This phase
+    // is the boss stage — every frame of the fight is captured here — and it is
+    // the one room in the chapter whose light has a fixture in the fiction, so
+    // it is the one room that could answer „what is throwing that streak?" with
+    // a picture instead of a comment.
     air: {
       haze: 0.12,
       hazeColour: 0xc2a5a0,
-      shafts: { count: 2, colour: 0xffd9a8, alpha: 0.10, tilt: 0.14, width: 34 },
+      shafts: { count: 2, colour: 0xffd9a8, alpha: 0.10, tilt: 0.14, width: 34, source: "lamp" },
       motes: { count: 12, colour: 0xffe6c0, alpha: 0.22, radius: 0.8 },
       vignette: 0.34,
       band: 0.55,

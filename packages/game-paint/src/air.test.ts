@@ -21,6 +21,7 @@ import {
   planHaze,
   planMotes,
   planShafts,
+  planSources,
   spreadAt,
   vignetteBands,
 } from "./air.ts";
@@ -180,5 +181,71 @@ describe("the vignette closes the frame the camera is actually showing", () => {
 
   it("draws nothing when a phase asks for none", () => {
     expect(vignetteBands(0, 0, 0)).toEqual([]);
+  });
+});
+
+// ── PK-R6 · H2 · THE LIGHT HAS A SOURCE (round-2 finding 9) ─────────────────
+// „Unmotivated diagonal glare overlay across every frame … either remove the
+// glass-streak overlay or paint a visible light source into the background that
+// justifies it, so it reads as deliberate atmosphere rather than a leftover
+// render artifact." Removal was the wrong branch — the haze/shaft/vignette trio
+// is what put a fourth value band into round 1's two-band frame — so the beams
+// keep their light and are given the lamp they always claimed to hang from.
+describe("every beam that claims a fixture has one (round-2 finding 9)", () => {
+  it("draws a source for the stage, and for nowhere the fiction has no lamp", () => {
+    // p4 IS the boss stage — every frame the harness captured happens here, and
+    // its spec has said „two stage lamps" in a comment since the day it was
+    // written. A comment is not a picture.
+    expect(CH01_COMPOSITION.p4!.air!.shafts!.source).toBe("lamp");
+    const { w, h } = boxOf("p4");
+    const shafts = planShafts(CH01_COMPOSITION.p4!.air!, w, h);
+    const sources = planSources(CH01_COMPOSITION.p4!.air!, w, h);
+    // one fixture per beam, and never one without the other
+    expect(sources.length).toBe(shafts.length);
+    expect(sources.length).toBeGreaterThan(0);
+    // the daylit rooms are untouched: a hall lit by the day outside owes no sun
+    for (const id of ["p1", "p2", "p3"]) {
+      expect(planSources(CH01_COMPOSITION[id]!.air!, ...Object.values(boxOf(id)) as [number, number]))
+        .toEqual([]);
+    }
+    // …and a room with no beams cannot grow a lamp
+    expect(planSources(CH01_COMPOSITION.p9!.air!, ...Object.values(boxOf("p9")) as [number, number])).toEqual([]);
+  });
+
+  it("puts each fixture AT its own beam's mouth — it cannot drift off the light", () => {
+    const { w, h } = boxOf("p4");
+    const air = CH01_COMPOSITION.p4!.air!;
+    const shafts = planShafts(air, w, h);
+    const sources = planSources(air, w, h);
+    shafts.forEach((s, i) => {
+      const src = sources[i]!;
+      const [tl, tr] = s.points;
+      expect(src.x).toBeCloseTo(((tl![0]) + (tr![0])) / 2, 9);
+      expect(src.y).toBeCloseTo(tl![1], 9);
+      // same plane, same parallax — a lamp that scrolled differently from its own
+      // light is the identical defect one layer up
+      expect(src.parallax).toBe(s.parallax);
+      expect(src.parallaxY).toBe(s.parallaxY);
+      expect(src.depth).toBe(s.depth);
+    });
+  });
+
+  it("keeps the fixture OUT of the gameplay band, like everything else in the air", () => {
+    const { w, h } = boxOf("p4");
+    const air = CH01_COMPOSITION.p4!.air!;
+    const floor = airFloor(air, h);
+    for (const src of planSources(air, w, h)) {
+      // the lamp hangs ABOVE its mouth, so its whole body is above the beam's own
+      // top — the band law holds by construction, and this is the check that says so
+      expect(src.y).toBeLessThanOrEqual(floor + 0.001);
+      expect(src.y - src.depthPx).toBeLessThan(src.y);
+    }
+  });
+
+  it("is in the plan, and is deterministic", () => {
+    const { w, h } = boxOf("p4");
+    const air = CH01_COMPOSITION.p4!.air!;
+    expect(planAir(air, w, h, 0).filter((p) => p.kind === "source").length).toBe(planSources(air, w, h).length);
+    expect(planSources(air, w, h)).toEqual(planSources(air, w, h));
   });
 });

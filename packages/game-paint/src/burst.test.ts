@@ -12,8 +12,8 @@
 //     property this file exists to keep.
 import { describe, expect, it } from "vitest";
 import {
-  BURST_CORE, BURST_FLASH_MS, BURST_HOT, BURST_INK, BURST_MS, SPARK_COUNT,
-  burstShape, chromaOf, contactPoint, fleckOf, lumaOf,
+  BURST_CORE, BURST_FLASH_MS, BURST_HOT, BURST_INK, BURST_MS, SHARD_CORNERS, SHARD_LONG,
+  SHARD_TIP_MIN, SHARD_TIP_SPAN, SPARK_COUNT, burstShape, chromaOf, contactPoint, fleckOf, lumaOf, shardOutline,
 } from "./burst.ts";
 
 describe("the touch point (doc 44 §3.1.1)", () => {
@@ -126,5 +126,68 @@ describe("the flecks", () => {
   it("shows a PATH: a third of the flecks are streaks, not dots", () => {
     const streaks = Array.from({ length: SPARK_COUNT }, (_, i) => fleckOf(i)).filter((f) => f.streak);
     expect(streaks.length).toBeGreaterThanOrEqual(Math.floor(SPARK_COUNT / 3));
+  });
+});
+
+// ── PK-R6 · H2 · THE BROKEN PIECE (round-2 finding 6) ───────────────────────
+// „'Shards on floor' are smooth round dust puffs, not broken chalk … distinct
+// from the round ambient dust particles used for Domi's footsteps elsewhere."
+//
+// The cause was measurable and so is the fix: `chalk_shard_a/b` are 245×259
+// sheets of TEN separate chunks, fitted to a 6-px display height — every chunk
+// lands under a pixel and what reaches the screen is a soft blob. The shard is
+// drawn now, and this is the law that keeps it from drifting back into a circle.
+describe("a shard is a splinter, not a puff (round-2 finding 6)", () => {
+  const IDS = [0, 1, 2, 7, 41, 1290, 5001];
+  const radii = (id: number): number[] => shardOutline(id, 0, 0, 10).map((p) => Math.hypot(p.x, p.y));
+  /** the outline's own longest and shortest widths, i.e. is it a SLIVER? */
+  const axes = (id: number): { long: number; short: number } => {
+    const pts = shardOutline(id, 0, 0, 10);
+    let long = 0;
+    let a0 = 0;
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const d = Math.hypot(pts[i]!.x - pts[j]!.x, pts[i]!.y - pts[j]!.y);
+        if (d > long) { long = d; a0 = Math.atan2(pts[j]!.y - pts[i]!.y, pts[j]!.x - pts[i]!.x); }
+      }
+    }
+    // width measured ACROSS that longest axis
+    const across = pts.map((p) => -p.x * Math.sin(a0) + p.y * Math.cos(a0));
+    return { long, short: Math.max(...across) - Math.min(...across) };
+  };
+
+  it("is SPIKY: its points stand well clear of its flats", () => {
+    for (const id of IDS) {
+      const r = radii(id);
+      expect(r.length).toBe(SHARD_CORNERS);
+      // a regular polygon — the round-puff class this replaces — scores 1.0
+      expect(Math.max(...r) / Math.min(...r)).toBeGreaterThan(1.8);
+    }
+  });
+
+  it("is LONG: a piece snapped off a stick is a sliver, never a disc", () => {
+    // MEASURED regression guard. The first cut of this outline had six near-equal
+    // radii and no long axis, and rendered in the arena as three coloured BALLS —
+    // the very defect this finding names, reintroduced by its own fix.
+    for (const id of IDS) {
+      const { long, short } = axes(id);
+      expect(long / short).toBeGreaterThan(1.5);
+    }
+  });
+
+  it("gives every piece its OWN silhouette — neighbours are never twins", () => {
+    const a = shardOutline(11, 0, 0, 10);
+    const b = shardOutline(12, 0, 0, 10);
+    const same = a.every((p, i) => Math.abs(p.x - (b[i]?.x ?? 0)) < 1e-9 && Math.abs(p.y - (b[i]?.y ?? 0)) < 1e-9);
+    expect(same).toBe(false);
+    // …and they do not all lie the same way up, either
+    const angleOf = (id: number): number => Math.atan2(shardOutline(id, 0, 0, 10)[0]!.y, shardOutline(id, 0, 0, 10)[0]!.x);
+    expect(new Set(IDS.map((i) => Math.round(angleOf(i) * 10))).size).toBeGreaterThan(3);
+  });
+
+  it("is deterministic and bounded — a replayed tape draws the same floor", () => {
+    expect(shardOutline(9, 4, 5, 10)).toEqual(shardOutline(9, 4, 5, 10));
+    const cap = 10 * (SHARD_TIP_MIN + SHARD_TIP_SPAN) * SHARD_LONG;
+    for (const id of IDS) for (const r of radii(id)) expect(r).toBeLessThanOrEqual(cap + 1e-9);
   });
 });

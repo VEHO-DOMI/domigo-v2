@@ -89,6 +89,36 @@ export interface ShaftPiece {
   depth: number;
 }
 
+/**
+ * PK-R6 · H2 · WHERE THE LIGHT COMES FROM (round-2 finding 9: „unmotivated
+ * diagonal glare overlay across every frame … reads as a leftover render
+ * artifact rather than deliberate atmosphere").
+ *
+ * The beams were always meant to be motivated — this file's own header calls
+ * them „where that light comes FROM" — and p4's spec has said „two stage lamps"
+ * in a comment since the day it was written. A comment is not a picture. On a
+ * stage the fixture is part of the set: you see the lamp, and THEN you accept
+ * the shaft. So the source is drawn, at the beam's own mouth, in the beam's own
+ * colour, on the beam's own plane — one housing, one hot lens, one bloom.
+ *
+ * The critique offered removal as the alternative. Removing would have been the
+ * wrong repair: the haze/shaft/vignette trio is what put a fourth value band
+ * into a two-band frame (round 1's finding), so deleting the beams would trade a
+ * named minor for a named major. What was missing was never the light. It was
+ * the lamp.
+ */
+export interface SourcePiece {
+  kind: "source";
+  /** the mouth's centre and half-width, in the shaft plane's own coordinates. */
+  x: number; y: number; halfW: number;
+  /** how deep the fixture hangs below its mouth. */
+  depthPx: number;
+  colour: number;
+  alpha: number;
+  parallax: number; parallaxY: number;
+  depth: number;
+}
+
 export interface MotePiece {
   kind: "mote";
   x: number; y: number; r: number;
@@ -98,7 +128,7 @@ export interface MotePiece {
   depth: number;
 }
 
-export type AirPiece = HazePiece | ShaftPiece | MotePiece;
+export type AirPiece = HazePiece | ShaftPiece | MotePiece | SourcePiece;
 
 /** The world-y the air band stops at — below it, the gameplay band. */
 export const airFloor = (air: AirSpec, worldHpx: number): number => air.band * worldHpx;
@@ -135,7 +165,14 @@ export const planShafts = (air: AirSpec, worldWpx: number, worldHpx: number): Sh
   const s = air.shafts;
   if (!s || s.count <= 0) return [];
   const box = coverBox(worldWpx, worldHpx, AIR_PARALLAX.shaft, AIR_PARALLAX.shaftY);
-  const top = box.y;
+  // PK-R6 · H2 · A BEAM WITH A FIXTURE STARTS WHERE THE FIXTURE CAN BE SEEN.
+  // Measured in the running arena: the cover box puts the mouth at world y 22,
+  // and this room's camera is pinned (a 20-row world under a 14-row view), so it
+  // never shows anything above y 109 on this plane. A lamp drawn at the true
+  // mouth is 86 px off the top of the frame — which is the finding restated,
+  // not fixed. So a beam that OWES a fixture is shortened to start inside the
+  // frame, and `planSources` reads its mouth: the two can never disagree.
+  const top = s.source === undefined ? box.y : Math.max(box.y, sourceTopOf(worldHpx));
   const len = Math.max(airFloor(air, worldHpx) - top, 8);
   const out: ShaftPiece[] = [];
   for (let i = 0; i < s.count; i++) {
@@ -159,6 +196,52 @@ export const planShafts = (air: AirSpec, worldWpx: number, worldHpx: number): Sh
     });
   }
   return out;
+};
+
+/** How far the fixture hangs below the mouth it lights, as a fraction of the
+ *  beam's own half-width. A lamp shallower than its mouth reads as a smudge. */
+export const SOURCE_DEPTH_FRAC = 0.72;
+/** How far below the top of the frame a fixture hangs, in world px. Enough for
+ *  the housing AND the bar it hangs from to clear the edge. */
+export const SOURCE_INSET_PX = 22;
+
+/**
+ * The highest world-y on the SHAFT plane this room's camera can ever show, plus
+ * the fixture's own clearance. Derived the way `hazeCovers` derives its x
+ * window — from the camera's own travel, not from a number somebody measured
+ * once — so a room with a taller world moves its lamps by itself.
+ */
+export const sourceTopOf = (worldHpx: number): number =>
+  visibleWindow(Math.max(worldHpx - LOGICAL_H, 0), AIR_PARALLAX.shaftY, LOGICAL_H, K_Y).lo + SOURCE_INSET_PX;
+
+/**
+ * THE SOURCES — one fixture at the mouth of each shaft, or none when the phase
+ * declares no `source` (a room whose light is simply the day outside owes no
+ * lamp; p1–p3 keep exactly the air they had).
+ *
+ * Positions are READ OFF the shafts rather than recomputed, so a lamp can never
+ * drift off the beam it is lighting — the defect this whole finding is about.
+ */
+export const planSources = (air: AirSpec, worldWpx: number, worldHpx: number): SourcePiece[] => {
+  const s = air.shafts;
+  if (!s || s.source === undefined) return [];
+  return planShafts(air, worldWpx, worldHpx).map((beam) => {
+    const [tl, tr] = beam.points;
+    const x = ((tl?.[0] ?? 0) + (tr?.[0] ?? 0)) / 2;
+    const halfW = Math.abs((tr?.[0] ?? 0) - (tl?.[0] ?? 0)) / 2;
+    return {
+      kind: "source" as const,
+      x, y: tl?.[1] ?? 0, halfW,
+      depthPx: halfW * SOURCE_DEPTH_FRAC,
+      colour: s.colour,
+      // the fixture is the one part of the atmosphere that is an OBJECT, so it
+      // carries more than the beam it throws — a lamp as faint as its own light
+      // is the invisible-source problem again, one step further along
+      alpha: Math.min(1, s.alpha * 4.4),
+      parallax: AIR_PARALLAX.shaft, parallaxY: AIR_PARALLAX.shaftY,
+      depth: AIR_DEPTH.shaft,
+    };
+  });
 };
 
 /**
@@ -205,7 +288,12 @@ export const planAir = (
 ): AirPiece[] =>
   air === undefined
     ? []
-    : [planHaze(air, worldWpx, worldHpx), ...planShafts(air, worldWpx, worldHpx), ...planMotes(air, worldWpx, worldHpx, tick)];
+    : [
+        planHaze(air, worldWpx, worldHpx),
+        ...planShafts(air, worldWpx, worldHpx),
+        ...planSources(air, worldWpx, worldHpx),
+        ...planMotes(air, worldWpx, worldHpx, tick),
+      ];
 
 /**
  * THE VIGNETTE, in camera space. Four bands closing the frame's edges in the
