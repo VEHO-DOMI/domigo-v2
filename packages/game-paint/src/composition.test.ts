@@ -5,8 +5,8 @@
 // cannot be read back (Build-D banked that false negative), so composition is
 // verified by arithmetic over the plan, not by sampling the screen.
 import { describe, expect, it } from "vitest";
-import { CH01_COMPOSITION, type MassKit, compositionFor, compositionStems, nearPlaneTint } from "./composition.ts";
-import { K_X, K_Y, coverBox, coverFit, coversAxis, planLayers, planeCovers, travelBox, visibleWindow } from "./layers.ts";
+import { CH01_COMPOSITION, HERO_EDGE_KEY_SPLIT, MID_FAR_ALPHA, type MassKit, compositionFor, compositionStems, heroEdgeFor, nearPlaneTint } from "./composition.ts";
+import { K_X, K_Y, PLANE_DEPTH, coverBox, coverFit, coversAxis, planLayers, planeCovers, travelBox, visibleWindow } from "./layers.ts";
 import {
   CRUST_H,
   CRUST_LIP,
@@ -21,7 +21,9 @@ import {
   ledgeLips,
   massGrain,
   nakedFills,
+  PLAT_SHADOW,
   planMass,
+  planPlatformShadows,
   shortestPeriod,
   surfaceSignature,
   slideRuns,
@@ -585,7 +587,10 @@ describe("the letter trail (doc 36 §3)", () => {
 describe("the manifest", () => {
   it("names every stem the kit needs, deduplicated", () => {
     const stems = compositionStems(CH01_COMPOSITION.p3!);
-    for (const want of ["crust_p3_a", "mass_body_a", "mass_sediment", "slide_mid", "plat_bench_2", "l1_p3_a", "l2_p3"]) {
+    // PK-R6 · H2 (round-2 finding 12): the yard's bench went back to the hall it
+    // was borrowed from; the sill it kept is the one this phase's own painted
+    // wall implies (four arched windows), and it is what the kit names now.
+    for (const want of ["crust_p3_a", "mass_body_a", "mass_sediment", "slide_mid", "ledge_windowsill", "l1_p3_a", "l2_p3"]) {
       expect(stems, want).toContain(want);
     }
     expect(new Set(stems).size).toBe(stems.length);
@@ -645,6 +650,152 @@ describe("PK-R6 · H2 · the near plane's own light", () => {
       const t = nearPlaneTint(key);
       expect(ch(t, 16), `K=${key}`).toBeGreaterThan(120);
       expect(ch(t, 0), `K=${key}`).toBeLessThan(250);
+    }
+  });
+});
+
+// ── PK-R6 · H2 · THE CHILD'S EDGE (round-2 finding 1, CRITICAL) ──────────────
+// The finding said his colour collapses into the wall; the measurement says his
+// value gap is 44 points and what collapses is his MASS at thumbnail size. These
+// lock the repair that follows from the measurement rather than from the guess.
+describe("the hero's own edge", () => {
+  it("is his shade in a lit room and his rim in a dark one", () => {
+    const hall = heroEdgeFor(88);
+    const night = heroEdgeFor(30);
+    // ink against a pale wall, warm light against a dark one
+    expect(hall.tint).toBeLessThan(0x808080);
+    expect(night.tint).toBeGreaterThan(0x808080);
+    // a shadow leans; a rim hugs
+    expect(hall.dx).toBeGreaterThan(night.dx);
+    expect(hall.dy).toBeGreaterThan(night.dy);
+  });
+
+  it("always SWELLS — that is the half a squint cannot average away", () => {
+    for (const key of [14, 28, 30, 86, 88]) {
+      const e = heroEdgeFor(key);
+      expect(e.swell).toBeGreaterThan(0.05);
+      expect(e.swell).toBeLessThan(0.2); // past this it is a second boy, not a rim
+      expect(e.alpha).toBeGreaterThan(0);
+      expect(e.alpha).toBeLessThan(0.6);
+    }
+  });
+
+  it("flips on the split, and no room in the book sits near the line", () => {
+    expect(heroEdgeFor(HERO_EDGE_KEY_SPLIT).tint).toBe(heroEdgeFor(100).tint);
+    expect(heroEdgeFor(HERO_EDGE_KEY_SPLIT - 1).tint).toBe(heroEdgeFor(0).tint);
+    for (const spec of Object.values(CH01_COMPOSITION)) {
+      expect(Math.abs(spec.key - HERO_EDGE_KEY_SPLIT)).toBeGreaterThan(15);
+    }
+  });
+});
+
+// ── PK-R6 · H2 · THE MIDDLE DISTANCE (round-2 finding 8) ─────────────────────
+describe("L2b — the same furniture, one room further back", () => {
+  it("recedes on every axis a further row must recede on", () => {
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      if (!spec.mid) { expect(spec.midFar).toBeUndefined(); continue; }
+      const far = spec.midFar!;
+      expect(far).toBeDefined();
+      expect(far.parallax).toBeGreaterThan(spec.far.parallax);
+      expect(far.parallax).toBeLessThan(spec.mid.parallax);
+      expect(Number(far.height)).toBeLessThan(Number(spec.mid.height));
+      expect(far.lift!).toBeGreaterThanOrEqual((spec.mid.lift ?? 0) + Number(spec.mid.height));
+      // GHOSTED — doc 36 §1's affordance quarantine is what licenses a second
+      // copy of operable-looking furniture at all, and the alpha IS the licence
+      expect(far.alpha!).toBeGreaterThan(0);
+      expect(far.alpha!).toBeLessThan(1);
+      expect(id).toBeTruthy();
+    }
+  });
+
+  it("is planned as its own plane, between the shell and the furniture", () => {
+    const spec = CH01_COMPOSITION.p1!;
+    const pieces = planLayers(spec, 64 * TILE, 22 * TILE, () => ({ w: 400, h: 200 }));
+    const l2b = pieces.filter((p) => p.plane === "L2b");
+    expect(l2b.length).toBeGreaterThan(0);
+    for (const p of l2b) {
+      expect(p.depth).toBeLessThan(PLANE_DEPTH.mid);
+      expect(p.depth).toBeGreaterThan(PLANE_DEPTH.far);
+      expect(p.alpha).toBe(MID_FAR_ALPHA);
+    }
+    // and it changes nothing about the two planes that owe the cover law
+    for (const plane of ["L0", "L1"] as const) {
+      expect(planeCovers(pieces.filter((p) => p.plane === plane), 64 * TILE, 22 * TILE, "both")).toBe(true);
+    }
+  });
+
+  it("costs no new art — the art gate asks for its stems all the same", () => {
+    const stems = compositionStems(CH01_COMPOSITION.p1!);
+    expect(stems).toContain("l2_p1");
+    // the further row quotes the near one, so the required list does not grow
+    expect(new Set(stems).size).toBe(stems.length);
+  });
+});
+
+// ── PK-R6 · H2 · WHAT THE FURNITURE THROWS (round-2 finding 9) ───────────────
+describe("the platform shadows", () => {
+  const KIT: MassKit = {
+    crust: ["c_a", "c_b"], crustCapL: "cl", crustCapR: "cr",
+    body: ["b_a"], fade: "f", sediment: "s",
+    edgeL: "el", edgeR: "er", cornerBL: "bl", cornerBR: "br",
+    inCornerL: "il", inCornerR: "ir", rampUp: "ru", rampDown: "rd",
+    platObjects: [{ stem: "o2", cells: 2 }, { stem: "o1", cells: 1 }],
+  };
+
+  it("draws ONE pool per ledge, not one per object", () => {
+    // a four-cell ledge is covered by two objects; two shadows with a seam
+    // between them is the wallpaper defect again, one layer down
+    const grid = [
+      "................",
+      "....####........",
+      "................",
+      "################",
+    ];
+    const plan = planMass(grid, KIT);
+    expect(plan.filter((p) => p.kind === "platform").length).toBe(2);
+    expect(planPlatformShadows(plan).length).toBe(1);
+  });
+
+  it("leans the way every phase's light says it should", () => {
+    const grid = ["........", "..##....", "........", "########"];
+    const plan = planMass(grid, KIT);
+    const obj = plan.find((p) => p.kind === "platform")!;
+    const [sh] = planPlatformShadows(plan);
+    expect(sh).toBeDefined();
+    // down and to the RIGHT: the wash puts the light top-left in every room, and
+    // the hero's own shadow has been thrown that way since H1
+    expect(sh!.x).toBeGreaterThan(obj.x);
+    expect(sh!.y).toBeGreaterThan(obj.y);
+    expect(sh!.w).toBeLessThan(obj.w + PLAT_SHADOW.dx);
+    expect(sh!.alpha).toBeGreaterThan(0);
+  });
+
+  it("is empty where there is nothing to cast one", () => {
+    expect(planPlatformShadows([])).toEqual([]);
+    expect(planPlatformShadows(planMass(["####", "####"], KIT))).toEqual([]);
+  });
+});
+
+// ── PK-R6 · H2 · ONE OBJECT, AT MOST TWO ROOMS (round-2 finding 12) ──────────
+describe("the zone palettes", () => {
+  it("lets a motif be quoted once and never twice", () => {
+    const rooms = new Map<string, string[]>();
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      for (const o of spec.mass.platObjects) {
+        rooms.set(o.stem, [...(rooms.get(o.stem) ?? []), id]);
+      }
+    }
+    for (const [stem, where] of rooms) {
+      expect(where.length, `${stem} furnishes ${where.join(", ")}`).toBeLessThanOrEqual(2);
+    }
+  });
+
+  it("leaves the outdoor room sharing nothing with either indoor one", () => {
+    const of = (id: string): Set<string> =>
+      new Set(CH01_COMPOSITION[id]!.mass.platObjects.map((o) => o.stem));
+    const yard = of("p3");
+    for (const indoor of ["p1", "p2"]) {
+      for (const stem of of(indoor)) expect(yard.has(stem)).toBe(false);
     }
   });
 });

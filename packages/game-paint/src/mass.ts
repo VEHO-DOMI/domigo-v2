@@ -243,6 +243,64 @@ export const floatingPlatformRuns = (grid: readonly string[]): Array<{ c0: numbe
   return runs;
 };
 
+/**
+ * PK-R6 · H2 · WHAT THE FURNITURE THROWS (round-2 finding 9, major).
+ *
+ * „Almost no dark anchor shapes to organise the eye … push the darkest darks in
+ * each scene meaningfully deeper (deep shadow under furniture …)." The floating
+ * platforms are the objects nearest the eye in every frame and they had nothing
+ * under them at all, so a bench read as a sticker on a wall and the middle of the
+ * picture held no dark at all.
+ *
+ * One soft pool per LEDGE — not per object, which is the whole reason this reads
+ * the plan rather than the grid: a four-cell ledge is drawn as two objects side
+ * by side, and two shadows with a seam between them is a second wallpaper defect.
+ * Contiguous platform pieces on the same row are merged first, so the shadow is
+ * the shape of the thing the child sees.
+ *
+ * Where it falls is not a choice: every phase's wash puts the light top-left and
+ * the hero's own shadow has been thrown down-and-right since H1, so this one is
+ * too. Same light, same room, one direction.
+ */
+export const PLAT_SHADOW = {
+  /** how far the pool leans away from the light, in world px. */
+  dx: 4,
+  /** how far it drops below the object's own bottom edge. */
+  dy: 2,
+  /** how deep the pool reaches before it is gone. */
+  h: 11,
+  /** how much narrower than its object it is (a shadow is not a stamp). */
+  inset: 2,
+  alpha: 0.30,
+} as const;
+
+export interface PlatformShadow {
+  x: number; y: number; w: number; h: number;
+  /** opacity where it touches the object; it reaches 0 at its own bottom edge. */
+  alpha: number;
+}
+
+export const planPlatformShadows = (plan: readonly MassPiece[]): PlatformShadow[] => {
+  const ledges = plan.filter((p) => p.kind === "platform").sort((a, b) => a.r - b.r || a.x - b.x);
+  const merged: Array<{ x: number; x1: number; y: number; r: number }> = [];
+  for (const p of ledges) {
+    const last = merged[merged.length - 1];
+    if (last !== undefined && last.r === p.r && p.x <= last.x1 + 0.5) {
+      last.x1 = Math.max(last.x1, p.x + p.w);
+      last.y = Math.max(last.y, p.y + p.h);
+      continue;
+    }
+    merged.push({ x: p.x, x1: p.x + p.w, y: p.y + p.h, r: p.r });
+  }
+  return merged.map((m) => ({
+    x: m.x + PLAT_SHADOW.dx + PLAT_SHADOW.inset,
+    y: m.y + PLAT_SHADOW.dy,
+    w: Math.max(m.x1 - m.x - PLAT_SHADOW.inset * 2, 2),
+    h: PLAT_SHADOW.h,
+    alpha: PLAT_SHADOW.alpha,
+  }));
+};
+
 /** Diagonal runs of the slide glyph `z` (each step goes one right, one down). */
 export const slideRuns = (grid: readonly string[]): Array<{ c: number; r: number; n: number }> => {
   const { w, h } = gridSize(grid);

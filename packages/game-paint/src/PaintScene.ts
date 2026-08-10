@@ -13,10 +13,10 @@
 
 import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
-import { type CompositionSpec, type MassKit, compositionFor, nearPlaneTint } from "./composition.ts";
+import { type CompositionSpec, type MassKit, ROOM_SHADOW_INK, compositionFor, heroEdgeFor, nearPlaneTint } from "./composition.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
-import { AIR_DEPTH, type AirPiece, planHaze, planMotes, planShafts, planSources, vignetteBands } from "./air.ts";
-import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass } from "./mass.ts";
+import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
+import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows } from "./mass.ts";
 import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
@@ -90,6 +90,13 @@ export const CONTACT_RIM_PX = 1.2;
 export const CONTACT_RIM_SWELL = 0.14;
 
 // ── PK-R6 · H1 · THE HERO'S OWN SHADOW (round-1 critique, finding 3) ──────────
+// PK-R6 · H2 (round-2 finding 1, CRITICAL): the numbers below are now the
+// FALLBACK for a phase with no manifest. A phase that declares a key gets
+// `heroEdgeFor(key)` instead — ink and thrown in a lit room, warm and hugging in
+// a dark one, and in both cases SWOLLEN, so the copy shows past his silhouette
+// on every side. The measurements and the reasoning are in composition.ts; the
+// short version is that his value gap against p1's wall is 44 points and he
+// still vanishes, because what a squint destroys is his MASS, not his colour.
 /** The ink the cast shadow is tinted with, and how much of it shows. Dark enough
  *  to be a value STEP against the palest wall in the book (p1's key is 88), light
  *  enough that it never reads as a second boy. */
@@ -136,6 +143,34 @@ const GRAIN_SHINE = 0xfff6e2;
 // carries the same two devices the boss got — a halo that separates it from
 // whatever is behind it, and a contact shadow that puts it ON the floor.
 //
+// PK-R6 · H2 · …AND WHAT SHAPE THAT HALO IS (round-2 findings 10 and 11).
+// „The gray halo behind the rabbit/bunny character is a crisp, perfectly circular
+// disc with a visible flat edge, reading as a UI/VFX sprite stamped onto the
+// painting rather than ambient light" — and, one finding later, „its head touches
+// the underside of the book-stack legs of the floating bench above it, reading as
+// one connected shape rather than hazard + platform."
+//
+// Both are the same object failing in both directions. Four concentric
+// `fillCircle`s draw a hard-rimmed disc (nothing in this book is a circle) and a
+// disc cannot separate a silhouette from a shape it overlaps, because it is not
+// the silhouette's shape. The boss's halo hit exactly this in the same round and
+// was answered by mirroring her own outline; the same answer serves here, and it
+// costs no new object: every hostile has ALREADY carried a full sprite copy of
+// itself since H1 (`hostileShadeImgs`, the cast shadow). That copy is now blown
+// up around its own centre, so it shows past the being on every side — a rim in
+// the shape of the thing it rims, which is what the ground enemy needed against
+// the bench above it and what the moth needed instead of a bubble.
+//
+// The disc is gone. `HOSTILE_HALO_*` below is what remains of it: a colour split
+// and a breath, now carried by the copy.
+/** How far past its own outline the copy reaches. Small — this is separation,
+ *  not a glow: at 22 px of moth that is a little over 1 px of rim. */
+const HOSTILE_RIM_SPREAD = 1.14;
+/** …and its cast-shadow lean, which the same copy still owes: a rim at full
+ *  offset is a second creature, so the throw shrinks as the rim grows. */
+const HOSTILE_RIM_DX = 1.4;
+const HOSTILE_RIM_DY = 1.4;
+
 // The „warning hue (red/orange)" half is not built, and the reason is doc 41 §2:
 // OSWIN rained the COLOUR out of the beings he bewitched, and the child gives it
 // back by naming them. Painting a hostile warning-orange before that would spend
@@ -148,9 +183,10 @@ const HOSTILE_HALO_LIGHT = 0xfdf3dc;
 const HOSTILE_HALO_DARK = 0x241f2e;
 /** Above this phase key the room is bright, so the halo goes dark. */
 const HOSTILE_HALO_KEY_SPLIT = 50;
-const HOSTILE_HALO_ALPHA = 0.17;
-const HOSTILE_HALO_RINGS = 4;
-const HOSTILE_HALO_SPREAD = 1.5;
+/** How strongly the rim shows. Ink is laid flat over the wall and can afford to
+ *  be read; chalk is ADDED into a dark room, where the same number would glow. */
+const HOSTILE_RIM_ALPHA_INK = 0.52;
+const HOSTILE_RIM_ALPHA_CHALK = 0.34;
 /** How much of the halo breathes (the rest is constant, so a still frame — and
  *  reduced motion — still shows a being with an edge). */
 const HOSTILE_HALO_PULSE = 0.22;
@@ -797,6 +833,8 @@ export class PaintScene extends Phaser.Scene {
    *  those two redraw; the haze, the beams and the floor's grain are placed once. */
   private moteG!: Phaser.GameObjects.Graphics;
   private vignetteG!: Phaser.GameObjects.Graphics;
+  /** PK-R6 · H2 · the leaves turning over the scenery (round-2 finding 13) */
+  private lifeG!: Phaser.GameObjects.Graphics;
   /** the hostile separation halos + their contact shadows (finding 3) */
   private hostileG!: Phaser.GameObjects.Graphics;
   /** the shimmer that says „pickup, not platform" (finding 6) */
@@ -872,6 +910,9 @@ export class PaintScene extends Phaser.Scene {
     // PK-R6 · H1 · the two halves of the air that cannot be placed once: motes
     // move, and the vignette is drawn in the camera's own rect every frame.
     this.moteG = this.add.graphics().setDepth(AIR_DEPTH.mote);
+    // PK-R6 · H2 · the scenery's own life (finding 13) — on the furniture plane's
+    // scroll factors, so it drifts with the hedge it is turning over
+    this.lifeG = this.add.graphics().setDepth(AIR_DEPTH.life).setScrollFactor(LIFE_PARALLAX.x, LIFE_PARALLAX.y);
     this.vignetteG = this.add.graphics().setDepth(AIR_DEPTH.vignette);
     // behind every being (7) and behind the boss's own halo (6.8), so a hostile
     // in front of the guardian never draws its edge over her
@@ -1416,18 +1457,11 @@ export class PaintScene extends Phaser.Scene {
       // of the being, so it reads as light falling past it rather than as a
       // second creature. It survives redemption on purpose: a freed moth still
       // stands in the same room and still casts a shadow; what ends at
-      // redemption is the halo, which is the warning (see renderHostiles).
-      const shade = this.hostileShadeImgs.get(e.id);
-      if (shade) {
-        shade.setVisible(img.visible);
-        if (img.visible) {
-          shade.setTexture(img.texture.key);
-          shade.setPosition(img.x + HERO_SHADOW_DX * 0.7, img.y + HERO_SHADOW_DY * 0.7);
-          shade.setScale(img.scaleX, img.scaleY);
-          shade.setFlipX(img.flipX).setRotation(img.rotation);
-          shade.setAlpha(HOSTILE_SHADOW_ALPHA * img.alpha);
-        }
-      }
+      // redemption is the WARNING it carries.
+      // PK-R6 · H2 (round-2 findings 10 and 11): that copy is now also the
+      // separation rim, so it has ONE owner — `renderHostiles`, which runs after
+      // this and reads the sprite exactly as this method has just left it. Two
+      // methods writing one object is how a rim ends up lagging its own body.
       // R3-15 · THE DESATURATION GRAMMAR (doc 41 §2): the wash mirrors its
       // being exactly — same cell, same place, same flip, same size — and only
       // its opacity moves. Redeem = the colour floods back in, which is the
@@ -2689,18 +2723,25 @@ export class PaintScene extends Phaser.Scene {
     // the being's drawing overlap. The swell does most of the work (it rims him
     // all round); this bias puts the thickest part of it at the merge.
     const rimToward = this.burstAt !== null && this.burstAt.x >= fromSubs(this.player.x) ? 1 : -1;
-    // the cast shadow rides the same pose, offset behind the light
+    // PK-R6 · H2 (round-2 finding 1): the copy is the ROOM's — see `heroEdgeFor`.
+    // In a lit hall it is his shade, thrown down-and-behind; in the night
+    // classroom and on the dusk stage it is his rim, hugging him, because a dark
+    // outline on a dark wall separates nothing.
+    const edge = this.heroEdge();
     this.rigShadow.setPosition(
-      fromSubs(this.player.x) + (-this.player.facing * HERO_SHADOW_DX) * (1 - rim) + rimToward * CONTACT_RIM_PX * rim,
-      fromSubs(this.player.y) - 15 + HERO_SHADOW_DY * (1 - rim) - 0.5 * rim,
+      fromSubs(this.player.x) + (-this.player.facing * edge.dx) * (1 - rim) + rimToward * CONTACT_RIM_PX * rim,
+      fromSubs(this.player.y) - 15 + edge.dy * (1 - rim) - 0.5 * rim,
     );
     // …and it SWELLS rather than slides: a bright copy merely offset reads as a
     // second boy standing behind him (measured in the running build — his own
     // hand appeared twice). Scaled up a little around the same centre, the copy
     // shows only past his edges, which is what an outline is.
-    const swell = 1 + CONTACT_RIM_SWELL * rim;
+    // PK-R6 · H2: that swell is now his BASE state and not only the flash's — it
+    // is the one device that survives a 25 % squint, because blurring a dark ring
+    // leaves a dark ring while blurring a small dark figure leaves the wall.
+    const swell = 1 + edge.swell + (CONTACT_RIM_SWELL - edge.swell) * rim;
     this.rigShadow.setScale(this.player.facing * pose.scaleX * swell, pose.scaleY * swell);
-    this.rigShadow.setAlpha(flicker ? 0 : HERO_SHADOW_ALPHA * (1 - rim) + CONTACT_RIM_ALPHA * rim);
+    this.rigShadow.setAlpha(flicker ? 0 : edge.alpha * (1 - rim) + CONTACT_RIM_ALPHA * rim);
 
     const apply = (name: RigPartName, dx: number, dy: number, rot: number, hidden: boolean, frame?: number): void => {
       for (const img of [this.parts.get(name), this.shadowParts.get(name)]) {
@@ -2742,7 +2783,7 @@ export class PaintScene extends Phaser.Scene {
       this.parts.get(name)?.setTexture(key);
       const shade = this.shadowParts.get(name);
       // the shadow copy is the RIM copy while a contact flash is on him
-      shade?.setTexture(key).setTint(rim > 0 ? CONTACT_RIM_TINT : HERO_SHADOW_TINT);
+      shade?.setTexture(key).setTint(rim > 0 ? CONTACT_RIM_TINT : edge.tint);
     }
     this.renderContact();
     this.renderContactBurst();
@@ -3036,27 +3077,28 @@ export class PaintScene extends Phaser.Scene {
 
     for (const shaft of planShafts(air, this.worldWpx, this.worldHpx)) {
       const beam = this.add.graphics().setDepth(shaft.depth).setScrollFactor(shaft.parallax, shaft.parallaxY);
-      // a beam is drawn as three nested quads rather than one: light has a hot
-      // core and soft sides, and a single flat polygon reads as a paper cut-out
-      for (let i = 0; i < 3; i++) {
-        const k = 1 - i / 3; // 1 = the narrow core, 0 = the outermost skirt
-        const a = shaft.alphaTop * (0.34 + 0.66 * k * k);
-        const [tl, tr, fr, fl] = shaft.points;
-        if (!tl || !tr || !fr || !fl) break;
-        const mid = (p: readonly [number, number], q: readonly [number, number]): [number, number] =>
-          [p[0] + (q[0] - p[0]) * (0.5 - 0.5 * k), p[1] + (q[1] - p[1]) * (0.5 - 0.5 * k)];
-        const a0 = mid(tl, tr);
-        const a1 = mid(tr, tl);
-        const b0 = mid(fl, fr);
-        const b1 = mid(fr, fl);
-        beam.fillStyle(shaft.colour, a);
-        beam.fillPoints([
-          new Phaser.Geom.Point(a0[0], a0[1]),
-          new Phaser.Geom.Point(a1[0], a1[1]),
-          new Phaser.Geom.Point(b1[0], b1[1]),
-          new Phaser.Geom.Point(b0[0], b0[1]),
-        ], true);
+      // PK-R6 · H2 (round-2 finding 5): the beam is filled as a GRID of thin
+      // pieces — rings across it and bands down it — so its rim accumulates to
+      // nothing sideways and it runs out rather than stopping. The three flat
+      // nested quads this replaces are the „crisp, unblended straight edge" the
+      // critique cropped off the arena bookshelf. Geometry unchanged: every piece
+      // is bilinear INSIDE the planned quad, so the gameplay-band clamp holds.
+      for (const q of shaftQuads(shaft)) {
+        beam.fillStyle(shaft.colour, q.alpha);
+        beam.fillPoints(q.points.map(([x, y]) => new Phaser.Geom.Point(x, y)), true);
       }
+    }
+
+    // ── PK-R6 · H2 · THE FURNITURE'S FOOT (round-2 finding 9) ────────────────
+    // The room's dark gathering where the furniture band meets the ground, on
+    // the band's own plane and at its own scroll factors. This is the horizon
+    // line the whole frame organises around, and it was one flat value.
+    const shade = planBandShade(this.comp?.mid, this.worldWpx, this.worldHpx);
+    if (shade !== null) {
+      const ink = mixRGB(ROOM_SHADOW_INK, this.comp?.wash.colors[2] ?? ROOM_SHADOW_INK, 0.25);
+      const sg = this.add.graphics().setDepth(shade.depth).setScrollFactor(shade.parallax, shade.parallaxY);
+      sg.fillGradientStyle(ink, ink, ink, ink, 0, 0, shade.alphaBottom, shade.alphaBottom);
+      sg.fillRect(shade.x, shade.y, shade.w, shade.h);
     }
 
     // ── PK-R6 · H2 · THE FIXTURE (round-2 finding 9) ────────────────────────
@@ -3385,7 +3427,29 @@ export class PaintScene extends Phaser.Scene {
     // ── the carved mass (doc 36 §2) — crust + caps + trims + corners + body
     // + fade + sediment, ramps, the slide, and complete platform objects ─────
     if (kit !== null) {
-      for (const piece of planMass(this.grid, kit)) this.placeMassPiece(piece);
+      const plan = planMass(this.grid, kit);
+      // ── PK-R6 · H2 · WHAT THE FURNITURE THROWS (round-2 finding 9) ─────────
+      // Read off the SAME plan the renderer is about to place, never re-planned:
+      // a shadow computed from a second call would be a shadow of a different
+      // bench the moment either side of that arithmetic moves.
+      // Depth 0.8 — behind every piece of terrain (mass starts at 1) and a whole
+      // plane in front of the furniture band, which is where a near object's
+      // shadow belongs.
+      const shadows = planPlatformShadows(plan);
+      if (shadows.length > 0) {
+        const ink = mixRGB(ROOM_SHADOW_INK, this.comp?.wash.colors[2] ?? ROOM_SHADOW_INK, 0.22);
+        const g = this.add.graphics().setDepth(0.8);
+        for (const s of shadows) {
+          // darkest where it touches the object, gone at its own foot — and
+          // drawn in three inset steps so the pool has no straight sides either
+          for (let i = 0; i < 3; i++) {
+            const k = i / 3;
+            g.fillStyle(ink, (s.alpha / 3) * (1 - k * 0.35));
+            g.fillEllipse(s.x + s.w / 2, s.y + s.h * 0.35, s.w * (1 - k * 0.22), s.h * (1.1 - k * 0.3));
+          }
+        }
+      }
+      for (const piece of plan) this.placeMassPiece(piece);
       this.buildGrain();
     }
   }
@@ -3658,6 +3722,21 @@ export class PaintScene extends Phaser.Scene {
       this.moteG.fillStyle(m.colour, m.alpha);
       this.moteG.fillCircle(m.x, m.y, m.r);
     }
+    // PK-R6 · H2 · the leaves (round-2 finding 13). Drawn on their own canvas
+    // because they ride the FURNITURE plane's scroll factors, not the room's:
+    // they are turning over in the scenery, a whole plane behind the child.
+    this.lifeG.clear();
+    for (const l of planLife(air, this.worldWpx, this.worldHpx, tick)) {
+      // an ellipse whose short axis IS how far the leaf has turned — edge-on it
+      // is a line and nearly transparent, face-on it is a leaf. One number, and
+      // it is the difference between „a leaf" and „a green speck".
+      this.lifeG.fillStyle(l.colour, l.alpha);
+      this.lifeG.save();
+      this.lifeG.translateCanvas(l.x, l.y);
+      this.lifeG.rotateCanvas(l.rot * 0.4);
+      this.lifeG.fillEllipse(0, 0, l.r * 2, l.r * 2 * l.face);
+      this.lifeG.restore();
+    }
     // the room's own shadow closing the frame. Its colour is a near-black
     // carrying a little of this room's wash, so the hall closes in honey-dark
     // and the ink dream in blue-black — one device, five rooms.
@@ -3693,27 +3772,45 @@ export class PaintScene extends Phaser.Scene {
    */
   private renderHostiles(): void {
     this.hostileG.clear();
-    const colour = (this.comp?.key ?? 88) >= HOSTILE_HALO_KEY_SPLIT ? HOSTILE_HALO_DARK : HOSTILE_HALO_LIGHT;
+    // a bright room separates a being with INK, a dark one with CHALK — the H1
+    // split, unchanged; only the shape it is painted in has changed
+    const ink = (this.comp?.key ?? 88) >= HOSTILE_HALO_KEY_SPLIT;
+    const colour = ink ? HOSTILE_HALO_DARK : HOSTILE_HALO_LIGHT;
     for (const e of this.world?.entities ?? []) {
-      if (!JOY_ROLES.has(e.role) || e.redeemed || e.hidden) continue;
+      const shade = this.hostileShadeImgs.get(e.id);
+      if (!shade) continue;
       const img = this.entityImgs.get(e.id);
-      if (!img || !img.visible) continue;
-      const cx = img.x;
-      const cy = img.y - img.displayHeight * 0.5;
-      const r0 = Math.max(img.displayWidth, img.displayHeight) * 0.44;
+      if (!img || !img.visible) { shade.setVisible(false); continue; }
+      // the WARNING half ends at redemption (the being has been named and is not
+      // a threat any more); the plain cast shadow does not, because a freed moth
+      // still stands in the same room. So a redeemed being keeps the copy at its
+      // H1 numbers and loses only the rim.
+      const warn = JOY_ROLES.has(e.role) && !e.redeemed;
       // the beat's offset is the being's NAME, not its position: keying it to
       // e.x would re-seed the phase every tick (x moves in subs) and the breath
       // would come out as flicker
       const seed = e.id.length * 37 + (e.id.charCodeAt(0) | 0) * 7 + (e.id.charCodeAt(e.id.length - 1) | 0);
-      const beat = this.cfg.reducedMotion
+      const beat = this.cfg.reducedMotion || !warn
         ? 1
         : 1 - HOSTILE_HALO_PULSE + HOSTILE_HALO_PULSE * (0.5 + 0.5 * Math.sin(this.tickCount / 13 + hash01(seed) * Math.PI * 2));
-      for (let i = 0; i < HOSTILE_HALO_RINGS; i++) {
-        const k = 1 - i / HOSTILE_HALO_RINGS; // 1 at the core, 0 at the rim
-        const spread = 1 + (HOSTILE_HALO_SPREAD - 1) * (i / Math.max(HOSTILE_HALO_RINGS - 1, 1));
-        this.hostileG.fillStyle(colour, HOSTILE_HALO_ALPHA * k * k * beat);
-        this.hostileG.fillCircle(cx, cy, r0 * spread);
-      }
+      const spread = warn ? HOSTILE_RIM_SPREAD : 1;
+      shade.setVisible(true);
+      shade.setTexture(img.texture.key);
+      // grown around its own centre (the sprite is anchored at its feet, so the
+      // half-height correction is what keeps the rim even rather than pushing the
+      // being up out of its own shadow), and thrown less the more it is a rim
+      shade.setPosition(
+        img.x + (warn ? HOSTILE_RIM_DX : HERO_SHADOW_DX * 0.7),
+        img.y + (warn ? HOSTILE_RIM_DY : HERO_SHADOW_DY * 0.7) + img.displayHeight * (spread - 1) * 0.5,
+      );
+      shade.setScale(img.scaleX * spread, img.scaleY * spread);
+      shade.setFlipX(img.flipX).setRotation(img.rotation);
+      shade.setTint(warn ? colour : HERO_SHADOW_TINT);
+      // chalk is ADDED (a dark room takes light) and ink is laid flat (a bright
+      // room takes shade) — the same asymmetry the hero's own edge follows
+      shade.setBlendMode(warn && !ink ? Phaser.BlendModes.ADD : Phaser.BlendModes.NORMAL);
+      const rimAlpha = ink ? HOSTILE_RIM_ALPHA_INK : HOSTILE_RIM_ALPHA_CHALK;
+      shade.setAlpha((warn ? rimAlpha : HOSTILE_SHADOW_ALPHA) * beat * img.alpha);
     }
   }
 
@@ -3947,6 +4044,15 @@ export class PaintScene extends Phaser.Scene {
     this.cfg.callbacks.onLetters(0, this.lettersTotal);
   }
 
+  /** PK-R6 · H2 · the child's own edge, in THIS room (round-2 finding 1). A
+   *  phase with no manifest keeps the H1 numbers exactly — the fallback law. */
+  private heroEdge(): ReturnType<typeof heroEdgeFor> {
+    if (this.comp === null) {
+      return { tint: HERO_SHADOW_TINT, alpha: HERO_SHADOW_ALPHA, swell: 0, dx: HERO_SHADOW_DX, dy: HERO_SHADOW_DY };
+    }
+    return heroEdgeFor(this.comp.key);
+  }
+
   private buildRig(): void {
     // PK-R6 · H1 · THE VALUE ISLAND (round-1 critique, finding 3). Squinted down
     // to a thumbnail, the hall reduced to one flat pale-yellow wash with the boy
@@ -3959,7 +4065,11 @@ export class PaintScene extends Phaser.Scene {
     // edge against any wall, at any brightness, without repainting a single
     // background (which belongs to the composition lane, not this one), and it
     // costs no art: the shadow wears the same textures the same tick.
-    this.rigShadow = this.add.container(0, 0).setDepth(9).setAlpha(HERO_SHADOW_ALPHA);
+    // PK-R6 · H2 (round-2 finding 1): …and the copy is the room's, not a fixed
+    // ink — see `heroEdgeFor`. Its swell is applied per frame with the pose, so
+    // it is set in `renderPlayer` rather than here.
+    const edge = this.heroEdge();
+    this.rigShadow = this.add.container(0, 0).setDepth(9).setAlpha(edge.alpha);
     this.groundG = this.add.graphics().setDepth(8);
     this.pullG = this.add.graphics().setDepth(9.5);
     this.rigRoot = this.add.container(0, 0).setDepth(10);
@@ -3973,7 +4083,7 @@ export class PaintScene extends Phaser.Scene {
         : "shoe_neutral";
       // dossier: sprite-scale hands are ~half a head — 0.62× part scale
       const partScale = name.startsWith("hand") ? RIG_SRC_SCALE * 0.62 : RIG_SRC_SCALE;
-      const shade = this.add.image(0, 0, this.tex(stem)).setScale(partScale).setTint(HERO_SHADOW_TINT);
+      const shade = this.add.image(0, 0, this.tex(stem)).setScale(partScale).setTint(edge.tint);
       if (name === "handB") shade.setFlipX(true);
       if (name === "rotor") shade.setVisible(false);
       this.shadowParts.set(name, shade);

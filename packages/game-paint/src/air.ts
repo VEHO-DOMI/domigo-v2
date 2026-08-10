@@ -29,7 +29,7 @@
 //    critique asked for the DEAD space to be populated, not the live one, and a
 //    beam of light across a hostile is a readability defect, not a fix for one.
 
-import { type AirSpec } from "./composition.ts";
+import { type AirSpec, type ShellSpec, resolveMeasure } from "./composition.ts";
 import { K_X, K_Y, coverBox, visibleWindow } from "./layers.ts";
 import { hash01 } from "./mass.ts";
 import { LOGICAL_H, LOGICAL_W } from "./paint.ts";
@@ -41,6 +41,13 @@ import { LOGICAL_H, LOGICAL_W } from "./paint.ts";
 export const AIR_DEPTH = {
   /** over the far shell, under the furniture: this is aerial perspective. */
   haze: -12,
+  /** PK-R6 · H2 · the shadow gathering at the furniture's own foot (round-2
+   *  finding 9) — over the band, under everything that lives in front of it. */
+  bandShade: -8.95,
+  /** PK-R6 · H2 · what turns over in the scenery (round-2 finding 13). In front
+   *  of the furniture band and its shade, and still a whole plane behind the
+   *  nearest gameplay object, which is the entire reason it may live this low. */
+  life: -8.9,
   /** over the furniture, so a beam falls in FRONT of the lockers it lights. */
   shaft: -8.8,
   /** over both, under every play object: the room's shadow, not the child's. */
@@ -57,6 +64,10 @@ export const AIR_PARALLAX = {
   shaft: 0.5, shaftY: 0.9,
   mote: 1, moteY: 1,
 } as const;
+
+/** …and what the leaves ride: the furniture plane's own factors, because that is
+ *  the plane they are turning over (see AirSpec.life). */
+export const LIFE_PARALLAX = { x: 0.5, y: 0.9 } as const;
 
 /** How far a mote wanders from its resting place, in world px. */
 export const MOTE_DRIFT_X = 5;
@@ -198,6 +209,77 @@ export const planShafts = (air: AirSpec, worldWpx: number, worldHpx: number): Sh
   return out;
 };
 
+/**
+ * PK-R6 · H2 · THE BEAM LOSES ITS MACHINE EDGE (round-2 finding 5, major).
+ *
+ * „A lighter parallelogram-shaped patch sits across the bookshelf and stone
+ * pillar with a crisp, unblended straight edge — reads as a compositing layer,
+ * not in-world light." Cropped at 1.6× off the arena frame, that is exactly what
+ * it is, and the cause is in the drawing rather than in the plan: the beam was
+ * laid as THREE nested quads of flat alpha, so it had three visible lateral
+ * boundaries and — worse — it stopped dead at the air floor, drawing a straight
+ * horizontal cut across the bookshelf where the light simply ended.
+ *
+ * The geometry does not change (the clamp that keeps every beam out of the
+ * gameplay band is the plan's, and it stays exactly where it was). What changes
+ * is that the same quad is now filled as a GRID of thin pieces:
+ *   · SIDEWAYS — `SHAFT_RINGS` nested rings each carrying one Rth of the beam's
+ *     opacity, so the accumulated alpha ramps from the core to nothing at the
+ *     rim. The outermost step is alphaTop/R ≈ 1 % — under the threshold at which
+ *     an edge can be seen at all.
+ *   · DOWNWARD — `SHAFT_SLICES` bands whose opacity falls off with the square
+ *     root of distance cubed, reaching effectively zero at the foot. Light in a
+ *     room does not end; it runs out.
+ *
+ * Pure, so the gate can assert both edges are invisible without a browser —
+ * which is the only way to prove it, since a WebGL canvas reads back black.
+ */
+export const SHAFT_RINGS = 7;
+export const SHAFT_SLICES = 6;
+/** The opacity above which an edge becomes visible against painted art. Measured
+ *  against the shipped beams: the failing version's outermost step was 0.034 for
+ *  p4 (alphaTop 0.10 over three quads at 0.34 of it), and it is legible in a
+ *  1.6× crop. Half of that is the ceiling every piece of a beam's rim must clear. */
+export const SHAFT_EDGE_MAX = 0.017;
+
+export interface ShaftQuad {
+  points: readonly [number, number][];
+  alpha: number;
+  /** 0 = the outermost ring (the rim), RINGS−1 = the hot core. */
+  ring: number;
+  /** 0 = the mouth, SLICES−1 = the last band before the beam is gone. */
+  slice: number;
+}
+
+/** The beam, subdivided. Bilinear over the planned quad, so a piece can never
+ *  leave it — and therefore can never leave the air band the plan clamped it to. */
+export const shaftQuads = (s: ShaftPiece): ShaftQuad[] => {
+  const [tl, tr, fr, fl] = s.points;
+  if (!tl || !tr || !fr || !fl) return [];
+  const at = (u: number, v: number): [number, number] => {
+    const topX = tl[0] + (tr[0] - tl[0]) * u;
+    const topY = tl[1] + (tr[1] - tl[1]) * u;
+    const botX = fl[0] + (fr[0] - fl[0]) * u;
+    const botY = fl[1] + (fr[1] - fl[1]) * u;
+    return [topX + (botX - topX) * v, topY + (botY - topY) * v];
+  };
+  const out: ShaftQuad[] = [];
+  for (let ring = 0; ring < SHAFT_RINGS; ring++) {
+    const inset = 0.5 * (ring / SHAFT_RINGS);
+    for (let slice = 0; slice < SHAFT_SLICES; slice++) {
+      const v0 = slice / SHAFT_SLICES;
+      const v1 = (slice + 1) / SHAFT_SLICES;
+      const fade = (1 - (v0 + v1) / 2) ** 1.5;
+      out.push({
+        points: [at(inset, v0), at(1 - inset, v0), at(1 - inset, v1), at(inset, v1)],
+        alpha: (s.alphaTop / SHAFT_RINGS) * fade,
+        ring, slice,
+      });
+    }
+  }
+  return out;
+};
+
 /** How far the fixture hangs below the mouth it lights, as a fraction of the
  *  beam's own half-width. A lamp shallower than its mouth reads as a smudge. */
 export const SOURCE_DEPTH_FRAC = 0.72;
@@ -274,6 +356,115 @@ export const planMotes = (air: AirSpec, worldWpx: number, worldHpx: number, tick
       alpha: m.alpha * (0.7 + 0.3 * (0.5 + 0.5 * Math.sin(t * 1.7 + phase))),
       parallax: AIR_PARALLAX.mote, parallaxY: AIR_PARALLAX.moteY,
       depth: AIR_DEPTH.mote,
+    });
+  }
+  return out;
+};
+
+/**
+ * PK-R6 · H2 · THE SHADOW AT THE FURNITURE'S FOOT (round-2 finding 9, major).
+ *
+ * „The compositions collapse into near-uniform pale yellow/tan colour fields with
+ * almost no dark anchor shapes to organise the eye." The furniture band is the
+ * one horizontal that crosses every frame corner to corner, and it was drawn at
+ * one value from its top edge to its bottom one — so the horizon, the line the
+ * eye organises a picture around, carried no shadow at all.
+ *
+ * This is the room's own dark gathering where the furniture meets the ground: a
+ * gradient over the band's lower third, nothing at all at its top edge, so the
+ * band gains a value ramp instead of a second stripe. It is drawn ON the band's
+ * own plane and at the band's own scroll factors, because it is that band's
+ * shadow and must never slide against it.
+ */
+export const BAND_SHADE_FRAC = 0.34;
+export const BAND_SHADE_ALPHA = 0.30;
+
+export interface BandShadePiece {
+  kind: "bandShade";
+  x: number; y: number; w: number; h: number;
+  /** 0 at the piece's top edge → this at its bottom edge. */
+  alphaBottom: number;
+  parallax: number; parallaxY: number;
+  depth: number;
+}
+
+export const planBandShade = (
+  band: ShellSpec | undefined,
+  worldWpx: number,
+  worldHpx: number,
+): BandShadePiece | null => {
+  if (!band || band.cover === true) return null;
+  const p = band.parallax;
+  const pY = band.parallaxY ?? p;
+  const h = resolveMeasure(band.height, worldHpx);
+  const bottom = resolveMeasure(band.bottom, worldHpx) - (band.lift ?? 0);
+  const box = coverBox(worldWpx, worldHpx, p, pY);
+  const shadeH = Math.max(h * BAND_SHADE_FRAC, 1);
+  return {
+    kind: "bandShade",
+    x: box.x, y: bottom - shadeH, w: box.w, h: shadeH,
+    alphaBottom: BAND_SHADE_ALPHA,
+    parallax: p, parallaxY: pY,
+    depth: AIR_DEPTH.bandShade,
+  };
+};
+
+/** Ticks per full turn of a leaf. Long: scenery breathes, it does not flap. */
+export const LIFE_PERIOD = 260;
+export const LIFE_DRIFT_X = 8;
+export const LIFE_DRIFT_Y = 5;
+
+export interface LifePiece {
+  kind: "life";
+  x: number; y: number;
+  /** the leaf's long half-axis, in world px. */
+  r: number;
+  /** how much of its face is turned toward the room, 0…1 (it turns over). */
+  face: number;
+  rot: number;
+  colour: number;
+  alpha: number;
+  parallax: number; parallaxY: number;
+  depth: number;
+}
+
+/**
+ * THE LEAVES, at one tick. Same deterministic machinery as the motes — a
+ * golden-ratio spread for the resting places, an index hash for the phase, the
+ * sim's own tick for the motion — and the same end-state rule: tick 0 is a
+ * complete picture of leaves hanging in a garden, not a frozen animation.
+ *
+ * A leaf turns as it drifts, which is what separates it from dust at 3 px: its
+ * face swings edge-on and back, and it nearly vanishes when it is edge-on. That
+ * is one line of arithmetic and it is the whole read.
+ */
+export const planLife = (
+  air: AirSpec,
+  worldWpx: number,
+  worldHpx: number,
+  tick: number,
+): LifePiece[] => {
+  const l = air.life;
+  if (!l || l.count <= 0) return [];
+  const [lo, hi] = l.band;
+  const out: LifePiece[] = [];
+  for (let i = 0; i < l.count; i++) {
+    const phase = hash01(i * 1373 + 11) * Math.PI * 2;
+    const t = (tick / LIFE_PERIOD) * Math.PI * 2;
+    const restY = (lo + hash01(i * 811 + 3) * Math.max(hi - lo, 0)) * worldHpx;
+    const rot = phase + tick / 47;
+    const face = 0.28 + 0.72 * Math.abs(Math.sin(rot));
+    out.push({
+      kind: "life",
+      x: spreadAt(i) * worldWpx + Math.sin(t * 0.83 + phase) * LIFE_DRIFT_X,
+      y: restY + Math.cos(t + phase) * LIFE_DRIFT_Y,
+      r: l.size * (0.7 + hash01(i * 59 + 17) * 0.6) * 0.5,
+      face,
+      rot,
+      colour: l.colour,
+      alpha: l.alpha * face,
+      parallax: LIFE_PARALLAX.x, parallaxY: LIFE_PARALLAX.y,
+      depth: AIR_DEPTH.life,
     });
   }
   return out;

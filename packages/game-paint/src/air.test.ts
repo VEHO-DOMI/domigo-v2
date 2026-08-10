@@ -15,13 +15,22 @@
 import { describe, expect, it } from "vitest";
 import {
   AIR_DEPTH,
+  BAND_SHADE_FRAC,
+  LIFE_DRIFT_Y,
+  LIFE_PARALLAX,
+  SHAFT_EDGE_MAX,
+  SHAFT_RINGS,
+  SHAFT_SLICES,
   airFloor,
   hazeCovers,
   planAir,
+  planBandShade,
   planHaze,
+  planLife,
   planMotes,
   planShafts,
   planSources,
+  shaftQuads,
   spreadAt,
   vignetteBands,
 } from "./air.ts";
@@ -247,5 +256,118 @@ describe("every beam that claims a fixture has one (round-2 finding 9)", () => {
     const air = CH01_COMPOSITION.p4!.air!;
     expect(planAir(air, w, h, 0).filter((p) => p.kind === "source").length).toBe(planSources(air, w, h).length);
     expect(planSources(air, w, h)).toEqual(planSources(air, w, h));
+  });
+});
+
+// ── PK-R6 · H2 · THE BEAM HAS NO EDGE (round-2 finding 5) ────────────────────
+// „A lighter parallelogram-shaped patch … with a crisp, unblended straight edge
+// — reads as a compositing layer, not in-world light." Both of the beam's edges
+// are now provable numbers rather than an opinion about a screenshot: the rim
+// and the foot must be under the opacity at which an edge can be seen at all.
+describe("the shafts are feathered, sideways and downward", () => {
+  it("accumulates to nothing at the rim and runs out at the foot", () => {
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      const { w, h } = boxOf(id);
+      for (const s of planShafts(spec.air!, w, h)) {
+        const quads = shaftQuads(s);
+        expect(quads.length).toBe(SHAFT_RINGS * SHAFT_SLICES);
+        const rim = Math.max(...quads.filter((q) => q.ring === 0).map((q) => q.alpha));
+        // accumulated, not per-piece: every ring overlaps at the centre, and it
+        // is the stack that draws a straight cut across the wall
+        const foot = quads.filter((q) => q.slice === SHAFT_SLICES - 1).reduce((t2, q) => t2 + q.alpha, 0);
+        expect(rim).toBeLessThanOrEqual(SHAFT_EDGE_MAX);
+        expect(foot).toBeLessThanOrEqual(SHAFT_EDGE_MAX);
+        // …and it is still a BEAM: the core at the mouth keeps most of the
+        // declared opacity, or the fix for the edge would have deleted the light
+        const core = quads.filter((q) => q.slice === 0).reduce((t, q) => t + q.alpha, 0);
+        expect(core).toBeGreaterThan(s.alphaTop * 0.5);
+      }
+    }
+  });
+
+  it("never leaves the quad the plan clamped into the air band", () => {
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      const { w, h } = boxOf(id);
+      const floor = airFloor(spec.air!, h);
+      for (const s of planShafts(spec.air!, w, h)) {
+        const xs = s.points.map((p) => p[0]);
+        for (const q of shaftQuads(s)) {
+          for (const [x, y] of q.points) {
+            expect(y).toBeLessThanOrEqual(floor + 0.001);
+            expect(x).toBeGreaterThanOrEqual(Math.min(...xs) - 0.001);
+            expect(x).toBeLessThanOrEqual(Math.max(...xs) + 0.001);
+          }
+        }
+      }
+    }
+  });
+});
+
+// ── PK-R6 · H2 · THE DARKS (round-2 finding 9) ───────────────────────────────
+describe("the shadow at the furniture's foot", () => {
+  it("sits inside its own band and ends exactly where the band ends", () => {
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      const { w, h } = boxOf(id);
+      const shade = planBandShade(spec.mid, w, h);
+      if (!spec.mid) { expect(shade).toBeNull(); continue; }
+      expect(shade).not.toBeNull();
+      const bandH = Number(spec.mid.height);
+      expect(shade!.h).toBeCloseTo(bandH * BAND_SHADE_FRAC, 6);
+      expect(shade!.y + shade!.h).toBeCloseTo(h - (spec.mid.lift ?? 0), 6);
+      // on the band's OWN plane: a shadow that parallaxed differently from the
+      // thing casting it would slide off it halfway down the level
+      expect(shade!.parallax).toBe(spec.mid.parallax);
+      expect(shade!.parallaxY).toBe(spec.mid.parallaxY);
+      expect(shade!.depth).toBeGreaterThan(PLANE_DEPTH.mid);
+      expect(shade!.depth).toBeLessThan(0);
+    }
+  });
+
+  it("is owed by nothing that has no band, and never by a cover plane", () => {
+    const { w, h } = boxOf("p9");
+    expect(planBandShade(undefined, w, h)).toBeNull();
+    expect(planBandShade(CH01_COMPOSITION.p1!.far, w, h)).toBeNull();
+  });
+});
+
+// ── PK-R6 · H2 · WHAT LIVES IN THE ROOM (round-2 finding 13) ─────────────────
+describe("the yard's leaves", () => {
+  it("stay in the band they declare, on the plane behind the whole game", () => {
+    const { w, h } = boxOf("p3");
+    const air = CH01_COMPOSITION.p3!.air!;
+    const [lo, hi] = air.life!.band;
+    // declared BELOW the air band: this is the answer to the dead pocket, and
+    // the dead pocket is precisely where the motes are forbidden to go
+    expect(lo).toBeGreaterThan(air.band);
+    for (const t of [0, 37, 130, 259, 601]) {
+      const leaves = planLife(air, w, h, t);
+      expect(leaves.length).toBe(air.life!.count);
+      for (const l of leaves) {
+        expect(l.y).toBeGreaterThan(lo * h - LIFE_DRIFT_Y - 0.001);
+        expect(l.y).toBeLessThan(hi * h + LIFE_DRIFT_Y + 0.001);
+        expect(l.depth).toBe(AIR_DEPTH.life);
+        expect(l.depth).toBeLessThan(0);
+        expect(l.parallax).toBe(LIFE_PARALLAX.x);
+        expect(l.alpha).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("turns over — and is the same picture twice at the same tick", () => {
+    const { w, h } = boxOf("p3");
+    const air = CH01_COMPOSITION.p3!.air!;
+    expect(planLife(air, w, h, 91)).toEqual(planLife(air, w, h, 91));
+    // tick 0 is a complete picture (the end-states law), not a frozen animation
+    expect(planLife(air, w, h, 0).length).toBe(air.life!.count);
+    const faces = new Set([0, 60, 120, 180].map((t) => planLife(air, w, h, t)[0]!.face.toFixed(3)));
+    expect(faces.size).toBeGreaterThan(1);
+  });
+
+  it("is declared by exactly the phase whose frame the critique measured", () => {
+    for (const [id, spec] of Object.entries(CH01_COMPOSITION)) {
+      const { w, h } = boxOf(id);
+      if (id === "p3") expect(planLife(spec.air!, w, h, 0).length).toBeGreaterThan(0);
+      else expect(planLife(spec.air!, w, h, 0)).toEqual([]);
+    }
   });
 });

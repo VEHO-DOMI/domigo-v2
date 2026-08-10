@@ -9,8 +9,12 @@
 //   5 AIR           every phase declares atmosphere, its haze covers the travel
 //                   box, and nothing atmospheric enters the gameplay band
 //   6 NO-METRONOME  no walk-course run repeats on a short cycle
-//   7 ZONE PALETTE  every room is furnished out of its own box, and that box can
-//                   cover the ledge widths the room's own grid demands
+//   7 ZONE PALETTE  every room is furnished out of its own box, that box can
+//                   cover the ledge widths the room's own grid demands, and no
+//                   single object furnishes more than two of a chapter's rooms
+//   8 MIDDLE DIST.  every room with a furniture plane also has one BEHIND it,
+//                   and that row's RENDERED value lands between the two planes
+//   9 CHILD'S EDGE  the contour he carries separates him from his own room
 //
 // Everything is measured from the SOURCE PNGs and the pure planners, never
 // from a rendered canvas: a WebGL canvas without preserveDrawingBuffer reads
@@ -23,7 +27,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
-import { COMPOSITION } from "../packages/game-paint/src/composition.ts";
+import { COMPOSITION, heroEdgeFor } from "../packages/game-paint/src/composition.ts";
 import { planLayers, planeCovers } from "../packages/game-paint/src/layers.ts";
 import {
   NO_METRONOME_MIN_PERIOD,
@@ -37,7 +41,19 @@ import {
   surfaceSignature,
   uncoveredSolids,
 } from "../packages/game-paint/src/mass.ts";
-import { airFloor, hazeCovers, planHaze, planMotes, planShafts } from "../packages/game-paint/src/air.ts";
+import {
+  SHAFT_EDGE_MAX,
+  SHAFT_RINGS,
+  SHAFT_SLICES,
+  airFloor,
+  hazeCovers,
+  planBandShade,
+  planHaze,
+  planLife,
+  planMotes,
+  planShafts,
+  shaftQuads,
+} from "../packages/game-paint/src/air.ts";
 import { letterGlyphs } from "../packages/game-paint/src/letters.ts";
 import { TILE } from "../packages/game-paint/src/paint.ts";
 
@@ -273,6 +289,54 @@ for (const { label, ph, spec } of withSpec) {
   }
   if (below > 0) fail("air", `${label}: ${below} atmospheric point(s) reach INTO the gameplay band (below y=${floor.toFixed(0)})`);
   if (air.vignette > 0.5) fail("air", `${label}: vignette ${air.vignette} closes more than half the frame`);
+  // PK-R6 · H2 (round-2 finding 5): a beam may have NO visible edge — not at its
+  // sides and not at its foot. Both are measured on the pieces the renderer
+  // actually fills, and both were legible before this round: the old drawing put
+  // 0.034 on p4's outermost lateral step and ended the beam at full strength.
+  for (const s of planShafts(air, worldW, worldH)) {
+    const quads = shaftQuads(s);
+    if (quads.length !== SHAFT_RINGS * SHAFT_SLICES) {
+      fail("air", `${label}: a beam draws ${quads.length} pieces, not ${SHAFT_RINGS}×${SHAFT_SLICES}`);
+      continue;
+    }
+    // the rim is ONE piece (nothing is drawn outside ring 0, so what the eye
+    // meets there is that piece's own opacity) — but the foot is the whole STACK:
+    // every ring overlaps at the beam's centre, so the accumulated alpha is what
+    // draws the horizontal cut. Reading one piece there passed a beam with no
+    // length falloff at all (tamper-proven, PK-R6 H2).
+    const rim = Math.max(...quads.filter((q) => q.ring === 0).map((q) => q.alpha));
+    const foot = quads.filter((q) => q.slice === SHAFT_SLICES - 1).reduce((t, q) => t + q.alpha, 0);
+    if (rim > SHAFT_EDGE_MAX) fail("air", `${label}: a beam's outer edge is ${rim.toFixed(3)} opaque (> ${SHAFT_EDGE_MAX}) — that is a visible straight edge`);
+    if (foot > SHAFT_EDGE_MAX) fail("air", `${label}: a beam ENDS at ${foot.toFixed(3)} opacity (> ${SHAFT_EDGE_MAX}) — light does not stop, it runs out`);
+    // and no subdivision may leave the quad the plan clamped into the air band
+    for (const q of quads) for (const [, y] of q.points) if (y > floor + 0.001) below++;
+  }
+  // …the leaves, which live BELOW the air band on purpose, and must stay inside
+  // the band they declare and behind the whole gameplay layer
+  if (air.life) {
+    const [lo, hi] = air.life.band;
+    if (!(lo > air.band && hi <= 1)) {
+      fail("air", `${label}: life band [${lo}, ${hi}] must start below the air band (${air.band}) and end inside the world`);
+    }
+    let stray = 0;
+    for (const t of AIR_TICKS) {
+      for (const l of planLife(air, worldW, worldH, t)) {
+        if (l.y < lo * worldH - 12 || l.y > hi * worldH + 12) stray++;
+        if (l.depth >= 0) stray++; // a leaf in front of the play plane is a defect
+      }
+    }
+    if (stray > 0) fail("air", `${label}: ${stray} leaf/leaves left their band or their plane`);
+    else note(`${label}: ${air.life.count} leaves in [${lo}, ${hi}] of the world, all behind the play plane`);
+  }
+  // …and the shadow at the furniture's foot: inside its own band, never below it
+  const shade = planBandShade(spec.mid, worldW, worldH);
+  if (spec.mid && shade === null) fail("air", `${label}: a furniture band with no shadow at its foot (finding 9)`);
+  if (shade !== null) {
+    const bandBottom = worldH - (spec.mid.lift ?? 0);
+    if (Math.abs(shade.y + shade.h - bandBottom) > 0.001) {
+      fail("air", `${label}: the band shade ends at ${(shade.y + shade.h).toFixed(1)}, its band at ${bandBottom.toFixed(1)}`);
+    }
+  }
   const shafts = planShafts(air, worldW, worldH).length;
   note(`${label}: haze ${(air.haze * 100).toFixed(0)}% · ${shafts} shaft(s) · ${moteCount / AIR_TICKS.length} motes · vignette ${(air.vignette * 100).toFixed(0)}% — all above y=${floor.toFixed(0)} of ${worldH}`);
 }
@@ -358,13 +422,94 @@ for (const { label, ph, spec } of withSpec) {
   note(`${label}: ${spec.mass.platObjects.length} object(s) for ledge widths ${[...runWidths].sort().join("/") || "none"}`);
 }
 
+// PK-R6 · H2 (round-2 finding 12): „the same book-stack desk/bench silhouette
+// appears in 01, 02 and 03, differing only by colour grading." H1's identical-box
+// test could not catch that — the boxes DIFFERED, they merely overlapped, and an
+// object standing in three of five rooms is a template whatever the other slots
+// hold. A motif may be quoted once. Twice is furniture. Three times is a stamp.
+const ROOM_REUSE_MAX = 2;
+const stemRooms = new Map();
+for (const { label, spec } of withSpec) {
+  for (const o of spec.mass.platObjects) {
+    if (!stemRooms.has(o.stem)) stemRooms.set(o.stem, []);
+    stemRooms.get(o.stem).push(label);
+  }
+}
+for (const [stem, rooms] of [...stemRooms].sort()) {
+  if (rooms.length > ROOM_REUSE_MAX) {
+    fail("zone-palette", `${stem} furnishes ${rooms.length} rooms (${rooms.join(", ")}) — the law allows ${ROOM_REUSE_MAX}`);
+  }
+}
+note(`reuse: ${[...stemRooms].filter(([, r]) => r.length > 1).map(([s, r]) => `${s}×${r.length}`).join(" · ") || "every object stands in exactly one room"}`);
+
+// ── 8 · MIDDLE DISTANCE (round-2 finding 8) ──────────────────────────────────
+// „All four scenes are built from essentially two flat planes … with no softened
+// midground layer anywhere, so depth reads as a stage backdrop rather than a
+// world." The third plane is the same furniture standing further back, and the
+// only thing that makes that read as DEPTH rather than as a small second band is
+// its rendered value — so that is what is measured, through the blend the
+// renderer actually performs: alpha·row + (1−alpha)·the lit shell behind it.
+console.log("8 · middle-distance audit (doc 36 §1, PK-R6 H2 amendment)");
+for (const { label, spec } of withSpec) {
+  if (!spec.mid) { note(`${label}: no furniture plane — none owed (p9's own AF sheet: „atmosphere, not architecture")`); continue; }
+  const far = spec.midFar;
+  if (!far) { fail("middle-distance", `${label}: a furniture plane with nothing behind it — two planes is a backdrop, not a world`); continue; }
+  if (!(far.parallax > spec.far.parallax && far.parallax < spec.mid.parallax)) {
+    fail("middle-distance", `${label}: parallax ${far.parallax} is not between the shell (${spec.far.parallax}) and the furniture (${spec.mid.parallax})`);
+  }
+  const nearH = Number(spec.mid.height);
+  const farH = Number(far.height);
+  if (!(farH < nearH)) fail("middle-distance", `${label}: the further row (${farH}px) is not smaller than the near one (${nearH}px)`);
+  if (!((far.lift ?? 0) >= (spec.mid.lift ?? 0) + nearH)) {
+    fail("middle-distance", `${label}: the further row is not clear of the near row's top edge — they would read as one silhouette`);
+  }
+  const a = far.alpha ?? 1;
+  if (!(a > 0 && a < 1)) fail("middle-distance", `${label}: the further row must be GHOSTED (doc 36 §1 affordance quarantine), alpha is ${a}`);
+  const L1 = measureStems(spec.far.segments);
+  const L2 = measureStems(spec.mid.segments);
+  const own = measureStems(far.segments);
+  if (!L1 || !L2 || !own) { fail("middle-distance", `${label}: art missing — cannot measure the middle distance`); continue; }
+  const rendered = a * own.lum + (1 - a) * L1.lum;
+  const step = 0.04 * spec.key;
+  if (!(rendered < L1.lum - step && rendered > L2.lum + step)) {
+    fail("middle-distance", `${label}: renders at ${rendered.toFixed(1)}% — it must sit ≥${step.toFixed(1)} points inside both L1 (${L1.lum.toFixed(1)}%) and L2 (${L2.lum.toFixed(1)}%)`);
+  } else {
+    note(`${label}: L1 ${L1.lum.toFixed(1)}% → L2b ${rendered.toFixed(1)}% → L2 ${L2.lum.toFixed(1)}%  (three bands, law ≥${step.toFixed(1)} apart)`);
+  }
+}
+
+// ── 9 · THE CHILD'S EDGE (round-2 finding 1, CRITICAL) ───────────────────────
+// „At a 25 % squint the boy's figure collapses into the pale yellow wall." He is
+// 34.0 % luminance against a 78 % wall, so what fails is his MASS, not his hue —
+// and the repair is the contour his own shadow copy now draws. What can be
+// checked without a browser is that the contour exists in every room and that it
+// is a real value STEP against both planes he is ever seen against.
+console.log("9 · child's-edge audit (PK-R6 H2, finding 1)");
+const HERO_EDGE_MIN_STEP = 25;
+for (const { label, spec } of withSpec) {
+  const edge = heroEdgeFor(spec.key);
+  if (!(edge.swell > 0)) { fail("child's-edge", `${label}: the contour has no swell — an un-swollen copy is a cast shadow, not an outline`); continue; }
+  const lum = lumOf((edge.tint >> 16) & 255, (edge.tint >> 8) & 255, edge.tint & 255) * 100;
+  const against = [["L1", measureStems(spec.far.segments)], ["L2", spec.mid ? measureStems(spec.mid.segments) : null]];
+  let worst = Infinity;
+  for (const [name, m] of against) {
+    if (!m) continue;
+    const step = Math.abs(lum - m.lum);
+    worst = Math.min(worst, step);
+    if (step < HERO_EDGE_MIN_STEP) {
+      fail("child's-edge", `${label}: his contour (${lum.toFixed(1)}%) is only ${step.toFixed(1)} points from ${name} (${m.lum.toFixed(1)}%) — the law needs ${HERO_EDGE_MIN_STEP}`);
+    }
+  }
+  note(`${label}: contour ${lum.toFixed(1)}% · swell ${(edge.swell * 100).toFixed(0)}% · nearest plane ${worst.toFixed(1)} points away`);
+}
+
 // ── verdict ──────────────────────────────────────────────────────────────────
 console.log(
   "\nBands ARMED at doc 36 §1 v1.1 (relative to each phase's declared key). L3 is K-exempt;\n"
   + "the L2\u2194L3 separation stays absolute. Saturation caps are measured and reported.",
 );
 if (failures === 0) {
-  console.log(`\ncheck-composition: OK — 7 audits green over ${withSpec.length} phase(s)`);
+  console.log(`\ncheck-composition: OK — 9 audits green over ${withSpec.length} phase(s)`);
 } else {
   console.error(`\ncheck-composition: ${failures} failure(s)`);
   process.exit(1);
