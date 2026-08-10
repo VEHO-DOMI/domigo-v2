@@ -203,6 +203,46 @@ describe("reachability (the honest movement envelope)", () => {
     expect(e2.has("13,1")).toBe(true); // the box ends exactly there
   });
 
+  it("R5-A7 (verify wave) · the fall sweeps a CONE — no horizontal tunnel, no head-slot", () => {
+    // a full-height wall right of the start; a chamber floor behind it —
+    // the old landing-column-only check let the drift tunnel THROUGH the wall
+    const walled = [
+      "................",
+      "..S..#..........",
+      ".....#..........",
+      ".....#..........",
+      ".....#..........",
+      ".....#..........",
+      "################",
+    ];
+    const w = reachableCells(walled, ["jump"]);
+    expect(w.has("7,5"), "no fall-drift through a full wall").toBe(false);
+    expect(w.has("9,5")).toBe(false);
+
+    // a 1-tile slot at standing height: the body is TWO tiles — the old
+    // foot-row-only crossing squeezed through it
+    const slot = [
+      "....##..........",
+      "..S.............",
+      "################",
+    ];
+    const s = reachableCells(slot, ["jump"]);
+    expect(s.has("6,1"), "no crossing through a one-tile head slot").toBe(false);
+
+    // …and drifting AROUND a ledge beside the drop stays legal (the cone
+    // opens with depth — author-generous, physics-honest)
+    const around = [
+      "................",
+      "..S.............",
+      "####............",
+      "................",
+      "................",
+      "################",
+    ];
+    const a = reachableCells(around, ["jump"]);
+    expect(a.has("2,4"), "dropping around one's own ledge is legal").toBe(true);
+  });
+
   it("standable respects support and headroom (the world edge is solid)", () => {
     const rows = ["....", "....", "..#.", "..#.", "####"];
     expect(standable(rows, 0, 3)).toBe(true); // floor top

@@ -316,7 +316,7 @@ describe("R5-A2 · spawnCell + letterLedger (the bonus trip loses nothing)", () 
     expect(reTaken, "a consumed letter cell must not be re-collectable").toBe(0);
   });
 
-  it("spawning ON a door seeds its cooldown — the card cannot re-fire on arrival", () => {
+  it("spawning ON a door seeds its cooldown — and standing there NEVER re-fires it", () => {
     const c = new Sim({
       level, phaseId: "p1",
       grantedAbilities: () => [...level.abilities],
@@ -325,8 +325,19 @@ describe("R5-A2 · spawnCell + letterLedger (the bonus trip loses nothing)", () 
       letterLedger: () => ({ takenCells: [], purse: 0, found: 0 }),
     });
     expect(c.world.entities.find((e) => e.id === "p1-door")!.state).toBe("cooling");
+    // R5 verify wave: the timer-only re-arm fired again at tick 92 with the
+    // child still standing on the door — held contact must never re-ask
     const evs: string[] = [];
-    for (let t = 0; t < 60; t++) for (const ev of c.step(IDLE_PAD)) evs.push(ev.type);
+    for (let t = 0; t < 300; t++) for (const ev of c.step(IDLE_PAD)) evs.push(ev.type);
     expect(evs).not.toContain("doorTouched");
+    // …but stepping off and coming back asks again (the door still works)
+    c.warp(57, 16);
+    for (let t = 0; t < 5; t++) c.step(IDLE_PAD);
+    c.warp(61, 16);
+    const back: string[] = [];
+    for (let t = 0; t < 30; t++) for (const ev of c.step(IDLE_PAD)) back.push(ev.type);
+    // the exit door re-asks as its door-series TASK (doorTouched is consumed
+    // sim-internally there) — either event proves the door re-armed
+    expect(back.some((t) => t === "doorTouched" || t === "task")).toBe(true);
   });
 });

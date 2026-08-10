@@ -684,12 +684,18 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     const game = gameRef.current;
     if (!scene || !game || !level.bonus) return;
     if (!scene.spendLetters(price)) return;
-    // R5-A2: the return ticket — the door cell the child stands at (feet →
-    // cell), the purse AFTER paying, and the Bilanz found-count.
+    // R5-A2: the return ticket — the purse AFTER paying, the Bilanz
+    // found-count, and the DOOR'S OWN cell (critic finding: the frozen player
+    // can hang mid-air over the door; an airborne spawn cell missed the
+    // cooldown seed and landing re-fired the pay card).
     const st = scene.getState();
+    const door = st?.entities
+      .filter((e) => e.role === "door.trigger")
+      .sort((a, b) => Math.abs(a.x - st.x) - Math.abs(b.x - st.x))[0];
+    const at = door ?? { x: st?.x ?? 40, y: st?.y ?? 48 };
     bonusReturnRef.current = {
       phaseId,
-      spawn: { c: Math.round(((st?.x ?? 40) - 8) / 16), r: Math.round((st?.y ?? 48) / 16) - 1 },
+      spawn: { c: Math.round((at.x - 8) / 16), r: Math.round(at.y / 16) - 1 },
       purse: st?.letters ?? 0,
       found: st?.lettersCollected ?? 0,
     };

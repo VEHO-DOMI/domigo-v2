@@ -884,7 +884,14 @@ export const stepEntities = (
         if (overlapsPlayer(e, inp, 12, 26) && e.state !== "cooling") {
           e.state = "cooling"; e.timer = 0;
           events.push({ type: "doorTouched", id: e.id, kind: String(e.params.kind ?? "exit") });
-        } else if (e.state === "cooling" && e.timer > 90) e.state = "patrol";
+        } else if (e.state === "cooling" && e.timer > 90 && !overlapsPlayer(e, inp, 12, 26)) {
+          // R5-A2 (critic finding): a door re-arms only once the child has
+          // STEPPED OFF it — returning from the Kleckskammer spawns ON the
+          // door, and a timer-only re-arm reopened the pay card every ~1.5 s
+          // over an empty purse. Same law as the ↑ rising edge (PK-R6 C1):
+          // held contact never re-asks.
+          e.state = "patrol";
+        }
         break;
       }
       case "guardian": {
