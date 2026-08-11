@@ -23,13 +23,13 @@ import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
-import { CHALK_COLOURS, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
+import { CHALK_COLOURS, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import {
-  AWAKEN_ROOM_MS, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
-  awakenRoomBloom, awakenRoomSweep, bouncerSquash, entPoseCell, floodBloomFor, greyLuma, guardianManoeuvre, guardianPitchRad,
-  guardianRollScaleX, poseStateOf, washAlphaFor,
+  AWAKEN_ROOM_MS, CAGE_AT_REST, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
+  awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entPoseCell, entSeed, floodBloomFor, greyLuma,
+  guardianManoeuvre, guardianPitchRad, guardianRollScaleX, poseStateOf, washAlphaFor,
 } from "./anim.ts";
 import { CUE_CHALK, CUE_HALO, chalkArrow } from "./cue.ts";
 import { RIG, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
@@ -1366,16 +1366,18 @@ export class PaintScene extends Phaser.Scene {
     this.engageCueG.clear();
     if (!e) return;
     const x = fromSubs(e.x);
-    const bob = this.cfg.reducedMotion ? 0 : Math.sin(this.tickCount / 9) * 1.6;
-    const y = fromSubs(e.y) - this.entTargetH(e) - 7 + bob;
-    const seed = e.id.length * 37 + (e.id.charCodeAt(0) | 0) * 7 + (e.id.charCodeAt(e.id.length - 1) | 0);
-    const cue = chalkArrow(x, y, 11, seed);
+    // R5-W1 · F1: das Wippen ist nach cue.ts gezogen — dort ist es eine reine
+    // Funktion mit einem Namen und einem Test, hier war es ein Literal in einer
+    // Datei ohne Testabdeckung. Diese Methode füllt nur noch, was sie bekommt.
+    const y = fromSubs(e.y) - this.entTargetH(e) - 7;
+    const seed = entSeed(e.id);
+    const cue = chalkArrow(x, y, 11, seed, this.tickCount, this.cfg.reducedMotion);
     const g = this.engageCueG;
     // the gilded light first, behind everything: the same glow the collectible
     // letters wear, so an affordance is an affordance wherever the child meets it
     for (const ring of cue.halo) {
       g.fillStyle(CUE_HALO, ring.alpha);
-      g.fillCircle(x, y, ring.r);
+      g.fillCircle(ring.cx, ring.cy, ring.r); // …das Licht hängt der Marke nach
     }
     // …then the mark itself, widest and faintest first — the stack IS the edge
     for (const band of cue.bands) {
@@ -1387,6 +1389,26 @@ export class PaintScene extends Phaser.Scene {
       g.fillStyle(CUE_CHALK, d.alpha);
       g.fillCircle(d.x, d.y, d.r);
     }
+  }
+
+  /**
+   * R5-W1 · F1 · EINE AUFLAGE FOLGT IHREM KÖRPER GANZ, oder sie verrät ihn.
+   *
+   * Der Grauschleier und das Flut-Leuchten spiegelten Position, Größe und
+   * Spiegelung — aber NICHT die Drehung. Bei 1,5 px Käfig-Wackeln fiel das
+   * niemandem auf; mit dem lesbaren Ausschlag unten wäre daraus ein
+   * verschmiertes Doppelbild mit 72 % Deckkraft geworden, und ein Kritiker
+   * hätte es zu Recht einen Render-Fehler genannt. Ein Helfer statt drei
+   * kopierter Zeilen, damit die nächste Transformation nicht wieder vergessen
+   * wird — dieselbe Regel, die diese Datei oben schon aufschreibt: zwei
+   * Methoden, die ein Objekt schreiben, sind der Grund, warum ein Rand seinem
+   * Körper hinterherhinkt.
+   */
+  private syncOverlay(copy: Phaser.GameObjects.Image, img: Phaser.GameObjects.Image): void {
+    copy.setPosition(img.x, img.y);
+    copy.setScale(img.scaleX, img.scaleY);
+    copy.setRotation(img.rotation);
+    copy.setFlipX(img.flipX);
   }
 
   private renderEntities(): void {
@@ -1469,9 +1491,20 @@ export class PaintScene extends Phaser.Scene {
         const sq = e.role === "bouncer" && !e.redeemed
           ? bouncerSquash(e.bounceTick, e.vy, this.cfg.reducedMotion)
           : REST_SQUASH;
-        img.setScale(k * (1 + 0.18 * pop) * sq.sx, k * (1 - 0.16 * pop) * sq.sy);
+        // R5-W1 · F1 · …und das Käfig-Wackeln liegt aus demselben Grund HIER
+        // und nicht mehr in renderReadability: dort setzte renderEntities die
+        // Skalierung eine Zeile später ohnehin neu, also konnte das Rütteln nur
+        // drehen, nie die Silhouette verformen. Ein Besitzer für die
+        // Transformation eines Sprites. Geschenk obendrauf: renderHostiles
+        // läuft NACH dieser Methode und kopiert Drehung und Skalierung in den
+        // Schattenwurf — der Schatten wackelt gratis mit.
+        const br = e.role === "cage" && !e.redeemed && !e.hidden
+          ? cageBreath(this.tickCount, entSeed(e.id), this.cageNearT(e), targetH, this.cfg.reducedMotion)
+          : CAGE_AT_REST;
+        img.setScale(k * (1 + 0.18 * pop) * sq.sx * br.sx, k * (1 - 0.16 * pop) * sq.sy * br.sy);
+        img.y += br.dy;
         if (pop > 0) img.setRotation(0.13 * pop);
-        else if (e.role === "cage" && e.redeemed) img.setRotation(0);
+        else if (e.role === "cage") img.setRotation(e.redeemed ? 0 : br.rot);
       }
       // …and a cell that already faces a direction is never mirrored: flipping a
       // right-bank cell would draw a LEFT bank while she flies right (the facing
@@ -1542,9 +1575,7 @@ export class PaintScene extends Phaser.Scene {
           wash.setTexture(greyKey);
           if (greyKey === img.texture.key) wash.setTint(COLOUR_DRAINED);
           else wash.clearTint();
-          wash.setPosition(img.x, img.y);
-          wash.setScale(img.scaleX, img.scaleY);
-          wash.setFlipX(img.flipX);
+          this.syncOverlay(wash, img);
           wash.setAlpha(a * img.alpha);
         }
       }
@@ -1559,9 +1590,7 @@ export class PaintScene extends Phaser.Scene {
         bloom.setVisible(!e.hidden && b > 0);
         if (b > 0) {
           bloom.setTexture(img.texture.key);
-          bloom.setPosition(img.x, img.y);
-          bloom.setScale(img.scaleX, img.scaleY);
-          bloom.setFlipX(img.flipX);
+          this.syncOverlay(bloom, img);
           bloom.setAlpha(b * img.alpha);
         }
       }
@@ -3651,20 +3680,23 @@ export class PaintScene extends Phaser.Scene {
     // there like scenery. The gate is now the same question the cue and the sim
     // ask (ENGAGEABLE_ROLES: a press opens a cage in every chapter, granted fist
     // or not), so the picture and the mechanic agree by construction.
-    if (!this.cfg.reducedMotion) {
-      for (const e of this.world?.entities ?? []) {
-        if (e.role !== "cage" || e.redeemed || e.hidden) continue;
-        const img = this.entityImgs.get(e.id);
-        if (!img) continue;
-        const near = Math.abs(fromSubs(e.x) - fromSubs(this.player.x)) < 42 && Math.abs(fromSubs(e.y) - fromSubs(this.player.y)) < 40;
-        // …and it BREATHES even out of reach, because „someone is in here" is a
-        // fact about the cage, not about where the child is standing. Small
-        // enough to read as a captive shifting, and it settles the moment the
-        // cage is opened (the loop skips a redeemed one, so its rotation is left
-        // exactly where the burst put it: still).
-        img.setRotation(near ? Math.sin(t / 5) * 0.07 : Math.sin(t / 26) * 0.022);
-      }
-    }
+    //
+    // R5-W1 · F1 (Kokis Replay, 07:26:32: „bewegt sich nicht deutlich"). Das
+    // Rütteln stand hier und war ±0,07 rad — auf einem 22-px-Körper, unten
+    // gelagert, sind das 1,5 logische Pixel. Es war nicht kaputt, es war zu
+    // klein, und es konnte an dieser Stelle auch gar nicht mehr sein als eine
+    // Drehung: renderEntities überschreibt die Skalierung eine Methode später.
+    // Beides ist nach `anim.cageBreath` + `renderEntities` gezogen — dort ist
+    // der Ausschlag in PIXELN definiert, die Silhouette darf sich verformen,
+    // und der Schattenwurf macht es mit.
+  }
+
+  /** Wie nah steht das Kind an diesem Käfig? (0…1, als Rampe — siehe anim.) */
+  private cageNearT(e: EntityState): number {
+    return cageNearT(
+      fromSubs(e.x) - fromSubs(this.player.x),
+      fromSubs(e.y) - fromSubs(this.player.y),
+    );
   }
 
   /**
@@ -3893,7 +3925,7 @@ export class PaintScene extends Phaser.Scene {
       // the beat's offset is the being's NAME, not its position: keying it to
       // e.x would re-seed the phase every tick (x moves in subs) and the breath
       // would come out as flicker
-      const seed = e.id.length * 37 + (e.id.charCodeAt(0) | 0) * 7 + (e.id.charCodeAt(e.id.length - 1) | 0);
+      const seed = entSeed(e.id);
       const beat = this.cfg.reducedMotion || !warn
         ? 1
         : 1 - HOSTILE_HALO_PULSE + HOSTILE_HALO_PULSE * (0.5 + 0.5 * Math.sin(this.tickCount / 13 + hash01(seed) * Math.PI * 2));

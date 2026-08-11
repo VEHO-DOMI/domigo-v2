@@ -33,6 +33,7 @@ const IDLE_CELLS = ["a", "b", "c", "d"] as const;
 // re-typed), so a tuning change to the sim moves the pose with it.
 
 import { AWAKEN_ROUNDS, BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX, JOY_ROLES } from "./entities.ts";
+import { hash01 } from "./mass.ts";
 import { SUBS } from "./paint.ts";
 
 // ── PK-R3b · R3-15 · THE DESATURATION GRAMMAR (doc 41 §2) ────────────────────
@@ -352,6 +353,99 @@ export const bouncerSquash = (bounceTick: number, vy: number, reducedMotion = fa
   return {
     sx: 1 + SQUASH_WIDE * impact - STRETCH_NARROW * stretch,
     sy: 1 - SQUASH_FLAT * impact + STRETCH_TALL * stretch,
+  };
+};
+
+// ── R5-W1 · F1 · DER KÄFIG WACKELT SICHTBAR (Kokis Replay, 07:26:32) ─────────
+// „bewegt sich nicht deutlich." Das Wackeln existierte bereits — ±0,07 rad,
+// gedreht um den unteren Mittelpunkt eines 22-px-Körpers. Das sind 1,5 logische
+// Pixel Ausschlag an der Oberkante. Es war nicht kaputt, es war zu klein.
+//
+// Drei Entscheidungen dahinter:
+//  · Der Ausschlag wird in PIXELN angegeben, nicht in Radiant. Ein Käfig mit
+//    einem Kind darin ist 34 px hoch, ein Ranzen 22 — bei festem Winkel wackelt
+//    der große automatisch 1,5-mal weiter. Was das Auge liest, ist der Weg.
+//  · Kein Metronom-Sinus, sondern eine ABKLINGENDE STOSS-FOLGE: jemand stemmt
+//    sich gegen die Wand, dann setzt es sich. Das Auge wird von Veränderung
+//    angezogen, nicht von gleichmäßigem Schwingen — und ein sauberer Sinus
+//    liest sich als Maschine, nicht als Gefangener.
+//  · Die Silhouette verformt sich mit (Bulge) und der Korpus hebt kurz ab. Bei
+//    22 px liest eine Silhouetten-Änderung deutlich besser als eine Verschiebung.
+/** Ausschlag der Oberkante bei vollem Stemmen, in logischen px (×3 auf dem
+ *  Schirm). 3,7 sind ~2,4-mal der alte Wert und bleiben unter der Grenze, ab
+ *  der ein unten gelagerter Kasten anfängt, UMZUKIPPEN statt zu wackeln. */
+export const CAGE_SWAY_PX = 3.7;
+/** Ein Stemmen alle 84 Ticks (1,4 s) — ein Körper, der Anlauf nimmt. */
+export const CAGE_STRUGGLE_TICKS = 84;
+/** …das über 40 Ticks quadratisch abklingt: Ruck, dann setzen. */
+export const CAGE_SETTLE_TICKS = 40;
+/** Eine Schwingung pro 11 Ticks — schnell genug für einen Ruck, langsam genug,
+ *  dass ein 60-Hz-Bild mitten im Ausschlag landet. */
+export const CAGE_ROCK_TICKS = 11;
+/** Nah am Kind hört das Rütteln nie ganz auf (Anteil des vollen Ausschlags). */
+export const CAGE_NEAR_FLOOR = 0.42;
+/** …und aus der Ferne bleibt es sichtbar, wenn man hinsieht. */
+export const CAGE_FAR_SCALE = 0.45;
+/** Silhouetten-Verformung und Hub auf dem stärksten Ruck. */
+export const CAGE_BULGE = 0.09;
+export const CAGE_HOP_PX = 1.0;
+/** Der Grundton: der Käfig ist nie ein totes Möbelstück. */
+export const CAGE_BREATH_RAD = 0.03;
+/** Reduzierte Bewegung: eine RUHENDE, angespannte Schräglage. „Hier ist jemand
+ *  drin" ist eine Tatsache über den Käfig, kein Bewegungseffekt — ein Kind, das
+ *  Animationen abgeschaltet hat, darf die Aussage nicht verlieren. */
+export const CAGE_REST_RAD = 0.045;
+/** Reichweite des „nah", und über wie viele px es einblendet (statt zu
+ *  schnappen — ein hartes Umschalten wäre selbst ein sichtbarer Fehler). */
+export const CAGE_NEAR_PX = 42;
+export const CAGE_NEAR_FADE_PX = 16;
+
+/** Der Zufalls-Same EINES Wesens, aus seinem eigenen Namen. Er stand dreimal
+ *  wörtlich in PaintScene (Cue-Waver, Feind-Rand, jetzt das Käfig-Rütteln) —
+ *  drei Kopien einer Formel sind drei Gelegenheiten, sie unterschiedlich zu
+ *  ändern. Deterministisch, weil der Name es ist. */
+export const entSeed = (id: string): number =>
+  id.length * 37 + (id.charCodeAt(0) | 0) * 7 + (id.charCodeAt(id.length - 1) | 0);
+
+export interface CageBreath { rot: number; sx: number; sy: number; dy: number }
+export const CAGE_AT_REST: CageBreath = { rot: 0, sx: 1, sy: 1, dy: 0 };
+
+/** 0…1 — wie nah das Kind am Käfig steht, als Rampe statt als Schalter. */
+export const cageNearT = (dxPx: number, dyPx: number): number => {
+  const d = Math.max(Math.abs(dxPx), Math.abs(dyPx) * (CAGE_NEAR_PX / 40));
+  return Math.max(0, Math.min(1, (CAGE_NEAR_PX - d) / CAGE_NEAR_FADE_PX));
+};
+
+/**
+ * Wie ein Gefangener seinen Behälter in diesem Tick bewegt. Rein, damit „der
+ * Käfig wackelt sichtbar" eine Tabelle ist und kein Screenshot.
+ *
+ * `heightPx` ist die gezeichnete Höhe DIESES Käfigs — daraus wird der Winkel
+ * zurückgerechnet, damit der Ausschlag in Pixeln stimmt statt im Winkel.
+ */
+export const cageBreath = (
+  tick: number,
+  seed: number,
+  nearT: number,
+  heightPx: number,
+  reducedMotion = false,
+): CageBreath => {
+  if (reducedMotion) return { ...CAGE_AT_REST, rot: CAGE_REST_RAD };
+  // jeder Käfig stemmt sich zu seiner eigenen Zeit — zwei im selben Raum im
+  // Gleichtakt wären genau die Maschine, die diese Kurve vermeiden soll
+  const phase = Math.floor(hash01(seed) * CAGE_STRUGGLE_TICKS);
+  const u = (tick + phase) % CAGE_STRUGGLE_TICKS;
+  const decay = u < CAGE_SETTLE_TICKS ? (1 - u / CAGE_SETTLE_TICKS) ** 2 : 0;
+  const env = Math.max(decay, nearT * CAGE_NEAR_FLOOR);
+  const rock = Math.sin((u / CAGE_ROCK_TICKS) * Math.PI * 2) * env;
+  const ampPx = CAGE_SWAY_PX * (CAGE_FAR_SCALE + (1 - CAGE_FAR_SCALE) * nearT);
+  const h = Math.max(heightPx, 1);
+  return {
+    rot: Math.asin(Math.max(-1, Math.min(1, (ampPx * rock) / h)))
+      + CAGE_BREATH_RAD * Math.sin(tick / 26),
+    sx: 1 + CAGE_BULGE * Math.abs(rock),
+    sy: 1 - CAGE_BULGE * 0.75 * Math.abs(rock),
+    dy: -CAGE_HOP_PX * Math.max(0, rock),
   };
 };
 /** Near the extremes of the flyer's sweep, where it rolls into the turn — the
