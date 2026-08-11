@@ -609,3 +609,54 @@ describe("PB-T2 · envelope law (derived from stepPlayer)", () => {
     });
     expect(sweepHit, "mindestens eine Sweep-Zelle ist seen-Knoten").toBe(true);
   });
+
+  it("R5-P1 · kein Eck-Clip durch eine Ein-Reihen-Platte in die Leere darunter", () => {
+    // Stand AUF einer Ein-Reihen-Platte über einer versiegelten Grube: der
+    // Abtritt ist horizontal (Gehreihe), eine Stütze direkt unter der ersten
+    // Nachbar-Spalte fängt den Fall DORT — der alte Drift-Eintritt ließ den
+    // Körper diagonal durch die Plattenkante in die Grube clippen (p3-Fund:
+    // Spitzer-Tasche, trap-pocket (20,25))
+    // exakt die p3-Form: Boden-Masse westlich, Ein-Reihen-Platte c3–4,
+    // Auslauf einen Schritt tiefer östlich — die Leere unter der Platte ist
+    // von ALLEN Seiten versiegelt (c2-Masse west, c5-Masse ost, Platte oben)
+    const rows = [
+      "............",
+      "..S.........",
+      "#####.......",
+      "###..#######",
+      "###..#######",
+      "###..#######",
+      "###..#######",
+      "###..#######",
+    ];
+    const seen = reachableCells(rows, ["jump"]);
+    expect(seen.has("3,1"), "auf der Platte stehen geht").toBe(true);
+    expect(seen.has("5,2"), "der Δr1-Abstieg auf den Auslauf geht").toBe(true);
+    expect(seen.has("3,7"), "Leere unterm Platten-West = Clip").toBe(false);
+    expect(seen.has("4,7"), "Leere unterm Platten-Ost = Clip").toBe(false);
+  });
+
+  it("R5-P1 · Tinten-Becken ist KEIN trap-pocket — die Tinte selbst ist der Rückweg (sim-Warp)", () => {
+    // p3-Klasse: ein Becken, dessen Wände zu hoch zum Herausspringen sind.
+    // Mit Tinten-Boden legal (Kontakt mit »w« warpt zum Checkpoint,
+    // sim.ts) — mit solidem Boden bleibt es der Softlock, den das Gesetz
+    // fangen muss. Stacheln warpen NICHT und bleiben dem Gesetz unterworfen.
+    const basin = (floor: string) => [
+      "####################",
+      ...Array.from({ length: 12 }, () => "...................."),
+      "..S.*.........X.....",
+      "######......########",
+      "######......########",
+      "######......########",
+      "######......########",
+      "######......########",
+      `######${floor.repeat(6)}########`,
+      "####################",
+    ];
+    const inky = parsePaintLevel(level(basin("w")));
+    expect(checkLevelLaws(inky).filter((f) => f.law === "trap-pocket"),
+      "Tinten-Boden ist kein Softlock — die Tinte warpt zurück").toEqual([]);
+    const solid = parsePaintLevel(level(basin("#")));
+    expect(checkLevelLaws(solid).some((f) => f.law === "trap-pocket"),
+      "solider Becken-Boden bleibt Softlock").toBe(true);
+  });

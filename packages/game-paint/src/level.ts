@@ -401,7 +401,23 @@ export const reachFrom = (
         let clear = true;
         for (let k = dc === 0 ? 0 : 1; k <= Math.abs(dc) && clear; k++) {
           const cc = n.c + Math.sign(dc) * k;
-          clear = colClearDown(cc, n.r + minDepthForDx(k), n.r + dr - 1);
+          if (k === 1) {
+            // R5-P1: a body enters the FIRST off-column one of two honest
+            // ways — (a) the horizontal walk-off step (foot AND head row of
+            // that column free), or (b) dropping through under its own feet
+            // first (non-solid support: air nodes, one-ways) and drifting
+            // over. Either way it occupies the neighbour column from the row
+            // below the walking row on, so support there stops the fall
+            // THERE. The old drift-depth entry (minDepthForDx starts at the
+            // walk-off's own +1 step) skipped that row — the corner of a
+            // one-row plate could be clipped diagonally into the sealed
+            // void below it (p3 Spitzer-Tasche, trap-pocket (20,25)).
+            const stepFree = !isSolid(glyphAt(grid, cc, n.r)) && !isSolid(glyphAt(grid, cc, n.r - 1));
+            const dropFree = !isSolid(glyphAt(grid, n.c, n.r + 1));
+            clear = (stepFree || dropFree) && colClearDown(cc, n.r + 1, n.r + dr - 1);
+          } else {
+            clear = colClearDown(cc, n.r + minDepthForDx(k), n.r + dr - 1);
+          }
         }
         if (clear) push(c2, n.r + dr);
       }
@@ -857,6 +873,11 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         const c = parts[0] ?? 0;
         const r = parts[1] ?? 0;
         if (!standable(ph.rows, c, r)) continue;
+        // R5-P1 · ink is its own exit path: contact with "w" warps the child
+        // to the checkpoint (sim.ts hazard handling), so a node standing in
+        // or on ink can never strand anyone. Glyph-precise on purpose —
+        // spikes "^" do NOT warp and stay subject to this law.
+        if (glyphAt(ph.rows, c, r) === "w" || glyphAt(ph.rows, c, r + 1) === "w") continue;
         const sub = reachFrom(ph.rows, level.abilities, { c, r }, ph.entities);
         let exitOk = false;
         for (let dr = -1; dr <= 3 && !exitOk; dr++) {
