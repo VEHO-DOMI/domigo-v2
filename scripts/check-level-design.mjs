@@ -1,6 +1,7 @@
 // R5-P1 · CHECK-LEVEL-DESIGN — die Maschinen-Checks der Design-Gesetze (doc 45 B8/B11).
 //
-// Drei Prüfungen gegen das shipped Level + die v2-Dossiers:
+// Fünf Prüfungen gegen das shipped Level + die v2-Dossiers (4 und 5 kamen mit
+// B1 dazu, aus Kokis Replay-Entscheid vom 2026-08-11):
 //  1. STEM-DEDUP (B8): kein Asset-Stem zweimal unter den WESEN-Rollen
 //     {chaser,gunner,flyer,bouncer,crusher,guardian} ∪ drained — Kapitel-weit.
 //     (Kokis „zwei Bleistifte — warum nicht zwei unterschiedliche Dinge?")
@@ -13,7 +14,16 @@
 //     v2-Dossier (per id) mit übereinstimmender (c,r)-Koordinate — und
 //     umgekehrt. „Jede Platzierung braucht einen Grund" wird damit hart.
 //
-// Rot ist rot: der Check ist Teil der Standing Gates (package.json).
+//  4. SCHWELLEN-ANKER (B1): jede gekreuzte Tinten-Passage ist im §10-Bau-
+//     Vertrag als `- THRESHOLD …`-Zeile BENANNT, mit ihrem Checkpoint, und
+//     zwar in beiden Richtungen — die Physik hält level.ts, die ABSICHT hier.
+//  5. ZWECK-PFLICHT (B11): jede Entity nennt in ihrer Manifest-Zeile eine
+//     FIKTION und eine MECHANIK. Block 3 beweist nur, dass die Zeile da ist;
+//     ob sie etwas SAGT, prüft erst dieser Block. »Jedes Element braucht
+//     seinen Zweck« (Koki, 2026-08-11).
+//
+// Rot ist rot: der Check ist Teil der Standing Gates (package.json) und läuft
+// seit B1 auch in CI — samt `--selftest`, damit sein rotes Licht bewiesen ist.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -219,6 +229,38 @@ if (process.argv.includes("--selftest")) {
   process.exit(bad ? 1 : 0);
 }
 
+// ── 5 · ZWECK-PFLICHT (B11 · Kokis Entscheid 2026-08-11) ────────────────────
+// »…und jedes Element braucht seinen Zweck.« Block 3 beweist, dass jede Entity
+// eine Manifest-Zeile MIT ANKER hat — er liest aber nie, ob die Zeile etwas
+// SAGT. Eine Zeile mit leerer Mechanik-Spalte ist genau das Zweck-Loch, das
+// B11 verbietet, und sie kam bisher durch jedes Gate.
+// Spalten des Begründungs-Manifests: | id | Was | Anker | Fiktion | Mechanik | Gesetz | Kunst |
+const EMPTY_CELL = /^(|—|-|–|\?+|tbd|TBD|n\/a)$/;
+for (const ph of phases) {
+  const df = DOSSIER_OF[ph.id];
+  if (!df) continue;
+  const dp = path.join(DOSSIERS, df);
+  if (!fs.existsSync(dp)) continue;
+  const rowOf = new Map();
+  for (const line of fs.readFileSync(dp, "utf8").split("\n")) {
+    const cells = line.split("|");
+    if (cells.length < 7) continue;
+    const idm = (cells[1] ?? "").trim().match(/^([a-z0-9-]+)/i);
+    if (!idm || !idm[1].includes("-")) continue;
+    rowOf.set(idm[1], { fiktion: (cells[4] ?? "").trim(), mechanik: (cells[5] ?? "").trim() });
+  }
+  for (const e of ph.entities) {
+    const row = rowOf.get(e.id);
+    if (!row) continue; // Block 3 meldet fehlende Zeilen bereits
+    if (EMPTY_CELL.test(row.mechanik)) {
+      fails.push(`zweck: ${ph.id}/${e.id} nennt keinen MECHANISCHEN Zweck in ${df} §3 — jedes Element braucht seinen Zweck (B11)`);
+    }
+    if (EMPTY_CELL.test(row.fiktion)) {
+      fails.push(`zweck: ${ph.id}/${e.id} nennt keine FIKTION in ${df} §3 — warum steht es da, in der Welt? (B11)`);
+    }
+  }
+}
+
 fails.push(...thresholdFails(level, DOSSIERS));
 
 if (fails.length) {
@@ -226,4 +268,4 @@ if (fails.length) {
   for (const f of fails) console.error("  ✗ " + f);
   process.exit(1);
 }
-console.log(`check-level-design: OK — Dedup (${seenStems.size} Wesen-Stems einmalig), Abdeckung (${wordbank.entries.filter((e) => e.kind === "wordfile").length} Vokabeln klassifiziert), Manifest-Anker deckungsgleich über ${phases.length} Phasen, Schwellen benannt`);
+console.log(`check-level-design: OK — Dedup (${seenStems.size} Wesen-Stems einmalig), Abdeckung (${wordbank.entries.filter((e) => e.kind === "wordfile").length} Vokabeln klassifiziert), Manifest-Anker deckungsgleich über ${phases.length} Phasen, Schwellen benannt, jede Entity mit Zweck`);
