@@ -90,6 +90,13 @@ verbindlich für jede Zeremonie-Zeile:
 | 4 | p3 | Stuhl | Ding | *der Stuhl* |
 | 5 | Arena | Klassenfoto | Ding | *das Klassenfoto* |
 
+**EIN Ding, EIN Wort — quer über alle Karten.** Die Lehr-Karte, die Rettungs-Karte und
+die Befreiungs-Karte desselben Käfigs benutzen denselben Namen aus der Tabelle oben. Ein
+Kritiker fand genau hier den schärfsten Fehler dieser Runde: die Lehr-Karte sagte „die
+Musikanlage", die Rettungs-Karte zehn Sekunden später „ein Lautsprecher" — und verbrannte
+damit die Vokabel-Brücke, die sie eben gebaut hatte. Dasselbe für die HÜLLE: sie heißt
+überall **der Käfig**, nie „das Geflecht", nie „die Gitter" als Ersatzwort.
+
 **Gestrichene Begriffe** (kommen in keiner Zeile mehr vor): *Lager am Rand der Seite* ·
 *die Klasse wartet* (irgendwo) · *Buchstaben-Wesen* · *Fibel* · *OSWIN* · *Dinge* als
 Sammelwort · *bemalt* für das Schulhaus.

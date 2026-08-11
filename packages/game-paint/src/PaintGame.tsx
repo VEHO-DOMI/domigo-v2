@@ -1048,7 +1048,17 @@ function Overlay({
         : <>In {bilanz.kidsTotal} davon stecken <strong>Klassenkinder</strong> — finde sie</>));
     }
     if (bilanz.tipsTotal > 0) {
-      legend.push(item("tips", "rule", <><strong>{bilanz.tipsTotal} Regel-Seiten</strong> sind aus dem Buch gerissen</>));
+      // R5-C1 (Kritiker-Runde 2): „sind aus dem Buch gerissen" left the tearing
+      // uncaused — a second mystery running beside the one the card just named.
+      // Same villain, said out loud.
+      legend.push(item("tips", "rule", <><strong>{bilanz.tipsTotal} Regel-Seiten</strong> hat er herausgerissen — finde sie</>));
+    }
+    if (bilanz.booksTotal > 0) {
+      // R5-C1 (Kritiker-Runde 2): the score page tallied „Bonus-Bücher 3 von 3"
+      // for something the child had never been shown, named or told about — and
+      // it sits directly under „Buchstaben gesammelt", one Buch- root apart.
+      // Counted from the world like every other promise on this page.
+      legend.push(item("books", "book", <><strong>{bilanz.booksTotal} Bonus-Bücher</strong> liegen versteckt — nimm sie mit</>));
     }
     return staged(
       <div style={{ textAlign: "left" }}>
@@ -1154,8 +1164,12 @@ function Overlay({
             <PaintedIcon name="door" size={76} art={art} />
           </div>
         )}
+        {/* R5-C1 (Kritiker-Runde 2): „Die Buchstaben fliegen zurück auf die
+            Tafel" told the child the letters were coming HOME to a board — an
+            origin nothing in the chapter ever gave them. The beat that really
+            just happened is the one the line names now. */}
         <p style={{ fontSize: 17, margin: "0 0 12px" }}>
-          Die Buchstaben fliegen zurück auf die Tafel — und die Tür zum nächsten Kapitel geht auf.
+          Die Tafel ist frei, die Seite ist geschafft — und die Tür zum nächsten Kapitel geht auf.
         </p>
         <a href={hubHref} className="pb-chip pb-btn-primary" style={{ ...btn, textDecoration: "none", display: "inline-block" }}>← Zurück</a>
         <button onClick={onRestart} className="pb-btn-ghost" style={{ ...btn, marginLeft: 10 }}>↻ Noch einmal</button>
@@ -1203,7 +1217,10 @@ function Overlay({
       <>
         <div style={{ display: "flex", justifyContent: "center", margin: "0 0 2px" }}><PaintedCage /></div>
         <p style={{ fontSize: 17, margin: "0 0 4px" }}>Da steckt {o.cagehint?.captiveDe ?? "etwas"} fest!</p>
-        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Stell dich davor und drück <strong>↑</strong> — dann geht er auf.</p>
+        {/* R5-C1 (Kritiker-Runde 2): „dann geht ER auf" had no antecedent — the
+            word „Käfig" is never spoken on this card, only drawn. The one card
+            that teaches what a cage IS now says the word. */}
+        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Stell dich davor und drück <strong>↑</strong> — dann geht der Käfig auf.</p>
         <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Alles klar!</button>
       </>,
     );

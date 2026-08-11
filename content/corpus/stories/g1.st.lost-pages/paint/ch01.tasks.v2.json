@@ -2110,7 +2110,7 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Hinter den Gittern glimmt ein Lautsprecher",
+    "showsDe": "Hinter den Gittern glimmt die Musikanlage",
     "art": "satchel_shake"
    },
    "storyDe": "Sag, was gefangen ist — dann geht der Käfig auf!",
@@ -2142,7 +2142,7 @@
     "showsDe": "Im Regal-Winkel glimmt ein flacher Bildschirm",
     "art": "satchel_shake"
    },
-   "storyDe": "Sag, was da drin ist — dann reißt das Geflecht auf!",
+   "storyDe": "Sag, was da drin ist — dann geht der Käfig auf!",
    "promptEn": "What is it?",
    "answer": "It's a tablet",
    "skins": [
