@@ -16,7 +16,19 @@
 // Deshalb prüft C2 beide Seiten.
 //
 // ─────────────────────────────────────────────────────────────────────────
-// ⏸ GEPARKT — WARTET AUF EINE ENTSCHEIDUNG (R5-W1 · F1, 11.08.2026)
+// ✔ ENTSCHIEDEN (Architekten-Ruling, 11.08.2026): RÜCKSTOSS NUR BEIM BOSS.
+//
+// Die Messung unten hat die Entscheidung getragen: p2 löst zwölf Begegnungen
+// pro Durchlauf aus, weil die Schwärme dort Durchgangs-Stationen sind. Also
+// stößt jetzt die Kreide der Tafel zurück — und sonst nichts. Das ist auch,
+// was doc 44 §4 ch01 C4 wörtlich sagt.
+//
+// Diese Datei prüft ab hier BEIDE Hälften des Rulings, denn eine davon ist ein
+// Nicht-Ereignis und wäre sonst nie bewacht: dass ein Feld-Wesen den Körper in
+// Ruhe lässt, ist genauso Gesetz wie dass der Boss ihn wirft.
+//
+// ── Der historische Befund, den das Ruling beantwortet ───────────────────
+// ⏸ WAR GEPARKT — WARTET(E) AUF EINE ENTSCHEIDUNG (R5-W1 · F1, 11.08.2026)
 //
 // Der Fix ist geschrieben, getestet und war grün: C1–C5 liefen mit ihm durch
 // und ohne ihn rot. Er liegt NICHT im PR, weil die Messung danach etwas
@@ -37,11 +49,6 @@
 // C4) wörtlich genommen auch hergibt? Diese Session redesignt p2 nicht im
 // Vorbeigehen.
 //
-// Was hier bleibt: C3 (der Gefahren-Zweig war IMMER richtig — der Zaun, der
-// beweist, dass die beiden Pfade sich unterscheiden) und die Vektor-Probe.
-// C1/C2/C4/C5 stehen fertig und übersprungen bereit; wer die Entscheidung
-// umsetzt, macht `describe.skip` zu `describe` und setzt in sim.ts
-// onEntityEvent »encounter« die drei Zeilen, die im Report stehen.
 // ─────────────────────────────────────────────────────────────────────────
 
 import { describe, expect, it } from "vitest";
@@ -103,43 +110,43 @@ const untilHit = (sim: Sim, ticks = 400): boolean => {
   return false;
 };
 
-describe.skip("R5-F1 · ein Kreide-Wesen, das trifft, stößt auch zurück (D-17) — GEPARKT", () => {
-  it("C1 · der Treffer wirkt am Körper, nicht nur an der Unverwundbarkeit", () => {
+/** Die Tafel — dieselbe Rolle wie in der Arena, hier auf einer Seite des Kindes
+ *  platziert, damit die Richtung des Stoßes überhaupt eine Aussage hat. */
+const tafel = (c: number): EntitySpec => ({
+  id: "tafel", role: "guardian", skin: "tafel", c, r: 14, tier: "E", params: {},
+});
+
+/** Läuft, bis das Kind Schaden nimmt (die Tafel greift über ihre eigene
+ *  Choreografie an, nicht durch bloße Berührung). */
+const untilStun = (sim: Sim, ticks = 900): boolean => {
+  for (let t = 0; t < ticks; t++) {
+    for (const ev of sim.step(IDLE_PAD)) {
+      // die Arena stellt unterwegs Fragen; wir lösen sie weg, damit die Welt
+      // weiterläuft und die Choreografie überhaupt bis zum Wurf kommt
+      if (ev.type === "task") sim.solveTask(ev.req.ctx);
+    }
+    if (sim.player.stun > 0) return true;
+  }
+  return false;
+};
+
+describe("R5-F2 · DIE HÄLFTE DES RULINGS, DIE EIN NICHT-EREIGNIS IST", () => {
+  // Ein Gesetz, das lautet „hier passiert nichts", hat keinen natürlichen
+  // Wächter — es sei denn, man baut ihm einen. Genau diese Hälfte würde ein
+  // späteres „ich räum das mal auf" still kippen.
+  it("ein Feld-Wesen fragt etwas und lässt den Körper in Ruhe", () => {
     const sim = make([chaser(24)]);
     expect(untilHit(sim), "das Wesen muss das Kind erreichen").toBe(true);
-    expect(sim.player.pose, "der getroffene Körper trägt die Treffer-Pose").toBe("hit");
-    expect(sim.player.stun, "…und ist kurz nicht steuerbar").toBeGreaterThan(0);
-    expect(sim.player.grounded, "…und ist von den Brettern gehoben").toBe(false);
-    expect(sim.player.vy).toBe(PAINT.knockVy);
-    expect(Math.abs(sim.player.vx)).toBe(PAINT.knockVx);
+    expect(sim.player.stun, "kein Kontrollverlust").toBe(0);
+    expect(sim.player.vx, "kein seitlicher Stoß").toBe(0);
+    expect(sim.player.grounded, "es steht weiter auf den Brettern").toBe(true);
+    expect(sim.player.pose, "…und wird auch so gezeichnet").not.toBe("hit");
+    // die Unverwundbarkeit greift trotzdem — sonst fragte dasselbe Wesen
+    // sechzigmal pro Sekunde
     expect(sim.player.iframes).toBe(PAINT.iframeTicks);
   });
 
-  it("C2 · der Stoß geht WEG vom Wesen — auf beiden Seiten", () => {
-    const fromRight = make([chaser(24)]);
-    expect(untilHit(fromRight)).toBe(true);
-    const beastR = fromRight.world.entities.find((e) => e.id === "beast");
-    expect(fromRight.player.x, "das Wesen kam von rechts").toBeLessThan(beastR?.x ?? 0);
-    expect(fromRight.player.vx, "…also fliegt das Kind nach links").toBeLessThan(0);
-
-    const fromLeft = make([chaser(16)]);
-    expect(untilHit(fromLeft)).toBe(true);
-    const beastL = fromLeft.world.entities.find((e) => e.id === "beast");
-    expect(fromLeft.player.x, "das Wesen kam von links").toBeGreaterThan(beastL?.x ?? 0);
-    expect(fromLeft.player.vx, "…also fliegt das Kind nach rechts").toBeGreaterThan(0);
-  });
-
-  it("C4 · die eingefrorene Karte zeigt den Treffer, nicht die alte Pose", () => {
-    const sim = make([chaser(24)]);
-    expect(untilHit(sim)).toBe(true);
-    expect(sim.overlayOpen, "die Begegnung friert die Welt ein").toBe(true);
-    for (let t = 0; t < 30; t++) sim.step(IDLE_PAD);
-    expect(sim.player.pose, "solange die Karte steht, steht auch das Bild").toBe("hit");
-  });
-
-  it("C5 · ein Treffer beim Fahren löst die Fahrt", () => {
-    // Der Rückstoß hebt das Kind (vy < 0); der Ride-Vertrag lässt genau dann
-    // los und darf nicht im selben Tick wieder andocken.
+  it("…auch beim Fahren: die Fahrt reißt nicht ab", () => {
     const sim = new Sim({
       level: level([
         chaser(24),
@@ -150,8 +157,44 @@ describe.skip("R5-F1 · ein Kreide-Wesen, das trifft, stößt auch zurück (D-17
       freedCageIds: () => [],
     });
     expect(untilHit(sim)).toBe(true);
-    expect(sim.ridingId, "die Fahrt ist gelöst").toBeNull();
-    expect(sim.player.pose).toBe("hit");
+    expect(sim.player.stun).toBe(0);
+    expect(sim.player.pose).not.toBe("hit");
+  });
+});
+
+describe("R5-F2 · die Kreide der Tafel stößt zurück (Ruling)", () => {
+  it("ein Boss-Treffer wirkt am Körper, nicht nur an der Unverwundbarkeit", () => {
+    const sim = new Sim({ level: level([tafel(30)]), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+    expect(untilStun(sim), "die Tafel muss das Kind treffen").toBe(true);
+    expect(sim.player.pose, "der getroffene Körper trägt die Treffer-Pose").toBe("hit");
+    expect(sim.player.stun, "…und ist kurz nicht steuerbar").toBeGreaterThan(0);
+    expect(sim.player.grounded, "…und ist von den Brettern gehoben").toBe(false);
+    expect(sim.player.vy).toBe(PAINT.knockVy);
+    expect(Math.abs(sim.player.vx)).toBe(PAINT.knockVx);
+    expect(sim.player.iframes).toBe(PAINT.iframeTicks);
+  });
+
+  it("der Stoß geht WEG von der Tafel — auf beiden Seiten", () => {
+    // Beide Polaritäten in EINEM Test, weil genau hier der zweite, versteckte
+    // Fehler saß: das Vorzeichen war verkehrt, und ein einseitiger Test wäre
+    // dabei fröhlich grün geblieben.
+    for (const [seite, spalte] of [["rechts", 30], ["links", 10]] as const) {
+      const sim = new Sim({ level: level([tafel(spalte)]), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+      expect(untilStun(sim), `Treffer von ${seite}`).toBe(true);
+      const src = sim.world.entities.find((e) => e.id === "tafel")!;
+      const dxPx = (src.x - sim.player.x) / SUBS;
+      if (Math.abs(dxPx) < 6) continue; // senkrecht darüber: Blick entscheidet
+      if (dxPx > 0) expect(sim.player.vx, "Tafel rechts ⇒ Flug nach links").toBeLessThan(0);
+      else expect(sim.player.vx, "Tafel links ⇒ Flug nach rechts").toBeGreaterThan(0);
+    }
+  });
+
+  it("die eingefrorene Karte zeigt den Treffer, nicht die alte Pose", () => {
+    const sim = new Sim({ level: level([tafel(30)]), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+    expect(untilStun(sim)).toBe(true);
+    sim.setOverlay(true);
+    for (let t = 0; t < 30; t++) sim.step(IDLE_PAD);
+    expect(sim.player.pose, "solange die Karte steht, steht auch das Bild").toBe("hit");
   });
 });
 

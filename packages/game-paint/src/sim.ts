@@ -81,6 +81,11 @@ export const askerIdOf = (ctx: TaskRequest["ctx"]): string | null =>
  *  tile, so a being whose sprite is half over the edge still qualifies. */
 export const SPEAKER_MARGIN_PX = 8;
 
+/** R5-F2: ab wie viel seitlichem Abstand eine Treffer-Quelle überhaupt eine
+ *  Richtung hergibt. Darunter (die Tafel steht senkrecht über dem Kind) stößt
+ *  der Rückstoß rückwärts gegen den Blick, statt eine Seite zu würfeln. */
+export const KNOCK_DIR_MIN_PX = 6;
+
 export type SimEvent =
   | { type: "toast"; msg: string }
   | { type: "task"; req: TaskRequest }
@@ -680,8 +685,36 @@ export class Sim {
     switch (ev.type) {
       case "encounter": {
         const src = this.world.entities.find((e) => e.id === ev.id);
-        applyKnockback(this.player, this.player.x < (src?.x ?? this.player.x) ? -1 : 1, false);
-        this.player.iframes = PAINT.iframeTicks;
+        // R5-F2 · DER RÜCKSTOSS GEHÖRT DEM BOSS (Architekten-Ruling 11.08.).
+        //
+        // Vorgeschichte, weil die Zeile sonst wieder „aufgeräumt" wird: hier
+        // stand ein Aufruf von `applyKnockback`, dessen Rückgabewert verworfen
+        // wurde — die Funktion ist REIN, also traf ein Wesen das Kind, ohne es
+        // je anzufassen (D-17). Beim Reparieren fiel zweierlei auf: das
+        // Vorzeichen war zusätzlich verkehrt (das Kind wäre IN das Wesen
+        // gestoßen worden), und — gemessen, nicht vermutet — p2 löst zwölf
+        // solcher Berührungen in EINEM Durchlauf aus: die Schwärme dort sind
+        // als Durchgangs-Stationen gebaut, nicht als Strafen. Ein Rückstoß auf
+        // jede Berührung hat den aufgezeichneten Piloten den Ausgang nicht mehr
+        // erreichen lassen (2361 statt 965 Ticks).
+        //
+        // Deshalb trifft der Rückstoß nur dort, wo ein Treffer WEHTUN SOLL: die
+        // Kreide der Tafel. Das ist auch, was doc 44 §4 ch01 C4 wörtlich sagt
+        // („a chalk hit = knockback + a boss-window task") — die Kreide, nicht
+        // jedes Möbelstück im Flur. Feld-Wesen bleiben, was sie sind: sie
+        // fragen etwas und lassen den Körper in Ruhe.
+        if (src?.role === "guardian") {
+          const dxPx = (src.x - this.player.x) / SUBS;
+          // Eine Quelle fast senkrecht über dem Kind gibt keine ehrliche
+          // Seitenrichtung her (die Tafel FLIEGT) — dann stößt es rückwärts,
+          // genau wie der Gefahren-Zweig es seit jeher tut.
+          const fromDir: 1 | -1 = Math.abs(dxPx) >= KNOCK_DIR_MIN_PX
+            ? (dxPx > 0 ? 1 : -1)
+            : this.player.facing;
+          this.player = applyKnockback(this.player, fromDir, false);
+        } else {
+          this.player.iframes = PAINT.iframeTicks;
+        }
         // PK-R6 · E · HIT = TASK, NEVER DEATH (doc 44 §4 ch01 C4: „a chalk hit =
         // knockback + a boss-window task"). Chalk that catches the child — in
         // the air or lying on the boards as a shard — asks out of the BOSS
