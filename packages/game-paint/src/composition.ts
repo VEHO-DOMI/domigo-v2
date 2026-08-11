@@ -652,6 +652,9 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     // K≈15 air / 11.6 wall; darker is truer to the fiction, so the declaration
     // follows the truth (doc 36 v1.1 key table updated in the same commit).
     key: 14,
+    // R5-P1 (p9-Dossier-Vorleistung): die Welle buchstabiert die u01-Phrase —
+    // ohne words fiele letters.ts auf A→Z zurück und die Kette hieße ABCDEFGHIJKL.
+    words: ["school", "things"],
     wash: { colors: [0x141a30, 0x1d2542, 0x2a3255] },
     far: shell("p9", 0.25),
     // NO shafts: a dream inside an inkwell has no windows, and the AF sheet's

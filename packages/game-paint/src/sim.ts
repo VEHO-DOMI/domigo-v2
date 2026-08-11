@@ -579,6 +579,9 @@ export class Sim {
       // that); only the press engages, so riding a vine past a drained object
       // cannot fire its card, and holding ↑ at one cannot fire it twice.
       playerEngage: this.engagePressed,
+      // R5-P1 (Arena): solange der Wächter steht, sind Käfige gegated —
+      // dieselbe Ehrlichkeits-Klasse wie das ✕-Gate unten.
+      cagesGated: this.world.entities.some((e) => e.role === "guardian" && !e.redeemed) && !this.guardianDefeated,
     });
     for (const ev of evs) this.onEntityEvent(ev, events);
 
@@ -639,6 +642,11 @@ export class Sim {
       // restore/choice/wheel/oddone in the tutorial chapter.
       case "engaged": {
         this.ask({ use: "encounter", ctx: { type: "entity", id: ev.id, skin: ev.skin } }, events);
+        break;
+      }
+      case "cageGated": {
+        // R5-P1 Arena-Gesetz: Kaefig wartet auf den Sieg (Copy = P4-Platzhalter)
+        if (this.gateToastCooldown === 0) { events.push({ type: "toast", msg: "Erst die Tafel beruhigen!" }); this.gateToastCooldown = 120; }
         break;
       }
       case "cageBurst": {

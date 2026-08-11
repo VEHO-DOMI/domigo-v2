@@ -588,3 +588,24 @@ describe("PB-T2 · envelope law (derived from stepPlayer)", () => {
     expect(cols).toBeGreaterThanOrEqual(REACH_ENVELOPE.HOVER_DX);
   });
 });
+
+  it("R5-P1 · Sweep-Zellen einer geboardeten Plattform sind seen-Knoten (Fahrt-Anker)", () => {
+    // Plattform pendelt über einer Grube; ihre Sweep-Zellen müssen in `seen`
+    // landen, damit Buchstaben ÜBER der Fahrt die Toleranz-Gesetze bestehen
+    const rows = [
+      "................",
+      "..S.............",
+      "####........####",
+      "................",
+      "................",
+      "################",
+    ];
+    const ents = [{ id: "m1", role: "platform.move", skin: "ruler", c: 6, r: 2, tier: "E", params: { dxTiles: 4, periodTicks: 200 } }] as never;
+    const seen = reachableCells(rows, ["jump"], ents);
+    // Sweep-Reihe der Plattform (Deck-Steh-Zellen) muss enthalten sein
+    const sweepHit = [...seen].some((k) => {
+      const [c, r] = k.split(",").map(Number) as [number, number];
+      return r === 2 && c >= 6 && c <= 10; // die Plattform-eigene Reihe — Toleranzen ankern von hier
+    });
+    expect(sweepHit, "mindestens eine Sweep-Zelle ist seen-Knoten").toBe(true);
+  });

@@ -17,7 +17,8 @@
     "check:game-tasks": "node --experimental-strip-types scripts/check-game-tasks.mjs",
     "record:paint-tape": "node --experimental-strip-types scripts/record-paint-tape.mjs",
     "content": "node packages/content-pipeline/src/content.ts",
-    "audit:blind-solve": "node scripts/audit/blind-solve.ts"
+    "audit:blind-solve": "node scripts/audit/blind-solve.ts",
+    "check:level-design": "node scripts/check-level-design.mjs"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.110.0",

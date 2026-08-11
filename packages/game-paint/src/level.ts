@@ -477,7 +477,15 @@ export const reachFrom = (
       if (!boardable) continue;
       p.boarded = true;
       unlocked = true;
-      for (const s of p.sweep) visit({ c: s.c, r: s.r }); // ride + disembark anywhere along the sweep
+      for (const s of p.sweep) {
+        // R5-P1 (deklarierte Dossier-Vorleistung): die Sweep-Zellen einer
+        // geboardeten Plattform sind Orte, an denen das Kind SEIN kann — sie
+        // gehören in `seen`, damit die Collectible-/Entity-Toleranzen auf der
+        // Fahrt selbst ankern können (E/S/T über der Tinte; das Tape beweist
+        // per Ausführung, D-6).
+        seen.add(key(s.c, s.r));
+        visit({ c: s.c, r: s.r }); // ride + disembark anywhere along the sweep
+      }
     }
     if (!unlocked && queue.length === 0) break;
   }
