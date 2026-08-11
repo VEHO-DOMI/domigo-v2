@@ -1051,7 +1051,10 @@ function Overlay({
       // R5-C1 (Kritiker-Runde 2): „sind aus dem Buch gerissen" left the tearing
       // uncaused — a second mystery running beside the one the card just named.
       // Same villain, said out loud.
-      legend.push(item("tips", "rule", <><strong>{bilanz.tipsTotal} Regel-Seiten</strong> hat er herausgerissen — finde sie</>));
+      // …and it names him rather than saying „er": the antecedent sits two
+      // paragraphs up with four other nouns in between, which is a long hunt
+      // for a first-grader tracking a pronoun (Kritiker-Runde 2).
+      legend.push(item("tips", "rule", <><strong>{bilanz.tipsTotal} Regel-Seiten</strong> hat der Tinten-Schatten herausgerissen — finde sie</>));
     }
     if (bilanz.booksTotal > 0) {
       // R5-C1 (Kritiker-Runde 2): the score page tallied „Bonus-Bücher 3 von 3"
