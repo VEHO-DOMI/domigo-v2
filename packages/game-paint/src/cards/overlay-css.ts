@@ -373,10 +373,14 @@ export const PAINT_OVERLAY_CSS = `
    The angle rides in a custom property rather than in the transform itself,
    so pressing a chip can add its dip without straightening it out. */
 .pb-card [data-chips] > button { transform: rotate(var(--pb-tilt, 0deg)); }
-.pb-card [data-chips] > button:nth-child(4n+1) { --pb-tilt: -1.3deg; }
-.pb-card [data-chips] > button:nth-child(4n+2) { --pb-tilt: 1.1deg; }
-.pb-card [data-chips] > button:nth-child(4n+3) { --pb-tilt: 0.7deg; }
-.pb-card [data-chips] > button:nth-child(4n+4) { --pb-tilt: -0.8deg; }
+/* Every angle at least a degree, and every one the other way from its
+   neighbour: the first cut used 0.7° and 0.8° for two of the four, and a blind
+   critic read the row as „only 2 of 4 tilted — a bug, not a style". A crooked
+   thing has to be crooked ENOUGH to be on purpose. */
+.pb-card [data-chips] > button:nth-child(4n+1) { --pb-tilt: -1.4deg; }
+.pb-card [data-chips] > button:nth-child(4n+2) { --pb-tilt: 1.2deg; }
+.pb-card [data-chips] > button:nth-child(4n+3) { --pb-tilt: 1deg; }
+.pb-card [data-chips] > button:nth-child(4n+4) { --pb-tilt: -1.1deg; }
 
 /* ── the ink thread from the card to the being it interrupts ───────────────
    PK-R6 · H1, finding 9. The panel may not move to the middle — PB-F1/F2-20

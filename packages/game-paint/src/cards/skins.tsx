@@ -479,7 +479,7 @@ export function MemoryCard({ state, dispatch }: { state: MemoryState; dispatch: 
             aria-label={faceUp(i) ? c.v : "umgedrehte Karte"}
             onClick={() => dispatch({ flip: i })}
           >
-            {faceUp(i) ? c.v : <CardBack />}
+            {faceUp(i) ? c.v : <CardBack n={i + 1} />}
           </button>
         );
       })}
