@@ -14,6 +14,7 @@
 import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { type CompositionSpec, type MassKit, ROOM_SHADOW_INK, compositionFor, heroEdgeFor, nearPlaneTint } from "./composition.ts";
+import { phaseArtScope } from "./artScope.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
 import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows } from "./mass.ts";
@@ -872,11 +873,14 @@ export class PaintScene extends Phaser.Scene {
   private keys!: Record<string, Phaser.Input.Keyboard.Key>;
   /** PB-C1: this phase's art direction, or null ⇒ the pre-C1 render path. */
   private comp: CompositionSpec | null;
+  /** R5-W1 · E1: the stems this phase may ask for (artScope.ts). */
+  private readonly scope: ReadonlySet<string>;
 
   constructor(cfg: PaintSceneCfg) {
     super({ key: "paint" });
     this.cfg = cfg;
     this.comp = compositionFor(cfg.level.chapter, cfg.phaseId);
+    this.scope = phaseArtScope(cfg.level, cfg.phaseId, Object.keys(cfg.art));
     this.sim = new Sim({
       level: cfg.level,
       phaseId: cfg.phaseId,
@@ -890,8 +894,22 @@ export class PaintScene extends Phaser.Scene {
     });
   }
 
+  /** R5-W1 · E1: what THIS phase may ask for. A ceiling, not a guess — see
+   *  artScope.ts for why it is closed over what exists on disk. */
+  artScope(): ReadonlySet<string> {
+    return this.scope;
+  }
+
   preload(): void {
-    for (const [stem, url] of Object.entries(this.cfg.art)) {
+    // R5-W1 · E1 · LOAD THIS PHASE, NOT THE CHAPTER. This used to walk the
+    // whole art map: 290 stems / 111 MB queued before phase one's first frame,
+    // where ~20 MB is what the phase draws. Both guards below are unchanged —
+    // a stem with no URL keeps its procedural fallback (the keen-art law), and
+    // textures already in the game-wide manager are never re-fetched, so a
+    // later phase still pays only for what its predecessors did not load.
+    for (const stem of this.scope) {
+      const url = this.cfg.art[stem];
+      if (url === undefined) continue;
       if (!this.textures.exists(`pb-${stem}`)) this.load.image(`pb-${stem}`, url);
     }
   }

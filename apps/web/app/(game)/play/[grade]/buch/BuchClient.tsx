@@ -19,6 +19,8 @@ export default function BuchClient(props: {
   startPhase?: string;
   /** R5-A6: draw the collision grid over the world (teacher door, ?grid=1). */
   debugGrid?: boolean;
+  /** R5-W1 · E1: attach the measuring instrument (teacher door, ?perf=1). */
+  debugPerf?: boolean;
 }) {
   return <PaintGame {...props} />;
 }
