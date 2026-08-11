@@ -600,3 +600,52 @@ describe("the arena guardian flies her knot's path", () => {
     expect(trace()).toBe(trace());
   });
 });
+
+// ── R5-P1 · die drei Entity-Vorleistungen der Dossiers ───────────────────────
+describe("R5-P1 · Dossier-Vorleistungen", () => {
+  const air40 = ".".repeat(40);
+  const floor = (n: number) => [...Array.from({ length: n }, () => air40), "#".repeat(40), "#".repeat(40)];
+
+  it("patrolMinC/MaxC: der Läufer wendet am Band wie an einer Kante (p1)", () => {
+    const grid = floor(12);
+    const w = spawnEntities([spec({ c: 20, r: 11, params: { patrolMinC: 16, patrolMaxC: 24 } })], []);
+    const e = w.entities[0]!;
+    let minX = e.x, maxX = e.x, flips = 0, last = e.dir;
+    for (let t = 0; t < 4000; t++) {
+      stepEntities(w, grid, idleInput());
+      minX = Math.min(minX, e.x); maxX = Math.max(maxX, e.x);
+      if (e.dir !== last) { flips++; last = e.dir; }
+    }
+    expect(minX).toBeGreaterThanOrEqual((16 * TILE) * SUBS);
+    expect(maxX).toBeLessThanOrEqual((25 * TILE) * SUBS);
+    expect(flips).toBeGreaterThan(2); // er patrouilliert das Band
+  });
+
+  it("stageMinC/MaxC: das Flug-Zentrum bleibt auf der Bühne (Arena)", () => {
+    const grid = floor(14);
+    const mk = (params: Record<string, unknown>) =>
+      spawnEntities([spec({ role: "guardian", skin: "tafel", c: 17, r: 11, params })], []).entities[0]!;
+    const farEast = () => idleInput({ playerX: 560 * SUBS, playerY: 12 * TILE * SUBS });
+    const clamped = mk({ stageMinC: 5, stageMaxC: 30 });
+    const wc = { entities: [clamped], projectiles: [], links: [], nextProjectileId: 1, guardianKnots: -1 } as never;
+    for (let t = 0; t < 900; t++) stepEntities(wc, grid, farEast());
+    expect(clamped.homeX / SUBS).toBeLessThanOrEqual(496 - 78 + 1); // Bühnen-Ost minus Spann
+    const free = mk({});
+    const wf = { entities: [free], projectiles: [], links: [], nextProjectileId: 1, guardianKnots: -1 } as never;
+    for (let t = 0; t < 900; t++) stepEntities(wf, grid, farEast());
+    expect(free.homeX / SUBS).toBeGreaterThan(496 - 78 + 1); // ohne Params: altes Welt-Verhalten
+  });
+
+  it("cagesGated: ↑ am Käfig toastet, solange der Wächter steht (Arena)", () => {
+    const grid = floor(12);
+    const w = spawnEntities([spec({ id: "cage1", role: "cage", skin: "satchel", c: 10, r: 11, params: {} })], []);
+    const cage = w.entities[0]!;
+    const at = idleInput({ playerX: cage.x, playerY: 12 * TILE * SUBS, playerEngage: true } as never);
+    const evs1 = stepEntities(w, grid, { ...at, cagesGated: true });
+    expect(cage.state).toBe("closed");
+    expect(evs1.some((v) => v.type === "cageGated")).toBe(true);
+    const evs2 = stepEntities(w, grid, { ...at, cagesGated: false });
+    expect(cage.state).toBe("burst");
+    expect(evs2.some((v) => v.type === "cageBurst" || cage.redeemed)).toBeTruthy();
+  });
+});

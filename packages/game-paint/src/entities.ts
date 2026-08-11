@@ -104,6 +104,7 @@ export type EntityEvent =
   | { type: "engaged"; id: string; role: string; skin: string }
   | { type: "cageHit"; id: string; hpLeft: number }
   | { type: "cageBurst"; id: string; skin: string }
+  | { type: "cageGated"; id: string }
   /** PK-R6 · D: the child stepped up to a half-woken classmate and pressed ↑.
    *  The ceremony resumes at the round she is on — this is the anti-softlock
    *  half of the reawakening (PB-T1): „Später" on round 3 must not leave a
@@ -128,6 +129,8 @@ export interface WorldInput {
   playerX: number; // subs
   playerY: number;
   playerIframes: number;
+  /** R5-P1: Käfige gegated, solange der Phasen-Wächter steht (Arena-Gesetz). */
+  cagesGated?: boolean;
   playerOverlayOpen: boolean; // world frozen while a task is up
   fist: { active: boolean; x: number; y: number } | null;
   /** PK-R6 · C1/C2 · THE ENGAGE PRESS. ch01 grants no fist (doc 44 §4: the
@@ -684,9 +687,15 @@ export const stepEntities = (
           e.vx = ENEMY_WALK * e.dir;
           const aheadX = e.x + e.vx * 8;
           const g = walkAheadAt(grid, e, aheadX);
+          // R5-P1 (p1-Dossier-Vorleistung): ein AUTORISIERTES Patrouillen-Band —
+          // der Läufer wendet an params.patrolMinC/MaxC wie an einer Kante, so
+          // kann ein Lehr-Screen seine Null-Gefahr-Zone GARANTIEREN.
+          const bandMin = e.params?.patrolMinC !== undefined ? (Number(e.params.patrolMinC) * TILE + TILE / 2) * SUBS : null;
+          const bandMax = e.params?.patrolMaxC !== undefined ? (Number(e.params.patrolMaxC) * TILE + TILE / 2) * SUBS : null;
+          const bandTurn = (bandMin !== null && e.dir < 0 && e.x <= bandMin) || (bandMax !== null && e.dir > 0 && e.x >= bandMax);
           // doc 40 §2 · the turn is its OWN beat now (18 t, flip at midpoint) —
           // a walker that reversed in one tick read as a glitch, not a decision
-          if (g === null) { e.state = "turn"; e.timer = 0; e.vx = 0; } // edge/ramp turn
+          if (g === null || bandTurn) { e.state = "turn"; e.timer = 0; e.vx = 0; } // edge/ramp/band turn
           else {
             e.x += e.vx;
             const snap = groundAt(grid, e.x, e.y);
@@ -848,6 +857,13 @@ export const stepEntities = (
         // it — the two-hit rattle below is the FIST's grammar (wind up, feel the
         // weight, hit it again), and it stays exactly that for the chapters that
         // grant one. There is nothing to wind up about a hand on a latch.
+        // R5-P1 (Arena-Dossier-Vorleistung): solange der Wächter der Phase
+        // steht, ist der Käfig GEGATED (Toast-Klasse wie das ✕) — der
+        // Klassenfoto-Beat darf nie mitten im Kampf feuern. Copy = P4-Platzhalter.
+        if (inp.cagesGated === true && e.state !== "burst" && e.id === engageId) {
+          events.push({ type: "cageGated", id: e.id });
+          break;
+        }
         if (e.state !== "burst" && e.id === engageId) {
           e.state = "burst"; e.redeemed = true; e.timer = 0; e.freedTick = 0;
           events.push({ type: "cageBurst", id: e.id, skin: e.skin });
@@ -976,9 +992,15 @@ export const stepEntities = (
         // screen is not a tell.
         const ki = knotIndex(e.hp, script.knots);
         const span = KNOT_SPAN_PX[ki] ?? 78;
-        const worldWSubs = (grid[0]?.length ?? 0) * TILE * SUBS;
-        const loC = (FLIGHT_MARGIN_PX + span) * SUBS;
-        const hiC = Math.max(loC, worldWSubs - (FLIGHT_MARGIN_PX + span) * SUBS);
+        // R5-P1 (Arena-Dossier-Vorleistung): die Tafel gehört auf die BÜHNE.
+        // params.stageMinC/stageMaxC klemmen das Flug-Zentrum auf das Bühnen-
+        // Band (Zentrum ∈ [stageMin+Spann, stageMax−Spann]) — die Seitenbühnen
+        // (Auftritt West, Sieg-Trakt Ost) sind damit mechanisch heilig; ohne
+        // Params bleibt exakt das alte Welt-Verhalten.
+        const stageMinPx = e.params?.stageMinC !== undefined ? Number(e.params.stageMinC) * TILE : FLIGHT_MARGIN_PX;
+        const stageMaxPx = e.params?.stageMaxC !== undefined ? (Number(e.params.stageMaxC) + 1) * TILE : (grid[0]?.length ?? 0) * TILE - FLIGHT_MARGIN_PX;
+        const loC = (stageMinPx + span) * SUBS;
+        const hiC = Math.max(loC, (stageMaxPx - span) * SUBS);
         const wantC = Math.min(Math.max(inp.playerX, loC), hiC);
         const dC = wantC - e.homeX;
         e.homeX += Math.max(-CENTRE_MAX_STEP, Math.min(CENTRE_MAX_STEP, Math.trunc(dC / CENTRE_EASE_DIV)));

@@ -401,7 +401,23 @@ export const reachFrom = (
         let clear = true;
         for (let k = dc === 0 ? 0 : 1; k <= Math.abs(dc) && clear; k++) {
           const cc = n.c + Math.sign(dc) * k;
-          clear = colClearDown(cc, n.r + minDepthForDx(k), n.r + dr - 1);
+          if (k === 1) {
+            // R5-P1: a body enters the FIRST off-column one of two honest
+            // ways — (a) the horizontal walk-off step (foot AND head row of
+            // that column free), or (b) dropping through under its own feet
+            // first (non-solid support: air nodes, one-ways) and drifting
+            // over. Either way it occupies the neighbour column from the row
+            // below the walking row on, so support there stops the fall
+            // THERE. The old drift-depth entry (minDepthForDx starts at the
+            // walk-off's own +1 step) skipped that row — the corner of a
+            // one-row plate could be clipped diagonally into the sealed
+            // void below it (p3 Spitzer-Tasche, trap-pocket (20,25)).
+            const stepFree = !isSolid(glyphAt(grid, cc, n.r)) && !isSolid(glyphAt(grid, cc, n.r - 1));
+            const dropFree = !isSolid(glyphAt(grid, n.c, n.r + 1));
+            clear = (stepFree || dropFree) && colClearDown(cc, n.r + 1, n.r + dr - 1);
+          } else {
+            clear = colClearDown(cc, n.r + minDepthForDx(k), n.r + dr - 1);
+          }
         }
         if (clear) push(c2, n.r + dr);
       }
@@ -477,7 +493,15 @@ export const reachFrom = (
       if (!boardable) continue;
       p.boarded = true;
       unlocked = true;
-      for (const s of p.sweep) visit({ c: s.c, r: s.r }); // ride + disembark anywhere along the sweep
+      for (const s of p.sweep) {
+        // R5-P1 (deklarierte Dossier-Vorleistung): die Sweep-Zellen einer
+        // geboardeten Plattform sind Orte, an denen das Kind SEIN kann — sie
+        // gehören in `seen`, damit die Collectible-/Entity-Toleranzen auf der
+        // Fahrt selbst ankern können (E/S/T über der Tinte; das Tape beweist
+        // per Ausführung, D-6).
+        seen.add(key(s.c, s.r));
+        visit({ c: s.c, r: s.r }); // ride + disembark anywhere along the sweep
+      }
     }
     if (!unlocked && queue.length === 0) break;
   }
@@ -854,6 +878,18 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         for (let dr = -1; dr <= 3 && !exitOk; dr++) {
           for (let d = -1; d <= 1 && !exitOk; d++) {
             if (sub.has(`${exitCell.c + d},${exitCell.r + dr}`)) exitOk = true;
+          }
+        }
+        // R5-P1 · ink is its own exit path: contact with "w" warps the child
+        // to the checkpoint (sim.ts hazard handling), so a pocket whose
+        // sub-reach TOUCHES ink can never strand anyone — the p3 basin
+        // (standing in ink) and the p1 Keller (ink one step east, the
+        // declared "Teich" reading) are one class. Glyph-precise on
+        // purpose — spikes "^" do NOT warp and stay subject to this law.
+        if (!exitOk) {
+          for (const k2 of sub) {
+            const [c2, r2] = k2.split(",").map(Number) as [number, number];
+            if (glyphAt(ph.rows, c2, r2) === "w" || glyphAt(ph.rows, c2, r2 + 1) === "w") { exitOk = true; break; }
           }
         }
         if (!exitOk) {

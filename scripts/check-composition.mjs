@@ -247,6 +247,11 @@ for (const { label, ph, spec } of withSpec) {
   const cells = ph.rows.join("").split("*").length - 1;
   if (glyphs.length !== cells) { fail("glyph", `${label}: ${cells} letter cells but ${glyphs.length} glyphs planned`); continue; }
   if (cells === 0) { note(`${label}: no trail letters`); continue; }
+  // R5-P1: the trail must spell its word COMPLETELY — letterGlyphs truncates
+  // silently, so 10 word-letters over 9 cells shipped "DESKPENCI" with no red
+  // (found live in H2: the p2 cells wore stale faces).
+  const word = (spec.words ?? []).join("").toUpperCase();
+  if (word && word.length !== cells) { fail("glyph", `${label}: trail word "${word}" has ${word.length} letters but the phase carries ${cells} cells — the trail would spell a truncated or padded word`); continue; }
   const bad = glyphs.filter((g) => !/^[A-Z]$/.test(g.char));
   if (bad.length > 0) { fail("glyph", `${label}: ${bad.length} letter(s) render no real character`); continue; }
   const distinct = new Set(glyphs.map((g) => g.char)).size;

@@ -1,10 +1,11 @@
 // PB-C1 · THE COMPOSITION MANIFEST — doc 36 (the composition law) as data.
 //
-// WHY A SIDECAR TS MAP AND NOT A LEVEL-SCHEMA BLOCK (decision, PK-C1):
-// the live level JSON is kept DEEP-EQUAL to its design source of truth
-// (docs/design/g1/paint/grids-v2/ — "edit the grid, re-splice; never edit the
-// live level directly"), so art direction in the level file would have to be
-// authored twice and zod-typed a third time, for data no LEVEL LAW ever reads.
+// WHY A SIDECAR TS MAP AND NOT A LEVEL-SCHEMA BLOCK (decision, PK-C1;
+// R5-P1 updated the design regime): the level JSON is built cell-for-cell
+// from the gated dossiers (docs/design/g1/paint/ch01-dossiers-v2/ §10) and
+// machine-bound to them via check:level-design, so art direction in the
+// level file would have to be authored twice and zod-typed a third time,
+// for data no LEVEL LAW ever reads.
 // Composition is commissioned art direction, not level layout: it belongs
 // beside the renderer that consumes it. Being TS also buys three things a JSON
 // block would not: types, headless unit tests, and a CI gate that can import
@@ -566,7 +567,7 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     // word … the trail's end holds that thing"), which only became true when
     // the objects arrived in the field. Until now every phase fell back to the
     // A→Z walk, so a child collected ABCDEFGH and read nothing.
-    words: ["school", "bag", "book"],
+    words: ["school", "bag"], // R5-P1: Trail SCHOOLBAG = 9 (B21: die ersten sechs buchstabieren SCHOOL, die letzten drei die BAG)
   },
   // p2 Klassenzimmer bei Nacht — moon-cool: deep blue-violet air.
   p2: {
@@ -587,7 +588,7 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
       band: 0.50,
     },
     mass: { ...sharedMass("p2"), ...crustOf("p2") },
-    words: ["desk", "pencil"], // the two drained objects of the night classroom
+    words: ["projector"], // R5-P1: Trail PROJECTOR = 9 (p2.md §4 — der Projektor wirft die Zahlen)
   },
   // p3 Schulhof-Garten — afternoon-soft: sand plaster and chalk pastel.
   // The one phase with the chalk slide (`z` runs, AF group 4).
@@ -652,6 +653,9 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     // K≈15 air / 11.6 wall; darker is truer to the fiction, so the declaration
     // follows the truth (doc 36 v1.1 key table updated in the same commit).
     key: 14,
+    // R5-P1 (p9-Dossier-Vorleistung): die Welle buchstabiert die u01-Phrase —
+    // ohne words fiele letters.ts auf A→Z zurück und die Kette hieße ABCDEFGHIJKL.
+    words: ["school", "things"],
     wash: { colors: [0x141a30, 0x1d2542, 0x2a3255] },
     far: shell("p9", 0.25),
     // NO shafts: a dream inside an inkwell has no windows, and the AF sheet's

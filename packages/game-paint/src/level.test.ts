@@ -588,3 +588,80 @@ describe("PB-T2 · envelope law (derived from stepPlayer)", () => {
     expect(cols).toBeGreaterThanOrEqual(REACH_ENVELOPE.HOVER_DX);
   });
 });
+
+  it("R5-P1 · Sweep-Zellen einer geboardeten Plattform sind seen-Knoten (Fahrt-Anker)", () => {
+    // Plattform pendelt über einer Grube; ihre Sweep-Zellen müssen in `seen`
+    // landen, damit Buchstaben ÜBER der Fahrt die Toleranz-Gesetze bestehen
+    const rows = [
+      "................",
+      "..S.............",
+      "####........####",
+      "................",
+      "................",
+      "################",
+    ];
+    const ents = [{ id: "m1", role: "platform.move", skin: "ruler", c: 6, r: 2, tier: "E", params: { dxTiles: 4, periodTicks: 200 } }] as never;
+    const seen = reachableCells(rows, ["jump"], ents);
+    // Sweep-Reihe der Plattform (Deck-Steh-Zellen) muss enthalten sein
+    const sweepHit = [...seen].some((k) => {
+      const [c, r] = k.split(",").map(Number) as [number, number];
+      return r === 2 && c >= 6 && c <= 10; // die Plattform-eigene Reihe — Toleranzen ankern von hier
+    });
+    expect(sweepHit, "mindestens eine Sweep-Zelle ist seen-Knoten").toBe(true);
+  });
+
+  it("R5-P1 · kein Eck-Clip durch eine Ein-Reihen-Platte in die Leere darunter", () => {
+    // Stand AUF einer Ein-Reihen-Platte über einer versiegelten Grube: der
+    // Abtritt ist horizontal (Gehreihe), eine Stütze direkt unter der ersten
+    // Nachbar-Spalte fängt den Fall DORT — der alte Drift-Eintritt ließ den
+    // Körper diagonal durch die Plattenkante in die Grube clippen (p3-Fund:
+    // Spitzer-Tasche, trap-pocket (20,25))
+    // exakt die p3-Form: Boden-Masse westlich, Ein-Reihen-Platte c3–4,
+    // Auslauf einen Schritt tiefer östlich — die Leere unter der Platte ist
+    // von ALLEN Seiten versiegelt (c2-Masse west, c5-Masse ost, Platte oben)
+    const rows = [
+      "............",
+      "..S.........",
+      "#####.......",
+      "###..#######",
+      "###..#######",
+      "###..#######",
+      "###..#######",
+      "###..#######",
+    ];
+    const seen = reachableCells(rows, ["jump"]);
+    expect(seen.has("3,1"), "auf der Platte stehen geht").toBe(true);
+    expect(seen.has("5,2"), "der Δr1-Abstieg auf den Auslauf geht").toBe(true);
+    expect(seen.has("3,7"), "Leere unterm Platten-West = Clip").toBe(false);
+    expect(seen.has("4,7"), "Leere unterm Platten-Ost = Clip").toBe(false);
+  });
+
+  it("R5-P1 · Tinten-Becken ist KEIN trap-pocket — die Tinte selbst ist der Rückweg (sim-Warp)", () => {
+    // p3-Klasse: ein Becken, dessen Wände zu hoch zum Herausspringen sind.
+    // Mit Tinten-Boden legal (Kontakt mit »w« warpt zum Checkpoint,
+    // sim.ts) — mit solidem Boden bleibt es der Softlock, den das Gesetz
+    // fangen muss. Stacheln warpen NICHT und bleiben dem Gesetz unterworfen.
+    const basin = (floor: string) => [
+      "####################",
+      ...Array.from({ length: 12 }, () => "...................."),
+      "..S.*.........X.....",
+      "######......########",
+      "######......########",
+      "######......########",
+      "######......########",
+      "######......########",
+      `######${floor}########`,
+      "####################",
+    ];
+    const inky = parsePaintLevel(level(basin("wwwwww")));
+    expect(checkLevelLaws(inky).filter((f) => f.law === "trap-pocket"),
+      "Tinten-Boden ist kein Softlock — die Tinte warpt zurück").toEqual([]);
+    const solid = parsePaintLevel(level(basin("######")));
+    expect(checkLevelLaws(solid).some((f) => f.law === "trap-pocket"),
+      "solider Becken-Boden bleibt Softlock").toBe(true);
+    // die p1-Keller-Klasse: solider Boden, aber Tinte IM Becken erreichbar —
+    // ein Schritt hinein warpt zum Checkpoint, niemand strandet
+    const kellerly = parsePaintLevel(level(basin("####ww")));
+    expect(checkLevelLaws(kellerly).filter((f) => f.law === "trap-pocket"),
+      "Becken mit erreichbarer Tinte ist kein Softlock").toEqual([]);
+  });
