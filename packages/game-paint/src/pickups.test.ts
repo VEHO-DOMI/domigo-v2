@@ -224,7 +224,7 @@ describe("the static-state collectibles (R3-16, doc 41 §5)", () => {
 // the suite timed out on this session's very first BASELINE run, before a line
 // had been touched. Every law layered onto checkLevelLaws since makes that
 // likelier, so the budget is written down rather than rediscovered.
-describe("the tip-honesty law (doc 41 §7)", { timeout: 30_000 }, () => {
+describe("the tip-honesty law (doc 41 §7)", () => {
   const clone = (): PaintLevel => JSON.parse(JSON.stringify(level)) as PaintLevel;
   const lawsNamed = (l: PaintLevel) => checkLevelLaws(l).filter((f) => f.law === "tip-honesty").map((f) => f.detail);
 
@@ -235,34 +235,39 @@ describe("the tip-honesty law (doc 41 §7)", { timeout: 30_000 }, () => {
 // with machine load: this suite was FLAKY, not broken. The timeout is raised
 // deliberately rather than the law weakened; the quadratic law itself is filed
 // as a follow-up, with the measurement, in the E1 report.
-  it("the shipped chapter passes it", () => expect(lawsNamed(level)).toEqual([]), 30_000);
+  // B2: KEIN Per-Test-Timeout mehr. Ein Timeout-Argument am it() ÜBERSCHREIBT
+  // `testTimeout` aus vitest.config.ts — diese sechs Gesetz-Tests trugen 30 s und
+  // machten die 120 s der Config, die genau FÜR sie geschrieben wurde, wirkungslos.
+  // Unter Parallel-Last liefen sie damit weiter ins Limit (gemessen: allein 12,7 s,
+  // im vollen Lauf rot). Die Config ist jetzt der einzige Ort, an dem die Zahl steht.
+  it("the shipped chapter passes it", () => expect(lawsNamed(level)).toEqual([]));
 
   it("promising a page the chapter does not place turns it RED", () => {
     const l = clone();
     l.tipsTotal = (l.tipsTotal ?? 0) + 1;
     expect(lawsNamed(l).join(" ")).toMatch(/declares 4 Regel-Seiten but places 3/);
-  }, 30_000);
+  });
 
   it("a page with no Merksatz turns it RED (an empty rule page is a broken promise)", () => {
     const l = clone();
     const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
     t.params!.merksatzDe = "";
     expect(lawsNamed(l).join(" ")).toMatch(/no Merksatz/);
-  }, 30_000);
+  });
 
   it("two pages of the same rule turn it RED", () => {
     const l = clone();
     const tips = l.phases.flatMap((p) => p.entities.filter((e) => e.role === "tip"));
     tips[1]!.params!.topicDe = tips[0]!.params!.topicDe;
     expect(lawsNamed(l).join(" ")).toMatch(/one rule, one page/);
-  }, 30_000);
+  });
 
   it("a Merksatz that breaks the register law turns it RED", () => {
     const l = clone();
     const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
     t.params!.merksatzDe = "Das Monster im Buch sagt: I am.";
     expect(lawsNamed(l).join(" ")).toMatch(/register-law/);
-  }, 30_000);
+  });
 
   it("a Regel-Seite placed where no child can reach it turns entity-reachable RED", () => {
     const l = clone();
@@ -270,7 +275,7 @@ describe("the tip-honesty law (doc 41 §7)", { timeout: 30_000 }, () => {
     t.c = 1;
     t.r = 1; // inside the canopy: hidden is fine, impossible is not
     expect(checkLevelLaws(l).some((f) => f.law === "entity-reachable" && f.detail.includes("tip"))).toBe(true);
-  }, 30_000);
+  });
 });
 
 // ── the world's own arithmetic ───────────────────────────────────────────────
