@@ -290,7 +290,9 @@ describe("checkLevelLaws", () => {
     /** A lawful non-draft chapter: 3 phases, one classmate cage in the field. */
     const chapter = (over: Partial<PaintLevel> = {}): PaintLevel => {
       const cage = (id: string, extra: Record<string, unknown> = {}) => ({
-        id, role: "cage" as const, skin: "satchel", c: 3, r: 17, tier: "E" as const, ...extra,
+        id, role: "cage" as const, skin: "satchel", c: 3, r: 17, tier: "E" as const,
+        // R5-C1: every cage names its captive, so the lawful fixture does too.
+        params: { captiveDe: id }, ...extra,
       });
       // PK-R6 · D: a person-cage is only half of the rescue — the `classmate`
       // entity who steps out of it is the other half, and the `classmate-pair`
@@ -301,8 +303,9 @@ describe("checkLevelLaws", () => {
       });
       return level(OK_ROWS, {
         draft: false,
+        chapter: "ch01", // a chapter the cloak still covers — see the copy laws below
         phases: [
-          phase(OK_ROWS, { id: "p1", exit: { to: "p2" }, entities: [cage("merle", { params: { classmate: "merle" } }), mate("merle-kid", "merle")] }),
+          phase(OK_ROWS, { id: "p1", exit: { to: "p2" }, entities: [cage("merle", { params: { classmate: "merle", captiveDe: "Merle" } }), mate("merle-kid", "merle")] }),
           phase(OK_ROWS, { id: "p2", exit: { to: "p3" } }),
           phase(OK_ROWS, { id: "p3", exit: { to: "boss" } }),
         ] as PaintLevel["phases"],
@@ -318,9 +321,9 @@ describe("checkLevelLaws", () => {
     it("passes any number of extra being-cages beside the classmate's", () => {
       const many = chapter();
       many.phases[1]!.entities = [
-        { id: "bag1", role: "cage", skin: "satchel", c: 3, r: 17, tier: "E" },
-        { id: "bag2", role: "cage", skin: "satchel", c: 5, r: 17, tier: "E" },
-        { id: "bag3", role: "cage", skin: "satchel", c: 7, r: 17, tier: "E" },
+        { id: "bag1", role: "cage", skin: "satchel", c: 3, r: 17, tier: "E", params: { captiveDe: "das Tablet" } },
+        { id: "bag2", role: "cage", skin: "satchel", c: 5, r: 17, tier: "E", params: { captiveDe: "der Stuhl" } },
+        { id: "bag3", role: "cage", skin: "satchel", c: 7, r: 17, tier: "E", params: { captiveDe: "das Klassenfoto" } },
       ];
       expect(laws(many)).toEqual([]);
     });
@@ -406,6 +409,119 @@ describe("checkLevelLaws", () => {
         const floating = chapter();
         floating.phases[0]!.entities[1]!.r = 10;
         expect(laws(floating)).toContain("spawn-standable");
+      });
+    });
+
+    // ── R5-C1 · THE CAPTIVE LAW ────────────────────────────────────────────
+    // Koki's replay, 07:26:19: the cage-hint card said „Da steckt JEMAND fest"
+    // over a cage holding a sound system, and the liberation card called every
+    // freed thing a „Buchstaben-Wesen". Both were possible because a cage
+    // declared nothing but a shell: the ceremony had no way to know what it had
+    // just opened. `captiveDe` is that missing datum, and this law is what stops
+    // the next chapter from shipping the same silence.
+    describe("the captive law", () => {
+      it("fails a cage that declares no captive — the ceremony would have to guess", () => {
+        const mute = chapter();
+        mute.phases[1]!.entities = [
+          { id: "bag1", role: "cage", skin: "satchel", c: 3, r: 17, tier: "E" },
+        ];
+        expect(laws(mute)).toContain("cage-captive");
+      });
+
+      it("fails a captive too long to sit inside a card line", () => {
+        const windy = chapter();
+        windy.phases[1]!.entities = [
+          { id: "bag1", role: "cage", skin: "satchel", c: 3, r: 17, tier: "E", params: { captiveDe: "x".repeat(57) } },
+        ];
+        expect(laws(windy)).toContain("cage-captive");
+      });
+
+      it("fails a captive in the wrong register — it is read aloud to a six-year-old", () => {
+        const scary = chapter();
+        scary.phases[1]!.entities = [
+          { id: "bag1", role: "cage", skin: "satchel", c: 3, r: 17, tier: "E", params: { captiveDe: "das Monster" } },
+        ];
+        expect(laws(scary)).toContain("cage-captive");
+      });
+
+      it("fails two cages holding the same captive — that is a census defect", () => {
+        const twins = chapter();
+        twins.phases[1]!.entities = [
+          { id: "bag1", role: "cage", skin: "satchel", c: 3, r: 17, tier: "E", params: { captiveDe: "das Tablet" } },
+          { id: "bag2", role: "cage", skin: "satchel", c: 5, r: 17, tier: "E", params: { captiveDe: "das Tablet" } },
+        ];
+        expect(laws(twins)).toContain("cage-captive");
+      });
+
+      it("fails a captive declared on something that is not a cage — a stray field is a typo", () => {
+        const stray = chapter();
+        stray.phases[1]!.entities = [
+          { id: "run1", role: "chaser", skin: "pencil", c: 3, r: 17, tier: "E", params: { captiveDe: "der Stuhl" } },
+        ];
+        expect(laws(stray)).toContain("cage-captive");
+      });
+    });
+
+    // ── R5-C1 · THE CHAPTER-COPY LAWS ──────────────────────────────────────
+    // The goal card carried „OSWINs Tinte…" past every gate in the repo,
+    // because the chapter's own German — its longest player-facing strings —
+    // was policed by nothing at all. It is policed here now, beside the
+    // Regel-Seite copy laws, on the same three axes: the cloak, the register,
+    // and how long a line may be before a child stops listening.
+    describe("the chapter-copy laws", () => {
+      const CLOAKED = "OSWIN";
+      // The fixture's own chapter matters here and nowhere else: the cloak is a
+      // COMPARISON against ch15, so a test chapter numbered above it would lift
+      // the cloak and every assertion below would pass for the wrong reason.
+      // (It did, on the first run — the base fixture is „ch99".)
+
+      it("fails the antagonist's name in ANY of the chapter's own German fields", () => {
+        for (const patch of [
+          { goalDe: `${CLOAKED}s Tinte nahm die Farben.` },
+          { whyDe: `Sag es, und ${CLOAKED} verliert.` },
+          { hintsDe: ["gut", `Pass auf ${CLOAKED} auf!`] },
+          { name: `Das Haus von ${CLOAKED}` },
+          { collectNounDe: `${CLOAKED}-Buchstaben` },
+        ]) {
+          expect(laws(chapter(patch)), `the cloak must hold for ${Object.keys(patch)[0]}`).toContain("chapter-copy");
+        }
+      });
+
+      it("fails the antagonist's name in a PHASE name too", () => {
+        const named = chapter();
+        named.phases[1]!.nameDe = `${CLOAKED}s Flur`;
+        expect(laws(named)).toContain("chapter-copy");
+      });
+
+      it("is a COMPARISON, not a whitelist — a chapter numbered past the unmask is not accidentally cloaked", () => {
+        expect(laws(chapter({ chapter: "ch14", goalDe: `${CLOAKED} war hier.` }))).toContain("chapter-copy");
+      });
+
+      it("LETS the name through once the cloak lifts — this is a cloak, not a ban", () => {
+        expect(laws(chapter({ chapter: "ch15", goalDe: `${CLOAKED} steht am Ende.` }))).toEqual([]);
+      });
+
+      it("fails a hint too long to read out in one breath", () => {
+        expect(laws(chapter({ hintsDe: ["x".repeat(79)] }))).toContain("chapter-copy");
+      });
+
+      it("fails a goal card whose SENTENCE runs long, even when the card as a whole fits", () => {
+        const oneBreath = "Das Haus ist grau.";
+        const marathon = `${"Sag jedem Ding, wer es ist, und dann noch einmal, und weiter".padEnd(79, "!")}.`;
+        expect(laws(chapter({ goalDe: `${oneBreath} ${marathon}` }))).toContain("chapter-copy");
+      });
+
+      it("fails threat vocabulary anywhere in the chapter's German", () => {
+        expect(laws(chapter({ whyDe: "Ein böser Fleck frisst die Farbe." }))).toContain("chapter-copy");
+      });
+
+      it("passes the fields as the shipped chapters actually write them", () => {
+        expect(laws(chapter({
+          name: "Zeit für die Schule — Das Schulhaus ohne Farbe",
+          goalDe: "Der Tinten-Schatten hat dem Schulhaus die Farben genommen. Fünf stecken in Käfigen — mach sie alle wieder frei.",
+          whyDe: "Das Buch hört auf Englisch: Wer es richtig sagt, holt die Farbe zurück.",
+          hintsDe: ["Springen: SPACE — halten für höher!"],
+        }))).toEqual([]);
       });
     });
   });

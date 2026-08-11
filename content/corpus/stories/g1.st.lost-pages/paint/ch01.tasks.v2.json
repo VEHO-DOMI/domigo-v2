@@ -2110,10 +2110,10 @@
    "kind": "choice",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Der Käfig wackelt — drinnen glimmt der Lautsprecher",
+    "showsDe": "Hinter den Gittern glimmt ein Lautsprecher",
     "art": "satchel_shake"
    },
-   "storyDe": "Sag, was gefangen ist — dann bekommt die Halle Musik!",
+   "storyDe": "Sag, was gefangen ist — dann geht der Käfig auf!",
    "promptEn": "What is it?",
    "options": [
     "It's a sound system",
@@ -2200,7 +2200,7 @@
     "showsDe": "Im Käfig hängt das Klassenfoto — ganz grau",
     "art": "satchel_shake"
    },
-   "storyDe": "Sag, was da hängt — dann kommt die Farbe zurück!",
+   "storyDe": "Sag, was da hängt — dann ist es wieder frei!",
    "promptEn": "What is it?",
    "options": [
     "It's a picture",

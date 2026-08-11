@@ -317,6 +317,33 @@ export function registerErrorsDe(text: string | undefined): string[] {
  *  Regel-Seiten Merksatz law, which is read aloud in exactly the same breath. */
 export const MAX_LINE_DE = 56;
 
+// ── the CLOAK LAW (doc 31 §6, doc 44 §4; R5-C1) ──────────────────────────────
+/** The year hides one face. The player meets a hooded ink silhouette for
+ *  fourteen chapters and is told its name in the fifteenth — so the name may not
+ *  appear in ANY string a child can read before then. It leaked once anyway
+ *  (ch01's goal card opened „OSWINs Tinte…" and shipped), because the chapter's
+ *  own German was the one authored surface in this repo that no gate read. The
+ *  list lives beside BANNED_DE for the same stated reason: a rule with two
+ *  copies is a rule with one enforced copy. */
+export const CLOAKED_NAMES: readonly RegExp[] = [/\bOSWIN/i];
+
+/** The chapter at which the unmask happens and the cloak stops applying. */
+export const CLOAK_LIFTS_AT = "ch15";
+
+/** Cloak violations in a German string (empty = clean).
+ *
+ *  `chapter` is compared lexicographically, which is exact for the `chNN` form.
+ *  Passing NO chapter means ALWAYS CLOAKED — that is deliberate and is how the
+ *  shared game shell is judged: its copy serves all fifteen chapters at once, so
+ *  it may never carry the name at all. */
+export function cloakErrorsDe(text: string | undefined, chapter?: string): string[] {
+  if (text === undefined) return [];
+  if (chapter !== undefined && chapter >= CLOAK_LIFTS_AT) return [];
+  return CLOAKED_NAMES
+    .filter((re) => re.test(text))
+    .map((re) => `cloak-law: ${re} in "${text}" — the name is not spoken before ${CLOAK_LIFTS_AT}`);
+}
+
 // ── the file wrapper ─────────────────────────────────────────────────────────
 export const GameTasksFileV2 = z
   .object({

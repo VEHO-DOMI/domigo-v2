@@ -21,7 +21,7 @@ import { InkWipe, PaintedCage, type CardAlign, alignedWrap } from "./cards/CardS
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { PaintedIcon, type PaintedIconName } from "./cards/PaintedIcons.tsx";
 import { CeremonyBurst, PaintedHero, useCeremonyClock } from "./cards/CeremonyStage.tsx";
-import { COUNT_UP_STAGGER_MS, countUpAt, countUpTotalMs, heroArtPresent, runCompletion } from "./cards/ceremony.ts";
+import { COUNT_UP_STAGGER_MS, type PhraseSlot, countUpAt, countUpTotalMs, heroArtPresent, runCompletion } from "./cards/ceremony.ts";
 import { initRoute, nextTask, orderedTask, type RouteState, type ServeCtx } from "./cards/routing.ts";
 
 /** The in-game task item — gameTasks@2 (the card kit). Content lives in
@@ -95,8 +95,15 @@ interface OverlayState {
   /** PB-F1/F2-20: which side of the canvas the card sits on — always AWAY from
    *  the being it is about, so „schau sie an" is physically possible. */
   align: CardAlign;
-  ceremony?: { skin: string; classmate?: string; first: boolean };
-  bonusend?: { got: number; total: number; timeout: boolean };
+  /** R5-C1: `captiveDe` is WHAT was in there and `person` is whether it was a
+   *  who. Both used to be missing, and the card guessed for all five cages at
+   *  once — „Ein Buchstaben-Wesen flattert frei" over a tablet, a chair and a
+   *  class photo. The skin cannot tell them apart: four of the five are the
+   *  same satchel. */
+  ceremony?: { skin: string; captiveDe: string; person: boolean; first: boolean };
+  /** R5-C1: the one teaching card names the one cage it fired at. */
+  cagehint?: { captiveDe: string };
+  bonusend?: { got: number; total: number; timeout: boolean; secsLeft: number; phrase: PhraseSlot[][] };
   /** bonuspay: what THIS door costs, read from its own params (PB-R1 · R3-2). */
   price?: number;
   /** tip: the Regel-Seite's own rule, carried from the level (PK-R3b · R3-16). */
@@ -146,6 +153,21 @@ const priceOfDoor = (level: PaintLevel, id: string | null): number => {
   if (id === null) return 0;
   const e = allPhasesOf(level).flatMap((p) => p.entities).find((x) => x.id === id);
   return Number(e?.params?.price ?? 0);
+};
+
+/** R5-C1 · WHO OR WHAT IS IN THAT CAGE — from the cage, never from a table in
+ *  here. Chapter 1 hangs four of its five cages on the same `satchel` shell, so
+ *  the shell is not an identity; `captiveDe` is, and the `cage-captive` law
+ *  guarantees every cage declares one. `person` keys off `classmate`, the field
+ *  the cage laws already police, instead of the hardcoded „merle" the ceremony
+ *  card used to compare against (which silently made every OTHER chapter's
+ *  classmate a thing). */
+const captiveOfCage = (level: PaintLevel, id: string): { captiveDe: string; person: boolean } => {
+  const e = allPhasesOf(level).flatMap((p) => p.entities).find((x) => x.id === id);
+  return {
+    captiveDe: String(e?.params?.captiveDe ?? ""),
+    person: e?.params?.classmate !== undefined,
+  };
 };
 
 /** How many letters the bonus room actually holds — counted from its grid, so
@@ -601,7 +623,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             if (!abilitiesRef.current.includes(grants)) abilitiesRef.current = [...abilitiesRef.current, grants];
             openCard({ req: { use: "quickfire", ctx: { type: "ceremony", beat: "grant" } }, item: null, card: "grant", attempts: 0, typed: "", align: "center" });
           },
-          onCageHint: () => {
+          onCageHint: (cageId) => {
             // PB-F3 · F2-8: the first time the child stands next to a cage the
             // fist can open, say so — once per chapter, never again.
             // PB-R1 · R3-1: the sim now asks before it freezes (cageHintShown),
@@ -610,7 +632,10 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             // resumes the world. Declining silently is what froze ch01.
             if (cageHintShownRef.current) { sceneRef.current?.setOverlay(false); return; }
             cageHintShownRef.current = true;
-            openCard({ req: { use: "quickfire", ctx: { type: "ceremony", beat: "cagehint" } }, item: null, card: "cagehint", attempts: 0, typed: "", align: "center" });
+            openCard({
+              req: { use: "quickfire", ctx: { type: "ceremony", beat: "cagehint" } }, item: null, card: "cagehint",
+              attempts: 0, typed: "", align: "center", cagehint: { captiveDe: captiveOfCage(level, cageId).captiveDe },
+            });
           },
           onCageFreed: (id, skin, classmate, count) => {
             freedRef.current = [...freedRef.current, id];
@@ -620,7 +645,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             if (classmate !== undefined) freedKidsRef.current = [...freedKidsRef.current, id];
             setFreedCount(count);
             setFreedKids(freedKidsRef.current.length);
-            openCard({ req: { use: "rescue", ctx: { type: "cage", id, skin, classmate } }, item: null, card: "ceremony", attempts: 0, typed: "", align: "center", ceremony: { skin, classmate, first: count === 1 } });
+            const captive = captiveOfCage(level, id);
+            openCard({
+              req: { use: "rescue", ctx: { type: "cage", id, skin, classmate } }, item: null, card: "ceremony",
+              attempts: 0, typed: "", align: "center", ceremony: { skin, ...captive, first: count === 1 },
+            });
           },
           onGuardianDown: (id, skin) => {
             // F2-24: the chapter's climax is PLAYED, not narrated. The finale
@@ -669,7 +698,17 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           const bs = sceneRef.current?.bonusState();
           openCard({
             req: { use: "bonus", ctx: { type: "ceremony", beat: "bonus" } }, item: null, card: "bonusend",
-            attempts: 0, typed: "", align: "center", bonusend: { got: bs?.got ?? 0, total: bs?.total ?? 12, timeout: next === "bonus-timeout" },
+            attempts: 0, typed: "", align: "center",
+            bonusend: {
+              got: bs?.got ?? 0,
+              // R5-C1: this fallback was a hardcoded 12 on the one card whose
+              // whole job is to state the room's real number.
+              total: bs?.total ?? bonusLetterTotal(level),
+              timeout: next === "bonus-timeout",
+              // R5-C1: leftTicks was read here and thrown away.
+              secsLeft: Math.max(0, Math.round((bs?.leftTicks ?? 0) / 60)),
+              phrase: bs?.phrase ?? [],
+            },
           });
           // R5-A2: mountPhase consumes the return ticket (spawn + wallet)
           target = bonusReturnRef.current?.phaseId ?? level.phases[0]!.id;
@@ -985,15 +1024,28 @@ function Overlay({
       legend.push(item("letters", "spark", <><strong>{bilanz.lettersTotal} {level.collectNounDe}</strong> liegen verstreut — sammle sie ein</>));
     }
     if (drained > 0) {
-      legend.push(item("drained", "palette", <><strong>{drained} graue Dinge</strong> warten — sag, was sie sind, dann kommt die Farbe zurück</>));
+      // R5-C1 (doc 45 C6): „graue Dinge" was a placeholder Koki asked to have
+      // replaced — „Dinge" names nothing. They are the unit's own school things.
+      legend.push(item("drained", "palette", <><strong>{drained} entfärbte Schulsachen</strong> stehen grau da — sag, was sie sind, dann kommt die Farbe zurück</>));
+    }
+    if (bilanz.freedTotal > 0) {
+      // R5-C1: the objective screen promised four of the chapter's five
+      // countable things and stayed silent about the cages — while the HUD
+      // counted „Befreit x/5" from the first second. Counted from the world,
+      // like every other number on this page (`bilanz.freedTotal` IS the
+      // chapter's cage count, chapterRoleCount(level, "cage")).
+      legend.push(item("cages", "cage", <><strong>{bilanz.freedTotal} Käfige</strong> sind zu — mach jeden auf</>));
     }
     if (bilanz.kidsTotal > 0) {
-      legend.push(item("kids", "cage", (
-        <>
-          <strong>{bilanz.kidsTotal === 1 ? "Ein Klassenkind" : `${bilanz.kidsTotal} Klassenkinder`}</strong>
-          {" "}steckt fest — finde {bilanz.kidsTotal === 1 ? "es" : "sie"}
-        </>
-      )));
+      // R5-C1: the plural branch used to read „3 Klassenkinder STECKT fest".
+      // Latent while a chapter has exactly one, wrong the day one does not.
+      // …and the classmate line comes AFTER the cages, as a refinement of them.
+      // Read the other way round it counts twice: „ein Klassenkind" plus „fünf
+      // Käfige" is six things to a six-year-old, when the child is one OF the
+      // five.
+      legend.push(item("kids", "cage", bilanz.kidsTotal === 1
+        ? <>In einem steckt <strong>ein Klassenkind</strong> — finde es</>
+        : <>In {bilanz.kidsTotal} davon stecken <strong>Klassenkinder</strong> — finde sie</>));
     }
     if (bilanz.tipsTotal > 0) {
       legend.push(item("tips", "rule", <><strong>{bilanz.tipsTotal} Regel-Seiten</strong> sind aus dem Buch gerissen</>));
@@ -1117,7 +1169,13 @@ function Overlay({
           <PaintedIcon name="book" size={40} />
           <PaintedIcon name="spark" size={26} />
         </div>
-        <p style={{ fontSize: 17, margin: "0 0 4px" }}><strong>Fibel</strong> schenkt dir die <strong>FAUST</strong>!</p>
+        {/* R5-C1: „Fibel schenkt dir die FAUST!" named a book-being the chapter
+            never introduces (doc 45 C8) — and ch01 grants no fist at all since
+            doc 44 §4 moved it to ch02, so nothing in the shipped game could ever
+            reach this card to be confused by it. The card stays (it is the
+            engine's grant beat for the chapter that DOES hand one over); the
+            name goes, because no chapter has introduced her yet. */}
+        <p style={{ fontSize: 17, margin: "0 0 4px" }}>Das Buch schenkt dir die <strong>FAUST</strong>!</p>
         <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Halte <strong>X</strong> zum Laden — wirf sie auf Knoten und Kreide!</p>
         <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Weiter</button>
       </>,
@@ -1136,11 +1194,16 @@ function Overlay({
     // system emoji. The one card that says „this shape means somebody is caged"
     // now SHOWS the shape — bars, a shut latch, a warm light behind them — so
     // the child learns the silhouette they then have to spot in the world.
+    // R5-C1 (Koki's replay, 07:26:19): …and it said „jemand" — over a cage
+    // holding a sound system. The one card that teaches what a cage IS was
+    // teaching the wrong noun, in the phase where every child meets its first
+    // one. It names what it is standing in front of now. (The pronoun was wrong
+    // too: „dann geht SIE auf" for der Käfig.)
     return staged(
       <>
         <div style={{ display: "flex", justifyContent: "center", margin: "0 0 2px" }}><PaintedCage /></div>
-        <p style={{ fontSize: 17, margin: "0 0 4px" }}>Da steckt jemand fest!</p>
-        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Stell dich davor und drück <strong>↑</strong> — dann geht sie auf.</p>
+        <p style={{ fontSize: 17, margin: "0 0 4px" }}>Da steckt {o.cagehint?.captiveDe ?? "etwas"} fest!</p>
+        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>Stell dich davor und drück <strong>↑</strong> — dann geht er auf.</p>
         <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Alles klar!</button>
       </>,
     );
@@ -1156,7 +1219,7 @@ function Overlay({
         {/* Klecks himself, painted: the emoji here was 🖤 — a black heart, which
             is not an ink imp in any font on any machine */}
         <div style={{ display: "flex", justifyContent: "center", margin: "0 0 6px" }}><PaintedIcon name="blot" size={38} /></div>
-        <p style={{ fontSize: 16, margin: "0 0 4px" }}><strong>Klecks</strong> grinst: „{price} Buchstaben, und die Tür ist deine. Drinnen warten {bonusTotal} — schaffst du alle, bevor die Tinte trocknet?"</p>
+        <p style={{ fontSize: 16, margin: "0 0 4px" }}><strong>Klecks</strong> grinst: „{price} Buchstaben, und die Tür ist deine. Drinnen warten {bonusTotal} — schaffst du alle, bevor die Tinte trocknet?“</p>
         <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 10px" }}>
           Du hast {letters} <PaintedIcon name="spark" size={16} /> — {can ? "bezahlen?" : `sammle erst ${price}!`}
         </p>
@@ -1173,13 +1236,18 @@ function Overlay({
     //  · „Richtung Lager" was said as if the camp had ever been introduced. The
     //    FIRST rescue now names it — after that the phrase has a referent, and
     //    every „zum Lager" in the chapter reads.
-    const merle = o.ceremony?.classmate === "merle";
+    // R5-C1: the branch used to compare the classmate's NAME against „merle",
+    // which made every other chapter's classmate fall through to the thing
+    // branch. It asks whether the captive is a person now — the same field the
+    // cage laws police.
+    const person = o.ceremony?.person === true;
+    const captiveDe = o.ceremony?.captiveDe ?? "";
     return staged(
       <>
         <div style={{ display: "flex", justifyContent: "center", margin: "0 0 6px" }}>
-          <PaintedIcon name={merle ? "palette" : "wisp"} size={38} />
+          <PaintedIcon name={person ? "palette" : "spark"} size={38} />
         </div>
-        {merle ? (
+        {person ? (
           // PK-R6 · D: this beat comes at the END of the six rounds now, not at
           // the latch — so the copy says what the child just watched happen
           // (the colour flooding back) instead of announcing a hop out of a
@@ -1188,18 +1256,31 @@ function Overlay({
           // old line, which sent her off to the camp while the world kept her
           // standing at her cage waving. The world was right; the card was not.
           <>
-            <p style={{ fontSize: 17, margin: "0 0 2px" }}>Die Farbe strömt zurück — <strong>Merle</strong> ist wieder da!</p>
+            <p style={{ fontSize: 17, margin: "0 0 2px" }}>Die Farbe strömt zurück — <strong>{captiveDe}</strong> ist wieder da!</p>
             <p style={{ fontSize: 16, margin: "0 0 2px" }}>„Hello! I'm Merle. Thanks!“</p>
             <p style={{ fontSize: 13, color: "#6b6250", margin: "0 0 10px" }}>(Hallo! Ich bin Merle. Danke!) — Sie bleibt in der Klasse und winkt dir zu.</p>
           </>
         ) : (
+          // R5-C1 (Koki's replay, 07:26:41): this said „Ein Buchstaben-Wesen
+          // flattert frei und dreht eine Freudenrunde!" — for a sound system, a
+          // tablet, a chair and a class photo. There is no letter-being in this
+          // chapter: not an entity, not a sprite, not an animation. What the
+          // child actually watches is the cage bursting open, so that is all
+          // the card claims. NOT „und bekommt seine Farbe zurück": a caged
+          // captive has no entity in the world and no colour flood plays — that
+          // would be the same class of invented payoff this session is removing.
           <p style={{ fontSize: 16, margin: "0 0 10px" }}>
-            Ein Buchstaben-Wesen flattert frei und dreht eine Freudenrunde! <PaintedIcon name="spark" size={17} />
+            Der Käfig springt auf — <strong>{captiveDe}</strong> ist frei! <PaintedIcon name="spark" size={17} />
           </p>
         )}
         {o.ceremony?.first === true && (
+          // R5-C1 (Koki's replay, 07:26:41 + doc 45 C9): the whisper used to
+          // send the freed to „das Lager am Rand der Seite", a place doc 44
+          // §1.4 abolished and no level ever contained. The world already told
+          // the truth — a freed being stays exactly where it was freed, and
+          // Merle stands at her cage and waves — so the line says that.
           <p style={{ fontSize: 14, color: "#7a6a4a", fontStyle: "italic", margin: "0 0 10px", lineHeight: 1.45 }}>
-            Das Buch flüstert: „Bring alle, die du befreist, zum <strong>Lager am Rand der Seite</strong> — dort wartet die Klasse.“
+            Das Buch flüstert: „Alle, die du frei machst, bleiben hier auf der Seite.“
           </p>
         )}
         <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Weiter</button>
@@ -1219,11 +1300,14 @@ function Overlay({
             down wrote nothing, so that line is not offered — the card never
             describes a picture the child cannot see. */}
         {o.typed.trim() !== "" ? (
+          // R5-C1: „Sie kommt mit ins Lager!" — the camp again (doc 45 C9), and
+          // the world contradicted it twice over: nothing moves, and the Tafel
+          // stays on her own stage. What the child does see is the bloom.
           <p style={{ fontSize: 16, margin: "0 0 10px" }}>
-            Schau auf die Tafel: Da steht dein <strong>{o.typed.trim()}</strong> in Kreide — und sie blüht sonnengelb auf. Sie kommt mit ins Lager!
+            Schau auf die Tafel: Da steht dein <strong>{o.typed.trim()}</strong> in Kreide — und sie blüht sonnengelb auf.
           </p>
         ) : (
-          <p style={{ fontSize: 16, margin: "0 0 10px" }}>Sie ist müde und ganz still. Sie kommt trotzdem mit ins Lager!</p>
+          <p style={{ fontSize: 16, margin: "0 0 10px" }}>Sie ist müde und ganz still — aber sie ist frei.</p>
         )}
         <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Weiter</button>
       </>,
@@ -1237,12 +1321,40 @@ function Overlay({
         <div style={{ display: "flex", justifyContent: "center", margin: "0 0 6px" }}>
           <PaintedIcon name={perfect ? "rosette" : "blot"} size={40} />
         </div>
+        {/* R5-C1 (p9.md §5/§10): the room's twelve letters SPELL something, and
+            the card used to report them as a count — „Alle 12 Buchstaben" —
+            which is the one reading that throws the room's whole idea away. The
+            catches are laid out as the words now, so a run that missed one
+            reads „SCHOO_ THINGS" and the child can see WHICH letter got away. */}
+        <p style={{
+          fontSize: 22, letterSpacing: "0.18em", margin: "0 0 8px", textAlign: "center",
+          fontFamily: "var(--font-display, inherit)", color: "#3a2f1c",
+        }}>
+          {b.phrase.map((word, w) => (
+            <React.Fragment key={w}>
+              {/* a REAL space between the words, not only the margin: the gap
+                  has to survive being read aloud, and „SCHOO_______" is not the
+                  same word as „SCHOO_ ______" to a screen reader or to anything
+                  that reads this card as text. */}
+              {w > 0 ? " " : null}
+              <span style={{ marginRight: w < b.phrase.length - 1 ? "0.35em" : 0, whiteSpace: "nowrap" }}>
+                {word.map((slot, i) => (
+                  <span key={i} style={{ color: slot.taken ? "#3a2f1c" : "#c8bda6" }}>
+                    {slot.taken ? slot.char : "_"}
+                  </span>
+                ))}
+              </span>
+            </React.Fragment>
+          ))}
+        </p>
         <p style={{ fontSize: 16, margin: "0 0 10px" }}>
           {perfect
-            ? `PERFEKT! Alle ${b.total} Buchstaben — Klecks stempelt dir einen Sticker auf die Karte!`
+            // R5-C1 (B-p9-5): the seconds the child had left over — the room's
+            // only bragging right, and it was sitting in `bonusState()` unused.
+            ? `PERFEKT! Klecks stempelt dir einen Sticker auf die Karte — mit ${b.secsLeft} Sekunden übrig!`
             : b.timeout
-              ? `Die Tinte ist getrocknet — ${b.got} von ${b.total}. Klecks zwinkert: „Komm wieder!"`
-              : `${b.got} von ${b.total} — Klecks zwinkert: „Fast! Komm wieder!"`}
+              ? `Die Tinte ist getrocknet — ${b.got} von ${b.total}. Klecks zwinkert: „Komm wieder!“`
+              : `${b.got} von ${b.total} — Klecks zwinkert: „Fast! Komm wieder!“`}
         </p>
         <button className="pb-btn-primary" style={btn} onClick={() => onDismiss(o)}>Weiter</button>
       </>,
@@ -1310,7 +1422,10 @@ function ScorePage({
     { icon: "cage", labelDe: "Klassenkinder befreit", got: bilanz.kids, total: bilanz.kidsTotal },
   ];
   if (bilanz.freedTotal > bilanz.kidsTotal) {
-    rows.push({ icon: "wisp", labelDe: "Wesen befreit", got: bilanz.freed - bilanz.kids, total: bilanz.freedTotal - bilanz.kidsTotal });
+    // R5-C1: „Wesen befreit" counted the cages that held a sound system, a
+    // tablet, a chair and a class photo. They are school things, which is also
+    // what the bonus room spells out in letters.
+    rows.push({ icon: "cage", labelDe: "Schulsachen befreit", got: bilanz.freed - bilanz.kids, total: bilanz.freedTotal - bilanz.kidsTotal });
   }
   if (bilanz.tipsTotal > 0) rows.push({ icon: "rule", labelDe: "Regel-Seiten gefunden", got: bilanz.tips, total: bilanz.tipsTotal });
   rows.push({ icon: "spark", labelDe: `${level.collectNounDe} gesammelt`, got: bilanz.letters, total: bilanz.lettersTotal });
@@ -1371,10 +1486,14 @@ function ScorePage({
           </strong>
         </div>
       ))}
+      {/* R5-C1: „sagt Fibel" named a book-being this chapter never introduces
+          (doc 45 C8), and „die Klasse aus dem Lager" called from a place that
+          does not exist (C9). The page's own eyebrow already says who is
+          speaking — „Das Buch schreibt mit" — so the book speaks. */}
       <p style={{ fontSize: 15, margin: "14px 0 14px", color: "#7a6a4a", fontStyle: "italic", lineHeight: 1.45 }}>
         {alle
-          ? "»Du hast uns alle gefunden!«, sagt Fibel. »Die Seite ist wieder voll.«"
-          : "»Danke!«, ruft die Klasse aus dem Lager. »Ein paar von uns warten noch.«"}
+          ? "„Die Seite ist wieder voll“, schreibt das Buch. „Du hast alle gefunden.“"
+          : "„Fast“, schreibt das Buch. „Ein paar stecken noch fest.“"}
       </p>
       <button className="pb-btn-primary" style={{ ...btn, fontSize: 16 }} onClick={onNext}>Seite umblättern</button>
     </div>

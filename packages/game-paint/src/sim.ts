@@ -88,7 +88,10 @@ export type SimEvent =
   | { type: "cageFreed"; id: string; skin: string; classmate: string | undefined; count: number }
   | { type: "guardianDown"; id: string; skin: string }
   /** PB-F3 · F2-8: the child is standing next to a cage the fist can open */
-  | { type: "cageHint" }
+  /** R5-C1: the hint card names what it is standing in front of, so the cage's
+   *  id rides along — one teaching card that says „jemand" over a sound system
+   *  teaches the wrong shape. */
+  | { type: "cageHint"; id: string }
   | { type: "letters"; got: number; total: number }
   | { type: "letterTaken"; c: number; r: number }
   /** PK-R3b · R3-16: a Regel-Seite was picked up. It carries its own rule, so
@@ -225,6 +228,14 @@ export class Sim {
   lettersCollected = 0;
   /** letter cells still uncollected, "c,r" keys (render mirrors this) */
   letterCells = new Set<string>();
+  /** R5-C1: cells taken in THIS mount, "c,r" keys. The bonus room's end card
+   *  lays its catches out as the phrase they spell, and that layout is about
+   *  the RUN — the shell's own taken-cells ledger is cumulative across visits,
+   *  and a second paid visit reading it would show letters this run never
+   *  caught. Distinct from `letterCells`' complement for the same reason: the
+   *  ledger suppresses respawned cells, so the complement is only accidentally
+   *  right and stops being right the moment p9's letters respawn. */
+  runTakenCells = new Set<string>();
   /** R3-16 · where each uncollected letter IS right now, in subs — its cell
    *  centre until the magnet starts pulling it. The scene draws from this, so
    *  the picture and the pickup can never disagree. */
@@ -346,7 +357,12 @@ export class Sim {
     if (this.hitPauseTicks > 0) { this.hitPauseTicks--; return events; } // R3-6: impact freeze
     this.tickCount++;
     if (this.gateToastCooldown > 0) this.gateToastCooldown--;
-    if (this.bonusLeftTicks > 0) {
+    // R5-C1: …and it stops the moment the room is left. The shell reads the
+    // clock one turn AFTER the exit fires (its handoff is a setTimeout), so a
+    // still-running clock would hand the PERFEKT card a smaller number than the
+    // one the child beat it by. The timeout path is untouched: there the clock
+    // is already exactly 0.
+    if (this.bonusLeftTicks > 0 && !this.exitFired) {
       this.bonusLeftTicks--;
       if (this.bonusLeftTicks === 0) { events.push({ type: "exit", to: "bonus-timeout" }); return events; }
     }
@@ -812,7 +828,7 @@ export class Sim {
       if (dx <= 48 && dy <= 40) {
         this.cageHintFired = true;
         this.overlayOpen = true; // the hint is a card: the world waits for it
-        events.push({ type: "cageHint" });
+        events.push({ type: "cageHint", id: e.id });
         return;
       }
     }
@@ -853,6 +869,7 @@ export class Sim {
         const [c, r] = key.split(",").map(Number) as [number, number];
         this.letterCells.delete(key);
         this.letterPos.delete(key);
+        this.runTakenCells.add(key);
         this.lettersGot++;
         this.lettersCollected++;
         events.push({ type: "letterTaken", c, r });

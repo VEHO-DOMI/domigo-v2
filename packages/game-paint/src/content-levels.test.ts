@@ -32,6 +32,8 @@ describe("shipped paint levels", () => {
 // with machine load: this suite was FLAKY, not broken. The timeout is raised
 // deliberately rather than the law weakened; the quadratic law itself is filed
 // as a follow-up, with the measurement, in the E1 report.
+// (C1 hit and diagnosed the same flake independently, before touching a line —
+// same conclusion, so the explanation is kept once instead of twice.)
     it(`${file} parses and passes the laws`, () => {
       const parsed = parsePaintLevel(level);
       const failures = checkLevelLaws(parsed);

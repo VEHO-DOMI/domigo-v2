@@ -15,6 +15,7 @@
     "check:bundle": "node scripts/check-game-bundle.mjs",
     "check:paint-art": "node --experimental-strip-types scripts/check-paint-art.mjs",
     "check:game-tasks": "node --experimental-strip-types scripts/check-game-tasks.mjs",
+    "check:paint-copy": "node --experimental-strip-types scripts/check-paint-copy.mjs",
     "record:paint-tape": "node --experimental-strip-types scripts/record-paint-tape.mjs",
     "content": "node packages/content-pipeline/src/content.ts",
     "audit:blind-solve": "node scripts/audit/blind-solve.ts",
