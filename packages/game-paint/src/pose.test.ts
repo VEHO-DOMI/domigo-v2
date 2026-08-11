@@ -5,9 +5,12 @@
 // been seen to turn red.
 
 import { describe, expect, it } from "vitest";
-import { BANK_X, RUN_VX, SQUASH_VY, type EntPoseInput, entPoseCell } from "./anim.ts";
-import { BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX } from "./entities.ts";
-import { SUBS } from "./paint.ts";
+import { BANK_X, RUN_VX, SQUASH_DWELL_TICKS, type EntPoseInput, bouncerSquash, entPoseCell } from "./anim.ts";
+import { BOUNCE_GRAVITY_EVERY, BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX } from "./entities.ts";
+import { PAINT, SUBS } from "./paint.ts";
+
+/** Dieselbe Schwerkraft, die der Hüpfer in entities.ts anwendet. */
+const GRAVITY_SUBS = PAINT.gravity;
 
 const ent = (over: Partial<EntPoseInput>): EntPoseInput => ({
   role: "chaser",
@@ -32,12 +35,68 @@ describe("entPoseCell — the four motion poses", () => {
     expect(entPoseCell(ent({ vx: RUN_VX }))).toBe("run");
   });
 
-  it("a bouncer squashes on the fast part of its arc, not at the apex (TAMPER)", () => {
-    expect(entPoseCell(ent({ role: "bouncer", vy: -BOUNCE_UP }))).toBe("squash"); // just launched
-    expect(entPoseCell(ent({ role: "bouncer", vy: BOUNCE_UP }))).toBe("squash"); // falling in
-    expect(entPoseCell(ent({ role: "bouncer", vy: 0 }))).toBe("a"); // apex — hanging, not squashed
-    expect(entPoseCell(ent({ role: "bouncer", vy: SQUASH_VY - 1 }))).toBe("a");
-    // the same vy on a NON-bouncer is not a squash
+  // R5-W1 · F1 · DER RADIERER, ÜBER EINEN ECHTEN HÜPFER GEMESSEN.
+  //
+  // Der alte Test pinnte Geschwindigkeiten von Hand — und pinnte damit einen
+  // Zustand, den die Simulation nie zeichnet: `vy: BOUNCE_UP` (fallend mit
+  // voller Wucht) existiert nur auf dem Tick, an dem der Aufprall vy im selben
+  // Schritt wieder auf −BOUNCE_UP setzt. Er behauptete „squash auf dem schnellen
+  // Teil des Bogens" und beschrieb damit einen Bogen, den es nicht gab.
+  //
+  // Deshalb wird der Bogen jetzt AUS DEN SIM-KONSTANTEN ERZEUGT statt getippt:
+  // was hier steht, kann nicht mehr von dem abweichen, was der Radierer tut.
+  const arc = (ticks = 13): { bounceTick: number; vy: number }[] => {
+    const out: { bounceTick: number; vy: number }[] = [];
+    let vy = -BOUNCE_UP;
+    for (let t = 0; t < ticks; t++) {
+      out.push({ bounceTick: t, vy });
+      if ((t + 1) % BOUNCE_GRAVITY_EVERY === 0) vy += GRAVITY_SUBS;
+    }
+    return out;
+  };
+
+  it("der Aufprall steht eine DAUER, kein Einzelbild (TAMPER)", () => {
+    const cells = arc().map((s) => entPoseCell(ent({ role: "bouncer", ...s })));
+    expect(cells.filter((c) => c === "squash").length).toBe(SQUASH_DWELL_TICKS);
+    // …und zwar am Anfang des Bogens, wo der Körper den Boden berührt hat
+    expect(cells.slice(0, SQUASH_DWELL_TICKS).every((c) => c === "squash")).toBe(true);
+    expect(cells.slice(SQUASH_DWELL_TICKS).some((c) => c === "squash")).toBe(false);
+  });
+
+  it("ohne gemalte Streck-Zelle bleibt der Flug beim Ruhe-Paar", () => {
+    const cells = arc().map((s) => entPoseCell(ent({ role: "bouncer", ...s })));
+    expect(cells.slice(SQUASH_DWELL_TICKS).every((c) => c === "a" || c === "b")).toBe(true);
+  });
+
+  it("liegt die Streck-Zelle auf der Platte, wird sie im Flug gezeigt (Nachrüst-Haken)", () => {
+    const cells = arc().map((s) => entPoseCell(ent({ role: "bouncer", hasStretch: true, ...s })));
+    expect(cells.filter((c) => c === "stretch").length).toBeGreaterThan(0);
+    // der Aufprall gehört weiterhin dem Aufprall
+    expect(cells.slice(0, SQUASH_DWELL_TICKS).every((c) => c === "squash")).toBe(true);
+  });
+
+  it("die Verformung ist stetig — der einzige harte Schnitt ist der Aufprall", () => {
+    const scales = arc().map((s) => bouncerSquash(s.bounceTick, s.vy));
+    let maxStep = 0;
+    for (let i = 1; i < scales.length; i++) {
+      maxStep = Math.max(
+        maxStep,
+        Math.abs(scales[i]!.sx - scales[i - 1]!.sx),
+        Math.abs(scales[i]!.sy - scales[i - 1]!.sy),
+      );
+    }
+    expect(maxStep, "im Bogen springt nichts").toBeLessThan(0.16);
+    // …und der Sprung ZURÜCK in den nächsten Aufprall ist größer als alles im
+    // Bogen: genau dort GEHÖRT ein Bruch hin, und nur dort
+    const wrap = Math.abs(scales[0]!.sy - scales[scales.length - 1]!.sy);
+    expect(wrap).toBeGreaterThan(maxStep);
+  });
+
+  it("reduzierte Bewegung lässt den Körper in Ruhe", () => {
+    for (const s of arc()) expect(bouncerSquash(s.bounceTick, s.vy, true)).toEqual({ sx: 1, sy: 1 });
+  });
+
+  it("dieselbe Geschwindigkeit auf einem NICHT-Hüpfer ist keine Quetschung", () => {
     expect(entPoseCell(ent({ role: "chaser", vy: -BOUNCE_UP }))).toBe("a");
   });
 

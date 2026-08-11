@@ -27,8 +27,8 @@ import { CHALK_COLOURS, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICK
 import { COLLECT_ANCHOR_PX, MAGNET_FIELD_PX, Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { FOCUS_MS, focusView } from "./camera.ts";
 import {
-  AWAKEN_ROOM_MS, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, RESTORE_SPARKLE_MS, WASHED_ROLES,
-  awakenRoomBloom, awakenRoomSweep, entPoseCell, floodBloomFor, greyLuma, guardianManoeuvre, guardianPitchRad,
+  AWAKEN_ROOM_MS, CAGE_OPEN_TICKS, CELL_IS_DIRECTIONAL, type EntPoseInput, REST_SQUASH, RESTORE_SPARKLE_MS, WASHED_ROLES,
+  awakenRoomBloom, awakenRoomSweep, bouncerSquash, entPoseCell, floodBloomFor, greyLuma, guardianManoeuvre, guardianPitchRad,
   guardianRollScaleX, poseStateOf, washAlphaFor,
 } from "./anim.ts";
 import { CUE_CHALK, CUE_HALO, chalkArrow } from "./cue.ts";
@@ -1403,6 +1403,10 @@ export class PaintScene extends Phaser.Scene {
         // must vouch for the whole pair, because entTex falls back to `_a`
         // (the closed cage, captive behind bars) on any missing cell.
         hasOpen: this.textures.exists(`pb-${e.skin}_open0`) && this.textures.exists(`pb-${e.skin}_open1`),
+        // R5-W1 · F1 · derselbe Nur-was-da-ist-Vertrag für die Streck-Zelle des
+        // Hüpfers: liegt sie eines Tages auf der Platte, zeigt der Flug sie —
+        // ohne eine Zeile Code hier oder in anim.ts.
+        hasStretch: this.textures.exists(`pb-${e.skin}_stretch`),
       });
       img.setTexture(this.entTex(e.skin, cell));
       const targetH = this.entTargetH(e);
@@ -1456,7 +1460,16 @@ export class PaintScene extends Phaser.Scene {
         // anyway — see cagePopT for why a tween cannot live here.
         const pop = this.cagePopT(e);
         const k = targetH / frameH;
-        img.setScale(k * (1 + 0.18 * pop), k * (1 - 0.16 * pop));
+        // R5-W1 · F1 · DIE QUETSCHUNG DES HÜPFERS, in dieselbe Zeile gefaltet,
+        // aus demselben Grund wie der Käfig-Pop: renderEntities setzt die
+        // Skalierung JEDE Frame neu, ein Tween daneben wäre überschrieben.
+        // Nur solange er hüpft — ein erlöster Radierer wird von stepRedeemed
+        // über x/y bewegt, sein `vy` friert ein, und eine Verformung aus
+        // stehengebliebener Geschwindigkeit bliebe für immer platt.
+        const sq = e.role === "bouncer" && !e.redeemed
+          ? bouncerSquash(e.bounceTick, e.vy, this.cfg.reducedMotion)
+          : REST_SQUASH;
+        img.setScale(k * (1 + 0.18 * pop) * sq.sx, k * (1 - 0.16 * pop) * sq.sy);
         if (pop > 0) img.setRotation(0.13 * pop);
         else if (e.role === "cage" && e.redeemed) img.setRotation(0);
       }

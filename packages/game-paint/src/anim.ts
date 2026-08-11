@@ -296,9 +296,64 @@ export const awakenRoomSweep = (ms: number): number => {
 /** Half the patrol speed: a chaser's vx is ±ENEMY_WALK while walking and 0 at
  *  an edge turn, so this cleanly separates "striding" from "stopped". */
 export const RUN_VX = ENEMY_WALK / 2;
-/** The fast part of a bouncer's arc, i.e. the squash at the bottom — the art
- *  shows the body flattened wide, which is contact, not apex. */
-export const SQUASH_VY = BOUNCE_UP * 0.8;
+// ── R5-W1 · F1 · DER RADIERER HÖRT AUF ZU BLITZEN (Kokis Replay, 07:25:36) ───
+// Der alte Schalter war `|vy| >= BOUNCE_UP * 0.8`. Gemessen an der echten
+// Simulation traf das GENAU EINEN Tick pro Hüpfer — den Aufprall — und fiel
+// danach hart auf den Ruhe-Bob zurück: ein 17-ms-Blitz, zehnmal pro Sekunde.
+// Deshalb las es sich als „buggy beim Umschalten"; die Verankerung war richtig,
+// die Verweildauer war es nicht.
+//
+// Zwei Antworten, und die wichtigere ist die zweite:
+//  · die Zelle bleibt jetzt SQUASH_DWELL_TICKS lang liegen, gezählt ab dem
+//    Kontakt selbst (`bounceTick`), statt an einer Geschwindigkeitsschwelle zu
+//    hängen, die der Bogen zweimal streift;
+//  · und zwischen den Zellen verformt sich der Körper KONTINUIERLICH — breit
+//    und flach im Aufprall, schmal und lang im Flug. Damit gibt es überhaupt
+//    keinen harten Schnitt mehr zu sehen, ohne dass eine einzige neue Zelle
+//    gemalt werden müsste. Der Rand-Ursprung sitzt unten mittig, also bleiben
+//    die Füße beim Quetschen am Boden — die Voraussetzung dafür, dass es wie
+//    Gewicht aussieht und nicht wie Zoomen.
+/** Wie lange die Aufprall-Zelle/-Verformung nach der Berührung steht. Drei
+ *  Ticks (50 ms) auf einen 13-Tick-Hüpfer: kurz genug, dass der Körper den
+ *  größten Teil des Bogens neutral fliegt, lang genug, dass ein Auge es sieht —
+ *  ein Tick ist ein Blitz, das war der Defekt. */
+export const SQUASH_DWELL_TICKS = 3;
+/** Wie flach der Aufprall drückt und wie breit er dabei wird. Nicht
+ *  volumentreu (0,28 ≠ 0,22) und mit Absicht: ein Radiergummi ist ein
+ *  Gummiklotz, kein Ballon. */
+export const SQUASH_FLAT = 0.28;
+export const SQUASH_WIDE = 0.22;
+/** Die Gegenbewegung im Flug — etwa halb so stark: ein Aufprall verformt mehr
+ *  als eine Flugbahn. */
+export const STRETCH_TALL = 0.16;
+export const STRETCH_NARROW = 0.12;
+/** Ab wann eine (später gemalte) Streck-Zelle gezeigt würde. */
+export const STRETCH_CELL_MIN = 0.35;
+
+/** Nicht-uniforme Skalierung eines Hüpfers in diesem Tick; {1,1} für einen
+ *  ruhenden Körper. Rein, deterministisch, aus der Kontakt-Uhr und der eigenen
+ *  Geschwindigkeit — nie aus der Wanduhr.
+ *  (Die alte Schwelle SQUASH_VY ist damit pensioniert: sie beschrieb einen
+ *  Bogen, den die Simulation nie gezeichnet hat.) */
+export interface Squash { sx: number; sy: number }
+export const REST_SQUASH: Squash = { sx: 1, sy: 1 };
+
+/** Wie „gestreckt" der Körper gerade fliegt, 0…1 (0 im Aufprall und im
+ *  Scheitel, 1 im schnellsten Teil des Bogens). */
+export const bounceStretch = (bounceTick: number, vy: number): number => {
+  const impact = Math.max(0, 1 - bounceTick / SQUASH_DWELL_TICKS);
+  return Math.min(1, Math.abs(vy) / BOUNCE_UP) * (1 - impact);
+};
+
+export const bouncerSquash = (bounceTick: number, vy: number, reducedMotion = false): Squash => {
+  if (reducedMotion) return REST_SQUASH;
+  const impact = Math.max(0, 1 - bounceTick / SQUASH_DWELL_TICKS);
+  const stretch = bounceStretch(bounceTick, vy);
+  return {
+    sx: 1 + SQUASH_WIDE * impact - STRETCH_NARROW * stretch,
+    sy: 1 - SQUASH_FLAT * impact + STRETCH_TALL * stretch,
+  };
+};
 /** Near the extremes of the flyer's sweep, where it rolls into the turn — the
  *  art shows the whole body banked over, which is a turn, not a straight run. */
 export const BANK_X = FLYER_SWEEP_PX * SUBS * 0.8;
@@ -543,6 +598,16 @@ export interface EntPoseInput {
    *  freed cage rests OPEN when the painting exists — the burst cell goes
    *  back to being the throw-open BEAT rather than the permanent state. */
   hasOpen?: boolean;
+  /** R5-W1 · F1 · bouncers only: ticks since the last ground contact. Drives the
+   *  impact cell's DWELL, which is what the old velocity threshold could not do
+   *  (it fired on exactly one tick of a six-tick arc). */
+  bounceTick?: number;
+  /** R5-W1 · F1 · does this SKIN own a `_stretch` cell on disk? Same
+   *  only-present contract as `hasOpen`: the scene asks the textures, the hook
+   *  stays pure. Until a painter delivers `<skin>_stretch.png` the flight keeps
+   *  today's idle pair, and the day it lands the cell appears with NO code
+   *  change — the continuous squash below already carries the movement. */
+  hasStretch?: boolean;
 }
 
 // ── PK-R6 · D · THE CLASSMATE'S CELLS (doc 44 §3.3, doc 40 §3 rig grammar) ───
@@ -654,7 +719,12 @@ export const entPoseCell = (e: EntPoseInput): string => {
   if (e.state === "act") return e.role === "crusher" ? "stomp" : "act";
   if (e.state === "burst") return "burst";
   if (e.state === "shaking") return "shake";
-  if (e.role === "bouncer" && Math.abs(e.vy) >= SQUASH_VY) return "squash";
+  // R5-W1 · F1: die Aufprall-Zelle steht jetzt eine DAUER, gezählt ab der
+  // Berührung — nicht einen Blitz an einer Geschwindigkeitsschwelle.
+  if (e.role === "bouncer") {
+    if ((e.bounceTick ?? SQUASH_DWELL_TICKS) < SQUASH_DWELL_TICKS) return "squash";
+    if (e.hasStretch === true && bounceStretch(e.bounceTick ?? 0, e.vy) >= STRETCH_CELL_MIN) return "stretch";
+  }
   if (e.role === "flyer" && Math.abs(e.x - e.homeX) >= BANK_X) return "bank";
   // platforms carry a per-tick ride delta in vx that is not a gait
   if (!e.role.startsWith("platform") && Math.abs(e.vx) >= RUN_VX) return "run";

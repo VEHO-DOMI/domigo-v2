@@ -72,6 +72,12 @@ export interface EntityState {
    *  would have done. It is also what makes „she flew a whole path" a countable
    *  claim rather than a screenshot. */
   flightTick: number;
+  /** R5-W1 · F1 · bouncers only: ticks since this body last touched the ground.
+   *  It drives the hop's gravity clock (see BOUNCE_GRAVITY_EVERY) and, in the
+   *  renderer, the impact squash — and it is its OWN field rather than `timer`
+   *  because `timer` carries the idle bob's phase: resetting that on every hop
+   *  would freeze the two-cell breath onto one frame forever. */
+  bounceTick: number;
   params: Record<string, unknown>;
 }
 
@@ -160,6 +166,10 @@ const ENEMY_LUNGE = Math.round(1.6 * SUBS);
 /** A bouncer's upward impulse at ground contact (same reason as ENEMY_WALK:
  *  the squash pose keys off it). */
 export const BOUNCE_UP = Math.round(3.2 * SUBS);
+/** R5-W1 · F1: the bouncer's gravity clock — one +1 px/t every N ticks since
+ *  its last ground contact, the same device the player's arc uses. 2 is what
+ *  turns a 3,6-px/6-tick vibration into a ~13,6-px/~15-tick hop. */
+export const BOUNCE_GRAVITY_EVERY = 2;
 /** Half-width, in px, of a flyer's sine patrol around its home — the bank pose
  *  fires near the extremes, where the flyer rolls into its turn. */
 export const FLYER_SWEEP_PX = 40;
@@ -504,6 +514,7 @@ export const spawnEntities = (specs: EntitySpec[], links: LinkSpec[]): EntityWor
     dodges: 0,
     throws: 0,
     flightTick: 0,
+    bounceTick: 0,
     awakenStep: 0,
     freedTick: 0,
     params: s.params ?? {},
@@ -759,12 +770,24 @@ export const stepEntities = (
         // to be contract-free, so he drifted through columns and was then
         // lifted on top of them.
         const prevY = e.y;
-        e.vy += GRAVITY;
+        // R5-W1 · F1 · DER HÜPFER BEKOMMT EINE UHR (Kokis Replay, 07:25:36).
+        // Die Schwerkraft lag hier auf JEDEM Tick, während der Held seine seit
+        // jeher auf einer Uhr hat (PAINT.gravityEveryTicks — „the float lives
+        // here"). Ergebnis war ein Bogen von 3,6 px in 6 Ticks: zehn Hüpfer pro
+        // Sekunde, auf 16-px-Kacheln ein Zittern statt eines Rhythmus. Dieselbe
+        // Uhr, kontakt-gekoppelt, macht daraus ~13,6 px in ~15 Ticks — ein
+        // Hüpfen, das ein Kind mitzählen kann. Kontakt-gekoppelt und nicht
+        // global, damit jeder Bogen exakt gleich lang ist: eine globale Uhr
+        // liefert abwechselnd 13 und 11 Ticks, und ungleiche Hüpfer lesen sich
+        // als Fehler.
+        e.bounceTick++;
+        if (e.bounceTick % BOUNCE_GRAVITY_EVERY === 0) e.vy += GRAVITY;
         e.y += e.vy;
         const g = groundAt(grid, e.x, e.y);
         if (g !== null && e.vy > 0 && prevY <= g && e.y >= g) {
           e.y = g;
           e.vy = -BOUNCE_UP;
+          e.bounceTick = 0;
           const aheadG = walkAheadAt(grid, e, e.x + 20 * SUBS * e.dir);
           if (aheadG === null) e.dir = (e.dir * -1) as 1 | -1;
         }
