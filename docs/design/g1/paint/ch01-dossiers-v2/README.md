@@ -25,6 +25,18 @@ Tap-Apex 50 / Halte-Apex 101 px · JUMP_UP 4 · Magnet 25,6 px.
   leben als Architektur/Guardian, chair als Käfig-Insasse. Grund: B8-Vollabdeckung.
   Gilt als Empfehlung, bis Koki im PR nickt oder vetot.
 
+## §Tor-Antworten 2026-08-11 (Koki, nach Merge #252 — RATIFIZIERT)
+
+1. **Käfig-Insassen RATIFIZIERT:** p1 = SOUND SYSTEM · p2 = TABLET · Arena =
+   KLASSENFOTO (Stuhl war Dossier-fix). Die „Empfehlung bis PR-Nick"-Vorbehalte in
+   den Dossiers sind damit AUFGEHOBEN.
+2. **D-5 = OPTION A:** Buchstaben respawnen im Bonusraum beim Zweitbesuch
+   (Register-Zeile D-5; Guard = Session B1).
+3. **restoreRoom-Override + B20-Delta:** bestätigt wie vorgemerkt — kein Einspruch.
+4. **Run-Kanon-Klärung RATIFIZIERT:** „3 Schwarm-Karten garantiert" gilt für
+   GEH-Tempo; ein rennendes Kind fängt S3, Minimum 2 — die ehrliche Zeile bleibt,
+   Run wird NICHT gedrosselt.
+
 ## §Käfig-Zensus v2 (doc 44 §2.3: „restage per dossier" — hier der Restage)
 
 | # | Phase | Hülle | Insasse | Status |
