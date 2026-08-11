@@ -80,8 +80,22 @@ const paths: Record<PaintedIconName, React.ReactElement> = {
         <path d="M15.4 9.2 L15.8 20.4" />
       </g>
       <path d="M5.2 12.4 C9.4 11.8 14.6 11.8 18.6 12.4" fill="none" stroke="#33481d" strokeWidth="1.3" strokeLinecap="round" />
-      {/* the hoop, swung clear: this cage is OPEN */}
-      <path d="M4.6 7.6 C7.2 3.9 12.4 2.6 17.8 4.2" fill="none" stroke="#3d5220" strokeWidth="1.5" strokeLinecap="round" />
+      {/* R5-W1 · D1 (blind critic, exemplar round): the open hoop that used to
+          arc over the top gave the whole icon a PADLOCK silhouette — body plus
+          shackle — and the critic read the objective line „a classmate is
+          stuck" as being marked with a lock. A cage's lid is a LID: hinged at
+          the left rim, thrown back and up, with its own bars. Same message
+          (this cage stands open), a shape no lock has. */}
+      <g transform="rotate(-38 5.6 8.4)">
+        <path d="M5.2 6.6 C9.4 5.6 14.4 5.6 18.4 6.7 L18.4 8.6 C14.4 7.5 9.4 7.5 5.2 8.5 Z"
+          fill="#ffe9bd" stroke="#3d5220" strokeWidth="1.3" strokeLinejoin="round" />
+        <g stroke="#33481d" strokeWidth="1.2" strokeLinecap="round">
+          <path d="M9.4 6 L9.4 8.2" />
+          <path d="M13.4 5.8 L13.4 8.1" />
+        </g>
+      </g>
+      {/* the hinge it swung on */}
+      <circle cx="5.4" cy="8.6" r="1.1" fill="#3d5220" />
       <path d="M6.4 10 C8.6 9.4 11 9.2 13.4 9.3" fill="none" stroke={SHEEN} strokeWidth="1" strokeLinecap="round" />
     </>
   ),

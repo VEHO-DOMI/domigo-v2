@@ -291,10 +291,36 @@ export const PAINT_OVERLAY_CSS = `
   border: 2px solid #b78d51;
   border-radius: 17px 23px 15px 21px / 21px 15px 23px 17px;
   box-shadow:
+    /* the sheets under this one: the card is the top page of a book, not a
+       rectangle in mid-air (blind critic on the exemplar) */
+    5px 6px 0 -2px rgba(247,237,213,0.92),
+    6px 7px 0 -1px rgba(150,116,64,0.5),
+    10px 12px 0 -4px rgba(247,237,213,0.8),
+    11px 13px 0 -3px rgba(150,116,64,0.34),
     0 12px 34px rgba(26,17,8,0.42),
     inset 0 0 0 1px rgba(255,251,238,0.7),
     inset 0 0 30px rgba(150,116,64,0.2);
   animation: pb-card-in ${CARD_ENTER_MS}ms ${CARD_ENTER_DELAY_MS}ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+/* R5-W1 · D1 — THE PAGE, not a panel. Blind critic on the exemplar: „a
+   drop-shadowed rectangle … a floating modal". Two marks fix that, both free:
+   the SHEETS UNDER IT (two offset paper edges, so the card is the top page of
+   a book rather than one rectangle in mid-air) and the TURNED CORNER at the
+   bottom right, where a page you are about to turn lifts off the one beneath.
+   Pointer-transparent, so neither ever eats a tap. */
+.pb-card::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 34px;
+  height: 34px;
+  pointer-events: none;
+  border-bottom-right-radius: 20px;
+  background:
+    linear-gradient(315deg, #e6d5ac 0%, #f3e8ce 42%, rgba(243,232,206,0) 43%),
+    linear-gradient(315deg, rgba(120,92,50,0.34) 0%, rgba(120,92,50,0) 46%);
+  box-shadow: -2px -2px 5px rgba(70,52,26,0.16);
 }
 /* the hand-inked rule inside the trim — the mark that makes a sheet of paper
    read as a PAGE. Pointer-transparent, so it never eats a tap. */
@@ -694,6 +720,167 @@ export const PAINT_OVERLAY_CSS = `
 /* ── the world fades up once the child says „Los geht's!" ──────────────── */
 @keyframes pb-world-in { from { opacity: 0; } }
 .pb-world-in { animation: pb-world-in 240ms ease-out; }
+
+/* ══ R5-W1 · D1 · THE GLANCE GRAMMAR ═══════════════════════════════════════
+   Koki, replay of 11 August: „man hängt im Lesen fest". The card was four
+   equal lines of type with a small picture on top and the ENGLISH — the thing
+   the game teaches — set smaller than everything else, inside the buttons.
+   Nothing was marked, so a six-year-old had to read all of it to find the one
+   line that says what to do.
+
+   The fix is one hierarchy, applied to every card kind and every ceremony:
+   PLATE (a picture) → KEY (one marked line) → QUIET (the rest, one step back)
+   → ACT (big painted targets) → HELP (folded until earned). The sentences are
+   untouched — they were already capped at 56 characters by the kurzweilig law
+   (MAX_LINE_DE); what changes is which of them leads. */
+
+/* THE PLATE — the picture a card leads with. Bigger than the old 88–130 px
+   portrait slot, because doc 44 §3.1 rules that the asker's presence IS the
+   card and a bare text card is not a legitimate surface. Deckled like every
+   other painted thing in the book, so it reads as pasted-in rather than as an
+   image element. */
+/* the plate and whatever is pressed onto its corner travel together; the plate
+   itself keeps clipping its picture, so the stamp lives in this wrapper rather
+   than inside the frame it hangs off */
+.pb-plate-wrap {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 8px;
+}
+.pb-plate {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  border: 2px solid #b78d51;
+  border-radius: 15px 10px 16px 11px / 11px 16px 10px 15px;
+  box-shadow: inset 0 2px 10px rgba(120,92,50,0.22), 0 3px 10px rgba(40,28,12,0.18);
+  background-color: #fdf6e4;
+  overflow: hidden;
+  line-height: 0;
+}
+.pb-plate img { display: block; max-width: 100%; height: auto; }
+
+/* THE KEY — the ONE marked line on a card, and the only emphasis device in
+   the whole overlay (cards/emphasis.test.ts holds that: bold and <strong> may
+   not be built by hand any more). Display face, because doc 42 §5 gives
+   headlines to Fredoka; a chalk stroke under it, because a highlighter band
+   would be app UI and this book marks things with a brush. */
+.pb-key {
+  position: relative;
+  display: block;
+  margin: 0 0 4px;
+  padding: 0 2px 7px;
+  font-family: var(--font-display, inherit);
+  font-weight: 800;
+  font-size: 23px;
+  line-height: 1.16;
+  color: #33291a;
+  text-wrap: balance;
+}
+/* the stroke: laid on by hand, so it is not quite level, thins at both ends
+   and does not run the whole width of the line */
+.pb-key::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 0;
+  height: 3px;
+  border-radius: 3px;
+  transform: rotate(-0.5deg);
+  background: linear-gradient(90deg, rgba(183,141,81,0), #b78d51 22%, #9a6a28 55%, rgba(154,106,40,0) 100%);
+  pointer-events: none;
+}
+/* A LINE TOO LONG TO BE AN ASK leads without shouting: same face, less weight,
+   less size, and no stroke. Blind critic, first full round: marking a whole
+   ceremony sentence „bolds the whole paragraph indiscriminately". The
+   threshold is the card law's own 56 characters (MAX_LINE_DE). */
+.pb-key-long {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  padding-bottom: 0;
+}
+.pb-key-long::after { display: none; }
+
+/* the English ask carries the book's own accent, so the lesson is also the
+   warmest thing on the card rather than the smallest */
+.pb-key-en { color: #6b4a12; }
+
+/* the inline half of the device: the one word or number inside a line that
+   carries it. No stroke — a stroke under a fragment mid-sentence reads as a
+   correction mark rather than as emphasis. */
+.pb-key-bit {
+  font-family: var(--font-display, inherit);
+  font-weight: 800;
+  color: #33291a;
+}
+
+/* THE QUIET LAYER — the fiction line and the story line, one step back: same
+   ink, less of it. They are not hidden (a first-reader needs their German),
+   they simply stop competing with the ask. */
+.pb-quiet {
+  margin: 0 0 3px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: #8a7a58;
+}
+.pb-quiet-i { font-style: italic; }
+
+/* THE VERB, STAMPED ON THE PICTURE. It was tried beside the ask first and read
+   as a stray control floating at the card's left edge; pressed into the corner
+   of the thing it acts on it is a seal, and it costs the card no height. */
+.pb-stamp {
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: #6f5a34;
+  transform: rotate(-5deg);
+  border-radius: 15px 12px 16px 13px / 13px 16px 12px 15px;
+  background-color: #f2e5c6;
+  background-image: radial-gradient(120% 100% at 26% 0%, rgba(255,255,255,0.9), rgba(255,255,255,0) 66%);
+  box-shadow: inset 0 0 0 2px rgba(183,141,81,0.8), 0 2px 6px rgba(40,28,12,0.24);
+}
+
+/* THE HELP FOLD — the hint ladder, folded until the child has earned a rung
+   (cards/glance.ts owns when). Open, it is one short line per rung with its
+   own painted mark; shut, it is a tab. It transitions, it never ANIMATES: an
+   animated fold would need an entry in the end-states kill list, and a thing a
+   child taps open is not part of the card's entrance. */
+.pb-help { margin: 10px 0 0; text-align: left; }
+.pb-card button.pb-help-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px 5px;
+  font-size: 12.5px;
+  font-family: var(--font-label, inherit);
+  font-weight: 700;
+  color: #8a5a2b;
+}
+.pb-help-body {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 180ms ease-out, opacity 140ms ease-out;
+}
+.pb-help[data-open="1"] .pb-help-body { max-height: 220px; opacity: 1; }
+.pb-help-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 7px 2px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #8a5a2b;
+  font-family: var(--font-label, inherit);
+}
 
 /* ── THE END-STATES LAW: every animated class above, killed ─────────────── */
 @media (prefers-reduced-motion: reduce) {

@@ -5,6 +5,7 @@
 // array (single-tap-commit kinds fold atomically — no React stale closure).
 import React from "react";
 import { cardBtn } from "./CardShell.tsx";
+import { CardBack } from "./Glance.tsx";
 import { scrollBehavior } from "./motion.ts";
 import {
   WHEEL_ITEM_H, WHEEL_SETTLE_MS, spellSlots, spellTrayDisabled,
@@ -20,13 +21,41 @@ export type Dispatch<A> = (a: A | A[]) => void;
 
 const col: React.CSSProperties = { display: "flex", flexDirection: "column", gap: 8 };
 const rowWrap: React.CSSProperties = { display: "flex", flexWrap: "wrap", gap: 8, justifyContent: "center" };
-const tile: React.CSSProperties = { ...cardBtn, minWidth: 40, fontWeight: 700, textTransform: "none" };
+const tile: React.CSSProperties = { ...cardBtn, minWidth: 46, fontWeight: 700, textTransform: "none" };
 const used: React.CSSProperties = { ...tile, opacity: 0.3, cursor: "default" };
-const slot: React.CSSProperties = { display: "inline-block", minWidth: 26, minHeight: 30, borderBottom: "2px solid #c9a36a", margin: "0 3px", fontWeight: 700, fontSize: 18 };
+/** R5-W1 · D1: a target the child is BUILDING — the answer tray. It was a bare
+ *  underline; the blind critic could not find the assembly area at all on the
+ *  order card („no answer-assembly area is visible"). It is a chalk shelf now:
+ *  recessed, ruled, and visibly waiting to be filled. */
+const buildRow: React.CSSProperties = {
+  ...rowWrap,
+  minHeight: 52,
+  alignItems: "center",
+  padding: "7px 10px",
+  borderRadius: "12px 9px 13px 10px / 10px 13px 9px 12px",
+  background: "rgba(151,118,66,0.1)",
+  boxShadow: "inset 0 2px 7px rgba(120,92,50,0.2)",
+};
+const slot: React.CSSProperties = {
+  display: "inline-flex", alignItems: "center", justifyContent: "center",
+  minWidth: 30, minHeight: 36, borderBottom: "3px solid #c9a36a", margin: "0 3px",
+  fontWeight: 800, fontSize: 22, fontFamily: "var(--font-display, inherit)",
+};
+
+/** R5-W1 · D1: two columns for an EVEN set, one column otherwise. Two columns
+ *  turn options from a list-to-read into a set-to-choose-from and keep the card
+ *  short beside a being — but an odd set laid into them leaves a lonely last
+ *  chip on its own row, which the blind critic called „a real scan-order
+ *  downgrade" on the three-option card. Even sets grid; odd sets stack. */
+const chipGrid = (n: number): React.CSSProperties => ({
+  display: "grid",
+  gridTemplateColumns: n >= 4 && n % 2 === 0 ? "1fr 1fr" : "1fr",
+  gap: 8,
+});
 
 export function ChoiceCard({ state, dispatch }: { state: ChoiceState; dispatch: Dispatch<ChoiceAction> }): React.ReactElement {
   return (
-    <div style={col}>
+    <div style={chipGrid(state.options.length)}>
       {state.options.map((opt) => (
         <button key={opt} style={{ ...cardBtn }} onClick={() => dispatch({ pick: opt })}>{opt}</button>
       ))}
@@ -36,16 +65,27 @@ export function ChoiceCard({ state, dispatch }: { state: ChoiceState; dispatch: 
 
 export function TypedCard({ state, dispatch }: { state: TypedState; dispatch: Dispatch<TypedAction> }): React.ReactElement {
   return (
-    <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
+    <div style={{ display: "flex", gap: 8, justifyContent: "center", alignItems: "stretch" }}>
+      {/* R5-W1 · D1: the line the child writes ON is the answer, so it is set
+          in the display face at the size the answer deserves — a 16 px form
+          field with a hairline border was the one piece of plain web UI left
+          in the middle of a painted card. */}
       <input
         autoFocus
         value={state.value}
         onChange={(e) => dispatch({ input: e.target.value })}
         onKeyDown={(e) => { if (e.key === "Enter") dispatch({ submit: true }); }}
-        style={{ fontSize: 16, padding: "8px 10px", borderRadius: 8, border: "1px solid #c9a36a", width: 190 }}
+        style={{
+          fontSize: 22, fontFamily: "var(--font-display, inherit)", fontWeight: 800,
+          textAlign: "center", color: "#33291a", padding: "8px 12px", minHeight: 46, width: 200,
+          borderRadius: "12px 9px 13px 10px / 10px 13px 9px 12px",
+          border: "2px solid #c9a36a", borderBottomWidth: 3,
+          background: "rgba(255,253,244,0.75)",
+          boxShadow: "inset 0 2px 7px rgba(120,92,50,0.16)",
+        }}
         placeholder="…"
       />
-      <button style={cardBtn} onClick={() => dispatch({ submit: true })}>OK</button>
+      <button style={{ ...cardBtn, minWidth: 64 }} onClick={() => dispatch({ submit: true })}>OK</button>
     </div>
   );
 }
@@ -58,9 +98,12 @@ export function SpellCard({ state, dispatch }: { state: SpellState; dispatch: Di
   const slots = spellSlots(state);
   return (
     <div style={col}>
-      <div style={{ minHeight: 40, ...rowWrap }}>
+      {/* the word being built outranks the letters it is built from: the slots
+          are the answer, the tray is the supply (blind critic: „blanks
+          underweighted vs. tiles") */}
+      <div style={buildRow}>
         {slots.map((c, i) => (
-          <span key={i} style={{ ...slot, color: c ? "#243048" : "#c9a36a" }}>{c ? c.toUpperCase() : "_"}</span>
+          <span key={i} style={{ ...slot, color: c !== null ? "#243048" : "#c9a36a" }}>{c !== null ? c.toUpperCase() : "_"}</span>
         ))}
       </div>
       <div style={rowWrap}>
@@ -72,7 +115,7 @@ export function SpellCard({ state, dispatch }: { state: SpellState; dispatch: Di
           );
         })}
       </div>
-      <button style={{ ...cardBtn, alignSelf: "center", fontSize: 13 }} disabled={state.used.length === 0}
+      <button style={{ ...cardBtn, alignSelf: "center", fontSize: 13, minHeight: 38 }} disabled={state.used.length === 0}
         onClick={() => dispatch({ undo: true })}>⌫ zurück</button>
     </div>
   );
@@ -81,9 +124,19 @@ export function SpellCard({ state, dispatch }: { state: SpellState; dispatch: Di
 export function OrderCard({ state, dispatch }: { state: OrderState; dispatch: Dispatch<OrderAction> }): React.ReactElement {
   return (
     <div style={col}>
-      <div style={{ minHeight: 36, ...rowWrap }}>
-        {state.seq.length === 0 ? <span style={{ color: "#b7a980" }}>tippe die Wörter der Reihe nach …</span>
-          : state.seq.map((i, k) => <span key={k} style={{ ...tile, cursor: "default" }}>{state.tray[i]}</span>)}
+      {/* the sentence being built, on its own shelf — with one empty slot per
+          word still to come, so a child can SEE how far the answer runs before
+          they have written any of it */}
+      <div style={buildRow}>
+        {/* one slot per word of the TARGET, never per tray tile: the tray is a
+            shuffle of the answer today, and a slot row that quietly assumed so
+            would be wrong the day a decoy is added */}
+        {state.target.map((_, k) => {
+          const i = state.seq[k];
+          return i === undefined
+            ? <span key={`slot-${k}`} style={{ ...slot, color: "#c9a36a", minWidth: 34 }}>_</span>
+            : <span key={`w-${k}`} style={{ ...tile, cursor: "default", minHeight: 38, padding: "7px 13px" }}>{state.tray[i]}</span>;
+        })}
       </div>
       <div style={rowWrap}>
         {state.tray.map((c, i) => (
@@ -91,7 +144,13 @@ export function OrderCard({ state, dispatch }: { state: OrderState; dispatch: Di
             onClick={() => dispatch({ tapTray: i })}>{c}</button>
         ))}
       </div>
-      <button style={{ ...cardBtn, alignSelf: "center", fontSize: 13 }} disabled={state.seq.length === 0}
+      {/* the line that says HOW — it used to be the placeholder inside the
+          empty tray and vanished with the first tap. A blind round preferred
+          the old card for exactly this („adds an explicit hint the other
+          lacks"), so it stays: same words, now a permanent quiet line under
+          the shelf instead of a disappearing placeholder. */}
+      <p className="pb-quiet" style={{ margin: "-2px 0 0" }}>tippe die Wörter der Reihe nach …</p>
+      <button style={{ ...cardBtn, alignSelf: "center", fontSize: 13, minHeight: 38 }} disabled={state.seq.length === 0}
         onClick={() => dispatch({ undo: true })}>⌫ zurück</button>
     </div>
   );
@@ -232,9 +291,14 @@ export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Di
           the German line and never drawn, so the wheel could not be solved by
           looking. It is now ON the card, big enough to read across the room. */}
       <div style={{
-        background: SLATE, color: CHALK, borderRadius: 8, border: "2px solid #8a7a58",
-        padding: "4px 18px", fontSize: 26, fontWeight: 800, letterSpacing: 1,
+        background: SLATE, color: CHALK,
+        // R5-W1 · D1: the slate is a painted object, so it wears the book's
+        // four different corners rather than a uniform 8 px web radius
+        borderRadius: "13px 9px 14px 10px / 10px 14px 9px 13px",
+        border: "2.5px solid #8a7a58",
+        padding: "6px 20px", fontSize: 28, fontWeight: 800, letterSpacing: 1,
         fontFamily: "var(--font-display, inherit)",
+        boxShadow: "inset 0 2px 10px rgba(0,0,0,0.3), 0 2px 6px rgba(40,28,12,0.22)",
       }}>{state.shown}</div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -287,8 +351,8 @@ export function WheelCard({ state, dispatch }: { state: WheelState; dispatch: Di
       </div>
 
       {/* the fallback commit: the ▲▼ path browses, this answers */}
-      <button style={{ ...cardBtn, fontSize: 14, padding: "6px 14px" }} onClick={lockNow}>✓ Das ist es!</button>
-      <div style={{ fontSize: 12, color: "#8a7a58", fontFamily: "var(--font-label, inherit)" }}>zieh am Rad — oder tipp eine Zahl an</div>
+      <button className="pb-btn-primary" style={{ ...cardBtn, fontSize: 15, padding: "8px 18px", minHeight: 40 }} onClick={lockNow}>Das ist es!</button>
+      <div className="pb-quiet" style={{ margin: 0 }}>zieh am Rad — oder tipp eine Zahl an</div>
     </div>
   );
 }
@@ -362,7 +426,10 @@ export function RestoreCard({ state, dispatch }: { state: RestoreState; dispatch
 
       {onColour && (
         <>
-          <p style={{ fontSize: 15, color: "#4a4030", margin: "0 0 8px" }}>{state.colourAskDe}</p>
+          {/* R5-W1 · D1: the colour question moved UP into the card's key line
+              (CardShell reads it from this state) — while this half is open it
+              IS the ask, and an ask set in 15 px body type under the step dots
+              was the exact line Koki's eye slid past on the 11th. */}
           <div style={rowWrap}>
             {state.colourOptions.map((o) => (
               <button
@@ -392,10 +459,30 @@ export function MemoryCard({ state, dispatch }: { state: MemoryState; dispatch: 
   const faceUp = (i: number) => state.matched.includes(i) || state.up.includes(i);
   return (
     <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(4, state.tray.length)}, 1fr)`, gap: 8 }}>
-      {state.tray.map((c, i) => (
-        <button key={i} style={{ ...tile, minHeight: 44, backgroundColor: state.matched.includes(i) ? "#d7e8c8" : faceUp(i) ? "#eddfb2" : "#e6dabc" }}
-          onClick={() => dispatch({ flip: i })}>{faceUp(i) ? c.v : "❓"}</button>
-      ))}
+      {state.tray.map((c, i) => {
+        const done = state.matched.includes(i);
+        return (
+          <button
+            key={i}
+            // R5-W1 · D1 (blind critic, worst surface in the set): eight
+            // identical „❓" in the reader's own font said „error", not „turn
+            // me over". A face-down card is the BOOK's own back now, a matched
+            // pair is inked green and stops inviting a tap, and a face-up card
+            // shows its word in the display face at the size the answer
+            // deserves.
+            style={{
+              ...tile, minHeight: 54, padding: "6px 8px", cursor: done ? "default" : "pointer",
+              backgroundColor: done ? "#d7e8c8" : faceUp(i) ? "#f7ecd0" : undefined,
+              color: done ? "#3f6329" : undefined,
+              fontSize: 18, fontFamily: "var(--font-display, inherit)",
+            }}
+            aria-label={faceUp(i) ? c.v : "umgedrehte Karte"}
+            onClick={() => dispatch({ flip: i })}
+          >
+            {faceUp(i) ? c.v : <CardBack />}
+          </button>
+        );
+      })}
     </div>
   );
 }
