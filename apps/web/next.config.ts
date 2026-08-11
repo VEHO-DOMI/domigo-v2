@@ -32,6 +32,27 @@ const nextConfig: NextConfig = {
     "@domigo/game-feel",
     "@domigo/art-gen",
   ],
+  // R5-W1 · E1 · THE PAINTED ART IS IMMUTABLE, SO SAY SO.
+  // Files under public/ get Next's revalidating default: the browser asks the
+  // CDN about every one of them on every visit. The painted chapter is ~190 MB
+  // across ~620 files, so that is hundreds of round trips a child pays for on
+  // a school connection before anything moves — for bytes that never change.
+  //
+  // Safe because the URL now carries a build version (lib/paint-art.ts appends
+  // ?v=<commit sha>), so new art arrives under a new URL rather than waiting
+  // for a cache to expire. Gated on VERCEL_ENV on purpose: locally there is no
+  // sha to bust with, and an immutable header would make the art lanes reload
+  // their browser to see a repaint.
+  ...(process.env.VERCEL_ENV
+    ? {
+        headers: async () => [
+          {
+            source: "/art/:path*",
+            headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+          },
+        ],
+      }
+    : {}),
 };
 
 export default nextConfig;

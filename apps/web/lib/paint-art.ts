@@ -11,6 +11,13 @@ import path from "node:path";
 
 const ART_DIRS = ["hero", "ch01"] as const;
 
+/**
+ * R5-W1 · E1: the build's own version, appended to every art URL so the files
+ * can be served `immutable` (next.config.ts) without a repaint being trapped
+ * behind a year-long cache. Empty off-Vercel, where no immutable header is set.
+ */
+const VERSION = process.env.VERCEL_GIT_COMMIT_SHA ?? "";
+
 let cache: Record<string, string> | null = null;
 
 export const resolvePaintArt = (): Record<string, string> => {
@@ -21,7 +28,7 @@ export const resolvePaintArt = (): Record<string, string> => {
     const abs = path.join(root, dir);
     if (!fs.existsSync(abs)) continue;
     for (const f of fs.readdirSync(abs).filter((x) => x.endsWith(".png"))) {
-      out[f.replace(/\.png$/, "")] = `/art/g1/paint/${dir}/${f}`;
+      out[f.replace(/\.png$/, "")] = `/art/g1/paint/${dir}/${f}${VERSION ? `?v=${VERSION}` : ""}`;
     }
   }
   cache = out;

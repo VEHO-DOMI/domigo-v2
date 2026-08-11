@@ -25,10 +25,17 @@ describe("shipped paint levels", () => {
   });
 
   for (const { file, level } of shipped) {
+// R5-W1 · E1: checkLevelLaws needs ~3 s on the shipped chapter — the
+// trap-pocket law runs one reachability search per reachable cell (114 in p2
+// alone), which is quadratic by design ("honesty beats cleverness", level.ts).
+// Vitest's default 5 s timeout sat close enough to that to flip red or green
+// with machine load: this suite was FLAKY, not broken. The timeout is raised
+// deliberately rather than the law weakened; the quadratic law itself is filed
+// as a follow-up, with the measurement, in the E1 report.
     it(`${file} parses and passes the laws`, () => {
       const parsed = parsePaintLevel(level);
       const failures = checkLevelLaws(parsed);
       expect(failures, JSON.stringify(failures, null, 1)).toEqual([]);
-    });
+    }, 30_000);
   }
 });

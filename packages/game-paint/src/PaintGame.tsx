@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Phaser from "phaser";
 import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { PaintScene, type TaskRequest } from "./PaintScene.ts";
+import { PerfProbe, type PerfReport, type WeakEstimate } from "./perf.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
 import { LOGICAL_H, LOGICAL_W, RENDER_SCALE, airModelByName } from "./paint.ts";
 import type { PaintLevel, PhaseSpec } from "./level.ts";
@@ -36,6 +37,9 @@ export interface PaintGameProps {
   startPhase?: string;
   /** R5-A6: draw the collision grid over the world (teacher door, ?grid=1). */
   debugGrid?: boolean;
+  /** R5-W1 · E1: attach the measuring instrument (teacher door, ?perf=1).
+   *  Off ⇒ the probe is never constructed and nothing is wrapped. */
+  debugPerf?: boolean;
 }
 
 interface HarnessApi {
@@ -51,11 +55,33 @@ interface HarnessApi {
   solveTask: () => boolean;
   /** dev-only: typing-guard probes (the game-2d harness precedent) */
   game: Phaser.Game;
+  /** R5-W1 · E1: the measuring instrument, or null unless ?perf=1 is on. */
+  perf: PerfApi | null;
+}
+
+/** R5-W1 · E1: the instrument's read seam. Present only behind the teacher
+ *  door (?perf=1), in every build — see the gating note at its install site. */
+export interface PerfApi {
+  read: () => PerfReport;
+  reset: () => void;
+  /** waits on the browser's frame clock — needs a VISIBLE tab */
+  sample: (frames?: number) => Promise<PerfReport>;
+  /** hand-steps the engine — works in a hidden/automated tab */
+  drive: (frames?: number, deltaMs?: number) => Promise<PerfReport>;
+  /** nudge the loader queue (the ~96 % stall) */
+  pump: () => void;
+  /** loader progress + scene readiness, for "is there anything to measure yet?" */
+  status: () => Array<{ key: string; status: number; progress: number; toLoad: number; done: number; children: number }>;
+  /** the raw engine — the dev harness exposes it too; this door is the
+   *  production-build twin, so an experiment does not need a rebuild. */
+  game: Phaser.Game;
+  sweep: (factor?: number) => Promise<WeakEstimate>;
 }
 
 declare global {
   interface Window {
     __domigoPaint?: HarnessApi;
+    __domigoPaintPerf?: PerfApi;
   }
 }
 
@@ -149,7 +175,7 @@ const chapterClassmateCount = (level: PaintLevel): number =>
   [...level.phases, ...(level.arena ? [level.arena] : [])]
     .reduce((n, p) => n + p.entities.filter((e) => e.role === "cage" && e.params?.classmate !== undefined).length, 0);
 
-export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid }: PaintGameProps): React.ReactElement {
+export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf }: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
   const sceneRef = useRef<PaintScene | null>(null);
@@ -212,6 +238,22 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const phaseLettersRef = useRef(0);
   const overlayRef = useRef<OverlayState | null>(null);
   overlayRef.current = overlay;
+  /** R5-W1 · E1 · EVERY PENDING TIMER THIS COMPONENT OWNS.
+   *  Four window.setTimeout calls used to be fired and forgotten — including a
+   *  2.5 s swap watchdog that could raise a crash banner into a tree React had
+   *  already unmounted. A set beats remembering: `later()` is the only way to
+   *  schedule, and the effect's cleanup empties it. */
+  const timersRef = useRef<Set<number>>(new Set());
+
+  /** setTimeout that cannot outlive the component. */
+  const later = (fn: () => void, ms: number): number => {
+    const id = window.setTimeout(() => {
+      timersRef.current.delete(id);
+      fn();
+    }, ms);
+    timersRef.current.add(id);
+    return id;
+  };
   const mountPhaseRef = useRef<((pid: string) => void) | null>(null);
 
   // ── task routing (scoped playlists: phase → skin → unbound; cards/routing) ──
@@ -407,6 +449,42 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     // reach the field instead of steering the hero (the "school book" softlock)
     const unbindTyping = bindTypingGuard(game);
 
+    // R5-W1 · E1 · THE MEASURING INSTRUMENT (teacher door, ?perf=1).
+    // Constructed only when asked for, and it attaches by WRAPPING
+    // PaintScene.prototype rather than by editing the render loop — see
+    // perf.ts. Off ⇒ not one wrapper exists and the game is byte-identical.
+    // Gated on the teacher door ALONE, not on NODE_ENV — deliberately, and for
+    // the same reason ?grid=1 is: a development build measures the wrong thing
+    // (unminified React, no production optimisation), so an instrument that
+    // only exists in dev cannot answer "why does the shipped game stutter?".
+    // The server hands debugPerf=true only to a signed-in teacher who asked for
+    // it by name, so the exposure is identical to the grid door's.
+    const probe =
+      debugPerf === true
+        ? new PerfProbe({
+            game,
+            scene: () => sceneRef.current,
+            phase: () => sceneRef.current?.getState()?.phase ?? "",
+            scope: () => sceneRef.current?.artScope() ?? null,
+            artKeys: () => new Set(Object.keys(art)),
+          })
+        : null;
+    probe?.install(PaintScene.prototype);
+    // Its own read handle, because __domigoPaint below is dev-only and the
+    // numbers that matter come from a production build.
+    if (probe !== null) {
+      window.__domigoPaintPerf = {
+        read: () => probe.read(),
+        reset: () => probe.reset(),
+        sample: (frames) => probe.sample(frames),
+        drive: (frames, deltaMs) => probe.drive(frames, deltaMs),
+        pump: () => probe.pump(),
+        status: () => probe.status(),
+        game,
+        sweep: (factor) => probe.sweep(factor),
+      };
+    }
+
     const mountPhase = (pid: string): void => {
       mountPhaseRef.current = mountPhase;
       const phase = allPhasesOf(level).find((p) => p.id === pid);
@@ -507,7 +585,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
               ? (sceneRef.current?.writeEvidence(askerId, item.evidence) ?? 0)
               : 0;
             if (beatMs > 0) {
-              window.setTimeout(() => openCard({ req, item, card: "task", attempts: 0, typed: "", align, wash }), beatMs);
+              later(() => openCard({ req, item, card: "task", attempts: 0, typed: "", align, wash }), beatMs);
               return;
             }
             openCard({ req, item, card: "task", attempts: 0, typed: "", align, wash });
@@ -566,7 +644,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 
     const handoff = (next: string): void => {
       // P-49: NEVER from inside a step — defer, swap, and watchdog the swap.
-      window.setTimeout(() => {
+      later(() => {
         let target = next;
         // PK-R3b · M-B: bank the phase we are LEAVING before its Sim is thrown
         // away. The Kleckskammer is excluded on purpose (chapterLetterTotal),
@@ -608,11 +686,37 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         game.scene.stop("paint");
         game.scene.remove("paint");
         mountPhase(target);
-        window.setTimeout(() => {
-          if (!game.scene.isActive("paint")) {
+        // R5-W1 · E1 · THE WATCHDOG MUST NOT MISTAKE LOADING FOR HANGING.
+        // `isActive` is `status === RUNNING`, and a scene that is LOADING is
+        // not RUNNING. Until per-phase scoping landed this never mattered —
+        // every texture was already in the manager, so a phase change queued
+        // nothing and finished inside one tick. Now phase two genuinely fetches
+        // its own art, and on a school connection that is easily longer than
+        // 2.5 s: the child would have been shown a crash banner for a game that
+        // was merely loading. So the deadline only counts while NO progress is
+        // being made, and it is checked repeatedly instead of once.
+        const swapStart = performance.now();
+        let lastProgress = -1;
+        let lastMoveAt = swapStart;
+        const watchdog = window.setInterval(() => {
+          const sc = game.scene.getScene("paint") as PaintScene | null;
+          if (sc !== null && game.scene.isActive("paint")) {
+            window.clearInterval(watchdog);
+            timersRef.current.delete(watchdog);
+            return;
+          }
+          const progress = sc?.load?.progress ?? -1;
+          if (progress !== lastProgress) {
+            lastProgress = progress;
+            lastMoveAt = performance.now();
+          }
+          if (performance.now() - lastMoveAt > 8000) {
+            window.clearInterval(watchdog);
+            timersRef.current.delete(watchdog);
             setFatal(`Phasen-Wechsel nach ${target} hängt (Szene nie gestartet) — bitte neu laden.`);
           }
-        }, 2500);
+        }, 500);
+        timersRef.current.add(watchdog);
       }, 0);
     };
 
@@ -629,6 +733,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     if (process.env.NODE_ENV !== "production") {
       window.__domigoPaint = {
         game, // dev-only: typing-guard probes
+        perf: window.__domigoPaintPerf ?? null,
         press: (p) => {
           const pad = padRef.current;
           pad.left = p.left === true;
@@ -671,6 +776,13 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     return () => {
       if (process.env.NODE_ENV !== "production") delete window.__domigoPaint;
       window.clearInterval(poll);
+      // R5-W1 · E1: nothing this component scheduled may fire into a torn-down
+      // tree — the swap watchdog in particular used to call setFatal() there.
+      for (const id of timersRef.current) window.clearTimeout(id);
+      for (const id of timersRef.current) window.clearInterval(id);
+      timersRef.current.clear();
+      probe?.uninstall();
+      delete window.__domigoPaintPerf;
       unbindTyping();
       game.destroy(true);
       gameRef.current = null;
@@ -701,7 +813,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
     };
     setOverlay(null);
     // P-49: enter the Kleckskammer through the same deferred swap as any handoff
-    window.setTimeout(() => {
+    later(() => {
       game.scene.stop("paint");
       game.scene.remove("paint");
       mountPhaseRef.current?.(level.bonus!.id);

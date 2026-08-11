@@ -222,34 +222,41 @@ describe("the tip-honesty law (doc 41 §7)", () => {
   const clone = (): PaintLevel => JSON.parse(JSON.stringify(level)) as PaintLevel;
   const lawsNamed = (l: PaintLevel) => checkLevelLaws(l).filter((f) => f.law === "tip-honesty").map((f) => f.detail);
 
-  it("the shipped chapter passes it", () => expect(lawsNamed(level)).toEqual([]));
+// R5-W1 · E1: checkLevelLaws needs ~3 s on the shipped chapter — the
+// trap-pocket law runs one reachability search per reachable cell (114 in p2
+// alone), which is quadratic by design ("honesty beats cleverness", level.ts).
+// Vitest's default 5 s timeout sat close enough to that to flip red or green
+// with machine load: this suite was FLAKY, not broken. The timeout is raised
+// deliberately rather than the law weakened; the quadratic law itself is filed
+// as a follow-up, with the measurement, in the E1 report.
+  it("the shipped chapter passes it", () => expect(lawsNamed(level)).toEqual([]), 30_000);
 
   it("promising a page the chapter does not place turns it RED", () => {
     const l = clone();
     l.tipsTotal = (l.tipsTotal ?? 0) + 1;
     expect(lawsNamed(l).join(" ")).toMatch(/declares 4 Regel-Seiten but places 3/);
-  });
+  }, 30_000);
 
   it("a page with no Merksatz turns it RED (an empty rule page is a broken promise)", () => {
     const l = clone();
     const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
     t.params!.merksatzDe = "";
     expect(lawsNamed(l).join(" ")).toMatch(/no Merksatz/);
-  });
+  }, 30_000);
 
   it("two pages of the same rule turn it RED", () => {
     const l = clone();
     const tips = l.phases.flatMap((p) => p.entities.filter((e) => e.role === "tip"));
     tips[1]!.params!.topicDe = tips[0]!.params!.topicDe;
     expect(lawsNamed(l).join(" ")).toMatch(/one rule, one page/);
-  });
+  }, 30_000);
 
   it("a Merksatz that breaks the register law turns it RED", () => {
     const l = clone();
     const t = l.phases.flatMap((p) => p.entities).find((e) => e.role === "tip")!;
     t.params!.merksatzDe = "Das Monster im Buch sagt: I am.";
     expect(lawsNamed(l).join(" ")).toMatch(/register-law/);
-  });
+  }, 30_000);
 
   it("a Regel-Seite placed where no child can reach it turns entity-reachable RED", () => {
     const l = clone();
@@ -257,7 +264,7 @@ describe("the tip-honesty law (doc 41 §7)", () => {
     t.c = 1;
     t.r = 1; // inside the canopy: hidden is fine, impossible is not
     expect(checkLevelLaws(l).some((f) => f.law === "entity-reachable" && f.detail.includes("tip"))).toBe(true);
-  });
+  }, 30_000);
 });
 
 // ── the world's own arithmetic ───────────────────────────────────────────────

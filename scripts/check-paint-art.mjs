@@ -10,9 +10,11 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, entitySkinStems, guardianSkinStems } from "../packages/game-paint/src/artManifest.ts";
-import { COMPOSITION, PLACEHOLDER_UNTIL, compositionStems, isPlaceholderStem } from "../packages/game-paint/src/composition.ts";
-import { CHALK_PROJECTILE_STEMS } from "../packages/game-paint/src/entities.ts";
+import { PLACEHOLDER_UNTIL, isPlaceholderStem } from "../packages/game-paint/src/composition.ts";
+// R5-W1 · E1: the required set and the LOADED set are derived by ONE module,
+// so the gate can no longer demand a stem the loader would never fetch (and
+// vice versa) — Audit A below is that assertion.
+import { allScopePhases, domArtStems, levelRequiredStems, phaseArtScope, phaseRequiredStems } from "../packages/game-paint/src/artScope.ts";
 import { keyFringe, readPng } from "./key-fringe.mjs";
 
 const R = process.cwd();
@@ -42,39 +44,17 @@ const today = new Date().toISOString().slice(0, 10);
 let failures = 0;
 const fail = (msg) => { failures++; console.error(`✗ ${msg}`); };
 
-// collect required stems from every non-draft level
+// collect required stems from every non-draft level (derivation: artScope.ts)
 const required = new Map(); // stem → where it's needed
-const need = (stem, where) => { if (!required.has(stem)) required.set(stem, where); };
+const levels = []; // the parsed non-draft levels, kept for the scope audits
 for (const story of fs.existsSync(CONTENT) ? fs.readdirSync(CONTENT) : []) {
   const paintDir = path.join(CONTENT, story, "paint");
   if (!fs.existsSync(paintDir)) continue;
   for (const f of fs.readdirSync(paintDir).filter((x) => x.endsWith(".level.json"))) {
     const level = JSON.parse(fs.readFileSync(path.join(paintDir, f), "utf8"));
     if (level.draft === true) continue;
-    // PK-R6 · C: the objective screen's painted title plate (doc 44 §2.6). It
-    // is named in the level rather than derived, so it is required exactly like
-    // a phase plate — a chapter may not promise a plate the disk does not hold.
-    if (level.goalPlate !== undefined) need(String(level.goalPlate), `${f} goalPlate`);
-    if (level.scorePlate !== undefined) need(String(level.scorePlate), `${f} scorePlate`);
-    if (level.doorPlate !== undefined) need(String(level.doorPlate), `${f} doorPlate`);
-    const phases = [...level.phases, ...(level.arena ? [level.arena] : []), ...(level.bonus ? [level.bonus] : [])];
-    for (const ph of phases) {
-      const glyphs = new Set(ph.rows.join(""));
-      for (const g of glyphs) for (const stem of GLYPH_STEMS[g] ?? []) need(stem, `${f} ${ph.id} glyph '${g}'`);
-      // PK-R6 · E: a guardian owes her WHOLE flight rig, not just an idle cell —
-      // see GUARDIAN_RIG_CELLS. Everything else keeps the one-cell floor.
-      for (const e of ph.entities) {
-        const stems = e.role === "guardian" ? guardianSkinStems(e.skin) : entitySkinStems(e.skin);
-        for (const stem of stems) need(stem, `${f} ${ph.id} ${e.role} ${e.id}`);
-      }
-      for (const plate of Object.values(ph.plates ?? {})) need(String(plate), `${f} ${ph.id} plate`);
-      // PB-C1: a phase's composition manifest DEMANDS its own kit — the five
-      // planes and the carved mass are as load-bearing as any glyph stem
-      const spec = COMPOSITION[level.chapter]?.[ph.id];
-      if (spec) for (const stem of compositionStems(spec)) need(stem, `${f} ${ph.id} composition`);
-    }
-    for (const stem of HERO_STEMS) need(stem, "hero rig");
-    for (const stem of HERO2_STEMS) need(stem, "hero v2 override (PK-R6 H3)");
+    levels.push({ file: f, level });
+    for (const [stem, where] of levelRequiredStems(level, f)) if (!required.has(stem)) required.set(stem, where);
   }
 }
 
@@ -90,6 +70,39 @@ for (const [stem, where] of required) {
 }
 for (const a of allow) {
   if (!required.has(a.stem) && !present.has(a.stem)) fail(`allowlist entry ${a.stem} is needed by nothing — remove it`);
+}
+
+// ── R5-W1 · E1 · AUDIT A · THE GATE AND THE LOADER MUST AGREE ───────────────
+// Per-phase loading can fail in a way NO existing check can see: PaintScene.tex()
+// answers a missing stem with a procedural blob, so an under-scoped phase ships
+// grey shapes with every gate green. This audit is the structural answer — every
+// stem this gate demands must be a stem the phase's loader would actually fetch.
+// Floor ⊆ ceiling, asserted per phase, by machine.
+for (const { file, level } of levels) {
+  for (const ph of allScopePhases(level)) {
+    const scope = phaseArtScope(level, ph.id, present);
+    for (const [stem, where] of phaseRequiredStems(level, ph.id, file)) {
+      if (!scope.has(stem)) fail(`SCOPE HOLE: "${stem}" is required (${where}) but phase ${ph.id} would never load it — it would render as a procedural fallback with every gate green`);
+    }
+  }
+}
+
+// ── R5-W1 · E1 · AUDIT B · ART NOTHING LOADS ────────────────────────────────
+// A warning, never a failure: the keen-art law lets a batch land before its
+// wiring does. But silence let 45.9 MB accumulate that no phase and no card
+// ever asks for, so the number is now said out loud on every run.
+{
+  const claimed = new Set();
+  for (const { level } of levels) {
+    for (const ph of allScopePhases(level)) for (const s of phaseArtScope(level, ph.id, present)) claimed.add(s);
+    for (const s of domArtStems(level)) claimed.add(s);
+  }
+  const dead = [...present].filter((s) => !claimed.has(s));
+  if (dead.length > 0) {
+    let bytes = 0;
+    for (const s of dead) { const f = fileOf.get(s); if (f) bytes += fs.statSync(f).size; }
+    console.warn(`⚠ ${dead.length} painted stems are loaded by nothing (${(bytes / 1048576).toFixed(1)} MB): ${dead.slice(0, 8).join(", ")}${dead.length > 8 ? ", …" : ""}`);
+  }
 }
 
 // PB-C1 · THE PLACEHOLDER GUARD. The composition kit currently points at

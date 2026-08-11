@@ -17,10 +17,10 @@ export default async function BuchPage({
   searchParams,
 }: {
   params: Promise<{ grade: string }>;
-  searchParams: Promise<{ phase?: string; grid?: string }>;
+  searchParams: Promise<{ phase?: string; grid?: string; perf?: string }>;
 }) {
   const { grade: gradeStr } = await params;
-  const { phase, grid } = await searchParams;
+  const { phase, grid, perf } = await searchParams;
   if (gradeStr !== "1") redirect("/home");
   // pre-release gate with the teacher door (the run/world posture)
   const teacher = await getTeacherForPage();
@@ -29,10 +29,26 @@ export default async function BuchPage({
   if (!acting) redirect("/signin");
 
   const raw = loadPaintLevel("g1.st.lost-pages", "ch01");
+  // The schema parse stays on every request — it is 3 ms and it is what turns
+  // raw JSON into a typed level.
   const level = parsePaintLevel(raw as PaintLevel);
-  const failures = checkLevelLaws(level);
-  if (failures.length > 0) {
-    throw new Error(`paint level laws violated: ${failures.map((f) => `${f.phase}/${f.law}`).join(", ")}`);
+  // R5-W1 · E1 · THE LAWS ARE AN AUTHORING GUARD, NOT A REQUEST-TIME ONE.
+  // Measured on this machine: checkLevelLaws takes ~3 s on the shipped chapter
+  // (the trap-pocket law runs one reachability search per reachable cell —
+  // 114 of them in p2 alone), and it ran on EVERY page render. Every child
+  // waited ~2–5 s for the server to re-prove a level that had not changed since
+  // the commit that shipped it. The proof belongs where the level changes:
+  // content-levels.test.ts runs these same laws on every shipped level in CI,
+  // and the proof tapes replay them through the real engine. So authors keep
+  // the instant feedback, and production trusts the gate that already ran.
+  // NODE_ENV, not VERCEL_ENV: the guard belongs where levels are EDITED (the
+  // dev server), and a preview deployment is a place Koki reviews, not a place
+  // anyone authors — it should be as fast as production.
+  if (process.env.NODE_ENV !== "production") {
+    const failures = checkLevelLaws(level);
+    if (failures.length > 0) {
+      throw new Error(`paint level laws violated: ${failures.map((f) => `${f.phase}/${f.law}`).join(", ")}`);
+    }
   }
   const art = resolvePaintArt();
   const tasks = loadPaintTasksV2("g1.st.lost-pages", "ch01"); // PB-T8: the card-kit v2 set
@@ -44,6 +60,8 @@ export default async function BuchPage({
   const startPhase = teacher !== null && phase !== undefined && known.has(phase) ? phase : undefined;
   // R5-A6: the picture-vs-grid instrument, gated exactly like the phase door
   const debugGrid = teacher !== null && grid === "1";
+  // R5-W1 · E1: the measuring instrument, gated exactly like the grid door
+  const debugPerf = teacher !== null && perf === "1";
 
   return (
     <main style={{ padding: "12px 8px", background: "#f3ead6", minHeight: "100vh" }}>
@@ -55,6 +73,7 @@ export default async function BuchPage({
         buildSha={process.env.VERCEL_GIT_COMMIT_SHA}
         startPhase={startPhase}
         debugGrid={debugGrid}
+        debugPerf={debugPerf}
       />
     </main>
   );
