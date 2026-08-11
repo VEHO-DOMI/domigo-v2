@@ -33,6 +33,7 @@ const IDLE_CELLS = ["a", "b", "c", "d"] as const;
 // re-typed), so a tuning change to the sim moves the pose with it.
 
 import { AWAKEN_ROUNDS, BOUNCE_UP, ENEMY_WALK, FLYER_SWEEP_PX, JOY_ROLES } from "./entities.ts";
+import { hash01 } from "./mass.ts";
 import { SUBS } from "./paint.ts";
 
 // ── PK-R3b · R3-15 · THE DESATURATION GRAMMAR (doc 41 §2) ────────────────────
@@ -296,9 +297,157 @@ export const awakenRoomSweep = (ms: number): number => {
 /** Half the patrol speed: a chaser's vx is ±ENEMY_WALK while walking and 0 at
  *  an edge turn, so this cleanly separates "striding" from "stopped". */
 export const RUN_VX = ENEMY_WALK / 2;
-/** The fast part of a bouncer's arc, i.e. the squash at the bottom — the art
- *  shows the body flattened wide, which is contact, not apex. */
-export const SQUASH_VY = BOUNCE_UP * 0.8;
+// ── R5-W1 · F1 · DER RADIERER HÖRT AUF ZU BLITZEN (Kokis Replay, 07:25:36) ───
+// Der alte Schalter war `|vy| >= BOUNCE_UP * 0.8`. Gemessen an der echten
+// Simulation traf das GENAU EINEN Tick pro Hüpfer — den Aufprall — und fiel
+// danach hart auf den Ruhe-Bob zurück: ein 17-ms-Blitz, zehnmal pro Sekunde.
+// Deshalb las es sich als „buggy beim Umschalten"; die Verankerung war richtig,
+// die Verweildauer war es nicht.
+//
+// Zwei Antworten, und die wichtigere ist die zweite:
+//  · die Zelle bleibt jetzt SQUASH_DWELL_TICKS lang liegen, gezählt ab dem
+//    Kontakt selbst (`bounceTick`), statt an einer Geschwindigkeitsschwelle zu
+//    hängen, die der Bogen zweimal streift;
+//  · und zwischen den Zellen verformt sich der Körper KONTINUIERLICH — breit
+//    und flach im Aufprall, schmal und lang im Flug. Damit gibt es überhaupt
+//    keinen harten Schnitt mehr zu sehen, ohne dass eine einzige neue Zelle
+//    gemalt werden müsste. Der Rand-Ursprung sitzt unten mittig, also bleiben
+//    die Füße beim Quetschen am Boden — die Voraussetzung dafür, dass es wie
+//    Gewicht aussieht und nicht wie Zoomen.
+/** Wie lange die Aufprall-Zelle/-Verformung nach der Berührung steht. Drei
+ *  Ticks (50 ms) auf einen 13-Tick-Hüpfer: kurz genug, dass der Körper den
+ *  größten Teil des Bogens neutral fliegt, lang genug, dass ein Auge es sieht —
+ *  ein Tick ist ein Blitz, das war der Defekt. */
+export const SQUASH_DWELL_TICKS = 3;
+/** Wie flach der Aufprall drückt und wie breit er dabei wird. Nicht
+ *  volumentreu (0,28 ≠ 0,22) und mit Absicht: ein Radiergummi ist ein
+ *  Gummiklotz, kein Ballon. */
+export const SQUASH_FLAT = 0.28;
+export const SQUASH_WIDE = 0.22;
+/** Die Gegenbewegung im Flug — etwa halb so stark: ein Aufprall verformt mehr
+ *  als eine Flugbahn. */
+export const STRETCH_TALL = 0.16;
+export const STRETCH_NARROW = 0.12;
+/** Ab wann eine (später gemalte) Streck-Zelle gezeigt würde. */
+export const STRETCH_CELL_MIN = 0.35;
+
+/** Nicht-uniforme Skalierung eines Hüpfers in diesem Tick; {1,1} für einen
+ *  ruhenden Körper. Rein, deterministisch, aus der Kontakt-Uhr und der eigenen
+ *  Geschwindigkeit — nie aus der Wanduhr.
+ *  (Die alte Schwelle SQUASH_VY ist damit pensioniert: sie beschrieb einen
+ *  Bogen, den die Simulation nie gezeichnet hat.) */
+export interface Squash { sx: number; sy: number }
+export const REST_SQUASH: Squash = { sx: 1, sy: 1 };
+
+/** Wie „gestreckt" der Körper gerade fliegt, 0…1 (0 im Aufprall und im
+ *  Scheitel, 1 im schnellsten Teil des Bogens). */
+export const bounceStretch = (bounceTick: number, vy: number): number => {
+  const impact = Math.max(0, 1 - bounceTick / SQUASH_DWELL_TICKS);
+  return Math.min(1, Math.abs(vy) / BOUNCE_UP) * (1 - impact);
+};
+
+export const bouncerSquash = (bounceTick: number, vy: number, reducedMotion = false): Squash => {
+  if (reducedMotion) return REST_SQUASH;
+  const impact = Math.max(0, 1 - bounceTick / SQUASH_DWELL_TICKS);
+  const stretch = bounceStretch(bounceTick, vy);
+  return {
+    sx: 1 + SQUASH_WIDE * impact - STRETCH_NARROW * stretch,
+    sy: 1 - SQUASH_FLAT * impact + STRETCH_TALL * stretch,
+  };
+};
+
+// ── R5-W1 · F1 · DER KÄFIG WACKELT SICHTBAR (Kokis Replay, 07:26:32) ─────────
+// „bewegt sich nicht deutlich." Das Wackeln existierte bereits — ±0,07 rad,
+// gedreht um den unteren Mittelpunkt eines 22-px-Körpers. Das sind 1,5 logische
+// Pixel Ausschlag an der Oberkante. Es war nicht kaputt, es war zu klein.
+//
+// Drei Entscheidungen dahinter:
+//  · Der Ausschlag wird in PIXELN angegeben, nicht in Radiant. Ein Käfig mit
+//    einem Kind darin ist 34 px hoch, ein Ranzen 22 — bei festem Winkel wackelt
+//    der große automatisch 1,5-mal weiter. Was das Auge liest, ist der Weg.
+//  · Kein Metronom-Sinus, sondern eine ABKLINGENDE STOSS-FOLGE: jemand stemmt
+//    sich gegen die Wand, dann setzt es sich. Das Auge wird von Veränderung
+//    angezogen, nicht von gleichmäßigem Schwingen — und ein sauberer Sinus
+//    liest sich als Maschine, nicht als Gefangener.
+//  · Die Silhouette verformt sich mit (Bulge) und der Korpus hebt kurz ab. Bei
+//    22 px liest eine Silhouetten-Änderung deutlich besser als eine Verschiebung.
+/** Ausschlag der Oberkante bei vollem Stemmen, in logischen px (×3 auf dem
+ *  Schirm). 3,7 sind ~2,4-mal der alte Wert und bleiben unter der Grenze, ab
+ *  der ein unten gelagerter Kasten anfängt, UMZUKIPPEN statt zu wackeln. */
+export const CAGE_SWAY_PX = 3.7;
+/** Ein Stemmen alle 84 Ticks (1,4 s) — ein Körper, der Anlauf nimmt. */
+export const CAGE_STRUGGLE_TICKS = 84;
+/** …das über 40 Ticks quadratisch abklingt: Ruck, dann setzen. */
+export const CAGE_SETTLE_TICKS = 40;
+/** Eine Schwingung pro 11 Ticks — schnell genug für einen Ruck, langsam genug,
+ *  dass ein 60-Hz-Bild mitten im Ausschlag landet. */
+export const CAGE_ROCK_TICKS = 11;
+/** Nah am Kind hört das Rütteln nie ganz auf (Anteil des vollen Ausschlags). */
+export const CAGE_NEAR_FLOOR = 0.42;
+/** …und aus der Ferne bleibt es sichtbar, wenn man hinsieht. */
+export const CAGE_FAR_SCALE = 0.45;
+/** Silhouetten-Verformung und Hub auf dem stärksten Ruck. */
+export const CAGE_BULGE = 0.09;
+export const CAGE_HOP_PX = 1.0;
+/** Der Grundton: der Käfig ist nie ein totes Möbelstück. */
+export const CAGE_BREATH_RAD = 0.03;
+/** Reduzierte Bewegung: eine RUHENDE, angespannte Schräglage. „Hier ist jemand
+ *  drin" ist eine Tatsache über den Käfig, kein Bewegungseffekt — ein Kind, das
+ *  Animationen abgeschaltet hat, darf die Aussage nicht verlieren. */
+export const CAGE_REST_RAD = 0.045;
+/** Reichweite des „nah", und über wie viele px es einblendet (statt zu
+ *  schnappen — ein hartes Umschalten wäre selbst ein sichtbarer Fehler). */
+export const CAGE_NEAR_PX = 42;
+export const CAGE_NEAR_FADE_PX = 16;
+
+/** Der Zufalls-Same EINES Wesens, aus seinem eigenen Namen. Er stand dreimal
+ *  wörtlich in PaintScene (Cue-Waver, Feind-Rand, jetzt das Käfig-Rütteln) —
+ *  drei Kopien einer Formel sind drei Gelegenheiten, sie unterschiedlich zu
+ *  ändern. Deterministisch, weil der Name es ist. */
+export const entSeed = (id: string): number =>
+  id.length * 37 + (id.charCodeAt(0) | 0) * 7 + (id.charCodeAt(id.length - 1) | 0);
+
+export interface CageBreath { rot: number; sx: number; sy: number; dy: number }
+export const CAGE_AT_REST: CageBreath = { rot: 0, sx: 1, sy: 1, dy: 0 };
+
+/** 0…1 — wie nah das Kind am Käfig steht, als Rampe statt als Schalter. */
+export const cageNearT = (dxPx: number, dyPx: number): number => {
+  const d = Math.max(Math.abs(dxPx), Math.abs(dyPx) * (CAGE_NEAR_PX / 40));
+  return Math.max(0, Math.min(1, (CAGE_NEAR_PX - d) / CAGE_NEAR_FADE_PX));
+};
+
+/**
+ * Wie ein Gefangener seinen Behälter in diesem Tick bewegt. Rein, damit „der
+ * Käfig wackelt sichtbar" eine Tabelle ist und kein Screenshot.
+ *
+ * `heightPx` ist die gezeichnete Höhe DIESES Käfigs — daraus wird der Winkel
+ * zurückgerechnet, damit der Ausschlag in Pixeln stimmt statt im Winkel.
+ */
+export const cageBreath = (
+  tick: number,
+  seed: number,
+  nearT: number,
+  heightPx: number,
+  reducedMotion = false,
+): CageBreath => {
+  if (reducedMotion) return { ...CAGE_AT_REST, rot: CAGE_REST_RAD };
+  // jeder Käfig stemmt sich zu seiner eigenen Zeit — zwei im selben Raum im
+  // Gleichtakt wären genau die Maschine, die diese Kurve vermeiden soll
+  const phase = Math.floor(hash01(seed) * CAGE_STRUGGLE_TICKS);
+  const u = (tick + phase) % CAGE_STRUGGLE_TICKS;
+  const decay = u < CAGE_SETTLE_TICKS ? (1 - u / CAGE_SETTLE_TICKS) ** 2 : 0;
+  const env = Math.max(decay, nearT * CAGE_NEAR_FLOOR);
+  const rock = Math.sin((u / CAGE_ROCK_TICKS) * Math.PI * 2) * env;
+  const ampPx = CAGE_SWAY_PX * (CAGE_FAR_SCALE + (1 - CAGE_FAR_SCALE) * nearT);
+  const h = Math.max(heightPx, 1);
+  return {
+    rot: Math.asin(Math.max(-1, Math.min(1, (ampPx * rock) / h)))
+      + CAGE_BREATH_RAD * Math.sin(tick / 26),
+    sx: 1 + CAGE_BULGE * Math.abs(rock),
+    sy: 1 - CAGE_BULGE * 0.75 * Math.abs(rock),
+    dy: -CAGE_HOP_PX * Math.max(0, rock),
+  };
+};
 /** Near the extremes of the flyer's sweep, where it rolls into the turn — the
  *  art shows the whole body banked over, which is a turn, not a straight run. */
 export const BANK_X = FLYER_SWEEP_PX * SUBS * 0.8;
@@ -543,6 +692,16 @@ export interface EntPoseInput {
    *  freed cage rests OPEN when the painting exists — the burst cell goes
    *  back to being the throw-open BEAT rather than the permanent state. */
   hasOpen?: boolean;
+  /** R5-W1 · F1 · bouncers only: ticks since the last ground contact. Drives the
+   *  impact cell's DWELL, which is what the old velocity threshold could not do
+   *  (it fired on exactly one tick of a six-tick arc). */
+  bounceTick?: number;
+  /** R5-W1 · F1 · does this SKIN own a `_stretch` cell on disk? Same
+   *  only-present contract as `hasOpen`: the scene asks the textures, the hook
+   *  stays pure. Until a painter delivers `<skin>_stretch.png` the flight keeps
+   *  today's idle pair, and the day it lands the cell appears with NO code
+   *  change — the continuous squash below already carries the movement. */
+  hasStretch?: boolean;
 }
 
 // ── PK-R6 · D · THE CLASSMATE'S CELLS (doc 44 §3.3, doc 40 §3 rig grammar) ───
@@ -654,7 +813,12 @@ export const entPoseCell = (e: EntPoseInput): string => {
   if (e.state === "act") return e.role === "crusher" ? "stomp" : "act";
   if (e.state === "burst") return "burst";
   if (e.state === "shaking") return "shake";
-  if (e.role === "bouncer" && Math.abs(e.vy) >= SQUASH_VY) return "squash";
+  // R5-W1 · F1: die Aufprall-Zelle steht jetzt eine DAUER, gezählt ab der
+  // Berührung — nicht einen Blitz an einer Geschwindigkeitsschwelle.
+  if (e.role === "bouncer") {
+    if ((e.bounceTick ?? SQUASH_DWELL_TICKS) < SQUASH_DWELL_TICKS) return "squash";
+    if (e.hasStretch === true && bounceStretch(e.bounceTick ?? 0, e.vy) >= STRETCH_CELL_MIN) return "stretch";
+  }
   if (e.role === "flyer" && Math.abs(e.x - e.homeX) >= BANK_X) return "bank";
   // platforms carry a per-tick ride delta in vx that is not a gait
   if (!e.role.startsWith("platform") && Math.abs(e.vx) >= RUN_VX) return "run";

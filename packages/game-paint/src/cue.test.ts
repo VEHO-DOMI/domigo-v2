@@ -9,7 +9,18 @@
 // screenshot: no machine edge, an edge that ramps instead of stepping, and the
 // same mark every time the same being is asked about.
 import { describe, expect, it } from "vitest";
-import { CUE_CHALK, CUE_CORE, CUE_INK, CUE_JITTER_PX, chalkArrow, hasNoStraightMachineEdge } from "./cue.ts";
+import {
+  CUE_BOB_PX,
+  CUE_BOB_TICKS,
+  CUE_CHALK,
+  CUE_CORE,
+  CUE_INK,
+  CUE_JITTER_PX,
+  CUE_MOTE_ALPHA_PEAK,
+  CUE_MOTE_COUNT,
+  chalkArrow,
+  hasNoStraightMachineEdge,
+} from "./cue.ts";
 
 describe("PK-R6 · H2 · the hand-drawn ↑ cue", () => {
   it("has no straight machine edge — the defect, as a test", () => {
@@ -68,5 +79,96 @@ describe("PK-R6 · H2 · the hand-drawn ↑ cue", () => {
       expect(cue.halo[i]!.r).toBeGreaterThan(cue.halo[i - 1]!.r);
       expect(cue.halo[i]!.alpha).toBeLessThan(cue.halo[i - 1]!.alpha);
     }
+  });
+});
+
+// R5-W1 · F1 · DIE LOCKUNG, geprüft statt behauptet. Der Auftrag verlangt „eine
+// DEUTLICH prominentere, lockende Animation" — das ist ein Geschmacksurteil, das
+// am Ende ein Kritiker und Koki fällen. Prüfbar ist, ob das Material dafür
+// überhaupt da ist: Weg, Nachlauf, Atem, Richtung. Und vor allem das eine, was
+// hier schiefgehen KANN, ohne dass es jemand sieht: ein Waver, der kocht.
+describe("R5-F1 · der ↑-Cue lockt", () => {
+  const at = (phase: number) => chalkArrow(40, 20, 11, 7, phase);
+
+  it("KOCHT NICHT: der Waver gehört dem Wesen, nie der Uhr", () => {
+    // Der einzige Weg, diesen Cue schlechter zu machen als das Vektor-Glyph,
+    // das er ersetzt hat. Die Marke wippt — also wird der starre Wipp-Weg
+    // abgezogen, und was bleibt, muss Tick für Tick IDENTISCH sein.
+    const a = at(0).bands[2]!.pts;
+    for (const phase of [1, 7, 23, 46, 137]) {
+      const b = at(phase).bands[2]!.pts;
+      const dy = b[0]!.y - a[0]!.y; // der gemeinsame Wipp-Versatz dieses Ticks
+      for (let i = 0; i < a.length; i++) {
+        expect(b[i]!.x, `Vertex ${i} @${phase} wandert seitwärts`).toBeCloseTo(a[i]!.x, 9);
+        expect(b[i]!.y - a[i]!.y, `Vertex ${i} @${phase} kocht`).toBeCloseTo(dy, 9);
+      }
+    }
+  });
+
+  it("wippt mit Weg — und genau einmal pro Takt", () => {
+    let lo = Infinity, hi = -Infinity;
+    for (let t = 0; t < CUE_BOB_TICKS; t++) {
+      const yy = at(t).bands[3]!.pts[0]!.y;
+      lo = Math.min(lo, yy); hi = Math.max(hi, yy);
+    }
+    expect(hi - lo).toBeGreaterThan(CUE_BOB_PX * 1.8); // voller Hin- und Rückweg
+    // …und nach einem vollen Takt steht die Marke wieder, wo sie war
+    expect(at(CUE_BOB_TICKS).bands[3]!.pts[0]!.y).toBeCloseTo(at(0).bands[3]!.pts[0]!.y, 6);
+  });
+
+  it("das Licht läuft der Marke NACH (überlappende Aktion)", () => {
+    let sawLag = false;
+    for (let t = 0; t < CUE_BOB_TICKS; t++) {
+      const c = at(t);
+      if (Math.abs(c.halo[0]!.cy - c.bands[3]!.pts[3]!.y) > 0.4) sawLag = true;
+    }
+    expect(sawLag, "Halo und Marke bewegen sich starr im Gleichschritt").toBe(true);
+  });
+
+  it("das Leuchten atmet, ohne je zu blinken oder zu blitzen", () => {
+    let lo = Infinity, hi = -Infinity;
+    for (let t = 0; t < CUE_BOB_TICKS; t++) {
+      const a0 = at(t).halo[0]!.alpha;
+      lo = Math.min(lo, a0); hi = Math.max(hi, a0);
+    }
+    expect(hi).toBeGreaterThan(lo); // es atmet
+    expect(lo).toBeGreaterThan(0.02); // …und geht nie aus (eine HUD-Blinklampe)
+    expect(hi).toBeLessThan(0.25); // …und wird nie zum Blitz
+  });
+
+  it("die Krümel STEIGEN — die Richtung IST die Botschaft", () => {
+    // Ein Korn über seinen Lebenslauf verfolgt — GEGEN DIE MARKE gemessen, denn
+    // der ganze Cue wippt und trägt die Körner mit (genau das ist der Nachlauf
+    // oben). Die Behauptung ist „sie steigen AN der Marke entlang", nicht „ihre
+    // Bildschirmhöhe nimmt monoton ab".
+    const rel: number[] = [];
+    for (let t = 0; t < 30; t++) {
+      const c = at(t);
+      rel.push(c.dust[0]!.y - c.halo[0]!.cy);
+    }
+    const steps = rel.slice(1).map((v, i) => v - rel[i]!);
+    const rising = steps.filter((d) => d < 0).length;
+    expect(rising, "fast jeder Schritt geht nach oben").toBeGreaterThanOrEqual(steps.length - 1);
+    // …der eine erlaubte Ausreißer ist der Neustart des Korns am Fuß
+    expect(steps.filter((d) => d > 0).length, "höchstens ein Neustart").toBeLessThanOrEqual(1);
+    for (let t = 0; t < 60; t++) {
+      for (const d of at(t).dust) expect(d.alpha).toBeLessThanOrEqual(CUE_MOTE_ALPHA_PEAK); // Puder, nicht Farbe
+    }
+    expect(at(0).dust.length).toBe(CUE_MOTE_COUNT);
+  });
+
+  it("reduzierte Bewegung liefert ein fertiges Bild, kein eingefrorenes halbes", () => {
+    const still = chalkArrow(40, 20, 11, 7, 999, true);
+    expect(chalkArrow(40, 20, 11, 7, 0, true)).toEqual(still); // steht wirklich still
+    // …und die Krümel stehen VERTEILT, nicht alle unten geklumpt
+    const ys = still.dust.map((d) => d.y);
+    expect(Math.max(...ys) - Math.min(...ys)).toBeGreaterThan(4);
+  });
+
+  it("kein Erstsicht-Puls ist überhaupt baubar (getilgte Klasse)", () => {
+    // `phase` ist die ABSOLUTE Uhr: derselbe Tick gibt dasselbe Bild, egal wie
+    // lange der Cue schon steht. Es gibt keinen Parameter, der „seit wann"
+    // tragen könnte — und das ist der Schutz.
+    expect(chalkArrow(40, 20, 11, 7, 300)).toEqual(chalkArrow(40, 20, 11, 7, 300));
   });
 });

@@ -45,6 +45,15 @@ export interface PlayerState {
   airTicks: number; // ticks since leaving the ground (drives the gravity clock)
   holdLeft: number; // gravity-suppression ticks remaining
   coyote: number;
+  /** R5-W1 · F1 · THE POSE'S OWN GRACE. `coyote` answers „may he still jump?";
+   *  this answers „may he still be DRAWN standing?". They ran as one field until
+   *  the grip branches (hang/vine/swing) — which return before the decrement
+   *  below — froze the counter and left the ground pose painted on a body in
+   *  mid-air for a whole grace window (debt D-10). Splitting them fixes the
+   *  drawing without touching jump availability, which is physics and would
+   *  move every recorded tape. Mirrors `coyote` everywhere EXCEPT that a grip
+   *  zeroes it. */
+  poseGrace: number;
   buffer: number;
   // hover (the quill-rotor; unlimited while held — R5)
   hovering: boolean;
@@ -110,6 +119,7 @@ export const spawnPlayer = (xPx: number, feetYPx: number): PlayerState => ({
   airTicks: 0,
   holdLeft: 0,
   coyote: 0,
+  poseGrace: 0,
   buffer: 0,
   hovering: false,
   charge: -1,
@@ -137,6 +147,7 @@ export const applyKnockback = (st: PlayerState, fromDir: 1 | -1, fast: boolean):
   charge: -1,
   stun: 14, // T: control-lock ticks while recoiling
   iframes: PAINT.iframeTicks,
+  poseGrace: 0, // he is off the floor and must be drawn that way
   pose: "hit",
 });
 
@@ -146,9 +157,15 @@ export const stepPlayer = (
   prevPad: Pad,
   grid: Grid,
   opts: StepOpts = {},
-): { st: PlayerState; events: PlayerEvent[] } => {
+): { st: PlayerState; events: PlayerEvent[]; locked: boolean } => {
   const events: PlayerEvent[] = [];
   const s: PlayerState = { ...st, tick: st.tick + 1 };
+  // R5-W1 · F1: read ONCE, at the top, and handed back to the caller. The Sim
+  // commits the pose again after the entity world has had its say, and it must
+  // judge „locked" by the same value this tick used — recomputing `stun > 0`
+  // down there would clip the last recoil frame, because the decrement below
+  // has already happened by then.
+  const controlsLocked = s.stun > 0;
   const jumpPressed = pad.jump && !prevPad.jump;
   const punchPressed = pad.punch && !prevPad.punch;
   const punchReleased = !pad.punch && prevPad.punch;
@@ -180,7 +197,7 @@ export const stepPlayer = (
     } else {
       s.pose = "swing";
     }
-    return { st: s, events };
+    return { st: s, events, locked: controlsLocked };
   }
 
   // ── the hang (canonical: a static grip — NO pull-up exists; you clear the
@@ -197,20 +214,21 @@ export const stepPlayer = (
       events.push({ type: "jumped" });
     } else if (pad.down) {
       s.hangAt = null;
+      s.poseGrace = 0; // D-10: letting go IS air — the grace died at the grab
       s.pose = "fall";
     } else {
       s.pose = "hang"; // UP intentionally does nothing here (camera-look later)
-      return { st: s, events };
+      return { st: s, events, locked: controlsLocked };
     }
-    return { st: s, events };
+    return { st: s, events, locked: controlsLocked };
   }
 
   // PB-F2: the air model in force this tick (the shipped one unless a dev
   // session asked for a candidate) — see paint.ts AIR_MODELS.
   const air = opts.airModel ?? AIR_MODELS[DEFAULT_AIR_MODEL];
 
-  // ── hit-stun: physics only, controls locked ──
-  const controlsLocked = s.stun > 0;
+  // ── hit-stun: physics only, controls locked (the flag itself is read at the
+  // top of the function, above the swing/hang branches that return early) ──
   if (s.stun > 0) s.stun--;
 
   // ── horizontal control ──
@@ -253,6 +271,8 @@ export const stepPlayer = (
   if (s.vineCooldown > 0) s.vineCooldown--;
   if (!s.climbing && vineHere && (pad.up || pad.down) && !s.grounded && s.vineCooldown === 0) {
     s.climbing = true;
+    s.poseGrace = 0; // D-10: a grip ends the drawing's grace — this branch returns
+                     // before the decrement below, so it would otherwise freeze
     s.x = (centerCol * TILE + TILE / 2) * SUBS; // snap to the column
     s.vx = 0;
   }
@@ -271,7 +291,7 @@ export const stepPlayer = (
       const ny = s.y + s.vy;
       s.y = ny;
       s.pose = "vine";
-      return { st: s, events };
+      return { st: s, events, locked: controlsLocked };
     }
   }
 
@@ -281,10 +301,11 @@ export const stepPlayer = (
     const dy = Math.abs(s.y - BODY_H * SUBS - opts.ringAt.y) / SUBS;
     if (dx <= RING_REACH_PX && dy <= RING_REACH_PX * 2) {
       s.swing = attachSwing(opts.ringAt.x, opts.ringAt.y, s.x);
+      s.poseGrace = 0; // D-10, same reason as the vine above
       s.pose = "swing";
       s.hovering = false;
       events.push({ type: "swingStart" });
-      return { st: s, events };
+      return { st: s, events, locked: controlsLocked };
     }
   }
 
@@ -297,6 +318,7 @@ export const stepPlayer = (
     s.holdLeft = PAINT.jumpHoldTicks;
     s.grounded = false;
     s.coyote = 0;
+    s.poseGrace = 0;
     s.buffer = 0;
     s.jumpedAgo = 0;
     events.push({ type: "jumped" });
@@ -371,6 +393,7 @@ export const stepPlayer = (
       const feet = s.y / SUBS;
       if (Math.abs(feet - (ledgeTop + HANG_DROP_PX)) <= PAINT.ledgeMagnetPx + s.vy / SUBS) {
         s.hangAt = { c, r };
+        s.poseGrace = 0; // D-10, same reason as the vine
         s.y = (ledgeTop + HANG_DROP_PX) * SUBS;
         // body flush against the grabbed wall face (1px of air between)
         s.x = (s.facing > 0 ? c * TILE - 1 - BODY_W / 2 : (c + 1) * TILE + 1 + BODY_W / 2) * SUBS;
@@ -379,7 +402,7 @@ export const stepPlayer = (
         s.hovering = false;
         events.push({ type: "grabbedLedge" });
         s.pose = "hang";
-        return { st: s, events };
+        return { st: s, events, locked: controlsLocked };
       }
     }
   }
@@ -414,8 +437,10 @@ export const stepPlayer = (
   }
   if (!s.grounded && wasGrounded && s.jumpTicks === -1) {
     s.coyote = PAINT.coyoteTicks; // walked off an edge
-  } else if (s.coyote > 0) {
-    s.coyote--;
+    s.poseGrace = PAINT.coyoteTicks;
+  } else {
+    if (s.coyote > 0) s.coyote--;
+    if (s.poseGrace > 0) s.poseGrace--;
   }
 
   // ── springs ──
@@ -437,10 +462,16 @@ export const stepPlayer = (
   // ── bookkeeping + pose ──
   if (s.grounded && Math.abs(s.vx) > 0) s.walkTime++;
   s.pose = derivePose(s, controlsLocked);
-  return { st: s, events };
+  return { st: s, events, locked: controlsLocked };
 };
 
-const derivePose = (s: PlayerState, locked: boolean): PlayerPose => {
+/**
+ * R5-W1 · F1 · THE ONE DERIVATION. Exported because `stepPlayer` is no longer
+ * the last thing that touches the player in a tick: the ride contract regrounds
+ * him AFTER this ran (sim.ts), so the Sim commits the pose once more at the end
+ * of its own step. One rule, two call sites, no second opinion.
+ */
+export const derivePose = (s: PlayerState, locked: boolean): PlayerPose => {
   if (locked || s.stun > 0) return "hit";
   if (s.swing) return "swing";
   if (s.hangAt) return "hang";
@@ -451,10 +482,47 @@ const derivePose = (s: PlayerState, locked: boolean): PlayerPose => {
   // re-grounds AFTER the pose ran); as long as the child may still jump like
   // from ground, drawing ground is honest. A real jump (jumpTicks >= 0)
   // shows jump/fall at once.
-  if (!s.grounded && (s.jumpTicks >= 0 || s.coyote === 0)) return s.vy < 0 ? "jump" : "fall";
+  if (!s.grounded && (s.jumpTicks >= 0 || s.poseGrace === 0)) return s.vy < 0 ? "jump" : "fall";
   if (s.charge >= 0) return "charge";
   const speed = Math.abs(s.vx);
   if (speed >= PAINT.runEngage) return "run";
   if (speed > 0) return "walk";
   return "stand";
+};
+
+/** Poses that claim floor contact. `hit` is deliberately absent: a recoiling
+ *  body is honest both in the air and on the boards it just landed on. */
+const GROUND_POSES = new Set<PlayerPose>(["stand", "walk", "run", "charge"]);
+/** Poses that claim there is nothing under him. */
+const AIR_POSES = new Set<PlayerPose>(["jump", "fall", "hover"]);
+/** Poses that claim he is holding on to something. */
+const GRIP_POSES = new Set<PlayerPose>(["hang", "vine", "swing"]);
+
+/**
+ * R5-W1 · F1 · THE POSE-HONESTY LAW, as a machine check.
+ *
+ * Koki's replay found the drawing contradicting the physics — he stood on a
+ * plate wearing the spread-armed fall. One instance was a ride-attach tick; the
+ * inverse instance (debt D-10) was a frozen grace window painting ground onto a
+ * body in mid-air. Both are the same class, so the class is what is policed:
+ * every committed player state must be able to defend its own drawing.
+ *
+ * Returns human-readable mismatches (empty = honest). Never throws — the tape
+ * replay collects these per tick, and a recorder that died on the first one
+ * could never show how many there were.
+ */
+export const posePairErrors = (s: PlayerState): string[] => {
+  const errs: string[] = [];
+  if (s.grounded && AIR_POSES.has(s.pose)) errs.push(`grounded, aber Luft-Pose »${s.pose}«`);
+  if (s.grounded && GRIP_POSES.has(s.pose)) errs.push(`grounded, aber Griff-Pose »${s.pose}«`);
+  if (!s.grounded && s.poseGrace === 0 && GROUND_POSES.has(s.pose)) {
+    errs.push(`in der Luft ohne Gnadenfenster, aber Boden-Pose »${s.pose}«`);
+  }
+  // …and a grip that grips nothing: the same lie one level down. `warp` clears
+  // all three referents, which is exactly how it used to leave a hand closed
+  // around a rope that no longer exists.
+  if (s.pose === "hang" && s.hangAt === null) errs.push("Pose »hang« ohne Kante");
+  if (s.pose === "swing" && s.swing === null) errs.push("Pose »swing« ohne Ring");
+  if (s.pose === "vine" && !s.climbing) errs.push("Pose »vine« ohne Ranke");
+  return errs;
 };

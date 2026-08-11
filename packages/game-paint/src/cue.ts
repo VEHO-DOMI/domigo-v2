@@ -38,8 +38,9 @@ import { hash01 } from "./mass.ts";
 export interface CuePt { x: number; y: number }
 /** One fill pass of the arrow: a closed polygon at one colour and alpha. */
 export interface CueBand { pts: readonly CuePt[]; colour: number; alpha: number }
-/** One soft ring of the halo behind it. */
-export interface CueRing { r: number; alpha: number }
+/** One soft ring of the halo behind it. R5-W1 · F1: it carries its own centre
+ *  now, because the light LAGS the mark (see CUE_LAG_TICKS). */
+export interface CueRing { cx: number; cy: number; r: number; alpha: number }
 /** One speck of shed chalk. */
 export interface CueFleck { x: number; y: number; r: number; alpha: number }
 
@@ -84,19 +85,76 @@ const BANDS: readonly { grow: number; colour: number; alpha: number }[] = [
   { grow: -0.85, colour: CUE_CORE, alpha: 0.94 },
 ];
 
+// ── R5-W1 · F1 · DIE LOCKUNG (Kokis Auftrag: „Kinder sollen hingezogen werden")
+//
+// Der Cue war korrekt und leise. Der Zahlengrund für „leise": das gesamte
+// Leuchten gipfelte bei 6,2 % Deckkraft, und die einzige Bewegung war ein
+// 1,6-px-Wippen, dessen Mathematik in der ungetesteten Renderdatei stand.
+//
+// Vier Züge, und der vierte ist der eigentliche:
+//  1. Das Wippen bekommt Weg und einen Namen (2,9 px auf 46 Ticks ≈ 78 bpm,
+//     ein ruhiger Puls). Ein benannter Tick-Takt ist prüfbar, `sin(t/9)` nicht.
+//  2. Halo und Staub LAUFEN NACH. Der billigste Lebendigkeits-Trick, den es
+//     gibt: die Marke wird nicht mehr verschoben, sie wird GETRAGEN.
+//  3. Das Leuchten atmet — und ist endlich hell genug, um es zu bemerken.
+//     Gegenphasig zum Wippen: die Marke „landet" unten, das Licht antwortet.
+//     Ein Glockenschlag, nicht zwei wackelnde Dinge.
+//  4. AUFSTEIGENDE KRÜMEL. Kinder lesen eine Bewegungsrichtung, lange bevor
+//     sie ein Zeichen lesen. Sieben Kreidekörner, die nach oben wandern, sagen
+//     „hier hoch" ohne ein Wort — aus einem Schild wird eine Strömung.
+//
+// Was sich NICHT ändert: der gehashte Vertex-Waver liest `phase` nie (er würde
+// „kochen" — ein schlimmeres Artefakt als das Vektor-Glyph, das er ersetzt hat),
+// die Band-Rampe, die Silhouette, und `phase` ist die ABSOLUTE Uhr, damit gar
+// kein Erstsicht-Puls entstehen kann (getilgte Klasse).
+/** Weg des Wippens (px) und seine Dauer (Ticks). */
+export const CUE_BOB_PX = 2.9;
+export const CUE_BOB_TICKS = 46;
+/** Wie weit Licht und Staub der Marke hinterherhängen. */
+export const CUE_LAG_TICKS = 5;
+/** Ringe im Halo, ihre Grundhelligkeit und ihr Atem. */
+export const CUE_HALO_RINGS = 4;
+export const CUE_HALO_GAIN = 1.6;
+export const CUE_HALO_PULSE = 0.55;
+export const CUE_HALO_SWELL_PX = 1.8;
+/** Die aufsteigenden Krümel. */
+export const CUE_MOTE_COUNT = 7;
+export const CUE_MOTE_RISE_PX = 13;
+export const CUE_MOTE_TICKS = 54;
+export const CUE_MOTE_ALPHA_PEAK = 0.46;
+
+/** Der Weg des Wippens zu einem Zeitpunkt — ausgelagert, weil Halo und Staub
+ *  denselben Weg um CUE_LAG_TICKS versetzt brauchen. */
+const bobAt = (phase: number, reducedMotion: boolean): number =>
+  reducedMotion ? 0 : Math.sin((phase / CUE_BOB_TICKS) * Math.PI * 2) * CUE_BOB_PX;
+
 /**
  * The whole cue, in world px, centred on (x, y).
  *
  * `size` is the arrow's height; `seed` fixes the waver, so two cues on screen
  * are not identical twins and the same cue never changes between frames.
+ * `phase` is the sim's ABSOLUTE tick count (never „ticks since seen").
  */
-export const chalkArrow = (x: number, y: number, size = 11, seed = 1): ChalkArrow => {
+export const chalkArrow = (
+  x: number,
+  y: number,
+  size = 11,
+  seed = 1,
+  phase = 0,
+  reducedMotion = false,
+): ChalkArrow => {
+  // …und `phase` kommt hier NICHT vor: ein pro Bild neu gewürfelter Waver
+  // würde kochen (siehe Kopf der Datei). Der Waver gehört dem Wesen, nicht der
+  // Uhr.
   const jit = (i: number, salt: number): number =>
     (hash01(seed * 7919 + i * 131 + salt) - 0.5) * 2 * CUE_JITTER_PX * (size / 11);
+  const bob = bobAt(phase, reducedMotion);
+  const lagBob = bobAt(phase - CUE_LAG_TICKS, reducedMotion);
+  const ay = y + bob;
   // the silhouette, once, with its waver baked in
   const base = UNIT.map((p, i) => ({
     x: x + p.x * size + jit(i, 0),
-    y: y + p.y * size + jit(i, 977),
+    y: ay + p.y * size + jit(i, 977),
   }));
   // …grown outward from the shape's own centre, one copy per pass
   const cx = base.reduce((s, p) => s + p.x, 0) / base.length;
@@ -111,19 +169,37 @@ export const chalkArrow = (x: number, y: number, size = 11, seed = 1): ChalkArro
       return { x: p.x + (dx / d) * b.grow, y: p.y + (dy / d) * b.grow };
     }),
   }));
+  // das Licht: heller als vorher (das ganze Leuchten gipfelte bei 6,2 %), und
+  // es ATMET gegenphasig zum Wippen — die Marke landet, das Licht antwortet
+  const breath = reducedMotion ? 0 : -Math.sin(((phase - CUE_LAG_TICKS) / CUE_BOB_TICKS) * Math.PI * 2);
+  const haloY = y + lagBob;
   const halo: CueRing[] = [];
-  for (let i = 0; i < 3; i++) {
-    halo.push({ r: size * (0.85 + i * 0.42), alpha: 0.05 * (1 - i / 3) ** 1.2 + 0.012 });
+  for (let i = 0; i < CUE_HALO_RINGS; i++) {
+    halo.push({
+      cx: x,
+      cy: haloY,
+      r: size * (0.85 + i * 0.42) + CUE_HALO_SWELL_PX * breath * (i / CUE_HALO_RINGS),
+      alpha: (0.05 * (1 - i / CUE_HALO_RINGS) ** 1.2 + 0.012) * CUE_HALO_GAIN * (1 + CUE_HALO_PULSE * breath),
+    });
   }
+  // …und die Krümel STEIGEN. Das ist die eigentliche Lockung: ein Kind liest
+  // eine Richtung, bevor es ein Zeichen liest. Seitwärts-Ort und Größe bleiben
+  // am Samen — nur Höhe und Deckkraft laufen, sonst wird aus Puder ein Regen.
   const dust: CueFleck[] = [];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < CUE_MOTE_COUNT; i++) {
     const a = hash01(seed * 331 + i * 71) * Math.PI * 2;
     const d = size * (0.5 + hash01(seed * 53 + i * 17) * 0.55);
+    const own = hash01(seed * 641 + i * 53); // jedes Korn hat seine eigene Zeit
+    const u = reducedMotion
+      ? (i + 0.5) / CUE_MOTE_COUNT // Endzustand: gleichmäßig verteilt, nicht unten geklumpt
+      : (((phase - CUE_LAG_TICKS) / CUE_MOTE_TICKS + own) % 1 + 1) % 1;
     dust.push({
       x: x + Math.cos(a) * d,
-      y: y + Math.sin(a) * d * 0.9,
+      y: haloY + Math.sin(a) * d * 0.9 - u * CUE_MOTE_RISE_PX,
       r: 0.28 + hash01(seed * 13 + i * 29) * 0.42,
-      alpha: 0.18 + hash01(seed * 97 + i * 41) * 0.3,
+      // ein- und ausblenden, damit ein Korn auftaucht und vergeht statt zu
+      // springen: Sinus über den Steigweg, gedeckelt bei „Puder, nicht Farbe"
+      alpha: CUE_MOTE_ALPHA_PEAK * Math.sin(u * Math.PI) * (0.55 + 0.45 * hash01(seed * 97 + i * 41)),
     });
   }
   return { halo, bands, dust };

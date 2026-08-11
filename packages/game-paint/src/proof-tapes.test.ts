@@ -7,10 +7,10 @@
 import { describe, expect, it } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
-import { PROOF_SCHEMA, type ProofFile, replayChapterTapes, replayPhaseTape, worldAssertionErrors } from "./tape.ts";
+import { POSE_VIOLATION_CAP, PROOF_SCHEMA, type ProofFile, replayChapterTapes, replayPhaseTape, worldAssertionErrors } from "./tape.ts";
 import { allPhases, type PaintLevel } from "./level.ts";
 import { Sim } from "./sim.ts";
-import { IDLE_PAD } from "./player.ts";
+import { IDLE_PAD, posePairErrors, spawnPlayer } from "./player.ts";
 
 const CONTENT = path.resolve(__dirname, "../../../content/corpus/stories");
 
@@ -64,6 +64,21 @@ describe("proof tapes (the playability law)", () => {
         // pad stream alone stayed byte-identical and green.
         const drift = worldAssertionErrors(tape.expect, res.world);
         expect(drift, `world assertions failed for ${ph.id}:\n  ${drift.join("\n  ")}`).toEqual([]);
+      });
+
+      // R5-W1 · F1 · DAS POSE-EHRLICHKEITS-GESETZ, über jeden ausgelieferten
+      // Tick. Kokis Replay fand die Lüge per Auge; ab hier findet sie das
+      // Band. Der Andock-Tick war EINE Instanz — dieser Test bewacht die
+      // Klasse, auch in den Phasen, an die niemand gedacht hat.
+      it(`${name} · ${ph.id}: die gezeichnete Pose widerspricht nie dem Zustand`, () => {
+        const res = replayPhaseTape(level, ph.id, tape);
+        const lies = res.poseViolations
+          .map((v) => `  Tick ${v.tick}: ${v.errors.join(" · ")}`)
+          .join("\n");
+        expect(
+          res.poseViolations,
+          `${res.poseViolations.length} unehrliche Ticks in ${ph.id} (max. ${POSE_VIOLATION_CAP} gesammelt):\n${lies}`,
+        ).toEqual([]);
       });
     }
 
@@ -141,6 +156,53 @@ describe("proof tapes (the playability law)", () => {
       const truncated = { ...tape, pads: tape.pads.slice(0, Math.floor(tape.pads.length / 3)) };
       const res = replayPhaseTape(level, firstPhase.id, truncated);
       expect(res.exited).toBe(false);
+    });
+  }
+});
+
+// R5-W1 · F1 · TAMPER: der Pose-Wächter selbst. Eine Fegung, die auf
+// ausgeliefertem Inhalt grün ist, beweist noch nicht, dass sie überhaupt rot
+// werden KANN — genau so wäre die Klasse still zurückgekommen. Jede verbotene
+// Paarung wird hier von Hand gebaut und muss gemeldet werden, jede erlaubte
+// muss schweigen.
+describe("R5-F1 · der Pose-Wächter kann rot werden (TAMPER)", () => {
+  const st = (over: Partial<ReturnType<typeof spawnPlayer>>): ReturnType<typeof spawnPlayer> =>
+    ({ ...spawnPlayer(32, 176), ...over });
+
+  const ILLEGAL = [
+    ["Boden + Fall (Kokis Andock-Tick)", st({ grounded: true, pose: "fall" })],
+    ["Boden + Sprung", st({ grounded: true, pose: "jump" })],
+    ["Boden + Schweben", st({ grounded: true, pose: "hover" })],
+    ["Boden + Kante", st({ grounded: true, pose: "hang", hangAt: { c: 1, r: 1 } })],
+    ["Boden + Ranke", st({ grounded: true, pose: "vine", climbing: true })],
+    ["Luft ohne Fenster + Stand (D-10)", st({ grounded: false, poseGrace: 0, pose: "stand" })],
+    ["Luft ohne Fenster + Gehen", st({ grounded: false, poseGrace: 0, pose: "walk" })],
+    ["Luft ohne Fenster + Laufen", st({ grounded: false, poseGrace: 0, pose: "run" })],
+    ["Luft ohne Fenster + Aufladen", st({ grounded: false, poseGrace: 0, pose: "charge" })],
+    ["Kante ohne Kante", st({ grounded: false, pose: "hang", hangAt: null })],
+    ["Ring ohne Ring", st({ grounded: false, pose: "swing", swing: null })],
+    ["Ranke ohne Ranke", st({ grounded: false, pose: "vine", climbing: false })],
+  ] as const;
+
+  const LEGAL = [
+    ["Boden + Stand", st({ grounded: true, pose: "stand" })],
+    ["Boden + Laufen", st({ grounded: true, pose: "run" })],
+    ["Luft + Fall", st({ grounded: false, poseGrace: 0, pose: "fall" })],
+    ["Luft IM Fenster + Gehen (das gewollte A1-Gnadenbild)", st({ grounded: false, poseGrace: 4, pose: "walk" })],
+    ["Boden + Treffer (zurückgestoßen und schon wieder gelandet)", st({ grounded: true, pose: "hit" })],
+    ["Luft + Treffer", st({ grounded: false, poseGrace: 0, pose: "hit" })],
+    ["hängend an einer Kante", st({ grounded: false, pose: "hang", hangAt: { c: 2, r: 3 } })],
+  ] as const;
+
+  for (const [label, state] of ILLEGAL) {
+    it(`meldet: ${label}`, () => {
+      expect(posePairErrors(state).length, `${label} muss gemeldet werden`).toBeGreaterThan(0);
+    });
+  }
+
+  for (const [label, state] of LEGAL) {
+    it(`schweigt bei: ${label}`, () => {
+      expect(posePairErrors(state), `${label} ist ehrlich und darf nicht gemeldet werden`).toEqual([]);
     });
   }
 });
