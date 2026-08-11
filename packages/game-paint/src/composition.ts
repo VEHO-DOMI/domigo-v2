@@ -567,7 +567,7 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
     // word … the trail's end holds that thing"), which only became true when
     // the objects arrived in the field. Until now every phase fell back to the
     // A→Z walk, so a child collected ABCDEFGH and read nothing.
-    words: ["school", "bag", "book"],
+    words: ["school", "bag"], // R5-P1: Trail SCHOOLBAG = 9 (B21: die ersten sechs buchstabieren SCHOOL, die letzten drei die BAG)
   },
   // p2 Klassenzimmer bei Nacht — moon-cool: deep blue-violet air.
   p2: {
@@ -588,7 +588,7 @@ export const CH01_COMPOSITION: Record<string, CompositionSpec> = {
       band: 0.50,
     },
     mass: { ...sharedMass("p2"), ...crustOf("p2") },
-    words: ["desk", "pencil"], // the two drained objects of the night classroom
+    words: ["projector"], // R5-P1: Trail PROJECTOR = 9 (p2.md §4 — der Projektor wirft die Zahlen)
   },
   // p3 Schulhof-Garten — afternoon-soft: sand plaster and chalk pastel.
   // The one phase with the chalk slide (`z` runs, AF group 4).
