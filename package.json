@@ -18,7 +18,8 @@
     "record:paint-tape": "node --experimental-strip-types scripts/record-paint-tape.mjs",
     "content": "node packages/content-pipeline/src/content.ts",
     "audit:blind-solve": "node scripts/audit/blind-solve.ts",
-    "check:level-design": "node scripts/check-level-design.mjs"
+    "check:level-design": "node scripts/check-level-design.mjs",
+    "check:level-design:selftest": "node scripts/check-level-design.mjs --selftest"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.110.0",

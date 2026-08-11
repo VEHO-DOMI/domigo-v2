@@ -644,7 +644,11 @@ describe("PB-T2 · envelope law (derived from stepPlayer)", () => {
     const basin = (floor: string) => [
       "####################",
       ...Array.from({ length: 12 }, () => "...................."),
-      "..S.*.........X.....",
+      // Der Checkpoint gehört auf das OSTUFER der Tinte (B1-Doktrin, c12 liegt
+      // im Fenster c12–15) — sonst schlägt hier `checkpoint-count` an und
+      // verrauscht einen Test, der von Taschen handelt. Ohne Tinte im Boden
+      // gibt es keine Passage, also auch keinen Checkpoint.
+      floor.includes("w") ? "..S.*.......C.X....." : "..S.*.........X.....",
       "######......########",
       "######......########",
       "######......########",
@@ -659,9 +663,158 @@ describe("PB-T2 · envelope law (derived from stepPlayer)", () => {
     const solid = parsePaintLevel(level(basin("######")));
     expect(checkLevelLaws(solid).some((f) => f.law === "trap-pocket"),
       "solider Becken-Boden bleibt Softlock").toBe(true);
-    // die p1-Keller-Klasse: solider Boden, aber Tinte IM Becken erreichbar —
-    // ein Schritt hinein warpt zum Checkpoint, niemand strandet
-    const kellerly = parsePaintLevel(level(basin("####ww")));
-    expect(checkLevelLaws(kellerly).filter((f) => f.law === "trap-pocket"),
-      "Becken mit erreichbarer Tinte ist kein Softlock").toEqual([]);
+    // Stacheln warpen NICHT (sim.ts ist glyph-genau auf »w«) — ein
+    // Stachel-Boden bleibt dem Gesetz unterworfen, egal wie tief
+    const spiky = parsePaintLevel(level(basin("^^^^^^")));
+    expect(checkLevelLaws(spiky).some((f) => f.law === "trap-pocket"),
+      "Stacheln sind kein Rückweg").toBe(true);
+  });
+
+  // ── B1 · W0-F3 v2 · DIE TROCKENE TASCHE ────────────────────────────────────
+  // Kokis Replay 2026-08-11 hat die R5-P1-Lesart am p1-Keller widerlegt: er
+  // stand auf dem Buchdeckel, kam nur noch runter, und der EINZIGE Ausweg war,
+  // in ein Hindernis zu laufen, dem man nicht ansieht, dass es ein Ausgang ist.
+  // Seitdem trennt das Gesetz zwei Dinge, die R5-P1 in einen Topf warf:
+  // eine Gefahr, in der man STEHT (der Warp feuert von selbst) und eine
+  // Gefahr, die man WÄHLEN muss (Softlock, außer die Phase deklariert sie).
+  describe("B1 · trockene Tasche vs. deklarierter Tinten-Dunk", () => {
+    // Becken c6–11: Boden c6–9 solide (trockene Standzellen r19), c10–11 Tinte.
+    // Exakt die p1-Keller-Form — trocken stehen, Tinte einen Schritt entfernt.
+    const basin = (floor: string) => [
+      "####################",
+      ...Array.from({ length: 12 }, () => "...................."),
+      // Der Checkpoint gehört auf das OSTUFER der Tinte (B1-Doktrin, c12 liegt
+      // im Fenster c12–15) — sonst schlägt hier `checkpoint-count` an und
+      // verrauscht einen Test, der von Taschen handelt. Ohne Tinte im Boden
+      // gibt es keine Passage, also auch keinen Checkpoint.
+      floor.includes("w") ? "..S.*.......C.X....." : "..S.*.........X.....",
+      "######......########",
+      "######......########",
+      "######......########",
+      "######......########",
+      "######......########",
+      `######${floor}########`,
+      "####################",
+    ];
+    // Knoten = Füße AUF Reihe r+1 — der Becken-Boden liegt auf Reihe 19, die
+    // trockenen Standzellen also auf r18; die Tinten-Zellen c10–11 tragen ihre
+    // Knoten eine Reihe tiefer (Welt-Boden r20 stützt sie).
+    const DRY = ["6,18", "7,18", "8,18", "9,18"] as const;
+    const dive = (cells: readonly string[], whyDe = "Keller-Tasche: der Tinten-Dunk IST der Rückweg (Krakel).") =>
+      cells.map((k) => {
+        const [c, r] = k.split(",").map(Number) as [number, number];
+        return { c, r, whyDe };
+      });
+    const withDives = (floor: string, cells: readonly string[], whyDe?: string) => {
+      const lvl = level(basin(floor));
+      lvl.phases[0]!.inkReturns = dive(cells, whyDe);
+      return parsePaintLevel(lvl);
+    };
+    const laws = (l: PaintLevel) => checkLevelLaws(l).map((f) => f.law);
+
+    it("DIE UMKEHR: trocken stehen mit Tinte in Reichweite ist wieder ein Softlock", () => {
+      // Diese Zusicherung stand bis 2026-08-11 auf GRÜN („Becken mit
+      // erreichbarer Tinte ist kein Softlock") und war der Freibrief, unter
+      // dem die p1-Grube durch jedes Gate kam.
+      const fails = checkLevelLaws(parsePaintLevel(level(basin("####ww"))));
+      const pocket = fails.filter((f) => f.law === "trap-pocket");
+      expect(pocket.length, "die trockene Tasche fällt jetzt durch").toBe(1);
+      expect(pocket[0]!.detail, "und sagt WARUM, samt Reparatur-Weg").toMatch(/only way out is the ink.*inkReturns/);
+    });
+
+    it("der deklarierte Tinten-Dunk besteht — mit einer Zeile je trockener Standzelle", () => {
+      expect(laws(withDives("####ww", DRY))).toEqual([]);
+    });
+
+    it("TAMPER: eine Deklaration, die eine Zelle daneben zeigt, rettet nichts", () => {
+      // (5,18) liegt in der Beckenwand, nicht in der Tasche
+      const off = laws(withDives("####ww", ["5,18", "7,18", "8,18", "9,18"]));
+      expect(off, "die undeklarierte Zelle fällt weiter durch").toContain("trap-pocket");
+      expect(off, "und die Fehl-Deklaration meldet sich selbst").toContain("ink-return");
+    });
+
+    it("TAMPER: eine Deklaration ohne Tinte in Reichweite ist keine Ausrede", () => {
+      const dryFloor = laws(withDives("######", DRY));
+      expect(dryFloor).toContain("trap-pocket");
+      expect(dryFloor).toContain("ink-return");
+    });
+
+    it("TAMPER: eine veraltete Deklaration überlebt die Tasche nicht, die sie entschuldigt hat", () => {
+      // Becken geheilt (Tinten-Boden = Gate A trägt), Deklaration blieb stehen
+      const stale = checkLevelLaws(withDives("wwwwww", DRY));
+      expect(stale.every((f) => f.law === "ink-return"), "nur noch die Ausrede ist übrig").toBe(true);
+      expect(stale.length, "jede der vier toten Zeilen wird benannt").toBe(4);
+    });
+
+    it("parsePaintLevel wirft laut auf leerem whyDe, Doppel-Zelle und Off-Grid", () => {
+      expect(() => withDives("####ww", DRY, "   ")).toThrow(/whyDe/);
+      expect(() => withDives("####ww", ["7,18", "7,18"])).toThrow(/duplicate inkReturns/);
+      expect(() => withDives("####ww", ["99,18"])).toThrow(/off-grid/);
+    });
+  });
+
+  // ── B1 · DIE CHECKPOINT-DOKTRIN (Koki, 2026-08-11) ─────────────────────────
+  // »Checkpoints gehören NACH schwere Abschnitte, nie davor.« Das dreht das
+  // Kochbuch (§2, §8 Gebot 6) um — und weil nur TINTE warpt (sim.ts ist
+  // glyph-genau auf »w«), ist die Tinten-Passage die einzige Schwierigkeit,
+  // gegen die ein Checkpoint ehrlich gemessen werden kann.
+  describe("B1 · Checkpoints stehen NACH der Tinten-Passage", () => {
+    // Welt 20 breit: Boden r19/r20 mit Tinten-Lauf c8–10; Steh-Reihe 18;
+    // Spawn c2, Exit c17 → Fenster für den Checkpoint = c11..c14.
+    const cross = (cp: { c: number; r: number } | null, cp2: { c: number; r: number } | null = null): string[] => {
+      const W = 20;
+      const rows = [
+        "#".repeat(W),
+        ...Array.from({ length: 17 }, () => ".".repeat(W)),
+        ".".repeat(W),
+        `${"#".repeat(8)}www${"#".repeat(9)}`,
+        `${"#".repeat(8)}www${"#".repeat(9)}`,
+      ];
+      const put = (r: number, c: number, g: string) => { rows[r] = rows[r]!.slice(0, c) + g + rows[r]!.slice(c + 1); };
+      put(18, 2, "S");
+      put(18, 17, "X");
+      for (const k of [cp, cp2]) if (k) put(k.r, k.c, "C");
+      return rows;
+    };
+    const laws = (rows: string[]): string[] => checkLevelLaws(parsePaintLevel(level(rows))).map((f) => f.law);
+
+    it("der Checkpaint auf dem OSTUFER, dicht an der Landung, ist die Norm", () => {
+      expect(laws(cross({ c: 11, r: 18 }))).toEqual([]);
+      expect(laws(cross({ c: 14, r: 18 }))).toEqual([]); // die letzte erlaubte Spalte
+    });
+
+    it("DIE UMKEHR: ein Checkpoint VOR der Tinte fällt durch", () => {
+      const f = checkLevelLaws(parsePaintLevel(level(cross({ c: 7, r: 18 }))));
+      const p = f.find((x) => x.law === "checkpoint-placement");
+      expect(p, "vor der Passage ist jetzt ein Verstoß").toBeDefined();
+      expect(p!.detail).toMatch(/on the near side.*AFTER a hard passage, never before it/);
+    });
+
+    it("TAMPER: einen Schritt zu weit (5 statt 4 Spalten) fällt ebenfalls durch", () => {
+      expect(laws(cross({ c: 14, r: 18 })), "c14 = genau am Rand").toEqual([]);
+      const f = checkLevelLaws(parsePaintLevel(level(cross({ c: 15, r: 18 }))));
+      expect(f.find((x) => x.law === "checkpoint-placement")?.detail).toMatch(/past the far bank.*retry sits NEXT to the challenge/);
+    });
+
+    it("TAMPER: gar kein Checkpoint an einer gekreuzten Tinte fällt durch", () => {
+      expect(laws(cross(null))).toContain("checkpoint-count");
+    });
+
+    it("TAMPER: zwei Checkpoints für EINE Passage fallen durch", () => {
+      expect(laws(cross({ c: 11, r: 18 }, { c: 13, r: 18 }))).toContain("checkpoint-count");
+    });
+
+    it("TAMPER: ein Checkpoint in der Luft fällt durch (Krakel skizziert, wo man steht)", () => {
+      const f = laws(cross({ c: 12, r: 10 }));
+      expect(f).toContain("checkpoint-footing");
+      expect(f, "die Spalte stimmt ja — nur der Boden fehlt").not.toContain("checkpoint-placement");
+    });
+
+    it("eine Phase ohne Tinte trägt KEINEN Checkpoint — sonst ist er Kulisse", () => {
+      const noInk = [...OK_ROWS];
+      noInk[17] = "..S..C.*..X.";
+      const f = checkLevelLaws(parsePaintLevel(level(noInk)));
+      expect(f.find((x) => x.law === "checkpoint-count")?.detail).toMatch(/crosses no ink.*scenery/);
+      expect(laws([...OK_ROWS]), "und ohne Checkpoint ist sie sauber").toEqual([]);
+    });
   });

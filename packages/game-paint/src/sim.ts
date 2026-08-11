@@ -126,9 +126,15 @@ export interface SimCfg {
    *  entry spot instead of the phase start. */
   spawnCell?: { c: number; r: number };
   /** R5-A2 · part 2: the letter state that survives a remount of THIS phase.
-   *  `takenCells` never respawn (they still count toward lettersTotal, exactly
-   *  like the live phase they were taken in); `purse`/`found` seed the wallet
-   *  and the Bilanz counter. Same contract as freedCageIds. */
+   *  `purse`/`found` seed the wallet and the Bilanz counter.
+   *  `takenCells` are the cells already collected in an earlier mount, and they
+   *  are read TWO ways: in a FIELD phase they never respawn (they still count
+   *  toward lettersTotal, exactly like the live phase they were taken in), while
+   *  in the BONUS ROOM they are ignored and every letter is served again —
+   *  **D-5 = Option A (Koki, 2026-08-11; DEBT_REGISTER D-5, ch01-dossiers-v2
+   *  README §Tor-Antworten)**, because a second purchase costs the full price and
+   *  must not buy an already emptied room. The guard is in the constructor.
+   *  Same contract as freedCageIds. */
   letterLedger?: () => { takenCells: readonly string[]; purse: number; found: number };
 }
 
@@ -239,10 +245,26 @@ export class Sim {
     this.exitCell = exit ?? { c: 0, r: 0 };
 
     // R5-A2: letters already taken in an earlier mount of this phase exist in
-    // the TALLY but not in the world — a Kleckskammer trip must not respawn
-    // them into double-collectability.
+    // the TALLY but not in the world — a Kleckskammer trip must not respawn a
+    // FIELD phase's letters into double-collectability.
+    //
+    // D-5 = OPTION A (Koki, 2026-08-11 — DEBT_REGISTER D-5, ch01-dossiers-v2
+    // README §Tor-Antworten): the bonus room is the one exception. A field phase
+    // is walked back into for free, so a cell taken there stays taken; the
+    // Kleckskammer is BOUGHT, and the second purchase costs the full price — so
+    // it may never sell a room the first visit already emptied. (The price
+    // question itself stays PK-R7 economics; this line only makes the goods
+    // match the bill.)
+    //
+    // THE KEY IS THE LEVEL'S OWN BONUS PHASE, NOT THE LITERAL id „p9" the bonus
+    // clock below still keys off. „Is this the room the chapter sells" is what
+    // the rule is actually about, and it stays true when ch02 names its
+    // Kleckskammer something else; the literal id would silently stop applying
+    // there. Compared by identity rather than by id so that a level which reused
+    // the id on a field phase could not smuggle it through this door.
     const ledger = cfg.letterLedger?.();
-    const takenCells = new Set(ledger?.takenCells ?? []);
+    const isBonusRoom = phase === cfg.level.bonus;
+    const takenCells = new Set(isBonusRoom ? [] : (ledger?.takenCells ?? []));
     for (const [r, row] of phase.rows.entries()) {
       for (let c = 0; c < row.length; c++) {
         if (row[c] === "o") this.rings.push({ x: (c * TILE + TILE / 2) * SUBS, y: (r * TILE + TILE / 2) * SUBS });

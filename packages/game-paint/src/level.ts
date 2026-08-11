@@ -107,6 +107,19 @@ export interface LinkSpec {
 
 export type Ability = "jump" | "punch" | "hang" | "swing" | "hover" | "run";
 
+/** W0-F3 · A DECLARED INK RETURN — the one legal way to answer the trap-pocket
+ *  law with "yes, the ink IS the way out". Names the exact standing cell of a
+ *  pocket the child can reach DRY and leave only by stepping into ink on
+ *  purpose (the „Tinten-Dunk = Krakel-Rückweg" reading the p3 swing and the p2
+ *  bonus book already carry in prose). The law proves the claim in BOTH
+ *  directions, so a declaration cannot outlive the pocket it excuses. */
+export interface InkReturnSpec {
+  c: number;
+  r: number;
+  /** Why the dive is the design — in the language the dossiers are written in. */
+  whyDe: string;
+}
+
 export interface PhaseSpec {
   id: string;
   nameDe: string;
@@ -116,6 +129,10 @@ export interface PhaseSpec {
   entities: EntitySpec[];
   links: LinkSpec[];
   exit: { to: string }; // a phase id, "boss", or "done"
+  /** Declared dry-pocket ink exits. Absent on every phase that has none — an
+   *  undeclared pocket whose only way out is a hazard is a softlock, not a
+   *  design (Kokis Replay 2026-08-11, p1-Keller). */
+  inkReturns?: InkReturnSpec[];
 }
 
 export interface PaintLevel {
@@ -192,6 +209,19 @@ export const parsePaintLevel = (level: PaintLevel): PaintLevel => {
     }
     const entityIds = new Set(ph.entities.map((e) => e.id));
     if (entityIds.size !== ph.entities.length) fail(`${ph.id}: duplicate entity ids`);
+    // W0-F3 · a declared ink return must be a real, singular, argued cell. The
+    // SEMANTIC half (is it actually a dry pocket?) is checkLevelLaws' job.
+    const inkKeys = new Set<string>();
+    for (const d of ph.inkReturns ?? []) {
+      if (!Number.isInteger(d.c) || !Number.isInteger(d.r) || d.r < 0 || d.r >= ph.rows.length || d.c < 0 || d.c >= w) {
+        fail(`${ph.id}: inkReturns entry off-grid (${d.c},${d.r})`);
+      }
+      if (typeof d.whyDe !== "string" || d.whyDe.trim() === "") {
+        fail(`${ph.id}: inkReturns (${d.c},${d.r}) needs a whyDe — a hazard used as an exit must say why`);
+      }
+      if (inkKeys.has(`${d.c},${d.r}`)) fail(`${ph.id}: duplicate inkReturns cell (${d.c},${d.r})`);
+      inkKeys.add(`${d.c},${d.r}`);
+    }
     for (const l of ph.links) {
       if (!entityIds.has(l.trigger)) fail(`${ph.id}: link trigger ${l.trigger} unknown`);
       for (const t of l.targets) if (!entityIds.has(t)) fail(`${ph.id}: link target ${t} unknown`);
@@ -260,6 +290,20 @@ const headroom = (grid: Grid, c: number, r: number): boolean =>
 export const standable = (grid: Grid, c: number, r: number): boolean =>
   supportAt(grid, c, r) && headroom(grid, c, r);
 
+/** W0-F3 · is a child standing on this node ALREADY in the ink? Mirrors
+ *  moveBody's hazard scan, which reads the body rect — for a node (c,r) that is
+ *  exactly rows r and r-1 of its own column (feet on top of r+1, body 30px tall
+ *  over a 16px tile). Used by the trap-pocket law to tell "a hazard you are IN"
+ *  (the warp fires by itself; nobody is stuck) from "a hazard you must CHOOSE"
+ *  (a dry pocket — a softlock unless the phase declares the dive). */
+/** B1 · How far past the far bank a checkpoint may sit. "Retry sits next to the
+ *  challenge" (cookbook §8.6) — 4 columns is well inside the 22-column
+ *  viewport, so the child can SEE the anchor from the landing. */
+export const CHECKPOINT_AFTER_MAX = 4;
+
+export const submerged = (grid: Grid, c: number, r: number): boolean =>
+  glyphAt(grid, c, r) === "w" || glyphAt(grid, c, r - 1) === "w";
+
 export const reachableCells = (
   rows: readonly string[],
   abilities: readonly Ability[],
@@ -270,9 +314,31 @@ export const reachableCells = (
   return reachFrom(rows, abilities, start, entities);
 };
 
+// B1 · PURE-INPUT MEMOS. Both of the caches below key on OBJECT IDENTITY of
+// data reachFrom only ever reads, never mutates — so they can never answer a
+// question about one grid with another grid's answer, and they hold nothing
+// alive that the caller has dropped (WeakMap). No semantics change: the same
+// call returns the same set, it just stops re-deriving node-independent facts.
+//
+// Why it matters: the trap-pocket law calls reachFrom ONCE PER STANDING NODE
+// (308 dry nodes on the shipped chapter). Without these, every one of those
+// calls re-scanned the whole grid for springs/vines/rings and re-sampled every
+// platform path over its full period — work that depends on (rows, entities)
+// alone. Measured in one process on the same healed ch01, shipped law vs this
+// one: 6849/6766 ms → 5227/5026 ms, i.e. ~25 % off the whole law despite the
+// added gates. (The law still costs ~2 s standalone: healing the p1 cellar
+// legitimately adds nodes, because a 4-node dead pocket became live graph.)
+const sweepMemo = new WeakMap<EntitySpec, Array<{ c: number; r: number }>>();
+const glyphScanMemo = new WeakMap<
+  readonly string[],
+  { springTops: Array<{ c: number; r: number }>; vines: Array<{ c: number; r: number }>; rings: Array<{ c: number; r: number }> }
+>();
+
 /** The swept top cells of a kinematic platform over one full period, sampled
  *  through the SAME path formula the runtime rides (platformPathAt). */
 const platformSweepCells = (spec: EntitySpec): Array<{ c: number; r: number }> => {
+  const memo = sweepMemo.get(spec);
+  if (memo) return memo;
   const homeX = (spec.c * TILE + TILE / 2) * SUBS;
   const homeY = (spec.r + 1) * TILE * SUBS;
   const params = spec.params ?? {};
@@ -284,10 +350,12 @@ const platformSweepCells = (spec: EntitySpec): Array<{ c: number; r: number }> =
     const rr = Math.floor((p.y / SUBS - 1) / TILE);
     for (let dc = -1; dc <= 1; dc++) cells.add(`${cc + dc},${rr}`); // the 40px top spans ~3 cells
   }
-  return [...cells].map((k) => {
+  const out = [...cells].map((k) => {
     const [c, r] = k.split(",").map(Number) as [number, number];
     return { c, r };
   });
+  sweepMemo.set(spec, out);
+  return out;
 };
 
 /** Reachability from an arbitrary cell (settled onto its supporting node). */
@@ -312,17 +380,25 @@ export const reachFrom = (
   let sr = start.r;
   while (sr < h - 1 && !supportAt(grid, start.c, sr)) sr++;
 
-  const springTops: Array<{ c: number; r: number }> = [];
-  const vines: Array<{ c: number; r: number }> = [];
-  const rings: Array<{ c: number; r: number }> = [];
-  for (let r = 0; r < h; r++) {
-    for (let c = 0; c < w; c++) {
-      const g = glyphAt(grid, c, r);
-      if (g === "s") springTops.push({ c, r });
-      if (g === "V") vines.push({ c, r });
-      if (g === "o") rings.push({ c, r });
+  // The spring/vine/ring census is a fact about the GRID, not about `from` —
+  // memoized on the rows array (see sweepMemo above).
+  let scan = glyphScanMemo.get(rows);
+  if (!scan) {
+    const springTops: Array<{ c: number; r: number }> = [];
+    const vines: Array<{ c: number; r: number }> = [];
+    const rings: Array<{ c: number; r: number }> = [];
+    for (let r = 0; r < h; r++) {
+      for (let c = 0; c < w; c++) {
+        const g = glyphAt(grid, c, r);
+        if (g === "s") springTops.push({ c, r });
+        if (g === "V") vines.push({ c, r });
+        if (g === "o") rings.push({ c, r });
+      }
     }
+    scan = { springTops, vines, rings };
+    glyphScanMemo.set(rows, scan);
   }
+  const { springTops, vines, rings } = scan;
 
   // R5-A7 · THE SCREEN BOX IS PHYSICS (sim.ts W0-F7). With the camera at the
   // world's edges the centre can never enter column 0 (camX ≥ 0 ⇒ min centre
@@ -771,6 +847,91 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         }
       }
     }
+
+    // ── B1 · THE CHECKPOINT DOCTRINE (Koki, 2026-08-11) ─────────────────────
+    // "Checkpoints gehören NACH schwere Abschnitte, nie davor, und jedes
+    // Element braucht seinen Zweck." This REVERSES the cookbook's old §2/§8.6
+    // ("≤1 per phase, placed BEFORE the risk spike") — that line, and the
+    // "Anti 3/6" citations in the three dossiers, are amended with this law.
+    //
+    // What a checkpoint can honestly be measured against: ONLY ink warps.
+    // sim.ts is glyph-precise — `ev.hazard === "w"` moves the child to
+    // respawnCell; spikes do not, and enemy contact opens a card and never
+    // relocates anybody. So a rule phrased over "gaps" or "enemy bands" would
+    // police things a checkpoint cannot pay for, and would be gameable in both
+    // directions. An INK PASSAGE is the honest unit — and you cannot hide ink
+    // from a grid scan.
+    if (exitCell) {
+      const startCell = findGlyph(ph.rows, "S");
+      const wCols = ph.rows[0]?.length ?? 0;
+      const inkCol = (c: number): boolean => ph.rows.some((row) => row[c] === "w");
+      const runs: Array<{ west: number; east: number }> = [];
+      for (let c = 0, from: number | null = null; c <= wCols; c++) {
+        if (c < wCols && inkCol(c)) { if (from === null) from = c; }
+        else if (from !== null) { runs.push({ west: from, east: c - 1 }); from = null; }
+      }
+      // Only a passage the child must GET PAST counts: spawn on one side, exit
+      // on the other. A decorative pool behind the exit is scenery, and
+      // demanding a checkpoint for it would be the "dead scenery" failure mode.
+      const eastward = startCell ? exitCell.c > startCell.c : true;
+      const crossings = startCell
+        ? runs.filter((p) => (eastward ? startCell.c < p.west && exitCell.c > p.east : startCell.c > p.east && exitCell.c < p.west))
+        : [];
+      const checkpoints: Array<{ c: number; r: number }> = [];
+      for (const [r, row] of ph.rows.entries()) {
+        for (let c = 0; c < row.length; c++) if (row[c] === "C") checkpoints.push({ c, r });
+      }
+      checkpoints.sort((a, b) => (eastward ? a.c - b.c : b.c - a.c));
+
+      // A · COUNT — one per passage, no more and no fewer.
+      if (checkpoints.length !== crossings.length) {
+        failures.push({
+          phase: ph.id,
+          law: "checkpoint-count",
+          detail: crossings.length === 0
+            ? `${ph.id} crosses no ink but carries ${checkpoints.length} checkpoint(s) — only ink warps (sim.ts), so a checkpoint with nothing to catch is scenery`
+            : `${ph.id} crosses ink ${crossings.length}× but carries ${checkpoints.length} checkpoint(s) — one checkpoint per hard passage, no more and no fewer`,
+        });
+      }
+      crossings.sort((a, b) => (eastward ? a.west - b.west : b.west - a.west));
+      for (const [i, p] of crossings.entries()) {
+        const cp = checkpoints[i];
+        if (!cp) continue; // the count law already spoke
+        const far = eastward ? p.east : p.west; // the bank the child lands on
+        const lo = eastward ? far + 1 : far - CHECKPOINT_AFTER_MAX;
+        const hi = eastward ? far + CHECKPOINT_AFTER_MAX : far - 1;
+        // B · PAIRING — on the FAR bank, and close to it.
+        if (cp.c < lo || cp.c > hi) {
+          const beforeIt = eastward ? cp.c <= p.east : cp.c >= p.west;
+          failures.push({
+            phase: ph.id,
+            law: "checkpoint-placement",
+            detail: beforeIt
+              ? `${ph.id} crosses ink at c${p.west}–${p.east} but its checkpoint sits at (${cp.c},${cp.r}), on the near side — Krakel sketches you AFTER a hard passage, never before it`
+              : `${ph.id} crosses ink at c${p.west}–${p.east} and its checkpoint (${cp.c},${cp.r}) is past the far bank by more than ${CHECKPOINT_AFTER_MAX} columns — retry sits NEXT to the challenge, not a screen away`,
+          });
+        }
+        // C · FOOTING — Krakel sketches you where you can stand.
+        if (!standable(ph.rows, cp.c, cp.r) || !reach.has(`${cp.c},${cp.r}`)) {
+          failures.push({
+            phase: ph.id,
+            law: "checkpoint-footing",
+            detail: `the checkpoint at (${cp.c},${cp.r}) is not a standing cell a child can reach — a respawn point in the air drops the child straight back into the passage`,
+          });
+        }
+        // D · NO DEAD WALK — anti-law 3 survives the reversal. Moving anchors
+        // to the far bank lengthens the walk after an UNBANKED splash; it may
+        // not become a march across the world.
+        const prev = i === 0 ? (startCell?.c ?? 0) : (checkpoints[i - 1]?.c ?? 0);
+        if (Math.abs(cp.c - prev) > wCols) {
+          failures.push({
+            phase: ph.id,
+            law: "checkpoint-walk",
+            detail: `${ph.id}: ${Math.abs(cp.c - prev)} columns from the last anchor to (${cp.c},${cp.r}) in a ${wCols}-column world — no dead walks`,
+          });
+        }
+      }
+    }
     for (const e of ph.entities) {
       // PK-R3b: the two new pickups join this law rather than getting one of
       // their own — a Regel-Seite or a Bonus-Buch nobody can reach is exactly
@@ -868,11 +1029,18 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       // Deliberately un-memoized: "reachable FROM a good node" does not imply
       // "can reach the exit" (falling into a pit is one-way). Worlds are small;
       // honesty beats cleverness here.
+      const declaredDives = new Set((ph.inkReturns ?? []).map((d) => `${d.c},${d.r}`));
+      const provenDives = new Set<string>();
       for (const k of reach) {
         const parts = k.split(",").map(Number);
         const c = parts[0] ?? 0;
         const r = parts[1] ?? 0;
         if (!standable(ph.rows, c, r)) continue;
+        // GATE A runs BEFORE the sweep: it reads two glyphs, the sweep is a
+        // whole BFS. A submerged node is excused unconditionally, so paying for
+        // its sub-reach buys nothing (43 sweeps saved across the shipped
+        // chapter — this law is O(nodes × BFS) and the basins are wide).
+        if (submerged(ph.rows, c, r)) continue;
         const sub = reachFrom(ph.rows, level.abilities, { c, r }, ph.entities);
         let exitOk = false;
         for (let dr = -1; dr <= 3 && !exitOk; dr++) {
@@ -880,22 +1048,52 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
             if (sub.has(`${exitCell.c + d},${exitCell.r + dr}`)) exitOk = true;
           }
         }
-        // R5-P1 · ink is its own exit path: contact with "w" warps the child
-        // to the checkpoint (sim.ts hazard handling), so a pocket whose
-        // sub-reach TOUCHES ink can never strand anyone — the p3 basin
-        // (standing in ink) and the p1 Keller (ink one step east, the
-        // declared "Teich" reading) are one class. Glyph-precise on
-        // purpose — spikes "^" do NOT warp and stay subject to this law.
-        if (!exitOk) {
-          for (const k2 of sub) {
-            const [c2, r2] = k2.split(",").map(Number) as [number, number];
-            if (glyphAt(ph.rows, c2, r2) === "w" || glyphAt(ph.rows, c2, r2 + 1) === "w") { exitOk = true; break; }
-          }
+        if (exitOk) continue;
+
+        // GATE A (the child is already IN the ink — the warp fires by itself)
+        // was decided above, before the sweep. What is left here is dry.
+        //
+        // ── GATE B · DECLARATION. A pocket the child stands in DRY, with ink
+        // only a deliberate step away, is a SOFTLOCK unless the phase says the
+        // dive is the design. (R5-P1 excused this whole class blanket-style —
+        // "the p1 Keller … one class". Kokis Replay 2026-08-11 refuted that
+        // reading at the exact cell: he stood on the Buchdeckel, could only go
+        // down, and the only way out was to walk into a hazard he could not
+        // see was an exit. A hazard is not an affordance unless it is authored
+        // as one.) Spikes "^" never warp (sim.ts is glyph-precise on "w") and
+        // can therefore never satisfy either gate.
+        let inkInReach = false;
+        for (const k2 of sub) {
+          const [c2, r2] = k2.split(",").map(Number) as [number, number];
+          if (glyphAt(ph.rows, c2, r2) === "w" || glyphAt(ph.rows, c2, r2 + 1) === "w") { inkInReach = true; break; }
         }
-        if (!exitOk) {
-          failures.push({ phase: ph.id, law: "trap-pocket", detail: `standing at (${c},${r}) the exit is no longer reachable (softlock)` });
-          break; // one report per phase is enough to fail the gate
-        }
+        if (declaredDives.has(k) && inkInReach) { provenDives.add(k); continue; }
+
+        failures.push({
+          phase: ph.id,
+          law: "trap-pocket",
+          detail: inkInReach
+            ? `standing at (${c},${r}) the exit is no longer reachable and the only way out is the ink — a hazard is not an exit unless the phase declares it (add {c,r,whyDe} to inkReturns)`
+            : `standing at (${c},${r}) the exit is no longer reachable (softlock)`,
+        });
+        break; // one report per phase is enough to fail the gate
+      }
+
+      // …and the declaration must be TRUE. Runs OUTSIDE the break above, so a
+      // healed pocket's stale excuse is still caught (the letter-honesty shape:
+      // what a level PROMISES and what it CONTAINS are proven against each
+      // other in both directions).
+      for (const d of ph.inkReturns ?? []) {
+        const key = `${d.c},${d.r}`;
+        if (provenDives.has(key)) continue;
+        const why = !standable(ph.rows, d.c, d.r)
+          ? "which is not a standing cell — a dive is declared FROM somewhere a child can stand"
+          : !reach.has(key)
+            ? "which no child can reach — an excuse for a place nobody visits"
+            : submerged(ph.rows, d.c, d.r)
+              ? "which is already IN the ink — the warp fires by itself there, so nothing needs excusing"
+              : "but the exit is reachable from there without ink — a stale excuse outlives the pocket it excused";
+        failures.push({ phase: ph.id, law: "ink-return", detail: `inkReturns names (${d.c},${d.r}), ${why}` });
       }
     }
   }

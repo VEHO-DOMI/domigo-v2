@@ -255,11 +255,19 @@ const PILOTS = {
       ["hold", { right: true }, 140], ["settle"], // the slide run pays G, L, U; ends in the Senke
       ["walkTo", 26], ["settle"], // the Krakel checkpoint
       ["jump", { dir: "right", hold: 10 }], ["settle"], // measured: this arc lands ON the pier (~c29.8)
-      ["walkTo", 29], ["settle"], // hold the pier lip
-      ["waitPlatformAt", "p3-ruler", 30.5, 0.5], // ferry at its WEST turnaround (home)
-      ["hold", { right: true }, 16], // the Pier-Abtritt: walk off, attach FALLING (A4)
-      ["rideUntil", "p3-ruler", 39.3, 0.4], // the ride pays E, S, T
-      ["hold", { right: true }, 34], ["settle"], // off the east edge onto T1
+      // B1-INTERIM (Kokis Entscheid 2026-08-11: die Mover »lesen sich als
+      // Durchfallen«): die Fähre ist ausgebaut, die Querung sind DREI Sprünge
+      // über zwei statische Planken (r17 c32–33 · c36–37, Pier-Höhe). Je ein
+      // Buchstabe hängt eine Spalte vor der Absprung-Lippe, also zahlt jeder
+      // Sprung seinen eigenen — E (30,16) · S (34,16) · T (38,16).
+      // `steer` MUSS begrenzt bleiben: ein Vollflug-Tap fliegt 5+ Spalten und
+      // landet neben einer 2 Zellen breiten Planke (R5-P1-Messung).
+      ["walkTo", 29], ["settle"], // the pier lip — E magnets in from here
+      ["jump", { dir: "right", hold: 6, steer: 5 }], ["settle"], // hop 1 → Planke A
+      ["walkTo", 33], ["settle"], // A's east lip — S magnets in
+      ["jump", { dir: "right", hold: 6, steer: 5 }], ["settle"], // hop 2 → Planke B
+      ["walkTo", 37], ["settle"], // B's east lip — T magnets in
+      ["jump", { dir: "right", hold: 6, steer: 5 }], ["settle"], // hop 3 → T1 (Fall der Tiefe 4)
       ["walkTo", 49], // I by magnet at c42, then THROUGH the Stampfer zone without stopping
       ["jump", { dir: "right", hold: 18 }], ["settle"], // up to T2
       ["walkTo", 55], ["settle"], // C by magnet at c52

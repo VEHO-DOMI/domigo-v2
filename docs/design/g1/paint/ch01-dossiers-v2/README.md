@@ -25,6 +25,20 @@ Tap-Apex 50 / Halte-Apex 101 px · JUMP_UP 4 · Magnet 25,6 px.
   leben als Architektur/Guardian, chair als Käfig-Insasse. Grund: B8-Vollabdeckung.
   Gilt als Empfehlung, bis Koki im PR nickt oder vetot.
 
+- **★ ANTI 3/6 v2 — Checkpoints stehen NACH der Schwierigkeit (Koki, 2026-08-11,
+  Replay-Entscheid; Anzahl-Tor am selben Tag beantwortet: EINER NACH JEDEM
+  schweren Stück).** Das überschreibt das Kochbuch wörtlich: `level-cookbook-v2.md`
+  §2 („≤1 pro Phase, VOR der Spitze"), §8 Gebot 6 („sit BEFORE risk spikes") und
+  §9 Anti-Gesetz 3 sind im selben PR nachgezogen; alle drei Dossier-Zitate stehen
+  jetzt auf „Anti 3/6 v2". Maschinell gehalten statt nur geschrieben:
+  `checkpoint-count` · `checkpoint-placement` · `checkpoint-footing` ·
+  `checkpoint-walk` in `level.ts`, abgeleitet über TINTEN-PASSAGEN (nur Tinte
+  warpt — `sim.ts` ist glyph-genau auf `w`; Stacheln und Gegner versetzen
+  niemanden, eine Regel über „Lücken" oder „Gegner-Bänder" würde also Dinge
+  polizieren, die ein Checkpoint gar nicht bezahlen kann). Versetzt:
+  p1 (38,17)→**(47,17)** · p2 (20,10)→**(58,14)** · p3 (26,21)→**(40,20)**;
+  p4/p9 kreuzen keine Tinte und tragen darum weiterhin keinen.
+
 ## §Tor-Antworten 2026-08-11 (Koki, nach Merge #252 — RATIFIZIERT)
 
 1. **Käfig-Insassen RATIFIZIERT:** p1 = SOUND SYSTEM · p2 = TABLET · Arena =
