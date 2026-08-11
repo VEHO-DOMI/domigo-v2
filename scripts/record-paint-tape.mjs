@@ -211,29 +211,34 @@ const PILOTS = {
       ["walkTo", 68], ["settle"], ["wait", 40],
     ],
   },
-  // p3 „Der Schulhof-Garten": RIDE THE SLIDE (the z run from c10,r15 down to
-  // c15,r20 — expect ~6 px/t on the descent, not the 2.25 walk), then the ink
-  // pond at c30-40 which is crossed on the ruler platform (R5-A4: p3-ruler
-  // sweeps c31→c39 at r17, so both banks are in reach). Boarding is CLOSED
-  // LOOP on the ruler's own position (A-3), never a tick count — the
-  // platform's phase depends on every tick spent upstream, so a counted wait
-  // would be brittle by construction. R5: the wait targets the WEST
-  // TURNAROUND (c31) — any mid-sweep column is crossed in both directions,
-  // and boarding a west-bound ruler is a coin-flip into the ink.
+  // p3 „Der Schulhof-Garten" (R5-P1, Dossier ch01-dossiers-v2/p3.md §10):
+  // das terrassierte V. Die Rutsche zahlt G/L/U im Tempo (Magnet), die
+  // FAHRT zahlt E/S/T (Deck-Fußlinie 282, Buchstaben r16 → dy 8), der
+  // Anstieg zahlt I/C/K im Lauf-Magneten (je dy 14). Tape-Pflicht laut
+  // Dossier: 9/9 — Schaukel und Bonus-Buch sind ausdrücklich tape-frei
+  // (H2 beweist sie). Der Block wird UNTEN durchquert (Köder-Mut am
+  // Stampfer vorbei: Querung 24 t < Reifezeit ~37 t — deshalb dort KEIN
+  // settle). Der Pier-Abtritt ist der A4-Fang: WARTEN bis die Fähre am
+  // West-Umkehrpunkt steht (A-3, closed loop), dann im GEHEN abtreten —
+  // Attach bei Tick ~5 mit vy 2 ≤ Toleranz 4.
   p3: {
     abilities: ["jump", "run"],
     program: [
       ["walkTo", 9], ["settle"], // to the lip of the chalk slide
-      ["hold", { right: true }, 90], ["settle"], // ride it down to c15,r20
-      // R5-A4: two columns further left than before — the ruler's west
-      // turnaround moved c33→c31, and the boarding arc is calibrated to meet
-      // it exactly there (from c30 the arc overflies it into the ink)
-      ["walkTo", 28], ["settle"],
-      ["waitPlatformAt", "p3-ruler", 31.0, 0.5], // its west turnaround
-      ["jump", { dir: "right", hold: 18 }], ["settle"], // board it
-      ["rideUntil", "p3-ruler", 38.5, 0.5], // ride across the ink
-      ["jump", { dir: "right", hold: 18 }], ["settle"], // off onto the far bank
-      ["walkTo", 52], ["settle"],
+      ["hold", { right: true }, 140], ["settle"], // the slide run pays G, L, U; ends in the Senke
+      ["walkTo", 26], ["settle"], // the Krakel checkpoint
+      ["jump", { dir: "right", hold: 10 }], ["settle"], // measured: this arc lands ON the pier (~c29.8)
+      ["walkTo", 29], ["settle"], // hold the pier lip
+      ["waitPlatformAt", "p3-ruler", 30.5, 0.5], // ferry at its WEST turnaround (home)
+      ["hold", { right: true }, 16], // the Pier-Abtritt: walk off, attach FALLING (A4)
+      ["rideUntil", "p3-ruler", 39.3, 0.4], // the ride pays E, S, T
+      ["hold", { right: true }, 34], ["settle"], // off the east edge onto T1
+      ["walkTo", 49], // I by magnet at c42, then THROUGH the Stampfer zone without stopping
+      ["jump", { dir: "right", hold: 18 }], ["settle"], // up to T2
+      ["walkTo", 55], ["settle"], // C by magnet at c52
+      ["jump", { dir: "right", hold: 18 }], ["settle"], // up to T3
+      ["walkTo", 59], ["settle"], // K by magnet at c58
+      ["jump", { dir: "right", hold: 8 }], ["settle"], // onto the Tor-Sockel
       ["walkTo", 60], ["settle"], ["wait", 60],
     ],
   },
