@@ -170,7 +170,7 @@ const runPilot = (phaseId, entryAbilities, program, { maxTicks = 60 * 120, trace
   return { masks, exited, exitTo, sim, abilities };
 };
 
-// ── the pilots (grids-v2 layouts; tuned against the printed traces) ─────────
+// ── the pilots (ch01-dossiers-v2 §10 layouts; tuned against the printed traces) ──
 const PILOTS = {
   // p1 „Die Eingangshalle" (R5-P1, Dossier p1.md §10): GESTRANDET-HOCH.
   // Trail SCHOOLBAG 9/9 in drei Läufen: S/C/H im Bank-Lauf (der Bogen über

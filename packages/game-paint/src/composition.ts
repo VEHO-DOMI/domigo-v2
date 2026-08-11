@@ -1,10 +1,11 @@
 // PB-C1 · THE COMPOSITION MANIFEST — doc 36 (the composition law) as data.
 //
-// WHY A SIDECAR TS MAP AND NOT A LEVEL-SCHEMA BLOCK (decision, PK-C1):
-// the live level JSON is kept DEEP-EQUAL to its design source of truth
-// (docs/design/g1/paint/grids-v2/ — "edit the grid, re-splice; never edit the
-// live level directly"), so art direction in the level file would have to be
-// authored twice and zod-typed a third time, for data no LEVEL LAW ever reads.
+// WHY A SIDECAR TS MAP AND NOT A LEVEL-SCHEMA BLOCK (decision, PK-C1;
+// R5-P1 updated the design regime): the level JSON is built cell-for-cell
+// from the gated dossiers (docs/design/g1/paint/ch01-dossiers-v2/ §10) and
+// machine-bound to them via check:level-design, so art direction in the
+// level file would have to be authored twice and zod-typed a third time,
+// for data no LEVEL LAW ever reads.
 // Composition is commissioned art direction, not level layout: it belongs
 // beside the renderer that consumes it. Being TS also buys three things a JSON
 // block would not: types, headless unit tests, and a CI gate that can import
