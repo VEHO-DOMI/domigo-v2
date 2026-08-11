@@ -13,7 +13,7 @@ import {
   type MoveResult,
   slopeSurfaceYPx,
 } from "./collide.ts";
-import { SUBS, TILE } from "./paint.ts";
+import { SUBS, TILE, BODY_W } from "./paint.ts";
 
 const px = (n: number) => n * SUBS;
 
@@ -427,5 +427,66 @@ describe("PB-T1 · body-width landings (edges land, not just the center)", () =>
     expect(st.grounded).toBe(true);
     expect(overlapsSolid(ramp, st)).toBe(false);
     expect(st.ySubs).toBeLessThanOrEqual(px(4 * TILE)); // climbed onto the top run
+  });
+});
+
+// ── B1 · DIE EIN-KACHEL-STUFE ENTGRUNDET ZU FRÜH (rot zuerst) ──────────────
+// Kokis Replay 2026-08-11, 07:29:30: »durch Kanten gefallen«. Die Untersuchung
+// (26 Mio. moveBody-Aufrufe über p2) hat das FALLEN als KUNST-Defekt entlarvt —
+// die Möbel-Platten malen 3–10 px weniger Boden, als die Kollision trägt, also
+// läuft das Kind sichtbar über die Kante hinaus und fällt dann (→ A1-Lane).
+// Dabei fand sie aber einen ECHTEN Engine-Defekt an genau denselben Nähten:
+// `bodyGroundSurfaceAt` nahm die MITTELSPALTE bedingungslos, sobald sie
+// überhaupt eine Fläche fand. An einer EIN-Kachel-Stufe liegt die untere Fläche
+// noch im 3-Reihen-Fenster, aber 16 px unter den Füßen — außerhalb der Toleranz
+// (GROUND_SNAP_PX 6 + |vx|). Der Körper wird entgrundet, obwohl ein Fuß noch
+// auf dem Sims steht; mit Schwerkraft flackert er zurück und zündet
+// Lande-Squash + Staubwolke mitten im Schritt (doc 45 A1, nicht A6).
+// Die ZWEI-Kachel-Stufe war immer korrekt: dort findet die Mitte gar nichts,
+// die Kanten-Rettung greift. Gleiche Geometrie, gleiche Eingaben — nur die
+// Fallhöhe unterscheidet sie. Das ist der Beweis, dass die Mitten-Abkürzung
+// die Ursache ist und nicht die Kanten-Logik.
+describe("B1 · Ein-Kachel-Stufe: der Sims trägt, bis kein Fuß mehr darauf steht", () => {
+  //  r3 "..##...."  Sims-Oberkante y=48, x[32..64]
+  const oneTileStep = ["........", "........", "........", "..##....", ".#......", "........", "########"];
+  const twoTileStep = ["........", "........", "........", "..##....", "........", ".#......", "########"];
+  const SHELF_LEFT = 32;
+
+  /** Läuft vom Sims nach links und meldet, WO der Körper abgrundet. */
+  const departure = (grid: readonly string[]): { x: number; rightFoot: number } => {
+    let st: MoveResult = {
+      xSubs: px(56), ySubs: px(48), vxSubs: px(-2.25), vySubs: 0, grounded: true,
+      surfaceGlyph: null, hitWall: 0, hitCeiling: false, onIce: false, hazard: null,
+      inVine: false, onSpring: false, ejected: false,
+    };
+    for (let i = 0; i < 24; i++) {
+      const was = st.grounded;
+      st = moveBody(grid, st.xSubs, st.ySubs, px(-2.25), st.vySubs, st.grounded);
+      if (was && !st.grounded) { const x = st.xSubs / SUBS; return { x, rightFoot: x + BODY_W / 2 }; }
+    }
+    throw new Error("never left the shelf");
+  };
+
+  it("entgrundet ERST, wenn kein Fuß mehr auf dem Sims steht", () => {
+    const one = departure(oneTileStep);
+    expect(one.rightFoot, `abgegrundet bei x=${one.x}, rechter Fuß ${one.rightFoot} noch auf dem Sims (ab ${SHELF_LEFT})`)
+      .toBeLessThanOrEqual(SHELF_LEFT);
+  });
+
+  it("die Zwei-Kachel-Stufe war immer sauber — und beide Tiefen verhalten sich jetzt gleich", () => {
+    const two = departure(twoTileStep);
+    expect(two.rightFoot).toBeLessThanOrEqual(SHELF_LEFT);
+    // die Fallhöhe darf den Abtritts-Punkt nicht mehr verschieben
+    expect(departure(oneTileStep).x).toBeCloseTo(two.x, 5);
+  });
+
+  it("ein Fuß auf dem Sims trägt den Körper (Kanten-Rettung bleibt)", () => {
+    const st = run(oneTileStep, { x: 34, y: 48, vx: 0, vy: 0, grounded: true }, 2);
+    expect(st.grounded).toBe(true);
+  });
+
+  it("eine Stufe HINAUF schnappt nicht verfrüht hoch (Regression der Reparatur)", () => {
+    const st = run(oneTileStep, { x: 20, y: 64, vx: 2.25, vy: 0, grounded: true }, 6);
+    expect(st.ySubs, "die Füße bleiben auf der unteren Fläche").toBe(px(64));
   });
 });

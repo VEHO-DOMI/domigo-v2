@@ -146,18 +146,38 @@ const GROUND_SNAP_PX = 6; // T: grounded surface-follow snap range (slopes, step
 const bodyGroundSurfaceAt = (
   grid: Grid,
   xPx: number,
+  feetPx: number,
   fromRow: number,
   maxRows: number,
 ): { yPx: number; glyph: string } | null => {
-  // center wins when present (slope fidelity: feet track the ramp under the
-  // hips, not the leading edge); the edge samples only RESCUE a body whose
-  // center is past a lip while a foot is still on the shelf
-  const center = groundSurfaceAt(grid, xPx, fromRow, maxRows);
-  if (center !== null) return center;
+  // B1 · The sample the body is actually STANDING on wins — the one nearest the
+  // current feet line — with the center breaking ties.
+  //
+  // This function used to short-circuit on the center whenever it found ANY
+  // surface, which is only correct when the center's find is the one holding
+  // the body up. At a ONE-TILE step-down it is not: the lower floor still lies
+  // inside the 3-row window, so the center returns it, but it sits 16 px below
+  // the feet — outside the caller's tolerance (GROUND_SNAP_PX + |vx|). The body
+  // un-grounded with a foot still on the shelf and, under gravity, flickered
+  // back for a tick or two, firing landing squash and dust mid-stride (doc 45
+  // A1). A TWO-tile step never showed it: there the center finds nothing at all
+  // and the edge rescue below already did the right thing. Same geometry, same
+  // inputs, different depth — which is what proved the short-circuit was the
+  // cause rather than the edge logic.
+  //
+  // "Nearest the feet" keeps both older guarantees intact: on a ramp the center
+  // sits under the hips at Δ0 while the edges are ±6 px off, so slope fidelity
+  // still picks the center; and a step-UP cannot pull the feet upward, because
+  // the surface at the feet (Δ0) always beats the one a tile above (Δ16).
   let best: { yPx: number; glyph: string } | null = null;
-  for (const sx of [xPx - BODY_W / 2, xPx + BODY_W / 2 - 0.001]) {
+  let bestDist = Infinity;
+  for (const [i, sx] of [xPx, xPx - BODY_W / 2, xPx + BODY_W / 2 - 0.001].entries()) {
     const s = groundSurfaceAt(grid, sx, fromRow, maxRows);
-    if (s !== null && (best === null || s.yPx < best.yPx)) best = s;
+    if (s === null) continue;
+    const dist = Math.abs(s.yPx - feetPx);
+    // strict `<` keeps the center (i === 0, evaluated first) on ties
+    if (dist < bestDist) { best = s; bestDist = dist; }
+    else if (dist === bestDist && i === 0) { best = s; }
   }
   return best;
 };
@@ -193,7 +213,7 @@ export const moveBody = (
   if (wasGrounded && vy >= 0) {
     const feetPx = y / SUBS;
     const fromRow = Math.floor((feetPx - GROUND_SNAP_PX) / TILE);
-    const found = bodyGroundSurfaceAt(grid, x / SUBS, fromRow, 3);
+    const found = bodyGroundSurfaceAt(grid, x / SUBS, feetPx, fromRow, 3);
     if (found && Math.abs(found.yPx - feetPx) <= GROUND_SNAP_PX + Math.abs(vx) / SUBS) {
       y = Math.round(found.yPx * SUBS);
       vy = 0;
@@ -291,7 +311,7 @@ export const moveBody = (
   // the coyote window instead of a phantom slide-past).
   if (grounded && !freshLanding) {
     const feetPx = y / SUBS;
-    const found = bodyGroundSurfaceAt(grid, nx / SUBS, Math.floor((feetPx - GROUND_SNAP_PX) / TILE), 3);
+    const found = bodyGroundSurfaceAt(grid, nx / SUBS, feetPx, Math.floor((feetPx - GROUND_SNAP_PX) / TILE), 3);
     if (found && Math.abs(found.yPx - feetPx) <= GROUND_SNAP_PX + Math.abs(vxSubs) / SUBS) {
       y = Math.round(found.yPx * SUBS);
       surfaceGlyph = found.glyph;
