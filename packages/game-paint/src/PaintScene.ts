@@ -17,10 +17,10 @@ import { type CompositionSpec, type MassKit, ROOM_SHADOW_INK, compositionFor, he
 import { phaseArtScope } from "./artScope.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
-import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows } from "./mass.ts";
+import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
 import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
-import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs } from "./paint.ts";
+import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
 import { CHALK_COLOURS, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
@@ -600,14 +600,6 @@ export const mixRGB = (a: number, b: number, k: number): number => {
   const t = Math.max(0, Math.min(1, k));
   const ch = (shift: number): number =>
     Math.round(((a >> shift) & 0xff) * (1 - t) + ((b >> shift) & 0xff) * t) & 0xff;
-  return (ch(16) << 16) | (ch(8) << 8) | ch(0);
-};
-
-/** Two MULTIPLY tints stacked — which is what a multiply IS, per channel. Used
- *  where a piece already carries one tint and the renderer owes it another. */
-export const mixMultiply = (a: number, b: number): number => {
-  const ch = (shift: number): number =>
-    Math.round((((a >> shift) & 0xff) * ((b >> shift) & 0xff)) / 255) & 0xff;
   return (ch(16) << 16) | (ch(8) << 8) | ch(0);
 };
 
@@ -3306,12 +3298,15 @@ export class PaintScene extends Phaser.Scene {
     }
     if (p.tile === true) {
       const src = this.textures.get(key).getSourceImage() as HTMLImageElement;
-      const scale = p.h / src.height;
+      // the drawn scale and the world anchor both come from mass.ts, because the
+      // audits ask the same two functions — a second copy of this arithmetic is
+      // what let the shipped build and its green gates disagree (R5-W1 · A1)
+      const scale = tileScaleFor(p, { w: src.width, h: src.height });
+      const anchor = tileAnchorFor(p, scale);
       const t = this.add.tileSprite(p.x, p.y, p.w, p.h, key).setOrigin(0, 0).setDepth(p.depth);
-      t.setTileScale(scale);
-      // anchor the pattern in WORLD space so neighbouring runs stay seamless
-      t.tilePositionX = p.x / scale;
-      t.tilePositionY = p.y / scale;
+      t.setTileScale(scale.x, scale.y);
+      t.tilePositionX = anchor.x;
+      t.tilePositionY = anchor.y;
       // …and lay this segment in its OWN light (the no-metronome law): a MULTIPLY
       // by a near-white, so the course changes value without changing material
       if (p.tint !== undefined && p.tint !== 0xffffff) t.setTint(p.tint);
@@ -3511,7 +3506,19 @@ export class PaintScene extends Phaser.Scene {
     // ── the carved mass (doc 36 §2) — crust + caps + trims + corners + body
     // + fade + sediment, ramps, the slide, and complete platform objects ─────
     if (kit !== null) {
-      const plan = planMass(this.grid, kit);
+      // R5-W1 · A1 — THE PLAN THE AUDITS SEE IS NOW THE PLAN THAT SHIPS.
+      // This call omitted `srcSize`, so `planMass`'s `aspect()` answered 1 for
+      // every stem in the browser while every audit and every test fed it the
+      // real PNG geometry. The build was therefore drawing crust end caps at
+      // 17 px instead of 41, admitting caps on 2-cell runs the audit believes
+      // are too short to carry them, and sizing every floating platform object
+      // by its WIDTH alone — a 946×259 bench rendered 32×32 instead of 32×9.
+      // Three visible defects that no green gate could ever have reported.
+      const plan = planMass(this.grid, kit, (stem) => {
+        const tex = this.textures.exists(`pb-${stem}`) ? this.textures.get(`pb-${stem}`) : null;
+        const img = tex?.getSourceImage() as HTMLImageElement | undefined;
+        return img === undefined ? null : { w: img.width, h: img.height };
+      });
       // ── PK-R6 · H2 · WHAT THE FURNITURE THROWS (round-2 finding 9) ─────────
       // Read off the SAME plan the renderer is about to place, never re-planned:
       // a shadow computed from a second call would be a shadow of a different

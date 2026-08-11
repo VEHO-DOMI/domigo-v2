@@ -11,8 +11,21 @@ import {
   CRUST_H,
   CRUST_LIP,
   CRUST_TINTS,
+  FADE_DEPTH,
+  EDGE_W,
   MAX_PLATFORM_CELLS,
+  MIN_GRID_LOCK_DISTANCE,
+  MIN_PAINT_PERIOD_CELLS,
   NO_METRONOME_MIN_PERIOD,
+  RAMP_ROWS,
+  SEDIMENT_DEPTH,
+  bandAt,
+  depthBucketAt,
+  depthShadeAt,
+  depthTintAt,
+  paintScaleOf,
+  tileAnchorFor,
+  tileScaleFor,
   claimedPlatformCells,
   crustGrain,
   crustRuns,
@@ -29,7 +42,7 @@ import {
   slideRuns,
 } from "./mass.ts";
 import { letterGlyphs } from "./letters.ts";
-import { LOGICAL_H, LOGICAL_W, TILE } from "./paint.ts";
+import { LOGICAL_H, LOGICAL_W, TILE, mixMultiply } from "./paint.ts";
 
 const kit: MassKit = {
   crust: ["crust_a", "crust_b"],
@@ -52,8 +65,12 @@ const kit: MassKit = {
 
 const src512 = (): { w: number; h: number } => ({ w: 512, h: 512 });
 /** the AF cap aspect: a 512×212 band cell — caps are 2.4× as wide as tall */
+// The shipped AF geometry: the walk course and its end caps are cut from ONE
+// band sheet (crust_p1_a and crust_p1_cap_l are both 512×212), everything else
+// is a 512² cell. The course's own ratio is what the painted-scale law reads,
+// so a fixture that called it square would let the law pass on a lie.
 const afSrc = (stem: string): { w: number; h: number } | null =>
-  stem.startsWith("cap") ? { w: 512, h: 212 } : { w: 512, h: 512 };
+  stem.startsWith("cap") || stem.startsWith("crust") ? { w: 512, h: 212 } : { w: 512, h: 512 };
 
 describe("cover-fit (doc 36 §3) — the p4 cream-void law", () => {
   it("models the RENDERER's parallax window, not an invented one", () => {
@@ -259,7 +276,171 @@ describe("the carved mass (doc 36 §2)", () => {
     const at = (c: number, r: number) => p.find((q) => ["body", "fade", "sediment"].includes(q.kind) && q.r === r && q.x <= c * TILE && q.x + q.w > c * TILE);
     expect(at(0, 3)?.kind).toBe("body"); // depth 0
     expect(at(0, 5)?.kind).toBe("body"); // depth 2
-    expect(at(0, 6)?.kind).toBe("fade"); // depth 3
+    // …and deep enough to reach both changes of paper (the shipped grids are
+    // 20-26 rows; this fixture is 7, so the bands need their own column)
+    const deep = ["..........", ...Array.from({ length: SEDIMENT_DEPTH + 2 }, () => "##########")];
+    const col = planMass(deep, kit).filter((q) => ["body", "fade", "sediment"].includes(q.kind));
+    const kindAtRow = (r: number) => col.find((q) => q.r === r)?.kind;
+    expect(kindAtRow(1)).toBe("body");
+    expect(kindAtRow(1 + FADE_DEPTH)).toBe("fade");
+    expect(kindAtRow(1 + SEDIMENT_DEPTH)).toBe("sediment");
+  });
+
+  // ── R5-W1 · A1 · THE DEPTH LAW ────────────────────────────────────────────
+  // The old ramp gave the middle sheet ONE row, so terrain fell 41 points of
+  // luminance in two cells and everything past the fourth row was the same
+  // near-black: 48 % of the chapter's interior cells, measured over the shipped
+  // grids. What the law promises now is not a set of band boundaries — those are
+  // tuning — but that the light falls SMOOTHLY and never reaches a hole.
+  describe("the depth law (R5-W1 · A1 — Koki's »schwarze Löcher«)", () => {
+    // measured mean luminance of the shipped sheets; the ramp exists to make the
+    // DRAWN values continuous across the two places the paper changes
+    const ART_LUM = { body: 46.2, fade: 16.6, sediment: 4.8 } as const;
+    const lumOfTint = (t: number): number =>
+      (((t >> 16) & 255) * 0.2126 + ((t >> 8) & 255) * 0.7152 + (t & 255) * 0.0722) / 255;
+    const drawnAt = (d: number): number => ART_LUM[bandAt(d)] * depthShadeAt(d);
+
+    it("never brightens, and never lifts a surface cell", () => {
+      expect(depthShadeAt(0)).toBe(1);
+      expect(depthTintAt(0)).toBe(0xffffff);
+      for (let d = 1; d < 30; d++) expect(depthShadeAt(d)).toBeLessThanOrEqual(1);
+    });
+
+    it("falls MONOTONICALLY through both changes of paper — no cliff, no step back up", () => {
+      for (let d = 1; d < 30; d++) {
+        expect(drawnAt(d)).toBeLessThanOrEqual(drawnAt(d - 1) + 1e-9);
+      }
+    });
+
+    it("closes the two cliffs the old ramp left at the band joins", () => {
+      // the joins are where a hard edge would show; both used to be enormous
+      const joinA = drawnAt(FADE_DEPTH - 1) - drawnAt(FADE_DEPTH);
+      const joinB = drawnAt(SEDIMENT_DEPTH - 1) - drawnAt(SEDIMENT_DEPTH);
+      expect(joinA).toBeLessThan(10); // was 46.2 → 16.6 = 29.6 points in one row
+      expect(joinB).toBeLessThan(5); //  was 16.6 →  4.8 = 11.8 points in one row
+      expect(joinA).toBeGreaterThanOrEqual(0);
+      expect(joinB).toBeGreaterThanOrEqual(0);
+    });
+
+    it("keeps the deepest paper READABLE — the darkest dark is still a colour", () => {
+      // "a hole" is what an interior under ~6 % luminance reads as. Nothing the
+      // ramp can reach may fall there, at any depth, ever.
+      for (let d = 0; d < 60; d++) expect(drawnAt(d)).toBeGreaterThan(3.5);
+      // …and it stays a hue rather than going grey: blue keeps the most
+      const deep = depthTintAt(SEDIMENT_DEPTH + RAMP_ROWS);
+      expect(deep & 0xff).toBeGreaterThan((deep >> 16) & 0xff);
+    });
+
+    it("SCALES the no-metronome lights instead of replacing them", () => {
+      // the five lights are what audit 6 counts as variety. A ramp that flattened
+      // them would turn a long deep floor back into wallpaper while looking, to
+      // the eye, exactly like a fix — so this is the coupling that must hold.
+      for (const d of [0, 3, 4, 8, 9, SEDIMENT_DEPTH + RAMP_ROWS]) {
+        const composed = new Set(CRUST_TINTS.map((t) => mixMultiply(t, depthTintAt(d))));
+        expect(composed.size).toBe(CRUST_TINTS.length);
+      }
+    });
+
+    it("buckets past the ramp, so one deep mass stays ONE piece", () => {
+      expect(depthBucketAt(SEDIMENT_DEPTH + RAMP_ROWS + 40)).toBe(depthBucketAt(SEDIMENT_DEPTH + RAMP_ROWS));
+      expect(depthBucketAt(2)).toBe(2);
+    });
+
+    it("stops the walk at the world's ceiling — outside the grid is NOT deeper mass", () => {
+      // glyphAt calls everything outside the grid solid, so the depth walk used
+      // to run past row 0, hit its own guard at 64 and answer "ink-dark
+      // sediment". Every phase's ceiling row is `#` full width, so the top of
+      // the world was drawn as a hard black bar — 64 cells in p1, all 44 of p9.
+      const ceiling = ["########", "........", "........", "########"];
+      const p = planMass(ceiling, kit);
+      const top = p.find((q) => ["body", "fade", "sediment"].includes(q.kind) && q.r === 0);
+      expect(top?.kind).toBe("body");
+      // …and it wears the room's full light, because it IS the exposed face
+      expect(lumOfTint(top?.tint ?? 0xffffff)).toBeGreaterThan(0.9);
+    });
+  });
+
+  // ── R5-W1 · A1 · THE PAINTED-SCALE LAW ────────────────────────────────────
+  describe("the painted-scale law (Koki's »Lego, das nicht zusammenpasst«)", () => {
+    const SRC = { w: 512, h: 512 };
+    const TRIM_KINDS = ["edgeL", "edgeR", "cornerBL", "cornerBR", "inCornerL", "inCornerR"];
+    const lumOfTintTop = (t: number): number =>
+      (((t >> 16) & 255) * 0.2126 + ((t >> 8) & 255) * 0.7152 + (t & 255) * 0.0722) / 255;
+
+    it("draws the interior at the WALK COURSE's scale, not the cell's", () => {
+      // the bug in one line: a 512² painting whose scale came from a 16 px piece
+      const p = planMass(grid, kit, afSrc).filter((q) => q.kind === "body");
+      expect(p.length).toBeGreaterThan(0);
+      for (const q of p) {
+        expect(tileScaleFor(q, SRC).y).toBeCloseTo(paintScaleOf(kit, afSrc), 6);
+        expect(tileScaleFor(q, SRC).x).toBeCloseTo(paintScaleOf(kit, afSrc), 6);
+      }
+    });
+
+    it("gives the carved trims the painting's VERTICAL scale and their own width", () => {
+      // an 8 px trim must fit its 8 px anatomy across, and still carry
+      // page-edges the same physical size as the books it runs beside
+      const trims = planMass(grid, kit, afSrc).filter((q) => q.kind === "edgeL" || q.kind === "edgeR");
+      expect(trims.length).toBeGreaterThan(0);
+      for (const q of trims) {
+        expect(q.tile).toBe(true);
+        expect(tileScaleFor(q, SRC).y).toBeCloseTo(paintScaleOf(kit, afSrc), 6);
+        expect(512 * tileScaleFor(q, SRC).x).toBeCloseTo(EDGE_W, 6);
+      }
+    });
+
+    it("leaves the room's own paper showing down a ONE-CELL column", () => {
+      // both faces exposed ⇒ two full-width trims tile the whole cell and the
+      // book material never appears; the pillar stops being terrain and becomes
+      // a bar. Named independently by two blind reviewers.
+      const pillar = ["..#...", "..#...", "..#...", "######"];
+      const trims = planMass(pillar, kit, afSrc).filter((q) => (q.kind === "edgeL" || q.kind === "edgeR") && q.r === 1);
+      expect(trims).toHaveLength(2);
+      const covered = trims.reduce((s, q) => s + q.w, 0);
+      expect(covered).toBeLessThan(TILE); // …paper survives in the middle
+      // …and a normal wall keeps its full trim
+      const wall = ["..###.", "..###.", "..###.", "######"];
+      const wide = planMass(wall, kit, afSrc).filter((q) => q.kind === "edgeL" && q.r === 1);
+      expect(wide[0]?.w).toBe(EDGE_W);
+    });
+
+    it("lays every trim BACK from the room's full light", () => {
+      // measured: the trim art is 71.5 % mean luminance against a 46.2 % body.
+      // Unshaded that is a rail down the side of every mass, not a carved edge.
+      const trims = planMass(grid, kit, afSrc).filter((q) => TRIM_KINDS.includes(q.kind));
+      expect(trims.length).toBeGreaterThan(0);
+      for (const q of trims) expect(lumOfTintTop(q.tint ?? 0xffffff)).toBeLessThan(0.8);
+    });
+
+    it("never lets the painting repeat on the cell grid", () => {
+      // 2 cells is the floor; landing ON a whole number of cells is the SAME
+      // defect one octave up, and no existing audit could see it
+      const period = (512 * paintScaleOf(kit, afSrc)) / TILE;
+      expect(period).toBeGreaterThanOrEqual(MIN_PAINT_PERIOD_CELLS);
+      for (let n = 1; n <= 8; n++) expect(Math.abs(period - n)).toBeGreaterThan(MIN_GRID_LOCK_DISTANCE);
+    });
+
+    it("calls the old rule out: at the cell's own scale the period IS the grid", () => {
+      // the tamper — a piece with no srcScale falls back to the shipped defect
+      const legacy = { kind: "body", stem: "body_a", c: 0, r: 0, x: 0, y: 0, w: TILE, h: TILE, tile: true, depth: 1 } as const;
+      expect((512 * tileScaleFor(legacy, SRC).y) / TILE).toBe(1);
+    });
+
+    it("anchors a CONTINUUM on both axes and a COURSE on one", () => {
+      // a column of interior pieces must draw successive slices of one painting…
+      const body = planMass(grid, kit, afSrc).filter((q) => q.kind === "body");
+      const s = paintScaleOf(kit, afSrc);
+      const scale = { x: s, y: s };
+      for (const q of body) expect(tileAnchorFor(q, scale).y).toBeCloseTo(q.y / s, 6);
+      // …while a one-course-tall crust must never wrap, at any row. Phaser
+      // offsets by `tilePositionY mod sourceHeight`, so the old world anchor
+      // shifted the board by (16r − 2) mod 17 — non-zero on sixteen rows in
+      // seventeen, cutting the painted top lip off and re-attaching it under
+      // the board's own underside, differently on every floor of the school.
+      const crust = planMass(grid, kit, afSrc).filter((q) => q.kind === "crust");
+      expect(crust.length).toBeGreaterThan(0);
+      for (const q of crust) expect(tileAnchorFor(q, scale).y).toBe(0);
+    });
   });
 
   it("trims every exposed side", () => {

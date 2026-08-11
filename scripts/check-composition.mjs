@@ -30,15 +30,20 @@ import { PNG } from "pngjs";
 import { COMPOSITION, heroEdgeFor } from "../packages/game-paint/src/composition.ts";
 import { planLayers, planeCovers } from "../packages/game-paint/src/layers.ts";
 import {
+  MIN_GRID_LOCK_DISTANCE,
+  MIN_PAINT_PERIOD_CELLS,
   NO_METRONOME_MIN_PERIOD,
   claimedPlatformCells,
   crustGrain,
   floatingPlatformRuns,
   massGrain,
   nakedFills,
+  paintScaleOf,
   planMass,
   shortestPeriod,
   surfaceSignature,
+  tileAnchorFor,
+  tileScaleFor,
   uncoveredSolids,
 } from "../packages/game-paint/src/mass.ts";
 import {
@@ -368,7 +373,7 @@ for (const { label, ph, spec } of withSpec) {
 console.log("6 · no-metronome audit (mass.ts NO_METRONOME_MIN_PERIOD)");
 for (const { label, ph, spec } of withSpec) {
   const claimed = claimedPlatformCells(ph.rows);
-  const plan = planMass(ph.rows, spec.mass);
+  const plan = planMass(ph.rows, spec.mass, srcSize);
   const surfaces = [
     ["course", surfaceSignature(plan, ["crust"], crustGrain(ph.rows, claimed))],
     ["mass", surfaceSignature(plan, ["body", "fade", "sediment"], massGrain(ph.rows, claimed))],
@@ -508,13 +513,138 @@ for (const { label, spec } of withSpec) {
   note(`${label}: contour ${lum.toFixed(1)}% · swell ${(edge.swell * 100).toFixed(0)}% · nearest plane ${worst.toFixed(1)} points away`);
 }
 
+// ── 10 · THE PAINTED SCALE (R5-W1 · A1) ──────────────────────────────────────
+// Koki, replaying the build: „Lego, das nicht zusammenpasst."
+//
+// The cause was a SCALE, and every audit in this file was green on it. A tiled
+// surface took its texture scale from the PIECE it filled — and the interior is
+// planned one grid row tall, so a 512² painting was squeezed into a 16×16 box.
+// The world anchor then landed on an exact multiple of the source width, so
+// every solid cell in the world drew the byte-identical stamp: not a painting
+// that repeats — ONE stamp, 550 times, at a 1024:1 area reduction.
+//
+// Audit 6 could never see it. Its fingerprint is `stem : tint : grain`, which
+// carries no scale and no tile phase, so two cells that draw identical pixels
+// score as variety the moment their tints differ. That is why the wallpaper
+// survived two rounds of a law written to kill it, and it is why this audit
+// measures the drawn SCALE instead of the plan's labels.
+//
+// The walk course is the reference: it is the one surface whose scale is pinned
+// by its own anatomy (CRUST_H), and the one that never had the defect.
+console.log("10 · painted-scale audit (mass.ts paintScaleOf — R5-W1 · A1)");
+const SCALE_PARITY_TOL = 0.15;
+const courseLocks = new Set();
+for (const { label, ph, spec } of withSpec) {
+  const plan = planMass(ph.rows, spec.mass, srcSize);
+  const want = paintScaleOf(spec.mass, srcSize);
+  const offScale = new Map(); // stem → the reading furthest from the course
+  for (const p of plan) {
+    if (p.tile !== true || p.stem === null) continue;
+    const src = srcSize(p.stem);
+    if (!src) continue;
+    const s = tileScaleFor(p, src);
+    // 10a · SCALE PARITY — one painted world means one painted scale. The
+    // vertical axis carries it; a trim may fit its own width across, because an
+    // 8 px trim is 8 px wide for anatomical reasons — but that is DECLARED
+    // (srcScaleX), never a side effect of the box it happened to fill.
+    if (Math.abs(s.y - want) > want * SCALE_PARITY_TOL) {
+      const cur = offScale.get(p.stem);
+      if (cur === undefined || Math.abs(s.y - want) > Math.abs(cur - want)) offScale.set(p.stem, s.y);
+      continue;
+    }
+    if (p.srcScaleX !== undefined) continue; // an anatomical width, audited above
+    // 10b · NO GRID LOCK — a period under two cells is the defect; a period ON
+    // a whole number of cells is the SAME defect one octave up, permanently in
+    // phase with the cell grid, the plank joints and the trims.
+    //
+    // The COURSE is exempt from the hard fail and reported instead, because its
+    // scale is not the renderer's to choose: a course band is one course tall
+    // and must fit CRUST_H exactly, so its period is dictated by the height its
+    // sheet was cut to. A locked course is therefore an ART finding (it is
+    // fixed by re-cutting the sheet, and it is written into SPEC_MASSEN_KIT
+    // §2 + the debt register), never something this build can repair. The
+    // interior, whose scale IS free, is de-locked by mass.bodyScaleOf and stays
+    // a hard failure here.
+    const period = (src.w * s.x) / TILE;
+    const isCourse = p.kind === "crust";
+    if (period < MIN_PAINT_PERIOD_CELLS && !isCourse) {
+      fail("painted-scale", `${label}: ${p.stem} repeats every ${period.toFixed(2)} cells — the law needs ${MIN_PAINT_PERIOD_CELLS}; at 1 cell the painting IS the grid`);
+      break;
+    }
+    let locked = 0;
+    for (let n = 1; n <= 8; n++) if (Math.abs(period - n) <= MIN_GRID_LOCK_DISTANCE) locked = n;
+    if (locked > 0) {
+      if (isCourse) {
+        if (!courseLocks.has(p.stem)) {
+          courseLocks.add(p.stem);
+          note(`${label}: ⚠ course ${p.stem} repeats every ${period.toFixed(2)} cells — locked to the ${locked}-cell grid. Its scale is pinned by CRUST_H, so this is an ART finding (re-cut the sheet's height) — filed, see SPEC_MASSEN_KIT §2 / DEBT_REGISTER`);
+        }
+      } else {
+        fail("painted-scale", `${label}: ${p.stem} repeats every ${period.toFixed(2)} cells — locked to the ${locked}-cell grid, a metronome the no-metronome audit cannot see`);
+        break;
+      }
+    }
+  }
+  for (const [stem, got] of offScale) {
+    fail("painted-scale", `${label}: ${stem} draws ${got.toFixed(4)} world px per source px, the walk course draws ${want.toFixed(4)} — the same painting at two scales is two materials`);
+  }
+  if (offScale.size === 0) {
+    note(`${label}: every tiled mass surface at ${want.toFixed(4)} world px/source px — a 512-wide painting every ${((512 * want) / TILE).toFixed(2)} cells`);
+  }
+}
+
+// 10c · ANCHOR HONESTY — the renderer and this audit must ask the SAME function.
+// Not belt-and-braces: the scene was calling `planMass(this.grid, kit)` with no
+// `srcSize` while every audit and every test passed the real PNG geometry, so
+// the shipped build drew 17 px crust caps where the audit measured 41, admitted
+// caps on runs the audit calls too short to carry them, and sized every floating
+// platform by its width alone (a 946×259 bench rendered 32×32 instead of 32×9).
+// Three visible defects, and not one gate in this file could report them.
+{
+  const scene = fs.readFileSync(path.join(R, "packages/game-paint/src/PaintScene.ts"), "utf8");
+  if (!scene.includes("tileScaleFor(") || !scene.includes("tileAnchorFor(")) {
+    fail("painted-scale", "PaintScene no longer takes its tile scale from mass.ts — a second copy of that arithmetic is how the build and its gates came to disagree");
+  }
+  // …scoped to the MASS path. The background planes legitimately scale a band by
+  // its own height (a shell segment IS its band); it is the carved mass, whose
+  // pieces are one grid row tall, where that rule produces the 16 px stamp.
+  const massFn = scene.slice(scene.indexOf("private placeMassPiece"));
+  const massBody = massFn.slice(0, massFn.indexOf("\n  private "));
+  if (/p\.h\s*\/\s*src\.height/.test(massBody)) {
+    fail("painted-scale", "placeMassPiece still scales a tiled piece by its own height — that IS the Lego defect");
+  }
+  if (/planMass\(\s*this\.grid\s*,\s*kit\s*\)/.test(scene)) {
+    fail("painted-scale", "PaintScene plans terrain WITHOUT srcSize — the audits would measure a plan the renderer never draws");
+  }
+  // …and the anchor stays continuous in world space, or the seam the scale fix
+  // removed comes straight back at every segment boundary
+  const kit0 = withSpec[0]?.spec.mass;
+  const body0 = kit0 ? srcSize(kit0.body[0]) : null;
+  if (kit0 && body0) {
+    const s = paintScaleOf(kit0, srcSize);
+    const period = body0.w * s;
+    const uAt = (x) => {
+      const a = tileAnchorFor({ x, y: 0, srcScale: s, tileAnchor: "xy" }, { x: s, y: s }).x;
+      return ((a % body0.w) / body0.w + 1) % 1;
+    };
+    const worstDrift = [16, 48, 96, 240].reduce((m, dx) => {
+      const want2 = ((dx / period) % 1 + 1) % 1;
+      const got = ((uAt(dx) - uAt(0)) % 1 + 1) % 1;
+      const d = Math.abs(got - want2);
+      return Math.max(m, Math.min(d, 1 - d));
+    }, 0);
+    if (worstDrift > 1e-9) fail("painted-scale", `the world anchor drifts ${worstDrift.toExponential(2)} of a period — neighbouring runs would not be seamless`);
+    else note("anchor honesty: scene and audit share tileScaleFor/tileAnchorFor; the anchor is exact in world space over 16/48/96/240 px");
+  }
+}
+
 // ── verdict ──────────────────────────────────────────────────────────────────
 console.log(
   "\nBands ARMED at doc 36 §1 v1.1 (relative to each phase's declared key). L3 is K-exempt;\n"
   + "the L2\u2194L3 separation stays absolute. Saturation caps are measured and reported.",
 );
 if (failures === 0) {
-  console.log(`\ncheck-composition: OK — 9 audits green over ${withSpec.length} phase(s)`);
+  console.log(`\ncheck-composition: OK — 10 audits green over ${withSpec.length} phase(s)`);
 } else {
   console.error(`\ncheck-composition: ${failures} failure(s)`);
   process.exit(1);
