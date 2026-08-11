@@ -157,12 +157,12 @@ Damit eine Autor-Session nicht raten muss, welche Karten zu welchem Story-Beat g
 | 2 · erste Begegnung p1 | encounter | `enc.pencil.*`, `enc.eraser.*` | 7 |
 | 3+4 · Käfig #1 | rescue | `rsc.soundsystem.r1` | 1 |
 | 5a · die Türen (alle Phasen) | door | `door.d1` … `door.d10` | 10 |
-| 6 · Klecks | *(Zeremonie, keine Karte)* | `bonuspay` im Shell | — |
-| 7 · Käfig #2 | rescue | `rsc.tablet.r1` | 1 |
+| 6 · Käfig #2 | rescue | `rsc.tablet.r1` | 1 |
+| 7 · Klecks | *(Zeremonie, keine Karte)* | `bonuspay` im Shell | — |
 | 8+9 · Merles Runden | rescue | `awk.merle.r1` … `r6` (**geordnet**) | 6 |
 | p2 · Falter-Korridor | quickfire | `qf.moths.*` | 5 |
 | p2/p3 · Begegnungen | encounter | `enc.pen.*`, `enc.paintbox.*`, `enc.ranzen.*`, `enc.heft.*` | 16 |
-| 10 · Käfig #3 | rescue | `rsc.chair.r1` | 1 |
+| 10 · Käfig #4 | rescue | `rsc.chair.r1` | 1 |
 | überall · ohne Wesen | quickfire | `qf.free.*` (**kein showsDe**) | 8 |
 | alle Phasen · entfärbt | encounter/restore | `enc.obj-*.r1` | 6 |
 | 12 · die Tafel | boss | `boss.*` — **Session H1** | 6 |
