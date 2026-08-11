@@ -104,6 +104,13 @@ const PaintPhase = z.object({
   entities: z.array(PaintEntity).default([]),
   links: z.array(PaintLink).default([]),
   exit: z.object({ to: z.string().min(1) }),
+  // B1 · W0-F3 v2 · the declared ink return (level.ts InkReturnSpec). MUST be
+  // named here: this object STRIPS what it does not list, so an unlisted field
+  // reaches checkLevelLaws at authoring time and vanishes at runtime — the
+  // level would pass the gate on disk and lose its declaration in the browser.
+  inkReturns: z
+    .array(z.object({ c: z.number().int().nonnegative(), r: z.number().int().nonnegative(), whyDe: z.string().min(1) }))
+    .optional(),
 });
 
 const PaintLevelFile = z.object({
