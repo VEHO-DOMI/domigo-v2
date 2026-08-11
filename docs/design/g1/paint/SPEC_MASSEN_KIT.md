@@ -141,6 +141,12 @@ Zwei unabhängige, blinde Prüfer haben es in derselben Runde unabhängig benann
 »die dunkelste Materie der Referenz ist immer noch erkennbar *blaues Holz*, nicht
 Schwarz«.
 
+> **★ ENTSCHIEDEN (Koki, 2026-08-11): AUFHELLEN.** Auf die Frage »wie dunkel darf
+> der Grund der Welt sein?« hat er Variante **A** gewählt: das tiefste Papier
+> wird neu gemalt — heller und mit klarem Farbton —, die Tiefe bleibt tief, hört
+> aber auf, ein Loch zu sein. Die Werte unten sind damit **Vorgabe, nicht
+> Vorschlag**; die Kommission AS geht so hinaus.
+
 **Auftrag — Blatt `mass_deep_<phase>.png`, 2048 × 512, 4 Zellen à 512²,
 UNGEKEYT:**
 
