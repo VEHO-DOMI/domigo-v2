@@ -114,3 +114,88 @@ describe("R5-A1 · the ride pose", () => {
     expect(poses.has("jump")).toBe(false);
   });
 });
+
+// R5-W1 · F1 (Kokis Replay 11.08., 07:24:37 / 07:25:11) · THE ATTACH TICK.
+// The two tests above both step to attachment in a first loop that never LOOKS
+// at the pose, and only start sampling in a second loop — so the one tick where
+// the ride contract sets `grounded = true` AFTER derivePose already ran was the
+// one tick nobody asserted on. That tick is the bug: the child stands on the
+// plate and wears the spread-armed fall.
+const AIR_POSES = new Set(["fall", "jump", "hover"]);
+
+describe("R5-F1 · der Andock-Tick lügt nicht", () => {
+  /** Every tick where the physics says ground and the drawing says air. */
+  const lies = (sim: Sim): { grounded: boolean; pose: string } | null =>
+    sim.player.grounded && AIR_POSES.has(sim.player.pose)
+      ? { grounded: sim.player.grounded, pose: sim.player.pose }
+      : null;
+
+  const fallFixture = (): Sim => {
+    const rows = [
+      row("#"),
+      ...Array.from({ length: 3 }, () => row(".")),
+      put(row("."), 10, "S"),
+      ...Array.from({ length: 17 }, () => row(".")),
+      row("#"),
+    ];
+    return new Sim({ level: level(rows, [platform({ c: 10, r: 14 })]), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+  };
+
+  it("Fall-Andocken: kein einziger Tick zeigt Boden UND Luft-Pose", () => {
+    const sim = fallFixture();
+    const found: { t: number; pose: string }[] = [];
+    let attachedAt = -1;
+    for (let t = 0; t < 120; t++) {
+      sim.step(IDLE_PAD);
+      const lie = lies(sim);
+      if (lie) found.push({ t, pose: lie.pose });
+      if (attachedAt < 0 && feetOn(sim)) attachedAt = t;
+      if (attachedAt >= 0 && t > attachedAt + 4) break;
+    }
+    expect(attachedAt, "der Fall muss auf dem Mover enden").toBeGreaterThanOrEqual(0);
+    expect(found).toEqual([]);
+  });
+
+  it("Sprung-Andocken: kein einziger Tick zeigt Boden UND Luft-Pose", () => {
+    const rows = [
+      row("#"),
+      ...Array.from({ length: 13 }, () => row(".")),
+      put(row("."), 6, "S"),
+      ...Array.from({ length: 3 }, () => row(".")),
+      "########".padEnd(W, "."),
+      ...Array.from({ length: 3 }, () => row(".")),
+      row("#"),
+    ];
+    const sim = new Sim({ level: level(rows, [platform({ c: 11, r: 18, params: { dxTiles: 0, periodTicks: 400 } })]), phaseId: "p1", grantedAbilities: () => [], freedCageIds: () => [] });
+    for (let t = 0; t < 60 && !sim.player.grounded; t++) sim.step(IDLE_PAD);
+
+    const found: { t: number; pose: string }[] = [];
+    let jumpedAt = -1;
+    let attachedAt = -1;
+    for (let t = 0; t < 200; t++) {
+      if (jumpedAt < 0 && sim.player.x / SUBS >= 100) jumpedAt = t;
+      sim.step(pad({ right: true, jump: jumpedAt >= 0 && t - jumpedAt < 3 }));
+      const lie = lies(sim);
+      if (lie) found.push({ t, pose: lie.pose });
+      if (attachedAt < 0 && feetOn(sim)) attachedAt = t;
+      if (attachedAt >= 0 && t > attachedAt + 4) break;
+    }
+    expect(attachedAt, "der Bogen muss auf dem Mover landen").toBeGreaterThanOrEqual(0);
+    expect(found).toEqual([]);
+  });
+
+  it("eine Karte, die auf dem Andock-Tick aufgeht, friert eine EHRLICHE Pose ein", () => {
+    // Der Grund, warum Koki es überhaupt so lange sehen konnte: bei offener
+    // Karte kehrt Sim.step sofort zurück (kein stepPlayer, keine neue Pose),
+    // die Szene rendert aber jede Frame weiter. Ein unehrlicher Tick steht
+    // dann so lange auf dem Schirm, wie das Kind die Karte offen hat.
+    const sim = fallFixture();
+    for (let t = 0; t < 120 && !feetOn(sim); t++) sim.step(IDLE_PAD);
+    expect(feetOn(sim), "der Fall muss auf dem Mover enden").toBe(true);
+
+    sim.setOverlay(true);
+    for (let t = 0; t < 60; t++) sim.step(IDLE_PAD);
+    expect(sim.player.grounded, "er steht auf der Platte").toBe(true);
+    expect(sim.player.pose, "…und wird auch so gezeichnet").toBe("stand");
+  });
+});

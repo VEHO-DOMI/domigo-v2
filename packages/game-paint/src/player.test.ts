@@ -135,6 +135,40 @@ describe("R5-A1 · the pose reads the coyote window as ground", () => {
 
 });
 
+// R5-W1 · F1 · DIE ANDERE RICHTUNG DERSELBEN LÜGE (Schuld D-10). Der A1-Fix ließ
+// die Boden-Pose vom Coyote-Fenster zeichnen — richtig, solange das Fenster
+// mitläuft. Die Griff-Zweige (Hang, Vine, Swing) kehren aber ZURÜCK, bevor der
+// Zähler heruntergezählt wird, also friert er beim Greifen ein: nach dem
+// Loslassen steht der Held bis zu sechs Ticks lang mitten in der Luft.
+describe("R5-F1 · ein eingefrorenes Gnadenfenster zeichnet keinen Boden in die Luft", () => {
+  const VINE_LEDGE = [
+    "............",
+    "............",
+    ...Array.from({ length: 4 }, () => "..V........."),
+    "##V.........", // die Lippe (Sp. 0–1) endet direkt an der Ranke (Sp. 2)
+    ...Array.from({ length: 4 }, () => "..V........."),
+    ...Array.from({ length: 4 }, () => "............"),
+    "############",
+  ];
+
+  it("Vine: über den Ranken-Kopf hinausklettern zeigt Luft, nicht Stand", () => {
+    let s = settle(VINE_LEDGE, 16, 96);
+    // über die Lippe laufen (setzt das Fenster auf coyoteTicks) und in der Luft
+    // die Ranke fassen — der Zweig kehrt zurück, der Zähler bleibt stehen
+    for (let t = 0; t < 60 && !s.st.climbing; t++) s = tick(s, VINE_LEDGE, pad({ right: true, up: true }));
+    expect(s.st.climbing, "die Ranke muss gefasst werden").toBe(true);
+    expect(s.st.coyote, "das Fenster friert beim Greifen ein").toBeGreaterThan(0);
+
+    const airPoses: string[] = [];
+    for (let t = 0; t < 40 && airPoses.length < 6; t++) {
+      s = tick(s, VINE_LEDGE, pad({ up: true }));
+      if (!s.st.climbing && !s.st.grounded) airPoses.push(s.st.pose);
+    }
+    expect(airPoses.length, "er muss die Ranke oben verlassen").toBeGreaterThan(0);
+    expect(airPoses).toEqual(airPoses.map(() => expect.stringMatching(/^(fall|jump)$/)));
+  });
+});
+
 describe("the hover (quill-rotor — R5: unlimited while held, +1px/t cap)", () => {
   it("glides all the way to the ground while jump stays held — no fuel", () => {
     let s = settle(FLAT, 32, 176);

@@ -17,7 +17,7 @@
 // `abilities` = what the player has ENTERING the phase (the Fibel grant lands
 // mid-p2; the replay shell accumulates grants exactly like PaintGame does).
 
-import { IDLE_PAD, type Pad } from "./player.ts";
+import { IDLE_PAD, type Pad, posePairErrors } from "./player.ts";
 import { Sim, type SimEvent, type TaskRequest } from "./sim.ts";
 import { DIP_Y_PX, KNOT_PERIOD_TICKS } from "./entities.ts";
 import { SUBS } from "./paint.ts";
@@ -145,7 +145,18 @@ export interface ReplayResult {
   grantsPicked: string[];
   /** PB-F2: what the WORLD looked like at the end, for the assertions */
   world: Required<Omit<TapeExpect, "exitTo">> & { exitTo: string | null };
+  /**
+   * R5-W1 · F1 · every tick of this run where the drawn pose contradicted the
+   * physical state (player.ts `posePairErrors`). Collected, never thrown: the
+   * recorder shares this path and must be able to finish and REPORT, and a
+   * count is worth more than the first offender. Capped so a systematic break
+   * cannot turn one failure message into a wall of text.
+   */
+  poseViolations: { tick: number; errors: string[] }[];
 }
+
+/** How many offending ticks a replay keeps before it stops collecting. */
+export const POSE_VIOLATION_CAP = 20;
 
 // PB-R1 · R3-1 · THE CHAPTER SHELL. Some cards are once per CHAPTER, not once
 // per phase — PaintGame keeps that state in refs that outlive a phase mount.
@@ -269,10 +280,18 @@ export const replayPhaseTape = (
   };
 
   const masks = decodePads(tape.pads);
+  const poseViolations: { tick: number; errors: string[] }[] = [];
   let t = 0;
   for (; t < masks.length && !exited; t++) {
     handle(sim.step(maskToPad(masks[t] ?? 0)));
     watchGuardian();
+    // R5-W1 · F1: the pose-honesty law swept over every shipped tick. A tape is
+    // the only place we own a long, real, deterministic run of the actual game,
+    // so it is the cheapest place to prove the drawing never lies.
+    if (poseViolations.length < POSE_VIOLATION_CAP) {
+      const errs = posePairErrors(sim.player);
+      if (errs.length > 0) poseViolations.push({ tick: t, errors: errs });
+    }
   }
   const world = {
     lettersGot: sim.lettersGot,
@@ -300,7 +319,7 @@ export const replayPhaseTape = (
     guardianWroteLow: wroteLow,
     guardianConsoled: consoled,
   };
-  return { exited, exitTo, ticksUsed: t, tasksSolved, grantsPicked, world };
+  return { exited, exitTo, ticksUsed: t, tasksSolved, grantsPicked, world, poseViolations };
 };
 
 /**

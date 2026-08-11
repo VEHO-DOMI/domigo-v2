@@ -15,7 +15,7 @@
 
 import { glyphAt, isSolid } from "./collide.ts";
 import { type AirModel, LOGICAL_H, LOGICAL_W, PAINT, SUBS, TILE } from "./paint.ts";
-import { IDLE_PAD, type Pad, type PlayerEvent, type PlayerState, applyKnockback, spawnPlayer, stepPlayer } from "./player.ts";
+import { IDLE_PAD, type Pad, type PlayerEvent, type PlayerState, applyKnockback, derivePose, spawnPlayer, stepPlayer } from "./player.ts";
 import { type FistState, stepFist, throwFist } from "./fist.ts";
 import {
   AWAKEN_ROUNDS,
@@ -209,6 +209,10 @@ export class Sim {
   cageHintFired = false;
   /** PK-R6 · C1: was ↑ pressed THIS tick (rising edge)? Recomputed every step. */
   engagePressed = false;
+  /** R5-W1 · F1: were the controls locked during the step just taken? The pose
+   *  is committed after the entity world has run, and it must judge by the same
+   *  value that step used (see stepPlayer). */
+  private poseLocked = false;
   tickCount = 0;
   exitFired = false;
   lettersTotal = 0;
@@ -363,6 +367,7 @@ export class Sim {
       ringAt: abilities.includes("swing") ? near : null,
     });
     this.player = out.st;
+    this.poseLocked = out.locked;
     // W0-F7 (canonical): the player is boxed inside the visible screen
     // (constants shared with level.ts's reachability model — R5-A7)
     const minX = this.camX + PAINT.screenBoxLeftPx * SUBS;
@@ -401,7 +406,19 @@ export class Sim {
     // R3-11: LAST, on the fresh camera — a waiting asker is served the moment
     // the view actually contains it.
     this.servePending(events);
+    // R5-W1 · F1 · LAST WORD ON THE DRAWING. Everything above may still move the
+    // player: the ride contract regrounds him, the screen clamp kills his `vx`,
+    // a creature's knockback throws him off the boards. stepPlayer derived a
+    // pose before any of that, and Koki's replay is what the difference looks
+    // like — standing on a plate in the spread-armed fall. The pose is therefore
+    // committed HERE, once, on the finished state.
+    this.finalizePose();
     return events;
+  }
+
+  /** The single commit point for the pose the scene draws. */
+  private finalizePose(): void {
+    this.player.pose = derivePose(this.player, this.poseLocked);
   }
 
   // ── R3-11 · the speaker law (doc 41 §3) ────────────────────────────────────
@@ -568,7 +585,11 @@ export class Sim {
       hangAt: null,
       climbing: false,
       hovering: false,
+      poseGrace: 0, // he is in the air at the new place, whatever he was doing at the old one
     };
+    // …and the drawing follows: a warp clears the rope, the ledge and the vine,
+    // so a hand left closed around any of them would be gripping nothing.
+    this.finalizePose();
     this.camX = clampScroll(cameraTargetX(this.player.x, this.player.facing), this.worldWpx, LOGICAL_W);
     this.camY = clampScroll(this.player.y - Math.round(LOGICAL_H * 0.57) * SUBS, this.worldHpx, LOGICAL_H);
   }
