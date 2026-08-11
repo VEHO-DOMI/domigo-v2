@@ -101,14 +101,19 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
     books: 1, booksTotal: 1,
   };
 
-  const ceremony = (id: string, label: string, o: Record<string, unknown>, note?: string): Surface => ({
+  // R5-W1 · D2: WHICH ROOM a ceremony happens in. The scene cut looks through
+  // the card at the phase's own plate, so a bench that runs every panel in p1
+  // shows the same hallway five times — a blind critic counted that against the
+  // panels („the identical hallway reused across five unrelated ceremonies").
+  // In play they happen in different rooms; the bench says which.
+  const ceremony = (id: string, label: string, o: Record<string, unknown>, note?: string, phase = "p1"): Surface => ({
     id, label, note,
     render: () => (
       <Overlay
         o={{ req: { use: "quickfire", ctx: { type: "ceremony", beat: "goal" } }, item: null, attempts: 0, typed: "", align: "center", ...o }}
         level={level}
         art={art}
-        phaseId="p1"
+        phaseId={phase}
         onResolve={noop}
         onWorldChange={noop}
         onDismiss={noop}
@@ -174,9 +179,9 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
     }),
     ceremony("score", "Bilanz-Seite", { card: "score" }),
     ceremony("out", "Tür hinaus", { card: "out" }),
-    ceremony("grant", "Die Gabe", { card: "grant" }),
+    ceremony("grant", "Die Gabe", { card: "grant" }, undefined, "p2"),
     ceremony("cagehint", "Käfig-Hinweis", { card: "cagehint" }),
-    ceremony("bonuspay", "Kleckskammer-Tür", { card: "bonuspay", price: Number(doorEntity?.params?.price ?? 6) }),
+    ceremony("bonuspay", "Kleckskammer-Tür", { card: "bonuspay", price: Number(doorEntity?.params?.price ?? 6) }, undefined, "p2"),
     // R5-W1 · D2: the payload C1 ships, not the one the bench was still guessing.
     // A blind critic read „Der Käfig springt auf — ist frei!" as a broken text
     // interpolation in the GAME; it was the bench handing the panel a captive
@@ -189,8 +194,8 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
     ceremony("ceremony-wisp", "Rettung · Ding", {
       card: "ceremony",
       ceremony: { skin: "satchel", captiveDe: "die Musikanlage", person: false, first: false },
-    }, "Objekt-Käfig — ch01 hält vier davon"),
-    ceremony("console", "Trost-Karte", { card: "console", typed: "hello" }),
+    }, "Objekt-Käfig — ch01 hält vier davon", "p3"),
+    ceremony("console", "Trost-Karte", { card: "console", typed: "hello" }, undefined, "p4"),
     // R5-W1 · D2: the payload the SHIPPED card takes, not the one the bench
     // once guessed. C1 gave this ceremony the room's own phrase and its leftover
     // seconds; the bench kept handing it the old three fields and the panel
