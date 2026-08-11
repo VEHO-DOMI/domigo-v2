@@ -218,7 +218,13 @@ describe("the static-state collectibles (R3-16, doc 41 §5)", () => {
 });
 
 // ── the tip-honesty law, proven in both directions ───────────────────────────
-describe("the tip-honesty law (doc 41 §7)", () => {
+// R5-C1 · the timeout is stated for the WHOLE block, not inherited. Every case
+// in here runs `checkLevelLaws` over the real shipped chapter — seconds of
+// reachability work each — and the 5000 ms default left so little headroom that
+// the suite timed out on this session's very first BASELINE run, before a line
+// had been touched. Every law layered onto checkLevelLaws since makes that
+// likelier, so the budget is written down rather than rediscovered.
+describe("the tip-honesty law (doc 41 §7)", { timeout: 30_000 }, () => {
   const clone = (): PaintLevel => JSON.parse(JSON.stringify(level)) as PaintLevel;
   const lawsNamed = (l: PaintLevel) => checkLevelLaws(l).filter((f) => f.law === "tip-honesty").map((f) => f.detail);
 
@@ -382,6 +388,55 @@ describe("R5-A2 · spawnCell + letterLedger (the bonus trip loses nothing)", () 
     }
     expect(reTaken, "a respawned letter must be collectable a second time").toContain(dropKey);
     expect(second.lettersGot, "and it pays into the purse it walked in with").toBe(4);
+  });
+
+  // R5-C1 · THE CUMULATIVE TRAP. The bonus room's end card lays its catches out
+  // as the phrase they spell, and that layout is about the RUN. Two nearby sets
+  // both look like "what the child just caught" and neither is: the shell's own
+  // ledger accumulates across visits, and `letterCells`' complement counts the
+  // ledger's suppressed cells as if this run had taken them. On a second paid
+  // visit either one would light up letters the child never touched.
+  it("R5-C1 · runTakenCells is THIS run's catches — never the ledger's", () => {
+    const first = new Sim({
+      level, phaseId: "p1",
+      grantedAbilities: () => [...level.abilities],
+      freedCageIds: () => [],
+    });
+    const taken: string[] = [];
+    collectAt(first, 11, 14, taken);
+    expect([...first.runTakenCells]).toEqual(taken);
+
+    // come back with that cell already on the ledger and catch a DIFFERENT one
+    const second = new Sim({
+      level, phaseId: "p1",
+      grantedAbilities: () => [...level.abilities],
+      freedCageIds: () => [],
+      letterLedger: () => ({ takenCells: taken, purse: 1, found: 1 }),
+    });
+    const secondTaken: string[] = [];
+    collectAt(second, 46, 16, secondTaken);
+
+    expect([...second.runTakenCells], "the previous visit's cell must not be in this run's set").toEqual(secondTaken);
+    expect(second.runTakenCells.has(taken[0]!)).toBe(false);
+    // NOTE the invariant that does NOT hold here: `lettersGot` is a purse and
+    // this remount seeded it with 1, so size ≠ got in a host phase. It holds in
+    // the Kleckskammer, which is the only room the card describes — below.
+  });
+
+  // …and there it is the honesty clause itself: the card prints `got` beside a
+  // row of filled slots, so the two may never disagree.
+  it("R5-C1 · in the Kleckskammer the filled slots ARE the printed number", () => {
+    const p9 = new Sim({
+      level, phaseId: "p9",
+      grantedAbilities: () => [...level.abilities],
+      freedCageIds: () => [],
+    });
+    expect(p9.lettersGot, "the bonus room starts with an empty purse").toBe(0);
+    const got: string[] = [];
+    collectAt(p9, 11, 12, got);
+    collectAt(p9, 13, 10, got);
+    expect(p9.runTakenCells.size).toBe(p9.lettersGot);
+    expect([...p9.runTakenCells]).toEqual(got);
   });
 
   it("spawning ON a door seeds its cooldown — and standing there NEVER re-fires it", () => {

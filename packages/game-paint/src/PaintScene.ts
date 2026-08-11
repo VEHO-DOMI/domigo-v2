@@ -19,6 +19,7 @@ import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
 import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
 import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
+import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
 import { type FistState } from "./fist.ts";
@@ -227,8 +228,9 @@ export interface PaintCallbacks {
   onPowerup: (grants: string) => void;
   onCageFreed: (id: string, skin: string, classmate: string | undefined, freedCount: number) => void;
   onGuardianDown: (id: string, skin: string) => void;
-  /** PB-F3 · F2-8: the first cage the fist can open, once per phase. */
-  onCageHint: () => void;
+  /** PB-F3 · F2-8: the first cage the fist can open, once per phase.
+   *  R5-C1: with the id of the cage it fired at, so the card can name it. */
+  onCageHint: (id: string) => void;
   /** PK-R3b · R3-16: a Regel-Seite was found — the shell shows its rule page. */
   onTip: (id: string, topicDe: string, merksatzDe: string) => void;
   /** PK-R3b · R3-16: a Bonus-Buch was found — score only, no card. */
@@ -1063,7 +1065,7 @@ export class PaintScene extends Phaser.Scene {
         case "powerup": cb.onPowerup(ev.grants); break;
         case "cageFreed": cb.onCageFreed(ev.id, ev.skin, ev.classmate, ev.count); break;
         case "guardianDown": cb.onGuardianDown(ev.id, ev.skin); break;
-        case "cageHint": cb.onCageHint(); break;
+        case "cageHint": cb.onCageHint(ev.id); break;
         case "letters": cb.onLetters(ev.got, ev.total); break;
         case "letterTaken": {
           this.cfg.callbacks.onLetterTaken?.(ev.c, ev.r);
@@ -1123,8 +1125,16 @@ export class PaintScene extends Phaser.Scene {
     return ok;
   }
 
-  bonusState(): { leftTicks: number; got: number; total: number } {
-    return { leftTicks: this.sim.bonusLeftTicks, got: this.sim.lettersGot, total: this.sim.lettersTotal };
+  /** R5-C1: `phrase` is added here rather than in the shell because THIS is the
+   *  only place that holds both halves of it — the phase's grid and the phase's
+   *  declared trail words (`this.comp`). The shell has neither. */
+  bonusState(): { leftTicks: number; got: number; total: number; phrase: PhraseSlot[][] } {
+    return {
+      leftTicks: this.sim.bonusLeftTicks,
+      got: this.sim.lettersGot,
+      total: this.sim.lettersTotal,
+      phrase: bonusPhrase(this.grid, this.comp?.words, this.sim.runTakenCells),
+    };
   }
 
   private readPad(): Pad {

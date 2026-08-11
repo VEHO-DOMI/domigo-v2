@@ -14,12 +14,71 @@
 //
 // DETERMINISTIC BY CONSTRUCTION: no Math.random anywhere (the sim law, applied
 // to the ceremony), so a replayed tape celebrates exactly what the child saw.
+import { letterGlyphs } from "../letters.ts";
 import { rigPose } from "../rig.ts";
 import {
   RIG_CELL, RIG_SRC_SCALE, RIG_PART_ORDER, type RigPartName,
   bodyStemFor, faceFor, hairStemFor, handStemsFor, shoeStemFor,
 } from "../rigSpec.ts";
 import type { PlayerPose } from "../player.ts";
+
+// ── 0 · THE BONUS ROOM'S PHRASE ──────────────────────────────────────────────
+//
+// R5-C1 (p9.md §5 „Reward-Inszenierung", §10 declared this as P1 pre-work). The
+// Kleckskammer's twelve letters are not twelve letters — they SPELL the unit's
+// own collecting phrase, and the trail is cut so that walking it writes the
+// words in order. The end card said „Alle 12 Buchstaben" anyway, which threw
+// the entire point away and made a partial run read as a fraction instead of a
+// word with a hole in it.
+//
+// Pure, and taking the taken-cells set as an ARGUMENT, for one specific reason:
+// the card must describe THIS visit. The room is re-payable, the shell's letter
+// ledger is cumulative across visits, and a sibling packet is separately making
+// p9's letters respawn — so anything derived from the ledger would be right
+// today by accident and wrong tomorrow. The caller hands in the run's own set.
+
+/** One slot of the laid-out phrase: the letter, and whether it was caught. */
+export interface PhraseSlot {
+  char: string;
+  taken: boolean;
+}
+
+/** The phrase a bonus room's trail spells, split into its words, with each
+ *  slot marked caught or missed for THIS run.
+ *
+ *  Order is `letterGlyphs`' traversal order — the order the child walks — so
+ *  slot *i* is the *i*-th letter of the phrase and the *i*-th cell of the path.
+ *  With no declared words the trail is the A→Z fallback and comes back as one
+ *  group, which still lays out; it simply spells nothing. */
+export const bonusPhrase = (
+  rows: readonly string[],
+  words: readonly string[] | undefined,
+  taken: ReadonlySet<string>,
+): PhraseSlot[][] => {
+  const glyphs = letterGlyphs(rows, words);
+  const slots = glyphs.map((g) => ({ char: g.char, taken: taken.has(`${g.c},${g.r}`) }));
+  // The word lengths come from the same normalisation letterGlyphs spells with,
+  // so the split can never drift from the characters it is splitting.
+  const lengths = (words ?? [])
+    .map((w) => w.toUpperCase().replace(/[^A-Z]/g, "").length)
+    .filter((n) => n > 0);
+  if (lengths.length === 0) return [slots];
+  const out: PhraseSlot[][] = [];
+  let i = 0;
+  for (const n of lengths) {
+    out.push(slots.slice(i, i + n));
+    i += n;
+  }
+  // A trail longer than its phrase repeats the phrase (letterGlyphs wraps), so
+  // whatever is left over is a further pass and belongs in its own group rather
+  // than being dropped — a dropped slot is a caught letter the card never shows.
+  if (i < slots.length) out.push(slots.slice(i));
+  return out;
+};
+
+/** The phrase as one readable line — „SCHOO_ THINGS". */
+export const phraseText = (phrase: readonly PhraseSlot[][], gap = "_"): string =>
+  phrase.map((w) => w.map((s) => (s.taken ? s.char : gap)).join("")).join(" ");
 
 // ── 1 · THE COUNT-UP ─────────────────────────────────────────────────────────
 

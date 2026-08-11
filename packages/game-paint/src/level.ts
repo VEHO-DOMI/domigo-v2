@@ -6,7 +6,7 @@
 // an ability-parameterized reachability sweep (a cage or letter no child can
 // reach is a defect, not a secret).
 
-import { registerErrorsDe } from "@domigo/content-schema";
+import { MAX_LINE_DE, cloakErrorsDe, registerErrorsDe } from "@domigo/content-schema";
 import { type Grid, glyphAt, isOneWay, isSlope, isSolid } from "./collide.ts";
 import { PAINT, SUBS, TILE } from "./paint.ts";
 import { platformPathAt } from "./entities.ts";
@@ -70,6 +70,18 @@ export interface EntityParams {
    *  this field; the shipped data has carried the name itself since ch01, and a
    *  name says strictly more than a type tag). Exactly one per chapter. */
   classmate?: string;
+  /** cage: WHAT is inside, as the German noun phrase WITH its article — „die
+   *  Musikanlage", „der Stuhl", or a person's name. R5-C1: the ceremony beats
+   *  used to know only the cage's SHELL, and every chapter-1 shell is the same
+   *  satchel — which is how one card came to say „Da steckt jemand fest" over a
+   *  sound system and another called a freed chair a „Buchstaben-Wesen". One
+   *  datum, both beats.
+   *
+   *  RENDERED MID-SENTENCE, always („Der Käfig springt auf — die Musikanlage ist
+   *  frei!"). German capitalises the article at a sentence start and this string
+   *  carries a lower-case one, so a frame that opens with it reads wrong. The
+   *  frames own the sentence; this field only ever names the thing. */
+  captiveDe?: string;
   /** classmate: WHICH cage this person was locked in (PK-R6 · D). The pointer
    *  runs from the person to the cage rather than the other way round because
    *  the sim asks it in that direction — a cage bursts and has to find who
@@ -596,6 +608,13 @@ export interface LawFailure {
  *  sentence, out loud, in one breath. */
 export const MAX_MERKSATZ = 78;
 
+/** How long the objective screen's paragraph may run in total (R5-C1). It is
+ *  the one place the book speaks in more than one sentence, so a card-line cap
+ *  would be wrong — but the per-sentence cap above still applies to each of its
+ *  sentences, which is the clause that actually bites: the shipped ch01 line
+ *  ran 51 + 115 and no gate in the repo had ever looked at it. */
+export const MAX_GOAL_DE = 200;
+
 /** "Close enough to a reachable node to count" — the same tolerance every
  *  reachability law uses, lifted out so the staged sweeps can share it. */
 const nearIn = (set: ReadonlySet<string>, c: number, r: number, dc: number, drUp: number, drDown: number): boolean => {
@@ -764,6 +783,75 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       for (const err of registerErrorsDe(satz)) failures.push({ phase: "*", law: "tip-honesty", detail: `Regel-Seite ${t.id}: ${err}` });
     }
   }
+
+  // ── R5-C1 · THE CAPTIVE LAW (doc 44 §2.3, Koki's replay 2026-08-11) ────────
+  // A cage that declares only its shell forces the ceremony to guess, and the
+  // guess shipped: „Da steckt jemand fest!" over a sound system, and one
+  // „Buchstaben-Wesen" line covering a tablet, a chair and a class photo. The
+  // shell can only tell them apart if the level says so, so the level must.
+  const cages = allPhases(level).flatMap((p) => p.entities.filter((e) => e.role === "cage").map((e) => ({ e, p })));
+  const captives = new Set<string>();
+  for (const { e, p } of cages) {
+    const captive = e.params?.captiveDe;
+    if (captive === undefined || captive.trim() === "") {
+      failures.push({ phase: p.id, law: "cage-captive", detail: `cage ${e.id} declares no captive — the ceremony that opens it would have to guess what it freed` });
+      continue;
+    }
+    // It lands inside a card line, so it obeys the card line's own cap.
+    if (captive.length > MAX_LINE_DE) {
+      failures.push({ phase: p.id, law: "cage-captive", detail: `cage ${e.id}: captive is ${captive.length} chars (max ${MAX_LINE_DE}) — „${captive}"` });
+    }
+    for (const err of registerErrorsDe(captive)) failures.push({ phase: p.id, law: "cage-captive", detail: `cage ${e.id}: ${err}` });
+    for (const err of cloakErrorsDe(captive, level.chapter)) failures.push({ phase: p.id, law: "cage-captive", detail: `cage ${e.id}: ${err}` });
+    // Two cages holding the same thing is a census defect, and it makes the two
+    // liberation cards indistinguishable — the same reason topics are unique.
+    if (captives.has(captive)) {
+      failures.push({ phase: p.id, law: "cage-captive", detail: `two cages hold „${captive}" — one captive, one cage` });
+    } else captives.add(captive);
+  }
+  for (const ph of allPhases(level)) {
+    for (const e of ph.entities) {
+      if (e.role !== "cage" && e.params?.captiveDe !== undefined) {
+        failures.push({ phase: ph.id, law: "cage-captive", detail: `${e.role} ${e.id} declares a captive — only a cage holds one` });
+      }
+    }
+  }
+
+  // ── R5-C1 · THE CHAPTER-COPY LAWS ─────────────────────────────────────────
+  // The chapter's own German — the title, the objective screen, the *Warum*,
+  // the hints, the collectible noun, every phase name — was the one authored
+  // surface no gate in this repo read, which is exactly why „OSWINs Tinte…"
+  // reached a child's screen and stayed there through four packets. Same three
+  // axes as the Regel-Seite copy above: the cloak, the register, the breath.
+  const copyFields: Array<{ what: string; text: string; cap: number }> = [
+    { what: "name", text: level.name, cap: MAX_LINE_DE },
+    { what: "collectNounDe", text: level.collectNounDe, cap: MAX_LINE_DE },
+    // The *Warum* and the hints are read at rest, like a Merksatz — one
+    // sentence, out loud, in one breath — so they take the Merksatz cap.
+    { what: "whyDe", text: level.whyDe, cap: MAX_MERKSATZ },
+    ...level.hintsDe.map((h, i) => ({ what: `hintsDe[${i}]`, text: h, cap: MAX_MERKSATZ })),
+    ...allPhases(level).map((p) => ({ what: `${p.id}.nameDe`, text: p.nameDe, cap: MAX_LINE_DE })),
+  ];
+  for (const f of copyFields) {
+    if (f.text.length > f.cap) {
+      failures.push({ phase: "*", law: "chapter-copy", detail: `${f.what} is ${f.text.length} chars (max ${f.cap}) — „${f.text}"` });
+    }
+    for (const err of registerErrorsDe(f.text)) failures.push({ phase: "*", law: "chapter-copy", detail: `${f.what}: ${err}` });
+    for (const err of cloakErrorsDe(f.text, level.chapter)) failures.push({ phase: "*", law: "chapter-copy", detail: `${f.what}: ${err}` });
+  }
+  // goalDe is the objective screen's paragraph, not a card line — it gets room,
+  // but every SENTENCE in it still has to be sayable in one breath. That clause
+  // is the one with teeth: the shipped line was 51 + 115.
+  if (level.goalDe.length > MAX_GOAL_DE) {
+    failures.push({ phase: "*", law: "chapter-copy", detail: `goalDe is ${level.goalDe.length} chars (max ${MAX_GOAL_DE})` });
+  }
+  for (const s of level.goalDe.split(/(?<=[.!?:])\s+/)) {
+    if (s.length > MAX_MERKSATZ) {
+      failures.push({ phase: "*", law: "chapter-copy", detail: `goalDe sentence is ${s.length} chars (max ${MAX_MERKSATZ}) — „${s}"` });
+    }
+  }
+  for (const err of registerErrorsDe(level.goalDe)) failures.push({ phase: "*", law: "chapter-copy", detail: `goalDe: ${err}` });
+  for (const err of cloakErrorsDe(level.goalDe, level.chapter)) failures.push({ phase: "*", law: "chapter-copy", detail: `goalDe: ${err}` });
 
   for (const ph of allPhases(level)) {
     // W0-F8: worlds must be tall enough for the camera to breathe, and

@@ -2,14 +2,14 @@
  "schema": "paintLevel@1",
  "id": "g1.paint.ch01",
  "chapter": "ch01",
- "name": "Zeit für die Schule — Das bemalte Schulhaus",
+ "name": "Zeit für die Schule — Das Schulhaus ohne Farbe",
  "goalPlate": "plate_ch01_goal",
- "goalDe": "OSWINs Tinte hat dem Schulhaus die Farben genommen: Die Dinge stehen grau herum und die Schulsachen sind bockig — sag jedem, wer es ist, dann kommt seine Farbe zurück.",
- "whyDe": "Was du auf Englisch benennen kannst, kann das Buch wieder malen.",
+ "goalDe": "Der Tinten-Schatten hat dem Schulhaus die Farben genommen. Manche Schulsachen stehen grau da, andere stellen sich dir quer. Fünf Gefangene warten in Käfigen — mach sie alle wieder frei.",
+ "whyDe": "Das Buch hört auf Englisch: Wer es richtig sagt, holt die Farbe zurück.",
  "hintsDe": [
   "Springen: SPACE — halten für höher!",
   "Etwas steht grau da? Stell dich davor und drück ↑!",
-  "Eine Schulsache stellt sich dir in den Weg? Sag ihr die freundlichen Wörter!"
+  "Stellt sich dir eine Schulsache quer? Sag ihr, was sie wissen will!"
  ],
  "collectNounDe": "Buchstaben",
  "abilities": [
@@ -82,7 +82,9 @@
      "c": 58,
      "r": 12,
      "tier": "E",
-     "params": {}
+     "params": {
+      "captiveDe": "die Musikanlage"
+     }
     },
     {
      "id": "p1-door",
@@ -229,7 +231,9 @@
      "c": 17,
      "r": 7,
      "tier": "E",
-     "params": {}
+     "params": {
+      "captiveDe": "das Tablet"
+     }
     },
     {
      "id": "p2-cage-merle",
@@ -239,7 +243,8 @@
      "r": 13,
      "tier": "E",
      "params": {
-      "classmate": "merle"
+      "classmate": "merle",
+      "captiveDe": "Merle"
      }
     },
     {
@@ -384,7 +389,9 @@
      "c": 47,
      "r": 12,
      "tier": "E",
-     "params": {}
+     "params": {
+      "captiveDe": "der Stuhl"
+     }
     },
     {
      "id": "p3-door",
@@ -494,7 +501,9 @@
     "c": 31,
     "r": 15,
     "tier": "E",
-    "params": {}
+    "params": {
+     "captiveDe": "das Klassenfoto"
+    }
    }
   ],
   "links": [],
