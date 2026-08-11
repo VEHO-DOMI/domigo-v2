@@ -14,7 +14,7 @@
 
 import { type MassKit } from "./composition.ts";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
-import { TILE } from "./paint.ts";
+import { TILE, mixMultiply } from "./paint.ts";
 
 // ── the anatomy's dimensions (world px) ──────────────────────────────────────
 /** doc 36 §1's scale law: "a crust course ~0.5 H thick". H ≈ 34 px drawn. */
@@ -25,12 +25,185 @@ export const CRUST_LIP = 2;
 export const EDGE_W = 8;
 export const EDGE_OUT = 2;
 export const CORNER = 12;
+/**
+ * How far the carved trims are laid back from the room's full light.
+ *
+ * A cut edge SHOULD catch more light than the face beside it — that is what
+ * makes it read as carved. Measured, though, the trim art is 71.5 % mean
+ * luminance against a 46.2 % body: 25 points, which stops being a highlight and
+ * becomes a rail. 0.76 lands it about eight points over the body, which is a
+ * lit edge; the rest of its separation now comes from the depth ramp, because a
+ * trim six rows down should be as deep as the paper it is carved into.
+ *
+ * CRITIC ROUND 2 took it further, from 0.76 to 0.62. Both blind reviewers still
+ * named it independently — "the pale stone pillar sides sit as a visibly
+ * separate material against the warm book colour — a joint, not a blend",
+ * "lacks the soft falloff into the books that the reference achieves on every
+ * beam-to-background transition". A trim that announces itself is a trim that
+ * has stopped being anatomy.
+ */
+export const TRIM_SHADE = 0x9e9e9e;
+/**
+ * R5-W1 · A1 · THE PAINTED-SCALE LAW (Koki's „Lego, das nicht zusammenpasst").
+ *
+ * A tiled surface used to derive its texture scale from the PIECE it filled:
+ * `scale = piece.h / source.h`. The interior body is planned one grid row tall,
+ * so a 512×512 painting was squeezed into a 16×16 box — and because the world
+ * anchor then landed on an exact multiple of the source width, EVERY solid cell
+ * in the world drew the byte-identical stamp. Not "a painting that repeats": one
+ * stamp, 550 times, which is why the terrain read as extruded plastic bricks
+ * rather than as painted matter.
+ *
+ * The walk course never had that defect, and the reason is the whole fix: its
+ * height is pinned by CRUST_H, so its 512-wide art lands over 41 px of world —
+ * about 2.57 cells, a period the 16-px grid cannot line up with. So the course
+ * is not just the surface that looked right, it is the surface that DEFINES what
+ * one painted centimetre of this world is worth. Every other painted mass
+ * surface now draws at that same scale.
+ *
+ * Deliberately NOT an integer cell count: at 2, 3 or 4 cells the painting's own
+ * repeat would land on the cell grid forever — the same metronome one octave up,
+ * and invisible to the no-metronome audit, which carries no tile phase at all.
+ */
+export const paintScaleOf = (kit: MassKit, srcSize?: SrcSizeLookup): number => {
+  const s = srcSize?.(kit.crust[0] ?? "") ?? null;
+  return s !== null && s.h > 0 ? CRUST_H / s.h : FALLBACK_PAINT_SCALE;
+};
+
+/** The shipped ch01 course (crust_p1_a is 512×212) — the ratio the law means
+ *  when the art cannot be measured. 17/212 ⇒ a 512-wide painting every 41.06 px. */
+export const FALLBACK_PAINT_SCALE = CRUST_H / 212;
+
+/**
+ * The INTERIOR's scale: the course's, de-locked.
+ *
+ * The course itself must keep its scale EXACTLY — its band is one course tall
+ * and has to fit CRUST_H. The interior has no such obligation, and it needs the
+ * freedom: each phase's course sheet is cut to its own height (212 · 211 · 262 ·
+ * 237 · 246 px), and p3's 262 puts a 512-wide painting at 2.08 cells — near
+ * enough to two that the painting's own repeat would sit in phase with the cell
+ * grid, the plank joints and the trims forever. That is the original defect one
+ * octave up, and it is invisible to every audit that reads labels instead of
+ * scales (which is why audit 10 measures the scale and why this exists).
+ *
+ * So: take the course's scale, and if it lands on the grid, step it off — in
+ * increments small enough that the material's apparent size does not change,
+ * and always inside audit 10's own parity tolerance.
+ */
+export const bodyScaleOf = (kit: MassKit, srcSize?: SrcSizeLookup): number => {
+  const base = paintScaleOf(kit, srcSize);
+  const w = srcSize?.(kit.body[0] ?? "")?.w ?? 512;
+  // clear the audit's threshold with margin, so a rounding difference between
+  // the planner and the check can never decide whether the build ships
+  const locked = (s: number): boolean => {
+    const period = (w * s) / TILE;
+    if (period < MIN_PAINT_PERIOD_CELLS) return true;
+    for (let n = 1; n <= 8; n++) if (Math.abs(period - n) <= MIN_GRID_LOCK_DISTANCE * 2) return true;
+    return false;
+  };
+  let s = base;
+  for (let i = 1; i <= 12 && locked(s); i++) s = base * (1 + 0.025 * i);
+  return s;
+};
+
+/** The smallest painted period the law tolerates, in cells, and how far it must
+ *  stay off a whole number of cells. Both are enforced by check-composition
+ *  audit 10; the second is what forbids the integer answer. */
+export const MIN_PAINT_PERIOD_CELLS = 2;
+export const MIN_GRID_LOCK_DISTANCE = 0.08;
+
 /** doc 36 §2: the slide's drawn surface is 2 cells wide so the `z` line reads */
 export const SLIDE_BAND_PX = 2 * TILE;
 export const SLIDE_ABOVE_FRAC = 0.22;
-/** the depth ramp: body → fade → sediment (doc 36 §2, "below ~3 cells deep") */
-export const FADE_DEPTH = 3;
-export const SEDIMENT_DEPTH = 4;
+/**
+ * R5-W1 · A1 · THE DEPTH LAW — the ramp is a RAMP now, not a cliff.
+ *
+ * doc 36 §2 asks for "a darkening fade into ink-dark paper-sediment below", and
+ * the kit ships exactly that in three painted sheets. Measured mean luminance of
+ * the shipped ch01 sheets: body 46.2 % · fade 16.6 % · sediment 4.8 %. The old
+ * depths gave the middle sheet ONE row, so the terrain fell 41 points of value
+ * in two cells and everything past the fourth row was the same near-black — 54 %
+ * of p1's interior, 57 % of p3's. At the old 16-px stamp scale that sheet's
+ * books were unresolvable, so it did not read as deep paper at all. It read as a
+ * hole punched through the picture, which is what Koki saw as „schwarze Löcher".
+ *
+ * Two changes, and the second is the one that matters. The bands get room (four
+ * rows, then five). And each band is laid under a MULTIPLY that walks it down to
+ * meet the next band's own value BEFORE the paper changes — so the material
+ * changes where the eye has nothing to catch. The steps that remain are 24→17
+ * and 7→5 instead of 46→17 and 17→5.
+ */
+export const FADE_DEPTH = 4;
+/**
+ * CRITIC ROUND 2 pushed this from 9 to 14. Two independent blind reviewers,
+ * measuring pixels rather than opinions, both reported the same surviving
+ * defect: "deep terrain still collapses toward flat darkness … 32.5 % of that
+ * band is functionally black", "needs a hue-preserving shadow ramp".
+ *
+ * The cause is the art, not the ramp: `mass_sediment` is 4.8 % mean luminance —
+ * near-black AS A PAINTING — so any depth that reaches it reaches a hole no
+ * multiply can rescue. So the sheet is moved to where it belongs, the true floor
+ * of the world, and the readable middle sheet carries everything above it.
+ * Measured against the shipped grids this means p1, p3, p4 and p9 never touch
+ * sediment at all, and p2 only in its deepest columns.
+ */
+export const SEDIMENT_DEPTH = 14;
+/** How far past the sediment line the light keeps falling, in cells. */
+export const RAMP_ROWS = 10;
+/**
+ * The multiply a band wears at its LAST row — i.e. how far it must be walked
+ * down to arrive at the next band's painted value. body·0.52 ≈ 24 % (fade is
+ * 16.6) · fade·0.42 ≈ 7 % (sediment is 4.8) · sediment·0.86 for the last of the
+ * light. Never near zero: the composed tint must keep the five no-metronome
+ * lights distinguishable, and they only collide below ≈0.05.
+ */
+export const BAND_HANDOVER = { body: 0.52, fade: 0.55, sediment: 0.86 } as const;
+/** The darkest any channel of a composed depth tint may go. Guards the
+ *  no-metronome law: below this the five lights round together. */
+export const DEPTH_TINT_FLOOR = 0x1a;
+/**
+ * How much COOLER the deep gets, per channel, at the bottom of the ramp.
+ *
+ * Critic round 2, both reviewers independently: the reference's darkest matter
+ * "is still recognizably blue wood, not black", and the losing frame's deep band
+ * measured a saturation of 0.029 — grey. Darkening alone always trends grey,
+ * because a multiply pulls every channel toward zero together. Letting red fall
+ * faster than blue turns the same amount of darkness into a HUE, which is the
+ * difference between shadow and absence.
+ */
+export const DEPTH_COOL = { r: 0.34, g: 0.18 } as const;
+
+/** Which painted sheet a cell this deep is laid in. */
+export const bandAt = (d: number): "body" | "fade" | "sediment" =>
+  d >= SEDIMENT_DEPTH ? "sediment" : d >= FADE_DEPTH ? "fade" : "body";
+
+/** The multiply a cell this deep wears, 1 at the surface, falling monotonically. */
+export const depthShadeAt = (d: number): number => {
+  const band = bandAt(d);
+  if (band === "body") return 1 - (1 - BAND_HANDOVER.body) * (Math.min(d, FADE_DEPTH - 1) / (FADE_DEPTH - 1));
+  if (band === "fade") {
+    return 1 - (1 - BAND_HANDOVER.fade) * ((d - FADE_DEPTH) / (SEDIMENT_DEPTH - 1 - FADE_DEPTH));
+  }
+  return 1 - (1 - BAND_HANDOVER.sediment) * Math.min(1, (d - SEDIMENT_DEPTH) / RAMP_ROWS);
+};
+
+/**
+ * …expressed as a MULTIPLY tint. Cooler as it deepens — red loses the most,
+ * blue the least, the same rule the near plane already uses — so depth reads as
+ * distance rather than as dirt, and the darkest dark in the book is still a
+ * colour rather than an absence of one.
+ */
+export const depthTintAt = (d: number): number => {
+  const s = depthShadeAt(d);
+  const cool = 1 - s;
+  const ch = (bias: number): number =>
+    Math.max(DEPTH_TINT_FLOOR, Math.round(255 * s * (1 - bias * cool))) & 0xff;
+  return (ch(DEPTH_COOL.r) << 16) | (ch(DEPTH_COOL.g) << 8) | ch(0);
+};
+
+/** How the run-merger and the audits bucket depth: past the ramp everything is
+ *  the same light, so one deep mass stays ONE piece instead of a stack of rows. */
+export const depthBucketAt = (d: number): number => Math.min(d, SEDIMENT_DEPTH + RAMP_ROWS);
 /** floating platform = an isolated run this wide or narrower with air below */
 export const MAX_PLATFORM_CELLS = 4;
 
@@ -188,10 +361,52 @@ export interface MassPiece {
   originY?: number;
   /** true ⇒ a tileSprite (seamless run); false ⇒ one Image */
   tile?: boolean;
+  /** world px drawn per SOURCE px — the painted-scale law. Undefined keeps the
+   *  legacy rule (one source height = the piece's own height). */
+  srcScale?: number;
+  /** horizontal override, for a strip whose WIDTH is dictated by the anatomy it
+   *  trims rather than by the painting's scale (the carved side trims are 8 px
+   *  wide because the trim is 8 px wide; their page-edges must still be the
+   *  same physical size as the books they run beside). */
+  srcScaleX?: number;
+  /**
+   * Which axes the pattern is anchored to world space on.
+   *
+   * "xy" is what a CONTINUUM wants: a column of interior pieces then draws
+   * successive horizontal slices of one tall painting instead of restamping it.
+   *
+   * "x" is what a single COURSE wants, and the crust is one. Phaser offsets the
+   * pattern by `tilePositionY mod sourceHeight`; a course drawn exactly one
+   * period tall therefore wraps by `p.y mod CRUST_H` — `(16r − 2) mod 17`, which
+   * is non-zero on every row but one in seventeen. The painted board's lit top
+   * lip was being cut off and re-attached under its own underside, by a
+   * different amount on every floor of the school.
+   */
+  tileAnchor?: "xy" | "x";
   /** a MULTIPLY tint (near-white) — the value jitter of the no-metronome law */
   tint?: number;
   depth: number;
 }
+
+/**
+ * THE ONE PLACE the drawn scale of a tiled piece is decided — called by the
+ * renderer AND by the audits, because `mass.ts`'s own rule is that a check may
+ * never measure a model of the thing instead of the thing. Two copies of this
+ * arithmetic is how the shipped build and its green gates came to disagree.
+ */
+export const tileScaleFor = (p: MassPiece, src: { w: number; h: number }): { x: number; y: number } => {
+  const y = p.srcScale ?? (src.h > 0 ? p.h / src.h : 1);
+  return { x: p.srcScaleX ?? y, y };
+};
+
+/** Where the pattern is pinned, in SOURCE px (Phaser's `tilePosition`).
+ *  Each axis divides by ITS OWN scale — Phaser's offset is
+ *  `tilePosition mod sourceSize` per axis, so one shared divisor would slide a
+ *  non-uniform piece off its own anchor. */
+export const tileAnchorFor = (p: MassPiece, scale: { x: number; y: number }): { x: number; y: number } => ({
+  x: scale.x > 0 ? p.x / scale.x : 0,
+  y: p.tileAnchor === "x" || scale.y <= 0 ? 0 : p.y / scale.y,
+});
 
 const DEPTH = {
   body: 1, ramp: 1.5, crust: 2, trim: 2.2, cap: 2.3, platform: 2.5, slide: 2.6,
@@ -205,10 +420,25 @@ const gridSize = (grid: readonly string[]): { w: number; h: number } => ({
 /** mass = anything the player stands on or bumps into. Ice keeps its own dressing. */
 const isMass = (g: string): boolean => isSolid(g);
 
-/** How many contiguous mass cells sit directly above (0 = the exposed top). */
+/**
+ * How many contiguous mass cells sit directly above (0 = the exposed top).
+ *
+ * R5-W1 · A1: the walk STOPS at the grid's top edge. `glyphAt` reports
+ * everything outside the grid as solid (collide.ts — the world edge is a wall),
+ * so this loop used to run straight past row 0 and out into the void, hit its
+ * own guard and answer 64 — which the depth ramp reads as "buried deeper than
+ * anything", i.e. ink-dark sediment. Every phase's ceiling row is `#` full
+ * width, so the top of the world was drawn as a hard black bar: 64 cells in p1,
+ * 129 in p2, 36 of p4's 48 sediment cells, and ALL 44 of p9's. Those bars are
+ * most of what read as „schwarze Löcher dahinter".
+ *
+ * The same trap has been caught twice before in this file — the patina's spill
+ * check and the inner-corner probe both bounds-check for exactly this reason.
+ * This walk was the one that was missed.
+ */
 const depthAt = (grid: readonly string[], c: number, r: number): number => {
   let d = 0;
-  while (d < 64 && isMass(glyphAt(grid, c, r - 1 - d))) d++;
+  while (d < 64 && r - 1 - d >= 0 && isMass(glyphAt(grid, c, r - 1 - d))) d++;
   return d;
 };
 
@@ -682,6 +912,12 @@ export const planMass = (
     const s = srcSize?.(stem) ?? null;
     return s !== null && s.h > 0 ? s.w / s.h : 1;
   };
+  /** the course's own scale (it must fit CRUST_H exactly) and the interior's,
+   *  which is the same number stepped off the cell grid where it would land on it */
+  const crustScale = kit !== null ? paintScaleOf(kit, srcSize) : FALLBACK_PAINT_SCALE;
+  const paintScale = kit !== null ? bodyScaleOf(kit, srcSize) : FALLBACK_PAINT_SCALE;
+  /** source width of a stem's art, 0 when the art is not (yet) resolvable */
+  const srcW = (stem: string): number => srcSize?.(stem)?.w ?? 0;
 
   // ── 1 · floating platforms (they own their cells outright) ─────────────────
   if (kit !== null) {
@@ -708,8 +944,6 @@ export const planMass = (
   }
 
   // ── 2 · interior mass: body → fade → sediment, as seamless per-row runs ────
-  const interiorStem = (d: number): "body" | "fade" | "sediment" =>
-    d >= SEDIMENT_DEPTH ? "sediment" : d >= FADE_DEPTH ? "fade" : "body";
   for (let r = 0; r < h; r++) {
     let c = 0;
     while (c < w) {
@@ -720,13 +954,18 @@ export const planMass = (
         c++;
         continue;
       }
-      const band = interiorStem(depthAt(grid, c, r));
+      // A run now shares its DEPTH BUCKET, not merely its painted sheet: two
+      // cells of the same paper at different depths owe the room different
+      // amounts of light, and one tileSprite can only carry one tint. Past the
+      // ramp every depth buckets together, so a deep mass is still one piece.
+      const bucket = depthBucketAt(depthAt(grid, c, r));
+      const band = bandAt(bucket);
       let c1 = c;
       while (
         c1 + 1 < w
         && isMass(glyphAt(grid, c1 + 1, r))
         && !claimed.has(`${c1 + 1},${r}`)
-        && interiorStem(depthAt(grid, c1 + 1, r)) === band
+        && depthBucketAt(depthAt(grid, c1 + 1, r)) === bucket
       ) c1++;
       const variants = band === "body" ? kit.body : [band === "fade" ? kit.fade : kit.sediment];
       // …laid in SEGMENTS, like the course above it and on its own table, so the
@@ -740,7 +979,16 @@ export const planMass = (
         out.push({
           kind: band, stem, c: seg, r, x: seg * TILE, y: r * TILE,
           w: (segEnd - seg + 1) * TILE, h: TILE,
-          tile: true, tint: courseTintAt(c, r, k, 11), depth: DEPTH.body,
+          // the interior is a CONTINUUM: anchored on both axes, so the row below
+          // draws the next slice of the same painting instead of restamping it
+          tile: true, srcScale: paintScale, tileAnchor: "xy",
+          // ① the no-metronome value jitter, then ② the depth ramp on top of it.
+          // The order is a multiply either way; what matters is that ① SURVIVES
+          // — the five lights are what audit 6 counts as variety, and a ramp
+          // that replaced them instead of scaling them would turn a long floor
+          // back into wallpaper while looking, to the eye, like a fix.
+          tint: mixMultiply(courseTintAt(c, r, k, 11), depthTintAt(bucket)),
+          depth: DEPTH.body,
         });
         seg = segEnd + 1;
       }
@@ -764,6 +1012,9 @@ export const planMass = (
       out.push({
         kind: "crust", stem, c: seg, r, x: seg * TILE, y,
         w: (segEnd - seg + 1) * TILE, h: CRUST_H, tile: true,
+        // a COURSE, not a continuum: pinned horizontally so neighbouring
+        // segments stay seamless, and never vertically — see MassPiece.tileAnchor
+        srcScale: crustScale, tileAnchor: "x",
         tint: crustTintAt(c, r, k), depth: DEPTH.crust,
       });
       seg = segEnd + 1;
@@ -794,20 +1045,53 @@ export const planMass = (
       const airR = !isMass(glyphAt(grid, c + 1, r));
       const airD = !isMass(glyphAt(grid, c, r + 1));
       const airU = !isMass(glyphAt(grid, c, r - 1));
-      if (airL) out.push({ kind: "edgeL", stem: kit.edgeL, c, r, x: x - EDGE_OUT, y, w: EDGE_W, h: TILE, depth: DEPTH.trim });
-      if (airR) out.push({ kind: "edgeR", stem: kit.edgeR, c, r, x: x + TILE + EDGE_OUT - EDGE_W, y, w: EDGE_W, h: TILE, depth: DEPTH.trim });
-      if (airL && airD) out.push({ kind: "cornerBL", stem: kit.cornerBL, c, r, x: x - EDGE_OUT, y: y + TILE - CORNER + EDGE_OUT, w: CORNER, h: CORNER, depth: DEPTH.trim });
-      if (airR && airD) out.push({ kind: "cornerBR", stem: kit.cornerBR, c, r, x: x + TILE + EDGE_OUT - CORNER, y: y + TILE - CORNER + EDGE_OUT, w: CORNER, h: CORNER, depth: DEPTH.trim });
+      // R5-W1 · A1 · THE TRIMS BELONG TO THE MASS THEY TRIM.
+      //
+      // A trim used to be one stretched Image per cell: the 248×512 strip of cut
+      // page-edges squashed into an 8×16 box and stacked, so a four-cell shaft
+      // wall was four stamps with a joint at every cell (p2 places 117 of them),
+      // and it wore the room's full light at 71.5 % luminance against a 46.2 %
+      // body — a bright rail down the side of every mass, which is what the
+      // pale "rope columns" in Koki's screenshots are.
+      //
+      // The art is a TEXTURE, not a designed piece, so it tiles: laid at the
+      // painting's own vertical scale and anchored in world space, the joints
+      // stop existing and its page-edges come out the same physical size as the
+      // books beside them. And it takes the same depth light as the mass, so a
+      // trim six rows down is as deep as the paper it is carved into.
+      const trim = (stem: string): Partial<MassPiece> => ({
+        tile: true,
+        srcScale: paintScale,
+        srcScaleX: EDGE_W / Math.max(srcW(stem), 1),
+        tileAnchor: "xy",
+        tint: mixMultiply(TRIM_SHADE, depthTintAt(depthBucketAt(depthAt(grid, c, r)))),
+      });
+      const cornerTint = mixMultiply(TRIM_SHADE, depthTintAt(depthBucketAt(depthAt(grid, c, r))));
+      // THE ONE-CELL COLUMN (critic round 2, both final reviewers, independently:
+      // "reads as a flat translucent placeholder box", "an ivory baluster inserted
+      // NEXT TO a book stack, not grown from the same stuff").
+      //
+      // A trim is 8 px of a 16 px cell. On a column one cell wide BOTH faces are
+      // exposed, so the two trims tile the whole width and the book material they
+      // are supposed to be carved out of never appears at all — the pillar stops
+      // being terrain and becomes a bar. Narrowing them leaves a strip of the
+      // room's own paper down the middle, which is the whole read: an edge is a
+      // cut through matter, and you have to be able to see the matter.
+      const trimW = airL && airR ? EDGE_W * 0.55 : EDGE_W;
+      if (airL) out.push({ kind: "edgeL", stem: kit.edgeL, c, r, x: x - EDGE_OUT, y, w: trimW, h: TILE, ...trim(kit.edgeL), depth: DEPTH.trim });
+      if (airR) out.push({ kind: "edgeR", stem: kit.edgeR, c, r, x: x + TILE + EDGE_OUT - trimW, y, w: trimW, h: TILE, ...trim(kit.edgeR), depth: DEPTH.trim });
+      if (airL && airD) out.push({ kind: "cornerBL", stem: kit.cornerBL, c, r, x: x - EDGE_OUT, y: y + TILE - CORNER + EDGE_OUT, w: CORNER, h: CORNER, tint: cornerTint, depth: DEPTH.trim });
+      if (airR && airD) out.push({ kind: "cornerBR", stem: kit.cornerBR, c, r, x: x + TILE + EDGE_OUT - CORNER, y: y + TILE - CORNER + EDGE_OUT, w: CORNER, h: CORNER, tint: cornerTint, depth: DEPTH.trim });
       // inner corners: where a wall rises out of the floor beside this cell.
       // glyphAt reports OUTSIDE the grid as solid, so the diagonal probe has to
       // be bounds-checked or every ground run grows a phantom corner against
       // the world edge (seen in the p1 browser proof before this guard).
       const inGrid = (cc: number, rr: number): boolean => cc >= 0 && cc < w && rr >= 0 && rr < h;
       if (airU && inGrid(c - 1, r - 1) && isMass(glyphAt(grid, c - 1, r - 1))) {
-        out.push({ kind: "inCornerL", stem: kit.inCornerL, c, r, x, y: y - CORNER + EDGE_OUT, w: CORNER, h: CORNER, depth: DEPTH.trim });
+        out.push({ kind: "inCornerL", stem: kit.inCornerL, c, r, x, y: y - CORNER + EDGE_OUT, w: CORNER, h: CORNER, tint: cornerTint, depth: DEPTH.trim });
       }
       if (airU && inGrid(c + 1, r - 1) && isMass(glyphAt(grid, c + 1, r - 1))) {
-        out.push({ kind: "inCornerR", stem: kit.inCornerR, c, r, x: x + TILE - CORNER, y: y - CORNER + EDGE_OUT, w: CORNER, h: CORNER, depth: DEPTH.trim });
+        out.push({ kind: "inCornerR", stem: kit.inCornerR, c, r, x: x + TILE - CORNER, y: y - CORNER + EDGE_OUT, w: CORNER, h: CORNER, tint: cornerTint, depth: DEPTH.trim });
       }
     }
   }

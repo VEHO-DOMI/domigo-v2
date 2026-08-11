@@ -11,6 +11,19 @@
 //      paint.test.ts locks these; a change must be a deliberate, tested edit)
 //   T: ours to tune by feel (the feel-tune session diffs exactly these)
 
+/**
+ * Two MULTIPLY tints stacked — which is what a multiply IS, per channel.
+ *
+ * Lives here (and not in the scene, where it was born) because the pure terrain
+ * planner composes tints now, and the audits run that planner headlessly under
+ * node. A tint the planner cannot express is a tint no machine check can see.
+ */
+export const mixMultiply = (a: number, b: number): number => {
+  const ch = (shift: number): number =>
+    Math.round((((a >> shift) & 0xff) * ((b >> shift) & 0xff)) / 255) & 0xff;
+  return (ch(16) << 16) | (ch(8) << 8) | ch(0);
+};
+
 export const TILE = 16; // D: px per logic tile
 export const SUBS = 256; // D: subs per px (1/256-px accumulator)
 export const TICK_MS = 1000 / 60; // D: fixed 60Hz logic tick

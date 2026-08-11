@@ -439,6 +439,13 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       backgroundColor: "#f6ecd4",
       pixelArt: false,
       antialias: true,
+      // R5-W1 · A1: the painted mass sheets are 512² and are drawn minified.
+      // Without mipmaps WebGL takes ONE bilinear tap per screen pixel of an
+      // 11-book-row painting, so the same fixed alias noise is stamped over the
+      // whole floor — half of what read as "mechanical" was the filter, not the
+      // paint. All four mass sheets are power-of-two, which is what mipmapping
+      // requires. (F.3, adversarial design review.)
+      mipmapFilter: "LINEAR_MIPMAP_LINEAR",
       roundPixels: false,
       fps: { target: 60, min: 30 },
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
