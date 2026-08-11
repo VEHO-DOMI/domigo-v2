@@ -2055,3 +2055,67 @@ law · the desaturation law.
   `solveTask` routes a guardian through `guardianKnotSolved`, which does not call
   `applyLinks("redeemed")`. cage6 is not `hidden`, so nothing is lost today — but
   the link is dead code that reads as live design.
+
+---
+
+## R5-W1 · A1 (2026-08-11) — DER SCHNAPPSCHUSS-WEG: Screenshots kommen doch aus dem Preview-Browser
+
+Seit Build-D steht in dieser Datei (Zeilen 237, 430, 537), dass ein WebGL-Canvas
+ohne `preserveDrawingBuffer` schwarz zurückliest und Canvas-Sampling deshalb
+zuversichtliche Falschmeldungen produziert. **Das stimmt weiter** — und es hat
+seither jede Session daran gehindert, überhaupt ein Bild aus dem Preview-Panel
+zu bekommen. A1 brauchte Vorher/Nachher-Paare und hat einen Weg gefunden.
+
+**Warum es geht:** man liest den Canvas nicht zurück. Man lässt **Phaser den
+Frame selbst noch einmal malen** (`renderer.snapshot()` hängt sich in den
+nächsten Render und liefert ein fertiges `Image`), legt das Ergebnis als
+gewöhnliches `<img>` über die Seite — und **das** fotografiert das Panel
+zuverlässig, weil es DOM ist und kein GL-Kontext.
+
+Zwei Zusatzheilungen, ohne die es trotzdem nicht klappt:
+
+1. **Das Panel ist `document.visibilityState === "hidden"`**, also feuert `rAF`
+   nie und `rafStep()` allein rendert nicht zuverlässig. `game.step(t, dt)` mit
+   einer **selbst geführten, monoton wachsenden Uhr** aufrufen (`window.__clk`)
+   — die banked Warnung „Pump-Uhr monoton halten" gilt hier doppelt: ein frisches
+   `performance.now()` nach einem langen Lauf liegt HINTER der internen Uhr und
+   jeder spätere Schritt ist ein No-op.
+2. **Der Loader hängt bei ~96 %**: in einer Schleife `rafStep(30)` +
+   `s.load.checkLoadQueue()` über alle Szenen, dazwischen ~1 s yield (im
+   versteckten Panel ist `setTimeout` gedrosselt), **auf die Bedingung warten**
+   (`!load.isLoading() && scene.isActive()`), nie auf eine Tick-Zahl.
+
+```js
+// nach dem Pump-Tanz; liefert eine data:-URL des ECHTEN Frames
+const P = window.__domigoPaint, g = P.game;
+window.__clk = (window.__clk || performance.now()) + 500;
+for (let i = 0; i < 3; i++) { window.__clk += 16.67; g.step(window.__clk, 16.67); }
+const url = await new Promise((res) => {
+  g.renderer.snapshot((img) => res(img.src));
+  window.__clk += 16.67; g.step(window.__clk, 16.67);   // der Schnappschuss
+});                                                     // reitet auf DIESEM Render
+let el = document.getElementById('__snapshot') ?? document.body.appendChild(
+  Object.assign(document.createElement('img'), { id: '__snapshot' }));
+el.style.cssText = 'position:fixed;inset:0;width:100vw;height:auto;z-index:999999';
+el.src = url;   // …jetzt computer{action:"screenshot"}
+```
+
+**Aus dem Browser HERAUS auf die Platte** (die Kritiker brauchen Dateien, und
+1,7 MB base64 durch einen Tool-Call ist keine Option): ein winziger lokaler
+Node-Sink auf einem freien Port, an den die Seite die data-URL POSTet, der sie
+als PNG schreibt. Vorlage in diesem PR beschrieben; er hat die zehn
+Vorher/Nachher-Frames erzeugt, mit denen fünf blinde Kritiker MESSEN konnten
+statt zu meinen.
+
+**Vergleichbare Paare, ohne von Hand zu spielen:** dieselbe Kamerastelle
+deterministisch aus dem Gitter ableiten (A1 nahm „die tiefste Zelle, auf der das
+Kind stehen kann"), dann `warp(c, r)` + 60 Ticks + `solveTask()` falls eine Karte
+aufgeht. Vorher-Frames holt man, indem man die eigenen Änderungen kurz
+`git stash`t — der Spot-Finder liefert danach dieselben Zellen.
+
+**Zwei Fallen im eigenen Worktree:** `preview_start` liest die `launch.json` des
+SESSION-Arbeitsverzeichnisses (bei uns der iCloud-Ordner), nicht die des
+Worktrees — den eigenen Server dort eintragen, auf einem eigenen Port, sonst
+kollidieren parallele Wellen-Sessions auf :3000. Und `apps/web/.env.local` ist
+git-ignoriert, existiert im frischen Worktree also nicht: ohne `DEV_TEACHER_ID`
+ist die Lehrer-Tür zu und `?phase=` wird still ignoriert.
