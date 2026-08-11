@@ -23,6 +23,10 @@ import type { GameTaskV2 } from "@domigo/content-schema";
 import { gapLevelFor, renderGapHint } from "./hint.ts";
 import { QUICKFIRE_MS, focusPctFor } from "./overlay-css.ts";
 import { LETTER_LEAD_MS, LETTER_STAGGER_MS, lettersFor } from "./resolution.ts";
+import {
+  ActPlate, HelpFold, HintMark, Key, PictureMark, Plate, Quiet, WordMark,
+} from "./Glance.tsx";
+import { FOLD_START, actMarkFor, foldFor, foldToggled, hintRungsAt, keyLineOf } from "./glance.ts";
 
 /** Which side of the canvas a card sits on. PB-F1/F2-20: a card is always put
  *  DOWN AWAY from the being it talks about, because the boss card says „schau
@@ -54,7 +58,10 @@ export const cardBox: React.CSSProperties = { maxWidth: 460, width: "90%" };
  *  a stylesheet, so anything the skins still need to vary (a picked tile's
  *  colour) is set as `backgroundColor`, which leaves the paper grain intact. */
 export const cardBtn: React.CSSProperties = {
-  fontSize: 16, padding: "9px 16px", cursor: "pointer",
+  // R5-W1 · D1: a chip is a TARGET a six-year-old hits with a finger, and it
+  // carries the English word the card is teaching — so it is the second-biggest
+  // type on the card now, and 46 px tall (the touch floor the item asked for).
+  fontSize: 17, padding: "11px 18px", minHeight: 46, cursor: "pointer",
   fontFamily: "var(--font-label, inherit)", fontWeight: 600,
 };
 
@@ -90,22 +97,13 @@ export const ChalkClock = ({ ms }: { ms: number }): React.ReactElement => (
   </div>
 );
 
-/** PK-R6 · C · THE PORTRAIT SLOT (doc 44 §3.1.5). The being that is asking,
- *  painted, inside the card at 88–130 px in the book's own frame. `stem` is the
- *  card's declared art binding and `art` the level's only-present resolver, so
- *  a stem that has not landed yet simply yields nothing and the caller draws
- *  the text placeholder instead — the keen-art law, unchanged. */
-const Portrait = ({ url, altDe, wash = 0 }: { url: string; altDe: string; wash?: number }): React.ReactElement => (
-  <div className="pb-portrait">
-    {/* THE DESATURATION LAW, one layer up (doc 41 §2). A being OSWIN drained
-        renders GREY in the world until the child gives its colour back — so its
-        portrait must be exactly as grey. A full-colour face over a grey desk
-        would be the very defect the law was written for, in pixels instead of
-        words, and on a restore card it would hand step 2's answer away for
-        free. `wash` is the being's live wash alpha, read from the scene. */}
-    <img src={url} alt={altDe} style={wash > 0 ? { filter: `grayscale(${wash})` } : undefined} />
-  </div>
-);
+/** PK-R6 · C · THE PORTRAIT SLOT (doc 44 §3.1.5) — R5-W1 · D1 promoted it from
+ *  a slot to THE PLATE (cards/Glance.tsx): the picture a card leads with, and
+ *  the first thing a six-year-old can act on without reading. The desaturation
+ *  law rides along in `wash` (doc 41 §2): a being the ink drained renders GREY
+ *  in the world until the child gives its colour back, so its portrait must be
+ *  exactly as grey — a full-colour face over a grey desk would hand a restore
+ *  card's second step away for free. */
 
 /** PK-R6 · C · THE ANSWER COMES HOME (doc 44 §3.1.7). „Zurückgeholt!" over the
  *  child's own answer, flying in per character on the mined 55 ms stagger — or
@@ -368,7 +366,8 @@ const hasAnswer = (t: GameTaskV2): t is Extract<GameTaskV2, { kind: "typed" | "s
   t.kind === "typed" || t.kind === "spell";
 
 export function CardShell({
-  task, attempts, onDismiss, align = "center", clockMs, art, portraitWash, round, flight, doff = false, children,
+  task, attempts, onDismiss, align = "center", clockMs, art, portraitWash, round, flight, doff = false,
+  colourAskDe, actStep, children,
 }: {
   task: GameTaskV2;
   attempts: number;
@@ -386,10 +385,18 @@ export function CardShell({
   flight?: string | null;
   /** the restore-hold: the card steps out of the way so the world can be seen */
   doff?: boolean;
+  /** R5-W1 · D1: the restore card's SECOND question, while that half is open.
+   *  It comes from the machine state (CardHost holds it), because while the
+   *  colour step runs THAT is the line the child must read — the card's opening
+   *  ask has already been answered. */
+  colourAskDe?: string;
+  /** R5-W1 · D1: which half of a two-step card is open, so the act mark says
+   *  the verb the child is on rather than the one they finished. */
+  actStep?: string;
   children: React.ReactNode;
 }): React.ReactElement {
-  const showDesc = attempts >= 1 && task.hints?.deDesc;
-  const showWord = attempts >= 2 && task.hints?.deWord;
+  const showDesc = attempts >= 1 && task.hints?.deDesc !== undefined;
+  const showWord = attempts >= 2 && task.hints?.deWord !== undefined;
   // F18 gap ladder — only for single-string gap kinds, and only as high as the
   // kind's own face leaves room for (R3-10: a spell card already draws its
   // letter row; see gapLevelFor).
@@ -400,6 +407,28 @@ export function CardShell({
   const portrait = task.stimulus.type === "entity" && task.stimulus.art !== undefined
     ? art?.[task.stimulus.art]
     : undefined;
+  // an image stimulus names a painted piece too; it used to be drawn as its
+  // ALT TEXT beside an emoji frame, so the one card kind whose whole point is a
+  // picture was the one kind that showed none
+  const picture = task.stimulus.type === "image" ? art?.[task.stimulus.stem] : undefined;
+  const hasPlate = portrait !== undefined || picture !== undefined;
+
+  // ── R5-W1 · D1 · THE GLANCE GRAMMAR ────────────────────────────────────────
+  // plate → key → quiet → act → help. Which line is the KEY is decided in
+  // glance.ts, never here, so the rule is unit-tested and identical on every
+  // kind; no sentence is rewritten, only re-ranked.
+  const key = keyLineOf(task, colourAskDe);
+  const mark = actMarkFor(task.kind, actStep);
+  const rungs = hintRungsAt(task, attempts, gap !== "");
+  const [fold, setFold] = React.useState(FOLD_START);
+  // derived-state pattern: a rung that just landed opens the fold in the same
+  // render it appears in, so help a child has just earned is never hidden
+  if (rungs !== fold.shownRungs) setFold(foldFor(fold, rungs));
+  const helpRows = [
+    ...(gap !== "" ? [{ key: "gap", mark: <HintMark />, text: <span style={{ letterSpacing: 1, fontFamily: "var(--font-display, inherit)" }}>{gap}</span> }] : []),
+    ...(showDesc ? [{ key: "desc", mark: <HintMark />, text: task.hints!.deDesc }] : []),
+    ...(showWord ? [{ key: "word", mark: <WordMark />, text: task.hints!.deWord }] : []),
+  ];
 
   return (
     <div className={`pb-veil${doff ? " pb-doff" : ""}`} style={alignedWrap(align)}>
@@ -425,36 +454,44 @@ export function CardShell({
           </p>
         )}
 
-        {task.stimulus.type === "image" && (
-          <p style={{ fontSize: 13, color: "#8a7a58", margin: "0 0 6px", fontStyle: "italic" }}>🖼 {task.stimulus.altDe}</p>
-        )}
-        {task.stimulus.type === "entity" && (
-          <>
-            {portrait !== undefined && <Portrait url={portrait} altDe={task.stimulus.showsDe} wash={portraitWash} />}
-            {/* the fiction line stays either way: with a portrait it is the
-                caption under the face, without one it IS the face (the ✨ is
-                the placeholder's own mark, so it goes when the art arrives) */}
-            <p style={{ fontSize: 13, color: "#8a7a58", margin: "0 0 6px", fontStyle: "italic" }}>
-              {portrait === undefined ? "✨ " : ""}{task.stimulus.showsDe}
-            </p>
-          </>
-        )}
-        <p style={{ fontSize: 14, color: "#6b6250", margin: "0 0 6px" }}>{task.storyDe}</p>
-        {task.promptEn && (
-          <p style={{ fontSize: 20, fontWeight: 700, margin: "0 0 14px", fontFamily: "var(--font-display, inherit)" }}>
-            {task.promptEn}
-          </p>
+        {/* ZONE 1 · THE PLATE — a picture leads, always. A card with neither a
+            portrait nor a painted piece leads with its own act mark instead:
+            doc 44 §3.1 rules that a bare text card is not a legitimate card
+            surface, and „nothing yet" is the state art batches leave behind. */}
+        {portrait !== undefined ? (
+          <Plate url={portrait} altDe={task.stimulus.type === "entity" ? task.stimulus.showsDe : ""} wash={portraitWash} mark={mark} />
+        ) : picture !== undefined ? (
+          <Plate url={picture} altDe={task.stimulus.type === "image" ? task.stimulus.altDe : ""} mark={mark} />
+        ) : (
+          // no painted piece has landed for this asker: the verb becomes the
+          // plate, so the card still leads with a picture — and then it does
+          // NOT repeat as a badge beside the ask
+          <ActPlate mark={mark} />
         )}
 
+        {/* the caption belongs to the picture: what the child is looking at,
+            said once, quietly */}
+        {task.stimulus.type === "entity" && <Quiet italic>{task.stimulus.showsDe}</Quiet>}
+        {task.stimulus.type === "image" && picture === undefined && (
+          <Quiet italic><span style={{ display: "inline-flex", verticalAlign: "-0.2em", marginRight: 5 }}><PictureMark /></span>{task.stimulus.altDe}</Quiet>
+        )}
+
+        {/* ZONE 2 · THE ASK — the painted verb and the one marked line, as one
+            object. Where a card has an English ask, THAT is the marked line:
+            the lesson leads the card instead of hiding inside the buttons at
+            16 px, which is where Koki found it on the 11th. */}
+        <Key en={key.source === "en"}>{key.text}</Key>
+
+        {/* ZONE 3 · THE QUIET LAYER — the German that is not the ask. Kept, in
+            full, one step back: a first-reader needs it, but it stopped being
+            the loudest thing on the card. */}
+        {key.text !== task.storyDe && <Quiet>{task.storyDe}</Quiet>}
+
+        {/* ZONE 4 · THE ACT — the controls the verb just named */}
         {children}
 
-        {(gap || showDesc || showWord) && (
-          <p style={{ fontSize: 13, color: "#8a5a2b", margin: "12px 0 0", lineHeight: 1.5, fontFamily: "var(--font-label, inherit)" }}>
-            {gap && <><b style={{ letterSpacing: 1 }}>{gap}</b><br /></>}
-            {showDesc && <>💡 {task.hints!.deDesc}<br /></>}
-            {showWord && <>📖 {task.hints!.deWord}</>}
-          </p>
-        )}
+        {/* ZONE 5 · THE HELP — folded until the child earns a rung */}
+        <HelpFold open={fold.open} onToggle={() => setFold(foldToggled(fold))} rows={helpRows} />
 
         <button
           // the quiet way out: the same paper as every other chip, pressed flat

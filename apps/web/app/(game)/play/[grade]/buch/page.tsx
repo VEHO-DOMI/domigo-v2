@@ -17,10 +17,10 @@ export default async function BuchPage({
   searchParams,
 }: {
   params: Promise<{ grade: string }>;
-  searchParams: Promise<{ phase?: string; grid?: string; perf?: string }>;
+  searchParams: Promise<{ phase?: string; grid?: string; perf?: string; karten?: string }>;
 }) {
   const { grade: gradeStr } = await params;
-  const { phase, grid, perf } = await searchParams;
+  const { phase, grid, perf, karten } = await searchParams;
   if (gradeStr !== "1") redirect("/home");
   // pre-release gate with the teacher door (the run/world posture)
   const teacher = await getTeacherForPage();
@@ -62,6 +62,12 @@ export default async function BuchPage({
   const debugGrid = teacher !== null && grid === "1";
   // R5-W1 · E1: the measuring instrument, gated exactly like the grid door
   const debugPerf = teacher !== null && perf === "1";
+  // R5-W1 · D1: the card bench — a measuring instrument, not a surface of the
+  // game. Two locks, not one: the teacher door AND the build. It cannot be
+  // opened in a production build even by a teacher, because a bench that
+  // renders cards out of their fiction is exactly the thing a child must never
+  // be handed a link to.
+  const cardBench = teacher !== null && process.env.NODE_ENV !== "production" && karten !== undefined ? karten : undefined;
 
   return (
     <main style={{ padding: "12px 8px", background: "#f3ead6", minHeight: "100vh" }}>
@@ -74,6 +80,7 @@ export default async function BuchPage({
         startPhase={startPhase}
         debugGrid={debugGrid}
         debugPerf={debugPerf}
+        cardBench={cardBench}
       />
     </main>
   );

@@ -167,6 +167,14 @@ export function CardHost({
 
   if (beat === "cheer") return <Cheer align={align} />;
 
+  // R5-W1 · D1: the shell ranks the card's lines (glance.ts), and on a two-step
+  // card WHICH line is the ask changes with the step — so the step and its own
+  // question travel from the machine state, which is held here, to the shell.
+  const step = (state as { step?: string } | null)?.step;
+  const colourAskDe = task.kind === "restore" && step === "colour"
+    ? (state as { colourAskDe?: string }).colourAskDe
+    : undefined;
+
   return (
     <CardShell
       task={task}
@@ -179,6 +187,8 @@ export function CardHost({
       round={round}
       flight={beat === "letters" ? answerTextOf(task) : null}
       doff={beat === "hold"}
+      colourAskDe={colourAskDe}
+      actStep={step}
     >
       <Skin task={task} state={state} dispatch={dispatch} />
     </CardShell>
