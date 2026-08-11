@@ -276,7 +276,7 @@ export const PAINT_OVERLAY_CSS = `
   /* doc 42 §5 · B19: the three faces are already loaded app-wide — the overlays
      simply start using them (prompts → body, headlines → display, chips → label) */
   font-family: var(--font-body, system-ui, sans-serif);
-  background-color: #f7edd5;
+  background-color: #ffeec4;
   background-image:
     radial-gradient(120% 85% at 14% 4%, rgba(255,253,244,0.95), rgba(255,253,244,0) 58%),
     radial-gradient(85% 70% at 92% 98%, rgba(186,152,96,0.34), rgba(186,152,96,0) 62%),
@@ -288,15 +288,15 @@ export const PAINT_OVERLAY_CSS = `
        7 px read as squared exercise paper rather than as a sheet — caught in
        the render, which is why the render happens before the commit. */
     repeating-linear-gradient(97deg, rgba(146,114,64,0.035) 0 1px, rgba(146,114,64,0) 1px 23px);
-  border: 2px solid #b78d51;
+  border: 3.5px solid #8a5a2b;
   border-radius: 17px 23px 15px 21px / 21px 15px 23px 17px;
   box-shadow:
     /* the sheets under this one: the card is the top page of a book, not a
        rectangle in mid-air (blind critic on the exemplar) */
-    5px 6px 0 -2px rgba(247,237,213,0.92),
-    6px 7px 0 -1px rgba(150,116,64,0.5),
-    10px 12px 0 -4px rgba(247,237,213,0.8),
-    11px 13px 0 -3px rgba(150,116,64,0.34),
+    5px 6px 0 -2px rgba(255,238,196,0.95),
+    6px 7px 0 -1px rgba(138,90,43,0.55),
+    10px 12px 0 -4px rgba(255,238,196,0.85),
+    11px 13px 0 -3px rgba(138,90,43,0.4),
     0 12px 34px rgba(26,17,8,0.42),
     inset 0 0 0 1px rgba(255,251,238,0.7),
     inset 0 0 30px rgba(150,116,64,0.2);
@@ -328,7 +328,7 @@ export const PAINT_OVERLAY_CSS = `
   content: "";
   position: absolute;
   inset: 6px;
-  border: 1px solid rgba(140,106,58,0.4);
+  border: 2px solid rgba(138,90,43,0.5);
   border-radius: 13px 18px 11px 16px / 16px 11px 18px 13px;
   pointer-events: none;
 }
@@ -340,25 +340,43 @@ export const PAINT_OVERLAY_CSS = `
    that presses in under the finger. The inline styles that build these buttons
    keep only their LAYOUT, so this is the single place their look lives. */
 .pb-card button, .pb-card .pb-chip {
-  background-color: #fdf6e4;
+  background-color: #fff6d8;
   background-image:
     radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,0.9), rgba(255,255,255,0) 68%),
     radial-gradient(70% 60% at 84% 100%, rgba(176,142,88,0.16), rgba(176,142,88,0) 70%),
     repeating-linear-gradient(97deg, rgba(146,114,64,0.035) 0 1px, rgba(146,114,64,0) 1px 19px);
-  border: 1.5px solid #b78d51;
+  border: 2.5px solid #8a5a2b;
   border-radius: 11px 8px 12px 9px / 9px 12px 8px 11px;
   box-shadow:
-    0 2px 0 rgba(150,116,64,0.42),
+    0 3px 0 rgba(138,90,43,0.55),
     0 3px 9px rgba(40,28,12,0.16),
     inset 0 1px 0 rgba(255,253,244,0.9);
   color: #3d3122;
   transition: transform 90ms ease-out, box-shadow 90ms ease-out;
 }
 .pb-card button:active:not(:disabled) {
-  transform: translateY(2px);
-  box-shadow: 0 0 0 rgba(150,116,64,0.42), 0 1px 4px rgba(40,28,12,0.18), inset 0 1px 3px rgba(120,92,50,0.28);
+  /* the tilt rides along, or a pressed chip would snap square under the finger
+     (see THE CROOKED CHIPS below) */
+  transform: translateY(2px) rotate(var(--pb-tilt, 0deg));
+  box-shadow: 0 0 0 rgba(138,90,43,0.55), 0 1px 4px rgba(40,28,12,0.18), inset 0 1px 3px rgba(120,92,50,0.28);
 }
 .pb-card button:disabled { opacity: 0.55; box-shadow: inset 0 1px 4px rgba(120,92,50,0.24); }
+
+/* ── R5-W1 · D2 · THE CROOKED CHIPS (Kokis Tor G2: „Grad 1 mit schiefen Chips
+   aus Grad 2") ──────────────────────────────────────────────────────────────
+   Koki's own words for the look he wants: „it can be a bit messy — think of
+   naive design". So the ANSWER chips are laid on by hand: no two at the same
+   angle, none of them quite straight. It is deliberately only the answers —
+   the ceremony's own „Los geht's!" and „Weiter" stay square, because a page's
+   one forward step is not a scrap of paper somebody dropped on the desk.
+
+   The angle rides in a custom property rather than in the transform itself,
+   so pressing a chip can add its dip without straightening it out. */
+.pb-card [data-chips] > button { transform: rotate(var(--pb-tilt, 0deg)); }
+.pb-card [data-chips] > button:nth-child(4n+1) { --pb-tilt: -1.3deg; }
+.pb-card [data-chips] > button:nth-child(4n+2) { --pb-tilt: 1.1deg; }
+.pb-card [data-chips] > button:nth-child(4n+3) { --pb-tilt: 0.7deg; }
+.pb-card [data-chips] > button:nth-child(4n+4) { --pb-tilt: -0.8deg; }
 
 /* ── the ink thread from the card to the being it interrupts ───────────────
    PK-R6 · H1, finding 9. The panel may not move to the middle — PB-F1/F2-20
@@ -752,7 +770,7 @@ export const PAINT_OVERLAY_CSS = `
   position: relative;
   width: fit-content;
   max-width: 100%;
-  border: 2px solid #b78d51;
+  border: 3px solid #8a5a2b;
   border-radius: 15px 10px 16px 11px / 11px 16px 10px 15px;
   box-shadow: inset 0 2px 10px rgba(120,92,50,0.22), 0 3px 10px rgba(40,28,12,0.18);
   background-color: #fdf6e4;
@@ -760,6 +778,26 @@ export const PAINT_OVERLAY_CSS = `
   line-height: 0;
 }
 .pb-plate img { display: block; max-width: 100%; height: auto; }
+
+/* R5-W1 · D2 · THE SCENE CUT — the plate as a WINDOW into the room the child is
+   standing in, with the boy in it. The wash over the backdrop is what lets a
+   painted figure read against a painted room: without it the two compete at the
+   same value and the eye finds neither. */
+.pb-scene {
+  overflow: hidden;
+  line-height: 0;
+}
+.pb-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255,244,214,0.42), rgba(255,238,196,0.1) 45%, rgba(120,86,40,0.22)),
+    radial-gradient(120% 80% at 50% 108%, rgba(70,48,20,0.3), rgba(70,48,20,0) 62%);
+}
+/* the figures paint over the wash, never under it */
+.pb-scene > div { position: absolute; z-index: 1; }
 
 /* THE KEY — the ONE marked line on a card, and the only emphasis device in
    the whole overlay (cards/emphasis.test.ts holds that: bold and <strong> may
@@ -775,7 +813,7 @@ export const PAINT_OVERLAY_CSS = `
   font-weight: 800;
   font-size: 23px;
   line-height: 1.16;
-  color: #33291a;
+  color: #2a2114;
   text-wrap: balance;
 }
 /* the stroke: laid on by hand, so it is not quite level, thins at both ends
@@ -786,10 +824,10 @@ export const PAINT_OVERLAY_CSS = `
   left: 12%;
   right: 12%;
   bottom: 0;
-  height: 3px;
-  border-radius: 3px;
-  transform: rotate(-0.5deg);
-  background: linear-gradient(90deg, rgba(183,141,81,0), #b78d51 22%, #9a6a28 55%, rgba(154,106,40,0) 100%);
+  height: 5px;
+  border-radius: 5px;
+  transform: rotate(-0.7deg);
+  background: linear-gradient(90deg, rgba(200,110,40,0), #c86e28 22%, #8a5a2b 58%, rgba(138,90,43,0) 100%);
   pointer-events: none;
 }
 /* A LINE TOO LONG TO BE AN ASK leads without shouting: same face, less weight,
@@ -806,7 +844,7 @@ export const PAINT_OVERLAY_CSS = `
 
 /* the English ask carries the book's own accent, so the lesson is also the
    warmest thing on the card rather than the smallest */
-.pb-key-en { color: #6b4a12; }
+.pb-key-en { color: #a8541a; }
 
 /* the inline half of the device: the one word or number inside a line that
    carries it. No stroke — a stroke under a fragment mid-sentence reads as a
@@ -843,9 +881,9 @@ export const PAINT_OVERLAY_CSS = `
   color: #6f5a34;
   transform: rotate(-5deg);
   border-radius: 15px 12px 16px 13px / 13px 16px 12px 15px;
-  background-color: #f2e5c6;
+  background-color: #ffe1a4;
   background-image: radial-gradient(120% 100% at 26% 0%, rgba(255,255,255,0.9), rgba(255,255,255,0) 66%);
-  box-shadow: inset 0 0 0 2px rgba(183,141,81,0.8), 0 2px 6px rgba(40,28,12,0.24);
+  box-shadow: inset 0 0 0 2.5px rgba(138,90,43,0.9), 0 2px 7px rgba(40,28,12,0.3);
 }
 
 /* THE HELP FOLD — the hint ladder, folded until the child has earned a rung

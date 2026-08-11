@@ -55,7 +55,7 @@ const chipGrid = (n: number): React.CSSProperties => ({
 
 export function ChoiceCard({ state, dispatch }: { state: ChoiceState; dispatch: Dispatch<ChoiceAction> }): React.ReactElement {
   return (
-    <div style={chipGrid(state.options.length)}>
+    <div data-chips style={chipGrid(state.options.length)}>
       {state.options.map((opt) => (
         <button key={opt} style={{ ...cardBtn }} onClick={() => dispatch({ pick: opt })}>{opt}</button>
       ))}
@@ -106,7 +106,7 @@ export function SpellCard({ state, dispatch }: { state: SpellState; dispatch: Di
           <span key={i} style={{ ...slot, color: c !== null ? "#243048" : "#c9a36a" }}>{c !== null ? c.toUpperCase() : "_"}</span>
         ))}
       </div>
-      <div style={rowWrap}>
+      <div data-chips style={rowWrap}>
         {state.tray.map((c, i) => {
           const disabled = spellTrayDisabled(state, i);
           return (
@@ -138,7 +138,7 @@ export function OrderCard({ state, dispatch }: { state: OrderState; dispatch: Di
             : <span key={`w-${k}`} style={{ ...tile, cursor: "default", minHeight: 38, padding: "7px 13px" }}>{state.tray[i]}</span>;
         })}
       </div>
-      <div style={rowWrap}>
+      <div data-chips style={rowWrap}>
         {state.tray.map((c, i) => (
           <button key={i} disabled={state.seq.includes(i)} style={state.seq.includes(i) ? used : tile}
             onClick={() => dispatch({ tapTray: i })}>{c}</button>
@@ -161,7 +161,7 @@ export function OddCard({ state, dispatch }: { state: OddState; dispatch: Dispat
     state.select === "odd" ? dispatch([{ toggle: item }, { submit: true }]) : dispatch({ toggle: item });
   return (
     <div style={col}>
-      <div style={rowWrap}>
+      <div data-chips style={rowWrap}>
         {state.items.map((item) => (
           <button key={item} style={{ ...tile, backgroundColor: state.selected.includes(item) ? "#eddfb2" : undefined }}
             onClick={() => pick(item)}>{item}</button>
@@ -366,7 +366,7 @@ export function MistakeCard({ state, dispatch }: { state: MistakeState; dispatch
     return (
       <div style={col}>
         <div style={{ fontSize: 14, color: "#6b6250" }}>Womit ersetzt du es?</div>
-        <div style={rowWrap}>
+        <div data-chips style={rowWrap}>
           {state.correctionOptions.map((o) => (
             <button key={o} style={tile} onClick={() => dispatch({ pickFix: o })}>{o}</button>
           ))}
@@ -375,7 +375,7 @@ export function MistakeCard({ state, dispatch }: { state: MistakeState; dispatch
     );
   }
   return (
-    <div style={{ ...rowWrap, fontSize: 18 }}>
+    <div data-chips style={{ ...rowWrap, fontSize: 18 }}>
       {state.sentence.map((w, i) => (
         <button key={i} style={{ ...tile, textTransform: "none" }} onClick={() => dispatch({ tapWord: i })}>{w}</button>
       ))}
@@ -417,7 +417,7 @@ export function RestoreCard({ state, dispatch }: { state: RestoreState; dispatch
       </div>
 
       {!onColour && (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+        <div data-chips style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
           {state.nameOptions.map((o) => (
             <button key={o} style={{ ...cardBtn }} onClick={() => dispatch({ pickName: o })}>{o}</button>
           ))}
@@ -430,7 +430,7 @@ export function RestoreCard({ state, dispatch }: { state: RestoreState; dispatch
               (CardShell reads it from this state) — while this half is open it
               IS the ask, and an ask set in 15 px body type under the step dots
               was the exact line Koki's eye slid past on the 11th. */}
-          <div style={rowWrap}>
+          <div data-chips style={rowWrap}>
             {state.colourOptions.map((o) => (
               <button
                 key={o}
@@ -458,7 +458,7 @@ export function RestoreCard({ state, dispatch }: { state: RestoreState; dispatch
 export function MemoryCard({ state, dispatch }: { state: MemoryState; dispatch: Dispatch<MemoryAction> }): React.ReactElement {
   const faceUp = (i: number) => state.matched.includes(i) || state.up.includes(i);
   return (
-    <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(4, state.tray.length)}, 1fr)`, gap: 8 }}>
+    <div data-chips style={{ display: "grid", gridTemplateColumns: `repeat(${Math.min(4, state.tray.length)}, 1fr)`, gap: 8 }}>
       {state.tray.map((c, i) => {
         const done = state.matched.includes(i);
         return (

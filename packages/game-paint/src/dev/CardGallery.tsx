@@ -61,6 +61,17 @@ const SYNTHETIC_SPELL: GameTaskV2 = {
   hints: { deDesc: "Das Schreibgerät mit Tinte.", deWord: "a pen" },
 } as unknown as GameTaskV2;
 
+/** The bonus room's phrase, laid out the way the room lays it out: the first
+ *  `caught` letters inked, the rest left blank. Deterministic — the bench may
+ *  never draw a different card twice. */
+const phraseOf = (text: string, caught: number): { char: string; taken: boolean }[][] => {
+  let n = 0;
+  return text.split(" ").map((word) => [...word].map((char) => {
+    n += 1;
+    return { char, taken: n <= caught };
+  }));
+};
+
 /** one entry of the bench */
 interface Surface {
   id: string;
@@ -97,6 +108,7 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
         o={{ req: { use: "quickfire", ctx: { type: "ceremony", beat: "goal" } }, item: null, attempts: 0, typed: "", align: "center", ...o }}
         level={level}
         art={art}
+        phaseId="p1"
         onResolve={noop}
         onWorldChange={noop}
         onDismiss={noop}
@@ -165,11 +177,34 @@ export default function CardGallery({ level, art, tasks, Overlay, which }: Galle
     ceremony("grant", "Die Gabe", { card: "grant" }),
     ceremony("cagehint", "Käfig-Hinweis", { card: "cagehint" }),
     ceremony("bonuspay", "Kleckskammer-Tür", { card: "bonuspay", price: Number(doorEntity?.params?.price ?? 6) }),
-    ceremony("ceremony-merle", "Rettung · Merle", { card: "ceremony", ceremony: { skin: "merle", classmate: "merle", first: true } }),
-    ceremony("ceremony-wisp", "Rettung · Wesen", { card: "ceremony", ceremony: { skin: "wisp", first: false } }),
+    // R5-W1 · D2: the payload C1 ships, not the one the bench was still guessing.
+    // A blind critic read „Der Käfig springt auf — ist frei!" as a broken text
+    // interpolation in the GAME; it was the bench handing the panel a captive
+    // with no name (the old `classmate` field). The level law „cage-captive"
+    // makes that state unreachable in play — the bench had invented it.
+    ceremony("ceremony-merle", "Rettung · Klassenkind", {
+      card: "ceremony",
+      ceremony: { skin: "satchel", captiveDe: "Merle", person: true, first: true },
+    }, "Personen-Käfig — die Klassenkameradin"),
+    ceremony("ceremony-wisp", "Rettung · Ding", {
+      card: "ceremony",
+      ceremony: { skin: "satchel", captiveDe: "die Musikanlage", person: false, first: false },
+    }, "Objekt-Käfig — ch01 hält vier davon"),
     ceremony("console", "Trost-Karte", { card: "console", typed: "hello" }),
-    ceremony("bonusend-perfect", "Kleckskammer · perfekt", { card: "bonusend", bonusend: { got: 12, total: 12, timeout: false } }),
-    ceremony("bonusend-timeout", "Kleckskammer · Zeit aus", { card: "bonusend", bonusend: { got: 7, total: 12, timeout: true } }),
+    // R5-W1 · D2: the payload the SHIPPED card takes, not the one the bench
+    // once guessed. C1 gave this ceremony the room's own phrase and its leftover
+    // seconds; the bench kept handing it the old three fields and the panel
+    // simply stopped rendering — which is the bench failing loudly, exactly as
+    // it should. The phrase is built the way the room builds it: the letters
+    // this run caught are inked, the ones it missed stay blank.
+    ceremony("bonusend-perfect", "Kleckskammer · perfekt", {
+      card: "bonusend",
+      bonusend: { got: 12, total: 12, timeout: false, secsLeft: 14, phrase: phraseOf("SCHOOL THINGS", 12) },
+    }),
+    ceremony("bonusend-timeout", "Kleckskammer · Zeit aus", {
+      card: "bonusend",
+      bonusend: { got: 7, total: 12, timeout: true, secsLeft: 0, phrase: phraseOf("SCHOOL THINGS", 7) },
+    }),
   ];
 
   const one = surfaces.find((s) => s.id === which);

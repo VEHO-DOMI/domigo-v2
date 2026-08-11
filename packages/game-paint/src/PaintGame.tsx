@@ -21,7 +21,7 @@ import { answerTextOf } from "./cards/resolution.ts";
 import { InkWipe, PaintedCage, type CardAlign, alignedWrap } from "./cards/CardShell.tsx";
 import { PAINT_OVERLAY_CSS } from "./cards/overlay-css.ts";
 import { PaintedIcon, type PaintedIconName } from "./cards/PaintedIcons.tsx";
-import { CeremonyBurst, PaintedHero, useCeremonyClock } from "./cards/CeremonyStage.tsx";
+import { CeremonyBurst, PaintedHero, SceneCut, useCeremonyClock } from "./cards/CeremonyStage.tsx";
 import { COUNT_UP_STAGGER_MS, type PhraseSlot, countUpAt, countUpTotalMs, heroArtPresent, runCompletion } from "./cards/ceremony.ts";
 import { initRoute, nextTask, orderedTask, type RouteState, type ServeCtx } from "./cards/routing.ts";
 
@@ -954,7 +954,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         />
         {overlay && (
           <Overlay
-            o={overlay} level={level} art={art}
+            o={overlay} level={level} art={art} phaseId={phaseId}
             onResolve={resolveCorrect} onWorldChange={applyWorldChange} onDismiss={dismissCard} onPay={payBonus}
             letters={letters.got} bonusTotal={bonusLetterTotal(level)}
             bilanz={bilanz} hubHref={hubHref} onRestart={restart}
@@ -977,10 +977,13 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 // ── the overlay card ──────────────────────────────────────────────────────────
 
 function Overlay({
-  o, level, art, onResolve, onWorldChange, onDismiss, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
+  o, level, art, phaseId, onResolve, onWorldChange, onDismiss, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
 }: {
   o: OverlayState;
   level: PaintLevel;
+  /** R5-W1 · D2: WHICH ROOM the ceremony happens in — the scene cut looks
+   *  through the card at the phase's own painted layer, not at a stock one. */
+  phaseId: string;
   /** the level's only-present art map (stem → url): the card portraits and the
    *  goal card's painted title plate both read it */
   art: Record<string, string>;
@@ -1012,6 +1015,15 @@ function Overlay({
    *  · Every ceremony panel now comes through HERE. Six of them used to inline
    *    their own copy of this markup, which is how a fix like the one above
    *    lands on four cards out of ten and the critic finds the other six. */
+  /** R5-W1 · D2: the room this ceremony happens in, as the scene cut's window.
+   *  It is the phase's OWN far plate — A1 made each room one painted body, and
+   *  that plate is what the child is looking at while the card interrupts them.
+   *  (The first attempt reached for the old `l1_*` parallax layer and got a
+   *  blank strip of wall: those stems still exist, but they are no longer the
+   *  picture of the room. Found in the render, not in the types.) Falls back to
+   *  the first room's plate, and the cut falls back to nothing — keen-art law. */
+  const roomStem = allPhasesOf(level).find((p) => p.id === phaseId)?.plates?.far
+    ?? level.phases[0]?.plates?.far;
   const staged = (children: React.ReactNode, extraClass = ""): React.ReactElement => (
     <div className="pb-veil pb-veil-deep" style={wrap}>
       <InkWipe />
@@ -1236,10 +1248,17 @@ function Overlay({
             never picks up is worse than no picture, so it came straight back
             out. What the fist is for is a job for the world (F1's lane), not
             for a glyph on a panel. */}
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 8, margin: "0 0 8px" }}>
-          <PaintedIcon name="book" size={62} />
-          <PaintedIcon name="spark" size={30} />
-        </div>
+        {/* R5-W1 · D2: the gift happens IN the hall, with the boy already
+            charging the fist he has just been given. */}
+        <SceneCut
+          art={art}
+          backdrop={roomStem}
+          pose="charge"
+          subject={<span style={{ display: "inline-flex", alignItems: "flex-end", gap: 4, paddingBottom: 8 }}>
+            <PaintedIcon name="book" size={58} />
+            <PaintedIcon name="spark" size={26} />
+          </span>}
+        />
         {/* R5-C1: „Fibel schenkt dir die FAUST!" named a book-being the chapter
             never introduces (doc 45 C8) — and ch01 grants no fist at all since
             doc 44 §4 moved it to ch02, so nothing in the shipped game could ever
@@ -1274,7 +1293,10 @@ function Overlay({
     // too: „dann geht SIE auf" for der Käfig.)
     return staged(
       <>
-        <div style={{ display: "flex", justifyContent: "center", margin: "0 0 2px" }}><PaintedCage /></div>
+        {/* R5-W1 · D2: he is standing in front of the shut cage, which is the
+            whole instruction — stell dich davor. */}
+        <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={88} height={162}
+          subject={<PaintedCage size={104} />} />
         {/* Rebase-Merge: C1s Wortlaut (der genannte Insasse, „der Käfig") in
             D1s Rang — die Feststellung ist der Schlüssel, die Anleitung leise. */}
         <Key>Da steckt {o.cagehint?.captiveDe ?? "etwas"} fest!</Key>
@@ -1300,13 +1322,20 @@ function Overlay({
             the decision on this card, so it is drawn — the imp, the toll, and
             what the child is carrying — and the sentence Klecks says drops to
             the quiet layer where a quip belongs. */}
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 12, margin: "0 0 6px" }}>
-          <PaintedIcon name="blot" size={56} />
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
-            <PaintedIcon name="spark" size={30} />
-            <span className="pb-key-bit" style={{ fontSize: 28 }}>{price}</span>
-          </span>
-        </div>
+        {/* R5-W1 · D2: Klecks stands at his own door with the toll beside him,
+            and the boy stands opposite — a bargain has two sides. */}
+        <SceneCut
+          art={art}
+          backdrop={roomStem}
+          pose="stand"
+          subject={<span style={{ display: "inline-flex", alignItems: "flex-end", gap: 8, paddingBottom: 6 }}>
+            <PaintedIcon name="blot" size={54} />
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 4 }}>
+              <PaintedIcon name="spark" size={26} />
+              <span className="pb-key-bit" style={{ fontSize: 26 }}>{price}</span>
+            </span>
+          </span>}
+        />
         {/* the wording is untouched — copy is C1's lane; only its RANK moved */}
         <Key>Du hast {letters} <PaintedIcon name="spark" size={22} /> — {can ? "bezahlen?" : `sammle erst ${price}!`}</Key>
         <p className="pb-quiet" style={{ margin: "0 0 12px" }}>
@@ -1336,15 +1365,31 @@ function Overlay({
     const captiveDe = o.ceremony?.captiveDe ?? "";
     return staged(
       <>
-        <div style={{ display: "flex", justifyContent: "center", margin: "0 0 6px" }}>
-          {/* Rebase-Merge: D1s Größe (58 statt 38 — das Bild führt die Karte),
-              aber C1s Bedingung UND C1s Marke. `merle` gibt es nicht mehr; und
-              „wisp" wäre das Buchstaben-Wesen, das C1 gerade als erfunden aus
-              der Nicht-Personen-Zeile gestrichen hat (der Insasse ist eine
-              Musikanlage, ein Tablet, ein Stuhl). Ein Bild darf nicht behaupten,
-              was der Satz daneben zurücknimmt. */}
-          <PaintedIcon name={person ? "palette" : "spark"} size={58} />
-        </div>
+        {/* R5-W1 · D2: the rescue happens in the room it happened in, and the
+            boy is mid-cheer in it — this beat is the payoff of six rounds and
+            it was a 58 px glyph on parchment.
+            The MARK beside him keeps C1's condition and C1's choice: „wisp"
+            would be the letter-being C1 struck out of the non-person line (the
+            captive is a sound system, a tablet, a chair). A picture may not
+            claim what the sentence beside it takes back. */}
+        <SceneCut art={art} backdrop={roomStem} pose="jump"
+          subject={
+            // R5-W1 · D2 (blind critic: „the panel that is supposed to depict
+            // ‚a captive freed' shows no captive"): the freed one STANDS there
+            // now — its own painted cell, the same picture the child was just
+            // looking at in the world. The mark stays as the fallback for a
+            // skin whose cell has not landed (keen-art law).
+            o.ceremony !== undefined && art[`${o.ceremony.skin}_a`] !== undefined ? (
+              <img
+                src={art[`${o.ceremony.skin}_a`]}
+                alt=""
+                aria-hidden
+                style={{ height: 92, width: "auto", filter: "drop-shadow(0 7px 12px rgba(30,20,10,0.32))" }}
+              />
+            ) : (
+              <span style={{ paddingBottom: 10 }}><PaintedIcon name={person ? "palette" : "spark"} size={54} /></span>
+            )
+          } />
         {person ? (
           // PK-R6 · D: this beat comes at the END of the six rounds now, not at
           // the latch — so the copy says what the child just watched happen
@@ -1398,7 +1443,10 @@ function Overlay({
   if (o.card === "console") {
     return staged(
       <>
-        <div style={{ display: "flex", justifyContent: "center", margin: "0 0 6px" }}><PaintedIcon name="slate" size={60} /></div>
+        {/* R5-W1 · D2: he is at her board — the card points at it, so the card
+            had better show him standing there. */}
+        <SceneCut art={art} backdrop={roomStem} pose="stand"
+          subject={<span style={{ paddingBottom: 6 }}><PaintedIcon name="slate" size={58} /></span>} />
         {/* F2-24: the child WROTE the word on the finale card — this beat now
             answers that act instead of narrating it in their place */}
         <p className="pb-quiet" style={{ margin: "0 0 4px" }}>Niemand hat je etwas <em>Nettes</em> auf sie geschrieben.</p>
@@ -1432,8 +1480,19 @@ function Overlay({
             as plain prose"): both outcomes are now told the same way — the
             count is drawn, the sentence is quiet. A child who missed three
             letters gets the same care as one who missed none. */}
+        {/* R5-W1 · D2 · THE STICKER IS REAL NOW (DEBT D-20). The card said
+            „Klecks stempelt dir einen Sticker auf die Karte" and then showed a
+            code-drawn rosette — the painted `seal_sticker` had been sitting on
+            disk unwired since p9. A card that promises a thing and shows a
+            substitute is the letter-honesty law with a picture instead of a
+            number. It falls back to the rosette wherever the piece has not
+            landed (the keen-art law), so nothing breaks on a missing file. */}
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 12, margin: "0 0 6px" }}>
-          <PaintedIcon name={perfect ? "rosette" : "blot"} size={60} />
+          {perfect && art.seal_sticker !== undefined ? (
+            <img src={art.seal_sticker} alt="" aria-hidden style={{ height: 84, width: "auto", transform: "rotate(-7deg)" }} />
+          ) : (
+            <PaintedIcon name={perfect ? "rosette" : "blot"} size={60} />
+          )}
           <span style={{ display: "inline-flex", alignItems: "baseline", gap: 4 }}>
             <span className="pb-key-bit" style={{ fontSize: 34 }}>{b.got}</span>
             <span className="pb-quiet" style={{ margin: 0, fontSize: 17 }}>/ {b.total}</span>
