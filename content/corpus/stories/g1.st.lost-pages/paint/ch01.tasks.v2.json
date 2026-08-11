@@ -114,8 +114,7 @@
     "eraser"
    ],
    "phases": [
-    "p1",
-    "p3"
+    "p1"
    ],
    "hints": {
     "deDesc": "Damit machst du Bleistift-Striche weg.",
@@ -151,8 +150,7 @@
     "eraser"
    ],
    "phases": [
-    "p1",
-    "p3"
+    "p1"
    ],
    "hints": {
     "deDesc": "Er macht Bleistift-Striche weg.",
@@ -184,8 +182,7 @@
     "eraser"
    ],
    "phases": [
-    "p1",
-    "p3"
+    "p1"
    ],
    "hints": {
     "deDesc": "Worauf setzt du dich?"
@@ -930,7 +927,7 @@
     "moths"
    ],
    "phases": [
-    "p1"
+    "p2"
    ],
    "hints": {
     "deDesc": "Erst die Zwanzig, dann die Eins.",
@@ -982,7 +979,7 @@
     "moths"
    ],
    "phases": [
-    "p1"
+    "p2"
    ],
    "hints": {
     "deDesc": "Nicht vierzehn, nicht vierzig.",
@@ -2106,6 +2103,122 @@
     "deWord": "Auf Deutsch: der Spitzer — und Gelb."
    },
    "grounding": "u01 phrase: pencil sharpener + colour: yellow (obj_sharpener_a measures hue 43° over 63% of the body — a golden metal sharpener)"
+  },
+  {
+   "id": "g1.paint.ch01.rsc.soundsystem.r1",
+   "use": "rescue",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Der Käfig wackelt — drinnen glimmt der Lautsprecher",
+    "art": "satchel_shake"
+   },
+   "storyDe": "Sag, was gefangen ist — dann bekommt die Halle Musik!",
+   "promptEn": "What is it?",
+   "options": [
+    "It's a sound system",
+    "It's a school bag",
+    "It's a book"
+   ],
+   "answer": "It's a sound system",
+   "skins": [
+    "satchel"
+   ],
+   "phases": [
+    "p1"
+   ],
+   "hints": {
+    "deDesc": "Daraus kommt die Musik der Halle.",
+    "deWord": "Auf Deutsch: die Musikanlage."
+   },
+   "grounding": "u01 It's + school things (g1u01.s.its); sound system: g1-u01 wordbank (wordfile)"
+  },
+  {
+   "id": "g1.paint.ch01.rsc.tablet.r1",
+   "use": "rescue",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Im Regal-Winkel glimmt ein flacher Bildschirm",
+    "art": "satchel_shake"
+   },
+   "storyDe": "Sag, was da drin ist — dann reißt das Geflecht auf!",
+   "promptEn": "What is it?",
+   "answer": "It's a tablet",
+   "skins": [
+    "satchel"
+   ],
+   "phases": [
+    "p2"
+   ],
+   "hints": {
+    "deDesc": "Der flache Klassen-Computer mit dem hellen Bildschirm.",
+    "deWord": "Auf Deutsch: das Tablet."
+   },
+   "grounding": "u01 It's + school things; tablet: g1-u01 wordbank (wordfile) — Dossier-Wunsch spell weicht der ch01-Palette [doc 41 §1], als Abweichung gefiled (P2-Paket)",
+   "options": [
+    "It's a tablet",
+    "It's a book",
+    "It's a ruler"
+   ]
+  },
+  {
+   "id": "g1.paint.ch01.rsc.chair.r1",
+   "use": "rescue",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Hinter den Gittern sitzt still ein grauer Stuhl",
+    "art": "satchel_shake"
+   },
+   "storyDe": "Sag, was du siehst — dann springt der Käfig auf!",
+   "promptEn": "What is it?",
+   "options": [
+    "It's a chair",
+    "It's a desk",
+    "It's a school bag"
+   ],
+   "answer": "It's a chair",
+   "skins": [
+    "satchel"
+   ],
+   "phases": [
+    "p3"
+   ],
+   "hints": {
+    "deDesc": "Darauf sitzt du in der Klasse.",
+    "deWord": "Auf Deutsch: der Stuhl."
+   },
+   "grounding": "u01 It's + classroom things; chair: g1-u01 wordbank (wordfile) — obj_chair-Bild wartet auf den B20-Picker (★ Koki-Tor, Portrait-Gesetz)"
+  },
+  {
+   "id": "g1.paint.ch01.rsc.picture.r1",
+   "use": "rescue",
+   "kind": "choice",
+   "stimulus": {
+    "type": "entity",
+    "showsDe": "Im Käfig hängt das Klassenfoto — ganz grau",
+    "art": "satchel_shake"
+   },
+   "storyDe": "Sag, was da hängt — dann kommt die Farbe zurück!",
+   "promptEn": "What is it?",
+   "options": [
+    "It's a picture",
+    "It's a window",
+    "It's a door"
+   ],
+   "answer": "It's a picture",
+   "skins": [
+    "satchel"
+   ],
+   "phases": [
+    "p4"
+   ],
+   "hints": {
+    "deDesc": "Ein Bild von der ganzen Klasse an der Wand.",
+    "deWord": "Auf Deutsch: das Bild."
+   },
+   "grounding": "u01 It's; picture: g1-u01 wordbank (phrase) — Bild-Zelle obj_picture = D-21, Platzhalter-Art deklariert"
   }
  ]
 }

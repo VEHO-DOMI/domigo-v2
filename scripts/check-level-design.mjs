@@ -85,21 +85,48 @@ for (const ph of phases) {
   const dp = path.join(DOSSIERS, df);
   if (!fs.existsSync(dp)) { fails.push(`manifest: ${df} fehlt für Phase ${ph.id}`); continue; }
   const text = fs.readFileSync(dp, "utf8");
-  // Manifest-Zeilen: | <id> | ... | **(c,r)** ... — id in Spalte 1, erster (c,r)-Anker in Spalte 3
+  // Manifest-Zeilen: | <id> | <Was> | <Anker> | … — id aus Spalte 1, die
+  // (c,r)-Anker aus der ANKER-Spalte (Spalte 3; die Was-Spalte nennt oft
+  // fremde Zellen wie den Exit-Glyph). Sammelzeilen "name-1/2/3" tragen ihre
+  // Anker in Reihenfolge in derselben Zelle.
   const anchors = new Map();
   for (const line of text.split("\n")) {
-    const m = line.match(/^\|\s*([a-z0-9-]+)\s*\|.*?\(\s*(\d+)\s*,\s*(\d+)\s*\)/i);
-    if (m && m[1].includes("-")) anchors.set(m[1], { c: Number(m[2]), r: Number(m[3]) });
+    const cells = line.split("|");
+    if (cells.length < 4) continue;
+    const idm = (cells[1] ?? "").trim().match(/^([a-z0-9-]+(?:\/\d+)*)/i);
+    if (!idm || !idm[1].includes("-")) continue;
+    const pairs = [...(cells[3] ?? "").matchAll(/\(\s*(\d+)\s*,\s*(\d+)\s*\)/g)]
+      .map((m) => ({ c: Number(m[1]), r: Number(m[2]) }));
+    if (pairs.length === 0) continue;
+    const multi = idm[1].match(/^([a-z0-9-]+-)(\d+)((?:\/\d+)+)$/i);
+    if (multi) {
+      const nums = [multi[2], ...multi[3].split("/").filter(Boolean)];
+      nums.forEach((n, i) => { if (pairs[i]) anchors.set(`${multi[1]}${n}`, pairs[i]); });
+    } else {
+      anchors.set(idm[1], pairs[0]);
+    }
   }
   for (const e of ph.entities) {
     const a = anchors.get(e.id);
-    if (!a) { fails.push(`manifest: ${ph.id}/${e.id} hat keine Manifest-Zeile mit Anker in ${df} (B11)`); continue; }
+    if (!a) {
+      // Zweit-Träger einer fremden Zeile (z. B. »merle hidden (65,13)« in der
+      // Käfig-Zeile) oder ein §10-Eintrag außerhalb der Tabelle (tafel):
+      // genügt, wenn IRGENDEINE Dossier-Zeile id UND exakten Anker trägt.
+      const carried = text.split("\n").some((l) => l.includes(e.id) && l.includes(`(${e.c},${e.r})`));
+      if (!carried) fails.push(`manifest: ${ph.id}/${e.id} hat keine Manifest-Zeile mit Anker in ${df} (B11)`);
+      continue;
+    }
     if (a.c !== e.c || a.r !== e.r) {
       fails.push(`manifest: ${ph.id}/${e.id} Anker (${a.c},${a.r}) ≠ Level (${e.c},${e.r}) (B11)`);
     }
   }
-  for (const [id] of anchors) {
-    if (!ph.entities.some((e) => e.id === id)) fails.push(`manifest: ${df}-Zeile "${id}" existiert nicht im Level (B11)`);
+  for (const [id, a] of anchors) {
+    if (ph.entities.some((e) => e.id === id)) continue;
+    // Glyph-Zeilen (Krakel-Checkpoint, Exit): der Anker muss im Grid als
+    // Marker-Glyph stehen — verifiziert, nicht verziehen.
+    const glyph = ph.rows[a.r]?.[a.c] ?? ".";
+    if ("SCXB*".includes(glyph)) continue;
+    fails.push(`manifest: ${df}-Zeile "${id}" existiert nicht im Level (B11)`);
   }
 }
 

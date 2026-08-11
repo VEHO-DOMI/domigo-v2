@@ -102,7 +102,11 @@ describe("the letter magnet (R3-16, doc 42 §4)", () => {
     // the real one was 26.5, i.e. just outside the field, and called the magnet
     // broken. So the LETTER is moved to the wanted gap from where the child
     // actually ends up, and only then does the clock start.
+    for (let t = 0; t < 120 && !sim.player.grounded; t++) {
+      for (const ev of sim.step({ ...IDLE_PAD })) if (ev.type === "tip" || ev.type === "cageHint") sim.setOverlay(false);
+    }
     sim.step({ ...IDLE_PAD });
+    expect(sim.player.grounded, "harness: the child must settle onto ground before measuring").toBe(true);
     expect(sim.letterCells.has(key), "harness: the letter was taken during setup").toBe(true);
     const anchorX = sim.player.x;
     const anchorY = sim.player.y - 10 * SUBS; // the chest, per COLLECT_ANCHOR_PX
@@ -110,7 +114,7 @@ describe("the letter magnet (R3-16, doc 42 §4)", () => {
     sim.letterPos.set(key, { ...start });
     for (let t = 0; t < ticks; t++) {
       sim.player = { ...sim.player, x: anchorX, vx: 0 }; // the child holds still
-      sim.step({ ...IDLE_PAD });
+      for (const ev of sim.step({ ...IDLE_PAD })) if (ev.type === "tip" || ev.type === "cageHint") sim.setOverlay(false);
     }
     return { sim, key, start, now: sim.letterPos.get(key) ?? null };
   };
@@ -263,12 +267,12 @@ it("the chapter's letter total is the three phases plus the arena, never the Kle
   const main = [...level.phases, ...(level.arena ? [level.arena] : [])]
     .reduce((n, p) => n + p.rows.join("").split("*").length - 1, 0);
   const bonus = level.bonus ? level.bonus.rows.join("").split("*").length - 1 : 0;
-  // PK-R6 · B: 23 → 32. The R4 density clause (doc 44 §2.7) scatters
-  // collectibles GENEROUSLY along the intended line of play, and ch01's trails
-  // now spell the drained objects they lead to: SCHOOLBAGBOOK (13) · DESKPENCIL
-  // (10) · GLUESTICK (9). The number is asserted rather than derived on purpose
-  // — it is the one place a silent re-scatter would show up.
-  expect(main).toBe(32);
+  // R5-P1 (ch01-dossiers-v2, B21): 32 → 27. Jeder Trail IST jetzt ein Wort in
+  // Läufen zu je 3: SCHOOLBAG (9) · PROJECTOR (9) · GLUESTICK (9); die Arena
+  // trägt keine Buchstaben (ihr Dossier: der Kampf zahlt anders). The number is
+  // asserted rather than derived on purpose — it is the one place a silent
+  // re-scatter would show up.
+  expect(main).toBe(27);
   expect(bonus).toBeGreaterThan(0);
   expect(main).not.toBe(main + bonus);
 });
@@ -292,8 +296,8 @@ describe("R5-A2 · spawnCell + letterLedger (the bonus trip loses nothing)", () 
     // live run A: collect two letters on the real p1, pay Klecks one
     const a = newSim("p1");
     const taken: string[] = [];
-    collectAt(a, 7, 16, taken);
-    collectAt(a, 38, 16, taken);
+    collectAt(a, 11, 14, taken);
+    collectAt(a, 46, 16, taken);
     expect(a.spendLetters(1)).toBe(true);
     expect(a.lettersGot).toBe(1);
     expect(a.lettersCollected).toBe(2); // found is monotone — paying un-finds nothing
@@ -304,10 +308,10 @@ describe("R5-A2 · spawnCell + letterLedger (the bonus trip loses nothing)", () 
       level, phaseId: "p1",
       grantedAbilities: () => [...level.abilities],
       freedCageIds: () => [],
-      spawnCell: { c: 7, r: 16 },
+      spawnCell: { c: 11, r: 14 },
       letterLedger: () => ({ takenCells: taken, purse: a.lettersGot, found: a.lettersCollected }),
     });
-    expect(b.player.x).toBe((7 * TILE + TILE / 2) * SUBS); // the door, not the S
+    expect(b.player.x).toBe((11 * TILE + TILE / 2) * SUBS); // the spawnCell, not the S
     expect(b.lettersGot).toBe(1);
     expect(b.lettersCollected).toBe(2);
     expect(b.lettersTotal).toBe(a.lettersTotal); // consumed cells still COUNT

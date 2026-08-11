@@ -873,16 +873,23 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
         const c = parts[0] ?? 0;
         const r = parts[1] ?? 0;
         if (!standable(ph.rows, c, r)) continue;
-        // R5-P1 · ink is its own exit path: contact with "w" warps the child
-        // to the checkpoint (sim.ts hazard handling), so a node standing in
-        // or on ink can never strand anyone. Glyph-precise on purpose —
-        // spikes "^" do NOT warp and stay subject to this law.
-        if (glyphAt(ph.rows, c, r) === "w" || glyphAt(ph.rows, c, r + 1) === "w") continue;
         const sub = reachFrom(ph.rows, level.abilities, { c, r }, ph.entities);
         let exitOk = false;
         for (let dr = -1; dr <= 3 && !exitOk; dr++) {
           for (let d = -1; d <= 1 && !exitOk; d++) {
             if (sub.has(`${exitCell.c + d},${exitCell.r + dr}`)) exitOk = true;
+          }
+        }
+        // R5-P1 · ink is its own exit path: contact with "w" warps the child
+        // to the checkpoint (sim.ts hazard handling), so a pocket whose
+        // sub-reach TOUCHES ink can never strand anyone — the p3 basin
+        // (standing in ink) and the p1 Keller (ink one step east, the
+        // declared "Teich" reading) are one class. Glyph-precise on
+        // purpose — spikes "^" do NOT warp and stay subject to this law.
+        if (!exitOk) {
+          for (const k2 of sub) {
+            const [c2, r2] = k2.split(",").map(Number) as [number, number];
+            if (glyphAt(ph.rows, c2, r2) === "w" || glyphAt(ph.rows, c2, r2 + 1) === "w") { exitOk = true; break; }
           }
         }
         if (!exitOk) {

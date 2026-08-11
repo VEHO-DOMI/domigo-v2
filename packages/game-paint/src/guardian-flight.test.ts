@@ -19,6 +19,7 @@ import {
   CHALK_FLIGHT_TICKS,
   DODGES_PER_WINDOW,
   FLIGHT_BAND_PX,
+  KNOT_SPAN_PX,
   GUARDIAN_SCRIPT,
   KNOT_PERIOD_TICKS,
   SHARD_TICKS,
@@ -257,6 +258,31 @@ describe("her whole body stays in the visible band (readable = seeable)", () => 
         expect(feet, `knot ${i + 1} tick ${t}: her feet are below the view`).toBeLessThanOrEqual(seenBottom);
         // …and she never flies into the floor she is fighting over
         expect(feet, `knot ${i + 1} tick ${t}: she is inside the boards`).toBeLessThan(floorRow * TILE);
+      }
+    }
+  });
+
+  it("R5-P1 · die Buehnen-Klammer haelt jede Bahn horizontal im Sieg-freien Frame (A3-Schluss)", () => {
+    // arena.md §10 Vorleistung 3: Tafel-x bleibt unter stageClamp c5–30 —
+    // Westkante ≥ x80 (Auftritt-Ruhe), Ostkante ≤ x496 (Sieg-Trakt mit Käfig
+    // #5 und ✕ wird nie überflogen). Gespiegelt zur Vertikal-Probe: die
+    // EXTREM-Zentren (loC/hiC, entities.ts-Herleitung) fliegen jede Bahn
+    // komplett; ein Amplituden-Drift über KNOT_SPAN_PX bricht hier rot.
+    const level = JSON.parse(fs.readFileSync(levelPath, "utf8")) as PaintLevel;
+    const g = level.arena!.entities.find((e) => e.role === "guardian")!;
+    expect(g.params?.stageMinC, "das Level traegt die Buehnen-Klammer (West)").toBe(5);
+    expect(g.params?.stageMaxC, "das Level traegt die Buehnen-Klammer (Ost)").toBe(30);
+    const stageMinPx = Number(g.params!.stageMinC) * TILE;
+    const stageMaxPx = (Number(g.params!.stageMaxC) + 1) * TILE;
+    for (const [ki, knots] of ([[0, 3], [1, 3], [2, 3]] as const).entries()) {
+      const span = KNOT_SPAN_PX[ki]!;
+      const period = KNOT_PERIOD_TICKS[ki]!;
+      for (const centreX of [(stageMinPx + span) * SUBS, (stageMaxPx - span) * SUBS]) {
+        for (let t = 0; t <= period; t++) {
+          const x = flightPointAt(centreX, 0, 3 - ki, knots[1], t).x / SUBS;
+          expect(x, `Bahn ${ki + 1} tick ${t}: westlich der Buehne`).toBeGreaterThanOrEqual(stageMinPx);
+          expect(x, `Bahn ${ki + 1} tick ${t}: im Sieg-Trakt`).toBeLessThanOrEqual(stageMaxPx);
+        }
       }
     }
   });

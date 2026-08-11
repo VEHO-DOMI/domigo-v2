@@ -650,13 +650,18 @@ describe("PB-T2 · envelope law (derived from stepPlayer)", () => {
       "######......########",
       "######......########",
       "######......########",
-      `######${floor.repeat(6)}########`,
+      `######${floor}########`,
       "####################",
     ];
-    const inky = parsePaintLevel(level(basin("w")));
+    const inky = parsePaintLevel(level(basin("wwwwww")));
     expect(checkLevelLaws(inky).filter((f) => f.law === "trap-pocket"),
       "Tinten-Boden ist kein Softlock — die Tinte warpt zurück").toEqual([]);
-    const solid = parsePaintLevel(level(basin("#")));
+    const solid = parsePaintLevel(level(basin("######")));
     expect(checkLevelLaws(solid).some((f) => f.law === "trap-pocket"),
       "solider Becken-Boden bleibt Softlock").toBe(true);
+    // die p1-Keller-Klasse: solider Boden, aber Tinte IM Becken erreichbar —
+    // ein Schritt hinein warpt zum Checkpoint, niemand strandet
+    const kellerly = parsePaintLevel(level(basin("####ww")));
+    expect(checkLevelLaws(kellerly).filter((f) => f.law === "trap-pocket"),
+      "Becken mit erreichbarer Tinte ist kein Softlock").toEqual([]);
   });
