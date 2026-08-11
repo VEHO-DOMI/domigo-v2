@@ -11,7 +11,7 @@ Tap-Apex 50 / Halte-Apex 101 px · JUMP_UP 4 · Magnet 25,6 px.
 - **G9 überschreibt doc 44 §4-ch01:** Rad = Zahlen 1–20, Tap-Lock (nicht »1–25
   auto-lock«) — ein SPEZIFISCH Koki-gegatetes Ruling (2026-07-23) schlägt die
   mitgeschleppte Master-Plan-Zeile; doc 44 hat G9 nie explizit widerrufen.
-- **G12-Artenliste gilt** (choice·wheel·spell·order·oddone·memory·typed für ch01).
+- **G12-Artenliste gilt** (choice·wheel·spell·order·oddone·memory·typed für ch01). **KLÄRUNG (Kritiker-Fund): der shipped Boss-Pool nutzt zusätzlich `mistake` (×2)** — entweder Liste um mistake ergänzen (Empfehlung; die Maschine existiert und ist getestet) oder Pool in P4 umbauen. PR-Nick.
 - **★ KOKI-TOR (gemeinsam mit dem restoreRoom-Override) · B20-Delta:** doc 44
   formuliert den Kontraktions-Picker über ein restauriertes Objekt; v2 nutzt ihn als
   Befreiungs-Karte des gekäfigten Stuhls (obj_chair-Bild) — gleiche Änderungsklasse
@@ -33,7 +33,7 @@ Tap-Apex 50 / Halte-Apex 101 px · JUMP_UP 4 · Magnet 25,6 px.
 | 2 | p2 | satchel | (Welle definiert) | Welle |
 | 3 | p2 | pencilcase (PERSON) | MERLE | Bestand ✓ |
 | 4 | p3 | satchel | DER STUHL (B20) | v2.2 ✓ |
-| 5 | arena | satchel | (Welle definiert, hinter der Bühne) | Welle |
+| 5 | arena | satchel | DAS KLASSENFOTO (picture, B20-Karte; obj_picture → D-21) | v2.1 ✓ |
 Summe v2 = 5 (statt doc-44-„7") — Dichte-Entscheid der Neuableitung, im PR sichtbar.
 
 ## §Abdeckung — die Vokabel-Vergabe des Kapitels (B8; Maschinen-Check = P1-PAKET, Task 15 — bis dahin Hand-geprüft)
@@ -66,7 +66,11 @@ Raum-Trennung. Vergabe v2:
 | school bag (2./3. Rolle) | Schaukel + Stampfer | p3 | ✓ (Farb-Trennung D-14) |
 | board | DIE FLIEGENDE TAFEL (Guardian) | p4 | ✓ |
 | door / window | Welt-Architektur (Türen-Serie G11 / p2-Fenster-Ein-und-Ausstieg) | überall | ✓ |
-| tablet · projector · sound system · (Kleidungs-Neun) | NUR Karten-Ebene (keine Wesen-Kunst; Kleidung = u08-Kapitel) | tasks | — (Kandidaten Codex-Folgebatch) |
+| **picture** (wordbank g1u01.w.picture) | Käfig-#5-Insasse (Arena, B20-Karte) | p4 | obj_picture **D-21** |
+| **sound system** | Käfig-#1-Insasse (Empfehlung, B20-Klasse — PR-Nick) | p1 | Wesen **D-18** |
+| **tablet** | Käfig-#2-Insasse (Empfehlung — PR-Nick) | p2 | Wesen **D-19** |
+| projector | Fiktions-Träger (projiziert die Schwarm-Zahlen; Trail-Wort PROJECTOR) | p2 | Turm-Kunst **D-19** |
+| (Kleidungs-Neun) | NUR Karten-Ebene (u08-Kapitel) | tasks | — |
 
 **restoreRoom-OVERRIDE (doc 44 §4 C1, hiermit ausgesprochen):** Die Keen-Sechs
 (desk, school bag, door, board, window, chair) werden NICHT 1:1 restauriert. ch01-v2
@@ -98,7 +102,13 @@ Ausnahme als EIN Set-Piece). Trails = Sätze (Läufe 3er), Wort pro Phase aus de
 
 p1 = »to be« · p2 = »Begrüßen/Verabschieden« · p3 = »Zahlen 1–20« (Bestand bestätigt).
 
-## Status
+## Status (2026-08-11)
 
-p3 v2.3: Arithmetik-Verifikation nach 3 Kritiker-Runden (Konzept 3× PASS-würdig) ·
-p1/p2/p9/arena: Welle nach p3-PASS (dieses README ist Teil des Welle-Briefings).
+ALLE FÜNF DOSSIERS GEGATED: p3 v2.4 (4 Runden: 3× Konzept-PASS + Arithmetik-Liste) ·
+p1/p2/p9/arena v2.1 (Welle + je 2 Kritiker + Fix-Welle nach deren Rezepten; p2 nach
+2 Netz-Toden per Takeover). Bekannte Rest-Hygiene für den Grid-Schnitt-Pass:
+Debt-NUMMERN-Querverweise in p9/arena teils gegen die Register-Vergabe gedriftet
+(Register D-1…D-22 ist kanonisch) · deklarierte P1-Engine-Vorleistungen: reachFrom-
+Sweep-Knoten (p3) · patrolMinC/MaxC (p1) · stageClamp + Käfig-Gate + Horizontal-
+Assertion (arena) · composition words p9 · KEINE Sweep-Knoten für p2 (gestrichen,
+Prüf-Zeile stattdessen).
