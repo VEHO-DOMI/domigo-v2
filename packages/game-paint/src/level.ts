@@ -296,6 +296,11 @@ export const standable = (grid: Grid, c: number, r: number): boolean =>
  *  over a 16px tile). Used by the trap-pocket law to tell "a hazard you are IN"
  *  (the warp fires by itself; nobody is stuck) from "a hazard you must CHOOSE"
  *  (a dry pocket — a softlock unless the phase declares the dive). */
+/** B1 · How far past the far bank a checkpoint may sit. "Retry sits next to the
+ *  challenge" (cookbook §8.6) — 4 columns is well inside the 22-column
+ *  viewport, so the child can SEE the anchor from the landing. */
+export const CHECKPOINT_AFTER_MAX = 4;
+
 export const submerged = (grid: Grid, c: number, r: number): boolean =>
   glyphAt(grid, c, r) === "w" || glyphAt(grid, c, r - 1) === "w";
 
@@ -839,6 +844,91 @@ export const checkLevelLaws = (level: PaintLevel): LawFailure[] => {
       for (let c = 0; c < row.length; c++) {
         if (row[c] === "*" && !nearReachable(c, r, 1, 1, 3)) {
           failures.push({ phase: ph.id, law: "collectible-reachable", detail: `letter at (${c},${r}) unreachable` });
+        }
+      }
+    }
+
+    // ── B1 · THE CHECKPOINT DOCTRINE (Koki, 2026-08-11) ─────────────────────
+    // "Checkpoints gehören NACH schwere Abschnitte, nie davor, und jedes
+    // Element braucht seinen Zweck." This REVERSES the cookbook's old §2/§8.6
+    // ("≤1 per phase, placed BEFORE the risk spike") — that line, and the
+    // "Anti 3/6" citations in the three dossiers, are amended with this law.
+    //
+    // What a checkpoint can honestly be measured against: ONLY ink warps.
+    // sim.ts is glyph-precise — `ev.hazard === "w"` moves the child to
+    // respawnCell; spikes do not, and enemy contact opens a card and never
+    // relocates anybody. So a rule phrased over "gaps" or "enemy bands" would
+    // police things a checkpoint cannot pay for, and would be gameable in both
+    // directions. An INK PASSAGE is the honest unit — and you cannot hide ink
+    // from a grid scan.
+    if (exitCell) {
+      const startCell = findGlyph(ph.rows, "S");
+      const wCols = ph.rows[0]?.length ?? 0;
+      const inkCol = (c: number): boolean => ph.rows.some((row) => row[c] === "w");
+      const runs: Array<{ west: number; east: number }> = [];
+      for (let c = 0, from: number | null = null; c <= wCols; c++) {
+        if (c < wCols && inkCol(c)) { if (from === null) from = c; }
+        else if (from !== null) { runs.push({ west: from, east: c - 1 }); from = null; }
+      }
+      // Only a passage the child must GET PAST counts: spawn on one side, exit
+      // on the other. A decorative pool behind the exit is scenery, and
+      // demanding a checkpoint for it would be the "dead scenery" failure mode.
+      const eastward = startCell ? exitCell.c > startCell.c : true;
+      const crossings = startCell
+        ? runs.filter((p) => (eastward ? startCell.c < p.west && exitCell.c > p.east : startCell.c > p.east && exitCell.c < p.west))
+        : [];
+      const checkpoints: Array<{ c: number; r: number }> = [];
+      for (const [r, row] of ph.rows.entries()) {
+        for (let c = 0; c < row.length; c++) if (row[c] === "C") checkpoints.push({ c, r });
+      }
+      checkpoints.sort((a, b) => (eastward ? a.c - b.c : b.c - a.c));
+
+      // A · COUNT — one per passage, no more and no fewer.
+      if (checkpoints.length !== crossings.length) {
+        failures.push({
+          phase: ph.id,
+          law: "checkpoint-count",
+          detail: crossings.length === 0
+            ? `${ph.id} crosses no ink but carries ${checkpoints.length} checkpoint(s) — only ink warps (sim.ts), so a checkpoint with nothing to catch is scenery`
+            : `${ph.id} crosses ink ${crossings.length}× but carries ${checkpoints.length} checkpoint(s) — one checkpoint per hard passage, no more and no fewer`,
+        });
+      }
+      crossings.sort((a, b) => (eastward ? a.west - b.west : b.west - a.west));
+      for (const [i, p] of crossings.entries()) {
+        const cp = checkpoints[i];
+        if (!cp) continue; // the count law already spoke
+        const far = eastward ? p.east : p.west; // the bank the child lands on
+        const lo = eastward ? far + 1 : far - CHECKPOINT_AFTER_MAX;
+        const hi = eastward ? far + CHECKPOINT_AFTER_MAX : far - 1;
+        // B · PAIRING — on the FAR bank, and close to it.
+        if (cp.c < lo || cp.c > hi) {
+          const beforeIt = eastward ? cp.c <= p.east : cp.c >= p.west;
+          failures.push({
+            phase: ph.id,
+            law: "checkpoint-placement",
+            detail: beforeIt
+              ? `${ph.id} crosses ink at c${p.west}–${p.east} but its checkpoint sits at (${cp.c},${cp.r}), on the near side — Krakel sketches you AFTER a hard passage, never before it`
+              : `${ph.id} crosses ink at c${p.west}–${p.east} and its checkpoint (${cp.c},${cp.r}) is past the far bank by more than ${CHECKPOINT_AFTER_MAX} columns — retry sits NEXT to the challenge, not a screen away`,
+          });
+        }
+        // C · FOOTING — Krakel sketches you where you can stand.
+        if (!standable(ph.rows, cp.c, cp.r) || !reach.has(`${cp.c},${cp.r}`)) {
+          failures.push({
+            phase: ph.id,
+            law: "checkpoint-footing",
+            detail: `the checkpoint at (${cp.c},${cp.r}) is not a standing cell a child can reach — a respawn point in the air drops the child straight back into the passage`,
+          });
+        }
+        // D · NO DEAD WALK — anti-law 3 survives the reversal. Moving anchors
+        // to the far bank lengthens the walk after an UNBANKED splash; it may
+        // not become a march across the world.
+        const prev = i === 0 ? (startCell?.c ?? 0) : (checkpoints[i - 1]?.c ?? 0);
+        if (Math.abs(cp.c - prev) > wCols) {
+          failures.push({
+            phase: ph.id,
+            law: "checkpoint-walk",
+            detail: `${ph.id}: ${Math.abs(cp.c - prev)} columns from the last anchor to (${cp.c},${cp.r}) in a ${wCols}-column world — no dead walks`,
+          });
         }
       }
     }

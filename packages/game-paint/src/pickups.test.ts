@@ -320,6 +320,63 @@ describe("R5-A2 · spawnCell + letterLedger (the bonus trip loses nothing)", () 
     expect(reTaken, "a consumed letter cell must not be re-collectable").toBe(0);
   });
 
+  it("…but the KLECKSKAMMER serves its letters again (D-5 = Option A, Koki 2026-08-11)", () => {
+    // The mirror of the case above, and the reason the ledger filter had to grow
+    // a seam: in a FIELD phase a consumed cell must stay consumed, but the bonus
+    // room is BOUGHT. A second purchase costs the full price (DEBT_REGISTER D-5;
+    // the price question itself stays PK-R7), so it must not buy an emptied room.
+    const fresh = new Sim({
+      level, phaseId: "p9",
+      grantedAbilities: () => [...level.abilities],
+      freedCageIds: () => [],
+    });
+    const all = [...fresh.letterCells];
+    expect(all.length, "the Kleckskammer must actually place letters").toBeGreaterThan(0);
+
+    // the first visit was the PERFEKT run — the child cleared the whole wave
+    // (proof tape p9: 12/12). That is the hardest case: under the old filter the
+    // second visit was a room with nothing in it.
+    const second = new Sim({
+      level, phaseId: "p9",
+      grantedAbilities: () => [...level.abilities],
+      freedCageIds: () => [],
+      letterLedger: () => ({ takenCells: all, purse: 3, found: 9 }),
+    });
+    expect(second.letterCells.size, "every bought letter must be back in the room").toBe(all.length);
+    for (const key of all) {
+      expect(second.letterCells.has(key), `${key} must be collectable again`).toBe(true);
+      expect(second.letterPos.has(key), `${key} must be DRAWN again, not merely counted`).toBe(true);
+    }
+    // …and the tally stays honest: the room promises exactly its own letters,
+    // no more (a respawn that inflated the total would lie in the HUD).
+    expect(second.lettersTotal).toBe(fresh.lettersTotal);
+    expect(second.lettersTotal).toBe(second.letterCells.size);
+    // the REST of the ledger is untouched by the exception — the purse the child
+    // walked in with and the monotone Bilanz still cross the door.
+    expect(second.lettersGot).toBe(3);
+    expect(second.lettersCollected).toBe(9);
+
+    // live proof, not bookkeeping: pick a respawned letter the child can simply
+    // drop onto (ground within three rows below it — most of the wave's letters
+    // are flown to, and this case is about the respawn, not about the route) and
+    // take it off the map for real.
+    const rows = phaseOf("p9").rows;
+    const dropKey = all.find((k) => {
+      const [c, r] = k.split(",").map(Number) as [number, number];
+      for (let dr = 1; dr <= 3; dr++) if (rows[r + dr]?.[c] === "#") return true;
+      return false;
+    });
+    expect(dropKey, "harness: no respawned letter has ground under it").toBeDefined();
+    const [c, r] = dropKey!.split(",").map(Number) as [number, number];
+    second.warp(c, r);
+    const reTaken: string[] = [];
+    for (let t = 0; t < 120 && reTaken.length === 0; t++) {
+      for (const ev of second.step(IDLE_PAD)) if (ev.type === "letterTaken") reTaken.push(`${ev.c},${ev.r}`);
+    }
+    expect(reTaken, "a respawned letter must be collectable a second time").toContain(dropKey);
+    expect(second.lettersGot, "and it pays into the purse it walked in with").toBe(4);
+  });
+
   it("spawning ON a door seeds its cooldown — and standing there NEVER re-fires it", () => {
     const c = new Sim({
       level, phaseId: "p1",

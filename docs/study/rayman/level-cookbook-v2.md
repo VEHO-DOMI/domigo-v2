@@ -15,7 +15,7 @@ review small, chain by the sign. Boss set-pieces are tuned to ONE screen.
 
 - **Encounters:** ~0.5–0.75 per screen-width. Breathing room is a feature — traversal stretches
   with no encounter at all are legal and good.
-- **Checkpoints:** ≤1 sketch checkpoint per phase, placed BEFORE the risk spike, never after it.
+- **Checkpoints:** one sketch checkpoint AFTER each ink passage, never before it — and none in a phase that crosses no ink. (Amended 2026-08-11 by Koki's replay ruling; the old line read "≤1 per phase, placed BEFORE the risk spike". Only ink warps in our engine — `sim.ts` is glyph-precise on `w`, spikes and enemies never relocate anybody — so the ink crossing is the only thing a checkpoint can honestly be measured against. Machine-checked: `checkpoint-count` / `checkpoint-placement` / `checkpoint-footing` / `checkpoint-walk` in `level.ts`.)
 - **Currency:** trails are sentences, not confetti — a run of 5–8 leading somewhere (a cage, a
   ring line, an alcove); never scatter without intent (doc 30: no collectible without a reason).
 - **Verticality:** at least one optional vertical excursion per phase once hover exists.
@@ -74,7 +74,7 @@ Mined from the full critical retrospective of the 1995 original; each is stated 
 4. **Perfect legibility:** what looks safe IS safe; what looks dangerous IS dangerous.
 5. **Never require a failure to reveal a rule.** First sight of any hazard must be survivable
    by a careful kid.
-6. **Retry sits next to the challenge.** Checkpoints cost nothing and sit BEFORE risk spikes.
+6. **Retry sits next to the challenge.** Checkpoints cost nothing and sit on the FAR BANK of a risk spike — within 4 columns of the landing, so what you just beat is banked and the next spike's retry starts at its own mouth. (Amended 2026-08-11; this clause read "sit BEFORE risk spikes" until Koki's replay: a checkpoint in front of the difficulty banks nothing you earned, and every element must earn its purpose.)
 7. **Every collectible on a returnable path**; signpost what remains (our letters HUD).
 8. **Exploration is net-positive.** Never reward→trap; a bent path always pays.
 9. **Each unit distinct in look AND feel**, with quiet callbacks across units.
@@ -89,7 +89,7 @@ Each sin the retrospective documents in the original, flipped into the law our s
 |---|---|---|
 | 1 | Fuzzy hitboxes | Hitboxes match silhouettes; generous FOR the player only |
 | 2 | Learn-by-dying placements | First encounter of anything is survivable at walking pace |
-| 3 | Checkpoint cruelty (long dead walks) | ≤1 phase-length between checkpoints, ever |
+| 3 | Checkpoint cruelty (long dead walks) | ≤1 phase-length between checkpoints, ever — now machine-held as `checkpoint-walk`; the SPAWN counts as anchor 0, so the walk after an unbanked splash is measured too |
 | 4 | One-way missables | Nothing collectible is lost by progressing |
 | 5 | Damage chains (juggled hits) | iframes cover knockback + recovery fully |
 | 6 | Camera fights the player | Camera never hides the direction of travel |
