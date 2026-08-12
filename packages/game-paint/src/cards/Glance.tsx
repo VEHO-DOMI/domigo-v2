@@ -257,15 +257,26 @@ export const WordMark = ({ size = 16 }: { size?: number }): React.ReactElement =
  *  eight times on one card, which the blind critic called the worst surface in
  *  the set: eight identical system glyphs say „error", not „turn me over".
  *  This is the book's own back: ruled paper with an ink flourish. */
-export const CardBack = ({ size = 30 }: { size?: number }): React.ReactElement => (
-  <svg width={size} height={size} viewBox="0 0 24 24" aria-label="umgedrehte Karte" role="img"
+export const CardBack = ({ size = 30, n }: { size?: number; n?: number }): React.ReactElement => (
+  <svg width={size} height={size} viewBox="0 0 24 24" role="img"
+    aria-label={n === undefined ? "umgedrehte Karte" : `umgedrehte Karte ${n}`}
     style={{ display: "inline-block", flex: "0 0 auto" }}>
     <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="3.4" fill="#e2cfa2" stroke="#8a6f3c" strokeWidth="1.6" />
     <g stroke="#b79a63" strokeWidth="1" opacity="0.85">
       <path d="M5.4 7.2h13.2M5.4 10.4h13.2M5.4 13.6h13.2M5.4 16.8h13.2" />
     </g>
-    <path d="M9 15.4c-1.6-1-1.9-3-.6-4.3 1.2-1.2 3.2-1 4.2.4.8 1.2.4 2.6-.7 3.2-.9.5-1.9.1-2.2-.7-.2-.6.1-1.2.7-1.4"
-      fill="none" stroke="#5e4a24" strokeWidth="1.7" strokeLinecap="round" />
+    {/* R5-W1 · D2 (blind critic, critical): the back carried only a flourish, so
+        eight of them were eight identical unnameable things — „fails the
+        3-second test outright". A NUMBER makes each card a card: a child can
+        say „drei", point at it, and remember where the pair was. It says
+        nothing about what is under it. */}
+    {n === undefined ? (
+      <path d="M9 15.4c-1.6-1-1.9-3-.6-4.3 1.2-1.2 3.2-1 4.2.4.8 1.2.4 2.6-.7 3.2-.9.5-1.9.1-2.2-.7-.2-.6.1-1.2.7-1.4"
+        fill="none" stroke="#5e4a24" strokeWidth="1.7" strokeLinecap="round" />
+    ) : (
+      <text x="12" y="16.6" textAnchor="middle" fontSize="11" fontWeight="800"
+        fontFamily="var(--font-display, inherit)" fill="#5e4a24">{n}</text>
+    )}
   </svg>
 );
 

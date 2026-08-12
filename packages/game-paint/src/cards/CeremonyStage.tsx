@@ -14,6 +14,76 @@ import { prefersReducedMotion } from "./motion.ts";
 import type { PlayerPose } from "../player.ts";
 
 /**
+ * R5-W1 · D2 · THE SCENE CUT — a ceremony happens somewhere.
+ *
+ * Every blind critic of the D1 round landed on the same sentence in different
+ * words: „kein einziges Panel stellt die Spielfigur oder eine NPC live in der
+ * gemalten Szene dar" · „static single-pose character art versus Rayman's
+ * full-body in-scene animation" · „floating text cards". Six ceremony panels
+ * were a code-drawn glyph on parchment — a symbol ABOUT a moment instead of the
+ * moment.
+ *
+ * This is a window cut into the card: the room the child is standing in, the
+ * boy himself out of the shipped rig striking a pose, and whatever the ceremony
+ * is about beside him. Three rules keep it honest rather than decorative:
+ *
+ *  · THE ROOM IS THE ROOM. The backdrop is the CURRENT phase's own painted
+ *    layer, not a stock picture — a ceremony in the hall shows the hall.
+ *  · HE IS THE BOY THEY PLAY. The same rig, the same registration, the same
+ *    poses the sim uses (F1's lane) — not a ceremony illustration of him.
+ *  · IT DEGRADES TO NOTHING. No backdrop, no window; no rig, no boy. The panel
+ *    falls back to what it drew before (the keen-art law), because art lands
+ *    batch by batch and a card may never break on a missing file.
+ */
+export function SceneCut({
+  art, backdrop, pose = "stand", facing = 1, heroHeight = 96, subject, height = 152,
+}: {
+  art: Record<string, string>;
+  /** the stem of the room's own painted layer, or undefined for no window */
+  backdrop?: string;
+  pose?: PlayerPose;
+  facing?: 1 | -1;
+  heroHeight?: number;
+  /** what the ceremony is about, standing in the scene beside him */
+  subject?: React.ReactNode;
+  height?: number;
+}): React.ReactElement | null {
+  const bg = backdrop !== undefined ? art[backdrop] : undefined;
+  const hero = <PaintedHero art={art} height={heroHeight} pose={pose} facing={facing} />;
+  if (bg === undefined && hero === null) return null;
+  return (
+    // the wrapper is fit-content everywhere else (a plate is as wide as its
+    // picture); a WINDOW is as wide as the card it is cut into
+    <div className="pb-plate-wrap" style={{ width: "100%", display: "block" }}>
+      <div className="pb-plate pb-scene" style={{ height, width: "100%" }}>
+        {bg !== undefined && (
+          <img
+            src={bg}
+            alt=""
+            aria-hidden
+            // the LOWER band of the room, where the floor and the props are: a
+            // phase layer is a tall painting (1024×1260), and a centred crop of
+            // it into a letterbox window is the blank wall above the furniture
+            // — found in the render, and it looked like a missing image
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 72%" }}
+          />
+        )}
+        {/* the figures stand ON the floor of the window, not in the middle of
+            it — a boy floating in the centre of a room is a sticker, not a
+            scene */}
+        <div style={{
+          position: "absolute", inset: 0, display: "flex", alignItems: "flex-end",
+          justifyContent: "center", gap: 14, padding: "0 16px 8px",
+        }}>
+          {hero}
+          {subject}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
  * A ceremony clock in milliseconds since the beat started, stopping at
  * `untilMs` — and starting AT Infinity when the child asked for reduced motion,
  * so every counter is already on its final number and every beat is already
