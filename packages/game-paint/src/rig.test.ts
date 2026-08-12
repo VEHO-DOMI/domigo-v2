@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { bobFrame, sheetFrame } from "./anim.ts";
 import { PAINT, SUBS } from "./paint.ts";
-import { RIG, type RigInput, rigPose, withBrace, withCheer, withFistAway } from "./rig.ts";
+import { NO_COIL, RIG, type RigInput, launchCoil, rigPose, withBrace, withCheer, withFistAway } from "./rig.ts";
 import { LAND_SKIN_TICKS, bodyStemFor, faceFor, handStemsFor } from "./rigSpec.ts";
 import type { PlayerPose } from "./player.ts";
 
@@ -14,6 +14,97 @@ const input = (over: Partial<RigInput>): RigInput => ({
   charge: -1,
   landedAgo: 99,
   ...over,
+});
+
+// R5-F3 · DIE ANHOLUNG, als Messung statt als Behauptung.
+//
+// Der Befund kam von zwei blinden Kritikern, unabhängig, mit denselben
+// Bildnummern: „ein harter Schnitt von der statischen Ruhepose in den vollen
+// Flug". Diese Tests halten fest, was daran repariert wurde — und, genauso
+// wichtig, was NICHT: die Flare-Pose am Ende der Anholung ist dieselbe wie
+// vorher. Es ist ein Anlauf, kein neues Ziel.
+describe("R5-F3 · der Sprung holt aus, bevor er fliegt", () => {
+  const jumpAt = (ja: number): ReturnType<typeof rigPose> =>
+    rigPose(input({ pose: "jump", vySubs: PAINT.jumpVy, jumpedAgo: ja }));
+  /** Wie weit eine Hand von der Körpermitte weg und über der Hüfte steht. */
+  const spread = (p: ReturnType<typeof rigPose>): number => Math.abs(p.handF.dx) + Math.abs(p.handB.dx);
+  const lift = (p: ReturnType<typeof rigPose>): number => -(p.handF.dy + p.handB.dy);
+
+  it("auf dem Absprung-Tick ist der Körper noch gesammelt, nicht gestreckt", () => {
+    const start = jumpAt(0);
+    const flug = jumpAt(RIG.launchCoilTicks);
+    expect(spread(start), "die Hände sind noch enger am Körper").toBeLessThan(spread(flug));
+    expect(lift(start), "…und noch nicht oben").toBeLessThan(lift(flug));
+    expect(start.body.dy, "…und der Körper steckt noch in den Knien").toBeGreaterThan(flug.body.dy);
+    expect(start.scaleY, "…und ist noch nicht in die Länge gezogen").toBeLessThan(flug.scaleY);
+  });
+
+  it("die Anholung läuft in eine Richtung durch — kein Zappeln", () => {
+    let prevS = -Infinity, prevL = -Infinity;
+    for (let ja = 0; ja <= RIG.launchCoilTicks; ja++) {
+      const p = jumpAt(ja);
+      expect(spread(p), `Tick ${ja}: die Hände gehen nach außen`).toBeGreaterThanOrEqual(prevS);
+      expect(lift(p), `Tick ${ja}: die Hände gehen nach oben`).toBeGreaterThanOrEqual(prevL);
+      prevS = spread(p); prevL = lift(p);
+    }
+  });
+
+  it("REGRESSIONSZAUN: am Ende der Anholung steht exakt die alte Flare-Pose", () => {
+    // Wenn das hier bricht, wurde nicht eine Anholung ergänzt, sondern der
+    // Sprung umgebaut — und das war nicht der Auftrag.
+    expect(jumpAt(RIG.launchCoilTicks)).toEqual(jumpAt(99));
+  });
+
+  it("TAMPER: ohne Anholung IST der Absprung der harte Schnitt (der Befund, als Zahl)", () => {
+    const ruhe = rigPose(input({ pose: "stand" }));
+    const ohne = jumpAt(99); // so sah der erste Sprung-Tick vorher aus
+    const mit = jumpAt(0);
+    const weg = (a: ReturnType<typeof rigPose>, b: ReturnType<typeof rigPose>): number =>
+      Math.hypot(a.handF.dx - b.handF.dx, a.handF.dy - b.handF.dy);
+    // der Weg, den die führende Hand in EINEM Sechzigstel zurücklegen musste
+    expect(weg(ruhe, ohne), "vorher: ein Sprung von über 15 px in einem Tick").toBeGreaterThan(15);
+    expect(weg(ruhe, mit), "jetzt: ein Schritt, kein Sprung").toBeLessThan(weg(ruhe, ohne) / 2);
+  });
+
+  it("reduzierte Bewegung zeigt sofort das fertige Bild, keine halbe Hocke", () => {
+    expect(rigPose(input({ pose: "jump", vySubs: PAINT.jumpVy, jumpedAgo: 0, reducedMotion: true })))
+      .toEqual(rigPose(input({ pose: "jump", vySubs: PAINT.jumpVy, jumpedAgo: 99, reducedMotion: true })));
+  });
+
+  it("die Anholung kommt auch durch eine gemalte Ganzkörper-Zelle", () => {
+    // Der Grund, warum es diese zweite Ebene gibt: die per-Glied-Anholung oben
+    // war richtig gerechnet und trotzdem unsichtbar — für den Sprung liegt eine
+    // gemalte Zelle, und die versteckt die Teile. Live gemessen, nicht vermutet.
+    const start = launchCoil(0);
+    const fertig = launchCoil(RIG.launchCoilTicks);
+    expect(start.sinkPx, "der Körper sitzt auf dem Absprung-Tick tiefer").toBeGreaterThan(0);
+    expect(start.sy, "…und ist flacher").toBeLessThan(1);
+    expect(start.sx, "…und breiter").toBeGreaterThan(1);
+    expect(fertig).toEqual(NO_COIL);
+    // …und dazwischen läuft es in eine Richtung durch
+    let prev = Infinity;
+    for (let ja = 0; ja <= RIG.launchCoilTicks; ja++) {
+      const c = launchCoil(ja);
+      expect(c.sinkPx).toBeLessThanOrEqual(prev);
+      prev = c.sinkPx;
+    }
+  });
+
+  it("reduzierte Bewegung hat keine Ganzkörper-Anholung", () => {
+    expect(launchCoil(0, true)).toEqual(NO_COIL);
+  });
+
+  it("die Landung hat weiterhin ihren eigenen, GEGENLÄUFIGEN Beat", () => {
+    // Gegenprobe zum Auftrag: die beiden Enden des Bogens dürfen sich nicht
+    // dieselbe Geste teilen — der Absprung geht hoch, die Landung geht runter.
+    const landung = rigPose(input({ pose: "stand", landedAgo: 0 }));
+    const ruhe = rigPose(input({ pose: "stand", landedAgo: 99 }));
+    expect(landung.handF.dy, "die Hände sinken beim Aufkommen").toBeGreaterThan(ruhe.handF.dy);
+    expect(Math.abs(landung.handF.dx), "…und stützen nach außen").toBeGreaterThan(Math.abs(ruhe.handF.dx));
+    expect(landung.body.dy, "…und der Körper geht in die Knie").toBeGreaterThan(ruhe.body.dy);
+    // …während der Absprung genau andersherum läuft
+    expect(jumpAt(RIG.launchCoilTicks).handF.dy).toBeLessThan(ruhe.handF.dy);
+  });
 });
 
 describe("the rig (animation principles as tick math)", () => {

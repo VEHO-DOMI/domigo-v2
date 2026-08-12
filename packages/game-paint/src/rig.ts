@@ -105,6 +105,39 @@ export const RIG = {
   landArmOutPx: 8, // …and each hand, sideways, to brace
   landArmDownPx: 2.5, // …and DOWN, because the weight is going down (see 2 above)
   landCrouchPx: 3, // how far the body sinks into its own knees (see 3 above)
+
+  // ── R5-F3 · DIE ANHOLUNG (zwei blinde Kritiker, unabhängig, dieselbe Zeile) ─
+  // Beide Prüfer der F2-Runde kamen mit demselben Befund und denselben
+  // Bildnummern zurück: „ein harter Schnitt von der statischen Ruhepose in den
+  // vollen Flug" · „die Anholung fehlt komplett — das eine klassische
+  // Animationsprinzip, das diese sonst starke Sequenz auslässt."
+  //
+  // Sie hatten recht, und man kann es an dieser Datei ablesen: der Sprung-Zweig
+  // setzte die Flare-Pose (Hände auf ±12/−16) auf dem ERSTEN Tick nach dem
+  // Absprung. Von den Händen der Ruhepose (±9/+4) bis dorthin ist es ein Sprung
+  // von zwanzig Pixeln in einem Sechzigstel — der Körper ist oben, bevor er
+  // gezeigt hat, dass er sich abstößt.
+  //
+  // Was hier NICHT passiert: den Absprung verzögern. Das wäre die naheliegende
+  // „echte" Anholung und sie wäre falsch — die Steuerung würde träge (das Kind
+  // drückt und nichts geschieht), und jedes aufgezeichnete Band würde sich
+  // bewegen. Der Absprung bleibt auf demselben Tick wie immer; nur die
+  // ZEICHNUNG holt nach. Der Körper fliegt schon, während er noch geduckt
+  // gemalt wird — das ist genau die Lüge, die Animation seit jeher erzählt.
+  /** Über wie viele Ticks die Flare-Pose einläuft. Vier sind 67 ms: genug für
+   *  drei unterscheidbare Zwischenbilder, kurz genug, dass der Sprung nicht
+   *  weich wird. */
+  launchCoilTicks: 4,
+  launchArmInPx: 7, // die Hände kommen von INNEN nach außen…
+  launchArmDownPx: 12, // …und von unten nach oben (Ruhepose-Höhe → Flare)
+  launchCrouchPx: 3, // der Körper ist auf dem Absprung-Tick noch in den Knien
+  launchFootInPx: 4, // …und der Spagat der Beine öffnet sich erst im Flug
+  /** …und dasselbe am GANZEN Körper, damit die Anholung auch durch eine gemalte
+   *  Ganzkörper-Zelle hindurch zu sehen ist (siehe `launchCoil`). Breit und
+   *  flach beim Abdrücken — dieselbe Sprache, die der Radierer im Aufprall
+   *  spricht, nur andersherum gelesen. */
+  launchBodyWidenT: 0.1,
+  launchBodyFlatT: 0.14,
 } as const;
 
 export interface PartPose {
@@ -136,6 +169,12 @@ export interface RigInput {
   vySubs: number;
   charge: number; // −1 when not charging
   landedAgo: number;
+  /** R5-F3 · Ticks seit dem Absprung — die Uhr der Anholung, genau wie
+   *  `landedAgo` die der Landung ist. Der Spielerzustand führt sie ohnehin
+   *  mit; das Rig hat sie bisher nur nie bekommen. Optional (Vorgabe 99 =
+   *  „lange her"), damit jeder bestehende Aufrufer und jeder Test unverändert
+   *  bleibt — dieselbe Bauart wie `reach`. */
+  jumpedAgo?: number;
   swingLean?: number; // −1..1 — horizontal lean toward the swing anchor (scene-fed)
   /** PK-R6 · H1 · 0..1 — how strongly a collectible is being MAGNETED in right
    *  now (scene-fed from the sim's own letter positions; see PaintScene.reachT).
@@ -149,6 +188,41 @@ export interface RigInput {
 
 const P = (dx = 0, dy = 0, rot = 0): PartPose => ({ dx, dy, rot });
 const TAU = Math.PI * 2;
+
+/** R5-F3 · Die Anholung als GANZKÖRPER-Bewegung: wie tief der Körper auf dem
+ *  Absprung-Tick noch sitzt und wie er dabei gestaucht ist. */
+export interface LaunchCoil { sinkPx: number; sx: number; sy: number }
+export const NO_COIL: LaunchCoil = { sinkPx: 0, sx: 1, sy: 1 };
+
+/**
+ * R5-F3 · DIE ANHOLUNG, DIE AUCH DURCH DIE GEMALTE ZELLE KOMMT.
+ *
+ * Die per-Glied-Anholung im Sprung-Zweig unten ist richtig gerechnet — und sie
+ * war trotzdem unsichtbar. Der Grund, live gemessen: sobald für einen Zustand
+ * eine gemalte Ganzkörper-Zelle existiert (`rigSpec.heroFullCell`, und für
+ * ch01 liegen dreißig davon), wird sie STATT der komponierten Teile gezeichnet
+ * — `handSichtbar: false` durch den ganzen Sprung, `pb-hero2_jump` von Tick 0
+ * bis Tick 14 unverändert. Zwei blinde Prüfer haben genau das gesehen und
+ * „eine starre Zeichnung, die die Kamera durchs Bild schiebt" genannt.
+ *
+ * Was eine gemalte Zelle NICHT verhindert, ist eine Bewegung des ganzen
+ * Körpers. Der Absprung sinkt darum kurz in sich zusammen und richtet sich
+ * auf: das ist dieselbe Anholung, nur eine Ebene höher — und sie gilt für
+ * beide Zeichenwege, den komponierten wie den gemalten.
+ *
+ * Die Landung bleibt ausdrücklich unberührt: ihre Stauchung steckt bereits in
+ * der gemalten `hero2_land`-Zelle, und zwei übereinandergelegte Stauchungen
+ * wären genau ein Bild zu viel.
+ */
+export const launchCoil = (jumpedAgo: number, reducedMotion = false): LaunchCoil => {
+  if (reducedMotion || jumpedAgo >= RIG.launchCoilTicks) return NO_COIL;
+  const k = 1 - jumpedAgo / RIG.launchCoilTicks; // 1 auf dem Absprung-Tick → 0
+  return {
+    sinkPx: RIG.launchCrouchPx * k,
+    sx: 1 + RIG.launchBodyWidenT * k,
+    sy: 1 - RIG.launchBodyFlatT * k,
+  };
+};
 
 /** PK-R6 · H2 · The poses that have the floor under them — which is what makes
  *  `landedAgo` mean anything. Exported because the SKIN has to ask the same
@@ -326,6 +400,31 @@ export const rigPose = (input: RigInput): RigPose => {
       pose.footF = P(6, 7); // the split feet the dossier gives the leap
       pose.footB = P(-6, 14);
       pose.hair.rot = rm ? 0 : -0.12;
+      // R5-F3 · …UND SIE KOMMT AUS DER HOCKE (siehe RIG.launchCoilTicks).
+      // `k` ist 1 auf dem Absprung-Tick und 0, sobald die Anholung durch ist:
+      // die Hände wandern von innen-unten nach außen-oben, der Körper steigt
+      // aus den Knien, die Beine öffnen ihren Spagat, und die Streckung setzt
+      // erst ein, wenn der Körper sich wirklich streckt. Vier Ticks später ist
+      // die Flare-Pose exakt die, die vorher schon da stand — nichts an ihrem
+      // Endzustand ändert sich, sie hat jetzt nur einen Anlauf.
+      {
+        const ja = input.jumpedAgo ?? 99;
+        if (!rm && ja < RIG.launchCoilTicks) {
+          const k = 1 - ja / RIG.launchCoilTicks;
+          pose.handF.dx -= RIG.launchArmInPx * k;
+          pose.handB.dx += RIG.launchArmInPx * k;
+          pose.handF.dy += RIG.launchArmDownPx * k;
+          pose.handB.dy += RIG.launchArmDownPx * k;
+          pose.handF.rot *= 1 - k;
+          pose.handB.rot *= 1 - k;
+          pose.body.dy += RIG.launchCrouchPx * k;
+          pose.head.dy += RIG.launchCrouchPx * k;
+          pose.footF.dx -= RIG.launchFootInPx * k;
+          pose.footB.dx += RIG.launchFootInPx * k;
+          pose.scaleX = 1 + (pose.scaleX - 1) * (1 - k);
+          pose.scaleY = 1 + (pose.scaleY - 1) * (1 - k);
+        }
+      }
       break;
     }
     case "fall": {
