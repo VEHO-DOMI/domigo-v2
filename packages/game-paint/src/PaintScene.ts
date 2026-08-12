@@ -34,7 +34,7 @@ import {
   guardianManoeuvre, guardianPitchRad, guardianRollScaleX, poseStateOf, washAlphaFor,
 } from "./anim.ts";
 import { CUE_CHALK, CUE_HALO, chalkArrow } from "./cue.ts";
-import { RIG, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
+import { RIG, launchCoil, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
 import {
   BURST_CORE, BURST_HOT, BURST_INK, BURST_SPIKES,
   SPARK_COUNT, burstShape, contactPoint, fleckOf, shardOutline, starPoints,
@@ -2857,6 +2857,8 @@ export class PaintScene extends Phaser.Scene {
       vySubs: this.player.vy,
       charge: this.player.charge,
       landedAgo: this.player.landedAgo,
+      jumpedAgo: this.player.jumpedAgo, // R5-F3: die Uhr der Anholung
+
       swingLean: this.player.swing
         ? Math.max(-1, Math.min(1, (fromSubs(this.player.swing.anchorX) - fromSubs(this.player.x)) / 48)) * this.player.facing
         : 0,
@@ -2887,8 +2889,19 @@ export class PaintScene extends Phaser.Scene {
       this.player.landedAgo, cheer > 0, this.heroAtEdge(), this.tickCount,
     );
     const full = fullCell !== null && this.textures.exists(this.tex(fullCell)) ? fullCell : null;
-    this.rigRoot.setPosition(fromSubs(this.player.x), fromSubs(this.player.y) - 15);
-    this.rigRoot.setScale(this.player.facing * (full !== null ? 1 : pose.scaleX), full !== null ? 1 : pose.scaleY);
+    // R5-F3 · DIE ANHOLUNG GILT FÜR BEIDE ZEICHENWEGE. Die per-Glied-Anholung
+    // im Rig ist richtig — und blieb unsichtbar, weil für den Sprung eine
+    // gemalte Ganzkörper-Zelle existiert und die Teile darunter versteckt sind
+    // (live gemessen: `pb-hero2_jump` steht von Tick 0 bis Tick 14 unverändert).
+    // Eine gemalte Zelle verhindert aber keine Bewegung des GANZEN Körpers:
+    // er sinkt kurz in sich zusammen und richtet sich auf. Die Landung bleibt
+    // ausgenommen — ihre Stauchung steckt schon in `hero2_land`.
+    const coil = launchCoil(this.player.jumpedAgo, this.cfg.reducedMotion);
+    this.rigRoot.setPosition(fromSubs(this.player.x), fromSubs(this.player.y) - 15 + coil.sinkPx);
+    this.rigRoot.setScale(
+      this.player.facing * (full !== null ? 1 : pose.scaleX) * coil.sx,
+      (full !== null ? 1 : pose.scaleY) * coil.sy,
+    );
     const flicker = this.player.iframes > 0 && this.player.iframes % 8 < 4;
     this.rigRoot.setAlpha(flicker ? 0.45 : 1);
     // ── PK-R6 · H2 · THE CONTACT RIM (round-2 findings 2 and 8) ───────────────
