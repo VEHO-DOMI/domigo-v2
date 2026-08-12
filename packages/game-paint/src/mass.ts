@@ -332,6 +332,19 @@ export const CRUST_MARK_RATE = 0.44;
  *  patina over a book-spine wall has to be nearly subliminal to stay a wall. */
 export const MASS_MARK_RATE = 0.62;
 
+/**
+ * R5-A3 · WHICH MASS PIECES ARE "THE NEAREST STANDABLE PLANE".
+ *
+ * Exported from the planner rather than written into the scene, because the
+ * composition audit has to weigh exactly these stems by exactly this push when
+ * it measures L3 — otherwise the shipped terrain and the audited terrain drift
+ * apart, and the L2↔L3 separation law goes on passing while the room it governs
+ * stops obeying it.
+ */
+export const NEAR_PLANE_KINDS: ReadonlySet<string> = new Set([
+  "crust", "capL", "capR", "ramp", "platform",
+]);
+
 export type MassKind =
   | "body" | "fade" | "sediment"
   | "crust" | "capL" | "capR"

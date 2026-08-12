@@ -17,7 +17,7 @@ import { type CompositionSpec, type MassKit, ROOM_SHADOW_INK, compositionFor, he
 import { phaseArtScope } from "./artScope.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
-import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
+import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
 import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
@@ -3439,7 +3439,24 @@ export class PaintScene extends Phaser.Scene {
     // the push is scaled by the room's key rather than fixed. Combined with
     // whatever the plan already asked for, so the no-metronome value jitter on a
     // tiled run survives being pushed forward.
-    if (p.kind === "platform") {
+    // R5-A3 · THE SEPARATION IS FOR EVERYTHING YOU CAN STAND ON.
+    //
+    // B1's critic named the systemic cause of the sunny rooms: „in den sonnigen
+    // Leveln gibt es keine materielle Trennung zwischen dem, worauf man stehen
+    // kann, und dem, was nur gemalt ist" — and pointed at p2 as the proof we can
+    // do it. p2 works because it is a DARK room: its lit terrain separates from
+    // its own walls for free. p1 and p3 are pale rooms with pale terrain, and
+    // there the child has to read affordance out of hue alone.
+    //
+    // The near-plane law already existed and already said the right thing; it
+    // was only ever asked of the floating platform objects. It is now asked of
+    // every WALK SURFACE — the course, its end caps, the ramps and the platform
+    // objects. Deliberately NOT of body/fade/sediment: those are the mass BELOW
+    // the standing line, they already carry A1's depth ramp, and pushing them
+    // too would darken the depths back toward the holes that round removed.
+    // The question the law answers is "can I stand on this?", so it is exactly
+    // the standable things that get the answer.
+    if (NEAR_PLANE_KINDS.has(p.kind)) {
       p = { ...p, tint: mixMultiply(p.tint ?? 0xffffff, nearPlaneTint(this.comp?.key ?? 88)) };
     }
     if (p.tile === true) {
