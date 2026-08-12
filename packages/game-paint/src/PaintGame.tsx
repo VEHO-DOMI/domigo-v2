@@ -10,7 +10,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Phaser from "phaser";
 import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { PaintScene, type TaskRequest } from "./PaintScene.ts";
-import { PerfProbe, type PerfReport, type WeakEstimate } from "./perf.ts";
+import { PerfProbe, type FirstFrameReport, type PerfReport, type WeakEstimate } from "./perf.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
 import { LOGICAL_H, LOGICAL_W, LOOP_FPS, RENDER_SCALE, airModelByName } from "./paint.ts";
 import type { PaintLevel, PhaseSpec } from "./level.ts";
@@ -38,6 +38,9 @@ export interface PaintGameProps {
   startPhase?: string;
   /** R5-A6: draw the collision grid over the world (teacher door, ?grid=1). */
   debugGrid?: boolean;
+  /** R5-N3 · E4 · teacher door `?warm=0`: run without the pre-warmer, so the
+   *  fix can be measured against itself on one build. */
+  noWarm?: boolean;
   /** R5-W1 · E1: attach the measuring instrument (teacher door, ?perf=1).
    *  Off ⇒ the probe is never constructed and nothing is wrapped. */
   debugPerf?: boolean;
@@ -98,6 +101,9 @@ export interface PerfApi {
   pump: () => void;
   /** loader progress + scene readiness, for "is there anything to measure yet?" */
   status: () => Array<{ key: string; status: number; progress: number; toLoad: number; done: number; children: number }>;
+  /** R5-N3 · E4: the level start — the wait, the build, and the first drawn
+   *  frame. Awaited, because GPU results arrive long after the frame does. */
+  firstFrame: (settleMs?: number) => Promise<FirstFrameReport>;
   /** the raw engine — the dev harness exposes it too; this door is the
    *  production-build twin, so an experiment does not need a rebuild. */
   game: Phaser.Game;
@@ -223,7 +229,7 @@ const chapterClassmateCount = (level: PaintLevel): number =>
   [...level.phases, ...(level.arena ? [level.arena] : [])]
     .reduce((n, p) => n + p.entities.filter((e) => e.role === "cage" && e.params?.classmate !== undefined).length, 0);
 
-export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf }: PaintGameProps): React.ReactElement {
+export default function PaintGame({ level, art, tasks, hubHref, buildSha, startPhase, debugGrid, debugPerf, noWarm }: PaintGameProps): React.ReactElement {
   const hostRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
   const sceneRef = useRef<PaintScene | null>(null);
@@ -234,6 +240,8 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const [letters, setLetters] = useState({ got: 0, total: 0 });
   const [done, setDone] = useState(false);
   const [fatal, setFatal] = useState<string | null>(null);
+  /** R5-N3 · E4: the level-start readout, teacher door only. */
+  const [startLine, setStartLine] = useState<string | null>(null);
   const [coarse, setCoarse] = useState(false);
   // R3-8 · THE BOOT CEREMONY (doc 42 §3). The child never spawns mid-noise:
   // the chapter opens on a painted book page that names the Auftrag, the
@@ -562,9 +570,27 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             phase: () => sceneRef.current?.getState()?.phase ?? "",
             scope: () => sceneRef.current?.artScope() ?? null,
             artKeys: () => new Set(Object.keys(art)),
+            warmed: () => sceneRef.current?.warmReport() ?? null,
           })
         : null;
     probe?.install(PaintScene.prototype);
+    // Re-read every few seconds so a phase change refreshes the line. `null`
+    // columns are printed as "?" rather than hidden — a missing number is
+    // information, and the one thing this must never do is invent one.
+    const startTimer =
+      probe === null
+        ? null
+        : window.setInterval(() => {
+            void probe.firstFrame(2200).then((r) => {
+              const ms = (v: number | null): string => (v === null ? "?" : v.toFixed(1));
+              const w = r.warmed as { done?: number; queued?: number; pipelines?: boolean } | null;
+              setStartLine(
+                `${r.phase}  laden ${ms(r.loadMs)} ms (${r.filesQueued} Bilder)  ·  aufbau ${ms(r.createMs)} ms\n` +
+                  `ERSTES BILD  GPU ${ms(r.firstGpuMs)} ms  ·  danach ${ms(r.settledGpuMs)} ms  ·  ${r.firstDrawCalls ?? "?"} Zeichenaufrufe\n` +
+                  `vorgewärmt ${w?.done ?? "—"} (offen ${w?.queued ?? "—"}, Shader ${w?.pipelines === true ? "ja" : "nein"})`,
+              );
+            });
+          }, 5000);
     // Its own read handle, because __domigoPaint below is dev-only and the
     // numbers that matter come from a production build.
     if (probe !== null) {
@@ -573,6 +599,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         reset: () => probe.reset(),
         sample: (frames) => probe.sample(frames),
         drive: (frames, deltaMs) => probe.drive(frames, deltaMs),
+        firstFrame: (settleMs) => probe.firstFrame(settleMs),
         pump: () => probe.pump(),
         status: () => probe.status(),
         game,
@@ -602,6 +629,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
         airModel,
         spawnCell: fromBonus ? ret.spawn : undefined,
         debugGrid,
+        noWarm,
         letterLedger: () => ({
           takenCells: lettersTakenRef.current.get(pid) ?? [],
           purse: fromBonus ? ret.purse : 0,
@@ -893,6 +921,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       for (const id of timersRef.current) window.clearTimeout(id);
       for (const id of timersRef.current) window.clearInterval(id);
       timersRef.current.clear();
+      if (startTimer !== null) window.clearInterval(startTimer);
       probe?.uninstall();
       delete window.__domigoPaintPerf;
       unbindTyping();
@@ -955,6 +984,22 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 
   return (
     <div style={{ maxWidth: LOGICAL_W * RENDER_SCALE, margin: "0 auto", fontFamily: "var(--font-body, system-ui, sans-serif)", position: "relative" }}>
+      {/* R5-N3 · E4 · THE ONE LINE A HUMAN CAN READ.
+          Every automation browser here keeps its tab hidden, and a hidden tab
+          gets no frame clock — so the level-start cost can only be measured
+          honestly on a real, visible screen. This prints it there. */}
+      {startLine !== null && (
+        <div
+          style={{
+            position: "fixed", left: 8, bottom: 8, zIndex: 9999, maxWidth: 520,
+            background: "rgba(24,18,10,0.88)", color: "#f6ecd4", padding: "7px 10px",
+            borderRadius: 8, font: "12px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace",
+            whiteSpace: "pre-wrap", pointerEvents: "none",
+          }}
+        >
+          {startLine}
+        </div>
+      )}
       {/* R3-8: the overlay stylesheet. game-paint ships raw TS/TSX with no CSS
           build step, so the painted layer's animations ride in with the game
           they belong to — and travel with the package, not the app. */}

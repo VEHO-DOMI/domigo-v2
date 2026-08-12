@@ -116,6 +116,189 @@ export interface WeakEstimate {
   samples: Array<{ injectedMs: number; p50: number }>;
 }
 
+/**
+ * R5-N3 · E4 · THE ONE FRAME THIS INSTRUMENT USED TO THROW AWAY.
+ *
+ * `sample()` and `drive()` both discard 30 frames before opening their window,
+ * deliberately: they were built to answer "is the steady state healthy?", and
+ * mount cost, JIT and first-touch textures are noise for that question. But the
+ * defect Koki feels at every level start IS that discarded frame, so it needs
+ * its own report — with the load that precedes it, because the two are one
+ * experience: the wait, and then the lurch.
+ */
+export interface FirstFrameReport {
+  phase: string;
+  /** first queued file → Loader.COMPLETE, in ms; null if nothing was queued */
+  loadMs: number | null;
+  filesQueued: number;
+  /** create() alone — building ~476 objects, before anything is drawn */
+  createMs: number | null;
+  /** CPU of the first frame drawn after create() */
+  firstCpuMs: number | null;
+  /** GPU work of that same frame. Null when the timer extension is absent, or
+   *  when the driver reported a disjoint (a context switch invalidates it). */
+  firstGpuMs: number | null;
+  /** median GPU of the frames that follow it — the contrast that makes the
+   *  first frame a finding rather than a number */
+  settledGpuMs: number | null;
+  firstDrawCalls: number | null;
+  /** GL textures resident before create() and after the first frame */
+  glTexturesBefore: number;
+  glTexturesAfter: number;
+  /** What the warmer had already handed the card, if one is installed.
+   *  Opaque here on purpose: this file measures, it does not interpret. */
+  warmed: unknown;
+  notes: string[];
+}
+
+/**
+ * GPU nanoseconds, honestly.
+ *
+ * Two facts make this class necessary and shape all of it (both learned the
+ * expensive way in E1/E2):
+ *
+ *  1. CPU time is NOT GPU time. E1 read 150–250 ms per frame from a naive
+ *     read-back and proved it an artefact by deleting 306 MB of textures and
+ *     watching the number not move. A number that ignores its own alleged cause
+ *     is measuring something else.
+ *  2. `EXT_disjoint_timer_query` counts GPU WORK rather than wall-clock waiting,
+ *     which is why it stays valid in an automation browser whose tab is hidden
+ *     and therefore gets no frame clock at all. But its results must be
+ *     COLLECTED LATER — in a hidden tab the answers take upward of a second to
+ *     become available, and polling them straight away reads back nothing.
+ *
+ * So: one query per frame, never nested, results harvested on demand long
+ * afterwards, and every result thrown away if the driver raises a disjoint.
+ */
+class GpuClock {
+  private gl: WebGLRenderingContext | null = null;
+  private ext: Record<string, unknown> | null = null;
+  private webgl2 = false;
+  private active: unknown = null;
+  private pending: Array<{ label: number; query: unknown }> = [];
+  private done = new Map<number, number>();
+  private disjointSeen = false;
+  readonly notes: string[] = [];
+
+  attach(gl: WebGLRenderingContext): boolean {
+    if (this.ext !== null) return true;
+    const g = gl as unknown as { getExtension: (n: string) => unknown; constructor: { name: string } };
+    const two = g.getExtension("EXT_disjoint_timer_query_webgl2");
+    const one = g.getExtension("EXT_disjoint_timer_query");
+    const ext = two ?? one;
+    if (ext === null || ext === undefined) {
+      this.notes.push("GPU time: EXT_disjoint_timer_query is unavailable — GPU columns read null, CPU columns are unaffected.");
+      return false;
+    }
+    this.gl = gl;
+    this.ext = ext as Record<string, unknown>;
+    this.webgl2 = two !== null && two !== undefined;
+    return true;
+  }
+
+  get ready(): boolean {
+    return this.ext !== null;
+  }
+
+  begin(label: number): void {
+    if (this.ext === null || this.gl === null || this.active !== null) return;
+    const ext = this.ext;
+    const gl = this.gl as unknown as Record<string, unknown>;
+    const create = (this.webgl2 ? gl["createQuery"] : ext["createQueryEXT"]) as (() => unknown) | undefined;
+    const beginQ = (this.webgl2 ? gl["beginQuery"] : ext["beginQueryEXT"]) as ((t: unknown, q: unknown) => void) | undefined;
+    if (create === undefined || beginQ === undefined) return;
+    const host = this.webgl2 ? gl : ext;
+    const query = create.call(host);
+    if (query === null || query === undefined) return;
+    try {
+      beginQ.call(host, ext["TIME_ELAPSED_EXT"], query);
+      this.active = query;
+      this.pending.push({ label, query });
+    } catch {
+      // a driver that refuses the query is a null column, never a thrown frame
+      this.active = null;
+    }
+  }
+
+  end(): void {
+    if (this.ext === null || this.gl === null || this.active === null) return;
+    const ext = this.ext;
+    const gl = this.gl as unknown as Record<string, unknown>;
+    const endQ = (this.webgl2 ? gl["endQuery"] : ext["endQueryEXT"]) as ((t: unknown) => void) | undefined;
+    const host = this.webgl2 ? gl : ext;
+    try {
+      endQ?.call(host, ext["TIME_ELAPSED_EXT"]);
+    } catch {
+      /* same rule as begin(): never let measurement break the frame */
+    }
+    this.active = null;
+  }
+
+  /** Harvest whatever the driver has finished. Safe to call as often as liked;
+   *  a query that is not ready yet simply stays in the queue. */
+  collect(): void {
+    if (this.ext === null || this.gl === null) return;
+    const ext = this.ext;
+    const gl = this.gl as unknown as Record<string, unknown> & { getParameter: (p: unknown) => unknown };
+    const disjoint = gl.getParameter(ext["GPU_DISJOINT_EXT"]);
+    if (disjoint === true) {
+      this.disjointSeen = true;
+      this.notes.push("GPU time: the driver reported a DISJOINT — some results were discarded as untrustworthy.");
+    }
+    const getObj = (this.webgl2 ? gl["getQueryParameter"] : ext["getQueryObjectEXT"]) as
+      | ((q: unknown, p: unknown) => unknown)
+      | undefined;
+    const del = (this.webgl2 ? gl["deleteQuery"] : ext["deleteQueryEXT"]) as ((q: unknown) => void) | undefined;
+    if (getObj === undefined) return;
+    const host = this.webgl2 ? gl : ext;
+    const availableEnum = this.webgl2 ? gl["QUERY_RESULT_AVAILABLE"] : ext["QUERY_RESULT_AVAILABLE_EXT"];
+    const resultEnum = this.webgl2 ? gl["QUERY_RESULT"] : ext["QUERY_RESULT_EXT"];
+    const still: Array<{ label: number; query: unknown }> = [];
+    for (const p of this.pending) {
+      if (p.query === this.active) {
+        still.push(p);
+        continue;
+      }
+      const ready = getObj.call(host, p.query, availableEnum);
+      if (ready !== true) {
+        still.push(p);
+        continue;
+      }
+      if (!disjoint) {
+        const ns = getObj.call(host, p.query, resultEnum);
+        if (typeof ns === "number") this.done.set(p.label, ns / 1e6);
+      }
+      del?.call(host, p.query);
+    }
+    this.pending = still;
+  }
+
+  ms(label: number): number | null {
+    return this.done.get(label) ?? null;
+  }
+
+  /** Median of every collected frame in [from, to), or null if none arrived. */
+  medianRange(from: number, to: number): number | null {
+    const xs: number[] = [];
+    for (const [label, ms] of this.done) if (label >= from && label < to) xs.push(ms);
+    if (xs.length === 0) return null;
+    xs.sort((a, b) => a - b);
+    return xs[Math.floor(xs.length / 2)] ?? null;
+  }
+
+  get sawDisjoint(): boolean {
+    return this.disjointSeen;
+  }
+
+  dispose(): void {
+    this.end();
+    this.pending = [];
+    this.done.clear();
+    this.ext = null;
+    this.gl = null;
+  }
+}
+
 const RING_CAP = 4096;
 const FRAME_BUDGET_MS = 1000 / 60;
 const HALF_BUDGET_MS = 1000 / 30;
@@ -187,6 +370,9 @@ export interface PerfHost {
   scope: () => ReadonlySet<string> | null;
   /** every stem the art map offers (i.e. what exists on disk) */
   artKeys: () => ReadonlySet<string>;
+  /** R5-N3 · E4: what the pre-warmer has handed the card so far, when one is
+   *  installed. Optional so the probe stays usable without it. */
+  warmed?: () => unknown;
 }
 
 const round = (v: number, dp = 3): number => {
@@ -229,6 +415,36 @@ export class PerfProbe {
   private onPreStep: (() => void) | null = null;
   private onPostRender: (() => void) | null = null;
 
+  // ── R5-N3 · E4 · the level-start record ──────────────────────────────────
+  private gpu = new GpuClock();
+  /** monotonically increasing frame id, used as the GPU query label */
+  private frameLabel = 0;
+  /** −1 until create() has run for the current phase, then counts frames */
+  private sinceCreate = -1;
+  private ff: {
+    phase: string;
+    loadStart: number | null;
+    loadMs: number | null;
+    filesQueued: number;
+    createMs: number | null;
+    firstCpuMs: number | null;
+    firstDrawCalls: number | null;
+    firstLabel: number | null;
+    glBefore: number;
+    glAfter: number;
+  } = {
+    phase: "",
+    loadStart: null,
+    loadMs: null,
+    filesQueued: 0,
+    createMs: null,
+    firstCpuMs: null,
+    firstDrawCalls: null,
+    firstLabel: null,
+    glBefore: 0,
+    glAfter: 0,
+  };
+
   constructor(host: PerfHost) {
     this.host = host;
     this.windowStart = performance.now();
@@ -244,9 +460,75 @@ export class PerfProbe {
     if (this.installed) return;
     this.installed = true;
     this.wrapRenderMethods(proto);
+    this.wrapLifecycle(proto);
     this.wrapGl();
     this.wrapTextures();
     this.wrapLoop();
+  }
+
+  /** GL textures resident right now — the count Phaser itself keeps. */
+  private glTextureCount(): number {
+    const r = this.host.game.renderer as unknown as { glTextureWrappers?: unknown[] };
+    return r.glTextureWrappers?.length ?? 0;
+  }
+
+  /**
+   * R5-N3 · E4. Times `preload` and `create` so the level start can be told as
+   * three numbers instead of one: how long the child waited, how long the scene
+   * took to build, and what the first drawn frame then cost.
+   *
+   * Same law as every other wrapper here — it records and returns; it changes
+   * no argument, swallows no exception and alters no order.
+   */
+  private wrapLifecycle(proto: object): void {
+    const bag = proto as Record<string, unknown>;
+    const probe = this;
+
+    const origPreload = bag["preload"];
+    if (typeof origPreload === "function") {
+      const fn = origPreload as (...a: unknown[]) => unknown;
+      bag["preload"] = function (this: Phaser.Scene, ...args: unknown[]): unknown {
+        probe.ff = {
+          phase: probe.host.phase(),
+          loadStart: performance.now(),
+          loadMs: null,
+          filesQueued: 0,
+          createMs: null,
+          firstCpuMs: null,
+          firstDrawCalls: null,
+          firstLabel: null,
+          glBefore: probe.glTextureCount(),
+          glAfter: 0,
+        };
+        probe.sinceCreate = -1;
+        const out = fn.apply(this, args);
+        const loader = this.load as unknown as { list?: { size?: number } };
+        probe.ff.filesQueued = loader.list?.size ?? 0;
+        // "complete" is Phaser.Loader.Events.COMPLETE — spelled out because this
+        // file imports Phaser as a TYPE only and must not pull the engine in.
+        this.load.once("complete", () => {
+          if (probe.ff.loadStart !== null) probe.ff.loadMs = performance.now() - probe.ff.loadStart;
+        });
+        return out;
+      };
+      this.protoPatched.push({ obj: bag, key: "preload", orig: origPreload });
+    }
+
+    const origCreate = bag["create"];
+    if (typeof origCreate === "function") {
+      const fn = origCreate as (...a: unknown[]) => unknown;
+      bag["create"] = function (this: unknown, ...args: unknown[]): unknown {
+        const t0 = performance.now();
+        try {
+          return fn.apply(this, args);
+        } finally {
+          probe.ff.createMs = performance.now() - t0;
+          probe.ff.phase = probe.host.phase();
+          probe.sinceCreate = 0; // the next postrender is THE first frame
+        }
+      };
+      this.protoPatched.push({ obj: bag, key: "create", orig: origCreate });
+    }
   }
 
   uninstall(): void {
@@ -269,6 +551,7 @@ export class PerfProbe {
     if (this.onPostRender !== null) ev.off("postrender", this.onPostRender);
     this.onPreStep = null;
     this.onPostRender = null;
+    this.gpu.dispose();
   }
 
   private wrapRenderMethods(proto: object): void {
@@ -357,9 +640,27 @@ export class PerfProbe {
     let stepStart = 0;
     this.onPreStep = (): void => {
       stepStart = performance.now();
+      this.frameLabel++;
+      // R5-N3 · E4: zero the counter HERE, not at postrender. Work done between
+      // two frames — the pre-warmer draws off screen in exactly that gap — was
+      // otherwise billed to the next frame, which read 166 draw calls for a
+      // frame that made 38.
+      this.drawCalls = 0;
+      const gl = (this.host.game.renderer as unknown as { gl?: WebGLRenderingContext }).gl;
+      if (gl !== undefined && gl !== null && this.gpu.attach(gl)) this.gpu.begin(this.frameLabel);
     };
     this.onPostRender = (): void => {
       const end = performance.now();
+      this.gpu.end();
+      if (this.sinceCreate >= 0) {
+        if (this.sinceCreate === 0) {
+          this.ff.firstCpuMs = end - stepStart;
+          this.ff.firstDrawCalls = this.drawCalls;
+          this.ff.firstLabel = this.frameLabel;
+          this.ff.glAfter = this.glTextureCount();
+        }
+        this.sinceCreate++;
+      }
       const t0 = performance.now();
       if (this.glPatched === null && this.glTries < 120) {
         this.glTries++;
@@ -373,7 +674,6 @@ export class PerfProbe {
       this.lastFrameEnd = end;
       this.frames++;
       this.drawCallRing.push(this.drawCalls);
-      this.drawCalls = 0;
       if (this.injectMs > 0) burn(this.injectMs);
       this.overhead += performance.now() - t0 - this.injectMs;
     };
@@ -534,6 +834,52 @@ export class PerfProbe {
       },
       art: { probed: this.artProbes.size, resolved, artGaps, scopeBugs, loadBugs, misses },
       overheadMsPerFrame: round(overheadPerFrame),
+      notes,
+    };
+  }
+
+  /**
+   * R5-N3 · E4 · What the level start actually cost.
+   *
+   * Must be awaited, and the wait is the point: GPU query results are not ready
+   * when the frame ends, and in a hidden tab they need upward of a second. A
+   * synchronous version of this method would return nulls and look like a
+   * missing extension.
+   *
+   * Call it after entering a phase. It reports the frame that `sample()` and
+   * `drive()` are built to discard.
+   */
+  async firstFrame(settleMs = 1600): Promise<FirstFrameReport> {
+    const notes: string[] = [];
+    await new Promise<void>((r) => setTimeout(r, settleMs));
+    this.gpu.collect();
+    const first = this.ff.firstLabel;
+    const firstGpuMs = first === null ? null : this.gpu.ms(first);
+    const settledGpuMs = first === null ? null : this.gpu.medianRange(first + 1, first + 31);
+
+    if (!this.gpu.ready) notes.push("GPU columns are null: no timer-query extension on this context.");
+    if (this.gpu.sawDisjoint) notes.push("A GPU disjoint occurred — treat GPU columns as indicative, and re-run.");
+    if (first === null) notes.push("No frame was drawn after create(): in a hidden tab nothing renders on its own — drive frames first (rafStep/drive).");
+    if (firstGpuMs === null && this.gpu.ready && first !== null) {
+      notes.push(`The first frame's GPU result had not arrived after ${settleMs} ms — raise settleMs and read again.`);
+    }
+    notes.push(
+      "loadMs is wall-clock and therefore network-dependent: it is a record of THIS run's conditions, not a property of the build.",
+    );
+    for (const n of this.gpu.notes) notes.push(n);
+
+    return {
+      phase: this.ff.phase,
+      loadMs: this.ff.loadMs === null ? null : round(this.ff.loadMs, 1),
+      filesQueued: this.ff.filesQueued,
+      createMs: this.ff.createMs === null ? null : round(this.ff.createMs, 2),
+      firstCpuMs: this.ff.firstCpuMs === null ? null : round(this.ff.firstCpuMs, 2),
+      firstGpuMs: firstGpuMs === null ? null : round(firstGpuMs, 2),
+      settledGpuMs: settledGpuMs === null ? null : round(settledGpuMs, 2),
+      firstDrawCalls: this.ff.firstDrawCalls,
+      glTexturesBefore: this.ff.glBefore,
+      glTexturesAfter: this.ff.glAfter,
+      warmed: this.host.warmed?.() ?? null,
       notes,
     };
   }

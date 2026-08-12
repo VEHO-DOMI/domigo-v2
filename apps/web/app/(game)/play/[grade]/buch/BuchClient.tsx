@@ -27,6 +27,7 @@ export default function BuchClient(props: {
   startPhase?: string;
   /** R5-A6: draw the collision grid over the world (teacher door, ?grid=1). */
   debugGrid?: boolean;
+  noWarm?: boolean;
   /** R5-W1 · E1: attach the measuring instrument (teacher door, ?perf=1). */
   debugPerf?: boolean;
   /** R5-W1 · D1: which card bench surface to render (dev-only, `?karten=`). */

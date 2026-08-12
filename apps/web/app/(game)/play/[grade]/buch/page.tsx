@@ -17,10 +17,10 @@ export default async function BuchPage({
   searchParams,
 }: {
   params: Promise<{ grade: string }>;
-  searchParams: Promise<{ phase?: string; grid?: string; perf?: string; karten?: string }>;
+  searchParams: Promise<{ phase?: string; grid?: string; perf?: string; karten?: string; warm?: string }>;
 }) {
   const { grade: gradeStr } = await params;
-  const { phase, grid, perf, karten } = await searchParams;
+  const { phase, grid, perf, karten, warm } = await searchParams;
   if (gradeStr !== "1") redirect("/home");
   // pre-release gate with the teacher door (the run/world posture)
   const teacher = await getTeacherForPage();
@@ -62,6 +62,11 @@ export default async function BuchPage({
   const debugGrid = teacher !== null && grid === "1";
   // R5-W1 · E1: the measuring instrument, gated exactly like the grid door
   const debugPerf = teacher !== null && perf === "1";
+  // R5-N3 · E4: the pre-warmer's OFF switch, gated exactly like the two above.
+  // It exists so the fix can be measured against itself on ONE build — a
+  // before/after taken from two different builds compares two machines' moods
+  // as much as it compares the change.
+  const noWarm = teacher !== null && warm === "0";
   // R5-W1 · D1: the card bench — a measuring instrument, not a surface of the
   // game. Two locks, not one: the teacher door AND the build. It cannot be
   // opened in a production build even by a teacher, because a bench that
@@ -80,6 +85,7 @@ export default async function BuchPage({
         startPhase={startPhase}
         debugGrid={debugGrid}
         debugPerf={debugPerf}
+        noWarm={noWarm}
         cardBench={cardBench}
       />
     </main>
