@@ -15,6 +15,8 @@ import Phaser from "phaser";
 import { glyphAt, isSlope, isSolid } from "./collide.ts";
 import { type CompositionSpec, type MassKit, ROOM_SHADOW_INK, compositionFor, heroEdgeFor, nearPlaneTint } from "./composition.ts";
 import { phaseArtScope } from "./artScope.ts";
+import { TextureWarmer, type WarmScene, type WarmStats } from "./warmer.ts";
+import { WARM_MPX_PER_FRAME } from "./warm.ts";
 import { type LayerPiece, coverFit, planLayers } from "./layers.ts";
 import { AIR_DEPTH, LIFE_PARALLAX, type AirPiece, planBandShade, planHaze, planLife, planMotes, planShafts, planSources, shaftQuads, vignetteBands } from "./air.ts";
 import { NEAR_PLANE_KINDS, CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, claimedPlatformCells, crustGrain, hash01, ledgeGrain, massGrain, planMass, planPlatformShadows, tileAnchorFor, tileScaleFor } from "./mass.ts";
@@ -261,6 +263,8 @@ export interface PaintSceneCfg {
   letterLedger?: () => { takenCells: readonly string[]; purse: number; found: number };
   /** R5-A6: draw the collision grid over the world (teacher door, ?grid=1). */
   debugGrid?: boolean;
+  /** R5-N3 · E4: skip the pre-warmer entirely (teacher door `?warm=0`). */
+  noWarm?: boolean;
   /** PB-F2 jump-feel candidate (dev only; undefined = the shipped model). */
   airModel?: AirModel;
 }
@@ -875,6 +879,13 @@ export class PaintScene extends Phaser.Scene {
   private comp: CompositionSpec | null;
   /** R5-W1 · E1: the stems this phase may ask for (artScope.ts). */
   private readonly scope: ReadonlySet<string>;
+  /** R5-N3 · E4: hands this phase's textures to the graphics card during the
+   *  download, so the first drawn frame is not where they all arrive at once. */
+  private warmer: TextureWarmer | null = null;
+  /** create() has run ⇒ the next drawn frame is the one the child sees */
+  private warmCreated = false;
+  /** frames drawn since create() — the warmer waits for the first one */
+  private warmFramesDrawn = 0;
 
   constructor(cfg: PaintSceneCfg) {
     super({ key: "paint" });
@@ -913,6 +924,60 @@ export class PaintScene extends Phaser.Scene {
       if (!this.textures.exists(`pb-${stem}`)) this.load.image(`pb-${stem}`, url);
     }
     this.keepLoaderMoving();
+    this.startWarming();
+  }
+
+  /**
+   * R5-N3 · E4 · HAND THE TEXTURES OVER WHILE THE CHILD IS STILL WAITING.
+   *
+   * A file that has finished downloading is queued for warming at once, and the
+   * queue is drained a few milliseconds per frame from here on. This costs no
+   * load time: during a download the graphics card is idle and the network is
+   * the bottleneck, so the warming happens in gaps that already existed.
+   *
+   * The drain rides the GAME's step rather than the scene's update, because a
+   * scene that is LOADING does not get an update — which is precisely the
+   * window this needs to work in.
+   */
+  private startWarming(): void {
+    if (this.cfg.noWarm === true) return;
+    const warmer = new TextureWarmer(this as unknown as WarmScene);
+    this.warmer = warmer;
+    const onFile = (key: string): void => {
+      if (typeof key === "string" && key.startsWith("pb-")) warmer.enqueue([key]);
+    };
+    // THE WARMER NEVER TOUCHES THE FIRST FRAME. Phaser emits POST_STEP inside
+    // the same step that renders, so a slice drained here is billed to the frame
+    // about to be drawn — and until this guard existed, the frame it added work
+    // to was precisely the expensive one. Measured on p2, same build: 122–134 ms
+    // without the warmer against 166 ms with it, and 49 draw calls against 79.
+    // Warming therefore runs WHILE THE ART DOWNLOADS (no frame is on screen yet)
+    // and again from the second drawn frame onward — never in between.
+    const onStep = (): void => {
+      if (this.warmCreated && this.warmFramesDrawn < 1) return;
+      warmer.drain(WARM_MPX_PER_FRAME);
+    };
+    const onRendered = (): void => {
+      if (this.warmCreated) this.warmFramesDrawn++;
+    };
+    this.load.on(Phaser.Loader.Events.FILE_COMPLETE, onFile);
+    this.game.events.on(Phaser.Core.Events.POST_STEP, onStep);
+    this.game.events.on(Phaser.Core.Events.POST_RENDER, onRendered);
+    // Every listener above is removed here. The E1 lesson: a timer or listener
+    // that outlives its scene is a leak that only shows up after the fourth
+    // Kleckskammer round-trip.
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      this.load.off(Phaser.Loader.Events.FILE_COMPLETE, onFile);
+      this.game.events.off(Phaser.Core.Events.POST_STEP, onStep);
+      this.game.events.off(Phaser.Core.Events.POST_RENDER, onRendered);
+      warmer.shutdown();
+      this.warmer = null;
+    });
+  }
+
+  /** R5-N3 · E4: what the warmer has handed over, for the perf door. */
+  warmReport(): WarmStats | null {
+    return this.warmer?.report ?? null;
   }
 
   /**
@@ -1037,6 +1102,43 @@ export class PaintScene extends Phaser.Scene {
     this.cameras.main.setZoom(RENDER_SCALE);
     this.cameras.main.centerOn(fromSubs(this.player.x), fromSubs(this.player.y) - LOGICAL_H / 4);
     this.scale.refresh(); // the P-48 lesson: assert geometry at scene entry
+    this.finishWarming();
+  }
+
+  /**
+   * R5-N3 · E4 · The last thing before the child sees anything.
+   *
+   * Two jobs, and the camera must already be placed for either to mean
+   * anything — which is why this sits at the very end of create():
+   *
+   *  1. Compile the shader programs the first frame would otherwise compile
+   *     while it is being looked at. Measured on p1: 128.8 ms → 61.3 ms from
+   *     this alone. Two throwaway shapes, drawn off screen, then destroyed.
+   *  2. Queue what create() has just generated — the procedural fallbacks and
+   *     the canvas textures — and put the whole queue in the order the opening
+   *     screen needs it, nearest first. It does NOT drain here; see below.
+   */
+  private finishWarming(): void {
+    const warmer = this.warmer;
+    if (warmer === null) return;
+    const plain = this.add.graphics().setVisible(false);
+    plain.fillStyle(0xffffff, 1).fillRect(0, 0, 8, 8).lineStyle(1, 0xffffff, 1).strokeRect(0, 0, 8, 8);
+    const additive = this.add.graphics().setVisible(false).setBlendMode(Phaser.BlendModes.ADD);
+    additive.fillStyle(0xffffff, 0.5).fillCircle(4, 4, 4);
+    warmer.warmPipelines([plain, additive]);
+    plain.destroy();
+    additive.destroy();
+    // The downloaded art is only part of it: create() has just generated the
+    // procedural fallbacks and the canvas textures, and the card has never seen
+    // those either. The display list is what the renderer is about to walk.
+    warmer.enqueueDrawn();
+    warmer.prioritise();
+    this.warmCreated = true;
+    // NO blocking drain here, and that is a measured decision, not an omission.
+    // Phaser runs create() inside the same step that renders the first frame, so
+    // warming here does not move the cost off that frame — it only moves it a
+    // few lines earlier inside it. The win comes from the frames that run WHILE
+    // the art downloads, which is where the ordering above sends it.
   }
 
   /** The harness + HUD read through this (never Phaser internals). */
