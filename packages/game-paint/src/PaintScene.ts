@@ -22,7 +22,7 @@ import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
-import { INK_BODY, INK_CROWN_DARK, INK_CROWN_LIT, INK_DEPTH_ROWS, inkCrownPoints, inkDepthAt, inkDepthTint, inkScrollAt } from "./ink.ts";
+import { INK_BODY, INK_CROWN_DARK, INK_CROWN_LIT, INK_DEPTH_ROWS, inkCrownPoints, inkDepthAt, inkDepthTint, inkScrollAt, planInkColumns } from "./ink.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
 import { CHALK_COLOURS, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
@@ -3409,7 +3409,7 @@ export class PaintScene extends Phaser.Scene {
   private massKit(): MassKit | null {
     const kit = this.comp?.mass;
     if (kit === undefined) return null;
-    const core = [kit.crust[0], kit.body[0], kit.fade, kit.sediment];
+    const core = [kit.crust[0], kit.body[0], kit.fade[0], kit.sediment];
     for (const stem of core) {
       if (stem === undefined || !this.textures.exists(`pb-${stem}`)) return null;
     }
@@ -3528,15 +3528,10 @@ export class PaintScene extends Phaser.Scene {
             fill.fillTriangle(c * TILE + 1, (r + 1) * TILE, c * TILE + 8, r * TILE + 4, c * TILE + 15, (r + 1) * TILE);
           }
         } else if (g === "w") {
-          // R5-W1 · A2 · THE INK IS OPAQUE NOW (B1's critic: „halbtransparent —
-          // man sieht in p2 die Wandkarte durch den See"). Ink is the one
-          // substance in the chapter whose whole fiction is that it swallows
-          // things; at alpha 0.92 the classroom's wall map showed straight
-          // through the lake. Full alpha, and a value that DEEPENS with depth,
-          // so a pool reads as having a bottom the way the terrain does.
-          const depth = Math.min(inkDepthAt(this.grid, c, r), INK_DEPTH_ROWS);
-          fill.fillStyle(mixMultiply(INK_BODY, inkDepthTint(depth)), 1);
-          fill.fillRect(c * TILE, r * TILE, TILE, TILE);
+          // R5-W1 · A2 made the ink opaque with a value that deepens; R5-N3 · A4
+          // moved that fill OUT of the per-cell loop entirely — see the ink-column
+          // pass after this loop. A cell has one value, so a per-cell fill can
+          // only ever be a staircase (D-42).
         } else if (isSlope(g)) {
           fill.fillStyle(EARTH);
           const x = c * TILE;
@@ -3560,6 +3555,18 @@ export class PaintScene extends Phaser.Scene {
           }
         }
       }
+    }
+
+    // R5-N3 · A4 · THE INK BODY, POURED INSTEAD OF STAMPED (D-42).
+    // One gradient per vertical run of ink, so the depth ramp works per PIXEL
+    // instead of per 16-px row. The staircase the blind critic measured — four
+    // stops, and in p2 a flat bottom half — was not a tuning error; it was what a
+    // per-cell fill can produce and nothing else.
+    for (const col of planInkColumns(this.grid)) {
+      const top = mixMultiply(INK_BODY, inkDepthTint(col.dTop));
+      const bot = mixMultiply(INK_BODY, inkDepthTint(col.dBot));
+      fill.fillGradientStyle(top, top, bot, bot, 1, 1, 1, 1);
+      fill.fillRect(col.c * TILE, col.r0 * TILE, TILE, (col.r1 - col.r0 + 1) * TILE);
     }
 
     // AA2 run-based dressing: canopy fringe, planks, spikes, pool, pit soil

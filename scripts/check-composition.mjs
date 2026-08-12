@@ -30,6 +30,7 @@ import { PNG } from "pngjs";
 import { COMPOSITION, heroEdgeFor, nearPlaneTint } from "../packages/game-paint/src/composition.ts";
 import { planLayers, planeCovers } from "../packages/game-paint/src/layers.ts";
 import {
+  BODY_DEEP_SHADE,
   MIN_GRID_LOCK_DISTANCE,
   MIN_PAINT_PERIOD_CELLS,
   NO_METRONOME_MIN_PERIOD,
@@ -182,14 +183,14 @@ for (const { label, ph, spec } of withSpec) {
     nearPlaneTint(spec.key) & 255,
   );
   const course = measureStems([...spec.mass.crust]);
-  const rest = measureStems([...spec.mass.body, spec.mass.fade, spec.mass.sediment, ...entityStems]);
+  const rest = measureStems([...spec.mass.body, ...(spec.mass.bodyDeep ?? []), ...spec.mass.fade, spec.mass.sediment, ...entityStems]);
   const L3 = course && rest
     ? {
       lum: (course.lum * nearPush * course.samples + rest.lum * rest.samples) / (course.samples + rest.samples),
       sat: (course.sat * course.samples + rest.sat * rest.samples) / (course.samples + rest.samples),
       samples: course.samples + rest.samples,
     }
-    : measureStems([...spec.mass.crust, ...spec.mass.body, spec.mass.fade, spec.mass.sediment, ...entityStems]);
+    : measureStems([...spec.mass.crust, ...spec.mass.body, ...(spec.mass.bodyDeep ?? []), ...spec.mass.fade, spec.mass.sediment, ...entityStems]);
   const planes = {
     L0: measureColors([...spec.wash.colors]),
     L1: measureStems(spec.far.segments),
@@ -237,6 +238,25 @@ const BANDS = bandsFor(K);
       note(`${label} L2↔L3 separation: ${dLum.toFixed(1)}% lum · ${dSat.toFixed(1)}% sat — PASS`);
     }
   }
+  // R5-N3 · A4 · THE DEEP ROW IS A MEASUREMENT, NOT A PREFERENCE.
+  // `BODY_DEEP_SHADE` divides the depth multiply so the composed fall stays
+  // smooth while the darkness moves into pigment. That only holds while the
+  // shipped deep row really is that much darker than the body — so the constant
+  // is re-derived from the art here. Repaint the deep row and this says so,
+  // instead of the ramp quietly double-darkening a whole band.
+  if (spec.mass.bodyDeep) {
+    const shallow = measureStems([...spec.mass.body]);
+    const deep = measureStems([...spec.mass.bodyDeep]);
+    if (shallow && deep) {
+      const ratio = deep.lum / shallow.lum;
+      const drift = Math.abs(ratio - BODY_DEEP_SHADE);
+      if (drift > 0.03) {
+        fail("layer-value", `${label}: the painted deep row is ${(ratio * 100).toFixed(1)}% of the body, but BODY_DEEP_SHADE says ${(BODY_DEEP_SHADE * 100).toFixed(1)}% — the depth ramp would ${ratio < BODY_DEEP_SHADE ? "double-darken" : "under-darken"} the lower body band`);
+      } else {
+        note(`${label} deep-row pigment: ${(ratio * 100).toFixed(1)}% of body (constant ${(BODY_DEEP_SHADE * 100).toFixed(1)}%, drift ${(drift * 100).toFixed(1)} pts) — PASS`);
+      }
+    }
+  }
 }
 
 // ── 2 · COVERAGE ─────────────────────────────────────────────────────────────
@@ -258,7 +278,7 @@ for (const { label, ph, spec } of withSpec) {
 // ── 3 · NO-NAKED-FILL ────────────────────────────────────────────────────────
 console.log("3 · no-naked-fill audit (doc 36 §4.3)");
 for (const { label, ph, spec } of withSpec) {
-  const missing = [...spec.mass.crust.slice(0, 1), spec.mass.body[0], spec.mass.fade, spec.mass.sediment].filter((s) => !artFiles.has(s));
+  const missing = [...spec.mass.crust.slice(0, 1), spec.mass.body[0], spec.mass.fade[0], spec.mass.sediment].filter((s) => !artFiles.has(s));
   if (missing.length > 0) { fail("no-naked-fill", `${label}: mass kit art missing (${missing.join(", ")}) — the phase would fall back to flat fills`); continue; }
   const plan = planMass(ph.rows, spec.mass, srcSize);
   const naked = nakedFills(plan);

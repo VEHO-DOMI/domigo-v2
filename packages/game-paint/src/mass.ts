@@ -173,6 +173,30 @@ export const DEPTH_TINT_FLOOR = 0x1a;
  */
 export const DEPTH_COOL = { r: 0.34, g: 0.18 } as const;
 
+/**
+ * R5-NACHSTEUER-3 · A4 · WHERE THE PAINTED DEEP ROW TAKES OVER.
+ *
+ * The body band is FADE_DEPTH rows deep, and until now all four of those rows
+ * drew the SAME painting and got their darkness from a multiply. That is the
+ * "tile with a filter" the whole Massen-Kit exists to end: a multiply pulls
+ * every channel toward zero together, so depth arrived as an absence of light
+ * rather than as different paint.
+ *
+ * SPEC_MASSEN_KIT §3 commissions row 2 of the body sheet as "dieselben vier,
+ * eine Blende tiefer". From this depth down, the interior draws THAT row.
+ */
+export const BODY_DEEP_AT = 2;
+/**
+ * …and how much darker that row actually is, measured on the shipped p1 sheet:
+ * 31.67 % against row 1's 45.94 %. The multiply is divided by this, so the
+ * composed value keeps following the same smooth curve while the darkness
+ * itself moves out of the tint and into the pigment.
+ *
+ * It is a MEASUREMENT, not a preference, so `composition.test.ts` re-derives it
+ * from the shipped art: repaint the deep row and the test says so.
+ */
+export const BODY_DEEP_SHADE = 0.689;
+
 /** Which painted sheet a cell this deep is laid in. */
 export const bandAt = (d: number): "body" | "fade" | "sediment" =>
   d >= SEDIMENT_DEPTH ? "sediment" : d >= FADE_DEPTH ? "fade" : "body";
@@ -193,9 +217,13 @@ export const depthShadeAt = (d: number): number => {
  * distance rather than as dirt, and the darkest dark in the book is still a
  * colour rather than an absence of one.
  */
-export const depthTintAt = (d: number): number => {
-  const s = depthShadeAt(d);
-  const cool = 1 - s;
+export const depthTintAt = (d: number, pigmentShade = 1): number => {
+  const total = depthShadeAt(d);
+  // The multiply only has to carry the part of the fall the PAINT does not.
+  // `cool` still tracks the TRUE depth, not the reduced multiply — otherwise a
+  // deeper-painted row would read as nearer, which is the opposite of the point.
+  const s = Math.min(1, total / pigmentShade);
+  const cool = 1 - total;
   const ch = (bias: number): number =>
     Math.max(DEPTH_TINT_FLOOR, Math.round(255 * s * (1 - bias * cool))) & 0xff;
   return (ch(DEPTH_COOL.r) << 16) | (ch(DEPTH_COOL.g) << 8) | ch(0);
@@ -980,7 +1008,13 @@ export const planMass = (
         && !claimed.has(`${c1 + 1},${r}`)
         && depthBucketAt(depthAt(grid, c1 + 1, r)) === bucket
       ) c1++;
-      const variants = band === "body" ? kit.body : [band === "fade" ? kit.fade : kit.sediment];
+      // Below BODY_DEEP_AT the interior draws the deeper-PAINTED row instead of
+      // wearing more multiply — when the phase has one. Phases still on the
+      // shared kit keep the single-row behaviour exactly.
+      const deepBody = band === "body" && bucket >= BODY_DEEP_AT ? kit.bodyDeep : undefined;
+      const variants = band === "body"
+        ? (deepBody ?? kit.body)
+        : (band === "fade" ? kit.fade : [kit.sediment]);
       // …laid in SEGMENTS, like the course above it and on its own table, so the
       // mass under the hall stops being one 656-px tileSprite of one variant
       // (measured in the running p1 — the wallpaper the critique was reading)
@@ -988,7 +1022,7 @@ export const planMass = (
       for (let k = 0; seg <= c1; k++) {
         const want = BODY_SEGMENT_CELLS[(c + r + k) % BODY_SEGMENT_CELLS.length] ?? 5;
         const segEnd = Math.min(seg + want - 1, c1);
-        const stem = variants[(c + r + k) % variants.length] ?? variants[0] ?? kit.fade;
+        const stem = variants[(c + r + k) % variants.length] ?? variants[0] ?? kit.fade[0] ?? "";
         out.push({
           kind: band, stem, c: seg, r, x: seg * TILE, y: r * TILE,
           w: (segEnd - seg + 1) * TILE, h: TILE,
@@ -1000,7 +1034,7 @@ export const planMass = (
           // — the five lights are what audit 6 counts as variety, and a ramp
           // that replaced them instead of scaling them would turn a long floor
           // back into wallpaper while looking, to the eye, like a fix.
-          tint: mixMultiply(courseTintAt(c, r, k, 11), depthTintAt(bucket)),
+          tint: mixMultiply(courseTintAt(c, r, k, 11), depthTintAt(bucket, deepBody === undefined ? 1 : BODY_DEEP_SHADE)),
           depth: DEPTH.body,
         });
         seg = segEnd + 1;

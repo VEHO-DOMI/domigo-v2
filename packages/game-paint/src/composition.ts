@@ -56,7 +56,15 @@ export interface MassKit {
   crustCapR: string;
   /** seamless interior body variants (≥1), then the depth ramp. */
   body: readonly string[];
-  fade: string;
+  /**
+   * The same body variants painted one stop deeper (SPEC_MASSEN_KIT §3). Where
+   * a phase has them, the lower half of the body band draws THESE instead of
+   * wearing a heavier multiply — see BODY_DEEP_AT. Optional: phases still on
+   * the shared kit have no deep row and keep the single-row behaviour.
+   */
+  bodyDeep?: readonly string[];
+  /** deep-paper variants (≥1) — the middle sheet the ramp hands over to. */
+  fade: readonly string[];
   sediment: string;
   /** carved trims wherever mass meets air. */
   edgeL: string;
@@ -353,7 +361,7 @@ export const isPlaceholderStem = (stem: string): boolean => stem.startsWith(PLAC
  * (scripts/check-paint-art.mjs).
  */
 export const massStems = (m: MassKit): string[] => {
-  const out = [...m.crust, m.crustCapL, m.crustCapR, ...m.body, m.fade, m.sediment];
+  const out = [...m.crust, m.crustCapL, m.crustCapR, ...m.body, ...(m.bodyDeep ?? []), ...m.fade, m.sediment];
   out.push(m.edgeL, m.edgeR, m.cornerBL, m.cornerBR, m.inCornerL, m.inCornerR, m.rampUp, m.rampDown);
   out.push(...m.platObjects.map((p) => p.stem));
   if (m.slide) out.push(m.slide.top, m.slide.mid, m.slide.foot, m.slide.under);
@@ -464,12 +472,78 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
   ],
 };
 
-/** The shared interior + trims — one body for the whole school (AF group 3).
- *  Floating platform objects are NOT shared: see PLAT_OBJECTS. */
-const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crustCapR" | "slide"> => ({
-  body: ["mass_body_a", "mass_body_b"],
-  fade: "mass_fade",
+/**
+ * R5-NACHSTEUER-3 · A4 · WHICH PHASES OWN A PAINTED MASS KIT.
+ *
+ * The Massen-Kit is commissioned per room (SPEC_MASSEN_KIT: three sheet classes
+ * × five phases). It arrives one room at a time, calibration first, so this set
+ * is the seam between "painted" and "still on the shared body".
+ *
+ * It has to be a DECLARED list rather than a probe, because `massStems` feeds
+ * `check-paint-art`, which hard-fails on a stem with no PNG (D-27) — naming a
+ * phase here before its sheets land reds the gate. Add a phase on the same
+ * commit that adds its art, never before.
+ *
+ * EMPTY TODAY, and that is a measured verdict rather than an unfinished
+ * sentence. Batch AS2's p1 sheets were rejected at import: eight of its ten
+ * interior cells do not tile with themselves, by 2.8× to 6.5× their own painted
+ * texture. The sheet passes a naive seam test only because every cell's boundary
+ * row and column are DUPLICATES of the opposite edge — the step is one pixel
+ * further in, where the naive metric never looks. The two cells that do tile are
+ * exactly as many variants as the shared body already has, so wiring them would
+ * add a per-phase code path and change nothing a child could see.
+ *
+ * Everything below this line is the seam AS3 lands on: `paintedInterior`, the
+ * `bodyDeep` band, and the depth-law tests that already prove the ramp holds for
+ * a painted kit. Add "p1" here on the commit that adds art which passes
+ * `node docs/art/import-batch-as.mjs`.
+ */
+const PAINTED_MASS_PHASES = new Set<string>();
+
+const paintedInterior = (phase: string): Pick<MassKit, "body" | "bodyDeep" | "fade" | "sediment"> => ({
+  // Three variants, not the sheet's four: the `_a` column of both rows joins at
+  // 2.0–2.5× its own texture, so the import gate refuses it (import-batch-as.mjs).
+  // Three still beats the two the shared body has, and Audit 6 counts variety.
+  body: [`mass_body_${phase}_b`, `mass_body_${phase}_c`, `mass_body_${phase}_d`],
+  bodyDeep: [`mass_bodydeep_${phase}_b`, `mass_bodydeep_${phase}_c`, `mass_bodydeep_${phase}_d`],
+  // The deep paper stays shared too, for a measured reason rather than caution:
+  // neither delivered fade cell tiles with itself (joins of 13.97 and 15.62
+  // against their own mean steps of 4.34 and 4.39 — 3.2× and 3.6×), so drawn as
+  // a tiling surface they would put a vertical seam through the whole band every
+  // ~41 world px. The import gate refuses them; AS3 re-cuts them.
+  fade: ["mass_fade"],
+  // THE SEDIMENT STAYS SHARED, and the reason is measured rather than cautious.
+  // Koki's AUFHELLEN ruling raised the commissioned sediment from today's 4.8 %
+  // to 7–10 %, and AS2 painted it at 8.78 %. But BAND_HANDOVER.fade = 0.55 was
+  // tuned to walk the fade band down to MEET a near-black sediment: against a
+  // lightened one the chain steps back UP (14.62 × 0.55 = 8.04, then 8.78), and
+  // "never brightens as it deepens" is a law, not a tolerance. The depth-law
+  // test says so out loud.
+  //
+  // The honest resolution is that the handover constants are ART-SPECIFIC, so
+  // the moment a second painted kit exists they have to be derived from the
+  // kit's own measured values instead of being global. That is a real change and
+  // it belongs to whoever paints the phase that NEEDS it: measured over the
+  // shipped grids, p1 draws 60 body and 47 fade pieces and **zero** sediment —
+  // only p2 reaches sediment at all (15 pieces). So wiring a painted sediment
+  // here would change nothing a child can see while breaking a law that
+  // protects what they can. It waits for p2's kit.
   sediment: "mass_sediment",
+});
+
+/** The shared interior + trims — one body for the whole school (AF group 3),
+ *  now only for the phases whose own paper has not been painted yet. */
+const sharedInterior = (): Pick<MassKit, "body" | "fade" | "sediment"> => ({
+  body: ["mass_body_a", "mass_body_b"],
+  fade: ["mass_fade"],
+  sediment: "mass_sediment",
+});
+
+const sharedMass = (phase: string): Omit<MassKit, "crust" | "crustCapL" | "crustCapR" | "slide"> => ({
+  ...(PAINTED_MASS_PHASES.has(phase) ? paintedInterior(phase) : sharedInterior()),
+  // The TRIMS stay shared for every phase: batch AS2's edge sheet was held back
+  // this round (its side edges do not tile vertically — see import-batch-as.mjs),
+  // so no room has painted trims of its own yet.
   edgeL: "mass_edge_l",
   edgeR: "mass_edge_r",
   cornerBL: "mass_corner_bl",
