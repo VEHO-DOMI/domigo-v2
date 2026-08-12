@@ -280,12 +280,31 @@ export const findGlyph = (rows: readonly string[], glyph: string): { c: number; 
 
 export const REACH_ENVELOPE = {
   JUMP_UP: 4,
-  JUMP_DX: 3,
+  /** The widest jump the model may EVER bless. What it blesses HERE is
+   *  `DX_BY_SKY` — a flat number was a lie in both directions (B3). */
+  JUMP_DX: 4,
   HOVER_DX: 7,
   FALL_DRIFT_PER_ROW: 0.5, // cols of air-steer per row fallen (cap below; floor'd)
   FALL_DX_CAP: 4,
   RING_DX: 8,
 } as const;
+
+/** B3 · THE HEADROOM TABLE — indexed by clear rows of sky above the take-off
+ *  feet, valued in columns the jump may cross. Measured off the real
+ *  `stepPlayer` from a STANDSTILL (run-up buys nothing: air control SNAPS, so
+ *  every distance saturates after ~1 tile of ground) and then FLOORED to the
+ *  integer below, so the model always under-promises:
+ *
+ *    sky 2 rows → engine 1.98 cols → 1     sky 5 rows → 4.77 → 4
+ *    sky 3 rows → engine 2.91 cols → 2     open sky   → 7.70 → 4 (capped)
+ *    sky 4 rows → engine 3.45 cols → 3
+ *
+ *  The old flat `JUMP_DX: 3` blessed 3 columns everywhere — under a 3-row sky
+ *  the engine crosses 1.98, so the model was promising jumps no child can make
+ *  (doc 45 A7, "der Checker selbst ist verdächtig", now with numbers). It also
+ *  under-promised under open sky, which is why every gap in the chapter sat at
+ *  2 empty columns with a ~3.5× margin and no tension. One table fixes both. */
+export const DX_BY_SKY = [0, 0, 1, 2, 3, 4] as const;
 
 const { JUMP_UP, JUMP_DX, HOVER_DX, RING_DX } = REACH_ENVELOPE;
 const fallDx = (depth: number, hover: boolean): number =>
@@ -452,6 +471,31 @@ export const reachFrom = (
   };
   const jumpPathClear = (c1: number, r1: number, c2: number, r2: number): boolean =>
     (colClear(c1, r2, r1) && rowClear(r2, c1, c2)) || (rowClear(r1, c1, c2) && colClear(c2, r2, r1));
+
+  /** B3 · Clear rows of SKY above a standing node's feet at column `c` — the
+   *  body itself occupies the first two, so this counts the rise the jump can
+   *  actually buy before a ceiling takes it. */
+  const skyAt = (c: number, r: number): number => {
+    let k = 0;
+    for (let rr = r; rr >= 0 && !isSolid(glyphAt(grid, c, rr)); rr--) k++;
+    return k;
+  };
+  /** …and the honest horizontal span under the WORST sky the arc must FLY
+   *  THROUGH: the take-off column plus the columns strictly between it and the
+   *  target. The TARGET column is deliberately excluded — the thing above the
+   *  feet there is usually the very platform being landed on, and a destination
+   *  is not a ceiling. (Getting this wrong turned the whole chapter red: even
+   *  p9's open room, where every plate read as a lid over its own landing.)
+   *  Clearance AT the target is already the job of jumpPathClear/rowClear.
+   *  Table measured off the real stepPlayer; level.test.ts re-derives it and
+   *  fails if the engine ever drops below a row of it. */
+  const dxUnderSky = (c1: number, c2: number, r: number): number => {
+    let sky = skyAt(c1, r);
+    const lo = Math.min(c1, c2) + 1;
+    const hi = Math.max(c1, c2) - 1;
+    for (let c = lo; c <= hi; c++) sky = Math.min(sky, skyAt(c, r));
+    return DX_BY_SKY[Math.min(sky, DX_BY_SKY.length - 1)] ?? JUMP_DX;
+  };
   /** depth at which the drift can FIRST reach a column k away (the inverse of
    *  fallDx) — the honest cone a falling body actually sweeps. */
   const minDepthForDx = (k: number): number => {
@@ -467,10 +511,17 @@ export const reachFrom = (
       push(n.c + dc, n.r - 1);
       push(n.c + dc, n.r + 1);
     }
-    // jump: up to JUMP_UP rows up, JUMP_DX across — along at least one honest
-    // L-path (rise-then-cross or cross-then-rise)
-    for (let dr = -JUMP_UP; dr <= 0; dr++) {
-      for (let dc = -JUMP_DX; dc <= JUMP_DX; dc++) {
+    // jump: up to JUMP_UP rows up, and ACROSS as far as the real sky allows —
+    // along at least one honest L-path (rise-then-cross or cross-then-rise).
+    // B3 · THE HEADROOM RULE: how far a jump carries is set by how high it may
+    // rise, and a ceiling steals the rise. A flat JUMP_DX was a lie in BOTH
+    // directions at once — too generous under a low ceiling (the model blessed
+    // 3 where the engine crosses 1.98), too mean under open sky (4 is honest).
+    // The span is capped by the WORST sky over the columns the arc crosses, not
+    // just the take-off column: a beam halfway across cuts the arc just as hard.
+    for (let dc = -JUMP_DX; dc <= JUMP_DX; dc++) {
+      if (Math.abs(dc) > dxUnderSky(n.c, n.c + dc, n.r)) continue;
+      for (let dr = -JUMP_UP; dr <= 0; dr++) {
         if (jumpPathClear(n.c, n.r, n.c + dc, n.r + dr)) push(n.c + dc, n.r + dr);
       }
     }

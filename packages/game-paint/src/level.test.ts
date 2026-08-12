@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  DX_BY_SKY,
   REACH_ENVELOPE,
   checkLevelLaws,
   findGlyph,
@@ -934,3 +935,68 @@ describe("PB-T2 · envelope law (derived from stepPlayer)", () => {
       expect(laws([...OK_ROWS]), "und ohne Checkpoint ist sie sauber").toEqual([]);
     });
   });
+
+// ── B3 · DIE KOPFFREIHEITS-TABELLE, aus der echten Engine abgeleitet ─────────
+// `DX_BY_SKY` ist der einzige Ort, an dem das Modell noch sagt, wie weit ein
+// Sprung trägt. Diese Tests leiten für JEDE Stufe die Weite aus `stepPlayer`
+// ab und verlangen Modell ≤ Engine. Ein Feel-Fix, der die Sprungkraft senkt,
+// macht genau die Zeile rot, die dadurch zur Lüge würde.
+describe("B3 · envelope law je Kopffreiheits-Stufe (aus stepPlayer abgeleitet)", () => {
+  const W = 60;
+  const pad2 = (over: Partial<Pad>): Pad => ({ ...IDLE_PAD, ...over });
+  const o = { canRun: true, canHover: false, canPunch: false, canHang: false, fistBusy: false, ringAt: null } as const;
+  /** weiteste Weite VOM STAND unter genau `sky` freien Reihen über den Füßen */
+  const reachUnderSky = (sky: number | null): number => {
+    const F = 20;
+    const rows: string[] = [];
+    for (let r = 0; r < 27; r++) rows.push(r === 0 ? "#".repeat(W) : r >= F ? "#".repeat(W) : ".".repeat(W));
+    if (sky !== null) rows[F - 1 - sky] = "#".repeat(W);
+    let best = 0;
+    for (const hold of [1, 2, 4, 6, 8, 10, 14, 20]) {
+      let st = spawnPlayer(10 * TILE, F * TILE);
+      let prev = pad2({});
+      let airborne = false;
+      const x0 = st.x;
+      for (let t = 0; t < 300; t++) {
+        const p = pad2({ right: true, jump: t < hold });
+        st = stepPlayer(st, p, prev, rows, o).st;
+        prev = p;
+        if (!st.grounded) airborne = true;
+        else if (airborne) break;
+      }
+      best = Math.max(best, (st.x - x0) / SUBS / TILE);
+    }
+    return best;
+  };
+
+  it("jede Stufe der Tabelle unterbietet die Engine (Modell ≤ Engine, IMMER)", () => {
+    for (let sky = 2; sky < DX_BY_SKY.length; sky++) {
+      const engine = reachUnderSky(sky);
+      expect(engine, `sky ${sky}: Modell verspricht ${DX_BY_SKY[sky]}, Engine schafft ${engine.toFixed(2)}`)
+        .toBeGreaterThanOrEqual(DX_BY_SKY[sky]!);
+    }
+    const open = reachUnderSky(null);
+    expect(open, "offener Himmel").toBeGreaterThanOrEqual(REACH_ENVELOPE.JUMP_DX);
+  });
+
+  it("die Tabelle ist monoton — mehr Himmel darf nie WENIGER Weite bedeuten", () => {
+    for (let i = 1; i < DX_BY_SKY.length; i++) expect(DX_BY_SKY[i]!).toBeGreaterThanOrEqual(DX_BY_SKY[i - 1]!);
+  });
+
+  it("TAMPER: eine Stufe, die mehr verspricht als die Engine kann, wäre rot", () => {
+    // sky 3 misst ~2,91 Kacheln — ein Modell-Wert 3 dort wäre genau die alte
+    // flache JUMP_DX-Lüge, die B2 gefunden hat.
+    expect(reachUnderSky(3)).toBeLessThan(3);
+    expect(DX_BY_SKY[3], "…und darum steht dort 2").toBe(2);
+  });
+
+  // Hinweis (ehrlich): ein Mini-Welt-Test für „Decke deckelt / Himmel öffnet"
+  // wurde VERWORFEN statt geschönt. In einer 16 Spalten breiten Spielwelt ist
+  // der Weltrand-Boden selbst ein durchgehender Korridor, über den das Ziel auf
+  // einem zweiten Weg erreichbar wird — der Test hätte also etwas anderes
+  // gemessen als den Sprung-Rand. Dass die Regel BEIDE Richtungen wirklich
+  // bindet, ist stattdessen am echten Kapitel belegt und im Report beziffert:
+  // 51 Steh-Knoten werden STRENGER (5 auf Rand 1, 46 auf Rand 2 — vorher überall
+  // 3 gesegnet), 291 werden GROSSZÜGIGER (Rand 4 unter offenem Himmel), 13
+  // bleiben gleich.
+});
