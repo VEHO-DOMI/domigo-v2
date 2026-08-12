@@ -19,6 +19,8 @@ import {
   NEAR_PLANE_KINDS,
   NO_METRONOME_MIN_PERIOD,
   RAMP_ROWS,
+  BODY_DEEP_AT,
+  BODY_DEEP_SHADE,
   SEDIMENT_DEPTH,
   bandAt,
   depthBucketAt,
@@ -50,7 +52,7 @@ const kit: MassKit = {
   crustCapL: "cap_l",
   crustCapR: "cap_r",
   body: ["body_a", "body_b"],
-  fade: "fade",
+  fade: ["fade"],
   sediment: "sediment",
   edgeL: "edge_l",
   edgeR: "edge_r",
@@ -296,10 +298,27 @@ describe("the carved mass (doc 36 §2)", () => {
   describe("the depth law (R5-W1 · A1 — Koki's »schwarze Löcher«)", () => {
     // measured mean luminance of the shipped sheets; the ramp exists to make the
     // DRAWN values continuous across the two places the paper changes
-    const ART_LUM = { body: 46.2, fade: 16.6, sediment: 4.8 } as const;
+    // …and R5-N3 · A4 adds a second kit to the same law. p1 now draws its OWN
+    // painted paper, including a deep body row, so the ramp has to hold for two
+    // different sets of measured values — a law that only worked for the sheets
+    // it was tuned on would be a coincidence, not a law.
+    const ART_LUM = { body: 46.2, bodyDeep: null, fade: 16.6, sediment: 4.8 } as const;
+    const P1_LUM = { body: 45.94, bodyDeep: 31.67, fade: 16.6, sediment: 4.8 } as const;
     const lumOfTint = (t: number): number =>
       (((t >> 16) & 255) * 0.2126 + ((t >> 8) & 255) * 0.7152 + (t & 255) * 0.0722) / 255;
-    const drawnAt = (d: number): number => ART_LUM[bandAt(d)] * depthShadeAt(d);
+    /** what the child actually sees: painted value × the multiply laid over it */
+    const drawnWith = (art: { body: number; bodyDeep: number | null; fade: number; sediment: number }) =>
+      (d: number): number => {
+        const band = bandAt(d);
+        if (band !== "body") return art[band] * depthShadeAt(d);
+        const deep = art.bodyDeep !== null && d >= BODY_DEEP_AT;
+        const pigment = deep && art.bodyDeep !== null ? art.bodyDeep : art.body;
+        // the deep row's own darkness is divided back out of the multiply
+        const shade = deep ? Math.min(1, depthShadeAt(d) / BODY_DEEP_SHADE) : depthShadeAt(d);
+        return pigment * shade;
+      };
+    const drawnAt = drawnWith(ART_LUM);
+    const KITS = [["the shared kit", ART_LUM], ["p1's painted kit", P1_LUM]] as const;
 
     it("never brightens, and never lifts a surface cell", () => {
       expect(depthShadeAt(0)).toBe(1);
@@ -307,26 +326,43 @@ describe("the carved mass (doc 36 §2)", () => {
       for (let d = 1; d < 30; d++) expect(depthShadeAt(d)).toBeLessThanOrEqual(1);
     });
 
-    it("falls MONOTONICALLY through both changes of paper — no cliff, no step back up", () => {
+    it.each(KITS)("falls MONOTONICALLY through both changes of paper — no cliff, no step back up (%s)", (_name, art) => {
+      const drawn = drawnWith(art);
       for (let d = 1; d < 30; d++) {
-        expect(drawnAt(d)).toBeLessThanOrEqual(drawnAt(d - 1) + 1e-9);
+        expect(drawn(d)).toBeLessThanOrEqual(drawn(d - 1) + 1e-9);
       }
     });
 
-    it("closes the two cliffs the old ramp left at the band joins", () => {
+    it.each(KITS)("closes the two cliffs the old ramp left at the band joins (%s)", (_name, art) => {
       // the joins are where a hard edge would show; both used to be enormous
-      const joinA = drawnAt(FADE_DEPTH - 1) - drawnAt(FADE_DEPTH);
-      const joinB = drawnAt(SEDIMENT_DEPTH - 1) - drawnAt(SEDIMENT_DEPTH);
+      const drawn = drawnWith(art);
+      const joinA = drawn(FADE_DEPTH - 1) - drawn(FADE_DEPTH);
+      const joinB = drawn(SEDIMENT_DEPTH - 1) - drawn(SEDIMENT_DEPTH);
       expect(joinA).toBeLessThan(10); // was 46.2 → 16.6 = 29.6 points in one row
       expect(joinB).toBeLessThan(5); //  was 16.6 →  4.8 = 11.8 points in one row
       expect(joinA).toBeGreaterThanOrEqual(0);
       expect(joinB).toBeGreaterThanOrEqual(0);
     });
 
-    it("keeps the deepest paper READABLE — the darkest dark is still a colour", () => {
+    it("swapping in the painted deep row does NOT double-darken the band", () => {
+      // The whole point of BODY_DEEP_SHADE: the composed value at every body
+      // depth must stay within a point or two of what the multiply-only ramp
+      // drew, while the darkness itself comes from paint. If the division were
+      // dropped, depth 3 would land near 45.94 × 0.689 × 0.52 = 16.5 % — a
+      // 7-point hole punched into the middle of the body band.
+      const painted = drawnWith(P1_LUM);
+      const shared = drawnWith(ART_LUM);
+      for (let d = 0; d < FADE_DEPTH; d++) {
+        // both kits are ~46 % paper, so their drawn body values must track
+        expect(Math.abs(painted(d) - shared(d))).toBeLessThan(2.5);
+      }
+    });
+
+    it.each(KITS)("keeps the deepest paper READABLE — the darkest dark is still a colour (%s)", (_name, art) => {
       // "a hole" is what an interior under ~6 % luminance reads as. Nothing the
       // ramp can reach may fall there, at any depth, ever.
-      for (let d = 0; d < 60; d++) expect(drawnAt(d)).toBeGreaterThan(3.5);
+      const drawn = drawnWith(art);
+      for (let d = 0; d < 60; d++) expect(drawn(d)).toBeGreaterThan(3.5);
       // …and it stays a hue rather than going grey: blue keeps the most
       const deep = depthTintAt(SEDIMENT_DEPTH + RAMP_ROWS);
       expect(deep & 0xff).toBeGreaterThan((deep >> 16) & 0xff);
@@ -937,7 +973,7 @@ describe("L2b — the same furniture, one room further back", () => {
 describe("the platform shadows", () => {
   const KIT: MassKit = {
     crust: ["c_a", "c_b"], crustCapL: "cl", crustCapR: "cr",
-    body: ["b_a"], fade: "f", sediment: "s",
+    body: ["b_a"], fade: ["f"], sediment: "s",
     edgeL: "el", edgeR: "er", cornerBL: "bl", cornerBR: "br",
     inCornerL: "il", inCornerR: "ir", rampUp: "ru", rampDown: "rd",
     platObjects: [{ stem: "o2", cells: 2 }, { stem: "o1", cells: 1 }],

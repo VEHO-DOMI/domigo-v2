@@ -50,14 +50,34 @@ export const INK_WAVE2_TICKS = 97;
 export const INK_WAVE2_LEN_PX = 71;
 export const INK_WAVE2_SHARE = 0.42;
 
-/** The ink's own pigment — a deep blue-violet that still belongs to a painted
- *  book, and the value the depth ramp below darkens FROM. */
-export const INK_BODY = 0x2c3a58;
-/** The lit lip of the crown, and the dark line that sits under it. Two lines,
- *  not one band: a boundary between materials is what the eye reads as a
- *  surface, and a single lighter strip only ever read as a change of fill. */
-export const INK_CROWN_LIT = 0xa8c0ee;
-export const INK_CROWN_DARK = 0x151d33;
+/**
+ * The ink's own pigment — and R5-N3 · A4 moved it, because a blind critic
+ * measured that it was not one (D-43).
+ *
+ * The old value `0x2c3a58` sits at hue 220.9°. The wall behind the p2 lake —
+ * `l1_p2_b.png`, the far shell — measures 227.4°, and the room's engine-drawn
+ * wash runs 229–234°. So the chapter's one lethal substance was within seven
+ * degrees of its own backdrop: the danger and the air it hangs in were the same
+ * colour, separated only by value. A child reads hue before value.
+ *
+ * Ink is not sky-blue. It is indigo going black, the colour a nib leaves when it
+ * pools — so the pigment moves to ~255°, a clear 21–28° off every stop of the
+ * room, at the same luminance it had before (nothing about the depth ramp or the
+ * readability of the hazard changes; only its hue does).
+ */
+export const INK_BODY = 0x3e2e6c;
+/**
+ * The lit lip of the crown, and the dark line that sits under it. Two lines,
+ * not one band: a boundary between materials is what the eye reads as a
+ * surface, and a single lighter strip only ever read as a change of fill.
+ *
+ * The lit lip came down with the pigment. At `0xa8c0ee` it was 74.6 % luminance
+ * against a 22 % body — a 52-point jump, which is why the same critic called the
+ * highlights "gilded metal" rather than an oily shimmer. Ink is glossy, not
+ * polished: the lip keeps its hue family and loses half the jump.
+ */
+export const INK_CROWN_LIT = 0x9282c8;
+export const INK_CROWN_DARK = 0x1a1534;
 /** How many rows down the ink keeps losing light before it bottoms out.
  *
  *  CRITIC ROUND 2 (blind, measuring pixels): "the body fill is flat — 2 unique
@@ -76,6 +96,54 @@ export const inkDepthTint = (rows: number): number => {
   const s = 1 - (1 - INK_DEPTH_FLOOR) * Math.min(Math.max(rows, 0), INK_DEPTH_ROWS) / INK_DEPTH_ROWS;
   const ch = Math.max(0, Math.min(255, Math.round(255 * s)));
   return (ch << 16) | (ch << 8) | ch;
+};
+
+/** A vertical run of ink in ONE column — the unit a gradient can be poured into. */
+export interface InkColumn {
+  c: number;
+  /** first and last ink row of the run, inclusive */
+  r0: number;
+  r1: number;
+  /** depth at the run's TOP edge and at its BOTTOM edge, in rows */
+  dTop: number;
+  dBot: number;
+}
+
+/**
+ * R5-N3 · A4 · WHY THE POOL IS PLANNED IN COLUMNS (D-42).
+ *
+ * The ink used to be drawn one flat rect per grid cell, tinted from an INTEGER
+ * row count. That is a staircase by construction and no amount of tuning could
+ * make it anything else: four stops, 16-px risers, and in p2 a bottom half that
+ * is one single flat value. The blind critic measured it as "2 unique RGB values
+ * across 63 000 sampled pixels".
+ *
+ * A gradient cannot be poured into a cell, because a cell only has one value. So
+ * the pool is planned as vertical RUNS instead, and each run is filled once with
+ * a top-to-bottom gradient. The depth ramp then works per PIXEL rather than per
+ * row, and the risers disappear — the same move `planBandShade` already makes
+ * for the room's own shadow.
+ *
+ * Pure and grid-derived: no clock, no randomness, so a recorded run paints the
+ * same water twice.
+ */
+export const planInkColumns = (grid: readonly string[]): readonly InkColumn[] => {
+  const out: InkColumn[] = [];
+  const h = grid.length;
+  const w = grid[0]?.length ?? 0;
+  for (let c = 0; c < w; c++) {
+    let r = 0;
+    while (r < h) {
+      if (grid[r]?.[c] !== "w") { r++; continue; }
+      const r0 = r;
+      while (r + 1 < h && grid[r + 1]?.[c] === "w") r++;
+      // the BOTTOM edge is one row deeper than the last ink cell, so a run that
+      // continues below the screen keeps falling instead of flattening early
+      out.push({ c, r0, r1: r, dTop: inkDepthAt(grid, c, r0), dBot: inkDepthAt(grid, c, r) + 1 });
+      r++;
+    }
+  }
+  return out;
 };
 
 /** How many contiguous ink cells sit directly above this one (0 = the surface).
