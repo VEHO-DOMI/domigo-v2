@@ -906,6 +906,51 @@ export class PaintScene extends Phaser.Scene {
       if (url === undefined) continue;
       if (!this.textures.exists(`pb-${stem}`)) this.load.image(`pb-${stem}`, url);
     }
+    this.keepLoaderMoving();
+  }
+
+  /**
+   * R5-W2 · E2 · THE LOADER MUST NOT DEPEND ON THE FRAME CLOCK.
+   *
+   * Phaser starts `maxParallelDownloads` files (32; 6 on Android) and then
+   * advances the queue from exactly ONE place: `LoaderPlugin.update`, which it
+   * binds to `SceneEvents.UPDATE`. `nextFile()` — the callback that runs when a
+   * file finishes — deletes the file from `inflight` and updates progress, but
+   * never starts the next one. So the queue only moves on a rendered frame.
+   *
+   * Whenever requestAnimationFrame stops, loading therefore stops dead with
+   * capacity to spare. Measured on this branch, tab hidden: `done: 32`,
+   * `inflight: 0`, `list: 60`, unchanged over six seconds — nothing in flight,
+   * sixty files waiting, and no tick to start them.
+   *
+   * For a child that is a backgrounded tab: open the chapter, switch away while
+   * it loads, and it loads NOTHING until they come back, instead of being ready
+   * when they return. (It is also why every automated session so far had to
+   * hand-pump the queue — that recipe now has no reason to exist.)
+   *
+   * The fix is to advance the queue on the event that already fires for every
+   * finished file. `queueMicrotask` breaks the synchronous chain, because
+   * `checkLoadQueue` can complete a cached file inline and re-enter through the
+   * same event; the flag collapses a burst of completions into one advance.
+   */
+  private keepLoaderMoving(): void {
+    // checkLoadQueue is the method Phaser's own `update` calls; it is real at
+    // runtime but marked internal, so it is absent from the published types.
+    const loader = this.load as Phaser.Loader.LoaderPlugin & { checkLoadQueue?: () => void };
+    let pending = false;
+    const advance = (): void => {
+      if (pending) return;
+      pending = true;
+      queueMicrotask(() => {
+        pending = false;
+        // the scene may be gone by the time this runs (phase handoff mid-load)
+        if (loader.state === Phaser.Loader.LOADER_LOADING) loader.checkLoadQueue?.();
+      });
+    };
+    this.load.on(Phaser.Loader.Events.PROGRESS, advance);
+    this.load.once(Phaser.Loader.Events.COMPLETE, () => {
+      this.load.off(Phaser.Loader.Events.PROGRESS, advance);
+    });
   }
 
   create(): void {
