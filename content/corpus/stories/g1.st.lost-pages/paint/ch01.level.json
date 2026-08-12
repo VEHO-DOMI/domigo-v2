@@ -315,7 +315,7 @@
     {
      "id": "p2-obj-scissors",
      "role": "drained",
-     "skin": "obj_pencil",
+     "skin": "obj_scissors",
      "c": 63,
      "r": 19,
      "tier": "E",

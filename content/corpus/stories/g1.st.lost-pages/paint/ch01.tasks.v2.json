@@ -1997,40 +1997,40 @@
    "grounding": "u01 word: desk + colour: brown (obj_desk_a measures hue 33°, lum 0.34 on the legs and frame — a wooden school desk)"
   },
   {
-   "id": "g1.paint.ch01.enc.obj-pencil.r1",
+   "id": "g1.paint.ch01.enc.obj-scissors.r1",
    "use": "encounter",
    "kind": "restore",
    "stimulus": {
     "type": "entity",
-    "showsDe": "Ein langer Stift liegt grau auf dem Boden",
-    "art": "obj_pencil_a"
+    "showsDe": "Eine Schere liegt ganz grau unter dem Pult",
+    "art": "obj_scissors_a"
    },
-   "storyDe": "Sag, was es ist — dann gib ihm die Farbe!",
+   "storyDe": "Sag, was sie ist — dann gib ihr die Farbe!",
    "nameOptions": [
+    "scissors",
     "pencil",
-    "pen",
     "rubber",
-    "scissors"
+    "ruler"
    ],
-   "name": "pencil",
-   "colourAskDe": "„Ich war gelb wie eine Biene!“, piepst er.",
+   "name": "scissors",
+   "colourAskDe": "„Ich war wie eine Mandarine!“, ruft sie.",
    "colourOptions": [
-    "yellow",
+    "orange",
     "green",
     "black"
    ],
-   "colour": "yellow",
+   "colour": "orange",
    "skins": [
-    "obj_pencil"
+    "obj_scissors"
    ],
    "phases": [
     "p2"
    ],
    "hints": {
-    "deDesc": "Damit malst du — und der Radiergummi macht es weg.",
-    "deWord": "Auf Deutsch: der Bleistift — und Gelb."
+    "deDesc": "Damit schneidest du Papier.",
+    "deWord": "Auf Deutsch: die Schere — und die Farbe einer Mandarine."
    },
-   "grounding": "u01 word: pencil + colour: yellow (obj_pencil_a measures hue 43°, sat 0.95 — the classic yellow barrel)"
+   "grounding": "u01 object: scissors + colour: orange (painted sheet, 96 % of its saturated pigment at hue 20–40°). The ask names a Mandarine rather than the colour: German „orange\" IS the English answer token, so the sibling cards' pattern would give it away."
   },
   {
    "id": "g1.paint.ch01.enc.obj-gluestick.r1",

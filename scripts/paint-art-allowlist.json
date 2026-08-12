@@ -1,12 +1,1 @@
-[
-  {
-    "stem": "regelseite_a",
-    "reason": "PK-R3b · R3-16: the Regel-Seite is a NEW collectible (doc 41 §5). Its pickup is engine-drawn for now — a torn page with ruled lines, in PaintScene.buildFallbackTextures — because the hard-stop law stands: no un-reviewed art is ever wired, and the sheet is commissioned by a Fable mini-prompt after Koki's doc-41 gate. Named here rather than shipped silently (F13).",
-    "until": "2026-09-30"
-  },
-  {
-    "stem": "bonusbuch_a",
-    "reason": "PK-R3b · R3-16: the Bonus-Buch, same story as regelseite_a — engine-drawn (a small closed book with a spine and a seal) until its sheet is commissioned and reviewed. It is a score pickup, so it carries the least art risk of the two.",
-    "until": "2026-09-30"
-  }
-]
+[]

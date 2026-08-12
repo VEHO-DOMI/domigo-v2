@@ -22,6 +22,7 @@ import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
 import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
+import { INK_BODY, INK_CROWN_DARK, INK_CROWN_LIT, INK_DEPTH_ROWS, inkCrownPoints, inkDepthAt, inkDepthTint, inkScrollAt } from "./ink.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
 import { CHALK_COLOURS, type EntityState, type EntityWorld, GUARDIAN_SCRIPT, JOY_ROLES, SHARD_TICKS, engageTargetId, telegraphTicksFor } from "./entities.ts";
@@ -754,6 +755,11 @@ export class PaintScene extends Phaser.Scene {
   private awakenRoomAt: { x: number; y: number } | null = null;
   /** The room's own light: camera-space, over everything, for one beat only. */
   private awakenRoomG!: Phaser.GameObjects.Graphics;
+  /** R5-W1 · A2 — the ink's animated surface: the drifting texture strips, the
+   *  runs they cover, and the crown redrawn over them each tick. */
+  private readonly inkSurfaces: Phaser.GameObjects.TileSprite[] = [];
+  private readonly inkRuns: Array<{ x0: number; x1: number; y: number }> = [];
+  private inkCrownG: Phaser.GameObjects.Graphics | null = null;
   private projG!: Phaser.GameObjects.Graphics;
   /** PK-R6 · E: the code-drawn golden tail behind the flying guardian. */
   private trailG!: Phaser.GameObjects.Graphics;
@@ -1097,6 +1103,23 @@ export class PaintScene extends Phaser.Scene {
       this.footwork(fallVy);
     }
     this.render();
+    this.stepInk();
+  }
+
+  /**
+   * R5-W1 · A2 — the ink's motion, once per frame.
+   *
+   * Driven by the SIM tick, not a wall clock: a replayed tape has to draw the
+   * same water it drew the first time, and `Math.random`/`Date.now` are a
+   * standing wall in gameplay code. The consequence is deliberate and correct —
+   * while a card freezes the sim the ink holds still too, because the world is
+   * holding still, which is the same rule the whole frame already obeys.
+   */
+  private stepInk(): void {
+    if (this.inkRuns.length === 0) return;
+    const drift = inkScrollAt(this.tickCount);
+    for (const t of this.inkSurfaces) t.tilePositionX = drift / t.tileScaleX;
+    this.drawInkCrown();
   }
 
   /** Route the sim's events to Phaser/React — the only gameplay-adjacent
@@ -3380,6 +3403,32 @@ export class PaintScene extends Phaser.Scene {
     return kit;
   }
 
+  /**
+   * R5-W1 · A2 · THE CROWN — the ink's surface, redrawn every tick.
+   *
+   * Two strokes, never one: a lit lip on the wave and a dark line under it. A
+   * single lighter band (what shipped before) reads as a change of fill colour;
+   * a boundary between two values is what the eye reads as the place where one
+   * material stops and another begins.
+   */
+  private drawInkCrown(): void {
+    const g = this.inkCrownG;
+    if (g === null || this.inkRuns.length === 0) return;
+    const tick = this.tickCount;
+    g.clear();
+    for (const run of this.inkRuns) {
+      const pts = inkCrownPoints(run.x0, run.x1, tick);
+      // the dark line first, a hair lower — it is the shadow the lip casts into
+      // its own liquid, so it must never be drawn over the lip
+      g.lineStyle(1.6, INK_CROWN_DARK, 0.85).beginPath();
+      pts.forEach((p, i) => (i === 0 ? g.moveTo(p.x, run.y + p.y + 2.2) : g.lineTo(p.x, run.y + p.y + 2.2)));
+      g.strokePath();
+      g.lineStyle(1.4, INK_CROWN_LIT, 0.95).beginPath();
+      pts.forEach((p, i) => (i === 0 ? g.moveTo(p.x, run.y + p.y) : g.lineTo(p.x, run.y + p.y)));
+      g.strokePath();
+    }
+  }
+
   /** Place one planned mass piece (doc 36 §2). */
   private placeMassPiece(p: MassPiece): void {
     if (p.stem === null) return; // fallbackFill — the graphics pass drew it
@@ -3449,10 +3498,15 @@ export class PaintScene extends Phaser.Scene {
             fill.fillTriangle(c * TILE + 1, (r + 1) * TILE, c * TILE + 8, r * TILE + 4, c * TILE + 15, (r + 1) * TILE);
           }
         } else if (g === "w") {
-          fill.fillStyle(0x2c3a58, 0.92);
-          fill.fillRect(c * TILE, r * TILE + 3, TILE, TILE - 3);
-          fill.fillStyle(0x51689a);
-          fill.fillRect(c * TILE, r * TILE + 3, TILE, 2);
+          // R5-W1 · A2 · THE INK IS OPAQUE NOW (B1's critic: „halbtransparent —
+          // man sieht in p2 die Wandkarte durch den See"). Ink is the one
+          // substance in the chapter whose whole fiction is that it swallows
+          // things; at alpha 0.92 the classroom's wall map showed straight
+          // through the lake. Full alpha, and a value that DEEPENS with depth,
+          // so a pool reads as having a bottom the way the terrain does.
+          const depth = Math.min(inkDepthAt(this.grid, c, r), INK_DEPTH_ROWS);
+          fill.fillStyle(mixMultiply(INK_BODY, inkDepthTint(depth)), 1);
+          fill.fillRect(c * TILE, r * TILE, TILE, TILE);
         } else if (isSlope(g)) {
           fill.fillStyle(EARTH);
           const x = c * TILE;
@@ -3520,13 +3574,27 @@ export class PaintScene extends Phaser.Scene {
         (c0, c1, r) => { this.add.tileSprite(c0 * TILE, (r + 1) * TILE - dh, (c1 - c0 + 1) * TILE, dh, "pb-spikes_nibs_loop").setOrigin(0, 0).setDepth(3).setTileScale(ts); },
       );
     }
+    // R5-W1 · A2 · THE INK MOVES, ALWAYS. The surface strip was a STATIC
+    // tileSprite: B1's critic measured it moving „um kein einziges Pixel" over
+    // 45 ticks, which is what made a lake read as a painted rectangle. Its
+    // texture now drifts and it carries a crown that rises and falls — both
+    // pure functions of the SIM TICK (ink.ts), so a replay draws the same water
+    // twice and the wave is assertable without a screenshot.
     if (this.textures.exists("pb-pool_ink_loop")) {
       const dh = 16;
       const ts = dh / srcH("pool_ink_loop");
       runs(
         (c, r) => glyphAt(this.grid, c, r) === "w" && glyphAt(this.grid, c, r - 1) !== "w",
-        (c0, c1, r) => { this.add.tileSprite(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, dh, "pb-pool_ink_loop").setOrigin(0, 0).setDepth(3).setTileScale(ts); },
+        (c0, c1, r) => {
+          const t = this.add.tileSprite(c0 * TILE, r * TILE, (c1 - c0 + 1) * TILE, dh, "pb-pool_ink_loop")
+            .setOrigin(0, 0).setDepth(3).setTileScale(ts);
+          this.inkSurfaces.push(t);
+          this.inkRuns.push({ x0: c0 * TILE, x1: (c1 + 1) * TILE, y: r * TILE });
+        },
       );
+      // …and the crown rides just above them
+      this.inkCrownG = this.add.graphics().setDepth(3.1);
+      this.drawInkCrown();
     }
     // the interior fill + the surface strips are the RETIRED model — with a
     // kit present the carved mass draws body/fade/sediment and crust instead
