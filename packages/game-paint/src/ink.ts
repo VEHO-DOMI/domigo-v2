@@ -58,11 +58,18 @@ export const INK_BODY = 0x2c3a58;
  *  surface, and a single lighter strip only ever read as a change of fill. */
 export const INK_CROWN_LIT = 0xa8c0ee;
 export const INK_CROWN_DARK = 0x151d33;
-/** How many rows down the ink keeps losing light before it bottoms out. */
-export const INK_DEPTH_ROWS = 6;
+/** How many rows down the ink keeps losing light before it bottoms out.
+ *
+ *  CRITIC ROUND 2 (blind, measuring pixels): "the body fill is flat — 2 unique
+ *  RGB values across 63,000 sampled pixels … the client's original complaint
+ *  relocated one layer down, now hiding under a nicer rim." Fair, and the cause
+ *  was arithmetic: the ramp was spread over six rows while ch01's ink is four
+ *  rows deep, so the pool only ever reached the first third of its own falloff.
+ *  The ramp now completes INSIDE a real pool. */
+export const INK_DEPTH_ROWS = 3;
 /** The multiply the deepest ink wears — dark, never black (the same law the
  *  terrain's depth ramp keeps: the darkest dark still holds its hue). */
-export const INK_DEPTH_FLOOR = 0.55;
+export const INK_DEPTH_FLOOR = 0.42;
 
 /** The multiply tint for ink this many rows below its own surface. */
 export const inkDepthTint = (rows: number): number => {

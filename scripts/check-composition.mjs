@@ -27,7 +27,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { PNG } from "pngjs";
-import { COMPOSITION, heroEdgeFor } from "../packages/game-paint/src/composition.ts";
+import { COMPOSITION, heroEdgeFor, nearPlaneTint } from "../packages/game-paint/src/composition.ts";
 import { planLayers, planeCovers } from "../packages/game-paint/src/layers.ts";
 import {
   MIN_GRID_LOCK_DISTANCE,
@@ -164,11 +164,37 @@ for (const { label, ph, spec } of withSpec) {
   // L3 per the law's own definition: "terrain masses, entities, interactive
   // props — the ONLY full-contrast plane". Terrain alone would understate it.
   const entityStems = [...new Set(ph.entities.map((e) => `${e.skin}_a`))].filter((s) => artFiles.has(s));
+  // R5-A3 · L3 IS MEASURED AS IT SHIPS, NOT AS IT WAS PAINTED.
+  //
+  // The walk course now wears the near-plane push in every room (PaintScene,
+  // NEAR_PLANE_KINDS) — that is the repair for B1's „keine materielle Trennung
+  // zwischen dem, worauf man stehen kann, und dem, was nur gemalt ist". Measured
+  // off the source PNGs alone, L3 would keep reporting the UNPUSHED course, and
+  // the L2↔L3 separation — the one absolute readability law in this file — would
+  // go on passing on a number the build no longer draws.
+  //
+  // So the course's contribution is weighted by the push it actually wears, and
+  // the rest of L3 (the mass below the standing line, and the beings, neither of
+  // which is pushed) is left alone. Sample-count weighting keeps it exact.
+  const nearPush = lumOf(
+    (nearPlaneTint(spec.key) >> 16) & 255,
+    (nearPlaneTint(spec.key) >> 8) & 255,
+    nearPlaneTint(spec.key) & 255,
+  );
+  const course = measureStems([...spec.mass.crust]);
+  const rest = measureStems([...spec.mass.body, spec.mass.fade, spec.mass.sediment, ...entityStems]);
+  const L3 = course && rest
+    ? {
+      lum: (course.lum * nearPush * course.samples + rest.lum * rest.samples) / (course.samples + rest.samples),
+      sat: (course.sat * course.samples + rest.sat * rest.samples) / (course.samples + rest.samples),
+      samples: course.samples + rest.samples,
+    }
+    : measureStems([...spec.mass.crust, ...spec.mass.body, spec.mass.fade, spec.mass.sediment, ...entityStems]);
   const planes = {
     L0: measureColors([...spec.wash.colors]),
     L1: measureStems(spec.far.segments),
     L2: spec.mid ? measureStems(spec.mid.segments) : null,
-    L3: measureStems([...spec.mass.crust, ...spec.mass.body, spec.mass.fade, spec.mass.sediment, ...entityStems]),
+    L3,
     L4: spec.fg ? measureStems(spec.fg.segments) : null,
   };
   const K = spec.key;

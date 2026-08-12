@@ -16,6 +16,7 @@ import {
   MAX_PLATFORM_CELLS,
   MIN_GRID_LOCK_DISTANCE,
   MIN_PAINT_PERIOD_CELLS,
+  NEAR_PLANE_KINDS,
   NO_METRONOME_MIN_PERIOD,
   RAMP_ROWS,
   SEDIMENT_DEPTH,
@@ -798,6 +799,25 @@ describe("the manifest", () => {
 // nothing under a squint. The near plane is now laid in its own light. What is
 // checkable here is the LAW rather than the pixels: it darkens, it cools, and it
 // backs off in a dark room, because separation is the law and not darkness.
+describe("R5-A3 · which plane is the NEAR plane (B1: no material separation in the sunny levels)", () => {
+  it("pushes everything you can STAND ON", () => {
+    for (const k of ["crust", "capL", "capR", "ramp", "platform"]) expect(NEAR_PLANE_KINDS.has(k)).toBe(true);
+  });
+
+  it("leaves the mass BELOW the standing line alone", () => {
+    // body/fade/sediment already carry A1's depth ramp; pushing them too would
+    // darken the depths back toward the holes that round removed, and they are
+    // not the thing the child is asking a question about
+    for (const k of ["body", "fade", "sediment"]) expect(NEAR_PLANE_KINDS.has(k)).toBe(false);
+  });
+
+  it("leaves the carved trims alone — they are the mass's edge, not its surface", () => {
+    for (const k of ["edgeL", "edgeR", "cornerBL", "cornerBR", "inCornerL", "inCornerR"]) {
+      expect(NEAR_PLANE_KINDS.has(k)).toBe(false);
+    }
+  });
+});
+
 describe("PK-R6 · H2 · the near plane's own light", () => {
   const ch = (t: number, shift: number): number => (t >> shift) & 0xff;
 
