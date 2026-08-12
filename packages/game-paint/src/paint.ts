@@ -29,6 +29,39 @@ export const SUBS = 256; // D: subs per px (1/256-px accumulator)
 export const TICK_MS = 1000 / 60; // D: fixed 60Hz logic tick
 export const MAX_TICKS_PER_FRAME = 4; // proven game-2d accumulator clamp
 
+/**
+ * R5-W2 · E3 · THE LONGEST FRAME THE SIMULATION WILL BELIEVE (ms).
+ *
+ * Past this, a delta is assumed to be a stall (tab resume, breakpoint, laptop
+ * lid) rather than a slow frame, and the world stops following it — otherwise
+ * one 5-second gap would be simulated as 300 ticks at once. Below it, the world
+ * follows real time exactly, so a slow machine STUTTERS instead of drifting
+ * into slow motion.
+ */
+export const DELTA_CAP_MS = 100;
+
+/**
+ * R5-W2 · E3 · The Phaser game loop's own settings — here, not inline in the
+ * config object, because `min` is not a taste knob: it must agree with
+ * DELTA_CAP_MS above (Phaser derives its clamp as 1000/min), and loopFpsLawOk()
+ * is what keeps the two from drifting apart.
+ *
+ * `min: 30` (the value before E3) meant Phaser told the simulation 16.67 ms for
+ * a frame that really took 50 — and kept telling it that, because its smoothing
+ * history only ever receives already-clamped values. The world then ran at a
+ * third speed for as long as the machine stayed under 30 fps.
+ *
+ * `panicMax` is how many frames after boot/focus/resume the clamp tightens to
+ * one target frame (16.67 ms). At Phaser's default of 120 that is ~2 seconds of
+ * every level start where anything short of a full 60 fps showed as slow
+ * motion — measured at a real 45 fps: 76 % world speed for 2.86 s.
+ */
+export const LOOP_FPS = { target: 60, min: 10, panicMax: 8 } as const;
+
+/** The two caps must be the same number, or the loop and the accumulator
+ *  disagree about what counts as a stall. Asserted in paint.test.ts. */
+export const loopFpsLawOk = (): boolean => 1000 / LOOP_FPS.min === DELTA_CAP_MS;
+
 // Viewport (doc 31 §2: the studied game's proportion, not Keen's frame).
 export const VIEW_W_TILES = 22;
 export const VIEW_H_TILES = 14;

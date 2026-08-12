@@ -21,7 +21,7 @@ import { CRUST_MARK_DEPTH, MASS_MARK_DEPTH, type MassPiece, type SurfaceMark, cl
 import { LETTER_STYLE, letterGlyphs } from "./letters.ts";
 import { type PhraseSlot, bonusPhrase } from "./cards/ceremony.ts";
 import { PICKUP_ROLES, type PaintLevel, type PhaseSpec } from "./level.ts";
-import { type AirModel, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
+import { type AirModel, DELTA_CAP_MS, LOGICAL_H, LOGICAL_W, MAX_TICKS_PER_FRAME, RENDER_SCALE, SUBS, TICK_MS, TILE, fromSubs, mixMultiply } from "./paint.ts";
 import { INK_BODY, INK_CROWN_DARK, INK_CROWN_LIT, INK_DEPTH_ROWS, inkCrownPoints, inkDepthAt, inkDepthTint, inkScrollAt } from "./ink.ts";
 import { type FistState } from "./fist.ts";
 import { type Pad, type PlayerState } from "./player.ts";
@@ -1090,8 +1090,8 @@ export class PaintScene extends Phaser.Scene {
   }
 
   update(_time: number, delta: number): void {
-    this.frameMs = Math.min(delta, 100);
-    this.acc += Math.min(delta, 100);
+    this.frameMs = Math.min(delta, DELTA_CAP_MS);
+    this.acc += Math.min(delta, DELTA_CAP_MS);
     let ticks = 0;
     while (this.acc >= TICK_MS && ticks < MAX_TICKS_PER_FRAME) {
       this.acc -= TICK_MS;
