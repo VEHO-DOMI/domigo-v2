@@ -484,34 +484,20 @@ const PLAT_OBJECTS: Record<string, MassKit["platObjects"]> = {
  * phase here before its sheets land reds the gate. Add a phase on the same
  * commit that adds its art, never before.
  *
- * EMPTY TODAY, and that is a measured verdict rather than an unfinished
- * sentence. Batch AS2's p1 sheets were rejected at import: eight of its ten
- * interior cells do not tile with themselves, by 2.8× to 6.5× their own painted
- * texture. The sheet passes a naive seam test only because every cell's boundary
- * row and column are DUPLICATES of the opposite edge — the step is one pixel
- * further in, where the naive metric never looks. The two cells that do tile are
- * exactly as many variants as the shared body already has, so wiring them would
- * add a per-phase code path and change nothing a child could see.
- *
- * Everything below this line is the seam AS3 lands on: `paintedInterior`, the
- * `bodyDeep` band, and the depth-law tests that already prove the ramp holds for
- * a painted kit. Add "p1" here on the commit that adds art which passes
- * `node docs/art/import-batch-as.mjs`.
+ * Batch AS2 was REJECTED here for a measured reason worth keeping: every one of
+ * its cells duplicated its boundary row and column, so a naive seam test read a
+ * perfect 0.00 while the picture jumped 25–52 one pixel further in. AS3 re-cut
+ * the same sheets with a real cross-fade — the join is still 0.00, but now the
+ * picture climbs out of it at 0.26–0.62× the painting's own texture instead of
+ * jumping. The import gate tells the two apart and holds both cases as fixtures.
  */
-const PAINTED_MASS_PHASES = new Set<string>();
+const PAINTED_MASS_PHASES = new Set(["p1"]);
 
 const paintedInterior = (phase: string): Pick<MassKit, "body" | "bodyDeep" | "fade" | "sediment"> => ({
-  // Three variants, not the sheet's four: the `_a` column of both rows joins at
-  // 2.0–2.5× its own texture, so the import gate refuses it (import-batch-as.mjs).
-  // Three still beats the two the shared body has, and Audit 6 counts variety.
-  body: [`mass_body_${phase}_b`, `mass_body_${phase}_c`, `mass_body_${phase}_d`],
-  bodyDeep: [`mass_bodydeep_${phase}_b`, `mass_bodydeep_${phase}_c`, `mass_bodydeep_${phase}_d`],
-  // The deep paper stays shared too, for a measured reason rather than caution:
-  // neither delivered fade cell tiles with itself (joins of 13.97 and 15.62
-  // against their own mean steps of 4.34 and 4.39 — 3.2× and 3.6×), so drawn as
-  // a tiling surface they would put a vertical seam through the whole band every
-  // ~41 world px. The import gate refuses them; AS3 re-cuts them.
-  fade: ["mass_fade"],
+  // Four variants where the shared body has two — and Audit 6 counts variety.
+  body: [`mass_body_${phase}_a`, `mass_body_${phase}_b`, `mass_body_${phase}_c`, `mass_body_${phase}_d`],
+  bodyDeep: [`mass_bodydeep_${phase}_a`, `mass_bodydeep_${phase}_b`, `mass_bodydeep_${phase}_c`, `mass_bodydeep_${phase}_d`],
+  fade: [`mass_fade_${phase}_a`, `mass_fade_${phase}_b`],
   // THE SEDIMENT STAYS SHARED, and the reason is measured rather than cautious.
   // Koki's AUFHELLEN ruling raised the commissioned sediment from today's 4.8 %
   // to 7–10 %, and AS2 painted it at 8.78 %. But BAND_HANDOVER.fade = 0.55 was

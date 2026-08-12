@@ -31,6 +31,7 @@ import { COMPOSITION, heroEdgeFor, nearPlaneTint } from "../packages/game-paint/
 import { planLayers, planeCovers } from "../packages/game-paint/src/layers.ts";
 import {
   BODY_DEEP_SHADE,
+  BODY_HANDOVER_PAINTED,
   MIN_GRID_LOCK_DISTANCE,
   MIN_PAINT_PERIOD_CELLS,
   NO_METRONOME_MIN_PERIOD,
@@ -247,6 +248,7 @@ const BANDS = bandsFor(K);
   if (spec.mass.bodyDeep) {
     const shallow = measureStems([...spec.mass.body]);
     const deep = measureStems([...spec.mass.bodyDeep]);
+    const paper = measureStems([...spec.mass.fade]);
     if (shallow && deep) {
       const ratio = deep.lum / shallow.lum;
       const drift = Math.abs(ratio - BODY_DEEP_SHADE);
@@ -254,6 +256,18 @@ const BANDS = bandsFor(K);
         fail("layer-value", `${label}: the painted deep row is ${(ratio * 100).toFixed(1)}% of the body, but BODY_DEEP_SHADE says ${(BODY_DEEP_SHADE * 100).toFixed(1)}% — the depth ramp would ${ratio < BODY_DEEP_SHADE ? "double-darken" : "under-darken"} the lower body band`);
       } else {
         note(`${label} deep-row pigment: ${(ratio * 100).toFixed(1)}% of body (constant ${(BODY_DEEP_SHADE * 100).toFixed(1)}%, drift ${(drift * 100).toFixed(1)} pts) — PASS`);
+      }
+    }
+    // …and where that band has to ARRIVE: on the fade paper's own value. The
+    // handover is art, not a universal constant (D-50) — so it is re-derived
+    // here, and a repaint that moves either sheet reopens the seam loudly.
+    if (deep && paper) {
+      const want = BODY_DEEP_SHADE * (paper.lum / deep.lum);
+      const drift = Math.abs(want - BODY_HANDOVER_PAINTED);
+      if (drift > 0.02) {
+        fail("layer-value", `${label}: the body band should hand over at ${want.toFixed(3)} to land on its own fade paper (${paper.lum.toFixed(2)}%), but BODY_HANDOVER_PAINTED says ${BODY_HANDOVER_PAINTED} — the band change would show as an edge`);
+      } else {
+        note(`${label} body→fade handover: ${want.toFixed(3)} derived from the art (constant ${BODY_HANDOVER_PAINTED}, drift ${drift.toFixed(3)}) — PASS`);
       }
     }
   }
