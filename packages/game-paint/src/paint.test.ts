@@ -12,7 +12,10 @@ import {
   LOGICAL_W,
   MAX_TICKS_PER_FRAME,
   PAINT,
+  DELTA_CAP_MS,
+  LOOP_FPS,
   RENDER_SCALE,
+  loopFpsLawOk,
   SUBS,
   TILE,
   tileOfPx,
@@ -56,6 +59,29 @@ describe("the D-value lock (dossier constants — drift here must be deliberate)
     expect(LOGICAL_W).toBe(352);
     expect(LOGICAL_H).toBe(224);
     expect(RENDER_SCALE).toBe(3);
+  });
+
+  // R5-W2 · E3 · THE SLOW-MOTION LAW. Phaser derives its delta clamp as
+  // 1000/fps.min; PaintScene.update clamps its accumulator at DELTA_CAP_MS.
+  // If those two numbers ever disagree, the loop tells the simulation a
+  // different amount of time than the simulation is willing to spend, and the
+  // world silently runs slower than the wall clock — the defect Koki reported
+  // as "Zeitlupe ab Levelstart" (measured before the fix: 33 % world speed at a
+  // real 20 fps, and 76 % for 2.86 s at every level start at 45 fps).
+  it("the loop's clamp and the accumulator's clamp are the SAME number", () => {
+    expect(1000 / LOOP_FPS.min).toBe(DELTA_CAP_MS);
+    expect(loopFpsLawOk()).toBe(true);
+  });
+
+  it("a slow frame is reported as slow, not as one target frame", () => {
+    // the value Phaser would hand the sim for a real 50 ms frame (20 fps)
+    const reported = Math.min(50, 1000 / LOOP_FPS.min);
+    expect(reported).toBe(50); // 100 % world speed → stutter, never slow motion
+  });
+
+  it("the boot window is short enough not to be felt", () => {
+    // frames × ~16.7 ms; Phaser's default of 120 was ~2 s of every level start
+    expect(LOOP_FPS.panicMax).toBeLessThanOrEqual(10);
     expect(MAX_TICKS_PER_FRAME).toBe(4);
     expect(BODY_W).toBeLessThan(TILE); // hitbox narrower than a tile
     expect(BODY_H).toBeLessThan(3 * TILE);

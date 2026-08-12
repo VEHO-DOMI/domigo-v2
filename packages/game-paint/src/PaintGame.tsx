@@ -12,7 +12,7 @@ import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { PaintScene, type TaskRequest } from "./PaintScene.ts";
 import { PerfProbe, type PerfReport, type WeakEstimate } from "./perf.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
-import { LOGICAL_H, LOGICAL_W, RENDER_SCALE, airModelByName } from "./paint.ts";
+import { LOGICAL_H, LOGICAL_W, LOOP_FPS, RENDER_SCALE, airModelByName } from "./paint.ts";
 import type { PaintLevel, PhaseSpec } from "./level.ts";
 import type { GameTaskV2 } from "@domigo/content-schema";
 import { CardHost } from "./cards/CardHost.tsx";
@@ -495,7 +495,47 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
       // requires. (F.3, adversarial design review.)
       mipmapFilter: "LINEAR_MIPMAP_LINEAR",
       roundPixels: false,
-      fps: { target: 60, min: 30 },
+      // R5-W2 · E3 · THE SLOW-MOTION FIX — why these three numbers.
+      //
+      // Koki: "laggy = Zeitlupe ab Levelstart, im Boss-Level normal". Measured,
+      // it is not a frame-cost problem at all — it is Phaser's delta smoothing
+      // lying to the simulation. `TimeStep.smoothDelta` does this:
+      //
+      //     if (delta > this._min) { delta = history[idx];
+      //                              delta = Math.min(delta, this._min); }
+      //     history[idx] = delta;                    // ← the clamped value
+      //
+      // With `min: 30` that is `_min = 33.3 ms`. Drive the loop at a real 50 ms
+      // (20 fps) and the world is told **16.67 ms**, forever: the history only
+      // ever receives clamped values, so it never recovers. The world then runs
+      // at 16.67/50 = ONE THIRD speed for as long as frames stay under 30 fps —
+      // smoothly, because the value is averaged over ten frames. That is not a
+      // stutter, that is slow motion, and it is exactly what he saw.
+      //
+      // On top of that, `resetDelta()` (called on boot, on focus and on tab
+      // resume) sets `_coolDown = panicMax = 120`, and during the cool-down the
+      // clamp tightens to `_target` = 16.67 ms. So for the first ~2 seconds of
+      // EVERY level, anything short of a full 60 fps produced slow motion —
+      // "ab Levelstart". The Boss level escapes it because its first frame costs
+      // 31.9 ms against the field phases' 224.0 ms (measured: 114 objects vs
+      // 476, and 212 ms of that is the GPU taking the phase's textures).
+      //
+      //   min: 10      → `_min` = 100 ms, the SAME cap PaintScene.update already
+      //                  applies to its accumulator. The two agree instead of
+      //                  fighting: a 50 ms frame now reports 50 ms, so the world
+      //                  keeps wall-clock time and a slow machine STUTTERS
+      //                  instead of going quietly slow. Past 100 ms both clamp,
+      //                  which is the spiral-of-death guard doing its job.
+      //   panicMax: 8  → the boot/resume window shrinks from ~2 s to ~0.13 s,
+      //                  still long enough to swallow the one huge delta after a
+      //                  tab resume, far too short to be felt.
+      //   target: 60   → unchanged.
+      //
+      // ⚠ FABLE-REVIEW: this deliberately trades "smooth but wrong" for "honest
+      // but visibly rough" on weak devices, per the E3 brief §2. A slow machine
+      // will now look choppy where it used to look sluggish. That is the point —
+      // slow motion hides frame drops, and hidden drops never get fixed.
+      fps: { ...LOOP_FPS },
       scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
     });
     gameRef.current = game;
