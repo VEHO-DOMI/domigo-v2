@@ -35,7 +35,7 @@ import {
   awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entPoseCell, entSeed, floodBloomFor, greyLuma,
   guardianManoeuvre, guardianPitchRad, guardianRollScaleX, poseStateOf, washAlphaFor,
 } from "./anim.ts";
-import { CUE_CHALK, CUE_HALO, chalkArrow, treasureCue, treasureBobPx } from "./cue.ts";
+import { CUE_CHALK, CUE_HALO, TREASURE_BACK_COLOUR, chalkArrow, treasureCue, treasureBobPx } from "./cue.ts";
 import { RIG, launchCoil, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
 import {
   BURST_CORE, BURST_HOT, BURST_INK, BURST_SPIKES,
@@ -1569,7 +1569,12 @@ export class PaintScene extends Phaser.Scene {
         img.displayWidth, this.entTargetH(e),
         entSeed(e.id), this.tickCount, this.cfg.reducedMotion,
       );
-      // the shadow first: it is under everything, including the beam's foot
+      // the cool backing first of all: the page sits IN it
+      for (const r of cue.backing) {
+        this.tipLightG.fillStyle(TREASURE_BACK_COLOUR, r.alpha);
+        this.tipLightG.fillCircle(r.cx, r.cy, r.r);
+      }
+      // …then the shadow, under everything else including the beam's foot
       this.tipLightG.fillStyle(0x2a2014, cue.shadow.alpha);
       this.tipLightG.fillEllipse(cue.shadow.cx, cue.shadow.cy, cue.shadow.rx * 2, cue.shadow.ry * 2);
       for (const q of shaftQuads(cue.shaft)) {

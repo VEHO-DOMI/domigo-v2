@@ -106,8 +106,8 @@
      "tier": "E",
      "params": {
       "topicDe": "Kurzformen — I'm · it's · isn't",
-      "merksatzDe": "I am wird I'm, it is wird it's — der Apostroph zeigt, was fehlt.",
-      "schluesselDe": "der Apostroph zeigt, was fehlt",
+      "merksatzDe": "Aus I am wird I'm, aus it is wird it's, aus is not wird isn't.",
+      "schluesselDe": "aus is not wird isn't",
       "beispielEn": "It's brown and red.",
       "belegDe": "MORE! 1 · Unit 1 · Seite 14"
      }

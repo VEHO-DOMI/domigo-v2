@@ -9,7 +9,7 @@
 // screenshot: no machine edge, an edge that ramps instead of stepping, and the
 // same mark every time the same being is asked about.
 import { describe, expect, it } from "vitest";
-import { CUE_BOB_PX, CUE_BOB_TICKS, CUE_CHALK, CUE_CORE, CUE_INK, CUE_JITTER_PX, CUE_MOTE_ALPHA_PEAK, CUE_MOTE_COUNT, TREASURE_BOB_PX, TREASURE_BOB_TICKS, TREASURE_MOTE_ALPHA_PEAK, TREASURE_MOTE_TICKS, TREASURE_SHAFT_ALPHA, TREASURE_SHAFT_H_MUL, chalkArrow, hasNoStraightMachineEdge, treasureBobPx, treasureCue } from "./cue.ts";
+import { CUE_BOB_PX, CUE_BOB_TICKS, CUE_CHALK, CUE_CORE, CUE_INK, CUE_JITTER_PX, CUE_MOTE_ALPHA_PEAK, CUE_MOTE_COUNT, TREASURE_BACK_ALPHA, TREASURE_BACK_COLOUR, TREASURE_BOB_PX, TREASURE_BOB_TICKS, TREASURE_MOTE_ALPHA_PEAK, TREASURE_MOTE_TICKS, TREASURE_SHAFT_ALPHA, TREASURE_SHAFT_H_MUL, chalkArrow, hasNoStraightMachineEdge, treasureBobPx, treasureCue } from "./cue.ts";
 import { SHAFT_EDGE_MAX, shaftQuads } from "./air.ts";
 
 describe("PK-R6 · H2 · the hand-drawn ↑ cue", () => {
@@ -306,5 +306,40 @@ describe("the treasure page casts (the bright-room half of readability)", () => 
   it("reduced motion keeps the shadow (it is contact, not motion)", () => {
     expect(at(0, true).shadow.alpha).toBeGreaterThan(0.05);
     expect(at(0, true).shadow).toEqual(at(999, true).shadow);
+  });
+});
+
+describe("the treasure backing (the blind critic's fix: darken behind)", () => {
+  const at = (phase: number, rm = false) => treasureCue(100, 200, 18, 24, 7, phase, rm);
+
+  it("is a COOL pool — the rooms this book has are warm", () => {
+    const b = (TREASURE_BACK_COLOUR >> 16) & 0xff;
+    const g = (TREASURE_BACK_COLOUR >> 8) & 0xff;
+    const bl = TREASURE_BACK_COLOUR & 0xff;
+    expect(bl).toBeGreaterThan(b); // more blue than red
+    expect(bl).toBeGreaterThan(g);
+  });
+
+  it("is wider than the page and fades outward", () => {
+    const rings = at(0).backing;
+    expect(rings.length).toBeGreaterThan(2);
+    expect(rings[0]!.r).toBeGreaterThan(18 * 0.5);
+    for (let i = 1; i < rings.length; i++) {
+      expect(rings[i]!.r).toBeGreaterThan(rings[i - 1]!.r);
+      expect(rings[i]!.alpha).toBeLessThan(rings[i - 1]!.alpha);
+    }
+  });
+
+  it("never darkens more than it lights — it is separation, not a vignette", () => {
+    const total = at(0).backing.reduce((s, r) => s + r.alpha, 0);
+    expect(total).toBeLessThanOrEqual(TREASURE_BACK_ALPHA + 1e-9);
+    expect(total).toBeGreaterThan(0.04);
+  });
+
+  it("shares the halo's lagged anchor — light and shade belong together", () => {
+    for (let t = 0; t < TREASURE_BOB_TICKS; t += 7) {
+      const c = at(t);
+      expect(c.backing[0]!.cy).toBeCloseTo(c.halo[0]!.cy, 6);
+    }
   });
 });

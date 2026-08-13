@@ -259,6 +259,29 @@ export const TREASURE_SHAFT_MOUTH_MUL = 0.30;
 export const TREASURE_SHAFT_FOOT_MUL = 0.78;
 export const TREASURE_SHAFT_TILT = 0.13;
 export const TREASURE_SHAFT_ALPHA = 0.13;
+/** THE BACKING — a soft dark disc behind the page.
+ *
+ *  Prescribed by the blind look critic, which judged our sunlit hall against the
+ *  reference frames and lost DECISIVELY: „gold pickups in a gold room is the base
+ *  error… the highest-contrast element in the composition is a hazard, not the
+ *  prize". Its fix, verbatim: „darken behind, blow out inside" — manufacture the
+ *  missing value and hue separation LOCALLY instead of repainting the level.
+ *
+ *  It is cool (the room is warm) and it sits under the halo, so on a bright
+ *  ground it cuts a hole for the page to sit in. On a DARK ground the same fill
+ *  is lighter than what it covers, so it turns into a faint violet bloom instead
+ *  of a black blob — which is why this is a disc behind the object and not a
+ *  brightness dial: one device that cannot be wrong in either room.
+ *
+ *  The strength is set from the critics' own measurement, not from taste. They
+ *  measured our page at mean luminance 204 against a 207 local background — the
+ *  prize was DARKER than the wall — and set the target A hits: the pickup must
+ *  beat its local ground, not sink into it. */
+export const TREASURE_BACK_COLOUR = 0x3a3260;
+export const TREASURE_BACK_ALPHA = 0.34;
+export const TREASURE_BACK_RINGS = 4;
+export const TREASURE_BACK_R_MUL = 0.95;
+
 /** The contact shadow under the page.
  *
  *  MEASURED REASON, not decoration. Added light is invisible on a bright ground:
@@ -288,6 +311,8 @@ export interface TreasureCue {
    *  the subdivision that gives a beam no visible rim and no visible foot. */
   shaft: { points: readonly [number, number][]; alphaTop: number };
   halo: readonly CueRing[];
+  /** the cool dark pool the page sits in, drawn UNDER the halo. */
+  backing: readonly CueRing[];
   motes: readonly CueFleck[];
   /** the contact shadow on the floor the page stands on. */
   shadow: { cx: number; cy: number; rx: number; ry: number; alpha: number };
@@ -356,6 +381,18 @@ export const treasureCue = (
     });
   }
 
+  // THE BACKING, feathered outward from the page's middle. Same lagged anchor as
+  // the halo: light and shade belong to each other.
+  const backing: CueRing[] = [];
+  for (let i = 0; i < TREASURE_BACK_RINGS; i++) {
+    backing.push({
+      cx: x,
+      cy: haloY,
+      r: hPx * TREASURE_BACK_R_MUL * (1 + i * 0.30),
+      alpha: (TREASURE_BACK_ALPHA / TREASURE_BACK_RINGS) * (1 - i / TREASURE_BACK_RINGS) ** 0.8,
+    });
+  }
+
   // THE DUST standing in the beam. Sideways place and size belong to the seed;
   // only height and alpha run, or powder becomes rain.
   const motes: CueFleck[] = [];
@@ -384,5 +421,5 @@ export const treasureCue = (
     ry: hPx * TREASURE_SHADOW_RY_MUL * tighten,
     alpha: TREASURE_SHADOW_ALPHA * tighten,
   };
-  return { bobPx: bob, shaft, halo, motes, shadow };
+  return { bobPx: bob, shaft, halo, backing, motes, shadow };
 };
