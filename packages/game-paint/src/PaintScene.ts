@@ -35,7 +35,7 @@ import {
   awakenRoomBloom, awakenRoomSweep, bouncerSquash, cageBreath, cageNearT, entPoseCell, entSeed, floodBloomFor, greyLuma,
   guardianManoeuvre, guardianPitchRad, guardianRollScaleX, poseStateOf, washAlphaFor,
 } from "./anim.ts";
-import { CUE_CHALK, CUE_HALO, chalkArrow } from "./cue.ts";
+import { CUE_CHALK, CUE_HALO, chalkArrow, treasureCue, treasureBobPx } from "./cue.ts";
 import { RIG, launchCoil, rigPose, withCheer, withFistAway, withBrace } from "./rig.ts";
 import {
   BURST_CORE, BURST_HOT, BURST_INK, BURST_SPIKES,
@@ -859,6 +859,10 @@ export class PaintScene extends Phaser.Scene {
   private hostileG!: Phaser.GameObjects.Graphics;
   /** the shimmer that says „pickup, not platform" (finding 6) */
   private letterFxG!: Phaser.GameObjects.Graphics;
+  /** R5-W2 · I1: the Regel-Seite's beam and glow, BEHIND the page (depth 7). */
+  private tipLightG!: Phaser.GameObjects.Graphics;
+  /** …and the dust standing in that beam, in FRONT of it. */
+  private tipMoteG!: Phaser.GameObjects.Graphics;
   /** PK-R6 · H1 · the walk-cycle phase at the previous tick, so a footfall is
    *  detected as a CROSSING rather than tested for equality (which a variable
    *  tick budget would skip straight past). */
@@ -1079,6 +1083,12 @@ export class PaintScene extends Phaser.Scene {
     this.hostileG = this.add.graphics().setDepth(6.6);
     // under the letters (4) — a shimmer drawn OVER a glyph is a smudge on it
     this.letterFxG = this.add.graphics().setDepth(3.9);
+    // R5-W2 · I1 · the treasure light brackets the page: 6.86 sits above the
+    // gift halo (6.85) and below the cast-shadow band (6.95), 7.06 just over the
+    // entity plane (7). Same grammar as the letters, whose halo is under the
+    // glyph and whose sparks read over it.
+    this.tipLightG = this.add.graphics().setDepth(6.86);
+    this.tipMoteG = this.add.graphics().setDepth(7.06);
     // the charge sits over her body (7) and under the throwing hand (9)
     this.chargeG = this.add.graphics().setDepth(8.6);
     // PK-R6 · H2 · the contact burst, in two halves: its LIGHT under both bodies
@@ -1540,6 +1550,43 @@ export class PaintScene extends Phaser.Scene {
    * filling of it, and the seed is the being's own name so the mark over the
    * schoolbag is not the identical twin of the mark over the desk.
    */
+  /** R5-W2 · I1 · THE REGEL-SEITE'S PRESENCE (doc 41 §5 · cookbook §6).
+   *
+   *  Fills what a pure function returned and decides nothing: no `Math.`, no
+   *  clock arithmetic, no random. Every motion and the whole reduced-motion
+   *  contract live in `cue.ts`'s `treasureCue`, where they are unit-tested —
+   *  which is the only reason the claim „this obeys reduced motion" is checkable
+   *  at all. `treasure-render.test.ts` holds that division in place. */
+  private renderTipFx(): void {
+    this.tipLightG.clear();
+    this.tipMoteG.clear();
+    for (const e of this.sim.world.entities) {
+      if (e.role !== "tip" || e.redeemed || e.hidden) continue;
+      const img = this.entityImgs.get(e.id);
+      if (!img || !img.visible) continue;
+      const cue = treasureCue(
+        fromSubs(e.x), fromSubs(e.y),
+        img.displayWidth, this.entTargetH(e),
+        entSeed(e.id), this.tickCount, this.cfg.reducedMotion,
+      );
+      // the shadow first: it is under everything, including the beam's foot
+      this.tipLightG.fillStyle(0x2a2014, cue.shadow.alpha);
+      this.tipLightG.fillEllipse(cue.shadow.cx, cue.shadow.cy, cue.shadow.rx * 2, cue.shadow.ry * 2);
+      for (const q of shaftQuads(cue.shaft)) {
+        this.tipLightG.fillStyle(CUE_HALO, q.alpha);
+        this.tipLightG.fillPoints(q.points.map(([qx, qy]) => new Phaser.Geom.Point(qx, qy)), true);
+      }
+      for (const r of cue.halo) {
+        this.tipLightG.fillStyle(CUE_HALO, r.alpha);
+        this.tipLightG.fillCircle(r.cx, r.cy, r.r);
+      }
+      for (const m of cue.motes) {
+        this.tipMoteG.fillStyle(CUE_CHALK, m.alpha);
+        this.tipMoteG.fillCircle(m.x, m.y, m.r);
+      }
+    }
+  }
+
   private renderEngageCue(): void {
     const id = engageTargetId(this.world, this.player.x, this.player.y);
     const e = id === null ? null : this.world.entities.find((x) => x.id === id);
@@ -1682,7 +1729,14 @@ export class PaintScene extends Phaser.Scene {
           ? cageBreath(this.tickCount, entSeed(e.id), this.cageNearT(e), targetH, this.cfg.reducedMotion)
           : CAGE_AT_REST;
         img.setScale(k * (1 + 0.18 * pop) * sq.sx * br.sx, k * (1 - 0.16 * pop) * sq.sy * br.sy);
-        img.y += br.dy;
+        // R5-W2 · I1 · the Regel-Seite's float rides the SAME line as the cage's
+        // breath, for the reason stated just above: one owner for a sprite's
+        // transform. A second `img.y +=` somewhere else is how a float becomes a
+        // jitter that only shows up on one machine.
+        const lift = e.role === "tip" && !e.redeemed && !e.hidden
+          ? treasureBobPx(this.tickCount, entSeed(e.id), this.cfg.reducedMotion)
+          : 0;
+        img.y += br.dy - lift;
         if (pop > 0) img.setRotation(0.13 * pop);
         else if (e.role === "cage") img.setRotation(e.redeemed ? 0 : br.rot);
       }
@@ -3124,6 +3178,9 @@ export class PaintScene extends Phaser.Scene {
     // frame's boss, which at the sizes and speeds this round introduces is a
     // halo visibly lagging its own body.
     this.renderBossGlow();
+    // …and for the same reason, the Regel-Seite's light reads the page as
+    // renderEntities has just left it.
+    this.renderTipFx();
     this.renderGhosts();
     this.renderHostiles();
     this.renderEngageCue();
