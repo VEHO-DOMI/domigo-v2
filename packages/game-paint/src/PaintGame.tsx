@@ -1304,6 +1304,8 @@ function Overlay({
         art={art}
         skin={o.tip?.skin ?? "regelseite"}
         topicDe={o.tip?.topicDe ?? ""}
+        got={bilanz.tips}
+        total={bilanz.tipsTotal}
         onNext={() => onDismiss(o)}
       />,
       "pb-page",

@@ -56,11 +56,19 @@ const PageArt = ({ art, skin, state, size }: {
  *  been read — because the button that ends this card says „Ins Buch kleben",
  *  and showing the book at the moment of finding gives away the beat the child
  *  has not earned yet. What this frame has to say is: you found something. */
-export const RuleFound = ({ art, skin, topicDe, onNext }: {
-  art: Record<string, string>; skin: string; topicDe: string; onNext: () => void;
+export const RuleFound = ({ art, skin, topicDe, got, total, onNext }: {
+  art: Record<string, string>; skin: string; topicDe: string;
+  got: number; total: number; onNext: () => void;
 }): React.ReactElement => (
   <div style={{ textAlign: "center" }}>
-    <p className="pb-eyebrow">Regel-Seite gefunden</p>
+    {/* R5-W2 · I1b (Didaktik-Kritikerin): the find beat says WHICH of how many.
+        Her argument, and it is a good one: a collectible with no visible set is a
+        weaker reward — knowing more pages exist is exactly what makes a child
+        hunt them. The number comes from the level, like every other count in this
+        game (the letter-honesty law), never from a literal. */}
+    <p className="pb-eyebrow">
+      Regel-Seite gefunden{total > 0 ? ` · ${got} von ${total}` : ""}
+    </p>
     <div className="pb-treasure">
       <div className="pb-treasure-glow" aria-hidden />
       <span className="pb-treasure-tilt">

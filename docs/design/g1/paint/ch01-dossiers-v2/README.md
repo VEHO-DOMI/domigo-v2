@@ -8,9 +8,13 @@ Tap-Apex 50 / Halte-Apex 101 px · JUMP_UP 4 · Magnet 25,6 px.
 
 ## §Kanon — Supersessions & Tore (aktenkundig)
 
-- **G9 überschreibt doc 44 §4-ch01:** Rad = Zahlen 1–20, Tap-Lock (nicht »1–25
-  auto-lock«) — ein SPEZIFISCH Koki-gegatetes Ruling (2026-07-23) schlägt die
-  mitgeschleppte Master-Plan-Zeile; doc 44 hat G9 nie explizit widerrufen.
+- **G9 (2026-07-23):** Rad = Tap-Lock statt auto-lock — **gilt unverändert**.
+  Die ZAHLEN-SPANNE derselben Zeile (»1–20«) ist dagegen **von Koki am 2026-08-13
+  auf 1–25 korrigiert** (R5-W2 I1). Grund, dreifach belegt: das ausgelieferte Rad
+  (`qf.moths.w1/w2/p1w1`) bietet seit jeher **25 Werte** (one … twenty-five),
+  Unit 1s eigene Ziel-Liste sagt wörtlich »the numbers 1–25«, und das
+  Korpus-Lexikon führt alle 25. Die 1–20 der alten Zeile beschrieb einen Zustand,
+  den der Bestand nie hatte. Nicht still gelöscht, sondern hier datiert überholt.
 - **G12-Artenliste gilt** (choice·wheel·spell·order·oddone·memory·typed für ch01). **KLÄRUNG (Kritiker-Fund): der shipped Boss-Pool nutzt zusätzlich `mistake` (×2)** — entweder Liste um mistake ergänzen (Empfehlung; die Maschine existiert und ist getestet) oder Pool in P4 umbauen. PR-Nick.
 - **★ KOKI-TOR (gemeinsam mit dem restoreRoom-Override) · B20-Delta:** doc 44
   formuliert den Kontraktions-Picker über ein restauriertes Objekt; v2 nutzt ihn als
@@ -131,11 +135,9 @@ p1 = »Kurzformen« · p2 = »Begrüßen/Verabschieden« · p3 = »Zahlen«.
 **Geändert in R5-W2 I1 (2026-08-13):** p1 hieß »to be« — MORE! 1 führt „the verb to be"
 laut eigener Ziel-Liste erst in **Unit 2**; Unit 1 druckt stattdessen die drei Note-Kästen
 `I'm = I am` · `it's = it is` · `isn't = is not`. Koki-Tor: auf »Kurzformen« gedreht.
-**Offene Frage an Koki (nicht hier entschieden):** die Zahlen-Spanne. G9 (§Kanon oben) sagt
-»Rad = Zahlen 1–20«, aber das ausgelieferte Rad (`qf.moths.w1/w2/p1w1`) bietet **25 Werte**
-(one … twenty-five), und Unit 1s Ziel-Liste sagt wörtlich »the numbers 1–25«. Die
-Regel-Seite folgt dem Bestand und dem Buch (1–25); G9s Zeile bleibt unangetastet, bis Koki
-sie bestätigt oder widerruft — siehe REPORT_I1.
+**ENTSCHIEDEN (Koki, 2026-08-13):** die Zahlen-Spanne ist **1–25**, überall — Buch,
+Rad und Regel-Seite stimmen damit überein. G9s Tap-Lock bleibt unberührt; nur seine
+»1–20« ist überholt (§Kanon oben, datiert).
 
 ## Status (2026-08-11)
 
