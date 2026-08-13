@@ -118,3 +118,65 @@ export const RuleRead = ({ art, plateUrl, skin, topicDe, merksatzDe, schluesselD
     </div>
   );
 };
+
+/** DIE MERKSEITE — the chapter's own page of rules, and the answer to a debt
+ *  the game has been carrying since the first rule page shipped: the button
+ *  says „Ins Buch kleben" and the child could never open that book.
+ *
+ *  doc 41 §5 promised it („collect all N = the chapter's Merkseite completes +
+ *  reward") and it was never built — the only trace was a number on the score
+ *  page. This is that page. It opens from the HUD chip at any time, so what has
+ *  been found stays lookup-able, which was Koki's own didactic condition.
+ *
+ *  A slot that is still missing shows a TORN STUB and no text. Not an empty box
+ *  with a topic name in it: what is on a page you have not found is not
+ *  something the child knows, and printing it would both spoil the find and
+ *  teach the rule for free. The gap is part of the fiction — the shadow tore
+ *  these out, and you can see exactly how many are still gone. */
+export const Merkseite = ({ art, plateUrl, found, total, onClose }: {
+  art: Record<string, string>;
+  plateUrl?: string | undefined;
+  found: readonly { topicDe: string; merksatzDe: string; schluesselDe: string; beispielEn: string; belegDe: string }[];
+  total: number;
+  onClose: () => void;
+}): React.ReactElement => {
+  const complete = total > 0 && found.length >= total;
+  const missing = Math.max(0, total - found.length);
+  return (
+    <div style={{ textAlign: "left" }}>
+      <p className="pb-eyebrow">Deine Merkseite</p>
+      {plateUrl !== undefined && (
+        <div className="pb-rule-band">
+          <img src={plateUrl} alt="" aria-hidden />
+        </div>
+      )}
+      <Quiet>{complete
+        ? "Alle Regel-Seiten sind wieder im Buch."
+        : `${found.length} von ${total} Regel-Seiten sind wieder im Buch.`}</Quiet>
+      <div className="pb-merk-list">
+        {found.map((t) => {
+          const [before, key, after] = splitKey(t.merksatzDe, t.schluesselDe);
+          return (
+            <div className="pb-merk-slot" key={t.topicDe}>
+              <p className="pb-merk-topic">{t.topicDe}</p>
+              <p className="pb-quiet pb-rule-line">{before}<KeyBit>{key}</KeyBit>{after}</p>
+              <Key en>{t.beispielEn}</Key>
+              <Quiet italic>{t.belegDe}</Quiet>
+            </div>
+          );
+        })}
+        {Array.from({ length: missing }, (_, i) => (
+          <div className="pb-merk-slot pb-merk-gap" key={`gap-${i}`}>
+            <PageArt art={art} skin="regelseite" state="a" size={38} />
+            <Quiet italic>Diese Seite fehlt noch.</Quiet>
+          </div>
+        ))}
+      </div>
+      {complete && (
+        <p className="pb-merk-done">Das Buch ist wieder ganz.</p>
+      )}
+      <div style={{ height: 10 }} />
+      <button className="pb-btn-primary" onClick={onClose}>Weiterspielen</button>
+    </div>
+  );
+};

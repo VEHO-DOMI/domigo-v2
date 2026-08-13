@@ -931,6 +931,48 @@ export const PAINT_OVERLAY_CSS = `
   height: auto;
 }
 
+/* the one chip that is a door: same paint, plus the affordances a button owes
+   a child — a pointer, a hover lift, and a focus ring that is not the browser's
+   blue (this page has no blue in it anywhere else) */
+.pb-hud-chip-btn {
+  cursor: pointer;
+  font: inherit;
+  transition: transform 120ms ease-out, box-shadow 120ms ease-out;
+}
+.pb-hud-chip-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 9px rgba(60, 42, 16, 0.26); }
+.pb-hud-chip-btn:focus-visible { outline: 3px solid #d99a3c; outline-offset: 2px; }
+
+/* DIE MERKSEITE — the collected rules, and the gaps where the rest still are */
+.pb-merk-list { display: grid; gap: 9px; margin: 8px 0 4px; }
+.pb-merk-slot {
+  border-left: 3px solid #d9bd86;
+  padding: 4px 0 4px 10px;
+}
+.pb-merk-topic {
+  font-family: var(--font-label, inherit);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a8926a;
+  margin: 0 0 2px;
+}
+/* a slot that is still missing: the torn stub, greyed, and no text — what is on
+   a page you have not found is not something you know */
+.pb-merk-gap {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-left-color: #cdbfa4;
+  opacity: 0.62;
+  filter: grayscale(0.7);
+}
+.pb-merk-done {
+  font-family: var(--font-display, inherit);
+  font-weight: 800;
+  color: #a8541a;
+  margin: 8px 0 0;
+}
+
 /* the chapter's painted open book, the gap the page was torn out of */
 .pb-treasure-plate {
   position: absolute;
@@ -1018,6 +1060,15 @@ export const PAINT_OVERLAY_CSS = `
   .pb-letter, .pb-word, .pb-doff, .pb-tether, .pb-rays, .pb-spark, .pb-hero-in,
   .pb-row-in, .pb-door-bloom {
     animation: none !important;
+  }
+  /* R5-W2 · I1 · …and the TRANSITIONS, which the kill list never covered because
+     it only ever looked for the animation shorthand. »Reduced motion« means no
+     motion, not no keyframes. Three of these four predate this packet and were
+     moving under reduced motion the whole time — declared in the PR, not fixed
+     quietly. (No backticks in here: this whole stylesheet is one template
+     literal, and a backtick ends it.) */
+  .pb-card button, .pb-card .pb-chip, .pb-hud-chip-btn, .pb-help-body {
+    transition: none !important;
   }
 }
 `;

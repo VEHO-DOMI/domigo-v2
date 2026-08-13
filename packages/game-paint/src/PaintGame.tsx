@@ -11,7 +11,7 @@ import Phaser from "phaser";
 import { bindTypingGuard } from "@domigo/game-feel/typing-guard";
 import { PaintScene, type TaskRequest } from "./PaintScene.ts";
 import type { TipPayload } from "./sim.ts";
-import { RuleFound, RuleRead } from "./cards/RulePage.tsx";
+import { Merkseite, RuleFound, RuleRead } from "./cards/RulePage.tsx";
 import { PerfProbe, type FirstFrameReport, type PerfReport, type WeakEstimate } from "./perf.ts";
 import { IDLE_PAD, type Pad } from "./player.ts";
 import { LOGICAL_H, LOGICAL_W, LOOP_FPS, RENDER_SCALE, airModelByName } from "./paint.ts";
@@ -123,7 +123,7 @@ interface OverlayState {
   req: TaskRequest;
   item: GameTaskItem | null; // null = a card without a task (powerup/pay/ceremony)
   card: "task" | "finale" | "grant" | "bonuspay" | "ceremony" | "console" | "bonusend" | "cagehint" | "goal"
-    | "tip" | "regel" | "score" | "out";
+    | "tip" | "regel" | "merkseite" | "score" | "out";
   attempts: number;
   typed: string;
   /** PB-F1/F2-20: which side of the canvas the card sits on — always AWAY from
@@ -295,6 +295,11 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
   const tipsTakenRef = useRef<TipPayload[]>([]);
   const booksTakenRef = useRef<string[]>([]);
   const [tipsCount, setTipsCount] = useState(0);
+  /** R5-W2 · I1: the same pages as a rendered value. The ref above is the one
+   *  that survives a phase remount; this is what the Merkseite reads, because a
+   *  component that re-renders on the COUNT would otherwise be handed the
+   *  previous render's list. */
+  const [collectedTips, setCollectedTips] = useState<readonly TipPayload[]>([]);
   const [booksCount, setBooksCount] = useState(0);
   /** letters FOUND this chapter: banked from finished phases + this phase's own
    *  running count. Found, not held — see Sim.lettersCollected. */
@@ -668,6 +673,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
           onTip: (tip) => {
             if (!tipsTakenRef.current.some((t) => t.id === tip.id)) tipsTakenRef.current = [...tipsTakenRef.current, tip];
             setTipsCount(tipsTakenRef.current.length);
+            setCollectedTips(tipsTakenRef.current);
             openCard({
               req: { use: "quickfire", ctx: { type: "ceremony", beat: "tip" } },
               item: null, card: "tip", attempts: 0, typed: "", align: "center",
@@ -1038,7 +1044,22 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             and the Regel-Seiten chip waits until the chapter hides some). */}
         <span style={{ display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "flex-end" }}>
           {freedCount > 0 && <Chip icon="cage" label="Befreit" value={`${freedCount}/${cageTotal}`} art={art} />}
-          {tipTotal > 0 && <Chip icon="rule" label="Regel-Seiten" value={`${tipsCount}/${tipTotal}`} art={art} />}
+          {/* R5-W2 · I1 · THE CHIP IS A DOOR. „Ins Buch kleben" has been the
+              button on every rule page since R3-16, and the child could never
+              open that book. Now the counter opens it — what has been collected
+              stays lookup-able, which is the didactic condition Koki set. It is
+              the only interactive element in the HUD, so it says so out loud
+              (title + aria-label) rather than relying on a child noticing. */}
+          {tipTotal > 0 && (
+            <Chip
+              icon="rule" label="Regel-Seiten" value={`${tipsCount}/${tipTotal}`} art={art}
+              onClick={() => openCard({
+                req: { use: "quickfire", ctx: { type: "ceremony", beat: "tip" } },
+                item: null, card: "merkseite", attempts: 0, typed: "", align: "center",
+              })}
+              titleDe="Deine Merkseite öffnen"
+            />
+          )}
           {booksCount > 0 && <Chip icon="book" label="Bonus-Bücher" value={`${booksCount}`} art={art} />}
           {knots > 0 && <Chip icon="knot" label="Knoten" value={`${knots}`} art={art} />}
           {inBonus && bonusLeft >= 0 && <Chip icon="inkwell" label="Tinte" value={`${Math.ceil(bonusLeft / 60)}s`} art={art} />}
@@ -1060,6 +1081,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
             onResolve={resolveCorrect} onWorldChange={applyWorldChange} onDismiss={dismissCard} onPay={payBonus}
             letters={letters.got} bonusTotal={bonusLetterTotal(level)}
             bilanz={bilanz} hubHref={hubHref} onRestart={restart}
+            collectedTips={collectedTips}
           />
         )}
       </div>
@@ -1080,6 +1102,7 @@ export default function PaintGame({ level, art, tasks, hubHref, buildSha, startP
 
 function Overlay({
   o, level, art, phaseId, onResolve, onWorldChange, onDismiss, onPay, letters, bonusTotal, bilanz, hubHref, onRestart,
+  collectedTips,
 }: {
   o: OverlayState;
   level: PaintLevel;
@@ -1098,6 +1121,10 @@ function Overlay({
   bilanz: Bilanz;
   hubHref: string;
   onRestart: () => void;
+  /** R5-W2 · I1: the rule pages found so far, for the Merkseite. Passed in
+   *  rather than read from a ref, because this component re-renders on the
+   *  count — and a ref would hand it last render's list. */
+  collectedTips: readonly TipPayload[];
 }): React.ReactElement {
   const wrap: React.CSSProperties = { ...alignedWrap(o.align), background: "rgba(30, 24, 12, 0.35)" };
   // PK-R6 · H1 (round-1 critique, finding 3): the ceremony panels used to carry
@@ -1288,6 +1315,20 @@ function Overlay({
         beispielEn={o.tip?.beispielEn ?? ""}
         belegDe={o.tip?.belegDe ?? ""}
         onDone={() => onDismiss(o)}
+      />,
+      "pb-page",
+    );
+  }
+  if (o.card === "merkseite") {
+    // …the same page, reachable at any time from the HUD. It is a LOOK, not a
+    // beat: dismissing it returns the child to exactly where they were.
+    return staged(
+      <Merkseite
+        art={art}
+        plateUrl={level.rulePlate !== undefined ? art[level.rulePlate] : undefined}
+        found={collectedTips}
+        total={bilanz.tipsTotal}
+        onClose={() => onDismiss(o)}
       />,
       "pb-page",
     );
@@ -1818,7 +1859,19 @@ const plateMount: React.CSSProperties = {
   boxShadow: "inset 0 2px 10px rgba(120, 96, 52, 0.28), 0 2px 10px rgba(40,28,12,0.18)",
 };
 
-function Chip({ icon, label, value, art }: { icon: PaintedIconName; label: string; value: string; art?: Record<string, string> }): React.ReactElement {
+function Chip({ icon, label, value, art, onClick, titleDe }: {
+  icon: PaintedIconName; label: string; value: string; art?: Record<string, string>;
+  onClick?: () => void; titleDe?: string;
+}): React.ReactElement {
+  if (onClick !== undefined) {
+    return (
+      <button type="button" className="pb-hud-chip pb-hud-chip-btn" onClick={onClick} title={titleDe} aria-label={`${label} ${value} — ${titleDe ?? ""}`}>
+        <PaintedIcon name={icon} size={17} art={art} />
+        <span className="pb-hud-chip-label">{label}</span>
+        <span className="pb-hud-chip-value">{value}</span>
+      </button>
+    );
+  }
   return (
     <span className="pb-hud-chip" style={{ fontFamily: "var(--font-label, inherit)", fontSize: 13 }}>
       <PaintedIcon name={icon} size={17} art={art} />
