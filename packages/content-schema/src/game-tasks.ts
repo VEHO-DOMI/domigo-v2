@@ -52,6 +52,53 @@ export type TaskHints = z.infer<typeof TaskHints>;
 
 export const TASK_USES = ["quickfire", "encounter", "door", "rescue", "boss", "finale", "bonus"] as const;
 
+// ── THE FORM AXIS (R5-W2 · G1) ───────────────────────────────────────────────
+// WHY A SECOND AXIS EXISTS AT ALL. Koki played ch01 and found the cards „repeat
+// in form and feel". The kind axis cannot answer that, and not by accident: the
+// distribution map (doc 41 §1) caps ch01's field at FOUR kinds on purpose — a
+// six-year-old may not be handed the whole card kit in their first twenty
+// minutes. So with kind as the only declared axis, „variety" is not merely
+// unmeasured, it is inexpressible. `form` is what a card ASKS OF THE CHILD,
+// independent of the widget it asks through.
+//
+// It is also the axis that reconciles the mandate with Koki's own B12 (doc 45
+// §B): one being, one ask, content varying — what annoyed him was the paintbox
+// alternating between naming and greeting, two different speech acts from one
+// creature. B12 therefore fixes the FORM per being (./cards/variety.ts layer 14)
+// and variety lives across the phase's roster and in the served rhythm. A being
+// that carries both a restore card and a choice card has not changed its ask.
+//
+// Deriving this from the prompt string was considered and rejected on a count:
+// 37 of the shipped 69 cards have no `promptEn` at all (every restore, wheel and
+// oddone), so the form of the majority of the battery is in no string.
+export const TASK_FORMS = [
+  /** pick the being's English name as a bare label — „a pencil" */
+  "name-it",
+  /** produce a whole to-be sentence about it, either polarity — „It's a tablet" / „It isn't a window" */
+  "state-it",
+  /** three renderings of the SAME sentence, one grammatically right. The only
+   *  orthography-shaped ask the grounding law permits: every option must be a
+   *  real lexicon entry, which is why „It's a book. / Its a book. / It a book."
+   *  passes (it · its · it's are all in the unit) and a misspelling never can. */
+  "pick-correct-form",
+  /** tell someone to do or not do something; the answer is an imperative, either
+   *  polarity (polarity is CONTENT, like the number on a wheel — that is what
+   *  keeps Merle's six rounds single-voiced) */
+  "command",
+  /** the routine politeness move, initiated or answered — „Hello!" / „I'm fine, thanks." */
+  "social-formula",
+  /** produce the QUESTION, not the answer — „What's your name?" */
+  "ask-it",
+  /** how many are there; the answer is a number word */
+  "count-it",
+  /** the being shows a number one way, the child gives the other (the direction
+   *  is the wheel's own `variant` — not restated here) */
+  "number-transcode",
+  /** set-membership judgement against a named category (a place, or a word class) */
+  "belongs-or-not",
+] as const;
+export type TaskForm = (typeof TASK_FORMS)[number];
+
 // ── THE BINDING (PB-F1 / F2-1) ───────────────────────────────────────────────
 // A card is SERVED for a being. `skins` names the entity skins this card may
 // answer (the pencil creature's card must say "pencil"); `phases` scopes it to
@@ -74,6 +121,23 @@ const base = {
   promptEn: z.string().optional(), // the English question, when the task asks one
   hints: TaskHints.optional(),
   grounding: z.string().optional(), // author note (which unit item this exercises)
+  // ── THE FORM + EXERCISES DECLARATION (R5-W2 · G1) ──────────────────────────
+  // `form` is WHAT the card asks of the child (see TASK_FORMS); `exercises` names
+  // the unit items it makes the child PRODUCE — wordbank ids or a grammar
+  // structureId. Both optional in the SCHEMA and mandatory in the GATE for the
+  // field pools only (encounter · quickfire · door · rescue), deliberately the
+  // same shape `stimulus.art` already uses: the boss and finale battery belongs
+  // to another session, and a schema-level requirement would block it.
+  //
+  // `exercises` exists because coverage measured on prose is coverage nobody can
+  // trust. The first pass at this session measured „35 of 68 taught items are
+  // exercised" by substring-matching answer surfaces — which over-counts (a
+  // search for „pencil" hits inside „pencil sharpener") and under-counts in
+  // both directions. A declaration the gate VERIFIES against the card's own
+  // answer surface is checkable; a substring sweep is an estimate wearing a
+  // number's clothes.
+  form: z.enum(TASK_FORMS).optional(),
+  exercises: z.array(z.string().min(1)).min(1).optional(),
   // ── THE BOSS-EVIDENCE FIELD (doc 41 §4, R3-12) ────────────────────────────
   // The exact strings the guardian WRITES on its own board before the card
   // opens. Koki's 11.48.59 and 11.50.26 were unanswerable by looking: the card
@@ -177,6 +241,54 @@ export const GameTaskV2 = GameTaskUnion.superRefine((t, ctx) => {
   for (const msg of taskInvariantErrors(t)) ctx.addIssue({ code: "custom", message: msg });
 });
 
+// ── the FORM ↔ KIND tables (R5-W2 · G1) ──────────────────────────────────────
+/** Which widgets can express each ask. Both directions matter, so both are
+ *  declared: this table catches a form asked through a kind that cannot carry it
+ *  (an `oddone` claiming to be „name-it"), and KIND_FIXED_FORM below catches the
+ *  reverse (a `wheel` claiming to ask anything other than its transcode). */
+export const FORM_KINDS: Readonly<Record<TaskForm, readonly TaskKind[]>> = {
+  "name-it": ["choice", "restore", "typed", "spell"],
+  "state-it": ["choice", "typed"],
+  "pick-correct-form": ["choice"],
+  command: ["choice", "typed"],
+  "social-formula": ["choice", "typed"],
+  "ask-it": ["choice", "order", "typed"],
+  "count-it": ["choice", "typed"],
+  "number-transcode": ["wheel"],
+  "belongs-or-not": ["oddone"],
+};
+
+/**
+ * Some kinds have their ask fixed by their own MACHINE rather than by the author:
+ * a `restore` always asks the being's name and then its colour (the being states
+ * the colour itself in German, so step two is not a second question —
+ * STORY_SPINE_CH01 §5), a `wheel` can only transcode a number, an `oddone` can
+ * only judge membership.
+ *
+ * This is DERIVED from FORM_KINDS rather than declared beside it, and that is a
+ * finding of this session rather than a preference: the first version was a
+ * second table plus its own guard clause, and the tamper proved the guard could
+ * be deleted without a single test going red — because only `name-it` lists
+ * `restore`, only `number-transcode` lists `wheel`, and only `belongs-or-not`
+ * lists `oddone`, so FORM_KINDS already forbade every other pairing. An
+ * untestable check is exactly the class this session exists to remove, so the
+ * duplicate table became this function: one source of truth, and the useful
+ * question ("is this kind's ask its author's choice at all?") still answerable.
+ */
+export function fixedFormOf(kind: TaskKind): TaskForm | undefined {
+  const forms = (Object.keys(FORM_KINDS) as TaskForm[]).filter((f) => FORM_KINDS[f].includes(kind));
+  return forms.length === 1 ? forms[0] : undefined;
+}
+
+/** Forms whose ANSWER IS THE ASKER'S OWN IDENTITY. This is the small fact that
+ *  makes B12 satisfiable instead of contradictory. A being met more than once
+ *  cannot keep a referent-fixed voice — a second card of the same form would
+ *  have to repeat the same answer — so it must take a content-variable form.
+ *  That is why today's content drifts: the pencil's voice was „name-it", so its
+ *  second and third cards HAD to become something else. B12 was not broken by
+ *  carelessness; on a referent-fixed voice it was unsatisfiable. */
+export const REFERENT_FIXED_FORMS: ReadonlySet<TaskForm> = new Set<TaskForm>(["name-it", "state-it"]);
+
 // ── the cross-field content laws (ONE source of truth) ───────────────────────
 /** The kinds whose question is ABOUT written material, and which therefore owe
  *  the world that material (doc 41 §4). `choice`/`wheel`/`spell`/`typed` ask
@@ -215,6 +327,14 @@ export function taskInvariantErrors(t: GameTaskV2): string[] {
   }
   if (t.skins && dup(t.skins)) errs.push("duplicate skin");
   if (t.phases && dup(t.phases)) errs.push("duplicate phase");
+  // ── THE FORM LAW (R5-W2 · G1), both directions ────────────────────────────
+  // A declared ask that its own widget cannot express is worse than no
+  // declaration: the variety laws compute on `form`, so a wrong one buys a
+  // green check for a battery that repeats itself.
+  if (t.form !== undefined && !FORM_KINDS[t.form].includes(t.kind)) {
+    errs.push(`form: "${t.form}" cannot be asked as a ${t.kind} card (that ask is expressible as: ${FORM_KINDS[t.form].join(" · ")})`);
+  }
+  if (t.exercises && dup(t.exercises)) errs.push("duplicate exercises id");
   // ── THE BOSS-EVIDENCE LAW (doc 41 §4, R3-12) ──────────────────────────────
   // A boss card whose kind asks about MATERIAL (a sentence, four words, a set of
   // chips, a row of numbers) must render that material on the guardian — and

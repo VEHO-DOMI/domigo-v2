@@ -7,6 +7,7 @@ import {
   GameTasksFileV2,
   deriveGapHints,
   renderTaskText,
+  fixedFormOf,
   seededShuffle,
   taskInvariantErrors,
 } from "../game-tasks.ts";
@@ -49,6 +50,43 @@ test("gameTasks@2 — cross-field invariants fire (red-first tamper block)", () 
   red(GameTaskV2.safeParse(MI({ fix: { mode: "replace" } })), "mistake replace without correction");
   red(GameTaskV2.safeParse(MI({ fix: { mode: "remove", correction: "x" } })), "mistake remove with a stray correction");
   red(GameTaskV2.safeParse(ME({ pairs: [{ a: "3", b: "three" }, { a: "3", b: "seven" }, { a: "9", b: "nine" }] })), "memory duplicate on a");
+});
+
+// a restore fixture, needed by the form law below (the shipped battery has nine
+// of them and the kind's ask is fixed by its own machine)
+const RE = (over: Record<string, unknown> = {}) => ({ id: "t1", use: "encounter", stimulus: { type: "entity", showsDe: "steht blass da" }, skins: ["obj_book"], storyDe: "Sag, was es ist!", kind: "restore", nameOptions: ["book", "pen", "desk", "hat"], name: "book", colourAskDe: "Ich war blau wie der Himmel!", colourOptions: ["blue", "red", "brown"], colour: "blue", ...over });
+
+test("gameTasks@2 — THE FORM LAW (R5-W2 · G1): a declared ask its widget can carry", () => {
+  // WHY THIS LAW: ch01's field palette is capped at four kinds on purpose (doc 41
+  // §1), so `form` is the only axis variety can live on — and the variety laws
+  // COMPUTE on it. A wrong `form` therefore buys a green check for a battery that
+  // repeats itself, which is worse than declaring nothing. ONE table carries the
+  // legality (FORM_KINDS: which widgets can express which ask); the kinds whose
+  // ask is fixed by their own machine fall out of it, see fixedFormOf below.
+  ok(GameTaskV2.safeParse(CH({ form: "command" })), "a choice card may ask a command");
+  ok(GameTaskV2.safeParse(CH({ form: "pick-correct-form" })), "…or which rendering is right");
+  ok(GameTaskV2.safeParse(WH({ form: "number-transcode" })), "a wheel transcodes numbers");
+  ok(GameTaskV2.safeParse(RE({ form: "name-it" })), "a restore names its being");
+  ok(GameTaskV2.safeParse(OD({ form: "belongs-or-not" })), "an oddone judges membership");
+  // no form at all stays legal — the boss/finale battery is another session's
+  ok(GameTaskV2.safeParse(MI()), "a boss card needs no form (the gate scopes the demand to the field)");
+
+  red(GameTaskV2.safeParse(CH({ form: "belongs-or-not" })), "a 3-option choice cannot pose a set question");
+  red(GameTaskV2.safeParse(CH({ form: "number-transcode" })), "only a wheel transcodes");
+  red(GameTaskV2.safeParse(OD({ form: "name-it" })), "an oddone cannot ask for a label");
+  red(GameTaskV2.safeParse(WH({ form: "count-it" })), "a wheel's ask is fixed by its machine");
+  red(GameTaskV2.safeParse(RE({ form: "state-it" })), "a restore's ask is fixed by its machine");
+  red(GameTaskV2.safeParse(CH({ exercises: ["g1u01.w.pen", "g1u01.w.pen"] })), "duplicate exercises id");
+
+  // …and the same table answers "is this kind's ask the author's choice at all?".
+  // Derived, not declared twice: the first draft of this law WAS a second table
+  // with its own guard, and the tamper deleted the guard without turning a single
+  // test red. FORM_KINDS was already doing the work.
+  assert.equal(fixedFormOf("restore"), "name-it", "a restore can only name");
+  assert.equal(fixedFormOf("wheel"), "number-transcode", "a wheel can only transcode");
+  assert.equal(fixedFormOf("oddone"), "belongs-or-not", "an oddone can only judge membership");
+  assert.equal(fixedFormOf("choice"), undefined, "a choice card's ask IS the author's choice");
+  assert.equal(fixedFormOf("typed"), undefined, "so is a typed card's");
 });
 
 test("gameTasks@2 — THE BOSS-EVIDENCE LAW (R3-12): the card asks about the world", () => {

@@ -1,7 +1,7 @@
 // PB-T6 · THE gameTasks@2 AUTHORING GATE (run: node --experimental-strip-types
 // scripts/check-game-tasks.mjs; exit 1 on any violation; CI-runnable).
 //
-// Seven layers over every content/corpus/stories/*/paint/*.tasks.v2.json:
+// Seventeen layers over every content/corpus/stories/*/paint/*.tasks.v2.json:
 //   1. SCHEMA + cross-field invariants — GameTasksFileV2 (content-schema),
 //      which now also carries the BINDING LAW (entity stimulus ⟺ skins).
 //   2. GROUNDING — every student-visible English token is in the unit lexicon.
@@ -21,11 +21,26 @@
 //   9. DISTRIBUTION MAP (doc 41 §1, R3-13) — a chapter's FIELD may only serve
 //      the kinds its palette allows, so ch01 stays a tutorial; and the
 //      non-repetition floor is what the phase actually spawns, not a flat 2.
+//  10. DESATURATION LAW (doc 41 §2, R3-15) — a card may not name a colour on a
+//      being that renders GREY until it is restored.
 //  11. PORTRAIT LAW (doc 44 §3.1.5, PK-R6 · C) — a card whose asker has been
 //      PAINTED must declare which of its cells is talking; the declared stem
 //      must exist and must belong to that being.
 //  12. TIMER POLICY (doc 44 §2.9, PK-R6 · C) — the content may not contradict
 //      the chalk clock's own map (game-paint/src/cards/timer.ts, imported).
+//  13-17. THE VARIETY LAWS (R5-W2 · G1) — form, voice, rhythm, distinctness and
+//      the coverage ledger, all computed by game-paint/src/cards/variety.ts,
+//      IMPORTED so the gate and the game share one definition of "what a child
+//      actually meets". Layer 15 does not model the serve, it RUNS the router.
+//      Their exemptions live in scripts/game-tasks-variety-policy.json, where an
+//      exemption must buy a stricter obligation (0d) and must suppress something
+//      real (0k) or it is deleted.
+//
+// (Beifang, R5-W2 · G1: this header said "Seven layers" while the file enforced
+// twelve, and it skipped straight from 9 to 11 although layer 10 — the
+// DESATURATION LAW, line 189 — has been in the body all along. A header that
+// undercounts its own file is how a law goes unreviewed, so it is corrected here
+// rather than left as a curiosity.)
 // The grounding/register helpers mirror scripts/check-story-grounding.mjs
 // (same lexicon, same law) — kept compact and local on purpose.
 import fs from "node:fs";
@@ -35,9 +50,24 @@ import { CALM_DE, TIMED_USES, URGENCY_DE, spokenDeOf, timerClassFor } from "../p
 // PK-R6 · D: the reawakening's length is a LAW, not a number this file may
 // restate — imported from the engine that plays it (doc 44 §3.3's six rounds).
 import { AWAKEN_ROUNDS } from "../packages/game-paint/src/entities.ts";
+// R5-W2 · G1 · WHO RAISES WHICH POOL. These tables used to be copied into this
+// file under the comment "these two tables mirror sim.ts and must move with it".
+// The variety laws would have been the third copy, so they moved to the engine
+// and everybody imports them — a rule with two copies is a rule with one
+// enforced copy (PK-R3b).
+import { HOSTILE_ROLES, allPhasesOf, askerUsesOf, raisedUsesOf } from "../packages/game-paint/src/cards/serving.ts";
+import { varietyErrors } from "../packages/game-paint/src/cards/variety.ts";
 
 const STORIES = "content/corpus/stories";
 const lex = JSON.parse(fs.readFileSync("docs/design/g1/grounding/u01-lexicon.json", "utf8"));
+// layers 13-17 read the unit the chapter teaches, plus the declared exemptions
+const POLICY_FILE = "scripts/game-tasks-variety-policy.json";
+const policy = JSON.parse(fs.readFileSync(POLICY_FILE, "utf8"));
+const wordbank = JSON.parse(fs.readFileSync("content/corpus/units/g1-u01/wordbank.json", "utf8")).entries;
+const structureIds = [...new Set(JSON.parse(fs.readFileSync("content/corpus/units/g1-u01/grammar.json", "utf8")).items.map((i) => i.structureId))];
+// the ledger's expiry dates are compared against a date the CHECKER supplies —
+// variety.ts stays pure so its tests cannot rot with the calendar.
+const TODAY = new Date().toISOString().slice(0, 10);
 
 // ── the painted stems that exist on disk (mirrors check-paint-art's walk) ────
 // Layer 11 needs to know what has been COMMISSIONED, which is a fact about the
@@ -143,8 +173,10 @@ function checkItem(chId, t) {
 // ── PB-F1: the card set against the LEVEL it is played in ────────────────────
 // The sim decides which pool an event asks for; these two tables mirror
 // packages/game-paint/src/sim.ts and must move with it.
-const HOSTILE_ROLES = ["chaser", "gunner", "flyer", "bouncer", "crusher", "swarm"];
-const encounterUseFor = (role) => (role === "swarm" ? "quickfire" : "encounter");
+// HOSTILE_ROLES + the role→use mapping now come from cards/serving.ts (see the
+// import block). `encounterUseFor` survives as a thin local name for the ONE
+// question the coverage law asks — which pool a hostile's contact raises.
+const encounterUseFor = (role) => askerUsesOf({ role })[0];
 const MAX_LINE = MAX_LINE_DE; // the kurzweilig law (F2-2), shared with the level laws
 
 // ── 9 · THE DISTRIBUTION MAP (doc 41 §1, R3-13) ──────────────────────────────
@@ -163,11 +195,6 @@ const CHAPTER_FIELD_KINDS = {
   ch01: new Set(["choice", "wheel", "restore", "oddone"]),
 };
 
-const allPhasesOf = (level) => [
-  ...(level.phases ?? []),
-  ...(level.arena ? [level.arena] : []),
-  ...(level.bonus ? [level.bonus] : []),
-];
 
 /** Cards of `use` this being could ever be served, honouring the phase scope —
  *  the same filter routing.ts applies at run time. */
@@ -324,27 +351,19 @@ function checkAgainstLevel(file, level, items) {
   // the ctx union has no `hazard` member), so the law inverts — a card sitting
   // in a pool no visible asker can raise is dead content, and dead content is
   // exactly where an un-reviewed card hides.
-  const raisedUses = new Set();
-  for (const ph of phases) {
-    for (const e of ph.entities ?? []) {
-      if (HOSTILE_ROLES.includes(e.role)) raisedUses.add(encounterUseFor(e.role));
-      // PK-R6 · C1: a drained object is a visible asker too — it raises its own
-      // card on the ↑ press (sim.ts `engaged` → use "encounter").
-      else if (e.role === "drained") raisedUses.add("encounter");
-      // PK-R6 · F: NOT "encounter" — sim.ts routes her chalk hits to the boss
-      // battery (see the coverage row above), so she raises boss and finale.
-      else if (e.role === "guardian") { raisedUses.add("boss"); raisedUses.add("finale"); }
-      else if (e.role === "cage") raisedUses.add("rescue");
-      // PK-R6 · D: the classmate raises the same pool her cage did — she is the
-      // asker of every round after the latch (sim.ts `askRound`).
-      else if (e.role === "classmate") raisedUses.add("rescue");
-      else if (e.role === "door.trigger") raisedUses.add(String(e.params?.kind ?? "exit") === "bonus" ? "bonuspay" : "door");
-    }
-  }
-  // the shell's universal fallback: when a being's own pool runs dry it is
-  // answered from the unbound quickfire cards — still a seeable asker, so
-  // quickfire stays reachable wherever any being can raise a card at all.
-  if (raisedUses.size > 0) raisedUses.add("quickfire");
+  // R5-W2 · G1: the role→pool mapping used to be re-written here, entity role by
+  // entity role, alongside a second copy of it in the coverage law above and a
+  // third in sim.ts. It is now one exported table (cards/serving.ts), and the
+  // shell's universal quickfire fallback rides inside it — so this law and the
+  // sim cannot disagree about who can raise what.
+  //
+  // Note for the reader who wonders why an unbound quickfire card still passes
+  // layer 8 while layer 15b calls it unreachable: they measure different things.
+  // Layer 8 asks whether the POOL has a seeable asker (it does — the fallback is
+  // real machinery). Layer 15b runs the router and asks whether THIS CARD is ever
+  // actually served, which in ch01 it is not, because coverage law 5 guarantees
+  // every asker has bound cards of its own and step 3 wins before step 4.
+  const raisedUses = raisedUsesOf(level);
   for (const t of items) {
     if (!raisedUses.has(t.use)) {
       fail(`${w}:${t.id}`, `speaker-law: use "${t.use}" is raised by no visible asker in this chapter — the card can only ever be served by nobody`);
@@ -477,11 +496,26 @@ for (const file of files) {
     fail(file, `no sibling ${path.basename(levelFile)} — bindings cannot be checked against a world`);
     continue;
   }
-  checkAgainstLevel(file, JSON.parse(fs.readFileSync(levelFile, "utf8")), parsed.data.items);
+  const level = JSON.parse(fs.readFileSync(levelFile, "utf8"));
+  checkAgainstLevel(file, level, parsed.data.items);
   checkNoTwins(file, parsed.data.items);
   checkPortraits(file, parsed.data.items);
   checkTimerPolicy(file, parsed.data.items);
+  // 13-17 · THE VARIETY LAWS — one imported pass, so the gate, the audit doc and
+  // the unit tests all compute the same numbers from the same code.
+  for (const e of varietyErrors({
+    chapter: parsed.data.chapter,
+    items: parsed.data.items,
+    level,
+    policy,
+    wordbank,
+    structureIds,
+    lexicon: words,
+    today: TODAY,
+  })) {
+    fail(`${file} ${e.where}`, `${e.law} · ${e.detail}`);
+  }
 }
 
-if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy all green`);
+if (failures === 0) console.log(`check-game-tasks: OK — ${itemCount} tasks across ${files.length} file(s): schema, grounding, giveaway, register, binding, coverage, length, twins, portraits, timer-policy, form, voice, rhythm, distinctness, coverage-ledger all green`);
 else { console.error(`check-game-tasks: ${failures} failure(s)`); process.exit(1); }
