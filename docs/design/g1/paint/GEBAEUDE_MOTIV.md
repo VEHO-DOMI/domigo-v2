@@ -20,17 +20,37 @@ Dominikanerinnen**, Schlossberggasse 17, 1130 Wien (Hacking, Bezirk Hietzing).
 | **Internatsbau** (1964–66, **Gustav Peichl**) | moderner Nachkriegsbau neben den Ziegelbauten; heute Volksschule, Hort, Küche, Speisesaal, Turnsaal, Festsaal |
 | **Gelände** | Gartengelände mit **großem Rasenspielfeld**; Campus am Hang, Bauten mehrerer Epochen nebeneinander |
 
-## ★ DAS MOTIV IN VIER MERKMALEN
+## ★ DAS MOTIV — aus KOKIS FOTO der Vorderseite (2026-08-13)
 
-Die Wiedererkennung kommt aus **Silhouette und Material**, nicht aus Detailtreue:
+**Korrektur der ersten Fassung:** die Text-Recherche hatte die **Doppeltürme** als
+Leitmotiv gesetzt. Die gehören zur **Kirche** — ein anderes Haus auf demselben Areal.
+Kokis Foto zeigt die **Schulfassade von vorn**, und die trägt ein ganz anderes und viel
+charakteristischeres Zeichen. **Das Foto schlägt die Textquelle** (es zeigt, was ist;
+die Beschreibungen ließen genau diese Merkmale aus).
 
-1. **zwei Türme nebeneinander** (Doppelturmfassade der Kirche)
-2. **ein großer Dreiecksgiebel**
-3. **sichtbares Ziegelmauerwerk** — nicht verputzt, nicht weiß
-4. **ein dreigeschoßiger Ziegelbau mit Mittelgiebel** daneben
+**Die vier Merkmale, die die Wiedererkennung tragen:**
+
+1. **★ Eine Reihe kleiner spitzer Dachtürmchen** mit Spitzenknäufen entlang der
+   Dachkante — das auffälligste Zeichen der Silhouette, in keiner Textquelle erwähnt.
+2. **★ Helle, fast cremefarbene Fenstereinfassungen und waagrechte Bänder gegen roten
+   Sichtziegel** — die eigentliche Farbsignatur des Hauses. „Ziegel" allein reicht nicht;
+   es ist der KONTRAST hell-auf-rot, der das Haus ausmacht.
+3. **Ein langer, hoher Ziegelbau am Hang** — vier sichtbare Geschosse, die Fassade zieht
+   sich in die Länge, die Straße liegt unterhalb, Bäume stehen davor.
+4. **Eine helle Figur hoch an der Fassade**, über einem Giebel — eine Heiligenfigur.
+
+**Ebenfalls auf dem Foto, Entscheidung offen:** die Fassade trägt **große Buchstaben im
+Ziegel** („SCHULEN DER …"). Ob das Spiel die Schrift zeigt, ist Kokis Entscheidung
+(→ offene Zeile unten), weil es die Schule namentlich sichtbar macht.
+
+**Links im Bild** ein heller, moderner, flach gedeckter Anbau — vermutlich Peichls
+Nachkriegsbau; er ist bewusst NICHT Teil des Motivs.
 
 Diese vier zusammen SIND das Motiv. Alles andere darf schief, weich und handgemalt sein
 (der naive Look, doc 45 §G2, entschieden am selben Tag).
+
+**Die Kirche bleibt ein EIGENES Motiv** (Doppelturmfassade + Dreiecksgiebel,
+Sichtziegel, neugotisch) — für Kulissen, die sie zeigen, nicht für das Schulhaus.
 
 ## Was NICHT belegt ist — und deshalb nicht behauptet wird
 
@@ -42,8 +62,13 @@ Einzelheiten werden nicht erfunden** — kein Uhrturm, keine Rosette, keine Frei
 keine Kuppel. Im Zweifel weglassen: wer die Schule kennt, soll nicken; niemand soll
 etwas sehen, das es nicht gibt.
 
-**Offen, von Koki zu ergänzen** (er kennt das Haus, die Quellen schweigen dazu):
-Ziegelfarbe · Fensterformen · was IHM am Haus als Erstes ins Auge fällt.
+**Durch Kokis Foto (2026-08-13) beantwortet:** Ziegelfarbe = warmes Rot-Braun; die
+Fenster sind hoch und rechteckig mit HELLEN Einfassungen; die Dachlandschaft trägt die
+Türmchen-Reihe. Das Foto liegt als Referenz im Kunst-Lab
+(`~/Code/codex-art-lab/reference/schulhaus_vorderseite.jpg`).
+
+**Noch offen:** die genaue Fensterform im obersten Geschoß (rund- oder spitzbogig?) —
+und ob die Fassaden-Schrift im Spiel auftauchen soll.
 
 ## Grenzen
 
