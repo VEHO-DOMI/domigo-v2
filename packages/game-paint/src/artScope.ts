@@ -26,7 +26,7 @@
 // loader loads, and scripts/check-paint-art.mjs asserts floor ⊆ ceiling. A
 // stem the gate insists on that the loader would skip fails the build.
 
-import { GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, entitySkinStems, guardianSkinStems } from "./artManifest.ts";
+import { GLYPH_STEMS, HERO2_STEMS, HERO_STEMS, PAINTED_ICON_NAMES, entitySkinStems, guardianSkinStems } from "./artManifest.ts";
 import { COMPOSITION, compositionStems } from "./composition.ts";
 import { CHALK_PROJECTILE_STEMS } from "./entities.ts";
 
@@ -114,6 +114,16 @@ export const domArtStems = (level: ScopeLevel): Set<string> => {
   for (const ph of allScopePhases(level)) {
     for (const e of ph.entities) if (e.role === "tip") out.add(`${e.skin}_open`);
   }
+  // R5-W2 · J1-C: THE PAINTED ICONS. `PaintedIcon` reads `hud_<name>` straight
+  // out of the art map and draws it instead of its code-drawn glyph whenever the
+  // stem exists (PaintedIcons.tsx). Eight of those stems have been on disk for
+  // packets and none of them was declared here — so every one of them has been
+  // sitting in AUDIT B's »loaded by nothing« list while it was, in fact, being
+  // rendered on every card. An audit that miscounts in the SAFE direction is
+  // still an audit that miscounts, and the count is what tells us when art has
+  // genuinely gone dead. Declared by NAME, from the icon set itself, so a new
+  // icon cannot be forgotten here.
+  for (const n of PAINTED_ICON_NAMES) out.add(`hud_${n}`);
   for (const s of ALWAYS_STEMS) out.add(s);
   return out;
 };

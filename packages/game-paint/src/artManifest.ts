@@ -71,3 +71,20 @@ export const HERO_STEMS = [
   "satchel",
   "rotor_a", "rotor_b", "rotor_c",
 ];
+
+/** R5-W2 · J1-C · THE PAINTED ICON STEMS.
+ *
+ *  `PaintedIcon` (cards/PaintedIcons.tsx) draws its code-built glyph unless a
+ *  painted stem named `hud_<name>` exists in the art map, in which case it draws
+ *  that instead. Those stems are therefore read by the DOM on every card — and
+ *  none of them was ever declared to `artScope.domArtStems`, so the art audit
+ *  has been reporting live art as »loaded by nothing«.
+ *
+ *  The names live HERE and not next to the icons because the audit runs in a
+ *  plain node script: importing the .tsx would drag JSX into a file that only
+ *  strips types. `PaintedIcons.test.ts` asserts this list and the icon set are
+ *  the same set, in both directions — so the copy cannot rot silently. */
+export const PAINTED_ICON_NAMES: readonly string[] = [
+  "spark", "cage", "wisp", "rule", "book", "palette", "door",
+  "knot", "inkwell", "blot", "brush", "slate", "rosette",
+];
