@@ -3,7 +3,7 @@
 // demanded: a run whose frames DIFFER, a landing that squashes, faces that
 // change per state, and a teeter that only fires at a real edge.
 import { describe, expect, it } from "vitest";
-import { HERO2_APEX_VY, HERO2_STEMS, HERO2_STRIDE_TICKS, HERO2_TEETER_TICKS, heroFullCell } from "./rigSpec.ts";
+import { HERO2_APEX_VY, HERO2_CROUCH_TICKS, HERO2_RISE2_VY, HERO2_STEMS, HERO2_STRIDE_TICKS, HERO2_TEETER_TICKS, heroFullCell } from "./rigSpec.ts";
 
 interface CellOpts {
   pose?: Parameters<typeof heroFullCell>[0];
@@ -13,6 +13,7 @@ interface CellOpts {
   cheering?: boolean;
   atEdge?: boolean;
   tick?: number;
+  jumpedAgo?: number;
 }
 const cell = (over: CellOpts = {}): string | null =>
   heroFullCell(
@@ -23,6 +24,7 @@ const cell = (over: CellOpts = {}): string | null =>
     over.cheering ?? false,
     over.atEdge ?? false,
     over.tick ?? 0,
+    over.jumpedAgo ?? 99,
   );
 
 describe("heroFullCell — the v2 override map", () => {
@@ -37,11 +39,30 @@ describe("heroFullCell — the v2 override map", () => {
     expect(cell({ pose: "walk", walkTime: HERO2_STRIDE_TICKS })).toBe("hero2_run1");
   });
 
-  it("the jump arc: rise, weightless apex, fall — three different silhouettes", () => {
-    expect(cell({ pose: "jump", vy: -(HERO2_APEX_VY + 20) })).toBe("hero2_jump");
+  // R5-F4 · aus drei Silhouetten sind FÜNF geworden (Batch AQ5): die Hocke vor
+  // dem Flug und ein zweistufiger Aufstieg. Zwei blinde Prüfer hatten den
+  // Aufstieg unabhängig als „eine starre Zeichnung, von der Kamera geschoben"
+  // beschrieben — hier steht jetzt, dass er sich unterwegs ändert.
+  it("der Sprungbogen: Hocke, kraftvoller Aufstieg, bremsender Aufstieg, Scheitel, Fall", () => {
+    // die Hocke gehört den ersten Ticks — und NUR dem Aufstieg
+    expect(cell({ pose: "jump", vy: -1280, jumpedAgo: 0 })).toBe("hero2_crouch");
+    expect(cell({ pose: "jump", vy: -1280, jumpedAgo: HERO2_CROUCH_TICKS - 1 })).toBe("hero2_crouch");
+    expect(cell({ pose: "jump", vy: -1280, jumpedAgo: HERO2_CROUCH_TICKS })).toBe("hero2_jump");
+    expect(cell({ pose: "fall", vy: 1280, jumpedAgo: 0 }), "ein Fall hockt nicht").toBe("hero2_fall");
+    // der Aufstieg in zwei Stufen
+    expect(cell({ pose: "jump", vy: -HERO2_RISE2_VY })).toBe("hero2_jump");
+    expect(cell({ pose: "jump", vy: -(HERO2_RISE2_VY - 1) })).toBe("hero2_jump2");
+    // …und die beiden Enden, unverändert
     expect(cell({ pose: "jump", vy: -(HERO2_APEX_VY - 1) })).toBe("hero2_apex");
     expect(cell({ pose: "fall", vy: HERO2_APEX_VY - 1 })).toBe("hero2_apex");
     expect(cell({ pose: "fall", vy: HERO2_APEX_VY + 40 })).toBe("hero2_fall");
+  });
+
+  it("die Schwellen liegen in der richtigen Reihenfolge", () => {
+    // ein Tippfehler, der RISE2 unter APEX schiebt, würde die zweite
+    // Aufstiegszelle unerreichbar machen — still, und nur hier sichtbar
+    expect(HERO2_RISE2_VY).toBeGreaterThan(HERO2_APEX_VY);
+    expect(HERO2_CROUCH_TICKS).toBeGreaterThan(0);
   });
 
   it("the touchdown wears the painted squash for the land window, then stands", () => {
@@ -70,11 +91,15 @@ describe("heroFullCell — the v2 override map", () => {
   it("every cell the map can emit is in the manifest contract", () => {
     const emitted = new Set<string>();
     for (const pose of ["stand", "walk", "run", "jump", "fall", "hit"] as const) {
-      for (const vy of [-80, -10, 10, 80]) {
+      for (const vy of [-1280, -80, -10, 10, 80, 1280]) {
         for (const walkTime of [0, 9, 18, 27, 36]) {
           for (const landedAgo of [0, 99]) {
             for (const atEdge of [false, true]) {
               for (const tick of [0, HERO2_TEETER_TICKS]) {
+                for (const ja of [0, 99]) {
+                  const c = heroFullCell(pose, walkTime, vy, landedAgo, false, atEdge, tick, ja);
+                  if (c !== null) emitted.add(c);
+                }
                 const c = heroFullCell(pose, walkTime, vy, landedAgo, false, atEdge, tick);
                 if (c !== null) emitted.add(c);
               }

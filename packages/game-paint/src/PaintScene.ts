@@ -2989,6 +2989,7 @@ export class PaintScene extends Phaser.Scene {
     const fullCell = heroFullCell(
       this.player.pose, this.player.walkTime, this.player.vy,
       this.player.landedAgo, cheer > 0, this.heroAtEdge(), this.tickCount,
+      this.player.jumpedAgo, // R5-F4: die Uhr, an der die Hocke hängt
     );
     const full = fullCell !== null && this.textures.exists(this.tex(fullCell)) ? fullCell : null;
     // R5-F3 · DIE ANHOLUNG GILT FÜR BEIDE ZEICHENWEGE. Die per-Glied-Anholung
