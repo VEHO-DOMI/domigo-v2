@@ -4,6 +4,7 @@
 // global scale keeps the commissioned proportions. Pure data + tiny pure fns —
 // the scene's compositor consumes this; rig.ts supplies the motion.
 
+import { PAINT } from "./paint.ts";
 import type { PlayerPose } from "./player.ts";
 import { RIG, isGrounded } from "./rig.ts";
 
@@ -147,12 +148,40 @@ export const HERO2_STRIDE_TICKS = 9;
 /** |vy| (subs/tick) under which a jump arc reads as its weightless apex. */
 export const HERO2_APEX_VY = 40;
 
+// ── R5-F4 · DIE ANHOLUNG BEKOMMT IHR BILD (Batch AQ5) ────────────────────────
+// F3 hat die Anholung zweimal gebaut — an den Gliedern und am ganzen Körper —
+// und ein dritter blinder Prüfer nannte sie trotzdem abwesend. Zu Recht: der
+// Held wird aus gemalten Ganzkörper-Zellen gezeichnet, und die sprang in EINEM
+// Tick von „steht" auf „fliegt". Eine Stauchung verformt danach nur noch eine
+// Zeichnung, die den Sprung schon zeigt. Was fehlte, war ein gemaltes Bild der
+// Hocke — es liegt jetzt vor, und dies ist die Zeile, auf die F3 gewartet hat.
+/** Wie lange die Hocke steht. Zwei Ticks (33 ms): lang genug, dass das Auge
+ *  einen Zustand VOR dem Flug sieht, kurz genug, dass der Sprung nicht träge
+ *  wirkt. Der Absprung selbst ist unverändert — es wird nichts verzögert,
+ *  nur in den ersten beiden Ticks etwas anderes gezeigt. Der Körper-Coil aus
+ *  F3 (RIG.launchCoilTicks = 4) läuft darunter weiter und trägt die Zelle. */
+export const HERO2_CROUCH_TICKS = 2;
+/** Der Aufstieg ist jetzt zweistufig (AQ5 liefert Aufstieg 1 + 2). Die Schwelle
+ *  ist die Absprunggeschwindigkeit SELBST — abgeleitet, nicht getippt, damit
+ *  eine Physik-Änderung sie mitnimmt.
+ *
+ *  Der Grund steht in der gemessenen Geschwindigkeitsleiter eines gehaltenen
+ *  Sprungs: −1280 für FÜNFZEHN Ticks (das Haltefenster unterdrückt die
+ *  Schwerkraft), dann 1024 · 768 · 512 · 256 · 0. Der Aufstieg zerfällt also
+ *  von Natur aus in zwei ungleiche Hälften — den getragenen Teil, solange die
+ *  Taste hält, und den, in dem die Schwerkraft schon zieht. Genau dort trennt
+ *  diese Schwelle: Zelle eins gehört dem Abdrücken, Zelle zwei dem Steigen, das
+ *  bereits nachlässt. Ein Zwischenwert (der erste Versuch stand bei 420) gab
+ *  der zweiten Zelle einen einzigen Tick — gemessen, nicht vermutet. */
+export const HERO2_RISE2_VY = Math.abs(PAINT.jumpVy);
+
 /** The teeter alternates its two cells at this period (presentation clock). */
 export const HERO2_TEETER_TICKS = 28;
 
 export const HERO2_STEMS = [
   "hero2_run0", "hero2_run1", "hero2_run2", "hero2_run3",
-  "hero2_jump", "hero2_apex", "hero2_fall", "hero2_land",
+  "hero2_jump", "hero2_jump2", "hero2_apex", "hero2_fall", "hero2_land",
+  "hero2_crouch",
   "hero2_idle", "hero2_hit", "hero2_cheer",
   "hero2_teeter0", "hero2_teeter1",
 ] as const;
@@ -173,13 +202,25 @@ export const heroFullCell = (
   cheering: boolean,
   atEdge: boolean,
   tick: number,
+  /** R5-F4 · Ticks seit dem Absprung. Optional (Vorgabe „lange her"), damit
+   *  jeder bestehende Aufrufer und jeder Test unverändert bleibt. */
+  jumpedAgo = 99,
 ): string | null => {
   if (cheering) return "hero2_cheer";
   if (pose === "hit") return "hero2_hit";
   if (isLanding(pose, landedAgo)) return "hero2_land";
   if (pose === "jump" || pose === "fall") {
+    // R5-F4 · zuerst die Hocke: der Körper ist physikalisch schon unterwegs
+    // (der Absprung wurde NICHT verzögert), gezeigt wird für zwei Ticks noch
+    // das Sammeln. Genau die Lüge, die Animation seit jeher erzählt — und die
+    // eine, die F3 nicht erzählen konnte, weil das Bild dazu fehlte.
+    if (pose === "jump" && jumpedAgo < HERO2_CROUCH_TICKS) return "hero2_crouch";
     if (Math.abs(vySubs) < HERO2_APEX_VY) return "hero2_apex";
-    return pose === "jump" ? "hero2_jump" : "hero2_fall";
+    if (pose === "fall") return "hero2_fall";
+    // …und der Aufstieg in zwei Stufen statt einer eingefrorenen Zeichnung:
+    // zwei Prüfer nannten den 20-Tick-Standbild-Flug unabhängig gravierender
+    // als die fehlende Anholung.
+    return Math.abs(vySubs) >= HERO2_RISE2_VY ? "hero2_jump" : "hero2_jump2";
   }
   if (pose === "run" || pose === "walk") {
     return `hero2_run${Math.floor(walkTime / HERO2_STRIDE_TICKS) % 4}`;
