@@ -181,12 +181,39 @@ describe("15 · the RHYTHM law — computed by RUNNING the router", () => {
     expect(detailOf([unbound, bound], "15b")).toContain("the fallback pool is shadowed");
   });
 
-  it("15c · refuses the same ask twice running in one pool", () => {
-    const same = [
-      choice("a", { skins: ["door"], use: "door", phases: undefined, form: "command" }),
-      choice("b", { skins: ["door"], use: "door", phases: undefined, form: "command" }),
+  it("15c · refuses an AVOIDABLE same-ask adjacency, and only that", () => {
+    const d = (id: string, form: string, answer: string, ex: string) =>
+      door(id, { form, options: [answer, `${id}x`, `${id}y`], answer, exercises: [ex] });
+    // four cards, two commands: ⌊4/2⌋ = 2, so an order with no equal neighbours
+    // EXISTS — authoring the two commands adjacent is an accident, and the law
+    // says so plus how to fix it
+    const avoidable = [
+      d("d1", "command", "pencil", "g1u01.w.pencil"),
+      d("d2", "command", "rubber", "g1u01.w.rubber"),
+      d("d3", "ask-it", "book", "g1u01.w.book"),
+      d("d4", "social-formula", "books", "g1u01.w.book"),
     ];
-    expect(laws(same)).toContain("15c");
+    expect(laws(avoidable)).toContain("15c");
+    expect(detailOf(avoidable, "15c")).toContain("Reorder the file");
+    // …and the reorder the message asks for clears it
+    expect(laws([avoidable[0]!, avoidable[2]!, avoidable[1]!, avoidable[3]!])).not.toContain("15c");
+
+    // NOT avoidable, so NOT a defect — and this is the second correction the law
+    // needed. A pool is a CYCLE: with two commands among three cards, every order
+    // puts them side by side. Demanding otherwise would only teach an author to
+    // pad the pool for the checker.
+    const forced = [d("e1", "command", "pencil", "g1u01.w.pencil"), d("e2", "command", "rubber", "g1u01.w.rubber"), d("e3", "ask-it", "book", "g1u01.w.book")];
+    expect(laws(forced)).not.toContain("15c");
+
+    // A SINGLE-VOICE pool falls out of the same test rather than needing its own
+    // carve-out: B12 (law 14a) fixes one ask per being, so every place is that
+    // ask and the pool is never arrangeable. The first draft of 15c fired here
+    // and was therefore unsatisfiable together with 14a — found by authoring p1.
+    const oneVoice = [
+      choice("a", { form: "command" }),
+      choice("b", { form: "command", options: ["rubber", "y", "z"], answer: "rubber", exercises: ["g1u01.w.rubber"] }),
+    ];
+    expect(laws(oneVoice)).not.toContain("15c");
   });
 
   it("15d · a pool that only ever asks one thing needs a declared reason", () => {
@@ -237,6 +264,28 @@ describe("16 · the DISTINCTNESS law (B13) — a second meeting brings new conte
       choice("b", { skins: ["eraser"], form: "social-formula", storyDe: "Dieselbe Zeile." }),
     ];
     expect(laws(dupLine)).toContain("16b");
+  });
+
+  it("16f · refuses a battery a child can beat by tapping the longest option", () => {
+    // Not theory: two independent blind solvers, neither seeing the other or the
+    // answer key, both reported that "tap the longest" won on 7 of the 12 cards of
+    // the p1 calibration battery. A finding from a verifier is a specification for
+    // a guardrail, not just a patch — so the instances were fixed AND this law
+    // exists so the next wave cannot reintroduce the class.
+    const gameable: GameTaskV2[] = [];
+    for (let i = 0; i < 5; i++) {
+      gameable.push(choice(`g${i}`, { form: "command", options: ["a much longer right answer", `w${i}`, `x${i}`], answer: "a much longer right answer" }));
+    }
+    expect(laws(gameable)).toContain("16f");
+    expect(detailOf(gameable, "16f")).toContain("without reading any English");
+    // the same five with the answer no longer the longest are clean
+    const fair = gameable.map((t, i) => choice(`f${i}`, { form: "command", options: ["short", `a much longer wrong answer ${i}`, `x${i}`], answer: "short" }));
+    expect(laws(fair)).not.toContain("16f");
+    // …and a `pick-correct-form` battery is excluded BY CONSTRUCTION: the
+    // apostrophe that makes „It's a book." right also makes it the longest string,
+    // so the law may not ask that card to hide its own lesson
+    const contractions = gameable.map((t, i) => choice(`c${i}`, { form: "pick-correct-form", options: ["It's a book.", `Its a book ${i}`, `It a book ${i}`], answer: "It's a book." }));
+    expect(laws(contractions)).not.toContain("16f");
   });
 
   it("16e · refuses an on-screen answer position a child could just tap", () => {

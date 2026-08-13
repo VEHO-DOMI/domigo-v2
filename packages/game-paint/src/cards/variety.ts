@@ -347,7 +347,18 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
       else list.push(t);
     }
   }
+  // 14a is B12's own scope: „pro Wesen(styp) feste Aufgaben-Profile" — the
+  // CREATURES that come at the child, which is what the paintbox finding was
+  // about. It deliberately does NOT govern the structural askers:
+  //   · the DOOR is the chapter's recurring gate, and law M-E (doc 41 §1)
+  //     positively REQUIRES its series to cover the unit's imperatives, questions
+  //     and negations — one voice would repeal a law that outranks this one;
+  //   · a CAGE is a container, and its four instances hold four different things.
+  // Scoping this by hand would be a second table; it is read off the level's own
+  // roles instead, the same way `dualState` is.
+  const voiceSkins = new Set([...hostileSkins, ...restoreSkins]);
   for (const [skin, cards] of bySkin) {
+    if (!voiceSkins.has(skin)) continue;
     const forms = [...new Set(cards.map((t) => t.form).filter((f): f is TaskForm => f !== undefined))];
     const allowed = dualState.has(skin) ? 2 : 1;
     if (forms.length > allowed && !cards.some((t) => exempt(t, "14a"))) {
@@ -357,14 +368,24 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
     if (dualState.has(skin) && forms.length === 2 && !forms.includes("name-it")) {
       fail("14a", `${chapter}:${skin}`, `is drained as well as in the way, so its second ask must be the colour card's "name-it" — it asks [${forms.join(" · ")}]`);
     }
-    // 14c · a pool may not hold two cards of the SAME referent-fixed ask: their
-    // answer is the being's own identity, so the second one either repeats the
-    // first or answers with something the being is not.
-    for (const f of forms) {
-      if (!REFERENT_FIXED_FORMS.has(f)) continue;
-      const same = cards.filter((t) => t.form === f);
+  }
+  // 14c · a POOL may not hold two cards of the same referent-fixed ask: their
+  // answer is the being's own identity, so the second one either repeats the
+  // first or answers with something the being is not.
+  //
+  // Computed on the resolved POOL, not on the skin — a correction this session
+  // needed and the shipped content exposed: all four cages share the skin
+  // `satchel` (it is the cage's painted art), but they stand in four different
+  // phases holding four different things, so grouping by skin accused the sound
+  // system, the tablet, the chair and the class photo of being one being asking
+  // three times. The pool is the unit a child actually meets.
+  for (const c of contexts) {
+    const { pool, key } = resolvePool(items, c.use, { phase: c.phase, skin: c.skin });
+    for (const f of new Set(pool.map((t) => t.form))) {
+      if (f === undefined || !REFERENT_FIXED_FORMS.has(f)) continue;
+      const same = pool.filter((t) => t.form === f);
       if (same.length > 1 && !same.some((t) => exempt(t, "14c"))) {
-        fail("14c", `${chapter}:${skin}`, `asks "${f}" on ${same.length} cards [${same.map((t) => shortId(t.id)).join(" · ")}] — that ask is answered by the being's own identity, so a second card must either repeat the answer or name something this being is not. A being met more than once needs a content-variable ask`);
+        fail("14c", `${chapter}:${key}`, `asks "${f}" on ${same.length} cards [${same.map((t) => shortId(t.id)).join(" · ")}] — that ask is answered by the being's own identity, so a second card must either repeat the answer or name something this being is not. A being met more than once needs a content-variable ask`);
       }
     }
   }
@@ -387,7 +408,11 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
     // 14d · a room asks the child several different things
     const here = field.filter((t) => t.phases === undefined || t.phases.includes(ph.id));
     const forms = new Set(here.map((t) => t.form).filter((f): f is TaskForm => f !== undefined));
-    if (here.length > 0 && forms.size < dials.minFormsPerPhase) {
+    // A room cannot ask four different things with fewer than four cards, and
+    // demanding it would be a law asking for the impossible. The arena is the real
+    // case: its battery is the boss ritual, which this law does not govern, so it
+    // carries exactly one field card (the class-photo cage).
+    if (here.length >= dials.minFormsPerPhase && forms.size < dials.minFormsPerPhase) {
       fail("14d", `${chapter}:${ph.id}`, `presents only ${forms.size} distinct ask(s) [${[...forms].join(" · ")}] across ${here.length} cards — the dial asks for ${dials.minFormsPerPhase} (scripts/game-tasks-variety-policy.json)`);
     }
   }
@@ -436,13 +461,34 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
       l.push(key);
       firstServeAt.set(served[0].id, l);
     }
-    // 15c · no ask twice in a row
-    for (let n = 1; n < served.length; n++) {
-      const a = served[n - 1]!;
-      const b = served[n]!;
-      if (a.form !== undefined && a.form === b.form && a.id !== b.id && !exempt(b, "15c")) {
-        fail("15c", `${chapter}:${key}`, `serves "${a.form}" twice running (${shortId(a.id)} → ${shortId(b.id)}) — the child meets the same ask back to back`);
-        break;
+    // 15c · no ask twice in a row — but only where a different ORDER could avoid
+    // it. This is the law made satisfiable, in two corrections that both came out
+    // of authoring p1 against it rather than out of theory:
+    //
+    //   1. It first fired on every consecutive pair of a SINGLE-VOICE pool, which
+    //      made it mutually exclusive with law 14a — B12 fixes one ask per being,
+    //      so a creature with two cards must serve that ask twice running.
+    //   2. The obvious patch ("only pools with two or more asks") was still wrong.
+    //      A pool is a CYCLE, and on a cycle an arrangement with no equal
+    //      neighbours exists only when no single ask holds more than ⌊n/2⌋ of the
+    //      places. A three-card pool of two commands and one question therefore
+    //      cannot avoid an adjacency in ANY order — demanding it would only teach
+    //      an author to pad the pool for the checker.
+    //
+    // So the law asks the honest question: is THIS adjacency avoidable? If it is,
+    // the fix is a file reorder and the message says so.
+    const counts = new Map<TaskForm, number>();
+    for (const t of pool) if (t.form !== undefined) counts.set(t.form, (counts.get(t.form) ?? 0) + 1);
+    const worst = Math.max(0, ...counts.values());
+    const arrangeable = pool.length >= 2 && worst <= Math.floor(pool.length / 2);
+    if (arrangeable) {
+      for (let n = 1; n < served.length; n++) {
+        const a = served[n - 1]!;
+        const b = served[n]!;
+        if (a.form !== undefined && a.form === b.form && a.id !== b.id && !exempt(b, "15c")) {
+          fail("15c", `${chapter}:${key}`, `serves "${a.form}" twice running (${shortId(a.id)} → ${shortId(b.id)}) — and this pool CAN be ordered so that never happens (no ask holds more than ${Math.floor(pool.length / 2)} of its ${pool.length} places). Reorder the file`);
+          break;
+        }
       }
     }
     // 15d · a pool that only ever asks one thing needs a reason on the record
@@ -513,6 +559,36 @@ function lawsOf(input: VarietyInput, honourExemptions: boolean): VarietyFailure[
       }
     }
   }
+  // 16f · THE LENGTH SHORTCUT (found by two independent blind solvers on the p1
+  // calibration battery, R5-W2 · G1). Both reported, without seeing each other or
+  // the answer key, that "tap the longest option" won on 7 of 12 cards. That is a
+  // validity defect, not a nitpick: a child can clear the deck without reading the
+  // English, and the one card where the habit fails punishes them for having
+  // learned it. Measured CHAPTER-WIDE, because "can I beat this deck by length?"
+  // is a question about the deck, not about one pool.
+  //
+  // `pick-correct-form` is excluded BY CONSTRUCTION, with its reason stated here
+  // rather than bought as a policy exemption: what makes „It's a book." the
+  // correct rendering — the apostrophe and the verb — is also what makes it the
+  // longest string. The law cannot ask that card to hide its own lesson.
+  const gameable = (opts: readonly string[], answer: string, pick: (a: number, b: number) => boolean): boolean => {
+    const len = answer.length;
+    return opts.every((o) => o === answer || pick(len, o.length));
+  };
+  const measurable = field.filter((t) => (t.kind === "choice" || t.kind === "restore") && t.form !== "pick-correct-form");
+  if (measurable.length >= dials.positionBiasMinPool) {
+    for (const [label, pick] of [["longest", (a: number, b: number) => a > b], ["shortest", (a: number, b: number) => a < b]] as const) {
+      const hits = measurable.filter((t) =>
+        t.kind === "choice" ? gameable(t.options, t.answer, pick)
+          : t.kind === "restore" ? gameable(t.nameOptions, t.name, pick)
+            : false);
+      const share = hits.length / measurable.length;
+      if (share > dials.positionBiasMaxShare) {
+        fail("16f", `${chapter}:battery`, `on ${hits.length} of ${measurable.length} cards the right answer is simply the ${label} option — a child who always taps the ${label} one is right ${Math.round(share * 100)} % of the time without reading any English. Cards: ${hits.map((t) => shortId(t.id)).join(", ")}`);
+      }
+    }
+  }
+
   // 16b/16d · chapter-wide: the line the child reads aloud is the card's face
   const lines = new Map<string, string>();
   const colourAsks = new Map<string, string>();
