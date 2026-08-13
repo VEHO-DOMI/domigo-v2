@@ -1,0 +1,63 @@
+{
+  "schema": "taskVarietyPolicy@1",
+  "note": "THE VARIETY POLICY (R5-W2 · G1). The variety laws live in code (packages/game-paint/src/cards/variety.ts, layers 13-17 of check-game-tasks.mjs); THIS file holds only the two things that are judgement rather than law: the dials, and the declared exemptions. It sits beside the gate rather than beside the content on purpose — relaxing a law should be a visible diff where the law lives, not a content edit. THE DEVICE THAT KEEPS IT HONEST: an exemption buys a STRICTER obligation, never a pass (law 0d), and an exemption that suppresses nothing is deleted (law 0k). Modelled on scripts/paint-art-allowlist.json, whose checker already polices stale, reason-less and expired entries.",
+  "dials": {
+    "minFormsPerPhase": {
+      "value": 4,
+      "reason": "A room that asks a six-year-old fewer than four different things is the sameness Koki reported. Four is the floor, not the target: p1 as authored makes five, p2 six. Raising it is a reviewed diff here rather than an edit in a law."
+    },
+    "positionBiasMaxShare": {
+      "value": 0.6,
+      "reason": "The share of a pool's choice cards whose answer may land on the same ON-SCREEN option after the real seededShuffle. Above this a child who always taps the same slot is right more often than a child who reads. Today's shipped content fails it in two pools (the free quickfire cards put 3 of 4 answers last, Merle 4 of 6 in the middle) — that is intended: the dial is what makes the fix visible."
+    },
+    "positionBiasMinPool": {
+      "value": 4,
+      "reason": "Below four cards a run of identical positions is chance, not a pattern, and flagging it would train an author to shuffle for the checker instead of for the child."
+    },
+    "serveProbeCycles": {
+      "value": 2,
+      "reason": "How many full pool-lengths of requests the reachability law asks for before it calls a card stranded. Two is enough to catch a cursor that advances by more than one (the defect this session found) and small enough that a genuinely fair pool always passes on the first cycle."
+    }
+  },
+  "chapters": {
+    "ch01": {
+      "lexiconClasses": {
+        "g1u01.x.numbers": {
+          "reason": "The unit teaches counting to twenty-five (MORE! 1 Unit 1; the wheel cards and the boss memory card live on it) but the numbers are not wordbank ENTRIES, so without a declared class a number card could name nothing true in its `exercises`. Every word here is checked against docs/design/g1/grounding/u01-lexicon.json by law 0j.",
+          "words": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five"]
+        },
+        "g1u01.x.colours": {
+          "reason": "Same shape as the numbers: the colour half of every restore card is the chapter's core mechanic (doc 41 §2) and is taught by the unit, but no colour is a wordbank entry of its own. `grey` is deliberately absent — it is the drained state the card undoes, never an answer (the schema forbids offering it).",
+          "words": ["red", "yellow", "blue", "green", "orange", "brown", "pink", "white", "black"]
+        }
+      },
+      "families": [
+        {
+          "id": "restore-gesture",
+          "match": { "kind": "restore" },
+          "exempts": ["16b"],
+          "reason": "The two-step colour card asks the same thing on purpose: it is ONE gesture the child has to learn (say what it is, then give the colour back), taught at beat 1 and repeated at every drained object. Nine cards with nine different framings would teach nine gestures. The uniformity is the pedagogy, not laziness.",
+          "doc": "docs/design/g1/paint/STORY_SPINE_CH01.md §5 + doc 41 §2",
+          "obliges": { "distinctColourAsk": true }
+        },
+        {
+          "id": "merle-ceremony",
+          "match": { "use": "rescue", "skins": ["merle"] },
+          "exempts": ["16c"],
+          "reason": "The six reawakening rounds all ask the child the same English question, and that is Koki's own finding C2: „I'm not being nitpicky — these are A1 learners, and they rely on every type of scaffold.\" A different question per round would make the ceremony a quiz instead of six tries at one skill.",
+          "doc": "doc 45 §C2 + doc 44 §3.3",
+          "obliges": { "distinctStoryDe": true, "distinctAnswers": true }
+        },
+        {
+          "id": "door-series",
+          "match": { "use": "door" },
+          "exempts": ["15d"],
+          "reason": "The door series is monotype `choice` BY LAW: law M-E (doc 41 §1) makes it the coverage set for the unit's imperatives, questions and negations, so it may not scatter across card kinds. What it owes instead is breadth of ASK — which is what the obligation below demands, and what half the series could never deliver while five of its ten cards were unreachable.",
+          "doc": "doc 41 §1, standing rule M-E",
+          "obliges": { "minForms": 3 }
+        }
+      ],
+      "vocabLedger": {}
+    }
+  }
+}
