@@ -133,7 +133,12 @@ export const auftaktTasks = (c: AuftaktCounts): AuftaktTask[] => {
       askDe: c.drained === 1
         ? "Gib einer entfärbten Schulsache die Farbe zurück."
         : `Gib ${c.drained} entfärbten Schulsachen die Farbe zurück.`,
-      whyDe: c.drained === 1 ? "Sag, was sie ist." : "Sag, was sie sind.",
+      // R5-W2 · J1-B · Didaktik-Kritiker (80 %, hoch): der ganze Mechanismus des
+      // Spiels — auf Englisch sagen, dann kommt die Farbe zurück — stand NUR in
+      // Takt 1 und nirgends auf der Seite, auf der das Kind handeln soll. Eine
+      // einmalige Nennung, zwei Tipps bevor sie gebraucht wird. Jetzt steht sie
+      // dort, wo die Aufgabe steht.
+      whyDe: c.drained === 1 ? "Sag auf Englisch, was sie ist." : "Sag auf Englisch, was sie sind.",
     });
   }
   if (c.cages > 0) {

@@ -108,3 +108,15 @@ describe("R5-W2 · J1-B · beat 3's task lines", () => {
     expect(auftaktTasks({ ...base, kids: 3 }).find((x) => x.key === "cages")!.whyDe).toBe("In 3 davon stecken Klassenkinder.");
   });
 });
+
+describe("R5-W2 · J1-B · the mechanic is named where the child acts", () => {
+  it("says AUF ENGLISCH on the task line, not only in beat 1", () => {
+    // the didactic critic's finding (80 %, high): the whole premise of the game
+    // lived on beat 1 and was absent from beat 3, which is the page a child
+    // reads to know what to DO. One mention, two taps before it matters.
+    const t = auftaktTasks({ letters: 27, collectNounDe: "Buchstaben", drained: 6, cages: 5, kids: 1, tips: 3, books: 3 });
+    expect(t.find((x) => x.key === "drained")!.whyDe).toContain("auf Englisch");
+    expect(auftaktTasks({ letters: 1, collectNounDe: "Buchstaben", drained: 1, cages: 1, kids: 1, tips: 1, books: 1 })
+      .find((x) => x.key === "drained")!.whyDe).toContain("auf Englisch");
+  });
+});

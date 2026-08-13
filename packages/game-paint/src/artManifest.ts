@@ -103,7 +103,7 @@ export const HERO_STEMS = [
  *  card). They stay in the audit's dead list ON PURPOSE — that list is only
  *  worth reading if it is honest. */
 export const AUFTAKT_STEMS: readonly string[] = [
-  "auftakt_ch01_b", "auftakt_ch01_d",
+  "auftakt_ch01_b", "auftakt_ch01_c", "auftakt_ch01_d",
   "auftakt_mark_letters", "auftakt_mark_cages", "auftakt_mark_tips",
   "schulhaus_ch01_a", "schulhaus_ch01_b",
 ];

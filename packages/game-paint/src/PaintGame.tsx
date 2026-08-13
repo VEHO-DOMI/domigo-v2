@@ -1288,10 +1288,16 @@ function Overlay({
       for (const st of stems) if (st !== undefined && art[st] !== undefined) return art[st];
       return undefined;
     };
-    const scene = (url: string | undefined): React.ReactElement | null =>
+    /** R5-W2 · J1-B · Kritiker-Runde 1 (85 %): beat 4's door filled about a third
+     *  of its frame with flat cream margins either side and read as »a small
+     *  sticker in an empty box«, while beats 1 and 2 bleed to their edges. The
+     *  cause was `contain` inside a forced square: a tall, narrow painting in a
+     *  1:1 box IS mostly margin. The frame now takes the picture's own shape —
+     *  a wide plate stays wide, a tall door stays tall — and fills it. */
+    const scene = (url: string | undefined, ratio = "4 / 3"): React.ReactElement | null =>
       url === undefined ? null : (
-        <div style={{ ...plateMount, aspectRatio: "1 / 1", margin: "0 0 10px", maxHeight: 190 }}>
-          <img src={url} alt="" aria-hidden style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
+        <div style={{ ...plateMount, aspectRatio: ratio, margin: "0 0 10px", maxHeight: 200 }}>
+          <img src={url} alt="" aria-hidden style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 42%", display: "block" }} />
         </div>
       );
     const eyebrow = (text: string): React.ReactElement => (
@@ -1339,7 +1345,7 @@ function Overlay({
       return staged(
         <div style={{ textAlign: "left" }}>
           {eyebrow("Was geschehen ist")}
-          {scene(painted("auftakt_ch01_b", "schulhaus_ch01_b", "schulhaus_ch01_a"))
+          {scene(painted("auftakt_ch01_b", "schulhaus_ch01_b", "schulhaus_ch01_a"), "4 / 3")
             ?? <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={80} height={124} />}
           <Key>{level.goalDe}</Key>
           {auftaktFoot("Weiter")}
@@ -1387,6 +1393,15 @@ function Overlay({
       return staged(
         <div style={{ textAlign: "left" }}>
           {eyebrow("Dein Auftrag")}
+          {/* R5-W2 · J1-B · Kritiker-Runde 1 (90 %, High): this beat shipped with
+              no scene at all — »a label, five rows and two buttons … the one beat
+              that reads as a plain checklist/settings dialog, not a story page«.
+              The critic is right and it reverses my own call: I had dropped the
+              note plate because its three painted rows do not match five task
+              lines. They do not have to — it is the PAPER the tasks are written
+              on, not a form to fill in, and the beat needs a picture more than it
+              needs that correspondence. */}
+          {scene(painted("auftakt_ch01_c"), "16 / 9")}
           <div style={{ display: "grid", gap: 11, fontSize: 14.5, color: "#4a4030", margin: "2px 0 0", lineHeight: 1.3 }}>
             {rows}
           </div>
@@ -1404,7 +1419,7 @@ function Overlay({
     return staged(
       <div style={{ textAlign: "left" }}>
         {eyebrow("Los geht's")}
-        {scene(painted("auftakt_ch01_d", level.doorPlate))
+        {scene(painted("auftakt_ch01_d", level.doorPlate), "5 / 4")
           ?? <SceneCut art={art} backdrop={roomStem} pose="stand" heroHeight={80} height={124} />}
         <Key>Dein erster Raum: {level.phases[0]?.nameDe ?? level.name}.</Key>
         {auftaktFoot("Los geht's!")}
