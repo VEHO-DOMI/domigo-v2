@@ -112,9 +112,47 @@ Kind ENTZIFFERN muss, bleibt so klar wie irgend möglich.
 
 ## §3 · Die Takt-Grammatik des Auftakts
 
-*(Wird in PR 3 dieser Runde geschrieben — der Auftakt in vier Takten. Bis dahin
-absichtlich leer: ein Abschnitt, der beschreibt, was noch nicht gebaut ist, ist eine
-Behauptung, keine Dokumentation.)*
+Damit ch02–ch15 sie erben, ohne zu raten. Ein Kapitel-Auftakt hat **vier Takte, in
+dieser Reihenfolge**, und jeder beantwortet genau eine Frage des Kindes.
+
+| Takt | Die Frage | Was darauf steht | Woher es kommt |
+|---|---|---|---|
+| 1 · Das Buch schlägt auf | *Wo bin ich?* | Kapitelnummer · die gemalte Titeltafel mit dem Kapitelnamen · ein Fenster in den echten Raum mit dem Jungen darin · **der Warum-Satz** | `level.chapter` · `goalPlate` · `level.name` · `SceneCut(plates.far)` · `level.whyDe` |
+| 2 · Was geschehen ist | *Was ist passiert?* | EIN Bild und EINE Zeile darunter | `auftakt_<ch>_b` → Schulhaus-Zelle → SceneCut · `level.goalDe` |
+| 3 · Dein Auftrag | *Was soll ich tun?* | Je Aufgabe eine Zeile mit **eigener Marke**, gezählte Zahl fett, Begründung leise darunter | `auftaktTasks()` aus der gezählten Bilanz |
+| 4 · Los geht's | *Wie fange ich an?* | Die Tür · der Name des ersten Raums · **»Los geht's!«** | `auftakt_<ch>_d` → `doorPlate` → SceneCut · `phases[0].nameDe` |
+
+### Die sechs Gesetze der Grammatik
+
+1. **Der Warum-Satz steht in Takt 1, nicht am Ende.** Ein Kind, das nur die erste
+   Seite liest, hat trotzdem den einen Satz gelesen, für den das Kapitel da ist.
+   (Der Blind-Kritiker auf dem alten Exemplar: die Prämisse war »in die kleinste,
+   zuletzt gelesene Zeile« gerutscht.)
+2. **Takt 2 ist ein BILD mit einer Zeile, kein Absatz.** Es ist der Story-Takt; wenn
+   er zu einem Absatz wird, ist er Takt 3 mit anderer Überschrift.
+3. **Jede Zahl in Takt 3 wird gezählt, nie getippt** (doc 41 §7). Diese Seite ist der
+   Vertrag des Kapitels mit dem Kind — eine getippte Zahl ist das Einzige, was ein
+   Vertrag nicht enthalten darf.
+4. **Die Welt bleibt über ALLE vier Takte eingefroren.** Nur der letzte gibt sie
+   zurück. `auftaktExit()` sagt das für genau einen Takt, und ein Test hält es.
+5. **Jeder Takt außer dem ersten kann zurückblättern**, und der Fuß mit
+   Weiter · Zurück · Zähler sieht auf allen vier gleich aus. Ein Auftakt darf nicht
+   schneller sein als das Lesen.
+6. **Kein Bild ist Pflicht.** Jeder Takt hat eine Rückfallkette bis hinunter zu »gar
+   kein Bild«. Kunst landet stapelweise; eine Karte darf an keiner fehlenden Datei
+   zerbrechen.
+
+### Was ein neues Kapitel liefern muss
+
+`whyDe` · `goalDe` · `name` · `phases[0].nameDe` · `collectNounDe` — und optional
+`auftakt_<ch>_b` und `auftakt_<ch>_d`. Mehr nicht: die Aufgabenzeilen baut
+`auftaktTasks()` aus der gezählten Welt, und der Fuß zählt sich selbst.
+
+⚠ **Die eine Falle beim Erben:** `collectNounDe` ist authoriert und PLURAL, und sein
+Singular ist nicht ableitbar (Artikel und Endung hängen am Geschlecht, das die
+Leveldatei nie nennt). Ein Kapitel, das wirklich EIN Sammelstück hat, braucht ein
+eigenes Singularfeld — bis dahin lässt Takt 3 bei eins die Zahl weg, statt eine
+falsche Form zu erfinden.
 
 ---
 
