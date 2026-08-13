@@ -27,15 +27,100 @@ describe("routing v3 (deterministic playlists, bound to the world)", () => {
     expect(got).toEqual(["a", "b", "c", "a", "b"]);
   });
 
-  it("skips once to avoid the same kind twice in a row", () => {
-    // two wheels adjacent: a(wheel), a2(wheel), b(spell)
-    const p = [mk("w1", "quickfire", "wheel"), mk("w2", "quickfire", "wheel"), mk("s", "quickfire", "spell")];
-    let st = initRoute();
-    let r = nextTask(p, "quickfire", anywhere, st); // w1 (wheel)
-    expect(r.task!.id).toBe("w1"); st = r.next;
-    r = nextTask(p, "quickfire", anywhere, st); // next would be w2 (wheel==last) → skip to s
-    expect(r.task!.id).toBe("s"); st = r.next;
-    expect(st.lastKind).toBe("spell");
+  // ── R5-W2 · G1 · THE FAIRNESS OF THE CURSOR ───────────────────────────────
+  // What stood here asserted the rule this session retired: "skips once to avoid
+  // the same kind twice in a row". That skip advanced the cursor PAST the card it
+  // skipped, so a pool where it fired every other serve could only ever visit one
+  // parity class — measured on the shipped chapter, 10 of 62 field cards were
+  // unreachable, five of them door cards (repealing law M-E, doc 41 §1).
+  // Both halves below are deliberate: the first says what the router must do, the
+  // second RE-CREATES the deleted rule and proves it starved. Reintroduce the
+  // skip and half of this goes red, instead of the file going quietly vacuous.
+  const servesOf = (p: GameTaskV2[], use: string, ctx: { phase: string; skin?: string }, n: number) => {
+    let st: RouteState = initRoute();
+    const got: string[] = [];
+    for (let i = 0; i < n; i++) { const r = nextTask(p, use, ctx, st); got.push(r.task!.id); st = r.next; }
+    return got;
+  };
+  /** The retired rule, kept verbatim as the tamper witness — nothing imports it. */
+  const skipAndConsume = (p: GameTaskV2[], n: number) => {
+    const got: string[] = [];
+    let cur = 0;
+    let lastKind: string | null = null;
+    for (let k = 0; k < n; k++) {
+      let i = cur % p.length;
+      let pick = p[i]!;
+      if (p.length > 1 && lastKind !== null && pick.kind === lastKind) { i = (i + 1) % p.length; pick = p[i]!; }
+      cur = (i + 1) % p.length;
+      lastKind = pick.kind;
+      got.push(pick.id);
+    }
+    return got;
+  };
+  // three shapes, each mirroring a real pool of the shipped chapter
+  const shapes = {
+    /** the door series: ten choice cards, monotype BY LAW M-E (doc 41 §1) */
+    door: Array.from({ length: 10 }, (_, i) => mk(`d${i + 1}`, "door", "choice", ["door"])),
+    /** the p1 chaser as shipped: two choice cards and an oddone */
+    pencil: [
+      mk("c1", "encounter", "choice", ["pencil"]),
+      mk("c2", "encounter", "choice", ["pencil"]),
+      mk("q1", "encounter", "oddone", ["pencil"]),
+    ],
+    /** the p2 moth corridor — B10 wants the number wheels to land in a RUN */
+    moths: [
+      mk("w1", "quickfire", "wheel", ["moths"]),
+      mk("w2", "quickfire", "wheel", ["moths"]),
+      mk("c1", "quickfire", "choice", ["moths"]),
+      mk("w3", "quickfire", "wheel", ["moths"]),
+      mk("w4", "quickfire", "wheel", ["moths"]),
+    ],
+  };
+
+  it("serves every card a pool holds, in file order, before it repeats one", () => {
+    expect(servesOf(shapes.door, "door", { phase: "p1", skin: "door" }, 10))
+      .toEqual(["d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10"]);
+    expect(servesOf(shapes.pencil, "encounter", { phase: "p1", skin: "pencil" }, 4))
+      .toEqual(["c1", "c2", "q1", "c1"]);
+    // B10 (doc 45): the authored run of wheels is what the corridor now serves
+    expect(servesOf(shapes.moths, "quickfire", { phase: "p2", skin: "moths" }, 5))
+      .toEqual(["w1", "w2", "c1", "w3", "w4"]);
+  });
+
+  it("tamper: the retired skip starved half a pool — the proof it stays retired", () => {
+    expect([...new Set(skipAndConsume(shapes.door, 40))].sort())
+      .toEqual(["d1", "d3", "d5", "d7", "d9"]);
+    expect(new Set(skipAndConsume(shapes.pencil, 40)).has("c2")).toBe(false);
+    expect(skipAndConsume(shapes.moths, 5)).toEqual(["w1", "c1", "w3", "w1", "c1"]); // B10's run, broken
+  });
+
+  it("a pool that is the same cards in every phase keeps ONE series (the doors)", () => {
+    // door cards declare no `phases`, so p1/p2/p3 resolve to the identical ten.
+    // Before G1 each phase had its own cursor at 0 and every exit in the chapter
+    // asked slot one of the same series.
+    let st: RouteState = initRoute();
+    const got: string[] = [];
+    for (const phase of ["p1", "p2", "p3"]) {
+      const r = nextTask(shapes.door, "door", { phase, skin: "door" }, st);
+      got.push(r.task!.id); st = r.next;
+    }
+    expect(got).toEqual(["d1", "d2", "d3"]);
+  });
+
+  it("…and a genuinely phase-scoped pool still keeps its cursors apart", () => {
+    // the narrow half of the same rule: `phases` present ⇒ the phase stays in the
+    // key, so two different phases may not eat each other's progress.
+    const scoped = [
+      mk("a1", "encounter", "choice", ["heft"], ["p1"]),
+      mk("a2", "encounter", "choice", ["heft"], ["p1"]),
+      mk("b1", "encounter", "choice", ["heft"], ["p3"]),
+    ];
+    let st: RouteState = initRoute();
+    let r = nextTask(scoped, "encounter", { phase: "p1", skin: "heft" }, st);
+    expect(r.task!.id).toBe("a1"); st = r.next;
+    r = nextTask(scoped, "encounter", { phase: "p3", skin: "heft" }, st);
+    expect(r.task!.id).toBe("b1"); st = r.next; // p3 starts at ITS card one
+    expect(nextTask(scoped, "encounter", { phase: "p1", skin: "heft" }, st).task!.id).toBe("a2");
   });
 
   it("returns null for an empty pool", () => {
@@ -45,9 +130,10 @@ describe("routing v3 (deterministic playlists, bound to the world)", () => {
   // ── PK-R6 · D · THE ORDERED SERVE (doc 44 §3.3) ──────────────────────────
   // A reawakening round must be THE card authored for that round, because its
   // picture is the pose the classmate is striking in the world. The second test
-  // is the reason orderedTask exists at all: on a pool of six same-kind cards
-  // the playlist's anti-repetition skip serves 1, 3, 5, 1 … — every round after
-  // the first would show a picture the world is not showing.
+  // is the reason orderedTask exists at all — restated in R5-W2 · G1, because it
+  // used to rest on the anti-repeat skip and that rule is gone. The reason that
+  // SURVIVES: the round is the world's counter, and „Später" does not advance it
+  // (sim.ts:497 / :585, awakening.test.ts:210-218), while a cursor already has.
   describe("orderedTask — a ceremony is not a playlist", () => {
     const rounds = Array.from({ length: 6 }, (_, i) => mk(`r${i + 1}`, "rescue", "choice", ["merle"], ["p2"]));
     const here = { phase: "p2", skin: "merle" };
@@ -57,11 +143,15 @@ describe("routing v3 (deterministic playlists, bound to the world)", () => {
         .toEqual(["r1", "r2", "r3", "r4", "r5", "r6"]);
     });
 
-    it("is what the playlist could NOT do: nextTask skips through a same-kind pool", () => {
+    it("is what the playlist cannot do: the round is the WORLD's counter, not a cursor", () => {
+      // The playlist is fair now, so file order alone would look right here. The
+      // test that still bites is the RESUME: „Später" leaves `awakenStep` where it
+      // was, so ↑ re-asks the SAME round — while a cursor has already moved on.
       let st: RouteState = initRoute();
-      const got: string[] = [];
-      for (let i = 0; i < 4; i++) { const r = nextTask(rounds, "rescue", here, st); got.push(r.task!.id); st = r.next; }
-      expect(got).toEqual(["r1", "r3", "r5", "r1"]); // …which is why the rounds do not use it
+      const r = nextTask(rounds, "rescue", here, st);
+      expect(r.task!.id).toBe("r1"); st = r.next;
+      expect(nextTask(rounds, "rescue", here, st).task!.id).toBe("r2"); // the playlist moved
+      expect(orderedTask(rounds, "rescue", here, 2)!.id).toBe("r3"); // the world did not
     });
 
     it("returns null out of range instead of wrapping — the caller resolves, never softlocks", () => {
